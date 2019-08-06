@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510432"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678021"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Was ist der Azure Machine Learning-Dienst?
 
@@ -32,13 +32,13 @@ Dank solcher Vorhersagen oder Prognosen aus Machine Learning können Apps und Ge
 Azure Machine Learning Service umfasst eine cloudbasierte Umgebung, auf die Sie zum Aufbereiten von Daten sowie zum Trainieren, Testen, Bereitstellen, Verwalten und Nachverfolgen von Machine Learning-Modellen zurückgreifen können. Beginnen Sie auf Ihrem lokalen Computer mit dem Training, und führen Sie dann eine horizontale Hochskalierung auf die Cloud durch. Der Dienst unterstützt Open-Source-Technologien wie PyTorch, TensorFlow und Scikit-learn vollständig und kann für jede Art von maschinellem Lernen eingesetzt werden, vom klassischen maschinellen Lernen bis hin zu Deep Learning, beaufsichtigtem und unbeaufsichtigtem Lernen. 
 
 Erkunden und Vorbereiten von Daten, Trainieren und Testen von Modellen und Bereitstellen dieser Modelle mit umfangreichen Tools wie z. B.:
-+ Eine [grafische Benutzeroberfläche](ui-quickstart-run-experiment.md), in der Sie Module per Drag & Drop ziehen können, um Ihre Experimente zu erstellen und dann Modelle bereitzustellen
++ Eine [grafische Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md), in der Sie Module per Drag & Drop ziehen können, um Ihre Experimente zu erstellen und dann Modelle bereitzustellen
 + [Jupyter-Notebooks](https://jupyter.org), in denen Sie die [SDKs](https://docs.microsoft.com/azure/machine-learning/service/#reference) verwenden, um Ihren eigenen Code zu schreiben, wie etwa [diese Beispiel-Notebooks](https://aka.ms/aml-notebooks)
 + [Visual Studio Code-Erweiterung](how-to-vscode-tools.md)
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Wofür kann ich den Azure Machine Learning-Dienst verwenden?
 
-Verwenden Sie das <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning SDK für Python</a> mit Open-Source-Paketen für Python oder die [grafische Benutzeroberfläche (Vorschauversion)](ui-quickstart-run-experiment.md), um selbst äußerst genaue Machine Learning- und Deep Learning-Modelle in einem Arbeitsbereich für Azure Machine Learning Service zu erstellen und zu trainieren.
+Verwenden Sie das <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning SDK für Python</a> mit Open-Source-Paketen für Python oder die [grafische Benutzeroberfläche (Vorschauversion)](ui-tutorial-automobile-price-train-score.md), um selbst äußerst genaue Machine Learning- und Deep Learning-Modelle in einem Arbeitsbereich für Azure Machine Learning Service zu erstellen und zu trainieren.
 
 Sie können aus mehreren Komponenten für maschinelles Lernen wählen, die in Open-Source-Paketen für Python enthalten sind. Hierzu zählen beispielsweise <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a> und <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -86,9 +86,9 @@ Hier ist ein kurzer Vergleich:
 |Module für Schnittstellen| Mehrere | Anfänglicher Satz von beliebten Modulen|
 |Trainieren von Computezielen| Proprietäres Computeziel, nur CPU-Unterstützung| Unterstützt Azure Machine Learning-Compute, -GPU oder -CPU.<br/>(Weitere Computes in SDK unterstützt)|
 |Computeziele für die Bereitstellung| Proprietäres Webdienstformat, nicht anpassbar | Unternehmenssicherheitsoptionen und Azure Kubernetes Service <br/>([Weitere Computes](how-to-deploy-and-where.md) in SDK unterstützt) |
-|Automatisiertes Modelltraining und Optimieren von Hyperparametern | Nein  | Noch nicht auf der grafischen Benutzeroberfläche. <br/> (Im SDK und Azure-Portal unterstützt.) | 
+|Automatisiertes Modelltraining und Optimieren von Hyperparametern | Nein | Noch nicht auf der grafischen Benutzeroberfläche. <br/> (Im SDK und Azure-Portal unterstützt.) | 
 
-Testen Sie die grafische Benutzeroberfläche (Vorschauversion) mit [Schnellstart: Vorbereiten und Visualisieren von Daten, ohne Code zu schreiben](ui-quickstart-run-experiment.md)
+Testen Sie die grafische Benutzeroberfläche (Vorschauversion) in [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md).
 
 > [!NOTE]
 > Modelle, die in Studio erstellt werden, können nicht von Azure Machine Learning Service bereitgestellt und verwaltet werden. Modelle, die auf der grafischen Benutzeroberfläche erstellt und bereitgestellt werden, können dagegen über den Azure Machine Learning Service-Arbeitsbereich verwaltet werden.

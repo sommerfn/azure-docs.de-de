@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 8b1a701beac867c5f331ffa1ee1dee615961c6b3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9154bc749f7db337de67f501d5e5049dfd466156
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416299"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698472"
 ---
 # <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>Schnellstart: Verwenden von Truffle zum Herstellen einer Verbindung mit einem Azure Blockchain-Netzwerk
 
@@ -28,6 +28,8 @@ Truffle ist eine Entwicklungsumgebung für Blockchains, die Sie verwenden könne
 * [Erstellen eines Azure Blockchain-Mitglieds](create-member.md)
 * Installieren Sie [Truffle](https://github.com/trufflesuite/truffle). Für Truffle ist die Installation mehrerer Tools erforderlich, dazu gehören [Node.js](https://nodejs.org) und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Installieren Sie [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python ist für Web3 erforderlich.
+* Installieren Sie [Visual Studio Code](https://code.visualstudio.com/download).
+* Installieren Sie die [Solidity-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity).
 
 ## <a name="create-truffle-project"></a>Erstellen eines Truffle-Projekts
 
@@ -53,38 +55,51 @@ Truffle ist eine Entwicklungsumgebung für Blockchains, die Sie verwenden könne
     ```
 
     Möglicherweise werden während der Installation npm-Warnungen ausgelöst.
+    
+## <a name="configure-truffle-project"></a>Konfigurieren eines Truffle-Projekts
 
-1. Starten Sie die interaktive Entwicklungskonsole von Truffle.
+Zum Konfigurieren des Truffle-Projekts benötigen Sie einige Informationen zum Transaktionsknoten aus dem Azure-Portal.
 
-    ``` bash
-    truffle develop
+### <a name="transaction-node-endpoint-addresses"></a>Endpunktadressen für den Transaktionsknoten
+
+1. Navigieren Sie im Azure-Portal zu den einzelnen Transaktionsknoten, und klicken Sie auf **Transaktionsknoten > Verbindungszeichenfolgen**.
+1. Kopieren Sie die Endpunkt-URL für jeden Transaktionsknoten aus **HTTPS (Zugriffsschlüssel 1)** , und speichern Sie sie. Sie benötigen die Endpunktadressen für die Smart Contract-Konfigurationsdatei im späteren Verlauf dieses Tutorials.
+
+    ![Transaktionsendpunktadresse](./media/send-transaction/endpoint.png)
+
+### <a name="edit-configuration-file"></a>Bearbeiten der Konfigurationsdatei
+
+1. Starten Sie Visual Studio Code, und öffnen Sie den Truffle-Projektverzeichnisordner über das Menü **Datei > Ordner öffnen**.
+1. Öffnen Sie die Truffle-Konfigurationsdatei `truffle-config.js`.
+1. Ersetzen Sie den Inhalt der Datei durch die folgenden Konfigurationsinformationen. Fügen Sie eine Variable hinzu, die die Endpunktadresse enthält. Ersetzen Sie die spitzen Klammern durch die Werte, die Sie in den vorherigen Abschnitten abgerufen haben.
+
+    ``` javascript
+    var defaultnode = "<default transaction node connection string>";   
+    var Web3 = require("web3");
+    
+    module.exports = {
+      networks: {
+        defaultnode: {
+          provider: new Web3.providers.HttpProvider(defaultnode),
+          network_id: "*"
+        }
+      }
+    }
     ```
 
-    Truffle erstellt eine lokale Entwicklungsblockchain und stellt eine interaktive Konsole bereit.
+1. Speichern Sie die Änderungen in `truffle-config.js`.
 
 ## <a name="connect-to-transaction-node"></a>Herstellen einer Verbindung mit dem Transaktionsknoten
 
-Verwenden Sie *Web3*, um eine Verbindung mit dem Transaktionsknoten herzustellen. Sie können die *Web3*-Verbindungszeichenfolge aus dem Azure-Portal abrufen.
+Verwenden Sie *Web3*, um eine Verbindung mit dem Transaktionsknoten herzustellen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu Ihrem Azure Blockchain-Mitglied. Klicken Sie auf **Transaktionsknoten** und dann auf den Link „default transaction node“ (Standardtransaktionsknoten).
+1. Verwenden Sie die Truffle-Konsole, um eine Verbindung mit dem Standardtransaktionsknoten herzustellen.
 
-    ![Standardtransaktionsknoten auswählen](./media/connect-truffle/transaction-nodes.png)
-
-1. Klicken Sie auf **Beispielcode > Web3**.
-1. Kopieren Sie den JavaScript-Code aus **HTTPS (Zugriffsschlüssel 1)** . Den Code benötigen Sie für die interaktive Entwicklungskonsole von Truffle.
-
-    ![Web3-Code](./media/connect-truffle/web3-code.png)
-
-1. Fügen Sie den JavaScript-Code aus dem vorherigen Schritt in die interaktive Entwicklungskonsole von Truffle ein. Mit dem Code wird ein web3-Objekt erstellt, das mit Ihrem Azure Blockchain-Transaktionsknoten verbunden ist.
-
-    Beispielausgabe:
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
+    ``` bash
+    truffle console --network defaultnode
     ```
+
+    Truffle stellt eine Verbindung mit dem Standardtransaktionsknoten her und stellt eine interaktive Konsole bereit.
 
     Sie können Methoden für das **web3-Objekt** aufrufen, um mit Ihrem Transaktionsknoten zu interagieren.
 
@@ -97,7 +112,7 @@ Verwenden Sie *Web3*, um eine Verbindung mit dem Transaktionsknoten herzustellen
     Beispielausgabe:
 
     ```bash
-    truffle(develop)> web3.eth.getBlockNumber();
+    truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
 1. Beenden Sie die Truffle-Entwicklungskonsole.

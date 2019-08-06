@@ -12,17 +12,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 12738b63be92420c5f3afea6c133522cbd97f849
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420228"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640012"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Erstellen eines Clusteringmodells in R mit Machine Learning Services (Vorschauversion) in Azure SQL-Datenbank
 
-Im zweiten Teil dieser dreiteiligen Tutorialreihe erstellen Sie ein K-Means-Modell für das Clustering in R mit Machine Learning Services (Vorschau) in Azure SQL-Datenbank.
+Im zweiten Teil dieser dreiteiligen Tutorialreihe erstellen Sie ein K-Means-Modell in R für das Clustering. Im nächsten Teil dieser Reihe stellen Sie dieses Modell in einer SQL-Datenbank mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) bereit.
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -31,9 +31,9 @@ In diesem Artikel lernen Sie Folgendes:
 > * Ausführen des Clusterings
 > * Analysieren der Ergebnisse
 
-Im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering in R vorbereiten.
+Im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering vorbereiten.
 
-Im [dritten Teil](sql-database-tutorial-clustering-model-deploy.md) erfahren Sie, wie Sie eine gespeicherte Prozedur in einer Azure SQL-Datenbank erstellen, die Clustering auf der Grundlage neuer Daten ausführen kann.
+In [Teil 3](sql-database-tutorial-clustering-model-deploy.md) erlernen Sie das Erstellen einer gespeicherten Prozedur in einer Azure SQL-Datenbank, die Clustering in R basierend auf neuen Daten ausführen kann.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -125,7 +125,7 @@ Within cluster sum of squares by cluster:
 Die vier Clustermittelwerte werden mithilfe der Variablen angegeben, die im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers) definiert wurden:
 
 * *orderRatio*: Retourenverhältnis (Gesamtanzahl teilweise oder vollständig retournierter Bestellungen im Vergleich zur Gesamtanzahl von Bestellungen)
-* *itemsRatio* Verhältnis retournierter Artikel (Gesamtanzahl retournierter Artikel im Vergleich zur Anzahl gekaufter Artikel)
+* *itemsRatio*: Verhältnis retournierter Artikel (Gesamtanzahl retournierter Artikel im Vergleich zur Anzahl gekaufter Artikel)
 * *monetaryRatio*: Retourenbetragsverhältnis (Gesamtbetrag der retournierten Artikel im Vergleich zum Einkaufsbetrag)
 * *frequency*: Retourenhäufigkeit
 
@@ -137,12 +137,12 @@ Im Anschluss folgen einige Interpretationsmöglichkeiten für diese Ergebnisse:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-***Wenn Sie dieses Tutorial nicht fortsetzen möchten***, löschen Sie die Datenbank „tpcxbb_1gb“ von Ihrem Azure SQL-Datenbank-Server.
+***Wenn Sie dieses Tutorial nicht fortsetzen möchten***, löschen Sie die Datenbank „tpcxbb_1gb“ von Ihrem Azure SQL-Datenbank-Server.
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Wählen Sie im Menü auf der linken Seite im Azure-Portal **Alle Ressourcen** oder **SQL-Datenbanken** aus.
-1. Geben Sie im Feld **Nach Name filtern...** die Zeichenfolge **tpcxbb_1gb** ein, und wählen Sie Ihr Abonnement aus.
+1. Geben Sie im Feld **Nach Name filtern** die Zeichenfolge **tpcxbb_1gb** ein, und wählen Sie Ihr Abonnement aus.
 1. Wählen Sie die Datenbank **tpcxbb_1gb** aus.
 1. Wählen Sie auf der Seite **Übersicht** die Option **Löschen** aus.
 

@@ -1,21 +1,18 @@
 ---
 title: Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten parallel in ein Azure Storage-Konto hochzuladen.
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071425"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698970"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 

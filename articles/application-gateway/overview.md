@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: e2e29bf0068fae5d6f4987ec5c3f2a52b883e4bd
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418113"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564863"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -111,7 +111,7 @@ Mit dem Verbindungsausgleich können Sie eine korrekte Entfernung von Mitglieder
 
 Mit Application Gateway können Sie benutzerdefinierte Fehlerseiten erstellen, anstatt Standardfehlerseiten anzuzeigen. Sie können für eine benutzerdefinierte Fehlerseite Ihr eigenes Branding und Layout verwenden.
 
-Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern](rewrite-http-headers.md).
+Weitere Informationen finden Sie unter [Benutzerdefinierte Fehler](custom-error.md).
 
 ## <a name="rewrite-http-headers"></a>Erneutes Generieren von HTTP-Headern
 

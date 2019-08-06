@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6d2b9c8dd8fb89e201cff5155b1dec0857204752
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400048"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663495"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -96,8 +96,10 @@ Wenn die Azure-VMs nach der Migration (Failover) erstellt werden, werden sie mit
 6. Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** und dann **migrationRG** aus.
 7. Wählen Sie für **Ort** die Option **Europa, Westen** aus.
 8. Behalten Sie unter **Subnetz** die Standardwerte für **Name** and **IP-Bereich** bei.
-9. Lassen Sie die Option **Dienstendpunkte** deaktiviert.
-10. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+9. Fügen Sie Anweisungen für die Einstellungen für DDoS-Schutz hinzu.
+10. Lassen Sie die Option **Dienstendpunkte** deaktiviert.
+11. Fügen Sie Anweisungen für Firewalleinstellungen hinzu.
+12. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
 ## <a name="prepare-the-infrastructure"></a>Vorbereiten der Infrastruktur
 
@@ -157,7 +159,7 @@ In diesem Abschnitt geben Sie Informationen zu den Ressourcen ein, die Sie weite
 
 Bevor Sie die Replikation aktivieren können, müssen Sie eine Replikationsrichtlinie erstellen.
 
-1. Wählen Sie **+ Replicate and Associate** (+ Replizieren und zuordnen).
+1. Wählen Sie **Erstellen und zuordnen** aus.
 2. Geben Sie unter **Name** den Namen **myReplicationPolicy** ein.
 3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie anschließend **OK**, um die Richtlinie zu erstellen. Die neue Richtlinie wird dem Konfigurationsserver automatisch zugeordnet.
 

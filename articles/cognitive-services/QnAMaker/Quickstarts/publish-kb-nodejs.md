@@ -1,6 +1,6 @@
 ---
-title: Veröffentlichen einer Wissensdatenbank, REST, Node.js
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Schnellstart: Veröffentlichen einer Wissensdatenbank, REST, Node.js – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: In dieser Node.js-Schnellstartanleitung wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Pushvorgang an einen dedizierten Azure Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 915d5223b99f530978ade41f69420766cf591021
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d47359f92a2cebef10514b3746fbf32f7e952132
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787908"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562908"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Schnellstart: Veröffentlichen einer Wissensdatenbank in QnA Maker mit Node.js
 

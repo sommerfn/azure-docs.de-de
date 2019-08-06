@@ -1,5 +1,5 @@
 ---
-title: Stimmungsanalyse
+title: 'Stimmungsanalyse: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen abrufen. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ad1dba3c35c0f1fa5640e484319b584731843dd8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479771"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563580"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Tutorial:  Abrufen der Stimmung einer Äußerung
 

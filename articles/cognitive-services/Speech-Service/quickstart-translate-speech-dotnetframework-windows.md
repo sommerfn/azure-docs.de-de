@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache, C# (.NET Framework, Windows): Speech-Dienste'
+title: 'Schnellstart: Übersetzen von Sprache, C# (.NET Framework, Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erstellen Sie eine einfache .NET Framework-Anwendung zum Erfassen der Benutzersprache, Übersetzen in eine andere Sprache und Ausgeben des Texts in der Befehlszeile. Dieser Leitfaden ist für Windows-Benutzer bestimmt.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b81aac4779570f39fcbacda867fe27d902322bc5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e62756ab428135ca3d5d9107f37e61813097d21f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602821"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553459"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für .NET Framework
 

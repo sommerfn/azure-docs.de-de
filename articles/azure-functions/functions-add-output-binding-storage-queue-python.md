@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
-description: Erfahren Sie, wie Sie Ihrer Python-Funktion mithilfe der Azure CLI und Functions Core Tools eine Azure Storage-Warteschlangenausgabebindung hinzufügen.
+description: Hier erfahren Sie, wie Sie Ihrer Python-Funktion mithilfe der Azure CLI und Functions Core Tools eine Azure Storage-Warteschlangenausgabebindung hinzufügen.
 services: functions
 keywords: ''
 author: ggailey777
@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443198"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639102"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
-Azure Functions gestattet Ihnen das Verbinden von Azure-Diensten und anderen Ressourcen mit Funktionen, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein Trigger ist ein spezieller Typ Eingabebindung. Während eine Funktion nur einen Trigger hat, kann sie mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+Azure Functions gestattet Ihnen das Verbinden von Azure-Diensten und anderen Ressourcen mit Funktionen, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
-In diesem Artikel erfahren Sie, wie Sie die Funktion, die Sie im [vorherigen Schnellstartartikel](functions-create-first-function-python.md) erstellt haben, mit einer Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus der HTTP-Anforderung in eine Nachricht in der Warteschlange. 
+In diesem Artikel erfahren Sie, wie Sie die Funktion, die Sie im [vorherigen Schnellstartartikel](functions-create-first-function-python.md) erstellt haben, mit einer Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
 
-Die meisten Bindungen erfordern eine gespeicherte Verbindungszeichenfolge, die Functions verwendet, um auf den gebundenen Dienst zuzugreifen. Um dies zu vereinfachen, verwenden Sie das Speicherkonto, das Sie mit Ihrer Funktions-App erstellt haben. Die Verbindung mit diesem Konto ist bereits in einer App-Einstellung namens `AzureWebJobsStorage` gespeichert.  
+Die meisten Bindungen erfordern eine gespeicherte Verbindungszeichenfolge, die Functions verwendet, um auf den gebundenen Dienst zuzugreifen. Um diese Verbindung zu vereinfachen, verwenden Sie das Storage-Konto, das Sie mit Ihrer Funktions-App erstellt haben. Die Verbindung mit diesem Konto ist bereits in einer App-Einstellung namens `AzureWebJobsStorage` gespeichert.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,20 +49,20 @@ Sie benötigen den Wert `AzureWebJobsStorage`, bei dem es sich um die Verbindung
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Dann können Sie dem Projekt eine Storage-Ausgabebindung hinzufügen.
+Jetzt können Sie dem Projekt die Storage-Ausgabebindung hinzufügen.
 
 ## <a name="add-an-output-binding"></a>Hinzufügen einer Ausgabebindung
 
-In Functions muss für jeden Typ von Bindung eine `direction`, ein `type` und ein eindeutiger `name` in der Datei „function.json“ definiert werden. Abhängig vom Bindungstyp sind möglicherweise zusätzliche Eigenschaften erforderlich. Die [Warteschlangenausgabekonfiguration](functions-bindings-storage-queue.md#output---configuration) beschreibt die Felder, die für eine Azure Storage-Warteschlangenbindung erforderlich sind.
+In Functions muss für jeden Bindungstyp ein `direction`-, ein `type`- und ein eindeutiges `name`-Element in der Datei „function.json“ definiert werden. Abhängig vom Bindungstyp sind möglicherweise zusätzliche Eigenschaften erforderlich. Die [Warteschlangenausgabekonfiguration](functions-bindings-storage-queue.md#output---configuration) beschreibt die Felder, die für eine Azure Storage-Warteschlangenbindung erforderlich sind.
 
-Um eine Bindung zu erstellen, fügen Sie der Datei `function.json` ein Bindungskonfigurationsobjekt hinzu. Bearbeiten Sie die Datei „function.json“ in Ihrem Ordner „HttpTrigger“, um dem Array `bindings` ein Objekt hinzuzufügen, das die folgenden Eigenschaften besitzt:
+Um eine Bindung zu erstellen, fügen Sie der Datei „function.json“ ein Bindungskonfigurationsobjekt hinzu. Bearbeiten Sie die Datei „function.json“ in Ihrem Ordner „HttpTrigger“, um dem Array `bindings` ein Objekt mit den folgenden Eigenschaften hinzuzufügen:
 
 | Eigenschaft | Wert | BESCHREIBUNG |
 | -------- | ----- | ----------- |
-| **`name`** | `msg` | Name, der den Bindungsparameter identifiziert, auf den in Ihrem Code verwiesen wird. |
+| **`name`** | `msg` | Der Name, der den Bindungsparameter identifiziert, auf den in Ihrem Code verwiesen wird |
 | **`type`** | `queue` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
 | **`direction`** | `out` | Die Bindung ist eine Ausgabebindung. |
-| **`queueName`** | `outqueue` | Der Name der Warteschlange, in den die Bindung schreibt. Wenn der *queueName* nicht vorhanden ist, erstellt die Bindung ihn bei der ersten Verwendung. |
+| **`queueName`** | `outqueue` | Der Name der Warteschlange, in den die Bindung schreibt. Wenn das `queueName`-Element nicht vorhanden ist, erstellt die Bindung es bei der ersten Verwendung. |
 | **`connection`** | `AzureWebJobsStorage` | Der Name einer App-Einstellung, die die Verbindungszeichenfolge für das Speicherkonto enthält. Die Einstellung `AzureWebJobsStorage` enthält die Verbindungszeichenfolge für das Speicherkonto, das Sie mit der Funktions-App erstellt haben. |
 
 Ihre Datei „function.json“ sollte jetzt wie im folgenden Beispiel aussehen:
@@ -99,7 +99,7 @@ Ihre Datei „function.json“ sollte jetzt wie im folgenden Beispiel aussehen:
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Hinzufügen von Code, der die Ausgabebindung verwendet
 
-Sobald sie konfiguriert ist, können Sie beginnen, den `name` der Bindung zu verwenden, um auf sie als Methodenattribut in der Funktionssignatur zuzugreifen. Im folgenden Beispiel ist `msg` eine Instanz der [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest).
+Sobald `name` konfiguriert ist, können Sie damit auf die Bindung als Methodenattribut in der Funktionssignatur zugreifen. Im folgenden Beispiel ist `msg` eine Instanz der [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest).
 
 ```python
 import logging
@@ -128,7 +128,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         )
 ```
 
-Durch die Verwendung einer Ausgabebindung müssen Sie weder den Azure Storage-SDK-Code für die Authentifizierung verwenden, noch einen Warteschlangenverweis abrufen oder Daten schreiben. Die Functions-Runtime und die Warteschlangenausgabebindung übernehmen diese Aufgaben für Sie.
+Bei Verwendung einer Ausgabebindung müssen Sie weder den Azure Storage SDK-Code für die Authentifizierung verwenden noch einen Warteschlangenverweis abrufen oder Daten schreiben. Die Functions-Runtime und die Warteschlangenausgabebindung übernehmen diese Aufgaben für Sie.
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
 
@@ -139,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Da Sie im vorherige Artikel Erweiterungsbündel in der Datei „host.json“ aktivieren mussten, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
+> Da Sie in der vorherige Schnellstartanleitung Erweiterungsbündel in der Datei „host.json“ aktiviert haben, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
 
 Kopieren Sie die URL Ihrer `HttpTrigger`-Funktion aus der Runtimeausgabe, und fügen Sie sie in die Adressleiste Ihres Browsers ein. Hängen Sie anschließend die Abfragezeichenfolge `?name=<yourname>` an diese URL an, und führen Sie die Anforderung aus. Sie sollten dieselbe Antwort im Browser sehen, wie bereits im vorherigen Artikel.
 
@@ -149,13 +149,13 @@ Als Nächstes verwenden Sie die Azure CLI, um die neue Warteschlange anzuzeigen 
 
 ### <a name="set-the-storage-account-connection"></a>Festlegen der Speicherkontoverbindung
 
-Öffnen Sie die Datei „local.settings.json“, und kopieren Sie den Wert von `AzureWebJobsStorage`, wobei es sich um die Verbindungszeichenfolge des Speicherkontos handelt. Legen Sie die Umgebungsvariable `AZURE_STORAGE_CONNECTION_STRING` auf die Verbindungszeichenfolge fest, indem Sie den folgenden Bash-Befehl verwenden:
+Öffnen Sie die Datei „local.settings.json“, und kopieren Sie den Wert von `AzureWebJobsStorage`, wobei es sich um die Verbindungszeichenfolge des Speicherkontos handelt. Legen Sie die Umgebungsvariable `AZURE_STORAGE_CONNECTION_STRING` mit dem folgenden Bash-Befehl auf die Verbindungszeichenfolge fest:
 
 ```azurecli-interactive
 export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
 ```
 
-Mit der in der Umgebungsvariablen `AZURE_STORAGE_CONNECTION_STRING` festgelegten Verbindungszeichenfolge können Sie auf Ihr Speicherkonto zugreifen, ohne sich jedes Mal authentifizieren zu müssen.
+Wenn Sie die Verbindungszeichenfolge in der Umgebungsvariablen `AZURE_STORAGE_CONNECTION_STRING` festlegen, können Sie auf Ihr Speicherkonto zugreifen, ohne sich jedes Mal authentifizieren zu müssen.
 
 ### <a name="query-the-storage-queue"></a>Abfragen der Speicherwarteschlange
 
@@ -167,7 +167,7 @@ az storage queue list --output tsv
 
 Die Ausgabe dieses Befehls umfasst eine Warteschlange namens `outqueue`, wobei es sich um die Warteschlange handelt, die bei Ausführung der Funktion erstellt wurde.
 
-Als Nächstes verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen, wie im folgenden Beispiel zu sehen.
+Als Nächstes verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen, wie im folgenden Beispiel zu sehen:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
@@ -188,13 +188,13 @@ Wieder können Sie cURL oder einen Browser verwenden, um die bereitgestellte Fun
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-Sie können [die Speicherwarteschlangennachricht untersuchen](#query-the-storage-queue), um zu überprüfen, ob die Ausgabebindung erneut eine neue Nachricht in der Warteschlange generiert.
+Sie können [die Storage-Warteschlangennachricht untersuchen](#query-the-storage-queue), um zu überprüfen, ob die Ausgabebindung erneut eine neue Nachricht in der Warteschlange generiert.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Speicherwarteschlange schreibt. Weitere Informationen zum Entwickeln von Azure Functions mithilfe von Python finden Sie im [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md) und unter [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
+Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Storage-Warteschlange schreibt. Weitere Informationen zum Entwickeln von Azure Functions mithilfe von Python finden Sie im [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md) und unter [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
 
 Als Nächstes sollten Sie die Application Insights-Überwachung für Ihre Funktions-App aktivieren:
 

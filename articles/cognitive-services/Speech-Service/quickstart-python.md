@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Python – Spracherkennungsdienste'
+title: 'Schnellstart: Erkennen von Sprache, Python – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Anleitung erfahren Sie, wie Sie eine Konsolenanwendung zur Spracherkennung erstellen, die das Speech SDK für Python verwendet. Danach können Sie das Mikrofon Ihres Computers verwenden, um Sprache in Echtzeit zu transkribieren.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: d6b7cc275fc50fefbe0057620d315d1484c47745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603015"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559295"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für Python
 

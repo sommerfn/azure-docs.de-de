@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, C# (UWP) – Spracherkennungsdienste'
+title: 'Schnellstart: Erkennen von Sprache, C# (UWP) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform) mithilfe des Cognitive Services Speech SDK. Sie transkribieren über das Mikrofon des Geräts Sprache in Echtzeit in Text. Die Anwendung basiert auf dem NuGet-Paket für das Speech SDK und auf Microsoft Visual Studio 2017.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lisaweixu
 ms.custom: seodec18
-ms.openlocfilehash: 25b3474e33351d6365af37d78f442768aba88625
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: b4c3c0979f3fea491ad8b04285973517423eaeeb
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405926"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607810"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK
 
@@ -25,7 +25,7 @@ Schnellstarts sind auch für [Sprachsynthese](quickstart-text-to-speech-csharp-u
 Wählen Sie bei Bedarf eine andere Programmiersprache und/oder Umgebung:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-In diesem Artikel entwickeln Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform; Windows-Version 1709 oder höher) mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Das Programm transkribiert über das Mikrofon des Geräts Sprache in Echtzeit in Text. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+In diesem Artikel entwickeln Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform; Windows-Version 1709 oder höher) mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Das Programm transkribiert über das Mikrofon des Geräts Sprache in Echtzeit in Text. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 oder höher (beliebige Edition).
 
 > [!NOTE]
 > Mithilfe der universellen Windows-Plattform können Sie Apps entwickeln, die auf einem beliebigen Gerät mit Unterstützung für Windows 10 (z.B. PCs, Xbox, Surface Hub und andere Geräte) ausgeführt werden.
@@ -34,7 +34,7 @@ In diesem Artikel entwickeln Sie eine C#-UWP-Anwendung (Universelle Windows-Plat
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Mindestens [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4e13075eabcdb482616f1e500fd739ca58a39003
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501227"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698626"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -39,7 +39,7 @@ In diesem Artikel beziehen sich die Begriffe *Gateway* und *IoT Edge-Gateway* au
 Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub)-Clouddienst erstellt wurde. Oft verwenden diese Anwendungen das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird. Allerdings kann ein IoT Edge-Gerät einem IoT Edge-Gateway nicht nachgeschaltet werden. 
 
 >[!NOTE]
->IoT-Geräte, die in IoT Hub registrierte Identitäten haben, können [Modulzwillinge](/iot-hub/iot-hub-devguide-module-twins.md) verwenden, um verschiedene Prozesse, Hardware oder Funktionen auf einem einzigen Gerät zu isolieren. IoT Edge-Gateways unterstützen nachgeschaltete Modulverbindungen mithilfe von Authentifizierung mit symmetrischen Schlüsseln, aber nicht mit X.509-Zertifikatauthentifizierung. 
+>IoT-Geräte, die in IoT Hub registrierte Identitäten haben, können [Modulzwillinge](../iot-hub/iot-hub-devguide-module-twins.md) verwenden, um verschiedene Prozesse, Hardware oder Funktionen auf einem einzigen Gerät zu isolieren. IoT Edge-Gateways unterstützen nachgeschaltete Modulverbindungen mithilfe von Authentifizierung mit symmetrischen Schlüsseln, aber nicht mit X.509-Zertifikatauthentifizierung. 
 
 Zum Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway ist Folgendes erforderlich:
 

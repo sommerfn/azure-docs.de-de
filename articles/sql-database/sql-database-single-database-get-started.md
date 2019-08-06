@@ -10,20 +10,19 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444467"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640035"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell und Azure CLI
 
 Die Erstellung einer [Einzeldatenbank](sql-database-single-database.md) ist die schnellste und einfachste Bereitstellungsoption zum Erstellen einer Datenbank in Azure SQL-Datenbank. In dieser Schnellstartanleitung wird gezeigt, wie Sie im Azure-Portal eine Einzeldatenbank erstellen und anschließend abfragen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/). 
 
 Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -37,7 +36,7 @@ Eine Einzeldatenbank kann entweder auf der bereitgestellten Computeebene oder de
 Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbank-Server](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
 
 > [!NOTE]
-> In diesem Schnellstart wird das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) und die [serverlose](sql-database-serverless.md) Computeebene verwendet, das [DTU-basierte Kaufmodell](sql-database-service-tiers-DTU.md) ist jedoch ebenfalls verfügbar.
+> In dieser Schnellstartanleitung wird das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) verwendet, das [DTU-basierte Kaufmodell](sql-database-service-tiers-DTU.md) ist jedoch ebenfalls verfügbar.
 
 So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 

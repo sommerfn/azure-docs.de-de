@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache, C# (UWP) – Spracherkennungsdienste'
+title: 'Schnellstart: Synthetisieren von Sprache, C# (UWP) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform) mithilfe des Cognitive Services Speech SDK. Sie synthetisieren Sprache aus Text in Echtzeit zum Lautsprecher Ihres Geräts. Die Anwendung basiert auf dem NuGet-Paket für das Speech SDK und auf Microsoft Visual Studio 2017.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: c11fbff883d2699bdd0a107fc462524d92ee410d
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 5e1f8aea1b00cbba7fec6c7ca416a965458ab526
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467217"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607756"
 ---
 # <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Schnellstart: Synthetisieren von Sprache in einer UWP-App mit dem Speech SDK
 
 Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-uwp.md), [Sprachübersetzung](quickstart-translate-speech-uwp.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-csharp-uwp.md) verfügbar.
 
-In diesem Artikel entwickeln Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform; Windows-Version 1709 oder höher) mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Das Programm synthetisiert Sprache aus Text in Echtzeit zum Lautsprecher Ihres Geräts. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+In diesem Artikel entwickeln Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform; Windows-Version 1709 oder höher) mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Das Programm synthetisiert Sprache aus Text in Echtzeit zum Lautsprecher Ihres Geräts. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 oder höher (beliebige Edition).
 
 > [!NOTE]
 > Mithilfe der universellen Windows-Plattform können Sie Apps entwickeln, die auf einem beliebigen Gerät mit Unterstützung für Windows 10 (z.B. PCs, Xbox, Surface Hub und andere Geräte) ausgeführt werden.
@@ -30,7 +30,7 @@ In diesem Artikel entwickeln Sie eine C#-UWP-Anwendung (Universelle Windows-Plat
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Mindestens [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171552"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609879"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
@@ -85,20 +85,20 @@ Fügen Sie Ihrer Datei den folgenden JSON-Code hinzu. Er definiert die Parameter
 
 Speichern Sie die Datei „mainTemplate.json“.
 
-## <a name="create-the-user-interface-definition"></a>Erstellen der Benutzeroberflächendefinition
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definieren Ihrer Erstellungsoberfläche mithilfe von „CreateUiDefinition.json“
 
-Das Azure-Portal verwendet die **createUiDefinition.json**-Datei zum Generieren der Benutzeroberfläche für Benutzer, die die verwaltete Anwendung erstellen. Sie legen fest, wie Benutzer die Eingaben für die einzelnen Parameter bereitstellen. Sie können Optionen wie eine Dropdownliste, ein Textfeld, ein Kennwortfeld und andere Eingabetools verwenden. Informationen zum Erstellen einer UI-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
+Als Herausgeber definieren Sie Ihre Erstellungsoberfläche mithilfe der Datei **createUiDefinition.json**. Mit dieser Datei wird die Oberfläche für Benutzer generiert, die verwaltete Anwendungen erstellen. Sie definieren mithilfe von [Steuerelementen] (create-uidefinition-elements.md), etwa Dropdownmenüs, Textfeldern und Kennwortfeldern, wie Benutzer Werte für die einzelnen Parameter eingeben.
 
-Erstellen Sie eine Datei mit dem Namen **createUiDefinition.json**. Bei dem Namen wird die Groß-/Kleinschreibung unterschieden.
+Erstellen Sie eine Datei mit dem Namen **createUiDefinition.json**. (Bei diesem Namen muss die Groß-/Kleinschreibung beachtet werden.)
 
-Fügen Sie der Datei den folgenden JSON-Code hinzu.
+Fügen Sie der Datei den folgenden JSON-Startercode hinzu, und speichern Sie sie:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Compute.MultiVm",
-    "version": "0.1.2-preview",
-    "parameters": {
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+   "handler": "Microsoft.Azure.CreateUIDef",
+   "version": "0.1.2-preview",
+   "parameters": {
         "basics": [
             {}
         ],
@@ -139,10 +139,9 @@ Fügen Sie der Datei den folgenden JSON-Code hinzu.
             "location": "[location()]"
         }
     }
-}
 ```
 
-Speichern Sie die Datei „createUIDefinition.json“.
+Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>Erstellen eines Pakets aus den Dateien
 

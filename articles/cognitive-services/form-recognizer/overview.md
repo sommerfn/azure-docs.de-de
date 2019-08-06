@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e064faf3017b95cb3a5f3d9b89f178fb7f846766
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592635"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594544"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -26,17 +26,28 @@ Das benutzerdefinierte Formularerkennungsmodell wird mit Ihren eigenen Daten tra
 
 Nicht überwachtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung. Vortrainierte Machine Learning-Modelle erfordern dagegen standardisierte Daten. Sie sind weniger genau beim Eingabematerial, das von herkömmlichen Formaten wie branchenspezifischen Formularen abweicht.
 
-## <a name="pre-built-receipt-model"></a>Vorgefertigtes Verkaufsbelegmodell
+## <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
 
-Die Formularerkennung enthält auch ein Modell für das Lesen von Verkaufsbelegen. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge und mehr. Darüber hinaus wird das vorgefertigte Verkaufsbelegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben.
+Die Formularerkennung enthält auch ein Modell für das Lesen von Verkaufsbelegen. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben.
 
 ## <a name="what-it-includes"></a>Lieferumfang
 
-Die Formularerkennung ist als eine REST-API verfügbar. Sie können ein benutzerdefiniertes Modell erstellen, trainieren und bewerten oder auf das vorkonfigurierte Modell zugreifen, indem Sie diese APIs aufrufen. Wenn Sie möchten, können Sie benutzerdefinierte Modelle in einem lokalen Docker-Container trainieren und ausführen.
+Die Formularerkennung ist als eine REST-API verfügbar. Sie können ein benutzerdefiniertes Modell erstellen, trainieren und bewerten oder auf das vordefinierte Modell zugreifen, indem Sie diese APIs aufrufen. Wenn Sie möchten, können Sie benutzerdefinierte Modelle in einem lokalen Docker-Container trainieren und ausführen.
 
-## <a name="input-requirements-custom-model"></a>Eingabeanforderungen (benutzerdefiniertes Modell)
+## <a name="input-requirements"></a>Eingabeanforderungen
+### <a name="custom-model"></a>Benutzerdefiniertes Modell
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+### <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
+
+Die Eingabeanforderungen für das Belegmodell unterscheiden sich geringfügig.
+
+* Als Format muss JPEG, PNG, BMP, PDF (Text oder gescannt) oder TIFF verwendet werden.
+* Die Dateigröße muss weniger als 20 MB betragen.
+* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen. 
+* Die Abmessungen bei PDFs dürfen maximal 17 x 17 Zoll betragen. Dies entspricht den Papiergrößen Legal oder A3 und kleineren Formaten.
+* Bei PDF- und TIFF-Dateien werden nur die ersten 200 Seiten verarbeitet. (Bei einem Abonnement im Free-Tarif werden nur die ersten beiden Seiten verarbeitet.)
 
 ## <a name="request-access"></a>Zugriff anfordern
 

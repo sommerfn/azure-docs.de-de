@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, C# (.NET Core): Spracherkennungsdienste'
+title: 'Schnellstart: Synthetisieren von Sprache, C# (.NET Core) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie die Sprachsynthese in C# mit .NET Core unter Windows mit dem Speech SDK funktioniert.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 7b4a018e38ca625e38dc1658a95d3ce0e677f711
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: ccb6ec5b6f29c57a6136c571558d4126d0607710
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467193"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607682"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Synthetisieren von Sprache mit dem Speech SDK für .NET Core
 
 Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-dotnetcore-windows.md) und [Sprachübersetzung](quickstart-translate-speech-dotnetcore-windows.md) verfügbar.
 
-In diesem Artikel erstellen Sie eine C#-Konsolenanwendung für .NET Core unter Windows mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Sie synthetisieren Sprache aus Text in Echtzeit zum Lautsprecher Ihres PC. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+In diesem Artikel erstellen Sie eine C#-Konsolenanwendung für .NET Core unter Windows mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Sie synthetisieren Sprache aus Text in Echtzeit zum Lautsprecher Ihres PC. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 oder höher (beliebige Edition).
 
 > [!NOTE]
 > .NET Core ist eine Open-Source- und plattformübergreifende .NET-Plattform, die die [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard)-Spezifikation implementiert.
@@ -33,7 +33,7 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Mindestens [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts

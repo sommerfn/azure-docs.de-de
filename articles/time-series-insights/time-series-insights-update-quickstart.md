@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion) | Microsoft-Dokumentation'
-description: Machen Sie sich mit der Azure Time Series Insights-Demoumgebung (Vorschauversion) vertraut.
+description: Schnellstart mit grundlegenden Informationen zur Azure Time Series Insights-Demoumgebung (Vorschauversion)
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,13 +10,13 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/22/2019
-ms.openlocfilehash: 547edb194ffdf52a805f573d338f61edff80623a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/29/2019
+ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164881"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677713"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion)
 
@@ -26,11 +26,12 @@ Die Demoumgebung der Vorschauversion enthält das Szenariounternehmen Contoso, d
 
 In diesem Schnellstart lernen Sie die Verwendung von Time Series Insights kennen, um handlungsrelevante Erkenntnisse aus Contoso-Daten zu gewinnen. Sie führen außerdem eine kurze Ursachenanalyse durch, um kritische Ausfälle besser vorherzusagen und Wartungsarbeiten durchzuführen.
 
+> [!IMPORTANT]
+> Erstellen Sie ein  [kostenloses Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , sofern nicht bereits geschehen.
+
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Erkunden des Time Series Insights-Explorers in einer Demoumgebung
 
 Der Time Series Insights-Explorer (Vorschauversion) zeigt Verlaufsdaten und Ursachenanalysen. Erste Schritte:
-
-1. Erstellen Sie ein  [kostenloses Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , sofern nicht bereits geschehen.
 
 1. Navigieren Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples).  
 
@@ -73,10 +74,9 @@ Der Time Series Insights-Explorer (Vorschauversion) zeigt Verlaufsdaten und Ursa
 
 Mithilfe von Time Series Insights und unseren Sensortelemetriedaten haben wir einen langfristigen und problematischen Trend erkannt, der sich anhand der Verlaufsdaten zeigt. Mit diesen neuen Erkenntnissen haben wir folgende Möglichkeiten:
 
-> [!div class="checklist"]
-> * Erklären, was tatsächlich passiert ist
-> * Beheben des Problems
-> * Implementieren besserer Warnbenachrichtigungssysteme
+* Erklären, was tatsächlich passiert ist
+* Beheben des Problems
+* Implementieren besserer Warnbenachrichtigungssysteme
 
 ## <a name="root-cause-analysis"></a>Analyse der Grundursache
 
@@ -115,6 +115,13 @@ Mithilfe von Time Series Insights und unseren Sensortelemetriedaten haben wir ei
     * Ändern Sie die Anzeige, um für alle Sensoren unter **Generator System** denselben Diagrammmaßstab zu verwenden.
 
       [![Anzeige ändern, um alles einzuschließen](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Bereinigen Sie nach dem Tutorial die von Ihnen erstellten Ressourcen:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** aus, und suchen Sie Ihre Azure Time Series Insights-Ressourcengruppe.
+1. Löschen Sie entweder die gesamte Ressourcengruppe (und alle darin enthaltenen Ressourcen), indem Sie auf **Löschen** klicken, oder entfernen Sie die Ressourcen einzeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

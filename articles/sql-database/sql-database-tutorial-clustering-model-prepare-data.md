@@ -12,32 +12,34 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 83ef25f04012933c2665e63e4617d480eb336f7b
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66419798"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639977"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Vorbereiten von Daten zum Durchführen von Clustering in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
-In Teil 1 dieser dreiteiligen Reihe von Tutorials bereiten Sie die Daten aus einer Azure SQL-Datenbank für die Durchführung von Clustering in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank vor.
+In Teil 1 dieser dreiteiligen Tutorialreihe importieren Sie Daten aus einer Azure SQL-Datenbank in R und bereiten diese Daten vor. Später in dieser Reihe verwenden Sie die Daten zum Trainieren und Bereitstellen eines Clusteringmodells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion).
 
 *Clustering* kann man sich vorstellen als das Organisieren von Daten in Gruppen, deren Mitglieder sich in irgendeiner Weise ähneln.
 Sie verwenden den **K-Means**-Algorithmus, um das Clustering von Kunden in einem Dataset mit Produktkäufen und -rücksendungen durchzuführen. Durch das Clustering von Kunden können Sie Ihre Marketingaktivitäten effektiver gestalten, indem Sie sie auf bestimmte Gruppen ausrichten.
 Das K-Means-Clustering ist ein *nicht überwachter Lernalgorithmus*, der auf der Grundlage von Ähnlichkeiten in Daten nach Mustern sucht.
 
+In den Teilen 1 und 2 dieser Reihe entwickeln Sie einige R-Skripts in RStudio, um Ihre Daten vorzubereiten und ein Machine Learning-Modell zu trainieren. In Teil 3 führen Sie dann diese R-Skripts in einer SQL-Datenbank mithilfe gespeicherter Prozeduren aus.
+
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Importieren einer Beispieldatenbank in eine Azure SQL-Datenbank
-> * Trennen von Kunden anhand verschiedener Dimensionen
-> * Laden der Daten aus der Azure SQL-Datenbank in einen Datenrahmen unter Verwendung von R
+> * Trennen von Kunden anhand verschiedener Dimensionen mithilfe von R
+> * Laden der Daten aus der Azure SQL-Datenbank in einen R-Datenrahmen
 
-In [Teil 2](sql-database-tutorial-clustering-model-build.md) erfahren Sie, wie Sie ein K-Means-Clusteringmodell erstellen und trainieren.
+In [Teil 2](sql-database-tutorial-clustering-model-build.md) erfahren Sie, wie Sie ein K-Means-Clusteringmodell in R erstellen und trainieren.
 
-In [Teil 3](sql-database-tutorial-clustering-model-deploy.md) erlernen Sie das Erstellen einer gespeicherten Prozedur in einer Azure SQL-Datenbank, die Clustering basierend auf neuen Daten ausführen kann.
+In [Teil 3](sql-database-tutorial-clustering-model-deploy.md) erlernen Sie das Erstellen einer gespeicherten Prozedur in einer Azure SQL-Datenbank, die Clustering in R basierend auf neuen Daten ausführen kann.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -207,8 +209,8 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 Im ersten Teil dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
 
 * Importieren einer Beispieldatenbank in eine Azure SQL-Datenbank
-* Trennen von Kunden anhand verschiedener Dimensionen
-* Laden der Daten aus der Azure SQL-Datenbank in einen Datenrahmen unter Verwendung von R
+* Trennen von Kunden anhand verschiedener Dimensionen mithilfe von R
+* Laden der Daten aus der Azure SQL-Datenbank in einen R-Datenrahmen
 
 Um ein Machine Learning-Modell zu erstellen, das diese Kundendaten verwendet, führen Sie Teil 2 dieser Tutorialreihe durch:
 

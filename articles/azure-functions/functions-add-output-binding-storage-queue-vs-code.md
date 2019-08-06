@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: jeconnoc
-ms.openlocfilehash: b207064f691391af2c180c7a6ab03e42ed79fcb6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 40a912a94dc61342c04528e902bb0e084546904d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451611"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592818"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio Code
 
@@ -118,30 +118,7 @@ Eine Bindung wird dem Array `bindings` in der Datei „function.json“ hinzugef
 
 ### <a name="c-class-library"></a>C\#-Klassenbibliothek
 
-In einem C#-Klassenbibliotheksprojekt werden die Bindungen als Bindungsattribute der Funktionsmethode definiert. Die Datei „function.json“ wird basierend auf diesen Attributen automatisch generiert.
-
-Öffnen Sie die Projektdatei „HttpTrigger.cs“, und fügen Sie die folgende `using`-Anweisung hinzu:
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
-Fügen Sie der `Run`-Methodendefinition den folgenden Parameter hinzu:
-
-```cs
-[Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-```
-
-Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nachrichten dar, die in eine Ausgabebindung geschrieben werden, wenn die Funktion abgeschlossen wird. In diesem Fall ist die Ausgabe eine Speicherwarteschlange mit dem Namen `outqueue`. Die Verbindungszeichenfolge für das Storage-Konto wird durch `StorageAccountAttribute` festgelegt. Dieses Attribut gibt die Einstellung an, die die Verbindungszeichenfolge des Storage-Kontos enthält, und kann auf Klassen-, Methoden- oder Parameterebene angewandt werden. In diesem Fall können Sie `StorageAccountAttribute` weglassen, da Sie bereits das Standardspeicherkonto verwenden.
-
-Die Run-Methodendefinition sollte nun wie folgt aussehen:  
-
-```cs
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-```
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Hinzufügen von Code, der die Ausgabebindung verwendet
 
@@ -183,46 +160,11 @@ module.exports = async function (context, req) {
 
 ### <a name="c"></a>C\#
 
-Fügen Sie Code hinzu, der das Ausgabebindungsobjekt `msg` verwendet, um eine Warteschlangennachricht zu erstellen. Fügen Sie diesen Code vor der Rückgabe der Methode hinzu.
-
-```cs
-if (!string.IsNullOrEmpty(name))
-{
-    // Add a message to the output collection.
-    msg.Add(string.Format("Name passed to the function: {0}", name));
-}
-```
-
-Die Funktion sollte nun wie folgt aussehen:
-
-```cs
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
-
-    string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name;
-
-    if (!string.IsNullOrEmpty(name))
-    {
-        // Add a message to the output collection.
-        msg.Add(string.Format("Name passed to the function: {0}", name));
-    }
-    return name != null
-        ? (ActionResult)new OkObjectResult($"Hello, {name}")
-        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-}
-```
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
-Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto von der Laufzeit von Azure Functions erstellt, wenn die Ausgabebindung zum ersten Mal verwendet wird. Mit Storage-Explorer überprüfen Sie, ob die Warteschlange zusammen mit der neuen Nachricht erstellt wurde.
+Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto von der Functions-Runtime erstellt, wenn die Ausgabebindung zum ersten Mal verwendet wird. Mit Storage-Explorer überprüfen Sie, ob die Warteschlange zusammen mit der neuen Nachricht erstellt wurde.
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Herstellen einer Storage-Explorer-Verbindung mit Ihrem Konto
 
@@ -252,7 +194,7 @@ Nach der erfolgreichen Anmeldung bei Ihrem Konto werden alle mit dem Konto verbu
 
 Nun ist es an der Zeit, die aktualisierte Funktions-App erneut in Azure zu veröffentlichen.
 
-## <a name="redeploy-and-test-the-updated-app"></a>Erneutes Bereitstellen und Testen der aktualisierten App
+## <a name="redeploy-and-verify-the-updated-app"></a>Erneutes Bereitstellen und Überprüfen der aktualisierten App
 
 1. Drücken Sie in Visual Studio Code die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette den Befehl `Azure Functions: Deploy to function app...`, und wählen Sie ihn aus.
 

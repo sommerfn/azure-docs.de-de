@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache, C++ (Windows): Speech-Dienste'
+title: 'Schnellstart: Synthetisieren von Sprache, C++ (Windows): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop synthetisieren.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dfad425d6da2e3dabec138ef4f108957ebea7ee9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: fdc5e540dd7e84d47aa139768fbfc2614f38b376
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602915"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607716"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Schnellstart: Synthetisieren von Sprache in C++ unter Windows mit dem Speech SDK
 
 Schnellstarts sind auch für [Spracherkennung](quickstart-cpp-windows.md) und [Sprachübersetzung](quickstart-translate-speech-cpp-windows.md) verfügbar.
 
-In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Windows. Mit dem [Speech SDK](speech-sdk.md) von Cognitive Services können Sie Text in Echtzeit in Sprache synthetisieren und das Ergebnis über den Lautsprecher Ihres PCs ausgeben. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Windows. Mit dem [Speech SDK](speech-sdk.md) von Cognitive Services können Sie Text in Echtzeit in Sprache synthetisieren und das Ergebnis über den Lautsprecher Ihres PCs ausgeben. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 oder höher (beliebige Edition).
 
 Das in diesem Artikel beschriebene Feature steht ab dem [Speech SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0) zur Verfügung.
 

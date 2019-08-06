@@ -4,7 +4,7 @@ description: Wichtige Analyseszenarien und -komponenten für Windows und Linux D
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 384cb274496670e0b0b5a33e001e78a0babed3f0
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: vijetaj
+ms.openlocfilehash: 5816f53115f3ec54cbd9784894a5262b68dd6e95
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427791"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565185"
 ---
-# <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Einführung in Azure Data Science Virtual Machine für Linux und Windows
+# <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>Was ist Azure Data Science Virtual Machine für Linux und Windows?
 
 Der virtuelle Computer für Data Science (DSVM) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server und Linux verfügbar. Wir bieten eine Windows-Edition von DSVM für Windows Server 2016 und 2012. Wir bieten Linux-Editionen von DSVM für Ubuntu 16.04 LTS und CentOS 7.4.
 
@@ -48,7 +48,7 @@ Data Science Hackathons/Wettbewerbe oder umfangreiche Datenmodelle und Auswertun
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Benutzerdefinierte Computeleistung für Azure Notebooks
 
-[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) ist ein kostenloser gehosteter Dienst zum Entwickeln, Ausführen und Freigeben von Jupyter Notebooks in der Cloud ohne Installation. Die kostenlose Dienstebene ist jedoch auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt. Um sämtliche Einschränkungen aufzuheben, können Sie ein Notebooks-Projekt an eine Data Science-VM oder eine beliebige andere VM mit einem Jupyter-Server anfügen. Wenn Sie sich mit einem Konto über Azure Active Directory (z. B. einem Unternehmenskonto) bei Azure Notebooks anmelden, zeigt Notebooks automatisch virtuelle Data Science-VMs in allen Abonnements an, die mit diesem Konto verknüpft sind. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) im Abschnitt zum Compute-Tarif.
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) ist ein kostenloser gehosteter Dienst zum Entwickeln, Ausführen und Freigeben von Jupyter Notebooks in der Cloud ohne Installation. Die kostenlose Dienstebene ist jedoch auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt. Um sämtliche Einschränkungen aufzuheben, können Sie ein Notebooks-Projekt an eine Data Science-VM oder eine beliebige andere VM mit einem Jupyter-Server anfügen. Wenn Sie sich mit einem Konto über Azure Active Directory (z. B. einem Unternehmenskonto) bei Azure Notebooks anmelden, zeigt Notebooks automatisch virtuelle Data Science-VMs in allen Abonnements an, die mit diesem Konto verknüpft sind. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) im Abschnitt zum Compute-Tarif.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Kurzfristige Experimente und Auswertungen
 Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft ML Server, SQL Server, Visual Studio-Tools, Jupyter, Deep Learning-/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtungsaufwand verwendet werden. Da die Data Science VM schnell eingerichtet werden kann, kann sie auch in anderen kurzfristigen Szenarios verwendet werden. Dies umfasst z.B. die Replikation veröffentlichter Experimente, das Ausführen von Demos und exemplarischer Vorgehensweisen in Onlinesitzungen sowie Konferenz-Tutorials.
@@ -64,7 +64,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) mit verbreiteten vorinstallierten Paketen   |J                      | J             |
 | [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition enthält: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler): paralleles und verteiltes Hochleistungsframework (R und Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;*   [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) – neue moderne ML-Algorithmen von Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R- und Python-Operationalisierung](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |J                      | J |
-| [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus mit gemeinsamer Aktivierung: Excel, Word und PowerPoint   |J                      |N              |
+| [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) Pro-Plus mit gemeinsamer Aktivierung: Excel, Word und PowerPoint   |J                      |N              |
 | [Anaconda Python](https://www.continuum.io/) 2.7 und 3.5 mit beliebten vorinstallierten Paketen    |J                      |J              |
 | [JuliaPro](https://juliacomputing.com/products/juliapro.html) mit beliebten vorinstallierten Paketen                         |J                      |J              |
 | Relationale Datenbanken                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |

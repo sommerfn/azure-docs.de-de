@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache, C# (.NET Core, Windows)'
+title: 'Schnellstart: Übersetzen von Sprache, C# (.NET Core Windows): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erstellen Sie eine einfache .NET Core-Anwendung zum Erfassen der Benutzersprache, Übersetzen in eine andere Sprache und Ausgeben des Texts in der Befehlszeile. Dieser Leitfaden ist für Windows-Benutzer bestimmt.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ab76a786f11677f5d8f0715b257bd2fb04e50bf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 81e652e6456b049c2f4fca938d02d1b0724f2ffd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602814"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609668"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für .NET Core
 
 Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-dotnet-windows.md) und [Sprachsynthese](quickstart-text-to-speech-dotnetcore.md) verfügbar.
 
-In dieser Schnellstartanleitung erstellen Sie eine einfache .NET Core-Anwendung, mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter Windows (64 Bit) konzipiert und basiert auf dem [Speech-SDK-NuGet-Paket](https://aka.ms/csspeech/nuget) und Microsoft Visual Studio 2017.
+In dieser Schnellstartanleitung erstellen Sie eine einfache .NET Core-Anwendung, mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter Windows (64 Bit) konzipiert und basiert auf dem [NuGet-Paket des Speech SDK](https://aka.ms/csspeech/nuget) und Microsoft Visual Studio 2017 oder höher.
 
 Eine vollständige Liste mit den verfügbaren Sprachen für die Sprachübersetzung finden Sie auf der Seite zur [Sprachunterstützung](language-support.md).
 
@@ -30,7 +30,7 @@ Eine vollständige Liste mit den verfügbaren Sprachen für die Sprachübersetzu
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Mindestens [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts

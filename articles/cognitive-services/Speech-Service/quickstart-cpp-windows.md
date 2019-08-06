@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, C++ (Windows): Speech-Dienste'
+title: 'Schnellstart: Erkennen von Sprache, C++ (Windows): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d63d1c96077642e660e2272cbd8c2ee1250b1471
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c795f1581ae36f100065c39cd47bc4efc564b9fe
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606489"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607886"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Windows mit dem Speech SDK
 
@@ -24,7 +24,7 @@ Schnellstarts sind auch für [Sprachsynthese](quickstart-text-to-speech-cpp-wind
 Wählen Sie bei Bedarf eine andere Programmiersprache und/oder Umgebung:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Windows. Sie verwenden das Cognitive Services [Speech SDK](speech-sdk.md), um Sprache über das Mikrofon Ihres Computers in Echtzeit in Text zu transkribieren. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Windows. Sie verwenden das Cognitive Services [Speech SDK](speech-sdk.md), um Sprache über das Mikrofon Ihres Computers in Echtzeit in Text zu transkribieren. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 oder höher (beliebige Edition).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

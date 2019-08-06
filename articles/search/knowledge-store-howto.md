@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Knowledge Mining (Vorschauversion) – Azure Search
+title: Erste Schritte mit Wissensspeichern (Vorschauversion) – Azure Search
 description: Erfahren Sie, welche Schritte zum Senden von angereicherten Dokumenten, die von KI-Indizierungspipelines in Azure Search erstellt wurden, in einen Wissensspeicher in Ihrem Azure Storage-Konto erforderlich sind. Von dort aus können Sie die angereicherten Dokumente in Azure Search und anderen Anwendungen anzeigen, umstrukturieren und nutzen.
 manager: cgronlun
 author: HeidiSteen
@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551070"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641015"
 ---
-# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>Erste Schritte mit Knowledge Mining in Azure Search
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Erste Schritte mit Wissensspeichern in Azure Search
 
 > [!Note]
 > Wissensspeicher befinden sich in der Vorschau und sind nicht für die Produktion ausgelegt. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
 >
-In [Wissensspeichern](knowledge-store-concept-intro.md) werden mit KI angereicherte Dokumente gespeichert, die bei der Indizierung in Ihrem Azure Storage-Konto für Knowledge Mining in nachgeschalteten anderen Apps erstellt werden. Sie können auch gespeicherte Anreicherungen verwenden, um eine Azure Search-Indizierungspipeline zu verstehen und zu optimieren. 
+In [Wissensspeichern](knowledge-store-concept-intro.md) werden mit KI angereicherte Dokumente gespeichert, die bei der Indizierung in Ihrem Azure Storage-Konto für Downstream-Data Mining in anderen Apps erstellt werden. Sie können auch gespeicherte Anreicherungen verwenden, um eine Azure Search-Indizierungspipeline zu verstehen und zu optimieren. 
 
 Ein Wissensspeicher wird durch ein *Skillset* definiert und von einem *Indexer* erstellt. Der physische Ausdruck eines Wissensspeichers wird durch *Projektionen* angegeben, die die Datenstrukturen im Speicher bestimmen. Nach Abschluss dieser exemplarischen Vorgehensweise haben Sie alle diese Objekte erstellt und wissen, wie sie alle zusammenpassen. 
 

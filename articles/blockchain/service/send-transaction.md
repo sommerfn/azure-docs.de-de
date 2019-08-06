@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417489"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698381"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Tutorial: Senden von Transaktionen mit dem Azure Blockchain-Dienst
 
@@ -72,30 +72,17 @@ Sie können mit dem Tutorial fortfahren, während die Knoten bereitgestellt werd
     cd truffledemo
     ```
 
-1. Starten Sie die interaktive Entwicklungskonsole von Truffle.
+1. Verwenden Sie die Truffle-Konsole, um eine Verbindung mit dem Standardtransaktionsknoten herzustellen.
 
     ``` bash
-    truffle develop
+    truffle console --network defaultnode
     ```
 
-    Truffle erstellt eine lokale Entwicklungsblockchain und stellt eine interaktive Konsole bereit.
+    Truffle stellt eine Verbindung mit dem Standardtransaktionsknoten her und stellt eine interaktive Konsole bereit.
 
 ## <a name="create-ethereum-account"></a>Erstellen eines Ethereum-Kontos
 
-Verwenden Sie Web3, um eine Verbindung mit dem Standardtransaktionsknoten herzustellen und ein Ethereum-Konto zu erstellen. Sie können die Web3-Verbindungszeichenfolge aus dem Azure-Portal abrufen.
-
-1. Navigieren Sie im Azure-Portal zum Standardtransaktionsknoten, und klicken Sie auf **Transaktionsknoten > Beispielcode > Web3**.
-1. Kopieren Sie den JavaScript-Code aus **HTTPS (Zugriffsschlüssel 1)** ![Web3-Beispielcode](./media/send-transaction/web3-code.png)
-
-1. Fügen Sie den Web3-JavaScript-Code für den Standardtransaktionsknoten in die interaktive Entwicklungskonsole von Truffle ein. Mit dem Code wird ein Web3-Objekt erstellt, das mit Ihrem Azure Blockchain-Transaktionsknoten verbunden ist.
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
-
-    Sie können Methoden für das Web3-Objekt aufrufen, um mit Ihrem Transaktionsknoten zu interagieren.
+Verwenden Sie Web3, um eine Verbindung mit dem Standardtransaktionsknoten herzustellen und ein Ethereum-Konto zu erstellen. Sie können Methoden für das Web3-Objekt aufrufen, um mit Ihrem Transaktionsknoten zu interagieren.
 
 1. Erstellen Sie ein neues Konto auf dem Standardtransaktionsknoten. Ersetzen Sie den Kennwortparameter durch Ihr eigenes sicheres Kennwort.
 
@@ -159,21 +146,21 @@ Diesen öffentlichen Schlüssel finden Sie in der Liste der Transaktionsknoten. 
           })(),
     
           network_id: "*",
-          gas: 0,
           gasPrice: 0,
           from: myAccount
         },
         alpha: {
           provider: new Web3.providers.HttpProvider(alpha),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
         },
         beta: {
           provider: new Web3.providers.HttpProvider(beta),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
+        }
+      },
+      compilers: {
+        solc: {
+          evmVersion: "byzantium"
         }
       }
     }

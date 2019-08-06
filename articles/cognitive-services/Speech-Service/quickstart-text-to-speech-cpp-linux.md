@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache, C++ (Linux): Speech-Dienste'
+title: 'Schnellstart: Synthetisieren von Sprache, C++ (Linux) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Linux synthetisieren.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: fbc5f21bb97eabb234e2b3905796ae01877ed89f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604935"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553710"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Schnellstart: Synthetisieren von Sprache in C++ unter Linux mit dem Speech SDK
 

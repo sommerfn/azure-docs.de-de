@@ -6,19 +6,19 @@ ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/18/2019
-ms.openlocfilehash: f5f74ebeb803a5c493f1dbedb6501adf3a88c215
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.date: 07/31/2019
+ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785669"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679122"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
 # <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>Tutorial: Verwenden des Azure Dev Spaces-Plug-Ins für Jenkins mit Azure Kubernetes Service 
 
-Mit Azure Dev Spaces können Sie Ihre in Azure Kubernetes Service (AKS) ausgeführte Microserviceanwendung testen und iterativ entwickeln, ohne Abhängigkeiten replizieren oder simulieren zu müssen. Das Azure Dev Spaces-Plug-In für Jenkins unterstützt Sie bei der Verwendung von Dev Spaces in Ihrer CI/CD-Pipeline (Continuous Integration/Continuous Delivery).
+Mit Azure Dev Spaces können Sie Ihre in Azure Kubernetes Service (AKS) ausgeführte Microserviceanwendung testen und iterativ entwickeln, ohne Abhängigkeiten replizieren oder simulieren zu müssen. Das Azure Dev Spaces-Plug-In für Jenkins unterstützt Sie bei der Verwendung von Dev Spaces in Ihrer CI/CD-Pipeline (Continuous Integration/Continuous Delivery).
 
 In diesem Tutorial wird auch Azure Container Registry (ACR) verwendet. ACR dient zum Speichern von Images, und mit ACR Tasks werden Docker- und Helm-Artefakte erstellt. Wenn Sie Artefakte mithilfe von ACR und ACR Tasks generieren, müssen Sie auf Ihrem Jenkins-Server keine zusätzliche Software (wie etwa Docker) installieren. 
 
@@ -30,7 +30,7 @@ Dieses Tutorial umfasst folgende Aufgaben:
 > * Vorbereiten Ihres Jenkins-Servers
 > * Verwenden des Azure Dev Spaces-Plug-Ins in einer Jenkins-Pipeline, um eine Vorschau von Codeänderungen anzuzeigen, bevor sie im Projekt zusammengeführt werden
 
-In diesem Tutorial werden gewisse Kenntnisse im Zusammenhang mit gängigen Azure-Diensten, AKS, ACR, Azure Dev Spaces, Jenkins-[Pipelines](https://jenkins.io/doc/book/pipeline/) und -Plug-Ins sowie mit GitHub vorausgesetzt. Darüber hinaus sind Grundkenntnisse im Zusammenhang mit Unterstützungstools wie kubectl und Helm hilfreich.
+In diesem Tutorial werden gewisse Kenntnisse im Zusammenhang mit gängigen Azure-Diensten, AKS, ACR, Azure Dev Spaces, Jenkins-[Pipelines](https://jenkins.io/doc/book/pipeline/) und -Plug-Ins sowie GitHub vorausgesetzt. Darüber hinaus sind Grundkenntnisse im Zusammenhang mit Unterstützungstools wie kubectl und Helm hilfreich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -175,7 +175,7 @@ In diesem Abschnitt bereiten Sie den Jenkins-Server für die Ausführung der exe
 * Installieren der Helm- und der Kubernetes-Befehlszeilenschnittstelle
 * Hinzufügen von Anmeldeinformationen
 
-### <a name="install-plugins"></a>Installieren von Plug-Ins
+### <a name="install-plug-ins"></a>Installieren von Plug-Ins
 
 1. Melden Sie sich bei Ihrem Jenkins-Server an. Wählen Sie **Manage Jenkins > Manage Plugins** (Jenkins verwalten >Plug-Ins verwalten) aus.
 2. Wählen Sie auf der Registerkarte **Available** (Verfügbar) die folgenden Plug-Ins aus:
@@ -184,7 +184,7 @@ In diesem Abschnitt bereiten Sie den Jenkins-Server für die Ausführung der exe
     * [Environment Injector](https://plugins.jenkins.io/envinject)
     * [GitHub Integration](https://plugins.jenkins.io/github-pullrequest)
 
-    Sollten diese Plug-Ins nicht in der Liste enthalten sein, überprüfen Sie auf der Registerkarte **Installed** (Installiert), ob sie installiert sind.
+    Sollten diese Plug-Ins nicht in der Liste enthalten sein, überprüfen Sie auf der Registerkarte **Installed** (Installiert), ob sie bereits installiert sind.
 
 3. Wählen Sie zum Installieren der Plug-Ins die Option **Download now and install after restart** (Jetzt herunterladen und nach Neustart installieren) aus.
 

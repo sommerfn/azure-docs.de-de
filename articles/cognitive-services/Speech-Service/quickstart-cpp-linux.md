@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, C++ (Linux): Speech-Dienste'
+title: 'Schnellstart: Erkennen von Sprache, C++ (Linux) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Linux erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: e7838fb2560cb51b2b50bbca0c89c5261df30b56
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dfbf40ef422903069352e64340fe5e3cb960a105
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606432"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559442"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Speech SDK
 

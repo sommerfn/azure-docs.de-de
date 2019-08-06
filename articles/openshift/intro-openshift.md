@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.topic: overview
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 7cabedaec1190437aa9f225397afa8871cb06e88
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f76f5d4dc84d1f8827248ab8399c1ae450a643a0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306374"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620155"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -38,7 +38,7 @@ Azure Red Hat OpenShift-Knoten werden auf virtuellen Azure-Computern ausgeführt
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuelle Netzwerke und Eingang
 
-Sie können einen Azure Red Hat OpenShift-Cluster über Peering mit einem vorhandenen virtuellen Netzwerk verbinden. In dieser Konfiguration können Pods eine Verbindung mit anderen Diensten eines mittels Peering verbundenen virtuellen Netzwerks sowie mit lokalen Netzwerken über [ExpressRoute-](https://docs.microsoft.com/azure/expressroute/) oder S2S-VPN-Verbindungen (Site-to-Site) herstellen.
+Sie können einen [Azure Red Hat OpenShift-Cluster über Peering mit einem vorhandenen virtuellen Netzwerk verbinden](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network). In dieser Konfiguration können Pods eine Verbindung mit anderen Diensten in einem virtuellen Netzwerk mit Peering herstellen.
 
 Weitere Informationen finden Sie unter [Verbinden des virtuellen Netzwerks eines Clusters mit einem bestehenden virtuellen Netzwerk ](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Auflisten von Stimmen für Text-to-Speech, Node.js – Speech-Dienste'
+title: 'Schnellstart: Auflisten von Stimmen für Text-to-Speech, Node.js – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Node.js die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d64f59b6b4439d79d64ee92cf23676ab1275c45a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1044519110d8b0ae7b5a50860c8116d73b6b70bc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602996"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559376"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Schnellstart: Abrufen der Liste der Stimmen für Text-to-Speech mit Node.js
 

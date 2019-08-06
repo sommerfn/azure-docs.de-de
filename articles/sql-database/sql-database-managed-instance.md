@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7c10bdf5e4f47f5bb5ac97b610c605132c4b4a00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348123"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567215"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -148,7 +147,7 @@ Darüber hinaus kann die Verwaltung von Instanzen auch einen der Vorgänge in ge
 
 In der folgenden Tabelle sind die Vorgänge und die typischen Gesamtdauern zusammengefasst:
 
-|Kategorie  |Vorgang  |Segment mit langer Ausführungsdauer  |Geschätzte Dauer  |
+|Category (Kategorie)  |Vorgang  |Segment mit langer Ausführungsdauer  |Geschätzte Dauer  |
 |---------|---------|---------|---------|
 |**Bereitstellung** |Erste Instanz in einem leeren Subnetz|Erstellung eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen|
 |Bereitstellung |Erste Instanz einer anderen Hardwaregeneration in einem nicht leeren Subnetz (z. B. erste Gen5-Instanz in einem Subnetz mit Gen4-Instanzen)|Erstellung eines virtuellen Clusters*|90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen|

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 642abfb99b40d67802b7194ad225ebcd2872a72b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 24a3424a73fb21530f3cde227aa9f05f16bd6ad0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135091"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562452"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Unity Android-App mit Azure Spatial Anchors
 
@@ -24,7 +24,6 @@ Sie lernen Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Spatial Anchors-Kontos
 > * Vorbereiten von Unity-Buildeinstellungen
-> * Herunterladen und Importieren des ARCore-SDK für Unity
 > * Konfigurieren des Bezeichners und Kontoschlüssels für das Spatial Anchors-Konto
 > * Exportieren des Android Studio-Projekts
 > * Bereitstellen und Ausführen auf einem Android-Gerät
@@ -35,11 +34,10 @@ Sie lernen Folgendes:
 
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
-- Ein Windows- oder macOS-Computer mit <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3+</a> und <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3+</a>.
+- Einen Windows- oder macOS-Computer mit <a href="https://unity3d.com/get-unity/download" target="_blank">mindestens Unity 2019.1</a>, einschließlich Android-Buildunterstützung, Android SDK und NDK-Toolmodulen sowie <a href="https://developer.android.com/studio/" target="_blank">mindestens Android Studio 3.4</a>
   - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
   - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie anschließend `brew install git` aus.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
-- Ihre App muss Version **1.7** des ARCore SDK für Unity verwenden.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -53,7 +51,7 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurieren des Kontobezeichners und -schlüssels
 
-Navigieren Sie im Bereich **Projekt** zu `Assets/AzureSpatialAnchorsPlugin/Examples`, und öffnen Sie die Szenendatei `AzureSpatialAnchorsBasicDemo.unity`.
+Navigieren Sie im Bereich **Projekt** zu `Assets/AzureSpatialAnchors.Examples/Scenes`, und öffnen Sie die Szenendatei `AzureSpatialAnchorsBasicDemo.unity`.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -63,12 +61,13 @@ Speichern Sie die Szene, indem Sie **Datei** -> **Speichern** wählen.
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Stellen Sie sicher, dass das Kontrollkästchen **Projekt exportieren** nicht aktiviert ist. Klicken Sie auf **Erstellen und ausführen**. Sie werden zum Speichern Ihrer `.apk`-Datei aufgefordert und können einen beliebigen Namen dafür wählen.
+Wählen Sie unter **Run Device** (Gerät ausführen) Ihr Gerät aus, und klicken Sie auf **Build And Run** (Erstellen und ausführen). Sie werden zum Speichern einer Datei vom Typ `.apk` aufgefordert und können einen beliebigen Namen dafür wählen.
 
 Befolgen Sie in der App die Anleitung zum Anordnen und Abrufen eines Ankers.
 
-> [!NOTE]
-> Falls beim Ausführen der App die Kamera nicht als Hintergrund angezeigt wird (sondern stattdessen beispielsweise ein leerer blauer Bereich oder andere Texturen), müssen Sie die Ressourcen wahrscheinlich erneut in Unity importieren. Beenden Sie die App. Wählen Sie in Unity im Menü am oberen Rand die Option **Assets > Re-import all** (Ressourcen > Alle erneut importieren). Führen Sie die App dann erneut aus.
+## <a name="troubleshooting"></a>Problembehandlung
+
+Falls beim Ausführen der App die Kamera nicht als Hintergrund angezeigt wird (sondern stattdessen beispielsweise ein leerer blauer Bereich oder andere Texturen), müssen Sie die Ressourcen wahrscheinlich erneut in Unity importieren. Beenden Sie die App. Wählen Sie in Unity im Menü am oberen Rand die Option **Assets > Re-import all** (Ressourcen > Alle erneut importieren). Führen Sie die App dann erneut aus.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in Objective-C – Spracherkennungsdienste'
+title: 'Schnellstart: Erkennen von Sprache, Objective-C – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Sprache in Objective-C unter macOS mit dem Speech SDK erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 25f341d167cecd765fd89d9286708d0bd8df6dd2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 45cd1210ee6af3c456171a427729f6e16caf2d58
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603034"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559358"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter macOS mit dem Speech SDK
 
@@ -67,7 +67,8 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Installieren des SDK als CocoaPod
 
 1. Installieren Sie den CocoaPod-Abhängigkeits-Manager entsprechend den Anweisungen in der [Installationsanleitung](https://guides.cocoapods.org/using/getting-started.html).
-1. Navigieren Sie zum Verzeichnis Ihrer Beispiel-App (`helloworld`). Speichern Sie eine Textdatei mit dem Namen `Podfile` und dem folgenden Inhalt in diesem Verzeichnis: [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
+1. Navigieren Sie zum Verzeichnis Ihrer Beispiel-App (`helloworld`). Speichern Sie eine Textdatei mit dem Namen `Podfile` und dem folgenden Inhalt in diesem Verzeichnis:  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. Navigieren Sie in einem Terminal zum Verzeichnis `helloworld`, und führen Sie den Befehl `pod install` aus. Dadurch wird ein Xcode-Arbeitsbereich `helloworld.xcworkspace` generiert, der die Beispiel-App und das Speech SDK als Abhängigkeit enthält. Dieser Arbeitsbereich wird im Folgenden verwendet.
 
 ## <a name="add-the-sample-code"></a>Hinzufügen des Beispielcodes

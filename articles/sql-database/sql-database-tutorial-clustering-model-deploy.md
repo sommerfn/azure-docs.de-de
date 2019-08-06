@@ -12,17 +12,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 1fe9df6378884ba55cb1017da87522ae66edaff0
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420218"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640910"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Bereitstellen eines Clusteringmodells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschau)
 
-In Teil 3 dieser dreiteiligen Tutorialreihe stellen Sie mithilfe der Machine Learning Services für Azure SQL-Datenbank (Vorschau) ein Clusteringmodell in R bereit.
+In Teil 3 dieses dreiteiligen Tutorialreihe stellen Sie mithilfe von Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) ein in R entwickeltes Clusteringmodell in einer SQL-Datenbank bereit.
 
 Sie erstellen eine gespeicherte Prozedur mit einem eingebetteten R-Skript, das ein Clustering durchführt. Da Ihr Modell in der Azure SQL-Datenbank ausgeführt wird, kann es auf einfache Weise anhand von Daten trainiert werden, die in der Datenbank gespeichert sind.
 
@@ -33,9 +33,9 @@ In diesem Artikel lernen Sie Folgendes:
 > * Durchführen von Clustering in SQL-Datenbank
 > * Verwenden der Clusteringinformationen
 
-Im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering in R vorbereiten.
+Im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering vorbereiten.
 
-In [Teil 2](sql-database-tutorial-clustering-model-build.md) haben Sie gelernt, wie ein K-Means-Modell für die Durchführung von Clustering erstellt wird.
+In [Teil 2](sql-database-tutorial-clustering-model-build.md) haben Sie erfahren, wie Sie ein K-Means-Clusteringmodell in R erstellen und trainieren.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 

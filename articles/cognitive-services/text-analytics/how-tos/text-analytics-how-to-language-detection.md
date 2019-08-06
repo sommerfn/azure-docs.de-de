@@ -1,5 +1,6 @@
 ---
-title: Sprachenerkennung mit der Textanalyse-REST-API | Microsoft-Dokumentation
+title: Sprachenerkennung mit der Textanalyse-REST-API
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API von Azure Cognitive Services Sprachen erkennen.
 services: cognitive-services
 author: aahill
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e1adeb34cf999f471bb183e4d7de9c65427252bb
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 361dc10aad6f65230e1e0f4c563534d44b45f902
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986509"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697811"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Beispiel: Sprachenerkennung mithilfe der Textanalyse
 
@@ -35,7 +36,7 @@ Sie benötigen JSON-Dokumente im folgenden Format: ID und Text.
 
 Ein Dokument darf maximal 5.119 Zeichen enthalten. Pro Sammlung können bis zu 1.000 Elemente (IDs) vorhanden sein. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel zeigt Inhalte, die Sie für die Sprachenerkennung übermitteln können:
 
-   ```
+```json
     {
         "documents": [
             {
@@ -53,7 +54,7 @@ Ein Dokument darf maximal 5.119 Zeichen enthalten. Pro Sammlung können bis zu 
             {
                 "id": "4",
                 "text": "本文件为英文"
-            },                
+            },
             {
                 "id": "5",
                 "text": "Этот документ на английском языке."
@@ -70,7 +71,7 @@ Weitere Informationen zur Anforderungsdefinition finden Sie unter [Aufrufen der 
 
 + Legen Sie den HTTP-Endpunkt für die Sprachenerkennung fest. Verwenden Sie entweder eine Textanalyseressource in Azure oder einen instanziierten [Textanalysecontainer](text-analytics-how-to-install-containers.md). Er muss die Ressource `/languages` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
 
-+ Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [Suchen von Endpunkten und Zugriffsschlüsseln für die Textanalyse von Cognitive Service](text-analytics-how-to-access-key.md).
++ Legen Sie einen Anforderungsheader fest, der den [Zugriffsschlüssel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) für Textanalysevorgänge enthält.
 
 + Geben Sie im Anforderungstext die JSON-Dokumentsammlung an, die Sie für diese Analyse vorbereitet haben.
 
@@ -94,116 +95,172 @@ Ergebnisse für die Beispielanforderung sollten wie im folgenden JSON-Code ausse
 
 Das positive Ergebnis 1,0 steht für die höchstmögliche Zuverlässigkeit der Analyse.
 
-
-
-```
-{
-    "documents": [
-        {
-            "id": "1",
-            "detectedLanguages": [
-                {
-                    "name": "English",
-                    "iso6391Name": "en",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "detectedLanguages": [
-                {
-                    "name": "Spanish",
-                    "iso6391Name": "es",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "detectedLanguages": [
-                {
-                    "name": "French",
-                    "iso6391Name": "fr",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "4",
-            "detectedLanguages": [
-                {
-                    "name": "Chinese_Simplified",
-                    "iso6391Name": "zh_chs",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "5",
-            "detectedLanguages": [
-                {
-                    "name": "Russian",
-                    "iso6391Name": "ru",
-                    "score": 1
-                }
-            ]
-        }
-    ],
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "detectedLanguages": [
+                    {
+                        "name": "English",
+                        "iso6391Name": "en",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "detectedLanguages": [
+                    {
+                        "name": "Spanish",
+                        "iso6391Name": "es",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "detectedLanguages": [
+                    {
+                        "name": "French",
+                        "iso6391Name": "fr",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "detectedLanguages": [
+                    {
+                        "name": "Chinese_Simplified",
+                        "iso6391Name": "zh_chs",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "detectedLanguages": [
+                    {
+                        "name": "Russian",
+                        "iso6391Name": "ru",
+                        "score": 1
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
 ```
 
 ### <a name="ambiguous-content"></a>Mehrdeutige Inhalte
 
+In einigen Fällen ist es unter Umständen schwierig, die Sprachen basierend auf den Eingaben eindeutig zu bestimmen. Mithilfe des Parameters `countryHint` können Sie einen zweistelligen Ländercode angeben. Die API verwendet standardmäßig „US“ als Wert für „countryHint“. Wenn Sie dieses Verhalten entfernen möchten, können Sie diesen Parameter zurücksetzen, indem Sie seinen Wert auf eine leere Zeichenfolge (`countryHint = ""`) festlegen.
+
+„Impossible“ ist beispielsweise sowohl im Englischen als auch im Französischen gebräuchlich, und bei unzureichendem Kontext basiert die Antwort auf dem Länderhinweis „US“. Sollte bekannt sein, dass der Text aus Frankreich stammt, kann ein entsprechender Hinweis angegeben werden.
+
+**Input** (Eingabe)
+
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "text": "impossible"
+            },
+            {
+                "id": "2",
+                "text": "impossible",
+                "countryHint": "fr"
+            }
+        ]
+    }
+```
+
+Der Dienst verfügt nun über zusätzlichen Kontext und kann eine bessere Beurteilung abgeben: 
+
+**Ausgabe**
+
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "detectedLanguages": [
+                    {
+                        "name": "English",
+                        "iso6391Name": "en",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "detectedLanguages": [
+                    {
+                        "name": "French",
+                        "iso6391Name": "fr",
+                        "score": 1
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
+```
+
 Wenn das Analysetool die Eingabe nicht analysieren kann, wird `(Unknown)` zurückgegeben. Beispiel: Sie übermitteln einen Textblock, der ausschließlich aus arabischen Zahlen besteht.
 
-```
+```json
     {
-      "id": "5",
-      "detectedLanguages": [
-        {
-          "name": "(Unknown)",
-          "iso6391Name": "(Unknown)",
-          "score": "NaN"
-        }
-      ]
+        "id": "5",
+        "detectedLanguages": [
+            {
+                "name": "(Unknown)",
+                "iso6391Name": "(Unknown)",
+                "score": "NaN"
+            }
+        ]
+    }
 ```
+
 ### <a name="mixed-language-content"></a>Inhalt in verschiedenen Sprachen
 
 Wenn in einem Dokument Inhalte in verschiedenen Sprachen enthalten sind, wird die Sprache zurückgegeben, die in den Inhalten überwiegt – allerdings mit einer niedrigeren positiven Bewertung. Die Bewertung spiegelt die marginale Stärke dieser Bewertung wider. Im folgenden Beispiel enthält die Eingabe eine Mischung aus Englisch, Spanisch und Französisch. Das Analysetool zählt die Zeichen der einzelnen Segmente, um die vorherrschende Sprache zu bestimmen.
 
 **Input** (Eingabe)
 
-```
-{
-  "documents": [
+```json
     {
-      "id": "1",
-      "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+      "documents": [
+        {
+          "id": "1",
+          "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+        }
+      ]
     }
-  ]
-}
 ```
 
 **Ausgabe**
 
 Die resultierende Ausgabe enthält die vorherrschende Sprache mit einer Punktzahl von weniger als 1,0, wodurch eine niedrigere Zuverlässigkeit angegeben wird.
 
-```
-{
-  "documents": [
+```json
     {
-      "id": "1",
-      "detectedLanguages": [
+      "documents": [
         {
-          "name": "Spanish",
-          "iso6391Name": "es",
-          "score": 0.9375
+          "id": "1",
+          "detectedLanguages": [
+            {
+              "name": "Spanish",
+              "iso6391Name": "es",
+              "score": 0.9375
+            }
+          ]
         }
-      ]
+      ],
+      "errors": []
     }
-  ],
-  "errors": []
-}
 ```
 
 ## <a name="summary"></a>Zusammenfassung
@@ -212,14 +269,13 @@ In diesem Artikel haben Sie sich mit Konzepten und mit dem Workflow für die Spr
 
 + Die [Sprachenerkennung](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) ist für eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen verfügbar.
 + JSON-Dokumente im Anforderungstext umfassen eine ID und Text.
-+ Die POST-Anforderung wird an einen Endpunkt vom Typ `/languages` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](text-analytics-how-to-access-key.md) verwendet, der für Ihr Abonnement gültig ist.
++ Die POST-Anforderung wird an einen Endpunkt vom Typ `/languages` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) verwendet, der für Ihr Abonnement gültig ist.
 + Die Antwortausgabe besteht aus Sprachen-IDs für die jeweilige Dokument-ID. Die Ausgabe kann an eine beliebige JSON-fähige App gestreamt werden. Zu den Beispiel-Apps zählen u. a. Excel und Power BI.
 
-## <a name="see-also"></a>Weitere Informationen 
+## <a name="see-also"></a>Weitere Informationen
 
- [Übersicht über die Textanalyse](../overview.md)  
- [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)</br>
- [Textanalysen (Produktseite)](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Übersicht über die Textanalyse](../overview.md) [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)</br>
+ [Textanalysen (Produktseite)](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

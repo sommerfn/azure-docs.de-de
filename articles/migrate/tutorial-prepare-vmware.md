@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 10f559295ff0598dea26fb30b089f020e2985889
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840340"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679142"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie VMware-VMs mit [Azure Migrate](migrate-s
 Dieses Tutorial ist das erste in einer Reihe zur Bewertung und Migration von VMware-VMs. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Vorbereiten von Azure: Richten sie Berechtigungen für Ihr Azure-Konto und Ihre Ressourcen ein, um Azure Migrate verwenden zu können.
+> * Bereiten Sie Azure vor. Richten sie Berechtigungen für Ihr Azure-Konto und Ihre Ressourcen ein, um Azure Migrate verwenden zu können.
 > * Vorbereiten lokaler VMware-Server und VMs für die VM-Bewertung
 > * Vorbereiten lokaler VMware-Server und VMs für die VM-Migration
 
@@ -102,11 +102,11 @@ Gehen Sie wie folgt vor, um Rollenzuweisungsberechtigungen für die Ressourcengr
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>Vorbereiten der Bewertung von VMware-VMs
 
-Zur Vorbereitung der Bewertung von VMware-VMs müssen Sie Hyper-V-Host- und VM-Einstellungen sowie Einstellungen für die Appliancebereitstellung überprüfen.
+Zur Vorbereitung der Bewertung von VMware-VMs müssen Sie VmWare-Host- und VM-Einstellungen sowie Einstellungen für die Appliancebereitstellung überprüfen.
 
 ### <a name="verify-vmware-settings"></a>Überprüfen der VMware-Einstellungen
 
-1. [Überprüfen](migrate-support-matrix-vmware.md#assessment-vmware-server-requirements) Sie die VMware-Serveranforderungen für die VM-Bewertung.
+1. [Überprüfen](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) Sie die VMware-Serveranforderungen für die VM-Bewertung.
 2. [Vergewissern Sie sich](migrate-support-matrix-vmware.md#assessment-port-requirements), dass auf vCenter-Hosts die erforderlichen Ports geöffnet sind.
 
 
@@ -153,7 +153,7 @@ Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
  
 > [!div class="checklist"] 
 > * Einrichten von Azure-Berechtigungen

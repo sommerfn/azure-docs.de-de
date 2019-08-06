@@ -4,9 +4,9 @@ titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio ist ein Drag & Drop-Tool zum schnellen Erstellen von Modellen aus einer verwendungsbereiten Bibliothek mit Algorithmen und Modulen.
 services: machine-learning
 documentationcenter: ''
-author: garyericson
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4ec9cff652bf1badf526d490547ad78de31ac5da
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024223"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677994"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio ist ein Tool für die Zusammenarbeit per Drag & Drop, mit der Sie Lösungen für Vorhersageanalysen erstellen, testen und bereitstellen können, die mit Ihren Daten arbeiten. Machine Learning Studio veröffentlicht Modelle als Webdienste, die von benutzerdefinierten Apps oder BI-Tools wie Excel problemlos genutzt werden können.
@@ -44,7 +44,7 @@ Laden Sie das Diagramm **Übersicht der Microsoft Azure Machine Learning Studio-
 ![Übersicht der Microsoft Azure Machine Learning Studio-Funktionen](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Erste Schritte mit Machine Learning Studio
-Wenn Sie Machine Learning Studio zum ersten Mal öffnen,](https://studio.azureml.net) sehen Sie die **Startseite**. Hier finden Sie die Dokumentation, Videos, Webinare und weitere wertvolle Ressourcen.
+Wenn Sie [Machine Learning Studio](https://studio.azureml.net) zum ersten Mal öffnen, sehen Sie die **Startseite**. Hier finden Sie die Dokumentation, Videos, Webinare und weitere nützliche Ressourcen.
 
 Klicken Sie auf das Menü links oben. ![Menü](./media/what-is-ml-studio/menu.png) Daraufhin werden mehrere Optionen angezeigt.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -96,7 +96,7 @@ Ein Modul ist ein Algorithmus, den Sie auf Ihre Daten anwenden können. Machine 
 
 * [In ARFF konvertieren:][convert-to-arff] Konvertiert ein serialisiertes .NET-Dataset in ARFF (Attribute-Relation File Format).
 * [Elementare Statistiken berechnen:][elementary-statistics] Berechnet elementare Statistiken wie Mittelwert, Standardabweichung usw.
-* [Lineare Regression:][linear-regression] Erstellt ein lineares Onlineregressionsmodell, das auf einem Gradientenverfahrenmodell beruht.
+* [Lineare Regression:][linear-regression] Erstellt ein lineares Regressionsmodell, das auf einem Modell für den Onlinegradientenabstieg beruht.
 * [Bewertungsmodell:][score-model] Bewertet ein trainiertes Klassifizierungs- oder Regressionsmodell.
 
 Beim Erstellen eines Experiments können Sie links neben dem Arbeitsbereich aus der Liste der Module auswählen.
@@ -123,7 +123,7 @@ Hier ist ein kurzer Vergleich:
 |Computeziele für die Bereitstellung| Proprietäres Webdienstformat, nicht anpassbar | Unternehmenssicherheitsoptionen und Azure Kubernetes Service <br/>([Weitere Computes](../service/how-to-deploy-and-where.md) in SDK unterstützt) |
 |Automatisiertes Modelltraining und Optimieren von Hyperparametern | Nein | Noch nicht auf der grafischen Benutzeroberfläche. <br/> (Im SDK und Azure-Portal unterstützt.) | 
 
-Testen Sie die grafische Benutzeroberfläche (Vorschauversion) mit [Schnellstart: Vorbereiten und Visualisieren von Daten, ohne Code zu schreiben](../service/ui-quickstart-run-experiment.md)
+Testen Sie die grafische Benutzeroberfläche (Vorschauversion) in [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](../service/ui-tutorial-automobile-price-train-score.md)
 
 > [!NOTE]
 > Modelle, die in Studio erstellt werden, können nicht von Azure Machine Learning Service bereitgestellt und verwaltet werden. Modelle, die auf der grafischen Benutzeroberfläche erstellt und bereitgestellt werden, können dagegen über den Azure Machine Learning Service-Arbeitsbereich verwaltet werden.

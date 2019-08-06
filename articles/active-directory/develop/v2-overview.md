@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e4337f0593933a4e877f391df8132a9b2cd4af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 12027581ae62588550407c8350f3b74f1e743561
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702682"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601826"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Übersicht über Microsoft Identity Platform (v2.0)
 
@@ -43,7 +43,7 @@ Mit Microsoft Identity Platform müssen Sie Code nur einmal schreiben, um alle B
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Die Verwendung von Identitäten muss nicht kompliziert sein. Wählen Sie ein auf Sie zutreffendes Szenario aus. In jedem Szenariopfad stehen ein Schnellstart sowie eine Übersichtsseite zur Verfügung, sodass Sie in wenigen Minuten einsatzbereit sind:
+Die Verwendung von Identitäten muss nicht kompliziert sein. Wählen Sie ein auf Sie zutreffendes [Szenario](authentication-flows-app-scenarios.md) aus. In jedem Szenariopfad stehen ein Schnellstart sowie eine Übersichtsseite zur Verfügung, sodass Sie in wenigen Minuten einsatzbereit sind:
 
 - [Erstellen einer Einzelseiten-App](scenario-spa-overview.md)
 - [Erstellen einer Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)
@@ -62,6 +62,7 @@ Das folgende Diagramm zeigt gängige Authentifizierungs-App-Szenarien. Verwenden
 
 Wenn Sie mehr über die wichtigsten Authentifizierungskonzepte erfahren möchten, empfehlen wir Ihnen, mit diesen Themen zu beginnen:
 
+- [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md)
 - [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md)
 - [Anwendungs- und Dienstprinzipale](app-objects-and-service-principals.md)
 - [Zielgruppen](v2-supported-account-types.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348390"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640772"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -41,7 +41,7 @@ Sie können VMware-VMs zu Azure migrieren, indem Sie das Tool für die Azure Mi
 
 Verwenden Sie die folgenden Artikel beim Treffen der Entscheidung, ob Sie die Migration mit oder ohne Agent durchführen möchten:
 
-- Informieren Sie sich über die [Migration ohne Agent](server-migrate-overview.md) und die [Einschränkungen](server-migrate-overview.md#agentless-migration-limitations).
+- Informieren Sie sich über die [Migration ohne Agent](server-migrate-overview.md), und [vergleichen Sie die Migrationsmethoden](server-migrate-overview.md#compare-migration-methods).
 - [Lesen Sie diesen Artikel](tutorial-migrate-vmware-agent.md), wenn Sie das Verfahren mit Agent nutzen möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -93,7 +93,7 @@ Befolgen Sie die Anleitung zum Einrichten der Appliance in [diesem Artikel](how-
 
 Für Azure Migrate müssen einige VM-Änderungen durchgeführt werden, um sicherzustellen, dass VMs zu Azure migriert werden können.
 
-- Bei einigen [Betriebssystemen](server-migrate-overview.md#agentless-migration-limitations) führt Azure Migrate diese Änderungen automatisch durch.
+- Bei einigen Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch. [Weitere Informationen](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
 - Befolgen Sie die Anleitung zum Vorbereiten des virtuellen Computers, wenn Sie einen virtuellen Computer migrieren, der nicht über eines dieser Betriebssysteme verfügt.
 - Es ist wichtig, diese Änderungen vorzunehmen, bevor Sie mit der Migration beginnen. Wenn Sie den virtuellen Computer migrieren, bevor Sie die Änderung vorgenommen haben, wird der virtuelle Computer in Azure unter Umständen nicht gestartet.
 - Konfigurationsänderungen, die Sie auf lokalen virtuellen Computern vornehmen, werden nach dem Aktivieren der Replikation für den virtuellen Computer in Azure repliziert. Gehen Sie wie folgt vor, um sicherzustellen, dass die Änderungen repliziert wurden: Vergewissern Sie sich, dass der Wiederherstellungspunkt der Migration nach dem Zeitpunkt liegt, zu dem die Konfigurationsänderungen lokal vorgenommen wurden.

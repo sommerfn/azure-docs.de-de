@@ -1,6 +1,6 @@
 ---
-title: Ändern, Trainieren der App, Java
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Ändern, Trainieren der App, Java: LUIS'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung für Java fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: ce2cf0603e584684edda1b1f14a12b52fbbb928c
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: bfe195ecd4dd777d5073c03c2e4fbd4bfcaaaa06
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357140"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560592"
 ---
 # <a name="quickstart-change-model-using-java"></a>Schnellstart: Ändern des Modells mit Java 
 

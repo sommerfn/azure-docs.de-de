@@ -1,5 +1,5 @@
 ---
-title: Muster
+title: 'Muster: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276043"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563304"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache, C# (UWP) – Speech-Dienste'
+title: 'Schnellstart: Übersetzen von Sprache, C# (UWP) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erstellen Sie eine einfache UWP-Anwendung (Universelle Windows-Plattform) zum Erfassen der Benutzersprache, Übersetzen in eine andere Sprache und Ausgeben des Texts in der Befehlszeile. Dieser Leitfaden ist für Windows-Benutzer bestimmt.
 services: cognitive-services
@@ -9,18 +9,19 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: dafcbd6bbe7f542d4eabc6b7cf858ac4871caae8
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.topic: quickstart
+ms.openlocfilehash: 813edbea0548a5cac9532750a450de08bd238028
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404908"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640020"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für C# (UWP)
 
 Schnellstarts sind auch für [Sprachsynthese](quickstart-csharp-uwp.md), [Spracherkennung](quickstart-text-to-speech-csharp-uwp.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-csharp-uwp.md) verfügbar.
 
-In dieser Schnellstartanleitung erstellen Sie eine einfache UWP-Anwendung (Universelle Windows-Plattform), mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter Windows (64 Bit) konzipiert und basiert auf dem [Speech-SDK-NuGet-Paket](https://aka.ms/csspeech/nuget) und Microsoft Visual Studio 2017.
+In dieser Schnellstartanleitung erstellen Sie eine einfache UWP-Anwendung (Universelle Windows-Plattform), mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter Windows (64 Bit) konzipiert und basiert auf dem [NuGet-Paket des Speech SDK](https://aka.ms/csspeech/nuget) und Microsoft Visual Studio 2017 oder höher.
 
 Eine vollständige Liste mit den verfügbaren Sprachen für die Sprachübersetzung finden Sie auf der Seite zur [Sprachunterstützung](language-support.md).
 
@@ -31,7 +32,7 @@ Eine vollständige Liste mit den verfügbaren Sprachen für die Sprachübersetzu
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Mindestens [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts

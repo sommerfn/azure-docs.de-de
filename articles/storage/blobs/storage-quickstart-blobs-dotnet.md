@@ -6,15 +6,15 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 07/20/2019
 ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: 70afb39be696b660d3f85ae0c4b2c108bceb318c
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: a030aee18303d20ccf91c6939d349285c4a4bac4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625683"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565943"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek für .NET
 
@@ -31,11 +31,13 @@ Mit der Azure Blob Storage-Clientbibliothek für .NET ist Folgendes möglich:
 
 [API-Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+## <a name="required-before-you-begin"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 * Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet-core) oder höher für Ihr Betriebssystem
+* [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) oder höher für Ihr Betriebssystem Laden Sie unbedingt das SDK und nicht die Runtime herunter.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -43,15 +45,15 @@ In diesem Abschnitt wird beschrieben, wie ein Projekt zur Verwendung mit der Azu
 
 ### <a name="create-the-project"></a>Erstellen des Projekts
 
-Erstellen Sie zunächst eine .NET Core-Anwendung mit dem Namen **blob-quickstart**.
+Erstellen Sie zunächst eine .NET Core-Anwendung mit dem Namen *blob-quickstart*.
 
-1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen **blob-quickstart**. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: **Program.cs**.
+1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen *blob-quickstart*. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: *Program.cs*.
 
    ```console
    dotnet new console -n blob-quickstart
    ```
 
-2. Wechseln Sie zum neu erstellten Ordner **blob-quickstart**, und erstellen Sie die App, um zu überprüfen, ob alles funktioniert.
+2. Wechseln Sie zum neu erstellten Ordner *blob-quickstart*, und erstellen Sie die App, um zu überprüfen, ob alles funktioniert.
 
    ```console
    cd blob-quickstart
@@ -90,11 +92,11 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 Über das Projektverzeichnis:
 
-1. Öffnen Sie die Datei „Program.cs“ im Editor.
-2. Entfernen Sie die Anweisung **Console.WriteLine**.
-3. Fügen Sie **using**-Anweisungen hinzu.
-4. Erstellen Sie eine **ProcessAsync**-Methode, in der sich der Hauptcode für das Beispiel befindet.
-5. Rufen Sie die **ProcessAsync**-Methode asynchron in **Main** auf.
+1. Öffnen Sie die Datei *Program.cs* im Editor.
+2. Entfernen Sie die Anweisung `Console.WriteLine`.
+3. Fügen Sie Anweisungen vom Typ `using` hinzu.
+4. Erstellen Sie eine `ProcessAsync`-Methode, in der sich der Hauptcode für das Beispiel befindet.
+5. Rufen Sie die Methode `ProcessAsync` asynchron über `Main` auf.
 
 Der Code lautet wie folgt:
 
@@ -142,25 +144,27 @@ Die Beispielanwendung muss den Zugriff auf Ihr Speicherkonto authentifizieren. F
 
 Schreiben Sie die Verbindungszeichenfolge nach dem Kopieren in eine neue Umgebungsvariable auf dem lokalen Computer, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Konsolenfenster, und befolgen Sie die Anleitung für Ihr Betriebssystem. Ersetzen Sie `<yourconnectionstring>` durch Ihre Verbindungszeichenfolge.
 
-Nachdem Sie die Umgebungsvariable hinzugefügt haben, müssen Sie unter Umständen alle ausgeführten Programme neu starten, in denen die Umgebungsvariable gelesen werden muss. Wenn Sie beispielsweise Visual Studio als Editor verwenden, müssen Sie Visual Studio neu starten, bevor Sie das Beispiel ausführen.
-
 #### <a name="windows"></a>Windows
 
 ```cmd
-setx STORAGE_CONNECTION_STRING "<yourconnectionstring>"
+setx CONNECT_STR "<yourconnectionstring>"
 ```
+
+Sie müssen nach dem Hinzufügen der Umgebungsvariablen unter Windows eine neue Instanz des Befehlsfensters öffnen.
 
 #### <a name="linux"></a>Linux
 
 ```bash
-export STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+export CONNECT_STR="<yourconnectionstring>"
 ```
 
 #### <a name="macos"></a>macOS
 
 ```bash
-export STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+export CONNECT_STR="<yourconnectionstring>"
 ```
+
+Nachdem Sie die Umgebungsvariable hinzugefügt haben, starten Sie alle ausgeführten Programme neu, in denen die Umgebungsvariable gelesen werden muss. Starten Sie beispielsweise die Entwicklungsumgebung oder den Editor neu, bevor Sie fortfahren.
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -176,10 +180,10 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
 Verwenden Sie die folgenden .NET-Klassen zur Interaktion mit folgenden Ressourcen:
 
-* [CloudStorageAccount:](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) Die **CloudStorageAccount**-Klasse stellt Ihr Azure Storage-Konto dar. Verwenden Sie diese Klasse für den Zugriff auf Blob Storage mithilfe Ihrer Kontozugriffsschlüssel.
-* [CloudBlobClient:](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) Die **CloudBlobClient**-Klasse gibt einen Zugriffspunkt für den Blob-Dienst im Code an.
-* [CloudBlobContainer:](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) Die **CloudBlobContainer**-Klasse stellt einen Blobcontainer im Code dar.
-* [CloudBlockBlob:](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) Das **CloudBlockBlob**-Objekt stellt ein Blockblob im Code dar. Blockblobs bestehen aus Datenblöcken, die einzeln verwaltet werden können.
+* [CloudStorageAccount:](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) Die `CloudStorageAccount`-Klasse stellt Ihr Azure Storage-Konto dar. Verwenden Sie diese Klasse für den Zugriff auf Blob Storage mithilfe Ihrer Kontozugriffsschlüssel.
+* [CloudBlobClient:](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) Die `CloudBlobClient`-Klasse gibt einen Zugriffspunkt für den Blob-Dienst im Code an.
+* [CloudBlobContainer:](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) Die `CloudBlobContainer`-Klasse stellt einen Blobcontainer im Code dar.
+* [CloudBlockBlob:](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) Das `CloudBlockBlob`-Objekt stellt ein Blockblob im Code dar. Blockblobs bestehen aus Datenblöcken, die einzeln verwaltet werden können.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -195,18 +199,18 @@ Mit den Beispielcodeausschnitten wird veranschaulicht, wie folgende Vorgänge mi
 
 ### <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Mit dem folgenden Code wird überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) zu erstellen, das auf das Speicherkonto verweist. Verwenden Sie die [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet)-Methode, um zu überprüfen, ob die Verbindungszeichenfolge gültig ist. Wenn **TryParse** erfolgreich ist, wird die Variable *storageAccount* initialisiert, und **true** wird zurückgegeben.
+Mit dem folgenden Code wird überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) zu erstellen, das auf das Speicherkonto verweist. Verwenden Sie die [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet)-Methode, um zu überprüfen, ob die Verbindungszeichenfolge gültig ist. Wenn `TryParse` erfolgreich ist, wird die Variable `storageAccount` initialisiert, und `true` wird zurückgegeben.
 
-Fügen Sie diesen in der **ProcessAsync**-Methode ein:
+Fügen Sie diesen Code in der `ProcessAsync`-Methode hinzu:
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage 
 // connection string is stored in an environment variable on the machine 
-// running the application called STORAGE_CONNECTION_STRING. If the 
+// running the application called CONNECT_STR. If the 
 // environment variable is created after the application is launched in a 
 // console or with Visual Studio, the shell or application needs to be closed
 // and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("STORAGE_CONNECTION_STRING");
+string storageConnectionString = Environment.GetEnvironmentVariable("CONNECT_STR");
 
 // Check whether the connection string can be parsed.
 CloudStorageAccount storageAccount;
@@ -221,7 +225,7 @@ else
     // Otherwise, let the user know that they need to define the environment variable.
     Console.WriteLine(
         "A connection string has not been defined in the system environment variables. " +
-        "Add an environment variable named 'STORAGE_CONNECTION_STRING' with your storage " +
+        "Add an environment variable named 'CONNECT_STR' with your storage " +
         "connection string as a value.");
     Console.WriteLine("Press any key to exit the application.");
     Console.ReadLine();
@@ -229,7 +233,7 @@ else
 ```
 
 > [!NOTE]
-> Um die restlichen Vorgänge in diesem Artikel auszuführen, ersetzen Sie **// ADD OTHER OPERATIONS HERE** im Code oben durch die in den folgenden Abschnitten verwendeten Codeausschnitte.
+> Um die restlichen Vorgänge in diesem Artikel auszuführen, ersetzen Sie `// ADD OTHER OPERATIONS HERE` im Code oben durch die in den folgenden Abschnitten verwendeten Codeausschnitte.
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
@@ -268,7 +272,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-a-container"></a>Hochladen von Blobs in einen Container
 
-Im folgenden Codeausschnitt wird ein Verweis auf ein **CloudBlockBlob**-Objekt abgerufen, indem die [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)-Methode für den Container aufgerufen wird, der im vorherigen Abschnitt erstellt wurde. Anschließend wird die ausgewählte lokale Datei in das Blob hochgeladen, indem die [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync)-Methode aufgerufen wird. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
+Im folgenden Codeausschnitt wird ein Verweis auf ein `CloudBlockBlob`-Objekt abgerufen, indem die [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)-Methode für den im vorherigen Abschnitt erstellten Container aufgerufen wird. Anschließend wird die ausgewählte lokale Datei in das Blob hochgeladen, indem die [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync)-Methode aufgerufen wird. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -291,7 +295,7 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 Listen Sie die Blobs im Container mithilfe der [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)-Methode auf. In diesem Fall wurde dem Container nur ein Blob hinzugefügt, sodass beim Auflisten auch nur ein Blob zurückgegeben wird.
 
-Falls die Anzahl von zurückzugebenden Blobs für einen Aufruf zu hoch ist (standardmäßig > 5000), gibt die **ListBlobsSegmentedAsync**-Methode ein Segment des gesamten Resultsets und ein Fortsetzungstoken zurück. Zum Abrufen des nächsten Blobsegments geben Sie das vom vorherigen Aufruf zurückgegebene Fortsetzungstoken an und fahren damit fort, bis das Fortsetzungstoken null ist. Ein Fortsetzungstoken von „null“ gibt an, dass alle Blobs abgerufen wurden. Im Code wird angezeigt, wie Sie das Fortsetzungstoken im Rahmen der bewährten Methoden einsetzen.
+Falls die Anzahl von zurückzugebenden Blobs für einen Aufruf zu hoch ist (standardmäßig > 5.000), gibt die `ListBlobsSegmentedAsync`-Methode ein Segment des gesamten Resultsets und ein Fortsetzungstoken zurück. Zum Abrufen des nächsten Blobsegments geben Sie das vom vorherigen Aufruf zurückgegebene Fortsetzungstoken an und fahren damit fort, bis das Fortsetzungstoken null ist. Ein Fortsetzungstoken von „null“ gibt an, dass alle Blobs abgerufen wurden. Im Code wird angezeigt, wie Sie das Fortsetzungstoken im Rahmen der bewährten Methoden einsetzen.
 
 ```csharp
 // List the blobs in the container.
@@ -344,11 +348,9 @@ File.Delete(destinationFile);
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Mit dieser App wird in Ihrem lokalen Ordner **MyDocuments** eine Testdatei erstellt und in Blob Storage hochgeladen. Anschließend werden im Beispiel die Blobs im Container aufgelistet, und die Datei wird mit einem neuen Namen heruntergeladen, damit Sie die alte und neue Datei vergleichen können.
+Mit dieser App wird in Ihrem lokalen Ordner *MyDocuments* eine Testdatei erstellt und in Blob Storage hochgeladen. Anschließend werden im Beispiel die Blobs im Container aufgelistet, und die Datei wird mit einem neuen Namen heruntergeladen, damit Sie die alte und neue Datei vergleichen können.
 
-Wenn Sie Visual Studio als Editor verwenden, können Sie **F5** drücken, um die Ausführung zu starten.
-
-Navigieren Sie andernfalls zu Ihrem Anwendungsverzeichnis, und erstellen dann die Anwendung, und führen Sie sie aus.
+Navigieren Sie andernfalls zu Ihrem Anwendungsverzeichnis, erstellen Sie die Anwendung, und führen Sie sie aus.
 
 ```console
 dotnet build
@@ -380,7 +382,7 @@ Downloading blob to C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926
 Press any key to delete the example files and example container.
 ```
 
-Wenn Sie die **EINGABETASTE** drücken, löscht die Anwendung den Speichercontainer und die Dateien. Überprüfen Sie den Ordner **MyDocuments** vor dem Löschen auf die beiden Dateien. Sie können sie öffnen und sich vergewissern, dass sie identisch sind. Kopieren Sie die Blob-URL aus dem Konsolenfenster, und fügen Sie sie in einen Browser ein, um den Blobinhalt anzuzeigen.
+Wenn Sie die **EINGABETASTE** drücken, löscht die Anwendung den Speichercontainer und die Dateien. Überprüfen Sie den Ordner *MyDocuments* vor dem Löschen auf die beiden Dateien. Sie können sie öffnen und sich vergewissern, dass sie identisch sind. Kopieren Sie die Blob-URL aus dem Konsolenfenster, und fügen Sie sie in einen Browser ein, um den Blobinhalt anzuzeigen.
 
 Nachdem Sie die Dateien erfolgreich überprüft haben, drücken Sie eine beliebige Taste, um die Demo zu beenden und die Testdateien zu löschen.
 

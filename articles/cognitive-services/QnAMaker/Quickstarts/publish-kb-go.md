@@ -1,6 +1,6 @@
 ---
-title: Veröffentlichen einer Wissensdatenbank – REST, Go
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Schnellstart: Veröffentlichen einer Wissensdatenbank, REST, Go – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: In dieser REST-basierten Schnellstartanleitung für Go wird Schritt für Schritt erläutert, wie Sie Ihre Wissensdatenbank veröffentlichen. Durch das Veröffentlichen wird die aktuelle Version der getesteten Wissensdatenbank in einen dedizierten Azure Search-Index gepusht, der die veröffentlichte Wissensdatenbank darstellt. Außerdem wird ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 5c0d3c5d33d41ddd01b9d0c0ccf4f468d52f6a9e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c752a0ef4a908ba9a3771a0e0fb4f5f034f97707
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790797"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562957"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Schnellstart: Veröffentlichen einer Wissensdatenbank in QnA Maker mit Go
 

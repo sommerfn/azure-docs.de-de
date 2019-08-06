@@ -1,5 +1,5 @@
 ---
-title: Aktivieren des Diensts „Azure Security Center für IoT“ in IoT Hub (Vorschauversion) | Microsoft-Dokumentation
+title: Aktivieren des Diensts „Azure Security Center für IoT“ in IoT Hub | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie den Dienst „Azure Security Center für IoT“ in Ihrer IoT Hub-Instanz aktivieren.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,54 +15,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618007"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596963"
 ---
-# <a name="quickstart-enable-service-in-iot-hub"></a>Schnellstart: Aktivieren des Diensts in IoT Hub
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Schnellstart: Durchführen des Onboardings für den Dienst „Azure Security Center für IoT“ in IoT Hub
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In diesem Artikel erfahren Sie, wie Sie die Vorschauversion des Diensts „ASC für IoT“ (Azure Security Center) in Ihrer IoT Hub-Instanz aktivieren.  
+In diesem Artikel erfahren Sie, wie Sie den Dienst „Azure Security Center für IoT“ in Ihrer IoT Hub-Instanz aktivieren. Besitzen Sie derzeit keine IoT Hub-Instanz, lesen Sie zum Einstieg die Informationen unter [Erstellen eines IoT Hubs über das Portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal). 
 
 > [!NOTE]
 > Azure Security Center für IoT unterstützt derzeit nur IoT Hub-Instanzen im Standard-Tarif.
-> Azure Security Center für IoT ist eine Lösung für einen einzelnen Hub. Sollten Sie mehrere Hubs benötigen, sind mehrere Lösungen erforderlich. 
+> Azure Security Center für IoT ist eine Lösung für einen einzelnen Hub. Sollten Sie mehrere Hubs benötigen, sind mehrere Lösungen in Azure Security Center für IoT erforderlich. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Voraussetzungen für die Dienstaktivierung
 
 - Log Analytics-Arbeitsbereich
-  - Von ASC für IoT werden in Ihrem Log Analytics-Arbeitsbereich standardmäßig zwei Arten von Informationen gespeichert: **Sicherheitswarnungen** und **Empfehlungen**. 
+  - Von Azure Security Center für IoT werden in Ihrem Log Analytics-Arbeitsbereich standardmäßig zwei Arten von Informationen gespeichert: **Sicherheitswarnungen** und **Empfehlungen**. 
   - Sie können noch einen weiteren Informationstyp hinzufügen: **Rohereignisse**. Hinweis: Für die Speicherung von **Rohereignissen** in Log Analytics fallen zusätzliche Speicherkosten an. 
 - IoT Hub (Standard-Tarif)
 - Erfüllen aller [Dienstvoraussetzungen](service-prerequisites.md) 
-- Unterstützte Servicebereiche
-  - USA (Mitte)
-  - Nordeuropa
-  - Asien, Südosten
 
-## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Aktivieren von ASC für IoT in Ihrer IoT Hub-Instanz 
+|Unterstützte Azure-Dienstregionen | ||
+|---|---|---|
+| USA (Mitte) |East US |USA (Ost) 2 |
+| USA, Westen-Mitte |USA (Westen) |USA, Westen 2 |
+| USA, Süden-Mitte|USA Nord Mitte | Kanada, Mitte|
+| Kanada, Osten| Nordeuropa|Brasilien Süd|
+| Frankreich, Mitte| UK, Westen|UK, Süden|
+|Europa, Westen|Nordeuropa| Japan, Westen|
+|Japan, Osten | Australien, Südosten|Australien (Osten)|
+|Asien, Osten| Asien, Südosten| Korea, Mitte|
+|Korea, Süden| Indien, Mitte| Indien (Süden)|
+|
+
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Aktivieren von Azure Security Center für IoT in Ihrer IoT Hub-Instanz 
 
 Führen Sie die folgenden Schritte aus, um die Sicherheit in Ihrer IoT Hub-Instanz zu aktivieren: 
 
 1. Öffnen Sie im Azure-Portal Ihre Instanz von **IoT Hub**. 
-2. Klicken Sie im Menü **Sicherheit** auf **Übersicht** und dann auf **Vorschauversion starten**. 
-3. Wählen Sie **Enable IoT Security** (IoT-Sicherheit aktivieren) aus. 
-4. Geben Sie die Details Ihres Azure Log Analytics-Arbeitsbereichs an. 
-   - Legen Sie die Einstellung für **Rohereignisse** auf **Ein** fest, um zusätzlich zu den gespeicherten Standardinformationen auch **Rohereignisse** zu speichern. 
-   - Legen Sie die Einstellung für **twin collection** (Zwillingserfassung) auf **Ein** fest, um die Zwillingserfassung zu **aktivieren**. 
-5. Klicken Sie auf **Speichern**. 
+1. Klicken Sie im Menü **Sicherheit** auf **Secure your IoT solution** (IoT-Lösung schützen).
+1. Behalten Sie die Standardeinstellung **Aktivieren** bei. 
+1. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus.
+1. Geben Sie die Details Ihres Log Analytics-Arbeitsbereichs an. 
+   - Legen Sie die Einstellung für **twin collection** (Zwillingserfassung) auf **Ein** fest, um die Zwillingserfassung zu **aktivieren**.
+   - Wählen Sie in Log Analytics **Store raw device security events** (Sicherheitsrohereignisse für Geräte speichern) aus, um zusätzlich zu den Speicher-Standardinformationstypen **Rohereignisse** zu speichern. Lassen Sie die Umschaltfläche **Rohereignisse** auf **Ein** festgelegt. 
+    
+1. Klicken Sie auf **Speichern**. 
 
-Glückwunsch! Sie haben ASC für IoT in Ihrer IoT Hub-Instanz aktiviert. 
+Glückwunsch! Sie haben Azure Security Center für IoT in Ihrer IoT Hub-Instanz aktiviert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Im nächsten Artikel erfahren Sie, wie Sie Ihre Lösung konfigurieren:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Configure your IoT solution](quickstart-configure-your-solution.md) (Schnellstart: Konfigurieren Ihrer IoT-Lösung)
+> [Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)
+
+

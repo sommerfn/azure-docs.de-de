@@ -1,7 +1,7 @@
 ---
-title: Abfragen einer Azure SQL-Datenbank-Instanz mithilfe von R
+title: Verwenden von R mit Machine Learning Services zum Abfragen von Azure SQL-Datenbank
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: In diesem Artikel erfahren Sie, wie Sie mit einem R-Skript eine Verbindung mit einer Azure SQL-Datenbank-Instanz herstellen und sie mithilfe von Transact-SQL-Anweisungen abfragen.
+description: In diesem Artikel erfahren Sie, wie Sie ein R-Skript mit Machine Learning Services in Azure SQL-Datenbank verwenden, um eine Verbindung mit einer Azure SQL-Datenbank-Instanz herzustellen und sie mithilfe von Transact-SQL-Anweisungen abzufragen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,16 +13,16 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 1d4b17cf1e0349bf877c676cb4e591fc20ad4113
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416365"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514856"
 ---
-# <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Schnellstart: Verwenden eines R-Skripts zum Abfragen einer Azure SQL-Datenbank-Instanz (Vorschauversion)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Schnellstart: Verwenden von R mit Machine Learning Services zum Abfragen von Azure SQL-Datenbank (Vorschauversion)
 
- In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von [R](https://www.r-project.org/) mit Machine Learning Services eine Verbindung mit einer Azure SQL-Datenbank-Instanz herstellen und mithilfe von Transact-SQL-Anweisungen Daten abfragen. Machine Learning Services ist eine Funktion von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Weitere Informationen finden Sie unter [Machine Learning Services mit R in Azure SQL-Datenbank (Vorschauversion)](sql-database-machine-learning-services-overview.md).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von [R](https://www.r-project.org/) mit Machine Learning Services eine Verbindung mit einer Azure SQL-Datenbank-Instanz herstellen und mithilfe von Transact-SQL-Anweisungen Daten abfragen. Machine Learning Services ist eine Funktion von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Weitere Informationen finden Sie unter [Machine Learning Services mit R in Azure SQL-Datenbank (Vorschauversion)](sql-database-machine-learning-services-overview.md).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 

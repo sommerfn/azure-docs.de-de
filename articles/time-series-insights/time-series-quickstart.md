@@ -10,17 +10,17 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/22/2019
-ms.openlocfilehash: 415ce28a7cab77c538a7dfb8f387900ff515dd0e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/29/2019
+ms.openlocfilehash: 0a91db15fcf77a936905a68c6b69b507d4e32a78
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164566"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677695"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Schnellstart: Erkunden von Azure Time Series Insights
 
-Dieser Schnellstart für den Azure Time Series Insights-Explorer unterstützt Sie bei den ersten Schritten mit Azure Time Series in einer kostenlosen Demoumgebung. Durch ihn erfahren Sie, wie Sie große IoT-Datenmengen im Webbrowser visualisieren, und lernen die wichtigsten Features kennen, die nun allgemein verfügbar sind.
+Dieser Schnellstart für den Azure Time Series Insights-Explorer unterstützt Sie bei den ersten Schritten mit Azure Time Series in einer kostenlosen Demoumgebung. In dieser Schnellstartanleitung erfahren Sie, wie Sie große IoT-Datenmengen im Webbrowser visualisieren, und lernen die wichtigsten Features kennen, die nun allgemein verfügbar sind.
 
 Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst, der die simultane Untersuchung und Analyse von Milliarden von IoT-Ereignissen vereinfacht. Sie erhalten eine globale Ansicht Ihrer Daten und können basierend darauf Ihre IoT-Lösung schneller überprüfen und kostenintensive Ausfallzeiten unternehmenskritischer Geräte vermeiden. Mit Azure Time Series Insights können Sie versteckte Trends aufdecken, Anomalien erkennen und Ursachenanalysen nahezu in Echtzeit durchführen.
 
@@ -28,9 +28,10 @@ Zur Erhöhung der Flexibilität kann Azure Time Series Insights über seine leis
 
 In dieser Schnellstartanleitung zum Time Series Insights-Explorer werden die Features beschrieben, die nun allgemein verfügbar sind.
 
-## <a name="prepare-the-demo-environment"></a>Vorbereiten der Demoumgebung
+> [!IMPORTANT]
+> Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), sofern noch nicht geschehen.
 
-1. Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), sofern noch nicht geschehen.
+## <a name="prepare-the-demo-environment"></a>Vorbereiten der Demoumgebung
 
 1. Navigieren Sie in Ihrem Browser zur [Demo der allgemeinen Verfügbarkeit](https://insights.timeseries.azure.com/demo).
 
@@ -79,6 +80,13 @@ In dieser Schnellstartanleitung zum Time Series Insights-Explorer werden die Fea
    [![Datenreihen filtern](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
 
 Nach Abschluss des Schnellstarts können Sie das Beispiel-DataSet verwenden, um verschiedene Visualisierungen zu erstellen.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Bereinigen Sie nach dem Tutorial die von Ihnen erstellten Ressourcen:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** aus, und suchen Sie Ihre Azure Time Series Insights-Ressourcengruppe.
+1. Löschen Sie entweder die gesamte Ressourcengruppe (und alle darin enthaltenen Ressourcen), indem Sie auf **Löschen** klicken, oder entfernen Sie die Ressourcen einzeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/08/2019
+ms.date: 07/29/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566875"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640130"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
 
@@ -38,6 +38,9 @@ Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer Einzel- od
 > Eine Azure SQL-Datenbank in einer verwalteten Instanz wird mithilfe von Netzwerksicherheitsregeln und privaten Endpunkten geschützt, wie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) und unter [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md) beschrieben.
 
 Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](sql-database-security-overview.md).
+
+> [!TIP]
+> In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über das [Schützen von Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/) informieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

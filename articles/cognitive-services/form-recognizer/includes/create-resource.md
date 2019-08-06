@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: a37087c90b6c9b3629402c7a8c2fa5861e46ae9a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: dce9b4ffa05b48fc1789859328b221ac1a0f3a27
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592526"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594446"
 ---
 Wenn Ihnen Zugriff auf die Formularerkennung gewährt wird, erhalten Sie eine Willkommens-E-Mail mit mehreren Links und Ressourcen. Verwenden Sie den Link „Azure-Portal“ in dieser Nachricht, um das Azure-Portal zu öffnen und eine Formularerkennungsressource zu erstellen. Geben Sie im Bereich **Erstellen** die folgenden Informationen an:
 
@@ -25,4 +25,4 @@ Wenn Ihnen Zugriff auf die Formularerkennung gewährt wird, erhalten Sie eine Wi
 > [!IMPORTANT]
 > Wenn Sie im Azure-Portal eine Cognitive Service-Ressource erstellen, können Sie normalerweise einen Abonnementschlüssel für mehrere Dienste (der für mehrere Cognitive Services verwendet wird) oder einen Abonnementschlüssel für einen einzelnen Dienst (der nur für den angegebenen Cognitive Service verwendet wird) erstellen. Da die Formularerkennung derzeit als Vorschauversion verfügbar ist, ist sie jedoch nicht im Abonnement für mehrere Dienste enthalten. Sie können daher nur dann ein Abonnement für einen einzelnen Dienst erstellen, wenn Sie den Link in der Willkommens-E-Mail verwenden.
 
-Nach Abschluss der Bereitstellung Ihrer Formularerkennungsressource suchen Sie sie im Portal in der Liste **Alle Ressourcen** und wählen sie aus. Wählen Sie dann die Registerkarte **Schlüssel** aus, um Ihre Abonnementschlüssel anzuzeigen. Beide Schlüssel gewähren Ihrer App Zugriff auf die Ressource. Kopieren Sie den Wert von **KEY 1**. Sie werden sie im nächsten Abschnitt verwenden.
+Nach Abschluss der Bereitstellung Ihrer Formularerkennungsressource suchen Sie sie im Portal in der Liste **Alle Ressourcen** und wählen sie aus. Wählen Sie dann die Registerkarte **Schlüssel** aus, um Ihre Abonnementschlüssel anzuzeigen. Beide Schlüssel gewähren Ihrer App Zugriff auf die Ressource. Kopieren Sie den Wert von **KEY 1**.
