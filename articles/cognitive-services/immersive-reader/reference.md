@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718389"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688310"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Plastischer Reader-SDK – Referenz
 
@@ -23,22 +23,22 @@ Das Plastischer Reader-SDK ist eine JavaScript-Bibliothek, die es Ihnen ermögli
 
 ## <a name="functions"></a>Functions
 
-Das SDK macht eine einzige Funktion, `ImmersiveReader.launchAsync(token, resourceName, content, options)`, verfügbar.
+Das SDK macht eine einzige Funktion, `ImmersiveReader.launchAsync(token, subdomain, content, options)`, verfügbar.
 
 ### <a name="launchasync"></a>launchAsync
 
 Startet den Plastischen Reader in einem `iframe` in Ihrer Webanwendung.
 
 ```typescript
-launchAsync(token: string, resourceName: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
 #### <a name="parameters"></a>Parameter
 
 | NAME | type | BESCHREIBUNG |
 | ---- | ---- |------------ |
-| `token` | Zeichenfolge | Das Zugriffstoken, das aus dem Aufruf des `issueToken`-Endpunkts abgerufen wurde. |
-| `resourceName` | Zeichenfolge | Reserviert. Muss auf `null` festgelegt sein. |
+| `token` | Zeichenfolge | Das Azure AD-Authentifizierungstoken. Informationen finden Sie in der [Anleitung zur Azure AD-Authentifizierung](./azure-active-directory-authentication.md). |
+| `subdomain` | Zeichenfolge | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. Informationen finden Sie in der [Anleitung zur Azure AD-Authentifizierung](./azure-active-directory-authentication.md). |
 | `content` | [Inhalt](#content) | Ein Objekt mit dem Inhalt, der im Plastischen Reader angezeigt werden soll. |
 | `options` | [Optionen](#options) | Optionen zum Konfigurieren bestimmter Verhaltensweisen des Plastischen Readers. Optional. |
 
@@ -136,5 +136,5 @@ Verwenden Sie die neuesten Versionen der folgenden Browser, um mit dem Plastisch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Untersuchen des [Plastischer Reader-SDKs auf GitHub](https://github.com/Microsoft/immersive-reader-sdk)
+* Untersuchen des [Plastischer Reader-SDKs auf GitHub](https://github.com/microsoft/immersive-reader-sdk)
 * [Schnellstart: Erstellen einer Web-App zum Starten des Plastischen Readers (C#)](./quickstart.md)

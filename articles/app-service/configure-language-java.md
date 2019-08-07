@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617468"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498525"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurieren einer Windows-Java-App für Azure App Service
 
@@ -35,7 +35,7 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java-Ent
 Um die Datei `server.xml` oder andere Konfigurationsdateien von Tomcat zu bearbeiten, notieren Sie zuerst Ihre Tomcat-Hauptversion im Portal.
 
 1. Suchen Sie das Tomcat-Stammverzeichnis für Ihre Version, indem Sie den Befehl `env` ausführen. Suchen Sie nach der Umgebungsvariable, die mit `AZURE_TOMCAT` beginnt und Ihrer Hauptversion entspricht. Beispielsweise verweist `AZURE_TOMCAT85_HOME` auf das Tomcat-Verzeichnis für Tomcat 8.5.
-1. Nachdem Sie das Tomcat-Stammverzeichnis für Ihre Version identifiziert haben, kopieren Sie das Konfigurationsverzeichnis nach `D:\home`. Wenn beispielsweise `AZURE_TOMCAT85_HOME` den Wert `D:\Program Files (x86)\apache-tomcat-8.5.37` aufweist, lautet der vollständige Pfad des kopierten Konfigurationsverzeichnisses `D:\home\tomcat\conf`.
+1. Nachdem Sie das Tomcat-Stammverzeichnis für Ihre Version identifiziert haben, kopieren Sie das Konfigurationsverzeichnis nach `D:\home`. Wenn beispielsweise `AZURE_TOMCAT85_HOME` den Wert `D:\Program Files (x86)\apache-tomcat-8.5.37` aufweist, lautet der neue Pfad des kopierten Verzeichnisses `D:\home\apache-tomcat-8.5.37`.
 
 Starten Sie dann Ihre App Service-Instanz neu. Ihre Bereitstellungen sollten wie vorher in `D:\home\site\wwwroot\webapps` ausgeführt werden.
 

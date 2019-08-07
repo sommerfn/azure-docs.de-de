@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719336"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385717"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach
 
@@ -30,7 +30,25 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
 
 Der auf Ihrem Gerät ausgeführte Clientcode legt für jede an Ihren IoT-Hub gesendete Telemetrienachricht die Anwendungseigenschaft `temperatureAlert` fest. Wenn der Clientcode eine Temperatur von über 30 °C erkennt, wird diese Eigenschaft auf `true` festgelegt. Andernfalls wird die Eigenschaft auf `false` festgelegt.
 
-In diesem Thema richten Sie das Routing für Ihren IoT-Hub ein, damit Nachrichten mit `temperatureAlert = true` an einen Service Bus-Endpunkt gesendet werden. Außerdem richten Sie eine Logik-App ein, die beim Eintreffen der Nachrichten beim Service Bus-Endpunkt ausgelöst wird und Ihnen daraufhin eine E-Mail-Benachrichtigung sendet.
+Folgendes sieht Nachrichten ähnlich, die bei Ihrem IoT-Hub eingehen und die Telemetriedaten in Text und die `temperatureAlert`-Eigenschaft in den Anwendungseigenschaften enthalten (Systemeigenschaften werden nicht angezeigt):
+
+```json
+{
+  "body": {
+    "messageId": 18,
+    "deviceId": "Raspberry Pi Web Client",
+    "temperature": 27.796111770668457,
+    "humidity": 66.77637926438427
+  },
+  "applicationProperties": {
+    "temperatureAlert": "false"
+  }
+}
+```
+
+Weitere Informationen über das IoT Hub-Nachrichtenformat finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md).
+
+In diesem Artikel haben Sie das Routing Ihres IoT-Hubs zum Senden von Nachrichten mit der `temperatureAlert`-Eigenschaft mit dem Wert `true` an einen Service Bus-Endpunkt eingerichtet. Anschließend haben Sie eine Logik-App eingerichtet, die bei auf dem Service Bus-Endpunkt eingehenden Nachrichten ausgelöst wird und Ihnen eine E-Mail-Benachrichtigung sendet.
 
 ## <a name="what-you-do"></a>Aufgaben
 
@@ -90,7 +108,7 @@ Fügen Sie Ihrem IoT-Hub einen benutzerdefinierten Endpunkt für die Service Bu
 
 ### <a name="add-a-custom-endpoint"></a>Hinzufügen eines benutzerdefinierten Endpunkts
 
-1. Öffnen Sie Ihren IoT-Hub. Wählen Sie dazu am besten im Ressourcenbereich die Option **Ressourcengruppen**, Ihre Ressourcengruppe und anschließend in der Ressourcenliste Ihren IoT-Hub aus.
+1. Öffnen Sie Ihren IoT Hub. Wählen Sie dazu am besten im Ressourcenbereich die Option **Ressourcengruppen**, Ihre Ressourcengruppe und anschließend in der Ressourcenliste Ihren IoT-Hub aus.
 
 1. Wählen Sie unter **Messaging** die Option **Nachrichtenrouting** aus. Wählen Sie im Bereich **Nachrichtenrouting** die Registerkarte **Benutzerdefinierte Endpunkte** und anschließend **+ Hinzufügen** aus. Wählen Sie in der Dropdownliste die Option **Service Bus-Warteschlange** aus.
 

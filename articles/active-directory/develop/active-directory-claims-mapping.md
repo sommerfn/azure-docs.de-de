@@ -1,10 +1,12 @@
 ---
-title: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App auf einem Azure AD-Mandanten (öffentliche Vorschau)
+title: Anpassen von Ansprüchen für eine App in einem Azure AD-Mandanten (Vorschauversion)
 description: Auf dieser Seite wird die Anspruchszuordnung in Azure Active Directory beschreiben.
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546204"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381070"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -177,7 +179,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| userName |
+| username |
 | uti |
 | ver |
 | verified_primary_email |
@@ -284,7 +286,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 
-| `Source` | ID | BESCHREIBUNG |
+| `Source` | id | BESCHREIBUNG |
 |-----|-----|-----|
 | Benutzer | surname | Familienname |
 | Benutzer | givenname | Vorname |
@@ -384,7 +386,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabelle 5: Attribute, die als Datenquelle für SAML-NameID zulässig sind
 
-|`Source`|ID|BESCHREIBUNG|
+|`Source`|id|BESCHREIBUNG|
 |-----|-----|-----|
 | Benutzer | mail|E-Mail-Adresse|
 | Benutzer | userprincipalname|Benutzerprinzipalname|

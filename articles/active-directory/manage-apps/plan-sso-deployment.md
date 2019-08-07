@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5278d504c43688bf064b869982938db52b1b1bf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164956"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477123"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -39,7 +39,7 @@ Azure Marketplace verfügt über mehr als 3.000 Anwendungen mit vorintegrierten 
 ## <a name="plan-your-sso-team"></a>Planen des SSO-Teams
 
 - **Binden Sie die richtigen Beteiligten ein**: Wenn Technologieprojekte scheitern, liegt dies in der Regel an unterschiedlichen Erwartungen hinsichtlich Auswirkungen, Ergebnissen und Verantwortlichkeiten. Um diese Fallstricke zu vermeiden, stellen Sie sicher, dass Sie die [richtigen Beteiligten hinzuziehen](https://aka.ms/deploymentplans) und dass die Beteiligten ihre Rollen verstehen.
-- **Planen der Kommunikation**: Kommunikation ist entscheidend für den Erfolg jedes neuen Diensts. Kommunizieren Sie proaktiv mit Ihren Benutzern darüber, wie sich ihre Erfahrungen ändern werden, wann sie sich ändern und wie Sie Unterstützung erhalten, wenn sie auf Probleme stoßen. Überprüfen Sie die Optionen dafür, [wie Endbenutzer auf ihre SSO-fähigen Anwendungen zugreifen](end-user-experiences.md), und gestalten Sie Ihre Kommunikation entsprechend Ihrer Auswahl. 
+- **Planen der Kommunikation**: Kommunikation ist entscheidend für den Erfolg jedes neuen Diensts. Kommunizieren Sie proaktiv mit Ihren Benutzern darüber, wie sich die Nutzung ändern wird, wann sie sich ändert und wie Sie Unterstützung erhalten, wenn sie auf Probleme stoßen. Überprüfen Sie die Optionen dafür, [wie Endbenutzer auf ihre SSO-fähigen Anwendungen zugreifen](end-user-experiences.md), und gestalten Sie Ihre Kommunikation entsprechend Ihrer Auswahl. 
 
 ## <a name="plan-your-sso-protocol"></a>Planen des SSO-Protokolls
 
@@ -54,7 +54,7 @@ Es gibt zwei grundlegende Möglichkeiten, wie Sie Ihre Benutzer für einmaliges 
 ### <a name="considerations-for-federation-based-sso"></a>Überlegungen zu verbundbasiertem SSO
 
 - **Verwenden von OpenID Connect und OAuth**: Wenn die Anwendung, mit der Sie eine Verbindung herstellen, dies unterstützt, verwenden Sie die OIDC/OAuth 2.0-Methode, um SSO für diese Anwendung zu aktivieren. Diese Methode erfordert weniger Konfiguration und ermöglicht eine größere Benutzerfreundlichkeit. Weitere Informationen finden Sie unter [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1.0](../develop/v2-protocols-oidc.md) und im [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-- **Endpunktkonfigurationen für SAML-basiertes SSO**: Wenn Sie SAML verwenden, benötigen Ihre Entwickler vor der Konfiguration der Anwendung spezifische Informationen. Weitere Informationen finden Sie unter [Konfigurieren grundlegender SAML-Optionen](configure-single-sign-on-portal.md).
+- **Endpunktkonfigurationen für SAML-basiertes SSO**: Wenn Sie SAML verwenden, benötigen Ihre Entwickler vor der Konfiguration der Anwendung spezifische Informationen. Weitere Informationen finden Sie unter [Bearbeiten der grundlegenden SAML-Konfiguration](configure-single-sign-on-non-gallery-applications.md).
 - **Zertifikatverwaltung für SAML-basiertes SSO**: Wenn Sie Verbund-SSO für Ihre Anwendung aktivieren, erstellt Azure AD ein Zertifikat, das standardmäßig drei Jahre lang gültig ist. Sie können das Ablaufdatum für dieses Zertifikat bei Bedarf anpassen. Stellen Sie sicher, dass Sie über Prozesse zur Erneuerung von Zertifikaten vor deren Ablauf verfügen. Weitere Informationen finden Sie unter [Verwalten von Azure AD-Zertifikaten](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
 
 ### <a name="considerations-for-password-based-sso"></a>Überlegungen zu kennwortbasiertem einmaligem Anmelden

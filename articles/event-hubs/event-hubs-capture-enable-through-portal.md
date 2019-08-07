@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18dea8e8e4cfcabec63e35dd302f6a5259721a8a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822544"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320310"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Aktivieren der Erfassung von über Azure Event Hubs gestreamten Ereignissen
 
@@ -47,10 +47,8 @@ Wenn Sie Daten in Azure Data Lake Store erfassen möchten, müssen Sie ein Data 
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Erstellen eines Azure Data Lake Store-Kontos und Erstellen von Ordnern
 
-> [!NOTE]
-> Die Event Hubs Capture-Funktion unterstützt zurzeit nur Gen 1 von Azure Data Lake Store, nicht Gen 2. 
 
-1. Erstellen Sie gemäß der Anleitung unter [Erste Schritte mit Azure Data Lake Store über das Azure-Portal](../data-lake-store/data-lake-store-get-started-portal.md) ein Data Lake Store Gen 1-Konto.
+1. Erstellen Sie gemäß der Anleitung unter [Erste Schritte mit Azure Data Lake Store über das Azure-Portal](../data-lake-store/data-lake-store-get-started-portal.md) ein Data Lake Store-Konto.
 2. Führen Sie die Anleitungsschritte im Abschnitt [Zuweisen von Berechtigungen für Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) aus, um unter dem Data Lake Store-Konto einen Ordner zu erstellen, in dem Sie die Daten aus Event Hubs erfassen möchten. Sie können für Event Hubs auch Berechtigungen zuweisen, damit diese Daten in Ihr Data Lake Store-Konto schreiben können.  
 
 

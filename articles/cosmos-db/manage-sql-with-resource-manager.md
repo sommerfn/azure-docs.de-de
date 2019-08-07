@@ -4,14 +4,14 @@ description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Kon
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5683fd072961c7793d8f4bbeb9ecc16a93dd7373
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242590"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500505"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die SQL (Core)-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
@@ -20,7 +20,9 @@ ms.locfileid: "66242590"
 Erstellen Sie Azure Cosmos DB-Ressourcen mithilfe einer Azure Resource Manager-Vorlage. Mit dieser Vorlage wird ein Azure Cosmos-Konto mit zwei Containern erstellt, die sich auf Datenbankebene einen Durchsatz von 400 RU/s teilen. Kopieren Sie die Vorlage, und stellen Sie sie wie unten gezeigt bereit, oder besuchen Sie den [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/), und führen Sie die Bereitstellung über das Azure-Portal durch. Sie können die Vorlage auch auf Ihren lokalen Computer herunterladen oder eine neue Vorlage erstellen und den lokalen Pfad mit dem Parameter `--template-file` angeben.
 
 > [!NOTE]
-> Derzeit können Sie keine benutzerdefinierten Funktionen (User Defined Functions, UDFs), gespeicherten Prozeduren und Trigger mithilfe von Resource Manager-Vorlagen bereitstellen. 
+>
+> - Derzeit können Sie keine benutzerdefinierten Funktionen (User Defined Functions, UDFs), gespeicherten Prozeduren und Trigger mithilfe von Resource Manager-Vorlagen bereitstellen.
+> - Das gleichzeitige Hinzufügen und Entfernen von Speicherorten zu einem Azure Cosmos-Konto bzw. das Ändern anderer Eigenschaften ist nicht möglich. Dies muss in separaten Vorgängen ausgeführt werden.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

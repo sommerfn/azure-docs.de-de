@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 392699182859a090c13304f63d28a78b95a65ec7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87e5ec82299ef9ddc8bc8756196bb2ace3d1f6f3
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024023"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414240"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Suchexplorer zum Abfragen von Daten in Azure Search 
 
@@ -85,7 +85,7 @@ Fügen Sie **$select** hinzu, um die Ergebnisse auf die explizit benannten Felde
 Azure Search gibt die ersten 50 Übereinstimmungen basierend auf dem Suchrang zurück. Um den nächsten Satz von übereinstimmenden Dokumenten abzurufen, fügen Sie **$top=100,&$skip=50** an, um das Resultset auf 100 Dokumente zu vergrößern (Standardwert 50, Höchstwert 1.000) und die ersten 50 Dokumente zu überspringen. Denken Sie daran, dass Sie Suchkriterien angeben müssen, z.B. einen Abfragebegriff oder -ausdruck, um priorisierte Ergebnisse zu erhalten. Beachten Sie, dass sich die Suchbewertungen verringern, je weiter Sie in die Suchergebnisse vordringen.
 
    ```Input
-   search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100,&$skip=50
+   search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
    ```
 
    **Ergebnisse**
@@ -94,13 +94,25 @@ Azure Search gibt die ersten 50 Übereinstimmungen basierend auf dem Suchrang zu
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filterausdrücke (größer als, kleiner als, gleich)
 
-Verwenden Sie den Parameter **$filter**, wenn Sie anstelle einer Freitextsuche präzise Kriterien angeben möchten. In diesem Beispiel wird nach einer Anzahl von Schlafzimmern größer als 3 gesucht: `search=seattle condo&$filter=beds gt 3&$count=true`
+Verwenden Sie den Parameter **$filter**, wenn Sie anstelle einer Freitextsuche präzise Kriterien angeben möchten. In diesem Beispiel wird für die Anzahl von Schlafzimmern nach einem Wert größer als 3 gesucht:
+
+   ```Input
+   search=seattle condo&$filter=beds gt 3&$count=true
+   ```
+   
+   **Ergebnisse**
 
    ![Filterausdruck](./media/search-explorer/search-explorer-example-filter.png "Filtern nach Kriterien")
 
 ## <a name="order-by-expressions"></a>Sortierausdrücke
 
-Fügen Sie **$orderby** hinzu, um die Ergebnisse nach einem anderen Feld als der Suchbewertung zu sortieren. Als Beispielausdruck zum Testen können Sie `search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc` verwenden.
+Fügen Sie **$orderby** hinzu, um die Ergebnisse nach einem anderen Feld als der Suchbewertung zu sortieren. Als Beispielausdruck zum Testen können Sie den folgenden verwenden:
+
+   ```Input
+   search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc
+   ```
+   
+   **Ergebnisse**
 
    ![orderby-Ausdruck](./media/search-explorer/search-explorer-example-ordery.png "Ändern der Sortierreihenfolge")
 

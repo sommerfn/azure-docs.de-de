@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: afe69d396c42023df8fcf5e4a6772771afc75c76
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb9362c4d58deb5472c8d5adab39cdd1cc4e2600
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606248"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333571"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -46,21 +46,7 @@ In der folgenden Tabelle sind die Funktionen des Speech SDK und der REST-APIs au
 
 ## <a name="get-started-with-speech-to-text"></a>Erste Schritte mit der Spracherkennung
 
-Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen bereit. Diese sind jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. In dieser Tabelle sind alle Schnellstarts für das Speech SDK nach Sprache aufgelistet.
-
-| Schnellstart | Plattform | API-Referenz |
-|------------|----------|---------------|
-| [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux, macOS | [Browse](https://aka.ms/csspeech/javaref) |
-| [JavaScript, Browser](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Browser, Windows, Linux, macOS | [Browse](https://aka.ms/AA434tv) |
-| [JavaScript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Browse](https://aka.ms/AA434tv) |
-| [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python) | Windows, Linux, macOS | [Browse](https://aka.ms/AA434tr)  |
+Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen bereit. Diese sind jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. In [dieser Tabelle](https://aka.ms/csspeech#5-minute-quickstarts) sind alle Schnellstarts für das Speech-SDK nach Plattform und Sprache aufgelistet.  Einen API-Verweis finden Sie auch [hier](https://aka.ms/csspeech#reference).
 
 Wenn Sie den Spracherkennungs-REST-Dienst verwenden möchten, finden Sie weitere Informationen unter [REST-APIs](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
@@ -100,7 +86,7 @@ Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs oder Cust
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Speech SDK](https://aka.ms/csspeech)
 * [Speech-Geräte-SDK](speech-devices-sdk.md)
 * [REST-API: Spracherkennung](rest-speech-to-text.md)
 * [REST-API: Sprachsynthese](rest-text-to-speech.md)

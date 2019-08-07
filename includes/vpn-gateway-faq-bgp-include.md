@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659814"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68386878"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
 Nein, BGP wird von Azure-VPN-Gateways vom Typ **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird NICHT unterstützt.
@@ -88,7 +88,7 @@ Ja.
 Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem GatewaySubnet-Bereich für Aktiv/Standby-VPN-Gateways oder zwei IP-Adressen für Aktiv/Aktiv-VPN-Gateways zu. Die tatsächlich zugeordneten BGP-IP-Adressen können mithilfe des PowerShell-Cmdlets „Get-AzVirtualNetworkGateway“ (Eigenschaft „bgpPeeringAddress“) oder über das Azure-Portal (unter der Eigenschaft „BGP-ASN konfigurieren“ auf der Gatewaykonfigurationsseite) ermittelt werden.
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Welche Anforderungen müssen die BGP-Peer-IP-Adressen auf meinem VPN-Gerät erfüllen?
-Ihre lokale BGP-Peeradresse darf **NICHT** der öffentlichen IP-Adresse Ihres VPN-Geräts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine der Loopbackschnittstelle auf dem Gerät zugewiesene Adresse handeln. Beachten Sie jedoch, dass keine APIPA-Adresse (169.254.x.x) verwendet werden kann. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt.
+Ihre lokale BGP-Peeradresse darf **NICHT** der öffentlichen IP-Adresse Ihres VPN-Geräts oder dem Vnet-Adressraum des VPN-Gateways entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine der Loopbackschnittstelle auf dem Gerät zugewiesene Adresse handeln. Beachten Sie jedoch, dass keine APIPA-Adresse (169.254.x.x) verwendet werden kann. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt.
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>Was muss ich bei Verwendung von BGP als Adresspräfixe für das lokale Netzwerkgateway angeben?
 Das lokale Azure-Netzwerkgateway gibt die anfänglichen Adresspräfixe für das lokale Netzwerk an. Mit BGP müssen Sie das Hostpräfix (/32-Präfix) Ihrer BGP-Peer-IP-Adresse als Adressraum für das lokale Netzwerk zuordnen. Wenn Ihre BGP-Peer-IP-Adresse 10.52.255.254 lautet, müssen Sie 10.52.255.254/32 als LocalNetworkAddressSpace für das lokale Netzwerkgateway angeben, das dieses lokale Netzwerkgateway darstellt. Dadurch wird sichergestellt, dass das Azure-VPN-Gateway die BGP-Sitzung über den S2S-VPN-Tunnel herstellt.

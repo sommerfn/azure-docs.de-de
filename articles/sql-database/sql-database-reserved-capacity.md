@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/01/2019
-ms.openlocfilehash: 8c4fd3d49b4df3b3d18802e49d51aa54c0b58333
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 07/19/2019
+ms.openlocfilehash: 1cc8828f5a936b130480c2c7516d00b8bee6760f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566152"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357276"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
@@ -58,7 +58,7 @@ In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|
 |Leistungsstufe|Die Dienstebene für die SQL-Datenbank-Instanzen.
 |Begriff        |Ein Jahr oder drei Jahre|
-|Menge    |Die Anzahl von Instanzen, die innerhalb der Reservierung von SQL-Datenbank-Kapazitäten erworben werden. Die Menge ist die Anzahl der ausgeführten SQL-Datenbank-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Beispiel: Wenn Sie zehn SQL-Datenbank-Instanzen in der Region „USA, Osten“ ausführen, geben Sie als Menge 10 an, um den Vorteil für alle ausgeführten Computer zu maximieren. |
+|Menge    |Die Menge an Computeressourcen, die innerhalb der reservierten SQL-Datenbank-Kapazitätsreservierung erworben werden. Die Menge entspricht einer Anzahl von virtuellen Kernen in der ausgewählten Azure-Region und der Leistungsstufe, die reserviert werden und den Abrechnungsrabatt erhalten. Wenn Sie beispielsweise SQL-Datenbankinstanzen mit der gesamten Computekapazität von 16 virtuellen Gen5-Kernen in der Region „USA, Osten“ ausführen oder ausführen möchten, geben Sie als Menge „16“ an, um die Vorteile für alle Instanzen zu maximieren. |
 
 1. Überprüfen Sie die Kosten für die Reservierung von SQL-Datenbank-Kapazitäten im Abschnitt **Kosten**.
 1. Wählen Sie die Option **Kaufen**.
@@ -66,9 +66,9 @@ In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 
 ## <a name="cancellations-and-exchanges"></a>Stornierungen und Umtausch
 
-Wenn Sie Ihre Reservierung von SQL-Datenbank-Kapazitäten stornieren möchten, wird unter Umständen eine Gebühr für die vorzeitige Kündigung in Höhe von 12% berechnet. Rückerstattungen basieren auf dem niedrigsten Preis (entweder Ihrem Kaufpreis oder dem aktuellen Preis für die Reservierung). Rückerstattungen sind auf 50.000 US-Dollar pro Jahr beschränkt. Die Rückerstattung, die Sie erhalten, umfasst den verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12%. Navigieren Sie zum Anfordern einer Stornierung im Azure-Portal zu der Reservierung, und wählen Sie **Erstattung** aus, um eine Supportanfrage zu erstellen.
+Wenn Sie Ihre Reservierung von SQL-Datenbank-Kapazitäten stornieren möchten, wird unter Umständen eine Gebühr für die vorzeitige Kündigung in Höhe von 12% berechnet. Rückerstattungen basieren auf dem niedrigsten Preis (entweder Ihrem Kaufpreis oder dem aktuellen Preis für die Reservierung). Rückerstattungen sind auf 50.000 US-Dollar pro Jahr beschränkt. Die Rückerstattung, die Sie erhalten, umfasst den verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12%. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und klicken Sie auf **Rückerstattung**.
 
-Wenn Sie Ihre Reservierung der reservierten SQL-Datenbank-Kapazitäten in eine andere Region, einen anderen Bereitstellungstyp, eine andere Leistungsstufe oder Laufzeit ändern müssen, können Sie sie gegen eine andere Reservierung mit gleichem oder höherem Wert umtauschen. Das Startdatum der Laufzeit für die neue Reservierung wird nicht von der umgetauschten Reservierung übernommen. Die Laufzeit von einem oder drei Jahren beginnt ab der Erstellung der neuen Reservierung. Navigieren Sie zum Anfordern eines Umtauschs im Azure-Portal zu der Reservierung, und wählen Sie **Umtausch** aus, um eine Supportanfrage zu erstellen.
+Wenn Sie Ihre Reservierung der reservierten SQL-Datenbank-Kapazitäten in eine andere Region, einen anderen Bereitstellungstyp, eine andere Leistungsstufe oder Laufzeit ändern müssen, können Sie sie gegen eine andere Reservierung mit gleichem oder höherem Wert umtauschen. Das Startdatum der Laufzeit für die neue Reservierung wird nicht von der umgetauschten Reservierung übernommen. Die Laufzeit von einem oder drei Jahren beginnt ab der Erstellung der neuen Reservierung. Navigieren Sie im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Exchange** (Umtauschen) aus, um eine Reservierung umzutauschen.
 
 Weitere Informationen zum Umtausch oder zur Rückerstattung von Reservierungen finden Sie unter [Reservierungsumtausch und -rückerstattung](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 

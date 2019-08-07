@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47e45a7dac8abc65f414fedd0fd910e3a7a78113
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508819"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500010"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 
 Benutzerdefinierte Azure Active Directory B2C-Richtlinien (Azure AD B2C), die das Identity Experience Framework nutzen, bieten ihrem Unternehmen einen zentralisierten Dienst. Dieser Dienst reduziert die Komplexität des Identitätsverbunds in einer großen Interessengemeinschaft. Die Komplexität wird auf eine einzelne Vertrauensstellung und einen einzelnen Metadatenaustausch reduziert.
 
-Hierfür ist erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, für die das Identity Experience Framework genutzt wird, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
+Hierfür ist erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework verwenden, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
 
 - Welche sind die Richtlinien, die sich auf rechtliche Fragen, die Sicherheit, den Datenschutz und den Schutz von Daten beziehen und eingehalten werden müssen?
 - Wer sind die Kontakte, und wie werden Benutzer zu anerkannten Teilnehmern?

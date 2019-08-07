@@ -1,23 +1,23 @@
 ---
-title: Rückgabe Ihres Azure Data Box Edge-Geräts | Microsoft-Dokumentation
-description: Beschreibt, wie das Azure Data Box Edge-Gerät zurückgegeben und die Bestellung des Geräts gelöscht wird.
+title: Zurückgeben oder Ersetzen Ihres Azure Data Box Edge-Geräts | Microsoft-Dokumentation
+description: Informationen zum Zurückgeben oder Ersetzen eines Azure Data Box Edge-Geräts
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 07/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65468459"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356147"
 ---
-# <a name="return-your-azure-data-box-edge-device"></a>Rückgabe Ihres Azure Data Box Edge-Geräts
+# <a name="return-or-replace-your-azure-data-box-edge-device"></a>Zurückgeben oder Ersetzen Ihres Azure Data Box Edge-Geräts
 
-In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Data Box Edge-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen.
+In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Data Box Edge-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen oder ein Ersatzgerät anfordern.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -26,6 +26,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Öffnen eines Supporttickets zur Rückgabe Ihres Geräts
 > * Packen des Geräts und Planen einer Abholung
 > * Löschen der Ressourcen im Azure-Portal
+> * Anfordern eines Ersatzgeräts
 
 ## <a name="erase-data-from-the-device"></a>Löschen der Daten vom Gerät
 
@@ -105,6 +106,21 @@ Löschen Sie mit folgenden Schritten das Gerät und die Ressource im Azure-Porta
     ![Bestätigen des Löschens](media/data-box-edge-return-device/delete-resource-2.png)
 
 Sie werden nach erfolgreichem Löschen von Gerät und zugeordneter Ressource benachrichtigt.
+
+## <a name="get-a-replacement-device"></a>Anfordern eines Ersatzgeräts
+
+Es wird ein Ersatzgerät benötigt, wenn das vorhandene Gerät einen Hardwarefehler aufweist oder ein Upgrade erforderlich ist. Führen Sie die folgenden Schritte aus, wenn Ihr Gerät einen Hardwarefehler aufweist:
+
+1. [Öffnen Sie ein Supportticket für ein Hardwareproblem.](#open-a-support-ticket) Der Microsoft-Support prüft dann, ob ein Ersatzteil für die betreffende Instanz verfügbar oder ein Hardwareupgrade nötig ist. In beiden Fällen bestellt der Support ein Ersatzgerät.
+2. [Erstellen Sie eine neue Ressource](data-box-edge-deploy-prep.md#create-a-new-resource) für das Ersatzgerät. Achten Sie dabei darauf, das Kontrollkästchen für die Option **Ich habe ein Data Box Edge-Gerät** zu aktivieren. 
+3. Sobald Sie das Ersatzgerät erhalten haben, sollten Sie es für die neue Ressource [installieren](data-box-edge-deploy-install.md) und [aktivieren](data-box-edge-deploy-connect-setup-activate.md).
+4. Gehen Sie wie folgt vor, um das Originalgerät zurückzugeben:
+    1. Öffnen Sie ein weiteres Ticket, um das Originalgerät zurückzugeben.
+    2. [Löschen Sie alle Daten von dem Gerät.](#erase-data-from-the-device)
+    3. [Planen Sie die Abholung.](#schedule-a-pickup)
+    5. [Löschen Sie die Ressource](#delete-the-resource), die dem zurückgegebenen Gerät zugeordnet ist.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

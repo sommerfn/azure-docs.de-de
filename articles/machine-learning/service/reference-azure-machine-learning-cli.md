@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 601a6139b81e45fa5005b7510189eac594c29fb0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a82a44127a470b6366eeffc60c73f762d5a8f525
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67475995"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348585"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 
@@ -178,29 +178,33 @@ Die folgenden Befehle veranschaulichen, wie ein trainiertes Modell registriert u
     az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
     ```
     
-    Das folgende Beispiel ist ein `inferenceconfig.json`-Dokument:
-    ```json
-    {
-    "entryScript": "score.py",
-    "runtime": "python",
-    "condaFile": "myenv.yml",
-    "extraDockerfileSteps": null,
-    "sourceDirectory": null,
-    "enableGpu": false,
-    "baseImage": null,
-    "baseImageRegistry": null
-    }
-    ```
-    Im Folgenden finden Sie ein Beispiel für das Dokument „deploymentconfig.json“:
-    ```json
-    {
-    "computeType": "aks",
-    "ComputeTarget": "akscomputetarget"
-    }
-    ```
+    Weitere Informationen zum Rückschlusskonfigurationsdatei-Schema finden Sie unter [Inference configuration schema (Rückschlusskonfigurationsschema)](#inferenceconfig).
+    
+    Weitere Informationen zum Bereitstellungskonfigurationsdatei-Schema finden Sie unter [Deployment configuration schema (Bereitstellungskonfigurationsschema)](#deploymentconfig).
 
     Weitere Informationen finden Sie unter [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy).
 
+<a id="inferenceconfig"></a>
+
+## <a name="inference-configuration-schema"></a>Rückschlusskonfigurationsschema
+
+[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
+
+<a id="deploymentconfig"></a>
+
+## <a name="deployment-configuration-schema"></a>Bereitstellungskonfigurationsschema
+
+### <a name="local-deployment-configuration-schema"></a>Konfigurationsschema zur lokalen Bereitstellung
+
+[!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
+
+### <a name="azure-container-instance-deployment-configuration-schema"></a>Konfigurationsschema zur Bereitstellung einer Azure-Containerinstanz 
+
+[!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
+
+### <a name="azure-kubernetes-service-deployment-configuration-schema"></a>Konfigurationsschema zur Bereitstellung von Azure Kubernetes Service
+
+[!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

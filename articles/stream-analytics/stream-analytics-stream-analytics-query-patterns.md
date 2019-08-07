@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 729385a2ce9feb6e69f9be29c2175b403093be3f
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620806"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413366"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster
 
@@ -121,7 +121,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
             ELSE CONCAT(CAST(COUNT(*) AS NVARCHAR(MAX)), ' ', Make, 's')
         END AS CarsPassed,
-        System.TimeStamp() AS Time
+        System.TimeStamp() AS AsaTime
     FROM
         Input TIMESTAMP BY Time
     GROUP BY
@@ -173,7 +173,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
     SELECT
         Make,
-        System.TimeStamp() AS Time,
+        System.TimeStamp() AS AsaTime,
         COUNT(*) AS [Count]
     INTO
         AlertOutput
@@ -231,7 +231,7 @@ Beispiel:
 ```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
-     System.TIMESTAMP() AS TIME
+     System.TIMESTAMP() AS AsaTIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
@@ -379,10 +379,9 @@ GROUP BY
 
 **Erläuterung**: Es gibt zwei Schritte in der Abfrage. Im ersten Schritt wird in einem Zeitfenster von zehn Minuten nach dem aktuellen Zeitstempel gesucht. Im zweiten Schritt werden die Ergebnisse der ersten Abfrage mit dem ursprünglichen Stream zusammengeführt, um nach Ereignissen zu suchen, die dem letzten Zeitstempel des jeweiligen Zeitfensters entsprechen. 
 
-## <a name="query-example-detect-the-absence-of-events"></a>Abfragebeispiel: Erkennen des Fehlens von Ereignissen
+## <a name="query-example-locate-correlated-events-in-a-stream"></a>Abfragebeispiel: Suchen von korrelierten Ereignissen in einem Stream
 
-**Beschreibung:** Überprüfen, ob der Stream einen Wert enthält, der einem bestimmten Kriterium entspricht.
-Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von zwei aufeinanderfolgenden Fahrzeugen der gleichen Marke befahren?
+**Beschreibung:** Suchen Sie nach korrelierten Ereignissen in einem Stream. Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von zwei aufeinanderfolgenden Fahrzeugen der gleichen Marke befahren?
 
 **Eingabe**:
 

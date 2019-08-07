@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 618377d532dc932eb21f282ac8ba7f6c07df16f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6260a619ad3dfda65fcdfc1180cba4002dd23d0
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113440"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499895"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -143,6 +143,31 @@ Wenn beispielsweise nur eine benutzerdefinierte Nachricht in der Sprache Deutsch
 1. Wählen Sie die Sprache aus.
 1. Wählen Sie eine MP3- oder WAV-Audiodatei zum Hochladen aus.
 1. Wählen Sie **Hinzufügen**.
+
+### <a name="custom-voice-message-defaults"></a>Benutzerdefinierte Standardsprachnachrichten
+
+Beispielskripts zum Erstellen von benutzerdefinierten Nachrichten.
+
+| Nachrichtenname | Skript |
+| --- | --- |
+| Authentifizierung erfolgreich | Ihre Anmeldung wurde erfolgreich überprüft. Auf Wiedersehen. |
+| Grußformel bei Durchwahl | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie #, um Ihre Anmeldung abzuschließen. |
+| Betrugsmeldung bestätigen | Eine Betrugswarnung wurde ausgegeben. Wenden Sie sich an den IT-Helpdesk Ihres Unternehmens, um die Sperrung Ihres Kontos aufzuheben. |
+| Betrug – Grußformel (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. Wenn Sie diese Überprüfung nicht initiiert haben, versucht möglicherweise jemand, auf Ihr Konto zuzugreifen. Drücken Sie die Taste 0 (null), um eine Betrugswarnung abzusenden. So benachrichtigen Sie das IT-Team Ihres Unternehmens und blockieren weitere Überprüfungsversuche. |
+| Betrug wurde gemeldet. Eine Betrugswarnung wurde ausgegeben. | Wenden Sie sich an den IT-Helpdesk Ihres Unternehmens, um die Sperrung Ihres Kontos aufzuheben. |
+| Aktivierung | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Authentifizierung abgelehnt. Erneut versuchen. | Überprüfung abgelehnt. |
+| Erneut versuchen (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Betrug – Grußformel (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden.  Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. Wenn Sie diese Überprüfung nicht initiiert haben, versucht möglicherweise jemand, auf Ihr Konto zuzugreifen. Drücken Sie die Taste 0 (null), um eine Betrugswarnung abzusenden. So benachrichtigen Sie das IT-Team Ihres Unternehmens und blockieren weitere Überprüfungsversuche. |
+| Erneut versuchen (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel nach Ansage der Durchwahlziffern | Wenn Sie bereits bei dieser Durchwahl sind, drücken Sie zum Fortfahren das Nummernzeichen. |
+| Authentifizierung abgelehnt | Sie können zurzeit leider nicht angemeldet werden. Versuchen Sie es später noch mal. |
+| Grußformel bei der Aktivierung (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Aktivierung erneut versuchen (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel bei der Aktivierung (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel vor Ansage der Durchwahlziffern | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Übertragen Sie diesen Anruf an Durchwahl ... |
 
 ## <a name="one-time-bypass"></a>Einmalumgehung
 

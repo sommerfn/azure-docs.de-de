@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: fceea6273f00fdf16d8934533f08bc3494795bc4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f75933940aa97606ca33ab6bfc18fe5871811eef
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433277"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441969"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight
 
@@ -56,12 +56,12 @@ Um den Hadoop-Befehl verwenden zu können, müssen Sie zunächst mithilfe von [S
 Nachdem die Verbindung hergestellt wurde, verwenden Sie die folgende Syntax, um eine Datei in den Speicher hochzuladen.
 
 ```bash
-hadoop -copyFromLocal <localFilePath> <storageFilePath>
+hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 ```
 
 Zum Beispiel, `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-Da sich das Standarddateisystem für HDInsight in Azure Storage befindet, befindet sich die Datei „/example/data.txt“ auch tatsächlich in Azure Storage. Sie können auch folgendermaßen auf die Datei verweisen:
+Da sich das Standarddateisystem für HDInsight in Azure Storage befindet, befindet sich die Datei „/example/data/data.txt“ auch tatsächlich in Azure Storage. Sie können auch folgendermaßen auf die Datei verweisen:
 
     wasbs:///example/data/data.txt
 

@@ -1,5 +1,5 @@
 ---
-title: Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory | Microsoft-Dokumentation
+title: Entfernen von Benutzer- oder Gruppenzuweisungen aus einer App in Azure Active Directory | Microsoft-Dokumentation
 description: Entfernen der Zugriffszuweisung eines Benutzers oder einer Gruppe aus einer Unternehmens-App in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6524a757d885e95637cb05480838db8ac37259
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 380816283156969c47f45a9b47435688df91f4ca
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701948"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381046"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory
 

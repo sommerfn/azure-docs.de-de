@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482949"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477057"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Gewusst wie: Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -49,6 +49,8 @@ In diesem Artikel wird erläutert, wie eine Anwendung im Azure AD-Anwendungskata
 - Stellen Sie beim Kennwort-SSO sicher, dass Ihre Anwendung die Formularauthentifizierung unterstützt, sodass Kennworttresore verwendet werden können, damit einmaliges Anmelden wie erwartet funktioniert.
 
 - Für Anforderungen zur automatischen Benutzerbereitstellung sollte die Anwendung im Katalog aufgeführt sein, wobei die Funktion für einmaliges Anmelden mit SAML 2.0/WS-Fed aktiviert ist. Sie können SSO und die Benutzerbereitstellung zusammen im Portal anfordern, sofern dies nicht bereits aufgeführt ist.
+
+- Für Tests wird ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern benötigt.
 
 >[!NOTE]
 >Die Ausführung erfolgt mit einer hohen Anzahl von SCIM-Connektoranforderungen, sodass wir die Annahme neuer Anforderungen in unserem Portal eingestellt haben. Bitte warten Sie bis auf weiteres mit Ihren Anforderungen. Wir entschuldigen uns für diese Verzögerung und etwaige Unannehmlichkeiten.

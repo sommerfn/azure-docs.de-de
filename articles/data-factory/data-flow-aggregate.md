@@ -3,16 +3,15 @@ title: 'Aggregattransformation in Mapping Data Flow: Azure Data Factory | Micros
 description: Informationen zum bedarfsorientiertem Aggregieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Aggregattransformation
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 21135b26d4bc840b3fcb091e675e5e6bd24d8548
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312115"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314232"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Aggregattransformation in Mapping Data Flow 
 
@@ -39,6 +38,12 @@ Klicken Sie auf die Registerkarte „Aggregate“, um Aggregationsausdrücke zu 
 > [!NOTE]
 > Im Debugmodus kann der Ausdrucks-Generator keine Datenvorschau mit Aggregatfunktionen generieren. Wenn Sie die Datenvorschau für eine Aggregattransformation abrufen möchten, schließen Sie den Ausdrucks-Generator, und rufen Sie die Daten über die Registerkarte „Datenvorschau“ ab.
 
+## <a name="reconnect-rows-and-columns"></a>Neuverbinden von Zeilen und Spalten
+Aggregattransformationen entsprechen im Prinzip den SQL-Abfragen für die Aggregatauswahl. Spalten, die nicht in der GROUP BY-Klausel oder in den Aggregatfunktionen enthalten sind, fließen nicht in die Ausgabe der Aggregattransformation. Wenn andere Spalten vorhanden sind, die Sie in die Ausgabe der aggregierten Zeilen einschließen möchten, müssen Sie eine der folgenden Aktionen ausführen:
+
+* Verwenden Sie eine Aggregatfunktion, um die zusätzliche Spalte einzuschließen, z. B. Last() oder First().
+* Verknüpfen Sie die Spalten vor dem Aggregieren mit dem [Self-Join-Muster](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/) noch mal.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Definieren Sie eine fensterbasierte Aggregation mithilfe der [Fenstertransformation](data-flow-window.md).
+* Definieren Sie eine fensterbasierte Aggregation mithilfe der [Fenstertransformation](data-flow-window.md).

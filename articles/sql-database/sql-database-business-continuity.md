@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228046"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444507"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -58,7 +58,23 @@ Mit automatischen Datenbanksicherungen können Sie eine Datenbank auf einen Zeit
 
 Wenn der maximal unterstützte Aufbewahrungszeitraum für die Point-in-Time-Wiederherstellung für Ihre Anwendung nicht ausreicht, können Sie ihn verlängern, indem Sie eine Richtlinie für die Langzeitaufbewahrung für die Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
-## <a name="recover-a-database-to-another-azure-region"></a>Wiederherstellen einer Datenbank in einer anderen Azure-Region
+## <a name="compare-geo-replication-with-failover-groups"></a>Vergleichen der Georeplikation mit Failovergruppen
+
+[Autofailover-Gruppen](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) vereinfachen die Bereitstellung und die Verwendung von [Georeplikation](sql-database-active-geo-replication.md) und fügen die zusätzlichen Funktionen wie in der folgenden Tabelle beschrieben hinzu:
+
+|                                              | Georeplikation | Failovergruppen  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Automatisches Failover                           |     Nein          |      Ja         |
+| Gleichzeitiges Failover für mehrere Datenbanken  |     Nein          |      Ja         |
+| Aktualisieren der Verbindungszeichenfolge nach einem Failover      |     Ja         |      Nein          |
+| Unterstützung verwalteter Instanzen                   |     Nein          |      Ja         |
+| Kann sich in der selben Region wie die primäre Instanz befinden             |     Ja         |      Nein          |
+| Mehrere Replikate                            |     Ja         |      Nein          |
+| Unterstützung der Leseskalierung                          |     Ja         |      Ja         |
+| &nbsp; | &nbsp; | &nbsp; |
+
+
+## <a name="recover-a-database-to-the-existing-server"></a>Wiederherstellen einer Datenbank auf dem vorhandenen Server
 
 Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentrum ausfällt. Ein solcher Ausfall kann den Geschäftsbetrieb einige wenige Minuten oder mehrere Stunden unterbrechen.
 

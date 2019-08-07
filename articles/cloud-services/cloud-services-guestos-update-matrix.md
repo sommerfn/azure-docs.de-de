@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/8/2019
+ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721126"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405540"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -81,7 +81,7 @@ Das Gastbetriebssystem für September wurde veröffentlicht.
 ## <a name="family-6-releases"></a>Releases von Familie 6
 **Windows Server 2019**
 
-Installierte .NET Framework-Versionen: 3.5, 4.7.2, 4.8
+Installierte .NET Framework-Versionen: 3.5, 4.7.2
 
 > [!NOTE]
 > Das Windows Azure SDK 3.0 für .NET kann [hier][Windows Azure SDK] heruntergeladen werden.
@@ -110,7 +110,7 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2, 4.8
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
 
-Installierte .NET Framework-Versionen: 3.5, 4.6.2, 4.7.2, 4.8
+Installierte .NET Framework-Versionen: 3.5, 4.6
 
 > [!NOTE]
 > Das RDP-Kennwort für Betriebssystemfamilie 5 muss mindestens zehn Zeichen umfassen.

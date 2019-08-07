@@ -1,5 +1,5 @@
 ---
-title: Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Veröffentlichen von Apps in getrennten Netzwerken mit Connectorgruppen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation
 description: Erläutert das Erstellen und Verwalten von Connectorgruppen im Azure AD-Anwendungsproxy.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702477"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381483"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 

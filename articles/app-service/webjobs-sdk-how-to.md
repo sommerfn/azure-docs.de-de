@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ba8a8e5922c012b93ab19a5859aab5c31d35b2b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831791"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424145"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -171,6 +171,7 @@ public static void Run(
 
 Das `QueueTrigger`-Attribut weist die Runtime an, die Funktion jedes Mal aufzurufen, wenn eine Warteschlangennachricht in der `myqueue-items`-Warteschlange angezeigt wird. Das `Blob`-Attribut weist die Runtime an, die Warteschlangennachricht zum Lesen eines Blobs im Container *Beispielarbeitselemente* zu verwenden. Der Inhalt der Warteschlangennachricht, der im `myQueueItem`-Parameter an die Funktion übergeben wird, ist der Name des Blobs.
 
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>Manuelle Trigger
 
@@ -370,7 +371,7 @@ Sie können die folgenden Bindungen konfigurieren:
 
 * [Azure Cosmos DB-Trigger](#azure-cosmosdb-trigger-configuration-version-3x)
 * [Event Hubs-Trigger](#event-hubs-trigger-configuration-version-3x)
-* Queue Storage-Trigger
+* [Queue Storage-Trigger](#queue-storage-trigger-configuration)
 * [SendGrid-Bindung](#sendgrid-binding-configuration-version-3x)
 * [Service Bus-Trigger](#service-bus-trigger-configuration-version-3x)
 

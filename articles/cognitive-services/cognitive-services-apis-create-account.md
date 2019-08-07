@@ -1,34 +1,34 @@
 ---
-title: Erstellen eines Cognitive Services-Kontos im Azure-Portal
+title: Erstellen einer Cognitive Services-Ressource im Azure-Portal
 titlesuffix: Azure Cognitive Services
-description: Anleitung zum Erstellen eines Azure Cognitive Services-APIs-Kontos im Azure-Portal.
+description: Beginnen Sie mit Azure Cognitive Services, indem Sie im Azure-Portal eine Ressource erstellen und abonnieren.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: b857ee0395c447c8699b8f6a812853528812a7bd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9616f3014288e4b2580f474c49c646928db5a08
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445853"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334253"
 ---
-# <a name="create-a-cognitive-services-account-using-the-azure-portal"></a>Erstellen eines Cognitive Services-Kontos im Azure-Portal
+# <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie sich für Azure Cognitive Services registrieren und ein Konto mit einem Abonnement mit einem einzelnen Dienst oder mit mehreren Diensten erstellen. Diese Dienste werden durch Azure-[Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) repräsentiert, die es Ihnen ermöglichen, Verbindungen mit einer oder mehreren der vielen verfügbaren Azure Cognitive Services-APIs herzustellen.
+Verwenden Sie diese Schnellstartanleitung für Ihre ersten Schritte mit Azure Cognitive Services mithilfe des Azure-Portals. Cognitive Services werden von [Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) dargestellt, die Sie in Ihrem Azure-Abonnement erstellen. Verwenden Sie nach dem Erstellen der Ressource die Schlüssel und einen für Sie zum Authentifizieren Ihrer Anwendungen generierten Endpunkt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein gültiges Azure-Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
+* Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Erstellen einer neuen Azure Cognitive Services-Ressource
 
-Vor dem Erstellen einer Ressource müssen Sie über eine Azure-Ressourcengruppe verfügen. Jedes Cognitive Services-Konto (und die zugehörige Azure-Ressource) muss einer Azure-Ressourcengruppe zugeordnet werden. Beim Erstellen eines Kontos haben Sie die Möglichkeit, eine neue Ressourcengruppe zu erstellen oder eine vorhandene zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
+Vor dem Erstellen einer Cognitive Services-Ressource müssen Sie über eine Azure-Ressourcengruppe verfügen, die die Ressource enthalten soll. Beim Erstellen einer neuen Ressource haben Sie die Möglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine bereits vorhandene zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **+Ressource erstellen**.
 
@@ -36,7 +36,7 @@ Vor dem Erstellen einer Ressource müssen Sie über eine Azure-Ressourcengruppe 
 
 2. Sie können verfügbare Cognitive Services wie folgt ermitteln:
     * Verwenden Sie die Suchleiste, und geben Sie den Namen des Diensts ein, den Sie abonnieren möchten.
-        * Geben Sie zum Erstellen einer Ressource für ein Abonnement mit mehreren Diensten in der Suchleiste **Cognitive Services** ein, und wählen Sie die Ressource **Cognitive Services** aus.
+        * Geben Sie in der Suchleiste **Cognitive Services** ein, und klicken Sie auf die Ressource **Cognitive Services**, um eine Ressource für ein Abonnement mit mehreren Diensten zu erstellen.
 
         ![Suchen nach Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
 
@@ -51,7 +51,7 @@ Vor dem Erstellen einer Ressource müssen Sie über eine Azure-Ressourcengruppe 
 
     |    |    |
     |--|--|
-    | **Name** | Ein beschreibender Name für Ihre Cognitive Services-Ressource. Es wird empfohlen, einen aussagekräftigen Namen zu wählen, z.B. *MeinCognitiveServicesKonto*. |
+    | **Name** | Ein beschreibender Name für Ihre Cognitive Services-Ressource. Beispiel: *MyCognitiveServicesAccount*. |
     | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
     | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. |
     | **Preisstufe** | Die Kosten für Ihr Cognitive Services-Konto hängen von den ausgewählten Optionen und Ihrer Nutzung ab. Weitere Informationen finden Sie unter API-[Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
@@ -60,7 +60,7 @@ Vor dem Erstellen einer Ressource müssen Sie über eine Azure-Ressourcengruppe 
     ![Bildschirm „Ressourcenerstellung“](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 
-## <a name="get-the-keys-for-your-subscription"></a>Abrufen der Schlüssel für Ihr Abonnement
+## <a name="get-the-keys-for-your-resource"></a>Abrufen der Schlüssel für die Ressource
 
 Nachdem Sie Ihre Ressource erstellt haben, können Sie sie über das Azure Dashboard aufrufen, wenn Sie sie angeheftet haben. Andernfalls finden Sie sie in **Ressourcengruppen**. Nach dem Auswählen Ihrer Ressource können Sie die Schlüssel abrufen, indem Sie unter **Ressourcenverwaltung** die Option **Schlüssel** wählen.
 
@@ -68,7 +68,7 @@ Nachdem Sie Ihre Ressource erstellt haben, können Sie sie über das Azure Dashb
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen in der Gruppe enthaltenen Ressourcen gelöscht.
 
 So entfernen Sie eine Ressourcengruppe über das Azure-Portal:
 

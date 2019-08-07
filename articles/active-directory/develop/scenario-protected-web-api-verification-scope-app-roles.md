@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ff03316a1f9409d4d6e4b7ddf52d0c8cc7a909
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: b249b99faa62e73b9aa3247f71f88767fca96f01
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551535"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488847"
 ---
 # <a name="protected-web-api-adding-authorization-to-your-api"></a>Geschützte Web-API: Hinzufügen von Autorisierung zu Ihrer API
 
@@ -29,6 +29,12 @@ Dieser Artikel beschreibt, wie Sie Ihrer Web-API eine Berechtigung hinzufügen k
 
 - Anwendungen im Auftrag von Benutzern, die über den richtigen Bereichen verfügen.
 - Daemon-Apps, die die richtigen Anwendungs-Rollen haben.
+
+> [!NOTE]
+> Die Codeausschnitte in diesem Artikel wurden aus folgenden voll funktionsfähigen Beispielen extrahiert:
+>
+> - [Inkrementelles Tutorial zur ASP.NET Core-Web-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37) auf GitHub
+> - [Beispiel zur ASP.NET-Web-API](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
 
 Um eine ASP.NET/ASP.NET Core Web-API zu schützen, müssen Sie das `[Authorize]` Attribut zu einem dieser Elemente hinzufügen:
 
@@ -107,7 +113,7 @@ Die `VerifyUserHasAnyAcceptedScope`-Methode würde Folgendes tun:
     }
 ```
 
-Dieser Beispielcode ist für ASP.NET Core. Für ASP.NET ersetzen Sie einfach `HttpContext.User`durch `ClaimsPrincipal.Current`, und ersetzen Sie die Anspruchstyp `"http://schemas.microsoft.com/identity/claims/scope"`durch `"scp"`. (Siehe auch den Code-Ausschnitt weiter unten in diesem Artikel.)
+Dieser [Beispielcode](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47) ist für ASP.NET Core. Für ASP.NET ersetzen Sie einfach `HttpContext.User`durch `ClaimsPrincipal.Current`, und ersetzen Sie die Anspruchstyp `"http://schemas.microsoft.com/identity/claims/scope"`durch `"scp"`. (Siehe auch den Code-Ausschnitt weiter unten in diesem Artikel.)
 
 ## <a name="verifying-app-roles-in-apis-called-by-daemon-apps"></a>Überprüfen von App-Rollen in APIs, die von Daemon-Apps aufgerufen werden
 
@@ -146,7 +152,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-Dieser Beispielcode ist für ASP.NET Core. Für ASP.NET Core ersetzen Sie einfach `ClaimsPrincipal.Current` mit `HttpContext.User`, und ersetzen Sie den `"roles"`-Anspruchsnamen mit `"http://schemas.microsoft.com/identity/claims/roles"`. (Siehe auch den Code-Ausschnitt oben in diesem Artikel.)
+Dieses Mal gilt der Codeausschnitt für ASP.NET. Für ASP.NET Core ersetzen Sie einfach `ClaimsPrincipal.Current` mit `HttpContext.User`, und ersetzen Sie den `"roles"`-Anspruchsnamen mit `"http://schemas.microsoft.com/identity/claims/roles"`. (Siehe auch den Code-Ausschnitt oben in diesem Artikel.)
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Das Akzeptieren von App-only-Token, wenn die Web-API nur von Daemon-Apps aufgerufen werden soll
 
@@ -155,8 +161,8 @@ Der `roles`-Anspruch wird auch für Benutzer in Benutzerzuordnungsmustern verwen
 Wenn Sie zulassen möchten, dass nur Daemon-Applikationen Ihre Web-API aufrufen, fügen Sie bei der Validierung der App-Rolle eine Bedingung hinzu, dass das Token ein reines App-Token ist:
 
 ```CSharp
-string oid = ClaimsPrincipal.Current.FindFirst("oid");
-string sub = ClaimsPrincipal.Current.FindFirst("sub");
+string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
+string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;
 ```
 

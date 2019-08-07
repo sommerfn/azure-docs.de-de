@@ -9,16 +9,16 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e38e1479c1e094f691e8f22f0a48f9342cae5cf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 299262610c027529749840720f46d6dc97a07b21
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475080"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442268"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Sicherheitsattribute für Azure App Service
 
-In diesem Artikel werden die allgemeinen in Azure App Service integrierten Sicherheitsattribute beschrieben.
+In diesem Artikel werden die in Azure App Service integrierten Sicherheitsattribute beschrieben.
 
 [!INCLUDE [Security attributes header](../../includes/security-attributes-header.md)]
 
@@ -52,7 +52,7 @@ In diesem Artikel werden die allgemeinen in Azure App Service integrierten Siche
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Kunden können Anwendungen in App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.yml) sowie in andere OAuth-kompatible Identitätsanbieter eingebunden werden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md). Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert. |
-| Autorisierung| Ja | Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert.  |
+| Authorization| Ja | Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert.  |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

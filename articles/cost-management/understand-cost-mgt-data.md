@@ -1,6 +1,6 @@
 ---
 title: Verstehen der Daten in Azure Cost Management | Microsoft-Dokumentation
-description: Dieser Artikel hilft Ihnen, besser zu verstehen, welche Daten in Azure Cost Management enthalten sind und wie häufig sie verarbeitet, gesammelt, angezeigt und geschlossen werden.
+description: In diesem Artikel erfahren Sie mehr über die Daten, die in Azure Cost Management enthalten sind, und wie häufig diese verarbeitet, gesammelt, angezeigt und geschlossen werden.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 44b95c92f51ca9782fca492f3dec3142087ecc91
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797016"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384854"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -51,13 +51,13 @@ Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-A
 
 _<sup>**1** </sup> Daten vor Mai 2014 finden Sie im [Azure Enterprise Portal](https://ea.azure.com)._
 
-_<sup>**2** </sup> Daten vor dem 2. Oktober 2018 finden Sie im [Azure-Kontocenter](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> Daten vor dem 2. Oktober 2018 finden Sie im [Azure-Kontocenter](https://account.azure.com/subscriptions)._
 
 _<sup>**3** </sup> Microsoft-Kundenvereinbarungen wurden ab März 2019 abgeschlossen und weisen keine Verlaufsdaten vor diesem Zeitpunkt auf._
 
 _<sup>**4**</sup> Verlaufsdaten für Abonnements, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Siehe [Verlaufsdaten stimmen möglicherweise nicht mit Ihrer Rechnung überein](#historical-data-might-not-match-invoice) weiter unten._
 
-Die folgende Tabelle enthält Angebote, die noch nicht unterstützt werden.
+Folgende Angebote werden noch nicht unterstützt:
 
 | Category (Kategorie)  | **Angebotsname** | **Kontingent-ID** | **Angebotsnummer** |
 | --- | --- | --- | --- |
@@ -92,10 +92,11 @@ Die folgenden Tabellen zeigen Daten, die in Cost Management enthalten sind oder 
 | Nutzung von Marketplace-Angeboten<sup>6</sup> | Steuern – Weitere Informationen finden Sie unter [Erläuterung der Rechnungsbedingungen](../billing/billing-understand-your-invoice.md). |
 | Marketplace-Käufe<sup>6</sup>      | Gutschriften – Weitere Informationen finden Sie unter [Erläuterung der Rechnungsbedingungen](../billing/billing-understand-your-invoice.md). |
 | Reservierungskäufe<sup>7</sup>      |  |
+| Amortisierung von Reservierungskäufen<sup>7</sup>      |  |
 
 _<sup>**5**</sup> Die Nutzung des Azure-Diensts basiert auf Reservierungen und ausgehandelten Preisen._
 
-_<sup>**6**</sup> Die Nutzung des Marketplace und von Marketplace-Käufen ist für die nutzungsbasierte Bezahlung, MSDN und Visual Studio-Angebote derzeit nicht verfügbar._
+_<sup>**6**</sup> Marketplace-Käufe sind für die nutzungsbasierte Bezahlung, MSDN und Visual Studio-Angebote derzeit nicht verfügbar._
 
 _<sup>**7** </sup> Reservierungskäufe sind zurzeit nur für Enterprise Agreement-Konten (EA) verfügbar._
 

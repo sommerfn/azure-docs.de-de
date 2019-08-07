@@ -4,43 +4,43 @@ description: Verwenden des Azure Cosmos DB-Änderungsfeeds in Azure Functions
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: db3f1b6657ae455ae049eaffd6758fc7e6944fb9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 299799566f0d54cc3fa017b032e15b387fe8cdd5
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68001026"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467923"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Serverlose, ereignisbasierte Architekturen mit Azure Cosmos DB und Azure Functions
 
 Azure Functions bietet die einfachste Möglichkeit zum Herstellen einer Verbindung mit dem [Änderungsfeed](change-feed.md). Sie können kleine reaktive Azure-Funktionen erstellen, die automatisch bei jedem neuen Ereignis im Änderungsfeed Ihres Azure Cosmos-Containers ausgelöst werden.
 
-![Serverlose, ereignisbasierte Funktionen mit dem Azure Cosmos DB-Trigger](./media/change-feed-functions/functions.png)
+![Serverlose ereignisbasierte Funktionen, die mit dem Azure Functions-Trigger für Cosmos DB arbeiten](./media/change-feed-functions/functions.png)
 
-Mit dem [Azure Cosmos DB-Trigger](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) können Sie die Skalierung des [Änderungsfeedprozessors](./change-feed-processor.md) sowie die Funktionen zur zuverlässigen Erkennung nutzen, ohne eine [Workerinfrastruktur](./change-feed-processor.md) verwalten zu müssen. Sie können sich ganz auf die Logik Ihrer Azure-Funktion konzentrieren, ohne sich um die Pipeline für die Ereignisquellen kümmern zu müssen. Sie können den Trigger auch mit anderen [Azure Functions-Bindungen](../azure-functions/functions-triggers-bindings.md#supported-bindings) kombinieren.
+Mit dem [Azure Functions-Trigger für Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) können Sie die Skalierung des [Änderungsfeedprozessors](./change-feed-processor.md) sowie die Funktionen zur zuverlässigen Erkennung nutzen, ohne eine [Workerinfrastruktur](./change-feed-processor.md) verwalten zu müssen. Sie können sich ganz auf die Logik Ihrer Azure-Funktion konzentrieren, ohne sich um die Pipeline für die Ereignisquellen kümmern zu müssen. Sie können den Trigger auch mit anderen [Azure Functions-Bindungen](../azure-functions/functions-triggers-bindings.md#supported-bindings) kombinieren.
 
 > [!NOTE]
-> Derzeit wird der Azure Cosmos DB-Trigger nur für die Verwendung mit der Kern-API (SQL) unterstützt.
+> Derzeit wird der Azure Functions-Trigger für Cosmos DB nur für die Verwendung mit der Kern-API (SQL) unterstützt.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 Um einen serverlosen, ereignisbasierten Flow zu implementieren, ist Folgendes erforderlich:
 
 * **Überwachter Container:** Dies ist der überwachte Azure Cosmos-Container, der die Daten enthält, aus denen der Änderungsfeed generiert wird. Alle Einfügungen im und Änderungen (z. B. CRUD) am überwachten Container werden im Änderungsfeed des Containers wiedergegeben.
-* **Leasecontainer:** Der Leasecontainer verwaltet den Zustand für mehrere und dynamische serverlose Azure Functions-Instanzen und ermöglicht die dynamische Skalierung. Dieser Leasecontainer kann manuell oder automatisch vom Azure Cosmos DB-Trigger erstellt werden. Für das automatische Erstellen des Leasecontainers legen Sie das *CreateLeaseCollectionIfNotExists*-Flag in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) fest. Partitionierte Leasecontainer benötigen die Partitionsschlüsseldefinition `/id`.
+* **Leasecontainer:** Der Leasecontainer verwaltet den Zustand für mehrere und dynamische serverlose Azure Functions-Instanzen und ermöglicht die dynamische Skalierung. Dieser Leasecontainer kann manuell oder automatisch vom Azure Functions-Trigger für Cosmos DB erstellt werden. Legen Sie das Flag *CreateLeaseCollectionIfNotExists* in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) fest, um den Leasecontainer automatisch zu erstellen. Partitionierte Leasecontainer benötigen die Partitionsschlüsseldefinition `/id`.
 
-## <a name="create-your-azure-cosmos-db-trigger"></a>Erstellen eines Azure Cosmos DB-Triggers
+## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Erstellen eines Azure Functions-Triggers für Cosmos DB
 
-Das Erstellen von Azure-Funktionen mit einem Azure Cosmos DB-Trigger wird jetzt in allen Azure Functions-IDE- und -CLI-Integrationen unterstützt:
+Das Erstellen von Azure-Funktionen mit einem Azure Functions-Trigger für Cosmos DB wird jetzt in allen Azure Functions-IDE- und -CLI-Integrationen unterstützt:
 
 * [Visual Studio-Erweiterung](../azure-functions/functions-develop-vs.md) für Visual Studio-Benutzer
 * [Visual Studio-Kernerweiterung](https://code.visualstudio.com/tutorials/functions-extension/create-function) für Visual Studio Code-Benutzer
 * Und schließlich [Core-CLI-Tools](../azure-functions/functions-run-local.md#create-func) für eine plattformübergreifende Umgebung, die unabhängig von der IDE ist
 
-## <a name="run-your-azure-cosmos-db-trigger-locally"></a>Lokales Ausführen des Azure Cosmos DB-Triggers
+## <a name="run-your-trigger-locally"></a>Lokales Ausführen des Triggers
 
 Sie können Ihre [Azure-Funktion lokal](../azure-functions/functions-develop-local.md) mit dem [Azure Cosmos DB-Emulator](./local-emulator.md) ausführen, um Ihre serverlosen, ereignisbasierten Flows ohne ein Azure-Abonnement oder zusätzliche Kosten zu erstellen und zu entwickeln.
 

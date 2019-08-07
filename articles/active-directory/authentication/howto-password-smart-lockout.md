@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/25/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483317"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499874"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -28,6 +28,8 @@ Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu verme
 
  > [!NOTE]
  > Eine Funktion zur Hashnachverfolgung ist nicht für Kunden verfügbar, die die Pass-Through-Authentifizierung aktiviert haben, da die Authentifizierung lokal und nicht in der Cloud erfolgt.
+
+Verbundbereitstellungen mit AD FS 2016 und AD FS 2019 können Ihnen mithilfe von [AD FS Extranet Lockout und Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ähnliche Vorteile verschaffen.
 
 Smart Lockout ist für alle Azure AD-Kunden ständig aktiv und bietet standardmäßig die richtige Mischung aus Sicherheit und Nutzbarkeit. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Basic-Lizenzen für Ihre Benutzer.
 

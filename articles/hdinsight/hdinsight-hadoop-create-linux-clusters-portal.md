@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: cf1a6ffa61b41af5abd20dac13b85024001d2ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4593cd3602c5324e9cffd5eff8564c09aceaf46
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393998"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406282"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -69,7 +69,7 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe von
 
     * Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-4. Unter **2 Sicherheit + Netzwerkbetrieb** können Sie Ihren Cluster über das Dropdownmenü mit einem virtuellen Netzwerk verbinden. Wählen Sie ein virtuelles Azure-Netzwerk und das Subnetz aus, wenn Sie den Cluster in einem virtuellen Netzwerk platzieren möchten. Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk finden Sie unter [Erweitern von Azure HDInsight per Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Der Artikel enthält die spezifischen Konfigurationsanforderungen für das virtuelle Netzwerk. 
+4. Unter **2 Sicherheit + Netzwerkbetrieb** können Sie Ihren Cluster über das Dropdownmenü mit einem virtuellen Netzwerk verbinden. Wählen Sie ein virtuelles Azure-Netzwerk und das Subnetz aus, wenn Sie den Cluster in einem virtuellen Netzwerk platzieren möchten. Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk finden Sie unter [Plan a virtual network for Azure HDInsight (Planen eines virtuellen Netzwerks für Azure HDInsight)](hdinsight-plan-virtual-network-deployment.md). Der Artikel enthält die spezifischen Konfigurationsanforderungen für das virtuelle Netzwerk. 
 
     Befolgen Sie diese Anleitung, wenn Sie das **Enterprise-Sicherheitspaket** verwenden möchten: [Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 

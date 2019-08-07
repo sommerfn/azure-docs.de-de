@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604817"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501149"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
-Speech Synthesis Markup Language (SSML) ist eine XML-basierte Markupsprache, die es Entwicklern ermöglicht anzugeben, wie der Eingabetext mithilfe des Sprachsynthesediensts in synthetisierte Sprache konvertiert werden soll. Verglichen mit Nur-Text ermöglicht es SSML Entwicklern, die Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr für die Ausgabe der Sprachsynthese zu optimieren. Die normale Interpunktion, z.B. das Pausieren nach einem Punkt, oder die Verwendung der korrekten Intonation, wenn ein Satz mit einem Fragezeichen endet, werden automatisch verarbeitet.
+Speech Synthesis Markup Language (SSML) ist eine XML-basierte Markupsprache, die Entwicklern ermöglicht, anzugeben, wie der Eingabetext mithilfe des Sprachsynthesediensts in synthetisierte Sprache konvertiert werden soll. Verglichen mit Nur-Text ermöglicht SSML Entwicklern, die Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr für die Ausgabe der Sprachsynthese zu optimieren. Die normale Interpunktion, z.B. das Pausieren nach einem Punkt, oder die Verwendung der korrekten Intonation, wenn ein Satz mit einem Fragezeichen endet, werden automatisch verarbeitet.
 
 Die Speech Services-Implementierung von SSML basiert auf der [Markupsprache für Sprachsynthese, Version 1.0](https://www.w3.org/TR/speech-synthesis) des World Wide Web Consortiums.
 
@@ -164,7 +164,7 @@ Dieser SSML-Codeausschnitt veranschaulicht, wie die Sprechweise mithilfe des `<m
 Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen) zwischen Wörtern oder um Pausen zu verhindern, die vom Sprachsynthesedienst automatisch hinzugefügt werden.
 
 > [!NOTE]
-> Mithilfe dieses Elements können Sie das Standardverhalten von TTS (Text-To-Speech, Text-zu-Sprache, Sprachsynthese) bei einem Wort oder Ausdruck außer Kraft setzen, wenn die synthetisierte Sprache dafür unnatürlich klingt. Legen Sie `strength` auf `none` fest, um eine Unterbrechung des Satzrhythmus zu verhindern, die vom Sprachsynthesedienst automatisch eingefügt wird.
+> Mithilfe dieses Elements können Sie das Standardverhalten von TTS (Text-To-Speech, Text-zu-Sprache, Sprachsynthese) bei einem Wort oder Ausdruck außer Kraft setzen, wenn die synthetisierte Sprache dafür unnatürlich klingt. Legen Sie `strength` auf `none` fest, um eine Unterbrechung des Satzrhythmus zu verhindern. Dieses Element wird automatisch vom Text-zu-Sprache-Dienst eingefügt.
 
 **Syntax**
 
@@ -285,12 +285,12 @@ Weil Attributwerte für den Satzrhythmus über einen breiten Bereich variieren k
 
 | Attribut | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
-| pitch | Gibt die Basistonhöhe für den Text an. Sie können die Tonhöhe ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl, hinter der„Hz“ (Hertz) steht. Beispiel: „600Hz“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der „+“ oder „–“ und hinter der „Hz“ oder „st“steht, das einen Betrag zur Änderung der Tonhöhe angibt. Beispiel: „+80Hz“ oder „–2st“. Das „st“ gibt an, dass die Änderungseinheit ein Halbton ist, bei dem es sich um die Hälfte eines Tons (ein halber Schritt) auf der diatonischen Standardtonleiter handelt.</li><li>Einen konstanten Wert:<ul><li>x-low</li><li>niedrig</li><li>mittel</li><li>high</li><li>x-high</li><li>die Standardeinstellung</li></ul></li></ul>. | Optional |
+| pitch | Gibt die Basistonhöhe für den Text an. Sie können die Tonhöhe ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl, hinter der„Hz“ (Hertz) steht. Beispiel: „600Hz“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der „+“ oder „–“ und hinter der „Hz“ oder „st“steht, das einen Betrag zur Änderung der Tonhöhe angibt. Beispiel: „+80Hz“ oder „–2st“. Das „st“ gibt an, dass die Änderungseinheit ein Halbton ist, bei dem es sich um die Hälfte eines Tons (ein halber Schritt) auf der diatonischen Standardtonleiter handelt.</li><li>Einen konstanten Wert:<ul><li>x-low</li><li>niedrig</li><li>mittel</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | Optional |
 | contour | Die Kontur wird bei neuronalen Stimmen nicht unterstützt. Die Kontur stellt Änderungen in der Tonhöhe bei Sprachinhalten als ein Array von Zielen an den angegebenen Zeitpositionen in der Sprachausgabe dar. Jedes Ziel wird durch Gruppen von Parameterpaaren definiert. Beispiel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Der erste Wert in jeder Gruppe von Parametern gibt den Ort der Tonhöhenänderung als Prozentsatz der Textdauer an. Der zweite Wert gibt den Betrag an, um den die Tonhöhe erhöht oder verringert werden soll. Dazu wird ein relativer Wert oder ein Aufzählungswert für die Tonhöhe verwendet (siehe `pitch`). | Optional |
 | range  | Ein Wert, der den Tonhöhenbereich für den Text darstellt. Sie können `range` mit denselben absoluten Werten, relativen Werten oder Aufzählungswerten ausdrücken, mit denen beschrieben `pitch` wird. | Optional |
-| rate  | Gibt die Sprechgeschwindigkeit für den Text an. Sie können `rate` ausdrücken als:<ul><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, die als Multiplikator des Standards fungiert. So führt beispielsweise der Wert *1* zu keiner Änderung der Geschwindigkeit. Der Wert *,5* führt zu einer Halbierung der Geschwindigkeit. Der Wert *3* führt zu einer Verdreifachung der Geschwindigkeit.</li><li>Einen konstanten Wert:<ul><li>x-slow</li><li>langsam</li><li>mittel</li><li>fast</li><li>x-fast</li><li>die Standardeinstellung</li></ul></li></ul> | Optional |
+| rate  | Gibt die Sprechgeschwindigkeit für den Text an. Sie können `rate` ausdrücken als:<ul><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, die als Multiplikator des Standards fungiert. So führt beispielsweise der Wert *1* zu keiner Änderung der Geschwindigkeit. Der Wert *,5* führt zu einer Halbierung der Geschwindigkeit. Der Wert *3* führt zu einer Verdreifachung der Geschwindigkeit.</li><li>Einen konstanten Wert:<ul><li>x-slow</li><li>langsam</li><li>mittel</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | Optional |
 | duration  | Die Zeitspanne in Sekunden oder Millisekunden, die vergehen sollte, während der Sprachsynthesedienst den Text liest. Beispiel: *2s* oder *1800ms*. | Optional |
-| Volume  | Gibt die Lautstärke der Sprechstimme an. Sie können die Lautstärke ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl im Bereich von 0,0 bis 100,0 – von *am leisesten* bis zu *am lautesten*. Beispiel: „75“. Der Standardwert ist „100,0“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der ein „+“ oder „–“ steht und die einen Betrag zum Ändern der Lautstärke angibt. Beispiel: „+10“ oder „–5,5“.</li><li>Einen konstanten Wert:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>mittel</li><li>loud</li><li>x-loud</li><li>die Standardeinstellung</li></ul></li></ul> | Optional |
+| Volume  | Gibt die Lautstärke der Sprechstimme an. Sie können die Lautstärke ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl im Bereich von 0,0 bis 100,0 – von *am leisesten* bis zu *am lautesten*. Beispiel: „75“. Der Standardwert ist „100,0“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der ein „+“ oder „–“ steht und die einen Betrag zum Ändern der Lautstärke angibt. Beispiel: „+10“ oder „–5,5“.</li><li>Einen konstanten Wert:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>mittel</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | Optional |
 
 ### <a name="change-speaking-rate"></a>Ändern der Sprechgeschwindigkeit
 
@@ -351,6 +351,78 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
+    </voice>
+</speak>
+```
+
+## <a name="add-recorded-audio"></a>Hinzufügen von Audioaufzeichnungen
+
+`audio` ist ein optionales Element, mit dem Sie MP3-Audioaufzeichnungen in ein SSML-Dokument einfügen können. Der Text des Elements „audio“ kann Nur-Text oder SSML-Markup enthalten, das verwendet wird, wenn die Audiodatei nicht verfügbar oder nicht abspielbar ist. Außerdem kann das Element `audio` Text und die folgenden Elemente enthalten: `audio`, `break`, `p`, `s`, `phoneme`, `prosody`, `say-as` und `sub`.
+
+Alle Audiodaten, die im SSML-Dokument enthalten sind, müssen die folgenden Anforderungen erfüllen:
+
+* Die MP3-Datei muss auf einem HTTPS-Endpunkt gehostet werden, der über das Internet zugänglich ist. HTTPS ist erforderlich, und die Domäne, die die MP3-Datei hostet, muss ein gültiges vertrauenswürdiges SSL-Zertifikat enthalten.
+* Es muss es sich um eine gültige MP3-Datei (MPEG v2) handeln.
+* Die Bitrate muss 48 KBit/s betragen.
+* Die Abtastrate muss bei 16.000 Hz liegen.
+* Die Gesamtzeit für alle Text- und Audiodateien in einer einzelnen Antwort darf nicht über 90 Sekunden liegen.
+* Die MP3-Datei darf keine kundenspezifischen oder andere vertrauliche Informationen enthalten.
+
+**Syntax**
+
+```xml
+<audio src="string"/></audio>
+```
+
+**Attribute**
+
+| Attribut | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| src | Gibt den Speicherort bzw. die URL der Audiodatei an. | Erforderlich, wenn Sie das Element „audio“ im SSML-Dokument verwenden. |
+
+**Beispiel**
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <p>
+        <audio src="https://contoso.com/opinionprompt.wav"/>
+        Thanks for offering your opinion. Please begin speaking after the beep.
+        <audio src="https://contoso.com/beep.wav">
+        Could not play the beep, please voice your opinion now. </audio>
+    </p>
+</speak>
+```
+
+## <a name="add-background-audio"></a>Hinzufügen von Hintergrundaudioaufnahmen
+
+Das Element `mstts:backgroundaudio` ermöglicht es Ihnen, Hintergrundaudioaufnahmen zu Ihren SSML-Dokumenten hinzuzufügen (oder eine Audiodatei mit Text-zu-Sprache zu vermischen). Mithilfe von `mstts:backgroundaudio` können Sie im Hintergrund eine Audiodatei in Dauerschleife abspielen, die am Anfang der Text-zu-Sprache-Aufnahme ein und am Ende wieder ausgeblendet wird.
+
+Wenn die bereitgestellte Hintergrundaudiospur kürzer ist als die Text-zu-Sprache-Aufnahme oder das Ausblenden, wird diese wieder von vorne abgespielt. Wenn sie länger als die Text-zu-Sprache-Aufnahme ist, wird sie angehalten, sobald der Ausblendevorgang abgeschlossen ist.
+
+Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedoch `audio`-Tags in das Element `voice` integrieren, um dem SSML-Dokument zusätzliche Audioaufnahmen hinzuzufügen.
+
+**Syntax**
+
+```XML
+<mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
+```
+
+**Attribute**
+
+| Attribut | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| src | Gibt den Speicherort bzw. die URL der Hintergrundaudiodatei an. | Erforderlich, wenn Sie eine Hintergrundaudioaufnahme in Ihrem SSML-Dokument verwenden. |
+| Volume | Gibt die Lautstärke der Hintergrundaudiodatei an. **Akzeptierte Werte**: `0` bis `100` (einschließlich). Standardwert: `1`. | Optional |
+| fadein | Gibt an, wie lange die Hintergrundaudiodatei eingeblendet wird. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
+| fadeout | Gibt an, wie lange die Hintergrundaudiodatei ausgeblendet wird. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
+
+**Beispiel**
+
+```xml
+<speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
+    <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+        The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```

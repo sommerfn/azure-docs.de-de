@@ -1,19 +1,19 @@
 ---
-title: Häufig verwendete Sicherheitsattribute für Azure Backup
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure Backup
-services: backup
-author: utraghuv
-manager: barbkess
+title: Sicherheitsattribute für Azure Backup
+description: Eine Prüfliste der Sicherheitsattribute für die Auswertung von Azure Backup
+ms.reviewer: mbaldwin
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 595cc4eff70e2df4cb6d7f1d6a0c1a2748b34bf2
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.author: dacurwin
+ms.openlocfilehash: e6ea701840b201c2794d81be5019d57ca531cd00
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565631"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688502"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Sicherheitsattribute für Azure Backup
 
@@ -25,8 +25,8 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitsattribute b
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>| Ja | Verwenden der Speicherdienstverschlüsselung für Speicherkonten |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Nein | Mithilfe von HTTPS |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)| Ja | Verwenden der Speicherdienstverschlüsselung für Speicherkonten |
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-zu-VNET-Verschlüsselung)| Nein | Mithilfe von HTTPS |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Nein |  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| Nein |  |
 | Verschlüsselte API-Aufrufe| Ja |  |

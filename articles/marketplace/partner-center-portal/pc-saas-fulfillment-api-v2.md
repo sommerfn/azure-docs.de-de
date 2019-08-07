@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701134"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358586"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-Fulfillment-APIs, Version 2 
 
@@ -111,7 +111,7 @@ Der Auflösungsendpunkt ermöglicht Herausgebern das Auflösen eines Marketplace
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |  Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 |  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Beispiel: „`Bearer <access_token>`“. |
 |  x-ms-marketplace-token  |  Der Tokenabfrageparameter in der URL, wenn der Benutzer von Azure zur Website des SaaS-Partners umgeleitet wird (z. B. `https://contoso.com/signup?token=..`). *Hinweis:* Führen Sie eine URL-Decodierung des Tokenwerts aus dem Browser durch, bevor Sie ihn verwenden.  |
 
 *Antwortcodes:*
@@ -175,7 +175,7 @@ Listet alle SaaS-Abonnements für einen Herausgeber auf.
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-| authorization      |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Beispiel: „`Bearer <access_token>`“.  |
 
 *Antwortcodes:*
 
@@ -253,7 +253,7 @@ Ruft das angegebene SaaS-Abonnement ab. Verwenden Sie diesen Aufruf zum Abrufen 
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 |  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Beispiel: „`Bearer <access_token>`“.  |
 
 *Antwortcodes:*
 
@@ -323,7 +323,7 @@ Verwenden Sie diesen Aufruf, um herauszufinden, ob es private oder öffentliche 
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 |  x-ms-correlationid  | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“. |
 
 *Antwortcodes:*
 
@@ -375,7 +375,7 @@ Interner Serverfehler.<br>
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  x-ms-correlationid  | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Diese Zeichenfolge korreliert alle Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“. |
 
 *Anforderungsnutzlast:*
 
@@ -432,7 +432,7 @@ Aktualisieren Sie den Plan für das Abonnement.
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  x-ms-correlationid  |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.    |
-| authorization      |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“.  |
 
 *Anforderungsnutzlast:*
 
@@ -498,7 +498,7 @@ Aktualisieren Sie die Menge für das Abonnement.
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  x-ms-correlationid  |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.    |
-| authorization      |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“.  |
 
 *Anforderungsnutzlast:*
 
@@ -565,7 +565,7 @@ Kündigen und löschen Sie das angegebene Abonnement.
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
 |  x-ms-correlationid  |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“.  |
 
 *Antwortcodes:*
 
@@ -618,7 +618,7 @@ Hiermit werden die ausstehenden Vorgänge für den aktuellen Herausgeber aufgeli
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“.  |
 
 *Antwortcodes:*
 
@@ -681,7 +681,7 @@ Ermöglicht dem Herausgeber das Nachverfolgen des Status des angegebenen ausgel�
 |  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) Beispiel: „`Bearer <access_token>`“.  |
 
 *Antwortcodes:*<br>
 
@@ -745,7 +745,7 @@ Aktualisieren Sie den Status eines Vorgangs unter Verwendung der bereitgestellte
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 |  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Abrufen eines Bearertokens basierend auf der Azure AD-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  Beispiel: „`Bearer <access_token>`“.  |
 
 *Anforderungsnutzlast:*
 

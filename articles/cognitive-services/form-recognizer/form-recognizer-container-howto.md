@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: a251e97d671c4aad0aebb1d6c3349cdc09444308
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: d03abee7c7a4adb65e1d6146501ee5b7d9e1534c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718470"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348660"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Installieren und Ausführen eines Containers für die Formularerkennung
 
@@ -24,7 +24,7 @@ Um die Komplexität zu verringern und ein benutzerdefiniertes Formularerkennungs
 
 |Funktion|Features|
 |-|-|
-|Formularerkennung| <li>Verarbeitet PDF-, PNG- und JPG-Dateien.<li>Trainiert benutzerdefinierte Modelle mit mindestens fünf Formularen desselben Layouts. <li>Extrahiert Schlüssel-Wert-Paare und Tabelleninformationen. <li>Verwendet das Feature Maschinelles Sehen-API von Azure Cognitive Service (Texterkennung) zum Erkennen und Extrahieren von gedrucktem Text aus Bildern in Formularen.<li>Erfordert keine Anmerkungen oder Bezeichnungen.|
+|Formularerkennung| <li>Verarbeitet PDF-, PNG- und JPG-Dateien.<li>Trainiert benutzerdefinierte Modelle mit mindestens fünf Formularen desselben Layouts <li>Extrahiert Schlüssel-Wert-Paare und Tabelleninformationen. <li>Verwendet das Feature Maschinelles Sehen-API von Azure Cognitive Service (Texterkennung) zum Erkennen und Extrahieren von gedrucktem Text aus Bildern in Formularen.<li>Erfordert keine Anmerkungen oder Bezeichnungen.|
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -37,8 +37,8 @@ Bevor Sie Container für die Formularerkennung verwenden können, müssen Sie di
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> Unter Windows muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker – z.B. Registrierungen, Repositorys, Container und Containerimages – verfügen und die grundlegenden `docker`-Befehle kennen.|
 |Die Azure-CLI| Installieren Sie die [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Host.|
-|Maschinelles Sehen-API-Ressource| Zum Verarbeiten von gescannten Dokumenten und Bildern benötigen Sie eine Maschinelles Sehen-Ressource. Sie können auf das Feature Texterkennung entweder als eine Azure-Ressource (die REST-API oder das REST-SDK) oder einen *cognitive-services-recognize-text*-[Container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) zugreifen. Die üblichen Gebühren werden abgerechnet. <br><br>Übergeben Sie sowohl den Schlüssel- als auch den Abrechnungsendpunkt für Ihre Maschinelles Sehen-Ressource (Azure-Cloud oder Cognitive Services-Container). Verwenden Sie diesen Schlüssel- und Abrechnungsendpunkt als {COMPUTER_VISION_API_KEY} und {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Wenn Sie den Container *cognitive-services-recognize-text* verwenden, stellen Sie Folgendes sicher:<br><br>Ihr Maschinelles Sehen-Schlüssel für den Container für die Formularerkennung ist der Schlüssel, der im Maschinelles Sehen-Befehl `docker run` für den Container *cognitive-services-recognize-text* angegeben ist.<br>Ihr Abrechnungsendpunkt ist der Endpunkt des Containers (z.B. `https://localhost:5000`). Wenn Sie sowohl den Maschinelles Sehen-Container als auch den Container für die Formularerkennung zusammen auf demselben Host verwenden, können nicht beide mit dem Standardport *5000* gestartet werden.  |  
-|Formularerkennungsressource |Zur Verwendung dieser Container benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Formularerkennung_, um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf den Seiten **Form Recognizer Overview** (Formularerkennung – Übersicht) und **Form Recognizer Overview Keys** (Formularerkennung – Übersicht über Schlüssel) zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{BILLING_KEY}** : Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}** : Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
+|Maschinelles Sehen-API-Ressource| Zum Verarbeiten von gescannten Dokumenten und Bildern benötigen Sie eine Maschinelles Sehen-Ressource. Sie können auf das Feature Texterkennung entweder als eine Azure-Ressource (die REST-API oder das REST-SDK) oder einen *cognitive-services-recognize-text*-[Container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) zugreifen. Die üblichen Gebühren werden abgerechnet. <br><br>Übergeben Sie sowohl den API-Schlüssel als auch die Endpunkte für Ihre „Maschinelles Sehen“-Ressource (Azure-Cloud oder Cognitive Services-Container). Verwenden Sie diesen API-Schlüssel und die Endpunkte als **{COMPUTER_VISION_API_KEY}** und **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> Wenn Sie den Container *cognitive-services-recognize-text* verwenden, stellen Sie Folgendes sicher:<br><br>Ihr Maschinelles Sehen-Schlüssel für den Container für die Formularerkennung ist der Schlüssel, der im Maschinelles Sehen-Befehl `docker run` für den Container *cognitive-services-recognize-text* angegeben ist.<br>Ihr Abrechnungsendpunkt ist der Endpunkt des Containers (z.B. `https://localhost:5000`). Wenn Sie sowohl den Maschinelles Sehen-Container als auch den Container für die Formularerkennung zusammen auf demselben Host verwenden, können nicht beide mit dem Standardport *5000* gestartet werden.  |
+|Formularerkennungsressource |Zur Verwendung dieser Container benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Formularerkennung**, um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichtsseite und auf der Schlüsselseite der **Formularerkennung** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{FORM_RECOGNIZER_API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite „Schlüssel“<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : Der Endpunkt, der auf der Seite „Übersicht“ angegeben ist|
 
 ## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
 
@@ -58,7 +58,7 @@ Die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeiche
 
 | Container | Minimum | Empfohlen |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 Kerne, 4 GB Arbeitsspeicher | 4 Kerne, 8 GB Arbeitsspeicher |
+|cognitive-services-form-recognizer | 2 Kerne, 4 GB Arbeitsspeicher | 4 Kerne, 8 GB Arbeitsspeicher |
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 * TPS: Transaktionen pro Sekunde
@@ -106,8 +106,8 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{BILLING_KEY} | Dieser Schlüssel wird verwendet, um den Container zu starten. Er steht im Azure-Portal auf der Seite **Form Recognizer Keys** (Schlüssel für Formularerkennung) zur Verfügung.  |
-|{BILLING_ENDPOINT_URI} | Den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite **Form Recognizer Overview** (Formularerkennung – Übersicht).|
+|{FORM_RECOGNIZER_API_KEY} | Dieser Schlüssel wird verwendet, um den Container zu starten. Er steht im Azure-Portal auf der Seite **Form Recognizer Keys** (Schlüssel für Formularerkennung) zur Verfügung.  |
+|{FORM_RECOGNIZER_ENDPOINT_URI} | Den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite **Form Recognizer Overview** (Formularerkennung – Übersicht).|
 |{COMPUTER_VISION_API_KEY}| Der Schlüssel steht im Azure-Portal auf der Seite **Computer Vision API Keys** (Schlüssel für die Maschinelles Sehen-API) zur Verfügung.|
 |{COMPUTER_VISION_ENDPOINT_URI}|Der Abrechnungsendpunkt. Wenn Sie eine cloudbasierte Ressource für maschinelles Sehen verwenden, steht der URI-Wert im Azure-Portal auf der Seite **Computer Vision API Overview** (Maschinelles Sehen-API – Übersicht) zur Verfügung. Bei Verwendung eines `cognitive-services-recognize-text`-Containers verwenden Sie die URL des Abrechnungsendpunkts, die im Befehl `docker run` an den Container übergeben wird.|
 
@@ -121,8 +121,8 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
@@ -149,14 +149,13 @@ docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY}
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
 Führen Sie den zweiten Container an Port 5001 aus.
-
 
 ```bash 
 docker run --rm -it -p 5001:5000 --memory 4g --cpus 1 \
@@ -187,7 +186,7 @@ services:
     environment:
       eula: accept
       billing: "{COMPUTER_VISION_ENDPOINT_URI}"
-      apikey: {COMPUTER_VISION_API_KEY}  
+      apikey: "{COMPUTER_VISION_API_KEY}"
 
   formrecognizer:
     image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
@@ -201,8 +200,8 @@ services:
           memory: 4g
     environment:
       eula: accept
-      billing: "{BILLING_ENDPOINT_URI}"
-      apikey: {BILLING_KEY}
+      billing: "{FORM_RECOGNIZER_ENDPOINT_URI}"
+      apikey: "{FORM_RECOGNIZER_API_KEY}"
       FormRecognizer__ComputerVisionApiKey: {COMPUTER_VISION_API_KEY}
       FormRecognizer__ComputerVisionEndpointUri: "http://ocr:5000"
       FormRecognizer__SyncProcessTaskCancelLimitInSecs: 75
@@ -216,9 +215,8 @@ services:
         source: c:\input
         target: /input
     ports:
-      - "5000:5000"  
+      - "5000:5000"
 ```
-
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` sowie `FormRecognizer:ComputerVisionApiKey` und `FormRecognizer:ComputerVisionEndpointUri` müssen zum Ausführen des Containers angegeben werden; andernfalls wird der Container nicht gestartet. Weitere Informationen finden Sie unter [Abrechnung](#billing).
@@ -228,7 +226,6 @@ services:
 |Container|Endpunkt|
 |--|--|
 |Formularerkennung|http://localhost:5000
-
 
 ### <a name="form-recognizer"></a>Formularerkennung
 
@@ -240,14 +237,19 @@ Das Formularerkennungs-SDK verwendet standardmäßig die Onlinedienste. Um den C
 
 Ändern Sie den folgenden Azure-Cloudinitialisierungsaufruf
 
-```C#
-var config = FormRecognizerConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+```csharp
+var config =
+    FormRecognizerConfig.FromSubscription(
+        "YourSubscriptionKey",
+        "YourServiceRegion");
 ```
-
 für diesen Aufruf, der den Containerendpunkt verwendet:
 
-```C#
-var config = FormRecognizerConfig.FromEndpoint("ws://localhost:5000/formrecognizer/v1.0-preview/custom", "YourSubscriptionKey");
+```csharp
+var config =
+    FormRecognizerConfig.FromEndpoint(
+        "ws://localhost:5000/formrecognizer/v1.0-preview/custom",
+        "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>Python
@@ -255,13 +257,18 @@ var config = FormRecognizerConfig.FromEndpoint("ws://localhost:5000/formrecogniz
 Ändern Sie den folgenden Azure-Cloudinitialisierungsaufruf
 
 ```python
-formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=formrecognizer_key, region=service_region)
+formrecognizer_config =
+    formrecognizersdk.FormRecognizerConfig(
+        subscription=formrecognizer_key, region=service_region)
 ```
 
 für diesen Aufruf, der den Containerendpunkt verwendet:
 
 ```python
-formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=formrecognizer_key, endpoint="ws://localhost:5000/formrecognizer/v1.0-preview/custom"
+formrecognizer_config = 
+    formrecognizersdk.FormRecognizerConfig(
+        subscription=formrecognizer_key,
+        endpoint="ws://localhost:5000/formrecognizer/v1.0-preview/custom"
 ```
 
 ### <a name="form-recognizer"></a>Formularerkennung

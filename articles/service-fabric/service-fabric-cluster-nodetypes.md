@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684695"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501365"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
 [VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) sind eine Azure Computeressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Jeder Knotentyp, den Sie in einem Azure Service Fabric-Cluster definieren, richtet eine separate Skalierung ein.  Die auf jedem virtuellen Computer in der Skalierungsgruppe von der Virtual Machines-Erweiterung Microsoft.Azure.ServiceFabric installierte Service Fabric-Laufzeit. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, auf jedem Clusterknoten die ausgeführte Betriebssystem-SKU ändern, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
@@ -60,6 +60,7 @@ Folgendes ist ein Codeausschnitt aus der Service Fabric Virtual Machine-Erweiter
          "durabilityLevel": "Silver",
          "enableParallelJobs": true,
          "nicPrefixOverride": "[variables('subnet0Prefix')]",
+         "dataPath": "D:\\\\SvcFab",
          "certificate": {
            "commonNames": [
              "[parameters('certificateCommonName')]"
@@ -88,6 +89,7 @@ Dies sind die Beschreibungen der Eigenschaften:
 | commonNames | string[] | --- | Allgemeine Namen von installierten Clusterzertifikaten |
 | x509StoreName | Zeichenfolge | --- | Name des Speichers, in dem sich das installierte Clusterzertifikat befindet |
 | typeHandlerVersion | 1.1 | --- | Version der Erweiterung. Für klassische Version 1.0 der Erweiterung wird Upgrade auf Version 1.1 empfohlen |
+| dataPath | Zeichenfolge | --- | Der Pfad zum Laufwerk, das zum Speichern des Zustands der Service Fabric-Systemdienste und Anwendungsdaten verwendet wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen finden Sie unter [Übersicht über das Feature „Deploy Anywhere“ (umgebungsunabhängige Bereitstellung) und ein Vergleich mit Clustern, die von Azure verwaltet werden](service-fabric-deploy-anywhere.md).

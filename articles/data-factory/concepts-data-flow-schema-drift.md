@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722888"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314823"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Zuordnungsdatenfluss – Schemaabweichung
 
@@ -25,7 +25,8 @@ Zum Schutz gegen Schemaabweichung müssen in einem Datenfluss-Tool Funktionen en
 * Definieren von Transformationsparametern, die anstelle von hartcodierten Feldern und Werten mit Datenmustern arbeiten können
 * Definieren von Ausdrücken, die Muster verstehen, um sie mit Eingangsfeldern abzugleichen, anstatt benannte Felder zu verwenden
 
-## <a name="how-to-implement-schema-drift"></a>Implementieren von Schemaabweichung
+## <a name="how-to-implement-schema-drift-in-adf-mapping-data-flows"></a>Vorgehensweise beim Implementieren der Schemaabweichung der Zuordnungsdatenflüsse in ADF
+Flexible und sich von Ausführung zu Ausführung ändernde Schemas werden von ADF nativ unterstützt, sodass Sie eine generische Datentransformationslogik erstellen können, ohne die Datenflüsse erneut kompilieren zu müssen.
 
 * Wählen Sie „Allow Schema Drift (Schemaabweichung zulassen)“ in Ihrer Quellentransformation aus.
 
@@ -33,11 +34,13 @@ Zum Schutz gegen Schemaabweichung müssen in einem Datenfluss-Tool Funktionen en
 
 * Wenn Sie diese Option ausgewählt haben, werden alle Eingangsfelder bei jeder Datenflussausführung aus der Quelle gelesen und über den gesamten Fluss der Senke übergeben.
 
-* Stellen Sie sicher, dass Sie „Auto-Map“ (Automatische Zuordnung) verwenden, um alle neuen Felder in der Senkentransformation zuzuordnen, sodass alle neuen Felder abgerufen werden und in Ihr Ziel gelangen.
+* Alle neu erkannten Spalten (abweichende Spalten) werden standardmäßig als String-Datentyp empfangen. Klicken Sie in der Quelltransformation auf „Infer drifted column types“ (Abweichende Spaltentypen ableiten), wenn ADF die Datentypen aus der Quelle automatisch ableiten soll.
+
+* Stellen Sie sicher, dass Sie „Auto-Map“ (Automatische Zuordnung) verwenden, um alle neuen Felder in der Senkentransformation zuzuordnen, sodass alle neuen Felder abgerufen werden und in Ihr Ziel gelangen. Legen Sie außerdem die Option „Allow Schema Drift“ (Schemaabweichung zulassen) in der Senkentransformation fest.
 
 <img src="media/data-flow/automap.png" width="400">
 
-* Alles funktioniert, wenn neue Felder in diesem Szenario mit einer einfachen Zuordnung von Quelle -> Senke (auch bekannt als „Kopieren“) eingeführt werden.
+* Alles funktioniert, wenn neue Felder in diesem Szenario mit einer einfachen Zuordnung von Quelle -> Senke („Kopieren“) eingeführt werden.
 
 * Um in diesem Workflow Transformationen hinzuzufügen, die die Schemaabweichung behandeln, können Sie den Musterabgleich zum Abgleich mit Spalten nach Name, Typ und Wert durchführen.
 
@@ -67,9 +70,11 @@ Sie können dies mit dem Azure Data Factory-Datenflussbeispiel „Taxi Demo“ t
 <img src="media/data-flow/taxidrift2.png" width="800">
 
 ## <a name="access-new-columns-downstream"></a>Zugreifen auf neue Spalten im späteren Verlauf
+Wenn Sie neue Spalten mit Spaltenmustern generieren, können Sie später in Ihren Datenflusstransformationen mithilfe dieser Methoden auf diese neuen Spalten zugreifen:
 
-Wenn Sie neue Spalten mit Spaltenmustern generieren, können Sie später in Ihren Datenflusstransformationen mithilfe der Ausdrucksfunktion „byName“ auf diese neuen Spalten zugreifen.
+* Verwenden Sie „byPosition“ zum Identifizieren der neuen Spalten nach Positionsnummer.
+* Verwenden Sie „byName“ zum Identifizieren der neuen Spalten nach Name.
+* Verwenden Sie „Name“, „Stream“, „Position“ oder „Typ“ (oder eine beliebige Kombination dieser Spalten) in Spaltenmustern, um neue Spalten abzugleichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 In der [Datenfluss-Ausdruckssprache](data-flow-expression-functions.md) finden Sie zusätzliche Funktionen für Spaltenmuster und Schemaabweichung einschließlich „byName“ und „byPosition“.

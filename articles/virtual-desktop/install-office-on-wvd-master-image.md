@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 0e89d37011ccdfc3acdace5b45faa8e9a64e4d3e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9243b3e6ae9e164930373960757109ae8a4512e4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620469"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501193"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
@@ -130,7 +130,7 @@ Normalerweise wird OneDrive im Modus „Pro Benutzer“ installiert. In dieser U
 
 Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
-1. Erstellen Sie zunächst einen Speicherort zum Bereitstellen des OneDrive-Installationsprogramms. Hierfür ist ein lokaler Datenträgerordner oder ein Speicherort vom Typ [\\\\unc](file://unc) geeignet.
+1. Erstellen Sie zunächst einen Speicherort zum Bereitstellen des OneDrive-Installationsprogramms. Hierfür ist ein lokaler Datenträgerordner oder ein Speicherort vom Typ [\\\\unc] (file://unc) geeignet.
 
 2. Laden Sie die Datei „OneDriveSetup.exe“ mit diesem Link an Ihren bereitgestellten Speicherort herunter: <https://aka.ms/OneDriveWVD-Installer>.
 

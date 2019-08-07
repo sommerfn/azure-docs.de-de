@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754553"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377196"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
 
@@ -35,9 +35,14 @@ Der Wert kann eines der folgenden Beispiele sein:
 
 * Eine statische Zeichenfolge. Dynamische Werte wie Bedingungen, Logik, Vorgänge und Funktionen sind nicht zulässig. Wenn Sie beispielsweise eine SaaS-Anwendung entwickeln, die von mehreren Kunden verwendet wird, können Sie jedem Kunden einen Bezeichner zuweisen und diesen Bezeichner in der Anwendung zur Verfügung stellen. Bei Ausführung der Anwendung stempelt IoT Hub die Gerätetelemetrienachrichten mit dem Bezeichner des Kunden und ermöglicht es so, dass die Nachrichten bei jedem Kunden anders verarbeitet werden.
 
+* Der Name des IoT-Hubs, der die Nachricht sendet. Dieser Wert ist *$iothubname*.
+
 * Informationen aus dem Gerätezwilling, z.B. dessen Pfad. Beispiele hierfür wären *$twin.tags.field* und *$twin.tags.latitude*.
 
-* Der Name des IoT-Hubs, der die Nachricht sendet. Dieser Wert ist *$iothubname*.
+   > [!NOTE]
+   > Zurzeit werden nur die Variablen „$iothubname“, „$twin.tags“, „$twin.properties.desired“ und „$twin.properties.reported“ für die Nachrichtenanreicherung unterstützt.
+
+Nachrichtenanreicherungen werden den an ausgewählte Endpunkte gesendeten Nachrichten als Anwendungseigenschaften hinzugefügt.  
 
 ## <a name="applying-enrichments"></a>Anwenden von Anreicherungen
 

@@ -3,8 +3,8 @@ title: Worum handelt es sich bei Zugriffsüberprüfungen? – Azure Active Direc
 description: Mithilfe von Azure Active Directory-Zugriffsüberprüfungen können Sie Gruppenmitgliedschaften und den Anwendungszugriff steuern, um die Anforderungen von Governance-, Risikomanagement- und Konformitätsinitiativen in Ihrer Organisation zu erfüllen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/05/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fcc804db66430598e72e9ebf31a8837eda1cca6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da9bc3906e6f39b2d943708eb6a1b930ac8cc5a5
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67204591"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68401951"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -82,6 +82,25 @@ Anhand der folgenden Beispielszenarien können Sie die Anzahl der benötigten Li
 | Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 5 Benutzern und 28 Gastbenutzern.<br/>Er legt sie als Selbstüberprüfung fest. | 1 Administrator + 5 Benutzer als Selbstüberprüfer + 1 Benutzer, um Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken | 7 |
 
 Weitere Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
+
+## <a name="onboard-access-reviews"></a>Zugriffsüberprüfungen integrieren
+
+Führen Sie die folgenden Schritte aus, um das Onboarding für Zugriffsüberprüfungen auszuführen.
+
+1. Melden Sie sich als globaler Administrator oder Benutzeradministrator beim [Azure-Portal](https://portal.azure.com) an, in dem Sie Zugriffsüberprüfungen verwenden möchten.
+
+1. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+
+1. Klicken Sie im linken Menü auf **Identity Governance**.
+
+1. Klicken Sie auf **Zugriffsüberprüfungen**.
+ 
+    ![Startseite für Zugriffsüberprüfungen](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+
+1. Klicken Sie auf der Seite auf die Schaltfläche **Jetzt integrieren**.
+    
+      ![Zugriffsüberprüfungen integrieren](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+
 
 ## <a name="learn-about-access-reviews"></a>Informationen zu Zugriffsüberprüfungen
 

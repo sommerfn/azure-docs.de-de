@@ -10,14 +10,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 manager: craigg
-ms.date: 03/13/2019
+ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9b481e63ecf7a92af679c0f32d4b3ab71486021
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070357"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360792"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -293,13 +293,13 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](https://docs.microsoft.c
   - SQL Server Analysis Services werden nicht unterstützt.
 - Benachrichtigungen werden teilweise unterstützt.
 - Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss allerdings ein Datenbank-E-Mail-Profil konfiguriert werden. Der SQL Server-Agent kann nur ein Datenbank-E-Mail-Profil verwenden, für das der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss. 
-  - Pager wird nicht unterstützt. 
+  - Pager wird nicht unterstützt.
   - NetSend wird nicht unterstützt.
   - Warnungen werden noch nicht unterstützt.
-  - Proxys werden nicht unterstützt. 
+  - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
 
-Die folgenden Features werden derzeit nicht unterstützt, kommen aber später hinzu:
+Die folgenden SQL-Agent-Funktionen werden derzeit nicht unterstützt:
 
 - Proxys
 - Planen von Aufträgen für eine CPU im Leerlauf
@@ -398,7 +398,13 @@ Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, wer
 
 ### <a name="replication"></a>Replikation
 
-Die Replikation ist für die öffentliche Vorschauversion der verwalteten Instanz verfügbar. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist mit einigen Einschränkungen für die öffentliche Vorschauversion der verwalteten Instanz verfügbar:
+- Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. „Herausgeber“ und „Verteiler“ können dabei aber nicht auf unterschiedlichen Instanzen platziert werden.
+- Transaktionale, Momentaufnahmen- und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
+- Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Die unterstützten Versionen finden Sie [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+- Für die Transaktionsreplikation gibt es einige [zusätzliche Netzwerkanforderungen](sql-database-managed-instance-transactional-replication.md#requirements).
+
+Weitere Informationen zum Konfigurieren der Replikation finden Sie im [Replikationstutorial](replication-with-sql-database-managed-instance.md).
 
 ### <a name="restore-statement"></a>RESTORE-Anweisung 
 
@@ -459,7 +465,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 
 ## <a name="Environment"></a>Umgebungseinschränkungen
 
-### <a name="subnet"></a>Subnetz
+### <a name="subnet"></a>Subnet
 - In dem Subnetz, das für Ihre verwaltete Instanz reserviert ist, können Sie keine weiteren Ressourcen platzieren (beispielsweise virtuelle Computer). Platzieren Sie diese Ressourcen in anderen Subnetzen.
 - Das Subnetz muss eine ausreichende Anzahl verfügbarer [IP-Adressen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) aufweisen. Der Mindestwert ist 16, wir empfehlen jedoch, mindestens 32 IP-Adressen im Subnetz vorzusehen.
 - [Dem Subnetz der verwalteten Instanz können keine Dienstendpunkte zugeordnet werden](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wenn Sie das virtuelle Netzwerk erstellen, überprüfen Sie, ob die Option „Dienstendpunkte“ auf „Deaktiviert“ festgelegt ist.
@@ -468,6 +474,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 
 ### <a name="vnet"></a>VNET
 - VNet kann mithilfe des Ressourcenmodells bereitgestellt werden – das klassische Modell wird für VNets nicht unterstützt.
+- Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
 - Einige Dienste, wie App Service-Umgebungen, Logik-Apps und verwaltete Instanzen (die für Georeplikation, Transaktionsreplikation oder über Verbindungsserver verwendet werden) können nicht auf verwaltete Instanzen in anderen Regionen zugreifen, wenn ihre VNets mithilfe von [globalem Peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) verbunden sind. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNet-zu-VNet über VNet-Gateways verbinden.
 
 ## <a name="Changes"></a> Behavior Changes
@@ -486,7 +493,7 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 ### <a name="tempdb-size"></a>TEMPDB-Größe
 
-Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die `tempdb`-Datenbank wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind. `tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten. 
+Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die Größe der Protokolldatei `tempdb` ist für die Ebenen „Universell“ und „Unternehmenskritisch“ auf 120 GB beschränkt. Die `tempdb`-Datenbank wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolle mehr als 120 GB benötigen. `tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten. 
 
 ### <a name="cant-restore-contained-database"></a>Eigenständige Datenbank kann nicht wiederhergestellt werden
 
@@ -547,7 +554,7 @@ Eine verwaltete Datenbank-Instanz stellt ausführliche Informationen in Fehlerpr
 
 Die `TransactionScope`-Klasse in .NET funktioniert nicht, wenn zwei Abfragen an zwei Datenbanken in derselben Instanz im gleichen Transaktionsbereich gesendet werden:
 
-```C#
+```csharp
 using (var scope = new TransactionScope())
 {
     using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
@@ -585,6 +592,11 @@ CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindu
 Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen.
 
 **Problemumgehung:** Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
+
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Point-in-Time-Wiederherstellung gemäß der Zeit der für die Quellinstanz festgelegten Zeitzone
+
+Die Point-in-Time-Wiederherstellung richtet sich bei der Wiederherstellungszeit derzeit nach der für die Quellinstanz festgelegten Zeitzone anstatt nach der koordinierten Weltzeit (UTC).
+Weitere Details finden Sie unter [Bekannte Probleme mit den Zeitzonen verwalteter Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

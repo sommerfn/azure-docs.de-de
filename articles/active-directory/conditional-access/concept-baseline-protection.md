@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c2fc552211ed55239259ce84d84584c451733d70
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440772"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499862"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
@@ -58,7 +58,10 @@ Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie 
 
 Administratoren mit erhöhten Rechten sind nicht das einzige Ziel bei Angriffen. Angreifer konzentrieren sich im Allgemeinen auf Endbenutzer. Sobald Angreifer Zugang zum System haben, können sie im Namen des ursprünglichen Kontobesitzers auf vertrauliche Informationen zugreifen oder das vollständige Verzeichnis herunterladen und einen Phishing-Angriff auf die gesamte Organisation einleiten. Eine gängige Methode zum besseren Schutz aller Benutzer besteht in einer restriktiveren Kontoüberprüfung, wenn eine risikobehaftete Anmeldung erkannt wird.
 
-Der **Endbenutzerschutz (Vorschau)** stellt eine Basisrichtlinie dar, die alle Benutzer in einem Verzeichnis schützt. Wenn Sie diese Richtlinie aktivieren, müssen sich alle Benutzer innerhalb von 14 Tagen für Azure Multi-Factor Authentication registrieren. Nachdem sie sich für MFA registriert haben, werden Benutzer nur während risikobehafteter Anmeldeversuche zur mehrstufigen Authentifizierung aufgefordert. Kompromittierte Benutzerkonten werden gesperrt, bis das Kennwort zurückgesetzt und Risiken ausgeschlossen werden.
+Der **Endbenutzerschutz (Vorschau)** stellt eine Basisrichtlinie dar, die alle Benutzer in einem Verzeichnis schützt. Wenn Sie diese Richtlinie aktivieren, müssen sich alle Benutzer innerhalb von 14 Tagen für Azure Multi-Factor Authentication registrieren. Nachdem sie sich für MFA registriert haben, werden Benutzer nur während risikobehafteter Anmeldeversuche zur mehrstufigen Authentifizierung aufgefordert. Kompromittierte Benutzerkonten werden gesperrt, bis das Kennwort zurückgesetzt und Risiken ausgeschlossen werden. 
+
+[!NOTE]
+Alle Benutzer, die zuvor mit Risiko gekennzeichnet wurden, werden blockiert, bis das Kennwort durch Aktivierung der Richtlinie zurückgesetzt und das Risiko beseitigt wird.
 
 ### <a name="block-legacy-authentication-preview"></a>Blockieren der Legacyauthentifizierung (Vorschau)
 

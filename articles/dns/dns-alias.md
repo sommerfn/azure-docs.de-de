@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 6/7/2019
+ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: 5dfc00b1193117c22ba1c763bb0e75d9c4712222
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275739"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314466"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -30,6 +30,8 @@ Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Z
 ## <a name="capabilities"></a>Funktionen
 
 - **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen. Der DNS-Ressourceneintragssatz verändert sich automatisch, wenn die öffentliche IP-Adresse geändert oder gelöscht wird. Verbleibende DNS-Einträge, die auf falsche IP-Adressen verweisen, werden vermieden.
+
+   Es gibt aktuell eine Beschränkung von 20 Aliaseintragssätzen pro Ressource.
 
 - **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz:** Sie können einen A/AAAA- oder einen CNAME-Eintragssatz erstellen und ihn über Aliaseinträge an ein Traffic Manager-Profil verweisen. Dies ist besonders nützlich, wenn Sie Datenverkehr an einem Zonen-Apex weiterleiten müssen, weil herkömmliche CNAME-Einträge für einen Zonen-Apex nicht unterstützt werden. Beispiel: Ihr Traffic Manager-Profil heißt „myprofile.trafficmanager.net“, und die DNS-Zone Ihres Unternehmens heißt „contoso.com“. Sie können einen Aliaseintragssatz vom Typ A/AAAA für „contoso.com“ (den Zonen-Apex) erstellen und an „myprofile.trafficmanager.net“ verweisen.
 - **Verweisen auf einen Endpunkt eines Azure Content Delivery Network (CDN)** Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen.

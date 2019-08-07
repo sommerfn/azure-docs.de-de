@@ -12,24 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: df59766ce38ac81568570cd6544ee28808ff8249
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807016"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424106"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Problembehandlung bei Statusmonitor v2
 
 Wenn Sie die Überwachung aktivieren, können Probleme auftreten, die die Datensammlung verhindern.
 In diesem Artikel sind alle bekannten Probleme und Beispiele für die Problembehandlung aufgeführt.
 Wenn bei Ihnen ein Problem auftritt, das hier nicht aufgeführt ist, können Sie mit uns über [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) Kontakt aufnehmen.
-
-
-> [!IMPORTANT]
-> Statusmonitor v2 ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -81,6 +75,19 @@ Führen Sie nach Ausführung des Befehls „Enable“ die folgenden Schritte aus
         <add name="ManagedHttpModuleHelper" type="Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.ManagedHttpModuleHelper, Microsoft.AppInsights.IIS.ManagedHttpModuleHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler,runtimeVersionv4.0" />
     </modules>
     ```
+
+### <a name="iis-nested-applications"></a>Geschachtelte IIS-Anwendungen
+
+In Version 1.0 werden geschachtelte Anwendungen in IIS nicht instrumentiert.
+Wir verfolgen dieses Problem [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/369).
+
+### <a name="advanced-sdk-configuration-isnt-available"></a>Die erweiterte SDK-Konfiguration ist nicht verfügbar.
+
+Die SDK-Konfiguration ist in Version 1.0 für den Endbenutzer nicht verfügbar.
+Wir verfolgen dieses Problem [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/375).
+
+    
+    
 ## <a name="troubleshooting"></a>Problembehandlung
     
 ### <a name="troubleshooting-powershell"></a>Problembehandlung bei PowerShell
@@ -111,7 +118,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Ermitteln der aktuellen Version des Statusmonitor v2-Moduls
-Führen Sie den Befehl `Get-ApplicationInsightsMonitoringStatus` aus, um folgende Informationen zum Modul anzuzeigen:
+Führen Sie den Befehl `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` aus, um folgende Informationen zum Modul anzuzeigen:
    - PowerShell-Modulversion
    - Version des Application Insights SDK
    - Dateipfade des PowerShell-Moduls

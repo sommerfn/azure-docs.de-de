@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e2e43f13352c56f947f5e560049ab0acf871599
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509471"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357103"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs (Vorschauversion)
 
@@ -39,6 +39,9 @@ In der Terminologie des bedingten Zugriffs sind diese Client-Apps bekanntermaße
 Eine Liste der durch Richtlinien geschützten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](technical-reference.md#approved-client-app-requirement).
 
 Sie können Richtlinien für auf App-Schutz basierenden bedingten Zugriff mit anderen Richtlinien wie etwa [gerätebasierten Richtlinien für bedingten Zugriff](require-managed-devices.md) kombinieren. Auf diese Weise können Sie die Flexibilität beim Schutz von Daten für private und Unternehmensgeräte bereitstellen.
+
+> [!NOTE]
+> App-Schutzrichtlinien für bedingten Zugriff können nicht auf B2B-Benutzer angewendet werden, da die einladende Organisation keinen Einblick in die Organisation des B2B-Benutzers hat.
 
 ## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>Vorteile des auf App-Schutz basierenden bedingten Zugriffs als Voraussetzung
 

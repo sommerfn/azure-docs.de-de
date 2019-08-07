@@ -9,18 +9,21 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477974"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498421"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
 Sie können die Lösung für die Updateverwaltung in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
 Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden. Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung für einen virtuellen Computer auch im Azure-Portal auf der Seite des virtuellen Computers aktivieren. Dieses Szenario ist für virtuelle [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management)- und [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management)-Computer verfügbar.
+
+> [!NOTE]
+> Für die Lösung zur Updateverwaltung muss ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft werden. Eine aktuelle Liste der unterstützen Regionen finden Sie in (diesem Artikel)[./how-to/region-mappings.md]. Die Zuordnung von Regionen wirkt sich nicht auf die Möglichkeit aus, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -54,7 +57,7 @@ Die Lösung meldet basierend auf der für die Synchronisierung konfigurierten Qu
 
 Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als *Optional* klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten. Nur erforderliche Updates sind im Bereitstellungsumfang enthalten.
 
-Die geplante Bereitstellung definiert, welche Zielcomputer die entsprechenden Updates erhalten. Dies erfolgt entweder durch explizite Angabe von Computern oder durch Auswahl einer [Computergruppe](../azure-monitor/platform/computer-groups.md), die auf Protokollsuchvorgängen einer bestimmten Reihe von Computern oder auf einer [Azure-Abfrage](#azure-machines) basiert, die Azure-VMs basierend auf bestimmten Kriterien dynamisch auswählt. Diese Gruppen unterscheiden sich von der [Bereichskonfiguration](../azure-monitor/insights/solution-targeting.md), die nur zur Ermittlung der Computer verwendet wird, die die Verwaltungspakete erhalten, die die Lösung ermöglichen. 
+Die geplante Bereitstellung definiert, welche Zielcomputer die entsprechenden Updates erhalten. Dies erfolgt entweder durch explizite Angabe von Computern oder durch Auswahl einer [Computergruppe](../azure-monitor/platform/computer-groups.md), die auf Protokollsuchvorgängen einer bestimmten Reihe von Computern oder auf einer [Azure-Abfrage](#azure-machines) basiert, die Azure-VMs basierend auf bestimmten Kriterien dynamisch auswählt. Diese Gruppen unterscheiden sich von der [Bereichskonfiguration](../azure-monitor/insights/solution-targeting.md), die nur zur Ermittlung der Computer verwendet wird, die die Verwaltungspakete erhalten, die die Lösung ermöglichen.
 
 Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Dieser Zeitraum wird das Wartungsfenster bezeichnet. Zehn Minuten des Wartungsfensters sind für Neustarts reserviert, wenn ein Neustart erforderlich ist und Sie die entsprechende Neustartoption ausgewählt haben. Wenn das Patchen länger als erwartet dauert und im Wartungsfenster weniger als zehn Minuten verbleiben, wird kein Neustart durchgeführt.
 
@@ -73,11 +76,14 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 |Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
-|Windows Server 2008 R2 SP1 und höher (Windows Server 2012 und 2016 eingeschlossen)    |.NET Framework 4.5.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> WindowsPowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 und höher  |.NET Framework 4.5.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> WindowsPowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss yum Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |Ubuntu 14.04 LTS, 16.04 LTS und 18.04 (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
+
+> [!NOTE]
+> VM-Skalierungsgruppen von Azure können über die Updateverwaltung verwaltet werden. Die Updateverwaltung arbeitet mit den Instanzen selbst und nicht mit dem Basisimage. Sie müssen die Updates inkrementell planen, um nicht alle VM-Instanzen auf einmal zu aktualisieren.
 
 ### <a name="unsupported-client-types"></a>Nicht unterstützte Clienttypen
 
@@ -140,7 +146,7 @@ Um mit dem Patchen von Systemen zu beginnen, müssen Sie die Updateverwaltungsl�
 * [Über Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md)
 * [Über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md)
 * [Über ein Azure Automation-Runbook](automation-onboard-solutions.md)
-  
+
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Bestätigen der Integration von Nicht-Azure-Computern
 
 Nach einigen Minuten können Sie eine der folgenden Protokollsuchen ausführen, um zu bestätigen, dass direkt verbundene Computer mit Azure Monitor-Protokollen kommunizieren.
@@ -282,7 +288,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 |Tools     | Ein Hilfsprogramm oder Feature, mit dem mindestens eine Aufgabe ausgeführt werden kann.        |
 |Aktualisierungen     | Ein Update für eine Anwendung oder Datei, die zurzeit installiert ist.        |
 
-### <a name="linux"></a>Linux
+### <a name="linux-2"></a>Linux
 
 |Classification  |BESCHREIBUNG  |
 |---------|---------|

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 121e2d2595b63a313d9307f7d47f90adacc30fc2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296122"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385584"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen in Azure Logic Apps
 
@@ -62,108 +62,21 @@ In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Port
 
 ## <a name="parameters"></a>Parameter
 
-Mit Parametern können Sie Werte in der gesamten Logik-App wiederverwenden, und sie eignen sich gut zum Ersetzen von Werten, die Sie vielleicht häufig ändern müssen. Wenn Sie z.B. eine E-Mail-Adresse haben, die Sie an mehreren Stellen verwenden möchten, sollten Sie die E-Mail-Adresse als Parameter definieren.
+Der Bereitstellungslebenszyklus umfasst in der Regel verschiedene Umgebungen zur Entwicklung, zum Testen, Staging und für die Produktion. Wenn Sie Werte haben, die Sie in ihrer Logik-App wieder verwenden möchten, ohne hartcodieren oder – je nach Ihren Bereitstellungsanforderungen – variieren zu müssen, können Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für die Workflowdefinition erstellen, um auch die Bereitstellung von Logik-Apps zu automatisieren. 
 
-Parameter sind auch nützlich, wenn Sie Parameter in verschiedenen Umgebungen überschreiben müssen. Hier erfahren Sie mehr über [Parameter für die Bereitstellung](#deployment-parameters) und die [REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic).
+Führen Sie diese allgemeinen Schritte aus, um stattdessen diese Werte zu *parametrisieren* bzw. Parameter für diese zu definieren und zu verwenden. Anschließend können Sie die Werte in einer separaten Parameterdatei bereitstellen, die diese Werte an Ihre Vorlage übergibt. Auf diese Weise können Sie diese Werte einfacher ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Ausführlichere Informationen finden Sie unter [Overview: Automate deployment for logic apps with Azure Resource Manager templates (Übersicht: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen)](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
-> [!NOTE]
-> Parameter sind nur in der Codeansicht verfügbar.
+1. Definieren Sie in Ihrer Vorlage Vorlagenparameter und Workflowdefinitionsparameter, um die Werte zu akzeptieren, die zur Bereitstellung bzw. zur Laufzeit verwendet werden sollen.
 
-In der [ersten Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) haben Sie einen Workflow erstellt, der E-Mail-Nachrichten sendet, wenn im RSS-Feed einer Website neue Daten angezeigt werden. Die URL des Feeds ist hartcodiert, damit dieses Beispiel zeigt, wie Sie den Abfragewert mit einem Parameter ersetzen, damit Sie die URL des Feeds leichter ändern können.
+   Vorlagenparameter werden in einem Parameterabschnitt definiert, der sich außerhalb der Workflowdefinition befindet, wohingegen Workflowdefinitionsparameter in einem Parameterabschnitt definiert werden, der sich in der Workflow definition befindet.
 
-1. Suchen Sie in der Codeansicht nach dem `parameters : {}`-Objekt, und fügen Sie ein `currentFeedUrl`-Objekt hinzu:
+1. Ersetzen Sie die hartcodierten Werte durch Ausdrücke, die auf diese Parameter verweisen. Vorlagenausdrücke verwenden Syntax, die von Workflowdefinitionsausdrücken abweicht.
 
-   ``` json
-   "currentFeedUrl" : {
-      "type" : "string",
-      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
-   }
-   ```
+   Verkomplizieren Sie Ihren Code nicht, indem Sie in Workflowdefinitionsausdrücken, die bei der Bereitstellung ausgewertet werden, keine Vorlagenausdrücke verwenden, die bei zur Laufzeit ausgewertet werden. Verwenden Sie nur Vorlagenausdrücke außerhalb der Workflowdefinition. Verwenden Sie nur Workflowdefinitionsausdrücke in der Workflowdefinition.
 
-2. Ersetzen Sie in der `When_a_feed-item_is_published`-Aktion im `queries`-Abschnitt den Abfragewert durch `"feedUrl": "#@{parameters('currentFeedUrl')}"`.
+   Wenn Sie die Werte für die Workflowdefinitionsparameter angeben, können Sie auf Vorlagenparameter verweisen, indem Sie den Parameterabschnitt verwenden, der sich außerhalb der Workflowdefinition befindet, sich aber noch in der Ressourcendefinition Ihrer Logik-App befindet. Auf diese Weise können Sie Vorlagenparameterwerte an die Workflowdefinitionsparameter übergeben.
 
-   **Vorher**
-   ``` json
-   }
-      "queries": {
-          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
-       }
-   },
-   ```
-
-   **Nachher**
-   ``` json
-   }
-      "queries": {
-          "feedUrl": "#@{parameters('currentFeedUrl')}"
-       }
-   },
-   ```
-
-   Sie können auch die `concat`-Funktion verwenden, um zwei oder mehr Zeichenfolgen zu verknüpfen. 
-   Beispielsweise funktioniert `"@concat('#',parameters('currentFeedUrl'))"` genauso wie das vorherige Beispiel.
-
-3.  Wenn Sie fertig sind, wählen Sie **Speichern** aus.
-
-Jetzt können Sie den RSS-Feed der Website ändern, indem Sie eine andere URL über das `currentFeedURL`-Objekt übergeben.
-
-<a name="deployment-parameters"></a>
-
-## <a name="deployment-parameters-for-different-environments"></a>Bereitstellungsparameter für unterschiedliche Umgebungen
-
-In der Regel besitzen Bereitstellungslebenszyklen Umgebungen für Entwicklungs-, Staging- und Produktionsumgebungen. In all diesen Umgebungen können Sie beispielsweise die gleiche Logik-App-Definition, aber unterschiedliche Datenbanken verwenden. Ebenso können Sie die gleiche Definition übergreifend in verschiedenen Regionen verwenden, um Hochverfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten aber die Datenbank der betreffenden Region verwenden.
-
-> [!NOTE]
-> Dieses Szenario unterscheidet sich von der Verwendung von Parametern zur *Laufzeit*, wo Sie stattdessen die `trigger()`-Funktion verwenden sollten.
-
-Hier ist eine grundlegende Definition:
-
-``` json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-In der tatsächlichen `PUT`-Anforderung für die Logik-App können Sie den Parameter `uri` angeben. In den einzelnen Umgebungen können Sie einen anderen Wert für den `connection`-Parameter angeben. Da kein Standardwert mehr vorhanden ist, ist für die Nutzlast der Logik-App dieser Parameter erforderlich:
-
-``` json
-{
-    "properties": {},
-        "definition": {
-          /// Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-```
-
-Weitere Informationen finden Sie in der [Dokumentation zur REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
+1. Speichern Sie die Werte für die Parameter in einer [separaten Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files), und schließen Sie diese Datei in die Bereitstellung ein.
 
 ## <a name="process-strings-with-functions"></a>Verarbeiten von Zeichenfolgen mit Funktionen
 

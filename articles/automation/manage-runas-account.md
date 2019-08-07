@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798478"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498393"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -34,7 +34,7 @@ Es gibt zwei Typen von ausführenden Konten:
   * Erstellt ein Automation-Zertifikatasset mit dem Namen *AzureClassicRunAsCertificate* im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Zertifikatschlüssel, der vom Verwaltungszertifikat verwendet wird.
   * Erstellt ein Automation-Verbindungsasset mit dem Namen *AzureClassicRunAsConnection* im angegebenen Automation-Konto. Das Verbindungsasset enthält den Abonnementnamen, die subscriptionId und den Namen des Zertifikatassets.
   * Muss zum Erstellen oder Erneuern Co-Administrator für das Abonnement sein
-  
+
   > [!NOTE]
   > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Bei Verwendung eines CSP-Abonnements wird kein klassisches ausführendes Azure-Konto erstellt. Das ausführende Azure-Konto wird weiterhin erstellt. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
@@ -64,14 +64,14 @@ Zum Konfigurieren oder Erneuern klassischer ausführender Konten benötigen Sie 
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>Erstellen eines ausführenden Kontos im Portal
 
-Führen Sie in diesem Abschnitt die folgenden Schritte aus, um im Azure-Portal Ihr Azure Automation-Konto zu aktualisieren. Sie erstellen das ausführende Konto und das klassische ausführende Konto separat. Wenn Sie keine klassischen Ressourcen verwalten müssen, ist es nur erforderlich, das ausführende Azure-Konto zu erstellen.  
+Führen Sie in diesem Abschnitt die folgenden Schritte aus, um im Azure-Portal Ihr Azure Automation-Konto zu aktualisieren. Sie erstellen das ausführende Konto und das klassische ausführende Konto separat. Wenn Sie keine klassischen Ressourcen verwalten müssen, ist es nur erforderlich, das ausführende Azure-Konto zu erstellen.
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
 2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
 3. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
-4. Wählen Sie im linken Bereich im Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten**.  
-5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus. Nach der Auswahl wird das Blatt **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen** angezeigt. Überprüfen Sie die Übersichtsinformationen, und klicken Sie auf **Erstellen**, um mit dem Erstellen des ausführenden Kontos fortzufahren.  
-6. Während das ausführende Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen. Es wird auch ein Banner mit dem Hinweis angezeigt, dass das Konto erstellt wird. Dieser Vorgang kann einige Minuten dauern.  
+4. Wählen Sie im linken Bereich im Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten**.
+5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus. Nach der Auswahl wird das Blatt **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen** angezeigt. Überprüfen Sie die Übersichtsinformationen, und klicken Sie auf **Erstellen**, um mit dem Erstellen des ausführenden Kontos fortzufahren.
+6. Während das ausführende Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen. Es wird auch ein Banner mit dem Hinweis angezeigt, dass das Konto erstellt wird. Dieser Vorgang kann einige Minuten dauern.
 
 ## <a name="create-run-as-account-using-powershell"></a>Erstellen eines ausführenden Kontos mit PowerShell
 
@@ -87,7 +87,7 @@ In der folgenden Liste sind die Anforderungen zum Erstellen eines ausführenden 
 Gehen Sie wie folgt vor, um die Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* (erforderliche Parameter für das Skript) abzurufen:
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
-1. Wählen Sie auf der Seite „Automation-Konto“ Ihr Automation-Konto und dann unter **Kontoeinstellungen** die Option **Eigenschaften**.  
+1. Wählen Sie auf der Seite „Automation-Konto“ Ihr Automation-Konto und dann unter **Kontoeinstellungen** die Option **Eigenschaften**.
 1. Beachten Sie auf der Seite **Eigenschaften** die Werte **Abonnement-ID**, **Name** und **Ressourcengruppe**.
 
    ![Seite „Eigenschaften“ des Automation-Kontos](media/manage-runas-account/automation-account-properties.png)
@@ -158,18 +158,18 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
         Export-Certificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPathCer -Type CERT | Write-Verbose
     }
 
-    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {  
+    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {
         $keyValue = [System.Convert]::ToBase64String($PfxCert.GetRawCertData())
         $keyId = (New-Guid).Guid
 
         # Create an Azure AD application, AD App Credential, AD ServicePrincipal
 
         # Requires Application Developer Role, but works with Application administrator or GLOBAL ADMIN
-        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId) 
+        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId)
         # Requires Application administrator or GLOBAL ADMIN
         $ApplicationCredential = New-AzureRmADAppCredential -ApplicationId $Application.ApplicationId -CertValue $keyValue -StartDate $PfxCert.NotBefore -EndDate $PfxCert.NotAfter
         # Requires Application administrator or GLOBAL ADMIN
-        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
         # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
@@ -187,7 +187,7 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
     }
 
     function CreateAutomationCertificateAsset ([string] $resourceGroup, [string] $automationAccountName, [string] $certifcateAssetName, [string] $certPath, [string] $certPlainPassword, [Boolean] $Exportable) {
-        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force   
+        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force
         Remove-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Name $certifcateAssetName -ErrorAction SilentlyContinue
         New-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Path $certPath -Name $certifcateAssetName -Password $CertPassword -Exportable:$Exportable  | write-verbose
     }
@@ -212,7 +212,7 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
     # Enable-AzureRmAlias
 
 
-    Connect-AzureRmAccount -Environment $EnvironmentName 
+    Connect-AzureRmAccount -Environment $EnvironmentName
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
     # Create a Run As account by using a service principal
@@ -289,29 +289,29 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
     > **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Wenn **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt wird, können Sie **Add-AzureRmAccount** verwenden oder [Ihre Module in Ihrem Automation-Konto aktualisieren](automation-update-azure-modules.md).
 
 1. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** mit erhöhten Benutzerrechten.
-1. Wechseln Sie von der Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält.  
+1. Wechseln Sie von der Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält.
 1. Führen Sie das Skript aus, indem Sie die Parameterwerte für die benötigte Konfiguration verwenden.
 
-    **Erstellen eines ausführenden Kontos mit einem selbstsignierten Zertifikat**  
+    **Erstellen eines ausführenden Kontos mit einem selbstsignierten Zertifikat**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
     ```
 
-    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat**  
+    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
     ```
 
-    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem Unternehmenszertifikat**  
+    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem Unternehmenszertifikat**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
     ```
 
     **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat in der Azure Government-Cloud**
-  
+
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
     ```
@@ -368,9 +368,46 @@ Führen Sie folgende Schritte aus, um das Zertifikat zu erneuern:
 
 1. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
 
+## <a name="auto-cert-renewal"></a>Einrichten der automatischen Zertifikaterneuerung mit einem Automation-Runbook
+
+Zum automatischen Erneuern von Zertifikaten können Sie ein Automation-Runbook verwenden. Mit dem folgenden Skript [auf GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) wird diese Funktion in Ihrem Automation-Konto aktiviert.
+
+- Das `GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1`-Skript erstellt einen wöchentlichen Zeitplan zum Erneuern von Zertifikaten für ausführende Konten.
+- Das Skript fügt Ihrem Automation-Konto ein **Update-AutomationRunAsCredential**-Runbook hinzu.
+  - Sie können den Runbookcode auch auf GitHub im Skript [Update-AutomationRunAsCredential.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1) anzeigen.
+  - Sie können auch den PowerShell-Code in der Datei verwenden, um ggf. Zertifikate manuell zu erneuern.
+
+Führen Sie die folgenden Schritte aus, um den Erneuerungsprozess sofort zu testen:
+
+1. Bearbeiten Sie das Runbook **Update-AutomationRunAsCredential**, und platzieren Sie wie unten gezeigt vor dem Befehl `Exit(1)` ein Kommentarzeichen (`#`) in Zeile 122.
+
+   ```powershell
+   #Exit(1)
+   ```
+
+2. Veröffentlichen Sie das Runbook.
+3. Starten Sie das Runbook.
+4. Überprüfen Sie die erfolgreiche Erneuerung mit dem folgenden Code:
+
+   ```powershell
+   (Get-AzAutomationCertificate -AutomationAccountName TestAA
+                                -Name AzureRunAsCertificate
+                                -ResourceGroupName TestAutomation).ExpiryTime.DateTime
+   ```
+
+   ```Output
+   Thursday, November 7, 2019 7:00:00 PM
+   ```
+
+5. Bearbeiten Sie nach dem Test das Runbook, und entfernen Sie das Kommentarzeichen, das Sie in **Schritt 1** hinzugefügt haben.
+6. **Veröffentlichen** Sie das Runbook.
+
+> [!NOTE]
+> Sie müssen ein **globaler Administrator** oder **Unternehmensadministrator** in Azure Active Directory sein, um das Skript auszuführen.
+
 ## <a name="limiting-run-as-account-permissions"></a>Einschränken der Berechtigungen für ausführendes Konto
 
-Zum Steuern der Automatisierungsziele für Ressourcen in Azure können Sie das Skript [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) im PowerShell-Katalog ausführen, um Ihren vorhandenen Dienstprinzipal des ausführenden Kontos so zu ändern, dass eine benutzerdefinierte Rollendefinition erstellt und verwendet wird. Diese Rolle verfügt über Berechtigungen für alle Ressourcen außer [Key Vault](https://docs.microsoft.com/azure/key-vault/). 
+Zum Steuern der Automatisierungsziele für Ressourcen in Azure können Sie das Skript [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) im PowerShell-Katalog ausführen, um Ihren vorhandenen Dienstprinzipal des ausführenden Kontos so zu ändern, dass eine benutzerdefinierte Rollendefinition erstellt und verwendet wird. Diese Rolle verfügt über Berechtigungen für alle Ressourcen außer [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
 > [!IMPORTANT]
 > Nach dem Ausführen des Skripts `Update-AutomationRunAsAccountRoleAssignments.ps1` funktionieren Runbooks, die über ausführende Konten auf KeyVault zugreifen, nicht mehr. Überprüfen Sie Runbooks in Ihrem Konto auf Aufrufe von Azure KeyVault.
@@ -385,7 +422,7 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-Um zu bestimmen, ob der als ausführendes Konto verwendete Dienstprinzipal sich in der Definition **Mitwirkender** oder einer benutzerdefinierten Rollendefinition befindet, wechseln Sie zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** > **Ausführendes Azure-Konto** aus. Unter **Rolle** ist die verwendete Rollendefinition aufgeführt. 
+Um zu bestimmen, ob der als ausführendes Konto verwendete Dienstprinzipal sich in der Definition **Mitwirkender** oder einer benutzerdefinierten Rollendefinition befindet, wechseln Sie zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** > **Ausführendes Azure-Konto** aus. Unter **Rolle** ist die verwendete Rollendefinition aufgeführt.
 
 [![](media/manage-runas-account/verify-role.png "Überprüfen der Rolle „Ausführendes Konto“")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cbda7d9be1617617e173c68c3d2a4a95c255ae0
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673344"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68386876"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -239,7 +239,7 @@ Wie schon erwähnt, bieten Storage Premium-Datenträger eine höhere Leistung al
 Hochleistungs-VMs mit Azure Storage Premium arbeiten mit einer mehrschichtigen Cachetechnologie mit dem Namen BlobCache. BlobCache verwendet für das Zwischenspeichern eine Kombination aus RAM des virtuellen Computers und lokalem SSD-Laufwerk. Dieser Cache ist für die permanenten Storage Premium-Datenträger und die lokalen VM-Datenträger verfügbar. Standardmäßig ist diese Cacheeinstellung auf „Read/Write“ für Betriebssystem-Datenträger und auf und „ReadOnly“ für in Storage Premium gehostete Datenträger festgelegt. Bei aktiviertem Cache auf den Storage Premium-Datenträgern können die Hochleistungs-VMs überaus hohe Leistungsgrade erreichen, die die zugrunde liegende Datenträgerleistung übersteigen.
 
 > [!WARNING]
-> Der Datenträgercache wird für Datenträger mit mehr als 4 TiB nicht unterstützt. Wenn mehrere Datenträger an Ihre VM angefügt sind, unterstützt jeder Datenträger mit 4 TiB oder weniger den Datenträgercache.
+> Die Zwischenspeicherung von Datenträgern wird nicht für Datenträger mit einer Größe von 4 TiB und höher unterstützt. Wenn mehrere Datenträger an Ihre VM angefügt sind, unterstützt jeder Datenträger mit 4 TiB oder weniger das Zwischenspeichern.
 >
 > Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn es sich um den Betriebssystemdatenträger handelt, wird der virtuelle Computer neu gestartet. Beenden Sie alle Anwendungen und Dienste, die von dieser Unterbrechung betroffen sein könnten, bevor Sie die Cacheeinstellung des Datenträgers ändern.
 

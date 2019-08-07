@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure services
 ms.date: 08/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 46a823e4e230656b53a93a97f195d0879fd08bf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122233"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359917"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>SSL-Richtlinienübersicht für Azure Application Gateway
 
@@ -101,6 +101,9 @@ Application Gateway unterstützt die folgenden Verschlüsselungssammlungen. Aus 
 - TLS_DHE_DSS_WITH_AES_128_CBC_SHA
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
+
+> [!NOTE]
+> Die für die Verbindung verwendeten SSL-Verschlüsselungssammlungen basieren auf dem Typ des verwendeten Zertifikats. In Verbindungen zwischen Client und Anwendungsgateways basieren die verwendeten Verschlüsselungssammlungen auf dem Typ des Serverzertifikats auf dem Anwendungsgatewaylistener. In Verbindungen zwischen Anwendungsgateways und Back-End-Pools basieren die verwendeten Verschlüsselungssammlungen auf dem Typ des Serverzertifikats auf den Back-End-Poolservern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

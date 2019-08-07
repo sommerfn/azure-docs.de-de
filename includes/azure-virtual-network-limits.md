@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 3e66bf61caf786473d89eab9a6567bb05aff0d19
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67457352"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68481448"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -29,6 +29,8 @@ ms.locfileid: "67457352"
 | Private IP-Adressen pro virtuellem Netzwerk |65.536 |
 | Private IP-Adressen pro Netzwerkschnittstelle |256 |
 | Private IP-Adressen pro virtuellem Computer |256 |
+| Öffentliche IP-Adressen pro Netzwerkschnittstelle |256 |
+| Öffentliche IP-Adressen pro virtuellem Computer |256 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500.000 |
 | Netzwerkschnittstellenkarten |65.536 |
 | Netzwerksicherheitsgruppen |5\.000 |

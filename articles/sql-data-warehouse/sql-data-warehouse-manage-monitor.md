@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/12/2019
+ms.date: 07/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748769"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405425"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
 In diesem Artikel wird beschrieben, wie Sie dynamische Verwaltungssichten (DMVs) verwenden, um Ihre Workload zu überwachen. Dazu gehört auch die Untersuchung der Abfrageausführung in Azure SQL Data Warehouse.
@@ -59,16 +59,11 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with the Label 'My Query'
--- Use brackets when querying the label column, as it it a key word
-SELECT  *
-FROM    sys.dm_pdw_exec_requests
-WHERE   [label] = 'My Query';
 ```
 
 Notieren Sie sich aus den oben stehenden Abfrageergebnissen **die Anforderungs-ID** der Abfrage, die Sie untersuchen möchten.
 
-Abfragen im Zustand **Angehalten** können aufgrund einer großen Anzahl aktiv ausgeführter Abfragen in eine Warteschlange gestellt werden. Diese Abfragen werden auch in der Abfrage [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) mit dem Typ UserConcurrencyResourceType angezeigt. Informationen zu parallelen Grenzwerten finden Sie unter [Leistungsstufen](performance-tiers.md) oder [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Abfragen, die auf Ressourcen warten][Investigating queries waiting for resources] weiter unten in diesem Artikel.
+Abfragen im Zustand **Angehalten** können aufgrund einer großen Anzahl aktiv ausgeführter Abfragen in eine Warteschlange gestellt werden. Diese Abfragen werden auch in der Abfrage [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) mit dem Typ UserConcurrencyResourceType angezeigt. Informationen zu parallelen Grenzwerten finden Sie unter [Leistungsstufen](performance-tiers.md) oder [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Anfragen, die auf Ressourcen warten][Investigating queries waiting for resources] weiter unten in diesem Artikel.
 
 Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Ansicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
 
@@ -78,6 +73,12 @@ SELECT *
 FROM sys.tables
 OPTION (LABEL = 'My Query')
 ;
+
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
+SELECT  *
+FROM    sys.dm_pdw_exec_requests
+WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>SCHRITT 2: Untersuchen des Abfrageplans
@@ -92,7 +93,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ein komplexer Plan mit vielen DSQL-Schritten oder nur ein einziger Schritt sein, der einen langen Zeitraum benötigt.  Wenn der Plan viele Schritte mit mehreren Verschiebungen aufweist, erwägen Sie die Optimierung Ihrer Tabellenverteilungen, um Datenverschiebungen zu reduzieren. Der Artikel [Verteilen von Tabellen][Table distribution] erläutert, warum Daten verschoben werden müssen, um eine Abfrage zu lösen, und erläutert einige Verteilungsstrategien zum Minimieren von Datenverschiebungen.
+Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ein komplexer Plan mit vielen DSQL-Schritten oder nur ein einziger Schritt sein, der einen langen Zeitraum benötigt.  Wenn der Plan viele Schritte mit mehreren Verschiebungen aufweist, erwägen Sie die Optimierung Ihrer Tabellenverteilungen, um Datenverschiebungen zu reduzieren. Der Artikel [Verteilen von Tabellen in SQL Data Warehouse][Table distribution] erläutert, warum Daten verschoben werden müssen, um eine Abfrage zu lösen, und erläutert einige Verteilungsstrategien zum Minimieren von Datenverschiebungen.
 
 Um weitere Informationen zu einem Einzelschritt zu erhalten, beachten Sie die Spalte *operation_type* des Abfrageschritts mit langer Laufzeit, und beachten Sie den **Schrittindex**:
 

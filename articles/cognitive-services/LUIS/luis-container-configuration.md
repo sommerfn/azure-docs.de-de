@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 4a9f7762b7960c74acad8203f70bc1e7c7cbd90f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7858d94b6e2a9ef07da9121cb84ffaf6adaa24d3
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063223"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360542"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurieren von Docker-Containern für Language Understanding 
 
@@ -69,14 +69,13 @@ Denken Sie daran, die `luis/v2.0`-Weiterleitung wie in der folgenden Tabelle dar
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | string | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
 ## <a name="fluentd-settings"></a>Fluentd-Einstellungen
-
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -87,7 +86,6 @@ Denken Sie daran, die `luis/v2.0`-Weiterleitung wie in der folgenden Tabelle dar
 ## <a name="logging-settings"></a>Logging-Einstellungen
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
-
 
 ## <a name="mount-settings"></a>Einbindungseinstellungen
 
@@ -101,8 +99,8 @@ In der folgenden Tabelle werden die unterstützten Einstellungen beschrieben.
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Ja| `Input` | string | Das Ziel der Eingabeeinbindung. Standardwert: `/input`. Dies ist der Speicherort der LUIS-Paketdateien. <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Nein| `Output` | string | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Dazu gehören auch LUIS-Abfrageprotokolle und -Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Ja| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`. Dies ist der Speicherort der LUIS-Paketdateien. <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Nein| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Dazu gehören auch LUIS-Abfrageprotokolle und -Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
@@ -118,8 +116,8 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
-|{ENDPOINT_KEY} | Der Endpunktschlüssel der trainierten LUIS-Anwendung. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Cognitive Services`. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{API_KEY} | Der Endpunktschlüssel der trainierten LUIS-Anwendung. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URL} | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Cognitive Services`. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](luis-container-howto.md#billing).
@@ -135,8 +133,8 @@ docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY}
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY}
 ```
 
 ### <a name="applicationinsights-example"></a>Beispiel für ApplicationInsights
@@ -149,8 +147,8 @@ docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY} ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
@@ -164,8 +162,8 @@ docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY} ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 

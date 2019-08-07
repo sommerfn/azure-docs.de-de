@@ -5,15 +5,15 @@ description: Lernen Sie die Datenmodellierung in NoSQL-Datenbanken sowie die Unt
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 47d519523c7ffd1c0b6329d6b4eb12b052466b35
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657372"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467896"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Datenmodellierung in Azure Cosmos DB
 
@@ -417,3 +417,5 @@ Es gibt genauso wenig einen einzigen Weg, um Daten auf einem Bildschirm darzuste
 Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Dokumentationsseite](https://azure.microsoft.com/documentation/services/cosmos-db/) des Diensts.
 
 Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf mehreren Partitionen finden Sie unter [Partitionieren von Daten in Azure Cosmos DB](sql-api-partition-data.md).
+
+Erfahren Sie mehr über das [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](how-to-model-partition-example.md).

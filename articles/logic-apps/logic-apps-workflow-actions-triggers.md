@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 0c7fbe209a20182ac2a17fcdb467d1f2a03183e5
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c109627d2a2e9190afb2c27b9fb202e93baa68cb
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370726"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689668"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
 
@@ -2317,7 +2317,7 @@ Mit dieser Schleifenaktionsdefinition wird eine HTTP-Anforderung an die angegebe
  "Run_until_loop_succeeds_or_expires": {
     "type": "Until",
     "actions": {
-        "Http": {
+        "HTTP": {
             "type": "Http",
             "inputs": {
                 "method": "GET",
@@ -2326,7 +2326,7 @@ Mit dieser Schleifenaktionsdefinition wird eine HTTP-Anforderung an die angegebe
             "runAfter": {}
         }
     },
-    "expression": "@equals(outputs('Http')['statusCode', 200])",
+    "expression": "@equals(outputs('HTTP')['statusCode'], 200)",
     "limit": {
         "count": 60,
         "timeout": "PT1H"

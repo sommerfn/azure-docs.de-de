@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 513803adec71e0e2c9578d762c5f4c110ed7086f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61432958"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384499"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -72,7 +72,7 @@ Das URL-Rewrite-Modul von IIS kann zum Umleiten von Datenverkehr, der bei der St
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Wie kann ich den bei der Standard-URL des Clouddiensts eingehenden Datenverkehr blockieren/deaktivieren?
 
-Sie können verhindern, dass Datenverkehr bei der Standard-URL/Name des Clouddiensts (z.B. \*. cloudapp.net) eingeht. Legen Sie für den Hostheader in der Clouddienst-Definitionsdatei (*.csdef) unter der Websitebindungskonfiguration wie folgt einen benutzerdefinierten DNS-Namen (z.B. www.MyCloudService.com) fest:
+Sie können verhindern, dass Datenverkehr bei der Standard-URL/Name des Clouddiensts (z.B. \*. cloudapp.net) eingeht. Legen Sie für den Hostheader in der Clouddienstdefinitionsdatei (*.csdef) unter der Websitebindungskonfiguration wie folgt einen benutzerdefinierten DNS-Namen (z. B. www\.MyCloudService.com) fest:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

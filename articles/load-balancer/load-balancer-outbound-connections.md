@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: allensu
-ms.openlocfilehash: 6623b3e679faaa73f18c0f6b376de101113bcbdb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274553"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385551"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -42,25 +42,25 @@ Azure Load Balancer und die zugehörigen Ressourcen werden bei Verwendung von [A
 
 | SKUs | Szenario | Methode | IP-Protokolle | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Standard, Basic | [1. Virtuelle Computer mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Azure Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. Bei der Verwendung von Load Balancer Standard sollten Sie [Ausgangsregeln](load-balancer-outbound-rules-overview.md) verwenden, um die ausgehenden Verbindungen explizit zu definieren. |
-| Standard, Basic | [2. Öffentlicher Lastenausgleich, der einem virtuellen Computer zugewiesen ist (keine öffentliche IP-Adresse auf Instanzebene für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs | TCP, UDP |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
-| Keine oder Basic. | [3. Eigenständiger virtueller Computer (kein Azure Load Balancer, keine öffentliche IP-Adresse auf Instanzebene)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallback für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
+| Standard, Basic | [1. Virtueller Computer mit öffentlicher IP-Adresse (mit oder ohne Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. Bei der Verwendung von Load Balancer Standard sollten Sie [Ausgangsregeln](load-balancer-outbound-rules-overview.md) verwenden, um die ausgehenden Verbindungen explizit zu definieren. |
+| Standard, Basic | [2. Öffentlicher Load Balancer, der einem virtuellen Computer zugeordnet ist (keine öffentliche IP-Adresse für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs | TCP, UDP |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
+| Keine oder Basic. | [3. Eigenständiger virtueller Computer (kein Load Balancer, keine öffentliche IP-Adresse)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallback für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
 
 Wenn ein virtueller Computer nicht mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum kommunizieren soll, können Sie nach Bedarf zum Blockieren des Zugriffs Netzwerksicherheitsgruppen verwenden. Netzwerksicherheitsgruppen werden im Abschnitt [Verhindern der ausgehenden Konnektivität](#preventoutbound) ausführlicher beschrieben. Das Entwerfen, Implementieren und Verwalten eines virtuellen Netzwerks ohne ausgehenden Zugriff und die entsprechenden Anleitungen hierzu sind nicht Gegenstand dieses Artikels.
 
-### <a name="ilpip"></a>Szenario 1: VM mit einer öffentlichen IP-Adresse auf Instanzebene
+### <a name="ilpip"></a>Szenario 1: Virtueller Computer mit öffentlicher IP-Adresse
 
-In diesem Szenario ist der VM eine öffentliche IP-Adresse auf Instanzebene (Instance Level Public IP, ILPIP) zugewiesen. Bei ausgehenden Verbindungen spielt es keine Rolle, ob für den virtuellen Computer ein Lastenausgleich durchgeführt wird. Dieses Szenario hat Vorrang vor den anderen Szenarien. Wenn eine öffentliche IP-Adresse auf Instanzebene (ILPIP) verwendet wird, nutzt die VM die ILPIP für alle ausgehenden Datenflüsse.  
+In diesem Szenario ist dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen. Bei ausgehenden Verbindungen spielt es keine Rolle, ob für den virtuellen Computer ein Lastenausgleich durchgeführt wird. Dieses Szenario hat Vorrang vor den anderen Szenarien. Wenn eine öffentliche IP-Adresse verwendet wird, verwendet der virtuelle Computer die öffentliche IP-Adresse für alle ausgehenden Flows.  
 
 Eine öffentliche IP-Adresse, die einem virtuellen Computer zugewiesen ist, ist eine 1:1-Beziehung (keine 1:n-Beziehung) und wird als zustandslose 1:1-NAT implementiert.  Es wird keine Portmaskierung (PAT) verwendet, und für den virtuellen Computer sind alle kurzlebigen Ports verfügbar.
 
-Wenn Ihre Anwendung viele ausgehende Datenflüsse initiiert und es zu einer Überlastung der SNAT-Ports kommt, sollten Sie das [Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erwägen, um SNAT-Engpässe zu entschärfen](#assignilpip). Lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust) ganz durch.
+Wenn Ihre Anwendung viele ausgehende Flows initiiert und es zu einer Überlastung der SNAT-Ports kommt, sollten Sie das [Zuweisen einer öffentlichen IP-Adresse erwägen, um SNAT-Einschränkungen zu mindern](#assignilpip). Lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust) ganz durch.
 
-### <a name="lb"></a>Szenario 2: Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene
+### <a name="lb"></a>Szenario 2: Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse
 
 Bei diesem Szenario ist die VM Teil eines Back-End-Pools für den öffentlichen Lastenausgleich. Der VM ist keine öffentliche IP-Adresse zugewiesen. Die Lastenausgleichsressource muss mit einer Lastenausgleichsregel zum Erstellen einer Verknüpfung der öffentlichen Front-End-IP mit dem Back-End-Pool konfiguriert werden.
 
-Wenn Sie diese Regelkonfiguration nicht abschließen, ergibt sich das Verhalten wie oben unter [Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene](#defaultsnat) beschrieben. Die Regel muss nicht über einen funktionierenden Listener im Back-End-Pool verfügen, damit der Integritätstest erfolgreich durchgeführt werden kann.
+Wenn Sie diese Regelkonfiguration nicht abschließen, ergibt sich das unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse](#defaultsnat) beschriebene Verhalten. Die Regel muss nicht über einen funktionierenden Listener im Back-End-Pool verfügen, damit der Integritätstest erfolgreich durchgeführt werden kann.
 
 Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erstellt, übersetzt Azure die private IP-Quelladresse des ausgehenden Datenflusses in die öffentliche IP-Adresse des öffentlichen Lastenausgleichs-Frond-End. Azure verwendet SNAT, um diese Funktion durchzuführen. Azure verwendet auch [PAT](#pat), um mehrere private IP-Adressen durch eine öffentliche IP-Adresse zu maskieren. 
 
@@ -72,9 +72,9 @@ Wenn [Load Balancer Basic mehrere öffentliche IP-Adressen zugeordnet sind](load
 
 Zum Überwachen der Integrität ausgehender Verbindungen mit Load Balancer Basic können Sie [Azure Monitor-Protokolle für Azure Load Balancer](load-balancer-monitor-log.md) und [Warnungsereignisprotokolle](load-balancer-monitor-log.md#alert-event-log) verwenden.
 
-### <a name="defaultsnat"></a>Szenario 3: Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene
+### <a name="defaultsnat"></a>Szenario 3: Eigenständiger virtueller Computer ohne öffentliche IP-Adresse
 
-In diesem Szenario gehört die VM nicht zu einem öffentlichen Load Balancer-Pool (und sie ist nicht Teil eines internen Standard Load Balancer-Pools), und ihr ist keine ILPIP-Adresse zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. Diese öffentliche IP-Adresse gehört Ihnen nicht und kann nicht reserviert werden. Bei der erneuten Bereitstellung der VM, Verfügbarkeitsgruppe oder VM-Skalierungsgruppe wird diese öffentliche IP-Adresse freigegeben und eine neue öffentliche IP-Adresse angefordert. Verwenden Sie dieses Szenario nicht für die Aufnahme von IP-Adressen in die Whitelist. Verwenden Sie stattdessen eins der anderen zwei Szenarien, in denen Sie das ausgehende Szenario und die für ausgehende Verbindungen zu verwendende IP-Adresse explizit deklarieren.
+In diesem Szenario gehört der virtuelle Computer nicht zu einem öffentlichen Load Balancer-Pool (und sie ist nicht Teil eines internen Load Balancer Standard-Pools), und ihm ist keine öffentliche IP-Adresse zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. Diese öffentliche IP-Adresse gehört Ihnen nicht und kann nicht reserviert werden. Bei der erneuten Bereitstellung der VM, Verfügbarkeitsgruppe oder VM-Skalierungsgruppe wird diese öffentliche IP-Adresse freigegeben und eine neue öffentliche IP-Adresse angefordert. Verwenden Sie dieses Szenario nicht für die Aufnahme von IP-Adressen in die Whitelist. Verwenden Sie stattdessen eins der anderen zwei Szenarien, in denen Sie das ausgehende Szenario und die für ausgehende Verbindungen zu verwendende IP-Adresse explizit deklarieren.
 
 >[!IMPORTANT] 
 >Dieses Szenario gilt auch, wenn __nur__ ein interner Basic Load Balancer verknüpft ist. Szenario 3 ist __nicht verfügbar__, wenn ein interner Standard Load Balancer mit einer VM verknüpft ist.  Sie müssen [Szenario 1](#ilpip) oder [Szenario 2](#lb) zusätzlich zu einem internen Standard Load Balancer explizit erstellen.
@@ -189,7 +189,7 @@ SNAT-Portzuordnungen gelten speziell für das jeweilige IP-Transportprotokoll (T
 Dieser Abschnitt enthält Informationen dazu, wie Sie das Problem einer SNAT-Überlastung, die bei ausgehenden Verbindungen in Azure auftreten kann, lösen können.
 
 ### <a name="snatexhaust"></a> Verwalten der SNAT-Portauslastung (PAT)
-Für [PAT](#pat) verwendete [kurzlebige Ports](#preallocatedports) sind eine begrenzte Ressource, wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene](#defaultsnat) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene](#lb) beschrieben.
+Wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse](#defaultsnat) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse](#lb) beschrieben wird, sind für [PAT](#pat) verwendete [kurzlebige Ports](#preallocatedports) eine begrenzte Ressource.
 
 Wenn Sie wissen, dass Sie viele ausgehende TCP- oder UDP-Verbindungen zu derselben IP-Zieladresse und demselben Port initiieren und Fehler bei ausgehenden Verbindungen feststellen oder vom Support darauf hingewiesen werden, dass Sie zu viele SNAT-Ports (vorab zugeordnete [kurzlebige Ports](#preallocatedports), die für [PAT](#pat) verwendet werden) in Anspruch nehmen, stehen Ihnen mehrere Lösungsmöglichkeiten zur Verfügung. Überprüfen Sie diese Optionen, und entscheiden Sie, welche für Ihr Szenario verfügbar und am besten geeignet sind. Möglicherweise kann die ein oder andere die Verwaltung dieses Szenarios erleichtern.
 
@@ -210,8 +210,8 @@ Wenn die für [PAT](#pat) verwendeten [vorab zugeordneten kurzlebigen Ports](#pr
 
 Kurzlebige Ports haben ein Leerlauftimeout von vier Minuten (nicht veränderbar). Wenn die Wiederholungen zu aggressiv sind, besteht keine Möglichkeit, dass sich die Überlastung von alleine erholt. Daher ist die Überlegung, wie und wie oft Ihre Anwendung Transaktionen wiederholen soll, ein wichtiger Aspekt des Entwurfs.
 
-#### <a name="assignilpip"></a>Zuweisen einer öffentlichen IP-Adresse auf Instanzebene für jeden virtuellen Computer
-Durch das Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erhalten Sie das Szenario [Virtueller Computer mit öffentlicher IP-Adresse auf Instanzebene](#ilpip). Alle kurzlebigen Ports für die öffentliche IP-Adresse, die für jeden virtuellen Computer verwendet werden, sind für den virtuellen Computer verfügbar. (Das steht im Gegensatz zu Szenarien, bei denen kurzlebige Ports für eine öffentliche IP-Adresse von allen virtuellen Computern, die dem entsprechenden Back-End-Pool zugeordnet sind, gemeinsam genutzt werden.) Es müssen auch Nachteile berücksichtigt werden, wie beispielsweise zusätzliche Kosten für öffentliche IP-Adressen und mögliche Auswirkungen des Whitelistings für eine große Anzahl einzelner IP-Adressen.
+#### <a name="assignilpip"></a>Zuweisen einer öffentlichen IP-Adresse zu jedem virtuellen Computer
+Durch das Zuweisen einer öffentlichen IP-Adresse ändert sich das Szenario zu einem Szenario mit einem [virtuellen Computer mit öffentlicher IP-Adresse](#ilpip). Alle kurzlebigen Ports für die öffentliche IP-Adresse, die für jeden virtuellen Computer verwendet werden, sind für den virtuellen Computer verfügbar. (Das steht im Gegensatz zu Szenarien, bei denen kurzlebige Ports für eine öffentliche IP-Adresse von allen virtuellen Computern, die dem entsprechenden Back-End-Pool zugeordnet sind, gemeinsam genutzt werden.) Es müssen auch Nachteile berücksichtigt werden, wie beispielsweise zusätzliche Kosten für öffentliche IP-Adressen und mögliche Auswirkungen des Whitelistings für eine große Anzahl einzelner IP-Adressen.
 
 >[!NOTE] 
 >Diese Option ist für Webworkerrollen nicht verfügbar.

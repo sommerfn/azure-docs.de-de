@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: f4e19b916553912e36f2c3beee3f6a518b244e4d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 29ece0677c71a2cb423e541cf2e9f4a06947e44c
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707006"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413388"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -40,8 +40,7 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen b
 | Anzahl der virtuellen Kerne | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne) | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
 | Max. In-Memory-OLTP-Arbeitsspeicher | Grenzwert für Instanzen: 3GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 8 GB pro Datenbank<br/> – 16 Kerne: 20 GB pro Datenbank<br/> – 24 Kerne: 36 GB pro Datenbank | Grenzwert für Instanzen: 2,5 GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 13 GB pro Datenbank<br/> – 16 Kerne: 32 GB pro Datenbank |
-| Max. Größe des reservierten Instanzspeichers (universell) |  8 TB | 8 TB |
-| Max. Größe des reservierten Instanzspeichers (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
+| Maximal reservierter Instanzspeicher |  Allgemein: 8 TB<br/>Unternehmenskritisch: 1 TB | Allgemein: 8 TB<br/> Unternehmenskritisch: 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 > [!IMPORTANT]
 > Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.

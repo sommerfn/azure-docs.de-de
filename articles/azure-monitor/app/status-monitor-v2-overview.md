@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 2126408222433e6339723dc2da0d2611bb234fe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734157"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333687"
 ---
 # <a name="status-monitor-v2"></a>Statusmonitor v2
 
@@ -26,14 +26,11 @@ Es ersetzt den [Statusmonitor](https://docs.microsoft.com/azure/azure-monitor/ap
 Das Modul bietet eine codefreie Instrumentierung von mit IIS gehosteten .NET-Web-Apps.
 Telemetriedaten werden an das Azure-Portal gesendet, wo Sie Ihre App [überwachen](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) können.
 
-> [!IMPORTANT]
-> Statusmonitor v2 ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="powershell-gallery"></a>PowerShell-Katalog
 
-Der PowerShell-Katalog befindet sich hier: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Den Statusmonitor v2 finden Sie unter folgendem Link: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+
+![PowerShell-Katalog](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
 ## <a name="instructions"></a>Anleitung
@@ -48,6 +45,7 @@ Der PowerShell-Katalog befindet sich hier: https://www.powershellgallery.com/pac
 - [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
 - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
+- [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 - [Problembehandlung](status-monitor-v2-troubleshoot.md)
@@ -64,13 +62,13 @@ Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-
   
 - Wie überprüfe ich, ob die Aktivierung erfolgreich war?
 
-   Es gibt kein Cmdlet, mit dem überprüft werden kann, ob die Aktivierung erfolgreich war.
-Es wird empfohlen, anhand von [Livemetriken](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) schnell zu ermitteln, ob Ihre App Telemetriedaten sendet.
+  - Mit dem Cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) können Sie überprüfen, ob die Aktivierung erfolgreich war.
+  - Es wird empfohlen, anhand von [Livemetriken](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) schnell zu ermitteln, ob Ihre App Telemetriedaten sendet.
 
-   Sie können auch [Log Analytics](../log-query/get-started-portal.md) verwenden, um alle Cloudrollen aufzulisten, die derzeit Telemetriedaten senden.
-   ```Kusto
-   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
-   ```
+  - Sie können auch [Log Analytics](../log-query/get-started-portal.md) verwenden, um alle Cloudrollen aufzulisten, die derzeit Telemetriedaten senden.
+      ```Kusto
+      union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+      ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,13 +9,13 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.date: 07/22/2019
+ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839654"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405440"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -32,40 +32,41 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
-| Australien (Osten) |Verfügbar |1\. Juni 2019 |
-| Australien, Südosten |Verfügbar |1\. Mai 2019 |
-| Brasilien Süd |Verfügbar |1\. Juni 2019 |
-| Kanada, Mitte |Verfügbar |1\. Juni 2019 |
-| Kanada, Osten |\* |\* |
-| USA (Mitte) |Verfügbar |1\. Juni 2019 |
+| Australien (Osten) |Verfügbar |Abgeschlossen |
+| Australien, Südosten |Verfügbar |Abgeschlossen |
+| Brasilien Süd |Verfügbar |Abgeschlossen |
+| Kanada, Mitte |Verfügbar |Abgeschlossen |
+| Kanada, Osten |1\. Juni 2020 |1\. Juli 2020 |
+| USA (Mitte) |Verfügbar |Abgeschlossen |
 | China, Osten |\* |\* |
-| China, Osten 2 |Verfügbar |Nur Gen2 |
+| China, Osten 2 |Verfügbar |Abgeschlossen |
 | China, Norden |\* |\* |
-| China, Norden 2 |Verfügbar |Nur Gen2 |
-| Asien, Osten |Verfügbar |1\. Juni 2019 |
-| East US |Verfügbar |1\. Juni 2019 |
-| USA (Ost) 2 |Verfügbar |1\. Juni 2019 |
-| Frankreich, Mitte |Verfügbar |1\. Juni 2019 |
+| China, Norden 2 |Verfügbar |Abgeschlossen |
+| Asien, Osten |Verfügbar |Abgeschlossen |
+| East US |Verfügbar |Abgeschlossen |
+| USA (Ost) 2 |Verfügbar |Abgeschlossen |
+| Frankreich, Mitte |Verfügbar |Wird ausgeführt |
 | Deutschland, Mitte |\* |\* |
-| Deutschland, Westen-Mitte |1\. September 2019|2\. Januar 2020 |
-| Indien, Mitte |Verfügbar |1\. Juni 2019 |
-| Indien, Süden |Verfügbar |1\. Juni 2019 |
-| Japan, Osten |Verfügbar |1\. Juni 2019 |
-| Japan, Westen |Verfügbar |1\. Mai 2019 |
-| Korea, Mitte |Verfügbar |1\. Juni 2019 |
-| Korea, Süden |Verfügbar |1\. Mai 2019 |
-| USA Nord Mitte |Verfügbar |1\. Mai 2019 |
-| Nordeuropa |Verfügbar |1\. Juni 2019 |
-| Südafrika, Norden |12. Juli 2019 |Nur Gen2 |
-| USA Süd Mitte |Verfügbar |1\. Juni 2019 |
-| Südostasien |Verfügbar |1\. Juni 2019 |
-| Vereinigte Arabische Emirate, Norden |20. Juli 2019 |Nur Gen2 |
-| UK, Süden |Verfügbar |1\. Juni 2019 |
-| UK, Westen |Verfügbar |Nur Gen2 |
-| USA, Westen-Mitte |2\. September 2019 |2\. Januar 2020|
-| Europa, Westen |Verfügbar |1\. Juni 2019 |
-| USA (Westen) |Verfügbar |1\. Juni 2019 |
-| USA, Westen 2 |Verfügbar |1\. Juni 2019 |
+| Deutschland, Westen-Mitte |1\. September 2019|1\. Oktober 2019 |
+| Indien, Mitte |Verfügbar |Abgeschlossen |
+| Indien, Süden |Verfügbar |Abgeschlossen |
+| Indien, Westen |1\. Juli 2019 |Wird ausgeführt |
+| Japan, Osten |Verfügbar |Abgeschlossen |
+| Japan, Westen |Verfügbar |Abgeschlossen |
+| Korea, Mitte |Verfügbar |Abgeschlossen |
+| Korea, Süden |Verfügbar |Abgeschlossen |
+| USA Nord Mitte |Verfügbar |Abgeschlossen |
+| Nordeuropa |Verfügbar |Abgeschlossen |
+| Südafrika, Norden |12. Juli 2019 |Abgeschlossen |
+| USA Süd Mitte |Verfügbar |Abgeschlossen |
+| Südostasien |Verfügbar |Abgeschlossen |
+| Vereinigte Arabische Emirate, Norden |20. Juli 2019 |Abgeschlossen |
+| UK, Süden |Verfügbar |Wird ausgeführt |
+| UK, Westen |Verfügbar |Wird ausgeführt |
+| USA, Westen-Mitte |1\. September 2019 |1\. Oktober 2019|
+| Europa, Westen |Verfügbar |Abgeschlossen |
+| USA (Westen) |Verfügbar |Abgeschlossen |
+| USA, Westen 2 |Verfügbar |Abgeschlossen |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 
