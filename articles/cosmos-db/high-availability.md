@@ -4,15 +4,15 @@ description: Dieser Artikel beschreibt, wie Azure Cosmos DB Hochverfügbarkeit b
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/31/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 38629ed2246f4eb67e4183354fe4feaaaee16805
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 4b039e777748499e1b9a2a120e9498d94066b735
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305444"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688279"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -49,9 +49,9 @@ Regionale Ausfälle sind keine Seltenheit. Deswegen stellt Azure Cosmos DB siche
 - Konten mit mehreren Regionen, die mit mehreren Schreibregionen konfiguriert sind, sind sowohl für Schreib- als auch für Lesevorgänge hoch verfügbar. Regionale Failover werden sofort ausgeführt und erfordern keine Änderungen von der Anwendung.
 
 - **Konten mit mehreren Regionen mit einer einzelnen Schreibregion (Ausfall einer Schreibregion):** 
-  * Diese Konten bleiben bei Ausfall einer Schreibregion hochverfügbar für Lesevorgänge. Für Schreibvorgänge müssen Sie jedoch in Ihrem Azure Cosmos DB-Konto die Option **Automatisches Failover aktivieren** auswählen, damit ein Failover für die betreffende Region in eine andere Region ausgeführt werden kann. Das Failover erfolgt in der Reihenfolge der von Ihnen angegebenen Priorisierung der Regionen. 
-  * Wenn die betroffene Region wieder online ist, werden die nicht replizierten Daten, die sich während des Ausfalls in der betroffenen Schreibregion befanden, über den [Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed) verfügbar gemacht. Anwendungen können den Konfliktfeed lesen, die Konflikte auf Grundlage der anwendungsspezifischen Logik lösen und aktualisierte Daten nach Bedarf in den Cosmos-Container zurückschreiben. 
-  * Wenn die vom Ausfall betroffene Schreibregion wiederhergestellt ist, steht sie automatisch als Leseregion zur Verfügung. Sie können zurück zur wiederhergestellten Region als Schreibregion wechseln. Sie können die Regionen mithilfe der [Azure CLI oder dem Azure-Portal](how-to-manage-database-account.md#manual-failover) wechseln. Es gibt **keinerlei Daten- oder Verfügbarkeitsverluste** – weder vor oder nach dem manuellen Failover noch währenddessen. Ihre Anwendung ist weiterhin hochverfügbar. 
+  * Diese Konten bleiben bei Ausfall einer Schreibregion hochverfügbar für Lesevorgänge. Damit Schreibanforderungen erfolgreich übermittelt werden können, müssen Sie die Option **Automatisches Failover aktivieren** in Ihrem Azure Cosmos-Konto aktivieren. Durch Aktivieren dieser Option wird ein Failover der betroffenen Region in eine andere Region durchführt, und zwar in der von Ihnen angegebenen Reihenfolge der Regionspriorität. 
+  * Wenn die betroffene Region wieder online geschaltet wurde, stehen sämtliche Daten aus Schreibvorgängen, die während des Ausfalls der Region nicht repliziert wurden, über den [Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed) zur Verfügung. Anwendungen können den Konfliktfeed lesen, die Konflikte auf Grundlage der anwendungsspezifischen Logik lösen und die aktualisierten Daten nach Bedarf in den Azure Cosmos-Container zurückschreiben. 
+  * Wenn die vom Ausfall betroffene Schreibregion wiederhergestellt ist, steht sie automatisch als Leseregion zur Verfügung. Sie können zurück zur wiederhergestellten Region als Schreibregion wechseln. Sie können die Regionen mithilfe der [Azure CLI oder dem Azure-Portal](how-to-manage-database-account.md#manual-failover) wechseln. Vor, während und nach dem Wechsel zur Schreibregion tritt kein **Daten- oder Verfügbarkeitsverlust** auf, und Ihre Anwendung ist weiterhin hochverfügbar. 
 
 - **Konten mit mehreren Regionen mit einer einzelnen Schreibregion (Ausfall einer Leseregion):** 
   * Diese Konten bleiben bei Ausfall einer Leseregion hochverfügbar für Lese- und Schreibvorgänge. 
@@ -81,6 +81,8 @@ Dieses Feature steht in folgenden Azure-Regionen zur Verfügung:
 * East US
 * USA (Ost) 2 
 * USA (Mitte)
+* Europa, Westen
+* USA, Westen 2
 
 > [!NOTE] 
 > Wenn Sie Verfügbarkeitszonen für ein Azure Cosmos-Konto mit einer einzelnen Region aktivieren, fallen die gleichen Kosten an wie beim Hinzufügen einer weiteren Region zu Ihrem Konto. Ausführliche Informationen zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/) sowie im Artikel [Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB](optimize-cost-regions.md). 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
-ms.openlocfilehash: 75e0aa0847d44df40a4823d98460b011addab4d7
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305751"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385680"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -54,20 +54,9 @@ Wenn Sie sich für die öffentliche Vorschauversion des Multiprotokollzugriffs v
 
 In diesem Abschnitt werden Probleme und Einschränkungen bei der Verwendung von Blob-APIs und Data Lake Storage Gen2-APIs für dieselben Daten beschrieben.
 
-Diese Blob-Rest-APIs werden nicht unterstützt:
-
-* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
-
 * Es ist nicht möglich, sowohl Blob-APIs als auch Data Lake Storage-APIs zu verwenden, um in dieselbe Instanz einer Datei zu schreiben.
 
-* Wenn Sie in eine Datei schreiben, indem Sie Data Lake Storage Gen2-APIs verwenden, sind die Blöcke dieser Datei für Aufrufe der [Get Block List](https://docs.microsoft.comrest/api/storageservices/get-block-list)-Blob-API nicht sichtbar.
+* Wenn Sie in eine Datei schreiben, indem Sie Data Lake Storage Gen2-APIs verwenden, sind die Blöcke dieser Datei für Aufrufe der [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list)-Blob-API nicht sichtbar.
 
 * Sie können eine Datei überschreiben, indem Sie entweder Data Lake Storage Gen2-APIs oder Blob-APIs verwenden. Dies wirkt sich nicht auf die Dateieigenschaften aus.
 
@@ -78,6 +67,17 @@ Diese Blob-Rest-APIs werden nicht unterstützt:
 * Wenn Sie die [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob)-API zum Löschen eines Verzeichnisses verwenden, wird es nur gelöscht, sofern es leer ist.
 
   Dies bedeutet, dass Sie die Blob-API zum Löschen von Verzeichnissen nicht rekursiv verwenden können.
+
+Diese Blob-Rest-APIs werden nicht unterstützt:
+
+* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 ## <a name="issues-with-unmanaged-virtual-machine-vm-disks"></a>Probleme mit nicht verwalteten VM-Datenträgern
 
@@ -94,14 +94,15 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 | **AzCopy** | Versionsspezifische Unterstützung <br><br>Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.|
 | **Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung** | Wird nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. Von der Vorschauversion werden nur die Zugriffsebenen „Kalt“ und „Archiv“ unterstützt. Das Löschen von Blobmomentaufnahmen wird noch nicht unterstützt. |
 | **Azure Content Delivery Network (CDN)** | Noch nicht unterstützt|
-| **Azure Search** |Noch nicht unterstützt|
+| **Azure Search** |Wird nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren.|
 | **Azure Storage-Explorer** | Versionsspezifische Unterstützung <br><br>Verwenden Sie nur Version `1.6.0` oder höher. <br>Version `1.6.0` steht zum [kostenlosen Download](https://azure.microsoft.com/features/storage-explorer/) zur Verfügung.|
 | **Blobcontainer-ACLs** |Noch nicht unterstützt|
 | **blobfuse** |Noch nicht unterstützt|
 | **Benutzerdefinierte Domänen** |Noch nicht unterstützt|
 | **Dateisystem-Explorer** | Eingeschränkte Unterstützung |
+| **Diagnoseprotokollierung** |Wird nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren.|
 | **Unveränderlicher Speicher** |Noch nicht unterstützt <br><br>Durch unveränderlichen Speicher können Sie Daten in einem [WORM-Zustand (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) speichern.|
-| **Objektebenen** |Die Ebenen „Kalt“ und „Archiv“ werden nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. <br><br> Alle anderen Zugriffsebenen werden noch nicht unterstützt.|
+| **Objektebenen** |Die Ebenen „Kalt“ und „Archiv“ werden nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs für Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. <br><br> Alle anderen Zugriffsebenen werden noch nicht unterstützt.|
 | **PowerShell- und CLI-Unterstützung** | Eingeschränkte Funktionalität <br><br>Verwaltungsvorgänge, z. B. das Erstellen eines Kontos, werden unterstützt. Vorgänge auf Datenebene, z. B. das Hoch- und Herunterladen von Dateien, befinden sich in der öffentlichen Vorschauphase (im Rahmen des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md)). Das Verwenden von Verzeichnissen und Festlegen von Zugriffssteuerungslisten (ACLs) wird noch nicht unterstützt. |
 | **Statische Websites** |Noch nicht unterstützt <br><br>Insbesondere die Möglichkeit, Dateien an [statische Websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website) zu senden.|
 | **Drittanbieteranwendungen** | Eingeschränkte Unterstützung <br><br>Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin, wenn Sie sie mit Data Lake Storage Gen2 verwenden. <br>Anwendungen, die Blob-APIs aufrufen, sollten funktionieren, wenn Sie sich für die öffentliche Vorschauversion des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. 

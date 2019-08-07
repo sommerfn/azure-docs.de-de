@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 66719d43db277e6c82d89ee17c602309d16140f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 89d4dc789da7fc719b61342bbf0683e99c45a72c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489303"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698243"
 ---
 # <a name="develop-a-secure-web-app"></a>Entwickeln einer sicheren Web-App
 
@@ -137,7 +137,7 @@ Sie müssen die folgenden Tools installieren, um die Anwendung ausführen zu kö
 - [Git](https://git-scm.com/) muss auf Ihrem System installiert sein. Git wird verwendet, um den Quellcode lokal zu klonen.
 - Sie benötigen auch [jq](https://stedolan.github.io/jq/). Dies ist ein benutzerfreundliches UNIX-Tool für das Abfragen von JSON.
 
-Außerdem benötigen Sie ein Azure-Abonnement für die Bereitstellung der Ressourcen der Beispiel-App. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/en-us/free/), um die Beispiel-App zu testen.
+Außerdem benötigen Sie ein Azure-Abonnement für die Bereitstellung der Ressourcen der Beispiel-App. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), um die Beispiel-App zu testen.
 
 Sobald Sie diese Tools installiert haben, sind Sie bereit, die App in Azure bereitzustellen.
 
@@ -353,7 +353,7 @@ Weitere Informationen zum Einrichten der Überprüfung von SSL und den Zertifizi
 Im Container ist ein Stammzertifikat enthalten. Die Schritte zum Abrufen des Zertifikats lauten wie folgt:
 
 1. Laden Sie die Zertifikatdatei von der [Zertifizierungsstelle](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt) herunter.
-2. [Laden Sie OpenSSL auf Ihren Computer herunter, und installieren Sie die Software](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security#download-and-install-openssl-on-your-machine).
+2. [Laden Sie OpenSSL auf Ihren Computer herunter, und installieren Sie die Software](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
 3. Decodieren Sie die Zertifikatdatei:
 
    ```powershell

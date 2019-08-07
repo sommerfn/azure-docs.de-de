@@ -6,28 +6,32 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2d190edfac71705590135988b64ed043784125ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: a9c38d82c4b460564077690d3cddd731ec6c2b89
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305559"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414507"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
 Sie können Ihre Geschäftslogik in Azure IoT Edge-Module umwandeln. In diesem Artikel wird veranschaulicht, wie Sie Visual Studio Code als wichtigstes Tool zum Entwickeln und Debuggen von Modulen verwenden.
 
+Für Module, die in C#, Node.js oder Java geschrieben wurden, bestehen zwei Möglichkeiten zum Debuggen in Visual Studio Code: Sie können entweder einen Prozess in einem Modulcontainer anfügen oder den Modulcode im Debugmodus starten. Module, die Python oder C geschrieben wurden, können nur durch Anfügen an einen Prozess in Linux-amd64-Containern debuggt werden.
+
+Wenn Sie mit den Debugfunktionen von Visual Studio Code nicht vertraut sind, informieren Sie sich über [Debuggen](https://code.visualstudio.com/Docs/editor/debugging).
+
+Dieser Artikel enthält Anweisungen zum Entwickeln und Debuggen von Modulen in mehreren Sprachen für mehrere Architekturen. Derzeit bietet Visual Studio Code Unterstützung für Module, die in C#, C, Python, Node.js und Java geschrieben wurden. Die unterstützten Gerätearchitekturen sind X64 und ARM32. Weitere Informationen zu unterstützten Betriebssystemen, Sprachen und Architekturen finden Sie unter [Sprach- und Architekturunterstützung](module-development.md#language-and-architecture-support).
+
+>[!NOTE]
+>Die Unterstützung für das Entwickeln und Debuggen von Linux-ARM64-Geräten befindet sich in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Weitere Informationen finden Sie unter [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) (Entwickeln und Debuggen von ARM64 IoT Edge-Modulen in Visual Studio Code (Vorschauversion)).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie können einen Computer oder virtuellen Computer unter Windows, macOS oder Linux als Entwicklungscomputer verwenden. Ein IoT Edge-Gerät kann ein anderes physisches Gerät sein.
-
-Für Module, die in C#, Node.js oder Java geschrieben wurden, bestehen zwei Möglichkeiten zum Debuggen in Visual Studio Code: Sie können entweder einen Prozess in einem Modulcontainer anfügen oder den Modulcode im Debugmodus starten. Module, die Python oder C geschrieben wurden, können nur durch Anfügen an einen Prozess in Linux-amd64-Containern debuggt werden.
-
-> [!TIP]
-> Wenn Sie mit den Debugfunktionen von Visual Studio Code nicht vertraut sind, informieren Sie sich über [Debuggen](https://code.visualstudio.com/Docs/editor/debugging).
 
 Installieren Sie zuerst [Visual Studio Code](https://code.visualstudio.com/), und fügen Sie dann die folgenden Erweiterungen hinzu:
 
@@ -66,8 +70,7 @@ Sofern Sie Ihr Modul nicht in C entwickeln, benötigen Sie außerdem das Python-
 > [!NOTE]
 > Wenn Sie über mehrere Versionen von Python verfügen, einschließlich Python 2.7 (z. B. für Ubuntu oder macOS), sollten Sie sicherstellen, dass Sie das richtige `pip`- oder `pip3`-Programm zum Installieren von **iotedgehubdev** verwenden.
 
-> [!NOTE]
-> Zum Testen Ihres Moduls auf einem Gerät benötigen Sie einen aktiven IoT Hub mit mindestens einem IoT Edge-Gerät. Um Ihren Computer als IoT Edge-Gerät zu verwenden, führen Sie die Schritte in der Schnellstartanleitung für [Linux](quickstart-linux.md) oder [Windows](quickstart.md) aus. Wenn Sie IoT Edge-Daemon auf Ihrem Entwicklungscomputer ausführen, müssen Sie möglicherweise EdgeHub und EdgeAgent beenden, bevor Sie mit nächsten Schritt fortfahren.
+Zum Testen Ihres Moduls auf einem Gerät benötigen Sie einen aktiven IoT Hub mit mindestens einem IoT Edge-Gerät. Um Ihren Computer als IoT Edge-Gerät zu verwenden, führen Sie die Schritte in der Schnellstartanleitung für [Linux](quickstart-linux.md) oder [Windows](quickstart.md) aus. Wenn Sie IoT Edge-Daemon auf Ihrem Entwicklungscomputer ausführen, müssen Sie möglicherweise EdgeHub und EdgeAgent beenden, bevor Sie mit nächsten Schritt fortfahren.
 
 ## <a name="create-a-new-solution-template"></a>Erstellen einer neuen Lösungsvorlage
 

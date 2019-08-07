@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b245661ab8f26c1f529a049d326d2c72838c7a17
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3a0fa1ecdb2db94b43a5380f9497b4b1c266e47
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056725"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441949"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector
 
@@ -38,7 +38,7 @@ Einige Vorgänge, die von Hive Warehouse Connector unterstützt werden, sind:
 
 Führen Sie diese Schritte aus, um Hive Warehouse Connector zwischen einem Spark- und einem Interactive Query-Cluster in Azure HDInsight einzurichten:
 
-1. Erstellen Sie einen HDInsight Spark 4.0-Cluster, indem Sie ein Speicherkonto und ein benutzerdefiniertes virtuelles Azure-Netzwerk verwenden. Informationen zur Erstellung eines Clusters in einem virtuellen Azure-Netzwerk finden Sie unter [Hinzufügen von HDInsight zu einem vorhandenen virtuellen Netzwerk](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md#existingvnet).
+1. Erstellen Sie einen HDInsight Spark 4.0-Cluster, indem Sie ein Speicherkonto und ein benutzerdefiniertes virtuelles Azure-Netzwerk verwenden. Informationen zur Erstellung eines Clusters in einem virtuellen Azure-Netzwerk finden Sie unter [Hinzufügen von HDInsight zu einem vorhandenen virtuellen Netzwerk](../../hdinsight/hdinsight-plan-virtual-network-deployment.md#existingvnet).
 1. Erstellen Sie einen Cluster vom Typ „HDInsight Interactive Query (LLAP) 4.0“, indem Sie im Azure-Portal dasselbe Speicherkonto und virtuelle Azure-Netzwerk wie für den Spark-Cluster verwenden.
 1. Kopieren Sie den Inhalt der Datei `/etc/hosts` auf „headnode0“ Ihres Interactive Query-Clusters in die Datei `/etc/hosts` auf „headnode0“ Ihres Spark-Clusters. Durch diesen Schritt wird es ermöglicht, dass Ihr Spark-Cluster IP-Adressen der Knoten im Interactive Query-Cluster auflöst. Zeigen Sie den Inhalt der aktualisierten Datei mit `cat /etc/hosts` an. Die Ausgabe sollte etwa wie im folgenden Screenshot aussehen.
 
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um eine spark-shell-Sitzung zu starten:
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Herstellen einer Verbindung und Ausführen von Abfragen für ESP-Cluster (Enterprise-Sicherheitspaket)
 
-Das Enterprise-Sicherheitspaket (ESP) umfasst Unternehmensfunktionen wie Active Directory-basierte Authentifizierung, Mehrbenutzerunterstützung und rollenbasierte Zugriffssteuerung für Apache Hadoop-Cluster in Azure HDInsight. Weitere Informationen zum ESP finden Sie unter [Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket](../domain-joined/apache-domain-joined-introduction.md).
+Das Enterprise-Sicherheitspaket (ESP) umfasst Unternehmensfunktionen wie Active Directory-basierte Authentifizierung, Mehrbenutzerunterstützung und rollenbasierte Zugriffssteuerung für Apache Hadoop-Cluster in Azure HDInsight. Weitere Informationen zu Enterprise-Sicherheitspaketen finden Sie unter [Verwendung des Enterprise-Sicherheitspakets in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 1. Führen Sie unter [Herstellen der Verbindung und Ausführen von Abfragen](#connecting-and-running-queries) die Schritte 1 und 2 aus.
 1. Geben Sie `kinit` ein, und melden Sie sich mit einem Domänenbenutzer an.

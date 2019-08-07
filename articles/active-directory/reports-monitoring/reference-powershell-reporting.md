@@ -17,21 +17,18 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 2d9d5fdb9091d51c67fd5d778bac189c08647741
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302735"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359750"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-Cmdlets für die Berichterstellung
 
-Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen. Sie können Berichtsdaten mithilfe der Azure AD PowerShell-Cmdlets für die Berichterstellung abrufen.
+Mit Azure AD-Berichten (Azure Active Directory) können Sie Details zu Aktivitäten rund um alle Schreibvorgänge in Ihrem Verzeichnis (Überwachungsprotokolle) und Authentifizierungsdaten (Anmeldeprotokolle) erhalten. Diese Informationen stehen zwar schon über die Microsoft Graph-API zur Verfügung, aber jetzt können Sie die gleichen Daten mithilfe der Azure AD-PowerShell-Cmdlets für die Berichterstellung abrufen.
 
-Dieser Artikel enthält eine Übersicht der Cmdlets.
-
-
-
+In diesem Artikel erhalten Sie eine Übersicht über die PowerShell-Cmdlets für Überwachungs- und Anmeldeprotokolle.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 

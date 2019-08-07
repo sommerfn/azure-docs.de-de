@@ -1,5 +1,5 @@
 ---
-title: SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Azure Active Directory-Anwendungsproxy (Vorschauversion) | Microsoft-Dokumentation
+title: Einmaliges Anmelden über SAML für lokale Apps mit dem Azure AD-Anwendungsproxy | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie das einmalige Anmelden für lokale Anwendungen bereitstellen, die per SAML-Authentifizierung geschützt sind. Ermöglichen Sie den Remotezugriff auf lokale Apps per Anwendungsproxy.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853764"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421250"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy (Vorschauversion)
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
 Sie können das einmalige Anmelden (SSO) für lokale Anwendungen bereitstellen, die mit der SAML-Authentifizierung gesichert werden, und für diese Anwendungen über das Anwendungsproxy Remotezugriff gewähren. Mit SAML-SSO nimmt Azure Active Directory (Azure AD) die Authentifizierung bei der Anwendung mithilfe des Azure AD-Kontos des Benutzers vor. Azure AD gibt die Informationen für das einmalige Anmelden über ein Verbindungsprotokoll an die Anwendung weiter. Sie können Benutzer auch basierend auf Regeln, die Sie in Ihren SAML-Ansprüchen definieren, bestimmten Anwendungsrollen zuordnen. Wenn Sie zusätzlich zu SAML-SSO das Anwendungsproxy aktivieren, profitieren Ihre Benutzer vom externen Zugriff auf die Anwendung sowie von nahtlosem SSO.
 
@@ -49,7 +49,7 @@ In den Protokolldiagrammen unten sind die SSO-Sequenzen für einen vom Dienstanb
 
 5. Wählen Sie als SSO-Methode die Option **SAML** aus.
 
-6. Richten Sie zuerst SAML-SSO so ein, dass es bei Nutzung des Unternehmensnetzwerks funktioniert. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Führen Sie die Schritte unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
+6. Richten Sie zuerst SAML-SSO so ein, dass es bei Nutzung des Unternehmensnetzwerks funktioniert. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Führen Sie die Schritte unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
 
 7. Fügen Sie der Anwendung mindestens einen Benutzer hinzu, und stellen Sie sicher, dass das Testkonto Zugriff auf die Anwendung hat. Verwenden Sie bei bestehender Verbindung mit dem Unternehmensnetzwerk das Testkonto, um zu ermitteln, ob Sie über einmaliges Anmelden für die Anwendung verfügen. 
 

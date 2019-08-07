@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c012ebfb00b57079e43b74b4f6570744db980860
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113155"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357121"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 
@@ -92,6 +92,10 @@ Deshalb wird im Hinblick auf MFA für B2B-Benutzer empfohlen, MFA immer im einla
 Wenn Contoso gerätebasierte Richtlinien für den bedingten Zugriff auf seine Unternehmensdaten aktiviert, wird der Zugriff von nicht verwalteten Geräten (d.h. von Geräten, die nicht von Contoso verwaltet werden und nicht die Contoso-Geräterichtlinien erfüllen) verhindert.
 
 Wenn das Gerät des B2B-Benutzers nicht von Contoso verwaltet wird, wird der Zugriff von B2B-Benutzern aus den Partnerorganisationen in jedem Kontext, in dem diese Richtlinien erzwungen werden, blockiert. Contoso kann jedoch Ausschlusslisten erstellen, die bestimmte Partnerbenutzer enthalten, die gemäß der gerätebasierten Richtlinie für bedingten Zugriff ausgeschlossen werden sollen.
+
+#### <a name="mobile-application-management-policies-for-b2b"></a>B2B-Richtlinien für die Verwaltung mobiler Anwendungen
+
+App-Schutzrichtlinien für bedingten Zugriff können nicht auf B2B-Benutzer angewendet werden, da die einladende Organisation keinen Einblick in die Organisation des B2B-Benutzers hat.
 
 #### <a name="location-based-conditional-access-for-b2b"></a>Standortbasierter bedingter Zugriff für B2B
 

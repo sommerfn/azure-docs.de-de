@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 3b8152bde8b7e44dde1b0b9c82216333778f83da
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806020"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370391"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 
@@ -129,9 +129,9 @@ datadrift_contribution|Gewichtung der Features, die zur Abweichung beitragen.|
 
 Es gibt mehrere Möglichkeiten, Metriken für Datenabweichungen anzuzeigen:
 
-* Verwenden Sie das Jupyter-Widget.
+* Verwenden Sie das [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`.
 * Verwenden Sie die [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)-Funktion für jedes `datadrift`-Ausführungsobjekt.
-* Anzeigen der Metriken für Ihr Modell im Azure-Portal
+* Zeigen Sie die Metriken für Ihr Modell im Azure-Portal an.
 
 Das folgende Python-Beispiel veranschaulicht das Plotten von relevanten Datenabweichungsmetriken. Sie können die zurückgegebenen Metriken verwenden, um benutzerdefinierte Visualisierungen zu erstellen:
 

@@ -1,5 +1,5 @@
 ---
-title: Einmaliges Anmelden – nicht im Katalog enthaltene Anwendungen – Microsoft Identity Platform | Microsoft-Dokumentation
+title: Einmaliges Anmelden über SAML – nicht im Katalog enthaltene Anwendungen – Microsoft Identity Platform | Microsoft-Dokumentation
 description: Konfigurieren des einmaligen Anmeldens bei nicht im Katalog enthaltenen Anwendungen auf der Microsoft Identity Platform (Azure AD)
 services: active-directory
 author: msmimart
@@ -8,252 +8,159 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a72cb7bc7feeba984d568a0465d4f23a494496e8
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 057fa4dc9080ea0216765d89fa6f9d54c60ccec1
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807648"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422819"
 ---
-# <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurieren des einmaligen Anmeldens bei nicht im Katalog enthaltenen Anwendungen auf der Microsoft Identity Platform
+# <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurieren des SAML-basierten einmaligen Anmeldens bei nicht im Katalog aufgeführten Anwendungen
 
-Dieser Artikel beschreibt ein Feature, mit dem Administratoren das einmalige Anmelden (Single Sign-On, SSO) bei Anwendungen konfigurieren können, die im App-Katalog der Microsoft Identity Platform nicht vorhanden sind, *ohne dafür Code schreiben zu müssen*.
+Wenn Sie Ihren Azure AD-Unternehmensanwendungen [eine Katalog-App](add-gallery-app.md) oder eine [nicht im Katalog enthaltene Web-App](add-non-gallery-app.md) hinzufügen, ist eine der SSO-Optionen (Single Sign-On, einmaliges Anmelden) das [SAML-basierte einmalige Anmelden](what-is-single-sign-on.md#saml-sso). Wählen Sie für Anwendungen, bei denen die Authentifizierung mit einem der SAML-Protokolle durchgeführt wird, nach Möglichkeit immer SAML aus. Mit SAML-SSO nimmt Azure AD die Authentifizierung bei der Anwendung mithilfe des Azure AD-Kontos des Benutzers vor. Azure AD gibt die Informationen für das einmalige Anmelden über ein Verbindungsprotokoll an die Anwendung weiter. Sie können Benutzer basierend auf Regeln, die Sie in Ihren SAML-Ansprüchen definieren, bestimmten Anwendungsrollen zuordnen. In diesem Artikel erfahren Sie, wie Sie das SAML-basierte einmalige Anmelden für eine nicht im Katalog enthaltene App konfigurieren. 
 
-Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
+> [!NOTE]
+> Fügen Sie eine Katalog-App hinzu? Eine detaillierte Einrichtungsanleitung finden Sie in der [Liste mit den SaaS-App-Tutorials](../saas-apps/tutorial-list.md).
 
-Der Anwendungskatalog der Microsoft Identity Platform enthält eine Liste der Anwendungen, die bekanntermaßen eine Form des einmaligen Anmeldens mit der Microsoft Identity Platform unterstützen, wie [in diesem Artikel](what-is-single-sign-on.md)beschrieben. Wenn Sie (als IT-Spezialist oder Systemintegrator in Ihrer Organisation) die Anwendung gefunden haben, mit der Sie eine Verbindung herstellen möchten, können Sie mithilfe der Schritt-für-Schritt-Anleitungen im Azure-Portal das einmalige Anmelden aktivieren.
+Wenn Sie das einmalige Anmelden über SAML für eine nicht aus dem Katalog stammende Anwendung konfigurieren und dafür keinen Code schreiben möchten, müssen Sie über ein Abonnement oder Azure AD Premium verfügen, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Die folgenden Funktionen sind gemäß Ihrer Lizenzvereinbarung ebenfalls verfügbar. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/active-directory/).
+## <a name="before-you-begin"></a>Voraussetzungen
 
-- Self-Service-Integration von Anwendungen, die ein modernes Protokoll wie [OpenID Connect/OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) verwenden, um Benutzer zu authentifizieren und Token für [Microsoft Graph](https://graph.microsoft.com) abzurufen
-- Self-Service-Integration von Anwendungen, die [Security Assertion Markup Language (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0)-Identitätsanbieter unterstützen (vom Dienstanbieter (SP) oder vom Identitätsanbieter (IdP) initiiert)
-- Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](what-is-single-sign-on.md#password-based-sso)
-- Self-Service-Verbindung für Anwendungen, die das [SCIM-Protokoll (System for Cross-Domain Identity Management) verwenden](use-scim-to-provision-users-and-groups.md)
-- Möglichkeit zum Hinzufügen von Links zu Anwendungen im [Office 365-App-Startfeld](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](what-is-single-sign-on.md#linked-sign-on)
+Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, finden Sie weitere Informationen unter [Hinzufügen einer nicht im Katalog enthaltenen App](add-non-gallery-app.md).
 
-Diese Funktionen können die Self-Service-Integration einer von Ihnen verwendeten SaaS-Anwendung (Software-as-a-Service) umfassen, selbst wenn diese Anwendung noch nicht in den Azure AD-Anwendungskatalog aufgenommen wurde. Eine weitere Funktion ist die Self-Service-Integration der Webanwendung eines Drittanbieters, die Ihre Organisation lokal oder in der Cloud auf von Ihnen gesteuerten Servern bereitgestellt hat.
+## <a name="step-1-edit-the-basic-saml-configuration"></a>Schritt 1: Bearbeiten der grundlegenden SAML-Konfiguration
 
-Diese Funktionen – auch als *App-Integrationsvorlagen* bezeichnet – bieten standardbasierte Verbindungspunkte für Anwendungen, die eine SAML-, SCIM- oder formularbasierte Authentifizierung unterstützen. Diese Funktionen bieten flexible Optionen und Einstellungen für die Kompatibilität mit einer umfassenden Reihe von Anwendungen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Cloudanwendungsadministrator oder Anwendungsadministrator für Ihren Azure AD-Mandanten an.
 
-## <a name="adding-an-unlisted-application"></a>Hinzufügen einer nicht aufgeführten Anwendung
+2. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen**, und wählen Sie in der Liste die Anwendung aus. 
+   
+   - Wählen Sie zum Suchen der Anwendung im Menü **Anwendungstyp** die Option **Alle Anwendungen** und anschließend **Übernehmen** aus. Geben Sie den Namen Ihrer Anwendung in das Suchfeld ein, und wählen Sie in den Ergebnissen Ihre Anwendung aus.
 
-Die Microsoft Identity Platform stellt zwei Mechanismen zum Registrieren von Anwendungen bereit.
+3. Wählen Sie im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus. 
 
-Eine Anwendung, die ein modernes Protokoll wie [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) zum Authentifizieren der Benutzer verwendet, wird über das [Anwendungsregistrierungsportal](../develop/quickstart-register-app.md) registriert.
+4. Wählen Sie **SAML** aus. Die Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** wird angezeigt.
 
-Zum Registrieren von Anwendungen, die andere Arten von [unterstützten Authentifizierungsmechanismen](what-is-single-sign-on.md) verwenden – wie z.B. das [SAML](../develop/single-sign-on-saml-protocol.md)-Protokoll –, verwenden Sie das Blatt **Unternehmensanwendungen**, um diese Anwendungen mit der Microsoft Identity Platform zu verknüpfen.
+   ![Schritt 1: Bearbeiten der grundlegenden SAML-Konfiguration](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
 
-Um eine nicht gelistete Anwendung mithilfe einer Vorlage für die App-Integration zu verknüpfen, führen Sie folgende Schritte aus:
+5. Um die grundlegenden SAML-Konfigurationsoptionen zu bearbeiten, klicken Sie rechts oben im Abschnitt **Grundlegende SAML-Konfiguration** auf das Symbol **Bearbeiten** (Stift).
 
-1. Melden Sie sich mit Ihrem Administratorkonto für die Microsoft Identity Platform beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an.
-1. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** aus.
-1. (Optional, aber empfohlen) Geben Sie im Suchfeld **Aus Katalog hinzufügen** den Anzeigename der Anwendung ein. Wenn die Anwendung in den Suchergebnissen angezeigt wird, wählen Sie sie aus und überspringen den Rest dieses Verfahrens.
-1. Wählen Sie **Nicht-Kataloganwendung** aus. Die Seite **Eigene Anwendung hinzufügen** wird angezeigt.
+1. Geben Sie folgende Einstellungen ein. Sie sollten die Werte vom Hersteller der Anwendung erhalten. Sie können die Werte manuell eingeben oder eine Metadatendatei hochladen, um die Werte der Felder zu extrahieren.
 
-   ![Zeigt die Seite „Eigene Anwendung hinzufügen“ an](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-
-1. Geben Sie den Anzeigenamen für Ihre neue Anwendung ein.
-1. Wählen Sie **Hinzufügen**.
-
-Das Hinzufügen einer Anwendung mit dieser Methode gestaltet sich ähnlich benutzerfreundlich wie bei vorab integrierten Anwendungen. Wählen Sie zunächst in der Randleiste der Anwendung die Option **Einmaliges Anmelden** aus. Die nächste Seite (**SSO-Methode auswählen**) zeigt die Optionen für die Konfiguration des einmaligen Anmeldens an:
-
-- **SAML**
-- **Kennwortbasiert**
-- **Verknüpft**
-
-![Zeigt die Seite „SSO-Methode auswählen“ an](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
-
-Weitere Informationen zu diesen Optionen finden Sie in den folgenden Abschnitten dieses Artikels.
-
-## <a name="saml-based-single-sign-on"></a>SAML-basiertes einmaliges Anmelden
-
-Wählen Sie die Option **SAML** aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren. (Diese Option setzt voraus, dass die Anwendung SAML 2.0 unterstützt.) Die Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** wird angezeigt.
-
-![Zeigt die Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ an](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
-
-Diese Seite enthält fünf Rubriken:
-
-| Nummer der Rubrik | Name der Rubrik | Hier finden Sie eine Übersicht über die Rubrik: |
-| --- | --- | --- |
-| 1 | **Grundlegende SAML-Konfiguration** | [Eingabe der SAML-Basiskonfiguration](#enter-basic-saml-configuration) |
-| 2 | **Benutzerattribute und Ansprüche** | [Überprüfen oder Anpassen der im SAML-Token ausgestellten Ansprüche](#review-or-customize-the-claims-issued-in-the-saml-token) |
-| 3 | **SAML-Signaturzertifikat** | [Überprüfen von Zertifikatablaufdaten, Status und E-Mail-Benachrichtigung](#review-certificate-expiration-data-status-and-email-notification) |
-| 4 | **\<Anwendungsname> einrichten** | [Einrichten der Zielanwendung](#set-up-target-application) |
-| 5 | **Einmaliges Anmelden mit \<Anwendungsname> testen** | [Testen der SAML-Anwendung](#test-the-saml-application) |
-
-Informieren Sie sich jetzt darüber, wie die SAML-Funktionen der Anwendung genutzt werden können, bevor Sie fortfahren. Erfassen Sie die Informationen für die folgenden Abschnitte, um das einmalige Anmelden zwischen der Anwendung und Azure AD zu konfigurieren.
-
-### <a name="enter-basic-saml-configuration"></a>Eingabe der SAML-Basiskonfiguration
-
-Um Azure AD einzurichten, wechseln Sie zur Rubrik **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** aus (ein Bleistiftsymbol). Sie können die Werte manuell eingeben oder eine Metadatendatei hochladen, um die Werte der Felder zu extrahieren.
-
-![Zeigt die Seite „Grundlegende SAML-Konfiguration“ an](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
-
-Die folgenden beiden Felder sind erforderlich:
-
-- **Bezeichner**: Dieser Wert muss die Anwendung, für die das einmalige Anmelden konfiguriert wird, eindeutig identifizieren. Sie finden diesen Wert als **Issuer**-Element (Aussteller) in der **AuthnRequest** (SAML-Anforderung), die von der Anwendung gesendet wird. Dieser Wert ist auch als **Entitäts-ID** in SAML-Metadaten enthalten, die von der Anwendung bereitgestellt werden. Informationen zu den Werten für **Entity ID** (Entitäts-ID) bzw. **Audience** (Zielgruppe) finden Sie in der SAML-Dokumentation der Anwendung.
-
-  Der folgende Code zeigt, wie der **Identifier** (Bezeichner) bzw. **Issuer** (Aussteller) in der SAML-Anforderung aussieht, die von der Anwendung an Azure AD gesendet wird:
-
-  ```xml
-  <samlp:AuthnRequest
-  xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
-  ID="id6c1c178c166d486687be4aaf5e482730"
-  Version="2.0" IssueInstant="2013-03-18T03:28:54.1839884Z"
-  xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
-    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
-  </samlp:AuthnRequest>
-  ```
-
-- **Antwort-URL**: Unter der Antwort-URL erwartet die Anwendung den Empfang des SAML-Tokens. Diese URL wird auch als URL für den Assertionsverbraucherdienst (Assertion Consumer Service, ACS) bezeichnet. In der SAML-Dokumentation der Anwendung finden Sie Details dazu, wie die Antwort-URL bzw. ACS-URL des SAML-Tokens lautet.
-
-  Zur Konfiguration mehrerer replyURLs-Elemente können Sie das folgende PowerShell-Skript verwenden.
-
-  ```powershell
-  $sp = Get-AzureADServicePrincipal -SearchString "<Exact app name>"
-  $app = Get-AzureADApplication -SearchString "<Exact app name>"
-  $urllist = New-Object "System.Collections.Generic.List[String]"
-  $urllist.Add("<reply URL 1>")
-  $urllist.Add("<reply URL 2>")
-  $urllist.Add("<reply URL 3>")
-  Set-AzureADApplication -ObjectId $app.ObjectId -ReplyUrls $urllist
-  Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls $urllist
-  ```
-
-Die folgenden drei Felder sind optional:
-
-- **Anmelde-URL** (nur SP-initiiert). Dieser Wert gibt an, wo sich Benutzer bei dieser Anwendung anmelden. Sofern die Anwendung für das SP-initiierte einmalige Anmelden konfiguriert ist, geschieht Folgendes, wenn ein Benutzer zu dieser URL navigiert: Der Dienstanbieter führt die erforderliche Umleitung an Azure AD durch, um den Benutzer zu authentifizieren und anzumelden. Wenn Sie dieses Feld ausfüllen, verwendet Azure AD diese URL, um die Anwendung aus Office 365 und dem Azure AD-Zugriffsbereich zu starten. Wenn Sie dieses Feld leer lassen, führt Azure AD stattdessen eine IdP-initiierte Anmeldung durch, während die Anwendung aus Office 365, dem Azure AD-Zugriffsbereich oder über die Azure AD-SSO-URL (die Sie von der Seite **Dashboard** kopieren können) gestartet wird.
-
-- **Relayzustand**: Sie können einen Relayzustand in SAML angeben, um die Anwendung anzuweisen, wohin Benutzer nach der Authentifizierung umgeleitet werden sollen. Bei diesem Wert handelt es sich in der Regel um eine URL oder einen URL-Pfad, über die bzw. den Benutzer zu einer bestimmten Stelle in der Anwendung gelangen.
-
-- **Abmelde-URL**: Dieser Wert wird verwendet, um die SAML-Abmeldeantwort an die Anwendung zurückzusenden.
+    | Einstellung für die grundlegende SAML-Konfiguration | Vom Dienstanbieter initiiert | Vom Identitätsanbieter initiiert | BESCHREIBUNG |
+    |:--|:--|:--|:--|
+    | **Bezeichner (Entitäts-ID)** | Für einige Apps erforderlich | Für einige Apps erforderlich | Hiermit wird die Anwendung eindeutig identifiziert. Azure AD sendet den Bezeichner als Audience-Parameter des SAML-Tokens an die Anwendung. Von der Anwendung wird erwartet, dass sie diesen Parameter überprüft. Dieser Wert ist auch als Entitäts-ID in SAML-Metadaten enthalten, die von der Anwendung bereitgestellt werden. *Sie finden diesen Wert als Element vom Typ **Issuer** (Aussteller) in der SAML-Anforderung **AuthnRequest**, die von der Anwendung gesendet wurde.* |
+    | **Antwort-URL** | Optional | Erforderlich | Gibt an, ob die Anwendung den Empfang des SAML-Tokens erwartet. Die Antwort-URL wird auch als „Assertionsverbraucherdienst-URL“ (Assertion Consumer Service, ACS) bezeichnet. Sie können die zusätzlichen Antwort-URL-Felder verwenden, um mehrere Antwort-URLs anzugeben. Zusätzliche Antwort-URLs werden möglicherweise für mehrere Unterdomänen benötigt. Sie können auch zu Testzwecken mehrere Antwort-URLs gleichzeitig angeben (URL des lokalen Host und öffentliche URL). |
+    | **Anmelde-URL** | Erforderlich | Nicht angeben | Wenn ein Benutzer diese URL öffnet, wird er vom Dienstanbieter zur Authentifizierung und Anmeldung an Azure AD umgeleitet. Azure AD verwendet die URL, um die Anwendung über Office 365 oder den Azure AD-Zugriffsbereich zu starten. Ist das Feld leer, führt Azure AD das vom Identitätsanbieter initiierte einmalige Anmelden aus, wenn ein Benutzer die Anwendung über Office 365, den Azure AD-Zugriffsbereich oder die Azure AD-SSO-URL startet.|
+    | **Relayzustand** | Optional | Optional | Mit dieser Option wird die Anwendung darüber informiert, wohin der Benutzer nach der Authentifizierung umgeleitet werden soll. In der Regel ist der Wert eine für die Anwendung gültige URL. Einige Anwendungen verwenden dieses Feld jedoch anders. Weitere Informationen erhalten Sie vom Anwendungshersteller.
+    | **Abmelde-URL** | Optional | Optional | Wird verwendet, um die SAML-Abmeldeantworten an die Anwendung zurückzusenden.
 
 Weitere Informationen finden Sie unter [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md).
 
-### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Überprüfen oder Anpassen der im SAML-Token ausgestellten Ansprüche
+## <a name="step-2-configure-user-attributes-and-claims"></a>Schritt 2: Konfigurieren von Benutzerattributen und Ansprüchen 
 
-Wenn sich ein Benutzer bei der Anwendung authentifiziert, stellt Azure AD der Anwendung ein SAML-Token aus, das Informationen (so genannte „Ansprüche“) über den Benutzer enthält, die ihn eindeutig identifizieren. Zu diesen Informationen gehören standardmäßig der Benutzername, die E-Mail-Adresse, der Vorname und der Nachname des Benutzers.
+Wenn sich ein Benutzer bei der Anwendung authentifiziert, stellt Azure AD der Anwendung ein SAML-Token aus, das Informationen (so genannte „Ansprüche“) über den Benutzer enthält, die ihn eindeutig identifizieren. Zu diesen Informationen gehören standardmäßig der Benutzername, die E-Mail-Adresse, der Vorname und der Nachname des Benutzers. Möglicherweise müssen Sie diese Ansprüche anpassen, wenn die Anwendung beispielsweise bestimmte Anspruchswerte oder für **Name** ein anderes Format als den Benutzernamen erfordert. Anforderungen für Katalog-Apps werden in den [anwendungsspezifischen Tutorials](../saas-apps/tutorial-list.md) beschrieben. Sie können sich aber auch an den Anwendungsanbieter wenden. Im Anschluss werden die allgemeinen Schritte zum Konfigurieren von Benutzerattributen und Ansprüchen beschrieben.
 
-So können Sie die im SAML-Token an die Anwendung gesendeten Ansprüche anzeigen oder bearbeiten:
+1. Wählen Sie rechts oben im Abschnitt **Benutzerattribute und Ansprüche** das Symbol **Bearbeiten** (Stiftsymbol) aus.
 
-- Wechseln Sie zur Rubrik **Benutzerattribute und Ansprüche**, und klicken Sie auf das Symbol **Bearbeiten**. Die Seite **Benutzerattribute und Ansprüche** wird angezeigt.
+   ![Schritt 2: Konfigurieren von Benutzerattributen und Ansprüchen](media/configure-single-sign-on-non-gallery-applications/step-two-user-attributes-claims.png)
 
-![Zeigt die Seite „Benutzerattribute und Ansprüche“ an](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+2. Überprüfen Sie die Angabe unter **Wert für Namensbezeichner**. Der Standardwert lautet *user.principalname*. Mit der Benutzer-ID wird jeder Benutzer in der Anwendung eindeutig identifiziert. Beispiel: Ist die E-Mail-Adresse sowohl der Benutzername als auch der eindeutige Bezeichner, legen Sie den Wert auf *user.mail* fest.
 
-Sie müssen die im SAML-Token ausgestellten Ansprüche aus zwei Gründen möglicherweise bearbeiten:
+3. Um den **Wert für Namensbezeichner** zu ändern, klicken Sie für das Feld **Wert für Namensbezeichner** auf das Symbol **Bearbeiten** (Stift). Nehmen Sie bei Bedarf die entsprechenden Änderungen am Format und an der Quelle des Bezeichners vor. Ausführliche Informationen finden Sie unter [Bearbeiten der NameID](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#editing-nameid). Speichern Sie die Änderungen, wenn Sie fertig sind. 
+ 
+4. Wählen Sie zum Konfigurieren von Gruppenansprüchen das Symbol **Bearbeiten** für das Feld **Im Anspruch zurückgegebene Gruppen** aus. Ausführliche Informationen finden Sie unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory (öffentliche Vorschau)](../hybrid/how-to-connect-fed-group-claims.md).
 
-- Die Anwendung wurde erfordert einen anderen Satz an Anspruchs-URIs oder Anspruchswerten.
-- Für Ihre Anwendung muss der Anspruch **Namensbezeichner** einen anderen Wert als den Benutzernamen (auch als Benutzerprinzipalname bezeichnet) aufweisen, der auf der Microsoft Identity Platform gespeichert ist.
+5. Klicken Sie zum Hinzufügen eines Anspruchs oben auf der Seite auf **Neuen Anspruch hinzufügen**. Geben Sie den **Namen** ein, und wählen Sie die entsprechende Quelle. Wenn Sie die Quelle **Attribut** auswählen, müssen Sie das **Quellattribut** auswählen, das Sie verwenden möchten. Wenn Sie die Quelle **Übersetzung** auswählen, müssen Sie die gewünschte **Transformation** und **Parameter 1** auswählen. Ausführliche Informationen finden Sie unter [Hinzufügen anwendungsspezifischer Ansprüche](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Speichern Sie die Änderungen, wenn Sie fertig sind. 
 
-Weitere Informationen finden Sie unter [Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md).
+6. Wählen Sie **Speichern** aus. Der neue Anspruch wird in der Tabelle angezeigt.
 
-### <a name="review-certificate-expiration-data-status-and-email-notification"></a>Überprüfen von Zertifikatablaufdaten, Status und E-Mail-Benachrichtigung
+   > [!NOTE]
+   > Weitere Möglichkeiten zum Anpassen des SAML-Tokens, das von Azure AD an Ihre Anwendung gesendet wird, finden Sie in den folgenden Ressourcen:
+   >- Informationen zum Erstellen benutzerdefinierter Rollen über das Azure-Portal finden Sie unter [Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](../develop/active-directory-enterprise-app-role-management.md).
+   >- Informationen zum Anpassen der Ansprüche über PowerShell finden Sie unter [Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)](../develop/active-directory-claims-mapping.md).
+   >- Informationen zum Konfigurieren optionaler Ansprüche für Ihre Anwendung durch Anpassen des Anwendungsmanifests finden Sie unter [Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](../develop/active-directory-optional-claims.md).
+   >- Informationen zum Festlegen von Tokengültigkeitsdauer-Richtlinien für Aktualisierungstoken, Zugriffstoken, Sitzungstoken und ID-Token finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](../develop/active-directory-configurable-token-lifetimes.md). Informationen zum Einschränken von Authentifizierungssitzungen mithilfe des bedingten Azure AD-Zugriffs finden Sie unter [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](https://go.microsoft.com/fwlink/?linkid=2083106).
 
-Wenn Sie eine Katalog- oder eine Nicht-Kataloganwendung erstellen, erstellt Azure AD ein anwendungsspezifisches Zertifikat, das drei Jahre nach dem Erstellungsdatum abläuft. Sie benötigen dieses Zertifikat, um die Vertrauensstellung zwischen Azure AD und der Anwendung einzurichten. Einzelheiten zum Zertifikatsformat finden Sie in der SAML-Dokumentation der Anwendung.
+## <a name="step-3-manage-the-saml-signing-certificate"></a>Schritt 3: Verwalten des SAML-Signaturzertifikats
 
-In Azure AD können Sie das aktive Zertifikat im Base64- oder Raw-Format direkt von der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** herunterladen. Alternativ dazu können Sie das aktive Zertifikat erhalten, indem Sie die XML-Datei mit den Anwendungsmetadaten herunterladen oder die App-Verbundmetadaten-URL verwenden.
+Azure AD verwendet ein Zertifikat zum Signieren der SAML-Token, die an die Anwendung gesendet werden. Sie benötigen dieses Zertifikat, um die Vertrauensstellung zwischen Azure AD und der Anwendung einzurichten. Einzelheiten zum Zertifikatsformat finden Sie in der SAML-Dokumentation der Anwendung. Weitere Informationen finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) und [Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory](certificate-signing-options.md).
 
-Um Ihre Zertifikate (aktiv oder inaktiv) anzuzeigen, zu erstellen oder herunterzuladen, wechseln Sie zur Rubrik **SAML-Signaturzertifikat** und wählen das Symbol **Bearbeiten** aus. Die Seite **SAML-Signaturzertifikat** wird angezeigt.
+In Azure AD können Sie das aktive Zertifikat im Base64- oder Raw-Format direkt von der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** herunterladen. Alternativ dazu können Sie das aktive Zertifikat erhalten, indem Sie die XML-Datei mit den Anwendungsmetadaten herunterladen oder die App-Verbundmetadaten-URL verwenden. Führen Sie diese Schritte aus, um Ihre Zertifikate (aktiv oder inaktiv) anzuzeigen, zu erstellen oder herunterzuladen.
 
-![Zeigt die Seite „SAML-Signaturzertifikat“ an](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+1. Navigieren Sie zum Abschnitt **SAML-Signaturzertifikat**. 
 
-Stellen Sie sicher, dass das Zertifikat über Folgendes verfügt:
+   ![Schritt 3: Verwalten des SAML-Signaturzertifikats](./media/configure-single-sign-on-non-gallery-applications/step-three-certificate.png)
 
-- *Das gewünschte Ablaufdatum*. Sie können ein Ablaufdatum konfigurieren, das bis zu drei Jahre in der Zukunft liegt.
-- *Aktiver Status des gewünschten Zertifikats*. Wenn der Status **Inaktiv** lautet, ändern Sie diesen zu **Aktiv**. Um den Status zu ändern, klicken Sie mit der rechten Maustaste auf die Zeile des gewünschten Zertifikats, und wählen Sie **Zertifikat als aktiv festlegen** aus.
-- *Die richtige Anmeldeoption und der entsprechende Algorithmus*.
-- *Die richtige(n) E-Mail-Adresse(n) für Benachrichtigungen*. Wenn sich das aktive Zertifikat dem Ablaufdatum nähert, sendet Azure AD eine Benachrichtigung an die in diesem Feld konfigurierte E-Mail-Adresse.  
+2. Stellen Sie sicher, dass das Zertifikat über Folgendes verfügt:
 
-Weitere Informationen finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) und [Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory](certificate-signing-options.md).
+   - *Das gewünschte Ablaufdatum*. Sie können ein Ablaufdatum konfigurieren, das bis zu drei Jahre in der Zukunft liegt.
+   - *Aktiver Status des gewünschten Zertifikats*. Wenn der Status **Inaktiv** lautet, ändern Sie diesen zu **Aktiv**. Um den Status zu ändern, klicken Sie mit der rechten Maustaste auf die Zeile des gewünschten Zertifikats, und wählen Sie **Zertifikat als aktiv festlegen** aus.
+   - *Die richtige Anmeldeoption und der entsprechende Algorithmus*.
+   - *Die richtige(n) E-Mail-Adresse(n) für Benachrichtigungen*. Wenn sich das aktive Zertifikat dem Ablaufdatum nähert, sendet Azure AD eine Benachrichtigung an die in diesem Feld konfigurierte E-Mail-Adresse.
 
-### <a name="set-up-target-application"></a>Einrichten der Zielanwendung
+2. Um das Zertifikat herunterzuladen, wählen Sie eine der Optionen für Base64-Format, Raw-Format oder Verbundmetadaten-XML aus. Azure AD bietet auch die **App-Verbundmetadaten-URL**, unter der Sie auf die anwendungsspezifischen Metadaten zugreifen können (im Format `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`).
 
-Um die Anwendung für das einmalige Anmelden zu konfigurieren, suchen Sie zunächst die Dokumentation der Anwendung. Wechseln Sie zur Rubrik **\<Anwendungsname> einrichten**, und wählen Sie **Schrittanleitung anzeigen** aus. Die Dokumentation wird auf der Seite **Anmeldung konfigurieren** angezeigt. Auf dieser Seite finden Sie Informationen dazu, wie Sie die Werte für **Anmelde-URL**, **Azure AD-Bezeichner** und **Abmelde-URL** in der Rubrik **\<Anwendungsname> einrichten** ausfüllen.
+3. Um ein Zertifikat zu verwalten, zu erstellen oder zu importieren, wählen Sie rechts oben im Abschnitt **SAML-Signaturzertifikat** das Symbol **Bearbeiten** (Stiftsymbol) aus.
 
-Die erforderlichen Werte variieren je nach Anwendung. Einzelheiten finden Sie in der SAML-Dokumentation der Anwendung. Die Werte für **Anmelde-URL** und **Abmelde-URL** werden in den gleichen Endpunkt aufgelöst – hierbei handelt es sich um den Endpunkt, in dem die SAML-Anforderungen für Ihre Azure AD-Instanz verarbeitet werden. **Azure AD-Bezeichner** ist der Wert für den **Issuer** (Aussteller) in dem SAML-Token, das für die Anwendung ausgestellt wird.
+   ![SAML-Signaturzertifikat](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
-### <a name="assign-users-and-groups-to-your-saml-application"></a>Zuweisen von Benutzern und Gruppen zu Ihrer SAML-Anwendung
 
-Nachdem Sie Ihre Anwendung zur Verwendung von Azure AD als SAML-basierten Identitätsanbieter konfiguriert haben, ist sie schon fast zum Testen bereit. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das dem Benutzer die Anmeldung bei der Anwendung erlaubt, wenn Azure AD dem Benutzer Zugriff gewährt hat. Benutzer können Zugriff direkt oder über eine Gruppenmitgliedschaft erhalten.
+   Führen Sie eine der folgenden Aktionen aus:
 
-So weisen Sie Ihrer Anwendung einen neuen Benutzer oder eine neue Gruppe zu:
+   - Wenn Sie ein neues Zertifikat erstellen möchten, wählen Sie **Neues Zertifikat**, unter **Ablaufdatum** das Ablaufdatum und anschließend **Speichern** aus. Wenn Sie das Zertifikat aktivieren möchten, wählen Sie das Kontextmenü ( **...** ) und anschließend **Zertifikat als aktiv festlegen** aus.
+   - Wenn Sie ein Zertifikat mit privatem Schlüssel und PFX-Anmeldeinformationen hochladen möchten, wählen Sie **Zertifikat importieren** aus, und navigieren Sie zu dem Zertifikat. Geben Sie unter **PFX-Kennwort** das PFX-Kennwort ein, und wählen Sie anschließend **Speichern** aus.  
+   - Wenn Sie erweiterte Optionen für die Zertifikatsignatur konfigurieren möchten, verwenden Sie die folgenden Optionen. Beschreibungen dieser Optionen finden Sie im Artikel unter [Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory](certificate-signing-options.md).
+      - Wählen Sie in der Dropdownliste **Signaturoption** die Option **SAML-Anwort signieren**, **SAML-Assertion signieren** oder **SAML-Antwort und-Assertion signieren** aus.
+      - Wählen Sie in der Dropdownliste **Signaturalgorithmus** die Option **SHA-1** oder **SHA-256** aus.
+   - Wenn weitere Personen darüber informiert werden sollen, dass das Ablaufdatum des aktiven Zertifikats bald erreicht ist, geben Sie die entsprechenden E-Mail-Adressen in die Felder für die Benachrichtigungs-E-Mail-Adressen **** ein.
 
-1. Wählen Sie auf der Randleiste der Anwendung die Option **Benutzer und Gruppen** aus. Die Seite **\<Anwendungsname> – Benutzer und Gruppen** wird geöffnet und zeigt die aktuelle Liste der zugewiesenen Benutzer und Gruppen an.
-1. Wählen Sie **Benutzer hinzufügen** aus. Die Seite **Zuweisungen hinzufügen** wird angezeigt.
-1. Wählen Sie **Benutzer und Gruppen (\<Anzahl> ausgewählt)** aus. Die Seite **Benutzer und Gruppen** wird geöffnet und zeigt eine Liste der verfügbaren Benutzer und Gruppen an.
-1. Geben Sie einen Namen ein, oder scrollen Sie, um den Benutzer oder die Gruppe in der Liste zu finden, den bzw. die Sie zuweisen möchten.
-1. Wählen Sie jeden Benutzer und jede Gruppe aus, den/die Sie hinzufügen möchten, und klicken Sie dann auf die Schaltfläche **Auswählen**. Die Seite **Benutzer und Gruppen** wird geschlossen.
-1. Wählen Sie auf der Seite **Zuweisungen hinzufügen** die Option **Zuweisen** aus. Die Seite **\< Anwendungsname> – Benutzer und Gruppen** wird geöffnet und zeigt die zusätzlichen Benutzer in der Liste an.
+4. Wenn Sie Änderungen vorgenommen haben, klicken Sie oben im Abschnitt **SAML-Signaturzertifikat** auf **Speichern**. 
 
-   ![Zeigt die Seite „Benutzer und Gruppen einer Anwendung“ an](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
+## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Schritt 4: Einrichten der Anwendung für die Verwendung von Azure AD
 
-In dieser Liste können Sie folgende Aktionen ausführen:
+Im Abschnitt **\<Anwendungsname> einrichten** werden die Werte aufgeführt, die in der Anwendung konfiguriert werden müssen, damit sie Azure AD als SAML-Identitätsanbieter verwendet. Die erforderlichen Werte variieren je nach Anwendung. Einzelheiten finden Sie in der SAML-Dokumentation der Anwendung. Wechseln Sie zur Rubrik **\<Anwendungsname> einrichten**, und wählen Sie **Schrittanleitung anzeigen** aus. Die Dokumentation wird auf der Seite **Anmeldung konfigurieren** angezeigt. Auf dieser Seite finden Sie Informationen dazu, wie Sie die Werte für **Anmelde-URL**, **Azure AD-Bezeichner** und **Abmelde-URL** in der Rubrik **\<Anwendungsname> einrichten** ausfüllen.
 
-- Entfernen eines Benutzers
-- Bearbeiten der Rollen von Benutzern
-- Aktualisieren von Anmeldeinformationen (Benutzername und Kennwort), sodass der Benutzer sich über seinen Zugriffsbereich bei der Anwendung authentifizieren kann
+1. Scrollen Sie nach unten zum Abschnitt **\<applicationName> einrichten**. 
+   
+   ![Schritt 4: Einrichten der Anwendung](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 
-Sie können mehrere Benutzer oder Gruppen gleichzeitig bearbeiten oder entfernen.
+1. Kopieren Sie nach Bedarf den Wert aus der jeweiligen Zeile dieses Abschnitts, und fügen Sie ihn gemäß den anwendungsspezifischen Anweisungen der Anwendung hinzu. Bei Katalog-Apps können Sie die Dokumentation durch Auswählen von **Schrittanleitung anzeigen** anzeigen. 
+   - Die Werte für **Anmelde-URL** und **Abmelde-URL** werden in den gleichen Endpunkt aufgelöst – hierbei handelt es sich um den Endpunkt, in dem die SAML-Anforderungen für Ihre Azure AD-Instanz verarbeitet werden. 
+   - **Azure AD-Bezeichner** ist der Wert für den **Issuer** (Aussteller) in dem SAML-Token, das für die Anwendung ausgestellt wird.
+2. Wenn Sie alle Werte in die entsprechenden Felder eingefügt haben, klicken Sie auf **Speichern**.
 
-Indem Sie einen Benutzer zuweisen, kann Azure AD diesem Benutzer ein Token ausstellen. Zudem wird dann im Zugriffsbereich des Benutzers eine Kachel für diese Anwendung angezeigt. Wenn der Benutzer Office 365 verwendet, wird die Anwendungskachel auch im Office 365-App-Startfeld angezeigt.
+## <a name="step-5-validate-single-sign-on"></a>Schritt 5: Überprüfen des einmaligen Anmeldens
 
-> [!NOTE]
-> Sie können ein Kachellogo für die Anwendung hochladen. Verwenden Sie hierzu die Schaltfläche **Logo hochladen** auf der Registerkarte **Konfigurieren** für die Anwendung.
+Sobald Sie Ihre Anwendung für die Verwendung von Azure AD als SAML-basiertem Identitätsanbieter konfiguriert haben, können Sie die Einstellungen testen, um zu überprüfen, ob das einmalige Anmelden für Konto funktioniert. 
 
-### <a name="test-the-saml-application"></a>Testen der SAML-Anwendung
+2. Scrollen Sie zum Abschnitt **Einmaliges Anmelden mit <applicationName> überprüfen**.
 
-Vor dem Testen der SAML-Anwendung müssen Sie die Anwendung bereits bei Azure AD eingerichtet und der Anwendung Benutzer oder Gruppen zugewiesen haben. Um die SAML-Anwendung zu testen, wählen Sie **Einmaliges Anmelden** aus. Damit werden Sie zur Seite **SAML-basiertes einmaliges Anmelden** zurückgeleitet. (Wenn eine andere SSO-Methode in Kraft war, wählen Sie **Modi für einmaliges Anmelden ändern** > **SAML** aus.) Wählen Sie in der Rubrik **Einmaliges Anmelden mit \<Anwendungsname> testen** die Option **Testen** aus. Weitere Informationen finden Sie unter [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
+   ![Schritt 5: Überprüfen des einmaligen Anmeldens](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
 
-## <a name="password-single-sign-on"></a>Einmaliges Anmelden per Kennwort
+3. Wählen Sie **Überprüfen**. Die Testoptionen werden angezeigt.
 
-Wählen Sie diese Option aus, um das [kennwortbasierte einmalige Anmelden](what-is-single-sign-on.md) für eine Webanwendung zu konfigurieren, die über eine HTML-Anmeldeseite verfügt. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Das Feature ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z.B. bei den App-Konten für die sozialen Medien Ihrer Organisation.
+4. Klicken Sie auf **Als aktueller Benutzer anmelden**. 
 
-Nach der Auswahl von **Kennwortbasiert** werden Sie aufgefordert, die URL für die webbasierte Anmeldeseite der Anwendung einzugeben.
+Ist die Anmeldung erfolgreich, können Sie Ihrer SAML-Anwendung Benutzer und Gruppen zuweisen.
+Sollte eine Fehlermeldung angezeigt werden, gehen Sie wie folgt vor:
 
-![Zeigt die Seite „Anmelde-URL“ an, auf der die Anmelde-URL eingegeben werden kann](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+1. Kopieren Sie die Details, und fügen Sie sie ins Feld **Wie äußert sich der Fehler?** ein.
 
-Führen Sie die folgenden Schritte aus:
+    ![Leitfaden zur Problemlösung abrufen](media/configure-single-sign-on-portal/error-guidance.png)
 
-1. Geben Sie die URL ein. Bei dieser Zeichenfolge muss es sich um die Seite handeln, die das Eingabefeld für den Benutzernamen enthält.
-1. Wählen Sie **Speichern** aus. Azure AD versucht, die Anmeldeseite im Hinblick auf die Eingabe eines Benutzernamens und eines Kennworts zu analysieren.
-1. Wenn Azure AD die Seite nicht analysieren kann, wählen Sie **\<Anwendungsname>-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus, um die Seite **Anmeldung konfigurieren** anzuzeigen. (Wenn der Versuch erfolgreich war, können Sie den Rest dieses Verfahrens ignorieren.)
-1. Wählen Sie **Anmeldefelder manuell erkennen** aus. Es werden weitere Anweisungen angezeigt, die die manuelle Erkennung von Anmeldefeldern beschreiben.
+2. Klicken Sie auf **Leitfaden zur Problemlösung abrufen**. Die Grundursache und Informationen zur Problemlösung werden angezeigt.  In diesem Beispiel wurde der Benutzer nicht der Anwendung zugewiesen.
 
-   ![Manuelle Konfiguration des kennwortbasierten einmaligen Anmeldens](./media/configure-single-sign-on-non-gallery-applications/password-configure-sign-on.png)
+3. Lesen Sie den Leitfaden zur Problemlösung, und beheben Sie nach Möglichkeit das Problem.
 
-1. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung **Die Metadatenerfassung wird aktuell ausgeführt.** angezeigt wird.
-1. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für Zugriffsbereich erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei "Meine Apps"** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
+4. Führen Sie den Test erneut aus, bis der Vorgang erfolgreich abgeschlossen wird.
 
-   Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
+Weitere Informationen finden Sie unter [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
 
-1. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.)
+## <a name="next-steps"></a>Nächste Schritte
 
-   Sie werden aufgefordert, die erfassten Anmeldefelder zu speichern.
-
-1. Klicken Sie auf **OK**. Die Registerkarte wird geschlossen, die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Dann wird auch diese Registerkarte geschlossen.
-1. Wählen Sie auf der Azure AD-Seite **Anmeldung konfigurieren** die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.
-1. Klicken Sie auf **OK**.
-
-Nach dem Erfassen der Anmeldeseite können Sie Benutzer und Gruppen zuweisen sowie Richtlinien für Anmeldeinformationen einrichten, genauso wie bei normalen [Anwendungen für das einmalige Anmelden mit Kennwort](what-is-single-sign-on.md).
-
-> [!NOTE]
-> Sie können ein Kachellogo für die Anwendung hochladen. Verwenden Sie hierzu die Schaltfläche **Logo hochladen** auf der Registerkarte **Konfigurieren** für die Anwendung.
-
-## <a name="existing-single-sign-on"></a>Vorhandenes einmaliges Anmelden
-
-Wählen Sie diese Option aus, um im Azure AD-Zugriffsbereich oder Office 365-Portal Ihrer Organisation einen Link zu einer Anwendung hinzufügen. Mit dieser Methode können Sie Links zu benutzerdefinierten Webanwendungen hinzufügen, die derzeit für die Authentifizierung Active Directory-Verbunddienste (oder andere Verbunddienste) anstelle von Azure AD verwenden. Oder Sie können Deep-Links auf spezifische SharePoint-Seiten oder andere Webseiten hinzufügen, die in den Zugriffsbereichen der betreffenden Benutzer angezeigt werden sollen.
-
-Nachdem Sie auf **Verknüpft** geklickt haben, werden Sie aufgefordert, die URL der Anwendung einzugeben, zu der ein Link erstellt werden soll. Geben Sie die URL ein, und klicken Sie auf **Speichern**. Sie können der Anwendung Benutzer und Gruppen zuweisen. Dadurch wird die Anwendung im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](end-user-experiences.md) für die betreffenden Benutzer angezeigt.
-
-> [!NOTE]
-> Sie können ein Kachellogo für die Anwendung hochladen. Verwenden Sie hierzu die Schaltfläche **Logo hochladen** auf der Registerkarte **Konfigurieren** für die Anwendung.
-
-## <a name="related-articles"></a>Verwandte Artikel
-
-- [Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md)
-- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)
-- [Microsoft Identity Platform (vormals Azure Active Directory für Entwickler)](../develop/index.yml)
+- [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md)
+- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](configure-automatic-user-provisioning-portal.md)

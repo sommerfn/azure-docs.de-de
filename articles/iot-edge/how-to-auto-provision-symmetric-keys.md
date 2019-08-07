@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275744"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414589"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel
 
-Azure IoT Edge-Geräte können genau wie nicht Edge-fähige Geräte mit dem [Device Provisioning-Dienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
+Azure IoT Edge-Geräte können genau wie nicht Edge-fähige Geräte mit dem [Gerätebereitstellungsdienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
 
 In diesem Artikel erfahren Sie, wie Sie mit den folgenden Schritten auf einem IoT Edge-Gerät mithilfe des Nachweises symmetrischer Schlüssel eine individuelle Registrierung beim Device Provisioning-Dienst erstellen:
 
@@ -165,8 +165,7 @@ Sie benötigen die folgenden Informationen, wenn Sie Ihr Gerät bereitstellen:
 
 Befolgen Sie die Anweisungen für die Architektur Ihres Geräts. Stellen Sie sicher, dass Sie die IoT Edge-Runtime für die automatische und nicht für die manuelle Bereitstellung konfigurieren.
 
-* [Installieren der Azure IoT Edge-Runtime unter Linux (x64)](how-to-install-iot-edge-linux.md)
-* [Installieren der Azure IoT Edge-Runtime unter Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[Installieren der Azure IoT Edge-Runtime unter Linux](how-to-install-iot-edge-linux.md)
 
 Der Abschnitt in der Konfigurationsdatei für die Bereitstellung von symmetrischen Schlüsseln sieht wie folgt aus:
 
@@ -188,7 +187,7 @@ Ersetzen Sie die Platzhalterwerte für `{scope_id}`, `{registration_id}` und `{s
 
 Befolgen Sie die Anweisungen zum Installieren der IoT Edge-Runtime auf dem Gerät, für das Sie einen abgeleiteten Geräteschlüssel generiert haben. Stellen Sie sicher, dass Sie die IoT Edge-Runtime für die automatische und nicht für die manuelle Bereitstellung konfigurieren.
 
-[Installation und automatische Bereitstellung von IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Installation und automatische Bereitstellung von IoT Edge unter Windows](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 

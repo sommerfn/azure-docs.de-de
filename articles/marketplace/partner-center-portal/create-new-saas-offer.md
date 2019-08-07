@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cea763416f36abd80b1d22b4414cc2454bc30c66
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868727"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501304"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -114,10 +114,13 @@ Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu wer
 - **Wie sollen potenzielle Kunden mit diesem Angebot interagieren?**
 
 ##### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
-Listen Sie Ihr Angebot für Kunden als kostenlos auf, indem Sie eine gültige URL (mit „http“ oder „https“ beginnend) angeben, über die sie auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/saas-app`
+Listen Sie Ihr Angebot für Kunden als kostenlos, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Kostenlose Testversion (Auflistung)
-Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion auf, indem Sie eine gültige URL (mit „http“ oder „https“ beginnend) angeben, über die sie auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/trial/saas-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
+##### <a name="free-trial-listing"></a>Kostenlose Testversion (Listing)
+Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden [per 1-Klick-Authentifizierung über Azure Active Directory](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können.  Beispiel: `https://contoso.com/trial/saas-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
+
+> [!NOTE]
+> Die Token, die Ihre Anwendung über den Testlink erhält, können nur verwendet werden, um zum Automatisieren der Kontoerstellung in Ihrer App Benutzerinformationen aus Azure AD abzurufen. Die Authentifizierung mit diesem Token wird für Microsoft-Konten (MSA) nicht unterstützt.
 
 ##### <a name="contact-me"></a>Kontakt mit mir aufnehmen
 Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management). 
@@ -220,6 +223,92 @@ In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. Weitere Tipp
 - **Suchbegriffe**: Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in dem/den Marketplace(s) nach Ihrem Angebot suchen können.
 - **Anweisungen für den Einstieg** (erforderlich): Erläutern Sie potenziellen Kunden, wie die App konfiguriert und mit ihrer Verwendung begonnen wird.  Diese Schnellstartanleitung kann Links zu ausführlicherer Onlinedokumentation enthalten. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. 
 
+#### <a name="description"></a>**Beschreibung**
+
+Dies ist ein Pflichtfeld. Ihre Beschreibung sollte folgende Elemente enthalten: 
+
+* Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots.  
+* Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
+* Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
+* Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung. 
+
+Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen: 
+
+* Beschreibung des Produkts. 
+* Benutzertyp, der von dem Produkt profitiert. 
+* Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt. 
+
+Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags zur Formatierung verwenden. 
+
+1. Wenn Sie Absätze erstellen möchten fügen Sie `<p>` am Anfang und `</p>` am Ende des Texts ein.
+
+    **Beispiel**: 
+
+    `<p>` Dies ist mein erster Absatz. `</p>` <br>
+    `<p>` Dies ist mein zweiter Absatz. `</p>` <br>
+
+    Diese Formatierung führt zu folgender Darstellung:
+
+    <p> Dies ist mein erster Absatz. </p>
+    <p> Dies ist mein zweiter Absatz. </p>
+
+1. Wenn Sie eine **Aufzählung** hinzufügen möchten, fügen Sie den entsprechenden Text zwischen die unten genannten `<li>`-Tags ein. Sie können innerhalb der Tags `<ul>` und `</ul>` weitere Aufzählungspunkte (Elemente zwischen den Tags `<li>` und `</li>`) einfügen. Stellen Sie sicher, dass Sie `<ul></ul>` hinzufügen. 
+
+    **Beispiel**:
+
+    ```
+    <ul> 
+        <li>add text here</li> 
+        <li> add text here </li> 
+        <li> add text here </li> 
+    </ul> 
+    ```
+
+    Diese Formatierung führt zu folgender Darstellung:
+    <ul> 
+        <li>Text hier einfügen</li> 
+        <li> Text hier einfügen </li> 
+        <li> Text hier einfügen </li> 
+    </ul> 
+
+1. Um Inhalte in **Fettschrift** zu formatieren, fügen Sie `<b>` am Anfang des fett darzustellenden Texts und `</b>` am Ende dieses Texts ein. 
+
+    **Beispiel**: `<b>` KOSTENLOSE TESTVERSION `</b>`
+    
+    Mit dieser Formatierung werden die Worte KOSTENLOSE TESTVERSION in der Beschreibung des Angebots in der Storefront in Fettschrift dargestellt. 
+
+    **KOSTENLOSE TESTVERSION**
+
+1. Um **Zeilenumbrüche** in Ihren Inhalt einzufügen, fügen Sie `<br>` vor dem Text ein, der auf einer neuen Zeile beginnen soll. Wenn Sie zusätzlich eine Leerzeile einfügen und sicherstellen möchten, dass Text auf einer neuen Zeile beginnt, fügen Sie `<br><br>` vor dem entsprechenden Text ein. 
+
+    **Beispiel**:
+
+    Dies ist eine Textzeile. `<br>` Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. `<br><br>` Dies ist eine Textzeile, die zwei Zeilen darunter beginnt. 
+
+    Diese Formatierung führt zu folgender Darstellung:
+
+    Dies ist eine Textzeile. <br> Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. <br><br> Dies ist eine Textzeile, die zwei Zeilen darunter beginnt. 
+
+1. Wenn Sie den **Schriftgrad des Texts vergrößern** möchten, entscheiden Sie zunächst, wie groß der Text angezeigt werden soll. Im Folgenden finden Sie einige Beispiele. Nachdem Sie die Schriftgröße ausgewählt haben, fügen Sie am Anfang und am Ende des betreffenden Texts die entsprechenden `<H*></H*>`-Tags hinzu. 
+
+    **Beispiel**:
+
+    `<h1>`Dies ist Überschrift 1`</h1>` <br>
+    `<h2>`Dies ist Überschrift 2`</h2>` <br>
+    `<h3>`Dies ist Überschrift 3`</h3>` <br>
+    `<h4>`Dies ist Überschrift 4`</h4>` <br>
+    `<h5>`Dies ist Überschrift 5`</h5>` <br>
+    `<h6>`Dies ist Überschrift 6`</h6>` 
+
+    Diese Formatierung führt zu folgender Darstellung:
+
+    <h1>Dies ist Überschrift 1</h1> 
+    <h2>Dies ist Überschrift 2</h2> 
+    <h3>Dies ist Überschrift 3</h3> 
+    <h4>Dies ist Überschrift 4</h4> 
+    <h5>Dies ist Überschrift 5</h5> 
+    <h6>Dies ist Überschrift 6</h6> 
+
 #### <a name="links"></a>Links
 
 - **Datenschutzrichtlinie** (erforderlich): Erstellen Sie eine Verknüpfung zur Datenschutzrichtlinie Ihrer Organisation. Sie müssen sicherzustellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt, und Sie müssen eine gültige Datenschutzrichtlinie bereitstellen.
@@ -259,7 +348,7 @@ Sie können auf der Registerkarte **Vorschau** eine eingeschränkte **Vorschauzi
 
 - **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description.** (Definieren Sie eine Vorschauzielgruppe: Fügen Sie eine einzelne AAD/MSA-Konto-E-Mail-Adresse pro Zeile und optional eine Beschreibung hinzu.)
 
-Fügen Sie manuell bis zu zehn (10) E-Mail-Adressen oder durch das Hochladen einer CSV-Datei bis zu zwanzig (20) E-Mail-Adressen für vorhandene MSA-Konten (Microsoft Account) oder AAD-Konten (Azure Active Directory) hinzu, damit die Besitzer dieser Konten sie bei der Überprüfung Ihres Angebots vor seiner Liveveröffentlichung unterstützen. Durch das Hinzufügen dieser Konten definieren Sie eine Zielgruppe, die Zugriff auf die Vorschau Ihres Angebot erhält, bevor es in dem/den Marketplace(s) veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
+Fügen Sie manuell bis zu zehn (10) oder durch Hochladen einer CSV-Datei bis zu zwanzig (20) E-Mail-Adressen für vorhandene Microsoft-Konten (MSA) oder Azure Active Directory-Konten hinzu, um Unterstützung bei der Überprüfung Ihres Angebots vor der Liveveröffentlichung zu erhalten. Durch das Hinzufügen dieser Konten definieren Sie eine Zielgruppe, die Zugriff auf die Vorschau Ihres Angebot erhält, bevor es in dem/den Marketplace(s) veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
 
 > [!NOTE]
 > Die Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Einer Vorschauzielgruppe wird Zugriff auf das Angebot gewährt, _bevor_ es in den Marketplaces live veröffentlicht wird. Sie können auch einen Plan erstellen und nur für eine private Zielgruppe verfügbar machen. Auf der Registerkarte **Planlisting** können Sie mit dem Kontrollkästchen **This is a private plan** (Dies ist ein privater Plan) eine private Zielgruppe definieren. Sie können mithilfe von Azure-Mandanten-IDs eine private Zielgruppe von bis zu 20.000 Kunden definieren.

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 0d44e38343d6f7113b296b57353080e2de068bb6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a3009c9863d8322e3fe34bd99d64b93f0aa3d858
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278281"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385729"
 ---
 # <a name="preview-deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Vorschau: Bereitstellen von VMs für Näherungsplatzierungsgruppen mit Azure CLI
 
@@ -61,6 +61,12 @@ az vm create \
    --generate-ssh-keys \
    --size Standard_D1_v2  \
    -l westus
+```
+
+Sie können die VM in der Näherungsplatzierungsgruppe mit [az ppg show](/cli/azure/ppg#az-ppg-show) anzeigen.
+
+```azurecli-interactive
+az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen

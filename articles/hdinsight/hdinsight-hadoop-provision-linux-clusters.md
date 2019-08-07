@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a1ff1449b5cc63c16035f8785662f250a008fbc1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 4159eed04ff1a4e81ea36a4d7f06f342a63fe367
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305538"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442029"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -155,7 +155,7 @@ Die benutzerdefinierte Clustereinrichtung basiert auf den Einstellungen der Schn
  
 ## <a name="enterprise-security-package"></a>Sicherheitspaket für Unternehmen
 
-Für Cluster der Typen Hadoop, Spark, HBase, Kafka und Interactive Query können Sie das **Enterprise-Sicherheitspaket** aktivieren. Dieses Paket bietet die Möglichkeit, mithilfe von Apache Ranger und der Integration in Azure Active Directory eine sicherere Clustereinrichtung zu erreichen. Weitere Informationen finden Sie unter [Sicherheitspaket für Unternehmen in Azure HDInsight](./domain-joined/apache-domain-joined-introduction.md).
+Für Cluster der Typen Hadoop, Spark, HBase, Kafka und Interactive Query können Sie das **Enterprise-Sicherheitspaket** aktivieren. Dieses Paket bietet die Möglichkeit, mithilfe von Apache Ranger und der Integration in Azure Active Directory eine sicherere Clustereinrichtung zu erreichen. Weitere Informationen finden Sie unter [Übersicht über die Unternehmenssicherheit in Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
 
 ![HDInsight-Erstellungsoptionen – Sicherheitspaket für Unternehmen auswählen](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
 
@@ -249,9 +249,9 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Erweiterte Einstellungen: Erweitern von Clustern mit einem virtuellen Netzwerk
 Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, können Sie die erforderlichen Clustertypen über ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network) miteinander verbinden. Durch diese Konfiguration können die Cluster und der gesamte Code, den Sie dafür bereitstellen, direkt miteinander kommunizieren.
 
-Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks finden Sie unter [Erweitern von HDInsight mit virtuellen Azure-Netzwerken](hdinsight-extend-hadoop-virtual-network.md).
+Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks mit HDInsight finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
-Ein Beispiel für die Verwendung von zwei Clustertypen in einem virtuellen Azure-Netzwerk finden Sie unter [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+Ein Beispiel für die Verwendung von zwei Clustertypen in einem virtuellen Azure-Netzwerk finden Sie unter [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

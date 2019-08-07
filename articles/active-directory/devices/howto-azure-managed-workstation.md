@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: be9e6374d92fbb7bb1c4b5a2a9e154119c5baf87
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227268"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377492"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Stellen Sie eine sichere, von Azure verwaltete Arbeitsstation bereit
 
@@ -245,7 +245,7 @@ Nachdem das Skript erfolgreich ausgeführt wurde, können Sie Updates von Profil
 * Hier finden Sie die von den Skripten erstellten Intune-Gerätekonfigurationsprofile: **Azure-Portal** > **Microsoft Intune** > **Gerätekonfiguration** > **Profile**.
 * Hier finden Sie die von den Skripten erstellten Intune Device Compliance-Richtlinien: **Azure-Portal** > **Microsoft Intune** > **Geräte-Compliance** > **Profile**.
 
-Um die von den Skripten vorgenommenen Änderungen zu überprüfen, können Sie die Profile exportieren. Auf diese Weise können Sie zusätzliche Härtungen bestimmen, die gemäß der SECCON-Dokumentation erforderlich sein können.
+Um die von den Skripten vorgenommenen Änderungen zu überprüfen, können Sie die Profile exportieren. Auf diese Weise können Sie eine zusätzliche Härtung bestimmen, die gemäß der [SECCON-Dokumentation](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework) erforderlich sein kann.
 
 Führen Sie das Intune-Datenexportskript `DeviceConfiguration_Export.ps1` aus dem [DeviceConfiguration GiuHub-Repository](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) aus, um alle aktuellen Intune-Profile zu exportieren.
 

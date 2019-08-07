@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cc0ba80f7aef53568e048b8285800982c818b004
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449724"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334599"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -23,8 +23,6 @@ Azure Storage bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells 
 Eine Anwendung, die bei aktivierten Netzwerkregeln auf ein Speicherkonto zugreift, benötigt eine ordnungsgemäße Autorisierung für die Anforderung. Für die Autorisierung können Azure Active Directory (Azure AD)-Anmeldeinformationen für Blobs und Warteschlangen mit einem gültigen Kontozugriffsschlüssel oder mit einem SAS-Token verwendet werden.
 
 > [!IMPORTANT]
-> Firewalls und virtuelle Netzwerke werden von der Azure-Dateisynchronisierung noch nicht unterstützt. Wenn Sie die Azure-Dateisynchronisierung in Ihrem Speicherkonto verwenden und diese Funktionen aktivieren, funktioniert die Azure-Dateisynchronisierung nicht.
->
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines virtuellen Azure-Netzwerks (VNET) agiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert.
 >
 > Sie können Azure-Diensten, die innerhalb eines VNETs agieren, Zugriff gewähren, indem Sie das Subnetz der Dienstinstanz zulassen. Der im nächsten Abschnitt beschriebene [Ausnahmenmechanismus](#exceptions) ermöglicht eine begrenzte Anzahl von Szenarien. Der Zugriff auf das Azure-Portal muss über einen Computer erfolgen, der sich innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (IP-Adresse oder VNET) befindet.
@@ -357,6 +355,7 @@ Wenn Sie die Ausnahme **Vertrauenswürdigen Microsoft-Diensten die Umgehung dies
 |Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten. [Weitere Informationen](/azure/devtest-lab/devtest-lab-overview)|
 |Azure Event Grid|Microsoft.EventGrid|Aktivieren Sie Blob Storage-Ereignisveröffentlichung, und erlauben Sie Event Grid die Veröffentlichung in Speicherwarteschlangen. Erfahren Sie mehr über [Blob Storage-Ereignisse](/azure/event-grid/event-sources) und das [Veröffentlichen in Warteschlangen](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture. [Weitere Informationen](/azure/event-hubs/event-hubs-capture-overview).|
+| Azure-Dateisynchronisierung| Microsoft.StorageSync| Ermöglicht das Transformieren eines lokalen Dateiservers in einen Cache für Azure-Dateifreigaben. Ermöglicht die Synchronisierung mit mehreren Standorten, eine schnelle Notfallwiederherstellung und die cloudbasierte Sicherung. [Weitere Informationen](../files/storage-sync-files-planning.md)|
 |Azure HDInsight|Microsoft.HDInsight|Stellen Sie die anfänglichen Inhalte des Standarddateisystems für einen neuen HDInsight-Cluster bereit. [Weitere Informationen](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)|
 |Azure Monitor|Microsoft.Insights|Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)|
 |Azure-Netzwerke|Microsoft.Network|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](/azure/network-watcher/network-watcher-packet-capture-overview)|

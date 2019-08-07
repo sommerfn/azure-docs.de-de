@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: cc60a8ca0e0b04a5fcec5300fbeb1a0f34d1c7b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91104b36b4821d8b1e0350d4eeb20d652de1242b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686383"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406248"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH
 
-Informieren Sie sich darüber, wie Sie [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) verwenden, um eine sichere Verbindung mit Apache Hadoop in Azure HDInsight herzustellen. Informationen zum Herstellen einer Verbindung über ein virtuelles Netzwerk finden Sie unter [Architektur von virtuellen Netzwerken in Azure HDInsight](./hdinsight-virtual-network-architecture.md) und [Erweitern von Azure HDInsight über Azure Virtual Network](./hdinsight-extend-hadoop-virtual-network.md).
+Informieren Sie sich darüber, wie Sie [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) verwenden, um eine sichere Verbindung mit Apache Hadoop in Azure HDInsight herzustellen. Informationen zum Herstellen einer Verbindung über ein virtuelles Netzwerk finden Sie unter [Architektur von virtuellen Netzwerken in Azure HDInsight](./hdinsight-virtual-network-architecture.md) und [Planen der Bereitstellung eines virtuellen Netzwerks für Azure HDInsight-Cluster](./hdinsight-plan-virtual-network-deployment.md).
 
 Die folgende Tabelle enthält die Adress- und Portinformationen, die zum Herstellen der Verbindung mit HDInsight über einen SSH-Client benötigt werden:
 
@@ -182,7 +182,7 @@ Wenn das SSH-Konto mit __SSH-Schlüsseln__ gesichert wird, stellen Sie sicher, d
 > [!NOTE]  
 > Eine weitere Möglichkeit zum direkten Zugreifen auf alle Knoten im Cluster ist die Installation von HDInsight in einem Azure Virtual Network. Anschließend können Sie Ihren Remotecomputer mit demselben virtuellen Netzwerk verknüpfen und auf alle Knoten im Cluster direkt zugreifen.
 >
-> Weitere Informationen finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+> Weitere Informationen finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 ### <a name="configure-ssh-agent-forwarding"></a>Konfigurieren der SSH-Agent-Weiterleitung
 
@@ -246,5 +246,5 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von SSH-Tunneln mit HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)
-* [Verwenden eines virtuellen Netzwerks mit HDInsight](hdinsight-extend-hadoop-virtual-network.md)
+* [Planen eines virtuellen Netzwerks mit HDInsight](hdinsight-plan-virtual-network-deployment.md)
 * [Verwenden von Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)

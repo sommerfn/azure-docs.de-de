@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 854fd5ca2bb6c27b7f8815bf85e19c6cf147e475
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278052"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383452"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -70,7 +70,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blobspeicher und Azure Data Lake Gen2
 
-Der Ausgang zu Azure Data Lake Gen2 wird als Public Preview-Feature angeboten.
+Ausgehender Datenverkehr an Azure Data Lake Gen2 wird in ausgewählten Regionen weltweit als Previewfunktion angeboten. Sie können Zugriff auf die Vorschau anfordern, indem Sie in unserem [Anforderungsformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) zusätzliche Informationen bereitstellen.
 
 Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speichern von großen Mengen unstrukturierter Daten in der Cloud. Eine Einführung in Blobspeicher und seine Nutzung finden Sie unter [Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 

@@ -9,29 +9,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: ab7ce8b4a538e6a286a00285069a22878c5d88d9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877443"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377448"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Erstellen einer Azure Kubernetes Service-Clusterressource
 
-1. Rufen Sie [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks) auf, und klicken Sie auf **Erstellen**.
+1. Wechseln Sie zu [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks), und klicken Sie auf **Erstellen**.
 
 1. Geben Sie folgende Informationen auf der Registerkarte **Grundeinstellungen** an:
 
     |Einstellung|Wert|
     |--|--|
     |Subscription|Wählen Sie ein entsprechendes Abonnement aus.|
-    |Resource group|Wählen Sie eine verfügbare Ressourcengruppe aus|
-    |Kubernetes-Clustername|Geben Sie einen Namen ein (Kleinbuchstaben)|
-    |Region|Wählen Sie einen nahe gelegenen Speicherort aus|
-    |Kubernetes-Version|1.12.8 (Standard)|
-    |DNS-Namenspräfix|Wird automatisch erstellt, kann jedoch überschrieben werden|
+    |Resource group|Wählen Sie eine verfügbare Ressourcengruppe aus.|
+    |Kubernetes-Clustername|Geben Sie einen Namen ein (Kleinbuchstaben).|
+    |Region|Wählen Sie einen nahe gelegenen Speicherort aus.|
+    |Kubernetes-Version|1.12.8 (Standard).|
+    |DNS-Namenspräfix|Wird automatisch erstellt, kann jedoch überschrieben werden.|
     |Knotengröße|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Knotenanzahl|Lassen Sie den Schieberegler auf dem Standardwert|
+    |Knotenanzahl|Lassen Sie den Schieberegler auf dem Standardwert.|
 
 1. Lassen Sie die Standardwerte auf der Registerkarte **Skalieren** für **virtuelle Knoten** und **VM-Skalierungsgruppen (Vorschau)** unverändert.
 1. Lassen Sie die Standardwerte auf der Registerkarte **Authentifizierung** für **Dienstprinzipal** und **RBAC aktivieren** unverändert.
@@ -48,4 +48,4 @@ ms.locfileid: "67877443"
 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
 
 > [!NOTE]
-> Wenn bei der Validierung ein Fehler auftritt, ist dies möglicherweise auf einen Fehler beim „Dienstprinzipal“ zurückzuführen. Navigieren Sie zurück zur Registerkarte **Authentifizierung** und dann zurück zu **Überprüfen und erstellen**, wo die Validierung ausgeführt und bestanden werden sollte.
+> Wenn bei der Überprüfung ein Fehler auftritt, ist der Grund dafür möglicherweise ein Fehler beim „Dienstprinzipal“. Navigieren Sie zurück zur Registerkarte **Authentifizierung** und dann zurück zu **Überprüfen und erstellen**, wo die Überprüfung ausgeführt und bestanden werden sollte.

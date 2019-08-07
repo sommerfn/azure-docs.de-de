@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229338"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377381"
 ---
 ## <a name="verify-the-sentiment-analysis-container-instance"></a>Überprüfen der Stimmungsanalyse-Containerinstanz
 
 1. Wählen Sie die Registerkarte **Übersicht** aus, und kopieren Sie die IP-Adresse.
-1. Öffnen Sie eine neue Registerkarte im Browser, und geben Sie die IP-Adresse ein. Geben Sie zum Beispiel `http://<IP-address>:5000 (http://55.55.55.55:5000`) ein. Daraufhin wird die Homepage des Containers angezeigt. Daran erkennen Sie, dass der Container ausgeführt wird.
+1. Öffnen Sie eine neue Registerkarte im Browser, und geben Sie die IP-Adresse ein. Geben Sie zum Beispiel `http://<IP-address>:5000 (http://55.55.55.55:5000`) ein. Die Homepage des Containers wird angezeigt, in der Sie erkennen, dass der Container ausgeführt wird.
 
     ![Anzeigen der Homepage des Containers, um sicherzustellen, dass er ausgeführt wird](../media/how-tos/container-instance/swagger-docs-on-container.png).
 
-1. Klicken Sie auf den Link **Service API Description** (Dienst-API-Beschreibung), um die Swagger-Seite des Containers aufzurufen.
+1. Klicken Sie auf den Link **Dienst-API-Beschreibung**, um die Swagger-Seite des Containers aufzurufen.
 
-1. Wählen Sie eine der **POST**-APIs und dann **Ausprobieren** aus.  Die Parameter werden einschließlich der folgende Beispieleingabe angezeigt:
+1. Wählen Sie eine der **POST**-APIs und dann **Jetzt ausprobieren** aus. Die Parameter werden angezeigt, einschließlich der folgenden Beispieleingabe:
 
     ```json
     {
@@ -67,7 +67,7 @@ ms.locfileid: "68229338"
 
 1. Wählen Sie **Ausführen** aus, um die Stimmung des Texts zu bestimmen.
 
-    Das im Container enthaltene Modell erzeugt einen Bewertungsbereich von 0 bis 1, wobei 0 negativ und 1 positiv ist.
+    Das im Container enthaltene Modell erzeugt einen Bewertungsbereich von 0 bis 1, wobei 0 negativ und 1 positiv ist.
 
     Die zurückgegebene JSON-Antwort enthält die Stimmung für die aktualisierte Texteingabe:
 
@@ -93,4 +93,4 @@ ms.locfileid: "68229338"
     }
     ```
 
-Das Dokument `id` der in der Antwort enthaltenen JSON-Daten kann nun mit dem ursprünglichen Dokument `id` in Korrelation gebracht werden. Eine Bewertung von über `.98` wird angezeigt, was einer stark positiven Stimmung entspricht.
+Das Dokument `id` der in der Antwort enthaltenen JSON-Daten kann nun mit dem ursprünglichen Dokument `id` in Korrelation gebracht werden. Eine Bewertung von über `.98` weist auf eine stark positive Stimmung hin.

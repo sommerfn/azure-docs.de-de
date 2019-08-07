@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: dc703f02ecf5dbaf5eb69e8e20918415e76ba469
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228375"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570558"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure
 
@@ -39,8 +39,6 @@ ms.locfileid: "68228375"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!TIP]
-> Pacemaker unter Red Hat Enterprise Linux verwendet den Azure Fence-Agent, um bei Bedarf einen Clusterknoten zu umgrenzen. Eine neue Version des Azure Fence-Agent ist verfügbar und das Failover dauert nicht mehr lange, wenn bei einem Ressourcenstopp ein Fehler auftritt oder die Clusterknoten nicht miteinander kommunizieren können. Weitere Informationen finden Sie unter [Azure VM running as a RHEL High Availability cluster member take a very long time to be fenced, or fencing fails / times-out before the VM shuts down](https://access.redhat.com/solutions/3408711) (Die Umgrenzung eines virtuellen Azure-Computers, der als Mitglied eines RHEL-Hochverfügbarkeitsclusters ausgeführt wird, dauert sehr lange, die Umgrenzung ist nicht erfolgreich, oder bei der Umgrenzung tritt ein Timeout auf, bevor der virtuelle Computer heruntergefahren wird).
 
 Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 
@@ -209,7 +207,7 @@ Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Erstellen einer benutzerdefinierten Rolle für den Fence Agent.
 
-Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Berechtigungen zum Starten und Beenden (Freigeben) aller virtuellen Computer des Clusters gewähren. Wenn Sie noch keine benutzerdefinierte Rolle erstellt haben, können Sie sie mit [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) erstellen.
+Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Berechtigungen zum Starten und Beenden (Ausschalten) aller virtuellen Computer des Clusters gewähren. Wenn Sie noch keine benutzerdefinierte Rolle erstellt haben, können Sie sie mit [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) erstellen.
 
 Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an Ihre Abonnements anpassen, d.h., Sie müssen „c276fc76-9cd4-44c9-99a7-4fd71546436e“ und „e91d47c4-76f3-4271-a796-21b4ecfe3624“ durch die IDs Ihres Abonnements ersetzen. Wenn Sie nur über ein Abonnement verfügen, entfernen Sie den zweiten Eintrag in AssignableScopes.
 
@@ -218,10 +216,10 @@ Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an 
   "Name": "Linux Fence Agent Role",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
+  "Description": "Allows to power-off and start virtual machines",
   "Actions": [
     "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
+    "Microsoft.Compute/virtualMachines/powerOff/action",
     "Microsoft.Compute/virtualMachines/start/action"
   ],
   "NotActions": [

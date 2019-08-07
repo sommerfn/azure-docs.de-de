@@ -1,57 +1,59 @@
 ---
 title: Installieren von Azure IoT Edge unter Linux | Microsoft-Dokumentation
-description: Anweisungen zur Installation von Azure IoT Edge auf Linux AMD64-Geräten mit ausgeführtem Ubuntu
+description: Anweisungen zur Installation von Azure IoT Edge auf Linux-Geräten unter Ubuntu oder Raspbian
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 822efe2534d49c0995a672232107cc322e547989
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: bb23ee1e51be178f93e05b728f7b8c2e9bb18e0d
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227508"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414496"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Installieren der Azure IoT Edge-Runtime unter Linux (x64)
+# <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen
 
-Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Runtime kann auf verschiedensten Geräten bereitgestellt werden – vom kleinen Raspberry Pi bis hin zum großen industriellen Server. Wenn ein Gerät mit der IoT Edge-Runtime konfiguriert wurde, können Sie darauf Geschäftslogik aus der Cloud bereitstellen.
+Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Runtime kann auf verschiedensten Geräten bereitgestellt werden – vom kleinen Raspberry Pi bis hin zum großen industriellen Server. Wenn ein Gerät mit der IoT Edge-Runtime konfiguriert wurde, können Sie darauf Geschäftslogik aus der Cloud bereitstellen. Weitere Informationen finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-Weitere Informationen finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
+In diesem Artikel werden die Schritte zum Installieren der Azure IoT Edge-Runtime auf einem X64-, ARM32- oder ARM64-Gerät unter Linux erläutert. Installationspakete sind für Ubuntu Server 16.04, Ubuntu Server 18.04 und Raspbian Stretch verfügbar. Unter [Von Azure IoT Edge unterstützte Systeme](support.md#operating-systems) finden Sie eine Liste der unterstützten Linux-Betriebssysteme und -Architekturen.
 
-In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime auf dem Ubuntu Linux-x64-IoT Edge-Gerät (Intel/AMD) aufgeführt. Unter [Von Azure IoT Edge unterstützte Systeme](support.md#operating-systems) finden Sie eine Liste der unterstützten AMD64-Betriebssysteme.
+>[!NOTE]
+>Die Unterstützung für ARM64-Geräte befindet sich in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!NOTE]
 > Pakete in den Linux-Softwarerepositorys unterliegen den Lizenzbedingungen im jeweiligen Paket (/usr/share/doc/*Paketname*). Lesen Sie vor Verwendung des Pakets die Lizenzbedingungen. Durch die Installation und Nutzung des Pakets erklären Sie sich mit diesen Bedingungen einverstanden. Wenn Sie mit den Lizenzbedingungen nicht einverstanden sind, verwenden Sie das Paket nicht.
 
-## <a name="install-the-latest-version"></a>Installieren Sie die neuste Version
+## <a name="install-the-latest-runtime-version"></a>Installieren der neuesten Runtimeversion
 
-Verwenden Sie die folgenden Abschnitte, um die neuste Version von Azure IoT Edge auf Ihren Geräten zu installieren. 
+Verwenden Sie die folgenden Abschnitte, um die neuste Version der Azure IoT Edge-Runtime auf Ihrem Gerät zu installieren. 
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>Registrieren des Feeds für Microsoft-Schlüssel und Softwarerepositorys
 
 Bereiten Sie Ihr Gerät für die IoT Edge-Laufzeitinstallation vor.
 
+Installieren Sie die Repositorykonfiguration. Wählen Sie den **16.04**- oder **18.04**-Befehl aus, der dem Betriebssystem Ihres Geräts entspricht:
 
-Installieren Sie die Repositorykonfiguration. Wählen Sie entweder den Codeausschnitt **16.04** oder **18.04**, der für Ihre Version von Ubuntu geeignet ist:
-
-> [!NOTE]
-> Stellen Sie sicher, dass Sie den Codeausschnitt aus dem richtigen Codefeld für Ihre Version von Ubuntu auswählen.
-
-* Für **Ubuntu 16.04**:
+* **Ubuntu Server 16.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* Für **Ubuntu 18.04**:
+* **Ubuntu Server 18.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
-   
+
+* **Raspbian Stretch**:
+   ```bash
+   curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
 Kopieren Sie die generierte Liste.
 
    ```bash
@@ -87,17 +89,7 @@ Installieren Sie die Moby-Befehlszeilenschnittstelle (Command-Line Interface, CL
    sudo apt-get install moby-cli
    ```
 
-#### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Überprüfen Sie Ihren Linux-Kernel auf Moby-Kompatibilität
-
-Viele Hersteller von eingebetteten Geräten stellen Gerätebilder bereit, die benutzerdefinierte Linux-Kernel enthalten, denen Funktionen für die Container-Runtimekompatibilität fehlen können. Wenn Sie Probleme beim Installieren der empfohlenen [Moby](https://github.com/moby/moby)-Containerruntime haben, dann können Sie versuchen, Ihre Linux-Kernelkonfiguration mit dem [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)-Skript aus dem offiziellen [Moby GitHub-Repository](https://github.com/moby/moby) zu korrigieren, indem Sie die folgenden Befehle auf dem Gerät ausführen.
-
-   ```bash
-   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
-   chmod +x check-config.sh
-   ./check-config.sh
-   ```
-
-Dadurch erhalten Sie eine detaillierte Ausgabe, die den Status der Kernelfunktionen erhält, auf die die Moby-Runtime zugreift. Sie sollten sicherstellen, dass alle Elemente unter `Generally Necessary` und `Network Drivers` aktiviert sind, damit Ihr Kernel vollständig mit der Moby-Runtime kompatibel ist.  Wenn Sie fehlende Funktionen gefunden haben, können Sie sie aktivieren, indem Sie Ihren Kernel aus der Quelle neu erstellen und die dazugehörigen Module für die passende Kernel .config auswählen.  Auf ähnliche Art und Weise müssen Sie bei einem Kernelkonfigurationsgenerator wie defconfig oder menuconfig die entsprechenden Funktionen suchen und aktivieren, und dann den Kernel dementsprechend neu erstellen.  Sobald Sie Ihren bearbeiteten Kernel bereitgestellt haben, sollten sie das „check-config“-Skript erneut ausführen, um zu überprüfen, dass die von Ihnen identifizierten Funktionen auch erfolgreich aktiviert wurden.
+Wenn beim Installieren der Moby-Containerruntime Fehler auftreten, führen Sie die Schritte im Abschnitt [Überprüfen Sie Ihren Linux-Kernel auf Moby-Kompatibilität](#verify-your-linux-kernel-for-moby-compatibility) weiter unten in diesem Artikel aus. 
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>Installieren des Daemons für Azure IoT Edge-Sicherheit
 
@@ -117,17 +109,17 @@ Installieren Sie den Sicherheits-Daemon. Das Paket wird unter `/etc/iotedge/` in
    sudo apt-get install iotedge
    ```
 
-Sobald IoT Edge erfolgreich installiert ist, wird die Ausgabe Sie auffordern, die Konfigurationsdatei zu aktualisieren. Folgen Sie den Schritten im Abschnitt [„Konfigurieren des Daemons für Azure IoT Edge-Sicherheit“](#configure-the-azure-iot-edge-security-daemon), um die Bereitstellung Ihres Geräts abzuschließen. 
+Sobald IoT Edge erfolgreich installiert ist, wird die Ausgabe Sie auffordern, die Konfigurationsdatei zu aktualisieren. Folgen Sie den Schritten im Abschnitt [„Konfigurieren des Daemons für Azure IoT Edge-Sicherheit“](#configure-the-security-daemon), um die Bereitstellung Ihres Geräts abzuschließen. 
 
-## <a name="install-a-specific-version"></a>Installieren einer spezifischen Version
+## <a name="install-a-specific-runtime-version"></a>Installieren einer spezifischen Runtimeversion
 
-Wenn Sie eine bestimmte Version von Azure IoT Edge installieren möchten, dann können Sie die Komponentendateien direkt aus dem IoT Edge GitHub-Repository auswählen. Verwenden Sie die folgenden Schritte, um alle IoT Edge-Komponenten auf Ihr Gerät zu laden: die Moby-Engine und CLI, libiothsm und den IoT Edge-Sicherheits-Daemon.
+Wenn Sie eine bestimmte Version der Azure IoT Edge-Runtime installieren möchten, können Sie die Komponentendateien direkt aus dem IoT Edge-GitHub-Repository auswählen. Verwenden Sie die folgenden Schritte, um alle IoT Edge-Komponenten auf Ihr Gerät zu laden: die Moby-Engine und CLI, libiothsm und den IoT Edge-Sicherheits-Daemon.
 
 1. Navigieren Sie zu den [Veröffentlichungen von Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases) und suchen Sie die Version, die Sie verwenden möchten. 
 
 2. Erweitern Sie den Abschnitt **„Assets“** , um zu der Version zu gelangen.
 
-3. Bei allen Versionen können Updates für die Moby-Engine vorhanden sein. Wenn Sie Dateien sehen, die mit **„moby-engine“** und **„moby-cli“** beginnen, dann verwenden Sie die folgenden Befehle, um diese Komponenten zu aktualisieren. Wenn Sie keine Moby-Dateien sehen und Moby noch nicht auf Ihrem Gerät installiert haben, dann durchsuchen Sie die älteren Veröffentlichungsassets, bis sie sie finden. 
+3. Bei allen Versionen können Updates für die Moby-Engine vorhanden sein. Wenn Sie Dateien sehen, die mit **„moby-engine“** und **„moby-cli“** beginnen, dann verwenden Sie die folgenden Befehle, um diese Komponenten zu aktualisieren. Wenn keine Moby-Dateien angezeigt werden, durchsuchen Sie die Ressourcen der älteren Releases, bis Sie die neueste Version finden. 
 
    1. Suchen Sie die **„moby-engine“** -Datei, die zur Architektur Ihres IoT Edge-Geräts passt. Klicken Sie mit der rechten Maustaste auf den Dateilink und kopieren Sie die Linkadresse.
 
@@ -165,7 +157,7 @@ Wenn Sie eine bestimmte Version von Azure IoT Edge installieren möchten, dann k
 
 Sobald IoT Edge erfolgreich installiert ist, wird die Ausgabe Sie auffordern, die Konfigurationsdatei zu aktualisieren. Halten Sie sich an die Schritte im nächsten Abschnitt, um die Bereitstellung Ihres Geräts abzuschließen. 
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Konfigurieren des Azure IoT Edge-Sicherheits-Daemons
+## <a name="configure-the-security-daemon"></a>Konfigurieren des Sicherheitsdaemons
 
 Konfigurieren Sie die IoT Edge-Runtime für die Verknüpfung Ihres physischen Geräts mit einer Geräteidentität, die in einem Azure IoT Hub vorhanden ist.
 
@@ -271,13 +263,26 @@ Führen Sie die ausgeführten Module wie folgt auf:
 sudo iotedge list
 ```
 
-## <a name="tips-and-suggestions"></a>Tipps und Vorschläge
+## <a name="tips-and-troubleshooting"></a>Tipps und Problembehandlung
 
 Sie benötigen erhöhte Rechte zum Ausführen von `iotedge`-Befehlen. Melden Sie sich der Installation der Runtime von Ihrem Computer ab und anschließend wieder an, um Ihres Berechtigungen automatisch zu aktualisieren. Verwenden Sie bis dahin **sudo** vor allen `iotedge`-Befehlen.
 
 Auf Geräten mit Ressourceneinschränkungen wird dringend empfohlen, die Umgebungsvariable *OptimizeForPerformance* auf *false* festzulegen, wie im [Leitfaden zur Problembehandlung](troubleshoot.md) beschrieben.
 
 Wenn in Ihrem Netzwerk ein Proxyserver vorhanden ist, führen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver](how-to-configure-proxy-support.md) aus.
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Überprüfen Sie Ihren Linux-Kernel auf Moby-Kompatibilität
+
+Viele Hersteller von eingebetteten Geräten stellen Geräteimages mit benutzerdefinierten Linux-Kernels bereit, denen die Funktionen für die Containerruntime-Kompatibilität fehlen. Wenn beim Installieren der empfohlenen Moby-Containerruntime Probleme auftreten, können Sie versuchen, Ihre Linux-Kernelkonfiguration mit dem [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)-Skript aus dem offiziellen [Moby GitHub-Repository](https://github.com/moby/moby) zu korrigieren. Führen Sie auf dem Gerät die folgenden Befehle aus, um Ihre Kernelkonfiguration zu überprüfen:
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+Die detaillierte Ausgabe zeigt den Status der Kernelfunktionen, die von der Moby-Runtime verwendet werden. Sie sollten sicherstellen, dass alle Elemente unter `Generally Necessary` und `Network Drivers` aktiviert sind, damit Ihr Kernel vollständig mit der Moby-Runtime kompatibel ist.  Wenn Sie fehlende Funktionen identifiziert haben, aktivieren Sie diese, indem Sie Ihren Kernel aus der Quelle neu erstellen und die zugehörigen Module auswählen, die in die entsprechende Konfigurationsdatei für den Kernel eingebunden werden sollen.  Gleiches gilt, wenn Sie einen Kernelkonfigurationsgenerator wie defconfig oder menuconfig verwenden: Suchen und aktivieren Sie die entsprechenden Funktionen suchen und aktivieren, und erstellen Sie dann den Kernel dementsprechend neu.  Sobald Sie Ihren bearbeiteten Kernel bereitgestellt haben, führen Sie das check-config-Skript erneut aus, um zu überprüfen, ob alle erforderlichen Funktionen erfolgreich aktiviert wurden.
+
 
 ## <a name="uninstall-iot-edge"></a>Deinstallieren von IoT Edge
 

@@ -4,7 +4,7 @@ description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um di
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b3a4401318544928f8e6d63c3460808467ecc1d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296760"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68500038"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -40,7 +40,7 @@ In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich
 >
 
 ## <a name="automatic-scaling-formulas"></a>Formeln für die automatische Skalierung
-Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die automatische Skalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft CloudPool.AutoScaleFormulaelement (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
+Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die Autoskalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
 
 Sie können sich Formeln für die automatische Skalierung als eine „Batch-Sprache“ für die automatische Skalierung vorstellen. Formelanweisungen sind frei definierte Ausdrücke, die sowohl dienstdefinierte Variablen (vom Batch-Dienst definiert) als auch benutzerdefinierte Variablen (von Ihnen selbst definiert) enthalten können. Mithilfe von mitgelieferten Typen, Operatoren und Funktionen können sie für diese Werte eine Vielzahl von Operationen ausführen. Eine Anweisung kann beispielsweise wie folgt aussehen:
 
@@ -364,15 +364,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>Erstellen eines Pools mit aktivierter automatischer Skalierung in .NET
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Erstellen eines Pools mit aktivierter Autoskalierung mit Batch SDKs
+
+Die automatische Skalierung für Pools kann mit einem der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), den [Batch-PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) der [Batch REST-API](https://docs.microsoft.com/rest/api/batchservice/) und der [Batch-CLI](batch-cli-get-started.md) konfiguriert werden. In diesem Abschnitt sehen Sie Beispiele sowohl für .NET als auch für Python.
+
+### <a name="net"></a>.NET
 
 Gehen Sie wie folgt vor, um einen Pool mit automatischer Skalierung in .NET zu erstellen:
 
 1. Erstellen Sie den Pool mit [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-2. Legen Sie die [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled)-Eigenschaft auf `true` fest.
-3. Legen Sie die [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula)-Eigenschaft mit Ihrer Formel für die automatische Skalierung fest.
-4. (Optional) Legen Sie die [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval)-Eigenschaft fest (Standardeinstellung ist 15 Minuten).
-5. Führen Sie für den Pool mit [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) oder [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) einen Commit durch.
+1. Legen Sie die [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled)-Eigenschaft auf `true` fest.
+1. Legen Sie die [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula)-Eigenschaft mit Ihrer Formel für die automatische Skalierung fest.
+1. (Optional) Legen Sie die [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval)-Eigenschaft fest (Standardeinstellung ist 15 Minuten).
+1. Führen Sie für den Pool mit [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) oder [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) einen Commit durch.
 
 Mit dem folgenden Codeausschnitt wird ein Pool mit aktivierter automatischer Skalierung in .NET erstellt. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl dedizierter Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Das [Intervall für die automatische Skalierung](#automatic-scaling-interval) wird auf 30 Minuten festgelegt. In diesem und anderen C#-Codeausschnitten in diesem Artikel ist `myBatchClient` eine ordnungsgemäß initialisierte Instanz der Klasse [BatchClient][net_batchclient].
 
@@ -392,10 +396,8 @@ await pool.CommitAsync();
 >
 >
 
-Neben Batch .NET können Sie auch die anderen [Batch-SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), [Batch-REST](https://docs.microsoft.com/rest/api/batchservice/), [Batch PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) und die [Batch-CLI](batch-cli-get-started.md) für die Konfiguration der automatischen Skalierung verwenden.
+#### <a name="automatic-scaling-interval"></a>Intervall für die automatische Skalierung
 
-
-### <a name="automatic-scaling-interval"></a>Intervall für die automatische Skalierung
 Standardmäßig passt der Batch-Dienst alle 15 Minuten die Poolgröße gemäß seiner Formel für die automatische Skalierung an. Dieses Intervall kann mithilfe der folgenden Pooleigenschaften konfiguriert werden:
 
 * [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
@@ -405,6 +407,50 @@ Das kürzeste Intervall ist fünf Minuten, das längste 168 Stunden. Wenn ein In
 
 > [!NOTE]
 > Die automatische Skalierung ist derzeit nicht als Reaktion im Zeitraum unter einer Minute auf Änderungen vorgesehen, sondern dient eher zum allmählichen Anpassen der Größe Ihres Pools während der Ausführung Ihres Workloads.
+>
+>
+
+### <a name="python"></a>Python
+
+Auf ähnliche Weise können Sie einen Pool mit aktivierter Autoskalierung mit dem Python SDK erstellen:
+
+1. Erstellen Sie einen Pool, und geben Sie die Konfiguration an.
+1. Fügen Sie den Pool dem Dienstclient hinzu.
+1. Aktivieren Sie die Autoskalierung im Pool mit einer von Ihnen erstellten Formel.
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> Weitere Beispiele für die Verwendung des Python SDK finden Sie auf GitHub im [Batch Python-Schnellstartrepository](https://github.com/Azure-Samples/batch-python-quickstart).
 >
 >
 

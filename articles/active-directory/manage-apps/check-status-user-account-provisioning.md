@@ -1,5 +1,5 @@
 ---
-title: Meldung zur automatischen Benutzerkontobereitstellung in Azure Active Directory für SaaS-Anwendungen | Microsoft-Dokumentation
+title: Berichterstellung zur automatischen Benutzerkontobereitstellung für SaaS-Anwendungen | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie den Status von Aufträgen zu automatischen Benutzerkontobereitstellungen überprüfen und Probleme bei der Bereitstellung einzelner Benutzer behandeln.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f7386fd26de55911f51f73600f1e2bf1a70ce11
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fda7654ca2d825ae4112dd06021c7e83ed6867cd
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807693"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381246"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 

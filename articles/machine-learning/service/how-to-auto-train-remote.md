@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 00e4e9d5a1fc63dd73fe5a4dba7e1f1416cd08bc
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 852190f7b66c0d2c527d1784c72f963e11620064
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868890"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371109"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
 
@@ -46,17 +46,19 @@ Erstellen Sie das AmlCompute-Ziel in Ihrem Arbeitsbereich (`ws`), wenn es noch n
 from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
 
-amlcompute_cluster_name = "automlcl" #Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2",
+amlcompute_cluster_name = "automlcl"  # Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                             # for GPU, use "STANDARD_NC6"
-                                                            #vm_priority = 'lowpriority', # optional
-                                                            max_nodes = 6)
+                                                            # vm_priority = 'lowpriority', # optional
+                                                            max_nodes=6)
 
-compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+compute_target = ComputeTarget.create(
+    ws, amlcompute_cluster_name, provisioning_config)
 
 # Can poll for a minimum number of nodes and for a specific timeout.
 # If no min_node_count is provided, it will use the scale settings for the cluster.
-compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
+compute_target.wait_for_completion(
+    show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
 Sie können das `compute_target`-Objekt jetzt als Remotecomputeziel verwenden.
@@ -65,7 +67,7 @@ Zu den Einschränkungen für einen Clusternamen gehören:
 + Muss kürzer sein als 64 Zeichen.
 + Darf keines der folgenden Zeichen enthalten: `\` ~! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
-## <a name="access-data-using-getdata-function"></a>Zugreifen auf Daten mit der Funktion get_data()
+## <a name="access-data-using-get_data-function"></a>Zugreifen auf Daten mit der Funktion get_data()
 
 Gewähren Sie der Remoteressource Zugriff auf Ihre Trainingsdaten. Bei automatisierten Machine Learning-Experimenten, die über Remotecomputing ausgeführt werden, müssen die Daten mithilfe einer `get_data()`-Funktion abgerufen werden.
 
@@ -109,7 +111,8 @@ run_config.target = compute_target
 run_config.environment.docker.enabled = True
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
 
-dependencies = CondaDependencies.create(pip_packages=["scikit-learn", "scipy", "numpy"])
+dependencies = CondaDependencies.create(
+    pip_packages=["scikit-learn", "scipy", "numpy"])
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
@@ -142,7 +145,7 @@ automl_config = AutoMLConfig(task='classification',
                              run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
-                            )
+                             )
 ```
 
 ### <a name="enable-model-explanations"></a>Aktivieren von Modellerklärungen
@@ -153,13 +156,13 @@ Legen Sie den optionalen `model_explainability`-Parameter im `AutoMLConfig` Kons
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = compute_target,
+                             compute_target=compute_target,
                              run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
-                             X_valid = X_test
-                            )
+                             X_valid=X_test
+                             )
 ```
 
 ## <a name="submit-training-experiment"></a>Übermitteln des Trainingsexperiments
@@ -208,24 +211,33 @@ Es wird eine Ausgabe angezeigt, die in etwa wie im folgenden Beispiel aussieht:
 
 ## <a name="explore-results"></a>Überprüfen der Ergebnisse
 
-Sie können das gleiche Jupyter-Widget wie in diesem [Trainings-Tutorial](tutorial-auto-train-models.md#explore-the-results) verwenden, um ein Diagramm und eine Tabelle mit Ergebnissen anzuzeigen.
+Sie können das gleiche [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) wie in diesem [Trainings-Tutorial](tutorial-auto-train-models.md#explore-the-results) verwenden, um ein Diagramm und eine Tabelle mit Ergebnissen anzuzeigen.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
+
 Hier ist ein statisches Bild des Widgets.  Klicken Sie im Notebook auf eine beliebige Zeile in der Tabelle, um die Ausführungseigenschaften und Ausgabeprotokolle für diese Ausführung anzuzeigen.   Sie können auch die Dropdownliste über dem Diagramm verwenden, um ein Diagramm der einzelnen verfügbaren Metriken für jede Iteration anzuzeigen.
 
 ![Widget-Tabelle](./media/how-to-auto-train-remote/table.png)
 ![Widget-Plot](./media/how-to-auto-train-remote/plot.png)
 
-Das Widget zeigt eine URL an, die Sie zum Anzeigen und Überprüfen der Details der einzelnen Ausführungen verwenden können.
+Das Widget zeigt eine URL an, die Sie zum Anzeigen und Überprüfen der Details der einzelnen Ausführungen verwenden können.  
+
+Wenn Sie nicht in einem Jupyter-Notebook arbeiten, können Sie die URL aus der Ausführung selbst anzeigen.
+
+```
+remote_run.get_portal_url()
+```
+
+Die gleichen Informationen sind in Ihrem Arbeitsbereich verfügbar.  Weitere Informationen zu diesen Ergebnissen finden Sie unter [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 
 ### <a name="view-logs"></a>Anzeigen von Protokollen
 
 Suchen Sie unter `/tmp/azureml_run/{iterationid}/azureml-logs` nach Protokollen zur DSVM.
 
-## <a name="best-model-explanation"></a>Erklärung des besten Modells
+## <a name="explain"></a> Erklärung für das beste Modell
 
 Das Abrufen von Modellerklärungsdaten ermöglicht es Ihnen, detaillierte Informationen zu den Modellen anzuzeigen, um die Transparenz der Vorgänge zu erhöhen, die auf dem Back-End ausgeführt werden. In diesem Beispiel führen Sie Modellerklärungen nur für das am besten passende Modell aus. Eine Ausführung für alle Modelle in der Pipeline würde zu erheblichen Ausführungszeiten führen. Eine Modellerklärung enthält die folgenden Informationen:
 

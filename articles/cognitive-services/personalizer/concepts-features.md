@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253590"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423289"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -34,8 +34,8 @@ Die Personalisierung schreibt weder vor noch schränkt sie ein, welche Merkmale 
 * Sie können manche Merkmale für einige Aktionen senden, und nicht für andere nicht, wenn Sie nicht über sie verfügen. Beispielsweise können TV-Serien Attribute besitzen, die Filme nicht haben.
 * Manche Merkmale stehen eventuell nur manchmal zur Verfügung. Beispielsweise kann eine mobile Anwendung mehr Informationen als eine Webseite bereitstellen. 
 * Im Laufe der Zeit können Sie Merkmale von Kontext und Aktionen hinzufügen und entfernen. Die Personalisierung weiterhin von verfügbaren Informationen.
-* Es muss mindestens ein Merkmal für den Kontext geben. Die Personalisierung unterstützt keinen leeren Kontext. Wenn Sie jedes Mal nur einen festen Kontext senden, wählt die Personalisierung die Aktion für Rangfolgen nur unter Berücksichtigung der Merkmale in Aktionen aus. 
-* Die Personalisierung versucht, Aktionen auszuwählen, die für jeden jederzeit am besten funktionieren.
+* Es muss mindestens ein Merkmal für den Kontext geben. Die Personalisierung unterstützt keinen leeren Kontext. Wenn Sie jedes Mal nur einen festen Kontext senden, wählt die Personalisierung die Aktion für Rangfolgen nur unter Berücksichtigung der Merkmale in Aktionen aus.
+* Bei Features, die unter eine Kategorie fallen, müssen Sie die möglichen Werte nicht definieren, und Sie müssen keine Bereiche für numerische Werte vorab definieren.
 
 ## <a name="supported-feature-types"></a>Unterstützte Merkmalstypen
 
