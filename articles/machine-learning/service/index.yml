@@ -27,28 +27,25 @@ abstract:
     href: 'https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/'
     width: 250
 sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: "Nach dem \_ <a href=\"setup-create-workspace\">Erstellen eines Arbeitsbereichs</a> für Azure Machine Learning Service können Sie mit den folgenden Schnellstartanleitungen loslegen:"
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="quickstart-run-cloud-notebook">Quickstart: Use a cloud-based notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden eines cloudbasierten Notebookservers für die ersten Schritte mit Azure Machine Learning) – keine Installation erforderlich'
-          - html: '<a href="quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie Daten vorbereiten, Experimente einrichten und Ihre Machine Learning-Modelle trainieren und operationalisieren:'
+        text: "Hier erfahren Sie, wie Sie Daten vorbereiten, Experimente einrichten und Ihre Machine\_Learning-Modelle trainieren und operationalisieren."
+      - type: paragraph
+        text: '<b>Verwenden Sie das Azure-Portal</b>, eine benutzerfreundliche Oberfläche ohne Code für maschinelles Lernen:'
       - type: list
         style: unordered
         items:
-          - html: 'Erste Schritte: <a href="tutorial-first-experiment-automated-ml">Trainieren und Bereitstellen</a> Ihres ersten automatisierten ML-Modells im Azure-Portal'
-          - html: "Erste Schritte: <a href=\"tutorial-1st-experiment-sdk-setup\">Einrichten der Entwicklungsumgebung</a> und <a href=\"tutorial-1st-experiment-sdk-train\">Trainieren Ihres ersten ML-Modells</a> mithilfe einer Jupyter\_Notebook-Instanz (<b>zweiteilige Reihe</b>)"
-          - html: "Erste Schritte: <a href=\"ui-tutorial-automobile-price-train-score\">Trainieren</a> und <a href=\"ui-tutorial-automobile-price-deploy\">Bereitstellen</a> Ihres ersten ML-Experiments mit der grafischen Drag\_&\_Drop-Benutzeroberfläche (<b>zweiteilige Reihe</b>)"
-          - html: '<a href="tutorial-train-models-with-aml">Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service</a> und <a href="tutorial-deploy-models-with-aml">Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances</a> (<b>zweiteilige Reihe</b>)'
-          - html: '<a href="tutorial-data-prep">Tutorial: Vorbereiten von Daten für die Regressionsmodellierung</a> und <a href="tutorial-auto-train-models">Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning</a> (<b>zweiteilige Reihe</b>)'
-          - html: <a href="ui-tutorial-automobile-price-train-score">Prognostizieren von Automobilpreisen</a> mithilfe der grafischen Benutzeroberfläche und <a href="ui-tutorial-automobile-price-deploy">Bereitstellen</a> des Regressionsmodells
+          - html: '<a href="tutorial-first-experiment-automated-ml">Tutorial: Trainieren und Bereitstellen eines Klassifizierungsmodells mit automatisiertem Machine Learning im Azure-Portal (Vorschauversion)</a>'
+          - html: '<a href="ui-tutorial-automobile-price-train-score">Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche&quot;</a>'
+      - type: paragraph
+        text: '<b>Verwenden Sie das Python SDK</b> in Skripts und Notebooks für maschinelles Lernen:'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="tutorial-1st-experiment-sdk-setup">Tutorial: Einrichten der Umgebung und des Arbeitsbereichs</a>'
+          - html: '<a href="tutorial-train-models-with-aml">Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning</a>'
+          - html: '<a href="tutorial-data-prep">Tutorial: Vorbereiten von Daten für die Regressionsmodellierung</b></a>'
   - title: Beispiele
     items:
       - type: paragraph

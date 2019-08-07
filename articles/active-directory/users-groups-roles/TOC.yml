@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: Anzeigen und Zuweisen von Rollen
           href: directory-manage-roles-portal.md
-        - name: Zuweisen von benutzerdefinierten Rollen in der Graph-API
-          href: roles-assign-powershell.md
         - name: 'Benutzerdefinierte Rollen: Vorschau'
           items:
             - name: 'Benutzerdefinierte Rollen: Vorschau'
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Zuweisen von benutzerdefinierten Rollen in der Graph-API
               href: roles-assign-graph.md
+            - name: Zuweisen von benutzerdefinierten Rollen in PowerShell
+              href: roles-assign-powershell.md
             - name: Vorschauberechtigungen für benutzerdefinierte Rollen
               href: roles-custom-available-permissions.md
             - name: Delegieren von App-Administratorberechtigungen

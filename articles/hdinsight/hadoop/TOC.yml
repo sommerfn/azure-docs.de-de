@@ -56,14 +56,20 @@
       maintainContext: true
     - name: Problembehandlung
       items:
+        - name: 'Soft Lockup: CPU'
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: 'InvalidNetworkConfigurationErrorCode: Fehler bei der Clustererstellung'
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: 'InvalidNetworkSecurityGroupSecurityRules: Fehler bei der Clustererstellung'
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Anmeldung beim HDInsight-Cluster nicht möglich
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: Dem HDInsight-Cluster können keine Knoten hinzugefügt werden.
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: 'InvalidNetworkSecurityGroupSecurityRules: Fehler bei der Clustererstellung'
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Konvertieren eines Dienstprinzipalzertifikats
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Lokales HDFS im abgesicherten Modus hängen geblieben
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: "Probleme mit dem Apache\_Ambari-Heartbeat"
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Anleitung

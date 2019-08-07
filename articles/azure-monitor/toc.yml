@@ -131,6 +131,8 @@
   items:
     - name: Verwalten von Azure Monitor
       items:
+        - name: Entwerfen einer Arbeitsbereichsbereitstellung
+          href: platform/design-logs-deployment.md
         - name: Berechtigungen und Sicherheit für Rollen
           href: platform/roles-permissions-security.md
         - name: IP-Adressen

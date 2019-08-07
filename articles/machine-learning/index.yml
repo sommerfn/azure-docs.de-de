@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 'Einrichten des Azure Machine Learning Service und erste Schritte:'
+      - text: 'Einrichten von Azure Machine Learning Service und erste Schritte:'
         type: paragraph
-      - text: '<b>Schnellstarts:</b>'
-        type: paragraph
-      - items:
-          - html: '<a href="service/quickstart-run-cloud-notebook">Quickstart: Use a cloud-based notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden eines cloudbasierten Notebookservers für die ersten Schritte mit Azure Machine Learning) – keine Installation erforderlich'
-          - html: '<a href="service/quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
-        style: unordered
-        type: list
-      - text: '<b>Tutorial: Trainieren und Bereitstellen Ihres ersten automatisierten ML-Modells im Azure-Portal:</b>'
+      - text: 'Verwenden Sie das Azure-Portal, eine benutzerfreundliche Oberfläche ohne Code zum Trainieren, Bereitstellen und Verwalten von ML-Modellen:'
         type: paragraph
       - items:
+          - html: '<a href="service/ui-tutorial-automobile-price-train-score">Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche</a>'
           - html: <a href="service/tutorial-first-experiment-automated-ml">Trainieren und Bereitstellen Ihres ersten Klassifizierungsmodells mithilfe von automatisiertem maschinellem Lernen</a>
         style: unordered
         type: list
-      - text: '<b>Tutorial: Trainieren Ihres ersten ML-Modells mit dem SDK:</b>'
+      - text: 'Verwenden Sie das Python SDK in Skripts und Notebooks zum Trainieren, Bereitstellen und Verwalten von ML-Modellen:'
         type: paragraph
       - items:
-          - html: 'Teil 1: <a href="service/tutorial-1st-experiment-sdk-setup">Einrichten der Umgebung und des Arbeitsbereichs</a>'
-          - html: 'Teil 2: <a href="service/tutorial-1st-experiment-sdk-train">Trainieren Ihres ersten Modells</a>'
+          - html: '<a href="service/tutorial-1st-experiment-sdk-setup">Tutorial: Einrichten der Umgebung und des Arbeitsbereichs</a>'
+          - html: '<a href="service/tutorial-train-models-with-aml">Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning</a>'
+          - html: '<a href="service/tutorial-data-prep">Tutorial: Vorbereiten von Daten für die Regressionsmodellierung</a>'
         style: unordered
         type: list
-      - text: '<b>Tutorial: Trainieren und Bereitstellen des ersten Experiments mithilfe der grafischen Benutzeroberfläche:</b>'
-        type: paragraph
-      - items:
-          - html: 'Teil 1: <a href="service/ui-tutorial-automobile-price-train-score">Trainieren eines Regressionsmodells</a>'
-          - html: 'Teil 2: <a href="service/ui-tutorial-automobile-price-deploy">Bereitstellen des Modells</a>'
-        style: unordered
-        type: list
-      - text: '<b>Tutorial: Bildklassifizierung von MNIST-Daten mit dem SDK:</b>'
-        type: paragraph
-      - items:
-          - html: 'Teil 1: <a href="service/tutorial-train-models-with-aml">Trainieren eines eigenen Modells</a>'
-          - html: 'Teil 2: <a href="service/tutorial-deploy-models-with-aml">Bereitstellen des Modells</a>'
-        style: unordered
-        type: list
-      - text: '<b>Tutorial: Prognostizieren der Taxifahrpreise mit dem SDK:</b>'
-        type: paragraph
-      - items:
-          - html: 'Teil 1: <a href="service/tutorial-data-prep">Vorbereiten der Daten für die Modellierung</a>'
-          - html: 'Teil 2: <a href="service/tutorial-auto-train-models">Trainieren von Modellen durch automatisiertes Machine Learning</a>'
-        style: unordered
-        type: list
-      - text: '<b>Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche:</b>'
-        type: paragraph
-      - items:
-          - html: 'Teil 1: <a href="service/ui-tutorial-automobile-price-train-score">Prognostizieren von Fahrzeugpreisen</a>'
-          - html: 'Teil 2: <a href="service/ui-tutorial-automobile-price-deploy">Bereitstellen des Regressionsmodells</a>'
-        style: unordered
-        type: list
-      - text: '<b>Nutzen der Modelle:</b>'
+      - text: 'Nutzen der Modelle:'
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">Nutzung des Anforderung/Antwort-Modells</a>
           - html: <a href="service/how-to-run-batch-predictions">Batchvorhersagen mit ML-Pipelines</a>
         style: unordered
         type: list
-    title: Schnellstartanleitungen und Tutorials
+    title: Schritt-für-Schritt-Tutorials
   - items:
       - className: cardsM
         columns: 2

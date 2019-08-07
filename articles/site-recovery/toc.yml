@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: Ausführen eines Failbacks
           href: azure-to-azure-tutorial-failback.md
-    - name: Verschieben von virtuellen Azure-Computern
+    - name: Move
       items:
         - name: Verschieben virtueller Azure-Computer in eine andere Region
           href: azure-to-azure-tutorial-migrate.md
@@ -31,6 +31,8 @@
           href: move-Azure-VMs-AVset-Azone.md
         - name: Verschieben von virtuellen Azure-Computern zwischen Government und öffentlichen Regionen
           href: region-move-cross-geos.md
+        - name: Verschieben eines Tresors in eine andere Region
+          href: move-vaults-across-regions.md
     - name: Notfallwiederherstellung von virtuellen VMware-Computern in Azure
       items:
         - name: Vorbereiten von Azure
@@ -365,8 +367,6 @@
               href: service-updates-how-to.md
             - name: Löschen eines Tresors
               href: delete-vault.md
-            - name: Verschieben eines Tresors in eine andere Region
-              href: move-vaults-across-regions.md
     - name: Notfallwiederherstellung für Apps
       items:
         - name: Einrichten der Notfallwiederherstellung in Azure für lokale Apps
@@ -441,6 +441,8 @@
       items:
         - name: Problembehandlung für die Replikation virtueller Azure-Computer
           href: azure-to-azure-troubleshoot-errors.md
+        - name: Problembehandlung für Azure-VM-Konnektivitätsprobleme
+          href: azure-to-azure-troubleshoot-network-connectivity.md
         - name: Problembehandlung für die fortlaufende Replikation
           href: azure-to-azure-troubleshoot-replication.md
         - name: Beheben von Problemen mit Mobility Service
