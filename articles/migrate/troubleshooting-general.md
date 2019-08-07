@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Die
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: 0e2a8f269a98babc17f36ceff209ee2f057e6911
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 15d3809b9a028fd2495c504e9bf19251dd051520
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302323"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372589"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -54,6 +54,10 @@ Führen Sie die folgenden Schritte aus, um ein neues Azure Migrate-Projekt zu er
 
    ![Erstellen eines zweiten Azure Migrate-Projekts](./media/troubleshooting-general/create-new-project.png)
 
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Welche Azure-Geografien werden von Azure Migrate unterstützt?
+
+Die Liste für VMware finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects). Die Liste für Hyper-V finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
+
 ### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Löschen von Azure Migrate-Projekten und zugehörigen Log Analytics-Arbeitsbereichen
 
 Wenn Sie ein Azure Migrate-Projekt löschen, wird das Migrationsprojekt zusammen mit den Metadaten zu den ermittelten Computern gelöscht. Wenn Sie dem Serverbewertungstool jedoch einen Log Analytics-Arbeitsbereich angefügt hatten, wird dieser nicht automatisch gelöscht. Dies liegt daran, dass derselbe Log Analytics-Arbeitsbereich für mehrere Anwendungsfälle verwendet werden kann. Wenn Sie den Log Analytics-Arbeitsbereich ebenfalls löschen möchten, müssen Sie dies manuell tun.
@@ -76,7 +80,7 @@ Wenn Sie die Einladung per E-Mail erhalten haben, öffnen Sie die diese und klic
 
 ### <a name="deployment-of-azure-migrate-appliance-for-vmware-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Die Bereitstellung der Azure Migrate-Appliance für VMware schlägt mit folgendem Fehler fehl: Die angegebene Manifestdatei ist ungültig: Ungültiger OVF-Manifesteintrag.
 
-1. Überprüfen Sie, ob die OVA-Datei für die Azure Migrate-Appliance ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. Informationen zum Überprüfen des Hashwerts finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
+1. Überprüfen Sie, ob die OVA-Datei für die Azure Migrate-Appliance ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. Informationen zum Überprüfen des Hashwerts finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
 2. Wenn der Fehler weiterhin auftritt und Sie zum Bereitstellen der OVF-Datei VMware vSphere-Client verwenden, führen Sie die Bereitstellung über den vSphere-Webclient aus. Wenn der Fehler weiterhin auftritt, versuchen Sie es mit einem anderen Webbrowser.
 3. Wenn Sie den vSphere-Webclient und die Bereitstellung auf vCenter Server 6.5 oder 6.7 ausführen möchten, stellen Sie die OVA-Datei mit den folgenden Schritten direkt auf dem ESXi-Host bereit:
    - Stellen Sie mithilfe des Webclients (https://<*Host-IP-Adresse*>/ui) eine direkte Verbindung mit dem ESXi-Host her (anstelle von vCenter Server).
@@ -121,9 +125,31 @@ Wenn das Problem auch bei der neuesten Version auftritt, kann der Collectorcompu
 3. Ermitteln Sie die richtige Portnummer für die Verbindungsherstellung mit vCenter.
 4. Überprüfen Sie abschließend, ob vCenter Server ausgeführt wird und betriebsbereit ist.
 
+
+### <a name="the-appliance-could-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60052"></a>Die Appliance konnte nicht erfolgreich beim Azure Migrate-Projekt registriert werden. (Fehler-ID: 60052)
+
+Dieser Fehler ist auf unzureichende Berechtigungen für das Azure-Konto zurückzuführen, mit dem die Appliance registriert wird. Das für die Registrierung der Appliance verwendete Azure-Benutzerkonto muss mindestens über Zugriff vom Typ „Mitwirkender“ für das Abonnement verfügen. Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
+
+### <a name="the-appliance-could-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60039"></a>Die Appliance konnte nicht erfolgreich beim Azure Migrate-Projekt registriert werden. (Fehler-ID: 60039)
+
+Das für die Registrierung der Appliance ausgewählte Azure Migrate Projekt wurde nicht gefunden. Die Registrierung war daher nicht erfolgreich. Überprüfen Sie im Azure-Portal, ob das Projekt in der Ressourcengruppe vorhanden ist. Sollte das Projekt nicht vorhanden sein, erstellen Sie in Ihrer Ressourcengruppe ein neues Azure Migrate-Projekt, und registrieren Sie die Appliance erneut. Weitere Informationen zum Erstellen eines neuen Azure Migrate-Projekts finden Sie [hier](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool).
+
+### <a name="azure-key-vault-management-operation-failed-error-id-60030-60031"></a>Ein Azure Key Vault-Verwaltungsvorgang war nicht erfolgreich. (Fehler-ID: 60030, 60031)
+
+Das für die Registrierung der Appliance verwendete Azure-Benutzerkonto muss mindestens über Zugriff vom Typ „Mitwirkender“ für das Abonnement verfügen. Überprüfen Sie auch, ob das Konto Zugriff auf die in der Fehlermeldung angegebene Key Vault-Instanz hat, und wiederholen Sie den Vorgang. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
+
+### <a name="discovery-could-not-be-initiated-due-to-the-error-the-operation-failed-for-the-given-list-of-hosts-or-clusters-error-id-60028"></a>Die Ermittlung konnte aufgrund des Fehlers nicht initiiert werden. Der Vorgang war für die angegebene Liste von Hosts oder Clustern nicht erfolgreich. (Fehler-ID: 60028)
+
+Die Ermittlung konnte aufgrund eines Problems beim Zugreifen auf oder Abrufen von VM-Informationen auf den im Fehler aufgeführten Hosts nicht gestartet werden. Die restlichen Hosts, die Sie hinzugefügt hatten, wurden erfolgreich hinzugefügt. Fügen Sie die im Fehler angegebenen Hosts mithilfe der Option **Host hinzufügen** erneut hinzu. Gehen Sie im Falle eines Überprüfungsfehlers gemäß der Korrekturanleitung vor, um den Fehler zu beheben, und verwenden Sie erneut die Option **Speichern und Ermittlung starten**.
+
+### <a name="azure-active-directory-aad-operation-failed-the-error-occurred-while-creating-or-updating-the-aad-application-error-id-60025"></a>Ein AAD-Vorgang (Azure Active Directory) war nicht erfolgreich. Der Fehler trat beim Erstellen oder Aktualisieren der AAD-Anwendung auf. (Fehler-ID: 60025)
+
+Das für die Registrierung der Appliance verwendete Azure-Benutzerkonto hat keinen Zugriff auf die in der Fehlermeldung angegebene AAD-Anwendung. Überprüfen Sie, ob Sie der Besitzer der AAD-Anwendung sind. Weitere Informationen zu AAD-Anwendungsberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
+
+
 ## <a name="discovery-issues"></a>Probleme bei der Ermittlung
 
-### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migrate-tiles-show-a-status-of-discovery-in-progress"></a>Ich habe mit der Ermittlung begonnen, aber ich kann die ermittelten VMs nicht im Azure-Portal finden. Die Kacheln für Serverbewertung und Servermigration zeigen den Status „Erkennung wird ausgeführt“
+### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migration-tiles-show-a-status-of-discovery-in-progress"></a>Ich habe mit der Ermittlung begonnen, aber ich kann die ermittelten VMs nicht im Azure-Portal finden. Auf den Kacheln für Serverbewertung und Servermigration wird der Status „Erkennung wird ausgeführt“ angezeigt.
 Nachdem Sie mit der Ermittlung durch das Gerät begonnen haben, warten Sie einen Moment, bis die gefundenen Geräte auf dem Azure-Portal angezeigt werden. Eine VMware-Ermittlung dauert etwa 15 Minuten und eine Hyper-V-Ermittlung benötigt 2 Minuten pro hinzugefügtem Host. Wenn „Erkennung wird ausgeführt“ nach Ablauf dieser Zeit immer noch angezeigt wird, dann klicken Sie **„Aktualisieren“** in der Registerkarte **„Server“** . Dies sollte die Anzahl der ermittelten Server in den Kacheln „Serverbewertung“ und „Servermigration“ anzeigen.
 
 
@@ -146,15 +172,15 @@ Es kann bis zu 30 Minuten dauern, bis die von der Appliance gesammelten Ermittlu
 4. Warten Sie, bis der Aktualisierungsvorgang abgeschlossen wurde. Sie sollten nun aktuelle Informationen zu Ihren VMs sehen.
 
 ### <a name="unable-to-connect-to-hosts-or-cluster-as-the-server-name-cannot-be-resolved-winrm-error-code-0x803381b9-error-id-50004"></a>Es ist keine Verbindung zu Host(s) oder dem Cluster möglich, da der Servername nicht aufgelöst werden kann. WinRM-Fehlercode: 0x803381b9 (Fehler-ID: 50004)
-Dieser Fehler tritt auf, wenn das DNS, das für die Appliance zuständig ist, den von Ihnen angegebenen Cluster- oder Hostnamen nicht auflösen kann. Wenn Sie diesen Fehler auf dem Cluster sehen, versuchen Sie, den vollqualifizierten Domänennamen des Clusters anzugeben. 
+Dieser Fehler tritt auf, wenn das DNS, das für die Appliance zuständig ist, den von Ihnen angegebenen Cluster- oder Hostnamen nicht auflösen kann. Wenn Sie diesen Fehler auf dem Cluster sehen, versuchen Sie, den vollqualifizierten Domänennamen des Clusters anzugeben.
 
-Sie sehen diesen Fehler eventuell auch für Hosts in einem Cluster. In diesem Fall kann sich die Appliance mit dem Cluster verbinden. Der Cluster hat jedoch die Hostnamen zurückgegeben, die keine vollqualifizierten Domänennamen sind. 
+Sie sehen diesen Fehler eventuell auch für Hosts in einem Cluster. In diesem Fall kann sich die Appliance mit dem Cluster verbinden. Der Cluster hat jedoch die Hostnamen zurückgegeben, die keine vollqualifizierten Domänennamen sind.
 
 Um diesen Fehler zu beheben, aktualisieren Sie die „hosts“-Datei auf der Appliance und fügen Sie ein Mapping von IP-Adresse und Hostnamen hinzu.
 1. Öffnen Sie Notepad als Administrator. Öffnen Sie die Datei c:\windows\system32\drivers\etc\hosts.
 2. Fügen Sie die IP-Adresse und den Hostnamen in einer Zeile hinzu. Wiederholen Sie dies für jeden Host oder Cluster, bei dem Sie diesen Fehler sehen.
 3. Speichern und schließen Sie die Datei „hosts“.
-4. Sie können mit der Applianceverwaltungsanwendung überprüfen, ob die Appliance eine Verbindung zu den Hosts herstellen kann. Nach 30 Minuten sollten Sie die neuesten Informationen über diese Hosts auf dem Azure-Portal sehen können. 
+4. Sie können mit der Applianceverwaltungsanwendung überprüfen, ob die Appliance eine Verbindung zu den Hosts herstellen kann. Nach 30 Minuten sollten Sie die neuesten Informationen über diese Hosts auf dem Azure-Portal sehen können.
 
 
 ## <a name="assessment-issues"></a>Bewertungsprobleme
@@ -202,8 +228,11 @@ Die Größenanpassung in der Serverbewertung hängt von zwei Bewertungseigenscha
 
 Wenn Sie beispielsweise einen lokalen Datenträger mit 32 GB Speicher haben, die aggregierten Lese- und Schreib-IOPS für den Datenträger aber 800 IOPS sind, empfiehlt die Serverbewertung einen Premium-Datenträgertyp (aufgrund der höheren IOPS-Anforderungen) und empfiehlt dann eine Datenträger-SKU, welche die erforderlichen IOPS und Größen unterstützen kann. Die nächstliegende Übereinstimmung in diesem Beispiel wäre P15 (256 GB, 1100 IOPS). Für den lokalen Datenträger ist also nur eine Größe von 32 GB erforderlich, von der Serverbewertung wurde jedoch aufgrund der hohen IOPS-Anforderungen des lokalen Datenträgers ein größerer Datenträger empfohlen.
 
+### <a name="why-does-my-assessment-report-say-percentageofcoresutilizedmissing-or-percentageofmemoryutilizedmissing-for-some-vms"></a>Warum enthält mein Bewertungsbericht „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“ für einige virtuelle Computer?
+Die obigen Probleme werden aufgeführt, wenn die Azure Migrate-Appliance keine Leistungsdaten für die lokalen virtuellen Computer erfassen kann. Dieser Fall kann eintreten, wenn die virtuellen Computer in dem Zeitraum, für den Sie die Bewertung erstellen (letzter Tag/letzte Woche/letzter Monat), ausgeschaltet sind, da die Appliance keine Leistungsdaten für ausgeschaltete virtuelle Computer erfassen kann. Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Die Azure Migrate-Appliance kann zurzeit aufgrund eines bekannten Problems keine Arbeitsspeichernutzung für virtuelle Computer erfassen, für die kein dynamischer Arbeitsspeicher aktiviert ist. Hinweis: Dieses Problem betrifft nur virtuelle Hyper-V-Computer. Virtuelle VMware-Computer sind davon nicht betroffen. Sollte einer der Leistungsindikatoren fehlen, greift die Azure Migrate-Serverbewertung auf die zugeordneten Kerne/den zugeordneten Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+
 ### <a name="is-the-os-license-cost-of-the-vm-included-in-the-compute-cost-estimated-by-server-assessment"></a>Sind die Kosten der Betriebssystemlizenz des virtuellen Computers in den von der Serverbewertung geschätzten Computekosten enthalten?
-Bei der Serverbewertung werden derzeit nur die Lizenzkosten für Betriebssysteme von Windows-Computern berücksichtigt (Betriebssystem-Lizenzkosten für Linux-Computer derzeit nicht). 
+Bei der Serverbewertung werden derzeit nur die Lizenzkosten für Betriebssysteme von Windows-Computern berücksichtigt (Betriebssystem-Lizenzkosten für Linux-Computer derzeit nicht).
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Welche Auswirkungen haben der Leistungsverlauf und der Quantilwert der Nutzung auf die Größenempfehlungen?
 Diese Eigenschaften gelten nur für die leistungsbasierte Größenanpassung. Die Serverbewertung erfasst Leistungsdaten von lokalen Computern und nutzt diese Daten, um die VM-SKU und die Datenträger-SKU in Azure zu empfehlen. Im Folgenden wird erläutert, wie Leistungsdaten von der Serverbewertung erfasst werden:

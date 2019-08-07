@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e5e7ae02cfdc921d593d204151ac501c8c8ee80
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ROBOTS: NOINDEX
+ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807674"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424258"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Auswählen des Anwendungstyps beim Hinzufügen einer Anwendung in Azure Active Directory
 
@@ -42,7 +43,7 @@ Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinz
 
 Die folgenden Funktionen werden von allen vier vorstehend genannten Anwendungstypen in Azure AD unterstützt:
 
-- **Schnellstart**: Stellen Sie Anwendungen im Handumdrehen bereit, indem Sie [einfache Bereitstellungsschritte](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) ausführen.
+- **Schnellstart**: Stellen Sie Anwendungen mithilfe [einfacher Bereitstellungsschritte](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) im Handumdrehen bereit.
 
 - **Verwalten allgemeiner Eigenschaften**: Sie erhalten einen [direkten Deeplink](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) zu einer Anwendung, können das [Branding einer Anwendung anpassen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) oder die [Anwendung für alle Benutzer deaktivieren](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal).
 

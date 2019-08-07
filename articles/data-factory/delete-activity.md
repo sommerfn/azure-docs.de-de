@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346342"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335665"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Delete-Aktivität in Azure Data Factory
 
@@ -86,7 +86,7 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig zum Löschen von Ordnern oder Dateien mit einem Speicher hergestellt werden können   |  Nein. Der Standardwert lautet `1`. |
 | enablelogging | Gibt an, ob die Namen der gelöschten Ordner oder Dateien aufgezeichnet werden müssen. Bei „true“ müssen Sie zusätzlich ein Speicherkonto zum Speichern der Protokolldatei angeben, damit Sie anhand der Protokolldatei das Verhalten der Delete-Aktivität nachverfolgen können. | Nein |
 | logStorageSettings | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Eine Gruppe von Speichereigenschaften, mit denen Sie angeben können, wo die Protokolldatei mit den Namen der Ordner oder Dateien gespeichert werden soll, die mit der Delete-Aktivität gelöschten wurden. | Nein |
-| linkedServiceName | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Der verknüpfte [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)-, [Azure Data Lake Store Gen1](connector-azure-data-lake-store.md#linked-service-properties)- oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)-Dienst zum Speichern der Protokolldatei, die die Namen der durch die Delete-Aktivität gelöschten Ordner oder Dateien enthält. | Nein |
+| linkedServiceName | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Der verknüpfte [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)-, [Azure Data Lake Store Gen1](connector-azure-data-lake-store.md#linked-service-properties)- oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)-Dienst zum Speichern der Protokolldatei, die die Namen der durch die Delete-Aktivität gelöschten Ordner oder Dateien enthält. Beachten Sie, dass bei der Konfiguration die gleiche Art von Integration Runtime verwendet werden muss wie bei der Delete-Aktivität für die Dateilöschung. | Nein |
 | path | Gilt nur bei folgender Angabe: enablelogging = true.<br/><br/>Der Pfad zum Speichern der Protokolldatei in Ihrem Speicherkonto. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein |
 
 ## <a name="monitoring"></a>Überwachung
@@ -563,6 +563,9 @@ Von der Copy-Aktivität verwendetes Dataset für das Datenziel:
     }
 }
 ```
+
+Sie erhalten die Vorlage zum Verschieben von Dateien auch [hier](solution-template-move-files.md).
+
 ## <a name="known-limitation"></a>Bekannte Einschränkung
 
 -   Die Delete-Aktivität unterstützt das Löschen von Ordnerliste, die durch Platzhalterzeichen beschrieben werden, nicht.

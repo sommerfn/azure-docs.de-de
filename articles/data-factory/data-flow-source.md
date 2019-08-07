@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 048fe0ef88e8a79e21af7bb6e39a1d7ece3ee4ae
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277457"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314840"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
@@ -38,8 +38,12 @@ Data Factory hat Zugriff auf nahezu 80 native Connectors. Um Daten aus diesen an
 
 Wählen Sie das Schema und die Samplingoptionen für Ihre Daten aus.
 
-### <a name="allow-schema-drift"></a>Schemaabweichung zulassen
-Wählen Sie **Schemaabweichung zulassen** aus, wenn die Quellspalten häufig geändert werden. Diese Einstellung ermöglicht es, dass alle eingehenden Quellfelder durch die Transformationen zur Senke fließen.
+### <a name="schema-drift"></a>Schemaabweichung
+[Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit von ADF, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne explizit Spaltenänderungen definieren zu müssen.
+
+* Wählen Sie **Schemaabweichung zulassen** aus, wenn die Quellspalten häufig geändert werden. Diese Einstellung ermöglicht es, dass alle eingehenden Quellfelder durch die Transformationen zur Senke fließen.
+
+* Mit der Option **Infer drifted column types** (Abweichende Spaltentypen ableiten) wird ADF angewiesen, Datentypen für jede neue erkannte Spalte zu definieren. Ist das Feature deaktiviert, verwendet ADF den Typ „Zeichenfolge“.
 
 ### <a name="validate-schema"></a>Überprüfen des Schemas
 

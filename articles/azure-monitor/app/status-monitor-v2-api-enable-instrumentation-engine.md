@@ -12,21 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d4683a1cad5172f7104e745433bd141bcf36d56f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807130"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326369"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>API für Statusmonitor v2: Enable-InstrumentationEngine (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>API für Statusmonitor v2: Enable-InstrumentationEngine
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
-
-> [!IMPORTANT]
-> Statusmonitor v2 ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="description"></a>BESCHREIBUNG
 
@@ -34,7 +29,7 @@ Aktiviert die Instrumentierungs-Engine durch Festlegen einiger Registrierungssch
 Starten Sie IIS neu, damit die Änderungen wirksam werden.
 
 Die Instrumentierungs-Engine kann Daten ergänzen, die mit .NET SDKs gesammelt wurden.
-Es werden Ereignisse und Nachrichten gesammelt, die die Ausführung eines verwalteten Prozesses beschreiben. Diese Ereignisse und Nachrichten umfassen Abhängigkeitsergebniscodes, HTTP-Verben und SQL-Befehlstext.
+Es werden Ereignisse und Nachrichten gesammelt, die die Ausführung eines verwalteten Prozesses beschreiben. Diese Ereignisse und Nachrichten umfassen Abhängigkeitsergebniscodes, HTTP-Verben und [SQL-Befehlstext](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
 
 Aktivieren Sie die Instrumentierungs-Engine in den folgenden Fällen:
 - Sie haben mithilfe des Cmdlets „Enable“ bereits die Überwachung, aber nicht die Instrumentierungs-Engine aktiviert.

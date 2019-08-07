@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: d69861beb5848679aa00c8b39f0caa84c7c5d847
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986879"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385495"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -193,9 +193,9 @@ Um den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer Logik-App 
 
   Mit dieser Option können Sie den Zugriff auf den Ausführungsverlauf basierend auf den Anforderungen aus einem bestimmten IP-Adressbereich schützen.
 
-* [Blenden Sie Ein- und Ausgaben im Ausführungsverlauf durch die Verwendung von Obfuskation aus.](#obfuscate)
+* [Ausblenden von Daten im Ausführungsverlauf mittels Obfuskation.](#obfuscate)
 
-  Mit dieser Option können Sie Ein- und Ausgaben im Ausführungsverlauf basierend auf dem Trigger oder der Aktion ausblenden.
+  In vielen Triggern und Aktionen können Sie Eingaben, Ausgaben oder beides im Ausführungsverlauf einer Logik-App ausblenden.
 
 <a name="restrict-ip"></a>
 
@@ -258,7 +258,11 @@ Wenn Sie die Bereitstellung von Logik-Apps mithilfe einer [Azure Resource Manage
 
 <a name="obfuscate"></a>
 
-### <a name="hide-inputs-and-outputs-in-run-history-by-using-obfuscation"></a>Verbergen Sie Ein- und Ausgaben im Ausführungsverlauf durch die Verwendung von Obfuskation.
+### <a name="hide-data-from-run-history-by-using-obfuscation"></a>Ausblenden von Daten im Ausführungsverlauf mittels Obfuskation
+
+Bei vielen Triggern und Aktionen stehen Einstellungen zur Verfügung, um Eingaben, Ausgaben oder beides im Ausführungsverlauf einer Logik-App auszublenden. Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, müssen [einige Aspekte](#obfuscation-considerations) berücksichtigt werden.
+
+#### <a name="secure-inputs-and-outputs-in-the-designer"></a>Schützen von Ein- und Ausgaben im Designer
 
 1. Wenn Ihre Logik-App noch nicht geöffnet ist, öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
@@ -290,9 +294,38 @@ Wenn Sie die Bereitstellung von Logik-Apps mithilfe einer [Azure Resource Manage
 
       ![Ausgeblendete Daten im Ausführungsverlauf](media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
+<a name="secure-data-code-view"></a>
+
+#### <a name="secure-inputs-and-outputs-in-code-view"></a>Schützen von Ein- und Ausgaben in der Codeansicht
+
+Fügen Sie in der zugrunde liegenden Trigger- oder Aktionsdefinition das Array `runtimeConfiguration.secureData.properties` mit einem der folgenden Werte (oder mit beiden Werten) hinzu, oder aktualisieren Sie es entsprechend:
+
+* `"inputs"`: Schützt Eingaben im Ausführungsverlauf.
+* `"outputs"`: Schützt Ausgaben im Ausführungsverlauf.
+
+Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, müssen [einige Aspekte](#obfuscation-considerations) berücksichtigt werden.
+
+```json
+"<trigger-or-action-name>": {
+   "type": "<trigger-or-action-type>",
+   "inputs": {
+      <trigger-or-action-inputs>
+   },
+   "runtimeConfiguration": {
+      "secureData": {
+         "properties": [
+            "inputs",
+            "outputs"
+         ]
+      }
+   },
+   <other-attributes>
+}
+```
+
 <a name="obfuscation-considerations"></a>
 
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Überlegungen zur Sicherung von Ein- und Ausgaben
+#### <a name="considerations-when-hiding-inputs-and-outputs"></a>Überlegungen im Zusammenhang mit dem Ausblenden von Ein- und Ausgaben
 
 * Wenn Sie die Ein- oder Ausgaben für einen Trigger oder eine Aktion schützen, dann sendet Logic Apps die gesicherten Daten nicht an Azure Log Analytics. Außerdem können Sie diesem Auslöser oder dieser Aktion zur Überwachung keine [nachverfolgten Eigenschaften](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) hinzufügen.
 
@@ -564,3 +597,4 @@ Hier finden Sie einige Möglichkeiten, einen beliebigen Endpunkt zu sichern, auf
 * [Erstellen von Bereitstellungsvorlagen](logic-apps-create-deploy-template.md)  
 * [Überwachen von Logik-Apps](logic-apps-monitor-your-logic-apps.md)  
 * [Diagnostizieren von Fehlern und Problemen bei Logik-Apps](logic-apps-diagnosing-failures.md)  
+* [Automatisieren der Logik-App-Bereitstellung](logic-apps-azure-resource-manager-templates-overview.md)

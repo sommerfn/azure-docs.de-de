@@ -1,19 +1,18 @@
 ---
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer mit Azure Backup
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.author: raynew
-ms.openlocfilehash: 1be9d7ecc996063ee41319628cfc7c81f76bb8ca
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: dacurwin
+ms.openlocfilehash: 2556887008ecbe081168d3fc81fa07b45cda4bcb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296777"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639599"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -44,7 +43,7 @@ Aktivieren der Sicherung beim Erstellen eines virtuellen Windows-Azure-Computers
 Aktivieren der Sicherung beim Erstellen eines virtuellen Linux-Computers | Unterstützung für:<br/><br/> – Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> – Debian: 8, 9<br/><br/> – CentOS: 6.9, 7.3<br/><br/> – Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Sichern eines heruntergefahrenen virtuellen Computers / einer Offline-VM | Unterstützt.<br/><br/> Die Momentaufnahme ist nur ausfallkonsistent, jedoch nicht anwendungskonsistent.
 Sicherung von Datenträgern nach Migration zu verwalteten Datenträgern | Unterstützt.<br/><br/> Sicherung wird weiterhin durchgeführt. Es ist keine Aktion erforderlich.
-Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Nicht unterstützt.<br/><br/> In Azure Backup können die älteren Ressourcenpunkte nicht gelöscht werden, und bei den Sicherungen treten Fehler auf, wenn die maximale Anzahl der Wiederherstellungspunkte erreicht ist.
+Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Nicht unterstützt.<br/><br/> Die älteren Wiederherstellungspunkte können von Azure Backup nicht gelöscht werden, und bei Sicherungen treten Fehler auf, wenn die maximale Anzahl von Wiederherstellungspunkten erreicht ist.
 Ändern der Sicherungsrichtlinie für einen virtuellen Computer | Unterstützt.<br/><br/> Der virtuelle Computer wird unter Verwendung der Zeitplan- und Aufbewahrungseinstellungen der neuen Richtlinie gesichert. Wenn die Aufbewahrungseinstellungen erweitert werden, werden vorhandene Wiederherstellungspunkte markiert und beibehalten. Wenn die Einstellungen reduziert werden, werden vorhandene Wiederherstellungspunkte im nächsten Bereinigungsauftrag gelöscht und schließlich endgültig entfernt.
 Abbrechen eines Sicherungsauftrags | Wird während des Prozesses der Momentaufnahme unterstützt.<br/><br/> Wird nicht unterstützt, wenn die Momentaufnahme in den Tresor übertragen wird.
 Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |  Nicht unterstützt.
@@ -144,8 +143,7 @@ Wiederherstellen einer VM in einem anderen virtuellen Netzwerk |   Unterstützt.
 **Compute** | **Unterstützung**
 --- | ---
 Größe des virtuellen Computers |   Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM<br/><br/> [Weitere Informationen.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-Sicherung virtueller Computer in [Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Unterstützt.<br/><br/> Sie können eine VM in einer Verfügbarkeitsgruppe nicht mit der Option zum schnellen Erstellen einer VM wiederherstellen. Stattdessen müssen Sie bei der Wiederherstellung der VM den Datenträger wiederherstellen und damit entweder eine VM bereitstellen oder einen vorhandenen Datenträger ersetzen.
-Sicherung virtueller Computer in [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nicht unterstützt.
+Sicherung virtueller Computer in [Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) | Unterstützt.<br/><br/> Sie können eine VM in einer Verfügbarkeitsgruppe nicht mit der Option zum schnellen Erstellen einer VM wiederherstellen. Stattdessen müssen Sie bei der Wiederherstellung der VM den Datenträger wiederherstellen und damit entweder eine VM bereitstellen oder einen vorhandenen Datenträger ersetzen.
 Sicherung von mit [Hybridvorteil (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) bereitgestellten VMs | Unterstützt.
 Sicherung von in einer [Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) bereitgestellten VMs |  Nicht unterstützt.
 Sicherung von über den [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) bereitgestellten VMs<br/><br/> (Veröffentlicht von Microsoft oder Drittanbietern) |  Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden. Wir stellen die Azure Marketplace-VMs, die als VMs gesichert werden, nicht wieder her, da hierfür Kaufinformationen benötigt werden (nur als Datenträger).

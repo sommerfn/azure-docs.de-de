@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 76d4fbaaea987b5d935d09b7ff1c490b6003a489
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0c7fbe209a20182ac2a17fcdb467d1f2a03183e5
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260368"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370726"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
 
@@ -1014,7 +1014,7 @@ Sie können die Ausgabe der Aktion dann in anderen Aktionen verwenden.
 
 | Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*inputs-to-compose*> | Beliebig | Eingaben für die Erstellung einer einzelnen Ausgabe | 
+| <*inputs-to-compose*> | Any | Eingaben für die Erstellung einer einzelnen Ausgabe | 
 |||| 
 
 *Beispiel 1*
@@ -1645,7 +1645,7 @@ Verwenden Sie das Array `columns`, um Spaltenüberschriften und -werte anzugeben
 | Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*column-name*> | Zeichenfolge | Headername für eine Spalte | 
-| <*column-value*> | Beliebig | Wert in dieser Spalte | 
+| <*column-value*> | Any | Wert in dieser Spalte | 
 |||| 
 
 *Beispiel 1*
@@ -2380,6 +2380,7 @@ Sie können das Standardlaufzeitverhalten für Trigger und Aktionen mit diesen `
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die auf die Ausführung warten können, wenn für Ihren Workflow bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. Sie können das Parallelitätslimit in der `concurrency.runs`-Eigenschaft ändern. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | Alle Trigger | 
 | `runtimeConfiguration.concurrency.repetitions` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Iterationen der „for each“-Schleife, die gleichzeitig bzw. parallel ausgeführt werden können. <p>Das Festlegen der `repetitions`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der „for each“-Parallelität](#change-for-each-concurrency) oder [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | Aktion: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Für bestimmte Aktionen, die die Paginierung unterstützen und diese aktiviert haben, gibt dieser Wert die *minimale* Anzahl der abzurufenden Ergebnisse an. <p>Informationen für das Aktivieren der Paginierung finden Sie unter [Get bulk data, items, or results by using pagination (Abrufen von Massendaten, Elementen oder Ergebnissen mithilfe der Paginierung)](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). | Aktion: Verschiedene |
+| `runtimeConfiguration.secureData.properties` | Array | Bei vielen Triggern und Aktionen blenden diese Einstellungen Eingaben, Ausgaben oder beides im Ausführungsverlauf der Logik-App aus. <p>Informationen zum Schützen dieser Daten finden Sie unter [Schützen von Ein- und Ausgaben in der Codeansicht](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Gilt für die meisten Trigger und Aktionen |
 | `runtimeConfiguration.staticResult` | JSON-Objekt | Für Aktionen, die die Einstellung [statisches Ergebnis](../logic-apps/test-logic-apps-mock-data-static-results.md) unterstützen und für die diese aktiviert ist, hat das `staticResult`-Objekt diese Attribute: <p>- `name`, das auf den Definitionsnamen des statischen Ergebnisses der aktuelle Aktion verweist, der innerhalb des `staticResults`-Attributs im `definition`-Attribut des Workflows Ihrer Logik-App vorkommt. Weitere Informationen finden Sie unter [Statische Ergebnisse – Schemareferenz zur Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, das angibt, ob statische Ergebnisse `Enabled` sind oder nicht für die aktuelle Aktion. <p>Informationen zum Aktivieren statischer Ergebnisse finden Sie unter [Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen](../logic-apps/test-logic-apps-mock-data-static-results.md). | Aktion: Verschiedene |
 ||||| 
 

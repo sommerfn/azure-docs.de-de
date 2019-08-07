@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-Dienst-zu-Dienst-Authentifizierung unter Verwendung des OAuth 2.0-Spezifikationsentwurfs für „Im Auftrag von“ | Microsoft-Dokumentation
+title: 'Azure AD: Dienst-zu-Dienst-Authentifizierung mithilfe des On-Behalf-Of-Flusses von OAuth 2.0 (Entwurfsspezifikation) | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden.
 services: active-directory
 documentationcenter: .net
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb64aa401838451191a830a5adbfb435ac5fdf25
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7381a0dfb8f780900d8c2c8ba0637dcd232bdb9f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261937"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380895"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 

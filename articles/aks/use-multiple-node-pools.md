@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 4ba9840d745995fdf7b8b14889a0c021917f0ec3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278169"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478330"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vorschau – Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -47,7 +47,7 @@ az extension update --name aks-preview
 Aktivieren Sie zunächst zwei Featureflags in Ihrem Abonnement, um einen AKS-Cluster zu erstellen, der mehrere Knotenpools verwenden kann. Poolcluster mit mehreren Knoten verwenden eine VM-Skalierungsgruppe (VMSS), um die Bereitstellung und Konfiguration der Kubernetes-Knoten zu verwalten. Registrieren Sie *MultiAgentpoolPreview* und *VMSSPreview* Funktionskennzeichnungen mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
 > [!CAUTION]
-> Wenn Sie eine Funktion in einem Abonnement registrieren, können Sie die Registrierung dieser Funktion derzeit nicht aufheben. Nachdem Sie einige Previewfunktionen aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Previewfunktionen in Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Vorschaufunktionen zu testen und Feedback zu erhalten.
+> Wenn Sie eine Funktion in einem Abonnement registrieren, können Sie die Registrierung dieser Funktion derzeit nicht aufheben. Nachdem Sie einige Vorschaufeatures aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Vorschaufeatures für Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Vorschaufunktionen zu testen und Feedback zu erhalten.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
@@ -57,14 +57,14 @@ az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 > [!NOTE]
 > Jeder von Ihnen nach der erfolgreichen Registrierung von *MultiAgentpoolPreview* erstellte AKS-Cluster verwendet diese Möglichkeit zur Clustervorschau. Um weiterhin normale, vollständig unterstützte Cluster zu erstellen, sollten Sie keine Vorschaufeatures für Produktionsabonnements aktivieren. Verwenden Sie ein separates Test- oder Entwickungsabonnement von Azure, um Vorschaufeatures zu testen.
 
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mit dem Befehl [az feature list][az-feature-list] überprüfen:
+Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie bereit sind, aktualisieren Sie die Registrierung des *Microsoft.ContainerService* Ressourcenanbieters mit dem Befehl[ az provider register][az-provider-register]:
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -145,7 +145,9 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 ## <a name="upgrade-a-node-pool"></a>Durchführen eines Upgrades für einen Knotenpool
 
-Als Ihr AKS-Cluster im ersten Schritt erstellt wurde, war eine `--kubernetes-version` von *1.13.5* angegeben. Führen Sie für *mynodepool* ein Upgrade auf Kubernetes *1.13.7* durch. Verwenden Sie den Befehl [az aks node pool upgrade][az-aks-nodepool-upgrade], um den Knotenpool zu aktualisieren, wie im folgenden Beispiel gezeigt:
+Als Ihr AKS-Cluster im ersten Schritt erstellt wurde, war eine `--kubernetes-version` von *1.13.5* angegeben. Dadurch wird die Kubernetes-Version sowohl für die Steuerungsebene als auch für den ursprünglichen Knotenpool festgelegt. Zum Upgraden der Kubernetes-Version der Steuerungsebene und des Knotenpools stehen unterschiedliche Befehle zur Verfügung. Der Befehl `az aks upgrade` dient zum Upgraden der Steuerungsebene, während der Befehl `az aks nodepool upgrade` zum Upgraden eines einzelnen Knotenpools dient.
+
+Führen Sie für *mynodepool* ein Upgrade auf Kubernetes *1.13.7* durch. Verwenden Sie den Befehl [az aks node pool upgrade][az-aks-nodepool-upgrade], um den Knotenpool zu aktualisieren, wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -155,6 +157,9 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.7 \
     --no-wait
 ```
+
+> [!Tip]
+> Führen Sie `az aks upgrade -k 1.13.7` aus, um die Steuerungsebene auf *1.13.7* upzugraden.
 
 Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *1.13.7* aufweist:
 
@@ -170,6 +175,15 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 Es dauert einige Minuten, bis ein Upgrade der Knoten auf die angegebene Version erfolgt ist.
 
 Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dieselbe Kubernetes-Version aktualisieren. Die Möglichkeit, ein Upgrade für einzelne Knotenpools durchzuführen, gestattet es Ihnen, ein paralleles Upgrade durchzuführen und Pods zwischen Knotenpools zu planen, um die Anwendungsbetriebszeit aufrechtzuerhalten.
+
+> [!NOTE]
+> Kubernetes verwendet als Standardversionierungsschema die [semantische Versionierung](https://semver.org/). Die Versionsnummer wird im Format *x.y.z* angegeben. *x* steht dabei für die Hauptversion, *y* für die Nebenversion und *z* für die Patchversion. Ein Beispiel: Bei der Version *1.12.6* ist „1“ die Hauptversion, „12“ die Nebenversion und „6“ die Patchversion. Die Kubernetes-Version der Steuerungsebene sowie des ursprünglichen Knotenpools wird im Rahmen der Clustererstellung festgelegt. Bei allen zusätzlichen Knotenpools wird die Kubernetes-Version festgelegt, wenn sie dem Cluster hinzugefügt werden. Die Kubernetes-Versionen können sich zwischen Knotenpools sowie zwischen einem Knotenpool und der Steuerungsebene unterscheiden. Dabei gelten jedoch folgende Einschränkungen:
+> 
+> * Die Knotenpoolversion muss die gleiche Hauptversion haben wie die Steuerungsebene.
+> * Die Knotenpoolversion kann eine Nebenversion niedriger sein als die Version der Steuerungsebene.
+> * Die Knotenpoolversion kann eine beliebige Patchversion haben, solange die beiden anderen Bedingungen erfüllt sind.
+> 
+> Verwenden Sie `az aks upgrade`, um die Kubernetes-Version der Steuerungsebene upzugraden. Falls Ihr Cluster nur über einen einzelnen Knotenpool verfügt, wird durch den Befehl `az aks upgrade` auch ein Upgrade für die Kubernetes-Version des Knotenpools ausgeführt.
 
 ## <a name="scale-a-node-pool"></a>Skalieren eines Knotenpools
 

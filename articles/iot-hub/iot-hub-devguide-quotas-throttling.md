@@ -7,15 +7,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
-ms.openlocfilehash: e4e1634c7180c7099f23915026d807a1e380a091
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.date: 07/17/2019
+ms.openlocfilehash: 1c19696b10584bc55989b9270978486d7f5aa157
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277350"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326728"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
+
+In diesem Artikel werden die Kontingente für einen IoT-Hub sowie die Funktionsweise der Drosselung erläutert.
 
 ## <a name="quotas-and-throttling"></a>Kontingente und Drosselung
 
@@ -35,9 +37,9 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 | -------- | ------- | ------- | ------- |
 | [Identitätsregistrierungsvorgänge](#identity-registry-operations-throttle) (Erstellen, Abrufen, Auflisten, Aktualisieren, Löschen) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
 | [Neue Geräteverbindungen](#device-connections-throttle) (diese Begrenzung gilt für die Rate, mit der _neue Verbindungen_ hergestellt werden, nicht die Gesamtzahl der Verbindungen) | 100/Sekunde oder 12/Sekunde/Einheit – je nachdem, was höher ist <br/> Beispielsweise ergeben zwei S1-Einheiten 2\*12 = 24 neue Verbindungen/Sek., Sie erhalten jedoch mindestens 100 neue Verbindungen/Sek. für Ihre Einheiten. Mit neun S1-Einheiten erhalten Sie 108 neue Verbindungen/Sek. (9\*12) für all Ihre Einheiten. | 120 neue Verbindungen/Sek./Einheit | 6\.000 neue Verbindungen/Sekunde/Einheit |
-| Senden von Nachrichten von Geräten an die Cloud | 100/Sekunde oder 12/Sekunde/Einheit – je nachdem, was höher ist <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6\.000/Sekunde/Einheit |
-| C2D-Sendevorgänge<sup>1</sup> | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
-| C2D-Empfangsvorgänge<sup>1</sup> <br/> (nur bei Verwendung von HTTPS durch das Gerät)| 16,67/Sekunde/Einheit (1.000/Minute/Einheit) | 16,67/Sekunde/Einheit (1.000/Minute/Einheit) | 833,33/Sekunde/Einheit (50.000/Minute/Einheit) |
+| Senden von Nachrichten von Geräten an die Cloud | 100 Sendevorgänge/Sek. oder 12 Sendevorgänge/Sek./Einheit (je nachdem, was höher ist) <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24/Sek., Ihnen stehen jedoch mindestens 100 Sendevorgänge/Sek. für alle Ihre Einheiten zur Verfügung. Mit neun S1-Einheiten verfügen Sie über 108 Sendevorgänge/Sek. (9\*12) für all Ihre Einheiten. | 120 Sendevorgänge/Sek./Einheit | 6\.000 Sendevorgänge/Sek./Einheit |
+| C2D-Sendevorgänge<sup>1</sup> | 1,67 Sendevorgänge/Sek./Einheit (100 Nachrichten/Min./Einheit) | 1,67 Sendevorgänge/Sek./Einheit (100 Sendevorgänge/Min./Einheit) | 83,33 Sendevorgänge/Sek./Einheit (5.000 Sendevorgänge/Min./Einheit) |
+| C2D-Empfangsvorgänge<sup>1</sup> <br/> (nur bei Verwendung von HTTPS durch das Gerät)| 16,67 Empfangsvorgänge/Sek./Einheit (1.000 Empfangsvorgänge/Min./Einheit) | 16,67 Empfangsvorgänge/Sek./Einheit (1.000 Empfangsvorgänge/Min./Einheit) | 833,33 Empfangsvorgänge/Sek./Einheit (50.000 Empfangsvorgänge/Min./Einheit) |
 | Dateiupload | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) |
 | Direkte Methoden<sup>1</sup> | 160KB/s/Einheit<sup>2</sup> | 480KB/s/Einheit<sup>2</sup> | 24MB/s/Einheit<sup>2</sup> | 
 | Abfragen | 20/Minuten/Einheit | 20/Minuten/Einheit | 1\.000/Minute/Einheit |
@@ -52,9 +54,25 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 
 <sup>1</sup>Dieses Feature ist im Tarif „Basic“ von IoT Hub nicht verfügbar. Weitere Informationen finden Sie unter [Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md). <br/><sup>2</sup> Die Größe der Verbrauchseinheit für die Drosselung beträgt 4 KB.
 
+### <a name="throttling-details"></a>Details zur Drosselung
+
+* Die Größe der Verbrauchseinheit bestimmt, in welchen Inkrementen Ihr Drosselungslimit beansprucht wird. Wenn die Nutzlast ihres direkten Aufrufs zwischen 0 KB und 4 KB liegt, wird sie als 4 KB gezählt. Pro Sekunde und Einheit können bis zu 40 Aufrufe ausgeführt werden, bevor das Limit von 160 KB/Sek./Einheit erreicht wird.
+
+   Analog dazu gilt: Wenn Ihre Nutzlast zwischen 4 KB und 8 KB liegt, wird jeder Aufruf mit 8 KB gezählt, und Sie können bis zu 20 Aufrufe pro Sekunde und Einheit ausführen, bis die Obergrenze erreicht wird.
+
+   Bei einer Nutzlastgröße zwischen 156 KB und 160 KB wird das Limit von 160 KB/Sek./Einheit in Ihrem Hub nach bereits einem einzelnen Aufruf pro Sekunde und Einheit erreicht.
+
+*  Bei *Aufträgegerätevorgängen (Gerätezwilling aktualisieren, direkte Methode aufrufen)* für den Tarif S2 gilt der Grenzwert von 50/Sek./Einheit nur, wenn Sie Methoden unter Verwendung von Aufträgen aufrufen. Wenn Sie direkte Methoden direkt aufrufen, gilt das ursprüngliche Drosselungslimit von 24 MB/Sek./Einheit (für S2).
+
+*  **Kontingent** ist die aggregierte Anzahl von Nachrichten, die Sie in Ihrem Hub *pro Tag* senden können. Das Kontingentlimit Ihres Hubs finden Sie auf der Seite [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/) in der Spalte **GESAMTANZAHL VON NACHRICHTEN/TAG**.
+
+*  Ihre Cloud-zu-Gerät- und Gerät-zu-Cloud-Drosselung bestimmt die maximale *Rate*, mit der Sie Nachrichten senden können (also die Anzahl von Nachrichten, unabhängig von 4-KB-Blöcken). Jede Nachricht kann bis zu 256 KB groß sein. Hierbei handelt es sich um die [maximale Nachrichtengröße](iot-hub-devguide-quotas-throttling.md#other-limits).
+
+*  Es empfiehlt sich, Ihre Aufrufe zu drosseln, um die Drosselungslimits nicht zu erreichen oder zu überschreiten. Bei Erreichen des Limits gibt IoT Hub den Fehlercode 429 zurück, und der Client muss den Vorgang nach einem Backoff wiederholen. Diese Limits gelten pro Hub (in einigen Fällen auch pro Hub/Einheit). Weitere Informationen finden Sie unter [Wiederholungsmuster](iot-hub-reliability-features-in-sdks.md#retry-patterns).
+
 ### <a name="traffic-shaping"></a>Traffic-Shaping
 
-Damit Burstdatenverkehr verarbeitet werden kann, akzeptiert IoT Hub eine begrenzte Zeit lang Anforderungen oberhalb des Drosselungslimits. Die ersten paar dieser Anforderungen werden sofort verarbeitet. Wenn die Anzahl der Anforderungen jedoch weiterhin das Drosselungslimit überschreitet, beginnt IoT Hub damit, die Anforderungen in eine Warteschlange zu verschieben und mit der begrenzten Rate zu verarbeiten. Dieser Effekt wird als *Traffic-Shaping* bezeichnet. Außerdem ist die Größe der Warteschlange begrenzt. Wenn das Drosselungslimit weiterhin überschritten wird, ist die Warteschlange irgendwann voll, und IoT Hub beginnt damit, Anforderungen mit `429 ThrottlingException` abzulehnen. 
+Damit Burstdatenverkehr verarbeitet werden kann, akzeptiert IoT Hub eine begrenzte Zeit lang Anforderungen oberhalb des Drosselungslimits. Die ersten paar dieser Anforderungen werden sofort verarbeitet. Wenn die Anzahl der Anforderungen jedoch weiterhin das Drosselungslimit überschreitet, beginnt IoT Hub damit, die Anforderungen in eine Warteschlange zu verschieben und mit der begrenzten Rate zu verarbeiten. Dieser Effekt wird als *Traffic-Shaping* bezeichnet. Außerdem ist die Größe der Warteschlange begrenzt. Wenn das Drosselungslimit weiterhin überschritten wird, ist die Warteschlange irgendwann voll, und IoT Hub beginnt damit, Anforderungen mit `429 ThrottlingException` abzulehnen.
 
 Ein Beispiel: Sie verwenden ein simuliertes Gerät, um 200 Gerät-zu-Cloud-Nachrichten pro Sekunde an Ihren IoT Hub-Dienst mit dem Tarif S1 senden zu lassen (dessen Limit ist 100 Gerät-zu-Cloud-Sendevorgänge/Sekunde). Während der ersten ein oder zwei Minuten werden die Nachrichten sofort verarbeitet. Da das Gerät aber weiterhin mehr Nachrichten versendet, als das Drosselungslimit erlaubt, beginnt der IoT Hub-Dienst damit, nur noch 100 Nachrichten pro Sekunde zu verarbeiten und verschiebt den Rest in eine Warteschlange. Ab da werden Sie eine erhöhte Wartezeit feststellen können. Irgendwann wird dann die Klasse `429 ThrottlingException` zurückgegeben, während die Warteschlange immer voller wird, und die Anzahl der Drosselungsfehler im Bereich „number of throttle errors“ in den [IoT Hub-Metriken](iot-hub-metrics.md) steigt.
 
@@ -66,8 +84,7 @@ Geräteidentitätsregistrierungsvorgänge sind für die Verwendung zur Laufzeit 
 
 Die Drosselung der *Geräteverbindungen* bestimmt die Rate, mit der neue Geräteverbindungen mit einem IoT Hub hergestellt werden können. Die Drosselung der *Geräteverbindungen* steuert nicht die maximale Anzahl gleichzeitig verbundener Geräte. Die Drosselung der *Geräteverbindungsrate* ist abhängig von der Anzahl der Einheiten, die für den IoT-Hub bereitgestellt werden.
 
-Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Darum dauert das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten). Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Identitätsregistrierung registriert sind.
-
+Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Darum dauert das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (also etwa 16 Minuten). Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Identitätsregistrierung registriert sind.
 
 ## <a name="other-limits"></a>Andere Limits
 
@@ -75,8 +92,8 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 
 | Vorgang | Begrenzung |
 | --------- | ----- |
-| Geräte | Maximal können 1.000.000 Geräte mit einem einzelnen IoT-Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).| 
-| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Geräte | Maximal können 1.000.000 Geräte mit einem einzelnen IoT-Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).|
+| Dateiuploads | Zehn gleichzeitige Dateiuploads pro Gerät. |
 | Aufträge<sup>1</sup> | Maximale Anzahl gleichzeitiger Aufträge: 1 (für Free und S1), 5 (für S2), 10 (für S3). Bei allen Tarifen kann jedoch für Geräte immer nur ein [Import-/Exportauftrag](iot-hub-bulk-identity-mgmt.md) nach dem anderen ausgeführt werden. <br/>Der Auftragsverlauf wird bis zu 30 Tage lang gespeichert. |
 | Zusätzliche Endpunkte | Kostenpflichtige SKU-Hubs haben möglicherweise 10 zusätzliche Endpunkte. Kostenfreie SKU-Hubs haben möglicherweise einen zusätzlichen Endpunkt. |
 | Regeln für die Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs haben möglicherweise 100 Weiterleitungsregeln. Kostenfreie SKU-Hubs haben möglicherweise fünf Weiterleitungsregeln. |

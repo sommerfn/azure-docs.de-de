@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847596"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370476"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokollieren von Metriken während Trainingsausführungen in Azure Machine Learning
 
@@ -58,7 +58,7 @@ Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müss
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>Option 1: Verwenden von start_logging
+## <a name="option-1-use-start_logging"></a>Option 1: Verwenden von start_logging
 
 **Start_logging** erstellt eine interaktive Ausführung für die Verwendung in Szenarien wie z.B. Notebooks. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt.
 
@@ -225,8 +225,8 @@ Im Artikel [Starten, Überwachen und Abbrechen von Trainingsausführungen in Pyt
 
 ## <a name="view-run-details"></a>Anzeigen von Ausführungsdetails
 
-### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Überwachen der Ausführung mit Jupyter-Notebook-Widgets
-Wenn Sie die **ScriptRunConfig**-Methode verwenden, um Ausführungen zu übermitteln, können Sie den Fortschritt der Ausführung mit einem Jupyter-Notebook-Widget überwachen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
+### <a name="monitor-run-with-jupyter-notebook-widget"></a>Überwachen der Ausführung mit einem Jupyter-Notebook-Widget
+Wenn Sie Ausführungen mithilfe der Methode **ScriptRunConfig** übermitteln, können Sie den Fortschritt der Ausführung mit einem [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) überwachen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
 
 1. Zeigen Sie das Jupyter-Widget an, während Sie darauf warten, dass die Ausführung abgeschlossen wird.
 
@@ -236,6 +236,12 @@ Wenn Sie die **ScriptRunConfig**-Methode verwenden, um Ausführungen zu übermit
    ```
 
    ![Screenshot des Jupyter-Notebook-Widgets](./media/how-to-track-experiments/run-details-widget.png)
+
+Sie können auch einen Link zur gleichen Anzeige in Ihrem Arbeitsbereich abrufen.
+
+```python
+print(run.get_portal_url())
+```
 
 2. **[Für automatisierte Machine Learning-Ausführungen]** Für den Zugriff auf die Diagramme aus einer vorherigen Ausführung. Ersetzen Sie `<<experiment_name>>` durch den entsprechenden Experimentnamen:
 
@@ -257,7 +263,8 @@ Zum Anzeigen weiterer Details zu einer Pipeline klicken Sie in der Tabelle auf d
 ### <a name="get-log-results-upon-completion"></a>Abrufen von Protokollergebnissen nach Abschluss
 
 Modelltraining und -überwachung erfolgen im Hintergrund, sodass Sie währenddessen andere Aufgaben ausführen können. Sie können auch warten, bis das Training des Modells abgeschlossen ist, bevor Sie weiteren Code ausführen. Bei der Verwendung von **ScriptRunConfig** können Sie ```run.wait_for_completion(show_output = True)``` einsetzen,um anzuzeigen, wenn das Modelltraining abgeschlossen ist. Mithilfe des ```show_output```-Flags erhalten Sie eine ausführlichen Ausgabe. 
-  
+
+
 ### <a name="query-run-metrics"></a>Metriken der Abfrageausführung
 
 Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Sie können nun alle Metriken abrufen, die im obigen Beispiel protokolliert wurden, um das beste Modell zu ermitteln.
@@ -287,140 +294,6 @@ Es gibt verschiedene Möglichkeiten, wie Sie die Protokollierungs-APIs während 
 |Wiederholtes Protokollieren einer Zeile mit zwei numerischen Spalten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Liniendiagramm mit zwei Variablen|
 |Protokollieren einer Tabelle mit zwei numerischen Spalten|`run.log_table(name='Sine Wave', value=sines)`|Liniendiagramm mit zwei Variablen|
 
-<a name="auto"></a>
-## <a name="understanding-automated-ml-charts"></a>Grundlegendes zu automatisierten ML-Diagrammen
-
-Nachdem Sie einen automatisierten ML-Auftrag an ein Notebook übermittelt haben, finden Sie einen Verlauf dieser Ausführungen in Ihrem Workspace für den Machine Learning-Dienst. 
-
-Weitere Informationen:
-+ [Diagramme und Kurven für Klassifizierungsmodelle](#classification)
-+ [Charts und Diagramme für Regressionsmodelle](#regression)
-+ [Modellerklärbarkeit](#model-explain-ability-and-feature-importance)
-
-
-### <a name="view-the-run-charts"></a>Anzeigen der Ausführungsdiagramme
-
-1. Wechseln Sie zu Ihrem Arbeitsbereich. 
-
-1. Wählen Sie **Experimente** im am weitesten links liegenden Bereich Ihres Arbeitsbereichs aus.
-
-   ![Screenshot des Menüs „Experiment“](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
-
-1. Wählen Sie das Experiment aus, an dem Sie interessiert sind.
-
-   ![Experimentliste](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
-
-1. Wählen Sie in der Tabelle die Ausführungsnummer aus.
-
-   ![Experimentausführung](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
-
-1. Wählen Sie in der Tabelle die Iterationsnummer für das Modell aus, das Sie weiter untersuchen möchten.
-
-   ![Experimentmodell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
-
-
-
-### <a name="classification"></a>Classification
-
-Für jedes Klassifizierungsmodell, das Sie mit den automatisierten Machine Learning-Funktionen von Azure Machine Learning erstellen, können Sie die folgenden Diagramme anzeigen: 
-+ [Konfusionsmatrix](#confusion-matrix)
-+ [Genauigkeit-Trefferquote-Diagramm](#precision-recall-chart)
-+ [ROC-Kurve (Receiver Operating Characteristics)](#roc)
-+ [Prognosegütekurve](#lift-curve)
-+ [Gewinnkurve](#gains-curve)
-+ [Kalibrierungsdiagramm](#calibration-plot)
-
-#### <a name="confusion-matrix"></a>Konfusionsmatrix
-
-Eine Konfusionsmatrix wird verwendet, um die Leistung eines Klassifizierungsmodells zu beschreiben. Jede Zeile zeigt die Instanzen der wahren Klasse an, und jede Spalte repräsentiert die Instanzen der vorhergesagten Klasse. Die Konfusionsmatrix zeigt die richtig klassifizierten Bezeichnungen und die falsch klassifizierten Bezeichnungen für ein bestimmtes Modell.
-
-Für Klassifizierungsprobleme stellt Azure Machine Learning automatisch eine Konfusionsmatrix für jedes Modell zur Verfügung, das erstellt wird. Für jede Konfusionsmatrix zeigt das automatisierte ML die richtig klassifizierten Bezeichnungen als grün und die falsch klassifizierten Bezeichnungen als rot an. Die Größe des Kreises stellt die Anzahl der Samples in diesem Behälter dar. Darüber hinaus wird die Häufigkeitszählung jeder vorhergesagten Bezeichnung und jeder wahren Bezeichnung in den nebenstehenden Balkendiagrammen angezeigt. 
-
-Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit ![Ein Klassifizierungsmodell mit schlechter Genauigkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
-
-Beispiel 2: Ein Klassifizierungsmodell mit hoher Genauigkeit (ideal) ![Ein Klassifizierungsmodell mit hoher Genauigkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
-
-
-#### <a name="precision-recall-chart"></a>Genauigkeit-Trefferquote-Diagramm
-
-Mit diesem Diagramm können Sie die Genauigkeit-Trefferquote-Kurven für jedes Modell vergleichen, um festzustellen, welches Modell eine akzeptable Beziehung zwischen Genauigkeit und Trefferquote für Ihr spezielles Geschäftsproblem aufweist. Dieses Diagramm zeigt die durchschnittliche Makro-Genauigkeit-Trefferquote, die durchschnittliche Mikro-Genauigkeit-Trefferquote und die Genauigkeit-Trefferquote, die allen Klassen für ein Modell zugeordnet ist.
-
-Der Begriff „Genauigkeit“ steht für die Fähigkeit eines Klassifizierers, alle Instanzen richtig zu kennzeichnen. „Trefferquote“ stellt die Möglichkeit für einen Klassifizierer dar, alle Instanzen einer bestimmten Bezeichnung zu finden. Die Genauigkeit-Trefferquote-Kurve zeigt die Beziehung zwischen diesen beiden Konzepten. Im Idealfall würde das Modell 100 % Genauigkeit und 100 % Trefferquote aufweisen.
-
-Beispiel 1: Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote ![Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
-
-Beispiel 2: Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote (ideal) ![Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
-
-#### <a name="roc"></a>ROC
-
-Receiver Operating Characteristic (oder ROC) ist ein Diagramm der richtig klassifizierten Bezeichnungen im Vergleich zu den falsch klassifizierten Bezeichnungen für ein bestimmtes Modell. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle mit Datasets mit einem großen Bias trainiert werden, da sie die falsch-positiven Bezeichnungen nicht anzeigt.
-
-Beispiel 1: Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
-
-Beispiel 2: Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
-
-#### <a name="lift-curve"></a>Prognosegütekurve
-
-Sie können die Prognosegüte des automatisch mit Azure Machine Learning erstellten Modells mit der Baseline vergleichen, um den Wertzuwachs dieses bestimmten Modells anzuzeigen.
-
-Prognosegütediagramme werden verwendet, um die Leistung eines Klassifizierungsmodells auszuwerten. Sie zeigen, wie viel bessere Ergebnisse bei der Verwendung eines Modells im Vergleich dazu zu erwarten sind, wenn kein Modell verwendet wird. 
-
-Beispiel 1: Das Modell schneidet schlechter ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
-
-Beispiel 2: Das Modell schneidet besser ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das besser abschneidet](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
-
-#### <a name="gains-curve"></a>Gewinnkurve
-
-Ein Gewinndiagramm wertet die Leistung eines Klassifizierungsmodells anhand jedes Teils der Daten aus. Es zeigt für jedes Perzentil des Datensatzes an, wie viel besser Sie im Vergleich zu einem Zufallsauswahlmodell abschneiden können.
-
-Verwenden Sie das kumulierte Gewinndiagramm, um die Auswahl der Klassifizierungsgrenze anhand eines Prozentsatzes zu erleichtern, der einem gewünschten Gewinn aus dem Modell entspricht. Diese Informationen bieten eine weitere Möglichkeit, die Ergebnisse im zugehörigen Prognosegütediagramm zu untersuchen.
-
-Beispiel 1: Ein Klassifizierungsmodell mit einem minimalen Gewinn ![Ein Klassifizierungsmodell mit einem minimalen Gewinn](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
-
-Beispiel 2: Ein Klassifizierungsmodell mit einem erheblichen Gewinn ![Ein Klassifizierungsmodell mit einem erheblichen Gewinn](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
-
-#### <a name="calibration-plot"></a>Kalibrierungsdiagramm
-
-Für alle Klassifizierungsprobleme können Sie die Kalibrierungskurve auf Mikrodurchschnitt, Makrodurchschnitt und jede Klasse in einem bestimmten Vorhersagemodell überprüfen. 
-
-Ein Kalibrierungsdiagramm wird verwendet, um die Sicherheit eines Vorhersagemodells anzuzeigen. Dies geschieht, indem es die Beziehung zwischen der vorhergesagten Wahrscheinlichkeit und der tatsächlichen Wahrscheinlichkeit zeigt, wobei die „Wahrscheinlichkeit“ die Wahrscheinlichkeit darstellt, dass eine bestimmte Instanz zu einer bestimmten Bezeichnung gehört. Ein gut kalibriertes Modell richtet sich nach der y=x-Linie aus, wo es in Bezug auf seine Vorhersagen recht zuverlässig ist. Ein übermäßig zuverlässiges Modell richtet sich nach der y=0-Linie aus, wobei die vorhergesagte Wahrscheinlichkeit vorhanden ist, aber keine tatsächliche Wahrscheinlichkeit vorliegt.
-
-Beispiel 1: Ein gut kalibriertes Modell ![ Ein gut kalibriertes Modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
-
-Beispiel 2: Ein übermäßig zuverlässiges Modell ![Ein übermäßig zuverlässiges Modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
-
-### <a name="regression"></a>Regression
-Für jedes Regressionsmodell, das Sie mit den automatisierten Machine Learning-Funktionen von Azure Machine Learning erstellen, können Sie die folgenden Diagramme anzeigen: 
-+ [Vorhergesagt im Vergleich zu TRUE](#pvt)
-+ [Residualhistogramm](#histo)
-
-<a name="pvt"></a>
-
-#### <a name="predicted-vs-true"></a>Vorhergesagt im Vergleich zu True
-
-Vorhergesagt im Vergleich zu TRUE zeigt die Beziehung zwischen einem vorhergesagten Wert und seinem korrelierenden wahren Wert für ein Regressionsproblem. Dieses Diagramm kann verwendet werden, um die Leistung eines Modells zu messen, da Folgendes gilt: Je näher die vorhergesagten Werte an der y=x-Linie liegen, desto besser ist die Genauigkeit eines Vorhersagemodells.
-
-Nach jeder Ausführung wird für jedes Regressionsmodell ein Diagramm mit den vorhergesagten im Vergleich zu den wahren Werten angezeigt. Zum Schutz der Privatsphäre werden die Werte in Behältern zusammengeführt, und die Größe jedes Behälters wird als Balkendiagramm im unteren Teil des Diagrammbereichs angezeigt. Sie können das Vorhersagemodell (mit dem helleren Farbbereich, der die Fehlergrenzen anzeigt) mit dem Idealwert des Modells vergleichen.
-
-Beispiel 1: Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen ![Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
-
-Beispiel 2: Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen ![Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a>
-
-#### <a name="histogram-of-residuals"></a>Residualhistogramm
-
-Ein Residual stellt ein beobachtetes y dar: das vorhergesagte y. Um eine Fehlerspanne mit geringem Bias darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist. 
-
-Beispiel 1: Ein Regressionsmodell mit einem Bias in seinen Fehlern ![SA-Regressionsmodell mit einem Bias in seinen Fehlern](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
-
-Beispiel 2: Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern ![Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
-
-### <a name="model-explain-ability-and-feature-importance"></a>Modellerklärbarkeit und Featuregewichtung
-
-Die Featuregewichtung stellt eine Bewertung dar, die angibt, wie wertvoll jedes Feature bei der Konstruktion eines Modells war. Sie können die Featuregewichtung für das Modell insgesamt sowie pro Klasse für ein Vorhersagemodell überprüfen. Sie können pro Feature erkennen, wie sich die Gewichtung im Vergleich zu jeder Klasse und insgesamt darstellt.
-
-![Featureerklärbarkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:

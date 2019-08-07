@@ -1,5 +1,5 @@
 ---
-title: Verwenden des kennwortbasierten einmaligen Anmeldens (SSO) im Zugriffsbereich | Microsoft-Dokumentation
+title: Kennwortbasiertes einmaliges Anmelden (Single Sign-On, SSO) im Zugriffsbereich | Microsoft-Dokumentation
 description: Erläuterungen von Problembereichen zur Hilfestellung beim Behandeln von Problemen beim Anmelden bei Azure AD-Kataloganwendungen, die für einmaliges Anmelden per Kennwort konfiguriert sind
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c020f3ab3ea7ed96b72d0490b717225d44c4fac1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277741"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381238"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist
 

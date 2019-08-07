@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 7/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e13884fb0c39beabf543fd04c9808373a68ec26a
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9e9472fbcd01cf40204063174b159638369d7429
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304300"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326671"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>WAF-Anforderungsgrößenlimits und Ausschlusslisten
 
@@ -91,10 +91,10 @@ Das folgende Azure PowerShell-Cmdlet schließt den Benutzerparameter von der Aus
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -MatchVariable "RequestArgNames" `
-   -SelectorMatchOperator "Equals" `
+   -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Wenn also die URL **http://www.contoso.com/?user=fdafdasfda** an die WAF übergeben wird, wertet diese die Zeichenfolge **fdafdasfda** nicht aus.
+Wenn also die URL **http://www.contoso.com/?user%281%29=fdafdasfda** an die WAF übergeben wird, wird die Zeichenfolge **fdafdasfda** nicht ausgewertet, der Parametername **user%281%29** dagegen schon. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
