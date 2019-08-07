@@ -138,8 +138,6 @@
               href: roles-view-assignments.md
             - name: "Zuweisen von Rollen im Azure\_AD Admin Center"
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-            - name: Zuweisen von benutzerdefinierten Rollen in der Graph-API
-              href: roles-assign-graph.md
             - name: Zuweisen von benutzerdefinierten Rollen in PowerShell
               href: roles-assign-powershell.md
             - name: Vorschauberechtigungen für benutzerdefinierte Rollen
