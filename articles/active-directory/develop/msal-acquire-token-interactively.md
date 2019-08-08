@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546069"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835082"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Abrufen und Zwischenspeichern von Token mit MSAL
 [Zugriffstoken](access-tokens.md) ermöglichen Clients das sichere Aufrufen von Web-APIs, die durch Azure geschützt sind. Es gibt viele Möglichkeiten zum Abrufen von Token mithilfe der Microsoft-Authentifizierungsbibliothek. In einigen Fällen sind Benutzerinteraktionen über einen Webbrowser erforderlich und in anderen Fällen nicht. Wie Sie ein Token anfordern, hängt in der Regel davon ab, ob es sich bei der Anwendung um eine öffentliche Clientanwendung (Desktopanwendung oder mobile App) oder um eine vertrauliche Clientanwendung (Web-App, Web-API oder Daemon-Anwendung wie einen Windows-Dienst) handelt.
@@ -48,7 +48,7 @@ Oder ein Beispiel für Geltungsbereiche einer benutzerdefinierten Web-API: `api:
 Ausschließlich bei der Microsoft Graph-API ist der Geltungsbereichswert `user.read` dem Format `https://graph.microsoft.com/User.Read` zugeordnet und somit austauschbar.
 
 > [!NOTE]
-> Für bestimmte Web-APIs wie die Azure Resource Manager API (https://management.core.windows.net/)) wird ein nachgestellter Schrägstrich (/) im aud-Anspruch (Audience) des Zugriffstokens erwartet. In diesem Fall ist es wichtig, den Geltungsbereich als https://management.core.windows.net//user_impersonation (beachten Sie den doppelten Schrägstrich) zu übergeben, damit das Token in der API gültig ist.
+> Für bestimmte Web-APIs wie die Azure Resource Manager API (https://management.core.windows.net/) ) wird ein nachgestellter Schrägstrich (/) im aud-Anspruch (Audience) des Zugriffstokens erwartet. In diesem Fall ist es wichtig, den Geltungsbereich als https://management.core.windows.net//user_impersonation (beachten Sie den doppelten Schrägstrich) zu übergeben, damit das Token in der API gültig ist.
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>Anfordern dynamischer Geltungsbereiche für inkrementelle Einwilligungen
 Beim Erstellen von Anwendungen mit v1.0 mussten Sie den vollständigen Satz der von der Anwendung benötigten Berechtigungen (statische Geltungsbereiche) registrieren, damit bei der Anmeldung die Benutzereinwilligung eingeholt werden konnte. In v2.0 können Sie über den scope-Parameter zusätzliche Berechtigungen nach Bedarf anfordern. Diese werden als dynamische Geltungsbereiche bezeichnet und ermöglichen dem Benutzer, inkrementelle Einwilligungen für Geltungsbereiche zu erteilen.
