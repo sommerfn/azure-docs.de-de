@@ -5,16 +5,17 @@ manager: eladz
 author: MarkHeff
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 2c77d509a0e66fd02bd949e481c5f0316fdd9afb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 79e99e8311941e46c35c17472ed4833706834940
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672001"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840864"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#-Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline
 
@@ -697,4 +698,4 @@ Die schnellste Möglichkeit, das System nach einem Tutorial aufzuräumen, besteh
 Anpassen oder Erweitern der Pipeline mit benutzerdefinierten Qualifikationen. Das Erstellen einer benutzerdefinierten Qualifikation die Sie einer Qualifikationsgruppe hinzufügen, ermöglicht Ihnen, eigene, von Ihnen selbst erstellte Text- oder Bildanalysen einzubeziehen.
 
 > [!div class="nextstepaction"]
-> [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für die kognitive Suche](cognitive-search-create-custom-skill-example.md)
+> [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)

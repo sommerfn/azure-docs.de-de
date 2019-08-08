@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 53a46c6137c3336c405eb62dc7b254ac26c13d9e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406001"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840244"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
 
@@ -130,7 +130,7 @@ In diesem Tutorial werden zwei Topologien bereitgestellt:
     >
     > Die Skriptaktion befindet sich unter [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) und wird auf die übergeordneten und Nimbus-Knoten des Storm-Clusters angewandt. Weitere Informationen zur Verwendung von Skriptaktionen finden Sie im Dokument [Anpassen von HDInsight für die Verwendung von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
-Die Topologien werden mit [Flux](https://storm.apache.org/releases/1.1.2/flux.html) definiert. Flux wurde mit Storm 0.10.x eingeführt und ermöglicht Ihnen die Trennung der Topologiekonfiguration vom Code. Für Topologien, die das Flux-Framework nutzen, wird die Topologie in einer YAML-Datei definiert. Die YAML-Datei kann als Teil der Topologie aufgenommen werden. Sie kann auch eine eigenständige Datei sein, die beim Übermitteln der Topologie verwendet wird. Außerdem unterstützt Flux die Variablenersetzung zur Laufzeit, die in diesem Beispiel verwendet wird.
+Die Topologien werden mit [Flux](https://storm.apache.org/releases/current/flux.html) definiert. Flux wurde mit Storm 0.10.x eingeführt und ermöglicht Ihnen die Trennung der Topologiekonfiguration vom Code. Für Topologien, die das Flux-Framework nutzen, wird die Topologie in einer YAML-Datei definiert. Die YAML-Datei kann als Teil der Topologie aufgenommen werden. Sie kann auch eine eigenständige Datei sein, die beim Übermitteln der Topologie verwendet wird. Außerdem unterstützt Flux die Variablenersetzung zur Laufzeit, die in diesem Beispiel verwendet wird.
 
 Zur Laufzeit werden die folgenden Parameter für diese Topologien festgelegt:
 
@@ -144,7 +144,7 @@ Zur Laufzeit werden die folgenden Parameter für diese Topologien festgelegt:
 
 * `${hdfs.write.dir}`: Das Verzeichnis, in das die Daten geschrieben werden.
 
-Weitere Informationen zu Flux-Topologien finden Sie unter [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
+Weitere Informationen zu Flux-Topologien finden Sie unter [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -471,7 +471,9 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
     Der zurückgegebene Wert ähnelt dem folgenden Text:
 
+        ```output
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+        ```
 
     > [!IMPORTANT]  
     > Obwohl möglicherweise mehr als zwei Brokerhosts für den Cluster vorhanden sind, müssen Sie keine vollständige Liste aller Hosts für Clients angeben. Ein oder zwei genügen.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b26133c64877bcac07d2e8ba10dbee05d4e36d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 762e5ae1782ee037b33156e16a0503ed1e7391ff
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102274"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823729"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Tutorial: Azure Active Directory-Integration von FloQast
 
@@ -112,7 +112,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit FloQast
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://go.floqast.com/login/sso`.
 
-6. Die FloQast-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol  **Bearbeiten**, um die Attribute hinzuzufügen.
+6. Die FloQast-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um die Attribute hinzuzufügen.
 
     ![image](common/edit-attribute.png)
 
@@ -223,7 +223,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-floqast-test-user"></a>Erstellen eines FloQast-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in FloQast einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur FloQast-Plattform vom [FloQast-Supportteam](mailto:support@floqast.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in FloQast einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur FloQast-Plattform ggf. vom [FloQast-Supportteam](mailto:support@floqast.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
