@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d58dc18d5513259d5c01f7ddcc54736796e5c824
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603631"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815941"
 ---
 # <a name="what-is-opc-twin"></a>Was ist OPC-Zwilling?
 
@@ -42,4 +42,4 @@ OPC -Zwilling kann über REST-APIs mit Anwendungen in einer beliebigen Programm
 Nachdem Sie sich hier über OPC-Zwilling und entsprechende Verwendungsmöglichkeiten informiert haben, können Sie mit dem nächsten Thema fortfahren:
 
 > [!div class="nextstepaction"]
-> [OPC Twin-Architektur](overview-opc-twin-architecture.md)
+> [OPC Twin-Architektur](overview-opc-vault.md)

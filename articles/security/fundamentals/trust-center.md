@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: a9c064e55be718109a34d72a2b95f720ac92fe4f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611369"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726527"
 ---
 # <a name="microsoft-trust-center"></a>Microsoft Trust Center
 Die Website für Informationen zur Azure-Sicherheit auf „Azure.com“ enthält die Angaben, die Sie zum sicheren Planen, Entwerfen, Bereitstellen, Konfigurieren und Verwalten Ihrer Cloudlösungen benötigen. Im Microsoft Trust Center finden Sie darüber hinaus die Informationen, mit denen Sie sicherstellen können, dass die Azure-Plattform, auf der Sie Ihre Dienste ausführen, auch sicher ist.

@@ -10,21 +10,22 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: ffb159dc684b4b6663dcb966706d4745ab88a403
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93868bb014809693e7614e74bde7db864de95c04
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61337804"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704965"
 ---
 # <a name="journal-entity"></a>Journalentität
 
 <sub> * Die folgenden Attribute sind spezifisch für die Journalentität. (Ty = '2') </sub>
 
-NAME    |BESCHREIBUNG                            |Type       | Vorgänge
+NAME    |BESCHREIBUNG                            |type       | Vorgänge
 ------- | ------------------------------------- | --------- | ----------------------------
-id      |Entitäts-ID                              |Int64      |Equals
-DJN     |Normalisierter Journalname                |string     |none
-JN      |Journalanzeigename                   |string     |Equals
+Id      |Entitäts-ID                              |Int64      |Equals
+DJN     |Normalisierter Journalname                |Zeichenfolge     |none
+JN      |Journalanzeigename                   |Zeichenfolge     |Equals
 CC      |Gesamtzitatanzahl des Journals           |Int32      |none  
 ECC     |Geschätzte Gesamtzitatanzahl des Journals |Int32      |none

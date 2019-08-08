@@ -10,41 +10,42 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b9431469a7925d26003ad9c34f6b401e5767f6d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875733"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704940"
 ---
 # <a name="paper-entity"></a>Artikelentität
 
 <sub> * Die folgenden Attribute sind spezifisch für die Artikelentität. (Ty = '0') </sub>
 
 
-NAME    |BESCHREIBUNG                                        |Type       | Vorgänge
+NAME    |BESCHREIBUNG                                        |type       | Vorgänge
 ------- | ------------------------------------------------- | --------- | ----------------------------
-id      |Entitäts-ID                                          |Int64      |Equals
-Ti      |Titel des Artikels                                        |string     |Equals,<br/>StartsWith
-L       |Sprachcode des Artikels, getrennt durch „\@\@\@“          |string     |Equals
+Id      |Entitäts-ID                                          |Int64      |Equals
+Ti      |Titel des Artikels                                        |Zeichenfolge     |Equals,<br/>StartsWith
+L       |Sprachcode des Artikels, getrennt durch „\@\@\@“          |Zeichenfolge     |Equals
 J       |Jahr des Artikels                                         |Int32      |Equals,<br/>IsBetween
 D       |Datum des Artikels                                         |Date       |Equals,<br/>IsBetween
 CC      |Anzahl der Zitate                                     |Int32      |none  
 ECC     |Geschätzte Zitatanzahl                           |Int32      |none
-AA.AuN  |Name des Autors                                        |string     |Equals,<br/>StartsWith
+AA.AuN  |Name des Autors                                        |Zeichenfolge     |Equals,<br/>StartsWith
 AA.AuId |ID des Autors                                          |Int64      |Equals
-AA.AfN  |Name der Zugehörigkeit des Autors                            |string     |Equals,<br/>StartsWith
+AA.AfN  |Name der Zugehörigkeit des Autors                            |Zeichenfolge     |Equals,<br/>StartsWith
 AA.AfId |ID der Zugehörigkeit des Autors                              |Int64      |Equals
 AA.S    |Reihenfolge des Autors für das Papier                         |Int32      |Equals
-F.FN    |Name des Forschungsbereichs                                |string     |Equals,<br/>StartsWith
+F.FN    |Name des Forschungsbereichs                                |Zeichenfolge     |Equals,<br/>StartsWith
 F.FId   |ID des Forschungsbereichs                                  |Int64      |Equals
-J.JN    |Name der Publikation                                       |string     |Equals,<br/>StartsWith
+J.JN    |Name der Publikation                                       |Zeichenfolge     |Equals,<br/>StartsWith
 J.JId   |ID der Publikation                                         |Int64      |Equals
-C.CN    |Name der Konferenzreihe                             |string     |Equals,<br/>StartsWith
+C.CN    |Name der Konferenzreihe                             |Zeichenfolge     |Equals,<br/>StartsWith
 C.CId   |ID der Konferenzreihe                               |Int64      |Equals
 RId     |ID der referenzierten Artikel                              |Int64[]    |Equals
 W       |Wörter aus dem Titel und der Zusammenfassung des Artikels                |String[]   |Equals
-E       |Erweiterte Metadaten (siehe Tabelle unten)                |string     |none  
+E       |Erweiterte Metadaten (siehe Tabelle unten)                |Zeichenfolge     |none  
         
 
 

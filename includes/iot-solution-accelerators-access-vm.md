@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814762"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781454"
 ---
 ## <a name="access-the-virtual-machine"></a>Zugriff auf den virtuellen Computer
 
@@ -35,7 +35,7 @@ Die nachstehenden Schritte zeigen, wie Sie den virtuellen Azure-Computer so konf
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    Aktivieren Sie SSH-Zugriff nur während der Test- und Entwicklungsphase. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines).
+    Aktivieren Sie SSH-Zugriff nur während der Test- und Entwicklungsphase. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines).
 
 1. Aktualisieren Sie das Kennwort für das **Azureuser**-Konto auf dem virtuellen Computer in ein Ihnen bekanntes Kennwort. Wählen Sie Ihr eigenes Kennwort aus, wenn Sie den folgenden Befehl ausführen:
 

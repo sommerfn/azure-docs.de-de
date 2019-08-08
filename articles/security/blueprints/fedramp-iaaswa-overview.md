@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0458525eaf985ac6b1ff2afde5726bbac45b4f2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586133"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68778771"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure-Blaupause für Sicherheit und Compliance: IaaS-Webanwendung für FedRAMP
 
@@ -127,7 +127,7 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 
 **Patchverwaltung**: Virtuelle Windows-Computer, die durch diese Azure Security and Compliance Blueprint-Automatisierung bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates von Windows Update Service erhalten. Diese Lösung stellt auch die Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um bei Bedarf Patches auf Windows-Servern bereitzustellen.
 
-**Schutz vor Schadsoftware**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für Virtual Machines bietet Echtzeitschutzfunktionen, mit denen die Identifizierung und Entferung von Viren, Spyware und anderer bösartiger Software ermöglicht wird, mit konfigurierbaren Warnmeldungen, wenn bekannte bösartige oder unerwünschte Software versucht, sich auf geschützten virtuellen Computern zu installieren oder die Ausführung zu starten.
+**Schutz vor Schadsoftware**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) für Virtual Machines bietet Echtzeitschutzfunktionen, mit denen die Identifizierung und Entferung von Viren, Spyware und anderer bösartiger Software ermöglicht wird, mit konfigurierbaren Warnmeldungen, wenn bekannte bösartige oder unerwünschte Software versucht, sich auf geschützten virtuellen Computern zu installieren oder die Ausführung zu starten.
 
 **Application Gateway**: Die Architektur verringert das Risiko von Sicherheitsschwachstellen durch ein Application Gateway mit Web Application Firewall (WAF) und dem aktivierten OWASP-Regelsatz. Weitere Funktionen:
 

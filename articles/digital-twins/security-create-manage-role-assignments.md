@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846659"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815629"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
@@ -41,11 +41,11 @@ In der folgenden Tabelle werden die einzelnen Attribute beschrieben:
 
 | Attribut | NAME | Erforderlich | Typ | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| roleId | Bezeichner der Rollendefinition | Ja | string | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
-| objectId | Objektbezeichner | Ja | string | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
-| objectIdType | Objektbezeichnertyp | Ja | string | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
-| path | Raumpfad | Ja | string | Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
-| tenantId | Mandanten-ID | Varies | string | In den meisten Fällen eine Azure Active Directory-Mandanten-ID. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
+| roleId | Bezeichner der Rollendefinition | Ja | Zeichenfolge | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
+| objectId | Objektbezeichner | Ja | Zeichenfolge | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
+| objectIdType | Objektbezeichnertyp | Ja | Zeichenfolge | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
+| path | Raumpfad | Ja | Zeichenfolge | Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
+| tenantId | Mandanten-ID | Varies | Zeichenfolge | In den meisten Fällen eine Azure Active Directory-Mandanten-ID. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Unterstützte Rollendefinitionsbezeichner
 
@@ -165,10 +165,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parameterwert** | **Erforderlich** |  **Typ** |  **Beschreibung** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | string |   Die objectId für objectIdType „UserId“. |
-| YOUR_PATH | True | string |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |
-| YOUR_ACCESS_TYPE |  True | string |   Der Zugriffstyp, auf den überprüft werden soll. |
-| YOUR_RESOURCE_TYPE | True | string |  Die zu überprüfende Ressource. |
+| YOUR_USER_ID |  True | Zeichenfolge |   Die objectId für objectIdType „UserId“. |
+| YOUR_PATH | True | Zeichenfolge |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |
+| YOUR_ACCESS_TYPE |  True | Zeichenfolge |   Der Zugriffstyp, auf den überprüft werden soll. |
+| YOUR_RESOURCE_TYPE | True | Zeichenfolge |  Die zu überprüfende Ressource. |
 
 Eine erfolgreiche Anforderung gibt einen booleschen `true`- oder `false`-Wert zurück, um anzuzeigen, ob dem Benutzer der Zugriffstyp für den angegebenen Pfad und die Ressource zugewiesen wurde.
 

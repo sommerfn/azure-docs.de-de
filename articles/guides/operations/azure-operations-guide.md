@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b6f5534bc4127e11d7be4b1a52b92a22b75cbb5a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570607"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828094"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -73,7 +73,7 @@ Azure umfasst mehrere PaaS-Computeangebote, z.B. das Web-Apps-Feature von Azure 
 
 #### <a name="saas-software-as-a-service"></a>SaaS: Software-as-a-Service
 
-Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. Normalerweise basiert sie auf einer mehrinstanzenfähigen Architektur, bei der nur eine Version der Anwendung für alle Kunden verwendet wird. Die Software kann horizontal auf mehrere Instanzen hochskaliert werden, um für alle Standorte die beste Leistung zu erzielen. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. SaaS-Softwareanbieter sind für alle Komponenten des Softwarestapels verantwortlich. Sie verwalten also ausschließlich die bereitgestellten Dienste.
+Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. Normalerweise basiert sie auf einer mehrinstanzenfähigen Architektur, bei der nur eine Version der Anwendung für alle Kunden verwendet wird. Die Software kann horizontal auf mehrere Instanzen hochskaliert werden, um für alle Standorte die beste Leistung zu erzielen. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. SaaS-Softwareanbieter sind für alle Komponenten des Softwarestapels verantwortlich. Sie verwalten also ausschließlich die bereitgestellten Dienste.
 
 Microsoft Office 365 ist ein gutes Beispiel für ein SaaS-Angebot. Abonnenten zahlen eine monatliche oder jährliche Abonnementgebühr und können Microsoft Exchange, Microsoft OneDrive und die restlichen Anwendungen der Microsoft Office Suite als Dienst nutzen. Die Abonnenten erhalten immer die aktuelle Version, und die Verwaltung des Exchange-Servers ist inbegriffen. Verglichen mit der jährlichen Office-Installation und -Aktualisierung ist dies kostengünstiger und weniger aufwändig.
 

@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 04/05/2019
-ms.openlocfilehash: f00e9eaf56f3973b357792a8d1923a4b5998e0a2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: df2f536dc95dd74dbae1c8bda1a9934a73fd1fe0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997732"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736492"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Schnellstart: Erstellen einer Azure Data Catalog-Instanz
 
@@ -88,7 +88,7 @@ Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Dom�
 
     ![Azure Data Catalog – Azure durchsuchen](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)
 
-     Der von Ihnen erstellte Datenkatalog wird angezeigt.
+    Der von Ihnen erstellte Datenkatalog wird angezeigt.
 
     ![Azure Data Catalog – Katalog in der Liste anzeigen](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084938"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839234"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -27,19 +27,25 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
 
 ## <a name="capacity_pools"></a>Nutzungsmetriken für Kapazitätspools
 
-- *Zugeordnete Größe des Volumepools*  
-    Dies ist die Größe (GiB) des bereitgestellten Kapazitätspools.  
+<!-- 
+- *Volume pool allocated size*  
+    This is the size (GiB) of the provisioned capacity pool.  
+--> 
 - *Verwendeter zugeordneter Volumepool*  
     Dies ist die Gesamtsumme des Volumekontingents (GiB) eines bestimmten Kapazitätspools (Gesamtsumme der bereitgestellten Größen der Volumes im Kapazitätspool). Diese Größe haben Sie beim Erstellen des Volumes ausgewählt.  
 - *Gesamte logische Größe des Volumepools*  
     Dies ist die Gesamtsumme des logischen Speichers (GiB), der in einem Kapazitätspool volumeübergreifend genutzt wird.  
-- *Größe der Gesamtmomentaufnahme des Volumepools*  
-    Dies ist die Gesamtsumme des inkrementellen logischen Speichers, der von den Momentaufnahmen genutzt wird.  
+<!-- 
+- *Volume pool total snapshot size*  
+    This is the total of incremental logical space used by the snapshots.  
+-->
 
 ## <a name="volumes"></a>Nutzungsmetriken für Volumes
 
-- *Zugeordnete Größe des Volumes*   
-    Dies ist die Größe des bereitgestellten Volumes (Kontingent) in GiB.  
+<!-- 
+- *Volume allocated size*   
+    This is the volume size (quota) provisioned in GiB.  
+--> 
 - *Logische Größe des Volumes*   
     Dies ist der gesamte logische Speicher (GiB), der auf einem Volume genutzt wird. In diesem Größenwert ist der logische Speicherplatz enthalten, der von aktiven Dateisystemen und Momentaufnahmen verwendet wird.  
 - *Größe der Volumemomentaufnahme*   

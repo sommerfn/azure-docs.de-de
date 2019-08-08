@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576858"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812661"
 ---
 # <a name="firewall-tables-overview"></a>Übersicht über Firewalltabellen
 
@@ -53,12 +53,12 @@ Möglicherweise sind weitere Regeln für Datenverkehr in umgekehrter Richtung er
 
 Die folgenden Standardregeln werden in jeder Firewalltabelle erstellt.
 
-|Priorität|NAME|Zustandsnachverfolgung|Direction|Datenverkehrstyp|Protocol|`Source`|Quellport|Ziel|Zielport|Aktion|
+|Priority|NAME|Zustandsnachverfolgung|Direction|Datenverkehrstyp|Protocol|`Source`|Quellport|Ziel|Zielport|Aktion|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Zustandsbehaftet|Ausgehend|Öffentliche IP-Adresse oder Internetdatenverkehr|Alle|Beliebig|Beliebig|Beliebig|Beliebig|ZULASSEN|
-|65001|deny-all-from-internet|Zustandsbehaftet|Eingehend|Öffentliche IP-Adresse oder Internetdatenverkehr|Alle|Beliebig|Beliebig|Beliebig|Beliebig|Verweigern|
-|65002|allow-all-to-intranet|Zustandslos|Ausgehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|Alle|Beliebig|Beliebig|Beliebig|Beliebig|ZULASSEN|
-|65003|allow-all-from-intranet|Zustandslos|Eingehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|Alle|Beliebig|Beliebig|Beliebig|Beliebig|ZULASSEN|
+|65000|allow-all-to-internet|Zustandsbehaftet|Ausgehend|Öffentliche IP-Adresse oder Internetdatenverkehr|Alle|Any|Any|Any|Any|ZULASSEN|
+|65001|deny-all-from-internet|Zustandsbehaftet|Eingehend|Öffentliche IP-Adresse oder Internetdatenverkehr|Alle|Any|Any|Any|Any|Verweigern|
+|65002|allow-all-to-intranet|Zustandslos|Ausgehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|Alle|Any|Any|Any|Any|ZULASSEN|
+|65003|allow-all-from-intranet|Zustandslos|Eingehend|Datenverkehr in privater Cloud oder VPN-Datenverkehr|Alle|Any|Any|Any|Any|ZULASSEN|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

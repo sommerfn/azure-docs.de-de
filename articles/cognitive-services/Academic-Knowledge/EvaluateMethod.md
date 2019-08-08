@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 69e701d6727e5410b71e6cf8fbe20a1cd038ddb0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61339085"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705004"
 ---
 # <a name="evaluate-method"></a>evaluate-Methode
 
@@ -34,7 +35,7 @@ NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 -----------|-----------|---------|--------
 **expr**       | Textzeichenfolge | Ja | Ein Abfrageausdruck, der angibt, welche Entitäten zurückgegeben werden sollen.
 **model**      | Textzeichenfolge | Nein  | Der Name des Modells, das Sie abfragen möchten.  Derzeit wird als Standardwert *latest* verwendet.        
-**attributes** | Textzeichenfolge | Nein<br>Standard: id | Eine durch Kommas getrennte Liste, die die Attributwerte in einer Antwort angibt. Bei den Attributnamen wird zwischen Groß- und Kleinschreibung unterschieden.
+**attributes** | Textzeichenfolge | Nein<br>Standard: Id | Eine durch Kommas getrennte Liste, die die Attributwerte in einer Antwort angibt. Bei den Attributnamen wird zwischen Groß- und Kleinschreibung unterschieden.
 **count**        | Number | Nein<br>Standardwert: 10 | Anzahl der zurückzugebenden Ergebnisse.
 **offset**     | Number |   Nein<br>Standardwert: 0    | Index des ersten zurückzugebenden Ergebnisses.
 **orderby** |   Textzeichenfolge | Nein<br>Standard: by decreasing prob | Name eines Attributs, das für die Sortierung der Entitäten verwendet wird. Optional kann „aufsteigend/absteigend“ angegeben werden. Das Format lautet: *name:asc* or *name:desc*.

@@ -3,16 +3,16 @@ title: Senden von Azure SignalR Service-Ereignissen an Event Grid
 description: Ein Leitfaden, der zeigt, wie Event Grid-Ereignisse für SignalR Service aktiviert und dann Clientverbindungsereignisse vom Typ „Verbunden/Getrennt“ an eine Beispielanwendung gesendet werden.
 services: signalr
 author: chenyl
-ms.service: azure-signalr
+ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: chenyl
-ms.openlocfilehash: 52e4194acd6a3abfed3fabadb892b0de76025b7e
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296859"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839298"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Senden von Ereignissen von Azure SignalR Service an Event Grid
 

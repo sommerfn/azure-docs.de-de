@@ -7,12 +7,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 83a13af1d3a17929591ac636add8d0eb7bc61ef3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 622a033b73ace93e98cfa0d5179002c78ec49b35
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699659"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704482"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -275,10 +275,6 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="where-are-snapshots-stored"></a>
 **Wo werden meine Freigabemomentaufnahmen gespeichert?**  
     Freigabemomentaufnahmen werden im gleichen Speicherkonto gespeichert wie die Dateifreigabe.
-
-* <a id="snapshot-perf-impact"></a>
-**Sind bei der Nutzung von Freigabemomentaufnahmen Auswirkungen auf die Leistung zu erwarten?**  
-    Freigabemomentaufnahmen verursachen kein Leistungsoverhead.
 
 * <a id="snapshot-consistency"></a>
 **Sind Freigabemomentaufnahmen anwendungskonsistent?**  

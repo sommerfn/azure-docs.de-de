@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30025499ae3073a04863d711423bd9556e7fc6c4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578707"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726033"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory
 
@@ -43,7 +43,7 @@ Folgende Eigenschaften werden für den mit SAP Cloud for Customer verknüpften D
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomer**. | Ja |
 | url | Die URL des SAP C4C OData-Diensts. | Ja |
-| userName | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | Ja |
+| username | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Quelle: Nein, Senke: Ja |
 
@@ -94,6 +94,7 @@ Um Daten aus SAP Cloud for Customer zu kopieren, legen Sie die „type“-Eigens
         "typeProperties": {
             "path": "<path e.g. LeadCollection>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP C4C linked service>",
             "type": "LinkedServiceReference"

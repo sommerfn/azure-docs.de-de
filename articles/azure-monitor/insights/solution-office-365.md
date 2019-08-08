@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673045"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741662"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -571,12 +571,12 @@ Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, 
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Anwendung | Die Anwendung, die das Kontoanmeldeereignis auslöst, z.B. Office 15. |
-| Client | Details zum Clientgerät, Betriebssystem des Geräts und Gerätebrowser, das bzw. der für das Kontoanmeldeereignis verwendet wurde. |
-| LoginStatus | Diese Eigenschaft stammt direkt von „OrgIdLogon.LoginStatus“. Die Zuordnung von verschiedenen interessanten Anmeldefehlern könnte durch Warnungsalgorithmen erfolgen. |
-| UserDomain | Die Informationen zur Mandantenidentität (Tenant Identity Information, TII). | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | Die Anwendung, die das Kontoanmeldeereignis auslöst, z.B. Office 15. |
+| `Client` | Details zum Clientgerät, Betriebssystem des Geräts und Gerätebrowser, das bzw. der für das Kontoanmeldeereignis verwendet wurde. |
+| `LoginStatus` | Diese Eigenschaft stammt direkt von „OrgIdLogon.LoginStatus“. Die Zuordnung von verschiedenen interessanten Anmeldefehlern könnte durch Warnungsalgorithmen erfolgen. |
+| `UserDomain` | Die Informationen zur Mandantenidentität (Tenant Identity Information, TII). | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory

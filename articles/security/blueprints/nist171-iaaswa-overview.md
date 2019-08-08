@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: b30094e264086f018acbf84144300df46c60ac4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e5c894cedcbfd006d9406ce2c07fc0b17033d7c
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60610276"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781037"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Vorlage für Azure Security and Compliance: IaaS-Webanwendung gemäß NIST SP 800-171
 
@@ -73,7 +73,7 @@ Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung 
 **Bastionhost**: Der Bastionhost ist der einzelne Zugangspunkt, über den Benutzer Zugriff auf die bereitgestellten Ressourcen in dieser Umgebung erhalten. Der Bastionhost bietet eine sichere Verbindung mit den bereitgestellten Ressourcen, indem nur Remotedatenverkehr von öffentlichen IP-Adressen auf einer Sicherheitsliste zugelassen wird. Damit Remotedesktopprotokoll-Datenverkehr zugelassen wird, muss die Quelle des Datenverkehrs in der Netzwerksicherheitsgruppe (NSG) definiert sein.
 
 Diese Lösung erstellt eine VM als Bastionhost in der Domäne mit den folgenden Konfigurationen:
--   [Antischadsoftware-Erweiterung](https://docs.microsoft.com/azure/security/azure-security-antimalware).
+-   [Antischadsoftware-Erweiterung](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
 -   [Azure-Diagnoseerweiterung](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template).
 -   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) mit Azure Key Vault.
 -   Eine [Richtlinie zum automatischen Herunterfahren](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/), um die Nutzung der VM-Ressourcen zu verringern, wenn diese nicht benötigt werden.
@@ -131,7 +131,7 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf D
 
 **Patchverwaltung**: Windows-VMs, die mit dieser Referenzarchitektur bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung umfasst auch den Dienst [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), über den aktualisierte Bereitstellungen erstellt werden können, um VMs bei Bedarf zu patchen.
 
-**Schutz vor Schadsoftware**: [Microsoft-Antischadsoftware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für VMs bietet eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Kunden können Warnungen konfigurieren, die generiert werden, wenn versucht wird, bekannte Schadsoftware oder unerwünschte Software auf geschützten VMs zu installieren oder auszuführen.
+**Schutz vor Schadsoftware**: [Microsoft-Antischadsoftware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) für VMs bietet eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Kunden können Warnungen konfigurieren, die generiert werden, wenn versucht wird, bekannte Schadsoftware oder unerwünschte Software auf geschützten VMs zu installieren oder auszuführen.
 
 **Azure Security Center**: Mit [Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) können Kunden Sicherheitsrichtlinien über Workloads hinweg zentral anwenden und verwalten, die Angriffsfläche verringern sowie Angriffe erkennen und darauf reagieren. Azure Security Center greift zudem auf die vorhandenen Konfigurationen der Azure-Dienste zu, um Empfehlungen für die Konfiguration und den Dienst bereitzustellen, die zur Verbesserung des Sicherheitsstatus und zum Schutz von Daten beitragen sollen.
 

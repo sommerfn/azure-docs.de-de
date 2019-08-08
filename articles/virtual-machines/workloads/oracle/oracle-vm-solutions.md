@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 70e87a38373688c1b364a079cd07934309662e3e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707437"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826762"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-Images und deren Bereitstellung in Microsoft Azure
 
@@ -87,7 +87,7 @@ Oracle RAC ist so konzipiert, dass der Ausfall eines einzelnen Knotens in einer 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Überlegungen zu Hochverfügbarkeit und Notfallwiederherstellung
 Wenn Sie Oracle-Datenbanken in Azure verwenden, müssen Sie eine Lösung für Hochverfügbarkeit und Notfallwiederherstellung implementieren, um Ausfallzeiten zu vermeiden. 
 
-Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne Abhängigkeit von Oracle RAC) lassen sich in Azure mithilfe von [Data Guard, Active Data Guard](https://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) oder [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei getrennten virtuellen Computern erreichen. Beide virtuellen Computer sollten sich in demselben [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben.  Darüber hinaus wird empfohlen, die virtuellen Computer in derselben Verfügbarkeitsgruppe zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Falls Sie Georedundanz verwenden möchten, richten Sie die zwei Datenbanken so ein, dass sie zwischen verschiedenen Regionen repliziert werden und die zwei Instanzen mit einem VPN Gateway verbinden.
+Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne Abhängigkeit von Oracle RAC) lassen sich in Azure mithilfe von [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) oder [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei getrennten virtuellen Computern erreichen. Beide virtuellen Computer sollten sich in demselben [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben.  Darüber hinaus wird empfohlen, die virtuellen Computer in derselben Verfügbarkeitsgruppe zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können. Falls Sie Georedundanz verwenden möchten, richten Sie die zwei Datenbanken so ein, dass sie zwischen verschiedenen Regionen repliziert werden und die zwei Instanzen mit einem VPN Gateway verbinden.
 
 Das Tutorial [Implementieren von Oracle DataGuard in Azure](configure-oracle-dataguard.md) führt Sie durch die grundlegenden Schritte der Einrichtung unter Azure.  
 

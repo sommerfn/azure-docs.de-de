@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 05a2fb451b3acce1011c1d5f4cf17f0a865d57d0
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332334"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812273"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Verwalten von privaten Cloudressourcen und -aktivitäten
 
@@ -47,7 +47,7 @@ Sie erhalten einen umfassenden Überblick über die ausgewählte private Cloud. 
 * [Purchase nodes](create-nodes.md) (Knoten kaufen): Fügt dieser privaten Cloud Knoten hinzu.
 * [Expand](expand-private-cloud.md) (Erweitern): Fügt dieser privaten Cloud Knoten hinzu.
 * **Refresh** (Aktualisieren): Aktualisiert die Informationen auf dieser Seite.
-* **Delete** (Löschen): Sie können die private Cloud jederzeit löschen. **Stellen Sie vor dem Löschen sicher, dass Sie alle Systeme und Daten gesichert haben.** Beim Löschen einer privaten Cloud werden alle VMs, vCenter-Konfigurationseinstellungen und Daten gelöscht. Klicken Sie im Abschnitt „Summary“ (Zusammenfassung) der ausgewählten privaten Cloud auf **Delete** (Löschen). Danach werden alle Daten der privaten Cloud in einem sehr sicherheitskonformen Löschvorgang entfernt.
+* **Löschen**: Sie können die private Cloud jederzeit löschen. **Stellen Sie vor dem Löschen sicher, dass Sie alle Systeme und Daten gesichert haben.** Beim Löschen einer privaten Cloud werden alle VMs, vCenter-Konfigurationseinstellungen und Daten gelöscht. Klicken Sie im Abschnitt „Summary“ (Zusammenfassung) der ausgewählten privaten Cloud auf **Delete** (Löschen). Danach werden alle Daten der privaten Cloud in einem sehr sicherheitskonformen Löschvorgang entfernt.
 * [Change vSphere privileges](escalate-private-cloud-privileges.md) (vSphere-Berechtigungen ändern):  Erweitert Ihre Berechtigungen in dieser privaten Cloud.
 
 ## <a name="private-cloud-vlanssubnets"></a>VLANS/Subnetze der privaten Cloud
@@ -62,7 +62,7 @@ Sie können die Liste der für die ausgewählte private Cloud definierten VLANs/
 
 Wählen Sie für folgende Aktionen ein VLAN/Subnetz aus:
 * [Attach firewall table](https://docs.azure.cloudsimple.com/firewall/) (Firewalltabelle anfügen): Fügt eine Firewalltabelle an diese private Cloud an.
-* **Edit** (Bearbeiten)
+* **Bearbeiten**
 * **Delete** (Löschen): nur benutzerdefinierte VLANs/Subnetze
 
 ## <a name="private-cloud-activity"></a>Private Cloud – Aktivitäten

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400995"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720727"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopieren von Daten aus Jira mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -47,7 +47,7 @@ Folgende Eigenschaften werden für den mit Jira verknüpften Dienst unterstützt
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Jira** | Ja |
 | host | IP-Adresse oder Hostname des Jira-Diensts. (jira.example.com)  | Ja |
 | port | Der TCP-Port, den der Jira-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 443 bei einer Verbindung über HTTPS oder 8080 bei einer Verbindung über HTTP.  | Nein |
-| userName | Der Benutzername für den Zugriff auf den Jira Service.  | Ja |
+| username | Der Benutzername für den Zugriff auf den Jira Service.  | Ja |
 | password | Das Kennwort, das dem Benutzernamen entspricht, den Sie im Feld „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
@@ -91,11 +91,12 @@ Legen Sie zum Kopieren von Daten aus Jira die „type“-Eigenschaft des Dataset
     "name": "JiraDataset",
     "properties": {
         "type": "JiraObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

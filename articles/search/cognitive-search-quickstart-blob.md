@@ -5,16 +5,16 @@ manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 8f3a1dadaddb423a83f4c3691a4b5747a5196d2a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7bc8bd77ef581134fad0cb2e11277dc4fcee99c4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795334"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841182"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Schnellstart: Erstellen einer KI-basierten Indizierungspipeline unter Verwendung kognitiver Qualifikationen in Azure Search
 
@@ -168,11 +168,11 @@ Schließlich haben Sie gelernt, dass das Anzeigen von Ergebnissen durch Abfragen
 
 ## <a name="clean-up"></a>Bereinigen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können Ressourcen entweder einzeln löschen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu löschen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
-Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unterhalb des Limits zu bleiben. 
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

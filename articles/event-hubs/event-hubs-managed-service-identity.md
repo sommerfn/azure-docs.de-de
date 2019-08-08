@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbef1db94d7835bd9326102bd62921c6b3d88d74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978462"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707066"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Verwaltete Identitäten für Azure-Ressourcen mit Azure Event Hubs
 
@@ -80,7 +80,7 @@ Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, un
 
 ### <a name="run-the-app"></a>Ausführen der App
 
-Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können auch den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp) verwenden. 
+Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können auch den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp) verwenden. 
 
 Nachdem Sie die App gestartet haben, zeigen Sie in Ihrem Browser auf „EventHubsMSIDemo.aspx“. Sie können die Seite auch als Startseite festlegen. Sie finden den Code in der Datei „EventHubsMSIDemo.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Event Hubs hergestellt wird, um Ereignisse zu senden oder zu empfangen. 
 

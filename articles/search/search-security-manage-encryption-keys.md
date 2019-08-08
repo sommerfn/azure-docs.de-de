@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 949628fa52b4b020d70b75f4a0e7895f1e0f8bba
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9d4494cb46bece7402b1284ee6324ca9ff86e0f3
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485315"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779106"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Verschlüsselung in Azure Search mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
@@ -23,7 +23,7 @@ ms.locfileid: "67485315"
 >
 > Dieses Feature ist nicht für kostenlose Dienste verfügbar. Sie müssen einen abrechenbaren Suchdienst verwenden, der am bzw. nach 1.1.2019 erstellt wurde. Für das Portal ist derzeit noch keine Unterstützung vorhanden.
 
-Standardmäßig werden in Azure Search ruhende Benutzerinhalte mit [dienstseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models) verschlüsselt. Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel werden die entsprechenden Schritte beschrieben.
+Standardmäßig werden in Azure Search ruhende Benutzerinhalte mit [dienstseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models) verschlüsselt. Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel werden die entsprechenden Schritte beschrieben.
 
 Die serverseitige Verschlüsselung wird durch die Integration in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) unterstützt. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen. 
 
@@ -239,4 +239,4 @@ So erstellen Sie eine AAD-Anwendung im Portal
 Wenn Sie nicht mit der Azure-Sicherheitsarchitektur vertraut sind, finden Sie entsprechende Informationen in der [Dokumentation zur Azure-Sicherheit](https://docs.microsoft.com/azure/security/) und insbesondere in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+> [Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

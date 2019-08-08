@@ -5,22 +5,20 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/05/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4afe5c89a83f251ee354c955b6dc28b0bccc9e6c
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: bdf841738296f0d23bec5d68a0ad1ca0401facfb
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561125"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812392"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
-
-## <a name="overview"></a>Übersicht
 
 Die Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) für Azure ermöglicht Organisationen, ihre RADIUS-Clientauthentifizierung (Remote Authentication Dial-in User Service) mit cloudbasierter [Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md) zu schützen, die eine zweistufige Überprüfung bietet.
 

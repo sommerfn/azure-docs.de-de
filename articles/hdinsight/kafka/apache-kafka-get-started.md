@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150906"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779527"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal
 
@@ -45,7 +45,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
     | Einstellung | Wert |
     | --- | --- |
     | Clustername | Einen eindeutigen Namen für den HDInsight-Cluster. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
     
    Wählen Sie __Clustertyp__ aus, um die **Clusterkonfiguration** zu öffnen.
    
@@ -122,7 +122,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
     Nach der Verbindungsherstellung sehen die angezeigten Informationen in etwa wie folgt aus:
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -140,7 +140,6 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
     Welcome to Apache Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
 ## <a id="getkafkainfo"></a>Beschaffen der Apache Zookeeper- und Broker-Hostinformationen

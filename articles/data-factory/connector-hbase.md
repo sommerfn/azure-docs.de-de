@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3bc91b1c20bb4cf4ae755ca47c8d8e0581eb3a1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc13a1d0a7710a9f96110f1516fe2e48d538fe7e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400710"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720764"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopieren von Daten aus HBase mithilfe von Azure Data Factory 
 
@@ -46,7 +46,7 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 | port | Der TCP-Port, den die HBase-Instanz verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 9090. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Nein |
 | httpPath | Die Teil-URL für den HBase-Server, z.B. `/hbaserest0` bei Verwendung von HDInsight-Clustern. | Nein |
 | authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem HBase-Server verwendet werden soll. <br/>Zulässige Werte sind: **Anonymous**, **Basic** | Ja |
-| userName | Der Benutzername, der für die Verbindung mit der HBase-Instanz verwendet wird.  | Nein |
+| username | Der Benutzername, der für die Verbindung mit der HBase-Instanz verwendet wird.  | Nein |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
 | trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über SSL. Diese Eigenschaft kann nur festgelegt werden, wenn SSL in einer selbstgehostetem IR verwendet wird. Der Standardwert ist die Datei „cacerts.pem“, die mit der IR installiert wird.  | Nein |
@@ -132,11 +132,12 @@ Legen Sie zum Kopieren von Daten aus HBase die „type“-Eigenschaft des Datase
     "name": "HBaseDataset",
     "properties": {
         "type": "HBaseObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<HBase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

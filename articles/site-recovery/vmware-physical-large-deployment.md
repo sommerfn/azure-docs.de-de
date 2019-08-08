@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237278"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782655"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -129,7 +129,7 @@ Die Kapazität des Konfigurationsservers wird durch die Anzahl der Computer beei
 
 **CPU** | **Memory** | **Cachedatenträger** | **Grenzwert für replizierte Computer**
  --- | --- | --- | ---
-8 vCPUs<br> 2 Sockets * 4 Kerne mit 2,5 GHz | 16 GB | 600 TB | Bis zu 550 Computer<br> Es wird angenommen, dass jeder Computer über drei Datenträger mit jeweils 100 GB verfügt.
+8 vCPUs<br> 2 Sockets * 4 Kerne mit 2,5 GHz | 16 GB | 600 GB | Bis zu 550 Computer<br> Es wird angenommen, dass jeder Computer über drei Datenträger mit jeweils 100 GB verfügt.
 
 - Diese Grenzwerte basieren auf einem Konfigurationsserver, der mithilfe einer OVF-Vorlage eingerichtet wird.
 - Für die Grenzwerte wird angenommen, dass Sie nicht den Prozessserver verwenden, der standardmäßig auf dem Konfigurationsserver ausgeführt wird.

@@ -1,18 +1,17 @@
 ---
 title: Schützen des Zugriffs auf Azure Data Catalog
 description: In diesem Artikel wird erläutert, wie Data Catalog und seine Datenobjekte geschützt werden.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: c6c99eb62ba628ffc8c84799a6729540b572c580
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61000752"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736398"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Schützen des Zugriffs auf Data Catalog und Datenobjekte
 > [!IMPORTANT]

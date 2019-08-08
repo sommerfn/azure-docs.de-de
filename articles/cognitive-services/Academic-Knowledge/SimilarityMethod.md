@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 855d29d2c55b841bbbe4e9eadce8c29ad85fad90
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61336516"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704852"
 ---
 # <a name="similarity-method"></a>similarity-Methode
 
@@ -31,8 +32,8 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 
 Parameter        |Datentyp      |Erforderlich | BESCHREIBUNG
 ----------|----------|----------|------------
-**s1**        |string   |Ja  |Zu vergleichende Zeichenfolge*
-**s2**        |string   |Ja  |Zu vergleichende Zeichenfolge*
+**s1**        |Zeichenfolge   |Ja  |Zu vergleichende Zeichenfolge*
+**s2**        |Zeichenfolge   |Ja  |Zu vergleichende Zeichenfolge*
 
 <sub> *Zu vergleichende Zeichenfolgen haben eine maximale Länge von 1 MB. </sub>
 <br>

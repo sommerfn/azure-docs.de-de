@@ -7,17 +7,18 @@ ms.author: terrylan
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653263"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780561"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -98,9 +99,9 @@ Falls die Anwendung Kennwörter automatisch generieren muss, stellen Sie sicher,
 
 Wenn Ihre Anwendung [Dateiuploads](https://www.owasp.org/index.php/Unrestricted_File_Upload) zulässt, erwägen Sie Vorsichtsmaßnahmen, die Sie für diese riskante Aktivität ergreifen können. Bei vielen Angriffen besteht der erste Schritt darin, bösartigen Code in ein System einzuschleusen, das angegriffen wird. Die Verwendung eines Dateiuploads hilft dem Angreifer, dies zu erreichen. OWASP bietet Lösungen zum Überprüfen einer Datei, um sicherzustellen, dass die Datei, die Sie hochladen, sicher ist.
 
-Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) und [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) installieren.
+Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) und [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) installieren.
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Schadsoftwarebehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlung von Ausschlussereignissen. Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) integrieren.
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Schadsoftwarebehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlung von Ausschlussereignissen. Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) integrieren.
 
 ### <a name="dont-cache-sensitive-content"></a>Speichern Sie keine vertraulichen Inhalte zwischen.
 
@@ -127,7 +128,7 @@ Dynamische Anwendungssicherheitstests (DAST) sind ein Prozess des Testens einer 
 
 DAST unterscheidet sich von statischen Anwendungssicherheitstests (SAST). SAST-Tools analysieren Quellcode oder kompilierte Versionen von Code, wenn der Code nicht ausgeführt wird, um Sicherheitslücken zu finden.
 
-Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten (einem [Penetrationtester](https://docs.microsoft.com/azure/security/azure-security-pen-testing) oder Sicherheitsrisikobewerter). Wenn kein Sicherheitsexperte verfügbar ist, können Sie DAST selber mit einem Webproxyscanner und ein wenig Schulung und Übung ausführen. Binden Sie einen DAST-Scanner zu einem möglichst führen Zeitpunkt ein, um sicherzustellen, dass Sie keine offensichtlichen Sicherheitsprobleme in Ihren Code einführen. Eine Liste von Scannern für Sicherheitsrisiken in Webanwendungen finden Sie auf der [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)-Site.
+Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten (einem [Penetrationtester](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) oder Sicherheitsrisikobewerter). Wenn kein Sicherheitsexperte verfügbar ist, können Sie DAST selber mit einem Webproxyscanner und ein wenig Schulung und Übung ausführen. Binden Sie einen DAST-Scanner zu einem möglichst führen Zeitpunkt ein, um sicherzustellen, dass Sie keine offensichtlichen Sicherheitsprobleme in Ihren Code einführen. Eine Liste von Scannern für Sicherheitsrisiken in Webanwendungen finden Sie auf der [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)-Site.
 
 ### <a name="perform-fuzz-testing"></a>Durchführen von Fuzzing
 
@@ -143,7 +144,7 @@ Sie können sich ein Bild von der Angriffsfläche machen, indem Sie die Anwendun
 
 ### <a name="perform-security-penetration-testing"></a>Ausführen von Penetrationstests
 
-Die Bereitstellung von Anwendungssicherheit ist genauso wichtig wie das Testen jeder anderen Funktionalität. Richten Sie [Penetrationstests](https://docs.microsoft.com/azure/security/azure-security-pen-testing) als standardmäßigen Bestandteil des Build- und Bereitstellungsprozesses ein. Planen Sie regelmäßige Sicherheitstests und Überprüfungen auf Sicherheitsrisiken für bereitgestellte Anwendungen, und überwachen Sie das System auf offene Ports, Endpunkte und Angriffe.
+Die Bereitstellung von Anwendungssicherheit ist genauso wichtig wie das Testen jeder anderen Funktionalität. Richten Sie [Penetrationstests](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) als standardmäßigen Bestandteil des Build- und Bereitstellungsprozesses ein. Planen Sie regelmäßige Sicherheitstests und Überprüfungen auf Sicherheitsrisiken für bereitgestellte Anwendungen, und überwachen Sie das System auf offene Ports, Endpunkte und Angriffe.
 
 ### <a name="run-security-verification-tests"></a>Ausführen von Sicherheitsüberprüfungstests
 

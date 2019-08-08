@@ -7,12 +7,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 06/16/2019
 ms.author: bwren
-ms.openlocfilehash: e243ebbc31f9e941678ac76a83738276995b5ba1
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296852"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813845"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.
@@ -46,7 +46,7 @@ union withsource = table *
 Weitere Details zu den Tabellen, die erstellt werden, finden Sie in der Dokumentation für jede Datenquelle. Die Beispiele enthalten Artikel zu [ Agent-Datenquellen](../platform/agent-data-sources.md), [Diagnoseprotokollen](../platform/diagnostic-logs-schema.md) und [Überwachungslösungen](../insights/solutions-inventory.md).
 
 ### <a name="workspace-permissions"></a>Arbeitsbereichberechtigungen
-Weitere Details zum Erteilen des Zugriffs auf Daten in einem Arbeitsbereich finden Sie unter [Arbeitsbereichberechtigungen und Bereich](../platform/manage-access.md#workspace-permissions-and-scope). Zusätzlich zum Erteilen des Zugriffs auf den Arbeitsbereich selbst können Sie mithilfe von [RBAC auf Tabellenebene](../platform/manage-access.md#table-level-rbac) den Zugriff auf einzelne Tabellen beschränken.
+Weitere Details zum Erteilen des Zugriffs auf Daten in einem Arbeitsbereich finden Sie unter [Arbeitsbereichberechtigungen und Bereich](../platform/manage-access.md#manage-accounts-and-users). Zusätzlich zum Erteilen des Zugriffs auf den Arbeitsbereich selbst können Sie mithilfe von [RBAC auf Tabellenebene](../platform/manage-access.md#table-level-rbac) den Zugriff auf einzelne Tabellen beschränken.
 
 ## <a name="application-insights-application"></a>Application Insights-Anwendung
 Wenn Sie eine Anwendung in Application Insights erstellen, wird in Azure Monitor-Protokollen automatisch eine entsprechende Anwendung erstellt. Für das Sammeln von Daten ist keine Konfiguration erforderlich, und die Anwendung schreibt automatisch Überwachungsdaten wie Seitenansichten, Anforderungen und Ausnahmen.

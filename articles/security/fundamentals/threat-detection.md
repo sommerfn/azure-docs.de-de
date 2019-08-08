@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5bcd17c841c3c8d981e7540172d9ca691f6ee9e8
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610677"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780609"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
@@ -215,7 +216,7 @@ Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebni
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuelle Computer: Microsoft Antimalware
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für Azure ist eine Lösung mit einem einzelnen Agent für Anwendungen und Mandantenumgebungen, die im Hintergrund ohne Eingreifen des Benutzers ausgeführt wird. Sie können Schutz basierend auf den Anforderungen der Anwendungsworkloads bereitstellen, entweder mit der einfachen Konfiguration, die Schutz durch die Standardeinstellungen bietet, oder mit einer erweiterten benutzerdefinierten Konfiguration, einschließlich Antischadsoftwareüberwachung. Azure-Antischadsoftware ist eine Sicherheitsoption für virtuelle Azure-Computer, die automatisch auf allen virtuellen Azure-PaaS-Computern installiert wird.
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) für Azure ist eine Lösung mit einem einzelnen Agent für Anwendungen und Mandantenumgebungen, die im Hintergrund ohne Eingreifen des Benutzers ausgeführt wird. Sie können Schutz basierend auf den Anforderungen der Anwendungsworkloads bereitstellen, entweder mit der einfachen Konfiguration, die Schutz durch die Standardeinstellungen bietet, oder mit einer erweiterten benutzerdefinierten Konfiguration, einschließlich Antischadsoftwareüberwachung. Azure-Antischadsoftware ist eine Sicherheitsoption für virtuelle Azure-Computer, die automatisch auf allen virtuellen Azure-PaaS-Computern installiert wird.
 
 #### <a name="microsoft-antimalware-core-features"></a>Kernfeatures von Microsoft Antimalware
 

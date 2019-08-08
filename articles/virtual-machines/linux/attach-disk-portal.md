@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 162857ed1b22edf67b44cb4648607103cf733c7d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: f4933369f20d7f39cc4718e367552bfe1d7574e8
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671845"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774336"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -100,6 +100,9 @@ Hier ist *sdc* der Datenträger, den wir möchten.
 
 ### <a name="partition-a-new-disk"></a>Partitionieren eines neuen Datenträgers
 Wenn Sie einen vorhandenen Datenträger verwenden, der Daten enthält, überspringen Sie die Schritte bis zum Einbinden des Datenträgers. Wenn Sie einen neuen Datenträger anfügen, müssen Sie den Datenträger partitionieren.
+
+> [!NOTE]
+> Es wird empfohlen, dass Sie die neuesten Versionen von „fdisk“ oder „parted“ verwenden, die für Ihre Distribution verfügbar sind.
 
 Partitionieren Sie den Datenträger mit `fdisk`. Wenn der Datenträger 2 Tebibyte (TiB) oder größer ist, müssen Sie die GPT-Partitionierung verwenden. Die GPT-Partitionierung können Sie mithilfe von `parted` ausführen. Wenn die Größe des Datenträgers unter 2 TiB liegt, können Sie die MBR- oder die GPT-Partitionierung verwenden. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte. Das folgende Beispiel startet den `fdisk` -Prozess auf */dev/sdc*:
 

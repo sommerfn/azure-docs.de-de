@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 67720256cfac68c350c800291653a4a0c1d7ee46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63768b83baafe00348a28c5c9c99e5f16619ac99
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427817"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815928"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -82,7 +82,7 @@ Die Zertifikatserstellung kann manuell oder über einen „Self“-Zertifikataus
 |Anbieter|Zertifikattyp|  
 |--------------|----------------------|  
 |DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert|
-|GlobalCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit Globaltrust |
+|GlobalSign|Key Vault bietet OV- oder EV-SSL-Zertifikate mit GlobalSign|
 
  Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
 

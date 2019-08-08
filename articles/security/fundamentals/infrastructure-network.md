@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
-ms.openlocfilehash: 3bb4addfcb5cd40eb3c98f4cec065dbe2e52246c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: c4756c36c2243840df69f3696e7ddac3628f3a00
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610997"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727172"
 ---
 # <a name="azure-network-architecture"></a>Azure-Netzwerkarchitektur
 Die Netzwerkarchitektur von Azure beruht auf einer geänderten Version des als Branchenstandard geltenden Kern-, Verteilungs- und Zugriffsmodells und verfügt über unterschiedliche Hardwareschichten (Layer). Zu diesen Layern zählen:

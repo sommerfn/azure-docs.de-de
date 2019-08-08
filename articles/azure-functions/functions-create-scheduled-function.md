@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a6b1e4e1571e6ce3cee1658907efd35e9c73ca1a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 7ac87000a6bbe7515106b42f57f9184396ed4168
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903394"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735669"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
 
@@ -58,7 +58,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
     | Einstellung | Empfohlener Wert | Beschreibung |
     |---|---|---|
     | **Name** | Standard | Definiert den Namen der Funktion mit Auslösung per Timer |
-    | **Zeitplan** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](functions-bindings-timer.md#cron-expressions), der die minütliche Ausführung der Funktion festlegt. |
+    | **Zeitplan** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](functions-bindings-timer.md#ncrontab-expressions), der die minütliche Ausführung der Funktion festlegt. |
 
 4. Klicken Sie auf **Create**. Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
 

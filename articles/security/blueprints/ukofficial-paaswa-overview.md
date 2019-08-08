@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753861"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780659"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -95,7 +95,7 @@ Daten, die von außerhalb und zwischen Azure-Komponenten übertragen werden, sin
 
 Bei [Azure-Ratgeber](https://docs.microsoft.com/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Sie wird standardmäßig in der zugrunde liegenden PaaS-VM-Infrastruktur installiert und über die Azure-Fabric auf transparente Weise für den Kunden verwaltet.
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Sie wird standardmäßig in der zugrunde liegenden PaaS-VM-Infrastruktur installiert und über die Azure-Fabric auf transparente Weise für den Kunden verwaltet.
 
 ### <a name="paas-services-in-this-blueprint"></a>PaaS-Dienste in dieser Vorlage
 

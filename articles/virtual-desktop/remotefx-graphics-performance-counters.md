@@ -2,17 +2,17 @@
 title: Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop – Azure
 description: Dieser Artikel beschreibt, wie Sie Leistungsindikatoren in RemoteFX-Grafik in Remotedesktopprotokoll-Sitzungen verwenden, um Leistungsprobleme mit Grafiken in Windows Virtual Desktop zu diagnostizieren.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 8cd24861b9d7432a582d1b635b8ffcf0d8d2b9e6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.author: helohr
+ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233625"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816406"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop
 

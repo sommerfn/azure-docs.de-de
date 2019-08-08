@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 2acfa65ff45b94b7ca0990b79f5c3f128334829c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611521"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828730"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -117,7 +118,7 @@ Anhand der Sicherheitsbewertung, die auf CIS-Steuerelementen (Center for Interne
 **Detail**: Die meisten Organisationen mit einer SIEM-Lösung verwenden diese als ein zentrales Clearinghouse für Sicherheitswarnungen, die eine Analystenantwort erfordern. Von Security Center erzeugte verarbeitete Ereignisse werden im Azure-Aktivitätsprotokoll veröffentlicht, einem der über Azure Monitor verfügbaren Protokolle. Azure Monitor bietet eine konsolidierte Pipeline zum Routing beliebiger Überwachungsdaten zu einem SIEM-Tool. Anweisungen finden Sie unter [Integrieren von Sicherheitslösungen in Azure Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem). Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Bewährte Methode**: Integrieren von Azure-Protokollen in Ihr SIEM-System.   
-**Detail**: Verwenden Sie [Azure Monitor zum Sammeln und Exportieren von Daten](/azure/azure-monitor/overview.md#integrate-and-export-data). Diese Vorgehensweise ist wichtig, damit Sicherheitsincidents untersucht werden können. Außerdem ist die Aufbewahrung von Onlineprotokollen beschränkt. Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Datenquellen](../../sentinel/connect-data-sources.md).
+**Detail**: Verwenden Sie [Azure Monitor zum Sammeln und Exportieren von Daten](/azure/azure-monitor/overview#integrate-and-export-data). Diese Vorgehensweise ist wichtig, damit Sicherheitsincidents untersucht werden können. Außerdem ist die Aufbewahrung von Onlineprotokollen beschränkt. Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Datenquellen](../../sentinel/connect-data-sources.md).
 
 **Bewährte Methode**: Beschleunigen Sie Ihre Untersuchungs- und Ermittlungsprozesse, und verringern Sie falsch positive Ergebnisse durch Integration von Funktionen für Endpoint Detection and Response (EDR) in Ihre Untersuchung von Angriffen.   
 **Detail**: [Aktivieren Sie die ATP-Integration von Windows Defender](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) über Ihre Security Center-Sicherheitsrichtlinie. Ziehen Sie die Verwendung von Azure Sentinel zur Ermittlung von Bedrohungen und für die Reaktion auf Incidents in Betracht.

@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 1dd9d9d4fc47f13f275e3be87ad282640840f873
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611621"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727074"
 ---
 # <a name="azure-infrastructure-security"></a>Sicherheit der Azure-Infrastruktur
 Microsoft Azure wird in Rechenzentren ausgeführt, die von Microsoft verwaltet und betrieben werden. Diese geografisch voneinander getrennten Rechenzentren erfüllen die wichtigsten Branchenstandards, wie etwa ISO/IEC 27001:2013 und NIST SP 800-53, bezüglich Sicherheit und Zuverlässigkeit. Die Rechenzentren werden von Microsoft-Betriebspersonal verwaltet und überwacht. Das Betriebspersonal verfügt über langjährige Erfahrung in der Bereitstellung der weltweit größten Onlinedienste, die jeden Tag rund um die Uhr verfügbar sind.
@@ -44,7 +45,7 @@ Es ist wichtig, die Aufteilung der Zuständigkeit zwischen Ihnen und Microsoft z
 
 Sie tragen stets die Verantwortung für die folgenden Elemente, unabhängig von der Art der Bereitstellung:
 
-- Daten
+- Data
 - Endpunkte
 - Konto
 - Zugriffsverwaltung

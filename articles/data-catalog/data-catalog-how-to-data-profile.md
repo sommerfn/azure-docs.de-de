@@ -1,19 +1,17 @@
 ---
 title: Verwenden der Profilerstellung für Datenquellen in Azure Data Catalog
 description: Anleitungsartikel, in dem beschrieben wird, wie Sie beim Registrieren von Datenquellen in Azure Data Catalog Datenprofile auf Tabellen- und Spaltenebene hinzufügen und Datenprofile zum Nachvollziehen von Datenquellen verwenden.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 64185a951b25b4e04ea5fc65aeede9b0e617d0c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 0de7b6f0668c84c22b81cd9104a49599760143c1
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001698"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737030"
 ---
 # <a name="data-profile-data-sources"></a>Datenprofil-Datenquellen
 ## <a name="introduction"></a>Einführung

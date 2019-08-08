@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0e8881607fe4dc84a7d533855dc2b9c48e5366d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640088"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726183"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -58,7 +58,7 @@ Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterst
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein (Standard = 9042) |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit der Cassandra-Datenbank.<br/>Zulässige Werte sind: **Standard** und **Anonym**. |Ja |
-| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -108,13 +108,14 @@ Legen Sie zum Kopieren von Daten aus Cassandra die type-Eigenschaft des Datasets
     "name": "CassandraDataset",
     "properties": {
         "type": "CassandraTable",
-        "linkedServiceName": {
-            "referenceName": "<Cassandra linked service name>",
-            "type": "LinkedServiceReference"
-        },
         "typeProperties": {
             "keySpace": "<keyspace name>",
             "tableName": "<table name>"
+        },
+        "schema": [],
+        "linkedServiceName": {
+            "referenceName": "<Cassandra linked service name>",
+            "type": "LinkedServiceReference"
         }
     }
 }
@@ -177,13 +178,13 @@ Beim Kopieren von Daten aus Cassandra werden die folgenden Zuordnungen von Cassa
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | Boolean |Boolean |
-| Decimal |Decimal |
+| DECIMAL |Decimal |
 | Double |Double |
 | FLOAT |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| TIMESTAMP |DateTime |
+| TIMESTAMP |Datetime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |

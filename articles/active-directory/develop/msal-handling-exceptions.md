@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 30ab8a3fec459bef1a85c44e9a7cdb91b541fa2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c294e3bd8ac04454c2d715c665e0da4f9a4f4535
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111373"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835029"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Behandeln von Ausnahmen und Fehlern mit MSAL
 Ausnahmen in der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) sind für App-Entwickler vorgesehen, die eine Problembehandlung durchführen, und nicht für Endbenutzer. Ausnahmemeldungen sind nicht lokalisiert.

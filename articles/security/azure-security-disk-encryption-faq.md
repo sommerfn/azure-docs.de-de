@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4f2a34e63a870814c8d2a3ffe24c60083c9d7bb2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653383"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781107"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption für virtuelle IaaS-Computer – FAQ
 
@@ -110,7 +110,7 @@ Der folgende Workflow wird empfohlen, um unter Linux die besten Ergebnisse zu er
 
 Ist dieser Workflow nicht möglich, stellt die [Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE, Speicherdienstverschlüsselung) auf der Ebene des Plattformspeicherkontos möglicherweise eine Alternative zur vollständigen Datenträgerverschlüsselung mit „dm-crypt“ dar.
 
-## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>Um was handelt es sich beim Datenträger „Bek Volume“ bzw. „/mnt/azure_bek_disk“?
+## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>Um was handelt es sich beim Datenträger „Bek Volume“ bzw. „/mnt/azure_bek_disk“?
 
 „Bek volume“ für Windows oder „/mnt/azure_bek_disk“ für Linux ist ein lokales Datenvolume, auf dem die Verschlüsselungsschlüssel für verschlüsselte Azure-IaaS-VMs sicher gespeichert werden.
 > [!NOTE]
@@ -140,4 +140,4 @@ In diesem Artikel haben Sie Antworten auf die am häufigsten gestellten Fragen i
 
 - [Übersicht über Azure Disk Encryption](azure-security-disk-encryption-overview.md)
 - [Anwenden der Datenträgerverschlüsselung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Datenverschlüsselung ruhender Azure-Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [Datenverschlüsselung ruhender Azure-Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

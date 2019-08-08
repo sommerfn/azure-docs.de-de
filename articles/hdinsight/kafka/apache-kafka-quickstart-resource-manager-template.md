@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 5f2a959bcea533174feedb324cecf20ca12bd39b
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137196"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780777"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage
 
@@ -40,8 +40,8 @@ Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbi
 
     | Eigenschaft | Wert |
     | --- | --- |
-    | Abonnement | Ihr Azure-Abonnement. |
-    | Ressourcengruppe | Die Ressourcengruppe, in der der Cluster erstellt wird. |
+    | Subscription | Ihr Azure-Abonnement. |
+    | Resource group | Die Ressourcengruppe, in der der Cluster erstellt wird. |
     | Location | Die Azure-Region, in der der Cluster erstellt wird. |
     | Clustername | Der Name des Kafka-Clusters. |
     | Benutzername für Clusteranmeldung | Der Kontoname, der zum Anmelden bei im Cluster gehosteten HTTPs-basierten Diensten verwendet wird. |
@@ -67,7 +67,7 @@ Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbi
 
     Nach der Verbindungsherstellung sehen die angezeigten Informationen in etwa wie folgt aus:
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -85,7 +85,6 @@ Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbi
     Welcome to Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
 ## <a id="getkafkainfo"></a>Beschaffen der Apache Zookeeper- und Broker-Hostinformationen

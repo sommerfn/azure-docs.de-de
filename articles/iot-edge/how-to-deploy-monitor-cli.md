@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 61a3c1cdccf01b266581a13fe3c660bd57f59b2c
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 2601d05c5d2302bedb51e959747939aa3c33db44
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796202"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839629"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -80,7 +80,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
             }
           },
           "modules": {
-            "tempSensor": {
+            "SimulatedTemperatureSensor": {
               "version": "1.0",
               "type": "docker",
               "status": "running",
@@ -104,7 +104,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
           }
         }
       },
-      "tempSensor": {
+      "SimulatedTemperatureSensor": {
         "properties.desired": {}
       }
     }

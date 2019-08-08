@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ef8f80f44c921cc1f2524351c8acb78ebd713bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4ea3c93daac1ebb88bae2b8cb01485d955be2bb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153550"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726211"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -205,12 +205,13 @@ Legen Sie zum Kopieren von Daten aus und nach Azure Table Storage die type-Eigen
     "properties":
     {
         "type": "AzureTable",
+        "typeProperties": {
+            "tableName": "MyTable"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Table storage linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "MyTable"
         }
     }
 }
@@ -334,12 +335,12 @@ Beim Verschieben von Daten von und nach Azure Table werden die folgenden [von Az
 |:--- |:--- |:--- |
 | Edm.Binary |Byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
 | Edm.Boolean |bool |Ein boolescher Wert. |
-| Edm.DateTime |DateTime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt am 1. Januar 1601 n. Chr um Mitternacht. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
+| Edm.DateTime |Datetime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt am 1. Januar 1601 n. Chr um Mitternacht. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double |double |Ein 64-Bit-Gleitkommawert. |
 | Edm.Guid |Guid |Ein 128-Bit-GUID. |
 | Edm.Int32 |Int32 |Eine 32-Bit-Ganzzahl. |
 | Edm.Int64 |Int64 |Eine 64-Bit-Ganzzahl. |
-| Edm.String |string |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64 KB groß sein. |
+| Edm.String |Zeichenfolge |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64 KB groß sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

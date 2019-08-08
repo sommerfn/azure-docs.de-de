@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 831ba47ea4e999219a6d8cf34cb5fb0fdcd1ead8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594960"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779673"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -143,7 +143,7 @@ Das folgende Beispiel: **Beispiel A: Notfallplan-CA-Richtlinie, um den Zugriff a
   * Name: EM001 – IM NOTFALL AKTIVIEREN: MFA-Unterbrechung[1/4] – Exchange SharePoint – Azure AD Hybrid Join erforderlich
   * Benutzer und Gruppen: ContingencyAccess einbeziehen. CoreAdmins und EmergencyAccess ausschließen.
   * Cloud-Apps: Exchange Online und SharePoint Online
-  * Bedingungen: Beliebig
+  * Bedingungen: Any
   * Steuerelement zur Rechteerteilung: Einbindung in Domäne voraussetzen.
   * Status: Deaktiviert
 * Richtlinie 2: Andere Plattformen als Windows blockieren.
@@ -210,7 +210,7 @@ Eine Benutzersperre kann auch auftreten, wenn die folgenden Bedingungen erfüllt
 - Ihre Organisation verwendet eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbund.
 - Ihre lokalen Identitätsysteme (z.B. Active Directory, AD FS oder eine abhängige Komponente) sind nicht verfügbar. 
  
-Für höhere Stabilität sollte Ihre Organisation [Kennworthash-Synchronisierung aktivieren](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), da Sie zur [Verwendung der Kennworthash-Synchronisierung wechseln](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) können, wenn Ihre lokalen Identitätssysteme nicht verfügbar sind.
+Für höhere Stabilität sollte Ihre Organisation [Kennworthash-Synchronisierung aktivieren](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), da Sie zur [Verwendung der Kennworthash-Synchronisierung wechseln](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) können, wenn Ihre lokalen Identitätssysteme nicht verfügbar sind.
 
 #### <a name="microsoft-recommendations"></a>Empfehlungen von Microsoft
  Aktivieren Sie die Kennworthash-Synchronisierung mit dem Azure AD Connect-Assistenten unabhängig davon, ob Ihre Organisation Verbund oder Pass-Through-Authentifizierung verwendet.

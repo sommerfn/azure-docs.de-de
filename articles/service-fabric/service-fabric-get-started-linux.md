@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49e80c3fc8935064aceef8ef4e2bd3257c41e5e7
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514201"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828510"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -106,8 +106,8 @@ Um das SDK und das dazugehörige Runtimepaket über das Befehlszeilenprogramm �
 7. Fügen Sie Ihrem APT-Schlüsselbund den Azul JDK-Schlüssel hinzu, und richten Sie sein Repository ein.
 
     ```bash
-    curl -fsSL https://repos.azul.com/azul-repo.key | sudo apt-key add -
-    sudo add-apt-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
 8. Aktualisieren Sie Ihre Paketlisten auf der Grundlage der neu hinzugefügten Repositorys.

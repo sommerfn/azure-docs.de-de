@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 43254db734a48f3e7aaa5a26a7fbf3981c9e9d87
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ef5ebd4ec88deac8c49430f36956d3711c8c535
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592864"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706951"
 ---
 # <a name="project-url-preview-endpoint"></a>Project URL Preview-Endpunkt
 
@@ -33,8 +34,8 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ### <a name="query-parameters"></a>Abfrageparameter
 |NAME|Wert|type|Erforderlich|  
 |----------|-----------|----------|--------------|  
-|q|Die URL, für die eine Vorschau angezeigt werden soll|string |Ja|
-|safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |string|Nicht erforderlich. </br> Standardmäßig wird „safeSearch=strict“ verwendet.| 
+|q|Die URL, für die eine Vorschau angezeigt werden soll|Zeichenfolge |Ja|
+|safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |Zeichenfolge|Nicht erforderlich. </br> Standardmäßig wird „safeSearch=strict“ verwendet.| 
 
 ## <a name="response-object"></a>Antwortobjekt
 

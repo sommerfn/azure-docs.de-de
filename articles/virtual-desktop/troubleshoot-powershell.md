@@ -2,17 +2,17 @@
 title: 'Windows Virtual Desktop: PowerShell – Azure'
 description: Informationen zum Behandeln von Problemen mit PowerShell, wenn Sie eine Windows Virtual Desktop-Mandantenumgebung einrichten.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7c5a15790c3a88e9aa3921d6cc2626576aedaa64
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248195"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816374"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
 

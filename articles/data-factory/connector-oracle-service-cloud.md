@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b65bcfa5252a150c8101322eaf6d84ce46eef755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33c73bffc6c8ddac3a6465093d1994fcbfe14a9b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60546351"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726069"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopieren von Daten aus Oracle Service Cloud mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -46,7 +46,7 @@ Folgende Eigenschaften werden für den mit Oracle Service Cloud verknüpften Die
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OracleServiceCloud** | Ja |
 | host | Die URL der Oracle Service Cloud-Instanz.  | Ja |
-| userName | Der Benutzername für den Zugriff auf den Oracle Service Cloud-Server.  | Ja |
+| username | Der Benutzername für den Zugriff auf den Oracle Service Cloud-Server.  | Ja |
 | password | Das Kennwort zu dem Benutzernamen, den Sie im Schlüssel „username“ angegeben haben. Sie können dieses Feld optional als „SecureString“ markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
@@ -93,11 +93,12 @@ Legen Sie zum Kopieren von Daten aus Oracle Service Cloud die type-Eigenschaft d
     "name": "OracleServiceCloudDataset",
     "properties": {
         "type": "OracleServiceCloudObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OracleServiceCloud linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 

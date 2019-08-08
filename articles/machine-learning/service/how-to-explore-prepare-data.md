@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: f680a1cb15edf0141897c74da3b7c7afa01acae0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699119"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828433"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Untersuchen und Aufbereiten von Daten mit der Dataset-Klasse (Vorschau)
 
@@ -35,7 +35,7 @@ Zum Untersuchen und Vorbereiten der Daten benötigen Sie Folgendes:
 
 * Das Azure Machine Learning-SDK für Python (Version 1.0.21 oder höher), in dem das Paket „azureml-datasets“ enthalten ist. Wie Sie die neueste Version des SDK installieren oder auf diese aktualisieren, erfahren Sie unter [Installieren des Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Das Datenaufbereitungs-SDK von Azure Machine Learning. Unter [Installieren des Datenaufbereitungs-SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install) erfahren Sie, wie die aktuelle Version installiert oder ein Update darauf ausgeführt wird.
+* Das Datenaufbereitungs-SDK von Azure Machine Learning. Unter [Installieren des Datenaufbereitungs-SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py) erfahren Sie, wie die aktuelle Version installiert oder ein Update darauf ausgeführt wird.
 
 * Laden Sie die Beispieldateien herunter, um die Beispiele nachzuvollziehen: [crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) und [city.json](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 

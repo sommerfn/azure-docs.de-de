@@ -1,20 +1,20 @@
 ---
 title: Wählen der richtigen Authentifizierungsmethode für Ihre Azure AD-Hybrididentitätslösung | Microsoft-Dokumentation
 description: Dieser Leitfaden dient CEOs, CIOs, CISOs, Chief Identity Architects, Enterprise Architects sowie Sicherheits- und IT-Entscheidungsträgern als Hilfe, die für die Auswahl einer Authentifizierungsmethode für ihre Azure AD-Hybrididentitätslösung in mittleren bis großen Unternehmen verantwortlich sind.
-services: active-directory
 keywords: ''
 author: martincoetzer
 ms.author: martinco
 ms.date: 04/12/2018
 ms.topic: article
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 8b096720bd1f3c4d29b0077a00f887df854cc0af
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e1910348b53cf147530037283442f453edf2694f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611133"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727542"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
 

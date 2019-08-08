@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60462587"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706843"
 ---
 # <a name="project-url-preview-v7-reference"></a>Referenz zu Project URL Preview v7
 
@@ -73,12 +74,12 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 ## <a name="query-parameters"></a>Abfrageparameter
 Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderlichen Parameter Finden Sie in der Spalte „Erforderlich“. Sie müssen die Abfrageparameter URL-codieren. Die Abfrage muss eine absolute URL mit einem HTTP- oder HTTPS-Schema sein. Relative URLs oder anderen Schemas wie ftp:// werden nicht unterstützt.
 
-|NAME|Wert|Type|Erforderlich|
+|NAME|Wert|type|Erforderlich|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter „Marktcodes“.<br /><br /> **HINWEIS:** Die URL-Vorschau-API unterstützt zurzeit nur die geografische Region „USA“ und die Sprache „Englisch“.<br /><br />|string|Ja|
-|<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|string|Ja|
-|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](https://json-ld.org/).|string|Nein|
-|<a name="safesearch"/>safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |string|Nicht erforderlich. </br> Standardmäßig wird safeSearch=strict verwendet.|
+|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter „Marktcodes“.<br /><br /> **HINWEIS:** Die URL-Vorschau-API unterstützt zurzeit nur die geografische Region „USA“ und die Sprache „Englisch“.<br /><br />|Zeichenfolge|Ja|
+|<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|Zeichenfolge|Ja|
+|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](https://json-ld.org/).|Zeichenfolge|Nein|
+|<a name="safesearch"/>safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |Zeichenfolge|Nicht erforderlich. </br> Standardmäßig wird safeSearch=strict verwendet.|
 
 ## <a name="response-objects"></a>Antwortobjekte
 Das Antwortschema ist entweder eine [WebPage] oder ErrorResponse (wie in der Websuche-API). Wenn die Anforderung fehlschlägt, ist das Objekt auf oberster Ebene das [ErrorResponse](#errorresponse)-Objekt.
@@ -90,38 +91,38 @@ Das Antwortschema ist entweder eine [WebPage] oder ErrorResponse (wie in der Web
 ### <a name="error"></a>Error
 Definiert den aufgetretenen Fehler.
 
-|Element|BESCHREIBUNG|Type|
+|Element|BESCHREIBUNG|type|
 |-------------|-----------------|----------|
-|<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|string|
-|<a name="error-message" />message|Eine Beschreibung des Fehlers.|string|
-|<a name="error-moredetails" />moreDetails|Eine Beschreibung, die zusätzliche Informationen zum Fehler enthält.|string|
-|<a name="error-parameter" />parameter|Der Abfrageparameter in der Anforderung, der den Fehler verursacht hat.|string|
-|<a name="error-subcode" />subCode|Der Fehlercode, der den Fehler identifiziert. Wenn `code` z.B. InvalidRequest ist, kann `subCode` ParameterInvalid oder ParameterInvalidValue sein. |string|
-|<a name="error-value" />value|Der Wert des Abfrageparameters, der ungültig war.|string|
+|<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|
+|<a name="error-message" />message|Eine Beschreibung des Fehlers.|Zeichenfolge|
+|<a name="error-moredetails" />moreDetails|Eine Beschreibung, die zusätzliche Informationen zum Fehler enthält.|Zeichenfolge|
+|<a name="error-parameter" />parameter|Der Abfrageparameter in der Anforderung, der den Fehler verursacht hat.|Zeichenfolge|
+|<a name="error-subcode" />subCode|Der Fehlercode, der den Fehler identifiziert. Wenn `code` z.B. InvalidRequest ist, kann `subCode` ParameterInvalid oder ParameterInvalidValue sein. |Zeichenfolge|
+|<a name="error-value" />value|Der Wert des Abfrageparameters, der ungültig war.|Zeichenfolge|
 
 ### <a name="errorresponse"></a>ErrorResponse
 Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fehlschlägt.
 
-|NAME|Wert|Type|
+|NAME|Wert|type|
 |----------|-----------|----------|
-|_type|Der Typhinweis.|string|
+|_type|Der Typhinweis.|Zeichenfolge|
 |<a name="errors" />errors|Eine Liste von Fehlern, die die Gründe beschreiben, warum die Anforderung fehlgeschlagen ist.|[Error](#error)[]|
 
 ### <a name="webpage"></a>WebPage
 Definiert Informationen zu einer Webseite in der Vorschau.
 
-|NAME|Wert|Type|
+|NAME|Wert|type|
 |----------|-----------|----------|
-|name|Der Seitentitel, nicht notwendigerweise der HTML-Titel.|string|
-|url|Die URL, die tatsächlich durchforstet wurde (die Anforderung wurde möglicherweise weitergeleitet).|string|
-|description|Kurze Beschreibung der Seite und des Inhalts|string|
+|name|Der Seitentitel, nicht notwendigerweise der HTML-Titel.|Zeichenfolge|
+|url|Die URL, die tatsächlich durchforstet wurde (die Anforderung wurde möglicherweise weitergeleitet).|Zeichenfolge|
+|description|Kurze Beschreibung der Seite und des Inhalts|Zeichenfolge|
 |isFamilyFriendly|Am genauesten für Elemente im Webindex. Abrufvorgänge in Echtzeit führen diese Erkennung ausschließlich basierend auf der URL und nicht auf dem Seiteninhalt aus.|boolean|
-|primaryImageOfPage/contentUrl|Die URL zu einem repräsentativen Bild, das in die Vorschau eingeschlossen werden soll.|string|
+|primaryImageOfPage/contentUrl|Die URL zu einem repräsentativen Bild, das in die Vorschau eingeschlossen werden soll.|Zeichenfolge|
 
 ### <a name="identifiable"></a>Identifiable
-|NAME|Wert|Type|
+|NAME|Wert|type|
 |-------------|-----------------|----------|
-|id|Ein Ressourcenbezeichner.|string|
+|id|Ein Ressourcenbezeichner.|Zeichenfolge|
 
 ## <a name="error-codes"></a>Fehlercodes
 

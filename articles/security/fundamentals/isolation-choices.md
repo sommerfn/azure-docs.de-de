@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c9332af5f758a9213b0e36044d7aefac23b9c2b2
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611001"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779830"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -239,7 +240,7 @@ Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Da
 -   [Clientseitiger Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 #### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
-Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://docs.microsoft.com/azure/security/azure-isolation) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
+Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
 
 -   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
 

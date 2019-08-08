@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46abe367c9047616174a1e43dffd57861e6278e8
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228171"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811834"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -93,9 +93,7 @@ Multi-Factor Authentication für Office 365-Benutzer stellt einen Teil der Azure
 
 **F: Kann meine Organisation jederzeit zwischen den Verbrauchsmodellen „Pro Benutzer“ und „Pro Authentifizierung“ wechseln?**
 
-Wenn Ihre Organisation MFA als eigenständigen Dienst mit nutzungsbasierter Abrechnung erwirbt, wählen Sie bei der Erstellung eines MFA-Anbieters ein Abrechnungsmodell aus. Das Abrechnungsmodell kann nach der Erstellung eines MFA-Anbieters nicht mehr geändert werden. Sie können allerdings den MFA-Anbieter löschen und dann einen Anbieter mit einem anderen Abrechnungsmodell erstellen.
-
-Bei der Erstellung können Sie den MFA-Anbieter mit einer Azure Active Directory-Instanz bzw. einem „Azure AD-Mandanten“ verknüpfen. Wenn der aktuelle MFA-Anbieter mit einem Azure AD-Mandanten verknüpft ist, können Sie den MFA-Anbieter problemlos löschen und einen neuen erstellen, der mit dem gleichen Azure AD-Mandanten verknüpft ist. Sofern die Anzahl der für MFA, Azure AD Premium oder Enterprise Mobility + Security (EMS) erworbenen Lizenzen für alle Benutzer ausreicht, für die MFA aktiviert ist, können Sie den MFA-Anbieter auch ganz löschen.
+Wenn Ihre Organisation MFA als eigenständigen Dienst mit nutzungsbasierter Abrechnung erwirbt, wählen Sie bei der Erstellung eines MFA-Anbieters ein Abrechnungsmodell aus. Das Abrechnungsmodell kann nach der Erstellung eines MFA-Anbieters nicht mehr geändert werden. 
 
 Falls Ihr MFA-Anbieter *nicht* mit einem Azure AD-Mandanten verknüpft ist oder Sie den neuen MFA-Anbieter mit einem anderen Azure AD-Mandanten verknüpfen, werden Benutzereinstellungen und Konfigurationsoptionen nicht übernommen. Darüber hinaus müssen vorhandene Azure MFA-Server unter Verwendung von Aktivierungsanmeldeinformationen des neuen MFA-Anbieters erneut aktiviert werden. Wenn Sie die MFA-Server erneut aktivieren, um sie mit dem neuen MFA-Anbieter zu verknüpfen, hat das keinerlei Auswirkungen auf die Authentifizierung per Telefonanruf oder SMS, aber Benachrichtigungen der mobilen App funktionieren erst wieder, wenn die Benutzer die mobile App erneut aktivieren.
 

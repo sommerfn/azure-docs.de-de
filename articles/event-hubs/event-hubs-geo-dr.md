@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754764"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704378"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -84,7 +84,7 @@ Falls Sie einen Fehler gemacht haben (z.B. eine Kopplung der falschen Regionen w
 
 ## <a name="samples"></a>Beispiele
 
-Das [Beispiel auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) zeigt, wie Sie ein Failover einrichten und initiieren. In diesem Beispiel werden folgende Konzepte veranschaulicht:
+Das [Beispiel auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) zeigt, wie Sie ein Failover einrichten und initiieren. In diesem Beispiel werden folgende Konzepte veranschaulicht:
 
 - Einstellungen, die in Azure Active Directory für die Verwendung von Azure Resource Manager mit Event Hubs erforderlich sind 
 - Schritte, die zum Ausführen des Beispielcodes erforderlich sind 
@@ -115,7 +115,7 @@ Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Im [Beispiel auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) wird ein einfacher Workflow erläutert, der eine Geo-Kopplung erstellt und ein Failover für ein Notfallwiederherstellungsszenario initiiert.
+* Im [Beispiel auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) wird ein einfacher Workflow erläutert, der eine Geo-Kopplung erstellt und ein Failover für ein Notfallwiederherstellungsszenario initiiert.
 * Der [REST API-Verweis](/rest/api/eventhub/disasterrecoveryconfigs) beschreibt APIs für das Konfigurieren der georedundanten Notfallwiederherstellung.
 
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:

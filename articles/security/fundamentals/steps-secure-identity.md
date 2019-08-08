@@ -1,21 +1,21 @@
 ---
 title: Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur in Azure Active Directory
 description: Dieses Dokument beschreibt eine Reihe von wichtigen Aktionen, die Administratoren implementieren sollten, um ihre Organisation mithilfe von Azure AD-Funktionen zu schützen.
-services: active-directory
 author: martincoetzer
 manager: manmeetb
 tags: azuread
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 78d26dffa1d60ad41c46ed449f35d82b6dedb82e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611433"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779781"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -74,7 +74,7 @@ Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortabl
 Wenn Ihre Organisation eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbundauthentifizierung verwendet, sollten Sie aus den beiden folgenden Gründen die Kennworthashsynchronisierung aktivieren:
 
 * Der Bericht zu [Benutzern mit kompromittierten Anmeldeinformationen](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) in der Azure AD-Verwaltung warnt Sie vor Kombinationen aus Benutzername und Kennwort, die im „Dark Web“ verbreitet wurden. Eine schier unglaubliche Menge an Kennwörtern wird über drei Wege kompromittiert: Phishing, Schadsoftware und die Wiederverwendung von Kennwörtern auf Drittanbieterwebsites, die später gehackt werden. Microsoft findet eine Vielzahl dieser kompromittierten Anmeldeinformationen und teilt Ihnen in diesem Bericht mit, wenn sie Anmeldeinformationen in Ihrer Organisation entsprechen – aber nur, wenn Sie die [Kennworthashsynchronisierung aktivieren](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)!
-* Sollte ein lokales System ausfallen (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) wechseln. Diese Backupmethode für die Authentifizierung ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, beispielsweise Office 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
+* Sollte ein lokales System ausfallen (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) wechseln. Diese Backupmethode für die Authentifizierung ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, beispielsweise Office 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
 
 Informieren Sie sich, wie die [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) funktioniert.
 
@@ -146,7 +146,7 @@ Die Überwachung und Protokollierung von sicherheitsbezogenen Ereignissen und di
 
 ### <a name="monitor-azure-ad"></a>Überwachen von Azure AD
 
-Die Dienste und Features von Microsoft Azure bieten Ihnen konfigurierbare Optionen für die Überwachung und Protokollierung der Sicherheit, damit Sie Lücken in Ihren Sicherheitsrichtlinien und -mechanismen identifizieren und schließen können, um Sicherheitsverletzungen zu vermeiden. Sie können die [Azure-Protokollierung und -Überwachung](https://docs.microsoft.com/azure/security/azure-log-audit) sowie [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs) verwenden.
+Die Dienste und Features von Microsoft Azure bieten Ihnen konfigurierbare Optionen für die Überwachung und Protokollierung der Sicherheit, damit Sie Lücken in Ihren Sicherheitsrichtlinien und -mechanismen identifizieren und schließen können, um Sicherheitsverletzungen zu vermeiden. Sie können die [Azure-Protokollierung und -Überwachung](https://docs.microsoft.com/azure/security/fundamentals/log-audit) sowie [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs) verwenden.
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>Überwachen von Azure AD Connect Health in hybriden Umgebungen
 

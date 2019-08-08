@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 06ae18fa2217d7e7cfef7924473520d8d21a8a3e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610773"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726682"
 ---
 # <a name="azure-customer-data-protection"></a>Schutz der Azure-Kundendaten   
 Der Zugriff auf Kundendaten durch Microsoft-Betriebs- und -Supportpersonal wird standardmäßig verweigert. Wenn Zugriff auf Kundendaten gewährt wird, ist eine Genehmigung durch Führungskräfte erforderlich, und der Zugriff wird sorgfältig verwaltet und protokolliert. Die Zugriffssteuerungsanforderungen werden in der folgenden Azure-Sicherheitsrichtlinie definiert:

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: mayg
-ms.openlocfilehash: 35fa26112a6026ab05bd59b38621de7ee802c715
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: eb29f8280ac1da3cd366b0c54cc6e2ce92b06286
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491891"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726473"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute mit Azure Site Recovery
 
@@ -56,7 +56,7 @@ Für die Notfallwiederherstellung einer Azure-VM wird ExpressRoute standardmäß
 
 Wenn Sie für die Verbindung zwischen Ihrem lokalen Datencenter und den Azure-VMs in der Quellregion bereits ExpressRoute verwenden, können Sie die Wiederherstellung der ExpressRoute-Verbindungen in der Failover-Zielregion planen. Sie können für die Verbindung zur Zielregion über eine neue virtuelle Netzwerkverbindung die gleiche ExpressRoute-Verbindung verwenden oder eine separate ExpressRoute-Verbindung und eine Verbindung für die Notfallwiederherstellung nutzen. Die verschiedenen möglichen Szenarien werden [hier](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute) beschrieben.
 
-Sie können virtuelle Azure-Computer zu einer beliebigen Azure-Region innerhalb des gleichen geografischen Clusters replizieren, wie [hier](../site-recovery/azure-to-azure-support-matrix.md#region-support) beschrieben. Wenn sich die ausgewählte Azure-Zielregion nicht innerhalb der gleichen geopolitischen Region wie die Quelle befindet, müssen Sie möglicherweise ExpressRoute Premium aktivieren. Weitere Informationen finden Sie unter [ExpressRoute-Standorte](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) und [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute/).
+Sie können virtuelle Azure-Computer zu einer beliebigen Azure-Region innerhalb des gleichen geografischen Clusters replizieren, wie [hier](../site-recovery/azure-to-azure-support-matrix.md#region-support) beschrieben. Wenn sich die ausgewählte Azure-Zielregion nicht innerhalb der gleichen geopolitischen Region wie die Quelle befindet, müssen Sie möglicherweise ExpressRoute Premium aktivieren. Weitere Informationen finden Sie unter [ExpressRoute-Standorte](../expressroute/expressroute-locations.md) und [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [ExpressRoute-Verbindungen](../expressroute/expressroute-circuit-peerings.md)

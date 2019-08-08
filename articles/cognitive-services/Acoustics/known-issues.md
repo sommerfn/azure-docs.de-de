@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kylsto
-ms.openlocfilehash: 53df981564eb177da66b86022ecfc80b25f1c763
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ROBOTS: NOINDEX
+ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296532"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706665"
 ---
 # <a name="project-acoustics-known-issues"></a>Bekannte Probleme mit Projekt Akustik
 Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.

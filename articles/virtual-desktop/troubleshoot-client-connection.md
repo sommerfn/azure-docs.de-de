@@ -2,17 +2,17 @@
 title: Remotedesktop-Clientverbindungen in Windows Virtual Desktop – Azure
 description: Informationen zum Beheben von Problemen beim Einrichten von Clientverbindungen in einer Windows Virtual Desktop-Mandantenumgebung
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: b7a6daa791e44227fd146c9c328a939560ebb3b1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.author: helohr
+ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605293"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816417"
 ---
 # <a name="remote-desktop-client-connections"></a>Remotedesktop-Clientverbindungen
 
@@ -135,7 +135,7 @@ Befolgen Sie für Fehlercodes zu Clientverbindungen diese allgemeinen Problembeh
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>Fehler O_ADD_USER_TO_GROUP_FAILED / Fehler beim Hinzufügen von Benutzer = ≤Benutzername≥ zu Gruppe = Remotedesktop-Benutzer. Ursache: Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Fehler O_ADD_USER_TO_GROUP_FAILED / Fehler beim Hinzufügen von Benutzer = ≤Benutzername≥ zu Gruppe = Remotedesktop-Benutzer. Ursache: Win32.ERROR_NO_SUCH_MEMBER
 
 **Ursache:** Die VM ist nicht in die Domäne eingebunden, in der sich das Benutzerobjekt befindet.
 

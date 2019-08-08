@@ -8,19 +8,19 @@ manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
-ms.service: ''
+ms.service: virtual-machines
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 4cd0f27ebfeb25724bab50069344b417f62d5f50
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 303bf41d943267c42c1311d185a4ff65baf5178f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707891"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834605"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
 Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](../../billing/billing-understand-your-bill.md).

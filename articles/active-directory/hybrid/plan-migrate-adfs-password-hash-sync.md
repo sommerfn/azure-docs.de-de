@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b291f2243dfe28a8e866796e0b7375f94fa4f2e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109263"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779438"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -474,5 +474,5 @@ Weitere Informationen finden Sie unter [Wie kann ich einen Rollover des Kerberos
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über [Entwurfskonzepte für Azure AD Connect](plan-connect-design-concepts.md).
-* Wählen Sie die [richtige Authentifizierung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+* Wählen Sie die [richtige Authentifizierung](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 * Erfahren Sie mehr über [unterstützte Topologien](plan-connect-design-concepts.md).

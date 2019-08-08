@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf512f802e0e4944e6ce949830719b87301adfc4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545276"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834809"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -49,7 +49,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| ID | Erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
+| id | Erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
 | Version | Erforderlich | Dieser Parameter sollte auf **2.0** festgelegt werden. |
 | IssueInstant | Erforderlich | Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
 | AssertionConsumerServiceUrl | Optional | Dieser Parameter muss (falls angegeben) dem `RedirectUri` des Clouddiensts in Azure AD entsprechen. |

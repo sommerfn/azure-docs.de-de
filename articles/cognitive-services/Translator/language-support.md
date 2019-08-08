@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 14ab1988f28de214036fa80fa36a4006a3359f30
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6ab500fe6a7f288bcfbdc9168ada8bdad5bdb6ea
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435881"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772948"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -82,7 +82,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 |Malaiisch| `ms`    |Nur statistisches System   |Statistisch|
 |Maltesisch|   `mt`    |Nur statistisches System|  Statistisch|
 |Norwegisch| `nb`    |Neuronales System verfügbar|  Neuronal|
-|Persisch|   `fa`    |Nur statistisches System|  Statistisch|
+|Persisch|   `fa`    |Neuronales System verfügbar|  Neuronal|
 |Polnisch|    `pl`    |Neuronales System verfügbar|  Neuronal|
 |Portugiesisch|    `pt`    |Neuronales System verfügbar|  Neuronal|
 |Queretaro-Otomi|   `otq`   |Nur statistisches System|  Statistisch|

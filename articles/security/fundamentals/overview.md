@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e269981c97f226ea43c745311238c4578f3d3dd4
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 527c9cfa64eab9fe2286098d2c10186391bdde4d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611497"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780572"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -113,7 +114,7 @@ Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features
 Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/overview) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
 
 ### <a name="penetration-testing"></a>Penetrationstests
-Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
+Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall
 Die Web Application Firewall (WAF) in [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) hilft beim Schutz von Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. Dazu bietet sie Schutz vor den Sicherheitsrisiken, die das [Open Web Application Security Project (OWASP) als die zehn häufigsten ermittelt hat](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
@@ -312,7 +313,7 @@ Verfügbare Netzwerkempfehlungen:
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features in diesem Bereich und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="antimalware--antivirus"></a>Antischadsoftware und Antivirus
-Mit Azure IaaS können Sie zum Schützen der virtuellen Computer vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen Antischadsoftware von Anbietern wie Microsoft, Symantec, Trend Micro, McAfee und Kaspersky verwenden. [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) for Azure Cloud Services and Virtual Machines ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Microsoft Antimalware gibt konfigurierbare Warnungen aus, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. Microsoft Antimalware kann auch über das Azure Security Center bereitgestellt werden.
+Mit Azure IaaS können Sie zum Schützen der virtuellen Computer vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen Antischadsoftware von Anbietern wie Microsoft, Symantec, Trend Micro, McAfee und Kaspersky verwenden. [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) for Azure Cloud Services and Virtual Machines ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Microsoft Antimalware gibt konfigurierbare Warnungen aus, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. Microsoft Antimalware kann auch über das Azure Security Center bereitgestellt werden.
 
 ### <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
 Verschlüsselung und Authentifizierung verbessern die Sicherheit erst dann, wenn die Schlüssel selbst geschützt sind. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) speichern. Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.

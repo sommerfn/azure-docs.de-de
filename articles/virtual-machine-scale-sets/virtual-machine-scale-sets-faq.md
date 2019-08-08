@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258283"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779427"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -174,7 +174,7 @@ Verwenden Sie für das neueste Beispiel die folgende Azure-CLI-Anweisung innerha
 az sf cluster create -h
 ```
 
-Selbstsignierte Zertifikate können nicht für verteilte Vertrauensstellungen verwendet werden, die von einer Zertifizierungsstelle bereitgestellt werden, und sie sollten nicht für Service Fabric Cluster verwendet werden, die zum Hosten von Produktionslösungen von Unternehmen bestimmt sind; weitere Anleitungen zur Service Fabric-Sicherheit finden Sie in [Azure Service Fabric Security Best Practices](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) (Azure Service Fabric-Sicherheit – bewährte Methoden) und [Service Fabric cluster security scenarios](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) (Service Fabric Cluster-Sicherheitsszenarien).
+Selbstsignierte Zertifikate können nicht für verteilte Vertrauensstellungen verwendet werden, die von einer Zertifizierungsstelle bereitgestellt werden, und sie sollten nicht für Service Fabric Cluster verwendet werden, die zum Hosten von Produktionslösungen von Unternehmen bestimmt sind; weitere Anleitungen zur Service Fabric-Sicherheit finden Sie in [Azure Service Fabric Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) (Azure Service Fabric-Sicherheit – bewährte Methoden) und [Service Fabric cluster security scenarios](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) (Service Fabric Cluster-Sicherheitsszenarien).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Kann ich ein SSH-Schlüsselpaar für die SSH-Authentifizierung mit einer Linux-VM-Skalierungsgruppe über eine Resource Manager-Vorlage angeben?
 
@@ -232,8 +232,8 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
 linuxConfiguration-Elementname | Erforderlich | Typ | BESCHREIBUNG
 --- | --- | --- | ---
 ssh | Nein | Collection | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
-path | Ja | string | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
-keyData | Ja | string | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
+path | Ja | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
+keyData | Ja | Zeichenfolge | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
 
 Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 

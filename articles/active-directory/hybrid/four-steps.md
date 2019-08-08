@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0630e62a08314612cb08b5cb26b5a1563de4f40b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655943"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779700"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -111,7 +111,7 @@ Für Hochverfügbarkeit wird bei einem Ausfall des primären Azure AD Connect-S
 
 ### <a name="enable-cloud-authentication"></a>Aktivieren der Cloudauthentifizierung
 
-Organisationen mit lokalem Active Directory sollten ihr Verzeichnis mit Azure AD Connect auf Azure AD erweitern und die passende Authentifizierungsmethode konfigurieren. Das [Auswählen einer geeigneten Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) für Ihre Organisation ist der erste Schritt Ihrer Journey zum Verschieben von Apps in die Cloud. Sie stellt eine wichtige Komponente dar, da sie den Zugriff auf alle Clouddaten und -ressourcen steuert.
+Organisationen mit lokalem Active Directory sollten ihr Verzeichnis mit Azure AD Connect auf Azure AD erweitern und die passende Authentifizierungsmethode konfigurieren. Das [Auswählen einer geeigneten Authentifizierungsmethode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) für Ihre Organisation ist der erste Schritt Ihrer Journey zum Verschieben von Apps in die Cloud. Sie stellt eine wichtige Komponente dar, da sie den Zugriff auf alle Clouddaten und -ressourcen steuert.
 
 Die einfachste und empfohlene Methode zum Aktivieren von Cloudauthentifizierung für lokale Verzeichnisobjekte in Azure AD stellt das Aktivieren der [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (Password Hash Synchronization, PHS) dar. Einige Organisationen können auch das Aktivieren der [Pass-Through-Authentifizierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) in Betracht ziehen.
 

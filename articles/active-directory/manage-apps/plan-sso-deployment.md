@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477123"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779377"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -95,7 +95,7 @@ Aus Sicht der Anmeldung unterscheiden sich Anwendungen mit gemeinsam genutzten K
 
 Die Wahl der richtigen Authentifizierungsmethode ist daher eine wichtige erste Entscheidung bei der Einrichtung einer Azure AD-Hybrididentitätslösung. Implementieren Sie die Authentifizierungsmethode, die mit Azure AD Connect konfiguriert wird. Hierüber werden auch Benutzer in der Cloud bereitgestellt.
 
-Bei der Auswahl einer Authentifizierungsmethode müssen Sie die Zeit, die vorhandene Infrastruktur, die Komplexität und die Implementierungskosten für die gewählte Lösung berücksichtigen. Diese Faktoren sind für jede Organisation unterschiedlich und können sich im Laufe der Zeit ändern. Sie sollten die Methode auswählen, die Ihrem bestimmten Szenario am ehesten entspricht. Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Bei der Auswahl einer Authentifizierungsmethode müssen Sie die Zeit, die vorhandene Infrastruktur, die Komplexität und die Implementierungskosten für die gewählte Lösung berücksichtigen. Diese Faktoren sind für jede Organisation unterschiedlich und können sich im Laufe der Zeit ändern. Sie sollten die Methode auswählen, die Ihrem bestimmten Szenario am ehesten entspricht. Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 
 ## <a name="plan-your-security-and-governance"></a>Planen von Sicherheit und Governance 
 

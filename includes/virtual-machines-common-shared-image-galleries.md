@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133064"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775876"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -73,14 +73,14 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
-Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://www.microsoft.com/en-au/central-regions-eligibility/
+Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/
 
 
 | Quellregionen |
 |---------------------|-----------------|------------------|-----------------|
 | Australien, Mitte   | USA, Mitte (EUAP) | Korea, Mitte    | USA, Westen-Mitte |
 | Australien, Mitte 2 | Asien, Osten       | Korea, Süden      | Europa, Westen     |
-| Australien (Osten)      | USA (Ost)         | USA Nord Mitte | Indien, Westen      |
+| Australien (Osten)      | East US         | USA Nord Mitte | Indien, Westen      |
 | Australien, Südosten | USA (Ost) 2       | Nordeuropa     | USA (Westen)         |
 | Brasilien Süd        | USA, Osten 2 (EUAP)  | USA Süd Mitte | USA, Westen 2       |
 | Kanada, Mitte      | Frankreich, Mitte  | Indien (Süden)      |                 |
@@ -95,7 +95,7 @@ Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regi
 Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ressourcen mithilfe des Katalogs mit geteilten Images:
 - 100 Kataloge mit freigegebenen Images pro Abonnement und Region
 - 1\.000 Imagedefinitionen pro Abonnement und Region
-- 10\.000 Imageversionen pro Abonnement und Region
+- 10.000 Imageversionen pro Abonnement und Region
 
 Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
  

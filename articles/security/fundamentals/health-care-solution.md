@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 7e5b082d-dc9c-4d4f-b3f1-75edcdafbd8f
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 05a7c52dca420f97252c68445398fb3959be8804
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 836a0e795219640179f9e4c2ed0ef767a2e3f161
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611049"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727294"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure
 Startups im Gesundheitswesen, Systemintegratoren (SIs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und im Gesundheitswesen tätige Organisationen, die die Einführung von Azure in Erwägung ziehen, benötigen Unterstützung beim Integrieren geeigneter Sicherheitsmaßnahmen für ihre Complianceanforderungen.

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407631"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780260"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -42,11 +42,11 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen. Weitere Informationen zu Gatewayeinstellungen im Allgemeinen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **VNet-Name:** TestVNet1
+* **VNet-Name:** VNet1
 * **Adressraum:** 10.1.0.0/16
 * **Abonnement:** Das Abonnement, das Sie verwenden möchten
 * **Ressourcengruppe:** TestRG1
-* **Standort:** USA (Ost)
+* **Standort:** East US
 * **Subnetz:** Front-End: 10.1.0.0/24, Back-End: 10.1.1.0/24 (für diese Übung optional)
 * **Name des Gatewaysubnetzes:** GatewaySubnet (wird im Portal automatisch ausgefüllt)
 * **Adressbereich für Gatewaysubnetz:** 10.1.255.0/27
@@ -66,9 +66,11 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 
 ## <a name="dns"></a>2. Angeben eines DNS-Servers
 
-DNS ist zum Erstellen von Standort-zu-Standort-Verbindungen nicht erforderlich. Wenn Sie für Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden, die Namensauflösung verwenden möchten, müssen Sie aber einen DNS-Server angeben. Diese Einstellung bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Mit dieser Einstellung wird kein DNS-Server erstellt. Weitere Informationen zur Funktionsweise der Namensauflösung finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+DNS ist zum Erstellen von Standort-zu-Standort-Verbindungen nicht erforderlich.
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+Wenn Sie für Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden, die Namensauflösung verwenden möchten, müssen Sie aber einen DNS-Server angeben. Diese Einstellung bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Mit dieser Einstellung wird kein DNS-Server erstellt. Weitere Informationen zur Funktionsweise der Namensauflösung finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Erstellen des Gatewaysubnetzes
 

@@ -1,20 +1,19 @@
 ---
 title: 'Azure-Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe des Azure-Portals | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Warteschlange zu erstellen. Anschließend verwenden Sie das Azure-Portal, um eine Nachricht hinzuzufügen, die Eigenschaften der Nachricht anzuzeigen und die Nachricht aus der Warteschlange zu entfernen.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 03/06/2019
 ms.author: mhopkins
+ms.date: 03/06/2019
+ms.service: storage
+ms.subservice: queues
+ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 3b355aa2f3fd5e381ca922ada1444dd281fe74ec
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138270"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721317"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Schnellstart: Erstellen einer Warteschlange und Hinzufügen einer Nachricht mit dem Azure-Portal
 

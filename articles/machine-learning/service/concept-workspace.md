@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 912c064fb5ca4e7ca311f60ed04a0122809cb0ff
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442373"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772755"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Was ist ein Azure Machine Learning Service-Arbeitsbereich?
 
@@ -30,7 +30,7 @@ Das folgende Diagramm enthält eine Taxonomie des Arbeitsbereichs:
 
 In dem Diagramm sind die folgenden Komponenten eines Arbeitsbereichs dargestellt:
 
-+ Ein Arbeitsbereich kann [Notebook VMs](quickstart-run-cloud-notebook.md) enthalten. Diese sind Cloudressourcen, die mit der Python-Umgebung konfiguriert sind, die zum Ausführen von Azure Machine Learning erforderlich ist.
++ Ein Arbeitsbereich kann [Notebook VMs](tutorial-1st-experiment-sdk-setup.md) enthalten. Diese sind Cloudressourcen, die mit der Python-Umgebung konfiguriert sind, die zum Ausführen von Azure Machine Learning erforderlich ist.
 + [Benutzerrollen](how-to-assign-roles.md) ermöglichen es Ihnen, Ihren Arbeitsbereich für andere Benutzer, Teams oder Projekte freizugeben.
 + [Computeziele](concept-azure-machine-learning-architecture.md#compute-targets) werden verwendet, um Ihre Experimente auszuführen.
 + Wenn Sie den Arbeitsbereich erstellen, werden auch [zugeordnete Ressourcen](#resources) für Sie erstellt.

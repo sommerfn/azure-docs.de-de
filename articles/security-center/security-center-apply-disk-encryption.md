@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c76e99c2588181a596a2a91ddd138cb9d7ae4a5a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1abb0a5f5523032440086932eb9a1621d4cef455
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610304"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726234"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Anwenden der Datenträgerverschlüsselung in Azure Security Center
 Azure Security Center empfiehlt die Anwendung der Datenträgerverschlüsselung, wenn Sie über Windows- oder Linux-VM-Datenträger verfügen, die nicht per Azure Disk Encryption verschlüsselt sind. Mit der Datenträgerverschlüsselung können Sie Ihre Windows- und Linux-IaaS-VM-Datenträger verschlüsseln.  Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen.
@@ -44,7 +44,7 @@ Zum Verschlüsseln virtueller Azure-Computer, für die von Security Center festg
 * Rufen Sie das für Azure Disk Encryption erforderliche PowerShell-Skript ab, und führen Sie es aus.
 * Verschlüsseln Sie Ihre virtuellen Computer.
 
-Eine entsprechende Anleitung finden Sie unter [Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../security/fundamentals/quick-encrypt-vm-powershell.md). In diesem Thema wird davon ausgegangen, dass Sie einen Windows-Clientcomputer verwenden, von dem aus Sie die Datenträgerverschlüsselung konfigurieren.
+Eine entsprechende Anleitung finden Sie unter [Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../security/azure-disk-encryption-linux-powershell-quickstart.md). In diesem Thema wird davon ausgegangen, dass Sie einen Windows-Clientcomputer verwenden, von dem aus Sie die Datenträgerverschlüsselung konfigurieren.
 
 Es gibt verschiedene Methoden, die für virtuelle Azure-Computer verwendet werden können. Wenn Sie bereits über Kenntnisse in Azure PowerShell oder Azure-CLI verfügen, ziehen Sie möglicherweise andere Methoden vor. Informationen zu diesen anderen Methoden erhalten Sie unter [Azure-Datenträgerverschlüsselung](../security/azure-security-disk-encryption.md).
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 625f31252942c3d8dea9ca9b4772af19f60e17ab
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60546571"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720713"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -64,7 +64,7 @@ Folgende Eigenschaften werden für den mit Salesforce verknüpften Dienst unters
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. |Ja |
 | environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br> – Der Standardwert ist `"https://login.salesforce.com"`. <br> – Um Daten aus einem Sandkasten zu kopieren, geben Sie `"https://test.salesforce.com"` an. <br> – Geben Sie zum Kopieren von Daten aus einer benutzerdefinierten Domäne z.B. `"https://[domain].my.salesforce.com"` an. |Nein |
-| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an.<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API).<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein für die Quelle. Ja für die Senke, wenn der mit der Quelle verknüpfte Dienst keine Integration Runtime aufweist. |
@@ -155,12 +155,13 @@ Legen Sie zum Kopieren von Daten aus und nach Salesforce die type-Eigenschaft de
     "name": "SalesforceDataset",
     "properties": {
         "type": "SalesforceObject",
+        "typeProperties": {
+            "objectApiName": "MyTable__c"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Salesforce linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "objectApiName": "MyTable__c"
         }
     }
 }
@@ -305,7 +306,7 @@ Achten Sie beim Angeben der SOQL- oder SQL-Abfrage auf den Unterschied beim Date
 * **SOQL-Beispiel**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL-Beispiel**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformedquerytruncated"></a>Fehler MALFORMED_QUERY:Truncated
+### <a name="error-of-malformed_querytruncated"></a>Fehler MALFORMED_QUERY:Truncated
 
 Wenn der Fehler „MALFORMED_QUERY: Truncated“ auftritt, ist dies normalerweise darauf zurückzuführen, dass Sie die Spalte vom Typ JunctionIdList in den Daten verwenden und Salesforce die Unterstützung solcher Daten mit einer großen Anzahl von Zeilen einschränkt. Um dies zu verhindern, versuchen Sie, die Spalte JunctionIdList auszuschließen oder die Anzahl der zu kopierenden Zeilen zu begrenzen (Sie können in mehrere Kopiervorgänge partitionieren).
 
@@ -321,7 +322,7 @@ Beim Kopieren von Daten aus Salesforce werden die folgenden Zuordnungen von Sale
 | Date |DateTime |
 | Date/Time |DateTime |
 | E-Mail |String |
-| id |String |
+| Id |String |
 | Lookup Relationship |String |
 | Multi-Select Picklist |String |
 | Number |Decimal |

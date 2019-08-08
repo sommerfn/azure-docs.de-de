@@ -7,17 +7,18 @@ ms.author: terrylan
 ms.date: 06/11/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653283"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780628"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -155,7 +156,7 @@ Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://d
 | Spoofing               | Authentication        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) von Azure.|
-| Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) Daten und Daten [während einer Übertragung](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
+| Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) Daten und Daten [während einer Übertragung](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit). |
 | Denial of Service      | Verfügbarkeit          | Überwachen Sie Leistungsmetriken auf potenzielle Denial of Service-Angriffe. Implementieren Sie Verbindungsfilter. [Azure DDoS-Schutz](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz vor DDoS-Angriffen dar.|
 | Rechteerweiterungen | Authorization         | Verwenden Sie Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
@@ -266,7 +267,7 @@ Kennzeichnen Sie alle maßgeblichen Daten als sensibel, wenn Sie Ihre Datenforma
 #### <a name="use-encryption"></a>Verwenden von Verschlüsselung
 
 Schützen von Daten sollte ein wesentlicher Bestandteil Ihrer Sicherheitsstrategie sein.
-Wenn Ihre Daten in einer Datenbank gespeichert sind oder wenn die Daten zwischen Standorten hin und her gesendet werden, verwenden Sie Verschlüsselung von [ruhenden Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) (während diese sich in der Datenbank befinden) und Verschlüsselung von [Daten während der Übertragung](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) (auf deren Weg zu und von einem Benutzer, zu und von einer Datenbank oder API oder zu und von einem Dienstendpunkt). Es empfiehlt sich, für den Austausch von Daten immer SSL/TLS-Protokolle zu verwenden. Achten Sie darauf, dass Sie die neueste Version von TLS für Verschlüsselung verwenden (aktuell ist dies Version 1.2).
+Wenn Ihre Daten in einer Datenbank gespeichert sind oder wenn die Daten zwischen Standorten hin und her gesendet werden, verwenden Sie Verschlüsselung von [ruhenden Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) (während diese sich in der Datenbank befinden) und Verschlüsselung von [Daten während der Übertragung](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) (auf deren Weg zu und von einem Benutzer, zu und von einer Datenbank oder API oder zu und von einem Dienstendpunkt). Es empfiehlt sich, für den Austausch von Daten immer SSL/TLS-Protokolle zu verwenden. Achten Sie darauf, dass Sie die neueste Version von TLS für Verschlüsselung verwenden (aktuell ist dies Version 1.2).
 
 #### <a name="avoid-hard-coding"></a>Vermeiden von Hartcodierung
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 19a5fe4c087d477ff15d2237a36d1c4ecaa0e070
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f81337cea3ece822ea05bcc94f4e05d6e177bf93
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65908115"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735597"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
@@ -127,7 +127,7 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
 
     Bei der ersten Ausführung sollten 32 Datenzeilen aktualisiert werden. In nachfolgenden Ausführungen werden keine Datenzeilen aktualisiert, es sei denn, Sie nehmen Änderungen an den Daten der Tabelle „SalesOrderHeader“ vor, sodass mit der `UPDATE`-Anweisung weitere Zeilen ausgewählt werden.
 
-Wenn Sie [die Funktion veröffentlichen](functions-develop-vs.md#publish-to-azure) möchten, vergessen Sie nicht, das Attribut `TimerTrigger` in einen geeigneteren [CRON-Zeitplan](functions-bindings-timer.md#cron-expressions) als alle 15 Sekunden zu ändern.
+Wenn Sie [die Funktion veröffentlichen](functions-develop-vs.md#publish-to-azure) möchten, vergessen Sie nicht, das Attribut `TimerTrigger` in einen geeigneteren [CRON-Zeitplan](functions-bindings-timer.md#ncrontab-expressions) als alle 15 Sekunden zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

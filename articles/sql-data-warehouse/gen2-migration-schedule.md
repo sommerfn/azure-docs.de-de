@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405440"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827224"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -88,7 +88,7 @@ Für das Selbstupgrade können Sie zwischen zwei Optionen wählen.  Sie können 
 - [Direktes Upgrade](upgrade-to-latest-generation.md): Mit dieser Option wird Ihr vorhandenes Gen1-Data Warehouse auf Gen2 aktualisiert. Der Upgradevorgang ist mit einem kurzen Abfall der Konnektivität (ca. 5 Minuten) verbunden, wenn wir Ihr Data Warehouse neu starten.  Sobald Ihr Data Warehouse neu gestartet ist, ist es vollständig zur Verwendung verfügbar. Wenn während des Upgrades Probleme auftreten, können Sie eine [Supportanfrage](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) erstellen und als mögliche Ursache „Gen2-Upgrade“ angeben.
 - [Upgrade vom Wiederherstellungspunkt](sql-data-warehouse-restore.md): Erstellen Sie einen benutzerdefinierten Wiederherstellungspunkt auf Ihrem aktuellen Gen1-Data Warehouse, und führen Sie die direkte Wiederherstellung in eine Gen2-Instanz durch. Das vorhandene Gen1-Data Warehouse bleibt bestehen. Sobald die Wiederherstellung abgeschlossen ist, ist Ihr Gen2-Data Warehouse vollständig verwendbar.  Nachdem Sie alle Test- und Überprüfungsprozesse auf der wiederhergestellten Gen2-Instanz ausgeführt haben, kann die ursprüngliche Gen1-Instanz gelöscht werden.
 
-   - Schritt 1: [Erstellen Sie einen benutzerdefinierten Wiederherstellungspunkt](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal) im Azure-Portal.
+   - Schritt 1: [Erstellen Sie einen benutzerdefinierten Wiederherstellungspunkt](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal) im Azure-Portal.
    - Schritt 2: Legen Sie bei der Wiederherstellung von einem benutzerdefinierten Wiederherstellungspunkt aus die „Leistungsebene“ auf Ihren bevorzugten Gen2-Tarif fest.
 
 Zeitweise kann eine Beeinträchtigung der Leistung auftreten, während der Upgradevorgang weiterhin im Hintergrund die Datendateien aktualisiert. Die Gesamtzeit für die Leistungsminderung variiert abhängig von der Größe der Datendateien.
@@ -155,6 +155,6 @@ Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrad
 - [Überwachung der Ressourcenintegrität](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Voraussetzungen](upgrade-to-latest-generation.md#before-you-begin)
 - [Direktes Upgrade und Upgrade von einem Wiederherstellungspunkt aus](upgrade-to-latest-generation.md)
-- [Erstellen eines benutzerdefinierten Wiederherstellungspunkts](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Wiederherstellen einer aktiven oder angehaltenen Datenbank im Azure-Portal](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Erstellen eines benutzerdefinierten Wiederherstellungspunkts](sql-data-warehouse-restore-points.md)
+- [Wiederherstellen einer aktiven oder angehaltenen Datenbank im Azure-Portal](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
 - [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

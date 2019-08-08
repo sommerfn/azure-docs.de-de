@@ -2,17 +2,17 @@
 title: 'Mandanten- und Hostpoolerstellung in Windows Virtual Desktop: Azure'
 description: Beheben von Problemen bei der Konfiguration eines Mandanten und eines virtuellen Sitzungshostcomputers (VM) in einer Windows Virtual Desktop-Umgebung.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.author: helohr
+ms.openlocfilehash: 4e5c5f14042f7059f3d802a5e72cbf5c6a126614
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786705"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816338"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -193,7 +193,7 @@ Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen 
     Server\ClusterSettings\"SessionDirectoryListener":rdp-sxs
 ```
 
-### <a name="error-oreverseconnectstackfailure"></a>Fehler O_REVERSE_CONNECT_STACK_FAILURE
+### <a name="error-o_reverse_connect_stack_failure"></a>Fehler O_REVERSE_CONNECT_STACK_FAILURE
 
 ![O_REVERSE_CONNECT_STACK_FAILURE-Fehlercode.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 

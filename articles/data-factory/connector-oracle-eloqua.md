@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405952"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726083"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopieren von Daten aus Oracle Eloqua mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -46,7 +46,7 @@ Folgende Eigenschaften werden für den mit Oracle Eloqua verknüpften Dienst unt
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Eloqua** | Ja |
 | endpoint | Der Endpunkt des Eloqua-Servers. Eloqua unterstützt mehrere Rechenzentren. Um den Endpunkt zu bestimmen, melden Sie sich mit Ihren Anmeldeinformationen bei https://login.eloqua.com an, und kopieren Sie dann den Teil mit der **Basis-URL** aus der umgeleiteten URL nach dem Muster `xxx.xxx.eloqua.com`. | Ja |
-| userName | Website- und Benutzername Ihres Eloqua-Kontos im Format `SiteName\Username` (Beispiel: `Eloqua\Alice`)  | Ja |
+| username | Website- und Benutzername Ihres Eloqua-Kontos im Format `SiteName\Username` (Beispiel: `Eloqua\Alice`)  | Ja |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
@@ -89,11 +89,12 @@ Legen Sie zum Kopieren von Daten aus Oracle Eloqua die „type“-Eigenschaft de
     "name": "EloquaDataset",
     "properties": {
         "type": "EloquaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
