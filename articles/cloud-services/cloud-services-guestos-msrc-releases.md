@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592429"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780090"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
@@ -28,7 +28,6 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 |  Release 19-07   |  [4507434]  |  Internet Explorer   |  2.88, 3.75, 4.68  |  9\. Juli 2019  |
-|  Release 19-07   |  [4506621]  |  Windows-Sicherheit   |  2.88, 3.75, 4.68  |  9\. Juli 2019  |
 |  Release 19-07   |  [4506966]  |  .NET 4.5.2 – Sicherheit   |  2,88  |  9\. Juli 2019  |
 |  Release 19-07   |  [4506976]  |  .NET 3.5.1 – Sicherheit   |  2,88  |  9\. Juli 2019  |
 |  Release 19-07   |  [4507456]  |  Windows-Sicherheit   |  2,88  |  9\. Juli 2019  |
