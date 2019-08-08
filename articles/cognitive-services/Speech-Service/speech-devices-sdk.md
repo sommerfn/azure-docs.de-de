@@ -1,7 +1,7 @@
 ---
-title: Informationen zum Speech-Geräte-SDK – Speech Services
+title: Informationen zum Speech Devices SDK – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit dem Speech-Geräte-SDK Speech Services kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
+description: Erste Schritte mit dem Speech-Geräte-SDK Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 341f35d04c7f3f591198acbbf05ac32afe84e95c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f2819dd2194193ffa8171034fdbe01ac4cb26174
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718547"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558928"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informationen zum Speech-Geräte-SDK
 

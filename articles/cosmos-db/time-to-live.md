@@ -4,19 +4,21 @@ description: Mit TTL bietet Microsoft Azure Cosmos DB die Möglichkeit, im Syste
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/26/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7a29e9446a8c3b703c2ec3140711f44f3c81535f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: c3e1c4f56c641bf5bfa189836a4bcdf99672a3c1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467590"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597483"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB 
 
 Mit der **Gültigkeitsdauer** (Time to Live, TTL) bietet Azure Cosmos DB die Möglichkeit, Elemente nach einem bestimmten Zeitraum automatisch aus einem Container zu löschen. Standardmäßig können Sie die Gültigkeitsdauer auf der Containerebene festlegen und den Wert für einzelne Elemente außer Kraft setzen. Wenn Sie eine Gültigkeitsdauer für einen Container oder ein Element festgelegt haben, werden die betroffenen Elemente nach Ablauf der angegebenen Zeit (seit der letzten Änderung des Elements) automatisch von Azure Cosmos DB gelöscht. Der Wert für die Gültigkeitsdauer wird in Sekunden konfiguriert. Wenn Sie eine Gültigkeitsdauer konfigurieren, löscht das System die abgelaufenen Elemente automatisch auf der Grundlage des entsprechenden Werts, ohne dass ein Löschvorgang explizit von der Clientanwendung initiiert werden muss.
+
+Das Löschen abgelaufener Elemente ist ein im Hintergrund ausgeführter Vorgang, bei dem die verbleibenden [Anforderungseinheiten](request-units.md) (also die nicht von Benutzeranforderungen verbrauchten Anforderungseinheiten) verbraucht werden. Der jeweilige Ablauf kann verzögert werden, wenn der Container stark ausgelastet ist und keine Anforderungseinheit für Wartungsaufgaben übrig ist.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Gültigkeitsdauer für Container und Elemente
 

@@ -3,18 +3,18 @@ title: Anzeigen von Informationen über eine Koordinate mit Azure Maps | Microso
 description: Erfahren Sie, wie Sie Informationen zu einer Adresse auf der Karte anzeigen, wenn ein Benutzer eine Koordinate auswählt.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 3/7/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3b635ab96f1438377cb0d282c17304c2531185be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df0966569a753d5000414451a2b69f1e69449b2c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357802"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638661"
 ---
 # <a name="get-information-from-a-coordinate"></a>Abrufen von Informationen von einer Koordinate
 
@@ -27,9 +27,9 @@ Es gibt zwei Möglichkeiten, eine inverse Adresssuche durchzuführen. Eine Mögl
 <iframe height='500' scrolling='no' title='Abrufen von Informationen von einer Koordinate (Dienstmodul)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>Get information from a coordinate (Service Module)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus den Abonnementschlüssel fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
+Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus das Zugriffstoken fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Der zweite Codeblock erstellt eine `SubscriptionKeyCredentialPolicy`, um HTTP-Anforderungen an Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet dann die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
+Der zweite Codeblock erstellt ein `TokenCredential`-Element, um HTTP-Anforderungen an Azure Maps mit dem Zugriffstoken zu authentifizieren. Anschließend wird das `TokenCredential`-Element an `atlas.service.MapsURL.newPipeline()` übergeben, und es wird eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)-Instanz erstellt. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
 
 Der dritte Codeblock aktualisiert den Stil des Mauscursors in einen Zeiger und erstellt ein [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)-Objekt. Eine Anleitung finden Sie unter [Hinzufügen eines Popupfensters zur Karte](./map-add-popup.md).
 
@@ -46,7 +46,7 @@ Klicken Sie auf die Karte, um für die ausgewählte Position mithilfe der Fetch-
 <iframe height='500' scrolling='no' title='Abrufen von Informationen von einer Koordinate' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>Get information from a coordinate</a> (Abrufen von Informationen von einer Koordinate) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus den Abonnementschlüssel fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
+Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus das Zugriffstoken fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
 Der zweite Codeblock aktualisiert den Stil des Mauscursors in einen Zeiger und ein Objekt vom Typ [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open). Eine Anleitung finden Sie unter [Hinzufügen eines Popupfensters zur Karte](./map-add-popup.md).
 

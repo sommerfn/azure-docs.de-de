@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568270"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641047"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -1195,7 +1194,7 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 
 |Sicht  |BESCHREIBUNG  |
 |---------|---------|
-|[jobs_executions](#jobs_executions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
+|[job_executions](#job_executions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
 |[jobs](#jobs-view)     |   Zeigt alle Aufträge an.      |
 |[job_versions](#job_versions-view)     |   Zeigt alle Auftragsversionen an.      |
 |[jobsteps](#jobsteps-view)     |     Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.    |
@@ -1204,9 +1203,9 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 |[target_group_members](#target_groups_members-view)     |   Zeigt alle Mitglieder sämtlicher Zielgruppen an.      |
 
 
-### <a name="jobs_executions-view"></a>Ansicht „jobs_executions“
+### <a name="job_executions-view"></a>Ansicht „job_executions“
 
-[jobs].[jobs_executions]
+[jobs].[job_executions]
 
 Zeigt den Auftragsausführungsverlauf an.
 

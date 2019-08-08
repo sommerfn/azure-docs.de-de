@@ -3,7 +3,7 @@ title: Erstellen eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie mithilfe von Azure Resource Manager ein sicherer Service Fabric-Cluster in Azure eingerichtet wird.  Sie können eine Standardvorlage oder Ihre eigene Clustervorlage zum Erstellen eines Clusters verwenden.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 709b59d257dd974e81d8b4058983f6e264ba0708
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925850"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599973"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -40,8 +40,8 @@ Wenn Sie einen Produktionscluster für die Ausführung von Produktionsworkloads 
 ## <a name="prerequisites"></a>Voraussetzungen 
 Verwenden Sie in diesem Artikel die Service Fabric-RM-Powershell- oder Azure CLI- Module zum Bereitstellen eines Clusters:
 
-* [Azure PowerShell ab 4.1][azure-powershell]
-* [Azure-Befehlszeilenschnittstelle ab Version 2.0][azure-CLI]
+* [Azure PowerShell 4.1 und höher][azure-powershell]
+* [Azure CLI, Version 2.0 und höher][azure-CLI]
 
 Die Referenzdokumentation für die Service Fabric-Module finden Sie hier:
 * [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)

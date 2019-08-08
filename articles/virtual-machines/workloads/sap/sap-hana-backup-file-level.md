@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 02ee65020f72fb9c3262db82e035e628f780e2cf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 86a0633a433623c2b43bb26721e5fcee08d4301f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709993"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640811"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 
@@ -50,7 +50,7 @@ Eine Möglichkeit zur Umgehung dieses Problems besteht darin, SAP HANA-Sicherung
 
 ## <a name="azure-blobxfer-utility-details"></a>Details zum Azure-Hilfsprogramm „blobxfer“
 
-Wenn Sie Verzeichnisse und Dateien in Azure Storage speichern möchten, können Sie dazu entweder die Befehlszeilenschnittstelle oder PowerShell verwenden oder ein Tool mit einem der [Azure SDKs](https://azure.microsoft.com/downloads/) entwickeln. Zum Kopieren von Daten in Azure Storage steht zwar das verwendungsbereite Hilfsprogramm AzCopy zur Verfügung, dieses wird jedoch nur unter Windows unterstützt. (Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../../../storage/common/storage-use-azcopy.md).)
+Wenn Sie Verzeichnisse und Dateien in Azure Storage speichern möchten, können Sie dazu entweder die Befehlszeilenschnittstelle oder PowerShell verwenden oder ein Tool mit einem der [Azure SDKs](https://azure.microsoft.com/downloads/) entwickeln. Zum Kopieren von Daten in Azure Storage steht auch das sofort einsatzbereite Hilfsprogramm AzCopy zur Verfügung (siehe [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../../../storage/common/storage-use-azcopy.md)).
 
 Aus diesem Grund wurde „blobxfer“ zum Kopieren von SAP HANA-Sicherungsdateien verwendet. Dieses Open Source-Programm wird von vielen Kunden in Produktionsumgebungen genutzt und ist über [GitHub](https://github.com/Azure/blobxfer) erhältlich. Mit dem Tool können Daten direkt in Azure Blob Storage oder in eine Azure-Dateifreigabe kopiert werden. Darüber hinaus bietet es eine Reihe nützlicher Features wie MD5-Hash oder automatische Parallelität beim Kopieren eines Verzeichnisses mit mehreren Dateien.
 

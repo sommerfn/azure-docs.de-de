@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544737"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618850"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
 
@@ -65,7 +65,7 @@ Hier sind einige empfohlene Spezifikationen für jeden Computer aufgeführt, den
 * Mindestens 40 GB verfügbarer Speicherplatz
 * CPU mit mindestens vier Kernen
 * Verbindung mit einem sicheren Netzwerk oder sicheren Netzwerken für alle Computer
-* Windows Server-Betriebssystem installiert (gültige Versionen: 2012 R2, 2016, 1709, 1803)
+* Windows Server-Betriebssystem installiert (gültige Versionen: 2012 R2, 2016, 1709, 1803 oder 2019)
 * [.NET Framework 4.5.1 oder höher](https://www.microsoft.com/download/details.aspx?id=40773), vollständig installiert
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * Der [RemoteRegistry-Dienst](https://technet.microsoft.com/library/cc754820) muss auf allen Computern ausgeführt werden.

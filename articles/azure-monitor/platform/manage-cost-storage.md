@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/29/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5e325f7766e7b0d9764949eb3fbf9753d65db8b3
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655706"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619396"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen
 
@@ -110,12 +110,15 @@ Die Aufbewahrungsdauer kann auch [über ARM](https://docs.microsoft.com/azure/az
 
 ## <a name="legacy-pricing-tiers"></a>Legacytarife
 
-Abonnements, die vor dem 2. April 2018 einen Log Analytics-Arbeitsbereich oder eine Application Insights-Ressource enthielten oder mit einem Enterprise Agreement verknüpft sind, das vor dem 1. Februar 2019 abgeschlossen wurde, haben weiterhin Zugriff auf die Legacytarife: **Free**, **Eigenständig (Pro GB)** und **Pro Knoten (OMS)** .  Für Arbeitsbereiche im Tarif „Free“ ist die tägliche Datenerfassung auf 500 MB beschränkt (mit Ausnahme von Sicherheitsdaten, die von Azure Security Center gesammelt werden). Darüber hinaus ist die Datenaufbewahrung auf sieben Tage beschränkt. Der Tarif „Free“ dient nur zu Evaluierungszwecken. Für Arbeitsbereiche im Tarif „Eigenständig“ oder „Pro Knoten“ gilt eine vom Benutzer festlegbare Datenaufbewahrungsfrist von bis zu zwei Jahren. Vor April 2016 erstellte Arbeitsbereiche haben auch Zugriff auf die ursprünglichen Tarife **Standard** und **Premium**. Weitere Informationen zu Einschränkungen von Tarifen finden Sie [hier](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
+Abonnements, die vor dem 2. April 2018 einen Log Analytics-Arbeitsbereich oder eine Application Insights-Ressource enthielten oder mit einem Enterprise Agreement verknüpft sind, das vor dem 1. Februar 2019 abgeschlossen wurde, haben weiterhin Zugriff auf die Legacytarife: **Free**, **Eigenständig (Pro GB)** und **Pro Knoten (OMS)** .  Für Arbeitsbereiche im Tarif „Free“ ist die tägliche Datenerfassung auf 500 MB beschränkt (mit Ausnahme von Sicherheitsdaten, die von Azure Security Center gesammelt werden). Darüber hinaus ist die Datenaufbewahrung auf sieben Tage beschränkt. Der Tarif „Free“ dient nur zu Evaluierungszwecken. Für Arbeitsbereiche im Tarif „Eigenständig“ oder „Pro Knoten“ gilt eine vom Benutzer festlegbare Datenaufbewahrungsfrist von bis zu zwei Jahren. 
+
+Vor April 2016 erstellte Arbeitsbereiche haben auch Zugriff auf die ursprünglichen Tarife **Standard** und **Premium**, für die eine feste Datenaufbewahrung von 30 bzw. 365 Tagen gilt. Neue Arbeitsbereiche können nicht im Tarif **Standard** oder **Premium** erstellt werden, und wenn ein Arbeitsbereich aus diesen Tarifen verschoben wird, kann er nicht zurück verschoben werden. 
+
+Weitere Informationen zu Einschränkungen von Tarifen finden Sie [hier](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
 > Wenn Sie die Berechtigungen nutzen möchten, die Sie durch den Kauf der OMS E1-Suite, OMS E2-Suite oder des OMS-Add-Ons für System Center erwerben, wählen Sie den Tarif *Pro Knoten* für Log Analytics aus.
 
-Die ersten Nutzer von Log Analytics haben auch Zugriff auf die ursprünglichen Tarife **Standard** und **Premium**, die eine feste Datenaufbewahrung von 30 bzw. 365 Tagen vorsehen. 
 
 ## <a name="changing-pricing-tier"></a>Ändern des Tarifs
 

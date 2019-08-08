@@ -4,20 +4,20 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 19331f35ea2fa773325ec61e728677e37767ab54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 60c0c700dde5afda2ca93a92b334cbc4f0134043
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178195"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667987"
 ---
 > [!div class="op_single_selector"]
-> * [Gerät: Node.js-Dienst: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [Gerät: C#-Dienst: C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
-> * [Gerät: Java-Dienst: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
-> * [Gerät: Python-Dienst: Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
+> * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
+> * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
+> * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-Back-End-Apps können Azure IoT Hub-Grundtypen (etwa [Gerätezwillingsmethode][lnk-devtwin] und [direkte Methode][lnk-c2dmethod]) verwenden, um Geräteverwaltungsaktionen auf Geräten remote zu starten und zu überwachen. In diesem Tutorial wird veranschaulicht, wie eine Back-End-App und eine Gerät-App zusammen verwendet werden können, um einen Remoteneustart des Geräts mit IoT Hub zu initiieren und zu überwachen.
+Back-End-Apps können Azure IoT Hub-Grundtypen wie [Gerätezwillinge][lnk-devtwin] und [direkte Methoden][lnk-c2dmethod] verwenden, um Geräteverwaltungsaktionen auf Geräten remote zu starten und zu überwachen. In diesem Tutorial wird veranschaulicht, wie eine Back-End-App und eine Gerät-App zusammen verwendet werden können, um einen Remoteneustart des Geräts mit IoT Hub zu initiieren und zu überwachen.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 

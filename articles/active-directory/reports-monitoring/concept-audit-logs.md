@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c872d5151ac0b7bb650e2de68b9e631e8254ba94
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827907"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618910"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
@@ -48,7 +48,7 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
 
 Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. Beachten Sie, dass Überwachungsprotokolle eine Latenz von bis zu einer Stunde haben können, es kann also so lange dauern, bis die Daten der Überwachungsaktivität im Portal angezeigt werden, nachdem Sie die Aufgabe abgeschlossen haben.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/61.png "Überwachungsprotokolle")
+
 
 Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
@@ -127,7 +127,7 @@ Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filterop
 
 Der Filter **Aktivität** basiert auf der getroffenen Auswahl für die Kategorie und den und Aktivitätsressourcentyp. Sie können entweder eine bestimmte Aktivität verwenden oder alle auswählen. 
 
-Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](reference-audit-activities.md) lesen.
+Sie können die Liste aller Überwachungsaktivitäten mithilfe der Graph-API abrufen: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Mit dem Filter **Status** können Sie eine Filterung basierend auf dem Status eines Überprüfungsvorgangs durchführen. Folgende Statuswerte sind möglich:
 
@@ -149,7 +149,7 @@ Mögliche Werte:
 
 Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Sie können die gefilterten Daten (bis zu 250.000 Datensätze) zudem herunterladen. Wählen Sie dazu die Schaltfläche **Herunterladen** aus. Sie können die Protokolle im CSV- oder im JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
+Sie können die gefilterten Daten (bis zu 250.000 Datensätze) auch herunterladen, indem Sie die Schaltfläche **Herunterladen** auswählen. Sie können die Protokolle im CSV- oder JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/download.png "Überwachungsprotokolle")
 
@@ -180,11 +180,11 @@ Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie 
 
 - Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Registerkarte **Benutzer** verwenden. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Benutzer** im Abschnitt **Aktivität**. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/users.png "Überwachungsprotokolle")
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Registerkarte **Gruppen** verwenden. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Gruppen** im Abschnitt **Aktivität**. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/groups.png "Überwachungsprotokolle")
 

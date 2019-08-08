@@ -1,18 +1,18 @@
 ---
 title: Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup mit PowerShell
 description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup und PowerShell
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 07/31/2019
+ms.author: dacurwin
+ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565703"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689017"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -194,6 +194,9 @@ $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
+> [!IMPORTANT]
+> Sie können die Startzeit nur in 30-Minuten-Einheiten angeben. Im obigen Beispiel kann sie nur „01:00:00“ oder „02:30:00“ lauten. „01:15:00“ kann nicht als Startzeit angegeben werden.
+
 Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Im Beispiel werden diese Variablen verwendet, um die Parameter beim Erstellen einer Schutzrichtlinie,*NewPolicy*, zu definieren.
 
 ```powershell
@@ -212,6 +215,9 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 ### <a name="enable-protection"></a>Schutz aktivieren
 
 Nachdem Sie die Schutzrichtlinie definiert haben, müssen Sie noch die Richtlinie für ein Element aktivieren. Verwenden Sie [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection), um den Schutz zu aktivieren. Zum Aktivieren des Schutzes sind zwei Objekte erforderlich – das Element und die Richtlinie. Sobald die Richtlinie mit dem Tresor verknüpft ist, wird der Sicherungsworkflow zu dem im Richtlinienzeitplan definierten Zeitpunkt gestartet.
+
+> [!IMPORTANT]
+> Wenn Sie die Sicherung mithilfe von PowerShell für mehrere virtuelle Computer gleichzeitig aktivieren, dürfen pro Richtlinie maximal 100 virtuelle Computer zugeordnet sein. Dies wird als [bewährte Methode](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy) empfohlen. Derzeit blockiert der PS-Client bei mehr als 100 virtuellen Computern die Aktivierung nicht explizit, diese Überprüfung soll jedoch in Zukunft hinzugefügt werden.
 
 Im folgenden Beispiel wird der Schutz für das Element „V2VM“ mithilfe der Richtlinie „NewPolicy“ aktiviert. Die Beispiele unterscheiden sich in Abhängigkeit davon, ob der virtuelle Computer verschlüsselt ist und welche Art von Verschlüsselung verwendet wird.
 

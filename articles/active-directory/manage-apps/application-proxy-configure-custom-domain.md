@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108674"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618812"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
 
@@ -73,7 +73,7 @@ Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. Elliptic Curve
 
 Sie können ein Platzhalterzertifikats verwenden, solange der Platzhalter mit der gewünschten externen URL übereinstimmt.
 
-Aus Sicherheitsgründen können Sie kein Zertifikat verwenden, das von Ihrer eigenen Public Key-Infrastruktur ausgestellt wurde.
+Von ihrer eigenen Public Key-Infrastruktur (PKI) ausgestellte Zertifikate können verwendet werden, wenn die Zertifikatkette auf Ihren Clientgeräten installiert ist. Intune kann verwendet werden, um diese Zertifikate auf verwalteten Geräten bereitzustellen. Bei nicht verwalteten Geräten müssen diese Zertifikate manuell installiert werden.
 
 ### <a name="changing-the-domain"></a>Ändern der Domäne
 Alle überprüften Domänen werden in der Dropdownliste „Externe URL“ Ihrer Anwendung angezeigt. Sie können einfach dieses Feld für die Anwendung aktualisieren, um die Domäne zu ändern. [Fügen Sie die gewünschte Domäne als überprüfte Domäne hinzu](../fundamentals/add-custom-domain.md), falls sie nicht in der Liste enthalten ist. Wenn Sie eine Domäne auswählen, der noch kein Zertifikat zugeordnet ist, können Sie die Schritte 5 bis 7 ausführen, um das Zertifikat hinzuzufügen. Stellen Sie anschließend sicher, dass Sie den DNS-Eintrag aktualisieren, damit die Umleitung von der neuen externen URL durchgeführt wird. 

@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60926075"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638507"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Gerätekonnektivität und eingehende Telemetriedaten
 
@@ -50,7 +50,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 | *YOUR_DEVICE_GUID* | Der Geräte-ID |
 
 ```plaintext
-YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
 | Parameterwert | Ersetzen durch |
@@ -61,7 +61,7 @@ Kopieren Sie in der Antwortnutzlast die Eigenschaft **connectionString** des Ger
 
 ## <a name="device-to-cloud-message"></a>Gerät-zu-Cloud-Nachricht
 
-Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend den Anforderungen Ihrer Lösung anpassen. Verwenden Sie einen beliebigen Datenvertrag, der in ein Bytearray oder in einen Datenstrom serialisiert werden kann und von der [Klasse für Azure IoT-Geräteclientnachrichten (Message(byte[] byteArray))](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) unterstützt wird. Die Nachricht kann in einem beliebigen benutzerdefinierten Binärformat vorliegen, solange Sie den Datenvertrag in einer entsprechenden benutzerdefinierten Funktion decodieren. Für eine Gerät-zu-Cloud-Nachricht muss nur eine einzige Anforderung erfüllt werden: Sie müssen mithilfe eines Satzes von Eigenschaften sicherstellen, dass die Nachricht ordnungsgemäß an die Verarbeitungs-Engine weitergeleitet wird.
+Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend den Anforderungen Ihrer Lösung anpassen. Verwenden Sie einen beliebigen Datenvertrag, der in ein Bytearray oder in einen Datenstrom serialisiert werden kann und von der [Klasse für Azure IoT-Geräteclientnachrichten (Message(byte[] byteArray))](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) unterstützt wird. Die Nachricht kann in einem beliebigen benutzerdefinierten Binärformat vorliegen, solange Sie den Datenvertrag in einer entsprechenden benutzerdefinierten Funktion decodieren. Für eine Gerät-zu-Cloud-Nachricht muss nur eine einzige Anforderung erfüllt werden: Verwalten Sie einen Satz von Eigenschaften, um sicherzustellen, dass die Nachricht ordnungsgemäß an das Verarbeitungsmodul weitergeleitet wird.
 
 ### <a name="telemetry-properties"></a>Telemetrieeigenschaften
 

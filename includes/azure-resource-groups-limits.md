@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869889"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698260"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Ressourcen pro [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), pro Ressourcentyp |800 |Variiert je nach Ressourcentyp |
+| Ressourcen pro [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), pro Ressourcentyp |800 |Einige Ressourcentypen können den Grenzwert von 800 überschreiten. Weitere Informationen finden Sie unter [Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe](../articles/azure-resource-manager/resources-without-rg-limit.md). |
 | Bereitstellungen pro Ressourcenverlauf im Bereitstellungsverlauf |800<sup>1</sup> |800 |
 | Ressourcen pro Bereitstellung |800 |800 |
 | Managementsperren pro eindeutigem Bereich |20 |20 |

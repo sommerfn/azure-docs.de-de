@@ -1,19 +1,20 @@
 ---
 title: 'Behandeln von Azure Backup-Fehlern: Bereitstellungsstatus nicht verfügbar'
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 keywords: Azure Backup; VM-Agent; Netzwerkkonnektivität;
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465332"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688978"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -77,9 +78,9 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 2: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
 **Ursache 3: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks: VMSnapshot extension operation failed
+## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – Fehler beim Vorgang der VMSnapshot-Erweiterung
 
-**Fehlercode**: ExtentionOperationFailedForManagedDisks <br>
+**Fehlercode**: ExtensionOperationFailedForManagedDisks <br>
 **Fehlermeldung**: Fehler beim Vorgang der VMSnapshot-Erweiterung<br>
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
@@ -106,7 +107,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
 **Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB <br>
 
-Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Unterstützung für große Datenträger ist bald verfügbar.  
+Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Wenn Sie sich für die private Vorschau von Azure Backup mit Unterstützung großer Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, schreiben Sie uns an AskAzureBackupTeam@microsoft.com.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.
 

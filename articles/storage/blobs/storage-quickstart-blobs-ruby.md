@@ -1,20 +1,18 @@
 ---
 title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von Ruby | Microsoft-Dokumentation'
 description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek für Ruby, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 77e8e3dd8c32545b24230512ded00e335108d802
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150428"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726348"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Ruby
 
@@ -115,7 +113,7 @@ blob_client.set_container_acl(container_name, "container")
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten und auch in diesem Schnellstart verwendet.  
 
-Um eine Datei in einen Blob hochzuladen, rufen Sie den vollständigen Pfad der Datei ab, indem Sie den Verzeichnisnamen und den Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Sie können anschließend die Datei an den Speicherort unter dem angegebenen Pfad hochladen, indem Sie die **create\_block\_blob()**-Methode verwenden. 
+Um eine Datei in einen Blob hochzuladen, rufen Sie den vollständigen Pfad der Datei ab, indem Sie den Verzeichnisnamen und den Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Sie können anschließend die Datei an den Speicherort unter dem angegebenen Pfad hochladen, indem Sie die **create\_block\_blob()** -Methode verwenden. 
 
 Der Beispielcode erstellt eine lokale Datei für den Upload und Download. Dabei wird die hochzuladende Datei als **file\_path\_to\_file** und der Name des Blob in **local\_file\_name** gespeichert. Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs** hochgeladen.
 
@@ -137,11 +135,11 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-Verwenden Sie die **create\_block\_list()**-Methode, um eine Teilaktualisierung für den Inhalt eines Blockblogs durchzuführen. Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Das Anfügeblob sollte nur in einem Writer-Modell verwendet werden. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
+Verwenden Sie die **create\_block\_list()** -Methode, um eine Teilaktualisierung für den Inhalt eines Blockblogs durchzuführen. Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Das Anfügeblob sollte nur in einem Writer-Modell verwendet werden. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
 ### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Sie können eine Liste mit Dateien des Containers abrufen, indem Sie die **list\_blobs()**-Methode verwenden. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die Namen der in einem Container gefundenen Blobs anzuzeigen.  
+Sie können eine Liste mit Dateien des Containers abrufen, indem Sie die **list\_blobs()** -Methode verwenden. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die Namen der in einem Container gefundenen Blobs anzuzeigen.  
 
 ```ruby
 # List the blobs in the container
@@ -158,7 +156,7 @@ end
 
 ### <a name="download-the-blobs"></a>Herunterladen der Blobs
 
-Laden Sie Blobs auf Ihren lokalen Datenträger mithilfe der **get\_blob()**-Methode herunter. Durch den folgenden Code wird der in einem vorherigen Abschnitt hochgeladene Blob heruntergeladen. „_DOWNLOADED“ wird als Suffix an den Blobnamen hinzugefügt, damit Sie beide Dateien auf dem lokalen Datenträger sehen können. 
+Laden Sie Blobs auf Ihren lokalen Datenträger mithilfe der **get\_blob()** -Methode herunter. Durch den folgenden Code wird der in einem vorherigen Abschnitt hochgeladene Blob heruntergeladen. „_DOWNLOADED“ wird als Suffix an den Blobnamen hinzugefügt, damit Sie beide Dateien auf dem lokalen Datenträger sehen können. 
 
 ```ruby
 # Download the blob(s).
@@ -171,7 +169,7 @@ File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie die in diesem Schnellstart hochgeladenen Blobs nicht mehr benötigen, können Sie mit der **delete\_container()**-Methode den gesamten Container löschen. Wenn die erstellten Dateien nicht mehr benötigt werden, können Sie die **delete\_blob()**-Methode verwenden, um die Dateien zu löschen.
+Wenn Sie die in diesem Schnellstart hochgeladenen Blobs nicht mehr benötigen, können Sie mit der **delete\_container()** -Methode den gesamten Container löschen. Wenn die erstellten Dateien nicht mehr benötigt werden, können Sie die **delete\_blob()** -Methode verwenden, um die Dateien zu löschen.
 
 ```ruby
 # Clean up resources. This includes the container and the temp files

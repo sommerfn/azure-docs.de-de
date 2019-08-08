@@ -1,18 +1,19 @@
 ---
 title: Azure-Funktion zur sofortigen Wiederherstellung
 description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestellte Fragen für VM-Sicherungsstapel, Resource Manager-Bereitstellungsmodell
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sogup
-ms.openlocfilehash: 8bbf24fdd05fa0d70bcadae4f21e599dc8bef3a5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465109"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698409"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -25,7 +26,8 @@ Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featur
 * Die Sicherungs- und Wiederherstellungszeiten werden reduziert, indem Momentaufnahmen standardmäßig zwei Tage lang lokal gespeichert werden. Dieser Standardwert für die Aufbewahrung von Momentaufnahmen kann auf einen beliebigen Wert zwischen 1 und 5 Tagen konfiguriert werden.
 * Unterstützt Datenträgergrößen bis zu 4 TB. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
 * Unterstützt SSD Standard-Datenträger sowie HDD Standard-Datenträger und SSD Premium-Datenträger.
-*   Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
+* Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
+* Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 
 
 ## <a name="whats-new-in-this-feature"></a>Was ist neu in diesem Feature?
@@ -103,4 +105,4 @@ Wenn der Wiederherstellungstyp „Momentaufnahme und Tresor“ ist, erfolgt die 
 Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif2) nur zu, wenn die Momentaufnahme (Tarif1) gelöscht wird. Es empfiehlt sich, den Aufbewahrungszeitraum für den Wiederherstellungspunkt (Tarif2) auf einen höheren Wert als den Aufbewahrungszeitraum der Momentaufnahme festzulegen.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraum noch vorhanden?
-Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen konzipierten GC-Richtlinie. Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden ist, für den Fall, dass alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.
+Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen entworfenen Richtlinie für die automatische Speicherbereinigung (Garbage Collection, GC). Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden ist, für den Fall, dass alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.

@@ -3,7 +3,7 @@ title: Informationen zur Azure Service Fabric-Anwendungssicherheit | Microsoft D
 description: Ein Überblick über die sichere Ausführung von Microservicesanwendungen in Service Fabric. Erfahren Sie, wie Sie Dienste und das Startskript unter verschiedenen Sicherheitskonten ausführen, Benutzer authentifizieren und autorisieren, Anwendungsgeheimnisse verwalten, die Dienstkommunikation sichern, ein API-Gateway verwenden und ruhende Anwendungsdaten sichern.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
-ms.author: aljo
-ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302243"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600072"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-Anwendungs- und -Dienstsicherheit
 Eine Microservicesarchitektur kann [zahlreiche Vorteile](service-fabric-overview-microservices.md) mit sich bringen. Die Verwaltung der Sicherheit von Microservices ist jedoch eine Herausforderung und unterscheidet sich von der Verwaltung traditioneller monolithischer Anwendungen. 
@@ -38,7 +38,7 @@ Wenn auf Dienste direkt zugegriffen werden kann, kann ein Authentifizierungsdien
 
 Für ASP.NET Core ist der primäre Mechanismus für die [Authentifizierung von Benutzern](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) das ASP.NET Core Identity-Mitgliedschaftssystem. ASP.NET Core Identity speichert Benutzerinformationen (einschließlich Anmeldeinformationen, Rollen und Ansprüche) in einem vom Entwickler konfigurierten Datenspeicher. ASP.NET Core Identity unterstützt zweistufige Authentifizierung.  Externe Authentifizierungsanbieter werden ebenfalls unterstützt, sodass Benutzer sich mit vorhandenen Authentifizierungsverfahren von Anbietern wie Microsoft, Google, Facebook oder Twitter anmelden können.
 
-### <a name="authorization"></a>Autorisierung
+### <a name="authorization"></a>Authorization
 Nach der Authentifizierung müssen Dienste den Benutzerzugriff autorisieren oder ermitteln, welche Aktionen ein Benutzer ausführen kann. Dieser Prozess ermöglicht es einem Dienst, APIs für einige authentifizierte Benutzer zur Verfügung zu stellen, aber nicht für alle. Die Autorisierung ist orthogonal und unabhängig von der Authentifizierung, d.h. der Feststellung, wer ein Benutzer ist. Die Authentifizierung kann mindestens eine Identität für den aktuellen Benutzer erstellen.
 
 [ASP.NET Core-Autorisierung](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kann basierend auf den Rollen der Benutzer oder auf benutzerdefinierten Richtlinien ausgeführt werden, die die Überprüfung von Ansprüchen oder andere Heuristiken beinhalten können.
@@ -66,7 +66,7 @@ Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
 3. Verschlüsseln von Geheimnissen bei der Bereitstellung einer Anwendung mit dem Zertifikat und Einfügen dieser Geheimnisse in die Konfigurationsdatei „Settings.xml“ des Diensts
 4. Lesen der verschlüsselten Werte aus der Datei „Settings.xml“, indem diese mit demselben Verschlüsselungszertifikat entschlüsselt werden 
 
-[Azure Key Vault][key-vault-get-started] wird als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden.
+[Azure Key Vault][key-vault-get-started] wird hier als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden.
 
 Ein Beispiel finden Sie unter [Verwalten von Anwendungsgeheimnissen](service-fabric-application-secret-management.md).
 

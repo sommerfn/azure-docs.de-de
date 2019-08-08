@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/18/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: a793de302eb0833c959f2486fc2cda1f2eec4674
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149124"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618834"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure
 
@@ -135,7 +135,7 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
   >Jeder neue Deployment Planner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.
 
 ## <a name="version-history"></a>Versionsverlauf
-Die aktuelle Version des Azure Site Recovery-Bereitstellungsplaners ist Version 2.4.
+Die aktuelle Version des Azure Site Recovery-Bereitstellungsplaners ist Version 2.5.
 Auf der Seite [ASR Deployment Planner Version History](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (Azure Site Recovery-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
 
 

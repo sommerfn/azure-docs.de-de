@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6121ca6c1636c8839110712310a1b94fe7fada49
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107664"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619257"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -66,7 +66,7 @@ Ein Anmeldungsprotokoll enthält eine Standardlistenansicht mit folgenden Inform
 
 - Anmeldedatum
 - Zugehöriger Benutzer
-- Anwendung, bei der sich der Benutzer angemeldet hat
+- Die Anwendung, bei der sich der Benutzer angemeldet hat
 - Anmeldestatus
 - Status der Risikoerkennung
 - Status der MFA-Anforderung (Multi-Factor Authentication)
@@ -89,18 +89,11 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 > Benutzer können nun in allen Anmeldeberichten Probleme mit Richtlinien für bedingten Zugriff beheben. Durch Klicken auf die Registerkarte **Bedingter Zugriff** eines Anmeldedatensatzes können Benutzer den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
 > Weitere Informationen finden Sie in den [häufig gestellten Fragen zum bedingten Zugriff in allen Anmeldungen](reports-faq.md#conditional-access).
 
-![Anmeldeaktivität](./media/concept-sign-ins/ConditionalAccess.png "Anmeldeaktivität")
 
 
 ## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
-Sie können die Anmeldungsdaten mit den folgenden Standardfeldern filtern, um die gemeldeten Daten einzugrenzen:
-
-- Benutzer
-- Anwendung
-- Anmeldestatus
-- Bedingter Zugriff
-- Date
+Um die gemeldeten Daten gemäß Ihren Anforderungen einzugrenzen, können Sie die Anmeldedaten mit dem Datumsfeld als Standardfilter filtern. Außerdem bietet Azure AD eine breite Palette an zusätzlichen Filtern, die Sie festlegen können.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/04.png "Anmeldeaktivität")
 

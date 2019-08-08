@@ -4,14 +4,14 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/8/2018
+ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: e093cb65137576a725a7d23676e5b2288bb778a0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: ec671c8698676b237021352e963ba08e0ddfe47e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206390"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698223"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Array- und Objektfunktionen für Azure Resource Manager-Vorlagen
 
@@ -187,7 +187,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| stringOutput | string | default |
+| stringOutput | Zeichenfolge | default |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"first": "default"} |
 | arrayOutput | Array | [1] |
@@ -305,7 +305,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| concatOutput | string | prefix-5yj4yjf5mbg72 |
+| concatOutput | Zeichenfolge | prefix-5yj4yjf5mbg72 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -622,8 +622,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| arrayOutput | string | one |
-| stringOutput | string | O |
+| arrayOutput | Zeichenfolge | one |
+| stringOutput | Zeichenfolge | O |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -839,8 +839,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| arrayOutput | string | three |
-| stringOutput | string | e |
+| arrayOutput | Zeichenfolge | three |
+| stringOutput | Zeichenfolge | e |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -859,13 +859,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="length"></a>length
 `length(arg1)`
 
-Gibt die Anzahl von Elementen in einem Array bzw. von Zeichen in einer Zeichenfolge zurück.
+Gibt die Anzahl von Elementen in einem Array, Zeichen in einer Zeichenfolge oder Eigenschaften auf Stammebene in einem Objekt zurück.
 
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Array oder Zeichenfolge |Das Array, von dem die Anzahl der Elemente, bzw. die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll. |
+| arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -891,6 +891,18 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
         "stringToTest": {
             "type": "string",
             "defaultValue": "One Two Three"
+        },
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "propA": "one",
+                "propB": "two",
+                "propC": "three",
+                "propD": {
+                    "propD-1": "sub",
+                    "propD-2": "sub"
+                }
+            }
         }
     },
     "resources": [],
@@ -902,6 +914,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
         "stringLength": {
             "type": "int",
             "value": "[length(parameters('stringToTest'))]"
+        },
+        "objectLength": {
+            "type": "int",
+            "value": "[length(parameters('objectToTest'))]"
         }
     }
 }
@@ -913,6 +929,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1196,7 +1213,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | NAME | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | string | two three |
+| stringOutput | Zeichenfolge | two three |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1277,7 +1294,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | NAME | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | string | on |
+| stringOutput | Zeichenfolge | on |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 

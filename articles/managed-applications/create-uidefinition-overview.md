@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Erstellen von Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen | Microsoft-Dokumentation
+title: Die Datei „CreateUiDefitinion.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen erstellen.
 services: managed-applications
 documentationcenter: na
@@ -13,20 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50bbaf740a67d3830df2d0447b9522153cb8c93c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257561"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619079"
 ---
-# <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung
-In diesem Dokument werden die grundlegenden Konzepte der Datei „createUiDefinition.json“ vorgestellt. Das Azure-Portal verwendet diese Datei zum Generieren der Benutzeroberfläche zum Erstellen einer verwalteten Anwendung.
+# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>Die Datei „CreateUiDefitinion.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen
+In diesem Dokument werden die grundlegenden Konzepte der Datei **CreateUiDefinition.json** vorgestellt, die das Azure-Portal zum Definieren der Benutzeroberfläche zum Erstellen einer verwalteten Anwendung verwendet.
+
+Die Vorlage sieht wie folgt aus:
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-   "handler": "Microsoft.Compute.MultiVm",
+   "handler": "Microsoft.Azure.CreateUIDef",
    "version": "0.1.2-preview",
    "parameters": {
       "basics": [ ],
@@ -42,21 +44,21 @@ Ein CreateUiDefinition-Element enthält immer drei Eigenschaften:
 * version
 * parameters
 
-Bei verwalteten Anwendungen muss für „handler“ immer `Microsoft.Compute.MultiVm` angegeben werden. Die letzte unterstützte Version ist `0.1.2-preview`.
+Der Handler muss immer `Microsoft.Azure.CreateUIDef` lauten, und die neueste unterstützte Version ist `0.1.2-preview`.
 
-Das Schema der parameters-Eigenschaft hängt von der Kombination aus den angegebenen Werten für „handler“ und „version“ ab. Für verwaltete Anwendungen lauten die unterstützten Eigenschaften `basics`, `steps` und `outputs`. Die Eigenschaften „basics“ und „steps“ enthalten die _Elemente_  (wie Textfelder und Dropdownfelder), die im Azure-Portal angezeigt werden sollen. Mit der outputs-Eigenschaft werden die Ausgabewerte der angegebenen Elemente den Parametern der Azure Resource Manager-Bereitstellungsvorlage zugeordnet.
+Das Schema der parameters-Eigenschaft hängt von der Kombination aus den angegebenen Werten für „handler“ und „version“ ab. Für verwaltete Anwendungen lauten die unterstützten Eigenschaften `basics`, `steps` und `outputs`. Die Eigenschaften „basics“ und „steps“ enthalten die [Elemente ](create-uidefinition-elements.md) (wie Textfelder und Dropdownfelder), die im Azure-Portal angezeigt werden sollen. Mit der outputs-Eigenschaft werden die Ausgabewerte der angegebenen Elemente den Parametern der Azure Resource Manager-Bereitstellungsvorlage zugeordnet.
 
 Die Aufnahme von `$schema` wird empfohlen, ist aber optional. Wenn ein Wert angegeben wird, muss der Wert für `version` der Version im `$schema`-URI entsprechen.
 
-Sie können einen JSON-Editor zum Erstellen Ihrer Benutzeroberflächendefinition verwenden, oder Sie können die Benutzeroberflächendefinitions-Sandbox verwenden, um die Benutzeroberflächendefinition zu erstellen und eine Vorschau davon anzuzeigen. Weitere Informationen zur Sandbox finden Sie unter [Testen Ihrer Portaloberfläche für Azure Managed Applications](test-createuidefinition.md).
+Sie können einen JSON-Editor zum Erstellen Ihrer Benutzeroberflächendefinition verwenden, und Sie können sie dann in der [Sandbox zum Erstellen der Benutzeroberflächendefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) testen, um eine Vorschau davon anzuzeigen. Weitere Informationen zur Sandbox finden Sie unter [Testen Ihrer Portaloberfläche für Azure Managed Applications](test-createuidefinition.md).
 
 ## <a name="basics"></a>Grundlagen
-„basics“ ist stets der erste Schritt des Assistenten, der erstellt wird, wenn das Azure-Portal die Datei analysiert. Das Portal zeigt nicht nur die in `basics` angegebenen Elemente an, sondern fügt zusätzlich Elemente für Benutzer zum Auswählen des Abonnements, der Ressourcengruppe und des Standort für die Bereitstellung ein. Im Allgemeinen sollten Elemente, die bereitstellungsweite Parameter abfragen (wie den Namen eines Clusters oder Administratoranmeldeinformationen), in diesem Schritt enthalten sein.
+Bei „basics“ handelt es sich um den ersten Schritt, der erstellt wird, wenn das Azure-Portal die Datei analysiert. Das Portal zeigt nicht nur die in `basics` angegebenen Elemente an, sondern fügt zusätzlich Elemente für Benutzer zum Auswählen des Abonnements, der Ressourcengruppe und des Standort für die Bereitstellung ein. Elemente, die bereitstellungsweite Parameter abfragen (wie den Namen eines Clusters oder Administratoranmeldeinformationen), sollten nach Möglichkeit in diesem Schritt enthalten sein.
 
-Falls das Verhalten eines Elements von dem Abonnement, der Ressourcengruppe oder dem Standort eines Benutzers abhängt, kann dieses Element nicht in „basics“ verwendet werden. **Microsoft.Compute.SizeSelector** ist bei der Ermittlung der Liste verfügbarer Größen beispielsweise vom Abonnement und Standort des Benutzers abhängig. Daher kann **Microsoft.Compute.SizeSelector** nur in „steps“ verwendet werden. Im Allgemeinen können nur Elemente im **Microsoft.Common**-Namespace in „basics“ verwendet werden. Dennoch sind einige Elemente in anderen Namespaces (etwa **Microsoft.Compute.Credentials**) zulässig, die nicht vom Kontext des Benutzers abhängig sind.
+Wenn das Verhalten eines Elements von dem Abonnement, der Ressourcengruppe oder dem Standort des Benutzers abhängig ist, kann dieses Element nicht in „basics“ verwendet werden. **Microsoft.Compute.SizeSelector** ist bei der Ermittlung der Liste verfügbarer Größen beispielsweise vom Abonnement und Standort des Benutzers abhängig. Daher kann **Microsoft.Compute.SizeSelector** nur in „steps“ verwendet werden. Im Allgemeinen können nur Elemente im **Microsoft.Common**-Namespace in „basics“ verwendet werden. Dennoch sind einige Elemente in anderen Namespaces (wie **Microsoft.Compute.Credentials**) zulässig, die nicht vom Kontext des Benutzers abhängig sind.
 
 ## <a name="steps"></a>Schritte
-Die steps-Eigenschaft kann null oder mehr zusätzliche steps-Elemente für die Anzeige nach „basics“ enthalten, von denen jeder mindestens ein Element enthält. Ziehen Sie das Hinzufügen von steps-Elementen pro Rolle oder Ebene der bereitgestellten Anwendung in Betracht. Fügen Sie beispielsweise ein steps-Element für Eingaben von den Masterknoten und ein steps-Element für die Workerknoten in einem Cluster hinzu.
+Die steps-Eigenschaft kann null oder mehr zusätzliche steps-Elemente für die Anzeige nach „basics“ enthalten, von denen jeder mindestens ein Element enthält. Ziehen Sie das Hinzufügen von steps-Elementen pro Rolle oder Ebene der bereitgestellten Anwendung in Betracht. Fügen Sie beispielsweise ein „steps“-Element für Masterknoteneingaben und ein „steps“-Element für die Workerknoten in einem Cluster hinzu.
 
 ## <a name="outputs"></a>Ausgaben
 Mit der `outputs`-Eigenschaft ordnet das Azure-Portal Elemente aus `basics` und `steps` den Parametern der Azure Resource Manager-Bereitstellungsvorlage zu. Die Schlüssel dieses Wörterbuchs stellen die Namen der Vorlagenparameter dar, und die Werte sind Eigenschaften der Ausgabeobjekte von den referenzierten Elementen.
@@ -74,7 +76,7 @@ Um den Ressourcennamen der verwalteten Anwendung festzulegen, müssen Sie einen 
 ```
 
 ## <a name="functions"></a>Functions
-Ähnlich wie bei Vorlagenfunktionen in Azure Resource Manager (sowohl in Bezug auf Syntax als auch auf Funktionalität) stellt das CreateUiDefinition-Element Funktionen zum Arbeiten mit Ein- und Ausgaben von Elementen sowie Features wie konditionelle Abschnitte bereit.
+„CreateUiDefinition“ stellt [Funktionen](create-uidefinition-functions.md) zum Arbeiten mit den Eingaben und Ausgaben von Elementen sowie Features wie konditionelle Abschnitte bereit. Diese Funktionen sind sowohl im Hinblick auf die Syntax als auch auf die Funktionalität den Vorlagenfunktionen von Azure Resource Manager ähnlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die Datei „createUiDefinition.json“ besitzt selbst ein einfaches Schema. Die tatsächliche Tiefe ergibt sich aus allen unterstützten Elementen und Funktionen. Diese Elemente werden in den folgenden Dokumenten ausführlicher beschrieben:
