@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638591"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779166"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -45,13 +45,18 @@ ms.locfileid: "68638591"
 > [!NOTE]
 > Wenn Sie .NET Core verwenden, sehen Sie sich die neueste Version 3.x des [.NET SDK](sql-api-sdk-dotnet-standard.md) an, das .NET Standard als Ziel verwendet. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Die System.Net.Http-Version des SDK entspricht jetzt der Definition aus dem NuGet-Paket.
+* Schreibanforderungen können auf eine andere Region zurückgesetzt werden, wenn die ursprüngliche ausfällt.
+* Sitzungswiederholungsrichtlinie für Schreibanforderungen wurde hinzugefügt.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Behebt Probleme bei der Ablaufverfolgung von Racebedingungen für Abfragen, die leere Seiten zur Folge hatten
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Die System.Net.Http-Version des SDK entspricht der Definition aus dem NuGet-Paket.
 * Höhere Dezimalgenauigkeit für LINQ-Abfragen
 * Neu hinzugefügte Klassen: CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType, PartitionKeyDefinitionVersion
 * „TimeToLivePropertyPath“ zu „DocumentCollection“ hinzugefügt
@@ -250,6 +255,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](https
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |02. Juli 2019 |--- |
 | [2.4.1](#2.4.1) |20. Juni 2019 |--- |
 | [2.4.0](#2.4.0) |5\. Mai 2019 |--- |
 | [2.3.0](#2.3.0) |4\. April 2019 |--- |
