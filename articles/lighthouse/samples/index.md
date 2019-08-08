@@ -27,7 +27,7 @@ Die folgende Tabelle enthält Links zu wichtigen Azure Resource Manager-Vorlagen
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-mgmt-services) | Erstellt Azure-Verwaltungsdienste, verknüpft sie miteinander und stellt zusätzliche Lösungen bereit. |
 | [deploy-azure-security-center](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-security-center) | Aktiviert und konfiguriert das Azure Security Center innerhalb des gewünschten Azure-Abonnements. |
 | [marketplace-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management) | Führt das Onboarding des Abonnements eines Kunden der delegierten Azure-Ressourcenverwaltung basierend auf einem Angebot für verwaltete Dienste durch, das im Marketplace veröffentlicht wurde. |
-| [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) | Führt das Onboarding einer oder mehrerer Ressourcengruppen eines Kunden für die delegierte Azure-Ressourcenverwaltung durch. |
+| [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) | Führt das Onboarding einer oder mehrerer Ressourcengruppen eines Kunden für die delegierte Azure-Ressourcenverwaltung durch. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
