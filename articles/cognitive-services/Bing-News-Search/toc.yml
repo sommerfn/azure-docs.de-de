@@ -47,7 +47,8 @@
 - name: Anleitungen
   items:
     - name: Behandeln von Trefferhervorhebungen
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Einteilen von Nachrichten in Seiten
       href: paging-news.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten

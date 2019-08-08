@@ -16,13 +16,13 @@
 - name: Konzepte
   items:
     - name: Apache Hadoop-Komponenten in HDInsight
-      href: ../hdinsight-component-versioning.md
+      href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+      href: ../hdinsight-version-release.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Installieren von HDInsight-Apps
-      href: ../hdinsight-apps-install-applications.md
+      href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Kapazitätsplanung
-      href: ../hdinsight-capacity-planning.md
+      href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
 - name: Anleitung
   items:
     - name: Entwickeln von Apache Storm-Topologien
@@ -42,7 +42,7 @@
     - name: Erstellen von Streamingpipelines
       items:
         - name: Apache Kafka und Apache Storm (Java)
-          href: ../hdinsight-apache-storm-with-kafka.md
+          href: ../hdinsight-apache-storm-with-kafka.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: 'Event Hub, Storage und Data Lake Storage (Java)'
           href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
         - name: 'Event Hub und Apache Storm (C# und Java)'
@@ -50,37 +50,37 @@
     - name: Erweitern von Clustern
       items:
         - name: Anpassen von Clustern mithilfe von Bootstrap
-          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Anpassen von Clustern mithilfe von Skriptaktionen
-          href: ../hdinsight-hadoop-customize-cluster-linux.md
+          href: ../hdinsight-hadoop-customize-cluster-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Entwickeln von Skriptaktionen
-          href: ../hdinsight-hadoop-script-actions-linux.md
+          href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Entwickeln von HDInsight-Anwendungen
           items:
             - name: Installieren von benutzerdefinierten Apps
-              href: ../hdinsight-apps-install-custom-applications.md
+              href: ../hdinsight-apps-install-custom-applications.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden von REST zum Installieren von Apps
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: Veröffentlichen von HDInsight-Apps im Azure Marketplace
-              href: ../hdinsight-apps-publish-applications.md
+              href: ../hdinsight-apps-publish-applications.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Schützen
       items:
         - name: Verwenden von SSH mit HDInsight
-          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwenden von SSH-Tunneln
-          href: ../hdinsight-linux-ambari-ssh-tunnel.md
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Beschränken des Zugriffs auf Daten
-          href: ../hdinsight-storage-sharedaccesssignature-permissions.md
+          href: ../hdinsight-storage-sharedaccesssignature-permissions.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Verwalten
       items:
         - name: Erstellen von HDInsight-Clustern
-          href: ../hdinsight-hadoop-provision-linux-clusters.md
+          href: ../hdinsight-hadoop-provision-linux-clusters.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
           items:
             - name: Verwenden des Azure-Portals
-              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden von Azure-Ressourcen-Manager-Vorlagen
               displayName: 'resource manager template, arm template, resource manager group'
-              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden des SDK für .NET
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: Verwenden des SDK für Python
@@ -88,15 +88,15 @@
             - name: Verwenden des SDK für Java
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: Mithilfe von Azure PowerShell
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden von cURL und der Azure-REST-API
-              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden der Azure-CLI
-              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Erstellen bedarfsgesteuerter Cluster
-              href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+              href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwalten von HDInsight-Clustern
-          href: ../hdinsight-administer-use-portal-linux.md
+          href: ../hdinsight-administer-use-portal-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
           items:
             - name: Verwenden des SDK für .NET
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -107,68 +107,68 @@
             - name: Verwenden des SDK für Go (Vorschau)
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: Mithilfe von Azure PowerShell
-              href: ../hdinsight-administer-use-powershell.md
+              href: ../hdinsight-administer-use-powershell.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden der Azure-CLI
-              href: ../hdinsight-administer-use-command-line.md
+              href: ../hdinsight-administer-use-command-line.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwalten von Clustern über die Apache Ambari-Webbenutzeroberfläche
-          href: ../hdinsight-hadoop-manage-ambari.md
+          href: ../hdinsight-hadoop-manage-ambari.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
           items:
             - name: Optimieren von Clustern über die Apache Ambari-Webbenutzeroberfläche
-              href: ../hdinsight-changing-configs-via-ambari.md
+              href: ../hdinsight-changing-configs-via-ambari.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Verwenden der Apache Ambari-REST-API
-              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwalten von Protokollen für einen HDInsight-Cluster
-          href: ../hdinsight-log-management.md
+          href: ../hdinsight-log-management.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Hinzufügen von Speicherkonten
-          href: ../hdinsight-hadoop-add-storage.md
+          href: ../hdinsight-hadoop-add-storage.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Hochladen von Daten für Apache Hadoop-Aufträge
-          href: ../hdinsight-upload-data.md
+          href: ../hdinsight-upload-data.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Mehrere HDInsight-Cluster mit Data Lake Storage
-          href: ../hdinsight-multiple-clusters-data-lake-store.md
+          href: ../hdinsight-multiple-clusters-data-lake-store.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Importieren und Exportieren von Daten mit Apache Sqoop
-          href: ../hdinsight-use-sqoop.md
+          href: ../hdinsight-use-sqoop.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
           items:
             - name: Verbinden mit SSH
-              href: ../hdinsight-use-sqoop-mac-linux.md
+              href: ../hdinsight-use-sqoop-mac-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Ausführen mithilfe von cURL
-              href: ../hdinsight-hadoop-use-sqoop-curl.md
+              href: ../hdinsight-hadoop-use-sqoop-curl.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Ausführen mithilfe des SDK für .NET
-              href: ../hdinsight-hadoop-use-sqoop-dotnet-sdk.md
+              href: ../hdinsight-hadoop-use-sqoop-dotnet-sdk.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Ausführen mit Azure PowerShell
-              href: ../hdinsight-hadoop-use-sqoop-powershell.md
+              href: ../hdinsight-hadoop-use-sqoop-powershell.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwenden von Apache Oozie für Workflows
-          href: ../hdinsight-use-oozie-linux-mac.md
+          href: ../hdinsight-use-oozie-linux-mac.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Cluster- und Dienstports und URIs
-          href: ../hdinsight-hadoop-port-settings-for-services.md
+          href: ../hdinsight-hadoop-port-settings-for-services.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Migrieren zu Resource Manager-Entwicklungstools
-          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
+          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verfügbarkeit und Zuverlässigkeit
-          href: ../hdinsight-high-availability-linux.md
+          href: ../hdinsight-high-availability-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Aktualisieren eines HDInsight-Clusters auf eine neuere Version
-          href: ../hdinsight-upgrade-cluster.md
+          href: ../hdinsight-upgrade-cluster.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Patchen des Betriebssystems für HDInsight-Cluster
-          href: ../hdinsight-os-patching.md
+          href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Problembehandlung
-      href: ../hdinsight-troubleshoot-guide.md
+      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
       items:
         - name: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
-          href: ../hdinsight-troubleshoot-failed-cluster.md
+          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Problembehandlung für Apache Hadoop HDFS
-          href: ../hdinsight-troubleshoot-hdfs.md
+          href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Problembehandlung für Apache STORM
           href: apache-troubleshoot-storm.md
         - name: Problembehandlung für Apache Hadoop YARN
-          href: ../hdinsight-troubleshoot-yarn.md
+          href: ../hdinsight-troubleshoot-yarn.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Ressourcen
           items:
             - name: Informationen zur Verwendung von HDInsight unter Linux
-              href: ../hdinsight-hadoop-linux-information.md
+              href: ../hdinsight-hadoop-linux-information.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Apache Hadoop – Arbeitsspeicher und Leistung
-              href: ../hdinsight-hadoop-stack-trace-error-messages.md
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Zugriff auf Hadoop YARN-Anwendungsprotokolle unter Linux
-              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
             - name: Aktivieren von Heapdumps für Apache Hadoop-Dienste
-              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
 - name: Verweis
   items:
     - name: Codebeispiele
@@ -182,7 +182,7 @@
     - name: SDK für Java
       href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
     - name: SDK für Go
-      href: ../hdinsight-go-sdk-overview.md
+      href: ../hdinsight-go-sdk-overview.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: .NET (Apache HBase)
       href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
     - name: REST
@@ -205,38 +205,38 @@
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Windows-Tools für HDInsight
-      href: ../hdinsight-hadoop-windows-tools.md
+      href: ../hdinsight-hadoop-windows-tools.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Änderungen am Zugriff auf die Clusterkonfiguration
-      href: ../hdinsight-migrate-granular-access-cluster-configurations.md
+      href: ../hdinsight-migrate-granular-access-cluster-configurations.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
 - name: Unternehmensfähigkeit
   items:
     - name: Sichern von Daten
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Netzwerkzugriff
       items:
         - name: Architektur des virtuellen HDInsight-Netzwerks
-          href: ../hdinsight-virtual-network-architecture.md
+          href: ../hdinsight-virtual-network-architecture.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Planen von VNETs für HDInsight
-          href: ../hdinsight-plan-virtual-network-deployment.md
+          href: ../hdinsight-plan-virtual-network-deployment.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Erstellen von VNETs für HDInsight
-          href: ../hdinsight-create-virtual-network.md
+          href: ../hdinsight-create-virtual-network.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Erforderliche IP-Adressen für NSGs und UDRs
-          href: ../hdinsight-management-ip-addresses.md
+          href: ../hdinsight-management-ip-addresses.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwenden einer Firewall zum Einschränken des ausgehenden Datenverkehrs
-          href: ../hdinsight-restrict-outbound-traffic.md
+          href: ../hdinsight-restrict-outbound-traffic.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verbinden von HDInsight mit dem lokalen Netzwerk
-          href: ../connect-on-premises-network.md
+          href: ../connect-on-premises-network.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
     - name: Überwachen mithilfe von Azure Monitor-Protokollen
       items:
         - name: Verwenden von Azure Monitor-Protokollen
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Verwenden von Abfragen mit Azure Monitor-Protokollen
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
         - name: Überwachen der Clusterleistung
-          href: ../hdinsight-key-scenarios-to-monitor.md
+          href: ../hdinsight-key-scenarios-to-monitor.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
 - name: Verwandte Themen
   items:
     - name: Windows-Cluster
       items:
         - name: Migrieren von .NET-Lösungen zu Linux-Clustern
-          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
