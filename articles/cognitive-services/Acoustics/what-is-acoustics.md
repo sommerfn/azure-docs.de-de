@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ROBOTS: NOINDEX
+ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502956"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704758"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
 Projekt Akustik ist eine Wellenakustik-Engine für interaktive 3D-Erfahrungen. Sie modelliert Welleneffekte wie Beugung, Portale und Hall in komplexen Szenen ohne manuelle Zonenmarkierung. Außerdem schließt sie eine Integration von Spiele-Engines und Audiomiddleware ein. Die Philosophie hinter Projekt Akustik ist vergleichbar mit einer statischen Beleuchtung: Das Baking einer detaillierten Physik wird offline ausgeführt, um eine physische Baseline bereitzustellen, und die künstlerischen Ziele werden mithilfe einer einfachen Runtime mit ausdrucksstarken Entwurfssteuerelementen erreicht.

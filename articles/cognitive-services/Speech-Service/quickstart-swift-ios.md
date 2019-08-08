@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: c001b10f14167b4c0947c2ef0ae3f27cc4f55657
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e9d17b0bdeb89fc03c0f089b84a89a5203c39566
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553527"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717425"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Swift unter iOS mit dem Speech SDK
 
@@ -61,7 +61,8 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
 
 ## <a name="add-the-sample-code"></a>Hinzufügen des Beispielcodes
 
-1. Platzieren Sie innerhalb des HelloWorld-Projekts eine neue Headerdatei mit dem Namen `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` im Verzeichnis `helloworld`, und fügen Sie den folgenden Code in diese ein: [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. Platzieren Sie innerhalb des HelloWorld-Projekts eine neue Headerdatei mit dem Namen `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` im Verzeichnis `helloworld`, und fügen Sie den folgenden Code in diese ein:  
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. Fügen Sie in den Swift-Projekteinstellungen für das HelloWorld-Ziel im Feld ![Headereigenschaften](media/sdk/qs-swift-ios-bridging-header.png) von *Objective-C: Bridgingheader* den relativen Pfad `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` dem Bridgingheader hinzu.
 1. Ersetzen Sie den Inhalt der automatisch generierten Datei `AppDelegate.swift` durch Folgendes:  
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/AppDelegate.swift#code)]

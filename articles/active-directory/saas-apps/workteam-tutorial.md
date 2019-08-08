@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 697f5c06d2c1d6b669cfa244f0328f4fb86aeea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d628b12171cd67455ea308a2ca2b29e67855cccc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086831"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Tutorial: Azure Active Directory-Integration mit Workteam
 
@@ -101,7 +101,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Workteam 
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten, müssen Sie im Abschnitt **Grundlegende SAML-Konfiguration** keine Schritte ausführen, da die App bereits vorab in Azure integriert wurde.
+4. Wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten, müssen Sie im Abschnitt **Grundlegende SAML-Konfiguration** keine Schritte ausführen, da die App bereits vorab in Azure integriert wurde.
 
     ![SSO-Informationen zur Domäne und zu den URLs für Workteam](common/preintegrated.png)
 
