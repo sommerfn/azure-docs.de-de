@@ -133,12 +133,14 @@
       items:
         - name: Erste Schritte mit dem Android-Kartensteuerelement
           href: how-to-use-android-map-control-library.md
+        - name: Ändern des Kartenstils
+          href: set-android-map-styles.md
         - name: Hinzufügen einer Symbolebene
           href: how-to-add-symbol-to-android-map.md
         - name: Hinzufügen von Formen
           href: how-to-add-shapes-to-android-map.md
-        - name: Ändern des Kartenstils
-          href: set-android-map-styles.md
+        - name: Hinzufügen einer Kachelebene
+          href: how-to-add-tile-layer-android-map.md
 - name: Verweis
   items:
     - name: API- und Parametererweiterungen

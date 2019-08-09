@@ -166,6 +166,8 @@
       items:
         - name: Visuelles Erstellen von Data Factorys
           href: author-visually.md
+        - name: Quellcodeverwaltung
+          href: source-control.md
         - name: Continuous Integration und Continuous Delivery
           href: continuous-integration-deployment.md
         - name: Iteratives Entwickeln und Debuggen
