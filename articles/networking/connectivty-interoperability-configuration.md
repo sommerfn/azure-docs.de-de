@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68335929"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Konfigurationsdetails zur Testeinrichtung
@@ -188,22 +188,21 @@ Beim VNET-Peering in einer Region können Spoke-VNETs Hub-VNET-Gateways verwende
 
 VNETs in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung eines virtuellen Netzwerkgeräts (NVA) für das Routing im Hub.
 
-Weitere Informationen finden Sie unter [Was ist VPN Gateway?][VPN]
+Weitere Informationen finden Sie unter [Was ist VPN Gateway?][VPN] und [Bereitstellen hochverfügbarer virtueller Netzwerkgeräte][Deploy-NVA].
 
-## <a name="next-steps"></a>and [Deploy a highly available NVA][Deploy-NVA].
-
-Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über die [Analyse auf Steuerungsebene][Control-Analysis] für die Testeinrichtung sowie über die Ansichten verschiedener VNETs oder VLANs in der Topologie.
 
 Informieren Sie sich über die [Analyse auf Datenebene][Data-Analysis] für die Testeinrichtung und die Ansichten des Azure-Netzwerküberwachungsfeatures.
--   Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
+
+Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
 -   Erfahren Sie, wie viele ExpressRoute-Verbindungen Sie mit einem ExpressRoute-Gateway verbinden können.
 -   Anzahl der ExpressRoute-Gateways, die Sie per ExpressRoute verbinden können
+-   Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 
 
 <!--Image References-->
-Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 [1]: ./media/backend-interoperability/SpokeVNet_peering.png "VNET-Peering des Spoke-VNET"
 [2]: ./media/backend-interoperability/HubVNet-peering.png "VNET-Peering des Hub-VNET"
 [3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "VPN Gateway-Konfiguration eines VNET der Zweigniederlassung"
@@ -211,6 +210,7 @@ Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 [5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "Verbindungskonfiguration zwischen ExpressRoute 1 und dem ExpressRoute-Gateway des Hub-VNET"
 [6]: ./media/backend-interoperability/ExR2.png "Konfiguration von ExpressRoute 2"
 [7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "Verbindungskonfiguration zwischen ExpressRoute 2 und dem ExpressRoute-Gateway des Hub-VNET"
+[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "Verbindungskonfiguration zwischen ExpressRoute 2 und dem ExpressRoute-Gateway des Remote-VNET"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

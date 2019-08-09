@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 24ed03cde967f0fef7abdc4c2df1f8e5d6bdb6ab
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327122"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668345"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -52,7 +52,7 @@ Jetzt können Sie die E-Mail-Kontodomäne Ihres Unternehmens mit Ihrem neuen Par
 
 #### <a name="agree-to-terms-and-conditions"></a>Zustimmen zu Geschäftsbedingungen
 
-Sie müssen zweierlei Geschäftsbedingungen zustimmen: dem [Microsoft Online-Abonnementvertrag](https://go.microsoft.com/fwlink/?LinkId=870457) und dem [Microsoft Marketplace-Herausgebervertrag](https://go.microsoft.com/fwlink/?linkid=843476).
+Sie müssen den Geschäftsbedingungen der [Microsoft Marketplace-Herausgebervereinbarung](http://go.microsoft.com/fwlink/?LinkID=699560) zustimmen.
 
 #### <a name="provide-your-publisher-profile"></a>Angeben Ihres Herausgeberprofils
 

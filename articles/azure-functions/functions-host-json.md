@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371694"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564788"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
@@ -147,7 +147,10 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres A
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Gibt die Timeoutdauer für alle Funktionen an. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. Bei einem App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab. In Version 2.x ist der Standardwert für einen App Service-Plan 30 Minuten. In Version 1.x ist er *null*, was keinen Timeout angibt. Er kann nicht als unendlich festgelegt werden. Wenn wir diesen Wert nicht explizit festlegen, wird der Standardwert von 30 Minuten übernommen.
+Gibt die Timeoutdauer für alle Funktionen an. Die Angabe erfolgt im TimeSpan-Zeichenfolgenformat. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt.  
+Bei einem App Service-Plan vom Typ „Dedicated“ gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab: 
++ Version 1.x: Der Standardwert ist *null*, was bedeutet, dass kein Timeout erfolgt.   
++ Version 2.x: Der Standardwert lautet 30 Minuten. Der Wert `-1` gibt eine unbegrenzte Ausführung an.
 
 ```json
 {

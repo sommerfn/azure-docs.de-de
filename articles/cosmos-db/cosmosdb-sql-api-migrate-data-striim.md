@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b1817b54e16d77c41b5d5e80776c92eedfec7fc6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dba29ea2d4d0ad18f021e0271c6131f9473cbe8b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600357"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827799"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim
  
@@ -22,7 +22,7 @@ In diesem Artikel wird gezeigt, wie Sie Daten mithilfe von Striim aus einer **Or
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie kein [Azure-Abonnement](/azure/guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
+* Wenn Sie kein [Azure-Abonnement](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
 
 * Eine lokal ausgeführte Oracle-Datenbank mit einigen Daten
 
@@ -40,7 +40,7 @@ In diesem Artikel wird gezeigt, wie Sie Daten mithilfe von Striim aus einer **Or
 
 1. Wählen Sie im Bereich **Striim Cluster settings** (Einstellungen für den Striim-Cluster) die Art der Striim-Bereitstellung und die VM-Größe aus.
 
-   |Einstellung | Wert | Beschreibung |
+   |Einstellung | Wert | BESCHREIBUNG |
    | ---| ---| ---|
    |Art der Striim-Bereitstellung |Eigenständig | Mögliche Bereitstellungstypen für Striim sind **Eigenständig** und **Cluster**. Im eigenständigen Modus wird der Striim-Server auf einem einzelnen virtuellen Computer bereitgestellt, und Sie können die Größe der VMs abhängig von Ihrem Datenvolumen auswählen. Im Clustermodus wird der Striim-Server auf zwei oder mehr virtuellen Computern mit der gewählten Größe bereitgestellt. Clusterumgebungen mit mehr als zwei Knoten bieten automatische Hochverfügbarkeit und Failoverfunktionen.</br></br> In diesem Tutorial können Sie die eigenständige Option auswählen. Verwenden Sie die standardmäßige VM-Größe „Standard_F4s“.  | 
    | Name des Striim-Clusters|    <Striim_cluster_Name>|  Der Name des Striim-Clusters.|
@@ -197,6 +197,6 @@ Durch Verwendung der Striim-Lösung in Azure können Sie Daten fortlaufend aus v
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Migrieren von Daten zur Azure Cosmos DB-Cassandra-API finden Sie unter [Migrieren von Daten zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Striim](cosmosdb-cassandra-api-migrate-data-striim.md).
+* Informationen zum Migrieren von Daten zur Azure Cosmos DB-SQL-API finden Sie unter [Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim](cosmosdb-cassandra-api-migrate-data-striim.md).
 
 * [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md)

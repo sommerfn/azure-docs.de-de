@@ -1,5 +1,5 @@
 ---
-title: Lokales Verwenden von Kubernetes
+title: Verwendung mit Kubernetes und Helm – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt.
 services: cognitive-services
@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/10/2019
+ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 33d9de956a6d43145fc68f4ec46b09b8e8bf0188
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786251"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559134"
 ---
-# <a name="use-kubernetes-on-premises"></a>Lokales Verwenden von Kubernetes
+# <a name="use-with-kubernetes-and-helm"></a>Verwendung mit Kubernetes und Helm
 
-Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt. Außerdem erfahren Sie, wie Sie die bereitgestellten Dienste testen, und es werden verschiedene Konfigurationsoptionen vorgestellt.
+Eine Möglichkeit zur lokalen Verwaltung Ihrer Speech-Container ist die Verwendung von Kubernetes und Helm. Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt. Außerdem erfahren Sie, wie Sie die bereitgestellten Dienste testen, und es werden verschiedene Konfigurationsoptionen vorgestellt. Weitere Informationen zum Ausführen von Docker-Containern ohne Kubernetes-Orchestrierung finden Sie unter [Installieren und Ausführen von Containern für den Speech-Dienst](speech-container-howto.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die lokale Verwendung von Speech-Containern wird Folgendes benötigt:
+Die folgenden Voraussetzungen müssen erfüllt sein, damit Speech-Container lokal verwendet werden können:
 
 |Erforderlich|Zweck|
 |--|--|
 | Azure-Konto | Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][free-azure-account] erstellen, bevor Sie beginnen. |
-| Zugriff auf die Containerregistrierung | Kubernetes benötigt Zugriff auf die Containerregistrierung, um die Docker-Images in den Cluster pullen zu können. [Fordern Sie zuerst Zugriff auf die Containerregistrierung an.][speech-preview-access] |
+| Zugriff auf die Containerregistrierung | Kubernetes benötigt Zugriff auf die Containerregistrierung, um die Docker-Images in den Cluster pullen zu können. Sie müssen zunächst [Zugriff auf die Containerregistrierung anfordern][speech-preview-access]. |
 | Kubernetes-Befehlszeilenschnittstelle | Mithilfe der [Kubernetes-Befehlszeilenschnittstelle][kubernetes-cli] werden die gemeinsam genutzten Anmeldeinformationen aus der Containerregistrierung verwaltet. Kubernetes wird außerdem vor Helm (Kubernetes-Paket-Manager) benötigt. |
-| Helm-Befehlszeilenschnittstelle | Im Rahmen der Installation der [Helm-Befehlszeilenschnittstelle][helm-install] muss auch Helm installiert werden, wodurch wiederum Tiller installiert wird. install, you'll also need to initialize Helm which will install [Tiller][tiller-install] |
+| Helm-Befehlszeilenschnittstelle | Im Rahmen der Installation der [Helm-CLI][helm-install] müssen Sie auch Helm initialisieren, wodurch [Tiller][tiller-install] installiert wird. |
 |Speech-Ressource |Um diese Container verwenden zu können, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Speech_, um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite für **Speech** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Der Ressourcenschlüssel.<br><br>**{ENDPOINT_URI}** : Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Empfohlene Hostcomputerkonfiguration
@@ -40,7 +40,7 @@ Orientieren Sie sich an den Details unter [Der Hostcomputer][speech-container-ho
 | Dienst | CPU/Container | Arbeitsspeicher/Container |
 |--|--|--|
 | **Spracherkennung** | Für einen einzelnen Decoder sind mindestens 1.150 Millicores erforderlich. Wenn `optimizedForAudioFile` aktiviert ist, werden 1.950 Millicores benötigt. (Standard: zwei Decoder) | Erforderlich: 2 GB<br>Eingeschränkt:  4 GB |
-| **Sprachsynthese** | Pro gleichzeitiger Anforderung sind mindestens 500 Millicores erforderlich. Wenn `optimizeForTurboMode` aktiviert ist, werden 1.000 Millicores benötigt. (Standard: zwei gleichzeitige Anforderungen) | Erforderlich: 1 GB<br> Eingeschränkt: 2 GB |
+| **Text-zu-Sprache** | Pro gleichzeitiger Anforderung sind mindestens 500 Millicores erforderlich. Wenn `optimizeForTurboMode` aktiviert ist, werden 1.000 Millicores benötigt. (Standard: zwei gleichzeitige Anforderungen) | Erforderlich: 1 GB<br> Eingeschränkt: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Herstellen einer Verbindung mit dem Kubernetes-Cluster
 

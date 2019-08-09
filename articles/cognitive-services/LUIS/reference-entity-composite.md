@@ -1,6 +1,6 @@
 ---
-title: Entitätstyp „Composite“
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Entität vom Typ „Composite“ – LUIS
+titleSuffix: Azure Cognitive Services
 description: Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 55dcc5666e63b8a87ddcb13696991fe02843fbbd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ea258275cf954bc6e06da03324c2ae93de0e7fde
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480110"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563232"
 ---
 # <a name="composite-entity"></a>Entität vom Typ „Composite“ 
 

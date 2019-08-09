@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074036"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561555"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -45,9 +45,9 @@ Informationen zu den ersten Schritten mit der horizontalen automatischen Podskal
 
 Da die horizontale automatische Podskalierung die Metriken-API alle 30 Sekunden überprüft, werden vorherige Skalierungsereignisse möglicherweise nicht erfolgreich abgeschlossen, bevor eine andere Überprüfung erfolgt. Dieses Verhalten kann dazu führen, dass die horizontale automatische Podskalierung die Anzahl der Replikate ändert, bevor das vorherige Skalierungsereignis die Anwendungsworkload empfangen und die Ressourcenanforderungen entsprechend anpassen konnte.
 
-Um diese Raceereignisse zu minimieren, können Abkühlungs- oder Verzögerungswerte eingestellt werden. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für zentrales Hochskalieren 3 Minuten und für zentrales Herunterskalieren 5 Minuten.
+Zum Minimieren dieser Raceereignisse werden Abkühlungs- oder Verzögerungswerte festgelegt. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für zentrales Hochskalieren 3 Minuten und für zentrales Herunterskalieren 5 Minuten.
 
-Vielleicht müssen Sie diese Abkühlungswerte optimieren. Die Standardabkühlungswerte vermitteln möglicherweise den Eindruck, dass die horizontale automatische Podskalierung die Replikatanzahl nicht schnell genug skaliert. Um z.B. die Anzahl der verwendeten Replikate schneller heraufzusetzen, verringern Sie `--horizontal-pod-autoscaler-upscale-delay` beim Erstellen Ihrer Definitionen der horizontalen automatischen Podskalierung mit `kubectl`.
+Derzeit können diese Abkühlungsstandardwerte nicht optimiert werden.
 
 ## <a name="cluster-autoscaler"></a>Automatische Clusterskalierung
 
@@ -57,7 +57,7 @@ Um auf veränderte Pod-Anforderungen zu reagieren, enthält Kubernetes eine auto
 
 Die automatische Clusterskalierung wird normalerweise zusammen mit der horizontalen automatischen Podskalierung verwendet. In der Kombination setzt die horizontale automatische Podskalierung die Anzahl von Pods nach Bedarf der Anwendung herauf oder herab, und die automatische Clusterskalierung passt die Anzahl von Knoten nach Bedarf zur entsprechenden Ausführung dieser zusätzlichen Pods an.
 
-Clusterskalierung sollte nur in der Vorschauversion für AKS-Cluster mit einem einzelnen Knotenpool getestet werden.
+Die automatische Clusterskalierung sollte nur in der Vorschauversion auf AKS-Clustern getestet werden.
 
 Informationen zu den ersten Schritten mit der automatischen Clusterskalierung in AKS finden Sie unter [Automatische Clusterskalierung in AKS][aks-cluster-autoscaler].
 
@@ -95,7 +95,7 @@ Informationen zum Einstieg in das Skalieren von Anwendungen finden Sie in dem [S
 
 - Manuelles Skalieren von [Pods][aks-manually-scale-pods] oder [Knoten][aks-manually-scale-nodes]
 - Verwenden der [horizontalen automatischen Podskalierung][aks-hpa]
-- Verwenden der automatischen [Clusterskalierung][aks-cluster-autoscaler]
+- Verwenden der [automatischen Clusterskalierung][aks-cluster-autoscaler]
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 

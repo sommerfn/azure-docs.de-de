@@ -1,6 +1,6 @@
 ---
-title: Entitätstyp „RegEx“
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Entität vom Typ „RegEx“ (Regulärer Ausdruck) – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: dfffea26ccd8dfcecea2c6a2e07234f3ab27f72b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480138"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559935"
 ---
 # <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
 

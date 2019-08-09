@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443318"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640089"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
 Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem SQL-Datenbank-Server oder aller Datenbanken in einer verwalteten Instanz zu einer anderen Region verwalten können. Hierbei handelt es sich um eine deklarative Abstraktion, die auf dem bereits vorhandenen Feature [Aktive Georeplikation](sql-database-active-geo-replication.md) basiert und dazu dient, die Bereitstellung und Verwaltung georeplizierter Datenbanken zu vereinfachen. Sie können ein Failover manuell initiieren oder basierend auf einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Eine Failovergruppe kann eine oder mehrere Datenbanken enthalten, die in der Regel von der gleichen Anwendung verwendet werden. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
 
 > [!NOTE]
-> Wenn Sie mit Einzel- oder Pooldatenbanken auf einem SQL-Datenbank-Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md).
+> Wenn Sie mit Einzel- oder Pooldatenbanken auf einem SQL-Datenbank-Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md). 
 
 Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. Darüber hinaus bieten Gruppen für automatisches Failover Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten. Die spezifischen RPO- und RTO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 
@@ -256,14 +255,14 @@ Die oben genannte Konfiguration sorgt dafür, dass das automatische Failover kei
 
 ## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Aktivieren der geografischen Replikation zwischen verwalteten Instanzen und ihren VNETs
 
-Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Instanzen in zwei verschiedenen Regionen einrichten, wird jede Instanz mit einem unabhängigen VNET isoliert. Um Replikationsdatenverkehr zwischen diesen VNETs zuzulassen, müssen diese Voraussetzungen erfüllt sein:
+Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Instanzen in zwei verschiedenen Regionen einrichten, wird jede Instanz mit einem unabhängigen virtuellen Netzwerk isoliert. Um Replikationsdatenverkehr zwischen diesen VNETs zuzulassen, müssen diese Voraussetzungen erfüllt sein:
 
 1. Die beiden verwalteten Instanzen müssen sich in verschiedenen Azure-Regionen befinden.
-2. Ihre sekundäre Datenbank muss leer sein (keine Benutzerdatenbanken).
-3. Die primäre und sekundäre verwaltete Instanz müssen sich in derselben Ressourcengruppe befinden.
-4. Die VNETS, denen die verwalteten Instanzen angehören, müssen über ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verbunden sein. Globales VNET-Peering wird nicht unterstützt.
-5. Die beiden VNETs der verwalteten Instanzen dürfen keine überlappenden IP-Adressen aufweisen.
-6. Sie müssen die Netzwerksicherheitsgruppen (NSG) so einrichten, dass die Ports 5022 und der Bereich von 11000 bis 12000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz offen sind. Dadurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
+1. Die beiden verwalteten Instanzen müssen dieselbe Dienstebene und die gleiche Speichergröße aufweisen. 
+1. Ihre sekundäre verwaltete Instanz muss leer sein (keine Benutzerdatenbanken).
+1. Die von den verwalteten Instanzen verwendeten virtuellen Netzwerke müssen über [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder Express Route verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird nicht unterstützt.
+1. Die beiden VNETs der verwalteten Instanzen dürfen keine überlappenden IP-Adressen aufweisen.
+1. Sie müssen die Netzwerksicherheitsgruppen (NSG) so einrichten, dass die Ports 5022 und der Bereich von 11000 bis 12000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz offen sind. Dadurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
 
    > [!IMPORTANT]
    > Falsch konfigurierte NSG-Sicherheitsregeln führen zu unterbrochenen Datenbankkopiervorgängen.
@@ -369,9 +368,9 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Beispielskripts:
-  - [Configure and failover a single database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) (Konfiguration und Failover einer einzelnen Datenbank mithilfe von aktiver Georeplikation)
-  - [Configure and failover a pooled database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md) (Konfiguration und Failover einer Pooldatenbank mithilfe von aktiver Georeplikation)
-  - [Konfiguration und Failover einer Failovergruppe für eine einzelne Datenbank](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+  - [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Hinzufügen einer Azure SQL-Einzeldatenbank zu einer Failovergruppe mithilfe von PowerShell](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).

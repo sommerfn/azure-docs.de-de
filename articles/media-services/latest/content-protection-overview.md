@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 174184993e40b60dc89022d360f0c09fb31bc60b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501283"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561464"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Inhaltsschutz mit der dynamischen Verschlüsselung von Media Services
 
@@ -170,7 +170,7 @@ Sie können steuern, wer Zugriff auf Ihre Inhalte hat, indem Sie die Richtlinie 
 
 Eine Richtlinie für Inhaltsschlüssel mit offener Einschränkung kann verwendet werden, wenn Sie eine Lizenz für Personen ohne Autorisierung ausgeben möchten. Beispielsweise wenn Ihr Umsatz AD-basiert und nicht abonnementbasiert ist.  
 
-Bei einer Richtlinie für Inhaltsschlüssel mit Tokeneinschränkung wird der Inhaltsschlüssel nur an einen Client gesendet, der in der Lizenz-/Schlüsselanforderung ein gültiges JWT-Token oder ein SWT-Token (Simple Web Token) präsentiert. Dieses Token muss von einem Sicherheitstokendienst (STS) ausgestellt werden. 
+Bei einer Richtlinie für Inhaltsschlüssel mit Tokeneinschränkung wird der Inhaltsschlüssel nur an einen Client gesendet, der in der Lizenz-/Schlüsselanforderung ein gültiges JWT-Token oder ein einfaches Webtoken (Simple Web Token, SWT) präsentiert. Dieses Token muss von einem Sicherheitstokendienst (STS) ausgestellt werden. 
 
 Sie können Azure AD als STS verwenden oder einen benutzerdefinierten STS bereitstellen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Media Services-Dienst zur Lizenz-/Schlüsselbereitstellung gibt die angeforderte Lizenz bzw. den angeforderten Schlüssel an den Client zurück, wenn die beiden folgenden Bedingungen erfüllt sind:
 
@@ -196,8 +196,10 @@ Mit der Funktion zum *Verhindern der Tokenwiedergabe* können Media Services-Kun
 
 Möglicherweise möchte ein Kunde einen benutzerdefinierten Sicherheitstokendienst zum Bereitstellen von Token verwenden. Hierfür kann es folgende Gründe geben:
 
-* Der vom Kunden verwendete IDP-Dienst unterstützt den Sicherheitstokendienst nicht. In diesem Fall kann ein benutzerdefinierter Sicherheitstokendienst eine mögliche Option sein.
-* Der Kunde benötigt möglicherweise eine flexiblere oder strengere Kontrolle bei der Integration des Sicherheitstokendiensts in das Abrechnungssystem des Kunden für Abonnenten. Ein MVPD-Anbieter (Multichannel Video Programming Distributor) stellt ggf. mehrere OTT-Abonnentenpakete bereit, z.B. „Premium“, „Standard“, „Sport“ usw. Der Programmanbieter möchte die Ansprüche in einem Token mit dem Paket eines Abonnenten abgleichen, sodass nur die Inhalte in einem bestimmten Paket zur Verfügung gestellt werden. In diesem Fall bietet ein benutzerdefinierter STS die erforderliche Flexibilität und Kontrolle.
+* Der vom Kunden verwendete Identitätsanbieter (Identity Provider, IDP) unterstützt den Sicherheitstokendienst nicht. In diesem Fall kann ein benutzerdefinierter Sicherheitstokendienst eine mögliche Option sein.
+* Der Kunde benötigt möglicherweise eine flexiblere oder strengere Kontrolle bei der Integration des Sicherheitstokendiensts in das Abrechnungssystem des Kunden für Abonnenten. 
+
+   Beispielsweise kann ein [OTT](https://en.wikipedia.org/wiki/Over-the-top_media_services)-Dienstanbieter mehrere Abonnentenpakete (z. B. „Premium“, „Standard“ und „Sport“) anbieten. Der Programmanbieter möchte die Ansprüche in einem Token mit dem Paket eines Abonnenten abgleichen, sodass nur die Inhalte in einem bestimmten Paket zur Verfügung gestellt werden. In diesem Fall bietet ein benutzerdefinierter STS die erforderliche Flexibilität und Kontrolle.
 * Einfügen benutzerdefinierter Ansprüche in das Token, um zwischen verschiedenen ContentKeyPolicyOptions mit unterschiedlichen DRM-Lizenzparametern (Abonnementlizenz oder Mietlizenz) auszuwählen.
 * Einfügen eines Anspruchs, der den Bezeichner des Inhaltsschlüssels darstellt, auf den das Token den Zugriff ermöglicht.
 

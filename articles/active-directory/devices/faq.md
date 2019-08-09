@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 2d5a2685b53bcd6a3e12c2cd87900ffb35e0d357
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499792"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562094"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -39,6 +39,11 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 - Führen Sie für Geräte mit Windows 10, Windows Server 2016 oder höher `dsregcmd.exe /status` aus.
 - Führen Sie für kompatible Betriebssystemversionen `%programFiles%\Microsoft Workplace Join\autoworkplace.exe` aus.
+
+**A:** Informationen zur Problembehandlung finden Sie in diesen Artikeln:
+- [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md)
+- [Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-current.md)
+- [Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -65,6 +70,8 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 **A:** Dieser Vorgang ist von vornherein vorgesehen. In diesem Fall hat das Gerät keinen Zugriff auf Ressourcen in der Cloud. Administratoren können diese Aktion für veraltete, verlorene oder gestohlene Geräte ausführen, um nicht autorisierten Zugriff zu verhindern. Wenn diese Aktion unbeabsichtigt ausgeführt wurde, müssen Sie das Gerät erneut aktivieren oder registrieren, wie unten beschrieben.
 
 - Wenn das Gerät in Azure AD deaktiviert wurde, kann ein Administrator mit ausreichenden Berechtigungen es über das Azure AD-Portal wieder aktivieren.  
+  > [!NOTE]
+  > Wenn Sie Geräte mithilfe von Azure AD Connect synchronisieren, werden in Azure AD Hybrid eingebundene Geräte beim nächsten Synchronisierungszyklus automatisch erneut aktiviert. Wenn Sie ein in Azure AD Hybrid eingebundenes Gerät deaktivieren möchten, müssen Sie es daher in der lokalen AD-Instanz deaktivieren.
 
  - Wenn das Gerät in Azure AD gelöscht wurde, müssen Sie es neu registrieren. Zur erneuten Registrierung müssen Sie eine manuelle Aktion auf dem Gerät durchführen. Anweisungen zur erneuten Registrierung basierend auf dem Gerätestatus finden Sie unten. 
 
@@ -114,20 +121,30 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 **F: Warum kann ein Benutzer weiterhin Ressourcen von einem Gerät aufrufen, das ich im Azure-Portal deaktiviert habe?**
 
-**A:** Das Widerrufen dauert bis zu einer Stunde.
+**A:** Ab dem Zeitpunkt, an dem das Azure AD-Gerät als deaktiviert gekennzeichnet wird, dauert es bis zu einer Stunde, bis ein Widerruf angewendet wird.
 
 >[!NOTE] 
 >Für registrierte Geräte wird empfohlen, das Gerät zu löschen, um sicherzustellen, dass Benutzer nicht auf die Ressourcen zugreifen können. Weitere Informationen finden Sie unter [Was ist die Geräteregistrierung?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>F: Warum sind im Azure-Portal in der Spalte „REGISTRIERT“ Geräte als „Ausstehend“ gekennzeichnet?
+
+**A:**  „Ausstehend“ gibt an, dass das Gerät nicht registriert ist. Dieser Status gibt an, dass ein Gerät mithilfe von Azure AD Connect von der lokalen AD-Instanz synchronisiert wurde und für die Geräteregistrierung bereit ist. Der Verknüpfungstyp von Geräten mit diesem Status ist auf „In Hybrid-Azure AD eingebunden“ festgelegt. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
+
+>[!NOTE]
+>Der Status eines Geräts kann sich auch von „Registriert“ in „Ausstehend“ ändern:
+>* Wenn ein Gerät zuerst aus Azure AD gelöscht und dann von der lokalen AD-Instanz erneut synchronisiert wird.
+>* Wenn ein Gerät aus einem Synchronisierungsbereich in Azure AD Connect entfernt und wieder hinzugefügt wird.
+>
+>In beiden Fällen müssen Sie das Gerät auf jedem dieser Geräte manuell erneut registrieren. Um zu überprüfen, ob das Gerät zuvor registriert wurde, können Sie eine [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md) ausführen.
+
+---
 ## <a name="azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Join
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?
 
-**A:** 
-- Für in Azure AD eingebundene Hybridgeräte muss die automatische Registrierung deaktiviert sein. Der geplante Task registriert das Gerät also nicht erneut. Öffnen Sie als nächstes die Eingabeaufforderung als Administrator, und geben Sie `dsregcmd.exe /debug /leave` ein. Oder führen Sie diesen Befehl als Skript für mehrere Geräte aus, um die Einbindung für diese Geräte gleichzeitig aufzuheben.
-- Stellen Sie bei ausschließlich in Azure AD eingebundenen Geräten sicher, dass Sie über ein lokales Offlineadministratorkonto verfügen. Sie können sich nicht mit Ihren Azure AD-Anmeldeinformationen anmelden. Navigieren Sie als Nächstes zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Wählen Sie Ihr Konto aus, und klicken Sie auf **Trennen**. Befolgen Sie die Anweisungen, und geben Sie die Anmeldeinformationen für den lokalen Administrator an, wenn Sie aufgefordert werden. Starten Sie das Gerät neu, um den Vorgang zur Aufhebung einer Einbindung abzuschließen.
+**A:** Stellen Sie bei ausschließlich in Azure AD eingebundenen Geräten sicher, dass Sie über ein lokales Offlineadministratorkonto verfügen. Sie können sich nicht mit Ihren Azure AD-Anmeldeinformationen anmelden. Navigieren Sie als Nächstes zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Wählen Sie Ihr Konto aus, und klicken Sie auf **Trennen**. Befolgen Sie die Anweisungen, und geben Sie die Anmeldeinformationen für den lokalen Administrator an, wenn Sie aufgefordert werden. Starten Sie das Gerät neu, um den Vorgang zur Aufhebung einer Einbindung abzuschließen.
 
 ---
 
@@ -223,6 +240,10 @@ Dieses Verhalten:
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Hybrid Join
 
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>F: Wie hebe ich die Einbindung eines in Azure AD Hybrid eingebundenen Geräts lokal auf dem Gerät auf?
+
+**A:** Für in Azure AD eingebundene Hybridgeräte muss die automatische Registrierung deaktiviert sein. Der geplante Task registriert das Gerät also nicht erneut. Öffnen Sie als nächstes die Eingabeaufforderung als Administrator, und geben Sie `dsregcmd.exe /debug /leave` ein. Oder führen Sie diesen Befehl als Skript für mehrere Geräte aus, um die Einbindung für diese Geräte gleichzeitig aufzuheben.
+
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>F: Wo finde ich Problembehandlungsinformationen für die Diagnose von Azure AD Hybrid Join-Fehlern?
 
 **A:** Informationen zur Problembehandlung finden Sie in diesen Artikeln:
@@ -234,7 +255,7 @@ Dieses Verhalten:
 
 **A:** Wenn Benutzer ihr Konto den Apps auf einem in die Domäne eingebundenen Gerät hinzufügen, wird ggf. eine Frage der Art **Soll das Konto Windows hinzugefügt werden?** angezeigt. Wenn Sie in der Eingabeaufforderung **Ja** eingeben, wird das Gerät in Azure AD registriert. Der Vertrauenstyp wird als in Azure AD registriert gekennzeichnet. Nachdem Sie Azure AD Hybrid Join in Ihrer Organisation aktiviert haben, wird das Gerät auch in die Azure AD-Hybridumgebung eingebunden. Dann werden zwei Gerätestatus für dasselbe Gerät angezeigt. 
 
-Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Gerät wird also für alle Auswertungen in Bezug auf die Authentifizierung und den bedingten Zugriff als Azure AD-Hybrideinbindung angesehen. Sie können den Azure AD-Registrierungseintrag für das Gerät daher ohne Weiteres aus dem Azure AD-Portal löschen. Erfahren Sie mehr zum [Vermeiden oder Bereinigen dieses zweifachen Status auf einem Windows 10-Computer](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
+Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Gerät wird also für alle Auswertungen in Bezug auf die Authentifizierung und den bedingten Zugriff als Azure AD-Hybrideinbindung angesehen. Sie können den Azure AD-Registrierungseintrag für das Gerät daher ohne Weiteres aus dem Azure AD-Portal löschen. Erfahren Sie mehr zum [Vermeiden oder Bereinigen dieses zweifachen Status auf einem Windows 10-Computer](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 
@@ -258,10 +279,19 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 ## <a name="azure-ad-register-faq"></a>Häufig gestellte Fragen zur Azure AD-Registrierung
 
+### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>F: Wie entferne ich ein bei Azure AD registriertes Gerät lokal auf dem Gerät?
+
+**A:** 
+- Bei Azure AD registrierte Windows 10-Geräte: Wechseln Sie zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Wählen Sie Ihr Konto aus, und klicken Sie auf **Trennen**. Unter Windows 10 erfolgt die Geräteregistrierung pro Benutzerprofil.
+- Unter iOS und Android können Sie die Microsoft Authenticator-App verwenden und **Einstellungen** > **Geräteregistrierung** und **Geräteregistrierung aufheben** auswählen.
+- Unter macOS können Sie die Microsoft Intune-Unternehmensportalanwendung verwenden, um die Registrierung des Geräts in der Verwaltung aufzuheben und Registrierungen zu entfernen. 
+
+---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>F: Kann ich Android- oder iOS-BYOD-Geräte registrieren?
 
 **A:** Ja, aber nur mit dem Azure-Dienst zur Geräteregistrierung und wenn Sie Hybrid-Kunde sind. Es wird nicht mit dem lokalen Geräteregistrierungsdienst in Active Directory Federation Services (AD FS) unterstützt.
 
+---
 ### <a name="q-how-can-i-register-a-macos-device"></a>F: Wie kann ich ein macOS-Gerät registrieren?
 
 **A:** Führen Sie die folgenden Schritte aus:
@@ -274,6 +304,7 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 - Die in der Richtlinie zum bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/technical-reference.md#client-apps-condition). 
 - Beim ersten Zugriffsversuch werden die Benutzer aufgefordert, das Gerät über das Unternehmensportal zu registrieren.
 
+---
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [bei Azure AD registrierten Geräten](concept-azure-ad-register.md)

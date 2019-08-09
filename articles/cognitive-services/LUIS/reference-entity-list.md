@@ -1,6 +1,6 @@
 ---
-title: Entitätstyp „List“
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Entität vom Typ „List“ – LUIS
+titleSuffix: Azure Cognitive Services
 description: Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Empfehlungsfeatures nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: c278a72327d476be8963b10db5e8231b6d859a4a
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ca9f8b570ee28b1913c8ec81c66a5b70827c04d6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480122"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559954"
 ---
 # <a name="list-entity"></a>Entität vom Typ „List“ 
 

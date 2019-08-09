@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479180"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -312,11 +312,11 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 * Sie müssen Azure Premium-Datenträger verwenden.
 * Wir empfehlen die Verwendung von Azure Managed Disks.
 * Es wird empfohlen, Volumes mit dem robusten Dateisystem (ReFS) zu formatieren.
-    * Weitere Informationen finden Sie im [SAP-Hinweis 1869038 – SAP-Unterstützung][1869038] im Kapitel and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] des Artikels „Planen von Volumes in Direkte Speicherplätze“.
+    * Weitere Informationen finden Sie im [SAP-Hinweis 1869038 – SAP-Unterstützung für das ReFS-Dateisystem][1869038] und im Kapitel [Auswählen des Dateisystems][planning-volumes-s2d-choosing-filesystem] des Artikels „Planen von Volumes in Direkte Speicherplätze“.
     * Installieren Sie unbedingt das [kumulative Update für Microsoft KB4025334][kb4025334].
 * Sie können als Azure-VM-Größen die DS-Serie oder die DSv2-Serie verwenden.
 * Um eine gute Netzwerkleistung zwischen VMs zu erzielen, die für die Datenträgersynchronisierung mit direkten Speicherplätzen erforderlich ist, sollten Sie einen VM-Typ verwenden, der mindestens über eine „hohe“ Netzwerkbandbreite verfügt.
-    Weitere Informationen finden Sie in den Spezifikationen zur [DSv2-Serie][dv2-series] and [DS-Series][ds-series].
+    Weitere Informationen finden Sie in den Spezifikationen zur [DSv2-Serie][dv2-series] und [DS-Serie][ds-series].
 * Es wird empfohlen, eine gewisse nicht zugeordnete Kapazität im Speicherpool zu reservieren. Indem Sie nicht zugeordnete Kapazität im Speicherpool übrig lassen, erhalten Volumes Speicherplatz für „direkte“ Korrekturen, wenn ein Laufwerk ausfällt. Dies verbessert die Datensicherheit und die Leistung.  Weitere Informationen finden Sie unter [Auswählen der Volumegröße][choosing-the-size-of-volumes-s2d].
 * Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<globaler SAP-Host\>. Dies wird für den \<Namen des virtuellen ASCS/SCS-Hosts\> der SAP ASCS/SCS-Instanz oder für den DBMS erledigt. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. Der \<globale SAP-Host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
 

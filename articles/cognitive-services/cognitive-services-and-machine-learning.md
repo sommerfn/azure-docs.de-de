@@ -1,6 +1,6 @@
 ---
 title: Cognitive Services und maschinelles Lernen
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wo Azure Cognitive Services mit anderen Azure-Angeboten für maschinelles Lernen kompatibel ist.
 services: cognitive-services
 author: diberry
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414689"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697923"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -105,11 +105,11 @@ In den folgenden Punkten ist jeder Dienst entsprechend der Art von Daten kategor
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Sprechererkennung](./speaker-recognition/home.md)||x||
 |[Text-zu-Sprache (Text-to-Speech, TTS)](speech-service/text-to-speech.md)|x|x||
-|[Spracherkennung (Speech-to-Text, STT)](/speech-service/speech-to-text.md)|x|x||
+|[Spracherkennung (Speech-to-Text, STT)](speech-service/speech-to-text.md)|x|x||
 |[Sprachübersetzung](speech-service/speech-translation.md)|x|||
 |[Textanalyse](./text-analytics/overview.md)|x|||
 |[Textübersetzung](./translator/translator-info-overview.md)|x|||
-|[Textübersetzung – Custom Translator]()||x||
+|[Textübersetzung – Custom Translator](./translator/custom-translator/overview.md)||x||
 
 *Personalisierung benötigt für ein Auswerten Ihrer Richtlinien und Daten nur Trainingsdaten, die vom Dienst erfasst wurden (weil der Dienst in Echtzeit funktioniert). Personalisierung benötigt für ein Vorab- oder Stapelverarbeitungstraining keine großen Datasets mit bereits erfassten Daten. 
 

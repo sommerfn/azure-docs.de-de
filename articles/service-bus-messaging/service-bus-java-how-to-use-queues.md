@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Service Bus-Warteschlangen mit Java | Microsoft Docs
+title: Verwenden von Azure Service Bus-Warteschlangen mit Java
 description: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in Java geschrieben.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: cd1db615b11259bcf1d8aff988d2817e08065ca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 4075ceae6c40a6be8ee2b9f6580a57fafb96e17e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991739"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663425"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Verwenden von Service Bus-Warteschlangen mit Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -39,9 +40,9 @@ In diesem Tutorial erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrich
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Stellen Sie vor dem Erstellen dieses Beispiels sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
+Stellen Sie sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] vor dem Erstellen dieses Beispiels installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
 
-![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Screenshot der Registerkarte „Bibliotheken“, auf der Sie Bibliotheken hinzufügen können](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
 Fügen Sie die folgenden `import`-Anweisungen am Anfang der Java-Datei ein:
 

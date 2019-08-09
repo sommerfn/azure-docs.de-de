@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: b649ea1c69f82840a663cf32391e4c74ac6cc33e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: dd4eef7998b83c7a527738762379d0d3e720d70f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319509"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699817"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -175,7 +175,7 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 Für jedes Azure-Abonnement gelten folgende Grenzwerte für das Integrationskonto:
 
-* Ein einzelnes [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts)-Integrationskonto
+* Ein Integrationskonto im [Tarif „Free“](../logic-apps/logic-apps-pricing.md#integration-accounts) pro Azure-Region
 
 * 1\.000 Integrationskonten insgesamt, einschließlich Integrationskonten in beliebigen [Integrationsdienstumgebungen (Integration Service Environments, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) in [Developer- und Premium-SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 

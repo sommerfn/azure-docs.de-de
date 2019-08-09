@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346888"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666283"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -31,6 +31,12 @@ Während der Überwachungsphase erlangen viele Organisationen die folgenden Erke
 * Sie müssen bestehende Betriebsprozesse verbessern, um sicherere Kennwörter zu verwenden.
 * Benutzer verwenden häufig unsichere Kennwörter.
 * Sie müssen Benutzer über bevorstehende Änderungen der Sicherheitsmaßnahmen und deren mögliche Auswirkungen auf sie informieren und aufklären, wie sicherere Kennwörter ausgewählt werden können.
+
+Es ist auch möglich, dass eine stärkere Kennwortüberprüfung die vorhandene Active Directory-Domänencontroller-Bereitstellungsautomatisierung beeinträchtigt. Es wird empfohlen, während der Auswertung des Überwachungszeitraums mindestens eine DC-Heraufstufung und eine DC-Herabstufung durchzuführen, um solche Probleme im Voraus erkennen zu können.  Weitere Informationen finden Sie unter
+
+* [„Ntdsutil.exe“ kann kein unsicheres DSRM-Kennwort festlegen](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Fehler beim Höherstufen des Domänencontrollerreplikats aufgrund eines unsicheren DSRM-Kennworts](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
+* [Fehler beim Herabstufen des Domänencontrollers aufgrund eines unsicheren lokalen Administratorkennworts](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausgeführt wurde, können Sie die Konfiguration von *Überwachen* auf *Erzwingen* umstellen, um sicherere Kennwörter zu verlangen. Eine gezielte Überwachung während dieser Zeit wird empfohlen.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335694"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516504"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -23,9 +23,9 @@ In diesem Artikel erfahren Sie, wie Sie ADE-fähige (Azure Disk Encryption) virt
 >Azure Site Recovery unterstützt derzeit nur virtuelle Azure-Computer, auf denen das Windows-Betriebssystem ausgeführt wird und die [für die Verschlüsselung mit Azure Active Directory (Azure AD) aktiviert sind](https://aka.ms/ade-aad-app).
 
 ## <a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
-Site Recovery erfordert, dass der Benutzer Berechtigungen besitzt, um den Schlüsseltresor in der Zielregion zu erstellen und Schlüssel in die Region zu kopieren.
+Site Recovery erfordert, dass der Benutzer über Berechtigungen zum Erstellen des Schlüsseltresors in der Zielregion und zum Kopieren von Schlüsseln aus dem Schlüsseltresor der Quellregion in den Schlüsseltresor der Zielregion verfügt.
 
-Zum Aktivieren der Replikation von Azure Disk Encryption-fähigen VMs aus dem Azure-Portal benötigt der Benutzer folgende Berechtigungen:
+Um die Replikation von Azure Disk Encryption-fähigen VMs aus dem Azure-Portal aktivieren zu können, muss der Benutzer über die folgenden Berechtigungen für den Schlüsseltresor der **Quellregion und der Zielregion** verfügen.
 
 - Schlüsseltresorberechtigungen
     - Auflisten, Erstellen und Abrufen

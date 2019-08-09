@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f39c914bce3fbc47775a76f1c3a1fb64de560505
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498334"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565106"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -28,7 +28,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
 ### <a name="azure-machine-learning-sdk-for-python-v1053"></a>Azure Machine Learning SDK für Python v1.0.53
 
 + **Neue Features**
-    + Für das automatisierte maschinelle Lernen wird jetzt das Trainieren von ONNX-Modellen auf dem Remotecomputeziel unterstützt.
+  + Für das automatisierte maschinelle Lernen wird jetzt das Trainieren von ONNX-Modellen auf dem Remotecomputeziel unterstützt.
   + In Azure Machine Learning ist es jetzt möglich, das Training von einer vorherigen Ausführung, einem Prüfpunkt oder für bestimmte Modelldateien fortzusetzen.
     + Informieren Sie sich, wie Sie [Estimators verwenden, um das Training für eine vorherige Ausführung fortzusetzen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb).
 
@@ -79,10 +79,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Für `Datastore.register_azure_blob_container` kann jetzt optional ein `blob_cache_timeout`-Wert (in Sekunden) verwendet werden, mit dem die blobfuse-Bereitstellungsparameter konfiguriert werden, um den Cacheablauf für diesen Datenspeicher zu aktivieren. In der Standardeinstellung wird kein Timeout genutzt. Wenn ein Blob gelesen wird, verbleibt er im lokalen Cache, bis der Auftrag abgeschlossen ist. Für die meisten Aufträge wird diese Einstellung bevorzugt, aber bei einigen Aufträgen müssen mehr Daten aus einem großen Dataset gelesen werden, als auf die Knoten passen. Bei diesen Aufträgen ist der Vorgang eher erfolgreich, wenn dieser Parameter optimiert wird. Gehen Sie beim Optimieren dieses Parameters mit Bedacht vor: Wenn Sie den Wert zu niedrig festlegen, kann dies zu einer schlechten Leistung führen, da die in einer Epoche verwendeten Daten ggf. ablaufen, bevor sie erneut verwendet werden. Dies bedeutet, dass alle Lesevorgänge aus dem Blobspeicher (also dem Netzwerk) erfolgen, anstatt aus dem lokalen Cache. Hieraus ergibt sich eine negative Auswirkung auf die Trainingszeiten.
     + Die Modellbeschreibung kann nach der Registrierung jetzt richtig aktualisiert werden.
     + Beim Löschen von Modellen und Images werden jetzt mehr Informationen zu Upstream-Objekten angegeben, die davon abhängig sind und dazu führen, dass der Löschvorgang nicht erfolgreich ist.
-    + Die Ressourcenverwendung bei Remoteausführungen, die „azureml.mlflow“ verwenden, wurde verbessert.
-  + **azureml-dataprep**
-    + Dataflow-Objekte können jetzt durchlaufen werden, wodurch eine Abfolge von Datensätzen erzeugt wird.
-    + `_summarize_each` wurde `azureml.dataprep.Dataflow` als experimentelles Feature hinzugefügt.
+    + Die Ressourcenverwendung bei Remoteausführungen, die „azureml.mlflow“ nutzen, wurde verbessert.
   + **azureml-explain-model**
     + Fehlerbehebung: „transformations“-Argument für LIME Explainer für unformatierte Featurepriorität im azureml-contrib-explain-model-Paket.
     + SciPy Sparse-Unterstützung für Lime Explainer hinzugefügt.
@@ -115,6 +112,15 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + **azureml-train-core**
     + Zeichenfolgen werden jetzt als Computeziel für die automatisierte Hyperparameteroptimierung akzeptiert.
     + Die nicht genutzte RunConfiguration-Einstellung „auto_prepare_environment“ wurde als veraltet gekennzeichnet.
+
+### <a name="azure-machine-learning-data-prep-sdk-v119"></a>Azure Machine Learning Data Prep SDK, Version 1.1.9
+
++ **Neue Features**
+  + Unterstützung für das direkte Lesen einer Datei aus einer HTTP- oder HTTPS-URL wurde hinzugefügt.
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Verbesserte Fehlermeldung beim Versuch, ein Parquet-Dataset aus einer Remotequelle zu lesen (dies wird derzeit nicht unterstützt).
+  + Es wurde ein Fehler behoben, der beim Schreiben in Dateien im Parquet-Format in ADLS Gen 2 und beim Aktualisieren des ADLS Gen 2-Containernamens im Pfad auftrat.
 
 ## <a name="2019-07-09"></a>2019-07-09
 

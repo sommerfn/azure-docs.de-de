@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05596365dfa011675f38beda2435fdda1a53a5a3
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 6e952b011eb760ebc9dcf5fe7250cf56ec67465f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488864"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562331"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web-APIs aufrufende Desktop-App – Aufruf eines Tokens
 
@@ -126,7 +126,7 @@ Die Klasse definiert die folgenden Konstanten:
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Dieser Modifizierer wird in erweiterten Szenarien verwendet, in denen der Benutzer vorab seine Einwilligung für verschiedene Ressourcen erteilen soll (und nicht die schrittweise Einwilligung, die normalerweise mit MSAL.NET/Microsoft-Identity Platform v2.0 verwendet wird). Einzelheiten finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
+Dieser Modifizierer wird in einem erweiterten Szenario verwendet, in dem der Benutzer vorab seine Einwilligung für mehrere Ressourcen erteilen soll (und nicht die schrittweise Einwilligung, die normalerweise bei MSAL.NET/der Microsoft Identity Platform verwendet wird). Einzelheiten finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
 
 ```CSharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -198,7 +198,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 
 - Dieser Flow ist aktiviert für .NET Desktop-, .NET Core- und UWP (Windows Universal)-Apps. Für .NET Core ist nur die Überladung verfügbar, die den Benutzernamen annimmt, da die .NET Core-Plattform nicht den Benutzernamen für das Betriebssystem anfordern kann.
   
-Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung für v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
 
 ### <a name="how-to-use-it"></a>Verwendung
 

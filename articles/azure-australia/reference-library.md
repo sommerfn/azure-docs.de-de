@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: grgale
-ms.openlocfilehash: 0c575076439e3405d34fe0ef3beff0242a53a8c5
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 48b4b71d80bcef1eaf3bf89c0b14c8033748684e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601815"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779329"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>Zusätzliche Dokumentation und Ressourcen nach Schwerpunktbereich
 
@@ -22,7 +22,7 @@ Diese Ressourcenbibliothek enthält zusätzliche Links und Referenzen, die für 
 * [Microsoft Service Trust Portal Australia Page](https://aka.ms/au-irap) (Seite im Microsoft Service Trust Portal mit für Australien relevanten Informationen)
 * [Microsoft Trust Center – Liste zertifizierter Clouddienste (Certified Cloud Services List, CCSL)](https://www.microsoft.com/trustcenter/compliance/ccsl)
 * [Sicherheits- und Compliance-AU-PROTECTED-Blueprint in Azure](https://aka.ms/au-protected)
-* [Mandantenisolation in Microsoft Azure](https://docs.microsoft.com/azure/security/azure-isolation)
+* [Mandantenisolation in Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)
 * [Australian Government Information Security Manual](https://www.cyber.gov.au/ism) (Handbuch der australischen Regierung zur Informationssicherheit)
 * [Australian Cyber Security Centre (ACSC) Certified Cloud List](https://www.cyber.gov.au/irap/asd-certified-cloud-services) (Liste zertifizierter Clouds des Australian Cyber Security Centre)
 
@@ -32,7 +32,7 @@ Diese Ressourcenbibliothek enthält zusätzliche Links und Referenzen, die für 
 * [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)
 * [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/key-vault/key-vault-network-security)
 * [Sicherer Zugriff auf einen Schlüsseltresor](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
-* [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+* [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in .NET](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Mit Azure Key Vault verwaltetes Speicherkonto – PowerShell](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Einrichten von Schlüsselrotation und Überwachung](https://docs.microsoft.com/azure/key-vault/key-vault-key-rotation-log-monitoring)
@@ -68,7 +68,7 @@ Diese Ressourcenbibliothek enthält zusätzliche Links und Referenzen, die für 
 * [RBAC in Azure – Übersicht](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Azure Privileged Identity Management – Übersicht](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
 * [Azure-Verwaltungsgruppen – Übersicht](https://docs.microsoft.com/azure/governance/management-groups/)
-* [Identitäten und rollenbasierte Zugriffssteuerung in Azure – bewährte Methoden](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
+* [Identitäten und rollenbasierte Zugriffssteuerung in Azure – bewährte Methoden](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Verwalten von Azure AD-Gruppen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 * [Hybrididentität](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 * [Benutzerdefinierte RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
