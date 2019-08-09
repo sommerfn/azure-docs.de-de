@@ -65,13 +65,19 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Häufige Fehlermeldungen
   href: error-messages.md
-- name: Leistungsprobleme im Zusammenhang mit virtuellen Windows-Computern
+- name: Leistungsprobleme im Zusammenhang mit virtuellen Computern
   href: performance-diagnostics.md
   items:
-    - name: Verwenden von PerfInsights
-      href: how-to-use-perfInsights.md
-    - name: Erweiterung für die Leistungsdiagnose
-      href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: Verwenden von PerfInsights
+          href: how-to-use-perfinsights.md
+        - name: Erweiterung für die Leistungsdiagnose
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: Verwenden von PerfInsights
+          href: how-to-use-perfinsights-linux.md
 - name: Offlineinstallation des Windows-VM-Agents
   href: install-vm-agent-offline.md
 - name: Erneutes Bereitstellen eines virtuellen Computers

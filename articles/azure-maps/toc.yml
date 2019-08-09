@@ -105,6 +105,8 @@
               href: clustering-point-data-web-sdk.md
             - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
               href: data-driven-style-expressions-web-sdk.md
+            - name: Verwenden von Imagevorlagen
+              href: how-to-use-image-templates-web-sdk.md
             - name: Überlagern eines Bilds
               href: map-add-image-layer.md
             - name: Hinzufügen von Kachelebenen

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705745"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854403"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Problembehandlung für virtuelle Azure-Computer
 
@@ -34,10 +34,14 @@ ms.locfileid: "67705745"
     - [Problembehandlung für SSH](troubleshoot-ssh-connection.md)
     - [Detaillierte Problembehandlung für SSH](detailed-troubleshoot-ssh-connection.md)
     - [Häufige Fehlermeldungen](error-messages.md)
-    - [Leistungsprobleme im Zusammenhang mit virtuellen Windows-Computern](performance-diagnostics.md  )
-    - [Verwenden von PerfInsights](how-to-use-perfInsights.md)
-    - [Erweiterung für die Leistungsdiagnose](performance-diagnostics-vm-extension.md)
 - [Offlineinstallation des Windows-VM-Agents](install-vm-agent-offline.md)
+- Beheben von Leistungsproblemen im Zusammenhang mit virtuellen Computern
+    - [Leistungsprobleme im Zusammenhang mit virtuellen Computern](performance-diagnostics.md)
+    - Windows
+        - [Verwenden von PerfInsights](how-to-use-perfinsights.md)
+        - [Erweiterung für die Leistungsdiagnose](performance-diagnostics-vm-extension.md)
+    - Linux
+        - [Verwenden von PerfInsights](how-to-use-perfinsights-linux.md)
 - Erneutes Bereitstellen eines virtuellen Computers
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)
