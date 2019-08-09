@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9128a747dcd42ada2feefd72ad8bfebdf7bfb25a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334046"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667141"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection und B2B-Benutzer
 
@@ -47,7 +47,7 @@ Wenn ein riskanter B2B-Benutzer in Ihrem Verzeichnis durch die risikobasierte Ri
 
 ### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>Wie verhindere ich, dass Benutzer von B2B-Zusammenarbeit durch risikobasierte Richtlinien betroffen sind?
 
-Durch das Ausschließen von B2B-Benutzern aus den risikobasierten Richtlinien für den bedingten Zugriff Ihrer Organisation wird verhindert, dass B2B-Benutzer von der Risikobewertung betroffen sind oder dadurch gesperrt werden. Zum Ausschließen dieser B2B-Benutzer erstellen Sie eine Gruppe in Azure AD, die alle Gastbenutzer Ihrer Organisation enthält. Fügen Sie diese Gruppe dann als Ausschlusselement für die integrierten Richtlinien zum Benutzerrisiko und Anmelderisiko von Identity Protection hinzu sowie alle Richtlinien für den bedingten Zugriff, die das Anmelderisiko als Bedingung verwenden.
+Durch das Ausschließen von B2B-Benutzern aus den risikobasierten Richtlinien für den bedingten Zugriff Ihrer Organisation wird verhindert, dass B2B-Benutzer von der Risikobewertung betroffen sind oder dadurch gesperrt werden. Zum Ausschließen dieser B2B-Benutzer erstellen Sie eine Gruppe in Azure AD, die alle Gastbenutzer Ihrer Organisation enthält. Fügen Sie diese Gruppe anschließend als Ausschlusselement für Ihre integrierten Identity Protection-Richtlinien zum Benutzerrisiko und zum Anmelderisiko sowie für alle Richtlinien für bedingten Zugriff zu, die das Anmelderisiko als Bedingung verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

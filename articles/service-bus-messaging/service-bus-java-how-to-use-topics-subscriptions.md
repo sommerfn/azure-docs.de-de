@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Service Bus-Themen mit Java | Microsoft-Dokumentation
+title: Verwenden von Azure Service Bus-Themen und -Abonnements mit Java
 description: Verwenden von Service Bus-Themen und -Abonnements in Azure.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 822fadb661fd9fcdde8ff75fa4f9e60dfa44c97b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991721"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663421"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
 
@@ -35,10 +36,10 @@ In dieser Schnellstartanleitung erstellen Sie Java-Code, um Nachrichten an ein S
     2. Rufen Sie die **Verbindungszeichenfolge** ab.
     3. Erstellen Sie ein **Thema** im Namespace.
     4. Erstellen Sie **drei Abonnements** für das Thema im Namespace.
-3. [Azure SDK für Java][Azure SDK for Java].
+3. [Azure SDK für Java][Azure SDK for Java]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Stellen Sie vor dem Erstellen dieses Beispiels sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
+Stellen Sie sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] vor dem Erstellen dieses Beispiels installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
 
 ![Bibliotheken am Buildpfad von Eclipse](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 

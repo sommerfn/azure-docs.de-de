@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326167"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage
@@ -73,7 +73,7 @@ Die von Event Hubs Capture erzeugten Dateien weisen das folgende Avro-Schema auf
 
 ![Avro-Schema][3]
 
-Eine einfache Möglichkeit zur Untersuchung von Avro-Dateien ist die Verwendung der [Avro-Tools][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] verwenden, um eine einfache SQL-gesteuerte Benutzeroberfläche zu erhalten, oder [Apache Spark][Apache Spark], wenn Sie für die erfassten Daten eine komplexe verteilte Verarbeitung durchführen möchten. 
+Eine einfache Möglichkeit zum Untersuchen von Avro-Dateien ist die Verwendung der [Avro Tools][Avro Tools] -JAR-Datei von Apache. Sie können auch [Apache Drill][Apache Drill] verwenden, um eine einfache SQL-gesteuerte Benutzeroberfläche zu erhalten, oder [Apache Spark][Apache Spark], wenn Sie für die erfassten Daten eine komplexe verteilte Verarbeitung durchführen möchten. 
 
 ### <a name="use-apache-drill"></a>Verwenden von Apache Drill
 
@@ -129,7 +129,7 @@ Sie können die Datei auch mithilfe von Avro-Tools in das JSON-Format konvertier
 
 Für eine erweiterte Verarbeitung laden Sie Avro herunter und installieren es für eine Plattform Ihrer Wahl. Zum Zeitpunkt der Erstellung dieses Dokuments sind Implementierungen für C, C++, C\#, Java, NodeJS, Perl, PHP, Python und Ruby verfügbar.
 
-Apache Avro umfasst vollständige Anleitungen für die ersten Schritte mit [Java][Java] and [Python][Python]. Lesen Sie auch den Artikel zu den [ersten Schritten mit Event Hubs Capture](event-hubs-capture-python.md).
+Apache Avro bietet vollständige Anleitungen für die ersten Schritte mit [Java][Java] und [Python][Python]. Lesen Sie auch den Artikel zu den [ersten Schritten mit Event Hubs Capture](event-hubs-capture-python.md).
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Berechnung der Gebühren für Event Hubs Capture
 

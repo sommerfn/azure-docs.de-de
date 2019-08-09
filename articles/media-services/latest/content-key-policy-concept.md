@@ -9,35 +9,48 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a597ab3519f4ba1696e111622541bcab89488558
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8809bf25c3bcfb26fb0ad251a2b09dfdca2a3e04
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66425435"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679185"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
 Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. 
 
-Um Verschlüsselungsoptionen für Ihren Datenstrom festzulegen, müssen Sie die [Streamingrichtlinie](streaming-policy-concept.md) erstellen und sie mit Ihrem [Streaminglocator](streaming-locators-concept.md) verknüpfen. Sie erstellen die [Richtlinie für den Inhaltsschlüssel](https://docs.microsoft.com/rest/api/media/contentkeypolicies), um zu konfigurieren, wie der Inhaltsschlüssel (der den sicheren Zugriff auf Ihre [Medienobjekte](assets-concept.md) ermöglicht) an Endclients übermittelt wird. Sie müssen die Anforderungen (Einschränkungen) für die Richtlinie für den Inhaltsschlüssel festlegen, die erfüllt sein müssen, damit Schlüssel mit der angegebenen Konfiguration an Clients übermittelt werden. Diese Richtlinie für den Inhaltsschlüssel ist zum Streamen oder Herunterladen als Klartext nicht erforderlich. 
+Um Verschlüsselungsoptionen für Ihren Datenstrom festzulegen, müssen Sie die [Streamingrichtlinie](streaming-policy-concept.md) erstellen und sie mit Ihrem [Streaminglocator](streaming-locators-concept.md) verknüpfen. Sie erstellen die [Richtlinie für den Inhaltsschlüssel](https://docs.microsoft.com/rest/api/media/contentkeypolicies), um zu konfigurieren, wie der Inhaltsschlüssel (der den sicheren Zugriff auf Ihre [Medienobjekte](assets-concept.md) ermöglicht) an Endclients übermittelt wird. Sie müssen die Anforderungen (Einschränkungen) für die Richtlinie für den Inhaltsschlüssel festlegen, die erfüllt sein müssen, damit Schlüssel mit der angegebenen Konfiguration an Clients übermittelt werden. Die Richtlinie für den Inhaltsschlüssel ist zum Streamen oder Herunterladen als Klartext nicht erforderlich. 
 
-Normalerweise ordnen Sie Ihre **Richtlinie für Inhaltsschlüssel** Ihrem [Streaminglocator](streaming-locators-concept.md) zu. Alternativ hierzu können Sie die Richtlinie für Inhaltsschlüssel auch in einer [Streamingrichtlinie](streaming-policy-concept.md) angeben (beim Erstellen einer benutzerdefinierten Streamingrichtlinie für erweiterte Szenarien). 
+Normalerweise ordnen Sie Ihre Richtlinie für Inhaltsschlüssel Ihrem [Streaminglocator](streaming-locators-concept.md) zu. Alternativ können Sie die Richtlinie für Inhaltsschlüssel auch in einer [Streamingrichtlinie](streaming-policy-concept.md) angeben (beim Erstellen einer benutzerdefinierten Streamingrichtlinie für erweiterte Szenarien). 
 
-Es wird empfohlen, Media Services Inhaltsschlüssel automatisch generieren zu lassen. Normalerweise würde ein langlebiger Schlüssel verwendet und das Vorhandensein der Richtlinie mithilfe von **Get** überprüft. Um den Schlüssel abzurufen, müssen Sie eine separate Aktionsmethode aufrufen, um geheime Schlüssel oder Anmeldeinformationen abzurufen, wie im folgenden Beispiel gezeigt.
+> [!NOTE]
+> Eigenschaften von Richtlinien für Inhaltsschlüssel vom Typ `Datetime` liegen immer im UTC-Format vor.
 
-**Richtlinien für Inhaltsschlüssel** sind aktualisierbar. Es dauert bis zu 15 Minuten, die Schlüsselbereitstellungscaches zu aktualisieren und die aktualisierte Richtlinie zu übernehmen. 
+## <a name="best-practices-and-considerations"></a>Bewährte Methoden und Überlegungen
 
 > [!IMPORTANT]
-> * Eigenschaften von **Inhaltssschlüsselrichtlinien** vom Datetime-Typ liegen immer im UTC-Format vor.
-> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+> Berücksichtigen Sie die folgenden Empfehlungen.
 
-### <a name="example"></a>Beispiel
+* Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
+* Richtlinien für Inhaltsschlüssel sind aktualisierbar. Es kann bis zu 15 Minuten dauern, bis die Schlüsselbereitstellungscaches aktualisiert werden und die aktualisierte Richtlinie übernommen wird. 
 
-Verwenden Sie **GetPolicyPropertiesWithSecretsAsync**, um den Schlüssel abzurufen. Dies wird im Beispiel unter [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) veranschaulicht.
+   Durch Aktualisieren der Richtlinie wird der vorhandene CDN-Cache überschrieben. Dies kann bei Kunden, die zwischengespeicherte Inhalte verwenden, zu Problemen bei der Wiedergabe führen.  
+* Es empfiehlt sich nicht, für jede Ressource eine neue Richtlinie für Inhaltsschlüssel zu erstellen. Die gemeinsame Nutzung der gleichen Richtlinie für Inhaltsschlüssel für Ressourcen, für die die gleichen Richtlinienoptionen erforderlich sind, bietet die folgenden Hauptvorteile:
+   
+   * Eine kleinere Anzahl von Richtlinien lässt sich einfacher verwalten.
+   * Wenn Sie Aktualisierungen an der Richtlinie für Inhaltsschlüssel vornehmen möchten, werden die Änderungen für alle neuen Lizenzanforderungen fast sofort wirksam.
+* Wenn Sie eine neue Richtlinie erstellen möchten, müssen Sie einen neuen Streaminglocator für die Ressource erstellen.
+* Es wird empfohlen, den Inhaltsschlüssel in Media Services automatisch generieren zu lassen. 
+
+   Normalerweise wird ein langlebiger Schlüssel verwendet und das Vorhandensein der Richtlinie für Inhaltsschlüssel mithilfe von [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get) überprüft. Um den Schlüssel abzurufen, müssen Sie eine separate Aktionsmethode aufrufen, um geheime Schlüssel oder Anmeldeinformationen abzurufen, wie im folgenden Beispiel gezeigt.
+
+## <a name="example"></a>Beispiel
+
+Verwenden Sie `GetPolicyPropertiesWithSecretsAsync`, um den Schlüssel abzurufen. Dies wird im Beispiel unter [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) veranschaulicht.
 
 ## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 

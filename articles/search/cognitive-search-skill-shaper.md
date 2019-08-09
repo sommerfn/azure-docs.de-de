@@ -10,28 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 16bb7d84bbf19081c146aaac13ecc798610bc4bc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540830"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840968"
 ---
 #   <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
 Die Qualifikation **Shaper** konsolidiert mehrere Eingaben in einem [komplexen Typ](search-howto-complex-data-types.md), auf den später in der Anreicherungspipeline verwiesen werden kann. Im Wesentlichen ermöglicht es Ihnen der Skill **Shaper**, eine Struktur zu erstellen, den Namen der Elemente dieser Struktur zu definieren und jedem Element Werte zuzuweisen. Beispiele für konsolidierte Felder, die in Suchszenarien nützlich sind, sind die Kombination von Vor- und Nachnamen in einer einzigen Struktur, Stadt und Land in einer einzigen Struktur oder Name und Geburtsdatum in einer einzigen Struktur, um eine eindeutige Identität zu schaffen.
 
-Die API-Version bestimmt die mögliche Tiefe für die Strukturierung. 
+Darüber hinaus fügt die Qualifikation **Shaper**, die in [Szenario 3](#nested-complex-types) gezeigt wird, der Eingabe eine neue optionale *sourceContext*-Eigenschaft hinzu. Die Eigenschaften *source* und *sourceContext* schließen sich gegenseitig aus. Wenn die Eingabe im Kontext der Qualifikation liegt, verwenden Sie einfach *source*. Wenn die Eingabe einen *anderen* Kontext als die Qualifikation aufweist, verwenden Sie *sourceContext*. Für *sourceContext* müssen Sie eine geschachtelte Eingabe mit dem Element definieren, das als Quelle verwendet werden soll. 
 
-| API-Version | Strukturieren von Verhaltensweisen | 
-|-------------|-------------------|
-| Version 2019-05-06-Preview der REST-API (.NET SDK wird nicht unterstützt) | Komplexe Objekte, mehrere Ebenen tief in einer Definition der Qualifikation **Shaper**. |
-| 2019-05-06** (allgemein verfügbar), 2017-11-11-Preview| Komplexe Objekte, eine Ebene tief. Eine Form mit mehreren Ebenen erfordert die Verkettung von mehreren Shaper-Schritten.|
-
-Wie von `api-version=2019-05-06-Preview` bereitgestellt, fügt die Qualifikation **Shaper**, die in [Szenario 3](#nested-complex-types) gezeigt wird, der Eingabe eine neue optionale *sourceContext*-Eigenschaft hinzu. Die Eigenschaften *source* und *sourceContext* schließen sich gegenseitig aus. Wenn die Eingabe im Kontext der Qualifikation liegt, verwenden Sie einfach *source*. Wenn die Eingabe einen *anderen* Kontext als die Qualifikation aufweist, verwenden Sie *sourceContext*. Für *sourceContext* müssen Sie eine geschachtelte Eingabe mit dem Element definieren, das als Quelle verwendet werden soll. 
-
-In der Antwort lautet der Ausgabename bei allen API-Versionen immer „output“. Intern kann die Pipeline einen anderen Namen zuordnen (z. B. „analyzedText“ wie in den folgenden Beispielen), die Qualifikation **Shaper** selbst gibt in der Antwort jedoch „output“ zurück. Dies kann wichtig sein, wenn Sie angereicherte Dokumente debuggen und die Namensdiskrepanz bemerken, oder wenn Sie einen benutzerdefinierten Skill erstellen und die Antwort selbst strukturieren.
+Der Ausgabename lautet immer „output“. Intern kann die Pipeline einen anderen Namen zuordnen (z. B. „analyzedText“ wie in den folgenden Beispielen), die Qualifikation **Shaper** selbst gibt in der Antwort jedoch „output“ zurück. Dies kann wichtig sein, wenn Sie angereicherte Dokumente debuggen und die Namensdiskrepanz bemerken, oder wenn Sie einen benutzerdefinierten Skill erstellen und die Antwort selbst strukturieren.
 
 > [!NOTE]
 > Die Qualifikation **Shaper** ist nicht an eine Cognitive Services-API gebunden, und Ihnen entstehen für die Nutzung keine Kosten. Es wird jedoch empfohlen, dennoch eine [Cognitive Services-Ressource anzufügen](cognitive-search-attach-cognitive-services.md), um die Ressourcenoption **Free** außer Kraft zu setzen, durch die Sie auf eine geringe Anzahl von Anreicherungen pro Tag beschränkt werden.
@@ -195,9 +188,6 @@ In diesem Fall vereinfacht **Shaper** alle Kapiteltitel, um ein einzelnes Array 
 
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Szenario 3: Eingabekonsolidierung aus geschachtelten Kontexten
 
-> [!NOTE]
-> Geschachtelte Strukturen, die in der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) unterstützt werden, können in einem [Wissensspeicher](knowledge-store-concept-intro.md) oder einem Azure Search-Index verwendet werden.
-
 Angenommen, Sie verfügen über Titel, Kapitel und Inhalt eines Buchs, haben die Erkennung von Entitäten und Schlüsselausdrücken für den Inhalt ausgeführt und möchten jetzt die Ergebnisse der einzelnen Qualifikationen in einer einzelnen Form mit den Kapitelnamen, Entitäten und Schlüsselbegriffen aggregieren.
 
 Die Definition der Qualifikation **Shaper** für dieses Szenario könnte wie im folgenden Beispiel aussehen:
@@ -237,7 +227,7 @@ Die Definition der Qualifikation **Shaper** für dieses Szenario könnte wie im 
 ```
 
 ### <a name="skill-output"></a>Qualifikationsausgaben
-In diesem Fall erstellt **Shaper** einen komplexen Typ. Diese Struktur ist im Arbeitsspeicher enthalten. Wenn Sie sie in einem Wissensspeicher speichern möchten, sollten Sie eine Projektion in Ihrer Qualifikationsgruppe erstellen, die Speichereigenschaften definiert.
+In diesem Fall erstellt **Shaper** einen komplexen Typ. Diese Struktur ist im Arbeitsspeicher enthalten. Wenn Sie sie in einem [Wissensspeicher](knowledge-store-concept-intro.md) speichern möchten, sollten Sie eine Projektion in Ihrer Qualifikationsgruppe erstellen, die Speichereigenschaften definiert.
 
 ```json
 {

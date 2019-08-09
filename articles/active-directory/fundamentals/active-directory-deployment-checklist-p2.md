@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: ''
+ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e668a5238859d8cd8c2a7797200a12197ce72be9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110472"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693889"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -28,7 +28,7 @@ Darüber hinaus können Kunden anhand ihres [Identity Secure Score](identity-sec
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Viele der Empfehlungen in diesem Handbuch können mit Azure AD Free, Basic oder ganz ohne Lizenz implementiert werden. Wenn Lizenzen erforderlich sind, ist angegeben, welche Lizenz zum Ausführen der jeweiligen Aufgabe mindestens erforderlich ist.
+Viele der Empfehlungen in diesem Leitfaden können mit Azure AD Free oder ganz ohne Lizenz implementiert werden. Wenn Lizenzen erforderlich sind, ist angegeben, welche Lizenz zum Ausführen der jeweiligen Aufgabe mindestens erforderlich ist.
 
 Weitere Informationen zur Lizenzierung finden Sie auf den folgenden Seiten:
 
@@ -46,12 +46,12 @@ In dieser Phase aktivieren Administratoren die grundlegenden Sicherheitsfunktion
 | [Festlegen mehrerer globaler Administratoren](../users-groups-roles/directory-emergency-access.md) | Weisen Sie mindestens zwei permanente, globale Nur-Cloud-Administratorkonten für die Verwendung bei einem Notfall zu. Diese Konten sind nicht für die tägliche Verwendung vorgesehen und sollten lange und komplexe Kennwörter haben. | Azure AD Free |
 | [Nach Möglichkeit nicht globale Administratorrollen verwenden](../users-groups-roles/directory-assign-admin-roles.md) | Gewähren Sie Ihren Administratoren nur den Zugriff, den sie benötigen, und nur für Bereiche, auf die sie zugreifen müssen. Nicht alle Administratoren müssen globale Administratoren sein. | Azure AD Free |
 | [Aktivieren von Privileged Identity Management für die Nachverfolgung der Nutzung der Administratorrolle](../privileged-identity-management/pim-getting-started.md) | Aktivieren Sie Privileged Identity Management, um mit der Nachverfolgung der Nutzung der Administratorrolle zu beginnen. | Azure AD Premium P2 |
-| [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](../authentication/howto-sspr-deployment.md) | Reduzieren Sie Anrufe beim Helpdesk für Kennwortzurücksetzungen, indem Sie Mitarbeitern mithilfe von Richtlinien, die Sie als Administrator steuern, das Zurücksetzen ihrer eigenen Kennwörter ermöglichen. | Azure AD Basic |
-| [Erstellen einer benutzerdefinierten organisationsspezifischen Liste gesperrter Kennwörter](../authentication/howto-password-ban-bad-configure.md) | Verhindern Sie, dass Benutzer Kennwörter erstellen, die Wörter oder Ausdrücke enthalten, die in Ihrer Organisation bzw. Ihrem Bereich häufig vorkommen. | Azure AD Basic |
+| [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](../authentication/howto-sspr-deployment.md) | Reduzieren Sie Anrufe beim Helpdesk für Kennwortzurücksetzungen, indem Sie Mitarbeitern mithilfe von Richtlinien, die Sie als Administrator steuern, das Zurücksetzen ihrer eigenen Kennwörter ermöglichen. | |
+| [Erstellen einer benutzerdefinierten organisationsspezifischen Liste gesperrter Kennwörter](../authentication/howto-password-ban-bad-configure.md) | Verhindern Sie, dass Benutzer Kennwörter erstellen, die Wörter oder Ausdrücke enthalten, die in Ihrer Organisation bzw. Ihrem Bereich häufig vorkommen. | |
 | [Aktivieren von Azure AD-Kennwortschutz für die lokale Integration](../authentication/concept-password-ban-bad-on-premises.md) | Erweitern Sie die Liste der gesperrten Kennwörtern auf Ihr lokales Verzeichnis, um sicherzustellen, dass auch lokal festgelegte Kennwörter den globalen und mandantenspezifischen Listen gesperrter Kennwörter entsprechen. | Azure AD Premium P1 |
 | [Kennwortleitfaden von Microsoft aktivieren](https://www.microsoft.com/research/publication/password-guidance/) | Wenn Ihre Benutzer ihre Kennwörter nicht mehr nach einem festgelegten Zeitplan ändern müssen, und Sie die Anforderungen an die Kennwortkomplexität abschaffen, fällt es Ihren Benutzern leichter, sich Kennwörter zu merken und sichere Kennwörter festzulegen. | Azure AD Free |
 | [Deaktivieren von regelmäßigen Kennwortzurücksetzungen für cloudbasierte Benutzerkonten](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Regelmäßige Kennwortzurücksetzungen regen Ihre Benutzer dazu an, ihre vorhandenen Kennwörter lediglich mit geänderten Zahlen wiederzuverwenden. Verwenden Sie die Richtlinien aus dem Kennwortleitfaden von Microsoft, und spiegeln Sie Ihre lokalen Richtlinie für reine Cloudbenutzer. | Azure AD Free |
-| [Anpassen von Azure Active Directory Smart Lockout](../authentication/howto-password-smart-lockout.md) | Verhindern Sie, dass Sperrungen von cloudbasierten Benutzern für lokale Active Directory-Benutzer repliziert werden. | Azure AD Basic |
+| [Anpassen von Azure Active Directory Smart Lockout](../authentication/howto-password-smart-lockout.md) | Verhindern Sie, dass Sperrungen von cloudbasierten Benutzern für lokale Active Directory-Benutzer repliziert werden. | |
 | [Aktivieren der intelligenten Extranetsperre für AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | Die intelligente Extranetsperre schützt vor Brute-Force-Angriffen, bei denen das Kennwort erraten wird, und lässt gültige AD FS-Benutzer ihre Konten weiterhin verwenden. | |
 | [Bereitstellen von Azure AD Multi-Factor Authentication mit Richtlinien für bedingten Zugriff](../authentication/howto-mfa-getstarted.md) | Legen Sie mithilfe von Richtlinien für bedingten Zugriff fest, dass Benutzer beim Zugriff auf sensible Anwendungen eine zweistufige Überprüfung durchführen müssen. | Azure AD Premium P1 |
 | [Aktivieren der Azure Active Directory Identity Protection](../identity-protection/enable.md) | Aktivieren Sie die Nachverfolgung von riskanten Anmeldungen und kompromittierten Anmeldeinformationen für Benutzer in Ihrer Organisation. | Azure AD Premium P2 |
@@ -71,7 +71,8 @@ Als Nächstes ergänzen wir die in Phase 1 geschaffene Grundlage durch das Impor
 | [Zuweisen von Lizenzen zu Benutzer nach Gruppenmitgliedschaft in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Sparen Sie Zeit und Aufwand durch das Erstellen von Lizenzierungsgruppen, die Funktionen anhand von Gruppen anstatt einer Einstellung pro Benutzer aktivieren oder deaktivieren. | |
 | [Erstellen eines Plans für den Zugriff durch Gastbenutzer](../b2b/what-is-b2b.md) | Arbeiten Sie mit Gastbenutzern zusammen, indem Sie ihnen ermöglichen, sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anzumelden. | [Leitfaden zur Azure AD B2B-Lizenzierung](../b2b/licensing-guidance.md) |
 | [Entscheidungen zur Geräteverwaltungsstrategie](../devices/overview.md) | Entscheiden Sie, was Ihre Organisation in Bezug auf Geräte zulässt, z.B. Registrierung oder Beitritt, Bring Your Own Device oder unternehmenseigene Geräte. | |
-| [Bereitstellen von Windows Hello for Business in Ihrer Organisation](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Bereiten Sie die kennwortlose Authentifizierung per Windows Hello vor. | |
+| [Bereitstellen von Windows Hello for Business in Ihrer Organisation](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Bereiten Sie die kennwortlose Authentifizierung unter Verwendung von Windows Hello vor. | |
+| [Bereitstellen von Methoden zur kennwortlosen Authentifizierung für Ihre Benutzer](../authentication/concept-authentication-passwordless.md) | Stellen Sie für Ihre Benutzer Methoden für die Authentifizierung ohne Kennwort bereit. | Azure AD Premium P1 |
 
 ## <a name="phase-3-manage-applications"></a>Phase 3: Verwalten von Anwendungen
 
@@ -81,7 +82,7 @@ Während wir weiter auf den vorherigen Phasen aufbauen, identifizieren wir Kandi
 | ---- | ------ | ---------------- |
 | Identifizieren Ihrer Anwendungen | Identifizieren Sie in Ihrer Organisation verwendete Anwendungen: lokale Anwendungen, SaaS-Anwendungen in der Cloud und andere Branchenanwendungen. Legen Sie fest, ob diese Anwendungen mit Azure AD verwaltet werden können und sollten. | Keine Lizenz erforderlich |
 | [Integrieren von unterstützten SaaS-Anwendungen in den Katalog](../manage-apps/add-application-portal.md) | Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen. Einige der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich im Katalog enthalten, der direkt über das Azure-Portal zugänglich ist. | Azure AD Free |
-| [Verwenden eines Anwendungsproxys für die Integration lokaler Anwendungen](../manage-apps/application-proxy-add-on-premises-application.md) | Mit einem Anwendungsproxy können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. | Azure AD Basic |
+| [Verwenden eines Anwendungsproxys für die Integration lokaler Anwendungen](../manage-apps/application-proxy-add-on-premises-application.md) | Mit einem Anwendungsproxy können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. | |
 
 ## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Phase 4: Überwachen berechtigter Identitäten, Durchführen einer Zugriffsüberprüfung und Verwalten des Benutzerlebenszyklus
 

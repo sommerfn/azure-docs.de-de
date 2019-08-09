@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99f14b14e9149f79ae992834ae75bcb8fdc3c74b
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705092"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601989"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -88,7 +88,7 @@ Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherung
 Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 - Die Cacheordnervolumes sollten freien Speicherplatz haben, der mindestens 5-10 % der Gesamtgröße der Sicherungsdaten ausmacht.
 - Wenn weniger als 5-10 % Speicherplatz zur Verfügung stehen, vergrößern Sie das Volume, oder verschieben Sie den Cacheordner auf ein Volume mit ausreichend freiem Speicherplatz.
-- Wenn Sie den Windows-Systemstatus sichern, benötigen Sie zusätzlich 30 bis 35 GB freien Speicherplatz auf dem Volume, das den Cacheordner enthält.
+- Wenn Sie den Windows-Systemstatus sichern, benötigen Sie zusätzlich 30 bis 35 GB freien Speicherplatz auf dem Volume, das den Cacheordner enthält.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Wie überprüfe ich, ob der Ordner „scratch“ gültig ist und darauf zugegriffen werden kann?
 
@@ -106,19 +106,22 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 
     ```PS C:\> Net stop obengine```
 
-2. Verschieben Sie nicht die Dateien! Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz.
-3. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.<br/>
+2. Wenn Sie die Systemstatussicherung konfiguriert haben, öffnen Sie die Datenträgerverwaltung, und heben Sie die Einbindung der Datenträger mit Namen im Format `"CBSSBVol_<ID>"` auf.
+3. Verschieben Sie nicht die Dateien! Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz.
+4. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.<br/>
 
     | Registrierungspfad | Registrierungsschlüssel | Wert |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
 
-4. Starten Sie die Sicherungs-Engine in einer Eingabeaufforderung mit erhöhten Rechten neu:
+5. Starten Sie die Sicherungs-Engine in einer Eingabeaufforderung mit erhöhten Rechten neu:
+
+    ```PS C:\> Net stop obengine```
 
     ```PS C:\> Net start obengine```
 
-5. Nachdem die Sicherung am neuen Speicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
+6. Ausführen einer Ad-hoc-Sicherung Nachdem die Sicherung am neuen Speicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Wo sollte der Cacheordner gespeichert werden?

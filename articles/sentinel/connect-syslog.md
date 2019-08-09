@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881062"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679212"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Verbinden Sie Ihre externe Lösung mithilfe von Syslog
 
@@ -47,6 +47,9 @@ Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](..
 1. Wählen Sie im Azure Sentinel-Portal die Option **Datenconnectors** und anschließend in der Tabelle die Zeile **Syslog** aus, und klicken Sie danach im Syslog-Bereich auf der rechten Seite auf **Open connector page** (Connectorseite öffnen).
 2. Befindet sich Ihr Linux-Computer in Azure, wählen Sie **Download and install agent on Azure Linux virtual machine** (Agent herunterladen und auf virtuellem Linux-Computer in Azure installieren) aus. Wählen Sie im Fenster „Virtuelle Computer“ die Computer aus, auf denen Sie den Agent installieren möchten, und klicken Sie anschließen im oberen Bereich auf **Verbinden**.
 1. Befindet sich Ihr Linux-Computer nicht in Azure, wählen Sie **Download and install agent on Linux non-Azure machine** (Agent herunterladen und auf Azure-fremdem Linux-Computer installieren) aus. Kopieren Sie im Fenster **Direkt-Agent** den Befehl unter **Agent für Linux herunterladen und integrieren**, und führen Sie ihn auf Ihrem Computer aus. 
+   > [!NOTE]
+   > Stellen Sie sicher, dass Sie die Sicherheit des Computers gemäß der Sicherheitsrichtlinie Ihrer Organisation konfigurieren. Beispielsweise können Sie das Netzwerk so konfigurieren, dass es der Sicherheitsrichtlinie für das Unternehmensnetzwerk entspricht, und die Ports und Protokolle im Daemon Ihren Anforderungen entsprechend ändern. 
+
 1. Gehen Sie im Fenster für die Einrichtung des Syslog-Connectors unter **Configure the logs to be connected** (Zu verbindende Protokolle konfigurieren) wie folgt vor:
     1. Klicken Sie auf den Link**zum Öffnen der Konfiguration der erweiterten Einstellungen Ihres Arbeitsbereichs.** 
     1. Wählen Sie **Daten** > **Syslog** aus.

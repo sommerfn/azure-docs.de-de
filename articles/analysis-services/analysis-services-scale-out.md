@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192303"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696401"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -73,7 +73,7 @@ Weitere Informationen finden Sie unter [Überwachen von Servermetriken](analysis
 
 ### <a name="in-azure-portal"></a>Im Azure-Portal
 
-1. Klicken Sie im Portal auf **Horizontale Skalierung**. Wählen Sie mithilfe des Schiebereglers die Anzahl von Abfragereplikatservern aus. Die gewählte Anzahl von Replikaten kommt zu Ihrem bereits vorhandenen Server hinzu.
+1. Klicken Sie im Portal auf **Horizontale Skalierung**. Wählen Sie mithilfe des Schiebereglers die Anzahl von Abfragereplikatservern aus. Die gewählte Anzahl von Replikaten kommt zu Ihrem bereits vorhandenen Server hinzu.  
 
 2. Klicken Sie unter **Verarbeitungsserver vom Abfragepool trennen** auf „Ja“, um Ihren Verarbeitungsserver von Abfrageservern auszuschließen. [Clientverbindungen](#connections), die die Standardverbindungszeichenfolge (ohne `:rw`) verwenden, werden an Replikate im Abfragepool umgeleitet. 
 
@@ -142,6 +142,10 @@ Für Endbenutzer-Clientverbindungen wie Power BI Desktop, Excel und benutzerdefi
 Für SSMS, SSDT und Verbindungszeichenfolgen in PowerShell, Azure Functions-Apps und AMO muss der **Name des Verwaltungsservers** verwendet werden. Der Name des Verwaltungsservers enthält einen speziellen `:rw`-Qualifizierer (Lesen/Schreiben). Sämtliche Verarbeitungsvorgänge finden auf dem (primären) Verwaltungsserver statt.
 
 ![Servernamen](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="scale-up--down-vs-scale-out"></a>Zentrales Hoch- und Herunterskalieren und Horizontales Skalieren
+
+Sie können den Tarif des Servers auf einen mit mehreren Replikaten ändern. Der gleiche Tarif gilt für alle Replikate. Bei einem Vorgang zum zentralen Hoch- und Herunterskalieren werden zunächst alle Replikate gleichzeitig heruntergefahren und dann mit dem neuen Tarif gestartet.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

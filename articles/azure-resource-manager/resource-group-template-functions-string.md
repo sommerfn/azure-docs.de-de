@@ -4,14 +4,14 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 04/08/2019
+ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 979474ea6b5b61935742591f8fba87d200d618e4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206340"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698175"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -112,8 +112,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| base64Output | string | b25lLCB0d28sIHRocmVl |
-| toStringOutput | string | one, two, three |
+| base64Output | Zeichenfolge | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Zeichenfolge | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -177,8 +177,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| base64Output | string | b25lLCB0d28sIHRocmVl |
-| toStringOutput | string | one, two, three |
+| base64Output | Zeichenfolge | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Zeichenfolge | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -242,8 +242,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| base64Output | string | b25lLCB0d28sIHRocmVl |
-| toStringOutput | string | one, two, three |
+| base64Output | Zeichenfolge | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Zeichenfolge | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -290,7 +290,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| concatOutput | string | prefix-5yj4yjf5mbg72 |
+| concatOutput | Zeichenfolge | prefix-5yj4yjf5mbg72 |
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) zeigt, wie zwei Arrays kombiniert werden.
 
@@ -466,8 +466,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | string | Hello, World! |
+| dataUriOutput | Zeichenfolge | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | Zeichenfolge | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -521,8 +521,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | string | Hello, World! |
+| dataUriOutput | Zeichenfolge | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | Zeichenfolge | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -704,8 +704,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| arrayOutput | string | one |
-| stringOutput | string | O |
+| arrayOutput | Zeichenfolge | one |
+| stringOutput | Zeichenfolge | O |
 
 ## <a name="format"></a>format
 
@@ -762,7 +762,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| formatTest | string | Hallo, Benutzer. Formatierte Zahl: 8.175.133 |
+| formatTest | Zeichenfolge | Hallo, Benutzer. Formatierte Zahl: 8.175.133 |
 
 ## <a name="guid"></a>GUID
 
@@ -945,8 +945,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| arrayOutput | string | three |
-| stringOutput | string | e |
+| arrayOutput | Zeichenfolge | three |
+| stringOutput | Zeichenfolge | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1013,13 +1013,13 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `length(string)`
 
-Gibt die Anzahl von Zeichen in einer Zeichenfolge bzw. von Elementen in einem Array zurück.
+Gibt die Anzahl von Zeichen in einer Zeichenfolge, Elementen in einem Array oder Eigenschaften auf Stammebene in einem Objekt zurück.
 
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Array oder Zeichenfolge |Das Array, von dem die Anzahl der Elemente, bzw. die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll. |
+| arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1045,6 +1045,18 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
         "stringToTest": {
             "type": "string",
             "defaultValue": "One Two Three"
+        },
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "propA": "one",
+                "propB": "two",
+                "propC": "three",
+                "propD": {
+                    "propD-1": "sub",
+                    "propD-2": "sub"
+                }
+            }
         }
     },
     "resources": [],
@@ -1056,6 +1068,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
         "stringLength": {
             "type": "int",
             "value": "[length(parameters('stringToTest'))]"
+        },
+        "objectLength": {
+            "type": "int",
+            "value": "[length(parameters('objectToTest'))]"
         }
     }
 }
@@ -1067,6 +1083,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1213,7 +1230,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| stringOutput | string | 0000000123 |
+| stringOutput | Zeichenfolge | 0000000123 |
 
 ## <a name="replace"></a>replace
 
@@ -1265,8 +1282,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| firstOutput | string | 1231231234 |
-| secondOutput | string | 123-123-xxxx |
+| firstOutput | Zeichenfolge | 1231231234 |
+| secondOutput | Zeichenfolge | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1334,7 +1351,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | NAME | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | string | two three |
+| stringOutput | Zeichenfolge | two three |
 
 ## <a name="split"></a>split
 
@@ -1471,7 +1488,7 @@ Konvertiert den angegebenen Wert in eine Zeichenfolge.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ja | Beliebig |Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays. |
+| valueToConvert |Ja | Any |Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1528,9 +1545,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| objectOutput | string | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | string | ["a","b","c"] |
-| intOutput | string | 5 |
+| objectOutput | Zeichenfolge | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | Zeichenfolge | ["a","b","c"] |
+| intOutput | Zeichenfolge | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1591,7 +1608,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| substringOutput | string | two |
+| substringOutput | Zeichenfolge | two |
 
 ## <a name="take"></a>take
 
@@ -1659,7 +1676,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | NAME | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | string | on |
+| stringOutput | Zeichenfolge | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1709,8 +1726,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| toLowerOutput | string | one two three |
-| toUpperOutput | string | ONE TWO THREE |
+| toLowerOutput | Zeichenfolge | one two three |
+| toUpperOutput | Zeichenfolge | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1760,8 +1777,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| toLowerOutput | string | one two three |
-| toUpperOutput | string | ONE TWO THREE |
+| toLowerOutput | Zeichenfolge | one two three |
+| toUpperOutput | Zeichenfolge | ONE TWO THREE |
 
 ## <a name="trim"></a>trim
 
@@ -1807,7 +1824,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| return | string | one two three |
+| return | Zeichenfolge | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1947,9 +1964,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Zeichenfolge | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -2002,9 +2019,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Zeichenfolge | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2057,9 +2074,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Zeichenfolge | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 

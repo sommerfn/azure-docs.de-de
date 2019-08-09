@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 1a67846889b43d582a7a7d477a33f0e2168fd760
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 3773f9a8464dc94436d6d2503b173d4674033ab1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147866"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565037"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -28,7 +28,7 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 ## <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
-Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsvariable `https_proxy` fest.
+Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsvariable `https_proxy` fest. Unter Windows ist diese Einstellung nicht erforderlich, da AzCopy Proxyeinstellungen automatisch erkennt. Falls Sie diese Einstellung unter Windows verwenden, wird dadurch die automatische Erkennung außer Kraft gesetzt.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
@@ -40,7 +40,13 @@ AzCopy unterstützt zurzeit keine Proxys, für die eine Authentifizierung mit NT
 
 ## <a name="optimize-throughput"></a>Optimieren des Durchsatzes
 
-Legen Sie die Umgebungsvariable `AZCOPY_CONCURRENCY_VALUE` fest, um die Anzahl gleichzeitiger Anforderungen zu konfigurieren und die Durchsatzleistung und Ressourcennutzung zu steuern. Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variablen auf `32` festgelegt. Andernfalls ist der Standardwert gleich 16, multipliziert mit der Anzahl der CPUs. Der maximale Standardwert dieser Variablen ist `300`, aber Sie können diesen Wert manuell höher oder niedriger festlegen.
+Mithilfe des Flags `cap-mbps` können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird der Durchsatz beispielsweise auf `10` Megabytes (MB) pro Sekunde begrenzt.
+
+```azcopy
+azcopy cap-mbps 10
+```
+
+Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie können den Durchsatz durch Festlegen der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` erhöhen. Diese Variable gibt die zulässige Anzahl gleichzeitiger Anforderungen an.  Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variablen auf `32` festgelegt. Andernfalls ist der Standardwert gleich 16, multipliziert mit der Anzahl der CPUs. Der maximale Standardwert dieser Variablen ist `300`, aber Sie können diesen Wert manuell höher oder niedriger festlegen.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
@@ -83,7 +89,7 @@ Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%US
 
 Der folgende Befehl ruft alle Fehler mit dem Status `UPLOADFAILED` aus dem Protokoll `04dc9ca9-158f-7945-5933-564021086c79` ab:
 
-**Windows**
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log

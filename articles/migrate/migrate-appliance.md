@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c2c9ca3082aa9c2067a63f8d6304e8a229dac14a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810113"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663462"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -32,7 +32,7 @@ Virtueller Hyper-V-Computer | Hyper-V-VM-Bewertung mit dem Azure Migrate-Bewertu
 
 ## <a name="appliance-access"></a>Appliancezugriff
 
-Nachdem Sie die Appliance konfiguriert haben, können Sie über den TCP-Port 3389 mit Remote-Zugriff auf die Appliance-VM zugreifen. Sie können auch über Port 44368 mit der folgenden URL über Remote-Zugriff auf die Webverwaltungsanwendung für die Appliance zugreifen: ``` https://<appliance-ip-or-name>:44368 ```.
+Nachdem Sie die Appliance konfiguriert haben, können Sie über den TCP-Port 3389 mit Remote-Zugriff auf die Appliance-VM zugreifen. Sie können auch über Port 44368 mit der folgenden URL über Remote-Zugriff auf die Webverwaltungsanwendung für die Appliance zugreifen: `https://<appliance-ip-or-name>:44368`.
 
 ## <a name="appliance-license"></a>Appliancelizenz
 Die Appliance ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
@@ -152,7 +152,7 @@ VM-Version | Msvm_ProcessorSettingData | VirtualQuantity
 Arbeitsspeicher (Bytes) | Msvm_MemorySettingData | VirtualQuantity
 Maximaler Arbeitsspeicher, der von der VM genutzt werden kann | Msvm_MemorySettingData | Begrenzung
 Dynamischer Arbeitsspeicher aktiviert | Msvm_MemorySettingData | DynamicMemoryEnabled
-Name/Version/FQDN des Betriebssystems | Msvm_KvpExchangeComponent | GuestIntrinsciExchangeItems-Namensdaten
+Name/Version/FQDN des Betriebssystems | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems-Namensdaten
 Betriebszustand der VM | Msvm_ComputerSystem | EnabledState
 **Details pro Datenträger** | 
 Datenträgeridentifikator | Msvm_VirtualHardDiskSettingData | VirtualDiskId

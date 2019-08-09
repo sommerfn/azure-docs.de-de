@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: f3ab4861e874074e7de059c7c50064d53749748c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611295"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679283"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Herstellen einer Verbindung mit Ihrer Fortinet-Appliance
 
@@ -35,70 +35,38 @@ Sie können Azure Sentinel mit jeder Fortinet-Appliance verbinden, indem Sie die
 
 ## <a name="step-1-connect-your-fortinet-appliance-by-using-an-agent"></a>Schritt 1: Verbinden Ihrer Fortinet-Appliance mithilfe eines Agents
 
-Um Ihre Fortinet-Appliance mit Azure Sentinel zu verbinden und die Kommunikation zwischen der Appliance und Azure Sentinel zu ermöglichen, muss ein Agent auf einem dedizierten Computer (virtuell oder lokal) bereitgestellt werden. Sie können den Agent automatisch oder manuell bereitstellen. Die automatische Bereitstellung ist nur verfügbar, wenn es sich bei Ihrem dedizierten Computer um einen neuen virtuellen Computer handelt, den Sie in Azure erstellen.
+Um Ihre Fortinet-Appliance mit Azure Sentinel zu verbinden und die Kommunikation zwischen der Appliance und Azure Sentinel zu ermöglichen, muss ein Agent auf einem dedizierten Computer (virtuell oder lokal) bereitgestellt werden. 
 
 Sie können den Agent auch manuell auf einem vorhandenen virtuellen Azure-Computer, auf einem virtuellen Computer in einer anderen Cloud oder auf einem lokalen Computer bereitstellen.
 
+> [!NOTE]
+> Stellen Sie sicher, dass Sie die Sicherheit des Computers gemäß der Sicherheitsrichtlinie Ihrer Organisation konfigurieren. Beispielsweise können Sie das Netzwerk so konfigurieren, dass es der Sicherheitsrichtlinie für das Unternehmensnetzwerk entspricht, und die Ports und Protokolle im Daemon Ihren Anforderungen entsprechend ändern. 
+
 Netzwerkdiagramme zu beiden Optionen finden Sie unter [Herstellen einer Verbindung mit Datenquellen](connect-data-sources.md#agent-options).
 
-### <a name="deploy-the-agent-in-azure"></a>Bereitstellen des Agents in Azure
+### <a name="deploy-the-agent"></a>Bereitstellen des Agents
 
-1. Wählen Sie im Azure Sentinel-Portal **Data connectors** (Datenconnectors) und anschließend Ihren Appliancetyp aus.
+1. Klicken Sie im Azure Sentinel-Portal auf **Data connectors** (Datenconnectors), und wählen Sie **Fortinet** und dann **Open connector page** (Connectorseite öffnen) aus. 
 
-1. Gehen Sie unter **Linux Syslog agent configuration** (Linux-Syslog-Agent-Konfiguration) wie folgt vor:
-   - Wählen Sie **Automatic deployment** (Automatische Bereitstellung) aus, wenn Sie einen neuen Computer erstellen möchten, auf dem der Azure Sentinel-Agent vorinstalliert ist und der die gesamte erforderliche Konfiguration (siehe Beschreibung weiter oben) enthält. Wählen Sie **Automatic deployment** (Automatische Bereitstellung) > **Automatic agent deployment** (Automatische Bereitstellung des Agents) aus. Daraufhin wird die Kaufseite für einen dedizierten virtuellen Computer geöffnet, der automatisch mit Ihrem Arbeitsbereich verbunden ist. Der virtuelle Computer gehört zur Serie **Standard D2s v3 (2 vCPUs, 8 GB Arbeitsspeicher)** und hat eine öffentliche IP-Adresse.
-      1. Geben Sie auf der Seite **Custom deployment** (Benutzerdefinierte Bereitstellung) Ihre Details an, geben Sie einen Benutzernamen und ein Kennwort ein, und erwerben Sie den virtuellen Computer, sofern Sie mit den Nutzungsbedingungen einverstanden sind.
-      1. Konfigurieren Sie Ihre Appliance so, dass sie Protokolle mit den Einstellungen sendet, die auf der Verbindungsseite aufgeführt sind. Verwenden Sie für den Connector „Generic Common Event Format“ die folgenden Einstellungen:
-         - Protocol = UDP
-         - Port = 514
-         - Facility = Local-4
-         - Format = CEF
-   - Wählen Sie **Manual deployment** (Manuelle Bereitstellung) aus, wenn Sie einen vorhandenen virtuellen Computer als dedizierten Linux-Computer verwenden möchten, auf dem der Azure Sentinel-Agent installiert wird. 
-      1. Wählen Sie unter **Download and install the Syslog agent** (Syslog-Agent herunterladen und installieren) die Option **Azure Linux virtual machine** (Virtueller Azure-Linux-Computer) aus. 
-      1. Wählen Sie auf dem Bildschirm **Virtual machines** (Virtuelle Computer) den zu verwendenden Computer und anschließend **Connect** (Verbinden) aus.
-      1. Legen Sie auf dem Connectorbildschirm unter **Configure and forward Syslog** (Syslog konfigurieren und weiterleiten) den verwendeten Syslog-Daemon (**rsyslog.d** oder **syslog-ng**) fest. 
-      1. Kopieren Sie die folgenden Befehle, und führen Sie sie auf der Appliance aus:
-          - Wenn Sie „rsyslog.d“ ausgewählt haben, gehen Sie wie folgt vor:
-              
-            1. Weisen Sie den Syslog-Daemon an, in der Einrichtung „local_4“ zu lauschen und die Syslog-Nachrichten über den Port 25226 an den Azure Sentinel-Agent zu senden. Verwenden Sie den folgenden Befehl: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            1. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen am Port 25226 konfiguriert wird, und installieren Sie sie. Verwenden Sie den folgenden Befehl: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ({0} muss durch die GUID Ihres Arbeitsbereichs ersetzt werden.)
-            1. Starten Sie den Syslog-Daemon mithilfe des folgenden Befehls neu: `sudo service rsyslog restart`
-             
-          - Wenn Sie „syslog-ng“ ausgewählt haben, gehen Sie wie folgt vor:
+1. Wählen Sie unter **Download and install the Syslog agent** (Syslog-Agent herunterladen und installieren) Ihren Computertyp aus: entweder Azure oder lokal. 
+1. Wählen Sie auf dem daraufhin geöffneten Bildschirm **Virtuelle Computer** den Computer aus, den Sie verwenden möchten, und klicken Sie dann auf **Verbinden**.
+1. Wenn Sie **Download and install agent for Azure Linux virtual machines** (Agent für virtuelle Azure Linux-Computer herunterladen und installieren) auswählen, wählen Sie den Computer aus, und klicken Sie auf **Verbinden**. Wenn Sie **Download and install agent for non-Azure Linux virtual machines** (Agent für Azure-fremde virtuelle Linux-Computer herunterladen und installieren) im Fenster **Direkt-Agent** auswählen, führen Sie das Skript unter **Agent für Linux herunterladen und integrieren** aus.
+1. Legen Sie auf dem Connectorbildschirm unter **Configure and forward Syslog** (Syslog konfigurieren und weiterleiten) den verwendeten Syslog-Daemon (**rsyslog.d** oder **syslog-ng**) fest. 
+1. Kopieren Sie die folgenden Befehle, und führen Sie sie auf der Appliance aus:
+   - Wenn Sie „rsyslog.d“ ausgewählt haben, gehen Sie wie folgt vor:
+            
+     1. Weisen Sie den Syslog-Daemon an, in der Einrichtung „local_4“ zu lauschen und die Syslog-Nachrichten über den Port 25226 an den Azure Sentinel-Agent zu senden. Verwenden Sie den folgenden Befehl: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
+     1. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen am Port 25226 konfiguriert wird, und installieren Sie sie. Verwenden Sie den folgenden Befehl: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ({0} muss durch die GUID Ihres Arbeitsbereichs ersetzt werden.)
+     1. Starten Sie den Syslog-Daemon mithilfe des folgenden Befehls neu: `sudo service rsyslog restart`
+            
+   - Wenn Sie „syslog-ng“ ausgewählt haben, gehen Sie wie folgt vor:
 
-              1. Weisen Sie den Syslog-Daemon an, in der Einrichtung „local_4“ zu lauschen und die Syslog-Nachrichten über den Port 25226 an den Azure Sentinel-Agent zu senden. Verwenden Sie den folgenden Befehl: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-              1. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen am Port 25226 konfiguriert wird, und installieren Sie sie. Verwenden Sie den folgenden Befehl: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ({0} muss durch die GUID Ihres Arbeitsbereichs ersetzt werden.)
-              1. Starten Sie den Syslog-Daemon mithilfe des folgenden Befehls neu: `sudo service syslog-ng restart`
-      1. Starten Sie den Syslog-Agent mithilfe des folgenden Befehls neu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Vergewissern Sie sich, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+      1. Weisen Sie den Syslog-Daemon an, in der Einrichtung „local_4“ zu lauschen und die Syslog-Nachrichten über den Port 25226 an den Azure Sentinel-Agent zu senden. Verwenden Sie den folgenden Befehl: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
+      1. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen am Port 25226 konfiguriert wird, und installieren Sie sie. Verwenden Sie den folgenden Befehl: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ({0} muss durch die GUID Ihres Arbeitsbereichs ersetzt werden.)
+      1. Starten Sie den Syslog-Daemon mithilfe des folgenden Befehls neu: `sudo service syslog-ng restart`
+1. Starten Sie den Syslog-Agent mithilfe des folgenden Befehls neu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+1. Vergewissern Sie sich, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Bereitstellen des Agents auf einem lokalen Linux-Server
-
-Falls Sie nicht Azure verwenden, stellen Sie den auszuführenden Azure Sentinel-Agent manuell auf einem dedizierten Linux-Server bereit.
-
-1. Wählen Sie im Azure Sentinel-Portal **Data connectors** (Datenconnectors) und anschließend Ihren Appliancetyp aus.
-1. Wählen Sie unter **Linux Syslog agent configuration** (Linux-Syslog-Agent-Konfiguration) die Option **Manual deployment** (Manuelle Bereitstellung) aus, um einen dedizierten virtuellen Linux-Computer zu erstellen.
-
-    1. Wählen Sie unter **Download and install the Syslog agent** (Syslog-Agent herunterladen und installieren) die Option **Non-Azure Linux machine** (Nicht von Azure stammender virtueller Computer) aus.
-    1. Wählen Sie auf dem daraufhin geöffneten Bildschirm **Direct agent** (Direkt-Agent) die Option **Agent for Linux** (Agent für Linux) aus, um den Agent herunterzuladen, oder führen Sie den folgenden Befehl aus, um den Agent auf Ihren Linux-Computer herunterzuladen: `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-
-       1. Legen Sie auf dem Connector-Bildschirm unter **Configure and forward Syslog** (Syslog konfigurieren und weiterleiten) fest, welchen Syslog-Daemon (**rsyslog.d** oder **syslog-ng**) Sie verwenden.
-       1. Kopieren Sie die folgenden Befehle, und führen Sie sie auf der Appliance aus:
-
-          - Wenn Sie „rsyslog“ ausgewählt haben, gehen Sie wie folgt vor:
-
-            1. Weisen Sie den Syslog-Daemon an, in der Umgebung „local_4“ zu lauschen und die Syslog-Nachrichten über den Port 25226 an den Azure Sentinel-Agent zu senden. Verwenden Sie den folgenden Befehl: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            1. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen am Port 25226 konfiguriert wird, und installieren Sie sie. Verwenden Sie den folgenden Befehl: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ({0} muss durch die GUID Ihres Arbeitsbereichs ersetzt werden.)
-            1. Starten Sie den Syslog-Daemon mithilfe des folgenden Befehls neu: `sudo service rsyslog restart`
-
-          - Wenn Sie „syslog-ng“ ausgewählt haben, gehen Sie wie folgt vor:
-
-            1. Weisen Sie den Syslog-Daemon an, in der Einrichtung „local_4“ zu lauschen und die Syslog-Nachrichten über den Port 25226 an den Azure Sentinel-Agent zu senden. Verwenden Sie den folgenden Befehl: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-            1. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen am Port 25226 konfiguriert wird, und installieren Sie sie. Verwenden Sie den folgenden Befehl: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ({0} muss durch die GUID Ihres Arbeitsbereichs ersetzt werden.)
-            1. Starten Sie den Syslog-Daemon mithilfe des folgenden Befehls neu: `sudo service syslog-ng restart`
-
-      1. Starten Sie den Syslog-Agent mithilfe des folgenden Befehls neu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Vergewissern Sie sich, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
 ## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>Schritt 2: Weiterleiten von Fortinet-Protokollen an den Syslog-Agent
 
@@ -134,7 +102,7 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 2. Stellen Sie sicher, dass für Ihre Protokolle der richtige Port im Syslog-Agent verwendet wird. Führen Sie auf dem Syslog-Agent-Computer den folgenden Befehl aus: `tcpdump -A -ni any  port 514 -vv`. Durch diesen Befehl werden die Protokolle angezeigt, die vom Gerät an den Syslog-Computer gestreamt werden. Stellen Sie sicher, dass Protokolle von der Quellappliance über den richtigen Port und die richtige Einrichtung empfangen werden.
 
-3. Stellen Sie sicher, dass die Protokolle, die Sie senden [RFC 5424](https://tools.ietf.org/html/rfc542) erfüllen.
+3. Stellen Sie sicher, dass die Protokolle, die Sie senden [RFC 3164](https://tools.ietf.org/html/rfc3164) erfüllen.
 
 4. Vergewissern Sie sich auf dem Computer, auf dem der Syslog-Agent ausgeführt wird, mithilfe des Befehls `netstat -a -n:`, dass die Ports 514 und 25226 geöffnet sind und lauschen. Weitere Informationen zur Verwendung dieses Befehls finden Sie auf der [Linux-Manpage zu „netstat(8)“](https://linux.die.net/man/8/netstat). Wenn ordnungsgemäß gelauscht wird, wird Folgendes angezeigt:
 

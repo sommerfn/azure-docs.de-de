@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/02/2019
+ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: f6edbe19429b38d68aea1f1ecfe426c9b2d194d0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810081"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640852"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Unterstützungsmatrix für die Hyper-V-Bewertung und -Migration
 
@@ -24,21 +24,32 @@ Mit dem [Azure Migrate-Dienst](migrate-overview.md) können Sie Computer bewerte
 
 Die Tabelle fasst die unterstützten Szenarien für Hyper-V-VMs zusammen.
 
-**Bereitstellung** | **Details*** 
---- | --- 
+**Bereitstellung** | **Details***
+--- | ---
 **Bewertung lokaler Hyper-V-VMs** | [Richten Sie](tutorial-prepare-hyper-v.md) Ihre erste Bewertung ein.<br/><br/> [Führen](scale-hyper-v-assessment.md) Sie eine umfangreiche Bewertung aus.
 **Migrieren von virtuellen Hyper-V-Computern zu Azure** | [Testen Sie](tutorial-migrate-hyper-v.md) die Migration zu Azure.
 
-    
+
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate-Projekte
 
 **Unterstützung** | **Details**
 --- | ---
 Azure-Berechtigungen | Sie benötigen Berechtigungen für Mitwirkende oder Eigentümer im Abonnement, um ein Azure Migrate-Projekt zu erstellen.
-Virtuelle Hyper-V-Computer | Bewerten Sie bis zu 10.000 Hyper-V-VMs in einem einzigen Projekt.
+Virtuelle Hyper-V-Computer | Bewerten Sie bis zu 10.000 Hyper-V-VMs in einem einzigen Projekt. Ein Azure-Abonnement kann mehrere Projekte enthalten. Ein Projekt kann im Rahmen der Bewertungseinschränkungen sowohl VMware-VMs als auch Hyper-V-VMs umfassen.
+Gebiet | Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen erstellen. Obwohl Sie Projekte nur in spezifischen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
 
-Ein Projekt kann im Rahmen der Bewertungseinschränkungen sowohl VMware-VMs als auch Hyper-V-VMs umfassen.
+  **Geografie** | **Speicherort der Metadaten**
+  --- | ---
+  Azure Government | US Government, Virginia
+  Asien-Pazifik | „Asien, Südosten“ und „Asien, Osten“
+  Europa | „Europa, Süden“ oder „Europa, Westen“
+  Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
+  USA | „USA, Mitte“ oder „USA, Westen 2“
+
+
+ > [!NOTE]
+ > Der Support für Azure Government ist derzeit nur für die [ältere Version](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) von Azure Migrate verfügbar.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Bewertung von Anforderungen für Hyper-V-Hosts
@@ -59,8 +70,6 @@ Ein Projekt kann im Rahmen der Bewertungseinschränkungen sowohl VMware-VMs als 
 | **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme, die von Azure unterstützt werden. |
 | **Berechtigungen**           | Sie benötigen Administratorrechte für jede Hyper-V-VM, die Sie bewerten möchten. |
 | **Integrationsdienste**       | [Hyper-V Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) müssen auf den von Ihnen bewerteten VMs laufen, um Betriebssysteminformationen zu erfassen. |
-| **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Bei den folgenden Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 6.5+, 7.0+<br/> – CentOS 6.5+, 7.0+</br> – SUSE Linux Enterprise Server 12 SP1+<br/> – Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7,8<br/><br/> Bei anderen Betriebssystemen müssen Sie vor der Migration manuell Anpassungen vornehmen. Die entsprechenden Artikel enthalten eine Anleitung, wie dies zu tun ist. |
-| **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition (/) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und sich nicht auf andere Datenträger erstrecken. |
 | **UEFI-Start**                  | Die Migration von VMs mit UEFI-Start wird nicht unterstützt. |
 | **Verschlüsselte Datenträger/Volumes**    | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt. |
 | **RDM-Datenträger/Pass-Through-Datenträger**      | Wenn VMs über RDM-Datenträger oder Pass-Through-Datenträger verfügen, werden diese nicht in Azure repliziert. |
@@ -75,28 +84,29 @@ Für Bewertung führt Azure Migrate eine einfache Appliance aus, die virtuelle H
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
 | **Azure Migrate-Projekt**  |  Ein Gerät kann einem einzelnen Projekt zugeordnet werden.<br/> Sie können bis zu 5000 Hyper-V VMs mit einer einzigen Appliance ermitteln.
-| **Hyper-V-Einschränkungen**    |  Sie stellen die Appliance als Hyper-V-VM bereit.<br/> Die bereitgestellte Appliance-VM ist Hyper-V-VM Version 5.0.<br/> Der VM-Host muss Windows Server 2012 R2 oder höher ausführen.<br/> Er benötigt genügend Platz, um 16 GB RAM, 4 virtuelle Prozessoren und 1 externen Schalter für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
-| **Hyper-V-Appliance**      |  Die Appliance ist als Hyper-V-VM eingerichtet.<br/> Die zum Download bereitgestellte VHD ist Hyper-V-VM Version 5.0.
-| **Host**                   | Der VM-Host, der die Appliance-VM ausführt, muss Windows Server 2012 R2 oder höher ausführen.<br/> Er benötigt genügend Platz, um 16 GB RAM, 4 virtuelle Prozessoren und einen externen Schalter für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang. |
-| **Migrationsunterstützung**      | Um die Replikation von Computern zu starten, muss der Migrations-Gatewaydienst auf der Appliance 1.18.7141.12919 oder höher sein. Melden Sie sich bei der Appliance-Webanwendung an, um die Version zu überprüfen. |
+| **Hyper-V**    |  Sie stellen die Appliance als Hyper-V-VM bereit.<br/> Die bereitgestellte Appliance-VM ist Hyper-V-VM Version 5.0.<br/> Der VM-Host muss Windows Server 2012 R2 oder höher ausführen.<br/> Er benötigt genügend Platz, um 16 GB RAM, 4 virtuelle Prozessoren und 1 externen Schalter für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
+
 
 ## <a name="assessment-appliance-url-access"></a>URL-Zugriff auf die Bewertungs-Appliance
 
 Zur Bewertung von VMs muss das Azure Migrate-Gerät mit dem Internet verbunden sein.
 
 - Wenn Sie das Gerät bereitstellen, führt Azure Migrate eine Verbindungsüberwachung zu den in der folgenden Tabelle zusammengefassten URLs durch.
-- Sollten Sie einen URL-basierten Firewallproxy verwenden, lassen Sie den Zugriff auf diese URLs in der Tabelle zu und stellen Sie sicher, dass der Proxy alle CNAME-Einträge auflöst, die er beim Durchsuchen der URLs empfängt.
-- Wenn Sie einen abfangenden Proxy haben, müssen Sie möglicherweise das Serverzertifikat vom Proxyserver in die Appliance importieren. 
+- Wenn Sie einen URL-basierten Proxy verwenden, lassen Sie den Zugriff auf die URLs in der Tabelle zu, und stellen Sie sicher, dass der Proxy alle CNAME-Einträge auflöst, die beim Durchsuchen der URLs empfangen werden.
+- Wenn Sie einen abfangenden Proxy haben, müssen Sie möglicherweise das Serverzertifikat vom Proxyserver in die Appliance importieren.
 
-    
+
 **URL** | **Details**  
---- | --- 
+--- | ---
 *.portal.azure.com | Navigation zum Azure-Portal
 *.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
 *.microsoftonline.com | Erstellung von Azure Active Directory-Anwendungen für die Kommunikation Appliance-to-Service.
 management.azure.com | Erstellung von Azure Active Directory-Anwendungen für die Kommunikation Appliance-to-Service.
-dc.services.visualstudio.com | Protokollierung und Überwachung 
+dc.services.visualstudio.com | Protokollierung und Überwachung
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault, während der Kommunikation zwischen Appliance und Dienst.
+aka.ms/* | Zulassen des Zugriffs auf aka-Links
+https://download.microsoft.com/download/* | Lässt Downloads über die Microsoft-Downloadwebsite zu.
+
 
 
 ## <a name="assessment-port-requirements"></a>Portanforderungen für die Bewertung
@@ -104,8 +114,8 @@ dc.services.visualstudio.com | Protokollierung und Überwachung
 Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 
 **Device** | **Connection**
---- | --- 
-**Appliance** | Eingehende Verbindungen auf dem TCP-Port 3389, damit Remotedesktopverbindungen eine Verbindung mit der Appliance aufbauen können.<br/> Eingehende Verbindungen auf Port 44368, um über Remotezugriff über die URL: https://<appliance-ip-or-name>:44368 auf die Appliance-Verwaltungsanwendung zugreifen zu können.<br/> Ausgehende Verbindungen auf Port 443, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden.
+--- | ---
+**Appliance** | Eingehende Verbindungen auf dem TCP-Port 3389, damit Remotedesktopverbindungen eine Verbindung mit der Appliance aufbauen können.<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen auf Port 443, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden.
 **Hyper-V-Host/Cluster** | Eingehende Verbindungen auf den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS), um Konfigurations- und Leistungsmetadaten der Hyper-V-VMs mithilfe einer CIM-Sitzung (Common Information Model) abzurufen.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migrationsanforderungen für Hyper-V-Hosts
@@ -123,13 +133,21 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 | **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme, die von Azure unterstützt werden. |
 | **Berechtigungen**           | Sie benötigen Administratorrechte für jede Hyper-V-VM, die Sie bewerten möchten. |
 | **Integrationsdienste**       | [Hyper-V Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) müssen auf den von Ihnen bewerteten VMs laufen, um Betriebssysteminformationen zu erfassen. |
-| **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Bei den folgenden Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 6.5+, 7.0+<br/> – CentOS 6.5+, 7.0+</br> – SUSE Linux Enterprise Server 12 SP1+<br/> – Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7,8<br/><br/> Bei anderen Betriebssystemen müssen Sie vor der Migration manuell Anpassungen vornehmen. Die entsprechenden Artikel enthalten eine Anleitung, wie dies zu tun ist. |
+| **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Bei den folgenden Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> – Red Hat Enterprise Linux 6.5+, 7.0+<br/> – CentOS 6.5+, 7.0+</br> – SUSE Linux Enterprise Server 12 SP1+<br/> – Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8<br/><br/> Bei anderen Betriebssystemen müssen Sie vor der Migration manuell Anpassungen vornehmen. Die entsprechenden Artikel enthalten eine Anleitung, wie dies zu tun ist. |
 | **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition (/) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und sich nicht auf andere Datenträger erstrecken. |
-| **UEFI-Start**                  | Die Migration von VMs mit UEFI-Start wird nicht unterstützt. |
-| **Verschlüsselte Datenträger/Volumes**    | Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt. |
-| **RDM-Datenträger/Pass-Through-Datenträger**      | Wenn VMs über RDM-Datenträger oder Pass-Through-Datenträger verfügen, werden diese nicht in Azure repliziert. |
+| **UEFI-Start**                  | Die Migration von VMs mit UEFI-Start wird nicht unterstützt.  |
+| **Datenträgergröße**                  | 2 TB für den Betriebssystemdatenträger, 4 TB für Datenträger
+| **Anzahl der Datenträger** | Maximal 16 Datenträger pro virtuellem Computer
+| **Verschlüsselte Datenträger/Volumes**    | Nicht unterstützt für die Migration. |
+| **RDM-Datenträger/Pass-Through-Datenträger**      | Nicht unterstützt für die Migration. |
+| **Freigegebener Datenträger** | Virtuelle Computer mit freigegebenen Datenträgern werden für die Migration nicht unterstützt.
 | **NFS**                        | NFS-Volumes, die als Volumes auf den VMs bereitgestellt sind, werden nicht repliziert. |
+| **ISCSI**                      | Virtuelle Computer mit iSCSI-Zielen werden für die Migration nicht unterstützt.
 | **Zieldatenträger**                | Sie können virtuelle Azure-Computer nur mit verwalteten Datenträgern migrieren. |
+| **IPv6** | Nicht unterstützt.
+| **NIC-Teaming** | Nicht unterstützt.
+| **Azure Site Recovery** | Wenn der virtuelle Computer für die Replikation mit Azure Site Recovery aktiviert ist, können Sie keine Replikation mit der Azure Migrate-Servermigration durchführen.
+
 
 
 
@@ -152,22 +170,12 @@ time.windows.com | Überprüft die Zeitsynchronisierung zwischen Systemzeit und 
 Die folgende Tabelle fasst die Portanforderungen an Hyper-V-Hosts und VMs für die VM-Migration zusammen.
 
 **Device** | **Connection**
---- | --- 
+--- | ---
 Hyper-V-Hosts/VMs | Ausgehende Verbindungen auf HTTPS-Port 443 zum Senden von VM-Replikationsdaten an Azure Migrate.
 
-  
-## <a name="migration-vm-disk-support"></a>VM-Datenträgersupport für die Migration 
 
-**Unterstützung** | **Details**
---- | ---
-Migrierte Datenträger | VMs können nur auf verwaltete Datenträger (HHD Standard, SSD Premium) in Azure migriert werden.
-   
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Vorbereitung auf die Hyper-V VM-Bewertung](tutorial-prepare-hyper-v.md) für die Migration.
-
-
-
-
- 

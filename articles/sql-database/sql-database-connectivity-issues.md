@@ -153,7 +153,7 @@ Es gibt eine Besonderheit. Wenn ein vorübergehender Fehler auftritt, während I
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Sollte „ConnectRetryCount“ mit der Wiederholungslogik der Anwendung kombiniert werden?
 
-Angenommen, Ihre Anwendung verfügt über eine zuverlässige benutzerdefinierte Wiederholungslogik. Sie könnte den Verbindungsversuch viermal wiederholen. Wenn Sie **ConnectRetryInterval** und **ConnectRetryCount** = 3 zur Verbindungszeichenfolge hinzufügen, erhöhen Sie die Anzahl der Wiederholungsversuche auf 4 x 3 = 12 Wiederholungen. Möglicherweise ist eine so hohe Anzahl von Wiederholungsversuchen nicht erwünscht.
+Angenommen, Ihre Anwendung verfügt über eine zuverlässige benutzerdefinierte Wiederholungslogik. Sie könnte den Verbindungsversuch viermal wiederholen. Wenn Sie **ConnectRetryInterval** und **ConnectRetryCount** = 3 zur Verbindungszeichenfolge hinzufügen, erhöhen Sie die Anzahl der Wiederholungsversuche auf 4 * 3 = 12 Wiederholungen. Möglicherweise ist eine so hohe Anzahl von Wiederholungsversuchen nicht erwünscht.
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
@@ -310,7 +310,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Zurückgegebene Zeilen aus „sys.fn_xe_telemetry_blob_target_read_file“
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Zurückgegebene Zeilen aus „sys.fn_xe_telemetry_blob_target_read_file“
 
 Das folgende Beispiel zeigt, wie eine zurückgegebene Zeile aussehen könnte. Die gezeigten Nullwerte sind in anderen Zeilen häufig keine Nullwerte.
 

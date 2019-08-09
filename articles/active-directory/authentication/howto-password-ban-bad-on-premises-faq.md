@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702892"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666359"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
+
+In diesem Abschnitt finden Sie Antworten auf häufige Fragen zum Azure AD-Kennwortschutz.
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 
@@ -47,6 +49,10 @@ Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob ei
 **F: Warum werden doppelte Kennwortablehnungsereignisse protokolliert bei dem Versuch, mithilfe des Snap-Ins zur Verwaltung von Active Directory-Benutzern und -Computern ein schwaches Kennwort festzulegen?**
 
 Das Snap-In zur Verwaltung von Active Directory-Benutzern und -Computern versucht zunächst, das neue Kennwort mit dem Kerberos-Protokoll festzulegen. Bei einem Fehler versucht das Snap-In erneut, das Kennwort mit einem älteren Protokoll (SAM RPC) festzulegen (die verwendeten spezifischen Protokolle sind nicht wichtig). Wenn das neue Kennwort vom Azure AD-Kennwortschutz als schwach eingestuft wird, führt dies dazu, dass zwei Sätze von Kennwortablehnungsereignissen protokolliert werden.
+
+**F: Warum werden Ereignisse zu Kennwortverletzungen vom Azure AD-Kennwortschutz mit einem leeren Benutzernamen protokolliert?**
+
+Active Directory bietet die Möglichkeit zum Testen von Kennwörtern, um zu überprüfen, ob die aktuellen Kennwortkomplexitätsanforderungen der Domäne erfüllt sind. Ein solcher Test kann beispielsweise mit der API [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) durchgeführt werden. Wenn ein Kennwort auf diese Weise überprüft wird, umfasst der Test auch eine Validierung durch Produkte, die auf Kennwortfilter-DLLs basieren – z.B. der Azure AD-Kennwortschutz –, aber die an eine solche Kennwortfilter-DLL übergebenen Benutzernamen sind leer. In diesem Szenario wird das Kennwort weiterhin mithilfe der aktuell geltenden Kennwortrichtlinie durch den Azure AD-Kennwortschutz validiert, und das Ergebnis wird in einer Ereignisprotokollmeldung erfasst, aber die Ereignisprotokollmeldung enthält leere Benutzernamensfelder.
 
 **F: Wird die Parallelinstallation des Azure AD-Kennwortschutzes mit anderen kennwortfilterbasierten Produkten unterstützt?**
 

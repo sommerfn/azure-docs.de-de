@@ -1,6 +1,6 @@
 ---
-title: Abonnementschlüssel
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Abonnementschlüssel – LUIS
+titleSuffix: Azure Cognitive Services
 description: 'LUIS verwendet zwei Schlüssel: den kostenlosen Erstellungsschlüssel zum Erstellen Ihres Modells und den berechneten Endpunktschlüssel für das Abfragen des Vorhersageendpunkts mit Benutzeräußerungen.'
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: feb4622be14b51cfa72c33cda6c2477f799758c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69b4a92470b33ab6615eead16be044a88436d64e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473589"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619765"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS
 LUIS verwendet zwei Schlüssel: [Erstellungs-](#programmatic-key) und [Endpunktschlüssel](#endpoint-key). Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den [Endpunktschlüssel erstellen](luis-how-to-azure-subscription.md), ihn Ihrer LUIS-App [zuweisen](luis-how-to-azure-subscription.md) und ihn [für Endpunktabfragen verwenden](#use-endpoint-key-in-query). 
@@ -29,6 +29,7 @@ LUIS verwendet zwei Schlüssel: [Erstellungs-](#programmatic-key) und [Endpunkts
 Es ist wichtig, LUIS-Apps in den [Regionen](luis-reference-regions.md#publishing-regions) zu erstellen, in denen sie auch veröffentlicht und abgefragt werden sollen.
 
 <a name="programmatic-key" ></a>
+
 ## <a name="authoring-key"></a>Erstellungsschlüssel
 
 Ein Erstellungsschlüssel wird auch als Startschlüssel bezeichnet und automatisch erstellt, wenn Sie ein LUIS-Konto erstellen. Er ist kostenlos. Sie verfügen über einen Erstellungsschlüssel für alle Ihre LUIS-Apps, die Sie in einer [Region](luis-reference-regions.md) erstellen. Der Erstellungsschlüssel wird zum Erstellen Ihrer LUIS-App oder zum Testen von Endpunktabfragen bereitgestellt. 

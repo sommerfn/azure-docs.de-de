@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: laurenhughes
 ms.author: lahugh
-ms.date: 03/26/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 84b2ca30f1ccd49e18e2f9d42133f8672d3f8ad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 133742bf45bddf866d2dfcae97a331ee2a0f84fc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776168"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639381"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Vorinstallierte Anwendungen in Rendering-VM-Images
 
@@ -23,6 +23,8 @@ Für vorinstallierte Renderinganwendungen ist ggf. Lizenzierung mit nutzungsbasi
 Einige Anwendungen unterstützen nur Windows, die meisten werden jedoch unter Windows und Linux unterstützt.
 
 ## <a name="applications-on-centos-7-rendering-images"></a>Anwendungen auf CentOS 7-Renderingimages
+
+Die folgende Liste gilt für Renderingimages von CentOS 7.6, Version 1.1.5.
 
 * Autodesk Maya I/O 2017 Update 5 (Cut 201708032230)
 * Autodesk Maya I/O 2018 Update 2 (Cut 201711281015)

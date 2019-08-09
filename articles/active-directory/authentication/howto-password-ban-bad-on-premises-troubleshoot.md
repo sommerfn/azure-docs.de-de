@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414765"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666234"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
 
@@ -30,7 +30,7 @@ Das Problem ist in der Regel darauf zurückzuführen, dass ein Proxy noch nicht 
 
 ## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>Der DC-Agent kann nicht mit einem Proxy kommunizieren.
 
-Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“ im Administratorereignisprotokoll des DC-Agents. Dies kann mehrere mögliche Ursachen haben:
+Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“ im Administratorereignisprotokoll des DC-Agents. Dieses Problem kann mehrere mögliche Ursachen haben:
 
 1. Der DC-Agent befindet sich in einem isolierten Teil des Netzwerks, der keine Netzwerkkonnektivität mit dem bzw. den registrierten Proxy(s) zulässt. Dieses Problem ist harmlos, solange andere DC-Agents mit dem bzw. den Proxy(s) kommunizieren können, um Kennwortrichtlinien aus Azure herunterzuladen, die der isolierte Domänencontroller (DC) dann per Replikation der Richtliniendateien in der SYSVOL-Freigabe erhält.
 
@@ -42,17 +42,17 @@ Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“
 
    Das Installationsprogramm für den Proxy des Azure AD-Kennwortschutzes erstellt automatisch eine eingehende Windows-Firewallregel, die den Zugriff auf alle eingehenden Ports zulässt, an denen der Proxydienst des Azure AD-Kennwortschutzes lauscht. Wird diese Regel später gelöscht oder deaktiviert, können DC-Agents nicht mit dem Proxydienst kommunizieren. Wenn die integrierte Windows-Firewall deaktiviert wurde, um stattdessen ein anderes Firewallprodukt zu verwenden, müssen Sie diese andere Firewall zum Zulassen des Zugriffs auf alle eingehenden Ports konfigurieren, an denen der Proxydienst des Azure AD-Kennwortschutzes lauscht. Diese Konfiguration kann präzisiert werden, wenn der Proxydienst zum Lauschen an einem bestimmten statischen RPC-Port konfiguriert wurde (mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`).
 
-## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>Der Proxydienst kann Aufrufe von DC-Agents in der Domäne empfangen, aber nicht mit Azure kommunizieren.
+## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Der Proxydienst kann nicht mit Azure kommunizieren
 
 1. Stellen Sie sicher, dass der Proxycomputer über Konnektivität mit den Endpunkten verfügt, die in den [Bereitstellungsanforderungen](howto-password-ban-bad-on-premises-deploy.md) aufgeführt sind.
 
 1. Stellen Sie sicher, dass die Gesamtstruktur und alle Proxyserver für denselben Azure-Mandanten registriert sind.
 
-   Sie können dies überprüfen, indem Sie die PowerShell-Cmdlets `Get-AzureADPasswordProtectionProxy` und `Get-AzureADPasswordProtectionDCAgent` ausführen und dann die `AzureTenant`-Eigenschaft für jedes zurückgegebene Element vergleichen. Zur ordnungsgemäßen Ausführung müssen diese innerhalb einer Gesamtstruktur auf allen DC-Agents und Proxyservern übereinstimmen.
+   Sie können diese Anforderung überprüfen, indem Sie die PowerShell-Cmdlets `Get-AzureADPasswordProtectionProxy` und `Get-AzureADPasswordProtectionDCAgent` ausführen und dann die `AzureTenant`-Eigenschaft für jedes zurückgegebene Element vergleichen. Zur ordnungsgemäßen Ausführung muss der gemeldete Mandantenname für alle DC-Agents und Proxyserver identisch sein.
 
-   Wenn ein Registrierungskonflikt bei einem Azure-Mandanten vorliegt, kann dieser durch Ausführen des PowerShell-Cmdlets `Register-AzureADPasswordProtectionProxy` und/oder `Register-AzureADPasswordProtectionForest` (je nach Bedarf) repariert werden, wobei sichergestellt wird, dass für alle Registrierungen die Anmeldeinformationen desselben Azure-Mandanten verwendet werden.
+   Wenn ein Registrierungskonflikt bei einem Azure-Mandanten vorliegt, kann dieser durch Ausführen des PowerShell-Cmdlets `Register-AzureADPasswordProtectionProxy` und/oder `Register-AzureADPasswordProtectionForest` (je nach Bedarf) behoben werden, indem sichergestellt wird, dass für alle Registrierungen die Anmeldeinformationen desselben Azure-Mandanten verwendet werden.
 
-## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>Der DC-Agent kann Kennwortrichtliniendateien und andere Zustandsdateien nicht verschlüsseln oder entschlüsseln.
+## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>Der DC-Agent kann Kennwortrichtliniendateien nicht ver- oder entschlüsseln
 
 Dieses Problem kann sich durch unterschiedlichste Symptome äußern, in der Regel hat es aber immer die gleiche Grundursache.
 
@@ -62,7 +62,7 @@ Der Startmodus des Schlüsselverteilungsdiensts ist standardmäßig auf „Manue
 
 Wenn der Startmodus des Schlüsselverteilungsdiensts auf „Deaktiviert“ festgelegt wurde, muss die Konfiguration geändert werden, damit der Azure AD-Kennwortschutz einwandfrei funktioniert.
 
-Für dieses Problem kann ein einfacher Test durchgeführt werden: Starten Sie den Schlüsselverteilungsdienst manuell über die MMC-Konsole der Dienstverwaltung oder mit einem anderen Tool für die Dienstverwaltung (führen Sie z. B. „net start kdssvc“ in einer Eingabeaufforderungskonsole aus). Der Schlüsselverteilungsdienst sollte erfolgreich gestartet und weiter ausgeführt werden.
+Für dieses Problem kann ein einfacher Test durchgeführt werden: Starten Sie den Schlüsselverteilungsdienst manuell über die MMC-Konsole der Dienstverwaltung oder mit einem anderen Verwaltungstool (führen Sie z.B. „net start kdssvc“ in einer Eingabeaufforderungskonsole aus). Der Schlüsselverteilungsdienst sollte erfolgreich gestartet und weiter ausgeführt werden.
 
 Wenn der Schlüsselverteilungsdienst nicht gestartet werden kann, liegt dies in den meisten Fällen daran, dass sich das Active Directory-Domänencontrollerobjekt außerhalb der Standardorganisationseinheit der Domänencontroller befindet. Diese Konfiguration wird nicht vom Schlüsselverteilungsdienst unterstützt und ist keine Einschränkung, die der Azure AD-Kennwortschutz erfordert. Sie können das Problem beheben, indem Sie das Domänencontrollerobjekt an einen Speicherort unter der Standardorganisationseinheit der Domänencontroller verschieben.
 
@@ -84,7 +84,40 @@ Dieses Problem kann mehrere Ursachen haben.
 
 1. Möglicherweise funktioniert der Kennwortüberprüfungsalgorithmus wie erwartet. Siehe [Auswerten von Kennwörtern](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="directory-services-repair-mode"></a>Reparaturmodus für Verzeichnisdienste
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Fehler beim Festlegen eines unsicheren DSRM-Kennworts über „Ntdsutil.exe“
+
+Active Directory führt für ein neues DSRM-Kennwort (Directory Services Repair Mode, Reparaturmodus für Verzeichnisdienste) stets eine Überprüfung durch, um sicherzustellen, dass es die Kennwortkomplexitätsanforderungen der Domäne erfüllt. Bei dieser Überprüfung werden auch Kennwortfilter-DLLs wie z.B. der Azure AD-Kennwortschutz einbezogen. Wenn das neue DSRM-Kennwort abgelehnt wird, wird die folgende Fehlermeldung angezeigt:
+
+```text
+C:\>ntdsutil.exe
+ntdsutil: set dsrm password
+Reset DSRM Administrator Password: reset password on server null
+Please type password for DS Restore Mode Administrator Account: ********
+Please confirm new password: ********
+Setting password failed.
+        WIN32 Error Code: 0xa91
+        Error Message: Password doesn't meet the requirements of the filter dll's
+```
+
+Für die vom Azure AD-Kennwortschutz erfassten Ereignisprotokolle zur Kennwortüberprüfung für ein Active Directory-DSRM-Kennwort wird erwartet, dass die Ereignisprotokollmeldungen keinen Benutzernamen enthalten. Dies liegt daran, dass das DSRM-Konto ein lokales Konto ist, das nicht der eigentlichen Active Directory-Domäne angehört.  
+
+## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Fehler beim Höherstufen des Domänencontrollerreplikats aufgrund eines unsicheren DSRM-Kennworts
+
+Beim Höherstufen des Domänencontrollers wird das neue DSRM-Kennwort zur Überprüfung an einen vorhandenen Domänencontroller in der Domäne übermittelt. Wenn das neue DSRM-Kennwort abgelehnt wird, wird die folgende Fehlermeldung angezeigt:
+
+```powershell
+Install-ADDSDomainController : Verification of prerequisites for Domain Controller promotion failed. The Directory Services Restore Mode password does not meet a requirement of the password filter(s). Supply a suitable password.
+```
+
+Ebenso wie beim Problem oben enthält das ausgegebene Ereignis der Überprüfung durch den Azure AD-Kennwortschutz für dieses Szenario leere Benutzernamen.
+
+## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>Fehler beim Herabstufen des Domänencontrollers aufgrund eines unsicheren lokalen Administratorkennworts
+
+Dies wird unterstützt, um einen Domänencontroller herabzustufen, der noch die DC-Agent-Software ausführt. Administratoren sollten jedoch bedenken, dass die DC-Agent-Software während der Herabstufung weiterhin die Durchsetzung der aktuellen Kennwortrichtlinie erzwingt. Das neue lokale Kennwort des Administratorkontos (angegeben als Teil des Herabstufungsvorgangs) wird wie jedes andere Kennwort überprüft. Microsoft empfiehlt im Rahmen der Herabstufung eines Domänencontrollers die Auswahl sicherer Kennwörter für lokale Administratorkonten.
+
+Wenn die Herabstufung erfolgreich abgeschlossen, der Domänencontroller neu gestartet wurde und wieder als normaler Mitgliedsserver ausgeführt wird, kehrt die DC-Agent-Software zur Ausführung im passiven Modus zurück. Sie kann dann zu einem beliebigen Zeitpunkt deinstalliert werden.
+
+## <a name="booting-into-directory-services-repair-mode"></a>Start im Reparaturmodus für Verzeichnisdienste
 
 Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet wird, erkennt dies der DC-Agent-Dienst, und er veranlasst unabhängig von der derzeit aktiven Richtlinienkonfiguration die Deaktivierung aller Kennwortüberprüfungs- oder Erzwingungsaktivitäten.
 
@@ -93,12 +126,6 @@ Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet 
 Wenn der DC-Agent-Dienst Probleme verursacht, kann er sofort heruntergefahren werden. Die DC-Agent-Kennwortfilter-DLL versucht weiterhin, den nicht ausgeführten Dienst aufzurufen, und protokolliert die Warnungsereignisse (10012, 10013), aber alle eingehenden Kennwörter werden währenddessen akzeptiert. Der DC-Agent-Dienst kann dann auch bei Bedarf über den Dienststeuerungs-Manager von Windows mit dem Starttyp „Disabled“ konfiguriert werden.
 
 Als weitere Problembehandlungsmaßnahme könnten Sie im Azure AD-Kennwortschutzportal den Aktivierungmodus auf „Nein“ festlegen. Nachdem die aktualisierte Richtlinie heruntergeladen wurde, wechseln alle DC-Agent-Dienste in einen Ruhemodus, in dem alle Kennwörter unverändert akzeptiert werden. Weitere Informationen finden Sie unter [Erzwingungsmodus](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
-
-## <a name="domain-controller-demotion"></a>Herabstufung des Domänencontrollers
-
-Dies wird unterstützt, um einen Domänencontroller herabzustufen, der noch die DC-Agent-Software ausführt. Administratoren sollten jedoch bedenken, dass die DC-Agent-Software während der Herabstufung weiterhin die Durchsetzung der aktuellen Kennwortrichtlinie erzwingt. Das neue lokale Kennwort des Administratorkontos (angegeben als Teil des Herabstufungsvorgangs) wird wie jedes andere Kennwort überprüft. Microsoft empfiehlt, als Teil eines DC-Herabstufungsvorgangs sichere Kennwörter für lokale Administratorkonten auszuwählen. Jedoch kann die Überprüfung des neuen lokalen Kennworts des Administratorkontos durch die DC-Agent-Software bereits vorhandene Herabstufungsvorgänge stören.
-
-Wenn die Herabstufung erfolgreich abgeschlossen, der Domänencontroller neu gestartet wurde und wieder als normaler Mitgliedsserver ausgeführt wird, kehrt die DC-Agent-Software zur Ausführung im passiven Modus zurück. Sie kann dann zu einem beliebigen Zeitpunkt deinstalliert werden.
 
 ## <a name="removal"></a>Entfernen
 

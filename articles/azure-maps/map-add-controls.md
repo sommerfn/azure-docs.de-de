@@ -3,17 +3,17 @@ title: Hinzufügen von Kartensteuerelementen in Azure Maps | Microsoft-Dokumenta
 description: Hinzufügen von Steuerelementen für Zoom, Neigung und Drehen sowie einer Stilauswahl in Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a504b8df199a3a461d5eb4e5b7238462b4c438f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108718"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638772"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Hinzufügen von Kartensteuerelementen zu Azure Maps
 
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie Sie einer Karte Kartensteuerelemente hinzuf�
 <iframe height='500' scrolling='no' title='Hinzufügen eines Zoomsteuerelements' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>Adding a zoom control</a> (Hinzufügen eines Zoomsteuerelements) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bei <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
+Mit dem ersten Codeblock wird ein Kartenobjekt unter Verwendung der anonymen Authentifizierung erstellt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
 Das Zoomsteuerelement fügt die Möglichkeit hinzu, die Karte zu vergrößern und zu verkleinern. Der zweite Codeblock erstellt ein Zoomsteuerelement-Objekt mit dem Atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Das Zoomsteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
 
@@ -33,7 +33,7 @@ Das Zoomsteuerelement fügt die Möglichkeit hinzu, die Karte zu vergrößern un
 <iframe height='500' scrolling='no' title='Hinzufügen eines Neigungssteuerelements' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Adding a pitch control</a> (Hinzufügen eines Neigungssteuerelements) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bei <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
+Mit dem ersten Codeblock wird ein Kartenobjekt unter Verwendung der anonymen Authentifizierung erstellt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
 Das Neigungssteuerelement fügt die Möglichkeit hinzu, die Neigung der Karte zu ändern. Der zweite Codeblock erstellt ein Neigungssteuerelement-Objekt mit dem Atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Das Neigungssteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
 
@@ -42,7 +42,7 @@ Das Neigungssteuerelement fügt die Möglichkeit hinzu, die Neigung der Karte zu
 <iframe height='500' scrolling='no' title='Hinzufügen eines Drehsteuerelements' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Adding a rotate control</a> (Hinzufügen eines Drehsteuerelements) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bei <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
+Mit dem ersten Codeblock wird ein Kartenobjekt unter Verwendung der anonymen Authentifizierung erstellt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
 Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol). Außerdem fügt er der Karte das Kompasssteuerelement mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Das Kompasssteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
 
@@ -51,7 +51,7 @@ Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [Com
 <iframe height='500' scrolling='no' title='Eine Karte mit allen Steuerelementen' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map with all the controls</a> (Eine Karte mit allen Steuerelementen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bei <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
+Mit dem ersten Codeblock wird ein Kartenobjekt unter Verwendung der anonymen Authentifizierung erstellt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
 Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu.
 

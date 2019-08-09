@@ -1,18 +1,18 @@
 ---
 title: Informationen zur Sicherung von Azure-VMs
 description: Erfahren Sie mehr über die Sicherung von Azure-VMs und einige bewährte Methoden.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465216"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639731"
 ---
 # <a name="about-azure-vm-backup"></a>Informationen zur Sicherung von Azure-VMs
 
@@ -111,8 +111,8 @@ Diese gängigen Szenarien können die gesamte Sicherungsdauer beeinflussen:
 Berücksichtigen Sie beim Konfigurieren von VM-Sicherungen die folgenden bewährten Methoden:
 
 - Ändern Sie die in einer Richtlinie festgelegten Standardzeiten des Zeitplans. Wenn die Standardzeit in der Richtlinie beispielsweise auf 0:00 Uhr festgelegt ist, setzen Sie sie um einigen Minuten herauf, damit die Ressourcen optimal verwendet werden.
-- Für die Sicherung von virtuellen Computern, die Storage Premium verwenden, sollten Sie die neueste Version von Azure Backup ([Instant Restore](backup-instant-restore-capability.md)) verwenden. Wenn Sie nicht die neueste Version ausführen, belegt Backup ungefähr 50 Prozent des gesamten Speicherplatzes. Der Backup-Dienst benötigt diesen Speicherplatz, um die Momentaufnahme in dasselbe Speicherkonto zu kopieren und in den Tresor zu übertragen.
 - Wenn Sie VMs in einem einzigen Tresor wiederherstellen, sollten Sie unbedingt verschiedene [„Allgemein v2“-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. Wenn also 10 virtuelle Computer wiederhergestellt werden, verwenden Sie 10 verschiedene Speicherkonten.
+- Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 - Die Wiederherstellungen von einer „Allgemein v1“-Speicherebene (Momentaufnahme) sind in wenigen Minuten abgeschlossen, da sich die Momentaufnahme auf demselben Speicherkonto befindet. Wiederherstellungen von der „Allgemein v2“-Speicherebene (Tresor) können Stunden dauern. In Fällen, in denen die Daten im „Allgemein v1“-Speicher verfügbar sind, sollten Sie das Feature [Instant Restore](backup-instant-restore-capability.md) für schnellere Wiederherstellungen verwenden. (Wenn die Daten in einem Tresor wiederhergestellt werden müssen, dauert es länger.)
 - Die maximale Anzahl von Datenträgern pro Speicherkonto hängt davon ab, wie stark Anwendungen, die auf einer IaaS-VM (Infrastructure-as-a-Service) ausgeführt werden, auf den Datenträger zugreifen. Wenn 5 bis 10 Datenträger oder mehr in einem einzelnen Speicherkonto vorhanden sind, sollten Sie grundsätzlich die Last ausgleichen, indem Sie einige Datenträger in getrennte Speicherkonten verschieben.
 

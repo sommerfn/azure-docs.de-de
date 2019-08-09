@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 42ef6087663c48cad965be768f14920efa777a62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244327"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620063"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für VMware in Azure
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -41,10 +41,9 @@ Das Tool umfasst die folgenden Details:
 
 **Azure-Infrastrukturanforderungen**
 
-* Speichertypanforderung (Standard- oder Storage Premium-Konto) für jede VM
-* Gesamtzahl von Standard- und Storage Premium-Konten zur Einrichtung für die Replikation
+* Speichertypanforderung (Storage Standard oder Storage Premium) für jeden virtuellen Computer
+* Gesamtzahl von Storage Standard- und Storage Premium-Konten zur Einrichtung für die Replikation (einschließlich Cachespeicherkonten)
 * Vorschläge für die Benennung von Speicherkonten gemäß Storage-Vorgabe
-* Anordnung von Speicherkonten für alle VMs
 * Anzahl von einzurichtenden Azure-Kernen vor dem Testfailover oder Failover für das Abonnement
 * Empfohlene Azure-VM-Größe für jede lokale VM
 
@@ -120,7 +119,7 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
 
 
 ## <a name="version-history"></a>Versionsverlauf
-Die aktuelle Version des Site Recovery-Bereitstellungsplaners ist 2.4.
+Die aktuelle Version des Site Recovery-Bereitstellungsplaners ist 2.5.
 Auf der Seite [Site Recovery Deployment Planner version history](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) (Site Recovery-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

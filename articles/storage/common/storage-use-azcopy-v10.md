@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 94aca33b2f12c1c39297221a856296dcca052b0f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565801"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699846"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -28,11 +28,13 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 ## <a name="download-azcopy"></a>Herunterladen von AzCopy
 
-Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Verzeichnis auf Ihrem Computer herunter. 
+Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Verzeichnis auf Ihrem Computer herunter.
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
 - [macOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
+
+AzCopy V10 ist nur eine ausführbare Datei, sodass keine Installation erforderlich ist.
 
 > [!NOTE]
 > Wenn Sie Daten in und aus Ihrem [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) kopieren möchten, installieren Sie [AzCopy, Version 7.3](https://aka.ms/downloadazcopynet).
@@ -68,19 +70,21 @@ Verwenden Sie diese Tabelle als Richtlinie:
 
 Mithilfe von Azure AD können Sie ein einziges Mal Anmeldeinformationen bereitstellen, statt jedem Befehl einen SAS-Token anfügen zu müssen.  
 
+> [!NOTE]
+> Wenn Sie im aktuellen Release Blobs zwischen Speicherkonten kopieren möchten, müssen Sie an jede Quell-URL ein SAS-Token anfügen. Nur in der Ziel-URL kann das SAS-Token weggelassen werden. Beispiele finden Sie unter [Kopieren von Blobs zwischen Speicherkonten](storage-use-azcopy-blobs.md).
+
 Die Ebene der Autorisierung, die Sie benötigen, hängt davon ab, ob Sie planen, Dateien hoch- oder nur herunterzuladen.
 
-Wenn Sie nur Dateien herunterladen wollen, dann überprüfen Sie einfach, ob der [Leser von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) Ihrer Benutzeridentität oder Ihrem Dienstprinzipal zugewiesen wurde. 
+Wenn Sie nur Dateien herunterladen möchten, überprüfen Sie, ob der [Leser von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) Ihrer Benutzeridentität, der verwalteten Identität oder dem Dienstprinzipal zugewiesen wurde.
 
-> [!NOTE]
-> Benutzeridentitäten und Dienstprinzipale sind jeweils eine Art von *Sicherheitsprinzipalen*. Deswegen verwenden wir in diesem Artikel von jetzt an den Begriff *„Sicherheitsprinzipal“* .
+> Benutzeridentitäten, verwaltete Identitäten und Dienstprinzipale sind jeweils eine Form von *Sicherheitsprinzipalen*. Daher verwenden wir in diesem Artikel von jetzt an den Begriff *Sicherheitsprinzipal*.
 
 Wenn Sie Dateien hochladen möchten, dann überprüfen Sie, ob Ihrem Sicherheitsprinzipal eine dieser Rollen zugewiesen wurde:
 
 - [Mitwirkender an Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [Besitzer von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
-Diese Rollen können Ihrer Identität in jedem dieser Bereiche zugewiesen werden:
+Diese Rollen können Ihrem Sicherheitsprinzipal in jedem dieser Bereiche zugewiesen werden:
 
 - Container (Dateisystem)
 - Speicherkonto
@@ -89,7 +93,7 @@ Diese Rollen können Ihrer Identität in jedem dieser Bereiche zugewiesen werden
 
 Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Gewähren von Zugriff auf Azure Blob- und -Warteschlangendaten mit RBAC im Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-> [!NOTE] 
+> [!NOTE]
 > Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann.
 
 Ihrem Sicherheitsprinzipal muss keine dieser Rollen zugewiesen sein, wenn Ihr Sicherheitsprinzipal der Zugriffssteuerungsliste (ACL) des Zielcontainers oder des Verzeichnisses hinzugefügt wurde. In ACL benötigt Ihr Sicherheitsprinzipal Schreibberechtigungen für das Zielverzeichnis und Ausführungsberechtigungen für den Container und jedes übergeordnete Verzeichnis.
@@ -122,11 +126,11 @@ Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster m
 
 #### <a name="authenticate-a-service-principal"></a>Dienstprinzipal authentifizieren
 
-Das ist eine gute Option, wenn Sie AzCopy in einem Skript verwenden wollen, das ohne Benutzerinteraktion ausgeführt wird. 
+Dies ist eine gute Option, wenn Sie AzCopy in einem Skript verwenden möchten, das ohne Benutzerinteraktion ausgeführt wird, vor allem bei der lokalen Ausführung. Wenn Sie AzCopy auf virtuellen Computern ausführen möchten, die in Azure ausgeführt werden, lässt sich eine verwaltete Dienstidentität einfacher verwalten. Weitere Informationen finden Sie im Abschnitt [Authentifizieren einer verwalteten Identität](#managed-identity) in diesem Artikel.
 
-Sie müssen sich interaktiv mindestens ein Mal anmelden, bevor Sie das Skript ausführen, damit Sie AzCopy die Anmeldedaten Ihres Dienstprinzipals bereitstellen können.  Diese Anmeldedaten werden in einer gesicherten, verschlüsseln Datei gespeichert, damit Ihr Skript diese vertraulichen Daten nicht weitergeben muss.
+Sie müssen sich interaktiv mindestens ein Mal anmelden, bevor Sie ein Skript ausführen, damit Sie in AzCopy die Anmeldeinformationen Ihres Dienstprinzipals bereitstellen können.  Diese Anmeldedaten werden in einer gesicherten, verschlüsseln Datei gespeichert, damit Ihr Skript diese vertraulichen Daten nicht weitergeben muss.
 
-Sie können sich mit dem geheimen Clientschlüssel in Ihrem Konto anmelden oder mit dem Kennwort eines Zertifikats, das für die Appregistrierung Ihres Dienstprinzipals verwendet wird. 
+Sie können sich mit dem geheimen Clientschlüssel in Ihrem Konto anmelden oder mit dem Kennwort eines Zertifikats, das für die Appregistrierung Ihres Dienstprinzipals verwendet wird.
 
 Weitere Informationen zum Erstellen eines Dienstprinzipals finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -134,7 +138,7 @@ Weitere Informationen zu Dienstprinzipalen im Allgemeinen finden Sie unter [Anwe
 
 ##### <a name="using-a-client-secret"></a>Verwenden eines geheimen Clientschlüssels
 
-Beginnen Sie, indem Sie die `AZCOPY_SPA_CLIENT_SECRET`-Umgebungsvarible auf den geheimen Clientschlüssel der Appregistrierung Ihres Dienstprinzipals festlegen. 
+Beginnen Sie, indem Sie die `AZCOPY_SPA_CLIENT_SECRET`-Umgebungsvarible auf den geheimen Clientschlüssel der Appregistrierung Ihres Dienstprinzipals festlegen.
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie diesen Wert in Ihrer Eingabeaufforderung einrichten und nicht in den Einstellungen der Umgebungsvariable Ihres Betriebssystems. So ist der Wert nur für die aktuelle Sitzung verfügbar.
@@ -184,6 +188,50 @@ Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen od
 > [!NOTE]
 > Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole. 
 
+<a id="managed-identity" />
+
+#### <a name="authenticate-a-managed-identity"></a>Authentifizieren einer verwalteten Identität
+
+Dies ist eine gute Option, wenn Sie AzCopy in einem Skript verwenden möchten, das ohne Benutzerinteraktion und über einen virtuellen Azure-Computer ausgeführt wird. Bei Verwendung dieser Option müssen Sie keine Anmeldeinformationen auf dem virtuellen Computer speichern.
+
+Sie können sich bei Ihrem Konto anmelden, indem Sie eine systemweite verwaltete Identität verwenden, die Sie auf dem virtuellen Computer aktiviert haben, oder indem Sie die Client-ID, Objekt-ID oder Ressourcen-ID einer vom Benutzer zugewiesenen verwalteten Identität verwenden, die Sie dem virtuellen Computer zugewiesen haben.
+
+Weitere Informationen zum Aktivieren einer systemweiten verwalteten Identität oder zum Erstellen einer vom Benutzer zugewiesenen verwalteten Identität finden unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
+
+##### <a name="using-a-system-wide-managed-identity"></a>Verwenden einer systemweiten verwalteten Identität
+
+Stellen Sie zunächst sicher, dass Sie eine systemweite verwaltete Identität auf Ihrem virtuellen Computer aktiviert haben. Siehe [Systemseitig zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
+
+Geben Sie dann an der Befehlskonsole den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
+
+```azcopy
+azcopy login --identity
+```
+
+##### <a name="using-a-user-assigned-managed-identity"></a>Verwenden einer benutzerseitig zugewiesenen verwalteten Identität
+
+Stellen Sie zunächst sicher, dass Sie eine vom Benutzer zugewiesene verwaltete Identität auf Ihrem virtuellen Computer aktiviert haben. Siehe [Benutzerseitig zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
+
+Geben Sie dann an der Befehlskonsole einen der folgenden Befehle ein, und drücken Sie die EINGABETASTE.
+
+```azcopy
+azcopy login --identity --identity-client-id "<client-id>"
+```
+
+Ersetzen Sie den Platzhalter `<client-id>` durch die Client-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
+```azcopy
+azcopy login --identity --identity-object-id "<object-id>"
+```
+
+Ersetzen Sie den Platzhalter `<object-id>` durch die Objekt-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
+```azcopy
+azcopy login --identity --identity-resource-id "<resource-id>"
+```
+
+Ersetzen Sie den Platzhalter `<resource-id>` durch die Ressourcen-ID der benutzerseitig zugewiesenen verwalteten Identität.
+
 ### <a name="option-2-use-a-sas-token"></a>Option 2: Verwenden eines SAS-Token
 
 Sie können jeder Quell- oder Ziel-URL, die Sie in Ihren AzCopy-Befehlen verwenden, ein SAS-Token anfügen.
@@ -211,8 +259,6 @@ Beispielbefehle finden Sie in diesen Artikeln.
 - [Übertragen von Daten mit AzCopy und Azure Stack-Speicher](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
 ## <a name="use-azcopy-in-a-script"></a>Verwenden von AzCopy in einem Skript
-
-Sie müssen sich interaktiv mindestens ein Mal anmelden, bevor Sie das Skript ausführen, damit Sie AzCopy die Anmeldedaten Ihres Dienstprinzipals bereitstellen können.  Diese Anmeldedaten werden in einer gesicherten, verschlüsseln Datei gespeichert, damit Ihr Skript diese vertraulichen Daten nicht weitergeben muss. Beispiele finden Sie im Abschnitt [„Authentifizierung Ihres Dienstprinzipals“](#service-principal) in diesem Artikel.
 
 Im Laufe der Zeit wird der [Downloadlink](#download-and-install-azcopy) von AzCopy auf neue Versionen von AzCopy verweisen. Wenn Ihr Skript AzCopy herunterlädt, dann kann es sein, dass es nicht mehr funktioniert, wenn eine neuere Version von AzCopy Funktionen verändert, die für Ihr Skript wichtig sind. 
 

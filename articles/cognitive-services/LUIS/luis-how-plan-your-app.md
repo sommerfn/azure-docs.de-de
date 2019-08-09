@@ -1,6 +1,6 @@
 ---
-title: Planen der App
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Planen Ihrer App – LUIS
+titleSuffix: Azure Cognitive Services
 description: Beschreiben Sie kurz relevante App-Absichten und -Entitäten, und erstellen Sie dann Ihre Anwendungspläne in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196234"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638313"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planen Ihrer LUIS-App mit Thema, Absichten und Entitäten
 
-Es ist wichtig, dass Sie Ihre App planen. Identifizieren Sie Ihre Domäne, einschließlich möglicher Absichten und Entitäten, die für Ihre Anwendung relevant sind.  
+Bestimmen Sie zur Planung Ihrer App Ihren Themenbereich. Dies schließt mögliche Absichten und Entitäten mit ein, die für Ihre Anwendung relevant sind.  
 
 ## <a name="identify-your-domain"></a>Identifizieren Ihrer Domäne
 
@@ -39,11 +39,13 @@ Eine LUIS-App baut auf einem domänenspezifischen Thema auf.  Beispielsweise kö
 
 ## <a name="create-example-utterances-for-each-intent"></a>Erstellen von Beispieläußerungen für jede Absicht
 
-Nachdem Sie die Absichten festgelegt haben, können Sie 10 bis 15 Beispieläußerungen für jede Absicht erstellen. Zunächst sollten Sie nicht weniger als diese Anzahl von Äußerungen oder viele Äußerungen für jede Absicht erstellen. Jede Äußerung sollte sich von der vorherigen Äußerung unterscheiden. Eine gute Vielfalt in den Äußerungen umfasst die Gesamtzahl der Wörter, die Wortwahl, die Verbform und die Interpunktion. 
+Nachdem Sie die Absichten festgelegt haben, können Sie pro Absicht jeweils 15 bis 30 Beispieläußerungen erstellen. Erstellen Sie zunächst nicht weniger als die hier angegebene Anzahl von Äußerungen für die einzelnen Absichten, aber auch nicht zu viele. Jede Äußerung sollte sich von der vorherigen Äußerung unterscheiden. Eine gute Vielfalt in den Äußerungen umfasst die Gesamtzahl der Wörter, die Wortwahl, die Verbform und die Interpunktion. 
+
+Weitere Informationen finden Sie unter [Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App](luis-concept-utterance.md).
 
 ## <a name="identify-your-entities"></a>Identifizieren Ihrer Entitäten
 
-Identifizieren Sie in den Beispieläußerungen die Entitäten, die extrahiert werden sollen. Um einen Flug zu buchen, benötigen Sie einige Informationen wie das Ziel, das Datum, die Fluggesellschaft, die Ticketkategorie und die Reiseklasse. Sie erstellen Entitäten für diese Datentypen und markieren dann die [Entitäten](luis-concept-entity-types.md) in den Beispieläußerungen, weil sie für das Erreichen einer Absicht wichtig sind. 
+Identifizieren Sie in den Beispieläußerungen die Entitäten, die extrahiert werden sollen. Um einen Flug zu buchen, benötigen Sie Informationen wie Ziel, Datum, Fluggesellschaft, Ticketkategorie und Reiseklasse. Erstellen Sie Entitäten für diese Datentypen, und markieren Sie dann die [Entitäten](luis-concept-entity-types.md) in den Beispieläußerungen, da sie für die Umsetzung einer Absicht wichtig sind. 
 
 Wenn Sie festlegen, welche Entitäten in Ihrer App verwendet werden sollen, bedenken Sie, dass es verschiedene Typen von Entitäten zum Aufzeichnen der Beziehungen zwischen Objekttypen gibt. Unter [Entitäten in LUIS](luis-concept-entity-types.md) finden Sie weitere Details zu den verschiedenen Typen.
 

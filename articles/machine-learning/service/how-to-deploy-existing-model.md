@@ -1,5 +1,5 @@
 ---
-title: Verwenden eines vorhandenen Modells
+title: Verwenden und Bereitstellen vorhandener Modelle
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie den Azure Machine Learning Service mit Modellen nutzen können, die außerhalb des Diensts trainiert wurden. Sie können Modelle registrieren, die außerhalb von Azure Machine Learning Service erstellt wurden, und diese dann als Webdienst oder Azure IoT Edge-Modul bereitstellen.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 332129c9847c317369d5631c3af584da9430e9dd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454545"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694381"
 ---
-# <a name="how-to-use-an-existing-model-with-azure-machine-learning-service"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning Service
+# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning Service
 
 Erfahren Sie, wie Sie ein vorhandenes Modell für maschinelles Lernen mit Azure Machine Learning Service nutzen können.
 
@@ -211,7 +211,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure
 
 ## <a name="define-deployment"></a>Definieren der Bereitstellung
 
-Das [Webdienst](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py)-Paket enthält die für die Bereitstellung verwendeten Klassen. Die von Ihnen verwendete Klasse bestimmt, wo das Modell bereitgestellt wird. Verwenden Sie z. B. zur Bereitstellung als Webdienst für Azure Kubernetes Service [AksWebService.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-), um die Bereitstellungskonfiguration zu erstellen.
+Das [Webdienst](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py)-Paket enthält die für die Bereitstellung verwendeten Klassen. Die von Ihnen verwendete Klasse bestimmt, wo das Modell bereitgestellt wird. Verwenden Sie z. B. zur Bereitstellung als Webdienst für Azure Kubernetes Service [AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-), um die Bereitstellungskonfiguration zu erstellen.
 
 Der folgende Python-Code definiert eine Bereitstellungskonfiguration für eine lokale Bereitstellung. Diese Konfiguration stellt das Modell als Webdienst auf Ihrem lokalen Computer bereit.
 

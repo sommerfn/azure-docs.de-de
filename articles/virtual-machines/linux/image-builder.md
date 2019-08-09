@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2966a1803d0664312d71ba992a5ba65f73b27370
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667526"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695430"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Linux-Computers mit Azure Image Builder
 
@@ -22,6 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Linux-Image mit 
 - Shell (inline): führt spezifische Befehle aus. In diesem Beispiel schließen die Inline-Befehle das Erstellen eines Verzeichnisses und das Aktualisieren des Betriebssystems ein.
 - Datei: kopiert eine [Datei von GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) in ein Verzeichnis auf dem virtuellen Computer.
 
+Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert beträgt 240 Minuten, und Sie können die Buildzeit vergrößern, um Builds mit längerer Ausführungsdauer zuzulassen.
 
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
@@ -113,7 +114,7 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-Sie können diese JSON-Beispieldatei bei Bedarf ändern. Sie können beispielsweise den Wert von `buildTimeoutInMinutes` erhöhen, um länger laufende Builds zu ermöglichen. Sie können die Datei in Cloud Shell mit `vi` bearbeiten.
+Sie können diese JSON-Beispieldatei bei Bedarf ändern. Sie können beispielsweise den Wert von `buildTimeoutInMinutes` erhöhen, um länger laufende Builds zu ermöglichen. Sie können die Datei in Cloud Shell mit einem Text-Editor wie `vi` bearbeiten.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json

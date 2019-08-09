@@ -16,18 +16,18 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd6b70e7a4542a4cad2ee95fa280ddf8fbe6553
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310027"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667160"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
 Der Azure AD-Bereitstellungsdienst führt einen ersten Bereitstellungszyklus für das Quellsystem und das Zielsystem aus, dem regelmäßige inkrementelle Zyklen folgen. Bei der Konfiguration der Bereitstellung für eine App können Sie den aktuellen Status des Bereitstellungsdiensts überprüfen und anzeigen, wann ein Benutzer auf eine App zugreifen kann.
 
-## <a name="view-the-provisioning-progress-bar-preview"></a>Anzeigen der Statusanzeige für die Bereitstellung (Vorschauversion)
+## <a name="view-the-provisioning-progress-bar"></a>Anzeigen der Statusanzeige für die Bereitstellung
 
  Auf der Seite **Bereitstellung** für eine App können Sie den Status des Azure AD-Bereitstellungsdiensts anzeigen. Im Abschnitt **Aktueller Status** unten auf der Seite wird angezeigt, ob ein Bereitstellungszyklus zur Bereitstellung von Benutzerkonten gestartet wurde. Sie können den Status des Zyklus prüfen und sehen, wie viele Benutzer und Gruppen bereitgestellt wurden und wie viele Rollen erstellt werden.
 

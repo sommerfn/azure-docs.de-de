@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 4341cbb0e24330d535f5211c088f0068eab33af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596263"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640282"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Senkentransformation für einen Datenfluss
 
@@ -35,8 +35,7 @@ Sie können das Partitionsschema auf der Registerkarte **Optimieren** einrichten
 ![Optionen auf der Registerkarte „Optimieren“](media/data-flow/opt001.png "Senkenoptionen")
 
 ## <a name="field-mapping"></a>Feldzuordnung
-
-Auf der Registerkarte **Zuordnung** Ihrer Senkentransformation können Sie die eingehenden Spalten auf der linken Seite dem jeweiligen Ziel auf der rechten Seite zuordnen. Wenn Sie Datenflüsse in Dateien weiterleiten, schreibt Data Factory immer neue Dateien in einen Ordner. Wenn Sie ein Datenbankdataset zuordnen, können Sie eine neue Tabelle generieren, die dieses Schema verwendet. Legen Sie dazu **Richtlinie speichern** auf **Überschreiben** fest. Sie können auch neue Zeilen in eine vorhandene Tabelle einfügen und die Felder dann dem vorhandenen Schema zuordnen. 
+Auf der Registerkarte **Zuordnung** Ihrer Senkentransformation können Sie die eingehenden Spalten auf der linken Seite dem jeweiligen Ziel auf der rechten Seite zuordnen. Wenn Sie Datenflüsse in Dateien weiterleiten, schreibt Data Factory immer neue Dateien in einen Ordner. Bei der Zuordnung zu einem Datenbank-Dataset wählen Sie Optionen für Datenbanktabellenvorgänge aus, um Einfüge-, Aktualisierungs-, Upsert- oder Löschvorgänge auszuführen.
 
 ![Registerkarte „Zuordnung“](media/data-flow/sink2.png "Senken")
 
@@ -53,6 +52,15 @@ Wählen Sie zum Zurücksetzen Ihrer Spaltenzuordnungen **Re-map** (Neu zuordnen)
 Wählen Sie **Schema überprüfen** aus, damit die Senke einen Fehler auslöst, wenn das Schema geändert wird.
 
 Wählen Sie **Clear the folder** (Ordner leeren) aus, um den Inhalt des Senkenordners abzuschneiden, bevor die Zieldateien in diesen Zielordner geschrieben werden.
+
+## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
+Wenn Sie die automatische Zuordnung deaktivieren, können Sie eine spaltenbasierte Zuordnung (feste Zuordnung) oder eine regelbasierte Zuordnung hinzuzufügen. Bei Verwendung der regelbasierten Zuordnung können Sie Ausdrücke mit Musterabgleich schreiben. 
+
+![Regelbasierte Zuordnung](media/data-flow/rules4.png "Regelbasierte Zuordnung")
+
+Wenn Sie die regelbasierte Zuordnung auswählen, weisen Sie ADF an, Ihren Abgleichsausdruck auszuwerten, um passende Eingangsmusterregeln zu ermitteln und die Ausgangsfeldnamen zu definieren. Sie können eine beliebige Kombination aus feld- und regelbasierten Zuordnungen hinzufügen. Feldnamen werden dann von ADF zur Laufzeit auf der Grundlage eingehender Metadaten aus der Quelle generiert. Sie können die Namen der generierten Felder während des Debuggens sowie im Datenvorschaubereich anzeigen.
+
+Details zum Musterabgleich finden Sie in der [Dokumentation zu Spaltenmustern](concepts-data-flow-column-pattern.md).
 
 ## <a name="file-name-options"></a>Dateinamenoptionen
 
@@ -88,5 +96,4 @@ Wählen Sie die Datenbankeinstellungen aus:
 > Beim Aktualisieren oder Löschen von Zeilen in Ihrer Datenbanksenke müssen Sie die Schlüsselspalte festlegen. Diese Einstellung ermöglicht die Transformation zur Zeilenänderung, um die eindeutige Zeile in der Datenverschiebungsbibliothek (Data Movement Library, DML) zu bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Da Sie nun Ihren Datenfluss erstellt haben, fügen Sie [Ihrer Pipeline eine Aktivität zur Ausführung eines Datenflusses](concepts-data-flow-overview.md) hinzu.

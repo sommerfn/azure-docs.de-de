@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489100"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678144"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Anforderungsprozess und E-Mail-Benachrichtigungen in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -47,7 +47,7 @@ Ein Benutzer, der Zugriff auf ein Zugriffspaket benötigt, kann eine Zugriffsanf
 | Abgelaufen | Wenn keine der genehmigenden Personen die Anforderung innerhalb des Zeitlimits für die Genehmigungsanforderung genehmigt, läuft die Anforderung ab. In dem Fall muss der Benutzer seine Anforderung erneut senden. |
 | Verweigert | Eine genehmigende Person lehnt eine Anforderung ab. |
 | Genehmigt | Eine genehmigende Person genehmigt eine Anforderung. |
-| Übermitteln | Dem Benutzer wurde **noch kein** Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. Wenn es sich um einen externen Benutzer handelt, hat der Benutzer noch nicht auf das Ressourcenverzeichnis zugegriffen und die Berechtigungsaufforderung akzeptiert. |
+| Übermitteln | Dem Benutzer wurde **noch kein** Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. Wenn es sich um einen externen Benutzer handelt, hat der Benutzer möglicherweise noch nicht auf das Ressourcenverzeichnis zugegriffen und die Zustimmungsaufforderung akzeptiert. |
 | Geliefert | Dem Benutzer wurde Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. |
 | Zugriff verlängern | Wenn in der Richtlinie Verlängerungen zulässig sind, hat der Benutzer die Zuweisung verlängert. |
 | Zugriff abgelaufen | Der Benutzerzugriff auf das Zugriffspaket ist abgelaufen. Um wieder Zugriff zu erhalten, muss der Benutzer eine Anforderung senden. |

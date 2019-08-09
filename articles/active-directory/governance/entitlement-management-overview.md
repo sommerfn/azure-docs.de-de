@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234656"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678153"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -90,7 +90,7 @@ Mit einem Zugriffspaket und seinen Richtlinien definiert der Zugriffspaketmanage
 
 - Ressourcen
 - Die Rollen, die Benutzer für die Ressourcen benötigen
-- Die internen und externen Benutzer, die zum Anfordern von Zugriff berechtigt sind
+- Interne Benutzer und Partnerorganisationen externer Benutzer, die zum Anfordern von Zugriff berechtigt sind
 - Den Genehmigungsprozess und die Benutzer, die den Zugriff genehmigen oder verweigern können
 - Die Dauer des Zugriffs durch den Benutzer
 
@@ -123,11 +123,11 @@ Machen Sie sich zum besseren Verständnis der Berechtigungsverwaltung und der da
 | policy | Ein Satz von Regeln, die den Zugriffslebenszyklus definieren. Sie legen beispielsweise fest, wie Benutzer Zugriff erhalten, wer den Zugriff genehmigen darf und wie lange Benutzer Zugriff haben. Beispielrichtlinien umfassen Mitarbeiterzugriff und externen Zugriff. |
 | catalog | Ein Container verwandter Ressourcen und Zugriffspakete. |
 | Katalog „Allgemein“ | Ein integrierter Katalog, der immer verfügbar ist. Um dem Katalog „Allgemein“ Ressourcen hinzuzufügen, sind bestimmte Berechtigungen erforderlich. |
-| resource | Ein Objekt oder ein Dienst (z.B. eine Gruppe, Anwendung oder Website), für das bzw. den einem Benutzer Berechtigungen erteilt werden können. |
+| resource | Ein Asset oder Dienst (z.B. eine Office-Gruppe, eine Sicherheitsgruppe, eine Anwendung oder eine SharePoint Online-Website), für den einem Benutzer Berechtigungen erteilt werden können. |
 | Ressourcentyp | Der Typ der Ressource, z.B. Gruppen, Anwendungen und SharePoint Online-Websites. |
 | Ressourcenrolle | Eine Sammlung von Berechtigungen, die einer Ressource zugeordnet sind. |
 | Ressourcenverzeichnis | Ein Verzeichnis, das mindestens eine Ressource enthält, die freigegeben (geteilt) werden soll. |
-| Zugewiesene Benutzer | Eine Zuweisung eines Zugriffspakets zu einem Benutzer oder einer Gruppe. |
+| Zugewiesene Benutzer | Eine Zuweisung eines Zugriffspakets für einen Benutzer, damit der Benutzer über alle Ressourcenrollen dieses Zugriffspakets verfügt. |
 | enable | Das Verfügbarmachen eines Zugriffspakets für Anforderungen von Benutzern. |
 
 ## <a name="license-requirements"></a>Lizenzanforderungen

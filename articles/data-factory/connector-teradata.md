@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten aus Teradata mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie mehr über den Teradata-Connector von Data Factory, mit dem Sie Daten aus einer Teradata-Datenbank als Senken in von Data Factory unterstützte Datenspeicher kopieren können.
+description: Mit dem Teradata-Connector des Data Factory-Diensts können Sie Daten aus einer Teradata-Datenbank in Datenspeicher kopieren, die von Data Factory als Senken unterstützt werden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,22 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 63f28c8b6eaceed12e1f76e9c0c5984e3b63b500
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ce326d7284e22a8734f6be671a277795ba659522
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561429"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720522"
 ---
-# <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopieren von Daten aus Teradata mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+# <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopieren von Daten aus Teradata mithilfe von Azure Data Factory
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 >
 > * [Version 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuelle Version](connector-teradata.md)
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Teradata-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Teradata-Datenbank zu kopieren. Der Artikel baut auf der [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -35,37 +35,37 @@ Der Teradata-Connector unterstützt insbesondere Folgendes:
 
 - Teradata, **Version 14.10, 15.0, 15.10, 16.0, 16.10 und 16.20**.
 - Kopieren von Dateien unter Verwendung der **Standard**- oder **Windows**-Authentifizierung
-- Parallele Kopie von Teradata-Quelle. Weitere Informationen finden Sie unter [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata).
+- Paralleles Kopieren aus einer Teradata-Quelle. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata).
 
 > [!NOTE]
 >
-> Azure Data Factory hat für den Teradata-Connector seit der selbstgehosteten Integration Runtime v3.18 ein Upgrade durchgeführt, das von einem integrierten ODBC-Treiber unterstützt wird und flexible Verbindungsoptionen sowie eine standardmäßige parallele Kopie bereitstellt, um die Leistung zu verbessern. Vorhandene Workloads mit dem vorherigen Teradata-Connector mit .NET-Datenabieter für Teradata werden immer noch unterstützt. Allerdings sehen Sie eine Aufforderung, in Zukunft den Neuen zu verwenden. Bitte beachten Sie, dass für den neuen Pfad eine andere Gruppe verknüpfter Dienste/Datasets/Kopiequelle erforderlich ist. Weitere Informationen finden Sie im entsprechenden Abschnitt über die Konfiguration.
+> Nach der Veröffentlichung der Version 3.18 der selbstgehosteten Integration Runtime wurde von Azure Data Factory ein Upgrade des Teradata-Connectors durchgeführt. Bereits vorhandene Workloads, die den älteren Teradata-Connector verwenden, werden weiterhin unterstützt. Bei neuen Workloads empfiehlt es sich jedoch, die neue Version zu verwenden. Für den neuen Pfad wird eine andere Kombination aus verknüpftem Dienst, Dataset und Kopierquelle benötigt. Konfigurationsdetails finden Sie in den entsprechenden Folgeabschnitten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Ihre Teradata nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md). Die Integration Runtime bietet ab Version 3.18 einen integrierten Teradata-Treiber. Daher müssen keine Treiber manuell installiert werden. Der Treiber erfordert das „Visual C++ Redistributable 2012 Update 4“ auf dem selbstgehosteten IR-Computer. Falls Sie es noch nicht installiert haben, können Sie es [hier](https://www.microsoft.com/en-sg/download/details.aspx?id=30679) herunterladen.
+Wenn Ihre Teradata-Instanz nicht öffentlich zugänglich ist, müssen Sie eine [selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) einrichten. Die Integration Runtime verfügt ab Version 3.18 über einen integrierten Teradata-Treiber. Es ist keine manuelle Treiberinstallation erforderlich. Für den Treiber muss „Visual C++ Redistributable 2012 Update 4“ auf dem Computer mit der selbstgehosteten Integration Runtime vorhanden sein. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/en-sg/download/details.aspx?id=30679) herunterladen.
 
-Bei einer selbstgehosteten IR-Version vor 3.18 müssen Sie den [.NET-Datenanbieter für Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) (Version 14 oder neuer) auf dem Computer mit der Integration Runtime installieren. 
+Wenn Sie nicht mindestens die Version 3.18 der selbstgehosteten Integration Runtime verwenden, installieren Sie auf dem Computer mit der Integration Runtime den [.NET-Datenanbieter für Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) (ab Version 14). 
 
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Teradata-Connector verwendet werden.
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren spezifischer Data Factory-Entitäten für den Teradata-Connector verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Folgende Eigenschaften werden für den mit Teradata verknüpften Dienst unterstützt:
+Der verknüpfte Teradata-Dienst unterstützt folgende Eigenschaften:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Teradata** | Ja |
-| connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Teradata-Datenbankinstanz erforderlich sind. Sehen Sie sich die folgenden Beispiele an.<br/>Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im Artikel [„Speichern von Anmeldeinformationen in Azure Key Vault“](store-credentials-in-key-vault.md). | Ja |
-| userName | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der Teradata-Datenbank an. Gilt für die Windows-Authentifizierung. | Nein |
-| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. <br>Dies gilt, wenn Sie die Windows-Authentifizierung verwenden oder auf ein Kennwort in Key Vault zur Standardauthentifizierung verweisen. | Nein |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
+| type | Die Eigenschaft „type“ muss auf **Teradata** festgelegt sein. | Ja |
+| connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Teradata-Datenbankinstanz erforderlich sind. Sehen Sie sich die folgenden Beispiele an.<br/>Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| username | Geben Sie einen Benutzernamen für die Verbindungsherstellung mit der Teradata-Datenbank an. Gilt bei Verwendung der Windows-Authentifizierung. | Nein |
+| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. <br>Gilt, wenn Sie die Windows-Authentifizierung verwenden oder für die Standardauthentifizierung auf ein Kennwort in Key Vault verweisen. | Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Eine selbstgehostete Integrationslaufzeit ist erforderlich (siehe [Voraussetzungen](#prerequisites)). |Ja |
 
-**Beispiel: Verwenden der Standardauthentifizierung**
+**Beispiel mit Standardauthentifizierung**
 
 ```json
 {
@@ -83,7 +83,7 @@ Folgende Eigenschaften werden für den mit Teradata verknüpften Dienst unterst�
 }
 ```
 
-**Beispiel: Verwenden der Windows-Authentifizierung**
+**Beispiel mit Windows-Authentifizierung**
 
 ```json
 {
@@ -105,7 +105,7 @@ Folgende Eigenschaften werden für den mit Teradata verknüpften Dienst unterst�
 
 > [!NOTE]
 >
-> Wenn Sie den verknüpften Teradata-Dienst von .NET-Datenanbieter für Teradata mit der folgenden Nutzlast verwendet haben, wird er weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
+> Die folgende Nutzlast wird weiterhin unterstützt. In Zukunft sollte jedoch die neue verwendet werden.
 
 **Vorherige Nutzlast:**
 
@@ -133,15 +133,15 @@ Folgende Eigenschaften werden für den mit Teradata verknüpften Dienst unterst�
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Dataset „Teradata“ unterstützt werden.
+Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Teradata-Dataset unterstützt werden. Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [„Datasets“](concepts-datasets-linked-services.md).
 
 Zum Kopieren von Daten aus Teradata werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **TeradataTable** | Ja |
-| database | Name der Teradata-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
-| table | Name der Tabelle in der Teradata-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| type | Die Eigenschaft „type“ des Datasets muss auf `TeradataTable` festgelegt werden. | Ja |
+| database | Der Name der Teradata-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| table | Der Name der Tabelle in der Teradata-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel:**
 
@@ -150,18 +150,19 @@ Zum Kopieren von Daten aus Teradata werden die folgenden Eigenschaften unterstü
     "name": "TeradataDataset",
     "properties": {
         "type": "TeradataTable",
+        "typeProperties": {},
+        "schema": [],        
         "linkedServiceName": {
             "referenceName": "<Teradata linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
 
 > [!NOTE]
 >
-> Wenn Sie das Datenset vom Typ „RelationalTable“ wie folgt verwenden, wird es weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
+> Datasets vom Typ `RelationalTable` werden weiterhin unterstützt. Es wird jedoch empfohlen, das neue Dataset zu verwenden.
 
 **Vorherige Nutzlast:**
 
@@ -181,31 +182,31 @@ Zum Kopieren von Daten aus Teradata werden die folgenden Eigenschaften unterstü
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Quelle „Teradata“ unterstützt werden.
+Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Quelle „Teradata“ unterstützt werden. Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines](concepts-pipelines-activities.md). 
 
-### <a name="teradata-as-source"></a>Teradata als Quelle
+### <a name="teradata-as-a-source-type"></a>Teradata als Quelltyp
 
 > [!TIP]
 >
-> Erfahren Sie mehr über das effiziente Laden von Daten aus Teradata mit Datenpartitionierung unter [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata).
+> Informationen zum effizienten Laden von Daten aus Teradata mittels Datenpartitionierung finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata).
 
 Wenn Sie Daten aus Teradata kopieren wollen, werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **TeradataSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`.<br>Wenn Sie die partitionierte Last aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage einbinden. Beispiele finden Sie im Abschnitt [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata). | Nein (wenn „table“ im Dataset angegeben ist) |
-| partitionOptions | Spezifiziert die Datenpartitionierungsoptionen mit denen Daten aus Teradata geladen werden. <br>Zugelassene Werte sind: **„Keine“** (Standard), **„Hash“** und **„DynamicRange“** .<br>Wenn die Partitionsoption aktiviert ist (nicht „Keine“), dann konfigurieren Sie auch die **[`parallelCopies`](copy-activity-performance.md#parallel-copy)** -Einstellung der Kopieraktivität. Dies kann z. B. 4 sein. Damit wird der Parallelitätsgrad bestimmt, der gleichzeitig die Daten aus der Teradata-Datenbank laden soll. | Nein |
-| partitionSettings | Geben Sie die Gruppe der Einstellung für die Datenpartitionierung an. <br>Wenden Sie dies an, wenn die Partitionsoption nicht `None` ist. | Nein |
-| partitionColumnName | Geben Sie den Namen der Quellspalte **als Integer** an, der von der Bereichspartitionierung für die parallele Kopie verwendet wird. Wird er nicht angegeben, wird der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet. <br>Wenden Sie dies an, wenn die Partitionsoption `Hash` oder `DynamicRange` ist. Wenn Sie die Abfrage zum Aufrufen von Quelldaten verwenden, setzen Sie einen Hook `?AdfHashPartitionCondition` oder `?AdfRangePartitionColumnName` in der WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata). | Nein |
-| partitionUpperBound | Höchstwert der Partitionsspalte zum Herauskopieren von Daten. <br>Wenden Sie dies an, wenn die Partitionsoption `DynamicRange` ist. Wenn Sie die Abfrage zum Aufrufen von Quelldaten verwenden, setzen Sie einen Hook `?AdfRangePartitionUpbound` in der WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata). | Nein |
-| PartitionLowerBound | Mindestwert der Partitionsspalte zum Herauskopieren von Daten. <br>Wenden Sie dies an, wenn die Partitionsoption `DynamicRange` ist. Wenn Sie die Abfrage zum Aufrufen von Quelldaten verwenden, setzen Sie einen Hook `?AdfRangePartitionLowbound` in der WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata). | Nein |
+| type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `TeradataSource` festgelegt werden. | Ja |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein (wenn „table“ im Dataset angegeben ist) |
+| partitionOptions | Spezifiziert die Datenpartitionierungsoptionen mit denen Daten aus Teradata geladen werden. <br>Zugelassene Werte sind: **„Keine“** (Standard), **„Hash“** und **„DynamicRange“** .<br>Wenn eine Partitionsoption aktiviert (also nicht `None` festgelegt) ist, konfigurieren Sie auch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) für die Kopieraktivität. Dadurch wird der Parallelitätsgrad für das parallele Laden von Daten aus einer Teradata-Datenbank bestimmt. Dieser Wert kann beispielsweise auf „4“ festgelegt werden. | Nein |
+| partitionSettings | Geben Sie die Gruppe der Einstellung für die Datenpartitionierung an. <br>Verwenden Sie diese Option, wenn die Partitionsoption nicht `None` lautet. | Nein |
+| partitionColumnName | Geben Sie den Namen der Quellspalte **als Integer** an, der von der Bereichspartitionierung für die parallele Kopie verwendet wird. Ohne Angabe wird der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet. <br>Verwenden Sie diese Option, wenn die Partitionsoption `Hash` oder `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfHashPartitionCondition` oder `?AdfRangePartitionColumnName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [„Parallele Kopie aus Teradata“](#parallel-copy-from-teradata). | Nein |
+| partitionUpperBound | Der Höchstwert der Partitionsspalte zum Herauskopieren von Daten. <br>Wenden Sie dies an, wenn die Partitionsoption `DynamicRange` ist. Wenn Sie Quelldaten per Abfrage abrufen, integrieren Sie `?AdfRangePartitionUpbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein |
+| PartitionLowerBound | Der Mindestwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionLowbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein |
 
 > [!NOTE]
 >
-> Wenn Sie den Typ „RelationalSource“ als Kopierquelle verwendet haben, dann wird dieser weiterhin in seiner gegenwärtigen Form unterstützt. Allerdings wird die neue integrierte Parallellast von Teradata (Partitionsoptionen) nicht unterstütz. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
+> Kopierquellen vom Typ `RelationalSource` werden zwar weiterhin unterstützt, das neue integrierte parallele Laden aus Teradata (Partitionsoptionen) wird allerdings nicht unterstützt. Es wird jedoch empfohlen, das neue Dataset zu verwenden.
 
-**Beispiel: Kopieren von Daten mit einer grundlegenden Abfrage ohne Partition**
+**Beispiel: Kopieren von Daten mit einer einfachen Abfrage ohne Partition**
 
 ```json
 "activities":[
@@ -239,19 +240,19 @@ Wenn Sie Daten aus Teradata kopieren wollen, werden die folgenden Eigenschaften 
 
 ## <a name="parallel-copy-from-teradata"></a>Parallele Kopie von Teradata
 
-Der Data Factory Teradata-Konnektor verfügt über eine integrierte Datenpartitionierung zum leistungsstarken, parallelen Kopieren von Daten aus Teradata. Sie finden Optionen zur Datenpartitionierung unter Kopieraktivität -> Teradata-Quelle:
+Der Data Factory-Teradata-Connector verfügt über eine integrierte Datenpartitionierung zum parallelen Kopieren von Daten aus Teradata. Die Datenpartitionierungsoptionen befinden sich auf der Registerkarte **Quelle** der Kopieraktivität.
 
-![Partitionsoptionen](./media/connector-teradata/connector-teradata-partition-options.png)
+![Screenshot der Partitionierungsoptionen](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Wenn Sie die partitionierte Kopie aktivieren, dann führt Data Factory parallel Abfragen Ihrer Teradata-Quelle durch, um Daten in Partitionen zu laden. Der Parallelitätsgrad wird über die **[`parallelCopies`](copy-activity-performance.md#parallel-copy)** -Einstellung der Kopieraktivität konfiguriert und gesteuert. Wenn Sie zum Beispiel `parallelCopies` als vier bestimmen, dann generiert Data Factory gleichzeitig vier Abfragen und führt sie aus. Diese Abfragen basieren auf der von Ihnen angegebenen Partitionsoption und den Einstellungen und ruft einen Teil Ihrer Daten aus Ihrer Teradata-Datenbank auf.
+Wenn Sie die partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre Teradata-Quelle aus, um Daten anhand von Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie `parallelCopies` also beispielsweise auf „4“ festlegen, generiert Data Factory parallel vier Abfragen und führt sie parallel aus (basierend auf der von Ihnen angegebenen Partitionsoption und den entsprechenden Einstellungen). Jede Abfrage ruft einen Teil der Daten aus Ihrer Teradata-Datenbank ab.
 
-Es ist ratsam, dass Sie die parallele Kopie mit der Datenpartitionierung aktivieren, vor allem, wenn Sie große Mengen Daten aus der Teradata-Datenbank laden wollen. Es folgen einige empfohlene Konfigurationen für verschiedene Szenarien:
+Es empfiehlt sich, das parallele Kopieren mit Datenpartitionierung zu aktivieren – insbesondere, wenn Sie große Datenmengen aus Ihrer Teradata-Datenbank laden. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien:
 
 | Szenario                                                     | Empfohlene Einstellungen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Vollständiges laden aus großer Tabelle                                   | **Partitionsoption**: Hash. <br><br/>Während der Ausführung erkennt Data Factory automatisch die PK-Spalte, wendet den Hash darauf an und kopiert Daten nach Partitionen. |
-| Laden von großen Datenmengen mit benutzerdefinierten Abfragen                 | **Partitionsoption**: Hash.<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Partitionsspalte**: Geben Sie die Spalte für die Hashpartitionierung an. Wenn sie nicht angegeben wird, wählt ADF automatisch die PK-Spalte der Tabelle, die Sie im Teradata-Dataset angegeben haben.<br><br>Während der Ausführung ersetzt Data Factory `?AdfHashPartitionCondition` mit der Hashpartitionierungslogik und schickt es an Teradata. |
-| Laden Sie große Mengen Daten mit einer benutzerdefinierten Abfrage herunter. Eine Integerspalte mit gleichmäßig verteilten Werten für die Bereichspartitionierung ist vorhanden. | **Partitionoptionen**: Dynamische Bereichspartitionierung.<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partitionsspalte**: Geben Sie die Spalte für die Datenpartitionierung an. Sie können mit der Spalte mit dem Integer-Datentyp partitionieren.<br>**Obergrenze der Partition** und **Untergrenze der Partition**: Geben Sie an, ob Sie mit der Partitionsspalte filtern möchten, um nur Daten zwischen der Ober- und der Untergrenze zu erhalten.<br><br>Data Factory ersetzt während der Ausführung `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound` und `?AdfRangePartitionLowbound` mit dem tatsächlichen Spaltennamen und Wertebereichen für jede Partition, um sie dann an Teradata zu senden. <br>Wenn Ihre Partitionsspalte zum Beispiel „ID“ mit einer Untergrenze von 1 und einer Obergrenze von 80 ist, und die parallele Kopie 4 ist, dann ruft ADF die Daten aus 4 Partitionen mit IDs zwischen [1,20], [21, 40], [41, 60] und [61, 80] ab. |
+| Vollständiges Laden aus großer Tabelle                                   | **Partitionsoption**: Hash. <br><br/>Während der Ausführung erkennt Data Factory automatisch die PK-Spalte, wendet einen Hash darauf an und kopiert Daten anhand von Partitionen. |
+| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage                 | **Partitionsoption**: Hash.<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Partitionsspalte**: Geben Sie die Spalte für die Hashpartitionierung an. Ohne Angabe erkennt Data Factory automatisch die PK-Spalte der Tabelle, die Sie im Teradata-Dataset angegeben haben.<br><br>Während der Ausführung ersetzt Data Factory `?AdfHashPartitionCondition` durch die Hashpartitionierungslogik und sendet die Daten an Teradata. |
+| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage, wenn eine Integerspalte mit gleichmäßig verteilten Werten für die Bereichspartitionierung vorhanden ist | **Partitionoptionen**: Dynamische Bereichspartitionierung.<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partitionsspalte**: Geben Sie die Spalte für die Datenpartitionierung an. Die Partitionierung kann auf der Grundlage der Spalte mit dem Datentyp „Integer“ erfolgen.<br>**Obergrenze der Partition** und **Untergrenze der Partition**: Geben Sie an, ob Sie anhand der Partitionsspalte filtern möchten, um nur Daten zwischen der Ober- und der Untergrenze zu erhalten.<br><br>Data Factory ersetzt während der Ausführung `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound` und `?AdfRangePartitionLowbound` durch den tatsächlichen Spaltennamen und die Wertebereiche für die jeweilige Partition und sendet die Daten dann an Teradata. <br>Wenn Ihre Partitionsspalte „ID“ also beispielsweise mit der Untergrenze „1“ und der Obergrenze „80“ konfiguriert und paralleles Kopieren auf „4“ festgelegt ist, ruft Data Factory Daten anhand von vier Partitionen ab. Die ID-Bereiche sehen dann wie folgt aus: [1–20], [21–40], [41–60] und [61–80]. |
 
 **Beispiel: Abfrage mit Hashpartition**
 
@@ -283,7 +284,7 @@ Es ist ratsam, dass Sie die parallele Kopie mit der Datenpartitionierung aktivie
 
 ## <a name="data-type-mapping-for-teradata"></a>Datentypzuordnung für Teradata
 
-Beim Kopieren von Daten aus Teradata werden die folgenden Zuordnungen von Teradata-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten aus Teradata gelten folgende Zuordnungen. Weitere Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
 | Teradata-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
@@ -321,7 +322,7 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Zuordnungen von Terada
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
 | Timestamp |DateTime |
-| Timestamp With Time Zone |DateTime |
+| Timestamp With Time Zone |Datetime |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage durch. |
@@ -329,4 +330,4 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Zuordnungen von Terada
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

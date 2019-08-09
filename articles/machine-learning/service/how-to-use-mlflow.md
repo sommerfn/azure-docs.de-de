@@ -11,16 +11,16 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2030365cd78480c25e224edfea9e395aafa6661c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227914"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668390"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Mit MLflow und Azure Machine Learning Service Metriken nachverfolgen und Modelle bereitstellen (Vorschauversion)
 
-Dieser Artikel demonstriert, wie Sie die MLflow Tracking-URI und Protokollierungs-API, auch bekannt als [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), mit dem Azure Machine Learning Service nutzen. Dies ermöglicht Ihnen Folgendes:
+In diesem Artikel wird veranschaulicht, wie Sie den Nachverfolgungs-URI und die Protokollierungs-API von MLflow, auch bekannt als [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), mit Azure Machine Learning Service nutzen. Dies ermöglicht Ihnen Folgendes:
 
 + Sie können die Metriken und Artefakte Ihrer Experimente im [Azure Machine Learning Service-Arbeitsbereich](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces) nachverfolgen und protokollieren. Falls Sie MLflow-Tracking bereits für Ihre Experimente verwenden, ist der Arbeitsbereich ein zentraler, sicherer und skalierbarer Ort zum Speichern Ihrer Trainingsmetriken und -modelle.
 
@@ -36,8 +36,9 @@ Dieser Artikel demonstriert, wie Sie die MLflow Tracking-URI und Protokollierung
 
  MLflow-Tracking verfügt über Funktionen für Metrikprotokollierung und Artefaktspeicherung, die sonst nur über das [Azure Machine Learning-SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) zur Verfügung stehen.
 
-| | MLflow-Tracking und ‑Bereitstellung | Azure Machine Learning <br> Python SDK |  Azure Machine Learning <br> Befehlszeilenschnittstelle (CLI) | Azure-Portal|
-|-|-|-|-|-|-|
+
+| | MLflow-Tracking und ‑Bereitstellung | Python-SDK für Azure Machine Learning |  Azure Machine Learning-CLI | Azure-Portal|
+|---|---|---|---|---|
 | Verwalten des Arbeitsbereichs |   | ✓ | ✓ | ✓ |
 | Verwenden von Datenspeichern  |   | ✓ | ✓ | |
 | Protokollieren von Metriken      | ✓ | ✓ |   | |

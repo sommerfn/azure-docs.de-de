@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 114ddf8f545f3f8d1f6c1a80725668d7875774f8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3c27c268ed2a1c369c9b42bd1cd5a2365547c52f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476637"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667459"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
 
@@ -103,6 +103,8 @@ Um die Lösung für alle verfügbaren Computer zu aktivieren, wählen Sie **Auf 
 ### <a name="all-available-and-future-machines"></a>Alle verfügbaren und zukünftigen Computer
 
 Um die Lösung für alle verfügbaren und zukünftigen Computer zu aktivieren, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherte Suchvorgänge und Bereichskonfigurationen aus dem Arbeitsbereich gelöscht. Diese Aktion öffnet die Lösung für alle Azure- und Nicht-Azure-Computer, die Berichte für den Arbeitsbereich erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten** dauerhaft, da keine Bereichskonfiguration übrig ist.
+
+Sie können die Bereichskonfigurationen wieder hinzufügen, indem Sie die ersten gespeicherten Suchen wieder hinzufügen. Weitere Informationen finden Sie unter [Gespeicherte Suchen](#saved-searches).
 
 ### <a name="selected-machines"></a>Ausgewählte Computer
 

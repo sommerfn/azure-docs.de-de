@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 389aaee621251890cd3f75744a94b9c9b29c5695
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573510"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662397"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Überwachen und Verarbeiten von Sicherheitsereignissen in Azure Security Center
 Das Ereignis-Dashboard enthält eine Übersicht über die Anzahl der im Laufe der Zeit erfassten Sicherheitsereignisse sowie eine Liste relevanter Ereignisse, die unter Umständen Ihre Aufmerksamkeit erfordern.  
 
 > [!NOTE]
-> Das Dashboard „Sicherheitsereignisse“ wird am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_events).
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> Das Dashboard „Sicherheitsereignisse“ wurde am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_events).
 
 ## <a name="what-is-a-security-event"></a>Was ist ein Sicherheitsereignis?
 Security Center nutzt Microsoft Monitoring Agent für die Erfassung verschiedener sicherheitsbezogener Konfigurationen und Ereignisse auf Ihren Computern und speichert diese Ereignisse in Ihren Arbeitsbereichen. Beispiele für diese Daten sind Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse sowie Ereignisse aus in Security Center integrierten Sicherheitslösungen. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich bzw. in Ihre Arbeitsbereiche.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311323"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666250"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -360,6 +360,9 @@ Da Sie nun Ihre Lösung geplant haben, können Sie sie mit den folgenden Schritt
    1. Mit [Identity Protection](../identity-protection/howto-mfa-policy.md)
 1. Fordern Sie die Benutzer zur Registrierung unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) auf.
 1. [Nachverfolgen, wer sich registriert hat](#identify-non-registered-users)
+
+> [!TIP]
+> Government-Cloudbenutzer können sich unter [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup) registrieren.
 
 ## <a name="manage-your-solution"></a>Verwalten Ihrer Lösung
 

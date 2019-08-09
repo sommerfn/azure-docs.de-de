@@ -2,18 +2,18 @@
 title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 service: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: raynew
-ms.openlocfilehash: 0835c3af52a16e7549698e35b3fded0f64c71dc4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: dacurwin
+ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447706"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663703"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -228,9 +228,9 @@ Wenn eine NSG den VM-Zugriff verwaltet, lassen Sie den ausgehenden Zugriff auf d
 4. Geben Sie für **Quellportbereiche** ein Sternchen (*) ein, um ausgehenden Zugriff über alle Ports zuzulassen.
 5. Wählen Sie **Diensttag** als **Ziel** aus. Wählen Sie **Storage.region** aus der Liste aus. Wählen Sie dabei die Region aus, in der sich der Tresor und die zu sichernden VMs befinden.
 6. Wählen Sie unter **Zielportbereiche** den entsprechenden Port aus.
-    - Für nicht verwaltete VMs mit nicht verschlüsseltem Speicherkonto: 80
-    - Für nicht verwaltete VMs mit verschlüsseltem Speicherkonto: 443 (Standardeinstellung)
-    - Für verwaltete VMs: 8443
+    - Für VMs mit nicht verwalteten Datenträgern und nicht verschlüsseltem Speicherkonto: 80
+    - Für VMs mit nicht verwalteten Datenträgern und verschlüsseltem Speicherkonto: 443 (Standardeinstellung)
+    - Für VMs mit verwalteten Datenträgern: 8443
 7. Wählen Sie für **Protokoll** die Option **TCP** aus.
 8. Geben Sie unter **Priorität** einen Prioritätswert an, der geringer als alle höheren Ablehnungsregeln ist.
 
