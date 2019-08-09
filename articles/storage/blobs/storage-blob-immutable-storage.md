@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492752"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618401"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -91,7 +91,7 @@ In der folgenden Tabelle sind die Arten von Blobvorgängen angegeben, die für d
 - Ein Speicherkonto kann über maximal 1.000 Container mit gesperrten zeitbasierten Unveränderlichkeitsrichtlinien verfügen.
 - Der Mindestwert für den Aufbewahrungszeitraum beträgt einen Tag. Der Höchstwert beträgt 146.000 Tage (400 Jahre).
 - Für einen Container sind höchstens fünf Bearbeitungen zur Verlängerung eines Aufbewahrungszeitraums gesperrte zeitbasierte unveränderliche Richtlinien möglich.
-- Für einen Container werden höchstens sieben Überwachungsprotokolle für die zeitbasierte Aufbewahrungsrichtlinie für die Dauer der Richtlinie aufbewahrt.
+- Für einen Container werden höchstens sieben Überwachungsprotokolle für die zeitbasierte Aufbewahrungsrichtlinie für eine gesperrte Richtlinie aufbewahrt.
 
 ### <a name="legal-hold"></a>Gesetzliche Aufbewahrungspflicht
 - Ein Speicherkonto kann über maximal 1.000 Container mit einer Einstellung der gesetzlichen Aufbewahrungspflicht verfügen.

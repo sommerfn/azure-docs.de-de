@@ -4,15 +4,15 @@ description: In diesem Artikel wird die Erstellung und Verwendung von Datenbanke
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/26/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 277564208a5e4a209aecf8f976aca6b35ab17781
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467752"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598483"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -124,6 +124,9 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 |\_self | Vom System generiert | Adressierbarer URI des Elements | Ja | Nein | Nein | Nein | Nein |
 |id | Sie können das | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. Wenn der Benutzer die ID nicht angibt, wird vom System automatisch eine generiert. | Ja | Ja | Ja | Ja | Ja |
 |Beliebige benutzerdefinierte Eigenschaften | Benutzerdefiniert | Benutzerdefinierte Eigenschaften, die in einer API-nativen Darstellung (einschließlich JSON, BSON und CQL) dargestellt werden | Ja | Ja | Ja | Ja | Ja |
+
+> [!NOTE]
+> Die Eindeutigkeit der Eigenschaft `id` wird nur innerhalb der einzelnen logischen Partitionen erzwungen. Mehrere Dokumente können dieselbe `id`-Eigenschaft mit unterschiedlichen Partitionsschlüsselwerten aufweisen.
 
 ### <a name="operations-on-items"></a>Vorgänge in Entitäten
 

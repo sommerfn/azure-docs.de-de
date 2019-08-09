@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113494"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561290"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -43,7 +43,7 @@ Kennwortrückschreiben bietet:
 * **Keine Notwendigkeit zur Festlegung von eingehenden Firewallregeln**: Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
 
 > [!NOTE]
-> Benutzerkonten in geschützten Gruppen im lokalen Active Directory können nicht zum Kennwortrückschreiben verwendet werden. Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Geschützte Konten und Gruppen in Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+> Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Administratoren können ihr Kennwort in der Cloud ändern, aber nicht die Kennwortzurücksetzung zum Zurücksetzen eines vergessenen Kennworts verwenden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Geschützte Konten und Gruppen in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
 

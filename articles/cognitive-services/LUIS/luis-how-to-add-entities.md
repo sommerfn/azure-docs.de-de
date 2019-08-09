@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Entitäten
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Hinzufügen von Entitäten: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148723"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638235"
 ---
 # <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
@@ -114,13 +114,13 @@ In der Äußerung `Where is Request relocation from employee new to the company 
 
 Eine Rolle ist ein benannter Untertyp, der auf Kontext basiert. Er ist in allen Entitäten verfügbar, einschließlich vorkonfigurierter und nicht durch maschinelles Lernen erworbener Entitäten. 
 
-Die Syntax für eine Rolle ist **`{Entityname:Rolename}`** , wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Die Syntax für eine Rolle ist **`{Entityname:Rolename}`** , wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
 1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
 
-1. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `LocationUsingRoles` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus. 
+1. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `Location` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus. 
 
-1. Wählen Sie im linken Bereich die Option **Entitäten** und dann die neue Entität **LocationUsingRoles** aus, die im vorherigen Schritt erstellt wurde.
+1. Wählen Sie im linken Bereich die Option **Entitäten** und dann die neue Entität **Location** aus, die im vorherigen Schritt erstellt wurde.
 
 1. Geben Sie im Textfeld **Rollenname** den Namen der Rolle `Origin` ein, und drücken Sie die EINGABETASTE. Fügen Sie eine zweite Rolle namens `Destination` hinzu. 
 

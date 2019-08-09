@@ -4,14 +4,14 @@ description: In diesem Artikel wird erläutert, wie Sie die Kosten von Azure Cos
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/31/2019
 ms.author: rimman
-ms.openlocfilehash: 478714f48782adb138f1ed803d53c81ec48f2efd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 233eab1fc49d7ce4cbb1e5b98b67eda9a64aa195
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967293"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667592"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB
 
@@ -35,9 +35,9 @@ Angenommen, Sie haben einen Container in der Region „USA, Westen“ mit einem 
 |----|----|----|----|
 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibvorgänge in mehreren Regionen) |10.000 RUs/Sek. x 24 x 31 |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde |1\.190,40 US-Dollar |
 |Durchsatzabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibvorgänge in mehreren Regionen) |(3+1) x 10.000 RUs/Sek. x 24 x 31 |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde |4\.761,60 US-Dollar |
-|Speicherabrechnung für Container in „USA, Westen“ |100 GB |0,25 US-Dollar/GB |25 USD |
-|Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ |3 x 100 GB |0,25 US-Dollar/GB |75 US-Dollar |
-|**Gesamt**|||**6.052 US-Dollar** |
+|Speicherabrechnung für Container in „USA, Westen“ |1 TB (oder 1.024 GB) |0,25 US-Dollar/GB |256 US-Dollar |
+|Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ |3 × 1 TB (oder 3.072 GB) |0,25 US-Dollar/GB |768 US-Dollar |
+|**Gesamt**|||**6.976 US-Dollar** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Optimieren der Durchsatznutzung nach Region
 

@@ -1,6 +1,6 @@
 ---
-title: Ändern von Daten
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Ändern von Daten: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Daten vor der Vorhersage in Language Understanding Intelligent Service (LUIS) geändert werden können.
 services: cognitive-services
 author: diberry
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0648dd9bc93097d3c2433943f983b5e9d22f0279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 198ce98808c8a62a839d154c365518c9e8263056
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473508"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619895"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Ändern von Äußerungsdaten vor oder während der Vorhersage
-LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine Korrektur der Rechtschreibung und das Beheben von Zeitzonenproblemen für Prebuild-datetimeV2. 
+LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine [Korrektur der Rechtschreibung](luis-tutorial-bing-spellcheck.md) und das Beheben von Zeitzonenproblemen für die vordefinierte Entität [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Korrigieren von Rechtschreibfehlern in Äußerungen
-LUIS verwendet die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) um Rechtschreibfehler in Äußerungen zu korrigieren. LUIS benötigt den diesem Dienst zugewiesenen Schlüssel. Erstellen Sie den Schlüssel, und fügen Sie den Schlüssel dann als Parameter der Abfragezeichenfolge an den [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356) hinzu. 
+LUIS verwendet die [Bing-Rechtschreibprüfungs-API V7](../Bing-Spell-Check/overview.md) um Rechtschreibfehler in Äußerungen zu korrigieren. LUIS benötigt den diesem Dienst zugewiesenen Schlüssel. Erstellen Sie den Schlüssel, und fügen Sie den Schlüssel dann als Parameter der Abfragezeichenfolge an den [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356) hinzu. 
 
 Sie können Rechtschreibfehler auch im **Testbereich** korrigieren, indem Sie den [Schlüssel eingeben](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Der Schlüssel wird als Sitzungsvariable im Browser des Testbereichs beibehalten. Fügen Sie den Schlüssel dem Testbereich in jeder Browsersitzung hinzu, in der Sie Rechtschreibfehler korrigieren möchten. 
 
@@ -49,11 +49,11 @@ Wenn die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/service
 }
 ```
  
-### <a name="whitelist-words"></a>Whitelistwörter
-Die in LUIS verwendete Bing-Rechtschreibprüfungs-API unterstützt keine Whitelist mit Wörtern, die bei den Änderungen durch die Rechtschreibprüfung ignoriert werden sollen. Wenn Sie eine Whitelist für Wörter oder Akronyme benötigen, verarbeiten Sie die Äußerung im Client mithilfe einer Whitelist, bevor Sie die Äußerung zur Absichtsvorhersage an LUIS senden.
+### <a name="list-of-allowed-words"></a>Liste zulässiger Wörter
+Die in LUIS verwendete Bing-Rechtschreibprüfungs-API unterstützt keine Liste (auch als Whitelist bezeichnet) mit Wörtern, die bei den Änderungen durch die Rechtschreibprüfung ignoriert werden sollen. Wenn Sie eine Liste für Wörter oder Akronyme benötigen, verarbeiten Sie die Äußerung im Client, bevor Sie die Äußerung zur Absichtsvorhersage an LUIS senden.
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Ändern der Zeitzone von vordefinierten datetimeV2-Entitäten
-Wenn eine LUIS-App eine vordefinierte datetimeV2-Entität verwendet, kann ein datetime-Wert in der Vorhersageantwort zurückgegeben werden. Der richtige datetime-Wert für die Rückgaben wird anhand der Zeitzone der Anforderung bestimmt. Wenn die Anforderung von einem Bot oder einer anderen zentralen Anwendung vor dem Empfang durch LUIS stammt, korrigieren Sie die von LUIS verwendete Zeitzone. 
+Wenn eine LUIS-App die vordefinierte Entität [datetimeV2](luis-reference-prebuilt-datetimev2.md) verwendet, kann ein datetime-Wert in der Vorhersageantwort zurückgegeben werden. Der richtige datetime-Wert für die Rückgaben wird anhand der Zeitzone der Anforderung bestimmt. Wenn die Anforderung von einem Bot oder einer anderen zentralen Anwendung vor dem Empfang durch LUIS stammt, korrigieren Sie die von LUIS verwendete Zeitzone. 
 
 ### <a name="endpoint-querystring-parameter"></a>QueryString-Parameter für den Endpunkt
 Sie korrigieren die Zeitzone, indem Sie am [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356) mithilfe des `timezoneOffset`-Parameters die Zeitzone des Benutzers hinzufügen. Der Wert von `timezoneOffset` sollte die positive oder negative Zahl in Minuten sein, um die die Zeit geändert werden soll.  

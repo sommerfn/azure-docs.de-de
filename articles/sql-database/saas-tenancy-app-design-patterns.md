@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484453"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570194"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -105,7 +104,7 @@ Azure SQL-Datenbank stellt die Tools zur Verfügung, die erforderlich sind, um d
 
 Die Azure SQL-Datenbank-Plattform verfügt über viele Verwaltungsfeatures, die für die Verwaltung einer großen Anzahl von Datenbanken ausgelegt sind (z.B. weit über 100.000 Datenbanken).  Aufgrund dieser Eigenschaften erweist sich das Muster mit einer Datenbank pro Mandant als sinnvolle Option.
 
-Nehmen wir beispielsweise an, dass ein System ausschließlich auf einer Datenbank mit 1000 Mandanten basiert.  Die Datenbank kann 20 Indizes enthalten.  Wenn das System nun auf 1000 Einzelinstanzdatenbanken umgestellt wird, steigt die Zahl der Indizes folglich auf 20.000.  Standardmäßig sind die automatischen Indizierungsfunktionen in der SQL-Datenbank im Rahmen der [automatischen Optimierung][docu-sql-db-automatic-tuning-771a] aktiviert.  Bei der automatischen Indizierung werden alle 20.000 Indizes sowie die entsprechenden laufenden Optimierungen im Hinblick auf Erstellungs- und Reduzierungsvorgänge für Sie verwaltet.  Diese automatisierten Aktionen finden in einer einzelnen Datenbank statt und werden nicht durch ähnliche Aktionen in anderen Datenbanken koordiniert oder eingeschränkt.  Die automatische Indizierung behandelt Indizes in einer ausgelasteten Datenbank anders als in einer weniger stark ausgelasteten Datenbank.  Diese Art der Indexverwaltungsanpassung wäre bei manueller Ausführung einer derart umfangreichen Verwaltungsaufgabe im Hinblick auf eine Datenbank pro Mandant nicht praktikabel.
+Nehmen wir beispielsweise an, dass ein System ausschließlich auf einer Datenbank mit 1000 Mandanten basiert.  Die Datenbank kann 20 Indizes enthalten.  Wenn das System nun auf 1000 Einzelinstanzdatenbanken umgestellt wird, steigt die Zahl der Indizes folglich auf 20.000.  Standardmäßig sind die automatischen Indizierungsfunktionen in SQL-Datenbank im Rahmen der [automatischen Optimierung][docu-sql-db-automatic-tuning-771a] aktiviert.  Bei der automatischen Indizierung werden alle 20.000 Indizes sowie die entsprechenden laufenden Optimierungen im Hinblick auf Erstellungs- und Reduzierungsvorgänge für Sie verwaltet.  Diese automatisierten Aktionen finden in einer einzelnen Datenbank statt und werden nicht durch ähnliche Aktionen in anderen Datenbanken koordiniert oder eingeschränkt.  Die automatische Indizierung behandelt Indizes in einer ausgelasteten Datenbank anders als in einer weniger stark ausgelasteten Datenbank.  Diese Art der Indexverwaltungsanpassung wäre bei manueller Ausführung einer derart umfangreichen Verwaltungsaufgabe im Hinblick auf eine Datenbank pro Mandant nicht praktikabel.
 
 Zu anderen Verwaltungsfunktionen, die sich gute skalieren lassen, zählen Folgende:
 
@@ -126,7 +125,7 @@ Ein weiteres verfügbares Muster besteht darin, viele Mandanten in einer mehrins
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Eingeschränkte Mandantenisolation
 
-*Daten:* &nbsp; Eine mehrinstanzenfähige Datenbank schränkt zwangsläufig die Mandantenisolation ein.  Die Daten mehrerer Mandanten werden zusammen in einer Datenbank gespeichert.  Achten Sie bei der Entwicklung darauf, dass bei Abfragen niemals Daten von mehr als einem Mandanten offengelegt werden.  Die SQL-Datenbank unterstützt die [Sicherheit auf Zeilenebene][docu-sql-svr-db-row-level-security-947w], wodurch erzwungen werden kann, dass die von einer Abfrage zurückgegebenen Daten auf einen einzelnen Mandanten beschränkt werden.
+*Daten:* &nbsp; Eine mehrinstanzenfähige Datenbank schränkt zwangsläufig die Mandantenisolation ein.  Die Daten mehrerer Mandanten werden zusammen in einer Datenbank gespeichert.  Achten Sie bei der Entwicklung darauf, dass bei Abfragen niemals Daten von mehr als einem Mandanten offengelegt werden.  SQL-Datenbank unterstützt die [Sicherheit auf Zeilenebene][docu-sql-svr-db-row-level-security-947w], wodurch erzwungen werden kann, dass die von einer Abfrage zurückgegebenen Daten auf einen einzelnen Mandanten beschränkt werden.
 
 *Verarbeitung:* &nbsp; Eine mehrinstanzenfähige Datenbank teilt Compute- und Speicherressourcen auf alle seine Mandanten auf.  Um einen ordnungsgemäßen Betrieb sicherzustellen, kann die gesamte Datenbank überwacht werden.  Allerdings weist das Azure-System keine integrierte Option auf, um die Nutzung dieser Ressourcen durch einen einzelnen Mandanten zu überwachen oder zu verwalten.  Daher besteht bei einer mehrinstanzenfähigen Datenbank ein höheres Risiko eines sogenannten „Noisy Neighbor“-Effekts, bei dem die Workload eines übermäßig aktiven Mandanten die Leistung anderer Mandanten in derselben Datenbank beeinträchtigt.  Durch zusätzliche Überwachung auf Anwendungsebene kann die Leistung auf Mandantenebene überwacht werden.
 

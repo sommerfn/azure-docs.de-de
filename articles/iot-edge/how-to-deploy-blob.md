@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295185"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640676"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -86,7 +86,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    - Ersetzen Sie `<storage directory bind>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherverzeichnisbindung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.
 
      - Für Linux-Container lautet das Format *\<speicherpfad>:/blobroot*. Beispiel: **/srv/containerdata:/blobroot** oder **my-volume:/blobroot**.
-     - Für Windows-Container lautet das Format *\<speicherpfad>:C:/BlobRoot*. Beispiel: **C:/ContainerData:C:/BlobRoot** oder **my-volume:C:/blobroot**.
+     - Für Windows-Container lautet das Format *\<speicherpfad>:C:/BlobRoot*. Beispiel: **C:/ContainerData:C:/BlobRoot** oder **my-volume:C:/blobroot**. Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherverzeichnisbindung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherverzeichnisbindung muss immer mit **:/blobroot** (Linux-Container) bzw. mit **:C:/BlobRoot** (Windows-Container) enden.
@@ -194,7 +194,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 1. Ersetzen Sie `<storage directory bind>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherverzeichnisbindung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.  
 
       - Für Linux-Container lautet das Format *\<speicherpfad>:/blobroot*. Beispiel: **/srv/containerdata:/blobroot** oder **my-volume:/blobroot**.
-      - Für Windows-Container lautet das Format *\<speicherpfad>:C:/BlobRoot*. Beispiel: **C:/ContainerData:C:/BlobRoot** oder **my-volume:C:/blobroot**.
+      - Für Windows-Container lautet das Format *\<speicherpfad>:C:/BlobRoot*. Beispiel: **C:/ContainerData:C:/BlobRoot** oder **my-volume:C:/blobroot**.  Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
       > [!IMPORTANT]
       > Die zweite Hälfte des Werts für die Speicherverzeichnisbindung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherverzeichnisbindung muss immer mit **:/blobroot** (Linux-Container) bzw. mit **:C:/BlobRoot** (Windows-Container) enden.
@@ -249,5 +249,8 @@ Bearbeiten Sie das Feld **Optionen für Containererstellung** (im Azure-Portal) 
 Wenn Sie zusätzliche Blob Storage-Module verbinden, ändern Sie den Endpunkt dahingehend, dass er auf den aktualisierten Hostport zeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+Informieren Sie sich ausführlicher über [Azure Blob Storage in IoT Edge](how-to-store-data-blob.md).
+
+Bleiben Sie in Bezug auf die neuesten Updates und Ankündigung im [Blog zu Azure Blob Storage in IoT Edge](https://aka.ms/abs-iot-blogpost) auf dem Laufenden.
 
 Weitere Informationen zur Funktionsweise und Erstellung von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).

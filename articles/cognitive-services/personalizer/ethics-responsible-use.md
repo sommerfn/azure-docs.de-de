@@ -3,19 +3,19 @@ title: Ethik und verantwortungsvolle Verwendung – Personalisierung
 titleSuffix: Azure Cognitive Services
 description: Diese Richtlinien sollen Ihnen dabei helfen, die Personalisierung auf eine Weise zu implementieren, die Ihnen dabei hilft, Vertrauen in Ihr Unternehmen und Ihren Dienst aufzubauen. Achten Sie darauf, dass Sie sich Zeit nehmen, zu forschen, zu lernen und sich mit den Auswirkungen der Personalisierung auf das Leben der Benutzer auseinanderzusetzen. Lassen Sie sich im Zweifelsfall beraten.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: edjez
-ms.openlocfilehash: ceb32e9e378ba1e58db11e55be8bd551faf08c2a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722394"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662785"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richtlinien für die verantwortungsvolle Implementierung der Personalisierung
 
@@ -183,7 +183,7 @@ Erwägen Sie, Methoden für Teammitglieder, Benutzer und Geschäftsinhaber zu er
 
 Jede Person, die sich Gedanken zu Nebeneffekten der Verwendung jeglicher Technologie macht, ist durch die eigene Perspektive und Lebenserfahrung eingeschränkt. Erweitern Sie den Bereich der verfügbaren Meinungen, indem Sie vielfältigere Stimmen in Ihre Teams und bei den Benutzern oder Beratungsgremien einbringen, damit diese frei sprechen können und dazu ermutigt werden. Berücksichtigen Sie Schulungs- und Lernmaterialien, um das Teamwissen in dieser Domäne noch zu erweitern und Fähigkeiten zur Diskussion komplexer und sensibler Themen auszubauen.
 
-Erwägen Sie, Aufgaben zur verantwortungsvollen Verwendung wie alle anderen bereichsübergreifenden Aufgaben im Anwendungslebenszyklus zu behandeln, ebenso wie Aufgaben im Zusammenhang mit der Benutzererfahrung, Sicherheit oder DevOps. Diese Aufgaben und ihre Anforderungen dürfen nicht nur als Nebensache betrachtet werden. Die verantwortungsvolle Verwendung sollte während des gesamten Lebenszyklus der Anwendung diskutiert und überprüft werden.
+Erwägen Sie, Aufgaben zur verantwortungsvollen Verwendung wie alle anderen bereichsübergreifenden Aufgaben im Anwendungslebenszyklus zu behandeln, etwa Aufgaben im Zusammenhang mit der Benutzererfahrung, Sicherheit oder DevOps. Diese Aufgaben und ihre Anforderungen dürfen nicht nur als Nebensache betrachtet werden. Die verantwortungsvolle Verwendung sollte während des gesamten Lebenszyklus der Anwendung diskutiert und überprüft werden.
  
 ## <a name="questions-and-feedback"></a>Fragen und Feedback
 

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4c4933847a39a56084894e5bbd40e166e6b73b6
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798633"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618265"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegieren von Aufgaben in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -136,9 +136,9 @@ Wenn Sie das Erstellen des Katalogs delegieren möchten, fügen Sie Benutzer der
 
 Wenn Sie die Verwaltung eines Katalogs oder von Zugriffspaketen im Katalog delegieren möchten, fügen Sie der Katalogbesitzer- oder Zugriffspaket-Manager-Rolle Benutzer hinzu. Der Benutzer, der einen Katalog erstellt, ist der erste Katalogbesitzer. Um einen Benutzer der Katalogbesitzer- oder Zugriffspaket-Manager-Rolle zuzuweisen, gehen Sie wie folgt vor.
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, dem Sie Administratoren hinzufügen möchten.
 

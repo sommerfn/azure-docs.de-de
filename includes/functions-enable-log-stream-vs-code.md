@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 06/25/2019
 ms.author: glenga
-ms.openlocfilehash: 83226fb98f28d95d6244c93043e95424d2da7fe6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 437b4ab62cc8c4903af88ca2f9632e89b953c798
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455410"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669644"
 ---
 So aktivieren Sie die Streamingprotokolle für Ihre Funktions-App in Azure
 
@@ -17,6 +17,6 @@ So aktivieren Sie die Streamingprotokolle für Ihre Funktions-App in Azure
 
 1. Wählen Sie Ihre Funktions-App in Azure und dann **Ja** aus, um die Anwendungsprotokollierung für Ihre Funktions-App zu aktivieren.
 
-1. Lösen Sie Ihre Funktionen in Azure aus, und beachten Sie, dass in Visual Studio Code Protokolldaten im Ausgabefenster angezeigt werden.
+1. Lösen Sie Ihre Funktionen in Azure aus. Beachten Sie, dass in Visual Studio Code Protokolldaten im Ausgabefenster angezeigt werden.
 
 1. Wenn Sie fertig sind, denken Sie daran, den Befehl **Azure Functions: Streamingprotokolle beenden** auszuführen, um die Protokollierung für die Funktions-App zu deaktivieren.

@@ -1,5 +1,5 @@
 ---
-title: Leitfaden zum Installieren und Bereitstellen des C-basierten Linux-Agents von Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+title: Leitfaden zum Installieren und Bereitstellen des C-basierten Linux-Agents von Azure Security Center für IoT | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Security Center für IoT-Agent unter Linux (32 Bit und 64 Bit) installieren.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,22 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f5b98060486e6c55bb1702386cd5438f558254b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3fd4287c6dd1cc42f419cfa6b252c1d276d1d5a5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616844"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597224"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C-basierten Sicherheits-Agents von Azure Security Center für IoT unter Linux
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In diesem Leitfaden erfahren Sie, wie Sie den C-basierten Sicherheits-Agent von Azure Security Center (ASC) für IoT unter Linux installieren und bereitstellen.
+In diesem Leitfaden erfahren Sie, wie Sie den C-basierten Sicherheits-Agent von Azure Security Center für IoT unter Linux installieren und bereitstellen.
 
 In diesem Artikel lernen Sie Folgendes: 
 > [!div class="checklist"]
@@ -47,14 +43,14 @@ Informationen zu anderen Plattformen und Agent-Varianten finden Sie unter [Choos
 
 ## <a name="installation"></a>Installation 
 
-Gehen Sie zum Installieren und Bereitstellen des Sicherheits-Agents wie folgt vor:
+Verwenden Sie zum Installieren und Bereitstellen des Sicherheits-Agents den folgenden Workflow:
 
 
 1. Laden Sie von [GitHub](https://aka.ms/iot-security-github-c) die neueste Version auf Ihren Computer herunter.
 
 1. Extrahieren Sie den Inhalt des Pakets, und navigieren Sie zum Ordner _/Install_.
 
-1. Führen Sie Folgendes aus, um dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzuzufügen:
+1. Führen Sie den folgenden Befehl aus, um dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzuzufügen:
     
    ```
    chmod +x InstallSecurityAgent.sh
@@ -68,7 +64,7 @@ Gehen Sie zum Installieren und Bereitstellen des Sicherheits-Agents wie folgt vo
    
    Weitere Informationen zu Authentifizierungsparametern finden Sie unter [Security agent authentication methods](concept-security-agent-authentication-methods.md) (Authentifizierungsmethoden des Sicherheits-Agents).
 
-Das Skript bewirkt Folgendes:
+Dieses Skript führt die folgende Funktion aus:
 
 1. Installieren der erforderlichen Komponenten
 
@@ -95,8 +91,8 @@ Führen Sie Folgendes aus, um den Bereitstellungsstatus zu überprüfen:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Lesen Sie die [Übersicht](overview.md) über ASC für IoT.
-- Informieren Sie sich ausführlicher über die [Architektur](architecture.md) von ASC für IoT.
+- Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
+- Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
 - Lesen Sie die [häufig gestellten Fragen](resources-frequently-asked-questions.md).
 - Machen Sie sich mit [Sicherheitswarnungen](concept-security-alerts.md) vertraut.

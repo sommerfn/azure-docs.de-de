@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 9a02a56df85c5c6aa9fd177ad42a2f9bfb303e44
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491949"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609994"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema und Datenaggregation in Traffic Analytics
 
@@ -32,8 +32,8 @@ Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und 
 
 ### <a name="data-aggregation"></a>Daten-Aggregation
 
-1. Alle Flowprotokolle in einer Netzwerksicherheitsgruppe zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ werden im Speicherkonto in Intervallen von einer Minute als Blobs erfasst, bevor sie von Traffic Analytics verarbeitet werden.
-2. Das Standardintervall für die Verarbeitung in Traffic Analytics beträgt 60 Minuten. Das bedeutet, dass Traffic Analytics alle 60 Minuten Blobs aus dem Speicher erfasst, um diese zu aggregieren.
+1. Alle Flowprotokolle in einer Netzwerksicherheitsgruppe zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ werden im Speicherkonto in Intervallen von einer Minute als Blobs erfasst, bevor sie von Traffic Analytics verarbeitet werden. 
+2. Das Standardintervall für die Verarbeitung in Traffic Analytics beträgt 60 Minuten. Das bedeutet, dass Traffic Analytics alle 60 Minuten Blobs aus dem Speicher erfasst, um diese zu aggregieren. Wenn als Verarbeitungsintervall 10 Minuten ausgewählt wird, wählt Traffic Analytics alle 10 Minuten Blobs aus dem Speicherkonto aus.
 3. Flows, die die gleichen Werte für Quell-IP, Ziel-IP, Zielport, NSG-Name, NSG-Regel, Flowrichtung und Transportschichtprotokoll (TCP oder UDP) aufweisen (Hinweis: der Quellport wird bei der Aggregation ausgeschlossen), werden von Traffic Analytics in einen einzigen Flow zusammengefasst.
 4. Dieser einzelne Datensatz wird ergänzt (Details dazu im folgenden Abschnitt) und von Traffic Analytics in Log Analytics erfasst. Dieser Vorgang kann bis zu 1 Stunde (max.) dauern.
 5. Das Feld „FlowStartTime_t“ gibt das erste Vorkommen eines solchen aggregierten Flows (gleiches 4-Tupel) im Verarbeitungsintervall des Flowprotokolls zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ an.
@@ -92,7 +92,7 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 
 | Feld | Format | Kommentare |
 |:---   |:---    |:---  |
-| TableName | AzureNetworkAnalytics_CL | Tabelle für Traffic Analytics-Daten.
+| TableName | AzureNetworkAnalytics_CL | Tabelle für Traffic Analytics-Daten
 | SubType_s | FlowLog | Untertyp für die Flowprotokolle. Verwenden Sie nur „FlowLog“, denn andere Werte für SubType_s sind für die interne Funktionsweise des Produkts |
 | FASchemaVersion_s |   1   | Schemaversion. Spiegelt nicht die Version des NSG-Flowprotokolls wider. |
 | TimeProcessed_t   | Datum und Uhrzeit in UTC  | Der Zeitpunkt, zu dem Traffic Analytics die unformatierten Flowprotokolle aus dem Speicherkonto verarbeitet hat. |

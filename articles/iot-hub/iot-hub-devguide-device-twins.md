@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055371"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640613"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -231,7 +231,7 @@ Neben diesen Vorgängen kann das Lösungs-Back-End auch folgende Aktionen ausfü
 
 Die Geräte-App greift mithilfe folgender atomarer Vorgänge auf den Gerätezwilling zu:
 
-* **Abrufen des Gerätezwillings**. Dieser Vorgang gibt das Dokument für den Gerätezwilling für das derzeit verbundene Gerät zurück, einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften.
+* **Abrufen des Gerätezwillings**. Dieser Vorgang gibt das Dokument für den Gerätezwilling (einschließlich gewünschter und gemeldeter Systemeigenschaften) für das derzeit verbundene Gerät zurück. (Tags sind für Geräte-Apps nicht sichtbar.)
 
 * **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die teilweise Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Geräts. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
 

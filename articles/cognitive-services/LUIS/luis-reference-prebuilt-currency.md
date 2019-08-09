@@ -1,6 +1,6 @@
 ---
-title: Vordefinierte Währungsentität
-titleSuffix: Azure
+title: 'Vordefinierte Währungsentität: LUIS'
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vordefinierten Entität „currency“ in LUIS (Language Understanding Intelligent Service).
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 7e882a66ae5a090e1fd3a0850ff35281dc4e692d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 369e8f94a4733a7c9e21fee98c72aa447802e943
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072026"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563495"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Währungsentität für eine LUIS-App
 Die vordefinierte currency-Entität erkennt Währungen in vielen Bezeichnungen und Ländern/Regionen, unabhängig von der LUIS-App-Kultur. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Währungen hinzufügen. Die currency-Entität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 

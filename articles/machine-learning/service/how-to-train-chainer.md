@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 06/15/2019
-ms.openlocfilehash: 8ecefccbdf5f02652e935858b6ae8fb4cdfde640
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840038"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618343"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Trainieren und Registrieren von Chainer-Modellen nach Maß mit Azure Machine Learning Service
 
@@ -38,7 +38,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
 
 - Ihr eigener Jupyter Notebook-Server
 
-    - [Installieren Sie das Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk).
+    - [Installieren des Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
     - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich](setup-create-workspace.md#write-a-configuration-file).
     - Laden Sie die Beispielskriptdatei [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) herunter.
      - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine vervollständigte [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) dieser Anleitung. Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
@@ -62,7 +62,7 @@ print("SDK version:", azureml.core.VERSION)
 
 Der [Azure Machine Learning Service-Arbeitsbereich](concept-workspace.md) ist für den Dienst die Ressource der obersten Ebene. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-Objekt erstellen.
 
-Erstellen Sie ein Arbeitsbereichsobjekt anhand der Datei `config.json`, die im Abschnitt [Voraussetzungen](#prerequisites) erstellt wurde.
+Erstellen Sie ein Arbeitsbereichsobjekt mithilfe der Datei `config.json`, die im [Abschnitt Voraussetzungen](#prerequisites) erstellt wurde:
 
 ```Python
 ws = Workspace.from_config()
@@ -82,7 +82,9 @@ os.makedirs(project_folder, exist_ok=True)
 
 In diesem Tutorial ist das Trainingsskript **chainer_mnist.py** bereits bereitgestellt. In der Praxis sollten Sie benutzerdefinierte Trainingsskripts unverändert übernehmen und mit Azure ML ausführen können, ohne Ihren Code ändern zu müssen.
 
-Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, müssen Sie Ihr Trainingsskript mit Azure ML-Code ergänzen.  Das Trainingsskript **chainer_mnist.py** zeigt, wie Sie einige Metriken zu Ihrem Azure ML-Lauf protokollieren können. Dazu greifen Sie innerhalb des Skripts auf das Azure ML-Objekt `Run` zu.
+Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript mit Azure ML-Code.  Das Trainingsskript **chainer_mnist.py** zeigt, wie Sie mit dem Objekt `Run` innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
+
+Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der chainer-Funktion `datasets.mnist.get_mnist`.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md#upload-dataset-and-scripts)) ausführen, um Daten während des Trainings verfügbar zu machen.
 
 Kopieren Sie das Trainingsskript **chainer_mnist.py** in Ihr Projektverzeichnis.
 
@@ -94,7 +96,7 @@ shutil.copy('chainer_mnist.py', project_folder)
 
 ### <a name="create-an-experiment"></a>Erstellen eines Experiments
 
-Erstellen Sie ein Experiment und einen Ordner, in dem Ihre Trainingsskripts gespeichert werden. In diesem Beispiel erstellen Sie ein Experiment mit dem Namen „chainer-mnist“.
+Erstellen Sie ein Experiment. In diesem Beispiel erstellen Sie ein Experiment mit dem Namen „chainer-mnist“.
 
 ```
 from azureml.core import Experiment
@@ -106,9 +108,9 @@ experiment = Experiment(ws, name=experiment_name)
 
 ## <a name="create-or-get-a-compute-target"></a>Erstellen oder Abrufen eines Computeziels
 
-Sie benötigen für das Training des Modells ein [Computeziel](concept-compute-target.md). In diesem Tutorial verwenden Sie die verwaltete Azure ML-Computeressource (AmlCompute) als Computeressource für Ihr Remotetraining.
+Sie benötigen zum Trainieren Ihres Modells ein [Computeziel](concept-compute-target.md). In diesem Beispiel verwenden Sie die verwaltete Azure ML-Computeressource (AmlCompute) als Computeressource für Ihr Remotetraining.
 
-**Die Erstellung von AmlCompute dauert etwa fünf Minuten**. Wenn sich eine AmlCompute-Ressource mit diesem Namen bereits in Ihrem Arbeitsbereich befindet, überspringt dieser Code den Erstellungsprozess.  
+**Die Erstellung von AmlCompute dauert etwa fünf Minuten**. Wenn sich bereits eine AmlCompute-Ressource mit diesem Namen in Ihrem Arbeitsbereich befindet, überspringt dieser Code den Erstellungsprozess.  
 
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -182,19 +184,28 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 Sobald Sie das Modell trainiert haben, können Sie es in Ihrem Arbeitsbereich speichern und registrieren. Die Modellregistrierung bietet die Möglichkeit, Ihre Modelle in Ihrem Arbeitsbereich zu speichern und zu versionieren, um die [Modellverwaltung und -bereitstellung](concept-model-management-and-deployment.md) zu vereinfachen.
 
-Fügen Sie Ihrem Trainingsskript **chainer_mnist.py** den folgenden Code hinzu, um das Modell zu speichern. 
 
-``` Python
-    serializers.save_npz(os.path.join(args.output_dir, 'model.npz'), model)
-```
-
-Registrieren Sie das Modell mit dem folgenden Code in Ihrem Arbeitsbereich.
+Registrieren Sie nach Abschluss des Modelltrainings das Modell mit dem folgenden Code in Ihrem Arbeitsbereich:  
 
 ```Python
 model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/model.npz')
 ```
 
+> [!TIP]
+> Wird ein Fehler mit der Meldung angezeigt, dass das Modell nicht gefunden wurde, warten Sie einen Moment, und wiederholen Sie dann den Vorgang.  Manchmal dauert es kurz, bis das Modell nach dem Ende der Trainingsausführung im Ausgabeverzeichnis verfügbar ist.
 
+Sie können auch eine lokale Kopie des Modells herunterladen. Dies kann nützlich sein, um zusätzliche Arbeiten zur Modellüberprüfung lokal durchzuführen. Im Trainingsskript `chainer_mnist.py` wird das Modell durch ein saver-Objekt persistent in einem lokalen Ordner (lokal für das Computeziel) gespeichert. Mit dem Run-Objekt können Sie eine Kopie aus dem Datenspeicher herunterladen.
+
+```Python
+# Create a model folder in the current directory
+os.makedirs('./model', exist_ok=True)
+
+for f in run.get_file_names():
+    if f.startswith('outputs/model'):
+        output_file_path = os.path.join('./model', f.split('/')[-1])
+        print('Downloading from {} to {} ...'.format(f, output_file_path))
+        run.download_file(name=f, output_file_path=output_file_path)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

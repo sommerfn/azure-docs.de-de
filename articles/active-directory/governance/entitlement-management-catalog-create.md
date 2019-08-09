@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489084"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618311"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Erstellen und Verwalten eines Katalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -34,7 +34,7 @@ ms.locfileid: "68489084"
 
 Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen einen Katalog, wenn Sie zugehörige Ressourcen und Zugriffspakete gruppieren möchten. Der Benutzer, der den Katalog erstellt, ist der erste Katalogbesitzer. Ein Katalogbesitzer kann weitere Katalogbesitzer hinzufügen.
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogersteller
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogersteller
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -102,9 +102,9 @@ Sie können Ressourcen aus einem Katalog entfernen. Eine Ressource kann nur aus 
 
 Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern werden diese Informationen in den Details eines Zugriffspakets angezeigt.
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, den Sie bearbeiten möchten.
 
@@ -118,9 +118,9 @@ Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern 
 
 Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, den Sie löschen möchten.
 

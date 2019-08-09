@@ -1,5 +1,5 @@
 ---
-title: Erhöhen des Endpunktkontingents
+title: 'Erhöhen des Endpunktkontingents: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen.
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10ddbed710d3055e66bd3cb0b06cfa7949a9a1c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123544"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563379"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -82,7 +82,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Osten“ umfasst mehrere 
     |--|--|--|
     |-Name|luis-profile-eastus|Traffic Manager-Name im Azure-Portal|
     |-ResourceGroupName|luis-traffic-manager|Im vorherigen Abschnitt erstellt|
-    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Routingmethoden][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
+    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
     |-RelativeDnsName|luis-dns-eastus|Dies ist die Unterdomäne für den Dienst: luis-dns-eastus.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
@@ -150,7 +150,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Westen“ umfasst die gle
     |--|--|--|
     |-Name|luis-profile-westus|Traffic Manager-Name im Azure-Portal|
     |-ResourceGroupName|luis-traffic-manager|Im vorherigen Abschnitt erstellt|
-    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Routingmethoden][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
+    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
     |-RelativeDnsName|luis-dns-westus|Dies ist die Unterdomäne für den Dienst: luis-dns-westus.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
@@ -217,7 +217,7 @@ Erstellen Sie das übergeordnete Traffic Manager-Profil, und verknüpfen Sie zwe
     |--|--|--|
     |-Name|luis-profile-parent|Traffic Manager-Name im Azure-Portal|
     |-ResourceGroupName|luis-traffic-manager|Im vorherigen Abschnitt erstellt|
-    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Routingmethoden][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
+    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
     |-RelativeDnsName|luis-dns-parent|Dies ist die Unterdomäne für den Dienst: luis-dns-parent.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4b63cfc67e20158e434e1a401d47144c3e0f90c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472489"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618777"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
 
@@ -41,9 +41,6 @@ Das Arbeitsblatt „On-premises Summary“ (Lokale Zusammenfassung) enthält ein
 **Observed typical data churn per day (GB)** (Beobachtete typische Datenänderungsrate pro Tag (GB)): Die durchschnittliche, über alle Tage der Profilerstellung hinweg beobachtete Datenänderungsrate. Diese Anzahl wird als eine der Eingaben genutzt, um eine Entscheidung über die Anzahl von Konfigurationsservern und zusätzlichen Prozessservern zu treffen, die in der Bereitstellung verwendet werden sollen.
 
 ## <a name="recommendations"></a>Empfehlungen
-
->[!Note]
->Wenn Sie direkt auf verwaltete Datenträger replizieren, ignorieren Sie die Empfehlung für die Anzahl der Speicherkonten.
 
 Das Arbeitsblatt „Recommendations“ (Empfehlungen) des Berichts für „VMware zu Azure“ enthält je nach ausgewähltem gewünschtem RPO die folgenden Details:
 
@@ -95,7 +92,7 @@ Wenn Sie das Tool auf einem Konfigurations- oder Prozessserver ausführen, der b
 Für alle Site Recovery-Bereitstellungen für Unternehmen empfehlen wir die Verwendung von [ExpressRoute](https://aka.ms/expressroute).
 
 ### <a name="required-storage-accounts"></a>Erforderliche Speicherkonten
-Im folgenden Diagramm wird die Gesamtzahl von Speicherkonten (Standard und Premium) angegeben, die zum Schützen aller kompatiblen VMs erforderlich sind. Informationen dazu, welches Speicherkonto für eine VM jeweils verwendet werden sollte, finden Sie im Abschnitt „VM/Speicher-Anordnung“.
+Im folgenden Diagramm wird die Gesamtzahl von Speicherkonten (Standard und Premium) angegeben, die zum Schützen aller kompatiblen VMs erforderlich sind. Informationen dazu, welches Speicherkonto für eine VM jeweils verwendet werden sollte, finden Sie im Abschnitt „VM/Speicher-Anordnung“. Wenn Sie Version 2.5 des Bereitstellungsplaners verwenden, zeigt diese Empfehlung nur die Anzahl von Standard-Cachespeicherkonten an, die für die Replikation erforderlich sind, da die Daten direkt auf verwaltete Datenträger geschrieben werden.
 
 ![Erforderliche Speicherkonten im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -160,21 +157,19 @@ Es kann sein, dass Sie in einer bestimmten Situation wissen, dass Sie keine höh
 ## <a name="vm-storage-placement"></a>VM/Speicher-Anordnung
 
 >[!Note]
->Wenn Sie direkt auf verwaltete Datenträger replizieren, ist die Anzahl der Speicherkonten unerheblich. Verwenden Sie für die Speicherung nur den empfohlenen Speichertyp (Standard oder Premium). Der gleiche Typ gilt für verwaltete Datenträger.
+>Ab Bereitstellungsplaner v2.5 wird die Speicherplatzierung für Computer empfohlen, die direkt auf verwalteten Datenträgern repliziert werden.
 
 ![VM/Speicher-Anordnung](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Disk Storage Type** (Datenträger-Speichertyp): Speicherkonto des Typs „Standard“ oder „Premium“, das zum Replizieren aller VMs verwendet wird, die in der Spalte **VMs to Place** (Anzuordnende VMs) angegeben sind.
+**Replication Storage Type** (Replikationsspeichertyp): Ein verwalteter Datenträger des Typs „Standard“ oder „Premium“, der zum Replizieren aller VMs verwendet wird, die in der Spalte **VMs to Place** (Anzuordnende VMs) angegeben sind
 
-**Suggested Prefix** (Vorgeschlagenes Präfix): Das vorgeschlagene Präfix aus drei Zeichen, das zum Benennen des Speicherkontos verwendet werden kann. Sie können ein eigenes Präfix verwenden, aber der Vorschlag des Tools basiert auf der [Partitionsbenennungskonvention für Speicherkonten](https://aka.ms/storage-performance-checklist).
+**Log Storage Account Type** (Typ des Protokollspeicherkontos): Alle Replikationsprotokolle werden in einem Speicherkonto vom Typ „Standard“ gespeichert.
 
-**Suggested Account Name** (Vorgeschlagener Kontoname): Der Speicherkontoname nach Einbindung des vorgeschlagenen Präfix. Ersetzen Sie den Namen in den spitzen Klammern (< und >) durch Ihre benutzerdefinierte Eingabe.
+**Suggested Prefix for Storage Account** (Empfohlenes Präfix für das Speicherkonto): Das vorgeschlagene Präfix aus drei Zeichen, das zum Benennen des Cachespeicherkontos verwendet werden kann. Sie können ein eigenes Präfix verwenden, aber der Vorschlag des Tools basiert auf der [Partitionsbenennungskonvention für Speicherkonten](https://aka.ms/storage-performance-checklist).
 
-**Log Storage Account** (Protokollspeicherkonto): Alle Replikationsprotokolle werden in einem Speicherkonto vom Typ „Standard“ gespeichert. Richten Sie für VMs, die in einem Storage Premium-Konto repliziert werden, ein zusätzliches Standard-Speicherkonto für die Protokollspeicherung ein. Ein einzelnes Standard-Protokollspeicherkonto kann von mehreren Premium-Replikationsspeicherkonten genutzt werden. Für VMs, die unter Standardspeicherkonten repliziert werden, wird dasselbe Speicherkonto für Protokolle verwendet.
+**Suggested Log Account Name** (Vorgeschlagener Protokollkontoname): Der Speicherkontoname nach Einbindung des vorgeschlagenen Präfix. Ersetzen Sie den Namen in den spitzen Klammern (< und >) durch Ihre benutzerdefinierte Eingabe.
 
-**Suggested Log Account Name** (Vorgeschlagener Protokollkontoname): Der Name des Speicherprotokollkontos nach Einbindung des vorgeschlagenen Präfix. Ersetzen Sie den Namen in den spitzen Klammern (< und >) durch Ihre benutzerdefinierte Eingabe.
-
-**Placement Summary** (Zusammenfassung der Anordnung): Eine Übersicht über die gesamte VM-Last für das Speicherkonto zum Zeitpunkt der Replikation und des Testfailovers bzw. Failovers. Folgendes wird angegeben: Gesamtzahl der VMs, die dem Speicherkonto zugeordnet sind, Lese/Schreib-IOPS-Gesamtwert über alle VMs hinweg, die unter diesem Speicherkonto angeordnet werden, Schreib-IOPS-Gesamtwert (Replikation), insgesamt eingerichtete Größe über alle Datenträger hinweg und Gesamtzahl von Datenträgern.
+**Placement Summary** (Zusammenfassung der Anordnung): Eine Zusammenfassung der zum Schützen der VMs erforderlichen Datenträger nach Speichertyp. Die Spalte enthält die Gesamtanzahl von VMs, die insgesamt auf allen Datenträgern bereitgestellte Größe und die Gesamtanzahl von Datenträgern.
 
 **Virtual Machines to Place** (Zu platzierende virtuelle Computer): Eine Liste aller VMs, die im jeweiligen Speicherkonto angeordnet werden sollten, um die optimale Leistung und Nutzung zu erzielen.
 
@@ -195,9 +190,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **Storage Type** (Speichertyp): Standard oder Premium.
 
-**Suggested Prefix** (Vorgeschlagenes Präfix): Das dreistellige Präfix für das Speicherkonto.
-
-**Storage Account** (Speicherkonto): Der Name, für den das vorgeschlagene Speicherkontopräfix verwendet wird.
+**Asrseeddisk (Managed Disk) created for replication** (Für die Replikation erstelltes Asrseeddisk-Element (Verwalteter Datenträger)): Der Name des Datenträgers, der beim Aktivieren der Replikation erstellt wird. Er speichert die Daten und die zugehörigen Momentaufnahmen in Azure.
 
 **Peak R/W IOPS (with Growth Factor)** (Lese/Schreib-IOPS-Spitzenwert (mit Zuwachsfaktor)): Der Lese/Schreib-IOPS-Wert für die Spitzenworkload auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30 %). Beachten Sie, dass der Lese/Schreib-IOPS-Gesamtwert einer VM nicht immer die Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger einer VM ist. Der Grund ist, dass der Lese/Schreib-IOPS-Spitzenwert der VM der Spitzenwert der Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
 
@@ -238,7 +231,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 80.000 pro VM.
 
-* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 10 MB/s für die durchschnittliche E/A-Größe für den Datenträger.
+* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 20 MB/s für die durchschnittliche E/A-Größe für den Datenträger.
 
 * Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 25 MB/s für die durchschnittliche E/A-Größe der VM (Summe der Datenänderungen aller Datenträger).
 

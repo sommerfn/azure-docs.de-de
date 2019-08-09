@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88e2025444aa2fd83e05fdff97ea640ceefaa04
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574141"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662925"
 ---
-# <a name="azure-security-center-search"></a>Azure Security Center-Suche
+# <a name="azure-security-center-search-retired"></a>Azure Security Center-Suche (ausgemustert)
 
 > [!NOTE]
-> Das Dashboard „Suchen“ des Azure Security Center wird am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_search).
+> Das Dashboard „Suchen“ von Security Center wurde am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_search).
 
 Azure Security Center verwendet die [Azure Monitor-Protokollsuche](../log-analytics/log-analytics-log-searches.md), um Ihre Sicherheitsdaten abzurufen und zu analysieren. Azure Monitor-Protokolle bietet eine Abfragesprache zum schnellen Abrufen und Konsolidieren von Daten. In Security Center können Sie mithilfe der Azure Monitor-Protokollsuche Abfragen erstellen und gesammelte Daten analysieren.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e3da856efd7d44f15f9de27c9e38375d40dc211d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10b661f0c4b7dc45284b907e83df3c0372f97cab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850964"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561539"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -29,7 +29,7 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
 
 ## <a name="register-microsoft-account"></a>Registrieren Ihrer App mit einem Microsoft-Konto
 1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie Ihre **URL**. Sie wird später benötigt, um die App mit einem Microsoft-Konto zu konfigurieren.
-2. Navigieren Sie im Microsoft Account Developer Center zur Seite [Eigene Anwendungen] , und melden Sie sich, falls erforderlich, mit Ihrem Microsoft-Konto an.
+2. Navigieren Sie zu [**App-Registrierungen**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade), und melden Sie sich bei entsprechender Aufforderung mit Ihrem Microsoft-Konto an.
 3. Klicken Sie auf **App hinzufügen**, geben Sie einen Anwendungsnamen ein, und klicken Sie auf **Erstellen**.
 4. Notieren Sie sich die **Anwendungs-ID**, da Sie sie später benötigen. 
 5. Klicken Sie unter „Plattformen“ auf **Plattform hinzufügen** , und wählen Sie „Web“ aus.
@@ -69,5 +69,5 @@ Sie können nun ein Microsoft-Konto für die Authentifizierung in Ihrer App verw
 
 <!-- URLs. -->
 
-[Eigene Anwendungen]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure-Portal]: https://portal.azure.com/

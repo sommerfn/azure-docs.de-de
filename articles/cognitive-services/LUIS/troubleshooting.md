@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen (FAQ)
+title: 'Häufig gestellte Fragen (FAQ): LUIS'
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
 author: diberry
@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204098"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609760"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -123,7 +123,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Bisher hat meine LUIS-App problemlos funktioniert. Nun werden jedoch 403-Fehlermeldungen angezeigt. Ich habe die App nicht geändert. Wie behebe ich das Problem?
-Führen Sie die Schritte in der [nächsten FAQ-Anleitung](#how-do-i-create-and-assign-a-luis-endpoint-key) durch, um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
+Befolgen Sie [diese Anweisungen](#how-do-i-create-and-assign-a-luis-endpoint-key), um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung der Clientanwendung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird. Wenn Sie eine neue Ressource in einer anderen Region erstellt haben, ändern Sie auch die Region der HTTP-Clientanforderung.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Wie sichere ich meinen LUIS-Endpunkt?
 Informationen hierzu finden Sie unter [Securing the endpoint (Schützen von Endpunkten)](luis-concept-security.md#securing-the-endpoint).

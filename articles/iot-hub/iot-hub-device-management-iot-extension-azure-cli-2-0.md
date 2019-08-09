@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399602"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640574"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Verwenden der IoT-Erweiterung für Azure CLI für die Verwaltung von Azure IoT Hub-Geräten
 
@@ -23,7 +23,7 @@ ms.locfileid: "60399602"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Die IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist eine neue Open Source-IoT-Erweiterung, die die Funktionen der [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) ergänzt. Die Azure CLI enthält Befehle zum Interagieren mit Azure Resource Manager- und Verwaltungsendpunkten. So können Sie beispielsweise die Azure CLI verwenden, um einen virtuellen Azure-Computer oder einen IoT Hub zu erstellen. Eine CLI-Erweiterung ermöglicht es einem Azure-Dienst, die Azure-Befehlszeilenschnittstelle zu ergänzen, wodurch Sie Zugriff auf zusätzliche dienstspezifische Funktionen erhalten. Die IoT-Erweiterung ermöglicht IoT-Entwicklern Befehlszeilenzugriff auf alle IoT Hub-, IoT Edge- und IoT Hub Device Provisioning-Dienst-Funktionen.
+[Die IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist eine neue Open-Source-IoT-Erweiterung, die die Funktionen der [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) ergänzt. Die Azure CLI enthält Befehle zum Interagieren mit Azure Resource Manager- und Verwaltungsendpunkten. So können Sie beispielsweise die Azure CLI verwenden, um einen virtuellen Azure-Computer oder einen IoT Hub zu erstellen. Eine CLI-Erweiterung ermöglicht es einem Azure-Dienst, die Azure-Befehlszeilenschnittstelle zu ergänzen, wodurch Sie Zugriff auf zusätzliche dienstspezifische Funktionen erhalten. Die IoT-Erweiterung ermöglicht IoT-Entwicklern Befehlszeilenzugriff auf alle IoT Hub-, IoT Edge- und IoT Hub Device Provisioning Service-Funktionen.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "60399602"
 | Gewünschte Eigenschaften von Gerätezwillingen    | Setzen Sie ein Gerät in bestimmte Status, stellen Sie z.B. das Leuchten einer grünen LED ein, oder legen Sie das Telemetriesendeintervall auf 30 Minuten fest.         |
 | Berichtete Eigenschaften von Gerätezwillingen   | Rufen Sie den berichteten Status eines Geräts ab. Das Gerät meldet z.B., das die LED jetzt blinkt.                                    |
 | Gerätezwillingstags                  | Speichern gerätespezifischer Metadaten in der Cloud – beispielsweise den Aufstellungsort eines Automaten.                         |
-| Gerätezwillingabfragen        | Fragen Sie alle Gerätezwillinge ab, um diejenigen abzurufen, die beliebige Bedingungen erfüllen; identifizieren Sie z.B. die zur Verwendung verfügbaren Geräte. |
+| Gerätezwillingabfragen        | Fragen Sie alle Gerätezwillinge ab, um diejenigen mit beliebigen Bedingungen abzurufen. Identifizieren Sie beispielsweise die zur Verwendung verfügbaren Geräte. |
 
 Eine ausführlichere Erläuterung zu den Unterschieden und Anweisungen zur Verwendung dieser Optionen finden Sie im [Leitfaden zur D2C-Kommunikation](iot-hub-devguide-d2c-guidance.md) und [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md).
 
@@ -41,7 +41,7 @@ Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metad
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
-Sie lernen, wie Sie die IoT-Erweiterung für Azure CLI mit verschiedenen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden können.
+Sie lernen, wie Sie die IoT-Erweiterung für die Azure CLI mit verschiedenen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden können.
 
 ## <a name="what-you-do"></a>Aufgaben
 
@@ -49,7 +49,7 @@ Sie führen Azure CLI und die IoT-Erweiterung für Azure CLI mit verschiedenen V
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials wie [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) abgeschlossen haben. In diesen werden folgende Anforderungen beschrieben:
+* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials wie [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) abgeschlossen haben. Darin werden folgende Anforderungen beschrieben:
 
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
@@ -59,11 +59,14 @@ Sie führen Azure CLI und die IoT-Erweiterung für Azure CLI mit verschiedenen V
 
 * [Python 2.7x oder Python 3.x](https://www.python.org/downloads/)
 
-* Die Azure-Befehlszeilenschnittstelle Installationsinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –version`, um dies zu überprüfen. 
+<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
+
+* Die Azure-Befehlszeilenschnittstelle Installationsinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –version`, um dies zu überprüfen.
 
 * Installieren Sie die IoT-Erweiterung. Die einfachste Möglichkeit ist die Ausführung von `az extension add --name azure-cli-iot-ext`. In der [Infodatei zur IoT-Erweiterung](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) werden mehrere Wege zum Installieren der Erweiterung beschrieben.
 
-## <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
+## <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
 Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
 
@@ -99,7 +102,7 @@ Zeigen Sie mithilfe des folgenden Befehls die berichteten Eigenschaften des Ger�
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-Eine der beiden gemeldeten Eigenschaften ist „$metadata.$lastUpdated“, die anzeigt, wann die Geräte-App das letzte Mal ihren gemeldeten Eigenschaftssatz aktualisiert hat.
+Eine der vom Zwilling gemeldeten Eigenschaften ist „$metadata.$lastUpdated“, die anzeigt, wann die Geräte-App das letzte Mal ihren gemeldeten Eigenschaftssatz aktualisiert hat.
 
 ## <a name="device-twin-tags"></a>Tags von Gerätezwillingen
 

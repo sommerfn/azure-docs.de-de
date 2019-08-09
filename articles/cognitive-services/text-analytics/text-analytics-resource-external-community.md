@@ -1,7 +1,7 @@
 ---
 title: Externe Inhalte und Community-Inhalte für die Textanalyse-API
 titleSuffix: Azure Cognitive Services
-description: Blogs von Partnern, YouTube-Videos, Training für die Textanalyse-API für Microsoft Cognitive Services für Azure.
+description: Blogs von Partnern, YouTube-Videos, Training für die Azure Cognitive Services-Textanalyse-API
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b46acb2f0fe04c37e73a69a09ee6ede9110864ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827934"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558825"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service
 

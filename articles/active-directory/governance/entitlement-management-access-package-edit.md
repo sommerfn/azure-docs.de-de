@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489203"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618377"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Bearbeiten und Verwalten eines vorhandenen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -38,7 +38,7 @@ In diesem Artikel wird beschrieben, wie Sie vorhandene Zugriffspakete bearbeiten
 
 Eine Ressourcenrolle ist eine Sammlung von Berechtigungen, die einer Ressource zugeordnet sind. Damit Benutzer Ressourcen anfordern können, müssen Sie dem Zugriffspaket Ressourcenrollen hinzufügen. Ressourcenrollen können für Gruppen, Anwendungen und SharePoint-Websites hinzugefügt werden.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -62,7 +62,7 @@ Mit der Azure AD-Berechtigungsverwaltung können Benutzer automatisch einer Grup
 Sie können eine beliebige Office 365-Gruppe oder Azure AD-Sicherheitsgruppe auswählen.  Administratoren können einem Katalog jede beliebige Gruppe hinzufügen. Das gleiche gilt für Katalogbesitzer, wenn sie Besitzer der Gruppe sind. Beachten Sie beim Auswählen einer Gruppe die folgenden Azure AD-Einschränkungen:
 
 - Wird ein Benutzer (einschließlich eines Gasts) einer Gruppe als Mitglied hinzugefügt, sind alle anderen Mitglieder dieser Gruppe für ihn sichtbar.
-- In Azure AD kann die Mitgliedschaft einer Gruppe, die über Windows Server Active Directory mit Azure AD Connect synchronisiert wurde, nicht geändert werden.  
+- In Azure AD kann die Mitgliedschaft einer Gruppe, die über Windows Server Active Directory mit Azure AD Connect synchronisiert oder in Exchange Online als Verteilergruppe erstellt wurde, nicht geändert werden.  
 - Die Mitgliedschaft von dynamischen Gruppen kann nicht durch Hinzufügen oder Entfernen eines Mitglieds aktualisiert werden. Daher eignen sich dynamische Gruppenmitgliedschaften nicht für die Azure AD-Berechtigungsverwaltung.
 
 1. Klicken Sie auf der Seite **Hinzufügen von Ressourcenrollen zu einem Zugriffspaket** auf **Gruppen**, um den Bereich „Gruppen auswählen“ zu öffnen.
@@ -136,7 +136,7 @@ Mit Azure AD kann Benutzern, die einem Zugriffspaket zugewiesen sind, automatisc
 
 ## <a name="remove-resource-roles"></a>Entfernen von Ressourcenrollen
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -158,7 +158,7 @@ Im folgenden Diagramm wird der allgemeine Prozess beim Erstellen einer Richtlini
 
 ![Prozess für das Erstellen einer Richtlinie](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -178,7 +178,7 @@ Im folgenden Diagramm wird der allgemeine Prozess beim Erstellen einer Richtlini
 
 Sie können eine Richtlinie jederzeit bearbeiten. Wenn Sie das Ablaufdatum für eine Richtlinie ändern, ändert sich das Ablaufdatum für Anforderungen mit ausstehender Genehmigung oder genehmigte Anforderungen nicht.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -200,7 +200,7 @@ Sie können eine Richtlinie jederzeit bearbeiten. Wenn Sie das Ablaufdatum für 
 
 In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriffspaket direkt zuweisen, damit diese das Zugriffspaket nicht extra anfordern müssen. Damit dies möglich ist, muss das Zugriffspaket eine Richtlinie enthalten, die direkte Zuweisungen eines Administrator erlaubt.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -228,7 +228,7 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 
 ## <a name="view-who-has-an-assignment"></a>Anzeigen von Benutzern mit Zuweisung
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -248,7 +248,7 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 
 ## <a name="view-requests"></a>Anzeigen von Anforderungen
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -260,7 +260,7 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 
 ## <a name="view-a-requests-delivery-errors"></a>Anzeigen der Fehler bei der Übermittlung einer Anforderung
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -280,7 +280,7 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 
 Es können nur ausstehende Anforderungen abgebrochen werden, die noch nicht übermittelt wurden.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -296,7 +296,7 @@ Es können nur ausstehende Anforderungen abgebrochen werden, die noch nicht übe
 
 Die meisten Benutzer in Ihrem Verzeichnis können sich beim Portal „Mein Zugriff“ anmelden, wo automatisch eine Liste mit den Zugriffspaketen, die sie anfordern können, angezeigt wird. Handelt es sich bei den Benutzern jedoch um externe Geschäftspartner, die sich noch nicht in Ihrem Verzeichnis befinden, müssen Sie diesen einen Link zur Anforderung eines Zugriffspakets senden. Ist das Zugriffspaket für externe Benutzer aktiviert und enthält es eine Richtlinie für das Verzeichnis des externen Benutzers, kann er über den Link zum Portal „Mein Zugriff“ das Zugriffspaket anfordern.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -312,7 +312,7 @@ Die meisten Benutzer in Ihrem Verzeichnis können sich beim Portal „Mein Zugri
 
 Zugriffspakete sind standardmäßig sichtbar. Dies bedeutet, dass einem Benutzer ein Zugriffspaket im Portal „Mein Zugriff“ automatisch aufgeführt wird, wenn ihm das Anfordern des Zugriffspakets in einer Richtlinie erlaubt wird.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -330,7 +330,7 @@ Zugriffspakete sind standardmäßig sichtbar. Dies bedeutet, dass einem Benutzer
 
 Es können nur Zugriffspakete ohne aktive Benutzerzuweisungen gelöscht werden.
 
-**Erforderliche Rolle**: Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

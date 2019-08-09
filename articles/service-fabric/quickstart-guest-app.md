@@ -3,7 +3,7 @@ title: Schnelles Bereitstellen einer vorhandenen App für einen Azure Service Fa
 description: Verwenden Sie einen Azure Service Fabric-Cluster, um mit Visual Studio eine vorhandene Node.js-Anwendung zu hosten.
 services: service-fabric
 documentationcenter: nodejs
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: bd19aba68f8b847e8f4800d348197f9c2b1c1289
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: atsenthi
+ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428235"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592448"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hosten einer Node.js.-Anwendung in Azure Service Fabric
 

@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/26/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065047"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596092"
 ---
 # <a name="monitor-server-metrics"></a>Überwachen von Servermetriken
 
-Analysis Services bietet Metriken zum Überwachen von Leistung und Integrität Ihres Servers. Überwachen Sie z.B. Arbeitsspeicher- und CPU-Nutzung, Anzahl der Clientverbindungen und Ressourcenverbrauch für Abfragen. Analysis Services verwendet das gleiche Überwachungsframework wie die meisten anderen Azure-Dienste. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Analysis Services bietet Metriken zum Überwachen von Leistung und Integrität Ihres Servers. Diese Metriken werden im Azure Metrik-Explorer, einem kostenlosen Tool im Portal, angezeigt. Überwachen Sie z.B. Arbeitsspeicher- und CPU-Nutzung, Anzahl der Clientverbindungen und Ressourcenverbrauch für Abfragen. Analysis Services verwendet das gleiche Überwachungsframework wie die meisten anderen Azure-Dienste. Weitere Informationen finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md).
 
-Um eine ausführlichere Diagnose auszuführen, Leistung nachzuverfolgen und mehrere Dienstressourcen in einer Ressourcengruppe oder einem Abonnement übergreifende Trends zu identifizieren, verwenden Sie [Azure Monitor](https://azure.microsoft.com/services/monitor/). Die Leistungen des Diensts Azure Monitor werden möglicherweise in Rechnung gestellt.
+Um eine ausführlichere Diagnose auszuführen, Leistung nachzuverfolgen und mehrere Dienstressourcen in einer Ressourcengruppe oder einem Abonnement übergreifende Trends zu identifizieren, verwenden Sie [Azure Monitor](../azure-monitor/overview.md). Die Leistungen des Diensts Azure Monitor werden möglicherweise in Rechnung gestellt.
 
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>So überwachen Sie Metriken für einen Analysis Services-Server
@@ -85,6 +85,6 @@ Bestimmen Sie mit dieser Tabelle, welche Metriken für Ihr Überwachungsszenario
 |TotalConnectionRequests|Total Connection Requests (Verbindungsanforderungen gesamt)|Count|Durchschnitt|Gesamtanzahl von Verbindungsanforderungen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Überwachung in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   
-[Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
+[Azure Monitor – Übersicht](../azure-monitor/overview.md)      
+[Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md)      
 [Metriken](/rest/api/monitor/metrics)

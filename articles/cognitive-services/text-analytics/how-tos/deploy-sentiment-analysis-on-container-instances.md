@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Azure Container Instances
+title: 'Ausführen von Azure Container Instances: Textanalyse'
 titleSuffix: Azure Cognitive Services
 description: Stellen Sie die Textanalysecontainer mit dem Bild der Standpunktanalyse bei den Azure Container Instances bereit, und testen Sie sie in einem Webbrowser.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 9f174d54fcc74eed613eb69412bc0e515f15897b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9ef529c9d505e5b305602c80a8dbef906f52269c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711335"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552522"
 ---
 # <a name="deploy-a-sentiment-analysis-container-to-azure-container-instances"></a>Bereitstellen eines Containers für die Standpunktanalyse für Azure Container Instances
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
-manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ddb1fe40507da5caa218f73284a1095035df951
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978524"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570369"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding
 
@@ -51,7 +50,7 @@ Eine Reihe von verwandten Tutorials steht zur Verfügung, die auf dieser anfäng
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-- Die neueste Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell][link-azure-get-started-powershell-41q].
+- Die neueste Azure PowerShell ist installiert. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure PowerShell][link-azure-get-started-powershell-41q].
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Bereitstellen der Wingtip Tickets-App
 

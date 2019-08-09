@@ -1,21 +1,21 @@
 ---
-title: Extrahieren von Entitäten mit Textübereinstimmungen
+title: 'Extrahieren von Entitäten mit Textübereinstimmungen: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie eine Listenentität hinzufügen, um den LUIS bei der Bezeichnung von Varianten eines Worts oder Ausdrucks zu unterstützen.
 services: cognitive-services
 author: diberry
-titleSuffix: Azure
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da6e8e794520a737a96ba45f94459fb8c1a5ff18
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117447"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637838"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  

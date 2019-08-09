@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 47d61f80cae926965dd71342980302c2b3045c52
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695217"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689647"
 ---
 # <a name="vpn-gateways-overview"></a>Übersicht über VPN-Gateways
 
@@ -48,25 +48,26 @@ Für eine Standort-zu-Standort-VPN-Verbindung werden die folgenden kryptografisc
 
 #### <a name="phase-1-proposals"></a>Vorschläge in Phase 1
 
-| Parameter | Vorschlag 1 | Vorschlag 2 | Vorschlag 3 |
-|-----------|------------|------------|------------|
-| IKE-Version | IKEv1 | IKEv1 | IKEv1 |
-| Verschlüsselung | AES 128 | AES 256 | AES 256 |
-| Hashalgorithmus| SHA 256 | SHA 256 | SHA 1 |
-| Diffie-Hellman-Gruppe (DH-Gruppe) | 2 | 2 | 2 |
-| Lebensdauer | 28.800 Sekunden | 28.800 Sekunden | 28.800 Sekunden |
-| Datengröße | 4 GB | 4 GB | 4 GB |
+| Parameter                       | Vorschlag 1     | Vorschlag 2     | Vorschlag 3     |
+|---------------------------------|----------------|----------------|----------------|
+| IKE-Version                     | IKEv1          | IKEv1          | IKEv1          |
+| Verschlüsselung                      | AES 128        | AES 256        | AES 256        |
+| Hashalgorithmus                  | SHA 256        | SHA 256        | SHA 1          |
+| Diffie-Hellman-Gruppe (DH-Gruppe) | 2              | 2              | 2              |
+| Lebensdauer                       | 28.800 Sekunden | 28.800 Sekunden | 28.800 Sekunden |
+| Datengröße                       | 4 GB           | 4 GB           | 4 GB           |
+| Dead Peer Detection (DPD)       | Deaktiviert/Aus   | Deaktiviert/Aus   | Deaktiviert/Aus   |
 
 
 #### <a name="phase-2-proposals"></a>Vorschläge in Phase 2 
 
-| Parameter | Vorschlag 1 | Vorschlag 2 | Vorschlag 3 |
-|-----------|------------|------------|------------|
-| Verschlüsselung | AES 128 | AES 256 | AES 256 |
-| Hashalgorithmus| SHA 256 | SHA 256 | SHA 1 |
-| Perfect Forward Secrecy-Gruppe (PFS-Gruppe) | Keine | Keine | Keine |
-| Lebensdauer | 1\.800 Sekunden | 1\.800 Sekunden | 1\.800 Sekunden |
-| Datengröße | 4 GB | 4 GB | 4 GB |
+| Parameter                                 | Vorschlag 1    | Vorschlag 2    | Vorschlag 3    |
+|-------------------------------------------|---------------|---------------|---------------|
+| Verschlüsselung                                | AES 128       | AES 256       | AES 256       |
+| Hashalgorithmus                            | SHA 256       | SHA 256       | SHA 1         |
+| Perfect Forward Secrecy-Gruppe (PFS-Gruppe) | Keine          | Keine          | Keine          |
+| Lebensdauer                                 | 1\.800 Sekunden | 1\.800 Sekunden | 1\.800 Sekunden |
+| Datengröße                                 | 4 GB          | 4 GB          | 4 GB          |
 
 ## <a name="point-to-site-vpn-gateway"></a>Point-to-Site-VPN-Gateway
 

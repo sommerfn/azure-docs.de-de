@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2019
+ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 2bf891f8cfecbb9e78e511dcee7ed1c61c170016
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340143"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602054"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Grundlegendes zur Integrität Ihrer Azure-VMs
 
@@ -92,11 +92,13 @@ Bevor Sie das Integritätsfeature für eine oder mehrere VMs einsetzen, müssen 
 
 Wählen Sie im linken Bereich der VM **Einblicke (Vorschau)** aus, um die Integrität einer Azure-VM anzuzeigen. Auf der Seite mit den Einblicken in die VM ist standardmäßig die Registerkarte **Integrität** geöffnet, die die Integritätsansicht der VM anzeigt.
 
-![Azure Monitor for VMs-Integritätsübersicht einer ausgewählten Azure-VM](./media/vminsights-health/vminsights-directvm-health.png)
+![Azure Monitor for VMs-Integritätsübersicht einer ausgewählten Azure-VM](./media/vminsights-health/vminsights-directvm-health-01.png)
 
-Auf der Registerkarte **Integrität** zeigt die Tabelle unter **Integrität der Gast-VM** den Integritätszustand Ihrer VM und die Gesamtzahl der VM-Integritätswarnungen an, die von einer Komponente mit eingeschränkter Integrität ausgelöst wurden.
+Die Tabelle im Abschnitt **Integrität der Gast-VM** enthält das Integritätsrollup der Leistungskomponenten, die anhand von Integritätskriterien für den virtuellen Computer überwacht werden, sowie die Gesamtanzahl von VM-Integritätswarnungen, die von fehlerhaften Komponenten ausgelöst wurden. Zu diesen Komponenten zählen die **CPU**, der **Arbeitsspeicher**, die **Festplatte** und das **Netzwerk**. Erweitern Sie das Chevron neben „Integrität der Gast-VM“, um die Integrität der Komponenten anzuzeigen.
 
-Weitere Informationen finden Sie unter [Warnungen](#alerts).
+![Azure Monitor für VMs: Komponentenintegritätsstatus eines ausgewählten virtuellen Azure-Computers](./media/vminsights-health/vminsights-directvm-health-02.png)
+
+Wenn Sie den Status neben der gewünschten Komponente auswählen, wird die Oberfläche für die Integritätsdiagnose im Kontext der ausgewählten Komponente geöffnet. Dort werden die einzelnen Statusaspekte der Komponente angezeigt und die für die Integritätsberechnung verwendeten Integritätskriterien beschrieben. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics) im Abschnitt zur Verwendung von Integritätskriterien. Weitere Informationen finden Sie unter [Grundlegendes zur Integrität Ihrer Azure-VMs](#alerts).
 
 Die für eine VM definierten Integritätszustände sind in der folgenden Tabelle beschrieben:
 
@@ -156,13 +158,19 @@ Wenn Sie beispielsweise alle VMs überprüfen möchten, auf denen Red Hat Enterp
 
 ![Beispielrollup von Red Hat Linux-VMs](./media/vminsights-health/vminsights-rollup-vm-rehl-01.png)
 
+Aktivieren Sie das Kontrollkästchen **Integrität anzeigen**. Daraufhin wird der Integritätszustand für die gefilterten Ergebnisse in der Tabelle zurückgegeben.  
+
+![Beispiel für den Integritätszustand virtueller Red Hat Linux-Computer](./media/vminsights-health/vminsights-rollup-vm-rehl-02.png)
+
+Sie können für ein beliebiges Element in der Liste auf den entsprechenden Integritätszustand klicken, um die Integritätsdiagnose zu starten. Dort wird gezeigt, wie die Integrität für den ausgewählten virtuellen Computer ausgewertet wird. 
+
 Wenn Sie auf der Seite **Virtuelle Computer** für die Spalte **VM-Name** den Namen einer VM auswählen, werden Sie zur Seite **VM-Instanz** weitergeleitet. Diese Seite enthält weiter Informationen zu den Warnungen und Problemen mit Integritätskriterien, die sich auf die ausgewählte VM auswirken. Sie können diese Details zum Integritätszustand filtern, indem Sie auf das Symbol **Integritätszustand** in der oberen linken Seitenecke klicken. Dann wird angezeigt, welche Komponenten Fehler aufweisen. Sie können auch die Warnungen zur VM-Integrität anzeigen, die von einer fehlerhaften Komponente ausgelöst wurden (nach Schweregrad der Warnung).
 
 Klicken Sie in der Ansicht **VM-Liste** auf den Namen einer VM, um die Seite **Integrität** für diese VM zu öffnen. Gehen Sie dabei ähnlich wie beim direkten Navigieren zu **Einblicke (Vorschau)** über die VM vor.
 
 ![VM Insights einer ausgewählten Azure Virtual Machine](./media/vminsights-health/vminsights-directvm-health.png)
 
-Auf der Seite **Einblicke (Vorschau)** wird der Rollupintegritätszustand für die VM und die Warnungen angezeigt. Dieser Integritätszustand wird nach Schweregrad kategorisiert. Dieser steht für VM-Integritätswarnungen, die ausgelöst werden, wenn der Integritätszustand den Kriterien entsprechend von „Fehlerfrei“ zu „Fehlerhaft“ wechselt. Wenn Sie auf **VMs in kritischem Zustand** klicken, wird eine Seite mit einer Liste einer oder mehrerer VMs geöffnet, die einen kritischen Integritätszustand aufweisen.
+Auf der Seite **Virtuelle Computer (Vorschau)** in Azure Monitor werden der Rollupintegritätszustand für den virtuellen Computer und Warnungen angezeigt. Dieser Integritätszustand wird nach Schweregrad kategorisiert. Dieser steht für VM-Integritätswarnungen, die ausgelöst werden, wenn der Integritätszustand den Kriterien entsprechend von „Fehlerfrei“ zu „Fehlerhaft“ wechselt. Wenn Sie auf **VMs in kritischem Zustand** klicken, wird eine Seite mit einer Liste einer oder mehrerer VMs geöffnet, die einen kritischen Integritätszustand aufweisen.
 
 Wenn Sie auf den Integritätszustand für eine der VMs in der Liste klicken, wird die Ansicht **Integritätsdiagnose** für diese VM angezeigt. Über diese Ansicht können Sie herausfinden, welche Integritätskriterien ein Problem mit dem Integritätszustand widerspiegeln. Wenn die Seite **Integritätsdiagnose** geöffnet wird, werden alle VM-Komponenten und die ihnen zugeordneten Integritätskriterien mit dem aktuellen Integritätszustand angezeigt.
 

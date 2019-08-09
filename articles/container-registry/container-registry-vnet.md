@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310392"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619886"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 
 Das virtuelle Azure-Netzwerk ([Azure Virtual Network](../virtual-network/virtual-networks-overview.md)) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Indem Sie den Zugriff auf Ihre private Azure-Containerregistrierung nur von einem virtuellen Azure-Netzwerk aus zulassen, gewährleisten Sie, dass nur Ressourcen im virtuellen Netzwerk Zugriff auf die Registrierung haben. Bei standortübergreifenden Szenarios können Sie außerdem Firewallregeln konfigurieren, um den Zugriff auf die Registrierung nur von bestimmten IP-Adressen zuzulassen.
 
-In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netzwerkzugriffsregeln der Zugriff auf die Azure-Containerregistrierung eingeschränkt wird: Zugriff von einem in einem virtuellen Netzwerk bereitgestellten virtuellen Computer und Zugriff von der öffentlichen IP-Adresse eines virtuellen Computers.
+In diesem Artikel werden zwei Szenarien zum Konfigurieren von Zugriffsregeln für eingehenden Netzwerkdatenverkehr in einer Containerregistrierung vorgestellt: Zugriff von einem in einem virtuellen Netzwerk bereitgestellten virtuellen Computer und Zugriff von der öffentlichen IP-Adresse eines virtuellen Computers.
 
 > [!IMPORTANT]
 > Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 >
+
+Wenn Sie stattdessen Zugriffsregeln für Ressourcen einrichten müssen, um von einem Standort hinter einer Firewall auf eine Containerregistrierung zuzugreifen, lesen Sie die Informationen unter [Configure rules to access an Azure container registry behind a firewall](container-registry-firewall-access-rules.md) (Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall).
+
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
@@ -39,7 +42,7 @@ In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netz
 
 * Um in diesem Artikel die Schritte an der Azure-Befehlszeilenschnittstelle (CLI) ausführen zu können, ist Azure CLI-Version 2.0.58 oder höher erforderlich. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
-* Wenn Sie noch keine Containerregistrierung haben, können Sie eine Registrierung erstellen (Premium-SKU erforderlich) und mithilfe von Push ein Beispielimage wie `hello-world` vom Docker-Hub übertragen. Zum Erstellen einer Registrierung können Sie z.B. das [Azure-Portal][quickstart-portal] or the [Azure CLI][quickstart-cli] verwenden. 
+* Wenn Sie noch keine Containerregistrierung haben, können Sie eine Registrierung erstellen (Premium-SKU erforderlich) und mithilfe von Push ein Beispielimage wie `hello-world` vom Docker-Hub übertragen. Zum Erstellen einer Registrierung können Sie das [Azure-Portal][quickstart-portal] oder die [Azure-Befehlszeilenschnittstelle][quickstart-cli] verwenden. 
 
 * Wenn Sie den Registrierungszugriff mithilfe eines virtuellen Netzwerks in einem anderen Azure-Abonnement einschränken möchten, müssen Sie den Ressourcenanbieter für Azure Container Registry in diesem Abonnement registrieren. Beispiel:
 

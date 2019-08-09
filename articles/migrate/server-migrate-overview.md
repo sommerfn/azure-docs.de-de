@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: f8bfbe26dc4c6ddbcf622f91938ba060de00b2ec
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f27982b4e310d9865e497a3e1e10be9948beb928
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810149"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640745"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -21,28 +21,22 @@ Sie können VMware-VMs zu Azure migrieren, indem Sie das Tool für die Azure Mig
 - Durchführen einer Migration mit einem Agent für die Replikation Installieren eines Agents für die Replikation auf der VM
 
 
-Obwohl die Replikation ohne Agents im Hinblick auf die Bereitstellung einfacher ist, besteht derzeit eine Reihe von Einschränkungen.
 
-## <a name="agentless-migration-limitations"></a>Einschränkungen der Migration ohne Agent
 
-Es bestehen die folgenden Einschränkungen:
+## <a name="compare-migration-methods"></a>Vergleichen von Migrationsmethoden
 
-- **Gleichzeitige Replikation**: Es können maximal 50 VMs gleichzeitig von einem vCenter-Server repliziert werden.<br/> Wenn mehr als 50 VMs migriert werden sollen, erstellen Sie mehrere Batches von VMs.<br/> Wenn eine größere Anzahl als diese gleichzeitig migriert wird, kommt es zu einer Beeinträchtigung der Leistung.
-- **VM-Datenträger**: Eine VM, die migriert werden soll, darf nicht mehr als 60 Datenträger aufweisen.
-- **VM-Betriebssysteme**: Im Allgemeinen kann Azure Migrate jedes Windows Server- oder Linux-Betriebssystem migrieren. Möglicherweise sind jedoch Änderungen an VMs erforderlich, damit sie in Azure ausgeführt werden können. Bei diesen Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:
-    - Red Hat Enterprise Linux 6.5+, 7.0+
-    - CentOS 6.5+, 7.0+
-    - SUSE Linux Enterprise Server 12 SP1+
-    - Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
-    - Debian 7, 8
-    - Bei anderen Betriebssystemen müssen Sie vor der Migration manuell Anpassungen vornehmen. Im [Migrationstutorial](tutorial-migrate-vmware.md) wird erläutert, wie dies geschieht.
-- **Linux-Start**: Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition (/) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und sich nicht auf andere Datenträger erstrecken.
-- **UEFI-Start**: Die Migration von VMs mit UEFI-Start wird nicht unterstützt.
-- **Verschlüsselte Datenträger/Volumes (BitLocker, Cryptfs)** : Die Migration von VMs mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.
-- **RDM-Datenträger/Pass-Through-Datenträger**: Wenn VMs über RDM-Datenträger oder Pass-Through-Datenträger verfügen, werden diese nicht in Azure repliziert.
-- **NFS**: NFS-Volumes, die als Volumes auf den VMs bereitgestellt sind, werden nicht repliziert.
-- **Zielspeicher**: Sie können VMware-VMs nur mit verwalteten Datenträgern (HDD Standard, SSD Premium) zu Azure-VMs migrieren.
+Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie können sich auch die Anforderungen der vollständigen Unterstützung für die Migration [ohne Agent](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) und die [Agent-basierte](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Migration ansehen.
 
+**Einstellung** | **Ohne Agent** | **Agent-basiert**
+--- | --- | ---
+**Azure-Berechtigungen** | Sie benötigen Berechtigungen zum Erstellen eines Azure Migrate-Projekts sowie zum Registrieren von Azure AD-Apps, die beim Bereitstellen der Azure Migrate-Appliance erstellt werden. | Sie benötigen Berechtigungen vom Typ „Mitwirkender“ für das Azure-Abonnement. 
+**Gleichzeitige Replikation** | Es können maximal 100 VMs gleichzeitig von einem vCenter-Server repliziert werden.<br/> Wenn mehr als 50 VMs migriert werden sollen, erstellen Sie mehrere Batches von VMs.<br/> Wenn eine größere Anzahl als diese gleichzeitig migriert wird, kommt es zu einer Beeinträchtigung der Leistung. | Nicht verfügbar
+**Bereitstellung einer Appliance** | Die [Azure Migrate-Appliance](migrate-appliance.md) wird lokal bereitgestellt. | Die [Azure Migrate-Replikationsappliance](migrate-replication-appliance.md) wird lokal bereitgestellt.
+**Site Recovery-Kompatibilität** | Kompatibel | Wenn Sie die Replikation für einen Computer mit Site Recovery eingerichtet haben, können Sie keine Replikation mit der Azure Migrate-Servermigration durchführen.
+**Zieldatenträger** | Verwaltete Datenträger | Verwaltete Datenträger
+**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 63
+**Pass-Through-Datenträger** | Nicht unterstützt | Unterstützt
+**UEFI-Start** | Nicht unterstützt | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
 
 
 ## <a name="deployment-steps-comparison"></a>Vergleich der Bereitstellungsschritte
@@ -65,7 +59,7 @@ Nachdem Sie sich über die Einschränkungen informiert haben, hilft Ihnen die Ke
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Migrieren von VMware-VMs](tutorial-migrate-vmware.md) ohne Agents
+[Migrieren von virtuellen VMware-Computern](tutorial-migrate-vmware.md) ohne Agents
 
 
 

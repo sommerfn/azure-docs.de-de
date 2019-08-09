@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: e4e9ef4f3a50aeac4db4d2cc2f2b6cbafcc47268
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051624"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610252"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -68,7 +68,7 @@ Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadmin
 Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
 - Kanada, Mitte
 - USA, Westen-Mitte
-- USA (Ost)
+- East US
 - USA (Ost) 2
 - USA Nord Mitte
 - USA Süd Mitte
@@ -99,7 +99,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - USA, Westen 2
 - USA Süd Mitte
 - USA (Mitte)
-- USA (Ost)
+- East US
 - USA (Ost) 2
 - Frankreich, Mitte
 - Europa, Westen
@@ -252,7 +252,7 @@ Informationen hierzu finden Sie im [Abschnitt zur Datenaggregation](https://docs
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Wie entscheidet Traffic Analytics, ob eine IP-Adresse schädlich ist? 
 
-Traffic Analytics nutzt interne Microsoft-Threat Intelligence-Systeme, um eine IP-Adresse als schädlich einzustufen. Diese Systeme nutzen verschiedenste Telemetriequellen, beispielsweise Microsoft-Produkte und -Dienste, Microsoft Digital Crimes Unit (DCU) und Microsoft Security Response Center (MSRC) sowie externe Feeds, und generieren umfassende Informationen, die weit über diese Quellen hinausgehen. Einige dieser Daten sind interne Microsoft-Daten. Falls eine bekannte IP-Adresse als „schädlich“ gekennzeichnet wird, erstellen Sie ein Support-Ticket, um uns die Details mitzuteilen.
+Traffic Analytics nutzt interne Microsoft-Threat Intelligence-Systeme, um eine IP-Adresse als schädlich einzustufen. Diese Systeme nutzen verschiedenste Telemetriequellen, beispielsweise Microsoft-Produkte und -Dienste, Microsoft Digital Crimes Unit (DCU) und Microsoft Security Response Center (MSRC) sowie externe Feeds, und generieren umfassende Informationen, die weit über diese Quellen hinausgehen. Einige dieser Daten sind interne Microsoft-Daten. Falls eine bekannte IP-Adresse als „schädlich“ gekennzeichnet wird, erstellen Sie ein Supportticket, um uns die Details mitzuteilen.
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Wie kann ich Benachrichtigungen für Traffic Analytics-Daten festlegen?
 

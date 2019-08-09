@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3b3b1b652515241950e7f87416122125fbe67f43
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400598"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640591"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -194,6 +194,11 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
     return 'SharedAccessSignature ' + urlencode(rawtoken)
 ```
+
+Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt:
+
+[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
 
 Die Funktion in C# zum Generieren eines Sicherheitstokens ist wie folgt:
 
@@ -440,7 +445,7 @@ In der folgenden Tabelle werden die Berechtigungen aufgeführt, die Sie zum Steu
 | --- | --- |
 | **RegistryRead** |Diese Berechtigung gewährt Lesezugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung](iot-hub-devguide-identity-registry.md). <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
 | **RegistryReadWrite** |Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung](iot-hub-devguide-identity-registry.md). <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
-| **ServiceConnect** |Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. <br/>Clouddiensten wird die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen. <br/>Erteilt die Berechtigung zum Abrufen der Übermittlungsbestätigungen für die Dateiuploads. <br/>Gewährt die Berechtigung zum Zugriff auf Zwillinge zum Aktualisieren von Tags und gewünschten Eigenschaften, zum Abrufen gemeldeter Eigenschaften und zum Ausführen von Abfragen. <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
+| **ServiceConnect** |Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. <br/>Clouddiensten wird die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen. <br/>Erteilt die Berechtigung zum Abrufen der Übermittlungsbestätigungen für Dateiuploads. <br/>Gewährt die Berechtigung zum Zugriff auf Zwillinge zum Aktualisieren von Tags und gewünschten Eigenschaften, zum Abrufen gemeldeter Eigenschaften und zum Ausführen von Abfragen. <br/>Diese Berechtigung wird von Back-End Cloud Services verwendet. |
 | **DeviceConnect** |Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte. <br/>Gewährt die Berechtigung zum Senden von D2C-Nachrichten und zum Empfangen von C2D-Nachrichten. <br/>Gewährt die Berechtigung zum Ausführen eines Dateiupload von einem Gerät. <br/>Gewährt die Berechtigung zum Abrufen von gewünschten Eigenschaftsbenachrichtigungen für Gerätezwillinge und zum Aktualisieren von gemeldeten Eigenschaften. <br/>Gewährt die Berechtigung zum Ausführen eines Dateiupload. <br/>Diese Berechtigung wird von Geräten verwendet. |
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial

@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Versionen
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Verwalten von Versionen: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Mithilfe von Versionen können Sie verschiedene Modelle erstellen und veröffentlichen. Es ist eine bewährte Methode, das aktuell aktive Modell in eine andere Version der App zu klonen, bevor Änderungen am Modell vorgenommen werden.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: f919651cf39d1f2c48fca87da935e49e3affa79f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd3cd13b14f58e1ece0b91f924ebefb25682bbf7
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198869"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638103"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verwenden von Versionen, um Staging- und Produktions-Apps nicht durch Bearbeitungsschritte oder Tests zu beeinträchtigen
 
