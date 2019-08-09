@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489177"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678201"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -44,7 +44,7 @@ Im folgenden Diagramm wird der allgemeine Prozess beim Erstellen eines neuen Zug
 
 ## <a name="start-new-access-package"></a>Starten eines neuen Zugriffspakets
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -64,21 +64,20 @@ Auf der Registerkarte **Grundlagen** geben Sie dem Zugriffspaket einen Namen und
 
 1. Wählen Sie in der Dropdownliste **Katalog** den Katalog aus, in dem das Zugriffspaket erstellt werden soll. Beispielsweise verfügen Sie möglicherweise über einen Katalogbesitzer, der alle Marketingressourcen verwaltet, die angefordert werden können. In diesem Fall können Sie den Marketingkatalog auswählen.
 
-    Es werden nun Kataloge angezeigt, in denen Sie Zugriffspakete erstellen dürfen. Um ein Zugriffspaket in einem vorhandenen Katalog zu erstellen, müssen Sie mindestens Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager sein.
+    Es werden nun Kataloge angezeigt, in denen Sie Zugriffspakete erstellen dürfen. Um ein Zugriffspaket in einem vorhandenen Katalog zu erstellen, müssen Sie mindestens als globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager in diesem Katalog fungieren.
 
     ![Zugriffspaket – Grundlagen](./media/entitlement-management-access-package-create/basics.png)
 
-    Wenn Sie das Zugriffspaket in einem neuen Katalog erstellen möchten, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen und eine Beschreibung für den Katalog ein, und klicken Sie dann auf **Erstellen**.
+    Wenn Sie als globaler Administrator oder Benutzeradministrator Ihr Zugriffspaket in einem neuen Katalog erstellen möchten, der nicht aufgeführt ist, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen und eine Beschreibung für den Katalog ein, und klicken Sie dann auf **Erstellen**.
 
-    Das Zugriffspaket, das Sie erstellen, und alle darin enthaltenen Ressourcen werden dem neuen Katalog hinzugefügt. Darüber hinaus werden Sie automatisch der erste Besitzer des Katalogs. Sie können weitere Katalogbesitzer hinzufügen.
+    Das Zugriffspaket, das Sie erstellen, und alle darin enthaltenen Ressourcen werden dem neuen Katalog hinzugefügt. Sie können später weitere Katalogbesitzer hinzufügen.
 
-    Um einen neuen Katalog erstellen zu können, müssen Sie mindestens Benutzeradministrator oder Katalogersteller sein.
 
 1. Klicken Sie auf **Weiter**.
 
 ## <a name="resource-roles"></a>Ressourcenrollen
 
-Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die in das Zugriffspaket aufgenommen werden sollen.
+Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die in das Zugriffspaket aufgenommen werden sollen.  Benutzern, die das Zugriffspaket anfordern und erhalten, werden alle Ressourcenrollen im Zugriffspaket zugewiesen.
 
 1. Klicken Sie auf den Ressourcentyp, den Sie hinzufügen möchten (**Gruppen**, **Anwendungen** oder **SharePoint-Websites**).
 
@@ -86,11 +85,11 @@ Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die i
 
     ![Zugriffspaket – Ressourcenrollen](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Wenn Sie das Zugriffspaket im Katalog „Allgemein“ oder einem neuen Katalog erstellen, können Sie beliebige Ressourcen aus dem Verzeichnis in Ihrem Besitz auswählen. Sie müssen mindestens Benutzeradministrator oder Katalogersteller sein.
+    Wenn Sie das Zugriffspaket im Katalog „Allgemein“ oder einem neuen Katalog erstellen, können Sie beliebige Ressourcen aus dem Verzeichnis in Ihrem Besitz auswählen. Sie müssen mindestens als globaler Administrator, Benutzeradministrator oder Katalogersteller fungieren.
 
     Wenn Sie das Zugriffspaket in einem vorhandenen Katalog erstellen, können Sie jede bereits im Katalog vorhandene Ressource auswählen, ohne deren Besitzer zu sein.
 
-    Wenn Sie ein Benutzeradministrator oder Katalogbesitzer sind, können Sie als zusätzliche Option im Katalog noch nicht enthaltene Ressourcen in Ihrem Besitz auswählen. Wenn Sie Ressourcen auswählen, die derzeit nicht im ausgewählten Katalog vorhanden sind, werden diese Ressourcen ebenfalls dem Katalog hinzugefügt, sodass andere Katalogadministratoren Zugriffspakete damit erstellen können. Wenn Sie nur Ressourcen auswählen möchten, die derzeit im ausgewählten Katalog vorhanden sind, aktivieren Sie am oberen Rand des Auswahlbereichs das Kontrollkästchen **Nur Elemente im Katalog anzeigen**.
+    Als globaler Administrator, Benutzeradministrator oder Katalogbesitzer haben Sie zusätzlich die Möglichkeit, noch nicht im Katalog enthaltene Ressourcen auszuwählen, deren Besitzer Sie sind. Wenn Sie Ressourcen auswählen, die derzeit nicht im ausgewählten Katalog vorhanden sind, werden diese Ressourcen ebenfalls dem Katalog hinzugefügt, sodass andere Katalogadministratoren Zugriffspakete damit erstellen können. Wenn Sie nur Ressourcen auswählen möchten, die derzeit im ausgewählten Katalog vorhanden sind, aktivieren Sie am oberen Rand des Auswahlbereichs das Kontrollkästchen **Nur Elemente im Katalog anzeigen**.
 
 1. Nachdem Sie die Ressourcen ausgewählt haben, wählen Sie in der Liste **Rolle** die Rolle aus, die Benutzern für die Ressource zugewiesen werden soll.
 

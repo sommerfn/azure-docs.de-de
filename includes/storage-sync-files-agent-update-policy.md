@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 9b8812b1fca6a72a69f06a6c0278da8ee4d4c852
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 5be5cf6cd410874d870b351c209517e90fcf3848
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841530"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699347"
 ---
 Der Azure-Dateisynchronisierungs-Agent wird regelmäßig aktualisiert, um neue Funktionalität hinzuzufügen und Probleme zu beheben. Es wird empfohlen, Microsoft Update zu konfigurieren, um Updates für den Azure-Dateisynchronisierungs-Agent zu erhalten, wenn diese verfügbar sind.
 
@@ -31,7 +31,24 @@ Es gibt vier bewährte und getestete Wege, um die Updates des Azure-Dateisynchro
 #### <a name="automatic-agent-lifecycle-management"></a>Automatische Agent-Lebenszyklusverwaltung
 Mit Agent-Version 6 wurde vom Team für die Dateisynchronisierung eine Funktion für automatische Upgrades für den Agent eingeführt. Sie können einen von zwei Modi auswählen und ein Wartungsfenster angeben, in dem das Upgrade auf dem Server durchgeführt werden soll. Diese Funktion soll Sie bei der Agent-Lebenszyklusverwaltung unterstützen, indem entweder verhindert wird, dass der Agent abläuft, oder eine problemlose aktuelle Einstellung ermöglicht wird.
 1. Mit der **Standardeinstellung** wird versucht zu verhindern, dass der Agent abläuft. Innerhalb von 21 Tagen vor dem angegebenen Ablaufdatum des Agents versucht der Agent, ein Selbstupgrade durchzuführen. Er versucht, das Upgrade einmal pro Woche innerhalb von 21 Tagen vor dem Ablauf und im ausgewählten Wartungsfenster durchzuführen. **Unabhängig von dieser Option müssen weiterhin reguläre Microsoft Update-Patches durchgeführt werden.**
-2. Optional können Sie auswählen, dass der Agent automatisch ein Selbstupgrade durchführt, wenn eine neue Agent-Version verfügbar ist (derzeit nicht auf gruppierte Server anwendbar). Dieses Update erfolgt auch während des ausgewählten Wartungsfensters, sodass neue Funktionen und Verbesserungen auf dem Server genutzt werden können, sobald sie allgemein verfügbar sind. Dies ist die empfohlene Einstellung, über die Agent-Hauptversionen sowie reguläre Updatepatches auf dem Server bereitgestellt werden. Jeder veröffentlichte Agent hat GA-Qualität. Auch wenn Sie auswählen, dass die automatische Aktualisierung ausgeführt werden soll, wenn eine neue Version verfügbar ist, wird Ihnen das Update möglicherweise nicht sofort nach der Veröffentlichung angeboten. Neue Agents werden anfangs nur für eine kleine Anzahl von Servern angeboten, und dann wird das Angebot schrittweise erweitert. Nach Abschluss des Test-Flighting steht der Agent auch auf der Microsoft Update-Website und im [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) zur Verfügung.
+1. Optional können Sie auswählen, dass der Agent automatisch ein Selbstupgrade durchführt, wenn eine neue Agent-Version verfügbar ist (derzeit nicht auf gruppierte Server anwendbar). Dieses Update erfolgt auch während des ausgewählten Wartungsfensters, sodass neue Funktionen und Verbesserungen auf dem Server genutzt werden können, sobald sie allgemein verfügbar sind. Dies ist die empfohlene Einstellung, über die Agent-Hauptversionen sowie reguläre Updatepatches auf dem Server bereitgestellt werden. Jeder veröffentlichte Agent hat GA-Qualität. Wenn Sie diese Option auswählen, erhalten Sie von Microsoft die neueste Agent-Version als Flight. Gruppierte Server sind ausgeschlossen. Nach Abschluss der Test-Flight-Phase steht der Agent auch im [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) (aka.ms/AFS/agent) zur Verfügung.
+
+ ##### <a name="changing-the-auto-upgrade-setting"></a>Ändern der Einstellung für automatische Upgrades
+
+Die folgenden Anweisungen beschreiben, wie Sie die Einstellungen nach Abschluss des Installationsprogramms ändern können, wenn dies erforderlich ist.
+
+Öffnen Sie eine Shell, und navigieren Sie zu dem Verzeichnis, in dem Sie den Synchronisierungs-Agent installiert haben. Importieren Sie dann die Server-Cmdlets, dies sähe üblicherweise in etwa so aus:
+```powershell
+cd C:\Program Files\Azure\StorageSyncAgent
+
+ipmo .\StorageSync.Management.ServerCmdlets.dll
+```
+
+Sie können `Get-StorageSyncAgentAutoUpdatePolicy` ausführen, um die aktuelle Richtlinieneinstellung zu überprüfen und festzustellen, ob Sie sie ändern möchten.
+
+Um die aktuelle Richtlinieneinstellung auf das Modell verzögerter Updates umzustellen, können Sie folgenden Befehl verwenden: `Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration`
+
+Um die aktuelle Richtlinieneinstellung auf das Modell sofortiger Updates umzustellen, können Sie folgenden Befehl verwenden: `Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest`
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Garantien zu Agent-Lebenszyklus und Änderungsverwaltung
 Die Azure-Dateisynchronisierung ist ein Clouddienst, über den neue Funktionen und Verbesserungen kontinuierlich eingeführt werden. Dies bedeutet, dass eine bestimmte Version des Azure-Dateisynchronisierungs-Agents nur für eine begrenzte Zeit unterstützt werden kann. Für eine einfachere Bereitstellung gelten die folgenden Regeln, damit sichergestellt ist, dass Sie genügend Zeit haben und benachrichtigt werden, um Updates und Upgrades von Agents in Ihrem Änderungsverwaltungsprozess zu berücksichtigen:

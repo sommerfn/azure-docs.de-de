@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie Webdatenverkehr basierend a
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.date: 5/20/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c0954d1010a6cf5ef6f8edab1470588df9fba559
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955548"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688180"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure-Befehlszeilenschnittstelle
 
@@ -70,12 +70,14 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>Erstellen des App-Gateways mit einer URL-Zuordnung
 
-Verwenden Sie `az network application-gateway create`, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben.
+Verwenden Sie `az network application-gateway create`, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird *myAGSubnet* und *myAGPublicIPAddress* zugewiesen.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -85,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -180,7 +182,7 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-vm-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
+## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
 In diesem Artikel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Sie erstellen Skalierungsgruppen namens *myvmss1*, *myvmss2* und *myvmss3*. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie NGINX installieren.
 
@@ -246,11 +248,11 @@ az network public-ip show \
 
 ![Testen der Basis-URL im Anwendungsgateway](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Ändern Sie die URL zu http://&lt;IP-Adresse&gt;:8080/images/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
+Ändern Sie die URL in http://&lt;IP-Adresse&gt;:8080/images/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
 
 ![Testen der Images-URL im Anwendungsgateway](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Ändern Sie die URL zu http://&lt;IP-Adresse&gt;:8080/video/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
+Ändern Sie die URL in http://&lt;ip-address&gt;:8080/video/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen.
 
 ![Testen der Video-URL im Anwendungsgateway](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
@@ -259,9 +261,9 @@ az network public-ip show \
 Entfernen Sie die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis](./tutorial-url-redirect-cli.md)
+[Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis](./tutorial-url-redirect-cli.md)

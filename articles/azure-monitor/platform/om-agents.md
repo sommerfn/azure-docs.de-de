@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 336a9d9c76114920e92de2000152e500f7dce46f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445314"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663739"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Zur Bewahrung Ihrer bisherigen Investitionen in [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) sowie zur Nutzung erweiterter Funktionen mit Azure Monitor können Sie Operations Manager mit Ihrem Log Analytics-Arbeitsbereich verknüpfen. Die Kombination der Möglichkeiten von Azure Monitor mit der weiteren Nutzung von Operations Manager ermöglicht Folgendes:
+Zur Bewahrung Ihrer bisherigen Investitionen in [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) sowie zur Nutzung erweiterter Funktionen mit Azure Monitor können Sie Operations Manager mit Ihrem Log Analytics-Arbeitsbereich verknüpfen. Sie können also von den Möglichkeiten der Azure Monitor-Protokollfunktion profitieren und weiterhin Operations Manager nutzen, um Folgendes zu erreichen:
 
 * Integritätsüberwachung für Ihre IT-Dienste mit Operations Manager
 * Verwaltung der Integration mit Ihren ITSM-Lösungen (mit Unterstützung von Incident Management und Problemverwaltung)
@@ -143,7 +143,7 @@ Nach dem Konfigurieren der Integration in Ihren Log Analytics-Arbeitsbereich wir
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
 1. Erweitern Sie den Knoten für Operations Management Suite, und klicken Sie auf **Verbindung**.
 1. Klicken Sie unter der Überschrift „Aktionen“ (rechts im Bereich) auf den Link **Computer/Gruppe hinzufügen** .
-1. Im Dialogfeld **Computersuche** können Sie nach Computern oder Gruppen suchen, die von Operations Manager überwacht werden. Wählen Sie Computer oder Gruppen aus, die in Azure Monitor aufgenommen werden sollen, und klicken Sie auf **Hinzufügen** und dann auf **OK**.
+1. Im Dialogfeld **Computersuche** können Sie nach Computern oder Gruppen suchen, die von Operations Manager überwacht werden. Wählen Sie Computer oder Gruppen aus – einschließlich Operations Manager-Verwaltungsserver –, für die ein Onboarding in Azure Monitor durchgeführt werden soll, und klicken Sie nacheinander auf **Hinzufügen** und auf **OK**.
 
 Computer und Gruppen, die unter Operations Management Suite zum Sammeln von Daten über den Knoten für verwaltete Computer konfiguriert sind, können in der Betriebskonsole im Arbeitsbereich **Administration** angezeigt werden. Hier können Sie Computer und Gruppen nach Bedarf hinzufügen und entfernen.
 
@@ -180,7 +180,7 @@ Nach Abschluss der Konfiguration stellt die Operations Manager-Verwaltungsgruppe
 * **Microsoft.SystemCenter.Advisor.MPUpdate**: Aktualisiert die grundlegenden Azure Monitor-Management Packs. Wird standardmäßig alle 12 Stunden ausgeführt.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** : Aktualisiert lösungsbezogene Management Packs, die in Ihrem Arbeitsbereich aktiviert sind. Wird standardmäßig alle fünf Minuten ausgeführt.
 
-Sie können diese beiden Regeln überschreiben und so entweder das automatische Herunterladen verhindern, indem Sie sie deaktivieren, oder die Häufigkeit ändern, mit der der Verwaltungsserver eine Synchronisierung mit Azure Monitor durchführt, um zu ermitteln, ob ein neues Management Pack verfügbar ist und heruntergeladen werden soll. Führen Sie die Schritte unter [How to Override a Rule or Monitor (Vorgehensweise: Überschreiben einer Regel oder Überwachung)](https://technet.microsoft.com/library/hh212869.aspx) aus, um einen Sekundenwert für den Häufigkeitsparameter (**Frequency**) anzugeben und so den Synchronisierungszeitplan zu ändern, oder ändern Sie den Aktivierungsparameter (**Enabled**), um die Regeln zu deaktivieren. Verwenden Sie als Ziel für die Überschreibungen alle Objekte der Klasse „Operations Manager Management Group“.
+Sie können diese beiden Regeln überschreiben und so entweder das automatische Herunterladen verhindern, indem Sie sie deaktivieren, oder die Häufigkeit ändern, mit der der Verwaltungsserver eine Synchronisierung mit Azure Monitor durchführt. So können Sie ermitteln, ob ein neues Management Pack verfügbar ist und heruntergeladen werden muss. Führen Sie die Schritte unter [How to Override a Rule or Monitor (Vorgehensweise: Überschreiben einer Regel oder Überwachung)](https://technet.microsoft.com/library/hh212869.aspx) aus, um einen Sekundenwert für den Häufigkeitsparameter (**Frequency**) anzugeben und so den Synchronisierungszeitplan zu ändern, oder ändern Sie den Aktivierungsparameter (**Enabled**), um die Regeln zu deaktivieren. Verwenden Sie als Ziel für die Überschreibungen alle Objekte der Klasse „Operations Manager Management Group“.
 
 Um Ihren vorhandenen Änderungssteuerungsprozess zur Steuerung von Management Pack-Releases in Ihrer Produktionsverwaltungsgruppe weiterhin zu verwenden, können Sie die Regeln deaktivieren und sie zu bestimmten Zeiten, in denen Updates zulässig sind, wieder aktivieren. Falls Ihre Umgebung eine Entwicklungs- oder QA-Verwaltungsgruppe mit Internetzugriff enthält, können Sie diese Verwaltungsgruppe zur Unterstützung dieses Szenarios mit einem Log Analytics-Arbeitsbereich konfigurieren. Dadurch können Sie die iterativen Versionen der Azure Monitor-Management Packs vor der Freigabe für die Produktionsverwaltungsgruppe überprüfen und evaluieren.
 

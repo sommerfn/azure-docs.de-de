@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551371"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662470"
 ---
-# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
+# <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (eingestellt)
 
-Diese exemplarische Vorgehensweise veranschaulicht, wie Sie Bewertungen für Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center anpassen.
+Diese exemplarische Vorgehensweise veranschaulicht, wie Sie Bewertungen für Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau) anpassen.
 
 > [!NOTE]
-> Die Möglichkeit zum Anpassen von Sicherheitskonfigurationen von Betriebssystemen wird am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
+> Die Möglichkeit zum Anpassen von Sicherheitskonfigurationen von Betriebssystemen (Previewfunktion) wurde am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
 
 ## <a name="what-are-os-security-configurations"></a>Was sind Sicherheitskonfigurationen von Betriebssystemen?
 

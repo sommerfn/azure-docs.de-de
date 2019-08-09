@@ -3,16 +3,16 @@ title: Erstellen einer Azure Image Builder-Vorlage (Preview)
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/10/2019
+ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248150"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695400"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -185,6 +185,19 @@ Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Im
 
 `imageVersionId` sollte dem ResourceId-Wert der Imageversion entsprechen. Verwenden Sie den Befehl [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list), um die Imageversionen aufzulisten.
 
+## <a name="properties-buildtimeoutinminutes"></a>Eigenschaften: buildTimeoutInMinutes
+Image Builder wird standardmäßig für 240 Minuten ausgeführt. Anschließend kommt es zu einem Timeout, und die Ausführung wird beendet – unabhängig davon, ob das Image erstellt wurde oder nicht. Bei Auftreten des Timeouts wird ein Fehler ähnlich dem folgenden angezeigt:
+
+```text
+[ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
+[ERROR] complete: 'context deadline exceeded'
+```
+
+Wenn Sie keinen buildTimeoutInMinutes-Wert angeben oder diesen auf 0 festlegen, wird der Standardwert verwendet. Sie können den Wert verringern oder bis auf den Höchstwert von 960 Minuten (16 Stunden) erhöhen. Für Windows wird empfohlen, diese Einstellung nicht unter 60 Minuten festzulegen. Wenn es zu einem Timeout kommt, überprüfen Sie in den [Protokollen](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs), ob der Anpassungsschritt auf etwas wartet, z.B. auf eine Benutzereingabe. 
+
+Wenn Sie mehr Zeit zum Abschließen der Anpassung benötigen, legen Sie die Einstellung auf die geschätzte benötigte Zeit plus einen kleinen Puffer fest. Wählen Sie aber keinen zu hohen Wert, da ein Fehler erst bei einem Timeout angezeigt wird. 
+
+
 ## <a name="properties-customize"></a>Eigenschaften: customize
 
 
@@ -194,7 +207,6 @@ Folgendes ist bei Verwendung von `customize` zu beachten:
 - Sie können mehrere Anpassungen verwenden, die jedoch eine eindeutige `name`-Eigenschaft aufweisen müssen.
 - Anpassungen werden nach der in der Vorlage festgelegten Reihenfolge ausgeführt.
 - Wenn eine Anpassung fehlschlägt, schlägt die gesamte Anpassungskomponente fehl, und ein Fehler wird zurückgegeben.
-- Beachten Sie, wie viel Zeit die Erstellung Ihres Images erfordert, und passen Sie die Eigenschaft „buildTimeoutInMinutes“ so an, dass ausreichend Zeit für die Imageerstellung zur Verfügung steht.
 - Es wird dringend empfohlen, dass Sie das Skript gründlich testen, bevor Sie es in einer Vorlage verwenden. Das Debuggen des Skripts ist in Ihrer eigenen VM einfacher.
 - Fügen Sie keine sensiblen Daten in die Skripts ein. 
 - Die Speicherorte für die Skripts müssen öffentlich zugänglich sein, es sei denn, Sie verwenden die [verwaltete Dienstidentität](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).

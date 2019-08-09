@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec27c75ff5ba9164b44b0524f90a4e28ab20f1
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488972"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678077"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -41,7 +41,7 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 * Damit eine Anwendung als Ressource in einem Zugriffspaket dienen kann, muss sie über mindestens eine Ressourcenrolle verfügen, die zugewiesen werden kann. Die Rollen werden von der Anwendung selbst definiert und in Azure AD verwaltet. Beachten Sie, dass das Azure-Portal möglicherweise auch Dienstprinzipale für Dienste anzeigt, die nicht als Anwendungen ausgewählt werden können.  Insbesondere sind **Exchange Online** und **SharePoint Online** Dienste, aber keine Anwendungen, die über Ressourcenrollen im Verzeichnis verfügen. Daher können sie nicht in ein Zugriffspaket einbezogen werden.  Verwenden Sie stattdessen die gruppenbasierte Lizenzierung, um geeignete Lizenzen für Benutzer einzurichten, die Zugriff auf diese Dienste benötigen.
 
-* Damit eine Gruppe als Ressource in einem Zugriffspaket dienen kann, muss sie in Azure AD bearbeitet werden können.  Gruppen, die aus einer lokalen Active Directory-Instanz stammen, können nicht als Ressourcen zugewiesen werden, weil ihre Besitzer- oder Mitgliedsattribute in Azure AD nicht geändert werden können.  
+* Damit eine Gruppe als Ressource in einem Zugriffspaket dienen kann, muss sie in Azure AD bearbeitet werden können.  Gruppen, die aus einer lokalen Active Directory-Instanz stammen, können nicht als Ressourcen zugewiesen werden, weil ihre Besitzer- oder Mitgliedsattribute in Azure AD nicht geändert werden können.   Gruppen, die ursprünglich als Verteilergruppen in Exchange Online vorliegen, können in Azure AD ebenfalls nicht geändert werden. 
 
 * SharePoint Online-Dokumentbibliotheken und einzelne Dokumente können nicht als Ressourcen hinzugefügt werden.  Erstellen Sie stattdessen eine Azure AD-Sicherheitsgruppe, fügen Sie diese Gruppe und eine Standortrolle zum Zugriffspaket hinzu, und verwenden Sie diese Gruppe in SharePoint Online, um den Zugriff auf die Dokumentbibliothek oder das Dokument zu steuern.
 
@@ -55,9 +55,9 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 ## <a name="checklist-for-request-issues"></a>Prüfliste für Anforderungsprobleme
 
-* Wenn ein Benutzer Zugriff auf ein Zugriffspaket anfordern möchte, müssen Sie sicherstellen, dass der Benutzer den **Link zum Portal „Mein Zugriff“** für das Zugriffspaket verwendet. Weitere Informationen finden Sie unter [Kopieren des Links zum Portal „Mein Zugriff“](entitlement-management-access-package-edit.md#copy-my-access-portal-link).
+* Wenn ein Benutzer Zugriff auf ein Zugriffspaket anfordern möchte, müssen Sie sicherstellen, dass der Benutzer den **Link zum Portal „Mein Zugriff“** für das Zugriffspaket verwendet. Weitere Informationen finden Sie unter [Kopieren des Links zum Portal „Mein Zugriff“](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Wenn ein externer Besucher **myaccess.microsoft.com** aufruft, werden die Zugriffspakete angezeigt, die für den Benutzer in seiner eigenen Organisation verfügbar sind.
 
-* Wenn sich ein Benutzer beim Portal „Mein Zugriff“ anmeldet, um ein Zugriffspaket anzufordern, müssen Sie sicherstellen, dass er sich mit seinem Organisationskonto authentifiziert. Bei dem Organisationskonto kann es sich um ein Konto im Ressourcenverzeichnis oder um ein Konto in einem Verzeichnis handeln, das in einer der Richtlinien des Zugriffspakets enthalten ist. Wenn das Konto des Benutzers kein Organisationskonto ist oder das Verzeichnis nicht in der Richtlinie enthalten ist, wird dem Benutzer das Zugriffspaket nicht angezeigt. Weitere Informationen finden Sie unter [Anfordern des Zugriffs auf ein Zugriffspaket](entitlement-management-request-access.md).
+* Wenn sich ein Benutzer, der noch nicht in Ihrem Verzeichnis enthalten ist, sich beim Portal „Mein Zugriff“ anmeldet, um ein Zugriffspaket anzufordern, müssen Sie sicherstellen, dass er sich mit seinem Organisationskonto authentifiziert. Bei dem Organisationskonto kann es sich um ein Konto im Ressourcenverzeichnis oder um ein Konto in einem Verzeichnis handeln, das in einer der Richtlinien des Zugriffspakets enthalten ist. Wenn es sich bei dem Konto des Benutzers nicht um ein Organisationskonto handelt oder das Verzeichnis, bei dem sie sich authentifizieren, nicht in der Richtlinie enthalten ist, wird dem Benutzer das Zugriffspaket nicht angezeigt. Weitere Informationen finden Sie unter [Anfordern des Zugriffs auf ein Zugriffspaket](entitlement-management-request-access.md).
 
 * Wenn die Benutzeranmeldung beim Ressourcenverzeichnis blockiert wird, kann der Benutzer keinen Zugriff im Portal „Mein Zugriff“ anfordern. Bevor der Benutzer den Zugriff anfordern kann, müssen Sie die Anmeldeblockierung aus dem Profil des Benutzers entfernen. Um die Anmeldeblockierung zu entfernen, klicken Sie im Azure-Portal auf **Azure Active Directory**, klicken Sie auf **Benutzer**, klicken Sie auf den Benutzer, und klicken Sie dann auf **Profil**. Bearbeiten Sie den Abschnitt **Einstellungen**, und ändern Sie **Anmeldung blockieren** in **Nein**. Weitere Informationen finden Sie unter [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Sie können auch überprüfen, ob der Benutzer aufgrund einer [Identity Protection-Richtlinie](../identity-protection/howto-unblock-user.md) blockiert wurde.
 

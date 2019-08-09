@@ -3,18 +3,18 @@ title: Rendern benutzerdefinierter Daten auf einer Rasterkarte in Azure Maps | M
 description: Rendern von benutzerdefinierten Daten auf einer Rasterkarte in Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/03/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734298"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638800"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -133,13 +133,27 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
     }
     ```
 
-4. Klicken Sie auf **Send** (Senden), und überprüfen Sie den Antwortheader. Der Adressheader enthält den URI, mit dem auf die Daten zur zukünftigen Verwendung zugegriffen wird bzw. über den diese Daten heruntergeladen werden. Darüber hinaus enthält er eine eindeutige ID (`udId`) für die hochgeladenen Daten.  
+4. Klicken Sie auf **Send** (Senden), und überprüfen Sie den Antwortheader. Bei einer erfolgreichen Anforderung enthält der Adressheader den Status-URI, um den aktuellen Status der Uploadanforderung zu überprüfen. Der Status-URI hat folgendes Format.  
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Verwenden Sie den von der Data Upload-API empfangenen Wert `udId`, um Merkmale auf der Karte zu rendern. Öffnen Sie hierzu eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu senden:
+5. Kopieren Sie den Status-URI, und fügen Sie ihm den Parameter „subscription-key“ hinzu, wobei der zugehörige Wert der Abonnementschlüssel Ihres Azure Maps-Kontos ist, den Sie zum Hochladen der Daten verwendet haben. Das Format des Status-URI sollte wie folgt aussehen:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+6. Um den Wert von „udId“ abzurufen, öffnen Sie in der Postman-App eine neue Registerkarte, wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und führen Sie eine GET-Anforderung für den Status-URI aus. Wenn der Datenupload erfolgreich ausgeführt wurde, wird im Antworttext ein Wert für „udId“ ausgegeben. Kopieren Sie den Wert für „udId“.
+
+   ```JSON
+   {
+      "udid" : "{udId}"
+   }
+   ```
+
+7. Verwenden Sie den von der Data Upload-API empfangenen Wert `udId`, um Merkmale auf der Karte zu rendern. Öffnen Sie hierzu eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu senden:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -161,7 +175,7 @@ Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit
     
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&sku=S1&zoom=14&height=500&Width=500&center=-74.040701, 40.698666&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.50||-74.03995513916016 40.70090237454063|-74.04082417488098 40.70028420372218|-74.04113531112671 40.70049568385827|-74.04298067092896 40.69899904076542|-74.04271245002747 40.69879568992435|-74.04367804527283 40.6980961582905|-74.04364585876465 40.698055487620714|-74.04368877410889 40.698022951066996|-74.04168248176573 40.696444909137|-74.03901100158691 40.69837271818651|-74.03824925422668 40.69837271818651|-74.03809905052185 40.69903971085914|-74.03771281242369 40.699340668780984|-74.03940796852112 40.70058515602143|-74.03948307037354 40.70052821920425|-74.03995513916016 40.70090237454063
-    &subscription-key={subscription--key}
+    &subscription-key={subscription-key}
     ```
 
     Hier sehen Sie das Antwortbild:

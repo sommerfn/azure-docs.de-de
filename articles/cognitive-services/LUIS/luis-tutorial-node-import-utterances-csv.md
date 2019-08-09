@@ -1,6 +1,6 @@
 ---
-title: Importieren von Äußerungen mithilfe von Node.js
-titleSuffix: Azure
+title: Importieren von Äußerungen mithilfe von Node.js – LUIS
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mithilfe der LUIS-Erstellungs-API eine LUIS-App programmgesteuert aus bereits vorhandenen Daten im CSV-Format erstellen.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 79a372087e162fedc5b2e014a5cd4976df3cb2ce
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60494896"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637808"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programmgesteuertes Erstellen einer LUIS-App mit Node.js
 
@@ -24,23 +24,35 @@ LUIS bietet eine programmgesteuerte API, die alle Funktionen der [LUIS](luis-ref
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Melden Sie sich auf der [LUIS](luis-reference-regions.md)-Website an, und suchen Sie Ihren [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) in den Kontoeinstellungen. Sie können mit diesem Schlüssel die Erstellungs-APIs aufrufen.
+* Melden Sie sich auf der Website von [LUIS](luis-reference-regions.md) an, und suchen Sie Ihren [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) in den Kontoeinstellungen. Sie können mit diesem Schlüssel die Erstellungs-APIs aufrufen.
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 * Dieses Tutorial beginnt mit Daten im CSV-Format für Protokolldateien von Benutzeranforderungen eines hypothetischen Unternehmens. Sie können sie [hier](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)herunterladen.
 * Installieren Sie die neueste Version von Node.js mit NPM. Laden Sie es [hier](https://nodejs.org/en/download/) herunter.
 * **[Empfohlen:]** Visual Studio Code für IntelliSense und Debuggen, laden Sie es [hier](https://code.visualstudio.com/) kostenlos herunter.
 
+Der gesamte Code in diesem Tutorial ist im [GitHub-Repository mit Azure-Beispielen zu Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv) verfügbar. 
+
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Zuordnen von bereits vorhandenen Daten zu Absichten und Entitäten
 Selbst wenn Sie ein System haben, bei dessen Erstellung LUIS nicht berücksichtigt wurde, enthält dieses möglicherweise Textdaten, die verschiedenen möglichen Aktionen von Benutzern zugeordnet sind. In diesem Fall können Sie u.U. eine Zuordnung zwischen den vorhandenen Kategorien von Benutzereingaben und den Absichten in LUIS erstellen. Wenn es möglich ist, wichtige Wörter oder Ausdrücke in den Aussagen der Benutzern zu identifizieren, können Sie diese Wörter möglicherweise Entitäten zuordnen.
 
-Öffnen Sie die Datei `IoT.csv` . Sie enthält ein Protokoll von Benutzerabfragen eines hypothetischen Heimautomatisierungsdiensts, einschließlich der Art ihrer Kategorisierung, und einiger Spalten mit nützlichen Informationen, die diesen entnommen wurden. 
+Öffnen Sie die Datei [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv). Sie enthält ein Protokoll von Benutzerabfragen eines hypothetischen Heimautomatisierungsdiensts, einschließlich der Art ihrer Kategorisierung, und einiger Spalten mit nützlichen Informationen, die diesen entnommen wurden. 
 
 ![CSV-Datei bereits vorhandener Daten](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 Sie sehen, dass es sich bei der Spalte **RequestType** um Absichten handeln könnte und dass die Spalte **Request** eine Beispieläußerung enthält. Bei den anderen Feldern könnte es sich um Entitäten handeln, wenn sie in der Äußerung auftreten. Da es Absichten, Entitäten und Beispieläußerungen gibt, sind alle Anforderungen an eine einfache Beispiel-App erfüllt.
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Schritte zum Generieren einer LUIS-App aus Nicht-LUIS-Daten
-Um eine neue LUIS-App aus der Quelldatei zu generieren, analysieren Sie zuerst die Daten in der CSV-Datei und konvertieren diese Daten dann in ein Format, das Sie mithilfe der Erstellungs-API in LUIS hochladen können. Erfassen Sie aus den analysierten Daten Informationen dazu, welche Absichten und Entitäten vorhanden sind. Anschließend führen Sie API-Aufrufe zum Erstellen der App aus und fügen Absichten und Entitäten hinzu, die aus den analysierten Daten erfasst wurden. Nachdem Sie die LUIS-App erstellt haben, können Sie die Beispieläußerungen aus den analysierten Daten hinzufügen. Diesen Ablauf können Sie im letzten Teil des folgende Codes sehen. Kopieren Sie diesen Code, oder [laden Sie ihn herunter](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js), und speichern Sie ihn in `index.js`.
+So generieren Sie eine neue LUIS-App auf der Grundlage der CSV-Datei:
+
+* Analysieren Sie die Daten aus der CSV-Datei:
+    * Konvertieren Sie sie in ein Format, das Sie über die Erstellungs-API in LUIS hochladen können. 
+    * Sammeln Sie auf der Grundlage der analysierten Daten Informationen zu Absichten und Entitäten. 
+* Rufen Sie die Erstellungs-API auf, um Folgendes auszuführen:
+    * Erstellen der App
+    * Hinzufügen von Absichten und Entitäten, die auf der Grundlage der analysierten Daten gesammelt wurden 
+    * Nachdem Sie die LUIS-App erstellt haben, können Sie die Beispieläußerungen aus den analysierten Daten hinzufügen. 
+
+Diesen Programmablauf finden Sie im letzten Teil der Datei `index.js`. Kopieren Sie diesen Code, oder [laden Sie ihn herunter](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js), und speichern Sie ihn in `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -119,7 +131,7 @@ Um diese Anwendung verwenden zu können, müssen Sie die Werte in der Datei „i
 
 ```javascript
 // Change these values
-const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
+const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
@@ -167,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>Öffnen der LUIS-App
-Nachdem das Skript abgeschlossen wurde, können Sie sich bei [LUIS](luis-reference-regions.md) anmelden und die erstellte LUIS-App unter **My Apps** (Meine Apps) ansehen. Sie sollten die hinzugefügten Äußerungen unter den Absichten **TurnOn**, **TurnOff** und **None** sehen.
+Nach Abschluss des Skripts können Sie sich bei [LUIS](luis-reference-regions.md) anmelden und sich die erstellte LUIS-App unter **Meine Apps** ansehen. Sie sollten die hinzugefügten Äußerungen unter den Absichten **TurnOn**, **TurnOff** und **None** sehen.
 
 ![Absicht „TurnOn“](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 

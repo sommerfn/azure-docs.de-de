@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153572"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677442"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Erstellen und Bereitstellen eines simulierten TPM-Edge-Geräts unter Windows
 
@@ -46,7 +46,7 @@ Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Ang
 
 Wählen Sie die SDK-Sprache für die Erstellung des simulierten Geräts, und führen Sie die Schritte durch, um die individuelle Registrierung zu erstellen.
 
-Wenn Sie die individuelle Registrierung erstellt haben, wählen Sie **Aktivieren** aus, um anzugeben, dass das simulierte TPM-Gerät auf Ihrem Windows-Entwicklungscomputer ein **IoT Edge-Gerät** ist.
+Wenn Sie die individuelle Registrierung erstellen, wählen Sie **TRUE** aus, um anzugeben, dass das simulierte TPM-Gerät auf Ihrem Windows-Entwicklungscomputer ein **IoT Edge-Gerät** ist.
 
 Simuliertes Gerät und Anleitungen für die individuelle Registrierung:
 

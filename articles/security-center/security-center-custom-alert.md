@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8845cb0a91edefa0350558f35488519ec37d064d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485276"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663586"
 ---
-# <a name="custom-alert-rules-in-azure-security-center-preview"></a>Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)
-In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln in Azure Security Center erstellen.
+# <a name="custom-alert-rules-in-azure-security-center-retired"></a>Benutzerdefinierte Warnungsregeln in Azure Security Center (eingestellt)
+In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln (Vorschau) in Azure Security Center erstellen.
 
 > [!NOTE]
-> Benutzerdefinierte Benachrichtigungen, die vom Security Center außer Kraft gesetzt wurden. 
+> Benutzerdefinierte Warnungen wurden im Azure Security Center am 30. Juni 2019 eingestellt. 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Einstellung von benutzerdefinierten Warnungsregeln in Azure Security Center
 
-Die Funktion der benutzerdefinierten Warnungen wurde am 30. Juni 2019 aufgrund der Außerbetriebnahme der zugrunde liegenden Infrastruktur eingestellt. Jegliche benutzerdefinierte Benachrichtigungen, die vor der Außerbetriebnahme definiert wurden, werden nicht ausgeführt. Sicherheitswarnungen, die auf diesen benutzerdefinierten Benachrichtigungsregeln basieren, werden nicht generiert. Sie können Abfragen Ihrer benutzerdefinierten Benachrichtigungsregeln im Security Center weiterhin einsehen, um sie in den folgenden alternativen Möglichkeiten wieder herzustellen:
+Die Funktion der benutzerdefinierten Warnungen wurde am 30. Juni 2019 aufgrund der Außerbetriebnahme der zugrunde liegenden Infrastruktur eingestellt. Jegliche benutzerdefinierte Benachrichtigungen, die vor der Außerbetriebnahme definiert wurden, sind außer Kraft, und Sicherheitswarnungen, die auf diesen benutzerdefinierten Benachrichtigungsregeln basieren, werden nicht generiert. Sie können Abfragen Ihrer benutzerdefinierten Benachrichtigungsregeln im Security Center weiterhin einsehen, um sie in den folgenden alternativen Möglichkeiten wieder herzustellen:
 
 Den Benutzern wird empfohlen, eine der folgenden Aktionen auszuführen:
 - Aktivieren Sie [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) und verwenden Sie die integrierte [Analysefunktion](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats), um die Benachrichtigungsregeln wiederherzustellen.
@@ -40,7 +40,7 @@ Wenn Sie Ihre vorhandenen Warnungen beibehalten und in Azure Sentinel wiederhers
 > [!NOTE]
 > Benutzerdefinierte Warnungen mithilfe von Abfragen des Typs [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)- oder [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)-Anweisungen werden in Azure Sentinel nicht unterstützt. Bitte bearbeiten Sie diese Warnungen, bevor Sie die Migration durchführen.
 
-Wenn Sie Ihre Warnungen unter Verwendung von Azure Monitor-Protokollwarnungen neu erstellen möchten, lesen Sie den Artikel: [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Er enthält Anleitungen zum Erstellen von Protokollwarnungen. Zum Anzeigen einer allgemeinen Übersicht über Protokollwarnungen in Azure Monitor klicken Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
+Um zu erfahren, wie Sie Ihre Warnungen mithilfe von Azure Monitor-Protokollwarnungen neu erstellen können, lesen Sie den Artikel [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Eine allgemeine Übersicht finden Sie unter [Protokollwarnungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Was sind benutzerdefinierte Warnungsregeln in Security Center?
 

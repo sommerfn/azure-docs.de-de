@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489046"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678114"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -44,7 +44,7 @@ Als Erstes müssen Sie sich beim Portal „Mein Zugriff“ anmelden. Dort könne
 
 1. Melden Sie sich beim Portal „Mein Zugriff“ an.
 
-    Achten Sie darauf, dass Sie Ihr Organisationskonto verwenden. Wenden Sie sich im Zweifelsfall an Ihren Projektmanager oder Geschäftsleiter.
+    Achten Sie darauf, dass Sie Ihr Organisationskonto (Geschäfts-, Schul- oder Unikonto) verwenden. Wenden Sie sich im Zweifelsfall an Ihren Projektmanager oder Geschäftsleiter.
 
 ## <a name="request-an-access-package"></a>Anfordern eines Zugriffspakets
 
@@ -52,6 +52,9 @@ Nachdem Sie das Zugriffspaket im Portal „Mein Zugriff“ gefunden haben, könn
 
 **Erforderliche Rolle:** Anforderer
 
+1. Suchen Sie in der Liste nach dem Zugriffspaket.  Falls erforderlich, können Sie eine Suchzeichenfolge eingeben und dann den Filter **Name**, **Katalog** oder **Ressourcen** auswählen.
+
+    ![Portal „Mein Zugriff“ – Suche nach Ressourcen](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
 1. Klicken Sie auf das Häkchen, um das Zugriffspaket auszuwählen.
 
     ![Portal „Mein Zugriff“ – Zugriffspakete](./media/entitlement-management-shared/my-access-access-packages.png)

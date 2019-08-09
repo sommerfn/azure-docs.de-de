@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 07/28/2019
 ms.author: jowargo
-ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f83afa62859dee5963749daf2555af08cf6a0e0b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873141"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663818"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte iOS-Geräte mit Azure Notification Hubs
 
@@ -177,7 +177,7 @@ Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hin
 10. Die folgenden Methoden sollten durch Abschließen des Tutorials [Erste Schritte mit Notification Hubs][get-started] bereits in `AppDelegate.m` vorhanden sein. Wenn dies nicht der Fall ist, fügen Sie sie hinzu.
 
     ```objc
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    - (void)MessageBox:(NSString *)title message:(NSString *)messageText
     {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
@@ -185,7 +185,7 @@ Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hin
         [alert show];
     }
 
-    * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:
        (NSDictionary *)userInfo {
        NSLog(@"%@", userInfo);
        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
@@ -212,7 +212,9 @@ Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hin
 
     [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
         if (!error) {
-            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:"Notification" message:"Subscribed" delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         } else {
             NSLog(@"Error subscribing: %@", error);
         }
@@ -248,7 +250,7 @@ Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Absch
 
 ## <a name="optional-send-notifications-from-the-device"></a>(Optional) Senden von Benachrichtigungen vom Gerät
 
-Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet werden, aber Sie können Benachrichtigungen zu aktuellen Nachrichten direkt über die App senden. Dazu wird die `SendNotificationRESTAPI`-Methode aktualisiert, die im Tutorial [Erste Schritte mit Notification Hubs][get-started] definiert wurde.
+Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet werden, aber Sie können Benachrichtigungen zu aktuellen Nachrichten direkt über die App senden. Aktualisieren Sie zu diesem Zweck die `SendNotificationRESTAPI`-Methode, die Sie im Tutorial [Erste Schritte mit Notification Hubs][get-started] definiert haben.
 
 1. Aktualisieren Sie in `ViewController.m` die `SendNotificationRESTAPI`-Methode wie folgt, sodass ein Parameter für das Kategorietag akzeptiert und die richtige [Vorlagenbenachrichtigung](notification-hubs-templates-cross-platform-push-messages.md) gesendet wird.
 

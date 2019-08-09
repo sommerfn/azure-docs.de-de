@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077376"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677986"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Was ist die grafische Benutzeroberfläche für Azure Machine Learning Service? 
 
@@ -54,9 +54,8 @@ Ein Experiment besteht aus Datasets und Analysemodulen, die Sie miteinander verb
 * Alle Eingangsports für Module müssen eine Verbindung zum Datenfluss aufweisen.
 * Alle erforderlichen Parameter der einzelnen Module müssen festgelegt sein.
 
-Ein Beispiel eines einfachen Experiments finden Sie unter [Schnellstart: Vorbereiten und Visualisieren von Daten in Azure Machine Learning ohne Schreiben von Code](ui-quickstart-run-experiment.md).
 
-Eine vollständige exemplarische Vorgehensweise für eine Predictive Analytics-Lösung finden Sie unter [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md).
+Informationen zu den ersten Schritten mit der grafischen Benutzeroberfläche finden Sie unter [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md).
 
 ## <a name="dataset"></a>Datensatz
 
@@ -94,7 +93,7 @@ Informationen dazu, wie Sie Ihr Modell bereitstellen, finden Sie unter [Tutorial
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lernen Sie die Grundlagen von Predictive Analytics und maschinellem Lernen kennen mit [Schnellstart: Vorbereiten und Visualisieren von Daten in Azure Machine Learning ohne Schreiben von Code](ui-quickstart-run-experiment.md).
+* Die Grundlagen von Predictive Analytics und maschinellem Lernen werden hier erläutert: [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md)
 * Verwenden Sie eines der Beispiele und passen Sie es an Ihre Anforderungen an:
     * [Beispiel 1 – Regression: Preisprognose](ui-sample-regression-predict-automobile-price-basic.md)
     * [Beispiel 2 – Regression: Vorhersagen des Preises und Vergleichen von Algorithmen](ui-sample-regression-predict-automobile-price-compare-algorithms.md)

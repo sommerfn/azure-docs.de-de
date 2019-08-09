@@ -8,20 +8,20 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/30/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ec3c7379c8c7f28765fbc4396d3e9804a6c127f6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488686"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663749"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
-In diesem Artikel wird gezeigt, wie Sie Video Indexer-Widgets in Ihre Anwendungen einbetten können. Video Indexer unterstützt das Einbetten von zwei Widget-Typen in Ihre Anwendung: **Kognitive Erkenntnisse** und **Player**. 
+In diesem Artikel wird gezeigt, wie Sie Video Indexer-Widgets in Ihre Anwendungen einbetten können. Video Indexer unterstützt das Einbetten von drei Arten von Widgets in Ihre Anwendung: **Kognitive Erkenntnisse**, **Player** und **Editor**. 
 
-Ab Version 2 enthält die Basis-URL des Widgets die Region des Kontos. Ein Konto in der Region „USA, Westen“ generiert z.B.: `https://wus2.videoindexer.ai/embed/insights/...`.
+Ab Version 2 enthält die Basis-URL des Widgets die Region des angegebenen Kontos. Ein Konto in der Region „USA, Westen“ generiert z.B.: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Typen von Widgets
 
@@ -31,9 +31,9 @@ Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnis
 
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
-|Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter „widgets“ wird in Version 2 nicht unterstützt. |
-|locale|Ein kurzer Sprachcode|Steuert die Sprache, in der Erkenntnisse angezeigt werden. Der Standardwert ist `en`. Beispiel: `language=de`.|
-|Tabulatorzeichen|Die Registerkarte, die standardmäßig ausgewählt ist|Steuert die Registerkarte „Erkenntnisse“, die standardmäßig gerendert wird. `tab=timeline` rendert Erkenntnisse, während die Registerkarte „Zeitachse“ ausgewählt ist.|
+|`widgets`|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter „widgets“ wird in Version 2 nicht unterstützt. |
+|`locale`|Ein kurzer Sprachcode|Steuert die Sprache, in der Erkenntnisse angezeigt werden. Der Standardwert ist `en`. Beispiel: `language=de`.|
+|`tab`|Die Registerkarte, die standardmäßig ausgewählt ist|Steuert die Registerkarte „Erkenntnisse“, die standardmäßig gerendert wird. `tab=timeline` rendert Erkenntnisse, während die Registerkarte „Zeitachse“ ausgewählt ist.|
 
 ### <a name="player-widget"></a>Player-Widget
 
@@ -41,12 +41,24 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
 
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
-|t|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: `t=60`.|
-|captions|Ein Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: `captions=en-US`.|
-|showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: `showCaptions=true`.|
-|type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: `type=audio`.|
-|autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: `autoplay=false`.|
-|language|Ein Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: `language=de-DE`.|
+|`t`|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: `t=60`.|
+|`captions`|Ein Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: `captions=en-US`.|
+|`showCaptions`|Ein boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: `showCaptions=true`.|
+|`type`||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: `type=audio`.|
+|`autoplay`|Ein boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: `autoplay=false`.|
+|`language`|Ein Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: `language=de-DE`.|
+
+### <a name="editor-widget"></a>Editor-Widget 
+
+Das **Editor**-Widget ermöglicht es Ihnen neue Projekte zu erstellen und Erkenntnisse aus Videos zu verwalten.
+
+|NAME|Definition|BESCHREIBUNG|
+|---|---|---|
+|`accessToken`<sup>*</sup>|Zeichenfolge|Bei der Verwendung des Editor-Widgets ist der Parameter `accessToken` erforderlich.<br/>Das Zugriffstoken bietet Zugriff auf Video, die sich nur in dem Konto befinden, das zum Einbetten des Widgets verwendet wurde. |
+|`language`|Ein Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: `language=de-DE`.|
+|`locale`|Ein kurzer Sprachcode|Steuert die Sprache, in der Erkenntnisse angezeigt werden. Der Standardwert ist `en`. Beispiel: `language=de`.|
+
+<sup>*</sup>Der Besitzer sollte beim Bereitstellen von `accessToken` Vorsicht walten lassen. 
 
 ## <a name="embedding-public-content"></a>Einbetten von öffentlichen Inhalten
 
@@ -57,9 +69,9 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     Nach dem Klicken auf die Schaltfläche wird auf dem Bildschirm ein modales Element für das Einbetten angezeigt, in dem Sie auswählen können, welches Widget Sie in Ihre Anwendung einbetten möchten.
-    Beim Auswählen eines Widgets (**Player** oder **Kognitive Erkenntnisse**) wird der eingebettete Code generiert, den Sie in Ihre Anwendung einfügen können.
+    Beim Auswählen eines Widgets (**Kognitive Erkenntnisse**, **Player** oder **Editor**) wird der eingebettete Code generiert, den Sie in Ihre Anwendung einfügen können.
  
-4. Wählen Sie den gewünschten Widget-Typ aus (**Kognitive Erkenntnisse** oder **Player**).
+4. Wählen Sie den gewünschten Widget-Typ aus (**Kognitive Erkenntnisse**, **Player** oder **Editor**).
 5. Kopieren Sie den Einbettungscode, und fügen Sie ihn Ihrer Anwendung hinzu. 
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
@@ -94,7 +106,7 @@ Der Video Indexer-Dienst geht wie folgt vor, um für Video Indexer-Widgets die K
 
 Wenn Sie Ihren eigenen Playercode implementieren und die Integration mit Widgets vom Typ **Kognitive Erkenntnisse** durchführen möchten, sind Sie selbst dafür verantwortlich, den Ursprung der Nachricht von „VideoIndexer.ai“ zu überprüfen.
 
-### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>Einbetten beider Widget-Typen in Ihre Anwendung bzw. Ihren Blog (empfohlen) 
+### <a name="embed-widgets-in-your-application--blog-recommended"></a>Einbetten von Widgets in Ihre Anwendung bzw. Ihren Blog (empfohlen) 
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die Interaktion zwischen zwei Video Indexer-Widgets so konfigurieren, dass der Player zum relevanten Moment springt, wenn ein Benutzer in Ihrer Anwendung auf das Steuerelement für Erkenntnisse klickt.
 
@@ -213,7 +225,7 @@ Weitere Informationen finden Sie in [dieser Demo](https://codepen.io/videoindexe
 
 ## <a name="adding-subtitles"></a>Hinzufügen von Untertiteln
 
-Wenn Sie Video Indexer-Erkenntnisse in Ihren eigenen AMP-Player einbetten, können Sie die **GetVttUrl**-Methode verwenden, um Untertitel zu erhalten. Sie können auch eine JavaScript-Methode aus dem Video Indexer-AMP-Plug-In abrufen (**getSubtitlesUrl**, wie bereits gezeigt). 
+Wenn Sie Video Indexer-Erkenntnisse in Ihren eigenen [Azure Media Player](https://aka.ms/azuremediaplayer) einbetten, können Sie die **GetVttUrl**-Methode verwenden, um Untertitel zu erhalten. Sie können auch eine JavaScript-Methode aus dem Video Indexer-AMP-Plug-In abrufen (**getSubtitlesUrl**, wie bereits gezeigt). 
 
 ## <a name="customizing-embeddable-widgets"></a>Anpassen von für die Einbettung geeigneten Widgets
 

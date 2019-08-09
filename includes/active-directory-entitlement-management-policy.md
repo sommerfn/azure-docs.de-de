@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178262"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678185"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Richtlinie: Für Benutzer in Ihrem Verzeichnis
 
-Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer und Gruppen in Ihrem Verzeichnis gilt, die dieses Zugriffspaket anfordern können.
+Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer gilt, die sich in Ihrem Verzeichnis befinden und dieses Zugriffspaket anfordern können.  **Benutzer in Ihrem Verzeichnis** bezieht sich sowohl auf interne Benutzer als auch auf externe Benutzer, die zum Verzeichnis eingeladen wurden – entweder, indem sie mit einem anderen Zugriffspaket eine Berechtigung angefordert haben oder indem sie über Azure AD B2B eingeladen wurden. Beim Definieren der Richtlinie können Sie einzelne Benutzer oder Gruppen von Benutzern angeben. Beispielsweise verfügt Ihre Organisation möglicherweise bereits über eine Gruppe wie **Alle Mitarbeiter**.  Wenn diese Gruppe in die Richtlinie für Benutzer eingefügt wird, die Zugriff anfordern können, können alle Mitglieder dieser Gruppe Zugriff anfordern.
 
 1. Wählen Sie im Abschnitt **Benutzer, die Zugriff anfordern können** die Option **Für in Ihrem Verzeichnis befindliche Benutzer** aus.
 
@@ -33,16 +33,16 @@ Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benu
 
 ### <a name="policy-for-users-not-in-your-directory"></a>Richtlinie: Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden
 
-Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer gilt, die sich nicht in Ihrem Verzeichnis befinden und dieses Zugriffspaket anfordern können. Verzeichnisse müssen konfiguriert werden, damit sie in den **Einschränkungseinstellungen für die Zusammenarbeit in Organisationsbeziehungen** zugelassen werden.
+Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer gilt, die sich nicht in Ihrem Verzeichnis befinden und dieses Zugriffspaket anfordern können. **Benutzer, die sich nicht in Ihrem Verzeichnis befinden** bezieht sich auf Benutzer in einem anderen Azure AD-Verzeichnis, die bisher noch nicht zu Ihrem Verzeichnis eingeladen wurden.  Verzeichnisse müssen konfiguriert werden, damit sie in den **Einschränkungseinstellungen für die Zusammenarbeit in Organisationsbeziehungen** zugelassen werden.
 
 > [!NOTE]
-> Für einen sich noch nicht in Ihrem Verzeichnis befindenden Benutzer, dessen Anforderung genehmigt oder automatisch genehmigt wird, wird ein Gastbenutzerkonto erstellt. Der Gast wird eingeladen, erhält jedoch keine Einladungs-E-Mail. Stattdessen erhält er eine E-Mail, wenn seine Zugriffspaketzuweisung bereitgestellt wird. Wenn dieser Gastbenutzer später keine Zugriffspaketzuweisungen mehr besitzt, da die letzte Zuweisung abgelaufen ist oder abgebrochen wurde, wird das Gastbenutzerkonto standardmäßig für die Anmeldung blockiert und gelöscht. Wenn Gastbenutzer dauerhaft in Ihrem Verzeichnis bleiben sollen, auch wenn sie keine Zugriffspaketzuweisungen haben, können Sie die Einstellungen für Ihre Berechtigungsverwaltungskonfiguration ändern.
+> Für einen Benutzer, der sich noch nicht in Ihrem Verzeichnis befindet und dessen Anforderung genehmigt oder automatisch genehmigt wird, wird ein externes Gastbenutzerkonto erstellt. Der Gast wird eingeladen, erhält jedoch keine Einladungs-E-Mail. Stattdessen erhält er eine E-Mail, wenn seine Zugriffspaketzuweisung bereitgestellt wird. Wenn dieser Gastbenutzer zu einem späteren Zeitpunkt keine Zugriffspaketzuweisungen mehr besitzt, weil die letzte Zuweisung abgelaufen ist oder abgebrochen wurde, wird das Gastbenutzerkonto standardmäßig für die Anmeldung blockiert und anschließend gelöscht. Wenn Gastbenutzer dauerhaft in Ihrem Verzeichnis bleiben sollen, auch wenn sie keine Zugriffspaketzuweisungen haben, können Sie die Einstellungen für Ihre Berechtigungsverwaltungskonfiguration ändern.
 
 1. Wählen Sie im Abschnitt **Benutzer, die Zugriff anfordern können** die Option **Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden** aus.
 
 1. Klicken Sie im Abschnitt **Externes Azure AD-Verzeichnis auswählen** auf **Verzeichnisse hinzufügen**.
 
-1. Geben Sie einen Domänennamen ein, und suchen Sie nach einem externen Azure AD-Verzeichnis.
+1. Geben Sie einen Domänennamen ein, und suchen Sie nach einem Azure AD-Verzeichnis mit diesem Domänennamen.
 
 1. Stellen Sie anhand des angegebenen Verzeichnisnamens und der ursprünglichen Domäne sicher, dass es sich um das richtige Verzeichnis handelt.
 

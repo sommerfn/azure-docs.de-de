@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 7058d7f46373f8adaacbcbf90e5ea591a15f8f37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178549"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601332"
 ---
 Auf einem Data Box Edge-Gerät, für das die Computerolle konfiguriert ist, steht eine Teilmenge von Docker-Befehlen zur Überwachung oder Problembehandlung von Modulen zur Verfügung. Um eine Liste der verfügbaren Befehle anzuzeigen, [stellen Sie eine Verbindung zur PowerShell-Schnittstelle her](#connect-to-the-powershell-interface), und verwenden Sie die `dkrdbe`-Funktion.
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung der für `dkrdbe` verfügb
 
 |command  |BESCHREIBUNG |
 |---------|---------|
-|`image`     | Verwalten von Images       |
+|`image`     | Verwalten von Images. Zum Entfernen nicht verwendeter Images verwenden Sie `dkrdbe image prune -a -f`       |
 |`images`     | Auflisten von Images         |
 |`inspect`     | Zurückgeben detaillierter Informationen zu Docker-Objekten         |
 |`login`     | Anmelden bei einer Docker-Registrierung         |

@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ea7e4757aac0fccf60a44c70e9de6a63c1ec9498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3338bed8cd8067d58eb2600854de6c0d8e34d1a3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147007"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668458"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -26,6 +26,8 @@ In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI](https://docs.microsoft
 In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein. 
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und den Storage-Dienst angegeben sind.
@@ -323,6 +325,17 @@ Verwenden Sie zum Löschen eines Blobs den Befehl `blob delete`:
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
+```
+
+### <a name="set-the-content-type"></a>Festlegen des Inhaltstyps
+
+Der Inhaltstyp, auch als MIME-Typ bezeichnet, identifiziert das Format der Daten im Blob. Browser und andere Software bestimmen anhand des Inhaltstyps, wie die Daten verarbeitet werden müssen. Der Inhaltstyp für PNG-Bilder lautet beispielsweise `image/png`. Verwenden Sie den Befehl `blob update`, um den Inhaltstyp festzulegen:
+
+```azurecli
+az storage blob update
+    --container-name <container_name> 
+    --name <blob_name>
+    --content-type <content_type>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Erstellen und Verwalten von Dateifreigaben

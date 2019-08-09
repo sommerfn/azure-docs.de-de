@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 164fc4d8ad567c75ed5029aaf26af260398f80ba
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722696"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698671"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Vorschau: Erstellen eines Windows-Image und Verteilen in einem Katalog für freigegebene Images 
 
@@ -100,12 +100,11 @@ az role assignment create \
 ```
 
 
-
-
-
 ## <a name="create-an-image-definition-and-gallery"></a>Erstellen einer Imagedefinition und eines Imagekatalogs
 
-Erstellen Sie einen Imagekatalog. 
+Zum Verwenden von Image Builder mit einem Katalog mit freigegebenen Images benötigen Sie einen vorhandenen Imagekatalog und eine Imagedefinition. Imagekatalog und Imagedefinition werden nicht von Image Builder für Sie erstellt.
+
+Wenn Sie noch nicht über einen zu verwendenden Katalog und eine Imagedefinition verfügen, erstellen Sie diese zunächst. Erstellen Sie zuerst einen Imagekatalog.
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +112,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-Erstellen Sie eine Imagedefinition.
+Erstellen Sie anschließend eine Imagedefinition.
 
 ```azurecli-interactive
 az sig image-definition create \

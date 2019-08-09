@@ -1,6 +1,6 @@
 ---
-title: Vordefinierte Modelle
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Vordefinierte Modelle – LUIS
+titleSuffix: Azure Cognitive Services
 description: Vordefinierte Modelle stellen Domänen, Absichten, Entitäten und Äußerungen bereit. Sie können Ihre App mit einer vordefinierten Domäne starten oder ihr später eine geeignete Domäne hinzufügen.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5d2ea9d971eff22ddeed4122c9697ca3096697b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b072e265204bba3caa1388576008d5e41adcc33d
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813881"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619716"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>Vordefinierte Modelle für Domäne, Absicht und Entität
 

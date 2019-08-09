@@ -1,6 +1,6 @@
 ---
-title: Bewährte Methoden
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Bewährte Methoden – LUIS
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mit bewährten Methoden bei LUIS die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
 services: cognitive-services
 author: diberry
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812913"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639275"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
-Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
+Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App: 
 
 * Erstellen des Sprachmodells
 * Hinzufügen einiger Beispieläußerungen für das Training (10–15 pro Absicht)
@@ -78,7 +78,7 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Fügen Sie Ausdruckslisten und Muster in späteren Iterationen hinzu
 
-Eine bewährte Methode besteht darin, diese Methoden nicht anzuwenden, bevor Ihre App getestet wurde. Sie sollten verstehen, wie sich die App verhält, bevor Sie Phrasenlisten und -muster hinzufügen, da diese Funktionen stärker gewichtet werden als Beispieläußerungen und das Vertrauen verzerren. 
+Eine bewährte Methode besteht darin, diese Methoden nicht anzuwenden, bevor Ihre App getestet wurde. Sie sollten verstehen, wie sich die App verhält, bevor Sie [Begriffslisten](luis-concept-feature.md) und [Muster](luis-concept-patterns.md) hinzufügen, da diese Funktionen stärker gewichtet werden als Beispieläußerungen und die Zuverlässigkeit verzerren. 
 
 Nachdem Sie das Verhalten Ihrer App ohne diese kennen, fügen Sie Ihrer App nach Bedarf diese Funktionen hinzu. Sie müssen diese Funktionen nicht bei jedem [Durchlauf](luis-concept-app-iteration.md) hinzufügen oder bei jeder Version ändern. 
 

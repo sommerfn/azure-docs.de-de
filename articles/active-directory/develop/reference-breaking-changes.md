@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 07/26/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea3ec9024e4ea6a254fb6fe80f93886dc31a0ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c0bc7f5d4890ae494c6c6616b42eddc2445b159
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545798"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666483"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -41,7 +41,46 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
-Zurzeit sind keine geplant. 
+August 2019 Erzwingung von POST-Semantik gemäß URL-Analyseregeln: Doppelte Parameter lösen einen Fehler aus, Anführungszeichen in Parametern werden nicht länger ignoriert, [BOM](https://www.w3.org/International/questions/qa-byte-order-mark) wird ignoriert.
+
+## <a name="july-2019"></a>Juli 2019
+
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>Reine App-Token für Anwendungen mit einem einzigen Mandanten werden nur ausgegeben, wenn die Client-App im Ressourcenmandanten vorhanden ist.
+
+**Gültigkeitsdatum:** 26. Juli 2019
+
+**Betroffene Endpunkte:** [v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) und [v2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+
+**Betroffenes Protokoll:** [Clientanmeldeinformationen (reine App-Token)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+
+Ab dem 26. Juli gilt eine Sicherheitsänderung, mit der die Ausgabe von reinen App-Token (über die Zuweisung von Clientanmeldeinformationen) geändert wird. Bisher konnten Anwendungen Token zum Aufruf einer beliebigen anderen App abrufen, unabhängig vom Vorhandensein im Mandanten oder von genehmigten Rollen für diese Anwendung.  Dieses Verhalten wurde aktualisiert, sodass für Ressourcen (gelegentlich auch Web-APIs genannt) mit einem einzigen Mandanten (Standard) die Clientanwendung jetzt innerhalb des Ressourcenmandanten vorliegen muss.  Beachten Sie, dass eine vorhandene Zustimmung zwischen Client und API weiterhin nicht erforderlich ist. Ferner müssen Apps weiterhin eigene Autorisierungsüberprüfungen durchführen, um sicherzustellen, dass ein `roles`-Anspruch vorhanden ist und den erwarteten Wert für die API enthält.
+
+Die Fehlermeldung für dieses Szenario lautet aktuell folgendermaßen: 
+
+`The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
+
+Um dieses Problem zu beseitigen, verwenden Sie die Benutzeroberfläche für die Administratorzustimmung, um den Dienstprinzipal der Clientanwendung in Ihrem Mandanten zu erstellen, oder erstellen Sie diesen manuell.  Durch diese Anforderung wird sichergestellt, dass der Mandant der App die Berechtigung zum Betrieb innerhalb des Mandanten erteilt hat.  
+
+#### <a name="example-request"></a>Beispielanforderung
+
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` In diesem Beispiel lautet der Ressourcenmandant (Autorität) contoso.com, die Ressourcen-App ist eine Einzelmandanten-App namens `gateway.contoso.com/api` für den Contoso-Mandanten, und die Client-App ist `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`.  Wenn die Client-App über einen Dienstprinzipal innerhalb von contoso.com verfügt, kann diese Anforderung fortgesetzt werden.  Falls nicht, ist die Anforderung nicht erfolgreich, und es wird der oben gezeigte Fehler gemeldet.  
+
+Wenn es sich bei der Contoso-Gateway-App um eine mehrinstanzenfähige App handeln würde, könnte die Anforderung unabhängig davon fortgesetzt werden, ob die Client-App über einen Dienstprinzipal innerhalb von contoso.com verfügt.  
+
+### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>Umleitungs-URIs können jetzt Abfragezeichenfolgenparameter enthalten
+
+**Gültigkeitsdatum:** 22. Juli 2019
+
+**Betroffene Endpunkte:** v1.0 und v2.0
+
+**Betroffenes Protokoll:** Alle Flows
+
+Gemäß [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) können Azure AD-Anwendungen ab sofort Umleitungs-URIs (Antwort-URIs) mit statischen Abfrageparametern (z.B. https://contoso.com/oauth2?idp=microsoft) ) für OAuth 2.0-Anforderungen registrieren und verwenden.  Dynamische Umleitungs-URIs sind weiterhin untersagt, weil sie ein Sicherheitsrisiko darstellen und nicht dazu verwendet werden können, statische Informationen über eine Authentifizierungsanforderung hinweg beizubehalten. Verwenden Sie in diesem Fall den `state`-Parameter.
+
+Der statische Abfrageparameter wird, ebenso wie jeder andere Bestandteil des Umleitungs-URI, einem Zeichenfolgenabgleich unterzogen. Wenn keine registrierte Zeichenfolge vorhanden ist, die dem URI-decodierten Umleitungs-URI entspricht, wird die Anforderung abgelehnt.  Wird der Antwort-URI in der App-Registrierung gefunden, wird die gesamte Zeichenfolge – einschließlich des statischen Abfrageparameters – zum Umleiten des Benutzers verwendet. 
+
+Beachten Sie, dass die Benutzeroberfläche zur App-Registrierung im Azure-Portal zum aktuellen Zeitpunkt (Ende Juli 2019) Abfrageparameter weiterhin blockiert.  Sie können das Anwendungsmanifest jedoch manuell bearbeiten, um Abfrageparameter in Ihre App einzufügen und diese zu testen.  
+
 
 ## <a name="march-2019"></a>März 2019
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273233"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597368"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -28,7 +28,7 @@ Eine Front-End-IP-Adresse ist die IP-Adresse, die einem Anwendungsgateway zugeor
 
 Die V2-SKU von Azure Application Gateway kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch statische öffentliche IP-Adressen oder ausschließlich Letztere konfiguriert werden. Nur statische interne IP-Adressen werden nicht unterstützt.
 
-Die V1-SKU kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch dynamische öffentliche IP-Adressen verwendet werden. Sie kann auch so eingestellt werden, dass nur eine dieser beiden Optionen verwendet wird. Die dynamische IP-Adresse der Application Gateway-Instanz ändert sich nicht, solange das Gateway aktiv ist. Sie kann sich nur dann ändern, wenn Sie das Gateway anhalten oder starten. Wenn beispielsweise Systemfehler auftreten oder Updates und Azure-Hostupdates durchgeführt werden, ändert sich die IP-Adresse nicht. 
+Die V1-SKU kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch dynamische öffentliche IP-Adressen verwendet werden. Sie kann auch so eingestellt werden, dass nur statische interne IP-Adressen oder nur dynamische öffentliche IP-Adressen oder dass nur dynamische private IP-Adressen oder dynamische öffentliche IP-Adressen und dynamische private IP-Adressen verwendet werden. Die dynamische IP-Adresse der Application Gateway-Instanz ändert sich nicht, solange das Gateway aktiv ist. Sie kann sich nur dann ändern, wenn Sie das Gateway anhalten oder starten. Wenn beispielsweise Systemfehler auftreten oder Updates und Azure-Hostupdates durchgeführt werden, ändert sich die IP-Adresse nicht. 
 
 Der einem Anwendungsgateway zugeordnete DNS-Name ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse des Anwendungsgateways zu verweisen.
 

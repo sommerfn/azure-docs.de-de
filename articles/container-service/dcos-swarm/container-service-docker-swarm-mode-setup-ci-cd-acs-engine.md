@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849869"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598559"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Engine und Docker Swarm-Modus mithilfe von Azure DevOps
 
@@ -251,6 +251,6 @@ Nachdem Sie die Konfiguration abgeschlossen haben, ist es Zeit, diese neue CI/CD
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu CI/CD mit Azure DevOps finden Sie in der [Übersicht über den Azure DevOps-Build](https://www.visualstudio.com/docs/build/overview).
+* Weitere Informationen zu CI/CD mit Azure DevOps finden Sie in der [Dokumentation zu Azure Pipelines](/azure/devops/pipelines/?view=azure-devops).
 * Weitere Informationen zur ACS-Engine finden Sie im [GitHub-Repository zum ACS-Engine](https://github.com/Azure/acs-engine).
 * Weitere Informationen zum Docker Swarm-Modus finden Sie unter [Docker Swarm mode overview](https://docs.docker.com/engine/swarm/) (Übersicht über Docker Swarm-Modus).

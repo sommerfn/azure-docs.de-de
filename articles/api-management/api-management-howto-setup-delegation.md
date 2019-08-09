@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 2fad585e1d37694e37c219be210f9521dbbda3a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd7b2cecce443e821e233d97a260b7dfb3471752
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241647"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667216"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
@@ -38,7 +38,7 @@ Der komplette Workflow sieht wie folgt aus:
 3. Der Delegierungsendpunkt wiederum leitet den Benutzer um oder zeigt eine Benutzeroberfläche für die Anmeldung oder Registrierung an.
 4. Im Erfolgsfall wird der Benutzer anschließend wieder auf die Seite im API Management-Entwicklerportal umgeleitet, von der er ursprünglich gekommen ist.
 
-Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihren Delegierungsendpunkt ein. Klicken Sie im API Management-Herausgeberportal auf **Sicherheit** und dann auf die Registerkarte **Delegierung**. Klicken Sie auf das Kontrollkästchen zum Aktivieren von „Anmeldung und Abmeldung delegieren“.
+Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihren Delegierungsendpunkt ein. Suchen Sie im Azure-Portal in Ihrer API Management-Ressource nach **Sicherheit**, und klicken Sie auf das Element **Delegierung**. Klicken Sie auf das Kontrollkästchen zum Aktivieren von „Anmeldung und Abmeldung delegieren“.
 
 ![Delegierungsseite][api-management-delegation-signin-up]
 

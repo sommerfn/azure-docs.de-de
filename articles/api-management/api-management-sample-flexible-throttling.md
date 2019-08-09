@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 22c3987121e2ab3479274c89c359c679f5f1135e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e7c6fe10467bb68417172dc95fef874d37fc97b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61087129"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696238"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Erweiterte Anforderungsbegrenzung mit Azure API Management
 Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für Azure API Management von großer Bedeutung. Mit API Management lässt sich entweder die Rate der Anforderungen oder die Gesamtzahl der Anforderungen bzw. die Gesamtmenge der übertragenen Daten steuern. Dies ermöglicht es den API-Anbietern, ihre APIs vor Missbrauch zu schützen und mit verschiedenen API-Produkttarifen Mehrwert zu schaffen.
@@ -28,6 +28,9 @@ Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für
 Bisher konnte die Rate nur auf der Basis eines bestimmten Produktabonnements gedrosselt werden, das im Azure-Portal definiert wurde. Dies ist nützlich, wenn der API-Anbieter Beschränkungen für Entwickler einführen möchte, die sich für die Nutzung der API registriert haben. Es hilft aber beispielsweise nicht bei der Drosselung einzelner Endbenutzer der API. Daher ist es möglich, dass ein einzelner Benutzer der Anwendung eines Entwicklers das gesamte Kontingent in Anspruch nimmt und dadurch andere Kunden des Entwicklers an der Nutzung der Anwendung hindert. Außerdem können verschiedene Kunden gemeinsam ein so hohes Anforderungsvolumen generieren, dass der Zugriff für gelegentliche Benutzer beschränkt wird.
 
 ## <a name="custom-key-based-throttling"></a>Benutzerdefinierte Drosselung auf der Basis von Schlüsseln
+
+> HINWEIS:  Im Verbrauchstarif von Azure API Management ist die Richtlinie `rate-limit-by-key` nicht verfügbar. 
+
 Die neuen Richtlinien [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) und [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) bieten mehr Flexibilität bei der Steuerung des Datenverkehrs. Mit diesen neuen Richtlinien können Sie in selbst definierten Ausdrücken Schlüssel angeben, die zum Nachverfolgen der Datenverkehrsnutzung verwendet werden. Wie das funktioniert, lässt sich am einfachsten anhand eines Beispiels veranschaulichen. 
 
 ## <a name="ip-address-throttling"></a>Drosselung nach IP-Adresse

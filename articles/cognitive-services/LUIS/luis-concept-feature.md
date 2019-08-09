@@ -1,6 +1,6 @@
 ---
-title: Features
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Features – LUIS
+titleSuffix: Azure Cognitive Services
 description: Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812924"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639213"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Features für Begriffslisten in Ihrer LUIS-App
 
@@ -35,7 +35,7 @@ Begriffslisten sind nicht mit einer bestimmten Absicht oder Entität verknüpft,
 
 ## <a name="how-to-use-phrase-lists"></a>Verwenden von Ausdruckslisten
 
-Erstellen Sie eine Begriffsliste, wenn Ihre App Wörter oder Ausdrücke aufweist, die für die App wichtig sind, z.B.:
+[Erstellen Sie eine Begriffsliste](luis-how-to-add-features.md), wenn Ihre App Wörter oder Ausdrücke aufweist, die für die App wichtig sind, z. B.:
 
 * Branchenbegriffe
 * Jargon
@@ -79,7 +79,7 @@ Wenn die Begriffsliste Ihrer App mit der Zeit anwächst, können einige Ausdrüc
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Begriffslisten helfen bei der Erkennung einfach austauschbarer Entitäten
+## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Begriffslisten helfen bei der Erkennung einfacher austauschbarer Entitäten.
 Austauschbare Begriffslisten sind eine gute Möglichkeit, die Leistung Ihrer LUIS-App zu optimieren. Wenn die App Probleme bei der Vorhersage von Äußerungen zu den richtigen Absichten oder der Erkennung von Entitäten hat, sollten Sie überlegen, ob die Äußerungen ungewöhnliche oder mehrdeutige Wörter enthalten. Diese Wörter sind gute Kandidaten für eine Ausdrucksliste.
 
 ## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Ausdruckslisten helfen durch ein besseres Kontextverständnis bei der Erkennung von Absichten
@@ -88,7 +88,7 @@ Eine Ausdrucksliste ist keine Anweisung an LUIS, einen strikten Abgleich auszuf�
 Das Hinzufügen einer Ausdrucksliste stellt eine Alternative zum Hinzufügen zusätzlicher Beispieläußerungen zu einer Absicht dar. 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Einsatzmöglichkeiten für Ausdruckslisten oder Listenentitäten
-Während sowohl eine Ausdrucksliste als auch Listenentitäten Auswirkungen auf Äußerungen für alle Absichten haben können, unterscheiden sich diese Auswirkungen. Sie verwenden eine Ausdrucksliste, um die Vorhersage von Absichten zu beeinflussen. Sie verwenden eine Listenentität, um die Extraktion von Entitäten für eine genaue Textübereinstimmung zu beeinflussen. 
+Während sowohl eine Begriffsliste als auch [Listenentitäten](reference-entity-list.md) Auswirkungen auf Äußerungen für alle Absichten haben können, unterscheiden sich diese Auswirkungen. Sie verwenden eine Ausdrucksliste, um die Vorhersage von Absichten zu beeinflussen. Sie verwenden eine Listenentität, um die Extraktion von Entitäten für eine genaue Textübereinstimmung zu beeinflussen. 
 
 ### <a name="use-a-phrase-list"></a>Wann Sie Ausdruckslisten verwenden
 Mit einer Ausdrucksliste kann LUIS weiterhin den Kontext berücksichtigen und eine Generalisierung zum Identifizieren von ähnlichen Elementen ausführen, aber keine genaue Übereinstimmung wie bei Elementen in einer Liste. Wenn Sie Ihre LUIS-App in der Lage sein soll, zu generalisieren und neue Elemente in einer Kategorie zu identifizieren, verwenden Sie eine Ausdrucksliste. 

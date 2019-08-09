@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3d99a9561bc7335fd219120ab97e076bfbc94c2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480216"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693970"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -33,6 +33,10 @@ ms.locfileid: "66480216"
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
+* Fehlerbehebungen
+* Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Fehlerbehebungen
@@ -67,6 +71,8 @@ Die plattformübergreifende .NET Standard-Bibiliothek [Microsoft.Azure.Cosmos.Ta
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.0.4-preview](#1.0.4-preview) |26. Juli 2019 |--- |
+| [1.0.2-preview](#1.0.2-preview) |2\. Mai 2019 |--- |
 | [1.0.1](#1.0.1) |19. April 2019 |--- |
 | [1.0.0](#1.0.0) |13. März 2019 |--- |
 | [0.11.0-preview](#0.11.0-preview) |5\. März 2019 |--- |

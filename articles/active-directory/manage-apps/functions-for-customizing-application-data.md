@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e741e8d4d68c9862aaabffaccb86740a3e1e9b8a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204482"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694177"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -50,8 +50,8 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Suffix** |Erforderlich |string |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Suffix** |Erforderlich |Zeichenfolge |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -63,9 +63,9 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Eingabeformat** |Erforderlich |string |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **Ausgabeformat** |Erforderlich |string |Format des Ausgabedatums. |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **Ausgabeformat** |Erforderlich |Zeichenfolge |Format des Ausgabedatums. |
 
 ---
 ### <a name="join"></a>Join
@@ -79,8 +79,8 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Trennzeichen** |Erforderlich |string |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| **source1 … sourceN** |Erforderlich, unterschiedlich oft |string |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
+| **source1 … sourceN** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 ---
 ### <a name="mid"></a>Mid
@@ -92,7 +92,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |Normalerweise der Name des Attributs. |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs. |
 | **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
 | **Länge** |Erforderlich |Ganze Zahl |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
 
@@ -106,7 +106,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
+| **Quelle** |Erforderlich |Zeichenfolge | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
 
 ---
 ### <a name="not"></a>not
@@ -129,29 +129,32 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 * Bei Angabe von **AlterWert** und **Ersatzwert**:
   
-  * Ersetzt alle Vorkommen von „AlterWert“ in der Quelle durch „Ersatzwert“.
+  * Ersetzt alle Vorkommen von **AlterWert** in der **Quelle** durch **Ersatzwert**.
 * Bei Angabe von **AlterWert** und **Vorlage**:
   
   * Ersetzt alle Vorkommen von **AlterWert** in **Vorlage** durch den **Quellwert**).
+* Bei Angabe von **RegexMuster** und **Ersatzwert**:
+
+  * Die Funktion wendet das **RegexMuster** auf die Zeichenfolge in **Quelle** an, und Sie können die RegexGruppennamen zum Erstellen der Zeichenfolgen für **Ersatzwert** verwenden.
 * Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzwert**:
   
-  * Ersetzt alle Werte, die mit dem "AlterWertRegexMuster" in der Quellzeichenfolge übereinstimmen, durch den "Ersatzwert".
-* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzeigenschaftsname**:
+  * Die Funktion wendet das **RegexMuster** auf die **Quellzeichenfolge** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch **Ersatzwert**.
+* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzattributname**:
   
   * Falls kein Wert für **Quelle** vorhanden ist, wird **Quelle** zurückgegeben.
-  * Ist ein Wert für **Quelle** vorhanden, wird der Ersatzwert aus der Eigenschaft mit **Ersatzeigenschaftsname** unter Verwendung von **RegexMuster** und **RegexGruppenname** extrahiert. Der Ersatzwert wird als Ergebnis zurückgegeben.
+  * Wenn **Quelle** einen Wert umfasst, wendet die Funktion das **RegexMuster** auf die Zeichenfolge in **Quelle** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch den Wert, der **Ersatzattributname** zugeordnet ist.
 
 **Parameter:**<br> 
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **AlterWert** |Optional |string |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
-| **RegexMuster** |Optional |string |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Wenn "Ersatzeigenschaftsname" verwendet wird, das Muster, das zum Extrahieren des Werts aus der Ersatzeigenschaft verwendet wird. |
-| **RegexGruppenname** |Optional |string |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von „Ersatzeigenschaftsname“ wird der Wert dieser Gruppe als „Ersatzwert“ aus der Ersatzeigenschaft extrahiert. |
-| **Ersatzwert** |Optional |string |Neuer Wert, durch den der alte Wert ersetzt wird. |
-| **Ersatzattributname** |Optional |string |Name des Attributs, das für den Ersatzwert verwendet werden soll, wenn die Quelle keinen Wert besitzt. |
-| **Vorlage** |Optional |string |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Quellwert ersetzt. |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
+| **AlterWert** |Optional |Zeichenfolge |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
+| **RegexMuster** |Optional |Zeichenfolge |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
+| **RegexGruppenname** |Optional |Zeichenfolge |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
+| **Ersatzwert** |Optional |Zeichenfolge |Neuer Wert, durch den der alte Wert ersetzt wird. |
+| **Ersatzattributname** |Optional |Zeichenfolge |Name des Attributs, das als Ersatzwert verwendet werden soll. |
+| **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -168,7 +171,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |string | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
+| **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
 
 ---
@@ -181,7 +184,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Erforderlich |string |**[appRoleAssignments]** -Objekt |
+| **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]** -Objekt |
 
 ---
 ### <a name="split"></a>Split
@@ -193,8 +196,8 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |**Quelle** , der aktualisiert werden soll. |
-| **Trennzeichen** |Erforderlich |string |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
+| **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
+| **Trennzeichen** |Erforderlich |Zeichenfolge |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -206,7 +209,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |**Quelle** , der aktualisiert werden soll. |
+| **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
 
 ---
 ### <a name="switch"></a>Switch
@@ -218,10 +221,10 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |**Source** , der aktualisiert werden soll. |
-| **defaultValue** |Optional |string |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
-| **key** |Erforderlich |string |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
-| **value** |Erforderlich |string |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
+| **Quelle** |Erforderlich |Zeichenfolge |**Source** , der aktualisiert werden soll. |
+| **defaultValue** |Optional |Zeichenfolge |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
+| **key** |Erforderlich |Zeichenfolge |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
+| **value** |Erforderlich |Zeichenfolge |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -233,8 +236,8 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **culture** |Optional |string |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -246,8 +249,8 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 | NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |string |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **culture** |Optional |string |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens

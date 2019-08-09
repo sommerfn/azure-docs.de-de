@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f78136edf58e76ed478bef9c255791d256c34a5
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152933"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678479"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 Dieser Artikel enthält die Schritte zum Erstellen, Starten und Überwachen eines Triggers für rollierende Fenster. Allgemeine Informationen zu Triggern und unterstützten Triggertypen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md).
@@ -40,16 +40,32 @@ Ein rollierendes Fenster weist die folgenden Triggertypeigenschaften auf:
         "type": "TumblingWindowTrigger",
         "runtimeState": "<<Started/Stopped/Disabled - readonly>>",
         "typeProperties": {
-            "frequency": "<<Minute/Hour>>",
+            "frequency": <<Minute/Hour>>,
             "interval": <<int>>,
             "startTime": "<<datetime>>",
-            "endTime: "<<datetime – optional>>"",
-            "delay": "<<timespan – optional>>",
+            "endTime: <<datetime – optional>>,
+            "delay": <<timespan – optional>>,
             “maxConcurrency”: <<int>> (required, max allowed: 50),
             "retryPolicy": {
                 "count": <<int - optional, default: 0>>,
                 “intervalInSeconds”: <<int>>,
-            }
+            },
+            "dependsOn": [
+                {
+                    "type": "TumblingWindowTriggerDependencyReference",
+                    "size": <<timespan – optional>>,
+                    "offset": <<timespan – optional>>,
+                    "referenceTrigger": {
+                        "referenceName": "MyTumblingWindowDependency1",
+                        "type": "TriggerReference"
+                    }
+                },
+                {
+                    "type": "SelfDependencyTumblingWindowTriggerReference",
+                    "size": <<timespan – optional>>,
+                    "offset": <<timespan>>
+                }
+            ]
         },
         "pipeline": {
             "pipelineReference": {
@@ -74,9 +90,9 @@ Ein rollierendes Fenster weist die folgenden Triggertypeigenschaften auf:
 
 Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten JSON-Elemente im Zusammenhang mit der Wiederholung und Zeitplanung eines Triggers für rollierende Fenster:
 
-| JSON-Element | BESCHREIBUNG | Type | Zulässige Werte | Erforderlich |
+| JSON-Element | BESCHREIBUNG | type | Zulässige Werte | Erforderlich |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Typ des Triggers. Der Typ ist der feste Wert „TumblingWindowTrigger“. | String | „TumblingWindowTrigger“ | Ja |
+| **type** | Typ des Triggers. Der Typ ist der feste Wert „TumblingWindowTrigger“. | Zeichenfolge | „TumblingWindowTrigger“ | Ja |
 | **runtimeState** | Der aktuelle Status der Triggerausführungszeit.<br/>**Hinweis**: Dieses Element ist \<readOnly>. | String | „Started“, „Stopped“, „Disabled“ | Ja |
 | **frequency** | Eine Zeichenfolge für die Einheit der Häufigkeit (Minuten oder Stunden), mit der der Trigger wiederholt wird. Wenn die **startTime**-Datumswerte granularer sind als der **frequency**-Wert, werden die **startTime**-Datumsangaben bei der Berechnung der Fenstergrenzen berücksichtigt. Beispiel: Wenn der **frequency**-Wert stündlich ist und der **startTime**-Wert „2017-09-01T10:10:10Z“ lautet, ist das erste Fenster „(2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)“. | String | „minute“, „hour“  | Ja |
 | **interval** | Eine positive ganze Zahl, die das Intervall für den **frequency**-Wert angibt, der bestimmt, wie oft der Trigger ausgeführt wird. Ist **interval** also beispielsweise auf „3“ und **frequency** auf „hour“ festgelegt, wird der Trigger alle drei Stunden ausgeführt. | Integer | Eine positive ganze Zahl | Ja |
@@ -86,6 +102,9 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten J
 | **maxConcurrency** | Die Anzahl der gleichzeitigen Triggerausführungen, die für bereite Fenster ausgelöst werden. Dies gilt beispielsweise für das Abgleichen stündlicher Ausführungen für die gestrigen Ergebnisse in 24 Fenstern. Wenn **maxConcurrency** = 10, werden Triggerereignisse nur für die ersten 10 Fenster ausgelöst (00:00-01:00 – 09:00-10:00). Nachdem die ersten 10 ausgelösten Pipelineausführungen erfolgt sind, werden Triggerausführungen für die nächsten 10 Fenster (10:00-11:00 – 19:00-20:00) ausgelöst. Wenn Sie mit dem Beispiel **maxConcurrency** = 10 fortfahren, erfolgen 10 Pipelineausführungen, sobald 10 Fenster bereit sind. Wenn nur ein Fenster bereit ist, erfolgt nur eine Pipelineausführung. | Integer | Eine ganze Zahl zwischen 1 und 50. | Ja |
 | **retryPolicy: Count** | Die Anzahl der Wiederholungen, bevor die Ausführung der Pipeline als „Failed“ markiert wird  | Integer | Eine ganze Zahl, wobei der Standardwert 0 ist (keine Wiederholungen) | Nein |
 | **retryPolicy: intervalInSeconds** | Die Verzögerung zwischen den in Sekunden angegebenen Wiederholungsversuchen | Integer | Die Anzahl der Sekunden, wobei der Standardwert 30 ist | Nein |
+| **dependsOn: type** | Der Typ von TumblingWindowTriggerReference. Erforderlich, wenn eine Abhängigkeit festgelegt ist. | Zeichenfolge |  „TumblingWindowTriggerDependencyReference“, „SelfDependencyTumblingWindowTriggerReference“ | Nein |
+| **dependsOn: size** | Die Größe des abhängigen rollierenden Fensters. | Timespan<br/>(hh:mm:ss)  | Ein positiver Zeitspannenwert, wobei der Standardwert die Fenstergröße des untergeordneten Triggers ist.  | Nein |
+| **dependsOn: offset** | Der Offset des Abhängigkeitstriggers. | Timespan<br/>(hh:mm:ss) |  Ein Zeitspannenwert, der bei einer Selbstabhängigkeit negativ sein muss. Wenn kein Wert angegeben wird, ist das Fenster identisch mit dem Trigger. | Selbstabhängigkeit: Ja<br/>Sonstiges: Nein  |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>Systemvariablen „WindowStart“ und „WindowEnd“
 
@@ -127,6 +146,10 @@ Die folgenden Punkte gelten für vorhandene **TriggerResource**-Elemente:
 
 * Wenn der Wert für das **frequency**-Element (oder die Fenstergröße) des Triggers geändert wird, wird der Status der bereits verarbeiteten Fenster *nicht* zurückgesetzt. Der Trigger setzt das Auslösen für die Fenster ab dem letzten ausgeführten Fenster mit der neuen Fenstergröße fort.
 * Wenn der Wert für das **endTime**-Element des Triggers geändert wird (durch Hinzufügen oder Aktualisieren), wird der Status der bereits verarbeiteten Fenster *nicht* zurückgesetzt. Der Trigger berücksichtigt den neuen **endTime**-Wert. Wenn der neue **endTime**-Wert vor den bereits ausgeführten Fenstern liegt, wird der Trigger angehalten. Andernfalls wird der Trigger angehalten, sobald der neue **endTime**-Wert erreicht wird.
+
+### <a name="tumbling-window-trigger-dependency"></a>Triggerabhängigkeit für ein rollierendes Fenster
+
+Wenn Sie sicherstellen möchten, dass ein Trigger für ein rollierendes Fenster erst nach der erfolgreichen Ausführung eines anderen Triggers für das rollierende Fenster ausgeführt wird, [erstellen Sie eine Triggerabhängigkeit für das rollierende Fenster](tumbling-window-trigger-dependency.md) in der Data Factory. 
 
 ## <a name="sample-for-azure-powershell"></a>Beispiel für Azure PowerShell
 
@@ -203,4 +226,6 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Trigger ers
 Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipelineausführungen](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).
+
+* Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).
+* [Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster](tumbling-window-trigger-dependency.md)

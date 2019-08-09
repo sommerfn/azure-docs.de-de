@@ -6,18 +6,27 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 04/24/2019
+ms.date: 07/29/2019
 ms.author: dapatil
-ms.openlocfilehash: 2edf7ce3be1402a497ceab5b826a89ee43c5c39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928671"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620101"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Versionsverlauf des Azure Site Recovery-Bereitstellungsplaners
 
 Dieser Artikel enthält den Verlauf aller Versionen des Azure Site Recovery-Bereitstellungsplaners zusammen mit den Fehlerbehebungen, den jeweiligen bekannten Einschränkungen und den Veröffentlichungsdaten.
+
+## <a name="version-25"></a>Version 2.5
+
+**Veröffentlichungsdatum: 29. Juli 2019**
+
+**Fehlerbehebungen:**
+
+- Für virtuelle und physische VMware-Computer wird die Empfehlung aktualisiert. Sie basiert nun auf der Replikation in verwalteten Datenträgern.
+- Unterstützung für Windows 10 (x64), Windows 8.1 (x64), Windows 8 (x64), Windows 7 (x64) SP1 oder höher wurde hinzugefügt.
 
 ## <a name="version-24"></a>Version 2.4
 
@@ -28,8 +37,8 @@ Dieser Artikel enthält den Verlauf aller Versionen des Azure Site Recovery-Bere
 - Die Kompatibilität des Betriebssystems wurde verbessert, insbesondere bei der Behandlung von Fehlern, die auf der Lokalisierung basieren.
 - VMs mit einer Datenänderungsrate von bis zu 20 MBit/s wurden zur Kompatibilitätsprüfliste hinzugefügt.
 - Verbesserte Fehlermeldungen
-  - Unterstützung für vCenter 6.7 wurde hinzugefügt.
-  - Unterstützung für Windows Server 2019 und Red Hat Enterprise Linux (RHEL)-Arbeitsstation wurde hinzugefügt.
+- Unterstützung für vCenter 6.7 wurde hinzugefügt.
+- Unterstützung für Windows Server 2019 und Red Hat Enterprise Linux (RHEL)-Arbeitsstation wurde hinzugefügt.
 
 
 

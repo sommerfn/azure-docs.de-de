@@ -11,22 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798157"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598103"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
 
 Reservierungskosten und Verwendungsdaten stehen für Enterprise Agreement-Kunden im Azure-Portal und in den REST-APIs zur Verfügung. Dieser Artikel hilft Ihnen bei Folgendem:
 
 - Abrufen von Reservierungseinkaufsdaten
-- Abrufen von Daten zur Unterauslastung von Reservierungen
-- Amortisieren von Reservierungskosten
+- Ermitteln des Abonnements bzw. der Ressourcengruppe oder Ressource, von dem bzw. von der die Reservierung verwendet wurde
 - Verbrauchsbasierte Kostenzuteilung für Reservierungsnutzung
 - Berechnen von Reservierungseinsparungen
+- Abrufen von Daten zur Unterauslastung von Reservierungen
+- Amortisieren von Reservierungskosten
 
 Marketplace-Gebühren sind in Nutzungsdaten konsolidiert. Sie zeigen Gebühren für die Erstverwendernutzung, Marketplace-Nutzung und Käufe aus einer einzelnen Datenquelle an.
 
@@ -34,9 +35,9 @@ Marketplace-Gebühren sind in Nutzungsdaten konsolidiert. Sie zeigen Gebühren f
 
 Daten werden in zwei gesonderte Datasets unterteilt: _Ist-Kosten_ und _Amortisierte Kosten_. Unterschiede zwischen diesen beiden Datasets:
 
-**Ist-Kosten**: Bieten Daten für die Abstimmung mit Ihrer monatlichen Rechnung. Diese Daten enthalten Reservierungseinkaufskosten. Sie enthalten keinen EffectivePrice für die Nutzung, auf die der Reservierungsrabatt gewährt wurde.
+**Ist-Kosten**: Bieten Daten für die Abstimmung mit Ihrer monatlichen Rechnung. Diese Daten enthalten Details zu den Kosten für den Reservierungserwerb sowie zur Reservierungsanwendung. Anhand dieser Daten können Sie ermitteln, welches Abonnement bzw. welche Ressourcengruppe oder Ressource den Reservierungsrabatt an einem bestimmten Tag erhalten hat. Der effektive Preis für die Nutzung mit dem Reservierungsrabatt ist Null.
 
-**Amortisierte Kosten**: Die Ressourcen-EffectiveCost, für die der Reservierungsrabatt gewährt wird, sind die anteiligen Kosten der reservierten Instanz. Das Dataset enthält außerdem Kosten für nicht genutzte Reservierung. Die Summe der Reservierungskosten und ungenutzten Reservierung ergeben die täglichen amortisierten Kosten der Reservierung.
+**Amortisierte Kosten:** Dieses Dataset ähnelt dem Dataset für die tatsächlichen Kosten – mit dem Unterschied, dass es sich beim effektiven Preis für die Nutzung mit dem Reservierungsrabatt um die anteiligen Kosten der Reservierung handelt (und der Preis somit nicht Null ist). Dadurch können Sie den monetären Wert der Reservierungsnutzung nach Abonnement, Ressourcengruppe oder Ressource ermitteln und die Reservierungsnutzung bei Bedarf intern verrechnen. Das Dataset enthält außerdem nicht in Anspruch genommene Reservierungsstunden. Das Dataset enthält keine Datensätze für den Reservierungserwerb. 
 
 Vergleich von zwei Datasets:
 
@@ -119,9 +120,9 @@ Rufen Sie die amortisierten Kostendaten ab, und filtern Sie nach einem Reservier
 Sie können eine verbrauchsbasierte Kostenzuteilung für die Reservierungsnutzung zu anderen Organisationen nach Abonnement, Ressourcengruppen oder Tags vornehmen. Amortisierte Kostendaten bieten den finanziellen Gegenwert der Nutzung einer Reservierung für die folgenden Datentypen:
 
 - Ressourcen (z. B. ein virtueller Computer)
-- Ressourcengruppe
+- Resource group
 - `Tags`
-- Abonnement
+- Subscription
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>Abrufen der gemischten Rate für die verbrauchsbasierte Kostenzuteilung
 
