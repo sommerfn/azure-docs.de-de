@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Cognitive Services-Ressource im Azure-Portal
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Beginnen Sie mit Azure Cognitive Services, indem Sie im Azure-Portal eine Ressource erstellen und abonnieren.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: e9616f3014288e4b2580f474c49c646928db5a08
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334253"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697909"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -65,6 +65,13 @@ Vor dem Erstellen einer Cognitive Services-Ressource müssen Sie über eine Azur
 Nachdem Sie Ihre Ressource erstellt haben, können Sie sie über das Azure Dashboard aufrufen, wenn Sie sie angeheftet haben. Andernfalls finden Sie sie in **Ressourcengruppen**. Nach dem Auswählen Ihrer Ressource können Sie die Schlüssel abrufen, indem Sie unter **Ressourcenverwaltung** die Option **Schlüssel** wählen.
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
+
+## <a name="pricing-tiers-and-billing"></a>Tarife und Abrechnung
+
+Die Tarife (und der Betrag, der Ihnen in Rechnung gestellt wird) basieren auf der Anzahl der unter ihren Authentifizierungsinformationen gesendeten Transaktionen. Für jeden Tarif wird Folgendes angegeben:
+* Maximale Anzahl zulässiger Transaktionen pro Sekunde (TPS).
+* Dienstfeatures, die innerhalb des Tarifs aktiviert sind.
+* Die Kosten für eine vordefinierte Anzahl von Transaktionen. Wird diese Anzahl überschritten, fällt eine zusätzliche Gebühr gemäß den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) für Ihren Dienst an.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

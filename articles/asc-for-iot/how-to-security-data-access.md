@@ -1,5 +1,5 @@
 ---
-title: Zugreifen auf Daten mit der Vorschauversion von Azure Security Center für IoT | Microsoft-Dokumentation
+title: Zugreifen auf Daten mit Azure Security Center für IoT | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie bei Verwendung von Azure Security Center für IoT auf Ihre Sicherheitswarnungen und Empfehlungsdaten zugreifen.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,41 +13,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2d3f3c6ad194ff8c9582f0c9e71a29b37ba5d967
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616740"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597183"
 ---
 # <a name="access-your-security-data"></a>Zugreifen auf Sicherheitsdaten 
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Azure Security Center (ASC) für IoT speichert Sicherheitswarnungen, Empfehlungen und Sicherheitsrohdaten (falls Sie diese speichern möchten) in Ihrem Log Analytics-Arbeitsbereich.
+Azure Security Center für IoT speichert Sicherheitswarnungen, Empfehlungen und Sicherheitsrohdaten (falls Sie diese speichern möchten) in Ihrem Log Analytics-Arbeitsbereich.
 
 ## <a name="log-analytics"></a>Log Analytics
 
 So konfigurieren Sie, wie der Log Analytics-Arbeitsbereich verwendet wird:
 
 1. Öffnen Sie Ihren IoT Hub.
-1. Klicken Sie auf **Sicherheit**.
+1. Klicken Sie unter dem Abschnitt **Sicherheit** auf das Blatt **Übersicht**.
 2. Klicken Sie auf **Einstellungen**, und ändern Sie die Konfiguration für Ihren Log Analytics-Arbeitsbereich.
 
-So greifen Sie nach der Konfiguration auf Ihren Log Analytics-Arbeitsbereich zu:
+So greifen Sie nach der Konfiguration auf Ihre Warnungen und Empfehlungen in Ihrem Log Analytics-Arbeitsbereich zu:
 
-1. Wählen Sie eine Warnung oder Empfehlung in ASC für IoT aus. 
+1. Wählen Sie eine Warnung oder Empfehlung in Azure Security Center für IoT aus. 
 2. Klicken Sie auf **Weitere Untersuchungen**, und dann auf **Klicken Sie hier, und zeigen Sie die Spalte „DeviceId“ an, um die Geräte mit dieser Warnung anzuzeigen**.
 
 Ausführliche Informationen zum Abfragen von Daten aus Log Analytics finden Sie unter [Erste Schritte mit Abfragen in Log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 
-Sicherheitswarnungen werden in der Tabelle _AzureSecurityOfThings.SecurityAlert_ im Log Analytics-Arbeitsbereich gespeichert, der für die ASC für IoT-Lösung konfiguriert wurde.
+Sicherheitswarnungen werden in der Tabelle _AzureSecurityOfThings.SecurityAlert_ in dem Log Analytics-Arbeitsbereich gespeichert, der für die Azure Security Center für IoT-Lösung konfiguriert wurde.
 
 Wir haben eine Reihe nützlicher Fragen bereitgestellt, die Ihnen den Einstieg in die Untersuchung von Sicherheitswarnungen erleichtern.
 
@@ -78,10 +74,10 @@ SecurityAlert
 
 ### <a name="device-summary"></a>Gerätezusammenfassung
 
-Wählen Sie eine Reihe von unterschiedlichen in der letzten Woche erkannten Sicherheitswarnungen nach IoT Hub, Gerät, Schweregrad der Warnung, Warnungstyp aus.
+Rufen Sie die Reihe von unterschiedlichen Sicherheitswarnungen ab, die in der letzten Woche erkannt wurden – gruppiert nach IoT Hub, Gerät, Schweregrad der Warnung und Warnungstyp.
 
 ```
-// Select number of distinct security alerts detected last week by 
+// Get the number of distinct security alerts detected in the last week, grouped by 
 //   IoT hub, device, alert severity, alert type
 //
 SecurityAlert
@@ -126,7 +122,7 @@ SecurityAlert
 
 ## <a name="security-recommendations"></a>Sicherheitsempfehlungen
 
-Sicherheitsempfehlungen werden in der Tabelle _AzureSecurityOfThings.SecurityRecommendation_ im Log Analytics-Arbeitsbereich gespeichert, der für die ASC für IoT-Lösung konfiguriert wurde.
+Sicherheitsempfehlungen werden in der Tabelle _AzureSecurityOfThings.SecurityRecommendation_ in dem Log Analytics-Arbeitsbereich gespeichert, der für die Azure Security Center für IoT-Lösung konfiguriert wurde.
 
 Wir haben eine Reihe nützlicher Fragen bereitgestellt, die Ihnen den Einstieg in die Untersuchung von Sicherheitsempfehlungen erleichtern.
 
@@ -157,10 +153,10 @@ SecurityRecommendation
 
 ### <a name="device-summary"></a>Gerätezusammenfassung
 
-Wählen Sie die Anzahl der verschiedenen aktiven Sicherheitsempfehlungen nach IoT Hub, Gerät, Empfehlungsschweregrad und Typ aus.
+Rufen Sie die Reihe von unterschiedlichen aktiven Sicherheitsempfehlungen ab – gruppiert nach IoT Hub, Gerät, Empfehlungsschweregrad und Typ.
 
 ```
-// Select number of distinct active security recommendations by 
+// Get the number of distinct active security recommendations, grouped by by 
 //   IoT hub, device, recommendation severity and type
 //
 SecurityRecommendation
@@ -180,7 +176,7 @@ SecurityRecommendation
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die [Übersicht](overview.md) über ASC für IoT
-- Informieren Sie sich über die [Architektur](architecture.md) von ASC für IoT
-- Grundlegende und weiterführende Informationen zu [ASC für IoT-Warnungen](concept-security-alerts.md)
-- Grundlegende und weiterführende Informationen zu [ASC für IoT-Empfehlungen](concept-recommendations.md)
+- Lesen Sie die [Übersicht](overview.md) über Azure Security Center für IoT.
+- Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
+- Verstehen und untersuchen Sie [Warnungen für Azure Security Center für IoT](concept-security-alerts.md).
+- Verstehen und untersuchen Sie [Empfehlungen für Azure Security Center für IoT](concept-recommendations.md).

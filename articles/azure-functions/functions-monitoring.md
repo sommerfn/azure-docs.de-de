@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304357"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619600"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -152,9 +152,9 @@ Sie können Application Insights ganz ohne benutzerdefinierte Konfiguration verw
 
 Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protokoll. Mit der Kategorie wird angegeben, von welchem Teil des Laufzeitcodes bzw. Ihres Funktionscodes das Protokoll geschrieben wurde. 
 
-Mit der Functions-Runtime werden Protokolle mit einer Kategorie erstellt, die mit „Host“ beginnen. Die Protokolle „function started“, „function executed“ und „function completed“ weisen die Kategorie „Host.Executor“ auf. 
+Mit der Functions-Runtime werden Protokolle mit einer Kategorie erstellt, die mit „Host“ beginnen. In Version 1.x haben die Protokolle `function started`, `function executed` und `function completed` die Kategorie `Host.Executor`. Ab Version 2.x lautet für diese Protokolle die Kategorie `Function.<YOUR_FUNCTION_NAME>`.
 
-Wenn Sie Protokolle in Ihren Funktionscode schreiben, lautet deren Kategorie „Function“.
+Wenn Sie Protokolle in ihren Funktionscode schreiben, lautet in Version 1.x der Functions-Runtime die Kategorie `Function`. In Version 2.x lautet die Kategorie `Function.<YOUR_FUNCTION_NAME>.User`.
 
 ### <a name="log-levels"></a>Protokollebenen
 

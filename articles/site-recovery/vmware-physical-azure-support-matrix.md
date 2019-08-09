@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/23/2019
 ms.author: raynew
-ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 65c330a9b2dcc97160280daede926573fdef4c00
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491643"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679363"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -83,35 +83,34 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 
 **Unterstütztes Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | [9.24][9.25 UR]  | 3.13.0-24-generic bis 3.13.0-169-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-146-generic,<br/>4.15.0-1023-azure bis 4.15.0-1042-azure |
+14.04 LTS | [9.27][9.27 UR]| 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
+14.04 LTS | [9.26][9.26 UR]| 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
+14.04 LTS | [9.25][9.25 UR]  | 3.13.0-24-generic bis 3.13.0-169-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-146-generic,<br/>4.15.0-1023-azure bis 4.15.0-1042-azure |
 14.04 LTS | [9.24][9.24 UR] | 3.13.0-24-generic bis 3.13.0-167-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-143-generic,<br/>4.15.0-1023-azure bis 4.15.0-1040-azure |
-14.04 LTS | [9.23][9.23 UR] | 3.13.0-24-generic bis 3.13.0-165-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-142-generic,<br/>4.15.0-1023-azure bis 4.15.0-1037-azure |
-14.04 LTS | [9.22][9.22 UR] | 3.13.0-24-generic bis 3.13.0-164-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-140-generic,<br/>4.15.0-1023-azure bis 4.15.0-1036-azure |
 |||
+16.04 LTS | [9.27][9.27 UR] | 4.4.0-21-generic bis 4.4.0-154-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-54-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1050-azure|
+16.04 LTS | [9.26][9.26 UR] | 4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-50-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1045-azure|
 16.04 LTS | [9.25][9.25 UR] | 4.4.0-21-generic bis 4.4.0-146-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-48-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1042-azure|
 16.04 LTS | [9.24][9.24 UR] | 4.4.0-21-generic bis 4.4.0-143-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-46-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1040-azure|
-16.04 LTS | [9.23][9.23 UR] | 4.4.0-21-generic bis 4.4.0-142-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-45-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1037-azure|
-16.04 LTS | [9.22][9.22 UR] | 4.4.0-21-generic bis 4.4.0-140-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-43-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1036-azure|
 
 ### <a name="debian-kernel-versions"></a>Debian-Kernelversionen
 
 
 **Unterstütztes Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | [9.21][9.21 UR], [9.22][9.22 UR],[9.23][9.23 UR], [9.24][9.24 UR]| 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.24][9.24 UR], [9.25][9.25 UR],[9.26][9.26 UR], [9.27][9.27 UR]| 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.25][9.25 UR] | 3.16.0-4-amd64 bis 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
-Debian 8 | [9.22][9.22 UR],[9.23][9.23 UR], [9.24][9.24 UR] | 3.16.0-4-amd64 bis 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
-
+Debian 8 | [9.27][9.27 UR] | 3.16.0-4-amd64 bis 3.16.0-9-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.9-amd64 |
+Debian 8 | [9.24][9.24 UR], [9.25][9.25 UR], [9.26][9.26 UR] | 3.16.0-4-amd64 bis 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 – unterstützte Kernelversionen
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.114-default</br></br>SP3 4.4.73-5-default bis 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.19-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.15-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default bis 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default bis 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.24][9.24 UR] | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default bis 4.4.175-94.79-default</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.23][9.23 UR] | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.69-default</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | [9.22][9.22 UR] | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.72-default |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux-Dateisysteme/-Gastspeicher
@@ -125,7 +124,7 @@ E/A-Geräte mit Blöcken mit mehreren Warteschlangen | Nicht unterstützt.
 Physische Server mit HP CCISS-Speichercontroller | Nicht unterstützt.
 Benennungskonvention für Gerät/Bereitstellungspunkt | Der Gerätename oder Bereitstellungspunktname sollte eindeutig sein.<br/> Stellen Sie sicher, dass keine zwei Geräte/Bereitstellungspunkte Namen aufweisen, für die zwischen Groß-/Kleinschreibung unterschieden wird. So ist es beispielsweise nicht zulässig, zwei Geräte für denselben virtuellen Computers als *device1* und *Device1* zu benennen.
 Verzeichnisse | Wenn Sie eine Version des Mobilitätsdiensts verwenden, die vor der Version 9.20 liegt (veröffentlich im [Update Rollup 31](https://support.microsoft.com/help/4478871/)), dann gelten die folgenden Einschränkungen:<br/><br/> - Diese Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich auf demselben Betriebssystem-Datenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br> 2\. Das /boot-Verzeichnis muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/> Ab Version 9.20 gelten diese Einschränkungen nicht. 
-Startverzeichnis | - Mehrere Startdatenträger werden auf einem VM unterstützt <br/> - „/boot“ auf LVM-Volumes über mehrere Datenträger wird nicht unterstützt.<br/> - Ein Computer ohne einen Startdatenträger kann nicht repliziert werden.
+Startverzeichnis | – Startdatenträger dürfen nicht im GPT-Partitionsformat vorliegen. Dies ist eine Einschränkung der Azure-Architektur. GPT-Datenträger werden als Datenträger für Daten unterstützt.<br/><br/> Mehrere Startdatenträger auf einem virtuellen Computer werden nicht unterstützt.<br/><br/> - „/boot“ auf LVM-Volumes über mehrere Datenträger wird nicht unterstützt.<br/> - Ein Computer ohne einen Startdatenträger kann nicht repliziert werden.
 Erforderlicher Speicherbedarf| 2 GB auf der /root-Partition <br/><br/> 250 MB im Installationsordner
 XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadaten-Prüfsummen werden unterstützt (ab Mobility Service-Version 9.10).<br/> Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn `ftype` auf 1 festgelegt ist, werden XFSv5-Features verwendet.
 BTRFS | BTRFS wird ab [Update Rollup 34](https://support.microsoft.com/help/4490016) (Version 9.22 des Mobilitätsdienstes) unterstützt. BTRFS wird nicht unterstützt, wenn:<br/><br/> - Das untergeordnete Volume des BTRFS-Dateisystems nach dem Aktivieren des Schutzes geändert wird.</br> - Das BTRFS-Dateisystem über mehrere Datenträger verteilt wird.</br> – Die BTRFS-Dateisystem RAID unterstützt.
@@ -185,7 +184,7 @@ Gast-/Server-NFS | Nein
 Gast-/Server-iSCSI | Nein
 Gast/Server-SMB 3.0 | Nein
 Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server
-Gast-/Serverdatenträger > 1 TB | Ja<br/><br/>Bis zu 4.095 GB<br/><br/> Der Datenträger muss größer als 1024 MB sein.
+Gast-/Serverdatenträger > 1 TB | Ja, der Datenträger muss größer als 1024 MB sein.<br/><br/>Bis zu 8.192 GB bei der Replikation auf verwaltete Datenträger (ab Version 9.26)<br></br> Bis zu 4.095 GB bei der Replikation in Speicherkonten
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Nein
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Nein
 Gast-/Servervolume mit Stripesetdatenträgern > 4 TB <br/><br/>Logische Volumeverwaltung (Logical Volume Management, LVM)| Ja
@@ -194,7 +193,7 @@ Gast/Server – Datenträger bei laufendem Systembetrieb hinzufügen/entfernen |
 Gast/Server – Datenträger ausschließen | Ja
 Gast-/Servermultipfad (MPIO) | Nein
 Gast/Server GPT-Partitionen | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdienstes) unterstützt. Bisher wurden vier unterstützt.
-EFI-/UEFI-Start von Gast/Server | - Wird unterstützt, wenn Sie die Mobilitätsdienstversion 9.13 oder neuer verwenden.<br/> - Unterstützt bei der Migration von virtuellen VMware-Computern oder physischen Servern unter Windows Server 2012 oder höher zu Azure.<br/> - Sie können nur virtuelle Computer für die Migration replizieren. Ein Failback zu lokalen Ressourcen wird nicht unterstützt.<br/> - Nur NTFS wird unterstützt. Sichere UEFI-Starttypen werden nicht unterstützt. <br/> - Datenträgersektorgröße sollte pro physischem Sektor 512 bytes betragen.
+EFI-/UEFI-Start von Gast/Server | - Wird unterstützt, wenn Sie die Mobilitätsdienstversion 9.13 oder neuer verwenden.<br/> - Unterstützt bei der Migration von virtuellen VMware-Computern oder physischen Servern unter Windows Server 2012 oder höher zu Azure.<br/> - Sie können nur virtuelle Computer für die Migration replizieren. Ein Failback zu lokalen Ressourcen wird nicht unterstützt.<br/> – Es wird nur NTFS unterstützt. <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. <br/> - Datenträgersektorgröße sollte pro physischem Sektor 512 bytes betragen.
 
 ## <a name="replication-channels"></a>Replikationskanäle
 
@@ -240,7 +239,7 @@ Architektur des Gastbetriebssystems | 64 Bit. | Beim Überprüfen tritt ein Feh
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Datenträgern für Daten | Maximal 64. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Datenträgergröße | Bis zu 4.095 GB | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Datenträgergröße | Bis zu 8.192 GB bei der Replikation auf verwaltete Datenträger (ab Version 9.26)<br></br>Bis zu 4.095 GB bei der Replikation in Speicherkonten| Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
 Freigegebene VHD | Nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Fiber-Channel-Datenträger | Nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
@@ -297,6 +296,8 @@ Mobility Service | Installiert auf einem virtuellen VMware-Computer oder auf phy
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie](tutorial-prepare-azure.md), wie Sie Azure für die Notfallwiederherstellung von VMware-VMs vorbereiten.
 
+[9.27 UR]: https://support.microsoft.com/en-in/help/4513507/update-rollup-38-for-azure-site-recovery
+[9.26 UR]: https://support.microsoft.com/en-in/help/4513507/update-rollup-38-for-azure-site-recovery
 [9.25 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.24 UR]: https://support.microsoft.com/en-in/help/4503156
 [9.23 UR]: https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery

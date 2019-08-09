@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Containern
-titlesuffix: Face - Azure Cognitive Services
+title: Konfigurieren von Containern – Gesichtserkennungs-API
+titleSuffix: Azure Cognitive Services
 description: Konfigurationseinstellungen für Container
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dapine
-ms.openlocfilehash: c5044428b6f9c7c8fd343c93b06c1774eba8e17f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6dd047b0ba7f9a123ffcc014cff5604466946d07
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320516"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564112"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 

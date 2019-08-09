@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: cdd5e29fcc01639c03da70614f53ac648ee6620c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318567"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596698"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung
 
@@ -87,14 +86,14 @@ Wenn TDE erstmals für die Verwendung einer TDE-Schutzvorrichtung aus Key Vault 
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>Richtlinien zum Konfigurieren der TDE-Schutzvorrichtung (asymmetrischer Schlüssel)
 
-- Erstellen Sie Ihren Verschlüsselungsschlüssel lokal auf einem lokalen HSM-Gerät. Stellen Sie sicher, dass es sich dabei um einen asymmetrischen RSA 2048-Schlüssel handelt, damit er in Azure Key Vault gespeichert werden kann.
+- Erstellen Sie Ihren Verschlüsselungsschlüssel lokal auf einem lokalen HSM-Gerät. Stellen Sie sicher, dass es sich dabei um einen asymmetrischen RSA 2048- oder RSA HSM 2048-Schlüssel handelt, damit er in Azure Key Vault gespeichert werden kann.
 - Hinterlegen Sie den Schlüssel in einem Schlüsselhinterlegungssystem.  
 - Importieren Sie die Verschlüsselungsschlüsseldatei (PFX-, BYOK- oder BACKUP-Datei) in Azure Key Vault.
 
    > [!NOTE]
    > Zu Testzwecken ist das Erstellen eines Schlüssels mit Azure Key Vault möglich, dieser Schlüssel kann jedoch nicht hinterlegt werden, da der private Schlüssel den Schlüsseltresor nie verlassen kann.  Schlüssel, die zum Verschlüsseln von Produktionsdaten verwendet werden, müssen Sie immer sichern und hinterlegen, da der Verlust des Schlüssels (z.B. durch versehentliches Löschen aus dem Schlüsseltresor, oder Ablauf) zu endgültigem Datenverlust führt.
 
-- Implementieren Sie bei Verwendung eines Schlüssels mit Ablaufdatum ein Ablaufwarnsystem, damit der Schlüssel vor dem Ablauf rotiert wird: **Nach Ablauf des Schlüssels verlieren die verschlüsselten Datenbanken den Zugriff auf ihre TDE-Schutzvorrichtung, und es kann nicht mehr auf sie zugegriffen werden.** Darüber hinaus werden alle Anmeldungen verweigert, bis zu einem neuen Schlüssel rotiert wurde.
+- Implementieren Sie bei Verwendung eines Schlüssels mit Ablaufdatum ein Ablaufwarnsystem, damit der Schlüssel vor dem Ablauf rotiert wird: **Nach Ablauf des Schlüssels verlieren die verschlüsselten Datenbanken den Zugriff auf ihre TDE-Schutzvorrichtung, und es kann nicht mehr auf sie zugegriffen werden**. Darüber hinaus werden alle Anmeldungen verweigert, bis zu einem neuen Schlüssel rotiert und dieser als neuer Schlüssel und Standard-TDE-Schutzvorrichtung für den logischen SQL-Server ausgewählt wurde.
 - Stellen Sie sicher, dass der Schlüssel aktiviert ist und über Berechtigungen zum Ausführen der *get*-, *wrap key*- und *unwrap key*-Vorgänge verfügt.
 - Erstellen Sie eine Azure Key Vault-Schlüsselsicherung, bevor Sie den Schlüssel zum ersten Mal in Azure Key Vault verwenden. Unter [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) erfahren Sie mehr zu diesem Befehl.
 - Erstellen Sie immer eine neue Sicherung, wenn Änderungen am Schlüssel vorgenommen werden (z.B. Hinzufügen von ACLs, Tags oder Schlüsselattributen).
@@ -107,7 +106,7 @@ Wenn TDE erstmals für die Verwendung einer TDE-Schutzvorrichtung aus Key Vault 
 
 Wenn der logische SQL-Server den Zugriff auf die vom Kunden verwaltete TDE-Schutzvorrichtung in Azure Key Vault verliert, verweigert die Datenbank alle Verbindungen, und im Azure-Portal wird angezeigt, dass auf die Datenbank nicht zugegriffen werden kann.  Dies hat häufig eine der folgenden Ursachen:
 - Der Schlüsseltresor wurde versehentlich gelöscht oder befindet sich hinter einer Firewall.
-- Der Schlüsseltresorschlüssel wurde versehentlich gelöscht oder ist abgelaufen.
+- Der Schlüsseltresorschlüssel wurde versehentlich gelöscht, deaktiviert oder ist abgelaufen.
 - Die App-ID der logischen SQL Server-Instanz wurde versehentlich gelöscht.
 - Schlüsselspezifische Berechtigungen für die App-ID der logischen SQL Server-Instanz wurden widerrufen.
 

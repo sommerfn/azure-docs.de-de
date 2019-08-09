@@ -1,20 +1,19 @@
 ---
 title: Planen von Aufträgen mit Azure IoT Hub (Python) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT SDKs für Python, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren.
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/16/2019
-ms.author: kgremban
-ms.openlocfilehash: f4a7cbb5c4f8f4a019cbf5d63a6f2ffe8092546e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405889"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667958"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planen und Übertragen von Aufträgen (Python)
 
@@ -48,16 +47,14 @@ Am Ende dieses Tutorials verfügen Sie über zwei Python-Apps:
 
 **scheduleJobService.py:** ruft eine direkte Methode in der simulierten Geräte-App auf und aktualisiert die gewünschten Eigenschaften des Gerätezwillings per Auftrag.
 
-Für dieses Tutorial benötigen Sie Folgendes:
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* [Python 2.x oder 3.x](https://www.python.org/downloads/). Stellen Sie je nach Einrichtung sicher, dass die 32-Bit- bzw. die 64-Bit-Installation verwendet wird. Fügen Sie Python Ihrer plattformspezifischen Umgebungsvariablen hinzu, wenn Sie während der Installation dazu aufgefordert werden. Bei Verwendung von Python 2.x müssen Sie ggf. [*pip*, das Python-Paketverwaltungssystem, installieren oder upgraden](https://pip.pypa.io/en/stable/installing/).
+Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt.
 
-* Bei Verwendung des Windows-Betriebssystems wird das [Visual C++ Redistributable Package](https://www.microsoft.com/download/confirmation.aspx?id=48145) verwendet, um die Verwendung nativer DLLs aus Python zu ermöglichen.
-
-* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 > [!NOTE]
-> Das **Azure IoT-SDK für Python** unterstützt die **Aufträge**-Funktion nicht direkt. Dieses Tutorial bietet stattdessen eine alternative Lösung mithilfe von asynchronen Threads und Timern. Weitere Updates finden Sie in der Featureliste des **Dienstclient-SDK** auf der Seite des [Azure IoT-SDK für Python](https://github.com/Azure/azure-iot-sdk-python). 
+> Das **Azure IoT-SDK für Python** unterstützt die **Aufträge**-Funktion nicht direkt. Dieses Tutorial bietet stattdessen eine alternative Lösung mithilfe von asynchronen Threads und Timern. Weitere Updates finden Sie in der Featureliste des **Dienstclient-SDK** auf der Seite des [Azure IoT-SDK für Python](https://github.com/Azure/azure-iot-sdk-python).
 >
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs

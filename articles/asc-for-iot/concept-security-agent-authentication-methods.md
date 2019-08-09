@@ -1,5 +1,5 @@
 ---
-title: Authentifizierungsmethoden für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+title: Authentifizierungsmethoden für Azure Security Center für IoT | Microsoft-Dokumentation
 description: Lernen Sie die verschiedenen Authentifizierungsmethoden kennen, die für den Azure Security Center für IoT-Dienst verfügbar sind.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,39 +13,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d5701ae37d64e25fba981cd85deed2c4e4d87a15
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 16f7f91e02d118d9f9a295ebb79a6cd0187dd9fd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618340"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596474"
 ---
 # <a name="security-agent-authentication-methods"></a>Authentifizierungsmethoden des Sicherheits-Agents 
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 In diesem Artikel werden die verschiedenen Authentifizierungsmethoden erläutert, die Sie mit dem AzureIoTSecurity-Agent für die Authentifizierung beim IoT Hub verwenden können.
 
-Für jedes Gerät, das im IoT Hub in Azure Security Center (ASC) für IoT integriert ist, ist ein Sicherheitsmodul erforderlich. Für die Authentifizierung des Geräts kann Azure Security Center for IoT eine der beiden Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet. 
+Für jedes Gerät, das im IoT Hub in Azure Security Center für IoT integriert ist, ist ein Sicherheitsmodul erforderlich. Zur Authentifizierung des Geräts kann Azure Security Center für IoT eine von zwei Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet. 
 
 > [!div class="checklist"]
-> * Sicherheitsmoduloption
+> * Option „SecurityModule“
 > * Geräteoption
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 
 Für den AzureIoTSecurity-Agent gibt es die beiden folgenden Authentifizierungsmethoden:
 
- - Authentifizierungsmodus **Modul**<br>
-   Das Modul wird unabhängig von dem Gerätezwilling authentifiziert.
+ - Authentifizierungsmodus **SecurityModule**<br>
+   Der Agent wird unabhängig von der Geräteidentität mithilfe der Sicherheitsmodulidentität authentifiziert.
    Verwenden Sie diesen Authentifizierungstyp, wenn der Sicherheits-Agent eine dedizierte Authentifizierungsmethode über Sicherheitsmodul (nur symmetrischer Schlüssel) verwenden soll.
         
  - Authentifizierungsmodus **Gerät**<br>
-    Bei dieser Methode wird der Sicherheits-Agent zunächst mit der Geräteidentität authentifiziert. Nach der ersten Authentifizierung führt der Azure Security Center für IoT-Agent den Aufruf **REST** am IoT Hub durch und verwendet dabei die REST-API mit den Authentifizierungsdaten des Geräts. Der Azure Security Center for IoT-Agent fordert dann die Authentifizierungsmethode und -daten des Sicherheitsmoduls vom IoT Hub an. Im letzten Schritt nimmt der Azure Security Center for IoT-Agent eine Authentifizierung beim Azure Security Center for IoT-Modul vor.
+    Bei dieser Methode wird der Sicherheits-Agent zunächst mit der Geräteidentität authentifiziert. Nach der ersten Authentifizierung führt der Azure Security Center für IoT-Agent den Aufruf **REST** am IoT Hub durch und verwendet dabei die REST-API mit den Authentifizierungsdaten des Geräts. Der Azure Security Center für IoT-Agent fordert dann die Authentifizierungsmethode und -daten des Sicherheitsmoduls vom IoT Hub an. Im letzten Schritt führt der Azure Security Center für IoT-Agent eine Authentifizierung für das Azure Security Center für IoT-Modul aus.
     
     Verwenden Sie diesen Authentifizierungstyp, wenn der Sicherheits-Agent eine vorhandene Geräteauthentifizierungsmethode (selbstsigniertes Zertifikat oder symmetrischer Schlüssel) erneut verwenden soll. 
 
@@ -53,7 +49,7 @@ Informationen zur Konfiguration finden Sie unter [Security agent installation pa
                                 
 ## <a name="authentication-methods-known-limitations"></a>Bekannte Einschränkungen von Authentifizierungsmethoden
 
-- Der Authentifizierungsmodus **Modul** unterstützt nur die Authentifizierung mit symmetrischen Schlüsseln.
+- Der Authentifizierungsmodus **SecurityModule** unterstützt nur die Authentifizierung mit symmetrischen Schlüsseln.
 - Der Authentifizierungsmodus **Gerät** unterstützt kein von der Zertifizierungsstelle signiertes Zertifikat.  
 
 ## <a name="security-agent-installation-parameters"></a>Installationsparameter für den Sicherheits-Agent
@@ -62,19 +58,18 @@ Beim [Bereitstellen eines Sicherheits-Agents](how-to-deploy-agent.md) müssen Au
 Diese Argumente werden in der folgenden Tabelle gezeigt.
 
 
-|Parameter|BESCHREIBUNG|Optionen|
-|---------|---------------|---------------|
-|**Identität**|Authentifizierungsmodus| **Modul** oder **Gerät**|
-|**type**|Authentifizierungsart|**SymmetricKey** oder **SelfSignedCertificate**|
-|**filePath**|Vollständiger Pfad der Datei, die das Zertifikat oder den symmetrischen Schlüssel enthält| |
-|**gatewayHostname**|Vollqualifizierter Domänenname (FQDN) des IoT Hubs|Beispiel: ContosoIotHub.azure-devices.net|
-|**deviceId**|Geräte-ID|Beispiel: MyDevice1|
-|**certificateLocationKind**|Speicherort des Zertifikats|**LocalFile** oder **Store**|
+|Linux-Parametername | Windows-Parametername | Kurzform für Parameter |BESCHREIBUNG|Optionen|
+|---------------------|---------------|---------|---------------|---------------|
+|authentication-identity|AuthenticationIdentity|aui|Authentifizierungsidentität| **SecurityModule** oder **Device**|
+|authentication-method|AuthenticationMethod|aum|Authentifizierungsmethode|**SymmetricKey** oder **SelfSignedCertificate**|
+|file-path|FilePath|f|Vollständiger Pfad der Datei, die das Zertifikat oder den symmetrischen Schlüssel enthält| |
+|host-name|HostName|hn|Vollqualifizierter Domänenname (FQDN) des IoT Hubs|Beispiel: ContosoIotHub.azure-devices.net|
+|device-id|deviceId|di|Geräte-ID|Beispiel: MyDevice1|
+|certificate-location-kind|CertificateLocationKind|cl|Speicherort des Zertifikats|**LocalFile** oder **Store**|
+|
 
 
-Wenn Sie das Installationsskript des Sicherheits-Agents verwenden, wird die folgende Konfiguration automatisch ausgeführt.
-
-Um die Authentifizierung des Sicherheits-Agents manuell zu bearbeiten, bearbeiten Sie die Konfigurationsdatei. 
+Wenn Sie das Installationsskript des Sicherheits-Agents verwenden, wird die folgende Konfiguration automatisch ausgeführt. Um die Authentifizierung des Sicherheits-Agents manuell zu bearbeiten, bearbeiten Sie die Konfigurationsdatei. 
 
 ## <a name="change-authentication-method-after-deployment"></a>Ändern der Authentifizierungsmethode nach der Bereitstellung
 

@@ -6,21 +6,24 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346569"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640241"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory-Mappingdatenfluss – Spaltenmuster
+# <a name="mapping-data-flows-column-patterns"></a>Mappingdatenflüsse – Spaltenmuster
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Mehrere Azure Data Factory-Datenflusstransformationen unterstützen das Konzept von „Spaltenmustern“, sodass Sie Vorlagenspalten erstellen können, die auf Mustern anstelle von hartcodierten Spaltennamen basieren. Sie können dieses Feature im Ausdrucks-Generator verwenden, um Muster gemäß den Spalten für die Transformation zu definieren, sodass keine exakten, bestimmten Feldnamen erforderlich sind. Muster sind bei sich häufig ändernden eingehenden Quellfeldern hilfreich, insbesondere beim Ändern von Spalten in Textdateien oder NoSQL-Datenbanken. Diese Bedingung wird manchmal als „Schemaabweichung“ bezeichnet.
 
+Diese Handhabung von „Flexibles Schema“ gibt es derzeit in den Transformationen des Typs „Abgeleitete Spalte“ und „Aggregieren“ sowie in den Auswahl- und Senkentransformationen als „regelbasierte Zuordnung“.
+
 ![Spaltenmuster](media/data-flow/columnpattern2.png "Spaltenmuster")
 
+## <a name="column-patterns"></a>Spaltenmuster
 Spaltenmuster sind sowohl in Schemaabweichungs- als auch in allgemeinen Szenarien nützlich. Sie eignen sich gut für Bedingungen, bei denen Sie nicht jeden Spaltennamen vollständig kennen. Sie können eine Musterübereinstimmung basierend auf dem Spaltennamen und Spaltendatentyp herstellen und einen Ausdruck für die Transformation erstellen, die diesen Vorgang für jedes Feld im Datenstrom ausführt, das Ihren `name` & `type`-Mustern entspricht.
 
 Wählen Sie beim Hinzufügen eines Ausdrucks zu einer Transformation, die Muster akzeptiert, die Option „Spaltenmuster hinzufügen“ aus. Spaltenmuster ermöglichen den Abgleich von Schemaabweichungs-Spaltenmustern.
@@ -38,5 +41,11 @@ Um Muster auf der Grundlage von Spalten zu erstellen, können Sie Spaltenname, T
 
 ![Spaltenposition](media/data-flow/position.png "Spaltenposition")
 
+## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
+Beim Zuordnen von Spalten in Quell-und Auswahltransformationen haben Sie die Möglichkeit, „Feste Zuordnung“ oder „Regelbasierte Zuordnung“ auszuwählen. Wenn Sie das Schema Ihrer Daten kennen und bestimmte Spalten aus dem Quell-DataSet erwarten, die mit bestimmten statischen Namen immer identisch sind, können Sie die feste Zuordnung verwenden. Wenn Sie aber mit flexiblen Schemas arbeiten, verwenden Sie die regelbasierte Zuordnung. Sie können mithilfe der vorstehend beschriebenen Regeln einen Musterabgleich erstellen.
+
+![regelbasierte Zuordnung](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich ausführlicher über die [Ausdruckssprache](https://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.
+* Informieren Sie sich ausführlicher über die [Ausdruckssprache](http://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.
+* Verwenden von Spaltenmustern in der [Senkentransformation](data-flow-sink.md) und [Auswählen einer Transformation](data-flow-select.md) mit regelbasierter Zuordnung

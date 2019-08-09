@@ -9,15 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-manager: craigg
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c9b481e63ecf7a92af679c0f32d4b3ab71486021
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360792"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567244"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -382,8 +381,9 @@ Die [semantische Suche](https://docs.microsoft.com/sql/relational-databases/sear
 
 Verbindungsserver in einer verwalteten Instanz unterstützen eine begrenzte Anzahl von Zielen:
 
-- Unterstützte Ziele sind SQL Server und SQL-Datenbank.
-- Nicht unterstützte Ziele sind Dateien, Analysis Services und andere RDBMS.
+- Unterstützte Ziele sind verwaltete Instanzen, einzelne Datenbanken und SQL Server-Instanzen. 
+- Verbindungsserver unterstützen keine verteilten beschreibbaren Transaktionen (MS DTC).
+- Nicht unterstützte Ziele sind Dateien, Analysis Services und andere RDBMS. Verwenden Sie einen nativen CSV-Import aus Azure Blob Storage mithilfe von `BULK INSERT` oder `OPENROWSET` als Alternative zum Dateiimport.
 
 Vorgänge
 
@@ -391,6 +391,7 @@ Vorgänge
 - `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 - Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. Ein Beispiel ist `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
+- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie es mit [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file), welche CSV-Dateien aus Azure Blob Storage lesen. Verfolgen Sie diese Anforderungen im [Feedback zu verwalteten Instanzen](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
 
 ### <a name="polybase"></a>PolyBase
 

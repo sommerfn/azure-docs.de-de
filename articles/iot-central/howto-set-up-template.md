@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: ede7167d570c7bd2ba7e04c3a9a703555efb35cd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622411"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698521"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
@@ -63,7 +63,8 @@ Um eine neue Telemetriemessung hinzuzufügen, wählen Sie **+ Neue Messung** aus
 
 > [!NOTE]
 > Die Feldnamen in der Gerätevorlage müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Telemetriemessung in der Anwendung angezeigt werden, wenn ein echtes Gerät verbunden ist. Gehen Sie beim Konfigurieren von Einstellungen, Geräteeigenschaften und Befehlen auf die gleiche Weise vor, wenn Sie die Gerätevorlage in den folgenden Abschnitten weiter definieren.
-png. Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
+
+Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
 
 | Anzeigename        | Feldname    |  Units    | Min   |max|
 | --------------------| ------------- |-----------|-------|---|
@@ -109,7 +110,7 @@ Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und **Werte** f
 
 Sie können z.B. den neuen Zustand **Lüftermodus** hinzufügen, der zwei mögliche Werte hat, die vom Gerät gesendet werden können: **In Betrieb** und **Angehalten**.
 
-| Anzeigename | Feldname    |  Wert 1   | Anzeigename | Wert 2    |Anzeigename  | 
+| Anzeigename | Feldname    |  Wert 1   | Anzeigename | Wert 2    |Anzeigename  |
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Fan Mode     | fanmode       |  1         | Operating    |     0      | Beendet      |
 
@@ -147,6 +148,8 @@ assetloc: {
   alt?: floating point number
 }
 ```
+
+Wenn das echte Gerät verbunden wird, wird der als Messung hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie Ihre Standortmessung konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-measurement-in-the-dashboard).
 
 ## <a name="settings"></a>Einstellungen
 
@@ -244,7 +247,7 @@ Sie können eine Standorteigenschaft als eine Geräteeigenschaft erstellen, die 
 
    ![Formular „Geräteeigenschaften konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Wenn das echte Gerät verbunden wird, wird der als Geräteeigenschaft hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-in-the-dashboard).
+Wenn das echte Gerät verbunden wird, wird der als Geräteeigenschaft hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-property-in-the-dashboard).
 
 ## <a name="commands"></a>Befehle
 
@@ -252,9 +255,9 @@ Befehle werden verwendet, um ein Gerät remote zu verwalten. Sie ermöglichen Op
 
 Wie unterscheidet sich ein Befehl von einer Einstellung?
 
-* **Einstellung**: Eine Einstellung ist eine Konfiguration, die Sie auf ein Gerät anwenden möchten. Sie möchten, dass das Gerät die Konfiguration beibehält, bis Sie sie ändern. Angenommen, Sie möchten die Temperatur Ihres Gefrierschranks einstellen, und Sie wünschen diese Einstellung auch dann, wenn der Gefrierschrank neu gestartet wird.
+- **Einstellung**: Eine Einstellung ist eine Konfiguration, die Sie auf ein Gerät anwenden möchten. Sie möchten, dass das Gerät die Konfiguration beibehält, bis Sie sie ändern. Angenommen, Sie möchten die Temperatur Ihres Gefrierschranks einstellen, und Sie wünschen diese Einstellung auch dann, wenn der Gefrierschrank neu gestartet wird.
 
-* **Befehl**: Sie verwenden Befehle, um einen Befehl von IoT Central aus auf dem Gerät sofort remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.
+- **Befehl**: Sie verwenden Befehle, um einen Befehl von IoT Central aus auf dem Gerät sofort remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.
 
 Sie können z. B. einen neuen **Echo**-Befehl hinzufügen, indem Sie die Registerkarte **Befehle** auswählen, **+ Neuer Befehl** auswählen und die neuen Befehlsdetails eingeben:
 
@@ -265,6 +268,8 @@ Sie können z. B. einen neuen **Echo**-Befehl hinzufügen, indem Sie die Regist
 ![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho1.png)
 
 Nach der Auswahl von **Speichern** wird der Befehl **Echo** als Kachel angezeigt und kann vom **Device Explorer** verwendet werden, sobald Ihr echtes Gerät verbunden ist. Die Feldnamen Ihres Befehls müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Befehle erfolgreich ausgeführt werden können.
+
+[Dies ist ein Link zum Beispielcode für C-Geräte.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
 
 ## <a name="rules"></a>Regeln
 
@@ -282,9 +287,9 @@ Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzu
 
 Wenn jetzt Bediener das Dashboard im **Device Explorer** anzeigen, können sie die Kachel sehen.
 
-### <a name="add-a-location-in-the-dashboard"></a>Fügen Sie dem Dashboard einen Standort hinzu.
+### <a name="add-a-location-measurement-in-the-dashboard"></a>Hinzufügen einer Standortmessung im Dashboard
 
-Wenn Sie eine Standortmessung konfiguriert haben, können Sie den Standort mithilfe einer Karte im Dashboard Ihres Geräts visualisieren.
+Wenn Sie eine Standortmessung konfiguriert haben, können Sie den Standort mithilfe einer Karte im Dashboard Ihres Geräts visualisieren. Bei Standortmessungen haben Sie die Möglichkeit, den Standortverlauf darzustellen.
 
 1. Navigieren Sie zur **Dashboard**-Registerkarte.
 
@@ -298,13 +303,28 @@ Wenn Sie eine Standortmessung konfiguriert haben, können Sie den Standort mithi
 
 Sie können die Größe der Kartenkachel ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
 
+### <a name="add-a-location-property-in-the-dashboard"></a>Hinzufügen einer Standorteigenschaft im Dashboard
+
+Wenn Sie eine Standorteigenschaft konfiguriert haben, können Sie den Standort mit einer Karte im Dashboard Ihres Geräts visualisieren.
+
+1. Navigieren Sie zur **Dashboard**-Registerkarte.
+
+1. Wählen Sie auf dem Gerätedashboard in der Bibliothek **Karte** aus.
+
+1. Geben Sie der Karte einen Titel. Das folgende Beispiel hat den Titel **„Aktueller Gerätestandort“** . Wählen Sie dann die Standorteigenschaft aus, die Sie zuvor auf der Registerkarte **Eigenschaften** konfiguriert haben. Im folgenden Beispiel wurde die Messung **Gerätestandort** ausgewählt:
+
+   ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty6map.png)
+
+1. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben.
+
+Sie können die Größe der Kartenkachel ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
+
 Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [„Verwenden von Dashboardkacheln“](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie erfahren haben, wie eine Gerätevorlage in Ihrer Azure IoT Central-Anwendung eingerichtet wird, wird als Nächstes Folgendes empfohlen:
 
-> [!div class="nextstepaction"]
-> [Erstellen einer neuen Gerätevorlagenversion](howto-version-device-template.md)
-> [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md)
-> [Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](howto-connect-nodejs.md)
+- [Erstellen einer neuen Gerätevorlagenversion](howto-version-device-template.md)
+- [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md)
+- [Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](howto-connect-nodejs.md)

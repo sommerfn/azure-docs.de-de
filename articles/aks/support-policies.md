@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786459"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596127"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -127,7 +127,7 @@ Obwohl sich Kunden bei Workerknoten anmelden und diese ändern können, ist dies
 Als verwalteter Dienst gelten für AKS bestimmte Netzwerk- und Konnektivitätsanforderungen. Diese Anforderungen sind weniger flexibel als bei normalen IaaS-Komponenten. In AKS können Vorgänge wie das Anpassen von NSG-Regeln, das Blockieren eines bestimmten Ports (z. B. durch Firewallregeln, die den ausgehenden Port 443 blockieren) und Whitelist-URLs dazu führen, dass Ihr Cluster nicht mehr unterstützt wird.
 
 > [!NOTE]
-> Derzeit gestattet AKS es Ihnen nicht, den Ausgang Ihres Clusters vollständig zu sperren (z. B. explizite Whitelist für Domänen oder Ports). Die Liste der URLs und Ports kann ohne vorherige Ankündigung geändert werden. Sie können die aktualisierte Liste erhalten, indem Sie ein Azure-Supportticket erstellen. Die Liste gilt nur für Kunden, die bereit sind zu akzeptieren, dass ihre Clusterverfügbarkeit *jederzeit* beeinträchtigt werden kann.
+> Derzeit ist es in AKS nicht zulässig, ausgehenden Datenverkehr von Ihrem Cluster vollständig zu sperren. Informationen zum Steuern der Liste mit URLs und Ports, die Ihr Cluster für ausgehenden Datenverkehr nutzen kann, finden Sie unter [Vorschau: Einschränken des ausgehenden Datenverkehrs für Clusterknoten und Steuern des Zugriffs auf erforderliche Ports und Dienste in Azure Kubernetes Service (AKS)](limit-egress-traffic.md).
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nicht unterstützte Kubernetes-Features der Alpha- und Betaversion
 

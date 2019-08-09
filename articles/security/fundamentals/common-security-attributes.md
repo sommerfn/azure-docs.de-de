@@ -6,15 +6,16 @@ documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: caac311930f2ce4e0ecdf89b5e3a980019e38381
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 43eb7e5c4cab722eb97f9e2fe819c9c79bae45d9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611769"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828769"
 ---
 # <a name="security-attributes-for-azure-services"></a>Sicherheitsattribute für Azure-Dienste
 
@@ -645,7 +646,7 @@ SQL-Datenbank umfasst Konzepte für [Einzeldatenbanken](/azure/sql-database/sql-
 | Unterstützung des Dienstendpunkts| Ja | Gilt nur für eine [Einzeldatenbank](/azure/sql-database/sql-database-single-index). |
 | Unterstützung für das Einfügen in Azure Virtual Network| Ja | Gilt nur für eine [verwaltete Instanz](/azure/sql-database/sql-database-managed-instance). |
 | Netzwerkisolation und Firewallunterstützung| Ja | Firewall sowohl auf Datenbankebene als auch auf Serverebene. Netzwerkisolation wird ausschließlich für die [verwaltete Instanz](/azure/sql-database/sql-database-managed-instance) angeboten. |
-| Unterstützung der Tunnelerzwingung| Ja | [Verwaltete Instanz](/azure/sql-database/sql-database-managed-instance) über [Azure ExpressRoute](/azure/expressroute/index.yml)-VPN. |
+| Unterstützung der Tunnelerzwingung| Ja | [Verwaltete Instanz](/azure/sql-database/sql-database-managed-instance) über [Azure ExpressRoute](/azure/expressroute/index)-VPN. |
 
 ### <a name="detection"></a>Erkennung
 

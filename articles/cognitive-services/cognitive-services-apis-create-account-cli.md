@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Beginnen Sie mit Azure Cognitive Services, indem Sie mithilfe der Azure-Befehlszeilenschnittstelle eine Ressource erstellen und diese abonnieren.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 05b679fd969dc766d697070979416312c3bad622
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334273"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697887"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -162,6 +162,14 @@ Rufen Sie mit dem Befehl [az cognitiveservices account keys list](https://docs.m
 ```
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
+
+## <a name="pricing-tiers-and-billing"></a>Tarife und Abrechnung
+
+Die Tarife (und der Betrag, der Ihnen in Rechnung gestellt wird) basieren auf der Anzahl der unter ihren Authentifizierungsinformationen gesendeten Transaktionen. Für jeden Tarif wird Folgendes angegeben:
+* Maximale Anzahl zulässiger Transaktionen pro Sekunde (TPS).
+* Dienstfeatures, die innerhalb des Tarifs aktiviert sind.
+* Die Kosten für eine vordefinierte Anzahl von Transaktionen. Wird diese Anzahl überschritten, fällt eine zusätzliche Gebühr gemäß den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) für Ihren Dienst an.
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

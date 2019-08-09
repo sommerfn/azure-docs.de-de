@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569825"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662951"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Untersuchen von Vorfällen und Warnungen in Azure Security Center (Vorschauversion)
-Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center.
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Untersuchen von Vorfällen und Warnungen in Azure Security Center (Eingestellt)
+Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures (Vorschauversion) in Azure Security Center.
 
 > [!NOTE]
-> Die Funktion zur Untersuchung von Warnungen und Vorfällen wird am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_investigate).
+> Die Funktion zur Untersuchung von Warnungen und Vorfällen (Vorschauversion) wurde am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_investigate).
 
 ## <a name="what-is-investigation-in-security-center"></a>Was ist das Untersuchungsfeature in Security Center?
 Mit dem Untersuchungsfeature in Security Center können Sie einen potenziellen [Sicherheitsvorfall](https://docs.microsoft.com/azure/security-center/security-center-incident) selektieren, sich ein Bild vom Umfang machen und der Ursache auf den Grund gehen.
