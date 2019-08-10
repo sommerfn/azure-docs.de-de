@@ -211,14 +211,14 @@ Beim Kopieren von Daten aus SAP BW Open Hub werden die folgenden Zuordnungen von
 
 | SAP ABAP-Typ | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| C (String) | string |
+| C (String) | String |
 | I (integer) | Int32 |
 | F (Float) | Double |
-| D (Date) | string |
-| T (Time) | string |
+| D (Date) | String |
+| T (Time) | String |
 | P (BCD Packed, Currency, Decimal, Qty) | Decimal |
-| N (Numc) | string |
-| X („Binary“ und „Raw“) | string |
+| N (Numc) | String |
+| X (Binary and Raw) | String |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
