@@ -25,6 +25,10 @@
           href: sdk-csharp-quickstart-authoring-app.md
         - name: Abfragen eines Vorhersageendpunkts
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - name: Verwenden des Python SDK
+      items:
+        - name: Erstellen und Verwalten einer App
+          href: sdk-python-quickstart-authoring-app.md
     - name: Verwenden von REST-APIs
       items:
         - name: Abrufen der Absicht
