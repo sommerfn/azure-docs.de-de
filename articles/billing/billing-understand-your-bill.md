@@ -2,28 +2,28 @@
 title: Grundlegendes zu Ihrer Azure-Rechnung
 description: Informationen, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements erfassen und verstehen können.
 author: bandersmsft
-manager: jureid
+manager: dougeby
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/22/2019
+ms.date: 07/28/2019
 ms.author: banders
-ms.openlocfilehash: 69659e700ee47c8961ec21f0fb23573e13d72588
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383632"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610131"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Grundlegendes zu Ihrer Microsoft Azure-Rechnung
 Um Ihre Azure-Rechnung zu verstehen, können Sie sie mit der Datei, die die ausführlichen Angaben zur täglichen Nutzung enthält, und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
 
-Dieser Artikel gilt nicht für Azure-Kunden mit einem Enterprise Agreement (EA-Kunden). Wenn Sie ein EA-Kunde sind, finden Sie weitere Informationen unter [Erläuterungen zur Rechnung für Azure-Kunden mit Enterprise Agreement](billing-understand-your-bill-ea.md).
-
-Dieser Artikel gilt nicht für Azure-Kunden mit einer [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement). Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, finden Sie Informationen dazu unter [Erläuterungen zu Azure-Gebühren auf der Rechnung zur Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
+Dieser Artikel gilt nicht für die folgenden Kunden:
+- Azure-Kunden mit einem Enterprise Agreement (EA-Kunden). Wenn Sie ein EA-Kunde sind, finden Sie weitere Informationen unter [Erläuterungen zur Rechnung für Azure-Kunden mit Enterprise Agreement](billing-understand-your-bill-ea.md).
+- Azure-Kunden mit einer [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement). Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, finden Sie Informationen dazu unter [Erläuterungen zu Azure-Gebühren auf der Rechnung zur Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
 
 Eine Erläuterung der Abrechnung im Azure Cloud Solution Provider-Programm (Azure CSP) einschließlich Abrechnungszyklus, Preisgestaltung und Nutzung finden Sie unter [Übersicht zur Azure CSP-Abrechnung](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
@@ -130,7 +130,7 @@ Um den Status Ihrer Zahlung zu erfragen, [erstellen Sie ein Supportticket](https
   - [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/)
   - [Gesamtkostenrechner](https://aka.ms/azure-tco-calculator)
   - [Detaillierte Preisinformationen für jeden Dienst](https://azure.microsoft.com/pricing/)
-- [Überprüfen Sie Nutzung und Kosten regelmäßig im Azure-Portal](billing-getting-started.md#costs).
+- [Überprüfen Sie Ihre Nutzung und Kosten regelmäßig im Azure-Portal](billing-getting-started.md#costs)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

@@ -3,16 +3,17 @@ title: Festlegen von Umgebungsvariablen in Azure Container Instances
 description: Es wird beschrieben, wie Sie Umgebungsvariablen in den Containern festgelegen, die Sie in Azure Container Instances ausführen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66149141"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68326036"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Festlegen von Umgebungsvariablen in Container Instances
 
@@ -20,7 +21,7 @@ Das Festlegen von Umgebungsvariablen in Ihren Containerinstanzen ermöglicht es 
 
 Um Umgebungsvariablen in einem Container festzulegen, geben Sie diese bei der Erstellung einer Containerinstanz an. Dieser Artikel enthält Beispiele zum Festlegen von Umgebungsvariablen beim Starten eines Containers über die [Azure CLI](#azure-cli-example), mit [Azure PowerShell](#azure-powershell-example) und im [Azure-Portal](#azure-portal-example). 
 
-Wenn Sie z. B. das Microsoft-Containerimage [aci-wordcount][aci-wordcount] ausführen, können Sie dessen Verhalten ändern, indem Sie die folgenden Umgebungsvariablen angeben:
+Wenn Sie z.B. das Microsoft-Containerimage [aci-wordcount][aci-wordcount] ausführen, können Sie dessen Verhalten ändern, indem Sie die folgenden Umgebungsvariablen angeben:
 
 *NumWords*: Die Anzahl der Wörter, die an STDOUT gesendet wird.
 
@@ -32,7 +33,7 @@ Wenn Sie Geheimnisse als Umgebungsvariablen weitergeben müssen, unterstützt Az
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 
-Um die Standardausgabe des [aci-wordcount][aci-wordcount]-Containers anzuzeigen, führen Sie ihn zunächst mit diesem [az container create][az-container-create]-Befehl aus (ohne Umgebungsvariablen):
+Um die Standardausgabe des Containers [aci-wordcount][aci-wordcount] anzuzeigen, führen Sie ihn zunächst mit diesem [az container create][az-container-create]-Befehl aus (ohne Umgebungsvariablen):
 
 ```azurecli-interactive
 az container create \

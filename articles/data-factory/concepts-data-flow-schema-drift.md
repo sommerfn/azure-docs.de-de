@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314823"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640230"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Zuordnungsdatenfluss – Schemaabweichung
 
@@ -65,7 +65,7 @@ Dann runden und summieren wir die Werte für jede dieser übereinstimmenden Spal
 
 ```round(sum ($$))```
 
-Sie können dies mit dem Azure Data Factory-Datenflussbeispiel „Taxi Demo“ testen. Schalten Sie die Debug-Sitzung mithilfe des Debug-Schalters am oberen Rand der Datenfluss-Entwurfsoberfläche ein, sodass Sie interaktiv die Ergebnisse sehen können:
+Bei dem Azure Data Factory-Datenflussbeispiel „Taxi-Demo“ können Sie diese Schemaabweichungsfunktionen in Aktion sehen. Schalten Sie die Debug-Sitzung mithilfe des Debug-Schalters am oberen Rand der Datenfluss-Entwurfsoberfläche ein, sodass Sie interaktiv die Ergebnisse sehen können:
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -75,6 +75,9 @@ Wenn Sie neue Spalten mit Spaltenmustern generieren, können Sie später in Ihre
 * Verwenden Sie „byPosition“ zum Identifizieren der neuen Spalten nach Positionsnummer.
 * Verwenden Sie „byName“ zum Identifizieren der neuen Spalten nach Name.
 * Verwenden Sie „Name“, „Stream“, „Position“ oder „Typ“ (oder eine beliebige Kombination dieser Spalten) in Spaltenmustern, um neue Spalten abzugleichen.
+
+## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
+Die Auswahl-und Senkentransformation unterstützt den Musterabgleich über regelbasierte Zuordnung. Dies ermöglicht es Ihnen, Regeln zu erstellen, die abweichende Spalten Spaltenaliasen zuordnen und diese Spalten an Ihr Ziel übernehmen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In der [Datenfluss-Ausdruckssprache](data-flow-expression-functions.md) finden Sie zusätzliche Funktionen für Spaltenmuster und Schemaabweichung einschließlich „byName“ und „byPosition“.

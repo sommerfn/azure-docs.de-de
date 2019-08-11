@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a9c38d82c4b460564077690d3cddd731ec6c2b89
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414507"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565345"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -27,7 +27,7 @@ Wenn Sie mit den Debugfunktionen von Visual Studio Code nicht vertraut sind, inf
 Dieser Artikel enthält Anweisungen zum Entwickeln und Debuggen von Modulen in mehreren Sprachen für mehrere Architekturen. Derzeit bietet Visual Studio Code Unterstützung für Module, die in C#, C, Python, Node.js und Java geschrieben wurden. Die unterstützten Gerätearchitekturen sind X64 und ARM32. Weitere Informationen zu unterstützten Betriebssystemen, Sprachen und Architekturen finden Sie unter [Sprach- und Architekturunterstützung](module-development.md#language-and-architecture-support).
 
 >[!NOTE]
->Die Unterstützung für das Entwickeln und Debuggen von Linux-ARM64-Geräten befindet sich in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Weitere Informationen finden Sie unter [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) (Entwickeln und Debuggen von ARM64 IoT Edge-Modulen in Visual Studio Code (Vorschauversion)).
+>Die Unterstützung für das Entwickeln und Debuggen von Linux-ARM64-Geräten befindet sich in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Weitere Informationen finden Sie unter [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview) (Entwickeln und Debuggen von ARM64 IoT Edge-Modulen in Visual Studio Code (Vorschauversion))](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -100,7 +100,7 @@ Es gibt vier Elemente in der Projektmappe:
 
 - Einen Ordner **.vscode**, der Debugkonfigurationen enthält.
 
-- Einen Ordner **modules**, der Unterordner für jedes Modul enthält.  Innerhalb der Ordner für die einzelnen Module befindet sich eine Datei namens **module.json**, die die Erstellung und Bereitstellung der Module steuert.  Diese Datei müsste bearbeitet werden, um die Containerregistrierung für die Modulbereitstellung von Localhost in eine Remoteregistrierung zu ändern. Zu diesem Zeitpunkt verfügen Sie über nur ein Modul.  Sie können aber über die Befehlspalette weitere hinzufügen. Verwenden Sie dazu den Befehl **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: IoT Edge-Modul hinzufügen) aus.
+- Einen Ordner **modules**, der Unterordner für jedes Modul enthält.  Innerhalb der Ordner für die einzelnen Module befindet sich eine Datei namens **module.json**, die die Erstellung und Bereitstellung der Module steuert.  Diese Datei müsste bearbeitet werden, um die Containerregistrierung für die Modulbereitstellung von „localhost“ in eine Remoteregistrierung zu ändern. Zu diesem Zeitpunkt verfügen Sie über nur ein Modul.  Sie können aber über die Befehlspalette weitere hinzufügen. Verwenden Sie dazu den Befehl **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: IoT Edge-Modul hinzufügen) aus.
 
 - Eine **.env**-Datei, in der Ihre Umgebungsvariablen aufgeführt werden. Wenn Azure Container Registry Ihre Registrierung ist, enthält sie einen Azure Container Registry-Benutzernamen und ein Kennwort.
 

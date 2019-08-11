@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a0a258630fcb3639f20de4c72591611b7af15b90
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322976"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen
@@ -41,7 +41,7 @@ Sie können Tasks erstellen, die in einer 1:1- oder 1:n-Beziehung von anderen Ta
 In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [Batch-Bibliothek für .NET][net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Es wird auch beschrieben, wie Sie eine Abhängigkeitsaktion bestimmen, um abhängige Tasks auszuführen, wenn im übergeordneten Task ein Fehler auftritt. Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios) .
 
 ## <a name="enable-task-dependencies"></a>Aktivieren von Taskabhängigkeiten
-Um Taskabhängigkeiten in der Batch-Anwendung verwenden zu können, müssen Sie zuerst den Auftrag für die Verwendung von Taskabhängigkeiten konfigurieren. Aktivieren Sie ihn in Batch .NET in Ihrem [CloudJob][net_cloudjob] by setting its [UsesTaskDependencies][net_usestaskdependencies]-Eigenschaft auf `true` festlegen:
+Um Taskabhängigkeiten in der Batch-Anwendung verwenden zu können, müssen Sie zuerst den Auftrag für die Verwendung von Taskabhängigkeiten konfigurieren. Aktivieren Sie ihn in Batch .NET für Ihr [CloudJob][net_cloudjob]-Objekt, indem Sie die dazugehörige [UsesTaskDependencies][net_usestaskdependencies]-Eigenschaft auf `true` festlegen:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -54,7 +54,7 @@ unboundJob.UsesTaskDependencies = true;
 Im vorstehenden Codeausschnitt ist „batchClient“ eine Instanz der Klasse [BatchClient][net_batchclient].
 
 ## <a name="create-dependent-tasks"></a>Erstellen von abhängigen Tasks
-Zum Erstellen eines Tasks, der vom Abschluss eines oder mehrerer übergeordneter Tasks abhängig ist, können Sie angeben, dass der Task von anderen Tasks abhängig ist („depends on“). Konfigurieren Sie in Batch .NET die [CloudTask][net_cloudtask].[DependsOn][net_dependson]-Eigenschaft mit einer Instanz der Klasse [TaskDependencies][net_taskdependencies]:
+Zum Erstellen eines Tasks, der vom Abschluss eines oder mehrerer übergeordneter Tasks abhängig ist, können Sie angeben, dass der Task von anderen Tasks abhängig ist („depends on“). Konfigurieren Sie in Batch .NET die Eigenschaft [CloudTask][net_cloudtask].[DependsOn][net_dependson] mit einer Instanz der [TaskDependencies][net_taskdependencies]-Klasse:
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -68,7 +68,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Dieser Codeausschnitt erstellt einen abhängigen Task mit der Task-ID „Flowers“. Der Task „Flowers“ ist von den Tasks „Rain“ und „Sun“ abhängig. Der Task „Flowers“ wird erst für die Ausführung auf einem Computeknoten eingeplant, nachdem die Tasks „Rain“ und „Sun“ erfolgreich abgeschlossen wurden.
 
 > [!NOTE]
-> Ein Task wird als erfolgreich abgeschlossen angesehen, wenn er den Zustand **abgeschlossen** aufweist und der **Exitcode** den Wert `0` hat. In Batch. NET bedeutet dies, dass ein Eigenschaftswert von [CloudTask][net_cloudtask].[State][net_taskstate] property value of `Completed` and the CloudTask's [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] gleich `0` lautet. Informationen zum Ändern dieses Verhaltens finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
+> Ein Task wird als erfolgreich abgeschlossen angesehen, wenn er den Zustand **abgeschlossen** aufweist und der **Exitcode** den Wert `0` hat. In Batch .NET bedeutet dies, dass der [CloudTask][net_cloudtask].[State][net_taskstate]-Eigenschaftswert `Completed` und der [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode]-Eigenschaftswert von „CloudTask“ `0` lautet. Informationen zum Ändern dieses Verhaltens finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 > 
 > 
 
@@ -87,7 +87,7 @@ Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in A
 > In den Beispielen in diesem Abschnitt wird ein abhängiger Task erst ausgeführt, nachdem die übergeordneten Tasks erfolgreich abgeschlossen wurden. Dieses Verhalten ist das Standardverhalten für einen abhängigen Task. Sie können einen abhängigen Task ausführen, wenn im übergeordneten Task ein Fehler auftritt, indem Sie eine Abhängigkeitsaktion angeben, um das Standardverhalten zu überschreiben. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 
 ### <a name="one-to-one"></a>1:1
-In einer 1 : 1-Beziehung hängt ein Task vom erfolgreichen Abschluss eines übergeordneten Tasks ab. Geben Sie zum Erstellen der Abhängigkeit eine einzelne Task-ID für die statische [TaskDependencies][net_taskdependencies].[OnId][net_onid]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
+In einer 1 : 1-Beziehung hängt ein Task vom erfolgreichen Abschluss eines übergeordneten Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie eine einzelne Task-ID für die statische [TaskDependencies][net_taskdependencies].[OnId][net_onid]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -101,7 +101,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>1:n
-In einer 1 : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Geben Sie zum Erstellen der Abhängigkeit mehrere Task-IDs für die statische [TaskDependencies][net_taskdependencies].[OnIds][net_onids]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
+In einer 1 : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie mehrere Task-IDs für die statische [TaskDependencies][net_taskdependencies].[OnIds][net_onids]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -118,7 +118,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 
 ### <a name="task-id-range"></a>Task-ID-Bereich
 Bei einer Abhängigkeit von einem Bereich von übergeordneten Tasks hängt ein Task vom Abschluss von Tasks ab, deren IDs innerhalb eines Bereichs liegen.
-Geben Sie zum Erstellen der Abhängigkeit die erste und letzte Task-ID im Bereich für die statische [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
+Um die Abhängigkeit zu erstellen, geben Sie die IDs des ersten und letzten Tasks im Bereich für die statische [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 > [!IMPORTANT]
 > Wenn Sie Task-ID-Bereiche für Ihre Abhängigkeiten verwenden, werden nur Tasks mit IDs, die Integerwerte darstellen, durch den Bereich ausgewählt. Der Bereich `1..10` wählt somit die Aufgaben `3` und `7` aus, aber nicht `5flamingoes`. 
@@ -204,7 +204,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>Codebeispiel
-Das [TaskDependencies-][github_taskdependencies] sample project is one of the [Azure Batch code samples][github_samples] auf GitHub. Diese Visual Studio-Lösung veranschaulicht:
+Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [Azure Batch-Codebeispiele][github_samples] auf GitHub. Diese Visual Studio-Lösung veranschaulicht:
 
 - Wie Sie Taskabhängigkeit für einen Auftrag aktivieren
 - Wie Sie Tasks erstellen, die von anderen Tasks abhängen

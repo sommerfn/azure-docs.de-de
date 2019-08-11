@@ -1,442 +1,139 @@
 ---
 title: Verwenden einer verwalteten Identität mit Azure Container Registry Tasks
-description: Bieten Sie einer Azure Container Registry-Aufgabe durch Zuweisung einer verwalteten Identität für Azure-Ressourcen Zugriff auf Azure-Ressourcen einschließlich anderer privater Containerregistrierungen.
+description: Aktivieren Sie eine verwaltete Identität für Azure-Ressourcen in einem Azure Container Registry-Task (ACR-Task), damit der Task auf andere Azure-Ressourcen, einschließlich anderer privater Containerregistrierungen, zugreifen kann.
 services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: 46351af375ab4c6e59a3ddfba3c05c1e517fab0d
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9f7c083a079e42172a9e2865f90293fa4d6813d8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311531"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640412"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Verwenden einer verwalteten Azure-Identität in ACR Tasks 
 
-Verwenden Sie eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md), um sich von ACR Tasks aus bei einer Azure Container Registry-Instanz oder anderen Azure-Ressourcen zu authentifizieren, ohne Anmeldeinformationen im Code angeben oder verwalten zu müssen. Verwenden Sie beispielsweise eine verwaltete Identität, um Containerimages als Schritt in einer Aufgabe in eine andere Registrierung zu pullen oder pushen.
+Aktivieren Sie eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) in einem [ACR-Task](container-registry-tasks-overview.md), damit der Task auf andere Azure-Ressourcen zugreifen kann, ohne Anmeldeinformationen bereitstellen oder verwalten zu müssen. Verwenden Sie beispielsweise eine verwaltete Identität, damit es möglich wird, Containerimages mit einem Taskschritt in eine andere Registrierung zu pullen oder zu pushen.
 
-In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Folgendes:
+In diesem Artikel erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle (Azure CLI) eine benutzerseitig oder vom System zugewiesene verwaltete Identität für einen ACR-Task aktivieren. Dazu können Sie die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden. Wenn Sie es lokal verwenden möchten, ist die Version 2.0.68 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
-> [!div class="checklist"]
-> * Aktivieren einer systemseitig oder benutzerseitig zugewiesenen Identität auf einer ACR-Aufgabe
-> * Gewähren des Identitätszugriffs auf Azure-Ressourcen wie andere Azure-Containerregistrierungen
-> * Verwenden der verwalteten Identität für den Zugriff auf die Ressourcen aus einer Aufgabe 
+Szenarien für den Zugriff auf gesicherte Ressourcen aus einem ACR-Task mithilfe einer verwalteten Identität finden Sie unter:
 
-Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.66 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+* [Registrierungsübergreifende Authentifizierung](container-registry-tasks-cross-registry-authentication.md)
+* [Zugreifen auf externe Ressourcen mit in Azure Key Vault gespeicherten Geheimnissen ](container-registry-tasks-authentication-key-vault.md)
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 
-Über eine verwaltete Identität für Azure-Ressourcen wird für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt. Sie können [bestimmte Azure-Ressourcen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) einschließlich ACR Tasks mit einer verwalteten Identität konfigurieren. Anschließend verwenden Sie die Identität für den Zugriff auf weitere Ressourcen, ohne dass Anmeldeinformationen in Code oder Skripts übergeben werden.
+Über eine verwaltete Identität für Azure-Ressourcen wird für ausgewählte Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt. Sie können einen ACR-Task mit einer verwalteten Identität konfigurieren, sodass der Task auf andere gesicherte Azure-Ressourcen zugreifen kann, ohne Anmeldeinformationen in den Taskschritten zu übergeben.
 
 Es gibt zwei Arten von verwalteten Identitäten:
 
 * *Benutzerseitig zugewiesene Identitäten* können mehreren Ressourcen zugewiesen werden und werden für die gewünschte Dauer beibehalten. Benutzerseitig zugewiesene Identitäten befinden sich zurzeit in der Vorschau.
 
-* Vom *System verwaltete Identitäten* sind für eine spezifische Ressource wie eine ACR-Aufgabe eindeutig und für die Lebensdauer dieser Ressource gültig.
+* Vom *System zugewiesene Identitäten* sind für eine spezifische Ressource wie einen ACR-Task eindeutig und für die Lebensdauer dieser Ressource gültig.
 
-Nachdem Sie eine Azure-Ressource mit einer verwalteten Identität eingerichtet haben, können Sie der verwalteten Identität genau wie bei jedem anderen Sicherheitsprinzipal Zugriff auf eine andere Ressource erteilen. Weisen Sie beispielsweise einer verwalteten Identität eine Rolle mit Pullberechtigungen, Push- und Pullberechtigungen oder anderen Berechtigungen für eine private Containerregistrierung in Azure zu. (Eine vollständige Liste der Rollen finden Sie unter [Azure Container Registry – Rollen und Berechtigungen](container-registry-roles.md).) Sie können einer Identität Zugriff auf eine oder mehrere Ressourcen gewähren.
+Sie können in einem ACR-Task entweder einen Identitätstyp oder beide Typen aktivieren. Gewähren Sie der Identität Zugriff auf eine andere Ressource, so wie jeder beliebige Sicherheitsprinzipal. Wenn der Task ausgeführt wird, verwendet er die Identität für den Zugriff auf die Ressource in allen Taskschritten, die Zugriff erfordern.
 
-## <a name="create-container-registries"></a>Erstellen von Containerregistrierungen
+## <a name="steps-to-use-a-managed-identity"></a>Schritte für die Verwendung einer verwalteten Identität
 
-Für dieses Tutorial benötigen Sie drei Containerregistrierungen:
+Führen Sie die folgenden allgemeinen Schritte aus, um eine verwaltete Identität bei einem ACR-Task zu verwenden.
 
-* Sie verwenden die erste Registrierung zum Erstellen und Ausführen von ACR-Aufgaben. In diesem Artikel heißt diese Quellregistrierung *myregistry*. 
-* Die zweiten und dritten Registrierungen sind Zielregistrierungen für die erste Beispielaufgabe zum Pushen eines Images, das sie erstellt. In diesem Artikel sind die Zielregistrierungen mit *customregistry1* und *customregistry2* benannt.
+### <a name="1-optional-create-a-user-assigned-identity"></a>1. (Optional) Erstellen einer benutzerseitig zugewiesenen Identität
 
-Ersetzen Sie in den weiteren Schritten diese Namen durch Ihre eigenen Registrierungsnamen.
+Wenn Sie eine benutzerseitig zugewiesene Identität verwenden möchten, können Sie eine vorhandene Identität verwenden. Oder erstellen Sie die Identität mit der Azure CLI oder anderen Azure-Tools. Verwenden Sie beispielsweise den Befehl [az identity create][az-identity-create]. 
 
-Wenn Sie nicht bereits die erforderlichen Azure-Containerregistrierungen haben, siehe [Schnellstart: Erstellen einer privaten Containerregistrierung mit der Azure CLI](container-registry-get-started-azure-cli.md). Sie müssen noch keine Images in die Registrierung pushen.
+Wenn Sie nur eine vom System zugewiesene Identität verwenden möchten, überspringen Sie diesen Schritt. Sie können eine vom System zugewiesene Identität beim Erstellen des ACR-Tasks erstellen.
 
-## <a name="example-task-with-a-system-assigned-identity"></a>Beispiel: Aufgabe mit einer systemseitig zugewiesenen Identität
+### <a name="2-enable-identity-on-an-acr-task"></a>2. Aktivieren der Identität für einen ACR-Task
 
-Dieses Beispiel zeigt Ihnen, wie Sie eine [Aufgabe in mehreren Schritten](container-registry-tasks-multi-step.md) mit einer vom System zugewiesenen Identität erstellen. Die Aufgabe erstellt ein Image und verwendet dann die Identität zur Authentifizierung mit zwei Zielregistrierungen, um das Image zu verschieben.
+Wenn Sie einen ACR-Task erstellen, aktivieren Sie optional eine benutzerseitig zugewiesene Identität, eine vom System zugewiesene Identität oder beide Identitäten. Übergeben Sie beispielsweise den Parameter `--assign-identity`, wenn Sie den Befehl [az acr task create][az-acr-task-create] in der Azure CLI ausführen.
 
-Die Schritte für diese Beispielaufgabe sind in einer [YAML-Datei](container-registry-tasks-reference-yaml.md) mit dem Namen `testtask.yaml` definiert. Die Datei befindet sich im multipleRegistries-Verzeichnis des [acr-tasks](https://github.com/Azure-Samples/acr-tasks)-Beispielrepositorys. Die Datei wird hier reproduziert:
-
-```yml
-version: v1.0.0
-steps:
-  - build: -t {{.Values.REGISTRY1}}/hello-world:{{.Run.ID}} . -f hello-world.dockerfile
-  - push: ["{{.Values.REGISTRY1}}/hello-world:{{.Run.ID}}"]
-  - build: -t {{.Values.REGISTRY2}}/hello-world:{{.Run.ID}} . -f hello-world.dockerfile
-  - push: ["{{.Values.REGISTRY2}}/hello-world:{{.Run.ID}}"]
-```
-
-### <a name="create-task-with-system-assigned-identity"></a>Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
-
-Erstellen Sie die Aufgabe *multiple-reg* durch Ausführen des folgenden Befehls vom Typ [az acr task create][az-acr-task-create]. Der Aufgabenkontext ist der multipleRegistries-Ordner des Beispielrepositorys, und der Befehl verweist auf die Datei `testtask.yaml` im Repository. Der `--assign-identity`-Parameter ohne zusätzlichen Wert erstellt eine vom System zugewiesene Identität für die Aufgabe. Diese Aufgabe ist so eingerichtet, dass Sie sie manuell auslösen müssen, aber Sie könnten sie so einrichten, dass sie ausgeführt wird, wenn Commits in das Repository gepusht werden oder eine Pullanforderung gestellt wird. 
+Wenn Sie eine vom System zugewiesene Identität aktivieren möchten, übergeben Sie `--assign-identity` (ohne einen Wert) oder `assign-identity [system]`. Der folgende Befehl erstellt einen Linux-Task aus einem öffentlichen GitHub-Repository, das das Image `hello-world` mit einem Git-Commit-Trigger und einer vom System zugewiesenen verwalteten Identität erstellt:
 
 ```azurecli
 az acr task create \
-  --registry myregistry \
-  --name multiple-reg \
-  --context https://github.com/Azure-Samples/acr-tasks.git#:multipleRegistries \
-  --file testtask.yaml \
-  --commit-trigger-enabled false \
-  --pull-request-trigger-enabled false \
-  --assign-identity
+    --image hello-world:{{.Run.ID}} \
+    --name hello-world --registry MyRegistry \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --file Dockerfile \
+    --assign-identity
 ```
 
-In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vom Typ `SystemAssigned` in der Aufgabe festgelegt ist. Die `principalId` sollte die Dienstprinzipal-ID der Identität sein:
-
-```console
-[...]
-  "identity": {
-    "principalId": "xxxxxxxx-2703-42f9-97d0-xxxxxxxxxxxx",
-    "tenantId": "xxxxxxxx-86f1-41af-91ab-xxxxxxxxxxxx",
-    "type": "SystemAssigned",
-    "userAssignedIdentities": null
-  },
-  "location": "eastus",
-[...]
-``` 
-
-Verwenden Sie den Befehl [az acr task show][az-acr-task-show], um die Prinzipal-ID (`principalId`) in einer Variablen zu speichern und in späteren Befehlen zu verwenden:
-
-```azurecli
-principalID=$(az acr task show --name multiple-reg --registry myregistry --query identity.principalId --output tsv)
-```
-
-### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>Erteilen von Identitätspushberechtigungen für zwei Zielcontainerregistrierungen
-
-Erteilen Sie in diesem Abschnitt der vom System zugewiesenen Identität Berechtigungen, die beiden Zielregistrierungen mit den Namen *customregistry1* und *customregistry2* zu pushen.
-
-Verwenden Sie zunächst den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der einzelnen Registrierungen abzurufen und in Variablen zu speichern:
-
-```azurecli
-reg1_id=$(az acr show --name customregistry1 --query id --output tsv)
-reg2_id=$(az acr show --name customregistry2 --query id --output tsv)
-```
-
-Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die Rolle `acrpush` für jede Registrierung zuzuweisen. Diese Rolle besitzt Berechtigungen zum Pullen und Pushen von Images an eine Containerregistrierung.
-
-```azurecli
-az role assignment create --assignee $principalID --scope $reg1_id --role acrpush
-az role assignment create --assignee $principalID --scope $reg2_id --role acrpush
-```
-
-### <a name="add-target-registry-credentials-to-task"></a>Hinzufügen von Zielregistrierungs-Anmeldeinformationen zur Aufgabe
-
-Verwenden Sie nun den Befehl [az acr task credential add][az-acr-task-credential-add], um der Aufgabe die Anmeldeinformationen der Identität hinzuzufügen, sodass sie sich bei beiden Zielregistrierungen authentifizieren kann.
-
-```azurecli
-az acr task credential add \
-  --name multiple-reg \
-  --registry myregistry \
-  --login-server customregistry1.azurecr.io \
-  --use-identity [system]
-
-az acr task credential add \
-  --name multiple-reg \
-  --registry myregistry \
-  --login-server customregistry2.azurecr.io \
-  --use-identity [system]
-```
-
-### <a name="manually-run-the-task"></a>Manuelles Ausführen der Aufgabe
-
-Lösen Sie die Aufgabe mithilfe des Befehls [az acr task run][az-acr-task-run] manuell aus. Mit dem Parameter `--set` werden die Anmeldeservernamen der beiden Zielregistrierungen als Werte für die Aufgabenvariablen `REGISTRY1` und `REGISTRY2` übergeben.
-
-```azurecli
-az acr task run \
-  --name multiple-reg \
-  --registry myregistry \
-  --set REGISTRY1=customregistry1.azurecr.io \
-  --set REGISTRY2=customregistry2.azurecr.io
-```
-
-Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
-
-```console
-Sending build context to Docker daemon  4.096kB
-Step 1/1 : FROM hello-world
- ---> fce289e99eb9
-Successfully built fce289e99eb9
-Successfully tagged customregistry2.azurecr.io/hello-world:cf31
-2019/05/31 22:16:02 Successfully executed container: acb_step_0
-2019/05/31 22:16:02 Executing step ID: acb_step_1. Timeout(sec): 600, Working directory: 'multipleRegistries', Network: 'acb_default_network'
-2019/05/31 22:16:02 Pushing image: customregistry2.azurecr.io/hello-world:cf31, attempt 1
-The push refers to repository [customregistry2.azurecr.io/hello-world]
-af0b15c8625b: Preparing
-af0b15c8625b: Pushed
-cf31: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e899a size: 524
-2019/05/31 22:16:08 Successfully pushed image: customregistry2.azurecr.io/hello-world:cf31
-2019/05/31 22:16:08 Executing step ID: acb_step_2. Timeout(sec): 600, Working directory: 'multipleRegistries', Network: 'acb_default_network'
-2019/05/31 22:16:08 Scanning for dependencies...
-2019/05/31 22:16:08 Successfully scanned dependencies
-2019/05/31 22:16:08 Launching container with name: acb_step_2
-Sending build context to Docker daemon  4.096kB
-Step 1/1 : FROM hello-world
- ---> fce289e99eb9
-Successfully built fce289e99eb9
-Successfully tagged customregistry1.azurecr.io/hello-world:cf31
-2019/05/31 22:16:09 Successfully executed container: acb_step_2
-2019/05/31 22:16:09 Executing step ID: acb_step_3. Timeout(sec): 600, Working directory: 'multipleRegistries', Network: 'acb_default_network'
-2019/05/31 22:16:09 Pushing image: customregistry1.azurecr.io/hello-world:cf31, attempt 1
-The push refers to repository [customregistry1.azurecr.io/hello-world]
-af0b15c8625b: Preparing
-af0b15c8625b: Pushed
-cf31: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e899a size: 524
-2019/05/31 22:16:21 Successfully pushed image: customregistry1.azurecr.io/hello-world:cf31
-2019/05/31 22:16:21 Step ID: acb_step_0 marked as successful (elapsed time in seconds: 1.985291)
-2019/05/31 22:16:21 Populating digests for step ID: acb_step_0...
-2019/05/31 22:16:22 Successfully populated digests for step ID: acb_step_0
-2019/05/31 22:16:22 Step ID: acb_step_1 marked as successful (elapsed time in seconds: 5.743225)
-2019/05/31 22:16:22 Step ID: acb_step_2 marked as successful (elapsed time in seconds: 1.925959)
-2019/05/31 22:16:22 Populating digests for step ID: acb_step_2...
-2019/05/31 22:16:24 Successfully populated digests for step ID: acb_step_2
-2019/05/31 22:16:24 Step ID: acb_step_3 marked as successful (elapsed time in seconds: 11.061057)
-2019/05/31 22:16:24 The following dependencies were found:
-2019/05/31 22:16:24
-- image:
-    registry: customregistry2.azurecr.io
-    repository: hello-world
-    tag: cf31
-    digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e899a
-  runtime-dependency:
-    registry: registry.hub.docker.com
-    repository: library/hello-world
-    tag: latest
-    digest: sha256:6f744a2005b12a704d2608d8070a494ad1145636eeb74a570c56b94d94ccdbfc
-  git:
-    git-head-revision: 05275dca2bc61f584085ca913c39d509236f576b
-- image:
-    registry: customregistry1.azurecr.io
-    repository: hello-world
-    tag: cf31
-    digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e899a
-  runtime-dependency:
-    registry: registry.hub.docker.com
-    repository: library/hello-world
-    tag: latest
-    digest: sha256:6f744a2005b12a704d2608d8070a494ad1145636eeb74a570c56b94d94ccdbfc
-  git:
-    git-head-revision: 05275dca2bc61f584085ca913c39d509236f576b
-
-Run ID: cf31 was successful after 35s
-```
-
-## <a name="example-task-with-a-user-assigned-identity"></a>Beispiel: Aufgabe mit einer benutzerseitig zugewiesenen Identität
-
-In diesem Beispiel erstellen Sie eine vom Benutzer zugewiesene Identität mit Berechtigungen zum Lesen von Geheimnissen aus einem Azure-Schlüsseltresor. Sie weisen dieser Identität eine aus mehreren Schritten bestehende Aufgabe zu, die das Geheimnis liest, ein Image erstellt und sich bei der Azure CLI anmeldet, um das Imagetag zu lesen.
-
-### <a name="create-a-key-vault-and-store-a-secret"></a>Erstellen eines Schlüsseltresors und Speichern eines Geheimnisses
-
-Erstellen Sie bei Bedarf zunächst mithilfe des folgenden Befehls vom Typ [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Standort *eastus*:
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-Verwenden Sie den Befehl [az keyvault create][az-keyvault-create], um einen Schlüsseltresor zu erstellen. Geben Sie hierbei einen eindeutigen Namen für die Key Vault-Instanz an. 
-
-```azurecli-interactive
-az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
-```
-
-Speichern Sie mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] ein Beispielgeheimnis im Schlüsseltresor:
-
-```azurecli
-az keyvault secret set \
-  --name SampleSecret \
-  --value "Hello ACR Tasks!" \
-  --description ACRTasksecret  \
-  --vault-name mykeyvault
-```
-
-Beispielsweise könnten Sie Anmeldeinformationen speichern, um sich bei einer privaten Docker-Registrierung zu authentifizieren, damit Sie ein privates Image pullen können.
-
-### <a name="create-an-identity"></a>Erstellen einer Identität
-
-Erstellen Sie mithilfe des Befehls [az identity create][az-identity-create] eine Identität namens *myACRTasksId* in Ihrem Abonnement. Sie können entweder dieselbe Ressourcengruppe verwenden, die Sie zuvor zum Erstellen einer Containerregistrierung oder eines Schlüsseltresors verwendet haben, oder Sie verwenden eine andere Ressourcengruppe.
-
-```azurecli-interactive
-az identity create --resource-group myResourceGroup --name myACRTasksId
-```
-
-Um die Identität in den folgenden Schritten zu konfigurieren, verwenden Sie den Befehl [az identity show][az-identity-show], um die Ressourcen-ID und die Dienstprinzipal-ID der Identität in Variablen zu speichern.
-
-```azurecli
-# Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query id --output tsv)
-
-# Get service principal ID of the user-assigned identity
-principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
-```
-
-### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität, um ein Geheimnis zu lesen
-
-Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus dem Schlüsseltresor. Dieser Zugriff wird später benötigt, um eine Aufgabe mit mehreren Schritten erfolgreich auszuführen.
-
-```azurecli-interactive
- az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
-```
-
-### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>Gewähren des Leserzugriffs auf die Ressourcengruppe für die Registrierung für die Identität
-
-Führen Sie den folgenden Befehl vom Typ [az role assignment create][az-role-assignment-create] aus, um der Identität eine Leserrolle zuzuweisen (in diesem Fall für die Ressourcengruppe mit der Quellregistrierung). Diese Rolle wird später benötigt, um eine Aufgabe mit mehreren Schritten erfolgreich auszuführen.
-
-```azurecli
-az role assignment create --role reader --resource-group myResourceGroup --assignee $principalID
-```
-
-### <a name="create-task-with-user-assigned-identity"></a>Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität
-
-Erstellen Sie jetzt eine [Aufgabe mit mehreren Schritten](container-registry-tasks-multi-step.md), und weisen sie ihr die vom Benutzer zugewiesene Identität zu. Erstellen Sie für diese Beispielaufgabe eine [YAML-Datei](container-registry-tasks-reference-yaml.md) namens `managed-identities.yaml` in einem lokalen Arbeitsverzeichnis, und fügen Sie den folgenden Inhalt ein. Achten Sie darauf, dass Sie den Namen des Schlüsseltresors in der Datei durch den Namen Ihres Schlüsseltresors ersetzen.
-
-```yml
-version: v1.0.0
-# Replace mykeyvault with the name of your key vault
-secrets:
-  - id: name
-    keyvault: https://mykeyvault.vault.azure.net/secrets/SampleSecret
-steps:
-  # Verify that the task can access the secret in the key vault
-  - cmd: bash -c 'if [ -z "$MY_SECRET" ]; then echo "Secret not resolved"; else echo "Secret resolved"; fi'
-    env: 
-      - MY_SECRET='{{.Secrets.name}}' 
-
-  # Build/push the website image to source registry, using dockerfile in the Azure-Samples repo
-  - cmd: docker build -t {{.Run.Registry}}/my-website:{{.Run.ID}} https://github.com/Azure-Samples/aci-helloworld.git
-  - push: 
-    - "{{.Run.Registry}}/my-website:{{.Run.ID}}"
-  
-  # Login to Azure CLI with identity and list the tags to verify that the image is in the registry
-  - cmd: microsoft/azure-cli az login --identity
-  - cmd: microsoft/azure-cli az acr repository show-tags -n {{.Values.registryName}} --repository my-website
-```
-
-Diese Aufgabe führt Folgendes aus:
-
-* Sicherstellen, dass sie auf das Geheimnis in Ihrem Schlüsseltresor zugreifen kann. Dieser Schritt dient zu Demonstrationszwecken. In einem realen Szenario könnten Sie einen Aufgabenschritt zum Abrufen der Anmeldeinformationen für den Zugriff auf ein privates Docker Hub-Repository benötigen.
-* Erstellen des `mywebsite`-Images und Pushen in die Quellregistrierung.
-* Anmelden bei der Azure-Befehlszeilenschnittstelle zum Auflisten der `my-website`-Imagetags in der Quellregistrierung.
-
-Erstellen einer Aufgabe namens *msitask* und Übergeben an die Ressourcen-ID der zuvor erstellten vom Benutzer zugewiesenen Identität. Diese Beispielaufgabe wird aus der Datei `managed-identities.yaml` erstellt, die Sie in Ihrem lokalen Arbeitsverzeichnis gespeichert haben, sodass Sie sie manuell auslösen müssen.
+Wenn Sie eine benutzerseitig zugewiesene Identität aktivieren möchten, übergeben Sie `--assign-identity` mit einem Wert der  *Ressourcen-ID* der Identität. Der folgende Befehl erstellt einen Linux-Task aus einem öffentlichen GitHub-Repository, das das Image `hello-world` mit einem Git-Commit-Trigger und einer benutzerseitig zugewiesenen verwalteten Identität erstellt:
 
 ```azurecli
 az acr task create \
-  --name msitask \
-  --registry myregistry \
-  --context /dev/null \
-  --file managed-identities.yaml \
-  --pull-request-trigger-enabled false \
-  --commit-trigger-enabled false \
-  --assign-identity $resourceID
+    --image hello-world:{{.Run.ID}} \
+    --name hello-world --registry MyRegistry \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --file Dockerfile \
+    --assign-identity <resourceID>
 ```
 
-In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vom Typ `UserAssigned` in der Aufgabe festgelegt ist. Die `principalId` sollte die Dienstprinzipal-ID der Identität sein:
+Sie können die Ressourcen-ID der Identität durch Ausführen des Befehls [az identity show][az-identity-show] abrufen. Die Ressourcen-ID für die ID *myUserAssignedIdentity* in der Ressourcengruppe *myResourceGroup* hat das folgende Format. 
 
-```console
-[...]
-"identity": {
-    "principalId": null,
-    "tenantId": null,
-    "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "/subscriptions/xxxxxxxx-d12e-4760-9ab6-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myACRTasksId": {
-        "clientId": "xxxxxxxx-f17e-4768-bb4e-xxxxxxxxxxxx",
-        "principalId": "xxxxxxxx-1335-433d-bb6c-xxxxxxxxxxxx"
-      }
-[...]
+```
+"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="manually-run-the-task"></a>Manuelles Ausführen der Aufgabe
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Erteilen der Identitätsberechtigungen für den Zugriff auf andere Azure-Ressourcen
 
-Lösen Sie die Aufgabe mithilfe des Befehls [az acr task run][az-acr-task-run] manuell aus. Der `--set`-Parameter wird verwendet, um den Namen der Quellregistrierung an die Aufgabe zu übergeben:
+Gewähren Sie den Identitätsberechtigungen – je nach den Anforderungen ihres Tasks – Zugriff auf andere Azure-Ressourcen. Beispiele:
+
+* Weisen Sie der verwalteten Identität eine Rolle mit Pullberechtigungen, Push- und Pullberechtigungen oder anderen Berechtigungen für eine Zielcontainerregistrierung in Azure zu. Eine vollständige Liste der Registrierungsrollen finden Sie unter [Azure Container Registry – Rollen und Berechtigungen](container-registry-roles.md). 
+* Weisen Sie der verwalteten Identität eine Rolle zu, um Geheimnisse in einem Azure-Schlüsseltresor zu lesen.
+
+Verwenden Sie die [Azure CLI](../role-based-access-control/role-assignments-cli.md) oder andere Azure-Tools, um den rollenbasierten Zugriff auf Ressourcen zu verwalten. Verwenden Sie beispielsweise den Befehl [az role assignment create][az-role-assignment-create], um der Identität eine Rolle zuzuweisen. 
+
+Im folgenden Beispiel werden einer verwalteten Identität die Berechtigungen zum Pullen aus einer Containerregistrierung zugewiesen. Der Befehl gibt die *Dienstprinzipal-ID* der Identität und die *Ressourcen-ID* der Zielregistrierung an.
+
 
 ```azurecli
-az acr task run --name msitask --registry myregistry --set registryName=myregistry  
+az role assignment create --assignee <servicePrincipalID> --scope <registryID> --role acrpull
 ```
 
-Die Ausgabe zeigt, dass das Geheimnis aufgelöst, das Image erfolgreich erstellt und gepusht wurde und die Aufgabe sich mit der Identität bei Azure CLI anmeldet, um das Imagetag aus der Quellregistrierung zu lesen:
+### <a name="4-optional-add-credentials-to-the-task"></a>4. (Optional) Hinzufügen von Anmeldeinformationen zum Task
 
-```console
-Queued a run with ID: cf32
-Waiting for an agent...
-2019/06/10 23:25:37 Downloading source code...
-2019/06/10 23:25:38 Finished downloading source code
-2019/06/10 23:25:39 Using acb_vol_4e4a0a7c-b6ef-4ec5-b40f-3436fc5eb0f5 as the home volume
-2019/06/10 23:25:41 Creating Docker network: acb_default_network, driver: 'bridge'
-2019/06/10 23:25:41 Successfully set up Docker network: acb_default_network
-2019/06/10 23:25:41 Setting up Docker configuration...
-2019/06/10 23:25:42 Successfully set up Docker configuration
-2019/06/10 23:25:42 Logging in to registry: myregistry.azurecr.io
-2019/06/10 23:25:43 Successfully logged into myregistry.azurecr.io
-2019/06/10 23:25:43 Executing step ID: acb_step_0. Timeout(sec): 600, Working directory: '', Network: 'acb_default_network'
-2019/06/10 23:25:43 Launching container with name: acb_step_0
-Secret resolved
-2019/06/10 23:25:44 Successfully executed container: acb_step_0
-2019/06/10 23:25:44 Executing step ID: acb_step_1. Timeout(sec): 600, Working directory: '', Network: 'acb_default_network'
-2019/06/10 23:25:44 Launching container with name: acb_step_1
-Sending build context to Docker daemon  74.75kB
+Wenn Ihr Task Images mit einem Pull- oder Pushvorgang in eine andere Azure-Containerregistrierung überträgt, fügen Sie dem Task Anmeldeinformationen hinzu, damit die Identität sich authentifizieren kann. Führen Sie den Befehl [az acr task credential add][az-acr-task-credential-add] aus, und übergeben Sie den Parameter `--use-identity`, um die Anmeldeinformationen der Identität dem Task hinzuzufügen. 
 
-[...]
+Wenn Sie beispielsweise Anmeldeinformationen für eine vom System zugewiesene Identität hinzufügen möchten, um eine Authentifizierung mit der Registrierung *targetregistry* durchzuführen, übergeben Sie `use-identity [system]`:
 
-cf32: digest: sha256:cbb4aa83b33f6959d83e84bfd43ca901084966a9f91c42f111766473dc977f36 size: 1577
-2019/06/10 23:26:05 Successfully pushed image: myregistry.azurecr.io/my-website:cf32
-2019/06/10 23:26:05 Executing step ID: acb_step_3. Timeout(sec): 600, Working directory: '', Network: 'acb_default_network'
-2019/06/10 23:26:05 Launching container with name: acb_step_3
-[
-  {
-    "environmentName": "AzureCloud",
-    "id": "xxxxxxxx-d12e-4760-9ab6-xxxxxxxxxxxx",
-    "isDefault": true,
-    "name": "DanLep Internal Consumption",
-    "state": "Enabled",
-    "tenantId": "xxxxxxxx-86f1-41af-91ab-xxxxxxxxxxxx",
-      "user": {
-      "assignedIdentityInfo": "MSI",
-      "name": "systemAssignedIdentity",
-      "type": "servicePrincipal"
-    }
-  }
-]
-2019/06/10 23:26:09 Successfully executed container: acb_step_3
-2019/06/10 23:26:09 Executing step ID: acb_step_4. Timeout(sec): 600, Working directory: '', Network: 'acb_default_network'
-2019/06/10 23:26:09 Launching container with name: acb_step_4
-[
-  "cf32"
-]
-2019/06/10 23:26:14 Successfully executed container: acb_step_4
-2019/06/10 23:26:14 Step ID: acb_step_0 marked as successful (elapsed time in seconds: 1.025312)
-2019/06/10 23:26:14 Step ID: acb_step_1 marked as successful (elapsed time in seconds: 13.703823)
-2019/06/10 23:26:14 Step ID: acb_step_2 marked as successful (elapsed time in seconds: 6.791506)
-2019/06/10 23:26:14 Step ID: acb_step_3 marked as successful (elapsed time in seconds: 3.852972)
-2019/06/10 23:26:14 Step ID: acb_step_4 marked as successful (elapsed time in seconds: 5.079079)
+```azurecli
+az acr task credential add \
+    --name helloworld \
+    --registry myregistry \
+    --login-server targetregistry.azurecr.io \
+    --use-identity [system]
 ```
 
+Wenn Sie Anmeldeinformationen für eine benutzerseitig zugewiesene Identität hinzufügen möchten, um eine Authentifizierung mit der Registrierung *targetregistry* durchzuführen, übergeben Sie `use-identity` mit dem Wert *client ID* der Identität. Beispiel:
+
+```azurecli
+az acr task credential add \
+    --name helloworld \
+    --registry myregistry \
+    --login-server targetregistry.azurecr.io \
+    --use-identity <clientID>
+```
+
+Sie können die Client-ID der Identität abrufen, indem Sie den Befehl [az identity show][az-identity-show] ausführen. Die Client-ID ist eine GUID mit den Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehr über die Verwendung verwalteter Identitäten mit Azure Container Registry Tasks erfahren und Folgendes gelernt:
+In diesem Artikel haben Sie erfahren, wie Sie eine benutzerseitig oder vom System zugewiesene verwaltete Identität für einen ACR-Task aktivieren und verwenden. Szenarien für den Zugriff auf gesicherte Ressourcen aus einem ACR-Task mithilfe einer verwalteten Identität finden Sie unter:
 
-> [!div class="checklist"]
-> * Aktivieren einer systemseitig oder benutzerseitig zugewiesenen Identität auf einer ACR-Aufgabe
-> * Gewähren des Identitätszugriffs auf Azure-Ressourcen wie andere Azure-Containerregistrierungen
-> * Verwenden der verwalteten Identität für den Zugriff auf die Ressourcen aus einer Aufgabe  
+* [Registrierungsübergreifende Authentifizierung](container-registry-tasks-cross-registry-authentication.md)
+* [Zugreifen auf externe Ressourcen mit in Azure Key Vault gespeicherten Geheimnissen ](container-registry-tasks-authentication-key-vault.md)
 
-* Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](/azure/active-directory/managed-identities-azure-resources/).
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-show]: /cli/azure/acr#az-acr-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
+[az-identity-create]: /cli/azure/identity#az-identity-create
 [az-identity-show]: /cli/azure/identity#az-identity-show
-[azure-cli]: /cli/azure/install-azure-cli
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
 [az-acr-task-credential-add]: /cli/azure/acr/task/credential#az-acr-task-credential-add
-[az-group-create]: /cli/azure/group?#az-group-create
-[az-keyvault-create]: /cli/azure/keyvault?#az-keyvault-create
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
+[azure-cli-install]: /cli/azure/install-azure-cli

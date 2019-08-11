@@ -3,16 +3,17 @@ title: Ausführen von Befehlen in ausgeführten Containern in Azure Container In
 description: Erfahren Sie, wie ein Befehl in einem Container ausgeführt wird, der zurzeit in Azure Container Instances ausgeführt wird
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
-ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579745"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68325978"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Ausführen eines Befehls in einer ausgeführten Azure Container Instances-Instanz
 
@@ -84,7 +85,7 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Einschränkungen
 
-Azure Container Instances unterstützt derzeit einen einzelnen Prozess mit [az container exec][az-container-exec] und Sie können keine Befehlsargumente übergeben. Sie können beispielsweise keine Befehle wie in `sh -c "echo FOO && echo BAR"` verketten oder `echo FOO` ausführen.
+Azure Container Instances unterstützt derzeit den Start eines einzelnen Prozesses mit [az container exec][az-container-exec], und Sie können keine Befehlsargumente übergeben. Sie können beispielsweise keine Befehle wie in `sh -c "echo FOO && echo BAR"` verketten oder `echo FOO` ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

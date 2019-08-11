@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
 ms.openlocfilehash: 0672fb71ba4f56d0faf332df029100cb48741c8b
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309886"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Fol
 
 Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
-Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu übertragen, muss außerdem Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [macOS-][docker-mac], [Windows][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
+Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu übertragen, muss außerdem Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [macOS][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System problemlos konfiguriert werden kann.
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 

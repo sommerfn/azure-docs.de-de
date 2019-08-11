@@ -3,16 +3,17 @@ title: Automatisieren des Erstellens und Patchens von Containerimages mit Azure 
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5089650996693b81e548bba8d89c0de29a8afd93
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147984"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68311869"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -58,7 +59,7 @@ Informationen zur Verwendung der Schnelltasks finden Sie im ersten ACR Tasks-Tut
 Lösen Sie mithilfe von ACR Tasks automatisch einen Containerimage-Buildvorgang aus, wenn Code in ein Git-Repository committet wird. Buildaufgaben können mithilfe des Azure CLI-Befehls [az acr task][az-acr-task] konfiguriert werden und ermöglichen die Angabe eines Git-Repositorys und optional eines Branch und einer Dockerfile-Datei. Wenn Ihr Team Code in das Repository committet, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus.
 
 > [!IMPORTANT]
-> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem `az acr build-task`-Befehl erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
+> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem Befehl `az acr build-task` erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
 
 Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode finden Sie im zweiten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks](container-registry-tutorial-build-task.md).
 

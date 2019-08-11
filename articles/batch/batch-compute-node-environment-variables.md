@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323650"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
@@ -67,9 +67,9 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 | AZ_BATCH_POOL_ID                | Die ID des Pools, in dem der Task ausgeführt wird. | Alle Tasks. | batchpool001 |
 | AZ_BATCH_TASK_DIR               | Der vollständige Pfad des [Taskverzeichnisses][files_dirs] auf dem Knoten. Dieses Verzeichnis enthält `stdout.txt` und `stderr.txt` für den Task und AZ_BATCH_TASK_WORKING_DIR. | Alle Tasks. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Die ID des aktuellen Tasks | Alle Tasks mit Ausnahme des Starttasks. | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | Verzeichnispfad, der für den primären Task und alle Untertasks eines [Tasks mit mehreren Instanzen][multi_instance] identisch ist. Der Pfad ist auf allen Knoten vorhanden, auf denen der Tasks mit mehreren Instanzen ausgeführt wird. Es besteht Lese-/Schreibzugriff für die Taskbefehle, die auf diesem Knoten ausgeführt werden (Koordinierungsbefehl und [Anwendungsbefehl][app_cmd]). . The path exists on every node on which the multi-instance task runs, and is read/write accessible to the task commands running on that node (both the [coordination command][coord_cmd] Untertasks oder ein primärer Task, der auf anderen Knoten ausgeführt wird, können nicht remote auf dieses Verzeichnis zugreifen (es ist kein „freigegebenes“ Netzwerkverzeichnis). Primäre und Untertasks mit mehreren Instanzen. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask | AZ_BATCH_TASK_WORKING_DIR |
-| Der vollständige Pfad des [Taskarbeitsverzeichnisses][files_dirs] auf dem Knoten.       | Der aktuell ausgeführte Tasks hat Lese-/Schreibzugriff auf dieses Verzeichnis. Alle Tasks. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd | CCP_NODES |
-| Die Liste mit den Knoten und der Anzahl von Kernen pro Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind.                       | Knoten und Kerne werden im Format `numNodes<space>node1IP<space>node1Cores<space>` aufgeführt. `node2IP<space>node2Cores<space> ...`, wobei auf die Anzahl der Knoten eine oder mehrere IP-Adressen von Knoten und die jeweilige Anzahl der Kerne folgen.<br/>Primäre und Untertasks mit mehreren Instanzen. |  Multi-instance primary and subtasks. |`2 10.0.0.4 1 10.0.0.5 1` |
+| AZ_BATCH_TASK_SHARED_DIR | Verzeichnispfad, der für den primären Task und alle Untertasks eines [Tasks mit mehreren Instanzen][multi_instance] identisch ist. Der Pfad ist auf jedem Knoten vorhanden, auf dem der Task mit mehreren Instanzen ausgeführt wird. Es besteht ein Lese-/Schreibzugriff für die Taskbefehle, die auf diesem Knoten ausgeführt werden ([Koordinierungsbefehl][coord_cmd] und [Anwendungsbefehl][app_cmd]). Untertasks oder ein primärer Task, der auf anderen Knoten ausgeführt wird, können nicht remote auf dieses Verzeichnis zugreifen (es ist kein „freigegebenes“ Netzwerkverzeichnis). | Primäre und Untertasks mit mehreren Instanzen. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_WORKING_DIR       | Der vollständige Pfad des [Taskarbeitsverzeichnisses][files_dirs] auf dem Knoten. Der aktuell ausgeführte Tasks hat Lese-/Schreibzugriff auf dieses Verzeichnis. | Alle Tasks. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| CCP_NODES                       | Die Liste mit den Knoten und der Anzahl von Kernen pro Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind. Knoten und Kerne werden im Format `numNodes<space>node1IP<space>node1Cores<space>` aufgeführt.<br/>`node2IP<space>node2Cores<space> ...`, wobei auf die Anzahl der Knoten eine oder mehrere IP-Adressen von Knoten und die jeweilige Anzahl der Kerne folgen. |  Primäre und Untertasks mit mehreren Instanzen. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: https://azure.microsoft.com/documentation/articles/batch-api-basics/#files-and-directories
 [multi_instance]: https://azure.microsoft.com/documentation/articles/batch-mpi/

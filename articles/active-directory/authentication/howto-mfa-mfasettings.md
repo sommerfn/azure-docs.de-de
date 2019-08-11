@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6260a619ad3dfda65fcdfc1180cba4002dd23d0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499895"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514979"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -35,7 +35,7 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 | Kontosperrung | Hiermit werden Konten im MFA-Dienst temporär gesperrt, wenn zu viele aufeinanderfolgende Authentifizierungsversuche abgelehnt werden. Dieses Feature wird nur auf Benutzer angewendet, die zur Authentifizierung eine PIN eingeben. (MFA-Server) |
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um zu verhindern, dass bestimmte Benutzer Multi-Factor Authentication-Anforderungen empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
 | [Betrugswarnung](#fraud-alert) | Konfigurieren Sie Einstellungen, damit Benutzer betrügerische Überprüfungsanforderungen melden können. |
-| Benachrichtigungen | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
+| [Notifications](#notifications) | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
 | [OATH-Token](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
 | [Einstellungen für Telefonanruf](#phone-call-settings) | Konfigurieren Sie Einstellungen für Telefonanrufe und Ansagen für Cloud- und lokale Umgebungen. |
 | Anbieter | Hier werden alle vorhandenen Authentifizierungsanbieter angezeigt, die Sie möglicherweise mit Ihrem Konto verknüpft haben. Neue Authentifizierungsanbieter können ab 1. September 2018 nicht mehr erstellt werden. |
@@ -57,7 +57,7 @@ Diese Berichterstellung ist nur für den MFA-Server (lokal) verfügbar. Lesen Si
 
 ## <a name="block-and-unblock-users"></a>Benutzer sperren/zulassen
 
-Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
+Verwenden Sie das Feature _Benutzer sperren/zulassen_ , um zu verhindern, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
@@ -77,7 +77,7 @@ Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Be
 
 ## <a name="fraud-alert"></a>Betrugswarnung
 
-Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. Benutzer können betrügerische Versuche mit der mobilen App oder per Telefon melden.
+Konfigurieren Sie das Feature _Betrugswarnung_ , damit Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. Benutzer können betrügerische Versuche mit der mobilen App oder per Telefon melden.
 
 ### <a name="turn-on-fraud-alerts"></a>Aktivieren von Betrugswarnungen
 
@@ -99,6 +99,12 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Anmeldungen** aus. Der Betrugsbericht ist damit Teil des standardmäßigen Azure AD-Berichts zu Anmeldungen.
+
+## <a name="notifications"></a>Benachrichtigungen
+
+Konfigurieren Sie hier E-Mail-Adressen für Benutzer, die E-Mails mit Betrugswarnungen erhalten.
+
+![Benachrichtigungsbeispiel für eine E-Mail mit Betrugswarnung](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
 ## <a name="phone-call-settings"></a>Einstellungen für Telefonanruf
 
@@ -390,7 +396,7 @@ Das Feature _Multi-Factor Authentication speichern_ für Geräte und Browser, di
 
 Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanentes Cookie im Browser festgelegt, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt. Der Benutzer wird von diesem Browser bis zum Ablauf des Cookies nicht erneut zur Multi-Factor Authentication aufgefordert. Wenn der Benutzer einen anderen Browser auf dem gleichen Gerät öffnet oder seine Cookies löscht, wird er wieder zur Überprüfung aufgefordert.
 
-Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
+Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_ , die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
 
 Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
 

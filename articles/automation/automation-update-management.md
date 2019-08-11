@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6d27e36e9bd571aa9c42500451787fd94d4a8a90
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498421"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688146"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -23,7 +23,7 @@ Sie können die Lösung für die Updateverwaltung in Azure Automation für Betri
 Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden. Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung für einen virtuellen Computer auch im Azure-Portal auf der Seite des virtuellen Computers aktivieren. Dieses Szenario ist für virtuelle [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management)- und [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management)-Computer verfügbar.
 
 > [!NOTE]
-> Für die Lösung zur Updateverwaltung muss ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft werden. Eine aktuelle Liste der unterstützen Regionen finden Sie in (diesem Artikel)[./how-to/region-mappings.md]. Die Zuordnung von Regionen wirkt sich nicht auf die Möglichkeit aus, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
+> Für die Lösung zur Updateverwaltung muss ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft werden. Eine aktuelle Liste der unterstützen Regionen finden Sie unter [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. Die Zuordnung von Regionen wirkt sich nicht auf die Möglichkeit aus, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

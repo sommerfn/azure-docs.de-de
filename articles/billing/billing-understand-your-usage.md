@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383461"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554694"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -28,7 +28,7 @@ Kontotyp | Azure-Nutzung | Marketplace-Nutzung | Einkäufe | Rückerstattungen
 --- | --- | --- | --- | ---
 Enterprise Agreement (EA) | Ja | Ja | Ja | Nein
 Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) | Ja | Ja | Ja | Ja
-Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) | Ja | Nein | Nein | Nein
+Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) | Ja | Ja | Nein | Nein
 
 Weitere Informationen zu Marketplace-Bestellungen (auch als externe Dienstleistungen bezeichnet) finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
 
@@ -65,8 +65,6 @@ EffectivePrice | Alle | Gemischter Einzelpreis für den Zeitraum. Mit den gemisc
 ExchangeRateDate | MCA | Datum, an dem der Wechselkurs festgelegt wurde.
 ExchangeRatePricingToBilling | MCA | Der für die Umrechnung der Kosten aus der Preiswährung in die Abrechnungswährung verwendete Wechselkurs.
 Frequency | Alle | Gibt an, ob eine Gebühr sich voraussichtlich wiederholt. Gebühren fallen entweder einmal (**OneTime**), wiederholt monatlich oder jährlich (**Recurring**) oder basierend auf der Nutzung (**UsageBased**) an.
-IncludedQuantity | Nutzungsbasierte Zahlung | Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist.
-InstanceId | PAGY | Siehe „ResourceId“.
 InvoiceId | PAYG, MCA | Die eindeutige Dokument-ID, die in der PDF-Datei für die Rechnung aufgeführt ist.
 InvoiceSection | MCA | Siehe „InvoiceSectionName“.
 InvoiceSectionId | EA, MCA | Eindeutiger Bezeichner für EA-Abteilung oder MCA-Rechnungsabschnitt.
@@ -105,6 +103,7 @@ ServicePeriodStartDate | MCA | Das Startdatum des Bewertungszeitraums, durch den
 SubscriptionId | Alle | Der eindeutige Bezeichner für das Azure-Abonnement.
 SubscriptionName | Alle | Der Name des Azure-Abonnements.
 `Tags` | Alle | Tags, die der Ressource zugewiesen werden. Umfasst keine Ressourcengruppen-Tags. Kann verwendet werden, um die Kosten für interne verbrauchsbasierte Kostenzuteilung zu gruppieren oder zu verteilen. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Begriff | Alle | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Beispiel:  Bei reservierten Instanzen werden 12 Monate als „Zeitraum“ angezeigt. Für einmalige Käufe oder wiederkehrende Käufe beträgt „Zeitraum“ 1 Monat (SaaS, Marketplace-Support). Dies gilt nicht für den Azure-Verbrauch.
 UnitOfMeasure | Alle | Die Abrechnungsmaßeinheiten für den Dienst. Computedienste werden beispielsweise pro Stunde abgerechnet.
 UnitPrice | EA, PAYG | Der Preis pro Einheit für die Gebühren.
 

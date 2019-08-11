@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974ece9cd035ae29ada38f34b7933d86f682194f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314840"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696233"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
@@ -28,8 +28,12 @@ Jeder Datenfluss erfordert mindestens eine Quelltransformation. Fügen Sie so vi
 
 Ordnen Sie Ihre Datenfluss-Quelltransformation genau einem Data Factory-Dataset zu. Das Dataset definiert die Form und Position der Daten, in die geschrieben oder aus denen gelesen werden soll. Sie können Platzhalter und Dateilisten in Ihrer Quelle verwenden, um mit mehreren Dateien gleichzeitig zu arbeiten.
 
-## <a name="data-flow-staging-areas"></a>Datenfluss-Stagingbereiche
+Mithilfe einer Option **Platzhaltermuster** wird ADF angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine sehr effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Zum Nachverfolgen des momentan verarbeiteten Dateinamens legen Sie in „Quellenoptionen“ einen Feldnamen für das Feld „Spalte zum Speichern des Dateinamens“ fest.
 
+> [!NOTE]
+> Legen Sie mehrere Platzhalterzeichenmuster mit dem Pluszeichen (+) neben Ihrem vorhandenen Platzhaltermuster fest, um weitere Platzhalterregeln hinzuzufügen.
+
+## <a name="data-flow-staging-areas"></a>Datenfluss-Stagingbereiche
 Datenflüsse arbeiten mit *Stagingdatasets*, die sich alle in Azure befinden. Verwenden Sie diese Datasets für den Stagingprozess, wenn Sie Ihre Daten transformieren. 
 
 Data Factory hat Zugriff auf nahezu 80 native Connectors. Um Daten aus diesen anderen Quellen in Ihren Datenfluss einzubeziehen, verwenden Sie die Kopieraktivität, um Daten in einen dieser Stagingbereiche des Datenflussdatasets aufzunehmen.
@@ -101,13 +105,23 @@ Beispiele für Platzhalter:
 
 Der Container muss im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
 
+* **Partitionsstammpfad**: Wenn Ihre Dateiquelle partitionierte Ordner mit dem Format ```key=value``` (d.h. „Jahr=2019“) enthält, können Sie ADF auffordern, die oberste Ebene dieser Ordnerstruktur einem Spaltennamen in Ihrem Datenfluss-Datenstrom zuzuweisen.
+
+Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die zu lesenden Blattdateien einzuschließen.
+
+![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung für die Partitionsdatei")
+
+Verwenden Sie nun die Einstellung „Partitionsstammpfad“, um ADF mitzuteilen, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie jetzt die Inhalte Ihrer Daten anzeigen, sehen Sie, dass ADF die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
+
+![Partitionsstammpfad](media/data-flow/partfile1.png "Partitionsstammpfad – Vorschau")
+
 * **Liste der Dateien:** Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
 * **Spalte für die Speicherung im Dateinamen:** Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Namen ein, um die Zeichenfolge für den Dateinamen zu speichern.
 * **Nach der Fertigstellung:** Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
 
 Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschieben, wählen Sie zuerst für den Dateivorgang die Option „Verschieben“ aus. Legen Sie dann das Quellverzeichnis („from“/„aus“) fest. Wenn Sie keine Platzhalter für Ihren Pfad verwenden, entspricht die Einstellung „from“ dem Quellordner.
 
-Wenn Sie einen Quellpfad mit Platzhaltern verwenden, z. B.:
+Wenn Sie über einen Quellpfad mit Platzhalter verfügen, sieht Ihre Syntax ähnlich wie hier aus:
 
 ```/data/sales/20??/**/*.csv```
 
@@ -119,7 +133,7 @@ Und „to“ können Sie wie folgt angeben:
 
 ```/backup/priorSales```
 
-In diesem Fall werden alle Unterverzeichnisse von „/data/sales“, die erstellt wurden, relativ zu „/backup/priorSales“ verschoben.
+In diesem Fall werden alle Dateien, die aus „/Data/Sales“ erstellt wurden, in „/Backup/priorSales“ verschoben.
 
 ### <a name="sql-datasets"></a>SQL-Datasets
 
@@ -152,8 +166,7 @@ Sie können die Spaltendatentypen in einer späteren Transformation für abgelei
 ![Einstellungen für Standarddatenformate](media/data-flow/source2.png "Standardformate")
 
 ### <a name="add-dynamic-content"></a>Dynamischen Inhalt hinzufügen
-
-Wenn Sie im Bereich für die Einstellungen in die Felder klicken, wird ein Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, wird der Ausdrucks-Generator gestartet. Im Ausdrucks-Generator können Sie Werte für Einstellungen mithilfe von Ausdrücken, statischen Literalwerten oder Parametern dynamisch festlegen.
+Wenn Sie im Bereich für die Einstellungen in die Felder klicken, wird ein Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie auswählen, dass Sie den Ausdrucks-Generator starten möchten, legen Sie Werte dynamisch mithilfe von Ausdrücken, statischen Literalwerten oder Parametern fest.
 
 ![Parameter](media/data-flow/params6.png "Parameter")
 

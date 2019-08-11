@@ -10,15 +10,15 @@ ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325973"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Abrufen von Containerprotokollen und -ereignissen in Azure Container Instances
 
-Wenn Sie über einen fehlerhaften Container verfügen, können Sie zunächst mithilfe von [az container logs][az-container-logs] die entsprechenden Protokolle anzeigen sowie Standardausgabe und Standardfehler mithilfe von „az container attach“ streamen. , and streaming its standard out and standard error with [az container attach][az-container-attach]
+Wenn Sie einen fehlerhaften Container haben, können Sie zunächst mit [az container logs][az-container-logs] die Protokolle anzeigen sowie die Standardausgabe und Standardfehler mit [az container attach][az-container-attach] streamen.
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 

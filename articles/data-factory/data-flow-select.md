@@ -1,19 +1,19 @@
 ---
 title: 'Azure Data Factory Mapping Data Flow: Auswahltransformation'
-description: 'Azure Data Factory Mapping Data Flow: Auswahltransformation'
+description: 'Azure Data Factory-Mapping Data Flow: Auswahltransformation'
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 15c74637a2dc42ec44f582878b5505d94637cd7b
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314214"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678528"
 ---
-# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure Data Factory-Mapping Data Flow: Auswahltransformation
+# <a name="mapping-data-flow-select-transformation"></a>Mapping Data Flow: Auswahltransformation
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Verwenden Sie diese Transformation für die Spaltenselektivität (Reduzierung der Anzahl von Spalten), um Aliase für Spalten und Datenstromnamen zuzuweisen und um Spalten neu anzuordnen.
@@ -27,10 +27,7 @@ Im obigen Diagramm befindet sich die Auswahltransformation ganz oben. Dem urspr�
 
 Die Auswahltransformation kann auch als Möglichkeit verwendet werden, die Auswahl von Spalten in Ihrem Datenfluss aufzuheben. Wenn in Ihrer Senke beispielsweise 6 Spalten definiert sind, Sie aber nur 3 bestimmte Spalten für die Transformation auswählen und dann zur Senke fließen lassen möchten, können Sie mit der Auswahltransformation nur diese 3 Spalten auswählen.
 
-> [!NOTE]
-> Sie müssen „Alle auswählen“ deaktivieren, um nur bestimmte Spalten auswählen zu können.
-
-![Auswahltransformation](media/data-flow/select001.png "Alias auswählen")
+![Auswahltransformation](media/data-flow/newselect1.png "Alias auswählen")
 
 ## <a name="options"></a>Optionen
 * In der Standardeinstellung für die Auswahl werden alle eingehenden Spalten einbezogen und die ursprünglichen Namen beibehalten. Sie können dem Datenstrom einen Alias zuweisen, indem Sie den Namen der Auswahltransformation festlegen.
@@ -38,6 +35,23 @@ Die Auswahltransformation kann auch als Möglichkeit verwendet werden, die Auswa
 * Wählen Sie die Option „Skip Duplicates“ (Duplikate überspringen) aus, um doppelte Spalten aus Eingabe- oder Ausgabemetadaten zu entfernen.
 
 ![Duplikate überspringen](media/data-flow/select-skip-dup.png "Duplikate überspringen")
+
+> [!NOTE]
+> Zum Löschen von Zuordnungsregeln klicken Sie auf die Schaltfläche **Zurücksetzen**.
+
+## <a name="mapping"></a>Zuordnung
+Die Auswahltransformation ordnet alle Spalten standardmäßig automatisch zu, wodurch alle eingehenden Spalten an denselben Namen in der Ausgabe weitergeleitet werden. Der Name des Ausgabedatenstroms, der in „Select Settings“ (Auswahleinstellungen) festgelegt wird, definiert einen neuen Aliasnamen für den Datenstrom. Wenn Sie die für die automatische Zuordnung festgelegte Auswahl beibehalten, können Sie dem gesamten Datenstrom bei allen Spalten einen identischen Alias zuweisen.
+
+![Regeln für Auswahltransformation](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+
+Wenn Sie Spalten einen Alias zuweisen oder aber Spalten entfernen, umbenennen oder neu anordnen möchten, müssen Sie zuerst „Automatisch zuordnen“ deaktivieren. Standardmäßig wird eine automatisch eingegebene Standardregel namens „Alle Eingabespalten“ angezeigt. Sie können diese Regel beibehalten, wenn Sie möchten, dass alle eingehenden Spalten immer demselben Namen in der Ausgabe zugeordnet werden.
+
+Wenn Sie aber benutzerdefinierte Regeln hinzufügen möchten, klicken Sie auf „Zuordnung hinzufügen“. Durch die Feldzuordnung erhalten Sie eine Liste mit den Namen der ein- und ausgehenden Spalten für die Zuordnung und den Alias. Wählen Sie „regelbasierte Zuordnung“, um Musterabgleichsregeln zu erstellen.
+
+## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
+Wenn Sie die regelbasierte Zuordnung auswählen, weisen Sie ADF an, Ihren Abgleichsausdruck auszuwerten, um passende Eingangsmusterregeln zu ermitteln und die Ausgangsfeldnamen zu definieren. Sie können eine beliebige Kombination aus feld- und regelbasierten Zuordnungen hinzufügen. Feldnamen werden dann von ADF zur Laufzeit auf der Grundlage eingehender Metadaten aus der Quelle generiert. Sie können die Namen der generierten Felder während des Debuggens sowie im Datenvorschaubereich anzeigen.
+
+Weitere Informationen zum Musterabgleich finden Sie in der [Dokumentation zu Spaltenmustern](concepts-data-flow-column-pattern.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nachdem Sie die Option „Select“ (Auswählen) verwendet haben, um Spalten umzubenennen, neu anzuordnen und Aliase zuzuweisen, müssen Sie die [Sink transformation (Senkentransformation)](data-flow-sink.md) verwenden, um Ihre Daten im Datenspeicher zu speichern.

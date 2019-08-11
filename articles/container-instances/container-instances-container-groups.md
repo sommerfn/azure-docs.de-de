@@ -3,18 +3,18 @@ title: Containergruppen von Azure Container Instances
 description: Funktionsweise von Gruppen mit mehreren Containern in Azure Container Instances
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072829"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68326051"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -41,7 +41,7 @@ Für diese Beispielcontainergruppe gilt Folgendes:
 
 ## <a name="deployment"></a>Bereitstellung
 
-Zwei gebräuchliche Wege zum Bereitstellen einer Gruppe mit mehreren Containern sind eine [Resource Manager-Vorlage][resource-manager template] und eine [YAML-Datei][yaml-file]. Verwenden Sie eine Resource Manager-Vorlage, wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienstressourcen (z.B. eine [Azure Files-Freigabe][azure-files]) bereitstellen müssen. Das YAML-Format ist präziser, daher wird eine YAML-Datei empfohlen, wenn Ihre Bereitstellung nur Containerinstanzen enthält.
+Zwei gebräuchliche Möglichkeiten zum Bereitstellen einer Gruppe mit mehreren Containern sind eine [Resource Manager-Vorlage][resource-manager template] oder eine [YAML-Datei][yaml-file]. Verwenden Sie eine Resource Manager-Vorlage, wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienstressourcen (z.B. eine [Azure Files-Freigabe][azure-files]) bereitstellen müssen. Das YAML-Format ist präziser, daher wird eine YAML-Datei empfohlen, wenn Ihre Bereitstellung nur Containerinstanzen enthält.
 
 Mit dem Azure CLI-Befehl [az container export][az-container-export] können Sie die Konfiguration einer Containergruppe in eine YAML-Datei exportieren, um diese beizubehalten. Durch den Export können Sie die Konfiguration einer Containergruppe in der Versionskontrolle für „Konfiguration als Code“ speichern. Oder Sie können die exportierte Datei als Ausgangspunkt bei der Entwicklung einer neuen Konfiguration in YAML verwenden.
 

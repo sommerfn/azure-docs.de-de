@@ -3,16 +3,17 @@ title: Upgrade einer klassischen Azure-Containerregistrierung
 description: Profitieren Sie von dem erweiterten Featureset der verwalteten Containerregistrierungen in Basic-, Standard- und Premium-SKUs, indem Sie Ihre nicht verwaltete klassische Containerregistrierung aktualisieren.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480341"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68310379"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade einer klassischen Containerregistrierung
 
@@ -52,11 +53,11 @@ Sobald die Migration abgeschlossen ist, wird das Speicherkonto in Ihrem Abonneme
 
 ## <a name="how-to-upgrade"></a>Aktualisieren
 
-Für das Upgrade einer nicht verwalteten klassischen Registrierung zu einer der verwalteten SKUs gibt es verschiedene Möglichkeiten. In den folgenden Abschnitten wird die Vorgehensweise für die [Azure-Befehlszeilenschnittstelle][azure-cli] und das [Azure-Portal][azure-portal] beschrieben.
+Für das Upgrade einer nicht verwalteten klassischen Registrierung zu einer der verwalteten SKUs gibt es verschiedene Möglichkeiten. In den folgenden Abschnitten wird die Vorgehensweise für die [Azure CLI][azure-cli] und das [Azure-Portal][azure-portal] beschrieben.
 
 ## <a name="upgrade-in-azure-cli"></a>Upgrade über die Azure-Befehlszeilenschnittstelle
 
-Um eine klassische Registrierung über die Azure-Befehlszeilenschnittstelle zu aktualisieren, führen Sie den Befehl [az acr update][az-acr-update] aus und geben die neue SKU für die Registrierung an. Im folgenden Beispiel wird die klassische Registrierung mit dem Namen *myclassicregistry* auf die Premium-SKU aktualisiert:
+Um eine klassische Registrierung über die Azure CLI zu aktualisieren, führen Sie den Befehl [az acr update][az-acr-update] aus, und geben Sie die neue SKU für die Registrierung an. Im folgenden Beispiel wird die klassische Registrierung mit dem Namen *myclassicregistry* auf die Premium-SKU aktualisiert:
 
 ```azurecli-interactive
 az acr update --name myclassicregistry --sku Premium
@@ -89,7 +90,7 @@ Wenn Sie eine verwaltete Registrierungs-SKU angeben, deren maximale Kapazität k
 
 `Cannot update the registry SKU due to reason: Registry size 12936251113 bytes exceeds the quota value 10737418240 bytes for SKU Basic. The suggested SKU is Standard.`
 
-Wenn Sie eine solche Fehlermeldung erhalten, führen Sie den Befehl [az acr update][az-acr-update] erneut aus und geben die vorgeschlagene SKU an. Dies ist die nächsthöhere SKU, die Ihre Images aufnehmen kann.
+Wenn Sie eine solche Fehlermeldung erhalten, führen Sie den Befehl [az acr update][az-acr-update] erneut aus, und geben Sie die vorgeschlagene SKU an. Dies ist die nächsthöhere SKU, die Ihre Images aufnehmen kann.
 
 ## <a name="upgrade-in-azure-portal"></a>Upgrade über das Azure-Portal
 

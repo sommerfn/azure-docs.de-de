@@ -3,16 +3,17 @@ title: Referenz zu Azure Container Registry Tasks – YAML
 description: Referenz für die Definition von Aufgaben in YAML für Azure Container Registry Tasks (ACR Tasks), einschließlich Aufgabeneigenschaften, Schritttypen, Schritteigenschaften und integrierter Variablen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954475"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638920"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -22,7 +23,7 @@ Dieser Artikel enthält Referenzinformationen für das Erstellen von YAML-Dateie
 
 ## <a name="acr-taskyaml-file-format"></a>Format der Datei „acr-task.yaml“
 
-ACR Tasks unterstützt die Deklaration von mehrstufigen Aufgaben in der YAML-Standardsyntax. Die Schritte einer Aufgabe werden in einer YAML-Datei definiert. Sie können die Aufgabe dann manuell ausführen, indem Sie die Datei an den Befehl [az acr run][az-acr-run] übergeben. Alternativ können Sie die Datei verwenden, um mithilfe von [az acr task create][az-acr-task-create] eine Aufgabe zu erstellen, die automatisch nach einem Git-Commit oder nach einer Aktualisierung des Basisimages ausgelöst wird. In diesem Artikel wird für die Datei, die die Schritte enthält, der Dateiname `acr-task.yaml` verwendet. ACR Tasks unterstützt jedoch jeden gültigen Dateinamen mit einer [unterstützten Erweiterung](#supported-task-filename-extensions).
+ACR Tasks unterstützt die Deklaration von mehrstufigen Aufgaben in der YAML-Standardsyntax. Die Schritte einer Aufgabe werden in einer YAML-Datei definiert. Sie können die Aufgabe dann manuell ausführen, indem Sie die Datei an den Befehl [az acr run][az-acr-run] übergeben. Alternativ können Sie die Datei verwenden, um mithilfe von [az acr task create][az-acr-task-create] eine Aufgabe zu erstellen, der nach einem Git-Commit oder einer Aktualisierung des Basisimages automatisch ausgelöst wird. In diesem Artikel wird für die Datei, die die Schritte enthält, der Dateiname `acr-task.yaml` verwendet. ACR Tasks unterstützt jedoch jeden gültigen Dateinamen mit einer [unterstützten Erweiterung](#supported-task-filename-extensions).
 
 Die Primitiven der obersten Ebene in `acr-task.yaml` sind **Aufgabeneigenschaften**, **Schritttypen** und **Schritteigenschaften**:
 
@@ -79,7 +80,7 @@ az configure --defaults acr=myregistry
 
 Aufgabeneigenschaften werden in der Regel am Anfang einer Datei vom Typ `acr-task.yaml` aufgeführt und sind globale Eigenschaften, die während der gesamten Ausführung der Aufgabenschritte gelten. Einige dieser globalen Eigenschaften können in einem einzelnen Schritt außer Kraft gesetzt werden.
 
-| Eigenschaft | Type | Optional | BESCHREIBUNG | Außerkraftsetzung unterstützt | Standardwert |
+| Eigenschaft | type | Optional | BESCHREIBUNG | Außerkraftsetzung unterstützt | Standardwert |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | Zeichenfolge | Ja | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. Ohne Angabe wird standardmäßig die neueste Version verwendet. | Nein | Keine |
 | `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `timeout`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft `timeout` für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | 600 (10 Minuten) |
@@ -92,17 +93,17 @@ Aufgabeneigenschaften werden in der Regel am Anfang einer Datei vom Typ `acr-tas
 
 Das Geheimnisobjekt hat folgende Eigenschaften:
 
-| Eigenschaft | Type | Optional | BESCHREIBUNG | Standardwert |
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | Zeichenfolge | Nein | Der Bezeichner des Geheimnisses. | Keine |
 | `keyvault` | Zeichenfolge | Ja | Die Geheimnis-URL von Azure Key Vault. | Keine |
-| `clientID` | Zeichenfolge | Ja | Die Client-ID der benutzerseitig zugewiesenen verwalteten Identität für Azure-Ressourcen. | Keine |
+| `clientID` | Zeichenfolge | Ja | Die Client-ID der [benutzerseitig zugewiesenen verwalteten Identität](container-registry-tasks-authentication-managed-identity.md) für Azure-Ressourcen. | Keine |
 
 ### <a name="network"></a>Netzwerk
 
 Das Netzwerkobjekt hat folgende Eigenschaften:
 
-| Eigenschaft | Type | Optional | BESCHREIBUNG | Standardwert |
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | Zeichenfolge | Nein | Der Name des Netzwerks. | Keine |
 | `driver` | Zeichenfolge | Ja | Der Treiber für die Netzwerkverwaltung. | Keine |
@@ -362,7 +363,7 @@ Durch die Verwendung der `docker run`-Standardkonvention für Imageverweise kann
 
 Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenschaften. In der folgenden Tabelle werden alle verfügbaren Schritteigenschaften beschrieben. Nicht alle Schritttypen unterstützen alle Eigenschaften. Informationen zu den verfügbaren Eigenschaften für die einzelnen Schritttypen finden Sie in den Referenzabschnitten zu den Schritttypen [cmd](#cmd), [build](#build) und [push](#push).
 
-| Eigenschaft | Type | Optional | BESCHREIBUNG | Standardwert |
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Ja | Gibt an, ob der Container bei der Ausführung getrennt werden soll. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Ja | Gibt an, ob die `workingDirectory`-Überschreibungsfunktion deaktiviert werden soll. Verwenden Sie diese Eigenschaft in Kombination mit `workingDirectory`, um sämtliche Aspekte des Arbeitsverzeichnisses des Containers zu steuern. | `false` |
@@ -380,7 +381,7 @@ Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenscha
 | `repeat` | int | Ja | Die Anzahl von Wiederholungsversuchen für die Containerausführung. | 0 |
 | `retries` | int | Ja | Die Anzahl von Wiederholungsversuchen im Falle einer nicht erfolgreichen Containerausführung. Ein erneuter Versuch findet nur statt, wenn der Exitcode des Containers nicht Null ist. | 0 |
 | `retryDelay` | int (Sekunden) | Ja | Die Verzögerung zwischen erneuten Ausführungsversuchen für einen Container (in Sekunden). | 0 |
-| `secret` | object | Ja | Gibt ein Azure Key Vault-Geheimnis oder eine verwaltete Identität für Azure-Ressourcen an. | Keine |
+| `secret` | object | Ja | Gibt ein Azure Key Vault-Geheimnis oder eine [verwaltete Identität für Azure-Ressourcen](container-registry-tasks-authentication-managed-identity.md) an. | Keine |
 | `startDelay` | int (Sekunden) | Ja | Verzögerung der Ausführung eines Containers (in Sekunden). | 0 |
 | `timeout` | int (Sekunden) | Ja | Maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann, bevor er beendet wird. | 600 |
 | [`when`](#example-when) | [string, string, ...] | Ja | Konfiguriert die Abhängigkeit eines Schritts von einem oder mehreren anderen Schritten innerhalb der Aufgabe. | Keine |
