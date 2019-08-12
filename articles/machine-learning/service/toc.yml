@@ -6,7 +6,7 @@
     - name: Was ist der Azure Machine Learning-Dienst?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Funktionsweise des Diensts
+    - name: Architektur und Bestimmungen
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Lernprogramme
@@ -216,6 +216,8 @@
         - name: 'Bereitstellung: wo und wie'
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Notebook-VMs
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
@@ -256,9 +258,9 @@
     - name: Erstellen wiederverwendbarenrWorkflows
       displayName: pipelines
       items:
-        - name: Erstellen einer ML-Pipeline
+        - name: 'ML-Pipelines: Batchverarbeitung, Computevorgänge, Wiederverwendung, Freigabe'
           href: how-to-create-your-first-pipeline.md
-        - name: CI/CD von ML-Workflows mit Azure Pipelines
+        - name: Azure-Pipelines für CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Verwalten von Ressourcenkontingenten

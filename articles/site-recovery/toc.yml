@@ -155,6 +155,8 @@
           items:
             - name: Vorbereiten von Netzwerken für die Notfallwiederherstellung von virtuellen Azure-Computern
               href: azure-to-azure-about-networking.md
+            - name: Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
+              href: azure-to-azure-customize-networking.md
             - name: Einrichten der Netzwerkzuordnung und Beibehalten von IP-Adressen nach einem Failover
               href: azure-to-azure-network-mapping.md
             - name: Beispiele für die Beibehaltung von IP-Adressen nach einem Failover

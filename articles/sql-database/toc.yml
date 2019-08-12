@@ -2,9 +2,9 @@
   href: index.yml
 - name: SQL-Datenbank-Dienst
   items:
-    - name: Was ist SQL-Datenbank?
+    - name: Was ist SQL Database?
       href: sql-database-technical-overview.md
-    - name: Auswählen einer Azure SQL-Version
+    - name: Welche SQL-Option sollte ich auswählen?
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: Versionshinweise
       href: sql-database-release-notes.md
@@ -280,14 +280,18 @@
               href: sql-vulnerability-assessment.md
             - name: Erweiterter Schutz vor Bedrohungen
               href: sql-database-threat-detection-overview.md
-        - name: IP-Firewallregeln auf Serverebene
+        - name: Netzwerksicherheit
           items:
-            - name: Erstellen und Verwalten
+            - name: Übersicht über Netzwerkzugriffssteuerungen
+              href: sql-database-networkaccess-overview.md
+            - name: IP-basierte Firewall
               href: sql-database-firewall-configure.md
-            - name: Endpunkte im virtuellen Netzwerk
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: 'Endpunkte im virtuellen Netzwerk: PowerShell'
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Firewallregeln für virtuelle Netzwerke
+              items:
+                - name: Endpunkte im virtuellen Netzwerk
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: 'Endpunkte im virtuellen Netzwerk: PowerShell'
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: Zugriffssteuerung
           items:
             - name: Zugriffssteuerung

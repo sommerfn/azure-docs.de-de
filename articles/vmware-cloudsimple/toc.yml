@@ -62,6 +62,8 @@
           items:
             - name: Bereitstellen von Knoten
               href: create-nodes.md
+            - name: Löschen von Knoten
+              href: delete-nodes.md
         - name: Verwalten von privaten Cloudressourcen
           items:
             - name: Erstellen einer privaten Cloud
@@ -76,6 +78,8 @@
               href: azure-subscription-mapping.md
             - name: Eskalieren von Berechtigungen
               href: escalate-private-cloud-privileges.md
+            - name: Löschen einer privaten Cloud
+              href: delete-private-cloud.md
         - name: Überwachen der CloudSimple-Aktivität
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: Einrichten von privaten Cloudnetzwerken

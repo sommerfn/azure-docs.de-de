@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: Problembehandlung
-      items:
-        - name: Apache HBase REST reagiert nicht.
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: Voll ausgelastete CPU auf Regionsserver
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: Timeouts mit dem Befehl „hbase hbck“
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Anleitung
   items:
     - name: Verwenden des Clusterspeichers
@@ -167,8 +159,25 @@
         - name: Patchen des Betriebssystems für HDInsight-Cluster
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Problembehandlung
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: Behandeln von Problemen mit Ressourcen
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Keine Daten in Apache Phoenix-Ansichten
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: 'BindException: Verwendete Adresse'
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: "Fehler beim Starten von Apache\_HBase"
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: Probleme mit Regionsservern
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: "Konnektivitätsprobleme bei Apache\_Phoenix"
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Apache HBase REST reagiert nicht.
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: Voll ausgelastete CPU auf Regionsserver
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: Timeouts mit dem Befehl „hbase hbck“
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Problembehandlung für Apache Hadoop HDFS

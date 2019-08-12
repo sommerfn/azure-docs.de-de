@@ -107,29 +107,29 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Konzepte
   items:
-    - name: Taggen von Bildern
+    - name: Inhaltstags
       href: concept-tagging-images.md
-    - name: Erkennen von Objekten
+    - name: Objekterkennung
       href: concept-object-detection.md
-    - name: Erkennen von Marken
+    - name: Markenerkennung
       href: concept-brand-detection.md
-    - name: Kategorisieren von Bildern
+    - name: Bildkategorisierung
       href: concept-categorizing-images.md
-    - name: Beschreiben von Bildern
+    - name: Bildbeschreibungen
       href: concept-describing-images.md
-    - name: Erkennen von Gesichtern
+    - name: Gesichtserkennung
       href: concept-detecting-faces.md
-    - name: Erkennen von Bildtypen
+    - name: Bildtyperkennung
       href: concept-detecting-image-types.md
-    - name: Erkennen domänenspezifischer Inhalte
+    - name: Domänenspezifischer Inhalt
       href: concept-detecting-domain-content.md
-    - name: Erkennen von Farbschemas
+    - name: Farbschemaerkennung
       href: concept-detecting-color-schemes.md
-    - name: Generieren von Miniaturbildern
+    - name: Intelligent zugeschnittene Miniaturbilder
       href: concept-generating-thumbnails.md
-    - name: Erkennen von gedrucktem und handschriftlichem Text
+    - name: Erkennung von gedrucktem und handschriftlichem Text
       href: concept-recognizing-text.md
-    - name: Erkennen von nicht jugendfreien und freizügigen Inhalten
+    - name: Erkennung von nicht jugendfreien und freizügigen Inhalten
       href: concept-detecting-adult-content.md
 - name: Anleitungen
   items:
