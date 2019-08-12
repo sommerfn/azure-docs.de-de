@@ -8,22 +8,23 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 1940cd3481fbc6ff136e25a2f06fa7152c721c26
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: d863edba17b3dc688624e7095ee09744ca07192d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611509"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780533"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
-Die [Azure-Betriebssicherheit](/azure/security/azure-operational-security) umfasst alle Dienste, Steuerelemente und Features, die Benutzern zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Dieses Framework umfasst das gesamte Wissen, das Microsoft durch eine Vielzahl einzigartiger Funktionen erworben hat. Zu diesen Funktionen gehören Microsoft Security Development Lifecycle (SDL), das Microsoft Security Response Center-Programm und umfassende Kenntnisse zur Bedrohungslandschaft im Bereich Cybersicherheit.
+[Azure-Betriebssicherheit](/azure/security/fundamentals/operational-security) umfasst alle Dienste, Steuerelemente und Features, die Benutzern zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Dieses Framework umfasst das gesamte Wissen, das Microsoft durch eine Vielzahl einzigartiger Funktionen erworben hat. Zu diesen Funktionen gehören Microsoft Security Development Lifecycle (SDL), das Microsoft Security Response Center-Programm und umfassende Kenntnisse zur Bedrohungslandschaft im Bereich Cybersicherheit.
 
 ## <a name="azure-management-services"></a>Azure-Verwaltungsdienste
 
