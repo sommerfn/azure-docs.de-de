@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c60cb78c01d7e18801cbe43c8b767f622ef4b39
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473019"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694284"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geolocation und Verarbeitung von IP-Adressen
 
@@ -83,8 +83,8 @@ Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource än
 
     ![Screenshot: Einfügen eines Kommas nach "IbizaAIExtension" und einer neuen Zeile darunter mit "DisableIpMasking": true](media/ip-collection/save.png)
 
-    > [!NOTE]
-    > Wenn eine Fehlermeldung mit folgendem Text angezeigt wird: _The resource group is in a location that is not supported by one or more resources in the template. Please choose a different resource group._ (Die Ressourcengruppe befindet sich an einem Speicherort, der von keiner Ressource in der Vorlage unterstützt wird. Wählen Sie eine andere Ressourcengruppe). Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus, um den Fehler zu beheben.
+    > [!WARNING]
+    > Wenn eine Fehlermeldung mit folgendem Text angezeigt wird: ** _** (Die Ressourcengruppe befindet sich an einem Speicherort, der von keiner Ressource in der Vorlage unterstützt wird. Bitte wählen Sie eine andere Ressourcengruppe). Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus, um den Fehler zu beheben.
 
 5. Klicken Sie auf **Ich stimme zu** > **Kaufen**. 
 
@@ -130,10 +130,11 @@ Content-Length: 54
 
 Wenn Sie die gesamte IP-Adresse und nicht nur die ersten drei Oktette aufzeichnen müssen, können Sie einen [Telemetrieinitialisierer](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) verwenden, um die IP-Adresse in ein nicht maskiertes benutzerdefiniertes Feld zu kopieren.
 
-### <a name="aspnetaspnet-core"></a>ASP.NET/ASP.NET Core
+### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace MyWebApp
@@ -142,15 +143,20 @@ namespace MyWebApp
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if(!string.IsNullOrEmpty(telemetry.Context.Location.Ip))
+            ISupportProperties propTelemetry = telemetry as ISupportProperties;
+
+            if (propTelemetry !=null && !propTelemetry.Properties.ContainsKey("client-ip"))
             {
-                telemetry.Context.Properties["client-ip"] = telemetry.Context.Location.Ip;
+                string clientIPValue = telemetry.Context.Location.Ip;
+                propTelemetry.Properties.Add("client-ip", clientIPValue);
             }
         }
-    }
-
+    } 
 }
 ```
+
+> [!NOTE]
+> Wenn Sie auf `ISupportProperties` nicht zugreifen können, stellen Sie sicher, dass Sie die neueste stabile Version des Application Insights SDK ausführen. `ISupportProperties` sind für hohe Kardinalitätswerte gedacht, während `GlobalProperties` für niedrige Kardinalitätswerte wie Regionsname, Umgebungsname usw. besser geeignet sind. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Aktivieren des Telemetrieinitialisierers für ASP.NET
 

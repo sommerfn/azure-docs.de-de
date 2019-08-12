@@ -9,26 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873863016d6dc54c7439ec1f46180b3c063bda19
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75fdd0fcd4ceeeb0f680b2cbdb743d30d236c93d
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60470414"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736508"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen
 
-Mit Azure Active Directory (Azure AD) mit einer Azure AD Premium- oder Azure AD-Basic-Lizenz können Sie Gruppen verwenden, um Zugriff auf eine SaaS-Anwendung zu gewähren, die in Azure AD integriert ist. Wenn Sie beispielsweise der Marketingabteilung Zugriff auf fünf verschiedene SaaS-Anwendungen erteilen möchten, können Sie eine Gruppe erstellen, die die Benutzer der Marketingabteilung enthält, und diese Gruppe dann diesen fünf SaaS-Anwendungen zuweisen, die von der Marketingabteilung benötigt werden. Auf diese Weise sparen Sie Zeit, da Sie die Mitgliedschaft für die Marketingabteilung zentral verwalten können. Benutzer werden der Anwendung zugewiesen, wenn sie als Mitglieder der Marketinggruppe hinzugefügt werden. Ebenso wird die Zuweisung der Benutzer zur Anwendung entfernt, wenn sie als Mitglieder aus der Marketinggruppe entfernt werden. Diese Funktion kann für Hunderte von Anwendungen verwendet werden, die Sie aus dem Azure AD-Anwendungskatalog hinzufügen können.
+Wenn Sie Azure Active Directory (Azure AD) mit einem Azure AD Premium-Lizenzplan nutzen, können Sie Gruppen verwenden, um den Zugriff auf eine in Azure AD integrierte SaaS-Anwendung zuzuweisen. Wenn Sie beispielsweise der Marketingabteilung Zugriff auf fünf verschiedene SaaS-Anwendungen erteilen möchten, können Sie eine Gruppe erstellen, die die Benutzer der Marketingabteilung enthält, und diese Gruppe dann diesen fünf SaaS-Anwendungen zuweisen, die von der Marketingabteilung benötigt werden. Auf diese Weise sparen Sie Zeit, da Sie die Mitgliedschaft für die Marketingabteilung zentral verwalten können. Benutzer werden der Anwendung zugewiesen, wenn sie als Mitglieder der Marketinggruppe hinzugefügt werden. Ebenso wird die Zuweisung der Benutzer zur Anwendung entfernt, wenn sie als Mitglieder aus der Marketinggruppe entfernt werden. Diese Funktion kann für Hunderte von Anwendungen verwendet werden, die Sie aus dem Azure AD-Anwendungskatalog hinzufügen können.
 
 > [!IMPORTANT]
-> Sie können diese Funktionen nur verwenden, nachdem Sie eine Azure AD Premium-Testversion gestartet oder Azure AD Premium- bzw. Azure AD Basic-Lizenzen erworben haben. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt.
+> Sie können diese Funktion erst verwenden, nachdem Sie eine Azure AD Premium-Testversion gestartet oder einen Azure AD Premium-Lizenzplan erworben haben.
+> Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt.
+> Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt.
 
-**So weisen Sie einem Benutzer oder einer Gruppe den Zugriff auf eine SaaS-Anwendung zu**
+## <a name="to-assign-access-for-a-user-or-group-to-a-saas-application"></a>So weisen Sie einem Benutzer oder einer Gruppe den Zugriff auf eine SaaS-Anwendung zu
 
 1. Wählen Sie im [Azure AD Admin Center](https://aad.portal.azure.com) die Option **Unternehmensanwendungen**.
 2. Wählen Sie eine der aus dem Anwendungskatalog hinzugefügten Anwendungen aus, um diese zu öffnen.
@@ -37,7 +39,7 @@ Mit Azure Active Directory (Azure AD) mit einer Azure AD Premium- oder Azure AD-
 6. Wählen Sie beliebig viele Gruppen oder Benutzer aus, und klicken oder tippen Sie dann auf **Auswählen**, um diese der Liste **Zuweisung hinzufügen** hinzuzufügen. An dieser Stelle können Sie auch einem Benutzer eine Rolle zuweisen.
 7. Wählen Sie **Zuweisen**, um die Benutzer oder Gruppen der ausgewählten Unternehmensanwendung zuzuweisen.
 
-### <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../fundamentals/active-directory-manage-groups.md)

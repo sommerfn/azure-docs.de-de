@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227372"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774237"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -63,9 +63,6 @@ Im folgenden Abschnitt wird ausführlich beschrieben, wie die Kennworthashsynchr
 >[!Note] 
 >Der ursprüngliche MD4-Hash wird nicht an Azure AD übertragen. Stattdessen wird der SHA256-Hash des ursprünglichen MD4-Hashs übertragen. Daher kann der Hash, wenn er in Azure AD gespeichert ist, nicht für einen lokalen Pass-the-Hash-Angriff verwendet werden.
 
-### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>So funktioniert die Kennworthashsynchronisierung mit Azure Active Directory Domain Services
-Sie können die Kennworthashsynchronisierung auch dazu verwenden, Ihre lokalen Kennwörter mit [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) zu synchronisieren. In diesem Szenario authentifiziert die Azure Active Directory Domain Services-Instanz Ihre Benutzer in der Cloud mit allen Methoden, die auch in Ihrer lokalen Active Directory-Instanz zur Verfügung stehen. Dieses Szenario ähnelt der Verwendung des Active Directory-Migrationsprogramms in einer lokalen Umgebung.
-
 ### <a name="security-considerations"></a>Sicherheitshinweise
 Beim Synchronisieren von Kennwörtern wird die Nur-Text-Version Ihres Kennworts gegenüber dem Kennworthashsynchronisierungs-Feature, Azure AD oder einem der zugehörigen Dienste nicht offengelegt.
 
@@ -104,6 +101,39 @@ Die Synchronisierung eines Kennworts hat keinen Einfluss auf den angemeldeten Az
 
 - Im Allgemeinen ist die Kennworthashsynchronisierung einfacher zu implementieren als ein Verbunddienst. Sie erfordert keine zusätzliche Server und beseitigt die Abhängigkeit von einem hoch verfügbaren Verbunddienst zum Authentifizieren von Benutzern.
 - Die Kennworthashsynchronisierung kann auch zusätzlich zum Verbund aktiviert werden. Sie kann als Fallback dienen, wenn der Verbunddienst ausfällt.
+
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Der Prozess der Kennworthashsynchronisierung für Azure AD Domain Services
+
+Wenn Sie Azure AD Domain Services verwenden, um die Legacyauthentifizierung für Anwendungen und Dienste bereitzustellen, die Keberos, LDAP oder NTLM verwenden müssen, sind einige zusätzliche Prozesse Teil des Kennworthashsynchronisierungs-Flows. Azure AD Connect verwendet den folgenden zusätzlichen Prozess, um Kennworthashes mit Azure AD zur Verwendung in Azure AD Domain Services zu synchronisieren:
+
+> [!IMPORTANT]
+> Azure AD Connect synchronisiert Legacykennworthashes nur, wenn Sie Azure AD DS für Ihren Azure AD-Mandanten aktivieren. Die folgenden Schritte werden nicht ausgeführt, wenn Sie Azure AD Connect nur zum Synchronisieren einer lokalen AD DS-Umgebung mit Azure AD verwenden.
+>
+> Wenn Ihre Legacyanwendungen keine NTLM-Authentifizierung oder einfachen LDAP-Bindungen verwenden, empfiehlt es sich, die NTLM-Kennworthashsynchronisierung für Azure AD DS zu deaktivieren. Weitere Informationen finden Sie unter [Deaktivieren von schwachen Verschlüsselungssammlungen und der Synchronisierung von NTLM-Anmeldeinformationshashes](../../active-directory-domain-services/secure-your-domain.md).
+
+1. Azure AD Connect ruft den öffentlichen Schlüssel für die Azure AD Domain Services-Instanz des Mandanten ab.
+1. Wenn ein Benutzer sein Kennwort ändert, speichert der lokale Domänencontroller das Ergebnis der Kennwortänderung (Hashes) in zwei Attributen:
+    * *unicodePwd* für den NTLM-Kennworthash.
+    * *supplementalCredentials* für den Kerberos-Kennworthash.
+1. Azure AD Connect erkennt Kennwortänderungen über den Verzeichnisreplikationskanal (Attributänderungen, die auf anderen Domänencontrollern repliziert werden müssen).
+1. Für jeden Benutzer, dessen Kennwort geändert wurde, führt Azure AD Connect die folgenden Schritte aus:
+    * Generiert einen zufälligen symmetrischen AES-256-Bit-Schlüssel.
+    * Generiert einen zufälligen Initialisierungsvektor, der für die erste Verschlüsselungsrunde erforderlich ist.
+    * Extrahiert Kerberos-Kennworthashes aus den *supplementalCredentials*-Attributen.
+    * Überprüft die Einstellung *SyncNtlmPasswords* der Azure AD Domain Services-Sicherheitskonfiguration.
+        * Wenn diese Einstellung deaktiviert ist, wird ein zufälliger NTLM-Hash mit hoher Entropie generiert (der sich vom Kennwort des Benutzers unterscheidet). Dieser Hash wird dann mit den extrahierten Kerberos-Kennworthashes aus dem *supplementalCrendetials*-Attribut in einer Datenstruktur kombiniert.
+        * Wenn diese Einstellung aktiviert ist, wird der Wert des *unicodePwd*-Attributs mit den extrahierten Kerberos-Kennworthashes aus dem *supplementalCredentials*-Attribut in einer Datenstruktur kombiniert.
+    * Verschlüsselt die einzelne Datenstruktur mit dem symmetrischen AES-Schlüssel.
+    * Verschlüsselt den symmetrischen AES-Schlüssel mit dem öffentlichen Azure AD Domain Services-Schlüssel des Mandanten.
+1. Azure AD Connect überträgt den verschlüsselten symmetrischen AES-Schlüssel, die verschlüsselte Datenstruktur mit den Kennworthashes und den Initialisierungsvektor an Azure AD.
+1. Azure AD speichert den verschlüsselten symmetrischen AES-Schlüssel, die verschlüsselte Datenstruktur und den Initialisierungsvektor für den Benutzer.
+1. Azure AD überträgt (per Push) den verschlüsselten symmetrischen AES-Schlüssel, die verschlüsselte Datenstruktur und den Initialisierungsvektor mithilfe eines internen Synchronisierungsmechanismus über eine verschlüsselte HTTP-Sitzung an Azure AD Domain Services.
+1. Azure AD Domain Services ruft den privaten Schlüssel für die Instanz des Mandanten von Azure Key Vault ab.
+1. Für jeden verschlüsselten Datensatz (der die Kennwortänderung eines einzelnen Benutzers darstellt) führt Azure AD Domain Services dann die folgenden Schritte aus:
+    * Verwendet den privaten Schlüssel zum Entschlüsseln des symmetrischen AES-Schlüssels.
+    * Verwendet den symmetrischen AES-Schlüssel mit dem Initialisierungsvektor zum Entschlüsseln der verschlüsselten Datenstruktur, die die Kennworthashes enthält.
+    * Schreibt die empfangenen Kerberos-Kennworthashes auf den Azure AD Domain Services-Domänencontroller. Die Hashes werden im *supplementalCredentials*-Attribut des Benutzerobjekts gespeichert, das in den öffentlichen Schlüssel des Azure AD Domain Services-Domänencontrollers verschlüsselt wird.
+    * Azure AD Domain Services schreibt den empfangenen NTLM-Kennworthash auf den Azure AD Domain Services-Domänencontroller. Der Hash wird im *unicodePwd*-Attribut des Benutzerobjekts gespeichert, das in den öffentlichen Schlüssel des Azure AD Domain Services-Domänencontrollers verschlüsselt wird.
 
 ## <a name="enable-password-hash-synchronization"></a>Aktivieren der Kennworthashsynchronisierung
 

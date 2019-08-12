@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 2df1ac6325f692e2d433238ae0b92d8e3f8482b5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472282"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772989"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
 Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
@@ -147,6 +147,9 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
     1. net stop 'Microsoft Azure AD Sync'
     2. net start 'Microsoft Azure AD Sync'
 * **Reine Cloudkonten**: Falls es sich bei dem betroffenen Benutzerkonto um ein reines Cloudbenutzerkonto handelt, vergewissern Sie sich, dass der Benutzer sein Kennwort geändert hat, nachdem Sie Azure AD Domain Services aktiviert haben. Dieser Schritt führt dazu, dass die Anmeldeinformationshashes für die Azure AD Domain Services generiert werden.
+* **Vergewissern Sie sich, dass das Benutzerkonto aktiv ist**: Wenn das Konto eines Benutzers gesperrt ist, kann sich der Benutzer erst anmelden, wenn das Konto wieder aktiv ist. Wenn innerhalb von 2 Minuten fünf erfolglose Kennworteingaben in der verwalteten Domäne vorgenommen werden, wird das Benutzerkonto für 30 Minuten gesperrt. Nach 30 Minuten wird das Benutzerkonto automatisch entsperrt.
+  * Ungültige Kennworteingaben in der verwalteten Domäne sperren das Benutzerkonto in Azure AD nicht. Das Benutzerkonto wird nur in Ihrer verwalteten Azure AD Domain Services-Domäne gesperrt. Überprüfen Sie den Status des Benutzerkontos mithilfe der Active Directory-Verwaltungskonsole (Active Directory Administrative Console, ADAC) für die verwaltete Azure AD DS-Domäne und nicht in Azure AD.
+  * Sie können auch [differenzierte Kennwortrichtlinien konfigurieren](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy), mit denen der Standardschwellenwert und die entsprechende Dauer geändert werden.
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Es gibt mindestens eine Warnung zu Ihrer verwalteten Domäne
 

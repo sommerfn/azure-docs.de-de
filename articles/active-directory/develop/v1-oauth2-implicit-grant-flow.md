@@ -10,7 +10,7 @@ ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fe0ee8021ae7e70654a161e37d072195bbc035f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545267"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834744"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)
 
@@ -62,7 +62,7 @@ Bei diesem Modell kann die JavaScript-Anwendung Zugriffstoken unabhängig erneue
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Eignet sich die implizite Gewährung für meine App?
 
-Die implizite Genehmigung stellt ein höheres Risiko dar als andere Genehmigungen, die besonders zu beachtenden Bereiche sind jedoch gut dokumentiert (z.B. in [Missbräuchliches Verwenden von Zugriffstoken zum Annehmen der Identität des Ressourcenbesitzers im impliziten Flow][OAuth2-Spec-Implicit-Misuse] und [Überlegungen zum OAuth 2.0-Bedrohungsmodell und zur Sicherheit][OAuth2-Threat-Model-And-Security-Implications]). Das höhere Risiko liegt größtenteils darin begründet, dass Anwendungen aktiviert werden, die aktiven Code ausführen, der von einer Remoteressource direkt für einen Browser bereitgestellt wird. Wenn Sie eine SPA-Architektur planen, über keine Back-End-Komponenten verfügen oder eine Web-API über JavaScript aufrufen möchten, empfiehlt sich die Verwendung des impliziten Ablaufs für den Tokenabruf.
+Die implizite Genehmigung stellt ein höheres Risiko dar als andere Genehmigungen, die besonders zu beachtenden Bereiche sind jedoch gut dokumentiert (z. B. unter [Missbräuchliches Verwenden von Zugriffstoken zum Annehmen der Identität des Ressourcenbesitzers im impliziten Flow][OAuth2-Spec-Implicit-Misuse] und [Überlegungen zum OAuth 2.0-Bedrohungsmodell und zur Sicherheit][OAuth2-Threat-Model-And-Security-Implications]). Das höhere Risiko liegt größtenteils darin begründet, dass Anwendungen aktiviert werden, die aktiven Code ausführen, der von einer Remoteressource direkt für einen Browser bereitgestellt wird. Wenn Sie eine SPA-Architektur planen, über keine Back-End-Komponenten verfügen oder eine Web-API über JavaScript aufrufen möchten, empfiehlt sich die Verwendung des impliziten Ablaufs für den Tokenabruf.
 
 Falls es sich bei Ihrer Anwendung dagegen um einen nativen Client handelt, ist der implizite Ablauf weniger empfehlenswert. Da bei nativen Clients keine Azure AD-Sitzungscookies vorhanden sind, hat Ihre Anwendung keine Möglichkeit, eine Sitzung mit langer Laufzeit aufrechtzuerhalten. Das bedeutet, dass Ihre Anwendung beim Abrufen von Zugriffstoken für neue Ressourcen immer wieder Eingabeaufforderung an den Benutzer richtet.
 
@@ -70,8 +70,8 @@ Auch wenn Sie eine Webanwendung mit einem Back-End entwickeln, die eine API übe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine vollständige Liste mit Ressourcen für Entwickler (einschließlich Referenzinformationen zu den Protokollen und zur Unterstützung der Abläufe für die OAuth2-Autorisierungsberechtigungen durch Azure AD) finden Sie im [Entwicklerhandbuch zu Azure AD][AAD-Developers-Guide].
-* Weitere Informationen zur Anwendungsintegration finden Sie unter [Integrieren von Anwendungen in Azure AD][ACOM-How-To-Integrate].
+* Eine vollständige Liste mit Ressourcen für Entwickler (einschließlich Referenzinformationen zu den Protokollen und zur Unterstützung der Flows für die OAuth2-Autorisierungsgewährung durch Azure AD) finden Sie im [Entwicklerhandbuch zu Azure AD][AAD-Developers-Guide].
+* Weitere detaillierte Informationen zur Anwendungsintegration finden Sie unter [Integrieren von Anwendungen in Azure AD][ACOM-How-To-Integrate].
 
 <!--Image references-->
 

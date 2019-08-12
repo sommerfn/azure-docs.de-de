@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 52df4308020b03565c851b6969c0e2e31464d7d7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: d0acbd02103ebd8dd3819579c85b4ddac22dba78
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234054"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773098"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Red Hat Enterprise Linux 7-Computer (RHEL) einer durch Azure AD-Domänendienste verwalteten Domäne beitritt.
@@ -107,6 +107,8 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 
     > [!TIP]
     > Verwenden Sie das gleiche Benutzerkonto, das Sie im vorherigen Schritt („kinit“) angegeben haben.
+    >
+    > Wenn Ihr virtueller Computer der Domäne nicht beitreten kann, stellen Sie sicher, dass die Netzwerksicherheitsgruppe des virtuellen Computers ausgehenden Kerberos-Datenverkehr über TCP und UDP-Port 464 an das Subnetz des virtuellen Netzwerks für Ihre von Azure AD DS verwaltete Domäne zulässt.
 
     ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'

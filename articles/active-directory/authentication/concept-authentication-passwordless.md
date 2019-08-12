@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/05/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d80b359be0a6249327ba1ba1d51ffbc330bb073
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711967"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823777"
 ---
 # <a name="what-is-passwordless"></a>Was bedeutet „kennwortlos“?
 
@@ -26,11 +26,13 @@ Die Multi-Factor Authentication (MFA) ist eine großartige Möglichkeit, Ihre Or
 | --- | --- | --- |
 | Kennwortlos | Telefon- oder Sicherheitsschlüssel | Biometrische Daten oder PIN |
 
-Wir sind uns bewusst, dass jede Organisation unterschiedliche Anforderungen hat, wenn es um die Authentifizierung geht. Microsoft bietet derzeit Windows Hello, unsere erste kennwortlose Erfahrung für den Windows-PC. Wir fügen der kennwortlosen Familie neue Anmeldeinformationen hinzu: Microsoft Authenticator-App und FIDO2-Sicherheitsschlüssel.
+Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Für Windows-PCs bietet Microsoft derzeit Windows Hello. Wir fügen den kennwortlosen Optionen die Microsoft Authenticator-App und FIDO2-Sicherheitsschlüssel hinzu.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-App
 
 Ermöglichen Sie, dass die Telefone Ihrer Mitarbeiter in die kennwortlose Authentifizierungsmethode integriert werden. Möglicherweise verwenden Sie bereits die Microsoft Authenticator-App als komfortable MFA-Option zusätzlich zu einem Kennwort. Aber nun ist sie als kennwortlose Option verfügbar.
+
+![Anmelden bei Microsoft Edge mit der Microsoft Authenticator-App](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 Sie verwandelt jedes iOS- oder Android-Handy in eine starke, kennwortlose Anmeldeinformation, indem sie Benutzern ermöglicht, sich bei jeder Plattform oder jedem Browser anzumelden, indem sie eine Benachrichtigung auf ihrem Handy erhalten, eine auf dem Bildschirm angezeigte Nummer mit der auf ihrem Handy abgleichen und dann ihre biometrischen Daten (Berührung oder Gesicht) oder die PIN zur Bestätigung verwenden.
 
@@ -40,11 +42,13 @@ FIDO2-Sicherheitsschlüssel sind eine Phishing-resistente, standardbasierte Meth
 
 In der Public Preview können sich Mitarbeiter mit externen Sicherheitsschlüsseln bei ihren Azure Active Directory Joined Windows 10-Computern (mit Version 1809 oder höher) anmelden und mit einmaligem Anmelden auf ihre Cloudressourcen zugreifen. Sie können sich auch bei unterstützten Browsern anmelden.
 
+![Anmelden bei Microsoft Edge mit einem Sicherheitsschlüssel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
+
 Obwohl viele Schlüssel von der FIDO Alliance FIDO2-zertifiziert sind, verlangt Microsoft vom Hersteller die Implementierung einiger optionaler Erweiterungen der FIDO2 CTAP-Spezifikation, um maximale Sicherheit und ein optimales Benutzererlebnis zu gewährleisten.
 
 Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus dem FIDO2 CTAP-Protokoll implementieren, damit er mit Microsoft kompatibel ist:
 
-| # | Funktion/Erweiterte Vertrauenswürdigkeit | Warum ist dies erforderlich? |
+| # | Funktion/Erweiterte Vertrauenswürdigkeit | Warum ist diese Funktion oder Erweiterung erforderlich? |
 | --- | --- | --- |
 | 1 | Residenter Schlüssel | Diese Funktion ermöglicht, dass der Sicherheitsschlüssel portabel ist, wobei Ihre Anmeldeinformationen auf dem Sicherheitsschlüssel gespeichert sind. |
 | 2 | Client-PIN | Diese Funktion ermöglicht Ihnen, Ihre Anmeldeinformationen mit einem zweiten Faktor zu schützen und gilt für Sicherheitsschlüssel, die keine Benutzeroberfläche haben. |
@@ -67,16 +71,18 @@ FIDO2-Sicherheitsschlüssel sind eine gute Option für Unternehmen, die sehr sic
 
 ## <a name="what-scenarios-work-with-the-preview"></a>Welche Szenarien sind für die Vorschau geeignet?
 
-1. Administratoren können kennwortlose Authentifizierungsmethoden für ihre Mandanten aktivieren
-1. Administratoren können die einzelnen Methoden für alle Benutzer oder ausgewählte Benutzer/Gruppen in ihrem Mandanten anwenden
-1. Endbenutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten
-1. Endbenutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden
-   1. Microsoft Authenticator-App: Funktioniert in jedem Szenario, in dem die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung von Windows 10 Out Of Box (OOBE) und mit integrierten mobilen Apps auf jedem Betriebssystem.
-   1. Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 Version 1809 oder höher und im Internet in unterstützten Browsern wie Microsoft Edge.
+- Administratoren können kennwortlose Authentifizierungsmethoden für ihre Mandanten aktivieren
+- Administratoren können die einzelnen Methoden für alle Benutzer oder ausgewählte Benutzer/Gruppen in ihrem Mandanten anwenden
+- Endbenutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten
+- Endbenutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden
+   - Microsoft Authenticator-App: Funktioniert in Szenarien, in denen die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung der Windows 10-Out-of-Box-Experience (OOBE) und mit integrierten mobilen Apps unter jedem Betriebssystem.
+   - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 Version 1809 oder höher und im Internet in unterstützten Browsern wie Microsoft Edge.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Aktivieren des kennwortlosen Anmeldens für Azure AD (Vorschau)](howto-authentication-passwordless-enable.md)
+[Aktivieren der kennwortlosen Anmeldung mit FIDO2-Sicherheitsschlüsseln für Ihre Organisation](howto-authentication-passwordless-security-key.md)
+
+[Aktivieren der kennwortlosen Anmeldung per Telefon für Ihre Organisation](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>Externe Links
 

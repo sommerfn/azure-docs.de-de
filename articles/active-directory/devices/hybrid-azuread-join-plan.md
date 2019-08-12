@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562131"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779452"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -111,12 +111,18 @@ In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung 
 
 ### <a name="federated-environment"></a>Verbundumgebung
 
-Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der die folgenden Anforderungen erfüllt:
+Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der die folgenden Anforderungen erfüllt. Wenn Sie eine Verbundumgebung besitzen, die Active Directory-Verbunddienste (AD FS) verwendet, werden die nachfolgend genannten Anforderungen bereits unterstützt.
 
-- **WS-Trust-Protokoll:** Dieses Protokoll ist erforderlich, um aktuelle Azure AD-hybrideingebundene Windows-Geräte mit Azure AD zu authentifizieren.
 - **WIAORMULTIAUTHN-Anspruch:** Dieser Anspruch ist erforderlich, um eine Azure AD-Hybrideinbindung für kompatible Windows-Geräte durchzuführen.
+- **WS-Trust-Protokoll:** Dieses Protokoll ist erforderlich, um aktuelle Azure AD-hybrideingebundene Windows-Geräte mit Azure AD zu authentifizieren. Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren: `/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-Wenn Sie eine Verbundumgebung besitzen, die Active Directory-Verbunddienste (AD FS) verwendet, werden die oben genannten Anforderungen bereits unterstützt.
+> [!WARNING] 
+> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
 > [!NOTE]
 > Azure AD unterstützt keine Smartcards oder Zertifikate in verwalteten Domänen.
@@ -130,7 +136,7 @@ Lesen Sie auf Grundlage des Szenarios, das Ihrer Identitätsinfrastruktur entspr
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Überprüfung der lokalen AD UPN-Unterstützung (Benutzerprinzipalname) für Azure AD-Hybrideinbindung
 
-In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
+In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
 
 - Routingfähige Benutzerprinzipalnamen (UPNs): Ein routingfähiger UPN verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.org“ die primäre Domäne im lokalen Active Directory, die Contoso gehört und [in Azure AD überprüft wird](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
 - Nicht routingfähige Benutzerprinzipalnamen (UPNs): Ein nicht routingfähiger UPN verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.local“ die primäre Domäne im lokalen Active Directory, aber keine überprüfbare Domäne im Internet und wird nur innerhalb des Contoso-Netzwerks verwendet.
