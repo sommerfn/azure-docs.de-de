@@ -321,7 +321,7 @@ Beim Kopieren von Daten aus Salesforce werden die folgenden Zuordnungen von Sale
 | Currency |Decimal |
 | Date |DateTime |
 | Date/Time |DateTime |
-| E-Mail |String |
+| Email |String |
 | Id |String |
 | Lookup Relationship |String |
 | Multi-Select Picklist |String |
