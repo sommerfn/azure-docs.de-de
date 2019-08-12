@@ -85,7 +85,7 @@ Konfigurieren Sie Fortinet, um Syslog-Nachrichten im CEF-Format über den Syslog
 
     - Ersetzen Sie die **IP-Adresse** des Servers durch die IP-Adresse des Agents.
     - Legen Sie **facility_name** auf die Einrichtung fest, die Sie im Agent konfiguriert haben. Der Agent legt diesen Wert standardmäßig auf „local4“ fest.
-    - Legen Sie den Syslog-Port **** auf **514** fest (oder auf den Port, den Sie für den Agent festgelegt haben).
+    - Legen Sie den **Syslog-Port** auf **514** fest (oder auf den Port, den Sie für den Agent festgelegt haben).
     - In frühen Versionen von FortiOS muss zum Aktivieren des CEF-Formats ggf. der Befehl **set csv disable** ausgeführt werden.
  
    > [!NOTE] 
