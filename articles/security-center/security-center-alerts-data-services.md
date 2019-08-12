@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8812ac325e6bfd5ee019f6ddd6bf86c846ed5c10
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501478"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782464"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Bedrohungserkennung für Datendienste in Azure Security Center
 
@@ -44,7 +44,7 @@ Die SQL-Bedrohungserkennung erkennt anormale Aktivitäten, die auf ungewöhnlich
 
 Weitere Informationen zu Warnungen zur Erkennung von SQL-Bedrohungen finden Sie unter [Bedrohungserkennung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview), und lesen Sie außerdem den Abschnitt zu den Warnungen zur Erkennung von Bedrohungen. Lesen Sie auch [How Azure Security Center helps reveal a Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) (Wie ein Cyberangriff mit Azure Security Center erkannt werden kann), um ein Beispiel dafür zu erhalten, wie Security Center die Erkennung bösartiger SQL-Aktivitäten verwendet, um einen Angriff zu erkennen.
 
-## Azure Storage<a name="azure-storage"></a>
+## Azure Storage <a name="azure-storage"></a>
 
 >[!NOTE]
 > Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar.
@@ -60,6 +60,7 @@ Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanfo
 |**Anomalie: Zugriff von einem ungewöhnlichen Ort**|Bei der Netzwerk-Datenverkehrsanalyse wurde anormale ausgehende RDP-Kommunikation (Remote Desktop Protocol) erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität gilt als anormal für diese Umgebung und kann darauf hindeuten, dass Ihre Ressource gefährdet ist und nun dazu verwendet wird, um einen Brute-Force-Angriff auf den externen RDP-Endpunkt auszuführen. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Entitäten als schädlich gekennzeichnet wird.|
 |**Anomalie beim Anwendungszugriff**|Gibt an, dass auf dieses Speicherkonto über eine ungewöhnliche Anwendung zugegriffen wurde. Mögliche Ursache: Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.|
 |**Anomalie: Anonymer Zugriff**|Gibt an, dass sich am Zugriffsmuster eines Speicherkontos etwas geändert hat. Auf dieses Konto wurde beispielsweise auf ungewöhnliche Weise (ohne Authentifizierung) zugegriffen, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten ist. Mögliche Ursache: Ein Angreifer hat öffentlichen Lesezugriff auf einen Container ausgenutzt, der Blobspeicher enthält.|
+|**Tor Anomaly** (Tor-Anomalie)|Gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt.Mögliche Gründe können sein, dass ein Angreifer mit Tor auf Ihr Speicherkonto zugegriffen hat, oder dass ein berechtigter Benutzer unter Verwendung von Tor auf Ihr Speicherkonto zugegriffen hat.|
 |**Anomalie: Datenexfiltration**|Gibt an, dass eine große Datenmenge extrahiert wurde, die im Vergleich zur letzten Aktivität bei diesem Speichercontainer ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat eine große Menge an Daten aus einem Container extrahiert, der Blobspeicher enthält.|
 |**Anomalie: Unerwarteter Löschvorgang**|Gibt an, dass in einem Speicherkonto mindestens ein Löschvorgang aufgetreten ist, der im Vergleich zur letzten Aktivität für dieses Konto unerwartet ist. Mögliche Ursache: Ein Angreifer hat Daten im Speicherkonto gelöscht.|
 |**Upload eines Azure Cloud Service-Pakets**|Gibt an, dass ein Azure Cloud Service-Paket (CSPKG-Datei) auf eine Weise in ein Speicherkonto hochgeladen wurde, die im Vergleich zur letzten Aktivität für das Konto ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat die Bereitstellung von bösartigem Code über Ihr Speicherkonto für einen Azure-Clouddienst vorbereitet.|
@@ -70,7 +71,7 @@ Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanfo
 >[!NOTE]
 >Advanced Threat Protection für Azure Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
 
-Weitere Informationen zu den Warnungen für den Speicher finden Sie im Artikel [Advanced Threat Protection für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) und im Abschnitt zu den Schutzwarnungen.
+Weitere Informationen zu den Warnungen für den Speicher finden Sie im Artikel [Advanced Threat Protection für Azure Storage](../storage/common/storage-advanced-threat-protection.md) und im Abschnitt zu den Schutzwarnungen.
 
 ## Cosmos DB<a name="cosmos-db"></a>
 

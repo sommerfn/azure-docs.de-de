@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2019
+ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 7ee7d6434058da63883f8db0eae6a3f91c778338
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325132"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742318"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server
 
@@ -39,7 +39,7 @@ SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| [Failoverclus
 SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| [Datenbankspiegelung (Hochleistungsmodus)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | Die erforderliche Zeit, um den Dienst zu erzwingen, der den Spiegelserver als betriebsbereiten Standbyserver nutzt. | Die Replikation ist asynchron. Bei der Spiegeldatenbank kann im Vergleich zur Prinzipaldatenbank zu etwas Verzögerung auftreten. Die Verzögerung ist in der Regel gering. Sie kann jedoch sehr groß werden, wenn das System des Prinzipals oder Spiegelservers stark ausgelastet ist.<br/><br/>Der Protokollversand kann eine Ergänzung der Datenbankspiegelung darstellen. Es ist eine günstige Alternative zur asynchronen Datenbankspiegelung.
 SQL als Platform-as-a-Service (PaaS) in Azure.<br/><br/>Dieser Bereitstellungstyp umfasst Pools für elastische Datenbanken und Azure SQL-Datenbank-Server. | Aktive Georeplikation | 30 Sekunden nach dem Auslösen des Failovers.<br/><br/>Wenn das Failover für eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft. | RPO von fünf Sekunden.<br/><br/>Die aktive Georeplikation verwendet die Always On-Technologie von SQL Server. Sie repliziert asynchron durchgeführte Transaktionen der primären Datenbank zu einer sekundären Datenbank mithilfe der Momentaufnahmenisolation.<br/><br/>Die sekundären Daten haben niemals partielle Transaktionen.
 SQL als PaaS ist mit aktiver Georeplikation auf Azure konfiguriert.<br/><br/>Dieser Bereitstellungstyp umfasst eine verwaltete SQL-Datenbank-Instanz, Pools für elastische Datenbanken und SQL-Datenbank-Server. | Autofailover-Gruppen | RTO von einer Stunde. | RPO von fünf Sekunden.<br/><br/>Autofailover-Gruppen stellen die Gruppensemantik zusätzlich zur aktiven Georeplikation bereit. Es wird jedoch der gleiche asynchrone Replikationsmechanismus verwendet.
-SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| Replikation mit Azure Site Recovery | Die RTO beträgt in der Regel weniger als 15 Minuten. Weitere Informationen finden Sie in der [SLA für Site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Eine Stunde für die Anwendungskonsistenz und fünf Minuten für die Absturzkonsistenz.
+SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| Replikation mit Azure Site Recovery | Die RTO beträgt in der Regel weniger als 15 Minuten. Weitere Informationen finden Sie in der [SLA für Site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Eine Stunde für die Anwendungskonsistenz und fünf Minuten für die Absturzkonsistenz. Wenn Sie nach einer niedrigeren RPO suchen, verwenden Sie andere BCDR-Technologien.
 
 > [!NOTE]
 > Wenn Sie SQL-Workloads mit Site Recovery schützen, müssen Sie einige wichtige Überlegungen anstellen:

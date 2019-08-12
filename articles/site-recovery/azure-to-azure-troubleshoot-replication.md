@@ -6,14 +6,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 11/27/2018
+ms.date: 8/2/2019
 ms.author: asgang
-ms.openlocfilehash: bf24b2d1395e128dc73361670ea93ac938574146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02f3dff4c9649beeadade942f4b32595f8543c2d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258782"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742549"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Behandlung von akuten Problemen bei der Azure-zu-Azure-VM-Replikation
 
@@ -63,7 +63,11 @@ Für Azure Site Recovery gelten Grenzwerte für die Datenänderungsrate basieren
 Wenn gelegentlich eine große Datenmenge anfällt und die Datenänderungsrate zeitweise über 10MB/s (bei Premium) und 2MB/s (bei Standard) liegt und dann zurückgeht, kann die Replikation folgen. Wenn die Änderung in den meisten Fällen jedoch weit über dem unterstützten Grenzwert liegt, sollten Sie wenn möglich eine der folgenden Optionen berücksichtigen:
 
 * **Schließen Sie den Datenträger aus, der eine hohe Datenänderungsrate verursacht**: Sie können den Datenträger mithilfe von [PowerShell](./azure-to-azure-exclude-disks.md) ausschließen. Um den Datenträger auszuschließen, müssen Sie zuerst die Replikation deaktivieren. 
-* **Ändern Sie den Tarif des Speicherdatenträgers für die Notfallwiederherstellung**: Diese Option ist nur möglich, wenn die Datenänderungsrate weniger als 10MB/s beträgt. Nehmen wir an, eine VM mit einem P10-Datenträger weist eine Datenänderungsrate zwischen 8MB/s und 10MB/s auf. Wenn ein Kunde den P30-Datenträger während des Schutzes als Zielspeicher verwenden kann, kann das Problem gelöst werden.
+* **Ändern Sie den Tarif des Speicherdatenträgers für die Notfallwiederherstellung**: Diese Option ist nur möglich, wenn die Datenänderungsrate weniger als 20 MB/s beträgt. Nehmen wir an, eine VM mit einem P10-Datenträger weist eine Datenänderungsrate zwischen 8MB/s und 10MB/s auf. Wenn ein Kunde den P30-Datenträger während des Schutzes als Zielspeicher verwenden kann, kann das Problem gelöst werden. Beachten Sie, dass diese Lösung nur für Computer mit Managed Disks Premium möglich ist. Führen Sie die folgenden Schritte aus:
+    - Navigieren Sie zum Blatt „Datenträger“ des betroffenen replizierten Computers, und kopieren Sie den Replikatdatenträgernamen.
+    - Navigieren zu diesem verwalteten Replikatdatenträgernamen
+    - Auf dem Blatt “Übersicht“ wird möglicherweise ein Banner angezeigt, das besagt, dass eine SAS-URL generiert wurde. Klicken Sie auf dieses Banner, und brechen Sie den Export ab. Ignorieren Sie diesen Schritt, wenn das Banner nicht angezeigt wird.
+    - Sobald die SAS-URL aufgehoben wurde, wechseln Sie zum Blatt „Konfiguration“ des verwalteten Datenträgers, und vergrößern Sie diesen so, dass ASR die ermittelte Datenänderungsrate auf dem Quelldatenträger unterstützt.
 
 ## <a name="Network-connectivity-problem"></a>Probleme mit der Netzwerkkonnektivität
 
@@ -84,7 +88,7 @@ Einige der häufigsten Probleme sind nachfolgend aufgeführt:
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Ursache 1: Bekanntes Problem in SQL Server 2008/2008 R2 
 **Problembehandlung**: Es gibt ein bekanntes Problem mit SQL Server 2008/2008 R2. Weitere Informationen finden Sie in diesem KB-Artikel: [Fehler bei Azure Site Recovery-Agent oder einer anderen komponentenfreien VSS-Sicherung für einen Server, der SQL Server 2008 R2 hostet](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2).
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>Ursache 2: Azure Site Recovery-Aufträge schlagen auf Servern fehl, die eine beliebige Version von SQL Server-Instanzen mit AUTO_CLOSE DBs hosten 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Ursache 2: Azure Site Recovery-Aufträge schlagen auf Servern fehl, die eine beliebige Version von SQL Server-Instanzen mit AUTO_CLOSE DBs hosten 
 **Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
@@ -123,7 +127,7 @@ Weitere Informationen finden Sie im [Artikel zur Problembehandlung bei der VSS W
         - Azure Site Recovery-VSS-Anbieter
         - VDS-Dienst
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED – Fehler 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED – Fehler 2147754756
 
 **Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Überprüfen Sie, ob der Azure Site Recovery VSS-Anbieterdienst installiert ist. </br>
 
