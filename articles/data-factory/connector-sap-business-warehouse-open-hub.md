@@ -218,7 +218,7 @@ Beim Kopieren von Daten aus SAP BW Open Hub werden die folgenden Zuordnungen von
 | T (Time) | String |
 | P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X (Binary and Raw) | String |
+| X („Binary“ und „Raw“) | String |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

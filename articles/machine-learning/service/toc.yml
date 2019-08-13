@@ -258,7 +258,7 @@
     - name: Erstellen wiederverwendbarenrWorkflows
       displayName: pipelines
       items:
-        - name: 'ML-Pipelines: Batchverarbeitung, Computevorgänge, Wiederverwendung, Freigabe'
+        - name: ML-Pipelines
           href: how-to-create-your-first-pipeline.md
         - name: Azure-Pipelines für CI/CD
           displayName: 'continuous, integration, delivery'

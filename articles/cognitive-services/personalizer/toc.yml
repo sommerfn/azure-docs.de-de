@@ -8,9 +8,12 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: Schnellstarts
   items:
-    - name: Erstellen und Verwenden einer Feedbackschleife
+    - name: 'Verwenden von C#'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: Verwenden von Python
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: Konzepte
   items:
     - name: Funktionsweise der Personalisierung
