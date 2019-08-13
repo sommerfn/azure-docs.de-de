@@ -137,6 +137,8 @@
           items:
             - name: Zugriffsebenen
               href: storage-blob-storage-tiers.md
+            - name: Aktivieren von Daten aus dem Archivspeicher
+              href: storage-blob-rehydration.md
             - name: Verwalten des Azure Blob Storage-Lebenszyklus
               href: storage-lifecycle-management-concepts.md
         - name: Leistung und Skalierung

@@ -11,10 +11,10 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68425877"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Geowiederherstellung einer Azure SQL Data Warehouse-Instanz
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihr Data Warehouse aus einer Geosicherun
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Wiederherstellen von einer geografischen Azure-Region mithilfe von PowerShell
 
-Zum Durchführen einer Wiederherstellung aus einer Geosicherung verwenden Sie das Cmdlet [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] and [Restore-AzSqlDatabase][Restore-AzSqlDatabase].
+Verwenden Sie für die Wiederherstellung aus einer Geosicherung die Cmdlets [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] und [Restore-AzSqlDatabase][Restore-AzSqlDatabase].
 
 > [!NOTE]
 > Sie können eine Geowiederherstellung nach Gen2 durchführen! Geben Sie zu diesem Zweck als optionalen Parameter einen ServiceObjectiveName-Wert für Gen2 ein (z.B. DW1000**c**).
@@ -79,7 +79,7 @@ Führen Sie die unten beschriebenen Schritte aus, um eine Azure SQL Data Warehou
 1. Klicken Sie auf **+ Ressource erstellen**, suchen Sie nach SQL Data Warehouse,und klicken Sie auf **Erstellen**.
 
     ![Neues Data Warehouse](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Geben Sie die auf der Registerkarte **Grundlagen** angeforderten Informationen ein, und klicken Sie auf **Weiter: Zusätzliche Einstellungen**.
+1. Geben Sie auf der Registerkarte **Grundlagen** die angeforderten Informationen ein, und klicken Sie auf **Weiter: Zusätzliche Einstellungen**.
 
     ![Grundlagen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. Wählen Sie für den Parameter **Vorhandenen Daten verwenden** die Option **Sicherung** aus, und wählen Sie dann die entsprechende Sicherung aus den Scrolldownoptionen aus. Klicken Sie auf **Überprüfen und erstellen**.

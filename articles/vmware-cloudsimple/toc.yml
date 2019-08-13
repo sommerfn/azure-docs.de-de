@@ -58,6 +58,8 @@
           href: create-cloudsimple-service.md
         - name: Zugriff auf das CloudSimple-Portal
           href: access-cloudsimple-portal.md
+        - name: Konfiguration der lokalen Firewall
+          href: on-premises-firewall-configuration.md
         - name: Verwalten von Knoten
           items:
             - name: Bereitstellen von Knoten

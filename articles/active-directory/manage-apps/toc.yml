@@ -1,28 +1,33 @@
 - name: Dokumentation zur Anwendungsverwaltung
   href: index.yml
-- name: Anwendungsverwaltung und einmaliges Anmelden
+- name: Übersicht
   expanded: true
   items:
-    - name: Übersicht
-      expanded: true
-      items:
-        - name: Worum handelt es sich bei der Anwendungsverwaltung?
-          href: what-is-application-management.md
-    - name: Schnellstarts
-      items:
-        - name: 'Hinzufügen einer Kataloganwendung: Portal'
-          href: add-application-portal.md
-        - name: 'Anzeigen von Mandanten-Apps: Portal'
-          href: view-applications-portal.md
-    - name: Lernprogramme
-      items:
-        - name: Tutorials für SaaS-Anwendungen
-          href: /azure/active-directory/saas-apps/
-    - name: Konzepte
+    - name: Worum handelt es sich bei Cloud-App-Verwaltung und einmaligem Anmelden?
+      href: what-is-application-management.md
+    - name: Worum handelt es sich bei automatischer Benutzerbereitstellung?
+      href: user-provisioning.md
+    - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
+      href: what-is-application-proxy.md
+- name: Schnellstarts
+  items:
+    - name: Hinzufügen einer Cloud-App aus dem Katalog
+      href: add-application-portal.md
+    - name: Anzeigen Ihrer Unternehmensanwendungen
+      href: view-applications-portal.md
+- name: Lernprogramme
+  items:
+    - name: Tutorials für SaaS-Apps
+      href: /azure/active-directory/saas-apps/
+    - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
+      href: application-proxy-add-on-premises-application.md
+- name: Konzepte
+  items:
+    - name: Cloud-Apps und einmaliges Anmelden
       items:
         - name: Planen der Integration von Cloud-Apps
           items:
-            - name: Was beim Hinzufügen einer App geschieht
+            - name: Erste Schritte bei der App-Integration
               href: plan-an-application-integration.md
             - name: Leitfaden für Entwickler
               href: developer-guidance-for-integrating-applications.md
@@ -56,9 +61,34 @@
               href: tenant-restrictions.md
             - name: Konfigurieren der SAML-Tokenverschlüsselung (Vorschauversion)
               href: howto-saml-token-encryption.md
-        - name: Endbenutzerportale
-          href: end-user-experiences.md
-    - name: Anleitungen
+            - name: Endbenutzerportale
+              href: end-user-experiences.md
+    - name: Automatische Benutzerbereitstellung
+      items:
+        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
+          href: use-scim-to-provision-users-and-groups.md
+    - name: Anwendungsproxy für lokale Apps
+      items:
+        - name: Anwendungsproxy
+          href: application-proxy.md
+        - name: Planen der Bereitstellung eines Anwendungsproxys
+          href: application-proxy-deployment-plan.md
+        - name: Connectors
+          href: application-proxy-connectors.md
+        - name: Connectorgruppen
+          href: application-proxy-connector-groups.md
+        - name: Sicherheit
+          href: application-proxy-security.md
+        - name: Netzwerktopologie
+          href: application-proxy-network-topology.md
+        - name: Hochverfügbarkeit und Lastenausgleich
+          href: application-proxy-high-availability-load-balancing.md
+        - name: Vergleichen von Remotezugriffslösungen
+          href: application-proxy-migration.md
+- name: Anleitungen
+  expanded: true
+  items:
+    - name: Cloud-Apps und einmaliges Anmelden
       items:
         - name: Hinzufügen einer Cloud-App
           items:
@@ -182,36 +212,7 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Fehler beim Verwenden des Self-Service-App-Zugriffs
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Ressourcen
-      items:
-        - name: Azure-Feedbackforum
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN-Forum
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Preise
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Dienstupdates
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videos
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Automatische Benutzerbereitstellung
-  items:
-    - name: Übersicht
-      expanded: true
-      items:
-        - name: Was bedeutet bereitstellen?
-          href: user-provisioning.md
-    - name: Lernprogramme
-      items:
-        - name: Tutorials für SaaS-Anwendungen
-          href: /azure/active-directory/saas-apps/
-    - name: Konzepte
-      items:
-        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
-          href: use-scim-to-provision-users-and-groups.md
-    - name: Anleitungen
+    - name: Automatische Benutzerbereitstellung
       items:
         - name: Benutzerbereitstellung konfigurieren
           items:
@@ -223,8 +224,6 @@
               href: configure-automatic-user-provisioning-portal.md
             - name: Anpassen von Anwendungsattributen
               href: Customize-application-attributes.md
-            - name: Schreiben von Ausdrücken für Attributzuordnungen
-              href: functions-for-customizing-application-data.md
             - name: Bereichsfilter
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Überprüfen des Bereitstellungsstatus
@@ -245,50 +244,7 @@
               href: application-provisioning-config-problem-no-users-provisioned.md
             - name: 'Falsche Benutzer bereitgestellt : Katalog-App'
               href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: Ressourcen
-      items:
-        - name: Azure-Feedbackforum
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN-Forum
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Preise
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Dienstupdates
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videos
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Anwendungsproxy für lokale Apps
-  items:
-    - name: Übersicht
-      expanded: true
-      items:
-        - name: Was ist der Anwendungsproxy?
-          href: what-is-application-proxy.md
-    - name: Lernprogramme
-      items:
-        - name: 'Hinzufügen einer lokalen App: Portal'
-          href: application-proxy-add-on-premises-application.md
-    - name: Konzepte
-      items:
-        - name: Anwendungsproxy
-          href: application-proxy.md
-        - name: Planen der Bereitstellung eines Anwendungsproxys
-          href: application-proxy-deployment-plan.md
-        - name: Connectors
-          href: application-proxy-connectors.md
-        - name: Connectorgruppen
-          href: application-proxy-connector-groups.md
-        - name: Sicherheit
-          href: application-proxy-security.md
-        - name: Netzwerktopologie
-          href: application-proxy-network-topology.md
-        - name: Hochverfügbarkeit und Lastenausgleich
-          href: application-proxy-high-availability-load-balancing.md
-        - name: Vergleichen von Remotezugriffslösungen
-          href: application-proxy-migration.md
-    - name: Anleitungen
+    - name: Anwendungsproxy für lokale Apps
       items:
         - name: Konfigurieren von Connectors
           items:
@@ -376,21 +332,27 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: CORS-Probleme beim Anwendungsproxy
               href: application-proxy-understand-cors-issues.md
-    - name: Verweis
+- name: Verweis
+  items:
+    - name: Automatische Benutzerbereitstellung
+      items:
+        - name: Schreiben von Ausdrücken für Attributzuordnungen
+          href: functions-for-customizing-application-data.md
+    - name: Anwendungsproxy für lokale Apps
       items:
         - name: Versionsverlauf des Anwendungsproxys
           href: application-proxy-release-version-history.md
-    - name: Ressourcen
-      items:
-        - name: Azure-Feedbackforum
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN-Forum
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Preise
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Dienstupdates
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videos
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+- name: Ressourcen
+  items:
+    - name: Azure-Feedbackforum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

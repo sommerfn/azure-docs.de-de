@@ -11,7 +11,7 @@
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Laden und Abfragen von Indizes
+        - name: Erstellen und Verwenden eines Indexes
           href: search-get-started-portal.md
         - name: Erweitern um KI (Cognitive Search)
           href: cognitive-search-quickstart-blob.md

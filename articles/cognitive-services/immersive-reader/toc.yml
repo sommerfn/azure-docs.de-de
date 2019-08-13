@@ -9,10 +9,14 @@
   items:
     - name: 'Verwenden von C#'
       href: Quickstart.md
+    - name: Verwenden von Swift (iOS)
+      href: ios-quickstart.md
 - name: Lernprogramme
   items:
     - name: Starten des plastischen Readers (Node.js)
       href: tutorial.md
+    - name: Bild im plastischen Reader (Swift)
+      href: ios-picture-immersive-reader-tutorial.md
 - name: Vorgehensweise
   items:
     - name: Authentifizierung über Azure Active Directory
@@ -21,6 +25,8 @@
   items:
     - name: SDK-Verweis
       href: reference.md
+    - name: iOS SDK-Referenz
+      href: ios-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

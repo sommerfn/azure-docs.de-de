@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/02/2019
+  ms.date: 08/12/2019
   ms.author: heidist
 abstract:
-  description: 'Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann. <p/>Die <a href="/azure/search/cognitive-search-concept-intro"><b>kognitive Suche</b></a> ist jetzt mit für Produktionsszenarien unterstützten KI-Anreicherungen allgemein verfügbar.<p/>Die kognitive Suche wird durch <a href="/azure/search/knowledge-store-concept-intro"><b>Wissensspeicher (Vorschau)</b></a> erweitert. Sie können KI-Anreicherungen im Speicher speichern, in dem Sie dann Anreicherungen in anderen Anwendungen neben Azure Search anzeigen, umstrukturieren und nutzen können. <a href="/azure/search/knowledge-store-howto"><b>Legen Sie noch heute los</b></a>.'
+  description: "Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann. <p/><a href=\"/azure/search/cognitive-search-concept-intro\"><b>Kognitive Suche</b></a> ist ein Feature von Azure\_Search, das KI-Prozesse für die Indizierung und Erkennung von Text und Merkmalen in Bilddateien sowie für die Erkennung von Mustern in großen Blöcken mit unstrukturiertem Text bereitstellt.<p/>Die kognitive Suche wird durch <a href=\"/azure/search/knowledge-store-concept-intro\"><b>Wissensspeicher (Vorschau)</b></a> erweitert. Speichern Sie KI-Anreicherungen im Speicher, über den Sie sie dann in Client-Apps oder nachgeschalteten Prozessen anzeigen, umstrukturieren und nutzen können. <a href=\"/azure/search/knowledge-store-howto\"><b>Legen Sie noch heute los</b></a>."
   aside:
     image:
       alt: null
