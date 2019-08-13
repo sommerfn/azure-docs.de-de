@@ -1,5 +1,5 @@
 ---
-title: Auswählen und Bereitstellen eines Azure Security Center für IoT-Agents (Vorschauversion) | Microsoft-Dokumentation
+title: Auswählen und Bereitstellen eines Azure Security Center für IoT-Agents | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Security Center für IoT-Sicherheits-Agents auf IoT-Geräten auswählen und bereitstellen.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,22 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c549e5ccbda9b364b3e7d20c9572eb777c32299e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616827"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596340"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Auswählen und Bereitstellen eines Sicherheits-Agents auf Ihrem IoT-Gerät
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Azure Security Center (ASC) für IoT bietet Referenzarchitekturen für Sicherheits-Agents, die Daten von IoT-Geräten überwachen und sammeln.
+Azure Security Center für IoT bietet Referenzarchitekturen für Sicherheits-Agents, die Daten von IoT-Geräten überwachen und sammeln.
 Weitere Informationen finden Sie unter [Sicherheits-Agent-Referenzarchitektur](security-agent-architecture.md).
 
 Agents werden als Open-Source-Projekte entwickelt und sind in zwei Varianten verfügbar: <br> [C](https://aka.ms/iot-security-github-c) und [C#](https://aka.ms/iot-security-github-cs).
@@ -41,24 +37,31 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="understand-security-agent-options"></a>Grundlegendes zu den Varianten des Sicherheits-Agents
 
-Jede Variante des ASC für IoT-Sicherheits-Agents hat den gleichen Funktionsumfang und unterstützt ähnliche Konfigurationsoptionen. 
+Jede Variante des Azure Security Center für IoT-Sicherheits-Agents hat den gleichen Funktionsumfang und unterstützt ähnliche Konfigurationsoptionen. 
 
 Der C-basierte Sicherheits-Agent hat einen geringeren Speicherbedarf und ist die optimale Wahl für Geräte mit weniger verfügbaren Ressourcen. 
 
 |     | C-basierter Sicherheits-Agent | C#-basierter Sicherheits-Agent |
 | --- | ----------- | --------- |
-| Open Source | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) in [GitHub](https://aka.ms/iot-security-github-cs) | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) in [GitHub](https://aka.ms/iot-security-github-c) |
+| Open-Source-SDK | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) auf [GitHub](https://aka.ms/iot-security-github-cs) | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) auf [GitHub](https://aka.ms/iot-security-github-c) |
 | Programmier-/Entwicklungssprache    | C | C# |
 | Unterstützte Windows-Plattformen? | Nein | Ja |
 | Windows-Voraussetzungen | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Unterstützte Linux-Plattformen? | Ja, x64 und x86 | Ja, nur x64 |
 | Linux-Voraussetzungen | libunwind8, libcurl3, uuid-runtime, auditd, audispd-plugins | libunwind8, libcurl3, uuid-runtime, auditd, audispd-plugins, sudo, netstat, iptables |
-| Speicherbedarf des Datenträgers | 10,5 MB | 90 MB |
-| Speicherbedarf (im Durschnitt) | 5,5 MB | 33 MB |
+| Speicherbedarf des Datenträgers | 10,5 MB | 90 MB |
+| Speicherbedarf (im Durschnitt) | 5,5 MB | 33 MB |
 | [Authentifizierung](concept-security-agent-authentication-methods.md) bei IoT Hub | Ja | Ja |
 | [Sammlung](how-to-agent-configuration.md#supported-security-events) von Sicherheitsdaten | Ja | Ja |
 | Ereignisaggregation | Ja | Ja |
 | Remotekonfiguration über [Sicherheitsmodulzwilling](concept-security-module.md) | Ja | Ja |
+|
+
+## <a name="security-agent-installation-guidelines"></a>Installationsrichtlinien für den Sicherheits-Agent
+
+Für **Windows**: Das Skript „InstallSecurityAgent.ps1“ muss über ein Administratorfenster von PowerShell ausgeführt werden. 
+
+Für **Linux**: „InstallSecurityAgent.sh“ muss als Superuser ausgeführt werden. Es wird empfohlen, dem Installationsbefehl „sudo“ voranzustellen.
 
 
 ## <a name="choose-an-agent-flavor"></a>Auswählen einer Agent-Variante 
@@ -85,7 +88,7 @@ Weitere Informationen finden Sie unter [Vergleich der Sicherheits-Agents](how-to
 
 Die folgende Liste enthält alle derzeit unterstützten Plattformen.
 
-|ASC für IoT-Agent |Betriebssystem |Architecture |
+|Azure Security Center für IoT-Agent |Betriebssystem |Architecture |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
 |C|Ubuntu 18.04 |   x64|
@@ -95,6 +98,7 @@ Die folgende Liste enthält alle derzeit unterstützten Plattformen.
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core Build 17763 |x64|
+|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

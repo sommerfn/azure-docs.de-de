@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668577"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828547"
 ---
 # <a name="tutorial-train-your-first-model"></a>Tutorial: Trainieren des ersten Modells
 
@@ -111,7 +111,7 @@ Rufen Sie nach Abschluss des Trainings die Variable `experiment` auf, um im Port
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Arbeitsbereich</th><th>Berichtseite</th><th>Dokumentseite</th></tr><tr><td>diabetes-experiment</td><td><Name Ihres Arbeitsbereichs></td><td><a href="" target="_blank" rel="noopener">Link zum Azure-Portal</a></td><td><a href="" target="_blank" rel="noopener">Link zur Dokumentation</a></td></tr></table>
+<table style="width:100%"><tr><th>NAME</th><th>Arbeitsbereich</th><th>Berichtseite</th><th>Dokumentseite</th></tr><tr><td>diabetes-experiment</td><td><Name Ihres Arbeitsbereichs></td><td>Link zum Azure-Portal</td><td>Link zur Dokumentation</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Anzeigen der Trainingsergebnisse im Portal
 
@@ -181,7 +181,7 @@ Sollten Sie einen cloudbasierten Notebook-Server verwendet haben, beenden Sie au
 
 1. Wählen Sie in Ihrem Arbeitsbereich **Notebook-VMs** aus.
 
-   ![Beenden des VM-Servers](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![Beenden des VM-Servers](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Wählen Sie den virtuellen Computer in der Liste aus.
 

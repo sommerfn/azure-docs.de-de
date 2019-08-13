@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6713182003a280c1d53e904209159b55b4ad01c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd8cabb14ad65b4da562c7d6048a52b574513b26
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331144"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566176"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
 
@@ -55,7 +54,7 @@ Die folgende Liste zeigt die Abfolge von anderen *wichtigen* Cmdlets, die Sie au
 
 ## <a name="prerequisites-for-running-powershell"></a>Voraussetzungen für das Ausführen von PowerShell
 
-- Sie können sich bereits bei Azure anmelden, z.B. über das [Azure-Portal][http-azure-portal-link-ref-477t].
+- Sie können sich bereits bei Azure anmelden, z. B. über das [Azure-Portal][http-azure-portal-link-ref-477t].
 - Sie können bereits PowerShell-Skripts ausführen.
 
 > [!NOTE]

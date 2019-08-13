@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499834"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562116"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -47,7 +47,7 @@ Die Auswertung des Aktivitätszeitstempels wird durch einen Authentifizierungsve
 - Windows 10-Geräte, die entweder in Azure AD oder Hybrid-Azure AD eingebunden sind, sind im Netzwerk aktiv. 
 - Mit Intune verwaltete Geräte wurden in den Dienst eingecheckt.
 
-Wenn das Delta zwischen dem vorhandenen Wert des Aktivitätszeitstempels und dem aktuellen Wert größer als 14 Tage ist, wird der vorhandene Wert durch den neuen Wert ersetzt.
+Wenn das Delta zwischen dem vorhandenen Wert des Aktivitätszeitstempels und dem aktuellen Wert größer als 14 Tage ist (+/- 5 Tage Abweichung), wird der vorhandene Wert durch den neuen Wert ersetzt.
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Wie erhalte ich den Aktivitätszeitstempel?
 
@@ -77,7 +77,7 @@ Wählen Sie in der Bereinigungsrichtlinie Konten aus, denen die erforderlichen R
 
 ### <a name="timeframe"></a>Zeitraum
 
-Definieren Sie einen Zeitraum, der als Indikator für ein veraltetes Gerät dient. Rechnen Sie beim Definieren des Zeitraums das 14-Tage-Zeitfenster zum Aktualisieren des Aktivitätszeitstempels in Ihren Wert ein. Beispielsweise sollten Sie einen Zeitstempel, der jünger als 14 Tage ist, nicht als Indikator für ein veraltetes Gerät ansehen. Es gibt Szenarien, in denen ein Gerät veraltet erscheint, obwohl dies noch nicht der Fall ist. Der Besitzer des betroffenen Geräts kann beispielsweise im Urlaub oder krank sein,  sodass der Zeitraum für das Veralten von Geräten überschritten wird.
+Definieren Sie einen Zeitraum, der als Indikator für ein veraltetes Gerät dient. Rechnen Sie beim Definieren des Zeitraums das Zeitfenster zum Aktualisieren des Aktivitätszeitstempels in Ihren Wert ein. Beispielsweise sollten Sie einen Zeitstempel, der jünger als 21 Tage ist (inklusive Abweichung), nicht als Indikator für ein veraltetes Gerät ansehen. Es gibt Szenarien, in denen ein Gerät veraltet erscheint, obwohl dies noch nicht der Fall ist. Der Besitzer des betroffenen Geräts kann beispielsweise im Urlaub oder krank sein,  sodass der Zeitraum für das Veralten von Geräten überschritten wird.
 
 ### <a name="disable-devices"></a>Deaktivieren von Geräten
 
@@ -98,15 +98,30 @@ Ihre in Hybrid-Azure AD eingebundenen Geräte sollten an Ihren Richtlinien für 
 Bereinigen Sie Azure AD wie folgt:
 
 - **Windows 10-Geräte**: Deaktivieren oder löschen Sie Windows 10-Geräte auf Ihrer lokalen AD-Instanz, und lassen Sie den geänderten Gerätestatus von Azure AD Connect mit Azure AD synchronisieren.
-- **Windows 7/8**: Deaktivieren oder löschen Sie Windows 7/8-Geräte in Azure AD. Sie können Azure AD Connect nicht verwenden, um Windows 7/8-Geräte in Azure AD zu deaktivieren oder zu löschen.
+- **Windows 7/8:** Deaktivieren oder löschen Sie Windows 7/8-Geräte zunächst in Ihrem lokalen AD. Sie können Azure AD Connect nicht verwenden, um Windows 7/8-Geräte in Azure AD zu deaktivieren oder zu löschen. Stattdessen müssen Sie, wenn Sie lokal Änderungen vornehmen, das Deaktivieren/Löschen in Azure AD durchführen.
+
+> [!NOTE]
+>* Beim Löschen von Geräten in Ihrem lokalen AD oder in Azure AD wird keine Registrierung auf dem Client durchführt. Es wird lediglich der Zugriff auf Ressourcen verhindert, die das Gerät als Identität verwenden (z. B. bedingter Zugriff). Lesen Sie weitere Informationen zum [Entfernen von Registrierungen auf dem Client](faq.md#hybrid-azure-ad-join-faq).
+>* Wenn Sie ein Windows 10-Gerät nur in Azure AD löschen, wird das Gerät erneut von Ihrem lokalen Standort aus mithilfe von Azure AD Connect synchronisiert – dieses Mal allerdings als neues Objekt im Zustand „Ausstehend“. Auf dem Gerät ist eine erneute Registrierung erforderlich.
+>* Wenn Sie das Gerät aus dem Synchronisierungsbereich für Geräte mit Windows 10/Server 2016 entfernen, wird das Azure AD-Gerät gelöscht. Wenn Sie es erneut dem Synchronisierungsbereich hinzufügen, wird ein neues Objekt im Zustand „Ausstehend“ eingefügt. Auf dem Gerät ist eine erneute Registrierung erforderlich.
+>* Wenn Sie nicht Azure AD Connect für die Synchronisierung von Windows 10-Geräten verwenden (da Sie z. B. Azure AD NUR für die Registrierung nutzen), müssen Sie den Lebenszyklus ähnlich wie bei Windows 7/8-Geräten verwalten.
+
 
 ### <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
 Deaktivieren oder löschen Sie in Azure AD eingebundene Geräte in Azure AD.
 
+> [!NOTE]
+>* Wenn Sie ein Azure AD Gerät löschen, wird die Registrierung auf dem Client nicht entfernt. Es wird lediglich der Zugriff auf Ressourcen verhindert, die das Gerät als Identität verwenden (z. B. bedingter Zugriff). 
+>* Weitere Informationen zum [Aufheben der Verknüpfung mit Azure AD](faq.md#azure-ad-join-faq) 
+
 ### <a name="azure-ad-registered-devices"></a>Bei Azure AD registrierte Geräte
 
 Deaktivieren oder löschen Sie in Azure AD registrierte Geräte in Azure AD.
+
+> [!NOTE]
+>* Wenn Sie ein registriertes Azure AD Gerät löschen, wird die Registrierung auf dem Client nicht entfernt. Es wird lediglich der Zugriff auf Ressourcen verhindert, die das Gerät als Identität verwenden (z. B. bedingter Zugriff).
+>* Weitere Informationen zum [Entfernen einer Registrierung auf dem Client](faq.md#azure-ad-register-faq)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Bereinigen veralteter Geräte im Azure-Portal  
 
@@ -148,7 +163,7 @@ Wenn sie konfiguriert sind, werden BitLocker-Schlüssel für Windows 10-Geräte 
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Warum sollte ich mir Gedanken über Windows Autopilot-Geräte machen?
 
-Wenn ein Azure AD-Gerät einem Windows Autopilot-Objekt zugeordnet wurde, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
+Wenn ein Azure AD-Gerät einem Windows Autopilot-Objekt zugeordnet wurde, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
 - Bei benutzergesteuerten Nicht-White-Glove-Bereitstellungen mit Windows Autopilot wird ein neues Azure AD-Gerät erstellt, das jedoch nicht mit der ZTDID gekennzeichnet wird.
 - Bei Windows Autopilot-Bereitstellungen im Selbstbereitstellungsmodus wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann.  (Dies ist ein Sicherheitsmechanismus, um sicherzustellen, dass keine „Eindringling“-Geräte versuchen, Azure AD ohne Anmeldeinformationen beizutreten.) Der Fehler weist auf eine fehlende ZTDID-Übereinstimmung hin.
 - Bei White-Glove-Bereitstellungen mit Windows Autopilot wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden White-Glove-Bereitstellungen denselben Selbstbereitstellungsmodus-Prozess, sodass sie die gleichen Sicherheitsmechanismen erzwingen.)

@@ -10,10 +10,10 @@ ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325486"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
@@ -83,13 +83,13 @@ Der `--dns-name-label`-Wert muss in der Azure-Region, in der Sie die Containerin
 
 ## <a name="manage-files-in-mounted-volume"></a>Verwalten von Dateien in eingebundenen Datenträgern
 
-Sobald der Container gestartet ist, können Sie die einfache Web-App verwenden, die über das Microsoft [aci-hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show]-Image zum Erstellen kleiner Textdateien in der Azure-Dateifreigabe in dem von Ihnen angegebenen Einbindungspfad bereitgestellt wird. Rufen Sie den vollqualifizierten Domänennamen (FQDN) der Web-App mit dem Befehl [az container show][az-container-show] ab:
+Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Microsoft-Image [aci-hellofiles][aci-hellofiles] bereitgestellt wird, kleine Textdateien in der Azure-Dateifreigabe unter dem angegebenen Einbindungspfad erstellen. Rufen Sie den vollqualifizierten Domänennamen (FQDN) für die Web-App mit dem Befehl [az container show][az-container-show] ab:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Nachdem Sie den Text mit der App gespeichert haben, können Sie im [Azure-Portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer]oder mit einem Tool wie [Microsoft Azure Storage Explorer][storage-explorer] die auf die Dateifreigabe geschriebene Datei abrufen und überprüfen.
+Nach dem Speichern des Texts mit der App können Sie mithilfe des [Azure-Portals][portal] oder eines Tools wie [Microsoft Azure Storage-Explorer][storage-explorer] die in die Dateifreigabe geschriebene Datei abrufen und überprüfen.
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>Bereitstellen des Containers und Einbinden des Volumes – YAML
 

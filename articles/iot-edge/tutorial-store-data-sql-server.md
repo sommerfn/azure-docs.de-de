@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b77b44856e9623235051470bc087885765ee12c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 872c6f0af9695628f2821c8859d0b582534efd45
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080428"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840078"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -219,7 +219,7 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
 
 6. Öffnen Sie in Ihrem Projektmappenordner die Datei **deployment.template.json**. 
 
-7. Suchen Sie nach dem Abschnitt **modules**. Es sollten drei Module angezeigt werden. Das Modul *tempSensor* ist standardmäßig in neuen Projektmappen enthalten und stellt Testdaten für Ihre anderen Module bereit. Das Modul *sqlFunction* ist das Modul, das Sie erstellt und mit neuem Code aktualisiert haben. Das Modul *sql* wurde aus dem Azure Marketplace importiert. 
+7. Suchen Sie nach dem Abschnitt **modules**. Es sollten drei Module angezeigt werden. Das Modul *SimulatedTemperatureSensor* ist standardmäßig in neuen Projektmappen enthalten und stellt Testdaten für Ihre anderen Module bereit. Das Modul *sqlFunction* ist das Modul, das Sie erstellt und mit neuem Code aktualisiert haben. Das Modul *sql* wurde aus dem Azure Marketplace importiert. 
 
    >[!Tip]
    >Das SQL Server-Modul verfügt über ein Standardkennwort, das in den Umgebungsvariablen des Bereitstellungsmanifests festgelegt ist. Bei jedem Erstellen eines SQL Server-Containers in einer Produktionsumgebung sollten Sie [das Standardkennwort für den Systemadministrator ändern](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
@@ -244,7 +244,7 @@ In den vorherigen Abschnitten haben Sie eine Projektmappe mit einem Modul erstel
 
 Wenn Sie Visual Studio Code anweisen, die Projektmappe zu erstellen, wird zunächst basierend auf den Informationen in der Bereitstellungsvorlage eine Datei vom Typ „deployment.json“ in einem neuen Ordner namens **config** erstellt. Anschließend werden zwei Befehle im integrierten Terminal ausgeführt: `docker build` und `docker push`. Diese beiden Befehle erstellen Ihren Code, packen das Modul in Container und pushen den Code anschließend in die Containerregistrierung, die Sie beim Initialisieren der Projektmappe angegeben haben. 
 
-Sie können sich vergewissern, dass das Modul „sqlFunction“ erfolgreich per Push an Ihre Containerregistrierung übertragen wurde. Navigieren Sie im Azure-Portal wieder zu Ihrer Containerregistrierung. Wählen Sie **Repositorys** aus, und suchen Sie nach **sqlFunction**. Die beiden anderen Module („tempSensor“ und „sql“) werden nicht per Push an Ihre Containerregistrierung übertragen, da Sie in den Microsoft-Registrierungen bereits auf deren Repositorys verweisen.
+Sie können sich vergewissern, dass das Modul „sqlFunction“ erfolgreich per Push an Ihre Containerregistrierung übertragen wurde. Navigieren Sie im Azure-Portal wieder zu Ihrer Containerregistrierung. Wählen Sie **Repositorys** aus, und suchen Sie nach **sqlFunction**. Die beiden anderen Module („SimulatedTemperatureSensor“ und „sql“) werden nicht per Push an Ihre Containerregistrierung übertragen, da Sie in den Microsoft-Registrierungen bereits auf deren Repositorys verweisen.
 
 ## <a name="deploy-the-solution-to-a-device"></a>Bereitstellen der Projektmappe auf einem Gerät
 
@@ -268,7 +268,7 @@ Aktualisieren Sie den Status Ihres Geräts im Abschnitt „Azure IoT Hub Devices
 
 ## <a name="create-the-sql-database"></a>Erstellen der SQL-Datenbank
 
-Wenn Sie das Bereitstellungsmanifest auf Ihr Gerät anwenden, werden drei Module ausgeführt. Das Modul „tempSensor“ generiert simulierte Umgebungsdaten. Das Modul „sqlFunction“ formatiert die Daten für eine Datenbank. Dieser Abschnitt führt Sie durch das Einrichten der SQL-Datenbank zum Speichern der Temperaturdaten. 
+Wenn Sie das Bereitstellungsmanifest auf Ihr Gerät anwenden, werden drei Module ausgeführt. Das Modul „SimulatedTemperatureSensor“ generiert simulierte Umgebungsdaten. Das Modul „sqlFunction“ formatiert die Daten für eine Datenbank. Dieser Abschnitt führt Sie durch das Einrichten der SQL-Datenbank zum Speichern der Temperaturdaten. 
 
 Führen Sie auf Ihrem IoT Edge-Gerät die folgenden Befehle aus. Diese Befehle stellen eine Verbindung mit dem **sql**-Modul her, das auf Ihrem Gerät ausgeführt wird, und erstellt eine Datenbank und eine Tabelle zum Speichern der gesendeten Temperaturdaten. 
 

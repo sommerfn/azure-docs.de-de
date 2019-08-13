@@ -1,5 +1,5 @@
 ---
-title: Exportieren und Löschen von Daten
+title: Exportieren und Löschen von Daten – LUIS
 titleSuffix: Azure Cognitive Services
 description: Löschen Sie Kundendaten, um Datenschutz und Compliance zu gewährleisten.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: a82452f4b41aee9c4ea6f269d92fbc91a5697d16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e234f88d6e735f33be253cacb373baef63c605c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64916940"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559985"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportieren und Löschen Ihrer Kundendaten aus LUIS in Cognitive Services
 

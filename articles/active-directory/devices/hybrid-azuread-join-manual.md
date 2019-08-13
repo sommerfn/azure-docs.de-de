@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052138"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741285"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -83,7 +83,7 @@ Verwenden Sie die folgende Tabelle, um eine Übersicht über die Schritte zu erh
 | Konfigurieren des Dienstverbindungspunkts | ![Prüfen][1] | ![Prüfen][1] | ![Prüfen][1] |
 | Einrichten der Ausstellung von Ansprüchen |     | ![Prüfen][1] | ![Prüfen][1] |
 | Aktivieren von Geräten, auf denen nicht Windows 10 ausgeführt wird |       |        | ![Prüfen][1] |
-| Überprüfen der eingebundenen Geräte | ![Prüfen][1] | ![Prüfen][1] | [Häkchen][1] |
+| Überprüfen der eingebundenen Geräte | ![Prüfen][1] | ![Prüfen][1] | [Überprüfung][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurieren eines Dienstverbindungspunkts
 
@@ -174,10 +174,19 @@ In einer Azure AD-Verbundkonfiguration benötigen die Geräte für die Authentif
 
 Bei aktuellen Windows-Geräten erfolgt die Authentifizierung mittels integrierter Windows-Authentifizierung gegenüber einem aktiven WS-Trust-Endpunkt (entweder Version 1.3 oder 2005), der vom lokalen Verbunddienst gehostet wird.
 
+Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren:
+- `/adfs/services/trust/2005/windowstransport`
+- `/adfs/services/trust/13/windowstransport`
+- `/adfs/services/trust/2005/usernamemixed`
+- `/adfs/services/trust/13/usernamemixed`
+- `/adfs/services/trust/2005/certificatemixed`
+- `/adfs/services/trust/13/certificatemixed`
+
+> [!WARNING]
+> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
+
 > [!NOTE]
-> Bei Verwendung von AD FS muss entweder **adfs/services/trust/13/windowstransport** oder **adfs/services/trust/2005/windowstransport** aktiviert sein. Bei Verwendung des Webauthentifizierungsproxys muss dieser Endpunkt zudem über den Proxy veröffentlicht werden. Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
->
-> Falls Sie nicht AD FS als lokalen Verbunddienst nutzen, informieren Sie sich in der Anleitung Ihres jeweiligen Anbieters, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.
+>Falls Sie nicht AD FS als lokalen Verbunddienst nutzen, informieren Sie sich in der Anleitung Ihres jeweiligen Anbieters, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.
 
 Damit die Geräteregistrierung abgeschlossen werden kann, müssen in dem Token, das von Azure DRS empfangen wird, folgende Ansprüche enthalten sein. Azure DRS erstellt in Azure AD ein Geräteobjekt mit einigen dieser Informationen. Diese werden dann von Azure AD Connect verwendet, um das neu erstellte Geräteobjekt dem lokalen Computerkonto zuzuordnen.
 

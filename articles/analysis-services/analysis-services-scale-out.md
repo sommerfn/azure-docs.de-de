@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696401"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736746"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -143,9 +143,9 @@ Für SSMS, SSDT und Verbindungszeichenfolgen in PowerShell, Azure Functions-Apps
 
 ![Servernamen](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up--down-vs-scale-out"></a>Zentrales Hoch- und Herunterskalieren und Horizontales Skalieren
+## <a name="scale-up-scale-down-vs-scale-out"></a>Zentrales Hochskalieren, zentrales Herunterskalieren oder Horizontales Skalieren
 
-Sie können den Tarif des Servers auf einen mit mehreren Replikaten ändern. Der gleiche Tarif gilt für alle Replikate. Bei einem Vorgang zum zentralen Hoch- und Herunterskalieren werden zunächst alle Replikate gleichzeitig heruntergefahren und dann mit dem neuen Tarif gestartet.
+Sie können den Tarif auf einem Server mit mehreren Replikaten ändern. Der gleiche Tarif gilt für alle Replikate. Bei einem Skalierungsvorgang werden zunächst alle Replikate gleichzeitig heruntergefahren und dann mit dem neuen Tarif gestartet.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

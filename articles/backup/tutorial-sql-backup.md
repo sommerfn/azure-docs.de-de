@@ -1,5 +1,5 @@
 ---
-title: Sichern von SQL Server-Datenbanken in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Sichern von SQL Server-Datenbanken in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie SQL Server in Azure sichern.
 author: dcurwin
 manager: carmonm
@@ -7,18 +7,18 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 99e1e8194594d204a5080287794362dbe028a1f5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 729eb0d77cee85356e359dc475f4e439b8236ebb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688420"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736566"
 ---
-# <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
+# <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Sichern einer SQL Server-Datenbank auf einem virtuellen Azure-Computer
 
 
 
-In diesem Artikel wird veranschaulicht, wie Sie eine SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird, in einem Azure Backup Recovery Services-Tresor sichern. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+In diesem Tutorial wird veranschaulicht, wie Sie eine SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird, in einem Azure Backup Recovery Services-Tresor sichern. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen und Konfigurieren eines Tresors

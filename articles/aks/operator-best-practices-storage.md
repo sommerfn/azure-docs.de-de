@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: mlearned
 ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614591"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
@@ -82,7 +82,7 @@ Mit einem Anspruch auf persistente Volumes (PVC) können Sie bei Bedarf dynamisc
 
 Informationen zu den Konzepten zum dynamischen Erstellen und Verwenden von Volumes finden Sie unter [Ansprüche auf persistente Volumes][aks-concepts-storage-pvcs].
 
-Um diese Volumes in Aktion zu sehen, können Sie sich anschauen, wie Sie ein persistentes Volume mit [Azure-Datenträgern][dynamic-disks] or [Azure Files][dynamic-files] dynamisch erstellen und verwenden.
+Um diese Volumes in Aktion zu sehen, schauen Sie sich an, wie Sie ein persistentes Volume mit [Azure-Datenträgern][dynamic-disks] oder [Azure Files][dynamic-files] dynamisch erstellen und verwenden.
 
 Legen Sie als Teil Ihrer Speicherklassendefinitionen die entsprechende *reclaimPolicy* fest. Diese reclaimPolicy steuert das Verhalten der zugrunde liegenden Azure-Speicherressource, wenn die Pods gelöscht werden und das persistente Volume vielleicht nicht mehr benötigt wird. Die zugrunde liegende Speicherressource kann gelöscht oder für die Verwendung mit einem zukünftigen Pod beibehalten werden. „reclaimPolicy“ kann auf *Beibehalten* oder *Löschen* festgelegt werden. Sie sollten die Anforderungen Ihrer Anwendung kennen und regelmäßige Prüfungen für den beibehaltenen Speicher implementieren, um die Menge an nicht verwendetem Speicher zu minimieren, der genutzt und abgerechnet wird.
 
@@ -92,7 +92,7 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 **Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z.B. Velero oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
 
-Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], sollten Sie die Daten von persistenten Volumes sichern und die Wiederherstellungsvorgänge regelmäßig testen, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
+Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 
 Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)][best-practices-multi-region].
 

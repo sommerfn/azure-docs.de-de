@@ -1,7 +1,7 @@
 ---
-title: Sprachunterstützung – Spracherkennungsdienst
+title: Sprachunterstützung – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Azure Speech Services unterstützen neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache zu Text und Text zu Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienste.
+description: Speech Service unterstützt neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache zu Text und Text zu Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienstfunktionen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 006b9401a3418e3b2b3803fa0b7897b28887d14a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606605"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815262"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
@@ -31,12 +31,12 @@ Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die fol
  ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Nein | Ja | Nein
  ca-ES | Katalanisch | Nein | Nein | Nein
  da-DK | Dänisch (Dänemark) | Nein | Nein | Nein
- de-DE | Deutsch (Deutschland) | Ja | Ja | Nein
- en-AU | Englisch (Australien) | Nein | Ja | Ja
- en-CA | Englisch (Kanada) | Nein | Ja | Ja
- en-GB | Englisch (Vereinigtes Königreich) | Nein | Ja | Ja
- en-IN | Englisch (Indien) | Ja | Ja | Ja
- en-NZ | Englisch (Neuseeland) | Nein | Ja | Ja  
+ de-DE | Deutsch (Deutschland) | Ja | Ja | Ja
+ en-AU | Englisch (Australien) | Nein | Ja | Nein
+ en-CA | Englisch (Kanada) | Nein | Ja | Nein
+ en-GB | Englisch (Vereinigtes Königreich) | Nein | Ja | Nein
+ en-IN | Englisch (Indien) | Ja | Ja | Nein
+ en-NZ | Englisch (Neuseeland) | Nein | Ja | Nein 
  en-US | Englisch (USA) | Ja | Ja | Ja
  es-ES | Spanisch (Spanien) | Ja | Ja | Nein
  es-MX | Spanisch (Mexiko) | Nein | Ja | Nein

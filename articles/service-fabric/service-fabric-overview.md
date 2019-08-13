@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 55bcce3c5a4b0dd00d9217d6cb3cc2cfbe6d5828
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753807"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816092"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Übersicht über Azure Service Fabric
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices und Container vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von nativer Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Service Fabric ist eine Plattform der nächsten Generation zum Erstellen und Verwalten leistungsstarker Tier-1-Anwendungen mit Cloudskalierung, die in Container ausgeführt werden.
@@ -67,7 +67,7 @@ Service Fabric verfügt über Unterstützung für den vollständigen Lebenszyklu
 
 Dank der Funktionen für die Anwendungslebenszyklusverwaltung von Service Fabric profitieren Anwendungsadministratoren und IT-Operatoren von einfachen Workflows und können Anwendungen so mit geringem Arbeitsaufwand vorbereiten, bereitstellen, patchen und überwachen. Diese integrierten Workflows entlasten IT-Operatoren bei der Gewährleistung der kontinuierlichen Anwendungsverfügbarkeit erheblich.
 
-Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices, Containern und anderen ausführbaren Dateien, die gemeinsam bereitgestellt werden. Dank leistungsstarker Typen für Anwendungen ermöglicht Service Fabric die Bereitstellung mehrerer Anwendungsinstanzen. Jede Instanz kann jeweils unabhängig voneinander verwaltet und aktualisiert werden. Maßgeblich dabei ist, dass Service Fabric jede ausführbare Datei und jeden Container zuverlässig bereitstellen kann. Mit Service Fabric können beispielsweise .NET, ASP.NET Core, Node.js, Windows-Container, Linux-Container, virtuelle Java-Computer, Skripts, Angular und alle anderen Komponenten bereitgestellt werden, aus denen sich Ihre Anwendung zusammensetzt.
+Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices, Containern und anderen ausführbaren Dateien, die gemeinsam bereitgestellt werden. Dank leistungsstarker Typen für Anwendungen ermöglicht Service Fabric die Bereitstellung mehrerer Anwendungsinstanzen. Jede Instanz kann jeweils unabhängig voneinander verwaltet und aktualisiert werden. Maßgeblich dabei ist, dass Service Fabric jede ausführbare Datei und jeden Container zuverlässig bereitstellen kann. Mit Service Fabric können beispielsweise .NET, ASP.NET Core, Python, Node.js, Windows-Container, Linux-Container, virtuelle Java-Computer, Skripts, Angular und alle anderen Komponenten bereitgestellt werden, aus denen sich Ihre Anwendung zusammensetzt.
 
 Service Fabric ist z.B. in CI/CD-Tools integriert wie z.B. [Azure Pipelines](https://www.visualstudio.com/team-services/), [Jenkins](https://jenkins.io/index.html), und [Octopus Deploy](https://octopus.com/) und kann mit jedem anderen beliebten CI/CD-Tool verwendet werden.
 

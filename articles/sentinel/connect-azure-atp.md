@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 77f745f92133f4f43cd2a65f2b69ded1eff9e8ed
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6f41a5704c783ba8aeab7bc2e82ef731c6a257ac
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620627"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599155"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verknüpfen von Daten aus Azure Advanced Threat Protection (ATP)
 
@@ -34,14 +34,15 @@ Sie können Protokolle aus [Azure Advanced Threat Protection](https://docs.micro
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Benutzer mit globalen Administrator- oder Sicherheitsadministratorberechtigungen.
-- Sie müssen ein Private Vorschau-Kunde von Azure ATP sein.
+- Sie müssen ein Vorschaukunde von Azure ATP sein.
 
 ## <a name="connect-to-azure-atp"></a>Herstellen einer Verbindung mit Azure ATP
 
-Stellen Sie sicher, dass die private Vorschauversion von Azure ATP [in Ihrem Netzwerk aktiviert](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1) ist.
+Stellen Sie sicher, dass die Vorschauversion von Azure ATP [in Ihrem Netzwerk aktiviert](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1) ist.
 Wenn Azure ATP bereitgestellt ist und Daten erfasst, können die verdächtigen Warnungen problemlos an Azure Sentinel gestreamt werden. Es kann bis zu 24 Stunden dauern, bis mit dem Streamen der Warnungen an Azure Sentinel begonnen wird.
 
 
+1. Zum Herstellen einer Verbindung zwischen Azure ATP und Azure Sentinel müssen Sie zunächst die Integration zwischen Azure ATP und Microsoft Cloud App Security aktivieren. Weitere Informationen hierzu finden Sie unter [Integration der Azure Advanced Threat Protection](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
 1. Klicken Sie in Azure Sentinel auf **Data connectors** (Datenconnectors) und anschließend auf die Kachel **Azure ATP**.
 

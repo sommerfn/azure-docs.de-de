@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: e7325282c6442a927f47df3e50efbfda481754fd
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667908"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742580"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -69,7 +69,7 @@ Um die VHD-Datei als Datenträger für eine neue Instanz eines vorhandenen virtu
 Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
 
 1.  Klicken Sie auf im Menü des Blatts für die VM auf **Datenträger**.
-2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Exportieren**.
+2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Datenträgerexport**.
 3.  Klicken Sie auf **URL generieren**.
 
     ![Generieren der URL](./media/download-vhd/export-generate.png)

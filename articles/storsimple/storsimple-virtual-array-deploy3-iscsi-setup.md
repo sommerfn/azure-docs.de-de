@@ -12,20 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61417034"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516811"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
 ![Prozessablauf für iSCSI-Setup](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 Dieses Bereitstellungstutorial bezieht sich auf das Microsoft Azure StorSimple Virtual Array. In diesem Tutorial wird beschrieben, wie Sie das anfängliche Setup durchführen, Ihren StorSimple-iSCSI-Server registrieren, die Geräteinstallation abschließen und anschließend Volumes auf dem als iSCSI-Server konfigurierten StorSimple Virtual Array erstellen, bereitstellen, initialisieren und formatieren. 
 

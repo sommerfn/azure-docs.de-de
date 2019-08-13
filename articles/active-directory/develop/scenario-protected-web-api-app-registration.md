@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4622cffedc159ce85166eafe571ccb26c2c1b4d
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: bbccfc38a4e5e4b31cb625c614e838a3c92e7429
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536853"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562299"
 ---
 # <a name="protected-web-api-app-registration"></a>Geschützte Web-API: App-Registrierung
 
@@ -43,7 +43,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie die akzeptierte Token-Vers
 3. Wenn Sie die Token-Version geändert haben, wählen Sie **Speichern**.
 
 > [!NOTE]
-> Die Web-API gibt an, welche Token-Version (v1.0 oder v2.0) sie akzeptiert. Wenn Clients einen Token für Ihre Web-API von der Microsoft Identitätsplattform v2.0 Endpunkt anfordern, erhalten sie einen Token, der angibt, welche Version von der Web-API akzeptiert wird.
+> Die Web-API gibt an, welche Token-Version (v1.0 oder v2.0) sie akzeptiert. Wenn Clients ein Token für Ihre Web-API vom Microsoft Identity Platform-Endpunkt (v2.0) anfordern, erhalten sie ein Token, das angibt, welche Version von der Web-API akzeptiert wird.
 
 ## <a name="no-redirect-uri"></a>Kein Umleitungs-URI
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cb2ca7229524cf8d84041140129c7b9ca6876ea3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 87216317a965e85d83aede468163f43b1716c45a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417807"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827240"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
 
@@ -55,7 +55,7 @@ Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirk
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
 1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**, und suchen Sie im Marketplace nach **Wiederherstellung**.
-2. Klicken Sie auf **Backup & Site Recovery (OMS)** , und klicken Sie auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
+2. Klicken Sie auf **Backup & Site Recovery** und auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
 1. Geben Sie unter **Recovery Services-Tresor** > **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
 2. Wählen Sie in **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. Für dieses Tutorial verwenden wir **contosoRG**.
 3. Wählen Sie in **Standort** die Region aus, in der der Tresor gespeichert werden soll. verwenden wir **Europa, Westen**.

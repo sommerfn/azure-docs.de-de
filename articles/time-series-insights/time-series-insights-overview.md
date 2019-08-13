@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 04/26/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce18b0060fe0bd0f9d5a8308fe1358e300c04441
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165622"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736191"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
@@ -33,7 +33,7 @@ Time Series Insights hat vier Hauptaufgaben bzw. -merkmale:
 
 Wenn Sie eine Anwendung zur internen Nutzung oder für externe Kunden erstellen, können Sie Time Series Insights als Back-End verwenden. Sie können damit Zeitreihendaten indizieren, speichern und aggregieren. Wenn Sie darauf aufbauend eine benutzerdefinierte Visualisierung und Benutzeroberfläche erstellen möchten, können Sie das [Client SDK](tutorial-explore-js-client-lib.md) verwenden. Time Series Insights verfügt außerdem über mehrere [Abfrage-APIs](how-to-shape-query-json.md) für diese kundenspezifischen Szenarien.
 
-Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert. Zeitreihendaten werden anhand von Zeitstempeln indiziert. Zeit ist die aussagekräftigste Achse für die Organisation solcher Daten. Zeitreihendaten gehen normalerweise in sequenzieller Reihenfolge ein und werden daher in der Regel als Einfügung und nicht als Aktualisierung der Datenbank behandelt.
+Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert. Zeitreihendaten werden anhand von Zeitstempeln indiziert. Zeit ist die aussagekräftigste Achse für die Organisation solcher Daten. Zeitreihendaten gehen normalerweise in sequenzieller Reihenfolge ein und werden daher als Einfügung und nicht als Aktualisierung der Datenbank behandelt.
 
 Das Speichern, Indizieren, Abfragen, Analysieren und Visualisieren großer Mengen an Zeitreihendaten kann eine Herausforderung darstellen.
 Azure Time Series Insights erfasst und speichert jedes neue Ereignis als eine Zeile, und die Änderung wird effizient im Zeitverlauf gemessen. Sie können daher zurückblicken und Erkenntnisse aus der Vergangenheit gewinnen, um zukünftige Änderungen vorhersagen zu können.

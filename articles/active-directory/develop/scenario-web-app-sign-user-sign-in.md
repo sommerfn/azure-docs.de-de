@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080066"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562205"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Web-App für Benutzeranmeldungen: Anmeldung
 
@@ -33,9 +33,9 @@ Der im vorherigen Artikel zur [App-Codekonfiguration](scenario-web-app-sign-user
 ## <a name="what-sign-out-involves"></a>Voraussetzungen für die Abmeldung
 
 Beim Abmelden von einer Web-App geht es um mehr als um das Entfernen der Informationen über das angemeldete Konto aus dem Status der Web-App.
-Die Web-App muss den Benutzer für die Abmeldung außerdem an den `logout`-Endpunkt von Microsoft Identity Platform v2.0 umleiten. Wenn Ihre Web-App den Benutzer an den `logout`-Endpunkt umleitet, löscht dieser Endpunkt die Sitzung des Benutzers aus dem Browser. Wenn die App nicht zum `logout`-Endpunkt wechselt, kann sich der Benutzer erneut für Ihre App authentifizieren, ohne die Anmeldeinformationen erneut einzugeben, weil der Benutzer nach wie vor über eine gültige SSO-Sitzung (Single Sign-On, Einmaliges Anmelden) beim Microsoft Identity Platform v2.0-Endpunkt verfügt.
+Die Web-App muss den Benutzer für die Abmeldung außerdem an den `logout`-Endpunkt von Microsoft Identity Platform umleiten. Wenn Ihre Web-App den Benutzer an den `logout`-Endpunkt umleitet, löscht dieser Endpunkt die Sitzung des Benutzers aus dem Browser. Wenn die App nicht zum `logout`-Endpunkt wechselt, kann sich der Benutzer erneut für Ihre App authentifizieren, ohne die Anmeldeinformationen erneut einzugeben, weil der Benutzer nach wie vor über eine gültige SSO-Sitzung (Single Sign-On, Einmaliges Anmelden) beim Microsoft Identity Platform-Endpunkt verfügt.
 
-Weitere Informationen finden Sie im Abschnitt [Senden einer Abmeldeanforderung](v2-protocols-oidc.md#send-a-sign-out-request) in der konzeptionellen Dokumentation von [Microsoft Identity Platform v2. 0 und dem OpenID Connect-Protokoll](v2-protocols-oidc.md).
+Weitere Informationen finden Sie im Abschnitt [Senden einer Abmeldeanforderung](v2-protocols-oidc.md#send-a-sign-out-request) in der konzeptionellen Dokumentation zu [Microsoft Identity Platform und OpenID Connect-Protokoll](v2-protocols-oidc.md).
 
 ## <a name="application-registration"></a>Anwendungsregistrierung
 

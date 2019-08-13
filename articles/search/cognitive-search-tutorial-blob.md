@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Aufrufen von Cognitive Services-REST-APIs in einer Indizierungspipeline – Azure Search'
+title: 'REST-Tutorial: Aufrufen von Cognitive Services in einer KI-Anreicherungspipeline – Azure Search'
 description: Enthält ein Schritt-für-Schritt-Beispiel für Datenextraktion, natürliche Sprache und KI-basierte Bildverarbeitung bei der Azure Search-Indizierung für Datenextraktion und -transformation über JSON-Blobs (mit Postman und REST-API).
 manager: pablocas
 author: luiscabrer
@@ -9,13 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: cedcc1be5525cc6932ff168e6549de84fa02a4ca
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: d431f0ced5b417e178e064dca347ae8d78f14e5d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669106"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840876"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST-Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline
 
@@ -488,4 +488,4 @@ Die schnellste Möglichkeit, das System nach einem Tutorial aufzuräumen, besteh
 Anpassen oder Erweitern der Pipeline mit benutzerdefinierten Qualifikationen. Das Erstellen einer benutzerdefinierten Qualifikation die Sie einer Qualifikationsgruppe hinzufügen, ermöglicht Ihnen, eigene, von Ihnen selbst erstellte Text- oder Bildanalysen einzubeziehen. 
 
 > [!div class="nextstepaction"]
-> [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für die kognitive Suche](cognitive-search-create-custom-skill-example.md)
+> [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)

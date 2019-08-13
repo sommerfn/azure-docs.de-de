@@ -4,14 +4,14 @@ description: Behandeln von Konflikten in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 77fb0e195cee03405c4a601fe8c57d4a2690a4b2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360360"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815075"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Verwalten von Konfliktauflösungsrichtlinien in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Bei Schreibvorgängen in mehreren Regionen können Konflikte auftreten, wenn meh
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Erstellen einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“
 
-Die folgenden Beispiele zeigen, wie Sie einen Container mit einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ einrichten. Der Standardpfad für „Letzter Schreiber gewinnt“ ist das Zeitstempelfeld oder die `_ts`-Eigenschaft. Er kann auch auf einen benutzerdefinierten Pfad für einen numerischen Typ festgelegt werden. Bei einem Konflikt ist der höchste Wert der Sieger. Sollte der Pfad nicht festgelegt oder ungültig sein, wird standardmäßig `_ts` verwendet. Mit dieser Richtlinie gelöste Konflikte werden im Konfliktfeed nicht angezeigt. Diese Richtlinie kann von allen APIs verwendet werden.
+Die folgenden Beispiele zeigen, wie Sie einen Container mit einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ einrichten. Der Standardpfad für „Letzter Schreiber gewinnt“ ist das Zeitstempelfeld oder die `_ts`-Eigenschaft. Bei der SQL-API kann er auch auf einen benutzerdefinierten Pfad mit einem numerischen Typ festgelegt werden. Bei einem Konflikt ist der höchste Wert der Sieger. Sollte der Pfad nicht festgelegt oder ungültig sein, wird standardmäßig `_ts` verwendet. Mit dieser Richtlinie gelöste Konflikte werden im Konfliktfeed nicht angezeigt. Diese Richtlinie kann von allen APIs verwendet werden.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -114,7 +114,6 @@ Gespeicherte Prozeduren zur Konfliktlösung müssen mithilfe der folgenden Funkt
 
 > [!IMPORTANT]
 > Wie bei jeder gespeicherten Prozedur kann eine benutzerdefinierte Konfliktlösungsprozedur auf alle Daten mit dem gleichen Partitionsschlüssel zugreifen und beliebige INSERT-, UPDATE- oder DELETE-Vorgänge durchführen, um Konflikte zu lösen.
-
 
 Diese gespeicherte Beispielprozedur löst Konflikte durch Auswählen des niedrigsten Werts aus dem Pfad `/myCustomId`.
 
@@ -273,7 +272,6 @@ udp_collection = self.try_create_document_collection(
 
 Nach dem Erstellen des Containers müssen Sie die gespeicherte Prozedur `resolver` erstellen.
 
-
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie
 
 Die folgenden Beispiele zeigen, wie Sie einen Container mit einer benutzerdefinierten Konfliktlösungsrichtlinie einrichten. Diese Konflikte werden im Konfliktfeed angezeigt.
@@ -428,10 +426,10 @@ while conflict:
 
 Erfahren Sie mehr über die folgenden Azure Cosmos DB-Konzepte:
 
-* [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
-* [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
-* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Hinzufügen/Entfernen von Regionen in Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [How to configure multi-master in your applications that use Azure Cosmos DB](how-to-multi-master.md) (Konfigurieren von Multimaster-Features in Anwendungen, die Azure Cosmos DB verwenden)
-* [Partitionierung und Datenverteilung](partition-data.md)
-* [Indizierung in Azure Cosmos DB](indexing-policies.md)
+- [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
+- [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
+- [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Hinzufügen/Entfernen von Regionen in Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [How to configure multi-master in your applications that use Azure Cosmos DB](how-to-multi-master.md) (Konfigurieren von Multimaster-Features in Anwendungen, die Azure Cosmos DB verwenden)
+- [Partitionierung und Datenverteilung](partition-data.md)
+- [Indizierung in Azure Cosmos DB](indexing-policies.md)

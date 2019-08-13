@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695400"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816324"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -65,7 +65,11 @@ Das grundlegende Format der Vorlage:
 ```json
     "location": "<region>",
 ```
-    
+
+## <a name="tags"></a>`Tags`
+
+Dabei handelt es sich um Schlüssel-Wert-Paare, die Sie für das generierte Image angeben können.
+
 ## <a name="depends-on-optional"></a>dependsON (Optional)
 
 Mit diesem optionalen Abschnitt kann sichergestellt werden, dass Abhängigkeiten durchgeführt werden, bevor der Vorgang fortgesetzt wird. 
@@ -344,7 +348,8 @@ Diese Vorgehensweise wird von Windows-Verzeichnissen und Linux-Pfaden unterstüt
  
 Wenn beim Herunterladen der Datei oder beim Platzieren der Datei im festgelegten Verzeichnis ein Fehler auftritt, schlägt der Anpassungsschritt fehl. Dies wird im Protokoll „customization.log“ dokumentiert.
 
->> Notiz! Der File Customizer ist nur für kleine Dateidownloads geeignet, < 20MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl, den Verwendungscode zum Herunterladen von Dateien, wie z.B. Linux`wget` oder`curl`, Windows,`Invoke-WebRequest` .
+> [!NOTE]
+> Der File Customizer ist nur für kleine Dateidownloads geeignet, < 20MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl, den Verwendungscode zum Herunterladen von Dateien, wie z.B. Linux`wget` oder`curl`, Windows,`Invoke-WebRequest` .
 
 Dateien in der Dateianpassung können mithilfe der [verwalteten Dienstidentität](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) aus Azure Storage heruntergeladen werden.
 

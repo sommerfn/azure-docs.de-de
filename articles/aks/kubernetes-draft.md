@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
 ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 07/30/2019
 ms.locfileid: "67303544"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Schnellstart: Entwickeln unter Azure Kubernetes Service (AKS) mit Draft
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie das Draft-Paket verwenden und eine Anwen
 
 * Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Docker muss installiert und konfiguriert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [Mac-][docker-for-mac], [Windows][docker-for-windows], oder [Linux]-System ([docker-for-linux]) konfiguriert werden kann.
+* Docker muss installiert und konfiguriert sein. Für Docker sind Pakete erhältlich, mit denen Docker in einem [Mac][docker-for-mac]-, [Windows][docker-for-windows]- oder [Linux][docker-for-linux]-System konfiguriert werden kann.
 * [Helm muss installiert sein.](https://github.com/helm/helm/blob/master/docs/install.md)
 * [Draft muss installiert sein][draft-documentation]
 
@@ -307,7 +307,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Die Schritte zum Entfernen des Dienstprinzipals werden im Artikel [Dienstprinzipale mit Azure Kubernetes Service (AKS)][sp-delete] beschrieben.
+> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

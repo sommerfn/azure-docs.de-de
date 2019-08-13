@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Azure Container Instances
+title: Ausführen von Azure Container Instances – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Stellen Sie den Container für den Speech-Dienst in einer Azure Container Instance bereit, und testen Sie diesen in einem Webbrowser.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 062765be22135b12abb29ff6f7ce8a772c67adae
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41589a12f16f330188e2971e3069eb715d1a7163
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711259"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559713"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Bereitstellen eines Containers für den Speech-Dienst in Azure Container Instances
 

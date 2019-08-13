@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: a53a62a7bc7a5c7f8d9bdabdf411588fdf7bd5e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257067"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552007"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -41,7 +41,7 @@ Im folgenden Diagramm finden Sie eine Darstellung des Datenflusses und der in di
    }
    ```
 
-2. **Cosmos DB:** Die generierten Daten werden in einer Azure Cosmos DB-Sammlung gespeichert.  
+2. **Cosmos DB:** Die generierten Daten werden in einer Azure Cosmos DB-Sammlung gespeichert.  
 
 3. **Änderungsfeed:** Der Änderungsfeed überwacht die Azure Cosmos DB-Sammlung hinsichtlich Änderungen. Jedes Mal, wenn ein neues Dokument zur Sammlung hinzugefügt wird (d.h. wenn ein Ereignis eintritt, wie z.B. ein Benutzer betrachtet einen Artikel, einen fügt den Artikel zu seinem Warenkorb hinzufügt oder kauft einen Artikel), löst der Änderungsfeed eine [Azure-Funktion](../azure-functions/functions-overview.md) aus.  
 

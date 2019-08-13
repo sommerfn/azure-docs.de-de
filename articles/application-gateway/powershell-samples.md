@@ -1,22 +1,22 @@
 ---
-title: PowerShell-Beispiele für Azure Application Gateway
-description: PowerShell-Beispiele für Azure Application Gateway
+title: Azure PowerShell-Beispiele für Azure Application Gateway
+description: Azure PowerShell-Beispiele für Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 6/18/2019
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.openlocfilehash: ce86a97f8f565c7917c8f71b8910acf8ceffbede
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164640"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824349"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>PowerShell-Beispiele für Azure Application Gateway
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure PowerShell-Beispiele für Azure Application Gateway
 
-Die folgende Tabelle enthält Links zu Azure PowerShell-Skriptbeispielen zur Erstellung von Anwendungsgateways.
+Die folgende Tabelle enthält Links zu Azure PowerShell-Skriptbeispielen für Azure Application Gateway.
 
 | | |
 |---|---|

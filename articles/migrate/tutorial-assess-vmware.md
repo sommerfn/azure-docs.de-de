@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 5f70037b1e6ce284b55ff5ff0ae38eb50c320122
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868659"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828303"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Bewerten von VMware-VMs mit der Azure Migrate-Serverbewertung
 
@@ -82,8 +82,8 @@ Von der Azure Von der Serverbewertung wird eine einfache VMware-VM-Appliance aus
 
 - Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an die Azure Migrate-Serverbewertung.
 - Die Einrichtung der Appliance umfasst Folgendes:
-    - Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server
-    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
+    - Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server.
+    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung.
     - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
 - Für ein einzelnes Azure Migrate-Projekt können mehrere Appliances eingerichtet werden. Für alle Appliances können insgesamt bis zu 35.000 VMs ermittelt werden. Pro Appliance können maximal 10.000 Server ermittelt werden.
 
@@ -104,12 +104,12 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die Version 1.19.06.27 muss der generierte Hash den folgenden Werten entsprechen: 
+3. Für die Version 2.19.07.30 muss der generierte Hash den folgenden Werten entsprechen: 
 
   **Algorithmus** | **Hashwert**
   --- | ---
-  MD5 | 605d208ac5f4173383f616913441144e
-  SHA256 | 447d16bd55f20f945164a1189381ef6e98475b573d6d1c694f3e5c172cfc30d4
+  MD5 | 27230f3b012187860281b912ee661709
+  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
 
 
 ### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
@@ -204,7 +204,7 @@ Es gibt zwei Arten von Bewertungen, die Sie mit der Azure Migrate-Serverbewertun
 
 **Bewertung** | **Details** | **Daten**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
+**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (Verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
 **Wie lokal** | Bewertungen basierend auf lokaler Größenanpassung | **Empfohlene VM-Größe**: Basierend auf der Größe der lokalen VM<br/><br> **Empfohlener Datenträgertyp**: Basierend auf der für die Bewertung ausgewählten Speichertypeinstellung
 
 
@@ -243,7 +243,7 @@ Eine Bewertung beschreibt Folgendes:
 
 ### <a name="view-an-assessment"></a>Anzeigen einer Bewertung
 
-1. Klicken Sie unter **Migrationsziele** >  **Server** auf **Bewertungen** (unter **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung)).
+1. Klicken Sie unter **Migrationsziele** >  **Server** auf **Bewertungen** (unter **Azure Migrate: Serverbewertung** aus.
 2. Klicken Sie unter **Bewertungen** auf eine Bewertung, um sie zu öffnen.
 
     ![Zusammenfassung der Bewertung](./media/tutorial-assess-vmware/assessment-summary.png)
@@ -300,7 +300,7 @@ Weitere Informationen zu bewährten Methoden für Zuverlässigkeitsstufen finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Einrichten einer Azure Migrate-Appliance

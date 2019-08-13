@@ -8,16 +8,47 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 3687a2fdcba9c2078bbbd9344089b5a22467682c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477488"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516395"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
 Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgung können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+### <a name="node-rename"></a>Szenario: Das Umbenennen eines registrierten Knotens erfordert das Aufheben der Registrierung und das erneute Registrieren.
+
+#### <a name="issue"></a>Problem
+
+Ein Knoten ist für Azure Automation registriert, und dann wird der Computername des im Betriebssystem geändert.  Berichte von diesem Knoten werden weiterhin mit dem ursprünglichen Namen angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Beim Umbenennen registrierter Knoten wird der Knotenname in Azure Automation nicht aktualisiert.
+
+#### <a name="resolution"></a>Lösung
+
+Heben Sie die Registrierung des Knotens in Azure Automation State Configuration auf, und registrieren Sie ihn erneut.  Berichte, die vor diesem Zeitpunkt im Dienst veröffentlicht wurden, sind anschließend nicht mehr verfügbar.
+
+
+### <a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über den HTTPS-Proxy wird nicht unterstützt.
+
+#### <a name="issue"></a>Problem
+
+Kunden haben gemeldet, dass beim Herstellen einer Verbindung über eine Proxylösung, die den HTTPS-Datenverkehr beendet und dann den Datenverkehr mit einem neuen Zertifikat erneut verschlüsselt, der Dienst die Verbindung nicht zulässt.
+
+#### <a name="cause"></a>Ursache
+
+Azure Automation unterstützt keine Neusignierung von Zertifikaten, die zum Verschlüsseln des Datenverkehrs verwendet werden.
+
+#### <a name="resolution"></a>Lösung
+
+Für dieses Szenario gibt es keine Problemumgehung.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 

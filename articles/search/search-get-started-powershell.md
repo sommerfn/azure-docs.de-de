@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell Schnellstart: Erstellen, Laden und Abfragen von Indizes mit Hilfe von Azure Search REST APIs – Azure Search'
+title: 'PowerShell Schnellstart: Erstellen, Laden und Abfragen von Indizes mithilfe von REST-APIs – Azure Search'
 description: Erläutert, wie Sie einen Index erstellen, Daten laden und Abfragen mit der Invoke-RestMethod von PowerShell und der Azure Search REST-API ausführen.
 ms.date: 07/11/2019
 author: heidisteen
@@ -8,14 +8,13 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 6bff2c84a4bfd81b94054b85744c17a1cd217756
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: quickstart
+ms.openlocfilehash: 3c47a9a809357d1ad09d8a2dd2ef5a7f1a31a02d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847067"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840722"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Index in PowerShell mithilfe von REST-APIs
 > [!div class="op_single_selector"]

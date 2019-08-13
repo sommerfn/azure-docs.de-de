@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490071"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517006"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Aktivieren der Azure Active Directory-Authentifizierung für Azure-SSIS Integration Runtime
 
@@ -160,34 +160,23 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Stud
 
 4.  Klicken Sie mit der rechten Maustaste auf die **master**-Datenbank, und wählen Sie **Neue Abfrage** aus.
 
-5.  Rufen Sie die verwaltete Identität für Ihre ADF ab. Sie können die Schritte im Artikel [Verwaltete Identitäten für Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) durchführen, um die verwaltete Identitätsanwendungs-ID des Prinzipals abzurufen (verwenden Sie für diesen Zweck aber nicht die verwaltete Identitätsobjekt-ID).
-
-6.  Führen Sie im Abfragefenster das folgende T-SQL-Skript aus, um die verwaltete Identität für Ihre ADF in den Binärtyp umzuwandeln:
+5.  Führen Sie im Abfragefenster das folgende T-SQL-Skript aus, um die verwaltete Identität für Ihre ADF als Benutzer hinzuzufügen.
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = '{your Managed Identity Application ID}'
-    select CAST(@applicationId AS varbinary)
-    ```
-    
-    Der Befehl sollte erfolgreich abgeschlossen und die verwaltete Identität für Ihre ADF im Binärformat angezeigt werden.
-
-7.  Löschen Sie den Inhalt des Abfragefensters, und führen Sie das folgende T-SQL-Skript aus, um die verwaltete Identität für Ihre ADF als Benutzer hinzuzufügen.
-
-    ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your Managed Identity Application ID as binary}, TYPE = E
-    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
-    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
+    CREATE LOGIN [{your ADF name}] FROM EXTERNAL PROVIDER
+    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{your ADF name}]
+    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{your ADF name}]
     ```
     
     Der Befehl sollte erfolgreich abgeschlossen werden und der verwalteten Identität für Ihre ADF die Möglichkeit gewähren, eine Datenbank (SSISDB) zu erstellen.
 
-8.  Wenn Ihre SSISDB mit SQL-Authentifizierung erstellt wurde und Sie zur Azure AD-Authentifizierung wechseln möchten, damit Ihre Azure-SSIS IR darauf zugreifen kann, klicken Sie mit der rechten Maustaste auf die **SSISDB**-Datenbank, und wählen Sie**Neue Abfrage** aus.
+6.  Wenn Ihre SSISDB mit SQL-Authentifizierung erstellt wurde und Sie zur Azure AD-Authentifizierung wechseln möchten, damit Ihre Azure-SSIS IR darauf zugreifen kann, klicken Sie mit der rechten Maustaste auf die **SSISDB**-Datenbank, und wählen Sie**Neue Abfrage** aus.
 
-9.  Geben Sie im Abfragefenster den folgenden T-SQL-Befehl ein, und wählen Sie auf der Symbolleiste **Ausführen** aus.
+7.  Geben Sie im Abfragefenster den folgenden T-SQL-Befehl ein, und wählen Sie auf der Symbolleiste **Ausführen** aus.
 
     ```sql
-    CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo
-    ALTER ROLE db_owner ADD MEMBER [{the managed identity name}]
+    CREATE USER [{your ADF name}] FOR LOGIN [{your ADF name}] WITH DEFAULT_SCHEMA = dbo
+    ALTER ROLE db_owner ADD MEMBER [{your ADF name}]
     ```
 
     Der Befehl sollte erfolgreich abgeschlossen werden und der verwalteten Identität für Ihre ADF die Möglichkeit gewähren, auf die SSISDB zuzugreifen.

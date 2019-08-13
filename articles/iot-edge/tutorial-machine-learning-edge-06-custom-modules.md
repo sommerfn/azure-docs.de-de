@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16c32fc14805ac8ae1412671b2bb400456b4ab7d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603644"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840109"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 
@@ -92,11 +92,11 @@ Während der Ausführung des zweiten unserer beiden Azure Notebooks haben wir ei
        }
        ```
 
-     * **Modules:** Dieser Abschnitt enthält den Satz benutzerdefinierter Module, die zu dieser Projektmappe gehören. Sie werden feststellen, dass dieser Abschnitt derzeit zwei Module enthält: tempSensor und turbofanRulClassifier. Das Modul tempSensor wurde von der Visual Studio Code-Vorlage installiert, aber für diese Projektmappe benötigen wir es nicht. Sie können die Definition des tempSensor-Moduls aus dem Abschnitt „modules“ löschen. Beachten Sie, dass die turbofanRulClassifier-Moduldefinition auf das Image in Ihrer Containerregistrierung verweist. Weitere Module, die wir der Projektmappe hinzufügen, werden in diesem Abschnitt angezeigt.
+     * **Modules:** Dieser Abschnitt enthält den Satz benutzerdefinierter Module, die zu dieser Projektmappe gehören. Sie werden feststellen, dass dieser Abschnitt derzeit zwei Module enthält: SimulatedTemperatureSensor und turbofanRulClassifier. Das Modul SimulatedTemperatureSensor wurde von der Visual Studio Code-Vorlage installiert, für diese Projektmappe benötigen wir es jedoch nicht. Sie können die Definition des SimulatedTemperatureSensor-Moduls aus dem Abschnitt „modules“ löschen. Beachten Sie, dass die turbofanRulClassifier-Moduldefinition auf das Image in Ihrer Containerregistrierung verweist. Weitere Module, die wir der Projektmappe hinzufügen, werden in diesem Abschnitt angezeigt.
 
        ```json
        "modules": {
-         "tempSensor": {
+         "SimulatedTemperatureSensor": {
            "version": "1.0",
            "type": "docker",
            "status": "running",
@@ -119,7 +119,7 @@ Während der Ausführung des zweiten unserer beiden Azure Notebooks haben wir ei
        }
        ```
 
-     * **Routes:** Wir werden in diesem Tutorial recht viel mit Routen arbeiten. Routen definieren, wie Module miteinander kommunizieren. Die von der Vorlage definierten beiden Routen stimmen nicht mit dem Routing überein, das wir benötigen. Die erste Route sendet alle Daten aus jeder Ausgabe des Klassifizierers an den IoT-Hub ($upstream). Die andere Route ist für tempSensor bestimmt, was wir gerade gelöscht haben. Löschen Sie die zwei Standardrouten.
+     * **Routes:** Wir werden in diesem Tutorial recht viel mit Routen arbeiten. Routen definieren, wie Module miteinander kommunizieren. Die von der Vorlage definierten beiden Routen stimmen nicht mit dem Routing überein, das wir benötigen. Die erste Route sendet alle Daten aus jeder Ausgabe des Klassifizierers an den IoT-Hub ($upstream). Die andere Route ist für das SimulatedTemperatureSensor-Modul bestimmt, das wir gerade gelöscht haben. Löschen Sie die zwei Standardrouten.
 
        ```json
        "$edgeHub": {
@@ -127,7 +127,7 @@ Während der Ausführung des zweiten unserer beiden Azure Notebooks haben wir ei
            "schemaVersion": "1.0",
            "routes": {
              "turbofanRulClassifierToIoTHub": "FROM /messages/modules/turbofanRulClassifier/outputs/\* INTO $upstream",
-             "sensorToturbofanRulClassifier": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\\"/modules/turbofanRulClassifier/inputs/input1\\")"
+             "sensorToturbofanRulClassifier": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\\"/modules/turbofanRulClassifier/inputs/input1\\")"
            },
            "storeAndForwardConfiguration": {
              "timeToLiveSecs": 7200

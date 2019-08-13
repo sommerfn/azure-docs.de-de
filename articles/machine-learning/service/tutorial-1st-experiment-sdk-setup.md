@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Einrichten der Umgebung und des Arbeitsbereichs'
 titleSuffix: Azure Machine Learning service
-description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie das in Jupyter-Notebooks ausgeführte Azure Machine Learning Python SDK einrichten.
+description: In dieser Tutorialreihe erfahren Sie Schritt für Schritt, wie Sie die ersten Schritte mit dem in Jupyter Notebook-Instanzen ausgeführten Azure Machine Learning Python SDK ausführen.  In Teil 1 wird die Erstellung einer Cloudumgebung für Notebook-Server sowie eines Arbeitsbereichs für das Verwalten Ihrer Experimente und Machine Learning-Modelle erläutert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: e17d9286453aeb5c7eac688555177c2c42faad21
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668597"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828680"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Tutorial: Einrichten der Umgebung und des Arbeitsbereichs
 
@@ -25,7 +25,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Erstellen eines Machine Learning-Arbeitsbereichs für das nächste Tutorial
-> * Erstellen einer Umgebung mit cloudbasiertem Notebook-Server
+> * Erstellen einer Notebook-VM, eines cloudbasierten Jupyter Notebook-Servers, auf dem das Azure Machine Learning Python SDK bereits installiert und konfiguriert ist
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,14 +49,12 @@ Erstellen Sie in Ihrem Arbeitsbereich eine Cloudressource, um erste Schritte mit
 
 1. Wählen Sie **+Neu** aus, um eine Notebook-VM zu erstellen.
 
-     ![Auswählen der neuen VM](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![Auswählen der neuen VM](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. Geben Sie einen Namen für Ihre VM an. Klicken Sie anschließend auf **Erstellen**.
 
     > [!NOTE]
     > Der Notebook-VM-Name muss zwischen 2 und 16 Zeichen lang sein. Gültige Zeichen sind Buchstaben, Ziffern und Bindestriche.  Der Name muss darüber hinaus im Azure-Abonnement eindeutig sein.
-
-    ![Erstellen eines neuen virtuellen Computers](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Warten Sie, bis sich der Status in **Wird ausgeführt** ändert.
 
@@ -66,7 +64,7 @@ Nachdem Ihre VM ausgeführt wird, verwenden Sie den Abschnitt **Notebook-VMs**, 
 
 1. Wählen Sie **Jupyter** in der Spalte **URI** für Ihre VM aus.
 
-    ![Starten des Jupyter Notebook-Servers](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![Starten des Jupyter Notebook-Servers](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     Der Link startet Ihren Notebook-Server und öffnet die Jupyter Notebook-Webseite im Browser auf einer neuen Registerkarte.  Dieser Link funktioniert nur für die Person, die die VM erstellt. Jeder Benutzer des Arbeitsbereichs muss seinen eigenen virtuellen Computer erstellen.
 
@@ -87,7 +85,7 @@ Sollten Sie einen cloudbasierten Notebook-Server verwendet haben, beenden Sie au
 
 1. Wählen Sie in Ihrem Arbeitsbereich **Notebook-VMs** aus.
 
-   ![Beenden des VM-Servers](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![Beenden des VM-Servers](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Wählen Sie den virtuellen Computer in der Liste aus.
 

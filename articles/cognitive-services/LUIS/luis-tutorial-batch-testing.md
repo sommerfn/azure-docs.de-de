@@ -1,5 +1,5 @@
 ---
-title: Batchtest
+title: Batchtest – LUIS
 titleSuffix: Azure Cognitive Services
 description: Dieses Tutorial veranschaulicht die Verwendung von Batchtests zum Ermitteln von Problemen bei der Vorhersage für Äußerungen in Ihrer App und zu ihrer Behebung.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: af04ca19961abcfc7ee218824a4a1a804f7ad79c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6b3f864ded8b6f5ac0a1d839768801788d7d765
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146155"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560126"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 

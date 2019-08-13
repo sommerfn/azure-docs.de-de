@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850132"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840135"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -369,9 +369,9 @@ Die IoT Edge-Erweiterung für Visual Studio Code stellt in jeder IoT Edge-Projek
 
 1. Öffnen Sie die Datei **deployment.template.json** aus dem Projektmappenordner. 
 
-2. Navigieren Sie zum Abschnitt **modules**. Er sollte drei Module enthalten: die beiden, die Sie erstellt haben (also „classifier“ und „cameraCapture“), und ein drittes (tempSensor), das standardmäßig vorhanden ist. 
+2. Navigieren Sie zum Abschnitt **modules**. Er sollte drei Module enthalten: die beiden, die Sie erstellt haben (also „classifier“ und „cameraCapture“), und ein drittes (SimulatedTemperatureSensor), das standardmäßig vorhanden ist. 
 
-3. Löschen Sie das Modul **tempSensor** zusammen mit allen dazugehörigen Parametern. Dieses Modul dient zur Bereitstellung von Beispieldaten für Testszenarien und wird in dieser Bereitstellung nicht benötigt. 
+3. Löschen Sie das Modul **SimulatedTemperatureSensor** zusammen mit allen dazugehörigen Parametern. Dieses Modul dient zur Bereitstellung von Beispieldaten für Testszenarien und wird in dieser Bereitstellung nicht benötigt. 
 
 4. Sollten Sie das Bildklassifizierungsmodul nicht **classifier** genannt haben, überprüfen Sie nun den Namen, und vergewissern Sie sich, dass er vollständig in Kleinbuchstaben angegeben ist. Das Modul „cameraCapture“ ruft das Modul „classifier“ unter Verwendung einer Anforderungsbibliothek auf, die alle Anforderungen in Kleinbuchstaben formatiert, und von IoT Edge wird die Groß-/Kleinschreibung berücksichtigt. 
 

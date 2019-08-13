@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/27/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 325915aae43c905236910382f650730a6daa127a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ff1bd3c6e1f3cf98e92e10eecf972681ed6c7819
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595324"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816178"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple-Sicherheit: Übersicht
 
@@ -29,7 +29,7 @@ Zu den Aspekten in Bezug auf die Sicherheit der Azure-Infrastruktur gehören die
 
 ### <a name="datacenter-security"></a>Sicherheit im Datencenter 
 
-Microsoft verfügt über eine komplette Abteilung, die sich mit der Entwicklung, der Erstellung und dem Betrieb der Einrichtungen zur Unterstützung von Azure befasst. Dieses Team hat die Aufgabe, die physische Sicherheit auf dem neuesten Stand zu halten. Weitere Informationen zur physischen Sicherheit finden Sie unter [Azure-Einrichtungen, Gelände und physische Sicherheit](https://docs.microsoft.com/azure/security/azure-physical-security).
+Microsoft verfügt über eine komplette Abteilung, die sich mit der Entwicklung, der Erstellung und dem Betrieb der Einrichtungen zur Unterstützung von Azure befasst. Dieses Team hat die Aufgabe, die physische Sicherheit auf dem neuesten Stand zu halten. Weitere Informationen zur physischen Sicherheit finden Sie unter [Azure-Einrichtungen, Gelände und physische Sicherheit](https://docs.microsoft.com/azure/security/fundamentals/physical-security.
 
 ### <a name="equipment-location"></a>Standort der Ausrüstung
 

@@ -1,5 +1,5 @@
 ---
-title: Neuerungen – Language Understanding
+title: Neuigkeiten – Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden Neuerungen zu Language Understanding beschrieben.
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2efc48df906117a8d01ea8c309f001d2f623444f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485077"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559897"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 

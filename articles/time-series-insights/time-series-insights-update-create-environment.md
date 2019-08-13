@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677866"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725828"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Tutorial: Einrichten einer Azure Time Series Insights Preview-Umgebung
 
@@ -62,7 +62,7 @@ In diesem Abschnitt erstellen Sie drei simulierte Geräte, die Daten an eine Azu
 
     [![Seite zum Erstellen der Gerätesimulationslösung](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Erstellen einer Time Series Insights Preview-PAYG-Umgebung
+## <a name="create-a-preview-payg-environment"></a>Erstellen einer Vorschauumgebung für nutzungsbasierte Zahlung
 
 In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Preview-Umgebung erstellen und mit dem IoT-Hub verbinden, der vom IoT Solution Accelerator über das [Azure-Portal](https://portal.azure.com/) erstellt wurde.
 
@@ -130,7 +130,9 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Pr
 
    Falls Ihre Anmeldeinformationen nicht aufgelistet sind, müssen Sie sich selbst die Zugriffsberechtigung für die Umgebung erteilen. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [Gewähren von Datenzugriff für eine Umgebung](./time-series-insights-data-access.md).
 
-## <a name="stream-data-into-your-environment"></a>Streamen von Daten in Ihre Umgebung
+## <a name="stream-data"></a>Streamen von Daten
+
+Sie haben Ihre Time Series Insights-Umgebung bereitgestellt und können nun Daten zur Analyse an diese Umgebung streamen.
 
 1. Navigieren Sie zurück zur Seite [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators). Suchen Sie Ihre Lösung in Ihrem Solution Accelerator-Dashboard. Wählen Sie dann **Starten** aus:
 
@@ -158,7 +160,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Pr
 
     [![Azure IoT-Simulationsdashboard](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>Analysieren von Daten in Ihrer Umgebung
+## <a name="analyze-data"></a>Daten analysieren
 
 In diesem Abschnitt führen Sie mit dem [Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md) grundlegende Analysen für Ihre Zeitreihendaten durch.
 

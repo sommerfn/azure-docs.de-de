@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67836977"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
@@ -27,7 +27,7 @@ In diesem Artikel wird erläutert, wie Sie ConfigMaps für grundlegende Anpassun
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen in der AKS-Schnellstartanleitung. Verwenden Sie dafür die [Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 ## <a name="what-is-supportedunsupported"></a>Was wird unterstützt/nicht unterstützt?
 
@@ -91,7 +91,7 @@ data:
     }
 ```
 
-Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete], damit der Kubernetes Scheduler sie erneut erstellt:
+Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply], und geben Sie den Namen Ihres YAML-Manifests an. Erzwingen Sie für die Neuerstellung dann mit [kubectl delete pod][kubectl delete] das erneute Laden der ConfigMap durch CoreDNS für den Kubernetes Scheduler:
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -119,7 +119,7 @@ data:
     }
 ```
 
-Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete], damit der Kubernetes Scheduler sie erneut erstellt:
+Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply], und geben Sie den Namen Ihres YAML-Manifests an. Erzwingen Sie für die Neuerstellung dann mit [kubectl delete pod][kubectl delete] das erneute Laden der ConfigMap durch CoreDNS für den Kubernetes Scheduler:
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -151,7 +151,7 @@ data:
 
 ```
 
-Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete], damit der Kubernetes Scheduler sie erneut erstellt:
+Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply], und geben Sie den Namen Ihres YAML-Manifests an. Erzwingen Sie für die Neuerstellung dann mit [kubectl delete pod][kubectl delete] das erneute Laden der ConfigMap durch CoreDNS für den Kubernetes Scheduler:
 
 ```console
 kubectl apply -f corednsms.yaml

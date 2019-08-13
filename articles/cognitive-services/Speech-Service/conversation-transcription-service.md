@@ -1,5 +1,5 @@
 ---
-title: 'Unterhaltungstranskription: Speech-Dienste'
+title: Unterhaltungstranskription – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Die Unterhaltungstranskription ist ein erweitertes Feature der Speech-Dienste, das Spracherkennung, Sprecheridentifikation und Diarisierung in Echtzeit kombiniert. Die Unterhaltungstranskription eignet sich optimal für das Transkribieren persönlicher Besprechungen, wobei zwischen Sprechern unterschieden werden kann. Sie können sehen, wann jemand was gesagt hat, und die Teilnehmer können sich auf die Besprechung konzentrieren und zeitnah die nächsten Schritte ausführen. Dieses Feature verbessert auch die Barrierefreiheit. Durch eine Transkription können Sie Teilnehmer mit vermindertem Hörvermögen aktiv einbeziehen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 18de3e52d61afd8e1ef20f80c020c8b7d96b9757
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: acbf82335523ee226f4b899180f0f22cb94cca5e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603250"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562890"
 ---
 # <a name="what-is-conversation-transcription"></a>Was ist Unterhaltungstranskription?
 

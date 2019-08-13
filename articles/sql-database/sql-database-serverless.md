@@ -296,7 +296,7 @@ Der Einzelpreis für virtuelle Kerne ergibt sich aus den Kosten pro virtuellem K
 Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
 - **Metrik**: app_cpu_billed (virtueller Kern – Sekunden)
-- **Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB · 1/3, genutzter Speicher GB · 1/3)
+- ***Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
 - **Berichtsfrequenz**: Pro Minute
 
 Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.
@@ -309,13 +309,13 @@ Die genaue Berechnung der Computekosten für dieses Beispiel lautet:
 
 |Zeitintervall|Pro Sekunde verwendete virtuelle Kerne|Pro Sekunde verwendete GB|Berechnete Computedimension|Für Zeitintervall berechnete Sekunden für virtuelle Kerne|
 |---|---|---|---|---|
-|0:00 - 1:00|4|9|Verwendete virtuelle Kerne|4 virtuelle Kerne · 3.600 Sekunden = 14.400 Sekunden für virtuelle Kerne|
+|0:00 - 1:00|4|9|Verwendete virtuelle Kerne|4 virtuelle Kerne * 3.600 Sekunden = 14.400 Sekunden für virtuelle Kerne|
 |1:00 - 2:00|1|12|Verwendeter Arbeitsspeicher|12 GB * 1/3 * 3600 Sekunden = 14400 Sekunden für virtuelle Kerne|
 |2:00 - 8:00|0|0|Mindestens bereitgestellter Arbeitsspeicher|3 GB * 1/3 * 21.600 Sekunden = 21.600 Sekunden für virtuelle Kerne|
 |8:00 - 24:00|0|0|Keine Berechnung von Computeleistung während des Anhaltens|0 Sekunden für virtuelle Kerne|
 |Gesamte berechnete Sekunden für virtuelle Kerne in 24 Stunden||||50.400 Sekunden für virtuelle Kerne|
 
-Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000073 USD/V-Kern/Sekunde · 50.400 Sekunden für virtuelle Kerne = 3,68 USD
+Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000073 USD/V-Kern/Sekunde * 50.400 Sekunden für virtuelle Kerne = 3,68 USD
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 

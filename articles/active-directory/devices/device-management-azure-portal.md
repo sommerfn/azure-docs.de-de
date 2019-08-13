@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f33b52255b1401e3595687612610a4688ad026d
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 7f64beb80d1a11930fee74e669675b39087cade0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461455"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562238"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -91,13 +91,19 @@ Sie haben zwei Optionen, um nach registrierten und eingebundenen Geräten zu suc
 
 Bei beiden Optionen erhalten Sie eine Ansicht, die:
 
-- Ihnen die Suche nach Geräten mit dem Anzeigenamen als Filter ermöglicht.
+- Ihnen die Suche nach Geräten mit dem Anzeigenamen oder der Geräte-ID als Filter ermöglicht.
 - Eine detaillierte Übersicht über registrierte und verknüpfte Geräte enthält.
 - Ihnen die Durchführung allgemeiner Geräteverwaltungsaufgaben ermöglicht.
 
 ![Alle Geräte](./media/device-management-azure-portal/51.png)
 
-Für einige iOS-Geräte werden in Gerätenamen, die Apostrophe enthalten, möglicherweise andere Zeichen verwendet, die wie Apostrophe aussehen. Die Suche nach solchen Geräte ist daher ein wenig kompliziert. Wenn Ihnen Suchergebnisse nicht ordnungsgemäß angezeigt werden, stellen Sie sicher, dass die Suchzeichenfolge ein Zeichen enthält, das einem Apostroph entspricht.
+>[!TIP]
+>
+>* Wenn in der Spalte „REGISTRIERT“ ein Gerät mit dem Zusatz „In Hybrid-Azure AD eingebunden“ und dem Zustand „Ausstehend“ angezeigt wird, deutet das darauf hin, dass das Gerät von Azure AD Connect synchronisiert wurde und auf die vollständige Registrierung vom Client wartet. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md). Weitere Informationen finden Sie im Artikel mit [häufig gestellten Fragen zu Geräten](faq.md).
+>
+>   ![Ausstehende Geräte](./media/device-management-azure-portal/75.png)
+>
+>* Für einige iOS-Geräte werden in Gerätenamen, die Apostrophe enthalten, möglicherweise andere Zeichen verwendet, die wie Apostrophe aussehen. Die Suche nach solchen Geräte ist daher ein wenig kompliziert. Wenn Ihnen Suchergebnisse nicht ordnungsgemäß angezeigt werden, stellen Sie sicher, dass die Suchzeichenfolge ein Zeichen enthält, das einem Apostroph entspricht.
 
 ## <a name="device-identity-management-tasks"></a>Geräteidentitätsverwaltungsaufgaben
 
@@ -151,7 +157,7 @@ Sie haben zwei Optionen, um ein Gerät zu löschen:
    - Entfernt alle Details, die an das Gerät angefügt wurden, z.B. BitLocker-Schlüssel für Windows-Geräte  
    - Stellt eine Aktivität dar, die nicht rückgängig gemacht werden kann, und wird nur empfohlen, wenn das Löschen notwendig ist
 
-Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde.
+Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde. Informieren Sie sich über das [Verwalten veralteter Geräte](device-management-azure-portal.md), bevor Sie Geräte löschen.
 
 ### <a name="view-or-copy-device-id"></a>Anzeigen oder Kopieren einer Geräte-ID
 
@@ -167,11 +173,12 @@ Sie können die BitLocker-Schlüssel anzeigen und kopieren, um Benutzern die Wie
 
 Zum Anzeigen oder Kopieren der BitLocker-Schlüssel müssen Sie entweder der Besitzer des Geräts oder ein Benutzer sein, dem mindestens eine der folgenden Rollen zugewiesen ist:
 
+- Cloudgeräteadministrator
 - Globaler Administrator
 - Helpdeskadministrator
+- Intune-Dienstadministrator
 - Sicherheitsadministrator
 - Sicherheitsleseberechtigter
-- Intune-Dienstadministrator
 
 > [!NOTE]
 > In Hybrid-Azure AD eingebundene Windows 10-Geräte haben keinen Besitzer. Wenn Sie also ein Gerät nach Besitzer suchen und es nicht finden, suchen Sie nach der Geräte-ID.

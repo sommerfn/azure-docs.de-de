@@ -1,7 +1,7 @@
 ---
-title: Überprüfen der Datenqualität für Custom Speech – Speech-Dienste
-titlesuffix: Azure Cognitive Services
-description: Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Über das Custom Speech-Portal können Sie hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist.  Mit diesem Tool können Sie schnell die Qualität des Baseline-Spracherkennungsmodells von Microsoft oder eines trainierten benutzerdefinierten Modells überprüfen, ohne Audiodaten transkribieren zu müssen.
+title: Überprüfen der Datenqualität für Custom Speech – Speech Service
+titleSuffix: Azure Cognitive Services
+description: Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Über das Custom Speech-Portal können Sie hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist.  Mit diesem Tool können Sie schnell die Qualität unseres Baseline-Spracherkennungsmodells oder eines trainierten benutzerdefinierten Modells überprüfen, ohne Audiodaten transkribieren zu müssen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 900d9b032b4ed121589d904a8ad18059b3283661
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603131"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562850"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 

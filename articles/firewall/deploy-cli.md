@@ -216,7 +216,7 @@ az network vnet subnet update \
 
 ## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
 
-Die Anwendungsregel lässt ausgehenden Zugriff auf „www.google.com“ zu.
+Die Anwendungsregel lässt ausgehenden Zugriff auf www.google.com zu.
 
 ```azurecli-interactive
 az network firewall application-rule create \
@@ -284,7 +284,7 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Die Anforderungen an „www.google.com“ sollten erfolgreich sein, die an „www.microsoft.com“ sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
+   Die Anforderungen an www.google.com sollten erfolgreich sein, die an www.microsoft.com sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
 
 Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 

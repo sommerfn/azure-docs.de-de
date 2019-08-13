@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Konten und Schlüsseln
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Verwalten von Konten und Schlüsseln – LUIS
+titleSuffix: Azure Cognitive Services
 description: Die zwei entscheidenden Informationen für ein LUIS-Konto sind das Benutzerkonto und der Authoringschlüssel. Ihre Anmeldeinformationen werden auf „account.microsoft.com“ verwaltet. Ihr Authoringschlüssel wird auf der Seite „Einstellungen“ des LUIS-Portals verwaltet.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d5a1d7ee3b8b16631f7b919f3aece0848d662e62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28f8a15922a3a3e4e3b464b86bdfea07d329a848
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523519"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638267"
 ---
 # <a name="manage-account-and-authoring-key"></a>Verwalten von Konto und Authoringschlüssel
 

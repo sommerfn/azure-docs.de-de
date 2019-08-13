@@ -1,6 +1,6 @@
 ---
-title: Vordefinierte DatetimeV2-Entitäten
-titleSuffix: Azure
+title: Vordefinierte DatetimeV2-Entitäten – LUIS
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vordefinierten Entität „datetimeV2“ in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148635"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560281"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte DatetimeV2-Entität für eine LUIS-App
 
@@ -91,7 +91,7 @@ Jedes Element des `values`-Arrays kann folgende Felder enthalten:
 
 | Min | max |
 |----------|-------------|
-| 1\. Januar 1900   | 31\. Dezember 2099 |
+| 1\. Januar 1900   | 31. Dezember 2099 |
 
 ## <a name="ambiguous-dates"></a>Mehrdeutige Datumsangaben
 

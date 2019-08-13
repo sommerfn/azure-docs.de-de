@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 75bfdce02313ab7e799f6535f247407c239653b8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619806"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780481"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -34,7 +34,7 @@ In diesem Schnellstart erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mit
 
 ## <a name="get-visualization"></a>Visualisierung
 
-Bevor Sie die Vorgänge in Ihrer Umgebung visualisieren und analysieren, sollten Sie zunächst einen Blick auf das Übersichtsdashboard werfen, um eine Vorstellung vom Sicherheitsstatus Ihrer Organisation zu bekommen. Sie können auf jedes Element auf diesen Kacheln klicken, um Detailinformationen zu den zugehörigen Rohdaten anzuzeigen. Um Fehlinformationen zu reduzieren und die Anzahl von Warnungen zu minimieren, die Sie überprüfen und untersuchen müssen, korreliert Azure Sentinel Warnungen mithilfe einer Zusammenführungstechnik zu Fällen. **Fälle** sind Gruppen von verwandten Warnungen, die zusammen einen handlungsrelevanten Incident bilden, den Sie untersuchen und beheben können.
+Bevor Sie die Vorgänge in Ihrer Umgebung visualisieren und analysieren, sollten Sie zunächst einen Blick auf das Übersichtsdashboard werfen, um eine Vorstellung vom Sicherheitsstatus Ihrer Organisation zu bekommen. Sie können auf jedes Element auf diesen Kacheln klicken, um Detailinformationen zu den zugehörigen Rohdaten anzuzeigen. Um Fehlinformationen zu reduzieren und die Anzahl von Warnungen zu minimieren, die Sie überprüfen und untersuchen müssen, korreliert Azure Sentinel Warnungen mithilfe einer Zusammenführungstechnik zu Incidents. **Incidents** sind Gruppen von verwandten Warnungen, die zusammen einen handlungsrelevanten Incident bilden, den Sie untersuchen und beheben können.
 
 - Wählen Sie im Azure-Portal Azure Sentinel und anschließend den Arbeitsbereich aus, den Sie überwachen möchten.
 
@@ -53,7 +53,7 @@ Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den S
    ![Azure Sentinel-Karte](./media/qs-get-visibility/map.png)
 
 
-- **Recent cases** (Aktuelle Fälle): Hier können Sie Ihre aktuellen Fälle, deren Schweregrad und die Anzahl von Warnungen im Zusammenhang mit dem Fall einsehen. Wenn Sie eine plötzliche Spitze bei einem bestimmten Warnungstyp feststellen, kann dies auf einen aktiven Angriff hinweisen. Bei einem plötzlichen Spitzenwert von 20 Pass-the-Hash-Ereignissen von Azure ATP ist es beispielsweise möglich, dass gerade ein Angriffsversuch stattfindet.
+- **Recent incidents** (Aktuelle Incidents): Hier können Sie Ihre aktuellen Incidents, deren Schweregrad und die Anzahl von Warnungen im Zusammenhang mit dem Incident einsehen. Wenn Sie eine plötzliche Spitze bei einem bestimmten Warnungstyp feststellen, kann dies auf einen aktiven Angriff hinweisen. Bei einem plötzlichen Spitzenwert von 20 Pass-the-Hash-Ereignissen von Azure ATP ist es beispielsweise möglich, dass gerade ein Angriffsversuch stattfindet.
 
 - **Data source anomalies** (Datenquellenanomalien): Die Datenanalysten von Microsoft haben Modelle erstellt, die die Daten aus Ihren Datenquellen ständig auf Anomalien durchsuchen. Wenn keine Anomalien vorliegen, wird nichts angezeigt. Wenn Anomalien erkannt werden, sollten Sie sie genau untersuchen, um herauszufinden, was passiert ist. Klicken Sie beispielsweise auf die Spitze in der Azure-Aktivität. Sie können auf **Diagramm** klicken, um zu überprüfen, wann die Spitze aufgetreten ist, und anschließend zum Ermitteln der Ursache nach Aktivitäten in diesem Zeitraum filtern.
 

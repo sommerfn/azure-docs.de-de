@@ -1,6 +1,6 @@
 ---
-title: 'Begriffslisten: Speech-Dienste'
-titlesuffix: Azure Cognitive Services
+title: Begriffslisten – Speech Service
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie den Speech-Diensten mithilfe des `PhraseListGrammar`-Objekts eine Begriffsliste zur Verfügung stellen, um die Ergebnisse der Spracherkennung zu verbessern.
 services: cognitive-services
 author: rhurey
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226344"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562782"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Begriffslisten für Spracherkennung
 

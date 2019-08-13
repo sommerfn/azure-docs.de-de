@@ -1,7 +1,7 @@
 ---
-title: Migrieren von der Bing-Spracheingabe zum Azure-Spracherkennungsdienst
+title: Migrieren von der Bing-Spracheingabe zum Speech Service
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie aus einem vorhandenen Bing-Spracheingabeabonnement zu den Azure-Sprachdiensten migrieren.
+description: Erfahren Sie, wie Sie aus einem vorhandenen Bing-Spracheingabe-Abonnement zu Speech Service von Azure Cognitive Services migrieren.
 services: cognitive-services
 author: wsturman
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 205ca0baa195a3859fd7d5cc04e3057411ecbe1c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 5694894a78a46ad658ec18f210c6a82fb82df23f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845891"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559609"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663462"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827320"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -42,7 +42,7 @@ Auf dieser Appliance sind Agents installiert.
 
 **Agent** | **Details**
 --- | ---
-Ermittlungs-Agent | Sammelt Konfigurationsdaten von lokalen VMs.
+Ermittlungs-Agent | Sammelt Konfigurationsdaten von lokalen virtuellen Computern.
 Bewertungs-Agent | Erstellt ein Profil der lokalen Umgebung, um VM-Leistungsdaten zu sammeln.
 Migrationsadapter | Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen VMs und Azure.
 Migrations-Gateway | Sendet replizierte VM-Daten an Azure.
@@ -200,8 +200,8 @@ Die Appliance wird aktualisiert, wenn die auf der Appliance laufenden Azure Migr
 
 - Dies geschieht automatisch, da das automatische Update auf dem Gerät standardmäßig aktiviert ist.
 - Sie können diese Standardeinstellung ändern, um die Agents manuell zu aktualisieren.
-- Um automatische Updates zu deaktivieren, legen Sie den Registrierungsschlüssel „Automatisches Appliance-Update“ in HKLM\SOFTWAREMicrosoft\Azure fest.
-
+- Um die automatische Aktualisierung zu deaktivieren, wechseln Sie im Registrierungs-Editor zu „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“, und legen Sie den AutoUpdate-Registrierungsschlüssel auf 0 (DWORD) fest.
+ 
 ### <a name="set-agent-updates-to-manual"></a>Agent-Updates auf manuell festlegen
 
 Für manuelle Updates stellen Sie sicher, dass Sie alle Agents auf der Appliance gleichzeitig aktualisieren, indem Sie die Schaltfläche **„Update“** für jeden veralteten Agent auf der Appliance verwenden. Sie können die Update-Einstellung jederzeit wieder auf automatische Updates zurücksetzen.

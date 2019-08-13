@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080166"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562359"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens
 
@@ -61,10 +61,10 @@ public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.de
 
 Der für die Clientanmeldeinformationen verwendete Bereich muss immer resourceId+"/.default" sein.
 
-### <a name="case-of-v10-resources"></a>Anwendungsfall v1.0-Ressourcen
+### <a name="case-of-azure-ad-v10-resources"></a>Bei Azure AD-Ressourcen (V1.0)
 
 > [!IMPORTANT]
-> Wenn MSAL (v2.0-Endpunkt) bei einem Zugriffstoken nach einer Ressource fragt, die ein v1.0-Zugriffstoken akzeptiert, analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Bereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner verwendet wird.
+> Wenn MSAL (Microsoft Identity Platform-Endpunkt) bei einem Zugriffstoken nach einer Ressource fragt, die ein v1.0-Zugriffstoken akzeptiert, analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Bereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner verwendet wird.
 > Wenn die Ressource wie Azure SQL ( **https://database.windows.net** ) daher eine Zielgruppe mit Schrägstrich am Ende erwartet (bei Azure SQL: `https://database.windows.net/` ), müssen Sie den Bereich `https://database.windows.net//.default` anfordern (beachten Sie den doppelten Schrägstrich). Weitere Informationen finden Sie unter dem MSAL.NET-Issue [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Resource url's trailing slash is omitted, which caused sql auth failure (Bei der URL der Ressource wurde der nachgestellte Schrägstrich entfernt, wodurch bei der SQL-Authentifizierung ein Fehler aufgetreten ist).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
@@ -161,7 +161,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ### <a name="learn-more-about-the-protocol"></a>Weitere Informationen zum Protokoll
 
-Weitere Informationen finden Sie in der Protokolldokumentation: [Microsoft identity platform and the OAuth 2.0 client credentials flow (Microsoft Identity Platform und der OAuth 2.0-Fluss mit Clientanmeldeinformationen)](v2-oauth2-client-creds-grant-flow.md).
+Weitere Informationen finden Sie in der Protokolldokumentation: [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

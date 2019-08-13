@@ -240,7 +240,7 @@ Für Ihr Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Kernen, die
 
 Die automatische Skalierung auf Grundlage von Speichermetriken für Cloud Services wird derzeit nicht unterstützt. 
 
-Um dieses Problem zu umgehen, können Sie Application Insights verwenden. Die automatische Skalierung unterstützt Application Insights als Quelle für Metriken und kann die Anzahl der Rolleninstanzen anhand einer Gastmetrik wie „Speicher“ skalieren.  Sie müssen Application Insights in der Paketdatei Ihres Clouddienstprojekts (CSPKG) konfigurieren und die Azure-Diagnoseerweiterung für den Dienst aktivieren, um dieses Feature zu implementieren.
+Um dieses Problem zu umgehen, können Sie Application Insights verwenden. Die automatische Skalierung unterstützt Application Insights als Quelle für Metriken und kann die Anzahl der Rolleninstanzen anhand einer Gastmetrik wie „Speicher“ skalieren.  Sie müssen Application Insights in der Paketdatei Ihres Clouddienstprojekts (*.cspkg) konfigurieren und die Azure-Diagnoseerweiterung für den Dienst aktivieren, um dieses Feature zu implementieren.
 
 Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefinierte Metrik verwenden, um die automatische Skalierung für Cloud Services zu konfigurieren, finden Sie unter [Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure](../azure-monitor/platform/autoscale-custom-metric.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Webhooks – Speech Services
-titlesuffix: Azure Cognitive Services
+title: Webhooks – Speech Service
+titleSuffix: Azure Cognitive Services
 description: Webhooks sind HTTP-Callbacks, die sich ideal zur Optimierung Ihrer Lösung bei zeitintensiven Prozessen wie Importen, Anpassungen, Genauigkeitsprüfungen oder Transkriptionen von zeitintensiven Dateien eignen.
 services: cognitive-services
 author: PanosPeriorellis
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3d07e540bf88c956f61b5d3b2a98702cad616985
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606219"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558806"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhooks für Speech Services
 

@@ -4,8 +4,6 @@ description: Hier erfahren Sie, wie Sie Azure-VM-Erweiterungen mithilfe von Azur
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
@@ -13,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5657ebb2a5b29e4ec5360480c1fef6cb92dad9c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6d0c3e9daba6f4f37778fabde161751944e174a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388528"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774878"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -108,7 +106,7 @@ Fügen Sie der vorhandenen Vorlage eine VM-Erweiterungsressource mit folgendem I
 
 Weitere Informationen zu dieser Ressourcendefinition finden Sie in der [Erweiterungsreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-* **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Untergeordnete Ressourcen](./resource-group-authoring-templates.md#child-resources).
+* **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md).
 * **dependsOn:** Erstellen Sie die Erweiterungsressource nach der Erstellung des virtuellen Computers.
 * **fileUris:** Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
 * **commandToExecute:** Dieser Befehl ruft das Skript auf.  
@@ -120,7 +118,7 @@ Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstel
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 
 1. Wählen Sie im Azure-Portal den virtuellen Computer aus.
-1. Kopieren Sie in der VM-Übersicht die IP-Adresse durch Auswählen von **Klicken Sie zum Kopieren.**, und fügen Sie sie anschließend in eine Browserregisterkarte ein.  
+1. Kopieren Sie in der VM-Übersicht die IP-Adresse durch Auswählen von **Klicken Sie zum Kopieren.** , und fügen Sie sie anschließend in eine Browserregisterkarte ein.  
    Die Standardbegrüßungsseite für IIS (Internet Information Services, Internetinformationsdienste) wird geöffnet:
 
 ![Die Begrüßungsseite von Internetinformationsdienste](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)

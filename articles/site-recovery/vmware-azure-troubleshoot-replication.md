@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805963"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742564"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -93,7 +93,13 @@ Mögliche Ursachen:
 
 So lösen Sie das Problem:
 - Stellen Sie sicher, dass der Typ des Zielspeicherkontos (Standard oder Premium) den Anforderungen der Änderungsrate der Quelle entsprechend bereitgestellt wird.
+- Wenn Sie bereits auf einen verwalteten Premium-Datenträger (vom Typ „asrseeddisk“) replizieren, stellen Sie sicher, dass die Größe des Datenträgers die beobachtete Änderungsrate gemäß den Site Recovery-Grenzwerten unterstützt. Sie können die Größe von „asrseeddisk“ bei Bedarf erhöhen. Führen Sie die folgenden Schritte aus:
+    - Navigieren Sie zum Blatt „Datenträger“ des betroffenen replizierten Computers, und kopieren Sie den Replikatdatenträgernamen.
+    - Navigieren Sie zu diesem verwalteten Replikatdatenträger.
+    - Auf dem Blatt „Übersicht“ wird möglicherweise ein Banner angezeigt, das besagt, dass eine SAS-URL generiert wurde. Klicken Sie auf dieses Banner, und brechen Sie den Export ab. Ignorieren Sie diesen Schritt, wenn das Banner nicht angezeigt wird.
+    - Sobald die SAS-URL aufgehoben wurde, wechseln Sie zum Blatt „Konfiguration“ des verwalteten Datenträgers, und vergrößern Sie diesen so, dass ASR die ermittelte Datenänderungsrate auf dem Quelldatenträger unterstützt.
 - Wenn die erkannte erhöhte Änderungsrate nur vorrübergehend ist, warten Sie einigen Stunden ab, damit alle ausstehenden Daten hochgeladen werden. Dann können Sie einen Wiederherstellungspunkt erstellen.
+- Wenn der Datenträger unkritische Daten wie temporäre Protokolle, Testdaten usw. enthält, erwägen Sie, diese Daten an einen anderen Ort zu verschieben oder den gesamten Datenträger von der Replikation auszuschließen.
 - Wenn das Problem weiterhin besteht, können Sie die Replikation mithilfe des [Bereitstellungsplaners](site-recovery-deployment-planner.md#overview) von Site Recovery planen.
 
 ### <a name="source-machines-with-no-heartbeat-error-78174"></a>Quellcomputer ohne Heartbeat [Fehler 78174]
@@ -140,7 +146,7 @@ Einige der häufigsten Probleme sind nachfolgend aufgeführt:
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Ursache 1: Bekanntes Problem in SQL Server 2008/2008 R2 
 **Problembehandlung**: Es gibt ein bekanntes Problem mit SQL Server 2008/2008 R2. Weitere Informationen finden Sie in diesem KB-Artikel: [Fehler bei Azure Site Recovery-Agent oder einer anderen komponentenfreien VSS-Sicherung für einen Server, der SQL Server 2008 R2 hostet](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2).
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>Ursache 2: Azure Site Recovery-Aufträge schlagen auf Servern fehl, die eine beliebige Version von SQL Server-Instanzen mit AUTO_CLOSE DBs hosten 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Ursache 2: Azure Site Recovery-Aufträge schlagen auf Servern fehl, die eine beliebige Version von SQL Server-Instanzen mit AUTO_CLOSE DBs hosten 
 **Problembehandlung**: Referenz-KB-[Artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
@@ -177,7 +183,7 @@ Weitere Informationen finden Sie im [Artikel zur Problembehandlung bei der VSS W
         - Azure Site Recovery-VSS-Anbieter
         - VDS-Dienst
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED – Fehler 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED – Fehler 2147754756
 
 **Problembehandlung**: Azure Site Recovery verwendet den Microsoft-VSS (Volumeschattenkopie-Dienst), um Tags für die Anwendungskonsistenz zu erstellen. Überprüfen Sie, ob der Azure Site Recovery VSS-Anbieterdienst installiert ist. </br>
 

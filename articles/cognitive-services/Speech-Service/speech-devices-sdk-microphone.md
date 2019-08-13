@@ -1,5 +1,5 @@
 ---
-title: Empfehlungen zum Mikrofonarray für das Speech-Geräte-SDK – Speech-Dienste
+title: Empfehlungen zum Mikrofonarray für das Speech-Geräte-SDK – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Empfehlungen zum Mikrofonarray für das Speech-Geräte-SDK Die folgenden Arraygeometrien werden für Microsoft Audio Stack empfohlen. Die Lokalisierung von Soundquellen und die Unterdrückung von Umgebungsgeräuschen wird durch eine größere Anzahl von Mikrofonen verbessert. Dies hängt jedoch von den jeweiligen Anwendungen, Benutzerszenarien und dem Formfaktor des Geräts ab.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b110e9ddc42d07c8356eb25b9ea2294e470d5fdc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277495"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558948"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Empfehlungen zum Mikrofonarray für das Speech-Geräte-SDK
 

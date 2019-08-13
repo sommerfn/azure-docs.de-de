@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
 ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615757"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
@@ -62,7 +62,7 @@ Die folgenden grundlegenden Berechnungen zeigen den Unterschied zwischen Netzwer
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Peering virtueller Netzwerke und ExpressRoute-Verbindungen
 
-Um lokale Konnektivität zu bieten, kann sowohl der *kubenet*- als auch der *Azure CNI*-Netzwerkansatz das [Peering in virtuellen Azure-Netzwerken][vnet-peering] or [ExpressRoute connections][express-route] verwenden. Planen Sie Ihre IP-Adressbereiche sorgfältig, um Überschneidungen und falsches Datenverkehrsrouting zu verhindern. In vielen lokalen Netzwerken wird z.B. ein *10.0.0.0/8*-Adressbereich verwendet, der über die ExpressRoute-Verbindung angekündigt wird. Sie sollten Ihre AKS-Cluster in Subnetzen virtueller Azure-Netzwerke außerhalb dieses Adressbereichs erstellen, z. B. *172.16.0.0/16*.
+Um lokale Konnektivität zu bieten, kann sowohl der *kubenet*- als auch der *Azure CNI*-Netzwerkansatz [Peering in virtuellen Netzwerken][vnet-peering] oder [ExpressRoute-Verbindungen][express-route] verwenden. Planen Sie Ihre IP-Adressbereiche sorgfältig, um Überschneidungen und falsches Datenverkehrsrouting zu verhindern. In vielen lokalen Netzwerken wird z.B. ein *10.0.0.0/8*-Adressbereich verwendet, der über die ExpressRoute-Verbindung angekündigt wird. Sie sollten Ihre AKS-Cluster in Subnetzen virtueller Azure-Netzwerke außerhalb dieses Adressbereichs erstellen, z. B. *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Auswählen eines zu verwendenden Netzwerkmodells
 
@@ -127,7 +127,7 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Um in den weiteren Schritten die richtigen Delegierungen zuzuweisen, verwenden Sie die Befehle [az network vnet show][az-network-vnet-show] and [az network vnet subnet show][az-network-vnet-subnet-show], um die erforderlichen Ressourcen-IDs abzurufen. Diese Ressourcen-IDs werden als Variablen gespeichert, und auf sie wird in den verbleibenden Schritten verwiesen:
+Um in den weiteren Schritten die richtigen Delegierungen zuzuweisen, verwenden Sie die Befehle [az network vnet show][az-network-vnet-show] und [az network vnet subnet show][az-network-vnet-subnet-show], um die erforderlichen Ressourcen-IDs abzurufen. Diese Ressourcen-IDs werden als Variablen gespeichert, und auf sie wird in den verbleibenden Schritten verwiesen:
 
 ```azurecli-interactive
 VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet --query id -o tsv)
@@ -176,7 +176,7 @@ Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks bereitgestellt ist, können Sie den Cluster jetzt wie gewohnt verwenden. Informationen zu den ersten Schritten finden Sie unter [Erstellen von Apps mit Azure Dev Spaces][dev-spaces] or [using Draft][use-draft] oder [Bereitstellen von Apps mit Helm][use-helm].
+Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks bereitgestellt ist, können Sie den Cluster jetzt wie gewohnt verwenden. Informationen zu den ersten Schritten finden Sie unter [Azure Dev Spaces – Schnelle, iterative Kubernetes-Bereitstellung für Teams][dev-spaces], [Verwenden von Draft mit Azure Kubernetes Service (AKS)][use-draft] oder [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/

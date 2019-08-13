@@ -1,5 +1,5 @@
 ---
-title: Speech SDK-Protokollierung – Speech Services
+title: Speech SDK-Protokollierung – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Aktivieren Sie die Protokollierung im Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 6179634bb949dbb9da8475e87494eef0f145f13b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605070"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559474"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
