@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 6a748031f9d35e26eeb544f154477ea3449903f5
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796096"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840416"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -250,7 +250,44 @@ Um die `Microsoft.Azure.Services.AppAuthentication`-Bibliothek in der Praxis zu 
 
 3. [Verwenden eines .NET Core-Beispiels und einer verwalteten Identität zum Aufrufen der Azure-Dienste aus einer Azure Linux-VM](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="appauthentication-troubleshooting"></a>AppAuthentication-Problembehandlung
+
+### <a name="common-issues-during-local-development"></a>Allgemeine Probleme bei der lokalen Entwicklung
+
+#### <a name="azure-cli-is-not-installed-you-are-not-logged-in-or-you-do-not-have-the-latest-version"></a>Azure CLI ist nicht installiert, Sie sind nicht angemeldet, oder Sie verfügen nicht über die neueste Version.
+
+Führen Sie **az account get-access-token** aus, um zu überprüfen, ob Azure CLI ein Token für Sie anzeigt. Besagt die Meldung, dass kein Programm gefunden wurde, installieren Sie bitte die [neuesten Version der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Wenn Sie sie installiert haben, werden Sie möglicherweise aufgefordert, sich anzumelden. 
+ 
+#### <a name="azureservicetokenprovider-cannot-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider kann den Pfad für Azure CLI nicht finden
+
+AzureServiceTokenProvider sucht an den Standardinstallationsorten nach Azure CLI. Wenn Azure CLI nicht gefunden wird, legen Sie die Umgebungsvariable **AzureCLIPath**, auf den Azure CLI-Installationsordner fest. AzureServiceTokenProvider fügt die Umgebungsvariable der PATH-Umgebungsvariablen hinzu.
+ 
+#### <a name="you-are-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>Sie sind bei Azure CLI mit mehreren Konten angemeldet, dasselbe Konto hat Zugriff auf Abonnements in mehreren Mandanten, oder Sie erhalten einen Fehler „Zugriff verweigert“, wenn Sie versuchen, während der lokalen Entwicklung Aufrufe auszuführen.
+
+Legen Sie mit Azure CLI das Standardabonnement auf eins fest, das über das gewünschte Konto verfügt und sich im selben Mandanten wie die Ressource befindet, auf die Sie zugreifen möchten: **az account set --subscription [subscription-id]** . Wenn keine Ausgabe angezeigt wird, war die Ausführung erfolgreich. Vergewissern Sie sich, dass das richtige Konto jetzt der Standardwert ist, indem Sie **az account list** verwenden.
+
+### <a name="common-issues-across-environments"></a>Häufige Probleme in allen Umgebungen
+
+#### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>Fehler der Art „Nicht autorisierter Zugriff“, „Zugriff verweigert“, „Unzulässig“ usw.
+ 
+Der verwendete Prinzipal besitzt keinen Zugriff auf die Ressource, auf die er zugreifen möchte. Erteilen Sie entweder Ihrem Benutzerkonto oder der MSI-Datei des App Service „Mitwirkender“-Zugriff auf die gewünschte Ressource, je nachdem, ob Sie das Beispiel auf Ihrem lokalen Entwicklungscomputer ausführen oder in Azure für Ihren App Service bereitgestellt. Einige Ressourcen wie Schlüsselrresore haben ebenfalls ihre eigenen [Zugriffsrichtlinien](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies), die Sie verwenden, um Prinzipalen (Benutzer, Apps, Gruppen usw.) Zugriff zu gewähren.
+
+### <a name="common-issues-when-deployed-to-azure-app-service"></a>Häufige Probleme bei Bereitstellung in Azure App Service
+
+#### <a name="managed-identity-is-not-setup-on-the-app-service"></a>Verwaltete Identität ist nicht im App Service eingerichtet
+ 
+Überprüfen Sie mithilfe der [Kudu-Debugkonsole](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/), ob die Umgebungsvariablen MSI_ENDPOINT und MSI_SECRET vorhanden sind. Wenn diese Umgebungsvariablen nicht vorhanden sind, ist die verwaltete Identität im App Service nicht aktiviert. 
+ 
+### <a name="common-issues-when-deployed-locally-with-iis"></a>Häufige Probleme bei der lokalen Bereitstellung mit IIS
+
+#### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>Beim Debuggen der App in IIS können keine Token abgerufen werden
+
+AppAuth wird standardmäßig in einem anderen Benutzerkontext in IIS ausgeführt und verfügt daher über keinen Zugriff auf die Verwendung ihrer Entwickleridentität, um Zugriffstoken abzurufen. Mit den folgenden Schritten können Sie IIS für die Ausführung mit Ihrem Benutzerkontext konfigurieren:
+- Konfigurieren Sie den Anwendungspool für die Web-App so, dass sie als Ihr aktuelles Benutzerkonto ausgeführt wird. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities).
+- Konfigurieren Sie „setProfileEnvironment“ auf „true“. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
+
+    - Wechseln Sie zu „%windir%\System32\inetsrv\config\applicationHost.config“.
+    - Suchen Sie nach „setProfileEnvironment“. Wenn der Wert auf „False“ festgelegt ist, ändern Sie ihn in „True“. Wenn er nicht vorhanden ist, fügen Sie ihn dem processModel-Element (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) als Attribut hinzu, und legen Sie ihn auf „True“ fest.
 
 - Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/index.yml).
 - Erfahren Sie mehr über Azure AD-[Authentifizierungsszenarien](../active-directory/develop/active-directory-authentication-scenarios.md).

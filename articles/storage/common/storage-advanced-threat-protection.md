@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592027"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782583"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
@@ -117,62 +117,7 @@ Sie können Ihre aktuellen Sicherheitswarnungen in Azure Security Center über d
 
 ## <a name="protection-alerts"></a>Protection-Warnungen
 
-Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Speicherkonten generiert. Diese Ereignisse können die folgenden Warnungen auslösen:
-
-### <a name="anomalous-access-pattern-alerts"></a>Warnungen zu ungewöhnlichen Zugriffsmustern
-
-* **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn eine Person von einem ungewöhnlichen geografischen Ort aus auf ein Speicherkonto zugegriffen hat.
-Mögliche Ursachen:
-   * Ein Angreifer hat auf Ihr Speicherkonto zugegriffen.
-   * Ein berechtigter Benutzer hat von einem neuen Ort aus auf Ihr Speicherkonto zugegriffen.
- 
-* **Anwendungsanomalie**: Diese Warnung gibt an, dass auf dieses Speicherkonto über eine ungewöhnliche Anwendung zugegriffen wurde. Mögliche Ursachen:
-   * Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.
-   * Ein berechtigter Benutzer hat für den Zugriff auf Ihr Speicherkonto eine neue Anwendung oder einen neuen Browser verwendet.
-
-* **Anonymer Zugriff**: Diese Warnung gibt an, dass auf dieses Konto auf ungewöhnliche Weise (ohne Authentifizierung) zugegriffen wurde, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten darstellt.
-Mögliche Ursachen:
-   * Ein Angreifer hat den öffentlichen Lesezugriff auf einen Container ausgenutzt.
-   * Ein berechtigter Benutzer oder eine berechtigte Anwendung hat den öffentlichen Lesezugriff auf einen Container genutzt.
-
-* **Tor Anomaly** (Tor-Anomalie): Diese Warnung gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt.
-Mögliche Ursachen:
-   * Ein Angreifer hat über Tor auf Ihr Speicherkonto zugegriffen.
-   * Ein berechtigter Benutzer hat über Tor auf Ihr Speicherkonto zugegriffen.
-
-
-### <a name="anomalous-extractupload-alerts"></a>Warnungen zu ungewöhnlichen Extrahierungs- oder Hochladevorgängen
-
-* **Datenexfiltration**: Diese Warnung gibt an, dass eine große Datenmenge extrahiert wurde, die im Vergleich zur letzten Aktivität bei diesem Speichercontainer ungewöhnlich ist. Mögliche Ursachen:
-   * Ein Angreifer hat eine große Datenmenge von einem Container extrahiert. (Beispiel: Datenexfiltration/Sicherheitsverletzung, nicht autorisierte Datenübertragung)
-   * Ein berechtigter Benutzer oder eine berechtigte Anwendung hat eine ungewöhnlich große Datenmenge von einem Container extrahiert. (Beispiel: Wartungsaktivitäten)
-
-* **Unerwarteter Löschvorgang**: Diese Warnung gibt an, dass in einem Speicherkonto mindestens ein Löschvorgang aufgetreten ist, der im Vergleich zur letzten Aktivität für dieses Konto unerwartet ist. Mögliche Ursachen:
-   * Ein Angreifer hat Daten im Speicherkonto gelöscht.
-   * Ein berechtigter Benutzer hat einen außergewöhnlichen Löschvorgang durchgeführt.
-
-* **Upload eines Azure Cloud Service-Pakets**: Diese Warnung gibt an, dass ein Azure Cloud Service-Paket (CSPKG-Datei) auf eine Weise in ein Speicherkonto hochgeladen wurde, die im Vergleich zur letzten Aktivität für das Konto ungewöhnlich ist. Mögliche Ursachen: 
-   * Ein Angreifer hat die Bereitstellung von bösartigem Code über Ihr Speicherkonto für einen Azure-Clouddienst vorbereitet.
-   * Ein berechtigter Benutzer hat eine berechtigte Dienstbereitstellung vorbereitet.
-
-### <a name="suspicious-storage-activities-alerts"></a>Warnungen zu verdächtigen Speicheraktivitäten
-
-* **Änderung der Zugriffsberechtigung**: Diese Warnung gibt an, dass die Zugriffsberechtigungen für diesen Speichercontainer auf ungewöhnliche Weise geändert wurden. Mögliche Ursachen: 
-   * Ein Angreifer hat die Berechtigungen für einen Container zur Herabsetzung der Sicherheit geändert.
-   * Ein berechtigter Benutzer hat die Berechtigungen für einen Container geändert.
-
-* **Überprüfung des Zugriffs**: Diese Warnung gibt an, dass die Zugriffsberechtigungen eines Speicherkontos auf eine Weise überprüft wurden,die im Vergleich zur letzten Aktivität für dieses Konto ungewöhnlich ist. Mögliche Ursachen: 
-   * Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.
-   * Ein berechtigter Benutzer hat für das Speicherkonto Wartungsarbeiten durchgeführt.
-
-* **Datenanalyse**: Diese Warnung gibt an, dass Blobs oder Container in einem Speicherkonto in einer Weise aufgezählt wurden, die im Vergleich zur letzten Aktivität für dieses Konto ungewöhnlich ist. Mögliche Ursachen: 
-   * Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.
-   * Ein berechtigter Benutzer oder eine berechtigte Anwendungslogik hat Daten im Speicherkonto untersucht.
-
-
-
-
-
+Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Speicherkonten generiert. Eine Liste dieser Warnungen finden Sie unter [Azure Storage-Warnungen](../../security-center/security-center-alerts-data-services.md#azure-storage).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

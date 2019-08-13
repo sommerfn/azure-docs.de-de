@@ -1,5 +1,5 @@
 ---
-title: Konversationen mit Mehrfachdurchläufen
+title: Konversationen mit mehreren Turns – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Verwalten Sie für Ihren Bot von einer Frage zur nächsten die verschiedenen Durchläufe (Multi-Turn) mit Eingabeaufforderungen und Kontext. Mehrfachdurchläufe sind die Fähigkeit, eine wechselseitige Konversation zu führen, wobei der Kontext der vorherigen Frage die nächste Frage und die nächste Antwort beeinflusst.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 10249375922b47a40f71a60938cdd12ffe0f9b54
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 264d9e89d22b30b83821f691e134d032eb4220f5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508138"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563135"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 

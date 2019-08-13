@@ -1,7 +1,7 @@
 ---
-title: Trainieren und Registrieren von PyTorch-Modellen
+title: Trainieren eines neuronalen Deep Learning-Netz mit PyTorch
 titleSuffix: Azure Machine Learning service
-description: In diesem Artikel erfahren Sie, wie Sie ein PyTorch-Modell mit Azure Machine Learning Service trainieren und registrieren.
+description: Hier erfahren Sie, wie Sie Ihre PyTorch-Trainingsskripts im Unternehmensumfang mit der PyTorch-Estimator-Klasse von Azure Machine Learning ausführen.  Die Beispielskripts klassifizieren Hühner- und Truthahnbilder, um ein neuronales Deep Learning-Netz aufzubauen, basierend auf dem Tutorial zum Transferlernen von PyTorch.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,22 +9,24 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
-ms.date: 06/18/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c953eeecedf14a8f3fae43c5d4713252d58b4c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 99217106c456adcc338138190be2060b0c9a195b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840080"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772669"
 ---
-# <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Trainieren und Registrieren von PyTorch-Modellen in großem Umfang mit Azure Machine Learning Service
+# <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie ein PyTorch-Modell mit Azure Machine Learning Service trainieren und registrieren. Es basiert auf dem [Transfer Learning Tutorial von PyTorch](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html), das einen DNN-Klassifizierer (Deep Neural Network, tiefes neuronales Netzwerk) für Bilder von Hühnern und Puten aufbaut.
+In diesem Artikel erfahren Sie, wie Sie Ihre [PyTorch](https://pytorch.org/)-Trainingsskripts im Unternehmensumfang mit der [PyTorch-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen.  
 
-[PyTorch](https://pytorch.org/) ist ein Open-Source-Computing-Framework, das häufig zum Aufbau von Deep Neural Networks (DNN) verwendet wird. Azure Machine Learning Service bietet Ihnen die Möglichkeit, Ihre Open-Source-Trainingsaufträge mithilfe elastischer Cloudcomputeressourcen schnell zu erweitern. Sie können auch Ihre Trainingsdurchläufe, Versionsmodelle, Bereitstellungsmodelle und vieles mehr verfolgen.
+Die Beispielskripts in diesem Artikel werden dazu verwendet, Hühner- und Truthahnbilder zu klassifizieren, um ein neuronales Deep Learning-Netz aufzubauen, basierend auf dem [Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) zum Transferlernen von PyTorch. 
 
-Egal, ob Sie ein PyTorch-Modell von Grund auf entwickeln oder ein bestehendes Modell in die Cloud bringen, Azure Machine Learning Service kann Ihnen helfen, produktionsreife Modelle zu erstellen.
+Unabhängig davon, ob Sie ein PyTorch-Deep Learning-Modell von Grund auf trainieren, oder ob Sie ein vorhandenes Modell in die Cloud bringen, können Sie Azure Machine Learning zum horizontalen Hochskalieren von Open Source-Trainingsaufträgen mithilfe elastischer Cloud-Computeressourcen verwenden. Sie können produktionsgeeignete Modelle mit Azure Machine Learning erstellen, bereitstellen, überwachen sowie die Versionen verwalten. 
+
+Weitere Informationen zu [Deep Learning im Vergleich zum maschinellen Lernen](concept-deep-learning-vs-machine-learning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,12 +34,12 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
 
  - Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 
-    - Vervollständigen Sie den Schnellstart des [Cloud-basierten Notebooks](quickstart-run-cloud-notebook.md), um einen dedizierten Notebookserver zu erstellen, der mit dem SDK und dem Beispielrepository vorinstalliert ist.
-    - Suchen Sie im Beispielordner auf dem Notebookserver ein fertiges und erweitertes Notebook. Dazu navigieren Sie zum folgenden Verzeichnis: **how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-pytorch**. 
+    - Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebookserver zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
+    - Suchen Sie im Deep Learning-Beispielordner auf dem Notebookserver ein fertiges und erweitertes Notebook. Dazu navigieren Sie zum folgenden Verzeichnis: **how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-pytorch**. 
  
  - Ihr eigener Jupyter Notebook-Server
 
-    - [Installieren Sie das Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk).
+    - [Installieren des Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
     - [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](setup-create-workspace.md#write-a-configuration-file)
     - [Herunterladen der Beispielskriptdateien](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
      
@@ -73,7 +75,7 @@ Erstellen Sie ein Arbeitsbereichsobjekt aus der Datei `config.json`, die im [Abs
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>Erstellen eines Experiments
+### <a name="create-a-deep-learning-experiment"></a>Erstellen eines Deep Learning-Experiments
 
 Erstellen Sie ein Experiment und einen Ordner, in dem Ihre Trainingsskripts gespeichert werden. In diesem Beispiel erstellen Sie ein Experiment mit dem Namen „pytorch-birds“.
 
@@ -220,7 +222,7 @@ Um Rückschlüsse mit der [ONNX-Runtime](concept-onnx.md) zu optimieren, konvert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein PyTorch-Modell in Azure Machine Learning Service trainiert und registriert. Um zu erfahren, wie Sie ein Modell bereitstellen, fahren Sie mit unserem Artikel zur Modellbereitstellung fort.
+In diesem Artikel haben Sie ein neuronales Deep Learning-Netz mithilfe von PyTorch im Azure Machine Learning Service trainiert und registriert. Um zu erfahren, wie Sie ein Modell bereitstellen, fahren Sie mit unserem Artikel zur Modellbereitstellung fort.
 
 > [!div class="nextstepaction"]
 > [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md)

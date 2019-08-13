@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699474"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816635"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -33,8 +33,8 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 | Windows 7              | SMB 2.1     | Ja                   | Nein                   |
 | Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                   |
 
-<sup>1</sup>Windows 10, Versionen 1507, 1607, 1703, 1709, 1803 und 1809  
-<sup>2</sup>Windows Server, Versionen 1709 und 1803
+<sup>1</sup>Windows 10, Versionen 1507, 1607, 1703, 1709, 1803, 1809 und 1903.  
+<sup>2</sup>Windows Server, Versionen 1803, 1809 und 1903.
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.

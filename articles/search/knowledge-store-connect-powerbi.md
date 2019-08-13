@@ -4,16 +4,17 @@ description: Hier erfahren Sie, wie Sie mithilfe des Datenimport-Assistenten im 
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668227"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840844"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Erstellen eines Azure Search-Wissensspeichers und Herstellen einer Verbindung unter Verwendung von Power BI
 
@@ -156,7 +157,7 @@ Verwenden Sie den Datenimport-Assistenten, um den Wissensspeicher zu erstellen. 
 
 1. Klicken Sie auf der Power Query-Befehlsleiste ganz links auf **Schließen und übernehmen**.
 
-1. Vergewissern Sie sich, dass Power BI die Beziehungen erkennt, die der Wissensspeicher in Ihren Daten erstellt hat. Klicken Sie im linken Navigationsbereich auf die Beziehungskachel. Alle drei Tabellen sollten miteinander verknüpft werden.
+1. Vergewissern Sie sich, dass Power BI die Beziehungen erkennt, die der Wissensspeicher in Ihren Daten erstellt hat. Klicken Sie im linken Navigationsbereich auf die Beziehungskachel. Alle drei Tabellen sollten miteinander verknüpft werden. Bearbeiten Sie die Beziehungen, und vergewissern Sie sich, dass für „Kreuzfilterrichtung“ beide Richtungen festgelegt sind. Dadurch wird sichergestellt, dass alle visuellen Elemente bei der Anwendung eines Filters aktualisiert werden.
 
    ![Überprüfen der Beziehungen](media/knowledge-store-howto-powerbi/powerbi-relationships.png "Überprüfen der Beziehungen")
 
@@ -166,7 +167,7 @@ In dieser exemplarischen Vorgehensweise wurde bewusst ein kleines Dataset verwen
 
 Erstellen Sie neue Container in Azure Blob Storage, und laden Sie die CSV-Dateien jeweils in ihren eigenen Container hoch. Geben Sie im Datenimport-Assistenten bei der Erstellung der Datenquelle einen dieser Container an.
 
-| Beschreibung | Link |
+| BESCHREIBUNG | Link |
 |-------------|------|
 | Free-Tarif   | [HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Klein (500 Datensätze) | [HotelReviews_Small.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Small.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |

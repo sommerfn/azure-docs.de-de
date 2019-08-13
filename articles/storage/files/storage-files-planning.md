@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1845107998bfefde4c604744c3c09f5356010f7b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699694"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816608"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -205,12 +205,16 @@ Dieser Abschnitt gilt nur für Standarddateifreigaben. Alle Premium-Dateifreigab
 
 Standard-Dateifreigaben sind für alle Region bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind hier aufgeführt:
 
-|Region  |Unterstützte Redundanz  |Unterstützt vorhandene Speicherkonten  |
-|---------|---------|---------|
-|Australien (Osten)     |LRS|Nein         |
-|Asien, Südosten     |LRS|Nein         |
-|Europa, Westen     |LRS, ZRS|Nein         |
-|USA, Westen 2     |LRS, ZRS|Nein         |
+|Region |Unterstützte Redundanz |Unterstützt vorhandene Speicherkonten |Portalunterstützung*   |
+|-------|---------|---------|---------|
+|Australien (Osten)  |LRS     |Nein    |Ja|
+|Frankreich, Mitte  |LRS     |Nein    |Noch nicht|
+|Frankreich, Süden    |LRS     |Nein    |Noch nicht|
+|Asien, Südosten  |LRS, ZRS|Nein    |Ja|
+|Europa, Westen     |LRS, ZRS|Nein    |Ja|
+|USA, Westen 2       |LRS, ZRS|Nein    |Ja|
+
+\* Bei Regionen ohne Portalunterstützung können Sie weiterhin PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden, um Freigaben von mehr als 5 TiB zu erstellen. Erstellen Sie alternativ eine neue Freigabe über das Portal ohne Angabe eines Kontingents. Dadurch wird eine Freigabe mit der Standardgröße 100 TiB erstellt, die später über PowerShell oder Azure CLI aktualisiert werden kann.
 
 Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
 

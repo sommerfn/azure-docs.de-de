@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567454"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779046"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -79,9 +79,9 @@ Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>Wie optimiere ich die Leistung meiner verwalteten Instanz? 
 
-Da eine universelle verwaltete Instanz Remotespeicher verwendet, wirkt sich die Größe der Daten-und Protokolldateien auf die Leistung aus. Befolgen Sie die Anweisungen in diesem Blogbeitrag zum Optimieren der Leistung auf der universellen Dienstebene.
+Da eine universelle verwaltete Instanz Remotespeicher verwendet, wirkt sich die Größe der Daten-und Protokolldateien auf die Leistung aus. Weitere Informationen finden Sie unter [Auswirkung der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-Für E/A-intensive Workloads empfiehlt sich möglicherweise die Verwendung von Gen 5-Hardware und für rechenintensive Workloads die Verwendung von Gen 4. Weitere Informationen finden Sie im Abschnitt mit häufig gestellten Fragen zum Auswählen zwischen Hardwaregenerationen.
+Für E/A-intensive Workloads empfiehlt sich möglicherweise die Verwendung von Gen 5-Hardware und für rechenintensive Workloads die Verwendung von Gen 4. Weitere Informationen finden Sie unter [Gewusst wie: Auswählen zwischen Gen 4 und Gen5](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance).
 
 Wenn Ihre Workload aus vielen kleinen Transaktionen besteht, sollten Sie den Verbindungstyp von Proxymodus in Umleitungsmodus ändern.
 

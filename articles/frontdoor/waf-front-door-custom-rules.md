@@ -10,41 +10,39 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 02b335de7f105d768168d5f798ec9109136d7430
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 344e04985c52945b2917d3b5f616d5fca6051ab9
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846261"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839776"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Benutzerdefinierte Regeln für Web Application Firewall mit Azure Front Door
-Web Application Firewall (WAF) von Azure mit Front Door Service ermöglicht Ihnen, den Zugriff auf Ihre Webanwendungen anhand der Bedingungen, die Sie definieren, zu steuern. Eine benutzerdefinierte WAF-Regel besteht aus einer Prioritätsnummer, einem Regeltyp, Übereinstimmungsbedingungen und einer Aktion. Es gibt zwei Arten von benutzerdefinierten Regeln: Übereinstimmungsregeln und Ratenlimitregeln. Eine Übereinstimmungsregel steuert den Zugriff basierend auf Übereinstimmungsbedingungen, während eine Ratenlimitregel den Zugriff basierend auf Übereinstimmungsbedingungen und den Raten der eingehenden Anforderungen steuert. Sie können eine benutzerdefinierte Regel deaktivieren, damit sie nicht ausgewertet wird, aber dennoch die Konfiguration beibehalten. Dieser Artikel beschreibt die Übereinstimmungsregeln, die auf HTTP-Parametern basieren.
+Web Application Firewall (WAF) von Azure mit Front Door Service ermöglicht Ihnen, den Zugriff auf Ihre Webanwendungen anhand der Bedingungen, die Sie definieren, zu steuern. Eine benutzerdefinierte WAF-Regel besteht aus einer Prioritätsnummer, einem Regeltyp, Übereinstimmungsbedingungen und einer Aktion. Es gibt zwei Arten von benutzerdefinierten Regeln: Übereinstimmungsregeln und Ratenlimitregeln. Eine Übereinstimmungsregel steuert den Zugriff basierend auf einer Reihe von Übereinstimmungsbedingungen, während eine Ratenlimitregel den Zugriff basierend auf Übereinstimmungsbedingungen und den Raten der eingehenden Anforderungen steuert. Sie können eine benutzerdefinierte Regel deaktivieren, damit sie nicht ausgewertet wird, aber dennoch die Konfiguration beibehalten. 
 
 ## <a name="priority-match-conditions-and-action-types"></a>Priorität, Übereinstimmungsbedingungen und Aktionstypen
-Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die eine Prioritätsnummer, einen Regeltyp, Übereinstimmungsbedingungen und eine Aktion definiert. 
+Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die eine Prioritätsnummer, einen Regeltyp, ein Array von Übereinstimmungsbedingungen und eine Aktion definiert. 
 
-- **Priorität:** eine eindeutige ganze Zahl, die die Reihenfolge der Auswertung von WAF-Regeln beschreibt. Regeln mit niedrigeren Werten werden vor Regeln mit höheren Werten ausgewertet.
+- **Priorität:** eine eindeutige ganze Zahl, die die Reihenfolge der Auswertung von WAF-Regeln beschreibt. Regeln mit niedrigeren Prioritätswerten werden vor Regeln mit höheren Werten ausgewertet. Prioritätsnummern müssen bei allen benutzerdefinierten Regeln eindeutig sein.
 
 - **Aktion:** definiert, wie eine Anforderung bei Übereinstimmung mit einer WAF-Regel weitergeleitet wird. Für den Fall, dass eine Anforderung mit einer benutzerdefinierten Regel übereinstimmt, können Sie eine der folgenden Aktionen auswählen.
 
     - *Zulassen*: WAF leitet die Anforderung an das Back-End weiter, protokolliert einen Eintrag in WAF-Protokollen und wird beendet.
     - *Blockieren*: Die Anforderung wird blockiert. WAF sendet eine Antwort an den Client, ohne die Anforderung an das Back-End weiterzuleiten. WAF protokolliert einen Eintrag in den WAF-Protokollen.
-    - *Protokollieren*: WAF protokolliert einen Eintrag in den WAF-Protokollen und fährt mit der Auswertung der nächsten Regel fort.
+    - *Protokollieren* – WAF protokolliert einen Eintrag in den WAF-Protokollen und fährt mit der Auswertung der nächsten Regel fort.
     - *Umleiten* WAF leitet die Anforderung an einen angegebenen URI um, protokolliert einen Eintrag in den WAF-Protokollen, und wird beendet.
 
-- **Übereinstimmungsbedingung**: definiert eine Übereinstimmungsvariable, einen Operator und einen Übereinstimmungswert. Jede Regel kann mehrere Übereinstimmungsbedingungen enthalten. Eine Übereinstimmungsbedingung kann auf den folgenden *Übereinstimmungsvariablen* basieren:
-    - RemoteAddr (Client-IP)
+- **Übereinstimmungsbedingung**: definiert eine Übereinstimmungsvariable, einen Operator und einen Übereinstimmungswert. Jede Regel kann mehrere Übereinstimmungsbedingungen enthalten. Eine Übereinstimmungsbedingung kann auf einer geografischen Position, Client-IP-Adressen (CIDR), der Größe oder einer übereinstimmenden Zeichenfolge basieren. Eine übereinstimmende Zeichenfolge kann mit einer Liste von Übereinstimmungsvariablen abgeglichen werden.
+  - **Übereinstimmungsvariable:**
     - RequestMethod
     - QueryString
     - PostArgs
     - RequestUri
     - RequestHeader
     - RequestBody
-
-- **Operator:** Die Liste umfasst Folgendes:
+    - Cookies
+  - **Operator:**
     - Beliebig: wird häufig verwendet, um die Standardaktion zu definieren, wenn mit keiner Regel Übereinstimmung vorliegt. Der Beliebig-Operator stimmt mit allem überein.
-    - IPMatch: Definieren der IP-Einschränkung für die RemoteAddr-Variable
-    - GeoMatch: Definieren der Geofilterung für die RemoteAddr-Variable
     - Gleich
     - Contains
     - LessThan: Größenbeschränkung
@@ -52,26 +50,46 @@ Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die ein
     - LessThanOrEqual: Größenbeschränkung
     - GreaterThanOrEqual: Größenbeschränkung
     - BeginsWith
-     - EndsWith
+    - EndsWith
+    - RegEx
+  
+  - **Regex** unterstützt nicht die folgenden Vorgänge: 
+    - Rückverweise und Erfassung von Teilausdrücken
+    - Willkürliche Assertionen mit einer Breite von 0
+    - Unterroutinenverweise und rekursive Muster
+    - Bedingte Muster
+    - Rückverfolgung von Steuerelementverben
+    - Die Einzelbyte-Anweisung – „\C“
+    - Die Anweisung für Zeilenvorschubübereinstimmung – „\R“
+    - Die Startanweisung zum Zurücksetzen der Übereinstimmung – „\K“
+    - Callouts und eingebetteter Code
+    - Atomische Gruppierung und besitzanzeigende Quantifizierer
 
-Sie können festlegen, dass eine *Negationsbedingung* als „true“ gilt, wenn das Ergebnis einer Bedingung negiert werden soll.
-
-*Übereinstimmungswert* definiert die Liste der möglichen Übereinstimmungswerte.
-Zu den unterstützten HTTP-Anforderungsmethodenwerten zählen:
-- GET
-- POST
-- PUT
-- HEAD
-- DELETE
-- LOCK
-- UNLOCK
-- PROFILE
-- OPTIONS
-- PROPFIND
-- PROPPATCH
-- MKCOL
-- COPY
-- MOVE
+  - **Negation [optional]:** Sie können festlegen, dass eine *Negationsbedingung* als „true“ gilt, wenn das Ergebnis einer Bedingung negiert werden soll.
+      
+  - **Transformation [optional]:** Eine Zeichenfolgenliste mit Namen von Transformationen, die vor dem Abgleich ausgeführt werden sollen. Mögliche Transformationen:
+     - Großbuchstaben 
+     - Kleinbuchstaben
+     - Trim
+     - RemoveNulls
+     - UrlDecode
+     - UrlEncode
+     
+   - **Übereinstimmungswert:** Zu den unterstützten HTTP-Anforderungsmethodenwerten zählen:
+     - GET
+     - POST
+     - PUT
+     - HEAD
+     - DELETE
+     - LOCK
+     - UNLOCK
+     - PROFILE
+     - OPTIONS
+     - PROPFIND
+     - PROPPATCH
+     - MKCOL
+     - COPY
+     - MOVE
 
 ## <a name="examples"></a>Beispiele
 

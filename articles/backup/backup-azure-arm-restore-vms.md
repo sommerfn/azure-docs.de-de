@@ -9,14 +9,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0130dde483db4563926076f9bf9e641c14b1c117
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688761"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736692"
 ---
-# <a name="restore-azure-vms"></a>Wiederherstellen virtueller Azure-Computer
+# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
 Dieser Artikel beschreibt, wie Sie Azure VM-Daten aus den Wiederherstellungspunkten wiederherstellen können, die in [Azure Backup](backup-overview.md) Recovery Services-Tresoren gespeichert sind.
 
@@ -112,7 +112,8 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können einen Datent
 
 4. Klicken Sie unter **Konfiguration wiederherstellen** auf **OK**. Klicken Sie unter **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
 
-Während der VM-Wiederherstellung verwendet Azure Backup nicht das Speicherkonto. In den Fällen **Wiederherstellen von Datenträgern** und **Sofortige Wiederherstellung** dagegen wird das Speicherkonto zum Speichern der Vorlage verwendet.
+Wenn Ihr virtueller Computer verwaltete Datenträger verwendet und Sie die Option **Virtuellen Computer erstellen** auswählen, wird Azure Backup das angegebene Speicherkonto nicht verwenden. In den Fällen **Wiederherstellen von Datenträgern** und **Sofortige Wiederherstellung** wird das Speicherkonto nur zum Speichern der Vorlage verwendet. Verwaltete Datenträger werden in der angegebenen Ressourcengruppe erstellt.
+Wenn Ihr virtueller Computer nicht verwaltete Datenträger verwendet, werden diese als Blobs für das Speicherkonto wiederhergestellt.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>Verwenden von Vorlagen zum Anpassen eines wiederhergestellten virtuellen Computers
 
@@ -163,7 +164,7 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 **Zonenkonfigurierte angeheftete VMs** | Azure Backup unterstützt die Sicherung und Wiederherstellung von zonenkonfigurierten angehefteten VMs. [Weitere Informationen](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
-Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Azure Backup zeigt Benachrichtigungen zum Auftrag im Portal an. Wenn keine Benachrichtigungen angezeigt werden, klicken Sie auf das Symbol **Benachrichtigungen**.
+Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Azure Backup zeigt Benachrichtigungen zum Auftrag im Portal an. Wenn sie nicht angezeigt werden, wählen Sie das Symbol **Benachrichtigungen** und dann **Alle Aufträge anzeigen** aus, um den Status des Wiederherstellungsvorgangs anzuzeigen.
 
 ![Wiederherstellung ausgelöst](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 

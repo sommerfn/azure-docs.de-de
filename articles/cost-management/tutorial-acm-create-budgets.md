@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 07/31/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: eab45948b5f931377396d93d93e8955ba0f3e767
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fd98c7bb2cd049da8f5f68a5d2401081822eb22
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792853"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779200"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -64,33 +64,29 @@ Nachdem Sie Budgets erstellt haben, wird eine einfache Ansicht Ihrer aktuellen A
 
 Klicken Sie auf **Hinzufügen**.
 
-![Im Azure-Portal angezeigte Cost Management-Budgets](./media/tutorial-acm-create-budgets/budgets01.png)
+![Beispiel für eine Liste von bereits erstellten Budgets](./media/tutorial-acm-create-budgets/budgets01.png)
 
-Geben Sie im Fenster **Budget erstellen** einen Namen und einen Betrag für das Budget ein. Wählen Sie anschließend eine Dauer von einem Monat, einem Quartal oder einem Jahr aus. Wählen Sie als Nächstes ein Enddatum aus. Budgets erfordern mindestens einen Kostenschwellenwert (% des Budgets) und eine entsprechende E-Mail-Adresse. Sie können optional bis zu fünf Schwellenwerte und fünf E-Mail-Adressen in ein einzelnes Budget aufnehmen. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise in weniger als acht Stunden empfangen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](cost-mgt-alerts-monitor-usage-spending.md).
+Vergewissern Sie sich im Fenster **Budget erstellen**, dass der richtige Bereich angezeigt wird. Wählen Sie alle Filter aus, die Sie hinzufügen möchten. Mit Filtern können Sie Budgets für bestimmte Kosten erstellen, z.B. für Ressourcengruppen in einem Abonnement oder einen Dienst wie virtuelle Computer. Filter, die Sie in der Kostenanalyse verwenden können, können auch auf ein Budget angewendet werden.
 
-Wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung, ein MSDN-Abonnement oder ein Visual Studio-Abonnement verfügen, stimmt der Abrechnungszeitraum für Ihre Rechnung möglicherweise nicht mit dem Kalendermonat überein. Bei diesen Arten von Abonnements und Ressourcengruppen können Sie ein Budget erstellen, das Ihrem Rechnungszeitraum oder Kalendermonaten entspricht. Zum Erstellen eines Budgets, das Ihrem Rechnungszeitraum entspricht, wählen Sie als Zurücksetzungszeitraum „Abrechnungsmonat“, „Abrechnungsquartal“ oder „Abrechnungsjahr“ aus. Wenn Sie ein Budget entsprechend dem Kalendermonat erstellen möchten, wählen Sie als Zurücksetzungszeitraum „Monatlich“, „Vierteljährlich“ oder „Jährlich“ aus.
+Nachdem Sie Ihren Bereich und die Filter identifiziert haben, geben Sie einen Budgetnamen ein. Wählen Sie dann einen Zurücksetzungszeitraum für ein Monats,- Quartals- oder Jahresbudget aus. Dieser Zurücksetzungszeitraum bestimmt das Zeitfenster, das durch das Budget analysiert wird. Die durch das Budget ausgewerteten Kosten beginnen am Anfang jedes neuen Zeitraums bei Null. Die Erstellung eines Quartalsbudgets entspricht der eines Monatsbudget. Der Unterschied besteht darin, dass der Budgetbetrag für das Quartal gleichmäßig auf die drei Monate des Quartals verteilt wird. Ein jährlicher Budgetbetrag wird gleichmäßig auf alle 12 Monate des Kalenderjahrs aufgeteilt.
 
-Hier ist ein Beispiel für das Erstellen einer Monatsbudget von 4.500 USD. Eine E-Mail-Warnung wird generiert, wenn 90 % des Budgets erreicht sind.
+Wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung, ein MSDN-Abonnement oder ein Visual Studio-Abonnement verfügen, stimmt der Abrechnungszeitraum für Ihre Rechnung möglicherweise nicht mit dem Kalendermonat überein. Bei diesen Abonnementarten und Ressourcengruppen können Sie ein Budget erstellen, das Ihrem Rechnungszeitraum oder Kalendermonaten entspricht. Zum Erstellen eines Budgets, das Ihrem Rechnungszeitraum entspricht, wählen Sie als Zurücksetzungszeitraum **Abrechnungsmonat**, **Abrechnungsquartal** oder **Abrechnungsjahr** aus. Wenn Sie ein Budget entsprechend dem Kalendermonat erstellen möchten, wählen Sie als Zurücksetzungszeitraum **Monatlich**, **Vierteljährlich** oder **Jährlich** aus.
 
-![Beispielinformationen im Feld „Budget erstellen“](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+Identifizieren Sie als Nächstes das Ablaufdatum, an dem das Budget ungültig wird und ihre Kosten nicht mehr auswertet.
 
-Die Erstellung eines Quartalsbudgets entspricht der eines Monatsbudget. Der Unterschied besteht darin, dass der Budgetbetrag für das Quartal gleichmäßig auf die drei Monate des Quartals verteilt wird. Erwartungsgemäß wird ein jährlicher Budgetbetrag gleichmäßig auf alle 12 Monate des Kalenderjahres verteilt.
+Basierend auf den bis jetzt im Budget ausgewählten Feldern wird ein Diagramm angezeigt, das Sie bei der Auswahl eines Schwellenwerts für Ihr Budget unterstützen soll. Das vorgeschlagene Budget basiert auf den höchsten prognostizierten Kosten, die für Sie in zukünftigen Zeiträumen anfallen können. Sie können den Budgetbetrag ändern.
 
-Die aktuellen Ausgaben werden im Abgleich mit dem Budgets aktualisiert, wenn Cost Management aktualisierte Abrechnungsdaten erhält. In der Regel erfolgt dies täglich.
+![Beispiel für die Erstellung eines Budgets mit monatlichen Kostendaten ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-![Beispielinformationen mit aktuellen Ausgaben im Vergleich zu Budgets](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
+Nachdem Sie den Budgetbetrag konfiguriert haben, klicken Sie auf **Weiter**, um Budgetwarnungen zu konfigurieren. Budgets erfordern mindestens einen Kostenschwellenwert (% des Budgets) und eine entsprechende E-Mail-Adresse. Sie können optional bis zu fünf Schwellenwerte und fünf E-Mail-Adressen in ein einzelnes Budget aufnehmen. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise in weniger als acht Stunden empfangen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](cost-mgt-alerts-monitor-usage-spending.md). Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind.
+
+![Beispiel für Warnungsbedingungen](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
 Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Betrachtung Ihres Budgets in Bezug auf Ihren Ausgabentrend ist einer der ersten Schritte in der [Analyse Ihrer Kosten und Ausgaben](quick-acm-cost-analysis.md).
 
 ![Beispiel für in der Kostenanalyse angezeigtes Budget und Ausgaben](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 Im obigen Beispiel haben Sie ein Budget für ein Abonnement erstellt. Sie können jedoch auch ein Budget für eine Ressourcengruppe erstellen. Wenn Sie ein Budget für eine Ressourcengruppe erstellen möchten, navigieren Sie zu **Cost Management + Abrechnung** &gt; **Abonnements** &gt;wählen Sie ein Abonnement > **Ressourcengruppen** > wählen Sie eine Ressourcengruppe aus > **Budgets** > und denn Budget **hinzufügen**.
-
-## <a name="edit-a-budget"></a>Bearbeiten eines Budgets
-
-Abhängig von Ihrer Zugriffsebene können Sie ein Budget bearbeiten, um seine Eigenschaften zu ändern. Im folgenden Beispiel sind einige der Eigenschaften schreibgeschützt, da der Benutzer nur die Berechtigung „Mitwirkender“ für das Abonnement besitzt. Derzeit ist das **Ablaufdatum** deaktiviert und kann nach dem Festlegen nicht geändert werden.
-
-![Beispiel für die Bearbeitung eines Budgets zum Ändern verschiedener Eigenschaften](./media/tutorial-acm-create-budgets/edit-budget.png)
 
 ## <a name="trigger-an-action-group"></a>Auslösen einer Aktionsgruppe
 
@@ -99,6 +95,7 @@ Wenn Sie ein Budget für einen Abonnement- oder Ressourcengruppenbereich erstell
 Um Aktionsgruppen zu erstellen oder zu aktualisieren, klicken Sie beim Erstellen oder Bearbeiten eines Budgets auf **Aktionsgruppen verwalten**.
 
 ![Beispiel für das Erstellen eines Budgets zum Anzeigen von „Aktionsgruppen verwalten“](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
 
 Klicken Sie anschließend auf **Aktionsgruppe hinzufügen**, und erstellen Sie die Aktionsgruppe.
 

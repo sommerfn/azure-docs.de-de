@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/01/2019
 ms.author: orspodek
-ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a7ac0bdc2bd5eed802f6959a628dee4c8141dbd1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449644"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720800"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
@@ -62,7 +62,7 @@ Der Azure Data Explorer-Connector verwendet die Dienstprinzipalauthentifizierung
     - **Als Senke**: Gewähren Sie der Datenbank mindestens die Rolle **Database ingestor** (Datenbankerfasser).
 
 >[!NOTE]
->Wenn Sie die ADF-Benutzeroberfläche für die Erstellung verwenden, kann es sein, dass für die Vorgänge der Auflistung von Datenbanken mit verknüpften Diensten oder von Tabellen im Dataset eine höhere Berechtigung erforderlich ist, die dem Dienstprinzipal erteilt werden muss. Alternativ können Sie Datenbank- und Tabellennamen manuell eingeben. Die Ausführung der Kopieraktivität funktioniert, solange dem Dienstprinzipal die entsprechende Berechtigung zum Lesen/Schreiben von Daten erteilt wird.
+>Wenn Sie die ADF-Benutzeroberfläche für die Erstellung verwenden, wird Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Geben Sie den Namen manuell ein, wenn Sie keine Berechtigung für diesen Vorgang haben.
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
@@ -116,12 +116,13 @@ Folgende Eigenschaften werden unterstützt:
    "name": "AzureDataExplorerDataset",
     "properties": {
         "type": "AzureDataExplorerTable",
+        "typeProperties": {
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Data Explorer linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "table": "<table name>"
         }
     }
 }
