@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5c03c1d8a865b792ce79e3e2b576a629b71e02c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 02a2bd311ea1e89a49eb12ef57a167a08eea5f98
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332420"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812251"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Erstellen einer privaten CloudSimple-Cloud
 
@@ -31,7 +31,12 @@ Wenn Sie eine private Cloud erstellen, erhalten Sie einen einzelnen vSphere-Clus
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Bevor Sie eine private Cloud erstellen können, müssen Knoten bereitgestellt werden.  Weitere Informationen zum Bereitstellen von Knoten finden Sie in dem Artikel [Provision nodes for VMware Solution by CloudSimple – Azure (Bereitstellen von Knoten für die VMware-Lösung von CloudSimple: Azure)](create-nodes.md).
+Bevor Sie eine private Cloud erstellen können, müssen Knoten bereitgestellt werden.  Weitere Informationen zum Bereitstellen von Knoten finden Sie im Artikel [Kaufen von Knoten für VMware-Lösung von CloudSimple – Azure](create-nodes.md).
+
+Zuordnung eines CIDR-Bereichs für vSphere/vSAN-Subnetze für die private Cloud. Eine private Cloud wird als isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird. Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist. Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt.  Der Adressraum des vSphere/vSAN-Subnetzadressraums muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert.  Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke.  Weitere Informationen zu vSphere/vSAN-Subnetzen finden Sie unter [Übersicht über VLANs und Subnetze](cloudsimple-vlans-subnets.md).
+
+* Minimales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /24 
+* Maximales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /21
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

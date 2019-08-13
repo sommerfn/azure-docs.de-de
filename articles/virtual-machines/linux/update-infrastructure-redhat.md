@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 2add03d68b00fb18fb4323a6acd04480b3770c1c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708418"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774273"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -97,6 +97,11 @@ Führen Sie die folgenden Befehle als Benutzer „root“ aus:
     yum --disablerepo='*' remove 'rhui-azure-rhel7-eus'
    ```
 
+1. Konfigurieren der RHEL-VM
+    ```bash
+    yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
+    ```
+    
 1. Aktualisieren Ihrer RHEL-VM
     ```bash
     sudo yum update

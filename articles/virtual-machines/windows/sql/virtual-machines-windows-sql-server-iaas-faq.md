@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876193"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816306"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -121,6 +121,11 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Können selbst bereitgestellte SQL Server-VMs beim SQL-VM-Ressourcenanbieter registriert werden?**
 
     Ja. Wenn Sie SQL Server über eigene Medien bereitgestellt und die SQL-IaaS-Erweiterung installiert haben, können Sie die SQL Server-VM beim Ressourcenanbieter registrieren, um in den Genuss der von der SQL-IaaS-Erweiterung gebotenen Vorteile bei der Verwaltung zu kommen. Sie können eine selbst bereitgestellte SQL-VM jedoch nicht für die nutzungsbasierte Bezahlung konvertieren.
+
+1. **Ist es möglich, das Lizenzierungsmodell auf einem virtuellen SQL Server-Computer zu wechseln, der mit dem klassischem Modell bereitgestellt wird?**
+
+   Nein. Eine Änderung des Lizenzierungsmodells wird auf einer klassischen VM nicht unterstützt. Sie können Ihre VM zum Resource Manager-Modell (ARM) migrieren und sich beim SQL-VM-Ressourcenanbieter registrieren. Nachdem die VM beim SQL-VM-Ressourcenanbieter registriert wurde, kann das Lizenzierungsmodell auf der VM geändert werden. 
+   
 
 ## <a name="administration"></a>Verwaltung
 

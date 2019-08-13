@@ -9,12 +9,12 @@ ms.topic: article
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: fde2b6d1d298e89227951c376d584452fbff2679
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f65882cb851f8e35bb1d6c319d52fcfadb36ae91
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707047"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772715"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Visualisieren Sie Experimentabläufe und Metriken mit TensorBoard und Azure Machine Learning
 
@@ -33,9 +33,9 @@ Wie Sie TensorBoard mit Azure Machine Learning Experimenten starten, hängt von 
 
 * Der Code in dieser Anleitung kann in einer der folgenden Umgebungen ausgeführt werden: 
 
-    * Azure Machine Learning Notebook VM – keine Downloads oder Installationen erforderlich
+    * Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 
-        * Vervollständigen Sie den Schnellstart des [Cloud-basierten Notebooks](quickstart-run-cloud-notebook.md#create-notebook), um einen dedizierten Notebookserver zu erstellen, der mit dem SDK und dem Beispiel-Repositorium vorinstalliert ist.
+        * Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebookserver zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
 
         * Suchen Sie im Ordner Samples auf dem Notebook-Server zwei fertige und erweiterte Notebooks, indem Sie zu diesem Verzeichnis navigieren: **how-to-use azureml > training-with-deep-learning**.
         * export-run-history-to-run-history.ipynb

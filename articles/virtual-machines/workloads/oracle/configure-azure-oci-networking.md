@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/24/2019
+ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707577"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781292"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
 Microsoft und Oracle bieten mit [ExpressRoute](../../../expressroute/expressroute-introduction.md) und [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) die Möglichkeit, eine direkte Verbindung zwischen Azure und Oracle Cloud Infrastructure (OCI) herzustellen und so eine [integrierte Multi-Cloud-Umgebung](oracle-oci-overview.md) (Vorschauversion) bereitzustellen. Dank der Integration von ExpressRoute und FastConnect profitieren Kunden von geringer Latenz, hohem Durchsatz und privaten Direktverbindungen zwischen den beiden Clouds.
 
 > [!IMPORTANT]
-> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI unterstützt werden, muss diese Funktionalität für das Azure-Abonnement und den OCI-Mandanten zunächst in die Whitelist aufgenommen werden.
+> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI unterstützt werden, muss diese Funktionalität für das Azure-Abonnement zunächst in die Whitelist aufgenommen werden.
 
 Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 
@@ -39,8 +39,6 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 * Die Verbindung ist nur möglich, wenn sich ein Azure ExpressRoute-Peeringstandort in der Nähe oder am gleichen Peeringstandort wie OCI FastConnect befindet. Siehe [Einschränkungen der Vorschau](oracle-oci-overview.md#preview-limitations).
 
 * Ihr Azure-Abonnement muss für diese Vorschaufunktion in die Whitelist aufgenommen werden. Wenden Sie sich an Ihren Microsoft-Kundenbetreuer, um dieses Feature für Ihr Abonnement zu aktivieren.
-
-* Ihr OCI-Mandant muss für diese Vorschaufunktion in die Whitelist aufgenommen werden. Weitere Einzelheiten erhalten Sie von Ihrem Oracle-Kundenbetreuer.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurieren der direkten Konnektivität zwischen ExpressRoute und FastConnect
 

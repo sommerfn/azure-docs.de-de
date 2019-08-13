@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 601e4651962010f7ee94f2349deb57f60db7990c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b5aae5f8e7195cfea7817b9e40e6f28d47fc3eff
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621216"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780405"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel Preview
 
@@ -35,7 +35,7 @@ Azure Logic Apps-Connectoren: <https://docs.microsoft.com/connectors/>
 ## <a name="vendor-documentation"></a>Herstellerdokumentation
 
 
-| **Hersteller**  | **Anwendungsfall in Azure Sentinel** | **Link**|
+| **Hersteller**  | **Anwendungsvorfall in Azure Sentinel** | **Link**|
 |----|----|----|
 | GitHub| Verwendet für Zugriff auf die Community-Seite| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| CEF konfigurieren| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|

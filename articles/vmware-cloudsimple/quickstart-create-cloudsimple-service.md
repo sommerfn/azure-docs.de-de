@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 13b07b3b50bdb03373275ca9594baa6357e9f66f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164219"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812294"
 ---
 # <a name="quickstart---create-service"></a>Schnellstart: Erstellen des Diensts
 
@@ -25,25 +25,13 @@ Der CloudSimple-Dienst ermöglicht es Ihnen, die Azure-VMware-Lösung von CloudS
 
 Um den CloudSimple-Dienst hinzuzufügen, müssen Sie ein Gatewaysubnetz erstellen. Das Gatewaysubnetz wird verwendet, wenn das Edge-Netzwerk erstellt wird, und das Gatewaysubnetz erfordert einen /28-CIDR-Block. Der Gatewaysubnetz-Adressraum muss eindeutig sein. Er darf nicht mit einem Ihrer lokalen Netzwerkadressräume oder mit einem Adressraum des virtuellen Azure-Netzwerk überlappen.
 
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Ordnen Sie einen /28-CIDR-Block für das Gatewaysubnetz zu.  Ein Gatewaysubnetz ist für jeden CloudSimple-Dienst erforderlich und für die Region spezifisch, in der es erstellt wird. Das Gatewaysubnetz wird für Edge-Netzwerkdienste verwendet und erfordert einen CIDR-Block vom Typ „/28“. Der Adressraum des Gatewaysubnetzes muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert.  Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke. 
+
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-
-## <a name="enable-microsoftvmwarecloudsimple-resource-provider"></a>Aktivieren des Microsoft.VMwareCloudSimple-Ressourcenanbieters
-
-Gehen Sie folgendermaßen vor, um den Ressourcenanbieter für den CloudSimple-Dienst zu aktivieren.
-
-1. Wählen Sie **Alle Dienste** aus.
-2. Suchen Sie nach **Abonnements**, und wählen Sie diese Option aus.
-
-    ![Auswählen von Abonnements](media/cloudsimple-service-select-subscriptions.png)
-
-3. Wählen Sie das Abonnement aus, für das Sie den CloudSimple-Dienst aktivieren möchten.
-4. Klicken Sie auf **Ressourcenanbieter** für das Abonnement.
-5. Verwenden Sie **Microsoft.VMwareCloudSimple**, um den Ressourcenanbieter zu filtern.
-6. Wählen Sie den **Microsoft.VMwareCloudSimple**-Ressourcenanbieter aus, und klicken Sie auf **Registrieren**.
-
-    ![Registrieren des Ressourcenanbieters](media/cloudsimple-service-enable-resource-provider.png)
 
 ## <a name="create-the-service"></a>Erstellen des Diensts
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565262"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779476"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf Data Science Virtual Machine basierende Teamanalyse und KI-Umgebung 
 [Data Science Virtual Machine](overview.md) (DSVM) bietet eine umfangreiche Umgebung in der Azure-Plattform mit vorgefertigter Software für künstliche Intelligenz (KI) und Datenanalyse. 
@@ -43,12 +43,12 @@ Zu den wichtigsten Bausteinen einer Teamanalyseumgebung für Unternehmen gehöre
 
 In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorangegangenen Aspekte bereitgestellt. Sie deckt nicht alle Überlegungen und Anforderungen beim Bereitstellen von DSVM in großen Unternehmenskonfigurationen ab. Weitere Informationen finden Sie auch in der folgenden Azure-Dokumentation, die Sie bei der Implementierung von DSVM-Instanzen in Ihrem Unternehmen verwenden können: 
 
-* [Netzwerksicherheit](https://docs.microsoft.com/azure/security/azure-network-security)
+* [Netzwerksicherheit](https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [Überwachung](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) und [Verwaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Richtlinieneinstellung und -erzwingung](../../governance/policy/overview.md)
-* [Antischadsoftware](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [Antischadsoftware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Verschlüsselung](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Datenermittlung und Governance](https://docs.microsoft.com/azure/data-catalog/)
 

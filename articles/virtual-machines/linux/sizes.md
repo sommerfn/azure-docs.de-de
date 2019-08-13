@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/07/2019
 ms.author: jonbeck
-ms.openlocfilehash: 7445b0ce2cc80a899ef5d34c01f37564d255b5ce
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 216629701f82d31d70f0a5a5f3fc883bf5a30c14
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708755"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816276"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Größen für virtuelle Linux-Computer in Azure
 Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Linux-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Dieser Artikel ist auch für [virtuelle Windows-Computer](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)verfügbar.
@@ -32,7 +32,7 @@ Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtue
 | [Computeoptimiert](sizes-compute.md)        | Fsv2           | Hohes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Webserver, Network Appliances, Stapelverarbeitungsvorgänge und Anwendungsserver mit mittlerer Auslastung.        |
 | [Arbeitsspeicheroptimiert](sizes-memory.md)         | Esv3, Ev3, Mv2, M, DSv2, Dv2  | Hohes Verhältnis von Speicher zu CPU. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
 | [Speicheroptimiert](sizes-storage.md)        | Lsv2                | Hoher Datenträgerdurchsatz und E/A, ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  |
-| [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (Vorschau), NV, NVv3 (Vorschau) | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar.       |
+| [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (Vorschau), NV, NVv3  | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar.       |
 | [High Performance Computing](sizes-hpc.md) | HB, HC, H | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
 
 <br>

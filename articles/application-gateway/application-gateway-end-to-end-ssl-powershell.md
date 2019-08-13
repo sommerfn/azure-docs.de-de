@@ -247,7 +247,7 @@ Gehen Sie wie folgt vor, um ein neues Zertifikat anzuwenden, wenn das Back-End-Z
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Fügen Sie die neue Zertifikatsressource aus der CER-Datei hinzu, die den öffentlichen Schlüssel des Zertifikats enthält. Dieses Zertifikat kann mit demjenigen identisch sein, das dem Listener für SSL-Beendigung am Anwendungsgateway hinzugefügt wurde.
+2. Fügen Sie die neue Zertifikatsressource aus der CER-Datei hinzu, die den öffentlichen Schlüssel des Zertifikats enthält. Dieses Zertifikat kann mit demjenigen identisch sein, das dem Listener für SSL-Terminierung am Anwendungsgateway hinzugefügt wurde.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 

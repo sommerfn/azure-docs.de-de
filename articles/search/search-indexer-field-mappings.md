@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 3546e342b535a122ea4ed3f844cd5e28a76d551a
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 771a6e413cd08a338da41c09cd6a0da35e28e5e4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147788"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840660"
 ---
 # <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Azure Search-Indexern
 
@@ -113,6 +113,8 @@ Eine Feldzuordnungsfunktion transformiert den Inhalt eines Felds, bevor es im In
 * [base64Decode](#base64DecodeFunction)
 * [extractTokenAtPosition](#extractTokenAtPositionFunction)
 * [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
+* [urlEncode](#urlEncodeFunction)
+* [urlDecode](#urlDecodeFunction)
 
 <a name="base64EncodeFunction"></a>
 
@@ -243,3 +245,51 @@ Azure SQL-Datenbank verfügt über keinen integrierten Datentyp, der `Collection
 ```
 
 Ein ausführliches Beispiel, in dem relationale Daten in Indexsammlungsfelder transformiert werden, finden Sie unter [Modellieren von relationalen Daten](search-example-adventureworks-modeling.md).
+
+<a name="urlEncodeFunction"></a>
+
+### <a name="urlencode-function"></a>urlEncode-Funktion
+
+Diese Funktion kann verwendet werden, um eine Zeichenfolge zu codieren, sodass Sie „URL-sicher“ ist. Bei Verwendung mit einer Zeichenfolge, die Zeichen enthält, die in einer URL nicht zulässig sind, konvertiert diese Funktion diese „unsicheren“ Zeichen in Entsprechungen von Zeichenentitäten. Diese Funktion verwendet das UTF-8-Codierungsformat.
+
+#### <a name="example---document-key-lookup"></a>Beispiel: Dokumentschlüsselsuche
+
+Die `urlEncode`-Funktion kann als Alternative zur `base64Encode`-Funktion verwendet werden, wenn nur URL-unsichere Zeichen konvertiert werden sollen, während andere Zeichen unverändert bleiben sollen.
+
+Wenn die Eingabezeichenfolge beispielsweise `<hello>` lautet, wird das Zielfeld des Typs `(Edm.String)` mit dem Wert `%3chello%3e` aufgefüllt.
+
+Wenn Sie den codierten Schlüssel während der Suche abrufen, können Sie die Funktion `urlDecode` verwenden, um den ursprünglichen Schlüsselwert abzurufen, mit dem Sie dann das Quelldokument abrufen können.
+
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
+    "mappingFunction" : {
+      "name" : "urlEncode"
+    }
+  }]
+ ```
+
+ <a name="urlDecodeFunction"></a>
+
+ ### <a name="urldecode-function"></a>urlDecode-Funktion
+
+ Diese Funktion konvertiert eine URL-codierte Zeichenfolge unter Verwendung des UTF-8-Codierungsformats in eine decodierte Zeichenfolge.
+
+ ### <a name="example---decode-blob-metadata"></a>Beispiel: Decodieren von Blobmetadaten
+
+ Einige Azure Storage-Clients codieren Blob-Metadaten automatisch als URL, wenn Sie Nicht-ASCII-Zeichen enthalten. Wenn Sie jedoch das Durchsuchen solcher Metadaten (als unformatierter Text) ermöglichen möchten, können Sie die `urlDecode`-Funktion verwenden, um die codierten Daten beim Auffüllen Ihres Suchindexes wieder in „normale“ Zeichenfolgen umzuwandeln.
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "UrlEncodedMetadata",
+    "targetFieldName" : "SearchableMetadata",
+    "mappingFunction" : {
+      "name" : "urlDecode"
+    }
+  }]
+ ```

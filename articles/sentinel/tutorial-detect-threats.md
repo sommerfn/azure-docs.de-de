@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 2cc33a9ac55ae9e906d88b72476d4b5ee244d2c8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370715"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780425"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Tutorial: Erkennen von Bedrohungen mit Azure Sentinel Preview
 
@@ -28,7 +28,7 @@ ms.locfileid: "68370715"
 > Azure Sentinel befindet sich momentan in der Public Preview.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Damit Sie dies tun können, ermöglicht Azure Sentinel es Ihnen, erweiterte Warnungsregeln zu erstellen, die Fälle generieren, die Sie zuweisen und verwenden können, um Anomalien und Bedrohungen für Ihre Umgebung gründlich untersuchen zu können. 
+Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Damit Sie dies tun können, ermöglicht Azure Sentinel es Ihnen, erweiterte Warnungsregeln zu erstellen, die Vorfälle generieren, die Sie zuweisen und verwenden können, um Anomalien und Bedrohungen für Ihre Umgebung gründlich untersuchen zu können. 
 
 Dieses Tutorial unterstützt Sie bei der Gefahrenerkennung mit Azure Sentinel.
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ Dieses Tutorial unterstützt Sie bei der Gefahrenerkennung mit Azure Sentinel.
 
 ## <a name="create-detection-rules"></a>Erstellen von Erkennungsregeln
 
-Wenn Sie Fälle untersuchen möchten, müssen Sie zunächst Erkennungsregeln erstellen. 
+Wenn Sie Vorfälle untersuchen möchten, müssen Sie zunächst Erkennungsregeln erstellen. 
 
 > [!NOTE]
 > In Azure Sentinel generierte Warnungen stehen über [Microsoft Graph Security](https://aka.ms/securitygraphdocs) zur Verfügung. Weitere Informationen und eine Übersicht der Integrationspartner finden Sie in der Dokumentation zu [Microsoft Graph Security-Warnungen](https://aka.ms/graphsecurityreferencebetadocs).
@@ -77,9 +77,9 @@ Erkennungsregeln basieren auf der Art der Bedrohungen und Anomalien, die in Ihre
 
 8. Nachdem Sie die Abfrage in das Feld **Set alert rule** (Warnungsregel festlegen) eingefügt haben, wird unter **Logic alert simulation** (Logik für Simulation der Warnung) sofort eine Simulation der Warnung angezeigt, sodass Sie sehen können, wie viele Daten über ein bestimmtes Zeitintervall für die erstellte Warnung generiert werden. Das hängt davon ab, welche Werte Sie für die **Häufigkeit** und den **Schwellenwert** festgelegt haben. Wenn Sie sehen, dass Ihre Warnung im Schnitt zu häufig ausgelöst wird, sollten Sie für die Anzahl der Ergebnisse einen höheren Wert festlegen, sodass er über Ihrer durchschnittlichen Baseline liegt.
 
-9. Klicken Sie auf **Erstellen**, um Ihre Warnungsregel zu initialisieren. Nach dem Erstellen der Warnung wird ein Fall erstellt, der die Warnung enthält. Auf der Registerkarte **Security Analytics** (Sicherheitsanalyse) werden die definierten Erkennungsregeln in Zeilen angezeigt. Hier wird auch die Anzahl der Treffer für jede Regel angezeigt (d. h. Situationen, in denen die Warnungen ausgelöst wurden). Über diese Liste können Sie die einzelnen Regeln aktivieren, deaktivieren oder löschen. Sie können auch mit der rechten Maustaste auf die Auslassungspunkte (...) am Ende der Zeile für die einzelnen Warnungen klicken, um eine Regel zu bearbeiten, zu deaktivieren, zu klonen, zu löschen oder um Treffer anzuzeigen. Bei der Seite **Analyse** handelt es sich um einen Katalog mit allen aktiven Warnungsregeln, darunter auch Vorlagen, die Sie aktivieren können, und Warnungsregeln, die Sie auf Basis von Vorlagen erstellt haben.
+9. Klicken Sie auf **Erstellen**, um Ihre Warnungsregel zu initialisieren. Nach dem Erstellen der Warnung wird ein Vorfall erstellt, der die Warnung enthält. Auf der Registerkarte **Security Analytics** (Sicherheitsanalyse) werden die definierten Erkennungsregeln in Zeilen angezeigt. Hier wird auch die Anzahl der Treffer für jede Regel angezeigt (d. h. Situationen, in denen die Warnungen ausgelöst wurden). Über diese Liste können Sie die einzelnen Regeln aktivieren, deaktivieren oder löschen. Sie können auch mit der rechten Maustaste auf die Auslassungspunkte (...) am Ende der Zeile für die einzelnen Warnungen klicken, um eine Regel zu bearbeiten, zu deaktivieren, zu klonen, zu löschen oder um Treffer anzuzeigen. Bei der Seite **Analyse** handelt es sich um einen Katalog mit allen aktiven Warnungsregeln, darunter auch Vorlagen, die Sie aktivieren können, und Warnungsregeln, die Sie auf Basis von Vorlagen erstellt haben.
 
-1. Das Ergebnis der Warnungsregeln können auf der Seite **Fälle** angezeigt werden. Hier können Sie Bedrohungen eingrenzen, [Fälle untersuchen](tutorial-investigate-cases.md) und Bedrohungen beseitigen.
+1. Das Ergebnis der Warnungsregeln können auf der Seite **Vorfälle** angezeigt werden. Hier können Sie Bedrohungen eingrenzen, [Vorfälle untersuchen](tutorial-investigate-cases.md) und Bedrohungen beseitigen.
 
 
 

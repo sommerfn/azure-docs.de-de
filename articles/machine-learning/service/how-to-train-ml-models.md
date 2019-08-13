@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93b26b2861c5603770a954943174d6436296ad07
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 10aee302377c4f71e47d93f5cd975043efcea375
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668381"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815906"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trainieren von Azure Machine Learning-Modellen mit einem Estimator
 
 Mit Azure Machine Learning können Sie Ihr Trainingsskript ganz einfach an [verschiedene Computeziele](how-to-set-up-training-targets.md#compute-targets-for-training) übermitteln, indem Sie das [RunConfiguration-Objekt](how-to-set-up-training-targets.md#whats-a-run-configuration) und [ScriptRunConfig-Objekt](how-to-set-up-training-targets.md#submit) verwenden. Dieses Muster bietet Ihnen ein hohes Maß an Flexibilität und maximale Kontrolle.
 
-Um das Deep Learning-Modelltraining zu erleichtern, bietet das Python SDK für Azure Machine Learning eine alternative allgemeine Abstraktion, die Estimator-Klasse, die es Benutzern ermöglicht, Laufzeitkonfigurationen mühelos zu erstellen. Sie können einen allgemeinen [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um ein Trainingsskript mit einem beliebigen Lernframework (z.B. scikit-learn) zu übermitteln, das Sie auf einem beliebigen Computeriel unabhängig davon ausführen können, ob es sich um Ihren lokalen Computer, eine einzelne VM in Azure oder einen GPU-Cluster in Azure handelt. Für PyTorch-, TensorFlow- und Chainer-Aufgaben bietet Azure Machine Learning außerdem die passenden [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-, [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)- und [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Estimatoren, um die Verwendung dieser Frameworks zu vereinfachen.
+Um das Deep Learning-Modelltraining zu erleichtern, bietet das Python SDK für Azure Machine Learning eine alternative allgemeine Abstraktion, die Estimator-Klasse, die es Benutzern ermöglicht, Laufzeitkonfigurationen mühelos zu erstellen. Sie können einen allgemeinen [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um ein Trainingsskript mit einem beliebigen Lernframework (z.B. scikit-learn) zu übermitteln, das Sie auf einem beliebigen, von Ihnen ausgewählten Computerziel unabhängig davon ausführen können, ob es sich um Ihren lokalen Computer, eine einzelne VM in Azure oder einen GPU-Cluster in Azure handelt. Für PyTorch-, TensorFlow- und Chainer-Aufgaben bietet Azure Machine Learning außerdem die passenden [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-, [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)- und [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Estimatoren, um die Verwendung dieser Frameworks zu vereinfachen.
 
 ## <a name="train-with-an-estimator"></a>Trainieren mit einem Estimator
 
@@ -58,8 +58,8 @@ Der Codeausschnitt gibt die folgenden Parameter für den `Estimator`-Konstruktor
 
 Parameter | BESCHREIBUNG
 --|--
-`source_directory`| Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert. 
-`script_params`| Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Form von `<command-line argument, value>`-Paaren festgelegt sind. Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
+`source_directory`| Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
+`script_params`| Wörterbuch, in dem die an Ihr Trainingsskript zu übergebenden Befehlszeilenargumente `entry_script` in Form von `<command-line argument, value>`-Paaren festgelegt sind. Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
 `compute_target`| Remotecomputeziel, auf dem Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)). (Hinweis: Auch wenn der AmlCompute-Cluster das gängige Ziel ist, besteht auch die Möglichkeit, andere Computezieltypen wie Azure-VMs oder sogar lokale Computer auszuwählen.)
 `entry_script`| Dateipfad des Trainingsskripts (relativ zu `source_directory`), das auf dem Remotecomputeziel ausgeführt werden soll. Diese Datei und alle von ihr abhängigen Dateien sollten sich in diesem Ordner befinden.
 `conda_packages`| Liste der Python-Pakete, die über conda installiert werden und für Ihr Trainingsskript erforderlich sind.  
@@ -112,7 +112,7 @@ Parameter | BESCHREIBUNG | Standard
 `custom_docker_image`| Der Name des zu verwendenden Images. Geben Sie nur Images an, die in öffentlichen Docker-Repositorys (in diesem Fall Docker Hub) verfügbar sind. Um ein Image aus einem privaten Docker-Repository zu verwenden, verwenden Sie stattdessen den `environment_definition`-Parameter des Konstruktors. [Siehe das Beispiel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Die Anzahl der Knoten, die für Ihren Trainingsauftrag verwendet werden sollen. | `1`
 `process_count_per_node`| Die Anzahl der Prozesse (oder „Worker“), die auf jedem Knoten ausgeführt werden sollen. In diesem Fall verwenden Sie die auf jedem Knoten verfügbaren `2`-GPUs.| `1`
-`distributed_backend`| Das über MPI vom Estimator bereitgestellte Back-End für den Start des verteilten Trainings.  Um parallele oder verteilte Trainings auszuführen (wenn also z.B. `node_count` > 1, `process_count_per_node` > 1 oder beides zutrifft), legen Sie `distributed_backend='mpi'` fest. Die von AML verwendete MPI-Implementierung ist [Open MPI](https://www.open-mpi.org/).| `None`
+`distributed_backend`| Das über MPI vom Estimator bereitgestellte Back-End für den Start des verteilten Trainings.  Um parallele oder verteilte Trainings auszuführen (wenn also z. B. `node_count` > 1, `process_count_per_node` > 1 oder beides zutrifft), legen Sie `distributed_backend='mpi'` fest. Die von AML verwendete MPI-Implementierung ist [Open MPI](https://www.open-mpi.org/).| `None`
 
 Übermitteln Sie abschließend den Trainingsauftrag:
 ```Python

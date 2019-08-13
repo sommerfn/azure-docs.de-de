@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638539"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837908"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Zugriff auf und Anpassen des neuen Entwicklerportals – Azure API Management
 
@@ -77,6 +77,10 @@ Ja, es wird eingestellt, wenn das neue Portal allgemein verfügbar wird. Wenn Si
 Das Ziel der allgemeinen Verfügbarkeit besteht darin, eine szenariobasierte Featureparität mit dem alten Portal zu bieten. Bis dahin wurden in der Vorschauversion möglicherweise noch keine ausgewählten Features implementiert.
 
 Ausnahmen sind die *Anwendungen* und *Issues* aus dem alten Portal, die im neuen Portal nicht verfügbar sein werden. Wenn Sie *Issues* im alten Portal verwenden und diese im neuen Portal benötigen, posten Sie einen Kommentar in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/122).
+
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Ich habe Fehler gefunden und/oder möchte eine Funktion anfordern.
+
+Prima. Sie können uns Feedback geben, eine Funktionsanforderung übermitteln oder einen Fehlerbericht im [Abschnitt „Probleme“ des GitHub-Repositorys](https://github.com/Azure/api-management-developer-portal/issues) einreichen. Wenn Sie einmal dort sind, würden wir uns über Ihr Feedback zu den Problemen freuen, die mit der Bezeichnung `community` markiert sind.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Ich möchte den Inhalt des neuen Portals zwischen Umgebungen verschieben. Wie kann ich das machen, und muss ich dazu die selbstgehostete Version verwenden?
 

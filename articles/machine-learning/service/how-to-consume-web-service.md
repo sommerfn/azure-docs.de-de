@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361012"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840501"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
@@ -30,6 +30,9 @@ Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine 
 1. Festlegen des Typs der vom Modell verwendeten Anforderungsdaten
 1. Erstellen einer Anwendung, die den Webdienst aufruft
 
+> [!TIP]
+> Die Beispiele in diesem Dokument werden ohne Verwendung von OpenAPI-Spezifikationen (Swagger) manuell erstellt. Wenn Sie eine OpenAPI-Spezifikation für Ihre Bereitstellung aktiviert haben, können Sie mit Tools wie [swagger-codegen](https://github.com/swagger-api/swagger-codegen) Clientbibliotheken für Ihren Dienst erstellen.
+
 ## <a name="connection-information"></a>Verbindungsinformationen
 
 > [!NOTE]
@@ -37,8 +40,10 @@ Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine 
 
 Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)-Klasse stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
 
-* `auth_enabled`: `True`, wenn die Authentifizierung aktiviert ist, andernfalls `False`.
+* `auth_enabled`: Wenn Schlüsselauthentifizierung aktiviert ist `True`, andernfalls `False`.
+* `token_auth_enabled`: Wenn Tokenauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `scoring_uri`: Die REST-API-Adresse.
+
 
 Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellte Webdienste:
 
@@ -67,7 +72,15 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>Authentifizierungsschlüssel
+### <a name="authentication-for-services"></a>Authentifizierung für Dienste
+
+Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf Ihre Webdienste. 
+
+|Authentifizierungsmethode|ACI|AKS|
+|---|---|---|
+|Schlüssel|Standardmäßig deaktiviert.| Standardmäßig aktiviert.|
+|Tokenverschlüsselung| Nicht verfügbar.| Standardmäßig deaktiviert. |
+#### <a name="authentication-with-keys"></a>Authentifizierung mit Schlüsseln
 
 Wenn Sie Authentifizierung für eine Bereitstellung aktivieren, werden automatisch Authentifizierungsschlüssel erstellt.
 
@@ -85,6 +98,26 @@ print(primary)
 
 > [!IMPORTANT]
 > Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+
+#### <a name="authentication-with-tokens"></a>Authentifizierung mit Tokens
+
+Wenn Sie die Tokenauthentifizierung für einen Webdienst aktivieren, muss ein Benutzer ein Azure Machine Learning JWT-Token für den Webdienst bereitstellen, um darauf zugreifen zu können. 
+
+* Die Tokenauthentifizierung ist standardmäßig deaktiviert, wenn die Bereitstellung in Azure Kubernetes Service erfolgt.
+* Tokenauthentifizierung wird nicht unterstützt, wenn die Bereitstellung in Azure Container Instances erfolgt.
+
+Um die Tokenauthentifizierung zu steuern, verwenden Sie den `token_auth_enabled`-Parameter beim Erstellen oder Aktualisieren einer Bereitstellung.
+
+Wenn die Tokenauthentifizierung aktiviert ist, können Sie mithilfe der Methode `get_token` ein Bearertoken und dessen Ablaufzeit abrufen:
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> Nach Ablauf der `refresh_by`-Zeit des Tokens müssen Sie ein neues anfordern. 
 
 ## <a name="request-data"></a>Anforderungsdaten
 

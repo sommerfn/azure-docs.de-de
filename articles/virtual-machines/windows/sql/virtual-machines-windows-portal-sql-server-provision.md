@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9d19441b2f2202573086a711c202d4b36bbee5fa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846144"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774298"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
 
@@ -133,7 +133,7 @@ Konfigurieren Sie auf der Registerkarte **Netzwerk** Ihre Netzwerkoptionen.
 
 * Erstellen Sie ein neues **virtuelles Netzwerk**, oder verwenden Sie ein bereits vorhandenes VNET für Ihre SQL Server-VM. Legen Sie ebenfalls ein **Subnetz** fest. 
 
-* Wählen Sie unter **NIC-Sicherheitsgruppe** entweder eine grundlegende Sicherheitsgruppe oder die erweiterte Sicherheitsgruppe fest. Die Auswahl der grundlegenden Option ermöglicht Ihnen die Auswahl eingehender Ports für die SQL Server-VM (die gleichen Werte, die auf der Registerkarte **Standard** konfiguriert wurden). Die Auswahl der erweiterten Option ermöglicht Ihnen, eine vorhandene Netzwerksicherheitsgruppe auszuwählen oder eine neue zu erstellen. 
+* Wählen Sie unter **NIC-Netzwerksicherheitsgruppe** entweder eine grundlegende Sicherheitsgruppe oder die erweiterte Sicherheitsgruppe fest. Die Auswahl der grundlegenden Option ermöglicht Ihnen die Auswahl eingehender Ports für die SQL Server-VM (die gleichen Werte, die auf der Registerkarte **Standard** konfiguriert wurden). Die Auswahl der erweiterten Option ermöglicht Ihnen, eine vorhandene Netzwerksicherheitsgruppe auszuwählen oder eine neue zu erstellen. 
 
 * Sie können andere Änderungen an den Netzwerkeinstellungen vornehmen oder die Standardwerte übernehmen.
 
@@ -143,7 +143,7 @@ Konfigurieren Sie auf der Registerkarte **Netzwerk** Ihre Netzwerkoptionen.
 
 Konfigurieren Sie auf der Registerkarte **Überwachung** Überwachung und automatisches Herunterfahren. 
 
-* Azure ermöglicht standardmäßig **Startüberwachung** mit dem gleichen Speicherkonto, das für den virtuellen Computer festgelegt ist. Hier können Sie diese Einstellungen ändern und auch die **Diagnose des Gastbetriebssystems** aktivieren. 
+* Azure ermöglicht standardmäßig **Startdiagnose** mit dem gleichen Speicherkonto, das für den virtuellen Computer festgelegt ist. Hier können Sie diese Einstellungen ändern und auch die **Diagnose des Gastbetriebssystems** aktivieren. 
 * Sie können auf dieser Registerkarte auch **Systemseitig zugewiesene verwaltete Identität** und **Automatisches Herunterfahren** aktivieren. 
 
 ![SQL-VM-Verwaltungseinstellungen](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)

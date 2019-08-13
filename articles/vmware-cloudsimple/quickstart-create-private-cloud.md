@@ -5,19 +5,26 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6b68dcd47377ee56c4ebedc94905e1f0a8b70b38
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476025"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812341"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer Private Cloud-Umgebung
 
 In diesem Artikel erfahren Sie, wie Sie eine private CloudSimple-Cloud erstellen und Ihre Private Cloud-Umgebung einrichten.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Zuordnung eines CIDR-Bereichs für vSphere/vSAN-Subnetze für die private Cloud. Eine private Cloud wird als isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird. Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist. Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt.  Der Adressraum des vSphere/vSAN-Subnetzadressraums muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert.  Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke.  Weitere Informationen zu vSphere/vSAN-Subnetzen finden Sie unter [Übersicht über VLANs und Subnetze](cloudsimple-vlans-subnets.md).
+
+* Minimales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /24 
+* Maximales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /21
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.

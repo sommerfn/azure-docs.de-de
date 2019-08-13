@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c2581106466f7d84cc694cd47d4ba02e40bf60b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427842"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815756"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -39,7 +39,7 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
 -   Onboarding als IT-Administrator, PKI-Administrator oder als ein anderer Benutzer, der Konten bei Zertifizierungsstellen verwaltet, für ein bestimmtes Unternehmen (z.B. Contoso) ist eine Voraussetzung für die Verwendung von Key Vault-Zertifikaten.  
     Die folgenden Zertifizierungsstellen sind aktuell Key Vault-Partneranbieter:  
     -   DigiCert: Key Vault bietet OV-SSL-Zertifikate mit DigiCert.  
-    -   Globaltrust: Key Vault bietet OV-SSL-Zertifikate mit Globaltrust.  
+    -   GlobalSign: Key Vault bietet OV-SSL-Zertifikate mit GlobalSign.  
 
 **Schritt 2**: Ein Kontoadministrator für den Anbieter einer Zertifizierungsstelle erstellt Anmeldeinformationen, die von Key Vault verwendet werden, um SSL-Zertifikate über Key Vault zu registrieren, zu erneuern und zu verwenden.
 

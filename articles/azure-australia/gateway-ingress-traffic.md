@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 808a615885129af1be9b7fdcdb64d5a8c5a25e40
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3885b9fa346047a50a49c7b2f9b96b6a8f95e51f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571178"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779350"
 ---
 # <a name="controlling-ingress-traffic-in-azure-australia"></a>Steuern von eingehendem Datenverkehr für Azure Australien
 
@@ -21,7 +21,7 @@ Dieser Leitfaden enthält ausführliche Informationen zur Funktionsweise von ein
 
 Die Netzwerkkontrollen sind am Verbraucherleitfaden und dem Handbuch zur Informationssicherheit (Information Security Manual, ISM) des Australian Cyber Security Centre (ACSC) ausgerichtet.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Die allgemeinen Sicherheitsanforderungen für Systeme im Commonwealth sind im ISM festgelegt. Als Hilfe für Commonwealth-Entitäten bei der Implementierung der Netzwerksicherheit hat das ACSC das Dokument [ACSC Protect: Implementing Network Segmentation and Segregation](https://www.acsc.gov.au/publications/protect/network_segmentation_segregation.htm) (ACSC Protect: Implementieren der Netzwerksegmentierung und -trennung) veröffentlicht, und als Hilfestellung beim Schützen von Systemen in Cloudumgebungen wurde vom ACSC das Dokument [Cloud Computing Security for Tenants](https://www.acsc.gov.au/publications/protect/Cloud_Computing_Security_for_Tenants.pdf) (Cloud Computing-Sicherheit für Mandanten) bereitgestellt.
 
@@ -44,7 +44,7 @@ Die folgenden wichtigen Anforderungen, die in den Dokumenten des ACSC angegeben 
 
 Dieser Artikel enthält Informationen und Empfehlungen dazu, wie diese Anforderungen für in Azure bereitgestellte Systeme per Infrastructure-as-a-Service (IaaS) und Platform-as-a-Service (PaaS) erfüllt werden können. Es ist auch ratsam, den Artikel [Steuern von ausgehendem Datenverkehr für Azure Australien](gateway-egress-traffic.md) zu lesen, um sich vollständig mit der Steuerung von Netzwerkdatenverkehr in Azure vertraut zu machen.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 Wenn Sie am Entwurf oder der Implementierung von Kontrollen in Bezug auf die Netzwerksicherheit und eingehenden Datenverkehr beteiligt sind, müssen Sie als Erstes ein Verständnis entwickeln, wie eingehender Netzwerkdatenverkehr in Azure für IaaS und PaaS funktioniert. Dieser Abschnitt enthält eine Übersicht über die möglichen Einstiegspunkte, über die Netzwerkdatenverkehr eine in Azure gehostete Ressource erreichen kann, und über die Sicherheitskontrollen, die zum Beschränken und Steuern dieses Datenverkehrs verfügbar sind. Diese Komponenten werden in den verbleibenden Abschnitten dieses Leitfadens ausführlich beschrieben.
 
@@ -52,7 +52,7 @@ Wenn Sie am Entwurf oder der Implementierung von Kontrollen in Bezug auf die Net
 
 In diesem Architekturdiagramm sind die möglichen Pfade angegeben, die für Netzwerkdatenverkehr genutzt werden können, um eine Verbindung mit einem in Azure gehosteten Dienst herzustellen. Diese Komponenten sind je nach Funktion für eingehenden Datenverkehr in die Bereiche Azure, IaaS-Eingang, PaaS-Eingang und Sicherheitskontrolle unterteilt.
 
-![Architektur](media/ingress-traffic.png)
+![Architecture](media/ingress-traffic.png)
 
 ### <a name="azure-components"></a>Azure-Komponenten
 
@@ -146,7 +146,7 @@ Bei „Standard“ werden zusätzliche Funktionen zur Angriffsabwehr über die D
 |Resource|Link|
 |---|---|
 |Azure DDoS Protection: Übersicht|[https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)|
-|Azure DDoS: Bewährte Methoden|[https://docs.microsoft.com/azure/security/azure-ddos-best-practices](https://docs.microsoft.com/azure/security/azure-ddos-best-practices)|
+|Azure DDoS: Bewährte Methoden|[https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices)|
 |Verwalten von DDoS Protection|[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)|
 |
 

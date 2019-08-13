@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326140"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736259"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
@@ -40,17 +40,19 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Festlegen eines benutzerdefinierten Domänennamens über das Azure-Portal
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer API Management-Instanz.
-1. Klicken Sie auf **Benutzerdefinierte Domänen und SSL**.
+1. Klicken Sie auf **Benutzerdefinierte Domänen**.
 
     Es stehen mehrere Endpunkte zur Verfügung, denen Sie einen benutzerdefinierten Domänennamen zuweisen können. Derzeit sind folgende Endpunkte verfügbar:
 
-    - **Proxy** (Standardwert: `<apim-service-name>.azure-api.net`)
+    - **Gateway** (Standardwert: `<apim-service-name>.azure-api.net`),
     - **Portal** (Standardwert: `<apim-service-name>.portal.azure-api.net`)
     - **Verwaltung** (Standardwert: `<apim-service-name>.management.azure-api.net`)
     - **SCM** (Standardwert: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Proxy** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals). Die Endpunkte **Verwaltung** und **SCM** werden nur intern von Besitzern der API Management-Instanz verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird. In den meisten Fällen kann nur ein einziger benutzerdefinierte Domänenname für einen Endpunkt eingerichtet werden. Allerdings unterstützt der **Premium**-Tarif mehrere Hostnamen für den **Proxy**-Endpunkt.
+    > Nur der **Gateway**endpunkt steht im Tarif „Consumption“ (Verbrauch) zur Konfiguration zur Verfügung.
+    > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Gateway** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals).
+    > Die Endpunkte **Verwaltung** und **SCM** werden nur intern von Besitzern der API Management-Instanz verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird. Der **Premium**-Tarif unterstützt mehrere Hostnamen für den **Gateway**endpunkt.
 
 1. Wählen Sie den Endpunkt aus, den Sie aktualisieren möchten.
 1. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert**.

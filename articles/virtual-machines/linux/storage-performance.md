@@ -9,22 +9,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 26c474419a096741f544eb21cff3837afd8a60dd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a06ae79181c70f1cb8519f703cb42a3d699bebf3
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708665"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828378"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimieren der Leistung virtueller Computer der Lsv2-Serie
 
 Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A- und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen zur Anwendung kommen.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
 
-Virtuelle Computer der Lsv2-Reihe nutzen den AMD EPYC™ 7551-Prozessor optimal aus, um die bestmögliche Leistung zwischen Prozessor, Arbeitsspeicher, NVMe-Geräten und den virtuellen Computern zu erzielen. Neben der Maximierung der Hardwareleistung erfüllen virtuelle Computer der Lsv2-Reihe auch die Anforderungen von Linux-Betriebssystemen, um eine bessere Leistung mit der Hardware und Software zu erreichen.
+Virtuelle Computer der Lsv2-Serie nutzen den AMD EPYC™ 7551-Prozessor optimal aus, um die bestmögliche Leistung zwischen Prozessor, Arbeitsspeicher, NVMe-Geräten und den virtuellen Computern zu erzielen. Wenn Sie mit Partnern in Linux arbeiten, sind mehrere Builds im Azure Marketplace verfügbar, die für die Leistung der Lsv2-Serie optimiert sind und derzeit Folgendes umfassen:
 
-Im Zuge der Optimierung der Software und Hardware ist die optimierte Version von [Ubuntu 18.04 und 16.04 von Canonical](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer?tab=Overview) entstanden, die Anfang Dezember 2018 im Azure Marketplace veröffentlicht wurde und maximale Leistung auf den NVMe-Geräten in virtuellen Computern der Lsv2-Reihe unterstützt.
+- Ubuntu 18.04
+- Ubuntu 16.04
+- RHEL 8.0
+- Debian 9
+- Debian 10
 
 Mit den Tipps und Vorschlägen in diesem Artikel können Sie sicherstellen, dass Ihre Workloads und Anwendungen die maximale Leistung erreichen, für die die virtuellen Computer konzipiert wurden. Die Informationen auf dieser Seite werden immer wieder aktualisiert, wenn dem Azure Marketplace weitere Lsv2-optimierte Images hinzugefügt werden.
 

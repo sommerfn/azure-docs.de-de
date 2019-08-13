@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571250"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779326"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Systemüberwachung aus Sicherheitsgründen für Azure Australien
 
@@ -108,7 +108,7 @@ Die in Azure erfassten Protokolle fallen unter eine der drei folgenden Kategorie
 
 Die Überwachung von virtuellen Azure-Computern wird durch die Bereitstellung des VM-Agents für Windows und Linux erweitert. Der Umfang der erfassten Protokollierungsinformationen wird so erheblich vergrößert. Die Bereitstellung dieses Agents kann so konfiguriert werden, dass sie automatisch über Azure Security Center durchgeführt wird.
 
-Microsoft stellt ausführliche Informationen zu spezifischen Protokollen für Azure-Ressourcen und den zugehörigen [Schemas](https://docs.microsoft.com/azure/security/azure-log-audit) bereit.
+Microsoft stellt ausführliche Informationen zu spezifischen Protokollen für Azure-Ressourcen und den zugehörigen [Schemas](https://docs.microsoft.com/azure/security/fundamentals/log-audit) bereit.
 
 ### <a name="log-retention-and-protection"></a>Protokollaufbewahrung und -schutz
 
