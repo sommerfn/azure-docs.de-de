@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9b024fc3c07670201cf72cf80c0b69bf68f1cc8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343765"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726000"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopieren von Daten aus SAP HANA mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -33,10 +33,10 @@ Sie können Daten aus einer SAP HANA-Datenbank in beliebige unterstützte Senken
 Dieser SAP HANA-Connector unterstützt insbesondere Folgendes:
 
 - Kopieren von Daten von einer SAP HANA-Datenbank mit einer beliebigen Version
-- Kopieren von Daten aus **HANA-Informationsmodellen** (z.B. Analyse- und Berechnungsansichten) und aus **Zeile/Spalte-Tabellen** mit SQL-Abfragen
+- Kopieren von Daten aus **HANA-Informationsmodellen** (z.B. Analyse- und Berechnungsansichten) und aus **Zeile/Spalte-Tabellen**.
 - Kopieren von Dateien unter Verwendung der **Standard**- oder **Windows**-Authentifizierung
 
-> [!NOTE]
+> [!TIP]
 > Verwenden Sie zum Kopieren von Daten **in** SAP HANA-Datenspeicher einen generischen ODBC-Connector. Einzelheiten finden Sie unter [SAP HANA-Senke](connector-odbc.md#sap-hana-sink). Beachten Sie, dass die verknüpften Dienste für SAP HANA-Connectors und ODBC-Connectors unterschiedlichen Typs sind und daher nicht wiederverwendet werden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -59,11 +59,53 @@ Folgende Eigenschaften werden für den mit SAP HANA verknüpften Dienst unterst�
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapHana** | Ja |
-| server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | Ja |
-| authenticationType | Typ der Authentifizierung für die Verbindung mit der SAP HANA-Datenbank.<br/>Zulässige Werte sind: **Standard** und **Windows** | Ja |
-| userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat. | Ja |
-| password | Kennwort für den Benutzer Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Geben Sie die Informationen an, die zum Herstellen einer Verbindung mit SAP HANA mithilfe der **Standardauthentifizierung** oder **Windows-Authentifizierung** benötigt werden. Sehen Sie sich die folgenden Beispiele an.<br>In der Verbindungszeichenfolge ist Server/Port obligatorisch (der Standardport ist 30015), und Benutzername und Kennwort sind bei der Verwendung von Standardauthentifizierung obligatorisch. Weitere erweiterte Einstellungen finden Sie unter [Eigenschaften der SAP Hana ODBC-Verbindung](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>).<br/>Sie können das Kennwort auch in Azure Key Vault speichern und die Kennwortkonfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im Artikel [„Speichern von Anmeldeinformationen in Azure Key Vault“](store-credentials-in-key-vault.md). | Ja |
+| userName | Geben Sie den Benutzernamen an, wenn Sie Windows-Authentifizierung verwenden. Beispiel: `user@domain.com` | Nein |
+| password | Geben Sie ein Kennwort für das Benutzerkonto an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
+
+**Beispiel: Verwenden von Standardauthentifizierung**
+
+```json
+{
+    "name": "SapHanaLinkedService",
+    "properties": {
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "SERVERNODE=<server>:<port (optional)>;UID=<userName>;PWD=<Password>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel: Verwenden von Windows-Authentifizierung**
+
+```json
+{
+    "name": "SapHanaLinkedService",
+    "properties": {
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "SERVERNODE=<server>:<port (optional)>;",
+            "userName": "<username>", 
+            "password": { 
+                "type": "SecureString", 
+                "value": "<password>" 
+            } 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+Wenn Sie den verknüpften SAP HANA-Dienst mit der folgenden Nutzlast verwendet haben, wird er weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
 
 **Beispiel:**
 
@@ -93,7 +135,13 @@ Folgende Eigenschaften werden für den mit SAP HANA verknüpften Dienst unterst�
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom SAP HANA-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus SAP HANA die type-Eigenschaft des Datasets auf **RelationalTable** fest. Es sind keine typspezifischen Eigenschaften, die für das SAP HANA-Dataset des Typs „RelationalTable“ unterstützt werden.
+Beim Kopieren von Daten aus SAP HANA werden die folgenden Eigenschaften unterstützt.
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SapHanaTable** | Ja |
+| schema | Der Name des Schemas in der SAP HANA-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| table | Der Name der Tabelle in der SAP HANA-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel:**
 
@@ -101,15 +149,21 @@ Legen Sie zum Kopieren von Daten aus SAP HANA die type-Eigenschaft des Datasets 
 {
     "name": "SAPHANADataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapHanaTable",
+        "typeProperties": {
+            "schema": "<schema name>",
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP HANA linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Wenn Sie das Datenset vom Typ `RelationalTable` verwenden, wird es weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
@@ -117,12 +171,13 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="sap-hana-as-source"></a>SAP HANA als Quelle
 
-Legen Sie zum Kopieren von Daten aus SAP HANA den Quelltyp in der Kopieraktivität auf **RelationalSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Wenn Sie Daten aus SAP HANA kopieren möchten, werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **RelationalSource** | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapHanaSource** | Ja |
 | query | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | Ja |
+| packetSize | Gibt die Netzwerkpaketgröße (in KB) an, mit der Daten auf mehrere Blöcke aufgeteilt werden. Wenn Sie über eine große Datenmenge verfügen, die kopiert werden soll, kann das Erhöhen der Paketgröße in den meisten Fällen die Lesegeschwindigkeit aus SAP Hana erhöhen. Leistungstests werden empfohlen, wenn die Paketgröße angepasst wird. | Nein.<br>Der Standardwert ist 2.048 (2MB). |
 
 **Beispiel:**
 
@@ -145,7 +200,7 @@ Legen Sie zum Kopieren von Daten aus SAP HANA den Quelltyp in der Kopieraktivit�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapHanaSource",
                 "query": "<SQL query for SAP HANA>"
             },
             "sink": {
@@ -156,39 +211,41 @@ Legen Sie zum Kopieren von Daten aus SAP HANA den Quelltyp in der Kopieraktivit�
 ]
 ```
 
+Wenn Sie die Kopierquelle vom Typ `RelationalSource` verwenden, wird sie weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
+
 ## <a name="data-type-mapping-for-sap-hana"></a>Datentypzuordnung für SAP HANA
 
 Beim Kopieren von Daten aus SAP HANA werden die folgenden Zuordnungen von SAP HANA-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
 
 | SAP HANA-Datentyp | Data Factory-Zwischendatentyp |
-|:--- |:--- |
-| ALPHANUM | String |
-| BIGINT | Int64 |
-| BLOB | Byte[] |
-| Boolean | Byte |
-| CLOB | Byte[] |
-| DATE | DateTime |
-| Decimal | Decimal |
-| Double | Single |
-| INT | Int32 |
-| NVARCHAR | String |
-| REAL | Single |
-| SECONDDATE | DateTime |
-| SMALLINT | Int16 |
-| TIME | TimeSpan |
-| TIMESTAMP | DateTime |
-| TINYINT | Byte |
-| VARCHAR | String |
-
-## <a name="known-limitations"></a>Bekannte Einschränkungen
-
-Es gibt einige bekannte Einschränkungen, wenn Daten aus SAP HANA kopiert werden:
-
-- NVARCHAR-Zeichenfolgen werden auf maximal 4000 Unicode-Zeichen abgeschnitten.
-- SMALLDECIMAL wird nicht unterstützt.
-- VARBINARY wird nicht unterstützt.
-- Gültige Datumsangaben liegen zwischen 1899/12/30 und 9999/12/31.
-
+| ------------------ | ------------------------------ |
+| ALPHANUM           | String                         |
+| BIGINT             | Int64                          |
+| BINARY             | Byte[]                         |
+| BINTEXT            | Zeichenfolge                         |
+| BLOB               | Byte[]                         |
+| BOOL               | Byte                           |
+| CLOB               | String                         |
+| DATE               | DateTime                       |
+| DECIMAL            | Decimal                        |
+| Double             | Double                         |
+| FLOAT              | Double                         |
+| INTEGER            | Int32                          |
+| NCLOB              | Zeichenfolge                         |
+| NVARCHAR           | String                         |
+| REAL               | Single                         |
+| SECONDDATE         | Datetime                       |
+| SHORTTEXT          | Zeichenfolge                         |
+| SMALLDECIMAL       | Decimal                        |
+| SMALLINT           | Int16                          |
+| STGEOMETRYTYPE     | Byte[]                         |
+| STPOINTTYPE        | Byte[]                         |
+| TEXT               | Zeichenfolge                         |
+| TIME               | TimeSpan                       |
+| TINYINT            | Byte                           |
+| VARCHAR            | Zeichenfolge                         |
+| TIMESTAMP          | Datetime                       |
+| VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

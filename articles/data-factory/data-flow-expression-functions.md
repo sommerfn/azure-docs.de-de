@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 0850fb5995902ce82132e813ecb7d4126aff03af
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 03bcde2049178aa5e9c347a3c60aa7be328adbc3
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516741"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716892"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke im Mappingdatenfluss 
 
@@ -106,6 +106,16 @@ Berechnet die Kubikwurzel einer Zahl: * ``cbrt(8) -> 2.0``
 ### <code>ceil</code>
 <code><b>ceil(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
 Gibt den kleinsten Integerwert zurück, der nicht kleiner als die Zahl ist: * ``ceil(-0.1) -> 0``
+---
+### <code>coalesce</code>
+<code><b>coalesce(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
+Gibt den ersten Wert ungleich NULL aus einem Satz von Eingaben zurück. Alle Eingaben müssen denselben Typ * ``coalesce(10, 20) -> 10``
+* ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``
+---
+### <code>compare</code>
+<code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code> aufweisen.<br/><br/>
+Vergleicht zwei Werte des gleichen Typs. Gibt eine negative Ganzzahl zurück, wenn value1 < value2, 0, wenn value1 = = value2, einen positiven Wert, wenn value1 > value2 * ``(compare(12, 24) < 1) -> true``
+* ``(compare('dumbo', 'dum') > 0) -> true``
 ---
 ### <code>concat</code>
 <code><b>concat(<i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
@@ -433,6 +443,11 @@ Ruft das Mittel der Werte einer Spalte ab. Entspricht AVG: * ``mean(sales) -> 75
 ### <code>meanIf</code>
 <code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
 Ruft das Mittel der Werte einer Spalte basierend auf einem Kriterium ab. Entspricht avgIf: * ``meanIf(region == 'West', sales) -> 7523420.234``
+---
+### <code>millisecond</code>
+<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
+Ruft den Millisekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet.
+* ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 ---
 ### <code>min</code>
 <code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>

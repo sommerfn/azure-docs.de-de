@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/9/2019
+ms.date: 8/2/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d7a4a54f979cd4b14e12c5a57792241f1b2388d2
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60522178"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734701"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS Integration Runtime (IR) mithilfe von Azure Data Factory (ADF). Azure-SSIS IR ist eine dedizierte ADF-Computeressource für das Ausführen von SSIS-Paketen (SQL Server Integration Services). Das Ausführen von Azure-SSIS IR ist mit Kosten verbunden. Sie sollten Ihre IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR beenden, wenn Sie sie nicht mehr benötigen. Sie können die ADF-Benutzeroberfläche (UI) oder -App oder Azure PowerShell verwenden, um [die IR manuell zu starten oder zu beenden](manage-azure-ssis-integration-runtime.md).
@@ -346,6 +346,8 @@ Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runboo
     
 7. Wiederholen Sie die vorherigen beiden Schritte, wobei Sie als Wert für **VORGANG** dieses Mal **STOPP** verwenden. Starten Sie das Runbook erneut, indem Sie auf der Symbolleiste die Schaltfläche **Starten** auswählen. Geben Sie die Namen Ihrer Ressourcengruppe, Ihrer ADF und Ihrer Azure-SSIS IR ein. Geben Sie unter **VORGANG** die Zeichenfolge **STOPP** ein. Warten Sie im Ausgabefenster, bis die Meldung **##### Abgeschlossen #####** angezeigt wird, nachdem zuvor **##### Wird beendet #####** angezeigt wurde. Das Beenden einer Azure-SSIS IR dauert nicht so lange wie das Starten. Schließen Sie das Fenster **Auftrag**, und kehren Sie zum Fenster **Runbook** zurück.
 
+8. Sie können Ihr Runbook auch über einen Webhook auslösen, der durch Auswählen des Menüelements **Webhooks** oder nach einem Zeitplan erstellt werden kann, der durch Auswählen des Menüelements **Zeitpläne** wie unten angegeben erstellt werden kann.  
+
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Erstellen von Zeitplänen für das Runbook zum Starten/Beenden der Azure-SSIS IR
 
 Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das eine Azure-SSIS IR starten oder beenden kann. In diesem Abschnitt erstellen Sie zwei Zeitpläne für das Runbook. Beim Konfigurieren des ersten Zeitplans geben Sie **START** für **VORGANG** ein. Gleichermaßen geben Sie beim Konfigurieren des zweiten Zeitplans **STOPP** für **VORGANG** an. Ausführliche Schritte zum Erstellen von Zeitplänen finden Sie im Artikel [Erstellen eines Zeitplans](../automation/shared-resources/schedules.md#creating-a-schedule).
@@ -380,7 +382,7 @@ Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen finden Sie im folgenden Blogbeitrag:
--   [Modernisieren und Erweitern von ETL/ELT-Workflows mit SSIS-Aktivitäten in ADF-Pipelines](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+-   [Modernisieren und Erweitern von ETL/ELT-Workflows mit SSIS-Aktivitäten in ADF-Pipelines](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 
 Informationen finden Sie in den folgenden Artikeln der SSIS-Dokumentation: 
 

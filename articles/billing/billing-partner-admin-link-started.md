@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502684"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706401"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -26,7 +26,7 @@ Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Gesch�
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 
-Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf seine Azure-Ressourcen erteilen:
+Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf ihre Azure-Ressourcen erteilen:
 
 - **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
@@ -54,7 +54,7 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 
 ### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Verknüpfen einer neuen Partner-ID mit PowerShell
 
-1. Installieren Sie das PowerShell-Modul [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner).
+1. Installieren Sie das PowerShell-Modul [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
 2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 

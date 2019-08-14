@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640241"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775207"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Mappingdatenflüsse – Spaltenmuster
 
@@ -45,6 +45,16 @@ Um Muster auf der Grundlage von Spalten zu erstellen, können Sie Spaltenname, T
 Beim Zuordnen von Spalten in Quell-und Auswahltransformationen haben Sie die Möglichkeit, „Feste Zuordnung“ oder „Regelbasierte Zuordnung“ auszuwählen. Wenn Sie das Schema Ihrer Daten kennen und bestimmte Spalten aus dem Quell-DataSet erwarten, die mit bestimmten statischen Namen immer identisch sind, können Sie die feste Zuordnung verwenden. Wenn Sie aber mit flexiblen Schemas arbeiten, verwenden Sie die regelbasierte Zuordnung. Sie können mithilfe der vorstehend beschriebenen Regeln einen Musterabgleich erstellen.
 
 ![regelbasierte Zuordnung](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+
+Erstellen Sie Regeln mithilfe des Ausdrucks-Generators. Ihre Ausdrücke geben einen booleschen Wert zurück, um eine Übereinstimmung mit Spalten (TRUE) oder einen Ausschluss von Spalten (FALSE) anzugeben.
+
+## <a name="pattern-matching-special-columns"></a>Musterabgleich für spezielle Spalten
+
+* `$$` wird in den Namen jeder Übereinstimmung zur Entwurfszeit im Debugmodus und bei der Ausführung zur Laufzeit übersetzt.
+* `name` stellt den Namen der einzelnen eingehenden Spalten dar.
+* `type` stellt den Datentyp der einzelnen eingehenden Spalten dar.
+* `stream` stellt den Namen dar, der den einzelnen Datenströmen oder Transformationen in Ihrem Flow zugeordnet ist.
+* `position` ist die Ordinalposition von Spalten in Ihrem Datenfluss.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich ausführlicher über die [Ausdruckssprache](http://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.

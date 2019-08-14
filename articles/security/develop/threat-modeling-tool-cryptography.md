@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620758"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728190"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
 
@@ -108,7 +109,7 @@ ms.locfileid: "68620758"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (Verwenden Sie „SHA512“ als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName.)</li><li>SHA384Managed (nicht FIPS-konform) (Verwenden Sie „SHA384“ als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName.)</li><li>SHA256Managed (nicht FIPS-konform) (Verwenden Sie „SHA256“ als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName.)</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
+| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (verwenden Sie SHA512 als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName).</li><li>SHA384Managed (nicht FIPS-konform) (verwenden Sie SHA384 als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName).</li><li>SHA256Managed (nicht FIPS-konform) (verwenden Sie SHA256 als Algorithmusnamen in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName).</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
 
 ## <a id="strong-db"></a>Verwenden von sicheren Verschlüsselungsalgorithmen zum Verschlüsseln von Daten in der Datenbank
 

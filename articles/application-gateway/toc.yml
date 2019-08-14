@@ -35,6 +35,8 @@
       href: powershell-samples.md
     - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
+    - name: Resource Manager-Vorlagen
+      href: resource-manager-template-samples.md
 - name: Konzepte
   items:
     - name: Grundlagen
@@ -95,9 +97,6 @@
           href: tutorial-manage-web-traffic-powershell.md
         - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-manage-web-traffic-cli.md
-        - name: Vorlage
-          displayName: 'ARM, Resource Manager, template'
-          href: create-vmss-template.md
     - name: Konfigurieren des internen Load Balancers
       items:
         - name: Azure-Portal

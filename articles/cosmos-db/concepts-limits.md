@@ -5,13 +5,13 @@ author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 74df0038676e8459028084890da569ed3b75a682
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 08/05/2019
+ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797282"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827991"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -23,8 +23,8 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können sie erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) oder uns über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) kontaktieren. |
-| Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können sie erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) oder uns über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) kontaktieren. |
+| Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). |
+| Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). |
 | Maximale Anzahl RUs pro (logischem) Partitionsschlüssel | 10.000 |
 | Maximale Speicherkapazität aller Elemente pro (logischem) Partitionsschlüssel| 10 GB |
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
@@ -37,10 +37,16 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 
 Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RUs aufweisen. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
 
-* Der maximale Durchsatz, der jemals im Container bereitgestellt wurde. Der Dienst unterstützt das Senken des Durchsatzes eines Containers auf 10% des bereitgestellten Maximums. Wenn z.B. der Durchsatz auf 10.000 RUs erhöht wurde, würde der niedrigstmögliche bereitgestellte Durchsatz 1.000 RUs betragen
-* Die Gesamtzahl der Container, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, gemessen in 100 RUs pro Container. Wenn Sie z.B. fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RUs betragen
+* Der minimale Durchsatz, den Sie für einen Container festlegen können, hängt vom maximalen Durchsatz ab, der jemals für den Container bereitgestellt wurde. Der Dienst unterstützt das Senken des Durchsatzes eines Containers auf 10% des bereitgestellten Maximums. Wenn z.B. der Durchsatz auf 10.000 RUs erhöht wurde, würde der niedrigstmögliche bereitgestellte Durchsatz 1.000 RUs betragen
+* Der minimale Durchsatz für eine freigegebene Durchsatzdatenbank hängt von der Gesamtzahl der Container ab, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, gemessen in 100 RUs pro Container. Wenn Sie z.B. fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RUs betragen
 
-Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann über das Azure-Portal oder die SDKs abgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md). Hier sehen Sie eine Zusammenfassung der RU-Mindestgrenzwerte. 
+Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann über das Azure-Portal oder die SDKs abgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md). 
+
+> [!NOTE]
+> In einigen Fällen kann der Durchsatz auf weniger als 10 % gesenkt werden. Verwenden Sie die API, um die genaue Mindestanzahl von Rus pro Container abzurufen.
+>
+
+Hier sehen Sie eine Zusammenfassung der RU-Mindestgrenzwerte. 
 
 | Resource | Standardlimit |
 | --- | --- |
@@ -56,13 +62,21 @@ Sie können mithilfe von Azure-Portal, Azure PowerShell, der Azure-Befehlszeilen
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl von Datenbankkonten pro Abonnement | Standardmäßig 50. Sie können sie erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) oder uns über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) kontaktieren.|
-| Maximale Anzahl von regionalen Failovern | Standardmäßig 1/Stunde. Sie können sie erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) oder uns über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) kontaktieren.|
+| Maximale Anzahl von Datenbankkonten pro Abonnement | Standardmäßig 50. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).|
+| Maximale Anzahl von regionalen Failovern | Standardmäßig 1/Stunde. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).|
 
 > [!NOTE]
 > Regionale Failover gelten nur für Konten für Schreibvorgänge in einer einzelnen Region. Konten für Schreibvorgänge in mehreren Regionen erfordern nicht das Ändern der Schreibregion oder haben keine diesbezüglichen Einschränkungen.
 
 Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ihrer Daten. Weitere Informationen zu Intervallen der Sicherungsaufbewahrung und Windows finden Sie unter [Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB](online-backup-and-restore.md).
+
+## <a name="per-account-limits"></a>Grenzwerte pro Konto
+
+| Resource | Standardlimit |
+| --- | --- |
+| Maximale Anzahl von Datenbanken | Unbegrenzt |
+| Maximale Anzahl von Containern pro Datenbank (oder Konto) | Unbegrenzt |
+| Maximale Anzahl von Regionen | Keine Einschränkung (alle Azure-Regionen) |
 
 ## <a name="per-container-limits"></a>Grenzwerte pro Container
 
@@ -77,7 +91,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Container entwed
 | Maximale Anzahl von eindeutigen Schlüsseln pro Container|10 <sup>*</sup>|
 | Maximale Anzahl von Pfaden pro UNIQUE KEY-Einschränkung|16 <sup>*</sup>|
 
-<sup>*</sup> Sie können jeden dieser Grenzwerte pro Container erhöhen, indem Sie sich an den Azure-Support wenden oder über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) an uns.
+<sup>*</sup> Sie können jeden dieser Grenzwerte pro Container erhöhen, indem Sie sich an den Azure-Support wenden.
 
 ## <a name="per-item-limits"></a>Grenzwerte pro Element
 
@@ -115,7 +129,7 @@ Cosmos DB verwendet einen HMAC zur Autorisierung. Sie können entweder einen Hau
 | --- | --- |
 | Maximale Ablaufzeit für Mastertoken | 15 Min.  |
 | Minimale Ablaufzeit für Ressourcentoken | 10 Min.  |
-| Maximale Ablaufzeit für Ressourcentoken | Standardmäßig 24 Stunden. Sie können sie erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) oder uns über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) kontaktieren.|
+| Maximale Ablaufzeit für Ressourcentoken | Standardmäßig 24 Stunden. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).|
 | Maximale Zeitabweichung für Tokenautorisierung| 15 Min. |
 
 Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. Der Dienst unterstützt maximal einen vorangestellten und einen nachgestellten Trigger pro Schreibvorgang. 
@@ -134,7 +148,7 @@ Cosmos DB unterstützt das Abfragen von Elementen mithilfe von [SQL](how-to-sql-
 | Maximale Anzahl der Argumente pro IN-Ausdrucks| 6\.000 <sup>*</sup>|
 | Maximale Anzahl der Punkte pro Polygon| 4\.096 <sup>*</sup>|
 
-<sup>*</sup> Sie können jeden dieser Grenzwerte für SQL-Abfragen erhöhen, indem Sie sich an den Azure-Support wenden oder über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) an uns.
+<sup>*</sup> Sie können jeden dieser Grenzwerte für SQL-Abfragen erhöhen, indem Sie sich an den Azure-Support wenden.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB-API-spezifische Grenzwerte
 

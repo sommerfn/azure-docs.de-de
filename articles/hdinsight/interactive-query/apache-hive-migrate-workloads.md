@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250146"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815806"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -99,9 +99,7 @@ In HDInsight 3.6 ist die Ambari-Hive-Ansicht der GUI-Client für die Interaktio
 
 Starten Sie eine Skriptaktion für Ihren Cluster, in der Sie „Head nodes“ als Knotentyp für die Ausführung angeben. Fügen Sie den folgenden URI in das Textfeld „Bash-Skript-URI“ ein: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Data Analytics Studio kann über die URL „https://\<Clustername>.azurehdinsight.net/das/“ gestartet werden.
-
-
+Warten Sie 5 bis 10 Minuten, und starten Sie dann Data Analytics Studio mit der folgenden URL: https://\<clustername>.azurehdinsight.nert/das/
 
 Falls die von Ihnen ausgeführten Abfragen nach der Installation von DAS nicht in der Abfrageanzeige angezeigt werden, führen Sie die folgenden Schritte aus:
 

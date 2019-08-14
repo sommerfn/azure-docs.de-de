@@ -4,14 +4,14 @@ description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Kon
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b4d121e0628512f7bbd6aedc0a9067b31d46d0ed
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500505"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814978"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die SQL (Core)-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
@@ -23,6 +23,7 @@ Erstellen Sie Azure Cosmos DB-Ressourcen mithilfe einer Azure Resource Manager-V
 >
 > - Derzeit können Sie keine benutzerdefinierten Funktionen (User Defined Functions, UDFs), gespeicherten Prozeduren und Trigger mithilfe von Resource Manager-Vorlagen bereitstellen.
 > - Das gleichzeitige Hinzufügen und Entfernen von Speicherorten zu einem Azure Cosmos-Konto bzw. das Ändern anderer Eigenschaften ist nicht möglich. Dies muss in separaten Vorgängen ausgeführt werden.
+> - Kontonamen müssen aus Kleinbuchstaben bestehen und weniger als 31 Zeichen enthalten.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

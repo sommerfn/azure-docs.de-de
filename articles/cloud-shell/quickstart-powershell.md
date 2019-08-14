@@ -1,6 +1,6 @@
 ---
-title: Schnellstart für PowerShell in Azure Cloud Shell | Microsoft-Dokumentation
-description: Schnellstart für PowerShell in Cloud Shell
+title: Schnellstart für Azure Cloud Shell | Microsoft-Dokumentation
+description: Schnellstart für Azure Cloud Shell
 services: Azure
 documentationcenter: ''
 author: maertendmsft
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 36683d04b6f087f1d326458a07b043a0932191f1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199526"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742006"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Schnellstart für PowerShell in Azure Cloud Shell
 
@@ -338,7 +338,7 @@ Informationen zum Erstellen von Profilen finden Sie unter [Informationen zu Prof
 
 ## <a name="use-git"></a>Verwenden von Git
 
-Wenn Sie in Cloud Shell ein Git-Repository klonen möchten, müssen Sie ein [persönliches Zugriffstoken][githubtoken] erstellen und es als Benutzername verwenden. Wenn Sie über das Token verfügen, gehen Sie wie folgt vor, um das Repository zu klonen:
+Wenn Sie in Cloud Shell ein Git-Repository klonen möchten, müssen Sie ein [persönliches Zugriffstoken][githubtoken] erstellen und es als Benutzernamen verwenden. Wenn Sie über das Token verfügen, gehen Sie wie folgt vor, um das Repository zu klonen:
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git

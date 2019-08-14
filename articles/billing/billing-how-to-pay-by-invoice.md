@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9ca726ef737ce4750018d2461bc4bcd6c7ebb5f5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491232"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774659"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Zahlen für Ihr Azure-Abonnement auf Rechnung
 
@@ -34,9 +34,11 @@ Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnun
 
 2. Wählen Sie als **Problemtyp** die Option **Abrechnung** aus. Der *Problemtyp* ist die Kategorie der Supportanfrage. Wählen Sie das Abonnement aus, für das Sie per Rechnung bezahlen möchten, wählen Sie einen Supportplan aus, und klicken Sie dann auf **Weiter**.
 
-3. Wählen Sie im Feld **Problemtyp** die Option **Per Rechnung bezahlen** aus. Der *Problemtyp* ist die Unterkategorie der Supportanfrage.
+3. Wählen Sie **Zahlung** als **Problemtyp** aus. Der *Problemtyp* ist die Unterkategorie der Supportanfrage.
 
-4. Geben Sie in das Feld **Details** die folgenden Informationen ein, und klicken Sie dann auf **Weiter**.
+4. Wählen **Umstellen auf die Bezahlung per Rechnung** als **Untertyp des Problems** aus.
+
+5. Geben Sie in das Feld **Details** die folgenden Informationen ein, und klicken Sie dann auf **Weiter**.
 
          New or existing customer:
          If existing, current payment method:
@@ -64,7 +66,7 @@ Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnun
     - Der **Firmenname** und die **Firmenadresse** sollten mit den Informationen übereinstimmen, die Sie für das Azure-Konto bereitgestellt haben. Einzelheiten zum Anzeigen oder Aktualisieren der Informationen finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto](billing-how-to-change-azure-account-profile.md).
     - Sie müssen im Azure Portal die Informationen zu Ihrem Rechnungskontakt hinzufügen, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Profile), wenn Sie die Informationen zum Rechnungskontakt aktualisieren möchten.
 
-5. Überprüfen Sie Ihre Kontaktdaten und Ihre bevorzugte Kontaktmethode, und klicken Sie dann auf **Erstellen**.
+6. Überprüfen Sie Ihre Kontaktdaten und Ihre bevorzugte Kontaktmethode, und klicken Sie dann auf **Erstellen**.
 
 Wenn Sie aufgrund der Höhe des Guthabens, das Sie benötigen, eine Guthabenprüfung durchführen müssen, senden wir Ihnen einen entsprechenden Antrag.
 
