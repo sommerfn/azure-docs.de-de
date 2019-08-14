@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640793"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828281"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Unterstützungsmatrix für die VMware-Bewertung und -Migration
 
@@ -42,8 +42,12 @@ Die Tabelle fasst die unterstützten Szenarien für VMware-VMs zusammen.
 **Geografie** | **Speicherort der Metadaten**
 --- | ---
 Azure Government | US Government, Virginia
-Asien-Pazifik | „Asien, Südosten“ und „Asien, Osten“
-Europa | „Europa, Süden“ oder „Europa, Westen“
+Asien-Pazifik | „Asien, Osten“ und „Asien, Südosten“
+Australien | „Australien, Osten“ oder „Australien, Südosten“
+Kanada | „Kanada, Mitte“ oder „Kanada, Osten“
+Europa | „Europa, Norden“ oder „Europa, Westen“
+Indien | „Indien, Mitte“ oder „Indien, Süden“
+Japan |  „Japan, Osten“ oder „Japan, Westen“
 Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
 USA | „USA, Mitte“ oder „USA, Westen 2“
 
@@ -70,7 +74,7 @@ Die Azure Migrate-Appliance für VMware wird über eine in vCenter Server import
 
 **Unterstützung** | **Details**
 --- | ---
-**vCenter Server** | Sie benötigen genügend Ressourcen auf dem vCenter-Server, um einen virtuellen Computer mit 32 GB Arbeitsspeicher, 4 vCPUs und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.
+**vCenter Server** | Sie benötigen genügend Ressourcen auf dem vCenter-Server, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.
 **ESXi** | Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden.
 **Azure Migrate-Projekt** | Ein Gerät kann einem einzelnen Projekt zugeordnet werden.
 **vCenter Server** | Ein Gerät kann bis zu 10.000 VMware-VMs auf einem vCenter Server ermitteln.<br/> Ein Gerät kann sich mit einem vCenter Server verbinden.

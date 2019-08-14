@@ -10,20 +10,31 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/28/2019
+ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 99c19223841748850ecc92fe08ebc09f563aff5d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700214"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725628"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vorschau: Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 
 Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
-Vergewissern Sie sich, dass das neueste Azure PowerShell-Modul installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden. 
+Vergewissern Sie sich, dass die Azure PowerShell-Version 2.4.2 oder höher installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden. Öffnen Sie zum Installieren von Version 2.4.2 eine PowerShell-Eingabeaufforderung, und geben Sie Folgendes ein:
+
+```powershell
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+```
+
+Sie benötigen mindestens Version 1.6.0 des PowerShellGet-Moduls, um die Funktionalität des Vorschaumoduls in PowerShell zu aktivieren. In den neuesten Versionen von PowerShell Core ist diese automatisch integriert. Für ältere Versionen von PowerShell können Sie den folgenden Befehl ausführen, um ein Update auf die neueste Version durchzuführen:
+
+```powershell
+Install-Module -Name PowerShellGet -Repository PSGallery -Force
+```
+
 
 > [!IMPORTANT]
 > Azure Dedicated Host – der Dienst für dedizierte Azure-Hosts – ist derzeit als Public Preview verfügbar.

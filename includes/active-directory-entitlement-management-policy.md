@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678185"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817218"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Richtlinie: Für Benutzer in Ihrem Verzeichnis
 
 Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer gilt, die sich in Ihrem Verzeichnis befinden und dieses Zugriffspaket anfordern können.  **Benutzer in Ihrem Verzeichnis** bezieht sich sowohl auf interne Benutzer als auch auf externe Benutzer, die zum Verzeichnis eingeladen wurden – entweder, indem sie mit einem anderen Zugriffspaket eine Berechtigung angefordert haben oder indem sie über Azure AD B2B eingeladen wurden. Beim Definieren der Richtlinie können Sie einzelne Benutzer oder Gruppen von Benutzern angeben. Beispielsweise verfügt Ihre Organisation möglicherweise bereits über eine Gruppe wie **Alle Mitarbeiter**.  Wenn diese Gruppe in die Richtlinie für Benutzer eingefügt wird, die Zugriff anfordern können, können alle Mitglieder dieser Gruppe Zugriff anfordern.
 
 1. Wählen Sie im Abschnitt **Benutzer, die Zugriff anfordern können** die Option **Für in Ihrem Verzeichnis befindliche Benutzer** aus.
+
+    Beachten Sie, dass die Einstellung **Für Benutzer in Ihrem Verzeichnis** sowohl Mitgliedsbenutzer als auch Gastbenutzer umfasst, die Ihrem Verzeichnis hinzugefügt wurden. Wenn Sie nur Mitgliederbenutzer und keine Gastbenutzer einschließen möchten, wählen Sie **Für Benutzer in Ihrem Verzeichnis** und dann eine Gruppe von Mitgliedsbenutzern aus. Bei Bedarf können Sie eine dynamische Gruppe Ihrer Mitgliedsbenutzer erstellen (user.userType -eq „Mitglied“). Weitere Informationen finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md).
 
 1. Klicken Sie im Abschnitt **Benutzer und Gruppen auswählen** auf **Benutzer und Gruppen hinzufügen**.
 
