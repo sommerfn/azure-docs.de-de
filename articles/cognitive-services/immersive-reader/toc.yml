@@ -14,9 +14,11 @@
 - name: Lernprogramme
   items:
     - name: Starten des plastischen Readers (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: Starten des plastischen Readers (Python)
+      href: tutorial-python.md
     - name: Bild im plastischen Reader (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: Vorgehensweise
   items:
     - name: Authentifizierung über Azure Active Directory

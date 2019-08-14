@@ -162,6 +162,8 @@
       items:
         - name: Behandeln von Problemen mit Ressourcen
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Rückgabe von Inkonsistenzen durch „hbase hbck“
+          href: ./hbase-troubleshoot-hbase-hbck-inconsistencies.md
         - name: Speicherausnahme nach dem Zurücksetzen der Verbindung
           href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Keine Daten in Apache Phoenix-Ansichten

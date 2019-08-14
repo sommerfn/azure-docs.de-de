@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: Hinzufügen von Steuerelementen zur Karte
               href: map-add-controls.md
+            - name: Erstellen einer Datenquelle
+              href: create-data-source-web-sdk.md
             - name: Hinzufügen einer Symbolebene
               href: map-add-pin.md
-            - name: Hinzufügen eines Popups
-              href: map-add-popup.md
             - name: Hinzufügen einer Blasenebene
               href: map-add-bubble-layer.md
-            - name: Hinzufügen von Formen
+            - name: Hinzufügen einer Linienebene
+              href: map-add-line-layer.md
+            - name: Hinzufügen einer Polygonebene
               href: map-add-shape.md
             - name: Hinzufügen einer Wärmebildebene
               href: map-add-heat-map-layer.md
+            - name: Hinzufügen eines Popups
+              href: map-add-popup.md
             - name: Clusterpunktdaten
               href: clustering-point-data-web-sdk.md
             - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
               href: data-driven-style-expressions-web-sdk.md
             - name: Verwenden von Imagevorlagen
               href: how-to-use-image-templates-web-sdk.md
-            - name: Überlagern eines Bilds
+            - name: Hinzufügen einer Bildebene
               href: map-add-image-layer.md
             - name: Hinzufügen von Kachelebenen
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Hinzufügen von Formen
           href: how-to-add-shapes-to-android-map.md
+        - name: Anzeigen von Featureinformationen
+          href: display-feature-information-android.md
         - name: Hinzufügen einer Kachelebene
           href: how-to-add-tile-layer-android-map.md
 - name: Verweis

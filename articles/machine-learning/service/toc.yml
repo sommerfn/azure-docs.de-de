@@ -98,9 +98,6 @@
     - name: Interpretierbarkeit von Modellen
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: 'FPGA im Vergleich zu CPU, GPU und ASIC'
-      displayName: 'field, programmable, arrays'
-      href: concept-accelerate-with-fpgas.md
     - name: ONNX
       href: concept-onnx.md
     - name: Sicherheit
@@ -260,7 +257,7 @@
       items:
         - name: ML-Pipelines
           href: how-to-create-your-first-pipeline.md
-        - name: Azure-Pipelines für CI/CD
+        - name: Azure Pipelines für CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Verwalten von Ressourcenkontingenten

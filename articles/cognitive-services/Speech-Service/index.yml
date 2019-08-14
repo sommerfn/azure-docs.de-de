@@ -45,7 +45,7 @@ sections:
     items:
       - type: paragraph
         text: |
-          Mit dem Speech SDK (<a href="releasenotes.md">Versionshinweise</a>) können Sie Ihren Apps die folgenden Funktionen (und vieles mehr) hinzufügen&colon; 
+          Mit dem Speech SDK (<a href="releasenotes.md">Versionshinweise</a>) können Sie Ihren Apps die folgenden Funktionen (und vieles mehr) hinzufügen&colon;
           <div class="row"><div class="column"><ul>
           <li><b><a href="speech-to-text.md">Spracherkennung</a></b> (speech-recognition/SR)</li>
           <li><b><a href="speech-devices-sdk-create-kws.md">Benutzerdefiniertes Aktivierungswort</a></b> (keyword-spotter/KWS)</li>
@@ -253,10 +253,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="speech-to-text-sample.md">Spracherkennung (SR)</a><br/>
-          - html: <a href="intent.md">Absichtserkennung</a><br/>
-          - html: <a href="translation.md">Übersetzung</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Sprachsynthese</a><br/>
+          - html: '<a href="how-to-recognize-intents-from-speech-csharp.md">Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#</a><br/>'
+          - html: '<a href="tutorial-voice-enable-your-bot-speech-sdk.md">Tutorial: Voice-enable your bot using the Speech SDK</a> (Ermöglichen der Verwendung von Sprache in Ihrem Bot mit dem Speech SDK, C#)<br/>'
+          - html: '<a href="../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json">Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services</a><br/>'
   - title: Beispiele
     items:
       - type: paragraph

@@ -284,6 +284,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: Veröffentlichen von exemplarische Vorgehensweisen
               items:
+                - name: Integrieren mit Power BI
+                  href: application-proxy-integrate-with-power-bi.md
                 - name: Integrieren mit Cloud App Security
                   href: application-proxy-integrate-with-microsoft-cloud-application-security.md
                 - name: Integrieren mit Remotedesktop
