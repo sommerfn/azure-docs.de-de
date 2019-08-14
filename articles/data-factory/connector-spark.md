@@ -47,7 +47,7 @@ Folgende Eigenschaften werden für den mit Spark verknüpften Dienst unterstütz
 | serverType | Der Typ des Spark-Servers. <br/>Zulässige Werte sind: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nein |
 | thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte sind: **Binary**, **SASL**, **HTTP** | Nein |
 | authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Spark-Server. <br/>Zulässige Werte sind: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
-| userName | Der Benutzername für den Zugriff auf den Spark-Server.  | Nein |
+| username | Der Benutzername für den Zugriff auf den Spark-Server.  | Nein |
 | password | Das Kennwort für den Benutzer. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | httpPath | Die Teil-URL, die dem Spark-Server entspricht.  | Nein |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
