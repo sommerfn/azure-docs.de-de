@@ -135,7 +135,7 @@ Für mit einem Sternchen (*) gekennzeichnete Features ist eine feste Slotzuordn
 
 <!-- VNET and hybrid connections not yet sticky to slot -->
 
-Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge fest einem bestimmten Slot zuordnen möchten, sodass sie nicht ausgetauscht wird, navigieren Sie zur **** Konfigurationsseite für den entsprechenden Slot. Aktivieren Sie nach dem Hinzufügen oder Bearbeiten einer Einstellung das Kontrollkästchen **Bereitstellungssloteinstellung**. Ist dieses Kontrollkästchen aktiviert, wird die Einstellung nicht ausgetauscht. 
+Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge fest einem bestimmten Slot zuordnen möchten, sodass sie nicht ausgetauscht wird, navigieren Sie zur**Konfigurationsseite** für den entsprechenden Slot. Aktivieren Sie nach dem Hinzufügen oder Bearbeiten einer Einstellung das Kontrollkästchen **Bereitstellungssloteinstellung**. Ist dieses Kontrollkästchen aktiviert, wird die Einstellung nicht ausgetauscht. 
 
 ![Sloteinstellung](./media/web-sites-staged-publishing/SlotSetting.png)
 
