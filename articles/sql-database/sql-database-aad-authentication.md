@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: eb49649e9c92416fc674c032b9dc6a613a34dd77
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569655"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019680"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL
 
@@ -98,7 +98,7 @@ Für die Erstellung eines eigenständigen Datenbankbenutzers in Azure SQL-Datenb
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="manage-instances"></a>Verwaltete Instanzen
+### <a name="managed-instances"></a>Verwaltete Instanzen
 
 - Azure AD-Serverprinzipale (Anmeldungen) und -Benutzer werden als Previewfunktion für [verwaltete Instanzen](sql-database-managed-instance.md) unterstützt.
 - Das Festlegen von Azure AD-Serverprinzipalen (Anmeldungen), die einer Azure AD-Gruppe als Datenbankbesitzer zugeordnet sind, wird für [verwaltete Instanzen](sql-database-managed-instance.md) nicht unterstützt.

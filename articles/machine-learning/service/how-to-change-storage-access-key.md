@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/17/2019
-ms.openlocfilehash: 0721542811709e9b938fea3f31bc2a0a28ecdc74
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 08/08/2019
+ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358775"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990541"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Zugriffsschlüssel für Speicherkonten neu generieren
 
@@ -25,7 +25,7 @@ Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Workspace](setup-create-workspace.md)-Artikels.
+* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Workspace](how-to-manage-workspace.md)-Artikels.
 
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -84,17 +84,13 @@ Um den Azure Machine Learning-Dienst auf die Verwendung des neuen Schlüssels zu
         az login
         ```
 
-    1. Um die Erweiterung Azure Machine Learning zu installieren, verwenden Sie den folgenden Befehl:
-
-        ```azurecli-interactive
-        az extension add -n azure-cli-ml 
-        ```
-
     1. Um den Arbeitsbereich auf die Verwendung des neuen Schlüssels zu aktualisieren, verwenden Sie den folgenden Befehl. Ersetzen `myworkspace` Sie durch den Namen Ihres Azure Machine Learning-Arbeitsbereichs und ersetzen Sie `myresourcegroup` durch den Namen der Azure-Ressourcengruppe, die den Arbeitsbereich enthält.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
         ```
+
+        [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
         Dieser Befehl synchronisiert automatisch die neuen Schlüssel für das vom Arbeitsbereich verwendete Azure-Speicherkonto.
 

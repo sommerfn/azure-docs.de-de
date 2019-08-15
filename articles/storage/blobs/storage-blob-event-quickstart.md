@@ -1,7 +1,6 @@
 ---
 title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – Azure CLI | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid. Senden Sie die Ereignisse an einen Webhook. Verarbeiten Sie die Ereignisse in einer Webanwendung.
-services: storage,event-grid
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
@@ -9,13 +8,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: 7d92614556fdc6822f749002d2e5a8fc92946d0a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: dc8ed420fdb04d04c02c91f2fa90939562b91645
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141125"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845622"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI
 
@@ -26,7 +24,6 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonni
 Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
 ![Anzeigen des Abonnementereignisses](./media/storage-blob-event-quickstart/view-results.png)
-
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 

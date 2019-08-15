@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
 ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67146303"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
@@ -30,7 +30,7 @@ Der Log Analytics-Agent für Windows und Linux kann manuell oder automatisch auf
 
 | Environment | Installationsmethode | Aktualisierungsmethode |
 |--------|----------|-------------|
-| Azure-VM | VM-Erweiterung für den Log Analytics-Agent für Windows/Linux | Der Agent wird standardmäßig automatisch aktualisiert, es sei denn, Sie haben Ihre Azure Resource Manager-Vorlage so konfiguriert, dass sie sich abmeldet, indem Sie die Eigenschaft *autoUpgradeMinorVersion* auf **false** setzen. |
+| Azure VM | VM-Erweiterung für den Log Analytics-Agent für Windows/Linux | Der Agent wird standardmäßig automatisch aktualisiert, es sei denn, Sie haben Ihre Azure Resource Manager-Vorlage so konfiguriert, dass sie sich abmeldet, indem Sie die Eigenschaft *autoUpgradeMinorVersion* auf **false** setzen. |
 | Benutzerdefinierte Azure VM-Images | Manuelles Installieren des Log Analytics-Agent fürs Windows oder Linux | Das Aktualisieren von VMs auf die neueste Version des Agents muss über die Befehlszeile mit dem Windows-Installationspaket oder dem selbstextrahierenden und installierbaren Shellskript-Bundle von Linux erfolgen.|
 | Nicht-Azure-VMs | Manuelles Installieren des Log Analytics-Agent fürs Windows oder Linux | Das Aktualisieren von VMs auf die neueste Version des Agents muss über die Befehlszeile mit dem Windows-Installationspaket oder dem selbstextrahierenden und installierbaren Shellskript-Bundle von Linux erfolgen. |
 

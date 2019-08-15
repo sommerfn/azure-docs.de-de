@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1609931cd5fcab0977ff64f680fbb1f253f3caaf
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320481"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782188"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 Preview (Azure Functions)
 
@@ -242,6 +242,16 @@ public static async Task AddValueClient(
 ```
 
 Im vorherigen Beispiel ist der `proxy`-Parameter eine dynamisch generierte Instanz von `ICounter`, die den Aufruf von `Add` intern in den entsprechenden (nicht typisierten) Aufruf von `SignalEntityAsync` übersetzt.
+
+Für den Parameter „type“ für `SignalEntityAsync<T>` gelten folgende Einschränkungen:
+
+* Der type-Parameter muss eine Schnittstelle sein.
+* Nur Methoden können in der Schnittstelle definiert werden. Eigenschaften werden nicht unterstützt.
+* Jede Methode muss entweder einen oder keine Parameter definieren.
+* Jede Methode muss entweder `void`,`Task` oder `Task<T>` zurückgeben, wobei `T` ein JSON-serialisierbarer Typ ist.
+* Die Schnittstelle muss von genau einem Typ innerhalb der Assembly der Schnittstelle implementiert werden.
+
+In den meisten Fällen führen Schnittstellen, die diese Anforderungen nicht erfüllen, zu einer Laufzeitausnahme.
 
 > [!NOTE]
 > Es ist wichtig, zu beachten, dass die Methoden `ReadEntityStateAsync` und `SignalEntityAsync` von `IDurableOrchestrationClient` die Leistung gegenüber der Konsistenz priorisieren. `ReadEntityStateAsync` kann einen veralteten Wert zurückgeben, und `SignalEntityAsync` kann zurückgegeben werden, bevor der Vorgang abgeschlossen ist.

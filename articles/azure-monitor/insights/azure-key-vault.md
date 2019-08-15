@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498347"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849196"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault-Analyse-Lösung in Azure Monitor
 
@@ -79,7 +79,7 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 | Azure |  |  |&#8226; |  |  | Bei der Ankunft |
 
 ## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
-Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) die Key Vault-Daten an, indem Sie in Azure Monitor auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse** klicken. Sie können diese Seite im Menü **Azure Monitor** öffnen, indem Sie im Abschnitt **Insights** auf **Mehr** klicken. 
+Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) die Key Vault-Daten an, indem Sie in Azure Monitor auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse** klicken. Sie können diese Seite im Menü **Azure Monitor** öffnen, indem Sie im Abschnitt **Insights** auf **Mehr** klicken. 
 
 ![Abbildung der Kachel „Azure Key Vault“](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
@@ -105,7 +105,7 @@ Die Azure Key Vault-Lösung analysiert Datensätze vom Typ **KeyVaults**, die au
 
 | Eigenschaft | Description |
 |:--- |:--- |
-| Type |*AzureDiagnostics* |
+| type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |IP-Adresse des Clients, der die Anforderung gestellt hat |
 | Category (Kategorie) | *AuditEvent* |

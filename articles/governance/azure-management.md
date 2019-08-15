@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608191"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780792"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
 
@@ -40,7 +40,7 @@ Die Automatisierung dieser Aufgaben ermöglicht Ihnen das Beseitigen von Redunda
 ## <a name="govern"></a>Steuern
 
 Governance stellt Mechanismen und Prozesse zum Beibehalten der Kontrolle über Ihre Anwendungen und Ressourcen in Azure bereit. Sie umfasst die Planung von Initiativen und das Setzen von strategischen Prioritäten.
-Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure-Richtlinien](./policy/overview.md) ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen, zuzuweisen und zu verwalten, um Regeln für Ihre Ressourcen durchzusetzen. Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unternehmensstandards. [Azure Cost Management von Cloudyn](../cost-management/overview.md) ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter.
+Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure-Richtlinien](./policy/overview.md) ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen, zuzuweisen und zu verwalten, um Regeln für Ihre Ressourcen durchzusetzen. Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unternehmensstandards. [Azure Cost Management](../cost-management/overview-cost-mgt.md) ermöglicht es Ihnen, die Cloudnutzung und Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter nachzuverfolgen.
 
 ## <a name="secure"></a>Schützen
 

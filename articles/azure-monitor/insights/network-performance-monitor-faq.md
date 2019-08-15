@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinigam
-ms.openlocfilehash: 71eb789c92452353029613265fe97411c8c00649
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706330"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782110"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -147,7 +147,17 @@ Ein Hop reagiert in einem der folgenden Szenarien möglicherweise nicht auf eine
 * Die Netzwerkgeräte lassen keinen ICMP_TTL_EXCEEDED-Datenverkehr zu.
 * Die ICMP_TTL_EXCEEDED-Antwort vom Netzwerkgerät wird durch eine Firewall blockiert.
 
-### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>Warum wird mein Link als fehlerhaft angezeigt, aber die Topologie nicht? 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Ich erhalte Warnungen für fehlerhafte Tests, aber die hohen Werte werden im NPM-Diagramm zu Verlust und Latenz nicht angezeigt. Wie prüfe ich, was fehlerhaft ist?
+NPM löst eine Warnung aus, wenn die End-to-End-Latenz zwischen Quelle und Ziel den Schwellenwert für einen beliebigen Pfad dazwischen überschreitet. Einige Netzwerke verfügen über mehr als einen Pfad, der dieselbe Quelle und dasselbe Ziel verbindet. NPM löst eine Warnung aus, wenn ein beliebiger Pfad fehlerhaft ist. Die in den Diagrammen gezeigte Darstellung von Verlust und Latenz ist der Durchschnittswert für alle Pfade und gibt daher möglicherweise nicht den genauen Wert eines einzelnen Pfads an. Suchen Sie in der Warnung nach der Spalte „SubType“, um zu verstehen, wo der Schwellenwert überschritten wurde. Wenn das Problem durch einen Pfad verursacht wird, lautet der SubType-Wert „NetworkPath“ (für Leistungsüberwachungstests), „EndpointPath“ (für Dienstkonnektivitätsmonitor-Tests) und „ExpressRoutePath“ (für ExpressRoute-Monitortests). 
+
+Beispielabfrage zur Feststellung, ob der Pfad fehlerhaft ist:
+
+    NetworkMonitoring 
+    | where ( SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Warum wird mein Test als fehlerhaft angezeigt, aber die Topologie nicht? 
 NPM überwacht End-to-End-Verlust, Latenz und Topologie mit unterschiedlichen Intervallen. Verlust und Latenz werden einmal alle 5 Sekunden gemessen und alle drei Minuten aggregiert (für Systemmonitor und ExpressRoute-Monitor), während die Topologie alle 10 Minuten mit Traceroute berechnet wird. Die Topologie wird z.B. zwischen 3:44 Uhr und 4:04 Uhr drei Mal aktualisiert (3:44 Uhr, 3:54 Uhr, 4:04 Uhr), aber Verlust und Latenz sieben Mal (3:44 Uhr, 3:47 Uhr, 3:50 Uhr, 3:53 Uhr, 3:56 Uhr, 3:59 Uhr, 4:02 Uhr). Die um 3:54 Uhr generierte Topologie wird für Verlust und Latenz gerendert, die um 3:56 Uhr, 3:59 Uhr und 4:02 Uhr berechnet wird. Nehmen wir an, Sie erhalten eine Warnung, dass Ihre Expressroute-Verbindung um 3:59 Uhr fehlerhaft war. Sie melden sich beim NPM an und versuchen, die Topologiezeit auf 3:59 Uhr festzulegen. NPM rendert die um 3:54 Uhr generierte Topologie. Um die letzte bekannte Topologie Ihres Netzwerks zu verstehen, vergleichen Sie die Felder TimeProcessed (Zeit, zu der Verlust und Latenz berechnet wurden) und TracerouteCompletedTime (Zeit, zu der die Topologie berechnet wurde). 
 
 ### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Was ist der Unterschied zwischen den Feldern E2EMedianLatency und AvgHopLatencyList in der Tabelle NetworkMonitoring?

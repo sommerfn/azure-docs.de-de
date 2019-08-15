@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 8ca87f18a91af3937f8b4dd1148ecad8507e0dd5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67146353"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849061"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Verbinden von Windows-Computern mit Azure Monitor
 
@@ -34,7 +34,7 @@ Der Agent kann mit einer der folgenden Methoden installiert werden. Bei den meis
 * Resource Manager-Vorlage für virtuelle Computer, auf denen Windows lokal in Azure Stack ausgeführt wird. 
 
 >[!NOTE]
->Azure Security Center (ASC) hängt von Microsoft Monitoring Agent (auch als Log Analytics Windows-Agent bezeichnet) ab und installiert und konfiguriert das Tool, um im Rahmen der Bereitstellung mit einem Log Analytics-Arbeitsbereich zu kommunizieren. ASC enthält eine automatische Bereitstellungsoption, die eine automatische Installation des Log Analytics Windows-Agents auf allen VMs in Ihrem Abonnement ermöglicht und ihn so konfiguriert, dass er an einen bestimmten Arbeitsbereich berichtet. Weitere Informationen zu dieser Option finden Sie unter [Aktivieren der automatischen Bereitstellung des Log Analytics-Agents](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
+>Azure Security Center (ASC) hängt von Microsoft Monitoring Agent (auch als Log Analytics Windows-Agent bezeichnet) ab und installiert und konfiguriert das Tool, um im Rahmen der Bereitstellung mit einem Log Analytics-Arbeitsbereich zu kommunizieren. ASC enthält eine automatische Bereitstellungsoption, die eine automatische Installation des Log Analytics Windows-Agents auf allen VMs in Ihrem Abonnement ermöglicht und ihn so konfiguriert, dass er an einen bestimmten Arbeitsbereich berichtet. Weitere Informationen zu dieser Option finden Sie unter [Aktivieren der automatischen Bereitstellung des Log Analytics-Agents](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-).
 >
 
 Wenn Sie den Agenten so konfigurieren müssen, dass er an mehrere Arbeitsbereiche berichtet, ist dies bei der ersten Einrichtung nicht möglich. Sie können dies nur später tun, indem Sie die Einstellungen aus der Systemsteuerung oder aus PowerShell aktualisieren, wie dies unter [Hinzufügen oder Entfernen von Arbeitsbereichen](agent-manage.md#adding-or-removing-a-workspace) beschrieben ist.  

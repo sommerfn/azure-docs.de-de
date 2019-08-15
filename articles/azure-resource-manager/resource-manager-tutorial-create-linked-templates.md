@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241381"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036006"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
 
@@ -227,7 +227,7 @@ echo "Linked template URI with SAS token: $templateURI"
 4. Notieren Sie sich die beiden Werte (Name der Ressourcengruppe und URI der verknüpften Vorlage) am Ende des Shell-Bereichs. Diese werden im weiteren Verlauf des Tutorials benötigt.
 5. Wählen Sie **Fokusmodus beenden** aus, um den Shell-Bereich zu schließen.
 
-In der Praxis generieren Sie bei der Bereitstellung der Hauptvorlage ein SAS-Token und legen einen kürzeren Ablaufzeitraum fest, um es sicherer zu machen. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+In der Praxis generieren Sie bei der Bereitstellung der Hauptvorlage ein SAS-Token und legen einen kürzeren Ablaufzeitraum fest, um es sicherer zu machen. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Aufrufen der verknüpften Vorlage
 
@@ -327,7 +327,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 Nehmen Sie zur Verbesserung des Projekts die folgenden zusätzlichen Änderungen am abgeschlossenen Projekt vor:
 
 1. Ändern Sie die Hauptvorlage (azuredeploy.json), sodass Sie den URI-Wert der verknüpften Vorlage über einen Parameter akzeptiert.
-2. Generieren Sie ein SAS-Token beim Bereitstellen der Hauptvorlage und nicht beim Hochladen der verknüpften Vorlage. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+2. Generieren Sie ein SAS-Token beim Bereitstellen der Hauptvorlage und nicht beim Hochladen der verknüpften Vorlage. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

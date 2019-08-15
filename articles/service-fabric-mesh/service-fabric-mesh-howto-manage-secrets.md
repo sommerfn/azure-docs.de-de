@@ -3,18 +3,18 @@ title: Verwalten von Azure Service Fabric Mesh-Anwendungsgeheimnissen | Microsof
 description: Verwalten Sie Anwendungsgeheimnisse, damit Sie auf sichere Weise eine Service Fabric Mesh-Anwendung erstellen und bereitstellen können.
 services: service-fabric-mesh
 keywords: secrets
-author: aljo-microsoft
-ms.author: aljo
+author: athinanthny
+ms.author: atsenthi
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: c2548ea3cf892ebe1a56cbb0909bfa5d5e805acf
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: ef3f04437aca7b6ad9aab8806d54e65d00159d87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503314"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036166"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Verwalten von Service Fabric Mesh-Anwendungsgeheimnissen
 Service Fabric Mesh unterstützt Geheimnisse als Azure-Ressourcen. Bei einem Service Fabric Mesh-Geheimnis kann es sich um beliebige sensible Informationen in Textform handeln, z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die sicher gespeichert und übertragen werden sollten. In diesem Artikel wird beschrieben, wie Sie den Secure Store Service von Service Fabric verwenden, um Geheimnisse bereitzustellen und zu verwalten.

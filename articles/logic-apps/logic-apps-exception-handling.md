@@ -11,10 +11,10 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60996590"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
@@ -29,7 +29,7 @@ Für die grundlegende Behandlung von Ausnahmen und Fehlern können Sie eine *Wie
 
 Hier sind die Arten von Wiederholungsrichtlinien angegeben: 
 
-| Type | BESCHREIBUNG | 
+| type | BESCHREIBUNG | 
 |------|-------------| 
 | **Standard** | Bei dieser Richtlinie werden bis zu vier Wiederholungen in Intervallen durchgeführt, die sich *exponentiell erhöhen*. Sie werden um 7,5 Sekunden skaliert, aber der obere Grenzwert liegt zwischen 5 und 45 Sekunden. | 
 | **Exponentielles Intervall**  | Bei dieser Richtlinie wird für den Zeitraum eines zufälligen Intervalls gewartet, das aus einem exponentiell zunehmenden Bereich ausgewählt wird, bevor die nächste Anforderung gesendet wird. | 
@@ -71,7 +71,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG |
+| Wert | type | BESCHREIBUNG |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
 | <*retry-interval*> | String | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
@@ -80,7 +80,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG |
+| Wert | type | BESCHREIBUNG |
 |-------|------|-------------|
 | <*minimum-interval*> | String | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der niedrigste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 
 | <*maximum-interval*> | String | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der höchste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 

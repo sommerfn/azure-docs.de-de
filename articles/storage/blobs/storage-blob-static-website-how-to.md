@@ -1,18 +1,18 @@
 ---
 title: Hosten einer statischen Website in Azure Storage
 description: Hier erfahren Sie, wie Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Container in einem Azure Storage GPv2-Konto bereitstellen.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: e53f8dd832b7f19692b9095e913330848e5b0330
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 591a62ebb6b83ea23d3ed6cf867c07b91e1596b3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385767"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847049"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 

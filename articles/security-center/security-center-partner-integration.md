@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 14bf7dc62bb97cb14232660db6d0649e3d77d4fa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662937"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950563"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -56,7 +56,7 @@ Derzeit umfassen die integrierten Sicherheitslösungen Sicherheitsrisikobewertun
 
    ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
 
-Unter **Sicherheitslösungen** können Sie Informationen zur Integrität integrierter Azure-Sicherheitslösungen anzeigen und grundlegende Verwaltungsaufgaben durchführen. Sie können auch eine Verbindung mit anderen Arten von Sicherheitsdatenquellen herstellen – beispielsweise mit Azure Active Directory Identity Protection-Warnungen und Firewallprotokollen im CEF-Format (Common Event Format).
+Unter **Sicherheitslösungen** können Sie Informationen zur Integrität integrierter Azure-Sicherheitslösungen anzeigen und grundlegende Verwaltungsaufgaben durchführen.
 
 ### <a name="connected-solutions"></a>Verbundene Lösungen
 
@@ -97,8 +97,6 @@ Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgefüh
 Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration in Security Center durchzuführen und über Sicherheitswarnungen benachrichtigt zu werden.
 
 ![Ermittelte Lösungen](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
-Security Center erkennt auch im Abonnement bereitgestellte Lösungen, die die Weiterleitung von CEF-Protokollen (Common Event Format) ermöglichen. Informieren Sie sich über das [Verbinden einer Sicherheitslösung](quick-security-solutions.md) mit Security Center, für die CEF-Protokolle verwendet werden.
 
 ### <a name="add-data-sources"></a>Hinzufügen von Datenquellen
 

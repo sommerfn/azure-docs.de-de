@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9a50b0e5dd4e96c9235348bbfaae1d8a6e54d53
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307902"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846622"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Anweisungen aus, um die Erweiterung auf virtuellen Win
 4. Wählen Sie die **Azure-Leistungsdiagnose**, lesen Sie sich die Geschäftsbedingungen durch, und wählen Sie **Erstellen**.
 
     ![Screenshot: Bildschirm „Neue Ressource“ mit Hervorhebung der Azure-Leistungsdiagnose](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. Geben Sie die Parameterwerte für die Installation an, und wählen Sie **OK**, um die Erweiterung zu installieren. Weitere Informationen zu unterstützten Szenarien finden Sie unter [Verwenden von PerfInsights](how-to-use-perfInsights.md#supported-troubleshooting-scenarios). 
+5. Geben Sie die Parameterwerte für die Installation an, und wählen Sie **OK**, um die Erweiterung zu installieren. Weitere Informationen zu unterstützten Szenarien finden Sie unter [Verwenden von PerfInsights](how-to-use-perfinsights.md#supported-troubleshooting-scenarios). 
 
     ![Screenshot: Dialogfeld „Erweiterung installieren“](media/performance-diagnostics-vm-extension/install-the-extension.png)
 6. Wenn die Installation erfolgreich ist, wird eine entsprechende Meldung angezeigt.

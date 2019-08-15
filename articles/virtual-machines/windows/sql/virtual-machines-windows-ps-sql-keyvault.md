@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7de54f7da8cef5942a8d8f41031eaf3e2565580
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076020"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846236"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurieren der Azure Key Vault-Integration für SQL Server auf virtuellen Azure-Computern (Resource Manager)
 
@@ -56,7 +56,7 @@ Eine ausführliche exemplarische Vorgehensweise zur Bereitstellung finden Sie un
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Für vorhandene virtuelle SQL Server-Computer öffnen Sie die Ressource [Virtueller SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) und wählen dann **Sicherungen** unter **Einstellungen** aus. Wählen Sie **Aktivieren** aus, um die Azure Key Vault-Integration zu ermöglichen. 
+Für vorhandene virtuelle SQL Server-Computer öffnen Sie die Ressource [Virtueller SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) und wählen dann **Sicherungen** unter **Einstellungen** aus. Wählen Sie **Aktivieren** aus, um die Azure Key Vault-Integration zu ermöglichen. 
 
 ![SQL-AKV-Integration für vorhandene virtuelle Computer](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 

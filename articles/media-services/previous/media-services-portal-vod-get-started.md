@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5df666dc2bd574c168d6b5f65dd6a909564a921f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868428"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015056"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Erste Schritte zum Bereitstellen von On Demand-Inhalten über das Azure-Portal
 
@@ -152,7 +152,7 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 * Starten Sie den Standard-Streamingendpunkt, um mit dem Streamen zu beginnen.
 * Vergewissern Sie sich, dass das Video veröffentlicht wurde.
-* Der Media Player des Azure-Portals verwendet für die Wiedergabe den Standard-Streamingendpunkt. Wenn Sie einen anderen Streamingendpunkt für die Wiedergabe verwenden möchten, können Sie die URL markieren, kopieren und in einen anderen Player einfügen. So können Sie Ihr Video beispielsweise mit dem [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) testen.
+* Der Media Player des Azure-Portals verwendet für die Wiedergabe den Standard-Streamingendpunkt. Wenn Sie einen anderen Streamingendpunkt für die Wiedergabe verwenden möchten, können Sie die URL markieren, kopieren und in einen anderen Player einfügen. So können Sie Ihr Video beispielsweise mit dem [Azure Media Player](https://aka.ms/azuremediaplayer) testen.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

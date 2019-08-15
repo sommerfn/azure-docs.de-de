@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ca0067090924428a50ad2360f23a86576fff6cd3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727023"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927854"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -94,7 +94,7 @@ Auf einer Arbeitsstation mit verstärkter Sicherheit führt der Administrator ei
 * Einschränkung der Ausführung: Lassen Sie nur einen Satz vordefinierter ausführbarer Dateien zu, die für die Durchführung der Verwaltung benötigt werden (als „default-deny“ bezeichnet). Standardmäßig sollte Benutzern die Berechtigung zum Ausführen aller Programme verweigert werden, es sei denn, dies ist explizit in der Zulassungsliste angegeben.
 * Ansatz der geringsten Rechte: Benutzer von Verwaltungsarbeitsstationen sollten auf dem lokalen Computer selbst keine Verwaltungsrechte besitzen. Es ist für sie dann nicht möglich, die Systemkonfiguration oder die Systemdateien – absichtlich oder unabsichtlich – zu ändern.
 
-Sie können all dies erzwingen, indem Sie [Gruppenrichtlinienobjekte](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy) (Group Policy Objects, GPOs) in Active Directory Domain Services (AD DS) verwenden und über Ihre lokale Verwaltungsdomäne auf alle Verwaltungskonten anwenden.
+Sie können all dies erzwingen, indem Sie [Gruppenrichtlinienobjekte](../../active-directory-domain-services/manage-group-policy.md) (Group Policy Objects, GPOs) in Active Directory Domain Services (AD DS) verwenden und über Ihre lokale Verwaltungsdomäne auf alle Verwaltungskonten anwenden.
 
 ### <a name="managing-services-applications-and-data"></a>Verwalten von Diensten, Anwendungen und Daten
 Die Konfiguration von Azure-Clouddiensten wird entweder über das Azure-Portal oder SMAPI, die Windows PowerShell-Befehlszeilenschnittstelle oder eine benutzerdefinierte Anwendung durchgeführt, bei der diese RESTful-Schnittstellen genutzt werden. Dienste, bei denen diese Mechanismen verwendet werden, sind Azure Active Directory (Azure AD), Azure Storage, Azure Websites und Azure Virtual Network usw.

@@ -11,16 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736580"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742387"
 ---
 # <a name="health-probes"></a>Integritätstests
 
-Um die Integrität der einzelnen Back-Ends zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen.
+Um die Integrität der einzelnen Back-Ends zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen. Beachten Sie Folgendes: Weil Front Door global über viele Edge-Umgebungen verfügt, kann das Volumen von Integritätstestanforderungen an Ihre Back-Ends so hoch sein, da mehr als eine Anforderung pro Sekunde von der konfigurierten Häufigkeit der Integritätstests abhängt. 
+
 
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle

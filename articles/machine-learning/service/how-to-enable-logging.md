@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 384cd2df9c629a73095cc55f4f6d65aa6a727225
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360963"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847923"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Aktivieren der Protokollierung im Azure Machine Learning Service
 
@@ -27,7 +27,7 @@ Das Python-SDK für Azure Machine Learning gestattet Ihnen die Aktivierung der P
 > * Bereitgestellte Modelle
 > * Python-Einstellungen für `logging`
 
-[Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md). Weitere Informationen zum SDK finden Sie im [Handbuch](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+[Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md). Weitere Informationen zum SDK finden Sie im [Handbuch](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 ## <a name="training-models-and-compute-target-logging"></a>Protokollierung für das Trainieren von Modellen und Computeziele
 

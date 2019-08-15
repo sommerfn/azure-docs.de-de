@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67263df319063cdf21dadea257dcab05ba0d5f7b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1f6aaa4f1b8f58f7cd6c1f02f424614d33863fc5
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839998"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815873"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Skalierbares Trainieren und Registrieren von TensorFlow-Modellen mit Azure Machine Learning Service
 
@@ -27,16 +27,16 @@ Egal, ob Sie ein TensorFlow-Modell von Grund auf entwickeln oder ein [bestehende
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie diesen Code auf einer dieser Umgebungen aus:
+Führen Sie diesen Code in einer dieser Umgebungen aus:
 
- - Azure Machine Learning Notebook VM – keine Downloads oder Installationen nötig
+ - Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 
-     - Führen Sie den [Schnellstart für cloudbasierte Notebooks](quickstart-run-cloud-notebook.md) durch, um einen dedizierten Notebookserver zu erstellen, auf dem das SDK und das Beispielrepository vorinstalliert sind.
+     - Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebookserver zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
     - Suchen Sie im Beispielordner auf dem Notebookserver ein fertiges und erweitertes Notebook. Dazu navigieren Sie zum folgenden Verzeichnis: **how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-tensorflow**. 
  
  - Ihr eigener Jupyter Notebook-Server
 
-     - [Installieren Sie das Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
+     - [Installieren des Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
     - [Erstelle Sie eine Konfigurationsdatei für den Arbeitsbereich](setup-create-workspace.md#write-a-configuration-file)
     - [Laden Sie die Beispielskriptdateien](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` und `utils.py` herunter.
      
@@ -44,7 +44,7 @@ Führen Sie diesen Code auf einer dieser Umgebungen aus:
 
 ## <a name="set-up-the-experiment"></a>Einrichten des Experiments
 
-In diesem Abschnitt wird das Trainingsexperiment eingerichtet, indem die erforderlichen Python-Pakete geladen, ein Arbeitsbereich initialisiert, ein Experiment erstellt und die Trainingsdaten und Trainingsskripts hochgeladen werden.
+In diesem Abschnitt wird das Trainingsexperiment eingerichtet, indem die erforderlichen Python-Pakete geladen, ein Arbeitsbereich initialisiert, ein Experiment erstellt und die Trainingsdaten und -skripts hochgeladen werden.
 
 ### <a name="import-packages"></a>Importieren von Paketen
 
@@ -67,7 +67,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 Der [Azure Machine Learning Service-Arbeitsbereich](concept-workspace.md) ist für den Dienst die Ressource der obersten Ebene. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar. Im Python SDK können Sie auf die Arbeitsbereichsartefakte zugreifen, indem Sie ein [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-Objekt erstellen.
 
-Erstellen Sie ein Arbeitsbereichsobjekt aus der Datei `config.json`, die im Abschnitt [„Voraussetzungen“](#prerequisites) erstellt wurde.
+Erstellen Sie ein Arbeitsbereichsobjekt aus der Datei `config.json`, die im [Abschnitt „Voraussetzungen“](#prerequisites) erstellt wurde.
 
 ```Python
 ws = Workspace.from_config()
@@ -172,7 +172,7 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 - **Vorbereitung**: Gemäß dem TensorFlow-Estimator wird ein Docker-Image erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann.
 
-- **Skalierung**: Der Cluster versucht horizontal zu skalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein zentrales Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Running**: Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das „entry_script“ wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner „./logs“ werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 
@@ -255,7 +255,7 @@ estimator= TensorFlow(source_directory=project_folder,
 run = exp.submit(tf_est)
 ```
 
-#### <a name="define-cluster-specifications-in-tfconfig"></a>Definieren von Clusterspezifikationen in „TF_CONFIG“
+#### <a name="define-cluster-specifications-in-tf_config"></a>Definieren von Clusterspezifikationen in „TF_CONFIG“
 
 Sie benötigen für [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec) zusätzlich die Netzwerkadressen und Ports des Clusters, damit Azure Machine Learning die `TF_CONFIG`-Umgebungsvariable automatisch festlegt.
 

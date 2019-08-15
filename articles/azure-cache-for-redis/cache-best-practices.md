@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: bdc75033e0aa2e401a511789728feef3248d46ad
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6ac4722c1253f97bfb8c232202e24a923c027edf
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454173"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018824"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer Azure Cache for Redis-Instanz.
@@ -76,7 +76,7 @@ Leider ist gibt es darauf keine einfache Antwort.  Jede Anwendung muss entscheid
 Wenn Sie die Funktionsweise Ihres Codes unter Fehlerbedingungen testen möchten, ziehen Sie die Verwendung des [Neustartfeatures](cache-administration.md#reboot) in Betracht. Dies ermöglicht Ihnen, zu sehen, wie Verbindungsunterbrechungen sich auf Ihre Anwendung auswirken.
 
 ## <a name="performance-testing"></a>Leistungstests
- * **Starten Sie mit der Verwendung von `redis-benchmark.exe`** , um ein Gefühl für den zu erzielenden Durchsatz und die mögliche Latenz zu bekommen, bevor Sie eigene Leistungstests schreiben.  Dokumentation zu „redis-benchmark“ [finden Sie hier](http://redis.io/topics/benchmarks).  Beachten Sie, dass „redis-benchmark“ keine Unterstützung für SSL bietet, Sie müssen deshalb [den Nicht-SSL-Port über das Portal aktivieren](cache-configure.md#access-ports), bevor Sie den Test ausführen.  [Eine mit Windows kompatible Version von „redis-benchmark.exe“ finden Sie hier](https://github.com/MSOpenTech/redis/releases)
+ * **Starten Sie mit der Verwendung von `redis-benchmark.exe`** , um ein Gefühl für den zu erzielenden Durchsatz und die mögliche Latenz zu bekommen, bevor Sie eigene Leistungstests schreiben.  Dokumentation zu „redis-benchmark“ [finden Sie hier](https://redis.io/topics/benchmarks).  Beachten Sie, dass „redis-benchmark“ keine Unterstützung für SSL bietet, Sie müssen deshalb [den Nicht-SSL-Port über das Portal aktivieren](cache-configure.md#access-ports), bevor Sie den Test ausführen.  [Eine mit Windows kompatible Version von „redis-benchmark.exe“ finden Sie hier](https://github.com/MSOpenTech/redis/releases)
  * Die für den Test verwendete Client-VM sollte sich **in derselben Region** befinden wie Ihre Redis Cache-Instanz.
  * **Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden**, da sie über bessere Hardware verfügt und die besten Ergebnisse liefert.
  * Stellen Sie sicher, dass die verwendete Client-VM über **mindestens so viel Computeleistung und Bandbreite* wie der getestete Cache verfügt. 

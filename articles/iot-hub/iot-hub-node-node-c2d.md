@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: 52f2236b8c0a63d8a34f14843d7d6752411d2663
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d3e4e0f4e7b1f8d3e100b3f1b3446907cfd587c5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668054"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716964"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Senden von C2D-Nachrichten mit IoT Hub (Node.js)
 
@@ -51,35 +51,28 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Empfangen von Nachrichten in der simulierten Geräte-App
 
-In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) erstellt haben, um C2D-Nachrichten vom IoT-Hub zu empfangen.
+In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Java)](quickstart-send-telemetry-node.md) erstellt haben, um C2D-Nachrichten vom IoT-Hub zu empfangen.
 
-1. Öffnen Sie die Datei „SimulatedDevice.js“ mit einem Text-Editor.
+1. Öffnen Sie die Datei **SimulatedDevice.js** mit einem Text-Editor. Diese Datei befindet sich im Ordner **iot-hub\Quickstarts\simulated-device** aus dem Stammordner des Beispielcodes „Node. js“, den Sie im Schnellstart [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) heruntergeladen haben.
 
-2. Ändern Sie die **connectCallback** -Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete** -Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback**-Funktion sieht wie der folgende Codeausschnitt aus:
+2. Registrieren Sie einen Handler beim Geräteclient, um von IoT Hub gesendete Nachrichten zu empfangen. Fügen Sie den Aufruf von `client.on` direkt nach der Zeile zum Erstellen des Geräteclients wie im folgenden Codeausschnitt hinzu:
 
     ```javascript
-    var connectCallback = function (err) {
-      if (err) {
-        console.log('Could not connect: ' + err);
-      } else {
-        console.log('Client connected');
-        client.on('message', function (msg) {
-          console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-          client.complete(msg, printResultFor('completed'));
-        });
-        // Create a message and send it to the IoT Hub every second
-        setInterval(function(){
-            var temperature = 20 + (Math.random() * 15);
-            var humidity = 60 + (Math.random() * 20);
-            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', temperature: temperature, humidity: humidity });
-            var message = new Message(data);
-            message.properties.add('temperatureAlert', (temperature > 30) ? 'true' : 'false');
-            console.log("Sending message: " + message.getData());
-            client.sendEvent(message, printResultFor('send'));
-        }, 1000);
-      }
-    };
+    var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
+
+    client.on('message', function (msg) {
+      console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
+      client.complete(msg, function (err) {
+        if (err) {
+          console.error('complete error: ' + err.toString());
+        } else {
+          console.log('complete sent');
+        }
+      });
+    });
     ```
+
+    In diesem Beispiel ruft das Gerät die **complete**-Funktion auf, um IoT Hub mitzuteilen, dass es die Nachricht verarbeitet hat. Der Aufruf von **complete** ist nicht erforderlich, wenn Sie den MQTT-Transport verwenden. Er kann ausgelassen werden. Erforderlich ist er für HTTPS und AMQP.
   
    > [!NOTE]
    > Wenn Sie anstelle von MQTT oder AMQP den HTTPS-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (seltener als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTPS-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklungshandbuch für IoT Hub](iot-hub-devguide-messaging.md).
@@ -87,7 +80,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Schnells
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
-In diesem Artikel erstellen Sie einen Back-End-Dienst, um Cloud-zu-Gerät-Nachrichten über den IoT-Hub zu senden, den Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) erstellt haben. Damit Ihr Dienst Cloud-zu-Gerät-Nachrichten senden kann, muss er über die Berechtigung **Dienstverbindung** verfügen. Standardmäßig wird jeder IoT-Hub mit einer SAS-Richtlinie namens **service** erstellt, die diese Berechtigung erteilt.
+In diesem Artikel erstellen Sie einen Back-End-Dienst, um C2D-Nachrichten über die IoT Hub-Instanz zu senden, die Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) erstellt haben. Damit Ihr Dienst Cloud-zu-Gerät-Nachrichten senden kann, muss er über die Berechtigung **Dienstverbindung** verfügen. Standardmäßig wird jeder IoT-Hub mit einer SAS-Richtlinie namens **service** erstellt, die diese Berechtigung erteilt.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -173,7 +166,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
 
 Sie können nun die Anwendungen ausführen.
 
-1. Führen Sie im Ordner **simulateddevice** an einer Eingabeaufforderung den folgenden Befehl aus, um Telemetriedaten an IoT Hub zu senden und auf C2D-Nachrichten zu lauschen:
+1. Führen Sie im Ordner **simulated-device** an der Eingabeaufforderung den folgenden Befehl aus, um Telemetriedaten an IoT Hub zu senden und auf C2D-Nachrichten zu lauschen:
 
     ```shell
     node SimulatedDevice.js

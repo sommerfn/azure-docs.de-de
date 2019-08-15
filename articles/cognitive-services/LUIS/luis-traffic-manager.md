@@ -8,15 +8,15 @@ ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 10ddbed710d3055e66bd3cb0b06cfa7949a9a1c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 72a7b383d224936e3d22ee9e7acb5db28fe63c4e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563379"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945146"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 

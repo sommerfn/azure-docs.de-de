@@ -1,20 +1,19 @@
 ---
 title: Azure Storage Analytics-Protokollierung
 description: Erfahren Sie, wie Sie Details zu Anforderungen für Azure Storage protokollieren.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: common
+ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.subservice: common
-ms.openlocfilehash: e46064076fb5d38fbde94bd4bb7e5dfbcff7e3b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 36c6c914c96048825c82a8d1f590a7e805373c08
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68556173"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854604"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 

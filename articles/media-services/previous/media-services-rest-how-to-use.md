@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu
-ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: johndeu
+ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687060"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69014846"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API 
 
@@ -57,9 +58,9 @@ Berücksichtigen Sie Folgendes, wenn Sie REST verwenden:
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Anforderungsheader
 Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header in Ihre Anforderung einschließen. Darüber hinaus stehen verschiedene optionale Header zur Auswahl. In der folgenden Tabelle sind die erforderlichen Header aufgeführt:
 
-| Header | Type | Wert |
+| Header | type | Wert |
 | --- | --- | --- |
-| Autorisierung |Bearer |Das Bearer-Token ist der einzig zulässige Autorisierungsmechanismus. Der Wert muss außerdem das von Azure Active Directory bereitgestellte Zugriffstoken enthalten. |
+| Authorization |Bearer |Das Bearer-Token ist der einzig zulässige Autorisierungsmechanismus. Der Wert muss außerdem das von Azure Active Directory bereitgestellte Zugriffstoken enthalten. |
 | x-ms-version |Decimal |2.17 (oder die neueste Version)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -71,7 +72,7 @@ Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header i
 
 Im Folgenden finden Sie eine Reihe optionaler Header:
 
-| Header | Type | Wert |
+| Header | type | Wert |
 | --- | --- | --- |
 | Date |RFC 1123-Datum |Zeitstempel der Anforderung |
 | Accept |Content-Typ |Der angeforderte Inhaltstyp für die Antwort, z. B.:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Antworten können unterschiedliche Inhaltstypen aufweisen, z. B. einen Blobabruf, bei dem eine erfolgreiche Antwort den Blobdatenstrom als Nutzlast enthält. |
@@ -79,19 +80,19 @@ Im Folgenden finden Sie eine Reihe optionaler Header:
 | Accept-Language |„en“, „es“ usw. |Gibt die bevorzugte Sprache für die Antwort an. |
 | Accept-Charset |Charset-Typ, z. B. „UTF-8“ |Der Standardwert ist UTF-8. |
 | X-HTTP-Method |HTTP-Methode |Ermöglicht Clients oder Firewalls, die keine HTTP-Methoden wie PUT oder DELETE unterstützen, die Verwendung dieser Methoden über einen getunnelten GET-Aufruf. |
-| Content-Typ |Content-Typ |Der Inhaltstyp des Anforderungstexts in PUT- oder POST-Anforderungen. |
-| client-request-id |string |Ein vom Aufrufer definierter Wert, der die angegebene Anforderung identifiziert. Falls angegeben, wird dieser Wert in die Antwortnachricht eingeschlossen, um die Anforderung zuzuordnen. <p><p>**Wichtig**<p>Werte müssen auf 2.096 Bytes (2 KB) begrenzt sein. |
+| Content-Type |Content-Typ |Der Inhaltstyp des Anforderungstexts in PUT- oder POST-Anforderungen. |
+| client-request-id |Zeichenfolge |Ein vom Aufrufer definierter Wert, der die angegebene Anforderung identifiziert. Falls angegeben, wird dieser Wert in die Antwortnachricht eingeschlossen, um die Anforderung zuzuordnen. <p><p>**Wichtig**<p>Werte müssen auf 2.096 Bytes (2 KB) begrenzt sein. |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Antwortheader
 Im Folgenden lernen Sie einen Satz von Headern kennen, die je nach der angeforderten Ressource und beabsichtigten Aktion zurückgegeben werden können.
 
-| Header | Type | Wert |
+| Header | type | Wert |
 | --- | --- | --- |
-| request-id |string |Ein eindeutiger, vom Dienst generierter Bezeichner für den aktuellen Vorgang. |
-| client-request-id |string |Ein Bezeichner, der vom Aufrufer in der ursprünglichen Anforderung angegeben wird, sofern vorhanden. |
+| request-id |Zeichenfolge |Ein eindeutiger, vom Dienst generierter Bezeichner für den aktuellen Vorgang. |
+| client-request-id |Zeichenfolge |Ein Bezeichner, der vom Aufrufer in der ursprünglichen Anforderung angegeben wird, sofern vorhanden. |
 | Date |RFC 1123-Datum |Datum/Uhrzeit, zu dem die Anforderung verarbeitet wurde. |
-| Content-Typ |Variabel |Der Inhaltstyp des Antworttexts. |
-| Content-Encoding |Variabel |GZIP oder DEFLATE, je nachdem, welche Codierung geeignet ist. |
+| Content-Type |Variabel |Der Inhaltstyp des Antworttexts. |
+| Content-Encoding |Varies |GZIP oder DEFLATE, je nachdem, welche Codierung geeignet ist. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Verben
 Im Folgenden finden eine vollständige Liste der HTTP-Verben, die für HTTP-Anforderungen verwendet werden können:

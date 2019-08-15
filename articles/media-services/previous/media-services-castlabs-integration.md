@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: Juliako
+ms.reviewer: willzhan
+ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232573"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016690"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs 
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.locfileid: "61232573"
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom **castLabs** -Lizenzserver übermittelt.
 
-Für die Wiedergabe von durch CENC (PlayReady und/oder Widevine) geschützten Streaminginhalten können Sie [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)verwenden. Ausführliche Informationen dazu finden Sie in der [AMP-Dokumentation](https://amp.azure.net/libs/amp/latest/docs/) (in englischer Sprache).
+Für die Wiedergabe von durch CENC (PlayReady und/oder Widevine) geschützten Streaminginhalten können Sie [Azure Media Player](https://aka.ms/azuremediaplayer)verwenden. Ausführliche Informationen dazu finden Sie in der [AMP-Dokumentation](https://amp.azure.net/libs/amp/latest/docs/) (in englischer Sprache).
 
 In der folgenden Abbildung ist eine allgemeine Azure Media Services- und castLabs-Integrationsarchitektur dargestellt.
 
@@ -101,10 +102,10 @@ So verwenden Sie die Webanwendung (STS)
 
 ## <a name="playing-back-a-video"></a>Wiedergeben eines Videos
 
-Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsseltes Video können Sie mit dem [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) wiedergeben. Wenn Sie die Konsolenanwendung ausführen, werden die Inhaltsschlüssel-ID und die Manifest-URL ausgegeben.
+Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsseltes Video können Sie mit dem [Azure Media Player](https://aka.ms/azuremediaplayer) wiedergeben. Wenn Sie die Konsolenanwendung ausführen, werden die Inhaltsschlüssel-ID und die Manifest-URL ausgegeben.
 
 1. Öffnen Sie eine neue Registerkarte, und starten Sie Ihre STS-Anwendung: http://[Ihr_STS_Name].azurewebsites.net/api/token/assetid/[Ihre_CastLabs-AssetID]/contentkeyid/[Inhaltsschlüssel-ID].
-2. Wechseln Sie zu [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
+2. Wechseln Sie zu [Azure Media Player](https://aka.ms/azuremediaplayer).
 3. Fügen Sie die Streaming-URL ein.
 4. Klicken Sie auf das Kontrollkästchen **Erweiterte Optionen** .
 5. Wählen Sie in der Dropdownliste **Schutz** die Option „PlayReady and/or Widevine“ aus.

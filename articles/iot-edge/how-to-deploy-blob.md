@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640676"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839691"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -168,7 +168,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 
 1. Öffnen Sie *deployment.template.json* in Ihrem neuen Projektmappenarbeitsbereich, und machen Sie den Abschnitt **Module** ausfindig. Nehmen Sie folgende Konfigurationsänderungen vor:
 
-   1. Löschen Sie das Modul **tempSensor**, da er für diese Bereitstellung nicht benötigt wird.
+   1. Löschen Sie das Modul **SimulatedTemperatureSensor**, da es für diese Bereitstellung nicht erforderlich ist.
 
    1. Kopieren Sie den folgenden Code, und fügen Sie ihn in das Feld `createOptions` ein:
 

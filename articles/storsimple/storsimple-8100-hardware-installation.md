@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631168"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963582"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Auspacken, Einbauen und Verkabeln des StorSimple 8100-Geräts
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Übersicht
 Microsoft Azure StorSimple 8100 ist ein Gerät mit einem Gehäuse, das in ein Rack eingebaut wird. In diesem Tutorial wird erläutert, wie die StorSimple 8100-Gerätehardware vor dem Konfigurieren und Bereitstellen des StorSimple-Geräts ausgepackt, in ein Rack eingebaut und verkabelt wird.
 

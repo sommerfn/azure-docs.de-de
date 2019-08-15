@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384779"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882687"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Websuche-API
 
@@ -42,7 +42,7 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code a
 |Deutschland|DE|
 |Hongkong (SAR)|HK|
 |Indien|IN|
-|Indonesien|ID|
+|Indonesien|id|
 |Italien|IT|
 |Japan|JP|
 |Korea|KR|

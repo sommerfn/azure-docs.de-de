@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1fc5e83c2c46a7da2a4b56879a2d596405fd8bee
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718177"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934846"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Haben Sie Fragen? Weitere Informationen finden Sie in den nachfolgenden FAQs.
@@ -137,12 +137,12 @@ Gültige Unterdrückungsregeln:
 
 #### <a name="what-are-recommended-secrets-management-guidelines"></a>Welche Verwaltungsrichtlinien für Geheimnisse werden empfohlen? 
 Es ist zwar hilfreich, hartcodierte Geheimnisse rechtzeitig zu erkennen und die Risiken zu minimieren, aber noch besser, wenn verhindert werden könnte, dass Geheimnisse überhaupt eingecheckt werden. In diesem Zusammenhang hat Microsoft CredScan Code Analyzer als Teil der [Microsoft DevLabs-Erweiterung](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) für Visual Studio veröffentlicht. In der frühen Vorschau bietet er Entwicklern eine Inlineerfahrung, um potenzielle Geheimnisse in ihrem Code zu erkennen und ihnen die Möglichkeit zu geben, diese Probleme in Echtzeit zu beheben. Weitere Informationen finden Sie in [diesem](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/) Blog zum sicheren Verwalten von Geheimnissen in der Cloud. Unten finden Sie einige zusätzliche Ressourcen, mit denen Sie Geheimnisse verwalten und auf sichere Weise in Ihren Anwendungen auf sensible Informationen zugreifen können: 
- - [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
- - [Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+ - [Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
  - [Verwaltete Azure AD-Dienstidentität](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
- - [Verwaltete Azure-Dienstidentität](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
- - [AppAuthentication-Bibliothek](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication)
+ - [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Verwaltete Azure-Dienstidentität](../../app-service/overview-managed-identity.md)
+ - [AppAuthentication-Bibliothek](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Kann ich meine eigenen benutzerdefinierten Suchroutinen schreiben?
 

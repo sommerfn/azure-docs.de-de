@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 98f8ce49e42858c5d8d019905887e7ed24a2459e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3395159e1427fa3d174b62c74c777d2f2ddd4900
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699239"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721677"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -116,13 +116,13 @@ So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen v
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
     * **Rollendefinition** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
 
-<a id="server-endpoint-createjobfailed"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898 oder 0x80c80226)**  
+<a id="-2134375898"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898 oder 0x80c80226)**  
 Dieser Fehler tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume befindet und Cloudtiering aktiviert ist. Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
 
-<a id="server-endpoint-createjobfailed-invalidpath"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2147024894 oder 0x80070002)**  
+<a id="-2147024894"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2147024894 oder 0x80070002)**  
 Dieser Fehler tritt auf, wenn der angegebene Pfad zum Serverendpunkt ungültig ist. Vergewissern Sie sich, dass der angegebene Serverendpunktpfad ein lokal verknüpftes NTFS-Volume ist. Beachten Sie, dass die Azure-Dateisynchronisierung keine zugeordneten Laufwerke als Serverendpunktpfad unterstützt.
 
-<a id="server-endpoint-createjobfailed-compression"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134347507 oder 0x80c8710d)**  
+<a id="-2134347507"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134347507 oder 0x80c8710d)**  
 Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine Serverendpunkte auf Volumes mit einem komprimierten Systemvolumeinformationen-Ordner unterstützt. Dekomprimieren Sie den Ordner „Systemvolumeinformationen“, um dieses Problem zu beheben. Wenn der Ordner „Systemvolumeinformationen“ der einzige komprimierte Ordner auf dem Volume ist, führen Sie die folgenden Schritte aus:
 
 1. Laden Sie das [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)-Tool herunter.
@@ -131,10 +131,13 @@ Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine Serverendpun
     **cd /d „Laufwerkbuchstabe“:\Systemvolumeinformationen“**  
     **compact /u /s**
 
-<a id="server-endpoint-createjobfailed-limitreached"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134376345 oder 0x80C80067)**  
+<a id="-2134376345"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134376345 oder 0x80C80067)**  
 Dieser Fehler tritt auf, wenn das Limit für die Serverendpunkte pro Server erreicht wurde. Die Azure-Dateisynchronisierung unterstützt derzeit bis zu 30 Serverendpunkte pro Server. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für die Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets).
 
-<a id="server-endpoint-deletejobexpired"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“ (Fehlercode: -2134347757 oder 0x80c87013)**  
+<a id="-2134376427"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134376427 oder 0x80c80015)**  
+Dieser Fehler tritt auf, wenn der angegebene Serverendpunktpfad bereits von einem anderen Serverendpunkt synchronisiert wird. Azure-Dateisynchronisierung unterstützt nicht mehrere Serverendpunkte, die dasselbe Verzeichnis oder Volume synchronisieren.
+
+<a id="-2134347757"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“ (Fehlercode: -2134347757 oder 0x80c87013)**  
 Dieser Fehler tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität aufweist. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.
 
 <a id="server-endpoint-provisioningfailed"></a>**Die Seite „Eigenschaften des Serverendpunkts“ kann nicht geöffnet werden, oder die Cloudtiering-Richtlinie kann nicht aktualisiert werden.**  
@@ -560,7 +563,7 @@ Um zu überprüfen, ob das Zertifikat abgelaufen ist, führen Sie die folgenden 
 Wenn das Clientauthentifizierungszertifikat abgelaufen ist, führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Überprüfen Sie, ob die Version 4.0.1.0 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
-2. Führen Sie die folgenden PowerShell-Befehle auf dem Server aus:
+2. Führen Sie dem folgenden PowerShell-Befehl auf dem Server aus:
 
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
@@ -758,9 +761,28 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Laden Sie das [Psexec](https://docs.microsoft.com/sysinternals/downloads/psexec)-Tool herunter.
 2. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus, um eine Eingabeaufforderung unter Verwendung des Systemkontos zu starten: **PsExec.exe -i -s -d cmd** 
-3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das NT AUTHORITY\SYSTEM-Konto keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C**
-4. Wenn das Konto NT-NT AUTHORITY\SYSTEM nicht auf den Ordner „Systemvolumeinformationen“ zugreifen kann, führen Sie den folgenden Befehl aus: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /E /G „NT AUTHORITY\SYSTEM:F“**
-    - Wenn Schritt 4 wegen verweigertem Zugriff fehlschlägt, führen Sie den folgenden Befehl aus, um den Besitz des Ordners „Systemvolumeinformationen“ zu übernehmen, und wiederholen Sie dann Schritt 4: **takeown /A /R /F „Laufwerkbuchstabe:\Systemvolumeinformationen“**
+3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C**.
+4. Wenn das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat, führen Sie den folgenden Befehl aus: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /E /G „NT AUTHORITY\SYSTEM:F“** .
+    - Wenn Schritt 4 aufgrund von verweigertem Zugriff fehlschlägt, führen Sie den folgenden Befehl aus, um den Besitz des Ordners „Systemvolumeinformationen“ zu übernehmen: **takeown /A /R /F „Laufwerkbuchstabe:\Systemvolumeinformationen“** . Wiederholen Sie dann Schritt 4.
+
+<a id="-2134375810"></a>**Fehler bei der Synchronisierung, weil die Azure-Dateifreigabe gelöscht und neu erstellt wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027e |
+| **HRESULT (dezimal)** | -2134375810 |
+| **Fehlerzeichenfolge** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil Azure-Dateisynchronisierung das Löschen und Neuerstellen einer Azure-Dateifreigabe in derselben Synchronisierungsgruppe nicht unterstützt. 
+
+Zur Behebung dieses Problems müssen Sie die Synchronisierungsgruppe löschen und neu erstellen, indem Sie die folgenden Schritte ausführen:
+
+1. Löschen Sie alle Serverendpunkte in der Synchronisierungsgruppe.
+2. Löschen Sie den Cloudendpunkt. 
+3. Löschen Sie die Synchronisierungsgruppe.
+4. Wenn das Cloudtiering auf einem Serverendpunkt aktiviert wurde, löschen Sie die verwaisten mehrstufigen Dateien auf dem Server, indem Sie die Schritte ausführen, die im Abschnitt [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentiert sind.
+5. Erstellen Sie die Synchronisierungsgruppe neu.
 
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  

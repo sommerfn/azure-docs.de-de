@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542812"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854724"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Antwortstruktur und Antworttypen der Bing-Websuche-API  
 
@@ -123,7 +123,7 @@ Die Antwort vom Typ [relatedSearches](https://docs.microsoft.com/rest/api/cognit
 
 Verwenden Sie die Abfragezeichenfolge `displayText` und die URL `webSearchUrl`, um einen Hyperlink zu erstellen, über den der Benutzer zu der Bing-Suchergebnisseite für die verwandte Abfrage geleitet wird. Außerdem können Sie die Abfragezeichenfolge `text` in Ihrer eigenen Abfrage mit der Websuche-API verwenden und die Ergebnisse selbst anzeigen.
 
-Informationen zur Verwendung der Treffermarkierungen in `displayText` finden Sie unter [Treffermarkierung](./hit-highlighting.md).
+Informationen zur Verwendung der Treffermarkierungen in `displayText` finden Sie unter [Treffermarkierung](../bing-web-search/hit-highlighting.md).
 
 Nachfolgend sehen Sie ein Beispiel für die Verwendung verwandter Abfragen in Bing.com.
 

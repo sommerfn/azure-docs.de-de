@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61245101"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016630"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-Community  
 
@@ -56,16 +56,8 @@ Das Team überwacht auch Fragen, die in Stack Overflow mit „azure-media-servic
 
 ## <a name="contact-the-team"></a>Kontaktaufnahme mit dem Team
 
-Die primäre E-Mail-Adresse für den Azure Media Services-Support lautet: **amshelp\@microsoft.com**.
+Die primäre E-Mail-Adresse für Azure Media Services lautet: **amshelp@microsoft.com** .
 
-Die folgende Tabelle enthält die E-Mail-Adressen der Teams der einzelnen Features:
+## <a name="next-steps"></a>Nächste Schritte
 
-| Feature | E-Mail-Adresse |
-| --- | --- |
-| Azure Media Analytics |amsanalytics@microsoft.com |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure Media Explorer |amse@microsoft.com |
-| Workflow-Designer |mepd@microsoft.com |
-| Dateistreaming und Paketerstellung |amsstreaming@microsoft.com |
-| Livestreaming und Paketerstellung |amslived@microsoft.com |
-
+[Übersicht](media-services-overview.md)

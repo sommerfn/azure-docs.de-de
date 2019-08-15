@@ -4,7 +4,7 @@ description: Referenz für die vollständige Lucene-Syntax, die mit Azure Search
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 08/08/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,15 +19,15 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 26935b53d8f852289513a5a7b5d31e3befe3e3b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8e9b737676b2695b7b88430f59b0b0e79bc477a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002247"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883863"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene-Abfragesyntax in Azure Search
-Sie können für Azure Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Search mit `$filter`-Ausdrücken erstellt werden. 
+Sie können für Azure Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Search mit `$filter`-Ausdrücken erstellt werden. 
 
 ## <a name="how-to-invoke-full-parsing"></a>Aufrufen der vollständigen Analyse
 
@@ -136,7 +136,7 @@ Das in `fieldName:searchExpression` angegebene Feld muss ein Feld vom Typ `searc
 > Bei der Verwendung von feldbezogenen Suchausdrücken brauchen Sie den Parameter `searchFields` nicht zu verwenden, da in jedem feldbezogenen Suchausdruck explizit ein Feldname angegeben ist. Allerdings können Sie den Parameter `searchFields` trotzdem verwenden, wenn Sie eine Abfrage ausführen möchten, bei der einige Teile auf ein bestimmtes Feld beschränkt sind, der Rest sich jedoch auf mehrere Felder beziehen kann. Zum Beispiel würde `jazz` in der Abfrage `search=genre:jazz NOT history&searchFields=description` nur mit dem Feld `genre`, und `NOT history` mit dem Feld `description` abgeglichen werden. Der in `fieldName:searchExpression` angegebene Feldname hat immer Vorrang vor dem Parameter `searchFields`, weshalb `genre` in diesem Beispiel nicht in den Parameter `searchFields` aufgenommen werden muss.
 
 ##  <a name="bkmk_fuzzy"></a> Fuzzysuche  
- Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Durch eine Fuzzysuche kann ein Begriff auf bis zu 50 Begriffe erweitert werden, die den Distanzkriterien entsprechen. 
+ Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Durch eine Fuzzysuche kann ein Begriff auf bis zu 50 Begriffe erweitert werden, die den Distanzkriterien entsprechen. 
 
  Verwenden Sie für eine Fuzzysuche das Tildezeichen „~“ am Ende eines einzelnen Worts mit einem optionalen Parameter, einer Zahl zwischen 0 und 2 (Standardwert), der die Edit-Distanz angibt. Beispielsweise würden bei „blue~“ oder „blue~1“ die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
@@ -155,7 +155,7 @@ Im folgenden Beispiel werden die Unterschiede veranschaulicht. Angenommen, Sie h
  Verwenden Sie zum Verstärken eines Begriffs das Caretzeichen „^“ mit einem Verstärkungsfaktor (einer Zahl) am Ende des Begriffs, nach dem Sie suchen. Sie können auch Ausdrücke verstärken. Je höher der Verstärkungsfaktor, desto relevanter wird der Begriff im Verhältnis zu anderen Suchbegriffen. Der Standardverstärkungsfaktor ist 1. Der Verstärkungsfaktor muss positiv sein, kann aber kleiner als 1 sein (z. B. 0.20).  
 
 ##  <a name="bkmk_regex"></a> Suche mit regulären Ausdrücken  
- Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.  
+ Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.  
 
  Geben Sie beispielsweise `/[mh]otel/` an, um nach Dokumenten zu suchen, die das Wort „motel“ oder „hotel“ enthalten.  Suchen mit regulären Ausdrücken werden mit einzelnen Wörtern abgeglichen.   
 

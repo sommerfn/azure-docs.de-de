@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711457"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966920"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -231,80 +231,6 @@ Legen Sie zum Kopieren von Daten in ODBC-kompatible Datenspeicher den Senkentyp 
     }
 ]
 ```
-
-## <a name="ibm-informix-source"></a>IBM Informix-Quelle
-
-Mit dem generischen ODBC-Connector können Sie Daten von IBM Informix-Datenbanken kopieren.
-
-Richten Sie eine selbstgehostete Integrationslaufzeit auf einem Computer mit Zugriff auf Ihren Datenspeicher ein. Die Integrationslaufzeit verwendet den ODBC-Treiber für Informix, um eine Verbindung mit dem Datenspeicher herzustellen. Installieren Sie also den Treiber, falls dieser noch nicht auf demselben Computer installiert ist. Beispielsweise können Sie den Treiber „IBM INFORMIX ODBC DRIVER (64-bit)“ verwenden. Details finden Sie im Abschnitt [Voraussetzungen](#prerequisites).
-
-Bevor Sie die Informix-Quelle in einer Data Factory-Lösung verwenden können, überprüfen Sie anhand der Anweisungen im Abschnitt [Behandeln von Konnektivitätsproblemen](#troubleshoot-connectivity-issues), ob die Integrationslaufzeit eine Verbindung mit dem Datenspeicher herstellen kann.
-
-Erstellen Sie einen über die ODBC verknüpften Dienst, um einen IBM Informix-Datenspeicher mit Azure Data Factory zu verknüpfen, wie im folgenden Beispiel gezeigt:
-
-```json
-{
-    "name": "InformixLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<Informix connection string or DSN>"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Verwendung von ODBC-Datenspeichern als Quell-/Senkendatenspeicher in einem Kopiervorgang zu erhalten.
-
-## <a name="microsoft-access-source"></a>Microsoft Access-Quelle
-
-Mit dem generischen ODBC-Connector können Sie Daten von Microsoft Access-Datenbanken kopieren.
-
-Richten Sie eine selbstgehostete Integrationslaufzeit auf einem Computer mit Zugriff auf Ihren Datenspeicher ein. Die Integrationslaufzeit verwendet den ODBC-Treiber für Microsoft Access, um eine Verbindung mit dem Datenspeicher herzustellen. Installieren Sie also den Treiber, falls dieser noch nicht auf demselben Computer installiert ist. Details finden Sie im Abschnitt [Voraussetzungen](#prerequisites).
-
-Bevor Sie die Microsoft Access-Quelle in einer Data Factory-Lösung verwenden können, überprüfen Sie anhand der Anweisungen im Abschnitt [Behandeln von Konnektivitätsproblemen](#troubleshoot-connectivity-issues), ob die Integrationslaufzeit eine Verbindung mit dem Datenspeicher herstellen kann.
-
-Erstellen Sie einen über die ODBC verknüpften Dienst, um eine Microsoft Access-Datenbank mit Azure Data Factory zu verknüpfen, wie im folgenden Beispiel zu sehen ist:
-
-```json
-{
-    "name": "MicrosoftAccessLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Verwendung von ODBC-Datenspeichern als Quell-/Senkendatenspeicher in einem Kopiervorgang zu erhalten.
 
 ## <a name="sap-hana-sink"></a>SAP HANA-Senke
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463388"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015290"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Wiedergabe Ihrer Inhalte mit vorhandenen Playern
 Azure Media Services unterstützt zahlreiche gängige Streamingformate wie Smooth Streaming, HTTP Live Streaming und MPEG-Dash. In diesem Thema finden Sie Verweise auf vorhandene Player, die Sie zum Testen von Datenströmen verwenden können.
@@ -31,12 +31,13 @@ Klicken Sie auf den gewünschten Videoinhalt (vergewissern Sie sich, dass er [ve
 
 Folgende Überlegungen sollten berücksichtigt werden:
 
-* Der **MEDIA SERVICES-INHALTSPLAYER** gibt die Inhalt vom standardmäßigen Streamingendpunkt wieder. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, verwenden Sie einen anderen Player. Beispiel: [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Der **MEDIA SERVICES-INHALTSPLAYER** gibt die Inhalt vom standardmäßigen Streamingendpunkt wieder. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, verwenden Sie einen anderen Player. Beispiel: [Azure Media Player](https://aka.ms/azuremediaplayer).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-Verwenden Sie [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) zum Wiedergeben Ihrer Inhalte (offen oder geschützt) in den folgenden Formaten:
+
+Verwenden Sie [Azure Media Player](https://aka.ms/azuremediaplayer) zum Wiedergeben Ihrer Inhalte (offen oder geschützt) in den folgenden Formaten:
 
 * Smooth Streaming
 * MPEG DASH
@@ -44,15 +45,17 @@ Verwenden Sie [Azure Media Player](https://amsplayer.azurewebsites.net/azuremedi
 * Progressive MP4
 
 ### <a name="flash-player"></a>Flash Player
+
 #### <a name="aes-encrypted-with-token"></a>AES-verschlüsselt mit Token
+
 [https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
-### <a name="silverlight-players"></a>Silverlight-Player
-
 #### <a name="playready-with-token"></a>PlayReady mit Token
+
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>DASH-Player
+
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)

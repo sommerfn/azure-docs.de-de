@@ -1,21 +1,19 @@
 ---
 title: Erfassen von Protokollen und Metrikdaten mithilfe der Azure-Speicheranalyse | Microsoft-Dokumentation
 description: Mit der Speicheranalyse können Sie Metrikdaten für alle Speicherdienste nachverfolgen und Protokolle für Blob-, Warteschlangen- und Tabellenspeicher erfassen.
-services: storage
 author: normesta
 ms.service: storage
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e812bf03bf2adb852becf56954e7039aa3eb0633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 04206a45a3322a1b0d28e3dfeed65225773e9038
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565899"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844841"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 

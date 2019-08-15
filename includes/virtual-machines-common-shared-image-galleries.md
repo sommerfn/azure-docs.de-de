@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775876"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012130"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -73,7 +73,7 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
-Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/
+Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | Quellregionen |
@@ -179,7 +179,7 @@ Die folgenden SDKs unterstützen das Erstellen von Katalogen mit freigegebenen I
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/go/azure/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>Vorlagen
 

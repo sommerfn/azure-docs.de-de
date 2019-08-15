@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbab92c85e5791e43e9d7f60de975c27a77c62d3
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606257"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013802"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>.NET-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 
@@ -27,7 +27,7 @@ ms.locfileid: "65606257"
 |   |   |
 |---|---|
 |**SDK-Download**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**API-Dokumentation**|[.NET API-Referenzdokumentation](https://aka.ms/acdbtableapiref)|
+|**API-Dokumentation**|[.NET API-Referenzdokumentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table?view=azure-dotnet)|
 |**Schnellstart**|[Azure Cosmos DB: Erstellen einer App mit .NET und der Tabellen-API](create-table-dotnet.md)|
 |**Tutorial**|[Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET](tutorial-develop-table-dotnet.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
@@ -86,13 +86,13 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |22\. Januar 2019|01\. April 2020 |
-| [2.0.0](#2.0.0) |26\. September 2018|01\. März 2020 |
-| [1.1.3](#1.1.3) |17\. Juli 2018|01\. Dezember 2019 |
-| [1.1.1](#1.1.1) |26\. März 2018|01\. Dezember 2019 |
-| [1.1.0](#1.1.0) |21\. Februar 2018|01\. Dezember 2019 |
-| [1.0.0](#1.0.0) |15\. November 2017|15\. November 2019 |
-| 0.9.0-preview |11\. November 2017 |11\. November 2019 |
+| [2.1.0](#2.1.0) |22. Januar 2019|01. April 2020 |
+| [2.0.0](#2.0.0) |26. September 2018|01. März 2020 |
+| [1.1.3](#1.1.3) |17. Juli 2018|01. Dezember 2019 |
+| [1.1.1](#1.1.1) |26. März 2018|01. Dezember 2019 |
+| [1.1.0](#1.1.0) |21. Februar 2018|01. Dezember 2019 |
+| [1.0.0](#1.0.0) |15. November 2017|15. November 2019 |
+| 0.9.0-preview |11. November 2017 |11. November 2019 |
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

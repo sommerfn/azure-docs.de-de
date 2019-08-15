@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514979"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68948874"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -57,7 +57,7 @@ Diese Berichterstellung ist nur für den MFA-Server (lokal) verfügbar. Lesen Si
 
 ## <a name="block-and-unblock-users"></a>Benutzer sperren/zulassen
 
-Verwenden Sie das Feature _Benutzer sperren/zulassen_ , um zu verhindern, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
+Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
@@ -77,7 +77,7 @@ Verwenden Sie das Feature _Benutzer sperren/zulassen_ , um zu verhindern, dass B
 
 ## <a name="fraud-alert"></a>Betrugswarnung
 
-Konfigurieren Sie das Feature _Betrugswarnung_ , damit Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. Benutzer können betrügerische Versuche mit der mobilen App oder per Telefon melden.
+Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. Benutzer können betrügerische Versuche mit der mobilen App oder per Telefon melden.
 
 ### <a name="turn-on-fraud-alerts"></a>Aktivieren von Betrugswarnungen
 
@@ -389,14 +389,13 @@ Das Feature _Multi-Factor Authentication speichern_ für Geräte und Browser, di
 >[!IMPORTANT]
 >Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie die [Multi-Factor Authentication auf allen Geräten wiederherstellen](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted) wiederherzustellen.
->
+>Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) wiederherzustellen.
 
 ### <a name="how-the-feature-works"></a>Funktionsweise des Features
 
 Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanentes Cookie im Browser festgelegt, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt. Der Benutzer wird von diesem Browser bis zum Ablauf des Cookies nicht erneut zur Multi-Factor Authentication aufgefordert. Wenn der Benutzer einen anderen Browser auf dem gleichen Gerät öffnet oder seine Cookies löscht, wird er wieder zur Überprüfung aufgefordert.
 
-Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_ , die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
+Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
 
 Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
 

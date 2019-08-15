@@ -1,19 +1,18 @@
 ---
 title: Übertragen von Daten nach oder aus Azure Files mithilfe von AzCopy v10 | Microsoft-Dokumentation
 description: Übertragen von Daten mit AzCopy und Dateispeicher.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 69d7136396c3d989e63b8956d3e703cc7f9666c8
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: eeac35cb96f5001e9ad318d8fe03927d0cd9394e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687935"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844818"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Übertragen von Daten mit AzCopy und Dateispeicher 
 

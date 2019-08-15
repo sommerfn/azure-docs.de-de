@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: dcba2b40bdcf4558f7a06f7e14d0ce654a9c1ec1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876080"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013639"
 ---
 # <a name="private-offers"></a>Private Angebote
 
@@ -49,9 +49,6 @@ Private Angebote sind nur über das [Azure-Portal](https://azure.microsoft.com/f
 ![[Private Angebote]](./media/marketplace-publishers-guide/private-offer.png)
 
 Private Angebote werden auch in Suchergebnissen angezeigt. Achten Sie auf das Badge „Privat“.
-
-> [!Note]
-> Private Angebote werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

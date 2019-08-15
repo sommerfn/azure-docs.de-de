@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a24bba0786201f4ea1d1be431107f7bfe26a2a8f
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 884824b6f6fd8bf5b4c7730813c4363fae018375
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461719"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950573"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Überwachen der Azure Database for MySQL-Leistung mit dem Abfragespeicher
 
 **Gilt für:**  Azure Database for MySQL 5.7
 
-> [!NOTE]
+> [!IMPORTANT]
 > Der Abfragespeicher befindet sich in der Vorschauphase.
 
 Das Feature „Abfragespeicher“ in Azure Database for MySQL verfügt über eine Möglichkeit zum Nachverfolgen der Abfrageleistung im Zeitverlauf. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in der Schemadatenbank **mysql** der Azure Database for MySQL-Instanz gespeichert.
@@ -32,19 +32,19 @@ Der Abfragespeicher kann in unterschiedlichen Szenarien genutzt werden, z. B.:
 
 ## <a name="enabling-query-store"></a>Aktivieren des Abfragespeichers
 
-Der Abfragespeicher ist ein optionales Feature. Daher ist er auf einem Server nicht standardmäßig aktiviert. Der Abfragespeicher wird global für alle Datenbanken auf einem bestimmten Server aktiviert oder deaktiviert. Ein Aktivieren oder Deaktivieren für einzelne Datenbanken ist nicht möglich.
+Der Abfragespeicher ist ein optionales Feature. Daher ist er auf einem Server nicht standardmäßig aktiviert. Der Abfragespeicher wird global für alle Datenbanken auf einem bestimmten Server aktiviert oder deaktiviert. Eine Aktivierung oder Deaktivierung für einzelne Datenbanken ist nicht möglich.
 
 ### <a name="enable-query-store-using-the-azure-portal"></a>Aktivieren des Abfragespeichers über das Azure-Portal
 
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie Ihren Azure Database for MySQL-Server aus.
 1. Wählen Sie im Abschnitt **Einstellungen** des Menüs die Option **Serverparameter**.
 1. Suchen Sie nach dem Parameter „query_store_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern**.
+1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
 
 So aktivieren Sie Wartestatistiken in Ihrem Abfragespeicher:
 
 1. Suchen Sie nach dem Parameter „query_store_wait_sampling_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern**.
+1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
 
 Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Datenbank gespeichert ist.
 
@@ -52,10 +52,10 @@ Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Da
 
 Der Abfragespeicher verfügt über zwei Speicher:
 
-- Ein Speicher für Laufzeitstatistiken zum Aufbewahren der Informationen aus den Abfragespeicherstatistiken.
-- Ein Speicher für Wartestatistiken zum Aufbewahren der Informationen aus den Wartestatistiken.
+- Einen Laufzeitstatistikspeicher zur Aufbewahrung der Statistikinformationen im Zusammenhang mit der Abfrageausführung
+- Einen Wartestatistikspeicher zur Aufbewahrung von Wartestatistikinformationen
 
-Um die Speicherverwendung zu minimieren, werden die Laufzeit-Ausführungsstatistiken im Speicher für Laufzeitstatistiken für ein festes, konfigurierbares Zeitfenster zusammengefasst. Die Informationen in diesem Speicher können durch Abfragen der Abfragespeicheransichten angezeigt werden.
+Um die Speicherverwendung zu minimieren, wird die Laufzeitausführungsstatistik im Laufzeitstatistikspeicher für ein festes, konfigurierbares Zeitfenster aggregiert. Die Informationen in diesem Speicher können durch Abfragen der Abfragespeicheransichten angezeigt werden.
 
 Die folgende Abfrage gibt Informationen über Abfragen im Abfragespeicher zurück:
 
@@ -63,7 +63,7 @@ Die folgende Abfrage gibt Informationen über Abfragen im Abfragespeicher zurüc
 SELECT * FROM mysql.query_store;
 ```
 
-Diese Abfrage gibt Informationen über Wartestatistiken zurück:
+Die folgende Abfrage wird für die Wartestatistik verwendet:
 
 ```sql
 SELECT * FROM mysql.query_store_wait_stats;
@@ -89,17 +89,17 @@ Die folgenden Optionen stehen für die Konfiguration der Abfragespeicherparamete
 
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich** |
 |---|---|---|---|
-| query_store_capture_mode | Schaltet die Abfragespeicherfunktion basierend auf dem Wert EIN oder AUS. Hinweis: Wenn das Leistungsschema auf AUS festgelegt ist, werden durch das Aktivieren von „query_store_capture_mode“ das „performance_schema“ und ein Teil der Leistungsschemainstrumente aktiviert, die für dieses Feature benötigt werden. | ALL | NONE, ALL |
-| query_store_capture_interval | Das Erfassungsintervall des Abfragespeichers in Minuten. Ermöglicht das Angeben des Intervalls, nach dem die Abfragemetriken aggregiert werden. | 15 | 5 - 60 |
-| query_store_capture_utility_queries | Kann auf EIN oder AUS festgelegt werden, um die Erfassung aller Hilfsabfragen, die im System ausgeführt werden, zu aktivieren oder zu deaktivieren. | NO | JA, NEIN |
+| query_store_capture_mode | Schaltet die Abfragespeicherfunktion basierend auf dem Wert ein oder aus. Hinweis: Bei ausgeschaltetem Leistungsschema (performance_schema) werden durch Aktivieren von „query_store_capture_mode“ das Leistungsschema und ein Teil der Leistungsschemainstrumente aktiviert, die für dieses Feature benötigt werden. | ALL | NONE, ALL |
+| query_store_capture_interval | Das Erfassungsintervall des Abfragespeichers in Minuten. Ermöglicht das Angeben des Intervalls, nach dem die Abfragemetriken aggregiert werden. | 15 | 5–60 |
+| query_store_capture_utility_queries | Kann ein- oder ausgeschaltet werden, um die Erfassung aller Hilfsabfragen, die im System ausgeführt werden, zu aktivieren oder zu deaktivieren. | NO | YES, NO |
 | query_store_retention_period_in_days | Zeitfenster in Tagen für die Aufbewahrung der Daten im Abfragespeicher. | 7 | 1 – 30 |
 
 Die folgenden Optionen gelten speziell für Wartestatistiken.
 
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Ermöglicht das Festlegen der Wartestatistiken auf EIN oder AUS. | KEINE | NONE, ALL |
-| query_store_wait_sampling_frequency | Ändert die Frequenz der Stichprobenentnahme für Wartezeiten in Sekunden. Der Bereich beträgt 5 bis 300 Sekunden. | 30 | 5 - 300 |
+| query_store_wait_sampling_capture_mode | Ermöglicht das Ein-/Ausschalten der Wartestatistik. | KEINE | NONE, ALL |
+| query_store_wait_sampling_frequency | Ändert die Frequenz der Stichprobenentnahme für Wartezeiten in Sekunden. Möglicher Bereich: zwischen fünf und 300 Sekunden. | 30 | 5–300 |
 
 > [!NOTE]
 > Derzeit wird diese Konfiguration durch **query_store_capture_mode** ersetzt. Dies bedeutet, dass sowohl **query_store_capture_mode** als auch **query_store_wait_sampling_capture_mode** für „ALL“ aktiviert sein muss, damit Wartestatistiken funktionieren. Wenn **query_store_capture_mode** deaktiviert ist, sind auch die Wartestatistiken deaktiviert. Der Grund ist, dass für Wartestatistiken die Aktivierung von „performance_schema“ und der vom Abfragespeicher erfasste „query_text“ verwendet werden.
@@ -112,7 +112,7 @@ Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher 
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 
-### <a name="mysqlquerystore"></a>mysql.query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und Abfrage-ID.
 
@@ -120,10 +120,10 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 |---|---|---|---|
 | `schema_name`| varchar(64) | NO | Name des Schemas |
 | `query_id`| bigint(20) | NO| Eindeutige ID, die für die spezifische Abfrage generiert wird. Wenn die gleiche Abfrage in einem anderen Schema ausgeführt wird, wird eine neue ID generiert. |
-| `timestamp_id` | timestamp| NO| Der Zeitstempel für die Ausführung der Abfrage. Er basiert auf der Konfiguration von „query_store_interval“.|
+| `timestamp_id` | timestamp| NO| Zeitstempel für die Ausführung der Abfrage. Dieser Wert basiert auf der Konfiguration von „query_store_interval“.|
 | `query_digest_text`| longtext| NO| Der normalisierte Abfragetext nach dem Entfernen aller Literale.|
 | `query_sample_text` | longtext| NO| Erste Darstellung der eigentlichen Abfrage mit Literalen.|
-| `query_digest_truncated` | bit| JA| Gibt an, ob der Abfragetext abgeschnitten wurde. Der Wert lautet „Ja“, wenn die Abfrage länger als 1 KB ist.|
+| `query_digest_truncated` | bit| JA| Gibt an, ob der Abfragetext gekürzt wurde. Der Wert lautet „YES“, wenn die Abfrage länger als 1 KB ist.|
 | `execution_count` | bigint(20)| NO| Gibt an, wie oft die Abfrage für diese Zeitstempel-ID bzw. während des konfigurierten Intervallzeitraums ausgeführt wurde.|
 | `warning_count` | bigint(20)| NO| Anzahl von Warnungen, die von dieser Abfrage während des Intervalls generiert wurden.|
 | `error_count` | bigint(20)| NO| Anzahl von Fehlern, die von dieser Abfrage während des Intervalls generiert wurden.|
@@ -138,21 +138,21 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 | `sum_select_full_join` | bigint(20)| NO| Anzahl von vollständigen Verknüpfungen.|
 | `sum_select_scan` | bigint(20)| NO| Anzahl für Scanauswahl. |
 | `sum_sort_rows` | bigint(20)| NO| Anzahl sortierter Zeilen.|
-| `sum_no_index_used` | bigint(20)| NO| Anzahl, die angibt, wie häufig von der Abfrage keine Indizes verwendet wurden.|
-| `sum_no_good_index_used` | bigint(20)| NO| Anzahl, die angibt, wie häufig das Modul für die Abfrageausführung keine guten Indizes verwendet hat.|
+| `sum_no_index_used` | bigint(20)| NO| Anzahl der Fälle, in denen von der Abfrage keine Indizes verwendet wurden.|
+| `sum_no_good_index_used` | bigint(20)| NO| Anzahl der Fälle, in denen die Abfrageausführungs-Engine keine guten Indizes verwendet hat.|
 | `sum_created_tmp_tables` | bigint(20)| NO| Gesamtzahl erstellter temporärer Tabellen.|
-| `sum_created_tmp_disk_tables` | bigint(20)| NO| Gesamtzahl temporärer Tabellen, die auf dem Datenträger erstellt werden (E/A-Generierung).|
+| `sum_created_tmp_disk_tables` | bigint(20)| NO| Gesamtzahl temporärer Tabellen, die auf dem Datenträger erstellt wurden (E/A-Generierung).|
 | `first_seen` | timestamp| NO| Erstes Auftreten der Abfrage (UTC) während des Aggregationsfensters.|
 | `last_seen` | timestamp| NO| Letztes Auftreten der Abfrage (UTC) während dieses Aggregationsfensters.|
 
-### <a name="mysqlquerystorewaitstats"></a>mysql.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und jedes Ereignis.
 
 | **Name**| **Datentyp** | **IS_NULLABLE** | **Beschreibung** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Start des Intervalls (15-Minuten-Inkrement)|
-| `interval_end` | timestamp | NO| Ende des Intervalls (15-Minuten-Inkrement)|
+| `interval_start` | timestamp | NO| Start des Intervalls (15-Minuten-Inkrement).|
+| `interval_end` | timestamp | NO| Ende des Intervalls (15-Minuten-Inkrement).|
 | `query_id` | bigint(20) | NO| Generierte eindeutige ID in der normalisierten Abfrage (aus Abfragespeicher).|
 | `query_digest_id` | varchar(32) | NO| Der normalisierte Abfragetext nach dem Entfernen aller Literale (aus dem Abfragespeicher). |
 | `query_digest_text` | longtext | NO| Erste Darstellung der eigentlichen Abfrage mit Literalen (aus dem Abfragespeicher). |
@@ -165,17 +165,17 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 
 | **Name**| **Beschreibung** |
 |---|---|
-| `mysql.az_purge_querystore_data(TIMESTAMP)` | Löscht alle Abfragespeicherdaten vor dem angegebenen Zeitstempel |
-| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Löscht alle Warteereignisdaten vor dem angegebenen Zeitstempel |
-| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Löscht Empfehlungen, die vor dem angegebenen Zeitstempel ablaufen |
+| `mysql.az_purge_querystore_data(TIMESTAMP)` | Löscht alle Abfragespeicherdaten vor dem angegebenen Zeitstempel. |
+| `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Löscht alle Warteereignisdaten vor dem angegebenen Zeitstempel. |
+| `mysql.az_procedure_purge_recommendation(TIMESTAMP)` | Löscht Empfehlungen, die vor dem angegebenen Zeitstempel ablaufen. |
 
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 
 - Wenn für einen MySQL-Server der Parameter `default_transaction_read_only` aktiviert ist, kann der Abfragespeicher keine Daten erfassen.
 - Die Abfragespeicherfunktionalität kann unterbrochen werden, wenn lange Unicodeabfragen (\>= 6.000 Byte) festgestellt werden.
 - Der Aufbewahrungszeitraum für Wartestatistiken beträgt 24 Stunden.
-- Für Wartestatistiken werden Stichproben verwendet, um einen Bruchteil der Ereignisse zu erfassen. Die Häufigkeit kann mit dem Parameter `query_store_wait_sampling_frequency` geändert werden.
+- Für Wartestatistiken werden Stichproben verwendet, um einen Teil der Ereignisse zu erfassen. Die Häufigkeit kann mit dem Parameter `query_store_wait_sampling_frequency` geändert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Query Performance Insight](concepts-query-performance-insight.md).
+- Weitere Informationen finden Sie unter [Query Performance Insight in Azure Database for MariaDB](concepts-query-performance-insight.md).

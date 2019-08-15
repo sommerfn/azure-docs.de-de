@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640053"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935039"
 ---
 In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenbank für Azure SQL-Datenbank.
 
@@ -19,7 +19,7 @@ In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenban
 >
 > Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Datenbankebene](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für Ihren Computer ermitteln, finden Sie unter [Erstellen einer Firewall auf Serverebene](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="azure-portaltabazure-portal"></a>[Azure-Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Portal.
 
@@ -75,7 +75,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
 
 9. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,7 +141,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
    $database
    ```
 
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
 

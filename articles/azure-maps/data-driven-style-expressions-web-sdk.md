@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60904982"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839456"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -43,6 +43,7 @@ Das Azure Maps Web SDK unterstützt viele Arten von Ausdrücken, die allein oder
 
 | Art der Ausdrücke | BESCHREIBUNG |
 |---------------------|-------------|
+| [Aggregatausdruck](#aggregate-expression) | Ein Ausdruck zum Definieren einer Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. |
 | [Boolesche Ausdrücke](#boolean-expressions) | Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten. |
 | [Farbausdrücke](#color-expressions) | Farbausdrücke erleichtern Ihnen das Erstellen und Bearbeiten von Farbwerten. |
 | [Bedingte Ausdrücke](#conditional-expressions) | Bei bedingten Ausdrücken werden logische Vorgänge bereitgestellt, die sich wie if-Anweisungen verhalten. |
@@ -165,6 +166,27 @@ Bei mathematischen Ausdrücken werden mathematische Operatoren bereitgestellt, u
 | `['sin', number]` | number | Berechnet den Sinus der angegebenen Zahl. |
 | `['sqrt', number]` | number | Berechnet die Quadratwurzel der angegebenen Zahl. |
 | `['tan', number]` | number | Berechnet den Tangens der angegebenen Zahl. |
+
+## <a name="aggregate-expression"></a>Aggregatausdruck
+
+Ein Aggregatausdruck definiert eine Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. Die Ausgabe dieser Ausdrücke muss eine Zahl oder ein boolescher Wert sein. 
+
+Ein Aggregatausdruck verwendet drei Werte: einen Operatorwert, einen Anfangswert und einen Ausdruck zum Abrufen einer Eigenschaft aus jedem Feature in dem Dataset, auf das der Aggregatvorgang angewendet werden soll. Dieser Ausdruck hat folgendes Format:
+
+```javascript
+[operator: string, initialValue: boolean | number, mapExpression: Expression]
+```
+
+- Operator: Eine Ausdrucksfunktion, die dann auf alle Werte angewendet wird, die von `mapExpression` für jeden Punkt im Cluster berechnet werden. Unterstützte Operatoren: 
+    - Bei Zahlen: `+`, `*`, `max`, `min`
+    - Bei booleschen Werten: `all`, `any`
+- initialValue: Ein Anfangswert, mit dem der erste berechnete Wert aggregiert wird.
+- mapExpression: Ein Ausdruck, der auf jeden Punkt im Dataset angewendet wird.
+
+**Beispiele**
+
+Wenn alle Funktionen in einem Dataset eine `revenue`-Eigenschaft haben, die eine Zahl ist. Der Gesamtumsatz aller Punkte in einem Cluster, der aus dem Dataset erstellt wurde, kann mithilfe des folgenden Aggregatausdrucks berechnet werden: `['+', 0, ['get', 'revenue']]`
+
 ## <a name="boolean-expressions"></a>Boolesche Ausdrücke
 
 Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten.

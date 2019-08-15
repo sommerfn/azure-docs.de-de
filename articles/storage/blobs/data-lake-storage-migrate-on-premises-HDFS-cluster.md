@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Azure Data Box zum Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
 description: Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
-services: storage
 author: normesta
 ms.service: storage
 ms.date: 06/11/2019
 ms.author: normesta
-ms.topic: article
+ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4445a8566c04d30cfb8743cbd33623f2e23f0dde
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.reviewer: jamesbak
+ms.openlocfilehash: ff23b27b73918734e10a481cbe9b1f77519b8764
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595399"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847261"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Verwenden von Azure Data Box zum Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
 

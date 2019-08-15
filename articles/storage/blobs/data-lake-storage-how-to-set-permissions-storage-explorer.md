@@ -1,20 +1,19 @@
 ---
 title: Festlegen von Berechtigungen für Data Lake Storage Gen2 mit Azure Storage-Explorer
 description: In dieser Anleitung erfahren Sie, wie Sie mit dem Azure Storage-Explorer Berechtigungen für Dateien und Verzeichnisse in Ihrem Azure Data Lake Storage Gen2-fähigen Speicherkonto festlegen.
-services: storage
 author: normesta
-ms.custom: mvc
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: normesta
-ms.openlocfilehash: 5f0211765c96cad668abaad7d42da87ec88298c3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.reviewer: stewu
+ms.openlocfilehash: 530e37400881ace2de603aed6875ed236e45f2c7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939306"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847423"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2
 
@@ -43,7 +42,7 @@ Um einen neuen Benutzer oder eine Gruppe zur Zugriffssteuerungsliste hinzuzufüg
 
 Geben Sie den entsprechenden Azure Active Directory (AAD)-Eintrag ein, den Sie zur Liste hinzufügen möchten, und wählen Sie dann **Hinzufügen**.
 
-Der Benutzer oder die Gruppe erscheint nun im Feld **Benutzer und Gruppen:**, sodass Sie mit der Verwaltung ihrer Berechtigungen beginnen können.
+Der Benutzer oder die Gruppe erscheint nun im Feld **Benutzer und Gruppen:** , sodass Sie mit der Verwaltung ihrer Berechtigungen beginnen können.
 
 > [!NOTE]
 > Es ist eine Best Practice und es wird empfohlen, eine Sicherheitsgruppe in AAD zu erstellen und die Berechtigungen für die Gruppe und nicht für einzelne Benutzer zu verwalten. Einzelheiten zu dieser Empfehlung sowie zu anderen Best Practices finden Sie unter [Best Practices für Data Lake Storage Gen2](data-lake-storage-best-practices.md).

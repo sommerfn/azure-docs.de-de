@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: bdbd45c2b10dec8f1c0a85110747a470e818dbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015608"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827391"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration von klassischen Warnungsregeln
 
@@ -52,7 +52,7 @@ Mithilfe der folgenden Tabelle können Sie die Felder für die Webhooknutzlast i
 | Beschreibung der Warnungsregel | **context.description** | **data.context.description** |
 | Warnungsregelbedingung | **context.condition** | **data.context.condition** |
 | Metrikname | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| Zeitaggregation (wie die Metrik im Auswertungsfenster aggregiert wird)| **data.context.condition.timeAggregation** | **data.context.condition.timeAggregation** |
+| Zeitaggregation (wie die Metrik im Auswertungsfenster aggregiert wird)| **context.condition.timeAggregation** | **context.condition.timeAggregation** |
 | Auswertungszeitraum | **context.condition.windowSize** | **data.context.condition.windowSize** |
 | Operator (Vergleich des aggregierten Metrikwerts mit dem Schwellenwert) | **context.condition.operator** | **data.context.condition.operator** |
 | Schwellenwert | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |

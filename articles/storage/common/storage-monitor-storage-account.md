@@ -1,20 +1,19 @@
 ---
 title: Überwachen eines Azure Storage-Kontos | Microsoft-Dokumentation
 description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153634"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844918"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 

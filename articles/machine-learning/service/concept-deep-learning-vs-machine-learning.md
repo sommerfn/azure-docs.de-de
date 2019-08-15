@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700154"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840539"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Einführung: Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -43,9 +43,9 @@ Nachdem Sie sich einen Überblick über das maschinelle Lernen und Deep Learning
 
 In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 
-| |Machine Learning |Deep Learning|
+| |Vollständig Machine Learning |Nur Deep Learning|
 |---|---|---|
-|  **Anzahl von Datenpunkten** | Kann kleine Datenmengen verwenden, die von Benutzern bereitgestellt werden. | Erfordert eine große Menge nicht bezeichneter Trainingsdaten, um präzise Schlussfolgerungen zu treffen. |
+|  **Anzahl von Datenpunkten** | Kann kleine Datenmengen verwenden, die von Benutzern bereitgestellt werden. | Erfordert eine große Menge Trainingsdaten, um präzise Schlussfolgerungen zu treffen. |
 |  **Hardwareabhängigkeiten** | Kann auf Low-End-Computern ausgeführt werden. Erfordert keine hohe Rechenleistung. | Hängt von High-End-Computern ab. Grundsätzlich wird eine große Zahl von Matrixmultiplikationsvorgängen durchgeführt. Diese Vorgänge können mithilfe einer GPU effizient optimiert werden. |
 |  **Featurebereitstellung** | Feature müssen von Benutzern genau identifiziert und erstellt werden. | Lernt allgemeine Features von Daten und erstellt selbstständig neue Merkmale. |
 |  **Lernansatz** | Unterteilt Aufgaben in kleine Teile und kombiniert empfangene Ergebnisse zu einer Schlussfolgerung. | Löst das Problem durchgängig. |

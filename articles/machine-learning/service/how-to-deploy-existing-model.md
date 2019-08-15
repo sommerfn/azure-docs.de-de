@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694381"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847990"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning Service
 
@@ -32,14 +32,14 @@ Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](setup-create-workspace.md).
+* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
 
     > [!TIP]
     > Die Python-Beispiele in diesem Artikel gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning Service-Arbeitsbereich festgelegt ist.
     >
     > Die CLI-Beispiele verwenden einen Platzhalter von `myworkspace` und `myresourcegroup`. Ersetzen Sie diese durch den Namen Ihres Arbeitsbereichs und die Ressourcengruppe, die ihn enthält.
 
-* Azure Machine Learning SDK. Weitere Informationen finden Sie im Abschnitt zum Python SDK des Artikels zum [Erstellen eines Arbeitsbereichs](setup-create-workspace.md#sdk).
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und die [Machine Learning-CLI-Erweiterung](reference-azure-machine-learning-cli.md).
 

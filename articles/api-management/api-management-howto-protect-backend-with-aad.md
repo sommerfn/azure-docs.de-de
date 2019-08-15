@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 72cffea3e5d42210bffbdbeef94c475cc8bdebf4
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: bef82302c4b137b53b52669652f8aeb5d788a82a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312102"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774767"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -37,7 +37,7 @@ Es folgt eine kurze Übersicht über die Schritte:
 1. Registrieren einer Anwendung (Back-End-App) in Azure AD, die die API darstellt
 2. Registrieren einer anderen Anwendung (Client-App) in Azure AD, die eine Clientanwendung darstellt, aus der die API aufgerufen werden muss
 3. Gewähren von Berechtigungen in Azure AD, damit die Client-App die Back-End-App aufrufen kann
-4. Konfigurieren der Entwicklerkonsole für die Verwendung der OAuth 2.0-Benutzerautorisierung
+4. Konfigurieren der Entwicklerkonsole zum Aufrufen der API unter Verwendung der OAuth 2.0-Benutzerautorisierung
 5. Hinzufügen der **validate-jwt**-Richtlinie, um das OAuth-Token für jede eingehende Anforderung zu überprüfen
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Registrieren einer Anwendung in Azure AD, die die API darstellt
@@ -46,13 +46,13 @@ Um eine API mit Azure AD zu schützen, besteht der erste Schritt darin, eine Anw
 
 1. Navigieren Sie zur Seite [Azure-Portal – App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908). 
 
-2. Wählen Sie **Neue Registrierung** aus. 
+1. Wählen Sie **Neue Registrierung** aus. 
 
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein: 
     - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `backend-app`). 
-    - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus. 
+    - Wählen Sie im Abschnitt **Unterstützte Kontotypen** eine Option aus,die Ihrem Szenario entspricht. 
 
-1. Lassen Sie den Abschnitt **Umleitungs-URI** erst einmal leer.
+1. Lassen Sie den Abschnitt **Umleitungs-URI** leer.
 
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen. 
 
@@ -60,9 +60,15 @@ Um eine API mit Azure AD zu schützen, besteht der erste Schritt darin, eine Anw
 
 Wenn die Anwendung erstellt wird, notieren Sie sich die **Anwendungs-ID**, um sie in einem späteren Schritt verwenden zu können. 
 
+1. Wählen Sie **Eine API verfügbar machen** aus, und klicken Sie auf **Speichern und weiter**, um einen Anwendungs-ID-URI zu erstellen.
+
+1. Erstellen Sie auf der Seite **Bereich hinzufügen** einen neuen Bereich, der von der API unterstützt wird (z. B. „Lesen“). Klicken Sie dann auf *Bereich hinzufügen*, um den Bereich zu erstellen. Wiederholen Sie diesen Schritt, um alle von ihrer API unterstützten Bereiche hinzuzufügen.
+
+1. Nachdem Sie den Bereich erstellt haben, notieren Sie ihn, um ihn in einem nachfolgenden Schritt zu verwenden. 
+
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Registrieren einer anderen Anwendung in Azure AD, die eine Clientanwendung darstellt
 
-Jede Clientanwendung, aus der die API aufgerufen wird, muss auch in Azure AD als eine Anwendung registriert werden. In diesem Beispiel wird die Entwicklerkonsole im API Management-Entwicklerportal als Beispielclientanwendung verwendet. So registrieren Sie eine weitere Anwendung in Azure AD, die die Entwicklerkonsole darstellt:
+Jede Clientanwendung, aus der die API aufgerufen wird, muss auch in Azure AD als eine Anwendung registriert werden. In diesem Beispiel wird die Entwicklerkonsole im API Management-Entwicklerportal als Clientanwendung verwendet. So registrieren Sie eine weitere Anwendung in Azure AD, die die Entwicklerkonsole darstellt:
 
 1. Navigieren Sie zur Seite [Azure-Portal – App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908). 
 
@@ -82,9 +88,9 @@ Erstellen Sie nun einen geheimen Clientschlüssel für diese Anwendung, der in e
 
 1. Wählen Sie in der Liste der Seiten für Ihre Client-App die Option **Zertifikate und Geheimnisse** aus, und klicken Sie auf **Neuer geheimer Clientschlüssel**.
 
-2. Geben Sie unter **Geheimen Clientschlüssel hinzufügen** eine **Beschreibung** ein. Legen Sie ein Ablaufdatum für den Schlüssel fest, und klicken Sie auf **Hinzufügen**.
+1. Geben Sie unter **Geheimen Clientschlüssel hinzufügen** eine **Beschreibung** ein. Legen Sie ein Ablaufdatum für den Schlüssel fest, und klicken Sie auf **Hinzufügen**.
 
-Notieren Sie sich den Schlüsselwert. 
+Nachdem Sie den geheimen Schlüssel erstellt haben, notieren Sie sich den Schlüsselwert, um ihn in einem nachfolgenden Schritt zu verwenden. 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Erteilen von Berechtigungen in Azure AD
 
@@ -92,18 +98,15 @@ Nachdem nun zwei Anwendungen registriert sind, die die API und die Entwicklerkon
 
 1. Navigieren Sie zu **App-Registrierungen**. 
 
-2. Wählen Sie `client-app` aus, und wechseln Sie in der Liste mit den Seiten für die App zu **API-Berechtigungen**.
+1. Wählen Sie `client-app` aus, und wechseln Sie in der Liste mit den Seiten für die App zu **API-Berechtigungen**.
 
-3. Wählen Sie **Berechtigung hinzufügen** aus.
+1. Wählen Sie **Berechtigung hinzufügen** aus.
 
-4. Suchen Sie unter **API auswählen** nach `backend-app`, und wählen Sie die Option aus.
+1. Suchen Sie unter **API auswählen** nach `backend-app`, und wählen Sie die Option aus.
 
-5. Wählen Sie unter **Delegierte Berechtigungen** die geeigneten Berechtigungen für `backend-app` aus.
+1. Wählen Sie unter **Delegierte Berechtigungen** die geeigneten Berechtigungen für `backend-app` aus, und klicken Sie dann auf **Berechtigungen hinzufügen**.
 
-6. Wählen Sie **Berechtigungen hinzufügen** aus. 
-
-> [!NOTE]
-> Wenn **Azure Active Directory** unter den Berechtigungen für andere Programme nicht aufgeführt ist, klicken Sie auf **Hinzufügen**, und fügen Sie die Option aus der Liste hinzu.
+1. Klicken Sie optional unten auf der Seite **API-Berechtigungen** auf **Administratorzustimmung für <Ihr Mandantenname> erteilen**, um die Zustimmung im Auftrag aller Benutzer in diesem Verzeichnis zu erteilen. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Aktivieren der OAuth 2.0-Benutzerautorisierung in der Entwicklerkonsole
 
@@ -113,33 +116,41 @@ In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Sc
 
 1. Navigieren Sie im Azure-Portal zu Ihrer API Management-Instanz.
 
-2. Klicken Sie auf **OAuth 2.0** > **Hinzufügen**.
+1. Klicken Sie auf **OAuth 2.0** > **Hinzufügen**.
 
-3. Geben Sie den **Anzeigenamen** und eine **Beschreibung** an.
+1. Geben Sie den **Anzeigenamen** und eine **Beschreibung** an.
 
-4. Geben Sie als **URL für Clientregistrierungsseite** einen Platzhalterwert ein, beispielsweise `http://localhost`. **URL für Clientregistrierungsseite** verweist auf die Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die dies unterstützen. In diesem Beispiel werden von Benutzern keine eigenen Konten erstellt und konfiguriert, daher verwenden Sie stattdessen einen Platzhalter.
+1. Geben Sie als **URL für Clientregistrierungsseite** einen Platzhalterwert ein, beispielsweise `http://localhost`. **URL für Clientregistrierungsseite** verweist auf eine Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die dies unterstützen. In diesem Beispiel werden von Benutzern keine eigenen Konten erstellt und konfiguriert, daher verwenden Sie stattdessen einen Platzhalter.
 
-5. Wählen Sie unter **Autorisierungszuweisungstypen** die Option **Autorisierungscode**.
+1. Wählen Sie unter **Autorisierungszuweisungstypen** die Option **Autorisierungscode**.
 
-6. Geben Sie die **URL für Autorisierungsendpunkt** und die **URL für Tokenendpunkt** ein. Rufen Sie diese Werte von der Seite **Endpunkte** in Ihrem Azure AD-Mandanten ab. Navigieren Sie erneut zur Seite **App-Registrierung**, und klicken Sie auf **Endpunkte**.
+1. Geben Sie die **URL für Autorisierungsendpunkt** und die **URL für Tokenendpunkt** ein. Rufen Sie diese Werte von der Seite **Endpunkte** in Ihrem Azure AD-Mandanten ab. Navigieren Sie erneut zur Seite **App-Registrierung**, und klicken Sie auf **Endpunkte**.
 
-7. Kopieren Sie den **OAuth 2.0-Autorisierungsendpunkt**, und fügen Sie ihn in das Textfeld **URL für Autorisierungsendpunkt** ein.
 
-8. Kopieren Sie den **OAuth 2.0-Token-Endpunkt**, und fügen Sie ihn in das Textfeld **URL für Tokenendpunkt** ein. Fügen Sie zusätzlich zum Tokenendpunkt den Textkörperparameter **resource** hinzu. Verwenden Sie als Wert für diesen Parameter die **Anwendungs-ID** für die Back-End-App.
+1. Kopieren Sie den **OAuth 2.0-Autorisierungsendpunkt**, und fügen Sie ihn in das Textfeld **URL für Autorisierungsendpunkt** ein. Wählen Sie unter „Autorisierungsanforderungsmethode“ die Option **POST** aus.
 
-9. Geben Sie anschließend Clientanmeldeinformationen an. Diese sind die Anmeldeinformationen für die Client-App.
+1. Kopieren Sie den **OAuth 2.0-Token-Endpunkt**, und fügen Sie ihn in das Textfeld **URL für Tokenendpunkt** ein. 
 
-10. Verwenden Sie für **Client-ID** die **Anwendungs-ID** für die Client-App.
+    >[!IMPORTANT]
+    > Sie können entweder **v1**- oder **v2**-Endpunkte verwenden. Abhängig von der gewählten Version sieht der nachfolgende Schritt jedoch etwas anders aus. Es wird die Verwendung von v2-Endpunkten empfohlen. 
 
-11. Verwenden Sie für **Clientgeheimnis** den Schlüssel, den Sie zuvor für die Client-App erstellt haben. 
+1. Wenn Sie **v1**-Endpunkte verwenden, fügen Sie einen body-Parameter mit dem Namen **resource** hinzu. Verwenden Sie als Wert für diesen Parameter die **Anwendungs-ID** der Back-End-App. 
 
-12. Unmittelbar hinter dem Clientgeheimnis folgt die Umleitungs-URL (**redirect_url**) für den Typ der Gewährung für Autorisierungscode. Notieren Sie sich diese URL.
+1. Wenn Sie **v2**-Endpunkte verwenden, verwenden Sie im Feld **Standardbereich** den Bereich, den Sie für die Back-End-App erstellt haben.
 
-13. Klicken Sie auf **Erstellen**.
+1. Geben Sie anschließend Clientanmeldeinformationen an. Diese sind die Anmeldeinformationen für die Client-App.
 
-14. Navigieren Sie zurück zur Seite **Einstellungen** Ihrer Client-App.
+1. Verwenden Sie für **Client-ID** die **Anwendungs-ID** der Client-App.
 
-15. Klicken Sie auf **Antwort-URLs**, und fügen Sie den Wert für **redirect_url** in der ersten Zeile ein. In diesem Beispiel haben Sie `https://localhost` durch die URL in der ersten Zeile ersetzt.  
+1. Verwenden Sie für **Clientgeheimnis** den Schlüssel, den Sie zuvor für die Client-App erstellt haben. 
+
+1. Unmittelbar hinter dem Clientgeheimnis folgt die Umleitungs-URL (**redirect_url**) für den Typ der Gewährung für Autorisierungscode. Notieren Sie sich diese URL.
+
+1. Klicken Sie auf **Erstellen**.
+
+1. Navigieren Sie zurück zur Seite **Einstellungen** Ihrer Client-App.
+
+1. Klicken Sie auf **Antwort-URLs**, und fügen Sie den Wert für **redirect_url** in der ersten Zeile ein. In diesem Beispiel haben Sie `https://localhost` durch die URL in der ersten Zeile ersetzt.  
 
 Nachdem Sie nun einen OAuth 2.0-Autorisierungsserver konfiguriert haben, kann die Entwicklerkonsole Zugriffstoken von Azure AD abrufen. 
 
@@ -147,7 +158,7 @@ Im nächsten Schritt aktivieren Sie die OAuth 2.0-Benutzerautorisierung für Ihr
 
 1. Navigieren Sie zu Ihrer API Management-Instanz und dann zu **APIs**.
 
-2. Wählen Sie die API aus, die Sie schützen möchten. In diesem Beispiel wird die `Echo API` verwendet.
+2. Wählen Sie die API aus, die Sie schützen möchten. Beispielsweise können Sie die `Echo API` verwenden.
 
 3. Wechseln Sie zu **Einstellungen**.
 
@@ -160,9 +171,9 @@ Im nächsten Schritt aktivieren Sie die OAuth 2.0-Benutzerautorisierung für Ihr
 > [!NOTE]
 > Dieser Abschnitt gilt nicht für den **Verbrauchstarif**, der keine Unterstützung für das Entwicklerportal bietet.
 
-Nachdem nun die OAuth 2.0-Benutzerautorisierung für die `Echo API` aktiviert ist, ruft die Entwicklerkonsole im Namen des Benutzers ein Zugriffstoken ab, bevor die API aufgerufen wird.
+Nachdem nun die OAuth 2.0-Benutzerautorisierung für Ihre API aktiviert ist, ruft die Entwicklerkonsole im Namen des Benutzers ein Zugriffstoken ab, bevor die API aufgerufen wird.
 
-1. Navigieren Sie im Entwicklerportal zu einem beliebigen Vorgang unter der `Echo API`, und klicken Sie auf **Ausprobieren**. Dadurch wird die Entwicklerkonsole angezeigt.
+1. Navigieren Sie im Entwicklerportal zu einem beliebigen Vorgang unter der API, und wählen Sie **Ausprobieren** aus. Dadurch wird die Entwicklerkonsole angezeigt.
 
 2. Beachten Sie ein neues Element im Abschnitt **Autorisierung**, das dem soeben hinzugefügten Autorisierungsserver entspricht.
 
@@ -179,11 +190,11 @@ Nachdem nun die OAuth 2.0-Benutzerautorisierung für die `Echo API` aktiviert is
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Konfigurieren einer JWT-Überprüfungsrichtlinie zur Vorautorisierung von Anforderungen
 
-Wenn an diesem Punkt ein Benutzer versucht, einen Aufruf über die Entwicklerkonsole auszuführen, wird er zum Anmelden aufgefordert. Die Entwicklerkonsole ruft im Namen des Benutzers ein Zugriffstoken ab.
+Wenn an diesem Punkt ein Benutzer versucht, einen Aufruf über die Entwicklerkonsole auszuführen, wird er zum Anmelden aufgefordert. Die Entwicklerkonsole ruft ein Zugriffstoken im Auftrag des Benutzers ab und schließt das Token in die an die API gerichtete Anforderung ein.
 
-Aber was passiert, wenn jemand die API ohne Token oder mit einem ungültigen Token aufruft? Sie können beispielsweise die API trotzdem aufrufen, auch wenn Sie den `Authorization`-Header löschen. Dies liegt daran, dass API Management das Zugriffstoken an diesem Punkt nicht überprüft. API Management übergibt den `Authorization`-Header einfach an die Back-End-API.
+Was aber passiert, wenn jemand Ihre API ohne Token oder mit einem ungültigen Token aufruft? Wenn z. B. versucht wird, die API ohne den `Authorization`-Header aufzurufen, wird der Aufruf dennoch durchgeleitet. Dies liegt daran, dass API Management das Zugriffstoken an diesem Punkt nicht überprüft. API Management übergibt den `Authorization`-Header einfach an die Back-End-API.
 
-Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwenden, um Anforderungen in API Management vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn für eine Anforderung kein gültiges Token vorliegt, wird sie von API Management blockiert. Sie können beispielsweise die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` der `Echo API` hinzufügen. Sie überprüft den Zielgruppenanspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
+Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwenden, um Anforderungen in API Management vorab zu autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn für eine Anforderung kein gültiges Token vorliegt, wird sie von API Management blockiert. Fügen Sie beispielsweise die folgende Richtlinie zum Richtlinienabschnitt `<inbound>` der `Echo API` hinzu. Sie überprüft den Zielgruppenanspruch in einem Zugriffstoken und gibt eine Fehlermeldung zurück, wenn das Token nicht gültig ist. Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

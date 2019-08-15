@@ -2,20 +2,19 @@
 title: Festlegen eines Zeitplans für Indexer – Azure Search
 description: Legen Sie einen Zeitplan für Azure Search-Indexer fest, um Inhalte in regelmäßigen Abständen oder zu bestimmten Zeiten zu indizieren.
 ms.date: 05/31/2019
-author: RobDixon22
+author: HeidiSteen
 manager: HeidiSteen
-ms.author: v-rodixo
+ms.author: heidist
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 245a2139aae0910ea1415811234667f2c06500ec
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302242"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855797"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Festlegen eines Zeitplans für Indexer in Azure Search
 Ein Indexer wird normal einmal ausgeführt, und zwar sofort nach der Erstellung. Sie können ihn über das Portal, die REST-API oder das .NET SDK nach Bedarf erneut ausführen. Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird.

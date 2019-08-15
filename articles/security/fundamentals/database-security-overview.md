@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: dc4c36735ade8a094acbf897ee040a239a1bed48
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727415"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927976"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -206,7 +206,7 @@ SQL Advanced Threat Protection (ATP) stellt eine Reihe erweiterter SQL-Sicherhei
 
 Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Er unterstützt Sie bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem umfassenden Spektrum von Sicherheitslösungen verwendet werden.
 
-[Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-database) bietet Einblicke in die Sicherheit Ihrer Server und Datenbanken und trägt so zum Schutz der Daten in SQL-Datenbank bei. Mit Security Center haben Sie folgende Möglichkeiten:
+[Security Center](../../security-center/security-center-sql-database.md) bietet Einblicke in die Sicherheit Ihrer Server und Datenbanken und trägt so zum Schutz der Daten in SQL-Datenbank bei. Mit Security Center haben Sie folgende Möglichkeiten:
 
 - Definieren von Richtlinien für die Verschlüsselung und Überwachung in SQL-Datenbank
 - Überwachen der Sicherheit von SQL-Datenbank-Ressourcen in allen Abonnements

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 98b7e99e5e9d25c6708b92b02e609ad38a971054
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5f48b1b1c8568c4f60d012797634b844a276b1bb
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381582"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951961"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -202,11 +202,11 @@ In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des Lo
 2. Führen Sie die folgenden Befehle aus, um ein Projekt für Azure Monitor zu erstellen und das Benutzerkonto festzulegen:
 
     ```
-    oadm new-project omslogging --node-selector='zone=default'
+    oc adm new-project omslogging --node-selector='zone=default'
     oc project omslogging  
     oc create serviceaccount omsagent  
-    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
-    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
 3. Führen Sie Folgendes aus, um das DaemonSet bereitzustellen:
@@ -241,11 +241,11 @@ Führen Sie die folgenden Schritte aus, wenn Sie Geheimnisse nutzen möchten, um
 2. Führen Sie die folgenden Befehle aus, um ein Projekt für Azure Monitor zu erstellen und das Benutzerkonto festzulegen: Im Skript werden Sie zum Generieren von Geheimnissen zum Angeben Ihrer Log Analytics-Arbeitsbereich-ID `<WSID>` und Ihres Primärschlüssels `<KEY>` aufgefordert. Wenn der Vorgang abgeschlossen ist, wird die Datei „ocp-secret.yaml“ erstellt.  
 
     ```
-    oadm new-project omslogging --node-selector='zone=default'  
+    oc adm new-project omslogging --node-selector='zone=default'  
     oc project omslogging  
     oc create serviceaccount omsagent  
-    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
-    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
 3. Stellen Sie die Geheimnisdatei bereit, indem Sie Folgendes ausführen:

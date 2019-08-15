@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566789"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883052"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Schnellstart: Erstellen einer Firewallregel auf Serverebene für Einzel- und Pooldatenbanken über das Azure-Portal
 
@@ -37,7 +37,7 @@ Der SQL-Datenbank-Dienst erstellt eine Firewall auf Datenbankserverebene für Ei
 > [!NOTE]
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 > [!IMPORTANT]
-> Bei Verwendung der Firewallregel 0.0.0.0 können alle Azure-Dienste die Firewall auf Serverebene passieren und über den Server eine Verbindung mit einer Einzel- oder Pooldatenbank herstellen. Weitere Informationen zur Verwendung von VNET-Regeln finden Sie im Abschnitt [VNET-Regeln als Alternative zu IP-Regeln](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
+> Bei Verwendung der Firewallregel 0.0.0.0 können alle Azure-Dienste die Firewall auf Serverebene passieren und über den Server eine Verbindung mit einer Einzel- oder Pooldatenbank herstellen. 
 
 Führen Sie die hier angegebenen Schritte zum Erstellen einer IP-Firewallregel auf Serverebene für die IP-Adresse Ihres Clients und zum Zulassen externer Verbindungen durch die SQL-Datenbank-Firewall nur für Ihre IP-Adresse aus.
 

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT-Geräte-SDK für C – Serialisierungsprogramm | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Serializer-Bibliothek im Azure IoT-Geräte-SDK für C zum Erstellen von Geräte-Apps, die mit einer IoT Hub-Instanz kommunizieren, verwenden.
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
-ms.author: yizhon
-ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399237"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883154"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zum Serialisierungsprogramm
 
@@ -64,7 +64,7 @@ In diesem Beispiel werden keine weiteren Datentypen gezeigt, die vom SDK unterst
 
 Die folgenden Datentypen werden in Modellen unterstützt, die mit der Bibliothek des **Serialisierungsprogramms** erstellt wurden:
 
-| Type | BESCHREIBUNG |
+| type | BESCHREIBUNG |
 | --- | --- |
 | double |Gleitkommazahl mit doppelter Genauigkeit |
 | int |32-Bit-Ganzzahl |

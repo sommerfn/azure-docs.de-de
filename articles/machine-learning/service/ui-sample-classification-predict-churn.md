@@ -1,5 +1,5 @@
 ---
-title: 'Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling '
+title: 'Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling'
 titleSuffix: Azure Machine Learning service
 description: Dieses Beispielexperiment auf der grafischen Benutzeroberfläche zeigt eine auf einem binären Klassifizierer basierende Vorhersage der Kundenabwanderung, eine übliche Aufgabe beim Customer Relationship Management (CRM).
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7d10d996febd0e31c9085bf5cb82324cce101c80
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 172089d5371d8c3e38a2a22b3285b5eb180baf00
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606140"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742286"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Beispiel 5 – Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling 
 
@@ -37,7 +37,7 @@ Das vollständige Diagramm für dieses Experiment sieht wie folgt aus:
 
     ![Öffnen des Experiments](media/ui-sample-classification-predict-churn/open-sample5.png)
 
-## <a name="data"></a>Daten
+## <a name="data"></a>Data
 
 Die Daten, die wir für dieses Experiment verwenden, stammen vom KDD Cup 2009. Das Dataset enthält 50.000 Zeilen und 230 Featurespalten. Die Aufgabe ist die Vorhersage der Kundenabwanderung, Kauflust und des Up-Sellings für Kunden, die diese Features nutzen. Weitere Informationen zu den Daten und zur Aufgabe finden Sie auf der [KDD-Website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 

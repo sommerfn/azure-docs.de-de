@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3aa3176b1d6d9e5665fd3a8988b71159a4fc20c0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667163"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735713"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -115,6 +115,15 @@ Die in dieser Funktionen-App zu verwendende Version der Functions-Runtime. Eine 
 |Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
+
+## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
+
+Gibt die maximale Anzahl von Sprachworkerprozessen mit einem Standardwert von `1` an. Der zulässige Höchstwert ist `10`. Funktionsaufrufe werden gleichmäßig zwischen Sprachworkerprozessen verteilt. Sprachworkerprozesse werden so lange alle 10 Sekunden erzeugt, bis die von FUNCTIONS\_WORKER\_PROCESS\_COUNT festgelegte Anzahl erreicht ist. Die Verwendung mehrerer Sprachworkerprozesse ist nicht dasselbe wie [Skalierung](functions-scale.md). Erwägen Sie die Verwendung dieser Einstellung, wenn Ihr Workload aus einer Mischung von CPU-gebundenen und E/A-gebundenen Aufrufen besteht. Diese Einstellung gilt für alle .NET-Sprachen.
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 

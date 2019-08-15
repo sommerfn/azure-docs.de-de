@@ -16,12 +16,12 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 8a1634cfa7b701401927859a9fbd3fb203b61a77
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 98e1d934ab413e2f7ff02a5044f8630e7b82e604
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445649"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033935"
 ---
 # <a name="create-an-apache-cordova-app"></a>Erstellen einer Apache Cordova-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -52,8 +52,9 @@ Sie können auch Visual Studio umgehen und direkt die Apache Cordova-Befehlszeil
 
 ## <a name="download-and-run-the-apache-cordova-app"></a>Herunterladen und Ausführen der Apache Cordova-App
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
+
 <!-- URLs -->
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 [Visual Studio Community 2017]: https://www.visualstudio.com/
 [Visual Studio-Tools für Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx

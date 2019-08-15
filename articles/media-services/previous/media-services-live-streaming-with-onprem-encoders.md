@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkd;juliako
-ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463792"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "69015482"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Arbeiten mit Kanälen, die Livestreams mit Mehrfachbitrate von lokalen Encodern empfangen
 
@@ -231,7 +231,7 @@ Hier sind weitere Aspekte im Zusammenhang mit der Arbeit mit Kanälen und den zu
 ## <a name="related-topics"></a>Verwandte Themen
 [Empfohlene lokale Encoder](media-services-recommended-encoders.md)
 
-[Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)
+[Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](../media-services-fmp4-live-ingest-overview.md)
 
 [Azure Media Services – Übersicht und häufige Szenarios](media-services-overview.md)
 

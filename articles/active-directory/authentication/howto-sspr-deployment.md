@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b566bfc3f6c49f6cb9fe31f166356f6ae351e38
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440943"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879223"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -38,9 +38,6 @@ Vor der Bereitstellung von SSPR kann es für Organisationen sinnvoll sein, zu be
 ## <a name="licensing-considerations"></a>Lizenzierungsaspekte
 
 Azure Active Directory wird pro Benutzer lizenziert, d.h. jeder Benutzer muss über eine passende Lizenz für die von ihm genutzten Features verfügen.
-
-- Die Self-Service-Kennwortzurücksetzung für reine Cloudbenutzer ist in Azure AD Basic oder höheren Editionen verfügbar.
-- Die Self-Service-Kennwortzurücksetzung mit lokalem Rückschreiben für Hybridumgebungen erfordert Azure AD Premium P1 oder höher.
 
 Weitere Informationen zur Lizenzierung finden Sie auf der [Azure Active Directory-Preisverzeichnisseite](https://azure.microsoft.com/pricing/details/active-directory/)
 

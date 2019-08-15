@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ce043e23a0384a74fd5d2c9dd514045578ef836d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6e701396191ec8bf66ece0e2858b9f32857e7b17
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563455"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933583"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](luis-how-to-use-prebuilt-domains.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
 
 [Benutzerdefinierte Domänen](luis-how-to-start-new-app.md) weisen im Gegensatz dazu anfänglich keine Absichten und Modelle auf. Sie können einem benutzerdefinierten Modell beliebige Absichten und Entitäten aus einer vordefinierten Domäne hinzufügen.
 
-# <a name="supported-domains-across-cultures"></a>Unterstützte kulturübergreifende Domänen
+## <a name="supported-domains-across-cultures"></a>Unterstützte kulturübergreifende Domänen
 
 Die einzige unterstützte Kultur ist Englisch. 
 
@@ -56,7 +56,7 @@ The table below summarizes the currently supported domains. Support for English 
 |--|--|
 |Kalender|Der Kalender enthält alle persönliche Besprechungen und Termine, aber _keine_ öffentlichen Ereignisse (z. B. Zeitpläne für Weltmeisterschaften, den Veranstaltungskalender für Seattle) oder generischen Kalender (z. B. den aktuellen Tag, den Herbstanfang oder den Tag der Arbeit).|
 |Kommunikation|Anforderungen für Aufrufe, das Senden von SMS- oder Sofortnachrichten, das Suchen und Hinzufügen von Kontakten und verschiedene andere kommunikationsbezogene Anfragen (im Allgemeinen ausgehend). Abfragen, die sich ausschließlich auf den Kontaktnamen beziehen, gehören nicht in die Domäne Kommunikation.|
-|E-Mail|Die E-Mail-Adresse ist eine Unterdomäne der Domäne Kommunikation. Sie enthält hauptsächlich Anforderungen zum Senden und Empfangen von Nachrichten über E-Mails.|
+|Email|Die E-Mail-Adresse ist eine Unterdomäne der Domäne Kommunikation. Sie enthält hauptsächlich Anforderungen zum Senden und Empfangen von Nachrichten über E-Mails.|
 |HomeAutomation|Die HomeAutomation-Domäne stellt Absichten und Entitäten zum Steuern von Geräten im Smarthome bereit. Sie dient hauptsächlich der Unterstützung von Steuerbefehlen für die Beleuchtung oder Klimaanlagen, sie umfasst aber auch einige allgemeine Funktionen für andere elektrische Anwendungen.|
 |Notizen|Die Domäne Notizen stellt Absichten und Entitäten für das Erstellen von Notizen und das Schreiben von Elementen für Benutzer bereit.|
 |Orte|Zu Orten gehören Geschäfte, Institutionen, Restaurants, öffentliche Räume und Adressen. Die Domäne unterstützt das Suchen von Orten und die Abfrage von Informationen zu einem öffentlichen Ort wie dem Standort, den Öffnungszeiten oder der Entfernung.|

@@ -12,10 +12,10 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "64926188"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
@@ -121,7 +121,7 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Type | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beides |enumerated |Both, Spikes, Dips |Beides |
@@ -137,7 +137,7 @@ Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für
 | Ausgaben | BESCHREIBUNG |
 | --- | --- |
 | Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
-| Daten |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
+| Data |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | TSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom TSpike-Erkennungsmodul erkannt wird |
 | ZSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom ZSpike-Erkennungsmodul erkannt wird |
 | rpscore |Gleitzahl, die für die Anomaliebewertung von bidirektionalen Pegeländerungen steht |
@@ -157,7 +157,7 @@ Die Detektoren im Saisonabhängigkeits-Endpunkt ähneln denen im Nicht-Saisonabh
 
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Type | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
 | preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |– |

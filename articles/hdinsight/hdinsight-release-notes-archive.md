@@ -1,5 +1,5 @@
 ---
-title: Anmerkungen zu dieser Version von Azure HDInsight
+title: Archivierte Versionshinweise für Azure HDInsight
 description: Die neuesten Versionshinweise für Azure HDInsight. Rufen Sie Tipps zur Entwicklung und Details für Hadoop, Spark, R Server, Hive und mehr ab.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf985f08f13198a9041b1d50f2c6c7f0fec70911
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713044"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945036"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Anmerkungen zu dieser Version von Azure HDInsight
+# <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
 > [!IMPORTANT]  
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie im Artikel zur [HDInsight-Versionsverwaltung](hdinsight-component-versioning.md).

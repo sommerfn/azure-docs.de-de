@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 423825540c02d2788de7a6148ddcec3c654fd450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b5f44471187f4031642fd674381e672453b7197
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754791"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884264"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur
 
@@ -60,7 +60,7 @@ Der IoT Edge-Hub ermöglicht die Kommunikation zwischen Modulen. Die Verwendung 
 Ein Modul ruft zum Senden von Daten an den IoT Edge-Hub die SendEventAsync-Methode auf. Das erste Argument gibt an, an welchen Ausgang die Nachricht gesendet werden soll. Mit dem folgenden Pseudocode wird eine Nachricht an **output1** gesendet:
 
    ```csharp
-   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
+   ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
    await client.OpenAsync(); 
    await client.SendEventAsync(“output1”, message); 
    ```

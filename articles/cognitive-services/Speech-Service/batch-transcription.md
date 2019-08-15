@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 088b6ef93631cb964979de3621453caa430c5b1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e98ac335f475e4a6db6b17d5954512f5749e6aec
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559709"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881152"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -86,8 +86,8 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
 
 | Parameter | BESCHREIBUNG |
 |-----------|-------------|
-| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `none` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. |
-| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `none` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. |
+| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `None` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. |
+| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `None` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. |
  | `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. |
  | `AddSentiment` | Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Gültige Werte sind `true` zum Aktivieren der Stimmung pro Äußerung und `false` (Standardwert) zum Deaktivieren. |
  | `AddDiarization` | Gibt an, dass die Diarisierungsanalyse bei der Eingabe durchgeführt werden sollte. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Gültige Werte sind `true` zum Aktivieren der Diarisierung und `false` (der Standardwert) zu deren Deaktivierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.|

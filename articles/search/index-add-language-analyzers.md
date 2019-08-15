@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d229d33f549755479d7e1c7cf012d0391bccbb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790903"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881504"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Hinzufügen von Sprachanalysetools zu einem Azure Search-Index
 
@@ -118,7 +118,7 @@ Weitere Informationen zu Indexeigenschaften finden Sie unter [Erstellen eines In
 |Urdu|ur.microsoft||  
 |Vietnamesisch|vi.microsoft||  
 
- Alle Analysetools mit **Lucene** im Namen werden von den [Sprachanalysetools von Apache Lucene](https://lucene.apache.org/core/4_9_0/core/overview-summary.html ) unterstützt.
+ Alle Analysetools mit **Lucene** im Namen werden von den [Sprachanalysetools von Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) unterstützt.
 
 ## <a name="see-also"></a>Weitere Informationen  
  [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639068"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839478"
 ---
 # <a name="clustering-point-data"></a>Clustering von Punktdaten
 
@@ -35,7 +35,7 @@ var datasource = new atlas.source.DataSource(null, {
 
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -107,6 +107,16 @@ Die Punktdaten, die ein Cluster darstellt, sind über einen Bereich verteilt. We
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="Konvexe Hülle des Clusterbereichs" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull (Konvexe Hülle des Clusterbereichs)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>Aggregieren von Daten in Clustern
+
+Cluster werden oft mithilfe eines Symbols mit der Anzahl der Punkte innerhalb des Clusters dargestellt. Manchmal ist es jedoch wünschenswert, den Clusterstil auf der Grundlage einer Metrik weiter anzupassen, wie z.B. dem Gesamtumsatz aller Punkte innerhalb eines Clusters. Mit Clusteraggregaten können benutzerdefinierte Eigenschaften erstellt und dann mithilfe einer Berechnung vom Typ [Aggregatausdruck](data-driven-style-expressions-web-sdk.md#aggregate-expression) aufgefüllt werden.  Clusteraggregate können in der Option `clusterProperties` von `DataSource` definiert werden.
+
+Im folgenden Beispiel wird ein Aggregatausdruck verwendet, um eine Anzahl basierend auf der Eigenschaft „Entitätstyp“ der einzelnen Datenpunkte in einem Cluster zu berechnen.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregate" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> (Clusteraggregate) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>Code Pen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Nächste Schritte

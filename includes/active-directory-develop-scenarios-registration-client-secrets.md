@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f98808aa0f8a2c32e2117447824114747091a82
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286313"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912371"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Registrierung von geheimen Schlüsseln oder Zertifikaten
 
@@ -29,7 +29,7 @@ Wie für jede vertrauliche Clientanwendung müssen Sie einen geheimen Schlüssel
 
 Die Verwaltung von Clientanmeldeinformationen erfolgt auf der Seite **Certificates & secrets (Zertifikate und geheime Schlüssel)** einer Anwendung:
 
-![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
+![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
 - Der (auch als geheimer Clientschlüssel bezeichnete) geheime Anwendungsschlüssel wird von Azure AD während der Registrierung der vertraulichen Clientanwendung generiert. Diese Generierung erfolgt, wenn Sie **Neuer geheimer Clientschlüssel** auswählen. An diesem Punkt müssen Sie vor dem Auswählen von **Speichern** die Zeichenfolge des geheimen Schlüssels in die Zwischenablage kopieren, um sie in Ihrer App verwenden zu können. Diese Zeichenfolge wird anschließend nicht mehr angezeigt.
 - Das Zertifikat wird mithilfe der Schaltfläche **Zertifikat hochladen** in die Anwendungsregistrierung hochgeladen. Azure AD unterstützt nur Zertifikate, die direkt in der Anwendung registriert sind und nicht Vertrauensketten befolgen.

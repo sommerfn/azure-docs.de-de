@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61127855"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015075"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal  
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Wählen Sie das Video und anschließend die Schaltfläche **Wiedergabe** aus.
 Folgende Überlegungen sollten berücksichtigt werden:
 
 * Vergewissern Sie sich, dass das Video veröffentlicht wurde.
-* Der Media Player des Azure-Portals verwendet für die Wiedergabe den Standard-Streamingendpunkt. Wenn Sie einen anderen Streamingendpunkt für die Wiedergabe verwenden möchten, können Sie die URL markieren, kopieren und in einen anderen Player einfügen. So können Sie Ihr Video beispielsweise mit dem [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) testen.
+* Der Media Player des Azure-Portals verwendet für die Wiedergabe den Standard-Streamingendpunkt. Wenn Sie einen anderen Streamingendpunkt für die Wiedergabe verwenden möchten, können Sie die URL markieren, kopieren und in einen anderen Player einfügen. So können Sie Ihr Video beispielsweise mit dem [Azure Media Player](https://aka.ms/azuremediaplayer) testen.
 * Der Streamingendpunkt, von dem aus das Streaming erfolgen soll.  
 
 ## <a name="provide-feedback"></a>Feedback geben

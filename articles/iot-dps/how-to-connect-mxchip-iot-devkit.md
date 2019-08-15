@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: c809077b0ec14240d231e9b281285080f68596b3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b1aac19885e2b640063e4840f047916ad51e9656
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439508"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855748"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Verwenden der automatischen Bereitstellung des Azure IoT Hub Device Provisioning Service zum Registrieren des MXChip IoT DevKit bei IoT Hub
 
@@ -79,7 +79,7 @@ Im Gerätecode müssen Sie den [Endpunkt für die Gerätebereitstellung](/azure/
 1. Wählen Sie im Azure-Portal den Bereich **Übersicht** Ihres Device Provisioning-Diensts aus, und notieren Sie sich die Werte von **Globaler Geräteendpunkt** und **ID-Bereich**.
   ![Globaler Endpunkt und ID-Bereich von Device Provisioning Service](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
-1. Öffnen Sie **DeKitDPS.ino**. Suchen und ersetzen Sie `[Global Device Endpoint]` und `[ID Scope]` durch die Werte, die Sie sich gerade notiert hatten.
+1. Öffnen Sie **DevKitDPS.ino**. Suchen und ersetzen Sie `[Global Device Endpoint]` und `[ID Scope]` durch die Werte, die Sie sich gerade notiert hatten.
   ![Endpunkt des Gerätebereitstellungsdiensts](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
 1. Füllen Sie die `registrationId`-Variable im Code aus. Es sind nur Kombinationen aus alphanumerischen Kleinbuchstaben und Bindestrichen mit einer maximalen Länge von 128 Zeichen zulässig. Notieren Sie sich auch diesen Wert.

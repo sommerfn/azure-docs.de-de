@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4c9a8c866a157757121e6a9dd07a0a8559937c5e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 110bd975de1d865c2aa3d3b088c98cdc8b9e45ad
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490809"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019561"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements von anderen Konten
 
@@ -29,7 +29,7 @@ Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** o
 
 ## <a name="request-billing-ownership"></a>Anfordern des Abrechnungsbesitzes
 
-1. Melden Sie sich am [Azure-Portal](http://portal.azure.com) als Rechnungsabschnitt-Besitzer oder -Mitwirkender eines Abrechnungskontos für die Microsoft-Kundenvereinbarung an.
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) als Rechnungsabschnitt-Besitzer oder -Mitwirkender eines Abrechnungskontos für die Microsoft-Kundenvereinbarung an.
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 

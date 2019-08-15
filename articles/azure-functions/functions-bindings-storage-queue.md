@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 9604ef276625d1fcc9164a9b75b94ebc22cb51e1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bf5219f8e147baba0e89a8c0e1fa6cb7b371473c
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480143"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774747"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -54,6 +54,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#-Skript (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
 
@@ -188,6 +189,54 @@ Das folgende Java-Beispiel zeigt eine Funktion für einen Storage-Warteschlangen
  }
  ```
 
+### <a name="trigger---python-example"></a>Trigger: Beispiel für Python
+
+Das folgende Beispiel zeigt, wie Sie eine an eine Funktion übergebene Warteschlangennachricht mittels Trigger lesen.
+
+Der Trigger einer Speicherwarteschlange ist in *function.json* definiert, wobei *type* auf `queueTrigger` festgelegt ist.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "AzureStorageQueuesConnectionString"
+    }
+  ]
+}
+```
+
+Der Code in *_\_init_\_.py* deklariert einen Parameter als `func.ServiceBusMessage`, was es Ihnen ermöglicht, die Warteschlangennachricht in ihrer Funktion zu lesen.
+
+```python
+import logging
+import json
+
+import azure.functions as func
+
+def main(msg: func.QueueMessage):
+    logging.info('Python queue trigger function processed a queue item.')
+
+    result = json.dumps({
+        'id': msg.id,
+        'body': msg.get_body().decode('utf-8'),
+        'expiration_time': (msg.expiration_time.isoformat()
+                            if msg.expiration_time else None),
+        'insertion_time': (msg.insertion_time.isoformat()
+                           if msg.insertion_time else None),
+        'time_next_visible': (msg.time_next_visible.isoformat()
+                              if msg.time_next_visible else None),
+        'pop_receipt': msg.pop_receipt,
+        'dequeue_count': msg.dequeue_count
+    })
+
+    logging.info(result)
+```
+
 ## <a name="trigger---attributes"></a>Trigger: Attribute
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die folgenden Attribute, um einen Warteschlangentrigger zu konfigurieren:
@@ -319,6 +368,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#-Skript (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
+* [Python](#output---python-example)
 
 ### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
 
@@ -467,6 +517,68 @@ module.exports = function(context) {
 
 Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert in Queue Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
 
+### <a name="output---python-example"></a>Ausgabe: Beispiel für Python
+
+Im folgenden Beispiel wird veranschaulicht, wie Sie einzelne und mehrere Werte an Speicherwarteschlangen ausgeben. Die für *function.json* erforderliche Konfiguration ist in beiden Fällen identisch.
+
+Eine Speicherwarteschlangenbindung ist in *function.json* definiert, wobei *type* auf `queue` festgelegt ist.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureStorageQueuesConnectionString"
+    }
+  ]
+}
+```
+
+Um eine einzelne Nachricht in die Warteschlange zu stellen, übergeben Sie einen einzelnen Wert an die `set`-Methode.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+
+    input_msg = req.params.get('message')
+
+    msg.set(input_msg)
+
+    return 'OK'
+```
+
+Um mehrere Nachrichten in der Warteschlange zu erstellen, deklarieren Sie einen Parameter als geeigneten Listentyp und übergeben ein Array von Werten (die dem Listentyp entsprechen) an die `set`-Methode.
+
+```python
+import azure.functions as func
+import typing
+
+def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpResponse:
+
+    msg.set(['one', 'two'])
+
+    return 'OK'
+```
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
 

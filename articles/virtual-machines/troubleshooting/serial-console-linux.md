@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710577"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854386"
 ---
 # <a name="azure-serial-console-for-linux"></a>Die serielle Azure-Konsole für Linux
 
@@ -102,7 +102,7 @@ Um die serielle Konsole für Ihr benutzerdefiniertes Linux-VM-Image zu aktiviere
 
 Außerdem ist es ratsam, „ttys0“ als Ziel für die serielle Ausgabe hinzuzufügen. Weitere Informationen zur Konfiguration eines benutzerdefinierten Images zur Verwendung mit der seriellen Konsole finden Sie in den allgemeinen Systemanforderungen unter [Erstellen und Hochladen einer Linux-VHD in Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
 
-Wenn Sie einen benutzerdefinierten Kernel erstellen, sollten Sie die Aktivierung dieser Kernelflags in Erwägung ziehen: `CONFIG_SERIAL_8250=y` und `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Die Konfigurationsdatei befindet sich normalerweise im Pfad */boot/* . |
+Wenn Sie einen benutzerdefinierten Kernel erstellen, sollten Sie die Aktivierung dieser Kernelflags in Erwägung ziehen: `CONFIG_SERIAL_8250=y` und `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Die Konfigurationsdatei befindet sich normalerweise im Pfad */boot/* .
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Gängige Szenarios für den Zugriff auf die serielle Konsole
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619211"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932473"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -72,7 +72,7 @@ Bevor Sie eine Sicherung durchführen, müssen Sie die Speichereinstellungen fü
 
 
 ### <a name="powershell"></a>PowerShell
-Verwenden Sie das Cmdlet [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet).
+Verwenden Sie das Cmdlet [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase).
 
 ## <a name="restore"></a>Restore
 Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinden, das Sie für den Server konfiguriert haben. Wenn Sie eine Sicherungsdatei aus einem lokalen Speicherort in Ihr Speicherkonto verschieben müssen, verwenden Sie den [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) oder das Befehlszeilenprogramm [AzCopy](../storage/common/storage-use-azcopy.md). 
@@ -99,7 +99,7 @@ Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinde
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet [Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet).
+Verwenden Sie das Cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase).
 
 
 ## <a name="related-information"></a>Verwandte Informationen

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: jegeib
-ms.openlocfilehash: 5759ef1332fa632aa2250f0703b36e7738f2668e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 889704a2312bc51e57c18f25875fdbc838876522
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727927"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928043"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool, Updaterelease 7.1.60702.1: 2.7.2019
 
@@ -49,7 +49,7 @@ Ein Schablonensatz zum Modellieren von medizinischen Geräten wurde von der Open
 
 ## <a name="documentation-and-feedback"></a>Dokumentation und Feedback
 
-- Dokumentation für das Threat Modeling Tool befindet sich auf [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) und umfasst Informationen [zur Verwendung des Tools](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
+- Dokumentation für das Threat Modeling Tool befindet sich auf [docs.microsoft.com](threat-modeling-tool.md) und umfasst Informationen [zur Verwendung des Tools](threat-modeling-tool-getting-started.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

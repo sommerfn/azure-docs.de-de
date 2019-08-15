@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 057614da8fd29e1208c2788049c5d6d1a985eed5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343268"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036032"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ zu SQL-Übersetzung
 
@@ -199,8 +199,8 @@ Die Syntax ist `input(.|.SelectMany())(.Select()|.Where())*`. Eine verkettete Ab
 - **LINQ Lambda-Ausdruck**
   
   ```csharp
-      input.Select(family=>family.parents[0])
-          .Where(familyName == "Wakefield");
+      input.Select(family => family.parents[0])
+          .Where(parent => parent.familyName == "Wakefield");
   ```
 
 - **SQL**
