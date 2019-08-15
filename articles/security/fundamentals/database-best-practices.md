@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727445"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928004"
 ---
 # <a name="azure-database-security-best-practices"></a>Bewährte Methoden für die Azure-Datenbanksicherheit
 In diesem Artikel werden bewährte Methoden für die Datenbanksicherheit beschrieben.
@@ -28,7 +28,7 @@ In diesem Artikel werden bewährte Methoden für die Datenbanksicherheit beschri
 Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich für aktuelle Funktionen und Features der Azure-Plattform. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
 ## <a name="secure-databases"></a>Schützen von Datenbanken
-Sicherheit ist einer der wichtigsten Aspekte beim Verwalten von Datenbanken und hat auch bei [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) höchste Priorität. Ihre Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (HIPAA, ISO 27001/27002, PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie auf der [Microsoft Trust Center-Website](https://azure.microsoft.com/support/trust-center/services/). Sie können Ihre Datenbanken auch gemäß den jeweils geltenden rechtlichen Anforderungen in spezifischen Azure-Datencentern anordnen.
+Sicherheit ist einer der wichtigsten Aspekte beim Verwalten von Datenbanken und hat auch bei [Azure SQL-Datenbank](../../sql-database/index.yml) höchste Priorität. Ihre Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (HIPAA, ISO 27001/27002, PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie auf der [Microsoft Trust Center-Website](https://azure.microsoft.com/support/trust-center/services/). Sie können Ihre Datenbanken auch gemäß den jeweils geltenden rechtlichen Anforderungen in spezifischen Azure-Datencentern anordnen.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Verwenden von Firewallregeln zum Einschränken des Datenbankzugriffs
 Microsoft Azure SQL-Datenbank ist ein Dienst für relationale Datenbanken für Azure und andere internetbasierte Anwendungen. Zur Gewährleistung der Zugriffssicherheit steuert SQL-Datenbank den Zugriff durch die Verwendung von:

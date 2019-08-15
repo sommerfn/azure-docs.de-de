@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 21e054aefab0ee5535376ac86ebbaf1316e671b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8403c8fbc4faf35e0ccd3c87347e88a46f0769ff
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165694"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854475"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -90,7 +90,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
       | Eigenschaft | BESCHREIBUNG |
       | --- | --- |
       | Abonnement-ID | Das Abonnement, in dem dieser Event Hub erstellt wurde.
-      | Ressourcengruppe | Die Ressourcengruppe, in der dieser Event Hub erstellt wurde.
+      | Resource group | Die Ressourcengruppe, in der dieser Event Hub erstellt wurde.
       | Service Bus-Namespace | Ein Service Bus-Namespace ist ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt.
       | Event Hub-Name | Der Name Ihres Event Hubs. Bei der Erstellung des Event Hubs haben Sie ihm auch einen bestimmten Namen zugewiesen.
       | Event Hub-Richtlinienname | Die SAS-Richtlinie. Sie können eine Richtlinie für den gemeinsamen Zugriff auf der Event Hub-Registerkarte **Konfigurieren** erstellen. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Die SAS-Richtlinie für die Ereignisquelle *muss* über die Berechtigung **Lesen** verfügen.

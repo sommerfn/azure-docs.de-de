@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6d05b6ac49b372caff1bdc2f03358598fcc1afba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737087"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951981"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -72,8 +72,8 @@ Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Window
 
 Mit dem MARS-Agent können Sie unter einigen Betriebssystemen, die auf lokalen Computern und Azure-VMs ausgeführt werden, direkt in Azure sichern. Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Service Packs und Updates ausgeführt werden müssen. Eine Übersicht über diese Betriebssysteme finden in der folgenden Tabelle:
 
-**Betriebssystem** | **Dateien/Ordner** | **Systemstatus**
---- | --- | ---
+**Betriebssystem** | **Dateien/Ordner** | **Systemstatus** 
+--- | --- | --- 
 Windows 10 (Enterprise, Pro, Home) | Ja | Nein
 Windows 8.1 (Enterprise, Pro)| Ja |Nein
 Windows 8 (Enterprise, Pro) | Ja | Nein

@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 61c09435606612377781fb382d2d31144e96b07b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670796"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965928"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -53,14 +53,14 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
 
 | Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
-| **parentId** | string | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
-| **name** |string | Ein benutzerfreundlicher Name für das Blob |
-| **type** | string | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
+| **parentId** | Zeichenfolge | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
+| **name** |Zeichenfolge | Ein benutzerfreundlicher Name für das Blob |
+| **type** | Zeichenfolge | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
 | **typeId** | Integer | Die Blobtyp-ID: *type* und *typeId* können nicht verwendet werden. |
-| **subtype** | string | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
+| **subtype** | Zeichenfolge | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
 | **subtypeId** | Integer | Die Untertyp-ID des Blobs: *subtype* und *subtypeId* können nicht verwendet werden. |
-| **description** | string | Benutzerdefinierte Beschreibung des Blobs |
-| **sharing** | string | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
+| **description** | Zeichenfolge | Benutzerdefinierte Beschreibung des Blobs |
+| **sharing** | Zeichenfolge | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
 
 Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
@@ -110,18 +110,18 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 
 | Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
-| **id** | string | Der eindeutige Bezeichner für das Blob |
-| **name** |string | Ein benutzerfreundlicher Name für das Blob |
-| **parentId** | string | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
-| **type** | string | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
+| **id** | Zeichenfolge | Der eindeutige Bezeichner für das Blob |
+| **name** |Zeichenfolge | Ein benutzerfreundlicher Name für das Blob |
+| **parentId** | Zeichenfolge | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
+| **type** | Zeichenfolge | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
 | **typeId** | Integer | Die Blobtyp-ID: *type* und *typeId* können nicht verwendet werden. |
-| **subtype** | string | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
+| **subtype** | Zeichenfolge | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
 | **subtypeId** | Integer | Die Untertyp-ID des Blobs: *subtype* und *subtypeId* können nicht verwendet werden. |
-| **sharing** | string | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
-| **description** | string | Benutzerdefinierte Beschreibung des Blobs |
+| **sharing** | Zeichenfolge | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
+| **description** | Zeichenfolge | Benutzerdefinierte Beschreibung des Blobs |
 | **contentInfos** | Array | Gibt unstrukturierte Metadateninformationen an, einschließlich der Version |
-| **fullName** | string | Der vollständige Name des Blobs |
-| **spacePaths** | string | Der Raumpfad |
+| **fullName** | Zeichenfolge | Der vollständige Name des Blobs |
+| **spacePaths** | Zeichenfolge | Der Raumpfad |
 
 Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
@@ -191,7 +191,7 @@ curl
  -H "Authorization: Bearer YOUR_TOKEN"
  -H "Accept: application/json"
  -H "Content-Type: multipart/form-data"
- -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json"
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 

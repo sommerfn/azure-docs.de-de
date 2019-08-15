@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780628"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928085"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -36,7 +36,7 @@ Verwenden Sie die folgenden Ressourcen während der Trainingsphase, um sich mit 
 
   - Im [Entwicklerleitfaden für Azure](https://azure.microsoft.com/campaigns/developer-guide/) wird gezeigt, wie die ersten Schritte mit Azure aussehen. Der Leitfaden veranschaulicht Ihnen, welche Dienste Sie verwenden können, um Ihre Anwendungen auszuführen, Ihre Daten zu speichern, Business Intelligence einzubinden, IoT-Anwendungen zu erstellen und Ihre Lösungen effizienter und sicherer bereitzustellen.
 
-  - Die [Anleitung mit den ersten Schritten für Azure-Entwickler](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide) enthält wichtige Informationen für Entwickler, die damit beginnen möchten für ihre Entwicklungsanforderungen die Azure-Plattform zu nutzen.
+  - Die [Anleitung mit den ersten Schritten für Azure-Entwickler](../../guides/developer/azure-developer-guide.md) enthält wichtige Informationen für Entwickler, die damit beginnen möchten für ihre Entwicklungsanforderungen die Azure-Plattform zu nutzen.
 
   - In [SDKs und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools) sind die Tools beschrieben, die in Azure verfügbar sind.
 
@@ -66,7 +66,7 @@ Stellen Sie Sicherheitsfragen wie:
 
   - Enthält meine Anwendung sensible Daten?
 
-  - Sammelt oder speichert meine Anwendung Daten, die von mir die Einhaltung von Branchenstandards und Complianceprogrammen wie dem [Federal Financial Institutions Examination Council (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview) oder dem [Payment Card Industry Data Security Standard (PCI-DSS)](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview) verlangen?
+  - Sammelt oder speichert meine Anwendung Daten, die von mir die Einhaltung von Branchenstandards und Complianceprogrammen wie dem [Federal Financial Institutions Examination Council (FFIEC)](../blueprints/ffiec-analytics-overview.md) oder dem [Payment Card Industry Data Security Standard (PCI-DSS)](../blueprints/pcidss-analytics-overview.md) verlangen?
 
   - Sammelt oder enthält meine Anwendung sensible persönliche oder Kundendaten, die entweder allein oder mit anderen Informationen verwendet werden können, um eine einzelne Person zu identifizieren, zu kontaktieren oder zu finden?
 
@@ -129,13 +129,13 @@ Sie können von integrierten Entwicklungsumgebungen (IDEs) mit umfassendem Funkt
 Microsoft stellt eine Vielzahl von [Sprachen, Frameworks und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) bereit, mit denen Sie Anwendungen in Azure entwickeln können. Ein Beispiel ist [Azure für .NET- und .NET Core-Entwickler](https://docs.microsoft.com/dotnet/azure/). Für jede Sprache und jedes Framework, das wir anbieten, finden Sie Schnellstarts, Tutorials und API-Referenzen, die Ihnen einen schnellen Einstieg ermöglichen.
 
 Azure bietet eine Vielzahl von Diensten, die Sie zum Hosten von Websites und Webanwendungen verwenden können. Mit diesen Diensten können Sie in Ihrer bevorzugten Sprache entwickeln, egal, ob dies .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python ist.
-[Azure App Service-Web-Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (Web-Apps) ist einer dieser Dienste.
+[Azure App Service-Web-Apps](../../app-service/overview.md) (Web-Apps) ist einer dieser Dienste.
 
 Web-Apps erweitert Ihre Anwendung um die Leistungsfähigkeit von Microsoft Azure. Der Dienst umfasst Sicherheit, Lastenausgleich, automatische Skalierung und automatisierte Verwaltung. Sie können auch die Vorteile der DevOps-Funktionen in Web-Apps nutzen, wozu Paketverwaltung, Stagingumgebungen, benutzerdefinierte Domänen, SSL/TLS-Zertifikate und kontinuierliche Bereitstellung über Azure DevOps, GitHub, Docker Hub und andere Quellen gehören.
 
 Azure bietet weitere Dienste, die Sie zum Hosten von Websites und Webanwendungen verwenden können. In den meisten Fällen sind Web-Apps die beste Wahl. Für eine Microservicearchitektur sollten Sie [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) in Betracht ziehen.
 Wenn Sie eine bessere Kontrolle über die virtuellen Computer benötigen, auf denen Ihr Code ausgeführt wird, können Sie [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) einsetzen.
-Weitere Informationen zur Wahl zwischen diesen Azure-Diensten finden Sie in einem [Vergleich von Azure App Service, Azure Virtual Machines, Azure Service Fabric und Azure Cloud Services](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm).
+Weitere Informationen zur Wahl zwischen diesen Azure-Diensten finden Sie in einem [Vergleich von Azure App Service, Azure Virtual Machines, Azure Service Fabric und Azure Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ### <a name="apply-updates-to-components"></a>Anwenden von Updates auf Komponenten
 
@@ -147,18 +147,18 @@ Werkzeugvorschläge finden Sie auf der [Open Web Application Security Project (O
 
 Bedrohungsmodellierung ist der Prozess, bei dem potenzielle Sicherheitsbedrohungen für Ihr Unternehmen und Ihre Anwendung identifiziert werden und dann sichergestellt wird, dass geeignete Risikominderungen wirksam sind. Der SDL gibt an, dass sich Teams während der Entwurfsphase mit der Bedrohungsmodellierung beschäftigen sollten, wenn die Lösung möglicher Probleme relativ einfach und kostengünstig ist. Durch Verwenden von Bedrohungsmodellierung in der Entwurfsphase können Sie Ihre Gesamtkosten für die Entwicklung erheblich verringern.
 
-Um den Prozess einer Bedrohungsmodellierung zu vereinfachen, haben wir das [SDL Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) so gestaltet, dass es auch für Leute geeignet ist, die keine Sicherheitsexperten sind. Dieses Tool erleichtert die Bedrohungsmodellierung für alle Entwickler, indem es eine klare Anleitung dazu bereitstellt, wie Bedrohungsmodelle zu erstellen und zu analysieren sind.
+Um den Prozess einer Bedrohungsmodellierung zu vereinfachen, haben wir das [SDL Threat Modeling Tool](threat-modeling-tool.md) so gestaltet, dass es auch für Leute geeignet ist, die keine Sicherheitsexperten sind. Dieses Tool erleichtert die Bedrohungsmodellierung für alle Entwickler, indem es eine klare Anleitung dazu bereitstellt, wie Bedrohungsmodelle zu erstellen und zu analysieren sind.
 
 Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)-Bedrohungen – Spoofing, Tampering (Manipulation), Repudiation (Nichtanerkennung), Information Disclosure (Veröffentlichung von Informationen), Denial of Service und Elevation of Privilege (Rechteerweiterungen) – über alle Vertrauensgrenzen hinweg hat sich als effektiver Weg erwiesen, Entwurfsfehler frühzeitig zu erkennen. In der folgende Tabelle sind die STRIDE-Bedrohungen sowie einige Beispiele für vorbeugende Maßnahmen aufgeführt, in denen Funktionen verwendet werden, die von Azure bereitgestellt werden. Diese vorbeugenden Maßnahmen funktionieren nicht in allen Situationen.
 
 | Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Spoofing               | Authentication        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
+| Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) von Azure.|
-| Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) Daten und Daten [während einer Übertragung](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit). |
-| Denial of Service      | Verfügbarkeit          | Überwachen Sie Leistungsmetriken auf potenzielle Denial of Service-Angriffe. Implementieren Sie Verbindungsfilter. [Azure DDoS-Schutz](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz vor DDoS-Angriffen dar.|
-| Rechteerweiterungen | Authorization         | Verwenden Sie Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
+| Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](../fundamentals/encryption-atrest.md) Daten und Daten [während einer Übertragung](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Denial of Service      | Verfügbarkeit          | Überwachen Sie Leistungsmetriken auf potenzielle Denial of Service-Angriffe. Implementieren Sie Verbindungsfilter. [Azure DDoS-Schutz](../../virtual-network/ddos-protection-overview.md#next-steps) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz vor DDoS-Angriffen dar.|
+| Rechteerweiterungen | Authorization         | Verwenden Sie Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
 
 ### <a name="reduce-your-attack-surface"></a>Verringern der Angriffsfläche
 
@@ -203,21 +203,21 @@ Das können Sie tun, um einen identitätszentrierten Ansatz bei der Entwicklung 
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>Erzwingen von mehrstufiger Authentifizierung für Benutzer
 
-Verwenden Sie eine zweistufige Authentifizierung. Die zweistufige Authentifizierung ist der aktuelle Standard für die Authentifizierung und Autorisierung, da sie die Sicherheitsprobleme eliminiert, die für Authentifizierungsmethoden mit Benutzername und Kennwort typisch sind. Der Zugriff auf die Azure-Verwaltungsschnittstellen (Azure-Portal/Remote-PowerShell) und auf kundenorientierte Dienste sollte für die Verwendung von [Azure Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) (mehrstufige Authentifizierung) konzipiert und konfiguriert sein.
+Verwenden Sie eine zweistufige Authentifizierung. Die zweistufige Authentifizierung ist der aktuelle Standard für die Authentifizierung und Autorisierung, da sie die Sicherheitsprobleme eliminiert, die für Authentifizierungsmethoden mit Benutzername und Kennwort typisch sind. Der Zugriff auf die Azure-Verwaltungsschnittstellen (Azure-Portal/Remote-PowerShell) und auf kundenorientierte Dienste sollte für die Verwendung von [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) (mehrstufige Authentifizierung) konzipiert und konfiguriert sein.
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Verwenden von sicheren Authentifizierungs- und Autorisierungsplattformen
 
-Verwenden Sie von der Plattform bereitgestellte Authentifizierungs- und Autorisierungsmechanismen anstelle von benutzerdefiniertem Code. Dies empfiehlt sich, weil das Entwickeln von benutzerdefiniertem Authentifizierungscode Fehlerrisiko darstellen kann. Kommerzieller Code (etwa von Microsoft) wird häufig umfangreich auf Sicherheit geprüft. [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ist die Lösung für Identitäts- und Zugriffsverwaltung von Azure. Diese Azure AD-Tools und -Dienste unterstützen bei der sicheren Entwicklung:
+Verwenden Sie von der Plattform bereitgestellte Authentifizierungs- und Autorisierungsmechanismen anstelle von benutzerdefiniertem Code. Dies empfiehlt sich, weil das Entwickeln von benutzerdefiniertem Authentifizierungscode Fehlerrisiko darstellen kann. Kommerzieller Code (etwa von Microsoft) wird häufig umfangreich auf Sicherheit geprüft. [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) ist die Lösung für Identitäts- und Zugriffsverwaltung von Azure. Diese Azure AD-Tools und -Dienste unterstützen bei der sicheren Entwicklung:
 
-- [Azure AD Identity Platform (Azure AD für Entwickler)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) ist ein Cloudidentitätsdienst, mit dem Entwickler Apps erstellen können, in denen Benutzer sicher angemeldet werden. Azure AD unterstützt sowohl Entwickler, die branchenspezifische Apps für Einzelmandanten erstellen, als auch Entwickler, die mehrinstanzenfähige Apps (Apps für mehrere Mandanten) entwickeln. Zusätzlich zur einfachen Anmeldung können Apps, die mit Azure AD erstellt wurden, Microsoft-APIs und benutzerdefinierte APIs aufrufen, die auf Basis der Azure AD-Plattform erstellt wurden. Azure AD Identity Platform unterstützt die branchenüblichen Protokolle, etwa OAuth 2.0 und OpenID Connect.
+- [Azure AD Identity Platform (Azure AD für Entwickler)](../../active-directory/develop/about-microsoft-identity-platform.md) ist ein Cloudidentitätsdienst, mit dem Entwickler Apps erstellen können, in denen Benutzer sicher angemeldet werden. Azure AD unterstützt sowohl Entwickler, die branchenspezifische Apps für Einzelmandanten erstellen, als auch Entwickler, die mehrinstanzenfähige Apps (Apps für mehrere Mandanten) entwickeln. Zusätzlich zur einfachen Anmeldung können Apps, die mit Azure AD erstellt wurden, Microsoft-APIs und benutzerdefinierte APIs aufrufen, die auf Basis der Azure AD-Plattform erstellt wurden. Azure AD Identity Platform unterstützt die branchenüblichen Protokolle, etwa OAuth 2.0 und OpenID Connect.
 
-- [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) ist ein Identitätsverwaltungsdienst, mit dem Sie anpassen und steuern können, wie sich Kunden registrieren und anmelden und wie die Kunden ihre Profile verwalten, wenn sie Ihre Anwendungen verwenden. Dazu gehören Anwendungen, die für iOS, Android und .NET sowie andere Systeme entwickelt wurden. Azure AD B2C ermöglicht diese Aktionen und schützt gleichzeitig Kundenidentitäten.
+- [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) ist ein Identitätsverwaltungsdienst, mit dem Sie anpassen und steuern können, wie sich Kunden registrieren und anmelden und wie die Kunden ihre Profile verwalten, wenn sie Ihre Anwendungen verwenden. Dazu gehören Anwendungen, die für iOS, Android und .NET sowie andere Systeme entwickelt wurden. Azure AD B2C ermöglicht diese Aktionen und schützt gleichzeitig Kundenidentitäten.
 
 #### <a name="apply-the-principle-of-least-privilege"></a>Anwenden des Prinzips der geringsten Rechte
 
 Das Konzept der [geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) bedeutet, dass Benutzern Zugriff und Kontrolle genau in dem Umfang gewährt wird, den sie zum Erledigen ihrer Aufgaben benötigen, und mehr nicht.
 
-Benötigt ein Softwareentwickler die Rechte eines Domänenadministrators? Benötigt ein Verwaltungsassistent Zugriff auf administrative Komponenten auf seinem Personalcomputer? Bewerten von Zugriff auf Software unterscheidet sich davon nicht. Wenn Sie [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) verwenden, um Benutzern unterschiedliche Fähigkeiten und Befugnisse in Ihrer Anwendung zu gewähren, werden Sie nicht jedem Zugriff auf alles ermöglichen. Durch Beschränken des Zugriffs auf die Elemente, die für jede Rolle erforderlich sind, beschränken Sie das Risiko, dass ein Sicherheitsproblem auftritt.
+Benötigt ein Softwareentwickler die Rechte eines Domänenadministrators? Benötigt ein Verwaltungsassistent Zugriff auf administrative Komponenten auf seinem Personalcomputer? Bewerten von Zugriff auf Software unterscheidet sich davon nicht. Wenn Sie [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md) verwenden, um Benutzern unterschiedliche Fähigkeiten und Befugnisse in Ihrer Anwendung zu gewähren, werden Sie nicht jedem Zugriff auf alles ermöglichen. Durch Beschränken des Zugriffs auf die Elemente, die für jede Rolle erforderlich sind, beschränken Sie das Risiko, dass ein Sicherheitsproblem auftritt.
 
 Achten Sie darauf, dass in Ihrer Anwendung in allen Zugriffsmustern das [Prinzip der geringsten Rechte](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) erzwungen wird.
 
@@ -226,7 +226,7 @@ Achten Sie darauf, dass in Ihrer Anwendung in allen Zugriffsmustern das [Prinzip
 
 #### <a name="implement-just-in-time-access"></a>Implementieren von Just-In-Time-Zugriff
 
-Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rechte verfügbar gemacht werden, weiter zu verkürzen. Verwenden Sie [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity), um wie folgt vorzugehen:
+Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rechte verfügbar gemacht werden, weiter zu verkürzen. Verwenden Sie [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity), um wie folgt vorzugehen:
 
 - Erteilen der Berechtigungen, die Benutzer benötigen, nur Just-In-Time.
 - Zuweisen von Rollen für eine verkürzte Dauer mit der Gewissheit, dass die Berechtigungen automatisch widerrufen werden.
@@ -242,7 +242,7 @@ Die beste Möglichkeit, diese Art von Angriff abzuwehren, besteht darin, den Ben
 
 Der Verlust von Schlüsseln und Anmeldeinformationen ist ein verbreitetes Problem. Noch schlimmer als der Verlust von Schlüsseln und Anmeldeinformationen ist es, wenn nicht autorisierte Personen an Ihre Schlüssel und Anmeldeinformationen gelangen. Angreifer können automatisierte und manuelle Techniken nutzen, um nach Schlüsseln und Geheimnissen zu suchen, die in Coderepositorys wie GitHub gespeichert sind. Legen Sie keine Schlüssel und Geheimnisse in diesen öffentlichen Coderepositorys oder auf irgendeinem anderen Server ab.
 
-Legen Sie Ihre Schlüssel, Zertifikate, Geheimnisse und Verbindungszeichenfolgen immer in einer Schlüsselverwaltungslösung ab. Sie können eine zentrale Lösung verwenden, in der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. Azure stellt Ihnen mit [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) ein HSM in der Cloud zur Verfügung.
+Legen Sie Ihre Schlüssel, Zertifikate, Geheimnisse und Verbindungszeichenfolgen immer in einer Schlüsselverwaltungslösung ab. Sie können eine zentrale Lösung verwenden, in der Schlüssel und Geheimnisse in Hardwaresicherheitsmodulen (HSMs) gespeichert werden. Azure stellt Ihnen mit [Azure Key Vault](../../key-vault/key-vault-whatis.md) ein HSM in der Cloud zur Verfügung.
 
 Key Vault ist ein *Geheimnisspeicher*: Es ist eine zentraler Clouddienst zum Speichern von Anwendungsgeheimnissen. Key Vault schützt Ihre vertraulichen Daten, indem es Anwendungsgeheimnisse an einem einzigen zentralen Ort aufbewahrt und sicheren Zugriff, Berechtigungssteuerung und Zugriffsprotokollierung bietet.
 
@@ -267,7 +267,7 @@ Kennzeichnen Sie alle maßgeblichen Daten als sensibel, wenn Sie Ihre Datenforma
 #### <a name="use-encryption"></a>Verwenden von Verschlüsselung
 
 Schützen von Daten sollte ein wesentlicher Bestandteil Ihrer Sicherheitsstrategie sein.
-Wenn Ihre Daten in einer Datenbank gespeichert sind oder wenn die Daten zwischen Standorten hin und her gesendet werden, verwenden Sie Verschlüsselung von [ruhenden Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) (während diese sich in der Datenbank befinden) und Verschlüsselung von [Daten während der Übertragung](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) (auf deren Weg zu und von einem Benutzer, zu und von einer Datenbank oder API oder zu und von einem Dienstendpunkt). Es empfiehlt sich, für den Austausch von Daten immer SSL/TLS-Protokolle zu verwenden. Achten Sie darauf, dass Sie die neueste Version von TLS für Verschlüsselung verwenden (aktuell ist dies Version 1.2).
+Wenn Ihre Daten in einer Datenbank gespeichert sind oder wenn die Daten zwischen Standorten hin und her gesendet werden, verwenden Sie Verschlüsselung von [ruhenden Daten](../fundamentals/encryption-atrest.md) (während diese sich in der Datenbank befinden) und Verschlüsselung von [Daten während der Übertragung](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit) (auf deren Weg zu und von einem Benutzer, zu und von einer Datenbank oder API oder zu und von einem Dienstendpunkt). Es empfiehlt sich, für den Austausch von Daten immer SSL/TLS-Protokolle zu verwenden. Achten Sie darauf, dass Sie die neueste Version von TLS für Verschlüsselung verwenden (aktuell ist dies Version 1.2).
 
 #### <a name="avoid-hard-coding"></a>Vermeiden von Hartcodierung
 
@@ -277,7 +277,7 @@ Wenn Sie Kommentare in Ihren Code einfügen, müssen Sie darauf achten, dass Sie
 
 Grundsätzlich sollten Sie davon ausgehen, dass alles in Ihrem Entwicklungsprojekt öffentlich bekannt ist, sobald das Projekt bereitgestellt wurde. Vermeiden Sie es, sensible Daten jeglicher Art in das Projekt aufzunehmen.
 
-An früherer Stelle ist [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) erläutert. Sie können Key Vault verwenden, um Geheimnisse, etwa Schlüssel und Kennwörter, zu speichern, anstatt sie hartzucodieren. Wenn Sie Key Vault zusammen mit verwalteten Identitäten für Azure-Ressourcen verwenden, kann Ihre Azure-Webanwendung einfach und sicher auf geheime Konfigurationswerte zugreifen, ohne irgendwelche Geheimnisse in Ihrer Quellcodeverwaltung oder Konfiguration zu speichern. Weitere Informationen hierzu finden Sie unter [Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+An früherer Stelle ist [Azure Key Vault](../../key-vault/key-vault-whatis.md) erläutert. Sie können Key Vault verwenden, um Geheimnisse, etwa Schlüssel und Kennwörter, zu speichern, anstatt sie hartzucodieren. Wenn Sie Key Vault zusammen mit verwalteten Identitäten für Azure-Ressourcen verwenden, kann Ihre Azure-Webanwendung einfach und sicher auf geheime Konfigurationswerte zugreifen, ohne irgendwelche Geheimnisse in Ihrer Quellcodeverwaltung oder Konfiguration zu speichern. Weitere Informationen hierzu finden Sie unter [Verwalten von Geheimnissen in Ihren Server-Apps mit Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Implementieren von ausfallsicheren Maßnahmen
 
@@ -299,7 +299,7 @@ Stellen Sie Folgendes sicher:
 
 - Ausnahmen werden protokolliert und stellen genügend Informationen für die Forensik oder die Gefahrenabwehrteams zur Verfügung.
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) bietet eine erstklassige Umgebung für das [Behandeln von Fehlern und Ausnahmen](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling), die durch abhängige Systeme verursacht werden. Mit Logic Apps können Sie Workflows erstellen, um Aufgaben und Prozesse zu automatisieren, in denen Apps, Daten, Systeme und Dienste in Unternehmen und Organisationen integriert sind.
+[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) bietet eine erstklassige Umgebung für das [Behandeln von Fehlern und Ausnahmen](../../logic-apps/logic-apps-exception-handling.md), die durch abhängige Systeme verursacht werden. Mit Logic Apps können Sie Workflows erstellen, um Aufgaben und Prozesse zu automatisieren, in denen Apps, Daten, Systeme und Dienste in Unternehmen und Organisationen integriert sind.
 
 ### <a name="use-logging-and-alerting"></a>Verwenden von Protokollierung und Benachrichtigungen
 

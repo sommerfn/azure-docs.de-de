@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780659"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946520"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -27,7 +27,7 @@ Diese Vorlage für Azure Security and Compliance enthält Anleitungen und Automa
 
 Diese Vorlage wurde vom UK National Cyber Security Centre (NCSC) überprüft und erfüllt die NCSC 14-Cloudsicherheitsprinzipien.
 
-Für die Architektur werden Azure-[Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)-Komponenten verwendet, um eine Umgebung bereitzustellen, mit der Kunden den Kostenaufwand und die Komplexität vermeiden können, die mit dem Kaufen von Softwarelizenzen und dem Verwalten der zugrunde liegenden Anwendungsinfrastruktur und Middleware oder Entwicklungstools und anderer Ressourcen verbunden ist. Kunden verwalten die Anwendungen und Dienste, die sie entwickeln, und konzentrieren sich auf die Bereitstellung des geschäftlichen Nutzens, während Microsoft Azure die anderen Azure-Ressourcen verwaltet, z.B. virtuelle Computer, Speicher und Netzwerk. So wird ein größerer Anteil der [geteilten Zuständigkeit](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) für die Verwaltung der Infrastruktur auf die Azure Platform verlagert. [Azure App Services](https://azure.microsoft.com/services/app-service/) bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes Git-Repository als Standarddienste. Durch die Verwendung von App Services können sich Entwickler auf die Erzielung des geschäftlichen Nutzens konzentrieren, ohne dass der Aufwand für die Verwaltung der Infrastruktur anfällt. Es ist möglich, völlig neue Java-, PHP-, Node.js-, Python-, HTML- oder C#-Webanwendungen zu erstellen oder auch vorhandene Cloud- oder lokale Webanwendungen zu Azure App Service zu migrieren (hierfür ist aber die Durchführung von sorgfältigen Prüfungen und Tests zur Sicherstellung der Leistung erforderlich).
+Für die Architektur werden Azure-[Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)-Komponenten verwendet, um eine Umgebung bereitzustellen, mit der Kunden den Kostenaufwand und die Komplexität vermeiden können, die mit dem Kaufen von Softwarelizenzen und dem Verwalten der zugrunde liegenden Anwendungsinfrastruktur und Middleware oder Entwicklungstools und anderer Ressourcen verbunden ist. Kunden verwalten die Anwendungen und Dienste, die sie entwickeln, und konzentrieren sich auf die Bereitstellung des geschäftlichen Nutzens, während Microsoft Azure die anderen Azure-Ressourcen verwaltet, z.B. virtuelle Computer, Speicher und Netzwerk. So wird ein größerer Anteil der [geteilten Zuständigkeit](../fundamentals/paas-deployments.md) für die Verwaltung der Infrastruktur auf die Azure Platform verlagert. [Azure App Services](https://azure.microsoft.com/services/app-service/) bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes Git-Repository als Standarddienste. Durch die Verwendung von App Services können sich Entwickler auf die Erzielung des geschäftlichen Nutzens konzentrieren, ohne dass der Aufwand für die Verwaltung der Infrastruktur anfällt. Es ist möglich, völlig neue Java-, PHP-, Node.js-, Python-, HTML- oder C#-Webanwendungen zu erstellen oder auch vorhandene Cloud- oder lokale Webanwendungen zu Azure App Service zu migrieren (hierfür ist aber die Durchführung von sorgfältigen Prüfungen und Tests zur Sicherstellung der Leistung erforderlich).
 
 In dieser Vorlage liegt der Schwerpunkt auf der Bereitstellung einer webbasierten [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)-Schnittstelle als sicheres Fundament für öffentliche Benutzer und Backoffice-Benutzer. Beim Entwurfsszenario dieser Vorlage wird die Nutzung von in Azure gehosteten webbasierten Diensten berücksichtigt, bei der ein öffentlicher Benutzer sensible Daten auf sichere Weise übermitteln, anzeigen und verwalten kann. Außerdem kann ein Backoffice-Bediener oder ein Mitarbeiter einer Behörde die sensiblen Daten sicher verarbeiten, die vom öffentlichen Benutzer übermittelt wurden. Anwendungsfälle für dieses Szenario können Folgendes umfassen:
 
@@ -72,18 +72,18 @@ Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung 
 
 #### <a name="identity-and-authentication"></a>Identität und Authentifizierung
 
-Mit dieser Vorlage wird sichergestellt, dass der Zugriff auf die Ressourcen mit Diensten für die Verzeichnis- und Identitätsverwaltung geschützt ist. Bei dieser Architektur wird die [Identität vollständig als Sicherheitsbereich genutzt](https://docs.microsoft.com/azure/security/security-paas-deployments). 
+Mit dieser Vorlage wird sichergestellt, dass der Zugriff auf die Ressourcen mit Diensten für die Verzeichnis- und Identitätsverwaltung geschützt ist. Bei dieser Architektur wird die [Identität vollständig als Sicherheitsbereich genutzt](../fundamentals/paas-deployments.md). 
 
 Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-Umgebung:
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Alle Benutzer für die Lösung wurden in Azure Active Directory erstellt, so auch die Benutzer, die auf die SQL-Datenbank zugreifen.
-- Die Authentifizierung gegenüber der Webanwendung für den Bediener und der Zugriff zur Verwaltung der Azure-Ressourcen wird über Azure AD durchgeführt. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Die Authentifizierung gegenüber der Webanwendung für den Bediener und der Zugriff zur Verwaltung der Azure-Ressourcen wird über Azure AD durchgeführt. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 - Für die Verschlüsselung der Datenbankspalten wird Azure AD verwendet, um die Anwendung für Azure SQL-Datenbank zu authentifizieren. Weitere Informationen finden Sie unter [Always Encrypted: Schützen von vertraulichen Daten in einer SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Die für Bürger bestimmte Webanwendung wird für den öffentlichen Zugriff konfiguriert. Um die Kontoerstellung und Authentifizierung per Active Directory oder einen Anbieter von Social Media-Identitäten zuzulassen, kann bei Bedarf [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) integriert werden.
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) erkennt potenzielle Sicherheitsrisiken und risikobehaftete Konten, stellt Empfehlungen zur Verbesserung des Sicherheitsstatus der Identitäten Ihrer Organisation bereit, konfiguriert automatisierte Antworten auf erkannte verdächtige Aktionen, die im Zusammenhang mit Identitäten Ihrer Organisation stehen, untersucht verdächtige Vorfälle und führt die entsprechenden Aktionen zu deren Behebung aus.
+- [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) erkennt potenzielle Sicherheitsrisiken und risikobehaftete Konten, stellt Empfehlungen zur Verbesserung des Sicherheitsstatus der Identitäten Ihrer Organisation bereit, konfiguriert automatisierte Antworten auf erkannte verdächtige Aktionen, die im Zusammenhang mit Identitäten Ihrer Organisation stehen, untersucht verdächtige Vorfälle und führt die entsprechenden Aktionen zu deren Behebung aus.
 - Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) ermöglicht eine präzise Zugriffsverwaltung für Azure. Der Zugriff auf das Abonnement ist auf den Abonnementadministrator beschränkt, und der Zugriff auf Azure Key Vault ist nur auf Benutzer beschränkt, die aufgrund der Schlüsselverwaltung Zugriff benötigen.
-- Durch die Nutzung des [bedingten Zugriffs mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) können Kunden zusätzliche Sicherheitskontrollen für den Zugriff auf Apps oder Benutzer in ihrer Umgebung basierend auf bestimmten Bedingungen erzwingen, z.B. Standort, Gerät, Status und Anmelderisiko.
-- [Azure DDoS Protection](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) in Kombination mit den bewährten Methoden für den Anwendungsentwurf ermöglicht die Verteidigung gegen DDoS-Angriffe und verfügt über Always On-Datenverkehrsüberwachung und Echtzeitabwehr von häufigen Angriffen auf Netzwerkebene. Mit einer PaaS-Architektur ist der DDoS-Schutz auf Plattformebene für den Kunden transparent und in die Plattform integriert. Es ist aber wichtig zu beachten, dass der Kunde für das Entwerfen der Anwendungssicherheit verantwortlich ist.
+- Durch die Nutzung des [bedingten Zugriffs mit Azure Active Directory](../../active-directory/active-directory-conditional-access-azure-portal.md) können Kunden zusätzliche Sicherheitskontrollen für den Zugriff auf Apps oder Benutzer in ihrer Umgebung basierend auf bestimmten Bedingungen erzwingen, z.B. Standort, Gerät, Status und Anmelderisiko.
+- [Azure DDoS Protection](../fundamentals/paas-deployments.md#security-advantages-of-a-paas-cloud-service-model) in Kombination mit den bewährten Methoden für den Anwendungsentwurf ermöglicht die Verteidigung gegen DDoS-Angriffe und verfügt über Always On-Datenverkehrsüberwachung und Echtzeitabwehr von häufigen Angriffen auf Netzwerkebene. Mit einer PaaS-Architektur ist der DDoS-Schutz auf Plattformebene für den Kunden transparent und in die Plattform integriert. Es ist aber wichtig zu beachten, dass der Kunde für das Entwerfen der Anwendungssicherheit verantwortlich ist.
 
 #### <a name="data-in-transit"></a>Daten während der Übertragung
 
@@ -112,14 +112,14 @@ Mit dieser Vorlage werden die folgenden App Service-Features bereitgestellt:
 - App Service-Plantarif [Standard](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)
 - Mehrere App Service-[Bereitstellungsslots](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, Vorschauversion, QA, UAT und natürlich Produktion (Standardslot).
 - [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/app-service/overview-managed-identity) für die Verbindungsherstellung mit [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (kann auch verwendet werden, um Zugriff auf [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) zu ermöglichen) 
-- Integration mit [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) zur Überwachung der Leistung
-- [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
-- [Metrikwarnungen](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
+- Integration mit [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) zur Überwachung der Leistung
+- [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Metrikwarnungen](../../azure-monitor/app/alerts.md) 
 - [Azure API-Apps](https://azure.microsoft.com/services/app-service/api/) 
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 
-SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über verwaltete SQL-Einzeldatenbanken, verwaltete SQL-Datenbanken in einem [Pool für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) sowie [verwaltete SQL-Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (Public Preview). Sie bietet eine [dynamisch skalierbare Leistung](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) und stellt Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
+SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über verwaltete SQL-Einzeldatenbanken, verwaltete SQL-Datenbanken in einem [Pool für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) sowie [verwaltete SQL-Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (Public Preview). Sie bietet eine [dynamisch skalierbare Leistung](../../sql-database/sql-database-purchase-models.md) und stellt Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
 
 Azure SQL-Datenbank in dieser Vorlage
 
@@ -130,7 +130,7 @@ In der Azure SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaß
 - Mithilfe der [Azure AD-Authentifizierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) können Sie die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten an einem zentralen Ort verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung.
 - Verwenden von Azure Active Directory für die Datenbankverwaltung
 - [Überwachungsprotokolle](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) für Speicherkonten
-- [Metrikwarnungen](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) für fehlgeschlagene DB-Verbindungen
+- [Metrikwarnungen](../../azure-monitor/app/alerts.md) für fehlgeschlagene DB-Verbindungen
 - [SQL-Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 - [Always Encrypted-Spalten](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
@@ -147,7 +147,7 @@ In dieser Vorlage werden die folgenden Azure Storage-Komponenten genutzt:
 
 #### <a name="data-at-rest"></a>Ruhende Daten
 
-Bei der [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) werden sämtliche in Azure Storage geschriebenen Daten per 256-Bit-AES-Verschlüsselung verschlüsselt. Dies ist eines der sichersten verfügbaren Blockverschlüsselungsverfahren. Mit SSE können von Microsoft verwaltete oder [eigene Verschlüsselungsschlüssel](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys) verwendet werden.
+Bei der [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) werden sämtliche in Azure Storage geschriebenen Daten per 256-Bit-AES-Verschlüsselung verschlüsselt. Dies ist eines der sichersten verfügbaren Blockverschlüsselungsverfahren. Mit SSE können von Microsoft verwaltete oder [eigene Verschlüsselungsschlüssel](../../storage/common/storage-encryption-keys-portal.md) verwendet werden.
 
 Speicherkonten können mit [VNET-Dienstendpunkten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) geschützt werden, indem [VNET-Regeln](https://docs.microsoft.com/azure/storage/common/storage-network-security) verwendet werden.
 
@@ -181,7 +181,7 @@ Ausführliche Informationen zum Schützen von Azure Storage finden Sie im [Siche
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Wird zum Überwachen von Live-Webanwendungen verwendet und erkennt automatisch Leistungsanomalien, analysiert die Leistung, diagnostiziert Probleme und liefert Informationen dazu, wie Benutzer mit der App interagieren. Application Insights kann auf Plattformen bereitgestellt werden (z.B. .NET, Node.js und Java EE), die lokal oder in der Cloud gehostet werden. Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Wird zum Überwachen von Live-Webanwendungen verwendet und erkennt automatisch Leistungsanomalien, analysiert die Leistung, diagnostiziert Probleme und liefert Informationen dazu, wie Benutzer mit der App interagieren. Application Insights kann auf Plattformen bereitgestellt werden (z.B. .NET, Node.js und Java EE), die lokal oder in der Cloud gehostet werden. Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools.
 
 #### <a name="application-insights-in-this-blueprint"></a>Application Insights in dieser Vorlage
 
@@ -195,7 +195,7 @@ Mit [Azure-Aktivitätsprotokollen](https://docs.microsoft.com/azure/azure-monito
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ermöglicht Azure-Diensten die Kernüberwachung durch die Sammlung von Metriken, Aktivitätsprotokollen und Diagnoseprotokollen. Azure Monitor stellt grundlegende Infrastrukturmetriken und Protokolle für die meisten Dienste in Microsoft Azure bereit.
+[Azure Monitor](../../azure-monitor/overview.md) ermöglicht Azure-Diensten die Kernüberwachung durch die Sammlung von Metriken, Aktivitätsprotokollen und Diagnoseprotokollen. Azure Monitor stellt grundlegende Infrastrukturmetriken und Protokolle für die meisten Dienste in Microsoft Azure bereit.
 
 ## <a name="threat-model"></a>Bedrohungsmodell
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 23e7db25e5ebed2a23b4d38bcfe9597b77c6b04b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620741"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780459"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Suchen nach Bedrohungen mit Azure Sentinel Preview
 
@@ -41,7 +41,7 @@ Mit Azure Sentinel-Bedrohungssuche (Ermittlung) können Sie die folgenden Funkti
 
 - Leistungsfähige Abfragesprache mit IntelliSense: Aufgesetzt auf eine Abfragesprache, die Ihnen die Flexibilität bietet, die Sie benötigen, um die Bedrohungssuche auf die nächste Stufe zu heben.
 
-- Erstellen Sie Ihre eigenen Lesezeichen: Während des Bedrohungssuchprozesses stoßen Sie möglicherweise auf Übereinstimmungen oder Ergebnisse, Dashboards oder Aktivitäten, die ungewöhnlich oder verdächtig aussehen. Um diese Elemente zu markieren, damit Sie zukünftig zu ihnen zurückkehren können, verwenden Sie die Lesezeichenfunktionalität. Mit Lesezeichen können Sie Elemente speichern, damit diese später zum Erstellen eines zu untersuchenden Falls verwendet werden können. Weitere Informationen über Lesezeichen finden Sie unter „Verwenden von [Lesezeichen in Bedrohungssuche]“.
+- Erstellen Sie Ihre eigenen Lesezeichen: Während des Bedrohungssuchprozesses stoßen Sie möglicherweise auf Übereinstimmungen oder Ergebnisse, Dashboards oder Aktivitäten, die ungewöhnlich oder verdächtig aussehen. Um diese Elemente zu markieren, damit Sie zukünftig zu ihnen zurückkehren können, verwenden Sie die Lesezeichenfunktionalität. Mit Lesezeichen können Sie Elemente speichern, damit diese später zum Erstellen eines zu untersuchenden Vorfalls verwendet werden können. Weitere Informationen über Lesezeichen finden Sie unter „Verwenden von [Lesezeichen in Bedrohungssuche]“.
 
 - Verwenden von Notebooks, um Untersuchungen zu automatisieren: Notebooks sind wie Schritt-für-Schritt-Playbooks, die Sie erstellen können, um die Schritte einer Untersuchung zu durchlaufen und nach Bedrohungen zu suchen.  Notebooks kapseln alle Bedrohungssuchschritte in einem wiederverwendbaren Playbook, das für andere Personen in Ihrer Organisation freigegeben werden kann. 
 - Fragen Sie die gespeicherten Daten ab: Die Daten sind in Tabellen zugänglich, die Sie abfragen können. Beispielsweise können Sie Prozesserstellung, DNS-Ereignisse und viele andere Ereignistypen abfragen.

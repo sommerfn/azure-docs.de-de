@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45c42077d6f07ef847d2b95d4c24310f51abca4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621837"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947042"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -138,13 +138,13 @@ Bevor Sie die TelcoGenerator-App starten, müssen Sie sie so konfigurieren, dass
    telcodatagen.exe 1000 0.2 2
    ```
 
-    Die Parameter lauten wie folgt: 
+   Die Parameter lauten wie folgt: 
 
-    * Anzahl der KDS pro Stunde 
-    * Wahrscheinlichkeit eines SIM-Kartenbetrugs: Die Häufigkeit als Prozentsatz aller Anrufe, mit der die App einen betrügerischen Anruf simulieren soll. Der Wert „0.2“ bedeutet, dass etwa 20 Prozent der Anrufdatensätze betrügerische Anrufe simulieren.
-    * Dauer in Stunden: Die Anzahl der Stunden, in denen die App ausgeführt werden soll. Sie können die App auch jederzeit beenden, indem Sie in der Befehlszeile Strg+C drücken.
+   * Anzahl der KDS pro Stunde 
+   * Wahrscheinlichkeit eines SIM-Kartenbetrugs: Die Häufigkeit als Prozentsatz aller Anrufe, mit der die App einen betrügerischen Anruf simulieren soll. Der Wert „0.2“ bedeutet, dass etwa 20 Prozent der Anrufdatensätze betrügerische Anrufe simulieren.
+   * Dauer in Stunden: Die Anzahl der Stunden, in denen die App ausgeführt werden soll. Sie können die App auch jederzeit beenden, indem Sie in der Befehlszeile Strg+C drücken.
 
-    Nach wenigen Sekunden werden auf dem Bildschirm in der App die Telefonanrufdatensätze angezeigt, während diese an den Event Hub gesendet werden.
+   Nach wenigen Sekunden werden auf dem Bildschirm in der App die Telefonanrufdatensätze angezeigt, während diese an den Event Hub gesendet werden.
 
 Zu einigen wichtigen Feldern dieser Anwendung zur Betrugserkennung in Echtzeit zählen Folgende:
 
@@ -188,7 +188,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.   |
-   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
+   |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
    |Event Hub-Namespace  |  asa-eh-ns-demo |  Geben Sie den Namen des Event Hub-Namespace ein.   |
    |Event Hub-Name  | asa-eh-frauddetection-demo | Wählen Sie den Namen Ihres Event Hubs aus.   |
    |Event Hub-Richtlinienname  | asa-policy-manage-demo | Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben.   |
@@ -358,7 +358,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
-   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
+   |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |Speicherkonto  |  asaehstorage |  Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein. |
    |Container  | asa-fraudulentcalls-demo | Wählen Sie „Neu erstellen“ aus, und geben Sie einen Containernamen ein. |
 

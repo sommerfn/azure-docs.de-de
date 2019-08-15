@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5def34b4e3e7227daf96d952457869658bbce61e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076938"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855272"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
 
@@ -66,7 +66,7 @@ Standardmäßig lauscht SQL Server über den bekannten Port 1433. Konfigurieren 
 
 Sie haben zwei Möglichkeiten, dies nach der Bereitstellung zu konfigurieren:
 
-- Wählen Sie für Resource Manager-VMs **Sicherheit** in der [SQL-VM-Ressource](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) aus. Sie finden dort eine Option zum Ändern des Ports.
+- Wählen Sie für Resource Manager-VMs **Sicherheit** in der [SQL-VM-Ressource](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) aus. Sie finden dort eine Option zum Ändern des Ports.
 
   ![Änderung des TCP-Ports im Portal](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

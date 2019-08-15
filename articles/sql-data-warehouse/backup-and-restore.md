@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84ad88ef738f798103a1d5bf8f9c8504433686a7
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 90544e182eb25f53232cee9a4dd0c05bd25508a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653203"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988469"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 
@@ -101,7 +101,7 @@ Wenn Sie eine direkte Wiederherstellung über ein Abonnement hinweg durchführen
 
 ## <a name="geo-redundant-restore"></a>Georedundante Wiederherstellung
 
-Sie können [Ihr Data Warehouse in einer beliebigen Region wiederherstellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region-using-powershell), die SQL Data Warehouse auf der gewählten Leistungsebene unterstützt.
+Sie können [Ihr Data Warehouse in einer beliebigen Region wiederherstellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-from-geo-backup#restore-from-an-azure-geographical-region-through-powershell), die SQL Data Warehouse auf der gewählten Leistungsebene unterstützt.
 
 > [!NOTE]
 > Zum Ausführen einer georedundanten Wiederherstellung müssen Sie dieses Feature nicht deaktiviert haben.

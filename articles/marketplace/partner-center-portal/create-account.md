@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668345"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955570"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -71,7 +71,7 @@ Vielen Dank, dass Sie ein Konto im Partner Center erstellt haben! Nun gelangen S
 
 Wenn Ihr Konto vom [Cloud-Partnerportal (CPP)](https://cloudpartner.azure.com) migriert wurde, müssen Sie kein neues Partner Center-Konto erstellen. Sie haben jedoch einen benutzerdefinierten Link zu Ihrem neuen Partner Center-Konto per E-Mail und in einer Bannerbenachrichtigung erhalten, die nach der Anmeldung bei Ihrem vorhandenen CPP-Konto angezeigt wird.
 
-Nachdem Sie Ihr neues Partner Center-Konto durch Aufrufen des benutzerdefinierten Links aktiviert haben, können Sie zu Ihrem Konto zurückkehren, indem Sie das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/) in Partner Center öffnen.
+Nachdem Sie Ihr neues Partner Center-Konto durch Aufrufen des benutzerdefinierten Links aktiviert haben, können Sie zu Ihrem Konto zurückkehren, indem Sie das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in Partner Center öffnen.
 
 Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zusammen mit zuvor eingerichteten Informationen zum Auszahlungsprofil des Kontos, Benutzerkonten und -berechtigungen und den dem CPP-Konto zugeordneten aktiven Angeboten zu Ihrem neuen Partner Center-Konto migriert. 
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609499"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946543"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint: Dreischichtige IaaS-Webanwendungen für UK OFFICIAL
 
@@ -141,7 +141,7 @@ Storage
 
 **Gateway**: [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) stellt Verbindungen zwischen den Routern im lokalen Netzwerk und dem Produktions-VNET bereit.
 
-**Internetgateway und öffentliche IP-Adresse:** Das Internetgateway macht Anwendungsdienste über das Internet für Benutzer verfügbar. Datenverkehr, der auf diese Dienste zugreift, ist mithilfe eines [Application Gateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) geschützt, das Funktionen zum Routing in Schicht 7 und Lastenausgleich mit Schutz durch die Web Application Firewall (WAF) bietet.
+**Internetgateway und öffentliche IP-Adresse:** Das Internetgateway macht Anwendungsdienste über das Internet für Benutzer verfügbar. Datenverkehr, der auf diese Dienste zugreift, ist mithilfe eines [Application Gateways](../../application-gateway/overview.md) geschützt, das Funktionen zum Routing in Schicht 7 und Lastenausgleich mit Schutz durch die Web Application Firewall (WAF) bietet.
 
 **Verwaltungs-VNET:** Dieses [VNET](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) enthält Ressourcen, die Verwaltungs- und Überwachungsfunktionen für die im Produktions-VNET ausgeführten Workloads implementieren.
 
@@ -152,11 +152,11 @@ Storage
 **VNETs mit Netzwerkpeering:** Die VNETs für Produktion und Verwaltung sind mittels [VNET-Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) verbunden.
 Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen aber für alle Verbindungszwecke für diese virtuellen Computer als eine Ressource. Diese Netzwerke kommunizieren miteinander direkt mithilfe privater IP-Adressen. VNet-Peering hat zur Voraussetzung, dass sich die VNets in der gleichen Azure-Region befinden.
 
-**Netzwerksicherheitsgruppen:** [NSGs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) enthalten Zugriffssteuerungslisten, die Datenverkehr in einem VNET zulassen oder ablehnen. NSGs können dafür verwendet werden, den Datenverkehr auf der Ebene eines Subnetzes oder einzelner VMs zu schützen.
+**Netzwerksicherheitsgruppen:** [NSGs](../../virtual-network/virtual-network-vnet-plan-design-arm.md) enthalten Zugriffssteuerungslisten, die Datenverkehr in einem VNET zulassen oder ablehnen. NSGs können dafür verwendet werden, den Datenverkehr auf der Ebene eines Subnetzes oder einzelner VMs zu schützen.
 
 **Active Directory Domain Services (AD DS):** Diese Architektur weist eine dedizierte Bereitstellung von [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) auf.
 
-**Protokollierung und Überwachung:** Im [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) werden Vorgänge erfasst, die mit den Ressourcen in Ihrem Abonnement ausgeführt werden, etwa wer einen Vorgang eingeleitet hat, wann der Vorgang ausgeführt wurde, den Status des Vorgangs und die Werte anderer Eigenschaften, die Sie zur Untersuchung des Vorgangs heranziehen können. Das Azure-Aktivitätsprotokoll ist ein Azure-Plattformdienst, der alle Aktionen in einem Abonnement erfasst. Die Protokolle können bei Bedarf archiviert oder exportiert werden.
+**Protokollierung und Überwachung:** Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) werden Vorgänge erfasst, die mit den Ressourcen in Ihrem Abonnement ausgeführt werden, etwa wer einen Vorgang eingeleitet hat, wann der Vorgang ausgeführt wurde, den Status des Vorgangs und die Werte anderer Eigenschaften, die Sie zur Untersuchung des Vorgangs heranziehen können. Das Azure-Aktivitätsprotokoll ist ein Azure-Plattformdienst, der alle Aktionen in einem Abonnement erfasst. Die Protokolle können bei Bedarf archiviert oder exportiert werden.
 
 **Netzwerküberwachung und -warnung:** [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) ist ein Plattformdienst, der die Erfassung von Netzwerkpaketen, Datenflussprotokollierung, Topologietools und Diagnosen für Netzwerkdatenverkehr in Ihren VNETs bereitstellt.
 
@@ -168,11 +168,11 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 ### <a name="logging-and-audit"></a>Protokollierung und Überwachung
 
-**Überwachung:** [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) ist der Plattformdienst, der eine einzelne Quelle zum Überwachen des Aktivitätsprotokolls, der Metriken und der Diagnoseprotokolle aller Ihrer Azure-Ressourcen bereitstellt. Azure Monitor kann zum Visualisieren, Abfragen, Weiterleiten und Archivieren der Metriken und Protokolle konfiguriert werden, die aus Ressourcen in Azure stammen, und ggf. auf dieser Grundlage handeln. Es wird empfohlen, die ressourcenbasierte Zugriffssteuerung zum Schützen des Überwachungspfads zu verwenden, um Benutzern nicht die Möglichkeit zum Ändern der Protokolle zu geben.
+**Überwachung:** [Azure Monitor](../../azure-monitor/overview.md) ist der Plattformdienst, der eine einzelne Quelle zum Überwachen des Aktivitätsprotokolls, der Metriken und der Diagnoseprotokolle aller Ihrer Azure-Ressourcen bereitstellt. Azure Monitor kann zum Visualisieren, Abfragen, Weiterleiten und Archivieren der Metriken und Protokolle konfiguriert werden, die aus Ressourcen in Azure stammen, und ggf. auf dieser Grundlage handeln. Es wird empfohlen, die ressourcenbasierte Zugriffssteuerung zum Schützen des Überwachungspfads zu verwenden, um Benutzern nicht die Möglichkeit zum Ändern der Protokolle zu geben.
 
-**Aktivitätsprotokolle:** Konfigurieren Sie [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), um Einblicke in die Vorgänge zu geben, die von Ressourcen in Ihrem Abonnement ausgeführt wurden.
+**Aktivitätsprotokolle:** Konfigurieren Sie [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md), um Einblicke in die Vorgänge zu geben, die von Ressourcen in Ihrem Abonnement ausgeführt wurden.
 
-**Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von einer Ressource ausgegeben werden. Diese Protokolle können Windows-Ereignissystemprotokolle, Blob-, -Tabellen- und -Warteschlangenprotokolle umfassen.
+**Diagnoseprotokolle:** [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) sind alle Protokolle, die von einer Ressource ausgegeben werden. Diese Protokolle können Windows-Ereignissystemprotokolle, Blob-, -Tabellen- und -Warteschlangenprotokolle umfassen.
 
 **Firewallprotokolle:** Application Gateway stellt umfassende Diagnose- und Zugriffsprotokolle bereit. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
 
@@ -182,11 +182,11 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 **Active Directory Domain Services:** Diese Architektur bietet eine Bereitstellung von Active Directory Domain Services in Azure. Spezifische Empfehlungen zur Implementierung von Active Directory in Azure finden Sie in den folgenden Artikeln:
 
-[Erweitern von Active Directory Domain Services (AD DS) auf Azure](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain)
+[Erweitern von Active Directory Domain Services (AD DS) auf Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain)
 
 [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
-**Active Directory-Integration:** Als Alternative zu einer dedizierten AD DS-Architektur können Kunden [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity)-Integration oder [Active Directory in Azure als Mitglied einer lokalen Gesamtstruktur](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) verwenden.
+**Active Directory-Integration:** Als Alternative zu einer dedizierten AD DS-Architektur können Kunden [Azure Active Directory](/azure/architecture/reference-architectures/identity.md)-Integration oder [Active Directory in Azure als Mitglied einer lokalen Gesamtstruktur](/azure/architecture/reference-architectures/identity.md) verwenden.
 
 ### <a name="security"></a>Sicherheit
 
@@ -194,21 +194,21 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 Kunden können sich außerdem für die Verwendung eines [Verwaltungsmodells mit erhöhter Sicherheit](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) entscheiden, um die Umgebung beim Herstellen von Verbindungen mit dem Verwaltungs-VNet und der Jumpbox zu schützen. Es wird empfohlen, dass Kunden mit erhöhtem Sicherheitsbedarf eine [Arbeitsstation mit privilegiertem Zugriff](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) und eine RDGateway-Konfiguration verwendet werden. Die Verwendung von virtuellen Netzwerkappliances und öffentlichen/privaten DMZs bietet weitere Steigerungen der Sicherheit.
 
-**Schützen des Netzwerks:** [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSGs) werden für jedes Subnetz empfohlen, um eine zweite Schutzebene vor eingehendem Verkehr bereitzustellen, der ein fehlerhaft konfiguriertes oder deaktiviertes Gateway umgeht. Beispiel: [Resource Manager-Vorlage für das Bereitstellen einer NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)
+**Schützen des Netzwerks:** [Netzwerksicherheitsgruppen](../../virtual-network/virtual-network-vnet-plan-design-arm.md) (NSGs) werden für jedes Subnetz empfohlen, um eine zweite Schutzebene vor eingehendem Verkehr bereitzustellen, der ein fehlerhaft konfiguriertes oder deaktiviertes Gateway umgeht. Beispiel: [Resource Manager-Vorlage für das Bereitstellen einer NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)
 
-**Schützen öffentlicher Endpunkte:** Das Internetgateway macht Anwendungsdienste über das Internet für Benutzer verfügbar. Datenverkehr, der auf diese Dienste zugreift, wird mithilfe eines [Application Gateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) geschützt, das eine Web Application Firewall und HTTPS-Protokollverwaltung bereitstellt.
+**Schützen öffentlicher Endpunkte:** Das Internetgateway macht Anwendungsdienste über das Internet für Benutzer verfügbar. Datenverkehr, der auf diese Dienste zugreift, wird mithilfe eines [Application Gateways](../../application-gateway/overview.md) geschützt, das eine Web Application Firewall und HTTPS-Protokollverwaltung bereitstellt.
 
 **IP-Bereiche:** Bei den in der Architektur verwendeten IP-Bereichen handelt es sich um Vorschläge. Kunden sollten ihre eigene Umgebung berücksichtigen und geeignete Bereiche verwenden.
 
-**Hybridkonnektivität:** Die cloudbasierten Workloads sind mit dem lokalen Rechenzentrum durch IPsec-VPN mithilfe von Azure VPN Gateway verbunden. Kunden sollten sicherstellen, dass sie ein geeignetes VPN-Gateway für Verbindungen mit Azure verwenden. Beispiel: [Resource Manager-Vorlage für VPN Gateway](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection) Kunden, die umfangreiche, unternehmenswichtige Workloads mit Big Data-Anforderungen ausführen, sollten eine Hybridnetzwerkarchitektur unter Verwendung von [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) für private Netzwerkkonnektivität mit den Microsoft-Clouddiensten in Erwägung ziehen.
+**Hybridkonnektivität:** Die cloudbasierten Workloads sind mit dem lokalen Rechenzentrum durch IPsec-VPN mithilfe von Azure VPN Gateway verbunden. Kunden sollten sicherstellen, dass sie ein geeignetes VPN-Gateway für Verbindungen mit Azure verwenden. Beispiel: [Resource Manager-Vorlage für VPN Gateway](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection) Kunden, die umfangreiche, unternehmenswichtige Workloads mit Big Data-Anforderungen ausführen, sollten eine Hybridnetzwerkarchitektur unter Verwendung von [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) für private Netzwerkkonnektivität mit den Microsoft-Clouddiensten in Erwägung ziehen.
 
-**Trennung von Zuständigkeiten:** Diese Referenzarchitektur trennt die VNETs für Verwaltungsvorgänge und Geschäftsvorgänge. Separate VNets und Subnetze ermöglichen die Verwaltung des Datenverkehrs zwischen Netzwerksegmenten, einschließlich Einschränkungen für eingehenden und ausgehenden Datenverkehr, mithilfe von NSGs und berücksichtigen die bewährten Methoden für [Microsoft-Clouddienste und Netzwerksicherheit](https://docs.microsoft.com/azure/best-practices-network-security).
+**Trennung von Zuständigkeiten:** Diese Referenzarchitektur trennt die VNETs für Verwaltungsvorgänge und Geschäftsvorgänge. Separate VNets und Subnetze ermöglichen die Verwaltung des Datenverkehrs zwischen Netzwerksegmenten, einschließlich Einschränkungen für eingehenden und ausgehenden Datenverkehr, mithilfe von NSGs und berücksichtigen die bewährten Methoden für [Microsoft-Clouddienste und Netzwerksicherheit](/azure/architecture/vdc/networking-virtual-datacenter.md).
 
-**Ressourcenverwaltung:** Azure-Ressourcen, wie etwa VMs, VNETs und Lastenausgleichsmodule, werden verwaltet, indem sie in [Azure-Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) zusammengefasst werden. Rollen für die ressourcenbasierte Zugriffssteuerung können anschließend den einzelnen Ressourcengruppen zugewiesen werden, um den Zugriff exklusiv auf autorisierte Benutzer zu beschränken.
+**Ressourcenverwaltung:** Azure-Ressourcen, wie etwa VMs, VNETs und Lastenausgleichsmodule, werden verwaltet, indem sie in [Azure-Ressourcengruppen](../../azure-resource-manager/resource-group-overview.md) zusammengefasst werden. Rollen für die ressourcenbasierte Zugriffssteuerung können anschließend den einzelnen Ressourcengruppen zugewiesen werden, um den Zugriff exklusiv auf autorisierte Benutzer zu beschränken.
 
-**Einschränkungen der Zugriffssteuerung:** Verwenden Sie die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC), um die Ressourcen in Ihrer Anwendung mithilfe von [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) zu verwalten. RBAC kann dazu verwendet werden, die Vorgänge einzuschränken, die von DevOps in den einzelnen Schichten ausgeführt werden können. Verwenden Sie beim Erteilen von Berechtigungen den [Ansatz der geringsten Rechte](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokollieren Sie alle Verwaltungsvorgänge, und führen Sie regelmäßig Überwachungen durch, um sicherzustellen, dass alle Konfigurationsänderungen auf Planung beruhen.
+**Einschränkungen der Zugriffssteuerung:** Verwenden Sie die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC), um die Ressourcen in Ihrer Anwendung mithilfe von [benutzerdefinierten Rollen](../../role-based-access-control/custom-roles.md) zu verwalten. RBAC kann dazu verwendet werden, die Vorgänge einzuschränken, die von DevOps in den einzelnen Schichten ausgeführt werden können. Verwenden Sie beim Erteilen von Berechtigungen den [Ansatz der geringsten Rechte](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokollieren Sie alle Verwaltungsvorgänge, und führen Sie regelmäßig Überwachungen durch, um sicherzustellen, dass alle Konfigurationsänderungen auf Planung beruhen.
 
-**Internetzugriff:** Diese Referenzarchitektur verwendet [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) als das dem Internet zugewandte Gateway und als Lastenausgleichsmodul. Für einige Kunden können ferner virtuelle Netzwerkappliances von Drittanbietern zum Schaffen zusätzlichen Schichten an Netzwerksicherheit als Alternative zum [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) sinnvoll sein.
+**Internetzugriff:** Diese Referenzarchitektur verwendet [Azure Application Gateway](../../application-gateway/overview.md) als das dem Internet zugewandte Gateway und als Lastenausgleichsmodul. Für einige Kunden können ferner virtuelle Netzwerkappliances von Drittanbietern zum Schaffen zusätzlichen Schichten an Netzwerksicherheit als Alternative zum [Azure Application Gateway](../../application-gateway/overview.md) sinnvoll sein.
 
 **Azure Security Center**: Das [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) bietet eine zentrale Übersicht über den Sicherheitsstatus von Ressourcen im Abonnement und gibt Empfehlungen, mit deren Hilfe die Gefährdung von Ressourcen verhindert wird. Es kann außerdem verwendet werden, um detailliertere Richtlinien zu aktivieren. Beispielsweise können Richtlinien auf bestimmte Ressourcengruppen angewendet werden, die es dem Unternehmen gestatten, seine Aufstellung maßgerecht an die Gefährdungslage anzupassen. Kunden wird empfohlen, das Azure Security Center in ihrem Azure-Abonnement zu aktivieren.
 

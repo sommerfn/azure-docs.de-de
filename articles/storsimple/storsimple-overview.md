@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 5a3800cfdf36bdc2e042eec860310a508204ba11
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876450"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965112"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Übersicht
 Willkommen bei Microsoft Azure StorSimple, einer integrierten Speicherlösung, die Speicheraufgaben zwischen lokalen Geräten und Microsoft Azure-Cloudspeicher verwaltet. StorSimple ist eine effiziente, kostengünstige und einfach zu verwaltende Storage Area Network (SAN)-Lösung, mit der viele der Probleme und Kosten vermieden werden, die mit der Datenspeicherung und dem Datenschutz im Unternehmen verbunden sind. Die Lösung verwendet das proprietäre Gerät der StorSimple 8000-Serie, bietet die Integration mit Clouddiensten und stellt einen Satz integrierter Verwaltungstools bereit, um eine transparente Ansicht aller Speicher im Unternehmen, einschließlich Cloudspeicher, zu ermöglichen. (Die auf der Microsoft Azure-Website veröffentlichten StorSimple-Bereitstellungsinformationen gelten nur für Geräte der StorSimple 8000-Serie. Wenn Sie ein Gerät der StorSimple 5000/7000-Serie verwenden, finden Sie entsprechende Informationen unter [StorSimple Help](http://onlinehelp.storsimple.com/)(in englischer Sprache).)
 

@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 680f0268e85d41f8061dc96db1779ab6c22b944a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310549"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967587"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Ausführen einer ACR-Aufgabe nach einem definierten Zeitplan
 
-Dieser Artikel zeigt Ihnen, wie Sie eine [ACR-Aufgabe](container-registry-tasks-overview.md) nach einem Zeitplan ausführen. Planen Sie eine Aufgabe, indem Sie einen oder mehrere *Zeitgebertrigger* einrichten. 
+Dieser Artikel zeigt Ihnen, wie Sie eine [ACR-Aufgabe](container-registry-tasks-overview.md) nach einem Zeitplan ausführen. Planen Sie eine Aufgabe, indem Sie einen oder mehrere *Zeitgebertrigger* einrichten.
 
 Das Einplanen einer Aufgabe ist für Szenarien wie die folgenden nützlich:
 
@@ -29,18 +29,18 @@ Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI ve
 
 ## <a name="about-scheduling-a-task"></a>Über das Einplanen einer Aufgabe
 
-* **Trigger mit Cron-Ausdruck** – Der Zeitgebertrigger für eine Aufgabe verwendet einen *Cron-Ausdruck*. Der Ausdruck ist eine Zeichenkette mit fünf Feldern, die die Minute, Stunde, Tag, Tag, Monat und Wochentag angibt, um die Aufgabe auszulösen. Es werden Frequenzen von bis zu einmal pro Minute unterstützt. 
+* **Trigger mit Cron-Ausdruck** – Der Zeitgebertrigger für eine Aufgabe verwendet einen *Cron-Ausdruck*. Der Ausdruck ist eine Zeichenkette mit fünf Feldern, die die Minute, Stunde, Tag, Tag, Monat und Wochentag angibt, um die Aufgabe auszulösen. Es werden Frequenzen von bis zu einmal pro Minute unterstützt.
 
   Beispielsweise löst der Ausdruck `"0 12 * * Mon-Fri"` an jedem Wochentag um 12 Uhr UTC eine Aufgabe aus. Informationen finden Sie unter den [Details](#cron-expressions) weiter unten in diesem Artikel.
-* **Mehrere Zeitgebertrigger** – Das Hinzufügen mehrerer Timer zu einer Aufgabe ist erlaubt, solange die Zeitpläne unterschiedlich sind. 
+* **Mehrere Zeitgebertrigger** – Das Hinzufügen mehrerer Timer zu einer Aufgabe ist erlaubt, solange die Zeitpläne unterschiedlich sind.
     * Geben Sie beim Erstellen der Aufgabe mehrere Zeitgebertrigger an oder fügen Sie sie später hinzu.
     * Benennen Sie optional die Trigger zur einfacheren Verwaltung, oder ACR Tasks liefert standardmäßig Triggernamen.
-    * Wenn Timer Zeitpläne zu einem Zeitpunkt überschneiden, löst ACR-Tasks den Task zum geplanten Zeitpunkt für jede Zeitgeber an. 
+    * Wenn Timer Zeitpläne zu einem Zeitpunkt überschneiden, löst ACR-Tasks den Task zum geplanten Zeitpunkt für jede Zeitgeber an.
 * **Andere Task-Trigger** – In einer Timer-gesteuerten Task können Sie auch Trigger aktivieren, die auf [Quellcode-Commit](container-registry-tutorial-build-task.md) oder [Basisbild-Updates](container-registry-tutorial-base-image-update.md) basieren. Wie andere ACR-Aufgaben können Sie auch eine geplante Aufgabe [manuell auslösen][az-acr-task-run].
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Erstellen einer Aufgabe mit einem Zeitgebertrigger
 
-Wenn Sie eine Aufgabe mit dem Befehl [az acr task create][az-acr-task-create] erstellen, können Sie optional einen Zeitgebertrigger hinzufügen. Fügen Sie den `--schedule`-Parameter hinzu und übergeben Sie einen Cron-Ausdruck für den Timer. 
+Wenn Sie eine Aufgabe mit dem Befehl [az acr task create][az-acr-task-create] erstellen, können Sie optional einen Zeitgebertrigger hinzufügen. Fügen Sie den `--schedule`-Parameter hinzu und übergeben Sie einen Cron-Ausdruck für den Timer.
 
 Als einfaches Beispiel löst der folgende Befehl die tägliche Ausführung des `hello-world`-Bildes vom Docker Hub um 21:00 UTC aus. Die Aufgabe läuft ohne Quellcode-Kontext.
 
@@ -86,8 +86,8 @@ This message shows that your installation appears to be working correctly.
 Führen Sie nach der geplanten Zeit den Befehl [az acr task list-runs][az-acr-task-list-runs] aus, um sicherzustellen, dass der Timer die Aufgabe wie erwartet ausgelöst hat:
 
 ```azurecli
-az acr task list runs --name mytask --registry myregistry --output table
-``` 
+az acr task list-runs --name mytask --registry myregistry --output table
+```
 
 Wenn der Timer erfolgreich ist, lautet die Ausgabe wie folgt:
 
@@ -98,7 +98,7 @@ RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURAT
 cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
-            
+
 ## <a name="manage-timer-triggers"></a>Verwalten der Trigger mit Timer
 
 Verwenden Sie die [az acr Task-Timer][az-acr-task-timer]-Befehle, um die Timer-Trigger für eine ACR-Aufgabe zu verwalten.
@@ -150,7 +150,7 @@ Beispielausgabe:
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Entfernen eines Zeitgebertriggers 
+### <a name="remove-a-timer-trigger"></a>Entfernen eines Zeitgebertriggers
 
 Verwenden Sie den Befehl [az acr task timer remove][az-acr-task-timer-remove], um einen Zeitgebertrigger aus einer Aufgabe zu entfernen. Das folgende Beispiel entfernt den *Timer2* Trigger aus *Mytask* :
 
@@ -178,7 +178,7 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 |---------|---------|---------|
 |Ein bestimmter Wert |<nobr>"5 * * * *"</nobr>|Stündliche Ausführung jeweils 5 Minuten nach der vollen Stunde|
 |Alle Werte (`*`)|<nobr>"* 5 * * *"</nobr>|Jede Minute der Stunde ab 5:00 Uhr UTC (60-Mal pro Tag)|
-|Ein Bereich (`-`-Operator)|<nobr>"0 1-3 * * *"</nobr>|3 mal täglich, um 1:00, 2:00 und 3:00 Uhr UTC|  
+|Ein Bereich (`-`-Operator)|<nobr>"0 1-3 * * *"</nobr>|3 mal täglich, um 1:00, 2:00 und 3:00 Uhr UTC|
 |Eine Gruppe von Werten (`,`-Operator)|<nobr>"20,30,40 * * * *"</nobr>|3 mal pro Stunde, bei 20 Minuten, 30 Minuten und 40 Minuten nach der Stunde|
 |Ein Intervallwert (`/`-Operator)|<nobr>"*/10 * * * *"</nobr>|6 mal pro Stunde, bei 10 Minuten, 20 Minuten usw., nach der Stunde
 

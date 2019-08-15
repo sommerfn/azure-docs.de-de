@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 857646bb1b9b317f1e51218d258616e775056b43
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442279"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950037"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Core Tools und der Azure-Befehlszeilenschnittstelle (Vorschauversion)
 
@@ -38,36 +38,9 @@ Vor dem Ausführen dieses Beispiels benötigen Sie Folgendes:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>Erstellen des lokalen Funktions-App-Projekts
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-Führen Sie den folgenden Befehl zum Erstellen eines Funktions-App-Projekts im `MyFunctionProj`-Ordner des aktuellen lokalen Verzeichnisses über die Befehlszeile aus. Ein GitHub-Repository wird ebenfalls in `MyFunctionProj` erstellt.
-
-```bash
-func init MyFunctionProj
-```
-
-Wenn Sie aufgefordert werden, wählen Sie mit den Pfeiltasten eine Workerruntime aus den folgenden Sprachauswahlmöglichkeiten aus:
-
-+ `dotnet`: Erstellt ein .NET-Klassenbibliotheksprojekt (.csproj).
-+ `node`: erstellt ein JavaScript- oder TypeScript-Projekt. Wählen Sie bei der entsprechenden Aufforderung `JavaScript` aus.
-+ `python`: Erstellt ein Python-Projekt. Informationen zu Python-Funktionen finden Sie in der [Schnellstartanleitung für Python](functions-create-first-function-python.md).
-
-Wenn der Befehl ausgeführt wird, sehen Sie etwa folgende Ausgabe:
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-Verwenden Sie den folgenden Befehl, um zu dem neuen Projektordner `MyFunctionProj` zu navigieren.
-
-```bash
-cd MyFunctionProj
-```
-
-## <a name="enable-extension-bundles"></a>Aktivieren von Eweiterungsbundles
+## <a name="enable-extension-bundles"></a>Aktivieren von Erweiterungsbundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 

@@ -1,19 +1,19 @@
 ---
 title: Das Azure IoT-Geräte-SDK für C | Microsoft-Dokumentation
 description: Hier finden Sie erste Schritte mit dem Azure IoT-Geräte-SDK für C sowie Informationen zum Erstellen von Geräte-Apps, die mit einer IoT Hub-Instanz kommunizieren.
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.author: yizhon
-ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: 1c1921391048fc59f03070d4753f422d9cfc5237
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65910327"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883478"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-Geräte-SDK für C
 

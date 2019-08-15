@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 75888d9da0d8a6e76e787b7d3867e94eefff337e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934570"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Übersicht über die Azure Service Fabric-Sicherheit
-[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
+[Azure Service Fabric](../../service-fabric/service-fabric-overview.md) ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
 
 Dieser Artikel enthält eine Übersicht der Sicherheitsüberlegungen für eine Service Fabric-Bereitstellung.
 
@@ -41,7 +41,7 @@ In Azure ausgeführte Cluster oder eigenständige unter Windows ausgeführte Clu
 
 Service Fabric verwendet X.509-Serverzertifikate, die Sie angeben, wenn Sie einen Cluster erstellen. Ein schneller Überblick darüber, was diese Zertifikate sind und wie Sie sie abrufen oder erstellen können, finden Sie unter [Arbeiten mit Zertifikaten](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates).
 
-Sie konfigurieren die Zertifikatsicherheit beim Erstellen des Clusters über das Azure-Portal, über Azure Resource Manager-Vorlagen oder über eine eigenständige JSON-Vorlage. Sie können ein primäres Zertifikat und ein optionales sekundäres Zertifikat für Zertifikatrollover angeben. Die angegebenen primären und sekundären Zertifikate müssen sich von den Administratorclientzertifikaten und den schreibgeschützten Clientzertifikaten unterscheiden, die Sie für die [Client-zu-Knoten-Sicherheit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) angeben.
+Sie konfigurieren die Zertifikatsicherheit beim Erstellen des Clusters über das Azure-Portal, über Azure Resource Manager-Vorlagen oder über eine eigenständige JSON-Vorlage. Sie können ein primäres Zertifikat und ein optionales sekundäres Zertifikat für Zertifikatrollover angeben. Die angegebenen primären und sekundären Zertifikate müssen sich von den Administratorclientzertifikaten und den schreibgeschützten Clientzertifikaten unterscheiden, die Sie für die [Client-zu-Knoten-Sicherheit](../../service-fabric/service-fabric-cluster-security.md) angeben.
 
 ### <a name="client-to-node-security"></a>Client-zu-Knoten-Sicherheit
 Sie konfigurieren die Client-zu-Knoten-Sicherheit mithilfe von Clientidentitäten. Um die Vertrauensstellung zwischen einem Client und einem Cluster herzustellen, müssen Sie den Cluster so konfigurieren, dass ermittelt werden kann, welche Clientidentitäten vertrauenswürdig sind.
@@ -59,11 +59,11 @@ Sie konfigurieren die Client-zu-Knoten-Zertifikatsicherheit beim Erstellen eines
 
 Clients, die unter Verwendung des Administratorzertifikats eine Verbindung mit dem Cluster herstellen, haben uneingeschränkten Zugriff auf die Verwaltungsfunktionen. Clients, die unter Verwendung des schreibgeschützten Benutzerclientzertifikats eine Verbindung mit dem Cluster herstellen, haben nur Lesezugriff auf die Verwaltungsfunktionen. Diese Zertifikate werden also für die rollenbasierte Zugriffssteuerung (Role-based Access Control, RBAC) verwendet.
 
-Informationen zum Konfigurieren der Zertifikatsicherheit in einem Cluster finden Sie unter [Einrichten eines Clusters mit einer Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm).
+Informationen zum Konfigurieren der Zertifikatsicherheit in einem Cluster finden Sie unter [Einrichten eines Clusters mit einer Azure Resource Manager-Vorlage](../../service-fabric/service-fabric-cluster-creation-via-arm.md).
 
 #### <a name="client-to-node-azure-active-directory-security"></a>Client-zu-Knoten-Sicherheit von Azure Active Directory in Azure
 
-In Azure ausgeführte Cluster können den Zugriff auf die Verwaltungsendpunkte auch mit Azure Active Directory (Azure AD) schützen. Unter [Einrichten eines Clusters mit einer Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) erfahren Sie, wie Sie die erforderlichen Azure Active Directory-Artefakte erstellen, sie während der Clustererstellung auffüllen und danach die Verbindung mit diesen Clustern herstellen.
+In Azure ausgeführte Cluster können den Zugriff auf die Verwaltungsendpunkte auch mit Azure Active Directory (Azure AD) schützen. Unter [Einrichten eines Clusters mit einer Azure Resource Manager-Vorlage](../../service-fabric/service-fabric-cluster-creation-via-arm.md) erfahren Sie, wie Sie die erforderlichen Azure Active Directory-Artefakte erstellen, sie während der Clustererstellung auffüllen und danach die Verbindung mit diesen Clustern herstellen.
 
 Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. Es gibt Anwendungen mit webbasierter Anmeldebenutzeroberfläche und Anwendungen mit nativer Clientoberfläche.
 
@@ -74,7 +74,7 @@ Für Azure-Cluster wird die Verwendung der Azure AD-Sicherheit empfohlen, um Cli
 Für eigenständige Windows Server-Cluster mit Windows Server 2012 R2 und Active Directory wird die Verwendung der Windows-Sicherheit mit gruppenverwalteten Dienstkonten empfohlen. Verwenden Sie andernfalls die Windows-Sicherheit mit Windows-Konten.
 
 ## <a name="understand-monitoring-and-diagnostics-in-service-fabric"></a>Grundlegendes zur Überwachung und Diagnose in Azure Service Fabric
-[Überwachung und Diagnose](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview) sind wichtig für Entwicklung und Tests sowie die Bereitstellung von Anwendungen und Diensten in allen Umgebungen. Service Fabric-Lösungen funktionieren am besten, wenn Sie die Überwachung und Diagnose implementieren. So stellen Sie sicher, dass Anwendungen und Dienste in einer lokalen Entwicklungsumgebung oder in der Produktionsumgebung wie erwartet ausgeführt werden.
+[Überwachung und Diagnose](../../service-fabric/service-fabric-diagnostics-overview.md) sind wichtig für Entwicklung und Tests sowie die Bereitstellung von Anwendungen und Diensten in allen Umgebungen. Service Fabric-Lösungen funktionieren am besten, wenn Sie die Überwachung und Diagnose implementieren. So stellen Sie sicher, dass Anwendungen und Dienste in einer lokalen Entwicklungsumgebung oder in der Produktionsumgebung wie erwartet ausgeführt werden.
 
 Mit Blick auf Sicherheit sind die Hauptziele der Überwachung und Diagnose die folgenden:
 
@@ -84,13 +84,13 @@ Mit Blick auf Sicherheit sind die Hauptziele der Überwachung und Diagnose die f
 
 Der Workflow für die Überwachung und Diagnose besteht aus drei Schritten:
 
-1.  **Ereignisgenerierung**: Die Ereignisgenerierung schließt Ereignisse (Protokolle, Ablaufverfolgungen, benutzerdefinierte Ereignisse) auf Infrastruktur- (Cluster-) und Anwendungs-/Dienstebene ein. Weitere Informationen zu den enthaltenen Instrumentierungen und zum Hinzufügen weiterer Instrumentierungen finden Sie unter [Ereignisse auf Infrastrukturebene](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) und [Ereignisse auf Anwendungsebene](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app).
+1.  **Ereignisgenerierung**: Die Ereignisgenerierung schließt Ereignisse (Protokolle, Ablaufverfolgungen, benutzerdefinierte Ereignisse) auf Infrastruktur- (Cluster-) und Anwendungs-/Dienstebene ein. Weitere Informationen zu den enthaltenen Instrumentierungen und zum Hinzufügen weiterer Instrumentierungen finden Sie unter [Ereignisse auf Infrastrukturebene](../../service-fabric/service-fabric-diagnostics-event-generation-infra.md) und [Ereignisse auf Anwendungsebene](../../service-fabric/service-fabric-diagnostics-event-generation-app.md).
 
-2.  **Ereignisaggregation**: Die generierten Ereignisse müssen gesammelt und aggregiert werden, bevor sie angezeigt werden können. In der Regel empfehlen wir die Verwendung von [Azure-Diagnose](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (ähnlich der Agent-basierten Protokollsammlung) oder [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (In-Process-Protokollsammlung).
+2.  **Ereignisaggregation**: Die generierten Ereignisse müssen gesammelt und aggregiert werden, bevor sie angezeigt werden können. In der Regel empfehlen wir die Verwendung von [Azure-Diagnose](../../service-fabric/service-fabric-diagnostics-event-aggregation-wad.md) (ähnlich der Agent-basierten Protokollsammlung) oder [EventFlow](../../service-fabric/service-fabric-diagnostics-event-aggregation-eventflow.md) (In-Process-Protokollsammlung).
 
-3.  **Analyse**: Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige ermöglicht. Es gibt mehrere Plattformen für die Analyse und Visualisierung von Überwachungs- und Diagnosedaten. Aufgrund ihrer guten Integration in Service Fabric werden [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) und [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) empfohlen.
+3.  **Analyse**: Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige ermöglicht. Es gibt mehrere Plattformen für die Analyse und Visualisierung von Überwachungs- und Diagnosedaten. Aufgrund ihrer guten Integration in Service Fabric werden [Azure Monitor-Protokolle](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) und [Azure Application Insights](../../service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md) empfohlen.
 
-Sie können auch [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) zum Überwachen von vielen Azure-Ressourcen verwenden, aus denen ein Service Fabric-Cluster erstellt wird.
+Sie können auch [Azure Monitor](../../azure-monitor/overview.md) zum Überwachen von vielen Azure-Ressourcen verwenden, aus denen ein Service Fabric-Cluster erstellt wird.
 
 Ein Watchdog ist ein separater Dienst, der die Integrität und die Auslastung von Diensten überwachen und die Integrität für alle Elemente in der Hierarchie des Integritätsmodells melden kann. Mithilfe eines Watchdogs können Fehler verhindert werden, die nicht erkannt werden, wenn nur ein einzelner Dienst betrachtet wird. 
 
@@ -109,17 +109,17 @@ In der folgenden Tabelle sind die Zertifikate aufgeführt, die Sie für die Einr
 |ServerCertificate| Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Sie können zwei Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades.|
 |ClientCertificateThumbprints|  Dies ist eine Gruppe von Zertifikaten, die auf den authentifizierten Clients installiert werden sollen.|
 |ClientCertificateCommonNames|  Dies ist der allgemeine Name des ersten Clientzertifikats für „CertificateCommonName“. „CertificateIssuerThumbprint“ ist der Fingerabdruck für den Aussteller dieses Zertifikats.|
-|ReverseProxyCertificate|   Hierbei handelt es sich um ein optionales Zertifikat, das Sie zum Schutz des [Reverseproxys](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) angeben können.|
+|ReverseProxyCertificate|   Hierbei handelt es sich um ein optionales Zertifikat, das Sie zum Schutz des [Reverseproxys](../../service-fabric/service-fabric-reverseproxy.md) angeben können.|
 
-Weitere Informationen zum Schützen von Zertifikaten finden Sie unter [Schützen eines eigenständigen Clusters unter Windows mithilfe von X.509-Zertifikaten](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security).
+Weitere Informationen zum Schützen von Zertifikaten finden Sie unter [Schützen eines eigenständigen Clusters unter Windows mithilfe von X.509-Zertifikaten](../../service-fabric/service-fabric-windows-cluster-x509-security.md).
 
 ## <a name="understand-role-based-access-control"></a>Grundlegendes zur rollenbasierten Zugriffssteuerung
-Sie geben die Administrator- und die Benutzerclientrolle zum Zeitpunkt der Clustererstellung an, indem Sie jeweils separate Identitäten (einschließlich Zertifikaten) bereitstellen. Weitere Informationen zu den Standardeinstellungen der Zugriffssteuerung sowie zum Ändern der Standardeinstellungen finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles).
+Sie geben die Administrator- und die Benutzerclientrolle zum Zeitpunkt der Clustererstellung an, indem Sie jeweils separate Identitäten (einschließlich Zertifikaten) bereitstellen. Weitere Informationen zu den Standardeinstellungen der Zugriffssteuerung sowie zum Ändern der Standardeinstellungen finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 ## <a name="secure-standalone-clusters-by-using-windows-security"></a>Schützen von eigenständigen Clustern mit Windows-Sicherheit
 Um nicht autorisierten Zugriff auf einen Service Fabric-Cluster zu verhindern, müssen Sie den Cluster schützen. Sicherheit ist besonders wichtig, wenn der Cluster Produktionsworkloads ausführt. Sie konfigurieren die Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit mit Windows-Sicherheit in der Datei „ClusterConfig.JSON“.
 
-Die Knoten-zu-Knoten-Sicherheit konfigurieren Sie durch Festlegen von [ClustergMSAIdentity](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security), wenn Service Fabric unter einem gruppenverwalteten Dienstkonto (Group-Managed Service Account, gMSA) ausgeführt werden muss. Um Vertrauensstellungen zwischen Knoten einrichten zu können, müssen Sie sie über das Vorhandensein des jeweils anderen Knotens informieren.
+Die Knoten-zu-Knoten-Sicherheit konfigurieren Sie durch Festlegen von [ClustergMSAIdentity](../../service-fabric/service-fabric-windows-cluster-windows-security.md), wenn Service Fabric unter einem gruppenverwalteten Dienstkonto (Group-Managed Service Account, gMSA) ausgeführt werden muss. Um Vertrauensstellungen zwischen Knoten einrichten zu können, müssen Sie sie über das Vorhandensein des jeweils anderen Knotens informieren.
 
 Wenn Sie eine Computergruppe in einer Active Directory-Domäne verwenden möchten, wird die Knoten-zu-Knoten-Sicherheit durch Festlegen von „ClusterIdentity“ konfiguriert. Weitere Informationen finden Sie unter [Erstellen einer Computergruppe in Active Directory](https://msdn.microsoft.com/library/aa545347).
 
@@ -132,14 +132,14 @@ Sie konfigurieren die Client-zu-Knoten-Sicherheit mithilfe von „ClientIdentiti
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Verwalten von Geheimnissen in Service Fabric-Anwendungen
 Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
 
-In diesem Leitfaden wird [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) für die Verwaltung von Schlüsseln und Geheimnissen verwendet. Allerdings ist die Verwendung von Geheimnissen in einer Anwendung nicht von einer bestimmten Cloud-Plattform abhängig. Sie können Anwendungen in einem Cluster bereitstellen, der an einem beliebigen Ort gehostet wird. Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
+In diesem Leitfaden wird [Azure Key Vault](../../key-vault/key-vault-whatis.md) für die Verwaltung von Schlüsseln und Geheimnissen verwendet. Allerdings ist die Verwendung von Geheimnissen in einer Anwendung nicht von einer bestimmten Cloud-Plattform abhängig. Sie können Anwendungen in einem Cluster bereitstellen, der an einem beliebigen Ort gehostet wird. Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
 
 1.  Rufen Sie ein Datenverschlüsselungszertifikat ab.
 2.  Installieren des Zertifikats in Ihrem Cluster
 3.  Verschlüsseln von Geheimnissen bei der Bereitstellung einer Anwendung mit dem Zertifikat und Einfügen dieser Geheimnisse in die Konfigurationsdatei „Settings.xml“ des Diensts
 4.  Lesen der verschlüsselten Werte aus der Datei „Settings.xml“, indem diese mit demselben Verschlüsselungszertifikat entschlüsselt werden
 
-Weitere Informationen finden Sie im Artikel [Verwalten von Geheimnissen in Service Fabric-Anwendungen](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management).
+Weitere Informationen finden Sie im Artikel [Verwalten von Geheimnissen in Service Fabric-Anwendungen](../../service-fabric/service-fabric-application-secret-management.md).
 
 ### <a name="configure-security-policies-for-an-application"></a>Konfigurieren von Sicherheitsrichtlinien für eine Anwendung
 Durch Verwenden der Azure Service Fabric-Sicherheit können Sie Anwendungen sichern, die im Cluster mit verschiedenen Benutzerkonten ausgeführt werden. Mit der Service Fabric-Sicherheit werden auch die Ressourcen gesichert, die von Anwendungen zum Zeitpunkt der Bereitstellung in den Benutzerkonten verwendet werden, z.B. Dateien, Verzeichnisse und Zertifikate. Dadurch wird das Ausführen von Anwendungen, selbst in einer gemeinsam genutzten gehosteten Umgebung, sicherer.
@@ -153,8 +153,8 @@ Aufgaben zum Konfigurieren von Sicherheitsrichtlinien:
 -   Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte
 
 ## <a name="secure-communication-for-services"></a>Sichern der Kommunikation für Dienste
-Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. Weitere Informationen finden Sie unter [Schützen der Dienstremotingkommunikation für einen Dienst](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication).
+Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. Weitere Informationen finden Sie unter [Schützen der Dienstremotingkommunikation für einen Dienst](../../service-fabric/service-fabric-reliable-services-secure-communication.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Konzeptionelle Informationen zur Clustersicherheit finden Sie unter [Erstellen eines Service Fabric-Clusters mithilfe von Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) und im [Create a Service Fabric cluster by using the Azure portal (Erstellen eines Service Fabric-Clusters mithilfe des Azure-Portals)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal).
-- Weitere Informationen zur Clustersicherheit in Service Fabric finden Sie unter [Szenarios für die Clustersicherheit in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
+- Konzeptionelle Informationen zur Clustersicherheit finden Sie unter [Erstellen eines Service Fabric-Clusters mithilfe von Azure Resource Manager](../../service-fabric/service-fabric-cluster-creation-via-arm.md) und im [Create a Service Fabric cluster by using the Azure portal (Erstellen eines Service Fabric-Clusters mithilfe des Azure-Portals)](../../service-fabric/service-fabric-cluster-creation-via-portal.md).
+- Weitere Informationen zur Clustersicherheit in Service Fabric finden Sie unter [Szenarios für die Clustersicherheit in Service Fabric](../../service-fabric/service-fabric-cluster-security.md).

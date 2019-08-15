@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 883f780059e38c53dedda309dd059cc714539f80
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 5d4d01f9f85c78d0e864ec9d11c1d8cd43542e57
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462090"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950633"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Überwachen der Leistung von Azure Database for MariaDB mit dem Abfragespeicher
 
 **Gilt für:**  Azure Database for MariaDB 10.2
 
-> [!NOTE]
+> [!IMPORTANT]
 > Der Abfragespeicher befindet sich in der Vorschauphase.
 
 Das Abfragespeicherfeature in Azure Database for MariaDB ermöglicht die Nachverfolgung der Abfrageleistung im Zeitverlauf. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in der Schemadatenbank **mysql** der Azure Database for MariaDB-Instanz gespeichert.
@@ -46,7 +46,7 @@ So aktivieren Sie Wartestatistiken in Ihrem Abfragespeicher:
 1. Suchen Sie nach dem Parameter „query_store_wait_sampling_capture_mode“.
 1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
 
-Es kann bis zu 20 Minuten dauern, bis der erste Datenbatch in der mysql-Datenbank gespeichert wurde.
+Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Datenbank gespeichert ist.
 
 ## <a name="information-in-query-store"></a>Informationen im Abfragespeicher
 
@@ -78,8 +78,8 @@ Im Folgenden finden Sie einige Beispiele dafür, wie Sie mithilfe der Wartestati
 | **Beobachtung** | **Aktion** |
 |---|---|
 |Lange Sperrwartevorgänge | Überprüfen Sie die Abfragetexte der betroffenen Abfragen, und identifizieren Sie die Zielentitäten. Suchen Sie im Abfragespeicher nach anderen Abfragen, die die gleiche Entität ändern, welche häufig ausgeführt wird bzw. eine lange Dauer aufweist. Nachdem Sie diese Abfragen ermittelt haben, ändern Sie ggf. die Anwendungslogik, um die Parallelität zu verbessern, oder verwenden Sie eine weniger restriktive Isolationsstufe. |
-|Lange Puffer-E/A-Wartevorgänge | Suchen Sie die Abfragen mit einer hohen Anzahl an physischen Lesevorgängen im Abfragespeicher. Wenn diese mit Abfragen mit langen E/A-Wartevorgängen übereinstimmen, führen Sie ggf. einen Index für die zugrunde liegenden Entität ein, um Suchvorgänge (anstelle von Scanvorgängen) auszuführen. Dies verringert den E/A-Aufwand der Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen für diesen Server vorhanden sind, mit denen sich die Abfragen ggf. optimieren lassen. |
-|Lange Arbeitsspeicher-Wartevorgänge | Suchen Sie die im Abfragespeicher die speicherintensivsten Abfragen. Diese Abfragen verzögern wahrscheinlich zusätzlich den Fortschritt der betroffen Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen vorhanden sind, mit denen sich diese Abfragen ggf. optimieren lassen.|
+|Lange Puffer-E/A-Wartevorgänge | Suchen Sie die Abfragen mit einer hohen Anzahl an physischen Lesevorgängen im Abfragespeicher. Wenn diese mit den Abfragen mit langen E/A-Wartevorgängen übereinstimmen, sollten Sie ggf. erwägen, einen Index für die zugrunde liegende Entität einzuführen, um Such- anstelle von Scanvorgängen durchzuführen. Dies verringert den E/A-Aufwand der Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob für diesen Server Indexempfehlungen vorhanden sind, mit denen die Abfragen optimiert werden. |
+|Lange Arbeitsspeicher-Wartevorgänge | Suchen Sie die im Abfragespeicher die speicherintensivsten Abfragen. Diese Abfragen verzögern wahrscheinlich zusätzlich den Fortschritt der betroffen Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen vorhanden sind, mit denen diese Abfragen optimiert werden.|
 
 ## <a name="configuration-options"></a>Konfigurationsoptionen
 
@@ -98,21 +98,21 @@ Die folgenden Optionen gelten speziell für Wartestatistiken.
 
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Ermöglicht das Ein-/Ausschalten der Wartestatistik. | NONE | NONE, ALL |
+| query_store_wait_sampling_capture_mode | Ermöglicht das Ein-/Ausschalten der Wartestatistik. | KEINE | NONE, ALL |
 | query_store_wait_sampling_frequency | Ändert die Frequenz der Stichprobenentnahme für Wartezeiten in Sekunden. Möglicher Bereich: zwischen fünf und 300 Sekunden. | 30 | 5–300 |
 
 > [!NOTE]
-> **query_store_capture_mode** hat aktuell Vorrang vor dieser Konfiguration. Das bedeutet, dass sowohl **query_store_capture_mode** als auch **query_store_wait_sampling_capture_mode** auf „ALL“ festgelegt sein müssen, damit die Wartestatistik funktioniert. Wenn **query_store_capture_mode** deaktiviert ist, ist auch die Wartestatistik deaktiviert, da für die Wartestatistik das aktivierte Leistungsschema (performance_schema) und der vom Abfragespeicher erfasste Abfragetext (query_text) verwendet werden.
+> Derzeit wird diese Konfiguration durch **query_store_capture_mode** ersetzt. Dies bedeutet, dass sowohl **query_store_capture_mode** als auch **query_store_wait_sampling_capture_mode** für „ALL“ aktiviert sein muss, damit Wartestatistiken funktionieren. Wenn **query_store_capture_mode** deaktiviert ist, ist auch die Wartestatistik deaktiviert, da für die Wartestatistik das aktivierte Leistungsschema (performance_schema) und der vom Abfragespeicher erfasste Abfragetext (query_text) verwendet werden.
 
 Verwenden Sie das [Azure-Portal](howto-server-parameters.md), um für einen Parameter einen anderen Wert abzurufen oder festzulegen.
 
 ## <a name="views-and-functions"></a>Ansichten und Funktionen
 
-Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#create-additional-admin-users) kann jeder diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Ansichten sind nur in der **mysql**-Datenbank verfügbar.
+Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#create-additional-admin-users) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Ansichten sind nur in der **mysql**-Datenbank verfügbar.
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 
-### <a name="mysqlquerystore"></a>mysql.query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und Abfrage-ID.
 
@@ -123,20 +123,20 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 | `timestamp_id` | timestamp| NO| Zeitstempel für die Ausführung der Abfrage. Dieser Wert basiert auf der Konfiguration von „query_store_interval“.|
 | `query_digest_text`| longtext| NO| Der normalisierte Abfragetext nach dem Entfernen aller Literale.|
 | `query_sample_text` | longtext| NO| Erste Darstellung der eigentlichen Abfrage mit Literalen.|
-| `query_digest_truncated` | bit| YES| Gibt an, ob der Abfragetext gekürzt wurde. Der Wert lautet „YES“, wenn die Abfrage länger als 1 KB ist.|
+| `query_digest_truncated` | bit| JA| Gibt an, ob der Abfragetext gekürzt wurde. Der Wert lautet „YES“, wenn die Abfrage länger als 1 KB ist.|
 | `execution_count` | bigint(20)| NO| Gibt an, wie oft die Abfrage für diese Zeitstempel-ID bzw. während des konfigurierten Intervallzeitraums ausgeführt wurde.|
 | `warning_count` | bigint(20)| NO| Anzahl von Warnungen, die von dieser Abfrage während des Intervalls generiert wurden.|
 | `error_count` | bigint(20)| NO| Anzahl von Fehlern, die von dieser Abfrage während des Intervalls generiert wurden.|
-| `sum_timer_wait` | double| YES| Gesamte Ausführungsdauer dieser Abfrage während des Intervalls.|
-| `avg_timer_wait` | double| YES| Durchschnittliche Ausführungsdauer dieser Abfrage während des Intervalls.|
-| `min_timer_wait` | double| YES| Minimale Ausführungszeit für diese Abfrage.|
-| `max_timer_wait` | double| YES| Maximale Ausführungszeit.|
-| `sum_lock_time` | bigint(20)| NO| Gesamte Zeit, die für alle Sperren für diese Abfrageausführung während dieses Zeitfensters aufgewendet wurde.|
-| `sum_rows_affected` | bigint(20)| NO| Anzahl betroffener Zeilen.|
+| `sum_timer_wait` | double| JA| Gesamte Ausführungsdauer dieser Abfrage während des Intervalls.|
+| `avg_timer_wait` | double| JA| Durchschnittliche Ausführungsdauer dieser Abfrage während des Intervalls.|
+| `min_timer_wait` | double| JA| Minimale Ausführungszeit für diese Abfrage.|
+| `max_timer_wait` | double| JA| Maximale Ausführungszeit.|
+| `sum_lock_time` | bigint(20)| NO| Gesamte Zeit, die für alle Sperren dieser Abfrageausführung während dieses Zeitfensters aufgewendet wurde.|
+| `sum_rows_affected` | bigint(20)| NO| Anzahl von betroffenen Zeilen.|
 | `sum_rows_sent` | bigint(20)| NO| Anzahl von Zeilen, die an den Client gesendet wurden.|
-| `sum_rows_examined` | bigint(20)| NO| Anzahl untersuchter Zeilen.|
-| `sum_select_full_join` | bigint(20)| NO| Anzahl vollständiger Verknüpfungen.|
-| `sum_select_scan` | bigint(20)| NO| Anzahl ausgewählter Scans. |
+| `sum_rows_examined` | bigint(20)| NO| Anzahl untersuchter Zeilen|
+| `sum_select_full_join` | bigint(20)| NO| Anzahl von vollständigen Verknüpfungen.|
+| `sum_select_scan` | bigint(20)| NO| Anzahl für Scanauswahl. |
 | `sum_sort_rows` | bigint(20)| NO| Anzahl sortierter Zeilen.|
 | `sum_no_index_used` | bigint(20)| NO| Anzahl der Fälle, in denen von der Abfrage keine Indizes verwendet wurden.|
 | `sum_no_good_index_used` | bigint(20)| NO| Anzahl der Fälle, in denen die Abfrageausführungs-Engine keine guten Indizes verwendet hat.|
@@ -145,7 +145,7 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 | `first_seen` | timestamp| NO| Erstes Auftreten der Abfrage (UTC) während des Aggregationsfensters.|
 | `last_seen` | timestamp| NO| Letztes Auftreten der Abfrage (UTC) während dieses Aggregationsfensters.|
 
-### <a name="mysqlquerystorewaitstats"></a>mysql.query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und jedes Ereignis.
 
@@ -158,8 +158,8 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 | `query_digest_text` | longtext | NO| Erste Darstellung der eigentlichen Abfrage mit Literalen (aus dem Abfragespeicher). |
 | `event_type` | varchar(32) | NO| Kategorie des Warteereignisses. |
 | `event_name` | varchar(128) | NO| Name des Warteereignisses. |
-| `count_star` | bigint(20) | NO| Anzahl von Warteereignissen, für die während des Intervalls Stichproben für die Abfrage entnommen wurden. |
-| `sum_timer_wait_ms` | double | NO| Gesamte Wartezeit dieser Abfrage während des Intervalls (in Millisekunden). |
+| `count_star` | bigint(20) | NO| Anzahl von Warteereignissen, für die während des Intervalls für die Abfrage Stichproben entnommen wurden. |
+| `sum_timer_wait_ms` | double | NO| Gesamte Wartezeit (in Millisekunden) dieser Abfrage während des Intervalls. |
 
 ### <a name="functions"></a>Functions
 

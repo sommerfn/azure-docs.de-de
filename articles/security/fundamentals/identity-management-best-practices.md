@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727259"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934694"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -84,8 +84,8 @@ Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchroni
 **Detail**: Verwenden Sie die richtigen Funktionen zum Unterstützen der Authentifizierung:
 
   - Azure AD für Mitarbeiter
-  - [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) für Gastbenutzer und externe Partner
-  - [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/), um zu steuern, wie sich Kunden beim Nutzen Ihrer Anwendungen registriere und, anmelden sowie ihre Profile verwalten
+  - [Azure AD B2B](../../active-directory/b2b/index.yml) für Gastbenutzer und externe Partner
+  - [Azure AD B2C](../../active-directory-b2c/index.yml), um zu steuern, wie sich Kunden beim Nutzen Ihrer Anwendungen registriere und, anmelden sowie ihre Profile verwalten
 
 Organisationen, die ihre lokale Identität nicht in ihre Cloudidentität integrieren, haben mehr Aufwand beim Verwalten der Konten. Dieser Aufwand steigert die Wahrscheinlichkeit von Fehlern und Sicherheitsverletzungen.
 

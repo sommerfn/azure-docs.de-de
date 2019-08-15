@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 43794b8ef4e0272362c7695eda75f5af36a77d1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2786ec387d528e1593e2687d906060f8a2673a8c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683456"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934478"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -56,7 +56,7 @@ Hier sind weitere wichtige Begriffe:
 ## <a name="authentication"></a>Authentication
 Sie müssen sich zuerst authentifizieren, um Vorgänge mit Key Vault durchführen zu können. Es gibt drei Möglichkeiten für die Authentifizierung bei Key Vault:
 
-- [Verwaltete Identitäten für Azure-Ressourcen:](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Wenn Sie eine App auf einer VM in Azure bereitstellen, können Sie Ihrer VM eine Identität zuweisen, die Zugriff auf den Key Vault hat. Sie können Identitäten auch [anderen Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zuweisen. Der Vorteil bei dieser Vorgehensweise ist, dass die App bzw. der Dienst die Drehung des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch gedreht. Als bewährte Methode wird diese Vorgehensweise empfohlen. 
+- [Verwaltete Identitäten für Azure-Ressourcen:](../active-directory/managed-identities-azure-resources/overview.md) Wenn Sie eine App auf einer VM in Azure bereitstellen, können Sie Ihrer VM eine Identität zuweisen, die Zugriff auf den Key Vault hat. Sie können Identitäten auch [anderen Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Der Vorteil bei dieser Vorgehensweise ist, dass die App bzw. der Dienst die Drehung des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch gedreht. Als bewährte Methode wird diese Vorgehensweise empfohlen. 
 - **Dienstprinzipal und Zertifikat:** Sie können einen Dienstprinzipal und ein zugehöriges Zertifikat verwenden, das Zugriff auf Key Vault hat. Diese Vorgehensweise wird nicht empfohlen, da der Besitzer oder Entwickler der Anwendung das Zertifikat drehen muss.
 - **Dienstprinzipal und Geheimnis:** Obwohl Sie einen Dienstprinzipal und ein Geheimnis zur Authentifizierung bei Key Vault verwenden können, wird diese Vorgehensweise nicht empfohlen. Es ist schwierig, das Bootstrapgeheimnis, das zur Authentifizierung bei Key Vault verwendet wird, automatisch zu drehen.
 
@@ -65,7 +65,7 @@ Sie müssen sich zuerst authentifizieren, um Vorgänge mit Key Vault durchführe
 
 Die folgende Tabelle enthält Informationen dazu, wie Sie mithilfe des Schlüsseltresors die Anforderungen von Entwicklern und Sicherheitsadministratoren erfüllen können.
 
-| Rolle | Problembeschreibung | Lösung durch den Azure-Schlüsseltresor |
+| Role | Problembeschreibung | Lösung durch den Azure-Schlüsseltresor |
 | --- | --- | --- |
 | Entwickler einer Azure-Anwendung |„Ich möchte eine Anwendung für Azure schreiben, die Schlüssel für die Signierung und Verschlüsselung verwendet. Diese Schlüssel sollen sich jedoch außerhalb meiner Anwendung befinden, damit die Lösung auch für eine geografisch verteilte Anwendung geeignet ist. <br/><br/>Ich möchte Schlüssel und Geheimnisse schützen, ohne den Code dafür selbst zu schreiben. Außerdem sollen die Schlüssel auf einfache Weise und mit optimaler Leistung in meinen Anwendungen verwendbar sein.“ |√ Schlüssel werden in einem Tresor gespeichert und bei Bedarf über einen URI aufgerufen.<br/><br/> √ Schlüssel werden mit branchenüblichen Algorithmen, Schlüssellängen und Hardwaresicherheitsmodulen von Azure geschützt.<br/><br/> √ Schlüssel werden in HSMs verarbeitet, die sich in den gleichen Azure-Datencentern befinden wie die Anwendungen. Durch diese Methode werden im Gegensatz zu einer Lösung, bei der die Schlüssel an einem anderen Ort (beispielsweise lokal) vorliegen, eine höhere Zuverlässigkeit und eine geringere Latenz erreicht. |
 | Entwickler von SaaS-Lösungen (Software-as-a-Service) |"Ich möchte weder die Verantwortung noch die Haftung für Schlüssel und geheime Schlüssel für Kundenmandanten übernehmen. <br/><br/>Ich möchte, dass Kunden sowohl die Verantwortung als auch die Verwaltung für ihre Schlüssel übernehmen, sodass ich mich auf meine eigentlichen Aufgaben konzentrieren kann – die Bereitstellung der Softwarefunktionen.“ |√ Kunden können eigene Schlüssel in Azure importieren und diese verwalten. Wenn eine SaaS-Anwendung kryptografische Vorgänge unter Verwendung von Kundenschlüsseln ausführen muss, führt der Schlüsseltresor diese Vorgänge im Auftrag der Anwendung aus. Die Anwendung hat keine Informationen über die Kundenschlüssel. |

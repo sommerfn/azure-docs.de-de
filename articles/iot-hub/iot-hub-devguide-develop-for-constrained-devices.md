@@ -1,18 +1,18 @@
 ---
 title: 'Azure IoT Hub: Entwickeln für eingeschränkte Geräte mit dem IoT Hub-SDK für C | Microsoft-Dokumentation'
 description: Entwicklerhandbuch – Anleitungen zum Entwickeln mit Azure IoT-SDKs für eingeschränkte Geräte.
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: yizhon
-ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320883"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880965"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Entwickeln für eingeschränkte Geräte mit dem Azure IoT-SDK für C
 
@@ -73,7 +73,7 @@ Sehen Sie sich als Nächstes die Programmiermodelle für eingeschränkte Geräte
 
 Das SDK für C verfügt über ein optionales [Serialisierungsprogramm](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer), mit dem Sie deklarative Zuordnungstabellen zum Definieren von Methoden sowie Eigenschaften von Gerätezwillingen verwenden können. Das Serialisierungsprogramm soll die Entwicklung vereinfachen, verursacht aber zusätzlichen Aufwand, was für eingeschränkte Geräte nicht optimal ist. Ziehen Sie in diesem Fall die Verwendung von APIs eines einfachen Clients und das Analysieren von JSON mithilfe eines grundlegenden Analysetools wie [parson](https://github.com/kgabis/parson) in Betracht.
 
-### <a name="use-the-lower-layer-ll"></a>Verwenden der niedrigeren Ebene (_Lower Layer, LL_)
+### <a name="use-the-lower-layer-_ll_"></a>Verwenden der niedrigeren Ebene (_Lower Layer, LL_)
 
 Das SDK für C unterstützt zwei Programmiermodelle. Eine Gruppe hat APIs mit dem Infix _LL_, das für die niedrigere Ebene steht. Dieser Satz von APIs ist weniger umfangreich und erstellt keine Arbeitsthreads, sodass der Benutzer die Planung manuell steuern muss. Die _LL_-APIs für den Geräteclient beispielsweise befinden sich in dieser [Headerdatei](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h). 
 

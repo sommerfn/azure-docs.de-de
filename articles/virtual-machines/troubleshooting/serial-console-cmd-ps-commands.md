@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: f286881341e527d3f01e57768cd48405c85a9a69
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 77fe6f1ce416df049928697d2c166e2aba0abfe2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710609"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935213"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-Befehle – CMD und PowerShell
 
@@ -241,7 +241,7 @@ Durch Hinzufügen von `/f` werden aktive Anwendungen ohne Vorwarnung geschlossen
 ### <a name="detect-safe-mode-boot"></a>Erkennen des Starts im abgesicherten Modus
 `bcdedit /enum | find /i "safeboot"` 
 
-# <a name="windows-commands---powershell"></a>Windows-Befehle – PowerShell
+## <a name="windows-commands---powershell"></a>Windows-Befehle – PowerShell
 
 Wenn Sie PowerShell in SAC ausführen möchten, geben Sie an einer CMD-Eingabeaufforderung Folgendes ein:
 

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840416"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934338"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -270,21 +270,21 @@ Legen Sie mit Azure CLI das Standardabonnement auf eins fest, das über das gew�
 
 #### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>Fehler der Art „Nicht autorisierter Zugriff“, „Zugriff verweigert“, „Unzulässig“ usw.
  
-Der verwendete Prinzipal besitzt keinen Zugriff auf die Ressource, auf die er zugreifen möchte. Erteilen Sie entweder Ihrem Benutzerkonto oder der MSI-Datei des App Service „Mitwirkender“-Zugriff auf die gewünschte Ressource, je nachdem, ob Sie das Beispiel auf Ihrem lokalen Entwicklungscomputer ausführen oder in Azure für Ihren App Service bereitgestellt. Einige Ressourcen wie Schlüsselrresore haben ebenfalls ihre eigenen [Zugriffsrichtlinien](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies), die Sie verwenden, um Prinzipalen (Benutzer, Apps, Gruppen usw.) Zugriff zu gewähren.
+Der verwendete Prinzipal besitzt keinen Zugriff auf die Ressource, auf die er zugreifen möchte. Erteilen Sie entweder Ihrem Benutzerkonto oder der MSI-Datei des App Service „Mitwirkender“-Zugriff auf die gewünschte Ressource, je nachdem, ob Sie das Beispiel auf Ihrem lokalen Entwicklungscomputer ausführen oder in Azure für Ihren App Service bereitgestellt. Einige Ressourcen wie Schlüsselrresore haben ebenfalls ihre eigenen [Zugriffsrichtlinien](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies), die Sie verwenden, um Prinzipalen (Benutzer, Apps, Gruppen usw.) Zugriff zu gewähren.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Häufige Probleme bei Bereitstellung in Azure App Service
 
 #### <a name="managed-identity-is-not-setup-on-the-app-service"></a>Verwaltete Identität ist nicht im App Service eingerichtet
  
-Überprüfen Sie mithilfe der [Kudu-Debugkonsole](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/), ob die Umgebungsvariablen MSI_ENDPOINT und MSI_SECRET vorhanden sind. Wenn diese Umgebungsvariablen nicht vorhanden sind, ist die verwaltete Identität im App Service nicht aktiviert. 
+Überprüfen Sie mithilfe der [Kudu-Debugkonsole](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/), ob die Umgebungsvariablen MSI_ENDPOINT und MSI_SECRET vorhanden sind. Wenn diese Umgebungsvariablen nicht vorhanden sind, ist die verwaltete Identität im App Service nicht aktiviert. 
  
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>Häufige Probleme bei der lokalen Bereitstellung mit IIS
 
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>Beim Debuggen der App in IIS können keine Token abgerufen werden
 
 AppAuth wird standardmäßig in einem anderen Benutzerkontext in IIS ausgeführt und verfügt daher über keinen Zugriff auf die Verwendung ihrer Entwickleridentität, um Zugriffstoken abzurufen. Mit den folgenden Schritten können Sie IIS für die Ausführung mit Ihrem Benutzerkontext konfigurieren:
-- Konfigurieren Sie den Anwendungspool für die Web-App so, dass sie als Ihr aktuelles Benutzerkonto ausgeführt wird. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities).
-- Konfigurieren Sie „setProfileEnvironment“ auf „true“. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
+- Konfigurieren Sie den Anwendungspool für die Web-App so, dass sie als Ihr aktuelles Benutzerkonto ausgeführt wird. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities).
+- Konfigurieren Sie „setProfileEnvironment“ auf „true“. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
 
     - Wechseln Sie zu „%windir%\System32\inetsrv\config\applicationHost.config“.
     - Suchen Sie nach „setProfileEnvironment“. Wenn der Wert auf „False“ festgelegt ist, ändern Sie ihn in „True“. Wenn er nicht vorhanden ist, fügen Sie ihn dem processModel-Element (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) als Attribut hinzu, und legen Sie ihn auf „True“ fest.

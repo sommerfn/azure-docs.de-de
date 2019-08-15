@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318353"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846775"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -194,7 +194,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
 
 2. Entsperren Sie die Datei „PerfInsights.zip“. Klicken Sie zu diesem Zweck mit der rechten Maustaste auf die Datei „PerfInsights.zip“, und wählen Sie **Eigenschaften**. Wählen Sie auf der Registerkarte **Allgemein** die Option **Entsperren**, und klicken Sie auf **OK**. So stellen Sie sicher, dass das Tool ohne zusätzliche Sicherheitsabfragen ausgeführt wird.  
 
-    ![Screenshot der PerfInsights-Eigenschaften, auf dem die Option „Entsperren“ hervorgehoben ist](media/how-to-use-perfInsights/unlock-file.png)
+    ![Screenshot der PerfInsights-Eigenschaften, auf dem die Option „Entsperren“ hervorgehoben ist](media/how-to-use-perfInsights/pi-unlock-file.png)
 
 3.  Extrahieren Sie die komprimierte Datei „PerfInsights.zip“ auf das temporäre Laufwerk (standardmäßig in der Regel Laufwerk „D“). 
 
@@ -204,7 +204,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![Screenshot: Ausgabe der PerfInsights-Befehlszeile](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![Screenshot: Ausgabe der PerfInsights-Befehlszeile](media/how-to-use-perfInsights/pi-commandline.png)
     
     Die grundlegende Syntax für die Ausführung von PerfInsights-Szenarien lautet:
     
@@ -253,8 +253,8 @@ In der Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.zip** finden Sie
 
 Wählen Sie die Registerkarte **Ergebnisse**.
 
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/findingtab.png)
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/findings.PNG)
+![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-finding-tab.png)
+![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.
@@ -269,17 +269,17 @@ Die Abschnitte **Datenträgerzuordnung** und **Volumezuordnung** beschreiben, wi
 
 In der Perspektive für physische Datenträger (Datenträgerzuordnung) zeigt die Tabelle alle logischen Volumes, die auf dem Datenträger ausgeführt werden. Im folgenden Beispiel führt **PhysicalDrive2** zwei logische Volumes aus, die auf mehreren Partitionen („J“ und „H“) erstellt werden:
 
-![Screenshot der Datenträger-Registerkarte](media/how-to-use-perfInsights/disktab.png)
+![Screenshot der Datenträger-Registerkarte](media/how-to-use-perfInsights/pi-disk-tab.png)
 
 In der Volume-Perspektive (Volumezuordnung) zeigen die Tabellen alle physischen Datenträger unter den einzelnen logischen Volumes an. Beachten Sie, dass Sie für RAID-Datenträger und dynamische Datenträger ein logisches Volume auf mehreren physischen Datenträgern ausführen können. Im folgenden Beispiel ist *C:\\mount* ein Bereitstellungspunkt, der als *SpannedDisk* auf den physischen Datenträgern 2 und 3 konfiguriert ist:
 
-![Screenshot der Registerkarte „Volume“](media/how-to-use-perfInsights/volumetab.png)
+![Screenshot der Registerkarte „Volume“](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>Registerkarte „SQL“
 
 Wenn der virtuelle Zielcomputer SQL Server-Instanzen hostet, sehen Sie im Bericht eine zusätzliche Registerkarte mit dem Namen **SQL**:
 
-![Screenshot der Registerkarte „SQL“](media/how-to-use-perfInsights/sqltab.png)
+![Screenshot der Registerkarte „SQL“](media/how-to-use-perfInsights/pi-sql-tab.png)
 
 Dieser Abschnitt enthält die Registerkarte **Ergebnisse** und zusätzliche Registerkarten für jede SQL Server-Instanz, die auf dem virtuellen Computer gehostet wird.
 
@@ -287,7 +287,7 @@ Die Registerkarte **Ergebnisse** enthält eine Liste mit allen SQL-bezogenen Lei
 
 Im folgenden Beispiel wird **PhysicalDrive0** (auf Laufwerk „C“ ausgeführt) angezeigt. Das liegt daran, dass sich sowohl die Datei **modeldev** als auch die Datei **modellog** auf Laufwerk „C“ befindet und sie unterschiedlichen Typs sind (z.B. Datendatei und Transaktionsprotokoll).
 
-![Screenshot der Protokollinformationen](media/how-to-use-perfInsights/loginfo.png)
+![Screenshot der Protokollinformationen](media/how-to-use-perfInsights/pi-log-info.png)
 
 Die Registerkarten für bestimmte SQL Server-Instanzen enthalten einen allgemeinen Abschnitt, in dem grundlegende Informationen zur ausgewählten Instanz angezeigt werden. Die Registerkarten enthalten außerdem zusätzliche Abschnitte für erweiterte Informationen, einschließlich Einstellungen, Konfigurationen und Benutzeroptionen.
 
@@ -310,7 +310,7 @@ Sie können Diagnoseprotokolle und Berichte an den Microsoft-Support zur weitere
 
 Der folgende Screenshot zeigt eine Nachricht, die der an Sie gesendeten Nachricht ähnelt:
 
-![Screenshot der Beispielnachricht vom Microsoft-Support](media/how-to-use-perfInsights/supportemail.png)
+![Screenshot der Beispielnachricht vom Microsoft-Support](media/how-to-use-perfInsights/pi-support-email.png)
 
 Befolgen Sie die Anweisungen in der Nachricht, um auf den Arbeitsbereich für die Dateiübertragung zuzugreifen. Zur Erhöhung der Sicherheit müssen Sie das Kennwort bei der ersten Verwendung ändern.
 

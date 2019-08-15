@@ -3,7 +3,7 @@ title: 'Schnellstart: Herunterladen eines Überwachungsberichts über das Azure-
 description: Erfahren Sie, wie Sie einen Überwachungsbericht über das Azure-Portal herunterladen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2f3e5dd1c42537ce6ff419d7d81d69d824242ec4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436667"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989681"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Schnellstart: Herunterladen eines Überwachungsberichts über das Azure-Portal
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine CSV-Datei mit den Überwachungsprotokollen der letzten 24 Stunden für Ihren Mandanten herunterladen. Sie können bis zu 250.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach Aktualität sortiert, und standardmäßig erhalten Sie die neuesten 250.000 Datensätze. 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine CSV-Datei mit den Überwachungsprotokollen der letzten 24 Stunden für Ihren Mandanten herunterladen. Sie können bis zu 250.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach Aktualität sortiert, sodass Sie standardmäßig die neuesten 250.000 Datensätze erhalten. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

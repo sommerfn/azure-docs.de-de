@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e54bc91ff60ce4f3c2340282410923225601df4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797483"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883904"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -351,7 +350,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ~~~~
 
-Für Dokument 1 hat die Abfrage die beste Übereinstimmung ergeben, da sowohl der Begriff *spacious* als auch der erforderliche Ausdruck *ocean view* im Feld „description“ vorkommt. Für die nächsten beiden Dokumente ergibt sich nur eine Übereinstimmung mit dem Ausdruck *ocean view*. Es ist vielleicht überraschend, dass die Relevanzbewertung für Dokument 2 und 3 unterschiedlich ist, obwohl beide zu einer Übereinstimmung für die Abfrage geführt haben. Dies liegt daran, dass die Bewertungsformel über mehr Komponenten als nur TF/IDF verfügt. In diesem Fall wurde Dokument 3 eine etwas höhere Bewertung zugewiesen, da dessen Beschreibung kürzer ist. Informieren Sie sich über [Lucene's Practical Scoring Formula](https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) (Bewertungsformel von Lucene), damit Sie verstehen, wie sich die Feldlänge und andere Faktoren auf die Relevanzbewertung auswirken können.
+Für Dokument 1 hat die Abfrage die beste Übereinstimmung ergeben, da sowohl der Begriff *spacious* als auch der erforderliche Ausdruck *ocean view* im Feld „description“ vorkommt. Für die nächsten beiden Dokumente ergibt sich nur eine Übereinstimmung mit dem Ausdruck *ocean view*. Es ist vielleicht überraschend, dass die Relevanzbewertung für Dokument 2 und 3 unterschiedlich ist, obwohl beide zu einer Übereinstimmung für die Abfrage geführt haben. Dies liegt daran, dass die Bewertungsformel über mehr Komponenten als nur TF/IDF verfügt. In diesem Fall wurde Dokument 3 eine etwas höhere Bewertung zugewiesen, da dessen Beschreibung kürzer ist. Informieren Sie sich über [Lucene's Practical Scoring Formula](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) (Bewertungsformel von Lucene), damit Sie verstehen, wie sich die Feldlänge und andere Faktoren auf die Relevanzbewertung auswirken können.
 
 Einige Abfragetypen (Platzhalter, Präfix, regulärer Ausdruck) tragen immer eine konstante Bewertungspunktzahl zur Gesamtbewertung des Dokuments bei. So können Übereinstimmungen, die über die Abfrageerweiterung ermittelt werden, in die Ergebnisse einbezogen werden, ohne dabei die Rangfolge zu beeinträchtigen. 
 

@@ -3,7 +3,7 @@ title: Referenz zu Überwachungsaktivitäten von Azure Active Directory (Azure A
 description: Hier finden Sie eine Übersicht über die Überwachungsaktivitäten, die in Ihren Überwachungsprotokollen in Azure Active Directory (Azure AD) protokolliert werden können.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/24/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285483"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989635"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -140,112 +140,112 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Authentication|Create V1 application (V1-Anwendung erstellen)|
 |Authentication|Create V2 application (V2-Anwendung erstellen)|
 |Authentication|Create a custom domains in the tenant (Benutzerdefinierte Domäne im Mandanten erstellen)|
-|Autorisierung|Create a new AdminUserJourney (Neues AdminUserJourney-Element erstellen)|
-|Autorisierung|Create localized resource json (Lokalisierten JSON-Ressourcencode erstellen)|
-|Autorisierung|Create new Custom IDP (Neuen benutzerdefinierten IDP erstellen)|
-|Autorisierung|Create new IDP (Neuen IDP erstellen)|
-|Autorisierung|Create or update a B2C directory resource (B2C-Verzeichnisressourcen erstellen oder aktualisieren)|
-|Autorisierung|Richtlinie erstellen|
-|Autorisierung|Create trustFramework policy (Vertrauensframework-Richtlinie erstellen)|
-|Autorisierung|Create trustFramework policy with configurable prefix (Vertrauensframework-Richtlinie mit konfigurierbarem Präfix erstellen)|
-|Autorisierung|Create user attribute (Benutzerattribut erstellen)|
-|Autorisierung|CreateTrustFrameworkPolicy|
-|Autorisierung|Creates or Update an new AdminUserJourney (Neues AdminUserJourney-Element erstellen oder aktualisieren)|
-|Autorisierung|Identitätsanbieter löschen|
-|Autorisierung|Delete IdentityProvider (IdentityProvider-Element löschen)|
-|Autorisierung|Delete V1 application (V1-Anwendung löschen)|
-|Autorisierung|Delete V2 application (V2-Anwendung löschen)|
-|Autorisierung|Delete V2 application permission grant (Berechtigungszuweisung für V2-Anwendung löschen)|
-|Autorisierung|Delete a B2C directory resource (B2C-Verzeichnisressource löschen)|
-|Autorisierung|Delete a CPIM key container (CPIM-Schlüsselcontainer löschen)|
-|Autorisierung|Delete trustFramework policy (Vertrauensframework-Richtlinie löschen)|
-|Autorisierung|Benutzerattribut löschen|
-|Autorisierung|Enable B2C feature (B2C-Feature aktivieren)|
-|Autorisierung|Get B2C directory resources in a subscription (B2C-Verzeichnisressourcen in einem Abonnement abrufen)|
-|Autorisierung|Get Custom IDP (Benutzerdefinierten IDP abrufen)|
-|Autorisierung|Get IDP (IDP abrufen)|
-|Autorisierung|Get V1 and V2 applications (V1- und V2-Anwendungen abrufen)|
-|Autorisierung|Get V1 application (V1-Anwendung abrufen)|
-|Autorisierung|Get V1 applications (V1-Anwendungen abrufen)|
-|Autorisierung|Get V2 application (V2-Anwendung abrufen)|
-|Autorisierung|Get V2 applications (V2-Anwendungen abrufen)|
-|Autorisierung|B2C-Verzeichnisressource abrufen|
-|Autorisierung|Get a list of custom domains in the tenant (Liste der benutzerdefinierten Domänen im Mandanten abrufen)|
-|Autorisierung|Get a user journey (User Journey abrufen)|
-|Autorisierung|Get allowed application claims for user journey (Zulässige Anwendungsansprüche für User Journey abrufen)|
-|Autorisierung|Get allowed self-asserted claims for user journey (Zulässige selbstbestätigte Ansprüche für User Journey abrufen)|
-|Autorisierung|Get allowed self-asserted claims of policy (Zulässige selbstbestätigte Ansprüche der Richtlinie abrufen)|
-|Autorisierung|Get available output claims list (Liste der verfügbaren Ausgabeansprüche abrufen)|
-|Autorisierung|Get content definitions for user journey (Inhaltsdefinitionen für User Journey abrufen)|
-|Autorisierung|Get idps for a specific admin flow (IDPs für einen bestimmten Verwaltungsflow abrufen)|
-|Autorisierung|Get key container active key metadata in JWK (Schlüsselcontainermetadaten zu aktiven Schlüsseln abrufen)|
-|Autorisierung|Get list of all admin flows (Liste aller Verwaltungsflows abrufen)|
-|Autorisierung|Get list of tags for all admin flows for all users (Liste der Tags für alle Verwaltungsflows für alle Benutzer abrufen)|
-|Autorisierung|Get list of tenants for a user (Liste der Mandanten für einen Benutzer abrufen)|
-|Autorisierung|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche der lokalen Konten abrufen)|
-|Autorisierung|Get localized resource json (Lokalisierten JSON-Ressourcencode abrufen)|
-|Autorisierung|Get operations of Microsoft.AzureActiveDirectory resource provider (Vorgänge des Microsoft.AzureActiveDirectory-Ressourcenanbieters abrufen)|
-|Autorisierung|Get policies (Richtlinien abrufen)|
-|Autorisierung|Get policy (Richtlinie abrufen)|
-|Autorisierung|Get resource properties of a tenant (Ressourceneigenschaften eines Mandanten abrufen)|
-|Autorisierung|Get supported IDP list (Liste der unterstützten IDPs abrufen)|
-|Autorisierung|Get supported IDP list of the user journey (Liste der unterstützten IDPs der User Journey abrufen)|
-|Autorisierung|Get tenant Info (Abrufen der Mandanteninformationen)|
-|Autorisierung|Get tenant allowed features (Vom Mandanten zugelassene Features abrufen)|
-|Autorisierung|Get tenant defined Custom IDP list (Vom Mandanten festgelegte Liste der benutzerdefinierten IDPs abrufen)|
-|Autorisierung|Get tenant defined IDP list (Vom Mandanten festgelegte IDP-Liste)|
-|Autorisierung|Get tenant defined local IDP list (Vom Mandanten festgelegte Liste der lokalen IDPs)|
-|Autorisierung|Get tenant details for a user for resource creation (Mandantendetails für einen Benutzer zur Ressourcenerstellung abrufen)|
-|Autorisierung|Get tenant list (Mandantenliste abrufen)|
-|Autorisierung|Get tenantDomains (tenantDomains-Element abrufen)|
-|Autorisierung|Get the default supported culture for CPIM (Standardmäßige unterstützte Kultur für CPIM abrufen)|
-|Autorisierung|Get the details of an admin flow (Details eines Verwaltungsflows abrufen)|
-|Autorisierung|Get the list of UserJourneys for this tenant (UserJourneys-Liste für diesen Mandanten abrufen)|
-|Autorisierung|Get the set of available supported cultures for CPIM (Satz der verfügbaren unterstützten Kulturen für CPIM abrufen)|
-|Autorisierung|Get trustFramework policy (Vertrauensframework-Richtlinie abrufen)|
-|Autorisierung|Get trustFramework policy as xml (Vertrauensframework-Richtlinie als XML abrufen)|
-|Autorisierung|Get user attribute (Benutzerattribut abrufen)|
-|Autorisierung|Get user attributes (Benutzerattribute abrufen)|
-|Autorisierung|Get user journey list (User Journey-Liste abrufen)|
-|Autorisierung|GetIEFPolicies|
-|Autorisierung|GetIdentityProviders|
-|Autorisierung|GetTrustFrameworkPolicy|
-|Autorisierung|Gets a CPIM key container in jwk format (CPIM-Schlüsselcontainer im JWK-Format abrufen)|
-|Autorisierung|Gets list of key containers in the tenant (Liste der Schlüsselcontainer im Mandanten abrufen)|
-|Autorisierung|Gets the type of tenant (Mandantentyp abrufen)|
-|Autorisierung|MigrateTenantMetadata|
-|Autorisierung|Patch IdentityProvider (IdentityProvider patchen)|
-|Autorisierung|PutTrustFrameworkPolicy|
-|Autorisierung|PutTrustFrameworkpolicy|
-|Autorisierung|User Journey entfernen|
-|Autorisierung|Restore a CPIM key container backup (Sicherung eines CPIM-Schlüsselcontainers wiederherstellen)|
-|Autorisierung|Retrieve V2 application permissions grants (Berechtigungszuweisungen für V2-Anwendung abrufen)|
-|Autorisierung|Retrieve V2 application service principals in the current tenant (Dienstprinzipale der V2-Anwendung im aktuellen Mandanten abrufen)|
-|Autorisierung|Update Custom IDP (Benutzerdefinierten IDP aktualisieren)|
-|Autorisierung|Update IDP (IDP aktualisieren)|
-|Autorisierung|Lokalen IDP aktualisieren|
-|Autorisierung|Update V1 application (V1-Anwendung aktualisieren)|
-|Autorisierung|Update V2 application (V2-Anwendung aktualisieren)|
-|Autorisierung|Update V2 application permission grant (Berechtigungszuweisung für V2-Anwendung aktualisieren)|
-|Autorisierung|Aktualisieren von Richtlinien|
-|Autorisierung|Update user attribute (Benutzerattribut aktualisieren)|
-|Autorisierung|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
-|Autorisierung|Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.|
-|Autorisierung|Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.|
-|Autorisierung|Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.|
-|Autorisierung|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
-|Autorisierung|Überprüfen, ob das Feature aktiviert ist|
-|Autorisierung|Programm erstellen|
-|Autorisierung|Programm löschen|
-|Autorisierung|Programmsteuerung verknüpfen|
-|Autorisierung|Integration in Azure AD-Zugriffsüberprüfungen durchführen|
-|Autorisierung|Verknüpfung der Programmsteuerung aufheben|
-|Autorisierung|Programm aktualisieren|
-|Autorisierung|Disable Desktop Sso (Desktop-SSO deaktivieren)|
-|Autorisierung|Disable Desktop Sso for a specific domain (Desktop-SSO für eine bestimmte Domäne deaktivieren)|
-|Autorisierung|Anwendungsproxy deaktivieren|
-|Autorisierung|Passthrough-Authentifizierung deaktivieren|
-|Autorisierung|Enable Desktop Sso (Desktop-SSO aktivieren)|
+|Authorization|Create a new AdminUserJourney (Neues AdminUserJourney-Element erstellen)|
+|Authorization|Create localized resource json (Lokalisierten JSON-Ressourcencode erstellen)|
+|Authorization|Create new Custom IDP (Neuen benutzerdefinierten IDP erstellen)|
+|Authorization|Create new IDP (Neuen IDP erstellen)|
+|Authorization|Create or update a B2C directory resource (B2C-Verzeichnisressourcen erstellen oder aktualisieren)|
+|Authorization|Richtlinie erstellen|
+|Authorization|Create trustFramework policy (Vertrauensframework-Richtlinie erstellen)|
+|Authorization|Create trustFramework policy with configurable prefix (Vertrauensframework-Richtlinie mit konfigurierbarem Präfix erstellen)|
+|Authorization|Create user attribute (Benutzerattribut erstellen)|
+|Authorization|CreateTrustFrameworkPolicy|
+|Authorization|Creates or Update an new AdminUserJourney (Neues AdminUserJourney-Element erstellen oder aktualisieren)|
+|Authorization|Identitätsanbieter löschen|
+|Authorization|Delete IdentityProvider (IdentityProvider-Element löschen)|
+|Authorization|Delete V1 application (V1-Anwendung löschen)|
+|Authorization|Delete V2 application (V2-Anwendung löschen)|
+|Authorization|Delete V2 application permission grant (Berechtigungszuweisung für V2-Anwendung löschen)|
+|Authorization|Delete a B2C directory resource (B2C-Verzeichnisressource löschen)|
+|Authorization|Delete a CPIM key container (CPIM-Schlüsselcontainer löschen)|
+|Authorization|Delete trustFramework policy (Vertrauensframework-Richtlinie löschen)|
+|Authorization|Benutzerattribut löschen|
+|Authorization|Enable B2C feature (B2C-Feature aktivieren)|
+|Authorization|Get B2C directory resources in a subscription (B2C-Verzeichnisressourcen in einem Abonnement abrufen)|
+|Authorization|Get Custom IDP (Benutzerdefinierten IDP abrufen)|
+|Authorization|Get IDP (IDP abrufen)|
+|Authorization|Get V1 and V2 applications (V1- und V2-Anwendungen abrufen)|
+|Authorization|Get V1 application (V1-Anwendung abrufen)|
+|Authorization|Get V1 applications (V1-Anwendungen abrufen)|
+|Authorization|Get V2 application (V2-Anwendung abrufen)|
+|Authorization|Get V2 applications (V2-Anwendungen abrufen)|
+|Authorization|B2C-Verzeichnisressource abrufen|
+|Authorization|Get a list of custom domains in the tenant (Liste der benutzerdefinierten Domänen im Mandanten abrufen)|
+|Authorization|Get a user journey (User Journey abrufen)|
+|Authorization|Get allowed application claims for user journey (Zulässige Anwendungsansprüche für User Journey abrufen)|
+|Authorization|Get allowed self-asserted claims for user journey (Zulässige selbstbestätigte Ansprüche für User Journey abrufen)|
+|Authorization|Get allowed self-asserted claims of policy (Zulässige selbstbestätigte Ansprüche der Richtlinie abrufen)|
+|Authorization|Get available output claims list (Liste der verfügbaren Ausgabeansprüche abrufen)|
+|Authorization|Get content definitions for user journey (Inhaltsdefinitionen für User Journey abrufen)|
+|Authorization|Get idps for a specific admin flow (IDPs für einen bestimmten Verwaltungsflow abrufen)|
+|Authorization|Get key container active key metadata in JWK (Schlüsselcontainermetadaten zu aktiven Schlüsseln abrufen)|
+|Authorization|Get list of all admin flows (Liste aller Verwaltungsflows abrufen)|
+|Authorization|Get list of tags for all admin flows for all users (Liste der Tags für alle Verwaltungsflows für alle Benutzer abrufen)|
+|Authorization|Get list of tenants for a user (Liste der Mandanten für einen Benutzer abrufen)|
+|Authorization|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche der lokalen Konten abrufen)|
+|Authorization|Get localized resource json (Lokalisierten JSON-Ressourcencode abrufen)|
+|Authorization|Get operations of Microsoft.AzureActiveDirectory resource provider (Vorgänge des Microsoft.AzureActiveDirectory-Ressourcenanbieters abrufen)|
+|Authorization|Get policies (Richtlinien abrufen)|
+|Authorization|Get policy (Richtlinie abrufen)|
+|Authorization|Get resource properties of a tenant (Ressourceneigenschaften eines Mandanten abrufen)|
+|Authorization|Get supported IDP list (Liste der unterstützten IDPs abrufen)|
+|Authorization|Get supported IDP list of the user journey (Liste der unterstützten IDPs der User Journey abrufen)|
+|Authorization|Get tenant Info (Abrufen der Mandanteninformationen)|
+|Authorization|Get tenant allowed features (Vom Mandanten zugelassene Features abrufen)|
+|Authorization|Get tenant defined Custom IDP list (Vom Mandanten festgelegte Liste der benutzerdefinierten IDPs abrufen)|
+|Authorization|Get tenant defined IDP list (Vom Mandanten festgelegte IDP-Liste)|
+|Authorization|Get tenant defined local IDP list (Vom Mandanten festgelegte Liste der lokalen IDPs)|
+|Authorization|Get tenant details for a user for resource creation (Mandantendetails für einen Benutzer zur Ressourcenerstellung abrufen)|
+|Authorization|Get tenant list (Mandantenliste abrufen)|
+|Authorization|Get tenantDomains (tenantDomains-Element abrufen)|
+|Authorization|Get the default supported culture for CPIM (Standardmäßige unterstützte Kultur für CPIM abrufen)|
+|Authorization|Get the details of an admin flow (Details eines Verwaltungsflows abrufen)|
+|Authorization|Get the list of UserJourneys for this tenant (UserJourneys-Liste für diesen Mandanten abrufen)|
+|Authorization|Get the set of available supported cultures for CPIM (Satz der verfügbaren unterstützten Kulturen für CPIM abrufen)|
+|Authorization|Get trustFramework policy (Vertrauensframework-Richtlinie abrufen)|
+|Authorization|Get trustFramework policy as xml (Vertrauensframework-Richtlinie als XML abrufen)|
+|Authorization|Get user attribute (Benutzerattribut abrufen)|
+|Authorization|Get user attributes (Benutzerattribute abrufen)|
+|Authorization|Get user journey list (User Journey-Liste abrufen)|
+|Authorization|GetIEFPolicies|
+|Authorization|GetIdentityProviders|
+|Authorization|GetTrustFrameworkPolicy|
+|Authorization|Gets a CPIM key container in jwk format (CPIM-Schlüsselcontainer im JWK-Format abrufen)|
+|Authorization|Gets list of key containers in the tenant (Liste der Schlüsselcontainer im Mandanten abrufen)|
+|Authorization|Gets the type of tenant (Mandantentyp abrufen)|
+|Authorization|MigrateTenantMetadata|
+|Authorization|Patch IdentityProvider (IdentityProvider patchen)|
+|Authorization|PutTrustFrameworkPolicy|
+|Authorization|PutTrustFrameworkpolicy|
+|Authorization|User Journey entfernen|
+|Authorization|Restore a CPIM key container backup (Sicherung eines CPIM-Schlüsselcontainers wiederherstellen)|
+|Authorization|Retrieve V2 application permissions grants (Berechtigungszuweisungen für V2-Anwendung abrufen)|
+|Authorization|Retrieve V2 application service principals in the current tenant (Dienstprinzipale der V2-Anwendung im aktuellen Mandanten abrufen)|
+|Authorization|Update Custom IDP (Benutzerdefinierten IDP aktualisieren)|
+|Authorization|Update IDP (IDP aktualisieren)|
+|Authorization|Lokalen IDP aktualisieren|
+|Authorization|Update V1 application (V1-Anwendung aktualisieren)|
+|Authorization|Update V2 application (V2-Anwendung aktualisieren)|
+|Authorization|Update V2 application permission grant (Berechtigungszuweisung für V2-Anwendung aktualisieren)|
+|Authorization|Aktualisieren von Richtlinien|
+|Authorization|Update user attribute (Benutzerattribut aktualisieren)|
+|Authorization|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
+|Authorization|Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.|
+|Authorization|Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.|
+|Authorization|Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.|
+|Authorization|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
+|Authorization|Überprüfen, ob das Feature aktiviert ist|
+|Authorization|Programm erstellen|
+|Authorization|Programm löschen|
+|Authorization|Programmsteuerung verknüpfen|
+|Authorization|Integration in Azure AD-Zugriffsüberprüfungen durchführen|
+|Authorization|Verknüpfung der Programmsteuerung aufheben|
+|Authorization|Programm aktualisieren|
+|Authorization|Disable Desktop Sso (Desktop-SSO deaktivieren)|
+|Authorization|Disable Desktop Sso for a specific domain (Desktop-SSO für eine bestimmte Domäne deaktivieren)|
+|Authorization|Anwendungsproxy deaktivieren|
+|Authorization|Passthrough-Authentifizierung deaktivieren|
+|Authorization|Enable Desktop Sso (Desktop-SSO aktivieren)|
 |Verzeichnisverwaltung|Enable Desktop Sso for a specific domain (Desktop-SSO für eine bestimmte Domäne aktivieren)|
 |Verzeichnisverwaltung|Anwendungsproxy aktivieren|
 |Verzeichnisverwaltung|Passthrough-Authentifizierung aktivieren|

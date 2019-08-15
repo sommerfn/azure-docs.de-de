@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75bc067bfe8a98ef2337f368243b3221be1677d6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230044"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949908"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die zweistufige Überprüfung
 Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
@@ -34,7 +34,7 @@ Wenn die Supportabteilung Ihres Unternehmens das Starten mithilfe der zweistufig
 
 Wählen Sie zum Einstieg **Jetzt einrichten** aus.
 
-Wenn bei der Anmeldung kein solcher Bildschirm angezeigt wird, befolgen Sie die Anweisungen in [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page), um die Einstellungsseite zu suchen, auf der Sie Ihre Überprüfungsoptionen verwalten können.
+Wenn bei der Anmeldung kein solcher Bildschirm angezeigt wird, befolgen Sie die Anweisungen in [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md#using-the-additional-security-verification-page), um die Einstellungsseite zu suchen, auf der Sie Ihre Überprüfungsoptionen verwalten können.
 
 ## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>Auswählen der Überprüfung von Anmeldungen
 

@@ -1,19 +1,19 @@
 ---
 title: Bekannte Probleme mit Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Einschränkungen und bekannten Probleme mit Azure Data Lake Storage Gen2.
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
-ms.openlocfilehash: 910e23814b627233395a2f7a646513d9cb6874d8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: jamesbak
+ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699033"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950678"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -100,7 +100,7 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 | **blobfuse** |Noch nicht unterstützt|
 | **Benutzerdefinierte Domänen** |Noch nicht unterstützt|
 | **Dateisystem-Explorer** | Eingeschränkte Unterstützung |
-| **Diagnoseprotokollierung** |Diagnoseprotokolle werden nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs für Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. <br><br>Das Aktivieren von Protokollen im Azure-Portal wird derzeit nicht unterstützt. Im folgenden finden Sie ein Beispiel für die Aktivierung der Protokolle mithilfe von PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzureStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Stellen Sie sicher, dass Sie `Blob` als Wert des Parameters `-ServiceType` angeben, wie in diesem Beispiel gezeigt. 
+| **Diagnoseprotokollierung** |Diagnoseprotokolle werden nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs für Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. <br><br>Das Aktivieren von Protokollen im Azure-Portal wird derzeit nicht unterstützt. Im folgenden finden Sie ein Beispiel für die Aktivierung der Protokolle mithilfe von PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Stellen Sie sicher, dass Sie `Blob` als Wert des Parameters `-ServiceType` angeben, wie in diesem Beispiel gezeigt. 
 | **Unveränderlicher Speicher** |Noch nicht unterstützt <br><br>Durch unveränderlichen Speicher können Sie Daten in einem [WORM-Zustand (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) speichern.|
 | **Objektebenen** |Die Ebenen „Kalt“ und „Archiv“ werden nur unterstützt, wenn Sie sich für die Vorschauversion des [Multiprotokollzugriffs für Data Lake Storage](data-lake-storage-multi-protocol-access.md) registrieren. <br><br> Alle anderen Zugriffsebenen werden noch nicht unterstützt.|
 | **PowerShell- und CLI-Unterstützung** | Eingeschränkte Funktionalität <br><br>Verwaltungsvorgänge, z. B. das Erstellen eines Kontos, werden unterstützt. Vorgänge auf Datenebene, z. B. das Hoch- und Herunterladen von Dateien, befinden sich in der öffentlichen Vorschauphase (im Rahmen des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md)). Das Verwenden von Verzeichnissen und Festlegen von Zugriffssteuerungslisten (ACLs) wird noch nicht unterstützt. |

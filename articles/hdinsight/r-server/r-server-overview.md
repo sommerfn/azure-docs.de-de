@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448885"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941697"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Worum handelt es sich bei ML Services in Azure HDInsight?
 
@@ -90,7 +90,7 @@ Schreiben Sie für die Bewertung in HDInsight eine R-Funktion, mit der Ihr Model
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Bewertung in Azure Machine Learning (AML)
 
-Verwenden Sie für die Bewertung mit Azure Machine Learning das Open-Source-Azure Machine Learning-R-Paket namens [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html), um Ihr Modell als Azure-Webdienst zu veröffentlichen. Der Einfachheit halber ist dieses Paket auf dem Edgeknoten vorinstalliert. Verwenden Sie als Nächstes die Funktionen in Azure Machine Learning zum Erstellen einer Benutzeroberfläche für den Webdienst, und rufen Sie den Webdienst dann nach Bedarf für die Bewertung auf.
+Verwenden Sie für die Bewertung mit Azure Machine Learning das Open-Source-Azure Machine Learning-R-Paket namens [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/), um Ihr Modell als Azure-Webdienst zu veröffentlichen. Der Einfachheit halber ist dieses Paket auf dem Edgeknoten vorinstalliert. Verwenden Sie als Nächstes die Funktionen in Azure Machine Learning zum Erstellen einer Benutzeroberfläche für den Webdienst, und rufen Sie den Webdienst dann nach Bedarf für die Bewertung auf.
 
 Wenn Sie diese Option auswählen, müssen Sie zur Verwendung mit dem Webdienst alle ScaleR-Modellobjekte in entsprechende Open-Source-Modellobjekte umwandeln. Verwenden Sie für diese Umwandlung ScaleR-Koersionsfunktionen wie `as.randomForest()` für ensemblebasierte Modelle.
 

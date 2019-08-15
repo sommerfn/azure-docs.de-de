@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728721"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934866"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Sichere Entwicklung in Azure – bewährte Methoden
 In diese Artikelreihe werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden die Phasen des Microsoft Security Development Lifecycle (SDL) sowie Sicherheitsfragen und -konzepte behandelt, die in jeder Phase des Lebenszyklus zu berücksichtigen sind. Das Ziel ist, Ihnen dabei zu helfen, Aktivitäten und Azure-Dienste zu definieren, die Sie in jeder Phase des Lebenszyklus verwenden können, um eine sicherere Anwendung zu entwerfen, zu entwickeln und bereitzustellen.
@@ -69,7 +69,7 @@ Verwenden Sie die folgenden Ressourcen, um mehr über die Entwicklung sicherer A
 
 [Pushing Left, Like a Boss](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca): Eine Reihe von Onlineartikeln, in denen verschiedene Arten von Anwendungssicherheitsaktivitäten beschrieben sind, die Entwickler ausführen sollten, um sichereren Code zu erstellen.
 
-[Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/): Die Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts und der zugehörigen Entwicklerplattform. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle wie OAuth 2.0 und OpenID Connect.
+[Microsoft Identity Platform](../../active-directory/develop/index.yml): Die Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts und der zugehörigen Entwicklerplattform. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle wie OAuth 2.0 und OpenID Connect.
 
 [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/): Eine Sammlung von bewährten Sicherheitsmethoden, die Sie verwenden sollten, wenn Sie Cloudlösungen in Azure entwerfen, bereitstellen und verwalten. Dieser Artikel ist als Ressource für IT-Experten ausgelegt. Dazu gehören beispielsweise Designer, Architekten, Entwickler und Tester, die sichere Azure-Lösungen erstellen und bereitstellen.
 

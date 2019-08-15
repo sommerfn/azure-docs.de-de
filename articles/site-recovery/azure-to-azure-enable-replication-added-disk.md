@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 4a262a3a0c32516988890a6afc6eef34d8655c89
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671874"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934542"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Aktivieren der Replikation für einen Datenträger, der einer Azure-VM hinzugefügt wird
 
@@ -50,6 +50,6 @@ Nachdem die Ausführung des Auftrags zum Aktivieren der Replikation begonnen hat
 
 
 
-# <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 [Erfahren Sie mehr](site-recovery-test-failover-to-azure.md) über die Ausführung von Testfailovervorgängen.
