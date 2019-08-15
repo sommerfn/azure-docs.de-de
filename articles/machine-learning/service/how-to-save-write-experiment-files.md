@@ -9,14 +9,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: b0e0ef93b2782cd44eca3dc6023a7eb556cd3245
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618390"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856044"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 
@@ -49,7 +49,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 
 Speichern Sie Ihre Experimentdateien in einem Datenspeicher, um diesen Fehler zu beheben. Wenn Sie keinen Datenspeicher verwenden können, bietet die folgende Tabelle mögliche alternative Lösungen.
 
-Experimentbeschreibung|Lösung zum Speicherlimit
+Experimentbeschreibung &nbsp;|Lösung zum Speicherlimit
 ---|---
 Weniger als 2000 Dateien und Verwendung eines Datenspeichers nicht möglich| Setzen Sie die Größenbeschränkung für die Momentaufnahme folgendermaßen außer Kraft: <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Dies kann je nach Anzahl und Größe der Dateien mehrere Minuten dauern.
 Spezifisches Skriptverzeichnis muss verwendet werden| Erstellen Sie eine `.amlignore`-Datei zum Ausschließen von Dateien aus der Momentaufnahme des Experiments, die nicht Teil des Quellcodes sind. Fügen Sie der `.amlignore`-Datei die Dateinamen hinzu, und legen Sie die Datei in demselben Verzeichnis wie Ihr Trainingsskript ab. Für die `.amlignore`-Datei werden [dieselbe Syntax und dieselben Muster](https://git-scm.com/docs/gitignore) wie für eine `.gitignore`-Datei verwendet.

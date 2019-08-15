@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: a821ce5d9e545db2dee2adbe942eab5edcfdb01f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726950"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934710"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -35,7 +35,7 @@ In diesem Artikel wird für jede bewährte Methode Folgendes erläutert:
 Diese bewährten Methoden basieren auf einer Konsensmeinung und den Fähigkeiten und Funktionssätzen der Azure-Plattform zum Erstellungszeitpunkt dieses Artikels. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
 ## <a name="use-strong-network-controls"></a>Verwenden von starken Netzwerksteuerungen
-Sie können [virtuelle Azure-Computer (VMs)](https://azure.microsoft.com/services/virtual-machines/) und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/) anordnen. Dies ist ein Konstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Virtuelle Computer, die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten im selben virtuellen Netzwerk, anderen virtuellen Netzwerken, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
+Sie können [virtuelle Azure-Computer (VMs)](https://azure.microsoft.com/services/virtual-machines/) und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in [Azure Virtual Networks](../../virtual-network/index.yml) anordnen. Dies ist ein Konstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Virtuelle Computer, die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten im selben virtuellen Netzwerk, anderen virtuellen Netzwerken, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
 
 Wenn Sie Ihr Netzwerk und die Sicherheit Ihres Netzwerks planen, empfehlen wir, Folgendes zu zentralisieren:
 
@@ -114,7 +114,7 @@ Sicherheitsappliances für Azure-Netzwerke können eine bessere Sicherheit biete
 Die für ein Azure Virtual Network verfügbaren Sicherheitsappliances finden Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/). Suchen Sie nach den Begriffen „Sicherheit“ und „Netzwerksicherheit“.
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Bereitstellen von Umkreisnetzwerken für Sicherheitszonen
-Ein [Umkreisnetzwerk](https://docs.microsoft.com/azure/best-practices-network-security) (auch als DMZ bezeichnet) ist ein physisches oder logisches Netzwerksegment, das als zusätzliche Sicherheitsebene zwischen Ihren Ressourcen und dem Internet zu dient. Spezielle Geräte für die Netzwerkzugriffssteuerung am Rande eines Umkreisnetzwerks erlauben nur den gewünschten Datenverkehr in Ihrem virtuellen Netzwerk.
+Ein [Umkreisnetzwerk](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (auch als DMZ bezeichnet) ist ein physisches oder logisches Netzwerksegment, das als zusätzliche Sicherheitsebene zwischen Ihren Ressourcen und dem Internet zu dient. Spezielle Geräte für die Netzwerkzugriffssteuerung am Rande eines Umkreisnetzwerks erlauben nur den gewünschten Datenverkehr in Ihrem virtuellen Netzwerk.
 
 Umkreisnetzwerke sind nützlich, da Sie sich bei der Verwaltung, Überwachung, Protokollierung und Berichterstellung für die Netzwerkzugriffssteuerung auf die Geräte am Rand des Azure Virtual Network konzentrieren können. In einem Umkreisnetzwerk aktivieren Sie normalerweise DDoS-Verhinderung (Distributed Denial of Service), Angriffserkennungs-/Eindringschutzsysteme (IDS/IPS), Firewallregeln und -richtlinien, Webfilterung, Antischadsoftware für das Netzwerk usw. Die Geräte für die Netzwerksicherheit sind zwischen dem Internet und Ihrem Azure Virtual Network angeordnet und verfügen in beiden Netzwerken über eine Schnittstelle.
 

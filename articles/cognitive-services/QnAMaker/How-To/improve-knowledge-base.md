@@ -7,15 +7,15 @@ manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: diberry
-ms.openlocfilehash: b73884e544ea1b8ee76c8a891048e6a8e17d6ab3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204095"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966709"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
@@ -64,7 +64,7 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
 1. Wählen Sie **Veröffentlichen** aus, um die Wissensdatenbank zu veröffentlichen. Aktive Lernabfragen werden nur vom Vorhersageendpunkt der GenerateAnswer-API erfasst. Die Abfragen im Bereich „Test“ im QnA Maker-Portal besitzen keine Auswirkungen auf das aktive Lernen.
 
-1. Wenn Sie aktives Lernen im QnA Maker-Portal aktivieren möchten, wählen Sie in der rechten oberen Ecke Ihren **** Namen aus, und navigieren Sie zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).  
+1. Wenn Sie aktives Lernen im QnA Maker-Portal aktivieren möchten, wählen Sie in der rechten oberen Ecke Ihren **Namen** aus, und navigieren Sie zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).  
 
     ![Aktivieren Sie auf der Seite „Diensteinstellungen“ Alternativen für die vom Feature für aktives Lernen vorgeschlagenen Fragen. Wählen Sie im Menü rechts oben Ihren Benutzernamen und anschließend „Diensteinstellungen“ aus.](../media/improve-knowledge-base/Endpoint-Keys.png)
 

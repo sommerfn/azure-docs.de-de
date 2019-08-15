@@ -8,15 +8,15 @@ manager: nitinme
 ms.assetid: 05A08B01-89FF-4781-AFE7-08DA92F25047
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5b2dada254a0bfc7fa60172f56221ba67ad279
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868056"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881801"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Ändern der Größe und Zuschneiden von Miniaturbildern
 
@@ -65,7 +65,7 @@ Um die Breite des durch die obige URL angegebenen Images auf 165 Pixel zu erhöh
 
 Wenn Sie ein Image anfordern, das größer ist als die Originalgröße des Images, fügt Bing bei Bedarf einen weißen Bereich um das Image hinzu. Wenn die Originalgröße des Images beispielsweise 474 x 316 beträgt und Sie `&w` auf 500 gesetzt haben, gibt Bing ein 500 x 333 Image zurück. Dieses Image hat einen weißen Bereich von 8,5 Pixel am oberen und unteren Rand und 13 Pixel am linken und rechten Rand.
 
-Um zu verhindern, dass Bing einen weißen Bereich hinzufügt, wenn die angeforderte Größe größer als die Originalgröße des Images ist, setzen Sie den Suchparameter auf 0. Wenn Sie beispielsweise den Parameter `&p=0` in die obige URL aufnehmen, gibt Bing ein 474 x 316-Image anstelle eines 500 x 333-Images zurück:
+Um zu verhindern, dass Bing einen weißen Bereich hinzufügt, wenn die angeforderte Größe größer als die Originalgröße des Images ist, setzen Sie den Suchparameter `&p` auf 0. Wenn Sie beispielsweise den Parameter `&p=0` in die obige URL aufnehmen, gibt Bing ein 474 x 316-Image anstelle eines 500 x 333-Images zurück:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
