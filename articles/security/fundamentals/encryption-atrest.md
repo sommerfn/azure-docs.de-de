@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927967"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035429"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -298,7 +298,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Event Grid                       | Ja                | -                  | -                  |
 | API Management                   | Ja                | -                  | -                  |
 | **IoT-Dienste**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | Ja                |
+| IoT Hub                          | Ja                | -                  | Ja                |
 | **Verwaltung und Governance**    |                    |                    |                    |
 | Azure Site Recovery              | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | **Medien**                        |                    |                    |                    |
