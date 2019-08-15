@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c81b5cde9e9c64d2d69bea1d14a18394f31e2a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: de9b50267e0b5c453a8f2a3df607ad7730acd277
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774597"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879453"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -40,7 +40,7 @@ Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der die f
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** müssen ausschließlich als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT über den Webanwendungsproxy als Endpunkte mit Extranetzugriff verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Bewährte Methoden zum Sichern von Active Directory-Verbunddienste (AD FS)](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
+> **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** müssen ausschließlich als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT über den Webanwendungsproxy als Endpunkte mit Extranetzugriff verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
 In diesem Tutorial erfahren Sie, wie die Azure AD-Hybrideinbindung für in die Active Directory-Domäne eingebundene Computer in einer Verbundumgebung mit AD FS konfiguriert wird.
 
@@ -91,6 +91,8 @@ Wenn Sie WPAD nicht verwenden und Proxyeinstellungen auf Ihrem Computer konfigur
 > Wenn Sie Proxyeinstellungen auf Ihrem Computer mithilfe von WinHTTP-Einstellungen konfigurieren, können alle Computer, die keine Verbindung mit dem konfigurierten Proxy herstellen können, auch keine Internetverbindung herstellen.
 
 Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, müssen Sie die Authentifizierung bei ausgehenden Proxys mit dem Computerkontext konfigurieren. Erkundigen Sie sich beim Anbieter Ihres ausgehenden Proxys nach den Konfigurationsanforderungen.
+
+Sie können das Skript zum [Testen der Geräteregistrierungskonnektivität](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) verwenden, um zu überprüfen, ob das Gerät unter dem Systemkonto auf die oben genannten Microsoft-Ressourcen zugreifen kann.
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Konfigurieren der Hybrid-Azure AD-Einbindung
 

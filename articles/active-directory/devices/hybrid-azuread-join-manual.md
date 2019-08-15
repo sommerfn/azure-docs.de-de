@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a56fcc45d4efb21c4904380d731d9e95584c39fd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741285"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879409"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -71,6 +71,8 @@ Wenn Ihre Organisation die verwaltete Einrichtung (ohne Verbund) über lokales A
 Wenn Ihre Organisation für Windows 10-Geräte mit Version 1703 oder einer älteren Version Zugriff auf das Internet über einen ausgehenden Proxy benötigt, müssen Sie die automatische Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) implementieren, damit Windows 10-Computer bei Azure AD registriert werden können.
 
 Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn eine Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
+
+Sie können das Skript zum [Testen der Geräteregistrierungskonnektivität](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) verwenden, um zu überprüfen, ob das Gerät unter dem Systemkonto auf die oben genannten Microsoft-Ressourcen zugreifen kann.
 
 ## <a name="verify-configuration-steps"></a>Überprüfen der Konfigurationsschritte
 

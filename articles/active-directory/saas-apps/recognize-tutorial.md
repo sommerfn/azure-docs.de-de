@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 82d231eff4690dc060c01d41356933693d08c443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093255"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Tutorial: Azure Active Directory-Integration mit Recognize
 
@@ -101,7 +101,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Recogniz
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt  **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine  **Dienstanbieter-Metadatendatei** verfügen:
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
 
     >[!NOTE]
     >Sie rufen die **Dienstanbieter-Metadatendatei** in diesem Tutorial im Abschnitt **Konfigurieren des einmaligen Anmeldens für Recognize** ab.

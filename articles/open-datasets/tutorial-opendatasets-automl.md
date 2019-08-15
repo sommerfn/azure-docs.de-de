@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359431"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845821"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Tutorial: Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen und öffentlichen Datasets
 
@@ -37,7 +37,7 @@ Für dieses Tutorial gelten folgende Voraussetzungen:
 
 ### <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#portal) zum Erstellen eines Arbeitsbereichs über das Azure-Portal, sofern Sie noch nicht über einen verfügen. Notieren Sie sich nach der Erstellung Ihren Arbeitsbereichsnamen, den Ressourcengruppennamen und die Abonnement-ID.
+Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) zum Erstellen eines Arbeitsbereichs über das Azure-Portal, sofern Sie noch nicht über einen verfügen. Notieren Sie sich nach der Erstellung Ihren Arbeitsbereichsnamen, den Ressourcengruppennamen und die Abonnement-ID.
 
 ### <a name="create-a-python-environment"></a>Erstellen einer Python-Umgebung
 

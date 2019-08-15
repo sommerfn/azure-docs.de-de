@@ -2,19 +2,18 @@
 title: Verwalten von Azure Key Vault mit der CLI – Azure Key Vault | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Automatisieren von häufigen Aufgaben in Key Vault mithilfe der Azure CLI
 services: key-vault
-author: barclayn
-manager: barbkess
-tags: azure-resource-manager
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: barclayn
-ms.openlocfilehash: d7d76458601b2afecafc1313e334215bf08b6545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713832"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976343"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 

@@ -3,18 +3,18 @@ title: 'Gewähren der Berechtigung zum Zugreifen auf einen Azure-Schlüsseltreso
 description: Es wird beschrieben, wie Sie vielen Anwendungen die Berechtigung zum Zugreifen auf einen Schlüsseltresor gewähren.
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721992"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976400"
 ---
 # <a name="grant-several-applications-access-to-a-key-vault"></a>Gewähren des Zugriffs auf einen Schlüsseltresor für mehrere Anwendungen
 

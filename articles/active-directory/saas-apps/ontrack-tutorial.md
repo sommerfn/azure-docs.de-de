@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: c1da9ec6098864d4f17ac668db6411c1dd0e3afe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371ad2a8530de7b20427327d939bf164d871ab74
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095658"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Tutorial: Azure Active Directory-Integration mit OnTrack
 
@@ -120,7 +120,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit OnTrack
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Clientsupportteam von OnTrack](mailto:CustomerService@insigniagroup.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die OnTrack-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die OnTrack-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -223,7 +223,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-ontrack-test-user"></a>Erstellen eines OnTrack-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in OnTrack einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur OnTrack-Plattform ggf. vom  [OnTrack-Supportteam](mailto:CustomerService@insigniagroup.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in OnTrack einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der OnTrack-Plattform ggf. vom [OnTrack-Supportteam](mailto:CustomerService@insigniagroup.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

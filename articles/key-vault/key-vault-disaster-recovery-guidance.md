@@ -2,25 +2,24 @@
 title: Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure Key Vault – Azure Key Vault| Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure Key Vault.
 services: key-vault
-author: barclayn
-manager: barbkess
-editor: ''
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: barclayn
-ms.openlocfilehash: dba1fe91a635f467f4a3aeeaa048897065822869
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236637"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976372"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault: Verfügbarkeit und Redundanz
 
 Azure Key Vault-Features bieten mehrere Redundanzebenen, um sicherzustellen, dass Ihre Schlüssel bzw. geheimen Schlüssel Ihrer Anwendung auch dann zur Verfügung stehen, wenn einzelne Komponenten des Dienstes ausfallen sollten.
 
-Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt). Dies gewährleistet eine sehr hohe Dauerhaftigkeit Ihrer Schlüssel und geheimen Schlüssel. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt). Dies gewährleistet eine sehr hohe Dauerhaftigkeit Ihrer Schlüssel und geheimen Schlüssel. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 
 Wenn einzelne Komponenten innerhalb des Key Vault-Diensts ausfallen, springen andere Komponenten in der Region ein, um Ihre Anforderung zu erfüllen, sodass die Funktionalität nicht beeinträchtigt wird. Sie müssen keine Aktion ausführen, um dies auszulösen. Es geschieht automatisch und von Ihnen unbemerkt.
 

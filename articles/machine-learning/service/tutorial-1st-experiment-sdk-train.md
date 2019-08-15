@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828547"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934235"
 ---
 # <a name="tutorial-train-your-first-model"></a>Tutorial: Trainieren des ersten Modells
 
@@ -23,6 +23,7 @@ Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im vorherigen 
 
 In diesem Tutorial lernen Sie Folgendes:
 
+> [!div class="checklist"]
 > * Herstellen einer Verbindung für Ihren Arbeitsbereich und Erstellen eines Experiments
 > * Laden von Daten und Trainieren von Scikit-learn-Modellen
 > * Anzeigen der Trainingsergebnisse im Portal

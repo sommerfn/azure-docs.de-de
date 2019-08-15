@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 4d80755cdf49246a8772cca82e2a71c6cccbf13a
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371390"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976517"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Tutorial: Zugreifen auf Azure Blob Storage über Azure Databricks unter Verwendung von Azure Key Vault
 
@@ -32,7 +32,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Dieses Tutorial kann nicht unter Verwendung des kostenlosen Azure-Testabonnements absolviert werden. Navigieren Sie vor der Clustererstellung zu Ihrem Profil, und ändern Sie Ihr Abonnement in **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/).
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+> [!Note]
+> Dieses Tutorial kann nicht mit dem **kostenlosen Azure-Testabonnement** absolviert werden.
+> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Erstellen eines Speicherkontos und eines Blobcontainers
 
@@ -70,11 +74,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Dieses Tutori
 
 3. Geben Sie auf der Seite **Schlüsseltresor erstellen** die folgenden Informationen ein, und behalten Sie bei den restlichen Feldern die Standardwerte bei:
 
-   |Eigenschaft|Beschreibung|
+   |Eigenschaft|Description|
    |--------|-----------|
-   |Name|Ein eindeutiger Name für Ihren Schlüsseltresor.|
-   |Abonnement|Wählen Sie ein Abonnement aus.|
-   |Ressourcengruppe|Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine neue.|
+   |NAME|Ein eindeutiger Name für Ihren Schlüsseltresor.|
+   |Subscription|Wählen Sie ein Abonnement aus.|
+   |Resource group|Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine neue.|
    |Location|Wählen Sie einen Standort aus.|
 
    ![Azure Key Vault-Eigenschaften](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
@@ -90,7 +94,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Dieses Tutori
    |Eigenschaft|Wert|
    |--------|-----------|
    |Uploadoptionen|Manuell|
-   |Name|Anzeigename für Ihren Speicherkontoschlüssel.|
+   |NAME|Anzeigename für Ihren Speicherkontoschlüssel.|
    |Wert|„Schlüssel1“ aus Ihrem Speicherkonto.|
 
    ![Eigenschaften für das neue Schlüsseltresorgeheimnis](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -107,12 +111,12 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Dieses Tutori
 
 2. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Arbeitsbereich zu erstellen:
 
-   |Eigenschaft  |Beschreibung  |
+   |Eigenschaft  |BESCHREIBUNG  |
    |---------|---------|
    |Arbeitsbereichname     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
-   |Abonnement     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-   |Ressourcengruppe     | Wählen Sie die Ressourcengruppe aus, in der sich auch Ihr Schlüsseltresor befindet. |
-   |Standort     | Wählen Sie den Standort aus, an dem sich auch Ihre Azure Key Vault-Instanz befindet. Alle verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).        |
+   |Subscription     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
+   |Resource group     | Wählen Sie die Ressourcengruppe aus, in der sich auch Ihr Schlüsseltresor befindet. |
+   |Location     | Wählen Sie den Standort aus, an dem sich auch Ihre Azure Key Vault-Instanz befindet. Alle verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).        |
    |Preisstufe     |  Wählen Sie zwischen **Standard** und **Premium**. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Eigenschaften des Databricks-Arbeitsbereichs](./media/store-secrets-azure-key-vault/create-databricks-service.png)

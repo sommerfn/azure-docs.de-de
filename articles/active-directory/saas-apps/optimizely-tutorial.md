@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bf4f1a08c4356a68db5315b7563adb3b6c884d41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095509"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Tutorial: Azure Active Directory-Integration mit Optimizely
 
@@ -112,7 +112,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Optimize
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie aktualisieren den Wert mit der tatsächlichen Anmelde-URL und dem tatsächlichen Bezeichner. Dies wird später in diesem Tutorial beschrieben. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Optimizely-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die Optimizely-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 

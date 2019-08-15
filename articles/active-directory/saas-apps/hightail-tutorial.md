@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbcf941293a30a48a17dfdf832ae8af551e834c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7f4dd89b2469d99fadd08178dbca9c17382414a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100994"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Tutorial: Azure Active Directory-Integration in Hightail
 
@@ -117,7 +117,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Hightai
 
     Geben Sie im Textfeld **Anmelde-URL** die folgende URL ein: `https://www.hightail.com/loginSSO`.
 
-6. Die Hightail-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+6. Die Hightail-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -127,7 +127,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Hightai
     | -------- |-------- |
     | FirstName | user.givenname |
     | Nachname | user.surname |
-    | E-Mail | user.mail |
+    | Email | user.mail |
     | UserIdentity | user.mail |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: f22f70c587556793c2b02fc79fa6175584b0c5cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f64597d8da183a24bcf87543a448442052e5f77
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096633"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>Tutorial: Azure Active Directory-Integration mit Moxtra
 
@@ -106,7 +106,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Moxtra 
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.moxtra.com/service/#login`
 
-5. Die Moxtra-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die Moxtra-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 805893d6b5756c76ebc523187e0ed75c9fe24ed9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c27c787eeac9bbf68b512b55b9ceab11074a81d8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874759"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934353"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einer Azure-Web-App in .NET
 
@@ -249,4 +249,4 @@ Sie können den virtuellen Computer und Ihren Schlüsseltresor löschen, wenn di
 ## <a name="next-steps"></a>Nächste Schritte
 
 >[!div class="nextstepaction"]
->[Entwicklerhandbuch zu Azure-Schlüsseltresor](https://docs.microsoft.com/azure/key-vault/key-vault-developers-guide)
+>[Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)
