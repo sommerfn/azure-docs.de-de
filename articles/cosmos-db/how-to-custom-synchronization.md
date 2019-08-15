@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: de66149a2ea3e01e62aa8e33ea5a99121a21524f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0f630c2139d1d7d391d6c5578e5e7f378e56dcb4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986077"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013786"
 ---
 # <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementieren der benutzerdefinierten Synchronisierung zur Optimierung der Verfügbarkeit und Leistung
 
@@ -84,7 +84,7 @@ class MyDataAccessLayer
 
 
         writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
-        writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
+        readClient = new CosmosClient(accountEndpoint, key, readConnectionOptions);
     }
 }
 ```

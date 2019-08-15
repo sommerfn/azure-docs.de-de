@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0f7eb1f5662ce0b901af2fd82a75556cacbca62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b95c6defcef7fdc112487988fc9bdd1ea3bb59c2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095583"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opal"></a>Tutorial: Azure Active Directory-Integration mit Opal
 
@@ -112,7 +112,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Opal die 
     > [!NOTE]
     > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Clientsupportteam von Opal](mailto:support@workwithopal.com), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Opal-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die Opal-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -212,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-opal-test-user"></a>Erstellen eines Opal-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Opal einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Opal-Plattform ggf. vom  [Opal-Supportteam](mailto:support@workwithopal.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Opal einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Opal-Plattform ggf. vom [Opal-Supportteam](mailto:support@workwithopal.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

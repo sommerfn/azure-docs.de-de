@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d57b3ce4e378a366148b5c3eef6bc4d5d9eb96d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69c5d30632e187efe36655a17a91c9e373062955
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088541"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Tutorial: Azure Active Directory-Integration mit TimeOffManager
 
@@ -112,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Sie können diesen Wert von der **Seite „Einstellungen für einmaliges Anmelden“** abrufen, die später im Tutorial erläutert wird, oder wenden Sie sich an das [TimeOffManager-Supportteam](https://www.purelyhr.com/contact-us). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die TimeOffManager-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die TimeOffManager-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -122,7 +122,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
     | --- | --- |
     | Firstname |User.givenname |
     | Lastname |User.surname |
-    | E-Mail |User.mail |
+    | Email |User.mail |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 

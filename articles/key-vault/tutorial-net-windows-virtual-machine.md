@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3bb4647b39a276e2dd54260c17eca1d700d5ba16
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e2e730c623b6ee802938b930c4874f6c4920cc64
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874984"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934401"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in .NET
 
@@ -105,9 +105,9 @@ Dieses Geheimnis speichert den Wert **MySecret**.
 ### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 Erstellen Sie mit einer der folgenden Methoden einen virtuellen Computer:
 
-* [Die Azure-CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
-* [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
-* [Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+* [Die Azure-CLI](../virtual-machines/windows/quick-create-cli.md)
+* [PowerShell](../virtual-machines/windows/quick-create-powershell.md)
+* [Azure-Portal](../virtual-machines/windows/quick-create-portal.md)
 
 ### <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
 Erstellen Sie für den virtuellen Computer mit dem Befehl [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) eine vom System zugewiesene Identität:
@@ -134,7 +134,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ### <a name="sign-in-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
 
-Führen Sie die Anweisungen unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon) aus, um sich beim virtuellen Computer anzumelden.
+Führen Sie die Anweisungen unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md) aus, um sich beim virtuellen Computer anzumelden.
 
 ## <a name="set-up-the-console-app"></a>Einrichten der Konsolen-App
 
