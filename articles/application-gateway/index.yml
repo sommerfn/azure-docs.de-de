@@ -40,7 +40,7 @@ sections:
         style: ordered
         items:
           - html: '<a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Tutorial: Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal</a>'
-          - html: '<a href="/azure/application-gateway/create-ssl-portal">Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals</a>'
+          - html: '<a href="/azure/application-gateway/create-ssl-portal">Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Terminierung mithilfe des Azure-Portals</a>'
           - html: '<a href="/azure/application-gateway/create-multiple-sites-portal">Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal</a>'
           - html: '<a href="/azure/application-gateway/create-url-route-portal">Tutorial: Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals</a>'
           - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis</a>
