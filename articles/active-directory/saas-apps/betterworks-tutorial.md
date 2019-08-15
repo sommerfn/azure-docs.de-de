@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 561c4458f942dc524f7de8df5b4385a1eaa1f6a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eb3d60eb4c40e726d53d5fb876a6a118d119cb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106286"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>Tutorial: Azure Active Directory-Integration mit BetterWorks
 
@@ -119,7 +119,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BetterWo
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Kundensupportteam von BetterWorks](mailto:support@betterworks.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Ihre BetterWorks-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+6. Ihre BetterWorks-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -217,7 +217,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-betterworks-test-user"></a>Erstellen eines BetterWorks-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in BetterWorks einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem [Supportteam von BetterWorks](mailto:support@betterworks.com) zusammen, um Benutzer der BetterWorks-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in BetterWorks einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem [Supportteam von BetterWorks](mailto:support@betterworks.com) zusammen, um Benutzer in der BetterWorks-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: b6f1198334d8bd4ba58b4fbba02942fc8c54c578
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 35cb408473da8c6397c5034ae20ac0a50b0953ea
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442859"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944721"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Tutorial: Azure Active Directory-Integration mit EBSCO
 
@@ -124,7 +124,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in EBSCO die
 
     o   **Profile** – Clients können den Link, mit dem Benutzer zu einem bestimmten Profil umgeleitet werden (je nachdem, was sie von EBSCO erwerben), anpassen. Sie können eine bestimmte Profil-ID eingeben. Die Haupt-IDs sind eds (EBSCO Discovery Service) und ehost (EBSOCOhost-Datenbanken). Die zugehörigen Anweisungen finden Sie [hier](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
 
-6. Ihre EBSCO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+6. Ihre EBSCO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -137,7 +137,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in EBSCO die
     | ---------------| --------------- |    
     | FirstName   | user.givenname |
     | Nachname   | user.surname |
-    | E-Mail   | user.mail |
+    | Email   | user.mail |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
