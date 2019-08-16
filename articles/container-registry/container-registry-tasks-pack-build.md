@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: danlep
-ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500893"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839899"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Erstellen und Übertragen eines Images aus einer App mithilfe eines Cloud Native-Buildpacks
 
@@ -44,11 +44,13 @@ Im folgenden Beispiel wird mithilfe des Generators `cloudfoundry/cnb:bionic` ein
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
 In diesem Beispiel wird das `node-app`-Image mit dem `1.0`-Tag erstellt und mithilfe von Push an die *myregistry*-Containerregistrierung übertragen. Hier wird der Name der Zielcontainerregistrierung dem Namen des Image explizit vorangestellt. Wenn dieser nicht angegeben ist, wird die Registrierungs-URL automatisch dem Imagenamen vorangestellt.
+
+Der Parameter `--pull` gibt an, dass der Befehl das neueste Generatorimage pullt.
 
 Die Befehlsausgabe zeigt den Status der Erstellung und Übertragung des Images mithilfe von Push an. 
 
@@ -80,7 +82,7 @@ az acr pack build \
 
 In diesem Beispiel wird das mit der Ausführungs-ID des Befehls markierte `java-app`-Image erstellt und mithilfe von Push an die Containerregistrierung *myregistry* übertragen.
 
-Der Parameter `--pull` gibt an, dass der Befehl das neueste Generatorimage pullt. Dies ist erforderlich, da das Heroku-Generatorimage nicht von ACR Tasks zwischengespeichert wird.
+Der Parameter `--pull` gibt an, dass der Befehl das neueste Generatorimage pullt.
 
 Die Befehlsausgabe zeigt den Status der Erstellung und Übertragung des Images mithilfe von Push an. 
 

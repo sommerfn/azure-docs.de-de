@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741554"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883240"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
 
@@ -33,23 +33,23 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 Erstellen Sie einen neuen virtuellen Linux-Computer: 
 
-1. Wählen Sie im linken Navigationsbereich die Option  **Ressource erstellen**  aus. 
-1. Suchen Sie nach **Virtueller Computer**.  
+1. Wählen Sie im linken Navigationsbereich die Option **Ressource erstellen** aus. 
+1. Suchen Sie nach **Virtueller Computer**.  
 1. Wählen Sie **Ubuntu 16.04 LTS** und anschließend **Erstellen** aus. 
-1. Geben Sie einen VM-Namen an, z. B.  **MyTelegrafVM**.  
-1. Behalten Sie den Datenträgertyp **SSD** bei. Geben Sie anschließend unter **Benutzername** einen Benutzernamen an (etwa  **azureuser**). 
-1. Wählen Sie unter  **Authentifizierungstyp** die Option  **Kennwort** aus. Geben Sie ein Kennwort ein. Dieses Kennwort wird später verwendet, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. 
-1. Wählen Sie  **Neue Ressourcengruppe erstellen** aus. Geben Sie einen Namen an (beispielsweise  **myResourceGroup**). Wählen Sie Ihren  **Standort** aus. Wählen Sie anschließend  **OK** aus. 
+1. Geben Sie einen VM-Namen an, z. B. **MyTelegrafVM**.  
+1. Behalten Sie den Datenträgertyp **SSD** bei. Geben Sie anschließend unter **Benutzername** einen Benutzernamen an (z. B. **azureuser**). 
+1. Wählen Sie als **Authentifizierungstyp** die Option **Kennwort** aus. Geben Sie ein Kennwort ein. Dieses Kennwort wird später verwendet, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. 
+1. Wählen Sie **Neue Ressourcengruppe erstellen** aus. Geben Sie einen Namen an (z. B. **myResourceGroup**). Wählen Sie Ihren **Standort** aus. Wählen Sie dann **OK**aus. 
 
     ![Erstellen eines virtuellen Ubuntu-Computers](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
-1. Wählen Sie eine Größe für den virtuellen Computer. Sie können beispielsweise nach  **Computetyp** oder **Datenträgertyp** filtern. 
+1. Wählen Sie eine Größe für den virtuellen Computer. Sie können beispielsweise nach **Computetyp** oder **Datenträgertyp** filtern. 
 
     ![Größe des virtuellen Computers für den Telegraf-Agent – Übersicht](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Wählen Sie auf der Seite  **Einstellungen** unter  **Netzwerk** > **Netzwerksicherheitsgruppe** > **Öffentliche Eingangsports hinzufügen** die Optionen  **HTTP** und **SSH (22)** aus. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie  **OK** aus. 
+1. Wählen Sie auf der Seite **Einstellungen** unter **Netzwerk** > **Netzwerksicherheitsgruppe** > **Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **SSH (22)** aus. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK**. 
 
-1. Wählen Sie auf der Zusammenfassungsseite die Option  **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten. 
+1. Wählen Sie auf der Seite „Zusammenfassung“ die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten. 
 
 1. Der virtuelle Computer wird auf dem Dashboard des Azure-Portals angeheftet. Nach Abschluss der Bereitstellung wird automatisch die Zusammenfassung für den virtuellen Computer geöffnet. 
 
@@ -59,11 +59,11 @@ Erstellen Sie einen neuen virtuellen Linux-Computer:
  
 ## <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM 
 
-Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her. Wählen Sie auf der Übersichtsseite für Ihren virtuellen Computer die Schaltfläche  **Verbinden** aus. 
+Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her. Klicken Sie auf der Seite „Übersicht“ des virtuellen Computers auf die Schaltfläche **Verbinden**. 
 
 ![Übersichtsseite des virtuellen Telegraf-Computers](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-Übernehmen Sie auf der Seite zum Herstellen der Verbindung mit dem virtuellen Computer ** **die Standardoptionen, um basierend auf dem DNS-Namen eine Verbindung über den Port 22 herzustellen. Unter  **Mit lokalem VM-Konto anmelden** wird ein Verbindungsbefehl angezeigt. Wählen Sie die Schaltfläche aus, um den Befehl zu kopieren. Das folgende Beispiel zeigt den Befehl für die SSH-Verbindung: 
+Übernehmen Sie auf der Seite zum **Herstellen der Verbindung mit dem virtuellen Computer** die Standardoptionen, um basierend auf dem DNS-Namen eine Verbindung über Port 22 herzustellen. Unter **Mit lokalem VM-Konto anmelden** wird ein Verbindungsbefehl angezeigt. Wählen Sie die Schaltfläche aus, um den Befehl zu kopieren. Das folgende Beispiel zeigt den Befehl für die SSH-Verbindung: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Befehle über Ihre SSH-Sitzung aus, um das Debian-Pake
 
 ```cmd
 # download the package to the VM 
-wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb 
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb 
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
@@ -108,7 +108,7 @@ Nun erfasst der Agent die Metriken von jedem der angegebenen Eingabe-Plug-Ins un
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 
-1. Navigieren Sie zur neuen Registerkarte  **Monitor**. Wählen Sie  **Metriken** aus.  
+1. Navigieren Sie zur neuen Registerkarte **Überwachen**. Wählen Sie dann **Metriken** aus.  
 
      ![Monitor – Metriken (Vorschauversion)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -128,7 +128,7 @@ Darüber hinaus haben Sie in dieser exemplarischen Vorgehensweise mithilfe des T
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 
-Wenn die Ressourcengruppe, der virtuelle Computer und die dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. Wählen Sie hierzu die Ressourcengruppe für den virtuellen Computer und anschließend  **Löschen** aus. Bestätigen Sie dann den Namen der zu löschenden Ressourcengruppe. 
+Wenn die Ressourcengruppe, der virtuelle Computer und die dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. Wählen Sie hierzu die Ressourcengruppe für den virtuellen Computer und anschließend **Löschen** aus. Bestätigen Sie dann den Namen der zu löschenden Ressourcengruppe. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
