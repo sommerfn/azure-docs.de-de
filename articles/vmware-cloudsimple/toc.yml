@@ -87,15 +87,15 @@
         - name: Einrichten von privaten Cloudnetzwerken
           items:
             - name: Erstellen und Verwalten von VLANs und Subnetzen
-              href: 'https://docs.azure.cloudsimple.com/create-vlan-subnet/'
+              href: create-vlan-subnet.md
             - name: Einrichten von Firewalltabellen und -regeln
-              href: 'https://docs.azure.cloudsimple.com/firewall/'
+              href: firewall.md
             - name: Zuordnen öffentlicher IP-Adressen
-              href: 'https://docs.azure.cloudsimple.com/public-ips/'
+              href: public-ips.md
             - name: Einrichten von VPN-Verbindungen
-              href: 'https://docs.azure.cloudsimple.com/vpn-gateway/'
+              href: vpn-gateway.md
             - name: Abrufen von Peerinformationen für eine VNET-Verbindung mit CloudSimple
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: Zugriff auf Eskalationsberechtigungen des vSphere-Clients für Administratoraufgaben
               href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: Verwalten von CloudSimple-Portalkonten
@@ -127,17 +127,17 @@
         - name: Private Cloudnetzwerke
           items:
             - name: VPN-Verbindung zwischen lokalem Standort und privater Cloud
-              href: 'https://docs.azure.cloudsimple.com/set-up-vpn/'
+              href: set-up-vpn.md
             - name: Lokale Netzwerkverbindung mit ExpressRoute
               href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: Virtuelle Azure-Netzwerkverbindung mit ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md
         - name: VMware-Plattform
           items:
             - name: Kennenlernen des Berechtigungsmodells für private Clouds
               href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
             - name: vCenter-Identitätsquellen
-              href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
+              href: set-vcenter-identity.md
             - name: Azure Application Gateway mit virtuellen VMware-Computern
               href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
             - name: Konfigurieren eines vCenter-Servers in einer privaten Cloud als vRealize-Automatisierungsendpunkt
@@ -153,13 +153,13 @@
             - name: Lösungsanleitung für VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurieren der vSAN-Verschlüsselung für Ihre private Cloud
-              href: 'https://docs.azure.cloudsimple.com/vsan-encryption/'
+              href: vsan-encryption.md
             - name: Oracle RAC-Bereitstellung in der privaten CloudSimple-Cloud
               href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
         - name: Azure Core-Integration
           items:
             - name: Azure AD-Identitätsquelle in Private Cloud vCenter
-              href: 'https://docs.azure.cloudsimple.com/azure-ad/'
+              href: azure-ad.md
             - name: Lokale Netzwerkverbindung mit ExpressRoute
               href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: Azure Virtual Network-Verbindung mit ExpressRoute

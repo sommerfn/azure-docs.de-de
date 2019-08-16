@@ -6,8 +6,6 @@
       href: security-center-intro.md
     - name: Unterstützte Plattformen und Funktionen in Security Center
       href: security-center-os-coverage.md
-    - name: 'Endpoint Protection: Bewertung und Empfehlungen'
-      href: security-center-endpoint-protection.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -45,6 +43,24 @@
       href: security-center-incident-response.md
     - name: Mandantenübergreifende Verwaltung
       href: security-center-cross-tenant-management.md
+    - name: Warnungen der Bedrohungserkennung
+      items:
+        - name: Übersicht zu Sicherheitswarnungen
+          href: security-center-alerts-overview.md
+        - name: Bedrohungserkennung für virtuelle Computer und Server
+          href: security-center-alerts-iaas.md
+        - name: Bedrohungserkennung für Cloud Native Compute
+          href: security-center-alerts-compute.md
+        - name: Bedrohungserkennung für Datendienste
+          href: security-center-alerts-data-services.md
+        - name: Bedrohungserkennung für die Azure-Dienstebene
+          href: security-center-alerts-service-layer.md
+        - name: Integration in Azure Security-Produkte
+          href: security-center-alerts-integration.md
+        - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
+          href: security-center-alerts-cloud-smart.md
+        - name: Warnungsüberprüfung (EICAR-Testdatei)
+          href: security-center-alert-validation.md
 - name: Anleitungen
   items:
     - name: Verbessern Ihrer Sicherheitsbewertung
@@ -105,42 +121,16 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptives Erhöhen des Netzwerkschutzes
           href: security-center-adaptive-network-hardening.md
-    - name: Warnungen der Bedrohungserkennung
-      items:
-        - name: Übersicht zu Sicherheitswarnungen
-          href: security-center-alerts-overview.md
-        - name: Bedrohungserkennung für virtuelle Computer und Server
-          href: security-center-alerts-iaas.md
-        - name: Bedrohungserkennung für Cloud Native Compute
-          href: security-center-alerts-compute.md
-        - name: Bedrohungserkennung für Datendienste
-          href: security-center-alerts-data-services.md
-        - name: Bedrohungserkennung für die Azure-Dienstebene
-          href: security-center-alerts-service-layer.md
-        - name: Integration in Azure Security-Produkte
-          href: security-center-alerts-integration.md
-        - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
-          href: security-center-alerts-cloud-smart.md
-        - name: Warnungsüberprüfung (EICAR-Testdatei)
-          href: security-center-alert-validation.md
     - name: Archivieren
       items:
         - name: Anwenden der Datenträgerverschlüsselung
           href: security-center-apply-disk-encryption.md
         - name: Systemupdates anwenden
           href: security-center-apply-system-updates.md
-        - name: Aktivieren der Verschlüsselung für das Speicherkonto
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: VM-Agent aktivieren
-          href: security-center-enable-vm-agent.md
         - name: Endpoint Protection installieren
           href: security-center-install-endpoint-protection.md
         - name: Neustart nach Systemupdates
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: Optimieren von Sicherheitskonfigurationen
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: Betriebssystemversion aktualisieren
-          href: security-center-update-os-version.md
         - name: Keine Sicherheitsrisikobewertung installiert
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Web Application Firewall hinzufügen
@@ -191,6 +181,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Feature- und API-Ausmusterung (Juli 2019)
       href: security-center-features-retirement-july2019.md
+    - name: 'Endpoint Protection: Bewertung und Empfehlungen'
+      href: security-center-endpoint-protection.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

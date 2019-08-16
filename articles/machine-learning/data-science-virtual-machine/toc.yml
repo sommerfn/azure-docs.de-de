@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Erstellen einer DSVM-Instanz für CentOS
       href: linux-dsvm-intro.md
-    - name: Erstellen einer Deep Learning-VM
-      href: provision-deep-learning-dsvm.md
-    - name: Erstellen einer DSVM-Instanz für geografische KI
+    - name: Erstellen einer Data Science VM-Instanz für geografische KI
       href: provision-geo-ai-dsvm.md
 - name: Konzepte
   items:
