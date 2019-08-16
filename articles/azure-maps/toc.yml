@@ -25,6 +25,8 @@
       items:
         - name: Einrichten eines Geofence
           href: tutorial-geofence.md
+        - name: Räumliche Analysen
+          href: tutorial-iot-hub-maps.md
 - name: Konzepte
   items:
     - name: Authentifizierung mit Azure Maps

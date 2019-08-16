@@ -310,6 +310,8 @@
           href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
         - name: In Apache Ambari werden ausgefallene Hosts und Dienste angezeigt.
           href: ./apache-ambari-troubleshoot-down-hosts-services.md
+        - name: Zugriff auf Data Lake-Dateien nicht möglich
+          href: ./hdinsight-troubleshoot-data-lake-files.md
         - name: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Problembehandlung für Apache Hadoop HDFS
