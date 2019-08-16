@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562225"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741369"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -68,7 +68,11 @@ In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung 
 Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der sowohl das WS-Trust- als auch das WS-Fed-Protokoll unterstützt:
 
 - **WS-Fed:** Dieses Protokoll ist erforderlich, um ein Gerät in Azure AD einzubinden.
-- **WS-Trust:** Dieses Protokoll ist für die Anmeldung bei einem in Azure AD eingebundenen Gerät erforderlich. 
+- **WS-Trust:** Dieses Protokoll ist für die Anmeldung bei einem in Azure AD eingebundenen Gerät erforderlich.
+Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren: `/adfs/services/trust/2005/usernamemixed`
+ `/adfs/services/trust/13/usernamemixed`
+ `/adfs/services/trust/2005/certificatemixed`
+ `/adfs/services/trust/13/certificatemixed`
 
 Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Die Webanmeldung ist zurzeit ein Vorschaufeature und wird nicht für Produktionsbereitstellungen empfohlen.
 

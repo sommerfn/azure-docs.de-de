@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 300dd634cc99e5203145619b475d813705f09553
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501304"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815696"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -431,7 +431,7 @@ Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen 
 
 **Flat rate:** (Pauschalgebühr): Ermöglichen Sie den Zugriff auf Ihr Angebot mit einer einzelnen monatlichen oder jährlichen Pauschalgebühr. Dies wird manchmal als arbeitsplatzbasierter Preis bezeichnet. Dieses Preismodell ermöglicht Ihnen das optionale Definieren von Volumentarifen, bei denen die Marketplace-Messungsdienst-API zur Berechnung für Kunden nach nicht standardmäßigen Einheiten verwendet wird.  Weitere Informationen zur getakteten Abrechnung finden Sie unter [Getaktete Abrechnung mit dem Marketplace-Messungsdienst](./saas-metered-billing.md).
 
-**Seat based** (Arbeitsplatzbasiert): Ermöglichen Sie den Zugriff auf Ihr Angebot mit einem Preis, der auf der Anzahl der Benutzer, die auf Ihr Angebot zugreifen, oder auf der Anzahl der belegten *Arbeitsplätze* basiert. Mithilfe des arbeitsplatzbasierten Modells können Sie die minimal und maximal zulässige Anzahl von Arbeitsplätzen auf Grundlage des Preises festlegen. Auf diese Weise können durch das Konfigurieren mehrerer Pläne unterschiedliche Preise auf Grundlage der Anzahl der Benutzer festgelegt werden.  Diese Felder sind optional. Wenn keine Angabe erfolgt, wird angenommen, dass die Anzahl der Arbeitsplätze unbegrenzt ist (mindestens 1 und maximal die vom System unterstützte maximale Anzahl). Diese Felder können beim Aktualisieren des Plans bearbeitet werden.
+**Pro Benutzer:** Ermöglichen Sie den Zugriff auf Ihr Angebot mit einem Preis, der auf der Anzahl der Benutzer, die auf Ihr Angebot zugreifen, oder auf der Anzahl der belegten Arbeitsplätze basiert. Mithilfe des benutzerbasierten Modells können Sie die minimal und maximal zulässige Anzahl von Benutzern auf Grundlage des Preises festlegen. Auf diese Weise können durch das Konfigurieren mehrerer Pläne unterschiedliche Preise auf Grundlage der Anzahl der Benutzer festgelegt werden.  Diese Felder sind optional. Wenn keine Auswahl erfolgt, wird angenommen, dass die Anzahl der Arbeitsplätze unbegrenzt ist (mindestens 1 und maximal die vom System unterstützte Anzahl). Diese Felder können beim Aktualisieren des Plans bearbeitet werden.
 
 Nach der Veröffentlichung kann das Abrechnungspreismodell nicht mehr geändert werden. Darüber hinaus müssen alle Pläne für das gleiche Angebot dasselbe Preismodell aufweisen.
 

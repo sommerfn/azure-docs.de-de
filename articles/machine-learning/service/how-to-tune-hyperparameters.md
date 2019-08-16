@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302347"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815726"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning Service
 
@@ -45,7 +45,7 @@ Optimieren Sie Hyperparameter automatisch durch Untersuchen des für jeden Hyper
 
 ### <a name="types-of-hyperparameters"></a>Typen von Hyperparametern
 
-Jede Hyperparameter kann entweder diskret oder kontinuierlich sein.
+Jeder Hyperparameter kann diskret oder kontinuierlich sein und weist eine Verteilung von Werten auf, die durch einen [Parameterausdruck](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py) beschrieben wird.
 
 #### <a name="discrete-hyperparameters"></a>Diskrete Hyperparameter 
 
@@ -129,7 +129,7 @@ param_sampling = GridParameterSampling( {
 
 Beim Bayesschen Sampling wirkt sich die Anzahl gleichzeitiger Läufe auf die Effektivität des Optimierungsprozesses aus. Normalerweise kann eine kleinere Anzahl gleichzeitiger Läufe zu einer besseren Samplingkonvergenz führen, da durch den geringeren Parallelitätsgrad die Anzahl von Läufen zunimmt, die von zuvor abgeschlossenen Läufen profitieren.
 
-Bayessches Sampling unterstützt nur `choice`- und `uniform`-Verteilungen über den Suchraum. 
+Bayessches Sampling unterstützt nur `choice`-, `uniform`- und `quniform`-Verteilungen über den Suchraum.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ Das Trainingsskript berechnet den `val_accuracy`-Wert und protokolliert ihn als 
 
 ## <a name="specify-early-termination-policy"></a>Festlegen einer Richtlinie für vorzeitige Beendigung
 
-Sie können Ausführungen mit schlechter Leistung automatisch mit einer Richtlinie für vorzeitige Beendigung beenden. Durch die Beendigung wird die Vergeudung von Ressourcen verringert, die stattdessen zur Untersuchung weiterer Parameterkonfigurationen eingesetzt werden.
+Sie können Läufe mit schlechter Leistung automatisch mit einer Richtlinie für vorzeitige Beendigung beenden. Durch die Beendigung wird die Vergeudung von Ressourcen verringert, die stattdessen zur Untersuchung weiterer Parameterkonfigurationen eingesetzt werden.
 
 Bei der Verwendung einer Richtlinie für vorzeitige Beendigung können Sie die folgenden Parameter konfigurieren, die steuern, wann eine Richtlinie angewendet wird:
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem Intervall angewendet, beginnend bei Auswertungsintervall 5. Ein Lauf wird bei Intervall 5 beendet, wenn seine Leistung in den unteren 20 % der Leistung aller Läufe bei Intervall 5 liegt.
+In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem Intervall angewendet, beginnend bei Auswertungsintervall 5. Ein Lauf wird bei Intervall 5 beendet, wenn seine Leistung in den unteren 20 % der Leistung aller Läufe bei Intervall 5 liegt.
 
 ### <a name="no-termination-policy"></a>Keine Beendigungsrichtlinie
 
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-Dieser Code konfiguriert das Experiment zur Hyperparameteroptimierung für eine Gesamtanzahl von maximal 20 Läufen, bei denen jeweils vier Konfigurationen ausgeführt werden.
+Dieser Code konfiguriert das Experiment zur Hyperparameteroptimierung für eine Gesamtanzahl von maximal 20 Läufen, in denen jeweils vier Konfigurationen ausgeführt werden.
 
 ## <a name="configure-experiment"></a>Konfigurieren des Experiments
 

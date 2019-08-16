@@ -8,23 +8,71 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5a9bd554ec3b7ae4f84d6a0a4726af7ffea89e89
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477471"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782328"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Authentifizierungsfehler beim Verwenden von Azure Automation-Runbooks
 
+### <a name="login-azurerm"></a>Szenario: Ausführen von Login-AzureRMAccount zum Anmelden
+
+#### <a name="issue"></a>Problem
+
+Beim Ausführen eines Runbooks wird die folgende Fehlermeldung angezeigt:
+
+```error
+Run Login-AzureRMAccount to login.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler hat zwei Hauptursachen:
+
+* Verschiedene Versionen von AzureRM-Modulen.
+* Sie versuchen, auf Ressourcen in einem separaten Abonnement zuzugreifen.
+
+#### <a name="resolution"></a>Lösung
+
+Wenn diese Fehlermeldung nach dem Aktualisieren eines AzureRM-Moduls angezeigt wird, sollten Sie alle Ihre AzureRM-Module auf die gleiche Version aktualisieren.
+
+Wenn Sie versuchen, auf Ressourcen in einem anderen Abonnement zuzugreifen, können Sie die folgenden Schritte ausführen, um die Berechtigungen zu konfigurieren.
+
+1. Wechseln Sie zum ausführenden Konto des Automation-Kontos, und kopieren Sie die Anwendungs-ID und den Fingerabdruck.
+  ![Kopieren der Anwendungs-ID und des Fingerabdrucks](../media/troubleshoot-runbooks/collect-app-id.png)
+1. Wechseln Sie zur Zugriffssteuerung des Abonnements, in dem das Automation-Konto NICHT gehostet wird, und fügen Sie eine neue Rollenzuweisung hinzu.
+  ![Zugriffssteuerung](../media/troubleshoot-runbooks/access-control.png)
+1. Fügen Sie die Anwendungs-ID hinzu, die Sie im vorherigen Schritt kopiert haben. Wählen Sie die Berechtigungen für „Mitwirkender“ aus.
+   ![Hinzufügen der Rollenzuweisung](../media/troubleshoot-runbooks/add-role-assignment.png)
+1. Kopieren Sie den Namen des Abonnements für den nächsten Schritt.
+1. Sie können nun den folgenden Runbookcode verwenden, um die Berechtigungen Ihres Automation-Kontos für das andere Abonnement zu testen.
+
+    Ersetzen Sie \<CertificateThumbprint\> durch den Wert, den Sie in Schritt 1 kopiert haben, und \<SubscriptionName\> durch den Wert, den Sie in Schritt 4 kopiert haben.
+
+    ```powershell
+    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint "<CertificateThumbprint>"
+    #Select the subscription you want to work with
+    Select-AzureRmSubscription -SubscriptionName '<YourSubscriptionNameGoesHere>'
+
+    #Test and get outputs of the subscriptions you granted access.
+    $subscriptions = Get-AzureRmSubscription
+    foreach($subscription in $subscriptions)
+    {
+        Set-AzureRmContext $subscription
+        Write-Output $subscription.Name
+    }
+    ```
+
 ### <a name="sign-in-failed"></a>Szenario: Fehler beim Anmelden beim Azure-Konto
 
 #### <a name="issue"></a>Problem
 
-Beim Arbeiten mit den Cmdlets `Add-AzureAccount` oder `Connect-AzureRmAccount` wird der folgende Fehler angezeigt.
-:
+Beim Arbeiten mit den Cmdlets `Add-AzureAccount` oder `Connect-AzureRmAccount` wird der folgende Fehler angezeigt:
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -36,20 +84,20 @@ Dieser Fehler tritt auf, wenn der Objektname für die Anmeldeinformationen ungü
 
 #### <a name="resolution"></a>Lösung
 
-Führen Sie die folgenden Schritte aus, um zu ermitteln, wo der Fehler liegt:  
+Führen Sie die folgenden Schritte aus, um zu ermitteln, wo der Fehler liegt:
 
-1. Stellen Sie sicher, dass Sie keine Sonderzeichen eingegeben haben. Dazu zählt auch das **\@** -Zeichen im Namen des Automation-Anmeldeinformationsobjekts, mit dem Sie die Verbindung zu Azure herstellen.  
-2. Überprüfen Sie, ob Sie den Benutzernamen und das Kennwort aus den Azure Automation-Anmeldeinformationen in Ihrem lokalen PowerShell ISE-Editor verwenden können. Sie können überprüfen, ob Benutzername und Kennwort korrekt sind, indem Sie die folgenden Cmdlets in der PowerShell ISE ausführen:  
+1. Stellen Sie sicher, dass Sie keine Sonderzeichen eingegeben haben. Dazu zählt auch das **\@** -Zeichen im Namen des Automation-Anmeldeinformationsobjekts, mit dem Sie die Verbindung zu Azure herstellen.
+2. Überprüfen Sie, ob Sie den Benutzernamen und das Kennwort aus den Azure Automation-Anmeldeinformationen in Ihrem lokalen PowerShell ISE-Editor verwenden können. Sie können überprüfen, ob Benutzername und Kennwort korrekt sind, indem Sie die folgenden Cmdlets in der PowerShell ISE ausführen:
 
    ```powershell
-   $Cred = Get-Credential  
+   $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred  
-   #Using Azure Resource Manager  
+   Add-AzureAccount –Credential $Cred
+   #Using Azure Resource Manager
    Connect-AzureRmAccount –Credential $Cred
    ```
 
-3. Wenn die Authentifizierung lokal fehlschlägt, bedeutet dies, dass Sie Ihre Azure Active Directory-Anmeldeinformationen nicht richtig eingerichtet haben. Informationen zur richtigen Einrichtung des Azure Active Directory-Kontos finden Sie im Blogbeitrag [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) (Authentifizieren in Azure mit Azure Active Directory).  
+3. Wenn die Authentifizierung lokal fehlschlägt, bedeutet dies, dass Sie Ihre Azure Active Directory-Anmeldeinformationen nicht richtig eingerichtet haben. Informationen zur richtigen Einrichtung des Azure Active Directory-Kontos finden Sie im Blogbeitrag [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) (Authentifizieren in Azure mit Azure Active Directory).
 
 4. Wenn es sich um einen vorübergehenden Fehler zu handeln scheint, versuchen Sie, eine Wiederholungslogik zu Ihrer Authentifizierungsroutine hinzuzufügen, um die Authentifizierung zuverlässiger zu gestalten.
 
@@ -95,10 +143,10 @@ Mögliche Ursachen für diesen Fehler:
 
 #### <a name="resolution"></a>Lösung
 
-Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Authentifizierung in Azure erfolgt ist und ob Sie auf das gewünschte Abonnement zugreifen können:  
+Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Authentifizierung in Azure erfolgt ist und ob Sie auf das gewünschte Abonnement zugreifen können:
 
 1. Testen Sie Ihr Skript außerhalb von Azure Automation, um sicherzustellen, dass es eigenständig verwendet werden kann.
-2. Achten Sie darauf, dass Sie das Cmdlet `Add-AzureAccount` vor dem Cmdlet `Select-AzureSubscription` ausführen. 
+2. Achten Sie darauf, dass Sie das Cmdlet `Add-AzureAccount` vor dem Cmdlet `Select-AzureSubscription` ausführen.
 3. Fügen Sie am Anfang Ihres Runbooks `Disable-AzureRmContextAutosave –Scope Process` hinzu. Dieses Cmdlet stellt sicher, dass alle Anmeldeinformationen nur für die Ausführung des aktuellen Runbooks gelten.
 4. Wenn diese Fehlermeldung weiterhin angezeigt wird, sollten Sie Ihren Code ändern, indem Sie den Parameter **AzureRmContext** nach dem Cmdlet `Add-AzureAccount` hinzufügen und dann den Code ausführen.
 
@@ -180,9 +228,9 @@ $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRec
 Sie sehen einen Fehler in Ihren Auftragsdatenströmen für ein Runbook mit der folgenden Nachricht:
 
 ```error
-Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
-'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
-'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
+Connect-AzureRMAccount : Method 'get_SerializationSettings' in type
+'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly
+'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'
 does not have an implementation.
 At line:16 char:1
 + Connect-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
@@ -272,8 +320,8 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 Mögliche Ursachen für diesen Fehler:
 
-1. Das Modul, das das Cmdlet enthält, wird nicht in das Automationkonto importiert.
-2. Das Modul, das das Cmdlet enthält, wird zwar importiert, ist jedoch veraltet.
+* Das Modul, das das Cmdlet enthält, wird nicht in das Automationkonto importiert.
+* Das Modul, das das Cmdlet enthält, wird zwar importiert, ist jedoch veraltet.
 
 #### <a name="resolution"></a>Lösung
 
@@ -297,15 +345,15 @@ The job was tried three times but it failed
 
 Mögliche Ursachen für diesen Fehler:
 
-1. Arbeitsspeicherlimit. Die Dokumentation der Grenzwerte, die für das Zuordnen von Arbeitsspeicher zu einer Sandbox gelten, finden Sie unter [Automatisierungsgrenzwerte](../../azure-subscription-service-limits.md#automation-limits). Für einen Auftrag kann ein Fehler auftreten, wenn dafür mehr als 400 MB Arbeitsspeicher verwendet werden.
+* Arbeitsspeicherlimit. Die Dokumentation der Grenzwerte, die für das Zuordnen von Arbeitsspeicher zu einer Sandbox gelten, finden Sie unter [Automatisierungsgrenzwerte](../../azure-subscription-service-limits.md#automation-limits). Für einen Auftrag kann ein Fehler auftreten, wenn dafür mehr als 400 MB Arbeitsspeicher verwendet werden.
 
-2. Netzwerksockets. Azure-Sandboxes sind auf 1.000 gleichzeitige Netzwerksockets beschränkt, wie unter [Automatisierungsgrenzwerte](../../azure-subscription-service-limits.md#automation-limits) beschrieben.
+* Netzwerksockets. Azure-Sandboxes sind auf 1.000 gleichzeitige Netzwerksockets beschränkt, wie unter [Automatisierungsgrenzwerte](../../azure-subscription-service-limits.md#automation-limits) beschrieben.
 
-3. Modul inkompatibel. Dieser Fehler kann auftreten, wenn Modulabhängigkeiten nicht korrekt sind. Wenn dies der Fall ist, gibt Ihr Runbook in der Regel die Benachrichtigung „Befehl wurde nicht gefunden“ oder „Der Parameter kann nicht gebunden werden“.
+* Modul inkompatibel. Dieser Fehler kann auftreten, wenn Modulabhängigkeiten nicht korrekt sind. Wenn dies der Fall ist, gibt Ihr Runbook in der Regel die Benachrichtigung „Befehl wurde nicht gefunden“ oder „Der Parameter kann nicht gebunden werden“.
 
-4. Ihr Runbook versucht, eine ausführbare Datei oder einen Unterprozess in einem Runbook aufzurufen, das in einer Azure-Sandbox ausgeführt wird. Dieses Szenario wird in Azure-Sandboxes nicht unterstützt.
+* Ihr Runbook versucht, eine ausführbare Datei oder einen Unterprozess in einem Runbook aufzurufen, das in einer Azure-Sandbox ausgeführt wird. Dieses Szenario wird in Azure-Sandboxes nicht unterstützt.
 
-5. Vom Runbook wurden zu viele Ausnahmedaten in den Ausgabestream geschrieben.
+* Vom Runbook wurden zu viele Ausnahmedaten in den Ausgabestream geschrieben.
 
 #### <a name="resolution"></a>Lösung
 
@@ -313,7 +361,7 @@ Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 
 * Die empfohlenen Methoden für die Einhaltung des Arbeitsspeichergrenzwerts sind die Aufteilung der Workload zwischen mehreren Runbooks und die Verarbeitung von weniger Daten im Arbeitsspeicher, die Vermeidung des Schreibens von unnötigen Ausgaben aus den Runbooks oder die Ermittlung, wie viele Prüfpunkte Sie in Ihre PowerShell-Workflow-Runbooks schreiben. Sie können die clear-Methode verwenden, z.B. `$myVar.clear()`, um die Variable zu löschen, und dann `[GC]::Collect()` verwenden, um sofort die Garbage Collection durchzuführen. Durch diese Aktionen wird der Speicherbedarf Ihres Runbooks während der Laufzeit reduziert.
 
-* Aktualisieren Sie Ihre Azure-Module, indem Sie die Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) befolgen.  
+* Aktualisieren Sie Ihre Azure-Module, indem Sie die Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) befolgen.
 
 * Eine andere Lösung ist das Ausführen des Runbooks in einem [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybrid Worker unterliegen nicht den vom Arbeitsspeicher und Netzwerk vorgegebenen Grenzwerten, die für Azure-Sandboxes gelten.
 
@@ -341,9 +389,9 @@ Wenn es sich bei Ihrem Runbook um einen PowerShell-Workflow handelt, werden komp
 
 Sie können dieses Problem mit einer der folgenden drei Lösungen beheben:
 
-1. Wenn Sie komplexe Objekte von einem Cmdlet an ein anderes übergeben, sollten Sie diese Cmdlets mit einem InlineScript umschließen.
-2. Übergeben Sie den Namen oder Wert, den Sie aus dem komplexen Objekt benötigen, anstatt das gesamte Objekt zu übergeben.
-3. Verwenden Sie anstelle eines PowerShell-Workflow-Runbooks ein PowerShell-Runbook.
+* Wenn Sie komplexe Objekte von einem Cmdlet an ein anderes übergeben, sollten Sie diese Cmdlets mit einem InlineScript umschließen.
+* Übergeben Sie den Namen oder Wert, den Sie aus dem komplexen Objekt benötigen, anstatt das gesamte Objekt zu übergeben.
+* Verwenden Sie anstelle eines PowerShell-Workflow-Runbooks ein PowerShell-Runbook.
 
 ### <a name="runbook-fails"></a>Szenario: Beim Runbook tritt ein Fehler auf. Es funktioniert jedoch, wenn es lokal ausgeführt wird.
 
@@ -355,21 +403,21 @@ Beim Skript tritt ein Fehler auf, wenn als Runbook ausgeführt wird. Es funktion
 
 Mögliche Ursachen für den Fehler beim Ausführen des Skripts als Runbook:
 
-1. Authentifizierungsprobleme
-2. Die erforderlichen Module wurden nicht importiert oder sind veraltet.
-3. Das Skript fordert möglicherweise zu einer Benutzerinteraktion auf.
-4. Einige Module treffen Annahmen über Bibliotheken, die auf Windows-Computern vorhanden sind. Diese Bibliotheken sind in einer Sandbox möglicherweise nicht vorhanden.
-5. Einige Module erfordern eine andere .NET Version, als in der Sandbox verfügbar ist.
+* Authentifizierungsprobleme
+* Die erforderlichen Module wurden nicht importiert oder sind veraltet.
+* Das Skript fordert möglicherweise zu einer Benutzerinteraktion auf.
+* Einige Module treffen Annahmen über Bibliotheken, die auf Windows-Computern vorhanden sind. Diese Bibliotheken sind in einer Sandbox möglicherweise nicht vorhanden.
+* Einige Module erfordern eine andere .NET Version, als in der Sandbox verfügbar ist.
 
 #### <a name="resolution"></a>Lösung
 
 Mögliche Lösungen für dieses Problem:
 
-1. Prüfen Sie, ob Sie die [Authentifizierung bei Azure](../manage-runas-account.md) ordnungsgemäß durchgeführt haben.
-2. Stellen Sie sicher, dass Ihre [Azure-Module importiert wurden und auf dem neuesten Stand sind](../automation-update-azure-modules.md).
-3. Vergewissern Sie sich, dass keines Ihrer Cmdlets Informationen anfordert. Dieses Verhalten wird in Runbooks nicht unterstützt.
-4. Überprüfen Sie, ob ein Element Ihres Moduls von etwas abhängt, das nicht im Modul enthalten ist.
-5. Azure Sandboxes verwenden .NET Framework 4.7.2, wenn ein Modul eine höhere Version verwendet, die nicht funktioniert. In diesem Fall sollten Sie einen [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) verwenden.
+* Prüfen Sie, ob Sie die [Authentifizierung bei Azure](../manage-runas-account.md) ordnungsgemäß durchgeführt haben.
+* Stellen Sie sicher, dass Ihre [Azure-Module importiert wurden und auf dem neuesten Stand sind](../automation-update-azure-modules.md).
+* Vergewissern Sie sich, dass keines Ihrer Cmdlets Informationen anfordert. Dieses Verhalten wird in Runbooks nicht unterstützt.
+* Überprüfen Sie, ob ein Element Ihres Moduls von etwas abhängt, das nicht im Modul enthalten ist.
+* Azure Sandboxes verwenden .NET Framework 4.7.2, wenn ein Modul eine höhere Version verwendet, die nicht funktioniert. In diesem Fall sollten Sie einen [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) verwenden.
 
 Wenn keine dieser Lösungen Ihr Problem behebt, prüfen Sie die [Auftragsprotokolle](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf mögliche Ursachen für den Fehler des Runbooks.
 
@@ -389,10 +437,10 @@ Dieser Fehler tritt auf, wenn die Auftragsausführung das kostenlose Kontingent 
 
 #### <a name="resolution"></a>Lösung
 
-Wenn Sie mehr als 500 Minuten an Verarbeitungszeit pro Monat nutzen möchten, müssen Sie Ihr Abonnement vom Tarif „Free“ auf den Tarif „Basic“ umstellen. Sie können das Upgrade auf den Tarif „Basic“ mit den folgenden Schritten durchführen:  
+Wenn Sie mehr als 500 Minuten an Verarbeitungszeit pro Monat nutzen möchten, müssen Sie Ihr Abonnement vom Tarif „Free“ auf den Tarif „Basic“ umstellen. Sie können das Upgrade auf den Tarif „Basic“ mit den folgenden Schritten durchführen:
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an.  
-2. Wählen Sie das Automation-Konto aus, das Sie aktualisieren möchten.  
+1. Melden Sie sich bei Ihrem Azure-Abonnement an.
+2. Wählen Sie das Automation-Konto aus, das Sie aktualisieren möchten.
 3. Klicken Sie auf **Einstellungen** > **Preise**.
 4. Klicken Sie am unteren Seitenrand auf **Aktivieren**, um Ihr Konto mit dem Tarif **Basic** zu aktualisieren.
 
@@ -412,11 +460,11 @@ Dieser Fehler wird verursacht, wenn die PowerShell-Engine das Cmdlet nicht finde
 
 #### <a name="resolution"></a>Lösung
 
-Sie können dieses Problem mit jeder der folgenden Lösungen beheben:  
+Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 
-* Überprüfen Sie, ob Sie den Cmdlet-Namen richtig eingegeben haben.  
-* Stellen Sie sicher, dass das Cmdlet unter Ihrem Automation-Konto vorhanden ist und dass keine Konflikte bestehen. Überprüfen Sie wie folgt, ob das Cmdlet vorhanden ist: Öffnen Sie ein Runbook im Bearbeitungsmodus, und suchen Sie in der Bibliothek nach dem gewünschten Cmdlet, oder führen Sie `Get-Command <CommandName>` aus. Nachdem Sie überprüft haben, dass das Cmdlet für das Konto verfügbar ist und dass keine Namenskonflikte mit anderen Cmdlets oder Runbooks bestehen, sollten Sie es der Canvas hinzufügen und sicherstellen, dass Sie in Ihrem Runbook einen gültigen Parametersatz verwenden.  
-* Falls ein Namenskonflikt vorliegt und das Cmdlet in zwei unterschiedlichen Modulen verfügbar ist, können Sie das Problem beheben, indem Sie den vollqualifizierten Namen für das Cmdlet verwenden. Sie können beispielsweise **ModuleName\CmdletName** verwenden.  
+* Überprüfen Sie, ob Sie den Cmdlet-Namen richtig eingegeben haben.
+* Stellen Sie sicher, dass das Cmdlet unter Ihrem Automation-Konto vorhanden ist und dass keine Konflikte bestehen. Überprüfen Sie wie folgt, ob das Cmdlet vorhanden ist: Öffnen Sie ein Runbook im Bearbeitungsmodus, und suchen Sie in der Bibliothek nach dem gewünschten Cmdlet, oder führen Sie `Get-Command <CommandName>` aus. Nachdem Sie überprüft haben, dass das Cmdlet für das Konto verfügbar ist und dass keine Namenskonflikte mit anderen Cmdlets oder Runbooks bestehen, sollten Sie es der Canvas hinzufügen und sicherstellen, dass Sie in Ihrem Runbook einen gültigen Parametersatz verwenden.
+* Falls ein Namenskonflikt vorliegt und das Cmdlet in zwei unterschiedlichen Modulen verfügbar ist, können Sie das Problem beheben, indem Sie den vollqualifizierten Namen für das Cmdlet verwenden. Sie können beispielsweise **ModuleName\CmdletName** verwenden.
 * Wenn Sie das Runbook lokal in einer Hybrid Worker-Gruppe ausführen, stellen Sie sicher, dass das Modul und das Cmdlet auf dem Computer installiert sind, auf dem der Hybrid Worker gehostet wird.
 
 ### <a name="long-running-runbook"></a>Szenario: Ein Runbook mit langer Ausführungszeit kann nicht abgeschlossen werden

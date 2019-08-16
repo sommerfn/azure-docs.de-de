@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666359"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779650"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -40,15 +40,15 @@ Nicht unterstützt. Sobald der Azure AD-Kennwortschutz bereitgestellt und aktivi
 
 **F: Worin besteht der Unterschied zwischen einer Kennwortänderung und einer Kennwortfestlegung (oder Kennwortzurücksetzung)?**
 
-Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem er nachgewiesen hat, dass er das alte Kennwort kennt. Dies ist beispielsweise der Fall, wenn ein Benutzer sich unter Windows anmeldet und dann aufgefordert wird, ein neues Kennwort auszuwählen.
+Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem er nachgewiesen hat, dass er das alte Kennwort kennt. Eine Kennwortänderung findet beispielsweise dann statt, wenn ein Benutzer sich unter Windows anmeldet und dann aufgefordert wird, ein neues Kennwort auszuwählen.
 
-Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Dies erfolgt häufig in Helpdesk-Szenarien, z. B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
+Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Kennwortfestlegungen finden häufig in Helpdesk-Szenarien statt, z.B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
 
 Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob eine Kennwortänderung oder eine Kennwortfestlegung durchgeführt wird. Mit dem DC-Agent-Dienst für den Azure AD-Kennwortschutz werden verschiedene Ereignisse protokolliert, um Sie darüber zu informieren, ob ein Vorgang zum Ändern oder zum Festlegen eines Kennworts durchgeführt wurde.  Siehe dazu [Überwachung und Protokollierung beim Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **F: Warum werden doppelte Kennwortablehnungsereignisse protokolliert bei dem Versuch, mithilfe des Snap-Ins zur Verwaltung von Active Directory-Benutzern und -Computern ein schwaches Kennwort festzulegen?**
 
-Das Snap-In zur Verwaltung von Active Directory-Benutzern und -Computern versucht zunächst, das neue Kennwort mit dem Kerberos-Protokoll festzulegen. Bei einem Fehler versucht das Snap-In erneut, das Kennwort mit einem älteren Protokoll (SAM RPC) festzulegen (die verwendeten spezifischen Protokolle sind nicht wichtig). Wenn das neue Kennwort vom Azure AD-Kennwortschutz als schwach eingestuft wird, führt dies dazu, dass zwei Sätze von Kennwortablehnungsereignissen protokolliert werden.
+Das Snap-In zur Verwaltung von Active Directory-Benutzern und -Computern versucht zunächst, das neue Kennwort mit dem Kerberos-Protokoll festzulegen. Bei einem Fehler versucht das Snap-In erneut, das Kennwort mit einem älteren Protokoll (SAM RPC) festzulegen (die verwendeten spezifischen Protokolle sind nicht wichtig). Wenn das neue Kennwort vom Azure AD-Kennwortschutz als schwach eingestuft wird, führt dieses Snap-In-Verhalten dazu, dass zwei Sätze von Kennwortablehnungsereignissen protokolliert werden.
 
 **F: Warum werden Ereignisse zu Kennwortverletzungen vom Azure AD-Kennwortschutz mit einem leeren Benutzernamen protokolliert?**
 
@@ -115,6 +115,10 @@ Eine Möglichkeit, um dieses Ziel zumindest teilweise zu erreichen, besteht dari
 Nein. Wenn das Kennwort eines Benutzers auf einem Domänencontroller geändert wird, bei dem es sich nicht um den PDC handelt, wird das Klartextkennwort niemals an den PDC gesendet (dies ist eine weit verbreitete Fehlannahme). Sobald ein neues Kennwort auf einem bestimmten Domänencontroller akzeptiert wurde, verwendet dieser Domänencontroller das Kennwort, um die Kennworthashes für die verschiedenen Authentifizierungsprotokolle zu erstellen und speichert diese Hashes im Verzeichnis. Das Klartextkennwort wird nicht gespeichert. Die aktualisierten Hashes werden an den PDC repliziert. Benutzerkennwörter können in einigen Fällen direkt auf dem PDC geändert werden – auch dies hängt von verschiedenen Faktoren ab, wie z.B. der Netzwerktopologie und der Gestaltung des Active Directory-Standorts. (Siehe auch die Antwort auf die vorherige Frage.)
 
 Zusammenfassend gesagt: Die Bereitstellung des Domänencontroller-Agent-Diensts für den Azure AD-Kennwortschutz auf dem PDC ist erforderlich, um eine 100-prozentige Sicherheitsabdeckung des Features in der gesamten Domäne zu erzielen. Wenn das Feature nur auf dem PDC bereitgestellt wird, können die anderen Domänencontroller in der Domäne nicht von den Sicherheitsvorteilen des Azure AD-Kennwortschutzes profitieren.
+
+**F: Warum funktioniert die benutzerdefinierte intelligente Sperre auch dann nicht, wenn die Agents in meiner lokalen Active Directory Umgebung installiert wurden?**
+
+Die benutzerdefinierte intelligente Sperre wird nur in Azure unterstützt. Änderungen an den Einstellungen für die benutzerdefinierte intelligente Sperre im Azure-Verwaltungsportal haben keine Auswirkung auf die lokale Active Directory Umgebung, auch wenn die Agents installiert sind.
 
 **F: Ist für den Azure AD-Kennwortschutz ein System Center Operations Manager-Managementpack verfügbar?**
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: eb9141d363bdb09b5773f80dfc5a1c4b9b92728f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb15063e41e83b4c9a9f2e01b6ad18c8afed7f5f
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615810"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741003"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,9 @@ Anwendungen müssen häufig Daten speichern und abrufen können. Da Kubernetes e
 Herkömmliche Volumes zum Speichern und Abrufen von Daten werden als Kubernetes-Ressourcen erstellt, die durch Azure Storage abgesichert sind. Sie können diese Datenvolumes manuell erstellen, damit sie direkt Pods zugewiesen werden, oder durch Kubernetes automatisch erstellen lassen. Diese Datenvolumes können Azure Disk oder Azure Files verwenden:
 
 - *Azure Disk* kann zum Erstellen einer Kubernetes-*DataDisk*-Ressource verwendet werden. Azure Disk kann von Hochleistungs-SSDs gesicherten Azure Storage Premium oder von regulären Festplatten gesicherten Azure-Standardspeicher verwenden. Verwenden Sie für die meisten Produktionsumgebungen und Entwicklungsworkloads Storage Premium. Azure Disk-Datenträger werden als *ReadWriteOnce* bereitgestellt, daher sind sie nur für einen einzelnen Knoten verfügbar. Verwenden Sie für die Speichervolumes, auf die mehrere Knoten gleichzeitig zugreifen können, Azure Files.
-- Mit *Azure Files* kann eine SMB 3.0-Dateifreigabe bereitgestellt werden, die durch ein Azure Storage-Konto auf Pods gesichert ist. Mit Azure Files können Sie Daten mehrere Knoten und Pods übergreifend freigeben. Azure Files kann derzeit nur durch reguläre HDDs gesicherten Azure-Standardspeicher verwenden.
+- Mit *Azure Files* kann eine SMB 3.0-Dateifreigabe bereitgestellt werden, die durch ein Azure Storage-Konto auf Pods gesichert ist. Mit Azure Files können Sie Daten mehrere Knoten und Pods übergreifend freigeben. Files kann durch reguläre HDDs unterstützte Azure Storage Standard-Instanzen oder durch Hochleistungs-SSDs unterstützte Azure Storage Premium-Instanzen verwenden.
+> [!NOTE] 
+> Azure Files unterstützt Storage Premium in AKS-Clustern, auf denen Kubernetes 1.13 oder höher ausgeführt wird.
 
 In Kubernetes können Volumes mehr als nur einen herkömmlichen Datenträger darstellen, auf dem Informationen gespeichert und abgerufen werden können. Kubernetes-Volumes können auch als Möglichkeit zum Einfügen von Daten in einen Pod zur Verwendung von den Containern genutzt werden. Zu den üblichen zusätzlichen Volumetypen in Kubernetes gehören:
 

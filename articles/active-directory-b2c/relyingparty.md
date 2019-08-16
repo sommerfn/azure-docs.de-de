@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512851"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716691"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -54,7 +54,7 @@ Im folgenden Beispiel wird ein **RelyingParty**-Element in der Richtliniendatei 
     </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
-      <Description>The policy profile</Description> 
+      <Description>The policy profile</Description>
       <Protocol Name="OpenIdConnect" />
       <Metadata>collection of key/value pairs of data</Metadata>
       <OutputClaims>
@@ -133,18 +133,18 @@ Das **JourneyInsights**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Ja | Der Wert muss `ApplicationInsights` sein. | 
+| TelemetryEngine | Ja | Der Wert muss `ApplicationInsights` sein. |
 | InstrumentationKey | Ja | Die Zeichenfolge, die den Instrumentierungsschlüssel für das Application Insights-Element enthält. |
 | DeveloperMode | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, beschleunigt Application Insights die Telemetriedaten durch die Verarbeitungspipeline. Diese Einstellung eignet sich für die Entwicklung, bei höheren Volumen ist sie jedoch eingeschränkt. Die detaillierten Aktivitätsprotokolle sind lediglich zur Unterstützung bei der Entwicklung benutzerdefinierter Richtlinien konzipiert. Verwenden Sie den Entwicklungsmodus nicht in der Produktion. Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden. Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen. Diese detaillierten Protokolle werden nur gesammelt, wenn dieser Wert auf `true` festgelegt ist.|
-| ClientEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird das clientseitige Application Insights-Skript zum Nachverfolgen der Seitenansicht und von clientseitigen Fehlern gesendet. | 
-| ServerEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird die vorhandene JSON-Datei „UserJourneyRecorder“ als benutzerdefiniertes Ereignis an Application Insights übermittelt. | 
-| TelemetryVersion | Ja | Der Wert muss `1.0.0` sein. | 
+| ClientEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird das clientseitige Application Insights-Skript zum Nachverfolgen der Seitenansicht und von clientseitigen Fehlern gesendet. |
+| ServerEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird die vorhandene JSON-Datei „UserJourneyRecorder“ als benutzerdefiniertes Ereignis an Application Insights übermittelt. |
+| TelemetryVersion | Ja | Der Wert muss `1.0.0` sein. |
 
 Weitere Informationen finden Sie unter [Erfassen von Protokollen](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
-Mithilfe benutzerdefinierter Richtlinien in Azure AD B2C können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Azure AD B2C übergibt die Abfragezeichenfolgenparameter an Ihre dynamische HTML-Datei, z.B. eine ASPX-Datei. 
+Mithilfe benutzerdefinierter Richtlinien in Azure AD B2C können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Azure AD B2C übergibt die Abfragezeichenfolgenparameter an Ihre dynamische HTML-Datei, z.B. eine ASPX-Datei.
 
 Im folgenden Beispiel wird ein Parameter namens `campaignId` mit dem Wert `hawaii` in der Abfragezeichenfolge übergeben:
 
@@ -169,8 +169,8 @@ Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mi
 Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
-| --------- | -------- | ----------- | 
-| id | Ja | Der Wert muss `PolicyProfile` sein. |
+| --------- | -------- | ----------- |
+| Id | Ja | Der Wert muss `PolicyProfile` sein. |
 
 **TechnicalProfile** enthält die folgenden Elemente:
 
@@ -217,7 +217,7 @@ Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Ein Verweis auf das **PartnerClaimType**-Element eines Ausgabeanspruchs. Die Ausgabeansprüche müssen in der Richtlinie der **OutputClaims**-Sammlung der vertrauenden Seite definiert werden. |
 
-Im folgenden Beispiel wird gezeigt, wie eine vertrauende OpenId Connect-Seite definiert wird. Die Informationen zum Namen des Antragstellers werden als `objectId` konfiguriert:
+Im folgenden Beispiel wird gezeigt, wie eine vertrauende OpenID Connect-Seite definiert wird. Die Informationen zum Namen des Antragstellers werden als `objectId` konfiguriert:
 
 ```XML
 <RelyingParty>

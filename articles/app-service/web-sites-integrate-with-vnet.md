@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498439"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740894"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
@@ -136,11 +136,10 @@ Die Funktion für die von einem Gateway abhängige VNET-Integration:
 * Bis zu fünf VNETs können in einen App Service-Plan integriert werden 
 * Ermöglicht die Verwendung des gleichen VNET durch mehrere Apps, ohne dass sich dies auf die für einen App Service-Plan zulässige Gesamtanzahl von VNETs auswirkt.  (wenn Sie sechs Apps haben, die das gleiche VNET im gleichen App Service-Plan nutzen, zählt dies als ein VNET) 
 * Erfordert ein virtuelles Netzwerkgateway, das mit Point-to-Site-VPN konfiguriert ist
-* Wird nicht zur Verwendung mit Linux-Apps unterstützt
 * Unterstützt dank der SLA auf dem Gateway eine SLA mit einer Verfügbarkeit von 99,9%
 
 Folgendes wird von dieser Funktion nicht unterstützt:
-
+* Verwenden mit Linux-Apps
 * Zugriff auf Ressourcen über ExpressRoute 
 * Zugriff auf Ressourcen über Dienstendpunkte 
 

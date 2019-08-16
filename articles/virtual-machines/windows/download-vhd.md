@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 7128413e48fdeef9b9284bc6db11649016a06153
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ebcc8301fa3693880974e45b594be218905e8311
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722821"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775404"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Herunterladen einer Windows-VHD von Azure
 
@@ -52,11 +52,11 @@ Um die VHD als Datenträger eine neue Instanz einer vorhandenen VM oder eines vo
 Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
 
 1.  Klicken Sie auf im Menü des Blatts für die VM auf **Datenträger**.
-2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Exportieren**.
+2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Datenträgerexport**.
 3.  Legen Sie die Ablaufzeit der URL auf *36000* fest.
 4.  Klicken Sie auf **URL generieren**.
 
-    ![Generieren der URL](./media/download-vhd/export-generate.png)
+    ![Generieren der URL](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > Die Ablaufzeit wird von der Standardzeit erhöht, um genug Zeit für das Herunterladen der großen VHD-Datei für ein Windows Server-Betriebssystem bereitzustellen. Sie können davon ausgehen, dass das Herunterladen einer VHD-Datei mit dem Windows Server-Betriebssystem mehrere Stunden dauert, je nach Ihrer Verbindung. Wenn Sie eine VHD für einen Datenträger herunterladen, reicht die Standardzeit. 

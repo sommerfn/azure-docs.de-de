@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359267"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779986"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Vorauszahlen für SQL Data Warehouse-Gebühren mit reservierter Kapazität
 
@@ -50,8 +50,8 @@ Angenommen, für Ihre Gesamtnutzung von SQL Data Warehouse benötigen Sie DW3000
    - Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.
 4. Wählen Sie einen Bereich aus. Wählen Sie in der Bereichsliste einen Abonnementbereich aus.
    - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
-   - **Single subscription scope** (Bereich eines einzelnen Abonnements): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
-   - **Shared scope** (Gemeinsam genutzter Bereich): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+   - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
+   - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
    - Für Enterprise-Kunden ist der Abrechnungskontext die EA-Registrierung.
    - Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.
 5. Wählen Sie eine Azure-Region aus, die durch die reservierte Kapazität abgedeckt ist.
@@ -61,15 +61,11 @@ Angenommen, für Ihre Gesamtnutzung von SQL Data Warehouse benötigen Sie DW3000
 8. Wählen Sie die Option **Kaufen**.
 9. Wählen Sie **Diese Reservierung anzeigen** aus, um den Status des Kaufs anzuzeigen.
 
-## <a name="cancellations-and-exchanges"></a>Stornierungen und Umtausch
+## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 
-Wenn Sie die reservierte Kapazität für SQL Data Warehouse stornieren möchten, wird unter Umständen eine Gebühr für die vorzeitige Kündigung in Höhe von 12 % berechnet. Rückerstattungen basieren auf dem niedrigsten Preis (entweder Ihrem Kaufpreis oder dem aktuellen Preis für die Reservierung). Rückerstattungen sind auf 50.000 US-Dollar pro Jahr beschränkt. Die Rückerstattung, die Sie erhalten, umfasst den verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12 %. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Erstattung** aus.
+Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-Wenn Sie die reservierte Kapazität für SQL Data Warehouse in eine andere Region oder eine andere Laufzeit ändern möchten, können Sie sie gegen eine andere Reservierung austauschen, die den gleichen oder einen höheren Wert hat. Das Startdatum der Laufzeit für die neue Reservierung wird nicht von der umgetauschten Reservierung übernommen. Die Laufzeit von einem oder drei Jahren beginnt ab der Erstellung der neuen Reservierung. Öffnen Sie zum Umtauschen die entsprechende Reservierung im Azure-Portal, und wählen Sie **Exchange** (Umtauschen) aus.
-
-Weitere Informationen zum Umtausch oder zur Rückerstattung von Reservierungen finden Sie unter [Reservierungsumtausch und -rückerstattung](billing-azure-reservations-self-service-exchange-and-refund.md).
-
-Der Reservierungsrabatt wird automatisch auf die Anzahl der SQL Data Warehouse-Instanzen angewandt, die dem Umfang und den Attributen der reservierten Kapazität für SQL Data Warehouse entsprechen. Sie können den Umfang der reservierten Kapazität für SQL Data Warehouse über das [Azure-Portal](https://portal.azure.com/), PowerShell, die Befehlszeilenschnittstelle oder die API aktualisieren.
+Der Reservierungsrabatt wird automatisch auf die Anzahl der SQL Data Warehouse-Instanzen angewandt, die dem Umfang und der Region der reservierten Kapazität für SQL Data Warehouse entsprechen. Sie können den Umfang der reservierten Kapazität für SQL Data Warehouse über das [Azure-Portal](https://portal.azure.com/), PowerShell, die Befehlszeilenschnittstelle oder die API aktualisieren.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

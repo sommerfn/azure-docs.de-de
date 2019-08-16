@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666234"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779625"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
 
@@ -32,7 +32,7 @@ Das Problem ist in der Regel darauf zurückzuführen, dass ein Proxy noch nicht 
 
 Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“ im Administratorereignisprotokoll des DC-Agents. Dieses Problem kann mehrere mögliche Ursachen haben:
 
-1. Der DC-Agent befindet sich in einem isolierten Teil des Netzwerks, der keine Netzwerkkonnektivität mit dem bzw. den registrierten Proxy(s) zulässt. Dieses Problem ist harmlos, solange andere DC-Agents mit dem bzw. den Proxy(s) kommunizieren können, um Kennwortrichtlinien aus Azure herunterzuladen, die der isolierte Domänencontroller (DC) dann per Replikation der Richtliniendateien in der SYSVOL-Freigabe erhält.
+1. Der DC-Agent befindet sich in einem isolierten Teil des Netzwerks, der keine Netzwerkkonnektivität mit dem bzw. den registrierten Proxy(s) zulässt. Dieses Problem ist harmlos, solange andere DC-Agents mit den Proxys kommunizieren können, um Kennwortrichtlinien aus Azure herunterzuladen. Nach dem Herunterladen werden diese Richtlinien dann vom isolierten Domänencontroller (DC) per Replikation der Richtliniendateien in der SYSVOL-Freigabe abgerufen.
 
 1. Der Proxyhostcomputer blockiert den Zugriff auf den RPC-Endpunktzuordnungsendpunkt (Port 135).
 
@@ -70,6 +70,8 @@ Wenn der Schlüsselverteilungsdienst nicht gestartet werden kann, liegt dies in 
 
 Dieses Problem kann mehrere Ursachen haben.
 
+1. Auf Ihren DC-Agents wird eine öffentliche Vorschauversion der Software ausgeführt, die abgelaufen ist. Informationen dazu finden Sie unter [Öffentliche Vorschauversion der DC-Agent-Software ist abgelaufen](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
+
 1. Ihr(e) DC-Agent(s) kann bzw. können eine Richtlinie nicht herunterladen oder vorhandene Richtlinien nicht entschlüsseln. Überprüfen Sie in den obigen Abschnitten, ob eines der dort beschriebenen Probleme die Ursache ist.
 
 1. Der Erwingungsmodus der Kennwortrichtlinie ist noch auf „Überwachung“ eingestellt. Wenn diese Konfiguration aktiv ist, konfigurieren Sie den Modus im Azure AD-Kennwortschutzportal neu, und legen Sie „Erzwingen“ fest. Siehe [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
@@ -99,7 +101,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Für die vom Azure AD-Kennwortschutz erfassten Ereignisprotokolle zur Kennwortüberprüfung für ein Active Directory-DSRM-Kennwort wird erwartet, dass die Ereignisprotokollmeldungen keinen Benutzernamen enthalten. Dies liegt daran, dass das DSRM-Konto ein lokales Konto ist, das nicht der eigentlichen Active Directory-Domäne angehört.  
+Für die vom Azure AD-Kennwortschutz erfassten Ereignisprotokolle zur Kennwortüberprüfung für ein Active Directory-DSRM-Kennwort wird erwartet, dass die Ereignisprotokollmeldungen keinen Benutzernamen enthalten. Dieses Verhalten tritt auf, weil das DSRM-Konto ein lokales Konto ist, das nicht der eigentlichen Active Directory-Domäne angehört.  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Fehler beim Höherstufen des Domänencontrollerreplikats aufgrund eines unsicheren DSRM-Kennworts
 
@@ -119,7 +121,67 @@ Wenn die Herabstufung erfolgreich abgeschlossen, der Domänencontroller neu gest
 
 ## <a name="booting-into-directory-services-repair-mode"></a>Start im Reparaturmodus für Verzeichnisdienste
 
-Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet wird, erkennt dies der DC-Agent-Dienst, und er veranlasst unabhängig von der derzeit aktiven Richtlinienkonfiguration die Deaktivierung aller Kennwortüberprüfungs- oder Erzwingungsaktivitäten.
+Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet wird, erkennt dies die DC-Agent-Kennwortfilter-DLL und veranlasst unabhängig von der derzeit aktiven Richtlinienkonfiguration die Deaktivierung aller Kennwortüberprüfungs- oder Erzwingungsaktivitäten. Die DC-Agent-Kennwortfilter-DLL protokolliert ein Warnungsereignis vom Typ „10023“ im Administratorereignisprotokoll. Beispiel:
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>Öffentliche Vorschauversion der DC-Agent-Software ist abgelaufen
+
+Während der öffentlichen Vorschauphase des Azure AD-Kennwortschutzes war die DC-Agent-Software hartcodiert, um die Verarbeitung von Kennwortüberprüfungsanforderungen an den folgenden Terminen zu beenden:
+
+* Version 1.2.65.0 beendet die Verarbeitung von Kennwortüberprüfungsanforderungen am 1. September 2019.
+* Version 1.2.25.0 und frühere Versionen haben die Verarbeitung von Kennwortüberprüfungsanforderungen am 1. Juli 2019 beendet.
+
+Bei Näherrücken des Termins geben alle zeitlich begrenzten DC-Agent-Versionen zum Startzeitpunkt ein Ereignis von Typ „10021“ im DC-Agent-Administratorereignisprotokoll aus, das Folgendem ähnelt:
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+Nach Ablauf des Termins geben alle zeitlich begrenzten DC-Agent-Versionen zum Startzeitpunkt ein Ereignis von Typ „10022“ im DC-Agent-Administratorereignisprotokoll aus, das Folgendem ähnelt:
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+Da der Ablauftermin nur beim ersten Start geprüft wird, werden diese Ereignisse möglicherweise erst lange nach Ablauf der Frist angezeigt. Wenn der Ablauf der Frist erkannt wird, treten keine negativen Auswirkungen für den Domänencontroller oder die größere Umgebung auf, außer dass alle Kennwörter automatisch genehmigt werden.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für abgelaufene DC-Agents in der öffentlichen Vorschauversion sofort ein Upgrade auf die neueste Version durchzuführen.
+
+Eine einfache Möglichkeit, um DC-Agents in Ihrer Umgebung zu ermitteln, für die ein Upgrade durchgeführt werden muss, ist das Ausführen des Cmdlets `Get-AzureADPasswordProtectionDCAgent`. Beispiel:
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+In diesem Zusammenhang enthält das Feld „SoftwareVersion“ natürlich die wichtigste Eigenschaft. Sie können auch die PowerShell-Filterung verwenden, um DC-Agents herauszufiltern, die bereits über mindestens die erforderliche Basisversion verfügen. Beispiel:
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+Die Azure AD-Kennwortschutz-Proxysoftware ist in keiner Version zeitlich begrenzt. Microsoft empfiehlt dennoch, dass sowohl für DC- als auch Proxy-Agents ein Upgrade auf die neuesten Versionen durchgeführt wird, sobald diese veröffentlicht werden. Mithilfe des Cmdlets `Get-AzureADPasswordProtectionProxy` kann nach Proxy-Agents gesucht werden, für die ein Upgrade erforderlich ist, ähnlich wie im Beispiel oben für DC-Agents.
+
+Weitere Informationen zu spezifischen Upgradeverfahren finden Sie unter [Upgrade des DC-Agents](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) und [Upgrade des Proxy-Agents](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent).
 
 ## <a name="emergency-remediation"></a>Notfallbereinigung
 

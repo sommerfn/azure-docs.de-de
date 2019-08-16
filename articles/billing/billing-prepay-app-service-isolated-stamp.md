@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 40ccee7a993ce39a9b4c7a86309b0554daa56026
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298166"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779993"
 ---
 # <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Vorauszahlen der Azure App Service-Stempelgebühr (gesondert) mit reservierter Kapazität
 
@@ -57,18 +57,14 @@ Reservierte Kapazität für gesonderte Stempel kann über das [Azure-Portal](htt
 1. Wählen Sie unter **Region** eine Azure-Region aus, die durch die reservierte Kapazität abgedeckt ist, und fügen Sie die Reservierung dem Warenkorb hinzu.
 1. Wählen Sie einen isolierten Plantyp aus, und klicken Sie anschließend auf **Auswählen**.  
     ![Beispiel ](./media/billing-prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. Geben Sie die Anzahl der zu reservierenden Stempel für App Service (isoliert) ein. Wenn Sie also beispielsweise die Menge „3“ angeben, erhalten Sie drei reservierte Stempel pro Region. Klicken Sie auf **Next: Review + Buy** (Weiter: Überprüfen und kaufen).
+1. Geben Sie die Anzahl der zu reservierenden Stempel für App Service (isoliert) ein. Wenn Sie also beispielsweise die Menge „3“ angeben, erhalten Sie drei reservierte Stempel pro Region. Klicken Sie auf **Weiter: Review + Buy** (Weiter: Überprüfen und kaufen).
 1. Überprüfen Sie die Angaben, und klicken Sie auf **Jetzt kaufen**.
 
 Nach dem Erwerb können Sie unter [Reservierungen](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) jederzeit den Status des Erwerbs anzeigen und überwachen.
 
-## <a name="cancellations-and-exchanges"></a>Stornierungen und Umtausch
+## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 
-Wenn Sie die reservierte Kapazität für den gesonderten Stempel stornieren möchten, fällt unter Umständen eine Gebühr in Höhe von 12 Prozent für die vorzeitige Kündigung an. Rückerstattungen basieren auf dem niedrigsten Preis (entweder Ihrem Kaufpreis oder dem aktuellen Preis für die Reservierung). Rückerstattungen sind auf 50.000 US-Dollar pro Jahr beschränkt. Die Rückerstattung, die Sie erhalten, umfasst den verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12 %. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Erstattung** aus.
-
-Wenn Sie die reservierte Kapazität für den gesonderten Stempel in eine andere Region verschieben möchten, können Sie sie durch eine andere gleich- oder höherwertige Reservierung ersetzen. Das Startdatum der Laufzeit für die neue Reservierung wird nicht von der umgetauschten Reservierung übernommen. Bei Erstellung der neuen Reservierung beginnt eine Laufzeit von drei Jahren. Navigieren Sie zum Austauschen der Reservierung zum Azure-Portal, wählen Sie die Reservierung aus, die Sie austauschen möchten, und wählen Sie anschließend **Austauschen** aus.
-
-Weitere Informationen zum Umtausch oder zur Rückerstattung von Reservierungen finden Sie unter [Reservierungsumtausch und -rückerstattung](billing-azure-reservations-self-service-exchange-and-refund.md).
+Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="discount-application-shown-in-usage-data"></a>Anwendung des Rabatts in den Nutzungsdaten
 

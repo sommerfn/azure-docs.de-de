@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565106"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828624"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
 Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://aka.ms/aml-sdk).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Azure Machine Learning SDK für Python v1.0.55
+
++ **Neue Features**
+  + Die tokenbasierte Authentifizierung wird jetzt für die Aufrufe unterstützt, die an den in AKS bereitgestellten Bewertungsendpunkt ausgegeben werden. Wir setzen die Unterstützung der aktuellen, schlüsselbasierten Authentifizierung fort, und Benutzer können jeweils einen dieser Authentifizierungsmechanismen verwenden.
+  + Möglichkeit zum Registrieren eines Blob-Speichers, der sich hinter dem virtuellen Netzwerk (VNet) als Datenspeicher befindet.
+  
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + Korrigiert einen Fehler, bei dem die Validierungsgröße für CV-Teilungen klein ist und zu ungültig vorhergesagten gegenüber echten Diagrammen für Regression und Prognosen führt.
+    + Die Protokollierung von Vorhersageaufgaben bei Remoteausführungen wurde verbessert, und dem Benutzer wird nun eine umfassende Fehlermeldung bereitgestellt, wenn die Ausführung fehlschlägt.
+    + Fehler von Timeseries wurden korrigiert, wenn das Vorverarbeitungsflag „true“ war.
+    + Die Umsetzbarkeit einiger Fehlermeldungen zur Vorhersagedatenüberprüfung wurde verbessert.
+    + Verringerte Arbeitsspeichernutzung bei AutoML-Läufen durch Löschen und/oder verzögertes Laden von Datasets, insbesondere zwischen der Erzeugung von Prozessen.
+  + **azureml-contrib-explain-model**
+    + Explainern wurde das Flag „model_task“ hinzugefügt, um Benutzern das Außerkraftsetzen der automatischen Standardrückschlusslogik für den Modelltyp zu gestatten.
+    + Änderungen bei Widgets: Wird automatisch mit contrib installiert, keine Unterstützung von nbextension-Installation/Aktivierung mehr, Erklärung durch rein globale Wichtigkeit der Funktions (z. b. permutativ)
+    + Dashboardänderungen: - Boxplots und Violinplots zusätzlich zum Beeswarm-Plot auf der Zusammenfassungsseite - viel schnelleres Rendern von Beeswarm-Plot bei "Top-k"-Schieberegleränderung - hilfreiche Meldung, die erläutert, wie "Top-k" berechnet wird - nützliche, anpassbare Meldungen anstelle von Diagrammen, wenn keine Daten bereitgestellt werden
+  + **azureml-core**
+    + Die Model.package()-Methode wurde hinzugefügt, um Docker-Images und Dockerfiles zu erstellen, die Modelle und deren Abhängigkeiten einkapseln.
+    + Aktualisierung der lokalen Webdienste, sodass sie InferenceConfigs akzeptieren, die Umgebungsobjekte enthalten.
+    + Behoben wurde: Model.register() erzeugt ungültige Modelle, wenn "." (für das aktuelle Verzeichnis) als model_path-Parameter übergeben wird.
+    + Run.submit_child wurde hinzugefügt, die Funktionalität spiegelt Experiment.submit, während gleichzeitig die Ausführung als übergeordnetes Element der übermittelten untergeordneten Ausführung angegeben wird.
+    + Unterstützung von Konfigurationsoptionen aus Model.register in Run.register_model.
+    + Möglichkeit zum Ausführen von JAR-Aufträgen in einem vorhandenen Cluster.
+    + Jetzt Unterstützung der Parameter instance_pool_id und cluster_log_dbfs_path.
+    + Unterstützung für die Verwendung eines Umgebungsobjekts beim Bereitstellen eines Modells in einem Webdienst wurde hinzugefügt. Das Umgebungsobjekt kann jetzt als Teil des InferenceConfig-Objekts bereitgestellt werden.
+    + appinsifht-Zuordnung für neue Regionen wurde hinzugefügt: -centralus -westus -northcentralus
+    + Dokumentation für alle Attribute in allen Datastore-Klassen wurde hinzugefügt.
+    + Der blob_cache_timeout-Parameter wurde zu `Datastore.register_azure_blob_container` hinzugefügt.
+    + Die Methoden save_to_directory und load_from_directory wurden zu „azureml.core.environment.Environment“ hinzugefügt.
+    + Die Befehle „az ml environment download“ und „az ml environment register“ wurden der CLI hinzugefügt.
+    + Die Methode Environment.add _private_pip_wheel wurde hinzugefügt.
+  + **azureml-explain-model**
+    + Die Nachverfolgung von Datasets wurde mithilfe des Dataset-Anbieters (Vorschau) zu Erläuterungen hinzugefügt.
+    + Reduzierte Standardbatchgröße beim Streamen globaler Erläuterungen von 10.000 auf 100.
+    + Explainern wurde das Flag „model_task“ hinzugefügt, um Benutzern das Außerkraftsetzen der automatischen Standardrückschlusslogik für den Modelltyp zu gestatten.
+  + **azureml-mlflow**
+    + Fehler in mlflow.azureml.build_image behoben, bei dem geschachtelte Verzeichnisse ignoriert werden.
+  + **azureml-pipeline-steps**
+    + Möglichkeit zum Ausführen von JAR-Aufträgen in einem vorhandenen Azure Databricks-Cluster wurde hinzugefügt.
+    + Unterstützung der Parameter instance_pool_id und cluster_log_dbfs_path. für den DatabricksStep-Schritt hinzugefügt.
+    + Unterstützung für Pipelineparameter im DatabricksStep-Schritt hinzugefügt.
+  + **azureml-train-automl**
+    + docstrings für die ensemblebezogenen Dateien hinzugefügt.
+    + Die Ausdrucksweise der Dokumente für `max_cores_per_iteration` und `max_concurrent_iterations` wurde angepasst.
+    + Die Protokollierung von Vorhersageaufgaben bei Remoteausführungen wurde verbessert, und dem Benutzer wird nun eine umfassende Fehlermeldung bereitgestellt, wenn die Ausführung fehlschlägt.
+    + get_data wurde aus dem Pipeline-Notebook automlstep entfernt.
+    + Unterstützung für dataprep in automlstep gestartet.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning Data Prep SDK v1.1.10
+
++ **Neue Features**
+  + Sie können jetzt anfordern, bestimmte Inspektoren (z. B. Histogramm, Punktdiagramm usw.) für bestimmte Spalten auszuführen.
+  + `append_columns`wurde ein prarallelisiertes Argument hinzugefügt. Wenn „True“, werden Daten in den Arbeitsspeicher geladen, aber die Ausführung wird parallel ausgeführt. Wenn „False“, wird die Ausführung gestreamt, aber singlethread.
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -352,7 +409,7 @@ Im Azure-Portal haben Sie jetzt folgende Möglichkeiten:
 ### <a name="notebook-virtual-machine"></a>Virtueller Notebook-Computer 
 
 Verwenden Sie einen virtuellen Notebook-Computer als sichere, unternehmensgerechte Hostingumgebung für Jupyter-Notebooks, in der Sie Machine Learning-Experimente programmieren, Modelle als Webendpunkte bereitstellen und alle anderen vom Azure Machine Learning SDK mit Python unterstützten Vorgänge durchführen können. Die Umgebung bietet mehrere Funktionen:
-+ [Schnelles Starten eines vorkonfigurierten virtuellen Notebook-Computers](quickstart-run-cloud-notebook.md)  mit der aktuellen Version des Azure Machine Learning-SDK und zugehörigen Paketen.
++ [Schnelles Starten eines vorkonfigurierten virtuellen Notebook-Computers](tutorial-1st-experiment-sdk-setup.md)  mit der aktuellen Version des Azure Machine Learning-SDK und zugehörigen Paketen.
 + Der Zugriff wird durch bewährte Technologien wie HTTPS, Azure Active Directory-Authentifizierung und Autorisierung gesichert.
 + Zuverlässige Cloudspeicherung von Notebooks und Code im Blob-Speicherkonto Ihres Azure Machine Learning-Arbeitsbereichs. Sie können Ihre virtuellen Notebook-Computer sicher löschen, ohne Ihre Arbeit zu verlieren.
 + Vorinstallierte Beispielnotebooks zum Erkunden und Experimentieren mit Azure Machine Learning Service-Funktionen.

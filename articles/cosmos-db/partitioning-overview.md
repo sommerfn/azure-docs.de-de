@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/01/2019
+ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467860"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717555"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Im Folgenden finden Sie eine gute Anleitung zum Auswählen eines Partitionsschl�
 
 * Eine einzelne logische Partition darf maximal 10 GB Speicherplatz haben.  
 
-* Azure Cosmos-Container haben einen Mindestdurchsatz von 400 Anforderungseinheiten pro Sekunde (Request units per second, RU/s). Anforderungen an denselben Partitionsschlüssel dürfen den einer Partition zugeordneten Durchsatz nicht überschreiten. Wenn Anforderungen den zugeordneten Durchsatz überschreiten, gilt für die Anforderungen eine Ratenbegrenzung. Daher ist es wichtig, einen Partitionsschlüssel auszuwählen, der nicht zu partiellen starken Auslastungen innerhalb Ihrer Anwendung führt.
+* Azure Cosmos-Container haben einen Mindestdurchsatz von 400 Anforderungseinheiten pro Sekunde (Request units per second, RU/s). Wird der Durchsatz für eine Datenbank bereitgestellt, beträgt die Mindestanzahl von RUs pro Container 100 RUs/Sek. (Anforderungseinheiten pro Sekunde). Anforderungen an denselben Partitionsschlüssel dürfen den einer Partition zugeordneten Durchsatz nicht überschreiten. Wenn Anforderungen den zugeordneten Durchsatz überschreiten, gilt für die Anforderungen eine Ratenbegrenzung. Daher ist es wichtig, einen Partitionsschlüssel auszuwählen, der nicht zu partiellen starken Auslastungen innerhalb Ihrer Anwendung führt.
 
 * Wählen Sie einen Partitionsschlüssel aus, der über eine Vielzahl von Werten und Zugriffsmustern verfügt, die gleichmäßig auf logische Partitionen verteilt sind. Dies hilft, die Daten und Aktivitäten in Ihrem Container auf eine Gruppe von logischen Partitionen zu verteilen, damit die Ressourcen für die Datenspeicherung und den Durchsatz auf die logischen Partitionen verteilt werden können.
 

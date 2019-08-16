@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876535"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742256"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -126,13 +126,13 @@ Wenn die einmalige Azure AD-Verbundanmeldung für Sie neu ist, gehen Sie wie fol
 ## <a name="saas-subscriptions"></a>SaaS-Abonnements
 
 Verwenden Sie SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. Für Ihre SaaS-App müssen die folgenden Anforderungen erfüllt werden:
-- Preis und Abrechnung des Diensts als monatliche Pauschale.
+- Preis und Abrechnung des Diensts zu einem Festpreis (monatlich oder jährlich) oder mit einer benutzerbasierten Rate.
 - Bereitstellung einer Upgrademethode oder Stornierung des Dienst zu einem beliebigen Zeitpunkt.
-Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnungen in Ihrem Namen. Wenn Sie die SaaS-App als Abonnement verwenden möchten, müssen Sie Ihre eigene Abonnementverwaltungsdienst-API aktivieren. Ihre Abonnementverwaltungsdienst-API muss direkt mit den Azure Resource Manager-APIs kommunizieren. Ihre Abonnementverwaltungsdienst-API muss die Bereitstellung, Aktualisierung und Stornierung des Diensts unterstützen.
+Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnungen in Ihrem Namen. Wenn Sie eine SaaS-App als Abonnement anbieten möchten, müssen Sie diese in die SaaS-Fulfillment-APIs integrieren.  Ihr Dienst muss die Bereitstellung, das Upgrade und das Stornieren unterstützen.
 
 | Anforderung | Details |  
 |:--- |:--- |  
-|Abrechnung und Messung | Ihr Angebot wird über eine monatliche Flatrate abgerechnet. Derzeit werden nutzungsbasierte Preise und nutzungsbasierte Anpassungsfunktionen nicht unterstützt. |  
+|Abrechnung und Messung | Der Preis für Ihr Angebot basiert auf dem Preismodell, das Sie vor der Veröffentlichung ausgewählt haben (Pauschale oder benutzerbasiert).  Wenn Sie ein Modell mit Festpreis nutzen, können Sie auch optionale Dimensionen ergänzen, die dem Kunden für die Nutzung von Diensten berechnet werden, die nicht in der Flatrate enthalten sind. |  
 |Abbruch | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
 |Transaktionszielseite | Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können. |   
 | Abonnement-API | Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. |  

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165943"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840268"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -27,6 +27,7 @@ Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** mö
 * [Parquet-Format](#parquet-format)
 * [ORC-Format](#orc-format)
 * [Avro-Format](#avro-format)
+* [Binärformat](#binary-format)
 
 > [!TIP]
 > Erfahren Sie in [Schemazuordnung bei der Kopieraktivität](copy-activity-schema-and-type-mapping.md), wie die Kopieraktivität Ihre Quelldaten zur Senke zuordnet.
@@ -227,7 +228,7 @@ In diesem Beispiel wird ein einzelnes JSON-Stammobjekt einem einzelnen Datensatz
 
 und ihn im folgenden Format in eine Azure SQL-Tabelle kopieren möchten, indem Sie Daten aus Objekten und dem Array extrahieren:
 
-| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -359,7 +360,7 @@ Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefiniti
 
 Wenn Sie in der SQL-Datenbank über die folgende Tabelle verfügen:
 
-| ID | order_date | order_price | order_by |
+| id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -460,8 +461,8 @@ Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g
 | Single | Float | – | – |
 | Double | Double | – | – |
 | Decimal | Binary | Decimal | Decimal |
-| string | Binary | Utf8 | Utf8 |
-| DateTime | Int96 | – | – |
+| Zeichenfolge | Binary | Utf8 | Utf8 |
+| Datetime | Int96 | – | – |
 | TimeSpan | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |
 | ByteArray | Binary | – | – |
@@ -506,16 +507,16 @@ Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisier
 | Int32 | Int |
 | UInt32 | Long |
 | Int64 | Long |
-| UInt64 | string |
+| UInt64 | Zeichenfolge |
 | Single | Float |
 | Double | Double |
 | Decimal | Decimal |
-| string | string |
-| DateTime | Timestamp |
+| Zeichenfolge | Zeichenfolge |
+| Datetime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |
 | ByteArray | Binary |
-| Guid | string |
+| Guid | Zeichenfolge |
 | Char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO-Format
@@ -534,6 +535,10 @@ Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das 
 Beachten Sie folgende Punkte:
 
 * [Komplexe Datentypen](https://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
+
+## <a name="binary-format"></a>Binärformat
+
+Weitere Informationen finden Sie im Artikel [Binärformat in Azure Data Factory](format-binary.md).
 
 ## <a name="compression-support"></a>Unterstützung für die Komprimierung
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 96169f8f52ea9d45d8804a7d4fc08827a4f1ea03
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ed9eb990fff3a0901f3fa26526b30e8cb8a2fe66
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668410"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779404"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -63,13 +63,15 @@ Zuerst heben Sie die Bereitstellung des virtuellen Computers mithilfe des Azure-
 ## <a name="step-2-create-vm-image"></a>Schritt 2: Erstellen des VM-Image
 Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Image zu erfassen. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVnet* und *myVM*.
 
-1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli/azure/vm) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung des virtuellen Computers *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben.
+1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli/azure/vm) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung des virtuellen Computers *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben.  
    
     ```azurecli
     az vm deallocate \
       --resource-group myResourceGroup \
       --name myVM
     ```
+    
+    Warten Sie, bis die Zuordnung des virtuellen Computers vollständig aufgehoben wurde. Dies kann einige Minuten in Anspruch nehmen.
 
 2. Kennzeichnen Sie die VM mit [az vm generalize](/cli/azure/vm) als generalisiert. Im folgenden Beispiel wird der virtuelle Computer *myVM* in der Ressourcengruppe *myResourceGroup* als generalisiert gekennzeichnet.
    

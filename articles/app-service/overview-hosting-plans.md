@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ab04d1288eb3a851774128b8aaaae03868c2ffa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fef509d705d0b904586a86b7dc58decc54e7023d
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839010"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716638"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -113,7 +113,7 @@ Da Sie für die von Ihrem App Service-Plan zugeteilten Computeressourcen zahlen 
 Isolieren Sie Ihre App in einem neuen App Service-Plan, wenn Folgendes gilt:
 
 - Die App ist ressourcenintensiv.
-- Sie möchten die App unabhängig von den anderen Apps des vorhandenen Plans skalieren.
+- Sie möchten die App unabhängig von den anderen Apps im vorhandenen Plan skalieren.
 - Die App benötigt Ressourcen in einer anderen geografischen Region.
 
 Dadurch können Sie einen neuen Satz von Ressourcen für die App zuordnen und Ihre Apps noch präziser steuern.

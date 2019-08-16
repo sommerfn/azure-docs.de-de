@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 58c6d1b032f5b492c5641ff51da80426124069b1
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654200"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716779"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 3. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
 4. Geben Sie einen **Namen** ein. Geben Sie z. B. Folgendes ein: `Contoso Azure AD`.
-5. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **OpenID Connect (Vorschau)** aus, und klicken Sie dann auf **OK**.
+5. Wählen Sie **Identitätsanbietertyp** und dann **OpenID Connect (Vorschau)** aus, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.
 7. Geben Sie für **Metadaten-URL** die folgende URL ein, in der `your-AD-tenant-domain` durch den Domänennamen Ihres Azure AD-Mandanten ersetzt wird. Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
 

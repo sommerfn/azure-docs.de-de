@@ -9,25 +9,27 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 7d216a3706c13a5fff312850e244a521ab22ae9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386739"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706527"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
-Um Sie dabei zu unterstützen, das Erstellen und Bereitstellen einer Logik-App zu automatisieren, sind in diesem Artikel die Möglichkeiten beschrieben, wie Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für Ihre Logik-App erstellen. Eine Übersicht über die Struktur und die Syntax einer Vorlage, die Ihre Workflowdefinition und weitere Ressourcen enthält, die zur Bereitstellung erforderlich sind, finden Sie unter [Overview: Automate deployment for Azure Logic Apps by using Azure Resource Manager templates](logic-apps-azure-resource-manager-templates-overview.md) (Übersicht: Automatisieren der Bereitstellung für Azure Logik-Apps mit Azure Resource Manager-Vorlagen).
+Um Sie dabei zu unterstützen, das Erstellen und Bereitstellen einer Logik-App zu automatisieren, sind in diesem Artikel die Möglichkeiten beschrieben, wie Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für Ihre Logik-App erstellen. Eine Übersicht über die Struktur und die Syntax einer Vorlage, die Ihre Workflowdefinition und weitere Ressourcen enthält, die zur Bereitstellung erforderlich sind, finden Sie unter [Overview: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](logic-apps-azure-resource-manager-templates-overview.md).
 
-Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für Logik-Apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json), die Sie nicht nur zum Erstellen von Logik-Apps, sondern auch zum Definieren der Ressourcen und Parameter für die Bereitstellung wiederverwenden können. Die Vorlage kann für eigene Unternehmensszenarien verwendet oder an Ihre individuellen Anforderungen angepasst werden. Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie in den folgenden Themen:
+Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für Logik-Apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json), die Sie nicht nur zum Erstellen von Logik-Apps, sondern auch zum Definieren der Ressourcen und Parameter für die Bereitstellung wiederverwenden können. Die Vorlage kann für eigene Unternehmensszenarien verwendet oder an Ihre individuellen Anforderungen angepasst werden.
+
+> [!IMPORTANT]
+> Für Verbindungen in Ihrer Vorlage müssen dieselbe Azure-Ressourcengruppe und derselbe Standort wie für Ihre Logik-App verwendet werden.
+
+Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie in den folgenden Themen:
 
 * [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates-cloud-consistency.md)
-
-> [!IMPORTANT]
-> Für Verbindungen in Ihrer Vorlage müssen dieselbe Azure-Ressourcengruppe und derselbe Azure-Speicherort wie für Ihre Logik-App verwendet werden.
 
 <a name="visual-studio"></a>
 
@@ -47,6 +49,13 @@ Wenn Sie Ihre Logik-App herunterladen, erhalten Sie eine Vorlage, die die Defini
 Sie können Ressourcen-Manager-Vorlagen erstellen, indem Sie Azure PowerShell mit dem [LogicAppTemplate-Modul](https://github.com/jeffhollan/LogicAppTemplateCreator) verwenden. Dieses Open Source-Modul bewertet zunächst Ihre Logik-App und alle Verbindungen, die die Logik-App verwendet. Das Modul generiert dann Vorlagenressourcen mit den erforderlichen Parametern für die Bereitstellung.
 
 Angenommen, Sie haben eine Logik-App, die eine Nachricht von einer Azure Service Bus-Warteschlange empfängt und Daten in eine Azure SQL-Datenbank hochlädt. Das Modul speichert die gesamte Orchestrierungslogik und parametrisiert die SQL- und Service Bus-Verbindungszeichenfolgen, sodass Sie diese Werte entsprechend Ihren Bereitstellungsanforderungen bereitstellen und ändern können.
+
+Diese Beispiele veranschaulichen das Erstellen und Bereitstellen von Logik-Apps mithilfe von Azure Resource Manager-Vorlagen, Azure Pipelines in Azure DevOps und Azure PowerShell:
+
+* [Beispiel: Verbinden mit Azure Service Bus-Warteschlangen über Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Verbinden mit Azure Storage-Konten über Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Einrichten einer Funktions-App-Aktion für Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Verbinden mit einem Integrationskonto über Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Installieren von PowerShell-Modulen
 

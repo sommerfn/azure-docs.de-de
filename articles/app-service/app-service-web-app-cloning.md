@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: d31a6ee13965aa326ab8a71b5b5435025bc26057
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 52d02fd79571e42f71c06b7090534136e4a5e341
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705729"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814690"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Klonen der Azure App Service-App mit PowerShell
 
@@ -42,10 +42,10 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 Um einen neuen App Service-Plan zu erstellen, können Sie den Befehl `New-AzAppServicePlan` wie im folgenden Beispiel verwenden:
 
 ```powershell
-New-AzAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
+New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-Mithilfe des Befehls `New-AzWebApp` können Sie die neue App in der Region „USA, Norden-Mitte“ erstellen und mit einem vorhandenen App Service-Plan im Premium-Tarif verknüpfen. Darüber hinaus können Sie dieselbe Ressourcengruppe wie für die Quell-App verwenden oder eine neue Ressourcengruppe definieren, wie im folgenden Befehl gezeigt:
+Mithilfe des Befehls `New-AzWebApp` können Sie die neue App in der Region „USA, Norden-Mitte“ erstellen und mit einem vorhandenen App Service-Plan verknüpfen. Darüber hinaus können Sie dieselbe Ressourcengruppe wie für die Quell-App verwenden oder eine neue Ressourcengruppe definieren, wie im folgenden Befehl gezeigt:
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
@@ -60,7 +60,7 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 Um eine vorhandene App innerhalb derselben Region zu klonen, müssen Sie eine neue Ressourcengruppe und einen neuen App Service-Plan in derselben Region erstellen und dann den folgenden PowerShell-Befehl zum Klonen der App verwenden:
 
 ```powershell
-$destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
+$destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcapp
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>Klonen einer vorhandenen App in einer App Service-Umgebung

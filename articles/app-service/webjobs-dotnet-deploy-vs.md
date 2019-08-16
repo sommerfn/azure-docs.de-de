@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: e66a2ffa6578ed0c9eb5eb19659adf9ba253bbeb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613354"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736116"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -71,10 +71,7 @@ Sie können Visual Studio verwenden, um Webaufträge so zu ändern, dass sie for
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>Webaufträge als .NET Framework-Konsolenanwendungen  
 
-Wenn ein webauftragsfähiges .NET Framework-Konsolenanwendungsprojekt mithilfe von Visual Studio bereitgestellt wird, werden zwei Aufgaben ausgeführt:
-
-* Laufzeitdateien werden in den entsprechenden Ordner der Web-App (*App_Data/jobs/continuous* für fortlaufende Webaufträge und *App_Data/jobs/triggered* für geplante oder bedarfsgesteuerte Webaufträge) kopiert.
-* Es werden [Azure Scheduler-Aufträge](https://docs.microsoft.com/azure/scheduler/) für WebJobs eingerichtet, die für die Ausführung zu bestimmten Zeiten geplant sind. (Dies ist für fortlaufende Webaufträge nicht erforderlich.)
+Wenn ein WebJob-fähiges .NET Framework-Konsolenanwendungsprojekt mithilfe von Visual Studio bereitgestellt wird, werden Laufzeitdateien in den entsprechenden Ordner der Web-App (*App_Data/jobs/continuous* für fortlaufende Webaufträge und *App_Data/jobs/triggered* für geplante oder bedarfsgesteuerte Webaufträge) kopiert.
 
 Einem webauftragsfähigen Projekt werden die folgenden Elemente hinzugefügt:
 
@@ -231,7 +228,7 @@ Wenn Sie einen [Webauftrag über das Azure-Portal erstellen](webjobs-create.md),
 
 ### <a name="cron-expressions"></a>CRON-Ausdrücke
 
-Azure WebJobs verwendet die gleichen CRON-Ausdrücke für Zeitpläne wie der Zeitgebertrigger in Azure Functions. Weitere Informationen zur CRON-Unterstützung finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#cron-expressions).
+Azure WebJobs verwendet die gleichen CRON-Ausdrücke für Zeitpläne wie der Zeitgebertrigger in Azure Functions. Weitere Informationen zur CRON-Unterstützung finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
 
 ### <a name="settingjob-reference"></a>Referenz zur Datei „setting.job“
 
@@ -241,7 +238,7 @@ Webaufträge unterstützen die folgenden Einstellungen:
 | ----------- | --------- | --------------- |
 | `is_in_place` | Alle | Ermöglicht die direkte Ausführung des Auftrags, ohne ihn zuerst in einen temporären Ordner zu kopieren. Weitere Informationen finden Sie unter [WebJobs working directory (Arbeitsverzeichnis für Webaufträge)](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Fortlaufend | Die Webaufträge werden nur in einer einzelnen Instanz ausgeführt, wenn horizontal hochskaliert wurde. Weitere Informationen finden Sie unter [Set a continuous job as singleton (Festlegen eines fortlaufenden Auftrags als Singleton)](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Ausgelöst | Der Webauftrag wird gemäß eines CRON-basierten Zeitplans ausgeführt. Weitere Informationen finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#cron-expressions). |
+| `schedule` | Ausgelöst | Der Webauftrag wird gemäß eines CRON-basierten Zeitplans ausgeführt. Weitere Informationen finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
 | `stopping_wait_time`| Alle | Ermöglicht das Steuern des Verhaltens des Herunterfahrens. Weitere Informationen finden Sie unter [Graceful shutdown (Ordnungsgemäßes Herunterfahren)](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Nächste Schritte

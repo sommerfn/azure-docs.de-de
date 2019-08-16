@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666283"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779664"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -282,12 +282,29 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
    Die Softwareinstallation kann mit MSI-Standardprozeduren automatisiert werden. Beispiel:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > Der hier verwendete Beispielbefehl „msiexec“ bewirkt einen sofortigen Neustart. Um dies zu vermeiden, verwenden Sie das `/norestart`-Flag.
+   Sie können das `/norestart`-Flag auslassen, wenn Sie es vorziehen, dass der Computer vom Installationsprogramm automatisch neu gestartet wird.
 
 Die Installation ist abgeschlossen, nachdem die DC-Agent-Software auf einem Domänencontroller installiert und dieser Computer neu gestartet wurde. Eine andere Konfiguration ist weder erforderlich noch möglich.
+
+## <a name="upgrading-the-proxy-agent"></a>Upgrade des Proxy-Agents
+
+Wenn eine neuere Version der Azure AD-Kennwortschutz-Proxysoftware verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwareinstallationsprogramms `AzureADPasswordProtectionProxySetup.exe` durchgeführt. Es ist nicht erforderlich, die aktuelle Version der Proxysoftware zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der Proxysoftware sollte kein Neustart erforderlich sein. Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `AzureADPasswordProtectionProxySetup.exe /quiet`.
+
+Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert kann mithilfe des Cmdlets „Set-AzureADPasswordProtectionProxyConfiguration“ aktiviert und deaktiviert werden. Die aktuelle Einstellung kann mithilfe des Cmdlets „Get-AzureADPasswordProtectionProxyConfiguration“ abgefragt werden. Microsoft empfiehlt, das automatische Upgrade aktiviert zu lassen.
+
+Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` kann die Softwareversion aller aktuell installierten Proxy-Agents in einer Gesamtstruktur abgefragt werden.
+
+## <a name="upgrading-the-dc-agent"></a>Upgrade des DC-Agents
+
+Wenn eine neuere Version der DC-Agent-Software für den Azure AD-Kennwortschutz verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwarepakets `AzureADPasswordProtectionDCAgentSetup.msi` durchgeführt. Es ist nicht erforderlich, die aktuelle Version der DC-Agent-Software zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der DC-Agent-Software ist immer ein Neustart erforderlich. Dies wird durch das Kernverhalten von Windows verursacht. 
+
+Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
+
+Sie können das `/norestart`-Flag auslassen, wenn Sie es vorziehen, dass der Computer vom Installationsprogramm automatisch neu gestartet wird.
+
+Mit dem Cmdlet `Get-AzureADPasswordProtectionDCAgent` kann die Softwareversion aller aktuell installierten DC-Agents in einer Gesamtstruktur abgefragt werden.
 
 ## <a name="multiple-forest-deployments"></a>Bereitstellungen in mehreren Gesamtstrukturen
 
@@ -301,7 +318,7 @@ Für die Bereitstellung des Azure AD-Kennwortschutzes in mehreren Gesamtstruktur
 
 Bei der Hochverfügbarkeit des Kennwortschutzes geht es hauptsächlich darum, die Verfügbarkeit der Proxyserver zu gewährleisten, wenn Domänencontroller in einer Gesamtstruktur versuchen, neue Richtlinien oder andere Daten aus Azure herunterzuladen. Jeder DC-Agent verwendet bei der Entscheidung, welcher Proxyserver aufgerufen werden soll, einen einfachen Roundrobin-Algorithmus. Der Agent überspringt Proxyserver, die nicht antworten. Für die meisten vollständig verbundenen Active Directory-Bereitstellungen, die eine integre Replikation des Verzeichnisses und SYSVOL-Ordnerstatus aufweisen, reichen zwei Proxyserver aus, um die Verfügbarkeit sicherzustellen. Dies führt zum rechtzeitigen Download neuer Richtlinien und anderer Daten. Aber Sie können zusätzliche Proxyserver bereitstellen.
 
-Die üblichen Probleme, die mit Hochverfügbarkeit einhergehen, werden durch den Entwurf der DC-Agent-Software verringert. Der DC-Agent verwaltet einen lokalen Cache, in dem sich die zuletzt heruntergeladene Kennwortrichtlinie befindet. Selbst wenn alle registrierten Proxyserver nicht mehr verfügbar sind, setzen die DC-Agents ihre zwischengespeicherten Kennwortrichtlinien durch. Eine angemessene Aktualisierungshäufigkeit für Kennwortrichtlinien in einer umfangreichen Bereitstellung liegt für gewöhnlich in der Größenordnung von *Tagen*, nicht Stunden oder weniger. Kurze Ausfälle der Proxyserver haben daher keinen wesentlichen Einfluss auf den Azure AD-Kennwortschutz.
+Die üblichen Probleme, die mit Hochverfügbarkeit einhergehen, werden durch den Entwurf der DC-Agent-Software verringert. Der DC-Agent verwaltet einen lokalen Cache, in dem sich die zuletzt heruntergeladene Kennwortrichtlinie befindet. Selbst wenn alle registrierten Proxyserver nicht mehr verfügbar sind, setzen die DC-Agents ihre zwischengespeicherten Kennwortrichtlinien durch. Eine angemessene Aktualisierungshäufigkeit für Kennwortrichtlinien in einer umfangreichen Bereitstellung liegt für gewöhnlich in der Größenordnung von Tagen, nicht Stunden oder weniger. Kurze Ausfälle der Proxyserver haben daher keinen wesentlichen Einfluss auf den Azure AD-Kennwortschutz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2938ae075bbd4c38b686ca6654bede678f876857
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509794"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716821"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -50,12 +50,12 @@ Benutzerflows in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, ab
 Der Kundenidentitäts- und Zugriffsverwaltungsdienst (Customer Identity and Access Management, CIAM) in Azure umfasst Folgendes:
 
 - Ein Benutzerverzeichnis, auf das über Microsoft Graph zugegriffen werden kann und das Benutzerdaten für lokale und Verbundkonten enthält.
-- Zugriff auf das **Identity Experience Framework**, mit dem die Vertrauensstellung zwischen Benutzern und Entitäten koordiniert wird und Ansprüche zur Durchführung von Identitäts- oder Zugriffsverwaltungsaufgaben dazwischen ausgetauscht werden. 
+- Zugriff auf das **Identity Experience Framework**, mit dem die Vertrauensstellung zwischen Benutzern und Entitäten koordiniert wird und Ansprüche zur Durchführung von Identitäts- oder Zugriffsverwaltungsaufgaben dazwischen ausgetauscht werden.
 - Ein Sicherheitstokendienst (Security Token Service, STS), der ID-Token ausstellt, Token aktualisiert, auf Token (und entsprechende SAML-Assertionen) zugreift und diese zum Schutz von Ressourcen überprüft.
 
 Azure AD B2C interagiert der Reihe nach mit Identitätsanbietern, Benutzern, anderen Systemen und dem lokalen Benutzerverzeichnis, um eine Identitätsaufgabe auszuführen. Beispiel: Anmelden eines Benutzers, Registrieren eines neuen Benutzers oder Zurücksetzen eines Kennworts. Das Identity Experience Framework und eine Richtlinie (auch als „User Journey“ oder „Vertrauensframeworkrichtlinie“ bezeichnet) stellen die Vertrauensstellung zwischen mehreren Seiten her und definieren explizit die Akteure, Aktionen, Protokolle und die Abfolge der auszuführenden Schritte.
 
-Das Identity Experience Framework ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML, WSFed sowie einigen nicht standardmäßigen Formaten (z. B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Das Framework erstellt benutzerfreundliche White-Label-Oberflächen, die HTML und CSS unterstützen.
+Das Identity Experience Framework ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML, WSFed sowie einigen nicht standardmäßigen Formaten (z.B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Das Framework erstellt benutzerfreundliche White-Label-Oberflächen, die HTML und CSS unterstützen.
 
 Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Dateien dargestellt, die aufeinander in einer hierarchischen Kette verweisen. Die XML-Elemente definieren u.a. das Anspruchsschema, Anspruchstransformationen, Inhaltsdefinitionen, Anspruchsanbieter, technische Profile und Schritte zur Orchestrierung von User Journeys. Eine benutzerdefinierte Richtlinie kann als eine oder mehrere XML-Dateien aufgerufen werden, die vom Identity Experience Framework beim Aufrufen durch eine vertrauende Seite ausgeführt wird/werden. Entwickler, die benutzerdefinierte Richtlinien konfigurieren, müssen die vertrauenswürdigen Beziehungen im Detail definieren, um Metadatenendpunkte und genaue Anspruchsaustauschdefinitionen einzuschließen und bei Bedarf zudem Geheimnisse, Schlüssel und Zertifikate durch die einzelnen Identitätsanbieter zu konfigurieren.
 

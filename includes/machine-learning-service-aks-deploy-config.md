@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: d59482c04c4875cb6b17ceb405e9d3ab97a741d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565139"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68729339"
 ---
 Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
 
@@ -24,7 +24,8 @@ Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [Ak
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Die Zielauslastung (in Prozent), die von der automatischen Skalierung für diesen Webdienst beibehalten werden soll. Standardwert: `70` |
 | `dataCollection` | Nicht verfügbar | Enthält Konfigurationselemente für die Datensammlung. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Gibt an, ob die Modelldatensammlung für den Webdienst aktiviert werden soll. Standardwert: `False`. |
-| `authEnabled` | `auth_enabled` | Gibt an, ob die Authentifizierung für den Webdienst aktiviert werden soll. Standardwert: `True`. |
+| `authEnabled` | `auth_enabled` | Gibt an, ob die Schlüsselauthentifizierung für den Webdienst aktiviert werden soll. Weder `tokenAuthEnabled` noch `authEnabled` dürfen den Wert `True` aufweisen. Standardwert: `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Gibt an, ob die Tokenauthentifizierung für den Webdienst aktiviert werden soll. Weder `tokenAuthEnabled` noch `authEnabled` dürfen den Wert `True` aufweisen. Standardwert: `False`. |
 | `containerResourceRequirements` | Nicht verfügbar | Der Container für die CPU- und Arbeitsspeicherentitäten. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Die Anzahl der CPU-Kerne, die für diesen Webdienst zuzuordnen sind. Standardwert: `0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Der Arbeitsspeicherumfang (in GB), der für diesen Webdienst zugeordnet werden soll. Standardwert: `0.5`. |

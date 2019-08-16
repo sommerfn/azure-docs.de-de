@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: 4585749c83432c19b6e62f57c1d954b3afc5ee33
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 3bb81f33823fff5fb47f5bbbf6bb9b798b26d8af
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608400"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840358"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 
@@ -90,6 +90,12 @@ Dieser Fehler weist darauf hin, dass der Registrierungsanmeldeserver nicht mit e
 Dieser Fehler bedeutet, dass der Registrierungsanmeldeserver nicht mit einem Zugriffstoken geantwortet hat und der Zugriff auf die Zielregistrierung daher verweigert wurde. Dieser Fehler kann auftreten, wenn der Benutzer nicht über die richtigen Berechtigungen für die Registrierung verfügt oder wenn die Benutzeranmeldeinformationen für die Azure CLI veraltet sind.
 
 *Mögliche Lösungen*: Überprüfen Sie, ob der Benutzer über die richtigen Berechtigungen für die Registrierung verfügt. Führen Sie `az login` aus, um Berechtigungen, Token und Anmeldeinformationen zu aktualisieren.
+
+## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
+
+Dieser Fehler bedeutet, dass der Client keine sichere Verbindung mit der Containerregistrierung herstellen konnte. Dieser Fehler tritt im Allgemeinen auf, wenn Sie einen Proxyserver ausführen oder verwenden.
+
+*Mögliche Lösungen*: Weitere Informationen zum Arbeiten hinter einem Proxy [finden Sie hier](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 08/01/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 815ff980abdde7ab91861d8550030476312fb6d3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483004"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835160"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
@@ -115,6 +115,9 @@ Diese Bereiche können Sie für Ihre Anwendung den Weg der minimalen Offenlegung
 ## <a name="token-claims"></a>Tokenansprüche
 
 Der Microsoft Identity Platform-Endpunkt gibt standardmäßig einen kleineren Satz mit Ansprüchen in seinen Token aus, um die Nutzlasten klein zu halten. Wenn Sie Anwendungen und Dienste haben, die von einem bestimmten Anspruch in einem v1.0-Token abhängig sind, der über ein Microsoft Identity Platform-Token nicht mehr standardmäßig bereitgestellt wird, sollten Sie die Funktion [optionale Ansprüche](active-directory-optional-claims.md) verwenden, um diesen Anspruch einzuschließen.
+
+> [!IMPORTANT]
+> v1.0- und v2.0-Token können über die v1.0- und v2.0-Endpunkte ausgestellt werden. ID-Token entsprechen *immer* dem Endpunkt, über den sie angefordert werden. Zugriffstoken entsprechen *immer* dem Format, das in der Web-API erwartet wird, die der Client mit diesem Token aufruft.  Wenn in der App der v2.0-Endpunkt verwendet wird, um ein Token zum Aufrufen von Microsoft Graph abzurufen, bei dem Zugriffstoken im v1.0-Format erwartet werden, erhält die App ein Token im v1.0-Format.  
 
 ## <a name="limitations"></a>Einschränkungen
 

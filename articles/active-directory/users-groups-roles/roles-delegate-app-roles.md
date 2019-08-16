@@ -1,6 +1,6 @@
 ---
-title: Delegieren von Anwendungsadministratorrollen – Azure Active Directory | Microsoft-Dokumentation
-description: Delegieren von Rollen durch die Anwendungszugriffsverwaltung, um Berechtigungen in Azure Active Directory zu gewähren
+title: Delegieren der Berechtigungen zum Erstellen und Verwalten von Anwendungsadministratoren – Azure Active Directory | Microsoft-Dokumentation
+description: Erteilen von Berechtigungen für die Anwendungszugriffsverwaltung in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,95 +10,99 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469127"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837879"
 ---
-# <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegieren von App-Administratorrollen in Azure Active Directory
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
- In Azure AD können Sie die Verwaltung des Anwendungszugriffs an einen Satz integrierter Administratorrollen delegieren. Außer den globalen Administratormehraufwand zu reduzieren, kann das Delegieren spezieller Berechtigungen zum Verwalten von Anwendungszugriffsaufgaben Ihren Sicherheitsstatus verbessern und das Risiko nicht autorisierten Zugriffs reduzieren. Delegierungsprobleme und allgemeine Richtlinien werden unter [Delegieren der Administration in Azure Active Directory (Azure AD)](roles-concept-delegation.md) erörtert.
+In diesem Artikel wird beschrieben, wie Sie über App-Berechtigungen in benutzerdefinierten Rollen in Azure Active Directory (Azure AD) Ihre Anforderungen an die Anwendungsverwaltung erfüllen können. Mit Azure Active Directory (Azure AD) können Sie die Anwendungserstellung und Verwaltungsberechtigungen wie folgt delegieren:
 
-## <a name="delegate-app-administration"></a>Delegieren Sie die Verwaltung der App.
+- [Einschränken, welche Benutzer Anwendungen erstellen können](#restrict-who-can-create-applications), und Verwalten der erstellten Anwendungen. Standardmäßig können in Azure AD alle Benutzer Anwendungsregistrierungen registrieren und alle Aspekte der Anwendungen verwalten, die sie erstellen. Dies kann so eingeschränkt werden, dass diese Berechtigung nur für ausgewählte Personen gilt.
+- [Zuweisen eines oder mehrerer Besitzer zu einer Anwendung](#assign-application-owners). Dies ist eine einfache Möglichkeit, einer Person die Berechtigung zu erteilen, alle Aspekte der Azure AD-Konfiguration für eine bestimmte Anwendung zu verwalten.
+- [Zuweisen einer integrierten Administratorrolle](#assign-built-in-application-admin-roles), mit der Zugriff zum Verwalten der Konfiguration in Azure AD für alle Anwendungen gewährt wird. Dies ist die empfohlene Vorgehensweise, um IT-Experten Zugriff zum Verwalten von umfassenden Berechtigungen für die Anwendungskonfiguration zu gewähren, ohne Zugriff auf die Verwaltung anderer Bereiche von Azure AD zu gewähren, die nicht mit der Anwendungskonfiguration zusammenhängen.
+- [Erstellen einer benutzerdefinierten Rolle](#create-and-assign-a-custom-role-preview), die sehr spezifische Berechtigungen definiert, und Zuweisen dieser Rolle zu einem Benutzer im Bereich einer einzelnen Anwendung als eingeschränkter Besitzer oder im Verzeichnisbereich (alle Anwendungen) als eingeschränkter Administrator.
 
-Die folgenden Rollen gewähren Berechtigungen zum Verwalten von Anwendungsregistrierungen, Einstellungen für einmaliges Anmelden, Benutzer- und Gruppenzuweisungen sowie zum Zustimmen zu delegierten Berechtigungen und Anwendungsberechtigungen (mit Ausnahme von Microsoft Graph und Azure AD Graph). Der einzige Unterschied besteht darin, dass die Anwendungsadministratorrolle außerdem Berechtigungen zum Verwalten von Einstellungen des Anwendungsproxys gewährt. Keine dieser Rollen gewährt die Fähigkeit zum Verwalten der Einstellungen des bedingten Zugriffs.
-> [!IMPORTANT]
-> Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Dieses Annehmen der Identität der Anwendung bedeutet ggf. eine Rechteerweiterung im Vergleich zu dem, was der Benutzer unter seinen Rollenzuweisungen in Azure AD tun kann. Ein Benutzer, der dieser Rolle zugewiesen ist, könnte potenziell Benutzer oder andere Objekte erstellen oder aktualisieren, während er die Identität der Anwendung angenommen hat.
+Es ist aus zwei Gründen wichtig, den Zugriff mithilfe einer der oben genannten Methoden zu gewähren. Erstens wird durch die Delegierung der Möglichkeit zum Ausführen administrativer Aufgaben der Aufwand für globale Administratoren reduziert. Zweitens verbessert die Verwendung eingeschränkter Berechtigungen den Sicherheitsstatus und reduziert das Potenzial für nicht autorisierten Zugriff. Delegierungsprobleme und allgemeine Richtlinien werden unter [Delegieren der Administration in Azure Active Directory (Azure AD)](roles-concept-delegation.md) erörtert.
 
-So gewähren Sie die Fähigkeit zur Verwaltung des Anwendungszugriffs im Azure-Portal:
+## <a name="restrict-who-can-create-applications"></a>Einschränken, welche Benutzer Anwendungen erstellen können
 
-1. Melden Sie sich bei Ihrem [Azure AD-Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für die globale Administratorrolle im Mandanten geeignet ist.
-2. Wenn Sie über ausreichende Berechtigungen verfügen, öffnen Sie die [Seite „Rollen und Administratoren“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
-3. Öffnen Sie eine der folgenden Rollen, um ihre Mitgliedszuweisungen anzuzeigen:
-   * **Anwendungsadministrator**
-   * **Cloudanwendungsadministrator**
-4. Wählen Sie auf der Seite **Mitglieder** für die Rolle **Mitglied hinzufügen** aus.
-5. Wählen Sie mindestens ein Mitglied aus, das der Rolle hinzugefügt werden soll. <!--Members can be users or groups.-->
+Standardmäßig können in Azure AD alle Benutzer Anwendungsregistrierungen registrieren und alle Aspekte der Anwendungen verwalten, die sie erstellen. Alle Benutzer haben außerdem die Möglichkeit einzuwilligen, dass Apps in ihrem Namen auf Unternehmensdaten zugreifen. Sie können diese Berechtigungen selektiv erteilen, indem Sie die globalen Optionen auf „Nein“ festlegen und die ausgewählten Benutzer der Rolle „Anwendungsentwickler“ hinzufügen.
 
-Sie können die Beschreibung für diese Rollen unter [Verfügbare Rollen](directory-assign-admin-roles.md#available-roles) anzeigen.
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>So deaktivieren Sie die Standardoption zum Erstellen von Anwendungsregistrierungen oder Erteilen der Einwilligung für Anwendungen
 
-## <a name="delegate-app-registration"></a>Delegieren der App-Registrierung
+1. Melden Sie sich bei Ihrer Azure AD-Organisation mit einem Konto an, das für die Rolle „Globaler Administrator“ in der Azure AD-Organisation berechtigt ist.
+1. Wenn Sie ausreichende Berechtigungen erhalten haben, legen Sie eine oder beide der folgenden fest:
 
-Standardmäßig können alle Benutzer Anwendungsregistrierungen erstellen, aber Sie können selektiv die Berechtigung zum Erstellen von Anwendungsregistrierungen oder die Berechtigung zum Zustimmen zum Autorisieren einer App gewähren.
+    - Legen Sie auf der Seite [„Benutzereinstellungen“ für Ihre Organisation](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) die Option **Benutzer können Anwendungen registrieren** auf „Nein“ fest. Dadurch wird die Standardoption für Benutzer zum Erstellen von Anwendungsregistrierungen deaktiviert.
+    - Legen Sie unter  [Benutzereinstellungen – Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) die Einstellung **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf „Nein“ fest. Dadurch wird die Standardfunktion für Benutzer deaktiviert, Anwendungen den Zugriff auf Unternehmensdaten in ihrem Namen zu gestatten.
 
-1. Melden Sie sich bei Ihrem [Azure AD-Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für die globale Administratorrolle im Mandanten geeignet ist.
-2. Wenn Sie ausreichende Berechtigungen erhalten haben, legen Sie eine oder beide der folgenden fest:
-   * Legen Sie auf der [Seite „Benutzereinstellungen“ für Ihren Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) für **Benutzer können Anwendungen registrieren** „Nein“ fest.
-   * Legen Sie unter [Unternehmensanwendungen – Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) für **Benutzer können Anwendungen den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** „Nein“ fest.
-3. Weisen Sie anschließend nach Bedarf Benutzer zu, die diese Berechtigung benötigen, um Mitglieder der Anwendungsentwicklerrolle zu sein.
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Erteilen einzelner Berechtigungen zum Erstellen von Anwendungen und Erteilen der Einwilligung für Anwendungen bei deaktivierter Standardfunktion
 
-Wenn ein Benutzer eine Anwendung registriert, wird er automatisch als erster Besitzer für die Anwendung hinzugefügt.
+Weisen Sie die Rolle „Anwendungsentwickler“ zu, um die Berechtigung zum Erstellen von Anwendungsregistrierungen zu erteilen, wenn die Einstellung **Benutzer können Anwendungen registrieren** auf „Nein“ festgelegt ist. Diese Rolle erteilt auch die Berechtigung zur Zustimmung im eigenen Namen, wenn die Einstellung **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf „Nein“ festgelegt ist. Wenn ein Benutzer eine neue Anwendungsregistrierung erstellt, wird er als Systemverhalten automatisch als erster Besitzer hinzugefügt. Mit Besitzerberechtigungen können Benutzer alle Aspekte einer Anwendungsregistrierung oder Unternehmensanwendung verwalten, deren Besitzer sie sind.
 
-## <a name="delegate-app-ownership"></a>Delegieren Sie den Besitz der App.
+## <a name="assign-application-owners"></a>Zuweisen von Anwendungsbesitzern
 
-App- und App-Registrierungsbesitzer können jeweils nur die Anwendungen oder App-Registrierungen verwalten, die sie besitzen. Wenn Sie beispielsweise einen Besitzer für die Salesforce-Anwendung hinzufügen, kann dieser Besitzer den Zugriff auf Salesforce sowie die Konfiguration von Salesforce verwalten, jedoch keine anderen Anwendungen. Eine App kann viele Besitzer haben, und ein Benutzer kann Besitzer vieler Apps sein.
+Die Zuweisung von Besitzern ist eine einfache Möglichkeit, die Berechtigung zu erteilen, alle Aspekte der Azure AD-Konfiguration für eine bestimmte Anwendungsregistrierung oder Unternehmensanwendung zu verwalten. Wenn ein Benutzer eine neue Anwendungsregistrierung erstellt, wird er als Systemverhalten automatisch als erster Besitzer hinzugefügt. Mit Besitzerberechtigungen können Benutzer alle Aspekte einer Anwendungsregistrierung oder Unternehmensanwendung verwalten, deren Besitzer sie sind. Der ursprüngliche Besitzer kann entfernt werden, und weitere Besitzer können hinzugefügt werden.
 
-Ein Anwendungsbesitzer kann:
+### <a name="enterprise-application-owners"></a>Besitzer von Unternehmensanwendungen
 
-* Ändern der Anwendungseigenschaften, z.B. des Namens und der Berechtigungen, die die App anfordert
-* Verwalten von Anmeldeinformationen
-* Einmaliges Anmelden konfigurieren
-* Zuweisen des Benutzerzugriffs
-* Hinzufügen oder Entfernen anderer Besitzer
-* Bearbeiten des App-Manifests
-* Veröffentlichen der App im App-Katalog
+Als Besitzer kann ein Benutzer die organisationsspezifische Konfiguration der Unternehmensanwendung verwalten, z. B. die Konfiguration für einmaliges Anmelden, die Bereitstellung und Benutzerzuweisungen. Ein Besitzer kann außerdem andere Besitzer hinzufügen oder entfernen. Im Gegensatz zu globalen Administratoren können Besitzer nur die Unternehmensanwendungen verwalten, deren Besitzer sie sind.
+
+In einigen Fällen enthalten Unternehmensanwendungen, die über den Anwendungskatalog erstellt werden, sowohl eine Unternehmensanwendung als auch eine Anwendungsregistrierung. Wenn dies der Fall ist, wird beim Hinzufügen eines Besitzers zur Unternehmensanwendung der Besitzer automatisch der entsprechenden Anwendungsregistrierung als Besitzer hinzugefügt.
+
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>So weisen Sie einer Unternehmensanwendung einen Besitzer zu
+
+1. Melden Sie sich bei Ihrer [Azure AD-Organisation](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für den Anwendungsadministrator oder Cloudanwendungsadministrator für die Organisation berechtigt ist.
+1. Wählen Sie auf der [Seite „App-Registrierungen“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) für die Organisation eine App aus, um die Seite „Übersicht“ für die App zu öffnen.
+1. Wählen Sie **Besitzer** aus, um die Liste der Besitzer für die App anzuzeigen.
+1. Wählen Sie **Hinzufügen** aus, um der App einen oder mehrere Besitzer hinzuzufügen.
 
 > [!IMPORTANT]
-> Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Dieses Annehmen der Identität der Anwendung bedeutet ggf. eine Rechteerweiterung im Vergleich zu dem, was der Benutzer unter seinen Rollenzuweisungen in Azure AD tun kann. Ein Benutzer, der dieser Rolle zugewiesen ist, könnte potenziell Benutzer oder andere Objekte erstellen oder aktualisieren, während er die Identität der Anwendung angenommen hat.
+> Benutzer und Dienstprinzipale können Besitzer von Anwendungsregistrierungen sein. Nur Benutzer können Besitzer von Unternehmensanwendungen sein. Gruppen können beiden nicht als Besitzer zugewiesen werden.
+>
+> Besitzer können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Identität der Anwendung zu wechseln. Die Anwendung umfasst möglicherweise mehr Berechtigungen als der Besitzer, sodass dies Rechteerweiterungen im Hinblick auf den Zugriff des Besitzers als Benutzer oder Dienstprinzipal zur Folge hat. Beim Wechseln der Identität der Anwendung kann ein Anwendungsbesitzer abhängig von den Berechtigungen der Anwendung potenziell Benutzer oder andere Objekte erstellen oder aktualisieren.
 
-Der Besitzer einer App-Registrierung kann die App-Registrierung anzeigen und bearbeiten.
+## <a name="assign-built-in-application-admin-roles"></a>Zuweisen von integrierten Anwendungsadministratorrollen
 
-<!-- ### To assign an enterprise app ownership role to a user
+Azure AD umfasst eine Reihe integrierter Administratorrollen zum Gewähren des Zugriffs zum Verwalten der Konfiguration in Azure AD für alle Anwendungen. Die Verwendung dieser Rollen wird empfohlen, um IT-Experten Zugriff zum Verwalten von umfassenden Berechtigungen für die Anwendungskonfiguration zu gewähren, ohne Zugriff auf die Verwaltung anderer Bereiche von Azure AD zu gewähren, die nicht mit der Anwendungskonfiguration zusammenhängen.
 
-1. Sign in to your [Azure AD tenant](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with an account that is the Global Administrator for the tenant.
-2. On the [Roles and administrators page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators), open one of the following roles to see its member assignments:
-  * **Enterprise Application Owner**
-  * **Application Registration Owner**
-3. On the **Members** page for the role, select **Add member**.
-4. Select one or more members to add to the role. -->
+- Anwendungsadministrator: Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
+- Cloudanwendungsadministrator: Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 
-### <a name="to-assign-an-owner-to-an-application"></a>So weisen Sie einen Besitzer einer Anwendung zu
+Weitere Informationen und eine Beschreibung dieser Rollen finden Sie unter [Verfügbare Rollen](directory-assign-admin-roles.md#available-roles).
 
-1. Melden Sie sich bei Ihrem [Azure AD-Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für den Anwendungsadministrator oder Cloudanwendungsadministrator für den Mandanten geeignet ist.
-2. Wählen Sie auf der [Seite „App-Registrierungen“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) für den Mandanten eine App zum Öffnen der Seite **Übersicht** für die App aus.
-3. Wählen Sie **Besitzer** aus, um die Liste der Besitzer für die App anzuzeigen.
-4. Wählen Sie **Hinzufügen** aus, um einen oder mehrere Besitzer der App hinzuzufügen.
+Befolgen Sie die Anweisungen in der Anleitung zum [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md), um die Rollen „Anwendungsadministrator“ oder „Cloudanwendungsadministrator“ zuzuweisen.
 
-### <a name="to-assign-an-owner-to-an-application-registration"></a>So weisen Sie einen Besitzer einer Anwendungsregistrierung zu
+> [!IMPORTANT]
+> Anwendungsadministratoren und Cloudanwendungsadministratoren können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Identität der Anwendung zu wechseln. Die Anwendung umfasst möglicherweise Berechtigungen, die in Bezug auf die Berechtigungen der Administratorrolle Rechteerweiterungen darstellen. Beim Wechseln der Identität der Anwendung kann ein Administrator in dieser Rolle abhängig von den Berechtigungen der Anwendung potenziell Benutzer oder andere Objekte erstellen oder aktualisieren.
+> Keine dieser Rollen gewährt die Fähigkeit zum Verwalten der Einstellungen des bedingten Zugriffs.
 
-1. Melden Sie sich bei Ihrem [Azure AD-Mandanten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für die Anwendungsadministrator- oder die Cloudanwendungsadministratorrolle im Mandanten geeignet ist.
-2. Wenn Sie über ausreichende Berechtigungen verfügen, wählen Sie auf der [Seite „Unternehmensanwendungen“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) für den Mandanten eine App-Registrierung aus, um sie zu öffnen.
-3. Wählen Sie **Settings**aus.
-4. Wählen Sie **Besitzer** auf der Seite **Einstellungen** aus, um die Liste der Besitzer für die App anzuzeigen.
-5. Wählen Sie **Besitzer hinzufügen** aus, um einen oder mehrere zur App hinzuzufügende Besitzer auszuwählen.
+## <a name="create-and-assign-a-custom-role-preview"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle (Vorschau)
+
+Die Erstellung von benutzerdefinierten Rollen und deren Zuweisung erfolgen in zwei separaten Schritten:
+
+- [Erstellen Sie eine benutzerdefinierte *Rollendefinition*](roles-create-custom.md), und [fügen Sie ihr Berechtigungen aus einer vordefinierten Liste hinzu](roles-custom-available-permissions.md). Dabei handelt es sich um die gleichen Berechtigungen, die in den integrierten Rollen verwendet werden.
+- [Erstellen Sie eine *Rollenzuweisung*](roles-assign-powershell.md), um die benutzerdefinierte Rolle zuzuweisen.
+
+Durch diese separaten Schritte können Sie eine einzelne Rollendefinition erstellen und dann für verschiedene *Bereiche* mehrmals zuzuweisen. Eine benutzerdefinierte Rolle kann im organisationsweiten Bereich oder im Bereich eines einzelnen Azure AD-Objekts zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendungsregistrierung. Durch Verwendung verschiedener Bereiche kann die gleiche Rollendefinition Sally für alle Anwendungsregistrierungen in der Organisation und dann Naveen nur für die Anwendungsregistrierung der Contoso-Spesenabrechnungen zugewiesen werden.
+
+Tipps für die Erstellung und Verwendung von benutzerdefinierten Rollen für die Delegierung der Anwendungsverwaltung:
+- Benutzerdefinierte Rollen gewähren nur Zugriff auf den Blättern für die aktuellen Anwendungsregistrierungen im Azure AD-Portal. Sie gewähren keinen Zugriff auf den Blättern für Legacyanwendungsregistrierungen.
+- Benutzerdefinierte Rollen gewähren keinen Zugriff auf das Azure AD-Portal, wenn die Benutzereinstellung „Zugriff auf Azure AD-Verwaltungsportal einschränken“ auf „Ja“ festgelegt ist.
+- Anwendungsregistrierungen, auf die der Benutzer unter Verwendung von Rollenzuweisungen Zugriff hat, werden nur auf der Registerkarte „Alle Anwendungen“ auf der Seite „App-Registrierungen“ angezeigt. Auf der Registerkarte „Anwendungen mit Besitzer“ werden sie dagegen nicht angezeigt.
+
+Weitere Informationen zu den Grundlagen von benutzerdefinierten Rollen finden Sie in der [Übersicht über benutzerdefinierte Rollen](roles-custom-overview.md) sowie unter [Erstellen einer benutzerdefinierten Rolle](roles-create-custom.md) und unter [Zuweisen einer Rolle](roles-assign-powershell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Berechtigungen der Administratorrolle in Azure Active Directory](directory-assign-admin-roles.md)
+- [Anwendungsregistrierungsuntertypen und -berechtigungen](roles-custom-available-permissions.md)
+- [Berechtigungen der Administratorrolle in Azure Active Directory](directory-assign-admin-roles.md)

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: df8c8a4040b4aae4379b4bfe0e9a16337588dd1b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304852"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704444"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Erstellen von Subclips für ein Video beim Codieren mit Media Services: REST
 
@@ -82,7 +82,7 @@ Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
     ```
 1. Klicken Sie auf **Senden**.
 
-    Dann wird Ihnen die **Antwort** mit den Informationen zu dem Auftrag einschließlich dessen Status angezeigt, der erstellt und übermittelt wurde. 
+    Dann wird Ihnen die **Antwort** mit den Informationen zum erstellten und übermittelten Auftrag und seinem Status angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

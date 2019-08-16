@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678528"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774992"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapping Data Flow: Auswahltransformation
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -35,6 +35,8 @@ Die Auswahltransformation kann auch als Möglichkeit verwendet werden, die Auswa
 * Wählen Sie die Option „Skip Duplicates“ (Duplikate überspringen) aus, um doppelte Spalten aus Eingabe- oder Ausgabemetadaten zu entfernen.
 
 ![Duplikate überspringen](media/data-flow/select-skip-dup.png "Duplikate überspringen")
+
+* Wenn Sie das Überspringen von Duplikaten auswählen, werden die Ergebnisse auf der Registerkarte „Untersuchen“ angezeigt. ADF behält das erste Vorkommen der Spalte bei. Sie werden feststellen, dass jedes nachfolgende Vorkommen der gleichen Spalte aus dem Flow entfernt wurde.
 
 > [!NOTE]
 > Zum Löschen von Zuordnungsregeln klicken Sie auf die Schaltfläche **Zurücksetzen**.

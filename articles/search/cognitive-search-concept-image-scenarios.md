@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423009"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841282"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -72,7 +73,8 @@ Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthä
 | originalWidth      | Ursprüngliche Breite des Bilds vor der Normalisierung. |
 | originalHeight      | Ursprüngliche Höhe des Bilds vor der Normalisierung. |
 | rotationFromOriginal |  Drehung gegen den Uhrzeigersinn zur Erstellung des normalisierten Bilds (in Grad). Der Wert muss zwischen 0 und 360 Grad liegen. In diesem Schritt werden die durch eine Kamera oder einen Scanner generierten Metadaten aus dem Bild gelesen. Der Wert ist in der Regel ein Vielfaches von 90 Grad. |
-| contentOffset |Das Zeichenoffset in dem Inhaltsfeld, aus dem das Bild extrahiert wurde. Dieses Feld ist nur für Dateien mit eingebetteten Bildern relevant. |
+| contentOffset | Das Zeichenoffset in dem Inhaltsfeld, aus dem das Bild extrahiert wurde. Dieses Feld ist nur für Dateien mit eingebetteten Bildern relevant. |
+| pageNumber | Wenn das Bild aus einer PDF-Datei extrahiert oder gerendert wurde, enthält dieses Feld die Seitenzahl in der PDF-Datei, aus der es extrahiert oder gerendert wurde, beginnend bei 1.  Wenn das Bild nicht aus einer PDF-Datei stammt, ist dieses Feld 0.  |
 
  Beispielwert von *normalized_images*:
 ```json
@@ -84,7 +86,8 @@ Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthä
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

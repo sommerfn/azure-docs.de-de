@@ -1,5 +1,5 @@
 ---
-title: Verwalten und Überwachen von SQL Server-Datenbanken auf einer mit Azure Backup gesicherten Azure-VM | Microsoft-Dokumentation
+title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer mit Azure Backup
 description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639587"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827561"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -120,7 +120,7 @@ Sie können verschiedene Arten von bedarfsgesteuerten Sicherungen ausführen:
 * Differenzielle Sicherung
 * Protokollsicherung
 
-Während Sie die Aufbewahrungsdauer für „Vollständige Kopiesicherung“ angeben müssen, wird die Dauer für andere Sicherungstypen automatisch auf 30 Tage ab dem aktuellen Zeitpunkt festgelegt. <br/>
+Während Sie die Aufbewahrungsdauer für „Nur vollständige Sicherung kopieren“ angeben müssen, wird die Dauer für die vollständige Ad-hoc-Sicherung automatisch auf 45 Tage ab dem aktuellen Zeitpunkt festgelegt. <br/>
 Weitere Informationen finden Sie unter [Typen von SQL Server-Sicherungen](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Registrierung einer SQL Server-Instanz aufheben

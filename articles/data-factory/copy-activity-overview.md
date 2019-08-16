@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150870"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827460"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -27,7 +27,7 @@ ms.locfileid: "65150870"
 > * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [Aktuelle Version](copy-activity-overview.md)
 
-In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
+In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten mit anderen Aktivitäten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
 
 ![Rolle der Kopieraktivität](media/copy-activity-overview/copy-activity.png)
 
@@ -159,7 +159,7 @@ Klicken Sie auf diese Option, um die Liste mit den Aktivitäten in dieser Pipeli
 Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistungsmerkmale für die Ausführung der Kopieraktivität anzuzeigen. Zu den angezeigten Informationen zählen neben Umfang/Zeilen/Dateien der Daten, die aus der Quelle in die Senke kopiert wurden, unter anderem der Durchsatz, die durchlaufenen Schritte und die jeweilige Dauer sowie die verwendeten Konfigurationen für Ihr Kopierszenario.
 
 >[!TIP]
->In einigen Szenarien finden Sie oben auf der Seite zur Kopierüberwachung auch **Tipps zur Leistungsoptimierung**, in denen der identifizierte Engpass aufgeführt ist, und Sie erfahren, welche Änderungen vorgenommen werden müssen, um den Kopiedurchsatz zu erhöhen, siehe Beispiel mit Details [hier](#performance-and-tuning).
+>In einigen Szenarien finden Sie oben auf der Seite zur Kopierüberwachung auch **Tipps zur Leistungsoptimierung**, in denen der identifizierte Engpass aufgeführt ist, und Sie erfahren, welche Änderungen vorgenommen werden müssen, um den Kopierdurchsatz zu erhöhen. Ein Beispiel mit Details finden Sie [hier](#performance-and-tuning).
 
 **Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Store**
 ![Überwachen von Details der Aktivitätsausführung](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -177,11 +177,13 @@ Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden auch im Au
 | dataWritten | Größe der Daten, die in die Senke geschrieben werden | Int64-Wert in **Bytes** |
 | filesRead | Die Anzahl von Dateien, die beim Kopieren von Daten aus dem Dateispeicher kopiert werden. | Int64-Wert (ohne Einheit) |
 | filesWritten | Die Anzahl von Dateien, die beim Kopieren von Daten in den Dateispeicher kopiert werden. | Int64-Wert (ohne Einheit) |
+| sourcePeakConnections | Maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int64-Wert (ohne Einheit) |
+| sinkPeakConnections | Maximale Anzahl gleichzeitiger Verbindungen mit dem Zieldatenspeicher während der Ausführung der Kopieraktivität. | Int64-Wert (ohne Einheit) |
 | rowsRead | Anzahl der Zeilen, die aus der Quelle gelesen werden (für eine Binärkopie nicht verfügbar) | Int64-Wert (ohne Einheit) |
 | rowsCopied | Anzahl der Zeilen, die in die Senke kopiert werden (für eine Binärkopie nicht verfügbar) | Int64-Wert (ohne Einheit) |
 | rowsSkipped | Anzahl der übersprungenen, nicht kompatiblen Zeilen. Sie können das Feature aktivieren, indem Sie „enableSkipIncompatibleRow“ auf „true“ festlegen. | Int64-Wert (ohne Einheit) |
-| throughput | Verhältnis, mit dem Daten übertragen werden | Gleitkommazahl in **KB/s** |
 | copyDuration | Dauer des Kopiervorgangs | Int32-Wert in Sekunden |
+| throughput | Verhältnis, mit dem Daten übertragen werden | Gleitkommazahl in **KB/s** |
 | sourcePeakConnections | Maximale Anzahl gleichzeitiger Verbindungen zum Quelldatenspeicher während des Kopiervorgangs | Int32-Wert |
 | sinkPeakConnections| Maximale Anzahl gleichzeitiger Verbindungen zum Senkendatenspeicher während des Kopiervorgangs| Int32-Wert |
 | sqlDwPolyBase | Wenn PolyBase beim Kopieren von Daten in SQL Data Warehouse verwendet wird. | Boolean |
@@ -189,39 +191,51 @@ Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden auch im Au
 | hdfsDistcp | Wenn DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolean |
 | effectiveIntegrationRuntime | Zeigt an, welche Integration Runtimes verwendet werden, um die Aktivitätsausführung zu unterstützen. Dabei wird folgendes Format verwendet: `<IR name> (<region if it's Azure IR>)`. | Text (Zeichenfolge) |
 | usedDataIntegrationUnits | Die effektiven Datenintegrationseinheiten während des Kopiervorgangs. | Int32-Wert |
-| usedParallelCopies | Die effektiven parallelen Kopien während des Kopiervorgangs. | Int32-Wert|
+| usedParallelCopies | Die effektiven parallelen Kopien während des Kopiervorgangs. | Int32-Wert |
 | redirectRowPath | Pfad zum Protokoll der übersprungenen, nicht kompatible Zeilen im Blobspeicher, den Sie unter „redirectIncompatibleRowSettings“ konfigurieren. Siehe das folgende Beispiel. | Text (Zeichenfolge) |
-| executionDetails | Ausführlichere Informationen zu den Phasen, die die Kopieraktivität durchläuft, sowie zu den entsprechenden Schritten, zur Dauer, zu den verwenden Konfigurationen und Ähnlichem. Da sich der Abschnitt ändern kann, empfiehlt es sich nicht, ihn zu analysieren. | Array |
+| executionDetails | Ausführlichere Informationen zu den Phasen, die die Kopieraktivität durchläuft, sowie zu den entsprechenden Schritten, zur Dauer, zu den verwenden Konfigurationen und Ähnlichem. Da sich der Abschnitt ändern kann, empfiehlt es sich nicht, ihn zu analysieren.<br/><br/>ADF meldet außerdem die genaue Dauer (in Sekunden) für die jeweiligen Schritte unter `detailedDurations`:<br/>- **Abfragedauer** (`queuingDuration`): Die Zeit bis zum tatsächlichen Start der Kopieraktivität in der Integration Runtime. Wenn Sie eine selbstgehostete IR verwenden und dieser Wert sehr groß ist, sollten Sie die Kapazität und Nutzung der IR überprüfen und entsprechend Ihrer Workload zentral hoch- oder herunterskalieren. <br/>- **Dauer des Kopiervorbereitungsskripts** (`preCopyScriptDuration`): Die Zeit für die Ausführung des Kopiervorbereitungsskripts im Senkendatenspeicher. Wird beim Konfigurieren des Kopiervorbereitungsskripts angewandt. <br/>- **Zeit bis zum ersten Byte** (`timeToFirstByte`): Die Zeit, nach der die Integration Runtime das erste Byte vom Quelldatenspeicher empfängt. Wird auf nicht dateibasierte Quellen angewandt. Wenn dieser Wert groß ist, empfiehlt es sich, die Abfrage bzw. den Server zu überprüfen und ggf. zu optimieren.<br/>- **Übertragungsdauer** (`transferDuration`): Die Zeit, die die Integration Runtime benötigt, um nach dem Empfang des ersten Bytes von der Quelle alle Daten in die Senke zu übertragen. | Array |
+| perfRecommendation | Tipps zur Leistungsoptimierung beim Kopieren. Weitere Informationen finden Sie im Abschnitt [Leistung und Optimierung](#performance-and-tuning). | Array |
 
 ```json
 "output": {
-    "dataRead": 107280845500,
-    "dataWritten": 107280845500,
-    "filesRead": 10,
-    "filesWritten": 10,
-    "copyDuration": 224,
-    "throughput": 467707.344,
+    "dataRead": 6198358,
+    "dataWritten": 19169324,
+    "filesRead": 1,
+    "sourcePeakConnections": 1,
+    "sinkPeakConnections": 2,
+    "rowsRead": 39614,
+    "rowsCopied": 39614,
+    "copyDuration": 1325,
+    "throughput": 4.568,
     "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedDataIntegrationUnits": 32,
-    "usedParallelCopies": 8,
+    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
+    "usedDataIntegrationUnits": 4,
+    "usedParallelCopies": 1,
     "executionDetails": [
         {
             "source": {
-                "type": "AmazonS3"
+                "type": "AzureBlobStorage"
             },
             "sink": {
-                "type": "AzureDataLakeStore"
+                "type": "AzureSqlDatabase"
             },
             "status": "Succeeded",
-            "start": "2018-01-17T15:13:00.3515165Z",
-            "duration": 221,
-            "usedDataIntegrationUnits": 32,
-            "usedParallelCopies": 8,
+            "start": "2019-08-06T01:01:36.7778286Z",
+            "duration": 1325,
+            "usedDataIntegrationUnits": 4,
+            "usedParallelCopies": 1,
             "detailedDurations": {
                 "queuingDuration": 2,
-                "transferDuration": 219
+                "preCopyScriptDuration": 12,
+                "transferDuration": 1311
             }
+        }
+    ],
+    "perfRecommendation": [
+        {
+            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
+            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
+            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
         }
     ]
 }
@@ -243,12 +257,12 @@ In einigen Fällen werden bei der Ausführung einer Kopieraktivität in ADF dire
 
 **Beispiel: Kopieren in Azure SQL-Datenbank mit Tipps für die Leistungsoptimierung**
 
-In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke der Azure SQL-DB eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Daher wird vorgeschlagen, die Azure SQL DB-Ebene mit mehr DTU zu erhöhen.
+In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke von Azure SQL-DB eine hohe DTU-Auslastung erreicht, sodass die Schreibvorgänge verlangsamt werden. Daher wird vorgeschlagen, einen Tarif von Azure SQL-DB mit mehr DTU zu verwenden.
 
 ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Inkrementelles Kopieren
-Data Factory unterstützt Szenarien für das inkrementelle Kopieren von Deltadaten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Informationen finden Sie unter [Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher](tutorial-incremental-copy-overview.md).
+Data Factory unterstützt Szenarien für das inkrementelle Kopieren von Deltadaten aus einem Quelldatenspeicher in einen Senkendatenspeicher. Informationen finden Sie unter [Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher](tutorial-incremental-copy-overview.md).
 
 ## <a name="read-and-write-partitioned-data"></a>Lesen und Schreiben partitionierter Daten
 In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen SliceStart/SliceEnd/WindowStart/WindowEnd. In der aktuellen Version können Sie dieses Verhalten mithilfe eines Pipelineparameters und der Anfangszeit/geplanten Zeit eines Triggers als Wert des Parameters erreichen. Weitere Informationen finden Sie unter [Lesen oder Schreiben partitionierter Daten](how-to-read-write-partitioned-data.md).

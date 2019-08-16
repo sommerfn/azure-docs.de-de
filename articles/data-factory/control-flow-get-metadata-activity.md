@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346854"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827497"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 
@@ -45,27 +45,27 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Einga
 
 | Connector/Metadaten | itemName<br>(Datei/Ordner) | itemType<br>(Datei/Ordner) | size<br>(Datei) | created<br>(Datei/Ordner) | lastModified<br>(Datei/Ordner) |childItems<br>(Ordner) |contentMD5<br>(Datei) | structure<br/>(Datei) | columnCount<br>(Datei) | exists<br>(Datei/Ordner) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Storage Gen1 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Azure Data Lake Storage Gen2 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| Dateisystem | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Azure-Blob](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure File Storage](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [Dateisystem](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Für Amazon S3 und Google Sloud Storage gilt `lastModified` für Bucket und Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für Bucket und Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
+- Für Amazon S3 und Google Cloud Storage gilt `lastModified` für Bucket und Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für Bucket und Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
 - Für Azure Blob Storage gilt `lastModified` für Container und Blob, aber nicht für den virtuellen Ordner.
 
 **Relationale Datenbank**:
 
 | Connector/Metadaten | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
-| Azure SQL-Datenbank | √ | √ | √ |
-| Verwaltete Azure SQL-Datenbank-Instanz | √ | √ | √ |
-| Azure SQL Data Warehouse | √ | √ | √ |
-| SQL Server | √ | √ | √ |
+| [Azure SQL-Datenbank](connector-azure-sql-database.md) | √ | √ | √ |
+| [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Metadatenoptionen
 
@@ -86,6 +86,9 @@ Die folgenden Metadatentypen können im Feld zur Aktivität „Metadaten abrufen
 
 >[!TIP]
 >Wenn Sie überprüfen möchten, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist, geben Sie in der Feldliste der Aktivität „Metadaten abrufen“ `exists` an, und überprüfen Sie dann das `exists: true/false`-Ergebnis der Aktivitätsausgabe. Ist `exists` nicht in der Feldliste konfiguriert, gibt die Aktivität „Metadaten abrufen“ einen Fehler aus, wenn das Objekt nicht gefunden wird.
+
+>[!NOTE]
+>Wenn Sie Metadaten aus Dateispeichern abrufen und `modifiedDatetimeStart` bzw. `modifiedDatetimeEnd` konfigurieren, gibt `childItems` in der Ausgabe nur Dateien im angegebenen Pfad zurück, deren Zeitpunkt der letzten Änderung in diesem Bereich liegt. Es werden aber keine Dateien aus Unterordnern zurückgegeben.
 
 ## <a name="syntax"></a>Syntax
 
@@ -135,6 +138,8 @@ Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 fieldList | Listet die erforderlichen Typen der Metadateninformationen auf. Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options). | Ja 
 dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. Die unterstützten Connectors werden im Abschnitt [Unterstützte Funktionen](#supported-capabilities) aufgeführt und im Thema zu Connectors finden Sie Einzelheiten zur Datasetsyntax. | Ja
+formatSettings | Anwenden bei Verwendung eines formatierten Datasets (Parquet, DelimitedText). | Nein
+storeSettings | Anwenden bei Verwendung eines formatierten Datasets (Parquet, DelimitedText). | Nein
 
 ## <a name="sample-output"></a>Beispielausgabe
 

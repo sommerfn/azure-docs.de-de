@@ -3,7 +3,7 @@ title: Übersicht über Azure Cloud Shell | Microsoft-Dokumentation
 description: Übersicht über Azure Cloud Shell.
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3d7edf21edf116732eceb332cb8725a0dee85dc
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199668"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742013"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
@@ -71,11 +71,9 @@ Cloud Shell ist ein flexibles Tool mit verschiedenen Zugriffsmöglichkeiten:
 * [Azure-Kontoerweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher
-Cloud Shell-Computer sind temporär und erfordern die Einbindung einer neuen oder vorhandenen Azure Files-Freigabe als `clouddrive`, um Ihre Dateien dauerhaft zu speichern.
+Cloud Shell-Computer sind temporär, aber Ihre Dateien bleiben auf zwei Arten erhalten: über ein Datenträgerimage und über eine eingebundene Dateifreigabe mit dem Namen `clouddrive`.  Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass für Sie eine Ressourcengruppe, ein Speicherkonto und eine Azure Files-Freigabe erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. Es kann eine einzelne Dateifreigabe zugeordnet werden, die sowohl von Bash als auch von PowerShell in Cloud-Shell verwendet wird.
 
-Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass für Sie eine Ressourcengruppe, ein Speicherkonto und eine Azure Files-Freigabe erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. Es kann eine einzelne Dateifreigabe zugeordnet werden, die sowohl von Bash als auch von PowerShell in Cloud-Shell verwendet wird.
-
-Erfahren Sie, wie Sie ein [neues oder vorhandenes Speicherkonto](persisting-shell-storage.md) einbinden.
+Erfahren Sie mehr darüber, wie Sie ein [neues oder vorhandenes Speicherkonto](persisting-shell-storage.md) einbinden oder welche [Persistenzmechanismen in Cloud Shell](persisting-shell-storage.md#how-cloud-shell-storage-works) verwendet werden.
 
 ## <a name="concepts"></a>Konzepte
 * Cloud Shell wird auf einem temporären Host ausgeführt, der pro Sitzung und pro Benutzer bereitgestellt wird.

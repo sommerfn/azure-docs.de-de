@@ -8,23 +8,23 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: d312a93f83ef38fa1ae855a1e313280fc608948d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799401"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815658"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Szenen, Aufnahmen und Keyframes
 
-Video Indexer unterstützt die Segmentierung von Videos in zeitliche Einheiten basierend auf strukturellen und semantischen Eigenschaften. Diese Funktion ermöglicht es Kunden, ihre Videoinhalte auf der Grundlage unterschiedlicher Granularitäten einfach zu durchsuchen, zu verwalten und zu bearbeiten. Beispielsweise basierend auf Szenen, Aufnahmen und Keyframes, die in diesem Thema beschrieben werden. Dieses Feature für die **Szenenerkennung** befindet sich derzeit in der Vorschauphase.   
+Video Indexer unterstützt die Segmentierung von Videos in zeitliche Einheiten basierend auf strukturellen und semantischen Eigenschaften. Diese Funktion ermöglicht es Kunden, ihre Videoinhalte auf der Grundlage unterschiedlicher Granularitäten einfach zu durchsuchen, zu verwalten und zu bearbeiten. Beispielsweise basierend auf Szenen, Aufnahmen und Keyframes, die in diesem Thema beschrieben werden.   
 
 ![Szenen, Aufnahmen und Keyframes](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
-
-## <a name="scene-detection-preview"></a>Szenenerkennung (Vorschau)
-
+ 
+## <a name="scene-detection"></a>Szenenerkennung  
+ 
 Der Video Indexer bestimmt basierend auf visuellen Hinweisen, wann sich eine Szene im Video ändert. Eine Szene stellt ein einzelnes Ereignis dar und besteht aus einer Reihe von aufeinanderfolgenden Aufnahmen, die semantisch zusammenhängen. Ein Szenenminiaturbild ist das erste Keyframe der zugrunde liegenden Aufnahme. Der Video Indexer segmentiert ein Video in Szenen, die auf Farbkohärenz bei aufeinanderfolgenden Aufnahmen basieren, und ruft die Anfangs- und Endzeit jeder Szene ab. Die Szenenerkennung stellt eine anspruchsvolle Aufgabe dar, da sie die Quantifizierung semantischer Aspekte von Videos beinhaltet.
 
 > [!NOTE]
