@@ -648,6 +648,8 @@
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Problembehandlung für Azure Cosmos DB-Trigger
           href: troubleshoot-changefeed-functions.md
+        - name: Startzeit des Änderungsfeedprozessors
+          href: how-to-configure-change-feed-start-time.md
     - name: Integrierte Analysen mit Apache Spark
       items:
         - name: Spark-Connector in Azure Databricks

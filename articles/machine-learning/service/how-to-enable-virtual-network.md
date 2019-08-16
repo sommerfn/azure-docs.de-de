@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 07/10/2019
-ms.openlocfilehash: 412eaac2f82a6d09761dcac53192916df215831f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 08/05/2019
+ms.openlocfilehash: 7c4c4ff611b35cac9aa8be1a9697a0d11bc4dc8b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358792"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815968"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines virtuellen Azure-Netzwerks
 
@@ -23,9 +23,11 @@ In diesem Artikel erfahren Sie, wie Sie innerhalb eines virtuellen Netzwerks Ihr
 
 Azure Machine Learning Service ist in Sachen Computeressourcen auf andere Azure-Dienste angewiesen. Computeressourcen (Computeziele) dienen zum Trainieren und Bereitstellen von Modellen. Diese Computeziele können innerhalb eines virtuellen Netzwerks erstellt werden. So können Sie beispielsweise eine Microsoft Data Science VM verwenden, um ein Modell zu trainieren, und das Modell anschließend in Azure Kubernetes Service (AKS) bereitstellen. Weitere Informationen über virtuelle Netzwerke erhalten Sie im [Überblick über virtuelle Azure-Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
+Dieser Artikel enthält ausführliche Informationen zu **erweiterten Sicherheitseinstellungen** und ist für einfache oder experimentelle Anwendungsfälle nicht erforderlich. In den Abschnitten dieses Artikels finden Sie Konfigurationsinformationen für verschiedene Szenarien, die jedoch nicht in der vorgegebenen Reihenfolge oder vollständig durchgearbeitet werden müssen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Dokument setzt voraus, dass Sie mit Azure Virtual Networks und IP-Netzwerken im Allgemeinen vertraut sind. Dieses Dokument geht auch davon aus, dass Sie ein virtuelles Netzwerk und Subnetz erstellt haben, das Sie mit Ihren Computeressourcen verwenden können. Wenn Sie nicht mit Azure Virtual Networks vertraut sind, lesen Sie die folgenden Artikel, um mehr über den Dienst zu erfahren:
+Erstellen Sie einen Azure Machine Learning Service-[Arbeitsbereich](setup-create-workspace.md), sofern Sie noch keinen besitzen. Dieses Dokument setzt voraus, dass Sie mit Azure Virtual Networks und IP-Netzwerken im Allgemeinen vertraut sind. Dieses Dokument geht auch davon aus, dass Sie ein virtuelles Netzwerk und Subnetz erstellt haben, das Sie mit Ihren Computeressourcen verwenden können. Wenn Sie nicht mit Azure Virtual Networks vertraut sind, lesen Sie die folgenden Artikel, um mehr über den Dienst zu erfahren:
 
 * [IP-Adressierung](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -34,14 +36,7 @@ Dieses Dokument setzt voraus, dass Sie mit Azure Virtual Networks und IP-Netzwer
 
 ## <a name="storage-account-for-your-workspace"></a>Speicherkonto für Ihren Arbeitsbereich
 
-> [!IMPORTANT]
-> Das __Standardspeicherkonto__ für Ihren Azure Machine Learning Service kann __nur während Experimenten__ in einem virtuellen Netzwerk platziert werden.
->
-> Bei __nicht standardmäßigen Speicherkonten für Experimente__ oder Verwendung eines Speicherkontos für __Rückschlüsse__ benötigen Sie __uneingeschränkten Zugriff auf das Speicherkonto__.
-> 
-> Sollten Sie nicht sicher sein, ob Sie diese Einstellungen geändert haben, sehen Sie sich den Abschnitt __Ändern der Standard-Netzwerkzugriffsregel__ in [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security) an. Gehen Sie wie folgt vor, um bei Rückschlüssen oder Modellbewertung den Zugriff von allen Netzwerken zuzulassen.
-
-Führen Sie die folgenden Schritte aus, um das Azure Storage-Standardkonto für den Arbeitsbereich in einem virtuellen Netzwerk zu platzieren:
+Führen Sie die folgenden Schritte aus, um das Azure Storage-Standardkonto für den Arbeitsbereich in einem virtuellen Netzwerk zu verwenden:
 
 1. Erstellen Sie eine Experimentiercomputeinstanz, z. B. Machine Learning Compute hinter einem virtuellen Netzwerk, oder fügen Sie eine Experimentiercomputeinstanz an den Arbeitsbereich an, z. B. einen HDInsight-Cluster oder einen virtuellen Computer. Weitere Informationen finden Sie in den Abschnitten [Verwenden von Machine Learning Compute](#use-machine-learning-compute) und [Verwenden eines virtuellen Computers oder eines HDInsight-Clusters](#use-a-virtual-machine-or-hdinsight-cluster) in diesem Dokument.
 2. Wechseln Sie zu dem Speicher, der an den Arbeitsbereich angefügt wurde. ![Abbildung des Azure-Portals mit Azure Storage-Speicher, der an den Azure Machine Learning Service-Arbeitsbereich angefügt ist](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -50,27 +45,35 @@ Führen Sie die folgenden Schritte aus, um das Azure Storage-Standardkonto für 
     - Klicken Sie auf __Ausgewählte Netzwerke__.
     - Wählen Sie unter __Virtuelle Netzwerke__ die Option __Vorhandenes virtuelles Netzwerk hinzufügen__ aus, um das virtuelle Netzwerk hinzuzufügen, in dem sich Ihre Experimentiercomputeressourcen befinden. (Siehe Schritt 1.)
     - Wählen Sie __Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben__ aus.
-![Abbildung des Azure-Portals mit der Seite „Firewalls und virtuelle Netzwerke“ unter „Azure Storage“](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
+![Abbildung des Azure-Portals mit der Seite „Firewalls und virtuelle Netzwerke“ unter „Azure Storage“](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)
 
 5. Ändern Sie während der Ausführung des Experiments in Ihrem Experimentiercode die Ausführungskonfiguration für die Verwendung von Blob Storage:
     ```python
     run_config.source_directory_data_store = "workspaceblobstore"
     ```
-    
+
+> [!IMPORTANT]
+> Das __Standardspeicherkonto__ für Ihren Azure Machine Learning Service kann __nur während Experimenten__ in einem virtuellen Netzwerk platziert werden.
+>
+> Bei __nicht standardmäßigen Speicherkonten für Experimente__ oder Verwendung eines Speicherkontos für __Rückschlüsse__ benötigen Sie __uneingeschränkten Zugriff auf das Speicherkonto__.
+>
+> Sollten Sie nicht sicher sein, ob Sie diese Einstellungen geändert haben, sehen Sie sich den Abschnitt __Ändern der Standard-Netzwerkzugriffsregel__ in [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security) an. Gehen Sie wie folgt vor, um bei Rückschlüssen oder Modellbewertung den Zugriff von allen Netzwerken zuzulassen.
+
 ## <a name="key-vault-for-your-workspace"></a>Key Vault für Ihren Arbeitsbereich
+
 Die mit dem Arbeitsbereich verknüpfte Key Vault-Instanz wird von Azure Machine Learning Service zum Speichern von Anmeldeinformationen verschiedener Art verwendet:
 * Der verknüpften Speicherkonto-Verbindungszeichenfolge
 * Kennwörter in Azure Container Repository-Instanzen
-* Verbindungszeichenfolgen zur Verbindung mit Datenspeichern. 
+* Verbindungszeichenfolgen zur Verbindung mit Datenspeichern.
 
-Um die Azure Machine Learning-Experimentierfunktionen mit Key Vault hinter einem virtuellen Netzwerk zu verwenden, führen Sie in die folgenden Schritte aus:
+Um die Azure Machine Learning-Experimentierfunktionen mit Key Vault hinter einem virtuellen Netzwerk zu verwenden, führen Sie die folgenden Schritte aus:
 1. Wechseln Sie zu dem Schlüsseltresor, der mit dem Arbeitsbereich verknüpft ist. ![Abbildung des Azure-Portals mit Key Vault-Instanz, die mit dem Azure Machine Learning Service-Arbeitsbereich verknüpft ist](./media/how-to-enable-virtual-network/workspace-key-vault.png)
 2. Wählen Sie auf der Seite „Key Vault“ den Abschnitt __Firewalls und virtuelle Netzwerke__ aus. ![Abbildung des Azure-Portals mit dem Bereich „Firewalls und virtuelle Netzwerke“ auf der Seite „Key Vault“](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 3. Wählen Sie auf der Seite __Firewalls und virtuelle Netzwerke__ die folgenden Einträge aus:
     - Klicken Sie auf __Ausgewählte Netzwerke__.
     - Wählen Sie unter __Virtuelle Netzwerke__ die Option __Vorhandenes virtuelles Netzwerk hinzufügen__ aus, um das virtuelle Netzwerk hinzuzufügen, in dem sich Ihre Experimentiercomputeressourcen befinden.
     - Wählen Sie __Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben__ aus.
-![Abbildung des Azure-Portals mit der Seite „Firewalls und virtuelle Netzwerke“ unter „Key Vault“](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
+![Abbildung des Azure-Portals mit der Seite „Firewalls und virtuelle Netzwerke“ unter „Key Vault“](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)
 
 
 ## <a name="use-machine-learning-compute"></a>Verwenden von Machine Learning Compute
@@ -79,17 +82,17 @@ Wenn Sie Azure Machine Learning Compute in einem virtuellen Netzwerk verwenden m
 
 - Das virtuelle Netzwerk muss sich im gleichen Abonnement und in der gleichen Region befinden wie der Azure Machine Learning Service-Arbeitsbereich.
 
-- Das für den Machine Learning Compute-Cluster angegebene Subnetz muss über genügend nicht zugewiesene IP-Adressen für die Anzahl virtueller Computer verfügen, die für den Cluster vorgesehen sind. Falls das Subnetz nicht über genügend nicht zugewiesene IP-Adressen verfügt, wird der Cluster teilweise zugeordnet.
+- Das für den Computecluster angegebene Subnetz muss über genügend nicht zugewiesene IP-Adressen für die Anzahl virtueller Computer verfügen, die für den Cluster vorgesehen sind. Falls das Subnetz nicht über genügend nicht zugewiesene IP-Adressen verfügt, wird der Cluster teilweise zugeordnet.
 
-- Wenn Sie zum Schutz des virtuellen Netzwerks den Datenverkehr einschränken möchten, lassen Sie einige Ports für den Machine Learning Compute-Dienst geöffnet. Weitere Informationen finden Sie unter [Erforderliche Ports](#mlcports).
+- Wenn Sie zum Schutz des virtuellen Netzwerks den Datenverkehr einschränken möchten, lassen Sie einige Ports für den Compute-Dienst geöffnet. Weitere Informationen finden Sie unter [Erforderliche Ports](#mlcports).
 
 - Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden.
 
-- Wenn Sie mehrere Machine Learning Compute-Cluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern.
+- Wenn Sie mehrere Computecluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern.
 
-    Machine Learning Compute ordnet in der Ressourcengruppe, die das virtuelle Netzwerk enthält, automatisch zusätzliche Netzwerkressourcen zu. Für jeden Machine Learning Compute-Cluster ordnet Azure Machine Learning Service folgende Ressourcen zu:
+    Azure Machine Learning Compute ordnet in der Ressourcengruppe, die das virtuelle Netzwerk enthält, automatisch zusätzliche Netzwerkressourcen zu. Für jeden Computecluster ordnet der Dienst folgende Ressourcen zu:
 
-    - Eine Netzwerksicherheitsgruppe (NSG)
+    - Eine Netzwerksicherheitsgruppe
 
     - Eine öffentliche IP-Adresse
 
@@ -99,21 +102,21 @@ Wenn Sie Azure Machine Learning Compute in einem virtuellen Netzwerk verwenden m
 
 ### <a id="mlcports"></a>Erforderliche Ports
 
-Machine Learning Compute verwendet derzeit den Azure Batch-Dienst, um virtuelle Computer im angegebenen virtuellen Netzwerk bereitzustellen. Das Subnetz muss die eingehende Kommunikation des Batch-Diensts zulassen. Diese Kommunikation dient zur Planung der Ausführungen auf den Machine Learning Compute-Knoten sowie zur Kommunikation mit Azure Storage und anderen Ressourcen. Batch fügt NSGs auf der Ebene der Netzwerkschnittstellen (NICs) hinzu, die an virtuelle Computer angefügt sind. Diese NSGs konfigurieren automatisch Eingangs- und Ausgangsregeln, um folgenden Datenverkehr zuzulassen:
+Machine Learning Compute verwendet derzeit den Azure Batch-Dienst, um virtuelle Computer im angegebenen virtuellen Netzwerk bereitzustellen. Das Subnetz muss die eingehende Kommunikation des Batch-Diensts zulassen. Diese Kommunikation dient zur Planung der Ausführungen auf den Machine Learning Compute-Knoten sowie zur Kommunikation mit Azure Storage und anderen Ressourcen. Batch fügt Netzwerksicherheitsgruppen (**NSG**) auf der Ebene der Netzwerkschnittstellen (**NIC**) hinzu, die an virtuelle Computer angefügt sind. Diese NSGs konfigurieren automatisch Eingangs- und Ausgangsregeln, um folgenden Datenverkehr zuzulassen:
 
 - Eingehender TCP-Datenverkehr an den Ports 29876 und 29877 aus einem __Diensttag__ von __BatchNodeManagement__.
 
     ![Abbildung des Azure-Portals mit einer Regel für eingehenden Datenverkehr mit dem BatchNodeManagement-Diensttag](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
- 
+
 - (Optional) Eingehender TCP-Datenverkehr an Port 22, um Remotezugriff zu ermöglichen. Dieser Port ist nur erforderlich, wenn Sie mithilfe von SSH über die öffentliche IP-Adresse eine Verbindung herstellen möchten.
- 
+
 - Ausgehender Datenverkehr an allen Ports zum virtuellen Netzwerk
 
-- Ausgehender Datenverkehr an allen Ports zum Internet 
+- Ausgehender Datenverkehr an allen Ports zum Internet
 
-Seien Sie vorsichtig, wenn Sie Eingangs-/Ausgangsregeln in von Batch konfigurierten NSGs ändern. Wenn eine NSG die Kommunikation mit den Computeknoten blockiert, legt der Machine Learning Compute-Dienst den Zustand der Computeknoten auf „Nicht verwendbar“ fest.
+Seien Sie vorsichtig, wenn Sie Eingangs-/Ausgangsregeln in von Batch konfigurierten NSGs ändern. Wenn eine NSG die Kommunikation mit den Computeknoten blockiert, legt der Compute-Dienst den Zustand der Computeknoten auf „Nicht verwendbar“ fest.
 
-Sie müssen keine NSGs auf der Subnetzebene angeben, da Batch eigene NSGs konfiguriert. Wenn das angegebene Subnetz allerdings über zugewiesene NSGs und/oder eine Firewall verfügt, konfigurieren Sie die Eingangs- und Ausgangssicherheitsregeln wie weiter oben erwähnt. 
+Sie müssen keine NSGs auf der Subnetzebene angeben, da der Azure Batch-Dienst eigene NSGs konfiguriert. Wenn das angegebene Subnetz allerdings über zugewiesene NSGs und/oder eine Firewall verfügt, konfigurieren Sie die Eingangs- und Ausgangssicherheitsregeln wie weiter oben erwähnt.
 
 Der folgende Screenshot zeigt die NSG-Regelkonfiguration im Azure-Portal:
 
@@ -125,7 +128,7 @@ Der folgende Screenshot zeigt die NSG-Regelkonfiguration im Azure-Portal:
 
 Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden Zugriff auf Ihr virtuelles Netzwerk beschränken möchten, führen Sie die folgenden Schritte aus:
 
-- Verweigern von ausgehenden Internetverbindungen mit NSG-Regeln 
+- Verweigern von ausgehenden Internetverbindungen mit NSG-Regeln
 
 - Beschränken Sie ausgehenden Datenverkehr zu Azure Storage (mit dem __Diensttag__ von __Storage.Region_Name__, z. B. Storage.EastUS), Azure Container Registry (mit dem __Diensttag__ von __AzureContainerRegistry.Region_Name__, z. B. AzureContainerRegistry.EastUS) und Azure Machine Learning Service (mit dem __Diensttag__ von __AzureMachineLearning__).
 
@@ -137,7 +140,7 @@ Der folgende Screenshot zeigt die NSG-Regelkonfiguration im Azure-Portal:
 
 Wenn Sie das erzwungene Tunneling mit Azure Machine Learning Compute verwenden, müssen Sie dem Subnetz mit den Computeressourcen [benutzerdefinierte Routen (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) hinzufügen.
 
-* Dazu ist für jede IP-Adresse, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird, eine benutzerdefinierte Route erforderlich. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Wenden Sie sich an den Azure-Support, um eine Liste der IP-Adressen des Batch-Diensts zu erhalten.
+* Dazu muss für jede IP-Adresse, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird, eine benutzerdefinierte Route eingerichtet werden. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Wenden Sie sich an den Azure-Support, um eine Liste der IP-Adressen des Batch-Diensts zu erhalten.
 
 * Ausgehender Datenverkehr an Azure Storage (insbesondere URLs in den Formaten `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) darf nicht durch Ihre lokale Netzwerkappliance blockiert werden.
 
@@ -149,13 +152,11 @@ Weitere Informationen finden Sie im Artikel [Erstellen eines Azure Batch-Pools i
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Erstellen von Machine Learning Compute in einem virtuellen Netzwerk
 
-Führen Sie diese Schritte aus, um einen Machine Learning Compute-Cluster mithilfe des Azure-Portals zu erstellen:
+Führen Sie die folgenden Schritte aus, um einen Azure Machine Learning-Computecluster über das Azure-Portal zu erstellen:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Azure Machine Learning Service-Arbeitsbereich aus.
 
-1. Wählen Sie im Abschnitt __Anwendung__ die Option __Compute__ aus. Wählen Sie anschließend __Computeressource hinzufügen__ aus. 
-
-    ![Hinzufügen einer Computeressource in Azure Machine Learning Service](./media/how-to-enable-virtual-network/add-compute.png)
+1. Wählen Sie im Abschnitt __Anwendung__ die Option __Compute__ aus. Wählen Sie anschließend __Computeressource hinzufügen__ aus.
 
 1. Verwenden Sie die folgenden Optionen, um diese Computeressource für die Verwendung eines virtuellen Netzwerks zu konfigurieren:
 
@@ -205,21 +206,18 @@ except ComputeTargetException:
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Nach Abschluss des Erstellungsprozesses können Sie Ihr Modell mit dem Cluster trainieren. Weitere Informationen finden Sie unter [Auswählen und Verwenden eines Computeziels für das Training](how-to-set-up-training-targets.md).
+Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den Cluster in einem Experiment verwenden. Weitere Informationen finden Sie unter [Auswählen und Verwenden eines Computeziels für das Training](how-to-set-up-training-targets.md).
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Verwenden eines virtuellen Computers oder HDInsight-Clusters
 
 Gehen Sie wie folgt vor, um einen virtuellen Computer oder einen Azure HDInsight-Cluster in einem virtuellen Netzwerk mit Ihrem Arbeitsbereich zu verwenden:
 
-> [!IMPORTANT]
-> Azure Machine Learning Service unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird.
-
 1. Erstellen Sie einen virtuellen Computer oder einen HDInsight-Cluster mithilfe des Azure-Portals oder der Azure-Befehlszeilenschnittstelle, und platzieren Sie ihn in einem virtuellen Azure-Netzwerk. Weitere Informationen finden Sie in den folgenden Dokumenten:
     * [Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
-    * [Erweitern von Azure HDInsight per Azure Virtual Network](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network) 
+    * [Erweitern von Azure HDInsight per Azure Virtual Network](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Damit Azure Machine Learning Service mit dem SSH-Port des virtuellen Computers oder des Clusters kommunizieren kann, müssen Sie einen Quelleintrag für die NSG konfigurieren. Der SSH-Port ist in der Regel der Port 22. Verwenden Sie die folgenden Informationen, um Datenverkehr von dieser Quelle zuzulassen:
+1. Damit Azure Machine Learning Service mit dem SSH-Port des virtuellen Computers oder des Clusters kommunizieren kann, müssen Sie einen Quelleintrag für die Netzwerksicherheitsgruppe konfigurieren. Der SSH-Port ist in der Regel der Port 22. Verwenden Sie die folgenden Schritte, um Datenverkehr von dieser Quelle zuzulassen:
 
     * __Quelle__: Wählen Sie __Diensttag__ aus.
 
@@ -237,33 +235,26 @@ Gehen Sie wie folgt vor, um einen virtuellen Computer oder einen Azure HDInsight
 
    ![Screenshot: Eingangsregeln für Experimente auf einem virtuellen Computer oder in einem HDInsight-Cluster innerhalb eines virtuellen Netzwerks](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
-    Behalten Sie die Standardausgangsregeln für die NSG bei. Weitere Informationen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules) bei den Standardsicherheitsregeln.
+    Behalten Sie die Standardausgangsregeln für die Netzwerksicherheitsgruppe bei. Weitere Informationen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules) bei den Standardsicherheitsregeln.
 
     Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden Zugriff auf Ihr virtuelles Netzwerk beschränken möchten, finden Sie weitere Informationen unter [Beschränken der ausgehenden Konnektivität aus dem virtuellen Netzwerk](#limiting-outbound-from-vnet).
-    
+
 1. Fügen Sie den virtuellen Computer oder den HDInsight-Cluster an Ihren Azure Machine Learning Service-Arbeitsbereich an. Weitere Informationen finden Sie unter [Einrichten von Computezielen für das Modelltraining](how-to-set-up-training-targets.md).
+
+> [!IMPORTANT]
+> Azure Machine Learning Service unterstützt nur virtuelle Computer, auf denen Ubuntu ausgeführt wird.
 
 ## <a name="use-azure-kubernetes-service"></a>Verwenden von Azure Kubernetes Service
 
-> [!IMPORTANT]
-> Überprüfen Sie die Voraussetzungen, und planen Sie die IP-Adressierung für Ihren Cluster, bevor Sie mit den Schritten fortfahren. Weitere Informationen finden Sie unter [Konfigurieren von erweiterten Netzwerken in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
-> 
->
-> Behalten Sie die Standardausgangsregeln für die NSG bei. Weitere Informationen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules) bei den Standardsicherheitsregeln.
->
-> Azure Kubernetes Service und das virtuelle Azure-Netzwerk müssen sich in der gleichen Region befinden.
+Befolgen Sie im Azure-Portal die folgenden Schritte, um Azure Kubernetes Service in einem virtuellen Netzwerk Ihrem Arbeitsbereich hinzuzufügen:
 
-Befolgen Sie im Azure-Portal diese Schritte, um Azure Kubernetes Service in einem virtuellen Netzwerk Ihrem Arbeitsbereich hinzuzufügen:
+1. Stellen Sie sicher, dass für die Netzwerksicherheitsgruppe (NSG), die das virtuelle Netzwerk steuert, eine Regel für eingehenden Datenverkehr für Azure Machine Learning Service unter Verwendung von __AzureMachineLearning__ als **QUELLE** (SOURCE) aktiviert ist.
 
-1. Stellen Sie sicher, dass für die Netzwerksicherheitsgruppe, die das virtuelle Netzwerk steuert, eine Regel für eingehenden Datenverkehr für Azure Machine Learning Service mit dem __Diensttag__ von __AzureMachineLearning__ aktiviert ist.
+    ![Hinzufügen einer Computeressource in Azure Machine Learning Service](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)
 
-    ![Hinzufügen einer Computeressource in Azure Machine Learning Service](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)     
- 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Azure Machine Learning Service-Arbeitsbereich aus.
 
-1. Wählen Sie im Abschnitt __Anwendung__ die Option __Compute__ aus. Wählen Sie anschließend __Computeressource hinzufügen__ aus. 
-
-    ![Hinzufügen einer Computeressource in Azure Machine Learning Service](./media/how-to-enable-virtual-network/add-compute.png)
+1. Wählen Sie im Abschnitt __Anwendung__ die Option __Compute__ aus. Wählen Sie anschließend __Computeressource hinzufügen__ aus.
 
 1. Verwenden Sie die folgenden Optionen, um diese Computeressource für die Verwendung eines virtuellen Netzwerks zu konfigurieren:
 
@@ -283,12 +274,20 @@ Befolgen Sie im Azure-Portal diese Schritte, um Azure Kubernetes Service in eine
 
    ![Azure Machine Learning Service: VNET-Einstellungen für Machine Learning Compute](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Stellen Sie sicher, dass für die Netzwerksicherheitsgruppe, die das virtuelle Netzwerk steuert, eine Regel für eingehenden Datenverkehr für den Bewertungsendpunkt aktiviert ist, damit sie von außerhalb des virtuellen Netzwerks aus aufgerufen werden kann.
+1. Stellen Sie sicher, dass für die Netzwerksicherheitsgruppe, die das virtuelle Netzwerk steuert, eine Sicherheitsregel für eingehenden Datenverkehr für den Bewertungsendpunkt aktiviert ist, damit sie von außerhalb des virtuellen Netzwerks aus aufgerufen werden kann.
 
     ![Hinzufügen einer Computeressource in Azure Machine Learning Service](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
     > [!TIP]
     > Wenn Sie bereits über einen AKS-Cluster in einem virtuellen Netzwerk verfügen, können Sie ihn dem Arbeitsbereich anfügen. Weitere Informationen finden Sie unter [Bereitstellen im AKS](how-to-deploy-to-aks.md).
+
+> [!IMPORTANT]
+> Überprüfen Sie die Voraussetzungen, und planen Sie die IP-Adressierung für Ihren Cluster, bevor Sie mit den obigen Schritten fortfahren. Weitere Informationen finden Sie unter [Konfigurieren von erweiterten Netzwerken in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
+>
+>
+> Behalten Sie die Standardausgangsregeln für die NSG bei. Weitere Informationen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules) bei den Standardsicherheitsregeln.
+>
+> Azure Kubernetes Service und das virtuelle Azure-Netzwerk müssen sich in der gleichen Region befinden.
 
 Sie können auch das **Azure Machine Learning SDK** verwenden, um Azure Kubernetes Service einem virtuellen Netzwerk hinzuzufügen. Der folgende Code erstellt eine neue Azure Kubernetes Service-Instanz im Subnetz `default` eines virtuellen Netzwerks namens `mynetwork`:
 

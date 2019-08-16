@@ -439,20 +439,38 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Erstellen eines neuen Angebots
       items:
-        - name: Prüfliste für die Angebotserstellung
-          href: ./partner-center-portal/offer-creation-checklist.md
-        - name: Erstellen eines SaaS-Angebots
-          href: ./partner-center-portal/create-new-saas-offer.md
-        - name: Getaktete SaaS-Abrechnung
-          href: ./partner-center-portal/saas-metered-billing.md
+        - name: Dynamics 365-Angebote
           items:
-            - name: Marketplace-Messungsdienst-APIs – Häufig gestellte Fragen
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-            - name: Marketplace-Messungsdienst-APIs
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
-        - name: SaaS-Fulfillment-APIs
-          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+            - name: Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Erstellen eines Angebots für Dynamics 365 for Operations
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: Erstellen eines Angebots für Dynamics 365 Business Central
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: SaaS-Angebote
           items:
+            - name: Prüfliste für die Erstellung von SaaS-Angeboten
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: Erstellen eines SaaS-Angebots
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Getaktete SaaS-Abrechnung
+              href: ./partner-center-portal/saas-metered-billing.md
+              items:
+                - name: Marketplace-Messungsdienst-APIs – Häufig gestellte Fragen
+                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+                - name: Marketplace-Messungsdienst-APIs
+                  href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: SaaS-Fulfillment-APIs
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: Registrieren einer SaaS-Anwendung
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: SaaS-Fulfillment-APIs v2
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: SaaS-Fulfillment-APIs v1 (veraltet)
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: SaaS-Fulfillment-APIs – Häufig gestellte Fragen
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
             - name: Registrieren einer SaaS-Anwendung
               href: ./partner-center-portal/pc-saas-registration.md
             - name: SaaS-Fulfillment-APIs v2
@@ -461,6 +479,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
             - name: SaaS-Fulfillment-APIs – Häufig gestellte Fragen
               href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: Testen Ihres Angebots
+          href: ./partner-center-portal/test-drive.md
     - name: Veröffentlichungsstatus
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualisieren vorhandener Angebote

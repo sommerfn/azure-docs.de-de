@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentation zu virtuellen Computern
 metadata:
   document_id: na
-  title: 'Dokumentation für virtuelle Azure-Computer unter Linux – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  title: 'Dokumentation zu virtuellen Azure-Computern: Tutorials, API-Referenz | Microsoft-Dokumentation'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace

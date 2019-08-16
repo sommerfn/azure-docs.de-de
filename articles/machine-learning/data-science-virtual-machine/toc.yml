@@ -2,6 +2,7 @@
   href: index.yml
   items: null
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist die Data Science-VM?
       href: overview.md
@@ -12,15 +13,15 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer Data Science-VM für Windows
+    - name: Erstellen einer DSVM-Instanz für Windows
       href: provision-vm.md
-    - name: Erstellen einer Data Science-VM für Ubuntu
+    - name: Erstellen einer DSVM-Instanz für Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Erstellen einer Data Science-VM für CentOS
+    - name: Erstellen einer DSVM-Instanz für CentOS
       href: linux-dsvm-intro.md
     - name: Erstellen einer Deep Learning-VM
       href: provision-deep-learning-dsvm.md
-    - name: Erstellen einer Data Science VM-Instanz für geografische KI
+    - name: Erstellen einer DSVM-Instanz für geografische KI
       href: provision-geo-ai-dsvm.md
 - name: Konzepte
   items:
@@ -28,45 +29,43 @@
       href: dsvm-tools-overview.md
     - name: Deep Learning und KI-Frameworks
       href: dsvm-deep-learning-ai-frameworks.md
-    - name: ML- und Data Science-Tools
-      href: dsvm-ml-data-science-tools.md
-    - name: Languages
+    - name: Programmiersprachen
       href: dsvm-languages.md
     - name: Entwicklungstools
       href: dsvm-tools-development.md
+    - name: ML- und Data Science-Tools
+      href: dsvm-ml-data-science-tools.md
+    - name: Datenplattformen
+      href: dsvm-data-platforms.md
     - name: Datenerfassungstools
       href: dsvm-tools-ingestion.md
     - name: Tools zum Durchsuchen und Visualisieren von Daten
       href: dsvm-tools-explore-and-visualize.md
-    - name: Datenplattformen
-      href: dsvm-data-platforms.md
-    - name: Beispiele und exemplarische Vorgehensweisen
-      href: dsvm-samples-and-walkthroughs.md
+    - name: Unternehmenssicherheit und -leitfäden
+      href: dsvm-enterprise-overview.md
+- name: Beispiele
+  href: dsvm-samples-and-walkthroughs.md
 - name: Anleitungen
   items:
-    - name: Verwenden einer Data Science-VM für Windows
+    - name: Verwenden einer DSVM-Instanz für Windows
       href: vm-do-ten-things.md
-    - name: Verwenden einer Data Science-VM für Linux
+    - name: Verwenden einer DSVM-Instanz für Linux
       href: linux-dsvm-walkthrough.md
     - name: Verwenden einer Deep Learning-VM
       href: use-deep-learning-dsvm.md
-    - name: Verwenden einer Data Science VM-Instanz für geografische KI
+    - name: Verwenden einer DSVM-Instanz für geografische KI
       href: use-geo-ai-dsvm.md
-    - name: Enterprise-Leitfaden
-      items:
-        - name: Übersicht
-          href: dsvm-enterprise-overview.md
-        - name: Skalieren
-          href: dsvm-pools.md
-        - name: Active Directory-Integration
-          href: dsvm-common-identity.md
-        - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
-          href: dsvm-secure-access-keys.md
+    - name: Erstellen eines automatisch skalierten DSVM-Pools
+      href: dsvm-pools.md
+    - name: Integration in Active Directory.
+      href: dsvm-common-identity.md
+    - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
+      href: dsvm-secure-access-keys.md
 - name: Ressourcen
   items:
-    - name: R-Entwicklerhandbuch
-      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
     - name: MSDN-Forum
       href: 'https://social.microsoft.com/Forums/home?forum=dsvm'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=dsvm'
+    - name: R-Entwicklerhandbuch
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context

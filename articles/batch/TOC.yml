@@ -79,10 +79,12 @@
           href: batch-pool-vm-sizes.md
         - name: Konfigurieren des Zugriffs auf Computeknoten
           href: pool-endpoint-configuration.md
-        - name: Erstellen eines Pools mit einem benutzerdefinierten Image
+        - name: Erstellen eines Pools mit Shared Image Gallery
           href: batch-custom-images.md
         - name: Erstellen eines Pools in einem virtuellen Netzwerk
           href: batch-virtual-network.md
+        - name: Einbinden eines virtuellen Dateisystems
+          href: virtual-file-mount.md
         - name: Bereitstellen einer Azure-Dateifreigabe
           href: pool-file-shares.md
         - name: Verwenden von RDMA oder GPU-Instanzen

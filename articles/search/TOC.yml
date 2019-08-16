@@ -13,7 +13,7 @@
       items:
         - name: Erstellen und Verwenden eines Indexes
           href: search-get-started-portal.md
-        - name: Erweitern um KI (Cognitive Search)
+        - name: Erweitern mit der kognitiven Suche (KI)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       href: search-get-started-dotnet.md
@@ -59,6 +59,8 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
     - name: Beispiele für Java
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: JavaScript-Beispiele
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
     - name: Python-Beispiele
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
     - name: REST-Beispiele

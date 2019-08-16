@@ -56,10 +56,10 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/aml-sdk">Python-Haupt-SDK</a>: Kernfunktionen, automatisiertes maschinelles Lernen, Pipelines und vieles mehr'
-          - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: Erfassen von Daten für bereitgestellte Webdienste'
-          - html: '<a href="../algorithm-module-reference/module-reference.md">Algorithm & module reference overview</a> (Algorithmus- und Modulreferenz – Übersicht): Grafische Benutzeroberfläche'
-          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: Eine Erweiterung der Befehlszeilenschnittstelle für maschinelles Lernen'
+          - html: 'Dokumentation zum <a href="https://aka.ms/aml-sdk">Python-Haupt-SDK</a>: Hier finden Sie Informationen zu Kernfunktionen, automatisiertem maschinellen Lernen, Pipelines und vielem mehr.'
+          - html: 'Dokumentation zum <a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: Erfahren Sie, wie Sie Daten für bereitgestellte Webdienste erfassen.'
+          - html: '<a href="../algorithm-module-reference/module-reference.md">Algorithmen und Module: Referenzübersicht</a>: Hier finden Sie eine Dokumentation zur grafischen Benutzeroberfläche.'
+          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: Informieren Sie sich über die Erweiterung der Befehlszeilenschnittstelle für maschinelles Lernen.'
   - title: Weitere Azure Machine Learning-Technologien
     items:
       - type: list

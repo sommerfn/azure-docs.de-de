@@ -478,7 +478,7 @@
           items:
             - name: Verwenden der Schreibbeschleunigung
               href: how-to-enable-write-accelerator.md
-            - name: Aktivieren von Ultra-SSDs
+            - name: Verwenden von Ultra Disks
               href: disks-enable-ultra-ssd.md
             - name: Durchführen von Vergleichstest für einen Datenträger
               href: disks-benchmarks.md

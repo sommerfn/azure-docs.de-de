@@ -120,12 +120,8 @@
         - name: 'Bereitstellen: REST-API'
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
-        - name: Sichern von Vorlagen mit SAS-Token
-          items:
-            - name: Verwenden der Azure-CLI
-              href: resource-manager-cli-sas-token.md
-            - name: Mithilfe von Azure PowerShell
-              href: resource-manager-powershell-sas-token.md
+        - name: Sichern einer Vorlage mit einem SAS-Token
+          href: secure-template-with-sas-token.md
         - name: Bereitstellen in mehreren Ressourcengruppen oder Abonnements
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

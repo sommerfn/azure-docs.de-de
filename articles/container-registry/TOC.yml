@@ -66,7 +66,11 @@
         - name: Sperren von Containerimages
           href: container-registry-image-lock.md
         - name: Löschen von Containerimages
-          href: container-registry-delete.md
+          items:
+            - name: 'Löschen von Imagedaten: CLI'
+              href: container-registry-delete.md
+            - name: Automatisches Löschen von Tags und Manifesten (Vorschau)
+              href: container-registry-auto-purge.md
         - name: Aktualisieren einer klassischen Registrierung
           href: container-registry-upgrade.md
         - name: Verwenden von ACR-Webhooks

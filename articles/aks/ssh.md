@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68722462"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932313"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
@@ -37,7 +37,7 @@ Suchen Sie nach dem Namen der VM-Skalierungsgruppe Ihres Clusters, und fügen Si
 Verwenden Sie den Befehl [az aks show][az-aks-show], um den Ressourcengruppennamen Ihres AKS-Clusters abzurufen, und anschließend den Befehl [az vmss list][az-vmss-list], um den Namen Ihrer Skalierungsgruppe abzurufen.
 
 ```azurecli-interactive
-CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
@@ -94,7 +94,7 @@ Suchen Sie nach dem Namen des Linux-Knotens Ihres Clusters, und fügen Sie diese
 Verwenden Sie den Befehl [az aks show][az-aks-show], um den Ressourcengruppennamen Ihres AKS-Clusters abzurufen, und dann den Befehl [az vm list][az-vm-list], um den VM-Namen des Linux-Knotens Ihres Clusters aufzulisten.
 
 ```azurecli-interactive
-CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
