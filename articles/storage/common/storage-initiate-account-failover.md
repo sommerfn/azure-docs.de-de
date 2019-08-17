@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305733"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985340"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -68,12 +68,13 @@ Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zu
 
     - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
     - Entfernen Sie alle **Azure**-Module aus `%Program Files%\WindowsPowerShell\Modules`.
-    
+
 1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster, und öffnen Sie es dann erneut. 
 
 1. Installieren Sie die neueste Version von Azure PowerShell:
@@ -82,14 +83,14 @@ Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zu
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Installieren ein Azure Storage-Vorschaumodul, das Azure AD unterstützt:
-   
+1. Installieren ein Azure Storage-Vorschaumodul, das Kontofailover unterstützt:
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. Schließen Sie das PowerShell-Fenster, und öffnen Sie es dann erneut.
  
-
 Führen Sie den folgenden Befehl aus, um ein Kontofailover über PowerShell zu initiieren:
 
 ```powershell

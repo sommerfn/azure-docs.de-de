@@ -9,18 +9,22 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 925b69e064e260a78a102a068f052ad7d396c380
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357054"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036629"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe der Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
 In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit von Kunden verwalteten Schlüsseln mithilfe der Azure CLI konfigurieren.
+
+> [!IMPORTANT]
+> Die Azure Storage-Verschlüsselung mit vom Kunden verwalteten Schlüsseln erfordert, dass für den Schlüsseltresor zwei erforderliche Eigenschaften konfiguriert wurden: **Vorläufiges Löschen** und **Nicht Bereinigen**. Diese Eigenschaften sind standardmäßig aktiviert, wenn Sie im Azure-Portal einen neuen Schlüsseltresor erstellen. Wenn Sie diese Eigenschaften jedoch für einen vorhandenen Schlüsseltresor aktivieren möchten, müssen Sie PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden.
+> Es werden ausschließlich RSA-Schlüssel und die Schlüsselgröße 2048 unterstützt.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Zuweisen einer Identität zum Speicherkonto
 

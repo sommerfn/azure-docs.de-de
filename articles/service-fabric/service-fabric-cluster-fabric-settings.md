@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599879"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014426"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -411,6 +411,11 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |WriteBufferMemoryPoolMaximumInKB | Ganze Zahl, Standardwert 0 |Dynamisch|Die Anzahl an KB, bis zu der der Schreibpuffer-Speicherpool anwachsen kann. Verwenden Sie 0, um keine Begrenzung anzugeben. |
 |WriteBufferMemoryPoolMinimumInKB |Ganze Zahl, Standardwert 8388608 |Dynamisch|Die Anzahl an KB, die anfänglich für den Schreibpuffer-Speicherpool reserviert wird. Verwenden Sie 0, um eine Begrenzung anzugeben. Der Standardwert muss mit SharedLogSizeInMB weiter unten konsistent sein. |
 
+## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|IsEnabled|Boolesch, Standardwert FALSE|statischen|Flag, das das Vorhandensein und den Status des Diensts für verwaltete Identitätstoken im Cluster steuert. Dies ist eine Voraussetzung für die Verwendung der Funktionen für verwaltete Identitäten von Service Fabric-Anwendungen.|
+
 ## <a name="management"></a>Verwaltung
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -610,7 +615,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RunAsAccountType|string, Standardwert "" |Dynamisch|Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind DomainUser/NetworkService/ManagedServiceAccount /LocalSystem.|
 |RunAsPassword|string, Standardwert "" |Dynamisch|Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-## <a name="runasdca"></a>RunAs_DCA
+## <a name="runas_dca"></a>RunAs_DCA
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
@@ -618,7 +623,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RunAsAccountType|string, Standardwert "" |Dynamisch|Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
 |RunAsPassword|string, Standardwert "" |Dynamisch|Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-## <a name="runasfabric"></a>RunAs_Fabric
+## <a name="runas_fabric"></a>RunAs_Fabric
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
@@ -626,7 +631,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |RunAsAccountType|string, Standardwert "" |Dynamisch|Gibt den Typ des RunAs-Kontos an. Dies ist für alle RunAs-Abschnitte erforderlich. Gültige Werte sind LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem. |
 |RunAsPassword|string, Standardwert "" |Dynamisch|Gibt das Kennwort des RunAs-Kontos an. Dies ist nur für den Kontotyp „DomainUser“ erforderlich. |
 
-## <a name="runashttpgateway"></a>RunAs_HttpGateway
+## <a name="runas_httpgateway"></a>RunAs_HttpGateway
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |

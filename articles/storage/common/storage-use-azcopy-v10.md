@@ -1,19 +1,18 @@
 ---
 title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy v10 | Microsoft-Dokumentation
 description: AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Daten in ein oder aus einem Speicherkonto zu kopieren. Dieser Artikel hilft Ihnen, AzCopy herunterzuladen, eine Verbindung mit Ihrem Speicherkonto herzustellen und dann Dateien zu übertragen.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 07/25/2019
+ms.topic: conceptual
+ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699846"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985151"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -242,7 +241,7 @@ Dieser Beispielbefehl kopiert Daten rekursiv aus einem lokalen Verzeichnis in ei
 azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-Weitere Informationen zu SAS-Tokens und wie Sie eins erhalten, finden Sie unter [Verwenden von SAS (Shared Access Signatures)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
+Weitere Informationen zu SAS-Tokens und wie Sie eins erhalten, finden Sie unter [Verwenden von SAS (Shared Access Signatures)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview).
 
 ## <a name="transfer-files"></a>Übertragen von Dateien
 
@@ -260,7 +259,9 @@ Beispielbefehle finden Sie in diesen Artikeln.
 
 ## <a name="use-azcopy-in-a-script"></a>Verwenden von AzCopy in einem Skript
 
-Im Laufe der Zeit wird der [Downloadlink](#download-and-install-azcopy) von AzCopy auf neue Versionen von AzCopy verweisen. Wenn Ihr Skript AzCopy herunterlädt, dann kann es sein, dass es nicht mehr funktioniert, wenn eine neuere Version von AzCopy Funktionen verändert, die für Ihr Skript wichtig sind. 
+### <a name="obtain-a-static-download-link"></a>Abrufen eines statischen Downloadlinks
+
+Im Laufe der Zeit wird der [Downloadlink](#download-and-install-azcopy) von AzCopy auf neue Versionen von AzCopy verweisen. Wenn Ihr Skript AzCopy herunterlädt, dann kann es sein, dass es nicht mehr funktioniert, wenn eine neuere Version von AzCopy Funktionen verändert, die für Ihr Skript wichtig sind.
 
 Um solche Probleme zu vermeiden, sollten Sie sich einen statischen (unveränderlichen) Link zur aktuellen Version AzCopy besorgen. So lädt Ihr Skript jedes Mal genau dieselbe Version von AzCopy herunter, wenn es ausgeführt wird.
 
@@ -281,9 +282,13 @@ Die URL erscheint in der Ausgabe dieses Befehls. Ihr Skript kann dann AzCopy anh
 | **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
+### <a name="escape-special-characters-in-sas-tokens"></a>Verwenden von Escapezeichen für Sonderzeichen in SAS-Token
+
+In Batchdateien mit der Erweiterung `.cmd` müssen Sie die `%`-Zeichen, die in SAS-Token vorkommen, mit Escapezeichen versehen. Sie können dazu ein zusätzliches `%`-Zeichen neben vorhandenen `%`-Zeichen in der SAS-Tokenzeichenfolge hinzufügen.
+
 ## <a name="use-azcopy-in-storage-explorer"></a>Verwenden von AzCopy im Storage-Explorer
 
-Wenn Sie die Leistungsvorteile von AzCopy nutzen möchten, aber lieber Storage-Explorer statt der Befehlszeile verwenden, um mit Ihren Dateien zu interagieren, aktivieren Sie AzCopy in Storage-Explorer. 
+Wenn Sie die Leistungsvorteile von AzCopy nutzen möchten, aber lieber Storage-Explorer statt der Befehlszeile verwenden, um mit Ihren Dateien zu interagieren, aktivieren Sie AzCopy in Storage-Explorer.
 
 Wählen Sie in Storage-Explorer **Preview**->**Use AzCopy for Improved Blob Upload and Download** (AzCopy für verbessertes Hoch- und Herunterladen von Blobs verwenden) aus.
 

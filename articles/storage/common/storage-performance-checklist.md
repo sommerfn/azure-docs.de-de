@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233023"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985170"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 
@@ -172,7 +172,7 @@ Beide dieser Technologien können dabei helfen, unnötige Lasten (und Engpässe)
 
 #### <a name="useful-resources"></a>Nützliche Ressourcen
 
-Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures, Teil 1: Grundlegendes zum SAS-Modell](../storage-dotnet-shared-access-signature-part-1.md).  
+Weitere Informationen zu SAS finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).  
 
 Weitere Informationen zu CORS finden Sie unter [Cross-Origin Resource Sharing (CORS)-Support für den Azure-Speicherdienst](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 

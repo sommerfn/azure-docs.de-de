@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f9d68af12f6b2e98c77d0bd1b65a82c69588f203
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147616"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015654"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -37,8 +37,11 @@ Alle Speicherkonten werden für die Redundanz repliziert. Welche Redundanzoption
 
 Weitere Redundanzoptionen von Azure Storage sind zonenredundanter Speicher (ZRS), der Ihre Daten über Verfügbarkeitszonen in einer einzigen Region repliziert, und lokal redundanter Speicher (LRS), der Ihre Daten in einem einzigen Rechenzentrum in einer einzigen Region repliziert. Wenn Ihr Speicherkonto für ZRS oder LRS konfiguriert ist, können Sie dieses Konto in GRS oder RA-GRS konvertieren. Für die Konfiguration Ihres Kontos für georedundanten Speicher fallen zusätzliche Kosten an. Weitere Informationen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
+> [!NOTE]
+> Geozonenredundanter Speicher (GZRS) und geozonenredundanter Speicher mit Lesezugriff (RA-GZRS) befinden sich derzeit in der Vorschau, sind aber noch nicht in den gleichen Regionen wie das vom Kunden verwaltete Kontofailover verfügbar. Aus diesem Grund können Kunden derzeit keine Kontofailoverereignisse mit den GZRS- und RA-GZRS-Konten verwalten. Während der Vorschauphase verwaltet Microsoft alle Failoverereignisse, die sich auf GZRS-/RA-GZRS-Konten auswirken.
+
 > [!WARNING]
-> Bei einem georedundanten Speicher besteht das Risiko eines Datenverlusts. Die Daten werden asynchron in den sekundären Bereich repliziert, d.h. es gibt eine Verzögerung zwischen dem Zeitpunkt, an dem die in den primären Bereich geschriebenen Daten in den sekundären Bereich geschrieben werden. Im Falle eines Ausfalls gehen Schreiboperationen auf den primären Endpunkt, die noch nicht auf den sekundären Endpunkt repliziert wurden, verloren. 
+> Bei einem georedundanten Speicher besteht das Risiko eines Datenverlusts. Die Daten werden asynchron in den sekundären Bereich repliziert, d.h. es gibt eine Verzögerung zwischen dem Zeitpunkt, an dem die in den primären Bereich geschriebenen Daten in den sekundären Bereich geschrieben werden. Im Falle eines Ausfalls gehen Schreiboperationen auf den primären Endpunkt, die noch nicht auf den sekundären Endpunkt repliziert wurden, verloren.
 
 ## <a name="design-for-high-availability"></a>Entwurf für Hochverfügbarkeit
 

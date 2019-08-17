@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 07/05/2019
-ms.openlocfilehash: 33c844374d6d2b8e64cde6c7c9633e54a292d95f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/14/2019
+ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567280"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035831"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Zeitzonen in einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -83,10 +83,10 @@ Sie können für eine verwaltete Instanz eine Sicherungsdatei wiederherstellen o
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 
-<del>Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Mit dieser Einstellung werden Mehrdeutigkeiten aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.<del>
+<del>Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Auf diese Weise werden Mehrdeutigkeiten aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.<del>
 
  >[!WARNING]
-  > Das aktuelle Verhalten entspricht nicht der obigen Aussage, und die Zeit für die Wiederherstellung wird gemäß der Zeitzone der von der Quelle verwalteten Instanz interpretiert, aus der automatische Datenbanksicherungen entnommen werden. Wir arbeiten daran, dieses Verhalten zu korrigieren, um einen bestimmten Point-in-Time als UTC-Zeit zu interpretieren. Weitere Details dazu finden Sie unter [Bekannte Probleme](sql-database-managed-instance-timezone.md#known-issues).
+  > Das aktuelle Verhalten entspricht nicht der obigen Aussage, und die Zeit für die Wiederherstellung wird gemäß der Zeitzone der von der Quelle verwalteten Instanz interpretiert, aus der automatische Datenbanksicherungen entnommen werden. Wir arbeiten daran, dieses Verhalten zu korrigieren, um einen bestimmten Point-in-Time als UTC-Zeit zu interpretieren.
 
 ### <a name="auto-failover-groups"></a>Autofailover-Gruppen
 

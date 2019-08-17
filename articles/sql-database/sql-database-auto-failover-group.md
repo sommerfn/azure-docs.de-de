@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640089"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035067"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -133,9 +133,13 @@ Zum Erstellen eines Failovers für eine Failovergruppe benötigen Sie RBAC-Schre
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Bewährte Methoden für die Verwendung von Failovergruppen für einzelne Datenbanken und Pools für elastische Datenbanken
 
-Die Autofailover-Gruppe muss auf dem primären SQL-Datenbank-Server konfiguriert werden und stellt eine Verbindung zum sekundären SQL-Datenbank-Server in einer anderen Azure-Region her.  Die Gruppen können alle oder einige Datenbanken auf diesen Servern umfassen. Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit mehreren Datenbanken und einer Autofailover-Gruppe.
+Die Autofailover-Gruppe muss auf dem primären SQL-Datenbank-Server konfiguriert werden und stellt eine Verbindung zum sekundären SQL-Datenbank-Server in einer anderen Azure-Region her. Die Gruppen können alle oder einige Datenbanken auf diesen Servern umfassen. Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit mehreren Datenbanken und einer Autofailover-Gruppe.
 
 ![Autofailover](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> Eine ausführliche schrittweise Anleitung zum Hinzufügen einer einzelnen Datenbank zu einer Failovergruppe finden Sie unter [Hinzufügen einer einzelnen Datenbank zu einer Failovergruppe](sql-database-single-database-failover-group-tutorial.md). 
+
 
 Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten soll, sind die folgenden allgemeinen Richtlinien zu beachten:
 
@@ -167,12 +171,17 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Bewährte Methoden für die Verwendung von Failovergruppen für verwaltete Instanzen
 
-Die Autofailover-Gruppe muss auf der primären Instanz konfiguriert werden und stellt eine Verbindung zur sekundären Instanz in einer anderen Azure-Region her.  Alle Datenbanken in der Instanz werden in der sekundären Instanz repliziert. Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit einer verwalteten Instanz und Autofailover-Gruppe.
+> [!IMPORTANT]
+> Autofailover-Gruppen für verwaltete Instanzen befinden sich in der Phase der öffentlichen Vorschau.
+
+Die Autofailover-Gruppe muss auf der primären Instanz konfiguriert werden und stellt eine Verbindung zur sekundären Instanz in einer anderen Azure-Region her.  Alle Datenbanken in der Instanz werden in der sekundären Instanz repliziert. 
+
+Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit einer verwalteten Instanz und Autofailover-Gruppe.
 
 ![Autofailover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> Autofailover-Gruppen für verwaltete Instanzen befinden sich in der Phase der öffentlichen Vorschau.
+> [!NOTE]
+> Eine ausführliche schrittweise Anleitung zum Hinzufügen einer verwalteten Instanz zum Verwenden einer Failovergruppe finden Sie unter [Hinzufügen einer verwalteten Instanz zu einer Failovergruppe](sql-database-managed-instance-failover-group-tutorial.md). 
 
 Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Sie beim Entwerfen für Geschäftskontinuität die folgenden allgemeinen Richtlinien:
 
@@ -367,6 +376,10 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Ausführliche Tutorials finden Sie unter:
+    - [Hinzufügen einzelner Datenbanken zu einer Failovergruppe](sql-database-single-database-failover-group-tutorial.md)
+    - [Hinzufügen eines Pools für elastische Datenbanken zu einer Failovergruppe](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Hinzufügen einer verwalteten Instanz zu einer Failovergruppe](sql-database-managed-instance-failover-group-tutorial.md)
 - Beispielskripts:
   - [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

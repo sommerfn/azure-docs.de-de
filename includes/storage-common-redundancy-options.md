@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/26/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 60912adbecbfdb4e6bebd7ddfea59eafa09b985e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5df0fe23183b53f13d6c6545e248724324434cde
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178314"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69029789"
 ---
 Verfügbare Replikationsoptionen für ein Speicherkonto:
 
-* [Lokal redundanter Speicher (LRS):](../articles/storage/common/storage-redundancy-lrs.md) Eine einfache, kostengünstige Replikationsstrategie. Daten werden innerhalb einer einzigen Speicherskalierungseinheit repliziert.
-* [Zonenredundanter Speicher (ZRS):](../articles/storage/common/storage-redundancy-zrs.md) Replikation für Hochverfügbarkeit und Dauerhaftigkeit. Daten werden synchron über drei Verfügbarkeitszonen hinweg repliziert. 
-* [Georedundanter Speicher (Geo-Redundant Storage, GRS)](../articles/storage/common/storage-redundancy-grs.md): Regionsübergreifende Replikation zum Schutz vor regionsweiten Ausfällen.
-* [Georedundanter Speicher mit Lesezugriff (RA-GRS)](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage): Regionsübergreifende Replikation mit Lesezugriff auf das Replikat.
+* [Lokal redundanter Speicher (LRS):](../articles/storage/common/storage-redundancy-lrs.md) Eine einfache, kostengünstige Replikationsstrategie. Daten werden drei Mal synchron in der primären Region repliziert.
+* [Zonenredundanter Speicher (ZRS):](../articles/storage/common/storage-redundancy-zrs.md) Replikation für Szenarien, die Hochverfügbarkeit erfordern. Daten werden synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region repliziert.
+* [Georedundanter Speicher (Geo-Redundant Storage, GRS)](../articles/storage/common/storage-redundancy-grs.md): Regionsübergreifende Replikation zum Schutz vor regionalen Ausfällen. Die Daten werden in der primären Region drei Mal synchron repliziert und dann asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
+* [Geozonenredundanter Speicher (GZRS) (Vorschau)](../articles/storage/common/storage-redundancy-gzrs.md): Replikation für Szenarien, die sowohl Hochverfügbarkeit als auch maximale Dauerhaftigkeit erfordern. Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).

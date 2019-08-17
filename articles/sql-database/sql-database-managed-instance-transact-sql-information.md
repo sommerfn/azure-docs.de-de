@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 07/07/2019
+ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567244"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019662"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwisch
 - [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
 - [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credential), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen und Benutzern](#logins-and-users) sowie [Dienstschlüsseln und Diensthauptschlüsseln](#service-key-and-service-master-key)
 - [Konfiguration](#configuration), einschließlich der Unterschiede bei [Pufferpoolerweiterung](#buffer-pool-extension), [Sortierung](#collation), [Kompatibilitätsgraden](#compatibility-levels),[Datenbankspiegelung](#database-mirroring), [Datenbankoptionen](#database-options), [SQL Server-Agent](#sql-server-agent) und [Tabellenoptionen](#tables)
-- [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Dateitabelle](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker) sowie [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-and-triggers)
+- [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Dateitabelle](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker) sowie [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-and-triggers).
 - [Umgebungseinstellungen](#Environment) wie VNets und Subnetzkonfigurationen.
 - [Features mit abweichendem Verhalten in verwalteten Instanzen](#Changes)
 - [Temporäre Einschränkungen und bekannte Probleme](#Issues)
@@ -309,18 +309,18 @@ Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](h
 
 ### <a name="tables"></a>Tabellen
 
-Die folgenden Tabellen werden nicht unterstützt:
+Die folgenden Tabellentypen werden nicht unterstützt:
 
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED` 
+- [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
+- [FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
+- [EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) (Polybase)
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (wird nur im universellen Tarif unterstützt)
 
 Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
 ## <a name="functionalities"></a>Funktionen
 
-### <a name="bulk-insert--openrowset"></a>BULK INSERT/OPENROWSET
+### <a name="bulk-insert--openrowset"></a>Bulk insert/OPENROWSET
 
 Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher müssen die Dateien aus Azure Blob Storage importiert werden:
 
@@ -399,13 +399,44 @@ Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, wer
 
 ### <a name="replication"></a>Replikation
 
-Die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist mit einigen Einschränkungen für die öffentliche Vorschauversion der verwalteten Instanz verfügbar:
-- Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. „Herausgeber“ und „Verteiler“ können dabei aber nicht auf unterschiedlichen Instanzen platziert werden.
-- Transaktionale, Momentaufnahmen- und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
-- Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Die unterstützten Versionen finden Sie [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
-- Für die Transaktionsreplikation gibt es einige [zusätzliche Netzwerkanforderungen](sql-database-managed-instance-transactional-replication.md#requirements).
+- Momentaufnahme- und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
+- Die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist mit einigen Einschränkungen für die öffentliche Vorschauversion der verwalteten Instanz verfügbar:
+    - Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. „Herausgeber“ und „Verteiler“ können dabei aber nicht auf unterschiedlichen Instanzen platziert werden.
+    - Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Die unterstützten Versionen finden Sie [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+    - Für die Transaktionsreplikation gibt es einige [zusätzliche Netzwerkanforderungen](sql-database-managed-instance-transactional-replication.md#requirements).
 
 Weitere Informationen zum Konfigurieren der Replikation finden Sie im [Replikationstutorial](replication-with-sql-database-managed-instance.md).
+
+
+Wenn die Replikation für eine Datenbank in einer [Failovergruppe](sql-database-auto-failover-group.md) aktiviert ist, muss der Administrator der verwalteten Instanz alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
+
+1. Beenden aller Replikationsaufträge, die für die Datenbank ausgeführt werden, sofern vorhanden.
+2. Löschen der Abonnementmetadaten vom Herausgeber, indem das folgende Skript für die Herausgeberdatenbank ausgeführt wird:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Löschen von Abonnementmetadaten aus dem Abonnenten. Führen Sie das folgende Skript in der Abonnementdatenbank für die Abonnenteninstanz aus:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Erzwingen Sie das Löschen aller Replikationsobjekte aus dem Herausgeber, indem Sie das folgende Skript in der veröffentlichten Datenbank ausführen:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Erzwingen Sie das Löschen des alten Verteilers aus der ursprünglichen primären Instanz (bei einem Failback auf eine alte primäre Instanz, für die ein Verteiler verwendet wurde). Führen Sie das folgende Skript für die Masterdatenbank in der alten verwalteten Verteilerinstanz aus:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
 
 ### <a name="restore-statement"></a>RESTORE-Anweisung 
 
@@ -437,10 +468,13 @@ Die folgenden Datenbankoptionen werden festgelegt oder überschrieben und könne
 
 Einschränkungen: 
 
+- Sicherungen der beschädigten Datenbanken werden je nach Art der Beschädigung möglicherweise wiederhergestellt, automatisierte Sicherungen werden jedoch erst ausgeführt, nachdem die Beschädigung behoben wurde. Stellen Sie sicher, dass Sie `DBCC CHECKDB` für die Quellinstanz ausführen und für die Sicherung `WITH CHECKSUM` verwenden, um dieses Problem zu vermeiden.
+- Die Wiederherstellung der `.BAK`-Datei einer Datenbank, die eine in diesem Dokument beschriebene Einschränkung enthält (z.B. `FILESTREAM`- oder `FILETABLE`-Objekte), kann in der verwalteten Instanz nicht wiederhergestellt werden.
 - `.BAK`-Dateien mit mehreren Sicherungssätzen können nicht wiederhergestellt werden. 
 - `.BAK`-Dateien mit mehreren Protokolldateien können nicht wiederhergestellt werden.
-- Es kann keine Wiederherstellung durchgeführt werden, wenn die BAK-Datei `FILESTREAM`-Daten enthält.
-- Sicherungen, die Datenbanken mit aktiven In-Memory-Objekten enthalten, können in einer universellen Instanz nicht wiederhergestellt werden. Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+- Sicherungen, die Datenbanken mit einer Größe von mehr als 8 TB, aktive OLTP-In-Memory-Objekte oder mehr als 280 Dateien enthalten, können in einer universellen Instanz nicht wiederhergestellt werden. 
+- Sicherungen, die Datenbanken mit mehr als 4 TB oder OLTP-In-Memory-Objekte enthalten, deren Gesamtgröße größer ist als die unter [Ressourcenbeschränkungen](sql-database-managed-instance-resource-limits.md) beschriebene Größe, können in der unternehmenskritischen Instanz nicht wiederhergestellt werden.
+Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Service Broker
 
@@ -467,7 +501,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 ## <a name="Environment"></a>Umgebungseinschränkungen
 
 ### <a name="subnet"></a>Subnet
-- In dem Subnetz, das für Ihre verwaltete Instanz reserviert ist, können Sie keine weiteren Ressourcen platzieren (beispielsweise virtuelle Computer). Platzieren Sie diese Ressourcen in anderen Subnetzen.
+-  Sie können keine anderen Ressourcen (z. B. virtuelle Computer) in dem Subnetz platzieren, in dem Sie Ihre verwaltete Instanz bereitgestellt haben. Stellen Sie diese Ressourcen in einem anderen Subnetz bereit.
 - Das Subnetz muss eine ausreichende Anzahl verfügbarer [IP-Adressen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) aufweisen. Der Mindestwert ist 16, wir empfehlen jedoch, mindestens 32 IP-Adressen im Subnetz vorzusehen.
 - [Dem Subnetz der verwalteten Instanz können keine Dienstendpunkte zugeordnet werden](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wenn Sie das virtuelle Netzwerk erstellen, überprüfen Sie, ob die Option „Dienstendpunkte“ auf „Deaktiviert“ festgelegt ist.
 - Für die Anzahl von virtuellen Kernen und die Typen der Instanzen, die Sie in einer Region platzieren können, gibt es einige [Einschränkungen und Grenzwerte](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
@@ -476,7 +510,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 ### <a name="vnet"></a>VNET
 - VNet kann mithilfe des Ressourcenmodells bereitgestellt werden – das klassische Modell wird für VNets nicht unterstützt.
 - Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
-- Einige Dienste, wie App Service-Umgebungen, Logik-Apps und verwaltete Instanzen (die für Georeplikation, Transaktionsreplikation oder über Verbindungsserver verwendet werden) können nicht auf verwaltete Instanzen in anderen Regionen zugreifen, wenn ihre VNets mithilfe von [globalem Peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) verbunden sind. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNet-zu-VNet über VNet-Gateways verbinden.
+- Einige Dienste, wie App Service-Umgebungen, Logik-Apps und verwaltete Instanzen (die für Georeplikation, Transaktionsreplikation oder über Verbindungsserver verwendet werden) können nicht auf verwaltete Instanzen in anderen Regionen zugreifen, wenn ihre VNETs mithilfe von [globalem Peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) verbunden sind. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNET-zu-VNET über VNet-Gateways verbinden.
 
 ## <a name="Changes"></a> Behavior Changes
 
@@ -494,11 +528,11 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 ### <a name="tempdb-size"></a>TEMPDB-Größe
 
-Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die Größe der Protokolldatei `tempdb` ist für die Ebenen „Universell“ und „Unternehmenskritisch“ auf 120 GB beschränkt. Die `tempdb`-Datenbank wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolle mehr als 120 GB benötigen. `tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten. 
+Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die Größe der Protokolldatei `Tempdb` ist für die Ebenen „Universell“ und „Unternehmenskritisch“ auf 120 GB beschränkt. Die `tempdb`-Datenbank wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen. `Tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten. 
 
 ### <a name="cant-restore-contained-database"></a>Eigenständige Datenbank kann nicht wiederhergestellt werden
 
-Die verwaltete Instanz kann [eigenständige Datenbanken](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) nicht wiederherstellen. Point-in-Time-Wiederherstellungen von vorhandenen eigenständigen Datenbanken funktionieren in einer verwalteten Instanz nicht. Dieses Problem wird in Kürze gelöst. In der Zwischenzeit wird empfohlen, die Option für die Eigenständigkeit aus Datenbanken zu entfernen, die in einer verwalteten Instanz platziert werden. Verwenden Sie die Option der Eigenständigkeit nicht für Produktionsdatenbanken. 
+Die verwaltete Instanz kann [eigenständige Datenbanken](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) nicht wiederherstellen. Point-in-Time-Wiederherstellungen von vorhandenen eigenständigen Datenbanken funktionieren in einer verwalteten Instanz nicht. In der Zwischenzeit wird empfohlen, die Option für die Eigenständigkeit aus Datenbanken zu entfernen, die in einer verwalteten Instanz platziert werden. Verwenden Sie die Option der Eigenständigkeit nicht für Produktionsdatenbanken. 
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Überschreiten des Speicherplatzes mit kleinen Datenbankdateien
 
@@ -506,7 +540,7 @@ Die verwaltete Instanz kann [eigenständige Datenbanken](https://docs.microsoft.
 
 Jede verwaltete Instanz in der Dienstebene „Universell“ reserviert bis zu 35 TB Speicherplatz für Azure Premium-Datenträger. Jede Datenbankdatei wird auf einem separaten physischen Datenträger platziert. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
 
-Ein Beispiel: In einer verwalteten Instanz der Dienstebene „Universell“ ist eine Datei vorhanden, die 1,2 TB groß und auf einem 4-TB-Datenträger platziert ist. Darüber hinaus sind 248 Dateien mit jeweils 1 GB vorhanden, die auf separaten 128-GB-Datenträgern platziert sind. In diesem Beispiel:
+Ein Beispiel: In einer verwalteten Instanz der Dienstebene „Universell“ ist eine große Datei vorhanden, die 1,2 TB groß und auf einem 4-TB-Datenträger platziert ist. Es sind auch 248 Dateien mit jeweils 1 GB möglich, die jeweils auf separaten 128-GB-Datenträgern platziert sind. In diesem Beispiel:
 
 - Die Gesamtgröße des zugewiesenen Datenträgerspeichers beträgt 1 x 4 TB + 248 x 128 GB = 35 TB.
 - Der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz beträgt 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -516,11 +550,6 @@ Dieses Beispiel verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umst
 In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können ohne Probleme weiter wachsen, solange keine neuen Dateien hinzugefügt werden. Es könnten jedoch keine neuen Datenbanken erstellt oder wiederhergestellt werden, da für neue Datenträgerlaufwerke nicht genügend Speicherplatz vorhanden ist, selbst nicht dann, wenn die Gesamtgröße aller Datenbanken das Größenlimit der Instanz nicht überschreitet. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
 
 Sie können mithilfe von Systemansichten [die Anzahl von verbleibenden Dateien identifizieren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1). Wenn Sie dieses Limit erreichen, versuchen Sie, [einige der kleineren Dateien mithilfe der DBCC SHRINKFILE-Anweisung zu leeren und zu löschen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file), oder wechseln Sie zur [Dienstebene „Unternehmenskritisch“, für die dieses Limit nicht gilt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
-
-### <a name="incorrect-configuration-of-the-sas-key-during-database-restore"></a>Falsche Konfiguration des SAS-Schlüssels bei der Datenbankwiederherstellung
-
-`RESTORE DATABASE`, der Befehl, der die BAK-Datei liest, könnte ständig erneut versuchen, die BAK-Datei zu lesen, und nach einem längeren Zeitraum einen Fehler zurückgeben, wenn die Shared Access Signature (SAS) in `CREDENTIAL` falsch ist. Führen Sie vor der Wiederherstellung einer Datenbank RESTORE HEADERONLY aus, um sicherzustellen, dass der SAS-Schlüssel korrekt ist.
-Entfernen Sie das vorangestellte `?` aus dem SAS-Schlüssel, der mithilfe des Azure-Portals generiert wurde.
 
 ### <a name="tooling"></a>Tools
 
@@ -547,7 +576,7 @@ Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespei
 
 ### <a name="error-logs-are-verbose"></a>Protokolle sind nicht ausführlich
 
-Eine verwaltete Datenbank-Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung, von denen viele nicht relevant sind. Die Informationsmenge in Fehlerprotokollen wird in Zukunft reduziert.
+Eine verwaltete Datenbank-Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung, von denen viele nicht relevant sind. 
 
 **Problemumgehung:** Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
@@ -593,11 +622,6 @@ CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindu
 Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen.
 
 **Problemumgehung:** Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
-
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Point-in-Time-Wiederherstellung gemäß der Zeit der für die Quellinstanz festgelegten Zeitzone
-
-Die Point-in-Time-Wiederherstellung richtet sich bei der Wiederherstellungszeit derzeit nach der für die Quellinstanz festgelegten Zeitzone anstatt nach der koordinierten Weltzeit (UTC).
-Weitere Details finden Sie unter [Bekannte Probleme mit den Zeitzonen verwalteter Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

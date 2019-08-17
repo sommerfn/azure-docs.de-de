@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306660"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989939"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -79,7 +79,7 @@ Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ress
 
 [Anforderungsheader](/rest/api/storageservices/List-Containers2#request-headers) **:** In diesem Abschnitt werden die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
 
-[Anforderungstext](/rest/api/storageservices/List-Containers2#request-body) **:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) beschrieben.
+[Anforderungstext](/rest/api/storageservices/List-Containers2#request-body) **:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md) beschrieben.
 
 [Antwortstatuscode](/rest/api/storageservices/List-Containers2#status-code) **:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
 
