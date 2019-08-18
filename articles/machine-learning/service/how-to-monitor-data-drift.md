@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370391"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036192"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 
@@ -46,12 +46,14 @@ Mit Azure Machine Learning Service werden Datenabweichungen anhand von Datasets 
 
 - Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
-- Ein Azure Machine Learning Service-Arbeitsbereich und das Azure Machine Learning SDK für Python müssen installiert sein. Verwenden Sie die Anweisungen zum [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md#sdk) für Folgendes:
+- Installiertes Azure Machine Learning SDK für Python. Verwenden Sie die Anleitungen unter [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) für Folgendes:
 
     - Erstellen einer Miniconda-Umgebung
     - Installieren des Azure Machine Learning SDK für Python
-    - Erstellen eines Arbeitsbereichs
-    - Schreiben einer Konfigurationsdatei für den Arbeitsbereich (aml_config/config.json)
+
+- Ein [Azure Machine Learning Service-Arbeitsbereich](how-to-manage-workspace.md).
+
+- Eine [Konfigurationsdatei](how-to-configure-environment.md#workspace) für den Arbeitsbereich.
 
 - Verwenden Sie den folgenden Befehl, um das Datenabweichungen-SDK zu installieren:
 
@@ -160,9 +162,9 @@ Die Konfiguration der Datenabweichungserkennung ist auf der Modelldetailseite im
 
 ![Konfiguration der Datenabweichung im Azure-Portal](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>Anzeigen der Ergebnisse auf der Benutzeroberfläche des Azure Machine Learning-Arbeitsbereichs
+## <a name="view-results-in-azure-portal"></a>Anzeigen von Ergebnissen im Azure-Portal
 
-Zum Anzeigen von Ergebnissen auf der Benutzeroberfläche des Azure Machine Learning-Arbeitsbereichs navigieren Sie zur Modellseite. Auf der Registerkarte „Details“ des Modells wird die Konfiguration der Datenabweichung angezeigt. Registerkarte „Datenabweichungen (Vorschauversion)“ mit der Visualisierung der Datenabweichungsmetriken ist jetzt verfügbar. 
+Zum Anzeigen von Ergebnissen in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com) navigieren Sie zur Modellseite. Auf der Registerkarte „Details“ des Modells wird die Konfiguration der Datenabweichung angezeigt. Registerkarte „Datenabweichungen (Vorschauversion)“ mit der Visualisierung der Datenabweichungsmetriken ist jetzt verfügbar. 
 
 ![Datenabweichungen im Azure-Portal](media/how-to-monitor-data-drift/drift_ui.png)
 
@@ -195,6 +197,6 @@ Basierend auf der Ausgabe des vorherigen Codes sollten Sie das Modell möglicher
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein vollständiges Beispiel der Verwendung von Datenabweichungen finden Sie im [Azure ML-Notebook zu Datenabweichungen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb). Dieses Jupyter Notebook veranschaulicht die Verwendung eines [öffentlichen Azure-Datasets](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) zum Trainieren eines Modells zur Wettervorhersage, die Bereitstellung des Modells AKS sowie die Überwachung auf Datenabweichungen. 
+* Ein vollständiges Beispiel der Verwendung von Datenabweichungen finden Sie im [Azure ML-Notebook zu Datenabweichungen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Dieses Jupyter Notebook veranschaulicht die Verwendung eines [öffentlichen Azure-Datasets](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) zum Trainieren eines Modells zur Wettervorhersage, die Bereitstellung des Modells AKS sowie die Überwachung auf Datenabweichungen. 
 
 * Wir würden uns sehr über Ihre Fragen, Kommentare oder Vorschläge freuen, während die allgemeine Verfügbarkeit von Datenabweichungen näher rückt. Verwenden Sie die Schaltfläche für Produktfeedback unten! 

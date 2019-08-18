@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 50905b86924e0f564eaf4867c2906ad8740ddbaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b56d4e8d179e4ff073e74b4bc5242f936dc983e
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851176"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033742"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Google-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -53,6 +53,10 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
    
    Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
 4. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Google authentifiziert wurden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist.** auf **Google** fest. Dadurch müssen alle Anforderungen authentifiziert werden. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Google umgeleitet.
+
+> [!CAUTION]
+> Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
+
 5. Klicken Sie auf **Speichern**.
 
 Sie können nun Google für die Authentifizierung in Ihrer App verwenden.

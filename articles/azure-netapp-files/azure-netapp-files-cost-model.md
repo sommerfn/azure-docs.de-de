@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: b06e3366224b90899dd3f9f9439edf897de82794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65524056"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030794"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodell für Azure NetApp Files 
 
@@ -27,7 +27,7 @@ Das Verstehen des Kostenmodells für Azure NetApp Files hilft Ihnen bei der Verw
 
 ## <a name="calculation-of-capacity-consumption"></a>Berechnung der Kapazitätsnutzung
 
-Azure NetApp Files wird nach bereitgestellter Speicherkapazität in Rechnung gestellt.  Die Zuweisung bereitgestellter Kapazität erfolgt durch Anlegen von Kapazitätspools.  Kapazitätspools werden basierend auf EUR/bereitgestellte GiB/Monat in stündlichen Schritten abgerechnet. Die Mindestgröße eines einzelnen Kapazitätspools beträgt 4 TiB, und Kapazitätspools können nachträglich in 1-TiB-Schritten vergrößert werden. Innerhalb von Kapazitätspools werden Volumes erstellt.  Jedem Volume ist ein Kontingent zugeordnet, das sich entsprechend der bereitgestellten Poolkapazität verringert. Das Kontingent, das den Volumes zugeordnet werden kann, reicht von mindestens 100 GiB bis maximal 92 TiB.  
+Azure NetApp Files wird nach bereitgestellter Speicherkapazität in Rechnung gestellt.  Die Zuweisung bereitgestellter Kapazität erfolgt durch Anlegen von Kapazitätspools.  Kapazitätspools werden basierend auf EUR/bereitgestellte GiB/Monat in stündlichen Schritten abgerechnet. Die Mindestgröße eines einzelnen Kapazitätspools beträgt 4 TiB, und Kapazitätspools können nachträglich in 1-TiB-Schritten vergrößert werden. Innerhalb von Kapazitätspools werden Volumes erstellt.  Jedem Volume ist ein Kontingent zugeordnet, das sich entsprechend der bereitgestellten Poolkapazität verringert. Das Kontingent, das den Volumes zugeordnet werden kann, reicht von mindestens 100 GiB bis maximal 100 TiB.  
 
 Bei einem aktiven Volume basiert die Kapazitätsnutzung im Vergleich zum Kontingent auf der logischen (effektiven) Kapazität.
 

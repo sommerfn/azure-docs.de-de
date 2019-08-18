@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2019
+ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 721f4038090021c526a8878f15c07874074effd5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09d15702d61d9ef6204ce8e48f6a1d9d108995a3
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725942"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036273"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **CDC** | Unterstützt | Unterstützt | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Unterstützt |Unterstützt |Amsterdam2, Chicago, Hongkong, Las Vegas, New York, Paris, San Antonio, Silicon Valley, Tokio, Toronto, Washington DC |
 | **Chief Telecom** |Unterstützt |Unterstützt |Hongkong, Taipei |
-| **China Telecom Global** |Unterstützt |Nicht unterstützt |Hongkong (SAR) |
+| **China Telecom Global** |Unterstützt |Unterstützt |Hongkong (SAR) |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Unterstützt |Unterstützt |Chicago, Dallas, Montreal, Toronto, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Unterstützt |Unterstützt |Amsterdam, Dublin, London, Newport, Osaka, Paris, Singapur2, Tokyo |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Unterstützt |Unterstützt |Chicago, Silicon Valley, Washington, D.C. |
@@ -110,7 +110,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **GÉANT** |Unterstützt |Unterstützt |Amsterdam |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Unterstützt| Unterstützt | Chennai, Mumbai |
 | **[InterCloud](https://www.intercloud.com/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, London, New York, Paris, Silicon Valley, Singapore, Washington DC, Zürich |
-| **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |Unterstützt |Unterstützt |Chicago, Dallas, Washington DC |
+| **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |Unterstützt |Unterstützt |Chicago, Dallas, Silicon Valley, Washington DC |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **[Internet Solutions – Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg, London |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Kopenhagen, Dublin, Frankfurt, London, Marseille, Paris, Zürich |
@@ -123,7 +123,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
 | **LG CNS** |Unterstützt |Unterstützt |Busan, Seoul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dublin, Hongkong SAR, Las Vegas, London, Los Angeles, Melbourne, Miami, New York, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Toronto, Washington DC |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dublin, Hongkong SAR, Las Vegas, London, Los Angeles, Melbourne, Miami, Montreal, New York, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Toronto, Washington DC |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Unterstützt |Unterstützt |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Unterstützt |Unterstützt |Dallas, Los Angeles, Miami, Sao Paulo, Washington, D.C. |
 | **[Daten der nächsten Generation](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Unterstützt |Unterstützt |Newport(Wales) |
@@ -132,7 +132,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Unterstützt |Unterstützt |Tokio |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Unterstützt |Unterstützt |Osaka |
 | **[Optus](https://www.optus.com.au/enterprise/networking/network-connectivity/express-link)** |Unterstützt |Unterstützt |Melbourne, Sydney |
-| **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Unterstützt |Unterstützt |Amsterdam, Hongkong (SAR), London, Paris, São Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
+| **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Unterstützt |Unterstützt |Amsterdam, Frankfurt, Hongkong SAR, Johannesburg, London, Paris, Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Unterstützt | Unterstützt | Dubai2 |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Unterstützt |Unterstützt |Chicago, Silicon Valley, Washington, D.C. |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Unterstützt |Unterstützt |Chicago, Hong Kong (SAR), London |

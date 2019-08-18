@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e91d55c29d325301b8ac70ddc63fb408961fbb2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9767ff1e6f0b31270f37842cf99d71cab561505
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742978"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033852"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -53,6 +53,10 @@ Sie benötigen ein Facebook-Konto mit verifizierter E-Mail-Adresse und einer Mob
    
     Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
 3. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Facebook authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Facebook** fest. Dies erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Facebook umgeleitet.
+ 
+> [!CAUTION]
+> Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
+
 4. Klicken Sie nach dem Konfigurieren der Authentifizierung auf **Speichern**.
 
 Sie können nun Facebook für die Authentifizierung in Ihrer App verwenden.

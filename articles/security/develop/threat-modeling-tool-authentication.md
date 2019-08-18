@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728389"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967945"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
 
@@ -435,7 +435,7 @@ Melden Sie sich bei Ihrer lokalen, durch OIDC geschützten Anwendung an, und erf
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Schritte** | <p>Die Azure AD-Authentifizierungsbibliothek (ADAL) ermöglicht es Entwicklern von Clientanwendungen, auf einfache Weise eine Benutzerauthentifizierung mit Active Directory (Cloud oder lokal) bereitzustellen und anschließend Zugriffstoken zur Absicherung von API-Aufrufen abzurufen.</p><p>ADAL verfügt über zahlreiche Features zur Vereinfachung der Authentifizierung für Entwickler. Dazu gehören beispielsweise die Unterstützung von asynchronen Methoden, ein konfigurierbarer Tokencache zum Speichern von Zugriffstoken und Aktualisierungstoken, eine automatische Tokenaktualisierung bei Ablauf eines Zugriffstokens, sofern ein Aktualisierungstoken verfügbar ist, und vieles mehr.</p><p>Da durch ADAL die meisten komplexen Aspekte abgedeckt werden, können sich Entwickler auf die Geschäftslogik in ihren Anwendungen konzentrieren und auf einfache Weise Ressourcen sichern, ohne Sicherheitsexperten sein zu müssen. Für .NET, JavaScript (Client und Node.js), iOS, Android und Java stehen jeweils separate Bibliotheken zur Verfügung.</p>|
+| **Schritte** | <p>Die Azure AD-Authentifizierungsbibliothek (ADAL) ermöglicht es Entwicklern von Clientanwendungen, auf einfache Weise eine Benutzerauthentifizierung mit Active Directory (Cloud oder lokal) bereitzustellen und anschließend Zugriffstoken zur Absicherung von API-Aufrufen abzurufen.</p><p>ADAL verfügt über zahlreiche Features zur Vereinfachung der Authentifizierung für Entwickler. Dazu gehören beispielsweise die Unterstützung von asynchronen Methoden, ein konfigurierbarer Tokencache zum Speichern von Zugriffstoken und Aktualisierungstoken, eine automatische Tokenaktualisierung bei Ablauf eines Zugriffstokens, sofern ein Aktualisierungstoken verfügbar ist, und vieles mehr.</p><p>Da durch ADAL die meisten komplexen Aspekte abgedeckt werden, können sich Entwickler auf die Geschäftslogik in ihren Anwendungen konzentrieren und auf einfache Weise Ressourcen sichern, ohne Sicherheitsexperten sein zu müssen. Für .NET, JavaScript (Client und Node.js), Python, iOS, Android und Java stehen jeweils separate Bibliotheken zur Verfügung.</p>|
 
 ## <a id="authn-devices-field"></a>Authentifizieren Sie Geräte, die eine Verbindung mit dem zwischengeschalteten Gateway herstellen.
 

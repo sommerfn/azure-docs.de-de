@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610208"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035331"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -67,9 +67,11 @@ Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [
 Ja. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Die Adressräume von Subnetzen können sich nicht überlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?
-Ja. Azure reserviert fünf IP-Adressen in jedem Subnetz. Dies sind x.x.x.0-x.x.x.3 und die letzte Adresse des Subnetzes.    
-- x.x.x.0 und die letzte Adresse des Subnetzes sind für die Protokollkonformität reserviert.
-- x.x.x.1-x.x.x.3 ist in jedem Subnetz für Azure-Dienste reserviert.
+Ja. Azure reserviert fünf IP-Adressen in jedem Subnetz. Dies sind x.x.x.0-x.x.x.3 und die letzte Adresse des Subnetzes. x.x.x.1-x.x.x.3 ist in jedem Subnetz für Azure-Dienste reserviert.   
+- x.x.x.0: Netzwerkadresse
+- x.x.x.1: Von Azure für das Standardgateway reserviert.
+- x.x.x.2, x.x.x.3: Von Azure zum Zuordnen der Azure DNS-IPs zum VNet-Adressraum reserviert.
+- x.x.x.255: Netzwerkadresse für Broadcasts
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Wie ist die minimale und maximale Größe von VNets und Subnetzen?
 Das kleinste unterstützte Subnetz weist die Netzmaske /29 und das größte die Netzmaske /8 (gemäß CIDR-Subnetzdefinitionen) auf.

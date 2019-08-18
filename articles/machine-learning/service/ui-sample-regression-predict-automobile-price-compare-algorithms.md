@@ -1,21 +1,21 @@
 ---
-title: 'Regression: Vorhersagen des Preises und Vergleichen von Algorithmen'
+title: 'Grafische Benutzeroberfläche: Beispiel Nr. 3: Regression zum Vorhersagen des Preises und Vergleichen von Algorithmen'
 titleSuffix: Azure Machine Learning service
 description: In diesem Artikel wird gezeigt, wie Sie über die grafische Benutzeroberfläche ein komplexes Experiment für maschinelles Lernen erstellen, ohne eine einzige Codezeile zu schreiben. Erfahren Sie, wie Sie mehrere Regressionsmodelle trainieren und vergleichen, um den Preis eines Fahrzeugs anhand technischer Merkmale vorherzusagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: aa0a1fc2acdc9687030040c23cdb1781e9529169
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605688"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990000"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Beispiel 2 – Regression: Vorhersagen des Preises und Vergleichen von Algorithmen
 

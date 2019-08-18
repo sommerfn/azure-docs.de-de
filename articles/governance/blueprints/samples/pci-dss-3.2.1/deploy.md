@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b4e9435e5f569a076fc5beb6441b9da935b87f3a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 237444cde6e9ccd709f61d13669da03094e5be10
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561367"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019420"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des PCI-DSS v3.2.1 Blueprint-Musters
 
@@ -98,7 +98,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|[Vorschau]: Audit PCI v3.2.1:2018 steuert und stellt spezifische VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen bereit.|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
+|\[Vorschau\]: Audit PCI v3.2.1:2018 steuert und stellt spezifische VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen bereit.|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
 |Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Die Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum, in denen jede Ressource bereitgestellt werden kann. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte, die Sie zulassen möchten.| 
 |Zulässige Speicherorte für Ressourcengruppen|Richtlinienzuweisung |Zulässiger Standort |Mit dieser Richtlinie können Sie die Standorte einschränken, an denen Ihr Unternehmen Ressourcengruppen erstellen kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.| 
 |Bereitstellen von Auditing auf SQL-Servern|Richtlinienzuweisung|Aufbewahrung|Datenaufbewahrung in Anzahl der Tage. Standardmäßig ist der Wert ist 180, aber PCI erfordert 365.| 

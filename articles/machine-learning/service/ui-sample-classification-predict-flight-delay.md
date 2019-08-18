@@ -1,21 +1,21 @@
 ---
-title: 'Klassifizierung: Vorhersage von Flugverspätungen'
+title: 'Grafische Benutzeroberfläche: Beispiel Nr. 6: Klassifizierung zur Vorhersage von Verspätungen im Flugverkehr'
 titleSuffix: Azure Machine Learning service
 description: In diesem Artikel wird veranschaulicht, wie Sie ein Machine Learning-Modell für die Vorhersage von Flugverspätungen mithilfe der grafischen Drag & Drop-Benutzeroberfläche und benutzerdefinierten R-Code erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 773e55fe4b5ca5acf27ba1765e5a16075f625187
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607382"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990024"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen mit R-Code
 

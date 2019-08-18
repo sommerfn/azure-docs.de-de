@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/11/2019
+ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: de068563e50da4510343572fd641aadd93157073
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 4ea0ceed80875018ee4f6e4bbcdc2548a232e9e0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868638"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989961"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -139,6 +139,10 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Mitwirkender an Speicherblobdaten](#storage-blob-data-contributor) | Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Besitzer von Speicherblobdaten](#storage-blob-data-owner) | Bietet Vollzugriff auf Azure Storage-Blobcontainer und -daten, einschließlich POSIX-Zugriffssteuerung. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Leser von Speicherblobdaten](#storage-blob-data-reader) | Lesen und Auflisten von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage Blob-Delegator](#storage-blob-delegator) | Abrufen des Benutzerdelegierungsschlüssels, mit dem dann eine SAS (Shared Access Signature) für einen Container oder Blob erstellt werden kann, die mit Azure AD-Anmeldeinformationen signiert ist. Weitere Informationen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](https://docs.microsoft.com/rest/api/storageservices/create-a-user-delegation-sas). |
+| [Speicherdateidaten-SMB-Freigabemitwirkender](#storage-file-data-smb-share-contributor) | Ermöglicht den Lese-, Schreib- und Löschzugriff in Azure Storage-Dateifreigaben über SMB. |
+| [Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten](#storage-file-data-smb-share-elevated-contributor) | Ermöglicht den Lese-, Schreib-, Lösch- und Änderungszugriff auf NTFS-Berechtigungen in Azure Storage-Dateifreigaben über SMB. |
+| [Speicherdateidaten-SMB-Freigabeleser](#storage-file-data-smb-share-reader) | Ermöglicht den Lesezugriff auf Azure-Dateifreigaben über SMB. |
 | [Mitwirkender an Storage-Warteschlangendaten](#storage-queue-data-contributor) | Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Verarbeiter von Speicherwarteschlangen-Datennachrichten](#storage-queue-data-message-processor) | Einsehen, Abrufen und Löschen einer Nachricht aus einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Absender der Speicherwarteschlangen-Datennachricht](#storage-queue-data-message-sender) | Hinzufügen von Nachrichten zu einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
@@ -698,7 +702,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Beschreibung** | Ermöglicht Ihnen die Verwaltung von Azure Stack-Registrierungen. |
 > | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **Aktionen** |  |
-> | Microsoft.AzureStack/registrations/products/listDetails/action | Ruft erweiterte Details für ein Azure Stack-Marketplace-Produkt ab. |
+> | Microsoft.AzureStack/registrations/products/*/action |  |
 > | Microsoft.AzureStack/registrations/products/read | Ruft die Eigenschaften eines Azure Stack-Marketplace-Produkts ab. |
 > | Microsoft.AzureStack/registrations/read | Ruft die Eigenschaften einer Azure Stack-Registrierung ab. |
 > | **NotActions** |  |
@@ -2605,6 +2609,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Löschen eines Containers. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zurückgeben eines Containers oder einer Liste von Containern. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | Ändern der Metadaten oder Eigenschaften eines Containers. |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Gibt einen Benutzerdelegierungsschlüssel für den Blob-Dienst zurück. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -2622,6 +2627,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* | Vollzugriffsberechtigungen für Container. |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Gibt einen Benutzerdelegierungsschlüssel für den Blob-Dienst zurück. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -2637,10 +2643,76 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zurückgeben eines Containers oder einer Liste von Containern. |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Gibt einen Benutzerdelegierungsschlüssel für den Blob-Dienst zurück. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zurückgeben eines Blob oder einer Liste von Blobs. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="storage-blob-delegator"></a>Storage Blob-Delegator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Abrufen eines Benutzerdelegierungsschlüssels, mit dem dann eine SAS (Shared Access Signature) für einen Container oder Blob erstellt werden kann, die mit Azure AD-Anmeldeinformationen signiert ist. Weitere Informationen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](https://docs.microsoft.com/rest/api/storageservices/create-a-user-delegation-sas). |
+> | **Id** | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
+> | **Aktionen** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Gibt einen Benutzerdelegierungsschlüssel für den Blob-Dienst zurück. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="storage-file-data-smb-share-contributor"></a>Speicherdateidaten-SMB-Freigabemitwirkender
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht den Lese-, Schreib- und Löschzugriff in Azure Storage-Dateifreigaben über SMB. |
+> | **Id** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei/einen Ordner oder eine Liste von Dateien/Ordnern zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | Gibt das Ergebnis des Schreibens einer Datei oder des Erstellens eines Ordners zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | Gibt das Ergebnis des Löschens einer Datei/eines Ordners zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="storage-file-data-smb-share-elevated-contributor"></a>Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht den Lese-, Schreib-, Lösch- und Änderungszugriff auf NTFS-Berechtigungen in Azure Storage-Dateifreigaben über SMB. |
+> | **Id** | a7264617-510b-434b-a828-9731dc254ea7 |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei/einen Ordner oder eine Liste von Dateien/Ordnern zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | Gibt das Ergebnis des Schreibens einer Datei oder des Erstellens eines Ordners zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | Gibt das Ergebnis des Löschens einer Datei/eines Ordners zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action | Gibt das Ergebnis der Berechtigungsänderung für eine Datei/einen Ordner zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="storage-file-data-smb-share-reader"></a>Speicherdateidaten-SMB-Freigabeleser
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht den Lesezugriff auf Azure-Dateifreigaben über SMB. |
+> | **Id** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei/einen Ordner oder eine Liste von Dateien/Ordnern zurück. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 

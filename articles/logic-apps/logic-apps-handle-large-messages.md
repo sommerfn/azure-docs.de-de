@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303770"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035596"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
@@ -117,7 +117,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
 1. Ihre Logik-App sendet eine erste HTTP-POST- oder -PUT-Anforderung mit einem leeren Nachrichtentext. Die Anforderungsheader enthält diese Informationen zu dem Inhalt, den Ihre Logik-App in Blöcken hochladen möchte:
 
-   | Logic Apps-Feld für Anforderungsheader | Wert | Type | BESCHREIBUNG |
+   | Logic Apps-Feld für Anforderungsheader | Wert | type | BESCHREIBUNG |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | chunked | String | Gibt an, dass der Inhalt in Blöcken (Segmenten) hochgeladen wird |
    | **x-ms-content-length** | <*Inhaltslänge*> | Integer | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
@@ -125,7 +125,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
 2. Der Endpunkt antwortet mit dem Erfolgsstatuscode „200“ und diesen optionalen Informationen:
 
-   | Endpunktfeld für Antwortheader | Type | Erforderlich | BESCHREIBUNG |
+   | Endpunktfeld für Antwortheader | type | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nein | Der vorgeschlagene Blockgröße in Bytes |
    | **Location** | String | Nein | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
@@ -137,14 +137,20 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
    * Im Header sind diese Details zu dem Inhaltsblock enthalten, der in der jeweiligen PATCH-Nachricht gesendet wurde:
 
-     | Logic Apps-Feld für Anforderungsheader | Wert | Type | BESCHREIBUNG |
+     | Logic Apps-Feld für Anforderungsheader | Wert | type | BESCHREIBUNG |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*Bereich*> | String | Der Bytebereich für den aktuellen Inhaltsblock, einschließlich des Anfangswerts, des Endwerts und der Gesamtgröße des Inhalts, zum Beispiel: „bytes=0-1023/10100“ |
      | **Content-Type** | <*Inhaltstyp*> | String | Der Typ des segmentierten (in Blöcke aufgeteilten) Inhalts |
      | **Content-Length** | <*Inhaltslänge*> | String | Die Länge des aktuellen Blocks in Bytes |
      |||||
 
-4. Nach jeder PATCH-Anforderung bestätigt der Endpunkt den Empfang des entsprechenden Blocks durch Antworten mit dem Statuscode „200“.
+4. Nach jeder PATCH-Anforderung bestätigt der Endpunkt den Empfang des entsprechenden Blocks durch Antworten mit dem Statuscode „200“ und den folgenden Antwortheadern:
+
+   | Endpunktfeld für Antwortheader | type | Erforderlich | BESCHREIBUNG |
+   |--------------------------------|------|----------|-------------|
+   | **Bereich** | Zeichenfolge | Ja | Der Bytebereich für Inhalt, der vom Endpunkt empfangen wurde, z. B.: „bytes=0-1023“ |   
+   | **x-ms-chunk-size** | Integer | Nein | Der vorgeschlagene Blockgröße in Bytes |
+   ||||
 
 In dieser Aktionsdefinition ist z. B. eine HTTP-POST-Anforderung gezeigt, in der segmentierter Inhalt an einen Endpunkt hochgeladen wird. In der `runTimeConfiguration`-Eigenschaft der Aktion wird die `contentTransfer`-Eigenschaft `transferMode` auf `chunked` festgelegt:
 

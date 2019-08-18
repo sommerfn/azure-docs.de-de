@@ -1,5 +1,5 @@
 ---
-title: 'Senden und Empfangen von Ereignissen unter Verwendung von Java: Azure Event Hubs | Microsoft-Dokumentation'
+title: Verwenden von Java zum Senden von Daten an und von Azure Event Hubs
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Java-Anwendung, die Ereignisse an Azure Event Hubs sendet.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -7,15 +7,15 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.custom: seodec18
+ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 0487cac6a0cf7d37befdf0d7cfab33ad6a62cf7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c85d69b823956a5cf5e7f9d6dfa3c39b918cd465
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822908"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034813"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Senden von Ereignissen an oder Empfangen von Ereignissen von Event Hubs mithilfe von Java
 
@@ -178,12 +178,12 @@ Der Code in diesem Tutorial basiert auf dem [EventProcessorSample-Code auf GitHu
 
 Zum Verwenden von EventProcessorHost benötigen Sie ein [Azure Storage-Konto][Azure Storage-Konto]:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf der linken Seite des Bildschirms auf **+ Ressource** erstellen.
-2. Klicken Sie auf **Storage** und anschließend auf **Speicherkonto**. Geben Sie im Fenster **Speicherkonto erstellen** einen Namen für das Speicherkonto ein. Füllen Sie die restlichen Felder aus, wählen Sie die gewünschte Region aus, und klicken Sie dann auf **Erstellen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite des Bildschirms **Ressource erstellen** aus.
+2. Wählen Sie **Speicher** und anschließend **Speicherkonto** aus. Geben Sie im Fenster **Speicherkonto erstellen** einen Namen für das Speicherkonto ein. Füllen Sie die restlichen Felder aus, wählen Sie Ihre gewünschte Region aus, und wählen Sie dann **Erstellen** aus.
    
     ![Speicherkonto erstellen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. Klicken Sie auf das neu erstellte Speicherkonto und anschließend auf **Zugriffsschlüssel**:
+3. Wählen Sie das neu erstellte Speicherkonto und anschließend **Zugriffsschlüssel** aus:
    
     ![Abrufen von Zugriffsschlüsseln](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 

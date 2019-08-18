@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990035"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035361"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Anzeigen von Protokollen und Ereignissen in Echtzeit (Vorschauversion)
 Azure Monitor für Container enthält ein Feature, das sich derzeit in der Vorschauversion befindet. Dieses Feature bietet eine Liveansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr; AKS) und Ereignisse, ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie eine Option auswählen, wird unter der Leistungsdatentabelle in der Ansicht für **Knoten**, **Controller** und **Container** ein neuer Bereich angezeigt. Dort werden von der Container-Engine generierte Liveprotokolle und -ereignisse angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
@@ -72,7 +72,7 @@ Wenn die Kubernetes RBAC-Autorisierung aktiviert ist, müssen Sie die Clusterrol
 
 Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert werden. Informationen zur erstmaligen Konfiguration finden Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration.md). Machen Sie beim Ausführen der Schritte zum Erstellen der [Clientanwendung](../../aks/azure-ad-integration.md#create-the-client-application) folgende Angaben:
 
-- **Umleitungs-URI (optional)** : Dies ist ein **Web**-Anwendungstyp, und der URL-Basiswert sollte `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten.
+-  **Umleitungs-URI**: Es müssen zwei **Web**anwendungstypen erstellt werden. Der erste Basis-URL-Wert sollte `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten und der zweite Basis-URL-Wert `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
 - Wählen Sie nach dem Registrieren der Anwendung auf der Seite **Übersicht** im linken Bereich **Authentifizierung** aus. Führen Sie auf der Seite **Authentifizierung** unter **Erweiterte Einstellungen** implizit **Zugriffstoken** und **ID-Token** auf, und speichern Sie dann Ihre Änderungen.
 
 >[!NOTE]

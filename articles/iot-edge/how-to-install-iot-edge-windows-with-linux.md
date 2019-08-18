@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151704"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034195"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Verwenden von IoT Edge unter Windows zum Ausführen von Linux-Containern
 
@@ -30,9 +30,7 @@ In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime 
 
 ### <a name="supported-windows-versions"></a>Unterstützte Windows-Versionen
 
-Azure IoT Edge-mit-Linux-Container können unter den folgenden Windows-Versionen ausgeführt werden: 
-* Windows 10 Anniversary Update (Build 14393) oder höher
-* Windows Server 2016 oder höher
+Azure IoT Edge mit Linux-Containern kann unter jeder Windows-Version ausgeführt werden, die die [Anforderungen für Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) erfüllt.
 
 Weitere Informationen zur aktuellen Version von IoT Edge finden Sie auf der Website für die [Releases von IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
@@ -106,7 +104,8 @@ Untersuchen Sie die Dienstprotokolle der letzten fünf Minuten.
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Führen Sie ausgeführte Module auf. Nach einer Neuinstallation sollte als einziges Modul **edgeAgent** ausgeführt werden. Nachdem Sie die [IoT Edge-Module bereitgestellt](how-to-deploy-modules-portal.md) haben, werden weitere angezeigt. 
+Führen Sie ausgeführte Module auf. Nach einer Neuinstallation sollte als einziges Modul **edgeAgent** ausgeführt werden. Nachdem Sie [IoT Edge-Module](how-to-deploy-modules-portal.md) zum ersten Mal bereitgestellt haben, wird das andere Systemmodul namens **edgeHub** ebenfalls auf dem Gerät gestartet. 
+
 
 ```powershell
 iotedge list

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333711"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035461"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
 
@@ -44,6 +44,8 @@ Die Häufigkeit der Datenaktualisierung in der Datenverkehrsanzeige hängt von m
 ## <a name="visual-overview"></a>Visuelle Übersicht
 
 Wenn Sie zum Abschnitt **Datenverkehrsansicht** auf Ihrer Traffic Manager-Seite navigieren, sehen Sie eine geografische Karte, die mit Erkenntnissen der Datenverkehrsansicht überlagert ist. Die Karte bietet Informationen zur Benutzergruppe und den Endpunkten für Ihr Traffic Manager-Profil.
+
+![Traffic Manager-Datenverkehrsansicht, Geografische Ansicht][1]
 
 ### <a name="user-base-information"></a>Benutzergruppeninformationen
 
@@ -94,3 +96,5 @@ Wenn Sie die Datenverkehrsansicht verwenden, erfolgt die Abrechnung anhand der A
 - Informieren Sie sich über die von Traffic Manager unterstützten [Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) .
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a77a41500a9c22aa25d3de396e73a5b2e4c0c419
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851374"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033883"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung
 
@@ -41,6 +41,10 @@ In diesem Artikel wird veranschaulicht, wie Sie Azure App Services zur Verwendun
    Klicken Sie auf die App-Registrierung, um sie auszuwählen, und klicken Sie auf **OK**. Klicken Sie dann auf der Seite „Azure Active Directory-Einstellungen“ auf **OK**.
    Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
 5. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Azure Active Directory authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest. Dies erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Azure Active Directory umgeleitet.
+
+> [!CAUTION]
+> Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
+
 6. Klicken Sie auf **Speichern**.
 
 ## <a name="advanced"> </a>Konfigurieren mit erweiterten Einstellungen

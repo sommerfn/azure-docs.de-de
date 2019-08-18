@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 590be42d5ba96133739d511b5a0a6b3e5a5634ff
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851539"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033617"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Twitter-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -35,7 +35,7 @@ Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse und Telefonnum
 3. Geben Sie **Name** und **Beschreibung** für Ihre neue App ein. Fügen Sie die **URL** Ihrer Anwendung für den Wert **Website** ein. Fügen Sie dann für die **Rückruf-URL** die **Rückruf-URL** ein, die Sie zuvor kopiert haben. Dabei handelt es sich um Ihr Mobile App-Gateway mit dem angehängten Pfad */.auth/login/twitter/callback*. Beispiel: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden.
 4. Lesen und akzeptieren Sie die Bedingungen am Ende der Seite. Klicken Sie dann auf **Create your Twitter application**. Daraufhin wird die Anwendung mit den angegebenen Details registriert.
 5. Klicken Sie auf die Registerkarte **Einstellungen**, aktivieren Sie die Option **Allow this application to be used to sign in with Twitter** (Anmeldung bei Twitter mithilfe dieser Anwendung zulassen), und klicken Sie dann auf **Update Settings** (Einstellungen aktualisieren).
-6. Wählen Sie die Registerkarte **Keys and Access Tokens** . Notieren Sie die Werte für Consumer Key (API Key) (Verbraucherschlüssel (API-Schlüssel)) und **Consumer secret (API Secret)** (Verbrauchergeheimnis (API-Geheimnis)).
+6. Wählen Sie die Registerkarte **Keys and Access Tokens** . Notieren Sie die Werte für **Consumer Key (API Key)** (Verbraucherschlüssel (API-Schlüssel)) und **Consumer secret (API Secret)** (Verbrauchergeheimnis (API-Geheimnis)).
    
    > [!NOTE]
    > Consumer secret ist eine wichtige Anmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre App frei.
@@ -51,6 +51,10 @@ Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse und Telefonnum
    
    Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
 4. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Twitter authentifiziert wurden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Twitter** fest. Dadurch müssen alle Anforderungen authentifiziert werden. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Twitter umgeleitet.
+
+> [!CAUTION]
+> Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
+
 5. Klicken Sie auf **Speichern**.
 
 Sie können nun Twitter für die Authentifizierung in Ihrer App verwenden.

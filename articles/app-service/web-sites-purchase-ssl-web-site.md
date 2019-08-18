@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: e7768eb29caf66fd8f666a9475ac0787826a47e0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618900"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019130"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
@@ -51,9 +51,9 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 | Einstellung | BESCHREIBUNG |
 |-|-|
 | NAME | Ein Anzeigename für Ihr App Service-Zertifikat. |
-| Reiner Domänenhostname | Wenn Sie die Stammdomäne angeben, erhalten Sie ein Zertifikat, das *sowohl* die Stammdomäne als auch die `www`-Unterdomäne sichert. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`). |
-| Abonnement | Das Rechenzentrum, in dem die Web-App gehostet wird. |
-| Ressourcengruppe | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
+| Reiner Domänenhostname | Geben Sie hier die Stammdomäne an. Das ausgestellte Zertifikat sichert *sowohl* die Stamm Domäne als auch die Unterdomäne `www`. Im ausgestellten Zertifikat enthält das Feld „Allgemeiner Name“ die Stammdomäne, und das Feld „Alternativer Antragstellername“ enthält die Domäne `www`. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`).|
+| Subscription | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Resource group | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
 | Zertifikat-SKU | Bestimmt den Typ des zu erstellenden Zertifikats, ganz gleich, ob es sich um ein Standardzertifikat oder ein [Platzhalterzertifikat](https://wikipedia.org/wiki/Wildcard_certificate) handelt. |
 | Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. Die Zertifikate werden von GoDaddy abgerufen. |
 
@@ -72,7 +72,7 @@ Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um 
 | Einstellung | BESCHREIBUNG |
 |-|-|
 | NAME | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
-| Ressourcengruppe | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
+| Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
 | Location | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |

@@ -1,21 +1,21 @@
 ---
-title: 'Klassifizierung: Vorhersagen des Kreditrisikos'
+title: 'Grafische Benutzeroberfläche: Beispiel Nr. 3: Klassifizierung zur Vorhersage des Kreditrisikos'
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie über die grafische Benutzeroberfläche eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605772"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990055"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos
 
@@ -39,7 +39,7 @@ Das vollständige Diagramm für dieses Experiment sieht wie folgt aus:
 
 [Beispiel 4 – Klassifizierung: Credit Risk Prediction (Cost Sensitive)](ui-sample-classification-predict-credit-risk-cost-sensitive.md) [Prognose des Kreditrisikos (kostensensibel] bietet ein fortgeschrittenes Experiment, mit dem das gleiche Problem wie bei diesem Experiment gelöst wird. Es zeigt, wie Sie mit dem Modul **Execute Python Script** (Ausführen eines Python-Skripts) eine _kostensensible_ Klassifizierung durchführen und die Leistung zweier binärer Klassifizierungsalgorithmen vergleichen können. Greifen Sie darauf zurück, wenn Sie mehr über das Erstellen von Klassifizierungsexperimenten erfahren möchten.
 
-## <a name="data"></a>Daten
+## <a name="data"></a>Data
 
 Wir verwenden das Dataset „German Credit Card“ aus dem UC Irvine-Repository.
 Das Dataset enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die Features sind numerisch und kategorisch. Auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) können Sie die Bedeutung der kategorischen Features nachschlagen. Die letzte Spalte ist die Bezeichnung, die das Kreditrisiko angibt und nur zwei mögliche Werte hat: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.

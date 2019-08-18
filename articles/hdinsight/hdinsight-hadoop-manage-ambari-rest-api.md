@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406221"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019620"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -42,6 +42,8 @@ Erfahren Sie, wie Sie die Apache Ambari-REST-API zum Verwalten und Überwachen v
 ## <a name="authentication"></a>Authentication
 
 Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Verwenden Sie den Administratorkontonamen (Standardname: **Administrator**) und das Kennwort, die Sie während der Clustererstellung bereitgestellt haben.
+
+Verwenden Sie für Enterprise-Sicherheitspaketcluster anstelle von `admin` einen vollqualifizierten Benutzernamen wie `username@domain.onmicrosoft.com`.
 
 ## <a name="examples"></a>Beispiele
 
