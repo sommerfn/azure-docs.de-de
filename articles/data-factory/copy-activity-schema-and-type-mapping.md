@@ -91,7 +91,7 @@ Die folgenden Eigenschaften werden unter `translator` -> `mappings` unterstützt
 | Eigenschaft | BESCHREIBUNG                                                  | Erforderlich |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Name der Quell- oder Senkenspalte.                           | Ja      |
-| Ordinal  | Spaltenindex. Beginnen Sie mit 1. <br>Anwenden und erforderlich, wenn Text mit Trennzeichen und ohne Kopfzeile verwendet wird. | Nein       |
+| ordinal  | Spaltenindex. Beginnen Sie mit 1. <br>Anwenden und erforderlich, wenn Text mit Trennzeichen und ohne Kopfzeile verwendet wird. | Nein       |
 | path     | Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert oder zugeordnet werden soll. Anwenden auf hierarchische Daten, z. B. MongoDB/REST.<br>Der JSON-Pfad für Felder unter der Stammobjekt beginnt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Arrayelement. | Nein       |
 | type     | Data Factory-Zwischendatentyp der Quell- oder Senkenspalte. | Nein       |
 | culture  | Kultur der Quell- oder Senkenspalte. <br>Anwenden, wenn der Typ `Datetime` oder `Datetimeoffset` ist. Der Standardwert lautet `en-us`. | Nein       |
