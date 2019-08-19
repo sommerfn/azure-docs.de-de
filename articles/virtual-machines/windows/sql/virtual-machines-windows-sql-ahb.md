@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78ad784a45d2b0063932791daedc9b1ec1aafd72
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 37457d8ce1189f9282f4763633e944e3c2d639c9
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786763"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816718"
 ---
 # <a name="how-to-change-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure
 In diesem Artikel wird beschrieben, wie Sie das Lizenzierungsmodell für einen virtuellen SQL Server-Computer in Azure ändern, indem Sie den neuen SQL-VM-Ressourcenanbieter **Microsoft.SqlVirtualMachine** verwenden.
@@ -140,7 +140,7 @@ Sie können den Lizenztyp einer SQL Server-VM nur in PAYG oder AHB ändern, wen
 
  - Das Ändern des Lizenzierungsmodells ist nur für Kunden mit Software Assurance verfügbar.
  - Das Ändern des Lizenzierungsmodells wird nur für die Standard und Enterprise Edition von SQL Server unterstützt. Lizenzänderungen für Express, Web und Developer werden nicht unterstützt. 
- - Ändern des Lizenzierungsmodells wird nur für virtuelle Computer unterstützt, die mit dem Resource Manager-Modell bereitgestellt wurden. Virtuelle Computer, die mit dem klassischen Modell bereitgestellt wurden, werden nicht unterstützt. 
+ - Ändern des Lizenzierungsmodells wird nur für virtuelle Computer unterstützt, die mit dem Resource Manager-Modell bereitgestellt wurden. Virtuelle Computer, die mit dem klassischen Modell bereitgestellt wurden, werden nicht unterstützt. Sie können Ihren virtuellen Computer vom klassischen Modell zum ARM-Modell (Azure Resource Manager) migrieren und beim SQL-VM-Ressourcenanbieter registrieren. Nach der Registrierung beim SQL-VM-Ressourcenanbieter kann das Lizenzierungsmodell für den virtuellen Computer geändert werden. 
  - Ändern des Lizenzierungsmodells ist nur für Installationen in der öffentlichen Cloud aktiviert.
  - Ändern des Lizenzierungsmodells wird nur auf virtuellen Computern unterstützt, die eine einzige NIC (Netzwerkkarte) haben. Auf virtuellen Computern, die mehrere Netzwerkkarten haben, müssen Sie zunächst eine der Karten (über das Azure-Portal) entfernen, bevor Sie die Vorgehensweise versuchen. Andernfalls wird ein Fehler auftreten, der in etwa wie folgt aussieht: `The virtual machine '\<vmname\>' has more than one NIC associated.` Obwohl Sie die Netzwerkkarte der VM möglicherweise wieder hinzufügen können, nachdem Sie den Lizenzierungsmodus geändert haben, werden über die SQL-Konfigurationsseite im Azure-Portal ausgeführte Vorgänge (z. B. automatisches Patchen und automatische Sicherung) nicht mehr unterstützt.
 

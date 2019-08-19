@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613926"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812815"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Mit Azure Kubernetes Service (AKS) werden die Masterkomponenten wie *kube-apiser
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieser Artikel setzt einen vorhandenen AKS-Cluster voraus, der in Ihrem Azure-Konto ausgeführt wird. Wenn Sie nicht bereits über einen AKS-Cluster verfügen, erstellen Sie einen mit der [Azure CLI][cli-quickstart] or [Azure portal][portal-quickstart]. Azure Monitor-Protokolle funktionieren mit für RBAC und nicht für RBAC aktivierten AKS-Clustern.
+Dieser Artikel setzt einen vorhandenen AKS-Cluster voraus, der in Ihrem Azure-Konto ausgeführt wird. Sollten Sie noch nicht über einen AKS-Cluster verfügen, erstellen Sie einen AKS-Cluster über die [Azure-Befehlszeilenschnittstelle][cli-quickstart] oder über das [Azure-Portal][portal-quickstart]. Azure Monitor-Protokolle funktionieren mit für RBAC und nicht für RBAC aktivierten AKS-Clustern.
 
 ## <a name="enable-diagnostics-logs"></a>Aktivieren von Diagnoseprotokollen
 
@@ -35,19 +35,6 @@ Azure Monitor-Protokolle werden im Azure-Portal aktiviert und verwaltet. Öffnen
 1. Wählen Sie einen vorhandenen Arbeitsbereich aus, oder erstellen Sie einen neuen. Wenn Sie einen Arbeitsbereich erstellen, geben Sie einen Arbeitsbereichsnamen, eine Ressourcengruppe und einen Speicherort an.
 1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Zu den üblichen Protokollen gehören *kube-apiserver*, *kube-controller-manager* und *kube-scheduler*. Sie können zusätzliche Protokolle, beispielsweise *kube-audit* und *cluster-autoscaler*, aktivieren. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics-Arbeitsbereiche aktiviert wurden.
 1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um die Sammlung der ausgewählten Protokolle zu aktivieren.
-
-> [!NOTE]
-> AKS erfasst nur Überwachungsprotokolle für Cluster, die nach dem Aktivieren eines Featureflags für Ihr Abonnement erstellt oder aktualisiert werden. Um das Featureflag *AKSAuditLog* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt:
->
-> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
->
-> Warten Sie, bis der Status *Registered* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
->
-> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
->
-> Wenn Sie fertig sind, aktualisieren Sie die Registrierung des AKS-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
->
-> `az provider register --namespace Microsoft.ContainerService`
 
 Der folgende Screenshot eines Beispielportals zeigt das Fenster *Diagnoseeinstellungen*:
 
@@ -120,7 +107,7 @@ Weitere Informationen zum Abfragen und Filtern Ihrer Protokolldaten finden Sie u
 
 Als Unterstützung beim Analysieren der Protokolldaten wird in der folgenden Tabelle das für die einzelnen Ereignisse verwendete Schema erläutert:
 
-| Feldname               | BESCHREIBUNG |
+| Feldname               | Beschreibung |
 |--------------------------|-------------|
 | *Ressourcen-ID*             | Azure-Ressource, die das Protokoll erstellt hat |
 | *time*                   | Zeitstempel des Hochladens des Protokolls |
@@ -131,9 +118,17 @@ Als Unterstützung beim Analysieren der Protokolldaten wird in der folgenden Tab
 | *properties.pod*         | Podname, von dem das Protokoll stammt |
 | *properties.containerID* | ID des Docker-Containers, aus dem dieses Protokoll stammt |
 
+## <a name="log-roles"></a>Protokollrollen
+
+| Role                     | Beschreibung |
+|--------------------------|-------------|
+| *aksService*             | Der Anzeigename im Überwachungsprotokoll für den Vorgang auf der Steuerungsebene (aus „hcpService“). |
+| *masterclient*           | Der Anzeigename im Überwachungsprotokoll für „MasterClientCertificate“ (das Zertifikat, das von „az aks get-credentials“ zurückgegeben wird). |
+| *nodeclient*             | Der Anzeigename für „ClientCertificate“ (wird von Agent-Knoten verwendet). |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie die Protokolle für die Kubernetes-Masterkomponenten in Ihrem AKS-Cluster aktiviert und überprüft werden. Für eine zusätzliche Überwachung und Problembehandlung können Sie auch [die Kubelet-Protokolle anzeigen][kubelet-logs] and [enable SSH node access][aks-ssh].
+In diesem Artikel haben Sie gelernt, wie die Protokolle für die Kubernetes-Masterkomponenten in Ihrem AKS-Cluster aktiviert und überprüft werden. Für eine zusätzliche Überwachung und Problembehandlung können Sie auch [die Kubelet-Protokolle anzeigen][kubelet-logs] und [SSH-Knotenzugriff aktivieren][aks-ssh].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

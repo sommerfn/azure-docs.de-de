@@ -32,6 +32,8 @@
       href: create-host-pools-arm-template.md
     - name: Erstellen eines Hostpools mit PowerShell
       href: create-host-pools-powershell.md
+    - name: Anwenden einer Windows-Lizenz auf Windows Virtual Desktop-Sitzungshosts
+      href: apply-windows-license.md
     - name: Einrichten einer Benutzerprofilfreigabe für einen Hostpool
       href: create-host-pools-user-profile.md
     - name: Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
@@ -48,6 +50,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: Anpassen der RDP-Eigenschaften
       href: customize-rdp-properties.md
+    - name: Bereitstellen des Diagnosetools
+      href: deploy-diagnostics.md
 - name: Konzepte
   items:
     - name: Windows Virtual Desktop-Umgebung

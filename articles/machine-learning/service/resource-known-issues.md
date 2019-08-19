@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358619"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716535"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning Service
 
@@ -151,3 +151,9 @@ Wenn Sie einen Verwaltungsvorgang innerhalb eines Remoteauftrags auf ein Compute
 ```
 
 Sie erhalten beispielsweise eine Fehlermeldung, wenn Sie versuchen, ein Computeziel anhand einer ML-Pipeline zu erstellen oder anzuhängen, die zur Remoteausführung übermittelt wird.
+
+## <a name="overloaded-azurefile-storage"></a>Überladener AzureFile-Speicher
+
+Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, das Projektdateien nicht in das Arbeitsverzeichnis in „AzureFile“ hochgeladen werden können, da der Speicher überladen ist, können Sie das Problem wie folgt umgehen:
+
+Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübertragung) verwenden, empfiehlt es sich, Blobs zu verwenden, damit die Dateifreigabe für die Übermittlung von Ausführungen frei ist. Alternativ kann die Workload auch auf zwei verschiedene Arbeitsbereiche aufgeteilt werden.

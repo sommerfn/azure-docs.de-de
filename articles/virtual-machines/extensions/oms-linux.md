@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 08/06/2019
 ms.author: roiyz
-ms.openlocfilehash: 7d8192a3b6ff732481a4d48f6e188b4bb3989cda
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a0c4b6333cc8348959a679a81343f2479078694b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705932"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828162"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Azure Monitor-VM-Erweiterung für Linux
 
@@ -37,43 +37,14 @@ Azure Monitor-Protokolle bieten Überwachungs- und Warnungsfunktionen sowie Funk
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Log Analytics-Agent-Erweiterung kann für folgende Linux-Distributionen ausgeführt werden.
-
-| Distribution | Version |
-|---|---|
-| CentOS Linux | 6 (x86/x64) und 7 (x64) |
-| Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6 und 7 (x86/x64) |
-| Red Hat Enterprise Linux-Server | 6 (x86/x64) und 7 (x64) |
-| Debian GNU/Linux | 8 und 9 (x86/x64) |
-| Ubuntu | 14.04 LTS (x86/x64), 16.04 LTS (x86/x64) und 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) und 15 (x64) |
-
->[!NOTE]
->OpenSSL unter Version 1.x wird auf keiner Plattform unterstützt, und Version 1.10 wird nur auf x86_64-Plattformen (64 Bit) unterstützt.  
->
-
-### <a name="agent-prerequisites"></a>Agent-Voraussetzungen
-
-In der folgenden Tabelle werden die Pakete hervorgehoben, die für unterstützte Linux-Distributionen erforderlich sind, auf denen der Agent installiert wird.
-
-|Erforderliches Paket |BESCHREIBUNG |Mindestversion |
-|-----------------|------------|----------------|
-|Glibc |    GNU C-Bibliothek | 2.5-12 
-|Openssl    | OpenSSL-Bibliotheken | 1.0.x oder 1.1.x |
-|Curl | cURL-Webclient | 7.15.5 |
-|Python-ctypes | | 
-|PAM | Module für austauschbare Authentifizierung | | 
-
->[!NOTE]
->Zum Sammeln von syslog-Nachrichten sind entweder rsyslog oder syslog-ng erforderlich. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der rsyslog-Daemon sollte installiert und so konfiguriert werden, dass er sysklog ersetzt, um syslog-Daten von dieser Version dieser Verteilung zu sammeln.
+Ausführliche Informationen zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
 Die folgende Tabelle enthält eine Zuordnung der Version der Azure Monitor-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. Ein Link zu den Anmerkungen zur jeweiligen Log Analytics-Agent-Paketversion ist enthalten. Anmerkungen zur Version enthalten Details zu Fehlerbehebungen und neuen Features, die für eine bestimmte Agentversion verfügbar sind.  
 
 | Version der Azure Monitor-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
 |--------------------------------|--------------------------|
-| 1.11.9 | [1.11.0-7](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-7) |
+| 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
@@ -145,9 +116,9 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie mindestens einen virtuellen Computer bereitstellen, der eine Konfiguration nach der Bereitstellung erfordert, wie z.B. Onboarding bei Azure Monitor-Protokollen. Eine Resource Manager-Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie mindestens einen virtuellen Computer bereitstellen, der eine Konfiguration nach der Bereitstellung erfordert, wie z.B. Onboarding bei Azure Monitor-Protokollen. Eine Resource Manager-Beispielvorlage mit der VM-Erweiterung für den Log Analytics-Agent finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
-Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
+Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
 Im folgenden Beispiel wird davon ausgegangen, dass die VM-Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 
@@ -209,8 +180,8 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
-  --settings '{"workspaceId": "omsid"}'
+  --version 1.10.1 --protected-settings '{"workspaceKey":"omskey"}' \
+  --settings '{"workspaceId":"omsid"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support

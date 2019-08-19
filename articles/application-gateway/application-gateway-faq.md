@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 71f1beb68171613fe926ba4d87a13ef58cac1edf
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655276"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740888"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -101,7 +101,7 @@ Ja. Entsprechende Informationen finden Sie unter [Funktionsweise von Application
 
 Die Ausführung neuer Bereitstellungen der Application Gateway v1-SKU kann bis zu 20 Minuten dauern. Beim Vornehmen von Änderungen der Instanzgröße oder -anzahl wird der Betrieb nicht unterbrochen, und das Gateway bleibt währenddessen aktiv.
 
-Die Bereitstellung von Instanzen, die die v2-SKU nutzen, kann bis zu sechs Minuten dauern.
+Die Bereitstellung von Instanzen mit der v2-SKU dauert in der Regel etwa sechs Minuten. Bei manchen Bereitstellungsarten kann sie jedoch auch mehr Zeit beanspruchen. Bereitstellungen, die sich über mehrere Verfügbarkeitszonen erstrecken und viele Instanzen umfassen, können beispielsweise länger als sechs Minuten dauern. 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Kann ich Exchange Server als Back-End mit Application Gateway verwenden?
 

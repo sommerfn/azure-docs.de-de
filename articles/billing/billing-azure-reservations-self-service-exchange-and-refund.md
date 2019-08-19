@@ -1,23 +1,21 @@
 ---
-title: Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen | Microsoft-Dokumentation
+title: Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 description: Es wird beschrieben, wie Sie für Azure-Reservierungen einen Umtausch durchführen oder Rückerstattungen erhalten können.
-documentationcenter: ''
 author: yashesvi
 manager: yashesvi
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615987"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814099"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -58,10 +56,19 @@ Die ursprüngliche Rechnung für den Kauf der Reservierung wird storniert, und a
 
 Die ursprüngliche Rechnung wird storniert, und eine neue Rechnung wird erstellt. Der Betrag wird über die Kreditkarte erstattet, die für den ursprünglichen Kauf genutzt wurde. [Wenden Sie sich an den Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), falls sich Ihre Kartenangaben geändert haben.
 
-## <a name="exchange-policies"></a>Umtauschrichtlinien
+## <a name="cancel-exchange-and-refund-policies"></a>Richtlinien für Stornierung, Umtausch und Rückerstattung
+
+In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückerstattungen:
+
+**Stornierungsrichtlinien**
+
+- Wenn Sie eine Reservierung stornieren, wird für die vorzeitige Kündigung unter Umständen eine Gebühr in Höhe von 12 Prozent berechnet.
+- Die Rückerstattung, die Sie für eine Stornierung erhalten, entspricht dem verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12 Prozent. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Erstattung** aus.
+
+**Umtauschrichtlinien**
 
 - Sie können mehrere vorhandene Reservierungen zurückgeben, um eine neue Reservierung des gleichen Typs zu erwerben. Ein Wechsel des Typs von Reservierungen ist beim Umtausch nicht möglich. Beispielsweise können Sie keine VM-Reservierung zurückgeben, um eine SQL-Reservierung zu erwerben.
-- Nur Besitzer von Reservierungen können einen Umtausch verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+- Nur Besitzer von Reservierungen können einen Umtausch verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - Ein Umtausch wird als Erstattung und erneuter Kauf verarbeitet. Für die Stornierung und den neuen Kauf werden separate Transaktionen erstellt. Der anteilige Reservierungsbetrag für die zurückgegebenen Reservierungen wird erstattet. Der neue Kauf wird Ihnen vollständig berechnet. Der anteilige Reservierungsbetrag ist der tägliche anteilige Restwert der zurückgegebenen Reservierung.
 - Sie können Reservierungen auch dann umtauschen oder zurückgeben, wenn das für den Kauf der Reservierung verwendete Enterprise Agreement abgelaufen ist und in Form eines neuen Vertrags verlängert wurde.
 - Sie können alle Reservierungseigenschaften ändern, z. B. Größe, Region, Menge und Zeitraum eines Umtauschs.
@@ -69,9 +76,9 @@ Die ursprüngliche Rechnung wird storniert, und eine neue Rechnung wird erstellt
 - Für die neue Reservierung, die im Rahmen des Umtauschs erworben wird, gilt ein neuer Zeitraum, der ab dem Umtauschzeitpunkt beginnt.
 - Für den Umtausch gibt es keine Strafzahlungen oder jährlichen Grenzwerte.
 
-## <a name="refund-policies"></a>Erstattungsrichtlinien
-
+**Rückerstattungsrichtlinien**
 - Ihr Gesamtbetrag für Erstattungen darf innerhalb eines rollierenden Zeitfensters von 12 Monaten den Wert von 50.000 US-Dollar nicht überschreiten.
+- Rückerstattungen werden auf der Grundlage des niedrigsten Preises (Ihr Kaufpreis oder der aktuelle Preis für die Reservierung) berechnet.
 - Nur Besitzer von Reservierungen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - Microsoft behält sich das Recht vor, für alle Rückgaben eine Strafzahlung in Höhe von 12 % zu berechnen. Derzeit wird diese Strafzahlung aber nicht angewendet.
 

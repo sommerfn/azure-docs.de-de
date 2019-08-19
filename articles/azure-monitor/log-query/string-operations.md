@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466949"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741461"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen
 
@@ -30,11 +30,11 @@ ms.locfileid: "68466949"
 
 In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen bearbeiten, vergleichen, darin suchen und für diese viele weitere Vorgänge ausführen.
 
-Jedem Zeichen in einer Zeichenfolge ist ein Index zugeordnet, der die Position des Zeichens festlegt. Für das erste Zeichen wird der Index 0 verwendet, für das nächste Zeichen 1 usw. Der Index wird von unterschiedlichen Zeichenfolgenfunktion verwendet. Dies wird in den folgenden Abschnitten deutlich werden. In vielen der folgenden Beispiele wird der Befehl **print** verwendet, um zu zeigen, wie sich Zeichenfolgen ohne eine bestimmte Datenquelle bearbeiten lassen.
+Jedem Zeichen in einer Zeichenfolge ist ein Index zugeordnet, der die Position des Zeichens festlegt. Das erste Zeichen befindet sich bei Index 0, das nächste bei 1 usw. Der Index wird von unterschiedlichen Zeichenfolgenfunktion verwendet. Dies wird in den folgenden Abschnitten deutlich werden. In vielen der folgenden Beispiele wird der Befehl **print** verwendet, um zu zeigen, wie sich Zeichenfolgen ohne eine bestimmte Datenquelle bearbeiten lassen.
 
 
 ## <a name="strings-and-escaping-them"></a>Zeichenfolgen und Escapezeichen
-Zeichenfolgenwerte werden entweder in einfache oder doppelte Anführungszeichen eingeschlossen. Der umgekehrte Schrägstrich (\) wird verwendet, um darauffolgende Zeichen mit einem Escapezeichen zu versehen. „\t“ wird beispielsweise für einen Tabstopp, „\n“ für einen Zeilenvorschub und \" für das Anführungszeichen selbst verwendet.
+Zeichenfolgenwerte werden entweder in einfache oder doppelte Anführungszeichen eingeschlossen. Der umgekehrte Schrägstrich (\\) wird verwendet, um darauffolgende Zeichen mit einem Escapezeichen zu versehen. „\t“ wird beispielsweise für einen Tabstopp, „\n“ für einen Zeilenvorschub und \" für das Anführungszeichen selbst verwendet.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -53,7 +53,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Zeichenfolgenvergleiche
 
-Operators       |BESCHREIBUNG                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
+Operators       |Beschreibung                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Equals                              |Ja           |`"aBc" == "aBc"`
 `!=`           |Not Equals                          |Ja           |`"abc" != "ABC"`

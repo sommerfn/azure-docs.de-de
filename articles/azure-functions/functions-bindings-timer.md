@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 962c28c8b081980c2715d4d78739662e86748bd1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377331"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814454"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -125,7 +125,7 @@ Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt
 ```java
 @FunctionName("keepAlive")
 public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
       ExecutionContext context
  ) {
      // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
@@ -220,12 +220,12 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `TimerTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**type** | – | Muss auf „timerTrigger“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „in“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die das Timerobjekt im Funktionscode darstellt. | 
-|**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#cron-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%** -Zeichen als Wrapper verwendet: „%ScheduleAppSetting%“. |
+|**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#ncrontab-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%** -Zeichen als Wrapper verwendet: „%ScheduleAppSetting%“. |
 |**runOnStartup**|**RunOnStartup**|Wenn `true`, wird die Funktion beim Starten der Laufzeit aufgerufen. Die Laufzeit startet beispielsweise, wenn die Funktionen-App nach dem Leerlauf aufgrund von Inaktivität reaktiviert wird, wenn die Funktionen-App aufgrund von Funktionsänderungen neu gestartet wird und wenn die Funktionen-App horizontal hochskaliert wird. Daher sollte **runOnStartup** selten, wenn überhaupt, auf `true` festgelegt werden, insbesondere in der Produktionsumgebung. |
 |**useMonitor**|**UseMonitor**|Legen Sie diese Eigenschaft auf `true` oder `false` fest, um anzugeben, ob der Zeitplan überwacht werden soll. Durch die Überwachung des Zeitplans werden Zeitplantermine beibehalten, mit deren Hilfe sichergestellt werden kann, dass der Zeitplan richtig eingehalten wird, selbst wenn Instanzen der Funktionen-App neu gestartet werden. Wenn diese Eigenschaft nicht explizit festgelegt wird, lautet der Standardwert `true` für Zeitpläne mit einem Wiederholungsintervall von mehr als einer Minute. Bei Zeitplänen, die mehr als einmal pro Minute ausgelöst werden, lautet der Standardwert `false`.
 
@@ -253,9 +253,9 @@ Bei Aufruf einer Trigger-mit-Timer-Funktion wird ein Timerobjekt an die Funktion
 
 Die Eigenschaft `IsPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf später als geplant erfolgt. Beispielsweise kann ein Neustart der Funktionen-App dazu führen, dass ein Aufruf nicht erkannt wird.
 
-## <a name="cron-expressions"></a>CRON-Ausdrücke 
+## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke 
 
-Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um CRON-Ausdrücke zu interpretieren. Ein CRON-Ausdruck enthält sechs Felder:
+Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um NCRONTAB-Ausdrücke zu interpretieren. Ein NCRONTAB-Ausdruck ähnelt einem CRON-Ausdruck, enthält jedoch am Anfang ein zusätzliches sechstes Feld für sekundengenaue Zeitangaben:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -271,9 +271,9 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>CRON-Beispiele
+### <a name="ncrontab-examples"></a>NCRONTAB-Beispiele
 
-Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Timer in Azure Functions verwenden können.
+Die folgenden Beispiele zeigen NCRONTAB-Ausdrücke, die Sie für den Trigger mit Timer in Azure Functions verwenden können:
 
 |Beispiel|Auslösung  |
 |---------|---------|
@@ -284,25 +284,24 @@ Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Tim
 |`"0 30 9 * * *"`|täglich um 9:30 Uhr|
 |`"0 30 9 * * 1-5"`|werktags um 9:30 Uhr|
 |`"0 30 9 * Jan Mon"`|jeden Montag im Januar um 9:30|
->[!NOTE]   
->Sie können Beispiele für CRON-Ausdrücke online finden, doch wird bei vielen das Feld `{second}` ausgelassen. Wenn Sie einen dieser Ausdrücke kopieren, fügen das fehlende `{second}`-Feld hinzu. In der Regel sollte dieses Feld eine 0 (null) und kein Sternchen enthalten.
 
-### <a name="cron-time-zones"></a>CRON-Zeitzonen
+
+### <a name="ncrontab-time-zones"></a>NCRONTAB-Zeitzonen
 
 Die Zahlen in einem CRON-Ausdruck beziehen sich auf ein Datum und eine Uhrzeit, nicht auf einen Zeitraum. Beispielsweise bezieht sich eine 5 im Feld `hour` auf 5:00 Uhr, nicht auf alle 5 Stunden.
 
 Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://technet.microsoft.com/library/cc749073) (Microsoft-Zeitzonenindex) fest. 
 
-Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr EST auslösen möchten, verwenden Sie den folgenden CRON-Ausdruck, der die UTC-Zeitzone berücksichtigt:
+Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr (EST) auslösen möchten, verwenden Sie den folgenden NCRONTAB-Ausdruck, der die UTC-Zeitzone berücksichtigt:
 
-```json
-"schedule": "0 0 15 * * *"
+```
+"0 0 15 * * *"
 ``` 
 
-Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE` erstellen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann wird der folgende CRON-Ausdruck verwendet: 
+Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE` erstellen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann wird der folgende NCRONTAB-Ausdruck verwendet: 
 
-```json
-"schedule": "0 0 10 * * *"
+```
+"0 0 10 * * *"
 ``` 
 
 Wenn Sie `WEBSITE_TIME_ZONE` verwenden, wird die Uhrzeit an Abweichungen in der jeweiligen Zeitzone angepasst, z.B. an die Sommerzeit. 

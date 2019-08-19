@@ -8,18 +8,22 @@ editor: tysonn
 ms.service: azure-monitor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3644b40311c037df800eb89ca26d1285fbf1e082
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780006"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741507"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für Container
 
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für Container. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+
+## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Kann ich meinen AKS-Engine-Cluster mit Azure Monitor für Container überwachen?
+
+Azure Monitor für Container unterstützt die Überwachung von Containerworkloads, die für in Azure gehostete AKS-Engine-Cluster (ehemals ACS-Engine-Cluster) bereitgestellt werden. Ausführlichere Informationen sowie einen Überblick über die Schritte zum Aktivieren der Überwachung für dieses Szenario finden Sie unter [Using Azure Monitor for containers for AKS-engine](https://github.com/microsoft/OMS-docker/tree/aks-engine) (Verwenden von Azure Monitor für Container für AKS-Engine).
 
 ## <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Warum werden in meinem Log Analytics-Arbeitsbereich keine Daten angezeigt?
 

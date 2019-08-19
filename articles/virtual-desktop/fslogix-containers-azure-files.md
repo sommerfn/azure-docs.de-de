@@ -2,17 +2,17 @@
 title: FSLogix-Profilcontainer und Azure Files in Windows Virtual Desktop – Azure
 description: Dieser Artikel beschreibt FSLogix-Profilcontainer in Windows Virtual Desktop und Azure Files.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.author: v-chjenk
-ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.author: helohr
+ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497535"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828141"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
@@ -59,7 +59,7 @@ UPD erfordert [Direkte Speicherplätze (Storage Spaces Direct, S2D)](https://doc
 
 #### <a name="cost"></a>Kosten
 
-Die S2D-Cluster erzielen zwar die notwendige Leistung, aber die Kosten sind hoch – dies gilt für Enterprise-Kunden, aber ganz besonders für Kunden in kleinen und mittelgroße Unternehmen. Bei dieser Lösung zahlen die Unternehmen für Premium-Speicherdatenträger und müssen zudem die Kosten für die VMs tragen, die die Datenträger für eine Freigabe nutzen.
+Die S2D-Cluster erzielen zwar die notwendige Leistung, aber die Kosten sind hoch – dies gilt für Enterprise-Kunden, aber ganz besonders für Kunden in kleinen und mittelgroße Unternehmen. Bei dieser Lösung zahlen die Unternehmen für Speicherdatenträger und müssen zudem die Kosten für die virtuellen Computer tragen, die die Datenträger für eine Freigabe nutzen.
 
 #### <a name="administrative-overhead"></a>Verwaltungsaufwand
 
@@ -67,7 +67,7 @@ S2D-Cluster benötigen ein Betriebssystem, das gepatcht, aktualisiert und in ein
 
 ## <a name="fslogix-profile-containers"></a>FSLogix-Profilcontainer
 
-Am 19. November 2018 [erwarb Microsoft FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix löst viele Herausforderungen in Bezug auf Profilcontainer, insbesondere diese:
+Am 19. November 2018 [erwarb Microsoft FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix löst viele Herausforderungen in Bezug auf Profilcontainer. Zu den wichtigsten zählen folgende:
 
 - **Leistung:** [FSLogix-Profilcontainer](https://fslogix.com/products/profile-containers) sind ausgesprochen leistungsfähig und lösen Leistungsprobleme, die bisher einen Austauschmodus mit Cache blockiert haben.
 - **OneDrive:** Ohne FSLogix-Profilcontainer wird OneDrive for Business in nicht dauerhaften RDSH- und VDI-Umgebungen nicht unterstützt. Im Blog [OneDrive for Business and FSLogix best practices](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) (Best Practices für OneDrive for Business und FSLogix) beschrieben, wie diese beiden Technologien interagieren. Weitere Informationen finden Sie unter [Verwenden des Synchronisierungsclients auf virtuellen Desktops](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).

@@ -213,29 +213,29 @@
         - name: 'Bereitstellung: wo und wie'
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Notebook-VMs
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes Service
+        - name: Bereitstellen für Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: GPU-Rückschluss
+        - name: Bereitstellen für GPU-Rückschluss
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA-Rückschluss
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure App Service
+        - name: Bereitstellung in Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Benutzerdefiniertes Docker-Image
+        - name: Bereitstellen in Azure Container Instances
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: Bereitstellen auf virtuellen Notebook-Computern
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: Verwenden eines benutzerdefinierten Docker-Images
           href: how-to-deploy-custom-docker-image.md
         - name: Bereitstellen vorhandener Modelle
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: Problembehandlung und Debuggen
+        - name: Bereitstellen für IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Bereitstellen für FPGA-Rückschluss
+          href: how-to-deploy-fpga-web-service.md
+        - name: Behandeln und Debuggen von Bereitstellungsproblemen
           href: how-to-troubleshoot-deployment.md
     - name: Nutzen von Webdiensten
       items:

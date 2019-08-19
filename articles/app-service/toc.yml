@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: Betriebssystemfunktionalität
       href: operating-system-functionality.md
+    - name: Best Practices für die Bereitstellung
+      href: deploy-best-practices.md
     - name: Sicherheit
       items:
         - name: Empfehlungen
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: Ressourcen
   items:
+    - name: Blog zu App Service
+      href: 'https://aka.ms/appserviceblog'
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
       href: /learn/browse/
     - name: Azure-Roadmap

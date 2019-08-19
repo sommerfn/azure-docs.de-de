@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003915"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716159"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -90,6 +90,12 @@ Das Upsertverhalten ist durch *Einfügen oder Ersetzen*  definiert.
 **Vorherige Ebenen:** Werte wurden je nach Zieltyp abgeschnitten.
 
 **Ebene 1.2:** Werte, die nicht in den Zieltyp passen, werden gemäß der Richtlinie für Ausgabefehler behandelt.
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>Datensatz- und Arrayserialisierung beim Schreiben in die SQL-Ausgabe
+
+**Vorherige Ebenen:** Datensätze wurden als „Datensatz“ und Arrays als „Array“ geschrieben.
+
+**Ebene 1.2:** Datensätze und Arrays werden im JSON-Format serialisiert.
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>Strikte Überprüfung des Präfixes von Funktionen
 

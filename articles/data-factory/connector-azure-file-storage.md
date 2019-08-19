@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 3caa30ed0607992960151484fe4711736c304775
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4922f863802524b8abc85581ae3c3acea8fabe48
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228576"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839846"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory
 
@@ -43,7 +43,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Azure File Storage verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **FileServer**. | Ja |
 | host | Gibt den Azure File Storage-Endpunkt an als: <br/>– Unter Verwendung der Benutzeroberfläche: Geben Sie `\\<storage name>.file.core.windows.net\<file service name>` an.<br/>– Unter Verwendung von JSON: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Ja |
@@ -85,14 +85,14 @@ Folgende Eigenschaften werden für den mit Azure File Storage verknüpften Diens
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-- Informationen zum **Parquet-Format und zum Textformat mit Trennzeichen** finden Sie im Abschnitt [Dataset für Parquet-Format und Textformat mit Trennzeichen](#parquet-and-delimited-text-format-dataset).
-- Informationen zu anderen Formaten wie **ORC/Avro/JSON/Binär** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+- Informationen zum **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-dataset).
+- Informationen zu anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Dataset im Parquet-Format und im Textformat mit Trennzeichen
+### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat
 
-Informationen zum Kopieren von Daten in und aus Azure File Storage im **Parquet-Format oder im Textformat mit Trennzeichen** finden Sie in den Artikeln [Parquet-Format](format-parquet.md) und [Textformat mit Trennzeichen](format-delimited-text.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure File Storage unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
+Informationen zum Kopieren von Daten in das und aus dem **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure File Storage unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **FileServerLocation** festgelegt werden. | Ja      |
 | folderPath | Der Pfad zum Ordner. Wenn Sie Platzhalter verwenden möchten, um Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie entsprechende Aktivitätsquelleneinstellungen an. | Nein       |
@@ -130,9 +130,9 @@ Informationen zum Kopieren von Daten in und aus Azure File Storage im **Parquet-
 
 ### <a name="other-format-dataset"></a>Dataset in anderen Formaten
 
-Zum Kopieren von Daten in und aus Azure File Storage im **ORC/Avro/JSON/Binärformat** werden folgende Eigenschaften unterstützt:
+Beim Kopieren von Daten in und aus Azure File Storage im **ORC-/Avro-/JSON-Format** werden folgende Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **FileShare** |Ja |
 | folderPath | Pfad zum Ordner. <br/><br/>Platzhalterfilter werden unterstützt. Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: Stammordner/Unterordner/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Ja |
@@ -184,14 +184,14 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="azure-file-storage-as-source"></a>Azure File Storage als Quelle
 
-- Informationen zum Kopieren aus dem **Parquet-Format und dem Textformat mit Trennzeichen** finden Sie im Abschnitt [Quelle im Parquet-Format und im Textformat mit Trennzeichen](#parquet-and-delimited-text-format-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC/Avro/JSON/Binär** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
+- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-source).
+- Informationen zum Kopieren aus anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
 
-#### <a name="parquet-and-delimited-text-format-source"></a>Quelle im Parquet-Format und im Textformat mit Trennzeichen
+#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat
 
-Informationen zum Kopieren von Daten aus Azure File Storage im **Parquet-Format oder im Textformat mit Trennzeichen** finden Sie in den Artikeln [Parquet-Format](format-parquet.md) und [Textformat mit Trennzeichen](format-delimited-text.md) zu formatbasierten Quellen für Copy-Aktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
+Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **FileServerReadSetting** festgelegt werden. | Ja                                           |
 | recursive                | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. Zulässige Werte sind **true** (Standard) und **false**. | Nein                                            |
@@ -247,9 +247,9 @@ Informationen zum Kopieren von Daten aus Azure File Storage im **Parquet-Format 
 
 #### <a name="other-format-source"></a>Quelle in anderen Formaten
 
-Zum Kopieren von Daten aus Azure File Storage im **ORC/Avro/JSON/Binärformat** werden folgende Eigenschaften im Abschnitt **source** der Copy-Aktivität unterstützt:
+Beim Kopieren von Daten aus Azure File Storage im **ORC-/Avro-/JSON-Format** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **FileSystemSource** |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein |
@@ -289,14 +289,14 @@ Zum Kopieren von Daten aus Azure File Storage im **ORC/Avro/JSON/Binärformat** 
 
 ### <a name="azure-file-storage-as-sink"></a>Azure File Storage als Senke
 
-- Informationen zum Kopieren in das **Parquet-Format und das Textformat mit Trennzeichen** finden Sie im Abschnitt [Senke im Parquet-Format und im Textformat mit Trennzeichen](#parquet-and-delimited-text-format-sink).
-- Informationen zum Kopieren in andere Formate wie **ORC/Avro/JSON/Binärformat** finden Sie im Abschnitt [Senke in anderen Formaten](#other-format-sink).
+- Informationen zum Kopieren in das **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie im Abschnitt [Senke im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-sink).
+- Informationen zum Kopieren in andere Formate wie **ORC/Avro/JSON** finden Sie im Abschnitt [Senke in anderen Formaten](#other-format-sink).
 
-#### <a name="parquet-and-delimited-text-format-sink"></a>Senke im Parquet-Format und im Textformat mit Trennzeichen
+#### <a name="format-based-sink"></a> Senke im Parquet-Format, Textformat mit Trennzeichen und Binärformat
 
-Informationen zum Kopieren von Daten in Azure File Storage im **Parquet-Format oder im Textformat mit Trennzeichen** finden Sie in den Artikeln [Parquet-Format](format-parquet.md) und [Textformat mit Trennzeichen](format-delimited-text.md) zu formatbasierten Senken für Copy-Aktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
+Informationen zum Kopieren von Daten in das **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Senken für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **FileServerWriteSetting** festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
@@ -342,12 +342,12 @@ Informationen zum Kopieren von Daten in Azure File Storage im **Parquet-Format o
 
 #### <a name="other-format-sink"></a>Senke in anderen Formaten
 
-Zum Kopieren von Daten in Azure File Storage im **ORC/Avro/JSON/Binärformat** werden im Abschnitt **sink** folgende Eigenschaften unterstützt:
+Beim Kopieren von Daten in Azure File Storage im **ORC-/Avro-/JSON-Format** werden im Abschnitt **sink** folgende Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **FileSystemSink** |Ja |
-| copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Die Dateihierarchie wird im Zielordner beibehalten. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich in der ersten Ebene des Zielordners. Für die Zieldateien wird ein automatisch ein Name erzeugt. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. | Nein |
+| copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Die Dateihierarchie wird im Zielordner beibehalten. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich in der ersten Ebene des Zielordners. Für die Zieldateien wird ein automatisch ein Name erzeugt. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Name dem angegebenen Namen. Andernfalls wird ein automatisch generierter Dateiname verwendet. | Nein |
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein |
 
 **Beispiel:**
@@ -388,10 +388,10 @@ Dieser Abschnitt beschreibt das resultierende Verhalten für den Ordnerpfad und 
 
 | folderPath | fileName | recursive | Quellordnerstruktur und Filterergebnis (Dateien mit **Fettformatierung** werden abgerufen.)|
 |:--- |:--- |:--- |:--- |
-| `Folder*` | (leer, Standardwert verwenden) | false | OrdnerA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-| `Folder*` | (leer, Standardwert verwenden) | true | OrdnerA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-| `Folder*` | `*.csv` | false | OrdnerA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
-| `Folder*` | `*.csv` | true | OrdnerA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | (empty, use default) | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | (leer, Standardwert verwenden) | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5.csv<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
+| `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>AndererOrdnerB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei6.csv |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Beispiele für "recursive" und "copyBehavior"
 

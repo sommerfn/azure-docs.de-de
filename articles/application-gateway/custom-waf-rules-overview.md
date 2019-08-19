@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164657"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716622"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Benutzerdefinierte Regeln für die Web Application Firewall v2
 
@@ -110,10 +110,10 @@ Muss eine der folgenden Variablen sein:
 - RemoteAddr: IP-Adresse/Hostname der Remotecomputerverbindung
 - RequestMethod: HTTP-Anforderungsmethode (GET, POST, PUT, DELETE usw.)
 - QueryString: Variable im URI
-- PostArgs: Im POST-Text gesendete Argumente
+- PostArgs: Im POST-Text gesendete Argumente. Benutzerdefinierte Regeln mit dieser Abgleichsvariablen werden nur angewendet, wenn der Header „Content-Type“ auf „application/x-www-form-urlencoded“ und „multipart/form-data“ festgelegt ist.
 - RequestUri: URI der Anforderung
 - RequestHeaders: Header der Anforderung
-- RequestBody: Text der Anforderung
+- RequestBody: Enthält den gesamten Anforderungstext. Benutzerdefinierte Regeln mit dieser Abgleichsvariablen werden nur angewendet, wenn der Header „Content-Type“ auf „application/x-www-form-urlencoded“ festgelegt ist. 
 - RequestCookies: Cookies der Anforderung
 
 ### <a name="selector-optional"></a>Selektor (optional)

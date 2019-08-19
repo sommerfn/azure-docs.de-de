@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/29/2019
+ms.date: 08/06/2019
 ms.author: roiyz
-ms.openlocfilehash: b9d0e582b77dc06e1655a7bdb57ee232c603bc86
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 43da116753723470efddc92bffc11038a80a35fb
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706679"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827059"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor-VM-Erweiterung für Windows
 
@@ -32,16 +32,14 @@ Azure Monitor-Protokolle bietet Überwachungsfunktionen für cloudbasierte und l
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Log Analytics-Agent-Erweiterung für Windows unterstützt die folgenden Versionen des Windows-Betriebssystems:
-
-- Windows Server 2019
-- Windows Server 2008 R2, 2012, 2012 R2, 2016, Version 1709 und 1803
+Ausführliche Informationen zu den unterstützten Windows-Betriebssystemen finden Sie in der [Übersicht über den Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
 Die folgende Tabelle enthält eine Zuordnung der Version der Windows Azure Monitor-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. 
 
 | Log Analytics-Agent-Paketversion für Windows | Version der Azure Monitor-VM-Erweiterung für Windows | Herausgabedatum | Versionsinformationen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Erhöhung des Werts für „MaxExpressionDepth“ auf 10.000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Hinzugefügte Möglichkeit, Standardanmeldeinformationen zu deaktivieren, wenn eine Proxyverbindung hergestellt wird (Unterstützung für WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | März 2019 | <ul><li>Kleinere Stabilisierungskorrekturen </li></ul> |
 | 10.19.10006 | – | Dezember 2018 | <ul><li> Kleinere Stabilisierungskorrekturen </li></ul> | 
@@ -105,7 +103,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 >[!NOTE]
 >Die Vorlage unterstützt nicht die Angabe mehrerer Arbeitsbereichs-IDs und Arbeitsbereichsschlüssel, wenn Sie den Agent zum Berichten an mehrere Arbeitsbereiche konfigurieren möchten. Informationen zum Konfigurieren des Agents zum Berichten an mehrere Arbeitsbereiche finden Sie unter [Hinzufügen oder Entfernen von Arbeitsbereichen](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
-Der JSON-Code für eine Erweiterung des virtuellen Computers kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
+Der JSON-Code für eine Erweiterung des virtuellen Computers kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
 Im folgenden Beispiel wird davon ausgegangen, dass die Azure Monitor-Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 

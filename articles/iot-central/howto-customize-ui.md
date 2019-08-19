@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495562"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725686"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Anpassen der Azure IoT Central-Benutzeroberfläche 
 
-*Dieser Artikel gilt für Administratoren.*
+In diesem Artikel erfahren Sie, wie Sie als Administrator die Benutzeroberfläche Ihrer Anwendung anpassen können, indem Sie benutzerdefinierte Designs anwenden und die Hilfelinks so ändern, dass sie auf die eigenen benutzerdefinierten Hilferessourcen verweisen. 
 
-In IoT Central können Sie die Benutzeroberfläche Ihrer Anwendung anpassen, indem Sie benutzerdefinierte Designs anwenden und die Hilfelinks so ändern, dass sie auf Ihre eigenen benutzerdefinierten Hilferessourcen verweisen. Der folgende Screenshot zeigt eine Seite mit dem Standarddesign:
+Der folgende Screenshot zeigt eine Seite mit dem Standarddesign:
 
 ![IoT Central-Standarddesign](./media/howto-customize-ui/standard-ui.png)
 
@@ -39,7 +39,7 @@ Auf dieser Seite können Sie die folgenden Aspekte Ihrer Anwendung anpassen:
 
 Ein PNG-Bild von maximal 1 MB Größe mit einem transparenten Hintergrund. Dieses Logo wird links auf der Titelleiste für die IoT Central-Anwendung angezeigt.
 
-Wenn Ihr Logobild den Namen Ihrer Anwendung enthält, können Sie den Text des Anwendungsnamens ausblenden. Weitere Informationen finden Sie unter [Verwalten von Anwendungseinstellungen](./howto-administer.md#manage-application-settings).
+Wenn Ihr Logobild den Namen Ihrer Anwendung enthält, können Sie den Text des Anwendungsnamens ausblenden. Weitere Informationen finden Sie unter [Ändern von Anwendungsnamen und -URLs](./howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Browsersymbol (Favicon)
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385495"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736903"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -48,7 +48,7 @@ Jeder Anforderungsendpunkt einer Logik-App hat in der URL des Endpunkts eine [Sh
 
 Jede URL enthält einen `sp`, `sv`, und `sig`-Abfrageparameter wie in dieser Tabelle beschrieben:
 
-| Query parameter (Abfrageparameter) | BESCHREIBUNG |
+| Query parameter (Abfrageparameter) | Beschreibung |
 |-----------------|-------------|
 | `sp` | Gibt die Berechtigungen für die zulässigen HTTP-Methoden an. |
 | `sv` | Gibt die SAS-Version an, die für die Erzeugung der Signatur verwendet werden soll. |
@@ -183,7 +183,7 @@ Um zu verhindern, dass andere Ihre Logik-App ändern oder löschen, können Sie 
 
 ## <a name="access-to-run-history-data"></a>Zugriff auf die Ausführungsverlaufsdaten
 
-Alle Daten in der Ausführung einer Logik-App werden bei der Übertragung und im Ruhezustand verschlüsselt. Wenn Ihre Logik-App die Ausführung beendet hat, können Sie den Verlauf für diese Ausführung anzeigen, einschließlich der Schritte, die zusammen mit Status, Dauer, Eingaben und Ausgaben für jede Aktion ausgeführt wurden. Diese umfangreichen Informationen geben einen Einblick in die Funktionsweise Ihrer Logik-App und zeigen, wo Sie mit der Problembehandlung beginnen können.
+Während der Ausführung einer Logik-App werden alle Daten bei der Übertragung mithilfe von [Transit Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) sowie im [Ruhezustand](../security/fundamentals/encryption-atrest.md) verschlüsselt. Wenn Ihre Logik-App die Ausführung beendet hat, können Sie den Verlauf für diese Ausführung anzeigen, einschließlich der Schritte, die zusammen mit Status, Dauer, Eingaben und Ausgaben für jede Aktion ausgeführt wurden. Diese umfangreichen Informationen geben einen Einblick in die Funktionsweise Ihrer Logik-App und zeigen, wo Sie mit der Problembehandlung beginnen können.
 
 Wenn Sie auf den Ausführungsverlauf einer Logik-App zugreifen, dann authentifiziert Logic Apps den Zugriff und stellt Links zu den Eingaben und Ausgaben der Anforderungen sowie die Antworten in der Ausführung Ihrer Logik-App bereit. Bei Aktionen, die Passwörtern, Geheimnissen, Schlüsseln oder anderen sensiblen Informationen verarbeiten, sollten Sie jedoch verhindern, dass andere Personen diese Daten einsehen und darauf zugreifen. Wenn Ihre Logik-App beispielsweise ein Geheimnis aus [Azure Key Vault](../key-vault/key-vault-whatis.md) erhält, das bei der Authentifizierung einer HTTP-Aktion verwendet werden soll, sollten Sie dieses Geheimnis ausblenden.
 
@@ -437,7 +437,7 @@ Im Anschluss finden Sie weitere Informationen zu den `parameters`-Abschnitten:
 
 Diese Beispielvorlage hat mehrere gesicherte Parameterdefinitionen, die den Typ `securestring` verwenden:
 
-| Parametername | BESCHREIBUNG |
+| Parametername | Beschreibung |
 |----------------|-------------|
 | `TemplatePasswordParam` | Ein Vorlagenparameter, der ein Kennwort akzeptiert, das dann an den `basicAuthPasswordParam`-Parameter der Workflowdefinition übergeben wird. |
 | `TemplatePasswordParam` | Ein Vorlagenparameter, der einen Benutzernamen akzeptiert, der dann an den `basicAuthUserNameParam`-Parameter der Workflowdefinition übergeben wird. |

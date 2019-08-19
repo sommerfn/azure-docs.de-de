@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386876"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817219"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -92,7 +92,7 @@ Die beste Methode zum Messen der Leistungsanforderungen Ihrer Anwendung ist die 
 
 Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher und alle logischen und physischen Datenträger Ihres Servers verfügbar. Bei Verwenden von Storage Premium-Datenträgern mit einem virtuellen Computer gelten die Indikatoren für physische Datenträger für jeden Storage Premium-Datenträger. Die Indikatoren für logische Datenträger gelten für jedes Volume, das auf den Storage Premium-Datenträgern erstellt wurde. Sie müssen die Werte für die Datenträger erfassen, die den Workload Ihrer Anwendung hosten. Wenn es eine 1: 1-Zuordnung zwischen logischen und physischen Datenträgern gilt, beziehen Sie sich auf die Leistungsindikatoren für physische Datenträger und andernfalls auf die Leistungsindikatoren für logische Datenträger. Unter Linux erzeugt der Befehl „iostat“ einen Bericht der CPU- und Festplattenauslastung. Der Bericht zur Datenträgerauslastung bietet Statistiken pro physischem Gerät bzw. pro Partition. Wenn Sie einen Datenbankserver mit Daten- und Protokolldateien auf getrennten Datenträgern nutzen, erfassen Sie diese Daten für beide Datenträger. In der folgenden Tabelle werden die Leistungsindikatoren für Datenträger, Prozessor und Arbeitsspeicher beschrieben:
 
-| Indikator | BESCHREIBUNG | Systemmonitor | iostat |
+| Indikator | Beschreibung | Systemmonitor | iostat |
 | --- | --- | --- | --- |
 | **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s <br> Schreibvorgänge/s |tps <br> r/s <br> w/s |
 | **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit <br> % Schreibzeit |r/s <br> w/s |
@@ -268,6 +268,9 @@ Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger 
 
 *ReadWrite*  
 Für die Betriebssystem-Datenträger ist der „ReadWrite“-Cache standardmäßig aktiviert. Wir haben vor Kurzem Unterstützung des „ReadWrite“-Caches auf Datenträgern hinzugefügt. Wenn Sie den „ReadWrite“-Cache nutzen, benötigen Sie eine ordnungsgemäße Möglichkeit zum Schreiben der Daten aus dem Cache auf beständige Datenträger. SQL Server übernimmt beispielsweise selbst das Schreiben von Daten im Cache auf beständige Speicherdatenträger. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
+
+*None*  
+Die Option **None** wird aktuell nur für reguläre Datenträger unterstützt. Für Betriebssystemdatenträger wird sie nicht unterstützt. Wenn Sie **None** für einen Betriebssystemdatenträger festlegen, wird die Einstellung intern überschrieben und auf **ReadOnly** festgelegt.
 
 Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwenden, indem Sie die folgenden Schritte ausführen:
 

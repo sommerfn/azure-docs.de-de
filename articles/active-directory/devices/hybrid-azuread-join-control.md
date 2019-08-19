@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59104bf9c7675fdac2c245fff89ab1483b96b67
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481725"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834635"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -72,14 +72,17 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
       1. Schlüsselpfad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Wertname: **TenantName**
       1. Werttyp: **REG_SZ**
-      1. Wertdaten: Ihr überprüfter **Domänenname** in Azure AD (beispielsweise `contoso.onmicrosoft.com` oder ein anderer überprüfter Domänenname in Ihrem Verzeichnis).
+      1. Wertdaten: Der überprüfte **Domänenname**, wenn Sie eine Verbundumgebung wie Active Directory-Verbunddienste (AD FS) verwenden. Der überprüfte **Domänenname** oder Ihr Domänenname auf „onmicrosoft.com“ (beispielsweise `contoso.onmicrosoft.com`), wenn Sie eine verwaltete Umgebung verwenden.
    1. Klicken Sie auf **OK**
 1. Schließen Sie den Editor für das neu erstellte Gruppenrichtlinienobjekt.
 1. Verknüpfen Sie das neu erstellte Gruppenrichtlinienobjekt mit der gewünschten Organisationseinheit, die die in die Domäne eingebundenen Computer Ihrer kontrollierten Rolloutelemente enthält.
 
 ### <a name="configure-ad-fs-settings"></a>Konfigurieren von AD FS-Einstellungen
 
-Bei Verwendung von AD FS müssen Sie gemäß der weiter oben angegebenen Anleitung zunächst den clientseitigen SCP konfigurieren. Dabei muss das Gruppenrichtlinienobjekt allerdings mit Ihren AD FS-Servern verknüpft werden. Diese Konfiguration ist erforderlich, damit AD FS die Quelle für Geräteidentitäten als Azure AD einrichten kann.
+Bei Verwendung von AD FS müssen Sie gemäß der weiter oben angegebenen Anleitung zunächst den clientseitigen SCP konfigurieren. Dabei muss das Gruppenrichtlinienobjekt allerdings mit Ihren AD FS-Servern verknüpft werden. Das SCP-Objekt definiert die Autoritätsquelle für Geräteobjekte. Dabei kann es sich um die lokale Umgebung oder um Azure AD handeln. Wenn dieses Objekt für Active Directory-Verbunddienste (AD FS) konfiguriert ist, wird die Quelle für Geräteobjekte als Azure AD eingerichtet.
+
+> [!NOTE]
+> Wenn Sie auf Ihren AD FS-Servern den clientseitigen SCP nicht konfiguriert haben, wird als Quelle für Geräteidentitäten die lokale Umgebung verwendet, und AD FS beginnt nach einem bestimmten Zeitraum damit, Geräteobjekte aus dem lokalen Verzeichnis zu löschen.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrollierte Überprüfung von Azure AD Hybrid Join für kompatible Windows-Geräte
 

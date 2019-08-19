@@ -53,11 +53,9 @@
   items:
     - name: Funktionen mit Logic Apps
       href: functions-twitter-email.md
-    - name: Erstellen einer serverlosen API
-      href: functions-create-serverless-api.md
     - name: Bereitstellen von Python-Funktionen mit VS Code
       href: tutorial-vs-code-serverless-python.md
-    - name: Erstellen einer OpenAPI-Definition
+    - name: OpenAPI-Definition für serverlose APIs
       href: functions-openapi-definition.md
     - name: Herstellen einer Verbindung mit einem virtuellen Netzwerk
       href: functions-create-vnet.md
@@ -236,12 +234,10 @@
           href: functions-api-definition-getting-started.md
         - name: Export in PowerApps und Microsoft Flow
           href: app-service-export-api-to-powerapps-and-flow.md
-        - name: Aufrufen einer Funktion aus PowerApps
-          href: functions-powerapps-scenario.md
-        - name: Aufrufen einer Funktion von Microsoft Flow
-          href: functions-flow-scenario.md
         - name: Verwenden einer verwalteten Identität
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Anpassen des HTTP-Funktionsendpunkts
+          href: functions-create-serverless-api.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit dem Speicher

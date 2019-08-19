@@ -1,24 +1,49 @@
 ---
 title: Neue Funktionen in Azure Site Recovery | Microsoft-Dokumentation
-description: Bietet eine Zusammenfassung der neuen Funktionen von Azure Site Recovery.
+description: Hier finden Sie eine Zusammenfassung der neuen Features in Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 07/30/2019
 ms.author: raynew
-ms.openlocfilehash: 0bfaf848b0b700c8d745acf8c6a63c898dc91140
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272872"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717671"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
 Der [Azure Site Recovery](site-recovery-overview.md)-Dienst wird laufend aktualisiert und verbessert. Um Sie auf dem Laufenden zu halten, bietet Ihnen dieser Artikel Informationen zu den neuesten Releases, neuen Features und neuen Inhalten. Diese Seite wird regelmäßig aktualisiert.
 
 Wenn Sie Vorschläge für Site Recovery-Funktionen haben, freuen wir uns über Ihr [Feedback](https://feedback.azure.com/forums/256299-site-recovery).
+
+
+## <a name="installing-updates"></a>Installieren von Updates
+
+Unterstützung und Anweisungen für Site Recovery-Updates finden Sie in [diesem Artikel](service-updates-how-to.md).
+
+## <a name="updates-july-2019"></a>Updates (Juli 2019)
+
+### <a name="update-rollup-38"></a>Updaterollup 38
+
+Das [Updaterollup 38](https://support.microsoft.com/help/4513507/) umfasst folgenden Updates:
+
+**Update** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+
+
+### <a name="general"></a>Allgemein
+
+Site Recovery unterstützt nun die Verwendung universeller v2-Speicherkonten für Cachespeicher oder Zielspeicher. Bislang wurde nur v1 unterstützt.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>Notfallwiederherstellung: VMware zu Azure
+
+Auf einem virtuellen Azure-Computer mit verwalteten Datenträgern können nun Datenträger mit bis zu 8 TB repliziert werden.
 
 
 ## <a name="updates-june-2019"></a>Updates (Juni 2019)
@@ -94,7 +119,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 **Feature** | **Details**
 --- | ---
 **Verwaltete Datenträger** | Replikation von lokalen virtuelle VMware-Computer und physische Server erfolgt jetzt direkt auf verwaltete Datenträger in Azure. Lokale Daten werden an ein Cachespeicherkonto in Azure gesendet, und Wiederherstellungspunkte werden auf verwalteten Datenträgern am Zielspeicherort erstellt. Daher müssen Sie nicht mehrere Zielspeicherkonten verwalten.
-**Konfigurationsserver** | Site Recovery unterstützt jetzt Konfigurationsserver mit mehreren Netzwerkkarten. Sie müssen zur VM des Konfigurationsservers zusätzliche Adapter hinzufügen, bevor Sie den Konfigurationsserver im Tresor registrieren. Wenn Sie die Adapter danach hinzufügen, müssen Sie den Server erneut beim Tresor registrieren.
+**Konfigurationsserver** | Site Recovery unterstützt jetzt Konfigurationsserver mit mehreren NICs. Fügen Sie der Konfigurationsserver-VM zusätzliche Adapter hinzu, bevor Sie den Konfigurationsserver im Tresor registrieren. Wenn Sie die Adapter danach hinzufügen, müssen Sie den Server erneut beim Tresor registrieren.
 
 
 ## <a name="updates-february-2019"></a>Updates (Februar 2019)
@@ -267,7 +292,7 @@ Mit dem [Updaterollup 28](https://support.microsoft.com/help/4460079/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-### <a name="azure-vms-disaster-recovery"></a>Notfallwiederherstellung von Azure-VMs 
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
@@ -296,7 +321,7 @@ Mit dem [Updaterollup 27](https://support.microsoft.com/help/4055712/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-### <a name="azure-vms-disaster-recovery"></a>Notfallwiederherstellung von Azure-VMs 
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
 
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 

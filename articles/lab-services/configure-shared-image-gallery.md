@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: de857498aeb51c9b3711c90338d983e85b61cb70
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065435"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774566"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurieren eines gemeinsamen Image-Katalogs in Azure DevTest Labs
 DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:
@@ -35,7 +35,7 @@ Wenn Sie eine große Anzahl verwalteter Images haben, die Sie pflegen müssen un
 
 ## <a name="considerations"></a>Überlegungen
 - Sie können jeweils nur einen Katalog mit freigegebenen Images an ein Lab anfügen. Wenn Sie einen anderen Katalog anfügen möchten, müssen Sie zuvor den vorhandenen Katalog trennen. 
-- DevTest Labs bietet zurzeit nicht die Möglichkeit, Images über das Lab in den Katalog hochzuladen. 
+- DevTest Labs bietet zurzeit keine Möglichkeit, Images über das Lab in den Katalog hochzuladen. 
 - Wenn Sie eine VM mit einem Image aus dem Katalog mit freigegebenen Images erstellen, verwendet DevTest Labs immer die aktuelle veröffentlichte Version des Images.
 - DevTest Labs versucht sicherzustellen, dass der Katalog mit freigegebenen Images die Images automatisch in die Region des Labs repliziert, dies ist jedoch nicht immer möglich. Stellen Sie daher sicher, dass die Images bereits in die Region des Labs repliziert wurden, damit es nicht zu Problemen kommt, wenn Benutzer diese Images zum Erstellen von VMs verwenden.
 
@@ -51,7 +51,9 @@ Wenn Sie eine große Anzahl verwalteter Images haben, die Sie pflegen müssen un
 1. Fügen Sie einen vorhandenen Katalog mit freigegebenen Images an Ihr Lab an, indem Sie auf die Schaltfläche **Anfügen** klicken und in der Dropdownliste Ihren Katalog auswählen.
 
     ![Attach](./media/configure-shared-image-gallery/attach-options.png)
-1. Wechseln Sie zu Ihrem angefügten Katalog, und konfigurieren Sie ihn, um freigegebene Images für die Erstellung von VMs zu **aktivieren oder deaktivieren**.
+1. Wechseln Sie zu Ihrem angefügten Katalog, und konfigurieren Sie ihn, um freigegebene Images für die Erstellung von VMs zu **aktivieren oder deaktivieren**. Wählen Sie einen Imagekatalog aus der Liste aus, um ihn zu konfigurieren. 
+
+    **Die Verwendung aller Images als Basis für virtuelle Computer zulassen** ist standardmäßig auf **Ja** festgelegt. Das bedeutet, dass alle Images aus dem angefügten Katalog mit freigegebenen Images für einen Labbenutzer zur Verfügung stehen, wenn dieser einen neuen virtuellen Labcomputer erstellt. Wenn der Zugriff auf bestimmte Images eingeschränkt werden muss, ändern Sie die Option **Die Verwendung aller Images als Basis für virtuelle Computer zulassen** in **Nein**, wählen Sie die Images aus, die Sie bei der Erstellung virtueller Computer zulassen möchten, und wählen Sie anschließend die Schaltfläche **Speichern** aus.
 
     ![Aktivieren oder Deaktivieren](./media/configure-shared-image-gallery/enable-disable.png)
 1. Labbenutzer können dann eine VM mit den aktivierten Images erstellen, indem sie auf **+ Hinzufügen** klicken und auf der Seite **Basis auswählen** nach dem Image suchen.
@@ -67,92 +69,48 @@ Wenn Sie eine Azure Resource Manager-Vorlage verwenden, um einen Katalog mit fre
 {
     "apiVersion": "2018-10-15-preview",
     "type": "Microsoft.DevTestLab/labs",
-    "name": "[parameters('newLabName')]",
-    "location": "[resourceGroup (). location]",
+    "name": "mylab",
+    "location": "eastus",
     "resources": [
-    {
-        "apiVersion": "2018-10-15-preview",
-        "name": "[variables('labVirtualNetworkName')]",
-        "type": "virtualNetworks",
-        "dependsOn": [
-            "[resourceId('Microsoft.DevTestLab/labs', parameters('newLabName'))]"
-        ]
-    },
     {
         "apiVersion":"2018-10-15-preview",
         "name":"myGallery",
         "type":"sharedGalleries",
         "properties": {
-            "galleryId":"[parameters('existingSharedGalleryId')]",
+            "galleryId":"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/mySharedGalleryRg/providers/Microsoft.Compute/galleries/mySharedGallery",
             "allowAllImages": "Enabled"
-        },
-        "dependsOn":[
-            "[resourceId('Microsoft.DevTestLab/labs', parameters('newLabName'))]"
-        ]
+        }
     }
     ]
-} 
-
+}
 ```
 
 Ein vollständiges Beispiel für eine Resource Manager-Vorlage finden Sie in den Resource Manager-Vorlagenbeispielen in unserem öffentlichen GitHub-Repository: [Konfigurieren eines Katalogs mit freigegebenen Images beim Erstellen eines Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)
 
-### <a name="create-a-vm-using-an-image-from-the-shared-image-gallery"></a>Erstellen einer VM mit einem Image aus dem Katalog mit freigegebenen Images
-Verwenden Sie folgendes Beispiel, wenn Sie mithilfe einer Azure Resource Manager-Vorlage eine VM mit einem Image aus dem Katalog mit freigegebenen Images erstellen:
+## <a name="use-api"></a>Verwenden der API
 
-```json
+### <a name="shared-image-galleries---create-or-update"></a>Kataloge mit freigegebenen Images: Erstellen oder Aktualisieren
 
-"resources": [
+```rest
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
+Body: 
 {
-    "apiVersion": "2018-10-15-preview",
-    "type": "Microsoft.DevTestLab/labs/virtualMachines",
-    "name": "[variables('resourceName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "sharedImageId": "[parameters('existingSharedImageId')]",
-        "size": "[parameters('newVMSize')]",
-        "isAuthenticationWithSshKey": false,
-        "userName": "[parameters('userName')]",
-        "sshKey": "",
-        "password": "[parameters('password')]",
-        "labVirtualNetworkId": "[variables('labVirtualNetworkId')]",
-        "labSubnetName": "[variables('labSubnetName')]"
+    "properties":{
+        "galleryId": "[Shared Image Gallery resource Id]",
+        "allowAllImages": "Enabled"
     }
 }
-],
 
 ```
 
-Weitere Informationen finden Sie in den Resource Manager-Vorlagenbeispielen in unserem öffentlichen GitHub-Repository:
-[Erstellen einer VM mit einem Image aus dem Katalog mit freigegebenen Images](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage)
+### <a name="shared-image-galleries-images---list"></a>Kataloge mit freigegebenen Images: Imageliste 
 
-## <a name="use-api"></a>Verwenden der API
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
+```
 
-- Verwenden Sie die API-Version 2018_10_15_preview.
-- Senden Sie die Anforderung zum Anfügen Ihres Katalogs wie im folgenden Codeausschnitt gezeigt:
-    
-    ``` 
-    PUT [Lab Resource Id]/SharedGalleries/[newGalleryName]
-    Body: 
-    {
-        “properties”:{
-            “galleryId”: “[Shared Image Gallery resource Id]”,
-            “allowAllImages”:”Enabled”
-        }
-    }
-    ```
-- Mit dem folgenden GET-Aufruf können Sie alle Images in Ihrem Katalog mit freigegebenen Images zusammen mit ihren Ressourcen-IDs auflisten:
 
-    ```
-    GET [Lab Resource Id]/SharedGalleries/mySharedGallery/SharedImages
-    ````
-- Um eine VM mit einem freigegebenen Image zu erstellen, können Sie einen PUT-Aufruf auf VMs ausführen und in den VM-Eigenschaften die ID der freigegebenen Images, die Sie mit dem obigen Aufruf abgerufen haben, an „properties.SharedImageId“ übergeben.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln zu Artefakten:
-
-- [Angeben verbindlicher Artefakte für Ihr Lab](devtest-lab-mandatory-artifacts.md)
-- [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
-- [Hinzufügen eines Artefaktrepositorys zu einem Lab](devtest-lab-artifact-author.md)
-- [Diagnostizieren von Artefaktfehlern](devtest-lab-troubleshoot-artifact-failure.md)
+In den folgenden Artikeln erfahren Sie, wie Sie einen virtuellen Computer auf der Grundlage eines Images aus dem angefügten Katalog mit freigegebenen Images erstellen: [Hinzufügen einer VM mit einem Image aus dem angefügten Katalog mit freigegebenen Images](add-vm-use-shared-image.md)

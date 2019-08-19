@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+        - name: Löschen von Speicherblobs mit NSG-Flowprotokollen
+          href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: Analysieren von NSG-Flussprotokollen
           items:
             - name: Lesen von NSG-Datenflussprotokollen
