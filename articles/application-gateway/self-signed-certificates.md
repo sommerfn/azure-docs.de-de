@@ -87,7 +87,7 @@ Verwenden Sie den folgenden Befehl, um den Schlüssel für das Serverzertifikat 
 Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zertifizierungsstelle erteilt wird, wenn ein Zertifikat angefordert wird. Die Zertifizierungsstelle gibt das Zertifikat für diese spezielle Anforderung aus.
 
 > [!NOTE]
-> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. „www.contoso.com“, und der CN des Serverzertifikats ist „www.fabrikam.com“.
+> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. www.contoso.com, und der CN des Serverzertifikats ist www.fabrikam.com.
 
 
 1. Verwenden Sie den folgenden Befehl, um die Zertifikatsignieranforderung zu generieren:

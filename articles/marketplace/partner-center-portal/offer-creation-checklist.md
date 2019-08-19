@@ -1,22 +1,22 @@
 ---
-title: Prüfliste für die Angebotserstellung – Kommerzieller Marketplace für Azure
-description: Die Informationen, die Sie bei der Angebotserstellung angeben können. – Kommerzieller Marketplace für Azure
+title: Prüfliste für die Erstellung von SaaS-Angeboten – Kommerzieller Marketplace für Azure
+description: Die Informationen, die Sie bei der Erstellung von SaaS-Angeboten angeben können. – Kommerzieller Marketplace für Azure
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 08/14/2019
+ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701155"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036375"
 ---
-# <a name="offer-creation-checklist"></a>Prüfliste für die Angebotserstellung
+# <a name="saas-offer-creation-checklist"></a>Prüfliste für die Erstellung von SaaS-Angeboten
 
-Bei der Angebotserstellung werden Sie durch mehrere Seiten geführt. Hier sind die Informationen, die Sie auf den einzelnen Seiten angeben können, sowie Links zu weiteren Informationen über die einzelnen Elemente aufgeführt.
+Bei der Erstellung von SaaS-Angeboten werden Sie durch mehrere Seiten geführt. Hier sind die Informationen, die Sie auf den einzelnen Seiten angeben können, sowie Links zu weiteren Informationen über die einzelnen Elemente aufgeführt.
 
 Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt. Einige Bereiche sind optional oder bieten Standardwerte, dass Sie nach Bedarf ändern können. Sie müssen diese Abschnitte nicht in der hier aufgeführten Reihenfolge bearbeiten.
 

@@ -69,7 +69,7 @@ Die Mustersyntax unterstützt folgende Syntax:
 |--|--|--|--|
 |Entität| {} – geschweifte Klammern|2|Where is form {entity-name}? (Wo befindet sich Formular {Entitätsname}?)|
 |optional|[] – eckige Klammern<BR><BR>Auf Schachtelungsebenen jeder beliebigen Kombination von optionaler und Gruppierungssyntax sind diese auf 3 begrenzt. |2|The question mark is optional [?] (Das Fragezeichen ist optional [?])|
-|Gruppierung|() – Klammern|2|is (a \| b) (ist (a | b))|
+|Gruppierung|() – Klammern|2|is (a \| b) (ist (a \| b))|
 |oder| \| – senkrechter Strich (Pipe)<br><br>Die senkrechten Striche („oder“) sind pro Gruppe auf 2 begrenzt. |-|Where is form ({form-name-short} &#x7c; {form-name-long} &#x7c; {form-number}) (Wo ist Formular ({kurzer Formularname} &#x7c; {langer Formularname} &#x7c; {Formularnummer}))| 
 |Anfang und/oder Ende der Äußerung|^ – Caretzeichen|-|^begin the utterance (Anfang der Äußerung)<br>the utterance is done^ (Ende der Äußerung)<br>^strict literal match of entire utterance with {number} entity^ (^strikte Literalübereinstimmung der gesamten Äußerung mit {Anzahl} Entität(en))|
 
