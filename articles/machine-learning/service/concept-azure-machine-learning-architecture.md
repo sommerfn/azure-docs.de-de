@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828230"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990098"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
@@ -49,12 +49,16 @@ Verwenden Sie diese Tools für Azure Machine Learning:
 + Schreiben Sie Code in Visual Studio Code mit der [VS Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
 + Verwenden Sie die [grafische Benutzeroberfläche (Vorschauversion) für Azure Machine Learning Service](ui-concept-visual-interface.md), um die Workflowschritte auszuführen, ohne Code schreiben zu müssen.
 
-## <a name="glossary-of-concepts"></a>Glossar der Konzepte
+> [!NOTE]
+> In diesem Artikel werden von Azure Machine Learning Service genutzte Begriffe und Konzepte definiert, aber keine Begriffe und Konzepte für die Azure Platform. Weitere Informationen zur Azure Platform-Terminologie finden Sie im [Microsoft Azure-Glossar](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+
+## <a name="glossary"></a>Glossar
 
 + <a href="#workspaces">Arbeitsbereich</a>
 + <a href="#experiments">Experimente</a>
 + <a href="#models">Modelle</a>
 + <a href="#run-configurations">Laufzeitkonfiguration</a>
++ [Schätzfunktionen](#estimators)
 + <a href="#datasets-and-datastores">Dataset und Datenspeicher</a>
 + <a href="#compute-targets">Computeziele</a>
 + <a href="#training-scripts">Trainingsskript</a>
@@ -69,19 +73,9 @@ Verwenden Sie diese Tools für Azure Machine Learning:
 + <a href="#ml-pipelines">ML-Pipelines</a>
 + <a href="#logging">Protokollierung</a>
 
-> [!NOTE]
-> In diesem Artikel werden von Azure Machine Learning Service genutzte Begriffe und Konzepte definiert, aber keine Begriffe und Konzepte für die Azure Platform. Weitere Informationen zur Azure Platform-Terminologie finden Sie im [Microsoft Azure-Glossar](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
-
-
 ### <a name="workspaces"></a>Arbeitsbereiche
 
-[Der Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für Azure Machine Learning Service. Er bietet einen zentralen Ort für die Arbeit mit allen Artefakten, die Sie bei der Verwendung von Azure Machine Learning Service erstellen.
-
-Das folgende Diagramm enthält eine Taxonomie des Arbeitsbereichs:
-
-[![Taxonomie des Arbeitsbereichs](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
-
-Weitere Informationen über Arbeitsbereiche finden Sie unter [Was ist ein Azure Machine Learning-Arbeitsbereich?](concept-workspace.md).
+[Der Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für Azure Machine Learning Service. Er bietet einen zentralen Ort für die Arbeit mit allen Artefakten, die Sie bei der Verwendung von Azure Machine Learning Service erstellen. Sie können einen Arbeitsbereich mit anderen Benutzern teilen. Eine detaillierte Beschreibung von Arbeitsbereichen finden Sie unter [Was ist ein Azure Machine Learning-Arbeitsbereich?](concept-workspace.md).
 
 ### <a name="experiments"></a>Experimente
 
@@ -97,7 +91,7 @@ Ein Modell wird erzeugt, indem in Azure Machine Learning eine Ausführung erfolg
 
 Azure Machine Learning Service ist frameworkunabhängig. Wenn Sie ein Modell erstellen, können Sie alle gängigen Frameworks für maschinelles Lernen verwenden, wie Scikit-learn, XGBoost, PyTorch, TensorFlow und Chainer.
 
-Ein Beispiel zum Trainieren eines Modells finden Sie im Dokument [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).
+Ein Beispiel zum Trainieren eines Modells mittels Scikit-learn und einer Schätzfunktion finden Sie im [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
 Die **Modellregistrierung** verfolgt alle Modelle in Ihrem Azure Machine Learning Service-Arbeitsbereich nach.
 
@@ -120,11 +114,24 @@ Eine Laufzeitkonfiguration kann in einer Datei in dem Verzeichnis beständig ges
 
 Beispiele für Laufzeitkonfigurationen finden Sie unter [Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells](how-to-set-up-training-targets.md).
 
+### <a name="estimators"></a>Schätzfunktionen
+
+Um das Training von Modellen mit beliebten Frameworks zu vereinfachen, können Sie mit der Klasse der Schätzfunktionen (Estimator) problemlos Laufzeitkonfigurationen erstellen. Sie können eine generische [Schätzfunktion](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn).
+
+Für PyTorch-, TensorFlow- und Chainer-Aufgaben bietet Azure Machine Learning außerdem die passenden [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-, [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)- und [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Schätzfunktionen, um die Verwendung dieser Frameworks zu vereinfachen.
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
+* [Trainieren von ML-Modellen mit Schätzfunktionen](how-to-train-ml-models.md).
+* [Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning](how-to-train-pytorch.md).
+* [Trainieren und Registrieren von TensorFlow-Modellen in großem Umfang mit Azure Machine Learning Service](how-to-train-tensorflow.md).
+* [Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning Service](how-to-train-chainer.md).
+
 ### <a name="datasets-and-datastores"></a>Datasets und Datenspeicher
 
 **Azure Machine Learning-Datasets** (Vorschauversion) erleichtern Ihnen den Zugriff auf Ihre Daten und die Arbeit damit. Datasets verwalten Daten in verschiedenen Szenarien, z.B. Modelltraining und Pipelineerstellung. Mithilfe des Azure Machine Learning SDK können Sie auf zugrunde liegenden Speicher zugreifen, Daten untersuchen und vorbereiten, den Lebenszyklus unterschiedlicher Datasetdefinitionen verwalten und im Training und in der Produktion verwendete Datasets vergleichen.
 
-Azure Machine Learning Datasets bieten Methoden zum Arbeiten mit Daten in gängigen Formaten, wie z.B. mit `from_delimited_files()` oder `to_pandas_dataframe()`.
+Datasets bieten Methoden zum Arbeiten mit Daten in gängigen Formaten, wie z.B. mit `from_delimited_files()` oder `to_pandas_dataframe()`.
 
 Weitere Informationen finden Sie unter [Erstellen und Registrieren von Azure Machine Learning Datasets](how-to-create-register-datasets.md).  Weitere Beispiele für die Verwendung von Datasets finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets).
 
@@ -152,7 +159,6 @@ Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
 * Eine Momentaufnahme des Verzeichnisses, in dem Ihre Skripts enthalten sind, vor der Ausführung
 
 Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Modells übermitteln. Eine Ausführung kann über null oder mehr untergeordnete Elemente verfügen. Die Ausführung der obersten Ebene weist also unter Umständen zwei untergeordnete Ausführungen auf, die beide jeweils selbst eine untergeordnete Ausführung aufweisen können.
-
 
 ### <a name="github-tracking-and-integration"></a>GitHub-Nachverfolgung und -Integration
 
@@ -236,5 +242,5 @@ Verwenden Sie beim Entwickeln Ihrer Lösung das Azure Machine Learning Python SD
 Erste Schritte mit Azure Machine Learning Service finden Sie unter:
 
 * [Was ist Azure Machine Learning Service?](overview-what-is-azure-ml.md)
-* [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md)
+* [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md)
 * [Tutorial (Teil 1): Trainieren eines Modells](tutorial-train-models-with-aml.md)

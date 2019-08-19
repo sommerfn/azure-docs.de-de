@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348640"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036645"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -125,7 +125,7 @@ Um eine IBM Db2-Konfiguration bereitzustellen, müssen die folgenden Schritte au
   + Stellen Sie die VMs bereit.
   + Aktualisieren von RHEL Linux und Konfigurieren von Dateisystemen.
   + Installieren und Konfigurieren von Pacemaker.
-  + Einrichten des [glusterfs-Clusters][glusterfs] or [Azure NetApp Files][anf-rhel].
+  + Einrichten des [glusterfs-Clusters][glusterfs] oder von [Azure NetApp Files][anf-rhel].
   + Installieren von [ASCS/ERS in einem separaten Cluster][ascs-ha-rhel].
   + Installieren einer IBM Db2-Datenbank mit der Distributed/High Availability-Option (SWPM).
   + Installieren und Erstellen eines sekundären Datenbankknotens und einer sekundären Datenbankinstanz und Konfigurieren von HADR.
@@ -517,11 +517,11 @@ Wenn Sie die Installation vor der Erstellung der Db2 HADR-Konfiguration durchgef
 Verwenden Sie das Konfigurationstool J2EE, um die JDBC-URL zu überprüfen oder zu aktualisieren. Da das Konfigurationstool J2EE ein grafisches Tool ist, muss ein X-Server installiert sein:
  
 1. Melden Sie sich beim primären Anwendungsserver der J2EE-Instanz an, und führen Sie Folgendes aus:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
 1. Wählen Sie im linken Bereich die Option **security store** aus.
 1. Wählen Sie im rechten Bereich den Schlüssel „jdbc/pool/\<SAPSID>/url“ aus.
 1. Ändern Sie den Hostnamen in der JDBC-URL in den virtuellen Hostnamen.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
+     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
 1. Wählen Sie **Hinzufügen** aus.
 1. Um die Änderungen zu speichern, klicken Sie auf das Datenträgersymbol in der oberen linken Ecke.
 1. Schließen Sie das Konfigurationstool.
