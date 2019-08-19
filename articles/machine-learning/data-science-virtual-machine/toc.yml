@@ -6,8 +6,6 @@
   items:
     - name: Was ist die Data Science-VM?
       href: overview.md
-    - name: Was ist die Deep Learning-VM?
-      href: deep-learning-dsvm-overview.md
     - name: Was ist Data Science VM für geografische KI?
       href: geo-ai-dsvm-overview.md
 - name: Schnellstarts
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: Konzepte
   items:
-    - name: DSVM-Ermittlung
-      href: dsvm-tools-overview.md
     - name: Deep Learning und KI-Frameworks
       href: dsvm-deep-learning-ai-frameworks.md
     - name: Programmiersprachen
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Verwenden einer DSVM-Instanz für Linux
       href: linux-dsvm-walkthrough.md
-    - name: Verwenden einer Deep Learning-VM
-      href: use-deep-learning-dsvm.md
     - name: Verwenden einer DSVM-Instanz für geografische KI
       href: use-geo-ai-dsvm.md
     - name: Erstellen eines automatisch skalierten DSVM-Pools

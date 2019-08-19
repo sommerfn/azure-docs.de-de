@@ -193,6 +193,8 @@
       items:
         - name: Keine Reaktion der Apache Tez-Anwendung
           href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Die Apache Ambari-Tez-Ansicht wird langsam geladen.
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive LLAP-Abfrageleistung
           href: ./interactive-query-troubleshoot-query-performance.md
         - name: Langsamer Reducer
@@ -203,24 +205,14 @@
           href: ./interactive-query-troubleshoot-permission-error-create-table.md
         - name: Limit für GC-Overhead überschritten
           href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Die Apache Ambari-Tez-Ansicht wird langsam geladen.
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Nicht in der Apache Hive-Ansicht angezeigte Fehlermeldung
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Kein Zugriff auf die Apache Hive-Ansicht
           href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: 'ZooKeeperHiveClientException: HiveServer2-Konfigurationen'
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Apache Hive LLAP-Abfrageleistung
-          href: ./interactive-query-troubleshoot-query-performance.md
         - name: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
           href: ../hdinsight-troubleshoot-failed-cluster.md
-        - name: Problembehandlung für Apache Hadoop HDFS
-          href: ../hdinsight-troubleshoot-hdfs.md
-        - name: Problembehandlung für Apache HIVE
-          href: ../hdinsight-troubleshoot-hive.md
-        - name: Problembehandlung für Apache Hadoop YARN
-          href: ../hdinsight-troubleshoot-yarn.md
         - name: Problembehandlung für Apache Hadoop HDFS
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Problembehandlung für Apache HIVE
