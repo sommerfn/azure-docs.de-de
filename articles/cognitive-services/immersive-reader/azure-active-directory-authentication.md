@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory-Authentifizierung (Azure AD)
 titleSuffix: Azure Cognitive Services
-description: Referenz zum Plastischer Reader-SDK
+description: In diesem Artikel wird beschrieben, wie Sie eine neue Plastischer Reader-Ressource mit einer benutzerdefinierten Unterdomäne erstellen und dann Azure AD in Ihrem Azure-Mandanten konfigurieren.
 services: cognitive-services
 author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688789"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990146"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Verwenden der Azure Active Directory-Authentifizierung (Azure AD) mit dem Dienst Plastischer Reader
 
@@ -134,5 +134,7 @@ Alternativ dazu kann der Dienstprinzipal auch mit einem Zertifikat authentifizie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Schauen Sie sich das [Tutorial](./tutorial.md) an, um zu sehen, welche weiteren Möglichkeiten Sie mit dem SDK für den plastischen Reader haben.
-* Schauen Sie sich das [SDK für den plastischen Reader](https://github.com/microsoft/immersive-reader-sdk) und die [Referenz für das SDK für den plastischen Reader](./reference.md) an.
+* Schauen Sie sich das [Node.js-Tutorial](./tutorial-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Node.js bietet.
+* Schauen Sie sich das [Python-Tutorial](./tutorial-python.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Python bietet.
+* Schauen Sie sich das [Swift-Tutorial](./tutorial-ios-picture-immersive-reader.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Swift bietet.
+* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.

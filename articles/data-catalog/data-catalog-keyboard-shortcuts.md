@@ -1,20 +1,22 @@
 ---
 title: Tastenkombinationen für Azure Data Catalog
-description: In diesem Artikel werden die Tastenkombinationen für Azure Data Catalog vorgestellt.
+description: Dieser Artikel enthält eine Liste der Tastenkombinationen, die Sie in Azure Data Catalog verwenden können.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 499067f33bddbede6510f61e2cb5da3fb33a5e7c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736301"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014452"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Tastenkombinationen für Azure Data Catalog
+
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Tastenkombinationen für das Data Catalog-Datenquellen-Registrierungstool
+
 ### <a name="general-keyboard-shortcuts"></a>Allgemeine Tastenkombinationen
 | Vorgang | Drücken Sie |
 | --- | --- |

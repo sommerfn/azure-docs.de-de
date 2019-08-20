@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678153"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032544"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -33,6 +33,10 @@ ms.locfileid: "68678153"
 Mitarbeiter in Organisationen benötigen für ihre Aufgaben Zugriff auf verschiedene Gruppen, Anwendungen und Websites. Die Verwaltung dieses Zugriffs ist nicht einfach. In den meisten Fällen gibt es keine strukturierte Liste aller Ressourcen, die ein Benutzer für ein Projekt benötigt. Der Projektmanager weiß über die erforderlichen Ressourcen, die beteiligten Personen und die Projektdauer Bescheid. Jedoch verfügt der Projektmanager in der Regel nicht über Berechtigungen zum Genehmigen oder Verweigern des Zugriffs anderer Personen. Dieses Szenario wird komplizierter, wenn Sie versuchen, mit externen Personen oder Unternehmen zusammenzuarbeiten.
 
 Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) kann Ihnen helfen, den Zugriff auf Gruppen, Anwendungen und SharePoint Online-Websites für interne Benutzer und Benutzer außerhalb der Organisation zu verwalten.
+
+Dieses Video bietet einen Überblick über die Berechtigungsverwaltung und ihren geschäftlichen Nutzen:
+
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
 ## <a name="why-use-entitlement-management"></a>Argumente für die Berechtigungsverwaltung
 

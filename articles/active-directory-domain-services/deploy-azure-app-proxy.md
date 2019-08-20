@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234168"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031043"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
@@ -34,7 +34,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 
 1. Ein gültiges **Azure-Abonnement**.
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
-3. Für die Verwendung des Azure AD-Anwendungsproxys ist eine **Basic- oder Premium-Lizenz für Azure AD** erforderlich.
+3. Für die Verwendung des Azure AD-Anwendungsproxys ist eine **Azure AD Premium-Lizenz** erforderlich.
 4. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](create-instance.md)aus.
 
 <br>
@@ -46,13 +46,10 @@ Führen Sie die folgenden Schritte aus, um den Azure AD-Anwendungsproxy für Ihr
 
 2. Klicken Sie auf **Azure Active Directory**, um die Verzeichnisübersicht anzuzeigen. Klicken Sie auf **Unternehmensanwendungen**.
 
-    ![Auswählen des Azure AD-Verzeichnisses](./media/app-proxy/app-proxy-enable-start.png)
-3. Klicken Sie auf **Anwendungsproxy**. Wenn Sie nicht über ein Basic- oder Premium-Abonnement für Azure AD verfügen, wird Ihnen eine Option zum Aktivieren einer Testversion angezeigt. Wählen Sie für **Anwendungsproxy aktivieren?** die Option **Aktivieren** aus, und klicken Sie auf **Speichern**.
+3. Klicken Sie auf **Anwendungsproxy**.
 
-    ![Aktivieren des Anwendungsproxys](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. Um den Connector herunterzuladen, klicken Sie auf die Schaltfläche **Connector**.
 
-    ![Herunterladen des Connectors](./media/app-proxy/app-proxy-enabled-download-connector.png)
 5. Akzeptieren Sie auf der Downloadseite die Lizenzbedingungen und die Datenschutzerklärung, und klicken Sie auf die Schaltfläche **Herunterladen**.
 
     ![Bestätigen des Downloads](./media/app-proxy/app-proxy-enabled-confirm-download.png)
@@ -75,7 +72,7 @@ Zuvor haben Sie einen virtuellen Windows Server-Computer bereitgestellt und in d
 
     ![Akzeptieren der Bedingungen für die Installation](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Während der Installation werden Sie aufgefordert, den Connector beim Anwendungsproxy Ihres Azure AD-Verzeichnisses zu registrieren.
-   * Geben Sie Ihre **globalen Azure AD-Administratoranmeldeinformationen** ein. Ihr globaler Administratorenmandant kann von Ihren Microsoft Azure-Anmeldeinformationen abweichen.
+   * Geben Sie Ihre **Azure AD-Anwendungsadministrator-Anmeldeinformationen** ein. Ihr Anwendungsadministratormandant kann von Ihren Microsoft Azure-Anmeldeinformationen abweichen.
    * Das zum Registrieren des Connectors verwendete Administratorkonto muss demselben Verzeichnis angehören, in dem Sie auch den Anwendungsproxydienst aktiviert haben. Wenn die Mandantendomäne also beispielsweise „contoso.com“ lautet, muss sich der Administrator als admin@contoso.com oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
    * Falls auf dem Server, auf dem Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für IE“ aktiviert ist, wird der Registrierungsbildschirm möglicherweise blockiert. Befolgen Sie die Anweisungen in der Fehlermeldung, um den Zugriff zuzulassen. Stellen Sie sicher, dass die erweiterte Sicherheit von Internet Explorer deaktiviert ist.
    * Falls die Connectorregistrierung nicht erfolgreich war, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/manage-apps/application-proxy-troubleshoot.md)weiter.

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828303"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952102"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Bewerten von VMware-VMs mit der Azure Migrate-Serverbewertung
 
@@ -180,8 +180,39 @@ Daraufhin wird die Ermittlung gestartet. Es dauert etwa 15 Minuten, bis Metadat
 
 ### <a name="scoping-discovery"></a>Beschränken der Ermittlung
 
-Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff des für die Ermittlung verwendeten vCenter-Kontos beschränken. Sie können das Spektrum auf vCenter Server-Datencenter, Cluster, Clusterordner, Hosts, Hostordner oder einzelne VMs festlegen. 
+Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff des für die Ermittlung verwendeten vCenter-Kontos beschränken. Sie können das Spektrum auf vCenter Server-Datencenter, Cluster, Clusterordner, Hosts, Hostordner oder einzelne VMs festlegen.
 
+Zum Festlegen des Bereichs müssen Sie die folgenden Schritte ausführen:
+1.  Erstellen eines vCenter-Benutzerkontos
+2.  Definieren einer neuen Rolle mit den erforderlichen Berechtigungen (<em>für Servermigration ohne Agent erforderlich</em>)
+3.  Zuweisen von Berechtigungen zum Benutzerkonto auf vCenter-Objekten
+
+**Erstellen eines vCenter-Benutzerkontos**
+1.  Melden Sie sich als vCenter Server-Administrator am vSphere-Webclient an.
+2.  Klicken Sie auf **Verwaltung** > **SSO Users and Groups** (SSO-Benutzer und -Gruppen) > Registerkarte **Benutzer**.
+3.  Klicken Sie auf das Symbol **Neuer Benutzer**.
+4.  Geben Sie die erforderlichen Informationen für die Erstellung des neuen Benutzers ein, und klicken Sie auf **OK**.
+
+**Definieren einer neuen Rolle mit den erforderlichen Berechtigungen** (<em>für Servermigration ohne Agent erforderlich</em>)
+1.  Melden Sie sich als vCenter Server-Administrator am vSphere-Webclient an.
+2.  Navigieren Sie zu **Verwaltung** > **Rollen-Manager**.
+3.  Wählen Sie im Dropdownmenü Ihre vCenter Server-Instanz aus.
+4.  Klicken Sie auf die Aktion **Rolle erstellen**.
+5.  Geben Sie einen Namen für die neue Rolle ein. (Beispiel: <em>Azure_Migrate</em>).
+6.  Weisen Sie der neu definierten Rolle [diese Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) zu.
+7.  Klicken Sie auf **OK**.
+
+**Zuweisen von Berechtigungen für vCenter-Objekte**
+
+Es gibt zwei Ansätze, um Berechtigungen in Inventarobjekten in vCenter dem vCenter-Benutzerkonto mit einer Rolle zuzuweisen.
+- Für die Serverbewertung muss auf das vCenter-Benutzerkonto eine Rolle vom Typ **Schreibgeschützt** für alle übergeordneten Objekte angewendet werden, auf denen die zu ermittelnden VMs gehostet werden. Alle übergeordneten Objekte – Host, Hostordner, Cluster, Clusterordner – in der Hierarchie bis hinauf zum Rechenzentrum müssen eingebunden werden. Diese Berechtigungen müssen an die untergeordneten Objekte in der Hierarchie weitergegeben werden. 
+
+    Bei der Servermigration muss entsprechend eine benutzerdefinierte Rolle (kann den Namen <em>Azure_Migrate</em> haben) mit diesen zugewiesenen [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, auf denen die zu migrierenden VMs gehostet werden.
+
+![Zuweisen von Berechtigungen](./media/tutorial-assess-vmware/assign-perms.png)
+
+- Die alternative Vorgehensweise besteht darin, das Benutzerkonto und die Rolle auf Rechenzentrumsebene zuzuweisen und diese an die untergeordneten Objekte weiterzugeben. Weisen Sie dem Konto dann eine Rolle vom Typ **Kein Zugriff** für jedes Objekt zu (z. B. VMs), das Sie nicht ermitteln bzw. migrieren möchten. Diese Konfiguration ist mühsam. Dabei besteht das Risiko einer versehentlichen Preisgabe von Zugangsdaten, da jedem neuen untergeordneten Objekt auch automatisch die vom übergeordneten Objekt geerbten Zugangsrechte erteilt werden. Aus diesem Grund wird empfohlen, die erste Methode zu verwenden.
+ 
 > [!NOTE]
 > Die Serverbewertung kann aktuell keine VMs ermitteln, wenn dem vCenter-Konto Zugriff auf der vCenter-VM-Ordnerebene gewährt wurde. Wenn Ihre Ermittlung auf VM-Ordnern basieren soll, muss das vCenter-Konto reinen Lesezugriff auf der VM-Ebene haben.  Im Anschluss finden Sie eine entsprechende Anleitung hierfür:
 >

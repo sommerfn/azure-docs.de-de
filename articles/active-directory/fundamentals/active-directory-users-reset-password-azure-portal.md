@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561737"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032660"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Zurücksetzen eines Benutzerkennworts mit Azure Active Directory
 
@@ -43,7 +43,8 @@ Als Administrator können Sie das Kennwort eines Benutzers zurücksetzen, wenn e
 
 3. Wählen Sie auf der Seite **Kennwort zurücksetzen** **Kennwort zurücksetzen** aus.
 
-    Ein temporäres Kennwort wird automatisch für den Benutzer generiert.
+    > [!Note]
+    > Bei Verwendung von Azure Active Directory wird für den Benutzer automatisch ein temporäres Kennwort generiert. Wenn Sie eine lokale Active Directory-Instanz verwenden, erstellen Sie das Kennwort für den Benutzer.
 
 4. Kopieren Sie das Kennwort, und leiten Sie es an den Benutzer weiter. Der Benutzer muss das Kennwort bei seiner nächsten Anmeldung ändern.
 

@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 196ee5546a5065aebfae36d0af1fccff6b271a70
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654044"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032462"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -508,7 +508,7 @@ Status: 19. Oktober 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
 > [!NOTE]
-> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, [sollten den integrierten Scheduler](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
+> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, sollten den [integrierten Scheduler](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
 
 #### <a name="fixed-issues"></a>Behobene Probleme
 * Wenn der Azure AD Connect-Assistent das erforderliche AD Connector-Konto zum Synchronisieren von Änderungen aus dem lokalen Active Directory erstellt, wird dem Konto die zum Lesen von PublicFolder-Objekten erforderliche Berechtigung nicht ordnungsgemäß zugewiesen. Dieses Problem betrifft die Expressinstallation und die benutzerdefinierte Installation. Das Problem wird mit dieser Änderung behoben.

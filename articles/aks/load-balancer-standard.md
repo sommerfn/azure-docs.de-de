@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9cf3db3a15fab5a2f067a146950e02923a20379
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476809"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032244"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Vorschauversion: Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Standar
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der SKU *Standard* mit Azure Kubernetes Service (AKS) erstellen und verwenden.
 
-Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] sowie unter „Was versteht man unter Azure Load Balancer?“. and [What is Azure Load Balancer?][azure-lb]
+Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] und [Was versteht man unter Azure Load Balancer?][azure-lb].
 
 Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
@@ -39,14 +39,14 @@ Der AKS-Clusterdienstprinzipal benötigt die Berechtigung zum Verwalten von Netz
 Sie müssen einen AKS-Cluster erstellen, der die SKU für den Lastenausgleich auf *Standard* festlegt anstatt auf den Standardwert *Basic*. Das Erstellen eines AKS-Clusters wird in einem späteren Schritt behandelt. Sie müssen jedoch zunächst einige Vorschaufeatures aktivieren.
 
 > [!IMPORTANT]
-> AKS-Vorschaufeatures stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Sie werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. In der Vorschauversion sind diese Features nicht für den Einsatz in der Produktion vorgesehen. Features in der öffentlichen Vorschau unterliegen dem Prinzip des „bestmöglichen Supports“. Unterstützung durch die Teams für den technischen AKS-Support steht nur während der Geschäftszeiten in der Zeitzone „Pacific Standard Time“ (PST) zur Verfügung. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
 >
 > * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
 > * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Um die Azure Load Balancer-SKU „Standard“ verwenden zu können, benötigen Sie mindestens die Version 0.4.1 der CLI-Erweiterung *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add], und verwenden Sie anschließend den Befehl „az extension update“, um nach verfügbaren Updates zu suchen: command, then check for any available updates using the [az extension update][az-extension-update]
+Um die Azure Load Balancer-SKU „Standard“ verwenden zu können, benötigen Sie mindestens die Version 0.4.1 der CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -92,6 +92,7 @@ Wenn Sie AKS-Cluster erstellen und verwalten, die einen Lastenausgleich mit der 
 
 * Bei Verwendung eines Lastenausgleichs mit der SKU *Standard* müssen Sie öffentliche Adressen zulassen und dürfen keine Azure-Richtlinie erstellen, die die Erstellung von IP-Adressen unterbindet. Der AKS-Cluster erstellt automatisch eine öffentliche IP-Adresse der SKU *Standard* in der gleichen Ressourcengruppe, die für den AKS-Cluster erstellt wurde. (Der Name beginnt in der Regel mit *MC_* .) AKS weist die öffentliche IP-Adresse dem Lastenausgleich mit der SKU *Standard* zu. Die öffentliche IP-Adresse ist erforderlich, um ausgehenden Datenverkehr aus dem AKS-Cluster zuzulassen. Darüber hinaus wird diese öffentliche IP-Adresse benötigt, um die Konnektivität zwischen der Steuerungsebene und den Agent-Knoten sowie die Kompatibilität mit früheren Versionen von AKS zu gewährleisten.
 * Wenn Sie für einen Lastenausgleich die SKU *Standard* verwenden, benötigen Sie mindestens die Kubernetes-Version 1.13.5.
+* Wenn Sie die [Funktion für öffentliche IP-Adressen für Knoten (Node Public IP)](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) mit Standardlastenausgleichsmodulen (Standard Load Balancers, SLBs) verwenden, können Sie entweder eine SLB-Ausgangsregel oder eine öffentliche IP-Adresse für den Knoten festlegen. Sie müssen sich für eine dieser beiden Optionen entscheiden, weil ein virtueller Computer nicht gleichzeitig an eine SLB-Ausgangsregel und eine öffentliche IP-Adresse angefügt werden kann.
 
 Während sich dieses Feature in der Vorschauversion befindet, gelten die folgenden zusätzlichen Einschränkungen:
 
@@ -135,7 +136,6 @@ az aks create \
     --name myAKSCluster \
     --enable-vmss \
     --node-count 1 \
-    --kubernetes-version 1.14.0 \
     --load-balancer-sku standard \
     --generate-ssh-keys
 ```
@@ -166,7 +166,7 @@ Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Kn
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.14.0
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>Vergewissern, dass der Cluster die SKU *Standard* verwendet

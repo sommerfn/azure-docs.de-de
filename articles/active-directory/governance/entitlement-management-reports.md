@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489059"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032445"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489059"
 > Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Im Bericht zu Benutzerzuweisungen und im Azure Active Directory-Überwachungsprotokoll sind zusätzliche Details zu den Benutzern in Ihrem Verzeichnis enthalten. Als Administrator können Sie die Ressourcen anzeigen, auf die ein Benutzer Zugriff hat, und Anforderungsprotokolle zu Überprüfungszwecken oder zum Ermitteln des Status der Anforderung eines Benutzers anzeigen. In diesem Artikel wird die Verwendung des Berichts zu Benutzerzuweisungen und von Azure AD-Überwachungsprotokollen beschrieben.
+
+Sehen Sie sich das folgende Video an, um zu erfahren, wie Sie die Berechtigungsverwaltung verwenden, um den Zugriff für Benutzer in Azure Active Directory zu verwalten:
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>Anzeigen von Ressourcen, auf die ein Benutzer Zugriff hat
 

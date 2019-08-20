@@ -5,23 +5,26 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68478330"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033991"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vorschau – Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
 Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Diese Knotenpools enthalten die zugrunde liegenden virtuellen Computer, die Ihre Anwendungen ausführen. Die anfängliche Anzahl der Knoten und ihre Größe (SKU) werden beim Erstellen eines AKS-Clusters festgelegt, der einen *Standardknotenpool* erstellt. Sie können zusätzliche Knotenpools erstellen, um Anwendungen mit unterschiedlichen Compute- oder Speicheranforderungen zu unterstützen. Verwenden Sie diese zusätzlichen Knotenpools z. B. zum Bereitstellen von GPUs für rechenintensive Anwendungen oder für den Zugriff auf leistungsstarken SSD-Speicher.
 
+> [!NOTE]
+> Diese Funktion ermöglicht eine höhere Kontrolle über das Erstellen und Verwalten mehrerer Knotenpools. Daher sind separate Befehle zum Erstellen, Aktualisieren und Löschen erforderlich. Für über `az aks create` oder `az aks update` ausgeführte Clustervorgänge wurde bisher die managedCluster-API verwendet, und diese Vorgänge stellten die einzige Möglichkeit zum Ändern der Steuerungsebene und eines einzelnen Knotenpools dar. Diese Funktion stellt einen separaten Vorgang für Agent-Pools über die agentPool-API zur Verfügung und erfordert die Verwendung des `az aks nodepool`-Befehlssatzes zum Ausführen von Vorgängen für einen einzelnen Knotenpool.
+
 In diesem Artikel erfahren Sie, wie Sie mehrere Knotenpools in einem AKS-Cluster erstellen und verwalten. Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Sie werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. In der Vorschauversion sind diese Features nicht für den Einsatz in der Produktion vorgesehen. Features in der öffentlichen Vorschau unterliegen dem Prinzip des „bestmöglichen Supports“. Unterstützung durch die Teams für den technischen AKS-Support steht nur während der Geschäftszeiten in der Zeitzone „Pacific Standard Time“ (PST) zur Verfügung. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
+> AKS-Vorschaufunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
 >
 > * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
 > * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
@@ -87,7 +90,7 @@ Während sich dieses Feature in der Vorschauversion befindet, gelten die folgend
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
-Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Das folgende Beispiel verwendet den Befehl [az group create][az-group-create], um eine Ressourcengruppe namens *myResourceGroup* in der Region *Eastus* zu erstellen. Ein AKS-Cluster namens *myAKSCluster* wird dann mit dem Befehl [az aks create][az-aks-create] erstellt. Eine *--kubernetes-version* von *1.13.5* wird verwendet, um die Aktualisierung eines Knotenpools in einem nachfolgenden Schritt zu veranschaulichen. Sie können jede [unterstützte Kubernetes-Version][supported-versions] angeben.
+Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Das folgende Beispiel verwendet den Befehl [az group create][az-group-create], um eine Ressourcengruppe namens *myResourceGroup* in der Region *Eastus* zu erstellen. Ein AKS-Cluster namens *myAKSCluster* wird dann mit dem Befehl [az aks create][az-aks-create] erstellt. Eine *--kubernetes-version* von *1.13.9* wird verwendet, um die Aktualisierung eines Knotenpools in einem nachfolgenden Schritt zu veranschaulichen. Sie können jede [unterstützte Kubernetes-Version][supported-versions] angeben.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -100,7 +103,7 @@ az aks create \
     --enable-vmss \
     --node-count 1 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.5
+    --kubernetes-version 1.13.9
 ```
 
 Die Erstellung des Clusters dauert einige Minuten.
@@ -113,68 +116,109 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>Hinzufügen eines Knotenpools
 
-Der im vorherigen Schritt erstellte Cluster verfügt über einen einzelnen Knotenpool. Lassen Sie uns einen zweiten Knotenpool mit dem Befehl [az aks node pool add][az-aks-nodepool-add] hinzufügen. Das folgende Beispiel erstellt einen Knotenpool namens *mynodepool*, der *3* Knoten ausführt:
+Der im vorherigen Schritt erstellte Cluster verfügt über einen einzelnen Knotenpool. Fügen Sie als Nächstes einen zweiten Knotenpool mit dem Befehl [az aks nodepool add][az-aks-nodepool-add] hinzu. Das folgende Beispiel erstellt einen Knotenpool namens *mynodepool*, der *3* Knoten ausführt:
 
 ```azurecli-interactive
 az aks nodepool add \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --node-count 3
+    --node-count 3 \
+    --kubernetes-version 1.12.7
 ```
 
 Um den Status Ihrer Knotenpools anzuzeigen, verwenden Sie den Befehl [az aks node pool list][az-aks-nodepool-list] und geben Sie Ihre Ressourcengruppe und Ihren Cluster-Namen an:
 
 ```azurecli-interactive
-az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster -o table
+az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
 Die folgende Beispielausgabe zeigt, dass *mynodepool* erfolgreich mit drei Knoten im Knotenpool erstellt wurde. Wenn der AKS-Cluster im vorherigen Schritt erstellt wurde, wurde ein standardmäßiges *nodepool1* mit einer Knotenanzahl von *1* erstellt.
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  3        110        mynodepool  1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 3,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.12.7",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 > [!TIP]
-> Wenn beim Hinzufügen eines Knotenpools kein *OrchestratorVersion* oder *VmSize* angegeben wurde, werden die Knoten basierend auf den Standardwerten für den AKS-Cluster erstellt. In diesem Beispiel wurden die Kubernetes-Version *1.13.5* und die Knotengröße *Standard_DS2_v2* verwendet.
+> Wenn beim Hinzufügen eines Knotenpools kein *OrchestratorVersion* oder *VmSize* angegeben wurde, werden die Knoten basierend auf den Standardwerten für den AKS-Cluster erstellt. In diesem Beispiel wurden die Kubernetes-Version *1.13.9* und die Knotengröße *Standard_DS2_v2* verwendet.
 
 ## <a name="upgrade-a-node-pool"></a>Durchführen eines Upgrades für einen Knotenpool
 
-Als Ihr AKS-Cluster im ersten Schritt erstellt wurde, war eine `--kubernetes-version` von *1.13.5* angegeben. Dadurch wird die Kubernetes-Version sowohl für die Steuerungsebene als auch für den ursprünglichen Knotenpool festgelegt. Zum Upgraden der Kubernetes-Version der Steuerungsebene und des Knotenpools stehen unterschiedliche Befehle zur Verfügung. Der Befehl `az aks upgrade` dient zum Upgraden der Steuerungsebene, während der Befehl `az aks nodepool upgrade` zum Upgraden eines einzelnen Knotenpools dient.
+Als Ihr AKS-Cluster im ersten Schritt erstellt wurde, war eine `--kubernetes-version` von *1.13.9* angegeben. Dadurch wird die Kubernetes-Version sowohl für die Steuerungsebene als auch für den ursprünglichen Knotenpool festgelegt. Zum Upgraden der Kubernetes-Version der Steuerungsebene und des Knotenpools stehen unterschiedliche Befehle zur Verfügung. Der Befehl `az aks upgrade` dient zum Upgraden der Steuerungsebene, während der Befehl `az aks nodepool upgrade` zum Upgraden eines einzelnen Knotenpools dient.
 
-Führen Sie für *mynodepool* ein Upgrade auf Kubernetes *1.13.7* durch. Verwenden Sie den Befehl [az aks node pool upgrade][az-aks-nodepool-upgrade], um den Knotenpool zu aktualisieren, wie im folgenden Beispiel gezeigt:
+Führen Sie für *mynodepool* ein Upgrade auf Kubernetes *1.13.9* durch. Verwenden Sie den Befehl [az aks node pool upgrade][az-aks-nodepool-upgrade], um den Knotenpool zu aktualisieren, wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.13.7 \
+    --kubernetes-version 1.13.9 \
     --no-wait
 ```
 
 > [!Tip]
-> Führen Sie `az aks upgrade -k 1.13.7` aus, um die Steuerungsebene auf *1.13.7* upzugraden.
+> Führen Sie `az aks upgrade -k 1.14.5` aus, um die Steuerungsebene auf *1.14.5* zu aktualisieren.
 
-Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *1.13.7* aufweist:
+Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *1.13.9* aufweist:
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  3        110        mynodepool  1.13.7                 100             Linux     Upgrading            myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 3,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Upgrading",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 Es dauert einige Minuten, bis ein Upgrade der Knoten auf die angegebene Version erfolgt ist.
 
-Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dieselbe Kubernetes-Version aktualisieren. Die Möglichkeit, ein Upgrade für einzelne Knotenpools durchzuführen, gestattet es Ihnen, ein paralleles Upgrade durchzuführen und Pods zwischen Knotenpools zu planen, um die Anwendungsbetriebszeit aufrechtzuerhalten.
+Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dieselbe Kubernetes-Version aktualisieren. Durch die Möglichkeit, ein Upgrade für einzelne Knotenpools durchzuführen, können Sie ein paralleles Upgrade durchführen und Pods zwischen Knotenpools planen, um die Anwendungsbetriebszeit innerhalb der oben genannten Einschränkungen aufrechtzuerhalten.
 
 > [!NOTE]
 > Kubernetes verwendet als Standardversionierungsschema die [semantische Versionierung](https://semver.org/). Die Versionsnummer wird im Format *x.y.z* angegeben. *x* steht dabei für die Hauptversion, *y* für die Nebenversion und *z* für die Patchversion. Ein Beispiel: Bei der Version *1.12.6* ist „1“ die Hauptversion, „12“ die Nebenversion und „6“ die Patchversion. Die Kubernetes-Version der Steuerungsebene sowie des ursprünglichen Knotenpools wird im Rahmen der Clustererstellung festgelegt. Bei allen zusätzlichen Knotenpools wird die Kubernetes-Version festgelegt, wenn sie dem Cluster hinzugefügt werden. Die Kubernetes-Versionen können sich zwischen Knotenpools sowie zwischen einem Knotenpool und der Steuerungsebene unterscheiden. Dabei gelten jedoch folgende Einschränkungen:
@@ -185,7 +229,7 @@ Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dies
 > 
 > Verwenden Sie `az aks upgrade`, um die Kubernetes-Version der Steuerungsebene upzugraden. Falls Ihr Cluster nur über einen einzelnen Knotenpool verfügt, wird durch den Befehl `az aks upgrade` auch ein Upgrade für die Kubernetes-Version des Knotenpools ausgeführt.
 
-## <a name="scale-a-node-pool"></a>Skalieren eines Knotenpools
+## <a name="scale-a-node-pool-manually"></a>Manuelles Skalieren eines Knotenpools
 
 Wenn sich die Anforderungen der Workloads Ihrer Anwendungen ändern, müssen Sie möglicherweise die Anzahl der Knoten in einem Knotenpool skalieren. Die Anzahl der Knoten kann erhöht oder verringert werden.
 
@@ -205,15 +249,41 @@ az aks nodepool scale \
 Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Scaling* (Wird skaliert) mit einer neuen Anzahl von *5* Knoten aufweist:
 
 ```console
-$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  5        110        mynodepool  1.13.7                 100             Linux     Scaling              myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 5,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Scaling",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 Es dauert einige Minuten, bis die Skalierung abgeschlossen ist.
+
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatisches Skalieren eines bestimmten Knotenpools durch Aktivieren der automatischen Clusterskalierung
+
+AKS bietet eine separate Funktion in der Vorschauversion zum automatischen Skalieren von Knotenpools mit einer Komponente, die als [automatische Clusterskalierung](cluster-autoscaler.md) bezeichnet wird. Bei dieser Komponente handelt es sich um ein AKS-Add-On, das pro Knotenpool mit eindeutigen minimalen und maximalen Skalierungen pro Knotenpool aktiviert werden kann. Erfahren Sie, wie Sie [die automatische Clusterskalierung pro Knotenpool verwenden](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools).
 
 ## <a name="delete-a-node-pool"></a>Löschen eines Knotenpools
 
@@ -229,12 +299,34 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name myn
 Die folgende Beispielausgabe des Befehls [az aks node pool list][az-aks-nodepool-list] zeigt, dass sich *mynodepoo*l im Zustand *Löschen* befindet:
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  5        110        mynodepool  1.13.7                 100             Linux     Deleting             myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 5,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Deleting",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 Das Löschen der Knoten und des Knotenpools dauert einige Minuten.
@@ -260,12 +352,34 @@ az aks nodepool add \
 Das folgende Beispiel, das vom Befehl [az aks node pool list][az-aks-nodepool-list] ausgegeben wird, zeigt, dass *gpunodepool* *Knoten* mit der angegebenen *VmSize* erstellt:
 
 ```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
-AgentPoolType            Count    MaxPods    Name         OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  -----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  1        110        gpunodepool  1.13.5                 100             Linux     Creating             myResourceGroup  Standard_NC6
-VirtualMachineScaleSets  1        110        nodepool1    1.13.5                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "gpunodepool",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "vmSize": "Standard_NC6",
+    ...
+  },
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.13.9",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 Es dauert einige Minuten, bis *gpunodepool* erfolgreich erstellt wurde.
@@ -278,8 +392,8 @@ Sie verfügen jetzt über zwei Knotenpools in Ihrem Cluster – den ursprünglic
 $ kubectl get nodes
 
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.5
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.5
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.9
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.9
 ```
 
 Der Kubernetes-Planer kann Taints und Toleranzen verwenden, um einzuschränken, welche Workloads auf Knoten ausgeführt werden können.
@@ -356,7 +470,7 @@ Wenn Sie eine Azure Resource Manager-Vorlage zum Erstellen und Verwalten von Res
 Erstellen Sie eine Vorlage wie `aks-agentpools.json`, und fügen Sie das folgende Beispielmanifest ein. Diese Beispielvorlage konfiguriert die folgenden Einstellungen:
 
 * Aktualisiert den *Linux*-Agent-Pool namens *myagentpool*, sodass dieser drei Knoten ausführt.
-* Legt die Knoten im Knotenpool auf die Ausführung von Kubernetes-Version *1.13.5* fest.
+* Legt die Knoten im Knotenpool auf die Ausführung von Kubernetes-Version *1.13.9* fest.
 * Definiert die Knotengröße als *Standard_DS2_v2*.
 
 Bearbeiten Sie diese Werte nach Bedarf, um Knotenpools nach Bedarf zu aktualisieren, hinzuzufügen oder zu löschen:
@@ -421,7 +535,7 @@ Bearbeiten Sie diese Werte nach Bedarf, um Knotenpools nach Bedarf zu aktualisie
             "storageProfile": "ManagedDisks",
       "type": "VirtualMachineScaleSets",
             "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-            "orchestratorVersion": "1.13.5"
+            "orchestratorVersion": "1.13.9"
       }
     }
   ]
@@ -437,6 +551,29 @@ az group deployment create \
 ```
 
 Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängig von den Knoteneinstellungen und Vorgängen, die Sie in Ihrer Resource Manager-Vorlage definieren.
+
+## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool
+
+AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel hierfür ist Gaming, bei dem eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dies kann erreicht werden, indem Sie sich für eine separate Previewfunktion für öffentliche IP-Adressen für Knoten (Node Public IP) (Vorschauversion) registrieren.
+
+```azurecli-interactive
+az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
+```
+
+Stellen Sie nach der erfolgreichen Registrierung eine Azure Resource Manager-Vorlage bereit. Folgen Sie dazu den [obigen](#manage-node-pools-using-a-resource-manager-template) Anweisungen, und fügen Sie die folgende Eigenschaft (boolescher Wert) „enableNodePublicIP“ für die agentPoolProfiles hinzu. Sie müssen diese Eigenschaft auf `true` festlegen, weil sie standardmäßig auf `false` festgelegt wird, wenn keine Angabe erfolgt. Diese Eigenschaft wird nur zur Erstellungszeit verwendet und erfordert mindestens die API-Version 2019-06-01. Die Anwendung kann sowohl auf Linux- als auch auf Windows-Knotenpools erfolgen.
+
+```
+"agentPoolProfiles":[  
+    {  
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]",
+      "enableNodePublicIP":true
+    }
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

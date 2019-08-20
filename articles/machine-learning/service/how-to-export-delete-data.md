@@ -39,7 +39,7 @@ Wie Sie dieses Token erhalten und Azure-Endpunkte aufrufen, erfahren Sie in der 
 
 In den folgenden Beispielen ersetzen Sie den Text in {} durch die Instanznamen, die die zugehörige Ressource bestimmen.
 
-### <a name="delete-an-entire-workspace"></a>Löschen eines gesamten-Arbeitsbereichs
+### <a name="delete-an-entire-workspace"></a>Löschen eines gesamten Arbeitsbereichs
 
 Verwenden Sie diesen Aufruf zum Löschen eines ganzen Arbeitsbereichs.  
 > [!WARNING]
@@ -202,7 +202,7 @@ Einzelne Dienste können wie folgt abgerufen werden:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2018-03-01-preview
 
-### <a name="export-pipeline-experiments"></a>Exportieren von Pipelineexperimenten
+### <a name="export-pipeline-experiments"></a>Exportieren von Pipeline-Experimenten
 
 Einzelne Experimente können wie folgt abgerufen werden:
 

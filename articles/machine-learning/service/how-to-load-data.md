@@ -23,7 +23,7 @@ ms.locfileid: "68360973"
 In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem Azure Machine Learning Data Prep SDK kennen.  Das SDK unterstützt mehrere Datenerfassungsfeatures, z. B.:
 
 * Laden von Daten aus einer Vielzahl von Dateitypen mit Analyseparameter-Rückschluss (Codierung, Trennzeichen, Header)
-* Typkonvertierung unter Verwendung der Ermittlung beim Laden der Datei
+* Typumwandlung unter Verwendung der Ermittlung beim Laden der Datei
 * Verbindungsunterstützung für MS SQL Server und Azure Data Lake Storage
 
 > [!Important]
@@ -68,7 +68,7 @@ dflow = dprep.read_lines(path='./data/text_lines.txt')
 dflow.head(5)
 ```
 
-||Liniendiagramm|
+||Zeile|
 |----|-----|
 |0|Datum \|\| Mindesttemperatur \|\| Maximaltemperatur|
 |1|2015-07-1 \|\|  -4.1 \|\|  10.0|

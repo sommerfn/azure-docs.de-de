@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249977"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034820"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
@@ -98,9 +98,9 @@ Wenn Sie im Projektassistenten des Azure Database Migration Service versuchen, e
 | ------------- | ------------- |
 | Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [müssen](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Zeitlimitfehler bei der Migration einer MySQL-Datenbank zu Azure MySQL
+## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Sperrenwartezeit-Timeoutfehler bei der Migration einer MySQL-Datenbank zu Azure Database for MySQL
 
-Wenn Sie eine MySQL-Datenbank über den Azure Database Migration Service in eine Azure Database for MySQL-Instanz migrieren, schlägt die Migration mit folgendem Zeitlimitfehler fehl:
+Wenn Sie eine MySQL-Datenbank über den Azure Database Migration Service zu einer Azure Database for MySQL-Instanz migrieren, tritt bei der Migration der folgende Sperrenwartezeit-Timeoutfehler auf:
 
 * **Fehler**: Datenbankmigrationsfehler: Fehler beim Laden der Datei – Fehler dem Starten des Ladevorgangs für Datei 'n' RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 Nachricht: [MySQL][ODBC Driver][mysqld] Zeitlimit für Sperre überschritten; versuchen Sie, die Transaktion neu zu starten.
 

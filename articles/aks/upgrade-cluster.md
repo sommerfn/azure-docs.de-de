@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 2ed58846b9e7816092f0fc0787204921071d75e9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 4cf959c5218160a8fe341e6ffdfdf459c1a19247
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498560"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019171"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -36,26 +36,26 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> Beim Upgrade eines AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Beispielsweise sind Upgrades von *1.11.x* -> *1.12.x* oder *1.12.x* -> *1.13.x* zulässig, während ein Upgrade von *1.11.x* -> *1.13.x* nicht möglich ist.
+> Beim Upgrade eines AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Beispielsweise sind Upgrades von *1.12.x* -> *1.13.x* oder *1.13.x* -> *1.14.x* zulässig, ein Upgrade von *1.12.x* -> *1.14.x* ist jedoch nicht möglich.
 >
-> Für ein Upgrade von *1.11.x* -> *1.13.x* müssen Sie zuerst ein Upgrade von *1.11.x* -> *1.12.x* und dann ein Upgrade von *1.12.x* -> *1.13.x* durchführen.
+> Zum Durchführen eines Upgrades von *1.12.x* -> *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* -> *1.13.x* und dann ein Upgrade von *1.13.x* -> *1.14.x* durchführen.
 
-Die Ausgabe im folgenden Beispiel zeigt, dass der Cluster auf Version *1.12.7* oder *1.12.8* aktualisiert werden kann:
+Die Ausgabe im folgenden Beispiel zeigt, dass der Cluster auf Version *1.13.9* aktualisiert werden kann:
 
 ```console
-Name     ResourceGroup    MasterVersion  NodePoolVersion  Upgrades
--------  ---------------  -------------  ---------------  --------------
-default  myResourceGroup  1.11.9         1.11.9           1.12.7, 1.12.8
+Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.12.8           1.12.8             1.13.9
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>Aktualisieren eines AKS-Clusters
 
 Wenn Sie die Liste der verfügbaren Versionen für Ihren AKS-Cluster angezeigt haben, verwenden Sie den Befehl [az aks upgrade][az-aks-upgrade], um den Cluster zu aktualisieren. Während des Upgradeprozesses fügt AKS dem Cluster einen neuen Knoten hinzu, auf dem die angegebene Kubernetes-Version ausgeführt wird. Danach sorgt AKS dafür, dass einer der alten Knoten [als unplanbar markiert und entleert wird][kubernetes-drain] (cordon/drain), um die Beeinträchtigung für ausgeführte Anwendungen möglichst gering zu halten. Wenn für den neuen Knoten die Ausführung von Anwendungspods bestätigt wird, wird der alte Knoten gelöscht. Dieser Prozess wird wiederholt, bis alle Knoten im Cluster aktualisiert wurden.
 
-Im folgenden Beispiel wird der Cluster auf Version *1.12.8* aktualisiert:
+Im folgenden Beispiel wird ein Cluster auf Version *1.13.9* aktualisiert:
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.12.8
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.9
 ```
 
 Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und kann einige Minuten in Anspruch nehmen.
@@ -66,12 +66,12 @@ Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Die Ausgabe im folgenden Beispiel zeigt, dass im Cluster nun Version *1.12.8* ausgeführt wird:
+Die Ausgabe im folgenden Beispiel zeigt, dass im Cluster nun Version *1.13.9* ausgeführt wird:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.12.8               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.13.9               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

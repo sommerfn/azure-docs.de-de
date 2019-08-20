@@ -10,20 +10,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/23/2019
+ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4770c0bfd9c6fe6effa9cdf200d89ca7ff6eb768
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323650"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036663"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
 
 Der [Azure Batch-Dienst](https://azure.microsoft.com/services/batch/) legt die folgenden Umgebungsvariablen für Computeknoten fest. Sie können auf diese Umgebungsvariablen in Taskbefehlszeilen sowie in den Programmen und Skripts verweisen, die über die Befehlszeilen ausgeführt werden.
 
-Weitere Informationen zur Verwendung von Umgebungsvariablen mit dem Batch-Dienst finden Sie unter [Umgebungseinstellungen für Tasks](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks).
+Weitere Informationen zum Verwenden von Umgebungsvariablen mit dem Batch-Dienst finden Sie unter [Umgebungseinstellungen für Tasks](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks).
 
 ## <a name="environment-variable-visibility"></a>Sichtbarkeit von Umgebungsvariablen
 
@@ -49,9 +49,9 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Der Name des Batch-Kontos, zu dem der Task gehört.                  | Alle Tasks.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Die URL des Batch-Kontos. | Alle Tasks. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Ein Präfix aller Umgebungsvariablen des App-Pakets. Wenn beispielsweise von der Anwendung „FOO“ die Version „1“ in einem Pool installiert wird, lautet die Umgebungsvariable AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verweist auf den Speicherort, an den das Paket heruntergeladen wurde (ein Ordner). | Jede Aufgabe mit einem zugeordneten App-Paket. Auch für alle Aufgaben verfügbar, wenn der Knoten selbst über Anwendungspakete verfügt. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Ein Präfix aller Umgebungsvariablen des App-Pakets. Wenn beispielsweise von der Anwendung „FOO“ die Version „1“ in einem Pool installiert wird, lautet die Umgebungsvariable AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verweist auf den Speicherort (einen Ordner), an den das Paket heruntergeladen wurde. | Jede Aufgabe mit einem zugeordneten App-Paket. Auch für alle Aufgaben verfügbar, wenn der Knoten selbst über Anwendungspakete verfügt. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Ein Authentifizierungstoken für den Zugriff auf eine begrenzte Gruppe von Batch-Dienstvorgängen. Diese Umgebungsvariable ist nur vorhanden, wenn [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) beim [Hinzufügen der Aufgabe](/rest/api/batchservice/task/add#request-body) festgelegt wird. Der Tokenwert wird in den Batch-APIs als Anmeldeinformationen für die Erstellung eines Batchclients verwendet (wie etwa in der [.NET-API „BatchClient.Open()“](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_)). | Alle Tasks. | OAuth2-Zugriffstoken |
-| AZ_BATCH_CERTIFICATES_DIR       | Ein Verzeichnis im [Taskarbeitsverzeichnis][files_dirs], in dem Zertifikate für Linux-Computeknoten gespeichert werden. Beachten Sie, die diese Umgebungsvariable nicht für Windows-Computeknoten gilt.                                                  | Alle Tasks.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
+| AZ_BATCH_CERTIFICATES_DIR       | Ein Verzeichnis im [Taskarbeitsverzeichnis][files_dirs], in dem Zertifikate für Linux-Computeknoten gespeichert werden. Diese Umgebungsvariable gilt nicht für Windows-Computeknoten.                                                  | Alle Tasks.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | Die Liste mit den Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind (im Format `nodeIP,nodeIP`). | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | Gibt an, ob der aktuelle Knoten der Masterknoten eines [Tasks mit mehreren Instanzen][multi_instance] ist. Mögliche Werte sind `true` und `false`.| Primäre und Untertasks mit mehreren Instanzen. | `true` |
 | AZ_BATCH_JOB_ID                 | Die ID des Auftrags, zu dem der Task gehört. | Alle Tasks mit Ausnahme des Starttasks. | batchjob001 |
@@ -61,6 +61,7 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 | AZ_BATCH_NODE_ID                | Die ID des Knotens, dem der Task zugewiesen ist | Alle Tasks. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Wenn `true`, ist der aktuelle Knoten ein dedizierter-Knoten. Bei `false` handelt es sich um einen [Knoten mit niedriger Priorität](batch-low-pri-vms.md). | Alle Tasks. | `true` |
 | AZ_BATCH_NODE_LIST              | Die Liste mit den Knoten, die einem [Task mit mehreren Instanzen][multi_instance] zugeordnet sind (im Format `nodeIP;nodeIP`). | Primäre und Untertasks mit mehreren Instanzen. | `10.0.0.4;10.0.0.5` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | Der vollständige Pfad des Speicherorts für die [Bereitstellung des Dateisystems](virtual-file-mount.md) auf Knotenebene, an dem sich alle Bereitstellungsverzeichnisse befinden. Windows-Dateifreigaben verwenden einen Laufwerkbuchstaben. Unter Windows ist das Bereitstellungslaufwerk daher Teil von Geräten und Laufwerken.  |  Alle Tasks (einschließlich Starttask) haben Zugriff auf den Benutzer, wenn der Benutzer die Bereitstellungsberechtigungen für das bereitgestellte Verzeichnis kennt. | Beispielsweise lautet der Speicherort in Ubuntu wie folgt: `/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | Der vollständige Pfad zum Stamm aller [Batch-Verzeichnisse][files_dirs] auf dem Knoten. | Alle Tasks. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | Der vollständige Pfad des [freigegebenen Verzeichnisses][files_dirs] auf dem Knoten. Alle Tasks, die auf einem Knoten ausgeführt werden, haben Lese-/Schreibzugriff auf dieses Verzeichnis. Tasks, die auf anderen Knoten ausgeführt werden, können nicht remote auf dieses Verzeichnis zugreifen (es ist kein „freigegebenes“ Netzwerkverzeichnis). | Alle Tasks. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | Der vollständige Pfad des [Starttaskverzeichnisses][files_dirs] auf dem Knoten. | Alle Tasks. | C:\user\tasks\startup |

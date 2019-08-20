@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277398"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019645"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -445,7 +445,14 @@ Aktualisieren Sie die Installation der [Azure CLI](/cli/azure/install-azure-cli?
 
 ### <a name="reason"></a>`Reason`
 
-Wenn Sie einen Dienst in einem Entwicklungsbereich ausführen, wird der Pod dieses Diensts [mit zusätzlichen Containern für die Instrumentation versehen](how-dev-spaces-works.md#prepare-your-aks-cluster). Für diese Container sind keine Ressourcenanforderungen oder -einschränkungen definiert, was bewirkt, dass die automatische horizontale Podskalierung für den Pod deaktiviert wird.
+Wenn Sie einen Dienst in einem Entwicklungsbereich ausführen, wird der Pod dieses Diensts [mit zusätzlichen Containern für die Instrumentierung eingefügt](how-dev-spaces-works.md#prepare-your-aks-cluster), und für alle Container in einem Pod müssen Ressourcengrenzwerte und -anforderungen für die horizontale automatische Podskalierung festgelegt werden. 
+
+
+Sie können Ressourcenanforderungen und -grenzwerte auf den eingefügten Container (devspaces-proxy-Container) anwenden, indem Sie Ihrer Podspezifikation die Anmerkung `azds.io/proxy-resources` hinzufügen. Der Wert sollte auf ein JSON-Objekt festgelegt werden, das den Ressourcenabschnitt der Containerspezifikation für den Proxy darstellt.
 
 ### <a name="try"></a>Testen
-Führen Sie die automatische horizontale Podskalierung in einem Namespace aus, für den keine Entwicklungsbereiche aktiviert sind.
+
+Nachstehend finden Sie ein Beispiel für eine „proxy-resources“-Anmerkung, die auf Ihre Podspezifikation angewendet werden soll.
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```
