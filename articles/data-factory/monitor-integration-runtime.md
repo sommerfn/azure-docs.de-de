@@ -43,12 +43,12 @@ Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet 
 
 | Eigenschaft | BESCHREIBUNG |
 -------- | ------------- | 
-| NAME | Name der Azure-Integrationslaufzeit. |  
-| Zustand | Status der Azure-Integrationslaufzeit. | 
+| Name | Name der Azure-Integrationslaufzeit. |  
+| State | Status der Azure-Integrationslaufzeit. | 
 | Location | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
 | DataFactoryName | Name der Data Factory, zu der die Azure-Integrationslaufzeit gehört. | 
 | ResourceGroupName | Name der Ressourcengruppe, zu der die Data Factory gehört.  |
-| BESCHREIBUNG | Beschreibung der Integrationslaufzeit.  |
+| Description | Beschreibung der Integrationslaufzeit.  |
 
 ### <a name="status"></a>Status
 Die folgende Tabelle enthält die möglichen Statuswerte einer Azure-Integrationslaufzeit:
