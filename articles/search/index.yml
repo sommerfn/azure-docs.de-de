@@ -7,9 +7,8 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann.'
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

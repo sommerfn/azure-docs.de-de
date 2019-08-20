@@ -117,7 +117,7 @@
     - name: Anleitungen
       items:
         - name: Sichern der Umgebung
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: Verwaltung von privaten Clouds
           items:
             - name: Ausweiten von Berechtigungen für die private Cloud
@@ -143,7 +143,7 @@
             - name: Azure Application Gateway mit virtuellen VMware-Computern
               href: azure-application-gateway.md
             - name: Konfigurieren eines vCenter-Servers in einer privaten Cloud als vRealize-Automatisierungsendpunkt
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: configure-server-vrealize-automation-endpoint.md
             - name: Migrieren von virtuellen Workload-Computern in eine private Cloud
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Sicherstellen der Hochverfügbarkeit von Anwendung in VMware in Azure

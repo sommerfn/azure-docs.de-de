@@ -170,7 +170,7 @@
     - name: Skalieren der App
       items:
         - name: Zentrales Hochskalieren der Serverkapazität
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: Konfigurieren der PremiumV2-Ebene
           href: app-service-configure-premium-tier.md
         - name: Horizontales Hochskalieren auf mehrere Instanzen

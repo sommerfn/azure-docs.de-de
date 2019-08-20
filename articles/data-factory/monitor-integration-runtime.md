@@ -41,7 +41,7 @@ Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollstä
 ### <a name="properties"></a>Eigenschaften
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 -------- | ------------- | 
 | Name | Name der Azure-Integrationslaufzeit. |  
 | State | Status der Azure-Integrationslaufzeit. | 
@@ -68,9 +68,9 @@ Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataF
 
 Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten**:
 
-| Eigenschaft | BESCHREIBUNG | 
+| Eigenschaft | Description | 
 | -------- | ----------- | 
-| NAME | Name der selbstgehosteten Integrationslaufzeit und die ihr zugeordneten Knoten. Der Knoten ist ein lokaler Windows-Computer, auf dem sich die selbstgehostete Integrationslaufzeit befindet. |  
+| Name | Name der selbstgehosteten Integrationslaufzeit und die ihr zugeordneten Knoten. Der Knoten ist ein lokaler Windows-Computer, auf dem sich die selbstgehostete Integrationslaufzeit befindet. |  
 | Status | Der Status der allgemeinen selbstgehosteten Integrationslaufzeit und der einzelnen Knoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im nächsten Abschnitt. | 
 | Version | Die Version der selbstgehosteten Integrationslaufzeit und der einzelnen Knoten. Die Version der selbstgehosteten Integrationslaufzeit wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup der selbstgehosteten Integrationslaufzeit beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie bei der selbstgehosteten Integrationslaufzeit richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt). | 
 | Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
@@ -92,7 +92,7 @@ Sie können den berechneten Standardwert im Azure-Portal überschreiben. Wählen
 ### <a name="status-per-node"></a>Status (pro Knoten)
 Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer selbstgehosteten Integrationslaufzeit:
 
-| Status | BESCHREIBUNG |
+| Status | Description |
 | ------ | ------------------ | 
 | Online | Der Knoten ist mit dem Data Factory-Dienst verbunden. |
 | Offline | Knoten ist offline. |
@@ -105,7 +105,7 @@ Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten hers
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Status (allgemeine selbstgehostete Integrationslaufzeit)
 Die folgende Tabelle enthält die möglichen Statuswerte einer selbstgehosteten Integrationslaufzeit: Dieser Status hängt von den Statuswerten aller Knoten ab, die zur Laufzeit gehören. 
 
-| Status | BESCHREIBUNG |
+| Status | Description |
 | ------ | ----------- | 
 | Registrierung erforderlich | Für diese selbstgehostete Integrationslaufzeit ist noch kein Knoten registriert. |
 | Online | Alle Knoten sind online. |
@@ -157,13 +157,13 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft/Status | BESCHREIBUNG |
+| Eigenschaft/Status | Description |
 | --------------- | ----------- |
 | CreateTime | Die UTC-Zeit für die Erstellung Ihrer Azure-SSIS-Integrationslaufzeit. |
 | Nodes | Die zugeordneten/verfügbaren Knoten Ihrer Azure-SSIS-Integrationslaufzeit mit knotenabhängigen Status (wird gestartet/verfügbar/wird wiederverwendet/nicht verfügbar) und handlungsrelevanten Fehlern. |
 | OtherErrors | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS-Integrationslaufzeit. |
 | LastOperation | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS-Integrationslaufzeit mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
-| Zustand | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
+| State | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
 | Location | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeSize | Die Größe der einzelnen Knoten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeCount | Die Anzahl der Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
@@ -178,13 +178,13 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | Type | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
 | ResourceGroupName | Der Name Ihrer Azure-Ressourcengruppe, in dem die Data Factory und Azure-SSIS-Integrationslaufzeit erstellt wurden. |
 | DataFactoryName | Der Name Ihrer Azure Data Factory. |
-| NAME | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |
-| BESCHREIBUNG | Die Beschreibung Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Name | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Description | Die Beschreibung Ihrer Azure-SSIS-Integrationslaufzeit. |
 
   
 ### <a name="status-per-node"></a>Status (pro Knoten)
 
-| Status | BESCHREIBUNG |
+| Status | Description |
 | ------ | ----------- | 
 | Wird gestartet | Dieser Knoten wird vorbereitet. |
 | Verfügbar | Dieser Knoten ist bereit für das Bereitstellen/Ausführen von SSIS-Paketen. |
@@ -193,7 +193,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (allgemeine Azure-SSIS-Integrationslaufzeit)
 
-| Gesamtstatus | BESCHREIBUNG | 
+| Gesamtstatus | Description | 
 | -------------- | ----------- | 
 | Initial | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden nicht zugeordnet/vorbereitet. | 
 | Wird gestartet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit werden zugeordnet/vorbereitet und die Abrechnung wurde gestartet. |

@@ -332,8 +332,6 @@
               href: iot-hub-raspberry-pi-kit-c-get-started.md
             - name: MXChip IoT DevKit mit Arduino
               href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-            - name: Adafruit Feather HUZZAH ESP8266 mit Arduino
-              href: iot-hub-arduino-huzzah-esp8266-get-started.md
         - name: Verwenden des MXChip IoT DevKit
           items:
             - name: Übersetzen von Sprachnachrichten mit Azure Cognitive Services
