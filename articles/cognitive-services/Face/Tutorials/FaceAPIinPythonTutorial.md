@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f2245b4f6e4b38e0b071678ac0f3bddeb72f7ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 502523e3c62f993af4484c8ab922c36fa51a60f1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277516"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945893"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Schnellstart: Erstellen eines Python-Skripts zum Erkennen und Umranden von Gesichtern in einem Bild
 
@@ -34,29 +34,29 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Installieren Sie das Face Python SDK, indem Sie die Eingabeaufforderung öffnen und den folgenden Befehl ausführen:
 
 ```shell
-pip install cognitive_face
+pip install azure-cognitiveservices-vision-face
 ```
 
 ## <a name="detect-faces-in-an-image"></a>Gesichtserkennung in einem Bild
 
 Erstellen Sie ein neues Python-Skript mit dem Namen _FaceQuickstart.py_, und fügen Sie den folgenden Code hinzu. Dieser Code behandelt die Kernfunktionen der Gesichtserkennung. Sie müssen `<Subscription Key>` durch den Wert Ihres Schlüssels ersetzen. Darüber hinaus müssen Sie unter Umständen den Wert von `BASE_URL` in die korrekte Regions-ID für Ihren Schlüssel ändern. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert. Legen Sie optional `img_url` auf die URL des Bilds fest, das Sie verwenden möchten.
 
-Das Skript erkennt Gesichter durch Aufrufen der **cognitive_face.face.detect**-Methode, die die [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST-API umschließt und eine Liste mit Gesichtern zurückgibt.
+Das Skript erkennt Gesichter durch Aufrufen der **FaceClient.face.detect_with_url**-Methode, die die [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST-API umschließt und eine Liste mit Gesichtern zurückgibt.
 
 ```python
-import cognitive_face as CF
+from azure.cognitiveservices.vision.face import FaceClient
 
 # Replace with a valid subscription key (keeping the quotes in place).
 KEY = '<Subscription Key>'
-CF.Key.set(KEY)
 
 # Replace with your regional Base URL
-BASE_URL = 'https://westus.api.cognitive.microsoft.com/face/v1.0/'
-CF.BaseUrl.set(BASE_URL)
+BASE_URL = 'https://westus.api.cognitive.microsoft.com/'
+
+faceClient = FaceClient(BASE_URL, CognitiveServicesCredentials(KEY))
 
 # You can use this example JPG or replace the URL below with your own URL to a JPEG image.
 img_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
-faces = CF.face.detect(img_url)
+faces = faceClient.face.detect_with_url(img_url)
 print(faces)
 ```
 

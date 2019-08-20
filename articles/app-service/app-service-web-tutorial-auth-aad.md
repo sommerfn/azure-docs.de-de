@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fff2469269d8f60f837f0af444e16928a9212bb0
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad0c510244c78fa3bdba41690c2284d0650c4b55
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67866578"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019354"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -218,7 +218,7 @@ Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informatio
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Back-End-App
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Ressourcengruppen** > **myAuthResourceGroup** >  _\<Name der Back-End-App>_ .
+Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Ressourcengruppen** > **myAuthResourceGroup** >  **_\<Name der Back-End-App>_** .
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -236,15 +236,15 @@ Klicken Sie auf der Seite **Authentifizierung/Autorisierung** auf **Speichern**.
 
 Aktualisieren Sie die Seite, nachdem die Benachrichtigung mit der Meldung `Successfully saved the Auth Settings for <back-end-app-name> App` angezeigt wird.
 
-Klicken Sie erneut auf **Azure Active Directory** und dann auf **Anwendung verwalten**.
+Klicken Sie erneut auf **Azure Active Directory** und dann auf **Azure AD-App**.
 
-Kopieren Sie die **Anwendungs-ID** von der Verwaltungsseite der AD-Anwendung in einen Editor. Sie benötigen diesen Wert später noch.
+Kopieren Sie die **Client-ID** der Azure AD-Anwendung in Editor. Sie benötigen diesen Wert später noch.
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Front-End-App
 
-Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die **Anwendungs-ID** nicht erforderlich. Lassen Sie die Seite **Azure Active Directory-Einstellungen** geöffnet.
+Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die Client-ID nicht erforderlich.
 
 Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net` navigieren. Sie sollten auf eine sichere Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, können Sie trotzdem noch nicht auf die Daten der Back-End-App zugreifen, da Sie noch drei weitere Schritte ausführen müssen:
 
@@ -259,21 +259,19 @@ Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net
 
 Nachdem Sie die Authentifizierung und Autorisierung für beide Apps aktiviert haben, verfügen beide über Unterstützung durch eine AD-Anwendung. In diesem Schritt gewähren Sie für die Front-End-App Berechtigungen zum Zugreifen auf das Back-End im Namen des Benutzers. (In technischer Hinsicht erteilen Sie der _AD-Anwendung_ des Front-Ends die Berechtigungen zum Zugreifen auf die _AD-Anwendung_ des Back-Ends im Namen des Benutzers.)
 
-An diesem Punkt sollten Sie sich auf der Seite mit den **Azure Active Directory-Einstellungen** für die Front-End-App befinden. Wechseln Sie zurück zu dieser Seite, falls sie nicht bereits angezeigt wird. 
-
-Klicken Sie auf **Berechtigungen verwalten** > **Hinzufügen** > **Select an API** (API auswählen).
+Wählen Sie im Portal im Menü auf der linken Seite **Azure Active Directory** > **App-Registrierungen** > **Anwendungen mit Besitzer** >  **\<Name der Front-End-App>**  > **API-Berechtigungen** aus.
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-Geben Sie auf der Seite **Select an API** (API auswählen) den AD-Anwendungsnamen Ihrer Back-End-App ein. Standardmäßig entspricht dieser Name dem Namen Ihrer Back-End-App. Wählen Sie ihn in der Liste aus, und klicken Sie auf **Auswählen**.
+Wählen Sie **Berechtigung hinzufügen** und anschließend **Meine APIs** >  **\<Name der Back-End-App>** aus.
 
-Aktivieren Sie das Kontrollkästchen neben **Access _\<AD-application-name>_** (Auf <Name der AD-Anwendung> zugreifen). Klicken Sie auf **Auswählen** > **Fertig**.
+Wählen Sie auf der Seite **API-Berechtigungen anfordern** für die Back-End-App **Delegierte Berechtigungen** und **user_impersonation** und anschließend **Berechtigungen hinzufügen** aus.
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>Konfigurieren von App Service für die Rückgabe eines verwendbaren Zugriffstokens
 
-Die Front-End-App verfügt jetzt über die erforderlichen Berechtigungen. In diesem Schritt konfigurieren Sie die App Service-Authentifizierung und -Autorisierung, um ein verwendbares Zugriffstoken für den Zugriff auf das Back-End zu erhalten. Für diesen Schritt benötigen Sie die Anwendungs-ID des Back-Ends, die Sie unter [Aktivieren der Authentifizierung und Autorisierung für die Back-End-App](#enable-authentication-and-authorization-for-back-end-app) kopiert haben.
+Die Front-End-App verfügt jetzt über die erforderlichen Berechtigungen für den Zugriff auf die Back-End-App als angemeldeter Benutzer. In diesem Schritt konfigurieren Sie die App Service-Authentifizierung und -Autorisierung, um ein verwendbares Zugriffstoken für den Zugriff auf das Back-End zu erhalten. Für diesen Schritt benötigen Sie die Client-ID des Back-Ends, die Sie unter [Aktivieren der Authentifizierung und Autorisierung für die Back-End-App](#enable-authentication-and-authorization-for-back-end-app) kopiert haben.
 
 Melden Sie sich am [Azure-Ressourcen-Explorer](https://resources.azure.com) an. Klicken Sie am oberen Rand der Seite auf **Lesen/Schreiben**, um die Bearbeitung Ihrer Azure-Ressourcen zu ermöglichen.
 
@@ -281,10 +279,10 @@ Melden Sie sich am [Azure-Ressourcen-Explorer](https://resources.azure.com) an. 
 
 Klicken Sie im linken Browser auf **subscriptions** >  **_\<Ihr Abonnement>_**  > **resourceGroups** > **myAuthResourceGroup** > **providers** > **Microsoft.Web** > **sites** >  **_\<Front-End-App-Name>_**  > **config** > **authsettings**.
 
-Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten**. Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Anwendungs-ID verwenden. 
+Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten**. Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Client-ID verwenden. 
 
 ```json
-"additionalLoginParams": ["response_type=code id_token","resource=<back_end_application_id>"],
+"additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/additional-login-params-front-end.png)
@@ -293,13 +291,13 @@ Speichern Sie Ihre Einstellungen, indem Sie auf **PUT** klicken.
 
 Ihre Apps sind nun konfiguriert. Das Front-End kann jetzt mit einem geeigneten Zugriffstoken auf das Back-End zugreifen.
 
-Informationen dazu, wie Sie dies für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
+Informationen dazu, wie Sie das Zugriffstoken für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>Sicheres Aufrufen der API aus Servercode
 
 In diesem Schritt passen Sie den zuvor geänderten Servercode so an, dass authentifizierte Aufrufe der Back-End-API durchgeführt werden können.
 
-Ihre Front-End-App verfügt jetzt über die erforderliche Berechtigung und fügt den Anmeldeparametern die Anwendungs-ID des Back-Ends hinzu. So kann ein Zugriffstoken für die Authentifizierung bei der Back-End-App abgerufen werden. App Service stellt dieses Token für Ihren Servercode bereit, indem in jede authentifizierte Anforderung ein `X-MS-TOKEN-AAD-ACCESS-TOKEN`-Header eingefügt wird (siehe [Retrieve tokens in app code](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) (Abrufen von Token im App-Code)).
+Ihre Front-End-App verfügt jetzt über die erforderliche Berechtigung und fügt den Anmeldeparametern die Client-ID des Back-Ends hinzu. So kann ein Zugriffstoken für die Authentifizierung bei der Back-End-App abgerufen werden. App Service stellt dieses Token für Ihren Servercode bereit, indem in jede authentifizierte Anforderung ein `X-MS-TOKEN-AAD-ACCESS-TOKEN`-Header eingefügt wird (siehe [Retrieve tokens in app code](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) (Abrufen von Token im App-Code)).
 
 > [!NOTE]
 > Diese Header werden für alle unterstützten Sprachen eingefügt. Sie greifen darauf zu, indem Sie jeweils das Standardmuster für eine Sprache verwenden.
@@ -317,7 +315,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-Mit diesem Code wird der HTTP-Standardheader `Authorization: Bearer <access_token>` allen API-Remoteaufrufen hinzugefügt. In der ASP.NET Core-Pipeline für die MVC-Anforderungsausführung wird `OnActionExecuting` direkt vor der jeweiligen Aktionsmethode (z.B. `GetAll()`) ausgeführt, sodass alle ausgehenden API-Aufrufe jetzt über das Zugriffstoken verfügen.
+Mit diesem Code wird der HTTP-Standardheader `Authorization: Bearer <access-token>` allen API-Remoteaufrufen hinzugefügt. In der ASP.NET Core-Pipeline für die MVC-Anforderungsausführung wird `OnActionExecuting` direkt vor der jeweiligen Aktionsmethode (z.B. `GetAll()`) ausgeführt, sodass alle ausgehenden API-Aufrufe jetzt über das Zugriffstoken verfügen.
 
 Speichern Sie Ihre gesamten Änderungen. Stellen Sie Ihre Änderungen im lokalen Terminalfenster für die Front-End-App bereit, indem Sie die folgenden Git-Befehle verwenden:
 

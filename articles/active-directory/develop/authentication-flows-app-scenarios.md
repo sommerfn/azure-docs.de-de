@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: fb2e3e45da0a072eadb0eac9f8a0266f9e14cda2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494580"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031973"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -43,7 +43,7 @@ Token können von einer Vielzahl von Anwendungstypen abgerufen werden: Webanwend
 
 Die Authentifizierungsszenarien beinhalten zwei Aktivitäten:
 
-- **Abrufen von Sicherheitstoken** für eine geschützte Web-API. Microsoft empfiehlt zum Abrufen von Token die Verwendung von [Authentifizierungsbibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries), insbesondere die MSAL-Familie (MicroSoft Authentification Libraries).
+- **Abrufen von Sicherheitstoken** für eine geschützte Web-API. Microsoft empfiehlt zum Abrufen von Token die Verwendung von [Authentifizierungsbibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries), insbesondere die MSAL-Familie (Microsoft Authentification Libraries).
 - **Schützen einer Web-API** (oder Web-App). Eine der Herausforderungen beim Schützen einer Ressource (Web-App oder Web-API) besteht darin, das Sicherheitstoken zu überprüfen. Auf einigen Plattformen bietet Microsoft [Bibliotheken der Middleware](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) an.
 
 ### <a name="with-users-or-without-users"></a>Mit Benutzern oder ohne Benutzer
@@ -143,7 +143,7 @@ Weitere Informationen finden Sie unter [Mobile App, die Web-APIs aufruft](scenar
 
 ### <a name="protected-web-api"></a>Geschützte Web-API
 
-Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste schützen, z.B. die RESTful-Web-API Ihrer App. Eine geschützte Web-API wird zum Schutz der Daten und zum Authentifizieren eingehender Anfragen mit einem Zugriffstoken aufgerufen. Der Aufrufer einer Web-API fügt an den Autorisierungsheader einer HTTP-Anforderung ein Zugriffstoken an. Wenn Sie Ihre ASP.NET- oder ASP.NET Core-Web-API schützen möchten, müssen Sie das Zugriffstoken überprüfen. Hierfür verwenden Sie die JWT-Middleware für ASP.NET. Die Validierung erfolgt im Hintergrund durch die [IdentityModel-Erweiterungen für die .NET-Bibliothek](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki), nicht durch MSAL.NET.
+Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste schützen, z.B. die RESTful-Web-API Ihrer App. Eine geschützte Web-API wird zum Schutz der Daten und zum Authentifizieren eingehender Anfragen mit einem Zugriffstoken aufgerufen. Der Aufrufer einer Web-API fügt an den Autorisierungsheader einer HTTP-Anforderung ein Zugriffstoken an. Wenn Sie Ihre ASP.NET- oder ASP.NET Core-Web-API schützen möchten, müssen Sie das Zugriffstoken validieren. Hierfür verwenden Sie die JWT-Middleware für ASP.NET. Die Validierung erfolgt im Hintergrund durch die [IdentityModel-Erweiterungen für die .NET-Bibliothek](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki), nicht durch MSAL.NET.
 
 Weitere Informationen finden Sie unter [Geschützte Web-API](scenario-protected-web-api-overview.md).
 
@@ -195,7 +195,7 @@ Nicht jeder Anwendungstyp ist auf jeder Plattform verfügbar. Sie können zum Er
 | [Desktop-App, die Web-APIs aufruft](scenario-desktop-overview.md) <br/> [![Desktop-App, die Web-APIs aufruft](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![Gerätecodeflow](media/scenarios/device-code-flow-app.svg) | ![MSAL.NET](media/sample-v2-code/logo_NET.png)  MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 | [Mobile App, die Web-APIs aufruft](scenario-mobile-overview.md) <br/> [![Mobile App, die Web-APIs aufruft](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS/Objective-C/Swift](media/sample-v2-code/logo_iOS.png) MSAL.iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL.Android
 | [Daemon-App](scenario-daemon-overview.md) <br/> [![Daemon-App](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
-| [Web-API, die Web-APIs aufruft](scenario-web-api-call-api-overview.md) <br/> [![Web-API, die Web-APIs aufruft](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) <br/> ASP.NET + MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png)<br/> ASP.NET Core + MSAL.NET
+| [Web-API, die Web-APIs aufruft](scenario-web-api-call-api-overview.md) <br/> [![Web-API, die Web-APIs aufruft](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 
 Weitere Informationen finden Sie unter [Von Microsoft unterstützte Bibliotheken nach Betriebssystem/Sprache](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)
 

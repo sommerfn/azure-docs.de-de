@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5bf49538823ea50bca197a78ec54d4ddcae1ff
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708443"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879674"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Tutorial: Integrieren von Carbonite Endpoint Backup in Azure Active Directory
 
@@ -125,27 +125,35 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>Konfigurieren des einmaligen Anmeldens für Carbonite Endpoint Backup
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Carbonite Endpoint Backup-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in Carbonite Endpoint Backup automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-1. Klicken Sie im linken Bereich auf **Company** (Unternehmen).
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Wenn Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Carbonite Endpoint Backup einrichten** klicken, werden Sie zur Carbonite Endpoint Backup-Anwendung umgeleitet. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Carbonite Endpoint Backup anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie Carbonite Endpoint Backup manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Carbonite Endpoint Backup-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+
+4. Klicken Sie im linken Bereich auf **Company** (Unternehmen).
 
     ![Carbonite Endpoint Backup-Konfiguration ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-1. Klicken Sie auf **Single sign-on** (Einmaliges Anmelden).
+5. Klicken Sie auf **Single sign-on** (Einmaliges Anmelden).
 
     ![Carbonite Endpoint Backup-Konfiguration ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-1. Klicken Sie zum Konfigurieren auf **Enable** (Aktivieren) und dann auf **Edit settings** (Einstellungen bearbeiten).
+6. Klicken Sie zum Konfigurieren auf **Enable** (Aktivieren) und dann auf **Edit settings** (Einstellungen bearbeiten).
 
     ![Carbonite Endpoint Backup-Konfiguration ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-1. Führen Sie auf der Einstellungsseite **Single sign-on** (Einmaliges Anmelden) die folgenden Schritte aus:
+7. Führen Sie auf der Einstellungsseite **Single sign-on** (Einmaliges Anmelden) die folgenden Schritte aus:
 
     ![Carbonite Endpoint Backup-Konfiguration ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. Geben Sie in das Textfeld **Identity provider name** (Name des Identitätsanbieters) den Namen des Identitätsanbieters an, etwa **Microsoft Azure AD**.
+    1. Fügen Sie in das Textfeld **Identity provider name** (Name des Identitätsanbieters) den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    1. Fügen Sie in das Textfeld **Identity Provider URL** (Identitätsanbieter-URL) den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+    1. Fügen Sie in das Textfeld **Identity Provider URL** (Identitätsanbieter-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     1. Klicken Sie auf **Choose File** (Datei auswählen), um das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** hochzuladen.
 

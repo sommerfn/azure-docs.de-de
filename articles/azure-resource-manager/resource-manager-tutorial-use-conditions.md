@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: b997451a25f8a093491a322376db95ea53165893
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357809"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989157"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Tutorial: Verwenden von Bedingungen in Azure Resource Manager-Vorlagen
 
@@ -86,7 +86,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 Nehmen Sie zwei Änderungen an der vorhandenen Vorlage vor:
 
 * Fügen Sie einen Parameter für den Speicherkontonamen hinzu. Benutzer können entweder einen neuen oder einen vorhandenen Speicherkontonamen angeben.
-* Fügen Sie einen neuen Parameter mit dem Namen **newOrExisting** hinzu. Die Bereitstellung nutzt diesen Parameter, um zu ermitteln, wann ein neues Speicherkonto erstellt oder ein vorhandenes Speicherkonto verwendet werden soll.
+* Fügen Sie einen neuen Parameter mit dem Namen **newOrExisting** hinzu. Die Bereitstellung nutzt diesen Parameter, um zu ermitteln, ob ein neues Speicherkonto erstellt oder ein vorhandenes Speicherkonto verwendet werden soll.
 
 Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
@@ -138,7 +138,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Befolgen Sie die Anweisungen in [Bereitstellen der Vorlage](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), um die Cloud Shell zu öffnen und die geänderte Vorlage hochzuladen, und führen Sie dann das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
+Befolgen Sie die Anweisungen unter [Bereitstellen der Vorlage](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), um Cloud Shell zu öffnen und die geänderte Vorlage hochzuladen, und führen Sie dann das folgende PowerShell-Skript aus, um die Vorlage bereitzustellen.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

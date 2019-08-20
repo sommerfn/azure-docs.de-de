@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564182"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946161"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Node.js
 
@@ -87,7 +87,7 @@ Fügen Sie am Ende der Datei *sample.js* den folgenden Code hinzu, um Ihrem Proj
 
 Wenn Sie Bilder in Objekterkennungsprojekten mit Tags versehen, müssen Sie mithilfe normalisierter Koordinaten die Region des jeweiligen markierten Objekts angeben.
 
-Wenn Sie Bilder, Tags und Regionen zum Projekt hinzufügen möchten, fügen Sie nach der Tagerstellung den folgenden Code ein. Beachten Sie, dass die Bereiche für dieses Tutorial inline mit dem Code hartcodiert werden. Die Regionen geben den Begrenzungsrahmen in normalisierten Koordinaten an, und die Koordinaten werden in der folgenden Reihenfolge angegeben: links, oben, Breite, Höhe.
+Wenn Sie Bilder, Tags und Regionen zum Projekt hinzufügen möchten, fügen Sie nach der Tagerstellung den folgenden Code ein. Beachten Sie, dass die Bereiche für dieses Tutorial inline mit dem Code hartcodiert werden. Die Regionen geben den Begrenzungsrahmen in normalisierten Koordinaten an, und die Koordinaten werden in der folgenden Reihenfolge angegeben: links, oben, Breite, Höhe. Sie können bis zu 64 Bilder in einem Batch hochladen.
 
 ```javascript
 const forkImageRegions = {

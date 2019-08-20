@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e3912e90762977bc801279fde481fc26516e51a6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840792"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882643"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Indexes in Postman mit REST-APIs
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **PUT**.
 
-2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
+2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
 
 3. Geben Sie im Text der Anforderung die Indexdefinition an (den kopierbereiten Code finden Sie unten).
 
@@ -298,6 +298,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-REST-Clients sind sehr nützlich für spontane Erkundungen, aber da Sie jetzt mit der Funktionsweise der REST-APIs vertraut sind, können Sie mit dem Code fortfahren. Die nächsten Schritte finden Sie unter dem folgenden Link:
+Nun wissen Sie, wie Sie grundlegende Aufgaben ausführen, und können mit weiteren REST-API-Aufrufen fortfahren, um sich komplexere Features wie Indexer anzusehen oder [eine Cognitive Search-Pipeline einzurichten](cognitive-search-tutorial-blob.md). Als nächsten Schritt empfehlen wir den folgenden Link:
 
-+ [Schnellstart: Erstellen eines Index mit dem .NET SDK](search-get-started-dotnet.md)
+> [!div class="nextstepaction"]
+> [REST-Tutorial: Indexieren und durchsuchen Sie halbstrukturierte Daten (JSON Blobs) in der Azure Search](search-semi-structured-data.md)

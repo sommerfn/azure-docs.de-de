@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e7a343e257a926f010b52f9833d7acb321c8aeb6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: b5c800e1b07fab2026ab74209a41bc07cc56238f
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639460"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019489"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
@@ -104,7 +104,6 @@ Aktivieren Sie die Sicherung wie folgt:
         -Policy $policy
     ```
 
-
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
 
 Sicherungen werden gemäß dem in der Sicherungsrichtlinie angegebenen Zeitplan ausgeführt. Sie können auch eine Ad-hoc-Sicherung ausführen:
@@ -158,7 +157,7 @@ Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
 ## <a name="clean-up-the-deployment"></a>Bereinigen der Bereitstellung
 
 Wenn der virtuelle Computer nicht mehr gesichert werden muss, können Sie ihn bereinigen.
-- Wenn Sie den virtuellen Computer wiederherstellen möchten, überspringen Sie die Bereinigung.
+- Wenn Sie das Wiederherstellen des virtuellen Computers ausprobieren möchten, überspringen Sie die Bereinigung.
 - Wenn Sie einen vorhandenen virtuellen Computer verwendet haben, können Sie das letzte Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) überspringen, um die Ressourcengruppe und den VM beizubehalten.
 
 Deaktivieren Sie den Schutz, und entfernen Sie die Wiederherstellungspunkte und den Tresor. Löschen Sie anschließend die Ressourcengruppe und die zugehörigen VM-Ressourcen wie folgt:

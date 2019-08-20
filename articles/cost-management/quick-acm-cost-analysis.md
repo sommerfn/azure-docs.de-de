@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: d07a52a3cd07c69b9b7e2ef43331ddd9fb455b10
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2ca0c0741ea543b30695303d473389979f2e1045
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827829"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855044"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -128,7 +128,7 @@ In der folgenden Abbildung sind Ressourcengruppennamen dargestellt. Sie können 
 
 ![Vollständige Daten für die aktuelle Ansicht mit Ressourcengruppennamen](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-10-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Wenn mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher in einer Gruppe **Andere** angezeigt. Diese Gruppe deckt alle verbleibenden Gruppen gemeinsam ab. Beim Gruppieren nach Tags wird eine Gruppe vom Typ **Ohne Markierungen** für Kosten angezeigt, auf die der Tagschlüssel nicht angewendet wurde. **Keine Markierungen** wird immer zuletzt angezeigt, selbst wenn die Kosten ohne Markierungen die Kosten mit Markierungen übersteigen. Kosten ohne Markierungen werden unter **Weitere** angezeigt, wenn 10 oder mehr Tagwerte vorhanden sind.
+Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-10-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Bei mehr als 10 Einträgen werden die obersten 9 Kostenverursacher mit einer Gruppe **Weitere** angezeigt, die alle verbleibenden Gruppen zusammen repräsentiert. Beim Gruppieren nach Tags wird eine Gruppe vom Typ **Ohne Markierungen** für Kosten angezeigt, auf die der Tagschlüssel nicht angewendet wurde. **Keine Markierungen** wird immer zuletzt angezeigt, selbst wenn die Kosten ohne Markierungen die Kosten mit Markierungen übersteigen. Kosten ohne Markierungen werden unter **Weitere** angezeigt, wenn 10 oder mehr Tagwerte vorhanden sind. Wechseln Sie zur Tabellenansicht, und ändern Sie die Granularität auf **Keine**, um alle Werte von den höchsten bis zu den niedrigsten Kosten anzuzeigen.
 
 Für klassische virtuelle Computer, Netzwerke und Speicherressourcen werden keine ausführlichen Abrechnungsdaten bereitgestellt. Sie werden beim Gruppieren der Kosten als **Classic services** (Klassische Dienste) gruppiert.
 

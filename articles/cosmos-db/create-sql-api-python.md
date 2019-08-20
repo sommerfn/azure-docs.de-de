@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: d85b156e9c6d213b6f65fe738f5d22c8cce022ee
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 84f3e4d0314408b2f3a8417cebd355a842331286
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68001196"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855141"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Erstellen einer Python-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
 
@@ -122,10 +122,10 @@ Die folgenden Codeausschnitte stammen alle aus der Datei `CosmosGetStarted.py`.
     db = client.CreateDatabase({ 'id': config['DATABASE'] })
     ```
 
-* Es wird eine neue Sammlung erstellt.
+* Es wird ein neuer Container erstellt.
 
     ```python
-    # Create collection options
+    # Create container options
     options = {
         'offerThroughput': 400
     }

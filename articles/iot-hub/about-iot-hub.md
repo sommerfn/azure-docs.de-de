@@ -3,18 +3,17 @@ title: Einführung in Azure IoT Hub| Microsoft-Dokumentation
 description: Erfahren Sie mehr über Azure IoT Hub. Dieser IoT-Dienst ist für eine skalierbare Datenerfassung, Geräteverwaltung und Sicherheit konzipiert.
 author: nberdy
 ms.author: nberdy
-ms.date: 07/04/2018
+ms.date: 08/08/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-manager: briz
-ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726736"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950464"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -26,7 +25,7 @@ Mit den IoT Hub-Funktionen können Sie skalierbare IoT-Lösungen mit vollem Funk
 
 ## <a name="scale-your-solution"></a>Skalieren Ihrer Lösung
 
-IoT Hub lässt sich auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skalieren, um Ihre IoT-Workloads zu unterstützen. IoT Hub bietet verschiedene Dienstebenen für Ihre jeweiligen Skalierbarkeitsanforderungen. Weitere Informationen finden Sie auf der Seite mit den [Preisen](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub lässt sich auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skalieren, um Ihre IoT-Workloads zu unterstützen. Weitere Informationen zum Skalieren Ihres IoT-Hubs finden Sie unter [Skalieren von Azure IoT Hub](iot-hub-scaling.md?branch=release-iotbasic). Weitere Informationen zu den verschiedenen Dienstebenen von IoT Hub und der besten Option für Ihre Skalierbarkeitsanforderungen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Sichern der Kommunikation
 
@@ -50,7 +49,7 @@ IoT Hub bietet einen sicheren Kommunikationskanal, über den Ihre Geräte Daten 
 
 Integrierte Funktionen für die Nachrichtenweiterleitung sorgen für Flexibilität bei der Einrichtung einer automatischen regelbasierten Nachrichtenauffächerung:
 
-* Verwenden Sie die Nachrichtenweiterleitung, um zu steuern, wohin Ihr Hub Gerätetelemetriedaten sendet.
+* Verwenden Sie die [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md), um zu steuern, wohin Ihr Hub Gerätetelemetriedaten sendet.
 
 * Bei der Weiterleitung von Nachrichten an mehrere Endpunkte fallen keine zusätzlichen Kosten an.
 
@@ -64,7 +63,7 @@ Sie können IoT Hub in andere Azure-Dienste integrieren, um vollständige End-to
 
 * [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/): Mit diesem Dienst automatisieren Sie Ihre Geschäftsprozesse.
 
-* [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/): Mit diesem Dienst fügen Sie Ihrer Lösung Modelle für maschinelles Lernen und künstliche Intelligenz hinzu.
+* [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/): Mit diesem Dienst fügen Sie Ihrer Lösung Modelle für maschinelles Lernen und KI hinzu.
 
 * [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/): Mit diesem Dienst führen Sie in Echtzeit Analyseberechnungen für die Datenströme aus Ihren Geräten aus.
 
@@ -110,7 +109,7 @@ Wenn Ihre Lösung keines der unterstützten Protokolle nutzen kann, können Sie 
 
 ## <a name="quotas-and-limits"></a>Kontingente und Grenzwerte
 
-Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, um den Missbrauch von Diensten zu verhindern. Diese Grenzwerte können den Umfang Ihrer IoT-Lösung beeinträchtigen. Der derzeitige Grenzwert liegt bei 50 IoT Hub-Instanzen pro Abonnement. Wenden Sie sich an den Support, um eine Erhöhung des Kontingents anzufordern. Weitere Informationen zu Kontingentgrenzen finden Sie hier:
+Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, um den Missbrauch von Diensten zu verhindern. Diese Grenzwerte können den Umfang Ihrer IoT-Lösung beeinträchtigen. Der derzeitige Grenzwert liegt bei 50 IoT Hub-Instanzen pro Abonnement. Wenden Sie sich an den Support, um eine Erhöhung des Kontingents anzufordern. Weitere Informationen finden Sie unter [IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md). Weitere Details zu Kontingentgrenzen finden Sie in einem der folgenden Artikel:
 
 * [Einschränkungen bei Azure-Abonnementdiensten](../azure-subscription-service-limits.md)
 

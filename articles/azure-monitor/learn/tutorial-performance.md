@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/18/2017
+ms.date: 08/13/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: f906ab5db35ce8b239eceac9cdc8244f230f5a77
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596024"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032074"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -47,79 +47,68 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 1. Wählen Sie zuerst **Application Insights** und anschließend Ihr Abonnement aus.  
 1. Um den Bereich **Leistung** zu öffnen, klicken Sie entweder im Menü **Untersuchen** auf die Option **Leistung** oder auf das Diagramm **Serverantwortzeit**.
 
-    ![Leistung](media/tutorial-performance/performance.png)
+    ![Leistung](media/tutorial-performance/1-overview.png)
 
 2. Der Bereich **Leistung** zeigt die Anzahl und durchschnittliche Dauer der einzelnen Anwendungsvorgänge an.  Mit diesen Informationen können Sie die Vorgänge ermitteln, die die größten Auswirkungen auf Benutzer haben. In diesem Beispiel sind **GET Customers/Details** und **GET Home/Index** aufgrund der relativ hohen Dauer und der Anzahl der Aufrufe auffällige Vorgänge.  Andere Vorgänge dauern möglicherweise länger, wurden aber nur selten aufgerufen. Der Effekt einer Verbesserung wäre daher minimal.  
 
-    ![Bereich „Leistung“](media/tutorial-performance/performance-blade.png)
+    ![Panel für die Leistung auf dem Server](media/tutorial-performance/2-server-operations.png)
 
 3. Das Diagramm zeigt derzeit die durchschnittliche Dauer der ausgewählten Vorgänge im Zeitverlauf an. Sie können zum 95. Perzentil wechseln, um die Leistungsprobleme zu ermitteln. Fügen Sie die für Sie interessanten Vorgänge hinzu, indem Sie sie an das Diagramm anheften.  Dies verdeutlicht, dass es einige Spitzen gibt, die eine Untersuchung wert sind.  Isolieren Sie sie weiter, indem Sie das Zeitfenster des Diagramms verkleinern.
 
-    ![Anheftvorgänge](media/tutorial-performance/pin-operations.png)
+    ![Anheftvorgänge](media/tutorial-performance/3-server-operations-95th.png)
 
 4.  Im Leistungsbereich auf der rechten Seite sehen Sie die Verteilung der Dauer der verschiedenen Anforderungen für den ausgewählten Vorgang.  Reduzieren Sie das Fenster, um etwa beim 95. Perzentil zu beginnen. Auf der Insights-Karte „3 Hauptabhängigkeiten“ sehen Sie auf einen Blick, dass die externen Abhängigkeiten wahrscheinlich zu einer langsamen Ausführung der Transaktionen beitragen.  Klicken Sie auf die Schaltfläche mit der Anzahl von Beispielen, um eine Liste der Beispiele anzuzeigen. Anschließend können Sie ein beliebiges Beispiel auswählen, um Transaktionsdetails anzuzeigen.
 
-    ![Dauerverteilung](media/tutorial-performance/duration-distribution.png)
-
 5.  Sie sehen auf einen Blick, dass der Aufruf der Azure Table-Instanz „Fabrikamaccount“ am meisten zur Gesamtdauer der Transaktion beiträgt. Darüber hinaus können Sie erkennen, dass eine Ausnahme zu einem Fehler geführt hat. Sie können auf ein beliebiges Element in der Liste klicken, um seine Details auf der rechten Seite anzuzeigen. [Weitere Informationen zur Oberfläche zur Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md)
 
-    ![Vorgangsdetails](media/tutorial-performance/operation-details.png)
+    ![Vollständige Details zum Vorgang](media/tutorial-performance/4-end-to-end.png)
     
 
 6.  **Profiler** unterstützt Sie bei der Diagnose auf Codeebene: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
 5.  Die Ablaufverfolgung zeigt die einzelnen Ereignisse für jeden Vorgang an, damit Sie die Grundursache für die Dauer des gesamten Vorgangs diagnostizieren können.  Klicken Sie auf eines der obersten Beispiele, die am längsten dauern.
-6.  Klicken Sie auf **Langsamsten Pfad anzeigen**, um den Pfad der Ereignisse zu markieren, die für die hohe Gesamtdauer des Vorgangs verantwortlich sind.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Codes besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird. 
+6.  Klicken Sie auf **Langsamster Pfad**, um den Pfad der Ereignisse zu markieren, die am meisten zur Gesamtdauer des Vorgangs beitragen.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Codes besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird.
 
-    ![Profilerdetails](media/tutorial-performance/profiler-details.png)
+    ![Profilerdetails](media/tutorial-performance/5-hot-path.png)
 
 7.  Der **Leistungstipp** oben im Bildschirm belegt die Einschätzung, dass die hohe Dauer der Wartezeit geschuldet ist.  Klicken Sie auf den Link **Warten**, um die Dokumentation zu den verschiedenen Ereignistypen aufzurufen.
 
-    ![Leistungstipp](media/tutorial-performance/performance-tip.png)
+    ![Leistungstipp](media/tutorial-performance/6-perf-tip.png)
 
-8.  Für eine weiterführende Analyse können Sie auf **ETL-Ablaufverfolgung herunterladen** klicken und die Ablaufverfolgung in Visual Studio herunterladen.
+8.  Für eine weiterführende Analyse können Sie auf **Ablaufverfolgung herunterladen** klicken und die Ablaufverfolgung in Visual Studio herunterladen.
 
-## <a name="use-analytics-data-for-server"></a>Verwenden von Analysedaten für Server
-Application Insights Analytics bietet eine umfangreiche Abfragesprache, mit der Sie alle von Application Insights erfassten Daten analysieren können.  Sie können damit tiefgehende Analysen von Anforderungs- und Leistungsdaten ausführen.
+## <a name="use-logs-data-for-server"></a>Verwenden von Protokolldaten für den Server
+ Protokolle bieten eine umfangreiche Abfragesprache, mit der Sie alle von Application Insights erfassten Daten analysieren können. Sie können damit tiefgehende Analysen von Anforderungs- und Leistungsdaten ausführen.
 
-1. Kehren Sie zum Bereich „Vorgangsdetails“ zurück, und klicken Sie auf die Schaltfläche „Analytics“ (Analysen).
+1. Kehren Sie zum Bereich mit den Vorgangsdetails zurück, und klicken Sie auf das ![Protokollsymbol](media/tutorial-performance/app-viewinlogs-icon.png)**In Protokollen anzeigen (Analytics)** .
 
-    ![Schaltfläche „Analytics“](media/tutorial-performance/server-analytics-button.png)
+2. Protokolle werden mit einer Abfrage für jede der Ansichten im Bereich geöffnet.  Sie können diese Abfragen ohne weitere Veränderungen ausführen oder sie Ihren Anforderungen entsprechend ändern.  Die erste Abfrage zeigt die Dauer dieses Vorgangs im Zeitverlauf an.
 
-2. Application Insights Analytics wird mit einer Abfrage für jede der Ansichten im Bereich geöffnet.  Sie können diese Abfragen ohne weitere Veränderungen ausführen oder sie Ihren Anforderungen entsprechend ändern.  Die erste Abfrage zeigt die Dauer dieses Vorgangs im Zeitverlauf an.
-
-    ![Analytics](media/tutorial-performance/server-analytics.png)
+    ![Protokollabfrage](media/tutorial-performance/7-request-time-logs.png)
 
 
 ## <a name="identify-slow-client-operations"></a>Identifizieren langsamer Clientvorgänge
 Zusätzlich zum Ermitteln von optimierbaren Serverprozessen kann Application Insights die Perspektive des Clientbrowsers analysieren.  So können Sie nicht nur mögliche Verbesserungen an Clientkomponenten, sondern auch Probleme mit verschiedenen Browsern oder verschiedenen Standorten identifizieren.
 
-1. Wählen Sie unter **Untersuchen** die Option **Browser** aus, um die Browserzusammenfassung zu öffnen.  Dies ist eine grafische Zusammenfassung der verschiedenen Telemetrien Ihrer Anwendung aus der Perspektive des Browsers.
+1. Um eine Zusammenfassung der Browserleistung anzuzeigen, gehen Sie folgendermaßen vor: Klicken Sie unter **Untersuchen** auf **Browser** und dann auf **Browserleistung**, oder klicken Sie unter **Untersuchen** auf **Leistung**, und wechseln Sie mithilfe der Schaltfläche „Server/Browser“ oben rechts zur Registerkarte **Browser**. Dies ist eine grafische Zusammenfassung der verschiedenen Telemetrien Ihrer Anwendung aus der Perspektive des Browsers.
 
-    ![Browserzusammenfassung](media/tutorial-performance/browser-summary.png)
+    ![Browserzusammenfassung](media/tutorial-performance/8-browser.png)
 
-2.  Scrollen Sie nach unten bis zu **Welche meiner Seiten sind am langsamsten?** .  Damit rufen Sie eine Liste der Anwendungsseiten auf, die am langsamsten von Clients geladen werden.  Mit diesen Informationen können Sie die Seiten priorisieren, die die größten Auswirkungen auf Benutzer haben.
-3.  Klicken Sie auf eine der Seiten, um den Bereich **Seitenansicht** zu öffnen.  Im Beispiel wird die Seite **/FabrikamProd** im Durchschnitt sehr langsam geladen.  Der Bereich **Seitenansicht** stellt Details zu dieser Seite bereit, z.B. eine Aufschlüsselung der verschiedenen Zeiträume.
+2. Wählen Sie mindestens einen Vorgangsnamen aus, klicken Sie unten rechts auf die blaue Schaltfläche „Beispiele“, und wählen Sie einen Vorgang aus. Damit wird eine Übersicht über die vollständigen Transaktionsdetails geöffnet, und auf der rechten Seite können Sie die **Seitenansichtseigenschaften** anzeigen. Hier können Sie die Details zum Client anzeigen, der die Seite anfordert, z.B. den Browsertyp und dessen Speicherort. Diese Informationen können Ihnen dabei helfen, zu bestimmen, ob Leistungsprobleme mit bestimmten Clienttypen zu tun haben.
 
-    ![Seitenansicht](media/tutorial-performance/page-view.png)
+    ![Seitenansicht](media/tutorial-performance/9-page-view-properties.png)
 
-4.  Klicken Sie auf die höchste Dauer, um die Details dieser Anforderungen aufzurufen.  Klicken Sie dann auf die einzelnen Anforderungen, um die Details zum Client anzuzeigen, der die Seite anfordert, z.B. den Browsertyp und dessen Standort.  Diese Informationen können Ihnen dabei helfen, zu bestimmen, ob Leistungsprobleme mit bestimmten Clienttypen zu tun haben.
+## <a name="use-logs-data-for-client"></a>Verwenden von Protokolldaten für den Client
+Auf die gleiche Weise wie bei den für die Serverleistung gesammelten Daten stellt Application Insights alle Clientdaten für tiefgehende Analysen mithilfe von Protokollen zur Verfügung.
 
-    ![Anforderungsdetails](media/tutorial-performance/request-details.png)
+1. Kehren Sie zur Browserzusammenfassung zurück, und klicken Sie auf das ![Protokollsymbol](media/tutorial-performance/app-viewinlogs-icon.png) **In Protokollen anzeigen (Analytics)** .
 
-## <a name="use-analytics-data-for-client"></a>Verwenden von Analysedaten für Clients
-So wie bei den für die Serverleistung gesammelten Daten stellt Application Insights alle Clientdaten für tiefgehende Analysen mit Analytics zur Verfügung.
+2. Protokolle werden mit einer Abfrage für jede der Ansichten im Bereich geöffnet. Die erste Abfrage zeigt die Dauer für verschiedene Seitenansichten im Zeitverlauf an.
 
-1. Kehren Sie zur Browserzusammenfassung zurück, und klicken Sie auf das Analysesymbol.
+    ![Protokollabfrage](media/tutorial-performance/10-page-view-logs.png)
 
-    ![Analysesymbol](media/tutorial-performance/client-analytics-icon.png)
+3.  Die intelligente Diagnose ist eine Protokollfunktion, die eindeutige Muster in den Daten ermittelt. Wenn Sie auf den Punkt für die intelligente Diagnose im Liniendiagramm klicken, wird dieselbe Abfrage ohne Datensätze ausgeführt, die die Anomalie verursacht hat. Details zu diesen Datensätzen werden im Kommentarabschnitt der Abfrage angezeigt, damit Sie ermitteln können, welche Eigenschaften dieser Seitenansichten die hohe Dauer verursacht haben.
 
-2. Application Insights Analytics wird mit einer Abfrage für jede der Ansichten im Bereich geöffnet. Die erste Abfrage zeigt die Dauer für verschiedene Seitenansichten im Zeitverlauf an.
-
-    ![Analytics](media/tutorial-performance/client-analytics.png)
-
-3.  Die intelligente Diagnose ist eine Funktion von Application Insights Analytics, die eindeutige Muster in den Daten ermittelt.  Wenn Sie auf den Punkt für die intelligente Diagnose im Liniendiagramm klicken, wird dieselbe Abfrage ohne Datensätze ausgeführt, die die Anomalie verursacht hat.  Details zu diesen Datensätzen werden im Kommentarabschnitt der Abfrage angezeigt, damit Sie ermitteln können, welche Eigenschaften dieser Seitenansichten die hohe Dauer verursacht haben.
-
-    ![Intelligente Diagnose](media/tutorial-performance/client-smart-diagnostics.png)
+    ![Protokolle mit intelligenter Diagnose](media/tutorial-performance/11-page-view-logs-dsmart.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

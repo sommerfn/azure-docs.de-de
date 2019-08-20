@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8d4a4bd21e0f7a7f483e139beb1840b5c3cc7f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a32548bdafa999fe72e8b2f8e3b80961ebe3c9a
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165082"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Tutorial: Azure Active Directory-Integration mit Braze
 
@@ -115,7 +115,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Braze di
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.braze.com/sign_in`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an das [Clientsupportteam von Braze](mailto:support@braze.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Verwenden Sie als Unterdomäne die koordinierende Unterdomäne, die in der URL für Ihre Braze-Instanz aufgeführt ist. Wenn Ihre Instanz z.B. „US-01“ heißt, lautet die URL https://dashboard-01.braze.com. Das bedeutet, dass Ihre Unterdomäne „dashboard-01“ ist.
 
 6. Die Braze-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
@@ -164,7 +164,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Braze di
 
 ### <a name="configure-braze-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Braze
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Braze** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Braze](mailto:support@braze.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um das einmalige Anmelden auf der Seite von **Braze** zu konfigurieren, müssen Sie sicherstellen, dass ein Braze-Kundenbetreuer SAML SSO für Ihr Konto aktiviert hat. Sobald die Aktivierung erfolgt ist, wechseln Sie zu „Company Settings“ > „Security Settings“ (Unternehmenseinstellungen > Sicherheitseinstellungen), und legen Sie den SAML SSO-Abschnitt auf ON (EIN) fest. In diesem Abschnitt müssen Sie das heruntergeladene **Zertifikat (Base64)** einfügen und einen SAML-Namen hinzufügen. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -218,7 +218,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-braze-test-user"></a>Erstellen eines Braze-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Braze einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Braze-Plattform ggf. vom  [Braze-Supportteam](mailto:support@braze.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Braze einen Benutzer namens Britta Simon. Dann können Sie die Benutzer auf der Braze-Plattform hinzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -1,7 +1,7 @@
 ---
-title: Worum handelt es sich beim Speech-Dienst?
+title: Was sind Speech-Dienste?
 titleSuffix: Azure Cognitive Services
-description: Der Speech-Dienst dient zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das Speech SDK, das Speech Devices SDK oder REST-APIs können Sie Ihren Anwendungen, Tools und Geräten komfortabel Sprachfunktionen hinzufügen. Fügen Sie einem vorhandenen Chatbot Sprachfunktionen hinzu, nutzen Sie die Sprachsynthese in einer Übersetzungsanwendung, oder transkribieren Sie umfangreiche Daten aus einem Callcenter.
+description: Die Speech-Dienste dienen zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das Speech SDK, das Speech Devices SDK oder REST-APIs können Sie Ihren Anwendungen, Tools und Geräten komfortabel Sprachfunktionen hinzufügen. Fügen Sie einem vorhandenen Chatbot Sprachfunktionen hinzu, nutzen Sie die Sprachsynthese in einer Übersetzungsanwendung, oder transkribieren Sie umfangreiche Daten aus einem Callcenter.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554180"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967614"
 ---
 # <a name="what-are-the-speech-services"></a>Was sind Speech-Dienste?
 
-Azure Speech-Dienste dienen zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](https://aka.ms/sdsdk-quickstart) oder [REST-APIs](rest-apis.md) können Sie Ihren Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
+Die Speech-Dienste dienen zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](https://aka.ms/sdsdk-quickstart) oder [REST-APIs](rest-apis.md) können Sie Ihren Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
 
 > [!IMPORTANT]
 > Speech-Dienste haben die Bing-Spracheingabe-API sowie Sprachübersetzung und Custom Speech abgelöst. Eine Migrationsanleitung finden Sie unter *Anleitungen > Migration*.
@@ -41,14 +41,14 @@ Die Azure Speech-Dienste umfassen folgende Features. Verwenden Sie die Links in
 
 Hier finden Sie Neuigkeiten im Zusammenhang mit den Azure Speech-Diensten.
 
+* August 2019
+  * **Neues Tutorial:** [Tutorial: Voice-enable your bot using the Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md) (Ermöglichen der Verwendung von Sprache in Ihrem Bot mit dem Speech SDK, C#)
 * Juni 2019
-    * Speech SDK 1.6.0 veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
+  * Speech SDK 1.6.0 veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
 * Mai 2019: Dokumentation für [Unterhaltungstranskription](conversation-transcription-service.md), [Callcentertranskription](call-center-transcription.md) und [virtuelle Voice-First-Assistenten](voice-first-virtual-assistants.md) ist jetzt verfügbar.
 * Mai 2019
-    * Speech SDK 1.5.1 veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
-    * Speech SDK 1.5.0 veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
-* April 2019: Das Speech SDK 1.4.0 mit Unterstützung von Sprachsynthese (Beta) für C++, C# und Java unter Windows und Linux wurde veröffentlicht. Darüber hinaus unterstützt das SDK nun die Audioformate MP3 und Opus/Ogg für C++ und C# unter Linux. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
-* März 2019: Ein neuer Endpunkt für die Sprachsynthese (Text-to-Speech, TTS) steht nun zur Verfügung, der eine vollständige Liste mit den in einer bestimmten Region verfügbaren Stimmen zurückgibt. Darüber hinaus werden jetzt neue Regionen für TTS unterstützt. Weitere Informationen finden Sie unter [Text-to-speech REST API](rest-text-to-speech.md) (Text-to-Speech-REST-API).
+  * Speech SDK 1.5.1 veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
+  * Speech SDK 1.5.0 veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
 
 ## <a name="try-speech-services"></a>Ausprobieren der Speech-Dienste
 
@@ -67,6 +67,7 @@ Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen ber
 Nachdem Sie Gelegenheit hatten, die Speech-Dienste zu verwenden, erfahren Sie in unserem Tutorial, wie Sie mithilfe des Speech SDK und LUIS Absichten in gesprochener Sprache erkennen.
 
 * [Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#](how-to-recognize-intents-from-speech-csharp.md)
+* [Tutorial: Voice-enable your bot using the Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md) (Ermöglichen der Verwendung von Sprache in Ihrem Bot mit dem Speech SDK, C#)
 * [Tutorial: Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Abrufen des Beispielcodes
@@ -75,7 +76,8 @@ Auf GitHub steht Beispielcode für jeden der Azure Speech-Dienste zur Verfügun
 
 * [Beispiele für Spracherkennung, Sprachsynthese und Sprachübersetzung (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Batch transcription samples (REST) (Batchtranskriptionsbeispiele (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
-* [Beispiele für die Sprachsynthese (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Beispiele für Text-zu-Sprache (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Beispiele für virtuelle Voice-First-Assistenten (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>Anpassen der Speech-Funktionen
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6b91ab53ba7b5ce30c1dfa4a2bd90390875b8615
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bcf3964fb289be9b7410938f9e2eac843e795d4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102689"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Tutorial: Azure Active Directory-Integration mit Figma
 
@@ -122,7 +122,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Figma d
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Sie erhalten die `TENANT ID` in Schritt 11 des Figma-Artikels [Konfigurieren des Azure Active Directory-SAML-SSO-Prozesses](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
-6. Die Figma-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld  **User Attributes** (Benutzerattribute) zu öffnen.
+6. Die Figma-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 

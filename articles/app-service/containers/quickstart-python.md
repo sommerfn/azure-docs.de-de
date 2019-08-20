@@ -4,7 +4,7 @@ description: Stellen Sie in wenigen Minuten Ihre erste Python-App „Hallo Welt�
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: 28e10389f65e0b64ed15c00eb2a8632229397383
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 163876d63ba2127dd3f3444e95b284918e60e368
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639178"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951991"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Erstellen einer Python-App in Azure App Service für Linux
 
@@ -199,7 +199,7 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Python-App mit PostgreSQL](tutorial-python-postgresql-app.md)
+> [Tutorial: Python-Web-App (Django) mit PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurieren einer Python-App](how-to-configure-python.md)

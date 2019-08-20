@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 241c84212132ee90e71291758e094cb4a115f2e2
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360915"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018079"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
@@ -56,7 +56,7 @@ Die ersten Schritte mit Ihrem eigenen cloudbasierten Notebook-Server sind ganz e
 
 Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen.  Führen Sie nach den Schritten das Notebook **tutorials/regression-part1-data-prep.ipynb** aus.
 
-1. Führen Sie die Installationsschritte unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](setup-create-workspace.md#sdk) aus, um eine Miniconda-Umgebung zu erstellen und das SDK zu installieren.  Den Abschnitt **Erstellen eines Arbeitsbereichs** können Sie überspringen, wenn Sie möchten, Sie benötigen ihn jedoch für [Teil 2](tutorial-auto-train-models.md) dieser Tutorialreihe.
+1. Führen Sie die Installationsschritte des [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) aus.
 1. Das Paket `azureml-dataprep` wird beim Installieren des SDK automatisch installiert.
 1. Klonen Sie das [GitHub-Repository](https://aka.ms/aml-notebooks).
 
@@ -100,10 +100,11 @@ Laden Sie zwei verschiedene Datasets für New Yorker Taxis in Dataflowobjekte he
 
 ```python
 from IPython.display import display
-dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
-green_path = "/".join([dataset_root, "green-small/*"])
-yellow_path = "/".join([dataset_root, "yellow-small/*"])
+green_path = "https://dprepdata.blob.core.windows.net/demo/green-small/*"
+yellow_path = "https://dprepdata.blob.core.windows.net/demo/yellow-small/*"
+
+# (optional) Download and view a subset of the data: https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 green_df_raw = dprep.read_csv(
     path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
@@ -113,9 +114,6 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
-
-> [!Note]
-> Bei der URL in diesem Beispiel handelt es sich nicht um eine vollständige URL. Stattdessen verweist sie auf den Demoordner im Blob. Die vollständige URL für einige der Daten lautet https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv.
 
 Ein `Dataflow`-Objekt ähnelt einem Datenrahmen und stellt eine Reihe von träge ausgewerteten, unveränderlichen Vorgängen für Daten dar. Vorgänge können durch Aufrufen der verschiedenen verfügbaren Transformations- und Filtermethoden hinzugefügt werden. Wenn einem `Dataflow` ein Vorgang hinzugefügt wird, entsteht immer ein neues `Dataflow`-Objekt.
 
@@ -156,7 +154,7 @@ green_df = (green_df_raw
                 "Trip_distance": "distance"
             })
             .keep_columns(columns=useful_columns))
-green_df.head(5)
+display(green_df.head(5))
 ```
 
 <div>
@@ -290,7 +288,7 @@ yellow_df = (yellow_df_raw
                  "trip_distance": "distance"
              })
              .keep_columns(columns=useful_columns))
-yellow_df.head(5)
+display(yellow_df.head(5))
 ```
 
 Rufen Sie die Funktion `append_rows()` für die grünen Taxidaten auf, um die gelben Taxidaten anzufügen. Ein neuer kombinierter Datenrahmen wird erstellt.

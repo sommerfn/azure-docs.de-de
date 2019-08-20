@@ -8,12 +8,13 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 955ce9724d576e56766ab3d87a374a65e4ca5c0e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326923"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967120"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure App Service mit Continuous Integration und Continuous Deployment von Jenkins
 
@@ -170,7 +171,7 @@ Der Befehl **`create-for-rbac`** generiert die folgende Ausgabe:
    | **Tenant ID** | <*yourAzureActiveDirectoryTenant-ID*> | Der `tenant`-GUID-Wert für Ihren Azure Active Directory-Mandanten. | 
    | **ID** | <*yourAzureServicePrincipalName*> | Der `displayName`-Wert für Ihren Azure-Dienstprinzipal. | 
 
-1. Wählen Sie **Verify Service Principal** (Dienstprinzipal überprüfen) aus, um zu überprüfen, ob Ihr Dienstprinzipal funktioniert. Wählen Sie **OK** aus, wenn Sie fertig sind.
+1. Wählen Sie **Verify Service Principal** (Dienstprinzipal überprüfen) aus, um zu überprüfen, ob Ihr Dienstprinzipal funktioniert. Wenn Sie fertig sind, wählen Sie **OK**.
 
 Erstellen Sie als Nächstes die Jenkins-Pipeline, die Ihre App erstellt und bereitstellt.
 
@@ -182,7 +183,7 @@ Erstellen Sie in Jenkins den Pipelineauftrag für die Erstellung und Bereitstell
 
    ![Auswählen von „Neues Element“](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. Geben Sie einen Namen für Ihren Pipelineauftrag an (beispielsweise „My-Java-Web-App“), und wählen Sie **Pipeline** aus. Wählen Sie am unteren Rand **OK** aus.  
+1. Geben Sie einen Namen für Ihren Pipelineauftrag an (beispielsweise „My-Java-Web-App“), und wählen Sie **Pipeline** aus. Wählen Sie unten **OK** aus.  
 
    ![Auswählen von „Pipeline“](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
@@ -200,7 +201,7 @@ Erstellen Sie in Jenkins den Pipelineauftrag für die Erstellung und Bereitstell
 
       ![Auswählen von „Prepare an environment for the run“ (Umgebung für die Ausführung vorbereiten) und Festlegen von Umgebungsvariablen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
 
-1. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 Erstellen Sie als Nächstes Build- und Bereitstellungsskripts für Jenkins.
 
@@ -273,7 +274,7 @@ Geben Sie nun das Build- und Bereitstellungsskript an, das von Jenkins verwendet
 
    ![Verweisen der Pipeline auf das Skript](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 Erstellen Sie als Nächstes Ihre App, und stellen Sie sie in Azure App Service bereit. 
 

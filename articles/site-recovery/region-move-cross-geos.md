@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: fe2620c7a07389b2a86d36420eadd2ef5883f5da
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012820"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967310"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -47,7 +47,7 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle Azure-Computer mithilfe von A
 - Überprüfen Sie, ob die Server, die Sie replizieren möchten, die [Azure-VM-Anforderungen](vmware-physical-secondary-support-matrix.md#replicated-vm-support) erfüllen.
 - Vorbereiten eines Kontos für die automatische Installation des Mobility Service auf jedem Server, den Sie replizieren möchten.
 
-- Hinweis: Nach dem Failover zur Zielregion ist in Azure kein direktes Failback zur Quellregion möglich. Sie müssen die Replikation zurück an das Ziel erneut einrichten.
+- Hinweis: Nach dem Failover zur Zielregion in Azure ist kein direktes Failback zur Quellregion möglich. Sie müssen die Replikation zurück an das Ziel erneut einrichten.
 
 ### <a name="verify-azure-account-permissions"></a>Überprüfen der Azure-Kontoberechtigungen
 
@@ -115,8 +115,8 @@ Im Folgenden wird erläutert, wie Sie Daten mithilfe von Azure Site Recovery in 
 3. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das entsprechende Abonnement aus.
 4. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 5. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.
-6. Klicken Sie unter „Recovery Services-Tresore“ auf **Übersicht** > **ConsotoVMVault** > **+Replizieren**.
-7. Wählen Sie **To Azure (Zu Azure)** > **Nicht virtualisiert/Andere** aus.
+6. Klicken Sie unter „Recovery Services-Tresore“ auf **Übersicht** > **ConsotoVMVault** >  **+Replizieren**.
+7. Wählen Sie **To Azure (Zu Azure)**  > **Nicht virtualisiert/Andere** aus.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Richten Sie den Konfigurationsserver für die Erkennung von virtuellen Computern ein.
 
@@ -169,7 +169,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 ### <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
 
-1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** > **+Replikationsrichtlinie**.
+1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** >  **+Replikationsrichtlinie**.
 2. Geben Sie unter **Replikationsrichtlinie erstellen** einen Richtliniennamen an.
 3. Geben Sie in **RPO-Schwellenwert** den RPO-Grenzwert (Recovery Point Objective) an. Mit diesem Wert wird angegeben, wie oft Datenwiederherstellungspunkte erstellt werden. Wenn dieser Grenzwert bei der fortlaufenden Replikation überschritten wird, wird eine Warnung generiert.
 4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden. Für nach Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt (72 Stunden für Standardspeicher).
@@ -185,7 +185,7 @@ Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmä
 - Site Recovery installiert den Mobility Service, wenn die Replikation aktiviert wird.
 - Wenn Sie die Replikation für einen Server aktivieren, kann es länger als 15 Minuten dauern, bis die Änderungen wirksam sind und im Portal angezeigt werden.
 
-1. Klicken Sie auf **Replicate application (Anwendung replizieren)** > **Quelle**.
+1. Klicken Sie auf **Replicate application (Anwendung replizieren)**  > **Quelle**.
 2. Wählen Sie unter **Quelle** den Konfigurationsserver aus.
 3. Wählen Sie unter **Computertyp** die Option **Physische Computer** aus.
 4. Wählen Sie den Prozessserver (Konfigurationsserver) aus. Klicken Sie dann auf **OK**.

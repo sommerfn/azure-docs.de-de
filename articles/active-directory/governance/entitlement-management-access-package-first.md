@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489165"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032918"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -44,7 +44,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Vorgehen, wie ein interner Benutzer das Zugriffspaket anfordern kann
 > * Genehmigen der Zugriffsanforderung
 
-Wenn Sie keine Azure AD Premium P2- oder Enterprise Mobility + Security E5-Lizenz haben, erstellen Sie eine kostenlose [Enterprise Mobility + Security E5-Testversion](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+Eine detaillierte Demonstration der Bereitstellung der Azure Active Directory-Berechtigungsverwaltung, einschließlich der Erstellung Ihres ersten Zugriffspakets, finden Sie in folgendem Video:
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,6 +54,8 @@ Um Azure AD-Berechtigungsverwaltung (Vorschauversion) verwenden zu können, ben�
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-Lizenz
+
+Wenn Sie keine Azure AD Premium P2- oder Enterprise Mobility + Security E5-Lizenz haben, erstellen Sie eine kostenlose [Enterprise Mobility + Security E5-Testversion](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
 
 ## <a name="step-1-set-up-users-and-group"></a>Schritt 1: Einrichten von Benutzern und Gruppen
 

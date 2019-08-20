@@ -4,17 +4,17 @@ description: In diesem Tutorial wird Schritt für Schritt das Einrichten Ihres E
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/10/2019
+ms.date: 08/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e5499afebf29df2942e74148b33797844fa9c880
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051923"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031008"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte
 
@@ -22,7 +22,7 @@ Nutzen Sie Visual Studio Code, um Code zu entwickeln und auf Linux-Geräten bere
 
 In den Schnellstartartikeln haben Sie ein IoT Edge-Gerät mit einem virtuellen Linux-Computer erstellt und über Azure Marketplace ein vordefiniertes Modul bereitgestellt. In diesem Tutorial werden die Voraussetzungen beschrieben, die für die Entwicklung und Bereitstellung Ihres eigenen Codes auf einem IoT Edge-Gerät erfüllt sein müssen. Dieses Tutorial ist eine nützliche Ausgangsbasis für alle anderen Tutorials, in denen bestimmte Programmiersprachen oder Azure-Dienste ausführlicher behandelt werden. 
 
-In diesem Tutorial wird das Beispiel für die Bereitstellung eines **C#-Moduls auf einem Linux-Gerät** verwendet. Dieses Beispiel wurde gewählt, da es das häufigste Szenario für Entwickler von IoT Edge-Lösungen ist. Auch wenn Sie die Verwendung einer anderen Sprache oder die Bereitstellung eines Azure-Diensts planen, ist dieses Tutorial dennoch nützlich, um mehr über die Entwicklungstools und -konzepte zu erfahren. Nach dieser Einführung in den Entwicklungsprozess können Sie dann Ihre bevorzugte Sprache oder den Azure-Dienst wählen, um sich in die Details zu vertiefen. 
+In diesem Tutorial wird das Beispiel für die Bereitstellung eines **C#-Moduls auf einem Linux-Gerät** verwendet. Dieses Beispiel wurde gewählt, weil es ein sehr gängiges Szenario für Entwickler von IoT Edge-Lösungen ist. Auch wenn Sie die Verwendung einer anderen Sprache oder die Bereitstellung eines Azure-Diensts planen, ist dieses Tutorial dennoch nützlich, um mehr über Entwicklungstools und -konzepte zu erfahren. Nach dieser Einführung in den Entwicklungsprozess können Sie dann Ihre bevorzugte Sprache oder den Azure-Dienst wählen, um sich in die Details zu vertiefen. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -42,7 +42,7 @@ In diesem Tutorial wird Schritt für Schritt die Entwicklung eines IoT Edge-Modu
 
 Beim Entwickeln von IoT Edge-Modulen ist es wichtig, dass Sie den Unterschied zwischen dem Entwicklungscomputer und dem IoT Edge-Zielgerät verstehen, auf dem das Modul später bereitgestellt wird. Der Container, den Sie für Ihren Modulcode erstellen, muss mit dem Betriebssystem (BS) des *Zielgeräts* übereinstimmen. Am häufigsten kommt beispielsweise ein Szenario vor, bei dem ein Modul auf einem Windows-Computer entwickelt wird, das für ein Linux-Gerät mit IoT Edge bestimmt ist. In diesem Fall wird als Betriebssystem für den Container Linux verwendet. Denken Sie beim Durcharbeiten dieses Tutorials an den Unterschied zwischen dem *Betriebssystem des Entwicklungscomputers* und dem *Betriebssystem des Containers*.
 
-In diesem Tutorial geht es um Linux-Geräte, auf denen IoT Edge ausgeführt wird. Sie können Ihr bevorzugtes Entwicklungscomputer-Betriebssystem verwenden, solange auf Ihrem Entwicklungscomputer Linux-Container ausgeführt werden können. Es wird empfohlen, Visual Studio Code für die Entwicklung für Linux-Geräte zu nutzen, und dies ist auch die Vorgehensweise in diesem Tutorial. Alternativ können Sie Visual Studio nutzen, aber zwischen den beiden Tools gibt es Unterschiede in Bezug auf die Unterstützung.
+In diesem Tutorial geht es um Linux-Geräte, auf denen IoT Edge ausgeführt wird. Sie können Ihr bevorzugtes Betriebssystem verwenden, solange auf Ihrem Entwicklungscomputer Linux-Container ausgeführt werden können. Es wird empfohlen, Visual Studio Code für die Entwicklung für Linux-Geräte zu nutzen, und dies ist auch die Vorgehensweise in diesem Tutorial. Alternativ können Sie Visual Studio nutzen, aber zwischen den beiden Tools gibt es Unterschiede in Bezug auf die Unterstützung.
 
 In der folgenden Tabelle sind die unterstützten Entwicklungsszenarien für **Linux-Container** in Visual Studio Code und Visual Studio aufgeführt.
 
@@ -52,6 +52,9 @@ In der folgenden Tabelle sind die unterstützten Entwicklungsszenarien für **Li
 | **Azure-Dienste** | Azure-Funktionen <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Sprachen** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
 | **Weitere Informationen** | [Azure IoT Edge für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge-Tools für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge-Tools für Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+
+>[!NOTE]
+>Unterstützung für Linux ARM64-Geräte ist in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar. Weitere Informationen finden Sie unter [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview) (Entwickeln und Debuggen von ARM64 IoT Edge-Modulen in Visual Studio Code (Vorschauversion))](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 In diesem Tutorial werden die Entwicklungsschritte für Visual Studio Code beschrieben. Falls Sie Visual Studio bevorzugen, hilft Ihnen die Anleitung unter [Entwickeln und Debuggen von Modulen für Azure IoT Edge (Vorschauversion) mithilfe von Visual Studio 2017](how-to-visual-studio-develop-module.md) weiter.
 
@@ -190,11 +193,11 @@ Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient
 
 7. Suchen Sie nach der **modules**-Eigenschaft der gewünschten „$edgeAgent“-Eigenschaften. 
 
-   Hier sollten zwei Module aufgeführt sein. Das erste Modul ist **tempSensor**. Es ist in allen Vorlagen standardmäßig enthalten, um simulierte Temperaturdaten bereitzustellen, die Sie zum Testen Ihrer Module verwenden können. Das zweite Modul ist **SampleModule**, das Sie im Rahmen dieser Projektmappe erstellt haben.
+   Hier sollten zwei Module aufgeführt sein. Das erste Modul ist **SimulatedTemperatureSensor**. Es ist standardmäßig in allen Vorlagen enthalten und stellt simulierte Temperaturdaten bereit, die Sie zum Testen Ihrer Module verwenden können. Das zweite Modul ist **SampleModule**, das Sie im Rahmen dieser Projektmappe erstellt haben.
 
 7. Suchen Sie unten in der Datei nach den gewünschten Eigenschaften für das Modul **$edgeHub**. 
 
-   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der **routes**-Eigenschaft an. Für die erste Route (**SampleModuleToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten zu kennzeichnen, die aus einer Ausgabewarteschlange im Modul „SampleModule“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (sensorToSampleModule) werden vom Modul „tempSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* geleitet, die – wie gesehen – im Code von „SampleModule“ initialisiert wird. 
+   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der **routes**-Eigenschaft an. Für die erste Route (**SampleModuleToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten zu kennzeichnen, die aus einer Ausgabewarteschlange im Modul „SampleModule“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (sensorToSampleModule) werden vom Modul „SimulatedTemperatureSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* geleitet, die – wie Sie gesehen haben – im Code von „SampleModule“ initialisiert wird. 
 
    ![Überprüfen von Routen in „deployment.template.json“](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -278,7 +281,7 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
 4. Erweitern Sie die Details für Ihr IoT Edge-Gerät und dann die Liste **Module** für Ihr Gerät. 
 
-5. Verwenden Sie die Aktualisierungsschaltfläche zum Aktualisieren der Geräteansicht, bis die Module „tempSensor“ und „SampleModule“ angezeigt werden, die auf Ihrem Gerät ausgeführt werden. 
+5. Aktualisieren Sie die Geräteansicht mithilfe der entsprechenden Schaltfläche, bis die Module „SimulatedTemperatureSensor“ und „SampleModule“ angezeigt werden, die auf Ihrem Gerät ausgeführt werden. 
 
    Es dauert ggf. einige Minuten, bis beide Module gestartet wurden. Die IoT Edge-Runtime muss das neue Bereitstellungsmanifest empfangen, die Modulimages per Pullvorgang aus der Containerruntime abrufen und dann jedes neue Modul starten. 
 
@@ -286,7 +289,7 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
 ## <a name="view-messages-from-device"></a>Anzeigen von Nachrichten vom Gerät
 
-Der Code von „SampleModule“ empfängt Nachrichten über die zugehörige Eingabewarteschlange und leitet diese an die Ausgabewarteschlange weiter. Im Bereitstellungsmanifest wurden Routen deklariert, über die Nachrichten von „tempSensor“ an „SampleModule“ und von „SampleModule“ dann an IoT Hub übergeben wurden. Mit den Azure IoT Tools für Visual Studio Code können Sie Nachrichten anzeigen, wenn diese von Ihren einzelnen Geräten auf IoT Hub eingehen. 
+Der Code von „SampleModule“ empfängt Nachrichten über die zugehörige Eingabewarteschlange und leitet diese an die Ausgabewarteschlange weiter. Im Bereitstellungsmanifest wurden Routen deklariert, über die Nachrichten von „SimulatedTemperatureSensor“ an „SampleModule“ und dann von „SampleModule“ an IoT Hub weitergeleitet wurden. Mit den Azure IoT Tools für Visual Studio Code können Sie Nachrichten anzeigen, wenn diese von Ihren einzelnen Geräten auf IoT Hub eingehen. 
 
 1. Klicken Sie im Visual Studio Code-Explorer mit der rechten Maustaste auf das IoT Edge-Gerät, das Sie überwachen möchten, und wählen Sie dann die Option **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus. 
 
@@ -306,7 +309,7 @@ Die Befehle in diesem Abschnitt gelten für Ihr IoT Edge-Gerät und nicht für I
    iotedge list
    ```
 
-   Es sollten vier Module angezeigt werden: die beiden IoT Edge-Runtime-Module, „tempSensor“ und „SampleModule“. Für alle vier Module sollte „Wird ausgeführt“ angezeigt werden.
+   Es sollten vier Module angezeigt werden: die beiden IoT Edge-Runtime-Module, „SimulatedTemperatureSensor“ und „SampleModule“. Für alle vier Module sollte „Wird ausgeführt“ angezeigt werden.
 
 * Überprüfen Sie die Protokolle für ein bestimmtes Modul:
 
@@ -316,7 +319,7 @@ Die Befehle in diesem Abschnitt gelten für Ihr IoT Edge-Gerät und nicht für I
 
    Bei IoT Edge-Modulen wird die Groß-/Kleinschreibung beachtet. 
 
-   Für die Protokolle von „tempSensor“ und „SamplModule“ sollten die verarbeiteten Nachrichten angezeigt werden. Das Modul „edgeAgent“ ist für das Starten der anderen Module zuständig. Die Protokolle dieses Moduls enthalten also Informationen zur Implementierung des Bereitstellungsmanifests. Falls ein Modul nicht aufgelistet ist oder nicht ausgeführt wird, sind die Fehler wahrscheinlich in den Protokollen von „edgeAgent“ enthalten. Das Modul „edgeHub“ ist für die Kommunikation zwischen den Modulen und IoT Hub zuständig. Wenn die Module betriebsbereit sind und ausgeführt werden, aber die Nachrichten nicht auf Ihrem IoT-Hub ankommen, sind die Fehler wahrscheinlich in den Protokollen von „edgeHub“ enthalten. 
+   In den Protokollen für „SimulatedTemperatureSensor“ und „SampleModule“ sollten die verarbeiteten Nachrichten angezeigt werden. Das Modul „edgeAgent“ ist für das Starten der anderen Module zuständig. Die Protokolle dieses Moduls enthalten also Informationen zur Implementierung des Bereitstellungsmanifests. Falls ein Modul nicht aufgelistet ist oder nicht ausgeführt wird, sind die Fehler wahrscheinlich in den Protokollen von „edgeAgent“ enthalten. Das Modul „edgeHub“ ist für die Kommunikation zwischen den Modulen und IoT Hub zuständig. Wenn die Module betriebsbereit sind und ausgeführt werden, aber die Nachrichten nicht auf Ihrem IoT-Hub ankommen, sind die Fehler wahrscheinlich in den Protokollen von „edgeHub“ enthalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

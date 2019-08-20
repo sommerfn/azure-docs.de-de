@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227811"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845833"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -50,7 +50,7 @@ Zusätzlich zu den nativen Azure-Tools kann Azure Migrate in eine Reihe von ISV-
 
 ### <a name="selecting-an-isv-tool"></a>Auswählen eines ISV-Tools
 
-Nachdem Sie einem Azure Migrate-Projekt ein ISV-Tool hinzugefügt haben, können Sie mit dem Tool beginnen, indem Sie eine Lizenz abrufen oder sich für eine kostenlose Testversion in Übereinstimmung mit der ISV-Richtlinie registrieren. In jedem Tool ist eine Option zum Herstellen einer Verbindung mit Azure Migrate vorhanden. Befolgen Sie die Anweisungen des Tools und seine Dokumentation, um das Tool mit Azure Migrate zu verbinden.
+Nachdem Sie einem Azure Migrate-Projekt ein ISV-Tool hinzugefügt haben, können Sie mit dem Tool beginnen, indem Sie eine Lizenz abrufen oder sich für eine kostenlose Testversion in Übereinstimmung mit der ISV-Richtlinie registrieren. In jedem Tool ist eine Option zum Herstellen einer Verbindung mit Azure Migrate vorhanden. Befolgen Sie die Anweisungen des Tools und seine Dokumentation, um das Tool mit Azure Migrate zu verbinden. Die Lizenzierung für ISV-Tools entspricht dem ISV-Lizenzierungsmodell.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate-Serverbewertung
 

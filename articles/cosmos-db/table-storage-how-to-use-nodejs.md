@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 45925b1c4252b0ff0080a2c287e7ed2fae444168
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546686"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986278"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -68,7 +68,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Hinzufügen einer Azure Cosmos DB-Verbindung
-Wenn Sie eine Verbindung zu Azure Cosmos DB hinzufügen möchten, erstellen Sie ein **TableService**-Objekt, und geben Sie Ihren Kontonamen, den Primärschlüssel und den Endpunkt an. Sie können diese Werte aus **Einstellungen** > **Verbindungszeichenfolge** im Azure-Portal für Ihr Cosmos DB-Konto kopieren. Beispiel: 
+Wenn Sie eine Verbindung zu Azure Cosmos DB hinzufügen möchten, erstellen Sie ein **TableService**-Objekt, und geben Sie Ihren Kontonamen, den Primärschlüssel und den Endpunkt an. Sie können diese Werte aus **Einstellungen** > **Verbindungszeichenfolge** im Azure-Portal für Ihr Cosmos DB-Konto kopieren. Beispiel:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -198,7 +198,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Standardmäßig wird beim Aktualisieren einer Entität nicht überprüft, ob die aktualisierten Daten zuvor von einem anderen Prozess geändert wurden. Um gleichzeitige Aktualisierungen zu unterstützen, gehen Sie wie folgt vor:
 >
 > 1. Rufen Sie das Etag des aktualisierten Objekts ab. Es wird im Rahmen der `response` für jeden entitätsbezogenen Vorgang zurückgegeben und kann durch `response['.metadata'].etag` abgerufen werden.
-> 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen ETag-Informationen hinzufügen. Beispiel: 
+> 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen ETag-Informationen hinzufügen. Beispiel:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Führen Sie den Aktualisierungsvorgang aus. Wurde die Entität seit dem Abruf des ETag-Werts beispielsweise durch eine andere Instanz Ihrer Anwendung geändert, wird ein `error` zurückgegeben. Der Wert besagt, dass die in der Anforderung angegebene Aktualisierungsbedingung nicht erfüllt ist.
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 Beachten Sie, dass Sie die Hostinformationen ebenfalls angeben müssen. Diese sind erforderlich, wenn der SAS-Inhaber versucht, auf die Tabelle zuzugreifen.
 
-Die Clientanwendung verwendet die SAS dann zusammen mit **TableServiceWithSAS** , um Vorgänge für die Tabelle auszuführen. Im folgenden Beispiel wird eine Verbindung mit der Tabelle hergestellt und eine Abfrage ausgeführt. Im Artikel [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris) können Sie sich das Format von tableSAS ansehen. 
+Die Clientanwendung verwendet die SAS dann zusammen mit **TableServiceWithSAS** , um Vorgänge für die Tabelle auszuführen. Im folgenden Beispiel wird eine Verbindung mit der Tabelle hergestellt und eine Abfrage ausgeführt. Im Artikel [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md) können Sie sich das Format von tableSAS ansehen. 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;

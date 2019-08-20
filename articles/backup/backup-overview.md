@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737117"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950028"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Worum handelt es sich beim Azure Backup-Dienst?
 
@@ -66,7 +66,7 @@ Mit Azure Backup können sowohl lokale Computer als auch virtuelle Azure-Compute
 **Computer** | **Sicherungsszenario**
 --- | ---
 **Lokale Sicherung** |  (1) Führen Sie den MARS-Agent (Microsoft Azure Recovery Services) von Azure Backup auf einem lokalen Windows-Computer aus, um einzelne Dateien und den Systemzustand zu sichern. <br/><br/>(2) Sichern Sie lokale Computer auf einem Sicherungsserver (System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS)), und konfigurieren Sie dann den Sicherungsserver für die Sicherung in einem Azure Backup Recovery Services-Tresor in Azure.
-**Virtuelle Azure-Computer** | (1) Aktivieren Sie die Sicherung für einzelne virtuelle Azure-Computer. Wenn Sie die Sicherung aktivieren, installiert Azure Backup eine Erweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Der Agent sichert den gesamten virtuellen Computer.<br/><br/> 2) Führen Sie den MARS-Agent auf einem virtuellen Azure-Computer aus. Diese Vorgehensweise ist hilfreich, wenn Sie einzelne Dateien und Ordner auf dem virtuellen Computer sichern möchten.<br/><br/> (3) Sichern Sie einen virtuellen Azure-Computer auf einem in Azure ausgeführten Server (DPM-Server oder MABS). Sichern Sie dann den DPM-Server/MABS mithilfe von Azure Backup in einem Tresor.
+**Virtuelle Azure-Computer** | (1) Aktivieren Sie die Sicherung für einzelne virtuelle Azure-Computer. Wenn Sie die Sicherung aktivieren, installiert Azure Backup eine Erweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Der Agent sichert den gesamten virtuellen Computer.<br/><br/> 2) Führen Sie den MARS-Agent auf einem virtuellen Azure-Computer aus. Diese Vorgehensweise ist hilfreich, wenn Sie einzelne Dateien und Ordner auf dem virtuellen Computer sichern möchten.<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>Gründe für die Verwendung eines Sicherungsservers
@@ -116,7 +116,7 @@ Für Azure Backup gilt pro *geschützter Instanz* eine Obergrenze von 9999 Wiede
 - Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die Daten in Azure sichern. Eine Instanz ist geschützt, sobald eine Sicherungskopie der Daten gespeichert wurde.
 - Die Sicherungskopie der Daten ist der Schutz. Wenn die Quelldaten verloren gehen oder beschädigt werden, können sie mithilfe der Sicherungskopie wiederhergestellt werden.
 
-Die folgende Tabelle zeigt die maximale Sicherungshäufigkeit für jede Komponente. Die Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verwendet werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
+In der folgenden Tabelle ist die maximale Sicherungshäufigkeit für die einzelnen Komponenten angegeben. Ihre Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verbraucht werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
 
 |  | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |

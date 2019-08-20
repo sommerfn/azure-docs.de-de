@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Spring Boot-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: 'Schnellstart: Erstellen einer Spring Boot-App in Azure Service Fabric'
 description: In diesem Schnellstart stellen Sie eine Spring Boot-Anwendung für Azure Service Fabric bereit, indem Sie eine Spring Boot-Beispielanwendung verwenden.
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, devcenter, seo-java-august2019
+ms.openlocfilehash: 403eec7bf4d45b5b210009588c783cc244d24387
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327157"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977090"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer Java Spring Boot-Anwendung in Service Fabric
 
@@ -149,7 +149,7 @@ Damit haben Sie eine Service Fabric-Anwendung für das Spring Boot Getting Start
     
     ![Fehlerfreier lokaler Cluster](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. Navigieren Sie zum Ordner `gs-spring-boot/SpringServiceFabric`.
+1. Öffnen Sie den Ordner `gs-spring-boot/SpringServiceFabric`.
 1. Führen Sie den folgenden Befehl aus, um eine Verbindung mit dem lokalen Cluster herzustellen.
 
     ```bash
@@ -176,13 +176,13 @@ Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ka
 Gehen Sie zum Skalieren des Web-Front-End-Diensts wie folgt vor:
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://localhost:19080`.
-1. Klicken Sie in der Strukturansicht auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/SpringServiceFabric/SpringGettingStarted**, und wählen Sie **Scale Service** (Dienst skalieren) aus.
+1. Klicken Sie in der Strukturansicht neben dem Knoten **fabric:/SpringServiceFabric/SpringGettingStarted** auf das Auslassungszeichen ( **...** ), und wählen Sie **Dienst skalieren** aus.
 
     ![Service Fabric Explorer – Dienst skalieren](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     Sie können jetzt angeben, wie viele Instanzen des Diensts skaliert werden sollen.
 
-1. Ändern Sie die Anzahl in **3**, und klicken Sie auf **Scale Service** (Dienst skalieren).
+1. Ändern Sie die Anzahl in **3**, und wählen Sie **Dienst skalieren** aus.
 
     Alternativ kann der Dienst wie folgt über eine Befehlszeile skaliert werden.
 
@@ -194,7 +194,7 @@ Gehen Sie zum Skalieren des Web-Front-End-Diensts wie folgt vor:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/SpringServiceFabric/SpringGettingStarted**, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt).
+1. Wählen Sie in der Strukturansicht den Knoten **fabric:/SpringServiceFabric/SpringGettingStarted** aus, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt).
 
     ![Service Fabric Explorer: Dienstskalierung abgeschlossen](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Mit dieser einfachen Verwaltungsaufgabe haben Sie die Ressourcen verdoppelt, die
 Zur Veranschaulichung eines Dienstfailovers wird unter Verwendung von Service Fabric Explorer ein Neustart des Knotens simuliert. Vergewissern Sie sich, dass nur eine einzelne Instanz des Diensts ausgeführt wird.
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://localhost:19080`.
-1. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten, auf dem die Instanz des Diensts ausgeführt wird, und starten Sie den Knoten neu.
+1. Klicken Sie neben dem Knoten, auf dem die Instanz des Diensts ausgeführt wird, auf das Auslassungszeichen ( **...** ), und starten Sie den Knoten neu.
 
     ![Service Fabric Explorer – Neustarten des Knotens](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. Die Instanz des Diensts wird auf einen anderen Knoten verschoben, und die Anwendung kann ohne Ausfallzeit weiter verwendet werden.

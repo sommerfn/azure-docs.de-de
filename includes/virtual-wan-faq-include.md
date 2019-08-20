@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 8a4bbe92cc1b34801abffa1e905d873d4382025a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444566"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912377"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Was ist der Unterschied zwischen einem Gateway für virtuelle Azure-Netzwerke (VPN Gateway) und einem Azure Virtual WAN-Gateway (vpngateway)?
 
@@ -103,7 +103,7 @@ Eine einfache Konfiguration eines Virtual WAN mit einem Hub und einem VPN-Stando
 
 Ja. Die Konnektivität zwischen Zweigstellen ist in Virtual WAN für VPN und VPN zu ExpressRoute zulässig. Site-to-Site-VPN ist allgemein verfügbar. ExpressRoute befindet sich derzeit in der Vorschauphase.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Läuft der Datenverkehr zwischen den Branches über Azure Virtual WAN?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Verläuft der Datenverkehr zwischen den Branches über Azure Virtual WAN?
 
 Ja.
 
@@ -122,6 +122,10 @@ Nein. Für diese Virtual WAN-Instanz ist keine ExpressRoute-Verbindung mit jeder
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Gibt es bei Verwendung von Azure Virtual WAN einen Grenzwert für den Netzwerkdurchsatz?
 
 Die Anzahl von Branches ist auf 1000 Verbindungen pro Hub/Region und auf maximal 20 GBit/s im Hub begrenzt.
+
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>Die 20-Gbit/s-Einstellung für den virtuellen Hub wird im Portal nicht angezeigt. Wie konfiguriere ich dies?
+
+Zurzeit können Sie die Gatewayskalierungseinheiten für 20 Gbit/s mithilfe des Cmdlets [Update-AzVpnGateway](https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway) konfigurieren. Diese Einstellung befindet sich auf der Roadmap für die Einführung im Portal.
 
 ### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Wie viele VPN-Verbindungen werden von einem Virtual WAN-Hub unterstützt?
 

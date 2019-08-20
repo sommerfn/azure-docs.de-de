@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b2c765778fc2bdd8425cc3f375831c0d317e753
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100892"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944448"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
 
@@ -161,7 +161,7 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit Hu
 
     1. Fügen Sie in HubSpot im Feld **Identity Provider Single Sign-On URL** (URL für einmaliges Anmelden des Identitätsanbieters) den Wert für **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    1. Öffnen Sie im Windows-Editor das heruntergeladene Zertifikat (Base64). Kopieren Sie den Inhalt der Datei. Fügen Sie ihn anschließend in HubSpot in das Feld  **X.509 Certificate** (X.509-Zertifikat) ein.
+    1. Öffnen Sie im Windows-Editor das heruntergeladene Zertifikat (Base64). Kopieren Sie den Inhalt der Datei. Fügen Sie ihn anschließend in HubSpot in das Feld **X.509 Certificate** (X.509-Zertifikat) ein.
 
     1. Wählen Sie **Überprüfen**aus.
 

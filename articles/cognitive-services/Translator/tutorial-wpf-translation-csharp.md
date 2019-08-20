@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b929d0c0da2a812a1c8595536f09931e4edd0fd9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f8488195ed9e115843c2dc551af52d5da010ffe7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594920"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036714"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
-In diesem Tutorial erstellen Sie eine WPF-App ([Windows Presentation Foundation](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2017)), bei der Azure Cognitive Services für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. Ihre App ruft APIs für die Textübersetzung und die [Bing-Rechtschreibprüfung](https://azure.microsoft.com/services/cognitive-services/spell-check/) auf.
+In diesem Tutorial erstellen Sie eine WPF-App ([Windows Presentation Foundation](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019)), bei der Azure Cognitive Services für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. Ihre App ruft APIs für die Textübersetzung und die [Bing-Rechtschreibprüfung](https://azure.microsoft.com/services/cognitive-services/spell-check/) auf.
 
 Was ist WPF? Hierbei handelt es sich um ein Framework für Benutzeroberflächen, mit dem Desktopclient-Apps erstellt werden. Die WPF-Entwicklungsplattform unterstützt viele verschiedene Features für die App-Entwicklung, z. B. ein App-Modell, Ressourcen, Steuerelemente, Grafiken, Layout, Datenbindung, Dokumente und Sicherheit. Hierbei handelt es sich um eine Teilmenge von .NET Framework. Falls Sie also bereits Apps mit .NET Framework unter Verwendung von ASP.NET oder Windows Forms entwickelt haben, sollte Ihnen die Programmierumgebung vertraut sein. Für WPF wird XAML (Extensible App Markup Language) genutzt, um ein deklaratives Modell für die App-Programmierung bereitzustellen. Dieses Modell wird in den nächsten Abschnitten beschrieben.
 
@@ -50,7 +50,7 @@ Bevor Sie fortfahren können, benötigen Sie Folgendes:
 
 * Ein Azure Cognitive Services-Abonnement. [Beschaffen Sie einen Cognitive Services-Schlüssel](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource).
 * Einen Windows-Computer
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) (Community oder Enterprise)
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/): Community oder Enterprise
 
 > [!NOTE]
 > Wir empfehlen Ihnen, das Abonnement für dieses Tutorial in der Region „USA, Westen“ zu erstellen. Andernfalls müssen Sie beim Durcharbeiten dieser Übung im Code Endpunkte und Regionen ändern.  
@@ -59,14 +59,16 @@ Bevor Sie fortfahren können, benötigen Sie Folgendes:
 
 Als Erstes richten wir unser Projekt in Visual Studio ein.
 
-1. Öffnen Sie Visual Studio. Wählen Sie anschließend **Datei > Neu > Projekt**.
-2. Suchen Sie im linken Bereich nach **Visual C#** , und wählen Sie diese Option aus. Wählen Sie anschließend im mittleren Bereich die Option **WPF-App (.NET Framework)** .
-   ![Erstellen einer WPF-App in Visual Studio](media/create-wpf-project-visual-studio.png)
-3. Geben Sie Ihrem Projekt den Namen `MSTranslatorTextDemo`, legen Sie die Frameworkversion auf **.NET Framework 4.5.2 oder höher** fest, und klicken Sie dann auf **OK**.
-4. Ihr Projekt wurde erstellt. Sie sehen, dass zwei Registerkarten geöffnet sind: `MainWindow.xaml` und `MainWindow.xaml.cs`. In diesem Tutorial fügen wir diesen beiden Dateien Code hinzu. Die erste Datei dient für die Benutzeroberfläche der App, und die zweite Datei ist für unsere Aufrufe der Textübersetzung und der Bing-Rechtschreibprüfung bestimmt.
+1. Öffnen Sie Visual Studio. Wählen Sie **Neues Projekt erstellen** aus.
+1. Klicken Sie in **Neues Projekt erstellen** auf **WPF-App (.NET Framework)** . Sie können unter **Sprache** den Eintrag „C#“ auswählen, um die Optionen zu begrenzen.
+1. Klicken Sie auf **Weiter**, und nennen Sie Ihr Projekt `MSTranslatorTextDemo`.
+1. Legen Sie die Frameworkversion auf **.NET Framework 4.7.2** oder höher fest, und klicken Sie dann auf **Erstellen**.
+   ![Eingeben des Namens und der Frameworkversion in Visual Studio](media/name-wpf-project-visual-studio.png)
+
+Ihr Projekt wurde erstellt. Sie sehen, dass zwei Registerkarten geöffnet sind: `MainWindow.xaml` und `MainWindow.xaml.cs`. In diesem Tutorial fügen wir diesen beiden Dateien Code hinzu. Wir ändern `MainWindow.xaml` für die Benutzeroberfläche der App. Wir ändern `MainWindow.xaml.cs` für unsere Aufrufe der Textübersetzung und der Bing-Rechtschreibprüfung.
    ![Prüfen Ihrer Umgebung](media/blank-wpf-project.png)
 
-Im nächsten Abschnitt fügen wir unserem Projekt Assemblys und ein NuGet-Paket hinzu, um weitere Funktionen zu erhalten, z. B. die JSON-Analyse.
+Im nächsten Abschnitt fügen wir unserem Projekt Assemblys und ein NuGet-Paket hinzu, um weitere Funktionen zu erhalten, z.B. eine JSON-Analyse.
 
 ## <a name="add-references-and-nuget-packages-to-your-project"></a>Hinzufügen von Verweisen und NuGet-Paketen zu Ihrem Projekt
 
@@ -76,28 +78,31 @@ Für unser Projekt benötigen wir einige .NET Framework-Assemblys und NewtonSoft
 
 Wir fügen unserem Projekt Assemblys hinzu, um Objekte zu serialisieren und zu deserialisieren und HTTP-Anforderungen und -Antworten zu verwalten.
 
-1. Suchen Sie im Projektmappen-Explorer von Visual Studio (rechter Bereich) nach Ihrem Projekt. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Hinzufügen > Verweis...** , um den **Verweis-Manager** zu öffnen.
-   ![Hinzufügen von Assemblyverweisen](media/add-assemblies-sample.png)
-2. Auf der Registerkarte mit den Assemblys sind alle .NET Framework-Assemblys aufgelistet, die für den Verweis verfügbar sind. Verwenden Sie die Suchleiste oben rechts, um nach diesen Verweisen zu suchen und sie Ihrem Projekt hinzuzufügen:
+1. Suchen Sie im Projektmappen-Explorer von Visual Studio nach Ihrem Projekt. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Hinzufügen > Verweis** aus, um den **Verweis-Manager** zu öffnen.
+1. Auf der Registerkarte **Assemblys** sind alle .NET Framework-Assemblys aufgelistet, die für Verweise verfügbar sind. Verwenden Sie die Suchleiste oben rechts, um nach Verweisen zu suchen.
+   ![Hinzufügen von Assemblyverweisen](media/add-assemblies-2019.png)
+1. Wählen Sie die folgenden Verweise für Ihr Projekt aus:
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * System.Web.Extensions
    * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
-3. Nachdem Sie diese Verweise Ihrem Projekt hinzugefügt haben, können Sie auf **OK** klicken, um den **Verweis-Manager** zu schließen.
+1. Nachdem Sie diese Verweise Ihrem Projekt hinzugefügt haben, können Sie auf **OK** klicken, um den **Verweis-Manager** zu schließen.
 
 > [!NOTE]
-> Weitere Informationen zu Assemblyverweisen finden Sie unter [Vorgehensweise: Hinzufügen und Entfernen von Verweisen mit dem Verweis-Manager](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2017).
+> Weitere Informationen zu Assemblyverweisen finden Sie unter [Vorgehensweise: Hinzufügen und Entfernen von Verweisen mit dem Verweis-Manager](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>Installieren von NewtonSoft.Json
 
 In unserer App wird NewtonSoft.Json verwendet, um JSON-Objekte zu deserialisieren. Verwenden Sie die hier angegebene Anleitung, um das Paket zu installieren.
 
-1. Suchen Sie im Projektmappen-Explorer von Visual Studio nach Ihrem Projekt, und klicken Sie mit der rechten Maustaste darauf. Wählen Sie **NuGet-Pakete verwalten...** .
-2. Suchen Sie nach der Registerkarte **Durchsuchen**, und wählen Sie sie aus.
-3. Geben Sie in der Suchleiste [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) ein.
-   ![Suchen und Installieren von NewtonSoft.Json](media/add-nuget-packages.png)
-4. Wählen Sie das Paket aus, und klicken Sie auf **Installieren**.
-5. Schließen Sie die Registerkarte, nachdem die Installation abgeschlossen ist.
+1. Suchen Sie im Projektmappen-Explorer von Visual Studio nach Ihrem Projekt, und klicken Sie mit der rechten Maustaste darauf. Wählen Sie **NuGet-Pakete verwalten** aus.
+1. Suchen Sie nach der Registerkarte **Durchsuchen**, und wählen Sie sie aus.
+1. Geben Sie in der Suchleiste [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) ein.
+
+    ![Suchen und Installieren von NewtonSoft.Json](media/nuget-package-manager.png)
+
+1. Wählen Sie das Paket aus, und klicken Sie auf **Installieren**.
+1. Schließen Sie die Registerkarte, nachdem die Installation abgeschlossen ist.
 
 ## <a name="create-a-wpf-form-using-xaml"></a>Erstellen eines WPF-Formulars per XAML
 
@@ -124,7 +129,7 @@ Die Benutzeroberfläche enthält die folgenden Komponenten:
 Wir fügen den Code nun unserem Projekt hinzu.
 
 1. Wählen Sie in Visual Studio die Registerkarte für `MainWindow.xaml`.
-2. Kopieren Sie diesen Code in Ihr Projekt, und speichern Sie es.
+1. Kopieren Sie diesen Code in Ihr Projekt, und klicken Sie dann auf **Datei > „MainWindow.xaml“ speichern**, um Ihre Änderungen zu speichern.
    ```xaml
    <Window x:Class="MSTranslatorTextDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -159,7 +164,7 @@ Wir fügen den Code nun unserem Projekt hinzu.
        </Grid>
    </Window>
    ```
-3. Jetzt sollte eine Vorschau der App-Benutzeroberfläche in Visual Studio angezeigt werden. Sie sollte in etwa wie folgt aussehen.
+Jetzt sollte eine Vorschau der App-Benutzeroberfläche in Visual Studio angezeigt werden. Sie sollte in etwa wie folgt aussehen.
 
 Das ist alles. Ihr Formular ist fertig. Als Nächstes schreiben wir Code für die Nutzung der Textübersetzung und Bing-Rechtschreibprüfung.
 
@@ -179,7 +184,7 @@ Das ist alles. Ihr Formular ist fertig. Als Nächstes schreiben wir Code für di
 Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir beginnen, indem wir Code zum Festlegen Ihres Abonnementschlüssels hinzufügen, Endpunkte für die Textübersetzung und Bing-Rechtschreibprüfung deklarieren und die App initialisieren.
 
 1. Wählen Sie in Visual Studio die Registerkarte für `MainWindow.xaml.cs`.
-2. Ersetzen Sie die vorab aufgefüllten `using`-Anweisungen durch Folgendes.  
+1. Ersetzen Sie die vorab aufgefüllten `using`-Anweisungen durch Folgendes.  
    ```csharp
    using System;
    using System.Windows;
@@ -191,7 +196,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
    using System.Text;
    using Newtonsoft.Json;
    ```
-3. Suchen Sie nach der `MainWindow : Window`-Klasse, und ersetzen Sie sie durch diesen Code:
+1. Suchen Sie nach der `MainWindow : Window`-Klasse, und ersetzen Sie sie durch diesen Code:
    ```csharp
    {
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
@@ -241,7 +246,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
    // In the following sections, we'll add code below this.
    }
    ```
-   1. Fügen Sie Ihren Cognitive Services-Abonnementschlüssel hinzu, und speichern Sie.
+1. Fügen Sie Ihren Cognitive Services-Abonnementschlüssel hinzu, und speichern Sie.
 
 In diesem Codeblock haben wir zwei Membervariablen deklariert, die Informationen zu den verfügbaren Sprachen für die Übersetzung enthalten:
 
@@ -250,7 +255,7 @@ In diesem Codeblock haben wir zwei Membervariablen deklariert, die Informationen
 |`languageCodes` | Array von Zeichenfolgen |Dient zum Zwischenspeichern der Sprachcodes. Der Translator-Dienst identifiziert Sprachen mithilfe von Kurzcodes (etwa `en` für Englisch). |
 |`languageCodesAndTitles` | Sortiertes Wörterbuch | Ordnet die Anzeigenamen auf der Benutzeroberfläche den in der API verwendeten Kurzcodes zu. Dabei wird die alphabetische Sortierung (ohne Berücksichtigung der Groß-/Kleinschreibung) eingehalten. |
 
-Im Konstruktor `MainWindow` haben wir die Fehlerbehandlung dann mit `HandleExceptions` hinzugefügt. So wird sichergestellt, dass eine Warnung angezeigt wird, wenn eine Ausnahme nicht behandelt wird. Anschließend wird eine Überprüfung durchgeführt, um zu bestätigen, dass der angegebene Abonnementschlüssel 32 Zeichen lang ist. Ein Fehler wird ausgelöst, wenn der Schlüssel weniger oder mehr als 32 Zeichen enthält.
+Im Konstruktor `MainWindow` haben wir die Fehlerbehandlung dann mit `HandleExceptions` hinzugefügt. Diese Fehlerbehandlung stellt sicher, dass eine Warnung angezeigt wird, wenn eine Ausnahme nicht behandelt wird. Anschließend wird eine Überprüfung durchgeführt, um zu bestätigen, dass der angegebene Abonnementschlüssel 32 Zeichen lang ist. Ein Fehler wird ausgelöst, wenn der Schlüssel weniger oder mehr als 32 Zeichen enthält.
 
 Falls Schlüssel vorhanden sind, die zumindest die richtige Länge haben, wird `InitializeComponent()` aufgerufen, um die Benutzeroberfläche zu initiieren. Hierzu wird die XAML-Beschreibung des App-Hauptfensters gesucht, geladen und instanziiert.
 
@@ -323,7 +328,7 @@ Die JSON-Antwort wird analysiert und in ein Wörterbuch konvertiert. Die Sprachc
 
 ## <a name="populate-language-drop-down-menus"></a>Füllen der Dropdownmenüs für die Sprachen
 
-Da die Benutzeroberfläche per XAML definiert wurde, müssen Sie für die Einrichtung nicht viel mehr tun und lediglich `InitializeComponent()` aufrufen. Der einzige erforderliche Schritt ist das Hinzufügen der Anzeigenamen der Sprachen zu den Dropdownmenüs **Translate from** (Übersetzen aus) und **Translate to** (Übersetzen in). Verwenden Sie hierfür die `PopulateLanguageMenus()`-Methode.
+Da die Benutzeroberfläche per XAML definiert wurde, müssen Sie für die Einrichtung nicht viel mehr tun und lediglich `InitializeComponent()` aufrufen. Der einzige erforderliche Schritt ist das Hinzufügen der Anzeigenamen der Sprachen zu den Dropdownmenüs **Translate from** (Übersetzen aus) und **Translate to** (Übersetzen in). Die `PopulateLanguageMenus()`-Methode fügt die Namen hinzu.
 
 1. Öffnen Sie in Visual Studio eine Registerkarte für `MainWindow.xaml.cs`.
 2. Fügen Sie diesen Code Ihrem Projekt unterhalb der `GetLanguagesForTranslate()`-Methode hinzu:
@@ -413,7 +418,7 @@ Darüber hinaus wird mit dieser Methode auch die Zuverlässigkeitsbewertung der 
 
 ## <a name="spell-check-the-source-text"></a>Rechtschreibprüfung für Quelltext
 
-Nun erstellen wir eine Methode, mit der für den Quelltext anhand der Bing-Rechtschreibprüfungs-API eine Rechtschreibprüfung durchgeführt wird. So wird sichergestellt, dass wir über die Textübersetzungs-API genaue Übersetzungen erhalten. Alle Korrekturen des Quelltexts werden mit unserer Übersetzungsanforderung übergeben, wenn auf die Schaltfläche **Translate** (Übersetzen) geklickt wird.
+Nun erstellen wir eine Methode, mit der für den Quelltext anhand der Bing-Rechtschreibprüfungs-API eine Rechtschreibprüfung durchgeführt wird. Die Rechtschreibprüfung stellt sicher, dass die Textübersetzungs-API korrekte Texte liefert. Alle Korrekturen des Quelltexts werden mit unserer Übersetzungsanforderung übergeben, wenn auf die Schaltfläche **Translate** (Übersetzen) geklickt wird.
 
 1. Öffnen Sie in Visual Studio eine Registerkarte für `MainWindow.xaml.cs`.
 2. Fügen Sie diesen Code Ihrem Projekt unterhalb der `DetectLanguage()`-Methode hinzu:
@@ -480,7 +485,7 @@ private string CorrectSpelling(string text)
 Abschließend müssen wir eine Methode erstellen, die aufgerufen wird, wenn auf unserer Benutzeroberfläche auf die Schaltfläche **Translate** (Übersetzen) geklickt wird.
 
 1. Öffnen Sie in Visual Studio eine Registerkarte für `MainWindow.xaml.cs`.
-2. Fügen Sie diesen Code Ihrem Projekt unterhalb der `CorrectSpelling()`-Methode hinzu, und speichern Sie:  
+1. Fügen Sie diesen Code Ihrem Projekt unterhalb der `CorrectSpelling()`-Methode hinzu, und speichern Sie:  
    ```csharp
    // ***** PERFORM TRANSLATION ON BUTTON CLICK
    private async void TranslateButton_Click(object sender, EventArgs e)
@@ -537,7 +542,7 @@ Abschließend müssen wir eine Methode erstellen, die aufgerufen wird, wenn auf 
        {
            request.Method = HttpMethod.Post;
            request.RequestUri = new Uri(uri);
-           request.Content = new StringContent(requestBody, Encoding.UTF8, "app/json");
+           request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
            request.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
            request.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
            request.Headers.Add("X-ClientTraceId", Guid.NewGuid().ToString());

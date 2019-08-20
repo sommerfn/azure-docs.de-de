@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70fee90fb82618a409d2566a3235ad8ca42e1760
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828680"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934430"
 ---
-# <a name="tutorial-setup-environment-and-workspace"></a>Tutorial: Einrichten der Umgebung und des Arbeitsbereichs
+# <a name="tutorial-set-up-environment-and-workspace"></a>Tutorial: Einrichten der Umgebung und des Arbeitsbereichs
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie das in Jupyter-Notebooks ausgeführte Azure Machine Learning Python SDK einrichten. Dieses Tutorial ist der **erste Teil einer zweiteiligen Tutorialreihe** und behandelt die Einrichtung und Konfiguration der Python-Umgebung sowie die Erstellung eines Arbeitsbereichs zur Verwaltung Ihrer Experimente und Machine Learning-Modelle. Der [**zweite Teil**](tutorial-1st-experiment-sdk-train.md) baut auf diesem Tutorial auf und zeigt, wie Sie mehrere Machine Learning-Modelle trainieren und über das Azure-Portal sowie mithilfe des SDK verwalten.
 
@@ -25,7 +25,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Erstellen eines Machine Learning-Arbeitsbereichs für das nächste Tutorial
-> * Erstellen einer Notebook-VM, eines cloudbasierten Jupyter Notebook-Servers, auf dem das Azure Machine Learning Python SDK bereits installiert und konfiguriert ist
+> * Erstellen einer cloudbasierten Jupyter Notebook-VM, auf der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

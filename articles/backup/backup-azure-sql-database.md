@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827646"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954536"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -58,7 +58,7 @@ Vor Kurzem wurde verlautbart, dass Azure Backup Unterstützung für [SQL Server-
 2. .NET Framework 4.5.2 und höher muss auf dem virtuellen Computer installiert sein.
 3. Sicherungen für FCI und gespiegelte Datenbanken werden nicht unterstützt.
 
-Diese Funktion wird den Benutzern erst dann in Rechnung gestellt, wenn es allgemein verfügbar ist. Alle anderen [Funktionsaspekte und Einschränkungen](#feature-consideration-and-limitations) gelten auch für diese Versionen. Lesen Sie die [Voraussetzungen](backup-sql-server-database-azure-vms.md#prerequisites), bevor Sie den Schutz für SQL Server 2008- und 2008 R2-Instanzen konfigurieren, wozu das Festlegen des [Registrierungsschlüssels](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) gehört (dieser Schritt ist nicht mehr erforderlich, sobald die Funktion allgemein verfügbar ist).
+Dieses Feature wird den Benutzern erst dann in Rechnung gestellt, wenn es allgemein verfügbar ist. Alle anderen [Funktionsaspekte und Einschränkungen](#feature-consideration-and-limitations) gelten auch für diese Versionen. Lesen Sie die [Voraussetzungen](backup-sql-server-database-azure-vms.md#prerequisites), bevor Sie den Schutz für SQL Server 2008- und 2008 R2-Instanzen konfigurieren. Dazu gehört das Festlegen des [Registrierungsschlüssels](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (dieser Schritt ist nicht mehr erforderlich, sobald das Feature allgemein verfügbar ist).
 
 
 ## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen
@@ -74,8 +74,8 @@ Diese Funktion wird den Benutzern erst dann in Rechnung gestellt, wenn es allgem
 - Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien beträgt **~1.000**.  
 - Sie können bis zu **~2.000** SQL Server-Datenbanken in einem Tresor sichern. Sie können mehrere Tresore erstellen, falls Sie über eine größere Anzahl von Datenbanken verfügen.
 - Sie können die Sicherung für bis zu **50** Datenbanken auf einmal konfigurieren; diese Einschränkung trägt dazu bei, Sicherungslasten zu optimieren.
-- Wir unterstützen Datenbanken bis zu einer Größe von **2TB**; darüber könnten Leistungsprobleme auftreten.
-- Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen wir Faktoren wie z.B. Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er enthält die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen pro Server zulässig sind, sowie die Sicherungsrichtlinie.
+- Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
+- Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen wir Faktoren wie z.B. Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er enthält die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen pro Server zulässig sind, sowie die Sicherungsrichtlinie.
 - Bei Verfügbarkeitsgruppen werden Sicherungen basierend auf einigen Faktoren auf den verschiedenen Knoten erstellt. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Sicherungsverhalten von Always On-Verfügbarkeitsgruppen

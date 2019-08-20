@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561888"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942884"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -53,7 +53,7 @@ Erstellen Sie eine neue Gruppe mit dem Namen _MDM policy - West_ (MDM-Richtlinie
 3. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-new-user"></a>Erstellen eines neuen Benutzers
-Erstellen Sie einen neuen Benutzer mit dem Namen _Alain Charon_. Ein Benutzer muss vorhanden sein, bevor Sie ihn als Mitglied einer Gruppe hinzufügen können. Weitere Informationen zum Erstellen eines Benutzers finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](add-users-azure-active-directory.md).
+Erstellen Sie einen neuen Benutzer mit dem Namen _Alain Charon_. Ein Benutzer muss vorhanden sein, bevor Sie ihn als Mitglied einer Gruppe hinzufügen können. Überprüfen Sie zuerst die Registerkarte „Benutzerdefinierte Domänennamen“, um den Namen der überprüften Domäne zu erfahren, in der Benutzer erstellt werden sollen. Weitere Informationen zum Erstellen eines Benutzers finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](add-users-azure-active-directory.md).
 
 1. Wählen Sie **Azure Active Directory** > **Benutzer** und anschließend **Neuer Benutzer** aus.
 

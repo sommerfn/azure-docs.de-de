@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub (Java) | Microsoft-Dokumentation'
+title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub mit Java'
 description: In dieser Schnellstartanleitung führen Sie zwei Java-Beispielanwendungen aus. Eine dieser Anwendungen ist eine Back-End-Anwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung simuliert ein Gerät, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
 author: wesmc7777
 manager: philmea
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 5cf7153b5370bd5e1002963027295f79ecfeb6db
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330657"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958632"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Java)
 

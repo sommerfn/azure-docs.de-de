@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53711a80f35177c911b754a0ce3f189ac106adb2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088876"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Tutorial: Azure Active Directory-Integration mit TextMagic
 
@@ -166,13 +166,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TextMag
 
     ![TextMagic-Konfiguration](./media/textmagic-tutorial/config2.png)
 
-    a. Fügen Sie den  **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider entity ID:**  (Entitäts-ID des Identitätsanbieters:) ein.
+    a. Fügen Sie in das Textfeld **Identity Provider Entity ID** (Entitäts-ID des Identitätsanbieters) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    b. Fügen Sie die  **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider SSO URL:**  (SSO-URL des Identitätsanbieters) ein.
+    b. Fügen Sie in das Textfeld **Identity Provider SSO URL** (SSO-URL des Identitätsanbieters) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie die  **Abmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider SLO URL:**  (SLO-URL des Identitätsanbieters) ein.
+    c. Fügen Sie in das Textfeld für die **Identity provider SLO URL** (SSO-URL des Identitätsanbieters) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Öffnen Sie das **Base64-codierte Zertifikat** im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld  **Public x509 certificate:**  (Öffentliches x509-Zertifikat) ein.
+    d. Öffnen Sie das **Base64-codierte Zertifikat** im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Public x509 certificate:** (Öffentliches x509-Zertifikat) ein.
 
     e. Klicken Sie auf **Speichern**.
 

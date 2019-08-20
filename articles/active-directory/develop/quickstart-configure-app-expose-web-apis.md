@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f770539e2f60a960a52a877dd4eaa79c60a1af4a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482669"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989272"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs
 
@@ -116,8 +116,9 @@ Machen Sie einen neuen Bereich oder einer Rolle wie folgt über das Anwendungsma
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Überprüfen, ob die Web-API für andere Anwendungen verfügbar gemacht wurde
 
 1. Wechseln Sie zurück zu Ihrem Azure AD-Mandanten, wählen Sie **App-Registrierungen**, und suchen Sie nach der Clientanwendung, die Sie konfigurieren möchten. Wählen Sie diese Clientanwendung aus.
-1. Wiederholen Sie die Schritte unter „Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs“.
-1. Wählen Sie Ihre Ressource aus, wenn Sie zum Schritt **API auswählen** gelangen. Der neue Bereich, der für Clientberechtigungsanforderungen verfügbar ist, sollte angezeigt werden.
+1. Wiederholen Sie die Schritte unter [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md).
+1. Wenn Sie zum Schritt [API auswählen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+) gelangen, wählen Sie Ihre Ressource aus. Der neue Bereich, der für Clientberechtigungsanforderungen verfügbar ist, sollte angezeigt werden.
 
 ## <a name="more-on-the-application-manifest"></a>Weitere Informationen zum Anwendungsmanifest
 

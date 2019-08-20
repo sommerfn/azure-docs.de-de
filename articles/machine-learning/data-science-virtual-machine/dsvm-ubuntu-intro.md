@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d79bfa8f390d145bfd963b40497030140a3d135
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591917"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013592"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -86,32 +86,35 @@ Bevor Sie eine Data Science Virtual Machine für Linux erstellen können, benöt
 Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual Machine für Linux:
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)zur Auflistung der virtuellen Computer. Wenn Sie sich noch nicht bei Ihrem Azure-Konto angemeldet haben, erhalten Sie eine entsprechende Aufforderung. 
-1. Klicken Sie (unten auf der Seite) auf **Erstellen**, um den Assistenten aufzurufen.![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-1. Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten (im rechten Teil der obigen Abbildung aufgelistet), mit dem die Microsoft Data Science Virtual Machine erstellt wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
+1. Klicken Sie auf **Erstellen**, um den Assistenten aufzurufen.
+    ![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten, mit dem die Microsoft Data Science Virtual Machine erstellt wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
 
-   a. **Grundlagen**:
-
-   * **Name**: Der Name des Data Science-Servers, den Sie erstellen.
-   * **VM-Datenträgertyp**: Wählen Sie **SSD Premium** aus, wenn Sie ein SSD (Solid State Drive) bevorzugen. Andernfalls wählen Sie **HDD Standard** aus. 
-   * **Benutzername**: Die ID für die erste Kontoanmeldung.
-   * **Kennwort**: Das erste Kontokennwort (Sie können anstelle eines Kennworts einen öffentlichen SSH-Schlüssel verwenden).
-   * **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
-   * **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
-   * **Standort**: Wählen Sie das Datencenter aus, das am besten geeignet ist. Normalerweise handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
-
-   b. **Größe**:
-
-   * Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Wählen Sie einen virtuellen Computer der NC- oder ND-Klasse für GPU-basierte VM-Instanzen aus. Auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen mit GPUs aufgelistet.
-
-   c. **Einstellungen**:
-
-   * In den meisten Fällen können Sie einfach die Standardeinstellungen verwenden. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch nicht standardmäßige Einstellungen verwenden möchten.
-
-   d. **Zusammenfassung**:
-
-   * Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind. Es wird ein Link zu den Nutzungsbedingungen bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. Klicken Sie auf **Erstellen**, um die Bereitstellung zu starten. 
-
-Die Bereitstellung sollte ungefähr 5 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
+    a. **Grundlagen**:
+    
+    * **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
+    * **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
+    * **Name des virtuellen Computers**: Der Name des Data Science-Servers, den Sie erstellen.
+    * **Region**: Wählen Sie das Datencenter aus, das am besten geeignet ist. Normalerweise handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
+    * **Verfügbarkeitsoptionen**: Legen Sie diese fest, wenn Sie diese VM in Verfügbarkeitsgruppen bzw. Verfügbarkeitszonen verwenden möchten. Andernfalls übernehmen Sie den Standardwert.
+    * **Image**: Behalten Sie den Standardwert bei.
+    * **Größe**: Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Wählen Sie einen virtuellen Computer der NC- oder ND-Serie für GPU-basierte VM-Instanzen aus. 
+    * **Benutzername**: Benutzername des Administrators
+    * **Öffentlicher SSH-Schlüssel**: Öffentlicher RSA-Schlüssel im Einzelzeilenformat (Sie können statt des SSH-Schlüssels auch ein Kennwort verwenden).
+    
+    b. **Datenträger**:
+    
+    * **Typ des Betriebssystemdatenträgers**: Wählen Sie **SSD Premium** aus, wenn Sie ein SSD (Solid State Drive) bevorzugen. Andernfalls wählen Sie **HDD Standard** aus.
+    
+    c. Für die restlichen Einstellungen können Sie einfach die Standardwerte verwenden. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch nicht standardmäßige Einstellungen verwenden möchten.
+    
+    Wählen Sie **Überprüfen + erstellen** aus.
+    
+    d. **Überprüfen + erstellen**:
+    
+    * Überprüfen Sie nach der Validierung, ob alle eingegebenen Informationen richtig sind. Es wird ein Link zu den Nutzungsbedingungen bereitgestellt. Für die VM fallen keine Kosten an, die über die Computekosten für die von Ihnen unter „Größe“ ausgewählte Servergröße hinausgehen. Klicken Sie auf **Erstellen**, um die Bereitstellung zu starten.
+    
+    Die Bereitstellung sollte ungefähr 5 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Zugreifen auf die Data Science Virtual Machine für Linux
 

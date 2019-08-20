@@ -1,71 +1,112 @@
 ---
-title: 'Schnellstart: Aufrufen des Textanalysediensts mit dem Python SDK'
+title: 'Schnellstart: Textanalyse-Clientbibliothek für Python | Microsoft-Dokumentation'
 titleSuffix: Azure Cognitive Services
-description: Informationen und Codebeispiele für die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services
+description: In dieser Schnellstartanleitung werden die ersten Schritte mit der Textanalyse-API von Azure Cognitive Services erläutert.
 services: cognitive-services
 author: ctufts
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/05/2019
 ms.author: aahi
-ms.openlocfilehash: 82f0313a237358fcaa1ae52e92821abef2b52af7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d7ad19a58327ba508ccb4e47d12d3d0f50465f4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697319"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884002"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Schnellstart: Aufrufen des Textanalysediensts mit dem Python SDK 
+# <a name="quickstart-text-analytics-client-library-for-python"></a>Schnellstart: Textanalyse-Clientbibliothek für Python
 <a name="HOLTop"></a>
 
-Verwenden Sie diesen Schnellstart, um mit dem Textanalyse-SDK für Python in die Sprachanalyse einzusteigen. Obwohl die Textanalyse-REST-API mit den meisten Programmiersprachen kompatibel ist, bietet das SDK eine einfache Möglichkeit, den Dienst in Ihre Anwendungen zu integrieren, ohne JSON serialisieren oder deserialisieren zu müssen. Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).
+Hier finden Sie Informationen zu den ersten Schritten mit der Textanalyse-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. 
+
+Die Textanalyse-Clientbibliothek für Python kann für Folgendes verwendet werden:
+
+* Stimmungsanalyse
+* Spracherkennung
+* Entitätserkennung
+* Schlüsselwortextraktion
+
+
+[Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-* Das [Python SDK](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) für die Textanalyse können Sie wie folgt installieren:
+## <a name="setting-up"></a>Einrichten
 
-    `pip install --upgrade azure-cognitiveservices-language-textanalytics`
+### <a name="create-a-text-analytics-azure-resource"></a>Erstellen einer Azure-Ressource für die Textanalyse
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](../../cognitive-services-apis-create-account.md) oder der [Azure CLI](../../cognitive-services-apis-create-account-cli.md) auf Ihrem lokalen Computer eine Ressource für die Textanalyse. Weitere Funktionen:
 
-## <a name="create-a-new-python-application"></a>Erstellen einer neuen Python-Anwendung
+* Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
+* Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
 
-Erstellen Sie in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE eine neue Python-Anwendung. Fügen Sie dann der Datei die folgenden import-Anweisungen hinzu.
+Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie eine Umgebungsvariable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel (`TEXT_ANALYTICS_SUBSCRIPTION_KEY`).
+
+### <a name="install-the-client-library"></a>Installieren der Clientbibliothek
+
+Nach der Installation von Python, können Sie die Clientbibliothek mit Folgendem installieren:
+
+```console
+pip install --upgrade azure-cognitiveservices-language-textanalytics
+```
+
+### <a name="create-a-new-python-application"></a>Erstellen einer neuen Python-Anwendung
+
+Erstellen Sie eine neue Python-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Importieren Sie dann die folgenden Bibliotheken:
 
 ```python
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="authenticate-your-credentials"></a>Authentifizieren Ihrer Anmeldeinformationen
+Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource. Wenn Sie die Umgebungsvariable nach dem Start der Anwendung erstellt haben, müssen der Editor, die IDE oder die Shell, in dem bzw. der sie ausgeführt wird, geschlossen und erneut geöffnet werden, damit der Zugriff auf die Variable möglich ist.
 
-> [!Tip]
-> Für eine sichere Bereitstellung von Geheimnissen in Produktionssystemen empfehlen wir die Verwendung von [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
->
-
-Nachdem Sie eine Variable für Ihren Abonnementschlüssel für die Textanalyse erstellt haben, instanziieren Sie damit ein `CognitiveServicesCredentials`-Objekt.
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```python
-subscription_key = "enter-your-key-here"
-credentials = CognitiveServicesCredentials(subscription_key)
-```
-
-## <a name="create-a-text-analytics-client"></a>Erstellen eines Textanalyseclients
-
-Erstellen Sie ein `TextAnalyticsClient`-Objekt mit `credentials` und `text_analytics_url` als Parameter. Verwenden Sie die richtige Azure-Region für Ihr Textanalyse-Abonnement (z. B. `westcentralus`).
-
-```
+# replace this endpoint with the correct one for your Azure resource. 
 text_analytics_url = "https://westcentralus.api.cognitive.microsoft.com/"
+# This sample assumes you have created an environment variable for your key
+key = os.environ["TEXT_ANALYTICS_SUBSCRIPTION_KEY"]
+credentials = CognitiveServicesCredentials(key)
+```
+
+## <a name="object-model"></a>Objektmodell
+
+Der Textanalyse-Client ist ein [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client verfügt über verschiedene Methoden zum Analysieren von Text als einzelne Zeichenfolge oder als Batch. 
+
+Text wird als `documents`-Liste an die API gesendet. Hierbei handelt es sich um `dictionary`-Objekte, die je nach verwendeter Methode eine Kombination aus den Attributen `id`, `text` und `language` enthalten. Das `text`-Attribut speichert den zu analysierenden Text in der Ausgangssprache (`language`), und `id` kann ein beliebiger Wert sein. 
+
+Das Antwortobjekt ist eine Liste mit den Analyseinformationen für jedes Dokument. 
+
+## <a name="code-examples"></a>Codebeispiele
+
+Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit der Textanalyse-Clientbibliothek für Python durchgeführt werden:
+
+* [Authentifizieren des Clients](#authenticate-the-client)
+* [Standpunktanalyse](#sentiment-analysis)
+* [Sprachenerkennung](#language-detection)
+* [Entitätserkennung](#entity-recognition)
+* [Schlüsselbegriffserkennung](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>Authentifizieren des Clients
+
+Erstellen Sie ein [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python)-Objekt mit `credentials` und `text_analytics_url` als Parameter. Verwenden Sie die richtige Azure-Region für Ihr Textanalyse-Abonnement (z. B. `westcentralus`).
+
+```python
 text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=credentials)
 ```
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-Die Nutzlast an die API besteht aus einer Liste von `documents`, die jeweils Wörterbücher aus einem `id`- und einem `text`-Attribut sind. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
+Rufen Sie die Funktion [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
 
 ```python
 documents = [
@@ -73,28 +114,8 @@ documents = [
         "id": "1",
         "language": "en",
         "text": "I had the best day of my life."
-    },
-    {
-        "id": "2",
-        "language": "en",
-        "text": "This was a waste of my time. The speaker put me to sleep."
-    },
-    {
-        "id": "3",
-        "language": "es",
-        "text": "No tengo dinero ni nada que dar..."
-    },
-    {
-        "id": "4",
-        "language": "it",
-        "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     }
 ]
-```
-
-Rufen Sie die `sentiment()`-Funktion auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
-
-```python
 response = text_analytics.sentiment(documents=documents)
 for document in response.documents:
     print("Document Id: ", document.id, ", Sentiment Score: ",
@@ -105,35 +126,19 @@ for document in response.documents:
 
 ```console
 Document Id:  1 , Sentiment Score:  0.87
-Document Id:  2 , Sentiment Score:  0.11
-Document Id:  3 , Sentiment Score:  0.44
-Document Id:  4 , Sentiment Score:  1.00
 ```
 
 ## <a name="language-detection"></a>Spracherkennung
 
-Erstellen Sie eine Liste von Wörterbüchern, die jeweils das Dokument enthalten, das Sie analysieren möchten. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
+Rufen Sie mit dem zuvor erstellten Client die Funktion [detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und die erste zurückgegebene Sprache.
 
 ```python
 documents = [
     {
         'id': '1',
         'text': 'This is a document written in English.'
-    },
-    {
-        'id': '2',
-        'text': 'Este es un document escrito en Español.'
-    },
-    {
-        'id': '3',
-        'text': '这是一个用中文写的文件'
     }
 ]
-```
-
-Rufen Sie mit dem zuvor erstellten Client `detect_language()` auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und die erste zurückgegebene Sprache.
-
-```python
 response = text_analytics.detect_language(documents=documents)
 for document in response.documents:
     print("Document Id: ", document.id, ", Language: ",
@@ -144,14 +149,11 @@ for document in response.documents:
 
 ```console
 Document Id:  1 , Language:  English
-Document Id:  2 , Language:  Spanish
-Document Id:  3 , Language:  Chinese_Simplified
 ```
 
 ## <a name="entity-recognition"></a>Entitätserkennung
 
-Erstellen Sie eine Liste von Wörterbüchern, die die Dokumente enthalten, die Sie analysieren möchten. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
-
+Rufen Sie mit dem zuvor erstellten Client die Funktion [entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die enthaltenen Entitäten aus.
 
 ```python
 documents = [
@@ -159,18 +161,8 @@ documents = [
         "id": "1",
         "language": "en",
         "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."
-    },
-    {
-        "id": "2",
-        "language": "es",
-        "text": "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     }
 ]
-```
-
-Rufen Sie mit dem zuvor erstellten Client die `entities()`-Funktion auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die enthaltenen Entitäten aus.
-
-```python
 response = text_analytics.entities(documents=documents)
 
 for document in response.documents:
@@ -183,7 +175,6 @@ for document in response.documents:
             print("\t\t\tOffset: ", match.offset, "\tLength: ", match.length, "\tScore: ",
                   "{:.2f}".format(match.entity_type_score))
 ```
-
 
 ### <a name="output"></a>Output
 
@@ -204,51 +195,20 @@ Document Id:  1
             Offset:  89     Length:  5  Score:  0.80
          NAME:  Altair 8800     Type:  Other    Sub-type:  None
             Offset:  116    Length:  11     Score:  0.80
-Document Id:  2
-    Key Entities:
-         NAME:  Microsoft   Type:  Organization     Sub-type:  None
-            Offset:  21     Length:  9  Score:  1.00
-         NAME:  Redmond (Washington)    Type:  Location     Sub-type:  None
-            Offset:  60     Length:  7  Score:  0.99
-         NAME:  21 kilómetros   Type:  Quantity     Sub-type:  Dimension
-            Offset:  71     Length:  13     Score:  0.80
-         NAME:  Seattle     Type:  Location     Sub-type:  None
-            Offset:  88     Length:  7  Score:  1.00
 ```
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-Erstellen Sie eine Liste von Wörterbüchern, die die Dokumente enthalten, die Sie analysieren möchten. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
-
+Rufen Sie mit dem zuvor erstellten Client die Funktion [key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die enthaltenen Schlüsselausdrücke aus.
 
 ```python
 documents = [
     {
         "id": "1",
-        "language": "ja",
-        "text": "猫は幸せ"
-    },
-    {
-        "id": "2",
-        "language": "de",
-        "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."
-    },
-    {
-        "id": "3",
         "language": "en",
         "text": "My cat might need to see a veterinarian."
-    },
-    {
-        "id": "4",
-        "language": "es",
-        "text": "A mi me encanta el fútbol!"
     }
 ]
-```
-
-Rufen Sie mit dem zuvor erstellten Client die `key_phrases()`-Funktion auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die enthaltenen Schlüsselausdrücke aus.
-
-```python
 response = text_analytics.key_phrases(documents=documents)
 
 for document in response.documents:
@@ -258,34 +218,32 @@ for document in response.documents:
         print("\t\t", phrase)
 ```
 
+
 ### <a name="output"></a>Output
 
 ```console
-Document Id:  1
-    Phrases:
-         幸せ
-Document Id:  2
-    Phrases:
-         Stuttgart
-         Hotel
-         Fahrt
-         Fu
 Document Id:  3
     Phrases:
          cat
          veterinarian
-Document Id:  4
-    Phrases:
-         fútbol
 ```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure-Befehlszeilenschnittstelle](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Textanalyse mit Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Weitere Informationen
 
-* [Worum handelt es sich bei der Textanalyse-API?](../overview.md)
-* [Beispielbenutzerszenarien](../text-analytics-user-scenarios.md)
-* [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)
+* [Übersicht über die Textanalyse](../overview.md)
+* [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Entitätserkennung](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Sprache erkennen](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Spracherkennung](../how-tos/text-analytics-how-to-language-detection.md)
+* Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).

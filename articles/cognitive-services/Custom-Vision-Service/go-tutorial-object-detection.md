@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: daauld
-ms.openlocfilehash: fd305c0fa9f046e6601f1d94ad4ebb1677f1787d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3831f89842f969ecce582c5b5d7a5f8a54c5e7a1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561028"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946207"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision-SDK für Go
 
@@ -48,7 +48,7 @@ Erstellen Sie in Ihrem bevorzugten Projektverzeichnis eine neue Datei namens *sa
 
 ### <a name="create-the-custom-vision-service-project"></a>Erstellen des Custom Vision Service-Projekts
 
-Fügen Sie Ihrem Skript den folgenden Code hinzu, um ein neues Custom Vision Service-Projekt zu erstellen. Fügen Sie Ihre Abonnementschlüssel in die entsprechenden Definitionen ein. Beachten Sie, dass der Unterschied zwischen dem Erstellen einer Objekterkennung und eines Projekts zur Bildklassifizierung in der Domäne liegt, die für den **create_project**-Aufruf angegeben ist.
+Fügen Sie Ihrem Skript den folgenden Code hinzu, um ein neues Custom Vision Service-Projekt zu erstellen. Fügen Sie Ihre Abonnementschlüssel in die entsprechenden Definitionen ein. Informationen zur Angabe weiterer Optionen bei der Erstellung Ihres Projekts finden Sie im Artikel zur Methode [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_). Informationen zur Projekterstellung finden Sie unter [Schnellstart: Informationen zum Erstellen einer Objekterkennung mit Custom Vision](get-started-build-detector.md).
 
 ```go
 import(
@@ -157,7 +157,7 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Laden Sie dann auf der Grundlage dieser Zuordnungen die einzelnen Bilder zusammen mit den jeweiligen Regionskoordinaten hoch. Fügen Sie den folgenden Code hinzu:
+Laden Sie dann auf der Grundlage dieser Zuordnungen die einzelnen Bilder zusammen mit den jeweiligen Regionskoordinaten hoch. (Sie können bis zu 64 Bilder in einem Batch hochladen.) Fügen Sie den folgenden Code hinzu:
 
 > [!NOTE]
 > Sie müssen den Pfad zu den Bildern basierend darauf ändern, wo Sie zuvor das Cognitive Services SDK-Beispielprojekt für Go heruntergeladen haben.

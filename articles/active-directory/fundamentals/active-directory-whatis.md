@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774172"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942804"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 
@@ -50,9 +50,9 @@ Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige
 
 - **Azure Active Directory Free:** Bietet Benutzer- und Gruppenverwaltung, lokale Verzeichnissynchronisierung, einfache Berichte, Self-Service-Kennwortänderung für Cloudbenutzer sowie einmaliges Anmelden für Azure, Office 365 und zahlreiche beliebte SaaS-Apps.
 
-- **Azure Active Directory Premium P1:** Neben den Features der Free- und Basic-Edition bietet P1 auch Hybridbenutzerzugriff auf lokale und cloudbasierte Ressourcen. P1 unterstützt außerdem eine erweiterte Verwaltung – etwa durch dynamische Gruppen, Self-Service-Gruppenverwaltung, Microsoft Identity Manager (eine lokale Identitäts- und Zugriffsverwaltungssuite) und Cloudfunktionen für das Zurückschreiben, die die Self-Service-Kennwortzurücksetzung für Ihre lokalen Benutzer ermöglichen.
+- **Azure Active Directory Premium P1:** P1 bietet zusätzlich zu den Features des Free-Tarifs Hybridbenutzerzugriff auf lokale und cloudbasierte Ressourcen. P1 unterstützt außerdem eine erweiterte Verwaltung – etwa durch dynamische Gruppen, Self-Service-Gruppenverwaltung, Microsoft Identity Manager (eine lokale Identitäts- und Zugriffsverwaltungssuite) und Cloudfunktionen für das Zurückschreiben, die die Self-Service-Kennwortzurücksetzung für Ihre lokalen Benutzer ermöglichen.
 
-- **Azure Active Directory Premium P2:** Neben den Features der Free-, Basic- und P1-Edition bietet P2 auch [Azure Active Directory Identity Protection](../identity-protection/enable.md), um risikobasierten bedingten Zugriff auf Ihre Apps und kritischen Unternehmensdaten zu ermöglichen, sowie [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md), um Administratoren und deren Zugriff auf Ressourcen zu ermitteln, einzuschränken und zu überwachen und bei Bedarf Just-In-Time-Zugriff bereitzustellen.
+- **Azure Active Directory Premium P2:** P2 bietet zusätzlich zu den Features des Free- und des P1-Tarifs auch [Azure Active Directory Identity Protection](../identity-protection/enable.md), um risikobasierten bedingten Zugriff auf Ihre Apps und kritischen Unternehmensdaten zu ermöglichen, sowie [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md), um Administratoren und deren Zugriff auf Ressourcen zu ermitteln, einzuschränken und zu überwachen und bei Bedarf Just-In-Time-Zugriff bereitzustellen.
 
 - **Featurelizenzen mit nutzungsbasierter Bezahlung:** Es sind auch zusätzliche Featurelizenzen verfügbar (beispielsweise Azure Active Directory B2C). B2C kann Ihnen dabei helfen, Identitäts- und Zugriffsverwaltungslösungen für Ihre kundenorientierten Apps bereitzustellen. Weitere Informationen finden Sie in der [Dokumentation für Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 

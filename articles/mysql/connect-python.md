@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: f1059fac4d44138a4e9bc04c858501234974dc43
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 08/08/2019
+ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350966"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931624"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von Python zum Herstellen einer Verbindung und Abfragen von Daten
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Python](https://python.org) eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. Dabei werden SQL-Anweisungen verwendet, um Daten in der Datenbank über Mac OS, Ubuntu Linux und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Python-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -31,8 +31,8 @@ Installieren Sie [Python](https://www.python.org/downloads/) und den [MySQL-Conn
 >
 
 ### <a name="windows"></a>Windows
-1. Laden Sie unter [python.org](https://www.python.org/downloads/windows/) Python 2.7 herunter, und installieren Sie es. 
-2. Starten Sie die Eingabeaufforderung, um die Python-Installation zu überprüfen. Führen Sie den Befehl `C:\python27\python.exe -V` mit dem Switch „V“ (groß geschrieben) aus, um die Versionsnummer anzuzeigen.
+1. Laden Sie Python 3.7 von [python.org](https://www.python.org/downloads/windows/) herunter, und installieren Sie die Software. 
+2. Starten Sie die Eingabeaufforderung, um die Python-Installation zu überprüfen. Führen Sie den Befehl `C:\python37\python.exe -V` mit dem Switch „V“ (groß geschrieben) aus, um die Versionsnummer anzuzeigen.
 3. Installieren Sie den für Ihre Python-Version passenden Python-Connector für MySQL (zu finden unter [mysql.com](https://dev.mysql.com/downloads/connector/python/)).
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)

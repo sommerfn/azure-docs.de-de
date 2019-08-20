@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e18c5dfe3649f74a9f84c605785ca99748298bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc78b08c25ada2bf1ed67f4c27246bc873823516
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086134"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Tutorial: Azure Active Directory-Integration mit ZIVVER
 
@@ -107,7 +107,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ZIVVER d
 
     Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://app.zivver.com/SAML/Zivver`.
 
-5. ZIVVER erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.  **nameidentifier** ist hier  **user.userprincipalname** zugeordnet. Die ZIVVER-Anwendung erwartet, dass  **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol  **Bearbeiten** klicken.
+5. ZIVVER erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die ZIVVER-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher bearbeiten, indem Sie auf das Symbol **Bearbeiten** klicken und die Zuordnung entsprechend ändern.
 
     ![image](common/edit-attribute.png)
 
@@ -218,7 +218,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-zivver-test-user"></a>Erstellen eines ZIVVER-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ZIVVER einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das  [Supportteam von ZIVVER](https://support.zivver.com/), um die Benutzer auf der ZIVVER-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ZIVVER einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das [Supportteam von ZIVVER](https://support.zivver.com/), um die Benutzer in der ZIVVER-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

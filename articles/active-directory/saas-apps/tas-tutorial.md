@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089171"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Tutorial: Azure Active Directory-Integration von TAS
 
@@ -150,7 +150,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TAS die 
 
     c. Fügen Sie in das Textfeld **URL eingeben** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie dessen Inhalt, und fügen Sie dann den Inhalt in das Feld **Zertifikat eingeben** ein.
+    d. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie dessen Inhalt, und fügen Sie dann den Inhalt in das Feld **Zertifikat eingeben** ein.
 
     e. Geben Sie im Textfeld **Neue IP-Adresse eingeben** die IP-Adresse ein.
 
@@ -216,7 +216,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-tas-test-user"></a>Erstellen eines TAS-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in TAS einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur TAS-Plattform vom  [TAS-Supportteam](mailto:support@combtas.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in TAS einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur TAS-Plattform vom [TAS-Supportteam](mailto:support@combtas.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

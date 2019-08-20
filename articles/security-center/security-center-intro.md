@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827922"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882847"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -32,9 +32,9 @@ Azure Security Center ist die Lösung für die drei größten Herausforderungen 
 
 -   **Sich schnell ändernde Workloads**: Dies ist gleichzeitig eine Stärke und eine Schwäche der Cloud. Einerseits werden Benutzer in die Lage versetzt, mehr zu erreichen. Andererseits stellt sich die folgende Frage: Wie können Sie sicherstellen, dass die sich ständig ändernden Dienste, die von Benutzern verwendet und erstellt werden, Ihren Sicherheitsstandards entsprechen und auf den bewährten Sicherheitsmethoden basieren?
 
--   **Immer ausgereiftere Angriffe**: Bei jeder Ausführung Ihrer Workloads werden die Angriffe immer ausgereifter. Sie müssen Ihre öffentlichen Cloudworkloads schützen. Bei dieser Aufgabe handelt es sich praktisch um eine internetfähige Workload, die dazu führen kann, dass Sie noch angreifbarer sind, wenn Sie sich nicht an die bewährten Sicherheitsmethoden halten.
+-   **Immer ausgefeiltere Angriffe**: Unabhängig davon, wo Sie Ihre Workloads ausführen – die Angriffe werden immer komplexer und ausgefeilter. Sie müssen Ihre öffentlichen Cloudworkloads schützen. Bei dieser Aufgabe handelt es sich praktisch um eine internetfähige Workload, die dazu führen kann, dass Sie noch angreifbarer sind, wenn Sie sich nicht an die bewährten Sicherheitsmethoden halten.
 
--   **Mangel an Personen mit Sicherheitskenntnissen**: Die Anzahl von Sicherheitswarnungen und Warnsystemen übersteigt deutlich die Anzahl von verfügbaren Administratoren mit dem erforderlichen Hintergrund und der Erfahrung, die zum Schützen Ihrer Umgebungen benötigt wird. Es ist eine ständige Herausforderung, hinsichtlich der neuesten Angriffstechniken immer auf dem Laufenden zu bleiben. Da sich der Sicherheitsbereich ständig ändert, ist es unmöglich, auf demselben Stand zu verharren.
+-   **Mangel an Personen mit Sicherheitskenntnissen**: Die Anzahl von Sicherheitswarnungen und Warnsystemen übersteigt bei Weitem die Anzahl von verfügbaren Administratoren mit dem erforderlichen Hintergrund und der Erfahrung, die zum Schützen Ihrer Umgebungen benötigt wird. Es ist eine ständige Herausforderung, hinsichtlich der neuesten Angriffstechniken immer auf dem Laufenden zu bleiben. Da sich der Sicherheitsbereich ständig ändert, ist es unmöglich, auf demselben Stand zu verharren.
 
 Damit Sie diese Herausforderungen in Bezug auf den Schutz bewältigen können, werden mit Security Center Tools für folgende Zwecke bereitgestellt:
 
@@ -60,15 +60,15 @@ Mit Azure Security Center können Sie Ihren Sicherheitsstatus erhöhen. Sie erha
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Verwalten der Sicherheitsrichtlinie und der Konformität der Organisation
 
-Es ist eine grundlegende Sicherheitsanforderung, dass Sie Ihre Workloads kennen und für deren Schutz sorgen. Der erste Schritt hierbei ist, maßgeschneiderte Sicherheitsrichtlinien aufzustellen. Da alle Richtlinien in Security Center auf Azure-Richtlinienkontrollen basieren, kommen Sie in den Genuss des vollen Funktionsumfangs und der Flexibilität einer  **erstklassigen Richtlinienlösung**. In Security Center können Sie Ihre Richtlinien so festlegen, dass sie für Verwaltungsgruppen, übergreifend für Abonnements und sogar für einen gesamten Mandanten ausgeführt werden.
+Es ist eine grundlegende Sicherheitsanforderung, dass Sie Ihre Workloads kennen und für deren Schutz sorgen. Der erste Schritt hierbei ist, maßgeschneiderte Sicherheitsrichtlinien aufzustellen. Da alle Richtlinien in Security Center auf Azure-Richtlinienkontrollen basieren, können Sie vom vollen Funktionsumfang und der Flexibilität einer **erstklassigen Richtlinienlösung** profitieren. In Security Center können Sie Ihre Richtlinien so festlegen, dass sie für Verwaltungsgruppen, übergreifend für Abonnements und sogar für einen gesamten Mandanten ausgeführt werden.
 
 ![Security Center-Dashboard](media/security-center-intro/sc-dashboard.png)
 
-Mit Security Center können Sie **Schatten-IT-Abonnements identifizieren**. Indem Sie sich in Ihrem Dashboard Abonnements mit dem Hinweis **Nicht abgedeckt** ansehen, können Sie sofort erkennen, wann neu erstellte Abonnements vorhanden sind. Sie können dann sicherstellen, dass diese durch Ihre Richtlinien abgedeckt und mit Azure Security Center geschützt sind.
+Mit Security Center können Sie **Schatten-IT-Abonnements identifizieren**. Indem Sie sich in Ihrem Dashboard Abonnements mit dem Hinweis **Nicht abgedeckt** ansehen, können Sie sofort erkennen, wann neu erstellte Abonnements vorhanden sind. Sie können dann sicherstellen, dass diese durch Ihre Richtlinien abgedeckt und mit Azure Security Center geschützt sind.
 
 ![Security Center-Dashboard für Richtlinien](media/security-center-intro/sc-policy-dashboard.png)
 
-Mit den erweiterten Überwachungsfunktionen in Security Center können Sie auch die **Konformität und Governance in Abhängigkeit der Zeit nachverfolgen und verwalten**. Mit **Konformität gesamt** erhalten Sie einen Wert dazu, in welchem Maße Ihre Abonnements mit den Richtlinien konform sind, die Ihrer Workload zugeordnet sind. 
+Mit den erweiterten Überwachungsfunktionen in Security Center können Sie auch **Compliance und Governance im Lauf der Zeit nachverfolgen und verwalten**. Die **Compliance insgesamt** bietet einen Messwert dazu, in welchem Maß Ihre Abonnements die Richtlinien einhalten, die Ihrer Workload zugeordnet sind. 
 
 ![Security Center-Richtlinie in Abhängigkeit der Zeit](media/security-center-intro/sc-policy-time.png)
 
@@ -76,11 +76,11 @@ Mit den erweiterten Überwachungsfunktionen in Security Center können Sie auch 
 
 Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workloads bereitgestellt werden, und es wird bewertet, ob diese gemäß den bewährten Sicherheitsmethoden konfiguriert sind. Wenn nicht, werden sie gekennzeichnet, und Sie erhalten eine nach Priorität sortierte Liste mit Empfehlungen zu den Schritten, die zum Schützen Ihrer Computer ausgeführt werden müssen.
 
-Eines der leistungsfähigsten Tools, das von Security Center für die ständige Überwachung des Sicherheitsstatus Ihres Netzwerks bereitgestellt wird, ist die **Netzwerkübersicht**. In der Übersicht können Sie die Topologie Ihrer Workloads anzeigen, um zu ermitteln, ob jeder Knoten richtig konfiguriert ist. Sie sehen, wie Ihre Knoten miteinander verbunden sind, und können unerwünschte Verbindungen blockieren, die einem Angreifer unter Umständen die Bewegung durch Ihr Netzwerk erleichtern könnten.
+Eines der leistungsfähigsten Tools, das von Security Center für die ständige Überwachung des Sicherheitsstatus Ihres Netzwerks bereitgestellt wird, ist die **Netzwerkübersicht**. In der Übersicht können Sie die Topologie Ihrer Workloads anzeigen, um zu ermitteln, ob jeder Knoten richtig konfiguriert ist. Sie sehen, wie Ihre Knoten miteinander verbunden sind, und können unerwünschte Verbindungen blockieren, die einem Angreifer unter Umständen die Bewegung durch Ihr Netzwerk erleichtern könnten.
 
 ![Security Center – Netzwerkübersicht](media/security-center-intro/sc-net-map.png)
 
-Security Center vereinfacht die Lösung Ihrer Sicherheitswarnungen um einen Schritt, indem ein **Secure Score** (Sicherheitsbewertung) hinzugefügt wird. Secure Scores werden jetzt jeder Empfehlung zugeordnet, die Sie erhalten. So können Sie verstehen, wie wichtig die einzelnen Empfehlungen für Ihren gesamten Sicherheitsstatus sind. Dies ist ein entscheidender Faktor beim **Sortieren Ihrer Sicherheitsmaßnahmen nach Priorität**.
+Security Center vereinfacht die Entschärfung von Sicherheitswarnungen mithilfe einer **Sicherheitsbewertung**. Secure Scores werden jetzt jeder Empfehlung zugeordnet, die Sie erhalten. So können Sie verstehen, wie wichtig die einzelnen Empfehlungen für Ihren gesamten Sicherheitsstatus sind. Dies ist ein entscheidender Faktor beim **Priorisieren Ihrer Sicherheitsmaßnahmen**.
 
 ![Secure Score von Security Center](media/security-center-intro/sc-secure-score.png)
 

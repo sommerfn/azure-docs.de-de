@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 04/11/2019
+ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371041"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990473"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
@@ -54,7 +54,7 @@ Fahren Sie mit dem Abschnitt [Einrichten Ihrer Entwicklungsumgebung](#start) for
 
 Wie Sie diese erforderlichen Komponenten beziehen, erfahren Sie in den jeweiligen Abschnitten:
 
-* Verwenden eines [cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich](#azure) 
+* Verwenden eines [cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich](#azure)
 * Verwenden [Ihres eigenen Notebook-Servers](#server)
 
 ### <a name="azure"></a>Verwenden eines cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich
@@ -688,6 +688,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> Die Schritte zur Vorverarbeitung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Vorverarbeitungsschritte automatisch auf Ihre Eingabedaten angewendet.
+
 ### <a name="train-the-automatic-regression-model"></a>Trainieren des automatischen Regressionsmodells
 
 Starten Sie das Experiment, und führen Sie es lokal aus. Übergeben Sie das definierte `automated_ml_config`-Objekt an das Experiment. Legen Sie die Ausgabe auf `True` fest, um den Fortschritt während des Experiments anzuzeigen:
@@ -764,7 +767,7 @@ Die gleichen Ergebnisse werden in Ihrem Arbeitsbereich gespeichert.  Sie können
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Option 2: Abrufen und Untersuchen aller Ausführungsiterationen in Python
 
