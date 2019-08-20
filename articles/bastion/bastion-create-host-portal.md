@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c283e840208ab9f53d084ca17221ea2c835b794
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466994"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814143"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Erstellen eines Azure Bastion-Hosts (Vorschauversion)
 
@@ -39,7 +39,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource üb
 
 1. Klicken Sie auf der Startseite unter [Azure-Portal – Bastion-Vorschauversion](https://aka.ms/BastionHost) auf **+ Ressource erstellen**. Wichtig: Verwenden Sie für diese Vorschauversion nicht das reguläre Azure-Portal, sondern den bereitgestellten Link.
 
-1. Geben Sie auf der Seite **Neu** im Feld *Marketplace durchsuchen* den Suchbegriff **Bastion** ein, und drücken Sie anschließend die **** EINGABETASTE, um zu den Suchergebnissen zu gelangen.
+1. Geben Sie auf der Seite **Neu** im Feld *Marketplace durchsuchen* den Suchbegriff **Bastion** ein, und drücken Sie anschließend die **EINGABETASTE**, um zu den Suchergebnissen zu gelangen.
 
 1. Klicken Sie in den Ergebnissen auf **Bastion (Vorschauversion)** . Vergewissern Sie sich, dass der Herausgeber *Microsoft* und die Kategorie *Netzwerk* lautet.
 
@@ -54,7 +54,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource üb
     * **Name**: Der Name der neuen Bastion-Ressource.
     * **Region**: Die öffentliche Azure-Region, in der die Ressource erstellt wird.
     * **Virtuelles Netzwerk:** Das virtuelle Netzwerk, in dem die Bastion-Ressource erstellt wird. Im Rahmen dieses Prozesses können Sie über das Portal ein neues virtuelles Netzwerk erstellen, falls Sie noch nicht über ein virtuelles Netzwerk verfügen oder keines der vorhandenen virtuellen Netzwerke verwenden möchten. Achten Sie bei Verwendung eines bereits vorhandenen virtuellen Netzwerks darauf, dass der freie Adressraum die Anforderungen des Bastion-Subnetzes erfüllt.
-    * **Subnetz**: Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Sie müssen ein Subnetz mit dem Namen **AzureBastionSubnet** erstellen. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Dieses Subnetz unterscheidet sich von einem Gatewaysubnetz. Es wird dringend empfohlen, mindestens ein Subnetz der Größe „/27“ („/27“, „/26“ usw.) zu verwenden. Erstellen Sie **AzureBastionSubnet** ohne Routentabellen oder Delegierungen. Weitere Informationen zum Verwenden von Netzwerksicherheitsgruppen in **AzureBastionSubnet** finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](bastion-nsg.md).
+    * **Subnetz**: Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Sie müssen ein Subnetz mit dem Namen **AzureBastionSubnet** erstellen. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Dies unterscheidet sich von einem Gatewaysubnetz. Verwenden Sie mindestens ein Subnetz mit „/27“ oder ein größeres Subnetz („/27“, „/26“ usw.). Erstellen Sie **AzureBastionSubnet** ohne Routentabellen oder Delegierungen. Weitere Informationen zum Verwenden von Netzwerksicherheitsgruppen in **AzureBastionSubnet** finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](bastion-nsg.md).
     * **Öffentliche IP-Adresse:** Die öffentliche IP-Adresse der Bastion-Ressource für den RDP-/SSH-Zugriff (über den Port 443). Erstellen Sie eine neue öffentliche IP-Adresse, oder verwenden Sie eine bereits vorhandene. Die öffentliche IP-Adresse muss sich in der gleichen Region befinden wie die Bastion-Ressource, die Sie erstellen.
     * **Öffentliche IP-Adresse**: Der Name der öffentlichen IP-Adressressource.
     * **SKU der öffentlichen IP-Adresse**: Dieser Wert ist bereits standardmäßig auf **Standard** festgelegt. Azure Bastion verwendet/unterstützt nur die SKU „Standard“ für die öffentliche IP-Adresse.
