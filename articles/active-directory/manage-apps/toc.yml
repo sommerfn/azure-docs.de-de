@@ -29,6 +29,8 @@
           items:
             - name: Erste Schritte bei der App-Integration
               href: plan-an-application-integration.md
+            - name: Planen der Bereitstellung eines Zugriffsbereichs
+              href: access-panel-deployment-plan.md
             - name: Leitfaden für Entwickler
               href: developer-guidance-for-integrating-applications.md
         - name: Einmaliges Anmelden

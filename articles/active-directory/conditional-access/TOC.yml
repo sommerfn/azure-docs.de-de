@@ -19,6 +19,10 @@
 - name: Konzepte
   expanded: false
   items:
+    - name: Einführen von bedingtem Zugriff
+      href: howto-conditional-access-adoption-kit.md
+    - name: Allgemeine Richtlinien für bedingten Zugriff
+      href: concept-conditional-access-policy-common.md
     - name: Bedingungen
       href: conditions.md
     - name: Standortbedingungen
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: Bewährte Methoden
       href: best-practices.md
+    - name: Allgemeine Richtlinienvorlagen
+      items:
+        - name: Vorschreiben der MFA für Administratoren
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Vorschreiben der MFA für die Azure-Verwaltung
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Risikobasierter bedingter Zugriff
+          href: howto-conditional-access-policy-risk.md
+        - name: Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung
+          href: howto-conditional-access-policy-registration.md
+        - name: Blockieren des Zugriffs nach Standort
+          href: howto-conditional-access-policy-location.md
+        - name: Anfordern von kompatiblen Geräten
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
     - name: Bedingter Zugriff für MFA-Registrierung

@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Aufrufen des Textanalysediensts mit dem Go SDK'
+title: 'Schnellstart: Textanalyse-Clientbibliothek für Go | Microsoft-Dokumentation'
 titleSuffix: Azure Cognitive Services
-description: Informationen und Codebeispiele für die ersten Schritte mit der Textanalyse-API in Microsoft Cognitive Services
+description: Informationen und Codebeispiele für die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services
 services: cognitive-services
 author: laramume
 manager: assafi
@@ -10,27 +10,84 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d3644022e1877369368953b9f147c64aaae2d459
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 25d8052cda422c185d49c36c5daff9ac4582e66c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697647"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880994"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Schnellstart: Aufrufen des Textanalysediensts mit dem Go SDK 
-<a name="HOLTop"></a>
+# <a name="quickstart-text-analytics-client-library-for-go"></a>Schnellstart: Textanalyse-Clientbibliothek für Go
 
-Verwenden Sie diese Schnellstartanleitung, um mit dem Textanalyse-SDK für Go in die Sprachanalyse einzusteigen. Dieser Artikel veranschaulicht, wie Sie Sprache erkennen, Stimmungen analysieren, Schlüsselbegriffe extrahieren und verknüpfte Entitäten erkennen. Die REST-API ist zwar mit den meisten Programmiersprachen kompatibel, das SDK bietet aber eine einfache Möglichkeit, den Dienst in Ihre Anwendungen zu integrieren. Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices).
+Steigen Sie in die Textanalyse-Clientbibliothek für Go ein. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. 
+
+Verwenden Sie die Textanalyse-Clientbibliothek für Go für folgende Zwecke:
+
+* Stimmungsanalyse
+* Spracherkennung
+* Entitätserkennung
+* Schlüsselwortextraktion
+
+[Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [Paket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Textanalyse-[SDK für Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/)
+* Aktuelle Version von [Go](https://golang.org/dl/)
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+## <a name="setting-up"></a>Einrichten
 
-## <a name="set-up-a-new-project"></a>Einrichten eines neuen Projekts
+### <a name="create-a-text-analytics-azure-resource"></a>Erstellen einer Azure-Ressource für die Textanalyse 
 
-Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor bzw. Ihrer bevorzugten IDE. Fügen Sie dann der Go-Datei die folgende import-Anweisung hinzu:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die Textanalyse. Weitere Funktionen:
+
+* Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
+* Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com) an.
+
+Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie eine Umgebungsvariable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel (`TEXT_ANALYTICS_SUBSCRIPTION_KEY`).
+
+### <a name="create-a-new-go-project"></a>Erstellen eines neuen Go-Projekts
+
+Erstellen Sie in einem Konsolenfenster (cmd, PowerShell, Terminal, Bash) einen neuen Arbeitsbereich für Ihr Go-Projekt, und navigieren Sie zu diesem Projekt. Ihr Arbeitsbereich enthält drei Ordner: 
+
+* **src**: Dieses Verzeichnis enthält Quellcode und Pakete. Alle Pakete, die mit dem Befehl `go get` installiert werden, befinden sich in diesem Verzeichnis.
+* **pkg**: Dieses Verzeichnis enthält die kompilierten Go-Paketobjekte. Diese Dateien haben alle die Erweiterung `.a`.
+* **bin**: Dieses Verzeichnis enthält die ausführbaren Binärdateien, die beim Ausführen von `go install` erstellt werden.
+
+> [!TIP]
+> Informieren Sie sich über die Struktur eines [Go-Arbeitsbereichs](https://golang.org/doc/code.html#Workspaces). Dieses Handbuch enthält Informationen zum Festlegen von `$GOPATH` und `$GOROOT`.
+
+Erstellen Sie einen Arbeitsbereich mit dem Namen `my-app` und den erforderlichen Unterverzeichnissen für `src`, `pkg` und `bin`:
+
+```console
+$ mkdir -p my-app/{src, bin, pkg}  
+$ cd my-app
+```
+
+### <a name="install-the-text-analytics-client-library-for-go"></a>Installieren der Textanalyse-Clientbibliothek für Go
+
+Installieren Sie die Clientbibliothek für Go: 
+
+```console
+$ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
+```
+
+Bei Verwendung von DEP können Sie alternativ Folgendes in Ihrem Repository ausführen:
+
+```console
+$ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
+```
+
+### <a name="create-your-go-application"></a>Erstellen Ihrer Go-Anwendung
+
+Erstellen Sie als Nächstes eine Datei mit dem Namen `src/quickstart.go`:
+
+```bash
+$ cd src
+$ touch quickstart.go
+```
+
+Öffnen Sie `quickstart.go` in einer IDE oder einem Text-Editor Ihrer Wahl. Fügen Sie dann den Paketnamen hinzu, und importieren Sie die folgenden Bibliotheken:
 
 ```golang
 import (
@@ -56,25 +113,47 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Erstellen eines Textanalyseclients und Authentifizieren der Anmeldeinformationen
+Erstellen Sie in der main-Funktion Ihres Projekts Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource. Wenn Sie die Umgebungsvariable nach dem Start der Anwendung erstellt haben, müssen der Editor, die IDE oder die Shell, in dem bzw. der sie ausgeführt wird, geschlossen und erneut geöffnet werden, damit der Zugriff auf die Variable möglich ist.
 
-Erstellen Sie in der main-Funktion Ihres Projekts ein neues `TextAnalytics`-Objekt. Verwenden Sie die richtige Azure-Region für Ihr Textanalyseabonnement. Beispiel: `https://eastus.api.cognitive.microsoft.com`. Wenn Sie einen Schlüssel für die Testversion verwenden, müssen Sie den Speicherort aktualisieren.
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```golang
-//Replace 'eastus' with the correct region for your Text Analytics subscription
-textAnalyticsClient := textanalytics.New("https://eastus.api.cognitive.microsoft.com")
+// This sample assumes you have created an environment variable for your key
+subscriptionKey := os.Getenv("TEXT_ANALYTICS_SUBSCRIPTION_KEY")
+// replace this endpoint with the correct one for your Azure resource. 
+endpoint := "https://eastus.api.cognitive.microsoft.com"
 ```
 
-Erstellen Sie eine Variable für den Schlüssel, und übergeben Sie sie an die Funktion `autorest.NewCognitiveServicesAuthorizer`, die dann an die Eigenschaft `authorizer` des Clients übergeben wird.
+## <a name="object-model"></a>Objektmodell 
+
+Der Textanalyse-Client ist ein [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New)-Objekt, für das die Authentifizierung für Azure mit Ihrem Schlüssel durchgeführt wird. Der Client verfügt über verschiedene Methoden zum Analysieren von Text als einzelne Zeichenfolge oder als Batch. 
+
+Text wird als `documents`-Liste an die API gesendet. Hierbei handelt es sich um `dictionary`-Objekte, die je nach verwendeter Methode eine Kombination aus den Attributen `id`, `text` und `language` enthalten. Das `text`-Attribut speichert den zu analysierenden Text in der Ausgangssprache (`language`), und `id` kann ein beliebiger Wert sein. 
+
+Das Antwortobjekt ist eine Liste mit den Analyseinformationen für jedes Dokument. 
+
+## <a name="code-examples"></a>Codebeispiele
+
+Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit der Textanalyse-Clientbibliothek für Python durchgeführt werden:
+
+* [Authentifizieren des Clients](#authenticate-the-client)
+* [Standpunktanalyse](#sentiment-analysis)
+* [Sprachenerkennung](#language-detection)
+* [Entitätserkennung](#entity-recognition)
+* [Schlüsselbegriffserkennung](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>Authentifizieren des Clients
+
+Erstellen Sie in der main-Funktion Ihres Projekts ein neues [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New)-Objekt. Übergeben Sie Ihren Schlüssel an die Funktion [autorest.NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer), die dann an die `authorizer`-Eigenschaft des Clients übergeben wird.
 
 ```golang
-subscriptionKey := "<<subscriptionKey>>"
+textAnalyticsClient := textanalytics.New(endpoint)
 textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscriptionKey)
 ```
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-Erstellen Sie eine neue Funktion mit dem Namen `SentimentAnalysis()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit `MultiLanguageInput`-Objekten, die die zu analysierenden Dokumente enthält. Jedes Objekt enthält die Attribute `id`, `Language` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, `language` ist die Sprache des Dokuments, und `id` kann ein beliebiger Wert sein. 
+Erstellen Sie eine neue Funktion mit dem Namen `SentimentAnalysis()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput)-Objekten, die die zu analysierenden Dokumente enthält. Jedes Objekt enthält die Attribute `id`, `Language` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, `language` ist die Sprache des Dokuments, und `id` kann ein beliebiger Wert sein. 
 
 ```golang
 func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
@@ -86,28 +165,13 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
             ID:StringPointer("0"),
             Text:StringPointer("I had the best day of my life."),
         },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("en"),
-            ID:StringPointer("1"),
-            Text:StringPointer("This was a waste of my time. The speaker put me to sleep."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("2"),
-            Text:StringPointer("No tengo dinero ni nada que dar..."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("it"),
-            ID:StringPointer("3"),
-            Text:StringPointer("L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."),
-        },
     }
 
     batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
 }
 ```
 
-Rufen Sie in der gleichen Funktion `textAnalyticsclient.Sentiment()` auf, und rufen Sie das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
+Rufen Sie in derselben Funktion die Funktion [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) des Clients und das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
 
 ```golang
 result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
@@ -134,14 +198,11 @@ Rufen Sie in der main-Funktion Ihres Projekts `SentimentAnalysis()` auf.
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
-Document ID: 2 , Sentiment Score: 0.11
-Document ID: 3 , Sentiment Score: 0.44
-Document ID: 4 , Sentiment Score: 1.00
 ```
 
 ## <a name="language-detection"></a>Spracherkennung
 
-Erstellen Sie eine neue Funktion mit dem Namen `LanguageDetection()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit `LanguageInput`-Objekten, die die zu analysierenden Dokumente enthält. Jedes Objekt enthält die Attribute `id` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
+Erstellen Sie eine neue Funktion mit dem Namen `LanguageDetection()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput)-Objekten, die die zu analysierenden Dokumente enthalten. Jedes Objekt enthält die Attribute `id` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
 
 ```golang
 func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
@@ -152,21 +213,13 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
             ID:StringPointer("0"),
             Text:StringPointer("This is a document written in English."),
         },
-        textanalytics.LanguageInput {
-            ID:StringPointer("1"),
-            Text:StringPointer("Este es un document escrito en Español."),
-        },
-        textanalytics.LanguageInput {
-            ID:StringPointer("2"),
-            Text:StringPointer("这是一个用中文写的文件"),
-        },
     }
 
     batchInput := textanalytics.LanguageBatchInput{Documents:&inputDocuments}
 }
 ```
 
-Rufen Sie in der gleichen Funktion `textAnalyticsclient.DetectLanguage()` auf, und rufen Sie das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die ermittelte Sprache aus.
+Rufen Sie in derselben Funktion das [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage)-Objekt des Clients und das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die ermittelte Sprache aus.
 
 ```golang
 result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
@@ -193,14 +246,12 @@ Rufen Sie in der main-Funktion Ihres Projekts `LanguageDetection()` auf.
 ### <a name="output"></a>Output
 
 ```console
-Document ID: 0 Detected Languages with Score: English 1.000000,
-Document ID: 1 Detected Languages with Score: Spanish 1.000000,
-Document ID: 2 Detected Languages with Score: Chinese_Simplified 1.000000,
+Document ID: 0 Detected Languages with Score: English 1.000000
 ```
 
 ## <a name="entity-recognition"></a>Entitätserkennung
 
-Erstellen Sie eine neue Funktion mit dem Namen `ExtractEntities()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit `MultiLanguageInput`-Objekten, die die zu analysierenden Dokumente enthält. Jedes Objekt enthält die Attribute `id`, `language` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, `language` ist die Sprache des Dokuments, und `id` kann ein beliebiger Wert sein. 
+Erstellen Sie eine neue Funktion mit dem Namen `ExtractEntities()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput)-Objekten, die die zu analysierenden Dokumente enthalten. Jedes Objekt enthält die Attribute `id`, `language` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, `language` ist die Sprache des Dokuments, und `id` kann ein beliebiger Wert sein. 
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -211,19 +262,14 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
             Language: StringPointer("en"),
             ID:StringPointer("0"),
             Text:StringPointer("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("1"),
-            Text:StringPointer("La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."),
-        },
+        }
     }
 
     batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
 }
 ```
 
-Rufen Sie in der gleichen Funktion `call textAnalyticsclient.Entities()` auf, und rufen Sie das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die Bewertung der extrahierten Entitäten aus.
+Rufen Sie in derselben Funktion das [Entities()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities)-Objekt des Clients und das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die Bewertung der extrahierten Entitäten aus.
 
 ```golang
     result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
@@ -274,23 +320,11 @@ Document ID: 0
             Offset: 89  Length: 5   Score: 0.800000
         Name: Altair 8800   Type: Other
             Offset: 116 Length: 11  Score: 0.800000
-
-Document ID: 1
-    Extracted Entities:
-        Name: Microsoft Type: Organization
-            Offset: 21  Length: 9   Score: 0.999756
-        Name: Redmond (Washington)  Type: Location
-            Offset: 60  Length: 7   Score: 0.991128
-        Name: 21 kilómetros Type: Quantity  Sub-Type: Dimension
-
-            Offset: 71  Length: 13  Score: 0.800000
-        Name: Seattle   Type: Location
-            Offset: 88  Length: 7   Score: 0.999878
 ```
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-Erstellen Sie eine neue Funktion mit dem Namen `ExtractKeyPhrases()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit `MultiLanguageInput`-Objekten, die die zu analysierenden Dokumente enthält. Jedes Objekt enthält die Attribute `id`, `language` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, `language` ist die Sprache des Dokuments, und `id` kann ein beliebiger Wert sein.
+Erstellen Sie eine neue Funktion mit dem Namen `ExtractKeyPhrases()`, die den zuvor erstellten Client aufnimmt. Erstellen Sie eine Liste mit [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput)-Objekten, die die zu analysierenden Dokumente enthalten. Jedes Objekt enthält die Attribute `id`, `language` und `text`. Das `text`-Attribut speichert den Text, der analysiert werden soll, `language` ist die Sprache des Dokuments, und `id` kann ein beliebiger Wert sein.
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -298,24 +332,9 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
     ctx := context.Background()
     inputDocuments := []textanalytics.MultiLanguageInput {
         textanalytics.MultiLanguageInput {
-            Language: StringPointer("ja"),
-            ID:StringPointer("0"),
-            Text:StringPointer("猫は幸せ"),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("de"),
-            ID:StringPointer("1"),
-            Text:StringPointer("Fahrt nach Stuttgart und dann zum Hotel zu Fu."),
-        },
-        textanalytics.MultiLanguageInput {
             Language: StringPointer("en"),
-            ID:StringPointer("2"),
+            ID:StringPointer("0"),
             Text:StringPointer("My cat might need to see a veterinarian."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("3"),
-            Text:StringPointer("A mi me encanta el fútbol!"),
         },
     }
 
@@ -323,7 +342,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Rufen Sie in der gleichen Funktion „textAnalyticsclient.KeyPhrases()“ auf, und rufen Sie das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die extrahierten Schlüsselbegriffe aus.
+Rufen Sie in derselben Funktion das [KeyPhrases()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases)-Objekt des Clients und das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die extrahierten Schlüsselbegriffe aus.
 
 ```golang
     result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
@@ -352,30 +371,27 @@ Rufen Sie in der main-Funktion Ihres Projekts `ExtractKeyPhrases()` auf.
 ```console
 Document ID: 0
     Extracted Key Phrases:
-        幸せ
-
-Document ID: 1
-    Extracted Key Phrases:
-        Stuttgart
-        Hotel
-        Fahrt
-        Fu
-
-Document ID: 2
-    Extracted Key Phrases:
         cat
         veterinarian
-
-Document ID: 3
-    Extracted Key Phrases:
-        fútbol
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure-Befehlszeilenschnittstelle](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 
 > [!div class="nextstepaction"]
 > [Textanalyse mit Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Weitere Informationen
 
- [Übersicht über die Textanalyse](../overview.md) [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)
+* [Übersicht über die Textanalyse](../overview.md)
+* [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Entitätserkennung](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Sprache erkennen](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Spracherkennung](../how-tos/text-analytics-how-to-language-detection.md)
+* Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices).

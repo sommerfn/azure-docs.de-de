@@ -273,6 +273,8 @@
       items:
         - name: Upgrade auf Gen2
           href: upgrade-to-latest-generation.md
+        - name: Verwalten von Computeressourcen
+          href: manage-compute-with-azure-functions.md
         - name: 'Überwachen Ihrer Workload: Portal'
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: 'Überwachen Ihrer Workload: DMVs'

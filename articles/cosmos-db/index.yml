@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: Integrierte Analysen mit Apache Spark
           - href: /azure/cosmos-db/change-feed/
-            html: '<p>Führen Sie Echtzeitanalysen mit einem Änderungsfeed aus, und lesen Sie dabei die sortierte Dokumentenliste in einem Azure Cosmos DB-Container in der Reihenfolge, in der die Dokumente geändert wurden. </p>'
+            html: "<p>Führen Sie Echtzeitanalysen mit einem Änderungsfeed aus, und lesen Sie dabei die sortierte Dokumentenliste in einem Azure\_Cosmos-Container in der Reihenfolge, in der die Dokumente geändert wurden. </p>"
             image:
               src: media/index/change-feed-logo.png
             title: Änderungsfeed

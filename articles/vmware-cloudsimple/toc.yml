@@ -111,15 +111,19 @@
         - name: Einrichten von virtuellen VMware-Computern für die private Cloud
           items:
             - name: Erstellen eines virtuellen Computers in Azure
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: Verwalten von virtuellen Computern in Azure
+              href: azure-manage-vm.md
     - name: Anleitungen
       items:
         - name: Sichern der Umgebung
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: Verwaltung von privaten Clouds
           items:
+            - name: Ausweiten von Berechtigungen für die private Cloud
+              href: escalate-privileges.md
             - name: Workload-DNS und DHCP-Einrichtung
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: NSX Layer 2-VPN für Migration
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: Private Cloudnetzwerke
@@ -133,11 +137,11 @@
         - name: VMware-Plattform
           items:
             - name: Kennenlernen des Berechtigungsmodells für private Clouds
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter-Identitätsquellen
               href: set-vcenter-identity.md
             - name: Azure Application Gateway mit virtuellen VMware-Computern
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: Konfigurieren eines vCenter-Servers in einer privaten Cloud als vRealize-Automatisierungsendpunkt
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: Migrieren von virtuellen Workload-Computern in eine private Cloud
@@ -147,7 +151,7 @@
         - name: VMware-Ökosystem
           items:
             - name: Sichern von virtuellen Workload-Computern
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
             - name: Lösungsanleitung für VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurieren der vSAN-Verschlüsselung für Ihre private Cloud

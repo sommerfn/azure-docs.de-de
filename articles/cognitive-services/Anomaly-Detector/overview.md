@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 80e0984deff83726fd96a462a1ae8a4375db9d2e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721603"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854776"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
 
@@ -38,15 +38,22 @@ Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder a
 
 ## <a name="demo"></a>Demo
 
-Eine kurze Erklärung der ersten Schritte mit der Anomalieerkennungs-API finden Sie in einer [Onlinedemo](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector), die Sie einfach in einem Browser ansehen können. Diese Demo wird in einem Jupyter-Notebook, das im Web gehostet wird, ausgeführt und zeigt, wie eine API-Anforderung gesendet und das Ergebnis visualisiert wird.
+Sehen Sie sich [diese interaktive Demonstration](https://aka.ms/adDemo) an, um sich mit der Funktionsweise der Anomalieerkennung vertraut zu machen.
+Zum Ausführen der Demonstration müssen Sie eine Ressource für die Anomalieerkennung und den API-Schlüssel und den Endpunkt abrufen.
 
-Führen Sie die folgenden Schritte aus, um die Demo anzusehen:
+## <a name="notebook"></a>Notebook
 
-1. Holen Sie sich einen gültigen Abonnementschlüssel für die Anomalieerkennungs-API sowie einen API-Endpunkt. Im folgenden Abschnitt finden Sie Anweisungen zur Registrierung. 
-2. Melden Sie sich an, und klicken Sie rechts oben in der Ecke auf „Klon“.
-3. Klicken Sie auf **Run on free compute (Mit kostenlosem Compute ausführen)** .
-4. Wählen Sie für dieses Beispiel eines der Notebooks aus.
-5. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu. Ändern Sie die Variable `endpoint` in Ihren Endpunkt. Beispiel: `https://westus2.api.cognitive.microsoft.com`
+Weitere Informationen zum Abrufen der API für die Anomalieerkennung finden Sie unter diesem [Azure Notebook](https://aka.ms/adNotebook). In diesem im Web gehosteten Jupyter Notebook wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
+
+Führen Sie die folgenden Schritte aus, um das Notebook auszuführen:
+
+1. Holen Sie sich einen gültigen Abonnementschlüssel für die Anomalieerkennungs-API sowie einen API-Endpunkt. Im folgenden Abschnitt finden Sie Anweisungen zur Registrierung.
+1. Melden Sie sich an, und klicken Sie rechts oben in der Ecke auf „Klon“.
+1. Deaktivieren Sie im Dialogfeld die Option „Öffentlich“, bevor Sie den Klonvorgang durchführen. Andernfalls ist Ihr Notebook, einschließlich aller Abonnementschlüssel, öffentlich zugänglich.
+1. Klicken Sie auf **Run on free compute (Mit kostenlosem Compute ausführen)** .
+1. Wählen Sie eines der Notebooks aus.
+1. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu. 
+1. Ändern Sie die Variable `endpoint` in Ihren Endpunkt. Beispiel: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. Klicken Sie auf der oberen Menüleiste auf **Zelle** und dann auf **Alle ausführen**.
 
 ## <a name="workflow"></a>Workflow
@@ -62,6 +69,13 @@ Nach der Registrierung:
 1. Konvertieren Sie die Zeitreihendaten in ein gültiges JSON-Format. Folgen Sie den [bewährten Methoden](concepts/anomaly-detection-best-practices.md), wenn Sie die Daten vorbereiten, um die besten Ergebnisse zu erzielen.
 1. Senden Sie eine Anforderung mit Ihren Daten an die Anomalieerkennungs-API.
 1. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
+
+## <a name="algorithms"></a>Algorithmen
+
+* Weitere Informationen zu den Algorithmen im Hintergrund finden Sie im Technik-Blog [Introducing Azure Anomaly Detector API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) (Einführung in die API für die Azure-Anomalieerkennung).
+* Informationen zu den von Microsoft entwickelten hochmodernen SR-CNN-Algorithmen finden Sie unter [Time-Series Anomaly Detection Service at Microsoft](https://arxiv.org/abs/1906.03821) (Anomalieerkennungsdienst für Zeitreihen bei Microsoft) (akzeptiert von KDD 2019).
+
+> [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
