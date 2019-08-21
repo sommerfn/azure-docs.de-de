@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: Verwenden des Migrationstools
               href: platform/alerts-using-migration-tool.md
+            - name: Automatischer Migrationsprozess
+              href: platform/alerts-automatic-migration.md
             - name: Verwalten klassischer Metrikwarnungen
               href: platform/alerts-classic-portal.md
             - name: Klassische Metrikwarnung mit Resource Manager-Vorlage
