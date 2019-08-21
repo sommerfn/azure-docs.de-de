@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Batchvorhersagen für große Datenmengen
+title: Ausführen von Batchvorhersagen für umfangreiche Daten mit Pipelines
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie mit dem Azure Machine Learning Service asynchron Batchvorhersagen für große Datenmengen erstellen können.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358714"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962987"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Ausführen von Batchvorhersagen für große Datasets mit Azure Machine Learning Service
+# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Ausführen von Batchvorhersagen für große Datasets mit Azure Machine Learning-Pipelines
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Machine Learning Service asynchrone Vorhersagen über große Datenmengen treffen können.
+In diesem Artikel erfahren Sie, wie Sie mit den ML-Pipelines in Azure Machine Learning Service asynchrone Vorhersagen über große Datenmengen treffen können.
 
 Die Batchvorhersage (oder Batchbewertung) bietet kosteneffiziente Rückschlüsse mit beispiellosem Durchsatz für asynchrone Anwendungen. Batchvorhersagepipelines können skaliert werden, um Rückschlüsse auf Terabyte von Produktionsdaten zu ermöglichen. Die Batchvorhersage ist für hohen Durchsatz, Fire-and-Forget-Vorhersagen für große Datenmengen optimiert.
 
@@ -358,7 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um die Funktionsweise vollständig zu überprüfen, probieren Sie das Batchbewertungs-Notebook in [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) aus.
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
-
+Um dies vollumfänglich zu testen, probieren Sie das Batchbewertungsnotebook in [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) aus, oder wechseln Sie zu [Azure Architecture Center](/azure/architecture/reference-architectures/ai/batch-scoring-python), um eine Beispiellösungsarchitektur einzusehen.

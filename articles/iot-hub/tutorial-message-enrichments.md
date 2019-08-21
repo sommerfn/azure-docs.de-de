@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: e4906bf9f2aead69c315ddb7b2e3b10489378d87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259372"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014245"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen (Vorschauversion)
 
@@ -65,7 +65,7 @@ Sie können das nachstehende Skript verwenden oder das Skript im Ordner „/reso
 
 Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Um die Ausführung des Skripts zu vereinfachen, wird an diese Ressourcennamen der alphanumerische Zufallswert *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen.
 
-Öffnen Sie ein [Cloud Shell-Fenster für Bash](https://shell.azure.com), wenn dies noch nicht geschehen ist. Öffnen Sie das Skript im entpackten Repository, wählen Sie es mit STRG+A vollständig aus, und kopieren Sie es mit STRG+C. Alternativ können Sie das folgende CLI-Skript kopieren oder es direkt in der Cloudshell öffnen. Fügen Sie das Skript im Azure Cloud Shell-Fenster ein, indem Sie mit der rechten Maustaste auf die Befehlszeile klicken und **Einfügen** auswählen. Es wird jeweils eine Anweisung des Skripts ausgeführt. Nachdem das Skript die Ausführung beendet hat, drücken Sie die ****  EINGABETASTE, um sicherzustellen, dass der letzte Befehl ausgeführt wird. Der nachstehende Codeblock zeigt das verwendete Skript und Kommentare mit einer Erläuterung der jeweiligen Funktion.
+Öffnen Sie ein [Cloud Shell-Fenster für Bash](https://shell.azure.com), wenn dies noch nicht geschehen ist. Öffnen Sie das Skript im entpackten Repository, wählen Sie es mit STRG+A vollständig aus, und kopieren Sie es mit STRG+C. Alternativ können Sie das folgende CLI-Skript kopieren oder es direkt in der Cloudshell öffnen. Fügen Sie das Skript im Azure Cloud Shell-Fenster ein, indem Sie mit der rechten Maustaste auf die Befehlszeile klicken und **Einfügen** auswählen. Es wird jeweils eine Anweisung des Skripts ausgeführt. Nachdem das Skript die Ausführung beendet hat, drücken Sie die**EINGABETASTE**, um sicherzustellen, dass der letzte Befehl ausgeführt wird. Der nachstehende Codeblock zeigt das verwendete Skript und Kommentare mit einer Erläuterung der jeweiligen Funktion.
 
 Hier sind die vom Skript erstellten Ressourcen. **enriched** bedeutet, dass die Ressource für Nachrichten mit Anreicherungen vorgesehen ist. **original** bedeutet, dass die Ressource für nicht angereicherte Nachrichten vorgesehen ist.
 
@@ -253,7 +253,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie k
    | NAME | Wert | Endpunkt (Dropdownliste) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | Gerätestandort | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |customerID | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
@@ -312,10 +312,10 @@ Den Nachrichten im Container **enriched** wurden die Nachrichtenanreicherungen h
 Bei angereicherten Nachrichten sollte die Bezeichnung „My IoT Hub““ (Mein IoT-Hub) mit dem Hubnamen sowie dem Gerätestandort und der Kunden-ID angezeigt werden, wie hier:
 
 ```json
-{"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","device location":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
+{"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","devicelocation":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-Und hier ist eine nicht angereicherte Nachricht. „My IoT Hub“ (Mein IoT-Hub), „device location“ (Gerätestandort) und „customerID“ (Kunden-ID) werden nicht angezeigt, weil dieser Endpunkt keine Anreicherungen hat.
+Und hier ist eine nicht angereicherte Nachricht. „My IoT Hub“ (Mein IoT-Hub), „devicelocation“ (Gerätestandort) und „customerID“ (Kunden-ID) werden nicht angezeigt, da dieser Endpunkt keine Anreicherungen hat.
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
