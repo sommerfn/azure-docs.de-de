@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 70f6e26d423781ba53865304a3fe8440fb120a7a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 49780ec342ea168d27ab8a029c41a1c18a6ffcc4
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705173"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019048"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -78,22 +78,23 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|TotalRequests|Total Gateway Requests (Gatewayanforderungen gesamt)|Count|Gesamt|Anzahl von Gatewayanforderungen|Speicherort, Hostname|
-|SuccessfulRequests|Successful Gateway Requests (Erfolgreiche Gatewayanforderungen)|Count|Gesamt|Anzahl von erfolgreichen Gatewayanforderungen|Speicherort, Hostname|
-|UnauthorizedRequests|Unauthorized Gateway Requests (Nicht autorisierte Gatewayanforderungen)|Count|Gesamt|Anzahl von nicht autorisierten Gatewayanforderungen|Speicherort, Hostname|
-|FailedRequests|Failed Gateway Requests (Fehlgeschlagene Gatewayanforderungen)|Count|Gesamt|Anzahl von Fehlern bei Gatewayanforderungen|Speicherort, Hostname|
-|OtherRequests|Other Gateway Requests (Sonstige Gatewayanforderungen)|Count|Gesamt|Anzahl von anderen Gatewayanforderungen|Speicherort, Hostname|
-|Duration|Gesamtdauer von Gatewayanforderungen|Millisekunden|Durchschnitt|Gesamtdauer von Gatewayanforderungen in Millisekunden|Speicherort, Hostname|
-|Capacity|Capacity|Percent|Durchschnitt|Auslastungsmetrik für ApiManagement-Dienst|Location|
-|EventHubTotalEvents|Gesamtzahl von EventHub-Ereignissen|Count|Gesamt|Anzahl von an EventHub gesendeten Ereignissen|Location|
-|EventHubSuccessfulEvents|Erfolgreiche EventHub-Ereignisse|Count|Gesamt|Anzahl erfolgreicher EventHub-Ereignisse|Location|
-|EventHubTotalFailedEvents|Fehlerhafte EventHub-Ereignisse|Count|Gesamt|Anzahl fehlerhafter EventHub-Ereignisse|Location|
-|EventHubRejectedEvents|Abgelehnte EventHub-Ereignisse|Count|Gesamt|Anzahl abgelehnter EventHub-Ereignisse (falsche Konfiguration oder nicht autorisiert)|Location|
-|EventHubThrottledEvents|Gedrosselte EventHub-Ereignisse|Count|Gesamt|Anzahl gedrosselter EventHub-Ereignisse|Location|
-|EventHubTimedoutEvents|EventHub-Ereignisse mit Zeitüberschreitung|Count|Gesamt|Anzahl von EventHub-Ereignissen mit Zeitüberschreitung|Location|
-|EventHubDroppedEvents|Gelöschte EventHub-Ereignisse|Count|Gesamt|Anzahl übersprungener Ereignisse aufgrund Erreichen der maximalen Warteschlangengröße|Location|
-|EventHubTotalBytesSent|Größe von EventHub-Ereignissen|Byte|Gesamt|Gesamtgröße von EventHub-Ereignissen in Byte|Location|
-|Requests|Requests|Count|Gesamt|Gatewayanforderungen|Location, BackendResponseCode, LastErrorReason, GatewayResponseCode|
+|Requests|Requests|Count|Gesamt|Die Gesamtanzahl der Gatewayanforderungen in einem bestimmten Zeitraum. Sie kann nach verschiedenen Dimensionen aufgeteilt werden, um Ihnen bei der Diagnose von Problemen zu helfen. |Location, BackendResponseCode, LastErrorReason, GatewayResponseCode|
+|TotalRequests|Total Gateway Requests (Gatewayanforderungen gesamt)|Count|Gesamt|Die Gesamtanzahl der Gatewayanforderungen in einem bestimmten Zeitraum. Diese Metrik ist veraltet. Wir empfehlen die Verwendung der neuen Metrik `Requests`. |Speicherort, Hostname|
+|SuccessfulRequests|Successful Gateway Requests (Erfolgreiche Gatewayanforderungen)|Count|Gesamt|Die Gesamtanzahl der erfolgreichen Gatewayanforderungen in einem bestimmten Zeitraum. Diese Metrik ist veraltet. Wir empfehlen die Verwendung der neuen Metrik `Requests`.|Speicherort, Hostname|
+|UnauthorizedRequests|Unauthorized Gateway Requests (Nicht autorisierte Gatewayanforderungen)|Count|Gesamt| Die Gesamtanzahl der nicht autorisierten Gatewayanforderungen in einem bestimmten Zeitraum. Diese Metrik ist veraltet. Wir empfehlen die Verwendung der neuen Metrik `Requests`.|Speicherort, Hostname|
+|FailedRequests|Failed Gateway Requests (Fehlgeschlagene Gatewayanforderungen)|Count|Gesamt|Die Gesamtanzahl der fehlerhaften Gatewayanforderungen in einem bestimmten Zeitraum. Diese Metrik ist veraltet. Wir empfehlen die Verwendung der neuen Metrik `Requests`.|Speicherort, Hostname|
+|OtherRequests|Other Gateway Requests (Sonstige Gatewayanforderungen)|Count|Gesamt|Die Gesamtanzahl der Gatewayanforderungen in einem bestimmten Zeitraum, die nicht in die Kategorien „erfolgreich“, „nicht autorisiert“ oder „fehlerhaft“ fallen. Diese Metrik ist veraltet. Wir empfehlen die Verwendung der neuen Metrik `Requests`. |Speicherort, Hostname|
+|Duration|Gesamtdauer von Gatewayanforderungen|Millisekunden|Durchschnitt|Die Zeit zwischen dem Zeitpunkt, zu dem API Management eine Anforderung von einem Client empfängt, und dem, zu dem die Antwort an den Client zurückgegeben wird.|Speicherort, Hostname|
+|Capacity|Capacity|Percent|Durchschnitt|Angabe der Auslastung einer API Management-Instanz für das Treffen fundierter Entscheidungen im Hinblick auf die Skalierung zur Bewältigung höherer Lasten.|Location|
+|EventHubTotalEvents|Gesamtzahl von EventHub-Ereignissen|Count|Gesamt|Die Gesamtanzahl der Ereignisse, die in einem bestimmten Zeitraum von API Management an EventHub gesendet wurden.|Location|
+|EventHubSuccessfulEvents|Erfolgreiche EventHub-Ereignisse|Count|Gesamt|Die Gesamtanzahl der erfolgreichen EventHub-Ereignisse in einem bestimmten Zeitraum.|Location|
+|EventHubTotalFailedEvents|Fehlerhafte EventHub-Ereignisse|Count|Gesamt|Die Gesamtanzahl der fehlerhaften EventHub-Ereignisse in einem bestimmten Zeitraum.|Location|
+|EventHubRejectedEvents|Abgelehnte EventHub-Ereignisse|Count|Gesamt|Die Gesamtanzahl der abgelehnten EventHub-Ereignisse (falsche Konfiguration oder nicht autorisiert) in einem bestimmten Zeitraum.|Location|
+|EventHubThrottledEvents|Gedrosselte EventHub-Ereignisse|Count|Gesamt|Die Gesamtanzahl der gedrosselten EventHub-Ereignisse in einem bestimmten Zeitraum.|Location|
+|EventHubTimedoutEvents|EventHub-Ereignisse mit Zeitüberschreitung|Count|Gesamt|Die Gesamtanzahl der EventHub-Ereignisse mit Timeout in einem bestimmten Zeitraum.|Location|
+|EventHubDroppedEvents|Gelöschte EventHub-Ereignisse|Count|Gesamt|Die Gesamtanzahl der übersprungenen Ereignisse aufgrund des Erreichens der maximalen Warteschlangengröße in einem bestimmten Zeitraum.|Location|
+|EventHubTotalBytesSent|Größe von EventHub-Ereignissen|Byte|Gesamt|Die Gesamtgröße von EventHub-Ereignissen in einem bestimmten Zeitraum in Byte.|Location|
+
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -1242,9 +1243,9 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |outgoing.wns.authenticationerror|WNS-Authentifizierungsfehler|Count|Gesamt|Die Benachrichtigung wurde nicht übermittelt, weil Fehler bei der Kommunikation mit Windows Live aufgetreten sind, die Anmeldeinformationen ungültig waren oder das falsche Token verwendet wurde.|Keine Dimensionen|
 |outgoing.apns.success|Erfolgreiche APNS-Benachrichtigungen|Count|Gesamt|Gibt die Anzahl von erfolgreichen Benachrichtigungen an.|Keine Dimensionen|
 |outgoing.apns.invalidcredentials|APNS-Autorisierungsfehler|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil das PNS die angegebenen Anmeldeinformationen nicht akzeptiert hat oder die Anmeldeinformationen blockiert wurden.|Keine Dimensionen|
-|outgoing.apns.badchannel|APNS-Fehler durch fehlerhaften Kanal|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil das Token ungültig ist (APNS-Statuscode: 8).|Keine Dimensionen|
+|outgoing.apns.badchannel|APNS-Fehler durch fehlerhaften Kanal|Count|Gesamt|Die Anzahl von fehlerhaften Pushvorgängen aufgrund eines ungültigen Tokens (APNS-Binärprotokoll-Statuscode: 8. APNS-HTTP-Protokollstatuscode: 400 mit „BadDeviceToken“).|Keine Dimensionen|
 |outgoing.apns.expiredchannel|APNS-Fehler durch abgelaufenen Kanal|Count|Gesamt|Die Anzahl von Token, die aufgrund des APNS-Feedbackkanals ungültig gemacht wurden.|Keine Dimensionen|
-|outgoing.apns.invalidnotificationsize|APNS-Fehler durch ungültige Benachrichtigungsgröße|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil die Nutzlast zu groß war (APNS-Statuscode: 7).|Keine Dimensionen|
+|outgoing.apns.invalidnotificationsize|APNS-Fehler durch ungültige Benachrichtigungsgröße|Count|Gesamt|Die Anzahl von fehlerhaften Pushvorgängen aufgrund einer zu großen Nutzlast (APNS-Binärprotokoll-Statuscode: 7).|Keine Dimensionen|
 |outgoing.apns.pnserror|APNS-Fehler|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil Fehler bei der Kommunikation mit APNS aufgetreten sind.|Keine Dimensionen|
 |outgoing.gcm.success|Erfolgreiche GCM-Benachrichtigungen|Count|Gesamt|Gibt die Anzahl von erfolgreichen Benachrichtigungen an.|Keine Dimensionen|
 |outgoing.gcm.invalidcredentials|GCM-Autorisierungsfehler (ungültige Anmeldeinformationen)|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil das PNS die angegebenen Anmeldeinformationen nicht akzeptiert hat oder die Anmeldeinformationen blockiert wurden.|Keine Dimensionen|

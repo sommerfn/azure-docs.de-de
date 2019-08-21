@@ -15,12 +15,12 @@ ms.date: 05/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65137802"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014195"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -136,7 +136,7 @@ Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen oder Domänen
 Nein, Azure AD Connect unterstützt keine reine IPv6-Umgebung.
 
 **F: Ich habe eine Umgebung mit mehreren Gesamtstrukturen und das Netzwerk zwischen den beiden Gesamtstrukturen verwendet NAT (Network Address Translation). Wird die Verwendung von Azure AD Connect zwischen diesen beiden Gesamtstrukturen unterstützt?**</br>
- Nein, die Verwendung von Azure AD Connect für NAT wird nicht unterstützt. 
+Nein, die Verwendung von Azure AD Connect für NAT wird nicht unterstützt. 
 
 ## <a name="federation"></a>Verbund
 **F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich zur Erneuerung meines Office 365-Zertifikats aufgefordert werde?**  
@@ -151,6 +151,12 @@ Nein. Nach dem Ändern des Servernamens kann das Synchronisierungsmodul keine Ve
 
 **F: Werden kryptographische Synchronisationsregeln der nächsten Generation (NGC) auf einem FIPS-fähigen Computer unterstützt?**  
 Nein.  Sie werden nicht unterstützt.
+
+**F: Wenn ich im Azure-Portal ein synchronisiertes Gerät deaktiviert habe (z. B.: HAADJ), warum wird es dann erneut aktiviert?**<br>
+Synchronisierte Geräte können lokal erstellt oder gemastert werden. Wenn ein synchronisiertes Gerät lokal aktiviert ist, wird es möglicherweise im Azure-Portal erneut aktiviert, auch wenn es zuvor von einem Administrator deaktiviert wurde. Verwenden Sie zum Deaktivieren eines synchronisierten Geräts das lokale Active Directory, um das Computerkonto zu deaktivieren.
+
+**F: Warum wird eine Blockierung der Benutzeranmeldung im Office 365- oder Azure AD-Portal für synchronisierte Benutzer bei einer erneuten Anmeldung aufgehoben?**<br>
+Synchronisierte Benutzer können lokal erstellt oder gemastert werden. Wenn das Konto lokal aktiviert ist, kann dadurch die Blockierung der Anmeldung durch den Administrator aufgehoben werden.
 
 ## <a name="identity-data"></a>Identitätsdaten
 **F: Warum entspricht das userPrincipalName-Attribut (UPN) in Azure AD nicht dem lokalen UPN?**  

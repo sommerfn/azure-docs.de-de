@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567180"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881562"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Überwachen der Leistung von Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 
@@ -28,7 +28,7 @@ Die SQL-Datenbank unterstützt teilweise drei Kategorien von dynamischen Verwalt
 - Dynamische Verwaltungssichten für die Ausführung
 - Dynamische Verwaltungssichten für Transaktionen
 
-Ausführliche Informationen zu dynamischen Verwaltungssichten finden Sie unter [Dynamische Verwaltungssichten und -funktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) in der SQL Server-Onlinedokumentation.
+Ausführliche Informationen zu dynamischen Verwaltungssichten finden Sie unter [Dynamische Verwaltungssichten und -funktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) in der SQL Server-Onlinedokumentation. 
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -237,13 +237,13 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>Identifizieren von Problemen mit der `tempdb`-Leistung
 
-Wenn Sie Probleme mit der E/A-Leistung feststellen, ist `PAGELATCH_*` (nicht `PAGEIOLATCH_*`) der häufigste Wartetyp in Zusammenhang mit `tempdb`-Problemen. `PAGELATCH_*`-Wartevorgänge bedeuten jedoch nicht immer, dass ein `tempdb`-Konflikt vorliegt.  Dieser Wartevorgang kann auch auf einen Konflikt mit Benutzerobjekt-Datenseiten aufgrund von gleichzeitigen Anforderungen an dieselbe Datenseite hinweisen. Zur genaueren Ermittlung, ob es sich um einen `tempdb`-Konflikt handelt, verwenden Sie [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql), um zu bestätigen, dass der Wert von „wait_resource“ mit `2:x:y` beginnt, wobei „2“ die `tempdb`-Datenbank-ID ist, `x` die Datei-ID und `y` die Seiten-ID.  
+Wenn Sie Probleme mit der E/A-Leistung feststellen, ist `PAGELATCH_*` (nicht `PAGEIOLATCH_*`) der häufigste Wartetyp in Zusammenhang mit `tempdb`-Problemen. `PAGELATCH_*`-Wartevorgänge bedeuten jedoch nicht immer, dass ein `tempdb`-Konflikt vorliegt.  Dieser Wartevorgang kann auch auf einen Konflikt mit Benutzerobjekt-Datenseiten aufgrund von gleichzeitigen Anforderungen an dieselbe Datenseite hinweisen. Zur genaueren Ermittlung, ob es sich um einen `tempdb`-Konflikt handelt, verwenden Sie [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql), um zu bestätigen, dass der Wert von „wait_resource“ mit `2:x:y` beginnt, wobei „2“ die `tempdb`-Datenbank-ID, `x` die Datei-ID und `y` die Seiten-ID ist.  
 
 Bei tempdb-Konflikten besteht eine gängige Methode darin, den Anwendungscode, der `tempdb` benötigt, zu reduzieren oder neu zu schreiben.  In folgenden Bereichen wird `tempdb` meist genutzt:
 
 - Temporäre Tabellen
 - Tabellenvariablen
-- Parameter für Tabellenwerte
+- Tabellenwertparameter
 - Versionsspeichernutzung (insbesondere in Zusammenhang mit Transaktionen mit langer Ausführungszeit)
 - Abfragen mit Abfrageplänen, die Sortiervorgänge, Hashjoins und Spoolvorgänge verwenden
 
@@ -334,7 +334,7 @@ ORDER BY start_time ASC;
 
 Wenn der häufigste Wartetyp `RESOURCE_SEMAHPORE` ist und kein Problem mit einer hohen CPU-Auslastung vorliegt, besteht möglicherweise ein Problem bei Wartevorgängen für die Speicherzuweisung.
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Ermitteln, ob ein `RESOURCE_SEMAHPORE`-Wartevorgang ein häufiger Wartevorgang ist
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Ermitteln, ob ein `RESOURCE_SEMAHPORE`-Wartevorgang ein häufiger Wartevorgang ist
 
 Verwenden Sie die folgende Abfrage, um zu ermitteln, ob ein `RESOURCE_SEMAHPORE`-Wartevorgang ein häufiger Wartevorgang ist.
 
@@ -512,7 +512,7 @@ Außerdem lässt sich die Nutzung über diese beiden Ansichten überwachen:
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 Sie können die Sicht [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in jeder SQL-Datenbank verwenden. Die Sicht **sys.dm_db_resource_stats** enthält Daten zur Ressourcennutzung in der letzten Zeit relativ zur Dienstebene. Durchschnittliche Prozentsätze für CPU, Dateneingang/-ausgang, Protokollschreibvorgänge und Arbeitsspeicher werden alle 15 Sekunden aufgezeichnet und eine Stunde lang aufbewahrt.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Beispiele für andere Abfragen finden Sie unter [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresourcestats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 Die Ansicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank enthält zusätzliche Informationen, die zur Überwachung der Leistung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienstebene und Computegröße hilfreich sind. Die Daten werden alle fünf Minuten gesammelt und c.a. 14 Tage lang aufbewahrt. Diese Sicht ist für eine längere Verlaufsanalyse der Ressourcennutzung Ihrer SQL-Datenbank hilfreich.
 

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 81e17e1e450e45e4c163ca8231a47deeb8b9ed2c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734682"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976824"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
@@ -19,7 +19,7 @@ ms.locfileid: "68734682"
 ## <a name="key-concepts"></a>Wichtige Begriffe
 Das konzeptionelle Modell von **Azure Data Catalog** basiert auf vier zentralen Konzepten: **Katalog**, **Benutzer**, **Assets** und **Anmerkungen**.
 
-![Konzept][1]
+![Abbildung des konzeptionellen Modells von Azure Data Catalog](./media/data-catalog-developer-concepts/concept2.png)
 
 *Abbildung 1: Vereinfachte Darstellung des konzeptionellen Modells von Azure Data Catalog*
 
@@ -286,7 +286,7 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
 > 
 
 **Text**
-
+```json
     {
         "roles": [
             {
@@ -299,9 +299,11 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
             }
         ]
     }
+```
 
   **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement**: **PUT** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
+```json
     {
         "roles": [
             {
@@ -343,11 +345,8 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
             }
         ]
     }
+```
 
 > [!NOTE]
 > Bei „PUT“ muss im Text keine Elementnutzlast angegeben werden: „PUT“ kann zur reinen Aktualisierung von Rollen und/oder Berechtigungen verwendet werden.
 > 
-> 
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png

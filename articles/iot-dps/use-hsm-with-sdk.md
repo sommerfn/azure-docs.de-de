@@ -1,20 +1,19 @@
 ---
 title: 'Azure-Anleitung: Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts in Azure'
 description: 'Azure-Anleitung: Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts in Azure'
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd974ad81a641afb1c93fffb0a12a147c55b3a73
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248129"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951892"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts für C
 
@@ -36,11 +35,11 @@ Weitere Informationen finden Sie unter [Sicherheitskonzepte beim IoT Hub Device 
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Aktivieren der Authentifizierung für unterstützte Nachweismechanismen
 
-Der SDK-Authentifizierungsmodus (X **.** 509 oder TPM) muss für das physische Gerät oder den Simulator aktiviert werden, damit es bzw. er im Azure-Portal registriert werden kann. Navigieren Sie zum Stammordner für „azure-iot-sdk-c“. Führen Sie den entsprechenden Befehl für den gewünschten Authentifizierungsmodus aus:
+Der SDK-Authentifizierungsmodus (X.509 oder TPM) muss für das physische Gerät oder den Simulator aktiviert werden, damit es bzw. er im Azure-Portal registriert werden kann. Navigieren Sie zum Stammordner für „azure-iot-sdk-c“. Führen Sie den entsprechenden Befehl für den gewünschten Authentifizierungsmodus aus:
 
-### <a name="use-x509-with-simulator"></a>Verwenden von X **.** 509 mit Simulator
+### <a name="use-x509-with-simulator"></a>Verwenden von X.509 mit Simulator
 
-Der Bereitstellungsdienst verfügt standardmäßig über einen DICE-Emulator (Device Identity Composition Engine), der ein X **.** 509-Zertifikat für die Geräteauthentifizierung generiert. Führen Sie den folgenden Befehl aus, um die X **.** 509-Authentifizierung zu aktivieren: 
+Der Bereitstellungsdienst verfügt standardmäßig über einen DICE-Emulator (Device Identity Composition Engine), der ein **X.509**-Zertifikat für die Geräteauthentifizierung generiert. Führen Sie den folgenden Befehl aus, um die **X.509**-Authentifizierung zu aktivieren: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -48,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 Informationen zu Hardware mit DICE finden Sie [hier](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/).
 
-### <a name="use-x509-with-hardware"></a>Verwenden von X **.** 509 mit Hardware
+### <a name="use-x509-with-hardware"></a>Verwenden von X.509 mit Hardware
 
-Der Bereitstellungsdienst kann mit X **.** 509 für andere Hardware verwendet werden. Für die Verbindungsherstellung wird eine Schnittstelle zwischen der Hardware und dem SDK benötigt. Informationen zur Schnittstelle erhalten Sie vom HSM-Hersteller.
+Der Bereitstellungsdienst kann mit **X.509** für andere Hardware verwendet werden. Für die Verbindungsherstellung wird eine Schnittstelle zwischen der Hardware und dem SDK benötigt. Informationen zur Schnittstelle erhalten Sie vom HSM-Hersteller.
 
 ### <a name="use-tpm"></a>Verwenden von TPM
 
@@ -142,15 +141,15 @@ Das SDK muss vor dem Erstellen der Geräteregistrierung erstellt werden.
 ### <a name="tpm"></a>TPM
 Gehen Sie bei Verwendung von TPM gemäß der Anleitung unter [Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des C-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst](./quick-create-simulated-device.md) vor, um in Ihrem Device Provisioning-Dienst einen Geräteregistrierungseintrag zu erstellen und den ersten Start zu simulieren.
 
-### <a name="x509"></a>X **.** 509
+### <a name="x509"></a>X.509
 
 1. Wenn Sie ein Gerät beim Bereitstellungsdienst registrieren möchten, müssen Sie sich den Endorsement Key und die Registrierungs-ID des jeweiligen Geräts notieren. Die entsprechenden Angaben finden Sie im Bereitstellungstool des Client-SDKs. Führen Sie den folgenden Befehl aus, um das Zertifikat der Stammzertifizierungsstelle (für Registrierungsgruppen) und das untergeordnete Zertifikat (für die individuelle Registrierung) auszugeben:
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
-   - Individuelle Registrierung mit X **.** 509: Wählen Sie auf dem Blatt mit der Zusammenfassung des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X**.**509** aus, und laden Sie das untergeordnete Zertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
-   - Gruppenregistrierung mit X **.** 509: Wählen Sie auf dem Blatt mit der Zusammenfassung des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Group Enrollments** (Gruppenregistrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X**.**509** aus, geben Sie einen Gruppen- und einen Zertifizierungsnamen ein, und laden Sie das Zertifikat der Stammzertifizierungsstelle bzw. das Zwischenzertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+   - **Individuelle Registrierung mit X.509:** Wählen Sie auf dem Blatt mit der Zusammenfassung des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X.509** aus, und laden Sie das untergeordnete Zertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+   - **Gruppenregistrierung mit X.509:** Wählen Sie auf dem Blatt mit der Zusammenfassung des Bereitstellungsdiensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Group Enrollments** (Gruppenregistrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **X.509** aus, geben Sie einen Gruppen- und einen Zertifizierungsnamen ein, und laden Sie das Zertifikat der Stammzertifizierungsstelle bzw. das Zwischenzertifikat gemäß den Anweisungen auf dem Blatt hoch. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Aktivieren der Authentifizierung für Geräte mit einem benutzerdefinierten Nachweismechanismus (optional)
 
@@ -182,7 +181,7 @@ Nach der erfolgreichen eigenständigen Erstellung Ihrer Bibliothek muss sie per 
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Herstellen einer Verbindung mit IoT Hub nach der Bereitstellung
 
-Nachdem das Gerät mit dem Bereitstellungsdienst bereitgestellt wurde, verwendet diese API den angegebenen Authentifizierungsmodus (X **.** 509 oder TPM), um eine Verbindung mit IoT Hub herzustellen: 
+Nachdem das Gerät mit dem Bereitstellungsdienst bereitgestellt wurde, verwendet diese API den angegebenen Authentifizierungsmodus (**X.509** oder TPM), um eine Verbindung mit IoT Hub herzustellen: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

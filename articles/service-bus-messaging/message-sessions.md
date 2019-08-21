@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67f3fd8f3166abac987e8fefbbf4a020f165c8bf
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569792"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951873"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 
@@ -76,6 +76,16 @@ Beachten Sie, dass der Sitzungszustand bleibt, bis er gelöscht wird (Rückgabe:
 Alle vorhandenen Sitzungen in einer Warteschlange oder einem Abonnement können in der Java-API mit der **SessionBrowser**-Methode und im .NET-Client mit [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) für [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) und [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) aufgelistet werden.
 
 Der Sitzungszustand, der in einer Warteschlange oder in einem Abonnement gespeichert ist, wird auf das Speicherkontingent dieser Entität angerechnet. Wenn die Anwendung mit einer Sitzung fertig ist, empfiehlt es sich daher für die Anwendung, ihren beibehaltenen Zustand zu bereinigen, um externe Verwaltungskosten zu vermeiden.
+
+## <a name="impact-of-delivery-count"></a>Auswirkungen der Übermittlungsanzahl
+
+Die Definition der Übermittlungsanzahl pro Nachricht im Kontext von Sitzungen weicht geringfügig von der Definition bei fehlenden Sitzungen ab. Hier ist eine Tabelle mit einer Zusammenfassung der Umstände, unter denen die Übermittlungsanzahl erhöht wird.
+
+| Szenario | Übermittlungsanzahl der Nachricht inkrementiert? |
+|----------|---------------------------------------------|
+| Die Sitzung wird akzeptiert, aber die Sitzungssperre läuft ab (aufgrund eines Timeouts). | Ja |
+| Die Sitzung wird akzeptiert, die Nachrichten innerhalb der Sitzung werden nicht abgeschlossen (selbst wenn sie gesperrt sind), und die Sitzung wird geschlossen. | Nein |
+| Die Sitzung wird akzeptiert, Nachrichten werden abgeschlossen, und die Sitzung wird explizit geschlossen. | Nicht zutreffend (Standardflow. Hier werden die Nachrichten aus der Sitzung entfernt.) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

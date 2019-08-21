@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304611"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989246"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Erstellen von Azure Automation-Watchertasks zum Nachverfolgen von Dateiänderungen auf einem lokalen Computer
 
@@ -42,7 +42,14 @@ Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
 ## <a name="import-a-watcher-runbook"></a>Importieren eines Watcherrunbooks
 
-Dieses Tutorial verwendet ein Watcherrunbook namens **Watch-NewFile**, um nach neuen Dateien in einem Verzeichnis zu suchen. Das Watcherrunbook ruft die Uhrzeit des letzten bekannten Schreibzugriffs auf die Dateien in einem Ordner ab und sucht nach Dateien, die jünger sind als dieser Zeitpunkt. Im folgenden Schritt importieren Sie dieses Runbook in Ihr Automation-Konto.
+Dieses Tutorial verwendet ein Watcherrunbook namens **Watch-NewFile**, um nach neuen Dateien in einem Verzeichnis zu suchen. Das Watcherrunbook ruft die Uhrzeit des letzten bekannten Schreibzugriffs auf die Dateien in einem Ordner ab und sucht nach Dateien, die jünger sind als dieser Zeitpunkt.
+
+Dieser Importvorgang kann auch über den [PowerShell-Katalog](https://www.powershellgallery.com) durchgeführt werden.
+
+1. Navigieren Sie zur Katalogseite für [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
+2. Klicken Sie auf der Registerkarte **Azure Automation** auf **Deploy to Azure Automation** (In Azure Automation bereitstellen).
+
+Sie können dieses Runbook auch mithilfe der folgenden Schritte über das Portal in Ihr Automation-Konto importieren.
 
 1. Öffnen Sie Ihr Automation-Konto, und klicken Sie auf die Seite **Runbooks**.
 2. Klicken Sie auf die Schaltfläche **Katalog durchsuchen**.
@@ -62,7 +69,14 @@ Eine [Automation-Variable](automation-variables.md) wird verwendet, um die Zeits
 
 ## <a name="create-an-action-runbook"></a>Erstellen eines Aktionsrunbooks
 
-Ein Aktionsrunbook wird in einem Watchertask verwendet, um Aktionen für die von einem Watcherrunbook übergebenen Daten auszuführen. PowerShell-Workflow-Runbooks werden von Watchertasks nicht unterstützt, Sie müssen PowerShell-Runbooks verwenden. In diesem Schritt importieren Sie ein vordefiniertes Aktionsrunbook namens „Process-NewFile“.
+Ein Aktionsrunbook wird in einem Watchertask verwendet, um Aktionen für die von einem Watcherrunbook übergebenen Daten auszuführen. PowerShell-Workflow-Runbooks werden von Watchertasks nicht unterstützt, Sie müssen PowerShell-Runbooks verwenden. Sie müssen ein vordefiniertes Aktionsrunbook namens **Process-NewFile** importieren.
+
+Dieser Importvorgang kann auch über den [PowerShell-Katalog](https://www.powershellgallery.com) durchgeführt werden.
+
+1. Navigieren Sie zur Katalogseite für [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
+2. Klicken Sie auf der Registerkarte **Azure Automation** auf **Deploy to Azure Automation** (In Azure Automation bereitstellen).
+
+Sie können dieses Runbook auch mithilfe der folgenden Schritte über das Portal in Ihr Automation-Konto importieren.
 
 1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie in der Kategorie **Prozessautomatisierung** die Option **Runbooks** aus.
 1. Klicken Sie auf die Schaltfläche **Katalog durchsuchen**.
@@ -92,7 +106,7 @@ Der Watchertask besteht aus zwei Teilen, dem Watcher und der Aktion. Der Watcher
 1. Wählen Sie **Aktion konfigurieren** und dann das Runbook „Process-NewFile“ aus.
 1. Geben Sie die folgende Werte für die Parameter ein:
 
-   * **Ereignisdaten**: Lassen Sie dieses Feld leer. Die Daten werden vom Watcherrunbook übergeben.  
+   * **Ereignisdaten**: Lassen Sie dieses Feld leer. Die Daten werden vom Watcherrunbook übergeben.
    * **Ausführungseinstellungen**: Übernehmen Sie hier „Azure“, da dieses Runbook im Automation-Dienst ausgeführt wird.
 
 1. Klicken Sie auf **OK** und dann auf „Auswählen“, um zur Watcherseite zurückzukehren.
@@ -105,7 +119,7 @@ Der Watchertask besteht aus zwei Teilen, dem Watcher und der Aktion. Der Watcher
 Um zu testen, ob der Watcher erwartungsgemäß funktioniert, müssen Sie eine Testdatei erstellen.
 
 Stellen Sie eine Remoteverbindung mit dem Hybrid Worker her. Öffnen Sie **PowerShell**, und erstellen Sie im Ordner eine Testdatei.
-  
+
 ```azurepowerShell-interactive
 New-Item -Name ExampleFile1.txt
 ```

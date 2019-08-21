@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: 34484c309cb186aabec519e54269fefae316165e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9c63170b60a871182042acab8a35e505c603f260
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639911"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018886"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
@@ -51,11 +51,11 @@ Lesen Sie vor dem Fortfahren **[diesen Abschnitt](#before-you-start)** , um sich
 
 Führen Sie Folgendes aus, um den Schutz zu beenden und die Sicherungsdaten zu löschen:
 
-1. Wählen Sie im Portal unter **Recovery Services-Tresor** > **Sicherungselemente** die geschützten Elemente in der Cloud aus: Azure Virtual Machine-Beispiel, Azure Storage (Azure Files), SQL, Azure-VM usw.
+1. Wählen Sie im Portal unter **Recovery Services-Tresor** > **Sicherungselemente** die geschützten Elemente in der Cloud aus: z. B. Azure Virtual Machine, Azure Storage (Azure Files), SQL, Azure-VM usw.
 
     ![Sicherungstyp auswählen](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. Klicken Sie mit der rechten Maustaste auf das Sicherungselement. Je nachdem, ob das Sicherungselement geschützt ist oder nicht, zeigt das Menü **Sicherung beenden** oder **Sicherungsdaten löschen** an.
+2. Klicken Sie mit der rechten Maustaste auf das Sicherungselement. Je nachdem, ob das Sicherungselement geschützt ist oder nicht, wird im Menü **Sicherung beenden** oder **Sicherungsdaten löschen** angezeigt.
 
     - Wenn **Sicherung beenden** angezeigt wird, wählen Sie im Dropdownmenü die Option **Sicherungsdaten löschen** aus. Geben Sie den **Namen** des Sicherungselements ein (beachten Sie dabei die Groß- und Kleinschreibung), wählen Sie einen **Grund** aus, geben Sie **Kommentare** ein, und klicken Sie auf **Sicherung beenden**.
 
@@ -202,12 +202,12 @@ Weitere Informationen zum Befehl ARMClient finden Sie in diesem [Dokument](https
 
 1. Führen Sie mit Ihrer Abonnement-ID, dem Namen der Ressourcengruppe und dem Namen des Tresors den folgenden Befehl aus. Wenn Sie den Befehl ausführen, wird der Tresor gelöscht, sofern keine Abhängigkeiten vorliegen.
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
 2. Wenn der Tresor nicht leer ist, wird die folgende Fehlermeldung angezeigt: „Der Tresor kann nicht gelöscht werden, weil darin Ressourcen enthalten sind.“ Gehen Sie folgendermaßen vor, um in einem Tresor enthaltene geschützte Elemente / Container zu entfernen:
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 

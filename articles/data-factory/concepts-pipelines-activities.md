@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e34dae5570c64ec2c9fdc478ba8ec1bf4bce9d2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65788669"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976742"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -59,6 +59,8 @@ Datentransformationsaktivität | Compute-Umgebung
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Benutzerdefinierter Code](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-Notebook](transform-data-databricks-notebook.md) | Azure Databricks
+[Databricks-JAR-Aktivität](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks-Python-Aktivität](transform-data-databricks-python.md) | Azure Databricks
 
 Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](transform-data.md).
 
@@ -94,10 +96,10 @@ Eine Pipeline wird wie folgt im JSON-Format definiert:
 }
 ```
 
-Tag | BESCHREIBUNG | Type | Erforderlich
+Tag | BESCHREIBUNG | type | Erforderlich
 --- | ----------- | ---- | --------
-name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | string | Ja
-description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | string | Nein
+name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 140</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Zeichenfolge | Ja
+description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | Zeichenfolge | Nein
 activities | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im Abschnitt [Aktivitäts-JSON](#activity-json). | Array | Ja
 parameters | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline flexibel wiederverwendbar. | List | Nein
 

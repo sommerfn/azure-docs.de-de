@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734785"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013412"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
@@ -78,7 +78,7 @@ Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenwor
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurieren einer Benennungsrichtlinie im Azure-Portal
 
-1. Melden Sie sich mit einem Benutzeradministratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich mit einem globalen Administratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie **Gruppen** aus, und wählen Sie dann **Benennungsrichtlinie** aus, um die Seite „Benennungsrichtlinie“ zu öffnen.
 
     ![Öffnen der Seite „Benennungsrichtlinie“ im Admin Center](./media/groups-naming-policy/policy.png)

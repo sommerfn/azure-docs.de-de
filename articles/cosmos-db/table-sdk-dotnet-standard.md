@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704729"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976850"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704729"
 |**Schnellstart**|[Schnellstart](create-table-dotnet.md)|
 |**Tutorial**|[Tutorial](tutorial-develop-table-dotnet.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Problem melden**|[Problem melden](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Fehlerbehebungen
+* Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
 * Fehlerbehebungen
@@ -71,6 +76,7 @@ Die plattformübergreifende .NET Standard-Bibiliothek [Microsoft.Azure.Cosmos.Ta
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |12. August 2019 |--- |
 | [1.0.4-preview](#1.0.4-preview) |26. Juli 2019 |--- |
 | 1.0.2-preview |2\. Mai 2019 |--- |
 | [1.0.1](#1.0.1) |19. April 2019 |--- |
@@ -86,4 +92,4 @@ Die plattformübergreifende .NET Standard-Bibiliothek [Microsoft.Azure.Cosmos.Ta
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zur Table-API von Azure Cosmos DB finden Sie in der [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md). 
+Weitere Informationen zur Table-API von Azure Cosmos DB finden Sie in der [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md).

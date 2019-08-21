@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494864"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950135"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Data Lake mit Azure Data Explorer (Vorschau)
 
@@ -45,8 +45,11 @@ Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 i
     dataformat=csv (h@'http://storageaccount.blob.core.windows.net/container1;secretKey') 
     with (compressed = true)  
     ```
-
-    Diese Abfrage erstellt tägliche Partitionen (*container1/yyyy/MM/dd/all_exported_blobs.csv*). Durch eine differenziertere Partitionierung können Sie eine höhere Leistung erwarten. Beispielsweise verzeichnen Abfragen über externe Tabellen mit täglichen Partitionen (wie die oben dargestellte Abfrage) eine bessere Leistung als Abfragen mit monatlich partitionierten Tabellen.
+    
+    > [!NOTE]
+    > * Durch eine differenziertere Partitionierung können Sie eine höhere Leistung erwarten. Beispielsweise verzeichnen Abfragen über externe Tabellen mit täglichen Partitionen eine bessere Leistung als Abfragen mit monatlich partitionierten Tabellen.
+    > * Wenn Sie eine externe Tabelle mit Partitionen definieren, wird davon ausgegangen, dass die Speicherstruktur identisch ist.
+Wenn die Tabelle z. B. mit einer DateTime-Partition im Format JJJJ/MM/TT (Standard) definiert ist, sollte der Dateipfad des URI-Speichers *container1/JJJJ/MM/TT/all_exported_blobs* lauten. 
 
 1. Die externe Tabelle ist im linken Bereich der Webbenutzeroberfläche sichtbar.
 

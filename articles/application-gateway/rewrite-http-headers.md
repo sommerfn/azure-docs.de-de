@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 08/08/2019
 ms.author: absha
-ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b6f26eca0592017306eaefd3f5fecb544dc6fb36
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476034"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932196"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Erneutes Generieren von HTTP-Headern mit Application Gateway
 
@@ -103,6 +103,8 @@ Um das erneute Generieren von HTTP-Headern zu konfigurieren, müssen Sie diese S
    - **Satz zum erneuten Generieren**: Enthält mehrere Regeln zum erneuten Generieren, die einer Anforderungsroutingregel zugeordnet werden.
 
 2. Fügen Sie den Satz zum erneuten Generieren (*rewriteRuleSet*) einer Routingregel an. Die Konfiguration für das erneute Generieren wird dem Quelllistener über die Routingregel angefügt. Bei Verwendung einer einfachen Routingregel wird die Konfiguration der erneuten Generierung eines Headers einem Quelllistener zugeordnet und fungiert als erneute Generierung eines globalen Headers. Wenn eine pfadbasierte Routingregel verwendet wird, wird die Konfiguration der erneuten Generierung eines Headers in der URL-Pfadzuordnung definiert. In diesem Fall gilt sie nur für den bestimmten Pfadbereich einer Site.
+   > [!NOTE]
+   > Beim erneuten Generieren der URL werden die Header geändert, die URL für den Pfad wird jedoch nicht geändert.
 
 Sie können mehrere solche Sätze für das erneute Generieren eines HTTP-Headers erstellen, und jeder dieser Sätze kann auf mehrere Listener angewendet werden. Allerdings können Sie auf einen bestimmten Listener nur einen Satz für das erneute Generieren anwenden.
 
@@ -153,7 +155,7 @@ Sie können einen HTTP-Anforderungs- oder -Antwortheader auf das Vorhandensein e
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen anderer Header in der Antwort. Dies kann in der Regel bei Set-Cookie-Headern auftreten, da eine Antwort mehrere Set-Cookie-Header enthalten kann. Ein solches Szenario liegt vor, wenn Sie einen App-Dienst mit einem Anwendungsgateway verwenden und cookiebasierte Sitzungsaffinität auf dem Anwendungsgateway konfiguriert haben. In diesem Fall enthält die Antwort 2 Set-Cookie-Header: einen vom App-Dienst verwendeten, d.h. `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`, und einen anderen für die Anwendungsgatewayaffinität, d.h. `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. Das Umschreiben einer der Set-Cookie-Header in diesem Szenario kann dazu führen, dass der andere Set-Cookie-Header aus der Antwort entfernt wird.
+- Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen der anderen Header in der Antwort. Dies kann in der Regel bei Set-Cookie-Headern auftreten, da eine Antwort mehrere Set-Cookie-Header enthalten kann. Ein solches Szenario liegt vor, wenn Sie einen App-Dienst mit einem Anwendungsgateway verwenden und cookiebasierte Sitzungsaffinität auf dem Anwendungsgateway konfiguriert haben. In diesem Fall enthält die Antwort zwei Set-Cookie-Header: einen vom App-Dienst verwendeten (z. B. `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) und einen anderen für die Anwendungsgatewayaffinität (z. B. `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`). Das Umschreiben einer der Set-Cookie-Header in diesem Szenario kann dazu führen, dass der andere Set-Cookie-Header aus der Antwort entfernt wird.
 
 - Das erneute Generieren von Verbindungs-, Upgrade- und Hostheadern wird derzeit nicht unterstützt.
 

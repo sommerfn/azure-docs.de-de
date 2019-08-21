@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 08/12/2019
 ms.author: alinast
-ms.openlocfilehash: 478fe1859dd9067e8097df0384657793602c1378
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071462"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013937"
 ---
 # <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
 
@@ -47,15 +47,15 @@ Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung dur
 }
 ```
 
-| Attribut | Type | BESCHREIBUNG |
+| Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 | topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Weitere Informationen zum Event Grid-Ereignisschema:
@@ -246,7 +246,7 @@ Die folgenden Beispiele veranschaulichen, wie die unterstützten Endpunkte konfi
 >[!IMPORTANT]
 > Achten Sie auf das Attribut **eventTypes**. Es definiert die Ereignistypen, die vom Endpunkt bearbeitet werden, und bestimmt sein Routing.
 
-Eine authentifizierte HTTP POST-Anforderung mit
+Eine authentifizierte HTTP POST-Anforderung mit:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints

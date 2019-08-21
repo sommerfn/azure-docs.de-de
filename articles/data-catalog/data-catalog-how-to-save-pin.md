@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737059"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976815"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Speichern von Suchen und Anheften von Datenobjekten in Azure Data Catalog
 ## <a name="introduction"></a>Einführung
@@ -37,7 +37,7 @@ Um einen gespeicherten Suchvorgang zu erstellen, führen Sie folgende Schritte a
 ### <a name="manage-saved-searches"></a>Verwalten gespeicherter Suchvorgänge
 Nachdem Sie einen oder mehrere Suchvorgänge gespeichert haben, wird die Option **Gespeicherte Suchvorgänge** unter dem Feld **Aktuelle Suche** angezeigt. Wenn die Liste erweitert wird, werden alle gespeicherten Suchvorgänge angezeigt.
 
- ![Liste der gespeicherten Suchvorgänge](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![Data Catalog: Liste der gespeicherten Suchvorgänge](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Führen Sie einen der folgenden Schritte aus:
 
@@ -56,18 +56,18 @@ Führen Sie einen der folgenden Schritte aus:
 ### <a name="organizational-saved-searches"></a>Gespeicherte Suchvorgänge in der Organisation
 Alle Benutzer in Ihrer Organisation können Suchvorgänge für die eigene Verwendung speichern. Data Catalog-Administratoren können auch Suchvorgänge für alle Benutzer innerhalb der Organisation speichern. Wenn Administratoren eine Suche speichern, wird diese mit der Option **Im Unternehmen freigeben** angezeigt. Bei Wahl dieser Option wird die gespeicherte Suche für alle Benutzer in der Organisation freigegeben.
 
- ![Gespeicherte Suchvorgänge in der Organisation](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Data Catalog: gespeicherte Suchvorgänge in der Organisation](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Angeheftete Datenressourcen
 Mithilfe von gespeicherten Suchvorgängen können Sie Suchdefinitionen speichern und wiederverwenden. Die Datenobjekte, die von den Suchvorgängen zurückgegeben werden, können sich mit der Zeit ändern, sobald sich der Inhalt des Katalogs ändert. Durch Anheften von Datenobjekten können Benutzer bestimmte Datenobjekte explizit bestimmen und so einfacher darauf zugreifen, ohne dass eine Suche erforderlich ist.
 
 Das Anheften eines Datenobjekts ist ganz einfach. Um das Datenobjekt Ihrer Liste angehefteter Objekte hinzuzufügen, klicken Sie auf das Symbol **Anheften**. Das Symbol wird in der Kachelansicht in der Ecke der Objektkachel bzw. in der Listenansicht im Azure Data Catalog-Portal in der linken Spalte angezeigt.
 
-![Symbol zum Anheften von Datenobjekten](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Data Catalog: Symbol zum Anheften von Datenobjekten](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
 Das Lösen eines Datenobjekts ist ebenfalls ganz einfach. Klicken Sie einfach auf das Symbol **Lösen**, um die Einstellung für das ausgewählte Datenobjekt umzuschalten.
 
-![Symbol zum Lösen von Datenobjekten](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Data Catalog: Symbol zum Lösen von Datenobjekten](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>Der Abschnitt „Meine Ressourcen“
 Die Startseite des Data Catalog-Portals enthält den Bereich **Meine Ressourcen**, in dem die Datenobjekte angezeigt werden, die für den aktuellen Benutzer interessant sind. Dieser Bereich enthält sowohl angeheftete Datenobjekte als auch gespeicherte Suchvorgänge.

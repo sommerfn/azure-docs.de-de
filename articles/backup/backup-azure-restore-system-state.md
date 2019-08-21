@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 83c4d8a90bf9ae348026c14beaec4975636b29b5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689128"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018805"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -124,9 +124,9 @@ Nachdem Sie mit dem Azure Recovery Services-Agent den Systemstatus als Dateien w
 
 1. Verwenden Sie die folgenden Befehle, um den Server im *Reparaturmodus für Verzeichnisdienste* neu zu starten. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten Folgendes durch:
 
-    ```
-    PS C:\> Bcdedit /set safeboot dsrepair
-    PS C:\> Shutdown /r /t 0
+    ```cmd
+    Bcdedit /set safeboot dsrepair
+    Shutdown /r /t 0
     ```
 
 2. Öffnen Sie nach dem Neustart das Snap-In Windows Server-Sicherung. Falls Sie nicht wissen, wo das Snap-In installiert wurde, können Sie den für **Windows Server-Sicherung** verwendeten Computer oder Server durchsuchen.
@@ -189,14 +189,14 @@ Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abge
 
 5. Wenn Sie die Eingabeaufforderung im Administratormodus öffnen, führen Sie folgenden Befehl aus, um die Versionen der Systemstatussicherung abzurufen.
 
-    ```
+    ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
     ![Versionen der Systemstatussicherung abrufen](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Führen Sie den folgenden Befehl aus, um alle in der Sicherung verfügbaren Volumes abzurufen.
 
-    ```
+    ```cmd
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
@@ -204,7 +204,7 @@ Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abge
 
 7. Der folgende Befehl stellt alle Volumes, die Teil der Systemstatussicherung sind, wieder her. Beachten Sie, dass bei diesem Schritt nur die wichtigen Volumes wiederhergestellt werden, die Teil des Systemstatus sind. Alle nicht zum System gehörenden Daten werden gelöscht.
 
-    ```
+    ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
      ![Versionen der Systemstatussicherung abrufen](./media/backup-azure-restore-system-state/winre-6.png)

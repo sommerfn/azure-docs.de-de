@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779452"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989257"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -101,7 +101,7 @@ Organisationen sollten eine kontrollierte Überprüfung der Azure AD-Hybrideinbi
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Auswählen Ihres Szenarios, basierend auf Ihrer Identitätsinfrastruktur
 
-Azure AD-Hybrideinbindung funktioniert sowohl mit verwalteten Umgebungen als auch mit Verbundumgebungen.  
+Azure AD Hybrid-Join funktioniert sowohl in verwalteten als auch in Verbundumgebungen, je nachdem, ob der UPN routingfähig ist. Eine Tabelle mit unterstützten Szenarien finden Sie unten auf der Seite.  
 
 ### <a name="managed-environment"></a>Verwaltete Umgebung
 
@@ -122,7 +122,7 @@ Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der die f
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
+> **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** müssen ausschließlich als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT über den Webanwendungsproxy als Endpunkte mit Extranetzugriff verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
 > [!NOTE]
 > Azure AD unterstützt keine Smartcards oder Zertifikate in verwalteten Domänen.

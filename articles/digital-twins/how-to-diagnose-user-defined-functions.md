@@ -6,15 +6,15 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/12/2019
 ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 61c3f033fbe3febe7b0d048b247cc1fe8d597698
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849328"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014170"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -45,7 +45,7 @@ Vergewissern Sie sich beim Verfolgen von Sensortelemetriedaten, dass die Diagnos
 
 Um eine Sensortelemetriemeldung den entsprechenden Protokollen zuzuordnen, können Sie eine Korrelations-ID für die Ereignisdaten angeben, die gesendet werden. Legen Sie dazu die `x-ms-client-request-id`-Eigenschaft auf eine GUID fest.
 
-Öffnen Sie nach dem Senden von Telemetriedaten die Protokollanalyse, um Protokolle anhand der festgelegten Korrelations-ID abzufragen:
+Öffnen Sie nach dem Senden von Telemetriedaten Azure Monitor Log Analytics, um Protokolle mithilfe der Korrelations-ID abzufragen:
 
 ```Kusto
 AzureDiagnostics

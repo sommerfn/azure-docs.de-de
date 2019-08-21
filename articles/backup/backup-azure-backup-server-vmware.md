@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: c53e2c383739b717a5ce94c872b4616bbd1b3f26
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639935"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018967"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -102,10 +102,10 @@ Richten Sie einen sicheren Kanal wie folgt ein:
 
 ### <a name="disable-https-certificate-validation"></a>Deaktivieren der Überprüfung des HTTPS-Zertifikats
 
-Wenn in Ihrer Organisation sichere Grenzen eingerichtet wurden und Sie nicht das Protokoll HTTPS zwischen VMware-Servern und dem Azure Backup Server-Computer verwenden möchten, deaktivieren Sie HTTPS wie folgt:
+Wenn in Ihrer Organisation sichere Grenzen eingerichtet wurden und Sie nicht das Protokoll HTTPS zwischen VMware-Servern und dem Azure Backup Server-Computer verwenden möchten, deaktivieren Sie HTTPS wie folgt: 
 1. Kopieren Sie den folgenden Text, und fügen Sie ihn in eine TXT-Datei ein.
 
-      ```
+      ```text
       Windows Registry Editor Version 5.00
       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
       "IgnoreCertificateValidation"=dword:00000001
@@ -289,7 +289,7 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 1. Wählen Sie auf der Seite **Gruppenmitglieder auswählen** die VMs (oder die VM-Ordner) aus, die Sie sichern möchten. Klicken Sie auf **Weiter**.
 
     - Wenn Sie einen Ordner auswählen, werden auch die VMs oder die Ordner in diesem Ordner für die Sicherung ausgewählt. Sie können Ordner oder VMs deaktivieren, die nicht gesichert werden sollen.
-1. Wenn ein virtueller Computer oder ein Ordner bereits gesichert wird, kann er nicht ausgewählt werden. Dadurch wird sichergestellt, dass keine doppelten Wiederherstellungspunkte für einen virtuellen Computer erstellt werden. .
+1. Wenn ein virtueller Computer oder ein Ordner bereits gesichert wird, kann er nicht ausgewählt werden. Dadurch wird sichergestellt, dass keine doppelten Wiederherstellungspunkte für einen virtuellen Computer erstellt werden.
 
      ![Gruppenmitglieder auswählen](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
@@ -354,7 +354,7 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
-Für eine Sicherung von vSphere 6.7 gehen Sie wie folgt:
+Für eine Sicherung von vSphere 6.7 gehen Sie wie folgt vor:
 
 - Aktivieren von TLS 1.2 auf DPM-Server
   >[!Note]

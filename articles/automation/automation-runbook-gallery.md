@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcf48cfdb43473f99b139f0a0a07a5ace9a91642
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476965"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019101"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook und Modulkataloge für Azure Automation
 
@@ -57,7 +57,7 @@ Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für
 
 ## <a name="modules-in-powershell-gallery"></a>Module im PowerShell-Katalog
 
-PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch herunterladen und manuell installieren.  
+PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch herunterladen und manuell installieren.
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>So importieren Sie mit dem Azure-Portal ein Modul aus dem Automation-Modulkatalog
 
@@ -74,7 +74,7 @@ PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können
    * Autor
    * Cmdlet-/DSC-Ressourcenname
 
-5. Suchen Sie das gewünschte Modul, und wählen Sie es aus, um seine Details anzuzeigen.  
+5. Suchen Sie das gewünschte Modul, und wählen Sie es aus, um seine Details anzuzeigen.
 
    Wenn Sie einen Drilldown in einem bestimmten Modul ausführen, können Sie weitere Informationen anzeigen. Diese Informationen umfassen einen Link zurück zum PowerShell-Katalog, alle erforderlichen Abhängigkeiten und alle Cmdlets oder DSC-Ressourcen, die das Modul enthält.
 
@@ -94,13 +94,23 @@ PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können
 Python-Runbooks finden Sie im [Script Center-Katalog](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Sie haben die Möglichkeit, Python-Runbooks dem Script Center-Katalog hinzuzufügen, indem Sie auf **Upload a contribution** (Beitrag hochladen) klicken. Wenn Sie das tun, achten Sie darauf, dass Sie beim Hochladen Ihres Beitrags das Tag **Python** hinzufügen.
 
 > [!NOTE]
-> Um Inhalte in das [Script Center](https://gallery.technet.microsoft.com/scriptcenter) hochladen zu können, sind mindestens 100 Punkte erforderlich. 
+> Um Inhalte in das [Script Center](https://gallery.technet.microsoft.com/scriptcenter) hochladen zu können, sind mindestens 100 Punkte erforderlich.
 
 ## <a name="requesting-a-runbook-or-module"></a>Anfordern eines Runbooks oder eines Moduls
 
 Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/246290-azure-automation/)senden.  Wenn Sie Hilfe beim Schreiben eines Runbooks benötigen oder eine Frage zu PowerShell haben, stellen Sie eine entsprechende Anfrage in unserem [Forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
 
+## <a name="common-solutions-available-in-the-runbook-gallery"></a>Allgemeine im Runbookkatalog verfügbare Lösungen
+
+Die nachstehende Liste enthält einige Runbooks, die Lösungen für gängige Szenarien bereitstellen. Eine vollständige Liste der vom Azure Automation-Team erstellten Runbooks finden Sie im [AzureAutomationTeam-Profil](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
+
+* [Update-ModulesInAutomationToLatestVersion:](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) importiert die neueste Version aller Module in einem Automation-Konto aus dem PowerShell-Katalog.
+* [Enable-AzureDiagnostics:](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) Dieses Skript konfiguriert Azure-Diagnose und Log Analytics, sodass Azure Automation-Protokolle mit Auftragsstatus- und Auftragsdatenströmen empfangen werden.
+* [Copy-ItemFromAzureVM:](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) Dieses Runbook kopiert eine Remotedatei von einem virtuellen Microsoft Azure-Computer.
+* [Copy-ItemFromAzureVM:](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) Dieses Runbook kopiert eine lokale Datei auf einen virtuellen Azure-Computer.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Einstieg in die Arbeit mit Runbooks finden Sie unter [Verwalten eines Runbooks in Azure Automation](manage-runbooks.md).
 * Informationen zu den Unterschieden zwischen PowerShell- und PowerShell-Workflow bei der Arbeit mit Runbooks finden Sie unter [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).

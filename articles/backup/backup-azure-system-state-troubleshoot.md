@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688653"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018780"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -25,7 +25,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 - [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](https://aka.ms/AB-A4dp50)
-- Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie einen Neustart durch, und wiederholen Sie den Vorgang, falls dies erforderlich ist.
+- Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
 - [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](https://aka.ms/AB-AA4dwtt)
 - [Überprüfen, ob ein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://aka.ms/AB-AA4dwtk)
 - [Geplante Sicherung nicht erfolgreich, manuelle Sicherung erfolgreich](https://aka.ms/ScheduledBackupFailManualWorks)
@@ -36,7 +36,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 - Wenn Sie **Ihren Server erneut in einem Tresor registrieren** möchten: <br>
   - Stellen Sie sicher, dass der Agent auf dem Server deinstalliert und aus dem Portal gelöscht wurde. <br>
   - Verwenden Sie dieselbe Passphrase, die ursprünglich zum Registrieren des Servers verwendet wurde. <br>
-- Sorgen Sie bei einer Offlinesicherung dafür, dass Azure PowerShell, Version 3.7.0, sowohl auf dem Quell- als auch auf dem Zielcomputer installiert ist, bevor Sie mit dem Offlinesicherungsvorgang beginnen.
+- Sorgen Sie bei einer Offlinesicherung dafür, dass Azure PowerShell, Version 3.7.0, sowohl auf dem Quell- als auch auf dem Zielcomputer installiert ist, bevor Sie mit dem Offlinesicherungsvorgang beginnen.
 - [Aspekte, wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Einschränkung
@@ -45,14 +45,14 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 ## <a name="pre-requisite"></a>Voraussetzung
 
-Bevor Sie mit der Problembehandlung bei der Systemstatussicherung mit Azure Backup beginnen, müssen Sie die folgende Voraussetzungsüberprüfung vornehmen.  
+Bevor Sie mit der Problembehandlung bei der Systemstatussicherung mit Azure Backup beginnen, müssen Sie die folgende Voraussetzungen überprüfen.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Überprüfen, ob Windows Server-Sicherung installiert ist
 
 Stellen Sie sicher, dass Windows Server-Sicherung auf dem Server installiert und aktiviert ist. Um den Installationsstatus zu überprüfen, führen Sie den folgenden PowerShell-Befehl aus:
 
- ```
- PS C:\> Get-WindowsFeature Windows-Server-Backup
+ ```powershell
+Get-WindowsFeature Windows-Server-Backup
  ```
 Wenn in der Ausgabe der **Installationsstatus** als **verfügbar** angezeigt wird, dann bedeutet dies, dass das Feature „Windows Server-Sicherung“ für die Installation verfügbar, aber nicht auf dem Server installiert ist. Wenn Windows Server-Sicherung jedoch nicht installiert ist, müssen Sie eine der folgenden Methoden verwenden, um das Feature zu installieren.
 
@@ -60,15 +60,15 @@ Wenn in der Ausgabe der **Installationsstatus** als **verfügbar** angezeigt wir
 
 Führen Sie den folgenden Befehl aus, um Windows Server-Sicherung mithilfe von PowerShell zu installieren:
 
-  ```
-  PS C:\> Install-WindowsFeature -Name Windows-Server-Backup
+  ```powershell
+  Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
 **Methode 2: Installieren von Windows Server-Sicherung mit Server-Manager**
 
 Führen Sie die folgenden Schritte aus, um Windows Server-Sicherung mithilfe von Server-Manager zu installieren:
 
-1. Klicken Sie in **Server-Manger** auf **Rollen und Features hinzufügen**. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.
+1. Klicken Sie im **Server-Manager** auf **Rollen und Features hinzufügen**. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.
 
     ![Dashboard](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
@@ -114,7 +114,7 @@ Gehen Sie wie folgt vor, um den Status von Windows Server-Sicherung zu überprü
     > [!WARNING]
     > Get-WBJob: Die Benennung „Get-WBJob“ wurde nicht als Name eines Cmdlets, einer Funktion, einer Skriptdatei oder eines ausführbaren Programms erkannt. Prüfen Sie die Schreibweise des Namens bzw. stellen Sie sicher, dass der Pfad korrekt angegeben wurde, und versuchen Sie es erneut.
 
-    -   Wenn dieser Fehler auftritt, müssen Sie das Feature „Windows Server-Sicherung“ auf dem Servercomputer neu installieren, wie in Schritt 1 der Voraussetzungen beschrieben.
+    -   Wenn dieser Fehler auftritt, müssen Sie das Feature Windows Server-Sicherung auf dem Servercomputer neu installieren, wie in Schritt 1 der Voraussetzungen beschrieben.
 
   * Stellen Sie sicher, dass Windows Server-Sicherung ordnungsgemäß funktioniert, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl ausführen:
 
@@ -141,7 +141,7 @@ Wenn bei dem Auftrag ein Fehler auftritt, ist dies ein Hinweis auf ein Problem v
 
 | Symptom | Lösung
 | -- | --
-| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: Fehler bei der Sicherung: Das Schattenkopievolume konnte nicht wachsen, weil auf Volumes mit Systemdateien nicht genügend Speicherplatz verfügbar war. <br/><br/> - In Volsnap-Systemereignisprotokollen ist das folgende Fehler-/Warnungsprotokoll vorhanden: „Es steht nicht genügend Speicherplatz auf Volume "C:" zur Verfügung, um den Schattenkopiespeicher für Schattenkopien von "C:" zu erhöhen. Möglicherweise werden aufgrund dieses Fehlers alle Schattenkopien auf Volume "C:" gelöscht.“ | - Geben Sie Speicherplatz auf dem im Ereignisprotokoll angegebenen Volume frei, damit genügend Speicherplatz zum Vergrößern des Schattenkopiespeichers verfügbar ist, während die Sicherung ausgeführt wird. <br/><br/> - Beim Konfigurieren des Speicherplatzes für Schattenkopien kann die für Schattenkopien verwendete Speicherplatzgröße eingeschränkt werden. Weitere Informationen finden Sie in diesem [Artikel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax).
+| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: Fehler bei der Sicherung: Das Schattenkopievolume konnte nicht wachsen, weil auf Volumes mit Systemdateien nicht genügend Speicherplatz verfügbar war. <br/><br/> - In Volsnap-Systemereignisprotokollen ist das folgende Fehler-/Warnungsprotokoll vorhanden: „Es steht nicht genügend Speicherplatz auf Volume "C:" zur Verfügung, um den Schattenkopiespeicher für Schattenkopien von "C:" zu erhöhen. Möglicherweise werden aufgrund dieses Fehlers alle Schattenkopien auf Volume "C:" gelöscht.“ | - Geben Sie Speicherplatz auf dem im Ereignisprotokoll angegebenen Volume frei, damit genügend Speicherplatz zum Vergrößern des Schattenkopiespeichers verfügbar ist, während die Sicherung ausgeführt wird. <br/><br/> - Beim Konfigurieren des Speicherplatzes für Schattenkopien kann die für Schattenkopien verwendete Speicherplatzgröße eingeschränkt werden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax).
 
 
 ### <a name="efi-partition-locked"></a>Gesperrte EFI-Partition

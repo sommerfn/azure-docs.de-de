@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689017"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018758"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -340,7 +340,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Ändern der Richtlinie für Sicherungselemente
 
-Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie einfach die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
+Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -653,7 +653,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
    * **Verwaltete, verschlüsselte VMs mit Azure AD (BEK und KEK):** Fügen Sie für verwaltete, verschlüsselte VMs mit Azure AD (mit BEK und KEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails auf dem wiederhergestellten Betriebssystemdatenträger festzulegen (dieser Schritt ist für Datenträger nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+   * **Verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für den wiederhergestellte Betriebssystemdatenträger festzulegen (dieser Schritt ist für Datenträger nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
      Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/secret der Quelle nicht verfügbar ist.  
 
@@ -667,7 +667,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
      Informationen darüber, wie Sie die wiederhergestellten verwalteten Datenträger anfügen, nachdem die Geheimnisse verfügbar sind und die Verschlüsselungsdetails auf dem Betriebssystemdatenträger festgelegt wurden, finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für den wiederhergestellte Betriebssystemdatenträger festzulegen (dieser Schritt ist für Datenträger nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+   * **Verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für den wiederhergestellte Betriebssystemdatenträger festzulegen (dieser Schritt ist für Datenträger nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
    Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/key/secret der Quelle nicht verfügbar ist.
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147950"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967872"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -72,11 +72,15 @@ Für den Azure Import/Export-Dienst benötigen Sie unterstützte Datenträger, u
 Die folgende Liste von Datenträgern wird für die Verwendung mit dem Azure Import/Export-Dienst unterstützt.
 
 
-|Datenträgertyp  |Größe  |Unterstützt |Nicht unterstützt  |
-|---------|---------|---------|---------|
-|SSD    |   2,5"      |SATA III          |  USB       |
-|Festplattenlaufwerk     |  2,5"<br>3,5"       |SATA II, SATA III         |Externes Festplattenlaufwerk mit integriertem USB-Adapter <br> Datenträger im Gehäuse eines externen Festplattenlaufwerks         |
+|Datenträgertyp  |Size  |Unterstützt |
+|---------|---------|---------|
+|SSD    |   2,5"      |SATA III          | 
+|Festplattenlaufwerk     |  2,5"<br>3,5"       |SATA II, SATA III         |
 
+Die folgenden Datenträgertypen werden nicht unterstützt:
+- USB-Datenträger
+- Externe Festplattenlaufwerke mit integriertem USB-Adapter
+- Datenträger im Gehäuse eines externen Festplattenlaufwerks
 
 Eine einzelner Import-/Export-Auftrag kann über Folgendes verfügen:
 - Maximal 10 Festplattenlaufwerke/SSDs

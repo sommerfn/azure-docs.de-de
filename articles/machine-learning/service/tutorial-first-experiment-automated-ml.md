@@ -10,18 +10,18 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 1d2a0c9e1531ace16335ea57acaccedfe2c1a3c8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815895"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990079"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Tutorial: Trainieren und Bereitstellen Ihres ersten Klassifizierungsmodells mithilfe von automatisiertem maschinellem Lernen (Vorschau)
 
 In diesem Tutorial erfahren Sie, wie Sie Ihr erstes automatisiertes Machine Learning-Experiment im Azure-Portal erstellen. In diesem Beispiel wird ein Klassifizierungsmodell erstellt, mit dem vorhergesagt werden kann, ob ein Kunde eine Termineinlage bei der Bank zeichnet.
 
-Mit Verwendung der automatisierten Machine Learning-Funktionen des Diensts und des Azure-Portals starten Sie den automatisierten Machine Learning-Prozess. Die Auswahl des Algorithmus sowie die Optimierung der Hyperparameter werden für Sie erledigt. Beim automatisierten Machine Learning werden viele Kombinationen von Algorithmen und Hyperparametern durchlaufen, bis das beste Modell für Ihr Kriterium gefunden wird, ohne dass Sie eine einzige Codezeile schreiben müssen.
+Mit der Verwendung der automatisierten Funktionen für maschinelles Lernen des Diensts und des Azure-Portals starten Sie den automatisierten Prozess des maschinellen Lernens. Die Auswahl des Algorithmus und die Optimierung der Hyperparameter werden für Sie erledigt. Beim automatisierten Machine Learning werden viele Kombinationen von Algorithmen und Hyperparametern durchlaufen, bis das beste Modell für Ihr Kriterium gefunden wird, ohne dass Sie eine einzige Codezeile schreiben müssen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -95,7 +95,7 @@ In diesem Tutorial lernen Sie Folgendes:
     Parallelität| Wählen Sie **5** für die maximale Anzahl gleichzeitiger Iterationen aus.
 
    >[!NOTE]
-   > Für dieses Experiment legen wir keinen Schwellenwert für Metriken oder maximale Iterationen fest. Wir verhindern auch nicht, dass Algorithmen getestet werden.
+   > Für dieses Experiment legen wir keinen Schwellenwert für Metriken oder maximale Kerne pro Iteration fest. Wir verhindern auch nicht, dass Algorithmen getestet werden.
 
 1. Wählen Sie **Start** aus, um das Experiment auszuführen.
 

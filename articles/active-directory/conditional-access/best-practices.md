@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248886"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963447"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -50,7 +50,8 @@ Beim Zugriff auf eine Cloud-App können mehrere Richtlinien für bedingten Zugri
 Alle Richtlinien werden in zwei Phasen erzwungen:
 
 - In der **ersten** Phase werden alle Richtlinien ausgewertet und alle nicht erfüllten Zugriffssteuerungen gesammelt. 
-- In der **zweiten** Phase werden Sie aufgefordert, die nicht erfüllten Anforderungen zu erfüllen. Sollte eine der Richtlinien den Zugriff blockieren, werden Sie blockiert und nicht zur Erfüllung weiterer Richtlinienanforderungen aufgefordert. Falls Sie durch Richtlinien blockiert wurden, werden Sie aufgefordert, weitere Richtlinienanforderungen zu erfüllen. Dabei gilt die folgende Reihenfolge:
+
+- In der **zweiten** Phase werden Sie aufgefordert, die nicht erfüllten Anforderungen zu erfüllen. Sollte eine der Richtlinien den Zugriff blockieren, werden Sie blockiert und nicht zur Erfüllung weiterer Richtlinienanforderungen aufgefordert. Falls Sie durch keine der Richtlinien blockiert wurden, werden Sie aufgefordert, weitere Richtlinienanforderungen zu erfüllen. Dabei gilt die folgende Reihenfolge:
 
    ![Reihenfolge](./media/best-practices/06.png)
     

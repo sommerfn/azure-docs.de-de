@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 95c2130727c0cef889771c181fec53557a2a4b0f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb07899b51280cff8613d637640c0da23debbc8e
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603713"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016514"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Bereitstellen von Abhängigkeiten für die lokale Entwicklung
 
@@ -21,7 +21,7 @@ In diesem Artikel wird erläutert, wie Sie ausschließlich die für die lokale E
 
 ## <a name="deploy-azure-platform-services"></a>Bereitstellen von Azure-Plattformdiensten
 
-1. Stellen Sie sicher, dass die PowerShell- und [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0)-Erweiterungen installiert sind.  Öffnen Sie eine Eingabeaufforderung oder ein Terminal, und führen Sie Folgendes aus:
+1. Stellen Sie sicher, dass die PowerShell- und [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)-Erweiterungen installiert sind.  Öffnen Sie eine Eingabeaufforderung oder ein Terminal, und führen Sie Folgendes aus:
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
@@ -44,7 +44,7 @@ Verwenden Sie einen kurzen und einfachen Namen für die Ressourcengruppe.  Der N
 
 ### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory-Registrierung (AAD)
 
-Über das Bereitstellungsskript wird versucht, die AAD-Anwendungen in Azure Active Directory zu registrieren.  Je nach Ihren Rechten für den ausgewählten AAD-Mandanten können dabei Fehler auftreten.   Es gibt 3 Möglichkeiten:
+Über das Bereitstellungsskript wird versucht, die AAD-Anwendungen in Azure Active Directory zu registrieren.  Je nach Ihren Rechten für den ausgewählten AAD-Mandanten können dabei Fehler auftreten.   Drei Optionen stehen zur Verfügung:
 
 1. Wenn Sie in einer Liste mit AAD-Mandanten einen Mandanten ausgewählt haben, starten Sie das Skript neu, und wählen Sie einen anderen Mandanten aus.
 2. Alternativ können Sie einen privaten AAD-Mandanten bereitstellen, das Skript neu starten und diesen Mandanten verwenden.

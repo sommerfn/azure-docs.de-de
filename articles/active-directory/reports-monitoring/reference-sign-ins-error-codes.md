@@ -3,7 +3,7 @@ title: Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Dire
 description: Enthält eine Referenz zu den Fehlercodes des Berichts mit den Anmeldeaktivitäten.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
-ms.author: markvi
+ms.date: 08/08/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377274"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989593"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -127,6 +127,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |50177|Die externe Überprüfung wird für Passthroughbenutzer nicht unterstützt.|
 |50178|Die Sitzungssteuerung wird für Passthroughbenutzer nicht unterstützt.|
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
+|50201|Diese Meldung wird dem Benutzer während der Anmeldung angezeigt, wenn dem Benutzer zusätzliche Informationen bereitgestellt werden müssen.|
 |51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN.|
 |51004|Benutzerkonto ist nicht im Verzeichnis vorhanden.|
 |51006|Integrierte Windows-Authentifizierung ist erforderlich. Angemeldeter Benutzer nutzt ein Sitzungstoken, dem der Anspruch der integrierten Windows-Authentifizierung fehlt. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
@@ -181,6 +182,9 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |500121| Fehler bei der Authentifizierung während starker Authentifizierungsanforderung.|
 |500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
 |530021|Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.|
+|530032|Blockiert durch eine Sicherheitsrichtlinie.| 
+|700016|Die Anwendung mit dem Bezeichner „{appIdentifier}“ wurde im Verzeichnis „{tenantName}“ nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierungsanforderung an den falschen Mandanten gesendet.|
+|900432|Vertrauliche Clients werden in einer cloudübergreifenden Anforderung nicht unterstützt.|
 |7000218|The request body must contain the following parameter: 'client_assertion' or 'client_secret'. (Der Anforderungstext muss den folgenden Parameter enthalten: 'client_assertion' oder 'client_secret'.)|
 
 

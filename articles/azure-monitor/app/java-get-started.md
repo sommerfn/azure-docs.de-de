@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226821"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967816"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -91,7 +91,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Wenn Sie Eclipse zum Erstellen eines dynamischen Webprojekts verwenden:
-Verwenden Sie das [Application Insights SDK für Java-Plug-In][eclipse]. Hinweis: Dieses Plug-In unterstützt Sie zwar bei der Einrichtung von Application Insights (sofern Sie nicht Maven/Gradle verwenden), es ist jedoch kein Abhängigkeitsverwaltungssystem. Durch die Aktualisierung des Plug-Ins werden also nicht automatisch auch die Application Insights-Bibliotheken in Ihrem Projekt aktualisiert.
+Verwenden Sie das Application Insights SDK für Java-Plug-In. Hinweis: Dieses Plug-In unterstützt Sie zwar bei der Einrichtung von Application Insights (sofern Sie nicht Maven/Gradle verwenden), es ist jedoch kein Abhängigkeitsverwaltungssystem. Durch die Aktualisierung des Plug-Ins werden also nicht automatisch auch die Application Insights-Bibliotheken in Ihrem Projekt aktualisiert.
 
 * *Build- oder Prüfsummenvalidierungsfehler?* Versuchen Sie es mit einer bestimmten Version, z. B.: `version:'2.0.n'`. Die neueste Version finden Sie in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) oder in den [Maven-Artefakten](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * Aktualisieren Sie die Abhängigkeiten Ihres Projekts, um ein *Update auf ein neues SDK* durchzuführen.
@@ -473,7 +473,6 @@ Application Insights kann Ihre Website in regelmäßigen Abständen testen, um z
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

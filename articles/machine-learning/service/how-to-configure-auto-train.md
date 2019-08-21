@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742307"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013644"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -72,6 +72,11 @@ automl_config = AutoMLConfig(task="classification")
 Das automatisierte Machine Learning unterstützt Daten, die sich auf dem lokalen Desktop oder in der Cloud (z. B. in Azure Blob Storage) befinden. Von scikit-learn unterstützte Datenformate können gelesen werden. Sie können die Daten in Folgendes einlesen:
 * Numpy-Arrays X (Funktionen) und y (Zielvariable, auch als Bezeichnung bekannt)
 * Pandas-Datenrahmen
+
+>[!Important]
+> Anforderungen für Trainingsdaten:
+>* Die Daten müssen in Tabellenform vorliegen.
+>* Der Wert, den Sie vorhersagen möchten (Zielspalte), muss in den Daten vorhanden sein.
 
 Beispiele:
 
@@ -215,6 +220,9 @@ Die primäre Metrik – bestimmt wie in den obigen Beispielen gezeigt, die Metri
 In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](concept-automated-ml.md#preprocess), damit die Algorithmen gut funktionieren.  Sie können jedoch zusätzliche Vorverarbeitung/Featurebereitstellung wie z.B. Imputation fehlender Werte, Codierung und Transformationen aktivieren. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#preprocess).
 
 Legen Sie zum Aktivieren dieser Featurebereitstellung `"preprocess": True` für die [`AutoMLConfig`-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) fest.
+
+> [!NOTE]
+> Die Schritte zur Vorverarbeitung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewandten Vorverarbeitungsschritte automatisch auf Ihre Eingabedaten angewandt.
 
 ### <a name="time-series-forecasting"></a>Zeitreihe und Vorhersage
 Für den Aufgabentyp „Zeitreihenvorhersage“ müssen Sie zusätzliche Parameter definieren.
