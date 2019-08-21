@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/18/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550446"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932501"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -84,7 +84,7 @@ So führen Sie das Skript aus
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
-    -publicIpResourceName <public IP name string>
+    -publicIpResourceId <public IP name string>
     -validateMigration -enableAutoScale
    ```
 
@@ -156,7 +156,7 @@ Es folgen einige Szenarien, in denen Ihr aktuelles Anwendungsgateway (Standard) 
 
   * Wenn Sie öffentliche IP-Adressen in Ihrem Anwendungsgateway verwenden, können Sie eine kontrollierte, präzise Migration durchführen, indem Sie ein Traffic Manager-Profil verwenden, um Datenverkehr inkrementell an das neue v2-Gateway weiterzuleiten (gewichtete Routingmethode für Datenverkehr).
 
-    Hierzu können Sie die DNS-Bezeichnungen vom v1- und vom v2-Anwendungsgateway zu dem [Traffic Manager-Profil](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method) hinzufügen und Ihren benutzerdefinierten DNS-Eintrag (z. B. [www.contoso.com](www.contoso.com) ) über CNAME-Einträge zur Traffic Manager-Domäne (z. B. „contoso.trafficmanager.net“) umleiten.
+    Hierzu können Sie die DNS-Bezeichnungen vom v1- und vom v2-Anwendungsgateway zu dem [Traffic Manager-Profil](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method) hinzufügen und Ihren benutzerdefinierten DNS-Eintrag (z. B. [www.contoso.com]\(www.contoso.com) ) über CNAME-Einträge zur Traffic Manager-Domäne (z. B. „contoso.trafficmanager.net“) umleiten.
   * Alternativ können Sie Ihren benutzerdefinierten Domänen-DNS-Eintrag so aktualisieren, dass er auf die DNS-Bezeichnung des neuen v2-Anwendungsgateways verweist. Abhängig davon, welche Gültigkeitsdauer für Ihren DNS-Eintrag konfiguriert ist, kann es einige Zeit dauern, bis Ihr gesamter Clientdatenverkehr zu Ihrem neuen v2-Gateway migriert wird.
 * **Ihre Client stellen Verbindungen mit der Front-End-IP-Adresse Ihres Anwendungsgateways her**.
 
@@ -174,7 +174,7 @@ Ja.
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Leitet das Azure PowerShell-Skript auch den Datenverkehr von meinem v1-Gateway zu dem neu erstellten v2-Gateway um?
 
- Nein. Das Azure PowerShell-Skript migriert nur die Konfiguration. Die Migration des Datenverkehrs liegt in Ihrer Verantwortung und muss von Ihnen gesteuert werden.
+Nein. Das Azure PowerShell-Skript migriert nur die Konfiguration. Die Migration des Datenverkehrs liegt in Ihrer Verantwortung und muss von Ihnen gesteuert werden.
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Ist das neue v2-Gateway, das über das Azure PowerShell-Skript erstellt wurde, so dimensioniert, dass es den gesamten Datenverkehr bewältigen kann, der derzeit von meinem v1-Gateway verarbeitet wird?
 
@@ -182,7 +182,11 @@ Das Azure PowerShell-Skript erstellt ein neues v2-Gateway mit einer geeigneten G
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Ich habe mein v1-Gateway konfiguriert, um Protokolle an den Azure-Speicher zu senden. Repliziert das Skript diese Konfiguration auch für v2?
 
- Nein. Das Skript repliziert diese Konfiguration für v2 nicht. Sie müssen die Protokollkonfiguration separat zum migrierten v2-Gateway hinzufügen.
+Nein. Das Skript repliziert diese Konfiguration für v2 nicht. Sie müssen die Protokollkonfiguration separat zum migrierten v2-Gateway hinzufügen.
+
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Unterstützt dieses Skript Zertifikate, die in Azure Key Vault hochgeladen wurden?
+
+Nein. Das Skript unterstützt derzeit keine Zertifikate in Key Vault. Dies wird jedoch für eine zukünftige Version in Erwägung gezogen.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Ich hatte beim Verwenden dieses Skripts einige Probleme. Wie erhalte ich Hilfe?
   
