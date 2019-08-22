@@ -161,7 +161,7 @@ Die folgende Konfiguration ist ein Beispiel für einen [NGINX-Serverblock](https
    ![Vertrauenswürdige Stammzertifikate](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Es wird vorausgesetzt, dass DNS so konfiguriert ist, dass der Webservername (in diesem Beispiel „www.fabrikam.com“) auf die IP-Adresse Ihres Webservers verweist. Ist dies nicht der Fall, können Sie die [hosts-Datei](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) bearbeiten, um den Namen aufzulösen.
+   > Es wird vorausgesetzt, dass DNS so konfiguriert ist, dass der Webservername (in diesem Beispiel „ www.fabrikam.com “) auf die IP-Adresse Ihres Webservers verweist. Ist dies nicht der Fall, können Sie die [hosts-Datei](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) bearbeiten, um den Namen aufzulösen.
 1. Navigieren Sie zu Ihrer Website, und klicken Sie im Adressfeld Ihres Browsers auf das Schlosssymbol, um die Website- und Zertifikatinformationen zu überprüfen.
 
 ## <a name="verify-the-configuration-with-openssl"></a>Überprüfen der Konfiguration mit OpenSSL
