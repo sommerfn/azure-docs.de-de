@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 06/20/2019
+ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5038ae99a804b456c2cc388f07899278cc0f9a24
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 7f7575daa91cef5cb5be6274a699323fafe67a68
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312883"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935133"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Überwachen von Ressourcennutzung und Abfrageaktivität in Azure SQL Data Warehouse
 Azure SQL Data Warehouse bietet umfassende Überwachungsfunktionen im Azure-Portal, um Erkenntnisse zu Ihrer Data Warehouse-Workload zu gewinnen. Das Azure-Portal ist das empfohlene Tool zum Überwachen Ihrer Data Warehouse-Instanz, weil es eine konfigurierbare Aufbewahrungsdauer, Warnungen, Empfehlungen und anpassbare Diagramme und Dashboards für Metriken und Protokolle bietet. Das Portal ermöglicht außerdem eine Integration weiterer Azure-Überwachungsdienste – z.B. Operations Management Suite (OMS) und Azure Monitor (Protokolle), um Ihnen eine umfassende und integrierte Überwachungsoberfläche für Data Warehouse sowie für Ihre gesamte Azure-Analyseplattform zu bieten. In dieser Dokumentation wird beschrieben, welche Überwachungsfunktionen zur Verfügung stehen, um Ihre Analyseplattform mit SQL Data Warehouse zu optimieren und zu verwalten. 
@@ -23,8 +23,6 @@ Azure SQL Data Warehouse bietet umfassende Überwachungsfunktionen im Azure-Port
 ## <a name="resource-utilization"></a>Ressourcenverwendung 
 Im Azure-Portal stehen die folgenden Metriken für SQL Data Warehouse zur Verfügung. Diese Metriken werden über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) angegeben.
 
-> [!NOTE]
-> Derzeit geben CPU- und E/A-Metriken auf Knotenebene die Data Warehouse-Verwendung nicht ordnungsgemäß wieder. Diese Metriken werden in naher Zukunft entfernt, da das Team die Oberfläche für Überwachung und Problembehandlung bei SQL Data Warehouse verbessert. 
 
 | Metrikname             | BESCHREIBUNG                                                  | Aggregationstyp |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -41,6 +39,10 @@ Im Azure-Portal stehen die folgenden Metriken für SQL Data Warehouse zur Verfü
 | Cacheverwendung in Prozent   | (Cacheverwendung/Cachekapazität) × 100, wobei die Cacheverwendung die Summe aller Bytes im lokalen SSD-Cache für alle Knoten darstellt und die Cachekapazität die Summe der Speicherkapazität im lokalen SSD-Cache für alle Knoten repräsentiert | Maximum          |
 | Lokaler tempdb-Prozentsatz | Lokale tempdb-Auslastung für alle Computeknoten, Werte werden alle fünf Minuten ausgegeben | Maximum          |
 
+> Beim Anzeigen von Metriken und Festlegen von Warnungen zu berücksichtigende Aspekte:
+>
+> - Fehlerhafte und erfolgreiche Verbindungen werden für ein bestimmtes Data Warehouse gemeldet – nicht für den logischen Server.
+
 ## <a name="query-activity"></a>Abfrageaktivität
 Für eine programmgesteuerte Benutzeroberfläche bei der Überwachung von SQL Data Warehouse über T-SQL bietet der Dienst einen Satz an dynamischen Verwaltungssichten (DMVs). Diese Sichten sind nützlich für die aktive Problembehandlung und das Identifizieren von Leistungsengpässen in Ihrer Workload.
 
@@ -54,4 +56,3 @@ Sowohl Metriken als auch Protokolle können in Azure Monitor exportiert werden, 
 Die folgenden Anleitungen beschreiben gängige Szenarios und Anwendungsfälle bei der Überwachung und Verwalten Ihrer Data Warehouse-Instanz:
 
 - [Überwachen Ihrer Data Warehouse-Workload mit DMVs](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)
-

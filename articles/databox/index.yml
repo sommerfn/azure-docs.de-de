@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557831"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650372"
 landingContent:
 - title: Informationen zur Data Box-Produktfamilie
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: Für Data Box
       url: data-box-system-requirements.md
-    - text: Für Data Box-Blobspeicher
-      url: data-box-system-requirements-rest.md
     - text: Für Data Box Disk
       url: data-box-disk-system-requirements.md
     - text: Für Data Box Heavy
       url: data-box-heavy-system-requirements.md
-- title: Bereitstellen von Data Box
+- title: Bestellen, Einrichten, Kopieren, Zurücksenden
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Reihenfolge
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: Kabel
-      url: data-box-deploy-set-up.md
-    - text: Herstellen einer Verbindung und Kopieren von Daten über SMB
-      url: data-box-deploy-copy-data.md
-    - text: Zurücksenden, Hochladen und Überprüfen von Azure-Daten
-      url: data-box-deploy-picked-up.md
-- title: Bereitstellen von Data Box Disk
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Reihenfolge
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Entsperren und Verbinden
-      url: data-box-disk-deploy-set-up.md
-    - text: Kopieren und Überprüfen der Daten
-      url: data-box-disk-deploy-copy-data.md
-    - text: Zurückgeben, Hochladen und Überprüfen von Azure-Daten
-      url: data-box-disk-deploy-picked-up.md
-- title: Bereitstellen von Data Box Heavy
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Reihenfolge
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: Kabel
-      url: data-box-heavy-deploy-set-up.md
-    - text: Herstellen einer Verbindung und Kopieren von Daten über SMB
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Zurückgeben, Hochladen und Überprüfen von Azure-Daten
-      url: data-box-heavy-deploy-picked-up.md
 - title: Verwalten des Geräts
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box und Data Box Heavy in Azure
+    - text: Data Box in Azure
       url: data-box-portal-admin.md
-    - text: Data Box und Data Box Heavy über lokale Benutzeroberfläche
-      url: data-box-local-web-ui-admin.md
     - text: Data Box Disk in Azure
       url: data-box-portal-ui-admin.md
-- title: Häufig gestellte Fragen
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Häufig gestellte Fragen zu Data Box
-      url: data-box-faq.md
-    - text: Häufig gestellte Fragen zu Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Data Box Heavy in Azure
+      url: data-box-portal-admin.md
 - title: Problembehandlung
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box und Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Data Box-Blobspeicher
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Häufig gestellte Fragen zu Data Box
+      url: data-box-faq.md
+    - text: Häufig gestellte Fragen zu Data Box Disk
+      url: data-box-disk-faq.md
     - text: Öffnen eines Supporttickets
       url: data-box-disk-contact-microsoft-support.md

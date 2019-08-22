@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 744c954c9192f75489911f09a1ef7195c5bbd1fa
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: d564cc16a1261cdf71d783ce9f40e577177ff74c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689371"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954800"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup.
@@ -43,7 +43,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
     ![Auswählen einer SQL-Datenbank](./media/backup-azure-backup-sql/pg-databases.png)
 6. Geben Sie einen Namen für die Schutzgruppe an, und aktivieren Sie das Kontrollkästchen **Ich möchte Onlineschutz** .
 
-    ![Datenschutzmethode – kurzfristig auf Datenträger & online in Azure](./media/backup-azure-backup-sql/pg-name.png)
+    ![Datenschutzmethode: kurzfristig auf Datenträger und online in Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. Geben Sie auf dem Bildschirm **Kurzfristige Ziele angeben** alle erforderlichen Informationen ein, um Sicherungspunkte auf dem Datenträger zu erstellen.
 
     In diesem Beispiel wurde die **Beibehaltungsdauer** auf *5 Tage* und die **Synchronisierungshäufigkeit** auf einmal alle *15 Minuten*festgelegt. Dieser Wert gibt die Häufigkeit der Sicherung an. Der Wert für **Schnelle vollständige Sicherung** ist auf *20:00* festgelegt.
@@ -131,7 +131,7 @@ Anhand der zuvor beschriebenen Schritte wurde eine Sicherungsrichtlinie eingeric
 ## <a name="recover-a-sql-server-database-from-azure"></a>Wiederherstellen einer SQL Server-Datenbank aus Azure
 Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Server-Datenbank) aus Azure wiederherzustellen.
 
-1. Öffnen Sie die Verwaltungskonsole auf dem DPM-Server. Navigieren Sie zum Arbeitsbereich **Wiederherstellung** , in dem die mit DPM gesicherten Server angezeigt werden. Suchen Sie nach der erforderlichen Datenbank (in diesem Fall "ReportServer$MSDPM2012"). Wählen Sie unter **Wiederherstellung aus** eine Uhrzeit aus, die auf **Online** endet.
+1. Öffnen Sie die Verwaltungskonsole auf dem DPM-Server. Navigieren Sie zum Arbeitsbereich **Wiederherstellung** , in dem die mit DPM gesicherten Server angezeigt werden. Suchen Sie nach der erforderlichen Datenbank (in diesem Fall "ReportServer$MSDPM2012"). Wählen Sie unter **Wiederherstellung von** eine Uhrzeit aus, die auf **Online** endet.
 
     ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. Klicken Sie mit der rechten Maustaste auf den Datenbanknamen und anschließend auf **Wiederherstellen**.

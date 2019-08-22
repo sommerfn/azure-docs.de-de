@@ -4,18 +4,18 @@ description: Hier wird beschrieben, wie Sie die Benutzeroberfläche zum Erstelle
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: conceptual
-ms.date: 05/26/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99ca319910be2cb20214172826eb40361abe72f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91dd661cf4900512390079751f400f6a9888c452
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257602"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845925"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Testen Ihrer Portalschnittstelle für Azure Managed Applications
 
-Nachdem Sie [die Datei „createUiDefinition.json“](create-uidefinition-overview.md) für Ihre verwaltete Anwendung erstellt haben, müssen Sie die Benutzeroberfläche testen. Um das Testen zu vereinfachen, verwenden Sie eine Sandbox-Umgebung, die Ihre Datei in das Portal lädt. Sie müssen Ihre verwaltete Anwendung nicht tatsächlich bereitstellen. Die Sandbox bietet Ihre Benutzeroberfläche in der aktuellen, Vollbildportalerfahrung dar. Alternativ können Sie ein PowerShell-Skript zum Testen der Schnittstelle verwenden, aber dieses verwendet eine Legacyansicht des Portals. In diesem Artikel werden beide Ansätze beschrieben. Die Sandbox ist die empfohlene Methode, um eine Vorschau der Schnittstelle anzuzeigen.
+Nachdem Sie [die Datei „createUiDefinition.json“](create-uidefinition-overview.md) für Ihre verwaltete Anwendung erstellt haben, müssen Sie die Benutzeroberfläche testen. Um das Testen zu vereinfachen, verwenden Sie eine Sandbox-Umgebung, die Ihre Datei in das Portal lädt. Sie müssen Ihre verwaltete Anwendung nicht tatsächlich bereitstellen. Die Sandbox bietet Ihre Benutzeroberfläche in der aktuellen, Vollbildportalerfahrung dar. Sie können auch ein Skript zum Testen der Oberfläche verwenden. In diesem Artikel werden beide Ansätze beschrieben. Die Sandbox ist die empfohlene Methode, um eine Vorschau der Schnittstelle anzuzeigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,8 @@ Wenn Ihr Formular nicht angezeigt und stattdessen das Symbol einer Wolke mit Tr�
 
 Kopieren Sie zum Testen der Oberfläche im Portal eins der folgenden Skripts auf den lokalen Computer:
 
-* [PowerShell-Skript zum Querladen](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
+* [PowerShell-Skript zum Querladen: Az-Modul](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-AzCreateUIDefinition.ps1)
+* [PowerShell-Skript zum Querladen: Azure-Modul](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Azure CLI-Skript zum Querladen](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
 Führen Sie zum Anzeigen Ihrer Benutzeroberflächendatei im Portal das heruntergeladene Skript aus. Mit dem Skript wird ein Speicherkonto in Ihrem Azure-Abonnement erstellt und anschließend die Datei „createUiDefinition.json“ in das Speicherkonto hochgeladen. Das Speicherkonto wird erstellt, wenn das Skript erstmals ausgeführt wird oder das Speicherkonto gelöscht wurde. Wenn das Speicherkonto in Ihrem Azure-Abonnement bereits vorhanden ist, wird das Skript erneut verwendet. Anschließend wird das Portal durch das Skript geöffnet und die Datei aus dem Speicherkonto heruntergeladen.
@@ -61,7 +62,7 @@ Geben Sie einen Ort für das Speicherkonto und den Ordner mit der Datei „creat
 Verwenden Sie für PowerShell Folgendes:
 
 ```powershell
-.\SideLoad-CreateUIDefinition.ps1 `
+.\SideLoad-AzCreateUIDefinition.ps1 `
   -StorageResourceGroupLocation southcentralus `
   -ArtifactsStagingDirectory .\100-Marketplace-Sample
 ```
@@ -79,7 +80,7 @@ Wenn sich Ihre createUiDefinition.json-Datei im selben Ordner wie das Skript bef
 Verwenden Sie für PowerShell Folgendes:
 
 ```powershell
-.\SideLoad-CreateUIDefinition.ps1
+.\SideLoad-AzCreateUIDefinition.ps1
 ```
 
 Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
@@ -89,8 +90,6 @@ Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 ```
 
 Das Skript öffnet eine neue Registerkarte im Browser. Das Portal mit der Schnittstelle zum Erstellen der verwalteten Anwendung wird angezeigt.
-
-![Anzeigen des Portals](./media/test-createuidefinition/view-portal.png)
 
 Geben Sie Werte für die Felder an. Anschließend werden die Werte angezeigt, die an die Vorlage übergeben werden.
 

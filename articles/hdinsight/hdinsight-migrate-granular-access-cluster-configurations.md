@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/09/2019
+ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464667"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945074"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -20,8 +20,9 @@ Wir führen einige wichtige Änderungen ein, um differenzierteren rollenbasierte
 
 ## <a name="what-is-changing"></a>Was ändert sich?
 
-Bisher konnten Geheimnisse von Clusterbenutzern mit den [RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) „Besitzer“, „Mitwirkender“ oder „Leser“ über die HDInsight-API abgerufen werden, da sie jedem zur Verfügung standen, der die Berechtigung `*/read` besaß.
-In Zukunft wird für den Zugriff auf diese Geheimnisse die Berechtigung `Microsoft.HDInsight/clusters/configurations/*` erforderlich sein, d. h., dass Benutzer mit der Rolle „Leser“ nicht mehr darauf zugreifen können. Geheimnisse sind als Werte definiert, mit denen ein Zugriff mit erhöhten Rechten möglich ist, als es die Rolle eines Benutzers gestatten sollte. Dazu zählen Werte wie Clustergateway-HTTP-Anmeldeinformationen, Speicherkontenschlüssel und Datenbankanmeldeinformationen.
+Bisher konnten Geheimnisse von Clusterbenutzern mit den [RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) „Besitzer“, „Mitwirkender“ oder „Leser“ über die HDInsight-API abgerufen werden, da sie jedem zur Verfügung standen, der die Berechtigung `*/read` besaß. Geheimnisse sind als Werte definiert, mit denen ein Zugriff mit erhöhten Rechten möglich ist, als es die Rolle eines Benutzers gestatten sollte. Dazu zählen Werte wie Clustergateway-HTTP-Anmeldeinformationen, Speicherkontenschlüssel und Datenbankanmeldeinformationen.
+
+In Zukunft wird für den Zugriff auf diese Geheimnisse die Berechtigung `Microsoft.HDInsight/clusters/configurations/action` erforderlich sein, d. h., dass Benutzer mit der Rolle „Leser“ nicht mehr darauf zugreifen können. Die Rollen, die über diese Berechtigung verfügen, sind „Mitwirkender“, „Besitzer“ und die neue Rolle „HDInsight-Clusteroperator“. (Weitere Informationen hierzu finden Sie weiter unten.)
 
 Wir führen außerdem eine neue Rolle ein ([HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)), mit der Geheimnisse ohne die Administratorberechtigungen der Rollen „Mitwirkender“ oder „Besitzer“ abgerufen werden können. Zusammenfassung:
 
@@ -128,7 +129,7 @@ Aktualisieren Sie auf [Version 1.0.0](https://pypi.org/project/azure-mgmt-hdinsi
 
 ### <a name="sdk-for-java"></a>SDK für Java
 
-Aktualisieren Sie auf [Version 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) oder höher des HDInsight SDK für Java. Möglicherweise sind minimale Codeänderungen erforderlich, wenn Sie eine von diesen Änderungen betroffene Methode verwenden:
+Aktualisieren Sie auf [Version 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) oder höher des HDInsight SDK für Java. Möglicherweise sind minimale Codeänderungen erforderlich, wenn Sie eine von diesen Änderungen betroffene Methode verwenden:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) gibt **keine sensitiven Parameter** wie Speicherschlüssel (Kernwebsite) oder HTTP-Anmeldeinformationen (Gateway) mehr zurück.
     - Um alle Konfigurationen einschließlich der sensiblen Parameter zurückzugeben, verwenden Sie zukünftig [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable).  Beachten Sie, dass Benutzer mit der Rolle „Leser“ nicht imstande sind, diese Rolle zu verwenden. Dadurch ist eine differenzierte Kontrolle der Benutzer möglich, die auf sensible Informationen für einen Cluster zugreifen können. 
@@ -155,14 +156,14 @@ Aktualisieren Sie auf [Az PowerShell, Version 2.0.0](https://www.powershellgalle
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Hinzufügen der HDInsight-Clusteroperator-Rollenzuweisung zu einem Benutzer
 
-Ein Benutzer mit der Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) kann Benutzern, die Lese-/Schreibzugriff auf sensible HDInsight-Clusterkonfigurationswerte (wie Anmeldeinformationen für das Clustergateway und Speicherkontoschlüssel) haben sollten, die Rolle [HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) zuweisen.
+Ein Benutzer mit der Rolle [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) kann Benutzern, die Lese-/Schreibzugriff auf sensible HDInsight-Clusterkonfigurationswerte (wie Anmeldeinformationen für das Clustergateway und Speicherkontoschlüssel) benötigen, die Rolle [HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) zuweisen.
 
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
 Die einfachste Möglichkeit zum Hinzufügen dieser Rollenzuweisung bietet der Befehl `az role assignment create` an der Azure-Befehlszeilenschnittstelle.
 
 > [!NOTE]
-> Dieser Befehl muss von einem Benutzer mit der Rolle „Mitwirkender“ oder „Besitzer“ ausgeführt werden, da diese Berechtigungen nur von diesen erteilt werden können. `--assignee` ist die E-Mail-Adresse des Benutzers, dem Sie die HDInsight-Clusteroperatorrolle zuweisen möchten.
+> Dieser Befehl muss von einem Benutzer mit der Rolle „Besitzer“ ausgeführt werden, da diese Berechtigungen nur von einem solchen Benutzer erteilt werden können. `--assignee` ist der Name des Dienstprinzipals oder die E-Mail-Adresse des Benutzers, dem Sie die Rolle „HDInsight-Clusteroperator“ zuweisen möchten. Sollte ein Fehler aufgrund unzureichender Berechtigungen auftreten, lesen Sie die häufig gestellten Fragen weiter unten.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Gewähren einer Rolle auf Ressourcenebene (Cluster)
 
@@ -185,3 +186,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
 Sie können alternativ das Azure-Portal verwenden, um einem Benutzer die HDInsight-Clusteroperator-Rollenzuweisung hinzuzufügen. Weitere Informationen finden Sie in der Dokumentation [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal – Hinzufügen einer Rollenzuweisung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Warum erhalte ich nach dem Aktualisieren meiner API-Anforderungen und/oder meines Tools eine Antwort vom Typ „403 (Verboten)“?
+
+Clusterkonfigurationen befinden sind jetzt hinter einer differenzierten rollenbasierten Zugriffssteuerung, und für den Zugriff wird die Berechtigung `Microsoft.HDInsight/clusters/configurations/*` benötigt. Weisen Sie dem Benutzer oder Dienstprinzipal, der auf Konfigurationen zugreifen möchte, die Rolle „HDInsight-Clusteroperator“, „Mitwirkender“ oder „Besitzer“ zu, um ihm diese Berechtigung zu erteilen.
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Warum wird die Meldung „Nicht genügend Berechtigungen zum Abschließen des Vorgangs.“ angezeigt, wenn ich versuche, einem anderen Benutzer oder Dienstprinzipal mithilfe des entsprechenden Azure CLI-Befehls die Rolle „HDInsight-Clusteroperator“ zuzuweisen?
+
+Der Benutzer oder Dienstprinzipal, der den Befehl ausführt, muss neben der Rolle „Besitzer“ auch über ausreichende AAD-Berechtigungen verfügen, um nach den Objekt-IDs der zugewiesenen Person zu suchen. Diese Meldung deutet auf unzureichende AAD-Berechtigungen hin. Ersetzen Sie das Argument `-–assignee` durch `–assignee-object-id`, und geben Sie als Parameter anstelle des Namens die Objekt-ID der zugewiesenen Person (oder im Falle einer verwalteten Identität: die Prinzipal-ID) an. Weitere Informationen finden Sie in der [Dokumentation zu „az role assignment create“](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) im Abschnitt zu optionalen Parametern.
+
+Sollte das Problem weiterhin bestehen, wenden Sie sich an Ihren AAD-Administrator, um die korrekten Berechtigungen zu erhalten.
+
+### <a name="what-will-happen-if-i-take-no-action"></a>Was passiert, wenn ich nichts unternehme?
+
+Von `GET /configurations` und `POST /configurations/gateway` können keine Informationen mehr zurückgegeben werden, und der Aufruf von `GET /configurations/{configurationName}` gibt keine vertraulichen Parameter wie Speicherkontoschlüssel oder Clusterkennwort mehr zurück. Gleiches gilt für die entsprechenden SDK-Methoden und PowerShell-Cmdlets.
+
+Wenn Sie eine ältere Version eines der oben erwähnten Tools für Visual Studio, VSCode, IntelliJ oder Eclipse verwenden, funktionieren diese erst nach einem Update wieder.
+
+Ausführlichere Informationen finden Sie im entsprechenden Abschnitt dieses Dokuments für Ihr Szenario.

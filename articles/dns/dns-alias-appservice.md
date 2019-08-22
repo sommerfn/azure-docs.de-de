@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 7/13/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7d20ef750aa4556a73852982631423d3d08271f5
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4f9a42f3d054becfed0b0a6acbf92cdf1e421c16
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854111"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946944"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hosten von Azure Web-Apps mit Lastenausgleich im Zonen-Apex
 
@@ -52,24 +52,24 @@ Erstellen Sie zwei Web App Service-Pläne in Ihrer Ressourcengruppe anhand der f
 
 Erstellen Sie zwei Web-Apps, jeweils eine in jedem App Service-Plan.
 
-1. Klicken Sie im Azure-Portal links oben auf **Eine Ressource erstellen**.
+1. Wählen Sie im Azure-Portal links oben die Option **Ressource erstellen** aus.
 2. Geben Sie **Web-App** in die Suchleiste ein, und drücken Sie auf die Eingabetaste.
-3. Klicken Sie auf **Web-App**.
-4. Klicken Sie auf **Create**.
+3. Wählen Sie **Web-App** aus.
+4. Klicken Sie auf **Erstellen**.
 5. Akzeptieren Sie die Standardeinstellungen, und verwenden Sie die folgende Tabelle, um die beiden Web-Apps zu konfigurieren:
 
-   |NAME<br>(muss innerhalb von .azurewebsites.net eindeutig sein)|Ressourcengruppe |App Service-Plan/Standort
-   |---------|---------|---------|
-   |App-01|Vorhandene verwenden<br>Ressourcengruppe auswählen|ASP-01(USA, Osten)|
-   |App-02|Vorhandene verwenden<br>Ressourcengruppe auswählen|ASP-02(USA, Mitte)|
+   |NAME<br>(muss innerhalb von .azurewebsites.net eindeutig sein)|Ressourcengruppe |Laufzeitstapel|Region|App Service-Plan/Standort
+   |---------|---------|-|-|-------|
+   |App-01|Vorhandene verwenden<br>Ressourcengruppe auswählen|.NET Core 2.2|East US|ASP-01(D1)|
+   |App-02|Vorhandene verwenden<br>Ressourcengruppe auswählen|.NET Core 2.2|USA (Mitte)|ASP-02(D1)|
 
 ### <a name="gather-some-details"></a>Erfassen von Details
 
-Notieren Sie jetzt die IP-Adresse und den Hostnamen für die Apps.
+Notieren Sie jetzt die IP-Adresse und den Hostnamen für die Web-Apps.
 
-1. Öffnen Sie Ihre Ressourcengruppe, und klicken Sie auf Ihre erste App (**App-01** in diesem Beispiel).
-2. Klicken Sie in der linken Spalte auf **Eigenschaften**.
-3. Notieren Sie die Adresse unter **URL** und unter **Ausgehenden IP-Adressen** die erste IP-Adresse in der Liste. Diese Informationen sind später beim Konfigurieren der Traffic Manager-Endpunkte erforderlich.
+1. Öffnen Sie Ihre Ressourcengruppe, und wählen Sie Ihre erste Web-App aus (**App-01** in diesem Beispiel).
+2. Wählen Sie in der linken Spalte **Eigenschaften** aus.
+3. Notieren Sie die Adresse unter **URL** und unter **Ausgehenden IP-Adressen** die erste IP-Adresse in der Liste. Diese Informationen sind später beim Konfigurieren der Traffic Manager-Endpunkte erforderlich.
 4. Wiederholen Sie den Schritt für **App-02**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
@@ -82,9 +82,9 @@ Informationen zum Erstellen eines Traffic Manager-Profils finden Sie unter [Schn
 
 Jetzt können Sie die Endpunkte für die beiden Web-Apps erstellen.
 
-1. Öffnen Sie Ihre Ressourcengruppe, und klicken Sie auf Ihr Traffic Manager-Profil.
-2. Klicken Sie in der linken Spalte auf **Endpunkte**.
-3. Klicken Sie auf **Hinzufügen**.
+1. Öffnen Sie Ihre Ressourcengruppe, und wählen Sie Ihr Traffic Manager-Profil aus.
+2. Wählen Sie in der linken Spalte **Endpunkte** aus.
+3. Wählen Sie **Hinzufügen**.
 4. Verwenden Sie die folgende Tabelle zum Konfigurieren der Endpunkte:
 
    |type  |NAME  |Ziel  |Location  |Benutzerdefinierte Headereinstellungen|
@@ -96,31 +96,46 @@ Jetzt können Sie die Endpunkte für die beiden Web-Apps erstellen.
 
 Sie können entweder eine vorhandene DNS-Zone für Tests verwenden, oder Sie können eine neue Zone erstellen. Informationen zum Erstellen und Delegieren einer neuen DNS-Zone in Azure finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
 
-### <a name="add-the-alias-record-set"></a>Hinzufügen der Aliasdatensatzgruppe
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>Hinzufügen eines TXT-Eintrags für die Überprüfung einer benutzerdefinierten Domäne
 
-Wenn Ihre DNS-Zone bereit ist, können Sie einen Alias-Datensatz für den Zonen-Apex hinzufügen.
+Wenn Sie Ihren Web-Apps einen benutzerdefinierten Hostnamen hinzufügen, wird zur Überprüfung Ihrer Domäne nach einem bestimmten TXT-Eintrag gesucht.
 
-1. Öffnen Sie die Ressourcengruppe, und klicken Sie auf die DNS-Zone.
-2. Klicken Sie auf **Datensatzgruppe**.
+1. Öffnen Sie die Ressourcengruppe, und wählen Sie die DNS-Zone aus.
+2. Wählen Sie **Ressourceneintragssatz**.
+3. Fügen Sie den Ressourceneintragssatz mithilfe der folgenden Tabelle hinzu. Verwenden Sie als Wert die tatsächliche Web-App-URL, die Sie zuvor notiert haben:
+
+   |NAME  |type  |Wert|
+   |---------|---------|-|
+   |@     |TXT|App-01.azurewebsites.net|
+
+
+## <a name="add-a-custom-domain"></a>Hinzufügen einer benutzerdefinierten Domäne
+
+Fügen Sie eine benutzerdefinierte Domäne für beide Web-Apps hinzu.
+
+1. Öffnen Sie Ihre Ressourcengruppe, und wählen Sie Ihre erste Web-App aus.
+2. Wählen Sie in der linken Spalte **Benutzerdefinierte Domänen** aus.
+3. Wählen Sie unter **Benutzerdefinierte Domänen** die Option **Benutzerdefinierte Domäne hinzufügen** aus.
+4. Geben Sie unter **Benutzerdefinierte Domäne** den Namen Ihrer benutzerdefinierten Domäne ein. Beispiel: contoso.com.
+5. Wählen Sie **Überprüfen**.
+
+   Ihre Domäne muss die Überprüfung bestehen, und neben **Verfügbarkeit des Hostnamens** und **Domänenbesitz** muss ein grünes Häkchen angezeigt werden.
+5. Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.
+6. Um den neuen Hostnamen unter **Der Website zugewiesene Hostnamen** anzuzeigen, aktualisieren Sie Ihren Browser. Bei der Aktualisierung der Seite werden die Änderungen nicht immer direkt angezeigt.
+7. Wiederholen Sie diese Schritte für Ihre zweite Web-App.
+
+## <a name="add-the-alias-record-set"></a>Hinzufügen der Aliasdatensatzgruppe
+
+Fügen Sie nun einen Aliaseintrag für einen Zonen-Apex hinzu.
+
+1. Öffnen Sie die Ressourcengruppe, und wählen Sie die DNS-Zone aus.
+2. Wählen Sie **Ressourceneintragssatz**.
 3. Fügen Sie die Datensatzgruppe mithilfe der folgenden Tabelle hinzu:
 
    |NAME  |type  |Alias-Datensatzgruppe  |Aliastyp  |Azure-Ressource|
    |---------|---------|---------|---------|-----|
    |@     |Eine Datei|Ja|Azure-Ressource|Traffic Manager – Ihr Profil|
 
-## <a name="add-custom-hostnames"></a>Hinzufügen von benutzerdefinierten Hostnamen
-
-Fügen Sie einen benutzerdefinierten Hostnamen für beide Web-Apps hinzu.
-
-1. Öffnen Sie Ihre Ressourcengruppe, und klicken Sie auf Ihre erste Web-App.
-2. Klicken Sie in der linken Spalte auf **Benutzerdefinierte Domäne**.
-3. Klicken Sie auf **Hostname hinzufügen**.
-4. Geben Sie unter „Hostname“ Ihren Domänennamen ein. Beispiel: contoso.com.
-
-   Ihre Domäne muss die Überprüfung bestehen und muss neben **Verfügbarkeit des Hostnamens** und **Domänenbesitz** ein grünes Häkchen anzeigen.
-5. Klicken Sie auf **Hostname hinzufügen**.
-6. Um den neuen Hostnamen unter **Der Website zugewiesene Hostnamen** anzuzeigen, aktualisieren Sie Ihren Browser. Bei der Aktualisierung der Seite werden die Änderungen nicht immer direkt angezeigt.
-7. Wiederholen Sie diese Schritte für Ihre zweite Web-App.
 
 ## <a name="test-your-web-apps"></a>Testen Ihrer Web-Apps
 

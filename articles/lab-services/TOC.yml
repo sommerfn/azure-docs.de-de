@@ -104,6 +104,10 @@
           items:
             - name: Zugreifen auf Classroom-Labs
               href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Verwenden der Remotedesktopverbindung für virtuelle Linux-Computer
+              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
+            - name: Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer
+              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
     - name: DevTest Labs
       items:
         - name: Konfigurieren eines Labs

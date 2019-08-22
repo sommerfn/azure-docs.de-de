@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694337"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847979"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 
@@ -31,9 +31,9 @@ Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das be
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
+* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Eine Python-Entwicklungsumgebung, in der das Azure Machine Learning SDK installiert ist. Weitere Informationen finden Sie im Abschnitt [Python SDK](setup-create-workspace.md#sdk) des Artikels „Erstellen eines Arbeitsbereichs“.
+* Eine Python-Entwicklungsumgebung, in der das Azure Machine Learning SDK installiert ist. Weitere Informationen finden Sie unter [Install the Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (Installieren des Azure Machine Learning SDK für Python).  
 
 * Ein registriertes Modell, das eine GPU verwendet.
 
@@ -48,7 +48,7 @@ Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das be
 Verwenden Sie den folgenden Code, um eine Verbindung mit einem vorhandenen Arbeitsbereich herzustellen:
 
 > [!IMPORTANT]
-> In diesem Codeausschnitt wird davon ausgegangen, dass die Arbeitsbereichskonfiguration im aktuellen Verzeichnis oder in dessen übergeordnetem Verzeichnis gespeichert wird. Weitere Informationen zum Erstellen eines Arbeitsbereichs und zum Speichern der Konfiguration in einer Datei finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
+> In diesem Codeausschnitt wird davon ausgegangen, dass die Arbeitsbereichskonfiguration im aktuellen Verzeichnis oder in dessen übergeordnetem Verzeichnis gespeichert wird. Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen](how-to-manage-workspace.md).   Weitere Informationen zum Speichern der Konfiguration in einer Datei finden Sie unter [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace

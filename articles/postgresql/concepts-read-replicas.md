@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/14/2019
-ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 08/12/2019
+ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147925"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976288"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
 Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for PostgreSQL-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver bis zu fünf Replikate replizieren. Replikate werden mithilfe der nativen Replikationstechnologie der PostgreSQL-Engine asynchron aktualisiert.
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 Replikate sind neue Server, die ähnlich wie reguläre Azure Database for PostgreSQL-Server verwaltet werden. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen sowie der Speicher in GB/Monat in Rechnung gestellt.
 
@@ -33,7 +30,32 @@ Da Replikate schreibgeschützt sind, führen sie nicht direkt zu einer verringer
 
 Das Feature für Lesereplikate verwendet die asynchrone Replikation von PostgreSQL. Das Feature ist nicht für synchrone Replikationsszenarien vorgesehen. Zwischen dem Masterserver und dem Replikat entsteht eine messbare Verzögerung. Letztendlich sind die Daten auf dem Replikat mit den Daten auf dem Masterserver konsistent. Verwenden Sie das Feature für Workloads, für die diese Verzögerung akzeptabel ist.
 
-Lesereplikate können Ihren Notfallwiederherstellungsplan verbessern. Sie müssen zuerst über ein Replikat in einer anderen Azure-Region als dem Master verfügen. Bei einem Regionsnotfall können Sie die Replikation in dieses Replikat beenden und Ihren Workload dorthin umleiten. Das Beenden der Replikation ermöglicht es dem Replikat, sowohl Schreib- als auch Lesezugriffe zu akzeptieren. Weitere Informationen finden Sie im Abschnitt [Beenden der Replikation](#stop-replication). 
+## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
+Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
+
+> [!IMPORTANT]
+> Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
+
+Ein Masterserver kann in jeder beliebigen [Azure Database for PostgreSQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql) vorhanden sein.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen.
+
+### <a name="universal-replica-regions"></a>Universelle Replikatregionen
+Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Dies sind die universellen Replikatregionen:
+
+„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“.
+
+
+### <a name="paired-regions"></a>Regionspaare
+Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+Wenn Sie für die Notfallwiederherstellungsplanung regionsübergreifende Replikate verwenden, empfehlen wir Ihnen, das Replikat in der gekoppelten Region und nicht in einer der anderen Regionen zu erstellen. Regionspaare vermeiden gleichzeitige Aktualisierungen und priorisieren die physische Isolation und die Datenresidenz.  
+
+Es gibt jedoch einige Einschränkungen: 
+
+* Regionale Verfügbarkeit: Azure Database for PostgreSQL ist in den Regionen „USA, Westen 2“, „Frankreich, Mitte“ und „VAE, Norden“ und „Deutschland, Mitte“ verfügbar. Die entsprechenden gekoppelten Regionen sind allerdings nicht verfügbar.
+    
+* Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Zu diesen Regionen zählen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
+   Das bedeutet, dass ein Masterserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Masterserver in der Region „Indien, Süden“ kann jedoch kein Replikat in „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
+
 
 ## <a name="create-a-replica"></a>Erstellen eines Replikats
 Für den Masterserver muss der Parameter `azure.replication_support` auf **REPLICA** festgelegt werden. Bei Änderung dieses Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird. (Der Parameter `azure.replication_support` gilt nur für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“.)
@@ -123,7 +145,7 @@ Für PostgreSQL muss der Wert des Parameters `max_connections` auf dem Leserepli
 
 Wenn Sie versuchen, die Serverwerte zu aktualisieren, dabei aber nicht die Grenzwerte einhalten, erhalten Sie eine Fehlermeldung.
 
-### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+### <a name="max_prepared_transactions"></a>max_prepared_transactions
 Für PostgreSQL [muss](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) der Wert des Parameters `max_prepared_transactions` auf dem Lesereplikat mindestens so groß sein wie der Wert auf dem Masterserver. Andernfalls wird das Replikat nicht gestartet. Wenn Sie `max_prepared_transactions` auf dem Masterserver ändern möchten, ändern Sie den Wert zunächst auf den Replikaten.
 
 ### <a name="stopped-replicas"></a>Beendete Replikate

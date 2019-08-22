@@ -18,10 +18,10 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f6c329a2b50c946e873391db431c1cd5ff30ab4f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67709085"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
@@ -396,7 +396,7 @@ Sie können eine WSFC-Lösung zum Schützen der SAP ASCS/SCS-Instanz verwenden. 
 
 > ![Linux][Logo_Linux] Linux
 > 
-> Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des SLES-Clusterframeworks finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications][sap-suse-ascs-ha]. For alternative HA architecture on SLES, which doesn't require highly available NFS see [High-availability guide for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications][sap-suse-ascs-ha-anf].
+> Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des SLES-Clusterframeworks finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications][sap-suse-ascs-ha]. Informationen zu einer alternativen Hochverfügbarkeitsarchitektur unter SLES, für die kein hochverfügbares NFS erforderlich ist, finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen][sap-suse-ascs-ha-anf].
 
 Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des Red Hat-Clusterframeworks finden Sie unter [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).
 

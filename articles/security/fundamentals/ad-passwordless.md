@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934835"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899951"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 
@@ -226,7 +226,7 @@ Darüber hinaus sollte jede Organisation ein Protokoll erstellen, das die entspr
 
 #### <a name="user-sets-up-fido2-security-key"></a>Benutzer richtet FIDO2-Sicherheitsschlüssel ein
 
-Administratoren können [Schlüssel manuell bereitstellen](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) und an Endbenutzer verteilen; die Bereitstellung und Aktivierung des FIDO2-Anmeldeinformationsanbieters auf dem Windows 10-Sperrbildschirm wird durch [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) unterstützt. Administratoren müssen außerdem das [Azure-Portal](https://portal.azure.com/) verwenden, um Hardwaretokengeräte als kennwortlose Authentifizierungsmethode zu aktivieren.
+Administratoren können [Schlüssel manuell bereitstellen](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) und an Endbenutzer verteilen; die Bereitstellung und Aktivierung des FIDO2-Anmeldeinformationsanbieters auf dem Windows 10-Sperrbildschirm wird durch [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) unterstützt. Administratoren müssen außerdem das [Azure-Portal](https://portal.azure.com/) verwenden, um Hardwaretokengeräte als kennwortlose Authentifizierungsmethode zu aktivieren.
 
 Für die Bereitstellung von FIDO2-Sicherheitsschlüsseln müssen die Benutzer ihre Schlüssel mit der [kombinierten Registrierung](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md) registrieren. Mit der kombinierten Registrierung registrieren sich Benutzer einmalig und profitieren von den Vorteilen sowohl von Azure Multi-Factor Authentication als auch von SSPR (Single Sign-On Password Reset).
 
@@ -343,4 +343,4 @@ Die Einführung moderner Technologien zur mehrstufigen Authentifizierung z. B. 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was bedeutet „kennwortlos“?](../../active-directory/authentication/concept-authentication-passwordless.md) – eine Übersicht
-* [Anmelden bei Azure AD ohne Verwendung eines Kennworts](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Anmelden bei Azure AD ohne Verwendung eines Kennworts](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

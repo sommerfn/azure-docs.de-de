@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996149"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878801"
 ---
 # <a name="handling-event-grid-events"></a>Behandeln von Event Grid-Ereignissen
 
@@ -41,4 +41,5 @@ Anwendungen, die Media Services-Ereignisse behandeln, sollten einige empfohlene 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Abrufen von Auftragsstatusereignissen](job-state-events-cli-how-to.md)
+* [Überwachen von Ereignissen: Portal](monitor-events-portal-how-to.md)
+* [Überwachen von Ereignissen: Befehlszeilenschnittstelle](job-state-events-cli-how-to.md)

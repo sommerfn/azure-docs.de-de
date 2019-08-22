@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499874"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879239"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -31,7 +31,7 @@ Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu verme
 
 Verbundbereitstellungen mit AD FS 2016 und AD FS 2019 können Ihnen mithilfe von [AD FS Extranet Lockout und Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ähnliche Vorteile verschaffen.
 
-Smart Lockout ist für alle Azure AD-Kunden ständig aktiv und bietet standardmäßig die richtige Mischung aus Sicherheit und Nutzbarkeit. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Basic-Lizenzen für Ihre Benutzer.
+Smart Lockout ist für alle Azure AD-Kunden ständig aktiv und bietet standardmäßig die richtige Mischung aus Sicherheit und Nutzbarkeit. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie kostenpflichtige Azure AD-Lizenzen für Ihre Benutzer.
 
 Die Verwendung von Smart Lockout garantiert nicht, dass ein echter Benutzer niemals gesperrt wird. Wenn ein Benutzerkonto durch Smart Lockout gesperrt wird, versuchen wir unser Bestes, nicht den echten Benutzer zu sperren. Der Sperrdienst versucht sicherzustellen, dass Angreifer keinen Zugriff auf die Konten echter Benutzer erhalten.  
 
@@ -63,7 +63,7 @@ Gehen Sie wie folgt vor, um Ihre lokale Active Directory-Kontosperrungsrichtlini
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Verwalten der Werte für Azure AD Smart Lockout
 
-Abhängig von den Anforderungen Ihrer Organisation müssen die Werte für Smart Lockout ggf. angepasst werden. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Basic-Lizenzen für Ihre Benutzer.
+Abhängig von den Anforderungen Ihrer Organisation müssen die Werte für Smart Lockout ggf. angepasst werden. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie kostenpflichtige Azure AD-Lizenzen für Ihre Benutzer.
 
 Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. für Ihre Organisation anzupassen:
 

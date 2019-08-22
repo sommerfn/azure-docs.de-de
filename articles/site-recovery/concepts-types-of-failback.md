@@ -1,21 +1,20 @@
 ---
 title: Failback während der Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über verschiedene Arten von Failbacks sowie Vorsichtsmaßnahmen, die beim Durchführen von Failbacks zum lokalen Standort während der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst zu berücksichtigen sind.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 1e5dc91018df822c72381e4a162c5af5d74ed83c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399473"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847486"
 ---
-# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>Failback nach Notfallwiederherstellung von virtuellen VMware-Computern
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Failback von VMware-VMs nach Notfallwiederherstellung zu Azure
 
 Nach einem Failover zu Azure im Rahmen des Notfallwiederherstellungsprozesses können Sie ein Failback zu Ihrem lokalen Standort durchführen. Bei Azure Site Recovery sind zwei verschiedene Arten von Failback möglich: 
 

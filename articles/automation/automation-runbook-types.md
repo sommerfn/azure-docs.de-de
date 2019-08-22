@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8d90f1c03a9ed892a9dc8a4fecbeb9815c2dd376
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e655e286c3aebe28bcb09c8723516c2ff52ad20e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476886"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850353"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -34,11 +34,11 @@ Azure Automation unterstützt verschiedene Runbooktypen, die in der folgenden Ta
 
 ### <a name="advantages"></a>Vorteile
 
-* Visuelles Erstellungsmodell zum Einfügen/Verknüpfen/Konfigurieren  
-* Schwerpunkt auf Datenfluss über das Gateway  
-* Visuelle Darstellung von Verwaltungsprozessen  
-* Einschließen weiterer Runbooks als untergeordnete Runbooks, um übergeordnete Workflows zu erstellen  
-* Vereinfacht modulare Programmierung  
+* Visuelles Erstellungsmodell zum Einfügen/Verknüpfen/Konfigurieren
+* Schwerpunkt auf Datenfluss über das Gateway
+* Visuelle Darstellung von Verwaltungsprozessen
+* Einschließen weiterer Runbooks als untergeordnete Runbooks, um übergeordnete Workflows zu erstellen
+* Vereinfacht modulare Programmierung
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -119,4 +119,4 @@ Wenn Sie festlegen, welchen Typ Sie für ein bestimmtes Runbook verwenden möcht
 * Weitere Informationen zum Erstellen von grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
 * Informationen zu den Unterschieden zwischen PowerShell- und PowerShell-Workflow-Runbooks finden Sie unter [Grundlagen des Windows PowerShell-Workflows](automation-powershell-workflow.md)
 * Weitere Informationen zum Erstellen oder Importieren eines Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks](manage-runbooks.md)
-
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).

@@ -12,7 +12,7 @@
       items:
         - name: Initialisieren und Bereitstellen von Kapazität
           href: quickstart-create-cloudsimple-service.md
-        - name: Konfigurieren einer Private Cloud-Umgebung
+        - name: "Konfigurieren einer Private\_Cloud-Umgebung"
           href: quickstart-create-private-cloud.md
         - name: Erstellen eines virtuellen VMware-Computers in einer Private Cloud
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
@@ -66,7 +66,7 @@
               href: create-nodes.md
             - name: Löschen von Knoten
               href: delete-nodes.md
-        - name: Verwalten von privaten Cloudressourcen
+        - name: Verwalten privater Cloudressourcen
           items:
             - name: Erstellen einer privaten Cloud
               href: create-private-cloud.md
@@ -84,7 +84,7 @@
               href: delete-private-cloud.md
         - name: Überwachen der CloudSimple-Aktivität
           href: monitor-activity.md
-        - name: Einrichten von privaten Cloudnetzwerken
+        - name: Einrichten privater Cloudnetzwerke
           items:
             - name: Erstellen und Verwalten von VLANs und Subnetzen
               href: create-vlan-subnet.md
@@ -105,10 +105,10 @@
             - name: Anzeigen der Benutzerliste
               href: users.md
             - name: Einrichten einer VNET-Verbindung mit der privaten Cloud
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: Bearbeiten Ihres Benutzerprofils
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
-        - name: Einrichten von virtuellen VMware-Computern für die private Cloud
+        - name: Einrichten virtueller VMware-Computer für die private Cloud
           items:
             - name: Erstellen eines virtuellen Computers in Azure
               href: azure-create-vm.md
@@ -124,11 +124,11 @@
               href: escalate-privileges.md
             - name: Workload-DNS und DHCP-Einrichtung
               href: dns-dhcp-setup.md
-            - name: NSX Layer 2-VPN für Migration
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
+              href: migration-layer-2-vpn.md
         - name: Private Cloudnetzwerke
           items:
-            - name: VPN-Verbindung zwischen lokalem Standort und privater Cloud
+            - name: VPN-Verbindung zwischen lokaler Umgebung und privater Cloud
               href: set-up-vpn.md
             - name: Lokale Netzwerkverbindung mit ExpressRoute
               href: on-premises-connection.md
@@ -144,25 +144,29 @@
               href: azure-application-gateway.md
             - name: Konfigurieren eines vCenter-Servers in einer privaten Cloud als vRealize-Automatisierungsendpunkt
               href: configure-server-vrealize-automation-endpoint.md
-            - name: Migrieren von virtuellen Workload-Computern in eine private Cloud
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+            - name: Migrieren virtueller Workload-Computer zu einer privaten Cloud
+              href: migrate-workloads.md
             - name: Sicherstellen der Hochverfügbarkeit von Anwendung in VMware in Azure
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: Auswählen einer Lastenausgleichslösung
+              href: load-balancers.md
         - name: VMware-Ökosystem
           items:
             - name: Sichern von virtuellen Workload-Computern
               href: backup-workloads-veeam.md
+            - name: Konfigurieren einer privaten Cloud als Standort für die Notfallwiederherstellung mithilfe von Zerto
+              href: disaster-recovery-zerto.md
             - name: Lösungsanleitung für VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurieren der vSAN-Verschlüsselung für Ihre private Cloud
               href: vsan-encryption.md
-            - name: Oracle RAC-Bereitstellung in der privaten CloudSimple-Cloud
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: "Optimieren Ihrer privaten Cloud für Oracle\_RAC"
+              href: oracle-real-application-clusters.md
         - name: Azure Core-Integration
           items:
             - name: Azure AD-Identitätsquelle in Private Cloud vCenter
               href: azure-ad.md
             - name: Lokale Netzwerkverbindung mit ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Azure Virtual Network-Verbindung mit ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

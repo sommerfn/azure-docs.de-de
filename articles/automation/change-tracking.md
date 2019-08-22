@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 109c2817b95f535acfb3d6987a7dad57135ee7a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478624"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952995"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -34,7 +34,7 @@ Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agen
 
 ## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
 
-Die folgenden Linux-Distributionen werden offiziell unterstützt. Der Linux-Agent kann jedoch auch auf anderen Distributionen ausgeführt werden, die hier nicht aufgeführt sind. Sofern nicht anders angegeben, werden alle Nebenversionen für jede aufgeführte Hauptversion unterstützt.  
+Die folgenden Linux-Distributionen werden offiziell unterstützt. Der Linux-Agent kann jedoch auch auf anderen Distributionen ausgeführt werden, die hier nicht aufgeführt sind. Sofern nicht anders angegeben, werden alle Nebenversionen für jede aufgeführte Hauptversion unterstützt.
 
 ### <a name="64-bit"></a>64 Bit
 
@@ -68,6 +68,24 @@ Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Lösung f
 Wie Sie Computer in die Lösung integrieren, erfahren Sie unter: [Integrieren von Automation-Lösungen](automation-onboard-solutions-from-automation-account.md). Nachdem ein Computeronboarding mit der Lösung „Änderungsnachverfolgung“ und „Bestand“ vorgenommen wurde, können Sie die nachzuverfolgenden Elemente konfigurieren. Wenn Sie eine neue Datei oder einen Registrierungsschlüssel zum Nachverfolgen aktivieren, wird das entsprechende Element sowohl für die Änderungsnachverfolgung als auch die Bestandsverfolgung aktiviert.
 
 Zum Nachverfolgen von Änderungen unter Windows und Linux werden MD5-Hashes der Dateien verwendet. Diese Hashes werden dann verwendet, um zu ermitteln, ob seit der letzten Bestandsaufnahme eine Änderung vorgenommen wurde.
+
+### <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
+
+Azure Security Center wurde die auf der Azure-Änderungsnachverfolgung basierende Überwachung der Dateiintegrität (File Integrity Monitoring, FIM) hinzugefügt. FIM überwacht nur Dateien und Registrierungen. Die vollständige Änderungsnachverfolgungslösung beinhaltet darüber hinaus Folgendes:
+
+- Softwareänderungen
+- Windows-Dienste
+- Linux-Daemons
+
+Falls Sie FIM bereits aktiviert haben und die vollständige Änderungsnachverfolgungslösung ausprobieren möchten, müssen Sie die folgenden Schritte ausführen. Ihre Einstellungen werden durch diesen Prozess nicht entfernt.
+
+> [!NOTE]
+> Durch die Aktivierung der vollständigen Änderungsnachverfolgungslösung fallen unter Umständen zusätzlichen Kosten an. Weitere Informationen finden Sie unter [Automation – Preise](https://azure.microsoft.com/en-us/pricing/details/automation/).
+
+1. Entfernen Sie die Überwachungslösung, indem Sie zum Arbeitsbereich navigieren und in der [Liste mit den installierten Überwachungslösungen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions) danach suchen.
+2. Klicken Sie auf den Namen der Lösung, um die entsprechende Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf „Löschen“, wie unter [Entfernen einer Überwachungslösung](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution) beschrieben.
+3. Reaktivieren Sie die Lösung, indem Sie zum Automation-Konto navigieren und im Ressourcenmenü unter **Konfigurationsverwaltung** die Option **Änderungsnachverfolgung** auswählen.
+4. Bestätigen Sie die Einstellungsdetails für Ihren Arbeitsbereich, und klicken Sie auf **Aktivieren**.
 
 ### <a name="configure-linux-files-to-track"></a>Konfigurieren von Linux-Dateien für die Nachverfolgung
 
@@ -197,7 +215,7 @@ Der Agent verfolgt nur Änderungen nach, dies optimiert seine Leistung. Durch da
 
 > [!NOTE]
 > Zwar kann der Agent Änderungen bis hinab zu einem 10-Sekunden-Intervall nachverfolgen, bis zur Anzeige der Daten im Portal vergehen jedoch einige Minuten. Änderungen, die zwischen der Erfassung und der Anzeige im Portal erfolgen, werden trotzdem nachverfolgt und protokolliert.
-  
+
 ### <a name="registry-key-change-tracking"></a>Registrierungsschlüssel-Änderungsnachverfolgung
 
 Die Überwachung von Änderungen der Registrierungsschlüssel dient dem Ermitteln von Erweiterungspunkten, an denen Code von Drittanbietern und Schadsoftware aktiv werden können. Die folgende Liste enthält die Liste der vorkonfigurierten Registrierungsschlüssel. Diese Schlüssel sind konfiguriert, aber nicht aktiviert. Um diese Registrierungsschlüssel nachzuverfolgen, müssen Sie jeden einzeln aktivieren.
@@ -278,7 +296,7 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Änderungsdate
 
 ## <a name="alert-on-changes"></a>Warnung zu Änderungen
 
-Eine Schlüsselfunktion von Änderungsnachverfolgung und des Bestands ist die Möglichkeit, Warnungen zum Konfigurationsstatus und zu allen Änderungen am Konfigurationsstatus Ihrer Hybridumgebung auszugeben.  
+Eine Schlüsselfunktion von Änderungsnachverfolgung und des Bestands ist die Möglichkeit, Warnungen zum Konfigurationsstatus und zu allen Änderungen am Konfigurationsstatus Ihrer Hybridumgebung auszugeben.
 
 Im folgenden Beispiel zeigt der Screenshot, dass die Datei `C:\windows\system32\drivers\etc\hosts` auf einem Computer geändert wurde. Diese Datei ist wichtig, da die Hostdatei von Windows verwendet wird, um Hostnamen in IP-Adressen aufzulösen, und sogar vor DNS Vorrang hat, was zu Verbindungsproblemen oder der Umleitung von Datenverkehr auf bösartige oder anderweitig gefährliche Websites führen kann.
 

@@ -97,9 +97,6 @@
         - name: Modularisieren von Vorlagen
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: Verwalten von Geheimnissen
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: Erstellen mehrerer Instanzen
           href: resource-group-create-multiple.md
         - name: Verwenden von Vorlagenerweiterungen
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: Bereitstellen in mehreren Ressourcengruppen oder Abonnements
           href: resource-manager-cross-resource-group-deployment.md
+    - name: Angeben von Parametern
+      items:
+        - name: Erstellen einer Parameterdatei
+          href: resource-manager-parameter-files.md
+        - name: Übergeben vertraulicher Werte
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: VS-Projekte mit Pipelines

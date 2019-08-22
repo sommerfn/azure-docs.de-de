@@ -8,10 +8,10 @@ ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.openlocfilehash: 8752d888e24e7135d488be6d1b377070a30fe4eb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67613844"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
@@ -130,7 +130,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Bereitstellen einer Beispiel-App
 
-Erstellen Sie in der Azure Cloud Shell eine Datei mit dem Namen `virtual-node.yaml`, und fügen Sie den folgenden YAML-Code ein. Um den Container auf dem Knoten zu planen, werden Werte für [nodeSelector][node-selector] and [toleration][toleration] definiert. Mit dieser Einstellungen kann der Pod auf dem virtuellen Knoten geplant und bestätigt werden, dass das Feature erfolgreich aktiviert wurde.
+Erstellen Sie in der Azure Cloud Shell eine Datei mit dem Namen `virtual-node.yaml`, und fügen Sie den folgenden YAML-Code ein. Um den Container auf dem Knoten zu planen, werden Werte für [nodeSelector][node-selector] und [toleration][toleration] definiert. Mit dieser Einstellungen kann der Pod auf dem virtuellen Knoten geplant und bestätigt werden, dass das Feature erfolgreich aktiviert wurde.
 
 ```yaml
 apiVersion: apps/v1

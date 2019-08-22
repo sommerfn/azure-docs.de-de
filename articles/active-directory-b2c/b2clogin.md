@@ -10,23 +10,26 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080c1933f88d9e824969a42212de2eacd0f62e14
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511690"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927285"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
 Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer Azure Active Directory B2C-Anwendung (Azure AD) einrichten, müssen Sie eine Umleitungs-URL angeben. In der Vergangenheit wurde login.microsoftonline.com verwendet, nun sollten Sie allerdings b2clogin.com verwenden.
+
+> [!NOTE]
+> Sie können für b2clogin.com clientseitigen JavaScript-Code (derzeit in der Vorschauphase) verwenden. Ihr JavaScript-Code wird von der benutzerdefinierten Seite entfernt, wenn Sie login.microsoftonline.com verwenden. Außerdem gelten bei Verwendung von login.microsoftonline.com zusätzliche Sicherheitseinschränkungen. Beispielsweise werden HTML-Formularelemente von Ihrer benutzerdefinierten Seite entfernt. 
 
 Die Verwendung von b2clogin.com bietet zusätzliche Vorteile, z.B.:
 
 - Der im Cookieheader von Microsoft-Diensten verbrauchte Speicherplatz wird reduziert.
 - Ihre URLs enthalten keinen Verweis mehr auf Microsoft. Beispiel: `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
 
->[!NOTE]
+> [!NOTE]
 > Sie können sowohl den Mandantennamen als auch die Mandanten-GUID wie folgt verwenden:
 > * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (verweist weiterhin auf `onmicrosoft.com`)
 > * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (in diesem Fall ist kein Verweis mehr auf Microsoft enthalten)

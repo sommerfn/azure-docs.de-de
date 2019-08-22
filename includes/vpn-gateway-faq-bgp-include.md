@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386878"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68936809"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
 Nein, BGP wird von Azure-VPN-Gateways vom Typ **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird NICHT unterstützt.
@@ -39,6 +39,13 @@ Sie können diese ASNs beim Herstellen einer Verbindung mit Azure VPN Gateways n
 Ja. Die folgenden ASNs sind [von IANA reserviert](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml) und können nicht für Ihr Azure VPN Gateway konfiguriert werden:
 
 23456, 64496-64511, 65535-65551 und 429496729
+
+### <a name="what-private-asns-can-i-use"></a>Welche privaten ASNs kann ich verwenden?
+Die verwendbaren Bereiche privater ASNs, die verwendet werden können, sind:
+
+* 64512–65514, 65521–65534
+
+Diese ASNs sind nicht für die Verwendung durch IANA oder Azure reserviert und können daher Ihrem Azure-VPN Gateway zugewiesen werden.
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>Kann ich die gleiche ASN sowohl für lokale VPN-Netzwerke als auch für Azure-VNETs verwenden?
 Nein. Lokalen Netzwerken und Azure-VNETs muss jeweils eine unterschiedliche ASN zugewiesen werden, wenn diese per BGP miteinander verbunden werden. Azure-VPN-Gateways ist standardmäßig die ASN 65515 zugewiesen. Dabei spielt es keine Rolle, ob BGP für Ihre standortübergreifende Konnektivität aktiviert ist. Diesen Standardwert können Sie überschreiben, indem Sie beim Erstellen des VPN-Gateways eine andere ASN zuweisen oder die ASN nach der Gatewayerstellung ändern. Ihre lokalen ASNs müssen den entsprechenden lokalen Azure-Netzwerkgateways zugewiesen werden.

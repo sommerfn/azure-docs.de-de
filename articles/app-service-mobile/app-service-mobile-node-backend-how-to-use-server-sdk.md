@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eaaeba8a36bcba8134d605889185fb8827dd05c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128099"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851192"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 
@@ -891,7 +891,7 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-## <a name="Debugging"></a>Debuggen, Easy Tables und Easy APIs
+## <a name="Debugging"></a>Debuggen
 
 ### <a name="howto-diagnostic-logs"></a>Debuggen, Diagnose und Problembehandlung bei Mobile Apps
 
@@ -903,47 +903,6 @@ Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.
 * [Problembehandlung für Azure App Service in Visual Studio]
 
 Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollierung. Intern nutzt das Mobile Apps Node.js SDK [Winston] für die Diagnoseprotokollierung. Die Protokollierung wird automatisch aktiviert, wenn Sie den Debugmodus aktivieren oder die App-Einstellung `MS_DebugMode` im [Azure-Portal] auf „true“ festlegen. Generierte Protokolle werden im [Azure-Portal] in den Diagnoseprotokollen angezeigt.
-
-### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Verwenden von einfachen Tabellen im Azure-Portal
-
-Mit einfachen Tabellen können Sie Tabellen direkt im Portal erstellen und damit arbeiten. Sie können Datasets im CSV-Format in Easy Tables hochladen. Beachten Sie, dass Sie keine Namen von Eigenschaften (in Ihrem CSV-Dataset) verwenden können, die mit den Namen von Systemeigenschaften des Mobile Apps-Back-Ends in Konflikt stehen. Es handelt sich dabei um folgende Namen von Systemeigenschaften:
-* createdAt
-* updatedAt
-* deleted
-* version
-
-Sie können mit dem App Service-Editor sogar Tabellenvorgänge bearbeiten. Wenn Sie in den Einstellungen für die Back-End-Website **Einfache Tabellen** auswählen, können Sie eine Tabelle hinzufügen, ändern oder löschen. Sie sehen auch, dass Daten in der Tabelle enthalten sind.
-
-![Verwenden von Easy Tables](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
-
-Die folgenden Befehle stehen in der Befehlsleiste einer Tabelle zur Verfügung:
-
-* **Berechtigungen ändern**: Dient zum Ändern der Berechtigung für Vorgänge zum Lesen, Einfügen, Aktualisieren und Löschen in der Tabelle.
- Sie können den anonymen Zugriff zulassen, eine Authentifizierung erzwingen oder den gesamten Zugriff auf den Vorgang deaktivieren.
-* **Skript bearbeiten**: Die Skriptdatei für die Tabelle wird im App Service-Editor geöffnet.
-* **Schema verwalten**: Dient zum Hinzufügen oder Löschen von Spalten oder zum Ändern des Tabellenindex.
-* **Tabelle löschen**: Dient zum Kürzen bzw. Abschneiden einer vorhandenen Tabelle, indem alle Datenzeilen gelöscht werden, während das Schema unverändert bleibt.
-* **Zeilen löschen**: Dient zum Löschen einzelner Zeilen mit Daten.
-* **Streamingprotokolle anzeigen**: Dient zum Herstellen einer Verbindung mit dem Streamingprotokolldienst für Ihre Website.
-
-### <a name="work-easy-apis"></a>Verwenden von einfachen APIs im Azure-Portal
-
-Sie können einfache APIs verwenden, um benutzerdefinierte APIs direkt im Portal zu erstellen und damit zu arbeiten. Sie können API-Skripts mit dem App Service-Editor bearbeiten.
-
-Wenn Sie in den Einstellungen für die Back-End-Website auf **Einfache APIs** klicken, können Sie einen benutzerdefinierten API-Endpunkt hinzufügen, ändern oder löschen.
-
-![Verwenden von Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
-
-Im Portal können Sie die Zugriffsberechtigungen für eine HTTP-Aktion ändern, die API-Skriptdatei im App Service-Editor bearbeiten oder die Streamingprotokolle anzeigen.
-
-### <a name="online-editor"></a>Bearbeiten von Code im App Service-Editor
-
-Durch Verwendung des Azure-Portals können Sie Ihre Node.js-Back-End-Skriptdateien im App Service-Editor bearbeiten, ohne das Projekt auf den lokalen Computer herunterladen zu müssen. So bearbeiten Sie Skriptdateien im Online-Editor
-
-1. Wählen Sie im Bereich für Ihr Mobile Apps-Back-End **Alle Einstellungen** und dann entweder **Einfache Tabellen** oder **Einfache APIs** aus. Wählen Sie eine Tabelle oder API aus, und klicken Sie dann auf **Skript bearbeiten**. Die Skriptdatei wird im App Service-Editor geöffnet.
-
-   ![App Service-Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-1. Nehmen Sie im Online-Editor die gewünschten Änderungen an der Codedatei vor. Die Änderungen werden beim Eingeben automatisch gespeichert.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

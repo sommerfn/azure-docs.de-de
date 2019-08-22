@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932340"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636553"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -100,7 +100,7 @@ Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem
 
 Dies funktioniert auch umgekehrt. Sobald Sie die Funktionen oder Features eines höheren Tarifs nicht mehr benötigen, können Sie zentral auf einen niedrigeren Tarif herunterskalieren und Kosten sparen.
 
-Informationen zum zentralen Hochskalieren des App Service-Plans finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).
+Informationen zum zentralen Hochskalieren des App Service-Plans finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).
 
 Wenn Ihre App mit anderen Apps unter demselben App Service-Plan angeordnet ist, können Sie die Leistung der App verbessern, indem Sie die Computeressourcen isolieren. Hierzu verschieben Sie die App in einen separaten App Service-Plan. Weitere Informationen finden Sie unter [Move an app to another App Service plan](app-service-plan-manage.md#move) (Verschieben einer App in einen anderen App Service-Plan).
 

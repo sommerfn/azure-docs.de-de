@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736259"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975732"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
@@ -34,7 +34,8 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   Eine API Management-Instanz. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
--   Einen benutzerdefinierten Domänennamen, der sich in Ihrem Besitz befindet. Der benutzerdefinierte Domänenname, den Sie verwenden möchten, muss separat bezogen und auf einem DNS-Server gehostet werden. Dieses Thema enthält keine Anleitung zum Hosten eines benutzerdefinierten Domänennamens.
+-   Einen benutzerdefinierten Domänennamen, der sich in Ihrem Besitz oder im Besitz Ihrer Organisation befindet. Dieses Thema enthält keine Anleitung zum Erwerben eines benutzerdefinierten Domänennamens.
+-   Einen CNAME-Eintrag, der auf einem DNS-Server gehostet wird, der den benutzerdefinierten Domänennamen dem Standarddomänennamen Ihrer API Management-Instanz zuordnet. Dieses Thema enthält keine Anleitung zum Hosten eines CNAME-Eintrags.
 -   Sie benötigen ein gültiges Zertifikat mit einem öffentlichen und privaten Schlüssel (.pfx). Der Antragstellername oder der alternative Antragstellername (Subject Alternative Name, SAN) muss dem Domänennamen entsprechen, damit API Management-Instanz sicher URLs über SSL verfügbar machen kann.
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Festlegen eines benutzerdefinierten Domänennamens über das Azure-Portal
@@ -52,13 +53,17 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     > [!NOTE]
     > Nur der **Gateway**endpunkt steht im Tarif „Consumption“ (Verbrauch) zur Konfiguration zur Verfügung.
     > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Gateway** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals).
-    > Die Endpunkte **Verwaltung** und **SCM** werden nur intern von Besitzern der API Management-Instanz verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird. Der **Premium**-Tarif unterstützt mehrere Hostnamen für den **Gateway**endpunkt.
+    > Die Endpunkte **Verwaltung** und **SCM** werden nur intern von Besitzern der API Management-Instanz verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird.
+    > Der **Premium**-Tarif unterstützt mehrere Hostnamen für den **Gateway**endpunkt.
 
 1. Wählen Sie den Endpunkt aus, den Sie aktualisieren möchten.
 1. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert**.
 
-    - Geben Sie unter **Benutzerdefinierter Domänenname** den gewünschten Namen an. Beispiel: `api.contoso.com`. Platzhalterdomänennamen wie etwa „\*.domain.com“ werden ebenfalls unterstützt.
+    - Geben Sie unter **Benutzerdefinierter Domänenname** den gewünschten Namen an. Beispiel: `api.contoso.com`.
     - Wählen Sie unter **Zertifikat** ein Zertifikat aus „Key Vault“ aus. Wenn das Zertifikat mit einem Kennwort geschützt ist, können Sie auch eine gültige PFX-Datei hochladen und deren **Kennwort** angeben.
+
+    > [!NOTE]
+    > Platzhalterdomänennamen (etwa `*.contoso.com`) werden in allen Tarifen mit Ausnahme des Verbrauchstarifs unterstützt.
 
     > [!TIP]
     > Wir empfehlen die Nutzung von Azure Key Vault zur Verwaltung von Zertifikaten. Setzen Sie sie dazu auf „automatische Rotierung“.
@@ -71,7 +76,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 1. Klicken Sie auf „Übernehmen“.
 
     > [!NOTE]
-    > Die Zuweisung des Zertifikats kann je nach Größe der Bereitstellung 15 Minuten und länger dauern. Bei der Entwickler-SKU tritt eine Ausfallzeit auf, bei der den SKUs Basic und höher SKUs jedoch nicht.
+    > Die Zuweisung des Zertifikats kann je nach Größe der Bereitstellung 15 Minuten und länger dauern. Bei der Entwickler-SKU tritt eine Ausfallzeit auf, bei der SKU „Basic“ und höheren SKUs jedoch nicht.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
@@ -79,8 +84,8 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 Bei der DNS-Konfiguration für Ihren benutzerdefinierten Domänennamen haben Sie zwei Möglichkeiten:
 
-- Konfigurieren eines CNAME-Eintrags, der auf den Endpunkt Ihres konfigurierten benutzerdefinierten Domänennamens verweist
-- Konfigurieren eines A-Eintrags, der auf die Gateway-IP-Adresse für API Management verweist
+-   Konfigurieren eines CNAME-Eintrags, der auf den Endpunkt Ihres konfigurierten benutzerdefinierten Domänennamens verweist
+-   Konfigurieren eines A-Eintrags, der auf die Gateway-IP-Adresse für API Management verweist
 
 > [!NOTE]
 > Die IP-Adresse der API Management-Instanz ist zwar statisch, kann sich aber dennoch in bestimmten Szenarien ändern. Daher empfiehlt es sich, beim Konfigurieren der benutzerdefinierten Domäne CNAME zu verwenden. Berücksichtigen Sie dies bei der Wahl der DNS-Konfigurationsmethode. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).

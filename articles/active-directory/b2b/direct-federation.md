@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f3aea108ed87debac56b18b5959d492f2bcb291d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233869"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853599"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastnutzer (Vorschau)
 |     |
@@ -46,7 +46,7 @@ Mit dem direkten Verbund melden sich Gastbenutzer mit ihrem eigenen Organisation
 ## <a name="limitations"></a>Einschränkungen
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verfizierte Domänen in Azure AD
-Direkter Verbund ist nur für Domänen zulässig, die ***nicht*** in Azure AD nicht DNS-verifiziert sind. Ein direkter Verbund ist für nicht verwaltete (E-Mail-verifizierte oder "virale") Azure AD-Mandanten erlaubt, da sie nicht DNS-verifiziert sind.
+Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht*** DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
 ### <a name="authentication-url"></a>Authentifizierungs-URL
 Ein direkter Verbund ist nur für Richtlinien zulässig, bei denen die Domäne die Authentifizierungs-URL mit der Zieldomäne übereinstimmt oder bei denen die Authentifizierungs-URL einer dieser zulässigen Identitätsanbieter ist (diese Liste kann sich ändern):
 -   accounts.google.com
@@ -66,7 +66,7 @@ Wenn Sie die Metadaten-URL in den Einstellungen des Identitätsanbieters angeben
 Derzeit werden maximal 1.000 Verbundbeziehungen unterstützt. Dieses Limit umfasst sowohl [interne Verbünde](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als auch direkte Verbünde.
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Kann ich einen direkten Verbund mit einer Domäne einrichten, für die ein nicht verwalteter (per E-Mail verifizierten) Mandant vorhanden ist? 
-Ja. Wenn die Domain nicht verifiziert wurde und der Mandant keine [Übernahme durch den Admin](../users-groups-roles/domains-admin-takeover.md) erfahren hat, können Sie einen direkten Verbund einrichten. Nicht verwaltete oder per E-Mail verifizierte Mandanten werden erstellt, wenn ein Benutzer eine B2B-Einladung einlöst oder eine Self-Service-Anmeldung für Azure AD über eine Domain durchführt, die derzeit nicht existiert. Sie können einen direkten Verbund für diese Domänen einrichten. Wenn Sie versuchen, einen direkten Verbund mit einer DNS-verifizierten Domäne einzurichten, entweder im Azure-Portal oder über PowerShell, wird eine Fehlermeldung angezeigt.
+Ja. Wenn die Domäne nicht verifiziert wurde und der Mandant keine [Übernahme durch den Administrator](../users-groups-roles/domains-admin-takeover.md) erfahren hat, können Sie einen direkten Verbund mit dieser Domäne einrichten. Nicht verwaltete oder per E-Mail verifizierte Mandanten werden erstellt, wenn ein Benutzer eine B2B-Einladung einlöst oder eine Self-Service-Anmeldung für Azure AD über eine Domain durchführt, die derzeit nicht existiert. Sie können einen direkten Verbund für diese Domänen einrichten. Wenn Sie versuchen, einen direkten Verbund mit einer DNS-verifizierten Domäne einzurichten, entweder im Azure-Portal oder über PowerShell, wird eine Fehlermeldung angezeigt.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Wenn sowohl der direkte Verbund als auch die Einmalpasswort-Authentifizierung per E-Mail aktiviert sind, welches Verfahren hat dann Vorrang?
 Wenn ein direkter Verbund mit einer Partnerorganisation eingerichtet wird, hat sie Vorrang vor der Einmalpasswort-Authentifizierung per E-Mail für neue Gastbenutzer aus dieser Organisation. Wenn ein Gastbenutzer eine Einladung mit Einmalpasswort-Authentifizierung eingelöst hat, bevor Sie einen direkten Verbund einrichten, verwendet er weiterhin die Einmalpasswort-Authentifizierung. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Behebt der direkte Verband Probleme bei der Anmeldung aufgrund eines teilweise synchronisierten Mandantenverhältnisses?

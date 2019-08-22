@@ -101,6 +101,22 @@
         - name: Schritte zum Bereitstellen
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/deploy.md
+    - name: CAF-Basis
+      items:
+        - name: Übersicht
+          displayName: 'caf, foundation'
+          href: ./samples/caf-foundation/index.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'caf, foundation, deploy'
+          href: ./samples/caf-foundation/deploy.md
+    - name: CAF-Migrationslandezone
+      items:
+        - name: Übersicht
+          displayName: 'caf, migrate, landing zone'
+          href: ./samples/caf-migrate-landing-zone/index.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'caf, migrate, landing zone, deploy'
+          href: ./samples/caf-migrate-landing-zone/deploy.md
 - name: Konzepte
   items:
     - name: Lebenszyklus einer Blaupause

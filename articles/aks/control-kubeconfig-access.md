@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
 ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615676"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Definieren des Zugriffs auf die Kubernetes-Konfigurationsdatei in Azure Kubernetes Service (AKS) mithilfe der rollenbasierten Zugriffssteuerung von Azure
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie RBAC-Rollen zuweisen, die einschränken,
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen in der AKS-Schnellstartanleitung. Verwenden Sie dafür die [Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 Für den Artikel wird außerdem mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
@@ -48,7 +48,7 @@ Dieser RBAC-Rollen können einem Azure Active Directory-Benutzer (AAD) oder eine
 Wenn Sie eine der Azure-Rollen zuweisen möchten, benötigen Sie die Ressourcen-ID des AKS-Clusters und die ID des Azure AD-Benutzerkontos oder der Azure AD-Gruppe. Die folgenden Beispielbefehle:
 
 * Abrufen der Clusterressourcen-ID mithilfe des Befehls [az aks show][az-aks-show] für den Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup*. Geben Sie nach Bedarf Ihren eigenen Cluster- und Ressourcengruppennamen an.
-* Abrufen Ihrer Benutzer-ID mithilfe der Befehle [az account show][az-account-show] and [az ad user show][az-ad-user-show].
+* Abrufen Ihrer Benutzer-ID mithilfe der Befehle [az account show][az-account-show] und [az ad user show][az-ad-user-show]
 * Zuweisen einer Rolle mithilfe des Befehls [az role assignment create][az-role-assignment-create].
 
 Im folgenden Beispiel wird die *Administratorrolle für Azure Kubernetes Service-Cluster* einem einzelnen Benutzerkonto zugewiesen:

@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: Geplante Ereignisse
           href: scheduled-events.md
+        - name: Überwachen geplanter Ereignisse
+          href: scheduled-event-service.md
         - name: Überwachen von Metadaten
           href: instance-metadata-service.md
         - name: Aktivieren der geschachtelten Virtualisierung

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ead98e12cbf417ae1218320a8814df0222f07172
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626739"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883681"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -39,9 +39,212 @@ ms.locfileid: "60626739"
 | Beispiele | [Node.js-Codebeispiele](sql-api-nodejs-samples.md)
 | Tutorial mit ersten Schritten | [Erste Schritte mit dem JavaScript SDK](sql-api-nodejs-get-started.md)
 | Tutorial zu Web-Apps | [Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB](sql-api-nodejs-application.md)
-| Aktuell unterstützte Plattform | [Node.js Version 6.x](https://nodejs.org/en/blog/release/v6.10.3/): für SDK-Version 2.0.0 und höher erforderlich.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
+| Aktuell unterstützte Plattform | [Node.js v12.x](https://nodejs.org/en/blog/release/v12.7.0/): SDK-Version 3.x.x<br/>[Node.js v10.x](https://nodejs.org/en/blog/release/v10.6.0/): SDK-Version 3.x.x<br/>[Node.js v8.x](https://nodejs.org/en/blog/release/v8.16.0/): SDK-Version 3.x.x<br/>[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/): SDK-Version 2.x.x<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/): SDK-Version 1.x.x<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/): SDK-Version 1.x.x<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/): SDK-Version 1.x.x
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="3.1.0"/>3.1.0</a>
+* Legen Sie den Standardwert für ResponseContinuationTokenLimitInKB auf 1 KB fest. Standardmäßig begrenzen wir diesen Wert auf 1 KB, um lange Header zu vermeiden (für Node.js gilt eine globale Begrenzung der Headergröße). Ein Benutzer kann dieses Feld so festlegen, dass längere Header möglich sind, was dem Back-End helfen kann, die Ausführung von Abfragen zu optimieren.
+* Entfernen Sie disableSSLVerification. Für diese Option gibt es neue Alternativen, die in [#388](https://github.com/Azure/azure-cosmos-js/pull/388) beschrieben sind.
+
+### <a name="3.0.4"/>3.0.4</a>
+* Zulassen, dass initialHeaders Header von Partitionsschlüsseln explizit festlegt
+* package.json#files wird verwendet, um zu verhindern, dass externe Dateien veröffentlicht werden
+* Sortierfehlers bei Routingzuordnungen in einer älteren Version von node+v8 korrigiert
+* Fehler korrigiert, wenn der Benutzer teilweise Wiederholungsoptionen angibt
+
+### <a name="3.0.3"/>3.0.3</a>
+* Verhindern, dass Webpack Module auflöst, die mit „require“ aufgerufen werden
+
+### <a name="3.0.2"/>3.0.2</a>
+* Schon lange bestehenden Fehler behoben, bei dem RUs für Aggregatabfragen stets als 0 gemeldet wurden
+
+### <a name="3.0.0"/>3.0.0</a>
+
+🎉 Veröffentlichung von Version 3! 🎉 Viele neue Features, Fehlerbehebungen und einige wichtige Änderungen. Primäre Ziele dieser Version:
+
+* Wichtige neue Features implementieren
+  * DISTINCT-Abfragen
+  * LIMIT/OFFSET-Abfragen
+  * Vom Benutzer abbrechbare Anforderungen
+* Aktualisierung auf die neueste Version der Cosmos-REST-API, in der alle Container unbegrenzte Skalierbarkeit haben
+* Verwendung von Cosmos im Browser vereinfacht
+* Bessere Abstimmung auf die neuen Richtlinien für das Azure JS SDK
+
+#### <a name="migration-guide-for-breaking-changes"></a>Migrationshandbuch für wichtige Änderungen
+##### <a name="improved-client-constructor-options"></a>Clientkonstruktoroptionen verbessert
+
+Konstruktoroptionen wurden vereinfacht:
+
+* masterKey wurde in „key“ umbenannt und auf die oberste Ebene verschoben
+* Eigenschaften, die sich zuvor unter „options.auth“ befanden, wurden auf die oberste Ebene verschoben
+
+``` js
+// v2
+const client = new CosmosClient({
+    endpoint: "https://your-database.cosmos.azure.com",
+    auth: {
+        masterKey: "your-primary-key"
+    }
+})
+
+// v3
+const client = new CosmosClient({
+    endpoint: "https://your-database.cosmos.azure.com",
+    key: "your-primary-key"
+})
+```
+
+##### <a name="simplified-queryiterator-api"></a>QueryIterator-API vereinfacht
+In Version 2 gab es viele verschiedene Möglichkeiten, Ergebnisse einer Abfrage zu durchlaufen oder abzurufen. Wir haben versucht, die API der Version 3 zu vereinfachen und ähnliche oder doppelte APIs zu entfernen:
+
+* iterator.next() und iterator.current() entfernt. Verwenden Sie fetchnext(), um Seiten mit Ergebnissen abzurufen.
+* Entfernen Sie iterator.forEach(). Verwenden Sie stattdessen asynchrone Iteratoren.
+* iterator.executeNext() in iterator.fetchNext() umbenannt
+* iterator.toArray() in iterator.fetchAll() umbenannt
+* Seiten sind nun ordnungsgemäße Antwortobjekte anstatt einfache JS-Objekte
+* const container = client.database(dbId).container(containerId)
+
+``` js
+// v2
+container.items.query('SELECT * from c').toArray()
+container.items.query('SELECT * from c').executeNext()
+container.items.query('SELECT * from c').forEach(({ body: item }) => { console.log(item.id) })
+
+// v3
+container.items.query('SELECT * from c').fetchAll()
+container.items.query('SELECT * from c').fetchNext()
+for await(const { result: item } in client.databases.readAll().getAsyncIterator()) {
+    console.log(item.id)
+}
+```
+
+##### <a name="fixed-containers-are-now-partitioned"></a>Feste Container sind jetzt partitioniert
+Der Cosmos-Dienst unterstützt jetzt Partitionsschlüssel in allen Containern, einschließlich denjenigen, die zuvor als feste Container erstellt wurden. Das SDK der Version 3 wird auf die neueste API-Version aktualisiert, die diese Änderung implementiert, aber Sie ist nicht unterbrechend. Wenn Sie keinen Partitionsschlüssel für den Betrieb bereitstellen, verwenden wir standardmäßig einen Systemschlüssel, der mit allen Ihren vorhandenen Containern und Dokumenten funktioniert.
+
+##### <a name="upsert-removed-for-stored-procedures"></a>Upsert für gespeicherte Prozeduren entfernt
+Zuvor war Upsert für nicht partitionierte Sammlungen erlaubt, aber mit dem Update der API-Version sind alle Sammlungen partitioniert, sodass wir den Upsert vollständig entfernt haben.
+
+##### <a name="item-reads-will-not-throw-on-404"></a>Bei Lesevorgängen von Elementen wird 404 nicht ausgelöst
+const container = client.database(dbId).container(containerId)
+
+``` js
+// v2
+try {
+    container.items.read(id, undefined)
+} catch (e) {
+    if (e.code === 404) { console.log('item not found') }
+}
+
+// v3
+const { result: item }  = container.items.read(id, undefined)
+if (item === undefined) { console.log('item not found') }
+```
+
+##### <a name="default-multi-region-write"></a>Standardmäßige Schreibvorgänge in mehreren Regionen
+Das SDK schreibt jetzt standardmäßig in mehrere Regionen, wenn dies von ihrer Cosmos-Konfiguration unterstützt wird. Dieses Verhalten musste zuvor abonniert werden.
+
+##### <a name="proper-error-objects"></a>Ordnungsgemäße Fehlerobjekte
+Fehlerhafte Anforderungen lösen jetzt den ordnungsgemäßen Fehler oder dessen Unterklassen aus. Zuvor wurden einfache JS-Objekte ausgelöst.
+
+#### <a name="new-features"></a>Neue Funktionen
+##### <a name="user-cancelable-requests"></a>Vom Benutzer abbrechbare Anforderungen
+Durch den Umstieg auf internes Abrufen können wir die AbortController-API des Browsers verwenden, um vom Benutzer abbrechbare Vorgänge zu unterstützen. Bei Vorgängen, bei denen möglicherweise mehrere Anforderungen bearbeitet werden (z. B. bei partitionsübergreifende Abfragen), werden alle Anforderungen für den Vorgang abgebrochen. Benutzer moderner Browser verfügen bereits über AbortController. Node.js-Benutzer müssen eine Polyfill-Bibliothek verwenden.
+
+``` js
+ const controller = new AbortController()
+ const {result: item} = await items.query('SELECT * from c', { abortSignal: controller.signal});
+ controller.abort()
+```
+
+##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>Festlegen des Durchsatzes als Teil eines Erstellungsvorgangs für DB/Container
+``` js
+const { database }  = client.databases.create({ id: 'my-database', throughput: 10000 })
+database.containers.create({ id: 'my-container', throughput: 10000 })
+```
+
+##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
+Die Generierung von Headertoken wurde in die neue Bibliothek @azure/cosmos-sign verlagert. Aufrufer der Cosmos-REST-API können damit Header mit dem gleichen Code signieren, den wir innerhalb von @azure/cosmos aufrufen.
+
+##### <a name="uuid-for-generated-ids"></a>UUID für generierte IDs
+Version 2 enthielt benutzerdefinierten Code zum Generieren von Element-IDs. Wir haben auf die bekannte und gepflegte Communitybibliotheks-UUID umgestellt.
+
+##### <a name="connection-strings"></a>Verbindungszeichenfolgen
+Es ist nun möglich, eine im Azure-Portal kopierte Verbindungszeichenfolge zu übergeben:
+
+``` js
+const client = new CosmosClient("AccountEndpoint=https://test-account.documents.azure.com:443/;AccountKey=c213asdasdefgdfgrtweaYPpgoeCsHbpRTHhxuMsTaw==;")
+Add DISTINCT and LIMIT/OFFSET queries (#306)
+ const { results } = await items.query('SELECT DISTINCT VALUE r.name FROM ROOT').fetchAll()
+ const { results } = await items.query('SELECT * FROM root r OFFSET 1 LIMIT 2').fetchAll()
+```
+
+#### <a name="improved-browser-experience"></a>Verbesserte Browsererfahrung
+Obwohl es möglich war, das SDK von Version 2 im Browser zu verwenden, war dies keine ideale Lösung. Sie mussten mehrere integrierte Polyfill-Bibliotheken von node.js und einen Bundler wie Webpack oder Parcel verwenden. Mithilfe des SDK von Version 3 ist die Standarderfahrung für Browserbenutzer wesentlich besser.
+
+* Anforderungsinterna durch FETCH (#245) ersetzt
+* Verwendung von BUFFER entfernt (#330)
+* In Knoten integrierte Verwendung zugunsten universeller Pakete/APIs entfernt (#328)
+* Auf node-abort-controller umgestiegen (#294)
+
+#### <a name="bug-fixes"></a>Fehlerbehebungen
+* Angebot zum Lesen korrigiert und erneutes Angebot von Tests (#224)
+* EnableEndpointDiscovery korrigiert (#207)
+* Fehlende RUs in paginierten Ergebnissen korrigiert (#360)
+* SQL-Abfrageparametertyp erweitert (#346)
+* ttl zu ItemDefinition hinzugefügt (#341)
+* CP-Abfragemetriken korrigiert (#311)
+* activityId zu FeedResponse hinzugefügt (#293)
+* _ts-Typ von string in number geändert (#252)(#295)
+* Aggregation der Belastungsanforderungen korrigiert (#289)
+* Partitionsschlüssel mit leeren Zeichenfolgen zulässig (#277)
+* Zeichenfolge zum Konfliktabfragetyp hinzugefügt (#237)
+* uniqueKeyPolicy zu Container hinzugefügt (#234)
+
+#### <a name="engineering-systems"></a>Entwicklungssysteme
+Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schneller besseren Code zu liefern.
+
+* Rollup für Produktionsbuilds verwendet (#104)
+* Auf TypeScript 3.5 aktualisiert (#327)
+* Zu TS-Projektverweisen konvertiert. Testordner extrahiert (#270)
+* noUnusedLocals und noUnusedParameters aktiviert (#275)
+* Azure Pipelines YAML für CI-Builds (#298)
+
+### <a name="2.1.5"/>2.1.5</a>
+* Keine Änderungen am Code. Problem mit einigen zusätzliche Dateien im 2.1.4-Paket behoben.
+
+### <a name="2.1.4"/>2.1.4</a>
+* Regionales Failover innerhalb einer Wiederholungsrichtlinie korrigiert
+* hasMoreResults-Eigenschaft von ChangeFeed korrigiert
+* Updates bei Entwicklungsabhängigkeiten
+* PolicheckExclusions.txt hinzugefügt
+
+### <a name="2.1.3"/>2.1.3</a>
+* _ts-Typ von string in number geändert
+* Standardindizierungstests korrigiert
+* uniqueKeyPolicy zu v2 rückportiert
+* Demo- und Demodebugkorrekturen
+
+### <a name="2.1.2"/>2.1.2</a>
+* Korrekturen beim Rückportierangebot in v3-Branch
+* Fehler in der Typsignatur von executeNext() korrigiert
+* Tippfehler korrigiert
+
+### <a name="2.1.1"/>2.1.1</a>
+* Umstrukturierung des Builds. Ermöglicht das Pullen der SDK-Version zum Buildzeitpunkt.
+
+### <a name="2.1.0"/>2.1.0</a>
+#### <a name="new-features"></a>Neue Funktionen
+* ChangeFeed-Unterstützung hinzugefügt (#196)
+* MultiPolygon-Datentyp für Indizierung hinzugefügt (#191)
+* „key“-Eigenschaft zum Konstruktor als Alias für masterKey (#202) hinzugefügt
+
+#### <a name="fixes"></a>Fehlerbehebungen
+* Fehler korrigiert, bei dem next() einen falschen Wert für den Iterator zurückgab
+
+#### <a name="engineering-improvements"></a>Entwicklungsverbesserungen
+* Integrationstest für die TypeScript-Nutzung hinzugefügt (#199)
+* Direkte Installation über GitHub aktiviert (#194)
 
 ### <a name="2.0.5"/>2.0.5</a>
 * Schnittstelle für Knoten-Agent-Typ hinzugefügt. Typescript-Benutzer müssen @types/node nicht mehr als Abhängigkeit installieren.
@@ -217,37 +420,37 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 | [2.0.0-3 (RC)](#2.0.0-3) |2\. August 2018 |--- |
 | [1.14.4](#1.14.4) |3\.Mai 2018 |--- |
 | [1.14.3](#1.14.3) |3\.Mai 2018 |--- |
-| [1.14.2](#1.14.2) |21\. Dezember 2017 |--- |
-| [1.14.1](#1.14.1) |10\. November 2017 |--- |
-| [1.14.0](#1.14.0) |09\. November 2017 |--- |
-| [1.13.0](#1.13.0) |11\. Oktober 2017 |--- |
-| [1.12.2](#1.12.2) |10\. August 2017 |--- |
-| [1.12.1](#1.12.1) |10\. August 2017 |--- |
-| [1.12.0](#1.12.0) |10\. Mai 2017 |--- |
-| [1.11.0](#1.11.0) |16\. März 2017 |--- |
-| [1.10.2](#1.10.2) |27\. Januar 2017 |--- |
-| [1.10.1](#1.10.1) |22\. Dezember 2016 |--- |
+| [1.14.2](#1.14.2) |21. Dezember 2017 |--- |
+| [1.14.1](#1.14.1) |10. November 2017 |--- |
+| [1.14.0](#1.14.0) |09. November 2017 |--- |
+| [1.13.0](#1.13.0) |11. Oktober 2017 |--- |
+| [1.12.2](#1.12.2) |10. August 2017 |--- |
+| [1.12.1](#1.12.1) |10. August 2017 |--- |
+| [1.12.0](#1.12.0) |10. Mai 2017 |--- |
+| [1.11.0](#1.11.0) |16. März 2017 |--- |
+| [1.10.2](#1.10.2) |27. Januar 2017 |--- |
+| [1.10.1](#1.10.1) |22. Dezember 2016 |--- |
 | [1.10.0](#1.10.0) |3\. Oktober 2016 |--- |
 | [1.9.0](#1.9.0) |7\. Juli 2016 |--- |
-| [1.8.0](#1.8.0) |14\. Juni 2016 |--- |
-| [1.7.0](#1.7.0) |26\. April 2016 |--- |
-| [1.6.0](#1.6.0) |29\. März 2016 |--- |
+| [1.8.0](#1.8.0) |14. Juni 2016 |--- |
+| [1.7.0](#1.7.0) |26. April 2016 |--- |
+| [1.6.0](#1.6.0) |29. März 2016 |--- |
 | [1.5.6](#1.5.6) |8\. März 2016 |--- |
 | [1.5.5](#1.5.5) |2\. Februar 2016 |--- |
 | [1.5.4](#1.5.4) |1\. Februar 2016 |--- |
-| [1.5.2](#1.5.2) |26\. Januar 2016 |--- |
-| [1.5.2](#1.5.2) |22\. Januar 2016 |--- |
+| [1.5.2](#1.5.2) |26. Januar 2016 |--- |
+| [1.5.2](#1.5.2) |22. Januar 2016 |--- |
 | [1.5.1](#1.5.1) |4\. Januar 2016 |--- |
-| [1.5.0](#1.5.0) |31\. Dezember 2015 |--- |
-| [1.4.0](#1.4.0) |06\. Oktober 2015 |--- |
+| [1.5.0](#1.5.0) |31. Dezember 2015 |--- |
+| [1.4.0](#1.4.0) |06. Oktober 2015 |--- |
 | [1.3.0](#1.3.0) |6\. Oktober 2015 |--- |
-| [1.2.2](#1.2.2) |10\. September 2015 |--- |
-| [1.2.1](#1.2.1) |15\. August 2015 |--- |
+| [1.2.2](#1.2.2) |10. September 2015 |--- |
+| [1.2.1](#1.2.1) |15. August 2015 |--- |
 | [1.2.0](#1.2.0) |5\. August 2015 |--- |
 | [1.1.0](#1.1.0) |9\. Juli 2015 |--- |
 | [1.0.3](#1.0.3) |4\. Juni 2015 |--- |
-| [1.0.2](#1.0.2) |23\. Mai 2015 |--- |
-| [1.0.1](#1.0.1) |15\. Mai 2015 |--- |
+| [1.0.2](#1.0.2) |23. Mai 2015 |--- |
+| [1.0.1](#1.0.1) |15. Mai 2015 |--- |
 | [1.0.0](#1.0.0) |8\. April 2015 |--- |
 
 ## <a name="faq"></a>Häufig gestellte Fragen

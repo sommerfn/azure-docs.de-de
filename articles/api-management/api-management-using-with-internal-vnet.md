@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: a5d8a724a0b4dd6899a71187176b9d444e5fe19c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a23572642df99f00e278b6ba74367a30b0604640
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051680"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851461"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
@@ -91,7 +91,9 @@ Wenn Sie beispielsweise einen API Management-Dienst namens „contosointernalvne
 
    * Gateway oder Proxy: contosointernalvnet.azure-api.net
 
-   * Azure-Portal und Entwicklerportal: contosointernalvnet.portal.azure-api.net
+   * Entwicklerportal: contosointernalvnet.portal.azure-api.net
+
+   * Neues Entwicklerportal: contosointernalvnet.developer.azure-api.net
 
    * Endpunkt für die direkte Verwaltung: contosointernalvnet.management.azure-api.net
 
@@ -102,6 +104,8 @@ Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virt
    * 10.1.0.5     contosointernalvnet.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.portal.azure-api.net
+
+   * 10.1.0.5     contosointernalvnet.developer.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.management.azure-api.net
 
@@ -128,7 +132,7 @@ Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwe
 
 ## <a name="related-content"></a>Verwandte Inhalte
 Weitere Informationen finden Sie in den folgenden Artikeln:
-* [Gängige Probleme mit der Netzwerkkonfiguration][Common network configuration problems]
+* [Verwenden von Azure API Management mit virtuellen Netzwerken][Common network configuration problems]
 * [Azure Virtual Network – häufig gestellte Fragen](../virtual-network/virtual-networks-faq.md)
 * [Managing DNS Records](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10)) (Verwalten von DNS-Einträgen)
 

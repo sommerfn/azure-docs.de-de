@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b79086298983e807cbfe0f4413d1fde54969cc6c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699786"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986371"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -55,10 +55,11 @@ Alle Codebeispiele in diesem Tutorial können in der Datei `Program.cs` Ihrer Ko
 Sie können die Azure Storage-Clientbibliothek in jeder Art von .NET-Anwendung nutzen, z.B. einem Azure-Clouddienst oder einer Azure-Web-App, einer Desktopanwendung oder einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
-Es gibt zwei Pakete, auf die Sie in Ihrem Projekt für dieses Tutorial verweisen müssen:
+Es gibt Pakete, auf die Sie für dieses Tutorial in Ihrem Projekt verweisen müssen:
 
 * [Allgemeine Microsoft Azure Storage-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf allgemeine Ressourcen in Ihrem Speicherkonto.
 * [Microsoft Azure Storage Blob-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Blobressourcen in Ihrem Speicherkonto.
+* [Microsoft Azure Storage File-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Dateiressourcen in Ihrem Speicherkonto.
 * [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
 
 Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schritten:
@@ -220,7 +221,7 @@ if (share.Exists())
 }
 ```
 
-Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="copy-files"></a>Kopieren von Dateien
 Ab Version 5.x der Azure Storage-Clientbibliothek können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. In den nächsten Abschnitten wird demonstriert, wie diese Kopiervorgänge programmgesteuert ausgeführt werden.

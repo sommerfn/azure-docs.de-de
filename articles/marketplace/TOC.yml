@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: Integrierte Lösungen
+              href: ./integrated-solutions-for-publishers.md
         - name: Bewährte Marketingmethoden
           href: ./gtm-marketing-best-practices.md
           items:

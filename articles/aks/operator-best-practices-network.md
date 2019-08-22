@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
 ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614748"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-Ein Eingangscontroller ist ein Daemon, der auf einem AKS-Knoten ausgeführt wird und diesen auf eingehende Anforderungen überwacht. Datenverkehr wird dann entsprechend den in der Eingangsressource definierten Regeln verteilt. Der am häufigsten verwendete Eingangscontroller basiert auf [NGINX]. AKS beschränkt Sie nicht auf einen bestimmten Controller. Sie können daher auch andere Controller verwenden – etwa [Contour][contour], [HAProxy][haproxy] oder [Traefik][traefik].
+Ein Eingangscontroller ist ein Daemon, der auf einem AKS-Knoten ausgeführt wird und diesen auf eingehende Anforderungen überwacht. Datenverkehr wird dann entsprechend den in der Eingangsressource definierten Regeln verteilt. Der am häufigsten verwendete Eingangscontroller basiert auf [NGINX]. AKS beschränkt Sie nicht auf einen bestimmten Controller, Sie können daher auch andere Controller wie [Contour][contour], [HAProxy][haproxy] oder [Traefik][traefik] verwenden.
 
 Eingangscontroller müssen auf einem Linux-Knoten geplant werden. Windows Server-Knoten (derzeit in der Vorschau in AKS) dürfen nicht auf dem Eingangscontroller ausgeführt werden. Verwenden Sie einen Knotenselektor in Ihrem YAML-Manifest oder der Bereitstellung des Helm-Charts, um anzugeben, dass die Ressource auf einem Linux-basierten Knoten ausgeführt werden soll. Weitere Informationen finden Sie unter [Verwenden von Knotenselektoren, um zu steuern, wo Pods in AKS geplant werden][concepts-node-selectors].
 
@@ -108,7 +108,7 @@ Es gibt viele Szenarien für Eingangsdatenverkehr, einschließlich der folgenden
 * [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 * [Erstellen eines Eingangscontrollers, der ein internes, privates Netzwerk und eine IP-Adresse verwendet][aks-ingress-internal]
 * [Erstellen eines Eingangscontrollers, der Ihre eigenen TLS-Zertifikate verwendet][aks-ingress-own-tls]
-* [Erstellen eines Eingangscontrollers, der mit Let's Encrypt automatisch TLS-Zertifikate mit einer dynamischen öffentlichen IP-Adresse generiert][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
+* Erstellen eines Eingangscontrollers, der Let's Encrypt für das automatische Generieren von TLS-Zertifikaten [mit einer dynamischen öffentlichen IP-Adresse][aks-ingress-tls] oder [mit einer statischen öffentlichen IP-Adresse][aks-ingress-static-tls] verwendet
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Absichern des Datenverkehrs mit einer Web Application Firewall (WAF)
 
@@ -158,7 +158,7 @@ Die meisten Operationen in AKS können mit den Azure-Verwaltungstools oder über
 
 ![Verbinden mit AKS-Knoten über einen Bastionhost oder eine Jumpbox](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-Auch das Verwaltungsnetzwerk für den Bastionhost sollte abgesichert sein. Verwenden Sie ein [Azure ExpressRoute][expressroute]- oder VPN-Gateway, um eine Verbindung mit einem lokalen Netzwerk herzustellen und den Zugriff über Netzwerksicherheitsgruppen zu steuern. or [VPN gateway][vpn-gateway]
+Auch das Verwaltungsnetzwerk für den Bastionhost sollte abgesichert sein. Verwenden Sie ein [Azure ExpressRoute][expressroute] oder [VPN-Gateway][vpn-gateway], um sich mit einem lokalen Netzwerk zu verbinden und den Zugriff über Netzwerksicherheitsgruppen zu steuern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

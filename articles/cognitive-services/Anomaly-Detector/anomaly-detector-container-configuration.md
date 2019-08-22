@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 617a8fc823b7c40d047e5825dc31b095da132f29
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321447"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932994"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurieren von Containern für die Anomalieerkennung
 
 Die Laufzeitumgebung für Container für die **Anomalieerkennung** wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
 
-# <a name="configuration-settings"></a>Konfigurationseinstellungen
+## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
 Dieser Container hat die folgenden Konfigurationseinstellungen:
 
@@ -134,3 +134,8 @@ Im Folgenden finden Sie Docker-Beispiele für Container für die Anomalieerkennu
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Bereitstellen eines Containers für die Anomalieerkennung in Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [Erfahren Sie mehr über den Anomalieerkennungs-API-Dienst.](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

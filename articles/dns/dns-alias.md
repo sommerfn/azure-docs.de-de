@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314466"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946902"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -29,7 +29,7 @@ Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Z
 
 ## <a name="capabilities"></a>Funktionen
 
-- **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen. Der DNS-Ressourceneintragssatz verändert sich automatisch, wenn die öffentliche IP-Adresse geändert oder gelöscht wird. Verbleibende DNS-Einträge, die auf falsche IP-Adressen verweisen, werden vermieden.
+- **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource (Standard oder Basic) zu verweisen. Der DNS-Ressourceneintragssatz verändert sich automatisch, wenn die öffentliche IP-Adresse geändert oder gelöscht wird. Verbleibende DNS-Einträge, die auf falsche IP-Adressen verweisen, werden vermieden.
 
    Es gibt aktuell eine Beschränkung von 20 Aliaseintragssätzen pro Ressource.
 

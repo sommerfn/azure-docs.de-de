@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817218"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968871"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Richtlinie: Für Benutzer in Ihrem Verzeichnis
 
@@ -35,7 +35,7 @@ Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benu
 
 ### <a name="policy-for-users-not-in-your-directory"></a>Richtlinie: Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden
 
-Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer gilt, die sich nicht in Ihrem Verzeichnis befinden und dieses Zugriffspaket anfordern können. **Benutzer, die sich nicht in Ihrem Verzeichnis befinden** bezieht sich auf Benutzer in einem anderen Azure AD-Verzeichnis, die bisher noch nicht zu Ihrem Verzeichnis eingeladen wurden.  Verzeichnisse müssen konfiguriert werden, damit sie in den **Einschränkungseinstellungen für die Zusammenarbeit in Organisationsbeziehungen** zugelassen werden.
+Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Ihre Richtlinie für Benutzer gilt, die sich nicht in Ihrem Verzeichnis befinden und dieses Zugriffspaket anfordern können. **Benutzer, die sich nicht in Ihrem Verzeichnis befinden** bezieht sich auf Benutzer in einem anderen Azure AD-Verzeichnis, die bisher noch nicht zu Ihrem Verzeichnis eingeladen wurden. Derzeit können Sie nur Benutzer aus Organisationen mit Azure AD hinzufügen. Verzeichnisse müssen konfiguriert werden, damit sie in den **Einschränkungseinstellungen für die Zusammenarbeit in Organisationsbeziehungen** zugelassen werden.
 
 > [!NOTE]
 > Für einen Benutzer, der sich noch nicht in Ihrem Verzeichnis befindet und dessen Anforderung genehmigt oder automatisch genehmigt wird, wird ein externes Gastbenutzerkonto erstellt. Der Gast wird eingeladen, erhält jedoch keine Einladungs-E-Mail. Stattdessen erhält er eine E-Mail, wenn seine Zugriffspaketzuweisung bereitgestellt wird. Wenn dieser Gastbenutzer zu einem späteren Zeitpunkt keine Zugriffspaketzuweisungen mehr besitzt, weil die letzte Zuweisung abgelaufen ist oder abgebrochen wurde, wird das Gastbenutzerkonto standardmäßig für die Anmeldung blockiert und anschließend gelöscht. Wenn Gastbenutzer dauerhaft in Ihrem Verzeichnis bleiben sollen, auch wenn sie keine Zugriffspaketzuweisungen haben, können Sie die Einstellungen für Ihre Berechtigungsverwaltungskonfiguration ändern.

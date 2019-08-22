@@ -1,22 +1,22 @@
 ---
-title: Übersicht zur Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau) – Azure Storage
-description: Azure Files unterstützt identitätsbasierte Authentifizierung über SMB (Server Message Block) (Vorschau) über Azure Active Directory (Azure AD) Domain Services. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können dann mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen.
+title: Übersicht über die Azure Active Directory-Authentifizierung über SMB für Azure Files – Azure Storage
+description: Azure Files unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über Azure Active Directory (Azure AD) Domain Services. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können dann mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 06/18/2019
+ms.topic: article
+ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: b1bc7385751fbd1829b4aee2713621448f8aa505
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699733"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611781"
 ---
-# <a name="overview-of-azure-files-azure-active-directory-domain-service-aad-ds-authentication-support-for-smb-access-preview"></a>AAD DS-Authentifizierung über SMB für Azure Files (Vorschau) – Übersicht
+# <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Übersicht über die Unterstützung der Active Directory Domain Services-Authentifizierung (Azure AD DS) für den SMB-Zugriff in Azure Files
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Wie Sie die Authentifizierung über AAD DS (Azure Active Directory Domain Services) für Azure Files aktivieren, erfahren Sie unter [Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB für Azure Files (Vorschau)](storage-files-active-directory-enable.md).
+Informationen dazu, wie Sie die Azure AD DS-Authentifizierung für Azure Files aktivieren, finden Sie unter [Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB für Azure Files](storage-files-active-directory-enable.md).
 
 ## <a name="glossary"></a>Glossar 
 Die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Services-Authentifizierung über SMB für Azure Files sind wichtig. Sie sollten diese daher kennen:
@@ -41,7 +41,7 @@ Die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Services-Authenti
 Die Azure AD Domain Services-Authentifizierung für Azure Files bietet mehrere Vorteile gegenüber der Authentifizierung mit gemeinsam verwendetem Schlüssel:
 
 -   **Verwenden der Cloud mit Azure AD und Azure AD Domain Services zur Erweiterung der herkömmlichen Dateifreigabe auf Identitätsbasis**  
-    Wenn Sie Ihre Anwendung per Lift & Shift in die Cloud migrieren und dabei herkömmliche Dateiserver durch Azure Files ersetzen möchten, sollten Sie Ihre Anwendung mit Azure AD-Anmeldeinformationen zum Zugriff auf Dateidaten authentifizieren. Azure Files unterstützt Azure AD-Anmeldeinformationen für den Zugriff auf Azure Files über SMB und Windows-VMs, die in eine AAD DS-Domäne eingebunden sind. Sie können auch wahlweise alle Ihre lokalen Active Directory-Objekte mit Azure AD synchronisieren, um Benutzernamen, Kennwörter und andere Gruppenzuweisungen beizubehalten.
+    Wenn Sie Ihre Anwendung per Lift & Shift in die Cloud migrieren und dabei herkömmliche Dateiserver durch Azure Files ersetzen möchten, sollten Sie Ihre Anwendung mit Azure AD-Anmeldeinformationen zum Zugriff auf Dateidaten authentifizieren. Azure Files unterstützt Azure AD-Anmeldeinformationen für den Zugriff auf Azure Files über SMB von Windows-VMs, die in eine Azure AD DS-Domäne eingebunden sind. Sie können auch wahlweise alle Ihre lokalen Active Directory-Objekte mit Azure AD synchronisieren, um Benutzernamen, Kennwörter und andere Gruppenzuweisungen beizubehalten.
 
 -   **Erzwingen einer differenzierten Zugriffssteuerung auf Azure-Dateifreigaben**  
     Sie können einer bestimmten Identität Berechtigungen auf der Freigabe-, Verzeichnis- oder Dateiebene zuweisen. Nehmen wir beispielsweise an, dass Sie über mehrere Teams verfügen, die eine einzelne Azure-Dateifreigabe für die Projektzusammenarbeit verwenden. Sie können allen Teams Zugriff auf nicht vertrauliche Verzeichnisse erteilen und dabei den Zugriff auf Verzeichnisse, die vertrauliche finanzielle Daten enthalten, auf Ihr Finanzteam beschränken. 
@@ -59,20 +59,17 @@ Wenn eine Identität, die mit einer auf einem virtuellen Computer ausgeführten 
 ### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>Aktivieren der Azure AD Domain Services-Authentifizierung über SMB
 Sie können die Azure AD Domain Services-Authentifizierung für Azure Files auf neuen und vorhandenen Speicherkonten aktivieren, die nach dem 24. September 2018 erstellt wurden. 
 
-Stellen Sie vor dem Aktivieren dieses Features sicher, dass Azure AD Domain Services für den primären Azure AD-Mandanten bereitgestellt wurde, mit dem Ihr Speicherkonto verknüpft ist. Wenn Sie Azure AD Domain Services noch nicht eingerichtet haben, befolgen Sie die schrittweise Anleitung in [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/create-instance.md).
+Stellen Sie vor dem Aktivieren dieses Features sicher, dass Azure AD Domain Services für den primären Azure AD-Mandanten bereitgestellt wurde, mit dem Ihr Speicherkonto verknüpft ist. Wenn Sie Azure AD Domain Services noch nicht eingerichtet haben, befolgen Sie die schrittweise Anleitung in [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/tutorial-create-instance.md).
 
-Die Bereitstellung von Azure AD Domain Services dauert normalerweise 10 bis 15 Minuten. Sobald Azure AD Domain Services bereitgestellt ist, können Sie die Azure AD-Authentifizierung für Azure Files über SMB aktivieren. Weitere Informationen finden Sie unter [Enable Azure Active Directory Domain Service authentication over SMB for Azure Files (Preview) (Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB für Azure Files (Vorschau))](storage-files-active-directory-enable.md). 
+Die Bereitstellung von Azure AD Domain Services dauert normalerweise 10 bis 15 Minuten. Sobald Azure AD Domain Services bereitgestellt ist, können Sie die Azure AD-Authentifizierung für Azure Files über SMB aktivieren. Weitere Informationen finden Sie unter [Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB für Azure Files](storage-files-active-directory-enable.md). 
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurieren von Freigabeberechtigungen für Azure Files
 Sobald die Azure AD Domain Services-Authentifizierung aktiviert ist, können Sie benutzerdefinierte RBAC-Rollen für Azure AD-Identitäten konfigurieren und allen Dateifreigaben im Speicherkonto Zugriffsrechte zuweisen.
 
-Wenn eine Anwendung, die auf einem in die Domäne eingebundenen virtuellen Computer ausgeführt wird, versucht, eine Azure-Dateifreigabe einzubinden, oder auf ein Verzeichnis oder eine Datei zuzugreifen, werden die Azure AD-Anmeldeinformationen der Anwendung überprüft, um sicherzustellen, dass die entsprechenden Freigabe- und NTFS-Berechtigungen vorliegen. Weitere Informationen zur Konfiguration von Freigabeberechtigungen finden Sie unter [Enable Azure Active Directory Domain Service authentication over SMB for Azure Files (Preview) (Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB für Azure Files (Vorschau))](storage-files-active-directory-enable.md).
+Wenn eine Anwendung, die auf einem in die Domäne eingebundenen virtuellen Computer ausgeführt wird, versucht, eine Azure-Dateifreigabe einzubinden, oder auf ein Verzeichnis oder eine Datei zuzugreifen, werden die Azure AD-Anmeldeinformationen der Anwendung überprüft, um sicherzustellen, dass die entsprechenden Freigabe- und NTFS-Berechtigungen vorliegen. Weitere Informationen zur Konfiguration von Berechtigungen auf Freigabeebene finden Sie unter [Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB](storage-files-active-directory-enable.md).
 
 ### <a name="configure-directory--or-file-level-permissions-for-azure-files"></a>Konfigurieren von Berechtigungen auf Verzeichnis- oder Dateiebene für Azure Files 
-Azure Files erzwingt standardmäßige NTFS-Dateiberechtigungen auf Verzeichnis- und Dateiebene einschließlich des Stammverzeichnisses. Die Konfiguration von Berechtigungen auf Verzeichnis- oder Dateiebene wird nur über SMB unterstützt. Binden Sie die gewünschte Dateifreigabe von Ihrem virtuellen Computer aus ein, und konfigurieren Sie Berechtigungen mithilfe des Windows-Befehsl [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) oder [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl). 
-
-> [!NOTE]
-> Konfigurieren von NTFS-Berechtigungen über den Windows-Datei-Explorer wird in der Vorschau nicht unterstützt.
+Azure Files erzwingt standardmäßige NTFS-Dateiberechtigungen auf Verzeichnis- und Dateiebene einschließlich des Stammverzeichnisses. Die Konfiguration von Berechtigungen auf Verzeichnis- oder Dateiebene wird nur über SMB unterstützt. Binden Sie die gewünschte Dateifreigabe von Ihrem virtuellen Computer aus ein, und konfigurieren Sie Berechtigungen mit dem Datei-Explorer unter Windows, mit Windows-[icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) oder mit dem Befehl [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl). 
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Verwenden des Speicherkontoschlüssels für Superuserberechtigungen 
 Ein Benutzer, der den Speicherkontoschlüssel besitzt, kann mit Superuserberechtigungen auf Azure Files zugreifen. Superuserberechtigungen übertreffen alle auf Freigabeebene mit RBAC konfigurierten und von Azure AD erzwungenen Einschränkungen der Zugriffssteuerung. Superuserberechtigungen sind erforderlich, um eine Azure-Dateifreigabe einzubinden. 
@@ -90,5 +87,5 @@ Für das Aktivieren der Azure AD-Authentifizierung über SMB in Ihrem Speicherko
 Weitere Informationen zu Azure Files und zur Azure AD-Authentifizierung über SMB finden Sie in diesen Ressourcen:
 
 - [Einführung in Azure Files](storage-files-introduction.md)
-- [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)](storage-files-active-directory-enable.md)
+- [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](storage-files-active-directory-enable.md)
 - [Häufig gestellte Fragen](storage-files-faq.md)

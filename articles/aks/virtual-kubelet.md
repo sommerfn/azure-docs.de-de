@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
 ms.openlocfilehash: f18992be353d2d6cc739412d98ccd97d5e78d4c7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67613863"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Verwenden von Virtual Kubelet mit Azure Kubernetes Service (AKS)
@@ -22,7 +22,7 @@ Azure Container Instances (ACI) bietet eine gehostete Umgebung zum Ausführen vo
 Bei Verwendung des Anbieters für virtuelle Kubelets in Azure Container Instances können sowohl Linux- als auch Windows-Container auf einer Containerinstanz so eingeplant werden, als ob es sich um einen Standard-Kubernetes-Knoten handelt. Mit dieser Konfiguration können Sie sowohl die Vorteile von Kubernetes als auch die Verwaltungsfunktionen und den Kostenvorteil von Containerinstanzen nutzen.
 
 > [!NOTE]
-> AKS bietet jetzt integrierte Unterstützung für die Planung von Containern in ACI, die als *virtuelle Knoten* bezeichnet werden. Diese virtuellen Knoten unterstützen derzeit Linux-Containerinstanzen. Wenn Sie Windows-Containerinstanzen planen müssen, können Sie weiterhin Virtual Kubelet verwenden. Andernfalls sollten Sie virtuelle Knoten statt der in diesem Artikel beschriebenen manuellen Virtual Kubelets verwenden. Verwenden Sie für erste Schritte mit virtuellen Knoten die [Azure CLI][virtual-nodes-cli] or [Azure portal][virtual-nodes-portal].
+> AKS bietet jetzt integrierte Unterstützung für die Planung von Containern in ACI, die als *virtuelle Knoten* bezeichnet werden. Diese virtuellen Knoten unterstützen derzeit Linux-Containerinstanzen. Wenn Sie Windows-Containerinstanzen planen müssen, können Sie weiterhin Virtual Kubelet verwenden. Andernfalls sollten Sie virtuelle Knoten statt der in diesem Artikel beschriebenen manuellen Virtual Kubelets verwenden. Verwenden Sie für erste Schritte mit virtuellen Knoten die [Azure-Befehlszeilenschnittstelle][virtual-nodes-cli] oder das [Azure-Portal][virtual-nodes-portal].
 >
 > „Virtual Kubelet“ ist ein experimentelles Open Source-Projekt und sollte als solches verwendet werden. Weitere Informationen finden Sie im [Virtual Kubelet-GitHub-Projekt][vk-github]. Dort können Sie einen Beitrag leisten, Fragen stellen und mehr über virtuelle Kubelets erfahren.
 
@@ -139,7 +139,7 @@ virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-
 
 ## <a name="run-linux-container"></a>Ausführen eines Linux-Containers
 
-Erstellen Sie eine Datei namens „`virtual-kubelet-linux.yaml`“, und fügen Sie den folgenden YAML-Code ein. Beachten Sie, dass [nodeSelector][node-selector] and [toleration][toleration] verwendet wird, um den Container auf dem Knoten zu planen.
+Erstellen Sie eine Datei namens „`virtual-kubelet-linux.yaml`“, und fügen Sie den folgenden YAML-Code ein. Beachten Sie, dass [nodeSelector][node-selector] und [toleration][toleration] verwendet werden, um den Container auf dem Knoten zu planen.
 
 ```yaml
 apiVersion: apps/v1
@@ -189,7 +189,7 @@ aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.14
 
 ## <a name="run-windows-container"></a>Ausführen eines Windows-Containers
 
-Erstellen Sie eine Datei namens „`virtual-kubelet-windows.yaml`“, und fügen Sie den folgenden YAML-Code ein. Beachten Sie, dass [nodeSelector][node-selector] and [toleration][toleration] verwendet wird, um den Container auf dem Knoten zu planen.
+Erstellen Sie eine Datei namens „`virtual-kubelet-windows.yaml`“, und fügen Sie den folgenden YAML-Code ein. Beachten Sie, dass [nodeSelector][node-selector] und [toleration][toleration] verwendet werden, um den Container auf dem Knoten zu planen.
 
 ```yaml
 apiVersion: apps/v1
@@ -254,7 +254,7 @@ az aks remove-connector \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu möglichen Problemen mit dem virtuellen Kubelet finden Sie unter [Bekannte Probleme und Problemumgehungen][vk-troubleshooting]. To report problems with the Virtual Kubelet, [open a GitHub issue][vk-issues].
+Informationen zu möglichen Problemen mit Virtual Kubelet finden Sie unter [Bekannte Probleme und Problemumgehungen][vk-troubleshooting]. Wenn Sie Probleme mit Virtual Kubelet melden möchten, [öffnen Sie ein GitHub-Problem][vk-issues].
 
 Weitere Informationen zu Virtual Kubelet finden Sie im [Virtual Kubelet-GitHub-Projekt][vk-github].
 

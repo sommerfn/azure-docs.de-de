@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385551"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881073"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -133,6 +133,10 @@ Mehrere Datenflüsse mit jeweils anderen Angaben für IP-Zieladresse, Port und P
 
 UDP-SNAT-Ports werden von einem anderen Algorithmus als TCP-SNAT-Ports verwaltet.  Load Balancer verwendet für UDP einen Algorithmus, der als „portbeschränktes Cone-NAT“ bezeichnet wird.  Für jeden Datenfluss wird unabhängig von der IP-Zieladresse/dem Zielport ein SNAT-Port genutzt.
 
+#### <a name="snat-port-reuse"></a>Wiederverwendung von SNAT-Ports
+
+Nach der Freigabe eines Ports kann er bei Bedarf erneut verwendet werden.  Sie können sich SNAT-Ports als eine Sequenz verfügbarer Ports (vom niedrigsten bis zum höchsten) vorstellen, die für ein bestimmtes Szenario verfügbar sind. Der erste verfügbare SNAT-Port wird für neue Verbindungen verwendet. 
+ 
 #### <a name="exhaustion"></a>Auslastung
 
 Sobald die SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, wenn SNAT-Ports von vorhandenen Datenflüssen freigegeben werden. Der Load Balancer gibt die SNAT-Ports wieder frei, wenn der Datenflussvorgang abgeschlossen ist. Es wird ein [Leerlauftimeout von 4 Minuten](#idletimeout) verwendet, um SNAT-Ports für im Leerlauf befindliche Datenflüsse wieder freizugeben.

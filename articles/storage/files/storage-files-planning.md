@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816608"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015920"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -26,7 +26,7 @@ ms.locfileid: "68816608"
 
 * **Storage Account** (Speicherkonto): Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ausführliche Informationen zur Kapazität von Speicherkonten finden Sie unter [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Skalierbarkeits- und Leistungsziele für Azure Storage).
 
-* **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in der übergeordneten Freigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze von 5 TiB für die Dateifreigabe erreicht ist.
+* **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in der übergeordneten Freigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze für die Dateifreigabe erreicht ist. Für Standard-Dateifreigaben beträgt die Kapazitätsgrenze bis zu 5 TiB (allgemein verfügbar) bzw. 100 TiB (Vorschauversion), für Premium-Dateifreigaben bis zu 100 TiB.
 
 * **Verzeichnis:** Eine optionale Hierarchie von Verzeichnissen.
 
@@ -155,7 +155,7 @@ Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. 
 
 ## <a name="file-share-redundancy"></a>Dateifreigaberedundanz
 
-Azure Files-Standardfreigaben unterstützen drei Optionen für Datenredundanz: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS) und georedundanter Speicher (GRS).
+Azure Files-Standardfreigaben unterstützen vier Optionen für Datenredundanz: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und geozonenredundanter Speicher (GZRS) (Vorschau).
 
 Azure Files-Premiumfreigaben unterstützen nur lokal redundanten Speicher (LRS).
 
@@ -186,6 +186,7 @@ Sowohl in der primären als auch in der sekundären Region werden Replikate übe
 
 Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheiden:
 
+* Geozonenredundanter Speicher (GZRS) (Vorschau) bietet hohe Verfügbarkeit und maximale Dauerhaftigkeit, indem Daten synchron in drei Azure-Verfügbarkeitszonen und dann asynchron in der sekundären Region repliziert werden. Sie können auch den Lesezugriff auf die sekundäre Region aktivieren. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen. Weitere Informationen zu GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](../common/storage-redundancy-gzrs.md).
 * Zonenredundanter Speicher (ZRS) bietet eine hohe Verfügbarkeit mit synchroner Replikation und ist für einige Szenarien ggf. besser geeignet als GRS. Weitere Informationen zu ZRS finden Sie unter [ZRS](../common/storage-redundancy-zrs.md).
 * Die asynchrone Replikation beinhaltet eine Verzögerung zwischen dem Zeitpunkt, zu dem diese Daten in der primären Region geschrieben werden, und dem Zeitpunkt, zu dem sie in der sekundären Region repliziert werden. Bei einem regionalen Notfall gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht in der primären Region wiederhergestellt werden können.
 * Mit GRS ist das Replikat nicht für den Lese- oder Schreibzugriff verfügbar, sofern von Microsoft kein Failover in der sekundären Region initiiert wird. Im Fall eines Failovers erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](../common/storage-disaster-recovery-guidance.md).
@@ -198,7 +199,7 @@ Dieser Abschnitt gilt nur für Standarddateifreigaben. Alle Premium-Dateifreigab
 
 - Die [Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) gelten für große Dateifreigaben während der Vorschau, z. B. bei der Verwendung mit Azure-Dateisynchronisierungsbereitstellungen.
 - Sie müssen ein neues universelles Speicherkonto einrichten (vorhandene Speicherkonten können nicht erweitert werden).
-- Die Konvertierung von LRS/ZRS zu GRS-Konten ist bei neuen Speicherkonten, die nach Annahme des Abonnements für die größeren Dateifreigabevorschauen erstellt wurden, nicht mehr möglich.
+- Die Konvertierung von LRS/ZRS in GRS/GZRS-Konten ist bei neuen Speicherkonten, die nach Annahme des Abonnements für die größeren Dateifreigabevorschauen erstellt wurden, nicht mehr möglich.
 
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit

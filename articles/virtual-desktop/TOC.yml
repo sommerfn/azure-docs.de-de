@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: Anwenden einer Windows-Lizenz auf Windows Virtual Desktop-Sitzungshosts
       href: apply-windows-license.md
-    - name: Einrichten einer Benutzerprofilfreigabe für einen Hostpool
+    - name: Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe
       href: create-host-pools-user-profile.md
+    - name: Erstellen eines Profilcontainers für einen Hostpool unter Verwendung von Azure NetApp Files
+      href: create-fslogix-profile-container.md
     - name: Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
       href: configure-host-pool-load-balancing.md
     - name: Vorbereiten und Anpassen eines VHD-Masterimages

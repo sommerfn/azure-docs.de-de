@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65860840"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analysieren von Daten mit Azure Machine Learning
@@ -119,7 +119,7 @@ Ihrem Testdatensatz werden zwei weitere Spalten hinzugefügt.
 Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Bewertete Beschriftungen“ (Vorhersage) können Sie die Leistung des Modells ermitteln. Als Nächstes können Sie mit diesem Modell Vorhersagen für neue Kunden treffen und das Modell als Webdienst veröffentlichen oder Ergebnisse zurück in SQL Data Warehouse schreiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Erstellen von Machine Learning-Vorhersagemodellen finden Sie unter [Einführung in Machine Learning in der Cloud][Introduction to Machine Learning on Azure].
+Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersagemodellen finden Sie unter [Einführung in das maschinelle Lernen in Microsoft Azure][Introduction to Machine Learning on Azure].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png

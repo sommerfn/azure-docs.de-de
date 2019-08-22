@@ -1,35 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Azure AD-Geräteidentität
+### YamlMime:Landing
+title: Dokumentation zur Azure AD-Geräteidentität
+summary: Hier erfahren Sie, wie Sie Geräteidentitäten in Azure AD konfigurieren und verwalten.
 metadata:
-  document_id: null
-  title: 'Dokumentation zur Azure Active Directory-Geräteidentitätsverwaltung: Tutorials, Konzepte, Referenzen | Microsoft-Dokumentation'
-  description: 'Hier erfahren Sie, wie Sie Geräteidentitäten in Azure AD konfigurieren und verwalten.'
+  title: Dokumentation zur Azure AD-Geräteidentität
+  description: Hier erfahren Sie, wie Sie Geräteidentitäten in Azure AD konfigurieren und verwalten.
   services: active-directory
-  ms.subservice: devices
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Über Geräte in Azure AD erhalten Benutzer Zugriff auf Ihre Unternehmensressourcen. Zum Schutz der Unternehmensressourcen möchten Sie als IT-Administrator diese Geräteidentitäten in Azure AD verwalten. So können Sie sicherstellen, dass Ihre Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen.<br>Die Geräteidentitätsverwaltung stellt zudem die Grundlage für gerätebasierten bedingten Zugriff dar. Mit dem gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit verwalteten Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.'
-sections:
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie Ihre lokalen in AD eingebundenen Geräte in Azure AD integrieren.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Verwaltete Domänen
-            href: hybrid-azuread-join-managed-domains.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Verbunddomänen
-            href: hybrid-azuread-join-federated-domains.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e26be2206ba63fa4721ced7ed1a2f35ddc63a5fd
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69648925"
+landingContent:
+- title: Informationen zur Geräteidentität
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist eine Geräteidentität?
+      url: overview.md
+    - text: Was ist Enterprise State Roaming?
+      url: enterprise-state-roaming-overview.md
+  - linkListType: concept
+    links:
+    - text: Bei Azure AD registrierte Geräte
+      url: concept-azure-ad-register.md
+    - text: In Azure AD eingebundene Geräte
+      url: concept-azure-ad-join.md
+    - text: In Azure AD eingebundene Hybridgeräte
+      url: concept-azure-ad-join-hybrid.md
+    - text: Einmaliges Anmelden bei lokalen Ressourcen
+      url: azuread-join-sso.md
+    - text: Primäre Aktualisierungstoken
+      url: concept-primary-refresh-token.md
+- title: Konfigurieren und Verwalten von in Azure AD eingebundenen Geräten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Planen der Implementierung Ihrer Azure AD-Einbindung
+      url: azureadjoin-plan.md
+    - text: Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
+      url: assign-local-admin.md
+    - text: Suchen nach und Verwalten von veralteten Geräten in Azure AD
+      url: manage-stale-devices.md
+- title: Konfigurieren und Verwalten von Geräten mit Azure AD-Hybrideinbindung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Planen der Implementierung Ihrer Azure AD-Hybrideinbindung
+      url: hybrid-azuread-join-plan.md
+    - text: Behandeln von Problemen mit Geräten mit Azure AD-Hybrideinbindung
+      url: troubleshoot-hybrid-join-windows-current.md

@@ -1,43 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Azure AD-Authentifizierung
+### YamlMime:Landing
+title: Dokumentation zur Azure Active Directory-Authentifizierung
+summary: Erfahren Sie, wie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout verwaltet und bereitgestellt werden.
 metadata:
-  document_id: null
-  title: Azure Active Directory-Authentifizierungsdokumentation
-  description: 'Erfahren Sie, wie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout verwaltet und bereitgestellt werden.'
+  title: Dokumentation zur Azure Active Directory-Authentifizierung
+  description: Erfahren Sie, wie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout verwaltet und bereitgestellt werden.
   services: active-directory
-  ms.subservice: authentication
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: authentication
   ms.topic: landing-page
-  ms.date: 07/19/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Erfahren Sie, wie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout bereitgestellt und verwaltet werden. Zusammen sorgen diese Funktionen für eine sichere Authentifizierung mit verschiedenen Überprüfungsmethoden sowie einen unkomplizierten Anmeldevorgang für Ihre Organisation.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie die Self-Service-Kennwortzurücksetzung aktiviert wird, um Helpdesk-Anrufen von Benutzern zu reduzieren.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_protect.png
-            text: Aktivieren der Self-Service-Kennwortzurücksetzung
-            href: 'https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr'
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie ein einfacher und sicherer Anmeldeprozess für Ihre Organisation eingeführt wird.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">Aktivieren eines Pilotversuchs zur Self-Service-Kennwortzurücksetzung</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">Erfordern von MFA für das Azure-Portal</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">Aktivieren der lokalen Integration der Self-Service-Kennwortzurücksetzung</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">Aktivieren der Windows 10-Kennwortzurücksetzung</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">Integrieren von Azure Identity Protection</a>
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 4ae9515bf7926eca305f77eff4bae3ab53d1dfa0
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874382"
+landingContent:
+- title: Informationen zur Authentifizierung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Authentifizierung?
+      url: overview-authentication.md
+    - text: Authentifizierungsmethoden
+      url: concept-authentication-methods.md
+    - text: Registrierung von Sicherheitsinformationen
+      url: concept-registration-mfa-sspr-combined.md
+    - text: Was bedeutet „kennwortlos“?
+      url: concept-authentication-passwordless.md
+- title: Bereitstellen der Self-Service-Kennwortzurücksetzung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Funktionsweise der Self-Service-Kennwortzurücksetzung
+      url: concept-sspr-howitworks.md
+    - text: Kennwortrückschreiben
+      url: concept-sspr-writeback.md
+  - linkListType: quickstart
+    links:
+    - text: 'Schnellstart: Self-Service-Kennwortzurücksetzung'
+      url: quickstart-sspr.md
+  - linkListType: deploy
+    links:
+    - text: Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD
+      url: howto-sspr-deployment.md
+    - text: Aktivieren des Kennwortrückschreibens
+      url: howto-sspr-writeback.md
+    - text: Aktivieren der Kennwortzurücksetzung über den Windows-Anmeldebildschirm
+      url: howto-sspr-windows.md
+- title: Aktivieren von Azure Multi-Factor Authentication
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Funktionsweise von Azure Multi-Factor Authentication
+      url: concept-mfa-howitworks.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Multi-Factor Authentication-Pilotprojekt für bestimmte Anwendungen
+      url: tutorial-mfa-applications.md
+    - text: Verwenden von Risikoereignissen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen
+      url: tutorial-risk-based-sspr-mfa.md
+  - linkListType: deploy
+    links:
+    - text: Bereitstellen von Azure Multi-Factor Authentication
+      url: howto-mfa-getstarted.md
+    - text: Verwenden der NPS-Erweiterung für die Integration lokaler Anwendungen
+      url: howto-mfa-nps-extension.md
+- title: Bereitstellen des Kennwortschutzes für Azure AD
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Entfernen unsicherer Kennwörter in der Cloud
+      url: concept-password-ban-bad.md
+    - text: Entfernen unsicherer Kennwörter in der lokalen Umgebung
+      url: concept-password-ban-bad-on-premises.md
+  - linkListType: get-started
+    links:
+    - text: Konfigurieren der Liste gesperrter Kennwörter
+      url: howto-password-ban-bad-configure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen des Kennwortschutzes für Azure AD
+      url: howto-password-ban-bad-on-premises-deploy.md

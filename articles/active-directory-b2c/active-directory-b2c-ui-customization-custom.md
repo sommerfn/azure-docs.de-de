@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438817"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927297"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -52,6 +52,9 @@ Erstellen Sie den HTML-Inhalt mit dem Markennamen Ihres Produkts im Titel.
    ```
 
 2. Fügen Sie den kopierten Codeausschnitt in einen Text-Editor ein, und speichern Sie die Datei dann unter dem Namen *customize-ui.html*.
+
+> [!NOTE]
+> HTML-Formularelemente werden bei der Verwendung von login.microsoftonline.com aufgrund von Sicherheitseinschränkungen entfernt. Nutzen Sie b2clogin.com, wenn Sie HTML-Formularelemente in Ihren benutzerdefinierten HTML-Inhalten verwenden möchten. Weitere Vorteile finden Sie unter [Use b2clogin.com](b2clogin.md).
 
 ## <a name="create-an-azure-blob-storage-account"></a>Erstellen eines Azure Blob Storage-Kontos
 

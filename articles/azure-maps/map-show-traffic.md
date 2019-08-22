@@ -1,5 +1,5 @@
 ---
-title: Anzeigen von Verkehrsdaten mit Azure Maps | Microsoft-Dokumentation
+title: Anzeigen von Datenverkehr mit Azure Maps | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Verkehrsdaten im Azure Maps Web SDK anzeigen.
 author: jingjing-z
 ms.author: jinzh
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 145e2246703441a08868c8aae311573e95d4de42
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: b765f6f35cecfdd3183b4432954fcfb2548de046
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976435"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874862"
 ---
-# <a name="show-traffic-on-the-map"></a>Anzeigen von Verkehrsdaten auf einer Karte
+# <a name="show-traffic-on-the-map"></a>Anzeigen von Datenverkehr auf einer Karte
 
 In Azure Maps sind zwei Arten von Verkehrsdaten verfügbar:
 
@@ -49,7 +49,7 @@ Mit dem folgenden Tool können Sie zwischen den unterschiedlichen Einstellungen 
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Optionen für Verkehrsdatenüberlagerungen" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="700" style="width: 100%;" scrolling="no" title="Optionen für Verkehrsdatenüberlagerungen" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie im Pen <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Traffic overlay options</a> (Optionen für Verkehrsdatenüberlagerungen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bei <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

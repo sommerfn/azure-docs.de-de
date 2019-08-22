@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zum bedingten Zugriff mit Azure AD
+### YamlMime:Landing
+title: Dokumentation zum bedingten Zugriff mit Azure AD
+summary: Hier erfahren Sie, wie Sie den bedingten Azure Active Directory-Zugriff konfigurieren und testen.
 metadata:
-  document_id: null
-  title: 'Dokumentation zum bedingten Zugriff mit Azure Active Directory: Tutorials, Schnellstartanleitungen, Konzepte, Referenzen | Microsoft-Dokumentation'
-  description: 'Hier erfahren Sie, wie Sie den bedingten Azure Active Directory-Zugriff konfigurieren und testen.'
+  title: Dokumentation zum bedingten Zugriff mit Azure AD
+  description: Hier erfahren Sie, wie Sie den bedingten Azure Active Directory-Zugriff konfigurieren und testen.
   services: active-directory
-  ms.subservice: conditional-access
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: conditional-access
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Lesen Sie, wie Sie das Gleichgewicht zwischen Sicherheit und Produktivität bewahren, indem Sie den bedingten Azure AD-Zugriff konfigurieren. Mit Richtlinien für bedingten Zugriff können Sie bei der Wahl des Zugriffs berücksichtigen, auf welche Weise auf Ihre Cloud-Apps zugegriffen wird. Mit Zugriffsentscheidungen können Sie unter anderem folgende Aspekte steuern:<ul><li>Wie lautet die Netzwerkadresse des Benutzers?</li><li>Wurde der Zugriffsversuch von einem verwalteten Gerät initiiert?</li><li>Über welche Client-App wurde ein Verbindungsversuch initiiert?</li><li>Wurde der Zugriff über eine riskante Anmeldung versucht?</li></ul>Die folgenden Ressourcen helfen Ihnen beim schnellen Einstieg.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Erläuterung zum bedingten Zugriff
-    href: 'https://www.youtube.com/watch?v=XruceejcCKQ'
-    width: 246
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie Richtlinien für bedingten Zugriff für allgemeine Zugriffsszenarien konfigurieren.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Vorschreiben der Verwendung der MFA für bestimmte Apps
-            href: app-based-mfa.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
-            href: app-sign-in-risk.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 'Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen'
-            href: require-tou.md
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Hier wird veranschaulicht, wie Sie Ihre klassischen Richtlinien für bedingten Zug migrieren.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="/azure/active-directory/conditional-access/policy-migration-mfa">Migrieren einer klassischen Richtlinie, die mehrstufige Authentifizierung erfordert, in das Azure-Portal</a>'
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 39f9cf3e64e343c2da98f2c4f4b403ccdc0f3f20
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874260"
+landingContent:
+- title: Informationen zum bedingten Zugriff
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist bedingter Zugriff?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Was sind Bedingungen?
+      url: conditions.md
+    - text: Wie kann ich Standorte definieren?
+      url: location-condition.md
+    - text: Was sind Kontrollen?
+      url: controls.md
+    - text: Dienstabhängigkeiten für den bedingten Zugriff
+      url: service-dependencies.md
+- title: Bereitstellen von bedingtem Zugriff
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Planen einer Bereitstellung für bedingten Zugriff
+      url: plan-conditional-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Blockieren älterer Authentifizierungsmethoden
+      url: block-legacy-authentication.md
+    - text: Behandeln von Problemen mithilfe des What If-Tools
+      url: troubleshoot-conditional-access-what-if.md
+- title: Allgemeine Richtlinien für bedingten Zugriff
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Allgemeine Richtlinien für bedingten Zugriff
+      url: concept-conditional-access-policy-common.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vorschreiben der MFA für Administratoren
+      url: howto-conditional-access-policy-admin-mfa.md
+    - text: Vorschreiben der MFA für die Azure-Verwaltung
+      url: howto-conditional-access-policy-azure-management.md
+    - text: Blockieren älterer Authentifizierungsmethoden
+      url: howto-conditional-access-policy-block-legacy.md
+    - text: Risikobasierter bedingter Zugriff (erfordert Azure AD Premium P2)
+      url: howto-conditional-access-policy-risk.md
+    - text: Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung
+      url: howto-conditional-access-policy-registration.md
+    - text: Blockieren des Zugriffs nach Standort
+      url: howto-conditional-access-policy-location.md
+    - text: Erzwingen eines kompatiblen Geräts
+      url: howto-conditional-access-policy-compliant-device.md

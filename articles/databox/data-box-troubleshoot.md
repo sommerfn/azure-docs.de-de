@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439398"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848512"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
 
@@ -38,7 +38,7 @@ Fehler in Data Box und Data Box Heavy lassen sich wie folgt zusammenfassen:
 
 Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
+### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **Fehlerbeschreibung:** Der Name des Containers oder der Freigabe muss zwischen 3 und 63 Zeichen umfassen. 
 
@@ -57,7 +57,7 @@ Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
     Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) und [Freigabenamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 
-### <a name="errorcontainerorsharenamealphanumericdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
+### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
 **Fehlerbeschreibung:** Der Name des Containers oder der Freigabe darf nur Buchstaben, Zahlen oder Bindestriche enthalten.
 
@@ -75,7 +75,7 @@ Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
 
     Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) und [Freigabenamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
-### <a name="errorcontainerorsharenameimproperdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
+### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
 **Fehlerbeschreibung:** Containernamen und Freigabenamen dürfen nicht mit einem Bindestrich beginnen oder enden, und sie dürfen keine aufeinanderfolgenden Bindestriche enthalten.
 
@@ -97,7 +97,7 @@ Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
 
 Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die zulässige Datengröße in einem Container oder einer Freigabe überschreiten.
 
-### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
+### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
 **Fehlerbeschreibung:** Azure-Dateifreigabe sind auf 5 TB an Daten begrenzt. Dieses Limit wurde für einige Freigaben überschritten.
 
@@ -110,7 +110,7 @@ Ermitteln Sie die Ordner, die dieses Problem in den Fehlerprotokollen enthalten,
 
 Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die maximale Größe des Objekts oder der Datei überschreiten, die in Azure zulässig ist. 
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
 **Fehlerbeschreibung:** Die Datei ist zu groß zum Hochladen.
 
@@ -123,7 +123,7 @@ Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die maximale Gr
 
 Hierbei handelt es sich um Fehler in Bezug auf einen nicht unterstützten Datei- oder Datentyp, der im Container oder in einer Freigabe gefunden wurde. 
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
 **Fehlerbeschreibung:** Der Blob- oder Dateiname ist nicht ordnungsgemäß ausgerichtet.
 
@@ -133,7 +133,7 @@ Entfernen Sie alle Daten, die keine VHD-/VHDX-Daten sind, aus der Seitenblobfrei
 
 Weitere Informationen finden Sie in der [Übersicht über Seitenblobs](../storage/blobs/storage-blob-pageblob-overview.md).
 
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
 **Fehlerbeschreibung:** Eine Freigabe auf einem verwalteten Datenträger enthält einen nicht unterstützten Dateityp. Nur feste VHDs sind zulässig.
 
@@ -142,7 +142,7 @@ Weitere Informationen finden Sie in der [Übersicht über Seitenblobs](../storag
 - Stellen Sie sicher, dass Sie nur feste VHDs hochladen, um verwaltete Datenträger zu erstellen.
 - VHDX-Dateien oder **dynamische** und **differenzierende** VHDs werden nicht unterstützt.
 
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
 **Fehlerbeschreibung:** In den vorab erstellten Ordnern für die verwalteten Datenträger sind keine Verzeichnisse zulässig. Nur feste VHDs sind in diesen Ordnern zulässig.
 
@@ -153,7 +153,7 @@ Weitere Informationen finden Sie in der [Übersicht über Seitenblobs](../storag
 
 Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 
-### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
 
 **Fehlerbeschreibung:** Symbolische Verknüpfungen sind unter Linux unzulässig. 
 
@@ -162,9 +162,9 @@ Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-
 
 ## <a name="non-critical-blob-or-file-errors"></a>Nicht kritische Blob- oder Dateifehler
 
-Alle Fehler, die beim Kopieren von Daten auftreten, werden in den folgenden Abschnitten zusammengefasst.
+Alle nicht kritischen Fehler im Zusammenhang mit den Namen von Blobs, Dateien oder Containern, die beim Kopieren von Daten angezeigt werden, werden im folgenden Abschnitt zusammengefasst. Wenn diese Fehler auftreten, werden die Namen so geändert, dass sie den Azure-Namenskonventionen entsprechen. Der entsprechende Auftragsstatus für das Hochladen von Daten wird **mit Warnungen abgeschlossen**.  
 
-### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
+### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
 **Fehlerbeschreibung:** Die Blob- oder Dateinamen enthalten nicht unterstützte Steuerzeichen.
 
@@ -175,7 +175,7 @@ Entfernen Sie die Dateien, oder benennen Sie sie um, und entfernen Sie nicht unt
 
 Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) und [Dateinamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
-### <a name="errorbloborfilenamecharacterillegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
+### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
 **Fehlerbeschreibung:** Die Blob- oder Dateinamen enthalten unzulässige Zeichen.
 
@@ -187,7 +187,7 @@ Entfernen Sie die Dateien, oder benennen Sie sie um, und entfernen Sie nicht unt
 Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) und [Dateinamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
 
-### <a name="errorbloborfilenameending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
+### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
 
 **Fehlerbeschreibung:** Die Blob- oder Dateinamen enden auf unzulässige Zeichen.
 
@@ -199,7 +199,7 @@ Entfernen Sie die Dateien, oder benennen Sie sie um, und entfernen Sie nicht unt
 Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) und [Dateinamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
 
-### <a name="errorbloborfilenamesegmentcount"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
+### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
 
 **Fehlerbeschreibung:** Der Blob oder Dateiname enthält zu viele Pfadsegmente.
 
@@ -208,7 +208,7 @@ Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Blobnamen
 - Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite **Verbinden und kopieren** die Fehlerdateien herunter, und überprüfen Sie sie.
 - Stellen Sie sicher, dass die [Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) und [Dateinamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) den Azure-Namenskonventionen entsprechen.
 
-### <a name="errorbloborfilenameaggregatelength"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
+### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
 **Fehlerbeschreibung:** Der Blob- oder Dateiname ist zu lang.
 
@@ -220,7 +220,7 @@ Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Blobnamen
 
 Weitere Informationen finden Sie in den Azure-Namenskonventionen für Blobnamen und Dateinamen.
 
-### <a name="errorbloborfilenamecomponentlength"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
+### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
 **Fehlerbeschreibung:** Eines der Segmente des Blob- oder Dateinamens ist zu lang.
 
@@ -230,7 +230,7 @@ Weitere Informationen finden Sie in den Azure-Namenskonventionen für Blobnamen 
 - Stellen Sie sicher, dass die [Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) und [Dateinamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) den Azure-Namenskonventionen entsprechen.
 
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
 **Fehlerbeschreibung:** Für verwaltete Datenträgerfreigaben wurden falsche Containernamen angegeben.
 

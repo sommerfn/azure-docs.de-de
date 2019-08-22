@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688978"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952041"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -29,12 +29,10 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 **Fehlercode**: UserErrorGuestAgentStatusUnavailable <br>
 **Fehlermeldung**: VM-Agent kann nicht mit Azure Backup kommunizieren<br>
 
-Nachdem Sie einen virtuellen Computer für den Backup-Dienst registriert und geplant haben, initiiert Backup den Auftrag, indem der Dienst mit dem VM-Agent kommuniziert, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn eine Momentaufnahme nicht ausgelöst wird, kann dies zu einem Fehler bei der Sicherung führen. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:<br>
-**Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 5: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
+Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich in einem inkonsistenten Zustand oder ist nicht installiert und verhindert, dass der Azure Backup-Dienst Momentaufnahmen auslöst.  
+    
+- Wenn der VM-Agent angehalten wurde oder sich in einem inkonsistenten Zustand befindet, **starten Sie den Agent neu**, und wiederholen Sie den Sicherungsvorgang (probieren Sie es mit einer Ad-hoc-Sicherung). Die Schritte zum Neustarten des Agents finden Sie im Artikel zu [Windows-VMs](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). 
+- Falls der VM-Agent nicht installiert wurde oder veraltet ist, installieren bzw. aktualisieren Sie den VM-Agent, und wiederholen Sie den Sicherungsvorgang. Die Schritte zum Installieren/Aktualisieren des Agents finden Sie im Artikel zu [Windows-VMs](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
 
@@ -44,7 +42,8 @@ Nachdem Sie einen virtuellen Computer für den Backup-Dienst registriert und gep
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
 **Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Ursache 3: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
+**Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
+**Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)** 
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht).
 
@@ -107,7 +106,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
 **Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB <br>
 
-Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Wenn Sie sich für die private Vorschau von Azure Backup mit Unterstützung großer Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, schreiben Sie uns an AskAzureBackupTeam@microsoft.com.
+Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, finden Sie weitere Informationen unter [Übersicht über die Azure-VM-Sicherung](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.
 

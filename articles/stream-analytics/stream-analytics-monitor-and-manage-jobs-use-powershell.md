@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67612300"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Überwachen und Verwalten von Stream Analytics-Aufträgen mit PowerShell-Cmdlets
@@ -228,7 +228,7 @@ Wenn Sie eine Eingabe angeben, die bereits vorhanden ist, und Sie geben den Para
 
 Wenn Sie den Parameter "-Force" und einen vorhandenen Eingabenamen angeben, wird die Eingabe ohne Bestätigung ersetzt.
 
-Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen von Eingaben (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] der Bibliothek „Referenz zur Stream Analytics-Verwaltungs-REST-API“.section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]
+Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen von Eingaben (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] der Bibliothek [Referenz zur Stream Analytics-Verwaltungs-REST-API][stream.analytics.rest.api.reference].
 
 **Beispiel 1**
 
@@ -287,7 +287,7 @@ Wenn Sie einen Auftragsnamen angeben, der bereits vorhanden ist, und Sie geben d
 
 Wenn Sie den Parameter "-Force" und einen vorhandenen Auftragsnamen angeben , wird die Auftragsdefinition ohne Bestätigung ersetzt.
 
-Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen eines Stream Analytics-Auftrags][msdn-rest-api-create-stream-analytics-job] der Bibliothek „Referenz zur Stream Analytics-Verwaltungs-REST-API“.section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]
+Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen eines Stream Analytics-Auftrags][msdn-rest-api-create-stream-analytics-job] der Bibliothek [Referenz zur Stream Analytics-Verwaltungs-REST-API][stream.analytics.rest.api.reference].
 
 **Beispiel 1**
 
@@ -330,7 +330,7 @@ Wenn Sie eine Ausgabe angeben, die bereits vorhanden ist, und Sie geben den Para
 
 Wenn Sie den Parameter "-Force" und einen vorhandenen Ausgabenamen angeben , wird die Ausgabe ohne Bestätigung ersetzt.
 
-Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen von Ausgaben (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] der Bibliothek „Referenz zur Stream Analytics-Verwaltungs-REST-API“.section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]
+Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen von Ausgaben (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] der Bibliothek [Referenz zur Stream Analytics-Verwaltungs-REST-API][stream.analytics.rest.api.reference].
 
 **Beispiel 1**
 
@@ -373,7 +373,7 @@ Wenn Sie eine Transformation angeben, die bereits vorhanden ist, und Sie geben d
 
 Wenn Sie den Parameter "-Force" und einen vorhandenen Transformationsnamen angeben, wird die Transformation ohne Bestätigung ersetzt.
 
-Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen von Transformationen (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] der Bibliothek „Referenz zur Stream Analytics-Verwaltungs-REST-API“.section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]
+Ausführliche Informationen zu Struktur und Inhalten von JSON-Dateien finden Sie im Abschnitt [Erstellen von Transformationen (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] der Bibliothek [Referenz zur Stream Analytics-Verwaltungs-REST-API][stream.analytics.rest.api.reference].
 
 **Beispiel 1**
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569605"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935068"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Erstellen und Verwenden der aktiven Georeplikation
 
@@ -76,7 +76,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 > [!NOTE]
 > Die Protokollwiedergabe wird in der sekundären Datenbank verzögert, wenn Schemaupdates für die primäre Datenbank vorhanden sind. In diesem Fall ist eine Schemasperre für die sekundäre Datenbank erforderlich.
 > [!IMPORTANT]
-> Sie können die Georeplikation verwenden, um eine sekundäre Datenbank in derselben Region wie die primäre Datenbank zu erstellen. Sie können diese sekundäre Datenbank verwenden, um einen Lastenausgleich für schreibgeschützte Workloads in derselben Region durchzuführen. Eine sekundäre Datenbank in derselben Region bietet jedoch keine zusätzliche Fehlertoleranz und ist daher kein geeignetes Failoverziel für die Notfallwiederherstellung. Es wird auch keine Garantie für die Isolation der Verfügbarkeitszone geben. Verwenden Sie die unternehmenskritische oder Premium-Dienstebene mit [zonenredundanter Konfiguration](sql-database-high-availability.md#zone-redundant-configuration), um die Isolation der Verfügbarkeitszone zu erreichen.   
+> Sie können die Georeplikation verwenden, um eine sekundäre Datenbank in derselben Region wie die primäre Datenbank zu erstellen. Sie können diese sekundäre Datenbank verwenden, um einen Lastenausgleich für schreibgeschützte Workloads in derselben Region durchzuführen. Eine sekundäre Datenbank in derselben Region bietet jedoch keine zusätzliche Fehlertoleranz und ist daher kein geeignetes Failoverziel für die Notfallwiederherstellung. Es wird auch keine Garantie für die Isolation der Verfügbarkeitszone geben. Verwenden Sie die Dienstebenen „Unternehmenskritisch“ oder „Premium“ mit [zonenredundanter Konfiguration](sql-database-high-availability.md#zone-redundant-configuration), um eine Isolation der Verfügbarkeitszone zu erreichen.   
 >
 
 - **Geplantes Failover**

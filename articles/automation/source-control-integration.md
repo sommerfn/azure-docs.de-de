@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1ae61af2ad857068950e2b2cdb6f058a33f57186
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477565"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990244"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -172,6 +172,13 @@ Wählen Sie die Quellcodeverwaltung aus, die Sie entfernen möchten. Klicken Sie
 ## <a name="encoding"></a>Codieren
 
 Wenn in Ihrem Repository der Quellcodeverwaltung mehrere Personen Runbooks mit unterschiedlichen Editoren bearbeiten, kann es sein, dass Codierungsprobleme auftreten. Dies kann zu falschen Zeichen in Ihrem Runbook führen. Weitere Informationen hierzu finden Sie unter [Häufige Gründe für Codierungsprobleme](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+
+## <a name="updating-the-access-token"></a>Aktualisieren des Zugriffstokens
+
+Derzeit gibt es keine Möglichkeit, das Zugriffstoken in der Quellcodeverwaltung über das Portal zu aktualisieren. Nach Ablauf oder Widerruf Ihres persönlichen Zugriffstokens können Sie die Quellcodeverwaltung wie folgt mit einem neuen Zugriffstoken aktualisieren:
+
+* Über die [REST-API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)
+* Mithilfe des Cmdlets [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

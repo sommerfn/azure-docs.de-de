@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: mlearned
 ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614471"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
@@ -22,7 +22,7 @@ In diesem Artikel wird erläutert, wie Sie eine statische öffentliche IP-Adress
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Sollten Sie noch einen AKS-Cluster benötigen, lesen Sie die AKS-Schnellstartanleitung [für die Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] oder für das Azure-Portal. or [using the Azure portal][aks-quickstart-portal]
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
@@ -159,7 +159,7 @@ Events:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie mehr Kontrolle über den Netzwerkdatenverkehr benötigen, der an Ihre Anwendungen gesendet wird, können Sie stattdessen einen [Eingangscontroller erstellen][aks-ingress-basic]. Sie können aber auch einen Eingangscontroller mit einer statischen öffentlichen IP-Adresse erstellen. . You can also [create an ingress controller with a static public IP address][aks-static-ingress]
+Wenn Sie mehr Kontrolle über den Netzwerkdatenverkehr benötigen, der an Ihre Anwendungen gesendet wird, können Sie stattdessen einen [Eingangscontroller erstellen][aks-ingress-basic]. Sie können aber auch einen Eingangscontroller mit einer statischen öffentlichen IP-Adresse erstellen. Außerdem können Sie einen [Eingangscontroller mit einer statischen öffentlichen IP-Adresse erstellen][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828281"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952115"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Unterstützungsmatrix für die VMware-Bewertung und -Migration
 
@@ -90,8 +90,8 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 **URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Navigieren Sie im Azure-Portal zu Azure Migrate.
-*.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
-*.microsoftonline.com | Erstellen Sie Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen Sie Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 management.azure.com | Erstellen Sie Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 dc.services.visualstudio.com | Laden Sie Anwendungsprotokolle hoch, die für die interne Überwachung verwendet werden.
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault.
@@ -104,7 +104,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **Device** | **Connection**
 --- | ---
-Appliance | Eingehende Verbindungen auf dem TCP-Port 3389, damit Remotedesktopverbindungen eine Verbindung mit der Appliance aufbauen können.<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen auf Port 443, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden.
+Appliance | Eingehende Verbindungen auf dem TCP-Port 3389, damit Remotedesktopverbindungen eine Verbindung mit der Appliance aufbauen können.<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
 vCenter-Server | Eingehende Verbindungen auf dem TCP-Port 443, damit die Appliance Konfigurations- und Leistungsmetadaten für Bewertungen sammeln kann. <br/><br/> Die Appliance verbindet sich standardmäßig mit vCenter auf Port 443. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie den Port beim Einrichten der Ermittlung ändern.
 
 
@@ -175,8 +175,8 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 **URL** | **Details**  
 --- | ---
 *.portal.azure.com | Navigieren Sie im Azure-Portal zu Azure Migrate.
-*.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
-*.microsoftonline.com | Erstellen Sie Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Melden Sie sich bei Ihrem Azure-Abonnement an.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen Sie Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 management.azure.com | Erstellen Sie Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 dc.services.visualstudio.com | Laden Sie Anwendungsprotokolle hoch, die für die interne Überwachung verwendet werden.
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault.

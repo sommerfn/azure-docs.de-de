@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566674"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515353"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -44,7 +44,7 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster 
 - Die Dienstebene „Unternehmenskritisch“ eignet sich für Geschäftsworkloads, bei denen Latenzen bei E/A-Vorgängen im Vordergrund stehen.
 
 | | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **Am besten geeignet für** |Alle|  Die meisten geschäftlichen Workloads. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Datenanwendungen mit hohem Datenkapazitätsbedarf und der Möglichkeit, Speicher automatisch zu skalieren und Computeressourcen nahtlos zu skalieren. | OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
 |  **Ressourcentyp** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
@@ -55,7 +55,7 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster 
 | **E/A-Durchsatz** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
 | | Verwaltete Instanz | Hängt von der Größe der Datei ab | – | Verwaltete Instanz: Hängt von der Größe der Datei ab|
 |**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 15 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
-|**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7-35 Tage (Standard: 7 Tage), konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
+|**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
 
 \* Pools für elastische Datenbanken werden in der Dienstebene „Hyperscale“ nicht unterstützt.
 
@@ -131,7 +131,7 @@ Derzeit leider nicht. Sie können Ihre Computeleistung und die Anzahl von Replik
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Kann ich Computeressourcen mit zusätzlichem RAM für speicherintensive Workloads bereitstellen?
 
-Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier).
+Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Kann ich mehrere Computeknoten unterschiedlicher Größe bereitstellen?
 

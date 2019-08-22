@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: mlearned
 ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615179"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service-Clusterknoten (AKS)
 
-Im Rahmen der Ausführung eines AKS-Clusters müssen Sie vielleicht Protokolle überprüfen, um ein Problem zu lösen. Im Azure-Portal können Protokolle für die [AKS-Masterkomponenten][aks-master-logs] oder für Container in einem AKS-Cluster angezeigt werden. or [containers in an AKS cluster][azure-container-logs] Es kann vorkommen, dass Sie *kubelet*-Protokolle zur Problembehandlung aus einem AKS-Knoten abrufen müssen.
+Im Rahmen der Ausführung eines AKS-Clusters müssen Sie vielleicht Protokolle überprüfen, um ein Problem zu lösen. Im Azure-Portal können Protokolle für die [AKS-Hauptkomponenten][aks-master-logs] oder [Container in einem AKS-Cluster][azure-container-logs] angezeigt werden. Es kann vorkommen, dass Sie *kubelet*-Protokolle zur Problembehandlung aus einem AKS-Knoten abrufen müssen.
 
 In diesem Artikel erfahren Sie, wie Sie `journalctl` zum Anzeigen der *kubelet*-Protokolle auf einem AKS-Knoten verwenden können.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Sollten Sie noch einen AKS-Cluster benötigen, lesen Sie die AKS-Schnellstartanleitung [für die Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] oder für das Azure-Portal. or [using the Azure portal][aks-quickstart-portal]
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 ## <a name="create-an-ssh-connection"></a>Erstellen einer SSH-Verbindung
 

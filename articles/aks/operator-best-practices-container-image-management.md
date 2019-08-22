@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
 ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614827"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)
@@ -24,13 +24,13 @@ In diesem Artikel wird erläutert, wie Container in AKS gesichert werden. Folgen
 > * Überprüfen auf und Beheben von Imageschwachstellen
 > * Automatisches Triggern und erneutes Bereitstellen von Containerimages, wenn ein Basisimage aktualisiert wird
 
-Informationen zu Best Practices finden Sie in den Artikeln [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][best-practices-cluster-security] und „Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)“. and for [pod security][best-practices-pod-security]
+Weitere Informationen finden Sie in den Best Practices für [Clustersicherheit][best-practices-cluster-security] und [Podsicherheit][best-practices-pod-security].
 
 ## <a name="secure-the-images-and-run-time"></a>Sichern von Images und Runtime
 
 **Best Practices-Anleitung**: Überprüfen Sie Ihre Containerimages auf Schwachstellen, und stellen Sie nur Images bereit, die die Validierung bestanden haben. Aktualisieren Sie regelmäßig die Basisimages und die Anwendungsruntime, und stellen Sie die Workloads dann im AKS-Cluster erneut bereit.
 
-Ein Problem bei der Einführung von containerbasierten Workloads ist die Überprüfung der Sicherheit von Images und Runtime, die zum Erstellen eigener Anwendungen verwendet werden. Wie stellen Sie sicher, dass Sie keine Sicherheitsschwachstellen in Ihre Bereitstellungen einführen? Ihr Bereitstellungsworkflow sollte einen Prozess zur Überprüfung von Containerimages mit Tools wie [Twistlock][twistlock] oder Aqua beinhalten und dann nur die Bereitstellung verifizierter Images zulassen. or [Aqua][aqua]
+Ein Problem bei der Einführung von containerbasierten Workloads ist die Überprüfung der Sicherheit von Images und Runtime, die zum Erstellen eigener Anwendungen verwendet werden. Wie stellen Sie sicher, dass Sie keine Sicherheitsschwachstellen in Ihre Bereitstellungen einführen? Ihr Bereitstellungsworkflow sollte einen Prozess zum Überprüfen von Containerimages mit Tools wie [Twistlock][twistlock] oder [Aqua][aqua] beinhalten und dann nur die Bereitstellung verifizierter Images zulassen.
 
 ![Überprüfen von Containerimages, Beheben von Schwachstellen, Validieren und Bereitstellen](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 

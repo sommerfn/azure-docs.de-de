@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384854"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953165"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -53,7 +53,7 @@ _<sup>**1** </sup> Daten vor Mai 2014 finden Sie im [Azure Enterprise Portal](ht
 
 _<sup>**2**</sup> Daten vor dem 2. Oktober 2018 finden Sie im [Azure-Kontocenter](https://account.azure.com/subscriptions)._
 
-_<sup>**3** </sup> Microsoft-Kundenvereinbarungen wurden ab März 2019 abgeschlossen und weisen keine Verlaufsdaten vor diesem Zeitpunkt auf._
+_<sup>**3** </sup> Microsoft-Kundenvereinbarungen wurden ab März 2019 abgeschlossen und weisen keine Verlaufsdaten vor diesem Zeitpunkt auf._
 
 _<sup>**4**</sup> Verlaufsdaten für Abonnements, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Siehe [Verlaufsdaten stimmen möglicherweise nicht mit Ihrer Rechnung überein](#historical-data-might-not-match-invoice) weiter unten._
 

@@ -356,6 +356,8 @@
       href: service-fabric-concept-resource-model.md
     - name: Verwaltete Identität (Vorschau)
       href: concepts-managed-identity.md
+    - name: Konfigurieren der Anmeldeinformationen des Containerrepositorys
+      href: configure-container-repository-credentials.md
 - name: Anleitungen
   items:
     - name: Einrichten der Entwicklungsumgebung

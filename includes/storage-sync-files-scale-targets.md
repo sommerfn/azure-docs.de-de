@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 2614c9290bf31813d59ee753a31622bccf0682b8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e7aa2b4389fe60eed80b15aff04d6f7fcbc7b013
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178298"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968868"
 ---
 | Resource | Ziel | Harte Grenze |
 |----------|--------------|------------|
@@ -23,8 +23,8 @@ ms.locfileid: "67178298"
 | Cloudendpunkte pro Synchronisierungsgruppe | 1 Cloudendpunkt | Ja |
 | Serverendpunkte pro Synchronisierungsgruppe | 50 Serverendpunkte | Nein |
 | Serverendpunkte pro Server | 30 Serverendpunkte | Ja |
-| Dateisystemobjekte (Verzeichnisse und Dateien) pro Synchronisierungsgruppe | 25 Millionen Objekte | Nein |
-| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 1 Million Objekte | Ja |
+| Dateisystemobjekte (Verzeichnisse und Dateien) pro Synchronisierungsgruppe | 50 Millionen Objekte | Nein |
+| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 5 Millionen Objekte | Ja |
 | Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 64 KiB | Ja |
 | Dateigröße | 100 GB | Nein |
 | Minimale Dateigröße für die Unterteilung einer Datei | 64 KiB | Ja |

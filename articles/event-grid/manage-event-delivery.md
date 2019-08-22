@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119561"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933373"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Richtlinien für unzustellbare Nachrichten und Wiederholungen
 
@@ -25,7 +25,9 @@ Bei der Erstellung von Ereignisabonnements können Sie die Einstellungen für di
 Zum Festlegen eines Speicherorts für unzustellbare Nachrichten benötigen Sie ein Speicherkonto für Ereignisse, die nicht an einen Endpunkt übermittelt werden können. Die Beispiele erhalten die Ressourcen-ID eines vorhandenen Speicherkontos. Sie erstellen ein Ereignisabonnement, das einen Container in diesem Speicherkonto als Endpunkt für unzustellbare Nachrichten verwendet.
 
 > [!NOTE]
-> Erstellen Sie im Speicher ein Speicherkonto und einen Blobcontainer, bevor Sie die Befehle in diesem Artikel ausführen.
+> - Erstellen Sie im Speicher ein Speicherkonto und einen Blobcontainer, bevor Sie die Befehle in diesem Artikel ausführen.
+> - Der Event Grid-Dienst erstellt Blobs in diesem Container. Die Namen der Blobs enthalten den Namen des Event Grid-Abonnements mit allen Buchstaben in Großbuchstaben. Wenn beispielsweise der Name des Abonnements „My-Blob-Subscription“ lautet, enthalten die Namen der Blobs für unzustellbare Nachrichten „MY-BLOB-SUBSCRIPTION“: „myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.json“. Dies dient dem Schutz vor Problemen durch Unterschiede bei der Behandlung der Groß-/Kleinschreibung von Azure-Diensten.
+
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

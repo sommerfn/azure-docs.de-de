@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414212"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845888"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -27,6 +27,16 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Fehlerbehebungen
 * Veraltete Funktionen
+
+## <a name="july-2019"></a>Juli 2019
+
+### <a name="editor-as-a-widget"></a>Editor als Widget
+
+Der Video Indexer-KI-Editor ist nun als Widget verfügbar und kann in Kundenanwendungen eingebettet werden.
+
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>Aktualisieren des benutzerdefinierten Sprachmodells aus der Untertiteldatei über das Portal
+
+Kunden können im Portal auf der Seite zur Anpassung als Eingabe für Sprachmodelle die Dateiformate VTT, SRT und TTML angeben.
 
 ## <a name="june-2019"></a>Juni 2019
 

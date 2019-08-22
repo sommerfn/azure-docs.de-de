@@ -135,20 +135,22 @@
   items:
     - name: Lösungen
       items:
-        - name: IoT Solution Accelerators
-          href: /azure/iot-suite
         - name: IoT Central
-          href: /microsoft-iot-central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
     - name: Plattformdienste
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: Dienst-SDKs
+        - name: IoT-Dienst-SDKs
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Karten
+          href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
     - name: IoT Edge

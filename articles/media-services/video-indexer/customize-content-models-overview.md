@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 855004c23df933fc2ebc71455b7b946d667fe7dc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8499e816f60b9d6605bdbdc392f6d2b3e134b863
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454641"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878818"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Anpassen von Inhaltsmodellen in Video Indexer
 
@@ -37,9 +37,9 @@ Dieser Artikel enthält Links zu den konzeptionellen Artikeln, in denen die Vort
  
 ## <a name="person-model"></a>Personenmodell
 
-* [Anpassen von Sprachmodellen – Übersicht](customize-person-model-overview.md)
-* [Anpassen von Sprachmodellen mit der Video Indexer-Website](customize-language-model-with-website.md)
-* [Anpassen von Sprachmodellen mit der Video Indexer-API](customize-person-model-with-api.md)
+* [Anpassen von Personenmodellen – Übersicht](customize-person-model-overview.md)
+* [Anpassen von Personenmodellen mit der Video Indexer-Website](customize-person-model-with-website.md)
+* [Anpassen von Personenmodellen mit der Video Indexer-API](customize-person-model-with-api.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

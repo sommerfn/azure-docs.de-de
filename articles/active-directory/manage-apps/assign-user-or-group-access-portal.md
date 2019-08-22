@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249dfeeb231c61b05af2e89f0dc02822cc18e627
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702174"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851696"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 
@@ -54,9 +54,11 @@ Zum Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App benöti
 
 Für die Option **Benutzerzuweisung erforderlich?** gilt Folgendes:
 
+- Wenn diese Option auf „Ja“ festgelegt ist, müssen Benutzer zuerst dieser Anwendung zugewiesen werden, bevor sie darauf zugreifen können.
+- Ist diese Option auf „Nein“ festgelegt, wird allen Benutzern Zugriff gewährt, die direkt zur Deep-Link-URL der Anwendung oder zur Anwendungs-URL navigieren.
 - Sie hat keine Auswirkung darauf, ob eine Anwendung im Anwendungszugriffsbereich angezeigt wird. Wenn die Anwendung im Zugriffsbereich angezeigt werden soll, müssen Sie der Anwendung einen geeigneten Benutzer oder eine geeignete Gruppe zuweisen.
-- Sie funktioniert nur mit Cloudanwendungen, die für SAML Single Sign-On konfiguriert sind, sowie mit lokalen Anwendungen, die mit einem Anwendungsproxy konfiguriert sind. Weitere Informationen finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md).
-- Sie setzt eine Benutzereinwilligung für eine Anwendung voraus. Ein Administrator kann für alle Benutzer einwilligen.  Weitere Informationen finden Sie unter [Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md).
+- Funktioniert nur mit den für SAML-SSO konfigurierten Cloudanwendungen, mit Awendungsproxyanwendungen, die Azure Active Directory-Vorauthentifizierung nutzen, oder mit Anwendungen, die direkt auf der Azure AD-Anwendungplattform aufbauen und OAuth 2.0-/OpenID Connect-Authentifizierung verwenden, nachdem ein Benutzer oder Administrator dieser Anwendung zugestimmt hat. Weitere Informationen finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md). Weitere Informationen finden Sie unter [Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md).
+- Diese Option hat keine Auswirkungen, wenn eine Anwendung für einen anderen SSO-Modus konfiguriert ist.
 
 ## <a name="assign-a-user-to-an-app---powershell"></a>Zuweisen eines Benutzers zu einer App – PowerShell
 

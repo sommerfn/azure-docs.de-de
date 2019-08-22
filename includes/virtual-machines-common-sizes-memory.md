@@ -5,31 +5,33 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 9e145bc3a6824100409a0f6215152cdf70ec6777
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67501236"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881619"
 ---
-Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
+Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe.
+
+* Die Ev3-Serie bietet den 2,3-GHz-E5-2673 v4-Prozessor (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads, und sie bringt den Ev3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang.  Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
+
+* Die Eav3-Serie und die Easv3-Serie verwenden den AMD-Prozessor EPYC<sup>TM</sup> 7452V mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 GB L3-Cache, wodurch bei der Ausführung der meisten arbeitsspeicheroptimierten Workloads mehr Optionen zur Verfügung stehen.  Die Eav3-Serie und die Easv3-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die Ev3- und die Esv3-Serie.
 
 * Die Mv2-Serie bietet die höchste vCPU-Anzahl (bis zu 208 vCPUs) und den größten Arbeitsspeicher (bis zu 5,7 TiB) für die virtuellen Computer in der Cloud. Dies ist ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
- 
+
 * Die M-Serie verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge von Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
 
 * Die Serien Dv2, G und deren DSv2/GS-Entsprechungen eignen sich ideal für Clientanwendungen, die schnellere vCPUs und eine höhere Leistung des temporären Speichers erfordern oder einen höheren Arbeitsspeicherbedarf haben. Sie bieten eine leistungsfähige Kombination für viele Anwendungen für den Unternehmenseinsatz.
 
 * Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) oder 2,3-GHz-E5-2673 v4-Prozessors (Broadwell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
-* Die Ev3-Serie bietet den 2,3-GHz-E5-2673 v4-Prozessor (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads, und sie bringt den Ev3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang.  Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
-
 * Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.  In den folgenden Tabellen der VM-Familien finden Sie Ihre Optionen für isolierte VMs.
 
-## <a name="esv3-series"></a>Esv3-Serie 
+## <a name="esv3-series"></a>Esv3-Serie
 
 ACU: 160–190 <sup>1</sup>
 
@@ -59,6 +61,23 @@ Die Instanzen der ESv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XE
 
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
+## <a name="easv3-series"></a>Easv3-Serie
+
+Storage Premium Unterstützt
+
+Storage Premium-Zwischenspeicherung: Unterstützt
+
+Die Größen der Easv3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452V mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Easv3-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen.
+
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
+|---|---|---|---|
+| Standard_E2as_v3  | 2  | 16  | 32  |
+| Standard_E4as_v3  | 4  | 32  | 64  |
+| Standard_E8as_v3  | 8  | 64  | 128 |
+| Standard_E16as_v3 | 16 | 128 | 256 |
+| Standard_E32as_v3 | 32 | 256 | 512 |
+| Standard_E48as_v3 | 48 | 384 | 768 |
+| Standard_E64as_v3 | 64 | 432 | 864 |
 
 ## <a name="ev3-series"></a>Ev3-Serie 
 
@@ -91,6 +110,23 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
+## <a name="eav3-series"></a>Eav3-Serie
+
+Storage Premium Nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: Nicht unterstützt
+
+Die Größen der Eav3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452V mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Eav3-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Wenn Sie Datenträger mit Storage Premium nutzen möchten, verwenden Sie die Größen der Easv3-Serie. Für Easv3-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Eav3-Serie.
+
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
+|---|---|---|---|---|---|
+| Standard_E2a_v3  | 2  | 16  | 50   |
+| Standard_E4a_v3  | 4  | 32  | 100  |
+| Standard_E8a_v3  | 8  | 64  | 200  |
+| Standard_E16a_v3 | 16 | 128 | 400  |
+| Standard_E32a_v3 | 32 | 256 | 800  |
+| Standard_E48a_v3 | 48 | 384 | 1200 |
+| Standard_E64a_v3 | 64 | 432 | 1600 |
 
 ## <a name="mv2-series"></a>Mv2-Serie
 
