@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 08/08/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b17e5f16b988bfa562b00bc6f5b9dfd34be4ca43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d3fc90a722b9f4043e891a14b542e6b90c94c55
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881035"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
@@ -116,8 +116,8 @@ Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern
 
 Registrierungspfade:
 
-**"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;** 
- **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
+* **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection für Windows
 
@@ -136,6 +136,42 @@ Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern
 * Signaturdatum suchen: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "szContentCreationDate" >= 7 Tage**
 
 * Überprüfungsdatum suchen: **HKLM:\Software\McAfee\Endpoint\AV\ODS -Value "LastFullScanOdsRunTime" >= 7 Tage**
+
+## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security für Linux-Bedrohungsschutz 
+
+Die Empfehlung **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren** wird generiert, wenn eine oder beide der folgenden Überprüfungen nicht bestanden werden:  
+
+- Datei **/opt/isec/ens/threatprevention/bin/isecav** wird beendet 
+
+- Ausgabe von **"/opt/isec/ens/threatprevention/bin/isecav --version"** lautet: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
+
+Die Empfehlung **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben** wird generiert, wenn eine oder mehrere der folgenden Überprüfungen nicht bestanden werden:
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **Quick scan, Full scan** zurück, und für beide Scans gilt „<= 7 Tage“
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **DAT and engine Update time** zurück, und für beide gilt „<= 7 Tage“
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --getoasconfig --summary"** gibt den Status **On Access Scan** zurück
+
+## <a name="sophos-antivirus-for-linux"></a>Sophos Antivirus für Linux 
+
+Die Empfehlung **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren** wird generiert, wenn eine oder beide der folgenden Überprüfungen nicht bestanden werden:
+
+- Datei **/opt/sophos-av/bin/savdstatus** wird beendet, oder Suche nach benutzerdefiniertem Ort **"readlink $(which savscan)"** wird durchgeführt
+
+- **"/opt/sophos-av/bin/savdstatus --version"** gibt **Sophos name = Sophos Anti-Virus and Sophos version >= 9** zurück
+
+Die Empfehlung **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben** wird generiert, wenn eine oder mehrere der folgenden Überprüfungen nicht bestanden werden:
+
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** gibt einen Wert zurück   
+
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" gibt einen Wert zurück   
+
+- **"/opt/sophos-av/bin/savdstatus --lastupdate"** gibt „lastUpdate“ zurück, Wert sollte „<= 7 Tage“ lauten 
+
+- **"/opt/sophos-av/bin/savdstatus -v"** entspricht **"On-access scanning is running"** 
+
+- **"/opt/sophos-av/bin/savconfig get LiveProtection"** gibt „enabled“ zurück  
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
