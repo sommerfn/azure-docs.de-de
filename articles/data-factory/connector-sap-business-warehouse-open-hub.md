@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256907"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967438"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory
 
@@ -174,6 +174,8 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus SAP BW Open Hub den Quelltyp in der Kopieraktivität auf **SapOpenHubSource** fest. Es gibt keine zusätzlichen typspezifischen Eigenschaften, die im Abschnitt **Quelle** der Kopieraktivität erforderlich sind.
 
+Um das Laden der Daten zu beschleunigen, können Sie [`parallelCopies`](copy-activity-performance.md#parallel-copy) in der Kopieraktivität festlegen, um Daten parallel aus SAP BW Open Hub zu laden. Wenn Sie `parallelCopies` beispielsweise auf vier festlegen, führt Data Factory vier RFC-Aufrufe gleichzeitig aus. Jeder RFC-Aufruf ruft einen Teil der Daten aus Ihrer SAP BW Open Hub-Tabelle ab, die durch die DTP-Anforderungs-ID und Paket-ID partitioniert wurde. Dies gilt, wenn die Anzahl von eindeutigen DTP-Anforderungs-IDs plus der Anzahl der Paket-IDs größer als der Wert von `parallelCopies` ist.
+
 **Beispiel:**
 
 ```json
@@ -199,7 +201,8 @@ Legen Sie zum Kopieren von Daten aus SAP BW Open Hub den Quelltyp in der Kopiera
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827460"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614268"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -33,7 +33,7 @@ In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwisc
 
 Die Kopieraktivität wird in [Integration Runtime](concepts-integration-runtime.md) ausgeführt. Für ein anderes Datenkopierszenario kann eine andere Integration Runtime-Konfiguration genutzt werden:
 
-* Beim Kopieren von Daten zwischen Datenspeichern, die beide öffentlich zugänglich sind, kann die Kopieraktivität von **Azure Integration Runtime** unterstützt werden. Azure Integration Runtime ist sicher, zuverlässig, skalierbar und [global verfügbar](concepts-integration-runtime.md#integration-runtime-location).
+* Beim Kopieren von Daten zwischen Datenspeichern, auf die beide der öffentliche Zugriff über beliebige IPs über das Internet möglich ist, kann die Kopieraktivität von **Azure Integration Runtime** unterstützt werden. Azure Integration Runtime ist sicher, zuverlässig, skalierbar und [global verfügbar](concepts-integration-runtime.md#integration-runtime-location).
 * Beim Kopieren von Daten aus bzw. in lokale Datenspeicher oder Datenspeicher in einem Netzwerk mit Zugriffssteuerung (z.B. Azure Virtual Network) müssen Sie eine **selbstgehostete integrierte Runtime** einrichten, um das Kopieren der Daten zu ermöglichen.
 
 Integration Runtime muss mit jedem Quell- und Senkendatenspeicher verknüpft werden. Erfahren Sie, wie die Kopieraktivität [bestimmt, welche IR verwendet werden muss](concepts-integration-runtime.md#determining-which-ir-to-use).
@@ -144,7 +144,7 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 
 ## <a name="monitoring"></a>Überwachung
 
-Die Ausführung der Kopieraktivität kann auf der Azure Data Factory-Benutzeroberfläche unter „Erstellen und überwachen“ oder programmgesteuert überwacht werden. Anschließend können Sie die Leistung und Konfiguration Ihres Szenarios mit der [Leistungsreferenz](copy-activity-performance.md#performance-reference) aus unseren internen Tests für die Kopieraktivität vergleichen.
+Die Ausführung der Kopieraktivität kann auf der Azure Data Factory-Benutzeroberfläche unter „Erstellen und überwachen“ oder programmgesteuert überwacht werden.
 
 ### <a name="monitor-visually"></a>Visuelle Überwachung
 
@@ -193,7 +193,7 @@ Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden auch im Au
 | usedDataIntegrationUnits | Die effektiven Datenintegrationseinheiten während des Kopiervorgangs. | Int32-Wert |
 | usedParallelCopies | Die effektiven parallelen Kopien während des Kopiervorgangs. | Int32-Wert |
 | redirectRowPath | Pfad zum Protokoll der übersprungenen, nicht kompatible Zeilen im Blobspeicher, den Sie unter „redirectIncompatibleRowSettings“ konfigurieren. Siehe das folgende Beispiel. | Text (Zeichenfolge) |
-| executionDetails | Ausführlichere Informationen zu den Phasen, die die Kopieraktivität durchläuft, sowie zu den entsprechenden Schritten, zur Dauer, zu den verwenden Konfigurationen und Ähnlichem. Da sich der Abschnitt ändern kann, empfiehlt es sich nicht, ihn zu analysieren.<br/><br/>ADF meldet außerdem die genaue Dauer (in Sekunden) für die jeweiligen Schritte unter `detailedDurations`:<br/>- **Abfragedauer** (`queuingDuration`): Die Zeit bis zum tatsächlichen Start der Kopieraktivität in der Integration Runtime. Wenn Sie eine selbstgehostete IR verwenden und dieser Wert sehr groß ist, sollten Sie die Kapazität und Nutzung der IR überprüfen und entsprechend Ihrer Workload zentral hoch- oder herunterskalieren. <br/>- **Dauer des Kopiervorbereitungsskripts** (`preCopyScriptDuration`): Die Zeit für die Ausführung des Kopiervorbereitungsskripts im Senkendatenspeicher. Wird beim Konfigurieren des Kopiervorbereitungsskripts angewandt. <br/>- **Zeit bis zum ersten Byte** (`timeToFirstByte`): Die Zeit, nach der die Integration Runtime das erste Byte vom Quelldatenspeicher empfängt. Wird auf nicht dateibasierte Quellen angewandt. Wenn dieser Wert groß ist, empfiehlt es sich, die Abfrage bzw. den Server zu überprüfen und ggf. zu optimieren.<br/>- **Übertragungsdauer** (`transferDuration`): Die Zeit, die die Integration Runtime benötigt, um nach dem Empfang des ersten Bytes von der Quelle alle Daten in die Senke zu übertragen. | Array |
+| executionDetails | Ausführlichere Informationen zu den Phasen, die die Kopieraktivität durchläuft, sowie zu den entsprechenden Schritten, zur Dauer, zu den verwenden Konfigurationen und Ähnlichem. Da sich der Abschnitt ändern kann, empfiehlt es sich nicht, ihn zu analysieren.<br/><br/>ADF meldet außerdem die genaue Dauer (in Sekunden) für die jeweiligen Schritte unter `detailedDurations`. Die Zeitangaben (für die Dauer) dieser Schritte sind exklusiv, und es werden nur die für die angegebene Kopieraktivität geltenden Zeiten angezeigt:<br/>- **Abfragedauer** (`queuingDuration`): Die bis zum tatsächlichen Start der Kopieraktivität in der Integration Runtime verstrichene Zeit. Wenn Sie eine selbstgehostete IR verwenden und dieser Wert sehr groß ist, sollten Sie die Kapazität und Nutzung der IR überprüfen und entsprechend Ihrer Workload zentral hoch- oder herunterskalieren. <br/>- **Dauer des Kopiervorbereitungsskripts** (`preCopyScriptDuration`): Die Zeit, die zwischen dem Starten der Kopieraktivität in der IR und dem Abschließen der Kopieraktivität für die Ausführung des Kopiervorbereitungsskripts im Senkendatenspeicher verstrichen ist. Wird beim Konfigurieren des Kopiervorbereitungsskripts angewandt. <br/>- **Zeit bis zum ersten Byte** (`timeToFirstByte`): Die verstrichene Zeit zwischen dem Ende des vorherigen Schritts und dem Empfangen des ersten Bytes aus dem Quelldatenspeicher durch die IR. Wird auf nicht dateibasierte Quellen angewandt. Wenn dieser Wert groß ist, empfiehlt es sich, die Abfrage bzw. den Server zu überprüfen und ggf. zu optimieren.<br/>- **Übertragungsdauer** (`transferDuration`): Die verstrichene Zeit zwischen dem Ende des vorherigen Schritts und dem Übertragen aller Daten aus der Quelle in die Senke durch die IR. | Array |
 | perfRecommendation | Tipps zur Leistungsoptimierung beim Kopieren. Weitere Informationen finden Sie im Abschnitt [Leistung und Optimierung](#performance-and-tuning). | Array |
 
 ```json

@@ -6,15 +6,15 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72f8c3ed0658765827c4a9b0669c08fefd9044f
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234174"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016335"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -141,6 +141,8 @@ Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikations
 |Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
 |Georedundanter Speicher (GRS)     |Standard_GRS         |
 |Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
+|Geozonenredundanter Speicher (GZRS)/Vorschau    |Standard_GZRS         |
+|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)/Vorschau    |Standard_RAGZRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -179,6 +181,8 @@ Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikations
 |Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
 |Georedundanter Speicher (GRS)     |Standard_GRS         |
 |Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
+|Geozonenredundanter Speicher (GZRS)/Vorschau    |Standard_GZRS         |
+|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)/Vorschau    |Standard_RAGZRS         |
 
 # <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
 

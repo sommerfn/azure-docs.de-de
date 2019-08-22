@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 75916655f1b46cd1b84220cba9db441d54486927
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 875c2002d477a95b44ad1491cb716e2ef70697e7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735667"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954849"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Sichern einer SharePoint-Farm in Azure mit DPM
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von System Center Data Protection Manager (DPM) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit DPM können Sie lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -43,7 +43,7 @@ DPM wird als lokales Systemkonto ausgeführt. Zum Sichern von SQL Server-Datenb
 Falls die SharePoint-Farm über SQL Server-Datenbanken verfügt, die mit SQL Server-Aliassen konfiguriert sind, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von DPM geschützt wird.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-Die Leistung hängt von zahlreichen Faktoren ab – unter anderem von der Größe der SharePoint-Farm. Grundsätzlich gilt: Mit einem einzelnen DPM-Server kann eine SharePoint-Farm mit einem Volumen von 25 TB geschützt werden.
+Die Leistung richtet sich nach zahlreichen Faktoren, unter anderem nach der Größe der SharePoint-Farm. Als allgemeine Regel gilt: Ein einzelner DPM-Server kann eine 25 TB große SharePoint-Farm schützten.
 
 ### <a name="dpm-update-rollup-5"></a>DPM-Updaterollup 5
 Wenn Sie eine SharePoint-Farm in Azure schützen möchten, müssen Sie zunächst mindestens das DPM-Updaterollup 5 installieren. Mit dem Updaterollup 5 kann eine (mit SQL AlwaysOn konfigurierte) SharePoint-Farm in Azure geschützt werden.

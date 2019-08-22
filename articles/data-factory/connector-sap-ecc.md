@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c92c1b87de1b728fd79c1ef02b32135463c7124f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6fd7c4ffafa54acb7ff67bd2e595f0b3c02a0e5a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720685"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967417"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
 
@@ -50,6 +50,10 @@ Im Allgemeinen stellt SAP ECC Entitäten mithilfe von OData-Diensten über SAP-G
 
 - **Aktivieren und Konfigurieren der SAP-OData-Dienste**. Sie können den OData-Dienst über TCODE SICF in Sekunden aktivieren. Sie können auch konfigurieren, welche Objekte für Anforderungen verfügbar gemacht werden sollen. Weitere Informationen finden Sie in den [ausführlichen Anweisungen](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -66,7 +70,7 @@ Folgende Eigenschaften werden für den mit SAP ECC verknüpften Dienst unterstü
 | `url` | Die URL des SAP ECC OData-Diensts | Ja |
 | `username` | Der Benutzername, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein |
 | `password` | Das Klartextkennwort, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein |
-| `connectVia` | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können eine selbstgehostete Integration Runtime oder die Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Runtime angegeben ist, wird für `connectVia` die standardmäßige Azure Integration Runtime verwendet. | Nein |
+| `connectVia` | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn Sie keine Runtime angeben, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 ### <a name="example"></a>Beispiel
 

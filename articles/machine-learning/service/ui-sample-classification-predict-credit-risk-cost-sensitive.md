@@ -1,21 +1,21 @@
 ---
-title: 'Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)'
+title: 'Grafische Benutzeroberfläche: Beispiel Nr. 4: Klassifizierung zur Vorhersage des Kreditrisikos (kostensensibel)'
 titleSuffix: Azure Machine Learning service
 description: In diesem Artikel wird gezeigt, wie über die grafische Benutzeroberfläche ein komplexes Experiment für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Python-Skripts implementiert und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606159"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990431"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)
 
@@ -37,7 +37,7 @@ Das vollständige Diagramm für dieses Experiment sieht wie folgt aus:
 
     ![Öffnen des Experiments](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="data"></a>Daten
+## <a name="data"></a>Data
 
 Wir verwenden das Dataset „German Credit Card“ aus dem UC Irvine-Repository. Dieses Dataset enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die 20 Features enthalten numerische und kategorische Features. Weitere Informationen zu diesem Dataset finden Sie auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Die letzte Spalte ist der Bezeichnung, die das Kreditrisiko bezeichnet und nur über zwei mögliche Werte verfügt: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.
 

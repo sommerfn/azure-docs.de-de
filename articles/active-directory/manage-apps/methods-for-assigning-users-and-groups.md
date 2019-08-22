@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8163b2261601b701913e07d703f5db0ac6fa7c0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688076"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967301"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory
 In diesem Artikel wird das Zuweisen von Benutzern oder Gruppen zu einer Anwendung in Azure Active Directory (Azure AD) veranschaulicht. Benutzer müssen zuerst zu einer Anwendung zugewiesen werden, bevor ein Administrator ihnen Zugriff für Folgendes gewähren kann:
@@ -82,7 +82,7 @@ Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus
 
 15. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Benutzern zuzuweisen.
 
-Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung beschrieben wurden.
+Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mithilfe der Schritte starten, die im Abschnitt mit der Lösungsbeschreibung aufgeführt wurden.
 
 ## <a name="assign-groups"></a>Zuweisen von Gruppen
 
@@ -120,7 +120,7 @@ Führen Sie die folgenden Schritte aus, um einer Anwendung eine oder mehrere Gru
 
 15. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Gruppen zuzuweisen.
 
-Nach kurzer Zeit können die Benutzer in den ausgewählten Gruppen diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung beschrieben wurden. Bei dynamischen Gruppen kann bei der Verarbeitung dieser Zuweisungen eine zusätzliche Verzögerung entstehen, bevor sie für Benutzer in den zugewiesenen Gruppen angezeigt werden.
+Nach kurzer Zeit können die Benutzer in den ausgewählten Gruppen diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung erläutert werden. Bei dynamischen Gruppen kann bei der Verarbeitung dieser Zuweisungen eine zusätzliche Verzögerung entstehen, bevor sie für Benutzer in den zugewiesenen Gruppen angezeigt werden.
 
 ## <a name="enable-self-service-application-access"></a>Aktivieren von Self-Service-Anwendungszugriff
 
@@ -165,7 +165,7 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
 
 Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer in ihrem [Anwendungszugriffsbereich](https://myapps.microsoft.com/) auf die Schaltfläche **+Hinzufügen** klicken und die Apps suchen, für die Sie den Self-Service-Zugriff aktiviert haben. Den genehmigenden Personen des Unternehmens wird im [Zugriffsbereich](https://myapps.microsoft.com/) zudem eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist. 
 
-Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h., wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen.
+Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen. Das bedeutet, dass bei der Angabe mehrerer genehmigender Personen jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md)

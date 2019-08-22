@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cad0895b63e8c201183284e9d754a482669c48d
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 0efb884de9deaa2784e160785c26d78179da6567
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312015"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966891"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopieren von Daten aus PostgreSQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -34,7 +34,7 @@ Dieser PostgreSQL-Connector unterstützt insbesondere PostgreSQL **Version 7.4 o
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Ihre PostgreSQL-Datenbank nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Details zur selbstgehosteten Integrationslaufzeit finden Sie im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md). Die Integration Runtime bietet ab Version 3.7 einen integrierten PostgreSQL-Treiber. Daher müssen keine Treiber manuell installiert werden.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Bei einer selbstgehosteten IR-Version vor 3.7 müssen Sie den [Ngpsql-Datenanbieter für PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) (Version 2.0.12 bis 3.1.9) auf dem Computer mit der Integration Runtime installieren.
 
@@ -52,7 +52,7 @@ Folgende Eigenschaften werden für den mit PostgreSQL verknüpften Dienst unters
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **PostgreSql** | Ja |
 | connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Azure Database for PostgreSQL. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 

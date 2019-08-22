@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399802"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990354"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung
 
@@ -52,6 +52,9 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
 ### <a name="for-resource-manager-vms"></a>Für Resource Manager-VMs
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+
+> [!NOTE] 
+> Die Aktivierung verwendet öffentliche IP-Adressen und wird von einer Standard-SKU-Load Balancer-Konfiguration beeinflusst. Lesen Sie [Ausgehende Verbindungen in Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections), um mehr über die Anforderungen zu erfahren.
 
 1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Führen Sie die folgenden Befehle aus:

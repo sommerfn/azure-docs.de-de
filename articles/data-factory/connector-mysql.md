@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e05e2f2d04aeb572307f8114ca80f148b3d50e3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17b6d12dc60546a29d37cfa12fe1f11186579e1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61370701"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967471"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -34,7 +34,9 @@ Dieser MySQL-Connector unterstützt insbesondere MySQL **Version 5.6 und 5.7**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Ihre MySQL-Datenbank nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Details zur selbstgehosteten Integrationslaufzeit finden Sie im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md). Die Integration Runtime bietet ab Version 3.7 einen integrierten MySQL-Treiber. Daher müssen keine Treiber manuell installiert werden.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+Die Integration Runtime bietet ab Version 3.7 einen integrierten MySQL-Treiber. Daher müssen keine Treiber manuell installiert werden.
 
 Bei einer selbstgehosteten IR-Version vor 3.7 müssen Sie den [MySQL-Connector bzw. .NET für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem Computer mit der Integration Runtime installieren. Dieser 32-Bit-Treiber ist mit 64-Bit-IR kompatibel.
 
@@ -52,7 +54,7 @@ Folgende Eigenschaften werden für den mit MySQL verknüpften Dienst unterstütz
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MySql** | Ja |
 | connectionString | Geben Sie Informationen an, die zum Herstellen einer Verbindung mit der Azure Database for MySQL-Instanz erforderlich sind.<br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 

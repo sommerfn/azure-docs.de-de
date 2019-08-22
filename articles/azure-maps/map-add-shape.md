@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Form mit Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Form zu einer JavaScript-Karte
+title: Hinzufügen einer Polygonebene zu Azure Maps | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie eine Polygonebene zum Azure Maps Web SDK hinzufügen.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,101 +9,59 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ca6c0f5e6fde5a31655ed17f4a016bf44216643f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638695"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976140"
 ---
-# <a name="add-a-shape-to-a-map"></a>Hinzufügen einer Form zu einer Karte
+# <a name="add-a-polygon-layer-to-the-map"></a>Hinzufügen einer Polygonebene zur Karte
 
-In diesem Artikel erfahren Sie, wie Sie Geometrien auf der Karte mit Linien- und Polygonebenen rendern können. Das Azure Maps-Web-SDK unterstützt auch die Erstellung von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Alle Funktionsgeometrien können auch einfach aktualisiert werden, wenn sie die Klasse [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) als Wrapper verwenden.
+In diesem Artikel erfahren Sie, wie Sie mithilfe einer Polygonebene die Bereiche der `Polygon`- und `MultiPolygon`-Featuregeometrien auf einer Karte rendern können. Das Azure Maps-Web-SDK unterstützt auch die Erstellung von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Diese Kreise werden beim Rendern auf der Karte in Polygone umgewandelt. Alle Featuregeometrien können auch ganz einfach aktualisiert werden, wenn in der Klasse [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) umschlossen sind.
 
-<a id="addALine"></a>
+## <a name="use-a-polygon-layer"></a>Verwenden einer Polygonebene 
 
-## <a name="add-lines-to-the-map"></a>Hinzufügen von Linien zur Karte
+Wenn eine Polygonebene mit einer Datenquelle verbunden ist und in die Karte geladen wird, werden die Bereiche der `Polygon`- und `MultiPolygon`-Features gerendert. Der folgende Code zeigt das Erstellen eines Polygons, das Hinzufügen zu einer Datenquelle und das Rendern mit einer Polygonebene mit der [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Klasse.
 
-`LineString`- und `MultiLineString`-Features werden verwendet, um Pfade und Konturen auf der Karte darzustellen.
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
 
-### <a name="add-a-line"></a>Hinzufügen einer Linie
+//Create a rectangular polygon.
+dataSource.add(new atlas.data.Feature(
+    new atlas.data.Polygon([[
+        [-73.98235, 40.76799],
+        [-73.95785, 40.80044],
+        [-73.94928, 40.7968],
+        [-73.97317, 40.76437],
+        [-73.98235, 40.76799]
+    ]])
+));
 
-<iframe height='500' scrolling='no' title='Hinzufügen einer Linie zu einer Karte' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a> (Hinzufügen einer Linie zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+//Create and add a polygon layer to render the polygon to the map.
+map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
+    fillColor: 'red',
+    opacaty: 0.5
+}));
+```
 
-Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
-
-Im zweiten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Ein [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest)-Objekt wird erstellt und zur Datenquelle hinzugefügt.
-
-Ein [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt rendert Linienobjekte, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind. Der letzte Codeblock erstellt eine Linienebene und fügt sie der Karte hinzu. Die Eigenschaften einer Linienebene finden Sie unter [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Die Datenquelle und die Linienebene werden erstellt und der Karte innerhalb der Funktion [Ereignishandler](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit die Linie angezeigt wird, nachdem die Karte vollständig geladen wurde.
-
-### <a name="add-symbols-along-a-line"></a>Hinzufügen von Symbolen entlang einer Linie
-
-In diesem Beispiel wird gezeigt, wie Pfeilsymbole entlang einer Linie auf der Karte hinzugefügt werden. Wenn Sie eine Symbolebene verwenden, legen Sie die Option „placement“ auf „line“ fest. Dies bewirkt, dass die Symbole entlang der Linie gerendert und dass sie gedreht (0 Grad = rechts) werden.
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Pfeile entlang Linie anzeigen" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Show arrow along line</a> (Pfeile entlang Linie anzeigen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-### <a name="line-stroke-gradient"></a> Hinzufügen eines Strichverlaufs zu einer Linie
-
-Zusätzlich zur Möglichkeit, eine einzelne Strichfarbe auf eine Linie anzuwenden, können Sie auch eine Linie mit einem Farbverlauf füllen, um den Übergang von einem Liniensegment zum nächsten anzuzeigen. Linienverläufe können z. B. dazu verwendet werden, um Veränderungen über Zeit und Entfernung, aber auch Temperaturunterschiede bei verbundenen Objekten anzuzeigen. Damit dieses Feature auf eine Linie angewendet werden kann, muss für die Datenquelle die Option `lineMetrics` auf „true“ festgelegt sein. Dann kann ein Farbverlaufsausdruck an die Option `strokeColor` der Linie übergeben werden. Der Ausdruck des Strichverlaufs muss auf den Datenausdruck `['line-progress']` verweisen, der die berechneten Linienmetriken für den Ausdruck bereitstellt.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Linie mit Strichverlauf" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Line with Stroke Gradient</a> (Linie mit Strichverlauf) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-### <a name="customize-a-line-layer"></a>Anpassen einer Linienebene
-
-Die Linienebene verfügt über mehrere Formatierungsoptionen. Hier ist ein Tool, mit dem Sie diese testen können.
-
-<br/>
-
-<iframe height='700' scrolling='no' title='Linienebeneoptionen' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>Line Layer Options</a> (Linienebeneoptionen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-<a id="addAPolygon"></a>
-
-## <a name="add-a-polygon-to-the-map"></a>Hinzufügen eines Polygons zur Karte
-
-`Polygon`- und `MultiPolygon`-Features werden häufig verwendet, um einen Bereich auf einer Karte darzustellen. 
-
-### <a name="use-a-polygon-layer"></a>Verwenden einer Polygonebene 
-
-Eine Polygonebene rendert die Fläche eines Polygons. 
 
 <iframe height='500' scrolling='no' title='Hinzufügen eines Polygons zu einer Karte ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a> (Hinzufügen eines Polygons zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
+## <a name="use-a-polygon-and-line-layer-together"></a>Verwenden von Polygon- und Linienebene
 
-Im zweiten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Ein [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) wird aus einem Array von Koordinaten erstellt und zur Datenquelle hinzugefügt. 
-
-Ein [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Objekt rendert Daten, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) auf der Karte umschlossen sind. Der letzte Codeblock erstellt eine Polygonebene und fügt sie der Karte hinzu. Die Eigenschaften einer Polygonebene finden Sie unter [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Die Datenquelle und die Polygonebene werden erstellt und der Karte innerhalb des [Ereignishandlers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit das Polygon angezeigt wird, nachdem die Karte vollständig geladen wurde.
-
-### <a name="use-a-polygon-and-line-layer-together"></a>Verwenden von Polygon- und Linienebene
-
-Eine Linienebene kann verwendet werden, um die Kontur eines Polygons zu rendern. 
+Eine Linienebene kann verwendet werden, um die Kontur von Polygonen zu rendern. Das folgende Codebeispiel rendert ebenso wie das vorherige Beispiel ein Polygon, fügt aber eine Linienebene als zweite Ebene hinzu, die mit der Datenquelle verbunden ist.  
 
 <iframe height='500' scrolling='no' title='Polygon- und Linienebene zum Hinzufügen eines Polygons' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon- und Linienebene zum Hinzufügen eines Polygons</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
-
-Im zweiten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Ein [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) wird aus einem Array von Koordinaten erstellt und zur Datenquelle hinzugefügt. 
-
-Ein [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Objekt rendert Daten, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) auf der Karte umschlossen sind. Die Eigenschaften einer Polygonebene finden Sie unter [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Bei einem [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt handelt es sich um ein Array von Linien. Die Eigenschaften einer Linienebene finden Sie unter [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Der dritte Codeblock erstellt Polygon- und Linienebenen.
-
-Der letzte Codeblock fügt der Karte die Polygon- und Linienebenen hinzu. Die Datenquelle und die Ebenen werden erstellt und der Karte innerhalb des [Ereignishandlers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit das Polygon angezeigt wird, nachdem die Karte vollständig geladen wurde.
-
-> [!TIP]
-> Linienebenen werden standardmäßig sowohl die Koordinaten von Polygonen als auch Linien in einer Datenquelle rendern. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'LineString']` oder `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` fest, um die Ebene dahingehend zu beschränken, dass nur LineString-Funktionen gerendert werden, wenn auch MultiLineString-Funktionen berücksichtigt werden sollen.
-
-### <a name="fill-a-polygon-with-a-pattern"></a>Füllen eines Polygons mit einem Muster
+## <a name="fill-a-polygon-with-a-pattern"></a>Füllen eines Polygons mit einem Muster
 
 Zusätzlich zum Füllen eines Polygons mit einer Farbe kann auch ein Bildmuster verwendet werden. Laden Sie ein Bildmuster in die Sprite-Ressourcen für Kartenbilder, und verweisen Sie dann mit der `fillPattern`-Eigenschaft der Polygonebene (PolygonLayer) auf dieses Bild.
 
@@ -113,7 +71,11 @@ Zusätzlich zum Füllen eines Polygons mit einer Farbe kann auch ein Bildmuster 
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>Polygon fill pattern</a> (Füllmuster für Polygon) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-### <a name="customize-a-polygon-layer"></a>Anpassen einer Polygonebene
+
+> [!TIP]
+> Das Azure Maps Web SDK bietet verschiedene anpassbare Bildvorlagen, die Sie als Füllmuster verwenden können. Weitere Informationen finden Sie im Dokument [Verwenden von Bildvorlagen](how-to-use-image-templates-web-sdk.md).
+
+## <a name="customize-a-polygon-layer"></a>Anpassen einer Polygonebene
 
 Die Polygonebene verfügt nur über ein paar Formatierungsoptionen. Hier ist ein Tool, mit dem Sie diese testen können.
 
@@ -142,40 +104,63 @@ Azure Maps verwendet eine erweiterte Version des GeoJSON-Schemas, das eine Defin
 }  
 ```
 
-Das Azure Maps-Web-SDK wandelt diese `Point`-Features in `Polygon`-Features unter den Deckflächen um und kann auf der Karte mit Polygon- und Linienebenen gerendert werden, wie hier gezeigt.
+Das Azure Maps Web-SDK wandelt diese `Point`-Features im Hintergrund in `Polygon`-Features um, die auf der Karte mit Polygon- und Linienebenen gerendert werden können, wie im folgenden Codebeispiel gezeigt.
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Hinzufügen eines Kreises zu einer Karte' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a> (Hinzufügen eines Kreises zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
-
-Im zweiten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Ein Kreis ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) von [Punkt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) und verfügt über eine `subType`-Eigenschaft, die auf `"Circle"` festgelegt ist, sowie und einen Wert für die Eigenschaft `radius` in Metern. Wird ein Punkt-Feature mit dem `subType` `"Circle"` zu einer Datenquelle hinzugefügt, wird diese in ein Kreispolygon in der Karte konvertiert.
-
-Ein [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Objekt rendert Daten, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) auf der Karte umschlossen sind. Der letzte Codeblock erstellt eine Polygonebene und fügt sie der Karte hinzu. Die Eigenschaften einer Polygonebene finden Sie unter [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Die Datenquelle und die Polygonebene werden erstellt und der Karte innerhalb des [Ereignishandlers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit der Kreis angezeigt wird, nachdem die Karte vollständig geladen wurde.
-
 ## <a name="make-a-geometry-easy-to-update"></a>Vereinfachen der Aktualisierung einer Geometrie
 
-Eine `Shape`-Klasse umschließt ein [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)- oder [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt und vereinfacht seine Aktualisierung und Verwaltung.
-`new Shape(data: Feature<data.Geometry, any>)` erstellt ein Shape-Objekt und initialisiert es mit der angegebenen Funktion.
+Eine `Shape`-Klasse umschließt ein [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)- oder [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt und vereinfacht seine Aktualisierung und Verwaltung. Eine Form kann erstellt werden, indem eine Geometrie und eine Reihe von Eigenschaften übergeben werden. Alternativ kann auch ein Feature übergeben werden, wie im folgenden Code zu sehen.
+
+```javascript
+//Creating a shape by passing in a geometry and a object containing properties.
+var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
+
+//Creating a shape using a feature.
+var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
+```
+
+Das folgende Codebeispiel zeigt, wie Sie ein geoJSON-Kreisobjekt mit einer Shape-Klasse umschließen und die Eigenschaft für den Radius ganz einfach mithilfe eines Schiebereglers aktualisieren können. Wenn sich der Wert für „radius“ in „Shape“ ändert, wird die Anzeige des Kreises auf der Karte automatisch aktualisiert.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Aktualisieren von Formeigenschaften' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Aktualisieren von Formeigenschaften</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Block des obigen Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
-
-Ein Punkt ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt der [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)-Klasse. Der zweite Codeblock initialisiert den Radiuswert für das HTML-Schiebereglerelement und erstellt und umschließt dann ein Point-Objekt in einem [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)-Klassenobjekt.
-
-Der dritte Codeblock erstellt eine Funktion, die den Wert aus dem HTML-Bereichsschieberegler-Element übernimmt und den Radiuswert mit der [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)-Methode der Shape-Klasse ändert.
-
-Im vierten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Dann wird der Punkt der Datenquelle hinzugefügt.
-
-Ein [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Objekt rendert Daten, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) auf der Karte umschlossen sind. Der dritte Codeblock erstellt eine Polygonebene. Die Eigenschaften einer Polygonebene finden Sie unter [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Die Datenquelle, der Click-Ereignishandler und die Polygonebene werden erstellt und der Karte innerhalb des [Ereignishandlers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit der Punkt angezeigt wird, nachdem die Karte vollständig geladen wurde.
-
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
+
+> [!div class="nextstepaction"]
+> [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln:
 
 > [!div class="nextstepaction"]
+> [Erstellen einer Datenquelle](create-data-source-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen eines Popups](map-add-popup.md)
+
+> [!div class="nextstepaction"]
 > [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Verwenden von Bildvorlagen](how-to-use-image-templates-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Linienebene](map-add-line-layer.md)
+
+Zusätzliche Ressourcen:
+
+> [!div class="nextstepaction"]
+> [Azure Maps-Erweiterung der Maps GeoJSON-Spezifikation](extend-geojson.md#circle)

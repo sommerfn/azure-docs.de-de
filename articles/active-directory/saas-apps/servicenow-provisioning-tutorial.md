@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60869829"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967181"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung in Azure Active Directory
 
@@ -44,8 +44,7 @@ Um die Azure AD-Integration mit ServiceNow konfigurieren zu können, benötigen 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
-
+- Falls Sie nicht über eine Azure AD-Testumgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erhalten.
 
 ## <a name="assigning-users-to-servicenow"></a>Zuweisen von Benutzern zu ServiceNow
 
@@ -57,6 +56,7 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 > [!IMPORTANT]
 >*   Es wird empfohlen, ServiceNow einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 >*   Wenn Sie ServiceNow einen Benutzer zuweisen, müssen Sie eine gültige Benutzerrolle auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
+>*   Weitere Informationen zum Erstellen und Konfigurieren von Rollen in Azure AD finden Sie unter diesem [Link](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 ## <a name="enable-automated-user-provisioning"></a>Aktivieren der automatisierten Benutzerbereitstellung
 

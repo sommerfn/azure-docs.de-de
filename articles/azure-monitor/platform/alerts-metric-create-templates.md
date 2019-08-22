@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 8300baa1afa3e6c738cee4c2a2517463c2af1e88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4430b14a93bb4cf2ccf43881ad061590f8e6815
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978852"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976682"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -195,7 +195,7 @@ Speichern Sie den JSON-Code unten als „simplestaticmetricalert.parameters.json
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -448,7 +448,7 @@ Speichern Sie den JSON-Code unten als „simpledynamicmetricalert.parameters.jso
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -647,7 +647,7 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -859,7 +859,7 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -942,7 +942,7 @@ az group deployment create \
 
 ## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Vorlage für Metrikwarnung, mit der mehrere Ressourcen überwacht werden
 
-In den vorherigen Abschnitten wurden Beispiele für Azure Resource Manager-Vorlagen beschrieben, in denen Metrikwarnungen zur Überwachung einer einzelnen Ressource erstellt wurden. Azure Monitor unterstützt jetzt die Überwachung von mehreren Ressourcen mit nur einer Metrikwarnungsregel. Diese Previewfunktion ist derzeit nur über Azure Resource Manager-Vorlagen und die REST-API verfügbar und wird nur für virtuelle Computer unterstützt.
+In den vorherigen Abschnitten wurden Beispiele für Azure Resource Manager-Vorlagen beschrieben, in denen Metrikwarnungen zur Überwachung einer einzelnen Ressource erstellt wurden. Azure Monitor unterstützt jetzt die Überwachung von mehreren Ressourcen mit nur einer Metrikwarnungsregel. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer und DataBox Edge-Geräte unterstützt.
 
 Warnungsregeln mit dynamischem Schwellenwert können auch dazu beitragen, angepasste Schwellenwerte für Hunderte von Metrikreihen (selbst mit verschiedenen Typen) gleichzeitig zu erstellen, sodass weniger Warnungsregeln zu verwalten sind.
 
@@ -1177,7 +1177,7 @@ Sie können die obige Vorlage mit der unten angegebenen Parameterdatei verwenden
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1494,7 +1494,7 @@ Sie können die obige Vorlage mit der unten angegebenen Parameterdatei verwenden
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1796,7 +1796,7 @@ Sie können die obige Vorlage mit der unten angegebenen Parameterdatei verwenden
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2110,7 +2110,7 @@ Sie können die obige Vorlage mit der unten angegebenen Parameterdatei verwenden
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2409,7 +2409,7 @@ Sie können die obige Vorlage mit der unten angegebenen Parameterdatei verwenden
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2726,7 +2726,7 @@ Sie können die obige Vorlage mit der unten angegebenen Parameterdatei verwenden
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {

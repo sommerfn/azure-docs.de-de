@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 267872f2036a0e697f4b2da65064805a0cfbd2b7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358744"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990465"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining 
 
@@ -47,7 +47,7 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 
 Beim Training ist es üblich, auf dem lokalen Computer zu starten und dieses Trainingsskript später auf einem anderen Computeziel auszuführen. Mit Azure Machine Learning Service können Sie Ihr Skript auf unterschiedlichen Computezielen ausführen, ohne das Skript zu ändern. 
 
-Sie müssen lediglich die Umgebung für jedes einzelne Computeziel mit einer **Laufzeitkonfiguration** definieren.  Wenn Sie Ihr Trainingsexperiment auf einem anderen Computeziel ausführen möchten, geben Sie die Laufzeitkonfiguration für diese Computeressource an. 
+Sie müssen lediglich die Umgebung für jedes einzelne Computeziel mit einer **Laufzeitkonfiguration** definieren.  Wenn Sie Ihr Trainingsexperiment auf einem anderen Computeziel ausführen möchten, geben Sie die Laufzeitkonfiguration für diese Computeressource an.
 
 Mehr über das [Übermitteln von Experimenten](#submit) finden Sie am Ende dieses Artikels.
 
@@ -74,7 +74,26 @@ Bei benutzerverwalteten Umgebungen sind Sie für die Einrichtung Ihrer Umgebung 
 Der folgende Code ist ein Beispiel für die Trainingsausführungen für eine vom Benutzer verwaltete Umgebung:
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
-  
+
+## <a name="whats-an-estimator"></a>Was ist ein Kalkulator?
+
+Um das Modelltraining mit beliebten Frameworks zu erleichtern, bietet das Python SDK für Azure Machine Learning eine alternative allgemeine Abstraktion, die Kalkulatoren-Klasse. Diese Klasse erlaubt es Ihnen, Laufzeitkonfigurationen mühelos zu erstellen. Sie können einen generischen [Kalkulator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn).
+
+Für PyTorch-, TensorFlow- und Chainer-Aufgaben bietet Azure Machine Learning außerdem die passenden [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-, [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)- und [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Kalkulatoren, um die Verwendung dieser Frameworks zu vereinfachen.
+
+Weitere Informationen finden Sie unter [Trainieren von ML-Modellen mit Kalkulatoren](how-to-train-ml-models.md).
+
+## <a name="whats-an-ml-pipeline"></a>Was ist eine ML-Pipeline?
+
+Mit ML-Pipelines können Sie Ihren Workflow durch Einfachheit, Geschwindigkeit, Portabilität und Wiederverwendung optimieren. Beim Erstellen von Pipelines mit Azure Machine Learning können Sie sich auf Ihre Fachkenntnisse (Machine Learning) und nicht auf die Infrastruktur und Automatisierung konzentrieren.
+
+ML-Pipelines werden in mehreren **Schritten** erstellt, bei denen es sich um unterschiedliche Recheneinheiten in der Pipeline handelt. Jeder Schritt kann unabhängig ausgeführt werden und isolierte Computeressourcen verwenden. Dadurch können mehrere Datenanalysten gleichzeitig an derselben Pipeline arbeiten, ohne dass die Computeressourcen überlastet werden. Außerdem ist es so einfacher, für jeden Schritt verschiedene Computetypen/-größen zu verwenden.
+
+> [!TIP]
+> ML-Pipelines können beim Trainieren von Modellen Laufzeitkonfiguration oder Kalkulatoren verwenden.
+
+ML-Pipelines können nicht nur Modelle trainieren, sondern auch Daten vor dem Training aufbereiten und Modelle nach dem Training bereitstellen. Einer der primären Anwendungsfälle für Pipelines ist die Batchbewertung. Weitere Informationen finden Sie im Artikel [Pipelines: Optimieren von Machine Learning-Workflows](concept-ml-pipelines.md).
+
 ## <a name="set-up-in-python"></a>Einrichtung in Python
 
 Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:

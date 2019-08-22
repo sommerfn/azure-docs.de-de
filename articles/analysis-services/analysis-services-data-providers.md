@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: db2557bd34cace220b1c9e5f7e6932dd63d9f89c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734529"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987498"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Clientbibliotheken zum Herstellen einer Verbindung mit Azure Analysis Services
 
@@ -23,10 +23,10 @@ Damit Clientanwendungen und Tools eine Verbindung mit Analysis Services-Servern 
 
 |Download  |Produktversion  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.24.20    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.24.20      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.3.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.3.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.33.23    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.33.23      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.2.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.2.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO und ADOMD (NuGet-Pakete)
 
@@ -34,8 +34,8 @@ Analysis Services Management Objects (AMO) und ADOMD-Clientbibliotheken stehen a
 
 |Paket  | Produktversion  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.3.0     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.3.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.2      |
 
 Die AssemblyVersion für NuGet-Paketassemblys folgt der semantischen Versionierung: HAUPT.NEBEN.PATCH. NuGet-Verweise laden die erwartete Version selbst dann, wenn im GAC eine andere Version (als Ergebnis der MSI-Installation) vorhanden ist. PATCH wird für jedes Release erhöht. AMO- und ADOMD-Versionen werden synchronisiert.
 
@@ -66,7 +66,7 @@ Clientbibliotheken für Clientverbindungen unterscheiden sich von Datenanbietern
 
  ADOMD.NET ist eine verwaltete Datenclientbibliothek, die zum Abfragen von Analysis Services-Daten eingesetzt wird. Sie wird von Tools und Clientanwendungen installiert und genutzt. 
   
- Beim Herstellen einer Verbindung mit der Datenbank sind die Eigenschaften der Verbindungszeichenfolgen für alle drei Bibliotheken ähnlich. Fast jede Verbindungszeichenfolge, die Sie für ADOMD.NET per [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) definieren, funktioniert auch für AMO und den Analysis Services OLE DB-Anbieter (MSOLAP). Weitere Informationen finden Sie unter [Verbindungszeichenfolgen-Eigenschaften (Analysis Services)](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ Beim Herstellen einer Verbindung mit der Datenbank sind die Eigenschaften der Verbindungszeichenfolgen für alle drei Bibliotheken ähnlich. Fast jede Verbindungszeichenfolge, die Sie für ADOMD.NET per [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) definieren, funktioniert auch für AMO und den Analysis Services OLE DB-Anbieter (MSOLAP). Weitere Informationen finden Sie unter [Verbindungszeichenfolgen-Eigenschaften (Analysis Services)](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess).  
 
   
 ##  <a name="bkmk_LibUpdate"></a> Ermitteln der Version einer Clientbibliothek   

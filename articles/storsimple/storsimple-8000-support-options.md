@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/15/2018
+ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: c83326212dc84348a04d54f04348a6c4c7699bde
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 046558007f1a2f2c86f80af610be56b77fa63da1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631514"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990374"
 ---
 # <a name="storsimple-solution-support"></a>Support für die StorSimple-Lösung
 
@@ -81,7 +81,7 @@ Microsoft bietet flexible Supportoptionen für Geschäftskunden des StorSimple-S
 Wenn Ihr Supportvertrag abgelaufen ist, beachten Sie bitte, dass es abhängig davon, wie lange der Supportvertrag abgelaufen ist, bis zu drei Wochen dauern kann, bis ein Teil geliefert wird, da der lokale Lagerort für Ihren Vertrag erst nach der Vertragsabwicklung mit Ersatzteilen für Ihr Gerät bestückt wird.
 
 ## <a name="local-language-support"></a>Support in Ihrer Landessprache
-Zusätzlich zu Englisch wird während der Geschäftszeiten in den folgenden Sprachen Unterstützung in der jeweiligen Landessprache angeboten: Japanisch, Koreanisch, Taiwanesisch und Chinesisch (traditionell).
+Zusätzlich zu Englisch wird während der Geschäftszeiten in den folgenden Sprachen Unterstützung in der jeweiligen Landessprache angeboten: Spanisch, Portugiesisch, Japanisch, Koreanisch, Taiwanesisch und Chinesisch (traditionell).
 
 ## <a name="support-scope"></a>Supportumfang 
 Support für Fragen in Bezug auf Abrechnung und Abonnementverwaltung ist in allen Supportstufen verfügbar. Um StorSimple-Support zu erhalten, muss der Kunde aktiv für StorSimple Standard- oder Premium-Supportpläne registriert sein. Das StorSimple-Supportteam ist verantwortlich für die Lösung aller Probleme, die die StorSimple-Lösung betreffen. Um Support für Probleme im Zusammenhang mit Azure zu erhalten, die nicht direkt mit StorSimple zusammenhängen, muss sich der Kunde für einen entsprechenden Azure-Supportplan registrieren. Ausführliche Informationen finden Sie [hier](https://azure.microsoft.com/support/plans/). Das Support-Team verweist Nicht-StorSimple-Supportfälle an das Azure-Team zur Nachverfolgung auf der Grundlage der Kundenansprüche für den Azure-Support. 

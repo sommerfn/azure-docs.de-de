@@ -1,19 +1,19 @@
 ---
 title: Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2
 description: Durchführen eines Upgrades für Ihre Lösung für die Verwendung von Azure Data Lake Storage Gen2
-services: storage
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4d5bf318a86e989ce66bffbd2aa72638ea477ab1
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.reviewer: rugopala
+ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673921"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016376"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2
 
@@ -82,7 +82,7 @@ In diesem Abschnitt wird beschrieben, welche Data Lake Storage Gen1-Plattformfun
 | |Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. | Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. | *Jetzt verfügbar* |
 | Unterstützung von virtuellen Netzwerken (VNETs)  | [Integration des virtuellen Netzwerks](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [Verwenden von Dienstendpunkten für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | *Jetzt verfügbar* |
 | Größenbeschränkungen | Keine Beschränkungen für Kontogrößen, Dateigrößen oder die Anzahl von Dateien. | Keine Beschränkungen für Kontogrößen oder die Anzahl von Dateien. Die Dateigröße ist auf 5 TB beschränkt. | *Jetzt verfügbar*|
-| Georedundanz| Lokal redundant (LRS, lokal redundanter Speicher) | Lokal redundant (LRS), zonenredundant (ZRS) global redundant (GRS), global redundant mit Lesezugriff (RA-GRS). [Hier](https://docs.microsoft.com/azure/storage/common/storage-redundancy) finden Sie weitere Informationen dazu.| *Jetzt verfügbar* |
+| Georedundanz| Lokal redundant (LRS, lokal redundanter Speicher) | Lokal redundant (LRS), zonenredundant (ZRS) georedundant (GRS), georedundant mit Lesezugriff (RA-GRS). [Hier](https://docs.microsoft.com/azure/storage/common/storage-redundancy) finden Sie weitere Informationen dazu.| *Jetzt verfügbar* |
 | Regionale Verfügbarkeit | Siehe [hier](https://azure.microsoft.com/regions/) | Alle [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | *Jetzt verfügbar*                                                                                                                           |
 | Preis                                       | Siehe [Preise](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | Siehe [Preise](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | Verfügbarkeits-SLA                            | Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/).                                                                   | Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/storage/v1_3/).                                                                                                                                                                                                                                                                                                                                                | *Jetzt verfügbar*                                                                                                                           |

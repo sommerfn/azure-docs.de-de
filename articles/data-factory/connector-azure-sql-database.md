@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 905d208dccf54ac34e3f832d4d0c5b98a6121757
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2b4d636737dbd75829c9555e340f79c3c867910d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827512"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967558"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
@@ -262,18 +262,18 @@ Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Defin
 
 ### <a name="azure-sql-database-as-the-source"></a>Azure SQL-Datenbank als Quelle
 
-Legen Sie zum Kopieren von Daten aus Azure SQL-Datenbank die **type**-Eigenschaft der Quelle der Kopieraktivität auf **SqlSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Zum Kopieren von Daten aus Azure SQL-Datenbank werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlSource** festgelegt sein. | Ja |
+| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureSqlSource** festgelegt werden. Der Typ „SqlSource“ wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. | Ja |
 | sqlReaderQuery | Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `select * from MyTable`. | Nein |
 | sqlReaderStoredProcedureName | Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. | Nein |
 | storedProcedureParameters | Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen den Namen und der Groß-/Kleinschreibung der Parameter der gespeicherten Prozedur entsprechen. | Nein |
 
 **Beachten Sie Folgendes:**
 
-- Wenn **sqlReaderQuery** für **SqlSource** angegeben ist, führt die Kopieraktivität diese Abfrage für die Azure SQL-Quelldatenbank aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
+- Wenn **sqlReaderQuery** für **AzureSqlSource** angegeben ist, führt die Kopieraktivität diese Abfrage für die Azure SQL-Datenbankquelle aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
 - Ohne Angabe von **sqlReaderQuery** oder **sqlReaderStoredProcedureName** werden die im Abschnitt „structure“ des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage verwendet. Die Abfrage `select column1, column2 from mytable` wird für Azure SQL-Datenbank ausgeführt. Falls die Datasetdefinition keinen Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
 
 #### <a name="sql-query-example"></a>Beispiel für eine SQL-Abfrage
@@ -297,7 +297,7 @@ Legen Sie zum Kopieren von Daten aus Azure SQL-Datenbank die **type**-Eigenschaf
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderQuery": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -329,7 +329,7 @@ Legen Sie zum Kopieren von Daten aus Azure SQL-Datenbank die **type**-Eigenschaf
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
                 "storedProcedureParameters": {
                     "stringData": { "value": "str3" },
@@ -368,11 +368,11 @@ GO
 > [!TIP]
 > Weitere Informationen zum unterstützten Schreibverhalten, zu unterstützten Konfigurationen und bewährten Methoden finden Sie unter [Bewährte Methode zum Laden von Daten in Azure SQL-Datenbank](#best-practice-for-loading-data-into-azure-sql-database).
 
-Legen Sie zum Kopieren von Daten aus Azure SQL-Datenbank die **type**-Eigenschaft in der Kopieraktivität auf **SqlSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
+Zum Kopieren von Daten in Azure SQL-Datenbank werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **SqlSink** festgelegt sein. | Ja |
+| type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **AzureSqlSink** festgelegt werden. Der Typ „SqlSink“ wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. | Ja |
 | writeBatchSize | Anzahl der Zeilen, die in die SQL-Tabelle *pro Batch* eingefügt werden sollen.<br/> Zulässiger Wert: **integer** (Anzahl der Zeilen) Standardmäßig bestimmt Azure Data Factory die geeignete Batchgröße dynamisch anhand der Zeilengröße. | Nein |
 | writeBatchTimeout | Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/> Zulässiger Wert: **timespan**. Beispiel: 00:30:00 (30 Minuten). | Nein |
 | preCopyScript | Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie Daten in Azure SQL-Datenbank schreiben. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein |
@@ -405,7 +405,7 @@ Legen Sie zum Kopieren von Daten aus Azure SQL-Datenbank die **type**-Eigenschaf
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "writeBatchSize": 100000
             }
         }
@@ -439,7 +439,7 @@ Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur au
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
                 "storedProcedureTableTypeParameterName": "MyTable",
                 "sqlWriterTableType": "MyTableType",
@@ -553,7 +553,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 
     ```json
     "sink": {
-        "type": "SqlSink",
+        "type": "AzureSqlSink",
         "SqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
         "SqlWriterTableType": "MarketingType",

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8e8b4ed3e101a13d369fff7b47ecbb00f8c04a52
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927840"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899802"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -387,7 +387,7 @@ Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine P
 - Der [Azure Active Directory-Anwendungsproxy](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) ermöglicht das einmalige Anmelden (SSO) und den sicheren Remotezugriff für lokal gehostete Webanwendungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erste Schritte mit Microsoft Azure-Sicherheit](./https://docs.microsoft.com/azure/security)
+- [Erste Schritte mit Microsoft Azure-Sicherheit](https://docs.microsoft.com/azure/security)
 
 Azure-Dienste und -Features, die Sie beim Sichern Ihrer Dienste und Daten innerhalb von Azure unterstützen
 

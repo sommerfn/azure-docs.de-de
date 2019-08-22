@@ -1,6 +1,6 @@
 ---
-title: Azure On-Demand Media Encoder – Überblick und Vergleich | Microsoft-Dokumentation
-description: Dieses Thema bietet eine Übersicht und einen Vergleich über Azure On-Demand-Media Encoder.
+title: Azure On-Demand Media Encoder – Übersicht | Microsoft-Dokumentation
+description: Dieses Thema bietet eine Übersicht über Azure On-Demand-Media Encoder.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e8c49815ed5e9294739a840dd0314d1c8c6c174
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464180"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "69015815"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Azure On-Demand Media Encoder – Überblick und Vergleich 
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Übersicht der Azure On-Demand Media Encoder 
 
 ## <a name="encoding-overview"></a>Übersicht über die Codierung
 
@@ -35,7 +35,10 @@ Bei Codecs handelt es sich um die Software, die die Algorithmen für die Komprim
 
 Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Dateien mit adaptiver Bitrate oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG-DASH, HLS, Smooth Streaming), ohne dass Sie diese Streamingformate erneut packen müssen.
 
-Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen.
+
+> [!Note]
+> Die Abrechnung für Streamingendpunkte erfolgt immer dann, wenn sich der Endpunkt im Status **Wird ausgeführt** befindet.
 
 Media Services unterstützt die folgenden On-Demand-Encoder, die in diesem Artikel beschrieben werden:
 
@@ -84,7 +87,6 @@ Media Encoder Premium Workflow ist mit komplexen Workflows konfiguriert. Workflo
 
 ### <a name="known-issues"></a>Bekannte Probleme
 Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei.
-
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

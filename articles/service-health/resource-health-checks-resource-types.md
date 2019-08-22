@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1692e8acda88a51173eb0eabcd90c377b431a3c3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622282"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955035"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -25,6 +25,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist der API Management-Dienst aktiv und wird ausgeführt?</li></ul>|
+
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Wird das Batch-Konto ausgeführt?</li><li>Wurde das Poolkontingent für dieses Batch-Konto überschritten?</li></ul>|
 
 ## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
 |Ausgeführte Überprüfungen|
@@ -72,6 +77,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Ist ein Fehler bei der Bereitstellung des Datenbankmigrationsdiensts aufgetreten?</li><li>Wurde die Datenbankmigrationsdienst-Instanz aufgrund von Inaktivität oder einer Benutzeranforderung beendet?</li></ul>|
 
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Wird das Data Share-Konto ausgeführt?</li><li>Ist der Cluster, der Data Share hostet, verfügbar?</li></ul>|
+
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |Ausgeführte Überprüfungen|
 |---|
@@ -112,6 +122,16 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Sind an den Schlüsseltresor gerichtete Anforderungen aufgrund von Problemen mit der Azure Key Vault-Plattform nicht erfolgreich?</li><li>Werden an den Schlüsseltresor gerichtete Anforderungen aufgrund von übermäßig vielen Anforderungen des Kunden gedrosselt?</li></ul>|
 
+## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Wird der Webdienst ausgeführt?</li></ul>|
+
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Wird der Mediendienst ausgeführt?</li></ul>|
+
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |Ausgeführte Überprüfungen|
 |---|
@@ -131,6 +151,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Antworten Front Door-Back-Ends mit Fehlern auf Integritätstests?</li><li>Wurden Konfigurationsänderungen verzögert?</li></ul>|
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Sind die Endpunkte des Lastenausgleichs verfügbar?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Ausgeführte Überprüfungen|
@@ -167,10 +192,15 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Treten bei Kunden benutzergenerierte Service Bus-Fehler auf?</li><li>Treten bei Benutzern nach dem Upgrade eines Service Bus-Namespace vermehrt vorübergehende Fehler auf?</li></ul>|
 
-## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li> Wurden Anmeldungen bei der Datenbank durchgeführt?</li></ul>|
+|<ul><li>Wird die Datenbank ausgeführt?</li></ul>|
+
+## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Wurden Anmeldungen bei der Datenbank durchgeführt?</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |Ausgeführte Überprüfungen|
@@ -192,7 +222,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Wir der Internet Information Server ausgeführt?</li><li>Wird der Load Balancer ausgeführt?</li><li>Kann die Web-App vom Rechenzentrum aus erreicht werden?</li><li>Ist das Speicherkonto verfügbar, das den Inhalt der Website hostet?</li></ul>|
 
-# <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 -  Weitere Informationen finden Sie unter [Dienstintegrität](service-health-overview.md) und [Übersicht über Azure Resource Health](resource-health-overview.md). 
 -  [Azure Resource Health – FAQ](resource-health-faq.md)
 - Richten Sie Warnungen ein, damit Sie über Integritätsprobleme benachrichtigt werden. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

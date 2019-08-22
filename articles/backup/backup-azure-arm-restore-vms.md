@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 41e01531535fe41fa894f8de3181a56885ab3bcf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736692"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955066"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -46,7 +46,7 @@ Einige Details zu Speicherkonten:
 - **Datenträger wiederherstellen**: Wenn Sie einen Datenträger wiederherstellen, wird er in das von Ihnen angegebene Speicherkonto kopiert. Der Wiederherstellungsauftrag generiert eine Vorlage, die Sie herunterladen und verwenden können, um benutzerdefinierte VM-Einstellungen festzulegen. Diese Vorlage wird im angegebenen Speicherkonto platziert.
 - **Datenträger ersetzen**: Wenn Sie einen Datenträger auf einem vorhandenen virtuellen Computer ersetzen, erstellt Azure Backup eine Momentaufnahme von diesem Computer, bevor der Datenträger ersetzt wird. Die Momentaufnahme wird im von Ihnen angegebenen Stagingspeicherort (Speicherkonto) gespeichert. Dieses Speicherkonto wird zum vorübergehenden Speichern der Momentaufnahme während des Wiederherstellungsvorgangs verwendet. Wir empfehlen, dass Sie dafür ein neues Konto erstellen, dass später problemlos entfernt werden kann.
 - **Standort des Speicherkontos**: Das Speicherkonto muss sich in derselben Region wie der Tresor befinden. Nur diese Konten werden angezeigt. Wenn es am Standort keine Speicherkonten gibt, müssen Sie ein Konto erstellen.
-- **Speichertyp**: Blobspeicher wird nicht unterstützt.
+- **Storage type** (Speichertyp): Blobspeicher wird nicht unterstützt.
 - **Speicherredundanz**: Der zonenredundante Speicher (Zone Redundant Storage, ZRS) wird nicht unterstützt. Die Informationen zu Replikation und Redundanz für das Konto stehen hinter in Klammern hinter dem Kontonamen. 
 - **Storage Premium**:
     - Beim Wiederherstellen von Nicht-Premium-VMs werden Storage Premium-Konten nicht unterstützt.
@@ -55,7 +55,7 @@ Einige Details zu Speicherkonten:
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Stellen Sie zum Wiederherstellen einer VM (neue VM erstellen) sicher, dass Sie über die richtigen [Berechtigungen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) für rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für den Vorgang „VM wiederherstellen“ verfügen.
+Stellen Sie zum Wiederherstellen einer VM (bzw. zum Erstellen einer neuen VM) sicher, dass Sie über die richtigen [Berechtigungen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für den Vorgang „VM wiederherstellen“ verfügen.
 
 Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#restore-disks) und anschließend [mithilfe der Vorlage](#use-templates-to-customize-a-restored-vm), die im Rahmen des Wiederherstellungsvorgangs generiert wurde, eine neue VM erstellen.
 

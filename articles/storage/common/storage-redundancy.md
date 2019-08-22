@@ -1,6 +1,6 @@
 ---
 title: Datenredundanz in Azure Storage | Microsoft-Dokumentation
-description: Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS).
+description: Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS), den georedundanten Speicher mit Lesezugriff (RA-GRS), den geozonenredundanten Speicher (GZRS)/Vorschau und den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: b4b9e913363938f98999c6a769ba83efbd625b69
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a4c624cf06a0e56b30b71c80a6b4a5ad48cb31a9
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798322"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016390"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -32,15 +32,17 @@ Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Redundanzop
 * [Zonenredundanter Speicher (ZRS)](storage-redundancy-zrs.md)
 * [Georedundanter Speicher (GRS)](storage-redundancy-grs.md)
 * [Georedundanter Speicher mit Lesezugriff (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
+* [Geozonenredundanter Speicher (GZRS)](storage-redundancy-gzrs.md)
+* [Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)](storage-redundancy-gzrs.md)
 
 Die folgende Tabelle zeigt in einer kurzen Übersicht, in welchem Umfang die jeweilige Replikationsstrategie bei einem bestimmten Ereignistyp (oder einem Ereignis ähnlicher Auswirkung) Dauerhaftigkeit und Verfügbarkeit bietet.
 
-| Szenario                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
+| Szenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                               |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Nichtverfügbarkeit von Knoten innerhalb eines Rechenzentrums                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
 | Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                              | Ja                              | Ja                                  | Ja                                  |
 | Ein regionsweiter Ausfall                                                                                     | Nein                              | Nein                               | Ja                                  | Ja                                  |
-| Lesezugriff auf Ihre Daten (in einer georeplizierten Remoteregion) bei regionsweiter Nichtverfügbarkeit | Nein                              | Nein                               | Nein                                   | Ja                                  |
+| Lesezugriff auf Ihre Daten (in einer georeplizierten Remoteregion) bei regionsweiter Nichtverfügbarkeit | Nein                              | Nein                               | Ja (mit RA-GRS)                                   | Ja (mit RA-GZRS)                                 |
 | Konzipiert zum Bereitstellen von \_\_ Dauerhaftigkeit von Objekten über ein bestimmtes Jahr                                          | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
 | Unterstützte Speicherkontotypen                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2, GPv1, Blob                     |
 | Verfügbarkeits-SLA für Leseanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) |
@@ -56,23 +58,26 @@ Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfü
 > Azure Storage Premium unterstützt nur lokal redundanten Speicher (Locally Redundant Storage, LRS).
 
 ## <a name="changing-replication-strategy"></a>Ändern der Replikationsstrategie
-Sie können die Replikationsstrategie für Ihr Speicherkonto mithilfe von [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder einer der [ Azure-Clientbibliotheken](https://docs.microsoft.com/azure/index#pivot=sdkstools) ändern. Bei einer Änderung des Replikationstyps Ihres Speicherkontos treten keine Ausfallzeiten auf.
+
+Sie können die Replikationsstrategie für Ihr Speicherkonto mithilfe von [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder einer der [Azure Storage-Clientbibliotheken](https://docs.microsoft.com/azure/index#pivot=sdkstools) ändern. Bei einer Änderung des Replikationstyps Ihres Speicherkontos treten keine Ausfallzeiten auf.
 
    > [!NOTE]
-   > Derzeit können Sie weder das Portal noch die API verwenden, um Ihr Konto in ZRS zu konvertieren. Ausführliche Informationen zum Konvertieren der Replikation Ihres Kontos in ZRS finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md).
+   > Derzeit können Sie das-Azure-Portal oder die Azure Storage-Clientbibliotheken nicht verwenden, um Ihr Konto in ZRS, GZRS oder RA-GZRS zu konvertieren. Weitere Informationen zum Migrieren Ihres Kontos zu ZRS finden Sie unter [Zonenredundanter Speicher (ZRS) zum Erstellen hochverfügbarer Azure Storage-Anwendungen](storage-redundancy-zrs.md). Weitere Informationen zum Migrieren von GZRS oder RA-GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](storage-redundancy-zrs.md).
     
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Entstehen mir Kosten für die Änderung der Replikationsstrategie meines Kontos?
-Es hängt von Ihrem Konvertierungspfad ab. Vom billigsten bis zum teuersten Redundanzangebot bieten wir LRS, ZRS, GRS und RA-GRS an. Beispielsweise fallen beim Wechsel *von* LRS zu einem beliebigen anderen Angebot zusätzliche Kosten an, da Sie in eine komplexere Redundanzebene wechseln. Beim Wechsel *zu* GRS oder RA-GRS fallen Kosten für eine ausgehende Bandbreite an, da Ihre Daten (in Ihrer primären Region) in Ihre sekundäre Remoteregion repliziert werden. Dies sind einmalige Kosten bei der anfänglichen Einrichtung. Nachdem die Daten kopiert sind, fallen keine weiteren Kosten für die Konvertierung an. Ihnen werden nur ggf. die Replikation neuer oder die Aktualisierung vorhandener Daten in Rechnung gestellt. Ausführliche Informationen zu Bandbreitengebühren finden Sie auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Wenn Sie Ihr Speicherkonto von GRS in LRS umwandeln, entstehen keine zusätzlichen Kosten, aber Ihre replizierten Daten werden am sekundären Standort gelöscht.
+Es hängt von Ihrem Konvertierungspfad ab. Die Reihenfolge der Azure Storage-Redundanzangebote vom kostengünstigsten bis zum kostenintensivsten: LRS, ZRS, GRS, RA-GRS, GZRS und RA-GZRS. Beispielsweise fallen beim Wechsel *von* LRS zu einem beliebigen anderen Replikationstyp zusätzliche Kosten an, da Sie in eine komplexere Redundanzebene wechseln. Beim Wechsel *zu* GRS oder RA-GRS fallen Kosten für eine ausgehende Bandbreite an, da Ihre Daten (in Ihrer primären Region) in Ihre sekundäre Remoteregion repliziert werden. Dies sind einmalige Kosten bei der ersten Einrichtung. Nachdem die Daten kopiert sind, fallen keine weiteren Kosten für die Migration an. Ihnen werden nur ggf. die Replikation neuer oder die Aktualisierung vorhandener Daten in Rechnung gestellt. Ausführliche Informationen zu Bandbreitengebühren finden Sie auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Wenn Sie Ihr Speicherkonto von RA-GRS in GRS oder LRS umwandeln, wird das Konto nach dem Umstellungsdatum für weitere 30 Tage als RA-GRS abgerechnet.
+Wenn Sie Ihr Speicherkonto von GRS zu LRS migrieren, entstehen keine zusätzlichen Kosten, aber Ihre replizierten Daten werden am sekundären Standort gelöscht.
+
+Wenn Sie Ihr Speicherkonto von RA-GRS zu GRS oder LRS migrieren, wird das Konto nach dem Umstellungsdatum für weitere 30 Tage als RA-GRS abgerechnet.
 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Lokal redundanter Speicher (LRS): Kostengünstige Datenredundanz für Azure Storage](storage-redundancy-lrs.md)
 - [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md)
 - [Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage](storage-redundancy-grs.md)
+- [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit geozonenredundantem Speicher (GZRS): Vorschau](storage-redundancy-gzrs.md).
 - [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)
 - [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS-Speicher](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) (Redundanzoptionen für Microsoft Azure Storage und Lesezugriff auf georedundanten Speicher)

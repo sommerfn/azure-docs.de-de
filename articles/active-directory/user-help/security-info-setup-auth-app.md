@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bda010ddcf9b02506df14f06fb0650271a53b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382987"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954353"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App
 
@@ -65,7 +65,10 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 
 6. Öffnen Sie die Microsoft Authenticator-App, lassen Sie Benachrichtigungen zu (bei entsprechender Aufforderung), wählen Sie oben rechts das Symbol zum **Anpassen und Steuern** aus, und wählen Sie dann nacheinander **Konto hinzufügen** und **Geschäfts-, Schul- oder Unikonto** aus.
 
-7. Wechseln Sie zurück zur Seite **Konto einrichten** auf Ihrem Computer, und klicken Sie auf **Weiter**.
+    >[!Note]
+    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authenticator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
+
+7. Wechseln Sie zurück zur Seite **Einrichten Ihres Kontos** auf Ihrem Computer, und wählen Sie dann **Weiter**.
 
     Die Seite **QR-Code scannen** wird angezeigt.
 
@@ -75,7 +78,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 
     Die Authenticator-App sollte Ihr Geschäfts-, Schul- oder Unikonto erfolgreich hinzufügen, ohne dass Sie zusätzliche Informationen angeben müssen. Wenn der QR-Codeleser den Code jedoch nicht lesen kann, können Sie den Link **Kann der QR-Code nicht gescannt werden?** auswählen und den Code und die URL manuell in die Microsoft Authenticator-App eingeben. Weitere Informationen zum manuellen Hinzufügen eines Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
 
-9. Klicken Sie auf der Seite **QR-Code scannen** auf Ihrem Computer auf **Weiter**.
+9. Wählen Sie auf der Seite **QR-Code scannen** auf Ihrem Computer **Weiter** aus.
 
     Eine Benachrichtigung wird an die Microsoft Authenticator-App auf Ihrem Mobilgerät gesendet, um Ihr Konto zu testen.
 

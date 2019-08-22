@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: face3719f32ccb44e7479150e94417496141f90b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d8ce0a4f6bacdd1c8c858d474e6f3957a23c6357
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509560"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967362"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
@@ -163,7 +163,7 @@ Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigen
 **Beachten Sie Folgendes:**
 
 * Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt darunter automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in **parallelCopies** zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
-* Beim Kopieren von Daten aus nicht dateibasierten Speichern (außer Oracle Database als Quelle mit aktivierter Datenpartitionierung) in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies**-Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
+* Beim Kopieren von Daten aus nicht dateibasierten Speichern (außer den Connectors für [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-Tabelle](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) als Quelle mit aktivierter Datenpartitionierung) in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies**-Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
 * Die **parallelCopies**-Eigenschaft ist orthogonal zu **dataIntegrationUnits**. Die erste Eigenschaft wird für alle Datenintegrationseinheiten gezählt.
 * Berücksichtigen Sie beim Angeben eines Werts für die **parallelCopies**-Eigenschaft die höhere Auslastung Ihrer Quell- und Senkendatenspeicher. Berücksichtigen Sie auch den Lastanstieg zur selbstgehosteten Integration Runtime, wenn die Kopieraktivität davon abhängt, z. B. bei Hybridkopiervorgängen. Dieser Lastanstieg tritt insbesondere auf, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder der selbstgehosteten Integration Runtime-Infrastruktur feststellen, verringern Sie den Wert **parallelCopies**, um die Last zu reduzieren.
 

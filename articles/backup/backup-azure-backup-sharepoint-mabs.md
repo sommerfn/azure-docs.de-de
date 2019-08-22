@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a19b97e36bc28e5e629391f799b69370cf0fa38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e31c875f31f118716feea0c73bc2ca70a4ecd9a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737273"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954825"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -43,7 +43,7 @@ Azure Backup Server wird als ein „LocalSystem“-Konto ausgeführt. Zum Sicher
 Falls die SharePoint-Farm über SQL Server-Datenbanken verfügt, die mit SQL Server-Aliasnamen konfiguriert sind, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von MABS geschützt wird.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
-Die Leistung hängt von zahlreichen Faktoren ab – unter anderem von der Größe der SharePoint-Farm. Grundsätzlich gilt: Mit einer einzelnen MABS-Instanz kann eine SharePoint-Farm mit einem Volumen von 25 TB geschützt werden.
+Die Leistung richtet sich nach zahlreichen Faktoren, unter anderem nach der Größe der SharePoint-Farm. Als allgemeine Regel gilt: Eine einzelne MABS-Instanz kann eine 25 TB große SharePoint-Farm schützten.
 
 ### <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
 * Der MABS-Schutz einer SharePoint-Farm erstreckt sich nicht auf Suchindizes oder Anwendungsdienstdatenbanken. Für diese Datenbanken muss der Schutz separat konfiguriert werden.

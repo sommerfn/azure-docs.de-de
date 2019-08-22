@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427724"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987469"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Verwalten von Azure Data Box und Azure Data Box Heavy über das Azure-Portal
 
@@ -123,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um den Auftragsverlauf herunterzuladen:
 2. Klicken Sie auf **Bestellverlauf herunterladen**. Im heruntergeladenen Verlauf sehen Sie einen Eintrag für die Sendungsverfolgungsprotokolle des Zustelldiensts. Den zwei Knoten auf einer Data Box Heavy-Instanz entsprechend gibt es zwei Protokollgruppen. Unten in diesem Protokoll finden Sie Links zu den folgenden Elementen:
     
    - **Kopierprotokolle:** Diese Protokolle enthalten die Liste der Dateien, bei denen während des Kopierens von Daten von Data Box in Ihr Azure-Speicherkonto Fehler aufgetreten sind.
-   - **Überwachungsprotokolle:** Diese Protokolle enthalten Informationen zum Einschalten und zum Zugriff auf Data Box, wenn sich der Dienst außerhalb des Azure-Rechenzentrums befindet.
+   - **Überwachungsprotokolle** enthalten Informationen zum Einschalten und Zugriff auf Freigaben auf Data Box außerhalb eines Azure-Rechenzentrums.
    - **BOM-Dateien:** Diese Dateien enthalten die Dateiliste (auch als Dateimanifest bezeichnet), die Sie bei der **Versandvorbereitung** herunterladen können und die die Dateinamen, Dateigrößen und Dateiprüfsummen enthält.
 
        ```
@@ -207,7 +207,8 @@ Sobald sich der Gerätestatus im Portal ändert, werden Sie per E-Mail benachric
 |Empfangen     | Ihr Gerät wurde im Azure-Rechenzentrum empfangen und gescannt. <br> Nach Überprüfung der Sendung beginnt das Hochladen der Daten auf dem Gerät.      |
 |Daten kopieren     | Die Daten werden gerade kopiert. Verfolgen Sie den Kopierfortschritt Ihres Auftrags im Azure-Portal. <br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist. |
 |Abgeschlossen       |Der Auftrag wurde erfolgreich abgeschlossen.<br> Vergewissern Sie sich, dass sich Ihre Daten in Azure befinden, bevor Sie die lokalen Daten von Servern löschen.         |
-|Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle.   |
+|Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Fehlern abgeschlossen wurde](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Abgeschlossen mit Warnungen| Das Kopieren der Daten wurde abgeschlossen, Ihre Daten wurden jedoch geändert. Die Daten hatten unkritische Blob- oder Dateinamensfehler, die durch Ändern der Datei- oder Blobnamen behoben wurden. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Beachten Sie sich die Änderungen in Ihren Daten. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Warnungen abgeschlossen wurde](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
 |Bereinigen | Die Daten auf den Datenträgern des Geräts werden gelöscht. Die Gerätebereinigung gilt als abgeschlossen, wenn der Auftragsverlauf im Azure-Portal zum Download zur Verfügung steht.|
 

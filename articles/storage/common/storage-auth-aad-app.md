@@ -1,21 +1,21 @@
 ---
-title: Authentifizieren mit Azure Active Directory für den Zugriff auf Blob- und -Warteschlangendaten aus einer Clientanwendung
+title: Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory aus einer Clientanwendung – Azure Storage
 description: Verwenden Sie Azure Active Directory zum Authentifizieren aus einer Clientanwendung, zum Abrufen eines OAuth 2.0-Tokens und zum Autorisieren von Anforderungen an den Azure-Blob- und -Warteschlangenspeicher.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250005"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986798"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory aus einer Clientanwendung
 
 Ein wesentlicher Vorteil bei der Verwendung von Azure Active Directory (Azure AD) mit dem Azure-Blob- und -Warteschlangenspeicher besteht darin, dass Ihre Anmeldeinformationen nicht mehr im Code gespeichert werden müssen. Stattdessen können Sie ein OAuth 2.0-Zugriffstoken von Microsoft Identity Platform (früher Azure AD) anfordern. Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD das Zugriffstoken an die Anwendung zurück, und die Anwendung kann dann das Zugriffstoken zum Autorisieren von Anforderungen an den Azure-Blob- oder -Warteschlangenspeicher verwenden.
 

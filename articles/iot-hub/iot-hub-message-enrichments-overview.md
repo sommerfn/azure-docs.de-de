@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377196"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976978"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
 
@@ -29,9 +29,9 @@ Eine Nachrichtenanreicherung besteht aus drei Hauptelementen:
 
 * Einem oder mehreren [Endpunkten](iot-hub-devguide-endpoints.md), bei dem/denen die Anreicherung angewendet werden soll.
 
-Der Schlüssel kann eine beliebige Zeichenfolge sein.
+Der **Schlüssel** ist eine Zeichenfolge. Ein Schlüssel darf nur alphanumerische Zeichen oder diese Sonderzeichen enthalten: Bindestrich (`-`), Unterstrich (`_`) und Punkt (`.`).
 
-Der Wert kann eines der folgenden Beispiele sein:
+Der **Wert** kann eines der folgenden Beispiele sein:
 
 * Eine statische Zeichenfolge. Dynamische Werte wie Bedingungen, Logik, Vorgänge und Funktionen sind nicht zulässig. Wenn Sie beispielsweise eine SaaS-Anwendung entwickeln, die von mehreren Kunden verwendet wird, können Sie jedem Kunden einen Bezeichner zuweisen und diesen Bezeichner in der Anwendung zur Verfügung stellen. Bei Ausführung der Anwendung stempelt IoT Hub die Gerätetelemetrienachrichten mit dem Bezeichner des Kunden und ermöglicht es so, dass die Nachrichten bei jedem Kunden anders verarbeitet werden.
 

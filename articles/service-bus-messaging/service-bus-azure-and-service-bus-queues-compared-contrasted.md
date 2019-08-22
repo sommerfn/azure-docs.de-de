@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: dbbc43bc7a2f42f8a72ce12d84da1ae406a588d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799351"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017796"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die derzeit in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -52,7 +52,7 @@ Als Lösungsarchitekt/-entwickler sollten Sie die **Verwendung von Service Bus-W
 * Sie wünschen eine Anwendung, die Nachrichten als parallele Datenströme mit langer Ausführungsdauer verarbeitet (Nachrichten werden mithilfe der [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid)-Eigenschaft für die Nachricht einem Datenstrom zugeordnet). In diesem Modell konkurriert jeder Knoten in der verarbeitenden Anwendung um Datenströme und nicht um Nachrichten. Wenn ein Datenstrom an einen verarbeitenden Knoten übergeben wird, kann der Knoten den Status des Anwendungsdatenstroms mithilfe von Transaktionen untersuchen.
 * Beim Senden oder Empfangen mehrerer Nachrichten über eine Warteschlange muss sich die Lösung durch Transaktionsfähigkeit und Unteilbarkeit auszeichnen.
 * Die Anwendung verarbeitet Nachrichten, die zwar 64 KB überschreiten können, die Grenze von 256 KB aber wahrscheinlich nicht erreichen werden.
-* Sie müssen ein rollenbasiertes Zugriffsmodell für Warteschlangen bereitstellen, die Absendern und Empfängern unterschiedliche Rechte/Berechtigungen gewähren.
+* Sie müssen ein rollenbasiertes Zugriffsmodell für Warteschlangen bereitstellen, die Absendern und Empfängern unterschiedliche Rechte/Berechtigungen gewähren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Active Directory (Vorschau)](service-bus-role-based-access-control.md).
 * Die Warteschlangengröße überschreitet 80 GB nicht.
 * Sie möchten das auf Standards basierende AMQP 1.0-Messagingprotokoll verwenden. Weitere Informationen zu AMQP finden Sie unter [Service Bus AMQP Overview (Service Bus AMQP – Übersicht)](service-bus-amqp-overview.md).
 * Sie können schließlich eine Migration von der warteschlangenbasierten Punkt-zu-Punkt-Kommunikation zu einem Nachrichtenaustauschmodell in Erwägung ziehen, um zusätzliche Empfänger (Abonnenten) nahtlos zu integrieren, von denen jeder eine Kopie einiger oder aller an die Warteschlange gesendeten Nachrichten erhält. Der letzte Punkt bezieht sich auf die Veröffentlichungs-/Abonnementfunktion, die von Service Bus selbst bereitgestellt wird.
@@ -143,7 +143,7 @@ In diesem Abschnitt werden Storage-Warteschlangen und Service Bus-Warteschlangen
 * Wenn der Inhalt der Nachricht bei Storage-Warteschlangen nicht XML-sicher ist, muss er mit **Base64** codiert werden. Wenn Sie die Nachricht mit **Base64** codieren, darf die Benutzernutzlast statt 64 KB nur 48 KB betragen.
 * Bei Service Bus-Warteschlangen besteht jede in einer Warteschlange gespeicherte Nachricht aus zwei Teilen: einem Header und einem Text. Die Gesamtgröße der Nachricht darf die maximale, von der Dienstebene unterstützte Nachrichtengröße nicht überschreiten.
 * Wenn Clients über das TCP-Protokoll mit Service Bus-Warteschlangen kommunizieren, ist die maximale Anzahl gleichzeitiger Verbindungen mit einer einzelnen Service Bus-Warteschlange auf 100 beschränkt. Diese Anzahl wird zwischen Absendern und Empfängern aufgeteilt. Wenn dieses Kontingent erreicht wird, werden nachfolgende Anforderungen für zusätzliche Verbindungen abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. Diese Begrenzung gilt nicht für Clients, die über die REST-basierte API eine Verbindung mit Warteschlangen herstellen.
-* Wenn Sie mehr als 10.000 Warteschlangen in einem einzelnen Service Bus-Dienstnamespace benötigen, können Sie sich mit dem Azure-Supportteam in Verbindung setzen und eine Erhöhung des Werts anfordern. Um mit Service Bus auf mehr als 10.000 Warteschlangen zu skalieren, können Sie mithilfe des [Azure-Portals][Azure portal] auch zusätzliche Namespaces erstellen.
+* Wenn Sie mehr als 10.000 Warteschlangen in einem einzelnen Service Bus-Dienstnamespace benötigen, können Sie sich mit dem Azure-Supportteam in Verbindung setzen und eine Erhöhung des Werts anfordern. Um für Service Bus auf mehr als 10.000 Warteschlangen zu skalieren, können Sie mithilfe des [Azure-Portals][Azure portal] auch zusätzliche Namespaces erstellen.
 
 ## <a name="management-and-operations"></a>Verwaltung und Abläufe
 In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Warteschlangen bereitgestellten Verwaltungsfunktionen verglichen.

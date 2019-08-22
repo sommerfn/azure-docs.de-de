@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840501"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966853"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
@@ -80,6 +80,7 @@ Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf
 |---|---|---|
 |Schlüssel|Standardmäßig deaktiviert.| Standardmäßig aktiviert.|
 |Tokenverschlüsselung| Nicht verfügbar.| Standardmäßig deaktiviert. |
+
 #### <a name="authentication-with-keys"></a>Authentifizierung mit Schlüsseln
 
 Wenn Sie Authentifizierung für eine Bereitstellung aktivieren, werden automatisch Authentifizierungsschlüssel erstellt.
@@ -98,7 +99,6 @@ print(primary)
 
 > [!IMPORTANT]
 > Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
-
 
 #### <a name="authentication-with-tokens"></a>Authentifizierung mit Tokens
 
@@ -155,50 +155,17 @@ Beispielsweise erwartet das Modell im Beispiel [Train within Notebook](https://g
             ]
         ]
 }
-``` 
+```
 
 Der Webdienst kann mehrere Sätze von Daten in einer Anforderung akzeptieren. Er gibt ein JSON-Dokument mit einem Array von Antworten zurück.
 
 ### <a name="binary-data"></a>Binärdaten
 
-Wenn Ihr Modell Binärdaten (beispielsweise ein Bild) akzeptiert, müssen Sie die für Ihre Bereitstellung verwendete Datei `score.py` so ändern, dass sie HTTP-Rohanforderungen akzeptiert. Hier ist ein Beispiel für eine Datei `score.py`, die Binärdaten akzeptiert:
+Informationen zum Aktivieren der Unterstützung für Binärdaten in Ihrem Dienst finden Sie unter [Binärdaten](how-to-deploy-and-where.md#binary).
 
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
+### <a name="cross-origin-resource-sharing-cors"></a>Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)
 
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> Der Namespace `azureml.contrib` ändert sich häufig, während wir daran arbeiten, den Dienst zu verbessern. Daher sollte alles in diesem Namespace als Vorschau und als von Microsoft nicht vollständig unterstützt betrachtet werden.
->
-> Wenn Sie dies in Ihrer lokalen Entwicklungsumgebung testen müssen, können Sie die Komponenten im Namespace `contrib` mit dem folgenden Befehl installieren:
-> 
-> ```shell
-> pip install azureml-contrib-services
-> ```
+Informationen zum Aktivieren der CORS-Unterstützung in Ihrem Dienst finden Sie unter [Ressourcenfreigabe zwischen verschiedenen Ursprüngen](how-to-deploy-and-where.md#cors) (Cross-Origin Resource Sharing).
 
 ## <a name="call-the-service-c"></a>Aufrufen des Diensts (C#)
 
@@ -528,3 +495,7 @@ Power BI unterstützt die Nutzung von Azure Machine Learning-Webdiensten, um die
 Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
 Nachdem der Webdienst bereitgestellt wurde, kann er über Power BI-Dataflows genutzt werden. [Informieren Sie sich über die Integration von Azure Machine Learning in Power BI (Vorschau)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Eine Referenzarchitektur für die Echtzeitbewertung von Python und Deep Learning-Modellen finden Sie im [Azure Architecture Center](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

@@ -13,55 +13,45 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82638e3e102f7b8e39cd797960a11f3193132bc1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: eabf29b10814d19e89c21f27ec66fce5355c9bfb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779389"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880717"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Benutzerdefinierte Administratorrollen in Azure Active Directory (Vorschau)
 
-In diesem Artikel werden die Grundlagen der neuen benutzerdefinierten rollenbasierten Zugriffssteuerung (RBAC) und Ressourcenbereiche in Azure Active Directory (Azure AD) beschrieben. Durch benutzerdefinierte RBAC-Rollen werden die zugrunde liegenden Berechtigungen der [integrierten Rollen](directory-assign-admin-roles.md) angezeigt, sodass Sie eigene benutzerdefinierte Rollen erstellen und organisieren können. Ressourcenbereiche bieten Ihnen die Möglichkeit, die benutzerdefinierte Rolle zur Verwaltung einiger Ressourcen (z. B. einer Anwendung) zuzuweisen, ohne Zugriff auf alle Ressourcen (alle Anwendungen) zu gewähren.
+In diesem Artikel werden die Grundlagen der neuen benutzerdefinierten rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) sowie Ressourcenbereiche in Azure Active Directory (Azure AD) beschrieben. Durch benutzerdefinierte RBAC-Rollen werden die zugrunde liegenden Berechtigungen der [integrierten Rollen](directory-assign-admin-roles.md) angezeigt, sodass Sie eigene benutzerdefinierte Rollen erstellen und organisieren können. Dadurch können Sie den Zugriff bei Bedarf differenzierter gewähren als mit integrierten Rollen. Dieses erste Release der benutzerdefinierten RBAC-Rollen umfasst die Funktion, eine Rolle zum Zuweisen von Berechtigungen zum Verwalten von Anwendungsregistrierungen zu erstellen. Im Laufe der Zeit werden weitere Berechtigungen für Organisationsressourcen wie Unternehmensanwendungen, Benutzer und Geräte hinzugefügt.  
 
-Die Erteilung von Berechtigungen mithilfe benutzerdefinierter RBAC-Rollen erfolgt in zwei Schritten. Zunächst erstellen Sie eine benutzerdefinierte Rollendefinition und fügen ihr Berechtigungen aus der vordefinierten Liste hinzu. Dabei handelt es sich um die gleichen Berechtigungen, die in den integrierten Rollen verwendet werden. Nach dem Erstellen der Rolle weisen Sie sie durch Erstellen einer Rollenzuweisung einem Benutzer zu. Durch diesen zweistufigen Vorgang können Sie eine Rolle erstellen und dann mehrmals für verschiedene Bereiche zuweisen. Eine benutzerdefinierte Rolle kann im Verzeichnisbereich oder in einem Objektbereich zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendung. Auf diese Weise kann die gleiche Rolle Sally für alle Anwendungen im Verzeichnis und dann Naveen nur für die App der Contoso-Spesenabrechnungen zugewiesen werden.
-
-Dieses erste Release der benutzerdefinierten RBAC-Rollen umfasst die Funktion, eine Rolle zum Zuweisen von Berechtigungen zum Verwalten von Anwendungsregistrierungen zu erstellen. Im Laufe der Zeit werden weitere Berechtigungen für Organisationsressourcen wie Unternehmensanwendungen, Benutzer und Geräte hinzugefügt.
-
-Previewfunktionen:
-
-- Aktualisierungen der Portalbenutzeroberfläche zum Erstellen und Verwalten von benutzerdefinierten Rollen und zum Zuweisen dieser Rollen zu Benutzern im organisationsweiten Bereich
-- PowerShell-Vorschaumodul mit neuen Cmdlets für Folgendes:
-  - Erstellen und Verwalten von benutzerdefinierten Rollen
-  - Zuweisen von benutzerdefinierten Rollen mit einem organisationsweiten oder einem anwendungsregistrierungsspezifischen Bereich
-  - Zuweisen von integrierten Rollen im organisationsweiten Bereich (Gleichstellung mit allgemein verfügbaren Cmdlets)
-  - Unterstützung der Azure AD Graph-API
+Darüber hinaus unterstützen benutzerdefinierte RBAC-Rollen zusätzlich zu den eher herkömmlichen organisationsweiten Zuweisungen auch Zuweisungen auf Ressourcenbasis. Dieser Ansatz bietet Ihnen die Möglichkeit, Zugriff zum Verwalten einiger Ressourcen (z. B. einer App-Registrierung) zu erteilen, ohne Zugriff auf alle Ressourcen (alle App-Registrierungen) zu gewähren.
 
 Die rollenbasierte Zugriffssteuerung ist eine öffentliche Previewfunktion von Azure AD und mit jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Grundlegendes zur rollenbasierten Zugriffssteuerung von Azure AD
 
-Mit der rollenbasierten Zugriffssteuerung von Azure AD können Sie Rollen zuweisen, die so angepasst sind, dass zulässige Aktionen nur für einen Typ von Azure AD-Ressource möglich sind. Die rollenbasierte Zugriffssteuerung von Azure AD funktioniert auf ähnliche Weise wie die rollenbasierte Zugriffssteuerung in Azure ([Azure RBAC](../../role-based-access-control/overview.md)) für den Zugriff auf Azure-Ressourcen. Die rollenbasierte Zugriffssteuerung von Azure AD basiert jedoch auf Microsoft Graph, während Azure RBAC auf Azure Resource Manager basiert. Die Funktionen beider Systeme beruhen aber auf Rollenzuweisungen.
+Das Erteilen von Berechtigungen mithilfe benutzerdefinierter RBAC-Rollen ist ein zweistufiger Prozess, bei dem eine benutzerdefinierte Rollendefinition erstellt und dann mithilfe einer Rollenzuweisung zugewiesen wird. Eine benutzerdefinierte Rollendefinition ist eine Sammlung von Berechtigungen, die Sie aus einer vordefinierten Liste hinzufügen. Bei diesen Berechtigungen handelt es sich um die gleichen Berechtigungen, die in den integrierten Rollen verwendet werden.  
+
+Nachdem Sie Ihre Rollendefinition erstellt haben, können Sie diese durch Erstellen einer Rollenzuweisung einem Benutzer zuweisen. Eine Rollenzuweisung erteilt einem Benutzer die Berechtigungen in einer Rollendefinition für einen bestimmten Bereich. Durch diesen zweistufigen Prozess können Sie eine Rollendefinition erstellen und dann für verschiedene Bereiche mehrmals zuweisen. Ein Bereich definiert die Gruppe von Ressourcen, auf die das Rollenmitglied Zugriff hat. Der gängigste Bereich ist der organisationsweite Bereich. Eine benutzerdefinierte Rolle kann für den organisationsweiten Bereich zugewiesen werden. Dies bedeutet, dass das Rollenmitglied über die Rollenberechtigungen für alle Ressourcen in der Organisation verfügt. Eine benutzerdefinierte Rolle kann auch für einen Objektbereich zugewiesen werden. Ein Beispiel für einen Objektbereich ist eine einzelne Anwendung. Auf diese Weise kann die gleiche Rolle einem Mitarbeiter für alle Anwendungen in der Organisation und dann einem anderen Mitarbeiter nur für die App der Contoso-Spesenabrechnungen zugewiesen werden.  
+
+Die rollenbasierte Zugriffssteuerung in Azure AD funktioniert auf ähnliche Weise wie die [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md). Der Unterschied besteht darin, dass Azure RBAC den Zugriff auf Azure-Ressourcen wie virtuelle Computer und Websites steuert und Azure AD RBAC den Zugriff auf Azure AD steuert. Beide Systeme nutzen das Konzept von Rollendefinitionen und Rollenzuweisungen.
 
 ### <a name="role-assignments"></a>Rollenzuweisungen
 
-Bei der Steuerung des Zugriffs mithilfe der rollenbasierten Zugriffssteuerung von Azure AD werden **Rollenzuweisungen** erstellt, über die Berechtigungen erzwungen werden. Eine Rollenzuweisung besteht aus drei Elementen:
-
-- Sicherheitsprinzipal
+Eine Rollenzuweisung ist der Prozess, bei dem einem Benutzer eine Rollendefinition für einen bestimmten Bereich zugewiesen wird, um Zugriff zu erteilen. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen. Eine Rollenzuweisung besteht aus drei Elementen:
+- Benutzer
 - Rollendefinition
 - Ressourcenumfang
 
-Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen. Sie können über das Azure-Portal, über Azure AD PowerShell und über die Graph-API [Rollenzuweisungen erstellen](roles-create-custom.md). Sie können die [Zuweisungen für eine benutzerdefinierte Rolle](roles-view-assignments.md#view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview) separat anzeigen.
+Zum [Erstellen von Rollenzuweisungen](roles-create-custom.md) können Sie das Azure-Portal, Azure AD PowerShell oder die Graph-API verwenden. Sie können auch [die Zuweisungen für eine benutzerdefinierte Rolle anzeigen](roles-view-assignments.md#view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview).
 
-Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde Chris Green die Rolle [Anwendungsadministrator](directory-assign-admin-roles.md#application-administrator) im Bereich der SalesForce-Anwendung zugewiesen. Chris hat keinen Zugriff auf die Verwaltung einer anderen Anwendung, es sei denn, die entsprechenden Anwendungen sind Teil einer anderen Rollenzuweisung.
+Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde Chris Green die benutzerdefinierte Rolle „App-Registrierungsadministrator“ für den Bereich der Contoso Widget Builder-App-Registrierung zugewiesen. Diese Zuweisung erteilt Chris die Berechtigungen der Rolle „App-Registrierungsadministrator“ nur für diese spezifische App-Registrierung.
 
 ![Die Rollenzuweisung definiert, wie Berechtigungen erzwungen werden. Sie besteht aus drei Teilen.](./media/roles-custom-overview/rbac-overview.png)
 
 ### <a name="security-principal"></a>Sicherheitsprinzipal
 
-Ein Sicherheitsprinzipal stellt den Benutzer oder Dienstprinzipal dar, dem Zugriff auf Azure AD-Ressourcen zugewiesen werden soll. Ein *Benutzer* ist eine Person, die über ein Benutzerprofil in Azure Active Directory verfügt. Ein *Dienstprinzipal* ist eine Sicherheitsidentität, die in Anwendungen oder Diensten für den Zugriff auf bestimmte Azure AD-Ressourcen verwendet wird.
-
-Ein Sicherheitsprinzipal ähnelt einer Benutzeridentität darin, dass er einen Benutzernamen und ein Kennwort oder Zertifikat darstellt, jedoch für eine Anwendung oder einen Dienst und nicht für einen Benutzer.
+Ein Sicherheitsprinzipal stellt den Benutzer dar, dem Zugriff auf Azure AD-Ressourcen zugewiesen werden soll. Ein *Benutzer* ist eine Person, die über ein Benutzerprofil in Azure Active Directory verfügt.
 
 ### <a name="role"></a>Role
 
@@ -72,7 +62,7 @@ Eine Rollendefinition oder Rolle ist eine Sammlung von Berechtigungen. Eine Roll
 
 ### <a name="scope"></a>`Scope`
 
-Ein Bereich ist die Beschränkung zulässiger Aktionen auf eine bestimmte Azure AD-Ressource. Beim Zuweisen einer Rolle können Sie einen Bereich angeben, der die zulässigen Aktionen des Administrators auf eine spezifische Ressource beschränkt. Wenn Sie z. B. einem Entwickler eine benutzerdefinierte Rolle zuweisen möchten, jedoch nur zum Verwalten einer spezifischen Anwendungsregistrierung, können Sie die entsprechende Anwendungsregistrierung als Bereich in die Rollenzuweisung einfügen.
+Ein Bereich ist die Beschränkung zulässiger Aktionen auf eine bestimmte Azure AD-Ressource im Rahmen einer Rollenzuweisung. Beim Zuweisen einer Rolle können Sie einen Bereich angeben, der den Zugriff des Administrators auf eine bestimmte Ressource beschränkt. Wenn Sie z. B. einem Entwickler eine benutzerdefinierte Rolle – jedoch nur zum Verwalten einer bestimmten Anwendungsregistrierung – zuweisen möchten, können Sie die entsprechende Anwendungsregistrierung als Bereich in die Rollenzuweisung einschließen.
 
   > [!Note]
   > Benutzerdefinierte Rollen können im Verzeichnisbereich und im Ressourcenbereich zugewiesen werden. Noch können sie nicht im Bereich von Verwaltungseinheiten zugewiesen werden.

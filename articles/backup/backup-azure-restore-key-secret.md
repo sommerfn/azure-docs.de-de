@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: dacurwin
-ms.openlocfilehash: 379dd87edbbfa878a034cd61854ee15f215b0228
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: cca8cf3a222b71954e6727e184ff5d16839a6a68
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689117"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954561"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup
 
@@ -23,7 +23,7 @@ Dieser Artikel befasst sich mit Azure VM Backup für die Wiederherstellung von v
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Sicherung verschlüsselter VMs** – Verschlüsselte Azure-VMs wurden mithilfe von Azure Backup gesichert. Finden Sie im Artikel [Sichern und Wiederherstellen von Azure-VMs mithilfe von PowerShell](backup-azure-vms-automation.md) ausführliche Informationen zur Sicherung verschlüsselter Azure-VMs.
+* **Sicherung verschlüsselter VMs** – Verschlüsselte Azure-VMs wurden mithilfe von Azure Backup gesichert. Im Artikel [Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von PowerShell](backup-azure-vms-automation.md) finden Sie ausführliche Informationen zur Sicherung verschlüsselter Azure-VMs.
 * **Konfigurieren von Azure Key Vault** – Stellen Sie sicher, dass der Schlüsseltresor, für den Schlüssel und Geheimschlüssel wiederhergestellt werden müssen, bereits vorhanden ist. Finden Sie im Artikel [Erste Schritte mit Azure Key Vault](../key-vault/key-vault-get-started.md) ausführliche Informationen zum Verwalten des Schlüsseltresors.
 * **Wiederherstellen von Datenträgern** – Stellen Sie sicher, dass Sie gemäß den Anweisungen unter [Schritte zu PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm) die Wiederherstellung von Aufträgen ausgelöst haben, um Datenträger für verschlüsselte virtuelle Computer wiederherzustellen. Dies ist notwendig, da bei diesem Auftrag eine JSON-Datei in Ihrem Speicherkonto generiert wird, die Schlüssel und Geheimnisse für die verschlüsselte wiederherzustellende VM enthält.
 
@@ -138,4 +138,4 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie den Schlüssel und das Geheimnis wieder im Schlüsseltresor wiederhergestellt haben, lesen Sie den Artikel [Verwalten von Sicherungen und Wiederherstellungen von Azure-VMs mithilfe von PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Dieser enthält ausführliche Informationen zum Erstellen verschlüsselter VMs über wiederhergestellte Datenträger, Schlüssel und Geheimnisse.
+Nachdem Sie den Schlüssel und das Geheimnis im Schlüsseltresor wiederhergestellt haben, lesen Sie den Artikel [Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Dieser enthält ausführliche Informationen zum Erstellen verschlüsselter VMs über wiederhergestellte Datenträger, Schlüssel und Geheimnisse.

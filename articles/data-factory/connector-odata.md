@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 5a54892c1d6e05e27e349e519d41ebd937ff64c7
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 30bad3dd519d622d7e224da7bd53e7c6625014f6
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509221"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966482"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 
@@ -35,6 +35,10 @@ Der OData-Connector unterstützt insbesondere Folgendes:
 
 - OData Version 3.0 und 4.0.
 - Kopieren von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **Windows**, **AAD-Dienstprinzipal** und **verwaltete Identitäten für Azure-Ressourcen**.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -60,7 +64,7 @@ Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstü
 | servicePrincipalEmbeddedCertPassword | Geben Sie das Kennwort Ihres Zertifikats an, falls Ihr Zertifikat mit einem Kennwort geschützt ist. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).  | Nein|
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Nein |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern.| Nein |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime auswählen (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel 1: Verwenden der anonymen Authentifizierung**
 

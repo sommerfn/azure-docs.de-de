@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707435"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033318"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Anwendungsregistrierungsuntertypen und -berechtigungen in Azure Active Directory
 
@@ -46,12 +46,12 @@ Details zu den folgenden Berechtigungen für die benutzerdefinierten Rollen (Vor
 
 ### <a name="create-and-delete"></a>Erstellen und Löschen
 
-Für die Erteilung der Möglichkeit zum Erstellen von Anwendungsregistrierungen stehen zwei Berechtigungen zur Verfügung:
+Für die Erstellung von Anwendungsregistrierungen stehen zwei Berechtigungen zur Verfügung, die jeweils ein anderes Verhalten aufweisen:
 
-- **microsoft.directory/applications/createAsOwner**
-- **microsoft.directory/applications/create**
+- **microsoft.directory/applications/createAsOwner**: Wird diese Berechtigung zugewiesen, wird der Ersteller als erster Besitzer der erstellten App-Registrierung hinzugefügt, und die erstellte App-Registrierung zählt zum Objekterstellungskontingent des Erstellers (250 Objekte).
+- **microsoft.directory/applicationPolicies/create**: Wird diese Berechtigung zugewiesen, wird der Ersteller nicht als erster Besitzer der erstellten App-Registrierung hinzugefügt, und die erstellte App-Registrierung zählt nicht zum Kontingent von 250 erstellten Objekten des Erstellers. Verwenden Sie diese Berechtigung mit Bedacht, da der zugewiesene Benutzer in diesem Fall so viele App-Registrierungen erstellen kann, bis das Kontingent auf der Verzeichnisebene erreicht ist. Sind beide Berechtigungen zugewiesen, hat diese Berechtigung Vorrang.
 
-Wenn beide Berechtigungen zugewiesen sind, hat die Berechtigung zum Erstellen Vorrang. Obwohl mit der Berechtigung createAsOwner der Ersteller nicht automatisch als erster Besitzer hinzufügt wird, können Besitzer bei der Erstellung der Anwendungsregistrierung angegeben werden, wenn Graph-APIs oder PowerShell-Cmdlets verwendet werden.
+Wenn beide Berechtigungen zugewiesen sind, hat die Berechtigung zum Erstellen („/create“) Vorrang. Obwohl mit der Berechtigung „/createAsOwner“ der Ersteller nicht automatisch als erster Besitzer hinzufügt wird, können Besitzer bei der Erstellung der App-Registrierung angegeben werden, wenn Graph-APIs oder PowerShell-Cmdlets verwendet werden.
 
 Berechtigungen zum Erstellen gewähren Zugriff auf den Befehl **Neue Registrierung**.
 

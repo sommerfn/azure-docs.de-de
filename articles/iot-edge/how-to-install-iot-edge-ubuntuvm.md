@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 8275bceca1a18f49eb7eeece66a3866d77c47635
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f4bab6ab837b746c6a569cc6de95a95023bf83f4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796172"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987006"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -101,3 +101,5 @@ Nachdem Sie nun ein IoT Edge-Gerät für die installierte Runtime bereitgestellt
 Wenn Sie Probleme mit der ordnungsgemäßen Installation der IoT Edge-Runtime haben, lesen Sie die Informationen auf der Seite [Problembehandlung](troubleshoot.md).
 
 Weitere Informationen zum Aktualisieren einer vorhandenen Installation auf die aktuelle Version von IoT Edge finden Sie unter [Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime](how-to-update-iot-edge.md).
+
+Wenn Sie Ports für den Zugriff auf die VM über SSH oder andere eingehende Verbindungen öffnen möchten, lesen Sie die Dokumentation der virtuellen Azure-Computer über [das Öffnen von Ports und Endpunkten für eine Linux-VM](../virtual-machines/linux/nsg-quickstart.md).

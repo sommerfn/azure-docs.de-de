@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 03ad098b2f83341150a59247f47b9a4abaa1b9d2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 86029c5617d2a3c2723e388fb5812a3947166623
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726106"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966932"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory
 
@@ -34,7 +34,7 @@ Dieser MongoDB-Connector unterstützt insbesondere die **Versionen bis 3.4**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kopieren von Daten aus einer MongoDB-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integrationslaufzeit einrichten. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -51,7 +51,7 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MongoDbV2** |Ja |
 | connectionString |Geben Sie die MongoDB-Verbindungszeichenfolge an, z.B. `mongodb://[username:password@]host[:port][/[database][?options]]`. Weitere Informationen finden Sie im [MongoDB-Handbuch zur Verbindungszeichenfolge](https://docs.mongodb.com/manual/reference/connection-string/). <br/><br />Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. |Ja |
 | database | Der Name der Datenbank, auf die Sie zugreifen möchten. | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel:**
 

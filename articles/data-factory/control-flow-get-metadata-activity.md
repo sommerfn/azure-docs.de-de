@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827497"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966341"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 
@@ -138,8 +138,8 @@ Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 fieldList | Listet die erforderlichen Typen der Metadateninformationen auf. Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options). | Ja 
 dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. Die unterstützten Connectors werden im Abschnitt [Unterstützte Funktionen](#supported-capabilities) aufgeführt und im Thema zu Connectors finden Sie Einzelheiten zur Datasetsyntax. | Ja
-formatSettings | Anwenden bei Verwendung eines formatierten Datasets (Parquet, DelimitedText). | Nein
-storeSettings | Anwenden bei Verwendung eines formatierten Datasets (Parquet, DelimitedText). | Nein
+formatSettings | Wird bei Verwendung eines formatierten Datasets angewendet. | Nein
+storeSettings | Wird bei Verwendung eines formatierten Datasets angewendet. | Nein
 
 ## <a name="sample-output"></a>Beispielausgabe
 

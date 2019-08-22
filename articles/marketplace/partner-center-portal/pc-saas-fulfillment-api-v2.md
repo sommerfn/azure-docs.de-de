@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358586"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016043"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-Fulfillment-APIs, Version 2 
 
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -789,6 +789,8 @@ Code: 500<br> Interner Serverfehler.
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>Implementieren eines Webhooks für den SaaS-Dienst
 
 Der Herausgeber muss in diesen SaaS-Dienst einen Webhook implementieren, um proaktiv Benutzer über Änderungen beim Dienst zu benachrichtigen. Der SaaS-Dienst muss die Vorgangs-API zur Überprüfung und Autorisierung aufrufen, bevor er auf die Webhookbenachrichtigung reagieren kann.
+
+Um eine sichere Kommunikation zu gewährleisten, schließt Microsoft das Azure Active Directory-JWT-Token als Teil des Aufrufs in den Autorisierungsheader ein. SaaS-Anbieter sollten das JWT-Token wie im Artikel [Microsoft Identity Platform-Zugriffstoken](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) beschrieben validieren, um sicherzustellen, dass nur gültige Aufrufe akzeptiert werden.
 
 ```json
 {

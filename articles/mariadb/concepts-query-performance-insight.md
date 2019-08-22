@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 48ff1fdc08e0df463ec48fd1415c7b67d5beb744
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 709428d420c7d5f725d1b7df85e4860aec765b48
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462102"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950659"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Query Performance Insight in Azure Database for MariaDB
 
-**Gilt für:**  Azure Database for MariaDB 10.2
+**Anwendungsbereich:** Azure Database for MariaDB 10.2
 
-> [!NOTE]
+> [!IMPORTANT]
 > Query Performance Insight befindet sich in der Vorschauphase.
 
 Mithilfe von Query Performance Insight können Sie schnell die Abfragen mit den längsten Ausführungszeiten identifizieren, wie sie sich im Laufe der Zeit ändern und welche Wartezeiten sie beeinflussen.
@@ -36,21 +36,21 @@ Mithilfe von Query Performance Insight können Sie schnell die Abfragen mit den 
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Anzeigen des Abfragetexts in Query Performance Insight sind die Berechtigungen **Besitzer** oder **Mitwirkender** erforderlich. Ein **Leser** kann Diagramme und Tabellen anzeigen, aber keinen Abfragetext.
+Zum Anzeigen des Abfragetexts in Query Performance Insight sind die Berechtigungen **Besitzer** oder **Mitwirkender** erforderlich. Mit **Leser** können Diagramme und Tabellen angezeigt werden, aber nicht im Abfragetext.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Query Performance Insight funktioniert, müssen Daten im [Abfragespeicher](concepts-query-store.md) vorhanden sein.
+Damit Query Performance Insight funktioniert, müssen Daten im [Abfragespeicher](concepts-query-store.md) vorhanden sein.
 
 ## <a name="viewing-performance-insights"></a>Anzeigen von Einblicken in die Leistung
 
 Die [Query Performance Insight](concepts-query-performance-insight.md)-Ansicht im Azure-Portal zeigt wichtige Informationen aus dem Abfragespeicher an.
 
-Wählen Sie auf der Portalseite Ihres Azure Database for MariaDB-Servers im Abschnitt **Intelligente Leistung** in der Menüleiste die Option **Query Performance Insight**.
+Wählen Sie auf der Portalseite Ihres Azure Database for MariaDB-Servers im Abschnitt **Intelligente Leistung** in der Menüleiste die Option **Query Performance Insight**.
 
-### <a name="long-running-queries"></a>Abfragen mit langer Ausführungszeit
+### <a name="long-running-queries"></a>Zeitintensive Abfragen
 
-Die Registerkarte **Abfragen mit langer Ausführungszeit** zeigt die ersten fünf Abfragen nach durchschnittlicher Dauer pro Ausführung an, zusammengefasst in Intervallen von 15 Minuten. Sie können mehr Abfragen anzeigen, indem Sie in der Dropdownliste **Anzahl der Abfragen** eine Auswahl treffen. Dabei ändern sich unter Umständen die Diagrammfarben für eine bestimmte Abfrage-ID.
+Die Registerkarte **Abfragen mit langer Ausführungszeit** zeigt die fünf Top-Abfragen nach durchschnittlicher Dauer pro Ausführung an, zusammengefasst in Intervallen von 15 Minuten. Sie können mehr Abfragen anzeigen, indem Sie in der Dropdownliste **Anzahl der Abfragen** eine Auswahl treffen. Dabei ändern sich unter Umständen die Diagrammfarben für eine bestimmte Abfrage-ID.
 
 Durch Klicken und Ziehen im Diagramm können Sie die Zeit auf ein bestimmtes Zeitfenster eingrenzen. Alternativ zeigen Sie mit den Symbolen zum Vergrößern oder Verkleinern einen kürzeren bzw. längeren Zeitraum an.
 
@@ -63,7 +63,7 @@ Durch Klicken und Ziehen im Diagramm können Sie die Zeit auf ein bestimmtes Zei
 
 Wartestatistiken bieten eine Ansicht der Warteereignisse, die während der Ausführung einer bestimmten Abfrage auftreten. Weitere Informationen zu den Warteereignistypen finden Sie in der [MySQL-Engine-Dokumentation](https://go.microsoft.com/fwlink/?linkid=2098206).
 
-Wählen Sie die Registerkarte **Wartestatistik** aus, um die entsprechenden Visualisierungen zu Wartevorgängen auf dem Server anzuzeigen.
+Auf der Registerkarte **Wartestatistik** werden die entsprechenden Visualisierungen zu Wartevorgängen angezeigt.
 
 In der Ansicht der Wartestatistik angezeigte Abfragen werden nach den Abfragen gruppiert, die die längsten Wartezeiten während des angegebenen Zeitintervalls aufweisen.
 

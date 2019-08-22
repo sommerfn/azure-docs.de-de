@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779664"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953011"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -60,6 +60,7 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
     |`https://login.microsoftonline.com`|Authentifizierungsanforderungen|
     |`https://enterpriseregistration.windows.net`|Funktion für Azure AD-Kennwortschutz|
 
+* Alle Computer, auf denen der Proxydienst für den Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein globales Administratorkonto zum Registrieren des Proxydiensts für Kennwortschutz und der Gesamtstruktur bei Azure AD.
 * Ein Konto mit Active Directory-Domänenadministratorrechten in der Stammdomäne der Gesamtstruktur, um die Windows Server Active Directory-Gesamtstruktur bei Azure AD zu registrieren.
@@ -290,7 +291,9 @@ Die Installation ist abgeschlossen, nachdem die DC-Agent-Software auf einem Dom�
 
 ## <a name="upgrading-the-proxy-agent"></a>Upgrade des Proxy-Agents
 
-Wenn eine neuere Version der Azure AD-Kennwortschutz-Proxysoftware verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwareinstallationsprogramms `AzureADPasswordProtectionProxySetup.exe` durchgeführt. Es ist nicht erforderlich, die aktuelle Version der Proxysoftware zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der Proxysoftware sollte kein Neustart erforderlich sein. Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `AzureADPasswordProtectionProxySetup.exe /quiet`.
+Wenn eine neuere Version der Azure AD-Kennwortschutz-Proxysoftware verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwareinstallationsprogramms `AzureADPasswordProtectionProxySetup.exe` durchgeführt. Die aktuelle Version der Software ist im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) verfügbar.
+
+Es ist nicht erforderlich, die aktuelle Version der Proxysoftware zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der Proxysoftware sollte kein Neustart erforderlich sein. Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
 Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert kann mithilfe des Cmdlets „Set-AzureADPasswordProtectionProxyConfiguration“ aktiviert und deaktiviert werden. Die aktuelle Einstellung kann mithilfe des Cmdlets „Get-AzureADPasswordProtectionProxyConfiguration“ abgefragt werden. Microsoft empfiehlt, das automatische Upgrade aktiviert zu lassen.
 
@@ -298,7 +301,9 @@ Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` kann die Softwareversion all
 
 ## <a name="upgrading-the-dc-agent"></a>Upgrade des DC-Agents
 
-Wenn eine neuere Version der DC-Agent-Software für den Azure AD-Kennwortschutz verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwarepakets `AzureADPasswordProtectionDCAgentSetup.msi` durchgeführt. Es ist nicht erforderlich, die aktuelle Version der DC-Agent-Software zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der DC-Agent-Software ist immer ein Neustart erforderlich. Dies wird durch das Kernverhalten von Windows verursacht. 
+Wenn eine neuere Version der DC-Agent-Software für den Azure AD-Kennwortschutz verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwarepakets `AzureADPasswordProtectionDCAgentSetup.msi` durchgeführt. Die aktuelle Version der Software ist im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) verfügbar.
+
+Es ist nicht erforderlich, die aktuelle Version der DC-Agent-Software zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der DC-Agent-Software ist immer ein Neustart erforderlich. Dies wird durch das Kernverhalten von Windows verursacht. 
 
 Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
 

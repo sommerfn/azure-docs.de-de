@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: e3d38e9b5e1b9b9f827476acf7e2e2ecab632424
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688814"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955048"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
 Mit Azure Backup Server können Sie die Daten wiederherstellen, die Sie in einem Recovery Services-Tresor gesichert haben. Der entsprechende Prozess ist in der Azure Backup Server-Verwaltungskonsole integriert und ähnelt dem Wiederherstellungsworkflow für andere Azure Backup-Komponenten.
@@ -57,7 +57,7 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 8. Wählen Sie die gewünschte Option aus: **Kopie erstellen**, **Überspringen** oder **Überschreiben**.
 
    * **Kopie erstellen** erstellt eine Kopie der Datei, falls ein Namenskonflikt besteht.
-   * **Überspringen**: Bei einem Namenskonflikt wird die Datei nicht wiederhergestellt, sodass die ursprüngliche Datei bleibt.
+   * **Überspringen**: Bei einem Namenskonflikt wird die Datei nicht wiederhergestellt, sodass die ursprüngliche Datei beibehalten wird.
    * **Überschreiben**: Bei einem Namenskonflikt wird die vorhandene Kopie der Datei überschrieben.
 
      Wählen Sie die entsprechende Option für **Sicherheit wiederherstellen** aus. Sie können die Sicherheitseinstellungen des Zielcomputers anwenden, auf dem die Daten wiederhergestellt werden, oder die Sicherheitseinstellungen, die für das Produkt zum Zeitpunkt der Erstellung des Wiederherstellungspunkts galten.

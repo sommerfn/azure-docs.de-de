@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663844"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989090"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -25,7 +25,7 @@ Die Personalisierung verwendet **Merkmale**, wobei es sich um Informationen übe
 
 Beispielsweise können Sie ein **Merkmal** haben:
 
-* Zu dem _Benutzer_ wie `UserID`. 
+* Die _Benutzerpersona_, wie z. B. `Sports_Shopper`. Dabei sollte es sich nicht um die ID eines einzelnen Benutzers handeln. 
 * Zu dem _Inhalt_, z. B. ob ein Video ein `Documentary` ist, ein `Movie` oder eine `TV Series`, oder ob ein Einzelhandelsartikel im Store verfügbar ist.
 * Zum _aktuellen_ Zeitraum dar, z. B. welcher Wochentag es ist.
 
@@ -150,7 +150,7 @@ Sie können mehrere weitere [Azure Cognitive Services](https://www.microsoft.com
 
 Jede Aktion:
 
-* Hat eine ID.
+* Hat eine _Ereignis-ID_. Wenn Sie bereits über eine Ereignis-ID verfügen, sollten Sie diese übermitteln. Wenn Sie keine Ereignis-ID haben, senden Sie keine, die Personalisierung erstellt eine für Sie und gibt sie in der Antwort auf die Ranganfrage zurück. Die ID wird dem Rangereignis zugeordnet, nicht dem Benutzer. Wenn Sie eine ID erstellen, funktioniert eine GUID am besten. 
 * Hat eine Liste von Merkmalen.
 * Die Liste der Merkmale kann groß ist (Hunderte), aber wir empfehlen, die Effektivität von Merkmalen zu bewerten, um Merkmale zu entfernen, die nicht zum Erzielen von Belohnungen beitragen. 
 * Die Merkmale in den **Aktionen** können eine Korrelation mit Merkmalen in dem von der Personalisierung verwendeten **Kontext** aufweisen oder nicht.

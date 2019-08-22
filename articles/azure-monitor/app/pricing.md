@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 05/29/2019
+ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303839"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989232"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -26,7 +26,7 @@ ms.locfileid: "67303839"
 > Dieser Artikel beschreibt, wie die Datennutzung in Application Insights analysiert wird.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
 > - [Überwachen der Nutzung und der geschätzten Kosten](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
 
-Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights) posten.
+Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights) posten.
 
 ## <a name="pricing-model"></a>Preismodell
 
@@ -132,6 +132,14 @@ Verwenden Sie eine [Analytics-Abfrage](analytics.md), um den tatsächlichen Proz
     | render areachart
 
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt. Diese entspricht 1 + Anzahl der vorherigen verworfenen Datensätze. 
+
+## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
+
+Application Insights integriert nun eine begrenzte Anzahl von Application Insights-Kunden in unsere Vorschauversion für die variable Aufbewahrung. Informationen dazu, wie Sie an diesem Vorschauprogramm teilnehmen können, finden Sie [hier](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031).
+
+Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 120, 180, 270, 365, 550 oder 730 Tage. 
+
+Wenn die Abrechnung für eine längere Aufbewahrung aktiviert ist, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).  Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 

@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639566"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949842"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie unter:
 **Szenario** | **Agent** | **Location**
 --- | --- | ---
 **Sichern lokaler Computer/Workloads** | Der DPM- oder MABS-Schutz-Agent wird auf den Computern ausgeführt, die Sie sichern möchten.<br/><br/> MARS-Agent auf dem MABS- oder DPM-Server<br/> Die zum Aktivieren dieses Features erforderliche Mindestversion des Microsoft Azure Recovery Services-Agents bzw. Azure Backup-Agents ist 2.0.8719.0.  | MABS/DPM muss lokal ausgeführt werden.
-**Sichern von virtuellen Azure-Computern/Azure-Workloads** | DPM- oder MABS-Schutz-Agent auf geschütztem Computer<br/><br/> MARS-Agent auf dem MABS- oder DPM-Server | DPM/MABS muss auf einem virtuellen Azure-Computer ausgeführt werden.
+
 
 ## <a name="supported-deployments"></a>Unterstützte Bereitstellungen
 
@@ -166,9 +166,9 @@ In der folgenden Tabelle ist zusammenfassend angegeben, welche Elemente von loka
 **Windows Server 2012 R2 (Datacenter und Standard)**<br/><br/> 64/32 Bit | MABS v3, v2 | Lokal und virtueller Azure-Computer | **Lokaler Schutz:** Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal<br/><br/> **Schutz auf virtuellem Azure-Computer:** Volume, Freigabe, Ordner, Datei<br/><br/> Deduplizierte Volumes werden unterstützt. |
 **Windows Server 2012 mit SP1 (Datacenter und Standard)**<br/><br/> 64/32 Bit | MABS v3, v2 <br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) muss installiert sein. | Lokal und virtueller Azure-Computer | **Lokaler Schutz:** Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal<br/><br/> **Schutz auf virtuellem Azure-Computer:** Volume, Freigabe, Ordner, Datei<br/><br/> Deduplizierte Volumes werden unterstützt. |
 **Windows 2008 R2 mit SP1 (Standard und Enterprise)**<br/><br/> 64/32 Bit | Wird in MABS v3 und v2 unterstützt.<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) muss installiert sein. | Lokal und virtueller Azure-Computer |   **Lokaler Schutz:** Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal<br/><br/> **Schutz auf virtuellem Azure-Computer:** Volume, Freigabe, Ordner, Datei<br/><br/> Deduplizierte Volumes werden unterstützt. |
-**Windows 2008 R2 (Standard und Enterprise)**<br/><br/> 64/32 Bit | Für MABS v2 und v3 muss das Betriebssystem mit SP1 ausgeführt werden. | Lokal und virtueller Azure-Computer | **Lokaler Schutz:** Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal<br/><br/> **Schutz auf virtuellem Azure-Computer:** Volume, Freigabe, Ordner, Datei<br/><br/> Deduplizierte Volumes werden unterstützt. |
-**Windows Server 2008 mit SP2**<br/><br/> 64/32 Bit | MABS v2 und v3 | Wenn MABS als virtueller VMware-Computer bereitgestellt wird, werden MABS v2 und v3 unterstützt.<br/><br/> Wird für MABS auf einem virtuellen Azure-Computer nicht unterstützt. | Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal |
-**Windows Storage Server 2008** | MABS v2 und v3 | MABS als lokaler physischer Server oder virtueller Hyper-V-Computer <br/><br/> Wird für MABS auf einem virtuellen Azure-Computer nicht unterstützt. | Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal
+**Windows 2008 R2 (Standard und Enterprise)**<br/><br/> 64/32 Bit | Für MABS v3 und v2 muss das Betriebssystem mit SP1 ausgeführt werden. | Lokal und virtueller Azure-Computer | **Lokaler Schutz:** Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal<br/><br/> **Schutz auf virtuellem Azure-Computer:** Volume, Freigabe, Ordner, Datei<br/><br/> Deduplizierte Volumes werden unterstützt. |
+**Windows Server 2008 mit SP2**<br/><br/> 64/32 Bit | MABS v3, v2 | Wenn MABS als virtueller VMware-Computer bereitgestellt wird, werden MABS v2 und v3 unterstützt.<br/><br/> Wird für MABS auf einem virtuellen Azure-Computer nicht unterstützt. | Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal |
+**Windows Storage Server 2008** | MABS v3, v2 | MABS als lokaler physischer Server oder virtueller Hyper-V-Computer <br/><br/> Wird für MABS auf einem virtuellen Azure-Computer nicht unterstützt. | Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal
 **SQL Server 2017** | MABS v3 | Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt. |
 **SQL Server 2016, 2016 mit SP1** | MABS v3, v2 | Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt. |
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2 | Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt. |
@@ -195,7 +195,7 @@ In der folgenden Tabelle ist zusammenfassend angegeben, welche Elemente von loka
 **Windows 2008 R2 (Standard und Enterprise)**<br/><br/> 64/32 Bit | Lokal<br/><br/> DPM kann nicht als virtueller VMware-Computer installiert werden.<br/><br/> DPM auf einem virtuellen Azure-Computer wird nicht unterstützt. | **Lokaler Schutz:** Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal
 **Windows Server 2008 mit SP2**<br/><br/> 64/32 Bit | Nur lokal<br/><br/> DPM wird bei Ausführung als virtueller VMware-Computer unterstützt. Die Ausführung als physischer Server oder virtueller Hyper-V-Computer wird nicht unterstützt. | Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal
 **Windows Storage Server 2008** | DPM bei lokaler Ausführung als physischer Server oder virtueller Hyper-V-Computer | Volume, Freigabe, Ordner, Datei; Systemstatus/Bare-Metal
-**SQL Server 2017** | DPM SAC, DPM 2016 mit Updaterollup 5 oder höher<br/><br/> Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt.
+**SQL Server 2017** | DPM SAC, DPM 2016 mit Updaterollup 5 oder höher.<br/><br/> Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt.
 **SQL Server 2016 mit SP1** | Wird für DPM 2012 R2 nicht unterstützt. Wird für DPM SAC und DPM 2016 mit Updaterollup 4 oder höher unterstützt.<br/><br/> Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt.
 **SQL Server 2016** | Wird für DPM 2012 R2 nicht unterstützt. Wird für DPM SAC und DPM 2016 ab Updaterollup 2 unterstützt.<br/><br/> Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt.
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | SQL Server 2014 mit DPM 2012 R2 mit Updaterollup 4 und höher<br/><br/> Lokal und virtueller Azure-Computer| Sichern einer SQL Server-Datenbank<br/><br/> Sicherung eines SQL Server-Clusters wird unterstützt.<br/><br/>In freigegebenen Clustervolumes gespeicherte Datenbanken werden nicht unterstützt.

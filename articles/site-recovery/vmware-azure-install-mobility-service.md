@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318168"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016363"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Vorbereiten des Quellcomputers für die Pushinstallation des Mobilitäts-Agents
 
@@ -66,6 +66,6 @@ Wenn auf Computern, die Sie replizieren möchten, aktive Virenschutzsoftware aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Mobility Service installiert wurde, wählen Sie im Azure-Portal **+ Replizieren** aus, um den Schutz dieser virtuellen Computer zu starten. Erfahren Sie mehr über das Aktivieren der Replikation für [VMware-VMs]\(vmware-azure-enable-replication.md) und [physische Server](physical-azure-disaster-recovery.md#enable-replication).
+Nachdem Mobility Service installiert wurde, wählen Sie im Azure-Portal **+ Replizieren** aus, um den Schutz dieser virtuellen Computer zu starten. Erfahren Sie mehr über das Aktivieren der Replikation für [VMware-VMs](vmware-azure-enable-replication.md) und [physische Server](physical-azure-disaster-recovery.md#enable-replication).
 
 

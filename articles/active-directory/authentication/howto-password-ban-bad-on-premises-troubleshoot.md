@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779625"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952803"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
 
@@ -41,6 +41,8 @@ Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“
 1. Der Proxyhostcomputer blockiert den Zugriff auf den RPC-Endpunkt (dynamisch oder statisch), an dem der Proxydienst lauscht.
 
    Das Installationsprogramm für den Proxy des Azure AD-Kennwortschutzes erstellt automatisch eine eingehende Windows-Firewallregel, die den Zugriff auf alle eingehenden Ports zulässt, an denen der Proxydienst des Azure AD-Kennwortschutzes lauscht. Wird diese Regel später gelöscht oder deaktiviert, können DC-Agents nicht mit dem Proxydienst kommunizieren. Wenn die integrierte Windows-Firewall deaktiviert wurde, um stattdessen ein anderes Firewallprodukt zu verwenden, müssen Sie diese andere Firewall zum Zulassen des Zugriffs auf alle eingehenden Ports konfigurieren, an denen der Proxydienst des Azure AD-Kennwortschutzes lauscht. Diese Konfiguration kann präzisiert werden, wenn der Proxydienst zum Lauschen an einem bestimmten statischen RPC-Port konfiguriert wurde (mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`).
+
+1. Der Proxyhostcomputer ist nicht so konfiguriert, dass Anmeldungen beim Computer durch Domänencontroller zulässig sind. Dieses Verhalten wird über die Zuweisung der Benutzerberechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert. Allen Domänencontrollern in allen Domänen in der Gesamtstruktur muss diese Berechtigung erteilt werden. Diese Einstellung wird häufig im Rahmen eines größeren Aufwands für die Netzwerkhärtung eingeschränkt.
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Der Proxydienst kann nicht mit Azure kommunizieren
 

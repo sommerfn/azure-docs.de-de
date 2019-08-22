@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875970"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989171"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -146,3 +146,4 @@ Weitere Informationen:
 * [Metriken und Protokolle](platform/data-platform.md) für die von Azure Monitor gesammelten Daten
 * [Datenquellen](platform/data-sources.md) dazu, wie die verschiedenen Komponenten Ihrer Anwendung Telemetriedaten senden
 * [Protokollabfragen](log-query/log-query-overview.md) zur Analyse der gesammelten Daten
+* [Bewährte Methoden](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) zum Überwachen von Cloudanwendungen und-Diensten.

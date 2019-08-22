@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c53a3e01d471f2ca9b0878c374b00ce83848ca28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e3f16b939d05a4c055fba3a9f1ab5e47e54070
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871239"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976591"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Form zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -82,6 +82,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
     
     ```Java
     package com.example.myapplication;
+
     import android.app.Activity;
     import android.os.Bundle;
     import com.mapbox.geojson.LineString;
@@ -96,8 +97,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    
-    
+        
     public class MainActivity extends AppCompatActivity {
     
         static{
@@ -133,8 +133,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(5f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -171,8 +170,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
@@ -307,8 +305,7 @@ Mit der **Polygonebene** können Sie den Bereich des Polygons auf der Karte rend
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(2f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -345,8 +342,7 @@ Mit der **Polygonebene** können Sie den Bereich des Polygons auf der Karte rend
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
@@ -359,7 +355,13 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt ein Poly
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im folgenden Artikel erfahren Sie mehr zum Festlegen von Kartenstilen.
+Fügen Sie Ihrer Karte weitere Daten hinzu:
 
 > [!div class="nextstepaction"]
-> [Ändern von Kartenstilen auf Android-Karten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Hinzufügen einer Symbolebene](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Kachelebene](how-to-add-tile-layer-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Anzeigen von Featureinformationen](display-feature-information-android.md)

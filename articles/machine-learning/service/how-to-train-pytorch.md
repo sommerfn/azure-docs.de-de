@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99217106c456adcc338138190be2060b0c9a195b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772669"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966791"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning
 
@@ -39,8 +39,8 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
  
  - Ihr eigener Jupyter Notebook-Server
 
-    - [Installieren des Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
-    - [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](setup-create-workspace.md#write-a-configuration-file)
+    - [Installieren Sie das Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
     - [Herunterladen der Beispielskriptdateien](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
      
     Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine fertige [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb) dieser Anleitung. Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
@@ -229,3 +229,4 @@ In diesem Artikel haben Sie ein neuronales Deep Learning-Netz mithilfe von PyTor
 * [Erfassen einer Ausführungsmetrik während des Trainings](how-to-track-experiments.md)
 * [Optimieren von Hyperparametern](how-to-tune-hyperparameters.md)
 * [Bereitstellen eines trainierten Modells](how-to-deploy-and-where.md)
+* [Referenzarchitektur für das verteilte Trainieren von Deep Learning-Modellen in Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

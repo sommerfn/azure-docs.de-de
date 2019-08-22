@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 524d0854e8691428738cee321e394f572ea80112
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689179"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954609"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -231,7 +231,7 @@ Wenn Sie Probleme beim Wiederherstellen von Dateien von den virtuellen Computern
 | Auf dem Computer, auf dem die EXE-Datei ausgeführt wird: Die Bereitstellung der neuen Volumes wird erst aufgehoben, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. | Der iSCSI-Initiator auf dem Computer reagiert nicht bzw. aktualisiert seine Verbindung mit dem Ziel nicht und verwaltet auch den Cache nicht. |  Warten Sie nach dem Klicken auf **Aufheben der Bereitstellung** einige Minuten. Wenn die Bereitstellung der neuen Volumes nicht aufgehoben wurde, blättern Sie durch alle Volumes. Das Blättern durch alle Volumes zwingt den Initiator zum Aktualisieren der Verbindung, und das Volume wird mit der Fehlermeldung aufgehoben, dass der Datenträger nicht verfügbar ist.|
 | EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber „Neue Volumes angefügt“ wird nicht in der Ausgabe des Skripts angezeigt. |    Dies ist ein vorübergehender Fehler.    | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
 | Linux-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Das Betriebssystem des Computers, auf dem das Skript ausgeführt wird, erkennt möglicherweise das zugrunde liegende Dateisystem des geschützten virtuellen Computers nicht. | Prüfen Sie, ob der Wiederherstellungspunkt absturz- oder dateikonsistent ist. Falls dateikonsistent, führen Sie das Skript auf einem anderen Computer aus, dessen Betriebssystem das Dateisystem des geschützten virtuellen Computers erkennt. |
-| Windows-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Möglicherweise wurden die Datenträger angefügt, aber die Volumes wurden nicht konfiguriert. | Suchen Sie auf dem Bildschirm „Datenträgerverwaltung“ die zusätzlichen Datenträger im Zusammenhang mit dem Wiederherstellungspunkt. Wenn sich einer dieser Datenträger im Offlinestatus befindet, versuchen Sie, diesen online zu schalten, indem Sie mit der rechten Maustaste auf den Datenträger und dann auf „Online“ klicken.|
+| Windows-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Möglicherweise wurden die Datenträger angefügt, aber die Volumes wurden nicht konfiguriert. | Suchen Sie auf dem Bildschirm „Datenträgerverwaltung“ die zusätzlichen Datenträger im Zusammenhang mit dem Wiederherstellungspunkt. Wenn sich einer dieser Datenträger im Offlinestatus befindet, versuchen Sie, diesen online zu schalten, indem Sie mit der rechten Maustaste auf den Datenträger klicken und dann „Online“ auswählen.|
 
 ## <a name="security"></a>Sicherheit
 
@@ -257,11 +257,11 @@ Das generierte Skript wird mit dem offiziellen Microsoft-Zertifikat für den Azu
 
 Nur Administratoren können das Skript ausführen. Sie sollten es im Modus mit erhöhten Rechten ausführen. Das Skript führt nur vorab generierte Schritte aus und akzeptiert keine Eingaben aus externen Quellen.
 
-Zum Ausführen des Skripts ist ein Kennwort erforderlich, das nur dem autorisierten Benutzer angezeigt wird, wenn das Skript im Azure-Portal oder in PowerShell bzw. in der CLI erstellt wird. Hiermit wird sichergestellt, dass der autorisierte Benutzer, der das Skript herunterlädt, auch für das Ausführen des Skripts verantwortlich ist.
+Zum Ausführen des Skripts ist ein Kennwort erforderlich, das nur dem autorisierten Benutzer angezeigt wird, wenn das Skript im Azure-Portal oder in PowerShell bzw. in der CLI generiert wird. Hiermit wird sichergestellt, dass der autorisierte Benutzer, der das Skript herunterlädt, auch für das Ausführen des Skripts verantwortlich ist.
 
 #### <a name="browse-files-and-folders"></a>Durchsuchen von Dateien und Ordnern
 
-Das Skript verwendet den iSCSI-Initiator auf dem Computer und stellt eine Verbindung mit dem Wiederherstellungspunkt her, der als iSCSI-Ziel konfiguriert ist, um Dateien und Ordner zu durchsuchen. Hier könnte man von Szenarios ausgehen, in denen jemand versucht eine bzw. alle der Komponenten zu imitieren/fälschen.
+Zum Durchsuchen von Dateien und Ordnern verwendet das Skript den iSCSI-Initiator auf dem Computer und stellt eine Verbindung mit dem Wiederherstellungspunkt her, der als iSCSI-Ziel konfiguriert ist. Hier könnte man von Szenarios ausgehen, in denen jemand versucht eine bzw. alle der Komponenten zu imitieren/fälschen.
 
 Ein Mechanismus für die gegenseitige CHAP-Authentifizierung wird verwendet, damit sich die Komponenten gegenseitig authentifizieren. Aus diesem Grund ist es sehr schwierig, eine Verbindung zwischen einem gefälschten Initiator und dem iSCSI-Ziel oder eine Verbindung zwischen einem gefälschten Ziel und dem Computer herzustellen, auf dem das Skript ausgeführt wird.
 

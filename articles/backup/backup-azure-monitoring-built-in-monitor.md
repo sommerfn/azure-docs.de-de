@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688361"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954587"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -87,6 +87,9 @@ Wenn eine Warnung ausgelöst wird, werden die Benutzer benachrichtigt. Azure Bac
 
 ![Im Recovery Services-Tresor integrierte E-Mail-Benachrichtigung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
+> [!NOTE]
+> Die Warnungen für SQL-Sicherungen werden konsolidiert, und die E-Mail-Benachrichtigung wird nur für das erste Vorkommen gesendet. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine weitere E-Mail aus.
+
 Wenn Sie die Benachrichtigungen konfiguriert haben, erhalten Sie eine Begrüßungs-E-Mail bzw. eine einführende E-Mail. Dadurch wird bestätigt, dass Azure Backup E-Mails an diese Adressen senden kann, wenn eine Warnung ausgelöst wird.<br>
 
 Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung innerhalb einer Stunde ausgelöst und behoben wurde, ist diese nicht in der stündlichen Übersicht enthalten.
@@ -95,6 +98,14 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 >
 > * Wenn ein destruktiver Vorgang wie das **Beenden des Schutzes inklusive Löschung der Daten** durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
 > * Verwenden Sie [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace), um Benachrichtigungen für erfolgreiche Aufträge zu konfigurieren.
+
+## <a name="inactivating-alerts"></a>Deaktivieren von Warnungen
+
+Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie auf das Listenelement klicken, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum Deaktivieren. Wenn Sie auf diese Schaltfläche klicken, ändert sich der Status der Warnung zu „Inaktiv“. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann „Deaktivieren“ auswählen.
+
+![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

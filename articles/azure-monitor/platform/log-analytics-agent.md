@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424115"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955004"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Sammeln von Protokolldaten mit dem Log Analytics-Agent
 
@@ -34,13 +34,21 @@ Bevor Sie die gesammelten Daten analysieren und entsprechende Maßnahmen ergreif
 
 Der Agent für Linux und Windows kommuniziert in ausgehender Richtung über den TCP-Port 443 mit dem Azure Monitor-Dienst. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich die weiter unten angegebenen Anforderungen an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen. Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetverbindung herstellen können, können Sie ein [Log Analytics-Gateway](gateway.md) einrichten und den Agent so konfigurieren, dass er die Verbindung mit Azure Monitor-Protokollen über das Gateway herstellt. Der Agent kann dann Konfigurationsinformationen empfangen und Daten senden, die je nach in Ihrem Arbeitsbereich aktivierten Datensammlungsregeln und Überwachungslösungen gesammelt werden. 
 
-Wenn Sie einen Computer mit System Center Operations Manager 2012 R2 oder höher überwachen, kann er mit dem Azure Monitor-Dienst mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten. Hierbei kann er weiterhin von [Operations Manager](../../azure-monitor/platform/om-agents.md) überwacht werden. Bei Linux-Computern umfasst der Agent keine Integritätsdienstkomponente wie der Windows-Agent, und Informationen werden von einem Verwaltungsserver in seinem Auftrag gesammelt und verarbeitet. Da Linux-Computer mit Operations Manager anders überwacht werden, erhalten sie keine Konfiguration oder sammeln Daten nicht direkt und leiten sie über die Verwaltungsgruppe weiter, wie es bei einem von Windows-Agents verwaltetem System der Fall ist. Daher wird dieses Szenario nicht mit Linux-Computern unterstützt, die an Operations Manager berichten, und Sie müssen den Linux-Computer in zwei Schritten zum [Berichten an eine Operations Manager-Verwaltungsgruppe](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) und einen Log Analytics-Arbeitsbereich konfigurieren.
+Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agent-Bereitstellung Folgendes bekannt sein:
 
-Der Windows-Agent kann Daten an bis zu vier Log Analytics-Arbeitsbereiche melden, während der Linux-Agent nur Meldungen an einen einzelnen Arbeitsbereich unterstützt.  
+* Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er Berichte an einen oder mehrere Arbeitsbereiche übermittelt](agent-windows.md), auch wenn er Berichte parallel an eine System Center Operations Manager-Verwaltungsgruppe sendet. Der Windows-Agent kann Berichte an bis zu vier Arbeitsbereiche übermitteln.
+* Der Linux-Agent bietet keine Unterstützung für Multihosting und kann Berichte nur an einen einzelnen Arbeitsbereich übermitteln.
+
+Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden, gilt Folgendes:
+
+* Jede Operations Manager-Verwaltungsgruppe kann [nur mit einem Arbeitsbereich verbunden sein](om-agents.md).
+* Linux-Computer, die Berichte an eine Verwaltungsgruppe senden, müssen so konfiguriert sein, dass die Berichte direkt an einen Log Analytics-Arbeitsbereich übermittelt werden. Wenn Ihre Linux-Computer Berichte bereits direkt an einen Arbeitsbereich übermitteln und Sie diese mit Operations Manager überwachen möchten, führen Sie die Schritte zum [Senden von Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) aus.
+* Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und so konfigurieren, dass er Berichte sowohl an die in einen Arbeitsbereich integrierte Operations Manager-Instanz als auch an einen anderen Arbeitsbereich sendet.
 
 Der Agent für Linux und Windows dient nicht zur Verbindungsherstellung mit Azure Monitor, sondern unterstützt auch Azure Automation, um die Hybrid Runbook-Workerrolle und andere Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking.md), [Updateverwaltung](../../automation/automation-update-management.md) und [Azure Security Center](../../security-center/security-center-intro.md) zu hosten. Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Unterstützte Windows-Betriebssysteme
+
 Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
 
 * Windows Server 2019
@@ -140,7 +148,7 @@ Für Computer in Ihrem Azure-Abonnement oder in einer Hybridumgebung kann abhän
 
 |`Source` | Methode | BESCHREIBUNG|
 |-------|-------------|-------------|
-|Azure-VM| - Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) unter Verwendung der Azure-Befehlszeilenschnittstelle oder einer Azure Resource Manager-Vorlage<br>- [Manuell über das Azure-Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert sie in einem vorhandenen Azure Monitor-Arbeitsbereich.|
+|Azure VM| - Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) unter Verwendung der Azure-Befehlszeilenschnittstelle oder einer Azure Resource Manager-Vorlage<br>- [Manuell über das Azure-Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert sie in einem vorhandenen Azure Monitor-Arbeitsbereich.|
 | Windows-Hybridcomputer|- [Manuelle Installation](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Resource Manager-Vorlage mit Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Installieren Sie den Microsoft Monitoring Agent über die Befehlszeile oder mit einer automatisierten Methode wie Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) oder mit einer Azure Resource Manager-Vorlage, wenn Sie Microsoft Azure Stack in Ihrem Rechenzentrum bereitgestellt haben.| 
 | Linux-Hybridcomputer| [Manuelle Installation](../../azure-monitor/learn/quick-collect-linux-computer.md)|Installieren Sie den Agent für Linux durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird. | 
 | System Center Operations Manager|[Integrieren von Operations Manager mit Log Analytics](../../azure-monitor/platform/om-agents.md) | Konfigurieren Sie die Integration zwischen Operations Manager und Azure Monitor-Protokollen, um die gesammelten Daten von Windows-Computern weiterzuleiten, die Berichte für eine Verwaltungsgruppe erstellen.|  

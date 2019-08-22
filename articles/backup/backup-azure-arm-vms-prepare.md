@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f8086580d60d13251052636d4d771855e9605a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663703"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954949"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -102,7 +102,7 @@ Konfigurieren Sie eine Sicherungsrichtlinie für den Tresor.
    ![Schaltfläche „Sicherung“](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
 
-2. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** die Option **Azure** aus. Wählen Sie unter **Was möchten Sie sichern?** die Option **Virtueller Computer** >  **OK** aus. Dadurch wird die VM-Erweiterung im Tresor registriert.
+2. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** die Option **Azure** aus. Wählen Sie für **Was möchten Sie sichern?** die Option **Virtueller Computer** >  **OK** aus. Dadurch wird die VM-Erweiterung im Tresor registriert.
 
    ![Bereiche „Sicherung“ und „Sicherungsziel“](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -165,11 +165,11 @@ Die erste Sicherung wird entsprechend dem festgelegten Zeitplan ausgeführt; Sie
 ## <a name="verify-backup-job-status"></a>Überprüfen des Status des Sicherungsauftrags
 
 Die Sicherungsauftragsdetails jeder VM-Sicherung umfassen zwei Phasen: die Phase **Momentaufnahme** und die Phase **Daten in Tresor übertragen**.<br/>
-Die Momentaufnahmephase stellt sicher, dass ein Wiederherstellungspunkt vorhanden ist, der zusammen mit den Datenträgern für die **sofortige Wiederherstellung** gespeichert wird und maximal fünf Tage lang verfügbar ist (abhängig von der konfigurierten Aufbewahrungsdauer für Momentaufnahmen). In der Phase „Daten in Tresor übertragen“ wird zur langfristigen Aufbewahrung ein Wiederherstellungspunkt im Tresor erstellt. Die Übertragung von Daten in den Tresor beginnt erst nach Abschluss der Momentaufnahmephase.
+Die Momentaufnahmephase stellt sicher, dass ein Wiederherstellungspunkt vorhanden ist, der zusammen mit den Datenträgern für die **sofortige Wiederherstellung** gespeichert wird und maximal fünf Tage lang verfügbar ist (abhängig von der vom Benutzer konfigurierten Aufbewahrungsdauer für Momentaufnahmen). In der Phase „Daten in Tresor übertragen“ wird zur langfristigen Aufbewahrung ein Wiederherstellungspunkt im Tresor erstellt. Die Übertragung von Daten in den Tresor beginnt erst nach Abschluss der Momentaufnahmephase.
 
   ![Status des Sicherungsauftrags](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Am Back-End werden zwei **Teilvorgänge** ausgeführt – einer davon für den Front-End-Sicherungsauftrag. Dieser kann auf dem Detailblatt für den **Sicherungsauftrag** überprüft werden, wie hier zu sehen:
+Im Back-End werden zwei **Teilvorgänge** ausgeführt – einer davon für den Front-End-Sicherungsauftrag. Dieser kann auf dem Detailblatt für den **Sicherungsauftrag** überprüft werden, wie hier zu sehen:
 
   ![Status des Sicherungsauftrags](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 

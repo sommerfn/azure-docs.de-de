@@ -10,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638426"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990526"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Images
+# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Bereitstellen von Modellen mit einem benutzerdefinierten Docker-Image
 
 Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Image verwenden können, wenn Sie trainierte Modelle mit dem Azure Machine Learning Service einsetzen.
 
@@ -40,8 +40,8 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning Service-Arbeitsgruppe. Weitere Informationen finden Sie unter [Erstellen eines Workspace](setup-create-workspace.md)-Artikels.
-* Azure Machine Learning SDK. Weitere Informationen finden Sie im Abschnitt Python SDK des Artikels [Create a Workspace](setup-create-workspace.md#sdk).
+* Ein Azure Machine Learning Service-Arbeitsgruppe. Weitere Informationen finden Sie unter [Erstellen eines Workspace](how-to-manage-workspace.md)-Artikels.
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Ein [Azure Container Registry](/azure/container-registry) oder andere Docker-Registrierung, die über das Internet zugänglich ist.
@@ -98,6 +98,8 @@ Wenn Sie bereits Modelle mit dem Azure Machine Learning-Dienst trainiert oder be
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
     ```
+
+    [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
     Die zurückgegebenen Informationen ähneln dem folgenden Text:
 

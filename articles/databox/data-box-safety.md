@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953027"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985946"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Sichere Installation und Bedienung Ihrer Azure Data Box
 ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)
@@ -40,8 +40,8 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 
 ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)![Symbol "Stromschlag"](./media/data-box-safety/electrical_shock_hazard_icon.png)![Symbol "Keine durch Benutzer zu wartenden Teile"](./media/data-box-safety/no_user_serviceable_parts_icon.png) **VORSICHT** 
 
-* Überprüfen Sie das *empfangene* Gerät auf Schäden. Wenn das Gerätegehäuse beschädigt ist, wenden Sie sich an den Microsoft-Support, um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät in Betrieb zu nehmen. 
-* Das Gerät ist mit manipulationsgeschützten Schrauben ausgestattet. Wenn Sie vermuten, dass das Gerät defekt ist, wenden Sie sich an den Microsoft-Support, um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät zu warten. 
+* Überprüfen Sie das *empfangene* Gerät auf Schäden. Wenn das Gerätegehäuse beschädigt ist, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md), um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät in Betrieb zu nehmen. 
+* Das Gerät ist mit manipulationsgeschützten Schrauben ausgestattet. Wenn Sie vermuten, dass das Gerät defekt ist, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md), um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät zu warten. 
 * Das Gerät enthält keine vom Benutzer zu wartenden Teile. Im Inneren sind gefährliche Spannungs-, Strom- und Leistungspegel vorhanden. Öffnen Sie es nicht. Senden Sie das Gerät zur Wartung an Microsoft zurück.
 
 ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)![Symbol "Schwergewicht"](./media/data-box-safety/heavy_weight_hazard_icon.png)**WARNUNG!** 
@@ -132,7 +132,7 @@ Kanada: (800) 933-4750
 
 **Europäische Union:**
 
-Eine Kopie der EU-Konformitätserklärung finden Sie hier.
+[Eine Kopie der EU-Konformitätserklärung anfordern](mailto:CSI_Compliance@microsoft.com).
 
 ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**WARNUNG:** 
 

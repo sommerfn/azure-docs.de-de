@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/12/2019
+ms.openlocfilehash: 00cace13a1d3db2bca45791960ca9bf2fb9260bd
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225359"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976897"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -34,7 +34,32 @@ Da Replikate schreibgeschützt sind, führen sie nicht direkt zu einer verringer
 
 Das Lesereplikatfeature verwendet die asynchrone MySQL-Replikation. Das Feature ist nicht für synchrone Replikationsszenarien vorgesehen. Zwischen dem Masterserver und dem Replikat entsteht eine messbare Verzögerung. Letztendlich sind die Daten auf dem Replikat mit den Daten auf dem Masterserver konsistent. Verwenden Sie das Feature für Workloads, für die diese Verzögerung akzeptabel ist.
 
-Lesereplikate können Ihren Notfallwiederherstellungsplan verbessern. Wenn ein regionaler Notfall eintritt und Ihr Masterserver nicht verfügbar ist, können Sie Ihren Workload auf ein Replikat in einer anderen Region umleiten. Dazu lassen Sie das Replikat zunächst Schreibzugriffe mithilfe der Funktion zum Beenden der Replikation annehmen. Sie können Ihre Anwendung dann umleiten, indem Sie die Verbindungszeichenfolge aktualisieren. Weitere Informationen finden Sie im Abschnitt [Beenden der Replikation](#stop-replication).
+## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
+Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
+
+> [!IMPORTANT]
+> Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
+
+Sie können einen Masterserver in jeder [Azure Database for MySQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen.
+
+### <a name="universal-replica-regions"></a>Universelle Replikatregionen
+Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Dies sind die universellen Replikatregionen:
+
+„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“.
+
+
+### <a name="paired-regions"></a>Regionspaare
+Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+
+Wenn Sie für die Notfallwiederherstellungsplanung regionsübergreifende Replikate verwenden, empfehlen wir Ihnen, das Replikat in der gekoppelten Region und nicht in einer der anderen Regionen zu erstellen. Regionspaare vermeiden gleichzeitige Aktualisierungen und priorisieren die physische Isolation und die Datenresidenz.  
+
+Es gibt jedoch einige Einschränkungen: 
+
+* Regionale Verfügbarkeit: Azure Database for MySQL ist in den Regionen „USA, Westen 2“, „Frankreich, Mitte“ und „VAE, Norden“ und „Deutschland, Mitte“ verfügbar. Die entsprechenden gekoppelten Regionen sind allerdings nicht verfügbar.
+    
+* Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Zu diesen Regionen zählen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
+   Das bedeutet, dass ein Masterserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Masterserver in der Region „Indien, Süden“ kann jedoch kein Replikat in „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
+
 
 ## <a name="create-a-replica"></a>Erstellen eines Replikats
 

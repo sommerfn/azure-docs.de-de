@@ -1,20 +1,19 @@
 ---
 title: Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
 description: Erfahren Sie mehr über bewährte Methoden zur Datenerfassung, Datensicherheit und Leistung bei Verwendung von Azure Data Lake Storage Gen2 (ehemals Azure Data Lake Store).
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: c1a298584b2444d52f84c0e599462bc26c63a898
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302623"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016050"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
@@ -50,7 +49,7 @@ Beim Erstellen der Systemarchitektur mit Data Lake Storage Gen2 oder einem belie
 
 ### <a name="high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung
 
-Hochverfügbarkeit (High availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR) können auch kombiniert werden, obwohl die Strategien sich leicht unterscheiden – vor allem in Bezug auf die Daten. Data Lake Storage Gen2 bietet bereits standardmäßig eine Dreifachreplikation als Schutz vor lokalen Hardwarefehlern. Darüber wird Hochverfügbarkeit durch andere Replikationsoptionen wie zonenredundanter Speicher verbessert, während georedundanter Speicher und georedundanter Speicher mit Lesezugriff die Notfallwiederherstellung optimieren. Beim Erstellen eines Plans für die Hochverfügbarkeit benötigt die Workload bei einer Dienstunterbrechung so schnell wie möglich Zugriff auf die aktuellen Daten, indem zu einer separat replizierten Instanz gewechselt wird, die sich am lokalen Standort oder in einer neuen Region befindet.
+Hochverfügbarkeit (High availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR) können auch kombiniert werden, obwohl die Strategien sich leicht unterscheiden – vor allem in Bezug auf die Daten. Data Lake Storage Gen2 bietet bereits standardmäßig eine Dreifachreplikation als Schutz vor lokalen Hardwarefehlern. Außerdem wird Hochverfügbarkeit durch andere Replikationsoptionen wie zonenredundanter Speicher oder GZRS (Vorschau) verbessert, während georedundanter Speicher und georedundanter Speicher mit Lesezugriff die Notfallwiederherstellung optimieren. Beim Erstellen eines Plans für die Hochverfügbarkeit benötigt die Workload bei einer Dienstunterbrechung so schnell wie möglich Zugriff auf die aktuellen Daten, indem zu einer separat replizierten Instanz gewechselt wird, die sich am lokalen Standort oder in einer neuen Region befindet.
 
 Bei einer Strategie für die Notfallwiederherstellung ist es als Vorbereitung auf den unwahrscheinlichen Fall, dass eine Region aufgrund einer Katastrophe ausfällt, außerdem wichtig, dass Daten mithilfe der Replikation per georedundantem Speicher oder georedundantem Speicher mit Lesezugriff in eine andere Region repliziert werden. Sie müssen außerdem Ihre Anforderungen in Bezug auf Sonderfälle berücksichtigen, z. B. Datenbeschädigungen, in denen es ratsam sein kann, regelmäßige Momentaufnahmen als Fallbacklösung zu erstellen. Je nach Wichtigkeit und Größe der Daten können Sie erwägen, rollierende Deltamomentaufnahmen für Zeiträume von 1 Stunde, 6 Stunden und 24 Stunden zu erstellen. Dies richtet sich nach Risikotoleranzen.
 

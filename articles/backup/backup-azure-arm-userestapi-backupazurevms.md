@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688726"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954984"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -98,7 +98,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Auswählen des entsprechenden virtuellen Azure-Computers
 
- Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-1) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer ermittelt.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
+ Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-1) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
 
 Dieser Vorgang ist ein *GET*-Vorgang.
 
@@ -393,7 +393,7 @@ Da es sich bei dem Sicherungsauftrag um einen Vorgang mit langer Ausführungsdau
 
 ### <a name="changing-the-policy-of-protection"></a>Ändern der Richtlinie für den Schutz
 
-Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, können Sie das gleiche Format wie beim [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) verwenden. Geben Sie einfach die neue Richtlinien-ID im [Anforderungstext](#example-request-body) an, und senden Sie die Anforderung. Beispiel: Geben Sie zum Ändern der Richtlinie für „testVM“ von „DefaultPolicy“ in „ProdPolicy“ die ID von „ProdPolicy“ im Anforderungstext an.
+Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, können Sie das gleiche Format wie beim [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) verwenden. Geben Sie einfach die neue Richtlinien-ID im [Anforderungstext](#example-request-body) an, und senden Sie die Anforderung. Beispiel:  Geben Sie zum Ändern der Richtlinie für „testVM“ von „DefaultPolicy“ in „ProdPolicy“ die ID von „ProdPolicy“ im Anforderungstext an.
 
 ```http
 {

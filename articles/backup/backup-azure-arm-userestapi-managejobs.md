@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: a8ba5727dea214343e7696ff3193aba13922be03
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689451"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954912"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 
-Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien ausgeführt werden, z.B. Auslösen von Sicherungen, Durchführen von Wiederherstellungsvorgängen und Deaktivieren der Sicherung. Diese Aufträge können anhand ihrer IDs nachverfolgt werden.
+Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien im Hintergrund ausgeführt werden, z. B. Auslösen von Sicherungen, Durchführen von Wiederherstellungsvorgängen und Deaktivieren der Sicherung. Diese Aufträge können anhand ihrer IDs nachverfolgt werden.
 
 ## <a name="fetch-job-information-from-operations"></a>Abrufen von Auftragsinformationen aus Vorgängen
 
-Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel: Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
+Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel:  Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
 
 ```http
 {

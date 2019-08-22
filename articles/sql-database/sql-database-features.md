@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3f991d90dfdd5d31d1a7cf7119356f40458e7614
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568239"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985723"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server
 
@@ -84,7 +84,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Volltextsuche (Full-Text Search, FTS)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Ja, aber Worttrennungen von Drittanbietern werden nicht unterstützt | Ja, aber [Worttrennungen von Drittanbietern werden nicht unterstützt](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Funktionen](https://docs.microsoft.com/sql/t-sql/functions/functions) | Die meisten (siehe einzelne Funktionen) | Ja – siehe [Gespeicherte Prozeduren, Funktionen, Trigger](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Graph-Verarbeitung](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ja | Ja |
-| [In-Memory-Optimierung](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja – [nur Tarife „Premium“ und „Unternehmenskritisch“](sql-database-in-memory.md) | Ja – [nur Tarif „Unternehmenskritisch“](sql-database-managed-instance.md) |
+| [In-Memory-Optimierung](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja – [Tarif „Premium“ und „Unternehmenskritisch“](sql-database-in-memory.md) Beschränkte Unterstützung von nicht persistenten In-Memory-Objekten, z. B. Tabellentypen | Ja – [nur Tarif „Unternehmenskritisch“](sql-database-managed-instance.md) |
 | [Unterstützung von JSON-Daten](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ja](sql-database-json-features.md) | [Ja](sql-database-json-features.md) |
 | [Sprachelemente](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten (siehe einzelne Elemente) |  Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Verknüpfte Server](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein (siehe [Elastische Abfrage](sql-database-elastic-query-horizontal-partitioning.md)) | Ja. Nur für [SQL Server und SQL-Datenbank](sql-database-managed-instance-transact-sql-information.md#linked-servers) ohne verteilte Transaktionen. |

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a71c7ffe9040c3002b1f5378ce298a047554b15
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640189"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966467"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -33,11 +33,13 @@ Sie können Daten aus einer Oracle-Datenbank in jeden unterstützten Senkendaten
 Dieser Oracle-Connector unterstützt insbesondere Folgendes:
 
 - Die folgenden Versionen einer Oracle-Datenbank:
-  - Oracle 12c R1 (12.1)
-  - Oracle 11g R1, R2 (11.1, 11.2)
-  - Oracle 10g R1, R2 (10.1, 10.2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18.1) und höher
+    - Oracle 12c R1 (12.1) und höher
+    - Oracle 11g R1 (11.1) und höher
+    - Oracle 10g R1 (10.1) und höher
+    - Oracle 9i R2 (9.2) und höher
+    - Oracle 8i R3 (8.1.7) und höher
+    - Oracle Database Cloud Exadata Service
 - Kopieren von Dateien unter Verwendung der Standard- oder OID-Authentifizierung.
 - Paralleles Kopieren aus einer Oracle-Quelle. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle).
 
@@ -46,7 +48,9 @@ Dieser Oracle-Connector unterstützt insbesondere Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank, die nicht öffentlich zugänglich ist, muss eine [selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) eingerichtet werden. Die Integration Runtime stellt einen integrierten Oracle-Treiber bereit. Daher müssen Sie zum Kopieren von Daten aus und nach Oracle nicht manuell einen Treiber erstellen.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+Die Integration Runtime stellt einen integrierten Oracle-Treiber bereit. Daher müssen Sie zum Kopieren von Daten aus und nach Oracle nicht manuell einen Treiber erstellen.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -58,11 +62,11 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Der verknüpfte Oracle-Dienst unterstützt folgende Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | Ja |
 | connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. <br/>Markieren Sie dieses Feld als `SecureString`, um es sicher in Data Factory zu speichern. Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). <br><br>**Unterstützter Verbindungstyp:** Sie können die **Oracle-SID** oder den **Oracle-Dienstnamen** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können eine selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Ohne Angabe verwendet diese Eigenschaft die standardmäßige Azure Integration Runtime. |Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 >[!TIP]
 >Falls der Fehler „ORA-01025: UPI parameter out of range“ (ORA-01025: URI-Parameter außerhalb des zulässigen Bereichs) angezeigt wird und Sie die Oracle-Version 8i verwenden, fügen Sie Ihrer Verbindungszeichenfolge Folgendes hinzu: `WireProtocolMode=1`. Versuchen Sie es anschließend noch mal.
@@ -163,7 +167,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Oracle-Dataset u
 
 Legen Sie zum Kopieren von Daten aus bzw. nach Oracle die Eigenschaft „type“ des Datasets auf `OracleTable` fest. Die folgenden Eigenschaften werden unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ des Datasets muss auf `OracleTable` festgelegt werden. | Ja |
 | tableName |Der Name der Tabelle in der Oracle-Datenbank, auf die der verknüpfte Dienst verweist. | Ja |
@@ -191,15 +195,14 @@ Legen Sie zum Kopieren von Daten aus bzw. nach Oracle die Eigenschaft „type“
 
 Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Oracle-Quelle und -Senke unterstützt werden. Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines](concepts-pipelines-activities.md). 
 
-### <a name="oracle-as-a-source-type"></a>Oracle als Quelltyp
+### <a name="oracle-as-source"></a>Oracle als Quelle
 
-> [!TIP]
->
-> Informationen zum effizienten Laden von Daten aus Oracle mittels Datenpartitionierung finden Sie unter [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle).
+>[!TIP]
+>Informationen zum effizienten Laden von Daten aus Oracle mittels Datenpartitionierung finden Sie unter [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle).
 
 Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität auf `OracleSource` fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `OracleSource` festgelegt werden. | Ja |
 | oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
@@ -208,7 +211,7 @@ Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität
 | partitionNames | Die Liste der physischen Partitionen, die kopiert werden sollen. <br>Verwenden Sie diese Option, wenn die Partitionsoption `PhysicalPartitionsOfTable` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfTabularPartitionName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
 | partitionColumnName | Geben Sie den Namen der Quellspalte **als Integer** an, der von der Bereichspartitionierung für die parallele Kopie verwendet wird. Ohne Angabe wird der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionColumnName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
 | partitionUpperBound | Der Höchstwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionUpbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
-| PartitionLowerBound | Der Mindestwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionLowbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
+| partitionLowerBound | Der Mindestwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionLowbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
 
 **Beispiel: Kopieren von Daten mit einer einfachen Abfrage ohne Partition**
 
@@ -242,11 +245,11 @@ Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>Oracle als Senkentyp
+### <a name="oracle-as-sink"></a>Oracle als Senke
 
 Legen Sie zum Kopieren von Daten in Oracle den Senkentyp in der Kopieraktivität auf `OracleSink` fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Senke der Kopieraktivität muss auf `OracleSink` festgelegt werden. | Ja |
 | writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße `writeBatchSize` erreicht.<br/>Zulässige Werte sind Integer-Werte (Anzahl der Zeilen). |Nein (Standardwert ist 10.000) |
@@ -284,7 +287,7 @@ Legen Sie zum Kopieren von Daten in Oracle den Senkentyp in der Kopieraktivität
 ]
 ```
 
-## <a name="parallel-copy-from-oracle"></a>Paralleles Kopieren aus Oracle
+## <a name="parallel-copy-from-oracle"></a>Parallele Kopie von Oracle
 
 Der Data Factory-Oracle-Connector verfügt über eine integrierte Datenpartitionierung zum parallelen Kopieren von Daten aus Oracle. Die Datenpartitionierungsoptionen befinden sich auf der Registerkarte **Quelle** der Kopieraktivität.
 
@@ -342,7 +345,7 @@ Beim Kopieren von Daten aus Oracle und nach Oracle gelten folgende Zuordnungen. 
 | BLOB |Byte[]<br/>(nur für Oracle 10g und höher unterstützt) |
 | CHAR |String |
 | CLOB |String |
-| DATE |DateTime |
+| DATE |Datetime |
 | FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | LONG |String |
@@ -353,7 +356,7 @@ Beim Kopieren von Daten aus Oracle und nach Oracle gelten folgende Zuordnungen. 
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |DateTime |
+| TIMESTAMP |Datetime |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |Number |

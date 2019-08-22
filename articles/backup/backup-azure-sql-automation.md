@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6e1d1852660b598b8d780f3240edb3468010fb58
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e078c75911a332c7e70f3a578723735729b9e6b6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735490"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954498"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
@@ -247,7 +247,7 @@ Wenn neue Datenbanken nicht manuell erkannt werden sollen, können Sie sich auch
 
 Ein Benutzer kann die Sicherung so konfigurieren, dass alle zukünftig hinzugefügten Datenbanken automatisch mit einer bestimmten Richtlinie geschützt werden. Zum Aktivieren des automatischen Schutzes verwenden Sie das PS-Cmdlet [Enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0).
 
-Da die Anweisung das Sichern aller zukünftigen Datenbanken vorsieht, erfolgt der Vorgang auf einer SQL-Instanzebene.
+Da die Anweisung das Sichern aller zukünftigen Datenbanken vorsieht, erfolgt der Vorgang auf der Ebene einer SQL-Instanz.
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"

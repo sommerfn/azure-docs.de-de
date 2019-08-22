@@ -2,18 +2,17 @@
 title: Informationen zu Kontingenten und Drosselung bei Azure IoT Hub | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der für IoT Hub geltenden Kontingente und des erwarteten Drosselungsverhaltens'
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 1c19696b10584bc55989b9270978486d7f5aa157
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/08/2019
+ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326728"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950526"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -96,7 +95,8 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 | Dateiuploads | Zehn gleichzeitige Dateiuploads pro Gerät. |
 | Aufträge<sup>1</sup> | Maximale Anzahl gleichzeitiger Aufträge: 1 (für Free und S1), 5 (für S2), 10 (für S3). Bei allen Tarifen kann jedoch für Geräte immer nur ein [Import-/Exportauftrag](iot-hub-bulk-identity-mgmt.md) nach dem anderen ausgeführt werden. <br/>Der Auftragsverlauf wird bis zu 30 Tage lang gespeichert. |
 | Zusätzliche Endpunkte | Kostenpflichtige SKU-Hubs haben möglicherweise 10 zusätzliche Endpunkte. Kostenfreie SKU-Hubs haben möglicherweise einen zusätzlichen Endpunkt. |
-| Regeln für die Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs haben möglicherweise 100 Weiterleitungsregeln. Kostenfreie SKU-Hubs haben möglicherweise fünf Weiterleitungsregeln. |
+| Abfragen der Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs können bis zu 100 Weiterleitungsregeln enthalten. Kostenlose SKU-Hubs können bis zu fünf Weiterleitungsregeln enthalten. |
+| Nachrichtenergänzungen | Kostenpflichtige SKU-Hubs können bis zu zehn Nachrichtenergänzungen enthalten. Kostenlose SKU-Hubs können bis zu zwei Nachrichtenergänzungen enthalten.|
 | Nachrichten, die von Geräten an die Cloud gesendet werden | Maximale Nachrichtengröße 256 KB |
 | Cloud-zu-Gerät-Messaging<sup>1</sup> | Maximale Nachrichtengröße 64KB. Maximale Anzahl ausstehender Nachrichten für die Übermittlung: 50 pro Gerät. |
 | Direkte Methode<sup>1</sup> | Die maximale Nutzlast für direkte Methoden beträgt 128KB. |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: de13518173f21a0a802c37eb7be3cd6c4926d884
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689209"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954624"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -212,7 +212,7 @@ Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den L
 - Lösungsübergreifend werden Ad-hoc-Sicherungsaufträge und Wiederherstellungsaufträge gepusht, sobald sie *abgeschlossen sind*.
 - Die geplanten Sicherungsaufträge aus allen Lösungen (außer SQL-Sicherung) werden gepusht, sobald sie  *abgeschlossen* sind.
 - Da Protokollsicherungen alle 15 Minuten auftreten können, werden für SQL-Sicherungen Informationen für alle abgeschlossenen geplanten Sicherungsaufträge (einschließlich Protokolle) als Batch gesammelt und alle 6 Stunden gepusht.
-- Alle anderen Informationen wie Sicherungselemente, Richtlinien, Wiederherstellungspunkte, Speicher usw. werden lösungsübergreifend *mindestens ein Mal täglich* gepusht.
+- Alle anderen Informationen wie Sicherungselemente, Richtlinien, Wiederherstellungspunkte, Speicher usw. werden lösungsübergreifend *mindestens einmal täglich* gepusht.
 - Eine Änderung der Sicherungskonfiguration (wie einer Änderung der Richtlinie oder Bearbeitungsrichtlinie) löst einen Push aller zugehörigen Sicherungsinformationen aus.
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>Verwenden der Aktivitätsprotokolle des Recovery Services-Tresors
@@ -238,7 +238,7 @@ Identifizieren Sie das geeignete Protokoll, und erstellen Sie eine Warnung:
 
    ![Neue Warnungsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Hier ist die Ressource der Recovery Services-Tresor selbst. Sie müssen die gleichen Schritte für alle Tresore wiederholen, in denen Sie über Aktivitätsprotokolle benachrichtigt werden möchten. Die Bedingung weist keinen Schwellenwert, keinen Zeitraum und keine Häufigkeit auf, da diese Warnung auf Ereignissen basiert. Sobald das entsprechende Aktivitätsprotokoll erstellt wurde, wird die Warnung ausgelöst.
+Hier ist die Ressource der Recovery Services-Tresor selbst. Wiederholen Sie die gleichen Schritte für alle Tresore, in denen Sie über Aktivitätsprotokolle benachrichtigt werden möchten. Die Bedingung weist keinen Schwellenwert, keinen Zeitraum und keine Häufigkeit auf, da diese Warnung auf Ereignissen basiert. Sobald das entsprechende Aktivitätsprotokoll erstellt wurde, wird die Warnung ausgelöst.
 
 ## <a name="using-log-analytics-to-monitor-at-scale"></a>Verwenden von Log Analytics zum Überwachen im richtigen Maßstab
 

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460217"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949882"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -172,7 +172,7 @@ Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Ac
 
 ### <a name="bindings-data-type"></a>Datentyp für Bindungen
 
-Verwenden Sie zum Definieren des Datentyps für eine Eingabebindung die `dataType`-Eigenschaft in der Bindungsdefinition. Um z.B. den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
+Verwenden Sie zum Definieren des Datentyps für eine Eingabebindung die `dataType`-Eigenschaft in der Bindungsdefinition. Um z. B. den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
 
 ```json
 {
@@ -584,20 +584,44 @@ Wenn Sie Ihre Funktions-App mit **Deploy to function app...** (In Funktions-App 
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
+Bei der Verwendung der Core Tools unterscheidet sich ein TypeScript-Projekt auf vielfältige Weise von einem JavaScript-Projekt.
+
+#### <a name="create-project"></a>Projekt erstellen
+
 Wenn Sie ein TypeScript-Funktions-App-Projekt mit den Core Tools erstellen möchten, müssen Sie bei der Erstellung der Funktions-App die Sprache auf „TypeScript“ festlegen. Wählen Sie dazu eine der folgenden Methoden:
 
 - Führen Sie den Befehl `func init` aus, wählen Sie `node` als Sprachstapel, und wählen Sie dann `typescript`.
 
 - Führen Sie den Befehl `func init --worker-runtime typescript` aus.
 
-Wenn Sie den Code Ihrer Funktions-App lokal mit den Core Tools ausführen möchten, verwenden Sie den Befehl `npm start` statt `func host start`. Der Befehl `npm start` entspricht den folgenden Befehlen:
+#### <a name="run-local"></a>Lokale Ausführung
+
+Wenn Sie den Code Ihrer Funktions-App lokal mit den Core Tools ausführen möchten, verwenden Sie statt `func host start` die folgenden Befehle: 
+
+```command
+npm install
+npm start
+```
+
+Der Befehl `npm start` entspricht den folgenden Befehlen:
 
 - `npm run build`
 - `func extensions install`
 - `tsc`
 - `func start`
 
-Bevor Sie den Befehl [`func azure functionapp publish`] für die Bereitstellung in Azure verwenden, müssen Sie zunächst den Befehl `npm run build:production` ausführen. Dieser Befehl erstellt aus den TypeScript-Quelldateien einen produktionsbereiten Build aus JavaScript-Dateien, der mit [`func azure functionapp publish`] bereitgestellt werden kann.
+#### <a name="publish-to-azure"></a>Veröffentlichen in Azure
+
+Bevor Sie den Befehl [`func azure functionapp publish`] zur Bereitstellung in Azure verwenden, erstellen Sie aus den TypeScript-Quelldateien einen produktionsbereiten Build aus JavaScript-Dateien. 
+
+Mit den folgenden Befehlen können Sie Ihr TypeScript-Projekt mithilfe der Core Tools vorbereiten und veröffentlichen: 
+
+```command
+npm run build:production 
+func azure functionapp publish <APP_NAME>
+```
+
+Ersetzen Sie in diesem Befehl `<APP_NAME>` durch den Namen Ihrer Funktions-App.
 
 ## <a name="considerations-for-javascript-functions"></a>Überlegungen zu JavaScript-Funktionen
 

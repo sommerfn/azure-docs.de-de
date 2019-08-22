@@ -6,14 +6,14 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450083"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950438"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -47,22 +47,28 @@ D2C-Messaging mit IoT Hub weist folgende Merkmale auf:
 
 Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über verschiedene Protokollen gesendet werden, finden Sie unter [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
-In der folgenden Tabelle werden die Systemeigenschaften in IoT Hub-Nachrichten aufgeführt.
+## <a name="system-properties-of-d2c-iot-hub-messages"></a>Systemeigenschaften von **D2C**-IoT Hub-Nachrichten
 
-| Eigenschaft | BESCHREIBUNG | Kann der Benutzer festgelegt werden? |
+| Eigenschaft | BESCHREIBUNG  |Kann der Benutzer festgelegt werden?|Schlüsselwort für Routingabfrage|
+| --- | --- | --- | --- |
+| message-id |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht.  | Ja | MessageId |
+| iothub-enqueuedtime |Datum und Uhrzeit des Empfangs der [D2C](iot-hub-devguide-d2c-guidance.md)-Nachricht durch IoT Hub. | Nein | EnqueuedTime |
+| user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. | Ja | UserId |
+| iothub-connection-device-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **deviceId** des Geräts, das die Nachricht sendet. | Nein | deviceId |
+| iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **generationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | Nein |DeviceGenerationId |
+| iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet.| Nein | AuthMethod |
+
+## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systemeigenschaften von **C2D**-IoT Hub-Nachrichten
+
+| Eigenschaft | BESCHREIBUNG  |Kann der Benutzer festgelegt werden?|
 | --- | --- | --- |
-| message-id |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht. | Ja |
-| sequence-number |Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird | „Nein“ bei C2D-Nachrichten; andernfalls „Ja“. |
-| zu |Ein Ziel, das in [C2D](iot-hub-devguide-c2d-guidance.md) -Nachrichten angegeben wird. | „Nein“ bei C2D-Nachrichten; andernfalls „Ja“. |
-| absolute-expiry-time |Datum und Uhrzeit des Nachrichtenablaufs. | Ja |
-| iothub-enqueuedtime |Datum und Uhrzeit des Empfangs der [D2C](iot-hub-devguide-d2c-guidance.md)-Nachricht durch IoT Hub. | „Nein“ bei D2C-Nachrichten; andernfalls „Ja“. |
-| correlation-id |Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. | Ja |
-| user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. | Nein |
-| iothub-ack |Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **Kein** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **Positiv**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **Negativ**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **Voll**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Ja |
-| iothub-connection-device-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **deviceId** des Geräts, das die Nachricht sendet. | „Nein“ bei D2C-Nachrichten; andernfalls „Ja“. |
-| iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **generationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | „Nein“ bei D2C-Nachrichten; andernfalls „Ja“. |
-| iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | „Nein“ bei D2C-Nachrichten; andernfalls „Ja“. |
-| iothub-creation-time-utc | Datum und Uhrzeit der Erstellung der Nachricht auf einem Gerät. Ein Gerät muss diesen Wert explizit festlegen. | Ja |
+| message-id |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht.  |Ja|
+| sequence-number |Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |Nein|
+| zu |Ein Ziel, das in [C2D](iot-hub-devguide-c2d-guidance.md) -Nachrichten angegeben wird. |Nein|
+| absolute-expiry-time |Datum und Uhrzeit des Nachrichtenablaufs. |Nein|   |
+| correlation-id |Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |Ja|
+| user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. |Ja|
+| iothub-ack |Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **Kein** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **Positiv**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **Negativ**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **Voll**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. |Ja|
 
 ## <a name="message-size"></a>Nachrichtengröße
 

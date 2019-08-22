@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a45e2af6f2cb9c105c084585a03a6de615fa1397
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573045"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69016451"
 ---
 # <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht  
 
@@ -28,7 +28,7 @@ ms.locfileid: "64573045"
 
 In Microsoft Azure Media Services (AMS) stellt ein **Streamingendpunkt** einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt für eine Clientwiedergabeanwendung oder einen Content Delivery Network (CDN) bereitstellen kann. Media Services bietet auch eine nahtlose Integration von Azure CDN. Der ausgehende Stream des StreamingEndpoint-Diensts kann ein Livestream oder ein bei Bedarf abgerufenes Video oder ein progressiver Download Ihres Medienobjekts in Ihrem Media Services-Konto sein. Jedes Azure Media Services-Konto enthält einen Standard-StreamingEndpoint. Zusätzliche StreamingEndpoints können unter dem Konto erstellt werden. Es gibt zwei Versionen von StreamingEndpoint, 1.0 und 2.0. Ab dem 10. Januar 2017 gehört zu allen neu erstellten AMS-Konten **standardmäßig** StreamingEndpoint in Version 2.0. Zusätzliche Streamingendpunkte, die Sie diesem Konto hinzufügen, haben auch die Version 2.0. Diese Änderung hat keine Auswirkung auf vorhandene Konten. Vorhandenen Streamingendpunkte haben die Version 1.0 und können auf Version 2.0 aktualisiert werden. Durch diese Änderung ergeben sich Änderungen am Verhalten, an der Abrechnung und an Features (weitere Informationen finden Sie im nachstehenden Abschnitt **Streamingtypen und -versionen**).
 
-Mit Azure Media Services wurden der Entität „Streamingendpunkt“ folgende Eigenschaften hinzugefügt: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Eine ausführliche Übersicht über diese Eigenschaften finden Sie [hier](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Mit Azure Media Services wurden der Entität „Streamingendpunkt“ folgende Eigenschaften hinzugefügt: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Eine ausführliche Übersicht über diese Eigenschaften finden Sie [hier](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Beim Erstellen eines Azure Media Services-Kontos wird ein Standard-Streamingendpunkt im Zustand **Beendet** erstellt. Der Standard-Streamingendpunkt kann nicht gelöscht werden. Abhängig von der Verfügbarkeit von Azure CDN in der Zielregion bietet der neu erstellte Standard-Streamingendpunkt standardmäßig eine Integration mit dem CDN-Anbieter „StandardVerizon“. 
                 
@@ -50,7 +50,7 @@ Für alle zusätzlichen Endpunkte: `{EndpointName}-{AccountName}.streaming.media
 Ab der Media Services-Version vom Januar 2017 gibt es zwei Streamingtypen: **Standard** (Vorschau) und **Premium**. Diese Typen sind Teil der Streamingendpunktversion „2.0“.
 
 
-|Type|BESCHREIBUNG|
+|type|BESCHREIBUNG|
 |--------|--------|  
 |**Standard**|Der standardmäßige Streamingendpunkt ist ein **Standard**-Typ, kann aber durch Anpassen der Streamingeinheiten in den Typ „Premium“ geändert werden.|
 |**Premium** |Diese Option eignet sich für professionelle Szenarien, die eine höhere Skalierung oder mehr Steuerung erfordern. Zum Typ **Premium** wechseln Sie, indem Sie Streamingeinheiten anpassen.<br/>Dedizierte Streamingendpunkte sind in einer isolierten Umgebung vorhanden und konkurrieren nicht um Ressourcen.|
@@ -75,7 +75,7 @@ Wenn Ihr Streamingendpunkt der **Version 1.0** mindestens eine Premium-Streaming
 
 ### <a name="versions"></a>Versionen
 
-|Type|StreamingEndpointVersion|ScaleUnits|CDN|Abrechnung|
+|type|StreamingEndpointVersion|ScaleUnits|CDN|Abrechnung|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klassisch|1.0|0|Nicht verfügbar|Kostenlos|
 |Standardstreamingendpunkt (Vorschau)|2.0|0|Ja|Kostenpflichtig|
@@ -86,19 +86,17 @@ Wenn Ihr Streamingendpunkt der **Version 1.0** mindestens eine Premium-Streaming
 
 Feature|Standard|Premium
 ---|---|---
-Erste 15 Tage kostenlos <sup>1</sup>| Ja |Nein
 Throughput |Bis zu 600 MBit/s; kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.|200 Mbit/s pro Streamingeinheit. Kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
 Dynamische Verschlüsselung|Ja|Ja
 Dynamische Paketerstellung|Ja|Ja
 Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche Streamingeinheiten.
-IP-Filterung/G20/benutzerdefinierter Host <sup>2</sup>|Ja|Ja
+IP-Filterung/G20/benutzerdefinierter Host <sup>1</sup>|Ja|Ja
 Progressiver Download|Ja|Ja
 Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung. 
 
-<sup>1</sup> Die kostenlose Testversion gilt nur für neu erstellte Media Services-Konten und den Standardstreamingendpunkt.<br/>
-<sup>2</sup> Wird nur direkt für den Streamingendpunkt verwendet, wenn das CDN nicht für den Endpunkt aktiviert ist.<br/>
+<sup>1</sup> Wird nur direkt am Streamingendpunkt verwendet, wenn das CDN am Endpunkt nicht aktiviert ist.<br/>
 
 SLA-Informationen finden Sie unter [Preise und SLA](https://azure.microsoft.com/pricing/details/media-services/).
 

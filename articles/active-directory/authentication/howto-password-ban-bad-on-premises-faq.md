@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779650"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879263"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -33,6 +33,8 @@ Die aktuelle Anleitung von Microsoft zu diesem Thema finden Sie unter folgendem 
 **F: Wird der lokale Azure AD-Kennwortschutz in nicht öffentlichen Clouds unterstützt?**
 
 Nein. Der lokale Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unterstützt. Für die Verfügbarkeit in der nicht öffentlichen Cloud wurde kein Datum angekündigt.
+
+Das Azure AD-Portal ermöglicht die Änderung der lokalen Konfiguration des „Kennwortschutzes für Windows Server Active Directory“ auch in nicht öffentlichen Clouds. Diese Änderungen werden beibehalten, werden aber andernfalls nie wirksam. Die Registrierung von lokalen Proxy-Agents oder Gesamtstrukturen wird bei Verwendung von Anmeldeinformationen nicht öffentlicher Clouds nicht unterstützt, und bei solchen Registrierungsversuchen tritt immer ein Fehler auf.
 
 **F: Wie kann ich die Vorteile des Azure AD-Kennwortschutzes auf eine Untergruppe meiner lokalen Benutzer anwenden?**
 
@@ -64,7 +66,7 @@ Nicht unterstützt. Der Azure AD-Kennwortschutz ist ein Azure-Feature, das auf e
 
 **F: Wie kann ich den Inhalt der Richtlinie auf Active Directory-Ebene ändern?**
 
-Nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Verwaltungsportal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
+Nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Portal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
 
 **F: Warum ist DFSR für die sysvol-Replikation erforderlich?**
 
@@ -118,15 +120,15 @@ Zusammenfassend gesagt: Die Bereitstellung des Domänencontroller-Agent-Diensts 
 
 **F: Warum funktioniert die benutzerdefinierte intelligente Sperre auch dann nicht, wenn die Agents in meiner lokalen Active Directory Umgebung installiert wurden?**
 
-Die benutzerdefinierte intelligente Sperre wird nur in Azure unterstützt. Änderungen an den Einstellungen für die benutzerdefinierte intelligente Sperre im Azure-Verwaltungsportal haben keine Auswirkung auf die lokale Active Directory Umgebung, auch wenn die Agents installiert sind.
+Die benutzerdefinierte intelligente Sperre wird nur in Azure AD unterstützt. Änderungen an den Einstellungen für die benutzerdefinierte intelligente Sperre im Azure AD-Portal haben keine Auswirkungen auf die lokale Active Directory-Umgebung, auch wenn die Agents installiert sind.
 
 **F: Ist für den Azure AD-Kennwortschutz ein System Center Operations Manager-Managementpack verfügbar?**
 
 Nein.
 
-**F: Warum lehnt Azure schwache Kennwörter weiterhin ab, obwohl ich für die Richtlinie den Überwachungsmodus konfiguriert habe?**
+**F: Warum lehnt Azure AD unsichere (oder schwache) Kennwörter weiterhin ab, obwohl ich für die Richtlinie den Überwachungsmodus konfiguriert habe?**
 
-Der Überwachungsmodus wird nur in der lokalen Active Directory-Umgebung unterstützt. Beim Auswerten von Kennwörtern ist Azure implizit immer im Modus „Erzwingen“.
+Der Überwachungsmodus wird nur in der lokalen Active Directory-Umgebung unterstützt. Beim Auswerten von Kennwörtern ist Azure AD implizit immer im Modus „Erzwingen“.
 
 ## <a name="additional-content"></a>Zusätzliche Inhalte
 
