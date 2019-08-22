@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d12c31e098765209d80c7b5f400333fc11e8bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ee2ae8161ffe2e2b04f563e218fd356b3d68c8b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098874"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Tutorial: Azure Active Directory-Integration in Keeper Password Manager & Digital Vault
 
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, den Bezeichner und die Antwort-URL. Wenden Sie sich an das [Clientsupportteam von Keeper Password Manager & Digital Vault](https://keepersecurity.com/contact.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die Ihren Anforderungen entsprechende **Verbundmetadaten-XML**-Datei aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 

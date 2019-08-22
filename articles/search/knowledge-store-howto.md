@@ -1,7 +1,7 @@
 ---
 title: Erste Schritte mit Wissensspeichern (Vorschauversion) – Azure Search
 description: Erfahren Sie, welche Schritte zum Senden von angereicherten Dokumenten, die von KI-Indizierungspipelines in Azure Search erstellt wurden, in einen Wissensspeicher in Ihrem Azure Storage-Konto erforderlich sind. Von dort aus können Sie die angereicherten Dokumente in Azure Search und anderen Anwendungen anzeigen, umstrukturieren und nutzen.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: 7539481105e1c1fd3b6816778e31e6edde8842d3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d6cecdce9bc4f7fee9ec936ac73b6accc77084c4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840814"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648833"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Erste Schritte mit Wissensspeichern in Azure Search
 

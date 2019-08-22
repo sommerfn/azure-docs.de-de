@@ -11,18 +11,18 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619609"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562933"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
 Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Für diese Funktion wird die [Functions-Runtime 2.x](functions-versions.md) benötigt.
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Funktionen als benutzerdefiniertes Docker-Image in Azure bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base). [Python-Unterstützung](functions-reference-python.md) befindet sich derzeit in der Vorschauphase.
+In diesem Tutorial erfahren Sie, wie Sie Ihre Funktionen als benutzerdefiniertes Docker-Image in Azure bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base). 
 
 Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer Funktion in einem benutzerdefinierten Linux-Image unter Verwendung von Azure Functions Core Tools. Sie veröffentlichen dieses Image in einer Funktions-App in Azure, die über die Azure-Befehlszeilenschnittstelle erstellt wurde. Später aktualisieren Sie Ihre Funktion, um eine Verbindung mit Azure Queue Storage herzustellen. Sie nehmen auch eine Aktivierung vor.  
 
@@ -69,8 +69,6 @@ Wählen Sie bei entsprechender Aufforderung eine der folgenden Worker-Runtimespr
 * `dotnet`: Erstellt ein .NET Core-Klassenbibliotheksprojekt (.csproj).
 * `node`: Erstellt ein JavaScript-Projekt.
 * `python`: Erstellt ein Python-Projekt.
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 Wenn der Befehl ausgeführt wird, sehen Sie etwa folgende Ausgabe:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 70431870027cc27d886995b0bf7f47108ad767fa
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ddbf2e5349a77a45155fafd07da5489d0073b093
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273936"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876396"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird das Wiederherstellen eines vollständigen virtuellen Computers mithilfe der Befehlszeilenschnittstelle erläutert. In diesem Tutorial lernen Sie Folgendes:
@@ -95,7 +95,7 @@ az backup job list \
 
 Die Ausgabe ähnelt dem folgenden Beispiel, bei dem für den Wiederherstellungsauftrag der Status *InProgress* angezeigt wird:
 
-```
+```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration
 --------  ---------------  ----------  -----------  -------------------  --------------
 7f2ad916  Restore          InProgress  myvm         2017-09-19T19:39:52  0:00:34.520850
