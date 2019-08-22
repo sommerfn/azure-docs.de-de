@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708381"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854436"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-Images in Azure
 Dieser Artikel beschreibt die verfügbaren Red Hat Enterprise Linux-Images (RHEL) im Azure Marketplace sowie Richtlinien für die Benennung und Aufbewahrung.
@@ -126,12 +126,18 @@ RHEL          | 7-RAW    | RAW    | Linux-Agent | RHEL 7-Imagefamilie. <br> Sta
 |             | 7,5      | RAW    | Linux-Agent | Wie oben für RHEL 7.5 angegeben. <br> Ab Juni 2019 standardmäßig mit EUS-Repositorys verknüpft
 |             | 7.6      | RAW    | Linux-Agent | Wie oben für RHEL 7.6 angegeben. <br> Ab Mai 2019 standardmäßig mit EUS-Repositorys verknüpft
 RHEL-SAP      | 7.4      | LVM    | Linux-Agent | RHEL 7.4 for SAP HANA und Business Applications
-|             | 7,5      | LVM    | Linux-Agent | RHEL 7.5 for SAP HANA und Business Applications
+|             | 7.5      | LVM    | Linux-Agent | RHEL 7.5 for SAP HANA und Business Applications
 RHEL-SAP-HANA | 6.7      | RAW    | Linux-Agent | RHEL 6.7 for SAP HANA
 |             | 7.2      | LVM    | Linux-Agent | RHEL 7.2 for SAP HANA
 |             | 7.3      | LVM    | Linux-Agent | RHEL 7.3 for SAP HANA
 RHEL-SAP-APPS | 6,8      | RAW    | Linux-Agent | RHEL 6.8 for SAP Business Applications
 |             | 7.3      | LVM    | Linux-Agent | RHEL 7.3 for SAP Business Applications
+RHEL-Hochverfügbarkeit       | 7.4      | RAW    | Linux-Agent | RHEL 7.4 mit Hochverfügbarkeits-Add-On
+|             | 75      | RAW    | Linux-Agent | RHEL 7.5 mit Hochverfügbarkeits-Add-On
+|             | 7.6      | RAW    | Linux-Agent | RHEL 7.6 mit Hochverfügbarkeits-Add-On
+RHEL-SAP-HA   | 7.4      | RAW    | Linux-Agent | RHEL 7.4 für SAP mit Hochverfügbarkeits-Add-On
+|             | 7.5      | RAW    | Linux-Agent | RHEL 7.5 für SAP mit Hochverfügbarkeits-Add-On
+|             | 7.6      | RAW    | Linux-Agent | RHEL 7.6 für SAP mit Hochverfügbarkeits-Add-On
 
 ### <a name="old-naming-convention"></a>Alte Namenskonvention
 In der RHEL 7-Familie von Images und der RHEL 6-Familie von Images wurden bis zur oben erläuterten Änderung der Namenskonvention spezifische Versionen in den SKUs verwendet.

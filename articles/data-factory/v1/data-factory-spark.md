@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f39331cb6fb5da370ec34b38592f513d713e957
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61257567"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640279"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -306,7 +306,7 @@ Dies ist eine JSON-Beispieldefinition einer Pipeline mit einer Spark-Aktivität:
                     "arguments": [ "arg1", "arg2" ],
                     "sparkConfig": {
                         "spark.python.worker.memory": "512m"
-                    }
+                    },
                     "getDebugInfo": "Always"
                 },
                 "outputs": [
@@ -347,7 +347,7 @@ Die Spark-Aktivität unterstützt im Gegensatz zu Pig- und Hive-Aktivitäten kei
 
 Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der durch **entryFilePath** dargestellt wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und JAR-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Data Factory-Dienst die folgende Ordnerstruktur im Blobspeicher: 
 
-| `Path` | BESCHREIBUNG | Erforderlich | Type |
+| `Path` | BESCHREIBUNG | Erforderlich | type |
 | ---- | ----------- | -------- | ---- |
 | . | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |

@@ -3,19 +3,19 @@ title: Indizieren einer Azure Cosmos DB-Datenquelle – Azure Search
 description: Durchforsten Sie eine Azure Cosmos DB-Datenquelle, und erfassen Sie Daten in einem durchsuchbaren Volltextindex in Azure Search. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Cosmos DB.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 7f9df42725e41fb514370dbdb828ad5b1305ea78
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485447"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656693"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Indizieren von Cosmos DB mithilfe eines Azure Search-Indexers
 
@@ -258,7 +258,7 @@ Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Que
 | Bool |Edm.Boolean, Edm.String |
 | Zahlen, die wie Ganzzahlen aussehen |Edm.Int32, Edm.Int64, Edm.String |
 | Zahlen, die wie Gleitkommas aussehen |Edm.Double, Edm.String |
-| string |Edm.String |
+| Zeichenfolge |Edm.String |
 | Arrays primitiver Typen, z.B. ["a", "b", "c"] |Collection(Edm.String) |
 | Zeichenfolgen, die wie Datumsangaben aussehen |Edm.DateTimeOffset, Edm.String |
 | GeoJSON-Objekte, z.B. { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |

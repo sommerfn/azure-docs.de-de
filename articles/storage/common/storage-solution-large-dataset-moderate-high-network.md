@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729228"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900364"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
  
@@ -108,4 +108,4 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
 - Verwenden der REST-APIs zum Übertragen von Daten
 
     - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage)

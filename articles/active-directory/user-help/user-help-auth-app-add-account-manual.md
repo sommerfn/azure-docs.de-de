@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f2145811338200b38e84766459844b4c83e5a80
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382758"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616093"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Manuelles Hinzufügen eines Kontos zur App
 
@@ -105,6 +105,6 @@ Sie können Ihr Amazon-Konto hinzufügen, indem Sie die zweistufige Überprüfun
 
 - Nachdem Sie der App Ihre Konten hinzugefügt haben, können Sie sich mit der Microsoft Authenticator-App auf Ihrem Gerät anmelden. Weitere Informationen finden Sie unter [Anmelden mithilfe der App](user-help-auth-app-sign-in.md).
 
-- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel **Sicherheitsinformation und Prüfcodes zum Microsoft-Konto** den Abschnitt [Problembehandlung beim Prüfcode](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes).
+- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel **Sicherheitsinformation und Prüfcodes zum Microsoft-Konto** den Abschnitt [Problembehandlung beim Prüfcode](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes).
 
 - Für iOS-Geräte können Sie Ihre Kontoanmeldeinformationen und zugehörige App-Einstellungen, etwa die Reihenfolge Ihrer Konten, in der Cloud sichern. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App](user-help-auth-app-backup-recovery.md).

@@ -2,20 +2,18 @@
 title: Behandeln von häufigen Problemen mit Suchindexern – Azure Search
 description: Beheben Sie Fehler und häufige Problemen mit Indexern in Azure Search, einschließlich Datenquellenverbindung, Firewall und fehlende Dokumente.
 author: mgottein
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4692be287e9b38cf116107d2e7c1043f23a6b34b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653400"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640593"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Behandeln von häufigen Problemen mit Indexern in Azure Search
 

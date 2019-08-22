@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 4b2934c8b93ffb247661886cb2791c0719996aeb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 47db310f6affa6317a74020d182c521d65cd32f3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297184"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875228"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -156,7 +156,7 @@ Möglicherweise werden die folgenden häufigen Fehlermeldungen angezeigt, wenn S
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Sie haben während `git push` keinen Branch angegeben, oder Sie haben den Wert `push.default` in `.gitconfig` nicht festgelegt.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
 |`src refspec [branchname] does not match any.`|Sie haben versucht, einen anderen Branch als „master“ mithilfe von Push in das ‚azure‘-Remoterepository zu übertragen.|Führen Sie `git push` erneut aus, und geben Sie dabei den Masterbranch an: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|Dieser Fehler kann auftreten, wenn Sie versuchen, ein großes Git-Repository über HTTPS mithilfe von Push zu übertragen.|Ändern Sie die Git-Konfiguration auf dem lokalen Computer, um den `postBuffer` zu vergrößern. Beispiel: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\`|
+|`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -3,18 +3,18 @@ title: 'Python Schnellstart: Erstellen, Laden und Abfragen von Indizes mithilfe 
 description: Erklärt, wie Sie einen Index erstellen, Daten laden und Abfragen mit Python, Jupyter Notebooks und der Azure Search REST API ausführen.
 ms.date: 07/11/2019
 author: heidisteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 9e12133179ca02c3474e768305feb8ae19a6178e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840752"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656790"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index mithilfe von Python-Jupyter Notebooks
 > [!div class="op_single_selector"]

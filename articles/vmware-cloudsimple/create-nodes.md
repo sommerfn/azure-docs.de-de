@@ -8,18 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9eb02f04b5873e5906782a27ce833a724ceecfe3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 898b07d05abf3bfad644fb590d90c7a90c5a1c0d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812380"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883223"
 ---
 # <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Bereitstellen von Knoten für die VMware-Lösung von CloudSimple – Azure
 
 Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie Kapazität mit nutzungsbasierter Bezahlung für die Umgebung Ihrer privaten CloudSimple-Cloud einrichten.
 
-## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>Hinzufügen eines bereitgestellten Knotens zu Ihrer privaten CloudSimple-Cloud
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+
+
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Hinzufügen eines Knotens zu Ihrer privaten CloudSimple-Cloud
 
 1. Wählen Sie **Alle Dienste** aus.
 2. Suchen Sie nach **CloudSimple-Knoten**.
@@ -44,4 +49,4 @@ Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie Kapazität mit nut
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen einer privaten Cloud](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* [Erstellen einer privaten Cloud](create-private-cloud.md)

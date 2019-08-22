@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828141"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947216"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
@@ -75,13 +75,13 @@ Am 19. November 2018 [erwarb Microsoft FSLogix](https://blogs.microsoft.com/blog
 
 Seit der Übernahme hat Microsoft damit begonnen, vorhandene Lösungen für Benutzerprofile wie UPD durch FSLogix-Profilcontainer zu ersetzen.
 
-## <a name="azure-files-integration-with-azure-active-directory"></a>Azure Files-Integration in Azure Active Directory
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files-Integration im Azure Active Directory-Domänendienst
 
-FSLogix-Profilcontainer profitieren von der Cloud, um eine hohe Leistung und zahlreiche Features bereitzustellen. Am 24. September 2018, wurde für Microsoft Azure Files eine öffentliche Vorschau der [Azure Active Directory-Authentifizierung für den Zugriff auf Azure Files](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/) angekündigt. Die Kombination aus Azure Files und Azure Active Directory-Authentifizierung reduziert sowohl die Kosten als auch den Verwaltungsaufwand – daher ist dies eine herausragende Lösung für Benutzerprofile im neuen Windows Virtual Desktop-Dienst.
+FSLogix-Profilcontainer profitieren durch Bereitstellung von Leistung und Features von der Cloud. Am 7. August 2019 hat Microsoft Azure Files die allgemeine Verfügbarkeit von [AAD DS-Authentifizierung über SMB für Azure Files (Vorschau)](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview) angekündigt. Die Kombination aus Azure Files und Azure AD-Domänendienst-Authentifizierung reduziert sowohl die Kosten als auch den Verwaltungsaufwand – daher ist dies eine herausragende Lösung für Benutzerprofile im Windows Virtual Desktop-Dienst.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Best Practices für Windows Virtual Desktop
 
-Windows Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und Anzahl der von Kunden genutzten VMs. Weitere Informationen finden Sie unter [Was ist Windows Virtual Desktop (Vorschauversion)?](https://docs.microsoft.com/azure/virtual-desktop/overview).
+Windows Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und Anzahl der von Kunden genutzten VMs. Weitere Informationen finden Sie unter [Was ist Windows Virtual Desktop (Vorschauversion)?](overview.md).
 
 Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Practices funktioniert, müssen folgende Voraussetzungen erfüllt sein:
 
@@ -96,9 +96,9 @@ Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Pract
 
 Gehen Sie folgendermaßen vor, um eine Windows Virtual Desktop-Umgebung einzurichten.
 
-- Um mit dem Aufbau Ihrer Desktopvirtualisierungslösung zu beginnen, informieren Sie sich zunächst unter [Erstellen eines Mandanten in Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory).
-- Informationen zum Erstellen eines Hostpools in Ihrem Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Hostpools mit Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace).
-- Informationen zum Einrichten vollständig verwalteter Dateifreigaben in der Cloud finden Sie unter [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable).
-- Informationen zum Konfigurieren von FSLogix-Profilcontainern finden Sie unter [Einrichten einer Benutzerprofilfreigabe für einen Hostpool](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-user-profile).
-- Informationen zum Zuweisen von Benutzern zu einem Hostpool finden Sie unter [Verwalten von App-Gruppen für Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/manage-app-groups).
-- Informationen zum Zugriff auf Ihre Windows Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung über einen Webbrowser](https://docs.microsoft.com/azure/virtual-desktop/connect-web).
+- Um mit dem Aufbau Ihrer Desktopvirtualisierungslösung zu beginnen, informieren Sie sich zunächst unter [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- Informationen zum Erstellen eines Hostpools in Ihrem Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md).
+- Informationen zum Einrichten vollständig verwalteter Dateifreigaben in der Cloud finden Sie unter [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](/articles/storage/files/storage-files-active-directory-enable.md).
+- Informationen zum Konfigurieren von FSLogix-Profilcontainern finden Sie unter [Einrichten einer Benutzerprofilfreigabe für einen Hostpool](create-host-pools-user-profile.md).
+- Informationen zum Zuweisen von Benutzern zu einem Hostpool finden Sie unter [Verwalten von App-Gruppen für Windows Virtual Desktop](manage-app-groups.md).
+- Informationen zum Zugriff auf Ihre Windows Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung über einen Webbrowser](connect-web.md).

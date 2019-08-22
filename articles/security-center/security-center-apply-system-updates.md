@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62095443"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531448"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Anwenden von Systemupdates in Azure Security Center
 Azure Security Center überprüft virtuelle Computer (Virtual Machines, VMs) und physische Computer unter Windows und Linux täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen oder physischen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates.
@@ -71,16 +71,6 @@ In diesem Beispiel verwenden wir **Compute**.
 
     ![Azure Monitor-Protokollsuche][5]
 
-## <a name="reboot-after-system-updates"></a>Neustart nach Systemupdates
-1. Kehren Sie zum Blatt **Empfehlungen** zurück. Nach dem Anwenden von Systemupdates wird ein neuer Eintrag namens **Neustart nach Systemupdates**generiert. Dieser Eintrag informiert Sie darüber, dass der virtuelle Computer neu gestartet werden muss, um das Anwenden der Systemupdates abzuschließen.
-
-   ![Neustart nach Systemupdates][6]
-2. Wählen Sie **Neustart nach Systemupdates**aus. Daraufhin wird das Blatt **Ein Neustart zum Abschließen der Systemupdates steht aus.** mit einer Liste virtueller Computer angezeigt, die neu gestartet werden müssen, um das Anwenden von Systemupdates abzuschließen.
-
-   ![Neustart ausstehend][7]
-
-Starten Sie den virtuellen Computer über Azure neu, um den Prozess abzuschließen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -98,5 +88,3 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
 [4]: ./media/security-center-apply-system-updates/log-search.png
 [5]: ./media/security-center-apply-system-updates/search-details.png
-[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[7]: ./media/security-center-apply-system-updates/restart-pending.png

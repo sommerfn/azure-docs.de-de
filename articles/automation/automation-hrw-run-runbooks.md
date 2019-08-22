@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88e3c0514861da0bd11acffd26cced54717e4418
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6f41263bfb930d3aab41fd8ace86cd6afb0ace26
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478490"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850586"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG führt Sie durch die Schritte zur Erstellung des Schlüsselpaares. Sie müssen einen Namen, eine E-Mail-Adresse, eine Ablaufzeit, eine Passphrase und ein Kennwort angeben und auf dem Computer auf eine ausreichende Entropie warten, damit der Schlüssel generiert werden kann.
 
-Da das GPG-Verzeichnis mit sudo generiert wurde, müssen Sie seinen Besitzer in `nxautomation` ändern. 
+Da das GPG-Verzeichnis mit sudo generiert wurde, müssen Sie seinen Besitzer in `nxautomation` ändern.
 
 Führen Sie den folgenden Befehl aus, um den Besitzer zu ändern.
 
@@ -312,3 +312,4 @@ Das signierte Runbook kann jetzt in Azure Automation hochgeladen und wie ein nor
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 * Informationen dazu, wie Sie auf unterschiedliche Weise in einem Text-Editor mit PowerShell-Runbooks in Azure Automation arbeiten, finden Sie unter [Bearbeiten eines Runbooks in Azure Automation](automation-edit-textual-runbook.md).
 * Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembehandlungsleitfaden zu [Fehlern bei der Ausführung von Runbooks](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).

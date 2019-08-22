@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431259"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891589"
 ---
 # <a name="notification-hubs-security"></a>Sicherheit von Notification Hubs
 
@@ -29,9 +29,7 @@ Dieses Thema beschreibt das Sicherheitsmodell von Azure Notification Hubs.
 
 ## <a name="shared-access-signature-security-sas"></a>Shared Access Signature-Sicherheit (SAS)
 
-Notification Hubs implementieren ein Sicherheitsschema auf Entitätsebene, das SAS (Shared Access Signature) genannt wird. Dieses Schema ermöglicht Messagingentitäten das Deklarieren von bis zu 12 Autorisierungsregeln in ihrer Beschreibung, die Zugriffsrechte für diese Entität gewähren.
-
-Jede Regel enthält einen Namen, einen Schlüsselwert (gemeinsamer geheimer Schlüssel) und eine Reihe von Rechten, wie im Abschnitt [Sicherheitsansprüche](#security-claims) erläutert. Beim Erstellen eines Notification Hubs werden automatisch zwei Regeln erstellt: eine mit **Lauschberechtigung** (von der Clientanwendung verwendet) und eine mit **allen** Berechtigungen (vom Back-End verwendet).
+Notification Hubs implementieren ein Sicherheitsschema auf Entitätsebene, das SAS (Shared Access Signature) genannt wird. Jede Regel enthält einen Namen, einen Schlüsselwert (gemeinsamer geheimer Schlüssel) und eine Reihe von Rechten, wie im Abschnitt [Sicherheitsansprüche](#security-claims) erläutert. Beim Erstellen eines Notification Hubs werden automatisch zwei Regeln erstellt: eine mit **Lauschberechtigung** (von der Clientanwendung verwendet) und eine mit **allen** Berechtigungen (vom Back-End verwendet).
 
 Wenn eine Registrierungsverwaltung von Client-Apps aus durchgeführt wird und die über Benachrichtigungen gesendeten Informationen nicht vertraulich sind (z. B. aktuelle Wetterdaten), besteht eine gebräuchliche Möglichkeit zum Zugreifen auf einen Notification Hub darin, dem Schlüsselwert der Regel nur Lauschzugriff für die Client-App zu erteilen und dem Schlüsselwert der Regel Vollzugriff auf das Back-End zu gewähren.
 

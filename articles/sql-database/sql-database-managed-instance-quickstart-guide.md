@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567347"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647211"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Erste Schritte mit verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -55,8 +55,6 @@ In diesen Schnellstarts erfahren Sie, wie Sie schnell eine Datenbanksicherung er
 ## <a name="customize-network-environment"></a>Anpassen der Netzwerkumgebung
 
 Wenn die Instanz über das [Azure-Portal](sql-database-managed-instance-get-started.md) erstellt wird, kann das VNET/Subnetz zwar automatisch konfiguriert werden, manchmal empfiehlt es sich jedoch, es vor der Erstellung verwalteter Instanzen zu erstellen, da Sie in diesem Fall die Parameter des VNETs/Subnetzes konfigurieren können. Die einfachste Möglichkeit zum Erstellen und Konfigurieren der Netzwerkumgebung ist die Verwendung der [Azure-Vorlage für die Ressourcenbereitstellung](sql-database-managed-instance-create-vnet-subnet.md). Diese erstellt und konfiguriert Ihr Netzwerk und das Subnetz, in dem die Instanz platziert wird. Sie müssen lediglich auf die Bereitstellungsschaltfläche von Azure Resource Manager klicken und das Formular mit Parametern ausfüllen.
-
-Alternativ können Sie die Erstellung des Netzwerks mit einem [PowerShell-Skript](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) automatisieren.
 
 Alternativ können Sie die Erstellung des Netzwerks auch mit diesem [PowerShell-Skript](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) automatisieren.
 

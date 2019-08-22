@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439761"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640480"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Freigabe oder Ausführen eines Upgrades für Ihren QnA Maker-Dienst
 Geben Sie Ihre QnA Maker-Dienste frei, oder führen Sie ein Upgrade der Dienste durch, um die Ressourcen effektiver zu verwalten. 
@@ -52,7 +52,7 @@ So führen Sie ein Upgrade der QnA Maker Management-SKU aus:
 
  Wenn Ihre Wissensdatenbank mehr Anforderungen von Ihrer Client-App verarbeiten muss, upgraden Sie den Tarif Ihres App-Diensts.
 
-Sie können den App Service [hochskalieren](https://docs.microsoft.com/azure/app-service/web-sites-scale) oder herunterskalieren.
+Sie können den App Service [hochskalieren](https://docs.microsoft.com/azure/app-service/manage-scale-up) oder herunterskalieren.
 
 1. Navigieren Sie zur App Service-Ressource im Azure-Portal, und wählen Sie nach Bedarf die Optionen **scale up** (zentral hochskalieren) oder **scale down** (zentral herunterskalieren) aus.
 

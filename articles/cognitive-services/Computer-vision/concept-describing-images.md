@@ -1,5 +1,5 @@
 ---
-title: Beschreiben von Bildern – Maschinelles Sehen
+title: 'Bildbeschreibungen: maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
 description: Machen Sie sich mit Konzepten des Bildbeschreibungsfeatures der Maschinelles Sehen-API vertraut.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dcf61c642a9f8ad7aa68d72736ce8fdb0e9a6e3c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368379"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945265"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Beschreiben von Bildern in lesbarer Sprache
 
-Die Maschinelles Sehen-API kann ein Bild analysieren und einen für Menschen lesbaren Satz mit der Beschreibung des Inhalts generieren. Der Algorithmus gibt eigentlich mehrere Beschreibungen zurück, die auf unterschiedlichen visuellen Merkmalen basieren, und jede Beschreibung erhält eine Zuverlässigkeitsbewertung. Die endgültige Ausgabe ist eine Liste mit Beschreibungen, die absteigend nach Zuverlässigkeitsbewertung sortiert ist.
+Die Maschinelles Sehen-API kann ein Bild analysieren und einen für Menschen lesbaren Satz mit der Beschreibung des Inhalts generieren. Der Algorithmus gibt eigentlich mehrere Beschreibungen zurück, die auf unterschiedlichen visuellen Merkmalen basieren, wobei jede Beschreibung eine Zuverlässigkeitsbewertung erhält. Die endgültige Ausgabe ist eine Liste mit Beschreibungen, die absteigend nach Zuverlässigkeitsbewertung sortiert ist.
 
 ## <a name="image-description-example"></a>Beispiel zur Bildbeschreibung
 

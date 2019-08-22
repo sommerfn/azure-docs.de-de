@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608074"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931936"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)
 
@@ -37,7 +37,7 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 
 1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
 1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf **Spalten** > **Client-App** hinzu.
-1. Filtern Sie nach **Client-App** > **Andere Clients**, und klicken Sie auf **Übernehmen**.
+1. **Filter hinzufügen** > **Client-App** > alle Optionen für **Andere Clients** auswählen und auf **Übernehmen** klicken.
 
 Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 

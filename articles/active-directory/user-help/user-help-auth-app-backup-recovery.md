@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4148d8a3b44336677ba028807aadbae424b7223
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ba99001159277d9d221910cafa4f5165ae2bd812
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382505"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880755"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
@@ -93,6 +93,8 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
     ![Microsoft Authenticator-App, die das Scannen des QR-Codes ermöglicht](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
+    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authenticator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
+    >
     >Weitere Informationen zum Abrufen eines QR-Codes finden Sie unter [Erste Schritte mit der Microsoft Authenticator-App](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) oder [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app) – basierend darauf, ob Ihr Administrator die Sicherheitsinformation aktiviert hat.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Beheben von Problemen bei Sicherung und Wiederherstellung

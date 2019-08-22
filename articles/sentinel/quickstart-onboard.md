@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: c9f2f011acb9d815202aa6c6a38ed364ffb0f9cd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619650"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611902"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Einführung in Azure Sentinel Preview
 
@@ -58,7 +58,6 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
    ![search](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - **Standort des Arbeitsbereichs:** Es ist wichtig, zu wissen, dass alle Daten, die Sie zu Azure Sentinel streamen, am geografischen Standort des Arbeitsbereichs gespeichert werden, den Sie ausgewählt haben.  
    > - Standardarbeitsbereiche, die vom Azure Security Center erstellt wurden, werden in der Liste nicht angezeigt. Für diese kann Azure Sentinel nicht installiert werden.
    > - Azure Sentinel kann in Arbeitsbereichen ausgeführt werden, die in einem der folgenden Regionen bereitgestellt wurden:  Australien, Südosten, Kanada, Mitte, Indien, Mitte, USA, Osten, USA, Osten 2 (EUAP) (Kanaren), Japan, Osten, Asien, Südosten, Vereinigtes Königreich, Süden, Europa, Westen und USA, Westen 2.
 

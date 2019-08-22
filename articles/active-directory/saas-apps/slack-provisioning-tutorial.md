@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036112027fcf210f0ac2ff1e631c8b0bd4b5e9ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964395"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932486"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -120,7 +120,9 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
   
   * Nehmen Sie nur Änderungen vor, wenn diese beiden Einstellungen im Arbeitsbereich bzw. der Organisation von Slack konfiguriert sind: **Profile syncing is enabled** (Profil Synchronisierung ist aktiviert) und **Users cannot change their display name** (Benutzer können den Anzeigenamen nicht ändern).
   
-  * Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
+* Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
+
+* Slack ermöglicht nur das Abgleichen mit den Attributen **userName** und **email**.  
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

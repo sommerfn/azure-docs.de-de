@@ -1,5 +1,5 @@
 ---
-title: Ausführen eines direkten Upgrades der SQL Server-Edition auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
+title: Ausführen eines direkten Upgrades einer SQL Server-Edition auf einer Azure-VM | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Edition Ihrer SQL Server-VM in Azure ändern.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,28 +14,28 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05d2170fe9e6055179bf49d803d4739ddc05be89
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 04e447b7d8da1c8769239aee7650fe3bc5585590
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607354"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855229"
 ---
-# <a name="how-to-perform-an-in-place-upgrade-of-sql-server-edition-on-azure-vm"></a>Ausführen eines direkten Upgrades der SQL Server-Edition auf einem virtuellen Azure-Computer
+# <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Ausführen eines direkten Upgrades einer SQL Server-Edition auf einer Azure-VM
 
-In diesem Artikel wird beschrieben, wie Sie die Edition von SQL Server für einen vorhandenen SQL Server auf einem virtuellen Windows-Computer in Azure ändern. 
+In diesem Artikel wird beschrieben, wie Sie die Edition von SQL Server auf einem virtuellen Windows-Computer in Azure ändern. 
 
-Die Edition von SQL Server richtet sich nach dem Product Key und wird bei der Installation angegeben. Die Edition bestimmt, welche [Features](/sql/sql-server/editions-and-components-of-sql-server-2017) innerhalb des SQL Server-Produkts verfügbar sind. Sie können die SQL Server-Edition mit den Installationsmedien ändern und entweder ein Downgrade durchführen, um die Kosten zu senken, oder ein Upgrade durchführen, um weitere Features zu aktivieren.
+Die Edition von SQL Server richtet sich nach dem Product Key und wird bei der Installation angegeben. Die Edition bestimmt, welche [Features](/sql/sql-server/editions-and-components-of-sql-server-2017) im SQL Server-Produkt verfügbar sind. Sie können die SQL Server-Edition mit den Installationsmedien ändern und entweder ein Downgrade durchführen, um die Kosten zu senken, oder ein Upgrade durchführen, um weitere Features zu aktivieren.
 
 Wenn Sie die Edition von SQL Server mithilfe der Installationsmedien nach der Registrierung beim SQL-VM-Ressourcenanbieter aktualisiert haben, sollten Sie anschließend zum entsprechenden Aktualisieren der Azure-Abrechnung die Eigenschaft für die SQL Server-Edition der SQL-VM-Ressource wie folgt festlegen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 1. Navigieren Sie zu Ihrer SQL Server-VM-Ressource. 
-1. Klicken Sie unter **Einstellungen** auf **Konfigurieren**, und wählen Sie dann die gewünschte Edition von SQL Server aus der Dropdownliste unter **Edition** aus. 
+1. Wählen Sie **Konfigurieren** unter **Einstellungen** aus. Wählen Sie dann in der Dropdownliste unter **Edition** die gewünschte Edition von SQL Server aus. 
 
    ![Ändern von Editionsmetadaten](media/virtual-machines-windows-sql-change-edition/edition-change-in-portal.png)
 
-1. Lesen Sie die Warnung, die Sie darüber informiert, dass Sie zuerst die SQL Server-Edition ändern müssen und dass die Editionseigenschaft der SQL Server-Edition entsprechen muss. 
+1. Nehmen Sie die Warnung zur Kenntnis, dass Sie zuerst die SQL Server-Edition ändern müssen und dass die Eigenschaft „Edition“ der SQL Server-Edition entsprechen muss. 
 1. Wählen Sie **Übernehmen** aus, um die Änderungen der Editionsmetadaten anzuwenden. 
 
 
@@ -44,33 +44,32 @@ Wenn Sie die Edition von SQL Server mithilfe der Installationsmedien nach der Re
 Für eine direkte Änderung der Edition von SQL Server benötigen Sie Folgendes: 
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
-- Eine Windows-[SQL Server-VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), die beim [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registriert ist.
-- Setupmedien mit der gewünschten Edition von SQL Server. Kunden, die über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) verfügen, können Ihre Installationsmedien vom [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) erhalten. Kunden ohne Software Assurance können die Setupmedien aus einem SQL Server-VM-Image mit der gewünschten Edition im Marketplace verwenden.
+- Eine [SQL Server-VM unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), die beim [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registriert ist.
+- Setupmedien mit der gewünschten Edition von SQL Server. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus Azure Marketplace mit der gewünschten Edition verwenden.
 
 
-## <a name="upgrade-edition"></a>Upgrade der Edition
+## <a name="upgrade-an-edition"></a>Upgrade einer Edition
 
-  > [!WARNING]
-  > - **Durch ein Upgrade der SQL Server-Edition werden der Dienst für SQL Server sowie alle zugeordneten Dienste, z.B. Analysis Services und R Services, neu gestartet.** 
+> [!WARNING]
+> Durch ein Upgrade der SQL Server-Edition werden der Dienst für SQL Server sowie alle zugeordneten Dienste, z. B. Analysis Services und R Services, neu gestartet. 
 
-Für ein Upgrade der SQL Server-Edition beschaffen Sie sich die SQL Server-Setupmedien für die gewünschte Edition, und führen Sie dann die folgenden Schritte aus:
+Für ein Upgrade von SQL Server beschaffen Sie sich die SQL Server-Setupmedien für die gewünschte Edition, und führen Sie dann die folgenden Schritte aus:
 
-1. Starten Sie „Setup.exe“ von den SQL Server-Installationsmedien. 
+1. Rufen Sie in den SQL Server-Installationsmedien „Setup.exe“ auf. 
 1. Navigieren Sie zu **Wartung**, und wählen Sie die Option **Editionsupgrade** aus. 
 
-   ![Upgrade der Edition von SQL Server](media/virtual-machines-windows-sql-change-edition/edition-upgrade.png)
+   ![Auswahl für das Upgrade der Edition von SQL Server](media/virtual-machines-windows-sql-change-edition/edition-upgrade.png)
 
-1. Klicken Sie auf **Weiter**, bis Sie zur Seite **Die Edition kann jetzt aktualisiert werden** gelangen, und wählen Sie dann **Update** aus. Das Setupfenster kann einige Minuten hängen, während die Änderung wirksam wird, und Sie sehen dann eine Seite **Abgeschlossen**, auf der bestätigt wird, dass das Editionsupgrade abgeschlossen ist. 
+1. Klicken Sie auf **Weiter**, bis Sie zur Seite **Die Edition kann jetzt aktualisiert werden** gelangen, und wählen Sie dann **Update** aus. Das Setupfenster reagiert möglicherweise einige Minuten nicht mehr, während die Änderung wirksam wird. Auf der Seite **Abgeschlossen** wird bestätigt, dass das Upgrade Ihrer Edition beendet wurde. 
 
-Nachdem Sie ein Upgrade der SQL Server-Edition durchgeführt haben, sollten Sie die Eigenschaft „Edition“ des virtuellen SQL-Computers im Azure-Portal wie oben gezeigt ändern. Dadurch werden die Metadaten und die Abrechnung für diesen virtuellen Computer aktualisiert.
+Nach dem Upgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal wie zuvor beschrieben. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert.
 
-## <a name="downgrade-edition"></a>Downgrade der Edition
+## <a name="downgrade-an-edition"></a>Downgrade einer Edition
 
-  > [!WARNING]
-  > - **Ein Downgrade der SQL Server-Edition erfordert das vollständige Deinstallieren von SQL Server, wodurch zusätzliche Ausfallzeiten entstehen können**. 
+Für ein Downgrade der SQL Server-Edition müssen Sie SQL Server vollständig deinstallieren und dann mithilfe der Setupmedien für die gewünschte Edition neu installieren.
 
-
-Für ein Downgrade der SQL Server-Edition müssen Sie SQL Server vollständig deinstallieren und dann mit den Setupmedien für die gewünschte Edition neu installieren. 
+> [!WARNING]
+> Das Deinstallieren von SQL Server kann zu zusätzlichen Ausfallzeiten führen. 
 
 Führen Sie für ein Downgrade der SQL Server-Edition die folgenden Schritte aus:
 
@@ -82,22 +81,22 @@ Führen Sie für ein Downgrade der SQL Server-Edition die folgenden Schritte aus
 1. Installieren Sie die neuesten Service Packs und kumulativen Updates.  
 1. Ersetzen Sie die neuen Systemdatenbanken, die während der Installation erstellt wurden, durch die Systemdatenbanken, die Sie zuvor an einen anderen Speicherort verschoben hatten. 
 
-Nachdem Sie ein Downgrade der SQL Server-Edition durchgeführt haben, sollten Sie die Eigenschaft „Edition“ des virtuellen SQL-Computers im Azure-Portal wie oben gezeigt ändern. Dadurch werden die Metadaten und die Abrechnung für diesen virtuellen Computer aktualisiert.
+Nach dem Downgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal wie zuvor beschrieben. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert.
 
 ## <a name="remarks"></a>Anmerkungen
 
- - Die Editionseigenschaft für die SQL Server-VM muss der auf dem virtuellen Computer installierten SQL Server-Edition für alle virtuellen SQL-Computer, einschließlich der beiden Lizenztypen PAYG und BYOL, entsprechen.
- - Wenn Sie Ihre SQL Server-VM-Ressource verwerfen, kehren Sie wieder zur hartcodierten Editionseinstellung des Images zurück.
-  - Die Möglichkeit, die Edition zu ändern, ist ein Feature des SQL-VM-Ressourcenanbieters. Wird ein Marketplace-Image über das Azure-Portal bereitgestellt, wird automatisch eine SQL Server-VM mit dem Ressourcenanbieter registriert. Kunden, die SQL Server selbst installieren, müssen [ihre SQL Server-VM jedoch manuell registrieren](virtual-machines-windows-sql-register-with-resource-provider.md).
-- Beim Hinzufügen einer SQL Server-VM zu einer Verfügbarkeitsgruppe muss die VM erneut erstellt werden. Daher werden VMs, die einer Verfügbarkeitsgruppe hinzugefügt wurden, auf die Standardedition zurückgesetzt, und die Edition muss erneut geändert werden.
+- Die Eigenschaft „Edition“ der SQL Server-VM muss mit der Edition der SQL Server-Instanz übereinstimmen, die für alle SQL Server-VMs installiert ist, einschließlich der Lizenztypen „Nutzungsbasierte Bezahlung“ und „Bring Your Own License (BYOL)“.
+- Wenn Sie Ihre SQL Server-VM-Ressource verwerfen, kehren Sie wieder zur hartcodierten Editionseinstellung des Images zurück.
+- Die Möglichkeit, die Edition zu ändern, ist ein Feature des SQL-VM-Ressourcenanbieters. Bei der Bereitstellung eines Azure Marketplace-Images über das Azure-Portal wird eine SQL Server-VM automatisch beim Ressourcenanbieter registriert. Kunden, die SQL Server selbst installieren, müssen [ihre SQL Server-VM jedoch manuell registrieren](virtual-machines-windows-sql-register-with-resource-provider.md).
+- Das Hinzufügen einer SQL Server-VM zu einem Verfügbarkeitssatz erfordert die Neuerstellung der VM. Alle einer Verfügbarkeitsgruppe hinzugefügten VMs werden auf die Standardedition zurückgesetzt, und die Edition muss erneut geändert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Preisinformationen für Azure-VMs mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [SQL Server on Azure Virtual Machine release notes](virtual-machines-windows-sql-server-iaas-release-notes.md) (SQL Server auf virtuellem Azure-Computer – Versionshinweise)
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Preisinformationen zu SQL Server auf einer Windows-VM](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [SQL Server auf Azure-VMs – Versionshinweise](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

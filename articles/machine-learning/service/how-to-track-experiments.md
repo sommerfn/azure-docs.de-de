@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370476"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946387"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokollieren von Metriken während Trainingsausführungen in Azure Machine Learning
+# <a name="log-metrics-during-training-runs"></a>Protokollieren von Metriken während Trainingsausführungen
 
 Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können.
+
+> [!NOTE]
+> Azure Machine Learning Service kann während des Trainings auch Informationen aus anderen Quellen protokollieren, wie z.B. aus AutoML oder dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
 
 ## <a name="list-of-training-metrics"></a>Liste der Trainingsmetriken 
 
@@ -49,7 +52,7 @@ Wenn Sie Ihr Experiment nachverfolgen oder überwachen möchten, müssen Sie Cod
 ## <a name="set-up-the-workspace"></a>Arbeitsbereich einrichten
 Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müssen Sie den Arbeitsbereich einrichten.
 
-1. Laden Sie den Arbeitsbereich. Weitere Informationen zum Festlegen der Arbeitsbereichskonfiguration finden Sie, wenn Sie die Schritte in [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md#sdk) befolgen.
+1. Laden Sie den Arbeitsbereich. Weitere Informationen zum Einrichten der Arbeitsbereichskonfiguration finden Sie in der [Datei mit der Arbeitsbereichskonfiguration](how-to-configure-environment.md#workspace).
 
    ```python
    from azureml.core import Experiment, Run, Workspace

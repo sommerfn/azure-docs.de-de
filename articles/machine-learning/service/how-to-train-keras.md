@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: bfe7f975539c76c1d369d111729820f4d0ada470
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775083"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966812"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Trainieren und Registrieren eines Keras-Klassifizierungsmodells mit Azure Machine Learning Service
 
@@ -39,8 +39,8 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
 
  - Ihr eigener Jupyter Notebook-Server
 
-     - [Installieren des Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
-    - [Erstelle Sie eine Konfigurationsdatei für den Arbeitsbereich](setup-create-workspace.md#write-a-configuration-file)
+    - [Installieren Sie das Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
     - [Laden Sie die Beispielskriptdateien](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` und `utils.py` herunter.
 
     Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine fertige [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) dieser Anleitung. Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
@@ -207,3 +207,7 @@ In diesem Artikel haben Sie ein Keras-Modell in Azure Machine Learning Service t
 
 > [!div class="nextstepaction"]
 > [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md)
+* [Erfassen einer Ausführungsmetrik während des Trainings](how-to-track-experiments.md)
+* [Optimieren von Hyperparametern](how-to-tune-hyperparameters.md)
+* [Bereitstellen eines trainierten Modells](how-to-deploy-and-where.md)
+* [Referenzarchitektur für das verteilte Trainieren von Deep Learning-Modellen in Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

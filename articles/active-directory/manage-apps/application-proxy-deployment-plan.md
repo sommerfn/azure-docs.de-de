@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625547"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879917"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -292,15 +292,21 @@ Benutzer müssen aber weiterhin die täglichen Vorgänge durchführen, für die 
 
 ### <a name="reporting-and-monitoring"></a>Berichterstellung und Überwachung
 
-Azure AD kann für Ihre Organisation zusätzliche Erkenntnisse zur Benutzerbereitstellung und betrieblichen Integrität liefern, indem Überwachungsprotokolle und Berichte verwendet werden. 
+Azure AD liefert Ihrer Organisation in [Überwachungsprotokollen und Berichten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) zusätzliche Erkenntnisse zur Anwendungsnutzung und betrieblichen Integrität. Der Anwendungsproxy erleichtert auch das Überwachen von Connectors im Azure AD-Portal und in Windows-Ereignisprotokollen.
 
 #### <a name="application-audit-logs"></a>Überwachungsprotokolle für Anwendungen
 
-Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwendungen, die mit einem Anwendungsproxy konfiguriert sind, sowie zum Gerät und Benutzer, das bzw. der auf die Anwendung zugreift. Überwachungsprotokolle können im Azure-Portal und über die Überwachungs-API exportiert werden.
+Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwendungen, die mit einem Anwendungsproxy konfiguriert sind, sowie zum Gerät und Benutzer, das bzw. der auf die Anwendung zugreift. [Überwachungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) stehen im Azure-Portal und in der [Überwachungs-API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) zum Export bereit. Außerdem sind [Nutzungs- und Insights-Berichte](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) für Ihre Anwendung verfügbar.
+
+#### <a name="application-proxy-connector-monitoring"></a>Überwachung des Anwendungsproxyconnectors
+
+Die Connectors und der Dienst übernehmen alle Aufgaben in Bezug auf Hochverfügbarkeit. Sie können den Status Ihrer Connectors auf der Seite „Anwendungsproxy“ im Azure AD-Portal überwachen. Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance).
+
+![Beispiel: Azure AD-Anwendungsproxy-Connectors](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows-Ereignisprotokolle und -Leistungsindikatoren
 
-Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Administratorprotokolle enthalten wichtige Ereignisse und die dazugehörigen Fehler. Die Sitzungsprotokolle enthalten alle Transaktionen und die dazugehörigen Verarbeitungsdetails. Protokolle und Indikatoren befinden sich unter „Windows-Ereignisprotokolle“. Arbeiten Sie auch [dieses Tutorial zum Konfigurieren von Ereignisprotokoll-Datenquellen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events) durch.
+Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Administratorprotokolle enthalten wichtige Ereignisse und die dazugehörigen Fehler. Die Sitzungsprotokolle enthalten alle Transaktionen und die dazugehörigen Verarbeitungsdetails. Protokolle und Indikatoren befinden sich in Windows-Ereignisprotokollen. Weitere Informationen finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood). Befolgen Sie dieses [Tutorial für die Konfiguration von Datenquellen für das Ereignisprotokoll in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events).
 
 ### <a name="troubleshooting-guide-and-steps"></a>Leitfaden zur Problembehandlung und zu den Schritten
 

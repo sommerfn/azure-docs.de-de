@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 711552501825e5d34d3547ede8dc998065083c96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2573adcb199ab32467493729842b6c47e3add64b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566740"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515296"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Dienstebene „Universell“ – Azure SQL-Datenbank
 
@@ -48,7 +48,7 @@ Die Dienstebene „Universell“ ist eine Standarddienstebene in Azure SQL-Daten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die Ressourcenmerkmale (Anzahl von Kernen, E/A, Arbeitsspeicher) der Ebene „Universell/Standard“ für eine [verwaltete Instanz](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), für eine Einzeldatenbank im [V-Kern-Modell](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) bzw. [DTU-Modell](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes) oder für einen Pool für elastische Datenbanken im [V-Kern-Modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) und [DTU-Modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits) an.
+- Sehen Sie sich die Ressourcenmerkmale (Anzahl von Kernen, E/A, Arbeitsspeicher) der Ebene „Universell/Standard“ für eine [verwaltete Instanz](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), für eine Einzeldatenbank im [V-Kern-Modell](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) bzw. [DTU-Modell](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes) oder für einen Pool für elastische Datenbanken im [V-Kern-Modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) und [DTU-Modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits) an.
 - Informationen zu den Tarifen [Unternehmenskritisch](sql-database-service-tier-business-critical.md) und [Hyperscale](sql-database-service-tier-hyperscale.md)
 - Informationen zu [Service Fabric](../service-fabric/service-fabric-overview.md)
 - Weitere Optionen zu Hochverfügbarkeit und Notfallwiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).

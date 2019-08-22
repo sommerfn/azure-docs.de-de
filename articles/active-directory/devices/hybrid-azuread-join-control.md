@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834635"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851789"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -72,7 +72,7 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
       1. Schlüsselpfad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Wertname: **TenantName**
       1. Werttyp: **REG_SZ**
-      1. Wertdaten: Der überprüfte **Domänenname**, wenn Sie eine Verbundumgebung wie Active Directory-Verbunddienste (AD FS) verwenden. Der überprüfte **Domänenname** oder Ihr Domänenname auf „onmicrosoft.com“ (beispielsweise `contoso.onmicrosoft.com`), wenn Sie eine verwaltete Umgebung verwenden.
+      1. Wertdaten: Der überprüfte **Domänenname**, wenn Sie eine Verbundumgebung wie Active Directory-Verbunddienste (AD FS) verwenden. Der überprüfte **Domänenname** oder beispielsweise Ihr Domänenname auf „onmicrosoft.com“, `contoso.onmicrosoft.com`, wenn Sie eine verwaltete Umgebung verwenden.
    1. Klicken Sie auf **OK**
 1. Schließen Sie den Editor für das neu erstellte Gruppenrichtlinienobjekt.
 1. Verknüpfen Sie das neu erstellte Gruppenrichtlinienobjekt mit der gewünschten Organisationseinheit, die die in die Domäne eingebundenen Computer Ihrer kontrollierten Rolloutelemente enthält.

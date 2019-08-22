@@ -2,19 +2,19 @@
 title: Implementieren der Facettennavigation in einer Kategorienhierarchie – Azure Search
 description: Fügen Sie die Facettennavigation Anwendungen hinzu, die in Azure Search integriert sind, einem in Microsoft Azure gehosteten Cloudsuchdienst.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165967"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649892"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.

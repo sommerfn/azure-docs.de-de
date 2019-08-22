@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: b1a7e64cf6b85b517bc027d6541d63c9be729734
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80d3eaaf7e588766d62f5e5885d75e61c590970e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773977"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881195"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Schreiben von Abfragen für den Azure-Daten-Explorer
 
@@ -146,7 +146,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator): Gibt die ersten  *N*  Datensätze nach den angegebenen Spalten sortiert zurück.
+[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator): Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 
 Die folgende Abfrage gibt dieselben Ergebnisse wie oben mit einem Operator weniger zurück.
 
@@ -317,7 +317,7 @@ MyData
 
 Diese Abfrage verwendet eine **let**-Anweisung, die einen Namen (in diesem Fall `MyData`) an einen Ausdruck bindet. Im restlichen Gültigkeitsbereichs, in dem die **let**-Anweisung vorkommt (globaler Gültigkeitsbereich oder im Gültigkeitsbereich eines Funktionskörpers), kann der Name verwendet werden, um auf seine gebundenen Wert zu verweisen.
 
-### <a name="parsejson"></a>parse_json()
+### <a name="parse_json"></a>parse_json()
 
 [**parse_json()** ](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Interpretiert eine Zeichenfolge als JSON-Wert und gibt den Wert als dynamischen Datentyp zurück. Diese ist der Nutzung der **extractjson()** -Funktion vorzuziehen, wenn Sie mehrere Elemente eines zusammengesetzten JSON-Objekts extrahieren müssen.
 
@@ -567,9 +567,9 @@ StormEvents
 | summarize Sources = dcountif(Source, DamageProperty < 5000) by State
 ```
 
-### <a name="dcounthll"></a>dcount_hll()
+### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Berechnet  **dcount**  aus HyperLogLog-Ergebnissen (generiert mit  [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)  oder  [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction)).
+[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Berechnet **Dcount** anhand von HyperLogLog-Ergebnissen (generiert von [ **hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) oder [ **hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 Die folgende Abfrage verwendet den HLL-Algorithmus, um die Anzahl zu generieren.
 
@@ -582,7 +582,7 @@ StormEvents
 | project dcount_hll(hllMerged)
 ```
 
-### <a name="argmax"></a>arg_max()
+### <a name="arg_max"></a>arg_max()
 
 [**arg_max()** ](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): Findet eine Zeile in der Gruppe, die einen Ausdruck maximiert, und gibt den Wert eines anderen Ausdrucks zurück (oder „*“, um die gesamte Zeile zurückzugeben).
 
@@ -599,7 +599,7 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()** ](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Gibt ein dynamisches(JSON) Array der Gruppe unterschiedlicher Werte zurück, die ein Ausdruck in der Gruppe annimmt.
+[**makeset()** ](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): Gibt ein dynamisches (JSON-) Array der Gruppe unterschiedlicher Werte zurück, die ein Ausdruck in der Gruppe verwendet.
 
 Die folgende Abfrage gibt alle Zeiten zurück, zu denen eine Flut von jedem Bundesstaat gemeldet wurde, und erstellt ein Array aus der Gruppe der unterschiedlichen Werte.
 
@@ -631,7 +631,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Gibt eine Schätzung für den angegebenen  [**nächsten Perzentilrang**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)  der durch einen Ausdruck definierten Grundgesamtheit. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Perzentils ab. Kann nur im Kontext der Aggregation in  [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) verwendet werden.
+[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Gibt eine Schätzung für den angegebenen [**nächsten Perzentilrang**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) der durch einen Ausdruck definierten Grundgesamtheit. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Perzentils ab. Kann nur im Kontext der Aggregation in [ **summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) verwendet werden.
 
 Die folgende Abfrage berechnet Perzentile für die Sturmdauer.
 
@@ -684,7 +684,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Führt die Zeilen zweier Tabellen zusammen, um eine neue Tabelle zu erzeugen, indem Werte aus den angegebenen Spalten aus beiden Tabellen zugeordnet werden. Kusto unterstützt eine umfangreiche Zahl von Join-Typen (Verknüpfungen): **fullouter**, **inner**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
+[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Führt die Zeilen zweier Tabellen zusammen, um eine neue Tabelle zu erzeugen, indem Werte aus den angegebenen Spalten aus beiden Tabellen zugeordnet werden. Kusto unterstützt eine umfangreiche Zahl von Join-Typen (Verknüpfungen): **fullouter**, **inner**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
 
 Im folgenden Beispiel werden zwei Tabellen mit einem inneren Join verknüpft.
 
@@ -754,7 +754,7 @@ cluster("MyCluster").database("Wiki").PageViews
 
 Dieser Abschnitt enthält die Elemente und Abfragen, die veranschaulichen, wie einfach es ist, Benutzerverhalten in Kusto zu analysieren.
 
-### <a name="activitycountsmetrics-plugin"></a>activity_counts_metrics-Plug-In
+### <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics-Plug-In
 
 [**activity_counts_metrics-Plug-In**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Berechnet nützliche Aktivitätsmetriken (Gesamtzahl von Werten, Anzahl unterschiedlicher Werte, Anzahl unterschiedlicher neuer Werte und aggregierte Anzahl unterschiedlicher Werte). Metriken werden für jedes Zeitfenster berechnet, werden dann verglichen und zu sowie mit allen vorherigen Zeitfenstern aggregiert.
 
@@ -788,7 +788,7 @@ T
 window)
 ```
 
-### <a name="activityengagement-plugin"></a>activity_engagement-Plug-In
+### <a name="activity_engagement-plugin"></a>activity_engagement-Plug-In
 
 [**activity_engagement-Plug-In**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Berechnet das Aktivitäts-Beteiligungs-Verhältnis auf Grundlage der ID-Spalte über ein gleitendes Zeitachsenfenster. **activity_engagement-Plug-In** kann verwendet werden, um die Werte DAU, WAU und MAU (tägliche, wöchentliche und monatliche aktive Benutzer) zu berechnen.
 
@@ -814,7 +814,7 @@ range _day from _start to _end step 1d
 > [!TIP]
 > Bei der Berechnung von DAU/MAU ändern Sie die Enddaten und den Zeitraum für das gleitende Fenster (OuterActivityWindow).
 
-### <a name="activitymetrics-plugin"></a>activity_metrics-Plug-In
+### <a name="activity_metrics-plugin"></a>activity_metrics-Plug-In
 
 [**activity_metrics-Plug-In**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): Berechnet nützliche Aktivitätsmetriken (Anzahl unterschiedlicher Werte, Anzahl unterschiedlicher neuer Werte, Retentionsrate und Änderungsrate) basierend auf dem aktuellen Zeitfenster im Vergleich zu dem vorherigen Zeitfenster.
 
@@ -839,11 +839,11 @@ range _day from _start to _end step 1d
 | render timechart
 ```
 
-### <a name="newactivitymetrics-plugin"></a>new_activity_metrics-Plug-In
+### <a name="new_activity_metrics-plugin"></a>new_activity_metrics-Plug-In
 
-[**new_activity_metrics-Plug-In**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Berechnet nützliche Aktivitätsmetriken (Anzahl unterschiedlicher Werte, Anzahl unterschiedlicher neuer Werte, Retentionsrate und Änderungsrate) für die Kohorte der neuen Benutzer. Das Konzept dieses Plug-Ins ähnelt dem  [**activity_metrics-Plug-In**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), konzentriert sich aber auf neue Benutzer.
+[**new_activity_metrics-Plug-In**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Berechnet nützliche Aktivitätsmetriken (Anzahl unterschiedlicher Werte, Anzahl unterschiedlicher neuer Werte, Retentionsrate und Änderungsrate) für die Kohorte der neuen Benutzer. Das Konzept dieses Plug-Ins ähnelt dem [**activity_metrics-Plug-In**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), konzentriert sich aber auf neue Benutzer.
 
-Die folgende Abfrage berechnet eine Vermerk- und Änderungsrate mit einem Woche-zu-Woche-Fenster für die Kohorte neuer Benutzer (Benutzer, die in der ersten Woche angekommen sind).
+Die folgende Abfrage berechnet eine Retentions- und Änderungsrate mit einem Woche-zu-Woche-Fenster für die Kohorte neuer Benutzer (Benutzer, die in der ersten Woche angekommen sind).
 
 **\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1Ry27DIBC8W%2fI%2f7C04wbJJFeVQ5VapP9BbVVnIrGMaGyy8eVjqxxcwh1QqBx7LzCwzVBW8o0EnCcFJo%2bwISpIE28F1RgeyJX3TpHHOswEJmpmkIzgFFJIeke1rcSzrQ1mL4jVh0Kj%2fEC8R4bucEd7kAp3z3ZIg2ZU2E04gVJ79AD4oVIIU2cGaM2OBVSZKUQlVPOGcxwUHrNiJp3ITbMyn2JUlHbU91FtXcPhz3u1rP5fC10UUHm%2f4mLwiaHVaZcIzaZnQdiwQCxj0qAlEHUeeVRV8yAuCNcMC1CN02s0Ed8QLtLa33igbpK9M0skRCd3q4CaHa%2fgBg%2fcmJb40%2ft7pdmafG602XzxExpN3HsPicFQ8z1IcQWhy9htbisk2EU92XZ1vZkhb04Sv5tD2V7fufwFYtolnAgIAAA%3d%3d) **\]**
 
@@ -861,7 +861,7 @@ range Day from _start to _end step 1d
 | project from_Day, to_Day, retention_rate, churn_rate
 ```
 
-### <a name="sessioncount-plugin"></a>session_count-Plug-In
+### <a name="session_count-plugin"></a>session_count-Plug-In
 
 [**session_count-Plug-In**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Berechnet die Anzahl der Sitzungen auf Grundlage der ID-Spalte über eine Zeitachse.
 
@@ -881,7 +881,7 @@ _data
 | render linechart
 ```
 
-### <a name="funnelsequence-plugin"></a>funnel_sequence-Plug-In
+### <a name="funnel_sequence-plugin"></a>funnel_sequence-Plug-In
 
 [**funnel_sequence-Plug-In**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): Berechnet die Anzahl unterschiedlicher Benutzer, die eine Abfolge von Zuständen eingenommen haben, zeigt die Verteilung der vorherigen und nächsten Zustände an, die zu der Abfolge geführt haben bzw. von dieser Abfolge gefolgt wurden.
 
@@ -897,11 +897,11 @@ StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
 ```
 
-### <a name="funnelsequencecompletion-plugin"></a>funnel_sequence_completion-Plug-In
+### <a name="funnel_sequence_completion-plugin"></a>funnel_sequence_completion-Plug-In
 
 [**funnel_sequence_completion-Plug-In**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Berechnet den Trichter der abgeschlossenen Abfolgeschritte innerhalb verschiedener Zeiträume.
 
-Die folgende Abfrage überprüft den Abschlusstrichter der Abfolge:  `Hail -> Tornado -> Thunderstorm -> Wind` in „allen“ Zeiten von einer Stunde, vier Stunden und einem Tag (`[1h, 4h, 1d]`).
+Die folgende Abfrage überprüft den Abschlusstrichter der Abfolge: `Hail -> Tornado -> Thunderstorm -> Wind` in "allen" Zeiten von einer Stunde, vier Stunden und einem Tag (`[1h, 4h, 1d]`).
 
 **\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA) **\]**
 
@@ -917,7 +917,7 @@ StormEvents
 
 ## <a name="functions"></a>Functions
 
-Dieser Abschnitt behandelt [ **Funktionen**](https://docs.microsoft.com/azure/kusto/query/functions): wiederverwendbare Abfragen, die auf dem Server gespeichert sind. Funktionen können von Abfragen und andere Funktionen aufgerufen werden (rekursive Funktionen werden nicht unterstützt).
+Dieser Abschnitt behandelt [ **Funktionen**](https://docs.microsoft.com/azure/kusto/query/functions): wiederverwendbare Abfragen, die auf dem Server gespeichert sind. Funktionen können von Abfragen und andere Funktionen aufgerufen werden (rekursive Funktionen werden nicht unterstützt).
 
 > [!NOTE]
 > Sie können keine Funktionen im Hilfecluster erstellen, der schreibgeschützt ist. Verwenden Sie Ihren eigenen Testcluster für diesen Teil.

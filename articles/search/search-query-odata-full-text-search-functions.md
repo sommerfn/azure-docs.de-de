@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 158312a7afe88e7b9885376c5d28b01958acbbfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3b28c8799b09ddfe008df8539709c5a704ac6b4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081883"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648012"
 ---
 # <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>Funktionen der OData-Volltextsuche in Azure Search: `search.ismatch` und `search.ismatchscoring`
 
@@ -69,7 +69,7 @@ Die Funktion `search.ismatch` wertet eine Volltextsuchabfrage als Teil eines Fil
 
 Die Parameter werden in der folgenden Tabelle definiert:
 
-| Parametername | Type | BESCHREIBUNG |
+| Parametername | type | BESCHREIBUNG |
 | --- | --- | --- |
 | `search` | `Edm.String` | Die Suchabfrage (in der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Lucene-Abfragesyntax). |
 | `searchFields` | `Edm.String` | Durch Trennzeichen getrennte Liste von durchsuchbaren Feldern, in denen gesucht werden soll. Standardmäßig werden alle durchsuchbaren Felder im Index durchsucht. Wenn Sie die [feldbezogene Suche](query-lucene-syntax.md#bkmk_fields) im Parameter `search` verwenden, überschreiben die Feldspezifizierer in der Lucene-Abfrage alle in diesem Parameter angegebenen Felder. |

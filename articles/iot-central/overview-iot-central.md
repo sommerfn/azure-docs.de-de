@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 84fa7aa006a6bc5365527dbf8043797617543590
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ff212e77b6fcaaa057c22c420cce82e7ea6c82e6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704534"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877294"
 ---
 <!---
 Purpose of an Overview article: 
@@ -24,6 +24,8 @@ Purpose of an Overview article:
 -->
 
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Azure IoT Central ist eine vollständig verwaltete IoT-SaaS-Lösung (Software-as-a-Service) zur einfachen Erstellung von Produkten, die die physische mit der digitalen Welt verbinden. Setzen Sie Ihre Vision für verbundene Produkte um, indem Sie:
 

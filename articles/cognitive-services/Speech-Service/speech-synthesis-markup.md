@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1bd1882218630aca0707a792d120045c06dea127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552679"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855098"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
@@ -413,8 +413,8 @@ Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedo
 |-----------|-------------|---------------------|
 | src | Gibt den Speicherort bzw. die URL der Hintergrundaudiodatei an. | Erforderlich, wenn Sie eine Hintergrundaudioaufnahme in Ihrem SSML-Dokument verwenden. |
 | Volume | Gibt die Lautstärke der Hintergrundaudiodatei an. **Akzeptierte Werte**: `0` bis `100` (einschließlich). Standardwert: `1`. | Optional |
-| fadein | Gibt an, wie lange die Hintergrundaudiodatei eingeblendet wird. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
-| fadeout | Gibt an, wie lange die Hintergrundaudiodatei ausgeblendet wird. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
+| fadein | Gibt (in Millisekunden) an, wie lange die Hintergrundaudiodatei eingeblendet wird. Der Standardwert ist `0`, was dem „Nicht einblenden“ entspricht. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
+| fadeout | Gibt (in Millisekunden) an, wie lange die Hintergrundaudiodatei ausgeblendet wird. Der Standardwert ist `0`, was dem „Nicht ausblenden“ entspricht. **Akzeptierte Werte**: `0` bis `10000` (einschließlich).  | Optional |
 
 **Beispiel**
 

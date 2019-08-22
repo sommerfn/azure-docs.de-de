@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727770"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934835"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 
 Kennwörter sind nicht mehr zeitgemäß. In der Vergangenheit haben uns Kennwörter gute Dienste erwiesen. In der heutigen digitalen Arbeitswelt werden sie jedoch von Hackern häufig als relativ einfacher Angriffsvektor genutzt. Hacker bevorzugen Kennwörter – nachvollziehbar, wenn man bedenkt, dass Kennwörter häufig das Jahr, den Monat, die Jahreszeit oder den Namen einer lokalen Sportmannschaft enthalten – Begriffe, die in Azure Active Directory (Azure AD) deshalb gar nicht erst akzeptiert werden. Darüber hinaus haben [Forschungen](https://aka.ms/passwordguidance) gezeigt, dass die üblichen Empfehlungen für die Kennwortverwaltung wie etwa zur Längen- und Komplexitätsanforderung sowie zur Änderungshäufigkeit in vielerlei Hinsicht aufgrund des menschlichen Faktors sogar kontraproduktiv sind.
 
-Zu den drei häufigsten Methoden zur Gefährdung von Benutzerkonten zählen Kennwort-Spraying, Phishing und Breach Replay. Azure AD-Features, wie z. B. [Smart Lockout](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout), [Gesperrte Kennwörter](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) und [Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises), können gegen diese Art von Angriffen schützen. Ebenso bietet die Implementierung von [Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) (MFA) oder der zweistufigen Authentifizierung zusätzliche Sicherheit, da eine zweite Form der Authentifizierung erforderlich ist. Auf lange Sicht ist eine kennwortlose Methode jedoch die beste Lösung, um eine sichere Authentifizierung zu gewährleisten.
+Zu den drei häufigsten Methoden zur Gefährdung von Benutzerkonten zählen Kennwort-Spraying, Phishing und Breach Replay. Azure AD-Features, wie z. B. [Smart Lockout](../../active-directory/authentication/howto-password-smart-lockout.md), [Gesperrte Kennwörter](../../active-directory/authentication/concept-password-ban-bad-on-premises.md) und [Kennwortschutz](../../active-directory/authentication/concept-password-ban-bad-on-premises.md), können gegen diese Art von Angriffen schützen. Ebenso bietet die Implementierung von [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) oder der zweistufigen Authentifizierung zusätzliche Sicherheit, da eine zweite Form der Authentifizierung erforderlich ist. Auf lange Sicht ist eine kennwortlose Methode jedoch die beste Lösung, um eine sichere Authentifizierung zu gewährleisten.
 
 Dieser Artikel beschreibt Grundlegendes zur Funktion und Implementierung der kennwortlosen Lösungen von Microsoft und bietet Hilfestellung bei der Auswahl der folgenden Optionen:
 
@@ -109,7 +109,7 @@ Eingehendere Informationen zum Authentifizierungsprozesses in anderen Szenarios 
 
 Der [Microsoft-PIN-Zurücksetzungsdienst](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) ist ein Feature in Azure AD, mit dem Benutzer ihre PIN bei Bedarf zurücksetzen können. Mithilfe einer Gruppenrichtlinie, Microsoft Intune oder einer kompatiblen MDM-Lösung kann ein Administrator Windows 10-Geräte für die sichere Verwendung des PIN-Zurücksetzungsdiensts von Microsoft konfigurieren. Dieser ermöglicht es Benutzern, ihre vergessene PIN über Einstellungen oder den Sperrbildschirm zurückzusetzen, ohne sich nochmals registrieren zu müssen.
 
-Manchmal müssen Benutzer wieder auf die Verwendung von Kennwörtern zurückgreifen. Die [Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) (Self-Service Password Reset, SSPR) ist ein Feature, mit dem Benutzer ihre Kennwörter zurücksetzen können, ohne sich an IT-Mitarbeiter wenden zu müssen. Benutzer müssen sich für die Self-Service-Kennwortzurücksetzung registrieren, bevor sie den Dienst verwenden können. Während der Registrierung wählt der Benutzer eine oder mehrere Authentifizierungsmethoden aus, die von seiner Organisation aktiviert wurden. SSPR ermöglicht es Benutzern, die Blockierung schnell aufzuheben und die Arbeit fortzusetzen, unabhängig von Aufenthaltsort und Uhrzeit. Indem sie ihren Benutzern erlaubt, die Blockierung selbst aufzuheben, kann Ihre Organisation die unproduktive Zeit und die hohen Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern verringern.
+Manchmal müssen Benutzer wieder auf die Verwendung von Kennwörtern zurückgreifen. Die [Self-Service-Kennwortzurücksetzung](../../active-directory/authentication/howto-sspr-deployment.md) (Self-Service Password Reset, SSPR) ist ein Feature, mit dem Benutzer ihre Kennwörter zurücksetzen können, ohne sich an IT-Mitarbeiter wenden zu müssen. Benutzer müssen sich für die Self-Service-Kennwortzurücksetzung registrieren, bevor sie den Dienst verwenden können. Während der Registrierung wählt der Benutzer eine oder mehrere Authentifizierungsmethoden aus, die von seiner Organisation aktiviert wurden. SSPR ermöglicht es Benutzern, die Blockierung schnell aufzuheben und die Arbeit fortzusetzen, unabhängig von Aufenthaltsort und Uhrzeit. Indem sie ihren Benutzern erlaubt, die Blockierung selbst aufzuheben, kann Ihre Organisation die unproduktive Zeit und die hohen Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern verringern.
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Anmelden ohne Kennwort mit Microsoft Authenticator
 
@@ -125,9 +125,9 @@ Voraussetzungen für die Verwendung der Microsoft Authenticator-App zur kennwort
 
 * Azure Multi-Factor Authentication ist für Endbenutzer aktiviert.
 
-* Benutzer können ihre Geräte mit Microsoft Intune oder einer Drittanbieterlösung für die mobile Geräteverwaltung (Mobile Device Management, MDM) registrieren.
+* Es wird empfohlen, dass Benutzer ihre Geräte mit Microsoft Intune oder einer Drittanbieterlösung für die Verwaltung mobiler Geräte (Mobile Device Management, MDM) registrieren, um die Bereitstellung der App zu vereinfachen.
 
-Sind diese Voraussetzungen erfüllt, aktivieren die Administratoren die kennwortlose Anmeldung per Telefon im Mandanten mit [Windows PowerShell](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users). Nach Aktivierung der Anmeldung per Telefon im Mandanten können sich Endbenutzer mit ihrem Telefon anmelden, indem sie ihr Geschäfts-, Schul- oder Unikonto auf dem Bildschirm **Konten** der App auswählen und dann **Anmeldung per Telefon aktivieren** auswählen.
+Sind diese Voraussetzungen erfüllt, aktivieren die Administratoren die kennwortlose Anmeldung per Telefon im Mandanten mit [Windows PowerShell](../../active-directory/authentication/howto-authentication-passwordless-phone.md). Nach Aktivierung der Anmeldung per Telefon im Mandanten können sich Endbenutzer mit ihrem Telefon anmelden, indem sie ihr Geschäfts-, Schul- oder Unikonto auf dem Bildschirm **Konten** der App auswählen und dann **Anmeldung per Telefon aktivieren** auswählen.
 
 Vorausgesetzt, die kennwortlose Anmeldung wurde durch einen Administrator aktiviert, müssen Endbenutzer noch folgende Anforderungen erfüllen:
 
@@ -137,9 +137,9 @@ Vorausgesetzt, die kennwortlose Anmeldung wurde durch einen Administrator aktivi
 
 * Geschäfts-, Schul- oder Unikonto mit Pushbenachrichtigungen zur App hinzufügen
 
-Es wird empfohlen, die [Kontoanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-backup-recovery) in der Cloud mit Microsoft Authenticator zu sichern, um zu vermeiden, dass Ihr Konto gesperrt wird oder Sie Konten auf einem neuen Gerät neu erstellen müssen. Nach dem Sichern können Sie die App auch zum Wiederherstellen der Informationen auf einem neuen Gerät verwenden und dadurch möglicherweise vermeiden, dass Sie gesperrt werden oder Konten neu erstellen müssen.
+Es wird empfohlen, die [Kontoanmeldeinformationen](../../active-directory/user-help/user-help-auth-app-backup-recovery.md) in der Cloud mit Microsoft Authenticator zu sichern, um zu vermeiden, dass Ihr Konto gesperrt wird oder Sie Konten auf einem neuen Gerät neu erstellen müssen. Nach dem Sichern können Sie die App auch zum Wiederherstellen der Informationen auf einem neuen Gerät verwenden und dadurch möglicherweise vermeiden, dass Sie gesperrt werden oder Konten neu erstellen müssen.
 
-Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass die Benutzer eine entsprechende Unterweisung für diesen Prozess erhalten. So lassen sich Anrufe beim Helpdesk aufgrund von [Problemen](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#known-issues) im Zusammenhang mit der Anmeldung mit der Microsoft Authenticator-App reduzieren.
+Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass die Benutzer eine entsprechende Unterweisung für diesen Prozess erhalten. So lassen sich Anrufe beim Helpdesk aufgrund von [Problemen](../../active-directory/authentication/howto-authentication-passwordless-phone.md) im Zusammenhang mit der Anmeldung mit der Microsoft Authenticator-App reduzieren.
 
 > [!NOTE]
 > Bei dieser Methode kann möglicherweise ein Point of Failure entstehen, wenn sich ein Roamingbenutzer an einem Ort ohne Internetverbindung befindet. Für FIDO2-Sicherheitsschlüssel und Windows Hello for Business gilt nicht die gleiche Einschränkung.
@@ -150,9 +150,9 @@ Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich K
 
 Bevor die Microsoft Authenticator-App als kennwortlose Methode zur Anmeldung bei einem Azure AD-Konto verwendet werden kann, muss sowohl ein Administrator als auch der Endbenutzer bestimmte Schritte ausführen.
 
-Zuerst muss ein Administrator die [Verwendung der App als Anmeldeinformation](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users) im Mandanten mit Windows PowerShell aktivieren. Der Administrator muss zudem die Endbenutzer für Azure Multi-Factor Authentication (Azure MFA) aktivieren und die Microsoft Authenticator-App als eine der [Überprüfungsmethoden](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#verification-methods) konfigurieren.
+Zuerst muss ein Administrator die [Verwendung der App als Anmeldeinformation](../../active-directory/authentication/howto-authentication-passwordless-phone.md) im Mandanten mit Windows PowerShell aktivieren. Der Administrator muss zudem die Endbenutzer für Azure Multi-Factor Authentication (Azure MFA) aktivieren und die Microsoft Authenticator-App als eine der [Überprüfungsmethoden](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods) konfigurieren.
 
-Endbenutzer müssen die Microsoft Authenticator-App [herunterladen und installieren](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) und [ihr Konto einrichten](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), um die Microsoft Authenticator-App als Überprüfungsmethode verwenden zu können.
+Endbenutzer müssen die Microsoft Authenticator-App [herunterladen und installieren](../../active-directory/user-help/user-help-auth-app-download-install.md) und [ihr Konto einrichten](../../active-directory/user-help/security-info-setup-auth-app.md), um die Microsoft Authenticator-App als Überprüfungsmethode verwenden zu können.
 
 > [!VIDEO https://www.youtube.com/embed/uWbkLuI4g30]
 
@@ -184,7 +184,7 @@ Die kennwortlose Authentifizierung mit Microsoft Authenticator erfolgt nach dem 
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Benutzer meldet sich mit Microsoft Authenticator-Anmeldeinformationen ohne Verwendung eines Kennworts an
 
-Mit der [kombinierten Registrierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) können sich Benutzer registrieren und die Vorteile sowohl von Azure Multi-Factor Authentication als auch der Self-Service-Kennwortzurücksetzung nutzen. Benutzer registrieren und verwalten diese Einstellungen auf der [Seite „Mein Profil“](https://aka.ms/mysecurityinfo). Zusätzlich zur Aktivierung von SSPR unterstützt die kombinierte Registrierung mehrere Authentifizierungsmethoden und -aktionen.
+Mit der [kombinierten Registrierung](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md) können sich Benutzer registrieren und die Vorteile sowohl von Azure Multi-Factor Authentication als auch der Self-Service-Kennwortzurücksetzung nutzen. Benutzer registrieren und verwalten diese Einstellungen auf der [Seite „Mein Profil“](https://aka.ms/mysecurityinfo). Zusätzlich zur Aktivierung von SSPR unterstützt die kombinierte Registrierung mehrere Authentifizierungsmethoden und -aktionen.
 
 ## <a name="fido2-security-keys"></a>FIDO2-Sicherheitsschlüssel
 
@@ -228,7 +228,7 @@ Darüber hinaus sollte jede Organisation ein Protokoll erstellen, das die entspr
 
 Administratoren können [Schlüssel manuell bereitstellen](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) und an Endbenutzer verteilen; die Bereitstellung und Aktivierung des FIDO2-Anmeldeinformationsanbieters auf dem Windows 10-Sperrbildschirm wird durch [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) unterstützt. Administratoren müssen außerdem das [Azure-Portal](https://portal.azure.com/) verwenden, um Hardwaretokengeräte als kennwortlose Authentifizierungsmethode zu aktivieren.
 
-Für die Bereitstellung von FIDO2-Sicherheitsschlüsseln müssen die Benutzer ihre Schlüssel mit der [kombinierten Registrierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) registrieren. Mit der kombinierten Registrierung registrieren sich Benutzer einmalig und profitieren von den Vorteilen sowohl von Azure Multi-Factor Authentication als auch von SSPR (Single Sign-On Password Reset).
+Für die Bereitstellung von FIDO2-Sicherheitsschlüsseln müssen die Benutzer ihre Schlüssel mit der [kombinierten Registrierung](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md) registrieren. Mit der kombinierten Registrierung registrieren sich Benutzer einmalig und profitieren von den Vorteilen sowohl von Azure Multi-Factor Authentication als auch von SSPR (Single Sign-On Password Reset).
 
 Zusätzlich zur Auswahl des Hardwaretokens als Standardmethode für die mehrstufige Authentifizierung wird empfohlen, auch eine zusätzliche Überprüfungsoption auszuwählen.
 
@@ -342,5 +342,5 @@ Die Einführung moderner Technologien zur mehrstufigen Authentifizierung z. B. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Was bedeutet „kennwortlos“?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) – eine Übersicht
+* [Was bedeutet „kennwortlos“?](../../active-directory/authentication/concept-authentication-passwordless.md) – eine Übersicht
 * [Anmelden bei Azure AD ohne Verwendung eines Kennworts](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)

@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Yahnoosh
 ms.author: jlembicz
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 25edc52be90b6133ec0a0f0b5e8ea525d75d4800
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0cd2cf4b7847b767bac391f2547c0a5c3e3a9135
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881532"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891570"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Hinzufügen von Analysetools zu einem Azure Search-Index
 
@@ -279,7 +279,7 @@ Dieser Abschnitt enthält die gültigen Werte für Attribute, die in der Definit
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**Beschreibung und Optionen**|  
 |-|-|-|  
 |[keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (Der Typ gilt nur, wenn Optionen verfügbar sind.) |Behandelt den gesamten Inhalt eines Felds als ein einzelnes Token. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen.|  
-|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Trennt Text flexibel über ein reguläres Ausdrucksmuster in Begriffe.<br /><br /> **Optionen**<br /><br /> lowercase (Typ: Boolscher Wert) – bestimmt, ob Begriffe klein geschrieben werden. Der Standardwert ist „true“.<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (Typ: Zeichenfolge) – ein reguläres Ausdrucksmuster zum Abgleich von Tokentrennlinien. Der Standardwert ist „\w+“.<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES<br /><br /> stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
+|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Trennt Text flexibel über ein reguläres Ausdrucksmuster in Begriffe.<br /><br /> **Optionen**<br /><br /> lowercase (Typ: Boolscher Wert) – bestimmt, ob Begriffe klein geschrieben werden. Der Standardwert ist „true“.<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (Typ: Zeichenfolge) – ein reguläres Ausdrucksmuster zum Abgleich von Tokentrennlinien. Der Standardwert ist „\w+“.<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES<br /><br /> stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
 |[simple](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Teilt Text an Nicht-Buchstaben und konvertiert ihn in Kleinbuchstaben. |  
 |[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(Wird auch als standard.lucene bezeichnet.)|StandardAnalyzer|Standardmäßiges Lucene-Analysetool, bestehend aus dem Standardtokenizer, Kleinbuchstabenfilter und Stoppfilter.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Der Standardwert ist 255. Token, die die maximale Länge überschreiten, werden geteilt. Ein Token darf maximal 300 Zeichen lang sein.<br /><br /> stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
 |standardasciifolding.Lucene|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Standardanalysetool mit ASCII-Folding-Filter. |  
@@ -323,7 +323,7 @@ In der folgenden Tabelle bieten die Tokenizer, die mit Apache Lucene implementie
 |[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|Tokenisiert die Eingabe in N-Gramme einer festgelegten Größe.<br /><br /> **Optionen**<br /><br /> minGram (type: int) – Standard: 1, Maximum: 300.<br /><br /> maxGram (type: int) – Standard: 2, Maximum: 300. Der Wert muss größer als „minGram“. <br /><br /> tokenChars (Typ: Zeichenfolgenarray) – Zeichenklassen, die in den Token beibehalten werden. Zulässige Werte: „letter“, „digit“, „whitespace“, „punctuation“, „symbol“. Der Standardwert ist ein leeres Array – behält alle Zeichen bei. |  
 |[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Tokenizer für pfadähnliche Hierarchien.<br /><br /> **Optionen**<br /><br /> delimiter (type: Zeichenfolge) – Standard: '/.<br /><br /> replacement (Typ: Zeichenfolge) – wenn festgelegt, wird das Trennzeichen ersetzt. Standardmäßig ist dies identisch mit dem Wert für das Trennzeichen.<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 300, Maximum: 300. Pfade, die länger sind als „MaxTokenLength“ werden ignoriert.<br /><br /> reverse (Type: Boolscher Wert) – wenn auf „true“ festgelegt, werden Token in umgekehrter Reihenfolge generiert. Standardwert: false.<br /><br /> skip (Typ: Boolscher Wert) – Erste Token, die übersprungen werden. Der Standardwert ist 0.|  
 |[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Dieser Tokenizer verwendet den RegEx-Musterabgleich, um verschiedene Token zu erstellen.<br /><br /> **Optionen**<br /><br /> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (Typ: Zeichenfolge) – Muster für einen regulären Ausdruck. Der Standardwert ist „\W+“. <br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES<br /><br /> group (Typ: Int) – die Gruppe, die in Token extrahiert werden soll. Der Standardwert ist „-1 (split)“.|
-|[standard_v2](http://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Teilt Text gemäß den [Regeln für Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) auf.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Teilt Text gemäß den [Regeln für Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) auf.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
 |[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenisiert URLs und E-Mails als ein Token.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Teilt Text an den Leerzeichen auf. Token mit mehr als 255 Zeichen werden geteilt.|  
 

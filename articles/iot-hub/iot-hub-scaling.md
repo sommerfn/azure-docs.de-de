@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: ea7b38f509fcdaa4e41ce17db3beca44b05a59b2
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514477"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891995"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -128,10 +128,6 @@ Genaue Zahlen zur Burst-Leistung finden Sie unter [IoT Hub-Kontingente und -Dros
 ## <a name="auto-scale"></a>Automatische Skalierung
 
 Wenn Sie sich dem zulässigen Nachrichtenlimit der IoT Hub-Instanz nähern, können Sie eine IoT Hub-Einheit in demselben IoT Hub-Tarif mithilfe [dieser Anweisungen automatisch zentral hochskalieren](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/).
-
-## <a name="sharding"></a>Sharding (Horizontales Partitionieren)
-
-Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werden, aber es kann sein, dass Ihre Lösung bestimmte Leistungsmerkmale benötigt, die von einer einzelnen IoT Hub-Einheit nicht gewährleistet werden können. In diesem Fall können Sie Ihre Geräte auf mehreren IoT Hubs partitionieren. Mehrere IoT Hubs glätten Datenverkehrsbursts und erzielen den erforderlichen Durchsatz oder die erforderlichen Vorgangsraten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

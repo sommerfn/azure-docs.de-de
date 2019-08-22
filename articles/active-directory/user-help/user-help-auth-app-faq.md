@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8786a99f012124848b02eb3db0c2a2e32ff01594
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c65192501f5cfa075ddb6a27369587de2952f38a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382378"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616030"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator-App – häufig gestellte Fragen
 
@@ -54,7 +54,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel [Sicherheitsinformationen und Sicherheitscodes zum Microsoft-Konto](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) den Abschnitt **Behandlung von Problemen mit dem Sicherheitscode**.
+- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel [Sicherheitsinformationen und Sicherheitscodes zum Microsoft-Konto](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) den Abschnitt **Behandlung von Problemen mit dem Sicherheitscode**.
 
 - Weitere Informationen zur zweistufigen Überprüfung finden Sie unter [Einrichten meines Kontos für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-first-time.md).
 

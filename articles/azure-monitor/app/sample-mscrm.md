@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470f723782ca29409549e0df8e900edf86cd446e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60523280"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534284"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Exemplarische Vorgehensweise: Aktivieren von Telemetriedaten für Microsoft Dynamics CRM Online mithilfe von Application Insights
 Dieser Artikel beschreibt, wie Sie Telemetriedaten aus [Microsoft Dynamics CRM Online](https://www.dynamics.com/) mit [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) abrufen können. Der vollständige Vorgang des Hinzufügens eines Application Insights-Skripts zu Ihrer Anwendung, das Erfassen von Daten und die Visualisierung von Daten werden erläutert.
@@ -38,7 +38,7 @@ Zum Überwachen Ihrer Anwendung fügen Sie Ihrer Anwendung ein Application Insig
     ![Klicken Sie auf "+", "Entwicklerdienste", "Application Insights".](./media/sample-mscrm/01.png)
 
     Wählen Sie als Anwendungstyp "ASP.NET" aus.
-3. Befolgen Sie die Anweisungen, um [das JavaScript-SDK-Skript für Ihre App abzurufen](../../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page), kopieren Sie den JavaScript-Codeausschnitt, und ersetzen Sie den Instrumentierungsschlüssel durch den richtigen Wert für Ihre Application Insights-Ressource.
+3. Befolgen Sie die Anweisungen, um [das JavaScript-SDK-Skript für Ihre App abzurufen](../../azure-monitor/app/javascript.md), kopieren Sie den JavaScript-Codeausschnitt, und ersetzen Sie den Instrumentierungsschlüssel durch den richtigen Wert für Ihre Application Insights-Ressource.
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Erstellen einer JavaScript-Webressource in Microsoft Dynamics CRM
 1. Öffnen Sie Ihre CRM Online-Instanz, und melden Sie sich mit Administratorrechten an.

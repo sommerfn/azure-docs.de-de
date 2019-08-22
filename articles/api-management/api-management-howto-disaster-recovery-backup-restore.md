@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498589"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932393"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -176,6 +176,7 @@ Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen:
 -   Vermeiden Sie während der Sicherung **Änderungen in der Dienstverwaltung**, wie z.B. SKU-Upgrades oder Herabstufungen, Änderungen im Domänennamen usw.
 -   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
 -   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
+-   Darüber hinaus sind die folgenden Elemente nicht Bestandteil der Sicherungsdaten: benutzerdefinierte SSL-Zertifikate für Domänen und alle vom Kunden hochgeladenen Zwischen- oder Stammzertifikate, Inhalte des Entwicklerportals und Integrationseinstellungen für virtuelle Netzwerke.
 -   Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 -   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
 -   Sie müssen den Zugriff von der Steuerungsebene auf das Azure Storage-Konto **zulassen**. Kunden müssen die folgenden eingehenden IP-Adressen in ihrem Storage-Konto für das Backup öffnen. 

@@ -1,5 +1,5 @@
 ---
-title: Generieren von Miniaturbildern – Maschinelles Sehen
+title: Intelligent zugeschnittene Miniaturbilder – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zum Generieren von Miniaturbildern für Bilder mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372859"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945233"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generieren intelligent zugeschnittener Miniaturbilder mit maschinellem Sehen
 

@@ -2,7 +2,7 @@
 title: Sprachfilter für eine mehrsprachige Inhalte in einem Suchindex – Azure Search
 description: Filterkriterien zur Unterstützung der mehrsprachigen Suche, wobei der Gültigkeitsbereich der Suchabfrage auf sprachspezifische Felder festgelegt wird.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289614"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649864"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Filtern nach Sprache in Azure Search 
 

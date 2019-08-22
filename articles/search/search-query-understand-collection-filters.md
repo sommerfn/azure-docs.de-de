@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7af1b0ab95d04249d6d74e3324dbeb30eda6e1de
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c3a0205f5a9ac5115e78f1bc11f70b2c50a9714
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081819"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647428"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-search"></a>Informationen zum Verständnis von OData-Sammlungsfiltern
 
@@ -87,7 +87,7 @@ So wird `Rooms/Type` für die Volltextsuche gespeichert:
 | Begriff in `Rooms/Type` | Dokument-IDs |
 | --- | --- |
 | deluxe | 1, 2 |
-| standard | 1 |
+| Standard | 1 |
 
 So wird `Rooms/Description` für die Volltextsuche gespeichert:
 
@@ -97,9 +97,9 @@ So wird `Rooms/Description` für die Volltextsuche gespeichert:
 | city | 1 |
 | garden | 1 |
 | large | 1 |
-| motel | 2 |
+| Motel | 2 |
 | room | 1, 2 |
-| standard | 1 |
+| Standard | 1 |
 | suite | 1 |
 | view | 1 |
 
@@ -151,7 +151,7 @@ Aufbauend auf der Gleichheit untersuchen wir nun, wie es möglich ist, mehrere G
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
-ist äquivalent zu:
+entspricht:
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
@@ -159,7 +159,7 @@ und jeder der beiden `any`-Unterausdrücke kann effizient mithilfe des invertier
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
-äquivalent zu:
+entspricht:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 

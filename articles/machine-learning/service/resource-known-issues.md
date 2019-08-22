@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716535"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032981"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning Service
 
@@ -48,6 +48,14 @@ Azure Machine Learning SDK für Python: Bei PyYAML handelt es sich um ein mit di
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
+
+**Fehlermeldung: `ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Die Python 3.7.4-Distribution von Anaconda weist einen Fehler auf, der die azureml-sdk-Installation unterbricht. Dieser Fehler wird in diesem [GitHub-Problem](https://github.com/ContinuumIO/anaconda-issues/issues/11195) behandelt. Zur Problembehandlung können Sie mithilfe des folgenden Befehls eine neue Conda-Umgebung erstellen:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Dadurch wird eine Conda-Umgebung mithilfe von Python 3.7.3 erstellt, bei der das Installationsproblem in 3.7.4 nicht auftritt.
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Problem beim Erstellen von Azure Machine Learning Compute
 
@@ -134,6 +142,15 @@ Wenn Sie Ihren Arbeitsbereich direkt über einen Freigabelink aus dem SDK oder d
 
 Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. Um einige Protokolle anzuzeigen, besuchen Sie das [Azure-Portal](https://portal.azure.com), wechseln Sie zu Ihrem Arbeitsbereich, und wählen Sie **Arbeitsbereich > Experiment > Ausführen > Protokolle** aus.
 
+> [!NOTE]
+> Azure Machine Learning Service protokolliert während des Trainings auch Informationen aus zahlreichen Quellen, wie z. B. aus AutoML oder dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Viele dieser Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
+
+## <a name="activity-logs"></a>Aktivitätsprotokolle
+
+Einige Aktionen innerhalb des Arbeitsbereichs Azure Machine Learning protokollieren keine Informationen im __Aktivitätsprotokoll__. Beispiele sind das Starten einer Trainingsausführung oder das Registrieren eines Modells.
+
+Einige dieser Aktionen werden im Bereich __Activities__ (Aktivitäten) Ihres Arbeitsbereichs angezeigt, aber es wird nicht angegeben, wer die Aktivität initiiert hat.
+
 ## <a name="resource-quotas"></a>Ressourcenkontingente
 
 Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), die Ihnen im Rahmen von Azure Machine Learning begegnen können.
@@ -154,6 +171,6 @@ Sie erhalten beispielsweise eine Fehlermeldung, wenn Sie versuchen, ein Computez
 
 ## <a name="overloaded-azurefile-storage"></a>Überladener AzureFile-Speicher
 
-Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, das Projektdateien nicht in das Arbeitsverzeichnis in „AzureFile“ hochgeladen werden können, da der Speicher überladen ist, können Sie das Problem wie folgt umgehen:
+Wenn Sie eine Fehlermeldung `Unable to upload project files to working directory in AzureFile because the storage is overloaded` erhalten, wenden Sie die folgenden Problemumgehungen an.
 
 Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübertragung) verwenden, empfiehlt es sich, Blobs zu verwenden, damit die Dateifreigabe für die Übermittlung von Ausführungen frei ist. Alternativ kann die Workload auch auf zwei verschiedene Arbeitsbereiche aufgeteilt werden.

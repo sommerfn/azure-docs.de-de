@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606744"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849190"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -183,7 +183,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 | Eigenschaft | Description |
 | --- | --- |
-| Type | ApplicationInsights |
+| type | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | Uhrzeit des Datensatzes |
 | ApplicationId | Instrumentationsschlüssel der Application Insights-App |
@@ -195,7 +195,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 | Country | Land oder Region, aus dem bzw. der die Anforderung stammt |
 | Province | Bundesland/Kanton/Bundesstaat bzw. Gebietsschema der Anforderung |
 | City | Stadt oder Ort der Anforderung |
-| isSynthetic | Gibt an, ob die Anforderung von einem Benutzer oder mit einer automatisierten Methode erstellt wurde. True = vom Benutzer generiert, oder false = automatisierte Methode |
+| isSynthetic | Gibt an, ob die Anforderung von einem Benutzer oder mit einer automatisierten Methode erstellt wurde. True = automatisierte Methode oder false = vom Benutzer generiert |
 | SamplingRate | Prozentsatz der vom SDK generierten Telemetriedaten, die an das Portal gesendet werden. Bereich liegt zwischen 0.0 und 100.0. |
 | SampledCount | 100/(SamplingRate). Beispiel: 4 =&gt; 25%. |
 | IsAuthenticated | „true“ oder „false“ |
@@ -232,7 +232,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="exception-specific-fields"></a>Ausnahmenfelder
 
-| Type | ApplicationInsights |
+| type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Ausnahme |
 | ExceptionType | Typ der Ausnahme |
@@ -251,7 +251,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 | Eigenschaft | Description |
 | --- | --- |
-| Type | ApplicationInsights |
+| type | ApplicationInsights |
 | TelemetryType | Anforderung |
 | ResponseCode | HTTP-Antwort, die an den Client gesendet wird. |
 | RequestSuccess | Gibt den Erfolg oder Fehler an. „true“ oder „false“. |

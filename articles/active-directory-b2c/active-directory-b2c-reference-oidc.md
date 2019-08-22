@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c5626e2ddfc24eeaeed562f3eaf73d16626eb458
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278032"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931752"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C erweitert das OpenID Connect-Standardprotokoll, sodass mehr als nu
 
 Wenn Ihre Webanwendung den Benutzer authentifizieren und einen Benutzerflow ausführen muss, kann sie den Benutzer an den `/authorize`-Endpunkt weiterleiten. Der Benutzer führt Aktionen in Abhängigkeit vom Benutzerflow durch.
 
-In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` und den auszuführenden Benutzerflow im Parameter `p` an. In den folgenden Abschnitten finden Sie drei Beispiele (mit Zeilenumbrüchen für bessere Lesbarkeit), in denen jeweils ein anderer Benutzerflow verwendet wird. Um ein Gefühl für die Funktionsweise der einzelnen Anforderung zu erhalten, fügen Sie sie in einem Browser ein und führen sie aus. Sie können `fabrikamb2c` durch den Namen Ihres Mandanten ersetzen, wenn ein solcher vorhanden ist und Sie einen Benutzerflow erstellt haben.
+In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` und den auszuführenden Benutzerflow im Parameter `p` an. In den folgenden Abschnitten finden Sie drei Beispiele (mit Zeilenumbrüchen für bessere Lesbarkeit), in denen jeweils ein anderer Benutzerflow verwendet wird. Um ein Gefühl für die Funktionsweise der einzelnen Anforderung zu erhalten, fügen Sie sie in einem Browser ein und führen sie aus. Sie können `fabrikamb2c` durch den Namen Ihres Mandanten ersetzen, wenn ein solcher vorhanden ist und Sie einen Benutzerflow erstellt haben. Außerdem müssen Sie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` ersetzen. Ersetzen Sie diese Client-ID durch die App-ID der von Ihnen erstellten App-Registrierung. Ändern Sie auch den Richtliniennamen `b2c_1_sign_in` in den Richtliniennamen in Ihrem Mandanten. 
 
 #### <a name="use-a-sign-in-user-flow"></a>Verwenden eines Benutzerflows für die Anmeldung
 ```
@@ -76,14 +76,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
-| response_type | Ja | Muss ein ID-Token für OpenID Connect enthalten. Wenn Ihre Webanwendung auch Token für den Aufruf einer Web-API benötigt, können Sie `code+id_token` verwenden. |
-| redirect_uri | Nein | Der `redirect_uri`-Parameter der Anwendung, in dem Authentifizierungsantworten gesendet und von der Anwendung empfangen werden können. Er muss genau mit einem der `redirect_uri`-Parameter übereinstimmen, die Sie im Azure-Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
-| scope | Ja | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Der `offline_access`-Bereich ist für Webanwendungen optional. Er gibt an, dass Ihre Anwendung ein *Aktualisierungstoken* für den dauerhaften Zugriff auf Ressourcen benötigt. |
-| response_mode | Nein | Die Methode, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre Anwendung verwendet wird. Es kann sich um `query`, `form_post`, oder `fragment` handeln.  Der `form_post`-Antwortmodus wird empfohlen, für die optimale Sicherheit. |
-| state | Nein | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um websiteübergreifende Anforderungsfälschungsangriffe zu verhindern. Der Status wird auch zum Codieren von Informationen über den Status des Benutzers in der Anwendung vor der Authentifizierungsanforderung verwendet, z.B. für Informationen zu der Seite, die der Benutzer besucht hat. |
 | nonce | Ja | Ein Wert in der Anforderung, der von der Anwendung generiert wird und im resultierenden ID-Token als Anspruch enthalten ist. Die Anwendung kann diesen Wert dann überprüfen, um die Gefahr von Token-Replay-Angriffen zu vermindern. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
 | p | Ja | Der Benutzerflow, der ausgeführt wird. Dies ist der Name eines Benutzerflows, der in Ihrem Azure AD B2C-Mandanten erstellt wird. Der Name des Benutzerflows muss mit `b2c\_1\_` beginnen. |
+| response_type | Ja | Muss ein ID-Token für OpenID Connect enthalten. Wenn Ihre Webanwendung auch Token für den Aufruf einer Web-API benötigt, können Sie `code+id_token` verwenden. |
+| scope | Ja | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Der `offline_access`-Bereich ist für Webanwendungen optional. Er gibt an, dass Ihre Anwendung ein *Aktualisierungstoken* für den dauerhaften Zugriff auf Ressourcen benötigt. |
 | prompt | Nein | Der Typ der erforderlichen Benutzerinteraktion. Zu diesem Zeitpunkt ist der einzige gültige Wert `login`, der den Benutzer zur Eingabe von Anmeldeinformationen für diese Anforderung zwingt. |
+| redirect_uri | Nein | Der `redirect_uri`-Parameter der Anwendung, in dem Authentifizierungsantworten gesendet und von der Anwendung empfangen werden können. Er muss genau mit einem der `redirect_uri`-Parameter übereinstimmen, die Sie im Azure-Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
+| response_mode | Nein | Die Methode, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre Anwendung verwendet wird. Es kann sich um `query`, `form_post`, oder `fragment` handeln.  Der `form_post`-Antwortmodus wird empfohlen, für die optimale Sicherheit. |
+| state | Nein | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um websiteübergreifende Anforderungsfälschungsangriffe zu verhindern. Der Status wird auch zum Codieren von Informationen über den Status des Benutzers in der Anwendung vor der Authentifizierungsanforderung verwendet, z.B. für Informationen zu der Seite, die der Benutzer besucht hat. |
 
 An diesem Punkt wird der Benutzer aufgefordert, den Workflow abzuschließen. Der Benutzer muss möglicherweise seinen Benutzernamen und sein Kennwort eingeben, sich mit einer Social-Media-Identität anmelden oder sich für das Verzeichnis registrieren. Je nach Definition des Benutzerflows ist eine andere Zahl von Schritten auszuführen.
 
@@ -169,13 +169,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| p | Ja | Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
-| grant_type | Ja | Der Berechtigungstyp, der für den Autorisierungscodefluss `authorization_code` lauten muss. |
-| scope | Nein | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von id_token-Parametern an. Damit können Sie Token an die Back-End-Web-API ihrer Anwendung übermitteln, die durch dieselbe Anwendungs-ID wie der Client dargestellt wird. Der `offline_access`-Bereich gibt an, dass Ihre Anwendung ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
-| code | Ja | Der Autorisierungscode, den Sie am Anfang des Benutzerflows erhalten haben. |
-| redirect_uri | Ja | Der `redirect_uri`-Parameter der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
 | client_secret | Ja | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Dieser geheime Schlüssel der Anwendung ist ein wichtiges Sicherheitsartefakt. Sie sollten ihn sicher auf dem Server speichern. Dieser geheime Clientschlüssel sollte in regelmäßigen Abständen gewechselt werden. |
+| code | Ja | Der Autorisierungscode, den Sie am Anfang des Benutzerflows erhalten haben. |
+| grant_type | Ja | Der Berechtigungstyp, der für den Autorisierungscodefluss `authorization_code` lauten muss. |
+| p | Ja | Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
+| redirect_uri | Ja | Der `redirect_uri`-Parameter der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
+| scope | Nein | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von id_token-Parametern an. Damit können Sie Token an die Back-End-Web-API ihrer Anwendung übermitteln, die durch dieselbe Anwendungs-ID wie der Client dargestellt wird. Der `offline_access`-Bereich gibt an, dass Ihre Anwendung ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
 
 Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
@@ -236,13 +236,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| p | Ja | Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
-| grant_type | Ja | Der Berechtigungstyp, der für diesen Teil des Autorisierungscodeflows ein Aktualisierungstoken sein muss. |
-| scope | Nein | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Damit können Sie Token an die Back-End-Web-API Ihrer Anwendung senden, die durch dieselbe Anwendungs-ID wie der Client dargestellt wird. Der `offline_access`-Bereich gibt an, dass Ihre Anwendung ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
-| redirect_uri | Nein | Der `redirect_uri`-Parameter der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
-| refresh_token | Ja | Das ursprüngliche Aktualisierungstoken, das im zweiten Teil des Flows erhalten wurde. Der `offline_access`-Bereich muss sowohl für die Autorisierung als auch in den Tokenanforderungen verwendet werden, um ein Aktualisierungstoken zu erhalten. |
 | client_secret | Ja | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Dieser geheime Schlüssel der Anwendung ist ein wichtiges Sicherheitsartefakt. Sie sollten ihn sicher auf dem Server speichern. Dieser geheime Clientschlüssel sollte in regelmäßigen Abständen gewechselt werden. |
+| grant_type | Ja | Der Berechtigungstyp, der für diesen Teil des Autorisierungscodeflows ein Aktualisierungstoken sein muss. |
+| refresh_token | Ja | Das ursprüngliche Aktualisierungstoken, das im zweiten Teil des Flows erhalten wurde. Der `offline_access`-Bereich muss sowohl für die Autorisierung als auch in den Tokenanforderungen verwendet werden, um ein Aktualisierungstoken zu erhalten. |
+| p | Ja | Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
+| redirect_uri | Nein | Der `redirect_uri`-Parameter der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
+| scope | Nein | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Damit können Sie Token an die Back-End-Web-API Ihrer Anwendung senden, die durch dieselbe Anwendungs-ID wie der Client dargestellt wird. Der `offline_access`-Bereich gibt an, dass Ihre Anwendung ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
 
 Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446763"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934225"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
 
@@ -28,7 +28,7 @@ Die folgende Tabelle zeigt eine Übersicht über die Schritte eines Data Box- od
 | Einrichten des Geräts              | In [Aktivitätsprotokollen](#query-activity-logs-during-setup) protokollierter Zugriff auf Geräteanmeldeinformation                                              |
 | Kopieren von Daten auf ein Gerät        | [Anzeigen von *error.xml*-Dateien](#view-error-log-during-data-copy) für das Kopieren von Daten                                                             |
 | Vorbereiten des Versands            | [Überprüfen der BOM-Dateien](#inspect-bom-during-prepare-to-ship) oder der Manifestdateien auf dem Gerät                                      |
-| Datenupload in Azure       | [Überprüfen von *Kopierprotokollen*](#review-copy-log-during-upload-to-azure) auf Fehler beim Datenupload im Azure-Rechenzentrum                         |
+| Datenupload in Azure       | [Überprüfen von Kopierprotokollen](#review-copy-log-during-upload-to-azure) auf Fehler beim Hochladen von Daten im Azure-Rechenzentrum                         |
 | Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                |
 
 In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Aufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box als auch für Data Box Heavy. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
@@ -195,11 +195,11 @@ Die BOM- oder Manifestdateien werden auch in das Azure-Speicherkonto kopiert. Si
 
 ## <a name="review-copy-log-during-upload-to-azure"></a>Überprüfen von Kopierprotokollen beim Upload in Azure
 
-Beim Datenupload in Azure wird ein *Kopierprotokoll* erstellt.
+Beim Hochladen von Daten in Azure wird ein Kopierprotokoll erstellt.
 
-### <a name="copylog"></a>Kopierprotokoll
+### <a name="copy-log"></a>Kopierprotokoll
 
-Für jeden verarbeiteten Auftrag erstellt der Data Box-Dienst ein *Kopierprotokoll* im zugeordneten Speicherkonto. Das *Kopierprotokoll* enthält die Gesamtanzahl der hochgeladenen Dateien sowie die Anzahl der Dateien, bei denen während des Kopierens aus der Data Box in Ihr Azure-Speicherkonto Fehler aufgetreten sind.
+Für jeden verarbeiteten Auftrag erstellt der Data Box-Dienst im zugeordneten Speicherkonto ein Kopierprotokoll. Das Kopierprotokoll enthält die Gesamtanzahl der hochgeladenen Dateien sowie die Anzahl der Dateien, bei denen während des Kopierens aus der Data Box in Ihr Azure-Speicherkonto Fehler aufgetreten sind.
 
 Während des Uploads in Azure wird eine CRC-Berechnung (Cyclic Redundancy Check) durchgeführt. Die CRC-Werte des Datenkopiervorgangs und werden mit denen nach dem Datenupload verglichen. Wenn die CRC-Werte nicht übereinstimmen, weist dies darauf hin, dass der Upload der entsprechenden Dateien fehlgeschlagen ist.
 
@@ -211,7 +211,9 @@ Der Pfad des Kopierprotokolls wird auch auf dem Blatt **Übersicht** für das Po
 
 ![Pfad zum Kopierprotokoll nach Abschluss auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-1.png)
 
-Im folgenden Beispiel wird das allgemeine Format einer Kopierprotokolldatei für einen Data Box-Upload beschrieben, der erfolgreich abgeschlossen wurde:
+### <a name="upload-completed-successfully"></a>Upload erfolgreich abgeschlossen 
+
+Im folgenden Beispiel wird das allgemeine Format eines Kopierprotokolls für einen Data Box-Upload beschrieben, der erfolgreich abgeschlossen wurde:
 
 ```
 <?xml version="1.0"?>
@@ -222,11 +224,13 @@ Im folgenden Beispiel wird das allgemeine Format einer Kopierprotokolldatei für
 </CopyLog>
 ```
 
+### <a name="upload-completed-with-errors"></a>Upload mit Fehlern abgeschlossen 
+
 Der Upload in Azure kann auch mit Fehlern abgeschlossen werden.
 
 ![Der Pfad zum Kopierprotokoll nach Abschluss mit Fehlern auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-2.png)
 
-Hier finden Sie ein Beispiel für ein Kopierprotokoll, nachdem der Upload mit Fehlern abgeschlossen wurde:
+Hier finden Sie ein Beispiel eines Kopierprotokolls, nachdem der Upload mit Fehlern abgeschlossen wurde:
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -245,9 +249,15 @@ Hier finden Sie ein Beispiel für ein Kopierprotokoll, nachdem der Upload mit Fe
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-Hier ist ein Beispiel für ein `copylog`, wobei die Container, die nicht den Azure-Namenskonventionen entsprachen, während des Datenuploads zu Azure umbenannt wurden.
+### <a name="upload-completed-with-warnings"></a>Upload mit Warnungen abgeschlossen
 
-Die neuen eindeutigen Namen für Container haben das Format `DataBox-GUID`, und die Daten für den Container werden in dem neu umbenannten Container platziert. Das `copylog` gibt den alten und den neuen Namen für den Container an.
+Der Upload in Azure wird mit Warnungen abgeschlossen, wenn Ihre Daten Container-, Blob- oder Dateinamen hatten, die nicht den Azure-Namenskonventionen entsprachen, und die Namen geändert wurden, damit die Daten in Azure hochgeladen werden konnten.
+
+![Der Pfad zum Kopierprotokoll nach Abschluss mit Warnungen auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-3.png)
+
+Hier ist ein Beispiel eines Kopierprotokolls, bei dem die Container, die nicht den Azure-Namenskonventionen entsprachen, während des Hochladens der Daten in Azure umbenannt wurden.
+
+Die neuen eindeutigen Namen für Container haben das Format `DataBox-GUID`, und die Daten für den Container werden in dem neu umbenannten Container platziert. Das Kopierprotokoll gibt den alten und neuen Namen des Containers an.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -258,7 +268,7 @@ Die neuen eindeutigen Namen für Container haben das Format `DataBox-GUID`, und 
 </ErroredEntity>
 ```
 
-Hier ist ein Beispiel für ein `copylog`, wobei die Blobs oder Dateien, die nicht den Azure-Namenskonventionen entsprachen, während des Datenuploads zu Azure umbenannt wurden. Die neuen Blob- oder Dateinamen werden in den SHA256-Digest des relativen Pfads zum Container konvertiert und basierend auf dem Zieltyp in den Pfad hochgeladen. Als Ziel kommen Blockblobs, Seitenblobs oder Azure Files infrage.
+Hier ist ein Beispiel eines Kopierprotokolls, bei dem die Blobs oder Dateien, die nicht den Azure-Namenskonventionen entsprachen, während des Hochladens der Daten in Azure umbenannt wurden. Die neuen Blob- oder Dateinamen werden in den SHA256-Digest des relativen Pfads zum Container konvertiert und basierend auf dem Zieltyp in den Pfad hochgeladen. Als Ziel kommen Blockblobs, Seitenblobs oder Azure Files infrage.
 
 Das `copylog` gibt den alten und neuen Blob- oder Dateinamen und den Pfad in Azure an.
 
@@ -287,7 +297,7 @@ Nachdem die Daten gemäß den NIST-Richtlinien (SP 800-88 Revision 1) vom Data B
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 
-Überwachungsprotokolle enthalten Informationen zum Einschalten und Freigeben des Zugriffs auf die Data Box oder Data Box Heavy außerhalb eines Azure-Rechenzentrums. Die Protokolle befinden sich hier: `storage-account/azuredatabox-chainofcustodylogs`
+Überwachungsprotokolle enthalten Informationen zum Einschalten von und Zugriff auf Freigaben auf Data Box oder Data Box Heavy außerhalb eines Azure-Rechenzentrums. Die Protokolle befinden sich hier: `storage-account/azuredatabox-chainofcustodylogs`
 
 Hier finden Sie ein Beispiel für das Überwachungsprotokoll einer Data Box:
 

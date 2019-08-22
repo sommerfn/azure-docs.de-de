@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 9903339cbf0958893fb0d11a8c1b6ab7d156aae7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ed90c22fa8c5b94567a9886ca71c9b35fbb103f0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626790"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624622"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -27,8 +27,8 @@ ms.locfileid: "60626790"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -153,34 +153,34 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
-| [3.0.2](#3.0.2) |15\. November 2018 |--- |
+| [3.0.2](#3.0.2) |15. November 2018 |--- |
 | [3.0.1](#3.0.1) |4\. Oktober 2018 |--- |
 | [2.3.3](#2.3.3) |8\. September 2018 |--- |
 | [2.3.2](#2.3.2) |8\. Mai 2018 |--- |
-| [2.3.1](#2.3.1) |21\. Dezember 2017 |--- |
-| [2.3.0](#2.3.0) |10\. November 2017 |--- |
-| [2.2.1](#2.2.1) |29\. September 2017 |--- |
-| [2.2.0](#2.2.0) |10\. Mai 2017 |--- |
-| [2.1.0](#2.1.0) |01\. Mai 2017 |--- |
-| [2.0.1](#2.0.1) |30\. Oktober 2016 |--- |
-| [2.0.0](#2.0.0) |29\. September 2016 |--- |
+| [2.3.1](#2.3.1) |21. Dezember 2017 |--- |
+| [2.3.0](#2.3.0) |10. November 2017 |--- |
+| [2.2.1](#2.2.1) |29. September 2017 |--- |
+| [2.2.0](#2.2.0) |10. Mai 2017 |--- |
+| [2.1.0](#2.1.0) |01. Mai 2017 |--- |
+| [2.0.1](#2.0.1) |30. Oktober 2016 |--- |
+| [2.0.0](#2.0.0) |29. September 2016 |--- |
 | [1.9.0](#1.9.0) |7\. Juli 2016 |--- |
-| [1.8.0](#1.8.0) |14\. Juni 2016 |--- |
-| [1.7.0](#1.7.0) |26\. April 2016 |--- |
+| [1.8.0](#1.8.0) |14. Juni 2016 |--- |
+| [1.7.0](#1.7.0) |26. April 2016 |--- |
 | [1.6.1](#1.6.1) |8\. April 2016 |--- |
-| [1.6.0](#1.6.0) |29\. März 2016 |--- |
-| [1.5.0](#1.5.0) |03\. Januar 2016 |--- |
-| [1.4.2](#1.4.2) |06\. Oktober 2015 |--- |
-| 1.4.1 |06\. Oktober 2015 |--- |
-| [1.2.0](#1.2.0) |06\. August 2015 |--- |
+| [1.6.0](#1.6.0) |29. März 2016 |--- |
+| [1.5.0](#1.5.0) |03. Januar 2016 |--- |
+| [1.4.2](#1.4.2) |06. Oktober 2015 |--- |
+| 1.4.1 |06. Oktober 2015 |--- |
+| [1.2.0](#1.2.0) |06. August 2015 |--- |
 | [1.1.0](#1.1.0) |9\. Juli 2015 |--- |
-| [1.0.1](#1.0.1) |25\. Mai 2015 |--- |
+| [1.0.1](#1.0.1) |25. Mai 2015 |--- |
 | [1.0.0](#1.0.0) |7\. April 2015 |--- |
-| 0.9.4-prelease |14\. Januar 2015 |29\. Februar 2016 |
-| 0.9.3-prelease |09\. Dezember 2014 |29\. Februar 2016 |
-| 0.9.2-prelease |25\. November 2014 |29\. Februar 2016 |
-| 0.9.1-prelease |23\. September 2014 |29\. Februar 2016 |
-| 0.9.0-prelease |21\.08.14 |29\. Februar 2016 |
+| 0.9.4-prelease |14. Januar 2015 |29. Februar 2016 |
+| 0.9.3-prelease |09. Dezember 2014 |29. Februar 2016 |
+| 0.9.2-prelease |25. November 2014 |29. Februar 2016 |
+| 0.9.1-prelease |23. September 2014 |29. Februar 2016 |
+| 0.9.0-prelease |21.08.14 |29. Februar 2016 |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

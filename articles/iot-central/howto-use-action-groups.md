@@ -8,16 +8,18 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: ad5f660ff72eceecbb6db2e9557b023ed2c6ea99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849006"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875808"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Gruppieren mehrerer Aktionen für die Ausführung über eine oder mehrere Regeln
 
 *Dieser Artikel gilt für Ersteller und Administratoren.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In Azure IoT Central erstellen Sie Regeln, um Aktionen auszuführen, wenn eine Bedingung erfüllt wird. Regeln basieren auf der Gerätetelemetrie oder Ereignissen. Sie können dem Betreiber beispielsweise eine Benachrichtigung zukommen lassen, wenn ein Gerät einen Temperaturschwellenwert überschreitet. In diesem Artikel wird die Verwendung von *Aktionsgruppen* in [Azure Monitor](../azure-monitor/overview.md) zum Anfügen mehrerer Aktionen an eine IoT Central-Regel erläutert. Sie können eine Aktionsgruppe an mehrere Regeln anfügen. Eine [Aktionsgruppe](../azure-monitor/platform/action-groups.md) ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden.
 
@@ -59,7 +61,7 @@ In der folgenden Tabelle werden die Informationen zusammengefasst, die an die un
 
 | Aktionstyp | Ausgabeformat |
 | ----------- | -------------- |
-| E-Mail       | IoT Central-Standardvorlage für E-Mails |
+| Email       | IoT Central-Standardvorlage für E-Mails |
 | sms         | Azure IoT Central-Warnung: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} (${applicationName} - "${ruleName}" wurde für "${deviceName}" um ${triggerDate} ${triggerTime} ausgelöst.) |
 | Sprache       | Azure I.O.T Central-Warnung: rule "${ruleName}" triggered on device "${deviceName}" at ${triggerDate} ${triggerTime}, in application ${applicationName} (Regel "${ruleName}" wurde auf dem Gerät "${deviceName}" um ${triggerDate} ${triggerTime}, in der Anwendung ${applicationName} ausgelöst.) |
 | Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](#payload)} } |

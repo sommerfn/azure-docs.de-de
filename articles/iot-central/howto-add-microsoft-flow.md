@@ -8,16 +8,18 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5f5353d0d85d6af4e74c48c80c790449852b43ef
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797706"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876285"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 
 *Dieses Thema gilt für Generatoren und Administratoren.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Verwenden Sie Microsoft Flow, um Workflows viele für Geschäftskunden unverzichtbare Anwendungen und Dienste übergreifend zu automatisieren. Mit dem IoT Central-Connector in Microsoft Flow können Sie Workflows auslösen, wenn eine Regel in IoT Central ausgelöst wird. In einem von IoT Central ausgelösten Workflow oder einer anderen Anwendung können Sie die Aktionen im IoT Central-Connector für Folgendes einsetzen:
 - Erstellen eines Geräts

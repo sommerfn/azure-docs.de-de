@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827633"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954812"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -27,7 +27,7 @@ Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei V
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Wie viele Datenquellen/Elemente können in einem Tresor geschützt werden? 
 Sie können bis zu 2.000 Datenquellen/Elemente für alle Workloads (IaaS-VM, SQL, AFS usw.) in einem Tresor schützen.<br>  
-Wenn Sie z. B. bereits 500 virtuelle Computer und 400 Azure Files-Freigaben im Tresor geschützt haben, können Sie nur maximal 1.100 SQL-Datenbanken darin schützen. 
+Wenn Sie beispielsweise bereits 500 virtuelle Computer und 400 Azure Files-Freigaben im Tresor geschützt haben, können Sie nur maximal 1100 SQL-Datenbanken darin schützen. 
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Wie viele Richtlinien kann ich pro Tresor erstellen? 
 Sie können nur maximal 200 Richtlinien pro Tresor erstellen.

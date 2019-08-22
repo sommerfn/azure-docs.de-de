@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dca0146cc16ea63e0621eff8f508f15e0046b63b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510324"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877388"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Microsoft Azure IoT Central-Anwendung herstellen.
 
@@ -102,9 +104,9 @@ Numerische Einstellungen
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
-| Type            | `Display name` | Feldname | Datentyp |
+| type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
 | Text            | Location     | location   | –       |

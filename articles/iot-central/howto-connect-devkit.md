@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81a355cc7c0d1190ee86fac6ed155380e6e5c0d1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235877"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877526"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindung zwischen einem MXChip IoT DevKit-Gerät (DevKit) und Ihrer Microsoft Azure IoT Central-Anwendung herstellen.
 
@@ -233,9 +235,9 @@ Einstellungen zum Ein-/Ausschalten
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | EIN      | OFF      | Aus     |
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
-| Type            | `Display name` | Feldname | Datentyp |
+| type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
 | Geräteeigenschaft | Gerätestandort   | location  | location    |

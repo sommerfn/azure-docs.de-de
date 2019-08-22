@@ -1,7 +1,7 @@
 ---
 title: Synonyme – C#-Beispiel – Azure Search
 description: In diesem C#-Beispiel erfahren Sie, wie Sie einem Index in Azure Search das Feature „Synonyme“ hinzufügen. Eine Synonymzuordnung ist eine Liste der entsprechenden Begriffe. Felder mit Synonymunterstützung erweitern Abfragen, sodass sie den vom Benutzer bereitgestellten Begriff und alle zugehörigen Synonyme enthalten.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025170"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647752"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Beispiel: Hinzufügen von Synonymen für Azure Search in C#
 

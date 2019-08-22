@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a545f1e0fd1360d9147280454fb8b75bf216152
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507395"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874094"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
-Ein *Zugriffstoken* enthält Ansprüche, mit denen Sie in Azure Active Directory B2C (Azure AD B2C) die gewährten Berechtigungen für Ihre APIs identifizieren können. Beim Aufrufen eines Ressourcenservers muss ein Zugriffstoken in der HTTP-Anforderung vorhanden sein. Zugriffstoken werden in den Antworten von Azure AD B2C als **access_token** angegeben. 
+Ein *Zugriffstoken* enthält Ansprüche, mit denen Sie in Azure Active Directory B2C (Azure AD B2C) die gewährten Berechtigungen für Ihre APIs identifizieren können. Beim Aufrufen eines Ressourcenservers muss ein Zugriffstoken in der HTTP-Anforderung vorhanden sein. Zugriffstoken werden in den Antworten von Azure AD B2C als **access_token** angegeben.
 
 In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwendung und eine Web-API anfordern. Weitere Informationen zu Token in Azure AD B2C finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 
@@ -67,13 +67,13 @@ Ersetzen Sie im folgenden Beispiel diese Werte:
 - `<application-ID>`: Anwendungs-ID der Webanwendung, die Sie zur Unterstützung des Benutzerflows registriert haben.
 - `<redirect-uri>`: Der **Umleitungs-URI**, den Sie bei der Registrierung der Clientanwendung eingegeben haben.
 
-```
+```HTTP
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
 &scope=https://tenant-name>.onmicrosoft.com/api/read
-&response_type=code 
+&response_type=code
 ```
 
 Die Antwort mit dem Autorisierungscode sollte dem folgenden Beispiel ähneln:
@@ -84,9 +84,9 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 Nach dem Empfang des Autorisierungscodes können Sie über diesen Code ein Zugriffstoken anfordern:
 
-```
+```HTTP
 POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
-Host: https://<tenant-name>.b2clogin.com
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
@@ -99,7 +99,7 @@ grant_type=authorization_code
 
 Die Antwort sollte der folgenden ähneln:
 
-```
+```JSON
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -113,7 +113,7 @@ Die Antwort sollte der folgenden ähneln:
 
 Bei Verwendung von https://jwt.ms zum Überprüfen des zurückgegebenen Zugriffstokens sollte etwa die folgende Ausgabe angezeigt werden:
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",

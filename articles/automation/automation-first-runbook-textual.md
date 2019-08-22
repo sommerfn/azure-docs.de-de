@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 347ff3d4290350708200fe78806fb38caabf7fae
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 010c6b00161c7a0a004932528fa4f608aa7c5e23
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477745"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850680"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mein erstes PowerShell-Workflow-Runbook
 
@@ -80,7 +80,7 @@ Bevor Sie das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 1. Klicken Sie auf **Starten** , um den Test zu starten. Diese Optionen sollte als einzige aktiviert sein.
 1. Ein [Runbookauftrag](automation-runbook-execution.md) wird erstellt, und der dazugehörige Status wird angezeigt.
 
-   Der Auftrag besitzt zunächst den Status *In der Warteschlange*, um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  
+   Der Auftrag besitzt zunächst den Status *In der Warteschlange*, um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.
 
 1. Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In Ihrem Fall sollte *Hello World* angezeigt werden.
 
@@ -94,7 +94,7 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
 1. Klicken Sie auf **Veröffentlichen**, um das Runbook zu veröffentlichen, und bestätigen Sie den Vorgang mit **Ja**.
 1. Wenn Sie nun nach links scrollen, um das Runbook im Bereich **Runbooks** anzuzeigen, wird der **Erstellungsstatus** des Runbooks als **Veröffentlicht** angezeigt.
-1. Führen Sie wieder einen Bildlauf nach rechts durch, um den Bereich für **MyFirstRunbook-Workflow**anzuzeigen.  
+1. Führen Sie wieder einen Bildlauf nach rechts durch, um den Bereich für **MyFirstRunbook-Workflow**anzuzeigen.
    Mit den Optionen am oberen Rand können wir das Runbook starten, den Start für einen späteren Zeitpunkt planen oder einen [Webhook](automation-webhooks.md) erstellen, um den Start über einen HTTP-Aufruf zu ermöglichen.
 1. Sie möchten das Runbook einfach starten. Klicken Sie daher auf **Starten** und anschließend auf **Ja**.
 
@@ -107,7 +107,7 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
 1. Wenn der Runbookstatus *Abgeschlossen*lautet, klicken Sie auf **Ausgabe**. Der Ausgabebereich wird geöffnet, und der Text *Hello World* wird angezeigt.
 
-   ![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)  
+   ![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. Schließen Sie den Ausgabebereich.
 1. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabedatenstrom sollte nur *Hello World* angezeigt werden. In dieser Ansicht können aber auch andere Datenströme für einen Runbookauftrag (wie etwa „Ausführlich“ und „Fehler“) angezeigt werden, sofern das Runbook Schreibvorgänge dafür durchführt.
@@ -156,7 +156,7 @@ Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist 
 
 Nachdem das Runbook jetzt in Ihrem Azure-Abonnement authentifiziert ist, können Sie Ressourcen verwalten. Sie fügen einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen. Sie werden den Namen vorerst im Runbook hartcodieren. Wenn Sie Ressourcen über mehrere Abonnements verwalten, müssen Sie den Parameter **-AzureRmContext** zusammen mit [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext) verwenden.
 
-1. Geben Sie nach *Connect-AzureRmAccount* den Code *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* ein, und geben Sie den Namen und den Ressourcengruppennamen des virtuellen Computers an, der gestartet werden soll.  
+1. Geben Sie nach *Connect-AzureRmAccount* den Code *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* ein, und geben Sie den Namen und den Ressourcengruppennamen des virtuellen Computers an, der gestartet werden soll.
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -188,7 +188,7 @@ Ihr Runbook startet zwar jetzt den virtuellen Computer, den Sie im Runbook hartc
     Param(
      [string]$VMName,
      [string]$ResourceGroupName
-    )  
+    )
    # Ensures you do not inherit an AzureRMContext in your runbook
    Disable-AzureRmContextAutosave –Scope Process
 
@@ -206,10 +206,11 @@ Ihr Runbook startet zwar jetzt den virtuellen Computer, den Sie im Runbook hartc
 
    ![Start des Runbooks](media/automation-first-runbook-textual/automation-pass-params.png)
 
-7. Vergewissern Sie sich nach Abschluss des Runbooks, dass der virtuelle Computer gestartet wurde.  
+7. Vergewissern Sie sich nach Abschluss des Runbooks, dass der virtuelle Computer gestartet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Erste Schritte mit PowerShell-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md)
 * Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)

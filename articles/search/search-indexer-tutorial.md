@@ -2,20 +2,18 @@
 title: 'C#-Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken: Azure Search'
 description: Dieses C#-Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c88ff0d7e408e03216707ff9282d640fb7d28500
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840695"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640653"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#-Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 

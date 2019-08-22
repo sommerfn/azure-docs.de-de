@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741854"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952983"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -84,6 +84,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 
 > [!NOTE]
 > VM-Skalierungsgruppen von Azure können über die Updateverwaltung verwaltet werden. Die Updateverwaltung arbeitet mit den Instanzen selbst und nicht mit dem Basisimage. Sie müssen die Updates inkrementell planen, um nicht alle VM-Instanzen auf einmal zu aktualisieren.
+> VMSS-Knoten können hinzugefügt werden, indem Sie die Schritte unter [Onboarding eines Nicht-Azure-Computers](automation-tutorial-installed-software.md#onboard-a-non-azure-machine) ausführen.
 
 ### <a name="unsupported-client-types"></a>Nicht unterstützte Clienttypen
 
@@ -93,6 +94,7 @@ In der folgenden Tabelle werden die Betriebssysteme aufgelistet, die nicht unter
 |---------|---------|
 |Windows-Client     | Clientbetriebssysteme (z.B. Windows 7 und Windows 10) werden nicht unterstützt.        |
 |Windows Server 2016 Nano Server     | Nicht unterstützt.       |
+|Azure Kubernetes Service-Knoten | Nicht unterstützt. Verwenden Sie den Patchprozess, dargelegt unter [Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md).|
 
 ### <a name="client-requirements"></a>Clientanforderungen
 
@@ -359,6 +361,10 @@ Die folgenden Adressen sind speziell für die Updateverwaltung erforderlich. Die
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*.azure-automation.us|
+
+Bei Windows-Computern müssen Sie auch Datenverkehr zu allen Endpunkten zulassen, die für Windows Update erforderlich sind.  Sie finden eine aktualisierte Liste der erforderlichen Endpunkte unter [Probleme im Zusammenhang mit HTTP/Proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Wenn Sie über einen lokalen [Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment) verfügen, müssen Sie auch Datenverkehr zu dem in Ihrem [WSUS-Schlüssel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) angegebenen Server zulassen.
+
+Informationen zu den erforderlichen Endpunkten für Red Hat Linux-Computer finden Sie unter [Die IPs für die RHUI-Inhaltsübermittlungsserver](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers). Informationen zu anderen Linux-Distributionen finden Sie in der jeweiligen Dokumentation des Anbieters.
 
 Weitere Informationen zu Ports, die für den Hybrid Runbook Worker erforderlich sind, finden Sie unter [Ports für Hybrid Worker-Rollen](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

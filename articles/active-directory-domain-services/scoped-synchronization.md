@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: bb96e7ccbc38a71d24178c31f8eb9a077c06b8f0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7d3bd8c6c62c0b8a1be6203e426337fcee7d2126
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472526"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617111"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihrer verwalteten Domäne
 In diesem Artikel erfahren Sie, wie Sie konfigurieren können, dass nur bestimmte Benutzerkonten aus Ihrem Azure AD-Verzeichnis mit der von Azure AD Domain Services verwalteten Domäne synchronisiert werden.
@@ -47,7 +47,7 @@ Mit der folgende Tabelle können Sie bestimmen, wie die bereichsbezogene Synchro
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Erstellen einer neuen verwalteten Domäne und Aktivieren der gruppenbasierten bereichsbezogenen Synchronisierung über das Azure-Portal
 
-1. Gehen Sie wie im [Leitfaden zu den ersten Schritten](create-instance.md) beschrieben vor, um eine verwaltete Domäne zu erstellen.
+1. Gehen Sie wie im [Leitfaden zu den ersten Schritten](tutorial-create-instance.md) beschrieben vor, um eine verwaltete Domäne zu erstellen.
 2. Wählen Sie im Erstellungs-Assistenten von Azure AD Domain Services den **bereichsbezogenen** Synchronisierungstyp aus.
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Erstellen einer neuen verwalteten Domäne und Aktivieren der gruppenbasierten bereichsbezogenen Synchronisierung mithilfe von PowerShell
@@ -81,7 +81,7 @@ Führen Sie die folgenden Schritte aus, um die gruppenbasierte bereichsbezogene 
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso100.com"
+   $ManagedDomainName = "contoso.com"
    $ResourceGroupName = "ContosoAaddsRg"
    $VnetName = "DomainServicesVNet_WUS"
    $AzureLocation = "westus"

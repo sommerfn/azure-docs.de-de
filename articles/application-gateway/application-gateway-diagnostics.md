@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655387"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850978"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 
@@ -172,52 +172,8 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 |sentBytes| Größe des gesendeten Pakets in Byte|
 |timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
 |sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
-```json
-{
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
-    "operationName": "ApplicationGatewayAccess",
-    "time": "2017-04-26T19:27:38Z",
-    "category": "ApplicationGatewayAccessLog",
-    "properties": {
-        "instanceId": "ApplicationGatewayRole_IN_0",
-        "clientIP": "191.96.249.97",
-        "clientPort": 46886,
-        "httpMethod": "GET",
-        "requestUri": "/phpmyadmin/scripts/setup.php",
-        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
-        "userAgent": "-",
-        "httpStatus": 404,
-        "httpVersion": "HTTP/1.0",
-        "receivedBytes": 65,
-        "sentBytes": 553,
-        "timeTaken": 205,
-        "sslEnabled": "off"
-    }
-}
-```
-Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
-
-|Wert  |BESCHREIBUNG  |
-|---------|---------|
-|instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
-|clientIP     | Ursprungs-IP für die Anforderung        |
-|clientPort     | Ursprungsport für die Anforderung       |
-|httpMethod     | Von der Anforderung verwendete HTTP-Methode       |
-|requestUri     | URI der empfangenen Anforderung        |
-|RequestQuery     | **Server-Routed:** Back-End-Poolinstanz, an die die Anforderung gesendet wurde.</br>**X-AzureApplicationGateway-LOG-ID:** Korrelations-ID, die für die Anforderung verwendet wurde. Kann für die Behandlung von Datenverkehrsproblemen auf den Back-End-Servern verwendet werden. </br>**SERVER-STATUS:** HTTP-Antwortcode, den Application Gateway vom Back-End empfangen hat.       |
-|UserAgent     | Benutzer-Agent aus dem HTTP-Anforderungsheader        |
-|httpStatus     | HTTP-Statuscode, der vom Application Gateway an den Client zurückgegeben wurde       |
-|httpVersion     | HTTP-Version der Anforderung        |
-|receivedBytes     | Größe des empfangenen Pakets in Byte        |
-|sentBytes| Größe des gesendeten Pakets in Byte|
-|timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
-|sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
-|sslCipher| Verschlüsselungssammlung, die für die SSL-Kommunikation verwendet wird (sofern SSL aktiviert ist)|
-|sslProtocol| Das verwendete SSL-Protokoll (sofern SSL aktiviert ist)|
-|serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
-|serverStatus| HTTP-Statuscode des Back-End-Servers|
-|serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|
-|host| Adresse im host-Header der Anforderung|
+|host| Der Hostname, mit dem die Anforderung an den Back-End-Server gesendet wurde. Wenn der Back-End-Hostname überschrieben wird, wird dies von diesem Namen wiedergegeben.|
+|originalHost| Der Hostname, mit dem die Anforderung vom Client von der Application Gateway-Instanz empfangen wurde.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -238,12 +194,58 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
         "sentBytes": 553,
         "timeTaken": 205,
         "sslEnabled": "off",
+        "host": "www.contoso.com",
+        "originalHost": "www.contoso.com"
+    }
+}
+```
+Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
+
+|Wert  |BESCHREIBUNG  |
+|---------|---------|
+|instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
+|clientIP     | Ursprungs-IP für die Anforderung        |
+|clientPort     | Ursprungsport für die Anforderung       |
+|httpMethod     | Von der Anforderung verwendete HTTP-Methode       |
+|requestUri     | URI der empfangenen Anforderung        |
+|UserAgent     | Benutzer-Agent aus dem HTTP-Anforderungsheader        |
+|httpStatus     | HTTP-Statuscode, der vom Application Gateway an den Client zurückgegeben wurde       |
+|httpVersion     | HTTP-Version der Anforderung        |
+|receivedBytes     | Größe des empfangenen Pakets in Byte        |
+|sentBytes| Größe des gesendeten Pakets in Byte|
+|timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
+|sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
+|sslCipher| Verschlüsselungssammlung, die für die SSL-Kommunikation verwendet wird (sofern SSL aktiviert ist)|
+|sslProtocol| Das verwendete SSL-Protokoll (sofern SSL aktiviert ist)|
+|serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
+|serverStatus| HTTP-Statuscode des Back-End-Servers|
+|serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|
+|host| Adresse im host-Header der Anforderung|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "appgw_1",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
         "serverStatus": "200",
         "serverResponseLatency": "0.023",
-        "host": "52.231.230.101"
+        "host": "www.contoso.com",
     }
 }
 ```

@@ -3,7 +3,7 @@ title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (
 description: Erste Schritte mit Azure-Warteschlangenspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Speicherkonto mithilfe von verbundenen Visual Studio-Diensten.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248962"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510791"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Neben **string** kann der Parameter Folgendes sein: ein Bytearray, ein **CloudQueueMessage**-Objekt oder ein POCO-Objekt, das Sie definieren.
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Im folgenden Beispiel enthält die Warteschlangenmeldung JSON-Code für ein **BlobInformation**-Objekt, das eine Eigenschaft **BlobName** enthält. Das SDK deserialisiert das Objekt automatisch.
 
 ```csharp
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Zum Erstellen einer Warteschlangennachricht, die ein POCO-Objekt anstelle einer Zeichenfolge enthält, übergeben Sie den POCO-Typ als Ausgabeparameter an den **Queue** -Attributkonstruktor.
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Für ein POCO-Objekt, das als JSON-Code in der Warteschlangenmeldung gespeichert wird, können Sie Platzhalter verwenden, mit denen Eigenschaften des Parameters **blobPath** des **Queue**-Attributs benannt werden. Sie können auch Metadateneigenschaftennamen der Warteschlange als Platzhalter verwenden. Siehe [Abrufen der Warteschlange oder von Metadaten der Warteschlangennachricht](#get-queue-or-queue-message-metadata).
 
 Das folgende Beispiel kopiert ein Blob in ein neues Blob mit einer anderen Erweiterung. Die Warteschlangennachricht ist ein **BlobInformation**-Objekt, das die Eigenschaften **BlobName** und **BlobNameWithoutExtension** enthält. Die Eigenschaftsnamen dienen als Platzhalter im Blobpfad für die **Blob** -Attribute.

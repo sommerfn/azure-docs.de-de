@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 07/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 1b749df7c5b3badbc6e7eccd885cb953ab3d0afa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277384"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900589"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Was ist Azure Data Box Gateway?
 
@@ -57,7 +57,6 @@ Data Box Gateway bietet die folgenden Funktionen:
 |Schneller Zugriff     | Lokaler Cache auf dem Gerät für schnellen Zugriff auf zuletzt verwendete Dateien.|
 |Hochladen von Daten im Offlinemodus     | Der Modus „Getrennt“ unterstützt Szenarien für das Hochladen von Daten im Offlinemodus.|
 |Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
-|Verschlüsselung    | BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.       |
 |Resilienz     | Integrierte Netzwerkresilienz.        |
 
 

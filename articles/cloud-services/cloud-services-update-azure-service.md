@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360707"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945354"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
 
@@ -21,7 +21,7 @@ Das Aktualisieren eines Clouddiensts einschließlich Rollen und Gastbetriebssyst
 ## <a name="update-an-azure-service"></a>Aktualisieren eines Azure-Diensts
 Azure organisiert Ihre Rolleninstanzen in logischen Gruppen, die als Upgradedomänen (UD) bezeichnet werden. Upgradedomänen (UD) sind logische Sätze von Rolleninstanzen, die als Gruppe aktualisiert werden.  Azure aktualisiert einen Clouddienst mit je einer UD. Dadurch können Instanzen in anderen UDs den Datenverkehr weiter bearbeiten.
 
-Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen über das Attribut „upgradeDomainCount“ finden Sie unter [WebRole-Schema](/previous-versions/azure/reference/gg557553(v=azure.100)) oder [WorkerRole-Schema](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen zum Attribut upgradeDomainCount finden Sie unter [Azure Cloud Services-Definitionsschema (.CSDEF-Datei)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
 
 Wenn Sie eine direkte Aktualisierung einer oder mehrerer Rollen in Ihrem Dienst durchführen, aktualisiert Azur Sätze von Rolleninstanz je nach der Upgradedomäne, der sie angehören. Azure aktualisiert alle Instanzen in einer bestimmten Upgradedomäne (beendet sie, aktualisiert sie und schaltet sie wieder online) und fährt dann mit der nächsten Domäne fort. Dadurch, dass nur die Instanzen beendet werden, die in der aktuellen Upgradedomäne ausgeführt werden, stellt Azure sicher, dass sich die Aktualisierung so wenig wie möglich auf den ausgeführten Dienst auswirkt. Weitere Informationen finden Sie unter [Vorgehensweise bei der Aktualisierung](#howanupgradeproceeds) weiter unten in diesem Artikel.
 

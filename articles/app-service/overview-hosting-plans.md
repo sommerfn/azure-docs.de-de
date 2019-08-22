@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fef509d705d0b904586a86b7dc58decc54e7023d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716638"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932340"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -32,14 +32,13 @@ Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, West
 - Region („USA, Westen“, „USA, Osten“ usw.)
 - Anzahl von VM-Instanzen
 - Größe von VM-Instanzen (Klein, Mittel, Groß)
-- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated, Consumption)
+- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated)
 
 Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Es gibt verschiedene Kategorien von Tarifen:
 
 - **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das horizontale Hochskalieren nicht möglich.
 - **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium** und **PremiumV2** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
-- **Isoliert**: Bei diesem Tarif werden dedizierte Azure-VMs in dedizierten Azure Virtual Networks ausgeführt, die eine Netzwerkisolation und eine Compute-Isolation für Apps ermöglichen. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
-- **Verbrauch**: Dieser Tarif ist nur für [Funktionen-Apps](../azure-functions/functions-overview.md) verfügbar. Die Funktionen werden je nach Workload dynamisch skaliert. Weitere Informationen finden Sie unter [Vergleich von Hostingplänen für Azure Functions](../azure-functions/functions-scale.md).
+- **Isoliert**: In diesem Tarif werden dedizierte Azure-VMs in dedizierten virtuellen Azure-Netzwerken ausgeführt. Er stellt zusätzlich zur Computeisolation Netzwerkisolation für Ihre Apps bereit. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +79,7 @@ Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr
 
 - Beim Tarif **Shared** erhält jede App ein Kontingent von CPU-Minuten, sodass für _jede App_ eine Stundengebühr gemäß dem CPU-Kontingent anfällt.
 - Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr auf Stundenbasis an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
-- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird auf Stundenbasis berechnet. Darüber hinaus fällt eine stündliche Grundgebühr für die Ausführung der eigentlichen App Service-Umgebung an. 
-- (Nur Azure Functions) Beim Tarif **Consumption** werden VM-Instanzen dynamisch für die Workload einer Funktionen-App zugeteilt, und die Berechnung in Azure erfolgt dynamisch pro Sekunde. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
+- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird auf Stundenbasis berechnet. Darüber hinaus fällt eine stündliche Grundgebühr für die Ausführung der eigentlichen App Service-Umgebung an.
 
 Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:
 

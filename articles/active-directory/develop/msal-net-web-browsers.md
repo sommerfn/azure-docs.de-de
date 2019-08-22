@@ -3,7 +3,7 @@ title: Webbrowser in der Microsoft-Authentifizierungsbibliothek für .NET | Azur
 description: Erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: jmprieur
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb04a30719f7603610b323a4bb271666371ba97
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276864"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532501"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Verwenden von Webbrowsern in MSAL.NET
 Webbrowser sind eine Voraussetzung für die interaktive Authentifizierung. MSAL.NET unterstützt standardmäßig den [Systemwebbrowser](#system-web-browser-on-xamarinios-xamarinandroid) unter Xamarin.iOS und Xamarin.Android. Je nach Ihren Anforderungen (UX, Einmaliges Anmelden, Sicherheit) [können Sie jedoch auch den eingebetteten Webbrowser](#enable-embedded-webviews-on-ios-and-android) in [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)-Apps und [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)-Apps aktivieren. Sie können den gewünschten Webbrowser auch [dynamisch auswählen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid), und zwar danach, ob Chrome oder ein Browser, der benutzerdefinierte Chrome-Registerkarten in Android unterstützt, vorhanden ist. MSAL.NET unterstützt nur den Systembrowser in .NET Core-Desktopanwendungen.

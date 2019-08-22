@@ -2,19 +2,19 @@
 title: Filter für das Begrenzen von Suchergebnissen in einem Index – Azure Search
 description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in Azure Search, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b5d198506473c598f058c881f781a06e191df88
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 49af6f1f535df098aa45cccd7e2d629ff6ccef50
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653435"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649851"
 ---
 # <a name="filters-in-azure-search"></a>Filter in Azure Search 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562116"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942897"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -101,7 +101,7 @@ Bereinigen Sie Azure AD wie folgt:
 - **Windows 7/8:** Deaktivieren oder löschen Sie Windows 7/8-Geräte zunächst in Ihrem lokalen AD. Sie können Azure AD Connect nicht verwenden, um Windows 7/8-Geräte in Azure AD zu deaktivieren oder zu löschen. Stattdessen müssen Sie, wenn Sie lokal Änderungen vornehmen, das Deaktivieren/Löschen in Azure AD durchführen.
 
 > [!NOTE]
->* Beim Löschen von Geräten in Ihrem lokalen AD oder in Azure AD wird keine Registrierung auf dem Client durchführt. Es wird lediglich der Zugriff auf Ressourcen verhindert, die das Gerät als Identität verwenden (z. B. bedingter Zugriff). Lesen Sie weitere Informationen zum [Entfernen von Registrierungen auf dem Client](faq.md#hybrid-azure-ad-join-faq).
+>* Beim Löschen von Geräten aus Ihrem lokalen AD oder Azure AD wird die Registrierung nicht vom Client entfernt. Es wird lediglich der Zugriff auf Ressourcen verhindert, die das Gerät als Identität verwenden (z. B. bedingter Zugriff). Lesen Sie weitere Informationen zum [Entfernen von Registrierungen auf dem Client](faq.md#hybrid-azure-ad-join-faq).
 >* Wenn Sie ein Windows 10-Gerät nur in Azure AD löschen, wird das Gerät erneut von Ihrem lokalen Standort aus mithilfe von Azure AD Connect synchronisiert – dieses Mal allerdings als neues Objekt im Zustand „Ausstehend“. Auf dem Gerät ist eine erneute Registrierung erforderlich.
 >* Wenn Sie das Gerät aus dem Synchronisierungsbereich für Geräte mit Windows 10/Server 2016 entfernen, wird das Azure AD-Gerät gelöscht. Wenn Sie es erneut dem Synchronisierungsbereich hinzufügen, wird ein neues Objekt im Zustand „Ausstehend“ eingefügt. Auf dem Gerät ist eine erneute Registrierung erforderlich.
 >* Wenn Sie nicht Azure AD Connect für die Synchronisierung von Windows 10-Geräten verwenden (da Sie z. B. Azure AD NUR für die Registrierung nutzen), müssen Sie den Lebenszyklus ähnlich wie bei Windows 7/8-Geräten verwalten.

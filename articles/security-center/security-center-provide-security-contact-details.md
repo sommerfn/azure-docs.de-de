@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/9/2018
+ms.date: 08/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae7c130df40ea0553bd9e3ae117534fe98466f26
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60909277"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68934891"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center
 In Azure Security Center wird die Bereitstellung von Sicherheitskontaktinformationen für Ihr Azure-Abonnement empfohlen (sofern noch nicht geschehen). Microsoft kontaktiert Sie anhand dieser Informationen, wenn Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Kundendaten zugegriffen haben. MSRC führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern.
@@ -33,18 +33,18 @@ Warnungsbenachrichtigungen per E-Mail werden gesendet:
 - Jede E-Mail-Nachricht enthält eine einzelne Warnung, nicht eine Sammlung von Warnungen
  
 Wenn z.B. bereits eine E-Mail-Nachricht gesendet wurde, um Sie vor einem RDP-Angriff zu warnen, erhalten Sie nicht am selben Tag eine andere E-Mail-Nachricht über einen RDP-Angriff, auch dann nicht, wenn eine andere Warnung ausgelöst wird. 
- 
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
->
->
 
-## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. Wählen Sie unter **Empfehlungen** die Option **Details für Sicherheitskontakt angeben**.
-   ![Sicherheitskontakt bereitstellen][1]
-2. Wählen Sie das Azure-Abonnement aus, für das Sie Kontaktinformationen angeben möchten.
-3. Dadurch wird **E-Mail-Benachrichtigungen** geöffnet.
+## Einrichten von E-Mail-Benachrichtigungen für Warnungen <a name="email"></a>
+
+1. Wählen Sie im Portal **Preise und Einstellungen** aus.
+1. Klicken Sie auf das Abonnement.
+1. Klicken Sie auf **E-Mail-Benachrichtigungen**.
+
+> [!NOTE]
+> Wenn Sie eine Empfehlung umsetzen, wählen Sie unter **Empfehlungen** die Option **Sicherheitskontaktinformationen bereitstellen** und dann das Azure-Abonnement aus,für das Sie Kontaktinformationen angeben möchten. Dadurch wird **E-Mail-Benachrichtigungen** geöffnet.
 
    ![Sicherheitskontaktinformationen bereitstellen][2]
 

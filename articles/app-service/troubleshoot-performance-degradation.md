@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a214c10c5b111070127e4a823682989f24b20b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128448"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637725"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beheben.
@@ -155,7 +155,7 @@ Weitere Informationen zu den verfügbaren Funktionen in Kudu finden Sie unter [T
 #### <a name="scale-the-app"></a>Skalieren der App
 In Azure App Service können Sie zum Steigern der Leistung und des Durchsatzes die Skalierung anpassen, mit der Sie Ihre Anwendung ausführen. Für das zentrale Hochskalieren einer App sind zwei zueinander in Beziehung stehende Schritte erforderlich: Sie müssen für den App Service-Plan ein Upgrade auf einen höheren Tarif durchführen, und Sie müssen nach dem Tarifwechsel bestimmte Einstellungen konfigurieren.
 
-Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer App in Azure App Service](web-sites-scale.md).
+Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer App in Azure App Service](manage-scale-up.md).
 
 Außerdem haben Sie die Möglichkeit, Ihre Anwendung auf mehreren Instanzen auszuführen. Das horizontale Hochskalieren erhöht nicht nur die Verarbeitungskapazität, sondern bietet auch ein gewisses Maß an Fehlertoleranz. Wenn der Prozess in einer Instanz ausfällt, können die anderen Instanzen weiterhin Anforderungen verarbeiten.
 

@@ -1,5 +1,5 @@
 ---
-title: Beschreiben nicht jugendfreier und anzüglicher Inhalte – maschinelles Sehen
+title: Nicht jugendfreie und anzügliche Inhalte – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung nicht jugendfreier und anzüglicher Inhalte in Bildern mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 69a4c136e9c210dd40e004b8d5e1c1a2a8fceaa7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca5f35ab47822d74de556671c38886942d23d9ff
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368337"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946280"
 ---
 # <a name="detect-adult-and-racy-content"></a>Erkennen von nicht jugendfreien und freizügigen Inhalten
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: cephalin
-ms.openlocfilehash: fd488d475e24bc1aeebfa49b9d81b04ebae449ff
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a6d659d558c15a9a224196c471f7798b1a7f2660
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445597"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623693"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -102,38 +102,8 @@ Wenn Sie zwei Slots austauschen (in der Regel, um aus einem Stagingslot einen Pr
 In jeder Phase des Austauschvorgangs finden sämtliche Vorgänge zur Initialisierung der ausgetauschten Apps im Quellslot statt. Der Zielslot bleibt während der gesamten Vorbereitung des Quellslots online – unabhängig davon, ob der Austausch erfolgreich ist. Wenn Sie einen Stagingslot und den Produktionsslot austauschen möchten, muss der Produktionsslot immer der Zielslot sein. So ist sichergestellt, dass Ihre Produktions-App durch den Austauschvorgang nicht beeinträchtigt wird.
 
 ### <a name="which-settings-are-swapped"></a>Welche Einstellungen werden ausgetauscht?
-Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann die geklonte Konfiguration bearbeitet werden. Bei einem Austausch werden einige Konfigurationselemente zusammen mit dem Inhalt überführt (nicht slotspezifisch), während andere Konfigurationselemente nach einem Austausch im gleichen Slot verbleiben (slotspezifisch). Im Anschluss sind die Einstellungen aufgeführt, die sich beim Austauschen der Slots ändert.
 
-**Einstellungen, die ausgetauscht werden**:
-
-* Allgemeine Einstellungen (z. B. Framework-Version, 32/64-Bit-Angabe, WebSockets)
-* App-Einstellungen (können so konfiguriert werden, dass sie beim Slot verbleiben)
-* Verbindungszeichenfolgen (können so konfiguriert werden, dass sie beim Slot verbleiben)
-* Handlerzuordnungen
-* Überwachungs- und Diagnoseeinstellungen
-* Öffentliche Zertifikate
-* WebJobs-Inhalte
-* Hybridverbindungen*
-* Virtual Network-Integration*
-* Dienstendpunkte*
-* Azure Content Delivery Network*
-
-Für mit einem Sternchen (*) gekennzeichnete Features ist eine feste Slotzuordnung geplant. 
-
-**Einstellungen, die nicht ausgetauscht werden**:
-
-* Veröffentlichungsendpunkte
-* Benutzerdefinierte Domänennamen
-* Private Zertifikate und SSL-Bindungen
-* Skalierungseinstellungen
-* WebJobs-Planer
-* IP-Einschränkungen
-* Always On
-* Protokolleinstellungen (HTTPS, TLS-Version, Clientzertifikate)
-* Einstellungen für das Diagnoseprotokoll
-* Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)
-
-<!-- VNET and hybrid connections not yet sticky to slot -->
+[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
 Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge fest einem bestimmten Slot zuordnen möchten, sodass sie nicht ausgetauscht wird, navigieren Sie zur**Konfigurationsseite** für den entsprechenden Slot. Aktivieren Sie nach dem Hinzufügen oder Bearbeiten einer Einstellung das Kontrollkästchen **Bereitstellungssloteinstellung**. Ist dieses Kontrollkästchen aktiviert, wird die Einstellung nicht ausgetauscht. 
 

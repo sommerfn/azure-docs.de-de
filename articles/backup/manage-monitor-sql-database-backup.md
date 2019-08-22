@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827561"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019030"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -92,9 +92,9 @@ Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
 > [!NOTE]
 >
-Weitere Informationen zur Option zum Löschen von Daten finden Sie in den folgenden häufig gestellten Fragen:
-* [Was passiert mit den Sicherungen, wenn ich eine Datenbank von einer automatisch geschützten Instanz lösche?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
-* [Welches Verhalten ergibt sich, wenn ich den Vorgang „Sicherung beenden“ für eine automatisch geschützte Datenbank durchführe?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>Weitere Informationen zur Option zum Löschen von Daten finden Sie im folgenden FAQ:
+>* [Was passiert mit den Sicherungen, wenn ich eine Datenbank von einer automatisch geschützten Instanz lösche?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>* [Welches Verhalten ergibt sich, wenn ich den Vorgang „Sicherung beenden“ für eine automatisch geschützte Datenbank durchführe?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
 
@@ -145,7 +145,7 @@ Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz
 
 Manchmal kann die Workload-Erweiterung auf der VM aus irgendeinem Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Bei der **Neuregistrierung** wird die Workloadsicherungserweiterung erneut auf der VM installiert, damit die Vorgänge fortgesetzt werden können.  <br>
 
-Es wird empfohlen, diese Option mit Vorsicht zu verwenden. Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Deshalb sollten Sie vor dem Auslösen der erneuten Registrierung überprüfen, ob ein oder mehrere [Symptome](backup-sql-server-azure-troubleshoot.md#re-registration-failures) vorhanden sind.
+Verwenden Sie diese Option mit Vorsicht. Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Deshalb sollten Sie vor dem Auslösen der erneuten Registrierung überprüfen, ob ein oder mehrere [Symptome](backup-sql-server-azure-troubleshoot.md#re-registration-failures) vorhanden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

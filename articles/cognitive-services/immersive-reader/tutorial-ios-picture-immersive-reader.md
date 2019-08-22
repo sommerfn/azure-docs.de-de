@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Erstellen einer iOS-App, die ein Foto im plastischen Reader startet (Swift)'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine iOS-App ohne Vorlage und fügen ihr die Funktion „Bild im plastischen Reader“ hinzu.
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: d0e6cf05043c82faa04d530571ad7cacb3a02854
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.author: metan
+ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991136"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899373"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Tutorial: Erstellen einer iOS-App, die den plastischen Reader mit Inhalt aus einem Foto startet (Swift)
 
@@ -38,7 +38,7 @@ Erstellen Sie ein neues Projekt in Xcode.
 
 ![Neues Projekt](./media/ios/xcode-create-project.png)
 
-Wählen Sie **Einzelansicht-App** aus.
+Wählen Sie **Einzelansicht-App**.
 
 ![Neue Einzelansicht-App](./media/ios/xcode-single-view-app.png)
 
@@ -58,7 +58,7 @@ Das SDK für den plastischen Reader lässt sich am einfachsten über CocoaPods v
 ```
 4. Führen Sie im Terminal im Verzeichnis Ihres Xcode-Projekts den Befehl `pod install` aus, um den Pod für das SDK für den plastischen Reader zu installieren.
 5. Fügen Sie `import immersive_reader_sdk` allen Dateien hinzu, die auf das SDK verweisen müssen.
-6. Achten Sie beim Öffnen des Projekts darauf, die Datei `.xcworkspace` zu verwenden und nicht die Datei `.xcodeproj`.
+6. Achten Sie beim Öffnen des Projekts darauf, dass Sie die Datei `.xcworkspace` verwenden, und nicht die Datei `.xcodeproj`.
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Abrufen eines Azure AD-Authentifizierungstokens
 

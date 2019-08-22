@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/17/2019
+ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: eb9366acf82c94bdf99c4d4f0c7c6bdf4f51e06d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295010"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872924"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -54,9 +54,9 @@ Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Securi
 
 | Optionen, die Benutzern ermöglicht werden können: | Festzulegende Berechtigungen|
 | --- | --- |
-| Konfigurieren oder Bearbeiten einer JIT-Richtlinie für einen virtuellen Computer | *Weisen Sie der Rolle diese Aktionen zu:*  Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist: ```Microsoft.Security/locations/jitNetworkAccessPolicies/write``` Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers: ```Microsoft.Compute/virtualMachines/write``` | 
+| Konfigurieren oder Bearbeiten einer JIT-Richtlinie für einen virtuellen Computer | *Weisen Sie der Rolle diese Aktionen zu:*  <ul><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/> ```Microsoft.Security/locations/jitNetworkAccessPolicies/write``` </li><li> Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers: <br/>```Microsoft.Compute/virtualMachines/write```</li></ul> | 
 | ||
-|Anfordern von JIT-Zugriff auf einen virtuellen Computer | *Weisen Sie dem Benutzer diese Aktionen zu:*  Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:  ```Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/initiate/action``` Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers: ```Microsoft.Compute/virtualMachines/read``` |
+|Anfordern von JIT-Zugriff auf einen virtuellen Computer | *Weisen Sie dem Benutzer diese Aktionen zu:*  <ul><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/>  ```Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action``` </li><li>  Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers:<br/> ```Microsoft.Compute/virtualMachines/read``` </li></ul>|
 
 
 ## <a name="configure-jit-on-a-vm"></a>Konfigurieren von JIT auf einem virtuellen Computer

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 582e4d81851d570f99d25d626a1db8a9f5e98231
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619600"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881342"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -607,14 +607,21 @@ Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeige
 
 ## <a name="streaming-logs"></a>Streamingprotokolle
 
-Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Sie können entweder im Azure-Portal oder in einer Befehlszeilensitzung auf Ihrem lokalen Computer einen Stream von Protokolldateien anzeigen, die von Ihren Funktionen generiert werden.
+Während der Entwicklung einer Anwendung möchten Sie oft in Echtzeit sehen, was bei der Ausführung in Azure in die Protokolle geschrieben wird.
 
-Dies entspricht der Ausgabe, die beim Debuggen Ihrer Funktionen bei der [lokalen Entwicklung](functions-develop-local.md) zu sehen ist. Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
+Es gibt zwei Möglichkeiten, einen Datenstrom von Protokolldateien anzuzeigen, die bei den Ausführungen Ihrer Funktion generiert werden.
 
-> [!NOTE]
-> Streamingprotokolle unterstützen nur eine einzige Instanz des Azure Functions-Hosts. Wenn Ihre Funktion auf mehrere Instanzen skaliert wird, werden Daten aus anderen Instanzen nicht im Protokollstream angezeigt. Der [Live Metrics Stream](../azure-monitor/app/live-stream.md) in Application Insights unterstützt mehrere Instanzen. Obwohl auch in nahezu Echtzeit basiert die Streamanalyse auch auf [Stichprobendaten](#configure-sampling).
+* **Integriertes Protokollstreaming**: Mithilfe der App Service-Plattform können Sie einen Datenstrom Ihrer Anwendungsprotokolldateien einsehen. Dies entspricht der Ausgabe, die beim Debuggen Ihrer Funktionen bei der [lokalen Entwicklung](functions-develop-local.md) oder bei Verwenden der Registerkarte **Test** im Portal zu sehen ist. Alle protokollbasierten Informationen werden angezeigt. Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Diese Streamingmethode unterstützt nur eine einzelne Instanz und kann nicht mit einer App verwendet werden, die unter Linux in einem Verbrauchstarif ausgeführt wird.
+
+* **Live Metrics Stream**: Wenn Ihre Funktions-App [mit Application Insights verbunden](#enable-application-insights-integration) ist, können Sie im Azure-Portal mithilfe von [Live Metrics Stream](../azure-monitor/app/live-stream.md) Protokolldaten und andere Metriken nahezu in Echtzeit anzeigen. Verwenden Sie diese Methode, wenn Sie Funktionen überwachen, die auf mehreren Instanzen oder unter Linux in einem Verbrauchstarif ausgeführt werden. Diese Methode verwendet [Stichprobendaten](#configure-sampling).
+
+Protokolldatenströme können sowohl im Portal als auch in den meisten lokalen Entwicklungsumgebungen eingesehen werden. 
 
 ### <a name="portal"></a>Portal
+
+Sie können im Portal beide Arten von Protokolldatenströmen einsehen.
+
+#### <a name="built-in-log-streaming"></a>Integriertes Protokollstreaming
 
 Um Streamingprotokolle im Portal anzuzeigen, wählen Sie in Ihrer Funktions-App die Registerkarte **Plattformfeatures** aus. Klicken Sie unter **Überwachung** auf **Protokollstreaming**.
 
@@ -624,9 +631,21 @@ Dadurch wird Ihre App mit dem Protokollstreamingdienst verbunden, woraufhin Anwe
 
 ![Anzeigen von Streamingprotokollen im Portal](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>Live Metrics Stream
+
+Um den Live Metrics Stream für Ihre App anzuzeigen, wählen Sie die Registerkarte **Übersicht** Ihrer Funktions-App aus. Wenn Application Insights aktiviert ist, wird unter **Konfigurierte Features** der Link **Application Insights** angezeigt. Über diesen Link gelangen Sie zur Application Insights-Seite für Ihre App.
+
+Wählen Sie in Application Insights **Live Metrics Stream** aus. [Stichprobenhafte Protokolleinträge](#configure-sampling) werden unter **Beispieltelemetrie** angezeigt.
+
+![Anzeigen von Live Metrics Stream im Portal](./media/functions-monitoring/live-metrics-stream.png) 
+
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Kerntools
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

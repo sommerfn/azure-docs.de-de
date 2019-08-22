@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031043"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613025"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
@@ -35,7 +35,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 1. Ein gültiges **Azure-Abonnement**.
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
 3. Für die Verwendung des Azure AD-Anwendungsproxys ist eine **Azure AD Premium-Lizenz** erforderlich.
-4. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](create-instance.md)aus.
+4. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](tutorial-create-instance.md)aus.
 
 <br>
 
@@ -114,18 +114,18 @@ Verwenden Sie die ressourcenbasierte KCD entsprechend der Beschreibung in diesem
 
 Verwenden Sie das PowerShell-Cmdlet „Get-ADComputer“ zum Abrufen der Einstellungen für den Computer, auf dem der Azure AD-Anwendungsproxy-Connector installiert ist.
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 Verwenden Sie danach das Cmdlet „Set-ADComputer“, um für den Ressourcenserver die ressourcenbasierte KCD einzurichten.
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 Wenn Sie mehrere Anwendungsproxy-Connectors in Ihrer verwalteten Domäne bereitgestellt haben, müssen Sie die ressourcenbasierte KCD für jede dieser Connectorinstanzen konfigurieren.
 
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](create-instance.md)
+* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](tutorial-create-instance.md)
 * [Konfigurieren der eingeschränkten Kerberos-Delegierung in einer verwalteten Domäne](deploy-kcd.md)
 * [Übersicht über die eingeschränkte Kerberos-Delegierung](https://technet.microsoft.com/library/jj553400.aspx)

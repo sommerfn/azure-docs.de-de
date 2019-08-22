@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ee54fac5a4c325ea5db3b97522fd2772b8dbd4
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382428"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616044"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Herunterladen und Installieren der Microsoft Authenticator-App
 
@@ -52,7 +52,7 @@ Installieren Sie die aktuelle Version der Microsoft Authenticator-App basierend 
 - **Apple iOS**: Wechseln Sie auf Ihrem Apple iOS-Gerät zum App Store, um [die Microsoft Authenticator-App herunterzuladen und zu installieren](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 >[!Important]
->Wenn Sie derzeit nicht an Ihrem mobilen Gerät arbeiten, können Sie die Microsoft Authenticator-App dennoch erhalten, indem Sie sich selbst von der [Microsoft Authenticator-Seite](https://www.microsoft.com/en-us/account/authenticator) einen Downloadlink senden.
+>Wenn Sie derzeit nicht an Ihrem mobilen Gerät arbeiten, können Sie die Microsoft Authenticator-App dennoch erhalten, indem Sie sich selbst von der [Microsoft Authenticator-Seite](https://www.microsoft.com/account/authenticator) einen Downloadlink senden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

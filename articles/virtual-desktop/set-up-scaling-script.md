@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d7b91e3e74c65919a3afe80addfbd0fadd23b03c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620415"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931807"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatisches Skalieren von Sitzungshosts
 
@@ -65,7 +65,7 @@ Als Nächstes müssen Sie die sicher gespeicherten Anmeldeinformationen erstelle
     Install-Module Microsoft.RdInfra.RdPowershell
     ```
     
-3. Öffnen Sie den Bearbeitungsbereich, und laden Sie die Datei **Function-PSStoredCredentials.ps1**.
+3. Öffnen Sie den Bearbeitungsbereich, laden Sie die Datei **Function-PSStoredCredentials.ps1**, und führen Sie dann das gesamte Skript aus (F5).
 4. Führen Sie das folgende Cmdlet aus:
     
     ```powershell
@@ -111,7 +111,7 @@ Nach dem Konfigurieren der XML-Konfigurationsdatei müssen Sie den Taskplaner so
 4. Navigieren Sie zur Registerkarte **Trigger**, und wählen Sie **Neu…** aus.
 5. Aktivieren Sie im Dialogfeld **Neuer Trigger** unter **Erweiterte Einstellungen** die Option **Wiederholen jede**, und wählen Sie den entsprechenden Zeitraum und die Dauer aus (z. B. **15 Minuten** oder **Unbegrenzt**).
 6. Wählen Sie die Registerkarte **Aktionen** und dann **Neu…** aus.
-7. Geben Sie im Dialogfeld **Neue Aktion** den Dateinamen **powershell.exe** in das Feld **Programm/Skript** und dann **C:\\scaling\\RDSScaler.ps1** in das Feld **Argumente hinzufügen (optional)** ein.
+7. Geben Sie im Dialogfeld **Neue Aktion** den Dateinamen **powershell.exe** in das Feld **Programm/Skript** und dann **C:\\scaling\\basicScale.ps1** in das Feld **Argumente hinzufügen (optional)** ein.
 8. Navigieren Sie zu den Registerkarten **Bedingungen** und **Einstellungen**, und wählen Sie **OK**, um jeweils die Standardeinstellungen zu übernehmen.
 9. Geben Sie das Kennwort für das Administratorkonto ein, unter dem Sie das Skalierungsskript ausführen möchten.
 

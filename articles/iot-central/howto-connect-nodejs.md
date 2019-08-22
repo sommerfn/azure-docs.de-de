@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444240"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876257"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine generische Node.js-Anwendung, die ein echtes Gerät darstellt, mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden.
 

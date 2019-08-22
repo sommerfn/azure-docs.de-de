@@ -1,5 +1,5 @@
 ---
-title: Erkennen von Gesichtern – Maschinelles Sehen
+title: Gesichtserkennung – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Machen Sie sich mit Konzepten des Gesichtserkennungsfeatures der API für maschinelles Sehen vertraut.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 699192aba87bb009d7dbddddcc9579883bb71db9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368114"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945245"
 ---
 # <a name="face-detection-with-computer-vision"></a>Gesichtserkennung mit maschinellem Sehen
 

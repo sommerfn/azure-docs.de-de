@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07de717865399f45a153f2a273c30d81c41944e3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693190"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877478"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Artikel werden die wichtigsten Konzepte in Bezug auf die Gerätekonnektivität in Microsoft Azure IoT Central vorgestellt.
 
@@ -87,7 +89,7 @@ In den folgenden Schritten wird das Herstellen der Verbindung von Geräten mit I
 
 - Beispielimplementierung für [Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases).
 
-- [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md).
+- [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md).
 
 ### <a name="for-testing-purposes-only"></a>Nur für Testzwecke
 

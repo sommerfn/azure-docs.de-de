@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559588"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640429"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme
 
@@ -124,7 +124,7 @@ Transkripte müssen entsprechend den Spezifikationen in dieser Tabelle vorbereit
 | Dateiname | Namen der entsprechenden Audiodatei verwenden |
 | Codierungsformat | Nur UTF-8-BOM |
 | Anzahl von Äußerungen pro Zeile | Keine Begrenzung |
-| Maximale Dateigröße | 50 Millionen |
+| Maximale Dateigröße | 50 MB |
 
 Alle Transkriptdateien dieses Datentyps müssen in einer ZIP-Datei gruppiert werden. In der ZIP-Datei sind keine Unterordner zulässig. Angenommen, Sie haben eine ZIP-Datei hochgeladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. In diesem Fall müssen Sie eine weitere ZIP-Datei hochladen, die zwei Transkripte enthält – eine mit dem Namen „kingstory.txt“ und eine mit dem Namen „queenstory.txt“. In jeder Nur-Text-Datei stellen Sie die richtige und vollständige Transkription für die entsprechende Audioaufnahme bereit.
 

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3feb0b2b50851903bbd6799f46d489879e62bf43
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714416"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876214"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler ein Raspberry Pi-Gerät mithilfe der Programmiersprache C# mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden.
 
@@ -44,7 +46,7 @@ Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erste
   - Aktuell
   - Lüfterdrehzahl
   - IR-Umschalter
-- Eigenschaften
+- Properties
   - Geräteeigenschaft „Nummer“
   - Cloudeigenschaft „Standort“
 
@@ -352,9 +354,9 @@ Einstellungen zum Ein-/Ausschalten
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | EIN      | OFF      | Aus     |
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
-| Type            | `Display name` | Feldname | Datentyp |
+| type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
 | Text            | Location     | location   | –       |

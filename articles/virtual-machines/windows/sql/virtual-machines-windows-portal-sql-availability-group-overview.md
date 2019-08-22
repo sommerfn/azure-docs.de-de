@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a65465528ea2ffd8ba7af705d92efbb23a96d9e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325810"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883462"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern #
 
@@ -35,6 +35,8 @@ Das Diagramm veranschaulicht die Komponenten einer vollständigen SQL Server-Ver
 Der wesentliche Unterschied bei einer Verfügbarkeitsgruppe in Azure Virtual Machines ist, dass die virtuellen Azure-Computer einen [Lastenausgleich](../../../load-balancer/load-balancer-overview.md) erfordern. Der Lastenausgleich speichert die IP-Adressen für den Verfügbarkeitsgruppenlistener. Falls Sie über mehrere Verfügbarkeitsgruppen verfügen, benötigt jede Gruppe einen Listener. Ein einzelner Lastenausgleich kann mehrere Listener unterstützen.
 
 Außerdem werden in einem Azure IaaS-VM-Gast-Failovercluster eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden. 
+
+Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL Server-VMS entweder in derselben [Verfügbarkeitsgruppe](virtual-machines-windows-portal-sql-availability-group-prereq.md#create-availability-sets) oder in verschiedenen [Verfügbarkeitszonen](/azure/availability-zones/az-overview) befinden. 
 
 |  | Windows Server-Version | SQL Server-Version | SQL Server-Edition | WSFC-Quorumkonfiguration | Notfallwiederherstellung mit mehreren Regionen | Unterstützung mehrerer Subnetze | Unterstützung für ein vorhandenes AD | Notfallwiederherstellung mit mehreren Zonen in derselben Region | Dist-AG-Unterstützung ohne AD-Domäne | Dist-AG-Unterstützung ohne Cluster |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722142"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942847"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitätsdatenspeicher für europäische Kunden in Azure Active Directory
 Identitätsdaten werden von Azure AD an einem geografischen Standort basierend auf der Adresse gespeichert, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Office 365 und Azure angibt. Informationen darüber, wo Ihre Identitätsdaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
@@ -43,6 +43,15 @@ Azure AD B2B speichert Einladungen mit Informationen zu Einlösungslinks und Uml
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory Domain Services (Azure AD DS)
 
 Für Azure AD DS werden die Benutzerdaten an dem Ort gespeichert, der vom Kunden für das virtuelle Azure-Netzwerk ausgewählt wurde. Wenn das Netzwerk also außerhalb von Europa liegt, werden die Daten außerhalb Europas repliziert und gespeichert.
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Verbund in Microsoft Exchange Server 2013
+    
+- Anwendungsbezeichner (AppID): eine eindeutige Zahl, die vom Azure Active Directory-Authentifizierungssystem zur Identifizierung von Exchange-Organisationen generiert wird.
+- Liste mit genehmigten Verbunddomänen für die Anwendung
+- Öffentlicher Schlüssel für das Signieren von Anwendungstoken 
+
+Weitere Informationen zum Verbund in Microsoft Exchange Server finden Sie Hilfeartikel zum [ Verbund in Exchange 2013](https://docs.microsoft.com/exchange/federation-exchange-2013-help).
+
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
 

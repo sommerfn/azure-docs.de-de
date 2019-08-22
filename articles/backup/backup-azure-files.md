@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 03b65c71201ba125cb3924a52e8760a088374aa6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954734"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624354"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Sichern und Wiederherstellen von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
@@ -32,7 +32,6 @@ Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [u
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Universell V1“ und „Universell V2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
 - Unterstützung für die Sicherung von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) ist momentan auf [diese Regionen](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-) beschränkt.
-- Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
 - Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
 - Azure Backup unterstützt derzeit das Konfigurieren geplanter einmaliger täglicher Sicherungen von Azure-Dateifreigaben.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68224631"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515521"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifizieren von Problemen mit der Diagnosefunktion
 
@@ -153,7 +153,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |8\.000|InvalidAuthorizationRoleScope|Der von Ihnen eingegebene Rollenname stimmt nicht mit vorhandenen Rollennamen überein. Überprüfen Sie den Rollennamen auf Tippfehler, und wiederholen Sie den Vorgang. |
 |8001|UserNotFound |Der von Ihnen eingegebene Benutzername stimmt nicht mit vorhandenen Benutzernamen überein. Überprüfen Sie den Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |8005|UserNotFoundInAAD |Der von Ihnen eingegebene Benutzername stimmt nicht mit vorhandenen Benutzernamen überein. Überprüfen Sie den Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
-|8008|TenantConsentRequired|Befolgen Sie [diese Anleitung](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service), um die Einwilligung für Ihren Mandanten zu erteilen.|
+|8008|TenantConsentRequired|Befolgen Sie [diese Anleitung](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop), um die Einwilligung für Ihren Mandanten zu erteilen.|
 
 ### <a name="external-connection-error-codes"></a>Externe Verbindung: Fehlercodes
 

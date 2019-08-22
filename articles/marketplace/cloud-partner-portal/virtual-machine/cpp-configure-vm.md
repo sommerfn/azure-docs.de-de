@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654035"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880363"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurieren der in Azure gehosteten VM
 
@@ -70,7 +70,7 @@ Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum 
 
 ### <a name="linux"></a>Linux
 
-Mit dem folgenden aus zwei Schritten bestehenden Prozess wird eine Linux-VM generalisiert und als separate VM erneut bereitgestellt.  Weitere Informationen finden Sie unter [Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD](../../../virtual-machines/linux/capture-image.md). 
+Mit dem folgenden aus zwei Schritten bestehenden Prozess wird eine Linux-VM generalisiert und als separate VM erneut bereitgestellt. Diese beiden Schritte bilden lediglich die Grundlagen des Prozesses. Weitere Informationen zu diesen beiden Schritten und ihren Gründen finden Sie unter [Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD](../../../virtual-machines/linux/capture-image.md). Zum Erstellen der VHD für Ihr Azure Marketplace-Angebot müssen Sie nur die Schritte bis zum Abschnitt „Bereitstellen eines virtuellen Computers anhand des erfassten Images“ ausführen.
 
 #### <a name="remove-the-azure-linux-agent"></a>Entfernen des Azure Linux-Agents
 1.  Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrer Linux-VM her.
@@ -95,4 +95,4 @@ Die Erstellung von Kopien einer VM ist häufig nützlich, um Sicherungen zu erst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Ihre VM konfiguriert wurde, können Sie [einen virtuellen Computer über eine virtuelle Festplatte bereitstellen](./cpp-deploy-vm-vhd.md).
+Nachdem Ihre VM generalisiert, deren Zuordnung aufgehoben und ein Image der VM erstellt wurde, sind Sie bereit, [einen virtuellen Computer von einer virtuellen Festplatte aus bereitzustellen](./cpp-deploy-vm-vhd.md).

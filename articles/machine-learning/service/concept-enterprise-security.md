@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780899"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946407"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Unternehmenssicherheit für Azure Machine Learning Service
 
 In diesem Artikel lernen Sie Sicherheitsfeatures kennen, die mit Azure Machine Learning Service zur Verfügung stehen.
 
-Wenn Sie einen Clouddienst verwenden, sollten Sie die bewährte Methode anwenden, den Zugriff auf die Benutzer zu beschränken, die ihn benötigen. Dies beginnt damit, das vom Dienst verwendete Authentifizierungs- und Autorisierungsmodell zu verstehen. Sie sollten auch den Zugriff auf das Netzwerk einschränken oder Ressourcen in Ihrem lokalen Netzwerk sicher mit denen in der Cloud verknüpfen. Die Datenverschlüsselung ist auch entscheidend, sowohl im Ruhezustand als auch während des Verschiebens der Daten zwischen Diensten. Schließlich müssen Sie in der Lage sein, den Dienst zu überwachen und ein Überwachungsprotokoll aller Aktivitäten zu erstellen.
+Wenn Sie einen Clouddienst verwenden, sollten Sie die bewährte Methode anwenden, den Zugriff auf die Benutzer zu beschränken, die ihn benötigen. Dies beginnt damit, das vom Dienst verwendete Authentifizierungs- und Autorisierungsmodell zu verstehen. Sie sollten auch den Zugriff auf das Netzwerk einschränken oder Ressourcen in Ihrem lokalen Netzwerk sicher mit der Cloud verknüpfen. Die Datenverschlüsselung ist auch entscheidend, sowohl im Ruhezustand als auch während des Verschiebens der Daten zwischen Diensten. Schließlich müssen Sie in der Lage sein, den Dienst zu überwachen und ein Überwachungsprotokoll aller Aktivitäten zu erstellen.
 
 ## <a name="authentication"></a>Authentication
 
@@ -29,7 +29,7 @@ Multi-Factor Authentication wird unterstützt, wenn Azure Active Directory (Azur
 
 * Der Client meldet sich bei Azure AD an und ruft das Azure Resource Manager-Token ab.  Benutzer und Dienstprinzipale werden vollständig unterstützt.
 * Der Client präsentiert das Token dem Azure Resource Manager und allen Azure Machine Learning-Diensten.
-* Azure Machine Learning Service stellt ein Azure Machine Learning-Token für das Benutzercompute bereit. Beispiel: Machine Learning Compute. Dieses Azure Machine Learning-Token wird nach Abschluss der Ausführung vom Benutzercompute für einen Rückruf in Azure Machine Learning Service (beschränkt den Bereich auf den Arbeitsbereich) verwendet.
+* Azure Machine Learning Service stellt ein Azure Machine Learning-Token für das Benutzercompute bereit. Beispiel: Machine Learning Compute. Dieses Token wird nach Abschluss der Ausführung vom Benutzercompute für einen Rückruf in Azure Machine Learning Service (beschränkt den Bereich auf den Arbeitsbereich) verwendet.
 
 ![Screenshot zeigt Funktionsweise der Authentifizierung in Azure Machine Learning Service](./media/enterprise-readiness/authentication.png)
 
@@ -159,8 +159,8 @@ Alle Containerimages in Ihrer Registrierung (ACR) werden im Ruhezustand verschl�
 
 #### <a name="machine-learning-compute"></a>Machine Learning Compute
 
-Der Betriebssystem-Datenträger wird für jeden Computeknoten in Azure Storage gespeichert und mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning Service verschlüsselt. Dieses Compute ist kurzlebig, und Cluster werden in der Regel zentral herunterskaliert, wenn keine Ausführungen in der Warteschlange stehen. Die Bereitstellung des zugrunde liegenden virtuellen Computers wird aufgehoben und der Betriebssystem-Datenträger gelöscht. Die Azure-Datenträgerverschlüsselung wird für den Betriebssystem-Datenträger nicht unterstützt.
-Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträger für Betriebssystem-Vorgänge. Dieser Datenträger kann auch optional zum Bereitstellen von Trainingsdaten verwendet werden. Dieser Datenträger ist nicht verschlüsselt.
+Der Betriebssystem-Datenträger wird für jeden Computeknoten in Azure Storage gespeichert und mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning Service verschlüsselt. Dieses Computeziel ist kurzlebig, und Cluster werden in der Regel zentral herunterskaliert, wenn keine Ausführungen in der Warteschlange stehen. Die Bereitstellung des zugrunde liegenden virtuellen Computers wird aufgehoben und der Betriebssystem-Datenträger gelöscht. Die Azure-Datenträgerverschlüsselung wird für den Betriebssystem-Datenträger nicht unterstützt.
+Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträger für Betriebssystem-Vorgänge. Dieser Datenträger kann auch optional zum Bereitstellen von Trainingsdaten verwendet werden. Der Datenträger ist nicht verschlüsselt.
 Weitere Informationen zur Verschlüsselung ruhender Daten in Azure finden Sie unter [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
@@ -181,13 +181,30 @@ Jeder Arbeitsbereich verfügt über eine zugeordnete, vom System zugewiesene ver
 
 ## <a name="monitoring"></a>Überwachung
 
-Benutzer können das Aktivitätsprotokoll unter dem Arbeitsbereich anzeigen, um die verschiedenen Vorgänge zu sehen, die für den Arbeitsbereich ausgeführt werden, und die grundlegenden Informationen wie den Namen des Vorgangs, wodurch das Ereignis initiiert wurde, den Zeitstempel usw. zu erhalten.
+### <a name="metrics"></a>metrics
+
+Azure Monitor-Metriken können verwendet werden, um Metriken für Ihren Azure Machine Learning-Dienstarbeitsbereich anzuzeigen und zu überwachen. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich aus, und verwenden Sie dann den Link __Metriken__.
+
+![Screenshot, der Beispielmetriken für einen Arbeitsbereich zeigt.](./media/enterprise-readiness/workspace-metrics.png)
+
+Metriken umfassen Informationen zu Ausführungen, Bereitstellung und Registrierungen.
+
+Weitere Informationen finden Sie unter [Azure Monitor-Metriken](/azure/azure-monitor/platform/data-platform-metrics).
+
+### <a name="activity-log"></a>Aktivitätsprotokoll
+
+Sie können das Aktivitätsprotokoll unter dem Arbeitsbereich anzeigen, um die verschiedenen Vorgänge zu sehen, die für den Arbeitsbereich ausgeführt werden, und die grundlegenden Informationen wie den Namen des Vorgangs, wodurch das Ereignis initiiert wurde, den Zeitstempel usw. zu erhalten.
 
 Der folgende Screenshot zeigt das Aktivitätsprotokoll für einen Arbeitsbereich:
 
 ![Screenshot zeigt Aktivitätsprotokoll unter einem Arbeitsbereich](./media/enterprise-readiness/workspace-activity-log.png)
 
-Details der Bewertungsanforderung werden in AppInsights gespeichert, das während des Erstellens des Arbeitsbereichs im Abonnement des Benutzers erstellt wird. Dies beinhaltet Felder wie HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration usw.
+Details der Bewertungsanforderung werden in Application Insight gespeichert, das während des Erstellens des Arbeitsbereichs im Abonnement des Benutzers erstellt wird. Protokollierte Informationen beinhalten Felder wie HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration usw.
+
+> [!IMPORTANT]
+> Einige Aktionen innerhalb des Arbeitsbereichs Azure Machine Learning protokollieren keine Informationen im Aktivitätsprotokoll. Beispiele sind das Starten einer Trainingsausführung oder das Registrieren eines Modells.
+>
+> Einige dieser Aktionen werden im Bereich __Activities__ (Aktivitäten) Ihres Arbeitsbereichs angezeigt, aber es wird nicht angegeben, wer die Aktivität initiiert hat.
 
 ## <a name="data-flow-diagram"></a>Datenflussdiagramm
 
@@ -208,7 +225,7 @@ Andere Computes, die einem Arbeitsbereich (Azure Kubernetes Service, VM usw.) an
 ### <a name="save-source-code-training-scripts"></a>Speichern des Quellcodes (Trainingsskripts)
 
 Das folgende Diagramm zeigt den Workflow der Codemomentaufnahme.
-Mit einem Arbeitsbereich von Azure Machine Learning Service sind Verzeichnisse (Experimente) verknüpft, die den Quellcode (Trainingsskripts) enthalten.  Diese werden auf dem lokalen Computer des Kunden und in der Cloud (in Azure Blob Storage unter dem Abonnement des Kunden) gespeichert. Diese Codemomentaufnahmen werden für die Ausführung oder Überprüfung für die Verlaufsüberwachung verwendet.
+Mit einem Arbeitsbereich von Azure Machine Learning Service sind Verzeichnisse (Experimente) verknüpft, die den Quellcode (Trainingsskripts) enthalten.  Diese Skripts werden auf dem lokalen Computer des Kunden und in der Cloud (in Azure Blob Storage unter dem Abonnement des Kunden) gespeichert. Die Codemomentaufnahmen werden für die Ausführung oder Überprüfung für die Verlaufsüberwachung verwendet.
 
 ![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/code-snapshot.png)
 
@@ -221,12 +238,12 @@ Das folgende Diagramm zeigt den Trainingsworkflow.
 * Sie können entweder ein verwaltetes Compute (z.B. Machine Learning Compute) oder nicht verwaltetes Compute (z.B. VM) auswählen, um Ihre Trainingsaufträge auszuführen. Der Datenfluss wird für beide der folgenden Szenarien erläutert:
 * (VM/HDInsight – Zugriff erfolgt unter Verwendung von SSH-Anmeldeinformationen in Key Vault im Microsoft-Abonnement) Azure Machine Learning Service führt Verwaltungscode auf dem Computeziel aus, der Folgendes bewirkt:
 
-   1. Vorbereiten der Umgebung (Hinweis: Docker ist ebenfalls eine Option für „VM“ und „Lokal“. In den folgenden Schritten für Machine Learning Compute erfahren Sie, wie die Ausführung eines Experiments in einem Docker-Container funktioniert.)
+   1. Vorbereiten der Umgebung (Docker ist ebenfalls eine Option für VM und lokal. In den folgenden Schritten für Machine Learning Compute erfahren Sie, wie die Ausführung eines Experiments in einem Docker-Container funktioniert.)
    1. Herunterladen des Codes
    1. Einrichten der Umgebungsvariablen und Konfigurationen
    1. Ausführen des Benutzerskripts (oben erwähnte Codemomentaufnahme)
 
-* (Machine Learning Compute – Zugriff erfolgt mit vom Arbeitsbereich verwalteter Identität) Beachten Sie: Machine Learning Compute ist ein verwaltetes Compute, d.h. es wird von Microsoft verwaltet – daraus resultiert, dass es im Rahmen eines Microsoft-Abonnements ausgeführt wird.
+* (Machine Learning Compute – Zugriff erfolgt mit vom Arbeitsbereich verwalteter Identität) Da Machine Learning Compute ein verwaltetes Compute ist, d.h. es wird von Microsoft verwaltet – resultiert daraus, dass es im Rahmen eines Microsoft-Abonnements ausgeführt wird.
 
    1. Starten der Docker-Remotekonstruktion (sofern erforderlich)
    1. Schreiben von Verwaltungscode in die Azure-Dateifreigabe des Benutzers
@@ -247,7 +264,7 @@ Beachten Sie folgende Details:
 * Der Benutzer erstellt das Image mit Modell, Bewertungsdatei und anderen Modellabhängigkeiten
 * Das Docker-Image wird erstellt und in ACR gespeichert
 * Der Webdienst wird auf dem Computeziel (ACI/AKS) mithilfe des oben erstellten Image bereitgestellt
-* Details der Bewertung werden in AppInsights gespeichert, das im Abonnement des Benutzers enthalten ist
+* Details der Bewertung werden in Application Insight gespeichert, das im Abonnement des Benutzers enthalten ist
 * Telemetriedaten werden auch an Microsoft/Azure-Abonnement übertragen
 
 ![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/inferencing.png)

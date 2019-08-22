@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6fe08c15de7ea388a5194054791eb394dc2f6e01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840604"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854524"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -94,7 +94,7 @@ if ($installType -ne "Server Core") {
 Die Bereitstellung der Azure-Dateisynchronisierung beginnt mit der Platzierung einer **Speichersynchronisierungsdienst**-Ressource in einer Ressourcengruppe Ihres ausgewählten Abonnements. Sie sollten von diesen Ressourcen so wenig wie möglich bereitstellen. Sie schaffen eine Vertrauensstellung zwischen Ihren Servern und dieser Ressource, und ein Server kann nur bei einem Speichersynchronisierungsdienst registriert werden. Darum sollten Sie so viele Speichersynchronisierungsdienste bereitstellen, wie Sie benötigen, um Gruppen von Servern zu trennen. Bedenken Sie, dass Server aus verschiedenen Speichersynchronisierungsdiensten nicht miteinander synchronisiert werden können.
 
 > [!Note]
-> Der Speichersynchronisierungsdienst hat Zugriffsberechtigungen aus dem Abonnement und der Ressourcengruppe geerbt, wo er bereitgestellt worden ist. Sie sollten sorgfältig überprüfen, wer darauf zugreifen darf. Entitäten mit Schreibzugriff können die Synchronisierung neuer Sätze von Dateien aus Server starten, die bei diesem Speichersynchronisierungsdienst registriert sind, und bewirken, dass Daten in Azure-Speicher übertragen werden, auf den sie zugreifen können.
+> Der Speichersynchronisierungsdienst hat Zugriffsberechtigungen aus dem Abonnement und der Ressourcengruppe geerbt, in der er bereitgestellt wurde. Sie sollten sorgfältig überprüfen, wer darauf zugreifen darf. Entitäten mit Schreibzugriff können die Synchronisierung neuer Sätze von Dateien aus Server starten, die bei diesem Speichersynchronisierungsdienst registriert sind, und bewirken, dass Daten in Azure-Speicher übertragen werden, auf den sie zugreifen können.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azure-Portal](https://portal.azure.com/), klicken Sie auf *Ressource erstellen*, und suchen Sie dann nach „Azure-Dateisynchronisierung“. Wählen Sie in den Suchergebnissen **Azure-Dateisynchronisierung** aus, und klicken Sie auf **Erstellen**, um die Registerkarte **Speichersynchronisierung bereitstellen** zu öffnen.

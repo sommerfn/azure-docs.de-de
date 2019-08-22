@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a7ad0f3be754029c654b04d19750aab7bbcd210d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621852"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933637"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Fehlerbehebung bei der Paketausführung in der SSIS-Integrationslaufzeit
 
@@ -128,12 +128,19 @@ Eine mögliche Ursache ist, dass der Benutzername oder das Passwort mit aktivier
 
 Stellen Sie sicher, dass Sie die Authentifizierungsmethode von Connection Manager nicht als **Active Directory-Passwort-Authentifizierung** konfigurieren, wenn der Parameter *ConnectUsingManagedIdentity* auf **True**steht. Sie können es stattdessen als **SQL-Authentifizierung** konfigurieren, die ignoriert wird, wenn *ConnectUsingManagedIdentity* gesetzt ist.
 
+### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Unerwartetes Auslösen der Ausführung mehrerer Pakete
+
+* Mögliche Ursache und empfohlene Maßnahme:
+  * Eine Aktivität in einer gespeicherten ADF-Prozedur wird verwendet, um die Ausführung von SSIS-Paketen auszulösen. Der t-sql-Befehl kann auf ein vorübergehendes Problem stoßen und die Wiederholung auslösen, was zu einer Ausführung mehrerer Pakete führen kann.
+  * Verwenden Sie stattdessen die Aktivität ExecuteSSISPackage, mit der sichergestellt wird, dass die Paketausführung nicht erneut erfolgt, es sei denn, der Benutzer hat in der Aktivität die Anzahl der Wiederholungen festgelegt. Details finden Sie unter [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+
 ### <a name="package-execution-takes-too-long"></a>Paketausführung dauert zu lange
 
 Hier sind mögliche Ursachen und empfohlenen Aktionen:
+
 * Es wurden zu viele Paketausführungen auf der SSIS-Integrationslaufzeit eingeplant. Alle diese Programme werden in einer Warteschlange auf ihre Ausführung warten.
-  * Bestimmen Sie das Maximum mit dieser Formel: 
-    
+  * Bestimmen Sie das Maximum mit dieser Formel:
+
     Max. parallele Ausführungsanzahl pro IR = Knotenanzahl * Max. parallele Ausführung pro Knoten
   * Informationen zum Einstellen der Knotenanzahl und der maximalen parallelen Ausführung pro Knoten finden Sie unter [Erstellen einer Azure-SSIS-Integrationslaufzeit in der Azure Data Factory](create-azure-ssis-integration-runtime.md).
 * Die SSIS-Integrationslaufzeit wird gestoppt oder hat einen fehlerhaften Status. Wie Sie den Status und die Fehler der SSIS-Integrationslaufzeit überprüfen können, erfahren Sie unter [Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime).

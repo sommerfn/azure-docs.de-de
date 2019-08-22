@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774566"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941819"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurieren eines gemeinsamen Image-Katalogs in Azure DevTest Labs
 DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:
@@ -36,7 +36,7 @@ Wenn Sie eine große Anzahl verwalteter Images haben, die Sie pflegen müssen un
 ## <a name="considerations"></a>Überlegungen
 - Sie können jeweils nur einen Katalog mit freigegebenen Images an ein Lab anfügen. Wenn Sie einen anderen Katalog anfügen möchten, müssen Sie zuvor den vorhandenen Katalog trennen. 
 - DevTest Labs bietet zurzeit keine Möglichkeit, Images über das Lab in den Katalog hochzuladen. 
-- Wenn Sie eine VM mit einem Image aus dem Katalog mit freigegebenen Images erstellen, verwendet DevTest Labs immer die aktuelle veröffentlichte Version des Images.
+- Wenn Sie eine VM mit einem Image aus dem Katalog mit freigegebenen Images erstellen, verwendet DevTest Labs immer die aktuelle veröffentlichte Version des Images. Wenn ein Image jedoch mehrere Versionen aufweist, kann der Benutzer während der Erstellung des virtuellen Computers auf der Registerkarte „Erweiterte Einstellungen“ einen Computer aus einer früheren Version erstellen.  
 - DevTest Labs versucht sicherzustellen, dass der Katalog mit freigegebenen Images die Images automatisch in die Region des Labs repliziert, dies ist jedoch nicht immer möglich. Stellen Sie daher sicher, dass die Images bereits in die Region des Labs repliziert wurden, damit es nicht zu Problemen kommt, wenn Benutzer diese Images zum Erstellen von VMs verwenden.
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals

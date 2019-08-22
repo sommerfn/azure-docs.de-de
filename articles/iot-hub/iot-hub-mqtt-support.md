@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9b1f0042f501cefc99343d53bbf2ad39f0ae1f4c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640465"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946342"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -77,7 +77,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > Bei Verwendung der X.509-Zertifikatauthentifizierung sind keine SAS-Tokenkennwörter erforderlich. Weitere Informationen finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md).
+  > Bei Verwendung der X.509-Zertifikatauthentifizierung sind keine SAS-Tokenkennwörter erforderlich. Weitere Informationen finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md), und befolgen Sie die [nachstehenden](#tlsssl-configuration) Codeanweisungen.
 
   Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT-Hub-Sicherheitstoken](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) im Abschnitt zu Geräten.
 
@@ -159,7 +159,7 @@ Implementieren Sie anschließend den Client in einem Python-Skript. Ersetzen Sie
 from paho.mqtt import client as mqtt
 import ssl
 
-path_to_root_cert = "<local path to digicert.cer>"
+path_to_root_cert = "<local path to digicert.cer file>"
 device_id = "<device id from device registry>"
 sas_token = "<generated SAS token>"
 iot_hub_name = "<iot hub name>"
@@ -199,6 +199,26 @@ client.loop_forever()
 Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt.
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
+Um sich mit einem Gerätezertifikat zu authentifizieren, aktualisieren Sie den obigen Codeausschnitt mit den folgenden Änderungen (siehe [Abrufen eines X.509-Zertifizierungsstellenzertifikats](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate), um mehr zur Vorbereitung der zertifikatsbasierten Authentifizierung zu erfahren):
+
+```python
+# Create the client as before
+# ...
+
+# Set the username but not the password on your client
+client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
+                       device_id + "/?api-version=2018-06-30", password=None)
+
+# Set the certificate and key paths on your client
+cert_file = "<local path to your certificate file>"
+key_file = "<local path to your device key file>"
+client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+
+# Connect as before
+client.connect(iot_hub_name+".azure-devices.net", port=8883)
+```
 
 ## <a name="sending-device-to-cloud-messages"></a>Senden von D2C-Nachrichten
 

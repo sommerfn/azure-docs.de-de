@@ -2,7 +2,7 @@
 title: Abfragebeispiele mit „einfacher“ Suchsyntax – Azure Search
 description: Enthält einfache Abfragebeispiele für die Volltextsuche, Filtersuche, geografische Suche, Facettensuche und andere Abfragezeichenfolgen, die zum Abfragen eines Azure Search-Index verwendet werden.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653525"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647619"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Abfragebeispiele mit „einfacher“ Suchsyntax in Azure Search
 

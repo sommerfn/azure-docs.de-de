@@ -2,19 +2,19 @@
 title: Verwalten gleichzeitiger Schreibvorgänge bei Ressourcen – Azure Search
 description: Verwenden Sie die optimistische Nebenläufigkeit, um während der Ausführung von Update- und Löschvorgängen Konflikte in Azure Search-Indizes, Indexern und Datenquellen zu vermeiden.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7e569fa30727f2df7411eee5fa6d48f9b9454460
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025339"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656720"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Verwalten der Parallelität in Azure Search
 

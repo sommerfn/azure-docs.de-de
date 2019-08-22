@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 1c60c4b868854952771ba297107904762a2357d8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032987"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896963"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI (Vorschau)
 
@@ -49,7 +49,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](/role-based-access-control/built-in-roles).
+Weitere Informationen zu den integrierten Rollen, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Verwenden von Azure AD-Anmeldeinformationen zum Sichern einer SAS
 
@@ -63,7 +63,7 @@ Beim Erstellen einer SAS für die Benutzerdelegierung sind `--auth-mode login` u
 
 Um eine SAS für die Benutzerdelegierung für einen Container mit der Azure CLI zu erstellen, verwenden Sie den Befehl [az storage container generate-sas](/cli/azure/storage/container#az-storage-container-generate-sas).
 
-Zu den unterstützten Berechtigungen für eine SAS für die Benutzerdelegierung für einen Container zählen „Add“ (Hinzufügen), „Create“ (Erstellen), „Delete“ (Löschen), „List (Auflisten), „Read“ (Lesen) und „Write“ (Schreiben). Berechtigungen können einzeln oder kombiniert angegeben werden. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-a-user-delegation-sas).
+Zu den unterstützten Berechtigungen für eine SAS für die Benutzerdelegierung für einen Container zählen „Add“ (Hinzufügen), „Create“ (Erstellen), „Delete“ (Löschen), „List (Auflisten), „Read“ (Lesen) und „Write“ (Schreiben). Berechtigungen können einzeln oder kombiniert angegeben werden. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-user-delegation-sas).
 
 Im folgenden Beispiel wird eine SAS für die Benutzerdelegierung für einen Container zurückgegeben. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -87,7 +87,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 Um eine SAS für die Benutzerdelegierung für ein Blob mit der Azure CLI zu erstellen, verwenden Sie den Befehl [az storage blob generate-sas](/cli/azure/storage/blob#az-storage-blob-generate-sas).
 
-Zu den unterstützten Berechtigungen für eine SAS für die Benutzerdelegierung für ein Blob zählen „Add“ (Hinzufügen), „Create“ (Erstellen), „Delete“ (Löschen), „Read“ (Lesen) und „Write“ (Schreiben). Berechtigungen können einzeln oder kombiniert angegeben werden. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-a-user-delegation-sas).
+Zu den unterstützten Berechtigungen für eine SAS für die Benutzerdelegierung für ein Blob zählen „Add“ (Hinzufügen), „Create“ (Erstellen), „Delete“ (Löschen), „Read“ (Lesen) und „Write“ (Schreiben). Berechtigungen können einzeln oder kombiniert angegeben werden. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-user-delegation-sas).
 
 Die folgende Syntax gibt eine SAS für die Benutzerdelegierung für ein Blob zurück. Im Beispiel wird der `--full-uri`-Parameter angegeben, der den Blob-URI mit angefügtem SAS-Token zurückgibt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -115,5 +115,5 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Vorgang zum Abrufen eines Benutzerdelegierungsschlüssels](/rest/api/storageservices/get-user-delegation-key)
