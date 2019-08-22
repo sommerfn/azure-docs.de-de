@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618401"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941950"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -175,7 +175,7 @@ Ja. Für die Dokumentation der Konformität hat Microsoft ein führendes Unterne
 
 **Gilt die Funktion nur für Blockblobs oder auch für Seiten- und Anfügeblobs?**
 
-Unveränderlicher Speicher kann mit jedem Blobtyp verwendet werden, doch Sie sollten ihn vor allem für Blockblobs verwenden. Im Gegensatz zu Blockblobs müssen Seiten- und Anfügeblobs außerhalb eines WORM-Containers erstellt und dann hineinkopiert werden. Nach dem Kopieren dieser Blobs in einen WORM-Container sind keine weiteren *Anfügevorgänge* an ein Anfügeblob oder Änderungen eines Seitenblobs zulässig.
+Unveränderlicher Speicher kann mit einem beliebigen Blobtyp verwendet werden, da er auf der Containerebene festgelegt wird. Für Container, in denen in erster Linie Blockblobs gespeichert werden, empfehlen wir jedoch die Verwendung von WORM. Im Gegensatz zu Blockblobs müssen neue Seiten- und Anfügeblobs außerhalb eines WORM-Containers erstellt und dann hineinkopiert werden. Nach dem Kopieren dieser Blobs in einen WORM-Container sind keine weiteren *Anfügevorgänge* an ein Anfügeblob oder Änderungen eines Seitenblobs zulässig. Deshalb wird dringend davon abgeraten, eine WORM-Richtlinie für einen Container festzulegen, in dem VHDs (Seitenblobs) für aktive virtuelle Computer gespeichert werden, da dadurch der VM-Datenträger gesperrt wird.
 
 **Muss ich ein neues Speicherkonto erstellen, um dieses Feature zu nutzen?**
 

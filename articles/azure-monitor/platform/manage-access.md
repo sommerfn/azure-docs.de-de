@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839315"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881429"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 
@@ -32,7 +32,17 @@ In diesem Artikel wird erläutert, wie der Zugriff auf Protokolle verwaltet wird
 
 * Gewähren des Zugriffs für Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen, mithilfe von Azure RBAC
 
-## <a name="define-access-control-mode-in-azure-portal"></a>Definieren des Zugriffssteuerungsmodus im Azure-Portal
+## <a name="define-access-control-mode"></a>Definieren des Zugriffssteuerungsmodus
+
+Sie können den für einen Arbeitsbereich konfigurierten Zugriffssteuerungsmodus über das Azure-Portal oder mit Azure PowerShell anzeigen.  Diese Einstellung kann mit einer der folgenden unterstützten Methoden geändert werden:
+
+* Azure-Portal
+
+* Azure PowerShell
+
+* Azure Resource Manager-Vorlage
+
+### <a name="configure-from-the-azure-portal"></a>Konfigurieren über das Azure-Portal
 
 Sie können den aktuellen Zugriffssteuerungsmodus für den Arbeitsbereich auf der Seite **Übersicht** für den Arbeitsbereich im Menü **Log Analytics-Arbeitsbereich** anzeigen. 
 
@@ -45,7 +55,7 @@ Sie können diese Einstellung auf der Seite **Eigenschaften** des Arbeitsbereich
 
 ![Ändern des Arbeitsbereichzugriffsmodus](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>Definieren des Zugriffssteuerungsmodus mithilfe von PowerShell
+### <a name="configure-using-powershell"></a>Konfigurieren mithilfe von PowerShell
 
 Verwenden Sie den folgenden Befehl, um den Zugriffssteuerungsmodus für alle Arbeitsbereiche im Abonnement zu überprüfen:
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>Definieren des Zugriffsmodus mithilfe einer Resource Manager-Vorlage
+### <a name="configure-using-a-resource-manager-template"></a>Konfigurieren mithilfe einer Resource Manager-Vorlage
 
 Um den Zugriffsmodus in einer Azure Resource Manager-Vorlage zu konfigurieren, legen Sie das Featureflag **enableLogAccessUsingOnlyResourcePermissions** für den Arbeitsbereich auf einen der folgenden Werte fest.
 

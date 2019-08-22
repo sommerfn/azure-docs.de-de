@@ -4,14 +4,14 @@ description: Beantwortet häufig gestellte Fragen zu Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372489"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856274"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -71,7 +71,8 @@ Die Appliance stellt mithilfe der von Ihnen in der Appliance angegebenen Anmelde
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Kann ich eine Appliance mit mehreren vCenter-Servern verbinden?
 
-Ja, eine einzelne Azure Migrate-Appliance kann für die Ermittlung mehrerer vCenter-Server verwendet werden, jedoch nicht gleichzeitig. Sie müssen die Ermittlungen nacheinander durchführen.
+Nein. Zwischen einer Appliance und vCenter Server besteht eine 1: 1-Zuordnung. Wenn Sie virtuelle Computer in mehreren vCenter Server-Instanzen ermitteln müssen, müssen Sie mehrere Appliances bereitstellen. 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Ich habe meine Computergröße geändert. Kann ich eine Bewertung erneut ausführen?
 

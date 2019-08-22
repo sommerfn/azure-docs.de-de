@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 923ecae9dc649b8f5cdcfd447b78fdec0805927a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483279"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879166"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Schützen Ihrer verwalteten Azure AD Domain Services-Domäne
 Dieser Artikel unterstützt Sie beim Schützen Ihrer verwalteten Domäne. Sie können die Verwendung unsicherer Verschlüsselungssammlungen und die Synchronisierung von NTLM-Anmeldeinformationshashes deaktivieren.
@@ -36,9 +36,12 @@ Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure PowerShell-Mod
 
 ## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>Deaktivieren von schwachen Verschlüsselungssammlungen und der Synchronisierung von NTLM-Anmeldeinformationshashes
 Verwenden Sie das folgende PowerShell-Skript für folgende Aufgaben:
+
 1. Deaktivieren der NTLM v1-Unterstützung für die verwaltete Domäne
 2. Deaktivieren der Synchronisierung von NTLM-Kennworthashes aus Ihrer lokalen AD-Instanz
 3. Deaktivieren von TLS v1 für die verwaltete Domäne
+
+Erhalten Sie bei Ausführung des Befehls `Get-AzResource` einen Fehler mit dem Hinweis, dass die Ressource *Microsoft.AAD/DomainServices* nicht vorhanden ist, [erhöhen Sie die Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](../role-based-access-control/elevate-access-global-admin.md).
 
 ```powershell
 // Login to your Azure AD tenant

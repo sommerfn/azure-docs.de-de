@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5fdbd8092abcc51fc03e8b00106b7e25ec4be905
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a152f32ef7d68686539b7d6edee57db8a5da9553
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839379"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976244"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -102,7 +102,7 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
     </script>
     ```
 
-    Weitere Informationen finden Sie unter [Authentifizierung mit Azure Maps](azure-maps-authentication.md).
+    Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md).
 
 6. Es kann sinnvoll sein, dem Kopf der Seite die folgenden optionalen Metatagelemente hinzuzufügen:
 
@@ -214,3 +214,11 @@ Erfahren Sie, wie Sie den Stil einer Karte auswählen:
 
 > [!div class="nextstepaction"]
 > [Auswählen eines Kartenstils](choose-map-style.md)
+
+So fügen Sie Ihrer Karte weitere Daten hinzu:
+
+> [!div class="nextstepaction"]
+> [Erstellen einer Karte](map-create.md)
+
+> [!div class="nextstepaction"]
+> [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)

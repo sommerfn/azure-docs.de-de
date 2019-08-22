@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 293af600f4bd58efe8383d019ca3d17f724f242c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689356"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933335"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 Dieser Artikel erläutert die Schritte zum Konfigurieren von Berichten für Azure Backup mit dem Recovery Services-Tresor. Außerdem erfahren Sie, wie Sie mit Power BI auf Berichte zugreifen. Nachdem Sie diese Schritte abgeschlossen haben, können Sie direkt Power BI aufrufen, um Berichte anzuzeigen, anzupassen und zu erstellen.
@@ -37,7 +37,7 @@ Laden Sie die aktuelle App (Version 1.8) herunter, um dieses Problem zu vermeide
 - Registrieren Sie den Ressourcenanbieter **Microsoft.insights**, falls er noch nicht registriert ist. Verwenden Sie die Abonnements für das Speicherkonto und den Recovery Services-Tresor, damit die Berichtsdaten an das Speicherkonto übermittelt werden können. Öffnen Sie zum Registrieren das Azure-Portal, wählen Sie **Abonnement** > **Ressourcenanbieter** aus, und markieren Sie den gewünschten Anbieter.
 
 ## <a name="configure-storage-account-for-reports"></a>Konfigurieren des Speicherkontos für Berichte
-Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tresor über das Azure-Portal konfigurieren. Diese Konfiguration wird einmalig ausgeführt. Wenn das Speicherkonto konfiguriert wurde, können Sie direkt Power BI öffnen, um das Inhaltspaket anzuzeigen und Berichte zu verwenden.
+Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tresor über das Azure-Portal konfigurieren. Diese Konfiguration wird einmalig ausgeführt. Wenn das Speicherkonto konfiguriert wurde, können Sie direkt Power BI öffnen, um die Vorlagen-App anzuzeigen und Berichte zu verwenden.
 
 1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, fahren Sie mit dem nächsten Schritt fort. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, wählen Sie im Azure-Portal **Alle Dienste** aus.
 
@@ -80,11 +80,11 @@ Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfigu
 Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeitsbereich, und führen Sie die folgenden Schritte aus.
 
 1. Melden Sie sich bei Power BI [an](https://powerbi.microsoft.com/landing/signin/).
-2. Wählen Sie **Daten abrufen** aus. Wählen Sie unter **Weitere Möglichkeiten zum Erstellen eigener Inhalte** die Option **Dienstinhaltspakete** aus. Befolgen Sie die Schritte in der [Power BI-Dokumentation zur Verbindungsherstellung mit einem Dienst](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+2. Navigieren Sie zu **Apps > Hiermit können Sie weitere Apps aus Microsoft AppSource abrufen.** . Befolgen Sie die Schritte in der [Power BI-Dokumentation zur Verbindungsherstellung mit einem Dienst](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
 
 3. Geben Sie in der Leiste **Suche** **Azure Backup** ein, und wählen Sie **Jetzt holen** aus.
 
-      ![Abrufen eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-get.png)
+      ![Abrufen der Vorlagen-App](./media/backup-azure-configure-reports/template-app-get.png)
 4. Geben Sie den Namen des Speicherkonto ein, das in Schritt 5 konfiguriert wurde, und wählen Sie **Weiter** aus.
 
     ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
@@ -96,11 +96,11 @@ Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeit
 
     ![Importieren eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
 
-    Nach Abschluss des Imports erscheint die Benachrichtigung **Erfolgreich**. Wenn viele Daten im Speicherkonto vorhanden sind, kann der Import des Inhaltspakets einige Zeit dauern.
+    Nach Abschluss des Imports erscheint die Benachrichtigung **Erfolgreich**. Wenn viele Daten im Speicherkonto vorhanden sind, kann der Import der Vorlagen-App einige Zeit dauern.
 
     ![Erfolgreicher Import des Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
 
-7. Wenn die Daten erfolgreich importiert wurden, wird das **Azure Backup**-Inhaltspaket im Navigationsbereich in **Apps** angezeigt. Unter **Dashboards**, **Berichte** und **Datasets** wird jetzt Azure Backup in der Liste angezeigt.
+7. Wenn die Daten erfolgreich importiert wurden, wird die **Azure Backup**-Vorlagen-App im Navigationsbereich unter **Apps** angezeigt. Unter **Dashboards**, **Berichte** und **Datasets** wird jetzt Azure Backup in der Liste angezeigt.
 
 8. Wählen Sie unter **Dashboards** **Azure Backup** aus. Daraufhin wird eine Reihe angehefteter Schlüsselberichte angezeigt.
 
@@ -117,10 +117,10 @@ Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeit
 | Fehlerdetails | Lösung |
 | --- | --- |
 | Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, öffnen Sie das Azure-Portal, und wählen Sie **Alle Dienste** > **Diagnoseeinstellungen** > **Recovery Services-Tresor** > **Einstellung bearbeiten** aus. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Wählen Sie diesmal im Feld **Name** die Option **Dienst** aus. Nun wird das konfigurierte Speicherkonto angezeigt. |
-|Nach dem Import des Azure Backup-Inhaltspakets in Power BI wird die Fehlermeldung „404: Container wurde nicht gefunden.“ angezeigt. | Wie bereits erwähnt, werden Berichte erst 24 Stunden nach ihrer Konfiguration im Recovery Services-Tresor korrekt in Power BI angezeigt. Wenn Sie vor Ablauf dieser 24 Stunden versuchen, auf die Berichte zuzugreifen, wird diese Fehlermeldung angezeigt, weil noch nicht alle Daten zum Anzeigen gültiger Berichte vorhanden sind. |
+|Nach dem Import der Azure Backup-Vorlagen-App in Power BI wird die Fehlermeldung „404: Container wurde nicht gefunden.“ angezeigt. | Wie bereits erwähnt, werden Berichte erst 24 Stunden nach ihrer Konfiguration im Recovery Services-Tresor korrekt in Power BI angezeigt. Wenn Sie vor Ablauf dieser 24 Stunden versuchen, auf die Berichte zuzugreifen, wird diese Fehlermeldung angezeigt, weil noch nicht alle Daten zum Anzeigen gültiger Berichte vorhanden sind. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das Speicherkonto konfiguriert und das Azure Backup-Inhaltspaket importiert haben, müssen Sie die Berichte anpassen und Berichte mithilfe eines Datenmodells zur Berichterstellung erstellen. Weitere Informationen finden Sie in den folgenden Artikeln.
+Nachdem Sie das Speicherkonto konfiguriert und die Azure Backup-Vorlagen-App importiert haben, müssen Sie die Berichte anpassen und Berichte mithilfe eines Datenmodells zur Berichterstellung erstellen. Weitere Informationen finden Sie in den folgenden Artikeln.
 
 * [Verwenden eines Datenmodells für die Azure Backup-Berichterstellung](backup-azure-reports-data-model.md)
 * [Filtern von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

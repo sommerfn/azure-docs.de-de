@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c76ad0739edea4c0541ace76ca2311453de71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30fd1ebf8a59c80764335be47c986ea77f5d1438
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963021"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879172"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -40,7 +40,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 | Error | Lösung |
 | --- | --- |
-| Im Azure-Portal wird unter Azure AD kein Abschnitt für die **Kennwortzurücksetzung** angezeigt. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD Premium- oder Basic-Lizenz zugewiesen wurde. <br> <br> Weisen Sie dem betreffenden Administratorkonto eine Lizenz zu. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
+| Im Azure-Portal wird unter Azure AD kein Abschnitt für die **Kennwortzurücksetzung** angezeigt. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Weisen Sie dem betreffenden Administratorkonto eine Lizenz zu. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
 | Mir wird eine bestimmte Konfigurationsoption nicht angezeigt. | Viele Benutzeroberflächenelemente werden erst angezeigt, wenn sie benötigt werden. Versuchen Sie, alle Optionen zu aktivieren, die angezeigt werden sollen. |
 | Die Registerkarte **Lokale Integration** wird nicht angezeigt. | Diese Option wird nur angezeigt, wenn Sie Azure AD Connect heruntergeladen und das Kennwortrückschreiben konfiguriert haben. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](../hybrid/how-to-connect-install-express.md). |
 
@@ -48,7 +48,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 | Error | Lösung |
 | --- | --- |
-| In der Überwachungsereigniskategorie **Self-Service-Kennwortverwaltung** werden keine Aktivitätstypen für die Kennwortverwaltung angezeigt. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD Premium- oder Basic-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
+| In der Überwachungsereigniskategorie **Self-Service-Kennwortverwaltung** werden keine Aktivitätstypen für die Kennwortverwaltung angezeigt. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
 | Benutzerregistrierungen werden mehrfach angezeigt. | Aktuell werden separat registrierte Daten bei der Benutzerregistrierung jeweils als separates Ereignis protokolliert. <br> <br> Wenn Sie diese Daten aggregieren und von flexibleren Darstellungsmöglichkeiten profitieren möchten, können Sie den Bericht herunterladen und die Daten als Pivottabelle in Excel öffnen.
 
 ## <a name="troubleshoot-the-password-reset-registration-portal"></a>Problembehandlung: Registrierungsportal für die Kennwortzurücksetzung
@@ -56,7 +56,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 | Error | Lösung |
 | --- | --- |
 | Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Legen Sie das Flag **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** oder **Alle** fest, und klicken Sie auf **Speichern**. |
-| Dem Benutzer ist keine Azure AD Premium- oder Basic-Lizenz zugewiesen. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD Premium- oder Basic-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
+| Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
 | Beim Verarbeiten der Anforderung ist ein Fehler aufgetreten. | Dieser Fehler kann verschiedene Ursachen haben, im Allgemeinen wird er jedoch entweder durch einen Dienstausfall oder einen Konfigurationsfehler verursacht. Falls dieser Fehler angezeigt wird und Auswirkungen auf Ihre Geschäftstätigkeit hat, wenden Sie sich an den Microsoft-Support, um zusätzliche Unterstützung zu erhalten. |
 
 ## <a name="troubleshoot-the-password-reset-portal"></a>Problembehandlung: Kennwortzurücksetzungsportal
@@ -64,7 +64,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 | Error | Lösung |
 | --- | --- |
 | Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. | Legen Sie das Flag **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** oder **Alle** fest, und klicken Sie auf **Speichern**. |
-| Dem Benutzer ist keine Azure AD Premium- oder Basic-Lizenz zugewiesen. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD Premium- oder Basic-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
+| Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
 | Die Kennwortzurücksetzung ist für das Verzeichnis zwar aktiviert, für den Benutzer wurden jedoch nicht alle oder fehlerhafte Authentifizierungsinformationen konfiguriert. | Vergewissern Sie sich, dass für den Benutzer ordnungsgemäß formatierte Kontaktdaten im Verzeichnis vorliegen, bevor Sie fortfahren. Weitere Informationen finden Sie unter [Von der Azure AD Self-Service-Kennwortzurücksetzung verwendete Daten](howto-sspr-authenticationdata.md). |
 | Die Kennwortzurücksetzung ist für das Verzeichnis zwar aktiviert, für den Benutzer ist jedoch nur ein einzelner Kontaktdatensatz hinterlegt, und die Richtlinie schreibt zwei Überprüfungsmethoden vor. | Stellen Sie sicher, dass für den Benutzer mindestens zwei ordnungsgemäß konfigurierte Kontaktmethoden vorhanden sind – beispielsweise eine Mobiltelefonnummer *und* eine geschäftliche Telefonnummer. |
 | Die Kennwortzurücksetzung ist für das Verzeichnis aktiviert, und der Benutzer ist ordnungsgemäß konfiguriert, kann aber nicht kontaktiert werden. | Dieses Problem kann durch einen vorübergehenden Dienstfehler oder durch falsche Kontaktdaten verursacht werden, die nicht ordnungsgemäß erkannt wurden. <br> <br> Wenn der Benutzer zehn Sekunden wartet, werden die Links „try again“ (Erneut versuchen) und „contact your administrator“ (Administrator kontaktieren) angezeigt. Wenn der Benutzer auf „try again“ (Erneut versuchen) klickt, wird der Aufruf wiederholt. Wenn der Benutzer auf „contact your administrator“ (Administrator kontaktieren) klickt, wird eine E-Mail an die zuständigen Administratoren gesendet, um eine Kennwortzurücksetzung für dieses Benutzerkonto anzufordern. |
@@ -275,7 +275,7 @@ Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Detai
    * Ist dies ein Benutzer mit Pass-Through-Authentifizierung?
    * Handelt es sich um einen Benutzer mit Kennworthashsynchronisierung?
    * Handelt es sich um einen reinen Cloudbenutzer?
-* **Lizenzierung**: Verfügt der Benutzer über eine Azure AD Premium- oder Azure AD Basic-Lizenz?
+* **Lizenzierung**: Ist dem Benutzer eine Azure AD-Lizenz zugewiesen?
 * **Anwendungsereignisprotokoll**: Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Neustarten des Azure AD Sync-Diensts"

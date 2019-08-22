@@ -15,10 +15,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67705764"
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung
@@ -33,15 +33,15 @@ Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten ber
 - Mit einer VIP unter einer externen IP-Adresse, die häufig als „externe ASE“ bezeichnet wird
 - Mit der VIP unter einer internen IP-Adresse, die häufig als ILB-ASE bezeichnet wird, da der interne Endpunkt ein interner Load Balancer (ILB) ist.
 
-In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersicht über die ASE finden Sie unter [Einführung in die App Service-Umgebung][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE].
+In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersicht über die ASE finden Sie unter [Einführung in die App Service-Umgebung][Intro]. Informationen zum Erstellen einer ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
 ## <a name="before-you-create-your-ase"></a>Bevor Sie Ihre ASE erstellen
 
 Nach dem Erstellen einer ASE können Sie folgende Elemente nicht mehr ändern:
 
 - Speicherort
-- Abonnement
-- Ressourcengruppe
+- Subscription
+- Resource group
 - Verwendetes VNET
 - Verwendetes Subnetz
 - Subnetzgröße
@@ -176,7 +176,7 @@ Wenn Sie eine eigenständige ASE erstellen, enthält sie keinerlei Elemente. Fü
 
 Sie können weiterhin Instanzen der ersten Version der App Service-Umgebung (ASEv1) erstellen. Um diesen Prozess zu starten, suchen Sie im Marketplace nach **App Service-Umgebung v1**. Eine solche ASE erstellen Sie auf die gleiche Weise wie eine eigenständige ASE. Nach Abschluss der Einrichtung verfügt Ihre ASEv1 über zwei Front-Ends und zwei Worker. Bei ASEv1 müssen Sie die Front-Ends und Worker verwalten. Diese werden beim Erstellen Ihrer App Service-Pläne nicht automatisch hinzugefügt. Die Front-Ends agieren als HTTP-/HTTPS-Endpunkte und senden Datenverkehr an die Worker. Die Worker sind die Rollen, die Ihre Apps hosten. Sie können die Anzahl von Front-Ends und Workern nach dem Erstellen der ASE anpassen. 
 
-Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
+Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. Weitere Informationen zur Skalierung, Verwaltung und Überwachung von ASEv1 finden Sie unter [Konfigurieren einer App Service-Umgebung][ConfigureASEv1].
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

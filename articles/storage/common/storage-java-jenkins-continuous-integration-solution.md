@@ -1,20 +1,20 @@
 ---
 title: Verwenden von Azure Storage mit einer Jenkins-Lösung für Continuous Integration
-description: Dieses Lernprogramm zeigt, wie Sie den Azure-Blobdienst als Repository für Buildartefakte verwenden, die von einer Jenkins-Lösung für die fortlaufende Integration erstellt wurden.
+description: Dieses Tutorial zeigt, wie Sie den Azure-Blobdienst als Repository für Buildartefakte verwenden, die von einer Jenkins-Lösung für Continuous Integration erstellt wurden.
 ms.topic: article
 ms.author: tarcher
 author: tarcher
 services: devops
 ms.service: storage
 custom: jenkins
-ms.date: 07/31/2018
+ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: d9ef6f5056fdbd7187c92c98d1c884a5314c29a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc62696700a5c34c28f5f8c4f347dbb4c5183cab
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153667"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986546"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Verwenden von Azure Storage mit einer Jenkins-Lösung für Continuous Integration
 
@@ -67,8 +67,8 @@ Um den Blob-Dienst mit Jenkins verwenden zu können, müssen Sie das Azure-Speic
 1. Wählen Sie im Jenkins-Dashboard **Manage Jenkins** (Jenkins verwalten) aus.
 2. Klicken Sie auf der Seite **Manage Jenkins** (Jenkins verwalten) auf **Configure System** (System konfigurieren).
 3. Führen Sie im Bereich **Microsoft Azure Storage Account Configuration** folgende Schritte aus:
-   1. Geben Sie Ihren Speicherkontonamen ein, den Sie aus dem [Azure-Portal](https://portal.azure.com)abrufen können.
-   2. Geben Sie Ihren Speicherkontoschlüssel ein, der ebenfalls über das [Azure-Portal](https://portal.azure.com)abrufbar ist.
+   1. Geben Sie Ihren Speicherkontonamen ein, den Sie aus dem [Azure-Portal](https://portal.azure.com) abrufen können.
+   2. Geben Sie Ihren Speicherkontoschlüssel ein, der ebenfalls über das [Azure-Portal](https://portal.azure.com) abrufbar ist.
    3. Verwenden Sie den Standardwert für **Blob Service Endpoint URL**, wenn Sie die globale Azure-Cloud verwenden. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt, der im [Azure-Portal](https://portal.azure.com) für Ihr Speicherkonto angegeben ist. 
    4. Klicken Sie auf **Validate storage credentials** (Speicheranmeldeinformationen überprüfen), um Ihr Speicherkonto zu validieren. 
    5. [Optional] Wenn Sie über weitere Speicherkonten verfügen, die Sie für Jenkins CI verfügbar machen möchten, wählen Sie **Add more Storage Accounts** (Weitere Speicherkonten hinzufügen) aus.
@@ -97,14 +97,14 @@ Für das Lernprogramm müssen Sie zunächst einen Auftrag erstellen, der mehrere
     **Tipp**
    
     Unter dem Bereich **Command**, in dem Sie ein Skript für **Execute Windows batch command** eingegeben haben, befindet sich ein Link zu den von Jenkins erkannten Umgebungsvariablen. Wählen Sie diesen Link aus, um die Namen und Beschreibungen der Umgebungsvariablen anzuzeigen. Umgebungsvariablen, die Sonderzeichen enthalten, z.B. die Umgebungsvariable **BUILD_URL**, sind nicht als Containername oder gemeinsamer virtueller Pfad zulässig sind.
-8. Wählen Sie für dieses Beispiel **Make new container public by default** (Neuen Container standardmäßig öffentlich machen) aus. (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Artikels hinaus. Sie finden weitere Informationen zu Shared Access Signatures unter [Verwenden von Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md).
+8. Wählen Sie für dieses Beispiel **Make new container public by default** (Neuen Container standardmäßig öffentlich machen) aus. (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Artikels hinaus. Sie finden weitere Informationen zu Shared Access Signatures unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
 9. [Optional] Wählen Sie **Clean container before uploading** (Container vor dem Hochladen leeren), wenn die Inhalte aus dem Container gelöscht werden sollen, bevor die Buildartefakte hochgeladen (lassen Sie die Option deaktiviert, wenn die Inhalte nicht aus dem Container gelöscht werden sollen) werden.
 10. Geben Sie unter **List of Artifacts to upload** (Liste der hochzuladenden Artefakte) die Zeichenfolge `text/*.txt` ein.
 11. Geben Sie `${BUILD\_ID}/${BUILD\_NUMBER}` für die Zwecke dieses Tutorials unter **Common virtual path for uploaded artifacts** ein.
 12. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
 13. Wählen Sie im Jenkins-Dashboard **Build Now** (Jetzt erstellen), um **MyJob** auszuführen. Prüfen Sie den Status in der Ausgabe der Konsole. Statusmeldungen für Azure-Speicher werden in die Ausgabe der Konsole aufgenommen, wenn die Postbuildaktion mit dem Hochladen von Buildartefakten beginnt.
 14. Nach erfolgreichem Abschluss des Auftrags können Sie die Buildartefakte überprüfen, indem Sie den öffentlichen Blob öffnen.
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     2. Wählen Sie **Speicher**.
     3. Wählen Sie den Speicherkontonamen aus, den Sie für Jenkins verwendet haben.
     4. Wählen Sie **Container**aus.
@@ -135,7 +135,7 @@ In diesem Abschnitt erhalten Sie einen Überblick über die Komponenten des Blob
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (Das Format oben gilt für die globale Azure-Cloud. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt im [Azure-Portal](https://portal.azure.com) , um Ihren URL-Endpunkt zu bestimmen.)
+    (Das Format oben gilt für die globale Azure-Cloud. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt im [Azure-Portal](https://portal.azure.com), um Ihren URL-Endpunkt zu bestimmen.)
   
     Bei obigem Format steht `storageaccount` für den Namen Ihres Speicherkontos, `container_name` für den Namen des Containers und `blob_name` für den Namen des Blobs. Der Containername kann mehrere Pfade umfassen, die durch einen Schrägstrich ( **/** ) getrennt sind. Der Beispielcontainername in diesem Tutorial war **MyJob**, und **${BUILD\_ID}/${BUILD\_NUMBER}** wurde für den gemeinsamen virtuellen Pfad verwendet. Der Blob hat also eine URL in folgendem Format:
   

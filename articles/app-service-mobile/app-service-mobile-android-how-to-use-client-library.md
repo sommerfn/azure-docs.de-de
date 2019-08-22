@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
 ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67443543"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
@@ -33,7 +33,7 @@ Diese Anleitung beschreibt die Verwendung des Android-Client-SDK für Mobile App
 * Behandeln von Fehlern
 * Anpassen des Clients
 
-Dieser Leitfaden konzentriert sich auf die Clientseite des Android-SDK.  Weitere Informationen zu den serverseitigen SDKs für mobile Apps finden Sie unter [Arbeiten mit dem .NET-Back-End-SDK][10] or [How to use the Node.js backend SDK][11].
+Dieser Leitfaden konzentriert sich auf die Clientseite des Android-SDK.  Weitere Informationen zu den serverseitigen SDKs für mobile Apps finden Sie unter [Arbeiten mit dem .NET-Back-End-SDK][10] oder [Verwenden des Node.js SDK für Mobile Apps][11].
 
 ## <a name="reference-documentation"></a>Referenzdokumentation
 
@@ -201,7 +201,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End, finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers][15] (.NET backend) or [Define Tables using a Dynamic Schema][16] (Node.js-Back-End).
+Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End, finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End).
 
 Eine Azure Mobile Apps-Back-End-Tabelle definiert fünf spezielle Felder, von denen vier für Clients verfügbar sind:
 
@@ -701,7 +701,7 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 Nachdem Sie eine Instanz der **MobileServiceJsonTable**erstellt haben, steht dieser Instanz praktisch die gleiche API zur Verfügung wie beim typisierten Programmiermodell. In einigen Fällen akzeptieren die Methoden einen nicht typisierten Parameter anstelle eines typisierten Parameters.
 
 ### <a name="json_insert"></a>Einfügen in nicht typisierte Tabellen
-Der folgende Code zeigt, wie Sie Elemente einfügen können. Der erste Schritt ist die Erstellung einer [JsonObject][1], which is part of the [gson][3]-Bibliothek.
+Der folgende Code zeigt, wie Sie Elemente einfügen können. Sie müssen zunächst ein [JsonObject][1] erstellen, das Teil der [gson][3]-Bibliothek ist.
 
 ```java
 JsonObject jsonItem = new JsonObject();

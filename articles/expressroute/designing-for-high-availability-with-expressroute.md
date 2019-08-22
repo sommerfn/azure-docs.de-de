@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67466643"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Entwurf für Hochverfügbarkeit mit ExpressRoute
@@ -74,7 +74,7 @@ In diesem Abschnitt erläutern wir optionale Funktionen (abhängig von Ihrer Azu
 
 ### <a name="availability-zone-aware-expressroute-virtual-network-gateways"></a>Verfügbarkeitszonenfähige ExpressRoute-Gateways für virtuelle Netzwerke
 
-Eine Verfügbarkeitszone in einer Azure-Region ist eine Kombination aus einer Fehlerdomäne und einer Updatedomäne. Wenn Sie sich für eine zonenredundante Azure IaaS-Bereitstellung entscheiden, können Sie auch zonenredundante virtuelle Netzwerkgateways konfigurieren, die privates ExpressRoute-Peering beenden. Mehr dazu erfahren Sie unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen][zone redundant vgw]. To configure zone-redundant virtual network gateway, see [Create a zone-redundant virtual network gateway in Azure Availability Zones][conf zone redundant vgw].
+Eine Verfügbarkeitszone in einer Azure-Region ist eine Kombination aus einer Fehlerdomäne und einer Updatedomäne. Wenn Sie sich für eine zonenredundante Azure IaaS-Bereitstellung entscheiden, können Sie auch zonenredundante virtuelle Netzwerkgateways konfigurieren, die privates ExpressRoute-Peering beenden. Mehr dazu erfahren Sie unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen][zone redundant vgw]. Informationen zum Konfigurieren eines zonenredundanten Gateways für das virtuelle Netzwerk finden Sie unter [Erstellen eines zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen][conf zone redundant vgw].
 
 ### <a name="improving-failure-detection-time"></a>Verbessern des Zeitpunkts der Fehlererkennung
 

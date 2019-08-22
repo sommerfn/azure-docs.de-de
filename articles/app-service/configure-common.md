@@ -5,7 +5,7 @@ keywords: Azure App Service, Web-App, App-Einstellungen, Umgebungsvariablen
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bcc970375120f76e4ec8a90f487d251296f92dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957565"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990287"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -29,11 +29,13 @@ In diesem Thema wird erläutert, wie Sie allgemeine Einstellungen für Web-Apps,
 
 ## <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen
 
-In App Service verwenden Sie App-Einstellungen wie Umgebungsvariablen. Navigieren Sie im [Azure-Portal] zur Verwaltungsseite Ihrer App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Anwendungseinstellungen**.
+In App Service handelt es sich bei App-Einstellungen um Variablen, die als Umgebungsvariablen an den Anwendungscode übergeben werden. Bei Linux-Apps und benutzerdefinierten Containern übergibt App Service mithilfe des Flags `--env` App-Einstellungen an den Container, um die Umgebungsvariable im Container festzulegen.
+
+Navigieren Sie im [Azure-Portal] zur Verwaltungsseite Ihrer App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Anwendungseinstellungen**.
 
 ![Anwendungseinstellungen](./media/configure-common/open-ui.png)
 
-Für ASP.NET- und ASP.NET Core-Entwickler entspricht die Einstellung von App-Einstellungen in App Service der Einstellung in `<appSettings>` in *Web.config*, aber die Werte in App Service überschreiben die in *Web.config*. Sie können Entwicklungseinstellungen (z.B. das lokale MySQL-Kennwort) in *Web.config* beibehalten, aber Produktionsgeheimnisse (z.B. das Azure MySQL-Datenbank-Kennwort) sicher in App Service. Der gleiche Code verwendet Ihre Entwicklungseinstellungen, wenn Sie lokal debuggen, und verwendet Ihre Produktionsgeheimnisse, wenn sie in Azure bereitgestellt werden.
+Für ASP.NET- und ASP.NET Core-Entwickler entspricht die Festlegung von App-Einstellungen in App Service der Festlegung in `<appSettings>` in *Web.config* oder *appsettings.json*, aber die Werte in App Service überschreiben die in *Web.config* oder *appsettings.json*. Sie können Entwicklungseinstellungen (z. B. das lokale MySQL-Kennwort) in *Web.config* oder *appsettings.json* beibehalten, aber Produktionsgeheimnisse (z. B. das Azure MySQL-Datenbank-Kennwort) sicher in App Service speichern. Der gleiche Code verwendet Ihre Entwicklungseinstellungen, wenn Sie lokal debuggen, und verwendet Ihre Produktionsgeheimnisse, wenn sie in Azure bereitgestellt werden.
 
 Andere Sprachstapel erhalten die App-Einstellungen ebenfalls als Umgebungsvariablen zur Laufzeit. Sprachstapelspezifische Schritte finden Sie unter:
 
@@ -94,7 +96,7 @@ Navigieren Sie im [Azure-Portal] zur Verwaltungsseite der App. Klicken Sie im li
 
 ![Anwendungseinstellungen](./media/configure-common/open-ui.png)
 
-Für ASP.NET- und ASP.NET Core-Entwickler entspricht die Einstellung von Verbindungszeichenfolgen in App Service der Einstellung in `<connectionStrings>` in *Web.config*, aber die Werte, die Sie in App Service festlegen, überschreiben die in *Web.config*. Sie können Entwicklungseinstellungen (z.B. eine Datenbankdatei) in *Web.config* und Produktionsgeheimnisse (z.B. SQL-Datenbank-Anmeldeinformationen) sicher in App Service beibehalten. Der gleiche Code verwendet Ihre Entwicklungseinstellungen, wenn Sie lokal debuggen, und verwendet Ihre Produktionsgeheimnisse, wenn sie in Azure bereitgestellt werden.
+Für ASP.NET- und ASP.NET Core-Entwickler entspricht die Einstellung von Verbindungszeichenfolgen in App Service der Einstellung in `<connectionStrings>` in *Web.config*, aber die Werte, die Sie in App Service festlegen, überschreiben die in *Web.config*. Sie können Entwicklungseinstellungen (z. B. eine Datenbankdatei) in *Web.config* und Produktionsgeheimnisse (z. B. SQL-Datenbank-Anmeldeinformationen) sicher in App Service beibehalten. Der gleiche Code verwendet Ihre Entwicklungseinstellungen, wenn Sie lokal debuggen, und verwendet Ihre Produktionsgeheimnisse, wenn sie in Azure bereitgestellt werden.
 
 Für andere Sprachstapel sollten Sie stattdessen besser [App-Einstellungen](#configure-app-settings) verwenden, da Verbindungszeichenfolgen spezielle Formatierung in den Variablenschlüsseln erfordern, um auf die Werte zuzugreifen. Hier ist jedoch eine Ausnahme: Bestimmte Azure-Datenbanktypen werden zusammen mit der App gesichert, wenn Sie ihre Verbindungszeichenfolgen in Ihrer App konfigurieren. Weitere Informationen finden Sie unter [Was wird gesichert?](manage-backup.md#what-gets-backed-up). Wenn Sie diese automatisierte Sicherung nicht benötigen, verwenden Sie App-Einstellungen.
 
@@ -171,7 +173,7 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
 - **Plattformeinstellungen**: Ermöglicht das Konfigurieren von Einstellungen für die Hostingplattform, einschließlich:
     - **Bitanzahl**: 32-Bit oder 64-Bit.
     - **WebSocket-Protokoll**: Z.B. für [ASP.NET SignalR] oder [socket.io](https://socket.io/).
-    - **Always On**: Lassen Sie die App auch dann geladen, wenn kein Datenverkehr stattfindet. Sie müssen sie für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, aktivieren.
+    - **Always On**: Lassen Sie die App auch dann geladen, wenn kein Datenverkehr stattfindet. Dies ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
     - **Verwalteter Pipelinemodus**: Der IIS-[Pipelinemodus]. Legen Sie ihn auf **Klassisch** fest, wenn Sie eine ältere App haben, die eine ältere Version von IIS erfordert.
     - **HTTP-Version**: Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren.
     > [!NOTE]

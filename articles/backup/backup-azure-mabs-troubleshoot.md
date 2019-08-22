@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689273"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954678"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -102,7 +102,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Backup | Unerwarteter Fehler beim Ausführen des Auftrags. Das Gerät ist nicht bereit. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus:** <br> <ul><li>Legen Sie den Schattenkopie-Speicherbereich für die Elemente in der Schutzgruppe auf „Unbegrenzt“ fest, und führen Sie dann die Konsistenzprüfung aus.<br></li> (ODER) <li>Löschen Sie die vorhandene Schutzgruppe, und erstellen Sie mehrere neue Gruppen. Jede neue Schutzgruppe sollte ein einzelnes Element enthalten.</li></ul> |
 | Backup | Wenn nur der Systemstatus gesichert werden soll, überprüfen Sie, ob ausreichend freier Speicherplatz auf dem geschützten Computer vorhanden ist, um die Systemstatussicherung zu speichern. | <ol><li>Stellen Sie sicher, dass die Windows Server-Sicherung auf dem geschützten Computer installiert ist.</li><li>Stellen Sie sicher, dass genügend Speicherplatz auf dem geschützten Computer für den Systemstatus vorhanden ist. Der einfachste Weg, dies zu überprüfen, besteht darin, zum geschützten Computer zu navigieren, die Windows Server-Sicherung zu öffnen, die Auswahlmöglichkeiten zu durchlaufen und dann „BMR“ auszuwählen. Auf der Benutzeroberfläche wird dann der erforderliche Speicherplatz angezeigt. Öffnen Sie **WSB** > **Lokale Sicherung** > **Sicherungszeitplan** > **Sicherungskonfiguration auswählen** > **Vollständiger Server** (die Größe wird angezeigt). Verwenden Sie diese Größe zur Überprüfung.</li></ol>
 | Backup | Sicherungsfehler bei BMR | Wenn die BMR sehr groß ist, verschieben Sie einige Anwendungsdateien auf das Betriebssystemlaufwerk, und versuchen Sie es erneut. |
-| Backup | Die Option zum erneuten Schützen eines virtuellen VMware-Computers auf einem neuen Microsoft Azure Backup Server wird nicht als zum Hinzufügen verfügbar angezeigt. | VMware-Eigenschaften verweisen auf eine alte, außer Betrieb genommene Instanz von Microsoft Azure Backup Server. So lösen Sie dieses Problem:<br><ol><li>Navigieren Sie in VCenter (entspricht SC-VMM) zur Registerkarte **Zusammenfassung**, und klicken Sie dann auf **Benutzerdefinierte Attribute**.</li>  <li>Löschen Sie den alten Microsoft Azure Backup Server-Namen aus dem Wert **DPMServer**.</li>  <li>Navigieren Sie zurück zum neuen Microsoft Azure Backup Server, und ändern Sie die PG.  Nachdem Sie die Schaltfläche **Aktualisieren** ausgewählt haben, wird der virtuelle Computer mit einem Kontrollkästchen zum Hinzufügen von Schutz angezeigt.</li></ol> |
+| Backup | Die Option zum erneuten Schützen eines virtuellen VMware-Computers in einer neuen Microsoft Azure Backup Server-Instanz wird nicht als zum Hinzufügen verfügbar angezeigt. | VMware-Eigenschaften verweisen auf eine alte, außer Betrieb genommene Instanz von Microsoft Azure Backup Server. So lösen Sie dieses Problem:<br><ol><li>Navigieren Sie in VCenter (entspricht SC-VMM) zur Registerkarte **Zusammenfassung**, und klicken Sie dann auf **Benutzerdefinierte Attribute**.</li>  <li>Löschen Sie den alten Microsoft Azure Backup Server-Namen aus dem Wert **DPMServer**.</li>  <li>Navigieren Sie zurück zum neuen Microsoft Azure Backup Server, und ändern Sie die PG.  Nachdem Sie die Schaltfläche **Aktualisieren** ausgewählt haben, wird der virtuelle Computer mit einem Kontrollkästchen zum Hinzufügen von Schutz angezeigt.</li></ol> |
 | Backup | Fehler beim Zugreifen auf Dateien/freigegebene Ordner | Versuchen Sie, die Einstellungen der Antivirensoftware zu ändern (wie im TechNet-Artikel [Ausführen von Antivirensoftware auf dem DPM-Server](https://technet.microsoft.com/library/hh757911.aspx) beschrieben).|
 
 

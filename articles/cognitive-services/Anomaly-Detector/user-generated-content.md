@@ -7,19 +7,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
-ms.openlocfilehash: 7fc1ed9928bd988faca4537202ac57fee74b0b00
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 32728b5c1ede303cc4000ef8c10e4456e784df9b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721425"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882463"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Ausgewählter benutzergenerierter Inhalt für die Anomalieerkennungs-API
 
 Ermitteln Sie mithilfe dieses Artikels, wie andere Kunden darüber denken, und verwenden Sie die Anomalieerkennungs-API. Die folgenden Ressourcen wurden von der Community der Anomalieerkennungsbenutzer erstellt. Sie enthalten technische Blogs, Open-Source-Projekte und andere von Microsoft und Drittanbieterbenutzern erstellte Beiträge. Einige der folgenden Links werden auf externen Websites gehostet, die nicht Microsoft gehören. Microsoft ist für deren Inhalt nicht verantwortlich. Verweisen Sie umsichtig auf diese Ressourcen.
+
+## <a name="demos"></a>Demos
+
+* [Interaktive Demo mit Animation](https://aka.ms/adDemo)
+* [Azure Notebook-Demo](https://aka.ms/adNotebook)
 
 ## <a name="technical-blogs"></a>Technische Blogs
 

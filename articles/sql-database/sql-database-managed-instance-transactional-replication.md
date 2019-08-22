@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567227"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879053"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
@@ -27,7 +27,7 @@ Die Transaktionsreplikation ist ein Feature von Azure SQL-Datenbank und SQL Serv
 Die Transaktionsreplikation ist in den folgenden Szenarien nützlich:
 - Veröffentlichen von Änderungen an Tabellen in einer Datenbank, die an SQL Server-Instanzen oder Azure SQL-Datenbanken verteilt werden, die die Änderungen abonniert haben
 - Synchronisierthalten mehrerer verteilter Datenbanken
-- Migrieren von Datenbanken aus einer SQL Server- oder einer verwalteten Instanz zu einer anderen Datenbank durch fortlaufendes Veröffentlichen der Änderungen
+- Migrieren von Datenbanken aus einer SQL Server-Instanz oder einer verwalteten Instanz zu einer anderen Datenbank durch fortlaufendes Veröffentlichen der Änderungen
 
 ## <a name="overview"></a>Übersicht
 
@@ -45,7 +45,7 @@ Der **Herausgeber** ist eine Instanz oder ein Server, die bzw. der Änderungen a
 - SQL Server 2012 SP2 CU8 (11.0.5634.0)
 - Für andere Versionen von SQL Server, die keine Veröffentlichung in Objekten in Azure unterstützen, kann die Methode der [erneuten Veröffentlichung von Daten](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) verwendet werden, um Daten in neuere Versionen von SQL Server verschieben. 
 
-Der **Verteiler** ist eine Instanz oder ein Server, die bzw. der Änderungen an den Artikeln von einem Herausgeber erfasst und an die Abonnenten verteilt. Der Verteiler kann entweder eine verwaltete Azure SQL-Datenbank-Instanz oder eine SQL Server-Instanz (beliebige Version, sofern nicht älter als die Herausgeber-Version) sein. 
+Der **Verteiler** ist eine Instanz oder ein Server, die bzw. der Änderungen an den Artikeln von einem Herausgeber erfasst und an die Abonnenten verteilt. Der Verteiler kann entweder eine verwaltete Azure SQL-Datenbank-Instanz oder eine SQL Server-Instanz (beliebige Version, sofern nicht älter als die Herausgeberversion) sein. 
 
 Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Herausgeber vorgenommenen Änderungen erhält. Abonnenten können Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank- oder SQL Server-Datenbanken sein. Ein Abonnent einer Einzel- oder Pooldatenbank muss als Push-Abonnent konfiguriert sein. 
 
@@ -94,10 +94,12 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet. 
 - Ein Azure-Speicherkonto für das von der Replikation verwendete Arbeitsverzeichnis. 
 - Port 445 (TCP ausgehend) muss in den Sicherheitsregeln des Subnetzes der verwalteten Instanz geöffnet sein, um auf die Azure-Dateifreigabe zugreifen zu können. 
-- Port 1433 (TCP ausgehend) muss geöffnet werden, wenn sich der Herausgeber/Verteiler auf einer verwalteten Instanz und der Abonnent in der lokalen Umgebung befindet.
+- Port 1433 (TCP ausgehend) muss geöffnet sein, wenn sich der Verleger/Verteiler in einer verwalteten Instanz und der Abonnent in der lokalen Umgebung befindet.
 
-  >[!NOTE]
-  > Möglicherweise tritt beim Herstellen einer Verbindung zu einer Azure Storage-Datei der Fehler 53 auf, wenn Port 445 (ausgehend) der Netzwerksicherheitsgruppe gesperrt ist und der Verteiler eine Instanzdatenbank und der Abonnent ein lokales System ist. [Aktualisieren Sie die vNet-Netzwerksicherheitsgruppe](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems), um dieses Problem zu beheben. 
+
+>[!NOTE]
+> - Möglicherweise tritt beim Herstellen einer Verbindung zu einer Azure Storage-Datei der Fehler 53 auf, wenn Port 445 (ausgehend) der Netzwerksicherheitsgruppe gesperrt ist und der Verteiler eine Instanzdatenbank und der Abonnent ein lokales System ist. [Aktualisieren Sie die vNet-Netzwerksicherheitsgruppe](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems), um dieses Problem zu beheben. 
+> - Wenn die Verleger- und Verteilerdatenbanken in einer verwalteten Instanz [Auto-Failovergruppen](sql-database-auto-failover-group.md) verwenden, muss der Administrator der verwalteten Instanz [alle Veröffentlichungen für die alte primäre Instanz löschen und nach einem Failover für die neue primäre Instanz erneut konfigurieren](sql-database-managed-instance-transact-sql-information.md#replication).
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Vergleichen von Datensynchronisierung und Transaktionsreplikation
 
@@ -111,23 +113,23 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
 Im Allgemeinen müssen sich Herausgeber und Verteiler gemeinsam entweder in der Cloud oder an einem lokalen Standort befinden. Die folgenden Konfigurationen werden unterstützt: 
 
-### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Herausgeber mit lokalem Verteiler in verwalteter Instanz
+### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Verleger mit lokalem Verteiler in verwalteter Instanz
 
 ![Einzelinstanz als Herausgeber und Verteiler](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Herausgeber und Verteiler sind in einer einzelnen verwalteten Instanz konfiguriert und verteilen Änderungen an andere verwaltete Instanzen, Einzeldatenbanken, Pooldatenbanken oder lokale SQL Server-Instanzen. In dieser Konfiguration kann die verwaltete Herausgeber-/Verteilerinstanz nicht mit [Georeplikation und Auto-Failovergruppen](sql-database-auto-failover-group.md) konfiguriert werden.
+Verleger und Verteiler sind in einer einzelnen verwalteten Instanz konfiguriert und verteilen Änderungen an andere verwaltete Instanzen, Einzeldatenbanken, Pooldatenbanken oder lokale SQL Server-Instanzen. 
 
-### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Herausgeber mit Remoteverteiler in verwalteter Instanz
+### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Verleger mit Remoteverteiler in verwalteter Instanz
 
-In dieser Konfiguration veröffentlicht eine verwaltete Instanz Änderungen auf dem Verteiler in einer anderen verwalteten Instanz, die zahlreiche verwaltete Quellinstanzen bedienen und Änderungen an ein oder mehrere Ziele in verwalteten Instanzen, Einzeldatenbanken, Pooldatenbanken oder SQL Server-Instanzen verteilen kann.
+In dieser Konfiguration veröffentlicht eine verwaltete Instanz Änderungen auf dem Verteiler in einer anderen verwalteten Instanz, die zahlreiche verwaltete Quellinstanzen bedienen und Änderungen an ein oder mehrere Ziele in verwalteten Instanzen, Einzeldatenbanken, Pooldatenbanken oder SQL Server-Instanzen verteilen kann.
 
 ![Separate Instanzen als Herausgeber und Verteiler](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-Herausgeber und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei dieser Konfiguration gilt Folgendes:
+Verleger und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei dieser Konfiguration gibt es einige Einschränkungen: 
 
 - Beide verwaltete Instanzen befinden sich im gleichen VNET.
-- Beide verwaltete Instanzen befinden sich am gleichen Standort.
-- Verwaltete Instanzen, die veröffentlichte Datenbanken und Verteilerdatenbanken hosten, können nicht [mithilfe von Auto-Failovergruppen georepliziert werden](sql-database-auto-failover-group.md).
+- Die beiden verwalteten Instanzen befinden sich am gleichen Standort.
+
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Herausgeber und Verteiler am lokalen Standort mit einem Abonnenten eines Singletons, einer in einem Pool zusammengefassten Datenbank oder einer Instanzdatenbank 
 
@@ -141,13 +143,15 @@ In dieser Konfiguration ist eine Azure SQL-Datenbank (Singleton, in einem Pool z
 1. [Konfigurieren Sie die Replikation zwischen zwei verwalteten Instanzen.](replication-with-sql-database-managed-instance.md) 
 1. [Erstellen Sie eine Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Erstellen Sie ein Push-Abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen von Azure SQL-Datenbank als Abonnent (z. B. `N'azuresqldbdns.database.windows.net`) und dem Namen der Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**). )
+1. Informieren Sie sich über die [Einschränkungen von Transaktionsreplikationen für eine verwaltete Instanz](sql-database-managed-instance-transact-sql-information.md#replication).
 
 
 
 ## <a name="see-also"></a>Siehe auch  
 
+- [T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server](sql-database-managed-instance-transact-sql-information.md#replication)
 - [Replikation zu SQL-Datenbank-Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken](replication-to-sql-database.md)
-- [Replikation zu einer verwalteten Instanz](replication-with-sql-database-managed-instance.md)
+- [Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank](replication-with-sql-database-managed-instance.md)
 - [Erstellen einer Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Erstellen eines Pushabonnements](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [Replikationstypen](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)

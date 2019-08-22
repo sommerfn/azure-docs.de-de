@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/08/2019
+ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 8a3be6420a91093e060850459ff22fc5823b8cf2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710600"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846593"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
 GRUB ist der GRand Unified Bootloader und wahrscheinlich das Erste, was Sie beim Starten einer VM sehen. Da GRUB vor dem Start des Betriebssystems angezeigt wird, kann nicht über SSH auf diesen Bootloader zugegriffen werden. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -132,6 +132,7 @@ Standardmäßig zeigen Ubuntu-Images den GRUB-Bildschirm nicht automatisch an. D
 1. Ändern Sie den Wert von `GRUB_TIMEOUT` in einen Wert ungleich null.
 1. Öffnen Sie `/etc/default/grub` in einem Text-Editor Ihrer Wahl.
 1. Kommentieren Sie die Zeile `GRUB_HIDDEN_TIMEOUT=1` aus.
+1. Stellen Sie sicher, dass die folgende Zeile vorhanden ist: `GRUB_TIMEOUT_STYLE=menu`.
 1. Führen Sie `sudo update-grub` aus.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Einzelbenutzermodus in Ubuntu
@@ -193,7 +194,7 @@ Die Notfall-Shell wird automatisch geöffnet, wenn SLES nicht normal gestartet w
 Ähnlich wie in Red Hat Enterprise Linux erfordert der Einzelbenutzermodus in Oracle Linux, dass GRUB und der Stammbenutzer aktiviert sind.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB-Zugriff in Oracle Linux
-In Oracle Linux ist GRUB standardmäßig aktiviert. Starten Sie zum Aktivieren des GRUB-Modus Ihre VM mit `sudo reboot` neu, und drücken Sie die ESC-TASTE. Daraufhin wird der GRUB-Bildschirm angezeigt.
+In Oracle Linux ist GRUB standardmäßig aktiviert. Starten Sie zum Aktivieren des GRUB-Modus Ihre VM mit `sudo reboot` neu, und drücken Sie die ESC-TASTE. Daraufhin wird der GRUB-Bildschirm angezeigt. Wird GRUB nicht angezeigt, vergewissern Sie sich, dass „serial console“ in der Zeile `GRUB_TERMINAL` enthalten ist: `GRUB_TERMINAL="serial console"`.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Einzelbenutzermodus in Oracle Linux
 Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in Oracle Linux zu aktivieren.

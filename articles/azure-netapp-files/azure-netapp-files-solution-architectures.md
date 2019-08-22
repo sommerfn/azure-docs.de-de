@@ -12,17 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: d4682ed375453cee4e5aa107d69c288e66cd11a7
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 03a9f61d8840149419eac2b4cf5f8d9f50ed6546
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867400"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848775"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
+
+## <a name="solutions-for-azure-kubernetes-service-aks"></a>Lösungen für Azure Kubernetes Service (AKS)
+
+[Azure NetApp Files integration with AKS](https://github.com/andyzhangx/demo/tree/master/linux/nfs) (Azure NetApp Files-Integration mit AKS)
 
 ## <a name="solutions-for-oracle-database"></a>Lösungen für Oracle-Datenbank
 

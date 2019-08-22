@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 05/21/2019
-ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.date: 08/06/2019
+ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772755"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856209"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Was ist ein Azure Machine Learning Service-Arbeitsbereich?
 
@@ -65,6 +65,9 @@ Für Aufgaben für maschinelles Lernen werden Artefakte aus Ihrem Arbeitsbereich
 + Anzeigen von Machine Learning-Artefakten, z. B. Experimente, Pipelines, Modelle, Bereitstellungen.
 + Nachverfolgen und Überwachen von Modellen.
 
+
+
+
 ## <a name="workspace-management"></a>Arbeitsbereichsverwaltung
 
 Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
@@ -76,7 +79,14 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 | Verwalten des Arbeitsbereichszugriffs    | **&check;**   | |  **&check;**    |
 | Erstellen einer Notebook-VM | **&check;**   | |     |
 
-Führen Sie erste Schritte mit dem Dienst aus, indem Sie [einen Arbeitsbereich erstellen](setup-create-workspace.md).
+### <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
+
+Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs.
+
+* Im [Azure-Portal](how-to-manage-workspace.md) steht eine Point-and-Click-Benutzeroberfläche zur Verfügung, über die Sie die einzelnen Schritte ausführen können.
+* Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace), um ohne weitere Vorbereitung einen Arbeitsbereich auf der Grundlage von Python-Skripts oder Jupiter Notebooks zu erstellen.
+* Nutzen Sie eine [Azure Resource Manager-Vorlage](how-to-create-workspace-template.md) oder die [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), wenn Sie die Erstellung automatisieren oder mit Unternehmenssicherheitsstandards anpassen müssen.
+* Verwenden Sie die [VS Code-Erweiterung](how-to-vscode-tools.md#get-started-with-azure-machine-learning), wenn Sie mit Visual Studio Code arbeiten.
 
 ## <a name="resources"></a> Zugeordnete Ressourcen
 
@@ -95,6 +105,6 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 Erste Schritte mit Azure Machine Learning Service finden Sie unter:
 
 + [Was ist der Azure Machine Learning-Dienst?](overview-what-is-azure-ml.md)
-+ [Erstellen eines Arbeitsbereichs](setup-create-workspace.md)
++ [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Verwalten eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)

@@ -10,18 +10,19 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64588829cec964e52dcb44465869e0090f36f9f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61303970"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850414"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Zusammenstellen von DSC-Konfigurationen in Azure Automation State Configuration (DSC) mit zusammengesetzten Ressourcen
 
 Wenn eine Ressource mit mehr als nur einer Konfiguration des gewünschten Zustands (DSC) verwaltet werden muss, ist die beste Vorgehensweise die Nutzung von [zusammengesetzten Ressourcen](/powershell/dsc/authoringresourcecomposite). Eine zusammengesetzte Ressource ist eine geschachtelte und parametrisierte Konfiguration, die als DSC-Ressource in einer anderen Konfiguration verwendet wird. Dies ermöglicht die Erstellung von komplexen Konfigurationen, während die zugrunde liegenden zusammengesetzten Ressourcen (parametrisierte Konfigurationen) einzeln verwaltet und erstellt werden.
 
-Mit Azure Automation können Sie [zusammengesetzte Ressourcen importieren und kompilieren](automation-dsc-compile.md#composite-resources). Nachdem zusammengesetzte Ressourcen in Ihr Automation-Konto importiert wurden, können Sie auf der Seite **Zustandskonfiguration (DSC)** die Benutzeroberfläche für **Konfiguration zusammenstellen** verwenden.
+Mit Azure Automation können Sie [zusammengesetzte Ressourcen importieren und kompilieren](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Nachdem zusammengesetzte Ressourcen in Ihr Automation-Konto importiert wurden, können Sie auf der Seite **Zustandskonfiguration (DSC)** die Benutzeroberfläche für **Konfiguration zusammenstellen** verwenden.
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Zusammenstellen einer Konfiguration aus zusammengesetzten Ressourcen
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335733"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964131"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -121,6 +121,12 @@ Der folgende Code zeigt den Text einer Feedbacknachricht:
   ...
 ]
 ```
+
+**Ausstehendes Feedback für gelöschte Geräte**
+
+Wird ein Gerät gelöscht, wird auch das gesamte ausstehende Feedback gelöscht. Gerätefeedback wird in Batches gesendet. Wird ein Gerät in dem kurzen Zeitraum (häufig weniger als eine Sekunde) zwischen der Bestätigung des Nachrichteneingangs durch das Gerät und der Vorbereitung des nächsten Feedbackbatches gelöscht, wird das Feedback nicht gesendet.
+
+Sie können dies umgehen, indem Sie warten, bis das ausstehende Feedback eingegangen ist, bevor Sie das Gerät löschen. Nach dem Löschen eines Geräts sollte zugehöriges Nachrichtenfeedback als verloren betrachtet werden.
 
 ## <a name="cloud-to-device-configuration-options"></a>Optionen für die C2D-Konfiguration
 

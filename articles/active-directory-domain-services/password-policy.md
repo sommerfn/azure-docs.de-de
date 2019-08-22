@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: ecf38543b2c4e5187aa5c6593c3bccf6668b8a8a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472765"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879196"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 Dieser Artikel beschreibt die Standardkennwortrichtlinien in einer verwalteten Domäne. Sie erfahren auch, wie Sie diese Richtlinien konfigurieren können.
@@ -38,7 +38,8 @@ Sie können die folgenden Kennworteinstellungen mit FGPP konfigurieren:
     * Kontosperrungsdauer
     * Zulässige Anzahl fehlgeschlagener Anmeldeversuche
     * Anzahl fehlgeschlagener Anmeldeversuche zurücksetzen nach
-
+    
+FGPP betreffen nur direkt in Azure AD DS erstellte Benutzer. Cloudbenutzer und Domänenbenutzer, die von Azure AD in der verwalteten Azure AD DS-Domäne synchronisiert werden, sind von den Einstellungen der Kennwortkomplexität nicht betroffen. FGPP werden über die Gruppenzuordnung in der verwalteten Azure AD DS-Domäne verteilt. Von Ihnen vorgenommene Änderungen werden bei der nächsten Benutzeranmeldung angewendet. Wenn Sie die Richtlinie ändern, wird ein bereits gesperrtes Benutzerkonto nicht entsperrt.
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Standardeinstellungen von differenzierten Kennwortrichtlinien in einer verwalteten Domäne
 Der folgende Screenshot veranschaulicht die standardmäßige differenzierte Kennwortrichtlinie, die für eine verwaltete Azure AD Domain Services-Domäne konfiguriert wurde.
@@ -80,7 +81,7 @@ Sie können eine benutzerdefinierte FGPP aus den folgenden Gründen konfiguriere
 * Zum Konfigurieren einer Standardeinstellung für die Kennwortgültigkeitsdauer für die verwaltete Domäne
 
 So erstellen Sie eine benutzerdefinierte FGPP in Ihrer verwalteten Domäne
-1. Melden Sie sich bei der Windows-VM an, die Sie zum Verwalten der verwalteten Domäne verwenden. Wenn Sie keine haben, führen Sie die unter [Verwalten einer Azure AD-Domain Services-Domäne](manage-domain.md) beschriebenen Anweisungen aus.
+1. Melden Sie sich bei der Windows-VM an, die Sie zum Verwalten der verwalteten Domäne verwenden (mindestens Windows Server 2012 R2). Wenn Sie keine haben, führen Sie die unter [Verwalten einer Azure AD-Domain Services-Domäne](manage-domain.md) beschriebenen Anweisungen aus.
 2. Starten Sie das **Active Directory-Verwaltungscenter** auf der VM.
 3. Klicken Sie auf den Domänennamen (beispielsweise „contoso100.com“).
 4. Doppelklicken Sie auf **System**, um den Systemcontainer zu öffnen.

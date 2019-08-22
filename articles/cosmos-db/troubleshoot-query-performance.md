@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835834"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986168"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Behandeln von Problemen bei der Abfrageleistung für Azure Cosmos DB
 In diesem Artikel wird beschrieben, wie Sie Probleme mit Azure Cosmos DB SQL-Abfragen identifizieren, diagnostizieren und beheben können. Um eine optimale Leistung bei Azure Cosmos DB-Abfragen zu erreichen, folgen Sie den folgenden Schritten zur Fehlerbehebung. 
@@ -23,6 +23,10 @@ Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gle
 
 ## <a name="check-consistency-level"></a>Überprüfen der Konsistenzebene
 Die [Konsistenzebene](consistency-levels.md) kann sich auf die Leistung und die Kosten auswirken. Stellen Sie sicher, dass Ihre Konsistenzebene für das jeweilige Szenario geeignet ist. Weitere Informationen finden Sie unter [„Auswählen der Konsistenzebene“](consistency-levels-choosing.md).
+
+## <a name="log-sql-query-in-storage-account"></a>Protokollieren einer SQL-Abfrage in einem Speicherkonto
+[SQL-API-Abfrageprotokolle (über Diagnoseprotokolle)](logging.md#turn-on-logging-in-the-azure-portal) ermöglichen die Protokollierung der verschleierten Abfrage in einem Speicherkonto Ihrer Wahl. So können Sie sich die Diagnoseprotokolle ansehen, eine Abfrage ermitteln, die mehr RUs nutzt, und die Aktivitäts-ID zum Abgleich in QueryRuntimeStatistics verwenden. 
+
 
 ## <a name="log-query-metrics"></a>Metrik zur Protokollabfrage
 Verwenden Sie `QueryMetrics`, um Fehler bei langsamen oder teuren Anfragen zu beheben. 
@@ -57,8 +61,8 @@ Die Abfrageleistung kann über die Parameter [„Feedoptionen“](https://docs.m
 
 Wenn Sie die Leistung verschiedener Werte vergleichen, verwenden Sie dafür Werte wie 2, 4, 8, 16 und andere.
  
-## <a name="read-all-results-from-continuations"></a>Alle Ergebnisse aus Fortsetzungen lesen
-Wenn Sie denken, dass Sie nicht alle Ergebnisse erhalten, stellen Sie sicher, dass die Fortsetzung vollständig ausgeglichen wird. Sprich, Sie sollten die Ergebnisse weiterhin lesen, solange das Fortsetzungs-Token noch über weitere Dokumente verfügt.
+## <a name="read-all-results-from-continuations"></a>Lesen aller Ergebnisse aus Fortsetzungen
+Wenn Sie der Meinung sind, dass Sie nicht alle Ergebnisse erhalten, sollten Sie sicherstellen, dass die Fortsetzung vollständig ausgeglichen wird. Anders ausgedrückt: Setzen Sie das Lesen der Ergebnisse fort, solange das Fortsetzungstoken noch über weitere Dokumente verfügt.
 
 Der vollständige Ausgleich wird durch eines der folgenden Muster erreicht:
 
@@ -80,9 +84,9 @@ Der vollständige Ausgleich wird durch eines der folgenden Muster erreicht:
     ```
 
 ## <a name="choose-system-functions-that-utilize-index"></a>Auswahl von Systemfunktionen, die den Index verwenden
-Der Ausdruck kann nur den Index verwenden, wenn er in einen Bereich von Zeichenfolgenwerte übersetzt werden kann. 
+Wenn der Ausdruck in einen Bereich von Zeichenfolgenwerten übersetzt werden kann, kann der Index genutzt werden. Andernfalls ist dies nicht möglich. 
 
-Hier ist die Liste der Zeichenfolgenfunktionen, die den Index verwenden können: 
+Hier ist die Liste mit den Zeichenfolgenfunktionen angegeben, die den Index verwenden können: 
     
   * STARTSWITH(str_expr, str_expr) 
   * LEFT(str_expr, num_expr) = str_expr 

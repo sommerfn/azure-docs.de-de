@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688607"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882055"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -153,11 +153,12 @@ Verschlüsselte virtuelle Computer stellen Sie wie folgt wieder her:
 1. [Stellen Sie den VM-Datenträger wieder her](backup-azure-arm-restore-vms.md#restore-disks).
 2. Führen Sie dann einen der folgenden Schritte aus:
     - Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um VM-Einstellungen anzupassen und die Bereitstellung der VM auszulösen. [Weitere Informationen](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)
-    - Erstellen Sie eine neue VM aus den wiederhergestellten Datenträgern mithilfe von PowerShell. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
+    - Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
+    - Setzen Sie für virtuelle Linux-Computer die ADE-Erweiterung zurück, damit die Datenträger offen und eingebunden sind. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Probleme auftreten, lesen Sie
+Sollten Probleme auftreten, sehen Sie sich die folgenden Artikel an:
 
 - [Häufige Fehler](backup-azure-vms-troubleshoot.md) beim Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Computern.
 - Probleme im Zusammenhang mit [Azure VM-Agent/Backup-Erweiterung](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md).

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839456"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976314"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -65,7 +65,8 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -310,6 +311,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
         //Specify a default value to return if no match is found.
         'black'
+    ]
+});
+```
+
+Im folgenden Beispiel wird ein match-Ausdruck verwendet, um einen Filter vom Typ „in array“ (im Array) oder „array contains“ (Array enthält) anzuwenden – in diesem Fall, um Daten mit einem ID-Wert zu filtern, der in einer Liste zulässiger IDs enthalten ist. Wenn Sie Ausdrücke mit Filtern verwenden, muss das Ergebnis ein boolescher Wert sein.
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
     ]
 });
 ```
@@ -634,7 +657,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[Livebeispiel](map-add-shape.md#line-stroke-gradient)
+[Livebeispiel](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Text Field Format-Ausdruck
 
@@ -816,8 +839,11 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke 
 > [!div class="nextstepaction"] 
 > [Hinzufügen einer Blasenebene](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [Hinzufügen von Formen](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [Add a line layer to the map](map-add-line-layer.md) (Hinzufügen einer Linienebene zur Karte)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Form zu einer Karte](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [Hinzufügen einer Wärmebildebene](map-add-heat-map-layer.md)

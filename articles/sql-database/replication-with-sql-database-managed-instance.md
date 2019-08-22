@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570466"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884077"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
@@ -59,7 +59,7 @@ Unterstützt:
 Folgende Features werden in einer verwalteten Instanz in Azure SLQ-Datenbank nicht unterstützt:
 
 - [Aktualisierbare Abonnements](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication).
-- [Aktive Georeplikation](sql-database-active-geo-replication.md) und [Autofailover-Gruppen](sql-database-auto-failover-group.md) sollten nicht verwendet werden, wenn die Transaktionsreplikation konfiguriert ist.
+- [Aktive Georeplikation](sql-database-active-geo-replication.md) mit Transaktionsreplikation. Verwenden Sie anstelle der aktiven Georeplikation [Autofailover-Gruppen](sql-database-auto-failover-group.md). Beachten Sie jedoch, dass die Veröffentlichung aus der primären verwalteten Instanz [manuell gelöscht](sql-database-managed-instance-transact-sql-information.md#replication) und nach dem Failover in der sekundären verwalteten Instanz neu erstellt werden muss.  
  
 ## <a name="1---create-a-resource-group"></a>1 – Erstellen einer Ressourcengruppe
 

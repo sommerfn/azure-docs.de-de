@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 2d440adc5111db11486d1fc606abbda0ffae9595
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942529"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884449"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Angebote für Azure Marketplace und Microsoft AppSource
 
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält die aktuellen Angebotstypen, die vom [Cloud-Partne
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Ein Paket, das dieses Enterprise Resource Planning- (ERP) und Business Management-System erweitert. |
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Ein Paket, das dieses Customer Resource Management-System (CRM) um die Module „Vertrieb“, „Service“, „Project Service“ und „Außendienst“ erweitert.  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Ein Paket, das diesen Enterprise Resource Planning-Dienst (ERP) erweitert, der erweiterte Features für Finanzierung, operative Vorgänge, Fertigung und Lieferkettenmanagement unterstützt. |
-| [IoT Edge-Modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Ein Docker-kompatibler Container, der auf einem IoT Edge-Gerät ausgeführt wird.  Er enthält kleine Berechnungsmodule, die eine Kombination aus benutzerdefiniertem Code, anderen Azure-Diensten und Diensten von Drittanbietern verwenden. |
+| [IoT Edge-Modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Ein Docker-kompatibler Container, der auf einem IoT Edge-Gerät ausgeführt wird.  Er besteht aus kleinen Berechnungsmodulen, die eine Kombination aus benutzerdefiniertem Code, anderen Azure-Diensten und Diensten von Drittanbietern verwenden. |
 | [Power BI-App](./power-bi/cpp-power-bi-offer.md) | AppSource | In einer Power BI-App werden anpassbare Power BI-Inhalte, z. B. Datasets, Berichte und Dashboards, gebündelt. |
 | [SaaS-App](./saas-app/cpp-saas-offer.md) | Azure | Die Lösung ist ein vom Herausgeber verwaltetes Software-as-a-Service-Abonnement, an dem sich die Benutzer über eine benutzerdefinierte Schnittstelle anmelden, die Azure Active Directory nutzt. |
 | [Virtueller Computer](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Die Lösung ist auf einem einzigen virtuellen Computer enthalten, der im Abonnement des Kunden bereitgestellt wird.  |

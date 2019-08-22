@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494484"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881441"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
@@ -136,7 +136,18 @@ In allen Fällen sollten Sie in der Anwendung ein Konto erstellen, das nur Testz
 
 **Einfacher Benutzername und Kennwort** Zeichnen Sie wie gewöhnlich einen Webtest auf. Löschen Sie zuerst Cookies.
 
-**SAML-Authentifizierung** Verwenden Sie für Webtests das verfügbare SAML-Plug-In. Greifen Sie über Folgendes auf das Plug-In zu:
+**SAML-Authentifizierung**
+
+|Eigenschaftenname| Beschreibung|
+|----|-----|
+| Benutzergruppen-URI | Der Benutzergruppen-URI des SAML-Tokens.  Dies ist der URI für Access Control Service (ACS), einschließlich ACS-Namespace und -Hostname. |
+| Zertifikatkennwort | Das Kennwort für das Clientzertifikat, das Zugriff auf den eingebetteten privaten Schlüssel gewährt. |
+| Clientzertifikat  | Der Wert des Clientzertifikatss mit privatem Schlüssel im Base64-codierten Format. |
+| Namensbezeichner | Der Namensbezeichner für das Token |
+| Nicht nach | Die Zeitspanne, in der das Token gültig ist.  Die Standardeinstellung ist 5 Minuten. |
+| Nicht vor | Die Zeitspanne, in der ein in der Vergangenheit erstelltes Token gültig ist (zur Berücksichtigung von Zeitabweichungen).  Der Standardwert ist (minus) 5 Minuten. |
+| Parametername des Zielkontexts | Der Kontextparameter, der die generierte Assertion empfängt. |
+
 
 **Geheimer Clientschlüssel** Verwenden Sie diese Route, wenn die Anmelderoute Ihrer App einen geheimen Clientschlüssel umfasst. Azure Active Directory (AAD) ist ein Beispiel für einen Dienst, bei dem eine Anmeldung mit geheimem Clientschlüssel bereitgestellt wird. In AAD ist der geheime Clientschlüssel der App-Schlüssel.
 

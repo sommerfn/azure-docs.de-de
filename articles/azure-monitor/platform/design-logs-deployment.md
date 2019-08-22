@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/05/2019
+ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: d2fadf6d0bf9b7422b6dbf7597a024d22b5d733f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839326"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883203"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -84,7 +84,7 @@ Benutzer haben zwei Möglichkeiten, auf die Daten zuzugreifen:
 
     ![Log Analytics-Kontext vom Arbeitsbereich](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Ressourcenkontext**: Wenn Sie auf den Arbeitsbereich für eine bestimmte Ressource, eine Ressourcengruppe oder ein Abonnement zugreifen (z.B. wenn Sie **Protokolle** aus einem Ressourcenmenü im Azure-Portal auswählen), können Sie Protokolle nur für diese Ressource in allen Tabellen anzeigen, auf die Sie Zugriff besitzen. Abfragen in diesem Modus beziehen sich auf nur Daten, die dieser Ressource zugeordnet sind. Dieser Modus ermöglicht außerdem eine differenzierte rollenbasierte Zugriffssteuerung (RBAC).
+* **Ressourcenkontext**: Wenn Sie auf den Arbeitsbereich für eine bestimmte Ressource, eine Ressourcengruppe oder ein Abonnement zugreifen (etwa, wenn Sie **Protokolle** aus einem Ressourcenmenü im Azure-Portal auswählen), können Sie Protokolle nur für diese Ressource in allen Tabellen anzeigen, auf die Sie Zugriff besitzen. Abfragen in diesem Modus beziehen sich auf nur Daten, die dieser Ressource zugeordnet sind. Dieser Modus ermöglicht außerdem eine differenzierte rollenbasierte Zugriffssteuerung (RBAC).
 
     ![Log Analytics-Kontext von der Ressource](./media/design-logs-deployment/query-from-resource.png)
 
@@ -111,7 +111,7 @@ Die Zugriffsmodi werden in der folgenden Tabelle zusammengefasst:
 
 ## <a name="access-control-mode"></a>Zugriffssteuerungsmodus
 
-Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, die definiert, wie Berechtigungen für diesen Arbeitsbereich bestimmt werden.
+Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, die definiert, wie Berechtigungen für den Arbeitsbereich bestimmt werden.
 
 * **Arbeitsbereichsberechtigungen erforderlich**: Dieser Steuerungsmodus ermöglicht keine differenzierte rollenbasierte Zugriffssteuerung (RBAC). Damit ein Benutzer auf den Arbeitsbereich zugreifen kann, müssen ihm Berechtigungen für den Arbeitsbereich oder für bestimmte Tabellen gewährt werden.
 
@@ -127,6 +127,8 @@ Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, di
 
     > [!NOTE]
     > Wenn ein Benutzer nur über Ressourcenberechtigungen für den Arbeitsbereich verfügt, kann er nur über den Ressourcenkontextmodus auf den Arbeitsbereich zugreifen, sofern der Arbeitsbereichszugriffsmodus auf das **Verwenden von Ressourcen- oder Arbeitsbereichsberechtigungen** festgelegt ist.
+
+Informationen zum Ändern des Zugriffssteuerungsmodus über das Portal, mit PowerShell oder mithilfe einer Resource Manager-Vorlage finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](manage-access.md#define-access-control-mode).
 
 ## <a name="recommendations"></a>Empfehlungen
 

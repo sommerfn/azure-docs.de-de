@@ -1,21 +1,21 @@
 ---
-title: 'Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling'
+title: 'Grafische Benutzeroberfläche: Beispiel Nr. 5: Klassifizierung zum Vorhersagen von Kundenabwanderung, Kauflust und Up-Selling'
 titleSuffix: Azure Machine Learning service
 description: Dieses Beispielexperiment auf der grafischen Benutzeroberfläche zeigt eine auf einem binären Klassifizierer basierende Vorhersage der Kundenabwanderung, eine übliche Aufgabe beim Customer Relationship Management (CRM).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 172089d5371d8c3e38a2a22b3285b5eb180baf00
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742286"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016466"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Beispiel 5 – Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling 
 

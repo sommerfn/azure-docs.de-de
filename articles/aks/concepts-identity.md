@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
 ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615863"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
@@ -42,7 +42,7 @@ Die Sicherheit der AKS-Cluster kann durch die Integration von Azure Active Direc
 
 Mit in Azure AD integrierten AKS-Clustern können Sie Benutzern oder Gruppen Zugriff auf Kubernetes-Ressourcen in einem Namespace oder im ganzen Cluster gewähren. Um einen `kubectl`-Konfigurationskontext abzurufen, kann ein Benutzer den Befehl [az aks get-credentials][az-aks-get-credentials] ausführen. Wenn ein Benutzer dann mit dem AKS-Cluster mit `kubectl`interagiert, wird er aufgefordert, sich mit seinen Azure AD-Anmeldeinformationen anzumelden. Dieser Ansatz stellt eine zentrale Quelle für die Verwaltung von Benutzerkonten und Anmeldekennwörtern bereit. Der Benutzer kann nur auf die Ressourcen zugreifen, die der Clusteradministrator definiert hat.
 
-Für die Azure AD-Authentifizierung in AKS-Clustern wird OpenID Connect verwendet, eine Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. OAuth 2.0 definiert Mechanismen zum Abrufen und Verwenden von Zugriffstoken für den Zugriff auf geschützte Ressourcen, und OpenID Connect implementiert die Authentifizierung als Erweiterung des OAuth 2.0-Autorisierungsprozesses. Weitere Informationen zu OpenID Connect finden Sie in der [OpenID Connect-Dokumentation][openid-connect]. To verify the authentication tokens obtained from Azure AD through OpenID Connect, AKS clusters use Kubernetes Webhook Token Authentication. For more information, see the [Webhook Token Authentication documentation][webhook-token-docs].
+Für die Azure AD-Authentifizierung in AKS-Clustern wird OpenID Connect verwendet, eine Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. OAuth 2.0 definiert Mechanismen zum Abrufen und Verwenden von Zugriffstoken für den Zugriff auf geschützte Ressourcen, und OpenID Connect implementiert die Authentifizierung als Erweiterung des OAuth 2.0-Autorisierungsprozesses. Weitere Informationen zu OpenID Connect finden Sie in der [OpenID Connect-Dokumentation][openid-connect]. Um die von Azure AD über OpenID Connect abgerufenen Authentifizierungstoken zu prüfen, verwenden AKS-Cluster die Webhooktokenauthentifizierung von Kubernetes. Weitere Informationen finden Sie in der [Dokumentation zur Webhookauthentifizierung][webhook-token-docs].
 
 ## <a name="role-based-access-controls-rbac"></a>Rollenbasierte Zugriffssteuerung (RBAC)
 

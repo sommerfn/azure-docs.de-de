@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b7bf9943afa2a79f98fd28d15e5ea46fa63af732
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688640"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854112"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -177,7 +177,7 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
     ![Aktivieren des automatischen Schutzes für die Always On-Verfügbarkeitsgruppe](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. Wählen Sie in **Sicherungsrichtlinie**eine Richtlinie, und klicken Sie dann auf  **OK**.
+5. Wählen Sie unter **Sicherungsrichtlinie**eine Richtlinie und anschließend **OK** aus.
 
    - Wählen Sie als Standardrichtlinie HourlyLogBackup aus.
    - Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
@@ -185,11 +185,11 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
      ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. Wählen Sie in  **Sicherung** die Option  **Sicherung aktivieren** aus.
+6. Klicken Sie unter **Sicherung** auf **Sicherung aktivieren**.
 
     ![Aktivieren der ausgewählten Sicherungsrichtlinie](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. Sie können den Konfigurationsprozess im Portalbereich  **Benachrichtigungen**  nachverfolgen.
+7. Den Konfigurationsprozess können Sie im Portalbereich **Benachrichtigungen** nachverfolgen.
 
     ![Benachrichtigungsbereich](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -273,7 +273,7 @@ Sie können den automatischen Schutz aktivieren, um automatisch alle vorhandenen
 
 - Die Anzahl der Datenbanken, die Sie für den automatischen Schutz in einer Aktion auswählen können, ist nicht begrenzt.
 - Es ist nicht möglich, beim Aktivieren des automatischen Schutzes Datenbanken selektiv zu schützen oder vom Schutz in einer Instanz auszuschließen.
-- Falls Ihre Instanz bereits einige geschützte Datenbanken enthält, sind sie unter den jeweiligen Richtlinien auch dann weiterhin geschützt, wenn Sie den automatischen Schutz deaktivieren. Für alle nicht geschützten Datenbanken, die später hinzugefügt werden, gilt aber nur eine einzelne Richtlinie, die zum Zeitpunkt der Aktivierung des automatischen Schutzes unter  **Sicherung konfigurieren** definieren. Sie können die Richtlinie, die einer automatisch geschützten Datenbank zugeordnet ist, später aber ändern.  
+- Falls Ihre Instanz bereits einige geschützte Datenbanken enthält, sind sie unter den jeweiligen Richtlinien auch dann weiterhin geschützt, wenn Sie den automatischen Schutz deaktivieren. Für alle nicht geschützten Datenbanken, die später hinzugefügt werden, gilt aber nur eine einzelne Richtlinie, die Sie zum Zeitpunkt der Aktivierung des automatischen Schutzes unter **Sicherung konfigurieren** definieren. Sie können die Richtlinie, die einer automatisch geschützten Datenbank zugeordnet ist, später aber ändern.  
 
 So aktivieren Sie den automatischen Schutz
 
@@ -288,7 +288,7 @@ Wenn Sie den automatischen Schutz deaktivieren müssen, klicken Sie unter **Sich
 
 ![Deaktivieren des automatischen Schutzes für diese Instanz](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel werden folgende Themen erläutert:

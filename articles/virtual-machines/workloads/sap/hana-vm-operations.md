@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b55e979c3056f89eb76a1d2c86f9a770d2d3e05
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077645"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935389"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -173,7 +173,7 @@ Im Dokument zu den [SAP HANA-TDI-Speicheranforderungen](https://www.sap.com/docu
 Angenommen, Sie verwenden die für die horizontale SAP HANA-Skalierung zertifizierte Azure-VM M128s mit ca. 2 TB Speicher, können die SAP-Empfehlungen wie folgt zusammengefasst werden:
 
 - Bei einem Masterknoten und bis zu neun Workerknoten benötigt **/hana/shared** 2 TB an Speicher. 
-- Bei einem Masterknoten und fünf bis acht Workerknoten benötigt **/hana/shared** 4 TB an Speicher. 
+- Bei einem Masterknoten und fünf bis acht Workerknoten benötigt **/hana/shared** 4 TB an Speicher. 
 - Bei einem Masterknoten und neun bis zwölf Workerknoten benötigt **/hana/shared** 6 TB an Speicher. 
 - Bei einem Masterknoten und 12 bis 15 Workerknoten wird ein **/hana/shared**-Volume mit 8 TB Speicher benötigt.
 
@@ -216,7 +216,7 @@ Wenn Sie den hochverfügbaren NFS-Cluster für SAP HANA-Konfigurationen freigebe
 ### <a name="installing-sap-hana-scale-out-n-azure"></a>Installieren der horizontalen SAP HANA-Skalierung in Azure
 Zum Installieren einer horizontalen SAP-Konfiguration führen Sie die folgenden Schritte aus:
 
-- Bereitstellen einer neuen Azure-VNet-Architektur oder Anpassen einer bestehenden
+- Bereitstellen einer neuen Azure-VNET-Architektur oder Anpassen einer bestehenden
 - Bereitstellen der neuen virtuellen Computer unter Verwendung verwalteter Azure Storage Premium-Volumes
 - Bereitstellen eines neuen hochverfügbaren NFS-Clusters oder Anpassen eines bestehenden
 - Anpassen des Netzwerkroutings, um beispielsweise sicherzustellen, dass die knotenübergreifende Kommunikation zwischen virtuellen Computer nicht durch [NVAs](https://azure.microsoft.com/solutions/network-appliances/) geleitet wird. Dasselbe gilt für den Datenverkehr zwischen den VMs und dem hoch verfügbaren NFS-Cluster.

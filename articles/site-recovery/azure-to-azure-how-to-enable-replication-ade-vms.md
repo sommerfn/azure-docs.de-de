@@ -6,21 +6,24 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840639"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884126"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
 In diesem Artikel erfahren Sie, wie Sie ADE-fähige (Azure Disk Encryption) virtueller Computer zwischen Azure-Regionen replizieren.
 
 >[!NOTE]
->Azure Site Recovery unterstützt derzeit nur virtuelle Azure-Computer, die ein Windows-Betriebssystem ausführen.
+>Azure Site Recovery unterstützt derzeit nur ADE-fähige (Azure Disk Encryption) virtuelle Azure-Computer mit einem Windows-Betriebssystem. ADE-fähige virtuelle Computer ohne Azure AD-App werden nun unterstützt, wenn sie verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt.
+
+>[!NOTE]
+>Bei der Umstellung von ADE V1 (mit Azure AD-App) auf ADE V2 (ohne Azure AD-App) müssen Sie die Replikation deaktivieren und nach der Aktivierung von ADE V2 wieder aktivieren.
 
 ## <a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
 Site Recovery erfordert, dass der Benutzer über Berechtigungen zum Erstellen des Schlüsseltresors in der Zielregion und zum Kopieren von Schlüsseln aus dem Schlüsseltresor der Quellregion in den Schlüsseltresor der Zielregion verfügt.

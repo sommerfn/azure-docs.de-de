@@ -2,17 +2,17 @@
 title: Bereitstellen einer VM von Ihren VHDs für den Azure Marketplace
 description: Dieser Artikel erläutert, wie Sie eine VM von einer in Azure bereitgestellten virtuellen Festplatte registrieren.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.author: evansma
+ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938286"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934967"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Bereitstellen eines virtuellen Computers auf Basis der VHDs
 
@@ -59,7 +59,7 @@ Nachdem Ihr virtueller Computer bereitgestellt wurde, können Sie [Ihr VM-Image 
    |  -------------              |   ---------------                                                            |
    | Name des Speicherkontos des Benutzers   | Name des Speicherkontos, in dem sich die generalisierte VHD befindet                    |
    | Name des Speichercontainers des Benutzers | Name des Containers, in dem sich die generalisierte VHD befindet                          |
-   | DNS-Name für öffentliche IP-Adresse      | DNS-Name der öffentlichen IP-Adresse                                                           |
+   | DNS-Name für öffentliche IP-Adresse      | DNS-Name der öffentlichen IP-Adresse. Der DNS-Name ist der des virtuellen Computers. Sie legen ihn nach der Bereitstellung des Angebots im Azure-Portal fest.  |
    | Administratorbenutzername             | Der Benutzername des Administratorkontos für die neue VM                                  |
    | Administratorkennwort              | Das Kennwort des Administratorkontos für die neue VM                                  |
    | OS Type (Betriebssystemtyp)                     | VM-Betriebssystem: `Windows` \| `Linux`                                    |

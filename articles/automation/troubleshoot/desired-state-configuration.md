@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688112"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850254"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -24,13 +24,14 @@ Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfi
 
 Wenn es beim Kompilieren oder Bereitstellen von Konfigurationen in Azure State Configuration zu Fehlern kommt, finden Sie hier einige Schritte, um das Problem zu diagnostizieren.
 
-1. **Stellen Sie sicher, dass die Konfiguration auf Ihrem lokalen Computer erfolgreich kompiliert wird:**  Azure State Configuration ist in PowerShell DSC integriert. Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](/powershell/dsc/overview/overview).
+1. **Stellen Sie sicher, dass die Konfiguration auf Ihrem lokalen Computer erfolgreich kompiliert wird:**  Azure State Configuration ist in PowerShell DSC integriert. Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).
 
-   Durch das Kompilieren der DSC-Konfiguration auf Ihrem lokalen Computer können Sie einige häufige Fehler ermitteln und beheben, darunter diese:
+   Durch das Kompilieren der DSC-Konfiguration auf Ihrem lokalen Computer können Sie unter anderem die folgenden allgemeinen Fehler ermitteln und beheben:
 
    - **Fehlende Module**
    - **Syntaxfehler**
    - **Logikfehler**
+
 2. **Zeigen Sie die DSC-Protokolle auf Ihrem Knoten an:** Wenn Ihre Konfiguration erfolgreich kompiliert wird, aber nicht auf einen Knoten angewendet werden kann, finden Sie in den Protokollen ausführliche Informationen. Informationen zum Speicherort der DSC-Protokolle finden Sie unter [Wo befinden sich die DSC-Ereignisprotokolle?](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
    Darüber hinaus können Sie mithilfe von [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) die Informationen in den DSC-Protokollen analysieren. Wenn Sie sich an den Support wenden, werden diese Protokolle zur Diagnose des Problems benötigt.
@@ -40,7 +41,7 @@ Wenn es beim Kompilieren oder Bereitstellen von Konfigurationen in Azure State C
    Um **xDscDiagnostics** auf Ihrem Azure-Computer zu installieren, können Sie [az vm run-command](/cli/azure/vm/run-command) oder [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) verwenden. Es ist auch möglich, die Option **Befehl ausführen** aus dem Portal zu verwenden. Folgen Sie hierzu den Schritten unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../../virtual-machines/windows/run-command.md).
 
    Informationen zur Verwendung von **xDscDiagnostics** finden Sie unter [Verwenden von „xDscDiagnostics“ zum Analysieren von DSC-Protokollen](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs) sowie im Abschnitt zu den [xDscDiagnostics-Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Stellen Sie sicher, dass Ihre Knoten und der Automation-Arbeitsbereich über die erforderlichen Module verfügen:** DSC hängt von den Modulen ab, die auf dem Knoten installiert sind.  Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#import-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen.  Weitere Informationen finden Sie im Artikel zur [Problembehandlung von Modulen](shared-resources.md#modules).
+3. **Stellen Sie sicher, dass Ihre Knoten und der Automation-Arbeitsbereich über die erforderlichen Module verfügen:** DSC hängt von den Modulen ab, die auf dem Knoten installiert sind.  Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#import-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen.  Weitere Informationen finden Sie unter [Beheben von Fehlern bei freigegebenen Ressourcen](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Häufige Fehler beim Verwenden der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -130,7 +131,7 @@ Wenn der Ausdruck nach dem Schlüsselwort **Node** in der DSC-Konfiguration mit 
 Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 
 * Stellen Sie sicher, dass der Ausdruck neben dem Schlüsselwort **Node** in der Konfigurationsdefinition nicht mit „$null“ ausgewertet wird.
-* Wenn Sie bei der Kompilierung der Konfiguration ConfigurationData übergeben, stellen Sie sicher, dass Sie die erwarteten Werte übergeben, die für die Konfiguration aus [ConfigurationData](../automation-dsc-compile.md#configurationdata)erforderlich sind.
+* Wenn Sie bei der Kompilierung der Konfiguration ConfigurationData übergeben, stellen Sie sicher, dass Sie die erwarteten Werte übergeben, die für die Konfiguration aus [ConfigurationData](../automation-dsc-compile.md)erforderlich sind.
 
 ### <a name="dsc-in-progress"></a>Szenario: Der DSC-Knotenbericht bleibt mit dem Status „In Bearbeitung“ hängen
 
@@ -166,7 +167,7 @@ Sie haben Anmeldeinformationen in einer Konfiguration verwendet, aber keine ordn
 
 #### <a name="resolution"></a>Lösung
 
-* Stellen Sie sicher, dass Sie die ordnungsgemäßen **ConfigurationData** übergeben, über die **PSDscAllowPlainTextPassword** für jede Knotenkonfiguration auf „true“ festgelegt wird. Weitere Informationen finden Sie unter [Assets in Azure Automation DSC](../automation-dsc-compile.md#assets).
+* Stellen Sie sicher, dass Sie die ordnungsgemäßen **ConfigurationData** übergeben, über die **PSDscAllowPlainTextPassword** für jede Knotenkonfiguration auf „true“ festgelegt wird. Weitere Informationen finden Sie unter [Assets in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
 ### <a name="failure-processing-extension"></a>Szenario: Onboarding über DSC-Erweiterung, Fehler beim Verarbeiten der Erweiterung
 
@@ -199,11 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Ursache
 
-Kunden haben festgestellt, dass die aktuelle Version von DSC Konfiguration nicht übernimmt, wenn der „/tmp“-Speicherort als „noexec“ eingerichtet ist.
+Kunden haben festgestellt, dass die aktuelle Version von DSC Konfigurationen nicht übernimmt, wenn der Speicherort `/tmp` auf `noexec` festgelegt ist.
 
 #### <a name="resolution"></a>Lösung
 
-* Entfernen Sie die Option „noexec“ aus dem Speicherort „/tmp“.
+* Entfernen Sie die Option `noexec` aus dem Speicherort `/tmp`.
+
+### <a name="compilation-node-name-overlap"></a>Szenario: Sich überschneidende Knotenkonfigurationsnamen können zu einem fehlerhaften Release führen.
+
+#### <a name="issue"></a>Problem
+
+Wenn zum Generieren mehrerer Knotenkonfigurationen ein einzelnes Skript verwendet wird und einige der Knotenkonfigurationen einen Namen besitzen, der in anderen enthalten ist, kann ein Problem beim Kompilierungsdienst dazu führen, dass die falsche Konfiguration zugewiesen wird.  Dies ist nur der Fall, wenn ein einzelnes Skript zum Generieren von Konfigurationen mit Konfigurationsdaten pro Knoten verwendet wird und die Namensüberschneidung am Anfang der Zeichenfolge auftritt.
+
+Beispiel: Ein einzelnes Konfigurationsskript wird zum Generieren von Konfigurationen auf der Grundlage von Knotendaten verwendet, die unter Verwendung von Cmdlets als Hashtabelle übergeben werden, und die Knotendaten enthalten einen Server namens „server“ und „1server“.
+
+#### <a name="cause"></a>Ursache
+
+Bekanntes Problem beim Kompilierungsdienst
+
+#### <a name="resolution"></a>Lösung
+
+Sie umgehen das Problem am besten, indem Sie die Kompilierung lokal oder in einer CI/CD-Pipeline ausführen und die MOF-Dateien anschließend direkt in den Dienst hochladen.  Muss die Kompilierung im Dienst erfolgen, besteht die zweitbeste Problemumgehung darin, die Kompilierungsaufträge aufzuteilen, damit es keine Überschneidungen bei den Namen gibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

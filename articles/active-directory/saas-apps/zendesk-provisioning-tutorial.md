@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166b7727362549aaf054e3f0282c564eca687eb9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672878"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851968"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zendesk für die automatische Benutzerbereitstellung
 
@@ -35,11 +35,8 @@ In diesem Tutorial werden die Schritte erläutert, die Sie in Zendesk und Azure 
 Das in diesem Tutorial beschriebene Szenario setzt voraus, dass Sie über folgende Elemente verfügen:
 
 * Einen Azure AD-Mandanten.
-* Einen Zendesk-Mandanten, für den mindestens der [Enterprise](https://www.zendesk.com/product/pricing/)-Plan aktiviert ist.
+* Einen Zendesk-Mandanten, für den mindestens der Professional-Tarif aktiviert ist
 * Ein Benutzerkonto in Zendesk mit Administratorberechtigungen.
-
-> [!NOTE]
-> Die Azure AD-Bereitstellungsintegration basiert auf der [Zendesk-REST-API](https://developer.zendesk.com/rest_api/docs/core/introduction). Diese API ist für Zendesk-Teams im Enterprise-Plan (oder einem höheren Plan) verfügbar.
 
 ## <a name="add-zendesk-from-the-azure-marketplace"></a>Hinzufügen von Zendesk aus dem Azure Marketplace
 

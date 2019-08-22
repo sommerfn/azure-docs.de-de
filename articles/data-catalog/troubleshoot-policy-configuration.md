@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: f37110138ae62272e56b155b7e8a9aac2f80cdf8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734584"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879555"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Problembehandlung von Azure Data Catalog
 
@@ -21,7 +21,7 @@ Dieser Artikel beschreibt allgemeine Problembehandlungsüberlegungen für Azure 
 
 Wenn Sie Azure Data Catalog verwenden, sind die folgenden Funktionen eingeschränkt:
 
-- Konten mit dem Typ **Gastrolle** werden nicht unterstützt. Sie können keine Gastkonten als Benutzer von Azure Data Catalog hinzufügen, und Gastbenutzer können nicht das Portal unter www.azuredatacatalog.com verwenden.
+- Konten mit dem Typ **Gastrolle** werden nicht unterstützt. Sie können keine Gastkonten als Benutzer von Azure Data Catalog hinzufügen, und Gastbenutzer können nicht das Portal unter [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) verwenden.
 
 - Das Erstellen von Azure Data Catalog-Ressourcen mithilfe von Azure Resource Manager-Vorlagen oder über Azure PowerShell-Befehle wird nicht unterstützt.
 

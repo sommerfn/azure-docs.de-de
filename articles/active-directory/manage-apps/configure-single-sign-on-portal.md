@@ -98,7 +98,7 @@ Azure AD verwendet ein Zertifikat zum Signieren der SAML-Token, die an die Anwe
    - Wenn Sie erweiterte Optionen für die Zertifikatsignatur konfigurieren möchten, verwenden Sie die folgenden Optionen. Beschreibungen dieser Optionen finden Sie im Artikel unter [Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory](certificate-signing-options.md).
       - Wählen Sie in der Dropdownliste **Signaturoption** die Option **SAML-Anwort signieren**, **SAML-Assertion signieren** oder **SAML-Antwort und-Assertion signieren** aus.
       - Wählen Sie in der Dropdownliste **Signaturalgorithmus** die Option **SHA-1** oder **SHA-256** aus.
-   - Wenn weitere Personen darüber informiert werden sollen, dass das Ablaufdatum des aktiven Zertifikats bald erreicht ist, geben Sie die entsprechenden E-Mail-Adressen in die Felder für die Benachrichtigungs-E-Mail-Adressen **** ein.
+   - Wenn weitere Personen darüber informiert werden sollen, dass das Ablaufdatum des aktiven Zertifikats bald erreicht ist, geben Sie die entsprechenden E-Mail-Adressen in die Felder für die **Benachrichtigungs-E-Mail-Adressen**ein.
 
 1. Klicken Sie oben im Abschnitt **SAML-Signaturzertifikat** auf **Speichern**. 
 
