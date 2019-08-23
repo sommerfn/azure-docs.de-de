@@ -74,8 +74,6 @@
               items:
                 - name: Zweck
                   href: ../azure-monitor/insights/service-map.md
-                - name: Konfigurieren
-                  href: ../azure-monitor/insights/service-map-configure.md
                 - name: Operations Manager-Integration
                   href: ../azure-monitor/insights/service-map-scom.md
             - name: SQL Assessment

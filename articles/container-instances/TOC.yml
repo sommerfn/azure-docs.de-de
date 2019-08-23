@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Connector
+      href: /connectors/aci
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

@@ -72,7 +72,7 @@
             - name: Aktualisieren von Media Services nach dem Austausch der Speicherzugriffsschlüssel
               href: media-services-roll-storage-access-keys.md
             - name: Speicherkontenübergreifendes Verwalten von Assets
-              href: meda-services-managing-multiple-storage-accounts.md
+              href: media-services-managing-multiple-storage-accounts.md
         - name: Kontingente und Einschränkungen
           href: media-services-quotas-and-limitations.md
     - name: Konfigurieren von Postman
@@ -94,8 +94,6 @@
               href: media-services-dotnet-upload-files.md
             - name: REST
               href: media-services-rest-upload-files.md
-        - name: Hochladen großer Dateien mit Aspera
-          href: media-services-upload-files-with-aspera.md
         - name: Hochladen von Dateien mit StorSimple
           href: media-services-upload-files-from-storsimple.md
         - name: Kopieren vorhandener Blobs

@@ -6,10 +6,9 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie die Textübersetzung zum Übersetzen von Text in mehreren Sprachen verwenden.'
   services: cognitive-services
   author: swmachan
-  manager: Chris.Wendt
+  manager: nitinme
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: translator-text
   ms.topic: landing-page
   ms.date: 06/04/2019
   ms.author: swmachan

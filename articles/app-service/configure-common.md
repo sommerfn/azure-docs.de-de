@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990287"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636652"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -167,7 +167,7 @@ Navigieren Sie im [Azure-Portal] zur Verwaltungsseite der App. Klicken Sie im li
 
 ![Allgemeine Einstellungen](./media/configure-common/open-general.png)
 
-Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Einige Einstellungen erfordern [zentrales Hochskalieren auf höhere Tarife](web-sites-scale.md).
+Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Einige Einstellungen erfordern [zentrales Hochskalieren auf höhere Tarife](manage-scale-up.md).
 
 - **Stapeleinstellungen**: Der Softwarestapel zum Ausführen der App, einschließlich der Sprach- und SDK-Version. Für Linux-Apps und benutzerdefinierte Container-Apps können Sie auch optional einen Startbefehl oder eine Startdatei festlegen.
 - **Plattformeinstellungen**: Ermöglicht das Konfigurieren von Einstellungen für die Hostingplattform, einschließlich:
@@ -268,4 +268,4 @@ Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App S
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Grundlagen der Überwachung in Azure App Service]: ./web-sites-monitor.md
 [Pipelinemodus]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Skalieren einer App in Azure App Service]: ./web-sites-scale.md
+[Skalieren einer App in Azure App Service]: ./manage-scale-up.md

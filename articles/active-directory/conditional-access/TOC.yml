@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: Bewährte Methoden
       href: best-practices.md
-    - name: Allgemeine Richtlinienvorlagen
+    - name: Allgemeine Richtlinien für bedingten Zugriff
       items:
         - name: Vorschreiben der MFA für Administratoren
           href: howto-conditional-access-policy-admin-mfa.md

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881429"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624333"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 
@@ -44,12 +44,12 @@ Sie können den für einen Arbeitsbereich konfigurierten Zugriffssteuerungsmodus
 
 ### <a name="configure-from-the-azure-portal"></a>Konfigurieren über das Azure-Portal
 
-Sie können den aktuellen Zugriffssteuerungsmodus für den Arbeitsbereich auf der Seite **Übersicht** für den Arbeitsbereich im Menü **Log Analytics-Arbeitsbereich** anzeigen. 
+Sie können den aktuellen Zugriffssteuerungsmodus für den Arbeitsbereich auf der Seite **Übersicht** für den Arbeitsbereich im Menü **Log Analytics-Arbeitsbereich** anzeigen.
 
 ![Anzeigen des Zugriffssteuerungsmodus für den Arbeitsbereich](media/manage-access/view-access-control-mode.png)
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-1. Wählen Sie im Azure-Portal die Option „Log Analytics-Arbeitsbereiche“ und dann Ihren Arbeitsbereich aus.  
+1. Wählen Sie im Azure-Portal die Option „Log Analytics-Arbeitsbereiche“ und dann Ihren Arbeitsbereich aus.
 
 Sie können diese Einstellung auf der Seite **Eigenschaften** des Arbeitsbereichs ändern. Das Ändern der Einstellung ist deaktiviert, wenn Sie keine Berechtigungen zum Konfigurieren des Arbeitsbereichs besitzen.
 
@@ -60,7 +60,7 @@ Sie können diese Einstellung auf der Seite **Eigenschaften** des Arbeitsbereich
 Verwenden Sie den folgenden Befehl, um den Zugriffssteuerungsmodus für alle Arbeitsbereiche im Abonnement zu überprüfen:
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 Die Ausgabe sollte wie folgt aussehen:
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Der Wert `False` bedeutet, dass der Arbeitsbereich mit dem Zugriffsmodus für den Arbeitsbereichskontext konfiguriert ist.  Der Wert `True` bedeutet, dass der Arbeitsbereich mit dem Zugriffsmodus für den Ressourcenkontext konfiguriert ist. 
+Der Wert `False` bedeutet, dass der Arbeitsbereich mit dem Zugriffsmodus für den Arbeitsbereichskontext konfiguriert ist.  Der Wert `True` bedeutet, dass der Arbeitsbereich mit dem Zugriffsmodus für den Ressourcenkontext konfiguriert ist.
 
->[!NOTE]
->Wenn ein Arbeitsbereich ohne einen booleschen Wert zurückgegeben wird und leer ist, entspricht dies ebenfalls den Ergebnissen eines `False`-Werts.
+> [!NOTE]
+> Wenn ein Arbeitsbereich ohne einen booleschen Wert zurückgegeben wird und leer ist, entspricht dies ebenfalls den Ergebnissen eines `False`-Werts.
 >
 
 Verwenden Sie das folgende Skript, um den Zugriffssteuerungsmodus für einen bestimmten Arbeitsbereich auf die Berechtigung im Ressourcenkontext festzulegen:
@@ -81,9 +81,9 @@ Verwenden Sie das folgende Skript, um den Zugriffssteuerungsmodus für einen bes
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Verwenden Sie das folgende Skript, um den Zugriffssteuerungsmodus für alle Arbe
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -159,10 +159,10 @@ Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausf
 * Hinzufügen und Entfernen von Verwaltungslösungen
 
     > [!NOTE]
-    > Um die letzten beiden Aktionen erfolgreich ausführen zu können, muss diese Berechtigung auf der Ressourcengruppen- oder Abonnementebene gewährt werden.  
+    > Um die letzten beiden Aktionen erfolgreich ausführen zu können, muss diese Berechtigung auf der Ressourcengruppen- oder Abonnementebene gewährt werden.
 
 * Lesen von Speicherkontoschlüsseln
-* Konfigurieren der Sammlung von Protokollen aus Azure Storage  
+* Konfigurieren der Sammlung von Protokollen aus Azure Storage
 * Bearbeiten von Überwachungseinstellungen für Azure-Ressourcen, einschließlich:
   * Hinzufügen der VM-Erweiterung zu virtuellen Computern
   * Konfigurieren von Azure-Diagnosen für alle Azure-Ressourcen
@@ -202,7 +202,7 @@ Wenn Benutzer Protokolle aus einem Arbeitsbereich mit Zugriff im Ressourcenkonte
 | Berechtigung | BESCHREIBUNG |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Beispiele:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Möglichkeit, alle Protokolldaten für die Ressource anzuzeigen.  |
-| `Microsoft.Insights/diagnosticSettings/write ` | Die Möglichkeit zum Konfigurieren von Diagnoseeinstellungen, um das Einrichten von Protokollen für diese Ressource zuzulassen. |
+| `Microsoft.Insights/diagnosticSettings/write` | Die Möglichkeit zum Konfigurieren von Diagnoseeinstellungen, um das Einrichten von Protokollen für diese Ressource zuzulassen. |
 
 Die `/read`-Berechtigung wird in der Regel von einer Rolle erteilt, die _\*/read or_ _\*_ -Berechtigungen enthält, beispielsweise von den integrierten Rollen [Leser](../../role-based-access-control/built-in-roles.md#reader) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor). Beachten Sie, dass benutzerdefinierte Rollen, die bestimmte Aktionen umfassen, oder dedizierte integrierte Rollen diese Berechtigung ggf. nicht enthalten können.
 
