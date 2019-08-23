@@ -3,7 +3,7 @@ title: Erste Schritte mit Blob Storage und verbundenen Visual Studio-Diensten (W
 description: Erste Schritte mit Blobspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122922"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510654"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]

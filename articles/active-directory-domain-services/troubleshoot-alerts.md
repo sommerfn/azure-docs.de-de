@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 63f2e12b9b769e806f8bd052af5bc78aed6a1fe0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 5a8f3401de0dc452193efbcf79aef87a19aed081
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472305"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617089"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -81,7 +81,7 @@ Führen Sie die folgenden Schritte aus, um Ihren Dienst wiederherzustellen:
 
 1. [Löschen Sie Ihre verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
 2. Erstellen Sie ein neues Verzeichnis, das kein Azure AD B2C-Verzeichnis ist.
-3. Folgen Sie den Anweisungen im Leitfaden [Erste Schritte](create-instance.md), um eine verwaltete Domäne neu zu erstellen.
+3. Folgen Sie den Anweisungen im Leitfaden [Erste Schritte](tutorial-create-instance.md), um eine verwaltete Domäne neu zu erstellen.
 
 ## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103: Adresse befindet sich in einem öffentlichen IP-Adressbereich
 
@@ -110,7 +110,7 @@ Innerhalb des virtuellen Netzwerks können Computer Anforderungen für Azure-Res
    5. Klicken Sie in linken Navigationsbereich auf **Subnetze**.
    6. Klicken Sie in der Tabelle auf das Subnetz, das Sie bearbeiten möchten.
    7. Aktualisieren Sie den Adressbereich, und speichern Sie Ihre Änderungen.
-3. Befolgen Sie die Anweisungen im Handbuch [Erste Schritte mit Azure Active Directory Domain Services](create-instance.md), um Ihre verwaltete Domäne neu zu erstellen. Achten Sie darauf, ein virtuelles Netzwerk mit einem privaten IP-Adressbereich auszuwählen.
+3. Befolgen Sie die Anweisungen im Handbuch [Erste Schritte mit Azure Active Directory Domain Services](tutorial-create-instance.md), um Ihre verwaltete Domäne neu zu erstellen. Achten Sie darauf, ein virtuelles Netzwerk mit einem privaten IP-Adressbereich auszuwählen.
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](join-windows-vm.md).
 8. Um sicherzustellen, dass die Warnung aufgelöst wurde, überprüfen Sie den Status Ihrer Domäne nach zwei Stunden noch einmal.
 
@@ -126,7 +126,7 @@ Azure AD Domain Services benötigt ein Abonnement und kann nicht in ein anderes 
 
 1. Erstellt ein Azure-Abonnement.
 2. [Löschen Sie Ihre verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
-3. Folgen Sie den Anweisungen im Leitfaden [Erste Schritte](create-instance.md), um eine verwaltete Domäne neu zu erstellen.
+3. Folgen Sie den Anweisungen im Leitfaden [Erste Schritte](tutorial-create-instance.md), um eine verwaltete Domäne neu zu erstellen.
 
 ## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Das Azure-Abonnement wurde deaktiviert
 
@@ -177,7 +177,7 @@ Azure AD Domain Services erstellt für eine ordnungsgemäße Funktion bestimmte 
 
 **Lösung:**
 
-Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und [sie neu erstellen](create-instance.md).
+Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und [sie neu erstellen](tutorial-create-instance.md).
 
 ## <a name="aadds111-service-principal-unauthorized"></a>AADDS111: Dienstprinzipal nicht autorisiert
 
@@ -222,7 +222,7 @@ Unsere Dienstprinzipale benötigen Zugriff, um Ressourcen in Ihrer verwalteten D
 
 **Lösung:**
 
-Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und [sie neu erstellen](create-instance.md).
+Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und [sie neu erstellen](tutorial-create-instance.md).
 
 ## <a name="aadds114-subnet-invalid"></a>AADDS114: Subnetz ungültig
 
@@ -232,7 +232,7 @@ Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vo
 
 **Lösung:**
 
-Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und [sie neu erstellen](create-instance.md).
+Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und [sie neu erstellen](tutorial-create-instance.md).
 
 ## <a name="aadds115-resources-are-locked"></a>AADDS115: Ressourcen gesperrt
 
@@ -270,7 +270,7 @@ Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vo
 
 Einige häufige Gründe, warum die Synchronisierung in verwalteten Domänen unterbrochen wird:
 - Die Netzwerkverbindung ist für die verwaltete Domäne blockiert. Weitere Informationen zum Überprüfen des Netzwerks auf Probleme finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen](alert-nsg.md) und [Netzwerkanforderungen für Azure AD Domain Services](network-considerations.md).
--  Die Kennwortsynchronisierung wurde nicht eingerichtet oder nicht abgeschlossen. Informationen zum Einrichten der Kennwortsynchronisierung finden Sie in [diesem Artikel](active-directory-ds-getting-started-password-sync.md).
+-  Die Kennwortsynchronisierung wurde nicht eingerichtet oder nicht abgeschlossen. Informationen zum Einrichten der Kennwortsynchronisierung finden Sie in [diesem Artikel](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Eine Sicherung wurde eine Weile nicht durchgeführt
 

@@ -2,19 +2,19 @@
 title: Häufig gestellte Fragen (FAQ) – Azure Search
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Microsoft Azure Search-Dienst, einem in der Cloud gehosteten Suchdienst für Microsoft Azure.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023992"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649826"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – Häufig gestellte Fragen (FAQ)
 

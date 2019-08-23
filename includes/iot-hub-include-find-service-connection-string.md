@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 07/16/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b6ca43616a2e7e7611b122bce5c95084e1fd5012
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 55cdd864d73ce084d994c64233e79d5a58b17def
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402374"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558445"
 ---
 <!-- This tells how to get the connection string for the service shared access policy of your IoT hub -->
 
 Führen Sie zum Abrufen der IoT-Hub-Verbindungszeichenfolge für die Richtlinie **service** die folgenden Schritte aus:
 
-1. Öffnen Sie Ihren IoT-Hub im [Azure-Portal](https://portal.azure.com).  Wählen Sie dazu am besten **Ressourcengruppen**, anschließend die Ressourcengruppe, in der sich Ihr IoT-Hub befindet, und dann in der Ressourcenliste diesen IoT-Hub aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressourcengruppen** aus. Wählen Sie die Ressourcengruppe aus, in der sich der Hub befindet, und wählen Sie dann in der Liste der Ressourcen Ihren Hub aus.
 
-2. Wählen Sie im linken Bereich Ihres IoT-Hubs **Freigegebene Zugriffsrichtlinien** aus.
+1. Wählen Sie im linken Bereich Ihres IoT-Hubs **Freigegebene Zugriffsrichtlinien** aus.
 
-3. Wählen Sie in der Liste der Richtlinien die Richtlinie **service** aus.
+1. Wählen Sie in der Liste der Richtlinien die Richtlinie **service** aus.
 
-4. Wählen Sie unter **Schlüssel für gemeinsamen Zugriff** das Kopiersymbol für **Verbindungszeichenfolge – Primärschlüssel** aus, und speichern Sie den Wert.
+1. Wählen Sie unter **Schlüssel für gemeinsamen Zugriff** das Kopiersymbol für **Verbindungszeichenfolge – Primärschlüssel** aus, und speichern Sie den Wert.
 
     ![Abrufen der Verbindungszeichenfolge.](./media/iot-hub-include-find-service-connection-string/iot-hub-get-connection-string.png)
 
-Weitere Informationen zu freigegebenen Zugriffsrichtlinien und Berechtigungen für IoT-Hub finden Sie unter [Zugriffssteuerung und Berechtigungen.](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)
+Weitere Informationen zu SAS-Richtlinien und Berechtigungen für IoT-Hubs finden Sie unter [Access Control und Berechtigungen](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).

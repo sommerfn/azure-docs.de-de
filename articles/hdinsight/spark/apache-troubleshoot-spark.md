@@ -4,15 +4,15 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeit
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88136fee7a75b8f3b8e504b1ff1e6673a31bcf7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721153"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543175"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Problembehandlung bei Apache Spark mit Azure HDInsight
 
@@ -133,91 +133,16 @@ Diese Änderungen betreffen den gesamten Cluster, sie können jedoch beim Senden
 
 [Übermitteln von Apache Spark-Aufträgen in HDInsight-Clustern](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
+## <a name="next-steps"></a>Nächste Schritte
 
-## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Wodurch wird eine OutOfMemoryError-Ausnahme in einer Apache Spark-Anwendung verursacht?
+Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
-### <a name="detailed-description"></a>Detaillierte Beschreibung
+* [Spark memory management overview](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview) (Übersicht über die Spark-Speicherverwaltung).
 
-Bei der Spark-Anwendung sind die folgenden Typen nicht abgefangener Ausnahmefehler aufgetreten:
+* [Debugging Spark application on HDInsight clusters](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/) (Debuggen der Spark-Anwendung in HDInsight-Clustern).
 
-```apache
-ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
+* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
 
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
+* Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-```apache
-ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker-0,5,main] 
-
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
-
-### <a name="probable-cause"></a>Wahrscheinliche Ursache
-
-Die wahrscheinlichste Ursache dieser Ausnahme besteht darin, dass den Java Virtual Machines (JVMs) kein ausreichender Heapspeicher zugeordnet ist. Diese JVMs werden als Executors oder Treiber im Rahmen der Spark-Anwendung gestartet. 
-
-### <a name="resolution-steps"></a>Lösungsschritte
-
-1. Ermitteln Sie die maximale Größe der Daten, die von der Spark-Anwendung verarbeitet werden. Basierend auf der maximalen Größe der Eingabedaten, der bei der Transformation der Eingabedaten erzeugten Zwischendateien und der Ausgabedaten, die bei der weiteren Transformation der Zwischendateien durch die Anwendung erzeugt werden, kann eine Schätzung vorgenommen werden. Diese kann iterativ erfolgen, wenn Sie keine formale Ausgangsschätzung vornehmen können. 
-
-2. Stellen Sie sicher, dass der verwendete HDInsight-Cluster über ausreichende Ressourcen im Hinblick auf Arbeitsspeicher und Kerne verfügt, um die Spark-Anwendung auszuführen. Dies können Sie feststellen, indem Sie den Abschnitt mit den Clustermetriken der YARN-Benutzeroberfläche für die Werte **Verwendeter Arbeitsspeicher**, **Arbeitsspeicher gesamt** sowie **VCores Used** (Verwendete VCores) und **VCores Total** (VCores insgesamt) betrachten.
-
-3. Legen Sie die folgenden Spark-Konfigurationen auf die entsprechenden Werte fest, die 90 % der verfügbaren Ressourcen an Arbeitsspeicher und Kernen nicht überschreiten sollten. Die Werte sollten die Arbeitsspeicheranforderungen der Spark-Anwendung erfüllen: 
-
-    ```apache
-    spark.executor.instances (Example: 8 for 8 executor count) 
-    spark.executor.memory (Example: 4g for 4 GB) 
-    spark.yarn.executor.memoryOverhead (Example: 384m for 384 MB) 
-    spark.executor.cores (Example: 2 for 2 cores per executor) 
-    spark.driver.memory (Example: 8g for 8GB) 
-    spark.driver.cores (Example: 4 for 4 cores)   
-    spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
-    ```
-
-    So berechnen Sie den gesamten von allen Executors verwendeten Arbeitsspeicher: 
-    
-    ```apache
-    spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
-    ```
-   So berechnen Sie den gesamten vom Treiber verwendeten Arbeitsspeicher:
-    
-    ```apache
-    spark.driver.memory + spark.yarn.driver.memoryOverhead
-    ```
-
-### <a name="additional-reading"></a>Zusätzliche Lektüre
-
-- [Übersicht über die Apache Spark-Speicherverwaltung](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Debuggen einer Apache Spark-Anwendung in einem HDInsight-Cluster](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
-
-
-### <a name="see-also"></a>Siehe auch
-[Beheben von Problemen mit Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

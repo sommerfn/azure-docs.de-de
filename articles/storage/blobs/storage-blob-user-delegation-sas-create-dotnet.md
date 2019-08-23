@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990590"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900426"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET (Vorschau)
 
@@ -44,7 +44,7 @@ Verwenden Sie für die Authentifizierung mit Azure AD-Anmeldeinformationen übe
 
 Rufen Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) auf, um einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle zu erstellen und eine RBAC-Rolle zuzuweisen. Geben Sie eine Azure Storage-Datenzugriffsrolle an, die dem neuen Dienstprinzipal zugewiesen werden soll. Die Rolle muss die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten. Weitere Informationen zu den für Azure Storage bereitgestellten integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md).
 
-Geben Sie außerdem den Bereich für die Rollenzuweisung an. Der Dienstprinzipal erstellt den Benutzerdelegierungsschlüssel, bei dem es sich um einen Vorgang handelt, der auf der Ebene des Speicherkontos ausgeführt wird. Daher sollte die Rollenzuweisung auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements festgelegt werden. Weitere Informationen zu RBAC-Berechtigungen zum Erstellen einer SAS für die Benutzerdelegierung finden Sie im Abschnitt **Zuweisen von Berechtigungen mit RBAC** unter [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-a-user-delegation-sas).
+Geben Sie außerdem den Bereich für die Rollenzuweisung an. Der Dienstprinzipal erstellt den Benutzerdelegierungsschlüssel, bei dem es sich um einen Vorgang handelt, der auf der Ebene des Speicherkontos ausgeführt wird. Daher sollte die Rollenzuweisung auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements festgelegt werden. Weitere Informationen zu RBAC-Berechtigungen zum Erstellen einer SAS für die Benutzerdelegierung finden Sie im Abschnitt **Zuweisen von Berechtigungen mit RBAC** unter [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-user-delegation-sas).
 
 Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle zum Dienstprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die Rollenzuweisung vorzunehmen.
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Vorgang zum Abrufen eines Benutzerdelegierungsschlüssels](/rest/api/storageservices/get-user-delegation-key)
-- [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-user-delegation-sas)

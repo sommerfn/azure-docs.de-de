@@ -3,7 +3,7 @@ title: Vorschauversion der REST-API für Azure Search 2019-05-06-Preview – Azu
 description: Die REST-API für den Azure Search-Dienst, Version 2019-05-06-Preview, beinhaltet experimentelle Features wie Wissensspeicher und von Kunden verwaltete Verschlüsselungsschlüssel.
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876656"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649979"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Azure Search-Dienst: Version 2019-05-06-Preview
 Dieser Artikel beschreibt die Version `api-version=2019-05-06-Preview` der Azure Search-Dienst-REST-API, welche die folgenden experimentellen Features bietet, die noch nicht allgemein verfügbar sind.

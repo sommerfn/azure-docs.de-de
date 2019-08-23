@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019680"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896996"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL
 
@@ -116,8 +116,9 @@ Für die Erstellung eines eigenständigen Datenbankbenutzers in Azure SQL-Datenb
 
 Die Azure Active Directory-Authentifizierung unterstützt die folgenden Methoden der Verbindungsherstellung mit einer Datenbank unter Verwendung von Azure AD-Identitäten:
 
-- Integrierte Windows-Authentifizierung
-- Azure AD-Prinzipalname und Kennwort
+- Azure Active Directory Password
+- Azure Active Directory Integrated
+- Azure Active Directory: universell mit MFA
 - Anwendungstokenauthentifizierung
 
 Die folgenden Authentifizierungsmethoden werden für Azure AD-Serverprinzipale (Anmeldungen) (**öffentliche Vorschau**) unterstützt:
@@ -125,7 +126,6 @@ Die folgenden Authentifizierungsmethoden werden für Azure AD-Serverprinzipale (
 - Azure Active Directory Password
 - Azure Active Directory Integrated
 - Azure Active Directory: universell mit MFA
-- Azure Active Directory Interactive
 
 
 ### <a name="additional-considerations"></a>Zusätzliche Überlegungen

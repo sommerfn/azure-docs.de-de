@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: a194919a488f6cb59c76315c9d8a3db1e9c1feb1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472205"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617046"
 ---
 # <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Behandeln von Problemen mit sicherem LDAP (LDAPS) für eine über Azure AD Domain Services verwaltete Domäne
 
@@ -42,8 +42,8 @@ Wenn Sie weiterhin Probleme beim Herstellen einer Verbindung mit der verwalteten
 
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](create-instance.md)
-* [Verwalten einer Azure AD Domain Services-Domäne](manage-domain.md)
+* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](tutorial-create-instance.md)
+* [Verwalten einer Azure AD Domain Services-Domäne](tutorial-create-management-vm.md)
 * [LDAP-Abfragegrundlagen](https://technet.microsoft.com/library/aa996205.aspx)
 * [Verwalten von Gruppenrichtlinien für Azure AD Domain Services](manage-group-policy.md)
 * [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)

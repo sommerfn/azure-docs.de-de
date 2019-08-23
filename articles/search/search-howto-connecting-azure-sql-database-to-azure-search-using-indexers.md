@@ -3,19 +3,19 @@ title: Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung
 description: Erfahren Sie, wie Sie Daten in Azure SQL-Datenbank mithilfe von Indexern für die Volltextsuche in Azure Search durchforsten. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed218fdc1c6580e9b92364d123b081a1f34b441
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755099"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656236"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Azure Search-Indexern
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 676efa155c85ab371ec41c49ad0c15eb2bd5a24a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 4978f7b782271daff996807172a24103bd8d9860
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234005"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617291"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure AD Domain Services-Domänen
 Sie verwenden eine durch Azure AD Domain Services verwaltete Domäne. Wenn Sie zum Azure-Portal navigieren und die verwaltete Domäne anzeigen, wird die folgende Fehlermeldung angezeigt:
@@ -63,5 +63,5 @@ Sie haben zwei Optionen zum Beheben des Verzeichniskonfliktfehlers. Sie können:
 
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](create-instance.md)
+* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](tutorial-create-instance.md)
 * [Leitfaden zur Problembehandlung – Azure AD Domain Services](troubleshoot.md)

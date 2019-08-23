@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94ec7c54e8e49685ad0289102f092516bcb0acfc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f13851dd43c80a63ec628e04b98271894c15afc0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478256"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542860"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -66,22 +66,6 @@ Wenn Sie einen anderen Objekttyp benötigen, können Sie eine Typumwandlung in e
 
 Neben den Standardrunbookparametern ist ein zusätzlicher Parameter verfügbar. **SoftwareUpdateConfigurationRunContext**. Dieser Parameter ist eine JSON-Zeichenfolge, und wenn Sie ihn in Ihrem Pre- oder Post-Skript definieren, wird er automatisch von der Updatebereitstellung übergeben. Der Parameter enthält Informationen zur Updatebereitstellung, bei denen es sich um eine Teilmenge der von der [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) zurückgegebenen Informationen handelt. In der folgenden Tabelle sind die Eigenschaften aufgeführt, die in der Variablen bereitgestellt werden:
 
-## <a name="stopping-a-deployment"></a>Beenden einer Bereitstellung
-
-Wenn Sie eine Bereitstellung basierend auf einem vorbereitenden Skript stoppen möchten, müssen Sie eine Ausnahme [auslösen](automation-runbook-execution.md#throw). Wenn Sie keine Ausnahme auslösen, werden die Bereitstellung und das nachbereitende Skript weiterhin ausgeführt. Das [Beispiel-Runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) im Katalog zeigt, wie Sie dazu vorgehen können. Das folgende ist ein Codeausschnitt aus diesem Runbook.
-
-```powershell
-#In this case, we want to terminate the patch job if any run fails.
-#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
-foreach($summary in $finalStatus)
-{
-    if ($summary.Type -eq "Error")
-    {
-        #We must throw in order to fail the patch deployment.  
-        throw $summary.Summary
-    }
-}
-```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-Eigenschaften
 
@@ -133,6 +117,25 @@ Ein vollständiges Beispiel mit allen Eigenschaften finden Sie unter: [Softwareu
 
 > [!NOTE]
 > Das `SoftwareUpdateConfigurationRunContext`-Objekt kann doppelte Einträge für Computer enthalten. Dies kann dazu führen, dass Pre- und Post-Skripts mehrmals auf demselben Computer ausgeführt werden. Zur Umgehung dieses Verhaltens verwenden Sie `Sort-Object -Unique`, um nur eindeutige VM-Namen in Ihrem Skript auszuwählen.
+
+
+## <a name="stopping-a-deployment"></a>Beenden einer Bereitstellung
+
+Wenn Sie eine Bereitstellung basierend auf einem vorbereitenden Skript stoppen möchten, müssen Sie eine Ausnahme [auslösen](automation-runbook-execution.md#throw). Wenn Sie keine Ausnahme auslösen, werden die Bereitstellung und das nachbereitende Skript weiterhin ausgeführt. Das [Beispiel-Runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) im Katalog zeigt, wie Sie dazu vorgehen können. Das folgende ist ein Codeausschnitt aus diesem Runbook.
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
+
 
 ## <a name="samples"></a>Beispiele
 

@@ -3,7 +3,7 @@ title: Vermeiden des erneuten Ladens von Seiten (Microsoft Authentication Librar
 description: Erfahren Sie, wie Sie das erneute Laden von Seiten vermeiden, wenn Sie Token mithilfe der Microsoft Authentication Library für JavaScript (MSAL.js) automatisch abrufen und erneuern.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 162811221e6dde89ad11f358b2ec8f32f3c82522
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420404"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532837"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Vermeiden des erneuten Ladens von Seiten, wenn Sie Token mithilfe von MSAL.js automatisch abrufen und erneuern
 Die Microsoft Authentication Library für JavaScript (MSAL.js) verwendet ausgeblendete `iframe`-Elemente, um Token automatisch im Hintergrund abzurufen und zu erneuern. Azure AD gibt das Token wieder an den registrierten redirect_uri zurück, der in der Tokenanforderung angegeben ist (dies ist standardmäßig die Stammseite der App). Da es sich bei der Antwort um den Statuscode 302 handelt, wird folglich der HTML-Code, der dem `redirect_uri` entspricht, in `iframe` geladen. Normalerweise entspricht der App-`redirect_uri` der Stammseite, was dazu führt, dass sie erneut geladen wird.

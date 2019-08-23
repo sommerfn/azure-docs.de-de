@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946543"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899940"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint: Dreischichtige IaaS-Webanwendungen für UK OFFICIAL
 
@@ -186,7 +186,7 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
-**Active Directory-Integration:** Als Alternative zu einer dedizierten AD DS-Architektur können Kunden [Azure Active Directory](/azure/architecture/reference-architectures/identity.md)-Integration oder [Active Directory in Azure als Mitglied einer lokalen Gesamtstruktur](/azure/architecture/reference-architectures/identity.md) verwenden.
+**Active Directory-Integration:** Als Alternative zu einer dedizierten AD DS-Architektur können Kunden [Azure Active Directory](/azure/architecture/reference-architectures/identity)-Integration oder [Active Directory in Azure als Mitglied einer lokalen Gesamtstruktur](/azure/architecture/reference-architectures/identity) verwenden.
 
 ### <a name="security"></a>Sicherheit
 
@@ -200,9 +200,9 @@ Kunden können sich außerdem für die Verwendung eines [Verwaltungsmodells mit 
 
 **IP-Bereiche:** Bei den in der Architektur verwendeten IP-Bereichen handelt es sich um Vorschläge. Kunden sollten ihre eigene Umgebung berücksichtigen und geeignete Bereiche verwenden.
 
-**Hybridkonnektivität:** Die cloudbasierten Workloads sind mit dem lokalen Rechenzentrum durch IPsec-VPN mithilfe von Azure VPN Gateway verbunden. Kunden sollten sicherstellen, dass sie ein geeignetes VPN-Gateway für Verbindungen mit Azure verwenden. Beispiel: [Resource Manager-Vorlage für VPN Gateway](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection) Kunden, die umfangreiche, unternehmenswichtige Workloads mit Big Data-Anforderungen ausführen, sollten eine Hybridnetzwerkarchitektur unter Verwendung von [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) für private Netzwerkkonnektivität mit den Microsoft-Clouddiensten in Erwägung ziehen.
+**Hybridkonnektivität:** Die cloudbasierten Workloads sind mit dem lokalen Rechenzentrum durch IPsec-VPN mithilfe von Azure VPN Gateway verbunden. Kunden sollten sicherstellen, dass sie ein geeignetes VPN-Gateway für Verbindungen mit Azure verwenden. Beispiel: [Resource Manager-Vorlage für VPN Gateway](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection) Kunden, die umfangreiche, unternehmenswichtige Workloads mit Big Data-Anforderungen ausführen, sollten eine Hybridnetzwerkarchitektur unter Verwendung von [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) für private Netzwerkkonnektivität mit den Microsoft-Clouddiensten in Erwägung ziehen.
 
-**Trennung von Zuständigkeiten:** Diese Referenzarchitektur trennt die VNETs für Verwaltungsvorgänge und Geschäftsvorgänge. Separate VNets und Subnetze ermöglichen die Verwaltung des Datenverkehrs zwischen Netzwerksegmenten, einschließlich Einschränkungen für eingehenden und ausgehenden Datenverkehr, mithilfe von NSGs und berücksichtigen die bewährten Methoden für [Microsoft-Clouddienste und Netzwerksicherheit](/azure/architecture/vdc/networking-virtual-datacenter.md).
+**Trennung von Zuständigkeiten:** Diese Referenzarchitektur trennt die VNETs für Verwaltungsvorgänge und Geschäftsvorgänge. Separate VNets und Subnetze ermöglichen die Verwaltung des Datenverkehrs zwischen Netzwerksegmenten, einschließlich Einschränkungen für eingehenden und ausgehenden Datenverkehr, mithilfe von NSGs und berücksichtigen die bewährten Methoden für [Microsoft-Clouddienste und Netzwerksicherheit](/azure/architecture/vdc/networking-virtual-datacenter).
 
 **Ressourcenverwaltung:** Azure-Ressourcen, wie etwa VMs, VNETs und Lastenausgleichsmodule, werden verwaltet, indem sie in [Azure-Ressourcengruppen](../../azure-resource-manager/resource-group-overview.md) zusammengefasst werden. Rollen für die ressourcenbasierte Zugriffssteuerung können anschließend den einzelnen Ressourcengruppen zugewiesen werden, um den Zugriff exklusiv auf autorisierte Benutzer zu beschränken.
 

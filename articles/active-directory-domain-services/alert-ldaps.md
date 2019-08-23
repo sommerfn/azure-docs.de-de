@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234185"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613158"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure Active Directory Domain Services: Beheben von Problemen bei der Konfiguration von Secure LDAP
 
-Dieser Artikel bietet Lösungen für häufiger auftretende Probleme bei der [Konfiguration von Secure LDAP](configure-ldaps.md) für Azure AD Domain Services.
+Dieser Artikel bietet Lösungen für häufiger auftretende Probleme bei der [Konfiguration von Secure LDAP](tutorial-configure-ldaps.md) für Azure AD Domain Services.
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfiguration der Netzwerksicherheitsgruppe für Secure LDAP
 
@@ -62,7 +62,7 @@ Wenn Secure LDAP aktiviert ist, wird das Erstellen zusätzlicher Regeln empfohle
 
 **Lösung:**
 
-Erstellen Sie ein neues sicheres LDAP-Zertifikat anhand der Schritte, die im Artikel [Konfigurieren von sicherem LDAP (LDAPS) für eine über Azure AD Domain Services verwaltete Domäne](configure-ldaps.md) beschrieben werden.
+Erstellen Sie ein neues sicheres LDAP-Zertifikat anhand der Schritte, die im Artikel [Konfigurieren von sicherem LDAP (LDAPS) für eine über Azure AD Domain Services verwaltete Domäne](tutorial-configure-ldaps.md) beschrieben werden.
 
 ## <a name="contact-us"></a>Kontakt
 Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](contact-us.md).

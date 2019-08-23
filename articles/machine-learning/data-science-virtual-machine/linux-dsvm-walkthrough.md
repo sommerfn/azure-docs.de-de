@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557362"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574970"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -229,6 +229,20 @@ Probieren Sie dies für die ersten zehn Zeilen des Testsatzes aus:
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Deep Learning-Tutorials und exemplarische Vorgehensweisen
+
+Zusätzlich zu den frameworkbasierten Beispielen werden auch eine Reihe umfassender exemplarischer Vorgehensweisen bereitgestellt, die für die DLVM validiert sind. Diese Vorgehensweisen helfen Ihnen, Ihre Entwicklung von Deep Learning-Anwendungen in Bereichen wie Bild- und Text-/Sprachenverständnis zu beschleunigen. Weitere umfassende Tutorials zu verschiedenen Bereichen und Technologien werden weiter künftig hinzugefügt.   
+
+
+- [Betreiben neuronaler Netze in verschiedenen Frameworks](https://github.com/ilkarman/DeepLearningFrameworks): Diese umfassende exemplarische Vorgehensweise zeigt, wie Sie Code aus einem Framework zu einem anderen migrieren. Es veranschaulicht auch, wie Sie die Modell- und Laufzeitleistung in verschiedenen Frameworks vergleichen. 
+
+- [Eine Anleitung zum Erstellen einer End-to-End-Lösung zum Erkennen von Produkten in Bildern](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Die Bilderkennung ist eine Technik, mit der Objekte innerhalb von Bildern lokalisiert und klassifiziert werden können. Diese Technologie hat das Potenzial, in vielen realen Geschäftsbereichen enorme Vorteile zu bringen. Mit dieser Technik können Einzelhändler beispielsweise feststellen, welches Produkt ein Kunde dem Regal entnommen hat. Diese Informationen wiederum helfen Filialen bei der Verwaltung des Warenbestands. 
+
+- [Deep learning for audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) (Tiefgehendes Lernen für Audiodaten): Dieses Tutorial zeigt, wie ein Modell für tiefgehendes Lernen für die Audioereigniserkennung mit dem [Urban Sounds Dataset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) (Datensatz für urbane Geräusche) trainiert wird, und bietet eine Übersicht über die Arbeit mit Audiodaten.
+
+- [Klassifizierung von Textdokumenten](https://github.com/anargyri/lstm_han): In dieser exemplarischen Vorgehensweise wird gezeigt, wie zwei unterschiedliche Architekturen neuronaler Netze erstellt und trainiert werden: Hierarchical Attention Networks und LTSM-Netzwerke (Long Short Term Memory). Diese neuronalen Netzwerke verwenden zur Klassifizierung von Textdokumenten die Keras-API für Deep Learning. Keras ist ein Front-End für drei der am häufigsten verwendeten Deep Learning-Frameworks: Microsoft Cognitive Toolkit, TensorFlow und Theano.
 
 ## <a name="use-other-tools-available"></a>Verwenden von anderen verfügbaren Tools
 In den restlichen Abschnitten wird gezeigt, wie Sie die Tools verwenden, die auf der Linux Data Science-VM installiert sind. Hier ist eine Liste mit den beschriebenen Tools angegeben:

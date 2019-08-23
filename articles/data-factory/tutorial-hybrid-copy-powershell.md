@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f49bed0253a380dbcb0a526364c85c2031b0116
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328160"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640327"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt. 
@@ -76,13 +76,11 @@ In diesem Tutorial verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos.
 
 1. Wählen Sie im linken Bereich die Option **Weitere Dienste**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie dann **Speicherkonten** aus.
 
-    ![Suchen nach einem Speicherkonto](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
+    ![Suchen nach einem Speicherkonto](media/doc-common-process/search-storage-account.png)
 
 1. Filtern Sie in der Liste mit den Speicherkonten nach Ihrem Speicherkonto (falls erforderlich), und wählen Sie Ihr Speicherkonto aus. 
 
 1. Wählen Sie im Fenster **Speicherkonto** die Option **Zugriffsschlüssel**.
-
-    ![Abrufen des Speicherkontonamens und -schlüssels](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
 1. Kopieren Sie in den Feldern **Speicherkontoname** und **key1** die Werte, und fügen Sie sie zur späteren Verwendung im Tutorial in einen Editor ein. 
 
@@ -107,7 +105,6 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 
 1. Lassen Sie das Fenster **Container** für **adftutorial** geöffnet. Sie überprüfen darauf am Ende des Tutorials die Ausgabe. Data Factory erstellt den Ausgabeordner automatisch in diesem Container, damit Sie ihn nicht selbst erstellen müssen.
 
-    ![Fenster „Container“](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
@@ -415,7 +412,7 @@ In diesem Schritt verknüpfen Sie die lokale SQL Server-Instanz mit der Data Fac
     > [!IMPORTANT]
     > - Wählen Sie basierend auf der Authentifizierung, die Sie zum Herstellen einer Verbindung mit Ihrer SQL Server-Instanz verwenden, den Abschnitt aus.
     > - Ersetzen Sie **\<integration runtime name>** durch den Namen Ihrer Integration Runtime.
-    > - Ersetzen Sie vor dem Speichern der Datei **\<servername>**, **\<databasename>**, **\<username>** und **\<password>** durch die Werte Ihrer SQL Server-Instanz.
+    > - Ersetzen Sie vor dem Speichern der Datei **\<servername>** , **\<databasename>** , **\<username>** und **\<password>** durch die Werte Ihrer SQL Server-Instanz.
     > - Wenn Ihr Benutzerkonto- oder Servername einen umgekehrten Schrägstrich (\\) enthält, ist es erforderlich, ein Escapezeichen (\\) voranzustellen. Verwenden Sie beispielsweise *mydomain\\\\myuser*. 
 
 1. Führen Sie zum Verschlüsseln der sensiblen Daten (Benutzername, Kennwort usw.) das `New-AzDataFactoryV2LinkedServiceEncryptedCredential`-Cmdlet aus.  

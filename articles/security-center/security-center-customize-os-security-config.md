@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 08/15/2019
+ms.author: v-mohabe
+ms.openlocfilehash: df4f51f97798048b28c0193dbc61e07fc55c9adc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662470"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535076"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (eingestellt)
 
@@ -317,4 +317,4 @@ In diesem Artikel wurde beschrieben, wie Sie Bewertungen für Sicherheitskonfigu
 
 - [Security Center Common Configuration Identifiers and Baseline Rules](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (Security Center: Allgemeine Konfigurationsbezeichner und Baselineregeln).
 - Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Weitere Informationen finden Sie unter [CCE](https://nvd.nist.gov/config/cce/index).
-- Unter [Korrigieren von Sicherheitskonfigurationen](security-center-remediate-os-vulnerabilities.md) erfahren Sie, wie Sie Sicherheitsrisiken beheben können, wenn Ihre Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht.
+- Unter [Korrigieren von Sicherheitskonfigurationen](security-center-virtual-machine-protection.md) erfahren Sie, wie Sie Sicherheitsrisiken beheben können, wenn Ihre Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht.

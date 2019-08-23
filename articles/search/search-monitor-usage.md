@@ -2,21 +2,19 @@
 title: Überwachen der Ressourcennutzung und Abfragemetriken für einen Suchdienst – Azure Search
 description: Aktivieren der Protokollierung, Abrufen von Abfrageaktivitätsmetriken, der Ressourcennutzung und anderer Daten von einem Azure Search-Dienst.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755062"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640531"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
@@ -111,7 +109,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Protokollschema
 Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprechend der Beschreibung in diesem Abschnitt strukturiert. Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
 
-| NAME | Type | Beispiel | Notizen |
+| NAME | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
 | resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
@@ -125,7 +123,7 @@ Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprech
 
 **Eigenschaftsschema**
 
-| NAME | Type | Beispiel | Notizen |
+| NAME | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | BESCHREIBUNG |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
 | Abfrage |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
@@ -136,7 +134,7 @@ Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprech
 
 Metriken werden für Abfrageanforderungen erfasst.
 
-| NAME | Type | Beispiel | Notizen |
+| NAME | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |

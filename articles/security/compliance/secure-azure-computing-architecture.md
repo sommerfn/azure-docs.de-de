@@ -6,18 +6,18 @@ ms.author: jahender
 ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a27eac3d4609f1054b0ef6a9417fe2f1ca53ae4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963242"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656646"
 ---
 # <a name="secure-azure-computing-architecture"></a>Sichere Azure-Computing-Architektur
 
 Daten Kunden des US-Verteidigungsministeriums (Department of Defense, DoD), die Workloads in Azure bereitstellen, haben um eine Anleitung gebeten, um sichere virtuelle Netzwerke einzurichten und die Sicherheitstools und -dienste zu konfigurieren, die von den DoD-Standards und -Vorgaben vorgeschrieben werden. 
 
-Die Defense Information System Agency (DISA) hat 2017 das [Secure Cloud Computing Architecture (SCCA) Functional Requirements Document (FRD)](https://iasecontent.disa.mil/stigs/pdf/SCCA_FRD_v2-9.pdf) (Dokument mit Funktionsanforderungen für eine sichere Cloud Computing-Architektur) herausgegeben. Eine Secure Cloud Computing Architecture (SCCA) beschreibt die funktionalen Ziele beim Sichern der Verbindungspunkte des Defense Information System Network (DISN) und der kommerziellen Cloudanbieter. Die SCCA beschreibt auch, wie Projektbesitzer Cloudanwendungen an der Verbindungsgrenze sichern. Jede DoD-Entität, die eine Verbindung mit der kommerziellen Cloud herstellt, muss die im SCCA FRD festgelegten Richtlinien einhalten.
+Die Defense Information System Agency (DISA) hat 2017 das [Secure Cloud Computing Architecture (SCCA) Functional Requirements Document (FRD)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/SCCA_FRD_v2-9.pdf) (Dokument mit Funktionsanforderungen für eine sichere Cloud Computing-Architektur) herausgegeben. Eine Secure Cloud Computing Architecture (SCCA) beschreibt die funktionalen Ziele beim Sichern der Verbindungspunkte des Defense Information System Network (DISN) und der kommerziellen Cloudanbieter. Die SCCA beschreibt auch, wie Projektbesitzer Cloudanwendungen an der Verbindungsgrenze sichern. Jede DoD-Entität, die eine Verbindung mit der kommerziellen Cloud herstellt, muss die im SCCA FRD festgelegten Richtlinien einhalten.
  
 Die SCCA besteht aus vier Komponenten:
  
