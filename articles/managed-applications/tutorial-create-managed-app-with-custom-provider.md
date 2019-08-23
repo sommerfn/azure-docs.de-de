@@ -249,7 +249,7 @@ az managedapp definition create \
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Ressourcenliste **Center für verwaltete Anwendungen** ein, und wählen Sie die entsprechende Option aus.
-2. Wählen Sie im Center für verwaltete Anwendungen **** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**. 
+2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**. 
     
     ![Hinzufügen des Dienstkatalogs](./media/managed-application-with-custom-providers/service-catalog-managed-application.png)
 

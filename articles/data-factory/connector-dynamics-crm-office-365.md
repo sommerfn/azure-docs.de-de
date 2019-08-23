@@ -118,7 +118,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 | port | Der Port des lokalen Dynamics-Servers. | Nein (Standard = 443) |
 | organizationName | Der Organisationsname der Dynamics-Instanz. | Ja |
 | authenticationType | Der Authentifizierungstyp für die Herstellung der Verbindung mit dem Dynamics-Server. Geben Sie für Dynamics lokal mit IFD **Ifd** an. | Ja |
-| userName | Geben Sie den Benutzernamen für die Herstellung der Verbindung mit Dynamics an. | Ja |
+| username | Geben Sie den Benutzernamen für die Herstellung der Verbindung mit Dynamics an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Quelle: Nein, Senke: Ja |
 

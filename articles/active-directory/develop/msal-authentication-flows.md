@@ -3,7 +3,7 @@ title: Authentifizierungsflows (Microsoft-Authentifizierungsbibliothek) | Azure
 description: Erfahren Sie mehr über die von der Microsoft-Authentifizierungsbibliothek (MSAL) verwendeten Authentifizierungsflüsse/-zuweisungen.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6cd932d2b11c61c380638a1a95f8da357d0c62e3
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807207"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533003"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 

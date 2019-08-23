@@ -71,11 +71,11 @@ Weitere Informationen zum Importieren von Ressourcenpaketen in Unity finden Sie 
 
 ## <a name="add-ui"></a>Hinzufügen der Benutzeroberfläche
 
-Als Nächstes fügen wir unserer Szene eine minimalistische Benutzeroberfläche hinzu. Diese Benutzeroberfläche besteht aus einer Schaltfläche zum Starten der Spracherkennung und einem Textfeld zum Anzeigen des Ergebnisses. Im [Hierarchiefenster](https://docs.unity3d.com/Manual/Hierarchy.html) ist eine Beispielszene zu sehen, die Unity mit dem neuen Projekt erstellt hat. ****
+Als Nächstes fügen wir unserer Szene eine minimalistische Benutzeroberfläche hinzu. Diese Benutzeroberfläche besteht aus einer Schaltfläche zum Starten der Spracherkennung und einem Textfeld zum Anzeigen des Ergebnisses. Im [**Hierarchiefenster**](https://docs.unity3d.com/Manual/Hierarchy.html) ist eine Beispielszene zu sehen, die Unity mit dem neuen Projekt erstellt hat.
 
-1. Wählen Sie im oberen Bereich des Hierarchiefensters **Create** > **UI** > **Button** („Erstellen“ > „Benutzeroberfläche“> „Schaltfläche“) aus. ****
+1. Wählen Sie im oberen Bereich des **Hierarchiefensters** **Create** > **UI** > **Button** („Erstellen“ > „Benutzeroberfläche“> „Schaltfläche“) aus.
 
-   Daraufhin werden drei Spielobjekte erstellt und im Hierarchiefenster angezeigt: ein Objekt vom Typ **Button** (Schaltfläche), ein Objekt vom Typ **Canvas**, das die Schaltfläche enthält, und ein Objekt vom Typ **EventSystem** (Ereignissystem). ****
+   Daraufhin werden drei Spielobjekte erstellt und im **Hierarchiefenster** angezeigt: ein Objekt vom Typ **Button** (Schaltfläche), ein Objekt vom Typ **Canvas**, das die Schaltfläche enthält, und ein Objekt vom Typ **EventSystem** (Ereignissystem).
 
    [![Unity-Editorumgebung](media/sdk/qs-csharp-unity-editor-window.png)](media/sdk/qs-csharp-unity-editor-window.png#lightbox)
 
@@ -95,7 +95,7 @@ Die Szenenansicht sollte dann in etwa wie folgt aussehen: ****
 
 Gehen Sie wie folgt vor, um den Code des Beispielskripts für das Unity-Projekt hinzuzufügen:
 
-1. Wählen Sie im Projektfenster **Create** > **C# script** („Erstellen“ > „C#-Skript“) aus, um ein neues C#-Skript hinzuzufügen.[](https://docs.unity3d.com/Manual/ProjectView.html)
+1. Wählen Sie im Projektfenster **Create** > **C# script** („Erstellen“ > „C#-Skript“) aus, um ein neues [C#-Skript](https://docs.unity3d.com/Manual/ProjectView.html) hinzuzufügen.
 
    [![Projektfenster im Unity-Editor](media/sdk/qs-csharp-unity-project-window.png)](media/sdk/qs-csharp-unity-project-window.png#lightbox)
 1. Nennen Sie das Skript `HelloWorld`.
