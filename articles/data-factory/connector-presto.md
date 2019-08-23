@@ -50,7 +50,7 @@ Folgende Eigenschaften werden für den mit Presto verknüpften Dienst unterstüt
 | catalog | Der Katalogkontext für alle Anforderungen an den Server.  | Ja |
 | port | Der TCP-Port, den der Presto-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 8080.  | Nein |
 | authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem Presto-Server verwendet werden soll. <br/>Zulässige Werte sind: **Anonym**, **LDAP** | Ja |
-| userName | Der Benutzername, der für die Verbindung mit dem Presto-Server verwendet werden soll.  | Nein |
+| username | Der Benutzername, der für die Verbindung mit dem Presto-Server verwendet werden soll.  | Nein |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
 | trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über SSL. Diese Eigenschaft kann nur festgelegt werden, wenn SSL in einer selbstgehostetem IR verwendet wird. Der Standardwert ist die Datei „cacerts.pem“, die mit der IR installiert wird.  | Nein |
