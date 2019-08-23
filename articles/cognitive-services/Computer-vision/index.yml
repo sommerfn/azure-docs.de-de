@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentation für Maschinelles Sehen-API
 metadata:
-  title: 'API-Dokumentation: Maschinelles Sehen: Azure Cognitive Services | Microsoft-Dokumentation'
+  title: 'API-Dokumentation: Maschinelles Sehen'
+  titleSuffix: Azure Cognitive Services
   description: 'Es wird beschrieben, wie Sie das maschinelle Sehen zum Verarbeiten von Bildern und Zurückgeben von Informationen verwenden. In Tutorials wird gezeigt, wie Sie Apps erstellen, die die API nutzen.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/26/2019
   ms.author: nitinme

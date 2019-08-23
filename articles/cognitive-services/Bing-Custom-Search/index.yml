@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Benutzerdefinierte Bing-Suche – Dokumentation
 metadata:
-  title: 'Dokumentation zur API für die benutzerdefinierte Bing-Suche: Tutorials, Schnellstartanleitungen, API-Referenz – Microsoft Cognitive Services | Microsoft-Dokumentation'
+  title: 'Dokumentation zur API für die benutzerdefinierte Bing-Suche: Tutorials, Schnellstarts, API-Referenzen'
+  titleSuffix: Azure Cognitive Services
   description: 'Hier erfahren Sie, wie Sie mit dem Portal und der API für die benutzerdefinierte Bing-Suche eine benutzerdefinierte Suchumgebung erstellen.'
   services: cognitive-services
   author: v-deken
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: v-deken

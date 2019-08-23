@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentation zur Bing-Vorschlagssuche
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentation zur Bing-Vorschlagssuche: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
+  title: 'Dokumentation zur Bing-Vorschlagssuche: Tutorials, Schnellstartanleitungen, API-Referenzen'
+  titleSuffix: Azure Cognitive Services
   description: 'Erfahren Sie, wie Sie mit der Bing-Vorschlagssuche-API vorgeschlagene Abfragen auf Basis einer partiellen Abfrage erhalten. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

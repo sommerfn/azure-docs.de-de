@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Dokumentation zur Anomalieerkennungs-API
 metadata:
-  title: 'Dokumentation zur Anomalieerkennungs-API: Tutorials, Schnellstarts, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  title: 'Anomalieerkennungs-API: Tutorials, Schnellstarts, API-Referenz'
+  titleSuffix: Azure Cognitive Services
   description: "Mithilfe der API für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe des Machine\_Learning-Diensts ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten."
   services: cognitive-services
   author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
   ms.date: 03/26/2019
   ms.author: aahi

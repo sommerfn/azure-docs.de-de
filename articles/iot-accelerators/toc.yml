@@ -149,6 +149,8 @@
       items:
         - name: Architektur für OPC-Zwillinge
           href: overview-opc-twin-architecture.md
+        - name: "OPC\_Vault-Architektur"
+          href: overview-opc-vault-architecture.md
     - name: Anleitungen
       items:
         - name: Verbundene Factory
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC-Tresor
           items:
-            - name: Bereitstellen eines OPC-Tresors in einem vorhandenen Projekt
-              items:
-                - name: Schützen der Kommunikation zwischen OPC-Client und OPC PLC
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Schützen der Anwendungen für OPC UA-Clients und OPC UA-Server
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: Bereitstellen eines OPC-Tresors von Grund auf
-              href: howto-opc-vault-deploy-scratch.md
+            - name: "Bereitstellen des OPC\_Vault-Diensts"
+              href: howto-opc-vault-deploy.md
+            - name: "Verwalten des OPC\_Vault-Diensts"
+              href: howto-opc-vault-manage.md
+            - name: "Sichere OPC\_UA-Gerätekommunikation mit OPC\_Vault"
+              href: howto-opc-vault-secure.md
+            - name: "Sicheres Betreiben des OPC\_Vault-Diensts"
+              href: howto-opc-vault-secure-ca.md
         - name: OPC Publisher
           items:
             - name: Konfigurieren von OPC Publisher

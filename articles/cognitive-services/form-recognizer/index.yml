@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentation zur Formularerkennung
 metadata:
-  title: 'API-Dokumentation: Formularerkennung: Azure Cognitive Services | Microsoft-Dokumentation'
+  title: 'API-Dokumentation: Formularerkennung'
+  titleSuffix: Azure Cognitive Services
   description: 'Erfahren Sie, wie Sie mit der Formularerkennung auf intelligente Weise Schlüssel-Wert-Daten aus Ihren Formularen extrahieren.'
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley

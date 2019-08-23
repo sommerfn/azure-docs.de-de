@@ -106,8 +106,6 @@
               href: users.md
             - name: Einrichten einer VNET-Verbindung mit der privaten Cloud
               href: virtual-network-connection.md
-            - name: Bearbeiten Ihres Benutzerprofils
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Einrichten virtueller VMware-Computer für die private Cloud
           items:
             - name: Erstellen eines virtuellen Computers in Azure
@@ -147,7 +145,7 @@
             - name: Migrieren virtueller Workload-Computer zu einer privaten Cloud
               href: migrate-workloads.md
             - name: Sicherstellen der Hochverfügbarkeit von Anwendung in VMware in Azure
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
             - name: Auswählen einer Lastenausgleichslösung
               href: load-balancers.md
         - name: VMware-Ökosystem
@@ -156,8 +154,10 @@
               href: backup-workloads-veeam.md
             - name: Konfigurieren einer privaten Cloud als Standort für die Notfallwiederherstellung mithilfe von Zerto
               href: disaster-recovery-zerto.md
+            - name: Konfigurieren einer privaten Cloud als Standort für die Notfallwiederherstellung mithilfe von VMware SRM
+              href: disaster-recovery-site-recovery-manager.md
             - name: Lösungsanleitung für VMware Horizon
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: Konfigurieren der vSAN-Verschlüsselung für Ihre private Cloud
               href: vsan-encryption.md
             - name: "Optimieren Ihrer privaten Cloud für Oracle\_RAC"

@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentation zur Bing-Bildersuche-API
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentation zur Bing-Bildersuche-API: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
+  title: 'Dokumentation zur Bing-Bildersuche-API: Tutorials, Schnellstarts, API-Referenzen'
+  titleSuffix: Azure Cognitive Services
   description: 'Hier erfahren Sie, wie Sie mithilfe der Bing-Bildersuche-API im Web nach Bildern suchen.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-image-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 7/25/2019
   ms.author: nitinme
