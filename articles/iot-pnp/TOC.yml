@@ -12,10 +12,10 @@
     - name: "Verbinden eines Geräts mit IoT\_Hub"
       href: quickstart-connect-pnp-device.md
     - name: "Verbinden eines Geräts mit IoT\_Central"
-      href: 'https://aka.ms/iot-central-connect-qs'
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung
       href: quickstart-connect-pnp-device-solution.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: "Erstellen eines Geräts mithilfe von VS\_Code"
       href: tutorial-pnp-visual-studio-code.md
@@ -50,7 +50,7 @@
 - name: Verweis
   items:
     - name: REST
-      href: 'https://aka.ms/iot-pnp-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
     - name: Generieren eines REST-Sicherheitstokens
       href: howto-generate-sas-token.md
 - name: Verwandte Themen
@@ -58,7 +58,7 @@
     - name: Lösungen
       items:
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central
         - name: IoT Solution Accelerators
           href: /azure/iot-accelerators
     - name: Plattformdienste

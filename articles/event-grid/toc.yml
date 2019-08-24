@@ -127,6 +127,8 @@
       href: how-to-event-domains.md
     - name: Implementieren des clientseitigen Failovers
       href: custom-disaster-recovery.md
+    - name: Beheben von Fehlern
+      href: troubleshoot-errors.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
