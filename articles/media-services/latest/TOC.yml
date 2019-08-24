@@ -149,7 +149,7 @@
       items:
         - name: Übersicht
           href: media-services-apis-overview.md
-          displayName: 'accessing, naming, long-running'
+          displayName: 'accessing, naming, long-running, invalid character'
         - name: 'Einteilen in Seiten, Filtern und Sortieren von Entitäten'
           href: entities-overview.md
         - name: RBAC
