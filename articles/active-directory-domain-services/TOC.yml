@@ -17,12 +17,16 @@
       href: tutorial-create-management-vm.md
     - name: Konfigurieren von Secure LDAP
       href: tutorial-configure-ldaps.md
+    - name: Konfigurieren der Kennworthashsynchronisierung
+      href: tutorial-configure-password-hash-sync.md
 - name: Beispiele
   items:
     - name: "Erstellen einer Azure AD\_DS-Instanz mit Azure PowerShell"
       href: powershell-create-instance.md
 - name: Konzepte
   items:
+    - name: Allgemeine Bereitstellungsszenarien
+      href: scenarios.md
     - name: Funktionsweise der Azure AD DS-Synchronisierung
       href: synchronization.md
     - name: So funktioniert die Kennworthashsynchronisierung
@@ -37,8 +41,6 @@
   items:
     - name: Konfigurieren allgemeiner Einstellungen
       items:
-        - name: Aktivieren der Kennworthashsynchronisierung
-          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
         - name: Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD
           href: scoped-synchronization.md
         - name: 'Erstellen einer Organisationseinheit (Organizational Unit, OU)'
@@ -47,8 +49,6 @@
           href: create-gmsa.md
     - name: Planen für Azure AD DS
       items:
-        - name: Häufige Szenarios
-          href: scenarios.md
         - name: Überlegungen zum virtuellen Netzwerk
           href: network-considerations.md
     - name: Verwalten von Azure AD DS

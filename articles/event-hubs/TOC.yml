@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: Sicherheit
       items:
-        - name: Verwaltete Identität für Azure-Ressourcen
-          href: event-hubs-managed-service-identity.md
-        - name: Rollenbasierte Zugriffssteuerung (Vorschauversion)
-          href: event-hubs-role-based-access-control.md
-        - name: Übersicht über das Authentifizierungs- und Sicherheitsmodell
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Authorization
+          items:
+            - name: Autorisieren des Zugriffs auf Azure Event Hubs
+              href: authorize-access-event-hubs.md
+            - name: Autorisieren des Zugriffs mit Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+            - name: Autorisieren des Zugriffs mit einer Shared Access Signature
+              href: authorize-access-shared-access-signature.md
+        - name: Authentication
+          items:
+            - name: Authentifizieren mit Azure Active Directory
+              items:
+                - name: Authentifizieren mit einer verwalteten Identität
+                  href: authenticate-managed-identity.md
+                - name: Authentifizieren über eine Anwendung
+                  href: authenticate-application.md
+            - name: Authentifizierung mit einer SAS (Shared Access Signature)
+              href: authenticate-shared-access-signature.md
         - name: Sicherheitsattribute
           href: event-hubs-security-attributes.md
     - name: Leitfaden zum AMQP 1.0-Protokoll
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Aktivieren der Integration virtueller Netzwerke und von Firewalls für den Event Hubs-Namespace
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten
+          href: configure-customer-managed-key.md
     - name: Problembehandlung
       items:
         - name: Ausnahmen

@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 – Kopieren und überprüfen
               href: data-box-disk-deploy-copy-data.md
-            - name: '4 – Zurücksenden, hochladen, überprüfen'
+            - name: 4 – Rückgabe
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 – Überprüfen des Uploads
+              href: data-box-disk-deploy-upload-verify.md
         - name: Konzepte
           items:
             - name: Überprüfen der Anforderungen

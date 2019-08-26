@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: Konzepte
   items:
-    - name: Verwaltete Identitäten für Azure-Ressourcen
-      href: service-bus-managed-service-identity.md
-    - name: Rollenbasierte Zugriffssteuerung (Vorschauversion)
-      href: service-bus-role-based-access-control.md
     - name: Premium-Messaging
       href: service-bus-premium-messaging.md
     - name: Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: Handhabung von Ausfällen und Notfällen
       href: service-bus-outages-disasters.md
-    - name: Allgemeine Azure-Sicherheitsattribute
-      href: service-bus-messaging-security-attributes.md
+    - name: Sicherheit
+      items:
+        - name: Authentifizierung und Autorisierung
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Verwenden von Shared Access Signatures
+              items:
+                - name: Migrieren von ACS zu SAS
+                  href: service-bus-migrate-acs-sas.md
+                - name: Authentifizierung mit SAS (Shared Access Signatures)
+                  href: service-bus-sas.md
+            - name: Verwenden von Azure Active Directory
+              items:
+                - name: Authentifizieren mit verwalteten Identitäten für Azure-Ressourcen
+                  href: service-bus-managed-service-identity.md
+                - name: Authentifizieren über eine Anwendung
+                  href: authenticate-application.md
+        - name: Allgemeine Azure-Sicherheitsattribute
+          href: service-bus-messaging-security-attributes.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Namespace
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Azure Event Grid-Beispiele
               href: service-bus-to-event-grid-integration-example.md
-        - name: Authentifizierung und Autorisierung
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: Migrieren von ACS zu SAS
-              href: service-bus-migrate-acs-sas.md
-            - name: Authentifizierung mit SAS (Shared Access Signatures)
-              href: service-bus-sas.md
         - name: Themenfilter und -aktionen
           href: topic-filters.md
         - name: Migrieren von Standard- zu Premium-Namespaces

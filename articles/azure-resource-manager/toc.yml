@@ -67,8 +67,6 @@
       href: templates-cloud-consistency.md
     - name: Bereitstellungsmodi
       href: deployment-modes.md
-    - name: Ressourcenlöschung
-      href: resource-group-delete.md
     - name: Bereitstellungs-Manager
       items:
         - name: Übersicht
@@ -186,6 +184,8 @@
             - name: Mithilfe von Azure PowerShell
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
+        - name: Löschen von Ressourcengruppen und Ressourcen
+          href: resource-group-delete.md
         - name: Sperren von Ressourcen
           href: resource-group-lock-resources.md
         - name: Authentifizierungs-API für den Zugriff auf Abonnements
