@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489431"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513793"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -167,7 +167,7 @@ Wenn Sie die App Service-Umgebung verwenden, können Sie die [Barracuda-Firewall
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Wie blockiere ich Ports in einer App Service-Web-App?
 
-In der gemeinsam genutzten Mandantenumgebung von App Service ist es aufgrund des Wesens der Infrastruktur nicht möglich, bestimmte Ports zu blockieren. Die TCP-Ports 4016, 4018 und 4020 sind möglicherweise zudem für das Remotedebuggen von Visual Studio geöffnet.
+In der gemeinsam genutzten Mandantenumgebung von App Service ist es aufgrund des Wesens der Infrastruktur nicht möglich, bestimmte Ports zu blockieren. Die TCP-Ports 4020, 4022 und 4024 sind möglicherweise zudem für das Remotedebuggen von Visual Studio geöffnet.
 
 In der App Service-Umgebung haben Sie die vollständige Kontrolle über ein- und ausgehenden Datenverkehr. Sie können Netzwerksicherheitsgruppen einsetzen, um bestimmte Ports einzuschränken oder zu blockieren. Weitere Informationen zur App Service-Umgebung finden Sie unter [Einführung in die App Service-Umgebung](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
@@ -251,7 +251,7 @@ Weitere Informationen zu geplanten WebJobs finden Sie unter [Erstellen eines gep
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Wir führe ich Penetrationstests für meine App Service-App aus?
 
-Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderung](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderung](https://portal.msrc.microsoft.com/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Wie konfiguriere ich einen benutzerdefinierten Domänennamen für eine Azure App Service-Web-App, die Traffic Manager verwendet?
 

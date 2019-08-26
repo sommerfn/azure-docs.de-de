@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/08/2019
-ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/16/2019
+ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990541"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558227"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Zugriffsschlüssel für Speicherkonten neu generieren
 
@@ -50,12 +50,15 @@ ws = Workspace.from_config()
 
 default_ds = ws.get_default_datastore()
 print("Default datstore: " + default_ds.name + ", storage account name: " +
-      default_ds.account_name + ", container name: " + ds.container_name)
+      default_ds.account_name + ", container name: " + default_ds.container_name)
 
 datastores = ws.datastores
 for name, ds in datastores.items():
-    if ds.datastore_type == "AzureBlob" or ds.datastore_type == "AzureFile":
-        print("datastore name: " + name + ", storage account name: " +
+    if ds.datastore_type == "AzureBlob":
+        print("Blob store - datastore name: " + name + ", storage account name: " +
+              ds.account_name + ", container name: " + ds.container_name)
+    if ds.datastore_type == "AzureFile":
+        print("File share - datastore name: " + name + ", storage account name: " +
               ds.account_name + ", container name: " + ds.container_name)
 ```
 
@@ -64,6 +67,8 @@ Dieser Code sucht nach allen registrierten Datenspeichern, die Azure Storage ver
 * Datenspeicher: Der Name des Datenspeichers, unter dem das Speicherkonto registriert ist.
 * Azure Storage-Kontoname: Der Name des Azure Storage-Kontos.
 * Container: Der Container im Speicherkonto, der bei dieser Registrierung verwendet wird.
+
+Außerdem wird angegeben, ob der Datenspeicher für ein Azure-Blob oder eine Azure-Dateifreigabe gedacht ist, da verschiedene Methoden zum erneuten Registrieren der einzelnen Datenspeichertypen vorhanden sind.
 
 Wenn ein Eintrag für das Speicherkonto existiert, für das Sie eine Neugenerierung der Zugriffsschlüssel planen, speichern Sie den Namen des Datenspeichers, den Namen des Speicherkonto-Namens und den Containernamen.
 
@@ -97,12 +102,21 @@ Um den Azure Machine Learning-Dienst auf die Verwendung des neuen Schlüssels zu
 1. Um Datenspeicher, die das Speicherkonto verwenden, neu zu registrieren, verwenden Sie die Werte aus dem Abschnitt [Was muss aktualisiert werden](#whattoupdate) und den Schlüssel aus Schritt 1 mit dem folgenden Code:
 
     ```python
-    ds = Datastore.register_azure_blob_container(workspace=ws, 
-                                              datastore_name='your datastore name', 
+    # Re-register the blob container
+    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                              datastore_name='your datastore name',
                                               container_name='your container name',
-                                              account_name='your storage account name', 
+                                              account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
+    # Re-register file shares
+    ds_file = Datastore.register_azure_file_share(workspace=ws,
+                                          datastore_name='your datastore name',
+                                          file_share_name='your container name',
+                                          account_name='your storage account name',
+                                          account_key='new storage account key',
+                                          overwrite=True)
+    
     ```
 
     Da `overwrite=True` spezifiziert ist, überschreibt dieser Code die bestehende Registrierung und aktualisiert sie, um den neuen Schlüssel zu verwenden.

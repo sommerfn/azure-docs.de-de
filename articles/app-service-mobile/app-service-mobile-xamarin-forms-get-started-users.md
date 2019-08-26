@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
 ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "67446302"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hinzufügen von Authentifizierung zu Ihrer Xamarin Forms-App
@@ -57,8 +57,7 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Hinzufügen der Authentifizierung zur portablen Klassenbibliothek
-Mobile Apps verwendet die [LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
-uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5]. Sie können stattdessen auch die [Vom Client verwaltete Authentifizierung][6] verwenden, um in Ihrer Produktions-App eine bessere Benutzeroberfläche bereitzustellen.
+Mobile Apps verwendet die [LoginAsync][3]-Erweiterungsmethode auf dem [MobileServiceClient][4], um für einen Benutzer die Anmeldung mit der App Service-Authentifizierung durchzuführen. In diesem Beispiel wird ein vom Server verwalteter Authentifizierungsfluss verwendet, bei dem in der App die Anmeldeoberfläche des Anbieters angezeigt wird. Weitere Informationen finden Sie unter [Vom Server verwaltete Authentifizierung][5]. Sie können stattdessen auch die [vom Client verwaltete Authentifizierung][6] verwenden, um in Ihrer Produktions-App eine bessere Benutzeroberfläche bereitzustellen.
 
 Für die Authentifizierung mit einem Xamarin Forms-Projekt definieren Sie in der portablen Klassenbibliothek für die App eine **IAuthenticate**-Schnittstelle. Fügen Sie anschließend der Benutzeroberfläche, die in der portablen Klassenbibliothek definiert ist, die Schaltfläche **Anmelden** hinzu. Diese Schaltfläche wird zum Starten der Authentifizierung verwendet. Nach der erfolgreichen Authentifizierung werden die Daten aus dem mobilen App-Back-End geladen.
 
