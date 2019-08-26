@@ -110,7 +110,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Attribute](media/amazon-business-tutorial/map-attribute3.png)
 
-1. Bearbeiten Sie Attribute, und kopieren Sie den **** Namespacewert dieser Attribute in den Editor.
+1. Bearbeiten Sie Attribute, und kopieren Sie den**Namespacewert** dieser Attribute in den Editor.
 
     ![Attribute](media/amazon-business-tutorial/map-attribute4.png)
 
@@ -146,7 +146,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Benutzerprofil](media/amazon-business-tutorial/user-profile.png)
 
-1. Wählen Sie im Assistenten **** für Systemintegrationen die Option für **** einmaliges Anmelden (Single Sign-On, SSO) aus.
+1. Wählen Sie im Assistentenfür **Systemintegrationen** die Option für **** einmaliges Anmelden (Single Sign-On, SSO) aus.
 
     ![Einmaliges Anmelden (Single Sign-On, SSO)](media/amazon-business-tutorial/sso-settings.png)
 
