@@ -40,7 +40,7 @@ Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Hinzufügen eines Slots
-Die App muss im Tarif **Standard**, **Premium** oder **I*** ausgeführt werden, um mehrere Bereitstellungsslots aktivieren zu können.
+Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, um mehrere Bereitstellungsslots aktivieren zu können.
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
 
