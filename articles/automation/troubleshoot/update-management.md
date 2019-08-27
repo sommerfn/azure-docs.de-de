@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 884ded67c25aca78225baef2d7e4c5de1cc94fd0
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782284"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534666"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -22,6 +22,42 @@ In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die be
 Es gibt eine Agent-Problembehandlung für den Hybrid Worker-Agent, mit dem das zugrunde liegende Problem ermittelt werden kann. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md). Bei allen anderen Problemen finden Sie weiter unten ausführliche Informationen zu möglichen Problemen.
 
 ## <a name="general"></a>Allgemein
+
+### <a name="rp-register"></a>Szenario: Der Automation-Ressourcenanbieter für Abonnements kann nicht registriert werden.
+
+#### <a name="issue"></a>Problem
+
+Beim Arbeiten mit Lösungen in Ihrem Automation-Konto erhalten Sie eventuell folgenden Fehler.
+
+```error
+Error details: Unable to register Automation Resource Provider for subscriptions:
+```
+
+#### <a name="cause"></a>Ursache
+
+Der Automation-Ressourcenanbieter ist im Abonnement nicht registriert.
+
+#### <a name="resolution"></a>Lösung
+
+Sie können die Automation-Ressourcenanbieter mit den folgenden Schritten im Azure-Portal registrieren:
+
+1. Klicken Sie unten in der Azure-Dienstliste auf **Alle Dienste**, und wählen Sie dann in der Dienstgruppe _Allgemein_ die Option **Abonnements** aus.
+2. Wählen Sie Ihr Abonnement aus.
+3. Klicken Sie unter _Einstellungen_ auf **Ressourcenanbieter**.
+4. Überprüfen Sie in der Liste der Ressourcenanbieter, ob der Ressourcenanbieter **Microsoft.Automation** registriert ist.
+5. Wenn der Anbieter nicht aufgeführt ist, registrieren Sie den Anbieter **Microsoft.Automation** mit den unter [](/azure/azure-resource-manager/resource-manager-register-provider-errors) aufgeführten Schritten.
+
+### <a name="mw-exceeded"></a>Szenario: Die geplante Updateverwaltung ist mit dem Fehler „MaintenanceWindowExceeded“ fehlgeschlagen.
+
+#### <a name="issue"></a>Problem
+
+Das Standardwartungsfenster für Updates beträgt 120 Minuten. Sie können das Wartungsfenster auf maximal sechs (6) Stunden oder 360 Minuten erhöhen.
+
+#### <a name="resolution"></a>Lösung
+
+Bearbeiten Sie alle fehlgeschlagenen, geplanten Updatebereitstellungen, und vergrößern Sie das Wartungsfenster.
+
+Weitere Informationen zu Wartungsfenstern finden Sie unter [Installieren von Updates](../automation-update-management.md#install-updates).
 
 ### <a name="components-enabled-not-working"></a>Szenario: Die Komponenten für die Lösung „Updateverwaltung“ wurden aktiviert, und diese VM wird nun konfiguriert.
 
@@ -298,7 +334,31 @@ Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der fo
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
-### <a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
+## <a name="patches-are-not-installed"></a>Patches sind nicht installiert.
+
+### <a name="machines-do-not-install-updates"></a>Computer installieren keine Updates.
+
+* Versuchen Sie, Updates direkt auf dem Computer auszuführen. Kann der Computer nicht aktualisiert werden, sehen Sie sich die [Liste mit potenziellen Fehlern im Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult) an.
+* Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen eines virtuellen Computers für die Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management) befolgen.
+
+### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Ich weiß, dass Updates verfügbar sind, diese werden auf meinen Computern aber nicht als erforderlich angezeigt.
+
+* Dies geschieht häufig, wenn Computer so konfiguriert sind, dass sie Updates von WSUS/SCCM erhalten, aber WSUS/SCCM die Updates nicht genehmigt haben.
+* Sie können überprüfen, ob Computer für WSUS/SCCM konfiguriert sind. [Vergleichen Sie dazu den Registrierungsschlüssel „UseWUServer“ mit den Registrierungsschlüsseln im Abschnitt „Konfigurieren der Funktion „Automatische Updates“ in diesem Dokument.](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**Updates werden als installiert angezeigt, ich kann sie aber nicht auf meinem Computer finden.**
+
+* Updates werden oft durch andere Updates ersetzt. Weitere Informationen finden Sie unter [„Das Update ist nicht auf Ihrem Computer anwendbar“ im Dokument „Windows Update-Problembehandlung“](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="installing-updates-by-classification-on-linux"></a>**Installieren von Updates durch Klassifizierung unter Linux**
+
+* Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese [Einschränkungen sind auf der Übersichtsseite für die Updateverwaltung dokumentiert](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+
+### <a name="kb2267602-is-consistently--missing"></a>**KB2267602 fehlt ständig**
+
+* KB2267602 ist das [Windows Defender-Definitionsupdate](https://www.microsoft.com/wdsi/definitions). Es wird täglich aktualisiert.
+
+## <a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
 
 ### <a name="issue"></a>Problem
 
