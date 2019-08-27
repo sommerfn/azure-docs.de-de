@@ -45,7 +45,7 @@ Für diese Schnellstartanleitung benötigen Sie zwei Instanzen einer Webanwendun
    - **Instanzdetails** > **Laufzeitstapel**: Wählen Sie **ASP.NET V4.7** aus.
    - **Instanzdetails** > **Betriebssystem**: Wählen Sie **Windows** aus.
    - **Instanzendetails** > **Region**:  Wählen Sie **USA, Osten** aus.
-   - **App Service-Plan** > ** Windows-Plan (USA, Osten) **: Wählen Sie **Neu erstellen** aus, und geben Sie dann **myAppServicePlanEastUS** ein.
+   - **App Service-Plan** > **Windows-Plan (USA, Osten)** : Wählen Sie **Neu erstellen** aus, und geben Sie dann **myAppServicePlanEastUS** ein.
    - **App Service-Plan** > **SKU und Größe**: Wählen Sie **Standard (S1)** aus.
    
 3. Wählen Sie die Registerkarte **Überwachung** aus, oder wählen Sie **Next:Monitoring** aus.  Legen Sie unter **Überwachung** **Application Insights** > **Application Insights aktivieren** auf **Nein** fest.
