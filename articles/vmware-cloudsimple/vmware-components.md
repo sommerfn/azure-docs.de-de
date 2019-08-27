@@ -3,17 +3,17 @@ title: 'Azure-VMware-Lösung von CloudSimple: VMware-Komponenten in der privaten
 description: Beschreibt, wie VMware-Komponenten in einer privaten Cloud installiert werden
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812181"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543706"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-Komponenten in der privaten Cloud
 
@@ -47,11 +47,11 @@ Die vCenter-Serverappliance (VCSA) stellt die Funktionen für Authentifizierung,
 
 ### <a name="vcenter-single-sign-on"></a>Einmaliges Anmelden für vCenter
 
-Dem eingebetteten Platform Services Controller auf der VCSA ist eine **vCenter-SSO-Domäne** (Single Sign-On, einmaliges Anmelden) zugeordnet.  Der Domänenname lautet **cloudsimple.local**.  Ein Standardbenutzer **CloudOwner@cloudsimple.com** wird für den Zugriff auf vCenter erstellt.  Sie können Ihre lokalen oder in Azure Active Directory verwalteten [Identitätsquellen für vCenter](https://docs.azure.cloudsimple.com/set-vcenter-identity/) hinzufügen.
+Dem eingebetteten Platform Services Controller auf der VCSA ist eine **vCenter-SSO-Domäne** (Single Sign-On, einmaliges Anmelden) zugeordnet.  Der Domänenname lautet **cloudsimple.local**.  Ein Standardbenutzer **CloudOwner@cloudsimple.com** wird für den Zugriff auf vCenter erstellt.  Sie können Ihre lokalen oder in Azure Active Directory verwalteten [Identitätsquellen für vCenter](set-vcenter-identity.md) hinzufügen.
 
 ## <a name="vsan-storage"></a>vSAN-Speicher
 
-Private Clouds werden mit vollständig konfiguriertem vSAN-Nur-Flash-Speicher lokal im Cluster erstellt.  Es sind mindestens drei Knoten der gleichen SKU erforderlich, um einen vSphere-Cluster mit vSAN-Datenspeicher zu erstellen.  Im vSAN-Datenspeicher sind Deduplizierung und Komprimierung standardmäßig aktiviert.  Auf jedem Knoten des vSphere-Clusters werden zwei Datenträgergruppen erstellt. Jede Datenträgergruppe enthält einen Cachedatenträger und drei Kapazitätsdatenträger.
+Private Clouds werden mit vollständig konfiguriertem vSAN-Nur-Flash-Speicher lokal im Cluster erstellt.  Es sind mindestens drei Knoten der gleichen SKU erforderlich, um einen vSphere-Cluster mit vSAN-Datenspeicher zu erstellen.  Für den vSAN-Datenspeicher sind Deduplizierung und Komprimierung standardmäßig aktiviert.  Auf jedem Knoten des vSphere-Clusters werden zwei Datenträgergruppen erstellt. Jede Datenträgergruppe enthält einen Cachedatenträger und drei Kapazitätsdatenträger.
 
 Eine Standard-vSAN-Speicherrichtlinie wird im vSphere-Cluster erstellt und auf den vSAN-Datenspeicher angewandt.  Diese Richtlinie legt fest, wie die VM-Speicherobjekte im Datenspeicher bereitgestellt und zugeordnet werden, um die erforderliche Dienstebene zu gewährleisten.  Die Speicherrichtlinie definiert die **zu tolerierenden Fehler** (Failures To Tolerate, FTT) und die **Fehlertoleranzmethode**.  Sie können neue Speicherrichtlinien erstellen und auf die VMs anwenden. Um die SLA zu gewährleisten, muss im vSAN-Datenspeicher eine freie Kapazität von 25 % aufrechterhalten werden.  
 

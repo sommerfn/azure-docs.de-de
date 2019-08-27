@@ -1,74 +1,32 @@
 ---
-title: Zuordnen von Azure-Abonnements zu Ressourcenpools in Azure VMware Solution by CloudSimple
-description: In diesem Artikel wird beschrieben, wie Sie einen Ressourcenpool in Azure VMware Solution by CloudSimple Ihrem Azure-Abonnement zuordnen können.
+title: Erstellen von Ressourcenpools mit Azure-Abonnementzuordnungen
+description: Beschreibt das Erstellen von Ressourcenpools für die private Cloud mithilfe von Azure-Abonnementzuordnungen.
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 06/05/2019
+ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bf721f35500d2ff1344996e7750c5e574f40f31
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 3ea102ad8377da70b88a0e59834ebe3a09866632
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816269"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563216"
 ---
-# <a name="map-resource-pools-from-your-private-cloud-to-your-azure-subscription"></a>Zuordnen von Ressourcenpools aus Ihrer privaten Cloud zu Ihrem Azure-Abonnement
+# <a name="create-resource-pools-for-your-private-cloud-with-azure-subscription-mapping"></a>Erstellen von Ressourcenpools für die private Cloud mithilfe von Azure-Abonnementzuordnungen
+Azure-Abonnementzuordnung ermöglicht das Erstellen von Ressourcenpools für die private Cloud aus den verfügbaren vSphere-Ressourcenpools. Im CloudSimple-Portal können Sie das Azure-Abonnement für Ihre privaten Clouds anzeigen und verwalten.
 
-Durch die Zuordnung von Azure-Abonnements können Sie Ressourcenpools aus Ihrer privaten vCenter-Cloud Ihrem Azure-Abonnement zuordnen. Sie können nur das Abonnement zuordnen, in dem Sie den CloudSimple-Dienst erstellt haben.  Wenn Sie eine VMware-VM über das Azure-Portal erstellen, wird diese im zugeordneten Ressourcenpool bereitgestellt.  Im CloudSimple-Portal können Sie das Azure-Abonnement für Ihre privaten Clouds anzeigen und verwalten.
-
-Ein Abonnement kann mehreren vCenter-Ressourcenpools einer privaten Cloud zugeordnet werden.  Sie müssen die Ressourcenpools aller privaten Clouds zuordnen.  Nur zugeordnete Ressourcenpools können für das Erstellen einer VMware-VM über das Azure-Portal verwendet werden.
-
-> [!IMPORTANT]
+> [!NOTE]
 > Durch das Zuordnen eines Ressourcenpools werden auch untergeordnete Ressourcenpools zugeordnet. Ein übergeordneter Ressourcenpool kann nicht zugeordnet werden, wenn untergeordnete Ressourcenpools bereits zugeordnet wurden.
 
-## <a name="before-you-begin"></a>Voraussetzungen
-
-In diesem Artikel wird davon ausgegangen, dass ein CloudSimple-Dienst und eine private Cloud in Ihrem Abonnement vorhanden sind.  Weitere Informationen zum Erstellen eines CloudSimple-Diensts finden Sie unter [Schnellstart: Erstellen des Diensts](quickstart-create-cloudsimple-service.md).  Eine Anleitung zur Erstellung einer privaten Cloud finden Sie unter [Schnellstart: Konfigurieren einer Private Cloud-Umgebung](quickstart-create-private-cloud.md).
-
-Sie können den vCenter-Cluster (Stammressourcenpool) Ihrem Abonnement zuordnen.  Eine Anleitung zum Erstellen eines neuen Ressourcenpools finden Sie im Artikel [Erstellen eines Ressourcenpools](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.resmgmt.doc/GUID-0F6C6709-A5DA-4D38-BE08-6CB1002DD13D.html) auf der VMware-Dokumentationswebsite.
-
-## <a name="default-resource-group"></a>Standardressourcengruppe
-
-Wenn Sie eine neue CloudSimple-VM über das Azure-Portal erstellen, können Sie eine Ressourcengruppe auswählen.  Eine VM, die in einer privaten vCenter-Cloud in einem zugeordneten Ressourcenpool erstellt wurde, wird im Azure-Portal angezeigt.  Die ermittelten VMs werden in die Azure-Standardressourcengruppe eingeordnet.  Sie können den Namen der Standardressourcengruppe ändern.
-
-## <a name="map-azure-subscription"></a>Zuordnen von Azure-Abonnements
-
-1. Rufen Sie das [CloudSimple-Portal](access-cloudsimple-portal.md) auf.
-
-2. Öffnen Sie die Seite **Ressourcen**, und wählen Sie die private Cloud aus, die zugeordnet werden soll.
-
-3. Klicken Sie auf **Azure subscriptions mapping** (Zugeordnete Azure-Abonnements).
-
-4. Klicken Sie auf **Bearbeiten**.
-
-5. Sie können verfügbare Ressourcenpools zuordnen, indem Sie diese auf der linken Seite auswählen und auf den Pfeil klicken, der nach rechts zeigt.
-
-6. Sie können Zuordnungen entfernen, indem Sie diese auf der rechten Seite auswählen und auf den Pfeil klicken, der nach links zeigt.
+1. [Rufen Sie das CloudSimple-Portal auf](access-cloudsimple-portal.md).
+2. Öffnen Sie die Seite **Resources** (Ressourcen), und wählen Sie **Azure subsriptions mapping** (Azure-Abonnementzuordnung) aus.  
+3. Klicken Sie auf **Bearbeiten**.  
+4. Sie können verfügbare Ressourcenpools zuordnen, indem Sie diese auf der linken Seite auswählen und auf den Pfeil klicken, der nach rechts zeigt. 
+5. Sie können Zuordnungen entfernen, indem Sie diese auf der rechten Seite auswählen und auf den Pfeil klicken, der nach links zeigt. 
 
     ![Azure-Abonnements](media/resources-azure-mapping.png)
 
-7. Klicken Sie auf **OK**.
-
-## <a name="change-default-resource-group-name"></a>Ändern des Namens der Standardressourcengruppe
-
-1. Rufen Sie das [CloudSimple-Portal](access-cloudsimple-portal.md) auf.
-
-2. Öffnen Sie die Seite **Ressourcen**, und wählen Sie die private Cloud aus, die zugeordnet werden soll.
-
-3. Klicken Sie auf **Azure subscriptions mapping** (Zugeordnete Azure-Abonnements).
-
-4. Klicken Sie unter dem Namen der Azure-Ressourcengruppe auf **Bearbeiten**.
-
-    ![Ressourcengruppennamen bearbeiten](media/resources-edit-resource-group-name.png)
-
-5. Geben Sie einen neuen Namen für die Ressourcengruppe ein, und klicken Sie auf **Submit** (Übernehmen).
-
-    ![Neuen Namen für Ressourcengruppe eingeben](media/resources-new-resource-group-name.png)
-
-## <a name="next-steps"></a>Nächste Schritte
-
-* [Nutzen von virtuellen VMware-Computern in Azure](quickstart-create-vmware-virtual-machine.md)
-* Weitere Informationen zu [CloudSimple-VMs](cloudsimple-virtual-machines.md)
+6. Klicken Sie auf **OK**.

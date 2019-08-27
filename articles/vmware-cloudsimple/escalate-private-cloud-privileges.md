@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812213"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617612"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal
 
 Sie können Ihre CloudSimple-Berechtigungen temporär für den administrativen Zugriff auf das vCenter Ihrer privaten Cloud ausweiten.  Mithilfe von erhöhten Rechten können Sie VMware-Lösungen installieren, Identitätsquellen hinzufügen und Benutzer verwalten.
 
@@ -38,7 +38,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
     ![Ändern der vSphere-Berechtigung](media/escalate-private-cloud-privilege.png)
 
-4. Wählen Sie den vSphere-Benutzertyp aus.  Nur der lokale Benutzer **CloudOwner@cloudsimple.local** kann ausgeweitet werden.
+4. Wählen Sie den vSphere-Benutzertyp aus.  Nur die Berechtigungen des lokalen Benutzers `CloudOwner@cloudsimple.local` können ausgeweitet (eskaliert) werden.
 
 5. Wählen Sie das Zeitintervall zum Ausweiten aus der Dropdownliste aus. Wählen Sie den kürzesten Zeitraum aus, in dem Sie die Aufgabe erledigen können.
 
