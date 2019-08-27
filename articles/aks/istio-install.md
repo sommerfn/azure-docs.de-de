@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67625974"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542881"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)
 
@@ -41,6 +41,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 Bei den in diesem Artikel beschriebenen Schritten wird vorausgesetzt, dass Sie einen AKS-Cluster (Kubernetes `1.11` und höher, RBAC aktiviert) erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Wenn Sie Hilfe bei einem dieser Elemente benötigen, beachten Sie das Dokument [AKS-Schnellstart][aks-quickstart].
 
 Sie benötigen für diese Anweisungen [Helm][helm] und müssen Istio installieren. Es wird empfohlen, im Cluster Version `2.12.2` oder höher ordnungsgemäß zu installieren und zu konfigurieren. Wenn Sie Hilfe bei der Installation von Helm benötigen, beachten Sie den [AKS Helm-Installationsleitfaden][helm-install]. Alle Istio-Pods müssen auch für die Ausführung auf Linux-Knoten geplant werden.
+
+Stellen Sie sicher, dass Sie die Dokumentation zur [Istio-Leistung und -Skalierbarkeit](https://istio.io/docs/concepts/performance-and-scalability/) gelesen und die zusätzlichen Ressourcenanforderungen für die Ausführung von Istio in Ihrem AKS-Cluster verstanden haben. Die Anforderungen an Core und Arbeitsspeicher variieren je nach Workload. Wählen Sie eine geeignete Anzahl von Knoten und eine geeignete VM-Größe für Ihr Setup aus.
 
 Im vorliegenden Artikel wird die Istio-Installationsanleitung in mehrere Einzelschritte untergliedert. Das Endergebnis hat dieselbe Struktur wie beim Befolgen der offiziellen [Anleitung][istio-install-helm] für die Installation von Istio.
 

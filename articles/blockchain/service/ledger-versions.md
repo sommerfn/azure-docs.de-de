@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399101"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562789"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Von Azure Blockchain unterstützte Ledgerversionen
 
 Azure Blockchain verwendet den auf Ethereum basierenden Ledger [Quorum](https://www.goquorum.com/developers), der dafür konzipiert ist, private Transaktionen innerhalb einer Gruppe bekannter Teilnehmer zu verarbeiten. Diese werden in Azure Blockchain als Konsortium bezeichnet.
 
-Momentan unterstützt Azure Blockchain [Quorum Version 2.2.1](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1) und den [Transaktions-Manager Tessera](https://github.com/jpmorganchase/tessera).
+Momentan unterstützt Azure Blockchain [Quorum Version 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) und den [Transaktions-Manager Tessera](https://github.com/jpmorganchase/tessera).
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
 

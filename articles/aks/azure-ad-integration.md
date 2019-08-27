@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 80137023643630e8472a70fcca6cb656aeba7123
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616387"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542891"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -174,6 +174,9 @@ az aks create \
 Die Erstellung eines AKS-Clusters dauert einige Minuten.
 
 ## <a name="create-an-rbac-binding"></a>Erstellen einer RBAC-Bindung
+
+> [!NOTE]
+> Beim Namen der Clusterrollenbindung wird Groß-/Kleinschreibung beachtet.
 
 Bevor Sie ein Azure Active Directory-Konto mit einem AKS-Cluster verwenden, müssen Sie eine Rollenbindung oder eine Clusterrollenbindung erstellen. Rollen definieren die zu erteilenden Berechtigungen, und Bindungen wenden diese auf die gewünschten Benutzer an. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden von RBAC-Autorisierung][rbac-authorization].
 

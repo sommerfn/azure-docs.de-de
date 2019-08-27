@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 08/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 951178a82e0975f5f2af71bd48cf0f931246ae37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002124"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535192"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
-Mit der Integration der Kosten- und Nutzungsberichte (Cost and Usage Report, CUR) von Amazon Web Services (AWS) können Sie Ihre AWS-Ausgaben in Azure Cost Management überwachen und steuern. Die Integration bietet Ihnen die Möglichkeit, Ausgaben für Azure und AWS zentral im Azure-Portal zu überwachen und zu steuern. In diesem Artikel wird erläutert, wie Sie die Integration einrichten und so konfigurieren, dass Sie die Azure Cost Management-Funktionen zur Kostenanalyse und Budgetüberprüfung nutzen können.
+Mit der Integration der Kosten- und Nutzungsberichte (Cost and Usage Report, CUR) von Amazon Web Services (AWS) überwachen und steuern Sie Ihre AWS-Ausgaben in Azure Cost Management. Die Integration bietet Ihnen die Möglichkeit, Ausgaben für Azure und AWS zentral im Azure-Portal zu überwachen und zu steuern. In diesem Artikel wird erläutert, wie Sie die Integration einrichten und so konfigurieren, dass Sie die Azure Cost Management-Funktionen zur Kostenanalyse und Budgetüberprüfung nutzen können.
 
 Cost Management verarbeitet den in einem S3-Bucket gespeicherten AWS-Kosten- und Nutzungsbericht, indem es Ihre AWS-Anmeldeinformationen verwendet, um Berichtsdefinitionen abzurufen und GZIP-CSV-Berichtsdateien herunterzuladen.
 
@@ -33,18 +33,18 @@ Verwenden Sie die Seite **Cost & Usage Reports** (Kosten- und Nutzungsberichte) 
 2. Wählen Sie im Navigationsbereich **Cost & Usage Reports** aus.
 3. Wählen Sie **Create report** (Bericht erstellen) aus.
 4. Geben Sie für **Report name** (Berichtsname) einen Namen für den Bericht ein.
-5. Wählen Sie für **Additional report details** (Zusätzliche Berichtsdetails) **Include Resource IDs** (Ressourcen-IDs einbeziehen) aus, um die IDs der einzelnen Ressourcen in den Bericht einzubeziehen.
-6. Wählen Sie für **Data refresh settings** (Datenaktualisierungseinstellungen) aus, ob der AWS-Kosten- und Nutzungsbericht aktualisiert werden soll, wenn AWS nach der abschließenden Bearbeitung Ihrer Rechnung Rückerstattungen, Gutschriften oder Supportgebühren auf Ihrem Konto verbucht. Wenn ein Bericht aktualisiert wird, wird ein neuer Bericht auf Amazon S3 hochgeladen. Sie sollten diese Einstellung aktiviert lassen.
+5. Wählen Sie unter **Additional report details** (Weitere Berichtsdetails) die Option **Include resource IDs** (Ressourcen-IDs einschließen) aus.
+6. Wählen Sie für **Data refresh settings** (Datenaktualisierungseinstellungen) aus, ob der AWS-Kosten- und Nutzungsbericht aktualisiert werden soll, wenn AWS nach der abschließenden Bearbeitung Ihrer Rechnung Rückerstattungen, Gutschriften oder Supportgebühren auf Ihrem Konto verbucht. Wenn ein Bericht aktualisiert wird, wird ein neuer Bericht auf Amazon S3 hochgeladen. Es wird empfohlen, die Einstellung aktiviert zu lassen.
 7. Klicken Sie auf **Weiter**.
 8. Wählen Sie für **S3 bucket** (S3-Bucket) die Option **Configure** (Konfigurieren) aus.
-9. Führen Sie im Dialogfeld „Configure S3 Bucket“ (S3-Bucket konfigurieren) eine der folgenden Aktionen aus:
+9. Führen Sie im Dialogfeld „Configure S3 Bucket“ (S3-Bucket konfigurieren) eine der folgenden Aufgaben aus:
     1. Wählen Sie aus der Dropdownliste einen vorhandenen Bucket aus, und wählen Sie dann **Next** (Weiter) aus.
     2. Geben Sie einen Bucketnamen und die Region ein, in der Sie einen neuen Bucket erstellen möchten, und wählen Sie dann **Next** aus.
-10. Wählen Sie „I have confirmed that this policy is correct“ (Ich habe bestätigt, dass diese Richtlinie richtig ist) und dann „Save“ (Speichern) aus.
+10. Wählen Sie **I have confirmed that this policy is correct** (Ich habe bestätigt, dass diese Richtlinie richtig ist) aus, und klicken Sie dann auf **Save** (Speichern).
 11. (Optional) Geben Sie unter „Report path prefix“ (Berichtspfadpräfix) das Berichtspfadpräfix ein, das dem Namen Ihres Berichts vorangestellt werden soll.
-Wenn Sie kein Präfix angeben, wird das Standardpräfix aus dem von Ihnen in Schritt 4 für den Bericht angegebenen Namen und dem Datumsbereich für den Bericht gebildet, in folgendem Format: `/report-name/date-range/`
+Wenn Sie kein Präfix angeben, ist das Standardpräfix der Name, den Sie für den Bericht angegeben haben. Der Datumsbereich hat das Format `/report-name/date-range/`.
 12. Für **Zeiteinheit** wählen Sie **Stündlich** aus.
-13. Wählen Sie für **Report versioning** (Berichtsversionsverwaltung) aus, ob jede neue Berichtsversion die vorherige Berichtsversion überschreiben oder zusätzlich zu den vorherigen Versionen zur Verfügung gestellt werden soll.
+13. Wählen Sie für **Report versioning** (Berichtsversionsverwaltung) aus, ob neue Berichtsversionen die vorherigen Berichtsversionen überschreiben oder ob zusätzliche neue Berichte erstellt werden sollen.
 14. Für **Enable data integration for** (Datenintegration aktivieren für) ist keine Auswahl erforderlich.
 15. Für **Komprimierung** wählen Sie die Option **GZIP** aus.
 16. Klicken Sie auf **Weiter**.
@@ -109,7 +109,7 @@ Fügen Sie die Berechtigung für AWS-Organisationen hinzu:
 2. Wählen Sie **Access level** > **List** > **ListAccounts** aus. Diese Aktion ruft die Namen der Konten ab.
 3. Geben Sie unter **Überprüfungsrichtlinie** einen Namen für die neue Richtlinie ein. Überprüfen Sie, ob Sie die richtigen Informationen eingegeben haben, und wählen Sie dann **Create Policy** (Richtlinie erstellen) aus.
 4. Gehen Sie zur vorherigen Registerkarte zurück, und aktualisieren Sie die Webseite Ihres Browsers. Suchen Sie über die Suchleiste nach der neuen Richtlinie.
-5. Wählen Sie **Weiter: Überprüfung**.
+5. Klicken Sie auf **Weiter: Review** (Weiter: Überprüfen).
 6. Geben Sie einen Namen für die neue Rolle ein. Überprüfen Sie, ob Sie die richtigen Informationen eingegeben haben, und wählen Sie dann **Create Role** (Rolle erstellen) aus.
 
     Notieren Sie sich die Rollen-ARN und die externe ID, die in den vorherigen Schritten beim Erstellen der Rolle verwendet wurden. Sie werden diese später verwenden, wenn Sie den Azure Cost Management-Connector einrichten.
@@ -164,7 +164,7 @@ Verwenden Sie die folgenden Informationen, um einen AWS-Connector zu erstellen u
 10. Geben Sie für **Berichtsnamen** den Namen ein, den Sie in AWS erstellt haben.
 11. Wählen Sie **Weiter** und anschließend **Erstellen** aus.
 
-Es kann einige Stunden dauern, bis die neuen AWS-Bereiche, das konsolidierte AWS-Konto und die verknüpften AWS-Konten sowie deren Kostendaten angezeigt werden.
+Es kann einige Stunden dauern, bis die neuen AWS-Bereiche, das konsolidierte AWS-Konto, die verknüpften AWS-Konten und deren Kostendaten angezeigt werden.
 
 Nachdem Sie den Connector erstellt haben, sollten Sie dem Connector eine Zugriffssteuerung zuweisen. Benutzern werden Berechtigungen für die neu erkannten Bereiche zugewiesen: Konsolidiertes AWS-Konto und verknüpfte AWS-Konten. Der Benutzer, der den Connector erstellt, ist der Besitzer des Connectors, des konsolidierten Kontos und aller verknüpften Konten.
 
@@ -189,7 +189,7 @@ Wenn Sie auf der Seite **Cloudconnectors** einen Connector auswählen, haben Sie
 
 ## <a name="set-up-azure-management-groups"></a>Einrichten von Azure-Verwaltungsgruppen
 
-Um einen zentralen Ort für die Anzeige von Cloudanbieterinformationen zu erstellen, müssen Sie Ihre Azure-Abonnements und verknüpften AWS-Konten in derselben Verwaltungsgruppe einordnen. Wenn Sie Ihre Azure-Umgebung nicht bereits mit Verwaltungsgruppen konfiguriert haben, finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](../governance/management-groups/index.md#initial-setup-of-management-groups) weitere Informationen.
+Ordnen Sie Ihre Azure-Abonnements und verknüpften AWS-Konten in derselben Verwaltungsgruppe ein, um einen zentralen Ort für die Anzeige von cloudübergreifenden Anbieterinformationen zu erstellen. Wenn Sie Ihre Azure-Umgebung nicht bereits mit Verwaltungsgruppen konfiguriert haben, finden Sie unter [Erstmalige Einrichtung von Verwaltungsgruppen](../governance/management-groups/index.md#initial-setup-of-management-groups) weitere Informationen.
 
 Wenn Sie die Kosten trennen möchten, können Sie eine Verwaltungsgruppe anlegen, die nur die mit verknüpften AWS-Konten enthält.
 

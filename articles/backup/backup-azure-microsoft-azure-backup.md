@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018897"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575141"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
     Wenn Sie eine eigene Instanz von SQL 2017 verwenden, müssen Sie die SSRS manuell konfigurieren. Stellen Sie nach der SSRS-Konfiguration sicher, dass die SSRS-Eigenschaft *IsInitialized* auf *True* festgelegt ist. Wenn sie auf „True“ festgelegt ist, geht MABS davon aus, dass die SSRS bereits konfiguriert sind, und MABS überspringt die SSRS-Konfiguration.
 
     Verwenden Sie für die SSRS-Konfiguration die folgenden Werte: 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - Dienstkonto: „Integriertes Konto verwenden“ sollte „Netzwerkdienst“ lauten.
+    - Webdienst-URL: „Virtuelles Verzeichnis“ sollte „ReportServer_<SQLInstanceName>“ lauten.
+    - Datenbank: „DatabaseName“ sollte ReportServer$<SQLInstanceName> lauten.
+    - Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_<SQLInstanceName>“ lauten.
 
     Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
 

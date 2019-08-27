@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711560"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515706"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Anpassen des Setups für Azure-SSIS Integration Runtime
 
@@ -39,6 +39,8 @@ Sie können sowohl kostenlose bzw. unlizenzierte als auch kostenpflichtige oder 
 -   Wenn Azure-SSIS IR im Rahmen des benutzerdefinierten Setups einem virtuellen Netzwerk beitreten soll, wird nur das virtuelle Azure Resource Manager-Netzwerk unterstützt. Das klassische virtuelle Netzwerk wird nicht unterstützt.
 
 -   Administrative Freigabe wird für die Azure-SSIS-Integrationslaufzeit derzeit nicht unterstützt.
+
+-   Der ODBC-Treiber für Zugriff auf die den IBM iSeries wird in der Azure-SSIS Integration Runtime nicht unterstützt. Möglicherweise wird während des benutzerdefinierten Setups ein Installationsfehler angezeigt. Wenden Sie sich an den IBM-Kundendienst.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814099"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543023"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -60,11 +60,6 @@ Die ursprüngliche Rechnung wird storniert, und eine neue Rechnung wird erstellt
 
 In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückerstattungen:
 
-**Stornierungsrichtlinien**
-
-- Wenn Sie eine Reservierung stornieren, wird für die vorzeitige Kündigung unter Umständen eine Gebühr in Höhe von 12 Prozent berechnet.
-- Die Rückerstattung, die Sie für eine Stornierung erhalten, entspricht dem verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12 Prozent. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Erstattung** aus.
-
 **Umtauschrichtlinien**
 
 - Sie können mehrere vorhandene Reservierungen zurückgeben, um eine neue Reservierung des gleichen Typs zu erwerben. Ein Wechsel des Typs von Reservierungen ist beim Umtausch nicht möglich. Beispielsweise können Sie keine VM-Reservierung zurückgeben, um eine SQL-Reservierung zu erwerben.
@@ -77,10 +72,12 @@ In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückersta
 - Für den Umtausch gibt es keine Strafzahlungen oder jährlichen Grenzwerte.
 
 **Rückerstattungsrichtlinien**
+- Wenn Sie eine Reservierung stornieren, wird für die vorzeitige Kündigung unter Umständen eine Gebühr in Höhe von 12 Prozent berechnet.
+- Die Rückerstattung, die Sie für eine Stornierung erhalten, entspricht dem verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12 Prozent. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Erstattung** aus.
 - Ihr Gesamtbetrag für Erstattungen darf innerhalb eines rollierenden Zeitfensters von 12 Monaten den Wert von 50.000 US-Dollar nicht überschreiten.
 - Rückerstattungen werden auf der Grundlage des niedrigsten Preises (Ihr Kaufpreis oder der aktuelle Preis für die Reservierung) berechnet.
 - Nur Besitzer von Reservierungen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Microsoft behält sich das Recht vor, für alle Rückgaben eine Strafzahlung in Höhe von 12 % zu berechnen. Derzeit wird diese Strafzahlung aber nicht angewendet.
+- Microsoft behält sich das Recht vor, für alle Rückgaben eine Strafzahlung in Höhe von 12 % zu berechnen. Derzeit wird diese Strafzahlung nicht angewendet, wird aber künftig berechnet werden.
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
 

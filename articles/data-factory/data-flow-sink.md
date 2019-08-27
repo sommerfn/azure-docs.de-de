@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640282"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515677"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Senkentransformation für einen Datenfluss
 
@@ -79,13 +79,16 @@ Richten Sie die Dateibenennung ein:
 
 Wählen Sie die Datenbankeinstellungen aus:
 
+![Registerkarte „Einstellungen“ mit Optionen für SQL-Senken](media/data-flow/alter-row2.png "SQL-Optionen")
+
 * **Updatemethode:** Die Standardeinstellung ist das Zulassen von Einfügevorgängen. Deaktivieren Sie **Allow insert** (Einfügen zulassen), wenn keine neuen Zeilen aus der Quelle mehr eingefügt werden sollen. Wenn Sie für Zeilen Update-, Upsert- oder Löschvorgänge verwenden möchten, fügen Sie zunächst eine Transformation zur Änderung von Zeilen hinzu, um Zeilen für diese Aktionen zu kennzeichnen. 
 * **Recreate table** (Tabelle neu erstellen): Löschen oder erstellen Sie die Zieltabelle, bevor der Datenfluss abgeschlossen wird.
 * **Truncate table** (Tabelle abschneiden): Entfernen Sie alle Zeilen aus der Zieltabelle, bevor der Datenfluss abgeschlossen wird.
 * **Batchgröße**: Eine Zahl eingeben, um Schreibvorgänge in Blöcke zu unterteilen. Verwenden Sie diese Option für große Datenmengen. 
 * **Enable staging** (Staging aktivieren): Verwenden Sie bei Azure Data Warehouse als Senkendataset PolyBase.
+* **Pre- und Post SQL-Skripts**: Geben Sie mehrzeilige SQL-Skripts ein, die ausgeführt werden, bevor Daten in die Senkendatenbank geschrieben werden (Vorverarbeitung) und danach (Nachbearbeitung).
 
-![Registerkarte „Einstellungen“ mit Optionen für SQL-Senken](media/data-flow/alter-row2.png "SQL-Optionen")
+![Vorverarbeitungs- und Nachbearbeitungs-SQL-Skripts](media/data-flow/prepost1.png "SQL-Verarbeitungsskripts")
 
 > [!NOTE]
 > Sie können Data Factory im Datenfluss anweisen, eine neue Tabellendefinition in der Zieldatenbank zu erstellen. Um die Tabellendefinition zu erstellen, legen Sie ein Dataset in der Senkentransformation mit einem neuen Tabellennamen fest. Wählen Sie im SQL-Dataset unter dem Tabellennamen **Bearbeiten** aus, und geben Sie einen neuen Tabellennamen ein. Aktivieren Sie dann in der Senkentransformation **Schemaabweichung zulassen**. Legen Sie **Schema importieren** auf **Nein** fest.

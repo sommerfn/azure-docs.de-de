@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381953"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533524"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -86,10 +86,12 @@ Dieser Fehler tritt auf, wenn Cluster aus mehreren Gründen in einen fehlerhafte
 
 *Diese Unterstützung bei der Problembehandlung wurde von https://aka.ms/aks-pending-upgrade weitergeleitet.*
 
-Clustervorgänge sind eingeschränkt, wenn aktive Upgradevorgänge stattfinden oder ein Upgrade versucht wurde, aber anschließend fehlgeschlagen ist. Um das Problem zu diagnostizieren, führen Sie `az aks show -g myResourceGroup -n myAKSCluster -o table` aus, um den detaillierten Status Ihres Clusters abzurufen. Basierend auf dem Ergebnis:
+Aktualisierungs- und Skalierungsvorgänge in einem Cluster mit einem einzelnen Knotenpool oder einem Cluster mit [mehreren Knotenpools](use-multiple-node-pools.md) schließen sich gegenseitig aus. Es ist nicht möglich, einen Cluster oder Knotenpool gleichzeitig zu aktualisieren und zu skalieren. Stattdessen muss jeder Vorgangstyp für die Zielressource abgeschlossen sein, bevor eine neue Anforderung an dieselbe Ressource gerichtet werden kann. Vorgänge sind daher eingeschränkt, wenn aktive Upgrade- oder Skalierungsvorgänge stattfinden oder gestartet wurden und anschließend fehlgeschlagen sind. 
+
+Um das Problem zu diagnostizieren, führen Sie `az aks show -g myResourceGroup -n myAKSCluster -o table` aus, um den detaillierten Status Ihres Clusters abzurufen. Basierend auf dem Ergebnis:
 
 * Wenn ein aktives Upgrade des Clusters durchgeführt wird, warten Sie, bis der Vorgang beendet wurde. Wenn dies erfolgreich war, versuchen Sie den zuvor fehlgeschlagenen Vorgang erneut.
-* Wenn das Upgrade des Clusters fehlgeschlagen ist, führen Sie die oben beschriebenen Schritte aus.
+* Wenn das Upgrade des Clusters fehlgeschlagen ist, führen Sie die im voranstehenden Abschnitt beschriebenen Schritte aus.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Kann ich meinen Cluster in ein anderes Abonnement verschieben oder mein Abonnement mit meinem Cluster in einen anderen Mandanten?
 

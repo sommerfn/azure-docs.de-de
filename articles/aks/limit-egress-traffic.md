@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: cf9dc304efea8874d16953f74bf88a4317760819
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031795"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639787"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Vorschau: Einschränken des ausgehenden Datenverkehrs für Clusterknoten und Steuern des Zugriffs auf erforderliche Ports und Dienste in Azure Kubernetes Service (AKS)
 
@@ -58,6 +58,10 @@ Zu Verwaltungs- und Betriebszwecken müssen Knoten in einem AKS-Cluster auf best
 Um die Sicherheit Ihres AKS-Clusters zu erhöhen, können Sie den ausgehenden Datenverkehr einschränken. Der Cluster wird so konfiguriert, dass Containerimages des Basissystems aus MCR oder ACR gepullt werden. Wenn Sie den ausgehenden Datenverkehr auf diese Weise einschränken, müssen Sie bestimmte Ports und FQDNs definieren, damit AKS-Knoten ordnungsgemäß mit erforderlichen externen Diensten kommunizieren können. Ohne diese autorisierten Ports und FQDNs können AKS-Knoten nicht mit dem API-Server kommunizieren und keine Kernkomponenten installieren.
 
 Sie können [Azure Firewall][azure-firewall] oder eine Firewallappliance eines Drittanbieters verwenden, um den ausgehenden Datenverkehr zu schützen und diese erforderlichen Ports und Adressen zu definieren. AKS erstellt diese Regeln nicht automatisch für Sie. Die folgenden Ports und Adressen dienen als Referenz, wenn Sie die entsprechenden Regeln in Ihrer Netzwerkfirewall erstellen.
+
+> [!IMPORTANT]
+> Wenn Sie Azure Firewall verwenden, um ausgehenden Datenverkehr einzuschränken, und eine benutzerdefinierte Route (UDR) erstellen, um den gesamten ausgehenden Datenverkehr zu erzwingen, stellen Sie sicher, dass Sie in der Firewall eine entsprechende DNAT-Regel erstellen, um ausgehenden Datenverkehr zuzulassen. Durch die Verwendung von Azure Firewall mit einer UDR wird das Setup für eingehenden Datenverkehr aufgrund von asymmetrischem Routing unterbrochen. (Das Problem tritt auf, weil das AKS-Subnetz über eine Standardroute verfügt, die zur privaten IP-Adresse der Firewall wechselt, Sie aber einen öffentlichen Load Balancer verwenden – Eingangs- oder Kubernetes-Dienst vom Typ „LoadBalancer“.) In diesem Fall wird der eingehende Load Balancer-Datenverkehr über die öffentliche IP-Adresse empfangen, während der Rückpfad über die private IP-Adresse der Firewall verläuft. Die Firewall löscht das zurückgegebene Paket, weil sie zustandsbehaftet ist und nichts über eine vorhandene Sitzung weiß. Informationen zur Integration von Azure Firewall in ihren Eingangs- oder Service Dienst-Load Balancer finden Sie unter [Integrieren von Azure Firewall mit Azure Load Balancer Standard](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb).
+>
 
 In AKS gibt es zwei Gruppen von Ports und Adressen:
 

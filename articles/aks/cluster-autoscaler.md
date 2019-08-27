@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: dc5e862109a766f708338ebddb91a75ffc550306
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6ed50380b47040793e9826b64297bacf6ab12c71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031916"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533594"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Vorschau: Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -90,7 +90,7 @@ Weitere Informationen dazu, warum ein zentrales Herunterskalieren über die Auto
 
 Die Autoskalierung für Cluster verwendet Startparameter, um z.B. Zeitintervalle zwischen Skalierungsereignissen und Ressourcenschwellenwerte zu steuern. Diese Parameter werden über die Azure-Plattform definiert und können aktuell nicht von Ihnen angepasst werden. Weitere Informationen zu den von der Autoskalierung für Cluster verwendeten Parametern finden Sie unter [What are the cluster autoscaler parameters?][autoscaler-parameters] (Welche Parameter verwendet die Autoskalierung für Cluster?).
 
-Die zwei Methoden für die automatische Skalierung können zusammenarbeiten und werden häufig gemeinsam in einem Cluster bereitgestellt. In Kombination konzentriert sich die horizontale automatische Podskalierung auf die Anzahl von Pods, die zum Erfüllen der Anwendungsanforderungen benötigt werden. Die Autoskalierung für Cluster konzentriert sich auf die Anzahl von Knoten, die zum Unterstützen der geplanten Pods erforderlich sind.
+Die automatische Clusterskalierung und die horizontale automatische Podskalierung können zusammenarbeiten und werden häufig gemeinsam in einem Cluster bereitgestellt. In Kombination konzentriert sich die horizontale automatische Podskalierung auf die Anzahl von Pods, die zum Erfüllen der Anwendungsanforderungen benötigt werden. Die Autoskalierung für Cluster konzentriert sich auf die Anzahl von Knoten, die zum Unterstützen der geplanten Pods erforderlich sind.
 
 > [!NOTE]
 > Bei Verwendung der Autoskalierung für Cluster ist die manuelle Skalierung deaktiviert. Überlassen Sie der Autoskalierung für Cluster das Bestimmen der erforderlichen Anzahl von Knoten. Wenn Sie Ihren Cluster manuell skalieren möchten, [deaktivieren Sie die Autoskalierung für Cluster](#disable-the-cluster-autoscaler).
@@ -124,9 +124,14 @@ az aks create \
 
 Die Erstellung des Clusters und die Konfiguration der Einstellungen für die Autoskalierung für Cluster dauert einige Minuten.
 
-### <a name="update-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-a-single-node-pool"></a>Aktualisieren der automatischen Clusterskalierung für einen vorhandenen Knotenpool in einem Cluster mit einem einzigen Knotenpool
+## <a name="change-the-cluster-autoscaler-settings"></a>Ändern der Einstellungen zur Autoskalierung für Cluster
 
-Sie können die vorherigen Einstellungen der automatischen Clusterskalierung für einen Cluster aktualisieren, der die im vorstehenden Abschnitt [Voraussetzungen](#before-you-begin) beschriebenen Anforderungen erfüllt. Verwenden Sie den Befehl [az aks update][az-aks-update], um die automatische Clusterskalierung für Ihren Cluster mit einem *einzigen* Knotenpool zu aktivieren.
+> [!IMPORTANT]
+> Wenn Sie das Feature *Mehrere Agent-Pools* in Ihrem Abonnement aktiviert haben, fahren Sie mit dem Abschnitt [Automatische Skalierung mit mehreren Agent-Pools](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled) fort. Für Cluster, für die mehrere Agent-Pools aktiviert sind, ist die Verwendung des `az aks nodepool`-Befehlssatzes anstelle von `az aks` zum Ändern von Knotenpool-spezifischen Eigenschaften erforderlich. In den folgenden Anweisungen wird davon ausgegangen, dass Sie nicht mehrere Knotenpools aktiviert haben. Um zu überprüfen, ob diese aktiviert sind, führen Sie `az feature  list -o table` aus, und suchen Sie nach `Microsoft.ContainerService/multiagentpoolpreview`.
+
+Im vorherigen Schritt zum Erstellen eines AKS-Clusters oder Aktualisieren eines vorhandenen Knotenpools wurde die Mindestanzahl von Knoten zur automatischen Clusterskalierung auf *1* und die maximale Knotenanzahl auf *3* festgelegt. Wenn sich die Anforderungen Ihrer Anwendung ändern, müssen Sie möglicherweise die Knotenanzahl für die Autoskalierung für Cluster anpassen.
+
+Verwenden Sie den Befehl [az aks update][az-aks-update], um die Knotenanzahl zu ändern.
 
 ```azurecli-interactive
 az aks update \
@@ -137,41 +142,7 @@ az aks update \
   --max-count 5
 ```
 
-Anschließend kann die automatische Clusterskalierung mit dem Befehl `az aks update --enable-cluster-autoscaler` oder `az aks update --disable-cluster-autoscaler` aktiviert oder deaktiviert werden.
-
-### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools"></a>Aktivieren der automatischen Clusterskalierung für einen vorhandenen Knotenpool in einem Cluster mit mehreren Knotenpools
-
-Die automatische Clusterskalierung kann auch mit aktivierter [Previewfunktion für mehrere Knotenpools](use-multiple-node-pools.md) verwendet werden. Sie können die automatische Clusterskalierung für einzelne Knotenpools in einem AKS-Cluster aktivieren, der mehrere Knotenpools enthält und die im vorstehenden Abschnitt [Voraussetzungen](#before-you-begin) beschriebenen Anforderungen erfüllt. Verwenden Sie den Befehl [az aks nodepool update][az-aks-nodepool-update], um die automatische Clusterskalierung für einen einzelnen Knotenpool zu aktivieren.
-
-```azurecli-interactive
-az aks nodepool update \
-  --resource-group myResourceGroup \
-  --cluster-name myAKSCluster \
-  --name mynodepool \
-  --enable-cluster-autoscaler \
-  --min-count 1 \
-  --max-count 3
-```
-
-Anschließend kann die automatische Clusterskalierung mit dem Befehl `az aks nodepool update --enable-cluster-autoscaler` oder `az aks nodepool update --disable-cluster-autoscaler` aktiviert oder deaktiviert werden.
-
-## <a name="change-the-cluster-autoscaler-settings"></a>Ändern der Einstellungen zur Autoskalierung für Cluster
-
-Im vorherigen Schritt zum Erstellen eines AKS-Clusters oder Aktualisieren eines vorhandenen Knotenpools wurde die Mindestanzahl von Knoten zur automatischen Clusterskalierung auf *1* und die maximale Knotenanzahl auf *3* festgelegt. Wenn sich die Anforderungen Ihrer Anwendung ändern, müssen Sie möglicherweise die Knotenanzahl für die Autoskalierung für Cluster anpassen.
-
-Verwenden Sie den Befehl [az aks nodepool update][az-aks-nodepool-update], um die Knotenanzahl zu ändern.
-
-```azurecli-interactive
-az aks nodepool update \
-  --resource-group myResourceGroup \
-  --cluster-name myAKSCluster \
-  --name mynodepool \
-  --update-cluster-autoscaler \
-  --min-count 1 \
-  --max-count 5
-```
-
-Im oben stehenden Beispiel wird die automatische Clusterskalierung für den Knotenpool *mynodepool* in *myAKSCluster* auf mindestens *1* und höchstens *5* Knoten aktualisiert.
+Im oben stehenden Beispiel wird die automatische Clusterskalierung für den einzelnen Knotenpool in *myAKSCluster* auf mindestens *1* und höchstens *5* Knoten aktualisiert.
 
 > [!NOTE]
 > Während der Vorschau können Sie keine höhere Mindestanzahl von Knoten einstellen, als aktuell für den Knotenpool festgelegt ist. Wenn beispielsweise die Mindestanzahl von Knoten aktuell auf *1* festgelegt ist, können Sie die Mindestanzahl nicht auf *3* aktualisieren.
@@ -180,17 +151,46 @@ Im oben stehenden Beispiel wird die automatische Clusterskalierung für den Knot
 
 ## <a name="disable-the-cluster-autoscaler"></a>Deaktivieren der Autoskalierung für Cluster
 
-Wenn Sie die automatische Clusterskalierung nicht mehr verwenden möchten, können Sie sie mit dem Befehl [az aks nodepool update][az-aks-nodepool-update] unter Angabe des Parameters *--disable-cluster-autoscaler* deaktivieren. Beim Deaktivieren der Autoskalierung für Cluster werden keine Knoten entfernt.
+Wenn Sie die automatische Clusterskalierung nicht mehr verwenden möchten, können Sie sie mit dem Befehl [az aks update][az-aks-update] unter Angabe des Parameters *--disable-cluster-autoscaler* deaktivieren. Beim Deaktivieren der Autoskalierung für Cluster werden keine Knoten entfernt.
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --disable-cluster-autoscaler
+```
+
+Nachdem Sie die automatische Clusterskalierung deaktiviert haben, können Sie den Cluster mit dem Befehl [az aks scale][az-aks-scale] manuell skalieren. Wenn Sie die horizontale automatische Podskalierung verwenden, wird dieses Feature nach dem Deaktivieren der Autoskalierung für Cluster weiterhin ausgeführt, aber Pods können möglicherweise nicht geplant werden, wenn alle Knotenressourcen verwendet werden.
+
+## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Erneutes Aktivieren der deaktivierten automatischen Clusterskalierung
+
+Wenn Sie die automatische Clusterskalierung für einen vorhandenen Cluster wieder aktivieren möchten, können Sie sie mit dem Befehl [az aks update][az-aks-update] unter Angabe des Parameters *--enable-cluster-autoscaler* wieder aktivieren.
+
+## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Verwenden der automatischen Clusterskalierung mit mehreren aktivierten Knotenpools
+
+Die automatische Clusterskalierung kann zusammen mit aktivierter [Previewfunktion für mehrere Knotenpools](use-multiple-node-pools.md) verwendet werden. In diesem Dokument erfahren Sie, wie Sie mehrere Knotenpools aktivieren und einem vorhandenen Cluster zusätzliche Knotenpools hinzufügen. Wenn Sie beide Features gleichzeitig verwenden, aktivieren Sie die automatische Clusterskalierung für jeden einzelnen Knotenpool im Cluster und können jeweils eindeutige Regeln für die automatische Skalierung übergeben.
+
+Der folgende Befehl setzt voraus, dass Sie die [ersten Anweisungen](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) in diesem Dokument befolgt haben und für einen vorhandenen Knotenpool die maximale Anzahl von *3* auf *5* aktualisieren möchten. Verwenden Sie den Befehl [az aks nodepool update][az-aks-nodepool-update], um die Einstellungen eines vorhandenen Knotenpools zu aktualisieren.
 
 ```azurecli-interactive
 az aks nodepool update \
   --resource-group myResourceGroup \
-  --cluster-name myAKSCluster \
+  --cluster-name multipoolcluster \
+  --name mynodepool \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 5
+```
+
+Die automatische Clusterskalierung kann mit [az aks nodepool update][az-aks-nodepool-update] unter Angabe des Parameters `--disable-cluster-autoscaler` deaktiviert werden.
+
+```azurecli-interactive
+az aks nodepool update \
+  --resource-group myResourceGroup \
+  --cluster-name multipoolcluster \
   --name mynodepool \
   --disable-cluster-autoscaler
 ```
-
-Sie können Ihren Cluster mithilfe des Befehls [az aks scale][az-aks-scale] manuell skalieren. Wenn Sie die horizontale automatische Podskalierung verwenden, wird dieses Feature nach dem Deaktivieren der Autoskalierung für Cluster weiterhin ausgeführt, aber Pods können möglicherweise nicht geplant werden, wenn alle Knotenressourcen verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
