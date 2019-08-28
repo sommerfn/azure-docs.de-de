@@ -3,19 +3,19 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935039"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894094"
 ---
-In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenbank für Azure SQL-Datenbank.
+In diesem Schritt erstellen Sie eine Azure SQL-Einzeldatenbank. 
 
 > [!IMPORTANT]
-> Richten Sie auf dem Computer, auf dem Sie die Schritte des Artikels ausführen, Firewallregeln für die öffentliche IP-Adresse des Computers ein. 
+> Richten Sie auf dem für diesen Artikel verwendeten Computer Firewallregeln für die öffentliche IP-Adresse des Computers ein.
 >
 > Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Datenbankebene](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für Ihren Computer ermitteln, finden Sie unter [Erstellen einer Firewall auf Serverebene](../sql-database-server-level-firewall-rule.md).  
 
@@ -23,10 +23,11 @@ In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenban
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Portal.
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
-2. Wählen Sie die Option **Datenbanken** und dann **SQL-Datenbank**, um die Seite **SQL-Datenbank erstellen** zu öffnen.
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein.
+2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel **Datenbanken** die Option **Details anzeigen** auswählen.
+3. Wählen Sie **Erstellen** aus:
 
-   ![Erstellen einer Einzeldatenbank](../media/sql-database-get-started-portal/create-database-1.png)
+   ![Erstellen einer Einzeldatenbank](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. Geben Sie auf der Registerkarte **Grundlagen** im Abschnitt **Projektdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
 

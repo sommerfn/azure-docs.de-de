@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: f465ac91936b766d2c19ea8efd67b3acc8df6d75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 20a9ca8e28961a6dc49947a22f745424961b4a3f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243940"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615267"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Schreiben von gespeicherten Prozeduren und Triggern in Azure Cosmos DB mit der JavaScript-Abfrage-API
 
@@ -19,7 +19,7 @@ Mit Azure Cosmos DB können Sie optimierte Abfragen ausführen, indem Sie eine i
 
 ## <a id="stored-procedures"></a>Gespeicherte Prozedur mit der JavaScript-Abfrage-API
 
-Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet wird. Die gespeicherte Prozedur fügt ein Azure Cosmos DB-Element ein, das durch einen Eingabeparameter angegeben wird, und aktualisiert mit der `__.filter()`-Methode ein Metadatenelement, wobei „minSize“, „maxSize“ und „totalSize“ auf der size-Eigenschaft des Eingabeelements basieren.
+Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet wird. Die gespeicherte Prozedur fügt ein Azure Cosmos-Element ein, das durch einen Eingabeparameter angegeben wird, und aktualisiert mit der `__.filter()`-Methode ein Metadatenelement, wobei „minSize“, „maxSize“ und „totalSize“ auf der size-Eigenschaft des Eingabeelements basieren.
 
 > [!NOTE]
 > `__` (doppelter Unterstrich) ist bei Verwendung der JavaScript-Abfrage-API ein Alias für `getContext().getCollection()`.

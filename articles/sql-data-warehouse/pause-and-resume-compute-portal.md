@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731966"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574892"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen für ein Azure SQL Data Warehouse im Azure-Portal
 
@@ -35,7 +35,7 @@ Verwenden Sie [Erstellen und Verbinden – Portal](create-data-warehouse-portal.
 
 Um Kosten zu sparen, können Sie Computeressourcen bei Bedarf anhalten und fortsetzen. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. Computeressourcen werden Ihnen nicht in Rechnung gestellt, während die Datenbank angehalten ist. Allerdings wird Ihnen der Speicherplatz weiter in Rechnung gestellt. 
 
-Führen Sie die folgenden Schritte aus, um ein SQL Data Warehouse anzuhalten.
+Führen Sie die folgenden Schritte aus, um eine SQL Data Warehouse-Instanz anzuhalten:
 
 1. Klicken Sie auf der linken Seite im Azure-Portal auf **SQL-Datenbanken**.
 2. Wählen Sie auf der Seite **SQL-Datenbanken** den Eintrag **mySampleDataWarehouse** aus. Hierdurch wird das Data Warehouse geöffnet. 
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um ein SQL Data Warehouse anzuhalten.
 
 ## <a name="resume-compute"></a>Fortsetzen von Computeressourcen
 
-Führen Sie die folgenden Schritte aus, um ein SQL Data Warehouse fortzusetzen.
+Führen Sie die folgenden Schritte aus, um eine SQL Data Warehouse-Instanz fortzusetzen:
 
 1. Klicken Sie auf der linken Seite im Azure-Portal auf **SQL-Datenbanken**.
 2. Wählen Sie auf der Seite **SQL-Datenbanken** den Eintrag **mySampleDataWarehouse** aus. Hierdurch wird das Data Warehouse geöffnet. 
@@ -103,4 +103,4 @@ Führen Sie die folgenden Schritte aus, um Ressourcen nach Wunsch zu bereinigen.
 Sie haben die Computeressourcen für Ihr Data Warehouse angehalten und fortgesetzt. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]
-> [Laden von Daten in ein SQL-Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Laden von Daten in SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

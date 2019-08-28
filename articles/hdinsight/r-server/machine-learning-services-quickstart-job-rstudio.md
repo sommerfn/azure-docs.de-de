@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 484763adfa154dcdf226b03f1f591d248532ee35
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451501"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876306"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Schnellstart: Ausführen eines R-Skripts in einem ML Services-Cluster in Azure HDInsight mithilfe von RStudio Server
 
@@ -182,3 +182,6 @@ In diesem Schnellstart haben Sie erfahren, wie Sie ein R-Skript mithilfe von RSt
 
 > [!div class="nextstepaction"]
 >[Computekontextoptionen für ML Services in HDInsight](./r-server-compute-contexts.md)
+
+> [!NOTE]
+> Auf dieser Seite sind die Features der RStudio-Software beschrieben. Microsoft Azure HDInsight ist kein Partner von RStudio, Inc.

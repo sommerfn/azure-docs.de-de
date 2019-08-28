@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 7db14f6406223486ea0efb80d3d1cfcd0351f414
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3ad9aff10b3bae36a173f776f55a434fd8b38b98
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037227"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574271"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Konfigurieren der Startzeit des Änderungsfeedprozessors
 
@@ -51,8 +51,7 @@ Der Änderungsfeedprozessor wird initialisiert und beginnt mit dem Lesen von Än
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie mehr über Änderungsfeeds:
+In den folgenden Artikeln erfahren Sie mehr über den Änderungsfeedprozessor:
 
-* [Übersicht über Änderungsfeeds](change-feed.md)
-* [Ways to read change feed](read-change-feed.md) (Möglichkeiten zum Lesen von Änderungsfeeds)
-* [Verwenden des Änderungsfeedprozessors](change-feed-processor.md)
+* [Änderungsfeedprozessor in Azure Cosmos DB](change-feed-processor.md)
+* [Use the change feed estimator](how-to-use-change-feed-estimator.md) (Verwenden des Änderungsfeed-Estimators)

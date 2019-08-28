@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: a6348024d4e84c27610f1294f916cca9a851b6b9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034198"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615572"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure CLI-Beispiele für Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosm
 | [Erstellen eines Azure Cosmos DB-Kontos mit der Tabellen-API](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellen eines einzelnen Kontos, einer Datenbank und einer Tabelle für Azure Cosmos DB. |
 |**Skalieren von Azure Cosmos DB**||
 | [Skalieren des Containerdurchsatzes](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ändern des in einem Container bereitgestellten Durchsatzes|
-| [Replizieren des Datenbankkontos von Azure Cosmos DB in mehreren Regionen und Konfigurieren der Failoverprioritäten](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globales Replizieren von Kontodaten in verschiedenen Regionen mit einer festgelegten Failoverpriorität|
+| [Replizieren des Datenbankkontos von Azure Cosmos in mehreren Regionen und Konfigurieren der Failoverprioritäten](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globales Replizieren von Kontodaten in verschiedenen Regionen mit einer festgelegten Failoverpriorität|
 |**Schützen von Azure Cosmos DB**||
 | [Abrufen von Kontoschlüsseln](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Abrufen der primären und sekundären Hauptschlüssel zum Schreiben und der sekundären schreibgeschützten Schlüssel für das Konto|
 | [Abrufen der Verbindungszeichenfolge für das Cosmos-Konto, das mit der API für MongoDB von Azure Cosmos DB konfiguriert ist](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Abrufen der Verbindungszeichenfolge zum Herstellen einer Verbindung zwischen der MongoDB-App und Ihrem Azure Cosmos DB-Konto.|
@@ -37,5 +37,5 @@ Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosm
 |**Hochverfügbarkeit, Notfallwiederherstellung, Sicherung und Wiederherstellung**||
 | [Konfigurieren der Failoverrichtlinie](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Festlegen der Failoverpriorität einzelner Regionen, in denen das Konto repliziert wird|
 |**Herstellen einer Verbindung zwischen Azure Cosmos DB und Ressourcen**||
-| [Herstellen einer Verbindung zwischen einer Web-App und Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Erstellen und Herstellen einer Verbindung zwischen einer Azure Cosmos DB-Datenbank und einer Azure-Web-App|
+| [Herstellen einer Verbindung zwischen einer Web-App und Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Erstellen und Herstellen einer Verbindung zwischen einer Azure Cosmos-Datenbank und einer Azure-Web-App|
 |||

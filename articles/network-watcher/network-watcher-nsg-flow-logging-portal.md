@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f254572f5c26a809f401e99f527ccd3d30451c3d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931582"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636216"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -95,7 +95,8 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
     Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Wenn Sie kein Speicherkonto erstellen, sondern ein vorhandenes Konto verwenden, vergewissern Sie sich, dass Sie ein Speicherkonto auswählen, für das **Alle Netzwerke** (Standard) unter **Firewalls und virtuelle Netzwerken** in **EINSTELLUNGEN** ausgewählt ist. Das Speicherkonto muss sich immer in derselben Region wie die NSG befinden. 
     
     > [!NOTE]
-    > Microsoft.Insight- und Microsoft.Network-Anbieter werden derzeit zwar als vertrauenswürdige Microsoft-Dienste für Azure Storage unterstützt, die NSG-Flussprotokolle wurden jedoch noch nicht vollständig integriert. Für die NSG-Flussprotokollierung muss **Alle Netzwerke** weiterhin aktiviert werden, bis das Feature vollständig integriert wurde. 
+    > Microsoft.Insight- und Microsoft.Network-Anbieter werden derzeit zwar als [vertrauenswürdige Microsoft-Dienste für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) unterstützt, die NSG-Flussprotokolle wurden jedoch noch nicht vollständig integriert. Zum Aktivieren der NSG-Flussprotokollierung muss wie oben erwähnt **Alle Netzwerke** ausgewählt werden.
+    
 4. Wählen Sie oben links im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 5. Wählen Sie unter **PROTOKOLLE** die Option **NSG-Flussprotokolle** aus (siehe folgende Abbildung):
 
@@ -114,6 +115,8 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
    > * Für die Speicherkonten ist der [hierarchische Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) aktiviert.
 1. Wählen Sie oben links im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 10. Setzen Sie **Aufbewahrung (Tage)** auf 5, und klicken Sie dann auf **Speichern**.
+    > [!IMPORTANT]
+    > Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobspeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Delete network security group flow log storage blobs in Network Watcher](network-watcher-delete-nsg-flow-log-blobs.md) (Löschen von Speicherblobs mit NSG-Flowprotokollen in Network Watcher).
 
 ## <a name="download-flow-log"></a>Herunterladen des Flussprotokolls
 

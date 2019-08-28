@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 7/2/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a256a0ff5164ec9b25aea3849f20643ee3719fac
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e30419d328cf7af4e1cb710d5bad79f5ebba055e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541422"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614737"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>Erstellen eines Azure Cosmos DB-Kontos mit der Azure Cosmos DB-API für MongoDB mithilfe der Azure CLI
 
@@ -45,8 +45,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Erstellt ein Konto für Azure Cosmos DB. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Erstellt eine Azure Cosmos DB-Datenbank. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Erstellt eine Azure Cosmos DB-Sammlung für MongoDB. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Erstellt eine Azure Cosmos-Datenbank. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Erstellt einen Azure Cosmos-Container für MongoDB. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

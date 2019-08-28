@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0986da64fda659b949d5d1e6cfae03df2daded19
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 9fe02c9b563259abb51a1a768c7facdf1bf601f7
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019154"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898838"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Tutorial: Durchführen eines Upgrades für Kubernetes in Azure Kubernetes Service (AKS)
 
@@ -40,12 +40,12 @@ Verwenden Sie vor dem Upgrade eines Clusters den Befehl [az aks get-upgrades][],
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Im folgenden Beispiel lautet die aktuelle Version *1.13.9*, und die verfügbaren Versionen werden in der Spalte *Upgrades* angezeigt.
+Im folgenden Beispiel lautet die aktuelle Version *1.13.10*, und die verfügbaren Versionen werden in der Spalte *Upgrades* angezeigt.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.9           1.13.9             1.14.5
+default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
 ```
 
 ## <a name="upgrade-a-cluster"></a>Aktualisieren eines Clusters
@@ -58,16 +58,16 @@ AKS-Knoten werden sorgfältig isoliert und ausgeglichen, um ausgeführte Anwendu
 1. Wenn der neue Knoten bereit ist und in den Cluster eingebunden wurde, beginnt der Kubernetes-Planer damit, Pods darauf auszuführen.
 1. Der alte Knoten wird gelöscht, und der nächste Knoten im Cluster beginnt mit dem Prozess des Absperrens und Ausgleichens.
 
-Verwenden Sie den Befehl [az aks upgrade][], um ein Upgrade des AKS-Clusters durchzuführen. Im folgenden Beispiel wird ein Upgrade des Clusters auf Kubernetes-Version *1.14.5* durchgeführt.
+Verwenden Sie den Befehl [az aks upgrade][], um ein Upgrade des AKS-Clusters durchzuführen. Im folgenden Beispiel wird ein Upgrade des Clusters auf Kubernetes-Version *1.14.6* durchgeführt.
 
 > [!NOTE]
-> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.12.x* auf *1.13.x* durchführen, aber nicht direkt von *1.12.8* auf *1.14.x*. Für ein Upgrade von *1.12.x* auf *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* auf *1.13.x* und dann ein weiteres Upgrade von  *1.13.x* auf *1.14.x* durchführen.
+> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.12.x* auf *1.13.x* durchführen, aber nicht direkt von *1.12.x* auf *1.14.x*. Für ein Upgrade von *1.12.x* auf *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* auf *1.13.x* und dann ein weiteres Upgrade von  *1.13.x* auf *1.14.x* durchführen.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.5
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
 ```
 
-In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt die Versionsangabe *1.14.5* angezeigt:
+In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt die Versionsangabe *1.14.6* angezeigt:
 
 ```json
 {
@@ -85,7 +85,7 @@ In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.5",
+  "kubernetesVersion": "1.14.6",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,12 +100,12 @@ In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Die folgende Beispielausgabe zeigt, dass der AKS-Cluster *KubernetesVersion 1.14.5* ausführt:
+Die folgende Beispielausgabe zeigt, dass der AKS-Cluster *KubernetesVersion 1.14.6* ausführt:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters

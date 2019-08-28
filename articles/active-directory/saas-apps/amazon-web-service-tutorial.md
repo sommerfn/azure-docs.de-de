@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944955"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617344"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Tutorial: Integration von Amazon Web Services (AWS) mit Azure Active Directory
 
@@ -111,7 +111,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 7. Neben den vorherigen Attributen werden von der AWS-Anwendung noch einige weitere Attribute in der SAML-Antwort erwartet. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut hinzuzufügen:
 
-    | Name  | Quellattribut  | Namespace |
+    | NAME  | Quellattribut  | Namespace |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -191,7 +191,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
   
     d. Klicken Sie auf **Weiter: Permissions** (Weiter: Berechtigungen).
 
-9. Fügen Sie im Dialogfeld **Attach permissions policies** (Berechtigungsrichtlinien anfügen) die entsprechende Richtlinie für Ihre Organisation an. Wählen Sie anschließend **Next: Review** (Weiter: Überprüfen) aus.  
+9. Fügen Sie im Dialogfeld **Attach permissions policies** (Berechtigungsrichtlinien anfügen) die entsprechende Richtlinie für Ihre Organisation an. Wählen Sie anschließend **Next: Review** (Weiter: Überprüfen).  
 
     ![Screenshot: Dialogfeld „Attach permissions policies“ (Berechtigungsrichtlinien anfügen)][33]
 
@@ -286,7 +286,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     b. Suchen Sie im Filterabschnitt **AzureAD_SSOUserRole_Policy** nach der neu erstellte Richtlinie.
 
-    c. Wählen Sie die Richtlinie und anschließend **Next: Review** (Weiter: Überprüfen) aus.
+    c. Wählen Sie die Richtlinie und anschließend **Next: Review** (Weiter: Überprüfen).
 
 19. Überprüfen Sie die Richtlinie für den angefügten Benutzer.
 
@@ -369,6 +369,12 @@ Wenn Sie im Zugriffsbereich auf die Kachel „AWS“ klicken, sollten Sie automa
    Azure AD können über den Katalog mehrere AWS-Mandanten (dargestellt durch `servicePrincipals`) für die Bereitstellung hinzugefügt werden. Es gibt jedoch ein bekanntes Problem, das dazu führt, dass nicht alle importierten Rollen aus den verschiedenen, für die Bereitstellung verwendeten AWS-Dienstprinzipalen (`servicePrincipals`) automatisch in den einzelnen Dienstprinzipal (`servicePrincipal`) für das einmalige Anmelden geschrieben werden können. 
    
    Zur Umgehung dieses Problems können Sie mithilfe der [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) alle App-Rollen (`appRoles`) extrahieren, die in die einzelnen AWS-Dienstprinzipale (`servicePrincipal`) mit konfigurierter Bereitstellung importiert wurden. Anschließend können Sie diese Rollenzeichenfolgen dem AWS-Dienstprinzipal (`servicePrincipal`) hinzufügen, für den SSO konfiguriert ist.
+ 
+* Rollen müssen die folgenden Anforderungen erfüllen, damit sie von AWS in Azure AD importiert werden können:
+
+  * Für Rollen muss in AWS genau ein SAML-Anbieter festgelegt sein.
+
+  * Der Rollen-ARN und der SAML-Anbieter-ARN für eine zu importierende Rolle dürfen zusammen maximal 119 Zeichen lang sein.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

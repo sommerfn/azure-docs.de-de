@@ -6,17 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.topic: overview
-ms.date: 05/28/2019
+ms.date: 08/15/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 524ab33fc1d6a88620077a28ec70f09d55b06106
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015782"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899975"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
@@ -36,7 +34,27 @@ Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase de
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
 > Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
-## <a name="components-of-cognitive-search"></a>Komponenten von Cognitive Search
+
+## <a name="when-to-use-cognitive-search"></a>Einsatzgebiete der kognitiven Suche
+
+Die kognitive Suche mit vorkonfigurierten Fähigkeiten eignet sich sehr gut für die folgenden Anwendungsszenarien:
+
++ Gescannte Dokumente (JPEG), die für die Volltextsuche verfügbar gemacht werden sollen. Sie können eine Fähigkeit zur optischen Zeichenerkennung (Optical Character Recognition, OCR) anfügen, um Text aus JPEG-Dateien zu identifizieren, zu extrahieren und zu erfassen.
+
++ PDF-Dateien mit Kombinationen aus Bild und Text. Texte in PDF-Dateien können während der Azure Search-Indizierung extrahiert werden, ohne dass die kognitive Suche verwendet wird. Beim Hinzufügen von Bildverarbeitung und natürlicher Sprachverarbeitung erzielen Sie jedoch häufig ein besseres Ergebnis als bei einer Standardindizierung.
+
++ Mehrsprachiger Inhalt, für den Sie die Spracherkennung und möglicherweise die Textübersetzung anwenden möchten.
+
++ Unstrukturierte oder teilweise strukturierte Dokumente mit Inhalten, die eine inhärente Bedeutung oder einen Kontext haben, der im größeren Dokument ausgeblendet ist. 
+
+  Insbesondere Blobs enthalten häufig einen großen Textteil in einem einzelnen „Feld“. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Fähigkeiten, die hilfreich sein können: Schlüsselbegriffserkennung, Stimmungsanalyse und Entitätserkennung (Personen, Organisationen und Standorte).
+
+  Darüber hinaus können Sie mit integrierten Fähigkeiten Inhalte durch Textaufteilung, Textzusammenführung und Shape-Vorgänge neu strukturieren.
+
+Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](/azure/cognitive-services/form-recognizer/overview), die Integration der [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+
+
+## <a name="component-pipeline-of-cognitive-search"></a>Komponentenpipeline der kognitiven Suche
 
 Cognitive Search-Pipelines basieren auf [Azure Search-*Indexern*](search-indexer-overview.md), die Datenquellen durchforsten und End-to-End-Indexverarbeitung bieten. Die Fähigkeitengruppen werden jetzt an Indexer angefügt. Dabei werden Dokumente gemäß der von Ihnen definierten Fähigkeiten abgefangen und angereichert. Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.  Wenn Sie mit Indexern noch nicht vertraut sind, werden Ihnen in diesem Abschnitt die erforderlichen Schritte erläutert.
 
@@ -104,7 +122,7 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 + [Tutorial (HTTP-Anforderungen)](cognitive-search-tutorial-blob.md)
 + [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für die kognitive Suche (C#)](cognitive-search-create-custom-skill-example.md)
 
-Es empfiehlt sich, zu Lernzwecken den kostenlosen Dienst zu verwenden. Beachten Sie jedoch, dass die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt ist. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente).
+Wir empfehlen, den kostenlosen Dienst zu Lernzwecken zu verwenden. Jedoch ist die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente), oder löschen Sie den im Schnellstart oder Tutorial verwendeten Indexer.
 
 **Schritt 3: Überprüfen der API**
 
@@ -115,9 +133,9 @@ Bei diesem Schritt werden die REST-APIs zum Erstellen einer Cognitive Search-Lö
 | REST-API | BESCHREIBUNG |
 |-----|-------------|
 | [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
-| [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, welche die Verwendung von [vordefinierten Fähigkeiten](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Fähigkeiten](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
+| [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Diese API dient speziell für die kognitive Suche. Diese Ressource koordiniert die Verwendung von [vordefinierten Fähigkeiten](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Fähigkeiten](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung. |
 | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zur Beschreibung eines Azure Search-Indexes. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
-| [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchindex basierend auf dem Indexschema, der mit Quelldaten aufgefüllt wird, die durch Qualifikationsgruppen angereichert werden.  |
+| [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchindex basierend auf dem Indexschema, der mit Quelldaten aufgefüllt wird, die durch Qualifikationsgruppen angereichert werden. Diese vorhandene API wird in kognitiven Suchszenarien mit Einbindung einer Skillset-Eigenschaft erweitert. |
 
 **Checkliste: Typischer Workflow**
 

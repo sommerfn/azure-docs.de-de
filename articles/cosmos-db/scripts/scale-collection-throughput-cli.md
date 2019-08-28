@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI-Skript: Skalieren des Durchsatzes für Azure Cosmos DB-Container | Microsoft-Dokumentation'
-description: 'Azure CLI-Skriptbeispiel: Skalieren des Durchsatzes für Azure Cosmos DB-Container'
+title: 'Azure CLI-Skript: Skalieren des Durchsatzes für Azure Cosmos-Container | Microsoft-Dokumentation'
+description: 'Azure CLI-Skriptbeispiel: Skalieren des Durchsatzes für Azure Cosmos-Container'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a7ae4b015ba476ca1ffdb4b4510334490a6f6fee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038448"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616696"
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Skalieren des Durchsatzes für Azure Cosmos DB-Container mithilfe der Azure CLI
+# <a name="scale-azure-cosmos-container-throughput-using-the-azure-cli"></a>Skalieren des Durchsatzes für Azure Cosmos-Container mithilfe der Azure CLI
 
-Dieses Beispiel skaliert den Containerdurchsatz für alle Arten von Azure Cosmos DB-Containern.  
+Dieses Beispiel skaliert den Containerdurchsatz für alle Arten von Azure Cosmos-Containern.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,9 +43,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Erstellt ein Konto für Azure Cosmos DB. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Erstellt eine Azure Cosmos DB-Datenbank. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Erstellt einen Azure Cosmos DB-Container. |
-| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Aktualisiert einen Azure Cosmos DB-Container. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Erstellt eine Azure Cosmos-Datenbank. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Erstellt einen Azure Cosmos-Container. |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Aktualisiert einen Azure Cosmos-Container. |
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

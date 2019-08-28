@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014379"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617698"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 |           | Voraussetzung |
 |-----------|--------------|
 |Portal     | Keine         |
-|PowerShell | Für diesen Schnellstart ist Version **0.7** oder höher des PowerShell-Moduls „Az.Storage“ erforderlich. Führen Sie den Befehl `Get-Module -ListAvailable Az.Storage` aus, um Ihre aktuelle Version zu ermitteln. Wenn nach dem Ausführen dieses Befehls keine Ergebnisse angezeigt werden oder eine andere Version als **0.7** angezeigt wird, müssen Sie Ihr PowerShell-Modul aktualisieren. Informationen dazu finden Sie im Abschnitt [Aktualisieren Ihres PowerShell-Moduls](#upgrade-your-powershell-module) dieser Anleitung.
+|PowerShell | Für diesen Schnellstart ist Version **0.7** oder höher des PowerShell-Moduls „Az.Storage“ erforderlich. Führen Sie den Befehl `Get-Module -ListAvailable Az.Storage` aus, um Ihre aktuelle Version zu ermitteln. Wenn nach dem Ausführen dieses Befehls keine Ergebnisse angezeigt werden oder eine ältere Version als **0.7** angezeigt wird, müssen Sie Ihr PowerShell-Modul aktualisieren. Informationen dazu finden Sie im Abschnitt [Aktualisieren Ihres PowerShell-Moduls](#upgrade-your-powershell-module) dieser Anleitung.
 |Befehlszeilenschnittstelle (CLI)        | Sie können sich bei Azure anmelden und Azure-CLI-Befehle ausführen. Dazu haben Sie zwei Möglichkeiten: <ul><li>Sie können CLI-Befehle innerhalb des Azure-Portals in Azure Cloud Shell ausführen. </li><li>Sie können die Befehlszeilenschnittstelle installieren und CLI-Befehle lokal ausführen.</li></ul>|
 
 Bei Verwendung der Befehlszeile können Sie Azure Cloud Shell ausführen oder die Befehlszeilenschnittstelle lokal installieren.

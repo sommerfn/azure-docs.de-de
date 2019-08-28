@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 5f8555d23a43a3ca391ec03f827b0d81ac3c4698
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933969"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616981"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer Java-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
 
@@ -26,7 +26,7 @@ ms.locfileid: "68933969"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie Ressourcen eines Azure Cosmos DB-Kontos für die [SQL-API](sql-api-introduction.md) mithilfe einer Java-Anwendung erstellen und verwalten. Sie erstellen zunächst ein Azure Cosmos DB-Konto für die SQL-API und anschließend mithilfe des [SQL Java SDK](sql-api-sdk-async-java.md) eine Java-App. Dann fügen Sie mithilfe der Java-Anwendung dem Cosmos DB-Konto Ressourcen hinzu. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. Nach Abschluss dieser Schnellstartanleitung können Sie Cosmos DB-Datenbanken und -Container sowohl über die Benutzeroberfläche als auch programmgesteuert erstellen und ändern.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie Ressourcen eines Azure Cosmos DB-Kontos für die [SQL-API](sql-api-introduction.md) mithilfe einer Java-Anwendung erstellen und verwalten. Sie erstellen zunächst ein Azure Cosmos DB-Konto für die SQL-API und anschließend mithilfe des [SQL Java SDK](sql-api-sdk-async-java.md) eine Java-App. Dann fügen Sie mithilfe der Java-Anwendung dem Cosmos DB-Konto Ressourcen hinzu. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. Nach Abschluss dieser Schnellstartanleitung können Sie Cosmos-Datenbanken und -Container sowohl über die Benutzeroberfläche als auch programmgesteuert erstellen und ändern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

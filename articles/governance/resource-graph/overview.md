@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807423"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900025"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 
@@ -62,6 +62,9 @@ Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte f
 
 > [!NOTE]
 > Ressource Graph verwendet die Abonnements, die für einen Prinzipal während der Anmeldung verfügbar sind. Um Ressourcen eines neuen Abonnements anzuzeigen, die während einer aktiven Sitzung hinzugefügt wurden, muss der Prinzipal den Kontext aktualisieren. Diese Aktion erfolgt nach dem Abmelden und erneuten Anmelden automatisch.
+
+Die Azure-Befehlszeilenschnittstelle und Azure PowerShell nutzen Abonnements, auf die der Benutzer Zugriff hat. Bei der direkten Verwendung der REST-API wird die Abonnementliste vom Benutzer bereitgestellt. Hat der Benutzer Zugriff auf eins der Abonnements in der Liste, werden die Abfrageergebnisse für die Abonnements zurückgegeben, auf die der Benutzer Zugriff hat. Dies ist das gleiche Verhalten wie beim Aufrufen von [Resource Groups - List](/rest/api/resources/resourcegroups/list) (Ressourcengruppen – Liste): Sie erhalten Ressourcengruppen, auf die Sie Zugriff haben, ohne Hinweis darauf, dass es sich um ein Teilergebnis handeln könnte.
+Sind in der Abonnementliste keine Abonnements vorhanden, für die der Benutzer über die entsprechenden Berechtigungen verfügt, lautet die Antwort _403_ (Verboten).
 
 ## <a name="throttling"></a>Drosselung
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 28ba47c1c0ec053af8632475ad52ab50672eab64
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855154"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615735"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer To-Do-App mit Xamarin mithilfe eines Azure Cosmos DB-SQL-API-Kontos
 
@@ -137,7 +137,7 @@ Wir sehen uns jetzt kurz an, wie die App mit Azure Cosmos DB kommuniziert.
     Mit der Funktion `IDocumentQuery<T>.ExecuteNextAsync<T>` wird die Seite mit den Ergebnissen aus Azure Cosmos DB abgerufen, und mit `HasMoreResults` wird überprüft, ob noch weitere Ergebnisse zurückgegeben werden müssen.
 
 > [!TIP]
-> Mehrere Funktionen, die für Azure Cosmos DB-Container und -Dokumente eingesetzt werden, akzeptieren einen URI als Parameter, um die Adresse des Containers bzw. Dokuments anzugeben. Dieser URI wird mit der `URIFactory`-Klasse erstellt. Mit dieser Klasse können URIs für Datenbanken, Container und Dokumente erstellt werden.
+> Mehrere Funktionen, die für Azure Cosmos-Container und -Dokumente eingesetzt werden, akzeptieren einen URI als Parameter, um die Adresse des Containers bzw. Dokuments anzugeben. Dieser URI wird mit der `URIFactory`-Klasse erstellt. Mit dieser Klasse können URIs für Datenbanken, Container und Dokumente erstellt werden.
 
 * Die Funktion `ComsmosDBService.InsertToDoItem` veranschaulicht, wie Sie ein neues Dokument einfügen:
 

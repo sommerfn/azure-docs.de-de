@@ -5,19 +5,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 17dc32f8948387b90229d3c4c07102cff98e3018
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4079b0cab0126a9750bbb91ca7046aa18dbe9ece
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562675"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657786"
 ---
 Die Formularerkennung arbeitet mit Eingabedokumenten, die diese Anforderungen erfüllen:
 
 * Das Format muss JPG, PNG oder PDF (Text oder Scan) sein. In Text eingebettete PDFs eignen sich besser, da beim Extrahieren von Zeichen und Speicherort keine Fehler entstehen können.
 * Wenn Ihre PDF-Dateien mit einem Kennwort geschützt sind, müssen Sie die Sperre entfernen, bevor Sie sie senden.
 * Die Dateigröße muss weniger als 4 MB betragen.
-* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 4.200 × 4.200 Pixel liegen.
+* Bei Bildern müssen die Abmessungen zwischen 600 × 100 Pixel und 4200 × 4200 Pixel liegen.
 * Werden Papierdokumente eingescannt, sollten dies Scans mit hoher Qualität sein.
 * Für Text muss das lateinische Alphabet (englische Zeichen) verwendet werden.
 * Die Daten müssen Schlüssel und Werte enthalten.

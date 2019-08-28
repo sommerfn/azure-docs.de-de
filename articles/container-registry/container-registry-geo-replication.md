@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845208"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574392"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -105,6 +105,14 @@ ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald 
 Die Georeplikation ist ein Funktionsmerkmal des [Premium-Tarifs](container-registry-skus.md) von Azure Container Registry. Wenn Sie eine Registrierung in die gewünschten Regionen replizieren, fallen für jede Region Premium-Registrierungsgebühren an.
 
 Im vorhergehenden Beispiel hat Contoso zwei Registrierungen zu einer konsolidiert und Replikate den Regionen „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“ hinzugefügt. Contoso zahlt nun viermal den Premium-Tarif pro Monat, ohne zusätzliche Konfiguration oder Verwaltung. Jede Region ruft nun ihre Images lokal per Pull ab und verbessert so die Leistung und Zuverlässigkeit ohne Netzwerkausgangsgebühren von USA, Westen nach Kanada und USA, Osten.
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Problembehandlung bei Pushvorgängen mit georeplizierten Registrierungen
+ 
+Ein Docker-Client, der ein Image per Push in eine georeplizierte Registrierung überträgt, kann möglicherweise nicht alle Imageebenen und das zugehörige Manifest in eine einzelne replizierte Region übertragen. Dies kann der Fall sein, wenn Azure Traffic Manager Registrierungsanforderungen an die dem Netzwerk nächstgelegene replizierte Registrierung weiterleitet. Wenn sich die Registrierung in der *Nähe* von zwei Replikationsregionen befindet, können Imageebenen und das Manifest an die beiden Standorte verteilt werden, und der Pushvorgang schlägt beim Überprüfen des Manifests fehl. Dieses Problem wird aufgrund der Art verursacht, auf die der DNS-Name der Registrierung auf manchen Linux-Hosts aufgelöst wird. Dieses Problem tritt nicht unter Windows auf, das einen clientseitigen DNS-Cache bereitstellt.
+ 
+Wenn dieses Problem auftritt, können Sie einen clientseitigen DNS-Cache wie `dnsmasq` auf den Linux-Host anwenden. Dadurch wird sichergestellt, dass der Name der Registrierung konsistent aufgelöst wird. Wenn Sie einen virtuellen Linux-Computer in Azure verwenden, um einen Pushvorgang in eine Registrierung auszuführen, finden Sie unter [DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns) weitere Informationen.
+
+Um die DNS-Auflösung beim Pushen von Images auf das nächstgelegene Replikat zu optimieren, konfigurieren Sie eine georeplizierte Registrierung in denselben Azure-Regionen wie die Quelle der Pushvorgänge oder die nächstgelegene Region, wenn Sie außerhalb von Azure arbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

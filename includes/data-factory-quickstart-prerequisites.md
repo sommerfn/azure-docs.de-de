@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234545"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648402"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,21 +38,17 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 ### <a name="azure-storage-account"></a>Azure-Speicherkonto
 Sie verwenden in diesem Schnellstart ein allgemeines Azure-Speicherkonto (Blobspeicher) als Datenspeicher vom Typ *Quelle* und vom Typ *Ziel*. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, lesen Sie zum Erstellen die Informationen unter [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-quickstart-create-account.md). 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
-In dieser Schnellstartanleitung benötigen Sie den Namen und Schlüssel Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto: 
+#### <a name="get-the-storage-account-name"></a>Abrufen des Speicherkontonamens
+In dieser Schnellstartanleitung benötigen Sie den Namen Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens für Ihr Speicherkonto: 
 
 1. Navigieren Sie in einem Webbrowser zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an.
 2. Wählen Sie **Alle Dienste** > **Speicher** > **Speicherkonten** aus.
 3. Filtern Sie auf der Seite **Speicherkonten** nach Ihrem Speicherkonto (falls erforderlich), und wählen Sie dann Ihr Speicherkonto aus. 
-4. Wechseln Sie auf der Randleiste der Seite *\<Kontoname>*  - **Speicherkonto** zur Bezeichnung **Einstellungen**, und wählen Sie **Zugriffsschlüssel** aus. Die Seite *\<Kontoname>*  - **Zugriffsschlüssel** wird angezeigt.
-
-   ![Abrufen des Speicherkontonamens und -schlüssels](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. Kopieren Sie die Werte für die Felder **Speicherkontoname** und **key1** in die Zwischenablage. Fügen Sie sie in einen Editor ein, und speichern Sie sie. Sie benötigen sie später in dieser Schnellstartanleitung noch.   
 
 #### <a name="create-a-blob-container"></a>Erstellen eines Blobcontainers
 In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** in Azure Blob Storage.
 
-1. Wählen Sie auf der Randleiste der Seite *\<Kontoname>*  - **Zugriffsschlüssel** die Optionen **Übersicht** > **Blobs** aus.
+1. Wählen Sie auf der Seite „Speicherkonto“ die Optionen **Übersicht** > **Blobs** aus.
 2. Wählen Sie auf der Symbolleiste der Seite *\<Kontoname>*  - **Blobs** die Option **Container** aus.
 3. Geben Sie im Dialogfeld **Neuer Container** als Namen **adftutorial** ein, und klicken Sie auf **OK**. Die Seite *\<Kontoname>*  - **Blobs** wird aktualisiert, woraufhin die Liste der Container den Eintrag **adftutorial** enthält.
 

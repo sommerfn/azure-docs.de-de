@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839308"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891616"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der grafischen Benutzeroberfläche
 
@@ -83,11 +83,9 @@ Sie können Ihre Webdienste der grafischen Benutzeroberfläche testen und verwal
 
 1. Wählen Sie den Namen des Webdiensts aus, um weitere Details anzuzeigen.
 
-     ![Screenshot der zusätzlichen Details, die in der Webdienstansicht verfügbar sind](./media/ui-tutorial-automobile-price-deploy/web-service-details.png)
-
 1. Klicken Sie auf **Test**.
 
-    ![Screenshot der Testseite für den Webdienst](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
+    [![Screenshot der Testseite für den Webdienst](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
 
 1. Geben Sie Testdaten ein, oder verwenden Sie die automatisch ausgefüllten Beispieldaten, und wählen Sie die Option **Test** aus.
 
@@ -105,8 +103,6 @@ REST-Beispielaufrufe finden Sie auf der Seite der Webdienstdetails auf der Regis
 
 Navigieren Sie zur Registerkarte **API Doc** (API-Dok), um weitere API-Details anzuzeigen.
 
-  ![Screenshot der zusätzlichen API-Details, die Benutzern auf der Registerkarte „API Doc“ angezeigt werden](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
-
 ## <a name="manage-models-and-deployments"></a>Verwalten von Modellen und Bereitstellungen
 
 Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webdienstbereitstellungen können auch im Azure Machine Learning Service-Arbeitsbereich verwaltet werden.
@@ -119,11 +115,9 @@ Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webd
 
     Auf dieser Seite werden weitere Details zum Modell angezeigt.
 
-    ![Screenshot einer Übersicht über die Experimentstatistik im Azure-Portal](./media/ui-tutorial-automobile-price-deploy/model-details.png)
-
 1. Wählen Sie **Deployments** (Bereitstellungen) aus. Auf dieser Registerkarte werden alle Webdienste aufgeführt, die das Modell verwenden. Wählen Sie den Namen des Webdiensts aus. Daraufhin wird die Seite der Webdienstdetails angezeigt. Auf dieser Seite finden Sie ausführlichere Informationen zum Webdienst.
 
-    ![Screenshot eines detaillierten Ausführungsberichts](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)
+    [![Screenshot eines detaillierten Ausführungsberichts](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

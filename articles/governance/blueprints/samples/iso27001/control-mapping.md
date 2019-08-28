@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d49ef19d763ea3ae643a9c7bbbbb620ae414c664
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7be9a208f82dd9a487c1794a7996f9bb11bb09d8
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816782"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515439"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Steuerungszuordnung des ISO 27001-Blaupausenbeispiels
 
@@ -118,13 +118,13 @@ Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptog
 - \[Vorschau\]: Fehlende Blobverschlüsselung für Speicherkonten überwachen
 - \[Vorschau\]: [Vorschau]: Windows-VMs überwachen, die Kennwörter nicht mit umkehrbarer Verschlüsselung speichern
 - \[Vorschau\]: [Vorschau]: Windows-VMs überwachen, die Kennwörter nicht mit umkehrbarer Verschlüsselung speichern
-- \[Vorschau\]: Nicht verschlüsselte SQL-Datenbank in Azure Security Center überwachen
 - \[Vorschau\]: Nicht verschlüsselte VM-Datenträger in Azure Security Center überwachen
 - Aktivierung der Verschlüsselung für Variablen von Automation-Konten überwachen
 - Ausschließliche Aktivierung sicherer Verbindungen mit Redis Cache überwachen
 - Sichere Übertragung in Speicherkonten überwachen
 - Festlegung der ClusterProtectionLevel-Eigenschaft auf EncryptAndSign in Service Fabric überwachen
 - Überwachen des Status der transparenten Datenverschlüsselung
+- Transparent Data Encryption für SQL-Datenbanken sollte aktiviert werden.
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 Ereignisprotokollierung
 
@@ -135,9 +135,9 @@ Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgef
 - \[Vorschau\]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A.12.4.3 Administrator- und Operatorprotokolle
 
@@ -147,9 +147,9 @@ Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolli
 - \[Vorschau\]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 
 ## <a name="a1244-clock-synchronization"></a>A.12.4.4 Uhrsynchronisierung
 
@@ -159,9 +159,9 @@ Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolli
 - \[Vorschau\]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 Installation von Software auf Betriebssystemen
 

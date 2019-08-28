@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965107"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616831"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Verwalten von SQL-API-Ressourcen für Azure Cosmos DB mit PowerShell
 
@@ -46,7 +46,7 @@ In den folgenden Abschnitten erfahren Sie, wie Sie Azure Cosmos DB-Konten verwal
 
 ### <a id="create-account"></a> Erstellen eines Azure Cosmos DB-Kontos
 
-Der folgende Befehl erstellt ein Azure Cosmos DB-Datenbankkonto mit einer [Konsistenzrichtlinie](consistency-levels.md) mit [mehreren Regionen][distribute-data-globally] und begrenzter Veraltung:
+Der folgende Befehl erstellt ein Azure Cosmos-Datenbankkonto mit einer [Konsistenzrichtlinie](consistency-levels.md) mit [mehreren Regionen][distribute-data-globally] und begrenzter Veraltung:
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a> Aktualisieren eines Azure Cosmos DB-Kontos
 
-Mit diesem Befehl können Sie die Eigenschaften Ihres Azure Cosmos DB-Datenbankkontos aktualisieren. Die Eigenschaften für folgende Aufgaben können aktualisiert werden:
+Mit diesem Befehl können Sie die Eigenschaften Ihres Azure Cosmos-Datenbankkontos aktualisieren. Die Eigenschaften für folgende Aufgaben können aktualisiert werden:
 
 * Hinzufügen oder Entfernen von Regionen
 * Anpassen der Standardkonsistenzrichtlinie
@@ -247,6 +247,7 @@ Gehen Sie im folgenden Beispiel davon aus, dass für das Konto aktuell die Failo
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

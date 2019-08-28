@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6884cb7b10da3996977f2aea7693625bc45c3139
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 8683169e0f8464cdcf52600968f67f3622e61445
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369576"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509586"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure Active Directory B2C
 
@@ -115,7 +115,7 @@ Das Beispiel unterstützt Registrierung, Anmeldung, Profilbearbeitung und Kennwo
 
 ### <a name="sign-up-using-an-email-address"></a>Registrieren mit einer E-Mail-Adresse
 
-1. Klicken Sie auf **Anmelden**, um den in einem vorherigen Schritt angegebenen Benutzerflow *B2C_1_signupsignin1* zu initiieren.
+1. Wählen Sie **Anmelden** aus, um den in einem vorherigen Schritt angegebenen Benutzerflow *B2C_1_signupsignin1* zu initiieren.
 1. Azure AD B2C zeigt eine Anmeldeseite mit einem Registrierungslink an. Da Sie noch nicht über ein Konto verfügen, klicken Sie auf den Link **Jetzt registrieren**.
 1. Der Registrierungsworkflow zeigt eine Seite an, über die die Identität des Benutzers mithilfe einer E-Mail-Adresse erfasst und überprüft wird. Darüber hinaus werden im Rahmen des Registrierungsworkflows auch das Kennwort des Benutzers sowie die angeforderten Attribute erfasst, die im Benutzerflow definiert wurden.
 
@@ -123,9 +123,9 @@ Das Beispiel unterstützt Registrierung, Anmeldung, Profilbearbeitung und Kennwo
 
     ![Registrierungsseite im Benutzerflow für Anmeldung/Registrierung](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
-1. Klicken Sie auf **Erstellen**, um im Azure AD B2C-Verzeichnis ein lokales Konto zu erstellen.
+1. Wählen Sie **Erstellen** aus, um im Azure AD B2C-Verzeichnis ein lokales Konto zu erstellen.
 
-Wenn Sie auf **Erstellen** klicken, wird die Registrierungsseite geschlossen und wieder die Anmeldeseite angezeigt.
+Wenn Sie **Erstellen** auswählen, wird die Registrierungsseite geschlossen und wieder die Anmeldeseite angezeigt.
 
 Sie können jetzt Ihre E-Mail-Adresse und das zugehörige Kennwort nutzen, um sich an der Anwendung anzumelden.
 

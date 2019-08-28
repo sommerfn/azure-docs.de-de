@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: a7950d80bd5aa21b26a7724845f10515a65c033d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371015"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512710"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Schnellstart: Erstellen einer .NET-Konsolen-App zum Verwalten von Ressourcen der Azure Cosmos DB-SQL-API
 
@@ -165,6 +165,8 @@ Weitere Informationen zur Hierarchie der verschiedenen Entitäten finden Sie im 
 * [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet): Mit dieser Methode wird ein Container als asynchroner Vorgang erstellt (falls er nicht vorhanden ist) oder abgerufen (wenn er bereits vorhanden ist). Sie können den Statuscode in der Antwort überprüfen, um zu ermitteln, ob der Container neu erstellt wurde (201) oder ein vorhandener Container zurückgegeben wurde (200). 
 * [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet): Diese Methode erstellt ein Element im Container. 
 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet): Diese Methode erstellt ein Element im Container, sofern noch keins vorhanden ist, oder ersetzt das Element, wenn es bereits vorhanden ist. 
+
 * [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ): Diese Methode erstellt eine Abfrage nach Elementen unter einem Container in einer Azure Cosmos-Datenbank unter Verwendung einer SQL-Anweisung mit parametrisierten Werten. 
 
@@ -294,7 +296,7 @@ public class Program
 
 ### <a name="create-a-database"></a>Erstellen einer Datenbank 
 
-Definieren Sie die `CreateDatabaseAsync`-Methode in der `program.cs`-Klasse. Diese Methode erstellt die `FamilyDatabase`, falls sie noch nicht vorhanden ist. 
+Definieren Sie die `CreateDatabaseAsync`-Methode in der `program.cs`-Klasse. Diese Methode erstellt die `FamilyDatabase`, falls sie noch nicht vorhanden ist.
 
 ```csharp
 private async Task CreateDatabaseAsync()
@@ -322,7 +324,7 @@ private async Task CreateContainerAsync()
 
 ### <a name="create-an-item"></a>Erstellen eines Elements
 
-Erstellen Sie ein Familienelement, indem Sie die `AddItemsToContainerAsync`-Methode mit dem folgenden Code hinzufügen:
+Erstellen Sie ein Familienelement, indem Sie die `AddItemsToContainerAsync`-Methode mit dem folgenden Code hinzufügen. Zum Erstellen eines Elements können Sie die Methode `CreateItemAsync` oder `UpsertItemAsync` verwenden:
 
 ```csharp
 private async Task AddItemsToContainerAsync()

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561399"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900567"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -185,6 +185,9 @@ A. Beim Data Box-Dienst übernimmt Microsoft den Versand zum und aus dem Azure R
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>F: Überqueren meine Data Box-Geräte beim Versand Ländergrenzen?
 A. Alle Data Box-Geräte werden aus dem Bestimmungsland versendet, sie überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU), wo Geräte in und aus beliebigen EU-Länder(n) gesendet werden können. Dies gilt sowohl für Data Box- als auch für Data Box Heavy-Geräte.
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>F: Ich habe eine Data Box in der Region „USA, Osten“ bestellt, habe aber ein Gerät erhalten, das von einem Standort in der Region „USA, Westen“ versandt wurde. Wohin soll ich das Gerät zurücksenden?
+A. Wir versuchen, Ihnen schnellstmöglich ein Data Box-Gerät zu senden. Wir priorisieren den Versand von einem Datencenter, das dem Standort Ihres Speicherkontos am nächsten liegt, senden jedoch ggf. ein Gerät von einem beliebigen Azure-Datencenter mit verfügbarem Bestand. Ihre Data Box muss an denselben Standort zurückgesendet werden, von dem sie ausgeliefert wurde (siehe Adressetikett).
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>F: In der E-Ink-Anzeige wird das Rücksendeetikett nicht angezeigt. Wie sollte ich vorgehen?
 A. Führen Sie die folgenden Schritte aus, wenn in der E-Ink-Anzeige das Rücksendeetikett nicht angezeigt wird:

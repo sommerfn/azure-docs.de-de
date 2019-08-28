@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591821"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534935"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine für Windows in Azure
 
@@ -48,6 +48,7 @@ Die folgenden Tools sind in einer DSVM enthalten:
   * [Apache Drill](https://drill.apache.org/) – eine schemalose SQL-Abfrage-Engine für Apache Hadoop, NoSQL und Cloud Storage Sie unterstützt ODBC- und JDBC-Schnittstellen für NoSQL- und Dateiabfragen mit BI-Standardtools wie Power BI, Microsoft Excel und Tableau.
 * Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten
 * Git, einschließlich Git Bash, für die Arbeit mit Quellcoderepositorys einschließlich GitHub und Azure DevOps. Git stellt mehrere gängige Linux-Befehlszeilenprogramme bereit, auf die sowohl in Git Bash als auch über eine Eingabeaufforderung zugegriffen werden kann. Beispiele sind awk, sed, perl, grep, find, wget und curl.
+* Entwicklungstools und -Editoren (RStudio, PyCharm)
 
 ### <a name="about-data-science"></a>Informationen zu Data Science
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: c6ae23efa90874bbefc2aff35f8798aa6c0da791
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503736"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624214"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 
@@ -45,15 +45,15 @@ Im [Eigenschaftsgraph-Standard von Apache Tinkerpop](http://tinkerpop.apache.or
 
 Im Anschluss finden Sie die bewährten Methoden für die Eigenschaften in den Graphobjekten:
 
-| Objekt | Eigenschaft | Typ | Hinweise |
+| Object | Eigenschaft | type | Notizen |
 | --- | --- | --- |  --- |
-| Scheitelpunkt | ID | Zeichenfolge | Individuell pro Partition erzwungen. Ist beim Einfügen kein Wert angegeben, wird ein automatisch generierter GUID gespeichert. |
-| Scheitelpunkt | Bezeichnung | Zeichenfolge | Diese Eigenschaft dient zum Definieren der Art von Entität, die der Scheitelpunkt darstellt. Ist kein Wert angegeben, wird der Standardwert „vertex“ verwendet. |
-| Scheitelpunkt | Eigenschaften | Zeichenfolge, boolescher Wert, numerischer Wert | Eine Liste separater Eigenschaften, die in jedem Scheitelpunkt als Schlüssel-Wert-Paare gespeichert sind. |
+| Scheitelpunkt | id | Zeichenfolge | Individuell pro Partition erzwungen. Ist beim Einfügen kein Wert angegeben, wird ein automatisch generierter GUID gespeichert. |
+| Scheitelpunkt | label | Zeichenfolge | Diese Eigenschaft dient zum Definieren der Art von Entität, die der Scheitelpunkt darstellt. Ist kein Wert angegeben, wird der Standardwert „vertex“ verwendet. |
+| Scheitelpunkt | properties | Zeichenfolge, boolescher Wert, numerischer Wert | Eine Liste separater Eigenschaften, die in jedem Scheitelpunkt als Schlüssel-Wert-Paare gespeichert sind. |
 | Scheitelpunkt | Partitionsschlüssel | Zeichenfolge, boolescher Wert, numerischer Wert | Diese Eigenschaft definiert den Speicherort für den Scheitelpunkt und die zugehörigen ausgehenden Kanten. Weitere Informationen zur Graphpartitionierung finden Sie [hier](graph-partitioning.md). |
-| Kante | ID | Zeichenfolge | Individuell pro Partition erzwungen. Standardmäßig automatisch generiert. Kanten müssen in der Regel nicht individuell anhand einer ID abgerufen werden. |
-| Kante | Bezeichnung | Zeichenfolge | Diese Eigenschaft dient zum Definieren der Art von Beziehung zwischen zwei Scheitelpunkten. |
-| Kante | Eigenschaften | Zeichenfolge, boolescher Wert, numerischer Wert | Eine Liste separater Eigenschaften, die in jeder Kante als Schlüssel-Wert-Paare gespeichert sind. |
+| Microsoft Edge | id | Zeichenfolge | Individuell pro Partition erzwungen. Standardmäßig automatisch generiert. Kanten müssen in der Regel nicht individuell anhand einer ID abgerufen werden. |
+| Microsoft Edge | label | Zeichenfolge | Diese Eigenschaft dient zum Definieren der Art von Beziehung zwischen zwei Scheitelpunkten. |
+| Microsoft Edge | properties | Zeichenfolge, boolescher Wert, numerischer Wert | Eine Liste separater Eigenschaften, die in jeder Kante als Schlüssel-Wert-Paare gespeichert sind. |
 
 > [!NOTE]
 > Für Kanten ist kein Partitionsschlüsselwert erforderlich, da der Wert automatisch auf der Grundlage des Quellscheitelpunkts zugewiesen wird. Weitere Informationen finden Sie im [Artikel zur Graphpartitionierung](graph-partitioning.md).
@@ -94,7 +94,7 @@ Kantenobjekte haben eine Standardrichtung, die bei einer Traversierung unter Ver
 
 Eine Traversierung entgegen der Kantenrichtung (mit der Funktion `in()`) hat dagegen immer eine partitionsübergreifende Abfrage zur Folge. Informieren Sie sich eingehender über die [Graphpartitionierung](graph-partitioning.md). Wenn kontinuierlich Traversierungen unter Verwendung der Funktion `in()` erforderlich sind, empfiehlt es sich, Kanten in beiden Richtungen hinzuzufügen.
 
-Die Kantenrichtung kann mithilfe des Prädikats `.to()` oder `.from()` im Gremlin-Schritt `.addE()` bestimmt werden. Alternativ kann die [BulkExecutor-Bibliothek für die Gremlin-API](bulk-executor-graph-dotnet.md) verwendet werden.
+Die Kantenrichtung kann mithilfe des Prädikats `.to()` oder `.from()` im Gremlin-Schritt `.addE()` bestimmt werden. Alternativ kann die [Bulk Executor-Bibliothek für die Gremlin-API](bulk-executor-graph-dotnet.md) verwendet werden.
 
 > [!NOTE]
 > Kantenobjekte haben standardmäßig eine Richtung.

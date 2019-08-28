@@ -4,23 +4,23 @@ description: In diesem Tutorial wird Schritt für Schritt das Einrichten Ihres E
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 08/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 94a287cd996bd18b757620254540f8dc0df499e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051846"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541904"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
 Nutzen Sie Visual Studio, um Code zu entwickeln und auf Windows-Geräten bereitzustellen, auf denen IoT Edge ausgeführt wird.
 
-In der Schnellstartanleitung haben Sie ein IoT Edge-Gerät mit einem virtuellen Windows-Computer erstellt und über Azure Marketplace ein vordefiniertes Modul bereitgestellt. In diesem Tutorial werden die Voraussetzungen beschrieben, die für die Entwicklung und Bereitstellung Ihres eigenen Codes auf einem IoT Edge-Gerät erfüllt sein müssen. Dieses Tutorial ist eine nützliche Ausgangsbasis für alle anderen Tutorials, in denen bestimmte Programmiersprachen oder Azure-Dienste ausführlicher behandelt werden. 
+In der Schnellstartanleitung haben Sie ein IoT Edge-Gerät mit einem virtuellen Windows-Computer erstellt und über Azure Marketplace ein vordefiniertes Modul bereitgestellt. In diesem Tutorial werden die Voraussetzungen beschrieben, die für die Entwicklung und Bereitstellung Ihres eigenen Codes auf einem IoT Edge-Gerät erfüllt sein müssen. Dieses Tutorial ist eine nützliche Ausgangsbasis für die anderen Tutorials, in denen bestimmte Programmiersprachen oder Azure-Dienste ausführlicher behandelt werden. 
 
 In diesem Tutorial wird das Beispiel für die Bereitstellung eines **C#-Moduls auf einem Windows-Gerät** verwendet. Dieses Beispiel wurde gewählt, da es sich um das häufigste Entwicklungsszenario handelt. Wenn Sie an der Entwicklung in einer anderen Sprache interessiert sind oder die Bereitstellung von Azure-Diensten als Module planen, ist dieses Tutorial dennoch hilfreich, um mehr über die Entwicklungstools zu erfahren. Nachdem Sie sich mit den Entwicklungskonzepten vertraut gemacht haben, können Sie Ihre bevorzugte Sprache bzw. den Azure-Dienst auswählen, um in die Details einzusteigen. 
 
@@ -126,26 +126,25 @@ Mit der Erweiterung „Azure IoT Edge-Tools“ werden Projektvorlagen für alle 
 3. Geben Sie im Fenster zum Konfigurieren des neuen Projekts dem Projekt und der Projektmappe einen aussagekräftigen Namen, etwa **CSharpTutorialApp**. Klicken Sie auf **Erstellen** , um das Projekt zu erstellen.
 
    ![Konfigurieren eines neuen Azure IoT Edge-Projekts](./media/tutorial-develop-for-windows/configure-project.png)
- 
 
-4. Konfigurieren Sie im Fenster für die IoT Edge-Anwendung und das Modul Ihr Projekt mit den folgenden Werten: 
+4. Konfigurieren Sie im Fenster „Modul hinzufügen“ Ihr Projekt mit den folgenden Werten: 
 
    | Feld | Wert |
    | ----- | ----- |
-   | Vorlage auswählen | Wählen Sie die Option **C#-Modul** aus. | 
-   | Modulprojektname | Übernehmen Sie den Standardnamen **IoTEdgeModule1**. | 
-   | Docker-Imagerepository | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für Ihr Containerimage ist der Wert des Modulprojektnamens bereits vorhanden. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. <br><br> Das endgültige Imagerepository sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/iotedgemodule1. |
+   | Visual Studio-Vorlage | Wählen Sie die Option **C#-Modul** aus. | 
+   | Modulname | Übernehmen Sie den Standardnamen **IotEdgeModule1**. | 
+   | Repository-URL | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für Ihr Containerimage ist der Wert des Modulprojektnamens bereits vorhanden. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. <br><br> Das endgültige Imagerepository sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/iotedgemodule1. |
 
-   ![Konfigurieren von Zielgerät, Modultyp und Containerregistrierung für Ihr Projekt](./media/tutorial-develop-for-windows/add-module-to-solution.png)
+      ![Konfigurieren von Zielgerät, Modultyp und Containerregistrierung für Ihr Projekt](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
-5. Klicken Sie zum Übernehmen der Änderungen auf **Ja**. 
+5. Wählen Sie **Hinzufügen** aus, um das Modul zu erstellen. 
 
 Nehmen Sie sich nach dem Laden Ihres neuen Projekts im Visual Studio-Fenster etwas Zeit, um sich mit den erstellten Dateien vertraut zu machen: 
 
 * Ein IoT Edge-Projekt mit dem Namen **CSharpTutorialApp**.
-    * Der Ordner **Module** enthält Zeiger zu den im Projekt enthaltenen Modulen. In diesem Fall sollte nur „IoTEdgeModule1“ vorhanden sein. 
+    * Der Ordner **Module** enthält Zeiger zu den im Projekt enthaltenen Modulen. In diesem Fall sollte nur „IotEdgeModule1“ vorhanden sein. 
     * Die Datei **deployment.template.json** ist eine Vorlage für die Erstellung eines Bereitstellungsmanifests. Ein *Bereitstellungsmanifest* ist eine Datei, mit der Folgendes genau definiert wird: welche Module auf einem Gerät bereitgestellt werden sollen, wie sie konfiguriert werden sollen und wie diese miteinander und mit der Cloud kommunizieren können. 
-* Ein IoT Edge-Modulprojekt mit dem Namen **IoTEdgeModule1**.
+* Ein IoT Edge-Modulprojekt mit dem Namen **IotEdgeModule1**.
     * Die Datei **program.cs** enthält den C#-Standardmodulcode, der in der Projektvorlage enthalten ist. Das Standardmodul leitet die Eingabe einer Quelle an IoT Hub weiter. 
     * Die Datei **module.json** enthält Details zum Modul, z. B. vollständiges Imagerepository, Imageversion und die Information, welche Dockerfile für die einzelnen unterstützten Plattformen verwendet werden soll.
 
@@ -201,7 +200,7 @@ Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient
 
 7. Suchen Sie nach der **routes**-Eigenschaft der gewünschten $edgeHub-Eigenschaften. 
 
-   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der routes-Eigenschaft an. Für die erste Route (**IotEdgeModule1ToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten aufzunehmen, die aus einer Ausgabewarteschlange im Modul „IoTEdgeModule1“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (**sensorToIotEdgeModule1**) werden vom Modul „tempSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* des Moduls „IotEdgeModule1“ geleitet. 
+   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der routes-Eigenschaft an. Für die erste Route (**IotEdgeModule1ToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten aufzunehmen, die aus einer Ausgabewarteschlange im Modul „IotEdgeModule1“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (**sensorToIotEdgeModule1**) werden vom Modul „tempSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* des Moduls „IotEdgeModule1“ geleitet. 
 
    ![Überprüfen von Routen in „deployment.template.json“](./media/tutorial-develop-for-windows/deployment-routes.png)
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033010"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534804"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning
 
@@ -40,33 +40,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Fahren Sie mit dem Abschnitt [Einrichten Ihrer Entwicklungsumgebung](#start) fort, um mehr zu den Schritten mit Notebooks zu erfahren, oder rufen Sie anhand der nachfolgenden Anweisungen das Notebook ab, und führen Sie es unter Azure Notebooks oder auf Ihrem eigenen Notebook-Server aus.  Für die Ausführung des Notebooks ist Folgendes erforderlich:
+* Absolvieren Sie [Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments](tutorial-1st-experiment-sdk-setup.md), um folgende Aktionen auszuführen:
+    * Erstellen eines Arbeitsbereichs
+    * Erstellen eines cloudbasierten Notebook-Servers
+    * Starten des Dashboards von Jupyter Notebook
 
-* Ein Python 3.6-Notebook-Server mit folgenden Komponenten:
-    * Das Azure Machine Learning SDK für Python
-    * `matplotlib` und `scikit-learn`
-* Das Tutorial-Notebook und die Datei **utils.py**
-* Ein Arbeitsbereich für maschinelles Lernen
-* Die Konfigurationsdatei für den Arbeitsbereich muss sich im gleichen Verzeichnis wie das Notebook befinden.
+* Öffnen Sie nach dem Starten des Jupyter Notebook-Dashboards das Notebook **tutorials/img-classification-part1-training.ipynb**.
 
-Wie Sie diese erforderlichen Komponenten beziehen, erfahren Sie in den jeweiligen Abschnitten:
+Das Tutorial und die zugehörige Datei **utils.py** sind auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie sie in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) verwenden möchten.  Stellen Sie sicher, dass `matplotlib` und `scikit-learn` in Ihrer Umgebung installiert sind.
 
-* Verwenden eines [cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich](#azure)
-* Verwenden [Ihres eigenen Notebook-Servers](#server)
-
-### <a name="azure"></a>Verwenden eines cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich
-
-Die ersten Schritte mit Ihrem eigenen cloudbasierten Notebook-Server sind ganz einfach. Das [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk) wird für Sie installiert und konfiguriert, wenn Sie diese Cloudressource erstellen.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Öffnen Sie nach dem Aufrufen der Webseite des Notebooks das Notebook **tutorials/img-classification-part1-training.ipynb**.
-
-### <a name="server"></a>Verwenden Ihres eigenen Jupyter Notebook-Servers
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- Führen Sie nach Ausführung der Schritte in Ihrem geklonten Verzeichnis das Notebook **tutorials/img-classification-part1-training.ipynb** aus.
 
 ## <a name="start"></a>Einrichten Ihrer Entwicklungsumgebung
 

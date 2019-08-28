@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 647ab76760d0c5ce5315a60d0a671163b902be0f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954536"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534222"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -22,9 +22,9 @@ SQL Server-Datenbanken sind kritische Workloads, die eine niedrige Recovery Poin
 
 Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstanzen zu erstellen.
 
-* Nachdem Sie die SQL Server-VM angegeben haben, die Sie schützen und deren Datenbanken Sie abfragen möchten, installiert der Azure Backup-Dienst eine Erweiterung zur Workloadsicherung mit dem Namen `AzureBackupWindowsWorkload` auf dem virtuellen Computer.
+* Nachdem Sie die SQL Server-VM angegeben haben, die Sie schützen und deren Datenbanken Sie abfragen möchten, installiert der Azure Backup-Dienst eine Erweiterung zur Workloadsicherung mit dem Namen `AzureBackupWindowsWorkload` auf dem virtuellen Computer.
 * Diese Erweiterung besteht aus einem Koordinator und einem SQL-Plug-In. Während der Koordinator für das Auslösen von Workflows für verschiedene Vorgänge wie Konfigurieren der Sicherung, Sicherung und Wiederherstellung zuständig ist, ist das Plug-In für den tatsächlichen Datenfluss verantwortlich.
-* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Azure Backup verwendet das `NT AUTHORITY\SYSTEM` -Konto für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht in Azure Marketplace erstellt haben, erhalten Sie möglicherweise eine **UserErrorSQLNoSysadminMembership**-Fehlermeldung. Befolgen Sie in diesem Fall [diese Anweisungen](backup-azure-sql-database.md).
+* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht in Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](backup-azure-sql-database.md):
 * Sobald Sie die Konfiguration des Schutzes der ausgewählten Datenbanken auslösen, richtet der Sicherungsdienst den Koordinator mit den Sicherungszeitplänen und anderen Richtliniendetails ein, die die Erweiterung lokal auf dem virtuellen Computer zwischenspeichert.
 * Zum geplanten Zeitpunkt kommuniziert der Koordinator mit dem Plug-In, und es startet das Streaming der Sicherungsdaten von der SQL Server-Instanz mit VDI.  
 * Das Plug-In sendet die Daten direkt an den Recovery Services-Tresor, sodass kein Stagingspeicherort erforderlich ist. Die Daten werden verschlüsselt und vom Azure Backup-Dienst in Speicherkonten gespeichert.
@@ -45,7 +45,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 **Unterstützung** | **Details**
 --- | ---
 **Unterstützte Bereitstellungen** | SQL-Marketplace-Azure-VMs und Nicht-Marketplace-VMs (manuelle SQL Server-Installation) werden unterstützt.
-**Unterstützte geografische Räume** | „Australien, Südosten (ASE)“, „Australien, Osten (AE)“ <br> Brasilien, Süden (BRS)<br> „Kanada, Mitte (CNC)“, „Kanada, Osten (CE)“<br> „Asien, Südosten (SEA)“, „Asien, Osten (EA)“ <br> „USA, Osten (EUS)“, „USA, Osten 2 (EUS2)“, „USA, Westen-Mitte (WCUS)“, „USA, Westen (WUS)“, „USA, Westen 2 (WUS 2)“, „USA, Norden-Mitte (NCUS)“, „USA, Mitte (CUS)“, „USA, Süden-Mitte (SCUS)“ <br> „Indien, Mitte (INC)“, „Indien, Süden (INS)“ <br> „Japan, Osten (JPE)“, „Japan, Westen (JPW)“ <br> „Südkorea, Mitte (KRC)“, „Südkorea, Süden (KRS)“ <br> „Europa, Norden (NE)“, „Europa, Westen“ <br> „Vereinigtes Königreich, Süden (UKS)“, „Vereinigtes Königreich, Westen (UKW)“ <br> „US Gov Arizona“, „US Gov Virginia“, „US Gov Texas“, „US DoD, Mitte“, „US DoD, Osten“
+**Unterstützte geografische Räume** | „Australien, Südosten (ASE)“, „Australien, Osten (AE)“ <br> Brasilien, Süden (BRS)<br> „Kanada, Mitte (CNC)“, „Kanada, Osten (CE)“<br> „Asien, Südosten (SEA)“, „Asien, Osten (EA)“ <br> „USA, Osten (EUS)“, „USA, Osten 2 (EUS2)“, „USA, Westen-Mitte (WCUS)“, „USA, Westen (WUS)“, „USA, Westen 2 (WUS 2)“, „USA, Norden-Mitte (NCUS)“, „USA, Mitte (CUS)“, „USA, Süden-Mitte (SCUS)“ <br> „Indien, Mitte (INC)“, „Indien, Süden (INS)“ <br> „Japan, Osten (JPE)“, „Japan, Westen (JPW)“ <br> „Südkorea, Mitte (KRC)“, „Südkorea, Süden (KRS)“ <br> „Europa, Norden (NE)“, „Europa, Westen“ <br> „Vereinigtes Königreich, Süden (UKS)“, „Vereinigtes Königreich, Westen (UKW)“ <br> „US Gov Arizona“, „US Gov Virginia“, „US Gov Texas“, „US DoD, Mitte“, „US DoD, Osten“
 **Unterstützte Betriebssysteme** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux wird derzeit nicht unterstützt.
 **Unterstützte SQL Server-Versionen** | SQL Server 2017 ([weitere Informationen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)), SQL Server 2016 und SPs ([weitere Informationen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)), SQL Server 2014, SQL Server 2012<br/><br/> Enterprise, Standard, Web, Developer, Express
 **Unterstützte .NET-Versionen** | .NET Framework 4.5.2 und höher auf dem virtuellen Computer installiert
@@ -58,7 +58,7 @@ Vor Kurzem wurde verlautbart, dass Azure Backup Unterstützung für [SQL Server-
 2. .NET Framework 4.5.2 und höher muss auf dem virtuellen Computer installiert sein.
 3. Sicherungen für FCI und gespiegelte Datenbanken werden nicht unterstützt.
 
-Dieses Feature wird den Benutzern erst dann in Rechnung gestellt, wenn es allgemein verfügbar ist. Alle anderen [Funktionsaspekte und Einschränkungen](#feature-consideration-and-limitations) gelten auch für diese Versionen. Lesen Sie die [Voraussetzungen](backup-sql-server-database-azure-vms.md#prerequisites), bevor Sie den Schutz für SQL Server 2008- und 2008 R2-Instanzen konfigurieren. Dazu gehört das Festlegen des [Registrierungsschlüssels](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (dieser Schritt ist nicht mehr erforderlich, sobald das Feature allgemein verfügbar ist).
+Dieses Feature wird den Benutzern erst dann in Rechnung gestellt, wenn es allgemein verfügbar ist. Alle anderen [Funktionsaspekte und Einschränkungen](#feature-consideration-and-limitations) gelten auch für diese Versionen. Lesen Sie die [Voraussetzungen](backup-sql-server-database-azure-vms.md#prerequisites), bevor Sie den Schutz für SQL Server 2008- und 2008 R2-Instanzen konfigurieren. Dazu gehört das Festlegen des [Registrierungsschlüssels](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration). (Dieser Schritt ist nicht mehr erforderlich, sobald das Feature allgemein verfügbar ist.)
 
 
 ## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen

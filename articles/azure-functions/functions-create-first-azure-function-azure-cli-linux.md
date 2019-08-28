@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950037"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562970"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Core Tools und der Azure-Befehlszeilenschnittstelle (Vorschauversion)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Core Tools und der Azure-Befehlszeilenschnittstelle
 
-Mit Azure Functions können Sie Code in einer [serverlosen](https://azure.com/serverless) Linux-Umgebung ausführen, ohne vorher einen virtuellen Computer erstellen oder eine Webanwendung veröffentlichen zu müssen. Für das Hosten unter Linux ist [die Functions 2.0-Runtime](functions-versions.md) erforderlich. Die Unterstützung zum Ausführen einer Funktions-App unter Linux im serverlosen [Verbrauchstarif](functions-scale.md#consumption-plan) ist derzeit als Vorschauversion verfügbar. Weitere Informationen finden Sie in [diesem Artikel zu besonderen Aspekten der Vorschauversion](https://aka.ms/funclinux).
+Mit Azure Functions können Sie Code in einer [serverlosen](https://azure.com/serverless) Linux-Umgebung ausführen, ohne vorher einen virtuellen Computer erstellen oder eine Webanwendung veröffentlichen zu müssen. Für das Hosten unter Linux ist [die Functions 2.x-Runtime](functions-versions.md) erforderlich. Serverlose Funktionen werden im [Verbrauchstarif](functions-scale.md#consumption-plan) ausgeführt.
 
 In diesem Schnellstartartikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle Ihre erste unter Linux ausgeführte Funktions-App erstellen. Der Funktionscode wird lokal erstellt und dann über [Azure Functions Core Tools](functions-run-local.md) in Azure bereitgestellt.
 
-Die folgenden Schritte werden für Mac-, Windows- oder Linux-Computer unterstützt. In diesem Artikel wird gezeigt, wie Sie Funktionen in JavaScript oder C# erstellen. Informationen zum Erstellen von Python-Funktionen finden Sie unter [Erstellen Ihrer ersten Python-Funktion in Azure (Vorschauversion)](functions-create-first-function-python.md).
+Die folgenden Schritte werden für Mac-, Windows- oder Linux-Computer unterstützt. In diesem Artikel wird gezeigt, wie Sie Funktionen in JavaScript oder C# erstellen. Informationen zum Erstellen von Python-Funktionen finden Sie unter [Erstellen einer durch HTTP ausgelösten Funktion in Azure](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

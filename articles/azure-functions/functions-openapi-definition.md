@@ -1,24 +1,23 @@
 ---
-title: Erstellen einer OpenAPI-Definition für eine Funktion mithilfe von Azure API Management
+title: Erstellen einer OpenAPI-Definition für eine serverlose API mithilfe von Azure API Management
 description: Erstellen Sie eine OpenAPI-Definition, die anderen Apps und Diensten das Aufrufen Ihrer Funktion in Azure ermöglicht.
-services: functions
 keywords: OpenAPI, Swagger, Cloud-Apps, Clouddienste,
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 54a4c6eba094231e8e73cdef87b911dfba20f657
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510487"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533543"
 ---
-# <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Erstellen einer OpenAPI-Definition für eine Funktion mithilfe von Azure API Management
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Erstellen einer OpenAPI-Definition für eine serverlose API mithilfe von Azure API Management
 
 REST-APIs werden häufig mithilfe einer OpenAPI-Definition beschrieben. Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API.
 

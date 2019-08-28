@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 268b15fb0f3e185be4c06c5c0ba20668d1635f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c957aff49e3428fec4b7ac7f2db19eeed9d7a40
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154683"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614763"
 ---
-# <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replizieren eines Azure Cosmos DB-Datenbankkontos in mehreren Regionen und Konfigurieren der Failoverprioritäten mithilfe der Azure CLI
+# <a name="replicate-an-azure-cosmos-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replizieren eines Azure Cosmos-Datenbankkontos in mehreren Regionen und Konfigurieren der Failoverprioritäten mithilfe der Azure CLI
 
-Dieses Beispiel repliziert alle Arten von Azure Cosmos DB-Datenbankkonten in mehreren Regionen und konfiguriert die Failoverprioritäten mithilfe der Azure CLI.
+Dieses Beispiel repliziert alle Arten von Azure Cosmos-Datenbankkonten in mehreren Regionen und konfiguriert die Failoverprioritäten mithilfe der Azure CLI.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

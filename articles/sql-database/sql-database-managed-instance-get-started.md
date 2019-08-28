@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567521"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873868"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -35,11 +35,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Die folgenden Schritte zeigen, wie Sie eine verwaltete Instanz erstellen.
 
-1. Klicken Sie im Azure-Portal oben links auf **Ressource erstellen**.
-2. Suchen Sie nach **Verwaltete Instanz**, und wählen Sie dann **Verwaltete Azure SQL-Datenbank-Instanz** aus.
-3. Klicken Sie auf **Erstellen**.
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn Azure SQL nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein.
+2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zur verwalteten Azure SQL-Datenbank-Instanz anzeigen, indem Sie auf der Kachel **Verwaltete Instanzen** die Option **Details anzeigen** auswählen.
+3. Wählen Sie **Erstellen** aus:
 
-   ![Erstellen einer verwalteten Instanz](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Erstellen einer verwalteten Instanz](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. Füllen Sie das Formular für die **verwaltete SQL-Instanz** mit den geforderten Informationen aus, indem Sie die Angaben in der folgenden Tabelle verwenden:
 

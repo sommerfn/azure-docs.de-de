@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019
-ms.openlocfilehash: 58356db2fbdf53bbd16e6fd20de54e022afb38b3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: cea53aefae2e559b7874b1235e4f952fe46ea642
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736661"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509607"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Schnellstart: Erstellen einer Graphdatenbank in Azure Cosmos DB mit dem Java-SDK 
 
@@ -106,7 +106,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „C:\git-samples\azure
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzurufen und in die App zu kopieren. Durch diese Einstellungen kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Schlüssel**. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Schlüssel** aus. 
 
     Kopieren Sie den ersten Teil des URI-Werts.
 
@@ -172,7 +172,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
 Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph hinzugefügten Scheitelpunkte anzusehen und weitere Datenpunkte hinzuzufügen.
 
-1. Erweitern Sie im **Daten-Explorer** **sample-graph**, klicken Sie auf **Graph**, und klicken Sie anschließend auf **Filter anwenden**. 
+1. Erweitern Sie im **Daten-Explorer** den Eintrag **sample-graph**, und wählen Sie **Graph** und anschließend **Filter anwenden** aus. 
 
    ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -180,13 +180,13 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
    ![Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. Fügen Sie nun einige neue Benutzer hinzu. Klicken Sie auf die Schaltfläche **New Vertex** (Neuer Scheitelpunkt), um dem Graph Daten hinzuzufügen.
+3. Fügen Sie nun einige neue Benutzer hinzu. Wählen Sie **New Vertex** (Neuer Scheitelpunkt) aus, um dem Graph Daten hinzuzufügen.
 
    ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. Geben Sie im Feld für die Bezeichnung die Zeichenfolge *person* ein.
 
-5. Klicken Sie auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen: Beachten Sie, dass Sie für jede Person in Ihrem Graph eindeutige Eigenschaften erstellen können. Nur der id-Schlüssel ist erforderlich.
+5. Wählen Sie **Eigenschaft hinzufügen** aus, um die folgenden Eigenschaften hinzuzufügen. Beachten Sie, dass Sie für jede Person in Ihrem Graph eindeutige Eigenschaften erstellen können. Nur der id-Schlüssel ist erforderlich.
 
     key|value|Notizen
     ----|----|----
@@ -199,11 +199,11 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
 6. Klicken Sie auf **OK**. Der Bildschirm muss möglicherweise erweitert werden, damit **OK** am unteren Bildschirmrand zu sehen ist.
 
-7. Klicken Sie erneut auf **New Vertex** (Neuer Scheitelpunkt), und fügen Sie einen weiteren neuen Benutzer hinzu. 
+7. Wählen Sie erneut **New Vertex** (Neuer Scheitelpunkt) aus, und fügen Sie einen weiteren neuen Benutzer hinzu. 
 
 8. Geben Sie als Bezeichnung *Person* ein.
 
-9. Klicken Sie auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen:
+9. Wählen Sie **Eigenschaft hinzufügen** aus, um die folgenden Eigenschaften hinzuzufügen:
 
     key|value|Notizen
     ----|----|----
@@ -213,15 +213,15 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
 10. Klicken Sie auf **OK**. 
 
-11. Klicken Sie auf die Schaltfläche **Filter anwenden** mit dem Standardfilter `g.V()`, um alle Werte des Graphen anzuzeigen. Daraufhin werden alle Benutzer in der Liste **Ergebnisse** angezeigt. 
+11. Wählen Sie die Schaltfläche **Filter anwenden** mit dem Standardfilter `g.V()` aus, um alle Werte des Graphen anzuzeigen. Daraufhin werden alle Benutzer in der Liste **Ergebnisse** angezeigt. 
 
-    Wenn Sie weitere Daten hinzufügen, können Sie Ihre Ergebnisse mithilfe von Filtern eingrenzen. Daten-Explorer verwendet standardmäßig `g.V()`, um alle Scheitelpunkte eines Graphen abzurufen. Sie können ihn in eine andere [Graphabfrage](tutorial-query-graph.md) wie z.B. `g.V().count()` ändern, um die Anzahl aller Scheitelpunkte eines Graphen im JSON-Format zurückzugeben. Wenn Sie den Filter geändert haben, ändern Sie den Filter zurück in `g.V()`, und klicken Sie auf **Filter anwenden**, um wieder alle Ergebnisse anzuzeigen.
+    Wenn Sie weitere Daten hinzufügen, können Sie Ihre Ergebnisse mithilfe von Filtern eingrenzen. Daten-Explorer verwendet standardmäßig `g.V()`, um alle Scheitelpunkte eines Graphen abzurufen. Sie können ihn in eine andere [Graphabfrage](tutorial-query-graph.md) wie z.B. `g.V().count()` ändern, um die Anzahl aller Scheitelpunkte eines Graphen im JSON-Format zurückzugeben. Wenn Sie den Filter geändert haben, ändern Sie den Filter zurück in `g.V()`, und wählen Sie **Filter anwenden** aus, um wieder alle Ergebnisse anzuzeigen.
 
-12. Als Nächstes verbinden Sie „rakesh“ und „ashley“. Vergewissern Sie sich, dass **ashley** in der Liste **Ergebnisse** ausgewählt ist, und klicken Sie anschließend rechts unten neben **Ziele** auf ![Ziel eines Scheitelpunkts in einem Graph ändern](./media/create-graph-java/edit-pencil-button.png). Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
+12. Als Nächstes verbinden Sie „rakesh“ und „ashley“. Vergewissern Sie sich, dass in der Liste **Ergebnisse** der Eintrag **ashley** ausgewählt ist, und wählen Sie anschließend rechts unten neben **Ziele** die Option ![Ziel eines Scheitelpunkts in einem Graph ändern](./media/create-graph-java/edit-pencil-button.png) aus. Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
 
     ![Ändern des Ziels eines Scheitelpunkts in einem Graph](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Edge label** (Edgebezeichner) die Zeichenfolge *knows* ein, und aktivieren Sie anschließend das Kontrollkästchen.
+13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Kantenbezeichnung** die Zeichenfolge *knows* ein, und aktivieren Sie anschließend das Kontrollkästchen.
 
     ![Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 

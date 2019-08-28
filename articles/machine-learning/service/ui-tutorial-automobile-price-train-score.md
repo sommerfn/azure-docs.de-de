@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/21/2019
-ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/16/2019
+ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668405"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891633"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche
 
@@ -27,9 +27,11 @@ Im ersten Teil richten Sie Ihre Umgebung ein, fügen einer interaktiven Canvas p
 Im ersten Teil des Tutorials lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Importieren und Bereinigen von Daten
+> * Erstellen eines neuen Experiments
+> * Daten importieren
+> * Vorbereiten von Daten
 > * Trainieren eines Machine Learning-Modells
-> * Bewerten und Auswerten eines Modells
+> * Auswerten eines Machine Learning-Modells
 
 In [Teil 2](ui-tutorial-automobile-price-deploy.md) des Tutorials erfahren Sie, wie Sie Ihr Vorhersagemodell als Azure-Webdienst bereitstellen, um damit den Preis eines beliebigen Autos basierend auf den von Ihnen an die Lösung gesendeten technischen Spezifikationen prognostizieren zu können. 
 
@@ -37,13 +39,17 @@ Eine abgeschlossene Version dieses Tutorials ist als Beispielexperiment verfügb
 
 Wählen Sie auf der Seite **Experimente** die Option **Neu hinzufügen** und anschließend das Experiment **Sample 1 - Regression: Automobile Price Prediction(Basic)** (Beispiel 1: Regression: Automobilpreisvorhersage (einfach)) aus.
 
-## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
+## <a name="create-a-new-experiment"></a>Erstellen eines neuen Experiments
+
+Zum Erstellen eines Experiments für eine grafische Benutzeroberfläche benötigen Sie zunächst einen Azure Machine Learning Service-Arbeitsbereich. In diesem Abschnitt erfahren Sie, wie Sie beide Ressourcen erstellen.
+
+### <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
 
 Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie mit dem nächsten Abschnitt fort.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-new-experiment"></a>Erstellen eines neuen Experiments
+### <a name="create-an-experiment"></a>Erstellen eines Experiments
 
 1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).
 
@@ -57,7 +63,7 @@ Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fa
 
 1. Wählen Sie oben in der Canvas den Standardexperimentnamen **Experiment Created on ...** (Experiment erstellt am ...) aus, und geben Sie einen aussagekräftigen Namen ein. Beispielsweise **Automobile price prediction** (Automobilpreisvorhersage). Der Name muss nicht eindeutig sein.
 
-## <a name="specify-data"></a>Angeben von Daten
+## <a name="import-data"></a>Daten importieren
 
 Maschinelles Lernen ist von Daten abhängig. Glücklicherweise sind auf dieser Benutzeroberfläche mehrere Beispieldatasets verfügbar, mit denen Sie experimentieren können. Verwenden Sie für dieses Tutorial das Beispieldataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)). 
 
@@ -65,7 +71,7 @@ Maschinelles Lernen ist von Daten abhängig. Glücklicherweise sind auf dieser B
 
 1. Wählen Sie das Dataset **Automobile Price Data (raw)** aus, und ziehen Sie es in den Experimentbereich.
 
-   ![Ziehen von Daten in den Experimentbereich](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
+   ![Ziehen von Daten in den Experimentbereich](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
 1. Wählen Sie die Datenspalten aus, mit denen Sie arbeiten möchten. Geben Sie im oberen Bereich der Palette **Select** (Auswählen) in das Suchfeld ein, um nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) zu suchen.
 
@@ -87,11 +93,11 @@ Maschinelles Lernen ist von Daten abhängig. Glücklicherweise sind auf dieser B
 
     Wählen Sie im Dialogfeld **Select columns** (Spalten auswählen) die Option **ALL COLUMNS** (Alle Spalten) aus, und schließen Sie **alle Features** ein. Das Dialogfeld sollte wie folgt aussehen:
 
-     ![Spaltenauswahl](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+     ![Spaltenauswahl](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
 
 1. Wählen Sie unten rechts **OK** aus, um die Spaltenauswahl zu schließen.
 
-## <a name="run-the-experiment"></a>Ausführen des Experiments
+### <a name="run-the-experiment"></a>Ausführen des Experiments
 
 Sie können zu einem beliebigen Zeitpunkt auf den Ausgabeport eines Datasets oder eines Moduls klicken, um die Daten an diesem Punkt im Datenfluss anzuzeigen. Wenn die Option **Visualize** (Visualisieren) deaktiviert ist, müssen Sie das Experiment zuerst ausführen.
 
@@ -100,7 +106,7 @@ Sie können zu einem beliebigen Zeitpunkt auf den Ausgabeport eines Datasets ode
 Nachdem das Computeziel verfügbar ist, wird das Experiment ausgeführt. Nach Abschluss der Ausführung wird für die einzelnen Module jeweils ein grünes Häkchen angezeigt.
 
 
-## <a name="visualize-the-data"></a>Visualisieren der Daten
+### <a name="visualize-the-data"></a>Visualisieren der Daten
 
 Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten visualisieren, um mehr über Ihr Dataset zu erfahren.
 
@@ -110,9 +116,9 @@ Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten
 
     In diesem Dataset steht jede Zeile für ein Fahrzeug, und die Variablen, die den einzelnen Fahrzeugen zugeordnet sind, werden als Spalten angezeigt. Es gibt 205 Zeilen und 26 Spalten in diesem Dataset.
 
-     Jedes Mal, wenn Sie auf eine Datenspalte klicken, werden links die Informationen **Statistics** (Statistik) und das Bild **Visualization** (Visualisierung) dieser Spalte angezeigt. Wenn Sie beispielsweise auf **num-of-doors** klicken, sehen Sie, dass diese Spalte zwei eindeutige Werte und zwei fehlende Werte aufweist. Scrollen Sie nach unten, um die Werte anzuzeigen: zwei und vier Türen.
+    Jedes Mal, wenn Sie auf eine Datenspalte klicken, werden links die Informationen **Statistics** (Statistik) und das Bild **Visualization** (Visualisierung) dieser Spalte angezeigt.
 
-     ![Vorschau der Daten](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+    [![Vorschau der Daten](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
 
 1. Klicken Sie auf jede Spalte, um weitere Informationen zum Dataset zu erhalten, und überlegen Sie, ob die Spalten hilfreich sind, um den Preis eines Autos vorherzusagen.
 
@@ -137,15 +143,11 @@ Entfernen Sie zunächst die Spalte **normalized-losses** vollständig.
 
     * Wählen Sie unten rechts **OK** aus, um die Spaltenauswahl zu schließen.
 
-    ![Ausschließen einer Spalte](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Ausschließen einer Spalte](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
         
     Der Eigenschaftenbereich für „Select Columns in Dataset“ zeigt nun an, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets übergeben werden.
         
     Der Eigenschaftenbereich zeigt, dass die Spalte **normalized-losses** ausgeschlossen wurde.
-        
-    ![Eigenschaftenbereich](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
-        
-    Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. 
 
 1. Doppelklicken Sie auf das Modul **Select Columns in Dataset**, und geben Sie den Kommentar „Exclude normalized losses“ (Normalisierte Verluste ausschließen) ein. 
     
@@ -168,22 +170,22 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas bezüglich der fehlenden Daten
 1. Klicken Sie im Eigenschaftenbereich unter **Cleaning mode** (Bereinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen).
 
 1. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
- 
-    ![Entfernen von Zeilen](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
 
     Ihr Experiment sollte in etwa wie folgt aussehen:
     
     ![select-column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
 
-## <a name="train-the-model"></a>Modelltraining
+## <a name="train-a-machine-learning-model"></a>Trainieren eines Machine Learning-Modells
 
 Da die Daten jetzt vorbereitet wurden, können Sie ein Vorhersagemodell erstellen. Zum Trainieren des Modells verwenden Sie Ihre Daten. Dann testen Sie das Modell, um festzustellen, wie genau die Preisvorhersagen sind.
+
+### <a name="select-an-algorithm"></a>Auswählen eines Algorithmus
 
 **Klassifizierung** und **Regression** sind zwei Algorithmen für beaufsichtigtes maschinelles Lernen. Mit der **Klassifizierung** wird eine Antwort aus einem definierten Satz von Kategorien vorhergesagt, z. B. eine Farbe (Rot, Blau oder Grün). Die **Regression** wird verwendet, um eine Zahl vorherzusagen.
 
 Da Sie einen Preis (also eine Zahl) vorhersagen möchten, können Sie einen Regressionsalgorithmus verwenden. In diesem Beispiel verwenden Sie ein lineares Regressionsmodell.
 
-Trainieren Sie das Modell, indem Sie einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Features eines Autos und seinem Preis.
+### <a name="split-the-data"></a>Teilen der Daten
 
 Verwenden Sie Ihre Daten sowohl zum Trainieren als auch zum Testen des Modells, indem Sie die Daten in separate Trainings- und Testdatasets aufteilen.
 
@@ -191,17 +193,17 @@ Verwenden Sie Ihre Daten sowohl zum Trainieren als auch zum Testen des Modells, 
 
 1. Wählen Sie das Modul **Split Data** (Daten aufteilen) aus. Legen Sie im Bereich „Properties“ (Eigenschaften) den Anteil der Zeilen im ersten Ausgabedatensatz auf „0,7“ fest. Mit dieser Einstellung verwenden wir 70 Prozent der Daten zum Trainieren des Modells und halten 30 Prozent für Tests zurück.
 
-    ![Screenshot der richtigen Konfiguration des Eigenschaftenbereichs. Für „Split Data“ (Daten aufteilen) sollten die Werte „Split Rows“ (Zeilen aufteilen), „0,7“, „Randomized split“ (Zufällige Aufteilung), „0“ und „False“ (Falsch) verwendet werden.](./media/ui-tutorial-automobile-price-train-score/split-data.png)
-
 1. Doppelklicken Sie auf **Split Data** (Daten aufteilen), und geben Sie den Kommentar „Split the dataset into training set(0.7) and test set(0.3)“ (Dataset in Trainingssatz (0,7) und Testsatz (0,3) aufteilen) ein.
+
+### <a name="train-the-model"></a>Modelltraining
+
+Trainieren Sie das Modell, indem Sie einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Features eines Autos und seinem Preis.
 
 1. Löschen Sie zum Auswählen des Lernalgorithmus das Suchfeld der Modulpalette.
 
 1. Erweitern Sie **Machine Learning**, und erweitern Sie dann **Initialize Model** (Modell initialisieren). Daraufhin werden verschiedene Kategorien von Modulen angezeigt, die zur Initialisierung eines Algorithmus für maschinelles Lernen verwendet werden können.
 
 1. Wählen Sie für dieses Experiment die Optionen **Regression** > **Linear Regression** (Lineare Regression) aus, und ziehen Sie das Modul in den Experimentbereich.
-
-    ![Screenshot der richtigen Konfiguration des Eigenschaftenbereichs. Für „Split Data“ (Daten aufteilen) sollten die Werte „Split Rows“ (Zeilen aufteilen), „0,7“, „Randomized split“ (Zufällige Aufteilung), „0“ und „False“ (Falsch) verwendet werden.](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
 1. Suchen Sie nach dem Modul **Train Model** (Modell trainieren), und ziehen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls „Linear Regression“ mit der linken Eingabe des Moduls „Train Model“, und verbinden Sie die Ausgabe der Trainingsdaten (den linken Port) des Moduls **Split Data** mit der rechten Eingabe des Moduls **Train Model**.
 
@@ -215,7 +217,7 @@ Verwenden Sie Ihre Daten sowohl zum Trainieren als auch zum Testen des Modells, 
 
     ![Screenshot der richtigen Konfiguration des Experiments nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-## <a name="score-and-evaluate-the-model"></a>Bewerten und Auswerten des Modells
+## <a name="evaluate-a-machine-learning-model"></a>Auswerten eines Machine Learning-Modells
 
 Nachdem Sie das Modell mit 70 Prozent Ihrer Daten trainiert haben, können Sie unter Verwendung der restlichen 30 Prozent der Daten bewerten, wie gut das Modell funktioniert.
 
@@ -244,26 +246,6 @@ Die folgenden Statistiken werden für Ihr Modell angezeigt:
 * **Coefficient of Determination**: Dieser auch als „R-Quadrat“ bezeichnete Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
 
 Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an, dass die Vorhersagen genauer mit den tatsächlichen Werten übereinstimmen. Für den Bestimmungskoeffizienten gilt Folgendes: Je näher der Bestimmungskoeffizient am Wert eins (1,0) liegt, desto besser die Vorhersage.
-
-## <a name="manage-experiments-in-azure-machine-learning-service-workspace"></a>Verwalten von Experimenten im Azure Machine Learning Service-Arbeitsbereich
-
-Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Experimente können im Azure Machine Learning Service-Arbeitsbereich verwaltet werden. Verwenden Sie den Arbeitsbereich, um detailliertere Informationen anzuzeigen, z. B. einzelne Experimentausführungen, Diagnoseprotokolle, Ausführungsdiagramme und mehr.
-
-1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  
-
-1. Wählen Sie in Ihrem Arbeitsbereich die Option **Experiments** (Experimente) aus. Wählen Sie dann das Experiment aus, das Sie erstellt haben.
-
-    ![Screenshot, der zeigt, wie Sie im Azure-Portal zu Experimenten navigieren](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
-
-    Auf dieser Seite werden eine Übersicht über das Experiment und die letzten Ausführungen angezeigt.
-
-    ![Screenshot einer Übersicht über die Experimentstatistik im Azure-Portal](./media/ui-tutorial-automobile-price-train-score/experiment-overview.png)
-
-1. Wählen Sie eine Ausführungsnummer aus, um weitere Details zu einer bestimmten Ausführung anzuzeigen.
-
-    ![Screenshot eines detaillierten Ausführungsberichts](./media/ui-tutorial-automobile-price-train-score/run-details.png)
-
-    Der Ausführungsbericht wird in Echtzeit aktualisiert. Wenn Sie in Ihrem Experiment das Modul **Execute Python Script** (Python-Skript ausführen) oder **Execute R Script** (R-Skript ausführen) verwendet haben, können Sie die auszugebenden Skriptprotokolle auf der Registerkarte **Logs** (Protokolle) angeben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

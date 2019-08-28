@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 59e47c448f58235114c8fb3147637b77dd5fcf23
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: de043e682fea5cb629a127763515b162c3ad4943
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226068"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515928"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
@@ -66,7 +66,7 @@ Mit dieser Blaupause werden drei [Azure Policy](../../../policy/overview.md)-Def
 - \[Vorschau\]: Konten mit Leseberechtigungen überwachen, für die MFA in einem Abonnement nicht aktiviert ist
 - \[Vorschau\]: Konten mit Schreibberechtigungen überwachen, für die MFA in einem Abonnement nicht aktiviert ist
 - \[Vorschau\]: Bereitstellen einer VM-Erweiterung zur Überwachung von passwd-Dateiberechtigungen einer Linux-VM
-- \[Vorschau\]: Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf virtuellen Linux-Computern überwachen
+- \[Vorschau\]: Überwachen der Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf virtuellen Linux-Computern
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 Überprüfung der Zugriffsrechte für Benutzer
 
@@ -118,13 +118,13 @@ Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptog
 - \[Vorschau\]: Fehlende Blobverschlüsselung für Speicherkonten überwachen
 - \[Vorschau\]: [Vorschau]: Windows-VMs überwachen, die Kennwörter nicht mit umkehrbarer Verschlüsselung speichern
 - \[Vorschau\]: [Vorschau]: Windows-VMs überwachen, die Kennwörter nicht mit umkehrbarer Verschlüsselung speichern
-- \[Vorschau\]: Nicht verschlüsselte SQL-Datenbank in Azure Security Center überwachen
 - \[Vorschau\]: Nicht verschlüsselte VM-Datenträger in Azure Security Center überwachen
 - Aktivierung der Verschlüsselung für Variablen von Automation-Konten überwachen
 - Ausschließliche Aktivierung sicherer Verbindungen mit Redis Cache überwachen
 - Sichere Übertragung in Speicherkonten überwachen
 - Festlegung der ClusterProtectionLevel-Eigenschaft auf EncryptAndSign in Service Fabric überwachen
 - Überwachen des Status der transparenten Datenverschlüsselung
+- Transparent Data Encryption für SQL-Datenbanken sollte aktiviert werden.
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 Ereignisprotokollierung
 
@@ -135,9 +135,9 @@ Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgef
 - \[Vorschau\]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A.12.4.3 Administrator- und Operatorprotokolle
 
@@ -147,9 +147,9 @@ Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolli
 - \[Vorschau\]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 
 ## <a name="a1244-clock-synchronization"></a>A.12.4.4 Uhrsynchronisierung
 
@@ -159,9 +159,9 @@ Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolli
 - \[Vorschau\]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 Installation von Software auf Betriebssystemen
 
