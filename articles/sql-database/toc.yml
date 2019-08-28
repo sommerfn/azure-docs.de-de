@@ -238,7 +238,7 @@
     - name: PaaS (Platform-as-a-Service)
       items:
         - name: PaaS-Dokumentation (Platform-as-a-Service)
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: Geschäftskontinuität
           href: sql-database-business-continuity.md
         - name: Hochverfügbarkeit

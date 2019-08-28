@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828330"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639984"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -128,13 +128,17 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
 Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
 
-1. Extrahieren Sie die gezippte VHD-Datei in einem Ordner auf dem Hyper-V-Host, der die Appliance-VM hostet. Drei Ordner werden extrahiert.
+1. Laden Sie die gezippte VHD-Datei auf den Hyper-V-Host herunter, auf dem sich die Appliance-VM befinden wird, und extrahieren Sie sie anschließend.
+    - Am Speicherort für das Extrahieren wird die Datei in einem Ordner namens **AzureMigrateAppliance_VersionNumber** entpackt.
+    - Dieser Ordner enthält einen Unterordner, der ebenfalls **AzureMigrateAppliance_VersionNumber** heißt.
+    - Dieser Unterordner enthält drei weitere Unterordner: **Momentaufnahmen** (Snapshots), **VHDs** (Virtual Hard Disks) und **Virtual Machines**.
+
 2. Öffnen Sie den Hyper-V-Manager. Klicken Sie unter **Aktionen** auf **Virtuellen Computer importieren**.
 
     ![Bereitstellen der VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. Klicken Sie im Assistenten zum Importieren virtueller Computer unter **Vorbereitung** auf **Weiter**.
-3. Geben Sie unter **Ordner suchen** den Ordner an, der die extrahierte VHD enthält. Klicken Sie auf **Weiter**.
+3. Wählen Sie unter **Ordner suchen** den Ordner **Virtual Machines** aus. Klicken Sie auf **Weiter**.
 1. Klicken Sie unter **Virtuellen Computer auswählen** auf **Weiter**.
 2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie auf **Weiter**.
 3. Behalten Sie unter **Ziel auswählen** die Standardeinstellung bei. Klicken Sie auf **Weiter**.

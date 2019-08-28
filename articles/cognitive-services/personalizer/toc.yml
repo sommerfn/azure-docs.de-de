@@ -72,8 +72,8 @@
       items:
         - name: .NET
           items:
-            - name: Referenz zum .NET SDK
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: Verweis
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
             - name: NuGet-Paket
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Go
