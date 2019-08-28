@@ -11,6 +11,9 @@
     - name: Erstellen einer Blaupause – Portal
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-portal.md
+    - name: Erstellen einer Blaupause – PowerShell
+      displayName: 'publish, assign, track, unassign, delete'
+      href: create-blueprint-powershell.md
     - name: Erstellen einer Blaupause – REST-API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md

@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
       href: security-center-using-recommendations.md
-    - name: Erkennen von Bedrohungen
-      href: security-center-detection-capabilities.md
-    - name: Verwalten von Sicherheitswarnungen
-      href: security-center-managing-and-responding-alerts.md
-    - name: Sicherheitsincidents
-      href: security-center-incident.md
     - name: Mandantenübergreifende Verwaltung
       href: security-center-cross-tenant-management.md
-    - name: Warnungen der Bedrohungserkennung
+    - name: Warnungen und Incidents der Bedrohungserkennung
       items:
         - name: Übersicht zu Sicherheitswarnungen
           href: security-center-alerts-overview.md
+        - name: Verwalten von Sicherheitswarnungen
+          href: security-center-managing-and-responding-alerts.md
+        - name: Verwalten von Sicherheitsvorfällen
+          href: security-center-incident.md
         - name: Bedrohungserkennung für virtuelle Computer und Server
           href: security-center-alerts-iaas.md
         - name: Bedrohungserkennung für Cloud Native Compute
