@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c9bc02959c64baecf11e2d1651051cd9bdda61d7
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516985"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060620"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -26,7 +26,7 @@ Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbau
 
 ![Beispiel für eine Hierarchiestruktur einer Verwaltungsgruppe](./media/tree.png)
 
-Erstellen Sie eine Hierarchie, damit Sie eine Richtlinie anwenden können, beispielsweise zum Einschränken der VM-Standorte auf die Region „USA, Westen“ für die Gruppe „Produktion“. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
+Sie können eine Hierarchie erstellen, die eine Richtlinie anwendet, z. B. die VM-Standorte auf die Region „USA, Westen“ in der Gruppe „Produktion“ begrenzt. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
 
 Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [RBAC](../../role-based-access-control/overview.md)-Zuweisung (Role-Based Access Control, rollenbasierte Zugriffssteuerung) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt.
 Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles ermöglichen, was sie benötigen, ohne dass in einem Skript RBAC für verschiedene Abonnements eingerichtet werden muss.
@@ -55,7 +55,7 @@ Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Ver
   - Neue Abonnements werden bei ihrer Erstellung standardmäßig der Stammverwaltungsgruppe zugeordnet.
 - Alle Azure-Kunden können die Stammverwaltungsgruppe sehen, aber nicht alle Kunden besitzen Zugriff, um diese Stammverwaltungsgruppe zu verwalten.
   - Jeder Benutzer, der Zugriff auf ein Abonnement besitzt, kann den Kontext erkennen, in dem sich das Abonnement in der Hierarchie befindet.  
-  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen.  Sobald sie über Zugriff verfügen, können die globalen Administratoren eine beliebige RBAC-Rolle anderen Benutzern zum Verwalten zuweisen.  
+  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen.  Sobald die globalen Administratoren über Zugriff auf die Stammverwaltungsgruppe verfügen, können sie anderen Benutzern eine beliebige RBAC-Rolle zur Verwaltung zuweisen.  
 
 > [!IMPORTANT]
 > Jede Zuweisung von Benutzerzugriff oder Richtlinienzuweisung für die Stammverwaltungsgruppe **gilt für alle Ressourcen im Verzeichnis**.

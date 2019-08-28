@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Hilfedokumentation für Benutzer
+summary: Richten Sie als Mitarbeiter, IT-Experte oder Endbenutzer die Authentifizierung für Ihr Geschäfts-, Schul- oder Unikonto ein, setzen Sie Ihr eigenes Kennwort zurück, richten Sie Geräte ein und binden Sie diese ein, richten Sie die Microsoft Authenticator-App ein, und nutzen Sie die verschiedenen Portale.
+metadata:
+  title: Benutzerhilfe für Authentifizierung, Apps und Geräte
+  description: Erfahren Sie als Mitarbeiter oder Endbenutzer, wie Sie die Authentifizierung, die Microsoft Authenticator-App und das Portal „Meine Apps“ einrichten und verwenden.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70062204"
+landingContent:
+- title: Einrichten und Verwenden der Microsoft Authenticator-App
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wozu dient die Microsoft Authenticator-App?
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: Herunterladen und Installieren der App
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sichern und Wiederherstellen von Kontoinformationen
+      url: user-help-auth-app-backup-recovery.md
+    - text: Anmelden mit der App
+      url: user-help-auth-app-sign-in.md
+- title: Einrichten und Verwenden der zweistufigen Überprüfung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die zweistufige Überprüfung?
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten der Überprüfungsmethoden
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: Verwalten von Einstellungen
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: Hier erhalten Sie Hilfe
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: Einrichten und Verwenden des Portals „Meine Apps“
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist das Portal „Meine Apps“?
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktualisieren der Informationen
+      url: my-apps-portal-end-user-update-profile.md
+    - text: Hier erhalten Sie Hilfe
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: Einrichten und Verwenden von Sicherheitsinformationen (Vorschauversion)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Sicherheitsinformationen (Vorschauversion)?
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten der Sicherheitsinformationsmethoden
+      url: security-info-add-update-methods-overview.md
+    - text: Hinzufügen von Informationen während der Aufforderung zum Anmelden
+      url: security-info-setup-signin.md
+- title: Einrichten und Verwenden von „Mein Profil“ (Vorschauversion)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist das Portal „Mein Profil“ (Vorschauversion)?
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten Ihrer Organisationen
+      url: myprofile-portal-organizations-page.md
+    - text: Verwalten Ihrer verbundenen Geräte
+      url: myprofile-portal-devices-page.md
+- title: Zurücksetzen des eigenen Kennworts
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Kennwortzurücksetzung?
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Registrieren für die Kennwortzurücksetzung
+      url: active-directory-passwords-reset-register.md
+    - text: Zurücksetzen Ihres Kennworts
+      url: user-help-reset-password.md
