@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855098"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624257"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
@@ -31,6 +31,10 @@ Die Speech Services-Implementierung von SSML basiert auf der [Markupsprache für
 Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste der unterstützten Sprachen, Gebietsschemas und Stimmen (neuronal und Standard) finden Sie unter [Sprachunterstützung](language-support.md).
 
 Weitere Informationen zu Standard-, neuronalen und benutzerdefinierten Stimmen finden Sie unter [Text-to-speech overview](text-to-speech.md) (Übersicht über die Sprachsynthese).
+
+## <a name="special-characters"></a>Sonderzeichen
+
+Beachten Sie bei Verwendung von SSML zum Konvertieren von Text in synthetisierte Sprache, dass Sonderzeichen wie Anführungszeichen, Apostrophe und Klammern wie bei XML mit Escapezeichen versehen werden müssen. Weitere Informationen finden Sie unter [Extensible Markup Language (XML) 1.0: Anhang D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>Unterstützte SSML-Elemente
 
@@ -142,6 +146,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | Drückt eine positive und glückliche Emotion aus |
 | | type=`empathy` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
+| | type=`chat` | Sprechen in einem lockeren, ungezwungenen Ton |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | Drückt einen formalen Ton ähnlich wie bei Nachrichtensendungen aus |
 | | type=`sentiment` | Vermittelt eine anrührende Botschaft oder Geschichte |
 
