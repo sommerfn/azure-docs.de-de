@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus wird von der Oracle Cloud Infrastructure Console-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
-   1. Klicken Sie neben **Wert für Namensbezeichner** auf das **** Stiftsymbol.
+   1. Klicken Sie **auf** den Stift **neben Name Bezeichnerwert**.
 
    1. Wählen Sie unter **Namensbezeichnerformat auswählen** die Option **Beständig** aus.
  

@@ -35,7 +35,7 @@ Führen Sie [Teil 1 des Tutorials](ui-tutorial-automobile-price-train-score.md) 
 
 Bevor Sie Ihr Experiment als Webdienst bereitstellen, müssen Sie zuerst Ihr *Trainingsexperiment* in ein *Vorhersageexperiment* konvertieren.
 
-1. Wählen Sie unten im Experimentbereich die Option zum **Erstellen eines Vorhersageexperiments***.
+1. Wählen Sie unten im Experimentbereich die Option zum **Erstellen eines Vorhersageexperiments**\*.
 
     ![Animierte GIF der Darstellung der automatischen Konvertierung eines Trainingsexperiments in ein Vorhersageexperiment](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 

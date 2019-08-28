@@ -13,12 +13,12 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949764"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616120"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Beheben gängiger Problemen bei der zweistufigen Überprüfung
 
@@ -29,7 +29,7 @@ Es gibt einige gängige Probleme bei der zweistufigen Überprüfung, die offenba
 >[!Important]
 >Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 >
->Dieser Inhalt ist auch für die Verwendung mit Ihrem Geschäfts-, Schul- oder Unikonto vorgesehen, also dem Konto, das Ihnen von Ihrer Organisation zur Verfügung gestellt wird (z. B. alain@contoso.com). Bei Problemen mit der zweistufigen Überprüfung und Ihrem persönlichen Microsoft-Konto, also dem Konto, das Sie für sich selbst einrichten (z. B. danielle@outlook.com) lesen Sie den Artikel [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Dieser Inhalt ist auch für die Verwendung mit Ihrem Geschäfts-, Schul- oder Unikonto vorgesehen, also dem Konto, das Ihnen von Ihrer Organisation zur Verfügung gestellt wird (z. B. alain@contoso.com). Bei Problemen mit der zweistufigen Überprüfung und Ihrem persönlichen Microsoft-Konto, also dem Konto, das Sie für sich selbst einrichten (z. B. danielle@outlook.com) lesen Sie den Artikel [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>Ich habe mein mobiles Gerät zu Hause vergessen
 
@@ -92,7 +92,11 @@ Möglicherweise ist es schwieriger, eine Überprüfungsmethode für mobile Gerä
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Meine App-Kennwörter funktionieren nicht
 
-App-Kennwörter ersetzen normale Kennwörter für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Stellen Sie zunächst sicher, dass Sie das Kennwort korrekt eingegeben haben. Wenn das Problem dadurch nicht behoben wird, versuchen Sie, ein neues Kennwort für die App zu erstellen, indem Sie die Schritte im Abschnitt **Erstellen und Löschen von App-Kennwörtern im Portal „Meine Apps“** des Artikels [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal) ausführen.
+App-Kennwörter ersetzen normale Kennwörter für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Stellen Sie zunächst sicher, dass Sie das Kennwort korrekt eingegeben haben. Wenn das Problem dadurch nicht behoben wird, versuchen Sie, ein neues Kennwort für die App zu erstellen, indem Sie die Schritte im Abschnitt **Erstellen und Löschen von App-Kennwörtern im Portal „Meine Apps“** des Artikels [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) ausführen.
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>Warum kann ich die zweistufige Überprüfung nicht deaktivieren?
+
+Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) verwenden, bedeutet dies höchstwahrscheinlich, dass Ihre Organisation entschieden hat, dass Sie dieses zusätzliche Sicherheitsfeature verwenden müssen. Da Ihre Organisation die Verwendung des Features verbindlich vorgeschrieben hat, kann es nicht individuell deaktiviert werden. Wenn Sie jedoch die zweistufige Überprüfung mit einem persönlichen Konto wie alain@outlook.comverwenden, können Sie das Feature aktivieren und deaktivieren. Anweisungen zum Steuern der zweistufigen Überprüfung für Ihre persönlichen Microsoft-Konten finden Sie unter [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ich konnte keine Lösung für mein Problem finden
 

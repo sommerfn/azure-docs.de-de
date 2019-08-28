@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950526"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877168"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -25,6 +25,10 @@ Jedes Azure-Abonnement kann maximal 50 IoT Hubs und höchstens einen Hub vom Typ
 Jede IoT Hub-Instanz wird mit einer bestimmten Anzahl von Einheiten zu einem spezifischen Tarif bereitgestellt. Der Tarif und die Anzahl der Einheiten bestimmen das maximale tägliche Kontingent von Nachrichten, die Sie senden können. Die zum Berechnen des täglichen Kontingents verwendete Nachrichtengröße beträgt 0,5 KB für einen Hub mit dem Tarif „Free“ (kostenlos) und 4 KB für alle anderen Tarife. Weitere Informationen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Der Tarif legt auch die Drosselungslimits fest, die IoT Hub für alle Vorgänge erzwingt.
+
+### <a name="iot-plug-and-play"></a>IoT Plug & Play
+
+Während der Public Preview-Phase senden IoT Plug & Play-Geräte separate Nachrichten pro Schnittstelle, wodurch sich die Anzahl von Nachrichten erhöhen kann, die auf das Nachrichtenkontingent angerechnet werden.
 
 ## <a name="operation-throttles"></a>Vorgangsdrosselung
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934225"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535170"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
 
@@ -64,7 +64,7 @@ Sie können Ihren Auftrag über das Azure-Portal und über die Website des Spedi
 
 - Ihre Data Box trifft gesperrt bei Ihnen ein. Sie können die im Azure-Portal verfügbaren Geräteanmeldeinformationen für Ihren Auftrag verwenden.  
 
-    Wenn eine Data Box eingerichtet wird, müssen Sie möglicherweise wissen, wer auf die Geräteanmeldeinformationen zugegriffen hat. Um zu ermitteln, wer auf das Blatt **Geräteanmeldeinformationen** zugegriffen hat, können Sie die Aktivitätsprotokolle abfragen.  Jede Aktion, bei der auf das Blatt **Gerätedetails > Anmeldeinformationen** zugegriffen wurde, wird in den Aktivitätsprotokollen als `ListCredentials`-Aktion protokolliert.
+    Wenn eine Data Box eingerichtet wird, müssen Sie möglicherweise wissen, wer auf die Geräteanmeldeinformationen zugegriffen hat. Um zu ermitteln, wer auf das Blatt **Geräteanmeldeinformationen** zugegriffen hat, können Sie die Aktivitätsprotokolle abfragen.  Jede Aktion, bei der auf das Blatt **Gerätedetails > Anmeldeinformationen** zugegriffen wurde, wird in den Aktivitätsprotokollen als `ListCredentials`-Aktion protokolliert.
 
     ![Abfragen von Aktivitätsprotokollen](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Während des Kopiervorgangs von Daten auf die Data Box oder Data Box Heavy wird 
 
 ### <a name="errorxml-file"></a>Datei „Error.xml“
 
-Vergewissern Sie sich, dass die Kopieraufträge ohne Fehler abgeschlossen wurden. Sollten während des Kopiervorgangs Fehler aufgetreten sein, laden Sie die Protokolle von der Seite  **Verbindung herstellen und Daten kopieren**  herunter.
+Vergewissern Sie sich, dass die Kopieraufträge ohne Fehler abgeschlossen wurden. Sollte während des Kopiervorgangs ein Fehler aufgetreten sein, laden Sie die Protokolle von der Seite **Verbindung herstellen und Daten kopieren** herunter.
 
 - Falls Sie eine Datei kopiert haben, die in einem Ordner für verwaltete Datenträger in Ihrer Data Box keinem ganzzahligen Vielfachen von 512 Byte entspricht, wird die Datei nicht als Seitenblob in Ihr Stagingspeicherkonto hochgeladen. Die Protokolle enthalten dann einen Fehler. Entfernen Sie die Datei, und kopieren Sie eine Datei, die einem ganzzahligen Vielfachen von 512 Bytes entspricht.
 - Wenn Sie eine VHDX, eine dynamische VHD oder eine differenzierende VHD (nicht unterstützt) kopiert haben, wird ein Fehler protokolliert.
@@ -203,7 +203,7 @@ Für jeden verarbeiteten Auftrag erstellt der Data Box-Dienst im zugeordneten Sp
 
 Während des Uploads in Azure wird eine CRC-Berechnung (Cyclic Redundancy Check) durchgeführt. Die CRC-Werte des Datenkopiervorgangs und werden mit denen nach dem Datenupload verglichen. Wenn die CRC-Werte nicht übereinstimmen, weist dies darauf hin, dass der Upload der entsprechenden Dateien fehlgeschlagen ist.
 
-Standardmäßig werden Protokolle in einen Container mit dem Namen  `copylog` geschrieben. Die Protokolle werden mit der folgenden Benennungskonvention gespeichert:
+Standardmäßig werden Protokolle in einen Container mit dem Namen `copylog` geschrieben. Die Protokolle werden mit der folgenden Benennungskonvention gespeichert:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Herunterladen des Auftragsverlaufs
 
-Der Auftragsverlauf ist im Azure-Portal verfügbar. Wenn der Auftrag und die Gerätebereinigung (Löschung der Daten von den Datenträgern) abgeschlossen sind, wechseln Sie zu **Auftragsdetails**. Die Option  **Bestellverlauf herunterladen**  ist verfügbar. Weitere Informationen finden Sie unter [Bestellverlauf herunterladen](data-box-portal-admin.md#download-order-history).
+Der Auftragsverlauf ist im Azure-Portal verfügbar. Wenn der Auftrag und die Gerätebereinigung (Löschung der Daten von den Datenträgern) abgeschlossen sind, wechseln Sie zum Geräteauftrag, und wählen Sie **Auftragsdetails** aus. Die Option **Bestellverlauf herunterladen** ist verfügbar. Weitere Informationen finden Sie unter [Bestellverlauf herunterladen](data-box-portal-admin.md#download-order-history).
 
 Wenn Sie durch den Auftragsverlauf scrollen, sehen Sie Folgendes:
 

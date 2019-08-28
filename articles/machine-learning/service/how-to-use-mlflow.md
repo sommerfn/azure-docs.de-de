@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882010"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900171"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Mit MLflow und Azure Machine Learning Service Metriken nachverfolgen und Modelle bereitstellen (Vorschauversion)
 
@@ -27,6 +27,8 @@ In diesem Artikel wird veranschaulicht, wie Sie den Nachverfolgungs-URI und die 
 + Stellen Sie Ihre MLflow-Experimente als Azure Machine Learning-Webdienst bereit. Durch die Bereitstellung als Webdienst können Sie die Funktionen von Azure Machine Learning zur Überwachung und Erkennung von Dateiabweichungen für Ihre Produktionsmodelle einsetzen. 
 
 [MLflow](https://www.mlflow.org) ist eine Open-Source-Bibliothek zum Verwalten des Lebenszyklus Ihrer Machine Learning-Experimente. MLFlow-Tracking ist eine Komponente von MLflow, die die Metrik Ihrer Trainingsausführungen und Modellartefakte protokolliert und nachverfolgt – unabhängig von der Umgebung Ihres Experiments. Dies ist lokal, auf einem virtuellen Computer, einem Remotecomputecluster oder sogar auf Azure Databricks möglich.
+
+Das folgende Diagramm veranschaulicht, wie Sie mit dem MLflow-Tracking für jedes Experiment – egal ob es sich auf einem Remotecomputeziel auf einem virtuellen Computer, lokal auf Ihrem Computer oder in einem Azure Databricks-Cluster befindet – die Ausführungsmetriken nachverfolgen und Modellartefakte in Ihrem Azure Machine Learning-Arbeitsbereich speichern können.
 
 ![MLflow mit Azure Machine Learning: Diagramm](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -141,7 +143,9 @@ run = exp.submit(src)
 
 Mit MLflow-Tracking mit Azure Machine Learning Service können Sie die protokollierten Metriken und Artefakte aus Ihren Databricks-Ausführungen in Ihrem Azure Machine Learning-Arbeitsbereich speichern.
 
-Um Ihre MLflow-Experimente mit Azure Databricks durchzuführen, müssen Sie zunächst einen [Azure Databricks-Arbeitsbereichcluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) erstellen. Installieren Sie in Ihrem Cluster die*azureml-mlflow*-Bibliothek von PyPi, um sicherzustellen, dass Ihr Cluster Zugriff auf die notwendigen Funktionen und Klassen hat.
+Um Ihre MLflow-Experimente mit Azure Databricks durchzuführen, müssen Sie zunächst einen [Azure Databricks-Arbeitsbereich und -Cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) erstellen.
+
+Installieren Sie in Ihrem Cluster die*azureml-mlflow*-Bibliothek von PyPi, um sicherzustellen, dass Ihr Cluster Zugriff auf die notwendigen Funktionen und Klassen hat.
 
 ### <a name="install-libraries"></a>Installieren von Bibliotheken
 
@@ -210,10 +214,13 @@ ws.get_details()
 
 Durch Bereitstellung Ihrer MLflow-Experimente als Azure Machine Learning-Webdienst können Sie die Funktionen der Azure Machine Learning-Modellverwaltung und Datenabweichungserkennung nutzen und auf Ihre Produktionsmodelle anwenden.
 
+Das folgende Diagramm veranschaulicht, wie Sie mit der MLflow-Bereitstellungs-API vorhandene MLflow-Modelle unabhängig vom Framework (PyTorch, Tensorflow, scikit-learn, ONNX usw.) als Azure Machine Learning-Webdienst bereitstellen und Ihre Produktionsmodelle im Arbeitsbereich verwalten können.
+
 ![MLflow mit Azure Machine Learning: Diagramm](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>Protokollieren Sie Ihr Modell
-Bevor wir die Bereitstellung durchführen können, stellen Sie sicher, dass Ihr Modell gespeichert ist, damit Sie während der Bereitstellung auf das Modell und seinen Pfad verweisen können. In Ihrem Trainingsskript sollte es einen Code ähnlich der folgenden [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)-Methode geben, der Ihren Modell im angegebenen Ausgabeverzeichnis speichert. 
+
+Bevor Sie die Bereitstellung durchführen können, stellen Sie sicher, dass Sie Ihr Modell gespeichert haben, damit Sie während der Bereitstellung auf das Modell und seinen Pfad verweisen können. In Ihrem Trainingsskript sollte es einen Code ähnlich der folgenden [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)-Methode geben, der Ihren Modell im angegebenen Ausgabeverzeichnis speichert. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -227,7 +234,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>Modell aus der vorherigen Ausführung abrufen
 
-Um die gewünschte Ausführung abzurufen, benötigen wir die Ausführungs-ID und den Pfad in des Ausführungsverlaufs, in dem das Modell gespeichert wurde. 
+Um die gewünschte Ausführung abzurufen, benötigen Sie die Ausführungs-ID und den Pfad des Ausführungsverlaufs, in dem das Modell gespeichert wurde. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -244,7 +251,7 @@ model_save_path = 'model'
 
 Die Funktion `mlflow.azureml.build_image()` erstellt ein Docker-Image aus dem gespeicherten Modell für ein Framework. Sie erstellt automatisch den frameworkspezifischen, hergeleiteten Wrapper-Code und spezifiziert die Paketabhängigkeiten für Sie. Geben Sie den Modellpfad, Ihren Arbeitsbereich, die Ausführungs-ID und andere Parameter an.
 
-Im folgenden Code erstellen wir ein Docker-Image mit *runs:/<run.id>/model* als model_uri-Pfad für ein Experiment mit Scikit-learn.
+Mit dem folgenden Code wird ein Docker-Image mit *runs:/<run.id>/model* als model_uri-Pfad für ein Experiment mit Scikit-learn erstellt.
 
 ```python
 import mlflow.azureml
@@ -290,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>Bereitstellen für AKS
 
-Um in AKS bereitzustellen, müssen Sie einen AKS-Cluster erstellen und das Docker-Image, das Sie bereitstellen möchten, übernehmen. Für dieses Beispiel übernehmen wir das zuvor erstellte Image aus unserer ACI-Bereitstellung.
+Um in AKS bereitzustellen, müssen Sie einen AKS-Cluster erstellen und das Docker-Image, das Sie bereitstellen möchten, übernehmen. Für dieses Beispiel übernehmen Sie das zuvor erstellte Image aus der ACI-Bereitstellung.
 
-Um das Image aus der vorherigen ACI-Bereitstellung zu erhalten, verwenden wir die Klasse [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py). 
+Um das Image aus der vorherigen ACI-Bereitstellung abzurufen, verwenden Sie die Klasse [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py). 
 
 ```python
 from azureml.core.image import Image

@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 528e1b0a353cdcd716f9bca63c423af7a6f12641
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68957515"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899765"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Nutzen der verwalteten Identität einer Service Fabric-Anwendung für den Zugriff auf Azure-Dienste
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Nutzen der verwalteten Identität einer Service Fabric-Anwendung für den Zugriff auf Azure-Dienste (Vorschau)
 
 Service Fabric-Anwendungen können verwaltete Identitäten für den Zugriff auf andere Azure-Ressourcen verwenden, die die Azure Active Directory-basierte Authentifizierung unterstützen. Eine Anwendung kann ein [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) abrufen, das ihre system- oder benutzerseitig zugewiesene Identität repräsentiert. Die Anwendung kann dieses Token als Bearertoken verwenden, um sich bei einem anderen Dienst zu authentifizieren – dieser wird auch als [geschützter Ressourcenserver](../active-directory/develop/developer-glossary.md#resource-server) bezeichnet. Das Token repräsentiert die Identität, die der Service Fabric-Anwendung zugewiesen wurde, und wird nur für Azure-Ressourcen (einschließlich Service Fabric-Anwendungen) ausgestellt, die diese Identität gemeinsam nutzen. Eine detaillierte Beschreibung verwalteter Identitäten sowie Informationen zur Unterscheidung zwischen system- und benutzerseitig zugewiesenen Identitäten finden Sie in der [Übersicht über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md). Im vorliegenden Artikel wird eine Service Fabric-Anwendung, die verwaltete Identitäten nutzen kann, als [Clientanwendung](../active-directory/develop/developer-glossary.md#client-application) bezeichnet.
 
@@ -23,7 +23,7 @@ Service Fabric-Anwendungen können verwaltete Identitäten für den Zugriff auf 
 > Eine verwaltete Identität stellt die Zuordnung zwischen einer Azure-Ressource und einem Dienstprinzipal im entsprechenden Azure AD-Mandanten dar, der dem Abonnement zugeordnet ist, das die Ressource enthält. Im Kontext von Service Fabric werden verwaltete Identitäten daher nur für Anwendungen unterstützt, die als Azure-Ressourcen bereitgestellt wurden. 
 
 > [!IMPORTANT]
-> Der Clientanwendung muss Zugriff auf die geschützte Ressource gewährt werden, bevor diese Anwendung die verwaltete Identität einer Service Fabric-Anwendung nutzen kann. Informationen zur Unterstützung finden Sie in der Liste der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources). In der Dokumentation des jeweiligen Diensts finden Sie dann die spezifischen Schritte, um einer Identität Zugriff auf relevante Ressourcen zu gewähren. 
+> Der Clientanwendung muss Zugriff auf die geschützte Ressource gewährt werden, bevor diese Anwendung die verwaltete Identität einer Service Fabric-Anwendung nutzen kann. Informationen zur Unterstützung finden Sie in der Liste der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources). In der Dokumentation des jeweiligen Diensts finden Sie dann die spezifischen Schritte, um einer Identität Zugriff auf relevante Ressourcen zu gewähren. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Abrufen eines Zugriffstokens mithilfe der REST-API
 In Clustern, die für die Nutzung verwalteter Identitäten eingerichtet wurden, macht die Service Fabric-Runtime einen Localhost-Endpunkt verfügbar, den Anwendungen zum Abrufen von Zugriffstoken verwenden können. Der Endpunkt ist auf jedem Knoten im Cluster verfügbar, und alle Entitäten auf den Knoten können darauf zugreifen. Autorisierte Aufrufer können Zugriffstoken durch Aufrufen dieses Endpunkts und Bereitstellen eines Authentifizierungscodes abrufen. Der Code wird von der Service Fabric-Runtime für jede einzelne Aktivierung eines Dienstcodepakets generiert und ist an die Lebensdauer des Prozesses gebunden, der dieses Dienstcodepaket hostet.
@@ -60,7 +60,7 @@ Hierbei gilt:
 | `GET` | Das HTTP-Verb, mit dem angegeben wird, dass Sie Daten vom Endpunkt abrufen möchten. In diesem Fall ist dies ein OAuth-Zugriffstoken. | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Der Endpunkt für verwaltete Identitäten für Service Fabric-Anwendungen, bereitgestellt über die MSI_ENDPOINT-Umgebungsvariable. |
 | `api-version` | Ein Abfragezeichenfolgenparameter, der die API-Version des Tokendiensts für verwaltete Identitäten angibt. Zurzeit ist `2019-07-01-preview` der einzige akzeptierte Wert. Änderungen vorbehalten. |
-| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Dieser wird als `aud`-Anspruch (Zielgruppe) des ausgestellten Tokens angezeigt. Dieses Beispiel fordert ein Token für den Zugriff auf eine Azure Key Vault-Instanz mit dem App-ID-URI https://keyvault.azure.com/ an. |
+| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Dieser wird als `aud`-Anspruch (Zielgruppe) des ausgestellten Tokens angezeigt. Dieses Beispiel fordert ein Token für den Zugriff auf eine Azure Key Vault-Instanz mit dem App-ID-URI https:\//keyvault.azure.com/ an. |
 | `Secret` | Ein HTTP-Anforderungsheaderfeld, das für den Service Fabric-Tokendienst für verwaltete Identitäten erforderlich ist, damit Service Fabric-Dienste den Aufrufer authentifizieren können. Dieser Wert wird von der Service Fabric-Runtime über die Umgebungsvariable „MSI_SECRET“ bereitgestellt. |
 
 
@@ -311,12 +311,4 @@ Eine Liste mit Ressourcen, die Azure AD unterstützen, und den dazugehörigen R
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
-
-## <a name="see-also"></a>Weitere Informationen
-
-* Überprüfen der [Unterstützung für verwaltete Identitäten](./concepts-managed-identity.md) in Azure Service Fabric
-
-* [Bereitstellen eines neuen](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-Clusters mit Unterstützung verwalteter Identitäten 
-
-* [Aktivieren von verwalteten Identitäten](./configure-existing-cluster-enable-managed-identity-token-service.md) in einem vorhandenen Azure Service Fabric-Cluster
+* [Gewähren Sie einer Azure Service Fabric-Anwendung Zugriff auf andere Azure-Ressourcen.](./how-to-grant-access-other-resources.md)

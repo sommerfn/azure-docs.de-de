@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952028"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617361"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -157,7 +157,7 @@ Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern <br/><br/> Unterstützt Datenträgergrößen bis zu 4 TB.<br/><br/>Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, finden Sie weitere Informationen unter [Übersicht über die Azure-VM-Sicherung](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern <br/><br/> Unterstützt Datenträgergrößen bis zu 4 TB.<br/><br/>Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, lesen Sie [diesen Artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Datenträgergröße | Pro Datenträger bis zu 4.095 GB.<br/><br/>Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, lesen Sie [diesen Artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.

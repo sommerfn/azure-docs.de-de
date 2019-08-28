@@ -3,16 +3,16 @@ title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Micros
 description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Autorisierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/10/2018
+ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: a50b397ffe1cfc44d4234dcfbee1618e9fb2506c
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986404"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900344"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -221,9 +221,21 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 ## <a name="storage-emulator-release-notes"></a>Speicheremulator – Versionshinweise
 
+### <a name="version-510"></a>Version 5.10
+
+* Der Speicheremulator lehnt die Version vom 07.07.2019 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
+
+### <a name="version-59"></a>Version 5.9
+
+* Der Speicheremulator lehnt die Version vom 02.02.2019 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
+
+### <a name="version-58"></a>Version 5.8
+
+* Der Speicheremulator lehnt die Version vom 09.11.2018 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte nicht ab.
+
 ### <a name="version-57"></a>Version 5.7
 
-Korrektur eines Fehlers, der zu einem Absturz führen würde, wenn die Protokollierung aktiviert ist.
+* Korrektur eines Fehlers, der zu einem Absturz führen würde, wenn die Protokollierung aktiviert ist.
 
 ### <a name="version-56"></a>Version 5.6
 
@@ -236,11 +248,11 @@ Korrektur eines Fehlers, der zu einem Absturz führen würde, wenn die Protokoll
 
 ### <a name="version-54"></a>Version 5.4
 
-Zur Verbesserung der Stabilität der Installation versucht der Emulator nicht mehr, Ports während der Installationszeit zu reservieren. Wenn Portreservierungen gewünscht sind, verwenden Sie die *-reserveports*-Option des **init**-Befehls, um sie anzugeben.
+* Zur Verbesserung der Stabilität der Installation versucht der Emulator nicht mehr, Ports während der Installationszeit zu reservieren. Wenn Portreservierungen gewünscht sind, verwenden Sie die *-reserveports*-Option des **init**-Befehls, um sie anzugeben.
 
 ### <a name="version-53"></a>Version 5.3
 
-Der Speicheremulator unterstützt nun Version 2017-07-29 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
+* Der Speicheremulator unterstützt nun Version 2017-07-29 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
 
 ### <a name="version-52"></a>Version 5.2
 
@@ -249,7 +261,7 @@ Der Speicheremulator unterstützt nun Version 2017-07-29 der Speicherdienste au
 
 ### <a name="version-51"></a>Version 5.1
 
-Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
+* Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
 
 ### <a name="version-50"></a>Version 5.0
 

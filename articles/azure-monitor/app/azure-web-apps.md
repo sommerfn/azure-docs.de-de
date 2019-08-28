@@ -100,7 +100,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
 Die clientseitige Überwachung für ASP.NET ist optional. Zum Aktivieren der clientseitigen Überwachung gehen Sie folgendermaßen vor:
 
-* Wählen Sie **Einstellungen** > ** **Anwendungseinstellungen**** aus.
+* Wählen Sie **Einstellungen** > ** **Anwendungseinstellungen** ** aus.
    * Fügen Sie unter „Anwendungseinstellungen“ einen neuen **Name der App-Einstellung** und einen **Wert** hinzu:
 
      Name: `APPINSIGHTS_JAVASCRIPT_ENABLED`

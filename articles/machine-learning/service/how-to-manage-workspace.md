@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f93b74c57d45ddfc7b47beff7852d183a93df00e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 81e1104d71706194ba1c54e42722b4508df09091
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856149"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534842"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning Service-Arbeitsbereichen
 
@@ -27,6 +27,17 @@ In diesem Artikel wird erläutert, wie Sie [**Azure Machine Learning Service-Arb
 Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
+
+### <a name="download-a-configuration-file"></a>Herunterladen einer Konfigurationsdatei
+
+1. Wenn Sie einen [virtuellen Notebook-Computer](tutorial-1st-experiment-sdk-setup.md#azure) erstellen, überspringen Sie diesen Schritt.
+
+1. Wenn Sie Code in Ihrer lokalen Umgebung verwenden möchten, der auf diesen Arbeitsbereich verweist, wählen Sie im Abschnitt **Übersicht** des Arbeitsbereichs die Option **„config.json“ herunterladen** aus.  
+
+   ![Herunterladen von „config.json“](./media/how-to-manage-workspace/configure.png)
+   
+   Legen Sie die Datei in der Verzeichnisstruktur mit Ihren Python-Skripts oder Jupyter Notebooks ab. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden. Bei der Erstellung eines virtuellen Notebook-Computers wird diese Datei automatisch dem richtigen Verzeichnis auf dem virtuellen Computer hinzugefügt.
+
 
 ## <a name="view"></a>Anzeigen eines Arbeitsbereichs
 

@@ -500,7 +500,7 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 5. Reproduzieren des Problems Wenn der Daten-Explorer nicht funktioniert, müssen Sie nur einige Sekunden warten, bis der Browser geöffnet wird, um den Fehler zu erfassen.
 5. `CosmosDB.Emulator.exe /stoptraces`
 6. Navigieren Sie zu `%ProgramFiles%\Azure Cosmos DB Emulator`, und suchen Sie die Datei „docdbemulator_000001.etl“.
-7. Senden die ETL-Datei zusammen mit Reproduktionsschritten zum Debuggen an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+7. Senden Sie die ETL-Datei zusammen mit Reproduktionsschritten zum Debuggen an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
 ### <a id="uninstall"></a>Deinstallieren des lokalen Emulators
 

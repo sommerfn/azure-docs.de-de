@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f9d7f87e9d7b1761c165e08e37cd6a3237c8212a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965525"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640698"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität (Vorschau)
 
 Um auf das Feature für verwaltete Identitäten für Azure Service Fabric-Anwendungen zugreifen zu können, müssen Sie zunächst den Tokendienst für verwaltete Identitäten im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er in Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** neben anderen Systemdiensten angezeigt.
 
@@ -92,7 +92,7 @@ Diese Eigenschaft deklariert (gegenüber Azure Resource Manager sowie gegenüber
     ```
     Dies ist die gleiche Zuordnung einer Identität zu einem Dienst, die oben beschrieben wurde, diesmal allerdings aus der Perspektive der Dienstdefinition. Auf die Identität wird hier anhand ihres im Anwendungsmanifest deklarierten Anzeigenamens (`WebAdmin`) verwiesen.
 
-## <a name="related-articles"></a>Verwandte Artikel
+## <a name="next-steps"></a>Nächste Schritte
 
 * Machen Sie sich mit der [Unterstützung der verwalteten Identität](./concepts-managed-identity.md) in Azure Service Fabric vertraut.
 

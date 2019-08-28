@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966853"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656268"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
 Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird eine REST-API erstellt. Sie können Daten an diese API senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
 
-Sie erstellen einen Webdienst, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Sie erstellen Images aus registrierten Modellen und Bewertungsdateien. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://aka.ms/aml-sdk) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel verwenden.
+Sie erstellen einen Webdienst, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Sie erstellen Images aus registrierten Modellen und Bewertungsdateien. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://aka.ms/aml-sdk) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
 
 Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine Learning-Webdienst verwendet:
 
@@ -43,7 +43,7 @@ Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core
 * `auth_enabled`: Wenn Schlüsselauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `token_auth_enabled`: Wenn Tokenauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `scoring_uri`: Die REST-API-Adresse.
-
+* `swagger_uri`: Die Adresse der OpenAPI-Spezifikation. Dieser URI ist verfügbar, wenn Sie die automatische Schemagenerierung aktiviert haben. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md#schema).
 
 Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellte Webdienste:
 
@@ -56,6 +56,7 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * Mit `Webservice.list` können Sie eine Liste bereitgestellter Webdienste für Modelle in Ihrem Arbeitsbereich abrufen. Sie können Filter hinzufügen, um die Liste der zurückgegebenen Informationen einzugrenzen. Weitere Informationen zu den möglichen Filtern finden Sie in der Referenzdokumentation [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py).
@@ -63,6 +64,7 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * Wenn Sie den Namen des bereitgestellten Diensts kennen, können Sie eine neue Instanz von `Webservice` erstellen und den Arbeitsbereich und den Dienstnamen als Parameter angeben. Dieses neue Objekt enthält Informationen über den bereitgestellten Dienst.
@@ -70,16 +72,19 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>Authentifizierung für Dienste
 
-Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf Ihre Webdienste. 
+Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf Ihre Webdienste.
 
 |Authentifizierungsmethode|ACI|AKS|
 |---|---|---|
-|Schlüssel|Standardmäßig deaktiviert.| Standardmäßig aktiviert.|
-|Tokenverschlüsselung| Nicht verfügbar.| Standardmäßig deaktiviert. |
+|Schlüssel|Standardmäßig deaktiviert| Standardmäßig aktiviert|
+|Tokenverschlüsselung| Nicht verfügbar.| Standardmäßig deaktiviert |
+
+Verwenden Sie beim Senden einer Anforderung an einen Dienst, der mit einem Schlüssel oder Token gesichert ist, den __Authorization__-Header, um den Schlüssel oder das Token zu übergeben. Der Schlüssel oder das Token muss als `Bearer <key-or-token>` formatiert sein, wobei `<key-or-token>` der Schlüssel- oder Tokenwert ist.
 
 #### <a name="authentication-with-keys"></a>Authentifizierung mit Schlüsseln
 
@@ -105,14 +110,14 @@ print(primary)
 Wenn Sie die Tokenauthentifizierung für einen Webdienst aktivieren, muss ein Benutzer ein Azure Machine Learning JWT-Token für den Webdienst bereitstellen, um darauf zugreifen zu können. 
 
 * Die Tokenauthentifizierung ist standardmäßig deaktiviert, wenn die Bereitstellung in Azure Kubernetes Service erfolgt.
-* Tokenauthentifizierung wird nicht unterstützt, wenn die Bereitstellung in Azure Container Instances erfolgt.
+* Die Tokenauthentifizierung wird nicht unterstützt, wenn die Bereitstellung in Azure Container Instances erfolgt.
 
 Um die Tokenauthentifizierung zu steuern, verwenden Sie den `token_auth_enabled`-Parameter beim Erstellen oder Aktualisieren einer Bereitstellung.
 
 Wenn die Tokenauthentifizierung aktiviert ist, können Sie mithilfe der Methode `get_token` ein Bearertoken und dessen Ablaufzeit abrufen:
 
 ```python
-token, refresh_by = service.get_tokens()
+token, refresh_by = service.get_token()
 print(token)
 ```
 
@@ -193,9 +198,9 @@ namespace MLWebServiceClient
     {
         static void Main(string[] args)
         {
-            // Set the scoring URI and authentication key
+            // Set the scoring URI and authentication key or token
             string scoringUri = "<your web service URI>";
-            string authKey = "<your key>";
+            string authKey = "<your key or token>";
 
             // Set the data to be sent to the service.
             // In this case, we are sending two sets of data to be scored.
@@ -309,8 +314,8 @@ var exampleData = []Features{
 
 // Set to the URI for your service
 var serviceUri string = "<your web service URI>"
-// Set to the authentication key (if any) for your service
-var authKey string = "<your key>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
 
 func main() {
     // Create the input data from example data
@@ -364,8 +369,8 @@ public class App {
     public static void sendRequest(String data) {
         // Replace with the scoring_uri of your service
         String uri = "<your web service URI>";
-        // If using authentication, replace with the auth key
-        String key = "<your key>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
         try {
             // Create the request
             Content content = Request.Post(uri)
@@ -438,8 +443,8 @@ import json
 
 # URL for the web service
 scoring_uri = '<your web service URI>'
-# If the service is authenticated, set the key
-key = '<your key>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
 
 # Two sets of data to score, so we get two results back
 data = {"data":

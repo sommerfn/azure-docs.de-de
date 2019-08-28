@@ -1,5 +1,5 @@
 ---
-title: Webanmeldungen mit OpenID Connect – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Webanmeldungen mit OpenID Connect – Azure Active Directory B2C
 description: Erstellen von Webanwendungen mit dem OpenID Connect-Authentifizierungsprotokoll in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931752"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874134"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -32,11 +32,10 @@ Azure AD B2C erweitert das OpenID Connect-Standardprotokoll, sodass mehr als nu
 
 Wenn Ihre Webanwendung den Benutzer authentifizieren und einen Benutzerflow ausführen muss, kann sie den Benutzer an den `/authorize`-Endpunkt weiterleiten. Der Benutzer führt Aktionen in Abhängigkeit vom Benutzerflow durch.
 
-In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` und den auszuführenden Benutzerflow im Parameter `p` an. In den folgenden Abschnitten finden Sie drei Beispiele (mit Zeilenumbrüchen für bessere Lesbarkeit), in denen jeweils ein anderer Benutzerflow verwendet wird. Um ein Gefühl für die Funktionsweise der einzelnen Anforderung zu erhalten, fügen Sie sie in einem Browser ein und führen sie aus. Sie können `fabrikamb2c` durch den Namen Ihres Mandanten ersetzen, wenn ein solcher vorhanden ist und Sie einen Benutzerflow erstellt haben. Außerdem müssen Sie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` ersetzen. Ersetzen Sie diese Client-ID durch die App-ID der von Ihnen erstellten App-Registrierung. Ändern Sie auch den Richtliniennamen `b2c_1_sign_in` in den Richtliniennamen in Ihrem Mandanten. 
+In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` an, und er gibt den auszuführenden Benutzerflow an. Um ein Gefühl für die Funktionsweise der Anforderung zu erhalten, fügen Sie sie in einem Browser ein, und führen sie aus. Ersetzen Sie `{tenant}` durch den Namen Ihres Mandanten. Ersetzen Sie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` durch die App-ID der Anwendung, die Sie zuvor in Ihrem Mandanten registriert haben. Ändern Sie auch den Richtliniennamen (`{policy}`) in den Richtliniennamen in Ihrem Mandanten, z. B. `b2c_1_sign_in`.
 
-#### <a name="use-a-sign-in-user-flow"></a>Verwenden eines Benutzerflows für die Anmeldung
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -44,40 +43,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
-&p=b2c_1_sign_in
-```
-
-#### <a name="use-a-sign-up-user-flow"></a>Verwenden eines Benutzerflows für die Registrierung
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_sign_up
-```
-
-#### <a name="use-an-edit-profile-user-flow"></a>Verwenden eines Benutzerflows für die Profilbearbeitung
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_edit_profile
 ```
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
+| {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
+| {policy} | Ja | Der auszuführende Benutzerflow. Geben Sie den Namen eines Benutzerflows an, den Sie in Ihrem Azure AD B2C-Mandanten erstellt haben. Beispiel: `b2c_1_sign_in`, `b2c_1_sign_up` oder `b2c_1_edit_profile`. |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
 | nonce | Ja | Ein Wert in der Anforderung, der von der Anwendung generiert wird und im resultierenden ID-Token als Anspruch enthalten ist. Die Anwendung kann diesen Wert dann überprüfen, um die Gefahr von Token-Replay-Angriffen zu vermindern. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
-| p | Ja | Der Benutzerflow, der ausgeführt wird. Dies ist der Name eines Benutzerflows, der in Ihrem Azure AD B2C-Mandanten erstellt wird. Der Name des Benutzerflows muss mit `b2c\_1\_` beginnen. |
 | response_type | Ja | Muss ein ID-Token für OpenID Connect enthalten. Wenn Ihre Webanwendung auch Token für den Aufruf einer Web-API benötigt, können Sie `code+id_token` verwenden. |
 | scope | Ja | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Der `offline_access`-Bereich ist für Webanwendungen optional. Er gibt an, dass Ihre Anwendung ein *Aktualisierungstoken* für den dauerhaften Zugriff auf Ressourcen benötigt. |
 | prompt | Nein | Der Typ der erforderlichen Benutzerinteraktion. Zu diesem Zeitpunkt ist der einzige gültige Wert `login`, der den Benutzer zur Eingabe von Anmeldeinformationen für diese Anforderung zwingt. |
@@ -91,7 +64,7 @@ Nachdem der Benutzer den Benutzerflow abgeschlossen hat, wird im angegebenen `re
 
 Eine erfolgreiche Antwort mit `response_mode=fragment` sieht wie folgt aus:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
@@ -106,7 +79,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 Fehlerantworten können auch an den `redirect_uri`-Parameter gesendet werden, damit die Anwendung diese angemessen behandeln kann:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -121,15 +94,19 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>Überprüfen des ID-Tokens
 
-Das Empfangen eines ID-Tokens reicht nicht aus, um den Benutzer zu authentifizieren. Validieren Sie die Signatur des ID-Tokens, und überprüfen Sie die Ansprüche im Token gemäß den Anforderungen Ihrer Anwendung. Azure AD B2C verwendet [JSON-Webtoken (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. Viele Open Source-Bibliotheken sind für die Überprüfung von JWTs für unterschiedliche Sprachen verfügbar. Wir empfehlen die Verwendung einer dieser Optionen, anstatt eine eigene Validierungslogik zu implementieren. 
+Das Empfangen eines ID-Tokens reicht nicht aus, um den Benutzer zu authentifizieren. Validieren Sie die Signatur des ID-Tokens, und überprüfen Sie die Ansprüche im Token gemäß den Anforderungen Ihrer Anwendung. Azure AD B2C verwendet [JSON-Webtoken (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. Viele Open Source-Bibliotheken sind für die Überprüfung von JWTs für unterschiedliche Sprachen verfügbar. Wir empfehlen die Verwendung einer dieser Optionen, anstatt eine eigene Validierungslogik zu implementieren.
 
 Azure AD B2C verfügt über einen OpenID Connect-Metadatenendpunkt, mit dem die Anwendung zur Laufzeit Informationen über Azure AD B2C abrufen kann. Diese Informationen umfassen Endpunkte, Tokeninhalte und Token-Signaturschlüssel. Es gibt ein JSON-Metadatendokument für jeden Benutzerflow in Ihrem B2C-Mandanten. Das Metadatendokument für den Benutzerflow `b2c_1_sign_in` in `fabrikamb2c.onmicrosoft.com` befindet sich beispielsweise unter:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
+```
 
 Eine der Eigenschaften dieses Konfigurationsdokuments ist `jwks_uri`, deren Wert für den gleichen Benutzerflow wie folgt lautet:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`.
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
+```
 
 Es gibt zwei Möglichkeiten zum Ermitteln, welcher Benutzerflow zum Signieren eines ID-Tokens verwendet wurde (und wo die Metadaten abgerufen werden können). Zunächst einmal ist der Benutzerflowname im `acr`-Anspruch im ID-Token enthalten. Die andere Möglichkeit besteht darin, den Benutzerflow beim Übermitteln der Anforderung im Wert des Parameters `state` zu verschlüsseln und später zu entschlüsseln, um zu bestimmen, welcher Benutzerflow verwendet wurde. Beide Methoden sind gültig.
 
@@ -159,9 +136,9 @@ Sie können den erhaltenen Autorisierungscode (mit `response_type=code+id_token`
 
 Sie haben auch die Möglichkeit, ein Zugriffstoken für die Web-API Ihres App-Back-Ends anzufordern, indem Sie die Client-ID der App als angeforderten Bereich verwenden. Dies führt dazu, dass ein Zugriffstoken mit dieser Client-ID als Zielgruppe erstellt wird:
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -169,17 +146,18 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
+| {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
+| {policy} | Ja | Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
 | client_secret | Ja | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Dieser geheime Schlüssel der Anwendung ist ein wichtiges Sicherheitsartefakt. Sie sollten ihn sicher auf dem Server speichern. Dieser geheime Clientschlüssel sollte in regelmäßigen Abständen gewechselt werden. |
 | code | Ja | Der Autorisierungscode, den Sie am Anfang des Benutzerflows erhalten haben. |
 | grant_type | Ja | Der Berechtigungstyp, der für den Autorisierungscodefluss `authorization_code` lauten muss. |
-| p | Ja | Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
 | redirect_uri | Ja | Der `redirect_uri`-Parameter der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
 | scope | Nein | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von id_token-Parametern an. Damit können Sie Token an die Back-End-Web-API ihrer Anwendung übermitteln, die durch dieselbe Anwendungs-ID wie der Client dargestellt wird. Der `offline_access`-Bereich gibt an, dass Ihre Anwendung ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
 
 Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -189,6 +167,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | not_before | Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
@@ -200,7 +179,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
 Fehlerantworten sehen aus wie folgt:
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -216,9 +195,9 @@ Fehlerantworten sehen aus wie folgt:
 
 Nachdem Sie ein Zugriffstoken erhalten haben, können Sie das Token für Anforderungen an die Back-End-Web-APIs verwenden, indem Sie es in den -`Authorization`Header einfügen:
 
-```
+```HTTP
 GET /tasks
-Host: https://mytaskwebapi.com
+Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
@@ -226,9 +205,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ID-Token laufen nach kurzer Zeit ab. Aktualisieren Sie die Token nach deren Ablauf, um weiterhin auf Ressourcen zugreifen zu können. Zum Aktualisieren eines Tokens übermitteln Sie eine weitere `POST`-Anforderung an den `/token`-Endpunkt. Geben Sie diesmal den `refresh_token`-Parameter anstelle von `code` an:
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -236,17 +215,18 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
+| {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
+| {policy} | Ja | Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
 | client_id | Ja | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat. |
 | client_secret | Ja | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Dieser geheime Schlüssel der Anwendung ist ein wichtiges Sicherheitsartefakt. Sie sollten ihn sicher auf dem Server speichern. Dieser geheime Clientschlüssel sollte in regelmäßigen Abständen gewechselt werden. |
 | grant_type | Ja | Der Berechtigungstyp, der für diesen Teil des Autorisierungscodeflows ein Aktualisierungstoken sein muss. |
 | refresh_token | Ja | Das ursprüngliche Aktualisierungstoken, das im zweiten Teil des Flows erhalten wurde. Der `offline_access`-Bereich muss sowohl für die Autorisierung als auch in den Tokenanforderungen verwendet werden, um ein Aktualisierungstoken zu erhalten. |
-| p | Ja | Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
 | redirect_uri | Nein | Der `redirect_uri`-Parameter der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
 | scope | Nein | Eine durch Leerzeichen getrennte Liste von Bereichen. Der `openid`-Bereich gibt eine Berechtigung für das Anmelden des Benutzers und das Abrufen von Daten über den Benutzer in Form von ID-Token an. Damit können Sie Token an die Back-End-Web-API Ihrer Anwendung senden, die durch dieselbe Anwendungs-ID wie der Client dargestellt wird. Der `offline_access`-Bereich gibt an, dass Ihre Anwendung ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt. |
 
 Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -256,6 +236,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | not_before | Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
@@ -267,7 +248,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 
 Fehlerantworten sehen aus wie folgt:
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -283,18 +264,24 @@ Fehlerantworten sehen aus wie folgt:
 
 Wenn Sie den Benutzer bei der Anwendung abmelden möchten, reicht es nicht aus, die Cookies der Anwendung zu löschen oder die Sitzung mit dem Benutzer auf andere Weise zu beenden. Leiten Sie den Benutzer für die Abmeldung zu Azure AD B2C um. Wenn Sie dies versäumen, kann sich der Benutzer möglicherweise erneut bei Ihrer Anwendung authentifizieren, ohne die Anmeldeinformationen erneut eingeben zu müssen.
 
-Sie können den Benutzer einfach an den `end_session`-Endpunkt umleiten, der im oben beschriebenen OpenID Connect-Metadatendokument aufgeführt wird:
+Um den Benutzer abzumelden, leiten Sie ihn an den `end_session`-Endpunkt um, der im oben beschriebenen OpenID Connect-Metadatendokument aufgeführt wird:
 
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| p | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |
-| post_logout_redirect_uri | Nein | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. |
+| {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
+| {policy} | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |
+| id_token_hint| Nein | Ein zuvor ausgestelltes ID-Token, das an den Abmelde-Endpunkt als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client übergeben werden soll. Der `id_token_hint` stellt sicher, dass der `post_logout_redirect_uri` eine registrierte Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen darstellt. |
+| post_logout_redirect_uri | Nein | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. Wenn Sie keinen `id_token_hint` angeben, sollten Sie diese URL nicht als Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen registrieren. |
+| state | Nein | Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
+
+### <a name="secure-your-logout-redirect"></a>Sichern der Umleitung beim Abmelden
+
+Nach der Abmeldung wird der Benutzer an den im `post_logout_redirect_uri`-Parameter angegebenen URI umgeleitet, ungeachtet der Antwort-URLs, die für die Anwendung angegeben wurden. Wenn jedoch ein gültiger `id_token_hint`-Wert übergeben wird, überprüft Azure AD B2C, ob der Wert von `post_logout_redirect_uri` einem der für die Anwendung konfigurierten Umleitungs-URIs entspricht, bevor die Umleitung ausgeführt wird. Wenn keine entsprechende Antwort-URL für die Anwendung konfiguriert ist, wird eine Fehlermeldung angezeigt, und der Benutzer wird nicht umgeleitet.
+
+### <a name="external-identity-provider-sign-out"></a>Abmeldung über externen Identitätsanbieter
 
 Beim Weiterleiten des Benutzers an den `end_session`-Endpunkt wird zwar ein Teil des SSO-Zustands des Benutzers bei Azure AD B2C gelöscht, der Benutzer wird jedoch nicht von seiner Sitzung beim Identitätsanbieter (IdP) eines sozialen Netzwerks abgemeldet. Wenn der Benutzer bei einer nachfolgenden Anmeldung denselben Identitätsanbieter auswählt, wird er ohne Eingabe seiner Anmeldeinformationen wieder authentifiziert. Wenn sich ein Benutzer von der Anwendung abmelden möchte, bedeutet dies nicht unbedingt, dass er sich auch vollständig von seinem Facebook-Konto abmelden möchte. Wenn jedoch lokale Konten verwendet werden, wird die Sitzung des Benutzers ordnungsgemäß beendet.
-

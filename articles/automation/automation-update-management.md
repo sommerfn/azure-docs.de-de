@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952983"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534708"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -250,6 +250,15 @@ Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellun
 | Neustartsteuerung| Legt fest, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:</br>Neu starten bei Bedarf (Standard)</br>Immer neu starten</br>Nie neu starten</br>Nur neu starten – Updates werden nicht installiert|
 
 Updatebereitstellungen können ebenfalls programmgesteuert erstellt werden. Weitere Informationen zum Erstellen einer Updatebereitstellung mit der REST-API finden Sie unter [Softwareupdatekonfigurationen – Erstellen](/rest/api/automation/softwareupdateconfigurations/create). Es gibt auch ein Beispielrunbook, das zum Erstellen einer wöchentlichen Updatebereitstellung verwendet werden kann. Weitere Informationen zu diesem Runbook finden Sie unter [Erstellen einer wöchentlichen Updatebereitstellung für einen oder mehrere virtuelle Computer in einer Ressourcengruppe](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+### <a name="maintenance-windows"></a>Wartungsfenster
+
+Mithilfe von Wartungsfenstern wird der zulässige Zeitraum für die Installation von Updates gesteuert. Beim Angeben eines Wartungsfensters sind folgende Aspekte zu beachten.
+
+* Wartungsfenster steuern die Anzahl der Installationsversuche für Updates.
+* Die Installation neuer Updates wird von der Updateverwaltung nicht beendet, wenn das Ende eines Wartungsfensters fast erreicht ist.
+* Die Updateverwaltung beendet bei Überschreiten des Wartungsfensters nicht die laufende Installation von Updates.
+* Wird das Wartungsfenster unter Windows überschritten, liegt dies häufig daran, dass die Installation eines Service Pack-Updates sehr lange dauert.
 
 ### <a name="multi-tenant"></a>Mandantenübergreifende Updatebereitstellungen
 

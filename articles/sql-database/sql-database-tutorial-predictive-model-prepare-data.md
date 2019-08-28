@@ -45,7 +45,7 @@ In [Teil 3](sql-database-tutorial-predictive-model-deploy.md) lernen Sie, wie Si
 
 * Azure-Abonnement: Falls Sie nicht über ein Azure-Abonnement verfügen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-* Azure SQL-Datenbankserver mit aktivierten Machine Learning Services: Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
+* Azure SQL-Datenbank-Server mit aktivierten Machine Learning Services: Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
 
 * RevoScaleR-Paket: Unter [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) finden Sie Optionen zum lokalen Installieren dieses Pakets.
 
@@ -147,7 +147,7 @@ Die Daten sind jetzt für das Training vorbereitet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie dieses Tutorial nicht fortsetzen möchten, löschen Sie die TutorialDB-Datenbank von Ihrem Azure SQL-Datenbankserver.
+Wenn Sie dieses Tutorial nicht fortsetzen möchten, löschen Sie die TutorialDB-Datenbank von Ihrem Azure SQL-Datenbank-Server.
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 

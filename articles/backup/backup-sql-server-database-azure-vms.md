@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854112"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872909"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -51,22 +51,29 @@ Stellen Sie die Verbindung mithilfe einer der folgenden Optionen her:
 
 - **Zulassen der IP-Adressbereiche des Azure-Rechenzentrums**. Diese Option lässt [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) im Download zu. Verwenden Sie für den Zugriff auf eine Netzwerksicherheitsgruppe (NSG) das Cmdlet Set-AzureNetworkSecurityRule. Wenn Ihre Liste sicherer Empfänger nur regionsspezifische IP-Adressen enthält, müssen Sie auch das Diensttag „Azure Active Directory“ (Azure AD) der Liste sicherer Empfänger aktualisieren, um die Authentifizierung zu ermöglichen.
 
-- **Zulassen des Zugriffs mithilfe von NSG-Tags**. Wenn Sie NSGs verwenden, um die Konnektivität einzuschränken, fügt diese Option Ihrer NSG eine Regel hinzu, die den ausgehenden Zugriff auf Azure Backup über das Tag „AzureBackup“ ermöglicht. Zusätzlich zu diesem Tag benötigen Sie auch entsprechende [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage, um Konnektivität für Authentifizierung und Datenübertragung zu ermöglichen. Das Tag „AzureBackup“ ist derzeit nur in PowerShell verfügbar. So erstellen Sie eine Regel mit dem Tag „AzureBackup“
+- **Zulassen des Zugriffs mithilfe von NSG-Tags**.  Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Portal oder PowerShell erfolgen.
 
-    - Hinzufügen von Azure-Anmeldeinformationen und Aktualisieren der nationalen Clouds<br/>
-    `Add-AzureRmAccount`
+    So erstellen Sie eine Regel über das Portal:
+    
+    - Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
+    - Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
+    - Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
+    - Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
+    
+   So erstellen Sie eine Regel mit PowerShell:
 
-    - Auswählen des NSG-Abonnements<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - Auswählen der NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Azure Backup“<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - Hinzufügen von Azure-Anmeldeinformationen und Aktualisieren der nationalen Clouds<br/>
+    ``Add-AzureRmAccount``
+  - Auswählen des NSG-Abonnements<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - Auswählen der NSG<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Azure Backup“<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - Speichern der NSG<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
 - **Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
 
@@ -168,7 +175,7 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
    Zum Optimieren von Sicherungslasten legt Azure Backup die maximale Anzahl von Datenbanken in einem Sicherungsauftrag auf 50 fest.
 
      * Zum Schützen von mehr als 50 Datenbanken konfigurieren Sie mehrere Sicherungen.
-     * So aktivieren Sie [](#enable-auto-protection) die gesamte Instanz oder die Always On-Verfügbarkeitsgruppe. Wählen Sie in der Dropdownliste **AUTOPROTECT** **EIN** und dann **OK** aus.
+     * Zum [Aktivieren](#enable-auto-protection) der gesamten Instanz oder Always On-Verfügbarkeitsgruppe wählen Sie in der Dropdownliste **AUTOMATISCHER SCHUTZ** die Option **EIN** aus und klicken dann auf **OK**.
 
     > [!NOTE]
     > Das Feature [Automatischer Schutz](#enable-auto-protection) ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe hinzugefügt werden.  

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c225aa5f821925247d27890e9ee75f3eac4d9eb9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976606"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874926"
 ---
 # <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
@@ -22,7 +22,11 @@ Das Azure Maps Web SDK speichert Daten in Datenquellen, die die Daten für Abfra
 
 **GeoJSON-Datenquelle**
 
-Mithilfe der `DataSource`-Klasse kann eine GeoJSON-basierte Datenquelle Daten lokal laden und speichern. GeoJSON-Daten können manuell oder mithilfe der Hilfsklassen im [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)-Namespace erstellt werden. Die `DataSource`-Klasse stellt Funktionen zum Importieren von lokalen oder Remote-GeoJSON-Dateien bereit. Remote-GeoJSON-Dateien müssen auf einem CORs-fähigen Endpunkt gehostet werden. Die `DataSource`-Klasse bietet Funktionen für das Clustering von Punktdaten. 
+Mithilfe der `DataSource`-Klasse kann eine GeoJSON-basierte Datenquelle Daten lokal laden und speichern. GeoJSON-Daten können manuell oder mithilfe der Hilfsklassen im [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)-Namespace erstellt werden. Die `DataSource`-Klasse stellt Funktionen zum Importieren von lokalen oder Remote-GeoJSON-Dateien bereit. Remote-GeoJSON-Dateien müssen auf einem CORs-fähigen Endpunkt gehostet werden. Die `DataSource`-Klasse bietet Funktionen für das Clustering von Punktdaten. Daten können ganz einfach mit der `DataSource`-Klasse hinzugefügt, entfernt und aktualisiert werden.
+
+
+> [!TIP]
+> Wenn Sie alle Daten in einer `DataSource` überschreiben möchten und die `clear`-Funktion und dann die `add`-Funktion aufrufen, versucht die Zuordnung zweimal ein erneutes Rendering. Dies kann zu einer Verzögerung führen. Verwenden Sie stattdessen die `setShapes`-Funktion, die alle Daten in der Datenquelle entfernt und ersetzt und nur ein erneutes Rendering der Zuordnung auslöst.
 
 **Vektorkachelquelle**
 

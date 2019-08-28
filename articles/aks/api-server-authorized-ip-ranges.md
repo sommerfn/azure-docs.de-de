@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 5049a35b943c68d1a05d1435113226d83dc5ecf4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031763"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533627"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Vorschau – sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -108,6 +108,14 @@ Um sicherzustellen, dass die Knoten in einem Cluster zuverlässig mit dem API-Se
 
 > [!WARNING]
 > Bei der Verwendung von Azure Firewall können erhebliche Kosten über einen monatlichen Abrechnungszyklus anfallen. Die Anforderung der Verwendung von Azure Firewall sollte nur in diesem anfänglichen Vorschauzeitraum erforderlich sein. Weitere Informationen und Beispiele zur Kostenplanung finden Sie unter [Azure Firewall – Preise][azure-firewall-costs].
+>
+> Wenn Ihr Cluster den [Load Balancer der SKU „Standard“][standard-sku-lb] verwendet, müssen Sie die Azure Firewall nicht als Gateway für ausgehenden Datenverkehr konfigurieren. Verwenden Sie [az network public-ip list][az-network-public-ip-list], und geben Sie die Ressourcengruppe des AKS-Clusters an, der in der Regel mit *MC_* beginnt. Dadurch wird die öffentliche IP-Adresse für den Cluster angezeigt, den Sie in die Whitelist aufnehmen können. Beispiel:
+>
+> ```azurecli-interactive
+> RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
+> SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
+> az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSClusterSLB
+> ```
 
 Rufen Sie zuerst den *MC_* -Ressourcengruppennamen für den AKS-Cluster und das virtuelle Netzwerk auf. Erstellen Sie dann ein Subnetz mit dem Befehl [az network vnet subnet create][az-network-vnet-subnet-create]. Im folgenden Beispiel wird ein Subnetz namens *AzureFirewallSubnet* mit dem CIDR-Bereich *10.200.0.0/16* erstellt:
 
@@ -259,11 +267,13 @@ Weitere Informationen finden Sie unter [Sicherheitskonzepte für Anwendungen und
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [create-aks-sp]: kubernetes-service-principal.md#manually-create-a-service-principal
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-firewall-create]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-create
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
@@ -271,3 +281,4 @@ Weitere Informationen finden Sie unter [Sicherheitskonzepte für Anwendungen und
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[standard-sku-lb]: load-balancer-standard.md

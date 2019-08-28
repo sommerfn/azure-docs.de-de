@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879109"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622713"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
 
@@ -34,7 +34,7 @@ Die Azure AD-Self-Service-Kennwortzurücksetzung wird pro Benutzer lizenziert. A
 * Self-Service-Kennwortrücksetzung für Cloudbenutzer
    * Ich bin ein **reiner Cloudbenutzer** und habe mein Kennwort vergessen.
       * Ich würde mein Kennwort gerne auf etwas **zurücksetzen**, was ich kenne.
-   * Diese Funktionalität ist in Azure AD Premium P1 oder P2 oder Microsoft 365 Business enthalten.
+   * Diese Funktionalität ist in Azure AD Premium P1 oder P2 oder Microsoft 365 Business und Office 365 enthalten.
 
 * Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung **mit lokalem Rückschreiben**
    * Ich bin ein **Hybridbenutzer** – mein lokales Active Directory-Benutzerkonto ist mittels Azure AD Connect mit meinem Azure AD-Konto synchronisiert. Ich möchte mein Kennwort ändern, habe mein Kennwort vergessen oder wurde ausgesperrt.

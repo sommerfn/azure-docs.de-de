@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946407"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897987"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Unternehmenssicherheit für Azure Machine Learning Service
 
@@ -31,7 +31,7 @@ Multi-Factor Authentication wird unterstützt, wenn Azure Active Directory (Azur
 * Der Client präsentiert das Token dem Azure Resource Manager und allen Azure Machine Learning-Diensten.
 * Azure Machine Learning Service stellt ein Azure Machine Learning-Token für das Benutzercompute bereit. Beispiel: Machine Learning Compute. Dieses Token wird nach Abschluss der Ausführung vom Benutzercompute für einen Rückruf in Azure Machine Learning Service (beschränkt den Bereich auf den Arbeitsbereich) verwendet.
 
-![Screenshot zeigt Funktionsweise der Authentifizierung in Azure Machine Learning Service](./media/enterprise-readiness/authentication.png)
+[![Screenshot zeigt Funktionsweise der Authentifizierung in Azure Machine Learning Service](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Authentifizierung für die Webdienstbereitstellung
 
@@ -185,7 +185,7 @@ Jeder Arbeitsbereich verfügt über eine zugeordnete, vom System zugewiesene ver
 
 Azure Monitor-Metriken können verwendet werden, um Metriken für Ihren Azure Machine Learning-Dienstarbeitsbereich anzuzeigen und zu überwachen. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich aus, und verwenden Sie dann den Link __Metriken__.
 
-![Screenshot, der Beispielmetriken für einen Arbeitsbereich zeigt.](./media/enterprise-readiness/workspace-metrics.png)
+[![Screenshot, der Beispielmetriken für einen Arbeitsbereich zeigt](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Metriken umfassen Informationen zu Ausführungen, Bereitstellung und Registrierungen.
 
@@ -197,7 +197,7 @@ Sie können das Aktivitätsprotokoll unter dem Arbeitsbereich anzeigen, um die v
 
 Der folgende Screenshot zeigt das Aktivitätsprotokoll für einen Arbeitsbereich:
 
-![Screenshot zeigt Aktivitätsprotokoll unter einem Arbeitsbereich](./media/enterprise-readiness/workspace-activity-log.png)
+[![Screenshot zeigt Aktivitätsprotokoll unter einem Arbeitsbereich](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Details der Bewertungsanforderung werden in Application Insight gespeichert, das während des Erstellens des Arbeitsbereichs im Abonnement des Benutzers erstellt wird. Protokollierte Informationen beinhalten Felder wie HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration usw.
 
@@ -220,14 +220,14 @@ Der Benutzer meldet sich von einem der unterstützten Azure Machine Learning Ser
 
 Andere Computes, die einem Arbeitsbereich (Azure Kubernetes Service, VM usw.) angefügt sind, können auch nach Bedarf von Kunden bereitgestellt werden.
 
-![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/create-workspace.png)
+[![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Speichern des Quellcodes (Trainingsskripts)
 
 Das folgende Diagramm zeigt den Workflow der Codemomentaufnahme.
 Mit einem Arbeitsbereich von Azure Machine Learning Service sind Verzeichnisse (Experimente) verknüpft, die den Quellcode (Trainingsskripts) enthalten.  Diese Skripts werden auf dem lokalen Computer des Kunden und in der Cloud (in Azure Blob Storage unter dem Abonnement des Kunden) gespeichert. Die Codemomentaufnahmen werden für die Ausführung oder Überprüfung für die Verlaufsüberwachung verwendet.
 
-![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/code-snapshot.png)
+[![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Training
 
@@ -253,7 +253,7 @@ Das folgende Diagramm zeigt den Trainingsworkflow.
 
 Dieser Schritt ist im Fluss dargestellt, wo das Trainingscompute die *Ausführungsmetriken* an Azure Machine Learning Service zurückschreibt, von wo aus sie in Cosmos DB gespeichert werden. Clients können Azure Machine Learning Service aufrufen, der wiederum die Metriken aus Cosmos DB pullt und an den Client zurückgibt.
 
-![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/training-and-metrics.png)
+[![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Erstellen von Webdiensten
 
@@ -267,7 +267,7 @@ Beachten Sie folgende Details:
 * Details der Bewertung werden in Application Insight gespeichert, das im Abonnement des Benutzers enthalten ist
 * Telemetriedaten werden auch an Microsoft/Azure-Abonnement übertragen
 
-![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/inferencing.png)
+[![Screenshot zeigt den Workflow des Erstellens des Arbeitsbereichs](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

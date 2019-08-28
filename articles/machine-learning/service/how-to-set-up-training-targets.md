@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990465"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872433"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining 
 
@@ -317,7 +317,7 @@ Um die Compute-Ziele für Ihren Arbeitsbereich anzuzeigen, führen Sie die folge
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Ihren Arbeitsbereich. 
 1. Wählen Sie unter __Anwendungen__ den Eintrag __Compute__.
 
-    ![Registerkarte „Computer“ anzeigen](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+    [![Anzeigen der Registerkarte „Compute“](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Erstellen eines Computeziels
 
@@ -336,8 +336,6 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 
 1. Füllen Sie das Formular aus. Geben Sie für die Einrichtung des Computeziels Werte für die Pflichteigenschaften ein, insbesondere die **VM-Familie** und die **maximale Anzahl von Knoten**.  
 
-    ![Ausfüllen des Formulars](./media/how-to-set-up-training-targets/add-compute-form.png) 
-
 1. Klicken Sie auf __Erstellen__.
 
 
@@ -348,8 +346,6 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 1. Daraufhin werden die Details für das Computeziel angezeigt: 
 
     ![Anzeigen der Details des Computeziels](./media/how-to-set-up-training-targets/compute-target-details.png) 
-
-
 
 ### <a id="portal-reuse"></a>Anfügen von Computezielen
 

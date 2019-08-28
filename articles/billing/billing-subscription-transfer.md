@@ -92,7 +92,7 @@ Wenn Sie den Abrechnungsbesitz an einem Azure-Abonnement übernommen haben, empf
 
 1. Überprüfen und aktualisieren Sie die Rollen für Dienstadministrator und Co-Administratoren und andere RBAC-Rollen. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](billing-add-change-azure-subscription-administrator.md) und [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
 1. Aktualisieren Sie die Anmeldeinformationen für die Dienste dieses Abonnements, darunter:
-   1. Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../cloud-services/cloud-services-certs-create.md)
+   1. Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../cloud-services/cloud-services-certs-create.md).
    1. Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
    1. Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines.
 1. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können die Partner-ID im [Azure-Portal](https://portal.azure.com) aktualisieren. Weitere Informationen finden Sie unter [Verknüpfen einer Partner-ID mit Ihren Azure-Konten](billing-partner-admin-link-started.md).

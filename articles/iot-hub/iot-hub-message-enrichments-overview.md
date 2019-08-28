@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976978"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873196"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
 
@@ -76,6 +76,8 @@ Wenn Sie erfahren möchten, wie Nachrichtenanreicherungen ausprobiert werden kö
 
 * Die Gesamtgröße der Nachricht, einschließlich der Anreicherungen, darf 256 KB nicht überschreiten. Wenn eine Nachricht größer als 256 KB ist, wird sie vom IoT-Hub gelöscht. Sie können Fehler mithilfe von [IoT Hub-Metriken](iot-hub-metrics.md) identifizieren und debuggen, wenn Nachrichten gelöscht werden. So können Sie beispielsweise „d2c.telemetry.egress.invalid“ überwachen.
 
+* Nachrichtenergänzungen gelten nicht für Änderungsereignisse beim digitalen Zwilling (Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)).
+
 ## <a name="pricing"></a>Preise
 
 Nachrichtenanreicherungen stehen ohne zusätzliche Gebühren zur Verfügung. Derzeit fallen für Sie Kosten an, wenn Sie eine Nachricht an einen IoT-Hub senden. Diese Nachricht wird Ihnen nur einmal in Rechnung gestellt – sogar dann, wenn sie an mehrere Endpunkte gesendet wird.
@@ -87,6 +89,8 @@ Diese Funktion steht in der Vorschauversion zur Verfügung und zwar in allen Reg
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Weiterleiten von Nachrichten an einen IoT-Hub finden Sie in diesen Artikeln:
+
+* [Tutorial zu Nachrichtenerweiterungen](tutorial-message-enrichments.md)
 
 * [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte](iot-hub-devguide-messages-d2c.md)
 

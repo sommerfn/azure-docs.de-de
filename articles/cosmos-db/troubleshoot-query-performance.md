@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986168"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515820"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Behandeln von Problemen bei der Abfrageleistung für Azure Cosmos DB
 In diesem Artikel wird beschrieben, wie Sie Probleme mit Azure Cosmos DB SQL-Abfragen identifizieren, diagnostizieren und beheben können. Um eine optimale Leistung bei Azure Cosmos DB-Abfragen zu erreichen, folgen Sie den folgenden Schritten zur Fehlerbehebung. 
@@ -24,11 +24,12 @@ Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gle
 ## <a name="check-consistency-level"></a>Überprüfen der Konsistenzebene
 Die [Konsistenzebene](consistency-levels.md) kann sich auf die Leistung und die Kosten auswirken. Stellen Sie sicher, dass Ihre Konsistenzebene für das jeweilige Szenario geeignet ist. Weitere Informationen finden Sie unter [„Auswählen der Konsistenzebene“](consistency-levels-choosing.md).
 
-## <a name="log-sql-query-in-storage-account"></a>Protokollieren einer SQL-Abfrage in einem Speicherkonto
-[SQL-API-Abfrageprotokolle (über Diagnoseprotokolle)](logging.md#turn-on-logging-in-the-azure-portal) ermöglichen die Protokollierung der verschleierten Abfrage in einem Speicherkonto Ihrer Wahl. So können Sie sich die Diagnoseprotokolle ansehen, eine Abfrage ermitteln, die mehr RUs nutzt, und die Aktivitäts-ID zum Abgleich in QueryRuntimeStatistics verwenden. 
+## <a name="log-the-executed-sql-query"></a>Protokollieren der ausgeführten SQL-Abfrage 
 
+Sie können die ausgeführte SQL-Abfrage in einem Speicherkonto oder in der Diagnoseprotokolltabelle protokollieren. [SQL-Abfrageprotokolle über Diagnoseprotokolle](logging.md#turn-on-logging-in-the-azure-portal) ermöglichen die Protokollierung der verschleierten Abfrage in einem Speicherkonto Ihrer Wahl. So können Sie die Protokolle prüfen und die Abfrage ermitteln, die höhere RUs nutzt. Später können Sie die die eigentliche Abfrage in QueryRuntimeStatistics anhand der Aktivitäts-ID zuordnen. Die Abfrage wird aus Sicherheitsgründen verschleiert, und die Namen und Werte der Abfrageparameter in WHERE-Klauseln unterscheiden sich von den tatsächlichen Namen und Werten. Sie können die Protokollierung für das Speicherkonto verwenden, um die Langzeitaufbewahrung der ausgeführten Abfragen beizubehalten.  
 
 ## <a name="log-query-metrics"></a>Metrik zur Protokollabfrage
+
 Verwenden Sie `QueryMetrics`, um Fehler bei langsamen oder teuren Anfragen zu beheben. 
 
   * Richten Sie `FeedOptions.PopulateQueryMetrics = true` so ein, dass `QueryMetrics` in der Antwort erscheinen.

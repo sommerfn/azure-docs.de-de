@@ -110,7 +110,7 @@ Offenbar ist das Entscheidungsstruktur-Modell das genauere der beiden Modelle.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie dieses Tutorial nicht fortsetzen möchten, löschen Sie die TutorialDB-Datenbank von Ihrem Azure SQL-Datenbankserver.
+Wenn Sie dieses Tutorial nicht fortsetzen möchten, löschen Sie die TutorialDB-Datenbank von Ihrem Azure SQL-Datenbank-Server.
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 

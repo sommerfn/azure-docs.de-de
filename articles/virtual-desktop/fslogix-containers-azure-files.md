@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947216"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899659"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
@@ -86,7 +86,7 @@ Windows Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und An
 Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Practices funktioniert, müssen folgende Voraussetzungen erfüllt sein:
 
 - Das Azure Files-Speicherkonto muss sich in derselben Region wie die Sitzungshost-VMs befinden.
-- Die Azure Files-Berechtigungen müssen den unter [Requirements – Profile Containers](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers) (Anforderungen – Profilcontainer) beschriebenen Berechtigungen entsprechen.
+- Die Azure Files-Berechtigungen müssen den unter [Requirements – Profile Containers](https://docs.microsoft.com/fslogix/overview#requirements) (Anforderungen – Profilcontainer) beschriebenen Berechtigungen entsprechen.
 - Jeder Hostpool muss basierend auf dem gleichen Masterimage VMs des gleichen Typ und der gleichen Größe enthalten.
 - Jede Hostpool-VM muss sich in der gleichen Ressourcengruppe befinden, um Verwaltung, Skalierung und Aktualisierung zu unterstützen.
 - Um eine optimale Leistung zu erbringen, sollten sich die Speicherlösung und der FSLogix-Profilcontainer am gleichen Rechenzentrumsstandort befinden.
@@ -98,7 +98,7 @@ Gehen Sie folgendermaßen vor, um eine Windows Virtual Desktop-Umgebung einzuric
 
 - Um mit dem Aufbau Ihrer Desktopvirtualisierungslösung zu beginnen, informieren Sie sich zunächst unter [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
 - Informationen zum Erstellen eines Hostpools in Ihrem Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md).
-- Informationen zum Einrichten vollständig verwalteter Dateifreigaben in der Cloud finden Sie unter [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](/articles/storage/files/storage-files-active-directory-enable.md).
-- Informationen zum Konfigurieren von FSLogix-Profilcontainern finden Sie unter [Einrichten einer Benutzerprofilfreigabe für einen Hostpool](create-host-pools-user-profile.md).
+- Informationen zum Einrichten vollständig verwalteter Dateifreigaben in der Cloud finden Sie unter [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](/azure/storage/files/storage-files-active-directory-enable).
+- Informationen zum Konfigurieren von FSLogix-Profilcontainern finden Sie unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md).
 - Informationen zum Zuweisen von Benutzern zu einem Hostpool finden Sie unter [Verwalten von App-Gruppen für Windows Virtual Desktop](manage-app-groups.md).
 - Informationen zum Zugriff auf Ihre Windows Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung über einen Webbrowser](connect-web.md).

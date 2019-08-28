@@ -3,22 +3,22 @@ title: Red Hat Enterprise Linux-Images in Azure | Microsoft-Dokumentation
 description: Erfahren Sie etwas über Red Hat Enterprise Linux-Images in Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25b0ccfa5ed2b7b9ff031565fe7f14b1477769c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854436"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543849"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-Images in Azure
 Dieser Artikel beschreibt die verfügbaren Red Hat Enterprise Linux-Images (RHEL) im Azure Marketplace sowie Richtlinien für die Benennung und Aufbewahrung.
@@ -99,13 +99,15 @@ Die folgende Tabelle gilt für RHEL-Images, die eine Nebenversion in der SKU ent
 
 >[!NOTE]
 > Zum Zeitpunkt des Verfassens verfügen nur RHEL 7.4 und spätere Nebenversionen über EUS-Unterstützung. EUS wird für RHEL-Versionen bis einschließlich 7.3 nicht mehr unterstützt.
+>
+> Weitere Einzelheiten zur EUS-Verfügbarkeit für RHEL finden Sie [hier](https://access.redhat.com/support/policy/updates/errata).
 
 Nebenversion |EUS-Beispielimage              |EUS-Status                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | Images, die ab April 2019 veröffentlicht werden, nutzen EUS standardmäßig|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Images, die ab Juni 2019 veröffentlicht werden, nutzen EUS standardmäßig |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | Images, die ab Mai 2019 veröffentlicht werden, nutzen EUS standardmäßig  |
-RHEL 8.0      |–                            | Derzeit keine EUS-Images verfügbar                 |
+RHEL 8.0      |–                            | Kein EUS in Red Hat verfügbar                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Liste der verfügbaren RHEL-Images
@@ -126,17 +128,17 @@ RHEL          | 7-RAW    | RAW    | Linux-Agent | RHEL 7-Imagefamilie. <br> Sta
 |             | 7,5      | RAW    | Linux-Agent | Wie oben für RHEL 7.5 angegeben. <br> Ab Juni 2019 standardmäßig mit EUS-Repositorys verknüpft
 |             | 7.6      | RAW    | Linux-Agent | Wie oben für RHEL 7.6 angegeben. <br> Ab Mai 2019 standardmäßig mit EUS-Repositorys verknüpft
 RHEL-SAP      | 7.4      | LVM    | Linux-Agent | RHEL 7.4 for SAP HANA und Business Applications
-|             | 7.5      | LVM    | Linux-Agent | RHEL 7.5 for SAP HANA und Business Applications
+|             | 7,5      | LVM    | Linux-Agent | RHEL 7.5 for SAP HANA und Business Applications
 RHEL-SAP-HANA | 6.7      | RAW    | Linux-Agent | RHEL 6.7 for SAP HANA
 |             | 7.2      | LVM    | Linux-Agent | RHEL 7.2 for SAP HANA
 |             | 7.3      | LVM    | Linux-Agent | RHEL 7.3 for SAP HANA
 RHEL-SAP-APPS | 6,8      | RAW    | Linux-Agent | RHEL 6.8 for SAP Business Applications
 |             | 7.3      | LVM    | Linux-Agent | RHEL 7.3 for SAP Business Applications
 RHEL-Hochverfügbarkeit       | 7.4      | RAW    | Linux-Agent | RHEL 7.4 mit Hochverfügbarkeits-Add-On
-|             | 75      | RAW    | Linux-Agent | RHEL 7.5 mit Hochverfügbarkeits-Add-On
+|             | 7,5      | RAW    | Linux-Agent | RHEL 7.5 mit Hochverfügbarkeits-Add-On
 |             | 7.6      | RAW    | Linux-Agent | RHEL 7.6 mit Hochverfügbarkeits-Add-On
 RHEL-SAP-HA   | 7.4      | RAW    | Linux-Agent | RHEL 7.4 für SAP mit Hochverfügbarkeits-Add-On
-|             | 7.5      | RAW    | Linux-Agent | RHEL 7.5 für SAP mit Hochverfügbarkeits-Add-On
+|             | 7,5      | RAW    | Linux-Agent | RHEL 7.5 für SAP mit Hochverfügbarkeits-Add-On
 |             | 7.6      | RAW    | Linux-Agent | RHEL 7.6 für SAP mit Hochverfügbarkeits-Add-On
 
 ### <a name="old-naming-convention"></a>Alte Namenskonvention

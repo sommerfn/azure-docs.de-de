@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 8227aa366c8f5149d4212e6cdd00e2745db84814
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f2397c67b71cc370a0a98d44bb02e5ee77551afb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881957"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650646"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -86,7 +86,7 @@ Die folgenden Methoden können verwendet werden, um eine Erweiterung für eine v
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt. Ersetzen Sie den Ressourcengruppennamen, den VM-Namen und das auszuführende Skript (https://raw.githubusercontent.com/me/project/hello.sh) im Beispiel durch Ihre eigenen Informationen. 
+Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt. Ersetzen Sie den Ressourcengruppennamen, den VM-Namen und das auszuführende Skript (https:\//raw.githubusercontent.com/me/project/hello.sh) im Beispiel durch Ihre eigenen Informationen. 
 
 ```azurecli
 az vm extension set `

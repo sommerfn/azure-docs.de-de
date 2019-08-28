@@ -1,5 +1,5 @@
 ---
-title: Die Datei „CreateUiDefitinion.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen | Microsoft-Dokumentation
+title: Die Datei „CreateUiDefinition.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen erstellen.
 services: managed-applications
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 292f2995e7ff1f56c306b8c9859bdb323f21762d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847609"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575656"
 ---
-# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>Die Datei „CreateUiDefitinion.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Die Datei „CreateUiDefinition.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen
 
 In diesem Dokument werden die grundlegenden Konzepte der Datei **CreateUiDefinition.json** vorgestellt, die das Azure-Portal zum Definieren der Benutzeroberfläche zum Erstellen einer verwalteten Anwendung verwendet.
 
@@ -52,13 +52,11 @@ Das Schema der parameters-Eigenschaft hängt von der Kombination aus den angegeb
 
 Die Aufnahme von `$schema` wird empfohlen, ist aber optional. Wenn ein Wert angegeben wird, muss der Wert für `version` der Version im `$schema`-URI entsprechen.
 
-Sie können einen JSON-Editor zum Erstellen Ihrer Benutzeroberflächendefinition verwenden, und Sie können sie dann in der [Sandbox zum Erstellen der Benutzeroberflächendefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) testen, um eine Vorschau davon anzuzeigen. Weitere Informationen zur Sandbox finden Sie unter [Testen Ihrer Portaloberfläche für Azure Managed Applications](test-createuidefinition.md).
+Sie können einen JSON-Editor zum Erstellen von „createUiDefinition“ verwenden, und sie dann in der [Sandbox für „createUiDefinition“](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) testen, um eine Vorschau davon anzuzeigen. Weitere Informationen zur Sandbox finden Sie unter [Testen Ihrer Portaloberfläche für Azure Managed Applications](test-createuidefinition.md).
 
 ## <a name="basics"></a>Grundlagen
 
 Bei „basics“ handelt es sich um den ersten Schritt, der erstellt wird, wenn das Azure-Portal die Datei analysiert. Das Portal zeigt nicht nur die in `basics` angegebenen Elemente an, sondern fügt zusätzlich Elemente für Benutzer zum Auswählen des Abonnements, der Ressourcengruppe und des Standort für die Bereitstellung ein. Elemente, die bereitstellungsweite Parameter abfragen (wie den Namen eines Clusters oder Administratoranmeldeinformationen), sollten nach Möglichkeit in diesem Schritt enthalten sein.
-
-Wenn das Verhalten eines Elements von dem Abonnement, der Ressourcengruppe oder dem Standort des Benutzers abhängig ist, kann dieses Element nicht in „basics“ verwendet werden. **Microsoft.Compute.SizeSelector** ist bei der Ermittlung der Liste verfügbarer Größen beispielsweise vom Abonnement und Standort des Benutzers abhängig. Daher kann **Microsoft.Compute.SizeSelector** nur in „steps“ verwendet werden. Im Allgemeinen können nur Elemente im **Microsoft.Common**-Namespace in „basics“ verwendet werden. Dennoch sind einige Elemente in anderen Namespaces (wie **Microsoft.Compute.Credentials**) zulässig, die nicht vom Kontext des Benutzers abhängig sind.
 
 ## <a name="steps"></a>Schritte
 

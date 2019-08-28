@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950438"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872483"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -49,14 +49,15 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>Systemeigenschaften von **D2C**-IoT Hub-Nachrichten
 
-| Eigenschaft | BESCHREIBUNG  |Kann der Benutzer festgelegt werden?|Schlüsselwort für Routingabfrage|
+| Eigenschaft | BESCHREIBUNG  |Kann der Benutzer festgelegt werden?|Schlüsselwort für </br>Routingabfrage|
 | --- | --- | --- | --- |
-| message-id |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht.  | Ja | MessageId |
-| iothub-enqueuedtime |Datum und Uhrzeit des Empfangs der [D2C](iot-hub-devguide-d2c-guidance.md)-Nachricht durch IoT Hub. | Nein | EnqueuedTime |
-| user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. | Ja | UserId |
-| iothub-connection-device-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **deviceId** des Geräts, das die Nachricht sendet. | Nein | deviceId |
-| iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **generationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | Nein |DeviceGenerationId |
-| iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet.| Nein | AuthMethod |
+| message-id |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht.  | Ja | messageId |
+| iothub-enqueuedtime |Datum und Uhrzeit des Empfangs der [D2C](iot-hub-devguide-d2c-guidance.md)-Nachricht durch IoT Hub. | Nein | enqueuedTime |
+| user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. | Ja | userId |
+| iothub-connection-device-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **deviceId** des Geräts, das die Nachricht sendet. | Nein | connectionDeviceId |
+| iothub-connection-module-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **moduleId** des Geräts, das die Nachricht sendet. | Nein | connectionModuleId |
+| iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **connectionDeviceGenerationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | Nein |connectionDeviceGenerationId |
+| iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet.| Nein | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systemeigenschaften von **C2D**-IoT Hub-Nachrichten
 
@@ -72,7 +73,7 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 
 ## <a name="message-size"></a>Nachrichtengröße
 
-IoT Hub misst die Nachrichtengröße auf „protokollagnostische“ Weise, indem nur die tatsächliche Nutzlast berücksichtigt wird. Die Summe für die Größe in Byte wird wie folgt berechnet:
+IoT Hub misst die Nachrichtengröße auf „protokollagnostische“ Weise, indem nur die tatsächliche Nutzlast berücksichtigt wird. Die Größe in Byte wird als Summe der folgenden Werte berechnet:
 
 * Text in Byte
 * Größe aller Werte der Nachrichtensystemeigenschaften in Byte

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033537"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900130"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -153,23 +153,9 @@ Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung
 
 ## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
-Nehmen Sie direkt Kontakt zu Kunden auf, indem Sie Ihr Angebot in Marketplaces auflisten und Ihr CRM-System (Customer Relationship Management) einbinden. So erhalten Sie Kundenkontaktinformationen sofort, nachdem ein Kunde Interesse bekundet oder Ihr Produkt bereitgestellt hat.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **Leadziel auswählen** (Dropdownmenü): Geben Sie Verbindungsinformationen für das CRM-System an, wenn Sie möchten, dass wir Kundenleads senden. 
-
-Das Partner Center unterstützt die Leadverwaltung für die folgenden CRM-Systeme. Klicken Sie auf den Link, um Anweisungen zur Einrichtung zu erhalten.
-
-- „Azure-BLOB“: Geben Sie die E-Mail-Adresse, den Containernamen und die Verbindungszeichenfolge für das Speicherkonto ein. 
-- [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table): Geben Sie die E-Mail-Kontaktadresse und die Verbindungszeichenfolge für das Speicherkonto an. 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics): Geben Sie die E-Mail-Kontaktadresse, die URL und den Authentifizierungsmodus (Office 365 oder Azure Active Directory) an.
-- [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https): Geben Sie E-Mail-Kontaktadresse und die URL des HTTP-Endpunkts an. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo): Geben Sie die E-Mail-Kontaktadresse, die Formular-ID, Munchkin-Konto-ID und Server-ID an.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce): Geben Sie die E-Mail-Kontaktadresse und die Organisations-ID an. 
-
-#### <a name="additional-lead-management-resources"></a>Zusätzliche Ressourcen zur Leadverwaltung
-- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Lead management at a glance](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (Übersicht über die Leadverwaltung, Informationsblatt in englischer Sprache)
+Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./commercial-marketplace-get-customer-leads.md).
 
 Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
@@ -302,12 +288,7 @@ Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags z
 
     Diese Formatierung führt zu folgender Darstellung:
 
-    <h1>Dies ist Überschrift 1</h1> 
-    <h2>Dies ist Überschrift 2</h2> 
-    <h3>Dies ist Überschrift 3</h3> 
-    <h4>Dies ist Überschrift 4</h4> 
-    <h5>Dies ist Überschrift 5</h5> 
-    <h6>Dies ist Überschrift 6</h6> 
+    ![Beispielüberschriften](./media/heading.png)
 
 #### <a name="links"></a>Links
 

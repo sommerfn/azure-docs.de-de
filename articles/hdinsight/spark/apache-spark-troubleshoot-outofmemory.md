@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a8351f13f015ca53e72bbff41152e46690fdc7bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/15/2019
+ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855731"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543480"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-Ausnahmen für Apache Spark in Azure HDInsight
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Ursache
 
-Die wahrscheinlichste Ursache für diese Ausnahme ist ein unzureichender Heapspeicher. Ihre Spark-Anwendung erfordert bei der Ausführung als Executor oder Treiber ausreichend JVM-Heapspeicher (Java Virtual Machine).
+Die wahrscheinlichste Ursache dieser Ausnahme besteht darin, dass den Java Virtual Machines (JVMs) kein ausreichender Heapspeicher zugeordnet ist. Diese JVMs werden als Executors oder Treiber im Rahmen der Apache Spark-Anwendung gestartet.
 
 ### <a name="resolution"></a>Lösung
 
 1. Ermitteln Sie die maximale Größe der Daten, die von die Spark-Anwendung verarbeitet werden. Schätzen Sie die Größe basierend auf der maximalen Größe der Eingabedaten, den bei der Transformation der Eingabedaten erzeugten Zwischendaten und den erzeugten Ausgabedaten, mit denen die Zwischendaten weiter transformiert werden. Wenn die anfängliche Schätzung nicht ausreichend ist, sollten Sie die Größe um einen geringen Wert erhöhen und diesen Vorgang wiederholen, bis die Arbeitsspeicherfehler nicht mehr angezeigt werden.
 
-1. Stellen Sie sicher, dass der zu verwendende HDInsight-Cluster über genügend Ressourcen im Hinblick auf Arbeitsspeicher und Kerne verfügt, um die Spark-Anwendung auszuführen. Dazu zeigen Sie den Abschnitt mit Clustermetriken der YARN-Benutzeroberfläche des Clusters an und vergleichen die Werte für den verwendeten Arbeitsspeicher und den Gesamtarbeitsspeicher sowie für die verwendeten VCores und VCores insgesamt.
+1. Stellen Sie sicher, dass der zu verwendende HDInsight-Cluster über genügend Ressourcen im Hinblick auf Arbeitsspeicher und Kerne verfügt, um die Spark-Anwendung auszuführen. Dazu zeigen Sie den Abschnitt mit Clustermetriken der YARN-Benutzeroberfläche des Clusters an und vergleichen die Werte von **Verwendeter Arbeitsspeicher** mit **Gesamtspeicher** und die von **VCores Used** (Verwendete virtuelle Kerne) mit **VCores Total** (VCores insgesamt) betrachten.
 
     ![Ansicht des YARN Core-Arbeitsspeichers](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -250,8 +250,8 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * [Debugging Spark application on HDInsight clusters](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/) (Debuggen der Spark-Anwendung in HDInsight-Clustern).
 
-* Erhalten Sie über den [Azure-Communitysupport](https://azure.microsoft.com/support/community/) Antworten von Azure-Experten.
+* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
 
 * Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-* Senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/), falls Sie weitere Unterstützung benötigen. Wählen Sie hierzu in der Menüleiste die Option **Support**, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

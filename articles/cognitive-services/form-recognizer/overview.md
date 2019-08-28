@@ -51,7 +51,7 @@ Die Eingabeanforderungen für das Belegmodell unterscheiden sich geringfügig.
 
 ## <a name="request-access"></a>Zugriff anfordern
 
-Die Formularerkennung ist als Vorschauversion mit eingeschränktem Zugriff verfügbar. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es. Im Formular werden Informationen über Sie, Ihr Unternehmen und das Benutzerszenario angefordert, für das Sie die Formularerkennung verwenden möchten. Wenn Ihre Anforderung vom Azure Cognitive Services-Team genehmigt wird, erhalten Sie eine E-Mail mit Anweisungen für den Zugriff auf den Dienst.
+Die Formularerkennung ist als Vorschauversion mit eingeschränktem Zugriff verfügbar. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es. Das Formular fordert Informationen über Sie, Ihr Unternehmen und das Benutzerszenario an, für das Sie den Form Recognizer verwenden werden. Wenn Ihre Anforderung vom Azure Cognitive Services-Team genehmigt wird, erhalten Sie eine E-Mail mit Anweisungen für den Zugriff auf den Dienst.
 
 ## <a name="where-do-i-start"></a>Wo beginne ich?
 

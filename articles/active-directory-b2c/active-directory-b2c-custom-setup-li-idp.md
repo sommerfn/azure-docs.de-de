@@ -76,7 +76,7 @@ Wenn Sie möchten, dass sich Benutzer mit einem LinkedIn-Konto anmelden, müssen
 
 Definieren Sie ein LinkedIn-Konto als Anspruchsanbieter, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProviders** hinzufügen.
 
-1. Öffnen Sie im Editor die Datei *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml***. Diese Datei ist im [Starter Pack für benutzerdefinierte Richtlinien][starter-pack] enthalten, das Sie im Rahmen der Voraussetzungen heruntergeladen haben.
+1. Öffnen Sie im Editor die Datei *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml*** . Diese Datei ist im [Starter Pack für benutzerdefinierte Richtlinien][starter-pack] enthalten, das Sie im Rahmen der Voraussetzungen heruntergeladen haben.
 1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
 1. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 

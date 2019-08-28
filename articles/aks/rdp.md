@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614565"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639805"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung
 
@@ -63,6 +63,27 @@ Die folgende Beispielausgabe zeigt, dass der virtuelle Computer erfolgreich erst
 ```
 
 Notieren Sie sich die öffentliche IP-Adresse des virtuellen Computers. Sie verwenden diese Adresse in einem späteren Schritt.
+
+## <a name="allow-access-to-the-virtual-machine"></a>Zulassen des Zugriffs auf den virtuellen Computer
+
+Subnetze mit AKS-Knotenpools werden standardmäßig mit NSGs (Netzwerksicherheitsgruppen) geschützt. Um Zugriff auf den virtuellen Computer zu erhalten, müssen Sie den Zugriff in der NSG aktivieren.
+
+> [!NOTE]
+> Die NSGs werden vom AKS-Dienst gesteuert. Alle an der NSG vorgenommenen Änderungen werden jederzeit von der Steuerungsebene überschrieben.
+>
+
+Rufen Sie zunächst die Ressourcengruppe sowie den NSG-Namen der NSG ab, der die Regel hinzugefügt werden soll:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+Erstellen Sie dann die NSG-Regel:
+
+```azurecli-interactive
+az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --priority 100 --destination-port-range 3389 --protocol Tcp --description "Temporary RDP access to Windows nodes"
+```
 
 ## <a name="get-the-node-address"></a>Abrufen der Knotenadresse
 
@@ -117,6 +138,17 @@ Abschließend beenden Sie die RDP-Verbindung mit dem Windows Server-Knoten und d
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
+```
+
+Und die NSG-Regel:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+```azurecli-interactive
+az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879239"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637593"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -48,7 +48,7 @@ Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.
 Wenn Sie beispielsweise möchten, dass Ihr Azure AD-Zähler höher als der AD-Wert ist, dann ist die Azure AD-Dauer 120 Sekunden (2 Minuten), während Ihr lokales AD auf 1 Minute (60 Sekunden) festgelegt ist.
 
 > [!IMPORTANT]
-> Derzeit können die Cloudkonten der Benutzer nicht von einem Administrator entsperrt werden, wenn sie von Smart Lockout gesperrt wurden. Der Administrator muss warten, bis die Sperrdauer abgelaufen ist.
+> Derzeit können die Cloudkonten der Benutzer nicht von einem Administrator entsperrt werden, wenn sie von Smart Lockout gesperrt wurden. Der Administrator muss warten, bis die Sperrdauer abgelaufen ist. Der Benutzer kann das Konto jedoch von einem vertrauenswürdigen Gerät oder Standort aus mithilfe der Self-Service-Kennwortzurücksetzung (SSPR) entsperren.
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>Überprüfen der lokalen Kontosperrungsrichtlinie
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949809"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616142"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>Verwalten der Einstellungen für die zweistufige Überprüfung
 
@@ -135,6 +135,10 @@ Abhängig von den Einstellungen Ihrer Organisation steht möglicherweise ein Kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Probleme bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md) finden Sie Tipps zur Problembehandlung und Hilfe.
+Nachdem Sie die Einstellungen für die zweistufige Überprüfung hinzugefügt oder aktualisiert haben, können Sie Ihre App-Kennwörter verwalten, sich anmelden oder Hilfe bei allgemeinen Problemen im Zusammenhang mit der zweistufigen Überprüfung erhalten.
 
 - [Verwalten Sie App-Kennwörter für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md) für alle Apps, die die zweistufige Überprüfung nicht unterstützen.
+
+- [Anmelden per zweistufiger Überprüfung](multi-factor-authentication-end-user-signin.md)
+
+- [Hilfe bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md)

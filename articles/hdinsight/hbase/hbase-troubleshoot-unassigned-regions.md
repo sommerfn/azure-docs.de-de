@@ -5,17 +5,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935461"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640228"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Probleme mit Regionsservern in Azure HDInsight
 
-In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
+In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
 
 ## <a name="scenario-unassigned-regions"></a>Szenario: Nicht zugewiesene Regionen
 
@@ -27,7 +27,7 @@ Bei der Ausführung des Befehls `hbase hbck` wird in etwa die folgende Fehlermel
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Auf der Apache HBase Master-Benutzeroberfläche sehen Sie, dass die Anzahl von Regionen über alle Regionsserver hinweg nicht ausgeglichen ist.
+In der HBase Master-Benutzeroberfläche von Apache wird die Anzahl der Regionen angezeigt, die über alle Regionsserver hinweg nicht ausgeglichen sind. Sie können dann den Befehl `hbase hbck` ausführen, um Lücken in der Kette der Regionen anzuzeigen.
 
 ### <a name="cause"></a>Ursache
 
@@ -37,7 +37,7 @@ Der Grund für Lücken können Regionen im Offlinezustand sein.
 
 Korrigieren Sie die Zuweisungen. Bringen Sie die nicht zugewiesenen Regionen mit folgenden Schritten wieder in den normalen Zustand:
 
-1. Melden Sie sich über SSH beim HDInsight HBase-Cluster an.
+1. Melden Sie sich mithilfe von SSH beim HDInsight-HBase-Cluster an.
 
 1. Führen Sie den Befehl `hbase zkcli` aus, um eine Verbindung mit der ZooKeeper-Shell herzustellen.
 
@@ -45,7 +45,7 @@ Korrigieren Sie die Zuweisungen. Bringen Sie die nicht zugewiesenen Regionen mit
 
 1. Beenden Sie die ZooKeeper-Shell mit dem Befehl `exit`.
 
-1. Öffnen Sie die Ambari-Benutzeroberfläche, und starten Sie den Active HBase Master-Dienst von Ambari aus neu.
+1. Öffnen Sie die Apache Ambari-Benutzeroberfläche, und starten Sie anschließend den Active HBase-Master-Dienst neu.
 
 1. Führen Sie den Befehl `hbase hbck` erneut aus (ohne weitere Optionen). Überprüfen Sie die Ausgabe, und vergewissern Sie sich, dass alle Regionen zugewiesen sind.
 
@@ -61,7 +61,7 @@ Regionsserver können nicht gestartet werden.
 
 Mehrere WAL-Aufteilungsverzeichnisse.
 
-1. Liste mit aktuellen WAL-Verzeichnissen: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Liste der aktuellen WAL-Verzeichnisse abrufen: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
 1. Sehen Sie sich die Datei `wals.out` an. Wenn zu viele Aufteilungsverzeichnisse vorhanden sind (beginnen mit „*-splitting“), tritt für den Regionsserver vermutlich aufgrund dieser Verzeichnisse ein Fehler auf.
 
@@ -83,8 +83,8 @@ Mehrere WAL-Aufteilungsverzeichnisse.
 
 Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
-* Erhalten Sie über den [Azure-Communitysupport](https://azure.microsoft.com/support/community/) Antworten von Azure-Experten.
+* Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
 
 * Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-* Wenn Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

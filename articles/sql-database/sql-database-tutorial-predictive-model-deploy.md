@@ -201,7 +201,7 @@ Sie haben erfolgreich ein Modell in Azure SQL-Datenbank erstellt, trainiert und 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Verwendung der TutorialDB-Datenbank abgeschlossen haben, löschen Sie sie von Ihrem Azure SQL-Datenbankserver.
+Wenn Sie die Verwendung der TutorialDB-Datenbank abgeschlossen haben, löschen Sie sie von Ihrem Azure SQL-Datenbank-Server.
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 

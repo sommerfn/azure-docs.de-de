@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990562"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897674"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -149,12 +149,25 @@ Die folgenden Computeziele bzw. Computeressourcen können verwendet werden, um I
 
 ## <a name="prepare-to-deploy"></a>Vorbereiten der Bereitstellung
 
-Um die Bereitstellung als Webdienst durchzuführen, müssen Sie eine Rückschlusskonfiguration (`InferenceConfig`) und eine Bereitstellungskonfiguration erstellen. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten). In der Rückschlusskonfiguration geben Sie die Skripts und Abhängigkeiten an, die für die Verarbeitung Ihres Modells erforderlich sind. In der Bereitstellungskonfiguration geben Sie Details zur Verarbeitung des Modells auf dem Computeziel an.
+Für die Bereitstellung des Modells müssen verschiedene Voraussetzungen erfüllt sein:
 
-> [!IMPORTANT]
-> Das Azure Machine Learning SDK bietet keinen Zugriff auf Ihren Datenspeicher oder Ihre Datasets durch Webdienste oder IoT Edge-Bereitstellungen. Wenn das bereitgestellte Modell auf Daten zugreifen muss, die außerhalb der Bereitstellung gespeichert sind – wie z.B. in einem Azure Storage-Konto –, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
->
-> Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-run-batch-predictions.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
+* Ein __Eingabeskript__. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
+
+    > [!IMPORTANT]
+    > Das Eingabeskript ist spezifisch für Ihr Modell. Es muss das Format der Daten der eingehenden Anforderung, das Format der im Modell erwarteten Daten und das Format der an Clients zurückgegebenen Daten erkennen.
+    >
+    > Wenn die Anforderungsdaten in einem Format vorliegen, das in Ihrem Modell nicht verwendet werden kann, können sie im Skript in ein akzeptables Format umgewandelt werden. Außerdem kann die Antwort umgewandelt werden, bevor sie an den Client zurückgegeben wird.
+
+    > [!IMPORTANT]
+    > Das Azure Machine Learning SDK bietet keinen Zugriff auf Ihren Datenspeicher oder Ihre Datasets durch Webdienste oder IoT Edge-Bereitstellungen. Wenn das bereitgestellte Modell auf Daten zugreifen muss, die außerhalb der Bereitstellung gespeichert sind – wie z.B. in einem Azure Storage-Konto –, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
+    >
+    > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-run-batch-predictions.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
+
+* **Abhängigkeiten**, z. B. Hilfsskripts oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
+
+* Die __Bereitstellungskonfiguration__ für das Computeziel, von dem das bereitgestellte Modell gehostet wird. Diese Konfiguration beschreibt Aspekte wie Arbeitsspeicher- und CPU-Anforderungen für die Ausführung des Modells.
+
+Diese Entitäten werden in einer __Rückschlusskonfiguration__ und einer __Bereitstellungskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten. Diese Konfigurationen werden bei Verwendung des SDK programmgesteuert definiert. Erfolgt die Bereitstellung hingegen über die CLI, werden sie als JSON-Dateien definiert.
 
 ### <a id="script"></a> 1. Definieren des Eingangsskripts und der Abhängigkeiten
 
@@ -177,6 +190,8 @@ Im folgenden Beispiel wird ein Pfad zu einer einzelnen Datei namens `sklearn_mni
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
 ```
+
+<a id="schema"></a>
 
 #### <a name="optional-automatic-schema-generation"></a>(Optional:) Automatische Schemagenerierung
 
@@ -399,9 +414,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Definieren der Rückschlusskonfiguration
 
-Die Rückschlusskonfiguration beschreibt, wie das Modell zum Treffen von Vorhersagen konfiguriert wird. Im folgenden Beispiel wird veranschaulicht, wie eine Rückschlusskonfiguration erstellt wird. Diese Konfiguration gibt die Runtime, das Eingabeskript und (optional) die Conda-Umgebungsdatei an:
+Die Rückschlusskonfiguration beschreibt, wie das Modell zum Treffen von Vorhersagen konfiguriert wird. Diese Konfiguration ist kein Teil des Eingabeskripts; sie verweist auf das Eingabeskript, mit dem nach allen von der Bereitstellung benötigten Ressourcen gesucht wird. Sie wird später bei der eigentlichen Bereitstellung des Modells verwendet.
+
+Im folgenden Beispiel wird veranschaulicht, wie eine Rückschlusskonfiguration erstellt wird. Diese Konfiguration gibt die Runtime, das Eingabeskript und (optional) die Conda-Umgebungsdatei an:
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +450,7 @@ Informationen zur Verwendung eines benutzerdefinierten Docker-Images mit Rücksc
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Definieren der Bereitstellungskonfiguration
 
-Bevor Sie die Bereitstellung ausführen, müssen Sie die Bereitstellungskonfiguration definieren. __Die Bereitstellungskonfiguration ist spezifisch für das Computeziel, das den Webdienst hosten wird.__ Beispielsweise müssen Sie bei einer lokalen Bereitstellung den Port angeben, an dem der Dienst Anforderungen akzeptiert.
+Bevor Sie die Bereitstellung ausführen, müssen Sie die Bereitstellungskonfiguration definieren. __Die Bereitstellungskonfiguration ist spezifisch für das Computeziel, das den Webdienst hosten wird.__ Beispielsweise müssen Sie bei einer lokalen Bereitstellung den Port angeben, an dem der Dienst Anforderungen akzeptiert. Die Bereitstellungskonfiguration ist kein Teil des Eingabeskripts. Damit werden die Merkmale des Computeziels definiert, von dem das Modell und das Eingabeskript gehostet werden.
 
 Möglicherweise müssen Sie die Computeressourcen auch erstellen. Dies ist beispielsweise der Fall, wenn Sie noch keinen Azure Kubernetes Service für Ihren Arbeitsbereich eingerichtet haben.
 
@@ -442,6 +461,12 @@ Die folgende Tabelle enthält ein Beispiel für das Erstellen einer Bereitstellu
 | Lokal | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+Jede dieser Klassen für lokale, ACI- und AKS-Webdienste kann aus `azureml.core.webservice` importiert werden:
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > Es empfiehlt sich gegebenenfalls, ein Profil für Ihr Modell zu erstellen, um die optimalen CPU- und Arbeitsspeicheranforderungen zu bestimmen, bevor Sie Ihr Modell als Dienst bereitstellen. Sie können ein Profil Ihres Modells entweder mit dem SDK oder der CLI erstellen. Weitere Informationen finden Sie in der Referenz zu [profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) und [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
@@ -459,6 +484,8 @@ Um eine lokale Bereitstellung durchzuführen, müssen Sie Docker auf Ihrem lokal
 #### <a name="using-the-sdk"></a>Verwenden des SDK
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)
@@ -696,7 +723,7 @@ Sie können Modelle fortlaufend mit der Machine Learning-Erweiterung für [Azure
 
 1. Richten Sie mit __Dienstverbindungen__ eine Dienstprinzipalverbindung mit Ihrem Azure Machine Learning Service-Arbeitsbereich ein, um auf alle Ihre Artefakte zuzugreifen. Wechseln Sie zu „Projekteinstellungen“, klicken Sie auf „Dienstverbindungen“, und wählen Sie „Azure Resource Manager“ aus.
 
-    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
+    [![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
 
 1. Definieren Sie AzureMLWorkspace als __Bereichsebene__, und geben Sie die folgenden Parameter ein.
 
@@ -704,11 +731,11 @@ Sie können Modelle fortlaufend mit der Machine Learning-Erweiterung für [Azure
 
 1. Um Ihr Machine Learning-Modell mithilfe von Azure Pipelines kontinuierlich bereitzustellen, wählen Sie als Nächstes unter „Pipelines“ __Freigeben__ aus. Fügen Sie ein neues Artefakt hinzu, und wählen Sie „AzureML Model-Artefakt“ und die Dienstverbindung aus, die im vorherigen Schritt erstellt wurde. Wählen Sie das Modell und die Version aus, um eine Bereitstellung auszulösen. 
 
-    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+    [![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. Aktivieren Sie den Modelltrigger auf Ihrem Modellartefakt. Durch Aktivieren des Triggers wird jedes Mal, wenn die angegebene Version (d.h. die neueste Version) dieses Modells in Ihrem Arbeitsbereich registriert wird, eine Azure DevOps-Releasepipeline ausgelöst. 
 
-    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+    [![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 Weitere Beispielprojekte und Beispiele finden Sie in den folgenden Beispielrepositorys:
 

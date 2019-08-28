@@ -24,7 +24,7 @@ ms.locfileid: "68666444"
 Sie können Ihr Azure-Abonnement im Azure-Portal kündigen, wenn Sie das Abonnement nicht länger benötigen. 
 
 Vor der Kündigung Ihres Abonnements:
-* Sichern Sie Ihre Daten. Wenn Sie Ihre Daten beispielsweise im Azure-Speicher oder SQL speichern, laden Sie eine Kopie herunter. Wenn Sie einen virtuellen Computer haben, speichern lokal ein Image davon.
+* Sichern Sie Ihre Daten. Wenn Sie Ihre Daten beispielsweise im Azure-Speicher oder SQL speichern, laden Sie eine Kopie herunter. Wenn Sie einen virtuellen Computer haben, speichern Sie lokal ein Image davon.
 * Beenden Sie Ihre Dienste. Wechseln Sie zur [Ressourcenseite im Verwaltungsportal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), und **beenden** Sie alle ausgeführten virtuellen Computer, Anwendungen oder anderen Dienste.
 * Ziehen Sie die Migration Ihrer Daten in Betracht. Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
 * Löschen Sie alle Ressourcen und Ressourcengruppen. Ein Abonnement kann erst gekündigt werden, nachdem diese gelöscht wurden. Jede Ressourcengruppe muss einzeln gelöscht werden. Beim Löschen von Ressourcengruppen müssen Sie den Löschvorgang bestätigen, indem Sie den Namen der Ressourcengruppe eingeben.

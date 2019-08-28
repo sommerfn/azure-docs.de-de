@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975918"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515418"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -59,6 +59,18 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
     |    Sicheres LDAP (LDAPS)        |    636       |    TCP           |
     |    Sicheres LDAP (LDAPS)        |    3269      |    TCP           |
     |    w32time            |    123       |    UDP           |
+
+* Die Standorttopologie für die Ziel-Active Directory Domain Services muss den bewährten Methoden entsprechen. Dies gilt insbesondere für das Azure-VNET, in dem Azure NetApp Files bereitgestellt wird.  
+
+    Der Adressraum für das virtuelle Netzwerk, in dem Azure NetApp Files bereitgestellt wird, muss einem neuen oder vorhandenen Active Directory-Standort hinzugefügt werden (in dem sich ein Domänencontroller befindet, der über Azure NetApp Files erreichbar ist). 
+
+* Die angegebenen DNS-Server müssen über das [delegierte Subnetz](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) von Azure NetApp Files erreichbar sein.  
+
+    Informationen zu unterstützten Netzwerktopologien finden Sie unter [Richtlinien für die Azure NetApp Files-Netzwerkplanung](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies).
+
+    Die Netzwerksicherheitsgruppen (NSGs) und Firewalls müssen ordnungsgemäß konfigurierte Regeln aufweisen, um Active Directory- und DNS-Datenverkehrsanforderungen zuzulassen.
+
+    Weitere Informationen zu AD-Standorten und -Diensten finden Sie unter [Entwerfen der Standorttopologie](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology). 
 
 ## <a name="create-an-active-directory-connection"></a>Erstellen einer Active Directory-Verbindung
 
@@ -117,7 +129,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
         Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.  
 
     * **Virtuelles Netzwerk**  
-        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
+        Geben Sie das virtuelle Azure-Netzwerk (VNET) an, von dem aus Sie auf das Volume zugreifen möchten.  
 
         Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Auf den Azure NetApp Files-Dienst kann nur vom gleichen VNET aus oder per VNET-Peering von einem VNET aus zugegriffen werden, das sich in der gleichen Region befindet wie das Volume. Sie können auch über ExpressRoute von Ihrem lokalen Netzwerk aus auf das Volume zugreifen.   
 

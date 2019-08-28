@@ -130,7 +130,7 @@ Bevor Sie das C#-Programm ausführen, sollten Sie in SQL Server Management Studi
 
 ### <a name="verify-sql-database-firewall-ip-addresses"></a>Überprüfen der SQL-Datenbank-Firewall-IP-Adressen
 
-Führen Sie SSMS auf demselben Computer und im selben Gebäude aus, auf bzw. in dem auch das C#-Programm ausgeführt werden soll. Für diesen Test kann ein beliebiger **Authentifizierungsmodus** verwendet werden. Bei Anzeichen, dass die Datenbankserver-Firewall Ihre IP-Adresse nicht akzeptiert, finden Sie hilfreiche Informationen unter [Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+Führen Sie SSMS auf demselben Computer und im selben Gebäude aus, auf bzw. in dem auch das C#-Programm ausgeführt werden soll. Für diesen Test kann ein beliebiger **Authentifizierungsmodus** verwendet werden. Bei Anzeichen, dass die Datenbankserver-Firewall Ihre IP-Adresse nicht akzeptiert, finden Sie hilfreiche Informationen unter [Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank-Server](sql-database-firewall-configure.md).
 
 ### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Überprüfen von Azure Active Directory Multi-Factor Authentication
 

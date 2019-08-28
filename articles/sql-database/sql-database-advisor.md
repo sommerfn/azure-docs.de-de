@@ -78,7 +78,7 @@ Die Empfehlung zum Beheben von Schemaproblemen wird angezeigt, wenn der Azure SQ
 
 | SQL-Fehlercode | `Message` |
 | --- | --- |
-| 201 |Die *'*'* -Prozedur oder -Funktion erwartet den '*'-Parameter, der nicht bereitgestellt wurde. |
+| 201 |Die' *'-Prozedur oder -Funktion erwartet den '* '-Parameter, der nicht bereitgestellt wurde. |
 | 207 |Ungültiger Spaltenname '*'. |
 | 208 |Ungültiger Objektname '*'. |
 | 213 |Der Spaltenname oder die Anzahl der bereitgestellten Werte entspricht nicht der Tabellendefinition. |

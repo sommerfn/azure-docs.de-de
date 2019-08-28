@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/13/2019
+ms.date: 08/19/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989232"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624398"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -92,7 +92,7 @@ Sie können eine der folgenden Optionen verwenden, um festzustellen, wie viele D
 Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
 
 * Verwenden Sie [Stichproben](../../azure-monitor/app/sampling.md). Durch diese Technologie wird Ihre Datenrate ohne Datenschiefe bei Ihren Metriken reduziert. Sie können weiterhin zwischen verwandten Elementen in der Search navigieren. Bei Server-Apps erfolgt die Stichprobenerstellung automatisch.
-* [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](../../azure-monitor/app/javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
+* [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](../../azure-monitor/app/javascript.md#configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
 * [Bearbeiten Sie „ApplicationInsights.config“](../../azure-monitor/app/configuration-with-applicationinsights-config.md), um nicht benötigte Sammlungsmodule zu deaktivieren. Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
 * Teilen Sie Ihre Telemetrie auf getrennte Instrumentierungsschlüssel auf. 
 * Aggregieren Sie Metriken vorab. Wenn Sie in Ihre App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden.
@@ -135,11 +135,13 @@ In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Dat
 
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
-Application Insights integriert nun eine begrenzte Anzahl von Application Insights-Kunden in unsere Vorschauversion für die variable Aufbewahrung. Informationen dazu, wie Sie an diesem Vorschauprogramm teilnehmen können, finden Sie [hier](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031).
+Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 90, 120, 180, 270, 365, 550 oder 730 Tage. 
 
-Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 120, 180, 270, 365, 550 oder 730 Tage. 
+Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application Insights-Ressource die Seite **Nutzung und geschätzte Kosten** auf und wählen Sie die Option **Datenaufbewahrung**  aus:
 
-Wenn die Abrechnung für eine längere Aufbewahrung aktiviert ist, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).  Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
+![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
+
+Wenn die Abrechnung für eine längere Aufbewahrung aktiviert ist, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 
