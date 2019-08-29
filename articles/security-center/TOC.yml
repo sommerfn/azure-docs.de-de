@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: Keine Sicherheitsrisikobewertung installiert
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Aktivieren von Netzwerksicherheitsgruppen
-          href: security-center-enable-network-security-groups.md
         - name: Berichte zu Bedrohungen
           href: security-center-threat-report.md
         - name: Benutzerdefinierte Warnungen
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Logic Apps-Playbooks
           href: security-center-playbooks.md
-        - name: Ereignisse anzeigen
-          href: security-center-events-dashboard.md
         - name: 'Suchen,'
           href: security-center-search.md
         - name: Planung und Betrieb

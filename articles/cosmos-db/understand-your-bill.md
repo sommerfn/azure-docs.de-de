@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717517"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614162"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -90,7 +90,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Abrechnungsbeispiele mit Georeplikation und Multimasterkonfiguration  
 
-Sie können jederzeit Azure-Regionen auf der ganzen Welt zu Ihrem Azure Cosmos DB-Datenbankkonto hinzufügen oder aus diesem entfernen. Der Durchsatz, den Sie für die verschiedenen Azure Cosmos DB-Datenbanken und -Container konfiguriert haben, wird in jeder Azure-Region reserviert, die mit Ihrem Azure Cosmos DB-Datenbankkonto verknüpft ist. Wenn der bereitgestellte Gesamtdurchsatz (RUs/Sek.), der für alle Datenbanken und Container in Ihrem Azure Cosmos-Datenbankkonto (pro Stunde) konfiguriert ist, die Summe „X“ ergibt und die Anzahl der mit Ihrem Datenbankkonto verknüpften Azure-Regionen „Y“ lautet, berechnet sich der bereitgestellte Durchsatz für Ihr Azure Cosmos-Datenbankkonto pro Stunde wie folgt: (a) bei Schreibanforderungen für eine Region = X mal Y RUs/Sek. bzw. (b) bei Schreibanforderungen für alle Regionen = X mal (Y+1) RUs/Sek. Der bereitgestellte Durchsatz (Schreibanforderung für eine Region) kostet 0,008 US-Dollar/Stunde pro 100 RUs/Sek., und der bereitgestellte Durchsatz bei Schreibanforderungen für mehrere Regionen (Multimasterkonfiguration) kostet 0,016 US-Dollar/Stunde pro 100 RUs/Sek. (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Azure Cosmos DB erlaubt in jedem Fall das Lesen von Daten in den Regionen, und zwar unabhängig davon, ob die Schreibanforderung für eine oder mehrere Regionen ausgewählt wurde.
+Sie können jederzeit Azure-Regionen auf der ganzen Welt zu Ihrem Azure Cosmos-Datenbankkonto hinzufügen oder aus diesem entfernen. Der Durchsatz, den Sie für die verschiedenen Azure Cosmos-Datenbanken und -Container konfiguriert haben, wird in jeder Azure-Region reserviert, die mit Ihrem Azure Cosmos-Datenbankkonto verknüpft ist. Wenn der bereitgestellte Gesamtdurchsatz (RUs/Sek.), der für alle Datenbanken und Container in Ihrem Azure Cosmos-Datenbankkonto (pro Stunde) konfiguriert ist, die Summe „X“ ergibt und die Anzahl der mit Ihrem Datenbankkonto verknüpften Azure-Regionen „Y“ lautet, berechnet sich der bereitgestellte Durchsatz für Ihr Azure Cosmos-Datenbankkonto pro Stunde wie folgt: (a) bei Schreibanforderungen für eine Region = X mal Y RUs/Sek. bzw. (b) bei Schreibanforderungen für alle Regionen = X mal (Y+1) RUs/Sek. Der bereitgestellte Durchsatz (Schreibanforderung für eine Region) kostet 0,008 US-Dollar/Stunde pro 100 RUs/Sek., und der bereitgestellte Durchsatz bei Schreibanforderungen für mehrere Regionen (Multimasterkonfiguration) kostet 0,016 US-Dollar/Stunde pro 100 RUs/Sek. (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Azure Cosmos DB erlaubt in jedem Fall das Lesen von Daten in den Regionen, und zwar unabhängig davon, ob die Schreibanforderung für eine oder mehrere Regionen ausgewählt wurde.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Abrechnungsbeispiel: Azure Cosmos DB-Konto mit mehreren Regionen und Schreibanforderung für eine Region
 
@@ -228,7 +228,7 @@ Monatliche Gesamtkosten = monatliche Speicherkosten + monatliche Durchsatzkosten
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Abrechnung mit reservierter Kapazität für Azure Cosmos DB
 
-Mit der reservierten Kapazität für Azure Cosmos DB können Sie im Voraus bereitgestellten Durchsatz (reservierte Kapazität oder eine Reservierung) erwerben, der auf alle Azure Cosmos DB-Datenbanken und -Container (für jede API und jedes Datenmodell) in allen Azure-Regionen angewendet werden kann. Da die Preise für den bereitgestellten Durchsatz in den einzelnen Regionen variieren, können Sie sich reservierte Kapazität als ein Guthaben vorstellen, das Sie mit einem Rabatt erworben haben und für die Bezahlung des Durchsatzes zum jeweils in der Region geltenden Preis nutzen können. Nehmen wir beispielsweise an, dass Sie ein Azure Cosmos-Konto mit einem einzelnen Container haben, für den 50.000 RUs/Sek. bereitgestellt werden und der global in zwei Regionen („USA, Osten“ und „Japan, Osten“) repliziert wird. Bei der nutzungsbasierten Option würden Sie Folgendes zahlen:  
+Mit der reservierten Kapazität für Azure Cosmos DB können Sie im Voraus bereitgestellten Durchsatz (reservierte Kapazität oder eine Reservierung) erwerben, der auf alle Azure Cosmos-Datenbanken und -Container (für jede API und jedes Datenmodell) in allen Azure-Regionen angewendet werden kann. Da die Preise für den bereitgestellten Durchsatz in den einzelnen Regionen variieren, können Sie sich reservierte Kapazität als ein Guthaben vorstellen, das Sie mit einem Rabatt erworben haben und für die Bezahlung des Durchsatzes zum jeweils in der Region geltenden Preis nutzen können. Nehmen wir beispielsweise an, dass Sie ein Azure Cosmos-Konto mit einem einzelnen Container haben, für den 50.000 RUs/Sek. bereitgestellt werden und der global in zwei Regionen („USA, Osten“ und „Japan, Osten“) repliziert wird. Bei der nutzungsbasierten Option würden Sie Folgendes zahlen:  
 
 * In der Region „USA, Osten“: 50.000 RUs/Sek. zu einer Rate von 0,008 US-Dollar pro 100 RUs/Sek. in dieser Region 
 

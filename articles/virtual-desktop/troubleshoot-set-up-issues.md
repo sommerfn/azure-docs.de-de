@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877585"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981089"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -53,7 +53,7 @@ Beispiel für unformatierten Fehler:
 
 **Ursache:** Dem angemeldeten Benutzer wurde in seinem Azure Active Directory-Mandanten nicht die TenantCreator-Rolle zugewiesen.
 
-**Behebung:** Befolgen Sie die Anweisungen unter [Zuweisen der Anwendungsrolle „TenantCreator“ für einen Benutzer in Ihrem Azure Active Directory-Mandanten](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant). Nachdem Sie die entsprechenden Schritte ausgeführt haben, ist der TenantCreator-Rolle ein Benutzer zugewiesen.
+**Behebung:** Befolgen Sie die Anweisungen unter [Zuweisen der Anwendungsrolle „TenantCreator“ für einen Benutzer in Ihrem Azure Active Directory-Mandanten](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Nachdem Sie die entsprechenden Schritte ausgeführt haben, ist der TenantCreator-Rolle ein Benutzer zugewiesen.
 
 ![Screenshot: Zugewiesene Rolle „TenantCreator“](media/TenantCreatorRoleAssigned.png)
 

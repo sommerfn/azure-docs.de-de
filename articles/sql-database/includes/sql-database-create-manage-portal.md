@@ -3,18 +3,18 @@ author: stevestein
 ms.service: sql-database
 ms.subservice: operations
 ms.topic: include
-ms.date: 08/09/2019
+ms.date: 08/23/2019
 ms.author: sstein
-ms.openlocfilehash: f7b385f359311217595352be31ba0687ca87bf40
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9e189d0582d2e81193c892cb349b475ed0d68df8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873714"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70014770"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Erstellen und Verwalten von Azure SQL-Ressourcen im Azure-Portal
 
-Das Azure-Portal bietet die Möglichkeit, [all Ihre Azure SQL-Ressourcen](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql), einschließlich SQL-VMs, auf einer einzigen Seite zu verwalten.
+Das Azure-Portal bietet die Möglichkeit, [all Ihre Azure SQL-Ressourcen](https://go.microsoft.com/fwlink/?linkid=2100641), einschließlich SQL-VMs, auf einer einzigen Seite zu verwalten.
 
 Um auf die Seite **Azure SQL-Ressourcen** zuzugreifen, wählen Sie im Menü auf der linken Seite des Azure-Portals die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* im Suchfeld ein.
 

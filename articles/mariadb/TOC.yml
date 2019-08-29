@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: Anleitungen
   items:
+    - name: Verwalten eines Servers
+      items:
+        - name: Azure-Portal
+          href: howto-create-manage-server-portal.md
     - name: Firewallregeln
       items:
         - name: Azure-Portal
@@ -123,6 +127,8 @@
       items:
         - name: Azure-Portal
           href: howto-auto-grow-storage-portal.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: howto-auto-grow-storage-cli.md
     - name: Zugreifen auf Serverprotokolle
       items:
         - name: Protokolle für langsame Abfragen
