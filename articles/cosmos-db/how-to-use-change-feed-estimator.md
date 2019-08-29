@@ -3,15 +3,15 @@ title: 'Verwenden des Änderungsfeed-Estimators: Azure Cosmos DB'
 description: Hier erfahren Sie, wie Sie mit dem Änderungsfeed-Estimator den Fortschritt Ihres Änderungsfeedprozessors analysieren
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615277"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092949"
 ---
 # <a name="use-the-change-feed-estimator"></a>Verwenden des Änderungsfeed-Estimators
 
@@ -55,7 +55,7 @@ Sie können diese Schätzung an Ihre Überwachungslösung senden, um Ihren Forts
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Zusätzliche Beispiele auf GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Nächste Schritte

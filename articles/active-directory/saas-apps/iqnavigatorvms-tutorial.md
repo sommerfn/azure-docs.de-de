@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 579b35a06b74ffcef47ca0b41ff60bfdc4e0eb2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dba50c984984363682efce1f09ef462b3c0c5def
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099778"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Tutorial: Azure Active Directory-Integration von IQNavigator VMS
 
@@ -114,7 +114,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IQNaviga
     d. Geben Sie im Textfeld **Relayzustand** eine URL nach folgendem Muster ein: `https://<subdomain>.iqnavigator.com`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL und den tatsächlichen Relayzustand. Wenden Sie sich an das [Supportteam für den IQNavigator VMS-Client](https://www.beeline.com/iqn-product-support/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL und den tatsächlichen Relayzustand. Wenden Sie sich an das [Supportteam für den IQNavigator VMS-Client](https://www.beeline.com/support-iqn/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Die IQNavigator-Anwendung erwartet den Wert der eindeutigen Benutzer-ID im Namensbezeichneranspruch. Der Kunde kann den richtigen Wert für den Namensbezeichneranspruch zuordnen. In diesem Fall haben wir zu Demozwecken „user.UserPrincipalName“ zugeordnet. Sie müssen jedoch basierend auf Ihren Organisationseinstellungen den richtigen Wert zuordnen.
 
@@ -126,7 +126,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit IQNaviga
 
 ### <a name="configure-iqnavigator-vms-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für IQNavigator VMS
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **IQNavigator VMS** müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von IQNavigator VMS](https://www.beeline.com/iqn-product-support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **IQNavigator VMS** müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von IQNavigator VMS](https://www.beeline.com/support-iqn/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -181,7 +181,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-iqnavigator-vms-test-user"></a>Erstellen eines IQNavigator VMS-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in IQNavigator VMS einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der IQNavigator VMS-Plattform ggf. vom  [IQNavigator VMS-Supportteam](https://www.beeline.com/iqn-product-support/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in IQNavigator VMS einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der IQNavigator VMS-Plattform ggf. vom  [IQNavigator VMS-Supportteam](https://www.beeline.com/support-iqn/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
