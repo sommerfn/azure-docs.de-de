@@ -8,26 +8,26 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: b494f6524e5105a95bc8a24a6fa2521abcca3f7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/22/2019
+ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64729402"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656462"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
 Um mit AS2-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den AS2-Connector verwenden, der Auslöser und Aktionen für die Verwaltung der AS2-Kommunikation bereitstellt. Um z. B. Sicherheit und Zuverlässigkeit bei der Übertragung von Nachrichten zu gewährleisten, können Sie die folgenden Aktionen verwenden:
 
-* [**Als AS2-Nachricht codieren**-Aktion](#encode) zum Bereitstellen von Verschlüsselung, digitaler Signatur und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (MDN), die beim Unterstützen der Nichtabstreitbarkeit helfen. Diese Aktion wendet z. B. AS2/HTTP-Header an und führt die folgenden Aufgaben aus, wenn sie konfiguriert sind:
+* [Aktion **AS2-Nachricht codieren**](#encode) zum Bereitstellen von Verschlüsselung, einer digitalen Signatur und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (Message Disposition Notifications, MDNs), die beim Unterstützen der Nichtabstreitbarkeit helfen. Diese Aktion wendet z. B. AS2/HTTP-Header an und führt die folgenden Aufgaben aus, wenn sie konfiguriert sind:
 
   * Signieren ausgehender Nachrichten
   * Verschlüsseln ausgehender Nachrichten
   * Komprimieren der Nachricht
   * Dateinamen im MIME-Header übertragen
 
-* [**AS2-Nachricht decodieren**-Aktion](#decode) zum Bereitstellen von Entschlüsselung, digitaler Signatur und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (MDN). Diese Aktion führt z. B. die folgenden Aufgaben aus: 
+* [Aktion **AS2-Nachricht decodieren**](#decode) zum Bereitstellen von Entschlüsselung, einer digitalen Signatur und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (Message Disposition Notifications, MDNs). Diese Aktion führt z. B. die folgenden Aufgaben aus:
 
   * Verarbeiten von AS2/HTTP-Headern
   * Abstimmen empfangener MDNs mit der ursprünglichen ausgehenden Nachricht
@@ -42,10 +42,13 @@ Um mit AS2-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den AS2-Conn
 
   * Überprüfen der Signatur
   * Entschlüsseln der Nachrichten
-  * Dekomprimieren der Nachrichten 
+  * Dekomprimieren der Nachrichten
   * Suchen nach und Unterbinden von doppelten Nachrichten-IDs
 
 In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und Decodierung zu einer bestehenden Logik-App hinzufügen können.
+
+> [!IMPORTANT]
+> Der ursprüngliche AS2-Connector wird als veraltet markiert, stellen Sie also sicher, dass Sie stattdessen den **AS2 (v2)** -Connector verwenden. Diese Version bietet die gleichen Funktionen wie die ursprüngliche Version, ist in der Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Durchsatz und Nachrichtengröße. Außerdem erfordert der native v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -71,23 +74,19 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
 
-1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu. 
+1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu.
 
-1. Wählen Sie unter **Aktion auswählen** und unter dem Suchfeld **Alle** aus. Geben Sie im Suchfeld „as2 codieren“ ein, und wählen Sie diese Aktion aus: **Als AS2-Nachricht codieren**.
+1. Wählen Sie im Suchfeld unter **Aktion auswählen** die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Codierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Codierung**
 
-   ![Wählen Sie „Als AS2-Nachricht codieren“ aus.](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+   ![Auswählen von „AS2-Codierung“](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-1. Wenn keine bestehende Verbindung mit Ihrem Integrationskonto vorhanden ist, werden Sie aufgefordert, diese Verbindung jetzt zu erstellen. Benennen Sie die Verbindung, wählen Sie das Integrationskonto aus, mit dem Sie eine Verbindung herstellen möchten, und wählen Sie anschließend **Erstellen** aus.
-
-   ![Integrationskontoverbindung erstellen](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
- 
 1. Geben Sie jetzt Informationen zu diesen Eigenschaften an:
 
    | Eigenschaft | BESCHREIBUNG |
    |----------|-------------|
-   | **AS2-From** | Der Bezeichner für den Absender der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben. |
-   | **AS2-To** | Der Bezeichner für den Empfänger der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben. |
-   | **body** | Die Nachrichtennutzlast. |
+   | **Zu codierende Nachricht** | Die Nachrichtennutzlast. |
+   | **AS2-Absender** | Der Bezeichner für den Absender der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben. |
+   | **AS2-Empfänger** | Der Bezeichner für den Empfänger der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben. |
    |||
 
    Beispiel:
@@ -100,21 +99,17 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
 
-1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu. 
+1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu.
 
-1. Wählen Sie unter **Aktion auswählen** und unter dem Suchfeld **Alle** aus. Geben Sie im Suchfeld „as2 decodieren“ ein, und wählen Sie diese Aktion aus: **Decodieren von AS2-Nachrichten**
+1. Wählen Sie im Suchfeld unter **Aktion auswählen** die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Decodierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Decodierung**
 
-   ![Wählen Sie „AS2-Nachricht decodieren“ aus.](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+   ![Auswählen von „AS2-Decodierung“](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-1. Wenn keine bestehende Verbindung mit Ihrem Integrationskonto vorhanden ist, werden Sie aufgefordert, diese Verbindung jetzt zu erstellen. Benennen Sie die Verbindung, wählen Sie das Integrationskonto aus, mit dem Sie eine Verbindung herstellen möchten, und wählen Sie anschließend **Erstellen** aus.
-
-   ![Integrationskontoverbindung erstellen](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
-
-1. Wählen Sie für **body** und **Headers** diese Werte aus den vorherigen Trigger- oder Aktionsausgaben aus.
+1. Wählen Sie für die Eigenschaften **Zu codierende Nachricht** und **Nachrichtenheader** diese Werte aus vorherigen Trigger- oder Aktionsausgaben aus.
 
    Angenommen, Ihre Logik-App empfängt Nachrichten über einen Anforderungstrigger. Sie können die Ausgaben von diesem Trigger auswählen.
 
-   ![Wählen Sie bei den Ausgaben der Anforderung den Text und die Header aus.](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png) 
+   ![Wählen Sie bei den Ausgaben der Anforderung den Text und die Header aus.](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
 ## <a name="sample"></a>Beispiel
 

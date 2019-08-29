@@ -3,21 +3,21 @@ title: Azure VMware-Lösung von CloudSimple – CloudSimple-Knotenkontingent
 description: Beschreibt die Kontingentgrenzen für CloudSimple-Knoten und das Anfordern einer Kontingenterhöhung
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e765d7c87f2f941a5e2d558b71c4e5a71d2df9b1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 12fecfc3a20d91b9324e1662f3f937340b7ff5c4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816676"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972453"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple-Knotenkontingentgrenzen
 
-Die für eine Bereitstellung verfügbare Standardmenge beträgt vier Knoten, wenn Ihr Abonnement für den CloudSimple-Dienst aktiviert ist.  Sie können jeden [Knotentypen](cloudsimple-node.md) aus dem Azure-Portal bereitstellen.  Mindestens drei Knoten derselben SKU sind erforderlich, um eine Private Cloud zu erstellen.  Wenn Sie die Knoten bereitgestellt haben, wird unter Umständen ein Fehler angezeigt, wenn Sie versuchen, weitere Knoten zu bereitzustellen.
+Die Standardmenge, die erworben werden kann, beträgt vier Knoten, wenn Ihr Abonnement für den CloudSimple-Dienst aktiviert ist.  Sie können sämtliche [Knotentypen](cloudsimple-node.md) im Azure-Portal erwerben.  Mindestens drei Knoten der gleichen SKU sind erforderlich, um eine private Cloud zu erstellen.  Wenn Sie die Knoten erworben haben, wird unter Umständen ein Fehler angezeigt, wenn Sie versuchen, weitere Knoten zu erwerben.
 
 ## <a name="quota-increase"></a>Kontingenterhöhung
 
@@ -40,5 +40,5 @@ Sie können auch unter [azurevmwaresales@microsoft.com ](mailto:azurevmwaresales
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bereitstellen von Knoten](create-nodes.md)
+* [Knotenkauf](create-nodes.md)
 * [Übersicht über CloudSimple-Knoten](cloudsimple-node.md)

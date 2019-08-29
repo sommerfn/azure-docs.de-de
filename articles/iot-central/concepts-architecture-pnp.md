@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879138"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995872"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central-Architektur (Previewfunktionen)
 
@@ -73,7 +73,7 @@ In einer Azure IoT Central-Anwendung definieren Gerätevorlagen das Verhalten un
 
 In einer Gerätevorlage einer IoT Central-Vorschauanwendung gilt Folgendes:
 
-- **Gerätefunktionsmodelle** geben die Funktionen eines Geräts an, z. B. die vom Gerät gesendeten Telemetriedaten, die Eigenschaften, die den Gerätestatus definieren, und die Befehle, auf die das Gerät reagiert. Gerätefunktionen sind in einer oder mehreren Schnittstellen organisiert. Weitere Informationen zu Gerätefunktionsmodellen finden Sie in der Dokumentation zu [IoT Plug & Play](https://aka.ms/iot-pnp-docs).
+- **Gerätefunktionsmodelle** geben die Funktionen eines Geräts an, z. B. die vom Gerät gesendeten Telemetriedaten, die Eigenschaften, die den Gerätestatus definieren, und die Befehle, auf die das Gerät reagiert. Gerätefunktionen sind in einer oder mehreren Schnittstellen organisiert. Weitere Informationen zu Gerätefunktionsmodellen finden Sie in der Dokumentation zu [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md).
 - **Cloudeigenschaften** geben die Eigenschaften an, die IoT Central für ein Gerät speichert. Diese Eigenschaften werden nur in IoT Central gespeichert und nie an ein Gerät gesendet.
 - **Ansichten** geben die Dashboards und Formulare an, die der Generator erstellt, damit der Operator die Geräte überwachen und verwalten kann.
 - Durch **Anpassungen** kann der Generator einige der Definitionen im Gerätefunktionsmodell überschreiben, damit Sie für die IoT Central-Anwendung relevanter werden.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca6f79b5febdbf12c80ab85d07117bf937babef0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 879404b264e9ea6c544c6edf509001b38997bb0c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798206"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874331"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -125,7 +125,7 @@ Zwei Faktoren haben Einfluss darauf, welche Authentifizierungsmethoden mit der B
       > [!NOTE]
       > Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
       >
-      > Wenn Ihre VPN-Client UX kein Eingabefeld unterstützt und Sie die Netzwerkzugriffsrichtlinie konfiguriert haben, dann kann zwar die Authentifizierung erfolgreich sein, aber keines der RADIUS-Attribute, die in der Netzwerkrichtlinie konfiguriert werden, werden auf das Netzwerkzugriffsgerät, wie den RRAS-Server, oder den VPN-Client angewendet. Daraus resultiert, dass der VPN-Client mehr, weniger oder fast keinen Zugriff haben kann, als gewünscht.
+      > Wenn die Benutzeroberfläche Ihres VPN-Clients kein Eingabefeld unterstützt und Sie eine Netzwerkzugriffsrichtlinie konfiguriert haben, kann zwar die Authentifizierung erfolgreich sein, aber keines der in der Netzwerkrichtlinie konfigurierten RADIUS-Attribute wird auf das Netzwerkzugriffsgerät, z. B. den RRAS-Server, oder den VPN-Client angewendet. Daraus resultiert, dass der VPN-Client mehr, weniger oder fast keinen Zugriff haben kann, als gewünscht.
       >
 
 2. Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?

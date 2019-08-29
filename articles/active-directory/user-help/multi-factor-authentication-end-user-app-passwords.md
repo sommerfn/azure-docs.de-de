@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616298"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088404"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
@@ -47,7 +47,7 @@ Sie können App-Kennwörter erstellen und löschen, je nachdem, wie Sie die zwei
 
 - **Ihr Unternehmen verwendet die zweistufige Überprüfung und die Seite „Zusätzliche Sicherheitsüberprüfung“.** Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) mit zweistufiger Überprüfung in Ihrer Organisation verwenden, können Sie Ihre App-Kennwörter auf der Seite [Zusätzliche Sicherheitsprüfung](https://account.activedirectory.windowsazure.com/Proofup.aspx) verwalten. Ausführliche Anweisungen finden Sie unter [Erstellen und Löschen von App-Kennwörtern mithilfe der Seite „Zusätzliche Sicherheitsüberprüfung“](#create-and-delete-app-passwords-from-the-additional-security-verification-page) in diesem Artikel.
 
-- **Ihr Unternehmen verwendet die zweistufige Überprüfung und das Office 365-Portal.** Wenn Sie in Ihrem Unternehmen Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) die zweistufige Überprüfung und Office 365-Anwendungen verwenden, können Sie Ihre App-Kennwörter auf der [Office 365-Portalseite](https://office.portal.com) verwalten. Ausführliche Anweisungen finden Sie unter [Erstellen und Löschen von App-Kennwörtern mithilfe des Office 365-Portals](#create-and-delete-app-passwords-using-the-office-365-portal) in diesem Artikel.
+- **Ihr Unternehmen verwendet die zweistufige Überprüfung und das Office 365-Portal.** Wenn Sie in Ihrem Unternehmen Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) die zweistufige Überprüfung und Office 365-Anwendungen verwenden, können Sie Ihre App-Kennwörter auf der [Office 365-Portalseite](https://www.office.com) verwalten. Ausführliche Anweisungen finden Sie unter [Erstellen und Löschen von App-Kennwörtern mithilfe des Office 365-Portals](#create-and-delete-app-passwords-using-the-office-365-portal) in diesem Artikel.
 
 - **Sie verwenden eine zweistufige Überprüfung mit einem privaten Microsoft-Konto.** Wenn Sie ein privates Microsoft-Konto (z. B. alain@outlook.com) mit zweistufiger Überprüfung verwenden, können Sie Ihre App-Kennwörter auf der Seite [Grundlegendes zur Sicherheit](https://account.microsoft.com/security/) verwalten. Ausführliche Anweisungen finden Sie unter [Verwenden von App-Kennwörtern mit Apps, die keine zweistufige Überprüfung unterstützen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 

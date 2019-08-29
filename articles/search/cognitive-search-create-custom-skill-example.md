@@ -312,7 +312,7 @@ namespace SampleSkills
 }
 ```
 
-Wichtig: Geben Sie in der Konstanten `key` Ihren eigenen Schlüsselwert ** ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
+Wichtig: Geben Sie in der Konstanten `key` *Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
 
 Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation finden Sie im Repository [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 

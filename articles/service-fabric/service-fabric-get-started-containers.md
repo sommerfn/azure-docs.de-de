@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9ef1dad0e90ec3e48a4bf22325cba0beb197d290
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599531"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650678"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -265,136 +265,9 @@ Konfigurieren Sie einen Hostport für die Kommunikation mit dem Container. Über
 > [!NOTE]
 > Zusätzliche PortBindings für einen Dienst können hinzugefügt werden, indem zusätzliche PortBinding-Elemente mit entsprechenden Eigenschaftswerten deklariert werden.
 
-## <a name="configure-container-registry-authentication"></a>Konfigurieren der Authentifizierung der Containerregistrierung
+## <a name="configure-container-repository-authentication"></a>Konfigurieren der Authentifizierung des Containerrepositorys
 
-Konfigurieren Sie die Authentifizierung der Containerregistrierung, indem Sie dem `ContainerHostPolicies`-Element der Datei „ApplicationManifest.xml“ ein `RepositoryCredentials`-Element hinzufügen. Fügen Sie das Konto und Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu, damit der Dienst das Containerimage aus dem Repository herunterladen kann.
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-            <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-Es wird empfohlen, das Repository-Kennwort mithilfe eines Verschlüsselungszertifikats zu verschlüsseln, das auf allen Knoten des Clusters bereitgestellt wird. Bei der Bereitstellung des Dienstpakets für den Cluster durch Service Fabric wird das Verschlüsselungszertifikat zum Entschlüsseln des Verschlüsselungstexts verwendet. Das Cmdlet „Invoke-ServiceFabricEncryptText“ wird zum Verschlüsseln des Texts für das Kennwort verwendet, das der Datei „ApplicationManifest.xml“ hinzugefügt wird.
-
-Mit dem folgenden Skript wird ein neues selbstsigniertes Zertifikat erstellt und in eine PFX-Datei exportiert. Das Zertifikat wird in einen vorhandenen Schlüsseltresor importiert und dann im Service Fabric-Cluster bereitgestellt.
-
-```powershell
-# Variables.
-$certpwd = ConvertTo-SecureString -String "Pa$$word321!" -Force -AsPlainText
-$filepath = "C:\MyCertificates\dataenciphermentcert.pfx"
-$subjectname = "dataencipherment"
-$vaultname = "mykeyvault"
-$certificateName = "dataenciphermentcert"
-$groupname="myclustergroup"
-$clustername = "mycluster"
-
-$subscriptionId = "subscription ID"
-
-Login-AzAccount
-
-Select-AzSubscription -SubscriptionId $subscriptionId
-
-# Create a self signed cert, export to PFX file.
-New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
-| Export-PfxCertificate -FilePath $filepath -Password $certpwd
-
-# Import the certificate to an existing key vault. The key vault must be enabled for deployment.
-$cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
-
-Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
-```
-Verschlüsseln Sie das Kennwort mithilfe des Cmdlets [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps).
-
-```powershell
-$text = "=P==/==/=8=/=+u4lyOB=+=nWzEeRfF="
-Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint $cer.Thumbprint -Text $text -StoreLocation Local -StoreName My
-```
-
-Ersetzen Sie das Kennwort mit dem vom Cmdlet [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) zurückgegebenen Verschlüsselungstext, und legen Sie `PasswordEncrypted` auf „true“ fest.
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-            <RepositoryCredentials AccountName="myregistry" Password="MIIB6QYJKoZIhvcNAQcDoIIB2jCCAdYCAQAxggFRMIIBTQIBADA1MCExHzAdBgNVBAMMFnJ5YW53aWRhdGFlbmNpcGhlcm1lbnQCEFfyjOX/17S6RIoSjA6UZ1QwDQYJKoZIhvcNAQEHMAAEg
-gEAS7oqxvoz8i6+8zULhDzFpBpOTLU+c2mhBdqXpkLwVfcmWUNA82rEWG57Vl1jZXe7J9BkW9ly4xhU8BbARkZHLEuKqg0saTrTHsMBQ6KMQDotSdU8m8Y2BR5Y100wRjvVx3y5+iNYuy/JmM
-gSrNyyMQ/45HfMuVb5B4rwnuP8PAkXNT9VLbPeqAfxsMkYg+vGCDEtd8m+bX/7Xgp/kfwxymOuUCrq/YmSwe9QTG3pBri7Hq1K3zEpX4FH/7W2Zb4o3fBAQ+FuxH4nFjFNoYG29inL0bKEcTX
-yNZNKrvhdM3n1Uk/8W2Hr62FQ33HgeFR1yxQjLsUu800PrYcR5tLfyTB8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBybgM5NUV8BeetUbMR8mJhgFBrVSUsnp9B8RyebmtgU36dZiSObDsI
-NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==" PasswordEncrypted="true"/>
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-### <a name="configure-cluster-wide-credentials"></a>Konfigurieren von Anmeldeinformationen für den gesamten Cluster
-
-Ab Version 6.3 der Runtime können Sie mit Service Fabric Anmeldeinformationen konfigurieren, die für den gesamten Cluster gelten und von Anwendungen als Standardanmeldeinformationen für Repositorys verwendet werden können.
-
-Sie können das Feature aktivieren bzw. deaktivieren, indem Sie in der Datei „ApplicationManifest.xml“ dem `ContainerHostPolicies`-Element das Attribut `UseDefaultRepositoryCredentials` mit dem Wert `true` oder `false` hinzufügen.
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code" UseDefaultRepositoryCredentials="true">
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-In Service Fabric werden die Standardanmeldeinformationen für Repositorys dann verwendet, und Sie können sie im ClusterManifest im Abschnitt `Hosting` angeben.  Wenn `UseDefaultRepositoryCredentials` auf `true` festgelegt ist, liest Service Fabric die folgenden Werte aus dem ClusterManifest:
-
-* DefaultContainerRepositoryAccountName (Zeichenfolge)
-* DefaultContainerRepositoryPassword (Zeichenfolge)
-* IsDefaultContainerRepositoryPasswordEncrypted (Boolescher Wert)
-* DefaultContainerRepositoryPasswordType (Zeichenfolge) – Wird ab Version 6.4 der Runtime unterstützt
-
-Hier ist ein Beispiel dafür angegeben, was Sie in der Datei „ClusterManifestTemplate.json“ im Abschnitt `Hosting` hinzufügen können. Der `Hosting`-Abschnitt kann bei der Clustererstellung oder später in einem Konfigurationsupgrade hinzugefügt werden. Weitere Informationen finden Sie unter [Ändern von Azure Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md) und [Verwalten von Azure Service Fabric-Anwendungsgeheimnissen](service-fabric-application-secret-management.md).
-
-```json
-"fabricSettings": [
-    ...,
-    {
-        "name": "Hosting",
-        "parameters": [
-          {
-            "name": "EndpointProviderEnabled",
-            "value": "true"
-          },
-          {
-            "name": "DefaultContainerRepositoryAccountName",
-            "value": "someusername"
-          },
-          {
-            "name": "DefaultContainerRepositoryPassword",
-            "value": "somepassword"
-          },
-          {
-            "name": "IsDefaultContainerRepositoryPasswordEncrypted",
-            "value": "false"
-          },
-          {
-            "name": "DefaultContainerRepositoryPasswordType",
-            "value": "PlainText"
-          }
-        ]
-      },
-]
-```
+Informationen dazu, wie Sie verschiedene Authentifizierungstypen für das Herunterladen von Containerimages konfigurieren, finden Sie unter [Authentifizierung für Containerrepositorys](configure-container-repository-credentials.md).
 
 ## <a name="configure-isolation-mode"></a>Isolationsmodus konfigurieren
 Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. Mit dem Prozessisolationsmodus verwenden alle auf demselben Host ausgeführten Container denselben Kernel wie der Host. Mit dem Hyper-V-Isolationsmodus werden die Kernels der einzelnen Hyper-V-Container und des Containerhosts voneinander getrennt. Der Isolationsmodus wird im `ContainerHostPolicies`-Element der Anwendungsmanifestdatei angegeben. Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. In der Voreinstellung wird auf Windows Server-Hosts der Prozessisolationsmodus verwendet. Auf Windows 10-Hosts wird nur der Hyper-V-Isolationsmodus unterstützt, daher wird der Container im Hyper-V-Isolationsmodus unabhängig von der Einstellung für den Isolationsmodus ausgeführt. Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.

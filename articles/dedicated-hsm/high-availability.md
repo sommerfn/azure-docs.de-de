@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 784a6821502a0e02a74d619047604ffe47df7e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf55761bb58e309f919e08530fe047a137756323
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60914162"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656543"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure-Dienst für dedizierte HSMs – Hochverfügbarkeit
 
@@ -25,7 +25,7 @@ Der Azure-Dienst für dedizierte HSMs wird durch die hoch verfügbaren Rechenzen
 
 ## <a name="high-availability-example"></a>Beispiel für Hochverfügbarkeit
 
-Informationen zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit auf Softwareebene finden Sie im „Gemalto Luna Network HSM Administration Guide“ (Gemalto Luna-Netzwerk-HSM-Administratorhandbuch). Dieses Dokument ist über das [Gemalto-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar.
+Informationen zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit auf Softwareebene finden Sie im „Gemalto Luna Network HSM Administration Guide“ (Gemalto Luna-Netzwerk-HSM-Administratorhandbuch). Dieses Dokument ist auf der [Gemalto-HSM-Seite](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) verfügbar.
 
 Im folgenden Diagramm ist eine hoch verfügbare Architektur dargestellt. Sie verwendet mehrere Geräte in der Region und mehrere verbundene Geräte in einer separaten Region. Diese Architektur verwendet mindestens vier HSM-Geräte und virtuelle Netzwerkkomponenten.
 

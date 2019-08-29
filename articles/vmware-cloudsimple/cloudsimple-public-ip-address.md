@@ -1,23 +1,23 @@
 ---
-title: VMware-Lösung von CloudSimple – öffentliche Azure-IP-Adressen
-description: Erfahren Sie mehr über öffentliche IP-Adressen und deren Vorteile für die VMware-Lösung von CloudSimple.
+title: Azure-VMware-Lösung von CloudSimple – öffentliche IP-Adresse
+description: Erfahren Sie mehr über öffentliche IP-Adressen und deren Vorteile für die Azure-VMware-Lösung von CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812523"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877681"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>Öffentliche CloudSimple-IP-Adresse – Übersicht
 
-Eine öffentliche IP-Adresse ermöglicht es Internetressourcen, eingehende Daten an Ressourcen in einer privaten Cloud mit einer privaten IP-Adresse zu senden. Die private IP-Adresse gehört entweder zu einem virtuellen Computer oder zu einem softwarebasierten Lastenausgleich (Software Load Balancer). Die private IP-Adresse befindet sich im vCenter Ihrer privaten Cloud. Über die öffentliche IP-Adresse können Sie Dienste, die in Ihrer privaten Cloud ausgeführt werden, für das Internet verfügbar machen.
+Eine öffentliche IP-Adresse ermöglicht Internetressourcen die eingehende Kommunikation mit Ressourcen in einer privaten Cloud über eine private IP-Adresse. Die private IP-Adresse gehört ist entweder ein virtueller Computer oder ein softwarebasiertes Lastenausgleichsmodul im vCenter Ihrer privaten Cloud. Über die öffentliche IP-Adresse können Sie Dienste, die in Ihrer privaten Cloud ausgeführt werden, für das Internet verfügbar machen.
 
 Die öffentliche IP-Adresse ist solange der privaten IP-Adresse zugewiesen, bis Sie diese Zuweisung aufgehoben haben. Eine öffentliche IP-Adresse kann nur einer privaten IP-Adresse zugewiesen werden.
 
@@ -33,4 +33,4 @@ Das Verwenden einer öffentlichen IP-Adresse für die eingehende Kommunikation b
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [Zuordnen einer öffentlichen IP-Adresse](https://docs.azure.cloudsimple.com/public-ips/).
+* Erfahren Sie mehr über das [Zuordnen einer öffentlichen IP-Adresse](public-ips.md).

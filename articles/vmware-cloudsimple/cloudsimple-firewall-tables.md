@@ -1,23 +1,23 @@
 ---
-title: Firewalltabellen – VMware-Lösung von CloudSimple – Azure
+title: Azure-VMware-Lösung von CloudSimple – Firewalltabellen
 description: Erfahren Sie mehr über Firewalltabellen und Firewallregeln einer privaten CloudSimple-Cloud.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812661"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877713"
 ---
 # <a name="firewall-tables-overview"></a>Übersicht über Firewalltabellen
 
-In einer Firewalltabelle sind die Regeln aufgeführt, gemäß denen Netzwerkdatenverkehr an und von Ressourcen einer privaten Cloud gefiltert werden. Sie können die Regeln auf ein VLAN oder ein Subnetz anwenden. Über die Regeln wird dann der Netzwerkdatenverkehr zwischen einem Quellnetzwerk oder einer Quell-IP-Adresse und einem Zielnetzwerk oder einer Ziel-IP-Adresse gesteuert.
+In einer Firewalltabelle sind die Regeln aufgeführt, mit denen Netzwerkdatenverkehr an und von Ressourcen einer privaten Cloud gefiltert werden. Sie können Firewalltabellen auf ein VLAN oder ein Subnetz anwenden. Die Regeln steuern den Netzwerkdatenverkehr zwischen einem Quellnetzwerk oder einer Quell-IP-Adresse und einem Zielnetzwerk oder einer Ziel-IP-Adresse.
 
 ## <a name="firewall-rules"></a>Firewallregeln
 
@@ -26,7 +26,7 @@ In der folgenden Tabelle sind die Parameter beschrieben, die es in einer Firewal
 | Eigenschaft | Details |
 | ---------| --------|
 | **Name** | Ein Name, der die Firewallregel und deren Zweck eindeutig kennzeichnet. |
-| **Priority** | Eine Zahl zwischen 100 und 4096, wobei 100 die höchste Priorität bedeutet. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Ergibt sich für Datenverkehr eine Regelübereinstimmung, wird die Regelverarbeitung beendet. Daher werden alle Regeln, die niedrigere Prioritäten, aber dieselben Attribute wie Regeln mit höheren Prioritäten haben, nicht verarbeitet.  Achten Sie darauf, sich blockierende Regeln zu vermeiden. |
+| **Priority** | Eine Zahl zwischen 100 und 4096, wobei 100 die höchste Priorität bedeutet. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Wenn beim Datenverkehr eine Regelübereinstimmung gefunden wird, wird die Regelverarbeitung beendet. Daher werden Regeln mit niedrigeren Prioritäten, die dieselben Attribute aufweisen wie Regeln mit höheren Prioritäten, nicht verarbeitet.  Achten Sie darauf, sich blockierende Regeln zu vermeiden. |
 | **Zustandsnachverfolgung** | Nachverfolgung kann zustandslos (private Cloud, Internet oder VPN) oder zustandsbehaftet (öffentliche IP-Adresse) sein.  |
 | **Protokoll** | Zu den Optionen gehören „Any“ (Beliebig), „TCP“ und „UDP“. Wenn Sie ICMP benötigen, verwenden Sie „Any“. |
 | **Richtung** | Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt. |
@@ -62,4 +62,4 @@ Die folgenden Standardregeln werden in jeder Firewalltabelle erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Firewalltabellen und -regeln](https://docs.azure.cloudsimple.com/firewall/)
+* [Einrichten von Firewalltabellen und -regeln](firewall.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 597944d03e685a9a2933a04847f78c9d54f3ea36
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722704"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650153"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor  
 
@@ -134,6 +134,11 @@ applicationsScoping
 | summarize count() by applicationName, bin(timestamp, 1h) 
 | render timechart
 ```
+
+>[!NOTE]
+>Diese Methode kann bei Protokollwarnungen nicht verwendet werden, weil die Zugriffsüberprüfung der Warnungsregelressourcen, einschließlich Arbeitsbereichen und Anwendungen, zum Zeitpunkt der Erstellung der Warnung ausgeführt wird. Das Hinzufügen neuer Ressourcen zur Funktion nach dem Erstellen der Warnung wird nicht unterstützt. Wenn Sie eine Funktion zur Ressourcenbereichsdefinition in Protokollwarnungen verwenden möchten, müssen Sie die Warnungsregel im Portal bearbeiten oder eine Resource Manager-Vorlage verwenden, um die bereichsbezogenen Ressourcen zu aktualisieren. Alternativ dazu können Sie die Liste der Ressourcen in die Abfrage der Protokollwarnung einbeziehen.
+
+
 ![Zeitdiagramm](media/cross-workspace-query/chart.png)
 
 ## <a name="next-steps"></a>Nächste Schritte

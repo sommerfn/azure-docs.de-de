@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: atsenthi
-ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599556"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650669"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
@@ -181,28 +181,11 @@ Geben Sie die Portzuordnung im entsprechenden Format an. Im Falle dieses Artikel
 ![Service Fabric-Yeoman-Generator für Container][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Konfigurieren der Authentifizierung des Containerrepositorys
- Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu. Fügen Sie für diesen Artikel den Kontonamen und das Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu. Stellen Sie sicher, dass die Richtlinie unter dem Tag „ServiceManifestImport“ gemäß dem richtigen Dienstpaket hinzugefügt wird.
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-Sie sollten das Repositorykennwort verschlüsseln. Anweisungen finden Sie unter [Verwalten von Geheimnissen in Service Fabric-Anwendungen](service-fabric-application-secret-management.md).
-
-### <a name="configure-cluster-wide-credentials"></a>Konfigurieren von Anmeldeinformationen für den gesamten Cluster
-Lesen Sie [diese Dokumentation](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials).
+Informationen dazu, wie Sie verschiedene Authentifizierungstypen für das Herunterladen von Containerimages konfigurieren, finden Sie unter [Authentifizierung für Containerrepositorys](configure-container-repository-credentials.md).
 
 ## <a name="configure-isolation-mode"></a>Isolationsmodus konfigurieren
-Mit der Veröffentlichung der Runtimeversion 6.3 wird die VM-Isolierung für Linux-Container unterstützt, wodurch zwei Isolationsmodus für Container unterstützt werden: process und hyperv. Mit dem Isolationsmodus „hyperv“ werden die Kernels der einzelnen Container und des Containerhosts voneinander getrennt. Der Isolationsmodus „hyperv“ wird mithilfe von [Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) implementiert. Der Isolationsmodus für Linux-Cluster wird im Element `ServicePackageContainerPolicy` der Anwendungsmanifestdatei angegeben. Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. Der Standardisolationsmodus ist „process“. Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
+In der Runtimeversion 6.3 wird die VM-Isolierung für Linux-Container unterstützt, wodurch zwei Isolationsmodi für Container unterstützt werden: „process“ und „Hyper-V“. Beim Isolationsmodus „Hyper-V“ werden die Kernel der einzelnen Container und des Containerhosts voneinander getrennt. Der Isolationsmodus „Hyper-V“ wird mithilfe von [Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) implementiert. Der Isolationsmodus für Linux-Cluster wird im Element `ServicePackageContainerPolicy` der Anwendungsmanifestdatei angegeben. Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. Der Standardisolationsmodus ist „process“. Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
 
 ```xml
 <ServiceManifestImport>

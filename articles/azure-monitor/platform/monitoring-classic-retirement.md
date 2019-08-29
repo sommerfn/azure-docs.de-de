@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 28dba8af059e24040abb254dd4ecd8e336d8221d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c53bc9527eeb6c7ca8194ef056177a79dd880957
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594296"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874773"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
@@ -72,14 +72,16 @@ Ab Ende August 2019 gilt Folgendes für Azure Monitor:
 > [!IMPORTANT]
 > Microsoft Azure Monitor hat in Phasen ein [Tool zum freiwilligen Migrieren](alerts-using-migration-tool.md) herausgebracht, mit dem Kunden ihre klassischen Warnungsregeln bald zur neuen Plattform migrieren können. Ab September 2019 wird die Ausführung des Tools für alle noch vorhandenen klassischen Warnungsregeln erzwungen, die migriert werden können. Kunden müssen sicherstellen, dass die Automatisierung der Nutzung der Nutzlast klassischer Warnungsregeln für die Verarbeitung der neuen Nutzlast aus [Einheitlichen Metriken und Warnungen in Application Insights](#unified-metrics-and-alerts-in-application-insights) oder [Einheitlichen Metriken und Warnungen für andere Azure-Ressourcen](#unified-metrics-and-alerts-for-other-azure-resources) nach der Migration der klassischen Warnungsregeln angepasst wird. Weitere Informationen finden Sie unter [Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration klassischer Warnungsregeln](alerts-prepare-migration.md).
 
-Wir stellen ein Migrationstool bereit, das Ihnen die freiwillige Migration Ihrer Benachrichtigungen aus dem Bereich [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) des Azure-Portals zu den neuen Azure-Benachrichtigungen erlaubt. Alle Regeln, die in Warnungen (klassisch) konfiguriert sind und zum neuen Azure Monitor migriert werden, bleiben kostenlos und ohne Berechnung. Ebenso fallen für migrierte klassische Warnungsregeln keine Kosten für das Pushen von Benachrichtigungen per E-Mail, Webhook oder Logik-App an. Die Verwendung der neueren Benachrichtigungs- oder Aktionstypen (wie etwa SMS, Sprachanruf, ITSM-Integration usw.) wird jedoch in Rechnung gestellt, unabhängig davon, ob sie zu migrierten oder zu neuen Benachrichtigungen hinzugefügt werden. Weitere Informationen finden Sie unter [Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/).
+Wir führen ein Migrationstool ein, das Sie beim Migrieren der [klassischen Warnungen](../../azure-monitor/platform/alerts-classic.overview.md) von Azure Monitor zur neuen Benutzeroberfläche für Warnungen unterstützt. Die migrierten Warnungsregeln und die zugehörigen migrierten Aktionsgruppen (E-Mail, Webhook oder LogicApp) bleiben gebührenfrei. Die Funktionen, die Sie bei klassischen Warnungen nutzen konnten – Bearbeiten von Schwellenwerten, Aggregationstyp und Detailgenauigkeit einer Aggregation – bleiben auch bei der migrierten Warnungsregel weiterhin kostenlos verfügbar. Wenn Sie jedoch eine migrierte Warnungsregel bearbeiten, sodass diese ein Feature der neuen Warnungsplattform, eine Benachrichtigung oder einen Aktionstyp verwendet, wird die entsprechende Gebühr berechnet. Weitere Informationen zu den Preisen für Warnungsregeln und Benachrichtigungen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-Darüber hinaus werden die Folgenden im Geltungsbereich der [Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/) kostenpflichtig:
+Im Folgenden finden Sie einige Beispiele für Fälle, in denen für Ihre Warnungsregel eine Gebühr berechnet wird:
 
 - Alle neuen (nicht migrierten) Warnungsregeln, die über die kostenlosen Einheiten auf der neuen Azure Monitor-Plattform erstellt werden
 - Alle über die in Azure Monitor inbegriffenen kostenlosen Einheiten hinaus erfassten und aufbewahrten Daten
 - Alle mehrfachen Web-Tests, die von Application Insights ausgeführt werden
 - Alle benutzerdefinierten Metriken, die über die inbegriffenen kostenlosen Einheiten hinaus in Azure Monitor gespeichert werden
+- Alle migrierten Warnungsregeln, die bearbeitet wurden und neuere Metrikwarnungsfeatures nutzen – z. B. Häufigkeit, mehrere Ressourcen/Dimensionen, [dynamischer Schwellwert](alerts-dynamic-thresholds.md), Ändern von Ressourcen/Signalen usw.
+- Alle migrierten Aktionsgruppen, die bearbeitet wurden und neuere Benachrichtigungen oder Aktionstypen wie SMS, Sprachanruf und/oder ITSM-Integration verwenden
 
 Dieser Artikel wird fortlaufend mit Links und Details zur neuen Überwachungs- und Benachrichtigungsfunktionalität von Azure sowie zur Verfügbarkeit von Tools aktualisiert, die Benutzer bei der Umstellung auf die neue Azure Monitor-Plattform unterstützen.
 

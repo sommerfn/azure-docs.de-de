@@ -4,26 +4,29 @@ description: Einrichten von Continuous Integration und Continuous Deployment –
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 659a6f5acaac848084ed1e9590a414191542b54a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e14025a5a7a3e81404498638d6f6f9c5ff18ed58
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414630"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650779"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge
 
 Sie können DevOps mit den integrierten Azure IoT Edge-Aufgaben in Azure Pipelines ganz einfach in Ihren Azure IoT Edge-Anwendungen übernehmen. In diesem Artikel wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Azure Pipelines zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge verwenden können. 
 
-In diesem Artikel erfahren Sie, wie Sie die integrierten Azure IoT Edge-Aufgaben für Azure-Pipelines verwenden, um zwei Pipelines für Ihre IoT Edge-Lösung zu erstellen. Die erste erstellt die Lösung mithilfe Ihres Codes, wobei Ihre Modulimages per Push an Ihre Containerregistrierung übertragen werden und ein Bereitstellungsmanifest erstellt wird. Die zweite stellt Ihre Module auf gewünschten IoT Edge-Geräten bereit.  
-
 ![Diagramm – CI- und CD-Branches für Entwicklung und Produktion](./media/how-to-ci-cd/cd.png)
 
+In diesem Artikel erfahren Sie, wie Sie die integrierten Azure IoT Edge-Aufgaben für Azure-Pipelines verwenden, um zwei Pipelines für Ihre IoT Edge-Lösung zu erstellen. In Azure IoT Edge-Aufgaben können vier Aktionen verwendet werden.
+   - **Azure IoT Edge – Modulimages erstellen** akzeptiert Ihren IoT Edge-Projektmappencode und kompiliert die Containerimages.
+   - **Azure IoT Edge – Modulimages pushen** überträgt Modulimages per Push in die von Ihnen angegebene Containerregistrierung.
+   - **Azure IoT Edge – Bereitstellungsmanifest generieren** akzeptiert eine deployment.template.json-Datei und die zugehörigen Variablen und generiert die finale Manifestdatei für eine IoT Edge-Bereitstellung.
+   - **Azure IoT Edge – Auf IoT Edge-Geräten bereitstellen** hilft beim Erstellen von IoT Edge-Bereitstellungen auf einzelnen oder mehreren IoT Edge-Geräten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -77,15 +80,15 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
     
      ![Konfigurieren des Build-Agent-Pools](./media/how-to-ci-cd/configure-env.png)
 
-5. Die Pipeline wird mit einem Auftrag mit dem Namen **Agent job 1** vorkonfiguriert. Wählen Sie das Pluszeichen ( **+** ) aus, um dem Auftrag drei Aufgaben hinzuzufügen: Zweimal **Azure IoT Edge** und einnal **Buildartefakte veröffentlichen**. (Zeigen Sie auf den Namen der einzelnen Aufgaben, um die Schaltfläche **Hinzufügen** anzuzeigen.)
+5. Die Pipeline wird mit einem Auftrag mit dem Namen **Agent job 1** vorkonfiguriert. Wählen Sie das Pluszeichen ( **+** ) aus, um dem Auftrag drei Aufgaben hinzuzufügen: Zweimal **Azure IoT Edge**, einmal **Dateien kopieren** und einmal **Buildartefakte veröffentlichen**. (Zeigen Sie auf den Namen der einzelnen Aufgaben, um die Schaltfläche **Hinzufügen** anzuzeigen.)
 
    ![Hinzufügen der Azure IoT Edge-Aufgabe](./media/how-to-ci-cd/add-iot-edge-task.png)
 
-   Wenn alle drei Aufgaben hinzugefügt werden, sieht Ihr Agent-Auftrag wie im folgenden Beispiel aus:
+   Wenn alle vier Aufgaben hinzugefügt werden, sieht Ihr Agent-Auftrag wie im folgenden Beispiel aus:
     
    ![Drei Aufgaben in der Buildpipeline](./media/how-to-ci-cd/add-tasks.png)
 
-6. Wählen Sie die erste zu bearbeitende **Azure IoT Edge**-Aufgabe aus. Diese Aufgabe erstellt alle Module in der Projektmappe mit der Zielplattform, die Sie angeben, und generiert außerdem die **deployment.json**-Datei, die Ihren IoT Edge-Geräten mitteilt, wie Sie die Bereitstellung konfigurieren.
+6. Wählen Sie die erste zu bearbeitende **Azure IoT Edge**-Aufgabe aus. Diese Aufgabe erstellt alle Module in der Projektmappe mit der angegebenen Zielplattform.
 
    * **Anzeigename**: Übernehmen Sie den Standard **Azure IoT Edge – Modulimages erstellen**.
    * **Aktion:** Übernehmen Sie den Standard **Modulimages erstellen**. 
@@ -93,7 +96,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
    * **Standardplattform**: Wählen Sie die entsprechende Plattform für die Module auf dem gewünschten IoT Edge-Gerät basierend aus. 
    * **Ausgabevariablen**: Die Ausgabevariablen enthalten einen Verweisnamen, mit dem Sie den Dateipfad konfigurieren können, in dem die deployment.json-Datei generiert wird. Wählen Sie einen einprägsamen Verweisnamen wie **edge**. 
 
-7. Wählen Sie die zweite **Azure IoT Edge**-Aufgabe aus, um sie zu bearbeiten. Diese Aufgabe überträgt alle Modulimages in die von Ihnen ausgewählte Containerregistrierung. Sie fügt auch Anmeldeinformationen für Ihre Containerregistrierung der Datei **deployment.JSON** hinzu, sodass Ihr IoT Edge-Gerät auf die Modulimages zugreifen kann. 
+7. Wählen Sie die zweite **Azure IoT Edge**-Aufgabe aus, um sie zu bearbeiten. Diese Aufgabe überträgt alle Modulimages in die von Ihnen ausgewählte Containerregistrierung.
 
    * **Anzeigename**: Der Anzeigename wird automatisch aktualisiert, wenn das Aktionsfeld geändert wird. 
    * **Aktion:** Verwenden Sie die Dropdownliste, um **Modulimages pushen** auszuwählen. 
@@ -103,24 +106,32 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
 
    Wenn Sie die Modulimages in mehreren Containerregistrierungen hosten können, müssen Sie diese Aufgabe duplizieren. Wählen Sie eine andere Containerregistrierung aus, und verwenden Sie **Bypass module(s)** (Modul(e) umgehen) in den erweiterten Einstellungen, um die Images auszulassen, die nicht für diese spezifische Registrierung bestimmt sind.
 
-8. Wählen Sie die Aufgabe **Buildartefakte veröffentlichen**  aus, um sie zu bearbeiten. Geben Sie den Dateipfad zu der Bereitstellungsdatei an, die von der Buildaufgabe generiert wird. Legen Sie den Wert für **Pfad für Veröffentlichung** entsprechend der Ausgabevariablen fest, die Sie in der Modulerstellungsaufgabe festlegen. Beispiel: `$(edge.DEPLOYMENT_FILE_PATH)`. Behalten Sie bei den anderen Optionen die Standardwerte bei. 
+8. Wählen Sie die Aufgabe **Dateien kopieren** aus, um sie zu bearbeiten. Verwenden Sie diese Aufgabe, um Dateien in das Artefaktstagingverzeichnis zu kopieren.
 
-9. Wählen Sie die Registerkarte **Trigger** aus, und aktivieren Sie **Continuous Integration aktivieren**. Stellen Sie sicher, dass der Branch mit Ihrem Code enthalten ist.
+   * **Anzeigename**: Dateien kopieren nach: Ablageordner.
+   * **Inhalt:** Fügen Sie in diesem Abschnitt zwei Zeilen ein: `deployment.template.json` und `**/module.json`. Diese beiden Dateitypen sind die Eingaben, aus denen das IoT Edge-Bereitstellungsmanifest generiert wird. Sie müssen in den Artefaktstagingordner kopiert und für die Releasepipeline veröffentlicht werden.
+   * **Zielordner**: Fügen Sie die Variable `$(Build.ArtifactStagingDirectory)` ein. Eine Beschreibung finden Sie unter [Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables).
+
+9. Wählen Sie die Aufgabe **Buildartefakte veröffentlichen**  aus, um sie zu bearbeiten. Geben Sie in der Aufgabe einen Pfad für das Artefaktstagingverzeichnis an, sodass dieser für die Releasepipeline veröffentlicht werden kann.
+   
+   * **Anzeigename**: Artefakt veröffentlichen: ablegen.
+   * **Pfad für Veröffentlichung**: Fügen Sie die Variable `$(Build.ArtifactStagingDirectory)` ein. Eine Beschreibung finden Sie unter [Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables).
+   * **Artefaktname**: ablegen.
+   * **Veröffentlichungsort für Artefakte**: Azure Pipelines.
+
+
+10. Wählen Sie die Registerkarte **Trigger** aus, und aktivieren Sie **Continuous Integration aktivieren**. Stellen Sie sicher, dass der Branch mit Ihrem Code enthalten ist.
 
     ![Aktivieren des Continuous Integration-Triggers](./media/how-to-ci-cd/configure-trigger.png)
 
-10. Speichern Sie die neue Buildpipeline mit der Schaltfläche **Speichern**.
+11. Speichern Sie die neue Buildpipeline mit der Schaltfläche **Speichern**.
 
 Diese Pipeline ist jetzt für die automatische Ausführung konfiguriert, wenn Sie neuen Code in Ihr Repository pushen. Die letzte Aufgabe, Veröffentlichen der Pipelineartefakte, löst eine Releasepipeline aus. Fortfahren Sie mit dem nächsten Abschnitt fort, um die Releasepipeline zu erstellen. 
 
 ## <a name="configure-continuous-deployment"></a>Konfigurieren von Continuous Deployment
 In diesem Abschnitt erstellen Sie eine Releasepipeline, die so konfiguriert ist, dass sie beim Ablegen von Artefakten durch Ihre Buildpipeline automatisch ausgeführt wird und Bereitstellungsprotokolle in Azure Pipelines anzeigt.
 
-In diesem Abschnitt erstellen Sie zwei verschiedene Stufen, eine für Testbereitstellungen und eine für Produktionsbereitstellungen. 
-
-### <a name="create-test-stage"></a>Erstellen der Teststufe
-
-Erstellen Sie eine neue Pipeline, und konfigurieren Sie ihre erste Stufe für Qualitätssicherungsbereitstellungen (Quality Assurance, QA). 
+Erstellen einer neuen Pipeline und Hinzufügen einer neuen Stage 
 
 1. Wählen Sie auf der Registerkarte **Releases** die Option **+ Neue Pipeline** aus. Wenn Sie bereits über Releasepipelines verfügen, wählen Sie die Schaltfläche **+ Neu** und dann **+ Neue Releasepipeline** aus.  
 
@@ -130,9 +141,7 @@ Erstellen Sie eine neue Pipeline, und konfigurieren Sie ihre erste Stufe für Qu
 
     ![Starten mit einem leeren Auftrag](./media/how-to-ci-cd/start-with-empty-job.png)
 
-3. Ihre neue Releasepipeline wird mit einer Stufe namens **Stage 1** initialisiert. Benennen Sie „Stage 1“ in **QA** um, und behandeln Sie sie als Testumgebung. Pipelines für kontinuierliche Bereitstellung verfügen in der Regel über mehrere Stufen. Sie können basierend auf Ihrer DevOps-Praxis weitere erstellen. Schließen Sie das Stufendetailsfenster nach der Umbenennung. 
-
-    ![Erstellen der Testumgebungsphase](./media/how-to-ci-cd/QA-env.png)
+3. Ihre neue Releasepipeline wird mit einer Stufe namens **Stage 1** initialisiert. Benennen Sie „Stage 1“ in **dev** um, und behandeln Sie sie als Testumgebung. Continuous Deployment-Pipelines verfügen in der Regel über mehrere Stages: **dev**, **staging** und **prod**. Sie können basierend auf Ihrer DevOps-Praxis weitere erstellen. Schließen Sie das Stufendetailsfenster nach der Umbenennung. 
 
 4. Verknüpfen Sie das Release mit den Buildartefakten, die von der Buildpipeline veröffentlicht werden. Klicken Sie im Artefaktbereich auf **Hinzufügen**.
 
@@ -146,17 +155,35 @@ Erstellen Sie eine neue Pipeline, und konfigurieren Sie ihre erste Stufe für Qu
 
    ![Konfigurieren des Continuous Deployment-Triggers](./media/how-to-ci-cd/add-a-trigger.png)
 
-7. Die **QA**-Stufe ist mit einem Auftrag und null (0) Aufgaben vorkonfiguriert. Wählen Sie im Pipelinemenü **Aufgaben** und dann die **QA**-Stufe aus.  Wählen Sie die Anzahl von Aufträgen und Aufgaben aus, um die Aufgaben in dieser Stufe zu konfigurieren.
+7. Die Stage **dev** ist mit einem Auftrag und null (0) Aufgaben vorkonfiguriert. Wählen Sie im Pipelinemenü **Aufgaben** und dann die Stage **dev** aus.  Wählen Sie die Anzahl von Aufträgen und Aufgaben aus, um die Aufgaben in dieser Stufe zu konfigurieren.
 
-    ![Konfigurieren der QA-Aufgaben](./media/how-to-ci-cd/view-stage-tasks.png)
+    ![Konfigurieren von dev-Aufgaben](./media/how-to-ci-cd/view-stage-tasks.png)
 
-8. In der QA-Stufe sollte der Standardwert **Agent-Auftrag** angezeigt werden. Sie können Details zum Agent-Auftrag konfigurieren, aber bei Bereitstellungsaufgaben ist die Plattform nicht von Bedeutung, sodass Sie im **Agent-Pool** eine der Optionen **Hosted VS2017** oder **Hosted Ubuntu 1604** (oder einen beliebigen anderen, von Ihnen selbst verwalteten Agent) verwenden können. 
+8. In der Stage **dev** sollte der Standardwert **Agent-Auftrag** angezeigt werden. Sie können Details zum Agent-Auftrag konfigurieren, aber bei Bereitstellungsaufgaben ist die Plattform nicht von Bedeutung, sodass Sie im **Agent-Pool** eine der Optionen **Hosted VS2017** oder **Hosted Ubuntu 1604** (oder einen beliebigen anderen, von Ihnen selbst verwalteten Agent) verwenden können. 
 
-9. Wählen Sie das Pluszeichen ( **+** ) aus, um eine Aufgabe hinzuzufügen. Suchen Sie nach **Azure IoT Edge**, und fügen Sie es hinzu. 
+9. Wählen Sie das Pluszeichen ( **+** ) aus, um zwei Aufgaben hinzuzufügen. Suchen Sie nach **Azure IoT Edge**, und fügen Sie die Aufgabe zweimal hinzu.
 
-    ![Hinzufügen von Aufgaben für QA](./media/how-to-ci-cd/add-task-qa.png)
+    ![Hinzufügen von Aufgaben für dev](./media/how-to-ci-cd/add-task-qa.png)
 
-10. Wählen Sie die neue Azure IoT Edge-Aufgabe aus, und konfigurieren Sie sie mit den folgenden Werten:
+10. Wählen Sie die erste **Azure IoT Edge**-Aufgabe aus, und konfigurieren Sie sie mit den folgenden Werten:
+
+    * **Anzeigename**: Der Anzeigename wird automatisch aktualisiert, wenn das Aktionsfeld geändert wird. 
+    * **Aktion:** Wählen Sie aus der Dropdownliste die Option **Bereitstellungsmanifest generieren** aus. Ändern des Werts für die Aktion aktualisiert auch den Anzeigenamen der Aufgabe, mit dem Übereinstimmung herrschen muss.
+    * **.template.json-Datei**: Geben Sie den Pfad `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` an. Der Pfad wird aus der Buildpipeline veröffentlicht.
+    * **Standardplattform**: Wählen Sie den gleichen Wert aus wie beim Erstellen der Modulimages.
+    * **Ausgabepfad**: Geben Sie den Pfad `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` an. Dieser Pfad ist die finale Datei mit dem IoT Edge-Bereitstellungsmanifest.
+
+    Diese Konfigurationen helfen dabei, die Modulimage-URLs in der Datei `deployment.template.json` zu ersetzen. Die Aufgabe **Bereitstellungsmanifest generieren** hilft auch dabei, die Variablen durch die exakten Werte zu ersetzen, die Sie in der Datei `deployment.template.json` definiert haben. In VS bzw. VS Code geben Sie den tatsächlichen Wert in einer `.env`-Datei an. In Azure Pipelines legen Sie den Wert auf der Registerkarte „Releasepipelinevariablen“ fest. Navigieren Sie zur Registerkarte „Variablen“, und konfigurieren Sie Name und Wert wie folgt.
+
+    * **ACR_ADDRESS**: Die Adresse Ihrer Azure Container Registry. 
+    * **ACR_PASSWORD**: Das Kennwort für Ihre Azure Container Registry.
+    * **ACR_USER**: Der Benutzername für Ihre Azure Container Registry.
+
+    Wenn in Ihrem Projekt noch weitere Variablen vorhanden sind, können Sie die Namen und Werte auf diese Registerkarte angeben. Die Aufgabe **Bereitstellungsmanifest generieren** erkennt nur Variablen in der Variante `${VARIABLE}`. Stellen Sie also sicher, dass Sie diese Variante in Ihren `*.template.json`-Dateien verwenden.
+
+    ![Konfigurieren von Variablen für eine Releasepipeline](./media/how-to-ci-cd/configure-variables.png)
+
+10. Wählen Sie die zweite **Azure IoT Edge**-Aufgabe aus, und konfigurieren Sie sie mit den folgenden Werten:
 
     * **Anzeigename**: Der Anzeigename wird automatisch aktualisiert, wenn das Aktionsfeld geändert wird. 
     * **Aktion:** Verwenden Sie die Dropdownliste, um **Für IoT Edge-Gerät bereitstellen** auszuwählen. Ändern des Werts für die Aktion aktualisiert auch den Anzeigenamen der Aufgabe, mit dem Übereinstimmung herrschen muss.
@@ -164,39 +191,10 @@ Erstellen Sie eine neue Pipeline, und konfigurieren Sie ihre erste Stufe für Qu
     * **IoT Hub-Name**: Wählen Sie Ihren IoT Hub aus. 
     * **Einzelnes/mehrere Geräte auswählen**: Wählen Sie aus, ob die Bereitstellung durch die Releasepipeline auf einem oder mehreren Geräten ausgeführt werden soll. 
       * Geben Sie bei Bereitstellung auf einem einzelnen Gerät die **IoT Edge-Geräte-ID** ein. 
-      * Geben Sie bei einer Bereitstellung auf mehreren Geräten die **Zielbedingung** des Geräts an. Die Zielbedingung ist ein Filter, der mit einem Satz von Edge-Geräten in IoT Hub übereinstimmen muss. Wenn Sie Gerätetags als Bedingung verwenden möchten, müssen Sie die Tags der entsprechenden Geräte mit einem Iot Hub-Gerätezwilling aktualisieren. Aktualisieren Sie die **IoT Edge-Bereitstellungs-ID** und **IoT Edge-Bereitstellungspriorität** in den erweiterten Einstellungen. Weitere Informationen zum Erstellen einer Bereitstellung für mehrere Geräte finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
+      * Geben Sie bei einer Bereitstellung auf mehreren Geräten die **Zielbedingung** des Geräts an. Die Zielbedingung ist ein Filter für den Abgleich mit einem Satz von IoT Edge-Geräten in IoT Hub. Wenn Sie Gerätetags als Bedingung verwenden möchten, müssen Sie die Tags der entsprechenden Geräte mit einem Iot Hub-Gerätezwilling aktualisieren. Aktualisieren Sie die **IoT Edge-Bereitstellungs-ID** und **IoT Edge-Bereitstellungspriorität** in den erweiterten Einstellungen. Weitere Informationen zum Erstellen einer Bereitstellung für mehrere Geräte finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
+    * Wählen Sie unter „Erweiterte Einstellungen“ die Option **IoT Edge-Bereitstellungs-ID** aus, und fügen Sie die Variable `$(System.TeamProject)-$(Release.EnvironmentName)` ein. Diese ordnet den Projekt- und Releasenamen Ihrer IoT Edge-Bereitstellungs-ID zu.
 
 11. Wählen Sie **Speichern** zum Speichern der Änderungen auf der neuen Releasepipeline aus. Kehren Sie durch Auswahl von **Pipeline** im Menü zur Pipelineansicht zurück. 
-
-### <a name="create-production-stage"></a>Erstellen einer Produktionsstufe
-
-Erstellen Sie eine zweite Stufe in Ihrer Releasepipeline für die Produktionsbereitstellung. 
-
-1. Schaffen Sie eine zweite Stufe für die Produktion durch Klonen der QA-Stufe. Bewegen Sie den Cursor über die QA-Stufe, und wählen Sie dann die Schaltfläche „Klonen“ aus. 
-
-    ![Klonen der Phase](./media/how-to-ci-cd/clone-stage.png)
-
-2. Wählen Sie die neue Stufe namens **QA-Kopie** aus, um ihre Eigenschaften zu öffnen. Ändern Sie den Namen der Stufe für die Produktion in **PROD**. Schließen Sie das Stufeneigenschaftenfenster. 
-
-3. Wählen Sie zum Öffnen der PROD-Stufenaufgaben die Option **Aufgaben** im Pipelinemenü aus, und wählen Sie dann die Stufe **PROD** aus. 
-
-4. Wählen Sie die Azure IoT Edge-Aufgabe aus, um sie für Ihre Produktionsumgebung zu konfigurieren. Die Bereitstellungseinstellungen entsprechen wahrscheinlich denen für QA und PROD, außer dass Sie in der Produktion ein anderes Gerät oder eine andere Gruppe von Geräten verwenden möchten. Aktualisieren Sie das Geräte-ID-Feld bzw. die Zielbedingungs- und Bereitstellungs-ID-Felder für die Geräte in der Produktion. 
-
-5. Speichern Sie mit der Schaltfläche **Speichern**. Wählen Sie dann **Pipeline** aus, um zur Pipeline zurückzukehren.
-    
-6. Diese Releasepipeline ist gegenwärtig derart konfiguriert, dass der Buildartefakt jedes Mal, wenn ein neuer Build abgeschlossen ist, die **QA**- und dann die **PROD**-Stufe auslöst. In der Regel möchten Sie jedoch wohl einige Testfälle auf den QA-Geräten integrieren und die Bereitstellung für die Produktion manuell genehmigen. Erstellen Sie in den folgenden Schritten eine Zustimmungsbedingung für die PROD-Stufe:
-
-    1. Öffnen Sie den Einstellungsbereich **Bedingungen vor der Bereitstellung**.
-
-        ![Öffnen von „Bedingungen vor der Bereitstellung“](./media/how-to-ci-cd/pre-deploy-conditions.png)    
-
-    2. Schalten Sie **Bedingungen vor der Bereitstellung** in **Aktiviert** um. Fügen Sie einen oder mehrere Benutzer oder Gruppen im Feld **Genehmigende Personen** hinzu, und passen Sie andere gewünschte Genehmigungsrichtlinien an. Um Ihre Änderungen zu speichern, schließen Sie den Bereich „Bedingungen vor der Bereitstellung“.
-    
-       ![Festlegen von Bedingungen](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
-
-
-7. Speichern Sie Ihre Releasepipeline mit der Schaltfläche **Speichern**. 
-
     
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Überprüfen von CI/CD in IoT Edge mit den Build- und Releasepipelines
 
@@ -208,17 +206,21 @@ Um einen Buildauftrag auszulösen, können Sie einen Commit in das Quellcoderepo
 
     ![Manueller Trigger](./media/how-to-ci-cd/manual-trigger.png)
 
-3. Wählen Sie den Buildauftrag aus, um seinen Fortschritt zu überwachen. Wenn die Buildpipeline erfolgreich abgeschlossen ist, wird eine Freigabe zur **QA**-Stufe ausgelöst. 
+3. Wählen Sie den Buildauftrag aus, um seinen Fortschritt zu überwachen. Wenn die Buildpipeline erfolgreich abgeschlossen ist, löst sie eine Releasepipeline zur **dev**-Stage aus. 
 
     ![Buildprotokolle](./media/how-to-ci-cd/build-logs.png)
 
-4. Die erfolgreiche Bereitstellung zur **QA**-Stufe sollte eine Benachrichtigung an die genehmigende Person auslösen. Stellen Sie sicher, dass die Module erfolgreich auf dem Gerät oder den Geräten bereitgestellt werden, die Sie der QA-Stufe zugewiesen haben. Navigieren Sie dann zur Releasepipeline, und geben Sie die Genehmigung für die Freigabe in der PROD-Stufe, indem Sie die **PROD**-Schaltfläche und dann **Genehmigen** auswählen. 
+4. Das erfolgreiche **dev**-Release erstellt eine IoT Edge-Bereitstellung für IoT Edge-Geräte.
 
-    ![Ausstehende Genehmigung](./media/how-to-ci-cd/pending-approval.png)
+    ![Release für dev](./media/how-to-ci-cd/pending-approval.png)
 
-5. Nachdem die genehmigende Person diese Änderung genehmigt, kann sie in **PROD** bereitgestellt werden.
+5. Klicken Sie auf die Stage **dev**, um die Releaseprotokolle anzuzeigen.
+
+    ![Release-Protokolle](./media/how-to-ci-cd/release-logs.png)
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-
+* Beispiel für Best Practices für IoT Edge DevOps in [Azure DevOps Project für IoT Edge](how-to-devops-project.md).
 * Grundlegende Informationen zur IoT Edge-Bereitstellung finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig](module-deployment-monitoring.md).
 * Führen Sie die Schritte zum Erstellen, Aktualisieren oder Löschen einer Bereitstellung in [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor.md) aus.

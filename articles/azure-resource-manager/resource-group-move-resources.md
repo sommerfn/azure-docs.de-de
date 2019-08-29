@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624558"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035554"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -35,8 +35,6 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
    * [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen)
    * [Anleitung zum Verschieben von Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Anleitung zum Verschieben von Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
-
-   Wenn die Zielressourcengruppe ein virtuelles Netzwerk enthält, kann die Verschiebung durch den Status der abhängigen Ressourcen blockiert werden. Dies gilt auch, wenn diese Ressourcen nicht an der Verschiebung beteiligt sind. Weitere Informationen finden Sie unter [Move guidance for networking resources](./move-limitations/virtual-network-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen).
 
 1. Quellen- und Zielabonnements müssen aktiv sein. Wenn beim Aktivieren eines Kontos, das deaktiviert wurde, Schwierigkeiten auftreten, [erstellen Sie eine Azure-Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md). Wählen Sie **Abonnementverwaltung** als Problemtyp aus.
 

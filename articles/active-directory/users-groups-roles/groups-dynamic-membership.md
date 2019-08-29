@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397877"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650220"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -44,6 +44,12 @@ Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Gerät
 
 Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
 
+### <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
+
+Azure AD stellt einen Regel-Generator bereit, mit dem Sie wichtige Regeln schneller erstellen und aktualisieren können. Der Regel-Generator unterstützt bis zu fünf Regeln. Um weitere Regelbedingungen hinzuzufügen, müssen Sie das Textfeld verwenden. Detaillierte Anweisungen dazu finden Sie unter [Aktualisieren einer dynamischen Gruppe](groups-update-rule.md).
+
+   ![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-update-rule/update-dynamic-group-rule.png)
+
 ### <a name="rules-with-a-single-expression"></a>Regeln mit einem einzelnen Ausdruck
 
 Ein einzelner Ausdruck ist die einfachste Form einer Mitgliedschaftsregel, und sie besteht nur aus den drei oben genannten Teilen. Eine Regel mit einem einzelnen Ausdruck sieht wie folgt aus: `Property Operator Value`, wobei die Syntax für die Eigenschaft der Name von „object.property“ ist.
@@ -61,21 +67,21 @@ Bei einem einzelnen Ausdruck sind Klammern optional. Die Gesamtlänge des Texts 
 Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitgliedschaftsregel zu erstellen.
 
 * Boolean
-* string
+* Zeichenfolge
 * Zeichenfolgensammlung
 
 Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden können, um einen einzelnen Ausdruck zu erstellen.
 
 ### <a name="properties-of-type-boolean"></a>Eigenschaften vom Typ "boolesch"
 
-| Eigenschaften | Zulässige Werte | Verwendung |
+| Properties | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>Eigenschaften vom Typ "string"
 
-| Eigenschaften | Zulässige Werte | Verwendung |
+| Properties | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | city |Jeder string-Wert oder *null* |(user.city -eq "value") |
 | country |Jeder string-Wert oder *null* |(user.country -eq "value") |
@@ -106,7 +112,7 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschaften vom Typ "string collection"
 
-| Eigenschaften | Zulässige Werte | Verwendung |
+| Properties | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | otherMails |Jeder string-Wert. |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -231,7 +237,7 @@ Eine Mitgliedschaftsregel kann aus komplexen Ausdrücken bestehen, in denen die 
 
 Mehrwertige Eigenschaften sind Sammlungen von Objekten desselben Typs. Sie können verwendet werden, um mithilfe der logischen Operatoren „-any“ und „-all“ Mitgliedschaftsregel zu erstellen.
 
-| Eigenschaften | Werte | Verwendung |
+| Properties | Werte | Verwendung |
 | --- | --- | --- |
 | assignedPlans | Jedes Objekt in der Sammlung macht folgende Zeichenfolgeneigenschaften verfügbar: capabilityStatus, service, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains „contoso“)) |
@@ -261,7 +267,7 @@ Der folgende Ausdruck wählt alle Benutzer aus, die über einen Serviceplan verf
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore--syntax"></a>Verwenden den Syntax „Unterstrich“ (\_)
+### <a name="using-the-underscore-_-syntax"></a>Verwenden den Syntax „Unterstrich“ (\_)
 
 Die Syntax „Unterstrich“ (\_) entspricht dem Vorkommen eines bestimmten Werts in einer mehrwertigen Eigenschaft der Zeichenfolgensammlung, um Benutzer oder Geräte einer dynamischen Gruppe hinzuzufügen. Die Syntax wird mit den Operatoren „-any“ oder „-all“ verwendet.
 

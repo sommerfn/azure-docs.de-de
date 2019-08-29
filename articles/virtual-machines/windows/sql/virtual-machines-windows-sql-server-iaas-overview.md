@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ece55cdad04e71d339944b5fcda5a16d35630c16
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 855bd64bc8beb86a1bc62c65f71254f43c7a722a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877726"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101974"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
 
@@ -100,14 +99,14 @@ Wenn Sie über eine vorhandene Datenbank verfügen, empfiehlt sich die Verschieb
 
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Erstellen und Verwalten von Azure SQL-Ressourcen im Azure-Portal
 
-Das Azure-Portal ermöglicht es Ihnen, [Ihre gesamten Azure SQL-Ressourcen](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql), einschließlich SQL-VMs, auf nur einer Seite zu verwalten.
+Das Azure-Portal bietet die Möglichkeit, [all Ihre Azure SQL-Ressourcen](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql), einschließlich SQL-VMs, auf einer einzigen Seite zu verwalten.
 
-Um auf die Seite **Azure SQL-Ressourcen** zuzugreifen, wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus und geben dann *Azure SQL* in das Suchfeld ein.
+Um auf die Seite **Azure SQL-Ressourcen** zuzugreifen, wählen Sie im Menü auf der linken Seite des Azure-Portals die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* im Suchfeld ein.
 
 > [!NOTE]
-> **Azure SQL** bietet eine einfache und schnelle Möglichkeit, auf Ihre gesamten SQL-Datenbanken, Pools für elastische Datenbanken, Datenbankserver, verwaltete SQL-Instanzen und SQL-VMs zuzugreifen. Azure SQL ist weder ein Dienst noch eine Ressource. 
+> **Azure SQL** bietet eine einfache und schnelle Möglichkeit, auf all Ihre SQL-Datenbanken, Pools für elastische Datenbanken, Datenbankserver, verwaltete SQL-Instanzen und SQL-VMs zuzugreifen. Azure SQL ist weder ein Dienst noch eine Ressource. 
 
-Um vorhandene Ressourcen zu verwalten, wählen Sie das gewünschte Element aus der Liste aus. Klicken Sie zum Erstellen neuer Azure SQL-Ressourcen auf **+ Hinzufügen**. 
+Um vorhandene Ressourcen zu verwalten, wählen Sie das gewünschte Element aus der Liste aus. Um neue Azure SQL-Ressourcen zu erstellen, klicken Sie auf **+ Hinzufügen**. 
 
 ![Azure SQL-Portalseite](./media/quickstart-sql-vm-create-portal/azure-sql.png)
 

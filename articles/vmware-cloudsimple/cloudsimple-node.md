@@ -1,40 +1,40 @@
 ---
-title: Knotenübersicht für VMware-Lösung von CloudSimple – Azure
+title: Azure-VMware-Lösung von CloudSimple – Übersicht über Knoten
 description: Erfahren Sie mehr über CloudSimple-Knoten und -Konzepte.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812575"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877700"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Übersicht über CloudSimple-Knoten
 
-Ein Knoten ist:
+Knoten sind die Bausteine einer privaten Cloud. Ein Knoten ist:
 
-* Ein dedizierter Bare-Metal-Computehost, auf dem VMware ESXi-Hypervisor installiert ist  
-* Eine Recheneinheit, die Sie bereitstellen oder reservieren können, um private Clouds zu erstellen  
-* Verfügbar, um in einer Region bereitgestellt oder reserviert zu werden, in der der CloudSimple-Service verfügbar ist
+* Ein dedizierter Bare-Metal-Computehost, auf dem ein VMware ESXi-Hypervisor installiert ist  
+* Eine Computingeinheit, die Sie erwerben oder reservieren können, um private Clouds zu erstellen
+* Verfügbar, um in einer Region gekauft oder reserviert zu werden, in der der CloudSimple-Service verfügbar ist
 
-Knoten sind die Bausteine einer privaten Cloud.  Um eine private Cloud zu erstellen, benötigen Sie mindestens drei Knoten derselben SKU.  Wenn Sie eine private Cloud erweitern möchten, fügen Sie zusätzliche Knoten hinzu.  Sie können Knoten zu einem vorhandenen Cluster hinzufügen. Alternativ können Sie einen neuen Cluster erstellen, indem Sie Knoten im Azure-Portal bereitstellen und diese mit dem CloudSimple-Dienst verknüpfen.  Alle bereitgestellten Knoten werden unter dem CloudSimple-Dienst angezeigt.  Sie erstellen eine private Cloud aus den bereitgestellten Knoten im CloudSimple Portal.
+Sie erstellen eine private Cloud aus den erworbenen Knoten. Um eine private Cloud zu erstellen, benötigen Sie mindestens drei Knoten derselben SKU. Wenn Sie eine private Cloud erweitern möchten, fügen Sie zusätzliche Knoten hinzu.  Sie können Knoten zu einem vorhandenen Cluster hinzufügen oder einen neuen Cluster erstellen, indem Sie Knoten im Azure-Portal erwerben und diese dem CloudSimple-Dienst zuordnen.  Alle erworbenen Knoten werden im CloudSimple-Dienst angezeigt.  
 
-## <a name="provisioned-nodes"></a>Bereitgestellte Knoten
+## <a name="purchased-nodes"></a>Gekaufte Knoten
 
-Bereitgestellte Knoten bieten Kapazität mit nutzungsbasierter Bezahlung. Durch das Bereitstellen von Knoten können Sie Ihren VMware-Cluster nach Bedarf schnell skalieren. Sie können Knoten bedarfsgerecht hinzufügen, oder Sie können einen bereitgestellten Knoten löschen, um Ihren VMware-Cluster herunterzuskalieren. Bereitgestellte Knoten werden monatlich in Rechnung gestellt und dem Abonnement belastet, in dem sie bereitgestellt werden:
+Gekaufte Knoten bieten Kapazität mit nutzungsbasierter Bezahlung. Durch den Kauf von Knoten können Sie Ihren VMware-Cluster nach Bedarf schnell skalieren. Sie können Knoten nach Bedarf hinzufügen oder einen erworbenen Knoten löschen, um Ihren VMware-Cluster zentral herunterzuskalieren. Erworbene Knoten werden monatlich in dem Abonnement in Rechnung gestellt, mit dem sie erworben wurden.
 
 * Wenn Sie Ihr Azure-Abonnement per Kreditkarte bezahlen, wird die Karte sofort belastet.
 * Wenn Sie jeweils eine Rechnung erhalten, werden die Gebühren auf Ihrer nächsten Rechnung aufgeführt.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-Lösung entsprechend SKU für CloudSimple-Knoten
 
-Es können Knoten der folgenden Typen bereitgestellt oder reserviert werden.
+Die folgenden Knotentypen können erworben oder reserviert werden.
 
 | SKU | CS28-Knoten | CS36-Knoten |
 |-----|-------------|-------------|
@@ -46,16 +46,16 @@ Es können Knoten der folgenden Typen bereitgestellt oder reserviert werden.
 
 ## <a name="limits"></a>Einschränkungen
 
-Die folgenden Knotengrenzwerte gelten für private Clouds.
+Für private Clouds gelten die folgenden Knotengrenzwerte.
 
 | Resource | Begrenzung |
 |----------|-------|
-| Mindestanzahl von Knoten, um eine private Cloud zu erstellen | 3 |
+| Mindestanzahl von Knoten zum Erstellen einer privaten Cloud | 3 |
 | Maximale Anzahl von Knoten in einem Cluster in einer privaten Cloud | 16 |
 | Maximale Anzahl von Knoten in einer privaten Cloud | 64 |
 | Mindestanzahl von Knoten in einem neuem Cluster | 3 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Knoten bereitstellen](create-nodes.md).
+* Erfahren Sie, wie Sie [Knoten erwerben](create-nodes.md).
 * Erfahren Sie mehr über [private Clouds](cloudsimple-private-cloud.md).
