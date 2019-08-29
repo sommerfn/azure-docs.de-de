@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 9d33b478cb848724d0b3747761a99a1269d58b6e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 14ed21efec47e15663724bd782ad931903fb8f13
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671061"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082424"
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
 Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web. Azure eignet sich also perfekt zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.

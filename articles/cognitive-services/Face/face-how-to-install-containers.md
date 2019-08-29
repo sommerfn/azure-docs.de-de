@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 93a6d0a42d6d7f07dd8947ce9f8ae99a39d44475
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564136"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114850"
 ---
 # <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
 
@@ -118,7 +118,7 @@ Es sind noch weitere [Beispiele](./face-resource-container-config.md#example-doc
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
 
 
 <!--  ## Validate container is running -->
@@ -150,7 +150,6 @@ Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Con
 
 In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Gesichtserkennungs-API kennengelernt. Zusammenfassung:
 
-* Die Gesichtserkennungs-API stellt drei Linux-Container für Docker bereit, die die Schlüsselbegriffserkennung, Sprachenerkennung und Standpunktanalyse bereitstellen.
 * Containerimages werden aus Azure Container Registry heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
 * Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Gesichtserkennungs-API über den Host-URI des Containers aufzurufen.

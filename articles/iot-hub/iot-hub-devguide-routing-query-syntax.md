@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400642"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877075"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -57,6 +57,7 @@ Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identi
 | contentEncoding | Zeichenfolge | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
 | iothub-connection-device-id | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
 | iothub-enqueuedtime | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
+| iothub-interface-name | Zeichenfolge | Dieser Wert wird vom Benutzer festgelegt und stellt den Namen der Schnittstelle für den digitalen Zwilling dar, die die Telemetrienachricht implementiert. Verwenden Sie `$interfaceName` für die Abfrage. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. |
 
 Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Neben den Eigenschaften **contentType**, **contentEncoding** und **enqueuedTime** können auch die Eigenschaften **connectionDeviceId** und **connectionModuleId** abgefragt werden.
 
@@ -163,7 +164,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>Abfrage des Nachrichtenroutings basierend auf dem Gerätezwilling 
 
-Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften des [Gerätezwillings](iot-hub-devguide-device-twins.md), die JSON-Objekte sind. Beachten Sie, dass das Abfragen des Gerätezwillings nicht unterstützt wird. Im Folgenden wird ein Beispiel für Gerätezwillingstags gezeigt.
+Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften des [Gerätezwillings](iot-hub-devguide-device-twins.md), die JSON-Objekte sind. Das Abfragen des Modulzwillings wird nicht unterstützt. Im Folgenden wird ein Beispiel für Gerätezwillingstags gezeigt.
 
 ```JSON
 {

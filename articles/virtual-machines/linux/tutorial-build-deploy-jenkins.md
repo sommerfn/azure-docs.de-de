@@ -6,19 +6,18 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901422"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081654"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
@@ -152,7 +151,7 @@ So erstellen Sie die Releasepipeline in Azure Pipelines:
 3. Klicken Sie im Abschnitt **Artefakte** auf **+ Artefakt hinzufügen**, und wählen Sie unter **Quelltyp** die Option **Jenkins** aus. Wählen Sie Ihre Jenkins-Dienstendpunktverbindung aus. Wählen Sie dann den Jenkins-Quellauftrag aus, und klicken Sie auf **Hinzufügen**.
 4. Klicken Sie auf die Auslassungspunkte neben **Umgebung 1**. Klicken Sie auf **Bereitstellungsgruppenphase hinzufügen**.
 5. Wählen Sie Ihre Bereitstellungsgruppe aus.
-5. Klicken Sie auf **+**, um **Bereitstellungsgruppenphase** eine Aufgabe hinzuzufügen.
+5. Klicken Sie auf **+** , um **Bereitstellungsgruppenphase** eine Aufgabe hinzuzufügen.
 6. Wählen Sie die Aufgabe **Shellskript** aus, und klicken Sie anschließend auf **Hinzufügen**. Die Aufgabe **Shellskript** gibt die Konfiguration für ein Skript an, das auf jedem Server ausgeführt wird, um Node.js zu installieren und die App zu starten.
 8. Geben Sie für **Skriptpfad** Folgendes ein: **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
 9. Klicken Sie auf **Erweitert**, und aktivieren Sie dann **Arbeitsverzeichnis angeben**.

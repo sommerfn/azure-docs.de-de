@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ad917215275ce2f80dfdd2ec4e5a16794b36c13
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650356"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972773"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurieren einer Hochverfügbarkeitsverbindung zwischen einem lokalen Standort und einem CloudSimple VPN-Gateway
 
@@ -188,9 +188,9 @@ Routen sind erforderlich, damit die lokalen Subnetze die Subnetze der privaten C
 Wählen Sie **Network (Netzwerk)**  > **Virtual Routers (Virtuelle Router)**  > *default (Standard)*  > **Static Routes (Statische Routen)**  > **Add (Hinzufügen)** aus, konfigurieren Sie die folgenden Felder, und klicken Sie dann auf **OK**.
 
 * Name. Geben Sie einen beliebigen Namen ein, um den Zweck der Route leicht identifizieren zu können.
-* Destination (Ziel). Geben Sie die Subnetze der privaten CloudSimple-Cloud an, die über S2S-Tunnelschnittstellen vom lokalen Standort aus erreicht werden sollen.
+* Destination. Geben Sie die Subnetze der privaten CloudSimple-Cloud an, die über S2S-Tunnelschnittstellen vom lokalen Standort aus erreicht werden sollen.
 * Interface (Schnittstelle). Wählen Sie in der Dropdownliste die primäre Tunnelschnittstelle aus, die Sie in Schritt-1 (Abschnitt 2) erstellt haben. In diesem Beispiel handelt es sich um „tunnel.20“.
-* Next Hop (Nächster Hop). Wählen Sie **None** (Keiner) aus.
+* Next Hop (Nächster Hop). Wählen Sie **Keine**.
 * Admin Distance (Administratorabstand). Behalten Sie den Standardwert bei.
 * Metric (Metrik). Geben Sie einen beliebigen Wert zwischen 1 und 65.535 ein. Der Schlüssel besteht darin, eine niedrigere Metrik für die Route einzugeben, die der primären Tunnelschnittstelle entspricht, verglichen mit der Metrik der Route, die der sekundären Tunnelschnittstelle entspricht, wodurch die erstgenannte Route bevorzugt wird. Wenn „tunnel.20“ einen Metrikwert von 20 gegenüber einem Metrikwert von 30 für „tunnel.30“ aufweist, wird „tunnel.20“ bevorzugt.
 * Route Table (Routingtabelle). Behalten Sie den Standardwert bei.
@@ -207,8 +207,8 @@ Wählen Sie **Network (Netzwerk)**  > **Expand Network Profiles (Netzwerkprofile
 
 * Name. Geben Sie einen beliebigen Namen des kryptografisch IKE-Profils ein.
 * DH Group (DH-Gruppe). Klicken Sie auf **Add** (Hinzufügen), und wählen Sie die entsprechende DH-Gruppe aus.
-* Encyption (Verschlüsselung). Klicken Sie auf **Add** (Hinzufügen), und wählen Sie die entsprechende Verschlüsselungsmethode aus.
-* Authentication (Authentifizierung). Klicken Sie auf **Add** (Hinzufügen), und wählen Sie die entsprechende Authentifizierungsmethode aus.
+* Verschlüsselung: Klicken Sie auf **Add** (Hinzufügen), und wählen Sie die entsprechende Verschlüsselungsmethode aus.
+* Authentifizierung Klicken Sie auf **Add** (Hinzufügen), und wählen Sie die entsprechende Authentifizierungsmethode aus.
 * Key lifetime (Lebensdauer des Schlüssels). Behalten Sie den Standardwert bei.
 * IKEv2 Authentication Multiple (IKEv2-Authentifizierung mehrfach). Behalten Sie den Standardwert bei.
 
@@ -227,7 +227,7 @@ Registerkarte „General“ (Allgemein):
 * Local IP Address (Lokale IP-Adresse). Behalten Sie den Standardwert bei.
 * Peer IP Address Type (Typ der IP-Peeradresse). Wählen Sie **IP** aus.
 * Peer Address (Peeradresse). Geben Sie die primäre CloudSimple-VPN-IP-Peeradresse ein.
-* Authentication (Authentifizierung). Wählen Sie **Pre-Shared Key** (Vorinstallierter Schlüssel) aus.
+* Authentifizierung Wählen Sie **Pre-Shared Key** (Vorinstallierter Schlüssel) aus.
 * Pre-shared Key/Confirm Pre-shared Key (Vorinstallierter Schlüssel/Vorinstallierten Schlüssel bestätigen). Geben Sie den vorinstallierten Schlüssel ein, der dem Schlüssel des CloudSimple-VPN-Gateways entspricht.
 * Local Identification (Lokale Identifikation). Geben Sie die öffentliche IP-Adresse der lokalen Palo Alto-Firewall ein.
 * Peer Identification (Peeridentifikation). Geben Sie die primäre CloudSimple-VPN-IP-Peeradresse ein.
@@ -284,12 +284,12 @@ Registerkarte „General“ (Allgemein):
 * Copy TOS Header (TOS-Header kopieren). Lassen Sie das Kontrollkästchen deaktiviert.
 * Tunnel Monitor (Tunnelüberwachung). Aktivieren Sie das Kontrollkästchen.
 * Destination IP (Ziel-IP). Geben Sie eine beliebige IP-Adresse ein, die zum Subnetz der privaten CloudSimple-Cloud gehört, die über die Site-to-Site-Verbindung zulässig ist. Stellen Sie sicher, dass die Tunnelschnittstellen (z.B. „tunnel.20 - 10.64.5.2/32“ and „tunnel.30 - 10.64.6.2/32“) für Palo Alto die IP-Adresse der privaten CloudSimple-Cloud über das Site-to-Site-VPN erreichen dürfen. Die folgende Konfiguration zeigt dies für Proxy-IDs.
-* Profile. Wählen Sie das Überwachungsprofil aus.
+* Profil. Wählen Sie das Überwachungsprofil aus.
 
 Registerkarte „Proxy IDs“: Klicken Sie auf **IPv4** > **Add (Hinzufügen)** , und konfigurieren Sie Folgendes:
 
 * Proxy ID. Geben Sie einen beliebigen Namen für den relevanten Datenverkehr ein. Es können mehrere Proxy-IDs in einen IPSec-Tunnel übertragen werden.
-* Local. Geben Sie die lokalen Subnetze an, die über das Site-to-Site-VPN mit Subnetzen der privaten Cloud kommunizieren dürfen.
+* Lokal. Geben Sie die lokalen Subnetze an, die über das Site-to-Site-VPN mit Subnetzen der privaten Cloud kommunizieren dürfen.
 * Remote. Geben Sie die Remote-subnetze der privaten Cloud an, die mit den lokalen Subnetzen kommunizieren dürfen.
 * Protocol (Protokoll). Wählen Sie **any** (Beliebig) aus.
 
@@ -315,11 +315,11 @@ Konfigurieren von der Cisco Adaptive Security Appliance v (ASAv) in Azure:
 
 Konfigurieren des Site-to-Site-VPN mit Proxy-IDs für Palo Alto:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#" target="_blank">Einrichten eines Site-to-Site-VPN</a>
+[Einrichten eines Site-to-Site-VPN](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#)
 
 Einrichten der Tunnelüberwachung:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/7-1/pan-os-admin/vpns/set-up-tunnel-monitoring.html" target="_blank">Einrichten der Tunnel Überwachung</a>
+[Einrichten der Tunnel Überwachung](https://docs.paloaltonetworks.com/pan-os/7-1/pan-os-admin/vpns/set-up-tunnel-monitoring.html)
 
 IKE-Gateway- oder IPSec-Tunnelvorgänge:
 

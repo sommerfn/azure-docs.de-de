@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233957"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991947"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics (Vorschau)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics 
 Der Azure Stream Analytics-Dienst vereinfacht das Erfassen, Verarbeiten und Analysieren von Streamingdaten von Azure Event Hubs und ermöglicht damit Erkenntnisse für Aktionen in Echtzeit. Mit dieser Integration können Sie schnell eine Analysepipeline über einen heißen Pfad erstellen. Sie können im Azure-Portal eingehende Daten visualisieren und eine Stream Analytics-Abfrage schreiben. Wenn die Abfrage fertig ist, können Sie sie mit nur wenigen Klicks in die Produktion verschieben. 
-
-> [!NOTE]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. 
 
 ## <a name="key-benefits"></a>Hauptvorteile
 Hier sind die wichtigsten Vorteile der Integration von Azure Event Hubs mit Azure Stream Analytics: 

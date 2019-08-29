@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 0122b76592ce9e1179a3d65f7db681679bda6f37
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988610"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877239"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installieren der Azure IoT Edge-Runtime unter Windows
 
@@ -29,11 +29,6 @@ In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime 
 > Ein bekanntes Problem des Windows-Betriebssystems verhindert den Übergang in den Energiesparmodus und den Ruhezustand, wenn IoT Edge-Module (vom Prozess isolierte Windows Nano Server-Container) ausgeführt werden. Dieses Problem wirkt sich auf die Akkulaufzeit des Geräts aus.
 >
 > Geben Sie als Problemumgehung den Befehl `Stop-Service iotedge` ein, um die Ausführung aller IoT Edge-Module zu beenden, bevor Sie diese Energiesparzustände verwenden. 
-
-<!--
-> [!NOTE]
-> Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
--->
 
 Die Verwendung von Linux-Containern auf Windows-Systemen ist keine empfohlene oder unterstützte Produktionskonfiguration für Azure IoT Edge. Die Container können jedoch zu Entwicklungs- und Testzwecken eingesetzt werden. Weitere Informationen finden Sie unter [Verwenden von IoT Edge unter Windows zum Ausführen von Linux-Containern](how-to-install-iot-edge-windows-with-linux.md).
 
@@ -57,6 +52,9 @@ Azure IoT Edge basiert auf einer [OCI-kompatiblen](https://www.opencontainers.or
 >Für Azure IoT Edge-Softwarepakete gelten die in den Paketen enthaltenen Lizenzbedingungen (im Verzeichnis „LICENSE“). Lesen Sie vor Verwendung des Pakets die Lizenzbedingungen. Durch die Installation und Nutzung des Pakets erklären Sie sich mit diesen Bedingungen einverstanden. Wenn Sie mit den Lizenzbedingungen nicht einverstanden sind, verwenden Sie das Paket nicht.
 
 Der Azure IoT Edge-Sicherheitsdaemon wird über ein PowerShell-Skript heruntergeladen und installiert. Der Sicherheitsdaemon startet dann das erste der beiden Runtimemodule, den IoT Edge-Agent. Dieser ermöglicht die Remotebereitstellung anderer Module. 
+
+>[!TIP]
+>Bei IoT Core-Geräten empfehlen wir die Ausführung der Installationsbefehle über eine RemotePowerShell-Sitzung. Weitere Informationen finden Sie unter [Using PowerShell for Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) (Verwenden von PowerShell für Windows IoT).
 
 Wenn Sie die IoT Edge-Runtime zum ersten Mal auf einem Gerät installieren, müssen Sie dem Gerät eine Identität von einem IoT-Hub bereitstellen. Ein einzelnes IoT Edge-Gerät kann manuell bereitgestellt werden, indem eine von IoT Hub bereitgestellte Gerät-Verbindungszeichenfolge verwendet wird. Alternativ können Sie IoT Hub Device Provisioning Service verwenden, um automatisch Geräte bereitzustellen. Dieses Verfahren ist hilfreich, wenn viele Geräte eingerichtet werden müssen. Je nach gewählter Bereitstellung können Sie dazu das richtige Installationsskript auswählen. 
 

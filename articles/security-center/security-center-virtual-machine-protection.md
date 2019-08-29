@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4e0a8473dfadc151ab861a4d749d9ff5e1622fb9
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428385"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907956"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen, Nicht-Azure-Server und virtuellen Computer. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -238,7 +238,7 @@ Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für al
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
 
 
-* [Grundlegendes zu Azure Security Center-Empfehlungen für virtuelle Computer](security-center-virtual-machine-recommendations.md)
+* [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 * [Überwachen von Identität und Zugriff in Azure Security Center](security-center-identity-access.md)
 * [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)
 * [Schützen Ihres Azure SQL-Diensts in Azure Security Center](security-center-sql-service-recommendations.md)

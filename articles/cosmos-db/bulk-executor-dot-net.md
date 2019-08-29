@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: a81b22d8ca538c7dc25a9c6631c2b455d5a6c90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257217"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616967"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
-Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos DB-Containern. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial wird eine .NET-Beispielanwendung vorgestellt, die zufällig generierte Dokumente in einen Azure Cosmos DB-Container massenimportiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen. 
+Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos-Containern. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial wird eine .NET-Beispielanwendung vorgestellt, die zufällig generierte Dokumente in einen Azure Cosmos-Container massenimportiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen. 
 
 Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB SQL-API- und Gremlin-API-Konten unterstützt. Dieser Artikel beschreibt, wie Sie die BulkExecutor-.NET-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). 
 
@@ -171,11 +171,11 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
 
 * Um die beste Leistung zu erzielen, führen Sie Ihre Anwendung auf einem virtuellen Azure-Computer in der Region aus, die Sie für Ihre Cosmos DB-Kontoschreibvorgänge verwenden.  
 
-* Es empfiehlt sich, ein einzelnes BulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einem bestimmten Cosmos DB-Container entspricht.  
+* Es empfiehlt sich, ein einzelnes BulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einem bestimmten Cosmos-Container entspricht.  
 
 * Eine einzelne Ausführung einer Massenvorgang-API verbraucht eine große Menge an CPU- und Netzwerk-E/A-Ressourcen des Clientcomputers. Dies wird erreicht, indem mehrere Tasks intern erzeugt werden. Vermeiden Sie das Erzeugen mehrerer gleichzeitiger Tasks in Ihrem Anwendungsprozess, von denen jeder Massenvorgang-API-Aufrufe ausführt. Wenn ein einzelner Massenvorgang-API-Aufruf, der auf einem einzelnen virtuellen Computer ausgeführt wird, nicht den gesamten Durchsatz Ihres Containers verbrauchen kann (wenn der Durchsatz mehr als 1 Million Anforderungseinheiten pro Sekunde beträgt), ist es besser, separate virtuelle Computer zu erstellen, um Massenvorgang-API-Aufrufe gleichzeitig auszuführen.  
 
-* Stellen Sie sicher, dass „InitializeAsync()“ aufgerufen wird, nachdem ein BulkExecutor-Objekt instanziiert wurde, um die Zielpartitionszuordnung für den Cosmos DB-Container abzurufen.  
+* Stellen Sie sicher, dass „InitializeAsync()“ aufgerufen wird, nachdem ein BulkExecutor-Objekt instanziiert wurde, um die Zielpartitionszuordnung für den Cosmos-Container abzurufen.  
 
 * Stellen Sie in der App.config-Datei Ihrer Anwendung sicher, dass **gcServer** aktiviert ist, um eine bessere Leistung zu erzielen.
   ```xml  

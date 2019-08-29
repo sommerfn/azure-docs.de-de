@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310322"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575284"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse
 

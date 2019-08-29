@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295628"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100941"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Schützen von Azure-Daten und Speicherdiensten in Azure Security Center
 In diesem Thema erfahren Sie, wie Sie Sicherheitsempfehlungen für Daten und Speicherressourcen anzeigen und implementieren. Azure Security Center hat diese Empfehlungen bei der Analyse des Sicherheitsstatus Ihrer Azure-Ressourcen erkannt.
@@ -40,7 +40,7 @@ Auf der Seite haben Sie folgende Möglichkeiten:
 * Klicken Sie auf jede Registerkarte, und lassen Sie die Empfehlungen je nach Ressourcentyp anzeigen.
 
     > [!NOTE]
-    > Weitere Informationen zur Speicherverschlüsselung finden Sie unter [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Aktivieren der Verschlüsselung für Azure-Speicherkonten in Azure Security Center).
+    > Weitere Informationen zur Speicherverschlüsselung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 
 ## <a name="remediate-a-recommendation-on-a-data-resource"></a>Bereinigen einer Empfehlung für eine Datenressource
@@ -77,8 +77,7 @@ Auf der Seite haben Sie folgende Möglichkeiten:
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Artikeln:
 
-* [Schützen Ihrer virtuellen Computer in Azure Security Center](security-center-virtual-machine-recommendations.md)
-* [Schützen Ihrer Anwendungen in Azure Security Center](security-center-application-recommendations.md)
+* [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 * [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Themen:

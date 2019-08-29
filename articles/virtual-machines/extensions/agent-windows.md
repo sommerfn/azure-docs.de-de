@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: 3de0e7ac20296544f7ca02030056aa60542cb0b0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c3b7b0588e6c1446203f7bb4a3ec7f168f08988f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706167"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637512"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -60,7 +60,7 @@ Zum Starten einer VM muss nur der PA auf der VM installiert sein, nicht jedoch d
 Wenn die Agents nicht installiert sind, können Sie einige Azure-Dienste wie Azure Backup oder das Azure Security Center nicht verwenden. Für diese Dienste muss eine Erweiterung installiert werden. Wenn Sie eine VM ohne den WinGA bereitgestellt haben, können Sie später die neueste Agent-Version installieren.
 
 ### <a name="manual-installation"></a>Manuelle Installation
-Der Windows-VM-Agent kann manuell mithilfe eines Windows-Installationspakets installiert werden. Wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird, ist möglicherweise eine manuelle Installation erforderlich. Laden Sie für die manuelle Installation des Windows-VM-Agents [das Installationsprogramms für den VM-Agent herunter](https://go.microsoft.com/fwlink/?LinkID=394789).
+Der Windows-VM-Agent kann manuell mithilfe eines Windows-Installationspakets installiert werden. Wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird, ist möglicherweise eine manuelle Installation erforderlich. Laden Sie für die manuelle Installation des Windows-VM-Agents [das Installationsprogramms für den VM-Agent herunter](https://go.microsoft.com/fwlink/?LinkID=394789). Der VM-Agent wird unter Windows Server 2008 R2 und höher unterstützt.
 
 Der VM-Agent kann mittels Doppelklick auf die Windows-Installationsdatei installiert werden. Wenn Sie eine automatisierte oder unbeaufsichtigte Installation des VM-Agents durchführen möchten, verwenden Sie den folgenden Befehl:
 

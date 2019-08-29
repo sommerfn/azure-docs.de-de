@@ -10,16 +10,15 @@ ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 323b3effb4c4a63d03ab7ea5251e0d59271d9dcd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61094521"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072135"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
 In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Elemente beschrieben, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.  
@@ -92,7 +91,7 @@ Das Entwicklerportal ist nicht im Tarif „Verbrauch“ verfügbar.
 |`Version`|Zeichenfolge|Versionsinformationen für die Anwendung.|  
 |`Requirements`|Zeichenfolge|Eine Beschreibung der Anforderungen für die Anwendung.|  
 |`State`|number|Der aktuelle Status der Anwendung.<br /><br /> – 0 – registriert<br /><br /> – 1 – übermittelt<br /><br /> – 2 – veröffentlicht<br /><br /> – 3 – abgelehnt<br /><br /> – 4 – unveröffentlicht|  
-|`RegistrationDate`|DateTime|Das Datum und die Uhrzeit der Anwendungsregistrierung.|  
+|`RegistrationDate`|Datetime|Das Datum und die Uhrzeit der Anwendungsregistrierung.|  
 |`CategoryId`|number|Die Kategorie der Anwendung (Finanzen, Unterhaltung usw.).|  
 |`DeveloperId`|Zeichenfolge|Der eindeutige Bezeichner des Entwicklers, der die Anwendung übermittelt hat.|  
 |`Attachments`|Sammlung von [Attachment](#Attachment)-Entitäten.|Anlagen für die Anwendung, z. B. Screenshots oder Symbole.|  
@@ -133,7 +132,7 @@ Das Entwicklerportal ist nicht im Tarif „Verbrauch“ verfügbar.
 |`Id`|number|Die ID des Kommentars.|  
 |`CommentText`|Zeichenfolge|Der Text des Kommentars. Kann HTML enthalten.|  
 |`DeveloperCompany`|Zeichenfolge|Der Unternehmensname des Entwicklers.|  
-|`PostedOn`|DateTime|Das Datum und Uhrzeit der Bereitstellung des Kommentars.|  
+|`PostedOn`|Datetime|Das Datum und Uhrzeit der Bereitstellung des Kommentars.|  
   
 ##  <a name="Issue"></a> Problem  
  Die `issue`-Entität weist die folgenden Eigenschaften auf.  
@@ -146,7 +145,7 @@ Das Entwicklerportal ist nicht im Tarif „Verbrauch“ verfügbar.
 |`Description`|Zeichenfolge|Die Beschreibung des Problems.|  
 |`SubscriptionDeveloperName`|Zeichenfolge|Der Vorname des Entwicklers, der das Problem gemeldet hat.|  
 |`IssueState`|Zeichenfolge|Der aktuelle Status des Problems. Mögliche Werte sind „Vorgeschlagen“, „Geöffnet“, „Geschlossen“.|  
-|`ReportedOn`|DateTime|Das Datum und die Uhrzeit, zu der das Problem gemeldet wurde.|  
+|`ReportedOn`|Datetime|Das Datum und die Uhrzeit, zu der das Problem gemeldet wurde.|  
 |`Comments`|Sammlung von [Comment](#Comment)-Entitäten.|Kommentare zu diesem Problem.|  
 |`Attachments`|Sammlung von [Attachment](api-management-template-data-model-reference.md#Attachment)-Entitäten.|Eventuelle Anlagen zum Problem.|  
 |`Services`|Sammlung von [API](#API)-Entitäten.|Die von dem Benutzer, der das Problem gemeldet hat, abonnierten APIs.|  

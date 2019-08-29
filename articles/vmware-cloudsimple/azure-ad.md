@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617369"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972929"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Verwenden von Azure AD als Identitätsanbieter für vCenter in einer privaten CloudSimple-Cloud
 
@@ -98,4 +98,4 @@ Optional können Sie auch andere Azure AD-Features konfigurieren.  Diese sind ni
 
 3. Melden Sie sich bei Ihrem vCenter in der privaten Cloud an, nachdem die Berechtigungen eskaliert wurden.
 4. Befolgen Sie die Anweisungen unter [Hinzufügen einer Identitätsquelle für vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter), und verwenden Sie dabei die Werte aus dem vorherigen Schritt, um Azure Active Directory als Identitätsquelle einzurichten.
-5. Fügen Sie Benutzer/Gruppen aus Azure AD vCenter-Gruppen hinzu, wie im VMware-Thema <a href="https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html" target="_blank">Hinzufügen von Mitgliedern zu einer vCenter-Gruppe für einmaliges Anmelden</a> beschrieben wird.
+5. Fügen Sie Benutzer/Gruppen aus Azure AD vCenter-Gruppen hinzu, wie im VMware-Thema [Hinzufügen von Mitgliedern zu einer vCenter-Gruppe für einmaliges Anmelden](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html) beschrieben wird.

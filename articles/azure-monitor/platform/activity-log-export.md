@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: acf2526e79519e610614dc5217efbfe5e327b90f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d34040722ac8793fd4bbb02f2d3fa59247f8267c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245597"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639634"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
@@ -63,8 +63,10 @@ Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokol
 
 > [!WARNING]
 > Das Format der Protokolldaten im Speicherkonto wurde am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](diagnostic-logs-append-blobs.md)
->
->
+
+
+> [!IMPORTANT]
+> Wenn der Microsoft.Insights-Ressourcenanbieter nicht registriert ist, wird beim Erstellen eines Protokollprofils möglicherweise eine Fehlermeldung angezeigt. Informationen zum Registrieren dieses Anbieters finden Sie unter [Azure-Ressourcenanbieter und-Typen](../../azure-resource-manager/resource-manager-supported-services.md).
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Erstellen eines Protokollprofils mit dem Azure-Portal
 

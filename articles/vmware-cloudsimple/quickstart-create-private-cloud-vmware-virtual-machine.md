@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574592"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972397"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Erstellen von virtuellen VMware-Computern in Ihrer privaten Cloud
 
@@ -143,7 +143,7 @@ In diesen Microsoft-Themen wird beschrieben, wie Sie einen Windows-Server als DN
 
     ![Öffentliche IP-Adresse](media/quick-create-pc-public-ip.png)
 
-Jetzt beginnt die Aufgabe des Zuordnens der öffentlichen IP-Adresse. Sie können den Status der Aufgabe auf der Seite **Aktivität > Aufgaben** überprüfen. Nach Abschluss der Zuordnung wird der neue Eintrag auf der Seite „Öffentliche IP-Adressen“ angezeigt. 
+Jetzt beginnt die Aufgabe des Zuordnens der öffentlichen IP-Adresse. Sie können den Status der Aufgabe auf der Seite **Aktivität > Aufgaben** überprüfen. Nach Abschluss der Zuordnung wird der neue Eintrag auf der Seite „Öffentliche IP-Adressen“ angezeigt.
 
 Der virtuelle Computer, dem diese IP-Adresse zugeordnet werden muss, muss mit der oben angegebenen lokalen Adresse konfiguriert werden. Die Vorgehensweise zum Konfigurieren einer IP-Adresse ist für das Betriebssystem des virtuellen Computers spezifisch. Lesen Sie die Dokumentation zum Betriebssystem Ihres virtuellen Computers, um sich über die richtige Vorgehensweise zu informieren.
 
@@ -205,7 +205,7 @@ oder
 ```
 python3 -m http.server 80
 ```
-Starten Sie einen Browser auf Ihrem Desktop, und verweisen Sie ihn an Port 80 für die öffentliche IP-Adresse, um die Dateien auf Ihrem virtuellen Computer zu durchsuchen. 
+Starten Sie einen Browser auf Ihrem Desktop, und verweisen Sie ihn an Port 80 für die öffentliche IP-Adresse, um die Dateien auf Ihrem virtuellen Computer zu durchsuchen.
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>CloudSimple-Standardfirewallregeln für öffentliche IP-Adresse
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e82a39b049c39cb4facfbc38b5e9020bb46de99b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61271705"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637973"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
-Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
+Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen.  Sicherungen können so konfiguriert werden, dass Sie bis zu einem unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
 
 Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md).
 
@@ -50,7 +50,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Anforderungen und Einschränkungen
-* Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder **Premium**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](web-sites-scale.md).  
+* Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder **Premium**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](manage-scale-up.md).  
   Im Tarif **Premium** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
 * Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
@@ -69,7 +69,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
    
    > [!NOTE]
    > Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
-   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).  
+   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).  
    > ![Speicherkonto auswählen](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 

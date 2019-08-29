@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5bf2ee68ff2cfde2846dff2d94f7478920a18760
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037350"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624983"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe
 
@@ -25,7 +25,7 @@ Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe. In 
 
 > [!div class="checklist"]
 > - Erstellen einer primären verwalteten Instanz
-> - Erstellen Sie eine sekundäre verwaltete Instanz als Teil einer [Failovergruppe](sql-database-auto-failover-group.md). 
+> - Erstellen einer sekundären verwalteten Instanz als Teil einer [Failovergruppe](sql-database-auto-failover-group.md). 
 > - Testfailover
 
   > [!NOTE]
@@ -41,7 +41,7 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 ## <a name="1----create-resource-group-and-primary-managed-instance"></a>1\. Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
 In diesem Schritt erstellen Sie die Ressourcengruppe und die primäre verwaltete Instanz für Ihre Failovergruppe mithilfe des Azure-Portals. 
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**. 
 1. Geben Sie `managed instance` in das Suchfeld ein, und wählen Sie die Option für die verwaltete Azure SQL-Instanz aus. 
 1. Wählen Sie **Erstellen** aus, um die Erstellungsseite für **Verwaltete SQL-Instanz** zu starten. 
@@ -151,7 +151,7 @@ Damit zwei verwaltete Instanzen an einer Failovergruppe teilnehmen können, muss
     | **Gatewaytyp** | Wählen Sie **VPN** aus. |
     | **VPN-Typ** | Wählen Sie **Routenbasiert** aus. |
     | **SKU**| Lassen Sie den Standardwert `VpnGw1` unverändert. |
-    | **Standort**| Der Standort, an dem sich Ihre sekundäre verwaltete Instanz und das sekundäre virtuelle Netzwerk befinden.   |
+    | **Location**| Der Standort, an dem sich Ihre primäre verwaltete Instanz und das primäre virtuelle Netzwerk befinden.   |
     | **Virtuelles Netzwerk**| Wählen Sie das virtuelle Netzwerk aus, das in Abschnitt 2 erstellt wurde, z.B. `vnet-sql-mi-primary`. |
     | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen**. |
     | **Name der öffentlichen IP-Adresse**| Geben Sie einen Namen für die IP-Adresse ein, z.B. `primary-gateway-IP`. |

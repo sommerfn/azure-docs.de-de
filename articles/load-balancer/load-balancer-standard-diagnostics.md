@@ -1,7 +1,7 @@
 ---
-title: Diagnose von Azure Load Balancer Standard
+title: Azure Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 titlesuffix: Azure Load Balancer
-description: Verwenden Sie die verfügbaren Metriken und Integritätsinformationen zur Diagnose für Azure Standard Load Balancer.
+description: Verwenden Sie die verfügbaren Informationen zu Metriken, Warnungen und Ressourcenintegrität für die Diagnose Ihres Azure Load Balancer Standard.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274481"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516260"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriken und Integritätsdiagnosen für Standard Load Balancer
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
-Azure Load Balancer Standard bietet Ihren Ressourcen die folgenden Diagnosefunktionen:
-* **Mehrdimensionale Metriken**: Stellt neue mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) sowohl für öffentliche als auch für interne Load Balancer-Konfigurationen bereit. Sie können Ihre Load Balancer-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
+Azure Load Balancer Standard bietet die folgenden Diagnosefunktionen:
 
-* **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für die öffentliche Load Balancer-Konfiguration von Load Balancer Standard bereit.
+* **Mehrdimensionale Metriken und Warnungen**: Stellt neue mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) für Load Balancer Standard-Konfigurationen bereit. Sie können Ihre Load Balancer Standard-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
+
+* **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für Load Balancer Standard bereit. 
 
 Dieser Artikel enthält einen kurzen Überblick über diese Funktionen und zeigt Möglichkeiten auf, wie diese für Standard Load Balancer verwendet werden können.
 
@@ -172,9 +173,6 @@ Anhand des Diagramms kann der Kunde eigenständig eine Fehlerbehebung für die B
 
 Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die vorhandene **Ressourcenintegrität** unter **Monitor > Service Health** verfügbar gemacht.
 
->[!NOTE]
->Der Ressourcenintegritätsstatus für Load Balancer ist derzeit nur für die öffentliche Konfiguration von Standard Load Balancer verfügbar. Interne Load Balancer-Ressourcen oder Basic-SKUs von Load Balancer-Ressourcen machen keine Ressourcenintegrität verfügbar.
-
 So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressourcen an
 1. Wählen Sie **Monitor** > **Dienstintegrität** aus.
 
@@ -198,13 +196,9 @@ In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und
 
 | Ressourcenintegritätsstatus | BESCHREIBUNG |
 | --- | --- |
-| Verfügbar | Ihre öffentliche Standard Load Balancer-Ressource ist fehlerfrei und verfügbar. |
-| Nicht verfügbar | Ihre öffentliche Standard Load Balancer-Ressource ist nicht fehlerfrei. Wählen Sie **Azure Monitor** > **Metriken** aus, um eine Diagnose der Integrität auszuführen.<br>(Der Status *Nicht verfügbar* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.) |
-| Unknown | Der Ressourcenintegritätsstatus für Ihre öffentliche Standard Load Balancer-Ressource wurde noch nicht aktualisiert.<br>(Der Status *Unbekannt* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.)  |
-
-## <a name="limitations"></a>Einschränkungen 
-
-- Die Datenpfadverfügbarkeit (VIP-Verfügbarkeit) ist nicht für interne Load Balancer-Front-Ends verfügbar.
+| Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
+| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Wählen Sie **Azure Monitor** > **Metriken** aus, um eine Diagnose der Integrität auszuführen.<br>(Der Status *Nicht verfügbar* kann auch bedeuten, dass die Ressource nicht mit Ihrem Load Balancer Standard verbunden ist.) |
+| Unknown | Der Ressourcenintegritätsstatus für Ihre Load Balancer Standard-Ressource wurde noch nicht aktualisiert.<br>(Der Status *Unbekannt* kann auch bedeuten, dass die Ressource nicht mit Ihrem Load Balancer Standard verbunden ist.)  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -212,5 +206,3 @@ In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und
 - Weitere Informationen zu Ihren [ausgehenden Verbindungen für Load Balancer](https://aka.ms/lboutbound)
 - Weitere Informationen finden Sie unter [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 - Weitere Informationen finden Sie unter [Azure Monitor REST-API](https://docs.microsoft.com/rest/api/monitor/) und [Abrufen von Metriken über die REST-API](/rest/api/monitor/metrics/list).
-
-

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619812"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616927"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
-Dieses Tutorial bietet Anleitungen zum Verwenden der BulkExecutor-Java-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Azure Cosmos DB-Dokumenten. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial erstellen Sie eine Java-Anwendung, die zufällige Dokumente generiert. Diese werden per Massenvorgang in einen Azure Cosmos DB-Container importiert. Nach dem Importieren aktualisieren Sie per Massenvorgang einige Eigenschaften eines Dokuments. 
+Dieses Tutorial bietet Anleitungen zum Verwenden der BulkExecutor-Java-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Azure Cosmos DB-Dokumenten. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial erstellen Sie eine Java-Anwendung, die zufällige Dokumente generiert. Diese werden per Massenvorgang in einen Azure Cosmos-Container importiert. Nach dem Importieren aktualisieren Sie per Massenvorgang einige Eigenschaften eines Dokuments. 
 
 Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB-SQL-API- und Gremlin-API-Konten unterstützt. In diesem Artikel wird beschrieben, wie Sie die BulkExecutor-Java-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md).
 
@@ -88,7 +88,7 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Rufen Sie die importAll-API auf, über die zufällige Dokumente generiert werden, die per Massenvorgang in einen Azure Cosmos DB-Container importiert werden sollen. Sie können die Befehlszeilenkonfigurationen in der Datei „CmdLineConfiguration.java“ einrichten.
+4. Rufen Sie die importAll-API auf, über die zufällige Dokumente generiert werden, die per Massenvorgang in einen Azure Cosmos-Container importiert werden sollen. Sie können die Befehlszeilenkonfigurationen in der Datei „CmdLineConfiguration.java“ einrichten.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Rufen Sie die updateAll-API auf, über die zufällige Dokumente generiert werden, die per Massenvorgang in einen Azure Cosmos DB-Container importiert werden sollen. Sie können die Befehlszeilenkonfigurationen einrichten, die in der Datei übergeben werden.
+2. Rufen Sie die updateAll-API auf, über die zufällige Dokumente generiert werden, die per Massenvorgang in einen Azure Cosmos-Container importiert werden sollen. Sie können die Befehlszeilenkonfigurationen einrichten, die in der Datei übergeben werden.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
    * Legen Sie die JVM-Heapgröße auf einen Wert fest, der so hoch ist, dass Arbeitsspeicherprobleme bei der Verarbeitung einer großen Anzahl von Dokumenten vermieden werden. Empfohlene Heapgröße: max(3GB, 3 * sizeof(all documents passed to bulk import API in one batch)).  
    * Es muss eine gewisse Vorverarbeitungszeit eingerechnet werden, daher erhalten Sie einen höheren Durchsatz, wenn Sie Massenvorgänge mit einer großen Anzahl von Dokumenten ausführen. Wenn Sie z.B. 10.000.000 Dokumente importieren möchten, sollten Sie eher 10 Massenimportvorgänge für 10 Batches mit jeweils 1.000.000 Dokumenten ausführen als 100 Massenimportvorgänge für 100 Batches mit jeweils 100.000 Dokumenten.  
 
-* Es empfiehlt sich, ein einzelnes DocumentBulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einem bestimmten Azure Cosmos DB-Container entspricht.  
+* Es empfiehlt sich, ein einzelnes DocumentBulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einem bestimmten Azure Cosmos-Container entspricht.  
 
 * Eine einzelne Ausführung einer Massenvorgang-API verbraucht eine große Menge an CPU- und Netzwerk-E/A-Ressourcen des Clientcomputers. Dies wird erreicht, indem mehrere Tasks intern erzeugt werden. Vermeiden Sie das Erzeugen mehrerer gleichzeitiger Tasks in Ihrem Anwendungsprozess, von denen jeder Massenvorgang-API-Aufrufe ausführt. Wenn ein einzelner Massenvorgang-API-Aufruf, der auf einem einzelnen virtuellen Computer ausgeführt wird, nicht den gesamten Durchsatz Ihres Containers verbrauchen kann (wenn der Durchsatz mehr als 1 Million Anforderungseinheiten pro Sekunde beträgt), ist es besser, separate virtuelle Computer zu erstellen, um Massenvorgang-API-Aufrufe gleichzeitig auszuführen.
 

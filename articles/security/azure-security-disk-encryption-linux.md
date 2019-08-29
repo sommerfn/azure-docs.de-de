@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffdda51c4739dfad6c326a5c90f4a93ebfb321cd
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: bc9e8af907092a2d2929e50284f048510ff6210b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294899"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065955"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivieren von Azure Disk Encryption für virtuelle Linux-IaaS-Computer 
 
@@ -299,9 +299,13 @@ Wir empfehlen Ihnen, ein LVM-on-crypt-Setup zu verwenden. Ersetzen Sie für alle
         `echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab`
     
     4. Führen Sie das PowerShell-Cmdlet „Set-AzVMDiskEncryptionExtension“ mit „-EncryptFormatAll“ aus, um diese Datenträger zu verschlüsseln.
+
          ```azurepowershell-interactive
-         Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
+         $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+         
+         Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri  -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
          ```
+
     5. Richten Sie LVM für diese neuen Datenträger ein. Beachten Sie, dass die verschlüsselten Laufwerke entsperrt werden, nachdem das Starten der VM abgeschlossen wurde. Die LVM-Bereitstellung muss nachfolgend also auch verzögert werden.
 
 

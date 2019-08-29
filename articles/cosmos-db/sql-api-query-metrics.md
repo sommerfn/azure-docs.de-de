@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447252"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614826"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Die SDKs stellen verschiedene Optionen für die Abfrageausführung bereit. In .N
 | `EnableScanInQuery` | Muss auf „true“ festgelegt werden, wenn Sie die Indizierung deaktiviert haben, die Abfrage jedoch trotzdem mittels einer Überprüfung ausführen möchten. Diese Option ist nur anwendbar, wenn die Indizierung für den angeforderten Filterpfad deaktiviert ist. | 
 | `MaxItemCount` | Die maximale Anzahl von Elementen, die pro Roundtrip an den Server zurückgegeben werden soll. Mit einem Wert von „-1“ können Sie festlegen, dass die Anzahl der Elemente vom Server verwaltet wird. Alternativ können Sie diesen Wert senken, um nur eine geringe Anzahl von Elementen pro Roundtrip abzurufen. 
 | `MaxBufferedItemCount` | Dies ist eine clientseitige Option, mit der die Speicherbelegung bei der Durchführung der partitionsübergreifenden ORDER BY-Klausel beschränkt wird. Durch einen höheren Wert kann die Latenz der partitionsübergreifenden Sortierung verringert werden. |
-| `MaxDegreeOfParallelism` | Ruft die Anzahl der gleichzeitigen Vorgänge ab, die auf Clientseite während der parallelen Abfrageausführung im Azure Cosmos DB-Datenbankdienst ausgeführt werden, bzw. legt diese fest. Ein positiver Eigenschaftswert beschränkt die Anzahl der gleichzeitigen Vorgänge auf den festgelegten Wert. Wenn ein kleinerer Wert als 0 festgelegt wird, wird die Anzahl der gleichzeitig auszuführenden Vorgänge automatisch vom System festgelegt. |
+| `MaxDegreeOfParallelism` | Ruft die Anzahl der gleichzeitigen Vorgänge ab, die auf Clientseite während der parallelen Abfrageausführung im Azure Cosmos-Datenbankdienst ausgeführt werden, bzw. legt diese fest. Ein positiver Eigenschaftswert beschränkt die Anzahl der gleichzeitigen Vorgänge auf den festgelegten Wert. Wenn ein kleinerer Wert als 0 festgelegt wird, wird die Anzahl der gleichzeitig auszuführenden Vorgänge automatisch vom System festgelegt. |
 | `PopulateQueryMetrics` | Aktiviert die ausführliche Protokollierung von Statistiken zu den verschiedenen Zeitabschnitten bei der Abfrageausführung (Kompilierzeit, Indexschleifenzeit und Dokumentladezeit). Sie können die Ausgabe der Abfragestatistik an den Azure-Support weitergeben, um Probleme zur Abfrageleistung zu diagnostizieren. |
 | `RequestContinuation` | Sie können die Abfrageausführung fortsetzen, indem Sie das von jeder Abfrage zurückgegebene opake Fortsetzungstoken übergeben. Das Fortsetzungstoken kapselt alle Zustände, die für die Abfrageausführung erforderlich sind. |
 | `ResponseContinuationTokenLimitInKb` | Sie können die maximale Größe des vom Server zurückgegebenen Fortsetzungstokens beschränken. Möglicherweise müssen Sie dies festlegen, wenn Ihr Anwendungshost Grenzwerte für die Größe des Antwortheaders vorsieht. Durch Festlegen dieses Werts kann sich die Gesamtdauer und die Anzahl der für die Abfrage verwendeten RUs erhöhen.  |

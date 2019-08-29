@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967967"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640875"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
@@ -41,7 +41,7 @@ David, Mitarbeiter der IT-Sicherheit von Contoso, hat sich bereits für ein Onbo
 
 Das Security Center analysiert automatisch den Sicherheitszustand der Azure-Ressourcen von Contoso und wendet Standardsicherheitsrichtlinien an. Wenn Security Center potenzielle Sicherheitsrisiken ermittelt, werden basierend auf den in der Sicherheitsrichtlinie festgelegten Elementen **Empfehlungen** erstellt. 
 
-David führt den Azure Security-Standardtarif für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfunktionen zu erhalten. Jeff nimmt ebenfalls ein Onboarding all seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er die Hybridunterstützung des Security Centers auf allen [Windows](quick-onboard-windows-computer.md)- und [Linux](quick-onboard-linux-computer.md)-Servern ausnutzen kann.
+David führt den Azure Security-Standardtarif für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfunktionen zu erhalten. Jeff nimmt ebenfalls ein Onboarding all seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er auf allen [Windows](quick-onboard-windows-computer.md)- und [Linux](quick-onboard-linux-computer.md)-Servern von der Hybridunterstützung von Security Center profitieren kann.
 
 Jeff ist Besitzer einer Cloudworkload. Jeff ist verantwortlich für die Anwendung von Sicherheitskontrollen gemäß den Sicherheitsrichtlinien von Contoso. 
 
@@ -52,9 +52,9 @@ Jeff führt die folgenden Aufgaben aus:
 - Umsetzen von Sicherheitsempfehlungen
 
 ### <a name="remediate-threats-using-recommendations"></a>Beseitigen von Bedrohungen mittels Empfehlungen
-Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure an und öffnet das Security Center. 
+Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure an und öffnet Security Center. 
 
-1. Jeff wählt die Abonnements seiner Workload aus.
+1. Jeff wählt die Abonnements der Workload aus.
 
 2. Jeff überprüft seine **Sicherheitsbewertung**, um einen Gesamteindruck davon zu bekommen, wie sicher die Abonnements sind, und er sieht, dass seine Bewertung 548 ist.
 

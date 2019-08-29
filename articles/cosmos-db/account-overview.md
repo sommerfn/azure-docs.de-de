@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 617d19b0dd9da926eb49170c1566febc6f6280ba
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467810"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616991"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Arbeiten mit einem Azure Cosmos-Konto
 
@@ -25,7 +25,7 @@ Zur sicheren Verwaltung des Zugriffs auf sämtliche Daten in Ihrem Azure Cosmos-
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elemente in einem Azure Cosmos-Konto
 
-Ein Azure Cosmos DB-Container ist die grundlegende Einheit für die Skalierbarkeit. Ein Container kann über nahezu unbegrenzten bereitgestellten Durchsatz (RU/s) und Speicher verfügen. Azure Cosmos DB partitioniert Ihren Container transparent unter Verwendung des logischen Partitionsschlüssels, den Sie angeben, um die elastische Skalierung Ihres bereitgestellten Durchsatzes und Speichers zu ermöglichen. Weitere Informationen finden Sie unter [Arbeiten mit Azure Cosmos-Datenbanken, -Containern und -Elementen](databases-containers-items.md).
+Ein Azure Cosmos-Container ist die grundlegende Einheit für die Skalierbarkeit. Ein Container kann über nahezu unbegrenzten bereitgestellten Durchsatz (RU/s) und Speicher verfügen. Azure Cosmos DB partitioniert Ihren Container transparent unter Verwendung des logischen Partitionsschlüssels, den Sie angeben, um die elastische Skalierung Ihres bereitgestellten Durchsatzes und Speichers zu ermöglichen. Weitere Informationen finden Sie unter [Arbeiten mit Azure Cosmos-Datenbanken, -Containern und -Elementen](databases-containers-items.md).
 
 Aktuell können unter einem Azure-Abonnement bis zu 100 Azure Cosmos-Konten erstellt werden. Ein einzelnes Azure Cosmos-Konto kann eine nahezu unbegrenzte Menge an Daten und bereitgestelltem Durchsatz verwalten. Zur Verwaltung Ihrer Daten und Ihres bereitgestellten Durchsatzes können Sie unter Ihrem Konto eine oder mehrere Azure Cosmos-Datenbanken und innerhalb der jeweiligen Datenbank einen oder mehrere Container erstellen. Die folgende Abbildung zeigt die Hierarchie der Elemente in einem Azure Cosmos-Konto:
 

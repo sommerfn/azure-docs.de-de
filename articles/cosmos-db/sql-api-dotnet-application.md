@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: b1d8d2539ae89dfdb8feb2e38f00bf4440411d8a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9824e1468604763834e37abe94290d68d81077ab
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815139"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020124"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Tutorial: Entwickeln einer ASP.NET Core MVC-Webanwendung mit Azure Cosmos DB unter Verwendung des .NET SDK 
 
@@ -120,22 +120,6 @@ Fügen Sie der MVC-Anwendung als Nächstes die Modelle, Ansichten und Controller
    
    Die in Azure Cosmos DB gespeicherten Daten werden übertragen und im JSON-Format gespeichert. Die Serialisierung/Deserialisierung Ihrer Objekte durch JSON.NET kann mithilfe des Attributs **JsonProperty** gesteuert werden, wie in der erstellten Klasse **Item** veranschaulicht. Sie können nicht nur das Format des an JSON weitergegebenen Eigenschaftennamens steuern, sondern auch Ihre .NET-Eigenschaften umbenennen, wie hier am Beispiel der Eigenschaft **Completed** zu sehen. 
 
-### <a name="add-a-controller"></a>Hinzufügen eines Controllers
-
-1. Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie **Hinzufügen** > **Controller** aus. Das Dialogfeld **Gerüst hinzufügen** wird angezeigt.
-
-1. Wählen Sie **MVC-Controller – leer** und anschließend **Hinzufügen** aus.
-
-   ![Screenshot des Dialogfelds „Gerüst hinzufügen“, in dem die Option „MVC-Controller – leer“ hervorgehoben ist](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
-
-1. Nennen Sie Ihren neuen Controller **ItemController**, und ersetzen Sie den Code in der Datei durch folgenden Code:
-
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
-
-   Das Attribut **ValidateAntiForgeryToken** wird hier verwendet, um den Schutz dieser Anwendung vor websiteübergreifenden Anforderungsfälschungen zu unterstützen. Das Hinzufügen dieses Attributs reicht jedoch nicht aus; Ihre Ansichten müssen ebenfalls mit diesem Antifälschungstoken arbeiten. Weitere Informationen zu diesem Thema sowie Beispiele für eine ordnungsgemäße Implementierung finden Sie unter [Verhindern der websiteübergreifenden Anforderungsfälschung][Preventing Cross-Site Request Forgery]. Der auf [GitHub][GitHub] bereitgestellte Quellcode enthält die vollständige Implementierung.
-
-   Zum Schutz vor Overposting-Angriffen wird außerdem das Attribut **Bind** im Methodenparameter verwendet. Weitere Informationen finden Sie unter [Grundlegende CRUD-Vorgänge in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
-
 ### <a name="add-views"></a>Hinzufügen von Ansichten
 
 Erstellen Sie als Nächstes die drei folgenden Ansichten: 
@@ -190,6 +174,22 @@ Fügen Sie abschließend eine Ansicht für die Elementbearbeitung hinzu:
    * Wählen Sie **Hinzufügen**.
 
 Schließen Sie nach Abschluss dieses Vorgangs alle CSHTML-Dokumente in Visual Studio. Sie werden erst später benötigt.
+
+### <a name="add-a-controller"></a>Hinzufügen eines Controllers
+
+1. Klicken Sie im**Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie **Hinzufügen** > **Controller** aus. Das Dialogfeld **Gerüst hinzufügen** wird angezeigt.
+
+1. Wählen Sie **MVC-Controller – leer** und anschließend **Hinzufügen** aus.
+
+   ![Screenshot des Dialogfelds „Gerüst hinzufügen“, in dem die Option „MVC-Controller – leer“ hervorgehoben ist](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+
+1. Nennen Sie Ihren neuen Controller **ItemController**, und ersetzen Sie den Code in der Datei durch folgenden Code:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+
+   Das Attribut **ValidateAntiForgeryToken** wird hier verwendet, um den Schutz dieser Anwendung vor websiteübergreifenden Anforderungsfälschungen zu unterstützen. Das Hinzufügen dieses Attributs reicht jedoch nicht aus; Ihre Ansichten müssen ebenfalls mit diesem Antifälschungstoken arbeiten. Weitere Informationen zu diesem Thema sowie Beispiele für eine ordnungsgemäße Implementierung finden Sie unter [Verhindern der websiteübergreifenden Anforderungsfälschung][Preventing Cross-Site Request Forgery]. Der auf [GitHub][GitHub] bereitgestellte Quellcode enthält die vollständige Implementierung.
+
+   Zum Schutz vor Overposting-Angriffen wird außerdem das Attribut **Bind** im Methodenparameter verwendet. Weitere Informationen finden Sie unter [Grundlegende CRUD-Vorgänge in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
 
 ## <a name="connect-to-cosmosdb"></a>Schritt 5: Herstellen der Verbindung mit Azure Cosmos DB 
 

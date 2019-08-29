@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4d13779317793b5edd971dd457a77e0bc5cae1c8
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426890"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626336"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "68426890"
 
 <sup>1</sup>Standardgrenzwerte variieren nach angebotenem Kategorietyp, z.B. kostenlose Testversion, nutzungsbasierte Bezahlung, und nach Serie, wie z.B. Dv2, F und G. Der Standard für Enterprise Agreement-Abonnements ist z.B. 350.
 
-<sup>2</sup>Sie können eine unbegrenzte Anzahl von Tags pro Abonnement anwenden. Die Anzahl von Tags pro Ressource oder Ressourcengruppe ist auf 15 beschränkt. Resource Manager gibt nur eine [Liste mit eindeutigen Tagnamen und Werten](/rest/api/resources/tags) im Abonnement zurück, wenn die Anzahl der Tags 10.000 oder weniger beträgt. Sie können eine Ressource jedoch auch anhand des Tags finden, wenn die Anzahl 10.000 überschreitet.  
+<sup>2</sup>Sie können eine unbegrenzte Anzahl von Tags pro Abonnement anwenden. Die Anzahl von Tags pro Ressource oder Ressourcengruppe ist auf 50 beschränkt. Resource Manager gibt nur eine [Liste mit eindeutigen Tagnamen und Werten](/rest/api/resources/tags) im Abonnement zurück, wenn die Anzahl der Tags 10.000 oder weniger beträgt. Sie können eine Ressource jedoch auch anhand des Tags finden, wenn die Anzahl 10.000 überschreitet.  
 
 <sup>3</sup>Diese Features sind für Azure-Ressourcengruppen und Resource Manager nicht mehr erforderlich.
 

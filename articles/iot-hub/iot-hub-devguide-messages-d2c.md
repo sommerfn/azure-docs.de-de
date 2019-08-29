@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2d4d39cc7b330794094745851856365ef54b42f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828189"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877185"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -39,7 +39,7 @@ Sie können standardmäßige [Event Hubs-Integration und -SDKs](iot-hub-devguide
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage im [Apache Avro](https://avro.apache.org/)- und im JSON-Format. Die Möglichkeit zum Codieren des JSON-Formats steht jetzt allgemein in allen Regionen zur Verfügung, in der IoT Hub verfügbar ist. Standardwert: AVRO. Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt des Blobspeichers konfiguriert ist. Das Format kann nicht für einen vorhandenen Endpunkt bearbeitet werden. Wenn Sie die JSON-Codierung verwenden, müssen Sie in der Nachricht [Systemeigenschaften](iot-hub-devguide-routing-query-syntax.md#system-properties) „contentType“ auf JSON und „contentEncoding“ auf UTF-8 festlegen. Wenn dies nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format. Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder die [Azure Powershell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Das folgende Diagramm zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
+IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage im [Apache Avro](https://avro.apache.org/)- und im JSON-Format. Die Möglichkeit zum Codieren des JSON-Formats steht jetzt allgemein in allen Regionen zur Verfügung, in der IoT Hub verfügbar ist. Standardwert: AVRO. Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt des Blobspeichers konfiguriert ist. Das Format kann nicht für einen vorhandenen Endpunkt bearbeitet werden. Wenn Sie die JSON-Codierung verwenden, müssen Sie in der Nachricht [Systemeigenschaften](iot-hub-devguide-routing-query-syntax.md#system-properties) „contentType“ auf **application/json** und „contentEncoding“ auf **UTF-8** festlegen. Bei diesen beiden Werten wird die Groß-/Kleinschreibung nicht beachtet. Wenn die Inhaltscodierung nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format. Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder die [Azure Powershell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Das folgende Diagramm zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
 
 ![Endpunktcodierung für Blobspeicher](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -53,7 +53,7 @@ IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn 
 
 Sie können eine beliebige Dateibenennungskonvention verwenden, müssen jedoch alle aufgelisteten Tokens verwenden. IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
 
-Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover-preview) in Zusammenhang mit IoT Hub ändern. Sie können die [API zum Auflisten von Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) verwenden, um die Liste der Blobs aufzulisten. Das folgende Beispiel dient als Anleitung.
+Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die [API zum Auflisten von Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) verwenden, um die Liste der Blobs aufzulisten. Das folgende Beispiel dient als Anleitung.
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -103,7 +103,7 @@ Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenroutin
 
 ## <a name="non-telemetry-events"></a>Nicht telemetriebezogene Ereignisse
 
-Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen für Gerätezwillinge und Ereignissen im Gerätelebenszyklus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die darauf hinweist, ob das Gerät erstellt oder gelöscht wurde. 
+Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen, Ereignissen im Gerätelebenszyklus und Änderungsereignissen bei digitalen Zwillingen (in der öffentlichen Vorschau). Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Und schließlich kann ein Entwickler als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt wird, und IoT Hub sendet immer dann Nachrichten, wenn eine [Eigenschaft](../iot-pnp/iot-plug-and-play-glossary.md) des digitalen Zwillings festgelegt oder geändert wird, ein [digitaler Zwilling](../iot-pnp/iot-plug-and-play-glossary.md) ersetzt wird oder wenn es bei dem zugrunde liegenden Gerätezwilling zu einem Änderungsereignis kommt.
 
 [IoT Hub lässt sich auch in Azure Event Grid integrieren](iot-hub-event-grid.md), um Geräteereignisse zu veröffentlichen und so Echtzeitintegrationen und die Automatisierung von Workflows basierend auf diesen Ereignissen zu unterstützen. Informationen dazu, welche Methode sich am besten für Ihr Szenario eignet, finden Sie unter [Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub](iot-hub-event-grid-routing-comparison.md).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 973b097224b639a70d0904f1f82f2d95e3786d1f
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987498"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969571"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Clientbibliotheken zum Herstellen einer Verbindung mit Azure Analysis Services
 
@@ -66,7 +66,7 @@ Clientbibliotheken für Clientverbindungen unterscheiden sich von Datenanbietern
 
  ADOMD.NET ist eine verwaltete Datenclientbibliothek, die zum Abfragen von Analysis Services-Daten eingesetzt wird. Sie wird von Tools und Clientanwendungen installiert und genutzt. 
   
- Beim Herstellen einer Verbindung mit der Datenbank sind die Eigenschaften der Verbindungszeichenfolgen für alle drei Bibliotheken ähnlich. Fast jede Verbindungszeichenfolge, die Sie für ADOMD.NET per [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) definieren, funktioniert auch für AMO und den Analysis Services OLE DB-Anbieter (MSOLAP). Weitere Informationen finden Sie unter [Verbindungszeichenfolgen-Eigenschaften (Analysis Services)](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess).  
+ Beim Herstellen einer Verbindung mit der Datenbank sind die Eigenschaften der Verbindungszeichenfolgen für alle drei Bibliotheken ähnlich. Fast jede Verbindungszeichenfolge, die Sie für ADOMD.NET per [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) definieren, funktioniert auch für AMO und den Analysis Services OLE DB-Anbieter (MSOLAP). Weitere Informationen finden Sie unter [Verbindungszeichenfolgen-Eigenschaften (Analysis Services)](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a> Ermitteln der Version einer Clientbibliothek   

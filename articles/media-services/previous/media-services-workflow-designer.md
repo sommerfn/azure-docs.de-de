@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015977"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613243"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer  
 ## <a name="overview"></a>Übersicht
@@ -87,7 +87,7 @@ Im Video von Tag 3 werden folgende Themen behandelt:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Falls Sie Support benötigen oder Fragen zur Erstellung von benutzerdefinierten Workflows im Workflow-Designer-Tool haben, können Sie eine E-Mail an mepd@microsoft.com senden.
+Falls Sie Support benötigen oder Fragen zur Erstellung von benutzerdefinierten Workflows im Workflow-Designer-Tool haben, können Sie eine E-Mail an mepd@microsoft.com senden. Schreiben Sie die E-Mail in englischer Sprache.
 
 ## <a name="see-also"></a>Siehe auch
 [Azure Premium Encoder Workflow-Designer – Schulungsvideos](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

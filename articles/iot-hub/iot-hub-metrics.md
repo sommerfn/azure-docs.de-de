@@ -7,18 +7,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274918"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877092"
 ---
 # <a name="understand-iot-hub-metrics"></a>Grundlegendes zu IoT Hub-Metriken
 
 IoT Hub-Metriken liefern bessere Daten zum Zustand der Azure IoT-Ressourcen in Ihrem Azure-Abonnement. Auf der Grundlage von IoT Hub-Metriken können Sie die allgemeine Integrität des IoT Hub-Diensts und der mit ihm verbundenen Geräte beurteilen. Benutzerorientierte Statistiken spielen eine wichtige Rolle. Sie bieten die Basis, um die Vorgänge in Ihrem IoT Hub zu erkennen und Probleme zu beheben, ohne den Azure-Support zu kontaktieren.
 
 Metriken sind standardmäßig aktiviert. IoT Hub-Metriken können über das Azure-Portal angezeigt werden.
+
+> [!NOTE]
+> Sie können IoT Hub-Metriken verwenden, um Informationen über IoT Plug & Play-Geräte anzuzeigen, die mit Ihrem IoT Hub verbunden sind. IoT Plug & Play-Geräte sind Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md).
 
 ## <a name="how-to-view-iot-hub-metrics"></a>Anzeigen von IoT Hub-Metriken
 

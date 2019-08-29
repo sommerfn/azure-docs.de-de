@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985151"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648727"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -65,9 +65,9 @@ Verwenden Sie diese Tabelle als Richtlinie:
 |**Blob-Speicher (hierarchischer Namespace)** | Azure AD und SAS |
 |**File Storage** | Nur SAS |
 
-### <a name="option-1-use-azure-ad"></a>Option 1: Verwenden von Azure AD
+### <a name="option-1-use-azure-active-directory"></a>Option 1: Verwenden von Azure Active Directory
 
-Mithilfe von Azure AD können Sie ein einziges Mal Anmeldeinformationen bereitstellen, statt jedem Befehl einen SAS-Token anfügen zu müssen.  
+Mithilfe von Azure Active Directory können Sie ein einziges Mal Anmeldeinformationen bereitstellen, statt jedem Befehl ein SAS-Token anfügen zu müssen.  
 
 > [!NOTE]
 > Wenn Sie im aktuellen Release Blobs zwischen Speicherkonten kopieren möchten, müssen Sie an jede Quell-URL ein SAS-Token anfügen. Nur in der Ziel-URL kann das SAS-Token weggelassen werden. Beispiele finden Sie unter [Kopieren von Blobs zwischen Speicherkonten](storage-use-azcopy-blobs.md).
@@ -93,7 +93,7 @@ Diese Rollen können Ihrem Sicherheitsprinzipal in jedem dieser Bereiche zugewie
 Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Gewähren von Zugriff auf Azure Blob- und -Warteschlangendaten mit RBAC im Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
-> Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann.
+> Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann.
 
 Ihrem Sicherheitsprinzipal muss keine dieser Rollen zugewiesen sein, wenn Ihr Sicherheitsprinzipal der Zugriffssteuerungsliste (ACL) des Zielcontainers oder des Verzeichnisses hinzugefügt wurde. In ACL benötigt Ihr Sicherheitsprinzipal Schreibberechtigungen für das Zielverzeichnis und Ausführungsberechtigungen für den Container und jedes übergeordnete Verzeichnis.
 
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint der geheime Clientschlüssel nicht im Befehlsverlauf Ihrer Konsole. 
+> Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole.  
 
 Geben Sie dann den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
@@ -170,7 +170,7 @@ Richten Sie jetzt die `AZCOPY_SPA_CERT_PASSWORD`-Umgebungsvariable mit dem Zerti
 > [!NOTE]
 > Stellen Sie sicher, dass Sie diesen Wert in Ihrer Eingabeaufforderung einrichten und nicht in den Einstellungen der Umgebungsvariable Ihres Betriebssystems. So ist der Wert nur für die aktuelle Sitzung verfügbar.
 
-Dieses Beispiel zeigt Ihnen, wie dies in PowerShell geht.
+Dieses Beispiel zeigt Ihnen, wie diese Aufgabe in PowerShell ausgeführt wird.
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
@@ -238,7 +238,7 @@ Sie können jeder Quell- oder Ziel-URL, die Sie in Ihren AzCopy-Befehlen verwend
 Dieser Beispielbefehl kopiert Daten rekursiv aus einem lokalen Verzeichnis in einen Blob-Container. Am Ende der Container-URL wird ein fiktives SAS-Token angefügt.
 
 ```azcopy
-azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
+azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
 Weitere Informationen zu SAS-Tokens und wie Sie eins erhalten, finden Sie unter [Verwenden von SAS (Shared Access Signatures)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview).

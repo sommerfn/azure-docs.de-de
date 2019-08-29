@@ -7,17 +7,16 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c63b81e5461af5407d260651b79ec80e79fc9b4d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 32f987caed915aff8c581b974dec7689fc90b007
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479976"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114355"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
 
@@ -122,7 +121,7 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 }
 ```
 
-Sie können in synchronem Code keine Ausgabeparameter verwenden. Ein Beispiel für asynchronen C#-Skriptcode:
+Sie können in asynchronem Code keine Ausgabeparameter verwenden. Ein Beispiel für asynchronen C#-Skriptcode:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -298,7 +297,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
 }
 ```
 
-Sie können in synchronem Code keine Ausgabeparameter verwenden. Ein Beispiel für asynchronen C#-Skriptcode:
+Sie können in asynchronem Code keine Ausgabeparameter verwenden. Ein Beispiel für asynchronen C#-Skriptcode:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -406,7 +405,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**name**|**name**| Variablenname, der im Funktionscode für die Twilio-SMS-Textnachricht verwendet wird |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Dieser Wert muss auf den Namen einer App-Einstellung festgelegt werden, die Ihre Twilio-Konto-SID enthält, z.B. „TwilioAccountSid“. Wenn er nicht festgelegt wird, lautet der Standardname der App-Einstellung "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Dieser Wert muss auf den Namen einer App-Einstellung festgelegt werden, die Ihr Twilio-Authentifizierungstoken enthält, z.B. „TwilioAccountAuthToken“. Wenn er nicht festgelegt wird, lautet der Standardname der App-Einstellung „AzureWebJobsTwilioAuthToken“. |
-|**to**| N/V – in Code angeben | **An**| Dieser Wert wird auf die Telefonnummer festgelegt, an die die SMS-Textnachricht gesendet wird.|
+|**to**| N/V – in Code angeben | **To**| Dieser Wert wird auf die Telefonnummer festgelegt, an die die SMS-Textnachricht gesendet wird.|
 |**from**|**from** | **From**| Dieser Wert wird auf die Telefonnummer festgelegt, von der die SMS-Textnachricht gesendet wird.|
 |**body**|**body** | **Text**| Dieser Wert kann verwendet werden, um die SMS-Textnachricht als vordefinierten Code festzulegen und nicht dynamisch im Code für die Funktion. |  
 

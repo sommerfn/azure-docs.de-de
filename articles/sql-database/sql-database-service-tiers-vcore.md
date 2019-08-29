@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e5af3803ebb4cb0a88a082d3c85d0df68da8d1b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566617"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637287"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Auswählen einer V-Kern-Dienstebene und Migrieren von DTU-Dienstebenen
 
@@ -28,7 +28,7 @@ Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen 
 Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden.
 
 > [!IMPORTANT]
-> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
+> Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
 > [!NOTE]
 > Informationen zu den DTU-basierten Dienstebenen finden Sie unter [Diensttarife beim DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). Informationen zu den Unterschieden zwischen den Dienstebenen des DTU-basierten und des V-Kern-basierten Kaufmodells finden Sie unter [Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“](sql-database-purchase-models.md).
 

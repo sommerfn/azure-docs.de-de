@@ -1,17 +1,17 @@
 ---
-title: Migrieren nicht partitionierter Azure Cosmos DB-Container zu partitionierten Containern
+title: Migrieren nicht partitionierter Azure Cosmos-Container zu partitionierten Containern
 description: Erfahren Sie, wie Sie all Ihre vorhandenen nicht partitionierten Container zu partitionierten Containern migrieren.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8ba9489496a8f9e3703702e344684b4028a002cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241925"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615025"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrieren nicht partitionierter Container zu partitionierten Containern
 

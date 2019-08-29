@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3979920cac8e3ef856b3211733f08c21afac3e26
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7fbeb12f5b221685aad5cac5352318db10bd69a7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693694"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036270"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
@@ -26,3 +26,12 @@ ms.locfileid: "68693694"
 Falls Sie noch nicht mit Storage Premium vertraut sind, lesen Sie zunächst die Artikel [Auswählen eines Azure-Datenträgertyps für IaaS VMs](disks-types.md) und [Azure Storage-Skalierbarkeits- und Leistungsziele für Speicherkonten](../../storage/common/storage-scalability-targets.md).
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
+
+Wenn Sie für Ihren Datenträger einen Benchmarktest durchführen möchten, finden Sie weitere Informationen in unserem Artikel [Benchmarktests für einen Datenträger](disks-benchmarks.md).
+
+Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter [Auswählen eines Datenträgertyps](disks-types.md).  
+
+Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Methoden für die Leistung von SQL Server an:
+
+* [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](sql/virtual-machines-windows-sql-performance.md)
+* [Azure Storage Premium bietet höchste Leistung für SQL Server in Azure-VM](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

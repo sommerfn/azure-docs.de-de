@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934370"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639486"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 
@@ -95,9 +95,9 @@ Um fortzufahren, [laden Sie .NET 4.7.1 herunter](https://www.microsoft.com/downl
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Speichern der Geheimniseinstellungen in einer Geheimnisdatei außerhalb des Ordners für die Quellcodeverwaltung
 Wenn Sie einen schnellen Prototyp entwickeln und keine Azure-Ressourcen bereitstellen möchten, verwenden Sie diese Option.
 
-1. Installieren Sie das folgende NuGet-Paket in Ihrem Projekt
+1. Installieren Sie das folgende NuGet-Paket in Ihrem Projekt.
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
 2. Erstellen Sie eine Datei ähnlich der folgenden. Speichern Sie sie an einem Speicherort außerhalb Ihres Projektordners.
@@ -123,7 +123,7 @@ Wenn Sie einen schnellen Prototyp entwickeln und keine Azure-Ressourcen bereitst
     </configBuilders>
     ```
 
-4. Geben Sie an, dass der Abschnitt „appSettings“ den Geheimniskonfigurationsbuilder verwendet. Achten Sie darauf, dass die Geheimniseinstellung einen beliebigen Dummywert enthält.
+4. Geben Sie an, dass der Abschnitt „appSettings“ den Geheimniskonfigurationsbuilder verwendet. Achten Sie darauf, dass die Geheimniseinstellung einen Dummywert enthält.
 
     ```xml
         <appSettings configBuilders="Secrets">

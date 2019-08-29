@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566076"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611920"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
 Bisher bot der Azure Service Bus Namespaces nur im Standard-Tarif an. Namespaces sind mehrinstanzenfähige Setups, die für niedrige Durchsätze und Entwicklerumgebungen optimiert wurden. Der Premium-Tarif bietet dedizierte Ressourcen pro Namespace für vorhersagbare Latenz und höheren Durchsatz zu einem festen Preis. Der Premium-Tarif ist für hohen Durchsatz und Produktionsumgebungen optimiert, die zusätzliche Enterprisefeatures erfordern.
@@ -115,7 +115,8 @@ Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die M
    1. Nachdem die Synchronisierung abgeschlossen ist, wählen Sie **Weiter** am unteren Rand der Seite aus.
 
 1. Überprüfen Sie die Änderungen auf der Seite „Zusammenfassung“. Wählen Sie **Migration abschließen** aus, um den Namespace zu wechseln und die Migration abzuschließen.
-    ![Wechseln des Namespace: Menü zum Wechseln][]: Die Bestätigungsseite wird angezeigt, wenn die Migration abgeschlossen ist.
+    ![Wechseln des Namespace: Menü zum Wechseln][]  
+    Die Bestätigungsseite wird angezeigt, wenn die Migration abgeschlossen ist.
     ![Wechseln des Namespace: Erfolg][]
 
 ## <a name="caveats"></a>Einschränkungen

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663898"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559091"
 ---
 # <a name="personalizer-settings"></a>Einstellungen der Personalisierung
 
@@ -86,6 +86,7 @@ Stellen Sie nach dem Ändern dieser Einstellung sicher, dass Sie **Save** (Speic
 ## <a name="import-and-export-learning-policy"></a>Importieren und Exportieren der Lernrichtlinie
 
 Importieren Sie im Abschnitt für **Model and Policy** (Modell und Richtlinie) der Ressourcenverwaltung eine neue Lernrichtlinie, oder exportieren Sie die aktuelle Lernrichtlinie.
+Sie können Lernrichtliniendateien aus vorherigen Exporten abrufen oder die optimierten Richtlinien herunterladen, die während Offlineauswertungen erkannt wurden. Manuelle Änderungen an diesen Dateien wirken sich auf die Machine Learning-Leistung und die Genauigkeit von Offlineauswertungen aus, und Microsoft kann sich nicht für die Genauigkeit von Machine Learning und Auswertungen oder Dienstausnahmen, die sich aus manuell bearbeiteten Richtlinien ergeben, verbürgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

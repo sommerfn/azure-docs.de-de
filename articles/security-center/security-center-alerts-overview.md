@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 91dd397095718b3b43e41767af422801fd50b7f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 25fb94afdfe68510c66cff130a3abc8b74d7311d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295683"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647324"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Sicherheitswarnungen in Azure Security Center
 
@@ -50,7 +50,7 @@ In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Tele
 
 ## <a name="what-are-alert-incidents"></a>Was sind Warnungsincidents?
 
-Ein Sicherheitsincident ist eine Sammlung verwandter Warnungen (anstelle einer Auflistung der einzelnen Warnungen). In Security Center werden verschiedene Warnungen und Signale mit geringer Genauigkeit mittels Fusion zu Sicherheitsincidents korreliert.
+Ein Sicherheitsincident ist eine Sammlung verwandter Warnungen (anstelle einer Auflistung der einzelnen Warnungen). In Security Center werden verschiedene Warnungen und Signale mit geringer Genauigkeit mittels [Korrelation von intelligenten Cloudwarnungen](security-center-alerts-cloud-smart.md) zu Sicherheitsincidents korreliert.
 
 Dank Incidents bietet Ihnen Security Center eine zentrale Ansicht für einen Angriffsversuch und alle zugehörigen Warnungen. In dieser Ansicht können Sie schnell nachvollziehen, welche Aktionen der Angreifer ausgeführt hat und welche Ressourcen betroffen sind. Weitere Informationen hierzu finden Sie unter [Cloud smart alert correlation in Azure Security Center (incidents)](security-center-alerts-cloud-smart.md) (Korrelation von intelligenten Cloudwarnungen in Azure Security Center (Incidents)).
 

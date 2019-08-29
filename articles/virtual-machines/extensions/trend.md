@@ -11,16 +11,15 @@ ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 0e70bc692357e9db9fa02a2f210320507b1b5824
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ffbae90d60cb2dbc7a62b9e9745ed1c4020386ff
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705902"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092200"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]

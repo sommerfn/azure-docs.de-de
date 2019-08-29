@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 7/5/2019
+ms.date: 8/21/2019
 ms.author: dapine
-ms.openlocfilehash: d9f226213215f66b53eb1ef248fd47f7b6dfee5a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c12e64fc51eb53aebffbef1ad886b7cc404cf699
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705374"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051214"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerunterstützung in Azure Cognitive Services
 
@@ -29,15 +29,9 @@ Dank der Containerunterstützung in Azure Cognitive Services können Entwickler 
 * [Spracherkennungsdienst-API][sp-containers]
 * [Textanalyse][ta-containers]
 
-<!--
-* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
--->
+> [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
 Die Verwendung von Containern ist ein Ansatz zur Softwareverteilung, bei dem eine Anwendung oder ein Dienst, einschließlich der Abhängigkeiten und der Konfiguration, als Containerimage zusammengepackt wird. Das Containerimage kann mit geringer oder ganz ohne Bearbeitung auf einem Containerhost bereitgestellt werden. Container sind voneinander und vom zugrunde liegenden Betriebssystem isoliert und nehmen weniger Speicher in Anspruch als ein virtueller Computer. Container können für kurzfristige Aufgaben über Containerimages instanziiert und wieder entfernt werden, wenn sie nicht mehr benötigt werden.
-
-Das folgende Video veranschaulicht die Verwendung eines Cognitive Services-Containers.
-
-[![Containerdemo für Cognitive Services](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
 Cognitive Services-Ressourcen sind in [Microsoft Azure](https://azure.microsoft.com) verfügbar. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um Azure-Ressourcen für diese Dienste zu erstellen und zu erkunden.
 

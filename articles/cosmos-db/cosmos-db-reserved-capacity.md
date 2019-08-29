@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779858"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616922"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den di
    | Ressourcengruppe | Ressourcengruppe, auf die der Rabatt für reservierte Kapazitäten angewendet wird. |
    |Begriff  |   Ein Jahr oder drei Jahre   |
    |Durchsatztyp   |  Der Durchsatz wird in Form von Anforderungseinheiten bereitgestellt. Sie können eine Reservierung für den bereitgestellten Durchsatz für beide Setups erwerben – Schreibanforderungen für eine Region sowie Schreibanforderungen für mehre Regionen. Beim Durchsatztyp können Sie zwischen zwei Werten wählen: 100 RU/s pro Stunde und 100 Multimaster-RU/s pro Stunde.|
-   | Reservierte Kapazitätseinheiten| Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos DB-Datenbank verknüpfen. Beispiel:  Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus. |
+   | Reservierte Kapazitätseinheiten| Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos-Datenbank verknüpfen. Beispiel:  Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus. |
 
 
 5. Nach dem Ausfüllen des Formulars wird der Preis berechnet, der für den Erwerb der reservierten Kapazität gilt. In der Ausgabe wird auch der Rabattprozentsatz angezeigt, den Sie für die gewählten Optionen erhalten. Klicken Sie als Nächstes auf **Auswählen**.

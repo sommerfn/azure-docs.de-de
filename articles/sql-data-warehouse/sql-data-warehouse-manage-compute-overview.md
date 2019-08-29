@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748933"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575326"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen in Azure SQL Data Warehouse
 Erfahren Sie mehr über die Verwaltung von Computeressourcen in Azure SQL Data Warehouse. Senken Sie die Kosten, indem Sie das Data Warehouse anhalten, oder skalieren Sie das Data Warehouse, um Leistungsanforderungen zu erfüllen. 
@@ -115,4 +115,4 @@ Zum Skalieren des Data Warehouse sind die in [ALTER DATABASE](/sql/t-sql/stateme
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ein weiterer Aspekt der Verwaltung von Computeressourcen ist das Zuordnen der verschiedenen Computeressourcen zu einzelnen Abfragen. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
+Sehen Sie sich die Anleitung zum [Verwalten von Computeressourcen](manage-compute-with-azure-functions.md) an. Ein weiterer Aspekt der Verwaltung von Computeressourcen ist das Zuordnen der verschiedenen Computeressourcen zu einzelnen Abfragen. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).

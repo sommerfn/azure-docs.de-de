@@ -11,28 +11,30 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019662"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644889"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
-In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwischen einer verwalteten Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank-Engine zusammengefasst und erläutert. Folgende Themen werden erläutert: <a name="Differences"></a>
+In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwischen einer verwalteten Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank-Engine zusammengefasst und erläutert. Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt.
+
+![Migration](./media/sql-database-managed-instance/migration.png)
+
+Es gibt einige PaaS-Einschränkungen, die in der verwalteten Instanz eingeführt werden, und einige Verhaltensänderungen im Vergleich zu SQL Server. Die Unterschiede sind in die folgenden Kategorien unterteilt: <a name="Differences"></a>
 
 - [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
 - [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credential), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen und Benutzern](#logins-and-users) sowie [Dienstschlüsseln und Diensthauptschlüsseln](#service-key-and-service-master-key)
 - [Konfiguration](#configuration), einschließlich der Unterschiede bei [Pufferpoolerweiterung](#buffer-pool-extension), [Sortierung](#collation), [Kompatibilitätsgraden](#compatibility-levels),[Datenbankspiegelung](#database-mirroring), [Datenbankoptionen](#database-options), [SQL Server-Agent](#sql-server-agent) und [Tabellenoptionen](#tables)
 - [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Dateitabelle](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker) sowie [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-and-triggers).
 - [Umgebungseinstellungen](#Environment) wie VNets und Subnetzkonfigurationen.
-- [Features mit abweichendem Verhalten in verwalteten Instanzen](#Changes)
-- [Temporäre Einschränkungen und bekannte Probleme](#Issues)
 
-Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt.
+Die meisten dieser Features sind architekturbezogene Einschränkungen und stellen Dienstfeatures dar.
 
-![Migration](./media/sql-database-managed-instance/migration.png)
+Auf dieser Seite werden auch [temporäre bekannte Probleme](#Issues) erläutert, die in einer verwalteten Instanz erkannt wurden und in Zukunft behoben werden.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -62,6 +64,7 @@ In verwalteten Instanzen werden automatische Sicherungen durchgeführt, sodass B
 Einschränkungen: 
 
 - Bei verwalteten Instanzen können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
+- Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
 - Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
 
     > [!TIP]
@@ -339,9 +342,9 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 
 Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden in verwalteten Instanzen nicht unterstützt.
 
-- `Trace flags` werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
-- `DBCC TRACEOFF` wird nicht unterstützt. Siehe [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
-- `DBCC TRACEON` wird nicht unterstützt. Siehe [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql).
+- Nur eine begrenzte Anzahl von globalen `Trace flags` wird unterstützt. `Trace flags` auf Sitzungsebene werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) und [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) funktionieren mit einer begrenzten Anzahl globaler Ablaufverfolgungsflags.
+- [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) mit den Optionen REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST und REPAIR_REBUILD kann nicht verwendet werden, weil die Datenbank im Modus `SINGLE_USER` nicht festgelegt werden kann. Siehe [ALTER DATABASE-Unterschiede.](#alter-database-statement) Potenzielle Datenbankbeschädigungen werden vom Azure-Supportteam behandelt. Wenden Sie sich an den Azure-Support, wenn Sie bemerken, dass eine Datenbankbeschädigung vorliegt.
 
 ### <a name="distributed-transactions"></a>Verteilte Transaktionen
 
@@ -399,7 +402,7 @@ Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, wer
 
 ### <a name="replication"></a>Replikation
 
-- Momentaufnahme- und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
+- Momentaufnahmen und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
 - Die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist mit einigen Einschränkungen für die öffentliche Vorschauversion der verwalteten Instanz verfügbar:
     - Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. „Herausgeber“ und „Verteiler“ können dabei aber nicht auf unterschiedlichen Instanzen platziert werden.
     - Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Die unterstützten Versionen finden Sie [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
@@ -498,6 +501,18 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - `Extended stored procedures` werden nicht unterstützt. Hierzu gehören `sp_addextendedproc` und `sp_dropextendedproc`. Siehe [Erweiterte gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
+### <a name="system-functions-and-variables"></a>Systemfunktionen und Variablen
+
+Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:
+
+- `SERVERPROPERTY('EngineEdition')` gibt den Wert 8 zurück. Durch diese Eigenschaft wird eine verwaltete Instanz eindeutig identifiziert. Siehe [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, weil das für SQL Server bestehende Konzept der Instanz für verwaltete Instanzen nicht gilt. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. „meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net“. Siehe [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
+- `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `@@SERVICENAME` gibt NULL zurück, weil das für SQL Server bestehende Konzept des Diensts für verwaltete Instanzen nicht gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die Azure AD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_SID` wird nicht unterstützt. Es werden falsche Daten zurückgegeben. Dies ist ein bekanntes vorübergehendes Problem. Siehe [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+
 ## <a name="Environment"></a>Umgebungseinschränkungen
 
 ### <a name="subnet"></a>Subnet
@@ -512,27 +527,55 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
 - Einige Dienste, wie App Service-Umgebungen, Logik-Apps und verwaltete Instanzen (die für Georeplikation, Transaktionsreplikation oder über Verbindungsserver verwendet werden) können nicht auf verwaltete Instanzen in anderen Regionen zugreifen, wenn ihre VNETs mithilfe von [globalem Peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) verbunden sind. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNET-zu-VNET über VNet-Gateways verbinden.
 
-## <a name="Changes"></a> Behavior Changes
+### <a name="tempdb"></a>TEMPDB
 
-Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:
+Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die Größe der Protokolldatei `Tempdb` ist für die Ebenen „Universell“ und „Unternehmenskritisch“ auf 120 GB beschränkt. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen.
 
-- `SERVERPROPERTY('EngineEdition')` gibt den Wert 8 zurück. Durch diese Eigenschaft wird eine verwaltete Instanz eindeutig identifiziert. Siehe [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, weil das für SQL Server bestehende Konzept der Instanz für verwaltete Instanzen nicht gilt. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. „meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net“. Siehe [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME` gibt NULL zurück, weil das für SQL Server bestehende Konzept des Diensts für verwaltete Instanzen nicht gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die Azure AD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
-- `SUSER_SID` wird nicht unterstützt. Es werden falsche Daten zurückgegeben. Dies ist ein bekanntes vorübergehendes Problem. Siehe [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+### <a name="error-logs"></a>Fehlerprotokolle
 
-## <a name="Issues"></a> Bekannte Probleme und Einschränkungen
+Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
-### <a name="tempdb-size"></a>TEMPDB-Größe
+## <a name="Issues"></a> Bekannte Probleme
 
-Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die Größe der Protokolldatei `Tempdb` ist für die Ebenen „Universell“ und „Unternehmenskritisch“ auf 120 GB beschränkt. Die `tempdb`-Datenbank wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen. `Tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten. 
+### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Datenbankübergreifende Service Broker-Dialoge müssen nach dem Upgrade der Dienstebene erneut initialisiert werden.
 
-### <a name="cant-restore-contained-database"></a>Eigenständige Datenbank kann nicht wiederhergestellt werden
+**Datum:** August 2019
 
-Die verwaltete Instanz kann [eigenständige Datenbanken](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) nicht wiederherstellen. Point-in-Time-Wiederherstellungen von vorhandenen eigenständigen Datenbanken funktionieren in einer verwalteten Instanz nicht. In der Zwischenzeit wird empfohlen, die Option für die Eigenständigkeit aus Datenbanken zu entfernen, die in einer verwalteten Instanz platziert werden. Verwenden Sie die Option der Eigenständigkeit nicht für Produktionsdatenbanken. 
+Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind **nicht verloren**, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße in der verwalteten Instanz führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Jeder `DIALOG`, der mit der [BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql)-Anweisung erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
+
+**Problemumgehung:** Beenden Sie alle Aktivitäten, die datenbankübergreifende Dialogkonversationen des Service Brokers verwenden, bevor Sie die Dienstebene aktualisieren, und initialisieren Sie sie danach neu. Wenn es noch Nachrichten gibt, die nach dem Ändern der Dienstebene nicht zugestellt werden, lesen Sie die Nachrichten aus der Quellwarteschlange, und senden Sie sie erneut an die Zielwarteschlange.
+
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>Der Identitätswechsel für AAD-Anmeldetypen wird nicht unterstützt.
+
+**Datum:** Juli 2019
+
+Der Identitätswechsel mithilfe von `EXECUTE AS USER` oder `EXECUTE AS LOGIN` der folgenden AAD-Prinzipale wird nicht unterstützt:
+-   AAD-Benutzer mit Alias. In diesem Fall wird der Fehler `15517` zurückgegeben.
+- AAD-Anmeldungen und-Benutzer, die auf AAD-Anwendungen oder -Dienstprinzipalen basieren. In diesem Fall werden die Fehler `15517` und `15406` zurückgegeben.
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>Der Parameter @query wird in sp_send_db_mail nicht unterstützt.
+
+**Datum:** April 2019
+
+Der `@query`-Parameter in der Prozedur [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktioniert nicht.
+
+### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Die Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden.
+
+**Datum:** März 2019
+
+Wenn die Transaktionsreplikation für eine Datenbank in einer Autofailover-Gruppe aktiviert ist, muss der Administrator der verwalteten Instanz alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover in eine andere Region für die neue primäre Instanz erneut konfigurieren. Weitere Informationen finden Sie unter [Replikation](#replication).
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>AAD-Anmeldungen und -Benutzer werden in Tools nicht unterstützt.
+
+**Datum:** Januar 2019
+
+SQL Server Management Studio und SQL Server Data Tools unterstützen Azure Active Directory-Anmeldungen und -Benutzer nicht vollständig.
+- Die Verwendung von Azure AD-Serverprinzipalen (Anmeldungen) und Azure AD-Benutzern (öffentliche Vorschau) mit SQL Server Data Tools wird derzeit nicht unterstützt.
+- Das Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) und -Benutzern (öffentliche Vorschau) per Skript wird in SQL Server Management Studio nicht unterstützt.
+
+### <a name="tempdb-structure-and-content-is-re-created"></a>Struktur und Inhalt von TEMPDB werden neu erstellt.
+
+Die Datenbank `tempdb` ist immer in 12 Datendateien aufgeteilt, und die Dateistruktur kann nicht geändert werden. Die maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. `Tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Überschreiten des Speicherplatzes mit kleinen Datenbankdateien
 
@@ -551,34 +594,13 @@ In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können oh
 
 Sie können mithilfe von Systemansichten [die Anzahl von verbleibenden Dateien identifizieren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1). Wenn Sie dieses Limit erreichen, versuchen Sie, [einige der kleineren Dateien mithilfe der DBCC SHRINKFILE-Anweisung zu leeren und zu löschen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file), oder wechseln Sie zur [Dienstebene „Unternehmenskritisch“, für die dieses Limit nicht gilt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
-### <a name="tooling"></a>Tools
-
-In SQL Server Management Studio und SQL Server Data Tools treten beim Zugriff auf eine verwaltete Instanz möglicherweise Probleme auf.
-
-- Die Verwendung von Azure AD-Serverprinzipalen (Anmeldungen) und Azure AD-Benutzern (öffentliche Vorschau) mit SQL Server Data Tools wird derzeit nicht unterstützt.
-- Das Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) und -Benutzern (öffentliche Vorschau) per Skript wird in SQL Server Management Studio nicht unterstützt.
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Falsche Datenbanknamen in einigen Ansichten, Protokollen und Meldungen
+### <a name="guid-values-shown-instead-of-database-names"></a>Anstelle von Datenbanknamen werden GUID-Werte gezeigt.
 
 Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehlerprotokolleinträge zeigen GUID-Datenbankbezeichner anstelle der eigentlichen Datenbanknamen an. Verlassen Sie sich nicht auf diese GUIDs, da sie in Zukunft durch tatsächliche Datenbanknamen ersetzt werden.
 
-### <a name="database-mail"></a>Datenbank-E-Mail
-
-Der `@query`-Parameter in der Prozedur [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktioniert nicht.
-
-### <a name="database-mail-profile"></a>Datenbank-E-Mail-Profil
-
-Das vom SQL Server-Agent verwendete Datenbank-E-Mail-Profil muss `AzureManagedInstance_dbmail_profile` lauten. Es gibt keine Einschränkungen im Hinblick auf andere Namen für Datenbank-E-Mail-Profile.
-
 ### <a name="error-logs-arent-persisted"></a>Fehlerprotokolle werden nicht persistent gespeichert
 
-Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespeichert, und ihre Größe wird im Speicherlimit nicht berücksichtigt. Fehlerprotokolle werden im Falle eines Failovers möglicherweise automatisch gelöscht.
-
-### <a name="error-logs-are-verbose"></a>Protokolle sind nicht ausführlich
-
-Eine verwaltete Datenbank-Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung, von denen viele nicht relevant sind. 
-
-**Problemumgehung:** Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespeichert, und ihre Größe wird im Speicherlimit nicht berücksichtigt. Fehlerprotokolle werden im Falle eines Failovers möglicherweise automatisch gelöscht. Möglicherweise gibt es Lücken im Fehlerprotokollverlauf, da die verwaltete Instanz auf mehreren virtuellen Computern mehrmals verschoben wurde.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Ein Transaktionsbereich in zwei Datenbanken in derselben Instanz wird nicht unterstützt
 
@@ -616,12 +638,6 @@ Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erfordert
 CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindungsserver oder verteilte Abfragen, die auf eine aktuelle Instanz verweisen, können die IP-Adresse der lokalen Instanz manchmal nicht auflösen. Dieser Fehler ist ein vorübergehendes Problem.
 
 **Problemumgehung:** Verwenden Sie nach Möglichkeit Kontextverbindungen im CLR-Modul.
-
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>TDE-verschlüsselte Datenbanken mit vom Dienst verwaltetem Schlüssel unterstützen keine vom Benutzer initiierten Sicherungen
-
-Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen.
-
-**Problemumgehung:** Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

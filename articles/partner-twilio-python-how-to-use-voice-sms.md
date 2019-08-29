@@ -3,9 +3,7 @@ title: Verwenden von Twilio für Sprachanrufe und SMS (Python) | Microsoft-Dokum
 description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Python geschrieben.
 services: ''
 documentationcenter: python
-author: devinrader
-manager: twilio
-editor: ''
+author: georgewallace
 ms.assetid: 561bc75b-4ac4-40ba-bcba-48e901f27cc3
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
-ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 3b9022dd2b5998f95179ee3dfabe6706b55036bc
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457667"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636015"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Python
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -44,7 +42,7 @@ Schlüsselaspekte der Twilio API sind Twilio-Verben und die Twilio Markup Langua
 ### <a id="Verbs"></a>Twilio-Verben
 Die API verwendet Twilio-Verben; so weist beispielsweise das Verb **&lt;Say&gt;** Twilio an, eine Nachricht in einem Anruf akustisch zu übermitteln.
 
-Nachfolgend finden Sie eine Liste mit Twilio-Verben. Andere Verben und Funktionen werden in der [Twilio Markup Language documentation (Dokumentation zur Twilio Markup Language)][twiml] erläutert.
+Nachfolgend finden Sie eine Liste mit Twilio-Verben. Andere Verben und Funktionen werden in der [Dokumentation zur Twilio Markup Language][twiml]erläutert.
 
 * **&lt;Dial:&gt;** Verbindet den Anrufer mit einem anderen Telefon.
 * **&lt;Gather:&gt;** Erfasst Ziffern, die über die Telefontasten eingegeben werden.
@@ -73,12 +71,12 @@ Wenn eine Anwendung die Twilio-API aufruft, ist einer der API-Parameter die URL,
 Weitere Informationen zu Twilio-Verben, ihren Attributen sowie TwiML finden Sie unter [TwiML][twiml]. Weitere Informationen zur Twilio-API finden Sie unter [Twilio-API][twilio_api].
 
 ## <a id="CreateAccount"></a>Erstellen von Twilio-Konten
-Wenn Sie ein Twilio-Konto erstellen möchten, melden Sie sich bei [Try Twilio (Probieren Sie Twilio)][try_twilio] an. Sie können mit einem kostenlosen Konto beginnen und später ein Upgrade vornehmen.
+Wenn Sie ein Twilio-Konto erstellen möchten, melden Sie sich bei [Try Twilio][try_twilio] an. Sie können mit einem kostenlosen Konto beginnen und später ein Upgrade vornehmen.
 
 Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-SID und ein Authentifizierungstoken. Beide Angaben benötigen Sie zum Tätigen von Twilio-API-Anrufen. Bewahren Sie Ihr Authentifizierungstoken sicher auf, um unbefugten Zugriff auf Ihr Konto zu verhindern. Ihre Konto-SID und das Authentifizierungstoken können Sie in der [Twilio-Konsole][twilio_console] in den Feldern **ACCOUNT SID** bzw. **AUTH TOKEN** einsehen.
 
 ## <a id="create_app"></a>Erstellen einer Python-Anwendung
-Eine Python-Anwendung, die den Twilio-Dienst verwendet und in Azure ausgeführt wird, unterscheidet sich nicht von anderen Python-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in Python auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio mit der [Twilio library for Python from GitHub (Twilio-Bibliothek für Python von GitHub)][twilio_python]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für Python finden Sie unter [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
+Eine Python-Anwendung, die den Twilio-Dienst verwendet und in Azure ausgeführt wird, unterscheidet sich nicht von anderen Python-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in Python auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio-Diensten mit der [Twilio-Bibliothek für Python von GitHub][twilio_python]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für Python finden Sie unter [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
 Richten Sie [zuerst eine neue Azure-Linux-VM][azure_vm_setup] ein, die als Host für Ihre neue Python-Webanwendung fungiert. Sobald der virtuelle Computer ausgeführt wird, müssen Sie Ihre Anwendung auf einem öffentlichen Port verfügbar machen, wie unten beschrieben.
 
@@ -225,14 +223,14 @@ Sobald Sie Ihre Python-Anwendung mit den TwiML-Antworten eingerichtet haben, kö
     print(call.sid)
 
 ## <a id="AdditionalServices"></a>Gewusst wie: Verwenden zusätzlicher Twilio-Dienste
-Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API documentation (Twilio API-Dokumentation)][twilio_api].
+Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API-Dokumentation][twilio_api].
 
 ## <a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
-* [Twilio-Tutorials und Beispielcode][twilio_howtos]
-* [Twilio Quickstart Tutorials (Twilio-Schnellstart-Tutorials)][twilio_quickstarts]
+* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
+* [Twilio-Anleitungen und Beispielcode][twilio_howtos]
+* [Twilio-Schnellstart-Tutorials][twilio_quickstarts]
 * [Twilio auf GitHub][twilio_on_github]
 * [Kontakt zum Twilio-Support][twilio_support]
 

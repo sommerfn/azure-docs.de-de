@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 64f287a98af6cb353117ec1de1f9f0d55b367085
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774356"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081401"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](https://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.

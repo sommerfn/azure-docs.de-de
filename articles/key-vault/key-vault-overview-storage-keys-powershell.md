@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 708c34347966eee7817ca04e0552dcba233765cb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934513"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562536"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Mit Azure Key Vault verwaltetes Speicherkonto – PowerShell
 
@@ -43,6 +43,18 @@ Beachten Sie bei Verwendung des Features für verwaltete Speicherkontoschlüssel
 
 Das folgende Beispiel zeigt, wie Sie Key Vault das Verwalten Ihrer Speicherkontoschlüssel ermöglichen.
 
+## <a name="connect-to-your-azure-account"></a>Herstellen einer Verbindung mit Ihrem Azure-Konto
+
+Authentifizieren Sie Ihre PowerShell-Sitzung mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0). 
+```azurepowershell-interactive
+Connect-AzAccount
+```
+Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie diese mithilfe des Cmdlets [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) auflisten und das Abonnement angeben, das Sie mit dem Cmdlet [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) verwenden möchten. 
+
+```azurepowershell-interactive
+Set-AzContext -SubscriptionId <subscriptionId>
+```
+
 ## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autorisieren von Key Vault für den Zugriff auf Ihr Speicherkonto
 
 > [!IMPORTANT]
@@ -62,8 +74,8 @@ $storageAccountKey = "key1"
 $keyVaultName = "kvContoso"
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
-# Authenticate your PowerShell session with Azure AD, for use with Azure Resource Manager cmdlets
-$azureProfile = Connect-AzAccount
+# Get your User Id for later commands
+$userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
@@ -98,7 +110,7 @@ Aktualisieren Sie in derselben PowerShell-Sitzung die Key Vault-Zugriffsrichtlin
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
 Beachten Sie, dass im Azure-Portal auf der Seite „Zugriffsrichtlinien“ für das Speicherkonto keine Berechtigungen für Speicherkonten verfügbar sind.

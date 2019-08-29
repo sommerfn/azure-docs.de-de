@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 2770a15211e24c9b79c906287295554b2cb94db8
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986124"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061532"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -413,10 +413,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="blob-storage-as-a-source-type"></a>Blob Storage als Quelltyp
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-source).
+- Informationen zum Kopieren aus anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat
+#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat
 
 Informationen zum Kopieren von Daten nach oder aus Blob Storage im **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 8e7456eff3062ef6667e7b0022ea9740c397a493
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679244"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876502"
 ---
 > [!NOTE]
 > Dieses Dokument enthält eine Liste der Funktionen, die zum 31. Juli 2019 in Azure Security Center eingestellt wurden.
@@ -160,7 +160,7 @@ Security Center kann [integrierte Sicherheitslösungen in Azure](https://docs.mi
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Nach der Einstellung können Sie keinen der in der obigen Liste erwähnten Lösungstypen hinzufügen oder ändern, weder über die Benutzeroberfläche noch die API.
+Nach der Einstellung können Sie keinen der in der obigen Liste erwähnten Lösungstypen hinzufügen oder ändern, weder über die Benutzeroberfläche noch die API. Azure Security Center ermittelt keine neuen Instanzen der oben genannten Partnerlösungen mehr.
 
 Wenn Sie über vorhandene verbundene Lösungen verfügen, empfehlen wir Ihnen, Sie in Azure Sentinel zu verschieben.
 

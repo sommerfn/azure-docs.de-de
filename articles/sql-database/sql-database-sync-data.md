@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 24e340d25cb57f9a35f06f6dbd5a394d60a14fad
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/20/2019
+ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566438"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648357"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -118,6 +118,12 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
 - Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie einen Primärschlüsselwert ändern müssen, können Sie die Zeile löschen und mit dem neuen Wert des Primärschlüssels neu erstellen. 
+
+> [!IMPORTANT]
+> Wenn Sie den Wert eines vorhandenen Primärschlüssels ändern, führt dies zu folgendem fehlerhaften Verhalten:   
+>   - Daten zwischen Hub und Mitglied können verloren gehen, auch wenn bei der Synchronisierung kein Problem gemeldet wird.
+> - Bei der Synchronisierung kann ein Fehler auftreten, weil die Nachverfolgungstabelle aufgrund der Primärschlüsseländerung über eine nicht vorhandene Zeile aus der Quelle verfügt.
+
 - Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen

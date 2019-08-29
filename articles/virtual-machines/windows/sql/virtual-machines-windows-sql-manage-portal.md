@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 398eea4b968bb77017415e1dc259004c697b8dda
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 244ad7d079fd7baf25f8079557576c42d25ca785
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846176"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102061"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Verwalten von SQL Server-VMs in Azure über das Azure-Portal
 
@@ -80,8 +79,8 @@ Navigieren Sie zum Zugreifen auf die veraltete Registerkarte **SQL Server-Konfig
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Preisinformationen für virtuelle Azure-Computer mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [SQL Server auf Azure-VMs – Versionshinweise](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Preisinformationen für SQL Server auf virtuellen Windows-Computern](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [SQL Server auf Windows-VMs – Versionshinweise](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

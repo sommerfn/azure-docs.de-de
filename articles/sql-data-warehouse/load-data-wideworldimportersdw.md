@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304297"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574938"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten in Azure SQL Data Warehouse
 
@@ -44,7 +44,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen eines leeren SQL Data Warehouse
 
-Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz zu erstellen. 
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 07/05/2019
-ms.openlocfilehash: 3b9a9f4ac1cf0722ab7d3838f0b0c4c12b47dc74
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566810"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515286"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -281,7 +281,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
 
-Ressourceneinschränkungen werden unter [Serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier) beschrieben.
+Ressourceneinschränkungen werden unter [Serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute) beschrieben.
 
 ## <a name="billing"></a>Abrechnung
 
@@ -324,4 +324,4 @@ Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](sql-database-single-database-get-started.md).
-- Ressourceneinschränkungen werden unter [Ressourceneinschränkungen für die serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier) beschrieben.
+- Ressourceneinschränkungen werden unter [Ressourceneinschränkungen für die serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute) beschrieben.

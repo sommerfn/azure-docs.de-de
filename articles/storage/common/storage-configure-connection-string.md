@@ -9,16 +9,16 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985400"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640492"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
-Eine Verbindungszeichenfolge enthält die erforderlichen Authentifizierungsinformationen für den Zugriff auf Daten in einem Azure Storage-Konto aus Ihrer Anwendung zur Laufzeit mithilfe der Authentifizierung mithilfe der Autorisierung mit einem gemeinsam verwendeten Schlüssel. Sie können Verbindungszeichenfolgen konfigurieren, um Folgendes zu tun:
+Eine Verbindungszeichenfolge enthält die erforderlichen Autorisierungsinformationen für den Zugriff auf Daten in einem Azure Storage-Konto aus Ihrer Anwendung zur Laufzeit mithilfe der Autorisierung mit gemeinsam verwendetem Schlüssel. Sie können Verbindungszeichenfolgen konfigurieren, um Folgendes zu tun:
 
 * Verbinden mit dem Azure-Speicheremulator
 * Zugreifen auf ein Speicherkonto in Azure

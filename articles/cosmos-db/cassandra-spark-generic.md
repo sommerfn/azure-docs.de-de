@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893635"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615644"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
 
@@ -46,8 +46,8 @@ Die folgende Tabelle enthält die für die Azure Cosmos DB-Cassandra-API spezifi
 | spark.cassandra.connection.connections_per_executor_max  | Keine | Maximale Anzahl von Verbindungen pro Knoten pro Executor. 10 x n entspricht 10 Verbindungen pro Knoten in einem Cassandra-Cluster mit n Knoten. Wenn Sie also 5 Verbindungen pro Knoten pro Executor für einen Cassandra-Cluster mit 5 Knoten benötigen, sollten Sie diese Konfiguration auf „25“ festlegen. Ändern Sie diesen Wert basierend auf dem Parallelitätsgrad oder der Anzahl von Executors, für die Ihre Spark-Aufträge konfiguriert sind.   |
 | spark.cassandra.output.concurrent.writes  |  100 | Definiert die Anzahl von parallelen Schreibvorgängen, die pro Executor auftreten können. Da Sie „batch.size.rows“ auf „1“ festlegen, skalieren Sie diesen Wert entsprechend hoch. Ändern Sie diesen Wert basierend auf dem Parallelitätsgrad oder dem Durchsatz, den Sie für Ihren Workload erzielen möchten. |
 | spark.cassandra.concurrent.reads |  512 | Definiert die Anzahl der parallelen Lesevorgänge, die pro Executor auftreten können. Ändern Sie diesen Wert basierend auf dem Parallelitätsgrad oder dem Durchsatz, den Sie für Ihren Workload erzielen möchten.  |
-| spark.cassandra.output.throughput_mb_per_sec  | Keine | Definiert den gesamten Schreibdurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihrer Cosmos DB-Sammlung.   |
-| spark.cassandra.input.reads_per_sec| Keine   | Definiert den gesamten Lesedurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihrer Cosmos DB-Sammlung.  |
+| spark.cassandra.output.throughput_mb_per_sec  | Keine | Definiert den gesamten Schreibdurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihres Cosmos-Containers.   |
+| spark.cassandra.input.reads_per_sec| Keine   | Definiert den gesamten Lesedurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihres Cosmos-Containers.  |
 | spark.cassandra.output.batch.grouping.buffer.size |  1000  | Definiert die Anzahl der Batches pro Spark-Task, die In-Memory gespeichert werden können, bevor diese an die Cassandra-API gesendet werden. |
 | spark.cassandra.connection.keep_alive_ms | 60000 | Definiert den Zeitraum, in dem nicht verwendete Verbindungen zur Verfügung stehen. | 
 

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 4722cda0506493671ff872d75e7376f3de74b1b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886465"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981239"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse
 
@@ -33,6 +33,7 @@ Wenn Sie eine neue Azure SQL Server-Instanz im [Azure-Portal](sql-database-sing
 
 - Virtual Network-Firewallregeln: Verwenden Sie dieses Feature, um Datenverkehr von einem bestimmten virtuellen Netzwerk innerhalb der Azure-Grenze zuzulassen.
 
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 ## <a name="allow-azure-services"></a>Azure-Dienste zulassen 
 Diese Einstellung wird während der Erstellung einer neuen Azure SQL Server-Instanz im [Azure-Portal](sql-database-single-database-get-started.md) deaktiviert.

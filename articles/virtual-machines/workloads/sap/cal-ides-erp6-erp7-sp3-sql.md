@@ -10,18 +10,17 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 1b2b3d46d0352f72b1ffb513a96c1ab5dc25ad54
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707496"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100062"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server und einem Windows-Betriebssystem über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Führen Sie die gleichen Schritte aus, um eine andere Lösung bereitzustellen.

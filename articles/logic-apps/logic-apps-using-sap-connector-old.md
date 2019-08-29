@@ -10,12 +10,12 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31f6a3fc281b8dc309ddcd237246c870c85ae20b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60847405"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971641"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -27,8 +27,8 @@ In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre SAP-Ressour
 In diesem Beispiel wird eine Logik-App verwendet, die Sie mit einer HTTP-Anforderung auslösen können. Die Logik-App sendet ein Intermediate Document (IDoc) an einen SAP-Server und gibt eine Antwort an den Anforderer zurück, der die Logik-App aufgerufen hat.
 Die aktuellen SAP-Connectors verfügen zwar über Aktionen, jedoch nicht über Trigger. Aus diesem Grund behandelt der erste Schritt im Logik-App-Workflow den [HTTP-Anforderungstrigger](../connectors/connectors-native-reqres.md). Spezifische technische Informationen zu den SAP-Connectors finden Sie in diesen Referenzartikeln: 
 
-* <a href="https://docs.microsoft.com/connectors/sapapplicationserver/" target="blank">SAP-Anwendungsserver-Connector</a>
-* <a href="https://docs.microsoft.com/connectors/sapmessageserver/" target="blank">SAP-Nachrichtenserver-Connector</a>
+* <a href="https://docs.microsoft.com/connectors/sap" target="blank">SAP-Anwendungsserver-Connector</a>
+* <a href="https://docs.microsoft.com/connectors/sap/#send-message-to-sap" target="blank">SAP-Nachrichtenserver-Connector</a>
 
 Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
 
@@ -190,8 +190,8 @@ Herzlichen Glückwunsch! Sie haben eine Logik-App erstellt, die mit dem SAP-Serv
 
 Technische Details zu dem Connector, wie in Swagger-Dateien des Connectors beschrieben, finden Sie in diesen Referenzartikeln: 
 
-* [SAP Application Server (Preview) (SAP-Anwendungsserver (Vorschauversion))](/connectors/sapapplicationserver/)
-* [SAP Message Server (Preview) (SAP-Nachrichtenserver (Vorschauversion))](/connectors/sapmessageserver/)
+* [SAP Application Server (Preview) (SAP-Anwendungsserver (Vorschauversion))](/connectors/sap)
+* [SAP Message Server (Preview) (SAP-Nachrichtenserver (Vorschauversion))](/connectors/sap/#send-message-to-sap)
 
 ## <a name="get-support"></a>Support
 

@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839681"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575206"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse
 
@@ -42,9 +42,9 @@ Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL S
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen eines leeren SQL Data Warehouse
+## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen einer leeren SQL Data Warehouse-Instanz
 
-Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz zu erstellen. 
 

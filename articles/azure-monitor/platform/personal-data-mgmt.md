@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827376"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617307"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -98,6 +98,11 @@ Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen so
 Im Rahmen der Vorgehensweisen für den Datenschutz haben wir einen API-Pfad für die *Bereinigung* verfügbar gemacht. Dieser Pfad sollte aufgrund der Risiken im Zusammenhang mit seiner Verwendung, möglichen Leistungseinbußen sowie einer möglichen Verzerrung von Aggregationen, Messungen und anderen Aspekten Ihrer Log Analytics-Daten möglichst selten verwendet werden. Alternative Methoden für den Umgang mit personenbezogenen Daten finden Sie im Abschnitt [Strategie für den Umgang mit personenbezogenen Daten](#strategy-for-personal-data-handling).
 
 Das Bereinigen ist ein Vorgang, der hohe Berechtigungen erfordert, und weder eine App noch ein Benutzer in Azure (einschließlich des Ressourcenbesitzers) ist zur Ausführung berechtigt, sofern nicht in Azure Resource Manager explizit eine entsprechende Rolle zugewiesen wurde. Dies ist die Rolle _Datenpurger_, die aufgrund des möglichen Datenverlusts sehr zurückhaltend vergeben werden sollte. 
+
+> [!IMPORTANT]
+> Zur Verwaltung von Systemressourcen werden Bereinigungsanforderungen auf 50 Anforderungen pro Stunde gedrosselt. Sie sollten die Ausführung von Bereinigungsanforderungen in Batches einbinden, indem Sie einen einzelnen Befehl senden, dessen Prädikat alle Benutzeridentitäten enthält, die bereinigt werden müssen. Verwenden Sie den [in-Operator](/azure/kusto/query/inoperator), um mehrere Identitäten anzugeben. Sie sollten die Abfrage ausführen, bevor Sie die Bereinigungsanforderung ausführen, um zu überprüfen, ob die Ergebnisse erwartet werden. 
+
+
 
 Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pfade verfügbar: 
 

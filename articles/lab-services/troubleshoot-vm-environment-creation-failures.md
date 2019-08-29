@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774407"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129037"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Beheben von Fehlern bei der Erstellung des virtuellen Computers und der Umgebung in Azure DevTest Labs
 DevTest Labs zeigt Warnungen an, wenn ein Computername ungültig ist oder Sie im Begriff sind, eine Labrichtlinie zu verletzen. Manchmal wird neben Ihrer Lab-VM oder Ihrem Umgebungsstatus ein rotes `X` angezeigt, das Sie über einen Fehler informiert.  Dieser Artikel enthält einige Tricks, mit denen Sie das zugrunde liegende Problem ermitteln und hoffentlich in Zukunft vermeiden können.
 
 ## <a name="portal-notifications"></a>Portalbenachrichtigungen
-Wenn Sie das Azure-Portal verwenden, sehen Sie sich als Erstes den Bereich für **Benachrichtigungen** an.  Der Benachrichtigungsbereich, der über die Hauptbefehlsleiste durch Klicken auf das **Glockensymbol** verfügbar ist, zeigt Ihnen an, ob die Erstellung der Lab-VM oder der Umgebung erfolgreich war.  Wenn ein Fehler aufgetreten ist, wird die Fehlermeldung angezeigt, die dem Erstellungsfehler zugeordnet ist. Die Details bieten oft zusätzliche Informationen, die Ihnen helfen, das Problem zu lösen. Im folgenden Beispiel ist bei der Erstellung des virtuellen Computers ein Fehler aufgetreten, da nicht ausreichend Kerne verfügbar sind. Die ausführliche Meldung informiert Sie darüber, wie Sie das Problem beheben und eine Erhöhung der Kernkontingente anfordern können.
+Wenn Sie das Azure-Portal verwenden, sehen Sie sich als Erstes den Bereich für **Benachrichtigungen** an.  Der Benachrichtigungsbereich, der über die Hauptbefehlsleiste durch Klicken auf das **Glockensymbol** verfügbar ist, zeigt Ihnen an, ob die Erstellung der Lab-VM oder der Umgebung erfolgreich war.  Wenn ein Fehler aufgetreten ist, wird die Fehlermeldung angezeigt, die dem Erstellungsfehler zugeordnet ist. Die Details bieten oft zusätzliche Informationen, die Ihnen helfen, das Problem zu lösen. Im folgenden Beispiel ist bei der Erstellung des virtuellen Computers ein Fehler aufgetreten, da nicht ausreichend Kerne verfügbar sind. Die ausführliche Meldung informiert Sie darüber, wie Sie das Problem beheben und eine Erhöhung der Kernkontingente anfordern können.
 
 ![Benachrichtigung im Azure-Portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 

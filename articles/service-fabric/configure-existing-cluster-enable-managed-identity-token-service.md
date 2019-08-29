@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: dc9d7ba9499f2c98370b14fd88d38dffc65480e5
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964035"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640728"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support"></a>Aktivieren eines vorhandenen Azure Service Fabric-Clusters für die Unterstützung verwalteter Identitäten
+# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Konfigurieren eines vorhandenen Azure Service Fabric-Clusters für die Unterstützung verwalteter Identitäten (Vorschauversion)
 Um auf die Funktion für verwaltete Identitäten für Azure Service Fabric-Anwendungen zuzugreifen, müssen Sie zunächst den **Tokendienst für verwaltete Identitäten** im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für das Abrufen von Zugriffstoken in ihrem Namen zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
 
 > [!NOTE]
@@ -75,8 +75,3 @@ Wenn die Bereitstellung mit der folgenden Meldung zu einem Fehler führt, bedeut
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](./how-to-managed-identity-service-fabric-app-code.md)
 * [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
-
-## <a name="related-articles"></a>Verwandte Artikel
-* Überprüfen der [Unterstützung für verwaltete Identitäten](./concepts-managed-identity.md) in Azure Service Fabric
-
-* [Aktivieren der Unterstützung für verwaltete Identitäten in einem vorhandenen Azure Service Fabric-Cluster](./configure-existing-cluster-enable-managed-identity-token-service.md)

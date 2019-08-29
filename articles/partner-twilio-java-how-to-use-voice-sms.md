@@ -3,9 +3,7 @@ title: Verwenden von Twilio für Sprachanrufe und SMS (Java) | Microsoft Docs
 description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Java geschrieben.
 services: ''
 documentationcenter: java
-author: devinrader
-manager: twilio
-editor: mollybos
+author: georgewallace
 ms.assetid: f3508965-5527-4255-9d51-5d5f926f4d43
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623951"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637225"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Java
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -30,10 +28,10 @@ Twilio ist eine Webservice-API für Telefonie, mit deren Hilfe Sie Ihre existier
 **Twilio Voice** ermöglicht Anwendungen das Tätigen und Entgegennehmen von Telefonanrufen. **Twilio SMS** ermöglicht Ihren Anwendungen das Senden und Empfangen von SMS-Nachrichten. **Twilio Client** ermöglicht Sprachkommunikation in Ihren Anwendungen über existierende Internetverbindungen, inklusive mobiler Verbindungen.
 
 ## <a id="Pricing"></a>Twilio-Preise und -Sonderangebote
-Informationen über die Twilio-Preise finden Sie unter [Twilio-Preise][twilio_pricing]. Azure-Kunden erhalten ein [Sonderangebot][special_offer]: ein Gratis-Guthaben von 1000 SMS oder 1000 eingehenden Sprachminuten. Besuchen Sie [https://ahoy.twilio.com/azure][special_offer], um sich für dieses Angebot zu registrieren und weitere Informationen zu erhalten.
+Informationen zu Twilio-Preisen finden Sie unter [Twilio-Preise][twilio_pricing]. Azure-Kunden erhalten als [Sonderangebot][special_offer] kostenlos ein Guthaben von 1.000 SMS oder 1.000 eingehenden Sprachminuten. Besuchen Sie [https://ahoy.twilio.com/azure][special_offer], um sich für dieses Angebot zu registrieren und weitere Informationen zu erhalten.
 
 ## <a id="Concepts"></a>Konzepte
-Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung – eine Liste finden Sie unter [Twilio-API-Bibliotheken][twilio_libraries].
+Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung. Eine Liste finden Sie unter [Twilio-API-Bibliotheken][twilio_libraries].
 
 Schlüsselaspekte der Twilio API sind Twilio-Verben und die Twilio Markup Language (TwiML).
 
@@ -76,8 +74,8 @@ Wenn Sie ein Twilio-Konto erstellen möchten, melden Sie sich bei [Try Twilio][t
 Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-ID und ein Authentifizierungstoken. Beide Angaben benötigen Sie zum Tätigen von Twilio-API-Anrufen. Bewahren Sie Ihr Authentifizierungstoken sicher auf, um unbefugten Zugriff auf Ihr Konto zu verhindern. Ihre Konto-ID und das Authentifizierungstoken können Sie in der [Twilio-Konsole][twilio_console] in den Feldern **ACCOUNT SID** bzw. **AUTH TOKEN** einsehen.
 
 ## <a id="create_app"></a>Erstellen einer Java-Anwendung
-1. Laden Sie das Twilio-JAR herunter und fügen Sie es zu Ihrem Java-Buildpfad und zu Ihrer WAR-Bereitstellungs-Assembly hinzu. Unter [https://github.com/twilio/twilio-java][twilio_java], können Sie die GitHub-Quellen herunterladen und Ihr eigenes JAR erstellen oder ein bereits erstelltes JAR herunterladen (mit oder ohne Abhängigkeiten).
-2. Stellen Sie sicher, dass der **cacerts** -Zertifikatspeicher Ihres SDK das Zertifikat der Equifax-Zertifizierungsstelle mit dem MD5-Fingerabdruck 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 enthält (die Seriennummer ist 35:DE:F4:CF und der SHA1-Fingerabdruck ist D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A). Dies ist das Zertifizierungsstellen (ZS)-Zertifikat für den [https://api.twilio.com][twilio_api_service]-Dienst, der beim Verwenden der Twilio-APIs aufgerufen wird. Informationen zur Prüfung der im **cacerts**-Zertifikatspeicher Ihres JDK enthaltenen ZS-Zertifikate finden Sie unter [Hinzufügen eines Zertifikats zum Java ZS-Zertifikatspeicher][add_ca_cert].
+1. Laden Sie das Twilio-JAR herunter und fügen Sie es zu Ihrem Java-Buildpfad und zu Ihrer WAR-Bereitstellungs-Assembly hinzu. Unter [https://github.com/twilio/twilio-java][twilio_java] können Sie die GitHub-Quellen herunterladen und Ihr eigenes JAR erstellen oder ein bereits erstelltes JAR herunterladen (mit oder ohne Abhängigkeiten).
+2. Stellen Sie sicher, dass der **cacerts** -Zertifikatspeicher Ihres SDK das Zertifikat der Equifax-Zertifizierungsstelle mit dem MD5-Fingerabdruck 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 enthält (die Seriennummer ist 35:DE:F4:CF und der SHA1-Fingerabdruck ist D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A). Dies ist das Zertifizierungsstellenzertifikat für den [https://api.twilio.com][twilio_api_service]-Dienst, der beim Verwenden der Twilio-APIs aufgerufen wird. Informationen, wie Sie sicherstellen, dass der Keystore **cacerts** Ihres JDK das ordnungsgemäße Zertifizierungsstellenzertifikat enthält, finden Sie unter [Hinzufügen eines Stammzertifikats zum Java-ZS-Zertifikatspeicher][add_ca_cert].
 
 Ausführliche Informationen zur Verwendung der Twilio-Clientbibliothek für Java finden Sie unter [Tätigen eines Telefonanrufs mithilfe von Twilio in einer Java-Anwendung auf Azure][howto_phonecall_java].
 
@@ -205,14 +203,14 @@ Eine weitere Option zum Antworten mit TwiML ist die **VoiceResponse**-Klasse, di
 Weitere Informationen über die Verwendung von Twilio in Azure mit Java finden Sie unter [Tätigen eines Telefonanrufs mithilfe von Twilio in einer Java-Anwendung auf Azure][howto_phonecall_java].
 
 ## <a id="AdditionalServices"></a>Gewusst wie: Verwenden zusätzlicher Twilio-Dienste
-Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API documentation (Twilio API-Dokumentation)][twilio_api_documentation].
+Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API-Dokumentation][twilio_api_documentation].
 
 ## <a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
-* [Twilio HowTo's and Example Code (Twilio-Anleitungen und Beispielcode)][twilio_howtos]
-* [Twilio Quickstart Tutorials (Twilio-Schnellstart-Tutorials)][twilio_quickstarts]
+* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
+* [Twilio-Anleitungen und Beispielcode][twilio_howtos]
+* [Twilio-Schnellstart-Tutorials][twilio_quickstarts]
 * [Twilio auf GitHub][twilio_on_github]
 * [Kontakt zum Twilio-Support][twilio_support]
 

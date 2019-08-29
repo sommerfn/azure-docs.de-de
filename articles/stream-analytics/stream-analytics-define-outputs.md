@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383452"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563320"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -159,7 +159,7 @@ Quelle: Stream Analytics | Ziel: Power BI
 -----|-----
 bigint | Int64
 nvarchar(max) | Zeichenfolge
-datetime | DateTime
+datetime | Datetime
 float | Double
 Datensatzarray | Zeichenfolgentyp, Konstantenwert „IRecord“ oder „IArray“
 
@@ -174,7 +174,7 @@ Vorher/Aktuell | Int64 | Zeichenfolge | DateTime | Double
 Int64 | Int64 | Zeichenfolge | Zeichenfolge | Double
 Double | Double | Zeichenfolge | Zeichenfolge | Double
 Zeichenfolge | String | String | String | Zeichenfolge 
-DateTime | Zeichenfolge | Zeichenfolge |  DateTime | Zeichenfolge
+Datetime | Zeichenfolge | Zeichenfolge |  Datetime | Zeichenfolge
 
 ## <a name="table-storage"></a>Table Storage
 
@@ -270,6 +270,9 @@ Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der Azure Fu
 | Max Batch Count  |Eine Eigenschaft, mit der Sie die maximale Anzahl von Ereignissen in jedem Batch angeben können, die an Azure Functions gesendet werden. Der Standardwert ist 100. |
 
 Die Größe der an Azure Functions gesendeten Batches wird verringert, wenn in Azure Stream Analytics Ausnahme 413 (HTTP-Anforderungseinheit zu groß) durch Azure Functions auftritt. Verwenden Sie in Ihrem Azure-Funktionscode diese Ausnahme, um sicherzustellen, dass Azure Stream Analytics keine übermäßig großen Batches sendet. Stellen Sie außerdem sicher, dass die Werte für die maximal zulässige Batchanzahl und -größe in der Funktion mit den Werten übereinstimmen, die im Stream Analytics-Portal eingegeben wurden.
+
+> [!NOTE]
+> Während der Testverbindung sendet Stream Analytics einen leeren Batch an Azure Functions, um zu testen, ob die Verbindung zwischen den beiden funktioniert. Stellen Sie sicher, dass Ihre Functions-App Anforderungen für leere Batches verarbeitet, um sicherzustellen, dass die Testverbindung erfolgreich ist.
 
 Zudem wird in Fällen, in denen kein Ereignis in einem Zeitfenster auftritt, keine Ausgabe generiert. Als Ergebnis wird die **computeResult**-Funktion nicht aufgerufen. Dieses Verhalten entspricht den integrierten Aggregatfunktionen im Fenstermodus.
 

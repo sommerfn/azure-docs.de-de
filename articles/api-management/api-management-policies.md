@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254399"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073394"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  

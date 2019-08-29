@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
-ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370712"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034526"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure
 
@@ -36,7 +36,7 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 
 ## <a name="user-limit-for-admin-roles"></a>Benutzerlimit für Administratorrollen
 
-|Rolle| Benutzerlimit|
+|Role| Benutzerlimit|
 |---|---|
 |Unternehmensadministrator|Unbegrenzt|
 |Unternehmensadministrator (nur Leseberechtigung)|Unbegrenzt|
@@ -56,7 +56,7 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 |Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>2</sup> |✔|✘|✘|✘|✘|
 |Erstellen und Verwalten von Abteilungen |✔|✘|✘|✘|✘|
 |Anzeigen von Abteilungsadministratoren|✔|✔|✔|✔|✘|
-|Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✔|✔|✘|✘|
+|Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✘|✔|✘|✘|
 |Anzeigen von Konten in der Registrierung |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
 |Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✔<sup>3</sup>|✘|✘|
 |Erstellen und Verwalten von Abonnements und Abonnementberechtigungen|✘|✘|✘|✘|✔|

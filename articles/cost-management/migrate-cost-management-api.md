@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c2041984ffa2c455ea4d60a756fcb4142219d91
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967241"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981441"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
@@ -60,7 +60,7 @@ EA-APIs verwenden einen API-Schlüssel zur Authentifizierung und Autorisierung. 
 | Preisblatt | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
 | Reservierungseinkäufe | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
 | Reservierungsempfehlungen | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| Reservierungsnutzung | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Reservierungsnutzung | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
 <sup>1</sup> Nutzung von Azure-Diensten und Marketplace eines Drittanbieters sind über der [Nutzungsdetails-API](/rest/api/consumption/usagedetails) verfügbar.
 
@@ -126,12 +126,12 @@ Zum Abrufen von Nutzungsdetails mit der Nutzungsdetails-API gehen Sie folgenderm
 
 Die Nutzungsdetails-API ist wie alle Cost Management-APIs in mehreren Bereichen verfügbar. Verwenden Sie für berechnete Kosten, die Sie normalerweise auf Registrierungsebene erhalten würden, den Bereich des Abrechnungsprofils.  Weitere Informationen zu Cost Management-Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
-| Type | ID-Format |
+| type | ID-Format |
 | --- | --- |
 | Abrechnungskonto | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Abrechnungsprofil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| Abonnement | `/subscriptions/{subscriptionId}` |
-| Ressourcengruppe | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
+| Subscription | `/subscriptions/{subscriptionId}` |
+| Resource group | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
 Verwenden Sie die folgenden QueryString-Parameter, um Programmcode zu aktualisieren.
 
@@ -500,7 +500,7 @@ Sie können die Reservierungsnutzung in einer Registrierung mit der API für die
 
 Hierzu gehören folgende Berechtigungen:
 
-- [Nutzungsdetails zu reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)
+- [Nutzungsdetails zu reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
 - [Nutzungszusammenfassung zu reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
 Alle Nutzungs-APIs werden durch native Azure-APIs ersetzt, die Azure AD zur Authentifizierung und Autorisierung verwenden. Weitere Informationen zum Aufrufen von Azure-REST-APIs finden Sie unter [Erste Schritte mit der REST-API](/rest/api/azure/#create-the-request). Die zuvor aufgelisteten APIs für Reservierungsempfehlungen werden durch die APIs [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) und [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) ersetzt.

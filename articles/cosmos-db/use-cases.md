@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 28a4cc854842b66a9fb61134e3ca9ac9a5f38fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965605"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614228"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Häufige Anwendungsfälle für Azure Cosmos DB
 Dieser Artikel bietet eine Übersicht über verschiedene häufige Anwendungsfälle für Azure Cosmos DB.  Die Empfehlungen in diesem Artikel dienen als Ausgangspunkt für die Entwicklung Ihrer Anwendung mit Cosmos DB.   
@@ -44,7 +44,7 @@ IoT-Anwendungsfälle weisen einige gemeinsame Muster hinsichtlich der Erfassung,
 
 ![IoT-Referenzarchitektur für Azure Cosmos DB](./media/use-cases/iot.png)
 
-Azure Event Hubs bietet einen hohen Durchsatz bei geringer Latenz und kann daher große Datenmengen erfassen und verarbeiten. Erfasste Daten, die für Erkenntnisse in Echtzeit verarbeitet werden müssen, können zur Echtzeitanalyse an Azure Stream Analytics weitergeleitet werden. Daten können für Ad-hoc-Abfragen in Azure Cosmos DB geladen werden. Sobald die Daten in Azure Cosmos DB geladen sind, können sie abgefragt werden. Darüber hinaus können neue Daten und Änderungen an vorhandenen Daten im Änderungsfeed gelesen werden. Beim Änderungsfeed handelt es sich um ein beständiges und nur zum Anfügen bestimmtes Protokoll, in dem Änderungen an Cosmos DB-Containern in sequenzieller Reihenfolge gespeichert werden. Alle Daten oder nur die Änderungen an Daten in Azure Cosmos DB können im Rahmen von Echtzeitanalysen als Referenzdaten verwendet werden. Darüber hinaus können Daten durch Verknüpfen von Azure Cosmos DB-Daten mit HDInsight für Pig-, Hive- oder Map/Reduce-Aufträge weiter optimiert und verarbeitet werden.  Die optimierten Daten werden anschließend zur Berichterstellung wieder in Azure Cosmos DB geladen.   
+Azure Event Hubs bietet einen hohen Durchsatz bei geringer Latenz und kann daher große Datenmengen erfassen und verarbeiten. Erfasste Daten, die für Erkenntnisse in Echtzeit verarbeitet werden müssen, können zur Echtzeitanalyse an Azure Stream Analytics weitergeleitet werden. Daten können für Ad-hoc-Abfragen in Azure Cosmos DB geladen werden. Sobald die Daten in Azure Cosmos DB geladen sind, können sie abgefragt werden. Darüber hinaus können neue Daten und Änderungen an vorhandenen Daten im Änderungsfeed gelesen werden. Beim Änderungsfeed handelt es sich um ein beständiges und nur zum Anfügen bestimmtes Protokoll, in dem Änderungen an Cosmos-Containern in sequenzieller Reihenfolge gespeichert werden. Alle Daten oder nur die Änderungen an Daten in Azure Cosmos DB können im Rahmen von Echtzeitanalysen als Referenzdaten verwendet werden. Darüber hinaus können Daten durch Verknüpfen von Azure Cosmos DB-Daten mit HDInsight für Pig-, Hive- oder Map/Reduce-Aufträge weiter optimiert und verarbeitet werden.  Die optimierten Daten werden anschließend zur Berichterstellung wieder in Azure Cosmos DB geladen.   
 
 Eine Beispiellösung für das Internet der Dinge unter Verwendung von Azure Cosmos DB, EventHubs und Storm finden Sie im [Beispielrepository „hdinsight-storm“ in GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 

@@ -11,16 +11,15 @@ ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: szark
-ms.openlocfilehash: 172267af394885d0c5ac0a0717de87e968182d37
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4b254b508e5fac5721e579620e207c2a8612352d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667863"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083402"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Von Azure unterstützte Linux-Distributionen
 Partner stellen Linux-Images im Azure Marketplace bereit. Wir arbeiten mit verschiedenen Linux-Communitys zusammen, um der Liste der unterstützten Distributionen weitere Varianten hinzuzufügen. In der Zwischenzeit gilt für Distributionen, die nicht in Marketplace verfügbar sind: Sie können stets Ihr eigenes Linux verwenden, sofern Sie die Richtlinien unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) einhalten.

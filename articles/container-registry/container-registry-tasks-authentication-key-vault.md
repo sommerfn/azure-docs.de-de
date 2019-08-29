@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 6aa729e4f32769ec50632bea582c8b69c7c0ce91
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641543"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509233"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 
@@ -101,13 +101,13 @@ Mit den Aufgabenschritten wird Folgendes ausgeführt:
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität
 
-Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine vom Benutzer zugewiesene Identität aktiviert. Wenn Sie stattdessen eine vom System zugewiesene Identität aktivieren möchten, finden Sie die entsprechenden Informationen unter [Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität](#option-2-create-task-with-system-assigned-identity). 
+Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine benutzerseitig zugewiesene Identität aktiviert. Wenn Sie stattdessen eine systemseitig zugewiesene Identität aktivieren möchten, navigieren Sie zu [Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Erstellen der Aufgabe
 
-Führen Sie den folgenden Befehl [az acr task create][az-acr-task-create] aus, um die Aufgabe *dockerhubtask* zu erstellen. Der Aufgabenkontext ist das lokale System, und der Befehl verweist auf die Datei `dockerhubtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` übergibt die Ressourcen-ID der vom Benutzer zugewiesenen Identität. 
+Führen Sie den folgenden Befehl [az acr task create][az-acr-task-create] aus, um die Aufgabe *dockerhubtask* zu erstellen. Die Aufgabe läuft ohne Quellcode-Kontext, und der Befehl verweist auf die Datei `dockerhubtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` übergibt die Ressourcen-ID der benutzerseitig zugewiesenen Identität. 
 
 ```azurecli
 az acr task create \
@@ -122,11 +122,11 @@ az acr task create \
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
 
-Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine vom System zugewiesene Identität aktiviert. Wenn Sie stattdessen eine vom Benutzer zugewiesene Identität aktivieren möchten, finden Sie die entsprechenden Informationen unter [Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität](#option-1-create-task-with-user-assigned-identity). 
+Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine systemseitig zugewiesene Identität aktiviert. Wenn Sie stattdessen eine benutzerseitig zugewiesene Identität aktivieren möchten, navigieren Sie zu [Option 1: Erstellen einer Aufgabe mit benutzerseitig zugewiesener Identität](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Erstellen der Aufgabe
 
-Führen Sie den folgenden Befehl [az acr task create][az-acr-task-create] aus, um die Aufgabe *dockerhubtask* zu erstellen. Der Aufgabenkontext ist das lokale System, und der Befehl verweist auf die Datei `dockerhubtask.yaml` im Arbeitsverzeichnis.  Der Parameter `--assign-identity` ohne Wert aktiviert die vom System zugewiesene verwaltete Identität in der Aufgabe.  
+Führen Sie den folgenden Befehl [az acr task create][az-acr-task-create] aus, um die Aufgabe *dockerhubtask* zu erstellen. Die Aufgabe läuft ohne Quellcode-Kontext, und der Befehl verweist auf die Datei `dockerhubtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` ohne Wert aktiviert die systemseitig zugewiesene verwaltete Identität für die Aufgabe.  
 
 ```azurecli
 az acr task create \
@@ -206,8 +206,8 @@ Um zu überprüfen, ob das Image übertragen wird, überprüfen Sie das private 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum [Aktivieren einer verwalteten Identität in einer ACR-Aufgabe](container-registry-tasks-authentication-managed-identity.md)
-* Weitere Informationen finden Sie in der [Referenz zu ACR Tasks: YAML](container-registry-tasks-reference-yaml.md).
+* Weitere Informationen zum Aktivieren einer verwalteten Identität in einer ACR-Aufgabe finden Sie [hier](container-registry-tasks-authentication-managed-identity.md).
+* Die YAML-Referenz für ACR Tasks finden Sie [hier](container-registry-tasks-reference-yaml.md).
 
 
 <!-- LINKS - Internal -->

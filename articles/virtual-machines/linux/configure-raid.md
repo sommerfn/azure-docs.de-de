@@ -11,17 +11,16 @@ ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a7e6c0b2f260976842a0b3ac1f7f69fa859e2283
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d0658af090d9a3f39bee69f5103a78a329fe189c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671665"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083803"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurieren von Software-RAID unter Linux
 Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux-Computern in Azure, um mehrere angefügte Datenträger als einzelnes RAID-Gerät darzustellen. Dies kann normalerweise angewendet werden, um die Leistung zu verbessern und optimierten Durchsatz im Vergleich zur Verwendung eines einzelnen Datenträgers zu ermöglichen.
@@ -122,19 +121,19 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
 
 1. Erstellen des Dateisystems auf dem neuen RAID-Gerät
    
-    a. **CentOS, Oracle Linux, SLES 12, openSUSE und Ubuntu**
+    **CentOS, Oracle Linux, SLES 12, openSUSE und Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127
     ```
    
-    b. **SLES 11**
+    **SLES 11**
 
     ```bash
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    c. **SLES 11**: „boot.md“ aktivieren und „mdadm.conf“ erstellen
+    **SLES 11**: „boot.md“ aktivieren und „mdadm.conf“ erstellen
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -144,7 +143,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
    > [!NOTE]
    > Nach den Änderungen an den SUSE-Systemen kann ein Neustart erforderlich sein. Dieser Schritt ist für SLES 12 *nicht* erforderlich.
    > 
-   > 
+   
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Hinzufügen des neuen Laufwerks zu "/etc/fstab"
 > [!IMPORTANT]

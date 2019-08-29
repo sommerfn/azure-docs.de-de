@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 428334c1d1d28f53f3a4007b345bb2fb2249f26b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e25c69ecbac20a660eb09a6d1c8cb3a5a82895a2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641898"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097252"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 

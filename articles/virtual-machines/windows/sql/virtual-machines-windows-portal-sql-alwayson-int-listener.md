@@ -8,18 +8,17 @@ manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9c8379787619608421256120139f07c8dbd8d14
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326111"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102243"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurieren eines Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.

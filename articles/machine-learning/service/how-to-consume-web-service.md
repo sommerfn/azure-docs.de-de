@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03579d75ad9cbaceca1a5d42913ff546088f6cfe
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656268"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982789"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
@@ -497,7 +497,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 Power BI unterstützt die Nutzung von Azure Machine Learning-Webdiensten, um die Daten in Power BI um Vorhersagen zu erweitern. 
 
-Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
+Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-entry-script).
 
 Nachdem der Webdienst bereitgestellt wurde, kann er über Power BI-Dataflows genutzt werden. [Informieren Sie sich über die Integration von Azure Machine Learning in Power BI (Vorschau)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 

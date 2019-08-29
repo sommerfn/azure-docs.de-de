@@ -8,25 +8,24 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 2cab129556dcd0407793512f41f91311804abd0f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100137"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
 Microsoft und Oracle bieten mit [ExpressRoute](../../../expressroute/expressroute-introduction.md) und [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) die Möglichkeit, eine direkte Verbindung zwischen Azure und Oracle Cloud Infrastructure (OCI) herzustellen und so eine [integrierte Multi-Cloud-Umgebung](oracle-oci-overview.md) (Vorschauversion) bereitzustellen. Dank der Integration von ExpressRoute und FastConnect profitieren Kunden von geringer Latenz, hohem Durchsatz und privaten Direktverbindungen zwischen den beiden Clouds.
 
 > [!IMPORTANT]
-> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI unterstützt werden, muss diese Funktionalität für Ihr Azure-Abonnement zunächst in die Whitelist aufgenommen werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) für Microsoft Azure-Vorschauversionen. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI unterstützt werden, muss diese Funktionalität für Ihr Azure-Abonnement zunächst in die Whitelist aufgenommen werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 

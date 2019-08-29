@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 30c99ae4150e0bd4645488b5bf75b8bbac0ee66f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934338"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562448"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -132,7 +132,7 @@ Dies gilt nur für lokale Entwicklung. Wenn Ihre Lösung in Azure bereitgestellt
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Ausführen der Anwendung mithilfe einer verwalteten Identität oder benutzerseitig zugewiesenen Identität 
 
-Wenn Sie den Code auf einer Azure App Service-Instanz oder einem virtuellen Azure-Computer ausführen und eine verwaltete Identität aktiviert ist, verwendet die Bibliothek automatisch die verwaltete Identität. 
+Wenn Sie den Code auf einer Azure App Service-Instanz oder einem virtuellen Azure-Computer ausführen und eine verwaltete Identität aktiviert ist, verwendet die Bibliothek automatisch die verwaltete Identität. Es sind keine Codeänderungen erforderlich, aber die verwaltete Identität muss über *GET*-Berechtigungen für den Schlüsseltresor verfügen. Über die *Zugriffsrichtlinien* des Schlüsseltresors können Sie der verwalteten Identität *GET*-Berechtigungen erteilen.
 
 Alternativ können Sie sich auch mit einer benutzerseitig zugewiesenen Identität authentifizieren. Weitere Informationen zu benutzerseitig zugewiesenen Identitäten finden Sie unter [Informationen zu verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). Um sich mit einer vom Benutzer zugewiesenen Identität zu authentifizieren, müssen Sie die Client-ID der vom Benutzer zugewiesenen Identität in der Verbindungszeichenfolge angeben. Die Verbindungszeichenfolge ist im Abschnitt [Unterstützung der Verbindungszeichenfolge](#connection-string-support) unten angegeben.
 

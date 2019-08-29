@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 09d15702d61d9ef6204ce8e48f6a1d9d108995a3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 88972afe1f1e998fc2fb731638332915bd8317b5
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036273"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891597"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 
 | **Service Provider** | **Microsoft Azure** | **Office 365 und Dynamics 365** | **Standorte** |
 | --- | --- | --- | --- |
-| **[AARNet](https://www.aarnet.edu.au/network-and-services/cloud-services-applications/azure-expressroute/)** |Unterstützt |Unterstützt |Melbourne, Sydney |
+| **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |Unterstützt |Unterstützt |Melbourne, Sydney |
 | **[Airtel](https://www.airtel.in/business/#/)** | Unterstützt | Unterstützt | Chennai2, Mumbai2 |
 | **[Aryaka Networks](https://www.aryaka.com/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Hongkong (SAR), São Paulo, Seattle, Silicon Valley, Singapur, Tokio, Washington DC |
 | **[Ascenty-Rechenzentren](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Unterstützt |Unterstützt |Sao Paulo |
@@ -232,6 +232,7 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 | **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong (SAR) |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburg |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
+| **[CMC Telecom]( https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
 | **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | Montreal, Toronto |
 | **[CoreAzure](http://coreazure.com/expressroute)**| Equinix | London |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)**| Equinix | Dallas, Silicon Valley, Washington D.C. |
@@ -255,7 +256,7 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** | Teraco | Kapstadt, Johannesburg |
 | **[NexGen Networks](https://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion | London |
 | **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Telecity | Amsterdam, Frankfurt |
-| **[Post](https://www.teralinksolutions.com/cloud-connectivity/cloudbridge-to-azure-expressroute/)**|Equinix | Amsterdam |
+| **[POST Telecom Luxembourg](https://www.teralinksolutions.com/cloud-connectivity/cloudbridge-to-azure-expressroute/)**|Equinix | Amsterdam |
 | **[Proximus](https://www.proximus.be/en/id_b_cl_proximus_external_cloud_connect/companies-and-public-sector/discover/magazines/expert-blog/proximus-external-cloud-connect.html)**|Equinix | Amsterdam, Dublin, London, Paris |
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
 | **Rogers** | Cologix, Equinix | Montreal, Toronto |

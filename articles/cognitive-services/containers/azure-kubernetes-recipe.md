@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 5b406f9c7f8c16038561853170896d2cd95dc383
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444845"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066104"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Sprachenerkennungscontainers in Azure Kubernetes Service
 
@@ -62,19 +62,19 @@ Damit der Container in Azure Kubernetes Service bereitgestellt werden kann, muss
 
 1. Melden Sie sich bei der Azure-Befehlszeilenschnittstelle an.
 
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
 
 1. Erstellen Sie eine Ressourcengruppe namens `cogserv-container-rg` für alle Ressourcen, die im Rahmen dieses Verfahrens erstellt werden.
 
-    ```azurecli
+    ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
 1. Erstellen Sie Ihre eigene Azure Container Registry-Instanz mit einer Kombination aus Ihrem Namen und `registry` (Beispiel: `pattyregistry`). Fügen Sie keine Binde- oder Unterstriche in den Namen ein.
 
-    ```azurecli
+    ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
@@ -104,7 +104,7 @@ Damit der Container in Azure Kubernetes Service bereitgestellt werden kann, muss
 
 1. Melden Sie sich bei Ihrer Containerregistrierung an. Sie müssen angemeldet sein, um Images per Push in die Registrierung übertragen zu können.
 
-    ```azurecli
+    ```azurecli-interactive
     az acr login --name pattyregistry
     ```
 
@@ -174,7 +174,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
 1. Erstellen Sie den Dienstprinzipal.
 
-    ```azurecli
+    ```azurecli-interactive
     az ad sp create-for-rbac --skip-assignment
     ```
 
@@ -193,7 +193,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
 1. Rufen Sie Ihre Containerregistrierungs-ID ab.
 
-    ```azurecli
+    ```azurecli-interactive
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
@@ -208,7 +208,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
 1. Erstellen Sie eine Rollenzuweisung, um den korrekten Zugriff für den AKS-Cluster zu gewähren und die Verwendung von in der Containerregistrierung gespeicherten Images zu ermöglichen. Ersetzen Sie `<appId>` und `<acrId>` durch die Werte aus den beiden vorherigen Schritten.
 
-    ```azurecli
+    ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
     ```
 
@@ -216,7 +216,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
 1. Erstellen Sie den Kubernetes-Cluster. Mit Ausnahme des Namensparameters stammen alle Parameterwerte aus den vorherigen Abschnitten. Wählen Sie einen Namen, der Aufschluss über Ersteller und Zweck gibt (beispielsweise `patty-kube`).
 
-    ```azurecli
+    ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
     ```
 
@@ -284,7 +284,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
 1. Rufen Sie die Anmeldeinformationen des Kubernetes-Clusters ab.
 
-    ```azurecli
+    ```azurecli-interactive
     az aks get-credentials --resource-group cogserv-container-rg --name patty-kube
     ```
 
@@ -397,7 +397,7 @@ Navigieren Sie in einem Browser zu der externen IP-Adresse des Containers `langu
 
 Wenn Sie den Cluster nicht mehr benötigen, löschen Sie die Azure-Ressourcengruppe.
 
-```azure-cli
+```azurecli-interactive
 az group delete --name cogserv-container-rg
 ```
 

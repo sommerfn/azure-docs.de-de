@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 87b275806c06443e37e9e92c35a38b4cde378322
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343267"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614342"
 ---
 # <a name="getting-started-with-sql-queries"></a>Erste Schritte mit SQL-Abfragen
 
@@ -166,7 +166,7 @@ Die Beispiele oben zeigen verschiedene Aspekte der Cosmos DB-Abfragesprache:
 
 * Azure Cosmos DB unterstützt nur strikte JSON-Elemente. Typsystem und Ausdrücke sind auf JSON-Typen beschränkt. Weitere Informationen finden Sie in der [JSON-Spezifikation](https://www.json.org/).  
 
-* Ein Cosmos DB-Container ist eine schemalose Sammlung von JSON-Elementen. Die Beziehungen innerhalb und zwischen Containerelementen werden implizit nach Eigenständigkeit erfasst, nicht nach Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieses Feature ist für die elementinternen Verknüpfungen wichtig, die später in diesem Artikel erläutert werden.
+* Ein Cosmos-Container ist eine schemalose Sammlung von JSON-Elementen. Die Beziehungen innerhalb und zwischen Containerelementen werden implizit nach Eigenständigkeit erfasst, nicht nach Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieses Feature ist für die elementinternen Verknüpfungen wichtig, die später in diesem Artikel erläutert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

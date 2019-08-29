@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 2a88e778458da3c5faace401863998dda746ac75
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782583"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051490"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
@@ -111,7 +111,7 @@ Die E-Mail enthält auch Details zu möglichen Ursachen und empfohlenen Aktionen
 
 ![Azure Storage Advanced Threat Protection – Warnungs-E-Mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Sie können Ihre aktuellen Sicherheitswarnungen in Azure Security Center über die [Kachel „Sicherheitswarnungen“](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts) anzeigen und verwalten. Durch Klicken auf eine bestimmte Warnung werden Details und Aktionen zum Untersuchen der aktuellen Bedrohung und zum Begegnen zukünftiger Bedrohungen bereitgestellt.
+Sie können Ihre aktuellen Sicherheitswarnungen in Azure Security Center über die [Kachel „Sicherheitswarnungen“](../../security-center/security-center-managing-and-responding-alerts.md) anzeigen und verwalten. Durch Klicken auf eine bestimmte Warnung werden Details und Aktionen zum Untersuchen der aktuellen Bedrohung und zum Begegnen zukünftiger Bedrohungen bereitgestellt.
 
 ![Azure Storage Advanced Threat Protection – Warnungs-E-Mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 

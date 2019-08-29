@@ -1,17 +1,17 @@
 ---
 title: Leistungstipps für Azure Cosmos DB und .NET
-description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB-Datenbanken vertraut.
+description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos-Datenbanken vertraut.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 21886c11bea6ff09cf97362e06c6d304aaa0d8cc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: bdf81eb447596c8f580809eed99004186a81eacf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250054"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065915"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -21,7 +21,7 @@ ms.locfileid: "68250054"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB ist eine schnelle und flexible verteilte Datenbank mit nahtloser Skalierung, garantierter Latenz und garantiertem Durchsatz. Die Skalierung Ihrer Datenbank mit Azure Cosmos DB erfordert weder aufwendige Änderungen an der Architektur noch das Schreiben von komplexem Code. Zentrales Hoch- und Herunterskalieren ist ebenso problemlos möglich wie ein einzelner API-Aufruf. Weitere Informationen finden Sie unter [Bereitstellen von Containerdurchsatz](how-to-provision-container-throughput.md) und [Bereitstellen von Datenbankdurchsatz](how-to-provision-database-throughput.md). Weil der Zugriff auf Azure Cosmos DB jedoch über Netzwerkaufrufe erfolgt, können Sie clientseitige Optimierungen vornehmen, um bei Verwendung des [SQL .NET SDK](documentdb-sdk-dotnet.md) eine optimale Leistung zu erzielen.
+Azure Cosmos DB ist eine schnelle und flexible verteilte Datenbank mit nahtloser Skalierung, garantierter Latenz und garantiertem Durchsatz. Die Skalierung Ihrer Datenbank mit Azure Cosmos DB erfordert weder aufwendige Änderungen an der Architektur noch das Schreiben von komplexem Code. Zentrales Hoch- und Herunterskalieren ist ebenso problemlos möglich wie ein einzelner API-Aufruf. Weitere Informationen finden Sie unter [Bereitstellen von Containerdurchsatz](how-to-provision-container-throughput.md) und [Bereitstellen von Datenbankdurchsatz](how-to-provision-database-throughput.md). Weil der Zugriff auf Azure Cosmos DB jedoch über Netzwerkaufrufe erfolgt, können Sie clientseitige Optimierungen vornehmen, um bei Verwendung des [SQL .NET SDK](sql-api-sdk-dotnet-standard.md) eine optimale Leistung zu erzielen.
 
 Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
@@ -78,7 +78,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
    <a id="same-region"></a>
 3. **Platzieren der Clients in der gleichen Azure-Region**
 
-    Platzieren Sie nach Möglichkeit sämtliche Anwendungen, die Azure Cosmos DB aufrufen, in der gleichen Region wie die Azure Cosmos DB-Datenbank. Damit Sie einen ungefähren Vergleich haben: Azure Cosmos DB-Aufrufe aus derselben Region werden normalerweise innerhalb von ca. 1 bis 2 ms abgeschlossen, während die Latenz zwischen West- und Ostküste der USA mehr als 50 ms beträgt. Diese Latenz variiert ggf. von Anforderung zu Anforderung und ist abhängig von der Route, die die Anforderung zwischen dem Client und der Grenze des Azure-Datencenters nimmt. Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gleichen Azure-Region wie der bereitgestellte Azure Cosmos DB-Endpunkt befindet. Eine Liste mit den verfügbaren Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/#services).
+    Platzieren Sie nach Möglichkeit sämtliche Anwendungen, die Azure Cosmos DB aufrufen, in der gleichen Region wie die Azure Cosmos-Datenbank. Damit Sie einen ungefähren Vergleich haben: Azure Cosmos DB-Aufrufe aus derselben Region werden normalerweise innerhalb von ca. 1 bis 2 ms abgeschlossen, während die Latenz zwischen West- und Ostküste der USA mehr als 50 ms beträgt. Diese Latenz variiert ggf. von Anforderung zu Anforderung und ist abhängig von der Route, die die Anforderung zwischen dem Client und der Grenze des Azure-Datencenters nimmt. Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gleichen Azure-Region wie der bereitgestellte Azure Cosmos DB-Endpunkt befindet. Eine Liste mit den verfügbaren Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/#services).
 
     ![Abbildung der Azure Cosmos DB-Verbindungsrichtlinie](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
@@ -94,7 +94,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 ## <a name="sdk-usage"></a>SDK-Verwendung
 1. **Installieren des neuesten SDKs**
 
-    Azure Cosmos DB-SDKs werden ständig verbessert, um eine optimale Leistung zu ermöglichen. Informationen zum neuesten SDK und zu den Verbesserungen finden Sie auf den Seiten unter [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md).
+    Azure Cosmos DB-SDKs werden ständig verbessert, um eine optimale Leistung zu ermöglichen. Informationen zum neuesten SDK und zu den Verbesserungen finden Sie auf den Seiten unter [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md).
 2. **Verwenden eines Singleton-Azure Cosmos DB-Clients für die Lebensdauer der Anwendung**
 
     Bei Verwendung des direkten Modus ist jede DocumentClient-Instanz threadsicher und verfügt über eine effiziente Verbindungsverwaltung und Adressenzwischenspeicherung. Zur Ermöglichung einer effizienten Verbindungsverwaltung und einer besseren DocumentClient-Leistung empfiehlt es sich, für die Lebensdauer der Anwendung pro Anwendungsdomäne eine einzelne DocumentClient-Instanz zu verwenden.

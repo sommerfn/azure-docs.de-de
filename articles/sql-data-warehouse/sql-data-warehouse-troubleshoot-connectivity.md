@@ -10,12 +10,12 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d7f56b65db09232af4fe7e198675ea0cfd64a25
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595487"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575549"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Behandlung von Konnektivitätsproblemen
 
@@ -45,11 +45,11 @@ Wenn die Integrität der Ressource angibt, dass das Data Warehouse angehalten is
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Überprüfen auf angehaltene Vorgänge oder Skalierungen
 
-Sehen Sie im Portal nach, ob Ihre SQL Data Warehouse-Instanz pausiert ist oder skaliert wird.
+Sehen Sie im Portal nach, ob Ihre SQL Data Warehouse-Instanz angehalten wurde oder skaliert wird.
 
 ![Dienst angehalten](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Wenn Sie feststellen, dass der Dienst pausiert wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* für Ihre SQL Data Warehouse-Instanz im Portal sehen Sie den ausgewählten Wartungszeitplan.
+Wenn Sie feststellen, dass der Dienst angehalten wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* für Ihre SQL Data Warehouse-Instanz im Portal sehen Sie den ausgewählten Wartungszeitplan.
 
 ![Übersicht über den Wartungszeitplan](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 

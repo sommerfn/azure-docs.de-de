@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 41fa5a859e738c2bb70e4885aa856f247e922492
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448993"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615301"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
 
-Sobald Sie damit begonnen haben, mindestens eine Azure Cosmos DB-Datenbank zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Dieser Artikel enthält eine Übersicht über die Protokolle, die auf der Azure-Plattform verfügbar sind. Sie erfahren, wie die Diagnoseprotokollierung für Überwachungszwecke zum Senden von Protokollen an [Azure Storage](https://azure.microsoft.com/services/storage/) aktiviert wird, wie Protokolle an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gestreamt werden und wie Protokolle in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) exportiert werden.
+Sobald Sie damit begonnen haben, mindestens eine Azure Cosmos-Datenbank zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Dieser Artikel enthält eine Übersicht über die Protokolle, die auf der Azure-Plattform verfügbar sind. Sie erfahren, wie die Diagnoseprotokollierung für Überwachungszwecke zum Senden von Protokollen an [Azure Storage](https://azure.microsoft.com/services/storage/) aktiviert wird, wie Protokolle an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gestreamt werden und wie Protokolle in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) exportiert werden.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -183,7 +183,7 @@ Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [I
 ### <a id="storage"></a>Erstellen eines neuen Speicherkontos für Ihre Protokolle
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, in diesem Tutorial wird jedoch ein neues Speicherkonto erstellt, das für Azure Cosmos DB-Protokolle bestimmt ist. Der Einfachheit halber speichern wir die Details zum Speicherkonto in einer Variablen mit dem Namen **sa**.
 
-Um die Verwaltung noch weiter zu vereinfachen, verwenden wir in diesem Tutorial dieselbe Ressourcengruppe, die auch die Azure Cosmos DB-Datenbank enthält. Ersetzen Sie die Werte für die Parameter **ContosoResourceGroup**, **contosocosmosdblogs** und **North Central US** durch Ihre eigenen Werte:
+Um die Verwaltung noch weiter zu vereinfachen, verwenden wir in diesem Tutorial dieselbe Ressourcengruppe, die auch die Azure Cosmos-Datenbank enthält. Ersetzen Sie die Werte für die Parameter **ContosoResourceGroup**, **contosocosmosdblogs** und **North Central US** durch Ihre eigenen Werte:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
@@ -397,7 +397,7 @@ Jetzt haben Sie die Datensammlung aktiviert und können das folgende Protokollsu
 <a id="#queries"></a>
 ### <a name="queries"></a>Abfragen
 
-Hier sind einige zusätzliche Abfragen, die Sie in das Feld **Protokollsuche** eingeben können, um die Überwachung Ihrer Azure Cosmos DB-Container zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../log-analytics/log-analytics-log-search-upgrade.md). 
+Hier sind einige zusätzliche Abfragen, die Sie in das Feld **Protokollsuche** eingeben können, um die Überwachung Ihrer Azure Cosmos-Container zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 Informationen zur Bedeutung der von jeder Protokollsuche zurückgegebenen Daten finden Sie unter [Interpretieren der Azure Cosmos DB-Protokolle](#interpret).
 

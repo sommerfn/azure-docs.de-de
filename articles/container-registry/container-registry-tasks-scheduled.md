@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967587"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509072"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Ausführen einer ACR-Aufgabe nach einem definierten Zeitplan
 
@@ -48,9 +48,9 @@ Als einfaches Beispiel löst der folgende Befehl die tägliche Ausführung des `
 az acr task create \
   --name mytask \
   --registry myregistry \
-  --context /dev/null \
   --cmd hello-world \
-  --schedule "0 21 * * *"
+  --schedule "0 21 * * *" \
+  --context /dev/null
 ```
 
 Führen Sie den Befehl [az acr task show][az-acr-task-show] aus, um zu sehen, ob der Timertrigger konfiguriert ist. Standardmäßig ist auch der Trigger für die Aktualisierung des Basisbildes aktiviert.
@@ -176,11 +176,11 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
 |type  |Beispiel  |Auslösung  |
 |---------|---------|---------|
-|Ein bestimmter Wert |<nobr>"5 * * * *"</nobr>|Stündliche Ausführung jeweils 5 Minuten nach der vollen Stunde|
-|Alle Werte (`*`)|<nobr>"* 5 * * *"</nobr>|Jede Minute der Stunde ab 5:00 Uhr UTC (60-Mal pro Tag)|
-|Ein Bereich (`-`-Operator)|<nobr>"0 1-3 * * *"</nobr>|3 mal täglich, um 1:00, 2:00 und 3:00 Uhr UTC|
-|Eine Gruppe von Werten (`,`-Operator)|<nobr>"20,30,40 * * * *"</nobr>|3 mal pro Stunde, bei 20 Minuten, 30 Minuten und 40 Minuten nach der Stunde|
-|Ein Intervallwert (`/`-Operator)|<nobr>"*/10 * * * *"</nobr>|6 mal pro Stunde, bei 10 Minuten, 20 Minuten usw., nach der Stunde
+|Ein bestimmter Wert |<nobr>`"5 * * * *"`</nobr>|Stündliche Ausführung jeweils 5 Minuten nach der vollen Stunde|
+|Alle Werte (`*`)|<nobr>`"* 5 * * *"`</nobr>|Jede Minute der Stunde ab 5:00 Uhr UTC (60-Mal pro Tag)|
+|Ein Bereich (`-`-Operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 mal täglich, um 1:00, 2:00 und 3:00 Uhr UTC|
+|Eine Gruppe von Werten (`,`-Operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 mal pro Stunde, bei 20 Minuten, 30 Minuten und 40 Minuten nach der Stunde|
+|Ein Intervallwert (`/`-Operator)|<nobr>`"*/10 * * * *"`</nobr>|6 mal pro Stunde, bei 10 Minuten, 20 Minuten usw., nach der Stunde
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -198,6 +198,8 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Ein Beispiel für die Verwendung einer geplanten Aufgabe zum Bereinigen von Repositorys in einer Registrierung finden Sie unter [Automatisches Bereinigen von Images aus einer Azure-Containerregistrierung](container-registry-auto-purge.md).
 
 Beispiele für Aufgaben, die durch Quellcode-Commits oder Basisbild-Updates ausgelöst werden, finden Sie in der [Tutorialserie ACR Tasks](container-registry-tutorial-quick-task.md).
 

@@ -6,21 +6,28 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: ed6c540cedd21bb5154f8746050d5eaa9444b818
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484726"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624764"
 ---
 # <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Registrieren Ihrer Azure Digital Twins-App bei Azure Active Directory mit der Legacy-Methode
 
-Dieser Artikel zeigt Ihnen, wie Sie Ihre Beispielanwendung mit der alten oder Legacy-Methode bei Azure Active Directory (Azure AD) registrieren können, damit sie auf Ihre Digital Twins-Instanz zugreifen kann. Sie sollten diese Methode ausprobieren, falls die neue Azure AD-App-Registrierung bei Ihrem Setup nicht funktioniert.
+In diesem Artikel wird beschrieben, wie Sie Ihre Beispielanwendung über das veraltete Blatt **App-Registrierungen (Legacy)** registrieren.
+
+> [!IMPORTANT]
+> * Das neue Blatt **Azure Active Directory** > **App-Registrierungen** ersetzt Mai 2019 das veraltete Blatt **Azure Active Directory** > **App-Registrierungen (Legacy)** .
+> * App-Registrierungen, die auf dem Legacy-Blatt erstellt oder angezeigt werden, werden automatisch auf dem neuen Blatt angezeigt.
+> * Ausführliche Informationen zur Migration zur neuen Azure-App-Registrierungsumgebung finden Sie im [Schulungshandbuch zu Azure-App-Registrierungen](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) und [Schnellstart zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 [!INCLUDE [Digital Twins legacy AAD](../../includes/digital-twins-permissions-legacy.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald Ihre App bei AAD registriert ist, kann sie eine Verbindung mit Ihrer Digital Twins-Instanz herstellen und Ihnen helfen, in Ihrem Szenario voranzukommen. Weitere Informationen zu den nächsten Schritten finden Sie entweder im [Schnellstart](quickstart-view-occupancy-dotnet.md#build-application) oder im [Tutorial](tutorial-facilities-setup.md#configure-the-digital-twins-sample). 
+Fahren Sie mit dem [Schnellstart](quickstart-view-occupancy-dotnet.md#build-application) oder dem [Tutorial](tutorial-facilities-setup.md#configure-the-digital-twins-sample) fort.
+
+Lesen Sie, [wie Sie Ihre App über das neue Blatt **App-Registrierungen** registrieren](tutorial-facilities-setup.md#grant-permissions-to-your-app).

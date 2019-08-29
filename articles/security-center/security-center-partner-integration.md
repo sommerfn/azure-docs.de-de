@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9d52526f87f20a855c045f4e565793ac29abf04a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950563"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101010"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -34,7 +34,7 @@ Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in
 - **Integrierte Erkennungen:** Sicherheitsereignisse von Partnerlösungen werden automatisch gesammelt, aggregiert und im Rahmen der Security Center-Warnungen und -Vorfälle angezeigt. Diese Ereignisse werden mit Erkennungen anderer Quellen zusammengeführt, um erweiterte Bedrohungserkennungsfunktionen bereitzustellen.
 - **Einheitliche Integritätsüberwachung und -verwaltung:** Mithilfe integrierter Integritätsereignisse können Kunden alle Partnerlösungen auf einen Blick überwachen. Es ist eine grundlegende Verwaltung verfügbar – mit einfachem Zugriff auf die erweiterte Konfiguration über die Partnerlösung.
 
-Derzeit umfassen die integrierten Sicherheitslösungen Sicherheitsrisikobewertung durch [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/), [Rapid7](https://www.rapid7.com/products/insightvm/) und Microsoft Application Gateway-Webanwendungsfirewall.
+Derzeit umfassen die integrierten Sicherheitslösungen Sicherheitsrisikobewertung durch [Qualys](https://www.qualys.com/public-cloud/#azure), [Rapid7](https://www.rapid7.com/products/insightvm/) und Microsoft Application Gateway-Webanwendungsfirewall.
 
 > [!NOTE]
 > Security Center installiert Microsoft Monitoring Agent nicht auf virtuellen Partnergeräten, da die meisten Sicherheitsanbieter die Ausführung externer Agents auf ihrem Gerät verbieten.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1938164e957daa84b22fa83e9cb9fa8d51ffeb15
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8524eb8f9a8d220964e5dd1f6f8dc6d1aaf94a6d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654082"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980717"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für einen mehrinstanzenfähigen Azure Active Directory-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -107,11 +107,11 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
             <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-            <OutputClaim ClaimTypeReferenceId="email" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="unique_name" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />

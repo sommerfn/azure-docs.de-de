@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: db0b9887b80f13938045a5d11fb09ed0a43efc19
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706964"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101464"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 

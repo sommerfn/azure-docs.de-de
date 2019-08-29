@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 6949f46345a5520ec3e09508b6d81994f9a7deb5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 490085da1e8f6b8e151168433836d59329887c6e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036201"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623956"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -59,6 +59,9 @@ Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellun
 **Geschätzter Zeitaufwand**: Ca. 20 Minuten.
 
 Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Vorgang. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen. Sie können an Ihren Arbeitsbereich mehrere AKS-Cluster anfügen.
+
+> [!TIP]
+> Wenn Sie Ihren AKS-Cluster mithilfe einer Azure Virtual Network-Instanz schützen möchten, müssen Sie zuerst das virtuelle Netzwerk erstellen. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md#aksvnet).
 
 Wenn Sie einen AKS-Cluster nicht für die Produktion, sondern für die __Entwicklung__, zur __Validierung__ und für __Tests__ erstellen möchten, können Sie den __Clusterzweck__ auf __Dev/Test__ festlegen.
 
@@ -115,6 +118,8 @@ Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und
 
 > [!TIP]
 > Der vorhandenen AKS-Cluster kann sich in einer anderen Azure-Region befinden als Ihr Azure Machine Learning Service-Arbeitsbereich.
+>
+> Wenn Sie Ihren AKS-Cluster mithilfe einer Azure Virtual Network-Instanz schützen möchten, müssen Sie zuerst das virtuelle Netzwerk erstellen. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md#aksvnet).
 
 > [!WARNING]
 > Wenn Sie einen AKS-Cluster an einen Arbeitsbereich anfügen, können Sie durch Festlegen des Parameters `cluster_purpose` bestimmen, wie Sie den Cluster verwenden möchten.
@@ -182,6 +187,9 @@ Um ein Modell für Azure Kubernetes Service bereitzustellen, erstellen Sie eine 
 ### <a name="using-the-sdk"></a>Verwenden des SDK
 
 ```python
+from azureml.core.webservice import AksWebservice, Webservice
+from azureml.core.model import Model
+
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough
 # cores and memory to handle this deployment configuration. Note that memory is also used by
@@ -259,7 +267,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Nach Ablauf der `refresh_by`-Zeit des Tokens müssen Sie ein neues anfordern.
+> Nach Ablauf der für `refresh_by` festgelegten Zeit müssen Sie ein neues Token anfordern.
 >
 > Microsoft empfiehlt dringend, den Azure Machine Learning-Arbeitsbereich in der gleichen Region zu erstellen wie den Azure Kubernetes Service-Cluster. Im Zuge der Tokenauthentifizierung richtet der Webdienst einen Aufruf an die Region, in der Ihr Azure Machine Learning-Arbeitsbereich erstellt wird. Ist die Region Ihres Arbeitsbereichs nicht verfügbar, können Sie kein Token für Ihren Webdienst abrufen (auch dann nicht, wenn sich Ihr Cluster in einer anderen Region befindet als Ihr Arbeitsbereich). Die Azure AD-Authentifizierung ist dann erst wieder verfügbar, wenn die Region Ihres Arbeitsbereichs wieder verfügbar wird. Außerdem wirkt sich die Entfernung zwischen der Region Ihres Clusters und der Region Ihres Arbeitsbereichs direkt auf die Tokenabrufdauer aus.
 
@@ -269,6 +277,7 @@ print(token)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Schützen von Experimenten und Rückschlüssen in einem virtuellen Netzwerk](how-to-enable-virtual-network.md)
 * [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Secure Azure Machine Learning web services with SSL (Sichere Azure Machine Learning-Webdienste mit SSL)](how-to-secure-web-service.md)

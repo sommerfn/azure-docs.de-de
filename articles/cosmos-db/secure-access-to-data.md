@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602036"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616669"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 
@@ -105,7 +105,7 @@ Ein Beispiel für einen Dienst der mittleren Ebene, der zum Generieren oder Verm
 <a id="users"></a>
 
 ## <a name="users"></a>Benutzer
-Cosmos DB-Benutzer werden einer Cosmos DB-Datenbank zugeordnet.  Jede Datenbank kann null oder mehr Cosmos DB-Benutzer enthalten.  Das folgende Codebeispiel veranschaulicht das Erstellen einer Cosmos DB-Benutzerressource.
+Cosmos DB-Benutzer werden einer Cosmos-Datenbank zugeordnet.  Jede Datenbank kann null oder mehr Cosmos DB-Benutzer enthalten.  Das folgende Codebeispiel veranschaulicht das Erstellen einer Cosmos DB-Benutzerressource.
 
 ```csharp
 //Create a user.
@@ -193,5 +193,5 @@ Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur Cosmos DB-Datenbanksicherheit finden Sie unter [Cosmos DB: Datenbanksicherheit](database-security.md).
+* Weitere Informationen zur Cosmos-Datenbanksicherheit finden Sie unter [Cosmos DB: Datenbanksicherheit](database-security.md).
 * Informationen zum Erstellen von Azure Cosmos DB-Autorisierungstoken finden Sie unter [Access Control on Azure Cosmos DB Resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) (Zugriffssteuerung für Azure Cosmos DB-Ressourcen).

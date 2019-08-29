@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1ced35dc73e6d596fbeda32590ab0b69df396c5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081867"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647540"
 ---
 # <a name="odata-orderby-syntax-in-azure-search"></a>OData-Syntax von „$orderby“ in Azure Search
 
@@ -74,7 +74,7 @@ Sortieren von Hotels in absteigender Reihenfolge nach Bewertung und anschließen
 
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-Sortieren von Hotels in absteigender Reihenfolge nach Suchergebnis („search.score“) und Bewertung und anschließend in aufsteigender Reihenfolge nach der Entfernung von den angegebenen Koordinaten, wobei von zwei Hotels mit identischen Relevanzergebnissen und -bewertungen das nächstgelegene zuerst aufgeführt wird:
+Sortieren von Hotels in absteigender Reihenfolge nach Suchergebnis und Bewertung und anschließend in aufsteigender Reihenfolge nach der Entfernung von den angegebenen Koordinaten. Bei zwei Hotels mit identischen Relevanzbewertungen und Bewertungen wird das nächstgelegene zuerst aufgeführt:
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 

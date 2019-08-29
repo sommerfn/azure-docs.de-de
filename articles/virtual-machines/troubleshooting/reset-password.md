@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fc51dfb90158316b3fe6c11b5265f1cf3251505
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306950"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641049"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs
 
@@ -30,11 +30,14 @@ Sie können sich nicht am virtuellen Computer anmelden, und Sie erhalten eine Na
 
 ## <a name="manual-password-reset-procedure"></a>Verfahren zur manuellen Kennwortzurücksetzung
 
-1.  Löschen Sie den virtuellen Computer und behalten Sie den angefügten Datenträger.
+> [!NOTE]
+> Die folgenden Schritte gelten nicht für eine VM mit einem nicht verwalteten Datenträger.
 
-2.  Fügen Sie das Betriebssystemdatenträger als Datenträger einem anderen temporären virtuellen Computer an demselben Standort hinzu.
+1. Erstellen Sie eine Momentaufnahme für den Betriebssystemdatenträger der betroffenen VM, erstellen Sie aus der Momentaufnahme einen Datenträger, und fügen Sie diesen an eine Problembehandlungs-VM an. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM im Azure-Portal](troubleshoot-recovery-disks-portal-linux.md).
 
-3.  Führen Sie den folgenden SSH-Befehl auf dem temporären virtuellen Computer aus, um ein Administrator zu werden.
+2. Stellen Sie über Remotedesktop eine Verbindung mit der Problembehandlungs-VM her.
+
+3.  Führen Sie den folgenden SSH-Befehl auf der Problembehandlungs-VM aus, um ein Administrator zu werden.
 
     ```bash
     sudo su
@@ -98,9 +101,9 @@ Sie können sich nicht am virtuellen Computer anmelden, und Sie erhalten eine Na
     umount /tempmount
     ```
 
-11. Trennen Sie den Datenträger im Verwaltungsportal.
+11. Trennen Sie im Azure-Portal den Datenträger von der Problembehandlungs-VM.
 
-12. Erstellen Sie den virtuellen Computer neu.
+12. [Ändern des Betriebssystemdatenträgers für die betroffene VM](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

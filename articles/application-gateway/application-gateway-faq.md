@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740888"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891724"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -361,6 +360,13 @@ Sie können auch eine Resource Manager-Vorlage verwenden, die die beliebte [GoAc
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>Was kann dazu führen, dass für die Back-End-Integrität ein unbekannter Status angezeigt wird?
 
 In der Regel wird ein unbekannter Status angezeigt, wenn der Zugriff auf das Back-End durch eine Netzwerksicherheitsgruppe (NSG), einen benutzerdefinierten DNS oder durch benutzerdefiniertes Routing für das Application Gateway-Subnetz blockiert wird. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](application-gateway-diagnostics.md).
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Gibt es einen Fall, in dem der zulässige Datenverkehr nicht in NSG-Flussprotokollen angezeigt wird?
+
+Ja. Entspricht Ihre Konfiguration dem folgenden Szenario, wird zulässiger Datenverkehr nicht in Ihren NSG-Flussprotokollen angezeigt:
+- Sie haben Application Gateway v2 bereitgestellt.
+- Im Application Gateway-Subnetz ist eine NSG vorhanden.
+- Sie haben NSG-Flussprotokolle für diese NSG aktiviert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

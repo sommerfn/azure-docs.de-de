@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230623"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073431"
 ---
 # <a name="about-api-management"></a>Informationen zu API Management
 
@@ -94,7 +93,7 @@ Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte G
 Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].
 
 ## <a name="developers"> </a> Entwickler
-Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportalanmelden][Developer portal]. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
+Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportal][Developer portal]anmelden. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
 
 Wenn Entwickler ein Produkt abonnieren, erhalten sie den primären und den sekundären Schlüssel für das Produkt. Diese Schlüssel kommen bei den Aufrufen an die APIs des Produkts zum Einsatz.
 
@@ -106,7 +105,7 @@ Richtlinien sind ein praktisches Werkzeug in API Management, mit dem das Azure-P
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](/azure/api-management/api-management-advanced-policies#choose) und [Variable festlegen](/azure/api-management/api-management-advanced-policies#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions).
 
 
-Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][Policy reference]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][API Management policies]. Ein Tutorial zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][How create and configure advanced product settings].
+Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][Policy reference]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][API Management policies]. Ein Lernprogramm zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][How create and configure advanced product settings].
 
 
 ## <a name="developer-portal"> </a> Entwicklerportal

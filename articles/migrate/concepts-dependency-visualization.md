@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312218"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102890"
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -28,7 +28,7 @@ Mithilfe der Abhängigkeitsvisualisierung in der Serverbewertung können Sie Gru
 
 - Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
 - Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
-- Stellen Sie sicher, dass Sie Ihre Computer in Azure Migrate ermittelt haben. Sie können dies tun, indem Sie eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Migrate-Serverbewertung. [Weitere Informationen](migrate-appliance.md)
+- Stellen Sie sicher, dass Sie Ihre Computer in Azure Migrate ermittelt haben. Sie können dies tun, indem Sie eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. [Weitere Informationen](migrate-appliance.md)
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
@@ -58,7 +58,7 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
 Zur Verwendung der Abhängigkeitsvisualisierung müssen Sie Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.  
 
 - Der [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) muss auf jedem Computer installiert werden. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) zum Installieren des MMA-Agent.
-- Der [Dependency-Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) muss auf jedem Computer installiert werden. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) zum Installieren des Abhängigkeits-Agent.
+- Der [Dependency-Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) muss auf jedem Computer installiert werden. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) zum Installieren des Abhängigkeits-Agent.
 - Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, auf diesen das Log Analytics-Gateway herunterzuladen und zu installieren.
 
 Sie benötigen diese Agents auf Computern nur, wenn Sie die Abhängigkeitsvisualisierung verwenden.

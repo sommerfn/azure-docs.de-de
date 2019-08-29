@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 04e447b7d8da1c8769239aee7650fe3bc5585590
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855229"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100505"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Ausführen eines direkten Upgrades einer SQL Server-Edition auf einer Azure-VM
 
@@ -95,8 +94,8 @@ Nach dem Downgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Preisinformationen zu SQL Server auf einer Windows-VM](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [SQL Server auf Azure-VMs – Versionshinweise](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Preisinformationen für SQL Server auf virtuellen Windows-Computern](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [SQL Server auf Windows-VMs – Versionshinweise](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

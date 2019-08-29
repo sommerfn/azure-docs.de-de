@@ -4,7 +4,7 @@ services: cloud-services
 description: Untersuchen von Leistungsproblemen in Clouddiensten mit der Visual Studio-Profilerstellung
 documentationcenter: ''
 author: mikejo
-manager: douge
+manager: jillfra
 editor: ''
 tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4844e07b83f7e529d7e3de2c5bac1dadb5414391
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128565"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515953"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
 Für das Testen der Leistung von Clouddiensten stehen zahlreiche Tools und Techniken zur Verfügung.

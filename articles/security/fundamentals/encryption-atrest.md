@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2019
+ms.date: 08/20/2019
 ms.author: barclayn
-ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035429"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875094"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -254,14 +254,14 @@ Die Unterstützung für die Serververschlüsselung wird aktuell mit dem SQL-Feat
 
 Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch die Funktion [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) unterstützt. Always Encrypted verwendet einen Schlüssel, der vom Client erstellt und gespeichert wird. Kunden können den Masterschlüssel in einem Windows-Zertifikatspeicher, Azure Key Vault oder einem lokalen Hardwaresicherheitsmodul speichern. Mit SQL Server Management Studio können SQL-Benutzer auswählen, welchen Schlüssel sie zum Verschlüsseln welcher Spalte verwenden möchten.
 
-|                                  |                    | **Verschlüsselungsmodell und Schlüsselverwaltung** |                    |
-|----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit Clientverwaltung**      |
-| **KI und Machine Learning**      |                    |                    |                    |
+#### <a name="encryption-model-and-key-management"></a>Verschlüsselungsmodell und Schlüsselverwaltung
+
+| **Serverseitig mit vom Dienst verwaltetem Schlüssel** |**Serverseitig mit vom Kunden verwaltetem Schlüssel**| **Clientseitig mit Clientverwaltung** | **KI und Machine Learning**   |
+|--------------------|-------------------|----------------------|--------------------|
 | Azure Search                     | Ja                | -                  | -                  |
 | Azure Machine Learning-Dienst   | Ja                | -                  | -                  |
 | Azure Machine Learning Studio    | Ja                | RSA 2048 Bit, Vorschauversion | -               |
-| Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |
+| Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -               |
 | **Analyse**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | -                  | -                  |
 | Event Hubs                       | Ja                | -                  | -                  |
@@ -282,7 +282,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Azure SQL-Datenbank               | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure SQL-Datenbank for MariaDB   | Ja                | -                  | -                  |
 | Azure SQL-Datenbank for MySQL     | Ja                | -                  | -                  |
-| Azure SQL-Datenbank for PostgreSQL | Ja                | -                  | -                  |
+| Azure SQL-Datenbank for PostgreSQL | Ja                | -                  | -                 |
 | Azure SQL Data Warehouse         | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | SQL Server Stretch Database      | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Table Storage                    | Ja                | -                  | Ja                |

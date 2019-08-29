@@ -10,17 +10,16 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8dc062a1c9490a03aa5369dc103db750d7531140
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6c32415e750964e94129a4a6f9cf3812fe9117b5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635271"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067276"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Erstellen einer ASP.NET Framework-Web-App in Azure
 
@@ -101,8 +100,8 @@ Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die in der Tabelle unt
 | Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| myAppServicePlan | Name des App Service-Plans. |
-| Standort | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
-| Größe | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bestimmt die Hostingfeatures. |
+| Location | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bestimmt die Hostingfeatures. |
 
 Klicken Sie auf **OK**.
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952938"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970441"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
 
@@ -47,6 +47,7 @@ Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers können 
 Bevor Sie mit der Bereitstellung eines Hybrid Runbook Worker beginnen, lesen Sie die [Informationen zum Planen Ihres Netzwerks](#network-planning). Lesen Sie nach dem erfolgreichen Bereitstellen eines Workers [Running runbooks on a Hybrid Runbook Worker (Ausführen von Runbooks auf einem Hybrid Runbook Worker)](automation-hrw-run-runbooks.md), um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Datencenter oder in einer anderen Cloudumgebung konfigurieren.
 
 Der Computer kann einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
+
 ## <a name="remove-a-hybrid-runbook-worker"></a>Entfernen eines Hybrid Runbook Workers
 
 Abhängig von Ihren Anforderungen können Sie mindestens einen Hybrid Runbook Worker aus einer Gruppe entfernen, oder Sie können die Gruppe entfernen. Wenn Sie einen Hybrid Runbook Worker von einem lokalen Computer entfernen möchten, führen Sie die folgenden Schritte aus:

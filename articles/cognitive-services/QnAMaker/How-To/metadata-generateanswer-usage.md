@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: dbfa7aaccd513ffcf8ba3907911d8c49275b2ea6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967655"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542996"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -228,6 +228,18 @@ Sie können mit `isTest=false` die veröffentlichte Wissensdatenbank oder mit `i
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="common-http-errors"></a>Häufige HTTP-Fehler
+
+|Code|Erklärung|
+|:--|--|
+|2xx|Erfolgreich|
+|400|Die Parameter der Anforderung sind fehlerhaft, da die erforderlichen Parameter nicht vorhanden, falsch formatiert oder zu groß sind|
+|400|Der Text der Anforderung ist fehlerhaft, da der JSON-Code nicht vorhanden, falsch formatiert oder zu groß ist|
+|401|Ungültiger Schlüssel|
+|403|Verboten – Sie verfügen nicht über die richtigen Berechtigungen|
+|404|KB nicht vorhanden|
+|410|Diese API ist veraltet und nicht mehr verfügbar.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

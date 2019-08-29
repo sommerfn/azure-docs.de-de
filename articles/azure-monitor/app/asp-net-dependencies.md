@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326446"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534603"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -90,7 +90,7 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Nachverfolgen von AJAX-Aufrufen von Webseiten
 
-Für Webseiten erfasst das JavaScript-SDK von Application Insights AJAX-Aufrufe automatisch als Abhängigkeiten, wie [hier](javascript.md#ajax-performance) beschrieben. Dieses Dokument konzentriert sich auf Abhängigkeiten von Serverkomponenten.
+Für Webseiten erfasst das JavaScript SDK von Application Insights AJAX-Aufrufe automatisch als Abhängigkeiten.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Erweiterte SQL-Nachverfolgung zum Abrufen vollständiger SQL-Abfragen
 
@@ -113,7 +113,7 @@ In den oben genannten Fällen können Sie die ordnungsgemäße Installation der 
 
 * [Anwendungszuordnung](app-map.md) visualisiert Abhängigkeiten zwischen Ihrer App und angrenzenden Komponenten.
 * Die [Transaktionsdiagnose](transaction-diagnostics.md) zeigt einheitliche, korrelierte Serverdaten.
-* [Die Registerkarte „Browser“](javascript.md#ajax-performance) enthält AJAX-Aufrufe von Browsern Ihrer Benutzer.
+* [Die Registerkarte „Browser“](javascript.md) enthält AJAX-Aufrufe von Browsern Ihrer Benutzer.
 * Navigieren Sie zu langsamen oder fehlgeschlagenen Aufrufen, um ihre Abhängigkeitsaufrufe zu überprüfen.
 * [Analyse](#logs-analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018758"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872678"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -120,7 +120,7 @@ Get-AzRecoveryServicesVault
 
 Die Ausgabe ähnelt dem folgenden Beispiel. Beachten Sie, dass die zugeordneten Elemente „ResourceGroupName“ und „Location“ angegeben sind.
 
-```
+```output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -140,7 +140,21 @@ Verwenden Sie einen Recovery Services-Tresor zum Schutz Ihrer virtuellen Compute
 Verwenden Sie vor dem Aktivieren des Schutzes auf einem virtuellen Computer [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0), um den Tresorkontext festzulegen. Sobald der Tresorkontext festgelegt ist, gilt er für alle nachfolgenden-Cmdlets. Im folgenden Beispiel wird der Tresorkontext für den Tresor *testvault* festgelegt.
 
 ```powershell
-Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
+Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-rg" | Set-AzRecoveryServicesVaultContext
+```
+
+### <a name="fetch-the-vault-id"></a>Abrufen der Tresor-ID
+
+Es ist geplant, die Tresorkontexteinstellung gemäß den Azure PowerShell-Richtlinien als veraltet zu kennzeichnen. Stattdessen können Sie die Tresor-ID speichern oder abrufen und an relevante Befehle übergeben. Wenn Sie also den Tresorkontext nicht festgelegt haben oder den Befehl so angeben möchten, dass er für einen bestimmten Tresor ausgeführt wird, übergeben Sie die Tresor-ID wie folgt als „-vaultID“ an alle relevanten Befehle:
+
+```powershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
+$targetVault.ID
+```
+oder
+
+```powershell
+$targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
 ```
 
 ### <a name="modifying-storage-replication-settings"></a>Ändern der Einstellungen für die Speicherreplikation
@@ -148,8 +162,7 @@ Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultConte
 Verwenden Sie den Befehl [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty), um die Konfiguration für Speicherreplikation des Tresors auf „LRS/GRS“ festzulegen.
 
 ```powershell
-$vault= Get-AzRecoveryServicesVault -name "testvault"
-Set-AzRecoveryServicesBackupProperty -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+Set-AzRecoveryServicesBackupProperty -Vault $targetVault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
 ```
 
 > [!NOTE]
@@ -167,7 +180,7 @@ Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 PM
@@ -206,7 +219,7 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "Az
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
@@ -259,7 +272,7 @@ $joblist[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   ----------
 V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -307,9 +320,9 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 > Ab Az PS, Version 1.6.0, kann die Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung in Richtlinien mithilfe von PowerShell aktualisiert werden.
 
 ````powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=7
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ````
 
 Der Standardwert ist „2“. Der Benutzer kann den Wert auf mindestens „1“ und maximal „5“ festlegen. Bei Richtlinien zu wöchentlichen Sicherungen wird der Zeitraum auf „5“ festgelegt und kann nicht geändert werden.
@@ -327,7 +340,7 @@ $job = Backup-AzRecoveryServicesBackupItem -Item $item -VaultId $targetVault.ID 
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   ----------
 V2VM              Backup              InProgress          4/23/2016                  5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -421,7 +434,7 @@ $rp[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```powershell
+```output
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -469,7 +482,7 @@ Die Datei **VMConfig.JSON** wird für das Speicherkonto wiederhergestellt, und d
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```powershell
+```output
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -771,7 +784,7 @@ $rp[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```powershell
+```output
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -800,7 +813,7 @@ Get-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```powershell
+```output
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe

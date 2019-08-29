@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ae4840877ae461244a76984ed8ac3edc82d57a38
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653978"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982738"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots
 
@@ -75,7 +75,7 @@ Bei der Inhaltsvalidierung werden die bei der Erstellung Ihres Angebots eingegeb
 - Screenshots und Begleitvideos in hoher Qualität
 - eine Erläuterung, wie das Angebot Microsoft-Plattformen und -Tools nutzt
 
-Erfahren Sie im Artikel zu den [allgemeinen Richtlinien für die Listung](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general-policies) mehr zu den Kriterien für die Validierung von Inhalten.
+Erfahren Sie im Artikel zu den [allgemeinen Richtlinien für die Listung](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general) mehr zu den Kriterien für die Validierung von Inhalten.
 
 #### <a name="technical-validation"></a>Technische Validierung
 

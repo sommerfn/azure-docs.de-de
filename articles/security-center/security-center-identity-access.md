@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296492"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905342"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Überwachen der Identität und des Zugriffs im Azure Security Center (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
@@ -128,7 +128,7 @@ Der folgenden Tabelle können Sie entnehmen, welche Identitäts- und Zugriffsemp
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
 
-- [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 - [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)
 - [Schützen des Azure SQL-Diensts und der Daten im Azure Security Center](security-center-sql-service-recommendations.md)
 

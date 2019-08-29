@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: f510fa09d30f942f4e26a3a41fd8faa77a37e32a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205982"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575053"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
 
@@ -190,6 +190,13 @@ KeyVault-BYOK-Tools-Germany.zip
 5385E615880AAFC02AFD9841F7BADD025D7EE819894AA29ED3C71C3F844C45D6
 
 ---
+**Deutschland (öffentlich):**
+
+KeyVault-BYOK-Tools-Germany-Public.zip
+
+54534936D0A0C99C8117DB724C34A5E50FD204CFCBD75C78972B785865364A29
+
+---
 **Indien:**
 
 KeyVault-BYOK-Tools-India.zip
@@ -211,6 +218,14 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 432746BD0D3176B708672CCFF19D6144FCAA9E5EB29BB056489D3782B3B80849
 
 ---
+**Schweiz:**
+
+KeyVault-BYOK-Tools-Switzerland.zip
+
+88CF8D39899E26D456D4E0BC57E5C94913ABF1D73A89013FCE3BBD9599AD2FE9
+
+---
+
 
 Verwenden Sie in der Azure PowerShell-Sitzung das [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) -Cmdlet, um die Integrität des heruntergeladenen BYOK-Toolsets zu überprüfen.
 
@@ -335,6 +350,9 @@ So überprüfen Sie das heruntergeladene Paket
    * Für Deutschland:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
+   * Für Deutschland (öffentlich):
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
    * Für Indien:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
@@ -344,6 +362,9 @@ So überprüfen Sie das heruntergeladene Paket
    * Für das Vereinigte Königreich:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
+   * Für die Schweiz:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SUI-1 -w BYOK-SecurityWorld-pkg-SUI-1
 
      > [!TIP]
      > Die nCipher nShield-Software enthält Python unter „%NFAST_HOME%\python\bin“.
@@ -427,6 +448,9 @@ Führen Sie für diesen vierten Schritt die folgenden Verfahren auf der verbindu
 * Für Deutschland:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
+* Für Deutschland (öffentlich):
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
 * Für Indien:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
@@ -436,6 +460,9 @@ Führen Sie für diesen vierten Schritt die folgenden Verfahren auf der verbindu
 * Für das Vereinigte Königreich:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
+* Für die Schweiz:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
 
 Ersetzen Sie beim Ausführen dieses Befehls *contosokey* durch den gleichen Wert, den Sie in **Schritt 3.5: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
 
@@ -496,6 +523,9 @@ Führen Sie je nach geografischer Region oder Instanz von Azure einen der folgen
 * Für Deutschland:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Für Deutschland (öffentlich):
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Für Indien:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
@@ -505,6 +535,10 @@ Führen Sie je nach geografischer Region oder Instanz von Azure einen der folgen
 * Für das Vereinigte Königreich:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Für die Schweiz:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+
 
 Gehen Sie wie folgt vor, wenn Sie diesen Befehl ausführen:
 

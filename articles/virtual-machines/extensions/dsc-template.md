@@ -8,18 +8,17 @@ tags: azure-resource-manager
 keywords: DSC
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 1bcec37e7642ae0cb5bd68de1426c8cc62085d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458ba61adba294af99f2265e4907e874ed3a6956
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475523"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084577"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -178,7 +177,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 
 ## <a name="details"></a>Details
 
-| Eigenschaftenname | Type | BESCHREIBUNG |
+| Eigenschaftenname | type | BESCHREIBUNG |
 | --- | --- | --- |
 | settings.wmfVersion |string |Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf **neueste** festgelegt ist, wird die aktuelle Version von WMF installiert. Für diese Eigenschaft sind derzeit nur die Werte **4.0**, **5.0**, **5.1** und **latest** zulässig. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**. |
 | settings.configuration.url |string |Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die Eigenschaft **protectedSettings.configurationUrlSasToken** auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn **settings.configuration.script** oder **settings.configuration.function** definiert sind. Wenn für diese Eigenschaften kein Wert angegeben ist, ruft die Erweiterung das Standardkonfigurationsskript auf, um Metadaten von Location Configuration Manager (LCM) festzulegen, und es müssen Argumente angegeben werden. |
@@ -197,7 +196,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 Weitere Informationen zu den folgenden Werten finden Sie im Abschnitt [Grundlegende Einstellungen](/powershell/dsc/metaconfig#basic-settings) des Artikels zum lokalen Konfigurations-Manager.
 Sie können das Konfigurationsskript für die DSC-Erweiterung standardmäßig so konfigurieren, dass Sie nur die LCM-Eigenschaften in der folgenden Tabelle verwenden.
 
-| Eigenschaftenname | Type | BESCHREIBUNG |
+| Eigenschaftenname | type | BESCHREIBUNG |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Erforderliche Eigenschaft. Gibt den Schlüssel, der für die Registrierung eines Knotens beim Azure Automation-Dienst verwendet wird, als Kennwort eines PowerShell-Anmeldeinformationsobjekts an. Dieser Wert kann durch Verwendung der **listkeys**-Methode für das Automation-Konto automatisch ermittelt werden.  Ein entsprechendes Beispiel finden Sie [hier](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments.RegistrationUrl |string |Erforderliche Eigenschaft. Gibt die URL des Automation-Endpunkts an, an dem der Knoten die Registrierung durchführt. Dieser Wert kann durch Verwendung der **reference**-Methode für das Automation-Konto automatisch ermittelt werden. |

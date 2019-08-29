@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955292"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615981"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Datenquellen für QnA Maker-Inhalt
 
 QnA Maker extrahiert automatisch Frage-Antwort-Paare aus semistrukturierten Inhalten wie FAQs, Produkthandbüchern, Leitfäden, Supportdokumenten und Richtlinien, die als Webseiten, PDF-Dateien oder MS Word-Dokumente gespeichert sind. Inhalte können der Wissensdatenbank auch aus strukturierten QnA-Inhaltsdateien hinzugefügt werden. 
+
+## <a name="data-types"></a>Datentypen
 
 Die folgende Tabelle fasst die Inhaltstypen und Dateiformate zusammen, die von QnA Maker unterstützt werden.
 
@@ -32,11 +34,21 @@ Die folgende Tabelle fasst die Inhaltstypen und Dateiformate zusammen, die von Q
 
 ## <a name="data-source-locations"></a>Speicherorte von Datenquellen
 
-Die meisten Speicherorte der Datenquellen müssen öffentliche URLs oder Dateien bereitstellen, die keine Authentifizierung erfordern. 
+Speicherorte von Datenquellen sind **öffentliche URLs oder Dateien**, die keine Authentifizierung erfordern. 
 
-[Speicherorte für SharePoint-Datenquellen](../How-to/add-sharepoint-datasources.md) dürfen authentifizierte Dateien bereitstellen. Bei SharePoint-Ressourcen muss es sich um Dateien und nicht um Webseiten handeln. 
+Wenn eine Authentifizierung für Ihre Datenquelle erforderlich ist, ziehen Sie die folgenden Methoden in Betracht, um diese Daten in QnA Maker aufzunehmen:
 
-Wenn Sie über eine authentifizierte Datei oder URL verfügen, besteht eine alternative Option darin, die Datei von der authentifizierten Website auf Ihren lokalen Computer herunterzuladen und dann die Datei von Ihrem lokalen Computer zur Wissensdatenbank hinzuzufügen. 
+* [Manuelles Herunterladen der Datei](#download-file-from-authenticated-data-source-location) und Importieren in QnA Maker
+* Importieren der Datei für den authentifizierten [SharePoint-Speicherort](#import-file-from-authenticated-sharepoint) 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>Herunterladen der Datei vom authentifizierten Speicherort der Datenquelle
+
+Wenn Sie über eine authentifizierte Datei (nicht an einem authentifizierten SharePoint-Speicherort) oder eine URL verfügen, besteht eine alternative Option darin, die Datei von der authentifizierten Website auf Ihren lokalen Computer herunterzuladen und dann die Datei von Ihrem lokalen Computer zur Wissensdatenbank hinzuzufügen.
+
+### <a name="import-file-from-authenticated-sharepoint"></a>Importieren der Datei aus einem authentifizierten SharePoint-Speicherort 
+
+[Speicherorte für SharePoint-Datenquellen](../How-to/add-sharepoint-datasources.md) dürfen authentifizierte **Dateien** bereitstellen. Bei SharePoint-Ressourcen muss es sich um Dateien und nicht um Webseiten handeln. Wenn die URL mit einer Weberweiterung endet (z.B. **.ASPX**), wird sie nicht von SharePoint in QnA Maker importiert.
+
 
 ## <a name="faq-urls"></a>FAQ-URLs
 
@@ -133,9 +145,21 @@ QnAs in Form von strukturierten *TXT*-, *TSV*- oder *XLS*-Dateien können auch i
 
 Alle weiteren Spalten in der Quelldatei werden ignoriert.
 
+### <a name="example-of-structured-excel-file"></a>Beispiel für eine strukturierte Excel-Datei
+
 Unten sehen Sie ein Beispiel für eine strukturierte QnA-*XLS*-Datei mit HTML-Inhalten:
 
  ![Beispiel für eine strukturierte QnA-Excel-Datei für eine Wissensdatenbank](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Beispiel für alternative Fragen zu einer einzelnen Antwort in einer Excel-Datei
+
+Unten sehen Sie ein Beispiel für eine strukturierte QnA-*XLS*-Datei mit mehreren alternativen Fragen zu einer einzelnen Antwort:
+
+ ![Beispiel für alternative Fragen zu einer einzelnen Antwort in einer Excel-Datei](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+Nachdem die Datei importiert wurde, befindet sich das Frage- und Antwortpaar in der Wissensdatenbank wie nachfolgend gezeigt:
+
+ ![Screenshot alternativer Fragen zu einer einzelnen Antwort, die in die Wissensdatenbank importiert wurden](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
 

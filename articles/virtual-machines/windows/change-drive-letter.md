@@ -11,16 +11,15 @@ ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 12986068a761b92611c557a0dfcf08905283b8bd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079880"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Verwenden des Laufwerks „D:“ als Datenlaufwerk auf einem virtuellen Windows-Computer
 Wenn Ihre Anwendung Laufwerk D zum Speichern der Daten verwenden muss, können Sie diese Anweisungen befolgen, um für den temporären Datenträger einen anderen Laufwerkbuchstaben zu verwenden. Verwenden Sie niemals den temporären Datenträger zum Speichern von Daten, die Sie behalten müssen.

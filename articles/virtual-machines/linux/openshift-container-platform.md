@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 48c462edf6c7b17c3a538b6ce0cb28609628d75f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65411559"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091777"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Bereitstellen von OpenShift Container Platform in Azure
 
@@ -66,7 +65,7 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -283,7 +282,7 @@ Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher
 | `enableAzure` | Azure Cloudanbieter aktivieren | true <br> false | true |
 | `aadClientId` | Azure Active Directory-Client-ID (auch als Anwendungs-ID für den Dienstprinzipal bezeichnet) |  |  |
 | `domainName` | Name des zu verwendenden benutzerdefinierten Domänennamens (falls zutreffend). Auf „none“ festlegen, wenn kein vollständig privater Cluster bereitgestellt wird |  | none |
-| `masterClusterDnsType` | Domänentyp für die OpenShift-Webkonsole. Bei „default“ wird die DNS-Bezeichnung der öffentlichen Master/Infra-IP-Adresse verwendet. Bei „custom“ können Sie einen eigenen Namen definieren | die Standardeinstellung <br> custom | die Standardeinstellung |
+| `masterClusterDnsType` | Domänentyp für die OpenShift-Webkonsole. Bei „default“ wird die DNS-Bezeichnung der öffentlichen Master/Infra-IP-Adresse verwendet. Bei „custom“ können Sie einen eigenen Namen definieren | default <br> custom | default |
 | `masterClusterDns` | Der benutzerdefinierte DNS-Name für den Zugriff auf die OpenShift-Webkonsole, wenn für `masterClusterDnsType` „custom“ ausgewählt wurde |  | console.contoso.com |
 | `routingSubDomainType` | Ist der Wert auf „nipio“ festgelegt, verwendet `routingSubDomain` „nip.io“.  Geben Sie „custom“ an, wenn Sie über eine eigene Domäne für das Routing verfügen | nipio <br> custom | nipio |
 | `routingSubDomain` | Der für das Routing zu verwendende Platzhalter-DNS-Name, wenn Sie für `routingSubDomainType` „custom“ ausgewählt haben |  | apps.contoso.com |

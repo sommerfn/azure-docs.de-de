@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: d4b7a214af23d69f1217d84e9401de230cd358b0
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877432"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535040"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights protokollenbasierte Metriken
 
@@ -93,7 +93,7 @@ availabilityResults
 Browsermetriken werden vom Application Insights JavaScript SDK aus echten Endbenutzer-Browsern gesammelt. Sie bieten nützliche Einblicke in die Erfahrungen Ihrer Benutzer mit Ihrer Webanwendung. Browsermetriken werden in der Regel nicht gesampelt, was bedeutet, dass sie eine höhere Genauigkeit der Nutzungszahlen bieten als serverseitige Metriken, die durch das Sampling verzerrt werden könnten.
 
 > [!NOTE]
-> Um Browsermetriken zu erfassen, muss Ihre Anwendung mit dem [Application Insights JavaScript SDK-Ausschnitt](../../azure-monitor/app/javascript.md#add-the-sdk-script-to-your-app-or-web-pages) ausgestattet sein.
+> Um Browsermetriken zu erfassen, muss Ihre Anwendung mit dem [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) ausgestattet sein.
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Ladezeit der Browserseite (browserTimings/totalDuration)
 

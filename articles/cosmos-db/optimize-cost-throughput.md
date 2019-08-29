@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8829c2534184bc14e82dfbf30d2170a7a1b8add0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967298"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614990"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Sie können Durchsatz für Datenbanken oder Container bereitstellen, und jede St
 
 Die folgenden Richtlinien können bei der Entscheidung für eine Durchsatzbereitstellungsstrategie hilfreich sein:
 
-**Die Bereitstellung von Durchsatz für eine Azure Cosmos DB-Datenbank (mit einer Gruppe von Containern) empfiehlt sich unter folgenden Voraussetzungen**:
+**Die Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank (mit einer Gruppe von Containern) empfiehlt sich unter folgenden Voraussetzungen**:
 
 1. Sie haben ein paar Dutzend Azure Cosmos-Container und möchten den Durchsatz für alle oder einige freigeben. 
 

@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 886cacc5e90136380a183f6b9ddd1123d726dcf3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617683"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129227"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über SMB für Azure Files
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,11 +46,9 @@ Bevor Sie Azure AD über SMB für Azure Files aktivieren, sollten Sie sicherstel
 
 2.  **Aktivieren Sie Azure AD Domain Services auf dem Azure AD-Mandanten.**
 
-<<<<<<< HEAD Zur Unterstützung der Authentifizierung mit Azure AD-Anmeldeinformationen müssen Sie Azure AD Domain Services für Ihren Azure AD-Mandanten aktivieren. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](../../active-directory-domain-services/tutorial-create-instance.md).
-======= Zur Unterstützung der Authentifizierung mit Azure AD-Anmeldeinformationen müssen Sie Azure AD DS für Ihren Azure AD-Mandanten aktivieren. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator, und folgen Sie der Schrittanleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](../../active-directory-domain-services/create-instance.md).
->>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
+    Zur Unterstützung der Authentifizierung mit Azure AD-Anmeldeinformationen müssen Sie Azure AD Domain Services für Ihren Azure AD-Mandanten aktivieren. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
-    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
+    Es dauert in der Regel etwa 15 Minuten, bis eine Bereitstellung von Azure AD DS abgeschlossen ist. Vergewissern Sie sich, dass der Integritätsstatus von Azure AD DS bei aktivierter Kennworthashsynchronisierung **Wird ausgeführt** anzeigt, bevor Sie mit dem nächsten Schritt fortfahren.
 
 3.  **Domänenbeitritt einer Azure-VM mit Azure AD DS.**
 

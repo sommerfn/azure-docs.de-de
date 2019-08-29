@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e5142e9b4e7c2c79fd2b7e41123db4422334b730
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0efd11ef4e9dda2c522e145bf5cb942998d59e53
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467786"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573969"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB 
 
@@ -85,12 +85,13 @@ Ihnen werden die genutzten Anforderungseinheiten (Request Units, RUs) in Rechnun
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
 * [Zusätzliche Beispiele auf GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie mehr über Änderungsfeeds:
+In den folgenden Artikeln erfahren Sie mehr über den Änderungsfeedprozessor:
 
 * [Übersicht über Änderungsfeeds](change-feed.md)
-* [Ways to read change feed](read-change-feed.md) (Möglichkeiten zum Lesen von Änderungsfeeds)
-* [Using change feed with Azure Functions](change-feed-functions.md) (Verwenden von Änderungsfeeds mit Azure Functions)
+* [Verwenden des Änderungsfeed-Estimators](how-to-use-change-feed-estimator.md)
+* [Startzeit des Änderungsfeedprozessors](how-to-configure-change-feed-start-time.md)

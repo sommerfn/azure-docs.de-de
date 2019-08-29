@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e168e450230720f4ad78516e6edcdc3aa08ba3e1
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343135"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614338"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Benutzerdefinierte Funktionen (UDFs) in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Die SQL-API bietet Unterstützung für benutzerdefinierte Funktionen (UDFs). Bei
 
 Die API erweitert die SQL-Syntax, um benutzerdefinierte Anwendungslogik mit benutzerdefinierten Funktionen (UDFs) zu unterstützen. Sie können UDFs mit der SQL-API registrieren und in SQL-Abfragen referenzieren. Genau genommen sind UDFs für den Aufruf in Abfragen konzipiert. Als Nebeneffekt haben UDFs im Gegensatz zu anderen JavaScript-Typen, z.B. gespeicherte Prozeduren und Trigger, keinen Zugriff auf das Kontextobjekt. Abfragen sind schreibgeschützt und können entweder auf primären oder sekundären Replikaten ausgeführt werden. UDFs wurden im Gegensatz zu anderen JavaScript-Typen für die Ausführung auf sekundären Replikaten entwickelt.
 
-Im folgenden Beispiel wird eine UDF unter einem Elementcontainer in der Cosmos DB-Datenbank registriert. Im Beispiel wird eine UDF mit dem Namen `REGEX_MATCH` erstellt. Es werden die beiden JSON-Zeichenfolgenwerte `input` und `pattern` akzeptiert, und es wird überprüft, ob der erste Wert mit dem im zweiten Wert angegebenen Muster übereinstimmt. Hierfür wird die JavaScript-Funktion `string.match()` verwendet.
+Im folgenden Beispiel wird eine UDF unter einem Elementcontainer in der Cosmos-Datenbank registriert. Im Beispiel wird eine UDF mit dem Namen `REGEX_MATCH` erstellt. Es werden die beiden JSON-Zeichenfolgenwerte `input` und `pattern` akzeptiert, und es wird überprüft, ob der erste Wert mit dem im zweiten Wert angegebenen Muster übereinstimmt. Hierfür wird die JavaScript-Funktion `string.match()` verwendet.
 
 ## <a name="examples"></a>Beispiele
 

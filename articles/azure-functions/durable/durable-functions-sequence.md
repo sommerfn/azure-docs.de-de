@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730537"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087118"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktionsverkettung in Durable Functions – „Hello Sequence“-Beispiel
 
@@ -35,7 +34,7 @@ In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, 
 > [!NOTE]
 > JavaScript Durable Functions sind nur für die Functions 2.x-Runtime verfügbar.
 
-## <a name="e1hellosequence"></a>E1_HelloSequence
+## <a name="e1_hellosequence"></a>E1_HelloSequence
 
 ### <a name="functionjson-file"></a>Datei „function.json“
 
@@ -72,7 +71,7 @@ Alle JavaScript-Orchestrierungsfunktionen müssen das [Modul `durable-functions`
 
 Das `context`-Objekt enthält ein `df`-Objekt, mit dem Sie andere *Aktivitätsfunktionen* aufrufen und Eingabeparameter mit der zugehörigen `callActivity`-Methode übergeben können. Im Code wird `E1_SayHello` dreimal nacheinander mit unterschiedlichen Parameterwerten aufgerufen. Dabei wird `yield` verwendet, um anzugeben, dass für die Ausführung auf die Rückgabe der asynchronen Aufrufe der Aktivitätsfunktion gewartet werden muss. Der Rückgabewert jedes Aufrufs wird der Liste `outputs` hinzugefügt, die am Ende der Funktion zurückgegeben wird.
 
-## <a name="e1sayhello"></a>E1_SayHello
+## <a name="e1_sayhello"></a>E1_SayHello
 
 ### <a name="functionjson-file"></a>Datei „function.json“
 

@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963841"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623831"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Was ist das Service Fabric-Anwendungsressourcenmodell?
 Es wird empfohlen, dass Service Fabric-Anwendungen über Azure Resource Manager in Ihrem Service Fabric-Cluster bereitgestellt werden. Auf diese Weise können Anwendungen und Dienste in JSON beschrieben und in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Bereitstellung und Verwaltung von Anwendungen über PowerShell oder die Azure-Befehlszeilenschnittstelle muss nicht gewartet werden, bis der Cluster bereit ist. Der Vorgang der Anwendungsregistrierung und -bereitstellung kann in nur einem Schritt erfolgen. Diese Methode hat sich beim Verwalten des Anwendungslebenszyklus im Cluster bewährt. Weitere Informationen finden Sie unter [Bewährte Methoden](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -33,7 +33,7 @@ In diesem Dokument erfahren Sie Folgendes:
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Bereitstellen von Anwendungsressourcen mithilfe von Azure Resource Manager  
 Zum Bereitstellen einer Anwendung und der zugehörigen Dienste mithilfe des Azure Resource Manager-Anwendungsressourcenmodells müssen Sie den Anwendungscode packen, das Paket hochladen und dann auf den Speicherort des Pakets als Anwendungsressource in einer Azure Resource Manager-Vorlage verweisen. Weitere Informationen finden Sie unter [Packen einer Anwendung](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
           
-Erstellen Sie dann eine Azure Resource Manager-Vorlage, aktualisieren Sie die Parameterdatei mit Anwendungsdetails, und stellen Sie sie im Service Fabric-Cluster bereit. Im Folgenden finden Sie einige Beispiele.
+Erstellen Sie dann eine Azure Resource Manager-Vorlage, aktualisieren Sie die Parameterdatei mit Anwendungsdetails, und stellen Sie sie im Service Fabric-Cluster bereit. Einige Beispiele finden Sie [hier](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
 ### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos 
 Zum Bereitstellen einer Anwendung über eine Resource Manager-Vorlage ist ein Speicherkonto zum Bereitstellen des Anwendungsimages erforderlich. Sie können ein vorhandenes Speicherkonto wiederverwenden oder ein neues Speicherkonto erstellen, um Ihre Anwendungen bereitzustellen. Sie können diesen Schritt überspringen, wenn Sie ein vorhandenes Speicherkonto verwenden möchten. 

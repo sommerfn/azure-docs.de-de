@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: ab4b283449ec6c0174f380b0231dd2e78dea419d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688045"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563416"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
@@ -216,6 +216,9 @@ Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Sp
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
+
+> [!IMPORTANT]
+> Zurzeit gibt es ein Problem, bei dem die [Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobpeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicher-Blobs, deren Aufbewahrungszeitraum überschritten ist, regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Löschen von Speicherblobs mit NSG-Flowprotokollen](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

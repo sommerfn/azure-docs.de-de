@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/18/2019
-ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 08/16/2019
+ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035067"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575780"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -25,7 +25,9 @@ Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation
 > [!NOTE]
 > Wenn Sie mit Einzel- oder Pooldatenbanken auf einem SQL-Datenbank-Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md). 
 
-Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. Darüber hinaus bieten Gruppen für automatisches Failover Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten. Die spezifischen RPO- und RTO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
+Wenn Sie Autofailover-Gruppen mit einer Richtlinie für automatisches Failover verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. In der Regel handelt es sich hierbei um Vorfälle, die durch die integrierten Vorgänge für automatische Hochverfügbarkeit nicht selbst behoben werden können. Zu den Beispielen für Failovertrigger gehört ein Vorfall, der dadurch verursacht wird, dass ein SQL-Mandantenring oder Steuerungsring aufgrund eines Speicherlecks des Betriebssystemkernels auf mehreren Computeknoten ausgefallen ist, oder ein Vorfall, der dadurch verursacht wird, dass ein oder mehrere Mandantenringe ausgefallen sind, weil während der routinemäßigen Außerbetriebnahme von Hardware ein falsches Netzwerkkabel durchtrennt wurde.  Weitere Informationen finden Sie unter [Hochverfügbarkeit von SQL-Datenbank](sql-database-high-availability.md).
+
+Darüber hinaus bieten Gruppen für automatisches Failover Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten. Die spezifischen RPO- und RTO-Daten finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 
 Wenn Sie Autofailover-Gruppen mit einer Richtlinie für ein automatisches Failover verwenden, führt jeder Ausfall, der Datenbanken auf dem SQL-Datenbank-Server oder in der verwalteten Instanz betrifft, zu einem automatischen Failover. Sie können Autofailover-Gruppen über folgende Komponenten verwalten:
 

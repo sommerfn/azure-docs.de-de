@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bd59257c1136f52beaf217c1f983c8aeb7bd81d5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671124"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640761"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
@@ -60,9 +60,9 @@ Für Ubuntu-Cloud-Images müssen Sie cloud-init verwenden, um die Swap-Partition
 
 Über den Azure Marketplace bereitgestellte VM-Images verfügen für Images ohne cloud-init-Unterstützung über einen in das Betriebssystem integrierten VM-Linux-Agent. Dieser Agent ermöglicht dem virtuellen Computer die Interaktion mit verschiedenen Azure-Diensten. Falls Sie ein Standardimage aus dem Azure Marketplace bereitgestellt haben, gehen Sie wie folgt vor, um die Einstellungen für die Linux-Auslagerungsdatei korrekt zu konfigurieren:
 
-Ändern Sie in der Datei **/etc/waagent.conf** zwei Einträge. Diese steuern, ob eine dedizierte Auslagerungsdatei vorhanden ist und welche Größe sie besitzt. `ResourceDisk.EnableSwap=N` und `ResourceDisk.SwapSizeMB=0` sind die Parameter, die Sie ändern möchten. 
+Ändern Sie in der Datei **/etc/waagent.conf** zwei Einträge. Diese steuern, ob eine dedizierte Auslagerungsdatei vorhanden ist und welche Größe sie besitzt. Sie müssen die Parameter `ResourceDisk.EnableSwap` und `ResourceDisk.SwapSizeMB` überprüfen. 
 
-Ändern Sie die Parameter in folgende Einstellungen:
+Stellen Sie für einen ordnungsgemäß aktivierten Datenträger und eine eingebundene Auslagerungsdatei sicher, dass für die Parameter die folgenden Einstellungen festgelegt sind:
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk.SwapSizeMB={Größe in MB entsprechend Ihren Anforderungen} 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000797"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615380"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -123,7 +123,7 @@ Ja, Azure CosmosDB unterstützt die Zeitreihenanalyse, hier ist ein Beispiel fü
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Wie beginne ich mit dem Entwickeln für die SQL-API?
 
-Zuerst müssen Sie sich für ein Azure-Abonnement registrieren. Nachdem Sie sich für ein Azure-Abonnement registriert haben, können Sie Ihrem Azure-Abonnement einen SQL-API-Container hinzufügen. Anweisungen zum Hinzufügen eines Azure Cosmos DB-Kontos finden Sie unter [Erstellen eines Azure Cosmos DB-Datenbankkontos](create-sql-api-dotnet.md#create-account).
+Zuerst müssen Sie sich für ein Azure-Abonnement registrieren. Nachdem Sie sich für ein Azure-Abonnement registriert haben, können Sie Ihrem Azure-Abonnement einen SQL-API-Container hinzufügen. Anweisungen zum Hinzufügen eines Azure Cosmos DB-Kontos finden Sie unter [Erstellen eines Azure Cosmos-Datenbankkontos](create-sql-api-dotnet.md#create-account).
 
 [SDKs](sql-api-sdk-dotnet.md) sind für .NET, Python, Node.js, JavaScript und Java verfügbar. Entwickler können außerdem die [RESTful HTTP-APIs](/rest/api/cosmos-db/) zur Interaktion mit Azure Cosmos DB-Ressourcen auf unterschiedlichen Plattformen und mit verschiedenen Sprachen nutzen.
 
@@ -203,7 +203,7 @@ Die Erstellung von Berechtigungen mit ResourceTokens ist auf der Containerebene 
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?
 
-Die Azure Cosmos DB-API für MongoDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte SDKs und Treiber für MongoDB mit der nativen Azure Cosmos DB-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z. B. globale Verteilung mit Multimasterreplikation, automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
+Die Azure Cosmos DB-API für MongoDB ist eine Wire Protocol-Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte SDKs und Treiber für MongoDB mit der nativen Azure Cosmos-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z. B. globale Verteilung mit Multimasterreplikation, automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
 
 ### <a name="how-do-i-connect-to-my-database"></a>Wie stelle ich eine Verbindung mit meiner Datenbank her?
 
@@ -453,7 +453,7 @@ Die Table-API bietet die gleichen Abfragefunktionen wie Azure Table Storage. Azu
 Sie sollten TableThroughput ändern, wenn eine der folgenden Bedingungen gilt:
 
 * Sie führen das Extrahieren, Transformieren und Laden (ETL) für die Daten durch, oder Sie möchten innerhalb eines kurzen Zeitraums viele Daten hochladen.
-* Sie benötigen für den Container oder mehrere Container auf dem Back-End mehr Durchsatz. Beispielsweise erkennen Sie, dass der genutzte Durchsatz den bereitgestellten Durchsatz übersteigt, und es kommt zu einer Drosselung. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos DB-Container](set-throughput.md).
+* Sie benötigen für den Container oder mehrere Container auf dem Back-End mehr Durchsatz. Beispielsweise erkennen Sie, dass der genutzte Durchsatz den bereitgestellten Durchsatz übersteigt, und es kommt zu einer Drosselung. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos-Container](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Kann ich den Durchsatz meiner Table-API-Tabelle zentral hoch- oder herunterskalieren?
 
@@ -720,7 +720,7 @@ Die Apache Cassandra-API ist ein Plattformdienst, der die Kapazitätsplanung und
 
 Aus Gründen von Verfügbarkeit und geringer Wartezeit ist in Azure Cosmos DB bereits eine globale Verteilung integriert. Sie müssen keine Replikate oder andere Elemente einrichten. Schreibvorgänge werden in jeder Region, in der Sie Daten schreiben, immer dauerhaft im Quorum committet. Gleichzeitig werden Leistungsgarantien geboten.
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-and-more"></a>Wie verhält es sich hinsichtlich verschiedener Einstellungen für Tabellenmetadaten wie Bloomfilter, Zwischenspeicherung, Lesereparaturänderungen, „gc_grace“ und „compression memtable_flush_period“ usw.?
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Wie verhält es sich hinsichtlich verschiedener Einstellungen für Tabellenmetadaten wie Bloomfilter, Zwischenspeicherung, Lesereparaturänderungen, „gc_grace“ und „compression memtable_flush_period“ usw.?
 
 Azure Cosmos DB bietet Leistung für Lese-/Schreibvorgänge und Durchsatz, ohne dass dafür Konfigurationseinstellungen bearbeitet werden müssen. Dadurch wird die versehentliche Änderung dieser Einstellungen verhindert.
 

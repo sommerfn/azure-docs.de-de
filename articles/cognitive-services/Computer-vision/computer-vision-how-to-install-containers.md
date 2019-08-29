@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564575"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034502"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
 
-Der Texterkennungsteil des maschinelles Sehens ist auch als Docker-Container verfügbar. Damit können Sie gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen und extrahieren. Hierzu zählen z.B. Belege, Poster, und Visitenkarten.  
+Der Texterkennungsteil des maschinelles Sehens ist auch als Docker-Container verfügbar. Damit können Sie gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen und extrahieren. Hierzu zählen z.B. Belege, Poster, und Visitenkarten.
+
 > [!IMPORTANT]
 > Der Texterkennungscontainer funktioniert derzeit nur für Englisch.
 
@@ -38,7 +39,7 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 
 ## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
@@ -46,16 +47,7 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
-In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Texterkennung zugeordnet werden.
-
-| Container | Minimum | Empfohlen |TPS<br>(Minimum, Maximum)|
-|-----------|---------|-------------|--|
-|Texterkennung|Ein Kern, 8 GB Arbeitsspeicher, 0,5 TPS|Zwei Kerne, 8 GB Arbeitsspeicher, 1 TPS|0,5, 1|
-
-* Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
-* TPS: Transaktionen pro Sekunde
-
-Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
 

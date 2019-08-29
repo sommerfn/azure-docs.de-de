@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33930823fbeb42011d8e2a368d17c9a21070a243
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61342005"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035602"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
@@ -45,7 +45,7 @@ Die mit dem Ansicht-Designer erstellten Ansichten enthalten die in der folgenden
 | Visualisierungskomponenten | Stellen eine Visualisierung von Daten im Log Analytics-Arbeitsbereich basierend auf einem oder mehreren [Protokollabfragen](../log-query/log-query-overview.md) dar. Die meisten Komponenten weisen eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste mit den wichtigsten Ergebnissen auf. Die einzelnen Komponententypen enthalten unterschiedliche Visualisierungen der Datensätze im Log Analytics-Arbeitsbereich. Sie wählen Elemente in der Komponente aus, um eine Protokollabfrage auszuführen, die detaillierte Datensätze bereitstellt. |
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
-Sie benötigen mindestens [Berechtigungen auf der Ebene „Mitwirkender“](manage-access.md#manage-accounts-and-users) im Log Analytics-Arbeitsbereich, um Ansichten erstellen oder ändern zu können. Wenn Sie nicht über diese Berechtigungen verfügen, wird die Option „Ansicht-Designer“ im Menü nicht angezeigt.
+Sie benötigen mindestens [Berechtigungen auf der Ebene „Mitwirkender“](manage-access.md#manage-access-using-azure-permissions) im Log Analytics-Arbeitsbereich, um Ansichten erstellen oder ändern zu können. Wenn Sie nicht über diese Berechtigungen verfügen, wird die Option „Ansicht-Designer“ im Menü nicht angezeigt.
 
 
 ## <a name="work-with-an-existing-view"></a>Verwenden einer vorhandenen Ansicht

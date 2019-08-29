@@ -3,8 +3,7 @@ title: Tätigen eines Telefonanrufs über Twilio (.NET) | Microsoft Docs
 description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. In .NET geschriebene Codebeispiele.
 services: ''
 documentationcenter: .net
-author: devinrader
-manager: timlt
+author: georgewallace
 editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: jeconnoc
-ms.openlocfilehash: c41057203da949e371f62332e938feb92e84534f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 27b4f3cdd8f622a97cfc0853f79bb77d76673dcf
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60422793"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636154"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Tätigen eines Telefonanrufs mithilfe von Twilio in einer Webrolle auf Azure
 In diesem Leitfaden wird veranschaulicht, wie Sie von einer in Azure gehosteten Webseite einen Anruf über Twilio tätigen können. Die resultierende Anwendung fordert den Benutzer auf, einen Anruf mit der angegebenen Nummer und Nachricht zu tätigen, wie im folgenden Screenshot dargestellt.
@@ -153,7 +152,7 @@ Weitere Informationen zu TwiML finden Sie unter [https://www.twilio.com/docs/api
 ## <a id="nextsteps"></a>Nächste Schritte
 Dieser Code demonstriert die allgemeinen Funktionen für die Verwendung von Twilio in einer ASP.NET-Webrolle in Azure. Bevor Sie dieses Beispiel in einer Produktionsumgebung bereitstellen, sollten Sie einige Funktionen zur Fehlerbehandlung oder andere Features hinzufügen. Beispiel:
 
-* Anstelle eines Web-Formulars könnten Sie Azure Blob Storage oder eine Azure SQL-Datenbank-Instanz zum Speichern von Telefonnummern und Anruftexten verwenden. Informationen zur Verwendung von Blobs in Azure finden Sie unter [Verwenden des Azure Blob Storage-Diensts in .NET][howto_blob_storage_dotnet]. Informationen zur Verwendung von SQL-Datenbank finden Sie unter [Verwenden der Azure SQL-Datenbank in .NET-Anwendungen][howto_sql_azure_dotnet].
+* Anstelle eines Web-Formulars könnten Sie Azure Blob Storage oder eine Azure SQL-Datenbank-Instanz zum Speichern von Telefonnummern und Anruftexten verwenden. Informationen zur Verwendung von Blobs in Azure finden Sie unter [Verwenden des Azure Blob Storage-Diensts in .NET][howto_blob_storage_dotnet]. Informationen zur Verwendung von SQL-Datenbank finden Sie unter [Verwenden von Azure SQL-Datenbank in .NET-Anwendungen][howto_sql_azure_dotnet].
 * Sie können `RoleEnvironment.getConfigurationSettings` verwenden, um die Twilio-Konto-ID und das Authentifizierungs-Token aus den Konfigurationseinstellungen Ihrer Anwendung abzurufen, statt diese Werte fest in Ihr Formular einzuprogrammieren. Informationen zur `RoleEnvironment`-Klasse finden Sie unter [Microsoft.WindowsAzure.ServiceRuntime-Namespace][azure_runtime_ref_dotnet].
 * Lesen Sie die Twilio-Sicherheitsrichtlinien unter [https://www.twilio.com/docs/security][twilio_docs_security].
 * Weitere Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][twilio_docs].

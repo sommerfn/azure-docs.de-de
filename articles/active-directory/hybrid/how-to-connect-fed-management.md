@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353630"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085223"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -231,7 +231,7 @@ Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festge
 **Regel 3: Ausgeben von „ms-ds-consistencyguid“ als unveränderliche ID, sofern vorhanden**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
 Dies ist eine implizite **Exist** -Überprüfung. Wenn der Wert für den Anspruch vorhanden ist, geben Sie ihn als unveränderliche ID aus. Im vorherigen Beispiel wird der Anspruch **nameidentifier** verwendet. Sie müssen diesen in den entsprechenden Anspruchstyp für die unveränderliche ID in Ihrer Umgebung ändern.
 
@@ -239,7 +239,7 @@ Dies ist eine implizite **Exist** -Überprüfung. Wenn der Wert für den Anspruc
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c2.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
 In dieser Regel überprüfen Sie einfach das temporäre Flag **idflag**. Sie entscheiden, ob der Anspruch basierend auf dessen Wert ausgegeben werden soll.
 

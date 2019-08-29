@@ -8,14 +8,14 @@ editor: tysonn
 ms.service: azure-monitor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 08/02/2019
+ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 3644b40311c037df800eb89ca26d1285fbf1e082
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: f8d763f8bb228a0d4d83a3776f818d59939b942d
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741507"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559078"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für Container
 
@@ -33,7 +33,7 @@ Wenn in Ihrem Log Analytics-Arbeitsbereich nicht täglich zu einer bestimmten Ze
 
 Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und ausgeführten Containern. Die Tabelle wird von einem Workflow innerhalb des Agent ausgefüllt, der den Docker nach allen Containern abfragt (ausgeführte und beendete) und diese Daten an den Log Analytics-Arbeitsbereich weiterleitet.
  
-## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Wie behebe ich den Fehler **Abonnementregistrierung fehlt**?
+## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Wie behebe ich den Fehler *Abonnementregistrierung fehlt*?
 
 Wenn Sie die Fehlermeldung **Abonnementregistrierung für Microsoft.OperationsManagement fehlt** erhalten, können Sie den Fehler beheben, indem Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement registrieren, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../../azure-resource-manager/resource-manager-register-provider-errors.md).
 
@@ -71,7 +71,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 
 ```
 
-Eine ausführliche Betrachtung des Problems finden Sie unter folgendem [Github-Link](https://github.com/moby/moby/issues/22920).
+Eine ausführliche Betrachtung des Problems finden Sie unter folgendem [GitHub-Link](https://github.com/moby/moby/issues/22920).
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Wie behebe ich Azure AD-Fehler, wenn ich Liveprotokolle aktiviere? 
 
@@ -86,6 +86,9 @@ Wenn Sie nach der Aktivierung von Azure Monitor für Container für einen AKS-Cl
 - *.oms.opinsights.azure.com   443
 - *.blob.core.windows.net      443
 - dc.services.visualstudio.com 443
+- *.microsoftonline.com        443
+- *.monitoring.azure.com       443
+- login.microsoftonline.com    443
 
 ## <a name="next-steps"></a>Nächste Schritte
 

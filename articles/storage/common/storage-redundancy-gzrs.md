@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2e97a734a4730e4341614019e3ca1ecaa81420a7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035985"
+ms.locfileid: "69516133"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
-Mit der Vorschau von georedundantem Speicher (GZRS) wird die Hochverfügbarkeit von [zonenredundantem Speicher (ZRS)](storage-redundancy-zrs.md) mit Schutz vor regionalen Ausfällen kombiniert, der von [georedundantem Speicher (GRS)](storage-redundancy-grs.md) bereitgestellt wird. Daten in einem GZRS-Speicherkonto werden über drei [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) in die primäre Region repliziert sowie auch in eine sekundäre geografische Region zum Schutz vor regionalen Notfällen.
+Mit der Vorschau von georedundantem Speicher (GZRS) wird die Hochverfügbarkeit von [zonenredundantem Speicher (ZRS)](storage-redundancy-zrs.md) mit Schutz vor regionalen Ausfällen kombiniert, der von [georedundantem Speicher (GRS)](storage-redundancy-grs.md) bereitgestellt wird. Daten in einem GZRS-Speicherkonto werden über drei [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) in die primäre Region repliziert sowie auch in eine sekundäre geografische Region zum Schutz vor regionalen Notfällen. Jeder Azure-Region ist innerhalb des gleichen geografischen Gebiets eine andere Region als Regionspartner zugeordnet. Weitere Informationen und Ausnahmen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Mit einem GZRS-Speicherkonto können Sie weiterhin Daten lesen und schreiben, wenn eine Verfügbarkeitszone nicht verfügbar oder nicht wiederherstellbar ist. Außerdem sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall beständig gespeichert, nach dem die primäre Region nicht mehr wiederherstellbar ist. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 % (16 Neunen) in einem bestimmten Jahr bereitzustellen. GZRS bietet außerdem die gleichen [Skalierbarkeitsziele](storage-scalability-targets.md) wie LRS, ZRS, GRS oder RA-GRS. Optional können Sie den Lesezugriff auf Daten in der sekundären Region mit georedundantem Speicher mit Lesezugriff (RA-GZRS) aktivieren, wenn Ihre Anwendungen bei einem Notfall in der primären Region Daten lesen sollen.
 

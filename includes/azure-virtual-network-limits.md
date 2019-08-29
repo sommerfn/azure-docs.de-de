@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481448"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903991"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -78,7 +78,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Virtuelle Netzwerke |100 |100 |
-| Lokale Netzwerksites |20 |Wenden Sie sich an den Support. |
+| Lokale Netzwerksites |20 |50 |
 | DNS-Server pro virtuellem Netzwerk |20 |20 |
 | Private IP-Adressen pro virtuellem Netzwerk |4\.096 |4\.096 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500.000 bis 1.000.000 für zwei oder mehr NICs. |500.000 bis 1.000.000 für zwei oder mehr NICs. |

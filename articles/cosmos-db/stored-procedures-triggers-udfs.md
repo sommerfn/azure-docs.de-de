@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717546"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614055"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -79,11 +79,11 @@ Azure Cosmos DB unterstützt zwei Arten von Triggern:
 
 ### <a name="pre-triggers"></a>Vorangestellte Trigger
 
-Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für ein Azure Cosmos DB-Element aufgerufen werden können. Sie können beispielsweise beim Erstellen eines Elements einen vorangestellter Trigger angeben. In diesem Fall wird der vorangestellte Trigger ausgeführt, bevor das Element erstellt wird. Vorangestellte Trigger können keine Eingabeparameter übernehmen. Bei Bedarf kann das Anforderungsobjekt verwendet werden, um den Dokumenttext der ursprünglichen Anforderung zu aktualisieren. Wenn Trigger registriert werden, können die Benutzer die Vorgänge angeben, mit denen sie ausgeführt werden können. Wenn ein Trigger mit `TriggerOperation.Create` erstellt wurde, bedeutet dies, dass die Verwendung des Triggers in einem Ersetzungsvorgang nicht zulässig ist. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
+Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für ein Azure Cosmos-Element aufgerufen werden können. Sie können beispielsweise beim Erstellen eines Elements einen vorangestellter Trigger angeben. In diesem Fall wird der vorangestellte Trigger ausgeführt, bevor das Element erstellt wird. Vorangestellte Trigger können keine Eingabeparameter übernehmen. Bei Bedarf kann das Anforderungsobjekt verwendet werden, um den Dokumenttext der ursprünglichen Anforderung zu aktualisieren. Wenn Trigger registriert werden, können die Benutzer die Vorgänge angeben, mit denen sie ausgeführt werden können. Wenn ein Trigger mit `TriggerOperation.Create` erstellt wurde, bedeutet dies, dass die Verwendung des Triggers in einem Ersetzungsvorgang nicht zulässig ist. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
 
 ### <a name="post-triggers"></a>Nachgestellte Trigger
 
-Ähnlich wie vorangestellte Trigger sind nachgestellte Trigger ebenfalls einem Vorgang für ein Azure Cosmos DB-Element zugeordnet, und sie erfordern keine Eingabeparameter. Sie werden ausgeführt, *nachdem* der Vorgang abgeschlossen wurde, und haben Zugriff auf die Antwortnachricht, die an den Client gesendet wird. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
+Ähnlich wie vorangestellte Trigger sind nachgestellte Trigger ebenfalls einem Vorgang für ein Azure Cosmos-Element zugeordnet, und sie erfordern keine Eingabeparameter. Sie werden ausgeführt, *nachdem* der Vorgang abgeschlossen wurde, und haben Zugriff auf die Antwortnachricht, die an den Client gesendet wird. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
 
 > [!NOTE]
 > Registrierte Trigger werden bei Auftreten der entsprechenden Vorgänge (Erstellen/Löschen/Ersetzen/Aktualisieren) nicht automatisch ausgeführt. Sie müssen beim Ausführen dieser Vorgänge explizit aufgerufen werden. Weitere Informationen finden Sie im Artikel [Ausführen von Triggern](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers).

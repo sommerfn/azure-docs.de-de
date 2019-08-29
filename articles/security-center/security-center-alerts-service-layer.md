@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295549"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624785"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center
 
@@ -47,6 +47,7 @@ Die Netzwerkebenenanalysen von Security Center basieren auf exemplarischen [IPFI
 |**Verdächtige eingehende SSH-Netzwerkaktivität**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche eingehende SSH-Kommunikation mit einer Ressource in Ihrer Bereitstellung erkannt. Eine relativ hohe Anzahl eingehender Verbindungen für Ihre Ressource wird bei dieser Umgebung als anormal eingestuft. Diese Aktivität kann auf einen versuchten Brute-Force-Angriff auf Ihre SSH-Schnittstelle hindeuten.
 |**Verdächtige eingehende RDP-Netzwerkaktivität mit mehreren Quellen**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche eingehende RDP-Kommunikation mehrerer Quellen mit einer Ressource in Ihrer Bereitstellung erkannt. Der Umstand, dass verschiedene individuelle IP-Adressen eine Verbindung mit Ihrer Ressource herstellen, wird bei dieser Umgebung als anormal eingestuft. Diese Aktivität kann auf einen versuchten Brute-Force-Angriff auf Ihre RDP-Schnittstelle mit mehreren Hosts (Botnet) hindeuten.|
 |**Verdächtige eingehende RDP-Netzwerkaktivität**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche eingehende RDP-Kommunikation mit einer Ressource in Ihrer Bereitstellung erkannt. Eine relativ hohe Anzahl eingehender Verbindungen für Ihre Ressource wird bei dieser Umgebung als anormal eingestuft. Diese Aktivität kann auf einen versuchten Brute-Force-Angriff auf Ihre SSH-Schnittstelle hindeuten.|
+|**Netzwerkkommunikation mit einer schädlichen Adresse erkannt**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine Kommunikation erkannt, die von einer Ressource in Ihrer Bereitstellung mit möglicherweise einem C&C-Server (Command-and-Control) stammt. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Entitäten als schädlich gekennzeichnet wird.|
 
 Unter [Heuristic DNS detections in Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/) (Heuristische DNS-Erkennungen in Azure Security Center) erfahren Sie, wie Security Center netzwerkbezogene Signale für den Bedrohungsschutz verwenden kann.
 ## Azure-Verwaltungsebene (Azure Resource Manager) (Vorschauversion)<a name ="management-layer"></a>
@@ -77,4 +78,4 @@ Security Center nutzt Azure Resource Manager-Ereignisse (also gewissermaßen d
 > 3. Deaktivieren Sie unter **Enable integrations** (Integrationen aktivieren) das Kontrollkästchen **Allow Microsoft Cloud App Security to access my data** (Microsoft Cloud App Security Zugriff auf meine Daten gewähren), und klicken Sie anschließend auf **Speichern**.
 
 >[!NOTE]
->Azure Security Center speichert sicherheitsbezogene Kundendaten im gleichen geografischen Raum, in dem sich auch die Ressource befindet. Falls Azure Security Center noch nicht im geografischen Raum der Ressource bereitgestellt wurde, werden die Daten in Nordamerika gespeichert. Wenn Microsoft Cloud App Security (MCAS) aktiviert ist, werden diese Informationen gemäß den MCAS-Regeln für geografische Standorte gespeichert. Weitere Informationen finden Sie unter [Data storage for non-regional services](http://azuredatacentermap.azurewebsites.net/) (Datenspeicherung für nicht regionale Dienste).
+>Azure Security Center speichert sicherheitsbezogene Kundendaten im gleichen geografischen Raum, in dem sich auch die Ressource befindet. Falls Azure Security Center noch nicht im geografischen Raum der Ressource bereitgestellt wurde, werden die Daten in Nordamerika gespeichert. Wenn Microsoft Cloud App Security (MCAS) aktiviert ist, werden diese Informationen gemäß den MCAS-Regeln für geografische Standorte gespeichert. Weitere Informationen finden Sie unter [Data storage for non-regional services](https://azuredatacentermap.azurewebsites.net/) (Datenspeicherung für nicht regionale Dienste).

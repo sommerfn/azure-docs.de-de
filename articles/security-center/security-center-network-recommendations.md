@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fb91d6a9cdc56c88b424b7e0382f283c8b55dac9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234333"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101028"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
@@ -152,8 +152,7 @@ DDoS Protection Standard sollte aktiviert sein.|Schützen Sie virtuelle Netzwerk
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
 
-* [Schützen Ihrer virtuellen Computer in Azure Security Center](security-center-virtual-machine-recommendations.md)
-* [Schützen Ihrer Anwendungen in Azure Security Center](security-center-application-recommendations.md)
+* [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 * [Schützen Ihres Azure SQL-Diensts in Azure Security Center](security-center-sql-service-recommendations.md)
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:

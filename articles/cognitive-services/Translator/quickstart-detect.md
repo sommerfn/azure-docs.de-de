@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 1dbf36a74773615b61e9fe3ac28eeb2e8919957e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ef559a53980b35eb09333a3c2889cee3efed59ee
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968223"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907150"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Schnellstart: Verwenden der Textübersetzungs-API zur Ermittlung der Textsprache
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mithilfe der Textübersetzungs-REST-API ermitteln.
 
 Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

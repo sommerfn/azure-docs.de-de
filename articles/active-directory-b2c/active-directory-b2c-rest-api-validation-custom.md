@@ -1,27 +1,27 @@
 ---
-title: REST-API-Anspruchsaustauschvorgänge zur Validierung in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien.
+title: REST-API-Anspruchsaustauschvorgänge zur Validierung in Azure Active Directory B2C
+description: Eine exemplarische Vorgehensweise zum Erstellen einer Azure AD B2C User Journey, die mit RESTful-Diensten interagiert.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/24/2017
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0779e4a93230a90b8eee76f1898154c1a5b82661
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508730"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644971"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Das Framework für die Identitätsfunktion (Identity Experience Framework, IEF), das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht dem Identitätsentwickler die Integration einer Interaktion mit einer RESTful-API in eine User Journey.  
+Das Framework für die Identitätsfunktion (Identity Experience Framework, IEF), das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht dem Identitätsentwickler die Integration einer Interaktion mit einer RESTful-API in eine User Journey.
 
 Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, eine Azure AD B2C User Journey zu erstellen, die mit RESTful-Diensten interagiert.
 
@@ -91,8 +91,10 @@ Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, d
             <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
             <Metadata>
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+                <Item Key="AuthenticationType">None</Item>
+                <!-- REMOVE the following line in production environments -->
                 <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
@@ -110,6 +112,8 @@ Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, d
 ```
 
 Das `InputClaims`-Element definiert die Ansprüche, die vom IEF zum REST-Dienst gesendet werden. In diesem Beispiel wird der Inhalt des Anspruchs `givenName` als `playerTag` an den REST-Dienst gesendet. In diesem Beispiel erwartet das IEF keine Ansprüche zurück. Stattdessen wartet es auf eine Antwort des REST-Diensts und agiert basierend auf den empfangenen Statuscodes.
+
+Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Informationen zum Schützen Ihrer REST-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs per Standardauthentifizierung](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) und [Schützen von RESTful-APIs per Zertifikatauthentifizierung](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
 ## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Schritt 3: Einfügen des Austauschs von Ansprüchen des RESTful-Diensts in ein selbstbestätigtes technisches Profil zum Validieren der Benutzereingabe
 
@@ -132,3 +136,10 @@ So fügen Sie dem selbstbestätigten technischen Profil den Anspruchsaustausch h
 [Ändern der Profilbearbeitung und der Benutzerregistrierung zum Sammeln zusätzlicher Informationen von Ihren Benutzern](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md)
+
+[Referenz: Technisches Profil „RESTful“](restful-technical-profile.md)
+
+Informationen zum Schützen Ihrer APIs finden Sie in den folgenden Artikeln:
+
+* [Secure your RESTful API with basic authentication (username and password)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) (Schützen Ihrer RESTful-API per Standardauthentifizierung (Benutzername und Kennwort))
+* [Schützen Ihrer RESTful-API mit Clientzertifikaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

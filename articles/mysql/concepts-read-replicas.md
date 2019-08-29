@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: 00cace13a1d3db2bca45791960ca9bf2fb9260bd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: e0309ac70d39272bf045e49ca7ddecd258cc1f36
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976897"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992046"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -49,7 +49,7 @@ Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen
 
 
 ### <a name="paired-regions"></a>Regionspaare
-Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
 
 Wenn Sie für die Notfallwiederherstellungsplanung regionsübergreifende Replikate verwenden, empfehlen wir Ihnen, das Replikat in der gekoppelten Region und nicht in einer der anderen Regionen zu erstellen. Regionspaare vermeiden gleichzeitige Aktualisierungen und priorisieren die physische Isolation und die Datenresidenz.  
 

@@ -6,19 +6,18 @@ author: laurenhughes
 manager: gwallace
 editor: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322839"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094439"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -72,7 +71,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Erstellen Sie zum Angeben von Ausgabedateien für einen Task eine Auflistung von [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile)-Objekten, und weisen Sie sie der Eigenschaft [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) zu, wenn Sie den Task erstellen.
 
-Im folgenden Codebeispiel für C# wird ein Task erstellt, der Zufallszahlen in eine Datei mit dem Namen `output.txt` schreibt. Das Beispiel erstellt eine Ausgabedatei für `output.txt`, die in den Container geschrieben werden soll. Außerdem erstellt das Beispiel Ausgabedateien für alle Protokolldateien, die mit dem Dateimuster `std*.txt` ( _ , `stdout.txt` und `stderr.txt`) übereinstimmen. Die Container-URL benötigt die vorher für den Container erstellte SAS. Der Batch-Dienst verwendet die SAS für die Authentifizierung des Zugriffs auf den Container:
+Im folgenden Codebeispiel für C# wird ein Task erstellt, der Zufallszahlen in eine Datei mit dem Namen `output.txt` schreibt. Das Beispiel erstellt eine Ausgabedatei für `output.txt`, die in den Container geschrieben werden soll. Außerdem erstellt das Beispiel Ausgabedateien für alle Protokolldateien, die mit dem Dateimuster `std*.txt` (_z.B._ , `stdout.txt` und `stderr.txt`) übereinstimmen. Die Container-URL benötigt die vorher für den Container erstellte SAS. Der Batch-Dienst verwendet die SAS für die Authentifizierung des Zugriffs auf den Container:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")

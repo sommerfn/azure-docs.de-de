@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439012"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644927"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -97,8 +97,10 @@ Ein technisches Profil enthält die Konfiguration für den Anspruchsaustauschvor
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -114,6 +116,8 @@ Ein technisches Profil enthält die Konfiguration für den Anspruchsaustauschvor
 ```
 
 Mit dem **InputClaims**-Element werden die Ansprüche definiert, die an den REST-Dienst gesendet werden. In diesem Beispiel wird der Wert des Anspruchs `givenName` als Anspruch `email` an den REST-Dienst gesendet. Mit dem **OutputClaims**-Element werden die Ansprüche definiert, die vom REST-Dienst erwartet werden.
+
+Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Informationen zum Schützen Ihrer REST-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs per Standardauthentifizierung](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) und [Schützen von RESTful-APIs per Zertifikatauthentifizierung](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
 ## <a name="add-the-claim-definition"></a>Hinzufügen der Anspruchsdefinition
 
@@ -251,5 +255,13 @@ Wenn alles richtig eingerichtet wurde, enthält das Token den neuen Anspruch `ci
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sie können die Interaktion auch als Validierungsprofil entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-rest-api-validation-custom.md).
-- [Ändern der Profilbearbeitung zum Sammeln von zusätzlichen Informationen von Ihren Benutzern](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+Sie können die Interaktion auch als Validierungsprofil entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-rest-api-validation-custom.md).
+
+[Ändern der Profilbearbeitung zum Sammeln von zusätzlichen Informationen von Ihren Benutzern](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+
+[Referenz: Technisches Profil „RESTful“](restful-technical-profile.md)
+
+Informationen zum Schützen Ihrer APIs finden Sie in den folgenden Artikeln:
+
+* [Secure your RESTful API with basic authentication (username and password)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) (Schützen Ihrer RESTful-API per Standardauthentifizierung (Benutzername und Kennwort))
+* [Schützen Ihrer RESTful-API mit Clientzertifikaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

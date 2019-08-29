@@ -4,14 +4,14 @@ description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 7/9/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 73f4b6fe4714d21c12d2c7bd387cd30f6f711d5a
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226813"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624321"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Außerdem finden Sie hier Informationen zu speziellen Bedingungen, die beim Verschieben einer Ressource berücksichtigt werden müssen.
@@ -263,7 +263,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 | redis | Ja | Ja |
 
 > [!IMPORTANT]
-> Wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Weitere Informationen finden Sie unter [Move guidance for virtual networks](./move-limitations/virtual-network-move-limitations.md) (Anleitung zum Verschieben virtueller Netzwerke).
+> Wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Weitere Informationen finden Sie unter [Move guidance for virtual networks](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben virtueller Netzwerke).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Ressourcentyp | Resource group | Abonnement |
@@ -765,7 +765,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 | webapplicationfirewallpolicies | Ja | Ja |
 
 > [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for virtual networks](./move-limitations/virtual-network-move-limitations.md) (Anleitung zum Verschieben virtueller Netzwerke).
+> Weitere Informationen finden Sie unter [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Ressourcentyp | Resource group | Subscription |

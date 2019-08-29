@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: b99dbe3fd03b8854d7c1f54d17d5ced1f2534132
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963870"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624918"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität (Vorschau)
 
 Zum Bereitstellen einer Service Fabric Anwendung mit verwalteter Identität muss die Anwendung über Azure Resource Manager bereitgestellt werden – in der Regel mit einer Azure Resource Manager-Vorlage. Weitere Informationen zum Bereitstellen von Service Fabric Anwendung über Azure Resource Manager finden Sie unter [Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen](service-fabric-application-arm-resource.md).
 

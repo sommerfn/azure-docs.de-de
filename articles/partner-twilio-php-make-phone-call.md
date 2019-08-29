@@ -3,9 +3,7 @@ title: Tätigen eines Telefonanrufs über Twilio (PHP) | Microsoft Docs
 description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Beispiele sind für eine PHP-Anwendung vorgesehen.
 documentationcenter: php
 services: ''
-author: devinrader
-manager: twilio
-editor: mollybos
+author: georgewallace
 ms.assetid: 44e35adc-be06-4700-beee-8c9e2c20c540
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 03b74f5a931e1cfbf09433af76c250607b7fc80c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60422300"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637324"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Tätigen eines Telefonanrufs mithilfe von Twilio in einer PHP-Anwendung auf Azure
 Das folgende Beispiel zeigt, wie Sie von einer in Azure gehosteten PHP-Webseite einen Anruf über Twilio tätigen können. Die Anwendung fragt den Benutzer nach Werten für den Telefonanruf, wie im folgenden Screenshot gezeigt.
@@ -28,7 +26,7 @@ Das folgende Beispiel zeigt, wie Sie von einer in Azure gehosteten PHP-Webseite 
 
 Sie benötigen Folgendes, um den Code in diesem Artikel ausführen zu können:
 
-1. Ein Twilio-Konto und ein Authentifizierungs-Token von Ihrer [Twilio-Konsole][twilio_console] abrufen. Sie können Sie die Preise von Twilio unter [https://www.twilio.com/pricing][twilio_pricing] ansehen. Sie können sich unter [https://www.twilio.com/try-twilio][try_twilio] für ein Testkonto anmelden.
+1. Ein Twilio-Konto und ein Authentifizierungs-Token von Ihrer [Twilio-Konsole][twilio_console] abrufen. Sie können Sie die Preise von Twilio unter [https://www.twilio.com/pricing][twilio_pricing] einsehen. Sie können sich unter [https://www.twilio.com/try-twilio][try_twilio] für ein Testkonto anmelden.
 2. Rufen Sie die [Twilio-Bibliothek für PHP](https://github.com/twilio/twilio-php) ab, oder installieren Sie sie als PEAR-Paket. Weitere Informationen finden Sie in der [Infodatei](https://github.com/twilio/twilio-php/blob/master/README.md).
 3. Installieren Sie das Azure SDK für PHP. 
 <!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
@@ -69,7 +67,7 @@ Der folgende HTML-Code erstellt eine Webseite (**callform.html**) zur Eingabe de
 ```
 
 ## <a name="create-the-code-to-make-the-call"></a>Erstellen des Codes für den Anruf
-Der folgende Code erstellt **makecall.php**, die aufgerufen wird, wenn der Benutzer das Formular aus **callform.html** übermittelt. Der folgende Code erstellt die Anrufnachricht und führt den Anruf aus. Ersetzen Sie die Platzhalterwerte **$sid** und **$token** im folgenden Code durch Ihr Twilio-Konto und Ihr Authentifizierungs-Token in der [Twilio-Konsole][twilio_console].
+Der folgende Code erstellt **makecall.php**, die aufgerufen wird, wenn der Benutzer das Formular aus **callform.html** übermittelt. Der folgende Code erstellt die Anrufnachricht und führt den Anruf aus. Ersetzen Sie die Platzhalterwerte **$sid** und **$token** im folgenden Code durch Ihr [Twilio-Konto][twilio_console] und Ihr Authentifizierungstoken in der Twilio-Konsole.
 
 ```html
 <html>
@@ -102,7 +100,7 @@ echo "URI resource: " . $call->uri . "<br />";
 </html>
 ```
 
-**makecall.php** führt nicht nur den Aufruf aus, sondern zeigt außerdem auch einige Aufruf-Metadaten an, wie das folgende Bild zeigt. Weitere Informationen zum Abrufen von Metadaten finden Sie unter [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
+**makecall.php** führt nicht nur den Aufruf aus, sondern zeigt außerdem auch einige Aufruf-Metadaten an, wie das folgende Bild zeigt. Weitere Informationen zu Anrufmetadaten finden Sie unter [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
 
 ![Azure-Anrufantwort mit Twilio und PHP][twilio_php_response]
 
@@ -112,8 +110,8 @@ Der nächste Schritt besteht darin, [Ihre Anwendung mit Git in Azure-Web-Apps](a
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Code demonstriert die allgemeinen Funktionen für die Verwendung von Twilio mit PHP in Azure. Bevor Sie dieses Beispiel in einer Produktionsumgebung bereitstellen, sollten Sie einige Funktionen zur Fehlerbehandlung oder andere Features hinzufügen. Beispiel:
 
-* Anstelle eines Web-Formulars könnten Sie Azure-Speicher-Blobs oder eine SQL-Datenbank zum Speichern von Telefonnummern und Anruftexten verwenden. Weitere Informationen zur Verwendung von Azure-Speicher-Blobs in PHP finden Sie unter [Verwenden des Blob-Speichers mit PHP][howto_blob_storage_php]. Informationen zur Verwendung von SQL-Datenbanken in PHP finden Sie unter [Using SQL Database with PHP Applications (Verwenden der SQL-Datenbank in PHP-Anwendungen)][howto_sql_azure_php].
-* Der Code in **makecall.php** verwendet eine von Twilio bereitgestellte URL ([https://twimlets.com/message][twimlet_message_url]), die eine Antwort in der Twilio Markup Language (TwiML) zurückgibt, die Twilio mitteilt, wie mit dem Aufruf verfahren werden soll. Das zurückgegebene TwiML kann z. B. ein `<Say>`-Verb enthalten, das dazu führt, dass dem Anrufempfänger ein bestimmter Text vorgesprochen wird. Anstelle der von Twilio bereitgestellten URL können Sie auch mit einem eigenen Dienst auf die Twilio-Anfrage antworten. Weitere Informationen finden Sie unter [Verwenden von Twilio für Telefonie- und SMS-Funktionen in PHP][howto_twilio_voice_sms_php]. Weitere Informationen zu TwiML finden Sie unter [https://www.twilio.com/docs/api/twiml][twiml], und weitere Informationen zu `<Say>` und anderen Twilio-Verben finden Sie unter [https://www.twilio.com/docs/api/twiml/say][twilio_say].
+* Anstelle eines Web-Formulars könnten Sie Azure-Speicher-Blobs oder eine SQL-Datenbank zum Speichern von Telefonnummern und Anruftexten verwenden. Weitere Informationen zur Verwendung von Azure Storage-Blobs in PHP finden Sie unter [Übertragen von Objekten nach/aus Azure Blob Storage mit PHP][howto_blob_storage_php]. Informationen zur Verwendung von SQL-Datenbanken in PHP finden Sie unter [Abfragen einer Azure SQL-Datenbank mithilfe von PHP][howto_sql_azure_php].
+* Der Code in **makecall.php** verwendet eine von Twilio bereitgestellte URL ([https://twimlets.com/message][twimlet_message_url]), die eine Antwort in der Twilio Markup Language (TwiML) zurückgibt, die Twilio mitteilt, wie mit dem Aufruf verfahren werden soll. Das zurückgegebene TwiML kann z. B. ein `<Say>`-Verb enthalten, das dazu führt, dass dem Anrufempfänger ein bestimmter Text vorgesprochen wird. Anstelle der von Twilio bereitgestellten URL können Sie auch mit einem eigenen Dienst auf die Twilio-Anfrage antworten. Weitere Informationen finden Sie unter [Verwenden von Twilio für Telefonie- und SMS-Funktionen in PHP][howto_twilio_voice_sms_php]. Weitere Informationen zu TwiML finden Sie unter [https://www.twilio.com/docs/api/twiml][twiml]. Weitere Informationen zu `<Say>` und anderen Twilio-Verben finden Sie unter [https://www.twilio.com/docs/api/twiml/say][twilio_say].
 * Lesen Sie die Twilio-Sicherheitsrichtlinien unter [https://www.twilio.com/docs/security][twilio_docs_security].
 
 Zusätzliche Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][twilio_docs].

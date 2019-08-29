@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2019
+ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67867386"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542986"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -150,6 +150,8 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 ## <a name="variables"></a>Variables
 
 Die folgenden Informationen können bei der Arbeit mit [Variablen](resource-group-authoring-templates.md#variables) hilfreich sein:
+
+* Verwenden Sie die camel-Schreibweise für Variablennamen.
 
 * Verwenden Sie Variablen für Werte, die Sie mehr als einmal in einer Vorlage verwenden müssen. Wenn ein Wert nur einmal verwendet wird, erleichtert ein hartcodierter Wert das Lesen Ihrer Vorlage.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 735013046f65a9dba345c52db883df0b114ba7f2
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048518"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892055"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
@@ -77,8 +77,8 @@ Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verk
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Felds muss auf folgenden Wert festgelegt werden: **AzureKeyVaultSecret**. | Ja |
-| secretName | Der Name des Geheimnisses im Azure-Schlüsseltresor. | Ja |
-| secretVersion | Die Version des Geheimnisses im Azure-Schlüsseltresor.<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein |
+| secretName | Der Name des Geheimnisses in Azure Key Vault | Ja |
+| secretVersion | Die Version des Geheimnisses in Azure Key Vault<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein |
 | store | Verweist auf einen mit Azure Key Vault verknüpften Dienst, in dem Sie die Anmeldeinformationen speichern. | Ja |
 
 **Verwendung der Erstellungsbenutzeroberfläche:**

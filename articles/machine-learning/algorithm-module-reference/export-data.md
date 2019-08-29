@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: c3744803f172edf9fbf2556a12677e8faef370c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027672"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128773"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 

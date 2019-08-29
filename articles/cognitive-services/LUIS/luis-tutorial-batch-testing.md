@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 45520d39c822c734e3fc725bca3375e93983a118
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945902"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637457"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte aus:
 
 ## <a name="review-batch-results"></a>Überprüfen der Batchergebnisse
 
-Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Standardmäßig ist der Filter auf die erste Absicht in der Liste festgelegt. Der Filter enthält alle Absichten und nur einfache und zusammengesetzte Entitäten. Wenn Sie einen [Diagrammabschnitt](luis-concept-batch-test.md#batch-test-results) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt. 
+Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Der Filter enthält Absichten und Entitäten. Wenn Sie einen [Diagrammabschnitt](luis-concept-batch-test.md#batch-test-results) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt. 
 
 Wenn Sie auf das Diagramm zeigen, können Sie mit dem Mausrad die Ansicht im Diagramm vergrößern oder verkleinern. Dies ist hilfreich, wenn es viele Punkte im Diagramm gibt, die nah beieinander gruppiert sind. 
 
@@ -103,27 +103,27 @@ Das Diagramm ist in vier Quadranten unterteilt, von denen zwei in Rot angezeigt 
 
 ### <a name="getjobinformation-test-results"></a>GetJobInformation-Testergebnisse
 
-Die im Filter angezeigten **GetJobInformation**-Testergebnisse zeigen, dass zwei der vier Vorhersagen erfolgreich waren. Klicken Sie auf die Bezeichnung **Falsch positives Ergebnis** oberhalb des oberen rechten Quadranten, damit die Äußerungen unterhalb des Diagramms angezeigt werden. 
+Die im Filter angezeigten **GetJobInformation**-Testergebnisse zeigen, dass zwei der vier Vorhersagen erfolgreich waren. Klicken Sie unten im linken Quadranten auf die Beschriftung **Falsch negativ**, damit die Äußerungen unter dem Diagramm angezeigt werden. 
 
-![Äußerungen aus dem LUIS-Batchtest](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+Drücken Sie auf der Tastatur STRG+E, um zur Beschriftungsansicht zu wechseln und den genauen Text der Benutzeräußerung anzuzeigen. 
 
-Warum wird für zwei Äußerungen anstelle der richtigen Absicht **GetJobInformation** **ApplyForJob** vorhergesagt? Beide Absichten gleichen sich sehr stark in Bezug auf Wortwahl und Wortanordnung. Darüber hinaus stehen für **ApplyForJob** fast dreimal so viele Beispiele zur Verfügung wie für **GetJobInformation**. Diese Ungleichheit bei den Beispieläußerungen hat den Ausschlag für die Absicht **ApplyForJob** gegeben. 
+Die Äußerung `Is there a database position open in Los Colinas?` ist mit _GetJobInformation_ beschriftet, aber das aktuelle Modell hat die Äußerung als _ApplyForJob_ vorhergesagt. 
+
+Für **ApplyForJob** stehen fast dreimal so viele Beispiele zur Verfügung wie für **GetJobInformation**. Diese Ungleichheit bei den Beispieläußerungen hat den Ausschlag für die Absicht **ApplyForJob** gegeben, was die falsche Vorhersage verursacht hat. 
 
 Beachten Sie, dass beide Absichten die gleiche Anzahl von Fehlern aufweisen. Eine falsche Vorhersage bei einer Absicht wirkt sich auch auf die andere Absicht aus. Beide Absichten weisen Fehler auf, da die Äußerungen für beide Absichten falsch vorhergesagt wurden. 
 
-![Fehler bei LUIS-Batchtestfiltern](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-Bei den Äußerungen, die dem obersten Punkt im Abschnitt **Falsch positives Ergebnis** entsprechen, handelt es sich um `Can I apply for any database jobs with this resume?` und `Can I apply for any database jobs with this resume?`. Bei der ersten Äußerung wurde das Wort `resume` nur in **ApplyForJob** verwendet. Bei der zweiten Äußerung wurde das Wort `apply` nur in der Absicht **ApplyForJob** verwendet.
-
-## <a name="fix-the-app"></a>Problembehebung in der App
+## <a name="how-to-fix-the-app"></a>Korrigieren der App
 
 Ziel dieses Abschnitts ist es, alle Äußerungen für **GetJobInformation** durch Korrigieren der App korrekt vorherzusagen. 
 
-Eine scheinbar schnelle Lösung wäre es, die Äußerungen aus dieser Batchdatei der richtigen Absicht hinzuzufügen. Davon ist jedoch abzuraten. Die LUIS-App sollte diese Äußerungen richtig vorhersagen, ohne dass diese als Beispiele hinzugefügt werden. 
+Eine scheinbar schnelle Lösung wäre es, die Äußerungen aus dieser Batchdatei der richtigen Absicht hinzuzufügen. Davon wird abgeraten. Die LUIS-App sollte diese Äußerungen richtig vorhersagen, ohne dass diese als Beispiele hinzugefügt werden. 
 
 Möglicherweise gedenken Sie auch, Äußerungen aus **ApplyForJob** zu entfernen, bis die Anzahl der Äußerungen der von **GetJobInformation** entspricht. Hierdurch werden zwar eventuell die Testergebnisse korrigiert, die LUIS-App würde diese Absicht beim nächsten Mal allerdings trotzdem nicht korrekt vorhersagen. 
 
-Die erste Lösung besteht darin, weitere Äußerungen zu **GetJobInformation** hinzuzufügen. Die zweite Lösung wäre, die Gewichtung von Wörtern wie `resume` und `apply` der Gewichtung der Absicht **ApplyForJob** nach unten hin anzugleichen. 
+Die Korrektur besteht darin, weitere Äußerungen zu **GetJobInformation** hinzuzufügen. Denken Sie daran, die Länge der Äußerung, die Wortwahl und die Wortanordnung zu variieren, während Sie gleichzeitig die Absicht verfolgen, Stelleninformationen zu finden und sich _nicht_ um die Stelle zu bewerben.
 
 ### <a name="add-more-utterances"></a>Hinzufügen weiterer Äußerungen
 
@@ -161,15 +161,13 @@ Um sicherzustellen, dass die Äußerungen im Batchtest richtig vorhergesagt werd
 
 1. Wählen Sie auf der oberen Navigationsleiste **Test** aus. Wenn die Batchergebnisse noch geöffnet sind, wählen Sie **Zurück zur Liste** aus.  
 
-2. Klicken Sie auf die Schaltfläche mit Auslassungspunkten ( **...** ) rechts neben dem Batchnamen und dann auf ***Dataset ausführen***. Warten Sie, bis der Batchtest abgeschlossen ist. Beachten Sie, dass die Schaltfläche **Ergebnisse anzeigen** nun in Grün angezeigt wird. Dies bedeutet, dass der gesamte Batch erfolgreich ausgeführt wurde.
+1. Klicken Sie rechts neben dem Batchnamen auf die Schaltfläche mit Auslassungspunkten ( **...** ) und dann auf ***Ausführen***. Warten Sie, bis der Batchtest abgeschlossen ist. Beachten Sie, dass die Schaltfläche **Ergebnisse anzeigen** nun in Grün angezeigt wird. Dies bedeutet, dass der gesamte Batch erfolgreich ausgeführt wurde.
 
-3. Wählen Sie **See results** (Ergebnisse anzeigen) aus. Links neben dem Namen aller Absichten sollten grüne Symbole angezeigt werden. 
-
-    ![Screenshot der LUIS-App mit hervorgehobener Schaltfläche „Batchergebnisse“](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. Wählen Sie **See results** (Ergebnisse anzeigen) aus. Links neben dem Namen aller Absichten sollten grüne Symbole angezeigt werden. 
 
 ## <a name="create-batch-file-with-entities"></a>Erstellen einer Batchdatei mit Entitäten 
 
-Um Entitäten in einem Batchtest zu überprüfen, müssen die Entitäten in der JSON-Batchdatei mit Bezeichnungen versehen werden. Nur die per maschinellem Lernen trainierten Entitäten werden verwendet, d. h. einfache und zusammengesetzte Entitäten. Fügen Sie keine Entitäten hinzu, die nicht per Machine Learning trainiert wurden, da sie immer entweder über reguläre Ausdrücke oder über explizite Textübereinstimmungen gefunden werden.
+Um Entitäten in einem Batchtest zu überprüfen, müssen die Entitäten in der JSON-Batchdatei mit Bezeichnungen versehen werden. 
 
 Die Entitätsvielfalt für die Gesamtwortzahl ([token](luis-glossary.md#token)) kann sich auf die Qualität der Vorhersagen auswirken. Stellen Sie sicher, dass die für die Absicht bereitgestellten Trainingsdaten mit bezeichneten Äußerungen Entitäten mit unterschiedlichen Längen enthalten. 
 
@@ -178,7 +176,6 @@ Wenn Sie zum ersten Mal Batchdateien schreiben und testen, sollten Sie für den 
 Der Wert einer **Job**-Entität, die in den Testäußerungen angegeben wurde, besteht in der Regel aus einem oder zwei Wörtern, wobei einige Beispiele mehr Wörter enthalten. Wenn _Ihre eigene_ Personalabteilungs-App üblicherweise Auftragsnamen mit einer Vielzahl von Wörtern enthält, wären die mit der **Job**-Entität in dieser App bezeichneten Beispieläußerungen nicht gut geeignet.
 
 1. Erstellen Sie `HumanResources-entities-batch.json` in einem Text-Editor, wie etwa [VSCode](https://code.visualstudio.com/), oder [laden Sie](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) es herunter.
-
 
 2. Fügen Sie in der JSON-formatierten Batchdatei ein Array von Objekten hinzu, das Äußerungen mit der **Absicht** enthält, für die im Test Vorhersagen erzeugt und für die Standorte von Entitäten in der Äußerung vorhergesagt werden sollen. Da eine Entität auf Token basiert, achten Sie darauf, dass jede Entität mit einem Zeichen beginnt und endet. Die Äußerung darf nicht mit einem Leerraum beginnen oder enden. Denn dieser verursacht einen Fehler beim Import der Batchdatei.  
 
@@ -200,8 +197,6 @@ Der Wert einer **Job**-Entität, die in den Testäußerungen angegeben wurde, be
 6. Wählen Sie die Schaltfläche **Ausführen**. Warten Sie, bis der Test abgeschlossen ist.
 
 7. Wählen Sie **See results** (Ergebnisse anzeigen) aus.
-
-[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="review-entity-batch-results"></a>Überprüfen der Entitätsbatchergebnisse
 

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 15454d4b3f0abad6166c4b163df6c8652669d649
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6468e62e9969aa87d51e25ed220bf7d4bed989e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810914"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971568"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -112,6 +112,7 @@ Supportanfragen:
 
 - Supportanfragen für delegierte Ressourcen können Sie auf dem Blatt **Hilfe und Support** im Azure-Portal öffnen (indem Sie den für den delegierten Bereich verfügbaren Supportplan auswählen).
 
+## <a name="current-limitations"></a>Aktuelle Einschränkungen
 Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 
 - Von Azure Resource Manager verarbeitete Anforderungen können mithilfe der delegierten Azure-Ressourcenverwaltung durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (z. B. Zugriff auf Key Vault-Geheimnisse oder Zugriff auf Speicherdaten) verarbeitet werden, werden nicht von der delegierten Azure-Ressourcenverwaltung unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge. 

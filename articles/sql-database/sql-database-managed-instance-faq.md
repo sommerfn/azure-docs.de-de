@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2efeb37f8b98f4cf9a29ec8a6976146b81aab26b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779046"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641074"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -36,8 +36,7 @@ Informationen zu den verfügbaren Dienstebenen und ihren Merkmalen finden Sie un
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>Wo finde ich die bekannten Probleme und Fehler?
 
-Informationen zu Fehlern und bekannten Problemen finden Sie unter [Verhaltensänderungen](sql-database-managed-instance-transact-sql-information.md#Changes) und [Bekannte Probleme](sql-database-managed-instance-transact-sql-information.md#Issues).
-
+Programmfehler und bekannte Probleme werden unter [Bekannte Probleme](sql-database-managed-instance-transact-sql-information.md#Issues) erörtert.
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Kann eine verwaltete Instanz den gleichen Namen wie ein lokaler SQL Server haben?
 

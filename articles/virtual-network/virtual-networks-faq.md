@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035331"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892022"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -29,9 +29,11 @@ Ein Azure Virtual Network (VNet) ist eine Darstellung Ihres eigenen Netzwerks in
 
 Verwenden Sie VNets für Folgendes:
 
-* Erstellen eines dedizierten VNet, das auf die Cloud beschränkt ist: Manchmal benötigen Sie keine standortübergreifende Konfiguration für Ihre Lösung. Wenn Sie ein VNet erstellen, können die Dienste und virtuellen Computer des VNet direkt und sicher in der Cloud miteinander kommunizieren. Sie können trotzdem in Ihrer Lösung Endpunktverbindungen für die virtuellen Computer und Dienste konfigurieren, die eine Internetkommunikation erfordern.
-* Sicheres Erweitern des Rechenzentrums: Mit VNets können Sie herkömmliche Standort-zu-Standort-VPNs (S2S) erstellen, um die Kapazität des Rechenzentrums sicher zu skalieren. S2S-VPNs verwenden IPsec, um eine sichere Verbindung zwischen dem unternehmenseigenen VPN-Gateway und Azure bereitzustellen.
-* Unterstützung von Hybrid Cloud-Szenarios: VNets bieten flexible Möglichkeiten, verschiedene Hybrid Cloud-Szenarios zu unterstützen. Sie können cloudbasierte Anwendungen auf sichere Weise mit beliebigen lokalen Systemen wie z. B. Mainframes oder Unix-Systemen verbinden.
+* Erstellen eines dedizierten privaten VNET, das auf die Cloud beschränkt ist. Manchmal benötigen Sie keine standortübergreifende Konfiguration für Ihre Lösung. Wenn Sie ein VNet erstellen, können die Dienste und virtuellen Computer des VNet direkt und sicher in der Cloud miteinander kommunizieren. Sie können trotzdem in Ihrer Lösung Endpunktverbindungen für die virtuellen Computer und Dienste konfigurieren, die eine Internetkommunikation erfordern.
+
+* Sicheres Erweitern des Rechenzentrums. Mit VNets können Sie herkömmliche Standort-zu-Standort (S2S)-VPNs erstellen, um die Kapazität des Rechenzentrums sicher zu skalieren. S2S-VPNs verwenden IPsec, um eine sichere Verbindung zwischen dem unternehmenseigenen VPN-Gateway und Azure bereitzustellen.
+
+* Unterstützung von Hybrid Cloud-Szenarien. VNets bieten flexible Möglichkeiten, verschiedene Hybrid Cloud-Szenarios zu unterstützen. Sie können cloudbasierte Anwendungen auf sichere Weise mit beliebigen lokalen Systemen wie z. B. Mainframes oder Unix-Systemen verbinden.
 
 ### <a name="how-do-i-get-started"></a>Wie fange ich an?
 Auf der Webseite [Dokumentation zu virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/) finden Sie Informationen zu den ersten Schritten. Hierbei handelt es sich um Übersichts- und Bereitstellungsinformationen für alle VNET-Features.

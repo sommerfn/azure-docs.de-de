@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815298"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051289"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
@@ -48,54 +48,38 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 
 In der folgenden Tabelle werden die Mindestanforderungen und Empfehlungen für CPU-Kerne (mindestens 2,6 GHz) und Arbeitsspeicher in Gigabyte (GB) angegeben, die für jeden Container für die Textanalyse zugewiesen werden müssen.
 
-| Container | Minimum | Empfohlen | TPS<br>(Minimum, Maximum)|
-|-----------|---------|-------------|--|
-|Schlüsselwortextraktion | Ein Kern, 2 GB Arbeitsspeicher | Ein Kern, 4 GB Arbeitsspeicher |15, 30|
-|Spracherkennung | Ein Kern, 2 GB Arbeitsspeicher | Ein Kern, 4 GB Arbeitsspeicher |15, 30|
-|Standpunktanalyse | Ein Kern, 2 GB Arbeitsspeicher | Ein Kern, 4 GB Arbeitsspeicher |15, 30|
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
+
+[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
+
+#### <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
+
+[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
+
+#### <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
+
+***
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 * TPS: Transaktionen pro Sekunde
 
 Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
-In der Microsoft Container Registry stehen Containerimages für die Textanalyse zur Verfügung.
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-| Container | Repository |
-|-----------|------------|
-|Schlüsselwortextraktion | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-|Spracherkennung | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Standpunktanalyse| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+#### <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
 
-Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus Microsoft Container Registry herunterzuladen.
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-Eine vollständige Beschreibung der verfügbaren Tags für die Container für die Textanalyse finden Sie in den folgenden Containern im Docker-Hub:
+#### <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
 
-* [Schlüsselbegriffserkennung](https://go.microsoft.com/fwlink/?linkid=2018757)
-* [Sprachenerkennung](https://go.microsoft.com/fwlink/?linkid=2018759)
-* [Standpunktanalyse](https://go.microsoft.com/fwlink/?linkid=2018654)
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
-Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
-
-### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Docker-Pullvorgang für den Schlüsselbegriffserkennungs-Container
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
-
-### <a name="docker-pull-for-the-language-detection-container"></a>Docker-Pullvorgang für den Sprachenerkennungscontainer
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-container"></a>Docker-Pullvorgang für den Stimmungscontainer
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
+***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,23 +96,19 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 Es sind [Beispiele](../text-analytics-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
 
-### <a name="run-container-example-of-docker-run-command"></a>Beispiel zum Ausführen eines Containers mit dem „docker run“-Befehl
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-Dieser Befehl:
+#### <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
 
-* Führt einen Schlüsselbegriffserkennungs-Container auf der Grundlage des Containerimages aus.
-* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu
-* Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
+#### <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+
+[!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
+
+***
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
@@ -139,7 +119,7 @@ Dieser Befehl:
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit.
 
-Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
 
 <!--  ## Validate container is running -->
 

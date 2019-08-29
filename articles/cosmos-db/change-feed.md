@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467943"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615667"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
-Zur Unterstützung des Änderungsfeeds in Azure Cosmos DB wird gelauscht, ob in einem Azure Cosmos DB-Container Änderungen auftreten. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Die Änderungen bleiben erhalten und können asynchron und inkrementell verarbeitet werden, und die Ausgabe kann über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden. 
+Zur Unterstützung des Änderungsfeeds in Azure Cosmos DB wird gelauscht, ob in einem Azure Cosmos-Container Änderungen auftreten. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Die Änderungen bleiben erhalten und können asynchron und inkrementell verarbeitet werden, und die Ausgabe kann über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden. 
 
 Azure Cosmos DB eignet sich besonders gut für IoT-, Spiele-, Verkaufs- und Vorgangsprotokollierungsanwendungen. Ein allgemeines Entwurfsmuster in diesen Anwendungen ist die Verwendung von Datenänderungen, um weitere Aktionen auszulösen. Beispiele für weitere Aktionen sind:
 
@@ -56,7 +56,7 @@ Wenn in einem Azure Cosmos-Konto mit mehreren Regionen ein Failover einer Schrei
 
 Wenn eine TTL-Eigenschaft (Time to Live, Gültigkeitsdauer) für ein Element auf „-1“ festgelegt ist, bleibt der Änderungsfeed dauerhaft erhalten. Wenn die Daten nicht gelöscht werden, verbleiben sie im Änderungsfeed.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Änderungsfeed und „_etag“, „_lsn“ oder „_ts“
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Änderungsfeed und „_etag“, „_lsn“ oder „_ts“
 
 Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird. Sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner und wird zur Gleichzeitigkeitssteuerung verwendet, er gibt die Version des Elements an. „ETag“ wird dagegen für die Sequenzierung des Feeds verwendet.
 

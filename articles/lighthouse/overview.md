@@ -3,16 +3,16 @@ title: Was ist Azure Lighthouse?
 description: Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste für Ihre Kunden bereitstellen, bei denen bedarfsorientiert eine höhere Automatisierung und Effizienz erzielt werden können.
 author: JnHs
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: eb55af5a1121eb193bb76efc9f9e0b833f4b5a1f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810794"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011914"
 ---
 # <a name="what-is-azure-lighthouse"></a>Was ist Azure Lighthouse?
 
@@ -42,3 +42,8 @@ Azure Lighthouse umfasst mehrere Möglichkeiten zur Optimierung von Kundenbindun
 
 > [!NOTE]
 > Die oben beschriebenen Funktionen sind zurzeit in Public Clouds verfügbar. Informationen zur regionalen Verfügbarkeit einzelner Dienste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informationen zur [delegierten Azure-Ressourcenverwaltung](concepts/azure-delegated-resource-management.md)
+- Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](concepts/cross-tenant-management-experience.md).

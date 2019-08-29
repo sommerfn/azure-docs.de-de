@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663875"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557818"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Gewusst wie: Analysieren Ihrer Lernschleife mit einer Offlineauswertung.
 
@@ -30,7 +30,7 @@ Weitere Informationen finden Sie unter [Offlineauswertung](concepts-offline-eval
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1. Sie müssen eine Personalisierungsschleife konfiguriert haben.
-1. Die Protokolle der Personalisierungsschleife müssen mindestens 50.000 Ereignisse enthalten, um aussagekräftige Ergebnisse zu erzielen.
+1. Die Personalisierungsschleife muss eine repräsentative Menge an Daten aufweisen. Für sinnvolle Bewertungsergebnisse werden mindestens 50.000 Ereignisse in den Protokollen empfohlen.
 
 Optional haben Sie möglicherweise auch zuvor _Lernrichtliniendateien_ exportiert, die Sie in der gleichen Auswertung vergleichen und testen können.
 

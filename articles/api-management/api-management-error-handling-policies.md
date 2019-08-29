@@ -10,16 +10,15 @@ ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df7b14c8221ab7837cabe968a82cfc5d5d9050c4
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704437"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072582"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fehlerbehandlung bei API Management-Richtlinien
 
@@ -77,7 +76,7 @@ Der Richtlinienabschnitt `on-error` kann in jedem Bereich verwendet werden. Zude
 
  Wenn ein Fehler auftritt und das Steuerelement zum Richtlinienabschnitt `on-error` wechselt, wird der Fehler in der Eigenschaft [context.LastError](api-management-policy-expressions.md#ContextVariables) gespeichert. Diese kann von Richtlinien im Abschnitt `on-error` aufgerufen werden. LastError weist folgende Eigenschaften auf.  
   
-| NAME       | Type   | BESCHREIBUNG                                                                                               | Erforderlich |
+| NAME       | type   | BESCHREIBUNG                                                                                               | Erforderlich |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
 | `Source`   | Zeichenfolge | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.     | Ja      |
 | `Reason`   | Zeichenfolge | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein       |

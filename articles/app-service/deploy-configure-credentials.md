@@ -8,18 +8,17 @@ manager: jpconnoc
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 52bbc907d91dd4bf9066daf14d0d5de1b759b92f
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: fc9445b64baae0e625b62356fee381329b01e8fd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558563"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098496"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.

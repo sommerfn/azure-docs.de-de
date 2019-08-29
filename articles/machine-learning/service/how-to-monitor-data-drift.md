@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036192"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128275"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 
@@ -40,7 +40,7 @@ Mit Azure Machine Learning Service können Sie die Eingaben in ein auf AKS berei
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Überwachen von Datenabweichungen in Azure Machine Learning Service
 
-Mit Azure Machine Learning Service werden Datenabweichungen anhand von Datasets oder Bereitstellungen überwacht. Zum Überwachen von Datenabweichungen wird ein Baseline-Dataset angegeben. Dies ist normalerweise das Trainingsdataset für ein Modell. Ein zweites Dataset – normalerweise gesammelte Modelleingabedaten einer Bereitstellung – wird basierend auf dem Baseline-Dataset getestet. Für beide Datasets wird eine [Profilerstellung](how-to-explore-prepare-data.md#explore-with-summary-statistics) durchgeführt, und sie werden in den Dienst für die Überwachung von Datenabweichungen eingegeben. Ein Machine Learning-Modell wird trainiert, um Unterschiede zwischen den beiden Datasets zu ermitteln. Die Leistung des Modells wird in den Abweichungskoeffizienten konvertiert, mit dem die Größenordnung der Abweichung zwischen den beiden Datasets gemessen wird. Mit der [Modellinterpretierbarkeit](machine-learning-interpretability-explainability.md) werden die Features berechnet, die zum Abweichungskoeffizienten beigetragen haben. Über das Datasetprofil werden statistische Informationen zu jedem Feature nachverfolgt. 
+Mit Azure Machine Learning Service werden Datenabweichungen anhand von Datasets oder Bereitstellungen überwacht. Zum Überwachen von Datenabweichungen wird ein Baseline-Dataset angegeben. Dies ist normalerweise das Trainingsdataset für ein Modell. Ein zweites Dataset – normalerweise gesammelte Modelleingabedaten einer Bereitstellung – wird basierend auf dem Baseline-Dataset getestet. Für beide Datasets wird eine Profilerstellung durchgeführt, und sie werden in den Dienst für die Überwachung von Datenabweichungen eingegeben. Ein Machine Learning-Modell wird trainiert, um Unterschiede zwischen den beiden Datasets zu ermitteln. Die Leistung des Modells wird in den Abweichungskoeffizienten konvertiert, mit dem die Größenordnung der Abweichung zwischen den beiden Datasets gemessen wird. Mit der [Modellinterpretierbarkeit](machine-learning-interpretability-explainability.md) werden die Features berechnet, die zum Abweichungskoeffizienten beigetragen haben. Über das Datasetprofil werden statistische Informationen zu jedem Feature nachverfolgt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -178,16 +178,7 @@ Damit Sie benutzerdefinierte Benachrichtigungen und Aktionen einrichten können,
 
 ## <a name="retrain-your-model-after-drift"></a>Erneutes Trainieren des Modells nach den Datenabweichungen
 
-Wenn Datenabweichungen die Leistung des bereitgestellten Modells beeinträchtigen, muss das Modell erneut trainiert werden. Die folgende [`diff()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-)-Methode vermittelt Ihnen einen ersten Eindruck von den Änderungen zwischen dem alten und neuen Trainingsdataset. 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-Basierend auf der Ausgabe des vorherigen Codes sollten Sie das Modell möglicherweise erneut trainieren. Fahren Sie zu diesem Zweck mit den folgenden Schritten fort.
+Wenn Datenabweichungen die Leistung des bereitgestellten Modells beeinträchtigen, muss das Modell erneut trainiert werden. Fahren Sie zu diesem Zweck mit den folgenden Schritten fort.
 
 * Untersuchen Sie die gesammelten Daten, und bereiten Sie die Daten zum Trainieren des neuen Modells vor.
 * Teilen Sie sie in Trainings- und Testdaten auf.

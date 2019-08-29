@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: b99ae2abdc4e062588174b6d945b6592ae8e58ed
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707857"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101502"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Informationen zum Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten 
 Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual Desktop Access pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) können Sie Ihre Windows 10-Lizenzen mittels mehrinstanzenfähiger Hostingrechte für Windows 10 in der Cloud verwenden und virtuelle Windows 10-Computer in Azure ausführen, ohne eine weitere Lizenz erwerben zu müssen. Weitere Informationen finden Sie unter [Mehrinstanzenfähiges Hosting für Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).

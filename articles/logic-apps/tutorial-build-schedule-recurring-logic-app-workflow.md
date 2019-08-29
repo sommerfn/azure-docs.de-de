@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec29eef7e733155b205d4feda844883bbc4496c9
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884685"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051748"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Überprüfen der Verkehrslage gemäß eines Zeitplans mit Azure Logic Apps
 
@@ -35,17 +36,17 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ![Grundlegende Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>, bevor Sie beginnen.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Schnellstartanleitung wird ein Outlook.com-Konto verwendet. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
-* Um die Reisezeit für eine Route zu ermitteln, benötigen Sie einen Zugriffsschlüssel für die Bing Maps-API. Führen Sie zum Abrufen dieses Schlüssels die Schritte zum <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Abrufen eines Bing Maps-Schlüssels</a> aus. 
+* Um die Reisezeit für eine Route zu ermitteln, benötigen Sie einen Zugriffsschlüssel für die Bing Maps-API. Führen Sie zum Abrufen dieses Schlüssels die Schritte zum [Abrufen eines Bing Maps-Schlüssels](https://msdn.microsoft.com/library/ff428642.aspx) aus. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
+Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 
@@ -126,7 +127,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
    | Einstellung | Wert | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **Verbindungsname** | BingMapsConnection | Geben Sie einen Namen für die Verbindung an. | 
-   | **API-Schlüssel** | <*Ihr Bing Maps-Schlüssel*> | Geben Sie den Bing Maps-Schlüssel ein, den Sie zuvor abgerufen haben. Falls Sie keinen Bing Maps-Schlüssel besitzen, lesen Sie die Informationen zum <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Abrufen eines Schlüssels</a>. | 
+   | **API-Schlüssel** | <*Ihr Bing Maps-Schlüssel*> | Geben Sie den Bing Maps-Schlüssel ein, den Sie zuvor abgerufen haben. Falls Sie keinen Bing Maps-Schlüssel besitzen, lesen Sie die Informationen zum [Abrufen eines Schlüssels](https://msdn.microsoft.com/library/ff428642.aspx). | 
    | | | |  
 
 4. Nennen Sie die Aktion wie folgt: ```Get route and travel time with traffic```
@@ -172,7 +173,7 @@ Die vorherige Aktion **Get route** (Route abrufen) gibt im Feld **Travel Duratio
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Name** | travelTime | Der Name für die Variable | 
-   | **Typ** | Ganze Zahl  | Der Datentyp für die Variable | 
+   | **Typ** | Integer | Der Datentyp für die Variable | 
    | **Wert** | Ein Ausdruck, der die aktuelle Reisezeit von Sekunden in Minuten umwandelt. (Sehen Sie sich die Schritte unterhalb dieser Tabelle an.) | Der Anfangswert für die Variable | 
    |||| 
 
@@ -194,7 +195,7 @@ Die vorherige Aktion **Get route** (Route abrufen) gibt im Feld **Travel Duratio
 
       ![Eingeben des Ausdrucks „div(,60)“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
-   3. Positionieren Sie den Cursor innerhalb des Ausdrucks zwischen der linken Klammer (**(**) und dem Komma (**,**). 
+   3. Positionieren Sie den Cursor innerhalb des Ausdrucks zwischen der linken Klammer ( **(** ) und dem Komma ( **,** ). 
    Klicken Sie auf **Dynamischer Inhalt**.
 
       ![Positionieren des Cursors, Auswählen von „Dynamischer Inhalt“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
@@ -283,7 +284,7 @@ Fügen Sie nun eine Aktion hinzu, die Ihnen eine E-Mail sendet, wenn die Reiseze
 
       ![Eingeben eines Ausdrucks zum Berechnen der zusätzlichen Reisezeit](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   4. Positionieren Sie den Cursor innerhalb des Ausdrucks zwischen der linken Klammer (**(**) und dem Komma (**,**). Klicken Sie auf **Dynamischer Inhalt**.
+   4. Positionieren Sie den Cursor innerhalb des Ausdrucks zwischen der linken Klammer ( **(** ) und dem Komma ( **,** ). Klicken Sie auf **Dynamischer Inhalt**.
 
       ![Fortsetzen der Erstellung eines Ausdrucks zum Berechnen der zusätzlichen Reisezeit](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 

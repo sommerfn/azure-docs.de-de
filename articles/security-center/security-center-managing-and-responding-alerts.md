@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
-ms.author: rkarlin
-ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 39849514d772f128434daad590de22f941245af7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235772"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516097"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Azure Security Center verwenden, um Sicherheitswarnungen zu verwalten und auf diese zu reagieren.
@@ -58,7 +58,7 @@ Im unteren Bereich dieser Seite werden Details zu den einzelnen Warnungen angeze
 * **Zustand:** Der aktuelle Zustand für diese Warnung. Es gibt zwei Arten von Zuständen:
   * **Aktiv:** Die Sicherheitswarnung wurde erkannt.
   * **Verworfen:** Die Sicherheitswarnung wurde vom Benutzer verworfen. Dieser Status wird üblicherweise für Warnungen verwendet, die untersucht und behoben oder als harmlos eingestuft wurden.
-* **Schweregrad:** Der Schweregrad („Hoch“, „Mittel“ oder „Niedrig“).
+* **Schweregrad**: Der Schweregrad („Hoch“, „Mittel“ oder „Niedrig“).
 
 > [!NOTE]
 > Von Security Center generierte Sicherheitswarnungen werden auch im Azure-Aktivitätsprotokoll angezeigt. Weitere Informationen zum Zugreifen auf das Azure-Aktivitätsprotokoll finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
@@ -96,7 +96,7 @@ In diesem Fall bezieht sich die ausgelöste Warnung auf eine verdächtige RDP-Ak
 
 Das Feld **Beschreibung** enthält weitere Informationen zu diesem Ereignis. Dank dieser zusätzlichen Details erhalten Sie Informationen dazu, wodurch die Sicherheitswarnung ausgelöst wurde, sowie die Zielressource, die IP-Quelladresse (falls zutreffend) und Empfehlungen zur Lösung.  In einigen Fällen ist die IP-Quelladresse leer (nicht verfügbar), da nicht alle Windows-Sicherheitsereignisprotokolle die IP-Adresse enthalten.
 
-Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis. In einigen Fällen müssen Sie möglicherweise weitere Azure-Funktionen verwenden, um die empfohlenen Lösungen zu implementieren. Beispielsweise kann die Abhilfe für diesen Angriff darin bestehen, die IP-Adresse, die den Angriff generiert, durch eine [Netzwerk-ACL](../virtual-network/virtual-networks-acl.md) oder eine Regel für die [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md#security-rules) auf eine Negativliste zu setzen. Weitere Informationen zu den verschiedenen Arten von Warnungen finden Sie unter [Sicherheitswarnungen nach Typ in Azure Security Center](security-center-alerts-type.md).
+Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis. In einigen Fällen müssen Sie möglicherweise weitere Azure-Funktionen verwenden, um die empfohlenen Lösungen zu implementieren. Beispielsweise kann die Abhilfe für diesen Angriff darin bestehen, die IP-Adresse, die den Angriff generiert, durch eine [Netzwerk-ACL](../virtual-network/virtual-networks-acl.md) oder eine Regel für die [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md#security-rules) nicht zuzulassen. Weitere Informationen zu den verschiedenen Arten von Warnungen finden Sie unter [Arten von Sicherheitswarnungen](security-center-alerts-overview.md#security-alert-types).
 
 > [!NOTE]
 > Für Security Center wurde als eingeschränkte Vorschauversion ein neuer Satz von Erkennungen veröffentlicht, die anhand von AuditD-Datensätzen (einem allgemeinen Überwachungsframework) schädliches Verhalten auf Linux-Computern erkennen. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_linuxdetections@microsoft.com) mit Ihren Abonnement-IDs.

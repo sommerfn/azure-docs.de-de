@@ -1,18 +1,18 @@
 ---
 title: Leistungstipps für Azure Cosmos DB und Java
-description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB-Datenbanken vertraut.
+description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos-Datenbanken vertraut.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 7d6427db7090b3419fbe67535baeb4a5df6a5d65
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261309"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616762"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Leistungstipps für Azure Cosmos DB und Java
 
@@ -59,7 +59,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
    <a id="same-region"></a>
 2. **Platzieren der Clients in der gleichen Azure-Region**
 
-    Platzieren Sie nach Möglichkeit sämtliche Anwendungen, die Azure Cosmos DB aufrufen, in der gleichen Region wie die Azure Cosmos DB-Datenbank. Damit Sie einen ungefähren Vergleich haben: Azure Cosmos DB-Aufrufe aus derselben Region werden normalerweise innerhalb von ca. 1 bis 2 ms abgeschlossen, während die Latenz zwischen West- und Ostküste der USA mehr als 50 ms beträgt. Diese Latenz variiert ggf. von Anforderung zu Anforderung und ist abhängig von der Route, die die Anforderung zwischen dem Client und der Grenze des Azure-Datencenters nimmt. Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gleichen Azure-Region wie der bereitgestellte Azure Cosmos DB-Endpunkt befindet. Eine Liste mit den verfügbaren Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/#services).
+    Platzieren Sie nach Möglichkeit sämtliche Anwendungen, die Azure Cosmos DB aufrufen, in der gleichen Region wie die Azure Cosmos-Datenbank. Damit Sie einen ungefähren Vergleich haben: Azure Cosmos DB-Aufrufe aus derselben Region werden normalerweise innerhalb von ca. 1 bis 2 ms abgeschlossen, während die Latenz zwischen West- und Ostküste der USA mehr als 50 ms beträgt. Diese Latenz variiert ggf. von Anforderung zu Anforderung und ist abhängig von der Route, die die Anforderung zwischen dem Client und der Grenze des Azure-Datencenters nimmt. Die geringste Latenz erzielen Sie, wenn sich die aufrufende Anwendung in der gleichen Azure-Region wie der bereitgestellte Azure Cosmos DB-Endpunkt befindet. Eine Liste mit den verfügbaren Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/#services).
 
     ![Abbildung der Azure Cosmos DB-Verbindungsrichtlinie](./media/performance-tips/same-region.png)
    

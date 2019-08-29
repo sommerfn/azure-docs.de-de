@@ -3,15 +3,15 @@ title: 'Verbindungsrichtlinie: Azure Functions-Trigger für Cosmos DB'
 description: Hier erfahren Sie, wie Sie die vom Azure Functions-Trigger für Cosmos DB verwendete Verbindungsrichtlinie konfigurieren.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 359b6a905e64046aad62b70ae53b993c86884ad2
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335629"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093618"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Konfigurieren der vom Azure Functions-Trigger für Cosmos DB verwendeten Verbindungsrichtlinie
 

@@ -4,14 +4,14 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: e23d7c571a010e5bfb42e5f15368e0194272ed53
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723342"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624298"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Beheben von Problemen beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -33,13 +33,17 @@ Einige Dienste erfordern zusätzliche Überlegungen beim Verschieben von Ressour
 * [App Services](./move-limitations/app-service-move-limitations.md)
 * [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [Klassisches Bereitstellungsmodell](./move-limitations/classic-model-move-limitations.md)
+* [Netzwerk](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
 * [Virtuelle Computer](./move-limitations/virtual-machines-move-limitations.md)
-* [Virtuelle Netzwerke](./move-limitations/virtual-network-move-limitations.md)
 
 ## <a name="large-requests"></a>Umfangreiche Anforderungen
 
 Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt sofort einen Fehler aus, wenn ein einziger Vorgang mehr als 800 Ressourcen umfasst. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
+
+## <a name="resource-not-in-succeeded-state"></a>Ressource nicht in erfolgreichem Zustand
+
+Wenn Sie eine Fehlermeldung erhalten, die besagt, dass eine Ressource nicht verschoben werden kann, weil sie sich nicht in einem erfolgreichen Zustand befindet, ist es möglicherweise eine abhängige Ressource, die die Verschiebung blockiert. Informationen dazu finden Sie unter [Zustand von abhängigen Ressourcen](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

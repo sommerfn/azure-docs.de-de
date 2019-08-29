@@ -11,12 +11,12 @@ ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104985"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050690"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Überwachen und Verwalten von Twitter mithilfe von Azure Logic Apps
 
@@ -29,7 +29,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem Twitter-Konto erhalten un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Ihr Twitter-Konto und Benutzeranmeldeinformationen
 

@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bba38bb69e5abaa94b01308924fe0c6bf07ca08e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae28b185aa44ca22d59204826036435a10c64e91
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919976"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066791"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Benutzerdefiniertes Image, mehrere Container oder integriertes Plattformimage?
 

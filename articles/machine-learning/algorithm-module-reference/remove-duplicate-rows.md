@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: dce90d911085c1f7330a2e0952bb9576c1d765fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027778"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128538"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
 

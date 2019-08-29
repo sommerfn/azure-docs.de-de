@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c7b9e3a9eb5c906fa598da9c8c547cb542ecb719
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178644"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036708"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(VERALTET) Schützen von Docker-Containern in Azure Container Service
 
@@ -34,7 +34,7 @@ Die Sicherheit spielt in Unternehmen eine sehr große Rolle, daher sollten sie I
 
 Auch wenn Sie eine private Registrierung verwenden, ist es ratsam, Lösungen für die Imageüberprüfung zu verwenden, um die Sicherheit zu erhöhen. Jede Softwareschicht in einem Containerimage ist potenziell anfällig für Sicherheitsrisiken, unabhängig von den anderen Schichten im Containerimage. Da Unternehmen ihre Produktionsworkloads in zunehmendem Maß mithilfe von Containertechnologien bereitstellen, wird die Überprüfung von Images immer wichtiger, um Sicherheitsbedrohungen von ihren Organisationen abzuwenden. 
 
-Lösungen für die Überwachung und Überprüfung der Sicherheit, wie z.B. [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) und [Aqua Security](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry), können verwendet werden, um Containerimages in einer privaten Registrierung zu überprüfen und potenzielle Sicherheitsrisiken zu identifizieren. Sie müssen wissen, wie tief greifend die Überprüfung ist, die von den verschiedenen Lösungen vorgenommen wird. Eine Lösungen überprüfen die Imageschichten möglicherweise nur oberflächlich auf bekannte Schwachstellen. Diese Lösungen können möglicherweise keine Schichten einer Software im Image überprüfen, die mit einer bestimmten Paketmanagersoftware erstellt wurde. Andere Lösungen dagegen bieten einer tiefer greifende Integration und können Sicherheitslücken in jeder gepackten Software finden.
+Lösungen für die Überwachung und Überprüfung der Sicherheit, wie z.B. [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) und [Aqua Security](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry), können verwendet werden, um Containerimages in einer privaten Registrierung zu überprüfen und potenzielle Sicherheitsrisiken zu identifizieren. Sie müssen wissen, wie tief greifend die Überprüfung ist, die von den verschiedenen Lösungen vorgenommen wird. Eine Lösungen überprüfen die Imageschichten möglicherweise nur oberflächlich auf bekannte Schwachstellen. Diese Lösungen können möglicherweise keine Schichten einer Software im Image überprüfen, die mit einer bestimmten Paketmanagersoftware erstellt wurde. Andere Lösungen dagegen bieten einer tiefer greifende Integration und können Sicherheitslücken in jeder gepackten Software finden.
 
 ### <a name="production-deployment-rules-and-audit"></a>Regeln und Überwachung der Produktionsbereitstellung
 Sobald eine Anwendung in der Produktion bereitgestellt wurde, müssen einige Regeln festgelegt werden, um sicherzustellen, dass in Produktionsumgebungen eingesetzte Images sicher sind und keine Sicherheitsrisiken bergen.

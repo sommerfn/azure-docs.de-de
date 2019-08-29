@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014245"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535008"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen (Vorschauversion)
 
@@ -84,7 +84,7 @@ Hier sind die vom Skript erstellten Ressourcen. **enriched** bedeutet, dass die 
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id -o tsv)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -269,7 +269,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie k
 
 ## <a name="send-messages-to-the-iot-hub"></a>Senden von Nachrichten an den IoT Hub
 
-Nachdem Sie die Nachrichtenanreicherungen für den Endpunkt konfiguriert haben, führen Sie die App „Simuliertes Gerät“ aus, um Nachrichten an den IoT-Hub zu senden. Der Hub wurde mit Regeln eingerichtet, die folgende Aktionen ausführen:
+Nachdem Sie die Nachrichtenanreicherungen für den Endpunkt konfiguriert haben, führen Sie die App „Simuliertes Gerät“ aus, um Nachrichten an den IoT-Hub zu senden. Der Hub wurde mit Einstellungen eingerichtet, die folgende Aktionen ausführen:
 
 * Nachrichten, die an den Speicherendpunkt „ContosoStorageEndpointOriginal“ weitergeleitet wurden, werden nicht angereichert und im Speichercontainer `original` gespeichert.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: c6d395d878d38ab48b95ca82d94d2a222428bae1
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 067293f76ac4894ca73f4e74cb01db65ae8d1fba
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274946"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876919"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub
 
@@ -31,9 +31,9 @@ Sowohl bei der Nachrichtenweiterleitung als auch bei Even Grid ist eine Warnungs
 
 | Feature | IoT Hub-Nachrichtenweiterleitung | IoT Hub-Integration mit Event Grid |
 | ------- | --------------- | ---------- |
-| **Gerätenachrichten und -ereignisse** | Ja, die Nachrichtenweiterleitung kann für Telemetriedaten verwendet werden und Änderungen am Gerätezwilling und Gerätelebenszyklus-Ereignisse melden. | Ja, Event Grid kann für Telemetriedaten verwendet werden, aber auch melden, wenn Geräte erstellt, gelöscht, verbunden oder von IoT Hub getrennt werden. |
+| **Gerätenachrichten und -ereignisse** | Ja, die Nachrichtenweiterleitung kann für Telemetriedaten verwendet werden und außerdem Änderungen beim Gerätezwilling, Ereignisse im Gerätelebenszyklus sowie Änderungsereignisse beim digitalen Zwilling (Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)) melden. | Ja, Event Grid kann für Telemetriedaten verwendet werden, aber auch melden, wenn Geräte erstellt, gelöscht, verbunden oder von IoT Hub getrennt werden. |
 | **Reihenfolge** | Ja, die Reihenfolge von Ereignissen wird beibehalten.  | Nein, die Reihenfolge von Ereignissen ist nicht garantiert. | 
-| **Filterung** | Umfassendes Filtern von Nachrichtenanwendungseigenschaften, Nachrichtensystemeigenschaften, Nachrichtentext, Gerätezwillingstags und Gerätezwillingseigenschaften. Beispiele finden Sie im Artikel zur [Abfragesyntax für die Nachrichtenweiterleitung](iot-hub-devguide-routing-query-syntax.md). | Filtern basierend auf Ereignistyp, Thementyp und Attributen in den einzelnen Ereignissen. Beispiele finden Sie unter [Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements](../event-grid/event-filtering.md). Beim Abonnieren von Telemetrieereignissen können Sie zusätzliche Filter auf die Daten anwenden, um vor der Veröffentlichung in Event Grid nach Nachrichteneigenschaften, Nachrichtentext und Gerätezwillingen in Ihrem IoT-Hub zu filtern. Informationen hierzu finden Sie unter [Filtern von Ereignissen](../iot-hub/iot-hub-event-grid.md#filter-events). |
+| **Filterung** | Umfassendes Filtern von Nachrichtenanwendungseigenschaften, Nachrichtensystemeigenschaften, Nachrichtentext, Gerätezwillingstags und Gerätezwillingseigenschaften. Filterung wird auf Änderungsereignisse beim digitalen Zwilling nicht angewendet. Beispiele finden Sie im Artikel zur [Abfragesyntax für die Nachrichtenweiterleitung](iot-hub-devguide-routing-query-syntax.md). | Filtern basierend auf Ereignistyp, Thementyp und Attributen in den einzelnen Ereignissen. Beispiele finden Sie unter [Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements](../event-grid/event-filtering.md). Beim Abonnieren von Telemetrieereignissen können Sie zusätzliche Filter auf die Daten anwenden, um vor der Veröffentlichung in Event Grid nach Nachrichteneigenschaften, Nachrichtentext und Gerätezwillingen in Ihrem IoT-Hub zu filtern. Informationen hierzu finden Sie unter [Filtern von Ereignissen](../iot-hub/iot-hub-event-grid.md#filter-events). |
 | **Endpunkte** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus-Warteschlange</li> <li>Service Bus-Themen</li></ul><br>Kostenpflichtige IoT Hub-SKUs (S1, S2 und S3) sind auf 10 benutzerdefinierte Endpunkte beschränkt. Pro IoT Hub können 100 Routen erstellt werden. | <ul><li>Azure-Funktionen</li> <li>Azure-Automatisierung</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Speicherblob</li> <li>Benutzerdefinierte Themen</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Drittanbieterdienste über Webhooks</li></ul><br>Pro IoT-Hub werden 500 Endpunkte unterstützt. Die aktuelle Liste der Endpunkte finden Sie unter [Event Grid-Ereignishandler](../event-grid/overview.md#event-handlers). |
 | **Kosten** | Für die Nachrichtenweiterleitung fallen keine separaten Gebühren an. Nur der Eingang von Telemetriedaten in IoT Hub wird in Rechnung gestellt. Wenn beispielsweise eine Nachricht an drei verschiedene Endpunkte weitergeleitet wird, wird Ihnen nur eine Nachricht berechnet. | Es fallen keine Gebühren von IoT Hub an. Event Grid bietet die ersten 100.000 Vorgänge pro Monat kostenlos, danach 0,60 US-Dollar pro Million Vorgänge. |
 

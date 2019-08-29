@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990154"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639502"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolldatenerfassungszeit in Azure Monitor
 Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Protokolldaten bis zu ihrer Verfügbarkeit zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -100,8 +100,11 @@ Heartbeat
 | summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
- 
-Wenn Sie ausführliche Informationen zur Erfassungszeit für einen bestimmten Computer über einen Zeitraum anzeigen möchten, verwenden Sie die folgende Abfrage, mit der zudem die Daten des letzten Tages in einem Diagramm visualisiert werden: 
+
+Die vorausgehenden Perzentilüberprüfungen empfehlen sich für eine Suche nach allgemeinen Trends bei der Wartezeit. Um eine kurzfristige Spitze bei der Wartezeit zu ermitteln, ist die Verwendung des maximalen Werts (`max()`) möglicherweise effektiver.
+
+Wenn Sie ausführliche Informationen zur Erfassungszeit für einen bestimmten Computer über einen Zeitraum anzeigen möchten, verwenden Sie die folgende Abfrage, mit der auch die Daten des letzten Tages in einem Diagramm visualisiert werden: 
+
 
 ``` Kusto
 Heartbeat 

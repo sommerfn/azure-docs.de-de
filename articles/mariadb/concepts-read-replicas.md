@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977070"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992185"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -36,7 +36,7 @@ Das Lesereplikatfeature verwendet die asynchrone Replikation. Das Feature ist ni
 
 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
-Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann für Szenarien wie die Planung der Notfallwiederherstellung oder die Heranführung von Daten an Ihre Benutzer hilfreich sein.
+Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
 
 > [!IMPORTANT]
 > Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
@@ -46,20 +46,20 @@ Sie können einen Masterserver in jeder [Azure Database for MariaDB-Region](http
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Dies sind die universellen Replikatregionen:
 
-Australien, Osten; Australien, Südosten; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden, USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2.
+„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“.
 
 
 ### <a name="paired-regions"></a>Regionspaare
-Zusätzlich zu den universellen Replikatregionen können Sie eine Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Wenn Sie das Paar Ihrer Region nicht kennen, können Sie mehr aus dem Artikel [Gekoppelte Azure-Regionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) erfahren.
+Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Masterservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
 
 Wenn Sie für die Notfallwiederherstellungsplanung regionsübergreifende Replikate verwenden, empfehlen wir Ihnen, das Replikat in der gekoppelten Region und nicht in einer der anderen Regionen zu erstellen. Regionspaare vermeiden gleichzeitige Aktualisierungen und priorisieren die physische Isolation und die Datenresidenz.  
 
-Es gibt jedoch einige Einschränkungen zu beachten: 
+Es gibt jedoch einige Einschränkungen: 
 
 * Regionale Verfügbarkeit: Azure Database for MariaDB ist in den Regionen „USA, Westen 2“, „Frankreich, Mitte“ und „VAE, Norden“ und „Deutschland, Mitte“ verfügbar. Allerdings sind die gekoppelten Regionen nicht verfügbar.
     
-* Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Diese Regionen umfassen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
-   Dies bedeutet, dass ein Masterserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Masterserver in der Region „Indien, Süden“ kann jedoch kein Replikat in „Indien, Westen“ erstellen. Grund dafür ist, dass die sekundäre Region von „Indien, Westen“ „Indien, Süden“, die sekundäre Region von „Indien, Süden“ jedoch nicht „Indien, Westen“ ist.
+* Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Zu diesen Regionen zählen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
+   Das bedeutet, dass ein Masterserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Masterserver in der Region „Indien, Süden“ kann jedoch kein Replikat in „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
 
 
 ## <a name="create-a-replica"></a>Erstellen eines Replikats

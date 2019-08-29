@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988492"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013123"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 
@@ -97,7 +97,7 @@ Sollte ein Fehler dazu führen, dass der Client das Ergebnis eines Sendevorgangs
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC und verwaltete Identitäten für Azure-Ressourcen
 
-Service Bus unterstützt Sicherheitsprotokolle wie [Shared Access Signatures](service-bus-sas.md) (SAS), die [rollenbasierte Zugriffssteuerung](service-bus-role-based-access-control.md) (Role Based Access Control, RBAC) und [verwaltete Identitäten für Azure-Ressourcen](service-bus-managed-service-identity.md).
+Service Bus unterstützt Sicherheitsprotokolle wie [Shared Access Signatures](service-bus-sas.md) (SAS), die [rollenbasierte Zugriffssteuerung](authenticate-application.md) (Role Based Access Control, RBAC) und [verwaltete Identitäten für Azure-Ressourcen](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung
 

@@ -8,17 +8,16 @@ manager: jeconnoc
 keywords: Azure Functions, Muster, bewährte Methoden, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104671"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097536"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 

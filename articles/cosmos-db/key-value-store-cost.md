@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310589"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615101"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als Schlüsselwertspeicher – Kostenübersicht
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- u
 
 Die Azure Cosmos DB-Leistung basiert auf der Menge der für die Partition bereitgestellten [Anforderungseinheiten](request-units.md) (Request Units, RU). Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RUs pro Sekunde erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/cosmos-db/)). Betrachten Sie RUs als eine Währung, die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Unsere Kunden müssen nicht zwischen Lese- und Schreibkapazitätseinheiten differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und Hochverfügbarkeit zu bieten. Außerdem verwenden wir zwar RUs für Durchsatzmodelle, aber jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (Arbeitsspeicher, Kern). RU/Sekunde ist nicht nur ein IOPS-Wert.
 
-Als global verteiltes Datenbanksystem ist Cosmos DB der einzige Azure-Dienst, der außer zur Hochverfügbarkeit eine SLA zu Latenz, Durchsatz und Konsistenz bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewendet, die Ihrem Cosmos DB-Datenbankkonto zugeordnet ist. Für Lesevorgänge bietet Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. 
+Als global verteiltes Datenbanksystem ist Cosmos DB der einzige Azure-Dienst, der außer zur Hochverfügbarkeit eine SLA zu Latenz, Durchsatz und Konsistenz bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewendet, die Ihrem Cosmos-Datenbankkonto zugeordnet ist. Für Lesevorgänge bietet Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. 
 
 Die folgende Tabelle gibt anhand der Dokumentgrößen 1 KB und 100 KB Aufschluss über die erforderliche Anzahl von RUs für Lese- und Schreibtransaktionen:
 

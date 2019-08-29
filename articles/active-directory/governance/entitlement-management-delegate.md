@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124905"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegieren von Aufgaben in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -30,13 +30,15 @@ ms.locfileid: "68967091"
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Standardmäßig können globale Administratoren und Benutzeradministratoren alle Aspekte der Azure AD-Berechtigungsverwaltung erstellen und verwalten. Die Benutzer in diesen Rollen kennen jedoch möglicherweise nicht alle Szenarien, in denen Zugriffspakete erforderlich sind. In der Regel wissen Benutzer in Abteilungen, wer zusammenarbeiten muss.
+Standardmäßig können globale Administratoren und Benutzeradministratoren alle Aspekte der Azure AD-Berechtigungsverwaltung erstellen und verwalten. Die Benutzer in diesen Rollen kennen jedoch möglicherweise nicht alle Szenarien, in denen Zugriffspakete erforderlich sind. In der Regel wissen Benutzer in Abteilungen, wer zusammenarbeiten muss. 
 
-Anstatt Nicht-Administratoren uneingeschränkte Berechtigungen zu gewähren, können Sie Benutzern die Mindestberechtigungen erteilen, die sie für die Ausführung ihrer Arbeit benötigen, und vermeiden, widersprüchliche oder unangemessene Zugriffsrechte zu erstellen. Dieser Artikel beschreibt die Rollen, die Sie zuweisen können, um verschiedene Aufgaben in der Berechtigungsverwaltung zu delegieren.
+Anstatt Nicht-Administratoren uneingeschränkte Berechtigungen zu gewähren, können Sie Benutzern die Mindestberechtigungen erteilen, die sie für die Ausführung ihrer Arbeit benötigen, und vermeiden, widersprüchliche oder unangemessene Zugriffsrechte zu erstellen. Dieser Artikel beschreibt die Rollen, die Sie zuweisen können, um verschiedene Aufgaben in der Berechtigungsverwaltung zu delegieren. 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>Delegierungsbeispiel für die Einführung in Abteilungen
 
-Anhand eines Beispiels erfahren Sie, wie Sie Aufgaben in der Berechtigungsverwaltung delegieren könnten. Nehmen wir an, dass zu Ihrer Organisation die folgenden fünf Benutzer gehören:
+Anhand eines Beispiels erfahren Sie, wie Sie Aufgaben in der Berechtigungsverwaltung delegieren könnten. 
+
+Nehmen wir an, dass zu Ihrer Organisation die folgenden fünf Benutzer gehören:
 
 | Benutzer | Department | Notizen |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ Die Abteilungen Research und Marketing möchten die Berechtigungsverwaltung für
 Jetzt können die Abteilungen Research und Marketing die Berechtigungsverwaltung nutzen. Bernd, Carola, David und Elisa können Zugriffspakete in ihren jeweiligen Katalogen erstellen und verwalten.
 
 ![Delegierungsbeispiel für die Berechtigungsverwaltung](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>Berechtigungsverwaltungsrollen
 
@@ -113,6 +116,7 @@ Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator i
 | [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
 | [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
 | Benutzer | Katalogbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn App-Besitzer |  |
+
 
 ## <a name="add-a-catalog-creator"></a>Hinzufügen eines Katalogerstellers
 

@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663913"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034372"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
 
@@ -163,7 +163,7 @@ Sie können Empfehlungsmodule mit der Personalisierung verwenden:
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Hinzufügen von Sicherheitsmechanismen für Inhalt zu Ihrer Anwendung
 
-Wenn Ihre Anwendung starke Abweichungen bei den Inhalten zulässt, die den Benutzern angezeigt werden, und einige dieser Inhalte für einige Benutzer unsicher oder ungeeignet sind, sollten Sie im Voraus planen, um sicherzustellen, dass die richtigen Sicherheitsvorkehrungen getroffen werden, um zu verhindern, dass Ihre Benutzer unzulässige Inhalte sehen. Das beste Muster zum Implementieren von Sicherheitsmechanismen ist: Das beste Muster zum Implementieren von Sicherheitsmechanismen ist:
+Wenn Ihre Anwendung starke Abweichungen bei den Inhalten zulässt, die den Benutzern angezeigt werden, und einige dieser Inhalte für einige Benutzer unsicher oder ungeeignet sind, sollten Sie im Voraus planen, um sicherzustellen, dass die richtigen Sicherheitsvorkehrungen getroffen werden, um zu verhindern, dass Ihre Benutzer unzulässige Inhalte sehen. Das beste Muster zum Implementieren von Sicherheitsmechanismen ist:
     * Rufen Sie die Aktionen ab, denen ein Rang zugewiesen werden soll.
     * Filtern Sie Aktionen aus, die nicht für die Zielgruppe geeignet sind.
     * Weisen Sie nur den geeigneten Aktionen einen Rang zu.

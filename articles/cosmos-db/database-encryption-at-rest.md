@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b88b32b3ae2d4939d26fc268e25c87b1fb70eee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f406f008e2c377b39deb8d151855ce7315616701
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237221"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616869"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Datenverschlüsselung in Azure Cosmos DB 
 
@@ -59,5 +59,5 @@ A: Der Emulator ist ein eigenständiges Entwicklungs-/Testtool und verwendet kei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Übersicht über die Cosmos DB-Sicherheit und die neuesten Verbesserungen finden Sie unter [Azure Cosmos DB-Datenbanksicherheit](database-security.md).
+Eine Übersicht über die Cosmos DB-Sicherheit und die neuesten Verbesserungen finden Sie unter [Sicherheit bei Azure Cosmos DB – Übersicht](database-security.md).
 Weitere Informationen zu Microsoft-Zertifizierungen finden Sie im [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

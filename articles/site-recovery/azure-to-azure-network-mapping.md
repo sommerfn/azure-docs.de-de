@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521754"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907873"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
@@ -97,5 +97,3 @@ Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist stat
 
 - Informationen zur Notfallwiederherstellung bei Azure-VMs finden Sie unter [Grundlegendes zu Netzwerken bei Replikationen mit Azure als Quelle und Ziel](site-recovery-azure-to-azure-networking-guidance.md).
 - Erfahren Sie mehr über [die Beibehaltung von IP-Adressen nach einem Failover](site-recovery-retain-ip-azure-vm-failover.md).
-
-Achten Sie darauf, ob das ausgewählte Zielnetzwerk das Failover-VNET ist und folgende Meldung angezeigt wird: „Wenn sich das ausgewählte Zielnetzwerk vom Failover-VNET unterscheidet, aber es den gleichen Subnetzbereich wie das Failover-VNET aufweist“.

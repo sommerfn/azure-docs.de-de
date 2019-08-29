@@ -3,9 +3,7 @@ title: Verwenden von Twilio für Sprachanrufe und SMS (Ruby) | Microsoft Docs
 description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Ruby geschrieben.
 services: ''
 documentationcenter: ruby
-author: devinrader
-manager: twilio
-editor: ''
+author: georgewallace
 ms.assetid: 60e512f6-fa47-47c0-aedc-f19bb72a1158
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457650"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637199"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Ruby
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -30,10 +28,10 @@ Twilio ist eine Webservice-API für Telefonie, mit deren Hilfe Sie Ihre existier
 **Twilio Voice** ermöglicht Anwendungen das Tätigen und Entgegennehmen von Telefonanrufen. **Twilio SMS** ermöglicht Ihren Anwendungen das Senden und Empfangen von SMS-Nachrichten. **Twilio Client** ermöglicht Sprachkommunikation in Ihren Anwendungen über existierende Internetverbindungen, inklusive mobiler Verbindungen.
 
 ## <a id="Pricing"></a>Twilio-Preise und -Sonderangebote
-Informationen über die Twilio-Preise finden Sie unter [Twilio-Preise][twilio_pricing]. Azure-Kunden erhalten ein [Sonderangebot][special_offer]: ein Gratis-Guthaben von 1000 SMS oder 1000 eingehenden Sprachminuten. Besuchen Sie [https://ahoy.twilio.com/azure][special_offer], um sich für dieses Angebot zu registrieren und weitere Informationen zu erhalten.  
+Informationen zu Twilio-Preisen finden Sie unter [Twilio-Preise][twilio_pricing]. Azure-Kunden erhalten als [Sonderangebot][special_offer] kostenlos ein Guthaben von 1.000 SMS oder 1.000 eingehenden Sprachminuten. Besuchen Sie [https://ahoy.twilio.com/azure][special_offer], um sich für dieses Angebot zu registrieren und weitere Informationen zu erhalten.  
 
 ## <a id="Concepts"></a>Konzepte
-Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung – eine Liste finden Sie unter [Twilio-API-Bibliotheken][twilio_libraries].
+Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung. Eine Liste finden Sie unter [Twilio-API-Bibliotheken][twilio_libraries].
 
 ### <a id="TwiML"></a>TwiML
 TwiML ist ein Satz XML-basierter Anweisungen, die Twilio anweisen, wie ein Anruf oder eine SMS verarbeitet werden soll.
@@ -80,7 +78,7 @@ Ruby-Anwendungen, die den Twilio-Dienst verwenden und in Azure ausgeführt werde
 
 [Richten Sie zuerst eine neue Azure-Linux-VM ein][azure_vm_setup], die als Host für Ihre neue Ruby-Webanwendung fungiert. Ignorieren Sie die Schritte zur Erstellung einer Rails-App, und erstellen Sie nur den virtuellen Computer. Erstellen Sie auch unbedingt einen Endpunkt mit dem externen Port 80 und dem internen Port 5000.
 
-In den folgenden Beispielen verwenden wir [Sinatra][sinatra], ein sehr einfaches Web-Framework für Ruby. Sie können die Twilio-Hilfsbibliothek für Ruby aber auch mit jedem anderen Web-Framework verwenden, z. B. Ruby on Rails.
+In den folgenden Beispielen verwenden wir [Sinatra][sinatra], ein sehr einfaches Webframework für Ruby. Sie können die Twilio-Hilfsbibliothek für Ruby aber auch mit jedem anderen Web-Framework verwenden, z. B. Ruby on Rails.
 
 Stellen Sie eine SSH-Verbindung zum neuen virtuellen Computer her, und erstellen Sie ein Verzeichnis für Ihre neue App. Erstellen Sie in diesem Verzeichnis eine Datei namens Gemfile, und kopieren Sie den folgenden Code in diese hinein:
 
@@ -162,14 +160,14 @@ Melden Sie sich zuerst bei Ihrem [Twilio-Dashboard][twilio_account] an. Klicken 
 Starten Sie nach der Durchführung dieser Änderung Ihre Webanwendung unbedingt neu. Nehmen Sie nun Ihr Telefon zur Hand, und senden Sie eine SMS an Ihre Twilio-Nummer. Sie sollten direkt eine SMS-Antwort mit dem Wortlaut "Hey, thanks for the ping! Twilio and Azure rock!" erhalten.
 
 ## <a id="additional_services"></a>Gewusst wie: Verwenden zusätzlicher Twilio-Dienste
-Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API documentation (Twilio API-Dokumentation)][twilio_api_documentation].
+Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API-Dokumentation][twilio_api_documentation].
 
 ### <a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
-* [Twilio HowTo's and Example Code (Twilio-Anleitungen und Beispielcode)][twilio_howtos]
-* [Twilio Quickstart Tutorials (Twilio-Schnellstart-Tutorials)][twilio_quickstarts] 
+* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
+* [Twilio-Anleitungen und Beispielcode][twilio_howtos]
+* [Twilio-Schnellstart-Tutorials][twilio_quickstarts] 
 * [Twilio auf GitHub][twilio_on_github]
 * [Kontakt zum Twilio-Support][twilio_support]
 

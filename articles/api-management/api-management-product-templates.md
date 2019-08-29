@@ -10,16 +10,15 @@ ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 637d4e7bc75537d99538048700673192534613dc
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61088172"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073381"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Produktvorlagen in Azure API Management
 
@@ -208,7 +207,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 |Produkt|[Produkt](api-management-template-data-model-reference.md#Product)|Das angegebene Produkt.|  
 |IsDeveloperSubscribed|boolean|Gibt an, ob der aktuelle Benutzer dieses Produkt abonniert hat.|  
 |SubscriptionState|number|Der Status des Abonnements. Mögliche Statusangaben:<br /><br /> -   `0 - suspended`: Das Abonnement ist blockiert, und der Abonnent kann keine APIs des Produkts aufrufen.<br />-   `1 - active`: Das Abonnement ist aktiv.<br />-   `2 - expired`: Das Abonnement hat das Ablaufdatum erreicht und wurde deaktiviert.<br />-   `3 - submitted`: Die Abonnementanforderung wurde vom Entwickler gesendet, aber noch nicht genehmigt oder abgelehnt.<br />-   `4 - rejected`: Die Abonnementanforderung wurde von einem Administrator abgelehnt.<br />-   `5 - cancelled`: Das Abonnement wurde vom Entwickler oder Administrator abgebrochen.|  
-|Einschränkungen|Array|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
+|Einschränkungen|array|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
 |DelegatedSubscriptionEnabled|boolean|Gibt an, ob für dieses Abonnement die [Delegierung](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) aktiviert ist.|  
 |DelegatedSubscriptionUrl|Zeichenfolge|Gibt bei aktivierter Delegierung die URL des delegierten Abonnements an.|  
 |IsAgreed|boolean|Wenn für das Produkt Bedingungen gelten, gibt dieser Wert an, ob der aktuelle Benutzer den Nutzungsbedingungen zugestimmt hat.|  

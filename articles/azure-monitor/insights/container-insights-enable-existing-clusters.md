@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 08/19/2019
 ms.author: magoedte
-ms.openlocfilehash: ae340fb11d422b7516cc315e78be974d22239503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080074"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624433"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
@@ -81,9 +81,13 @@ provisioningState       : Succeeded
 Führen Sie die folgenden Schritte aus, um die Überwachung Ihres AKS-Clusters im Azure-Portal aus Azure Monitor zu aktivieren:
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
+
 2. Wählen Sie in der Liste **Container** aus.
+
 3. Wählen Sie auf der Seite **Überwachung – Container** die Option **Nicht überwachte Cluster** aus.
+
 4. Suchen Sie in der Liste der nicht überwachten Cluster den Container, und klicken Sie auf **Aktivieren**.   
+
 5. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.  
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird. 
 
@@ -99,14 +103,17 @@ Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integrit
 Führen Sie die folgenden Schritte aus, um die Überwachung direkt von einem Ihrer AKS-Cluster aus im Azure-Portal zu aktivieren:
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. 
-2. Geben Sie in die Ressourcenliste **Containers** ein.  
-    Die Liste wird anhand Ihrer Eingabe gefiltert. 
+
+2. Geben Sie in die Ressourcenliste **Containers** ein.  Die Liste wird anhand Ihrer Eingabe gefiltert. 
+
 3. Wählen Sie **Kubernetes-Dienste** aus.  
 
     ![Link zu Kubernetes-Diensten](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. Wählen Sie in der Containerliste einen Container aus.
+
 5. Wählen Sie auf der Containerübersichtsseite **Container überwachen** aus.  
+
 6. Wenn Sie im selben Abonnement wie der Cluster über einen Log Analytics-Arbeitsbereich verfügen, wählen Sie ihn auf der Seite **Onboarding zu Azure Monitor für Container** aus der Dropdownliste aus.  
     Die Liste wählt Standardarbeitsbereich und Speicherort vorab aus, in dem der AKS-Container im Abonnement bereitgestellt wird. 
 
@@ -131,7 +138,9 @@ Diese Methode umfasst zwei JSON-Vorlagen. Eine Vorlage gibt die Konfiguration zu
 Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachung mit Azure PowerShell oder CLI aktivieren. Arbeitsbereiche können über den [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md) eingerichtet werden.
 
 Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vertraut sind, finden Sie weitere Informationen unter:
+
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
+
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
@@ -142,74 +151,93 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
     ```json
     {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "aksResourceId": {
-        "type": "string",
-        "metadata": {
-           "description": "AKS Cluster Resource ID"
-           }
-    },
-    "aksResourceLocation": {
-    "type": "string",
-     "metadata": {
-        "description": "Location of the AKS resource e.g. \"East US\""
-       }
-    },
-    "workspaceResourceId": {
-      "type": "string",
-      "metadata": {
-         "description": "Azure Monitor Log Analytics Resource ID"
-       }
-    }
-    },
-    "resources": [
-      {
-    "name": "[split(parameters('aksResourceId'),'/')[8]]",
-    "type": "Microsoft.ContainerService/managedClusters",
-    "location": "[parameters('aksResourceLocation')]",
-    "apiVersion": "2018-03-31",
-    "properties": {
-      "mode": "Incremental",
-      "id": "[parameters('aksResourceId')]",
-      "addonProfiles": {
-        "omsagent": {
-          "enabled": true,
-          "config": {
-            "logAnalyticsWorkspaceResourceID": "[parameters('workspaceResourceId')]"
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "aksResourceId": {
+          "type": "string",
+          "metadata": {
+            "description": "AKS Cluster Resource ID"
           }
-         }
-       }
-      }
-     }
-     ]
+        },
+        "aksResourceLocation": {
+          "type": "string",
+          "metadata": {
+            "description": "Location of the AKS resource e.g. \"East US\""
+          }
+        },
+        "aksResourceTagValues": {
+          "type": "object",
+          "metadata": {
+            "description": "Existing all tags on AKS Cluster Resource"
+          }
+        },
+        "workspaceResourceId": {
+          "type": "string",
+          "metadata": {
+            "description": "Azure Monitor Log Analytics Resource ID"
+          }
+        }
+      },
+      "resources": [
+        {
+          "name": "[split(parameters('aksResourceId'),'/')[8]]",
+          "type": "Microsoft.ContainerService/managedClusters",
+          "location": "[parameters('aksResourceLocation')]",
+          "tags": "[parameters('aksResourceTagValues')]",
+          "apiVersion": "2018-03-31",
+          "properties": {
+            "mode": "Incremental",
+            "id": "[parameters('aksResourceId')]",
+            "addonProfiles": {
+              "omsagent": {
+                "enabled": true,
+                "config": {
+                  "logAnalyticsWorkspaceResourceID": "[parameters('workspaceResourceId')]"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
     ```
 
 2. Speichern Sie diese Datei unter den Namen **existingClusterOnboarding.json** in einem lokalen Ordner.
+
 3. Fügen Sie die folgende JSON-Syntax in Ihre Datei ein:
 
     ```json
     {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-         "aksResourceId": {
-           "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
-       },
-       "aksResourceLocation": {
-         "value": "<aksClusterLocation>"
-       },
-       "workspaceResourceId": {
-         "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
-       }  
-     }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "aksResourceId": {
+          "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
+        },
+        "aksResourceLocation": {
+          "value": "<aksClusterLocation>"
+        },
+        "workspaceResourceId": {
+          "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
+        },
+        "aksResourceTagValues": {
+          "value": {
+            "<existing-tag-name1>": "<existing-tag-value1>",
+            "<existing-tag-name2>": "<existing-tag-value2>",
+            "<existing-tag-nameN>": "<existing-tag-valueN>"
+          }
+        }
+      }
     }
     ```
 
 4. Aktualisieren Sie die Werte für **aksResourceId** und **aksResourceLocation** mit den Werten, die auf der Seite **AKS – Übersicht** für den AKS-Cluster angegeben werden. Der Wert für **workspaceResourceId** ist die vollständige Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs, darunter der Name des Arbeitsbereichs. 
+
+    Bearbeiten Sie die Werte für **aksResourceTagValues** so, dass sie den für den AKS-Cluster angegebenen vorhandenen Tagwerten entsprechen.
+
 5. Speichern Sie diese Datei unter den Namen **existingClusterParam.json** in einem lokalen Ordner.
+
 6. Nun können Sie die Vorlage bereitstellen. 
 
    * Verwenden Sie zum Bereitstellen mit Azure PowerShell die folgenden Befehle in dem Ordner mit der Vorlage:
@@ -217,6 +245,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
        ```
+       
        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
        ```powershell
@@ -236,7 +265,8 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
        ```azurecli
        provisioningState       : Succeeded
        ```
-     Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
+     
+       Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden. 
 
 ## <a name="verify-agent-and-solution-deployment"></a>Überprüfen der Agent- und Lösungsbereitstellung
 

@@ -9,20 +9,20 @@ ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 00f34fa9a1932aebd467163e0ed7441c993387df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abbd436e5d1c88c53af95fd8ba9add20fa67c8e4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154004"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640892"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Zugreifen auf Blob- oder Warteschlangendaten über das Azure-Portal
 
-Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Blob- oder Warteschlangendaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Diese Anforderungen an Azure Storage können entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto authentifiziert und autorisiert werden. Das Portal zeigt an, welche Authentifizierungsmethode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.  
+Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Blob- oder Warteschlangendaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.  
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Für den Zugriff auf Blob- oder Warteschlangendaten benötigte Berechtigungen
 
-Je nachdem, wie Sie den Zugriff auf Blob- oder Warteschlangendaten im Azure-Portal authentifizieren möchten, benötigen Sie spezielle Berechtigungen. Meist werden diese Berechtigungen über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bereitgestellt. Weitere Informationen dazu finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../../role-based-access-control/overview.md).
+Je nachdem, wie Sie den Zugriff auf Blob- oder Warteschlangendaten im Azure-Portal autorisieren möchten, benötigen Sie spezielle Berechtigungen. Meist werden diese Berechtigungen über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bereitgestellt. Weitere Informationen dazu finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../../role-based-access-control/overview.md).
 
 ### <a name="account-access-key"></a>Kontozugriffsschlüssel
 

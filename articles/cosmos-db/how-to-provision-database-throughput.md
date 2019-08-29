@@ -3,15 +3,15 @@ title: Bereitstellen des Datenbankdurchsatzes in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie in Azure Cosmos DB Durchsatz auf Datenbankebene bereitstellen.
 author: rimman
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: 2744422e2e082c5bc6f63975b1100f336d32d5fa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 29bc65c8afaa1fe4bdc39923bd2219184e8b3a96
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250077"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092993"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB
 

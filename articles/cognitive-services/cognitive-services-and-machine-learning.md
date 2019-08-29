@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697923"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535205"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -131,6 +131,10 @@ Folgende Cognitive Services stellen exportierte Modelle für andere Machine Lear
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exportieren](./Custom-Vision-Service/export-model-python.md) für TensorFlow für Android, CoreML für iOS11, ONNX für Windows ML|
 
+## <a name="learn-more"></a>Weitere Informationen
+
+* [Architekturleitfaden – Welche Machine Learning-Produkte bietet Microsoft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Machine Learning – Einführung: Deep Learning im Vergleich zu maschinellem Lernen](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 75b46ead4d5efe15a423bddea6473f619f1bc91b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 402406f8aa677348d30551937cfca1e2726efba1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501391"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033944"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure Security Center und Azure Virtual Machines unter Linux
 Mit [Azure Security Center](https://azure.microsoft.com/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
@@ -67,12 +67,12 @@ Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sich
 
 | Empfehlung | BESCHREIBUNG |
 | --- | --- |
-| [Sammlung von Daten für Abonnements aktivieren](security-center-enable-data-collection.md) |Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements und alle virtuellen Computer in Ihren Abonnements zu aktivieren. |
+| Sammlung von Daten für Abonnements aktivieren|Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements und alle virtuellen Computer in Ihren Abonnements zu aktivieren. |
 | Betriebssystem-Sicherheitsrisiken beheben|Empfiehlt Ihnen, Ihre Betriebssystemkonfigurationen an den empfohlenen Konfigurationsregeln zu orientieren und z.B. nicht zuzulassen, dass Kennwörter gespeichert werden. |
-| [Systemupdates anwenden](security-center-apply-system-updates.md) |Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Computer bereitzustellen. |
-| [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates) |Empfiehlt Ihnen, einen virtuellen Computer neu zu starten, um die Anwendung von Systemupdates abzuschließen. |
+| Systemupdates anwenden|Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Computer bereitzustellen. |
+| Neustart nach Systemupdates|Empfiehlt Ihnen, einen virtuellen Computer neu zu starten, um die Anwendung von Systemupdates abzuschließen. |
 | VM-Agent aktivieren|Ermöglicht Ihnen, anzuzeigen, welche VMs den VM-Agent benötigen. Der VM-Agent muss auf virtuellen Maschinen installiert werden, um das Überprüfen von Patches, Überprüfen von Grundregeln und Antischadsoftware bereitzustellen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents. |
-| [Datenträgerverschlüsselung anwenden](security-center-apply-disk-encryption.md) |Empfiehlt Ihnen, dass Sie Ihre VM-Datenträger per Azure Disk Encryption (Windows- und Linux-VMs) verschlüsseln. Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen. |
+| Anwenden der Datenträgerverschlüsselung |Empfiehlt Ihnen, dass Sie Ihre VM-Datenträger per Azure Disk Encryption (Windows- und Linux-VMs) verschlüsseln. Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen. |
 
 
 > [!NOTE]
@@ -85,11 +85,11 @@ Nachdem Sie die [Sicherheitsrichtlinien](tutorial-security-policy.md) für die R
 ![Sicherheitsintegrität](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Verwalten von und Reagieren auf Sicherheitswarnungen
-Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen (z.B. Lösungen zum Schutz von Firewalls und Endpunkten), um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Indem Aggregation mit vielen verschiedenen [Erkennungsfunktionen](security-center-detection-capabilities.md) genutzt wird, kann Security Center priorisierte Sicherheitswarnungen generieren, damit Sie das Problem schnell untersuchen und Empfehlungen zur Begegnung möglicher Angriffe geben können.
+Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen (z.B. Lösungen zum Schutz von Firewalls und Endpunkten), um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Indem Aggregation mit vielen verschiedenen [Erkennungsfunktionen](security-center-alerts-overview.md#detect-threats) genutzt wird, kann Security Center priorisierte Sicherheitswarnungen generieren, damit Sie das Problem schnell untersuchen und Empfehlungen zur Begegnung möglicher Angriffe geben können.
 
 ![Sicherheitswarnungen](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 
-Wählen Sie eine Sicherheitswarnung aus, um weitere Informationen zu den Ereignissen zu erhalten, die die Warnung ausgelöst haben, sowie zu den Schritten, die Sie als Reaktion auf den Angriff ausführen müssen (falls zutreffend). Sicherheitswarnungen werden nach [Typ](security-center-alerts-type.md) und Datum gruppiert.
+Wählen Sie eine Sicherheitswarnung aus, um weitere Informationen zu den Ereignissen zu erhalten, die die Warnung ausgelöst haben, sowie zu den Schritten, die Sie als Reaktion auf den Angriff ausführen müssen (falls zutreffend). Sicherheitswarnungen werden nach Typ und Datum gruppiert.
 
 ## <a name="monitor-security-health"></a>Überwachen der Sicherheitsintegrität
 Nachdem Sie die [Sicherheitsrichtlinien](tutorial-security-policy.md) für die Ressourcen des Abonnements aktiviert haben, analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen.  Sie können den Sicherheitsstatus Ihrer Ressourcen zusammen mit allen Problemen auf dem Blatt **Sicherheitsintegrität von Ressourcen** anzeigen. Wenn Sie auf der Kachel **Ressourcensicherheit** auf **Virtuelle Computer** klicken, wird das Blatt **Virtuelle Computer** mit Empfehlungen für Ihre VMs geöffnet. 

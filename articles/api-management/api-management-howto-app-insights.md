@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 3bbab82831fba389cd4bf172e7ea762d5971579b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10e8edcd3a1e781866eaee2cbe48d1536dbc1229
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241843"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073578"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -75,7 +74,7 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 | Einstellungsname                        | Werttyp                        | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Aktivieren                              | boolean                           | Gibt an, ob die Protokollierung dieser API aktiviert ist.                                                                                                                                                                                                                                                                                                |
-| Ziel                         | Azure Application Insights-Protokollierung | Gibt zu verwendende Azure Application Insights-Protokollierung an                                                                                                                                                                                                                                                                                           |
+| Destination                         | Azure Application Insights-Protokollierung | Gibt zu verwendende Azure Application Insights-Protokollierung an                                                                                                                                                                                                                                                                                           |
 | Sampling (%)                        | decimal                           | Werte von 0 bis 100 (Prozent). <br/> Gibt an, welcher Prozentsatz der Anforderungen in Azure Application Insights protokolliert wird. 0% Sampling bedeutet, dass 0 (null) Anforderungen protokolliert werden, während ein Sampling von 100% bedeutet, dass alle Anforderungen protokolliert werden. <br/> Diese Einstellung wird verwendet, um Leistungseinbußen durch Protokollierungsanforderungen an Azure Application Insights (siehe Abschnitt weiter unten) zu verringern. |
 | Fehler immer protokollieren                   | boolean                           | Wenn diese Einstellung ausgewählt ist, werden alle Fehler unabhängig von der Einstellung **Sampling** in Azure Application Insights protokolliert.                                                                                                                                                                                                                  |
 | Grundlegende Optionen: Header              | list                              | Gibt die Header an, die in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Es werden keine Header protokolliert.                                                                                                                                                                                                             |

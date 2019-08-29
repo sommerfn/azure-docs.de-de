@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: e4e26b658bd29e4589be40e4d29935059836c909
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343207"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614440"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Ausführen von SQL-Abfragen in Azure Cosmos DB
 
 Die Cosmos DB-REST-API kann mit jeder Sprache aufgerufen werden, die HTTP/HTTPS-Anfragen unterstützt. Cosmos DB bietet außerdem Programmierbibliotheken für die Programmiersprachen .NET, Node.js, JavaScript und Python. Die REST-API und Bibliotheken unterstützen allesamt SQL-Abfragen, und das .NET SDK unterstützt auch [LINQ-Abfragen](sql-query-linq-to-sql.md).
 
-Die folgenden Beispiele zeigen, wie Sie eine Abfrage erstellen und auf einem Cosmos DB-Datenbankkonto ausführen können.
+Die folgenden Beispiele zeigen, wie Sie eine Abfrage erstellen und auf einem Cosmos-Datenbankkonto ausführen können.
 
 ## <a id="REST-API"></a>REST-API
 

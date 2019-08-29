@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: b84e317745b7bd20f4862bd04584e42254a660d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566193"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640857"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden
 
@@ -37,7 +37,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Universelle Dienstebene: Speicher- und Computegrößen
 
 > [!IMPORTANT]
-> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
+> Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Universelle Dienstebene: Computeplattform der 4. Generation (Teil 1)
 
@@ -153,7 +153,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Dienstebene „Unternehmenskritisch“: Speicher- und Computegrößen
 
 > [!IMPORTANT]
-> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
+> Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 1)
 

@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3e1e1266122ebcccc0149ca8e0421577becd6708
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178648"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036709"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(VERALTET) Häufig gestellte Fragen zu Container Service
 
@@ -37,7 +37,7 @@ Abhängig von Ihrem Szenario können Sie auch benutzerdefinierte Containerlösun
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Was ist der Unterschied zwischen Azure Container Service und ACS Engine? 
 Azure Container Service ist ein durch eine SLA abgedeckter Azure-Dienst mit Features im Azure-Portal, Azure-Befehlszeilentools und Azure-APIs. Der Dienst ermöglicht die schnelle Implementierung und Verwaltung von Clustern unter Verwendung standardmäßiger Containerorchestrierungstools mit einer vergleichsweise geringen Anzahl von Konfigurationsoptionen. 
 
-[ACS Engine](http://github.com/Azure/acs-engine) ist ein Open-Source-Projekt, mit dem Poweruser sämtliche Ebenen der Clusterkonfiguration anpassen können. Aufgrund der Möglichkeit, sowohl die Infrastruktur- als auch die Softwarekonfiguration zu ändern, bieten wir für ACS Engine keine SLA an. Der Support wird über das Open-Source-Projekt auf GitHub und nicht über offizielle Microsoft-Kanäle bereitgestellt. 
+[ACS Engine](https://github.com/Azure/acs-engine) ist ein Open-Source-Projekt, mit dem Poweruser sämtliche Ebenen der Clusterkonfiguration anpassen können. Aufgrund der Möglichkeit, sowohl die Infrastruktur- als auch die Softwarekonfiguration zu ändern, bieten wir für ACS Engine keine SLA an. Der Support wird über das Open-Source-Projekt auf GitHub und nicht über offizielle Microsoft-Kanäle bereitgestellt. 
 
 Weitere ausführliche Informationen finden Sie in unserer [Support-Richtlinie für Container](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers).
 

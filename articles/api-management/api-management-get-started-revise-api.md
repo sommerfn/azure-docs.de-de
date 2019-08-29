@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203597"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072565"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen
 Wenn Ihre API einsatzbereit ist und von Entwicklern verwendet wird, müssen Sie letztendlich Änderungen an der API vornehmen und dabei darauf achten, keine Aufrufe Ihrer API zu beeinträchtigen. Außerdem empfiehlt es sich, Entwickler über die vorgenommenen Änderungen zu informieren. Hierzu können Sie **Revisionen** in Azure API Management verwenden. Weitere Informationen finden Sie unter [Versions & revisions](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) (Versionen und Revisionen) und [API Versioning with Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/) (API-Versionsverwaltung mit Azure API Management).

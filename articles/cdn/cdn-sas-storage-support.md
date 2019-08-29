@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 999bffe9650f3d2f2a04dba728a9aa41fa46a6b0
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593406"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982413"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Verwenden von Azure CDN mit SAS
 
@@ -44,7 +44,7 @@ Beispiel:
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-Weitere Informationen zum Festlegen von Parametern finden Sie unter [Überlegungen zu SAS-Parametern](#sas-parameter-considerations) und [Shared Access Signature-Parameter](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters).
+Weitere Informationen zum Festlegen von Parametern finden Sie unter [Überlegungen zu SAS-Parametern](#sas-parameter-considerations) und [Shared Access Signature-Parameter](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works).
 
 ![CDN-SAS-Einstellungen](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 

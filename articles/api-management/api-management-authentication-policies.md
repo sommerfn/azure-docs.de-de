@@ -10,16 +10,15 @@ ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: bd31d711c58a63b5c15712c1774d48433c62f18d
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774971"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073738"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -49,13 +48,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |authentication-basic|Stammelement|Ja|
 
 ### <a name="attributes"></a>Attribute
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |username|Gibt den Benutzernamen für die Standardanmeldeinformationen an.|Ja|–|
 |password|Gibt das Kennwort für die Standardanmeldeinformationen an.|Ja|–|
@@ -89,13 +88,13 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-certificate|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
 |certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
@@ -133,13 +132,13 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |resource|Eine Zeichenfolge. Der App-ID-URI der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|  
 |output-token-variable-name|Eine Zeichenfolge. Name der Kontextvariablen, die den Tokenwert als Objekttyp erhält `string`. |Nein|–|  

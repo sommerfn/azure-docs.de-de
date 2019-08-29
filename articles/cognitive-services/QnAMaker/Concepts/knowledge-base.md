@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955231"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542844"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Was ist eine QnA Maker-Wissensdatenbank?
 
@@ -59,6 +59,70 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 
 Zu den verwendeten Features gehören u. a. Semantik auf Wortebene, Wichtigkeit auf Begriffsebene in einem Korpus und Deep Learning-Semantikmodelle, um die Ähnlichkeit und Relevanz zwischen zwei Textzeichenfolgen zu ermitteln.
 
+## <a name="http-request-and-response-with-endpoint"></a>HTTP-Anforderung und -Antwort mit Endpunkt
+Beim Veröffentlichen Ihrer Wissensdatenbank erstellt der Dienst einen REST-basierten HTTP-**Endpunkt**, der in Ihre Anwendung integriert werden kann, häufig in Form eines Chatbots. 
+
+### <a name="the-user-query-request-to-generate-an-answer"></a>Benutzerabfrageanforderung zum Generieren einer Antwort
+
+Eine **Benutzerabfrage** ist die Frage, die der Endbenutzer an die Wissensdatenbank richtet, z.B. `How do I add a collaborator to my app?`. Die Abfrage wird häufig in einem natürlichen Sprachformat oder mit einigen Schlüsselwörtern formuliert, die die Frage darstellen, z.B. `help with collaborators`. Die Abfrage wird von einer HTTP-**Anforderung** in der Clientanwendung an Ihre Wissensdatenbank gesendet.
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "isTest": true,
+    "scoreThreshold": 20,
+    "strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+Sie steuern die Antwort, indem Sie Eigenschaften wie [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) und [stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags) festlegen.
+
+Verwenden Sie [Konversationsinhalt](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) mit [Mehrfachduchlaufsfunktion](../how-to/multiturn-conversation.md), um die Konversation aufrechtzuerhalten und die Fragen und Antworten so zu verfeinern, dass die richtige und abschließende Antwort gefunden wird.
+
+### <a name="the-response-from-a-call-to-generate-answer"></a>Reaktion auf einen Aufruf zum Generieren einer Antwort
+
+Die HTTP-**Antwort** ist die Antwort, die aus der Wissensdatenbank basierend auf der bestmöglichen Übereinstimmung für eine bestimmte Benutzerabfrage abgerufen wird. Darin enthalten ist die eigentliche Antwort und das Vorhersageergebnis. Wenn Sie mit der Eigenschaft `top` mehr als eine Top-Antwort angefordert haben, erhalten Sie mehrere Top-Antworten mit jeweils einer Bewertung. 
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "What is the closing time?"
+            ],
+            "answer": "10.30 PM",
+            "score": 100,
+            "id": 1,
+            "source": "Editorial",
+            "metadata": [
+                {
+                    "name": "restaurant",
+                    "value": "paradise"
+                },
+                {
+                    "name": "location",
+                    "value": "secunderabad"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="test-and-production-knowledge-base"></a>Test- und Produktionsversion der Wissensdatenbank
+Eine Wissensdatenbank ist das Repository mit Fragen und Antworten, die über QnA Maker erstellt, verwaltet und verwendet werden. Jeder QnA Maker-Tarif kann für mehrere Wissensdatenbanken verwendet werden.
+
+Eine Wissensdatenbank verfügt über zwei Statusarten: „Test“ und „Veröffentlicht“. 
+
+Die **Testversion der Wissensdatenbank** ist die Version, die gerade bearbeitet, gespeichert und auf Genauigkeit und Vollständigkeit der Antworten getestet wird. Änderungen an der Testversion der Wissensdatenbank wirken sich nicht auf den Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots aus. Die Testversion der Wissensdatenbank wird in der HTTP-Anforderung als `test` bezeichnet. 
+
+Die **veröffentlichte Wissensdatenbank** ist die Version, die in Ihrem Chatbot bzw. Ihrer Anwendung verwendet wird. Bei der Aktion zur Veröffentlichung einer Wissensdatenbank wird der Inhalt der Testversion in die veröffentlichte Version der Wissensdatenbank übertragen. Da es sich bei der veröffentlichten Wissensdatenbank um die Version handelt, die von der Anwendung über den Endpunkt verwendet wird, sollte sichergestellt sein, dass der Inhalt korrekt und ausreichend getestet ist. Die veröffentlichte Wissensdatenbank wird in der HTTP-Anforderung als `prod` bezeichnet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -68,3 +132,11 @@ Zu den verwendeten Features gehören u. a. Semantik auf Wortebene, Wichtigkeit 
 ## <a name="see-also"></a>Weitere Informationen
 
 [Übersicht über QnA Maker](../Overview/overview.md)
+
+Erstellen und Bearbeiten der Wissensdatenbank mit: 
+* [REST-API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+
+Generieren der Antwort mit: 
+* [REST-API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

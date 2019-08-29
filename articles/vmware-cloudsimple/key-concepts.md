@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816112"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972727"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Wichtige Konzepte für die Verwaltung der Azure-VMware-Lösung von CloudSimple
 
@@ -34,7 +34,6 @@ Weitere Informationen zum CloudSimple-Dienst finden Sie [hier](cloudsimple-servi
 ## <a name="cloudsimple-node"></a>CloudSimple-Knoten
 
 Bei einem CloudSimple-Knoten handelt es sich um einen dedizierten, hyperkonvergenten Bare-Metal-Compute- und Speicherhost, auf dem der VMware ESXi-Hypervisor bereitgestellt wird. Dieser Knoten wird dann in die VMware vSphere-, vCenter-, vSAN- und NSX-Plattform integriert. CloudSimple-Netzwerkdienste und Umkreisnetzwerkdienste werden ebenfalls aktiviert. Jeder Knoten fungiert als Compute- und Speicherkapazitätseinheit, die Sie zur Erstellung [privater CloudSimple-Clouds](cloudsimple-private-cloud.md) bereitstellen können. Sie stellen Knoten in einer Region bereit, in der der CloudSimple-Dienst verfügbar ist, oder reservieren sie.
-
 
 Weitere Informationen zu CloudSimple-Knoten finden Sie [hier](cloudsimple-node.md).
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 01b386c820a09af0e616698aabc58a886c30bb09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 466ab0737aa5af40bd1bc137b98ab57a48feafde
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550928"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637355"
 ---
 # <a name="transforms-and-jobs"></a>Transformationen und Aufträge
 
@@ -119,5 +119,6 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 - Bevor Sie mit der Entwicklung beginnen, lesen Sie [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md) (Informationen zum Zugreifen auf APIs, Namenskonventionen usw.).
 - Informationen finden Sie in den folgenden Tutorials:
 
-    - [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
-    - [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial-with-api.md)
+    - [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos](stream-files-tutorial-with-rest.md)
+    - [Tutorial: Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md)
+    - [Tutorial: Analysieren von Videos mit Media Services v3](analyze-videos-tutorial-with-api.md)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815041"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615212"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Verwalten von Azure Cosmos-Ressourcen mit der Azure CLI
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ## <a name="create-a-database"></a>Erstellen einer Datenbank
 
-Führen Sie den folgenden Befehl aus, um eine Cosmos DB-Datenbank-Instanz zu erstellen:
+Führen Sie den folgenden Befehl aus, um eine Cosmos-Datenbankinstanz zu erstellen:
 
 ```azurecli-interactive
 az cosmosdb database create \
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Um einen Cosmos DB-Container mit 400 RU/s und einem Partitionsschlüssel zu erstellen, führen Sie den folgenden Befehl aus:
+Um einen Cosmos-Container mit 400 RU/s und einem Partitionsschlüssel zu erstellen, führen Sie den folgenden Befehl aus:
 
 ```azurecli-interactive
 # Create a container
@@ -67,7 +67,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>Ändern des Durchsatzes eines Containers
 
-Um den Durchsatz eines Cosmos DB-Containers mit 1.000 RU/s zu ändern, führen Sie den folgenden Befehl aus:
+Um den Durchsatz eines Cosmos-Containers mit 1000 RU/s zu ändern, führen Sie den folgenden Befehl aus:
 
 ```azurecli-interactive
 # Update container throughput

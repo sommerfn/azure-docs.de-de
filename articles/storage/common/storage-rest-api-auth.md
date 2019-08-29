@@ -1,24 +1,24 @@
 ---
-title: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung) | Microsoft-Dokumentation
-description: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung)
+title: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten mit Autorisierung mit gemeinsam verwendetem Schlüssel | Microsoft-Dokumentation
+description: Verwenden Sie die Azure Storage-REST-API, um unter Verwendung der Autorisierung mit gemeinsam verwendetem Schlüssel eine Anforderung an den Blobspeicher zu senden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989939"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640665"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
-In diesem Artikel wird veranschaulicht, wie Sie die REST-APIs des Blob Storage-Diensts verwenden und sich für das Aufrufen des Diensts authentifizieren. Er wurde aus der Sicht eines Entwicklers geschrieben, der nichts über REST und das Durchführen eines REST-Aufrufs weiß. Wir sehen uns die Referenzdokumentation für einen REST-Aufruf an und finden heraus, wie die Übersetzung in den eigentlichen REST-Aufruf durchgeführt wird. Es wird beispielsweise folgende Frage beantwortet: Wo gehören die Felder hin? Nachdem Sie sich über das Einrichten eines REST-Aufrufs informiert haben, können Sie dieses Wissen nutzen, um andere REST-APIs des Storage-Diensts zu verwenden.
+In diesem Artikel wird veranschaulicht, wie Sie die REST-APIs des Blob Storage-Diensts verwenden und das Aufrufen des Diensts autorisieren. Er wurde aus der Sicht eines Entwicklers geschrieben, der nichts über REST und das Durchführen eines REST-Aufrufs weiß. Wir sehen uns die Referenzdokumentation für einen REST-Aufruf an und finden heraus, wie die Übersetzung in den eigentlichen REST-Aufruf durchgeführt wird. Es wird beispielsweise folgende Frage beantwortet: Wo gehören die Felder hin? Nachdem Sie sich über das Einrichten eines REST-Aufrufs informiert haben, können Sie dieses Wissen nutzen, um andere REST-APIs des Storage-Diensts zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -267,12 +267,13 @@ Nachdem Sie nun mit dem Erstellen der Anforderung, dem Aufrufen des Diensts und 
 ## <a name="creating-the-authorization-header"></a>Erstellen des Autorisierungsheaders
 
 > [!TIP]
-> Azure Storage unterstützt jetzt die Integration von Azure Active Directory (Azure AD) für Blobs und Warteschlangen. Azure AD bietet eine erheblich einfachere Benutzeroberfläche für das Autorisieren einer Anforderung an Azure Storage. Weitere Informationen zur Verwendung von Azure AD zum Autorisieren von REST-Vorgängen finden Sie unter [Authentifizieren mit Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Eine Übersicht über die Azure AD-Integration in Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
+> Azure Storage unterstützt jetzt die Integration von Azure Active Directory (Azure AD) für Blobs und Warteschlangen. Azure AD bietet eine erheblich einfachere Benutzeroberfläche für das Autorisieren einer Anforderung an Azure Storage. Weitere Informationen zur Verwendung von Azure AD zum Autorisieren von REST-Vorgängen finden Sie unter [Authorize with Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory) (Autorisieren mit Azure Active Directory). Eine Übersicht über die Azure AD-Integration in Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
 
-Es gibt einen Artikel, in dem konzeptuell (ohne Code) beschrieben wird, wie Sie die [Authentifizierung für Azure Storage-Dienste](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services) durchführen.
+Es gibt einen Artikel, in dem konzeptuell (ohne Code) beschrieben wird, wie Sie die [Anforderungen an Azure Storage autorisieren](/rest/api/storageservices/authorize-requests-to-azure-storage).
+
 Wir fassen hier die wesentlichen Punkte des Artikels zusammen und zeigen den Code.
 
-Verwenden Sie zuerst eine Authentifizierung mit gemeinsam verwendetem Schlüssel. Der Autorisierungsheader hat das folgende Format:
+Verwenden Sie zunächst die Autorisierung mit gemeinsam verwendetem Schlüssel. Der Autorisierungsheader hat das folgende Format:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
@@ -360,7 +361,7 @@ Dieser Teil der Signaturzeichenfolge steht für das Speicherkonto, auf das die A
 
 Wenn Sie Abfrageparameter verwenden, sind diese ebenfalls in diesem Beispiel enthalten. Hier ist der Code angegeben, mit dem auch zusätzliche Abfrageparameter und Abfrageparameter mit mehreren Werten verarbeitet werden. Denken Sie daran, dass Sie diesen Code für alle REST-APIs erstellen. Sie möchten alle Möglichkeiten berücksichtigen, selbst wenn die ListContainers-Methode nicht alle benötigt.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -571,3 +572,4 @@ In diesem Artikel haben Sie gelernt, wie eine Anforderung an die Blobspeicher-RE
 * [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)
 * [REST-API des Dateidiensts](/rest/api/storageservices/file-service-rest-api)
 * [REST-API des Warteschlangendiensts](/rest/api/storageservices/queue-service-rest-api)
+* [REST-API des Tabellenspeicherdiensts](/rest/api/storageservices/table-service-rest-api)

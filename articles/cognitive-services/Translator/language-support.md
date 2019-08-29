@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 6ab500fe6a7f288bcfbdc9168ada8bdad5bdb6ea
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: be69f18f30b796e7401ef68aa5088153e07f14f5
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772948"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127881"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -237,6 +237,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Litauisch      | `lt`          |
 |Madagassisch|  `mg`    |
 | Norwegisch      | `nb`          |
+| Persisch      | `fa`          |
 | Polnisch      | `pl`          |
 | Portugiesisch      | `pt`          |
 | Rumänisch      | `ro`          |

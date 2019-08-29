@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 69ae72ec-e8be-4e46-a8f0-e744aebb5cc2
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 087640ab9c589728551438ebca536f872e3bd910
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 665a4d89c056b5825e35f0925ba3eaaf55d06c0f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876555"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089379"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
 Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgewählte Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)zur Verfügung.
@@ -55,8 +54,8 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 ## <a name="b---burstable"></a>B – Burstfähig
 | Size | vCPUs | NUMA-Knoten | CPU | Ausführungen | Durchschnittliche Basisrate | Standardabweichung | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 9 | 6.3 | 0,2 | 
-| Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 47 | 6.4. | 0,2 | 
+| Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 9 | 6.3 | 0.2 | 
+| Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 47 | 6.4. | 0.2 | 
 | Standard_B2ms | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 36 | 19,8 | 0,8 | 
 | Standard_B2s | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 2 | 13,0 | 0.0 | 
 | Standard_B2s | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 29 | 13,0 | 0,5 | 

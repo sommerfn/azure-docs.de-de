@@ -1,17 +1,17 @@
 ---
 title: Öffnen eines Supporttickets für Microsoft Azure FXT Edge Filer
-description: Enthält eine Beschreibung der Verfahren zum Hochfahren und sicheren Herunterfahren eines Azure FXT Edge Filer-Knotens.
+description: Schritte zum Öffnen eines Tickets, um Unterstützung mit dem Azure FXT Edge Filer-System zu erhalten
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: v-erkell
-ms.openlocfilehash: 82b6477b42d627baff10d9bde46452bf43900ffd
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828244"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624115"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Öffnen eines Supporttickets für den Azure FXT Edge Filer
 
