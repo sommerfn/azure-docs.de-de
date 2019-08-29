@@ -8,24 +8,23 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f95d3487adecb17e0f4b79e81a08e16bafe4594f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2b44b51da11bc1c51fcbc60992a9b5b870daf02e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855252"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100580"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einer Azure VM
 In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Computer in Azure mithilfe von Azure-Schnellstartvorlagen teilweise automatisieren. Bei diesem Prozess werden zwei Azure-Schnellstartvorlagen verwendet: 
 
-   | Vorlage | Beschreibung |
+   | Vorlage | BESCHREIBUNG |
    | --- | --- |
    | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Erstellt den Windows-Failovercluster und bindet die SQL Server-VMs in diesen Cluster ein. |
    | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Erstellt den Verfügbarkeitsgruppenlistener und konfiguriert den internen Lastenausgleich. Diese Vorlage kann nur verwendet werden, wenn der Windows-Failovercluster mit der Vorlage **101-sql-vm-ag-setup** erstellt wurde. |
@@ -89,7 +88,7 @@ Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [SQL Se
 > Erstellen Sie noch *keinen* Listener, da dies in Schritt 4 mithilfe der Vorlage **101-sql-vm-aglistener-setup** automatisch erfolgt. 
 
 ## <a name="step-3-manually-create-the-internal-load-balancer"></a>Schritt 3: Manuelles Erstellen des internen Lastenausgleichs
-Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Balancer-Instanz erforderlich. Der interne Lastenausgleich bietet eine Floating IP-Adresse für den Verfügbarkeitsgruppenlistener, um Failovervorgänge und Verbindungswiederherstellungen zu beschleunigen. Wenn die SQL Server-VMs in einer Verfügbarkeitsgruppe Teil des gleichen Verfügbarkeitssatzes sind, können Sie einen Load Balancer im Tarif „Basic“ verwenden. Andernfalls benötigen einen Load Balancer im Tarif „Standard“. 
+Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Balancer-Instanz erforderlich. Der interne Lastenausgleich stellt eine Floating IP-Adresse für den Verfügbarkeitsgruppenlistener bereit, um Failovervorgänge und Verbindungswiederherstellungen zu beschleunigen. Wenn die SQL Server-VMs in einer Verfügbarkeitsgruppe Teil des gleichen Verfügbarkeitssatzes sind, können Sie einen Lastenausgleich im Tarif „Basic“ verwenden. Andernfalls benötigen einen Lastenausgleich im Tarif „Standard“. 
 
 > [!IMPORTANT]
 > Der interne Load Balancer muss sich im selben virtuellen Netzwerk befinden wie die SQL Server VM-Instanzen. 

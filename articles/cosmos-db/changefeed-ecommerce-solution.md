@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552007"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616949"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
-Der Azure Cosmos DB-Änderungsfeed ist ein Mechanismus, um einen kontinuierlichen und inkrementellen Feed von Datensätzen aus einem Azure Cosmos DB-Container abzurufen, während diese Datensätze erstellt oder geändert werden. Der Änderungsfeed unterstützt Ihre Arbeit, indem er den Container bezüglich Änderungen überwacht. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Weitere Informationen zum Änderungsfeed finden Sie im Artikel [Arbeiten mit dem Änderungsfeed](change-feed.md). 
+Der Azure Cosmos DB-Änderungsfeed ist ein Mechanismus, um einen kontinuierlichen und inkrementellen Feed von Datensätzen aus einem Azure Cosmos-Container abzurufen, während diese Datensätze erstellt oder geändert werden. Der Änderungsfeed unterstützt Ihre Arbeit, indem er den Container bezüglich Änderungen überwacht. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Weitere Informationen zum Änderungsfeed finden Sie im Artikel [Arbeiten mit dem Änderungsfeed](change-feed.md). 
 
 Dieser Artikel beschreibt, wie der Änderungsfeed von einem E-Commerce-Unternehmen genutzt werden kann, um Benutzermuster zu verstehen und Daten in Echtzeit zu analysieren und zu visualisieren. Sie können Ereignisse wie das Betrachten eines Artikels durch einen Benutzer, das Hinzufügen eines Artikels zu seinem Warenkorb oder das Kaufen eines Artikels analysieren. Wenn eines dieser Ereignisse eintritt, wird ein neuer Datensatz erstellt und vom Änderungsfeed protokolliert. Der Änderungsfeed löst dann eine Reihe von Schritten aus, die zur Visualisierung von Metriken führen, mit der die Leistung und Aktivität des Unternehmens analysiert werden kann. Zu den Beispielmetriken, die Sie visualisieren können, gehören die Einnahmen, die einzelnen Besucher der Website, die beliebtesten Artikel und der Durchschnittspreis der angezeigten, zum Warenkorb hinzugefügten und der gekauften Artikel. Diese Beispielmetriken können einem E-Commerce-Unternehmen helfen, die Popularität seiner Website zu bewerten, seine Werbe- und Preisstrategien zu entwickeln und Entscheidungen darüber zu treffen, in welchen Bestand es investieren soll.
 
@@ -41,9 +41,9 @@ Im folgenden Diagramm finden Sie eine Darstellung des Datenflusses und der in di
    }
    ```
 
-2. **Cosmos DB:** Die generierten Daten werden in einer Azure Cosmos DB-Sammlung gespeichert.  
+2. **Cosmos DB:** Die generierten Daten werden in einem Azure Cosmos-Container gespeichert.  
 
-3. **Änderungsfeed:** Der Änderungsfeed überwacht die Azure Cosmos DB-Sammlung hinsichtlich Änderungen. Jedes Mal, wenn ein neues Dokument zur Sammlung hinzugefügt wird (d.h. wenn ein Ereignis eintritt, wie z.B. ein Benutzer betrachtet einen Artikel, einen fügt den Artikel zu seinem Warenkorb hinzufügt oder kauft einen Artikel), löst der Änderungsfeed eine [Azure-Funktion](../azure-functions/functions-overview.md) aus.  
+3. **Änderungsfeed:** Der Änderungsfeed überwacht den Azure Cosmos-Container auf Änderungen. Jedes Mal, wenn ein neues Dokument zur Sammlung hinzugefügt wird (d.h. wenn ein Ereignis eintritt, wie z.B. ein Benutzer betrachtet einen Artikel, einen fügt den Artikel zu seinem Warenkorb hinzufügt oder kauft einen Artikel), löst der Änderungsfeed eine [Azure-Funktion](../azure-functions/functions-overview.md) aus.  
 
 4. **Azure-Funktion:** Die Azure-Funktion verarbeitet die neuen Daten und sendet sie an einen [Azure Event Hub](../event-hubs/event-hubs-about.md).  
 
@@ -143,7 +143,7 @@ Einen Azure Event Hub empfängt die Ereignisdaten und speichert und verarbeitet 
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Einrichten der Azure-Funktion zum Lesen des Änderungsfeeds
 
-Wenn ein neues Dokument erstellt wird oder ein aktuelles Dokument in einer Cosmos DB-Sammlung geändert wird, fügt der Änderungsfeed dieses geänderte Dokument automatisch zu seinem Verlauf der Sammlungsänderungen hinzu. Sie werden jetzt eine Azure-Funktion erstellen und ausführen, die den Änderungsfeed verarbeitet. Wenn ein Dokument in der von Ihnen erstellten Sammlung erstellt oder geändert wird, löst der Änderungsfeed die Azure-Funktion aus. Anschließend sendet die Azure-Funktion das geänderte Dokument an den Event Hub.
+Wenn ein neues Dokument erstellt oder ein aktuelles Dokument in einem Cosmos-Container geändert wird, fügt der Änderungsfeed dieses geänderte Dokument automatisch zu seinem Verlauf der Sammlungsänderungen hinzu. Sie werden jetzt eine Azure-Funktion erstellen und ausführen, die den Änderungsfeed verarbeitet. Wenn ein Dokument in der von Ihnen erstellten Sammlung erstellt oder geändert wird, löst der Änderungsfeed die Azure-Funktion aus. Anschließend sendet die Azure-Funktion das geänderte Dokument an den Event Hub.
 
 1. Kehren Sie zum Repository zurück, das Sie auf Ihrem Gerät geklont haben.  
 
@@ -318,7 +318,7 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optional: Visualisieren mit einer E-Commerce-Website
 
-Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sich mit einer echten E-Commerce-Site zu verbinden. Um die E-Commerce-Website zu erstellen, verwenden Sie eine Azure Cosmos DB-Datenbank, um die Liste der Produktkategorien (Damen, Herren, Unisex), den Produktkatalog und eine Liste der beliebtesten Artikel zu speichern.
+Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sich mit einer echten E-Commerce-Site zu verbinden. Um die E-Commerce-Website zu erstellen, verwenden Sie eine Azure Cosmos-Datenbank, um die Liste der Produktkategorien (Damen, Herren, Unisex), den Produktkatalog und eine Liste der beliebtesten Artikel zu speichern.
 
 1. Navigieren Sie zurück zum [Azure-Portal](https://portal.azure.com/), klicken Sie dann auf Ihr **Cosmos DB-Konto** und dann auf **Daten-Explorer**.  
 

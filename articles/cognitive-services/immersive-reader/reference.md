@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688310"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534467"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Plastischer Reader-SDK – Referenz
 
@@ -73,6 +73,7 @@ Enthält den Inhalt, der im Plastischen Reader angezeigt werden soll.
 | --------- | ----------- |
 | text/plain | Nur-Text. |
 | application/mathml+xml | Mathematische Markupsprache (MathML). [Weitere Informationen](https://developer.mozilla.org/en-US/docs/Web/MathML)
+| application/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument im DOCX-Format von Microsoft Word.
 
 ### <a name="options"></a>Optionen
 
@@ -104,7 +105,8 @@ Enthält Informationen zum Fehler.
 | ---- | ----------- |
 | BadArgument | Das angegebene Argument ist ungültig. Details finden Sie unter `message`. |
 | Timeout | Der Plastische Reader konnte innerhalb des angegebenen Zeitlimits nicht geladen werden. |
-| TokenExpired| Das angegebene Token ist abgelaufen. |
+| TokenExpired | Das angegebene Token ist abgelaufen. |
+| Gedrosselt | Das Limit für die Aufrufrate wurde überschritten. |
 
 ## <a name="launching-the-immersive-reader"></a>Starten des Plastischen Readers
 

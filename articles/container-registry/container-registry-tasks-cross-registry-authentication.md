@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 8fac70e7e5125ae86b2b5ce13041bbf1fd067bbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641523"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509095"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Registrierungsübergreifende Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 
@@ -76,7 +76,7 @@ Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine benutz
 
 ### <a name="create-task"></a>Erstellen der Aufgabe
 
-Führen Sie den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe *helloworldtask* zu erstellen. Der Aufgabenkontext ist das lokale System, und der Befehl verweist auf die Datei `helloworldtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` übergibt die Ressourcen-ID der benutzerseitig zugewiesenen Identität. 
+Führen Sie den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe *helloworldtask* zu erstellen. Die Aufgabe läuft ohne Quellcode-Kontext, und der Befehl verweist auf die Datei `helloworldtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` übergibt die Ressourcen-ID der benutzerseitig zugewiesenen Identität. 
 
 ```azurecli
 az acr task create \
@@ -95,7 +95,7 @@ Mit den Schritten in diesem Abschnitt wird eine Aufgabe erstellt und eine system
 
 ### <a name="create-task"></a>Erstellen der Aufgabe
 
-Führen Sie den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe *helloworldtask* zu erstellen. Der Aufgabenkontext ist das lokale System, und der Befehl verweist auf die Datei `helloworldtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` ohne Wert aktiviert die systemseitig zugewiesene verwaltete Identität für die Aufgabe. 
+Führen Sie den folgenden Befehl vom Typ [az acr task create][az-acr-task-create] aus, um die Aufgabe *helloworldtask* zu erstellen. Die Aufgabe läuft ohne Quellcode-Kontext, und der Befehl verweist auf die Datei `helloworldtask.yaml` im Arbeitsverzeichnis. Der Parameter `--assign-identity` ohne Wert aktiviert die systemseitig zugewiesene verwaltete Identität für die Aufgabe. 
 
 ```azurecli
 az acr task create \

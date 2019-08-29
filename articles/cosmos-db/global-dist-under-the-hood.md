@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384162"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615351"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 
@@ -34,7 +34,7 @@ Wie in der folgenden Abbildung gezeigt wird, sind die Daten in einem Container �
 
 Eine physische Partition wird durch eine Gruppe von Replikaten implementiert, die als *Replikatgruppe* bezeichnet wird. Jeder Computer hostet Hunderte von Replikaten für verschiedene physische Partitionen innerhalb eines festen Satzes von Prozessen, wie in der Abbildung oben gezeigt. Die zu den physischen Partitionen gehörenden Replikate werden dynamisch und mit Lastenausgleich auf die Computer in einem Cluster sowie die Rechenzentren in einer Region verteilt.  
 
-Ein Replikat gehört eindeutig zu einem Azure Cosmos DB-Mandanten. Jedes Replikat hostet eine Instanz der [Datenbank-Engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) von Cosmos DB, die die Ressourcen und die zugehörigen Indizes verwaltet. Die Datenbank-Engine von Cosmos DB arbeitet nach einem ARS-basierten (Atom Record Sequence) Typsystem. Die Engine ist unabhängig von jeglichem Schema und verwischt damit die Grenzen zwischen der Struktur und den Instanzwerten von Datensätzen. Vollständige Schemaunabhängigkeit erreicht Cosmos DB durch die automatische und effiziente Indizierung aller Elemente schon bei der Erfassung. Damit können Benutzer ihre global verteilten Daten abfragen, ohne sich um das Schema oder die Indexverwaltung kümmern zu müssen.
+Ein Replikat gehört eindeutig zu einem Azure Cosmos DB-Mandanten. Jedes Replikat hostet eine Instanz der [Datenbank-Engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) von Cosmos DB, die die Ressourcen und die zugehörigen Indizes verwaltet. Die Cosmos-Datenbank-Engine arbeitet nach einem ARS-basierten (Atom Record Sequence) Typsystem. Die Engine ist unabhängig von jeglichem Schema und verwischt damit die Grenzen zwischen der Struktur und den Instanzwerten von Datensätzen. Vollständige Schemaunabhängigkeit erreicht Cosmos DB durch die automatische und effiziente Indizierung aller Elemente schon bei der Erfassung. Damit können Benutzer ihre global verteilten Daten abfragen, ohne sich um das Schema oder die Indexverwaltung kümmern zu müssen.
 
 Die Cosmos-Datenbank-Engine besteht aus Komponenten. Dazu gehören die Implementierung verschiedener Koordinationselemente, Language Runtimes, der Abfrageprozessor und die Untersysteme, die für die transaktionale Speicherung und Indizierung der Daten verantwortlich sind. Zu Gewährleistung von Dauerhaftigkeit und Hochverfügbarkeit speichert die Datenbank-Engine ihre Daten und ihren Index auf SSD-Datenträgern und repliziert sie mit anderen Instanzen der Datenbank-Engine innerhalb der Replikatgruppen. Größere Mandanten benötigen mehr Durchsatz und Speicherplatz und verfügen daher über größere und/oder mehr Replikate. Jede Komponente des Systems ist vollständig asynchron: Kein Thread wird jemals gesperrt, und jeder Thread verrichtet kurzfristige Aufgaben, die keine unnötigen Threadwechsel erfordern. Ratenlimits und Rückstaus werden auf den gesamten Stapel von der Erfassungssteuerung bis zu allen E/A-Pfaden aufgeteilt. Die Cosmos-Datenbank-Engine ist darauf ausgelegt, Parallelität präzise zu steuern und für einen hohen Durchsatz zu sorgen und dabei minimale Systemressourcen zu verbrauchen.
 
