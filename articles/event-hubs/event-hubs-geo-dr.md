@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704378"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611719"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
 Falls gesamte Azure-Regionen oder -Datencenter ausfallen (wenn keine [Verfügbarkeitszonen](../availability-zones/az-overview.md) verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden kann. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Event Hubs unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
 
-Das Feature für die georedundante Notfallwiederherstellung ist sowohl für die Event Hubs Standard- als auch die Dedicated-SKU global verfügbar. Beachten Sie bitte, dass Sie Namespaces nur innerhalb desselben Tarifs der SKU geografisch koppeln können. Wenn Sie z. B. einen Namespace in einem Cluster haben, der nur in unserer Dedicated-SKU angeboten wird, kann dieser nur mit einem Namespace in einem anderen Cluster gekoppelt werden. 
+> [!NOTE]
+> Das Feature zur georedundanten Notfallwiederherstellung ist nur für die [Tarife „Standard“ und „Dediziert“](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar.  
 
 ## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 
@@ -37,7 +38,9 @@ Das Feature der georedundanten Notfallwiederherstellung von Azure Event Hubs ist
 
 ## <a name="basic-concepts-and-terms"></a>Allgemeine Konzepte und Begriffe
 
-Bei der Funktion zur Notfallwiederherstellung wird die Notfallwiederherstellung von Metadaten implementiert, und sie basiert auf speziellen primären und sekundären Namespaces. Beachten Sie, dass das Feature zur georedundanten Notfallwiederherstellung nur für die [Standard-SKU](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar ist. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
+Bei der Funktion zur Notfallwiederherstellung wird die Notfallwiederherstellung von Metadaten implementiert, und sie basiert auf speziellen primären und sekundären Namespaces. 
+
+Das Feature zur georedundanten Notfallwiederherstellung ist ausschließlich für die [Tarife „Standard“ und „Dediziert“](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
 
 In diesem Artikel werden die folgenden Begriffe verwendet:
 
@@ -48,6 +51,19 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 -  *Metadaten*: Entitäten (etwa Event Hubs und Consumergruppen) sowie deren Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten und Ereignisse werden nicht repliziert. 
 
 -  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
+
+## <a name="supported-namespace-pairs"></a>Unterstützte Namespacepaare
+Die folgenden Kombinationen von primären und sekundären Namespaces werden unterstützt:  
+
+| Primärer Namespace | Sekundärer Namespace | Unterstützt | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | Ja | 
+| Standard | Dediziert | Ja | 
+| Dediziert | Dediziert | Ja | 
+| Dediziert | Standard | Nein | 
+
+> [!NOTE]
+> Namespaces, die sich im selben dedizierten Cluster befinden, können nicht paarweise gekoppelt werden. Namespaces, die sich in unterschiedlichen Clustern befinden, können paarweise gekoppelt werden. 
 
 ## <a name="setup-and-failover-flow"></a>Setup und Failoverablauf
 

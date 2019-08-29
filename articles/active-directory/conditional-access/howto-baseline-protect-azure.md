@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608124"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532956"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Basisrichtlinie: Anfordern von MFA für die Dienstverwaltung (Vorschau)
 
@@ -32,21 +32,21 @@ Benutzer, die Dienste mit Azure Resource Manager verwalten, verfügen über weit
 
 Sobald die Richtlinie in einem Mandanten aktiviert ist, werden alle Benutzer, die sich bei Azure-Verwaltungsressourcen anmelden, aufgefordert, eine Multi-Factor Authentication durchzuführen. Wenn der Benutzer nicht für die Multi-Factor Authentication registriert ist, muss er sich mithilfe der Microsoft Authenticator-App registrieren, um fortzufahren.
 
-Um eine interaktive Anmeldung mithilfe von [Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) auszuführen, verwenden Sie das [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) -Cmdlet.
+Um eine interaktive Anmeldung mithilfe von [Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) auszuführen, verwenden Sie das [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)-Cmdlet.
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Bei der Ausführung wird von diesem Cmdlet eine Tokenzeichenfolge bereitgestellt. Kopieren Sie diese Zeichenfolge, und fügen Sie sie in einem Browser unter [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  ein, um sich anzumelden. Ihre PowerShell-Sitzung wird für die Verbindungsherstellung mit Azure authentifiziert.
+Bei der Ausführung wird von diesem Cmdlet eine Tokenzeichenfolge bereitgestellt. Kopieren Sie diese Zeichenfolge, und fügen Sie sie in einem Browser unter [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) ein, um sich anzumelden. Ihre PowerShell-Sitzung wird für die Verbindungsherstellung mit Azure authentifiziert.
 
-Um eine interaktive Anmeldung mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) vorzunehmen, führen Sie den Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) aus.
+Um eine interaktive Anmeldung mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) vorzunehmen, führen Sie den Befehl[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) aus.
 
 ```azurecli
 az login
 ```
 
-Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Anmeldeseite. Andernfalls müssen Sie eine Browserseite öffnen und die Anweisungen zur Befehlszeile befolgen, um einen Autorisierungscode einzugeben, nachdem Sie in Ihrem Browser zu [https://aka.ms/devicelogin](https://aka.ms/devicelogin) navigiert sind. Melden Sie sich anschließend im Browser mit Ihren Anmeldeinformationen an.
+Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Anmeldeseite. Andernfalls müssen Sie eine Browserseite öffnen und die Anweisungen zur Befehlszeile befolgen, um einen Autorisierungscode einzugeben, nachdem Sie in Ihrem Browser zu [https://aka.ms/devicelogin](https://aka.ms/devicelogin) navigiert sind. Melden Sie sich anschließend im Browser mit Ihren Anmeldeinformationen an.
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
@@ -58,11 +58,11 @@ Die **Basisrichtlinie: Anfordern von MFA für die Dienstverwaltung (Vorschau)** 
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administratoren zu schützen:
 
-1. Melden Sie sich am  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien **Basisrichtlinie: Anfordern von MFA für die Dienstverwaltung (Vorschau)** aus.
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
-1. Klicken Sie auf  **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

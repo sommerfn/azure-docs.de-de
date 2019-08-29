@@ -1,24 +1,24 @@
 ---
-title: Einrichten einer Benutzerprofilfreigabe für einen Windows Virtual Desktop-Hostpool (Vorschauversion) – Azure
-description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für einen Windows Virtual Desktop-Hostpool (Vorschauversion) einrichten.
+title: Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit einer Dateifreigabe, die sich auf einem virtuellen Computer befindet – Azure
+description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für einen Windows Virtual Desktop-Hostpool (Vorschauversion) mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619104"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876789"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Einrichten einer Benutzerprofilfreigabe für einen Hostpool
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Erstellen eines Profilcontainers für einen Hostpool mit einer Dateifreigabe
 
 Der Windows Virtual Desktop-Dienst (Vorschauversion) stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Windows Virtual Desktop als veraltet eingestuft.
 
-In diesem Abschnitt wird beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool einrichten. Allgemeine Dokumentation zu FSLogix finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
+In diesem Artikel ist beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet. Weitere FSLogix-Dokumentation finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Erstellen eines neuen virtuellen Computers als Dateifreigabe
 
@@ -48,15 +48,15 @@ Hier ist eine allgemeine Anleitung zum Vorbereiten eines virtuellen Computers al
 6. Suchen Sie nach der Sicherheitsgruppe, der Sie die Windows Virtual Desktop-Benutzer hinzugefügt haben, und stellen Sie dann sicher, dass für die Gruppe **Vollzugriff** festgelegt wurde.
 7. Klicken Sie nach dem Hinzufügen der Sicherheitsgruppe mit der rechten Maustaste auf den Ordner, wählen Sie **Eigenschaften** und **Freigabe**, und kopieren Sie anschließend den **Netzwerkpfad** zur späteren Verwendung.
 
-Weitere Informationen über Berechtigungen finden Sie in der [FSLogix-Dokumentation](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
+Weitere Informationen über Berechtigungen finden Sie in der [FSLogix-Dokumentation](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht).
 
 ## <a name="configure-the-fslogix-profile-container"></a>Konfigurieren des FSLogix-Profilcontainers
 
 Führen Sie auf allen Computern, die für den Hostpool registriert sind, Folgendes durch, um die virtuellen Computer mit der FSLogix-Software zu konfigurieren:
 
 1. [Stellen Sie eine Verbindung mit dem virtuellen Computer her](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine), indem Sie die Anmeldeinformationen verwenden, die Sie beim Erstellen des virtuellen Computers angegeben haben.
-2. Starten Sie einen Internetbrowser, und verwenden Sie [diesen Link](https://go.microsoft.com/fwlink/?linkid=2084562), um den FSLogix-Agent herunterzuladen. Im Rahmen der öffentlichen Vorschauversion von Windows Virtual Desktop erhalten Sie einen Lizenzschlüssel zum Aktivieren der FSLogix-Software. Der Schlüssel ist die Datei „LicenseKey.txt“, die in der ZIP-Datei des FSLogix-Agents enthalten ist.
-3. Navigieren Sie in der ZIP-Datei entweder zur \\\\Win32\\-Release oder zur \\\\X64\\-Release, und führen Sie **FSLogixAppsSetup** aus, um den FSLogix-Agent zu installieren.
+2. Starten Sie einen Internetbrowser, und verwenden Sie [diesen Link](https://go.microsoft.com/fwlink/?linkid=2084562), um den FSLogix-Agent herunterzuladen.
+3. Navigieren Sie in der ZIP-Datei entweder zur \\\\Win32\\-Release oder zur \\\\X64\\-Release, und führen Sie **FSLogixAppsSetup** aus, um den FSLogix-Agent zu installieren.  Weitere Informationen zum Installieren von FSLogix finden Sie unter [Herunterladen und Installieren von FSLogix](https://docs.microsoft.com/fslogix/install-ht).
 4. Navigieren Sie zu **Programme** > **FSLogix** > **Apps**, um zu überprüfen, ob der Agent installiert wurde.
 5. Führen Sie im Startmenü **RegEdit** als Administrator aus. Navigieren Sie zu **Computer\\HKEY_LOCAL_MACHINE\\Software\\FSLogix**.
 6. Erstellen Sie einen Schlüssel mit dem Namen **Profile**.

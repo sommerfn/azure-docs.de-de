@@ -386,8 +386,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 Log Analytics erbt das Schema von Azure Monitor. Dabei gelten jedoch folgende Ausnahmen:
 
 * Der erste Buchstabe jedes Spaltennamens wird groß geschrieben. *correlationId* aus Azure Monitor wird in Log Analytics also beispielsweise zu *CorrelationId*.
-* Die Spaltenebene ** wird gelöscht.
-* Die dynamischen Spalteneigenschaften ** werden wie folgt als dynamischer JSON-Blobtyp beibehalten:
+* Die Spalten *Ebene* wird gelöscht.
+* Die dynamischen Spalten *Eigenschaften* werden als der folgende dynamische JSON-BLOB-Typ beibehalten:
 
     | Azure Monitor-Spalte | Log Analytics-Spalte | Typ |
     | --- | --- | --- |

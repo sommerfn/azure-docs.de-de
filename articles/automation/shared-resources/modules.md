@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: cbc6932c3bbe11f0c4def17097c1791cbb1687bf
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672784"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515890"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwenden von Modulen in Azure Automation
 
@@ -46,7 +46,7 @@ Suchen Sie unter https://www.powershellgallery.com das gewünschte Modul, wenn S
 
 ![PowerShell-Katalog – Importmodul](../media/modules/powershell-gallery.png)
 
-Sie können Module auch direkt in Ihrem Automation-Konto Module aus dem PowerShell-Katalog importieren. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. Klicken Sie auf der Seite „Module“ auf **Katalog durchsuchen**. Die Seite **Katalog durchsuchen** wird geöffnet. Sie können auf dieser Seite ein Modul im PowerShell-Katalog suchen. Wählen Sie das gewünschte Modul aus, und klicken Sie auf **Importieren**. Klicken Sie auf der Seite **Importieren** auf **OK**, um den Importvorgang zu starten.
+Sie können Module auch direkt in Ihrem Automation-Konto Module aus dem PowerShell-Katalog importieren. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. Klicken Sie auf der Moduleseite auf **Katalog durchsuchen**, und durchsuchen Sie dann den PowerShell-Katalog nach einem Modul. Wählen Sie das gewünschte Modul aus, und klicken Sie auf **Importieren**. Klicken Sie auf der Seite **Importieren** auf **OK**, um den Importvorgang zu starten.
 
 ![PowerShell-Katalog – Import aus Azure-Portal](../media/modules/gallery-azure-portal.png)
 
@@ -68,7 +68,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 ## <a name="internal-cmdlets"></a>Interne Cmdlets
 
-Nachfolgend finden Sie eine Liste der Cmdlets im internen `Orchestrator.AssetManagement.Cmdlets`-Modul, das in jedes Automation-Konto importiert wird. Diese Cmdlets sind in Ihren Runbooks und DSC-Konfigurationen verfügbar und ermöglichen Ihnen die Interaktion mit den Ressourcen in Ihrem Automation-Konto. Zudem ermöglichen die internen-Cmdlets das Abrufen von Geheimnissen aus verschlüsselten **Variablenwerten**, **Anmeldeinformationen** und verschlüsselten **Verbindungsfeldern**. Die Azure PowerShell-Cmdlets können diese Geheimnisse nicht abrufen. Wenn Sie diese Cmdlets verwenden, müssen Sie keine implizite Verbindung Azure herstellen. Dies ist nützlich in Szenarien, in denen Sie eine Verbindung, z. B. ein ausführendes Konto, zum Authentifizieren bei Azure benötigen.
+Nachfolgend finden Sie eine Liste der Cmdlets im internen `Orchestrator.AssetManagement.Cmdlets`-Modul, das in jedes Automation-Konto importiert wird. Diese Cmdlets sind in Ihren Runbooks und DSC-Konfigurationen verfügbar und ermöglichen Ihnen die Interaktion mit den Ressourcen in Ihrem Automation-Konto. Zudem ermöglichen die internen-Cmdlets das Abrufen von Geheimnissen aus verschlüsselten **Variablenwerten**, **Anmeldeinformationen** und verschlüsselten **Verbindungsfeldern**. Die Azure PowerShell-Cmdlets können diese Geheimnisse nicht abrufen. Wenn Sie diese Cmdlets verwenden, müssen Sie keine implizite Verbindung mit Azure herstellen, z. B. „Als Konto ausführen“, um sich bei Azure zu authentifizieren.
 
 |NAME|BESCHREIBUNG|
 |---|---|
@@ -86,7 +86,7 @@ Sie können einen benutzerdefinierten [Verbindungstyp](../automation-connections
 
 ![Verwenden einer benutzerdefinierten Verbindung im Azure-Portal](../media/modules/connection-create-new.png)
 
-Wenn Sie einen Azure Automation-Verbindungstyp hinzufügen möchten, muss Ihr Modul eine Datei mit dem Namen `<ModuleName>-Automation.json` enthalten, mit dem die Eigenschaften des Verbindungstyps angegeben werden. Hierbei handelt es sich um eine JSON-Datei, die sich im Modulordner Ihrer komprimierten ZIP-Datei befindet. Diese Datei enthält die Felder einer Verbindung, die zum Herstellen einer Verbindung mit dem entsprechenden System oder Dienst des Moduls erforderlich ist. Durch diese Konfiguration wird ein Verbindungstyp in Azure Automation erstellt. Mit dieser Datei können Sie für den Verbindungstyp des Moduls die Feldnamen und -typen festlegen und angeben, ob die Felder verschlüsselt oder optional sein sollen. Das folgende Beispiel ist eine Vorlage im JSON-Dateiformat, das einen Benutzernamen und eine Kennworteigenschaft definiert:
+Wenn Sie einen Azure Automation-Verbindungstyp hinzufügen möchten, muss Ihr Modul eine Datei mit dem Namen `<ModuleName>-Automation.json` enthalten, mit dem die Eigenschaften des Verbindungstyps angegeben werden. Die JSON-Datei wird im Modulordner Ihrer komprimierten ZIP-Datei abgelegt. Diese Datei enthält die Felder einer Verbindung, die zum Herstellen einer Verbindung mit dem entsprechenden System oder Dienst des Moduls erforderlich ist. Durch die Konfiguration wird ein Verbindungstyp in Azure Automation erstellt. Mit dieser Datei können Sie für den Verbindungstyp des Moduls die Feldnamen und -typen festlegen und angeben, ob die Felder verschlüsselt oder optional sein sollen. Das folgende Beispiel ist eine Vorlage im JSON-Dateiformat, das einen Benutzernamen und eine Kennworteigenschaft definiert:
 
 ```json
 {
@@ -114,6 +114,17 @@ Wenn Sie einen Azure Automation-Verbindungstyp hinzufügen möchten, muss Ihr Mo
 Diese PowerShell-Module können in Azure Automation importiert werden, damit ihre Cmdlets in Runbooks und ihre DSC-Ressourcen in DSC-Konfigurationen verwendet werden können. Azure Automation speichert diese Module im Hintergrund und lädt sie während der Ausführung der Runbook- und DSC-Kompilierungsaufträge in die Azure Automation-Sandboxes, wo Runbooks ausgeführt und DSC-Konfigurationen kompiliert werden. DSC-Ressourcen in Modulen werden ebenfalls automatisch auf dem Automation DSC-Pullserver gespeichert. Sie können von Computern gepullt werden, wenn sie DSC-Konfigurationen anwenden.
 
 Beachten Sie folgende Punkte, wenn Sie ein PowerShell-Modul für die Verwendung in Azure Automation erstellen:
+
+* Schließen Sie KEINEN Versionsordner in das ZIP-Paket ein.  Dieses Problem ist für Runbooks weniger von Bedeutung, führt aber zu einem Problem mit dem State Configuration-Dienst.  Azure Automation erstellt den Versionsordner automatisch, wenn das Modul an von DSC verwaltete Knoten verteilt wird. Wenn ein Versionsordner vorhanden ist, erhalten Sie am Ende zwei Instanzen.  Beispiel für eine Ordnerstruktur für ein DSC-Modul:
+
+```powershell
+myModule
+  - DSCResources
+    - myResourceFolder
+      myResourceModule.psm1
+      myResourceSchema.mof
+  myModuleManifest.psd1
+```
 
 * Fügen Sie eine Zusammenfassung, eine Beschreibung und einen Hilfe-URI für jedes Cmdlet im Modul ein. In PowerShell können Sie mit dem Cmdlet **Get-Help** bestimmte Hilfeinformationen für Cmdlets definieren, um den Benutzern bei der Verwendung der Cmdlets zu helfen. Im folgenden Beispiel sehen Sie, wie Sie eine Zusammenfassung und einen Hilfe-URI für eine Moduldatei vom Typ „.psm1“ erstellen:
 
@@ -159,7 +170,7 @@ Beachten Sie folgende Punkte, wenn Sie ein PowerShell-Modul für die Verwendung 
 
   ![Hilfe zu Integrationsmodulen](../media/modules/module-activity-description.png)
 
-* Wenn das Modul eine Verbindung mit einem externen Dienst herstellt, sollte sie einen [Verbindungstyp](#add-a-connection-type-to-your-module) enthalten. Jedes Cmdlet im Modul sollte ein Verbindungsobjekt (eine Instanz dieses Verbindungstyps) als Parameter laden können. Dadurch können Benutzer die Parameter des Verbindungsobjekts bei jedem Aufruf eines Cmdlets den entsprechenden Parametern des Cmdlets zuordnen. Im obigen Runbook-Beispiel wird ein Verbindungsobjekt namens ContosoConnection verwendet, um auf Contoso-Ressourcen zuzugreifen und Daten vom externen Dienst zurückzugeben.
+* Wenn das Modul eine Verbindung mit einem externen Dienst herstellt, sollte sie einen [Verbindungstyp](#add-a-connection-type-to-your-module) enthalten. Jedes Cmdlet im Modul sollte ein Verbindungsobjekt (eine Instanz dieses Verbindungstyps) als Parameter laden können. Benutzer ordnen Parameter des Verbindungsobjekts bei jedem Aufruf eines Cmdlets den entsprechenden Parametern des Cmdlets zu. Im obigen Runbook-Beispiel wird ein Verbindungsobjekt namens ContosoConnection verwendet, um auf Contoso-Ressourcen zuzugreifen und Daten vom externen Dienst zurückzugeben.
 
   Im folgenden Beispiel werden die Felder den Eigenschaften „UserName“ und „Password“ eines Objekts vom Typ `PSCredential` zugeordnet und dann an das Cmdlet übergeben.
 
@@ -184,7 +195,7 @@ Beachten Sie folgende Punkte, wenn Sie ein PowerShell-Modul für die Verwendung 
 
 * Definieren Sie den Ausgabetyp für alle Cmdlets im Modul. Wenn Sie einen Ausgabetyp für ein Cmdlet definieren, können Sie bei der Erstellung mithilfe von IntelliSense die Ausgabeeigenschaften des Cmdlets festlegen, die während der Erstellung verwendet werden sollen. Dies ist bei der grafischen Erstellung von Automation-Runbooks hilfreich, da Kenntnisse zum Zeitpunkt des Entwurfs von zentraler Bedeutung sind, um eine hohe Benutzerfreundlichkeit Ihres Moduls zu gewährleisten.
 
-  Fügen Sie dann `[OutputType([<MyOutputType>])]` hinzu, wenn MyOutputType ein gültiger Typ ist. Weitere Informationen zu OutputType finden Sie unter [About Functions OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute) (Informationen zu Functions: OutputTypeAttribute). Der folgende Code ist ein Beispiel, wie Sie `OutputType` einem Cmdlet hinzufügen:
+Fügen Sie `[OutputType([<MyOutputType>])]` hinzu, wenn „MyOutputType“ ein gültiger Typ ist. Weitere Informationen zu OutputType finden Sie unter [About Functions OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute) (Informationen zu Functions: OutputTypeAttribute). Der folgende Code ist ein Beispiel, wie Sie `OutputType` einem Cmdlet hinzufügen:
 
   ```powershell
   function Get-ContosoUser {
@@ -241,7 +252,7 @@ Die folgende Tabelle enthält die Module, die beim Erstellen eines Automation-Ko
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
+| GPRegistryPolicyParser | 0.2 |
 | Microsoft.PowerShell.Core | 0 |
 | Microsoft.PowerShell.Diagnostics |  |
 | Microsoft.PowerShell.Management |  |

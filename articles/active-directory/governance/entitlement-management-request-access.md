@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678114"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562128"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678114"
 > Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Mit der Berechtigungsverwaltung von Azure AD ermöglichen Zugriffspakete eine einmalige Einrichtung von Ressourcen und Richtlinien, die den Zugriff während der gesamten Lebensdauer des Zugriffspakets automatisch verwaltet. 
+
+Ein Zugriffspaket-Manager kann Richtlinien konfigurieren, die eine Genehmigung erfordern, damit Benutzer Zugriff auf Zugriffspakete erhalten. Ein Benutzer, der Zugriff auf ein Zugriffspaket benötigt, kann eine Anforderung stellen, um Zugriff zu erhalten. In diesem Artikel wird beschrieben, wie Sie eine Zugriffsanforderung senden.
 
 ## <a name="sign-in-to-the-my-access-portal"></a>Anmelden beim Portal „Mein Zugriff“
 

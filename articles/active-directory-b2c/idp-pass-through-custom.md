@@ -1,5 +1,5 @@
 ---
-title: Übergeben eines Zugriffstokens über eine benutzerdefinierte Richtlinie an Ihre Anwendung in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Übergeben eines Zugriffstokens über eine benutzerdefinierte Richtlinie an Ihre Anwendung in Azure Active Directory B2C
 description: Erfahren Sie, wie Sie ein Zugriffstoken für OAuth 2.0-Identitätsanbieter als Anspruch über eine benutzerdefinierte Richtlinie in Azure Active Directory B2C übergeben können.
 services: active-directory-b2c
 author: mmacy
@@ -7,27 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2253e9f6331662f0ead0251f9affd7996e02aa31
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b6795af0829a288c36cad5b848fed50a99dc1bfc
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846875"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510132"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über eine benutzerdefinierte Richtlinie an Ihre Anwendung in Azure Active Directory B2C
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
-Eine [benutzerdefinierte Richtlinie](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie fügen einen Anspruchstyp und einen Ausgabeanspruch zu Ihrer benutzerdefinierten Richtlinie hinzu, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registriert haben.
+Eine [benutzerdefinierte Richtlinie](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD B2C) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie fügen einen Anspruchstyp und einen Ausgabeanspruch zu Ihrer benutzerdefinierten Richtlinie hinzu, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registriert haben.
 
 Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)- und [OpenID Connect](active-directory-b2c-reference-oidc.md)-Identitätsanbietern. Für alle weiteren Identitätsanbieter wird ein leerer Anspruch zurückgegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ihre benutzerdefinierte Richtlinie ist mit einem OAuth 2.0- oder OpenID Connect-Identitätsanbieter konfiguriert.
+* Ihre benutzerdefinierte Richtlinie ist mit einem OAuth 2.0- oder OpenID Connect-Identitätsanbieter konfiguriert.
 
 ## <a name="add-the-claim-elements"></a>Hinzufügen der Anspruchselemente
 
@@ -91,14 +89,14 @@ Wenn Sie Ihre Anwendungen in Azure AD B2C testen, kann es nützlich sein, das Az
 4. Wählen Sie **Framework für die Identitätsfunktion** aus.
 5. Klicken Sie auf der Seite „Benutzerdefinierte Richtlinien“ auf **Richtlinie hochladen**.
 6. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, suchen Sie nach der Datei *TrustframeworkExtensions.xml*, und wählen Sie die Datei aus.
-7. Klicken Sie auf **Hochladen**.
+7. Wählen Sie die Option **Hochladen**.
 8. Wiederholen Sie die Schritte 5 bis 7 für die Datei der vertrauenden Seite, z.B. *SignUpOrSignIn.xml*.
 
 ### <a name="run-the-policy"></a>Ausführen der Richtlinie
 
 1. Öffnen Sie die Richtlinie, die Sie geändert haben. Beispiel: *B2C_1A_signup_signin*.
 2. Wählen Sie für **Anwendung** Ihre Anwendung aus, die Sie zuvor registriert haben. Um das Token im nachstehenden Beispiel anzuzeigen, muss als **Antwort-URL** der Wert `https://jwt.ms` angegeben werden.
-3. Klicken Sie auf **Jetzt ausführen**.
+3. Wählen Sie **Jetzt ausführen** aus.
 
     Sie sollten eine Ausgabe ähnlich wie im folgenden Beispiel sehen:
 
@@ -106,4 +104,4 @@ Wenn Sie Ihre Anwendungen in Azure AD B2C testen, kann es nützlich sein, das Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Token in der [Referenz zu Azure Active Directory-Token](active-directory-b2c-reference-tokens.md).
+Erfahren Sie mehr über Token in der [Referenz zu Azure Active Directory B2C-Token](active-directory-b2c-reference-tokens.md).

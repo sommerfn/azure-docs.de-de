@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b6d42c961054927581e7cc43b6f467e5d3e23c4e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807635"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996727"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -92,9 +92,3 @@ Aktivieren Sie das Kontrollkästchen **Aktuellen Status löschen und Synchronisi
 * Neustarten der Dienste und erneutes Ausführen der anfänglichen Synchronisierung
 
 Diese Option ermöglicht Administratoren das erneute Starten des Bereitstellungsprozesses.
-
-### <a name="synchronization-details"></a>Synchronisierungsdetails
-
-Dieser Abschnitt enthält weitere Details zum Betrieb des Bereitstellungsdiensts, einschließlich der ersten und letzten Ausführung des Bereitstellungsdiensts für die Anwendung, sowie die Anzahl der verwalteten Benutzer- und Gruppenkonten.
-
-Ein Link zum **Bereitstellungsaktivitätsbericht** wird zur Verfügung gestellt, der ein Protokoll aller Benutzer und Gruppen enthält, die zwischen Azure AD und der Zielanwendung erstellt, aktualisiert und entfernt wurden. Es wird auch ein Link zum **Bereitstellungsfehlerbericht** angeboten, der detailliertere Fehlermeldungen für Benutzer- und Gruppenobjekte enthält, die nicht gelesen, erstellt, aktualisiert oder entfernt werden konnten.

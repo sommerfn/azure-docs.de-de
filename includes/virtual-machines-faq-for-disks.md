@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843211"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541472"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -143,7 +143,48 @@ Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betrieb
 
 **Welche Datenträgertypen unterstützen Momentaufnahmen?**
 
-Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-SSDs unterstützen keine Momentaufnahmen.
+Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-Datenträger unterstützen keine Momentaufnahmen.
+
+## <a name="ultra-disks"></a>Ultra-Datenträger
+
+**Welche Regionen unterstützen derzeit Ultra-Datenträger?**
+- USA (Ost) 2
+- Asien, Südosten
+- Nordeuropa
+
+**Welche VM-Serien unterstützen derzeit Ultra-Datenträger?**
+- ESv3
+- DSv3
+
+**Auf welchen Wert sollte ich den Durchsatz meines Ultra-Datenträgers festlegen?**
+Wenn Sie nicht sicher sind, auf welchen Wert Sie den Datenträgerdurchsatz festlegen sollen, nehmen Sie zunächst eine E/A-Größe von 16 KiB an, und passen Sie die Leistung davon ausgehend an, während Sie Ihre Anwendung überwachen. Die Formel lautet: Durchsatz in MBit/s = Wert von IOPS * 16/1000.
+
+**Ich habe meinen Datenträger auf 40000 IOPS konfiguriert, sehe aber nur 12800 IOPS. Warum wird die Leistung des Datenträgers nicht angezeigt?**
+Zusätzlich zur Datenträgerdrosselung gibt es eine E/A-Drosselung, die auf VM-Ebene durchgesetzt wird. Stellen Sie sicher, dass für die von Ihnen verwendete VM-Größe die Ebenen unterstützt werden, die auf Ihren Datenträgern konfiguriert sind. Weitere Informationen zu den von Ihrer VM vorgegebenen E/A-Beschränkungen finden Sie [Größen für virtuelle Windows-Computer in Azure](../articles/virtual-machines/windows/sizes.md).
+
+**Kann ich Zwischenspeicherungsebenen (Cachingebenen) mit einem Ultra-Datenträger verwenden?**
+Nein, für Ultra-Datenträger werden die verschiedenen Zwischenspeicherungsmethoden, die für andere Datenträgertypen unterstützt werden, nicht unterstützt. Legen Sie die Datenträgerzwischenspeicherung auf „Keine“ (None) fest.
+
+**Kann ich meinem vorhandenen virtuellen Computer einen Ultra-Datenträger zuordnen?**
+Möglicherweise muss sich Ihr virtueller Computer in einer Kombination aus Region und Verfügbarkeitszone befinden, für die Ultra-Datenträger unterstützt werden. Weitere Informationen finden Sie unter [Verwenden von Azure Ultra-Datenträgern](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md).
+
+**Kann ich einen Ultra-Datenträger als Betriebssystemdatenträger für meinen virtuellen Computer verwenden?**
+Nein, Ultra-Datenträger werden nur als Datenträger für Daten und nur als native 4K-Datenträger unterstützt.
+
+**Kann ich einen vorhandenen Datenträger in einen Ultra-Datenträger konvertieren?**
+Nein, aber Sie können die Daten von einem vorhandenen Datenträger auf einen Ultra-Datenträger migrieren. Um einen vorhandenen Datenträger auf einen Ultra-Datenträger zu migrieren, ordnen Sie beide Datenträger demselben virtuellen Computer zu, und kopieren Sie die Daten vom vorhandenen Datenträger auf den Ultra-Datenträger, oder nutzen Sie eine Drittanbieterlösung für Datenmigration.
+
+**Kann ich Momentaufnahmen für Ultra-Datenträger erstellen?**
+Nein, Momentaufnahmen sind noch nicht verfügbar.
+
+**Ist Azure Backup für Ultra-Datenträger verfügbar?**
+Nein, Azure Backup-Unterstützung ist noch nicht verfügbar.
+
+**Kann ich einen Ultra-Datenträger einem virtuellen Computer zuordnen, der in einer Verfügbarkeitsgruppe ausgeführt wird?**
+Nein, das wird noch nicht unterstützt.
+
+**Kann ich Azure Site Recovery (ASR) für virtuelle Computer mit Ultra-Datenträgern aktivieren?**
+Nein, ASR wird für Ultra-Datenträger noch nicht unterstützt.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 

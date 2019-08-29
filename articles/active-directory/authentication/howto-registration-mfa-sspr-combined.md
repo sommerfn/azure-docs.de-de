@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d006bd36cc8f8c84fb13bae43702a3e472f8876a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fc30c3273528b8cbc08681950e0bd5f03ec7890
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113295"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561270"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -28,6 +28,11 @@ Lesen Sie vor dem Aktivieren der neuen Funktion den Artikel [Kombinierte Registr
 | --- |
 | Die kombinierte Registrierung von Sicherheitsinformationen für Azure Multi-Factor Authentication und die Azure AD-Self-Service-Kennwortzurücksetzung (Azure Active Directory) ist eine Funktion der öffentlichen Vorschau von Azure AD. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
+
+> [!NOTE]
+> Unternehmen, die die vorherige Vorschau für die Registrierung und Verwaltung von Sicherheitsinformationen aktiviert haben, sollten die folgenden Schritte ausführen, um die erweiterte Vorschau zu ermöglichen. Für Unternehmen, die den Wechsel nicht vollziehen, wird Microsoft am 25. September 2019 die Benutzer der vorherigen Vorschau für die Registrierung und Verwaltung von Sicherheitsinformationen auf die erweiterte Vorschau umstellen. 
+> 
+> Wenn Sie keine Version der Vorschau aktiviert haben, ist Ihr Unternehmen nicht betroffen.
 
 ## <a name="enable-combined-registration"></a>Aktivieren der kombinierten Registrierung
 

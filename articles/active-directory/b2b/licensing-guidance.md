@@ -5,22 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df98966b69250d31f2a741411aea6e5554f9ed6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 081061eae07fa3765d032ad155e59ebf5aa3cbc9
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112866"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512562"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration
 
-Mit der Azure Active Directory Business-to-Business-Kollaboration (Azure AD B2B-Kollaboration) können Sie externe Benutzer (oder „Gastbenutzer“) zur Verwendung Ihrer kostenpflichtigen Azure AD-Dienste einladen. Für jede kostenpflichtige Azure AD-Lizenz, die Sie einem Benutzer zuweisen, können Sie unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen.
+Mit der Azure Active Directory Business-to-Business-Kollaboration (Azure AD B2B-Kollaboration) können Sie externe Benutzer (oder „Gastbenutzer“) zur Verwendung Ihrer kostenpflichtigen Azure AD-Dienste einladen. Einige Features sind kostenlos, aber für alle kostenpflichtigen Azure AD-Features können Sie bis zu fünf Gastbenutzer für jede Lizenz der Azure AD-Edition einladen, die Sie für einen Mitarbeiter oder einen Nicht-Gastbenutzer in Ihrem Mandanten besitzen.
+
+> [!NOTE]
+> Weitere Informationen zu den Preisen von Azure AD und den Features für die B2B-Zusammenarbeit finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
 Die Lizenzierung von B2B-Gastbenutzern wird basierend auf dem Verhältnis von 1:5 automatisch berechnet und gemeldet. Derzeit ist es nicht möglich, Lizenzen für B2B-Gastbenutzer direkt Gastbenutzern zuzuweisen.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164823"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561304"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -31,7 +31,7 @@ Administratoren wird empfohlen, Benutzern mehr als die erforderliche Mindestanza
 | Kennwort | MFA und SSPR |
 | Sicherheitsfragen | Nur SSPR |
 | E-Mail-Adresse | Nur SSPR |
-| Microsoft Authenticator-App | MFA und Public Preview für SSPR |
+| Microsoft Authenticator-App | MFA und SSPR |
 | OATH-Hardwaretoken | Public Preview für MFA und SSPR |
 | sms | MFA und SSPR |
 | Anruf | MFA und SSPR |
@@ -41,7 +41,7 @@ Administratoren wird empfohlen, Benutzern mehr als die erforderliche Mindestanza
 
 |     |
 | --- |
-| OATH-Hardwaretoken für MFA und SSPR sowie das Empfangen einer Benachrichtigung in der mobilen App und das Erhalten eines Codes in der mobilen App sind Methoden für die Self-Service-Kennwortzurücksetzung in Azure AD und als öffentliche Previewfunktion von Azure Active Directory verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| OATH-Hardwaretoken für MFA und SSPR sind öffentliche Previewfunktionen von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 ## <a name="password"></a>Kennwort
@@ -156,7 +156,7 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH-Hardwaretoken (Öffentliche Vorschau)
 
-OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist.
+OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Die geheimen Schlüssel müssen in Base32 codiert werden.
 
 ![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 

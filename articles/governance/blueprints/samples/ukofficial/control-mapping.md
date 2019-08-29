@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226007"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515633"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung der britischen OFFICIAL- und NHS-Blaupausenbeispiele
 
@@ -33,7 +33,7 @@ Die Blaupause hilft Ihnen, den sicheren Informationsfluss mit Azure-Diensten sic
 Die Blaupause hilft Ihnen, Ihre Richtlinien für die Verwendung von Kryptokontrollen durchzusetzen, indem sie [Azure-Richtliniendefinitionen](../../../policy/overview.md) zuweist, die bestimmte Kryptokontrollen durchsetzen und die Verwendung schwacher kryptographischer Einstellungen überprüfen.
 Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Insbesondere erfordern die durch dieses Konzept zugewiesenen Richtlinien eine Verschlüsselung für Speicherkonten von Data Lake, eine transparente Datenverschlüsselung für SQL-Datenbanken, eine Überprüfung fehlender Verschlüsselung für Speicherkonten, SQL-Datenbanken, Festplatten virtueller Maschinen und Automatisierungskontenvariablen, eine Überprüfung unsicherer Verbindungen zu Speicherkonten und Redis Cache, eine Überprüfung schwacher Passwortverschlüsselung für virtuelle Maschinen und eine Überprüfung unverschlüsselter Kommunikation mit Service Fabric.
 
-- Nicht verschlüsselte SQL-Datenbank in Azure Security Center überwachen
+- Transparent Data Encryption für SQL-Datenbanken sollte aktiviert werden.
 - Die Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden.
 - Automation-Kontovariablen sollten verschlüsselt werden.
 - Sichere Übertragung in Speicherkonten sollte aktiviert werden.
@@ -93,14 +93,14 @@ Diese Blaupause weist auch eine Azure-Richtliniendefinition zu, die die Dateiber
 Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Passwörter, indem sie Azure-Richtliniendefinitionen zuweist, die Windows-VMs auditieren, die keine Mindeststärke und andere Passwortanforderungen erfüllen. Aufgrund der Informationen zu virtuellen Computern, die gegen die Richtlinie zur Kennwortsicherheit verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Kennwörter für alle Benutzerkonten auf virtuellen Computern mit der Richtlinie konform sind.
 
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein maximales Kennwortalter von 70 Tagen verwenden
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein Mindestkennwortalter von 1 Tag verwenden
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 - \[Vorschau\]: Windows-VMs überwachen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Windows-VMs überwachen, die kein maximales Kennwortalter von 70 Tagen verwenden
+- \[Vorschau\]: Windows-VMs überwachen, für die kein maximales Kennwortalter von 70 Tagen gilt
 - \[Vorschau\]: Windows-VMs überwachen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Windows-VMs überwachen, bei denen keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
 - \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 
 Diese Blaupause hilft Ihnen auch, den Zugriff auf Azure-Ressourcen zu steuern, indem sie Azure-Richtliniendefinitionen zuweist. Mit diesen Richtlinien wird die Verwendung von Ressourcentypen und Konfigurationen überwacht, die einen weniger restriktiven Zugriff auf Ressourcen ermöglichen. Durch Kenntnis der Ressourcen, die gegen diese Richtlinien verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass der Zugriff auf Azure-Ressourcen auf autorisierte Benutzer beschränkt ist.
@@ -151,7 +151,7 @@ Diese Blaupause weist auch eine Azure-Richtliniendefinition zu, die die Dateiber
 
 Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure-Richtliniendefinitionen](../../../policy/overview.md) zuweisen, die die Einstellungen des Audit-Protokolls auf Azure-Ressourcen überprüfen. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
 
-- Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs

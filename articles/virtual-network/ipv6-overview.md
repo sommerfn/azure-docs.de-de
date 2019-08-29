@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5093b74484cd04a0c0c7afed8e2ebc725af033f5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249830"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543807"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Was ist IPv6 für Azure Virtual Network? (Vorschau)
 
@@ -48,11 +48,13 @@ IPv6 für VNETs beinhaltet die folgenden Funktionen:
 
 - Azure-Kunden können ihren eigenen virtuellen IPv6-Netzwerkadressraum definieren, um den Anforderungen ihrer Anwendungen und Kunden gerecht zu werden, oder eine nahtlose Integration in ihren lokalen IP-Bereich vornehmen.
 - Virtuelle Dual Stack-Netzwerke (IPv4 und IPv6) mit Dual Stack-Subnetzen ermöglichen es Anwendungen, eine Verbindung mit IPv4- und IPv6-Ressourcen in ihrem virtuellen Netzwerk oder im Internet herzustellen.
-- Schützen von Ressourcen mit IPv6-Regeln für Netzwerksicherheitsgruppen
+    > [!IMPORTANT]
+    > Die Subnetze für IPv6 müssen exakt /64 groß sein.  Dadurch ist Kompatibilität sichergestellt, wenn Sie Routing des Subnetzes an ein lokales Netzwerk aktivieren möchten, denn einige Router können nur /64-IPv6-Routen akzeptieren.  
+- Schützen Sie Ihre Ressourcen mit IPv6-Regeln für Netzwerksicherheitsgruppen.
 - Passen Sie das Routing von IPv6-Datenverkehr in Ihrem virtuellen Netzwerk mit benutzerdefinierten Routen an, insbesondere wenn Sie Network Virtual Appliances zur Erweiterung Ihrer Anwendung nutzen.
 - Internetclients können dank der Azure DNS-Unterstützung von IPv6-Einträgen (AAAA) nahtlos unter Verwendung ihres bevorzugten Protokolls auf Ihre Anwendung mit dualem Stapel zugreifen. 
 - Standardmäßige Unterstützung eines öffentlichen IPv6-Lastenausgleichs für die Erstellung resilienter, skalierbarer Anwendungen, einschließlich:
-    - Optionale IPv6-Integritätstests, mit denen bestimmt werden kann, ob Instanzen von Back-End-Pools fehlerfrei sind und somit neue Flows empfangen können.    
+    - Optionale IPv6-Integritätstests, mit denen bestimmt werden kann, ob Instanzen von Back-End-Pools fehlerfrei sind und somit neue Flows empfangen können. .  
     - Optionale Ausgangsregeln für uneingeschränkte deklarative Kontrolle über ausgehende Verbindungen, um diese Funktion nach Belieben skalieren und optimieren zu können.
     - Mehrere optionale Front-End-Konfigurationen, sodass ein einzelner Lastenausgleich mehrere öffentliche IPv6-Adressen nutzen kann. (Für verschiedene Front-End-Adressen können das gleiche Front-End-Protokoll und der gleiche Port verwendet werden.)
 - Eine öffentliche IP-Adresse auf Instanzebene ermöglicht direkte IPv6-Internetkonnektivität für einzelne VMs.

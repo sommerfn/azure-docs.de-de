@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534511"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035229"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -36,7 +36,7 @@ Application Insights kann mit allen Webseiten verwendet werden. Hierfür müssen
 > [!IMPORTANT]
 > Sie müssen nur eine der folgenden Methoden verwenden, um Ihrer Anwendung das Application Insights JavaScript SDK hinzuzufügen. Wenn Sie das NPM-basierte Setup verwenden, verwenden Sie nicht das ausschnittbasierte Setup. Das Gleiche gilt für das umgekehrte Szenario: Wenn Sie den ausschnittbasierten Ansatz verwenden, verwenden Sie nicht außerdem das NPM-basierte Setup. 
 
-### <a name="npm-based-setup"></a>NPM-basiertes Setup 
+### <a name="npm-based-setup"></a>NPM-basiertes Setup
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ Die Minimierung der minimierten Aufrufliste Ihrer Ausnahmetelemetriedaten kann i
 2. Identifizieren Sie, welche Quellzuordnungsdateien dieser Aufrufliste entsprechen. Die Quellzuordnungsdatei muss mit der Quelldatei eines Stapelrahmens übereinstimmen, die allerdings mit dem Suffix `.map` versehen ist.
 3. Verschieben Sie die Quellzuordnungsdateien mit Drag & Drop in die Aufrufliste im Azure-Portal ![](https://i.imgur.com/Efue9nU.gif).
 
-## <a name="application-insights-web-basic"></a>Application Insights Web Basic
+### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 
 Wenn Sie es einfacher haben möchten, können Sie stattdessen die Basisversion von Application Insights installieren.
 ```

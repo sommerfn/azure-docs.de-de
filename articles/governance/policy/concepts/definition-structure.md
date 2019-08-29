@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494839"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557932"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -72,7 +72,7 @@ Alle Azure Policy-Beispiele sind unter [Azure Policy-Beispiele](../samples/index
 
 ## <a name="mode"></a>Mode
 
-**Mode** ist konfiguriert, je nachdem, ob die Richtlinie auf eine Azure Resource Manager-oder Ressourcenanbieter-Eigenschaft abzielt.
+Der Modus (**mode**) wird abhängig davon konfiguriert, ob die Richtlinie für eine Azure Resource Manager- oder eine Ressourcenanbieter-Eigenschaft gilt.
 
 ### <a name="resource-manager-modes"></a>Ressourcen-Manager-Modi
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: iainfou
-ms.openlocfilehash: daddb2d13aee08fe7294ab2d7f0892bab761562b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c6572ab8bc2a10039f327233f983c2e822fba3b0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472671"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617213"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 In diesem Artikel wird gezeigt, wie Sie Azure Active Directory (AD) Domain Services mithilfe von PowerShell aktivieren.
@@ -62,7 +62,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso100.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,7 +124,7 @@ Geben Sie den folgenden PowerShell-Befehl ein, um Azure AD Domain Services für 
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -140,9 +140,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > [!WARNING]
 > **Vergessen Sie nicht die zusätzlichen Konfigurationsschritte nach der Bereitstellung der verwalteten Domäne.**
 > Nachdem die verwaltete Domäne bereitgestellt wurde, müssen Sie noch die folgenden Aufgaben ausführen:
-> * **[Aktualisieren Sie DNS-Einstellungen](active-directory-ds-getting-started-dns.md)** für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-> * **[Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)** , damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
-
+> * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können. Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+> * Erstellen Sie die erforderlichen Gruppenregeln für die Netzwerksicherheit, um den eingehenden Datenverkehr für die verwaltete Domäne einzuschränken. Wählen Sie zum Erstellen der Netzwerksicherheitsgruppen-Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, automatisch die entsprechenden Netzwerksicherheitsgruppen-Regeln zu erstellen.
+> * **[Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** , damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
 
 ## <a name="powershell-script"></a>PowerShell-Skript
 Nachfolgend sehen Sie das PowerShell-Skript, mit dem alle Aufgaben ausgeführt werden, die in diesem Artikel aufgelistet sind. Kopieren Sie das Skript, und speichern Sie es in einer Datei mit der Erweiterung „.ps1“. Führen Sie das Skript in PowerShell oder mithilfe der PowerShell Integrated Scripting Environment (ISE) aus.
@@ -153,9 +153,9 @@ Nachfolgend sehen Sie das PowerShell-Skript, mit dem alle Aufgaben ausgeführt w
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso100.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -224,11 +224,12 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > [!WARNING]
 > **Vergessen Sie nicht die zusätzlichen Konfigurationsschritte nach der Bereitstellung der verwalteten Domäne.**
 > Nachdem die verwaltete Domäne bereitgestellt wurde, müssen Sie noch die folgenden Aufgaben ausführen:
-> * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-> * Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services, damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
+> * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können. Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+> * Erstellen Sie die erforderlichen Gruppenregeln für die Netzwerksicherheit, um den eingehenden Datenverkehr für die verwaltete Domäne einzuschränken. Wählen Sie zum Erstellen der Netzwerksicherheitsgruppen-Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, automatisch die entsprechenden Netzwerksicherheitsgruppen-Regeln zu erstellen.
+> * **[Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** , damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem die verwaltete Domäne erstellt wurde, führen Sie die folgenden Konfigurationsaufgaben aus, damit Sie die verwaltete Domäne verwenden können:
 
-* [Aktualisieren der DNS-Servereinstellungen für das virtuelle Netzwerk zum Verweisen auf die verwaltete Domäne](active-directory-ds-getting-started-dns.md)
-* [Aktivieren der Kennwortsynchronisierung für die verwaltete Domäne](active-directory-ds-getting-started-password-sync.md)
+* [Aktualisieren der DNS-Servereinstellungen für das virtuelle Netzwerk zum Verweisen auf die verwaltete Domäne](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+* [Aktivieren der Kennwortsynchronisierung für die verwaltete Domäne](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)

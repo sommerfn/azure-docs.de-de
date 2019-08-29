@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608158"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533019"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>Basisrichtlinie: Benötigt MFA für Admins (Vorschau)
 
 Benutzer mit Zugriff auf privilegierte Konten haben uneingeschränkten Zugriff auf Ihre Umgebung. Aufgrund der weitreichenden Befugnisse, die diese Konten haben, sollten Sie sie mit Bedacht verwalten. Eine gängige Methode, um den Schutz von privilegierten Konten zu verbessern, ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) anfordern.
 
-**MFA für Administratoren erforderlich (Vorschau)**  ist eine [Basisrichtlinie](concept-baseline-protection.md), die MFA jedes Mal erfordert, wenn sich eine der folgenden privilegierten Administratorrollen anmeldet:
+**MFA für Administratoren erforderlich (Vorschau)** ist eine [Basisrichtlinie](concept-baseline-protection.md), die MFA jedes Mal erfordert, wenn sich eine der folgenden privilegierten Administratorrollen anmeldet:
 
 * Globaler Administrator
 * SharePoint-Administrator
@@ -52,11 +52,11 @@ Die **Basisrichtlinie: MFA für Administratoren benötigt (Vorschau)** ist vorko
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administratoren zu schützen:
 
-1. Melden Sie sich am  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien den Eintrag **Basisrichtlinie: Benötigt MFA für Admins (Vorschau)** .
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
-1. Klicken Sie auf  **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 > [!WARNING]
 > Es gab eine Option, **Richtlinie in Zukunft automatisch aktivieren**, wenn diese Richtlinie in der Vorschau war. Wir haben diese Option entfernt, um plötzliche Benutzerauswirkungen zu minimieren. Wenn Sie diese Option ausgewählt haben, als sie verfügbar war, ist **Richtlinie Nicht verwenden** jetzt automatisch ausgewählt. Wenn sie diese Basisrichtlinie verwenden möchten, schauen Sie sich die obigen Schritte an, um sie zu aktivieren.

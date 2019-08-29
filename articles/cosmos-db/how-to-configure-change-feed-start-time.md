@@ -3,15 +3,15 @@ title: Konfigurieren der Startzeit des Änderungsfeedprozessors – Azure Cosmos
 description: Hier erfahren Sie, wie Sie den Änderungsfeedprozessor so konfigurieren, dass er an einem bestimmten Datum und zu einer bestimmten Uhrzeit mit dem Lesen von Daten beginnt.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 3ad9aff10b3bae36a173f776f55a434fd8b38b98
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574271"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093644"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Konfigurieren der Startzeit des Änderungsfeedprozessors
 
@@ -46,7 +46,7 @@ Der Änderungsfeedprozessor wird initialisiert und beginnt mit dem Lesen von Än
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Zusätzliche Beispiele auf GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Nächste Schritte

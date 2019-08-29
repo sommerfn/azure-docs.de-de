@@ -1,6 +1,6 @@
 ---
-title: 'Unterstützen mehrerer Tokenaussteller in einer OWIN-basierten Webanwendung: Azure Active Directory B2C'
-description: Hier erfahren Sie, wie Sie es einer .NET-Webanwendung ermöglichen, von mehreren Domänen ausgegebene Token zu unterstützen.
+title: Migrieren von OWIN-basierten Web-APIs zu auf b2clogin.com – Azure Active Directory B2C
+description: Erfahren Sie, wie Sie eine .NET-Web-API für die Unterstützung mehrerer Tokenaussteller aktivieren können, während Sie Ihre Anwendungen zu b2clogin.com migrieren.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716722"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533767"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>Unterstützen mehrerer Tokenaussteller in einer OWIN-basierten Webanwendung
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrieren einer OWIN-basierten Web-API zu b2clogin.com
 
-In diesem Artikel wird ein Verfahren zum Aktivieren der Unterstützung für mehrere Tokenaussteller in Web-Apps und APIs beschrieben, die [Open Web Interface für .NET (OWIN)](http://owin.org/) implementieren. Die Unterstützung mehrerer Tokenendpunkte ist nützlich, wenn Sie Azure AD B2C-Anwendungen (Azure Active Directory) von *login.microsoftonline.com* zu *b2clogin.com* migrieren.
+In diesem Artikel wird ein Verfahren zum Aktivieren der Unterstützung für mehrere Tokenaussteller in Web-APIs beschrieben, die [Open Web Interface für .NET (OWIN)](http://owin.org/) implementieren. Die Unterstützung mehrerer Tokenendpunkte ist nützlich, wenn Sie Azure AD B2C-APIs (Azure Active Directory B2C) von *login.microsoftonline.com* zu *B2C.com* migrieren.
 
-Die folgenden Abschnitte enthalten ein Beispiel für das Aktivieren mehrerer Aussteller in einer Webanwendung und der entsprechenden Web-API, die [Microsoft OWIN][katana]-Middlewarekomponenten (Katana) verwenden. Die Codebeispiele sind zwar für die Microsoft OWIN-Middleware spezifisch, das allgemeine Verfahren gilt jedoch auch für andere OWIN-Bibliotheken.
+Indem Sie in Ihrer API die Unterstützung für die Annahme von Token hinzufügen, die sowohl von b2clogin.com als auch von login.microsoftonline.com ausgestellt wurden, können Sie Ihre Webanwendungen schrittweise migrieren, bevor Sie die Unterstützung für die von login.microsoftonline.com ausgestellten Token aus der API entfernen.
+
+Die folgenden Abschnitte enthalten ein Beispiel für das Aktivieren mehrerer Aussteller in einer Web-API, die [Microsoft OWIN][katana]-Middlewarekomponenten (Katana) verwenden. Die Codebeispiele sind zwar für die Microsoft OWIN-Middleware spezifisch, das allgemeine Verfahren gilt jedoch auch für andere OWIN-Bibliotheken.
 
 > [!NOTE]
-> Dieser Artikel richtet sich an Azure AD B2C-Kunden mit derzeit bereitgestellten Anwendungen, die auf `login.microsoftonline.com` verweisen und zum empfohlenen Endpunkt `b2clogin.com` migrieren möchten. Verwenden Sie beim Einrichten einer neuen Anwendung [b2clogin.com](b2clogin.md) wie angegeben.
+> Dieser Artikel richtet sich an Azure AD B2C-Kunden mit derzeit bereitgestellten APIs und Anwendungen, die auf `login.microsoftonline.com` verweisen und zum empfohlenen Endpunkt `b2clogin.com` migrieren möchten. Verwenden Sie beim Einrichten einer neuen Anwendung [b2clogin.com](b2clogin.md) wie angegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +36,7 @@ Sie benötigen die folgenden Azure AD B2C-Ressourcen, bevor Sie mit den Schritte
 
 ## <a name="get-token-issuer-endpoints"></a>Abrufen von Tokenausstellerendpunkten
 
-Sie müssen zuerst die Tokenausstellerendpunkt-URIs für jeden Aussteller abrufen, den Sie in Ihrer Anwendung unterstützen möchten. Damit die Endpunkte *b2clogin.com* und *login.microsoftonline.com* von Ihrem Azure AD B2C-Mandanten unterstützt werden, führen Sie im Azure-Portal die folgenden Schritte aus:
+Sie müssen zuerst die Tokenausstellerendpunkt-URIs für jeden Aussteller abrufen, den Sie in Ihrer API unterstützen möchten. Damit die Endpunkte *b2clogin.com* und *login.microsoftonline.com* von Ihrem Azure AD B2C-Mandanten unterstützt werden, führen Sie im Azure-Portal die folgenden Schritte aus:
 
 Wählen Sie zunächst einen der vorhandenen Benutzerflows aus:
 

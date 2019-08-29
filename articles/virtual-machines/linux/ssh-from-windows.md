@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bd5eeb3bc3864dc0203c558228dce2f54dbaa79d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 157cc706da34281ec7bb36a9b9e16a4192b3bd96
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708804"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543863"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -48,7 +48,7 @@ Sie können auch die SSH-Hilfsprogramme verwenden, die in der [Azure Cloud Shell
 * Greifen Sie aus VS Code heraus auf Cloud Shell als Terminal zu, indem Sie die [Erweiterung „Azure Account“](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) installieren.
 
 ## <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
-In den folgenden Abschnitten werden zwei Optionen zum Erstellen eines SSH-Schlüsselpaars unter Windows beschrieben. Sie können einen Shell-Befehl (`ssh-keygen`) oder ein GUI-Tool (PuTTYgen) verwenden.
+In den folgenden Abschnitten werden zwei Optionen zum Erstellen eines SSH-Schlüsselpaars unter Windows beschrieben. Sie können einen Shell-Befehl (`ssh-keygen`) oder ein GUI-Tool (PuTTYgen) verwenden. Wenn Sie PowerShell verwenden, um einen Schlüssel zu erstellen, müssen Sie den öffentlichen Schlüssel im „ssh.com“-Format (SECSH) hochladen. Wenn Sie die Befehlszeilenschnittstelle verwenden, konvertieren Sie den Schlüssel vor dem Hochladen in das OpenSSH-Format. 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Erstellen von SSH-Schlüsseln mit „ssh-keygen“
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203622"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573627"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -119,7 +119,7 @@ Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache S
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (Statuscode 502)
 
-Dies ist eine generische Meldung von Gatewayknoten und der häufigste Fehlerstatuscode. Eine mögliche Ursache ist, dass der WebHCat-Dienst auf dem aktiven Hauptknoten ausgefallen ist. Verwenden Sie den folgenden CURL-Befehl, um dies zu prüfen:
+Dieser Code ist eine generische Meldung von Gatewayknoten und der häufigste Fehlerstatuscode. Eine mögliche Ursache ist, dass der WebHCat-Dienst auf dem aktiven Hauptknoten ausgefallen ist. Verwenden Sie den folgenden CURL-Befehl, um dies zu prüfen:
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin

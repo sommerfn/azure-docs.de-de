@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299002"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562333"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
@@ -31,6 +31,21 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßi
 
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
 
+## <a name="july-2019"></a>Juli 2019
+**Agent-Aktualisierung**
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.59.0) 
+   1. Textänderung in TestWindowsTransport
+   2. Änderungen für AD FS RP-Upload
+   
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.56.0) 
+   1. Hinzufügen des TestWindowsTransport-Tests und Entfernen von WsTrust-Endpunktprüfungen im CheckOffice365Endpoints-Test
+   2. Protokollieren von Betriebssystem- und .NET-Informationen
+   3. Die Uploadgröße für die RP-Konfigurationsmeldung wurde auf 1 MB erhöht.
+   4. Fehlerbehebungen
+   
+* Azure AD Connect Health-Agent für AD DS (Version 3.1.56.0) 
+   1. Protokollieren von Betriebssystem- und .NET-Informationen 
+   2. Fehlerbehebungen
 
 ## <a name="may-2019"></a>Mai 2019
 **Agent-Aktualisierung:** 

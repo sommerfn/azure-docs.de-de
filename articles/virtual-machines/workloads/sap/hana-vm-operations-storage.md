@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/05/2019
+ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d062b6fff9693d5bda75edd65b8fe88d834eff57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b363c9da195794f6356539ffca46101edf431c2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735861"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533874"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -29,7 +29,7 @@ Azure bietet verschiedene geeignete Speichertypen für virtuelle Azure-Computer 
 
 - SSD Standard
 - SSD Premium
-- SSD Ultra (befindet sich momentan in der Public Preview-Phase und wird noch nicht für SAP-Produktionsanwendungen unterstützt)
+- [Ultra-Datenträger](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-ultra-ssd) 
 
 Weitere Informationen zu diesen Datenträgertypen finden Sie im Artikel [Auswählen eines Datenträgertyps](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types).
 
@@ -161,19 +161,21 @@ Virtuelle Computer vom Typ „M416xx_v2“ wurden von Microsoft noch nicht öffe
 > Die aufgeführten Empfehlungen für die Datenträgerkonfiguration orientieren sich an Mindestanforderungen, die SAP gegenüber seinen Infrastrukturanbietern formuliert. In realen Kundenbereitstellungen und Workloadszenarien traten Situationen ein, in denen diese Empfehlungen noch keine ausreichenden Funktionen bereitstellen konnten. Hierbei konnte es sich um Situationen handeln, in denen Kunden ein schnelleres erneutes Laden der Daten nach einem Neustart von HANA benötigten, oder wo Sicherungskonfigurationen eine höhere Bandbreite zum Speicher benötigten. Ein anderer Fall war **/hana/log**, wobei 5.000 IOPS für die spezifische Workload nicht ausreichend waren. Betrachten Sie also diese Empfehlungen als Ausgangspunkt, und nehmen Sie Anpassungen auf Grundlage der Anforderungen der Workload vor.
 >  
 
-## <a name="azure-ultra-ssd-storage-configuration-for-sap-hana"></a>Azure SSD Ultra-Speicherkonfiguration für SAP HANA
-Microsoft führt derzeit einen neuen Azure Storage-Typ mit dem Namen [Azure SSD Ultra](https://azure.microsoft.com/updates/ultra-ssd-new-azure-managed-disks-offering-for-your-most-latency-sensitive-workloads/) ein. Der große Unterschied zwischen dem bisher angebotenen Azure-Speicher und SSD Ultra besteht darin, dass die Datenträgermerkmale nicht mehr an die Größe des Datenträgers gebunden sind. Als Kunde können Sie diese Merkmale für SSD Ultra definieren:
+## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Azure Ultra-Datenträgerspeicherkonfiguration für SAP HANA
+Microsoft führt derzeit einen neuen Azure-Speichertyp namens [Azure Ultra-Datenträger](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#ultra-disk) ein. Der große Unterschied zwischen dem bisher angebotenen Azure-Speicher und einem Ultra-Datenträger besteht darin, dass die Datenträgermerkmale nicht mehr an die Größe des Datenträgers gebunden sind. Als Kunde können Sie diese Merkmale für einen Ultra-Datenträger definieren:
 
 - Größe eines Datenträgers zwischen 4 GiB und 65.536 GiB
 - IOPS-Bereich zwischen 100 IOPS und 160.000 IOPS (Höchstwert abhängig von VM-Typen)
 - Speicherdurchsatz zwischen 300 MB/s und 2.000 MB/s
 
-Details finden Sie im Artikel [Ankündigung von SSD Ultra – der nächsten Generation von Azure-Datenträgertechnologie (Vorschauversion)](https://azure.microsoft.com/blog/announcing-ultra-ssd-the-next-generation-of-azure-disks-technology-preview/).
+Mit einem Ultra-Datenträger können Sie einen einzelnen Datenträger definieren, der Ihre Anforderungen hinsichtlich Größe, IOPS und Datenträgerdurchsatz erfüllt. Sie müssen also keine Manager für logische Volumes wie LVM oder MDADM zusätzlich zu Azure Storage Premium mehr verwenden, um Volumes zu erstellen, die Ihre Anforderungen an IOPS und Durchsatz erfüllen. Sie können eine Konfigurationsmischung aus Ultra-Datenträgern und Storage Premium ausführen. Auf diese Weise können Sie die Verwendung von Ultra-Datenträgern auf die leistungskritischen Volumes „/hana/data“ und „/hana/log“ beschränken und die anderen Volumes mit Azure Storage Premium nutzen.
 
-Mit SSD Ultra können Sie einen einzelnen Datenträger definieren, der Ihre Anforderungen in Sachen Größe, IOPS und Datenträgerdurchsatz erfüllt. Sie müssen also keine Manager für logische Volumes wie LVM oder MDADM zusätzlich zu Azure Storage Premium mehr verwenden, um Volumes zu erstellen, die Ihre Anforderungen an IOPS und Durchsatz erfüllen. Sie können eine Konfigurationsmischung aus SSD Ultra und Storage Premium ausführen. Auf diese Weise können Sie die Verwendung von SSD Ultra auf die leistungskritischen Volumes „/hana/data“ und „/hana/log“ beschränken und die anderen Volumes mit Azure Storage Premium nutzen.
+> [!IMPORTANT]
+> Ultra-Datenträger sind noch nicht in allen Azure-Regionen vorhanden und unterstützen noch nicht alle VM-Typen. Ausführliche Informationen dazu, wo Ultra-Datenträger verfügbar sind und welche VM-Familien unterstützt werden, finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#ultra-disk).
 
 | VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | Volume „/hana/data“ | E/A-Durchsatz für „/hana/data“ | IOPS für „/hana/data“ | Volume „/hana/log“ | E/A-Durchsatz für „/hana/log“ | IOPS für „/hana/log“ |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
+| E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBit/s | 7\.500 | 512 GB | 500 MBit/s  | 2000 |
 | M32ts | 192 GiB | 500 MB/s | 250 GB | 500 MBit/s | 7\.500 | 256 GB | 500 MBit/s  | 2000 |
 | M32ls | 256 GiB | 500 MB/s | 300 GB | 500 MBit/s | 7\.500 | 256 GB | 500 MBit/s  | 2000 |
 | M64ls | 512 GB | 1000 MB/s | 600 GB | 500 MBit/s | 7\.500 | 512 GB | 500 MBit/s  | 2000 |
@@ -186,10 +188,10 @@ Mit SSD Ultra können Sie einen einzelnen Datenträger definieren, der Ihre Anf
 | M416s_v2 | 5700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.500 MBit/s | 9000 | 512 GB | 800 MBit/s  | 2000 | 
 | M416ms_v2 | 11400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBit/s | 9000 | 512 GB | 800 MBit/s  | 2000 |   
 
-Virtuelle Computer vom Typ „M416xx_v2“ wurden von Microsoft noch nicht öffentlich verfügbar gemacht. Die angegebenen Werte sind lediglich als Ausgangspunkt gedacht und müssen auf die tatsächlichen Anforderungen abgestimmt werden. Der Vorteil bei Azure SSD Ultra besteht darin, dass die Werte für IOPS und Durchsatz angepasst werden können, ohne die virtuellen Computer herunterzufahren oder die im System verarbeitete Workload anzuhalten.   
+Virtuelle Computer vom Typ „M416xx_v2“ wurden von Microsoft noch nicht öffentlich verfügbar gemacht. Die angegebenen Werte sind lediglich als Ausgangspunkt gedacht und müssen auf die tatsächlichen Anforderungen abgestimmt werden. Der Vorteil eines Azure Ultra-Datenträgers besteht darin, dass die Werte für IOPS und Durchsatz angepasst werden können, ohne den virtuellen Computer herunterzufahren oder die im System verarbeitete Workload anzuhalten.   
 
 > [!NOTE]
-> Bisher sind noch keine Speichermomentaufnahmen mit SSD Ultra-Speicher verfügbar. Dadurch wird die Verwendung von VM-Momentaufnahmen mit Azure Backup-Diensten blockiert.
+> Bisher sind noch keine Speichermomentaufnahmen mit Ultra-Datenträgerspeicher verfügbar. Dadurch wird die Verwendung von VM-Momentaufnahmen mit Azure Backup-Diensten blockiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter

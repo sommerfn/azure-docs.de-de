@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 2413a380adf32755452482d2b68d2055f7db666d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620437"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876854"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -91,7 +91,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Einrichten des Benutzerprofilcontainers (FSLogix)
 
-Befolgen Sie die Anleitung unter [Set up a user profile share for a host pool](create-host-pools-user-profile.md#configure-the-fslogix-profile-container) (Einrichten einer Benutzerprofilfreigabe für einen Hostpool), um den FSLogix-Container als Teil des Images einzubeziehen. Sie können die Funktionalität des FSLogix-Containers testen, indem Sie [diese Schnellstartanleitung](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start) verwenden.
+Befolgen Sie die Anleitung unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md#configure-the-fslogix-profile-container), um den FSLogix-Container als Teil des Images einzubeziehen. Sie können die Funktionalität des FSLogix-Containers testen, indem Sie [diese Schnellstartanleitung](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial) verwenden.
 
 ### <a name="configure-windows-defender"></a>Konfigurieren von Windows Defender
 
@@ -227,5 +227,5 @@ Nachdem Sie nun über ein Image verfügen, können Sie Hostpools erstellen oder 
 - [Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage](create-host-pools-arm-template.md)
 - [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md)
-- [Einrichten einer Benutzerprofilfreigabe für einen Hostpool](create-host-pools-user-profile.md)
+- [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md)
 - [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](configure-host-pool-load-balancing.md)

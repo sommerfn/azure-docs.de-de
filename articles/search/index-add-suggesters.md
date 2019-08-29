@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73cfdb6a4185689a6485f55a4f6bdd1e7e3b14be
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521885"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648841"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Hinzufügen von Vorschlagsfunktionen zu einem Index für Eingabevorschläge in Azure Search
 
@@ -106,6 +106,13 @@ Zu den Eigenschaften, mit denen ein Vorschlag definiert wird, zählen unter ande
 |`name`        |Der Name der Vorschlagsfunktion. Sie verwenden den Namen der Vorschlagsfunktion beim Aufrufen der [Vorschläge-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) oder [AutoVervollständigen-REST-API](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
 |`searchMode`  |Die Strategie, mit der nach möglichen Ausdrücken gesucht wird. Derzeit wird nur der Modus `analyzingInfixMatching` unterstützt. Darin werden Ausdrücke am Anfang oder in der Mitte von Sätzen flexibel verglichen.|
 |`sourceFields`|Eine Liste mit einem oder mehreren Feldern, die als Quelle für den Inhalt von Vorschlägen dienen. Als Vorschlagsquellen sind nur Felder vom Typ `Edm.String` und `Collection(Edm.String)` zulässig. Es können nur Felder ohne benutzerdefinierte Sprachanalyse verwendet werden.<p/>Geben Sie nur die Felder an, die sich für eine erwartete und angemessene Antwort eignen, sei es eine vollständige Zeichenfolge in einer Suchleiste oder eine Dropdownliste.<p/>Ein Hotelname ist ein guter Kandidat, weil er präzise ist. Ausführliche Felder wie Beschreibungen und Kommentare sind zu informationsreich. Sich wiederholende Felder wie Kategorien und Tags sind ebenso weniger effektiv. In den Beispielen schließen wir ohnehin „category“ ein, um zu zeigen, dass Sie mehrere Felder einbeziehen können. |
+
+#### <a name="analysis-of-sourcefields-in-a-suggester"></a>Analyse von SourceFields in einer Vorschlagsfunktion
+
+Azure Search analysiert den Feldinhalt, um das Abfragen einzelner Begriffe zu ermöglichen. Für Vorschlagsfunktionen müssen Präfixe zusätzlich zu vollständigen Begriffen indiziert werden. Hierfür ist eine zusätzliche Analyse der Quellfelder erforderlich. In benutzerdefinierten Analysetoolkonfigurationen können die verschiedenen Tokenizer und Filter kombiniert werden. Häufig kommt es hierbei zu Kombinationen, die das Erstellen der für die Vorschläge benötigten Präfixe unmöglich machen. Aus diesem Grund **verhindert Azure Search, dass Felder mit benutzerdefinierten Analysetools in eine Vorschlagsfunktion eingebunden werden**.
+
+> [!NOTE] 
+>  Die empfohlene Vorgehensweise zur Umgehung der obigen Einschränkung ist die Verwendung von zwei separaten Feldern für denselben Inhalt. Eines der Felder kann so über Vorschlagsfunktionen verfügen, und das andere kann mit einer benutzerdefinierten Analysetoolkonfiguration eingerichtet werden.
 
 ## <a name="when-to-create-a-suggester"></a>Wann wird eine Vorschlagsfunktion erstellt?
 

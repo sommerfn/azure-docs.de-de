@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608173"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533057"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
@@ -41,7 +41,7 @@ Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläu
 
 Aufgrund der Befugnisse und des Zugriffs, über die Administratorkonten verfügen, sollten sie mit Bedacht verwaltet werden. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie fordern, dass Administratoren sich für Azure Multi-Factor Authentication registrieren und die mehrstufige Authentifizierung verwenden.
 
-Das [Erfordern der mehrstufigen Authentifizierung für Administratoren (Vorschau)](howto-baseline-protect-administrators.md)  stellt eine Basisrichtlinie dar, bei der für die folgenden Verzeichnisrollen, die als die Azure AD-Rollen mit den höchsten Berechtigungen angesehen werden, mehrstufige Authentifizierung erforderlich ist:
+Das [Erfordern der mehrstufigen Authentifizierung für Administratoren (Vorschau)](howto-baseline-protect-administrators.md) stellt eine Basisrichtlinie dar, bei der für die folgenden Verzeichnisrollen, die als die Azure AD-Rollen mit den höchsten Berechtigungen angesehen werden, mehrstufige Authentifizierung erforderlich ist:
 
 * Globaler Administrator
 * SharePoint-Administrator
@@ -52,7 +52,7 @@ Das [Erfordern der mehrstufigen Authentifizierung für Administratoren (Vorschau
 * Rechnungsadministrator
 * Benutzeradministrator
 
-Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen.
+Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen.
 
 ### <a name="end-user-protection-preview"></a>Endbenutzerschutz (Vorschau)
 
@@ -87,11 +87,11 @@ Um privilegierte Aktionen zu schützen, fordert die Richtlinie zum **Erfordern v
 
 So aktivieren Sie eine Basisrichtlinie
 
-1. Melden Sie sich beim  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien die Basisrichtlinie aus, die Sie aktivieren möchten.
 1. Legen Sie **Richtlinie aktivieren** auf **Ein** fest.
-1. Klicken Sie auf „Speichern“.
+1. Klicken Sie auf Speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

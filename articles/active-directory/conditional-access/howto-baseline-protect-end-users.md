@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608137"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532930"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Basisrichtlinie: Endbenutzerschutz (Vorschau)
 
@@ -64,11 +64,11 @@ Die **Basisrichtlinie: Endbenutzerschutz (Vorschau)** ist vorkonfiguriert und wi
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Benutzer zu schützen:
 
-1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien **Basisrichtlinie: Endbenutzerschutz (Vorschau)** aus.
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
-1. Klicken Sie auf  **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

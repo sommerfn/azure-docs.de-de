@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226025"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515686"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
@@ -35,7 +35,7 @@ Die Blaupause hilft Ihnen, Ihre Richtlinie für die Verwendung von Kryptokontrol
 - Zugriff auf Funktions-App nur über HTTPS gestatten
 - Zugriff auf Webanwendung nur über HTTPS gestatten
 - Auf API-Apps sollte nur über HTTPS zugegriffen werden können
-- Nicht verschlüsselte SQL-Datenbank in Azure Security Center überwachen
+- Transparent Data Encryption für SQL-Datenbanken sollte aktiviert werden.
 - Die Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden.
 - Automation-Kontovariablen sollten verschlüsselt werden.
 - Nur sichere Verbindungen mit Ihrer Redis Cache-Instanz sollten aktiviert werden
@@ -100,7 +100,7 @@ Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Kennwörter, indem sie
 
 - \[Vorschau\]: Windows-VMs überwachen, für die kein maximales Kennwortalter von 70 Tagen gilt
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
-- \[Vorschau\]: Windows-VMs überwachen, bei denen keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
 - \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
@@ -110,7 +110,7 @@ Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Kennwörter, indem sie
 Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen.
 Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgeführt werden. Azure-Protokolle basieren auf synchronisierten internen Uhren, um eine zeitkorrelierte Aufzeichnung von Ereignissen über Ressourcen hinweg zu erstellen.
 
-- Überwachen nicht überwachter SQL-Server-Instanzen in Azure Security Center
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
 - Bereitstellen von Überwachung auf SQL-Server-Instanzen

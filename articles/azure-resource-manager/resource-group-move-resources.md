@@ -4,14 +4,14 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 01ec8facf2771de9ec01b9470521340a59ee4d0d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721383"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624558"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -32,9 +32,11 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
    * [Anleitung zum Verschieben von App Services](./move-limitations/app-service-move-limitations.md)
    * [Anleitung zum Verschieben von Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Anleitung zum Verschieben des klassischen Bereitstellungsmodells](./move-limitations/classic-model-move-limitations.md): Compute (klassisch), Storage (klassisch), Virtual Networks (klassisch), Cloud Services (klassisch)
+   * [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen)
    * [Anleitung zum Verschieben von Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Anleitung zum Verschieben von Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
-   * [Anleitung zum Verschieben von Virtual Networks](./move-limitations/virtual-network-move-limitations.md)
+
+   Wenn die Zielressourcengruppe ein virtuelles Netzwerk enthält, kann die Verschiebung durch den Status der abhängigen Ressourcen blockiert werden. Dies gilt auch, wenn diese Ressourcen nicht an der Verschiebung beteiligt sind. Weitere Informationen finden Sie unter [Move guidance for networking resources](./move-limitations/virtual-network-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen).
 
 1. Quellen- und Zielabonnements müssen aktiv sein. Wenn beim Aktivieren eines Kontos, das deaktiviert wurde, Schwierigkeiten auftreten, [erstellen Sie eine Azure-Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md). Wählen Sie **Abonnementverwaltung** als Problemtyp aus.
 
@@ -93,6 +95,24 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
    * **Microsoft.Resources/subscriptions/resourceGroups/write** für die Zielressourcengruppe.
 
 1. Überprüfen Sie vor dem Verschieben der Ressource die Abonnementkontingente für das Abonnement, zu dem Sie die Ressourcen verschieben. Wenn das Verschieben der Ressourcen bedeutet, dass das Abonnement seine Einschränkungen überschreitet, müssen Sie prüfen, ob Sie eine Erhöhung des Kontingents anfordern können. Eine vollständige Liste zu diesen Einschränkungen und Informationen zur Anforderung einer Kontingenterhöhung finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+
+1. **Für eine abonnementübergreifende Verschiebung müssen die Ressource und die davon abhängigen Ressourcen in derselben Ressourcengruppe angeordnet sein und zusammen verschoben werden.** Für eine VM mit verwalteten Datenträgern müssen die VM und die verwalteten Datenträger beispielsweise gemeinsam und auch zusammen mit den anderen abhängigen Ressourcen verschoben werden.
+
+   Wenn Sie eine Ressource in ein neues Abonnement verschieben, sollten Sie überprüfen, ob die Ressource über abhängige Ressourcen verfügt und ob diese sich in derselben Ressourcengruppe befinden. Wenn sich die Ressourcen nicht in derselben Ressourcengruppe befinden, sollten Sie überprüfen, ob die Ressourcen in derselben Ressourcengruppe zusammengefasst werden können. Wenn ja, müssen Sie alle Ressourcen in derselben Ressourcengruppe vereinen, indem Sie übergreifend für die Ressourcengruppen einen Verschiebungsvorgang durchführen.
+
+   Weitere Informationen finden Sie unter [Szenario für eine abonnementübergreifende Verschiebung](#scenario-for-move-across-subscriptions).
+
+## <a name="scenario-for-move-across-subscriptions"></a>Szenario für eine abonnementübergreifende Verschiebung
+
+Das Verschieben von Ressourcen aus einem Abonnement in ein anderes ist ein dreistufiger Prozess:
+
+![Szenario für abonnementübergreifende Verschiebung](./media/resource-group-move-resources/cross-subscription-move-scenario.png)
+
+Der Einfachheit halber verwenden wir hier nur eine abhängige Ressource.
+
+* Schritt 1: Wenn abhängige Ressourcen auf unterschiedliche Ressourcengruppen verteilt sind, müssen Sie diese zuerst in einer Ressourcengruppe zusammenfassen.
+* Schritt 2: Verschieben Sie die Ressource und die abhängigen Ressourcen zusammen aus dem Quellabonnement in das Zielabonnement.
+* Schritt 3: Optional können Sie die abhängigen Ressourcen auf unterschiedliche Ressourcengruppen im Zielabonnement verteilen. 
 
 ## <a name="validate-move"></a>Überprüfen der Verschiebung
 

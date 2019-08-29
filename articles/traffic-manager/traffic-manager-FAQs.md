@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335799"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511019"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -322,9 +322,9 @@ Traffic Manager antwortet mit dem DNS-Namen oder der IP-Adresse des Endpunkts. U
 
 Normalerweise wird Traffic Manager verwendet, um Datenverkehr an Anwendungen zu leiten, die in verschiedenen Regionen bereitgestellt wurden. Traffic Manager kann aber auch eingesetzt werden, wenn eine Anwendung über mehr als eine Bereitstellung in derselben Region verfügt. Die Traffic Manager-Azure-Endpunkte lassen es nicht zu, dass demselben Traffic Manager-Profil mehr als ein Web-App-Endpunkt für dieselbe Azure-Region hinzugefügt wird.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Wie werden die Azure-Endpunkte meines Traffic Manager-Profils in eine andere Ressourcengruppe verschoben?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Wie werden die Azure-Endpunkte meines Traffic Manager-Profils in eine andere Ressourcengruppe oder in ein anderes Abonnement verschoben?
 
-Azure-Endpunkte, die einem Traffic Manager-Profil zugeordnet sind, werden über ihre Ressourcen-IDs nachverfolgt. Wenn eine Azure-Ressource, die als Endpunkt (z. B. öffentliche IP-Adresse, klassischer Clouddienst, WebApp oder anderes Traffic Manager-Profil, das in geschachtelte Weise verwendet wird) verwendet wird, in eine andere Ressourcengruppe verschoben wird, ändert sich ihre Ressourcen-ID. In diesem Szenario müssen Sie das Traffic Manager-Profil derzeit aktualisieren, indem Sie zuerst die Endpunkte löschen und sie dann wieder zum Profil hinzufügen.
+Azure-Endpunkte, die einem Traffic Manager-Profil zugeordnet sind, werden über ihre Ressourcen-IDs nachverfolgt. Wenn eine Azure-Ressource, die als Endpunkt (z. B. öffentliche IP-Adresse, klassischer Clouddienst, WebApp oder anderes Traffic Manager-Profil, das in geschachtelte Weise verwendet wird) verwendet wird, in eine andere Ressourcengruppe oder in ein anderes Abonnement verschoben wird, ändert sich ihre Ressourcen-ID. In diesem Szenario müssen Sie das Traffic Manager-Profil derzeit aktualisieren, indem Sie zuerst die Endpunkte löschen und sie dann wieder zum Profil hinzufügen.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 

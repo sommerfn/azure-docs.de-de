@@ -3,24 +3,22 @@ title: Problembehandlung bei Hive mit Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Hive und Azure HDInsight.
 keywords: Azure HDInsight, HIVE, FAQ, Problembehandlungshandbuch, häufig gestellte Fragen
 ms.service: hdinsight
-author: dharmeshkakadia
-ms.author: dkakadia
-ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: 91e6803e0a1302a33a3bf176ad84d0b0e0c8c5b6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+author: hrasheed-msft
+ms.author: hrasheed
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: ca1e3e11ad5458e8e7f7072b7d3dd561853029fe
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875943"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575696"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Behandeln von Problemen mit Apache Hive unter Verwendung von Azure HDInsight
 
 Hier werden die Antworten auf die wichtigsten Fragen bei der Arbeit mit Apache Hive-Nutzlasten in Apache Ambari behandelt.
 
-
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Wie exportiere ich einen Hive-Metastore und importiere ihn in einen anderen Cluster?
-
 
 ### <a name="resolution-steps"></a>Lösungsschritte
 
@@ -36,16 +34,15 @@ Hier werden die Antworten auf die wichtigsten Fragen bei der Arbeit mit Apache H
 
 3. Kopieren Sie die Datei „alltables.sql“ in den neuen HDInsight-Cluster, und führen Sie den folgenden Befehl aus:
 
-   ```apache
-   hive -f alltables.sql
-   ```
+    ```apache
+    hive -f alltables.sql
+    ```
 
-Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Datenpfade im neuen Cluster identisch mit denen im alten Cluster sind. Wenn sich die Datenpfade unterscheiden, können die Sie generierte Datei „alltables.sql“ manuell so ändern, dass etwaige Änderungen widergespiegelt werden.
+Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Datenpfade im neuen Cluster identisch mit denen im alten Cluster sind. Wenn sich die Datenpfade unterscheiden, können die Sie generierte Datei `alltables.sql` manuell so ändern, dass etwaige Änderungen widergespiegelt werden.
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
 - [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Wie finde ich Hive-Protokolle in einem Cluster?
 
@@ -56,25 +53,24 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 2. Führen Sie den folgenden Befehl aus, um Hive-Clientprotokolle anzuzeigen:
 
    ```apache
-   /tmp/<username>/hive.log 
+   /tmp/<username>/hive.log
    ```
 
 3. Führen Sie den folgenden Befehl aus, um Hive-Metastoreprotokolle anzuzeigen:
 
    ```apache
-   /var/log/hive/hivemetastore.log 
+   /var/log/hive/hivemetastore.log
    ```
 
-4. Führen Sie den folgenden Befehl aus, um HiveServer-Protokolle anzuzeigen:
+4. Führen Sie den folgenden Befehl aus, um Hive-Server-Protokolle anzuzeigen:
 
    ```apache
-   /var/log/hive/hiveserver2.log 
+   /var/log/hive/hiveserver2.log
    ```
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
 - [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Wie starte ich die Hive-Shell mit bestimmten Konfigurationen in einem Cluster?
 
@@ -83,7 +79,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 1. Geben Sie beim Starten der Hive-Shell ein Schlüssel-Wert-Paar für die Konfiguration an. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-end).
 
    ```apache
-   hive -hiveconf a=b 
+   hive -hiveconf a=b
    ```
 
 2. Führen Sie den folgenden Befehl aus, um alle effektiven Konfigurationen auf Hive-Shell aufzulisten:
@@ -95,23 +91,21 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
    Verwenden Sie beispielsweise den folgenden Befehl, um Hive-Shell mit auf der Konsole aktivierter Debugprotokollierung zu starten:
 
    ```apache
-   hive -hiveconf hive.root.logger=ALL,console 
+   hive -hiveconf hive.root.logger=ALL,console
    ```
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
 - [Hive configuration properties](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties) (Eigenschaften der Hive-Konfiguration)
 
-
 ## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Wie analysiere ich Apache Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) in einem clusterkritischen Pfad?
 
-
 ### <a name="resolution-steps"></a>Lösungsschritte
- 
+
 1. Stellen Sie zum Analysieren eines Apache Tez DAG (Directed Acyclic Graph, gerichteter azyklischer Graph) in einem clusterkritischen Pfad mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-end).
 
 2. Führen Sie an der Eingabeaufforderung folgenden Befehl aus:
-   
+
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
@@ -137,31 +131,28 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
     - **TaskConcurrencyAnalyzer**: Ausgeben von Details zur Parallelität von Aufgaben in einem gerichteten azyklischen Graph
     - **VertexLevelCriticalPathAnalyzer**: Suchen des kritischen Pfads auf Scheitelpunktebene in einem gerichteten azyklischen Graph
 
-
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
 - [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Wie lade ich Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) aus einem Cluster herunter?
-
 
 #### <a name="resolution-steps"></a>Lösungsschritte
 
 Es gibt zwei Möglichkeiten zum Erfassen der Tez DAG-Daten:
 
 - Über die Befehlszeile:
- 
+
     Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus:
 
   ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId> 
+  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
   ```
 
 - Mithilfe der Ambari-Tez-Ansicht:
-   
-  1. Navigieren Sie zu Ambari. 
-  2. Wechseln Sie zur Tez-Ansicht (unter dem Kachelsymbol in der oberen rechten Ecke). 
+
+  1. Navigieren Sie zu Ambari.
+  2. Wechseln Sie zur Tez-Ansicht (unter dem Kachelsymbol in der oberen rechten Ecke).
   3. Wählen Sie den gerichteten azyklischen Graph, der angezeigt werden soll.
   4. Wählen Sie **Download data** (Daten herunterladen) aus.
 
@@ -169,10 +160,12 @@ Es gibt zwei Möglichkeiten zum Erfassen der Tez DAG-Daten:
 
 [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
+## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="see-also"></a>Siehe auch
-[Beheben von Problemen mit Azure HDInsight](hdinsight-troubleshoot-guide.md)
+Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
+- Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
 
+- Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-
+- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

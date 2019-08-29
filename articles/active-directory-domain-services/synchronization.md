@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 475817985885cdd6023e72f20ecf35a3ca582924
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1c52ac967d241f31d96988fa5ead8b4e049f6f4c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472441"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617103"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisierung in einer durch Azure AD Domain Services verwalteten Domäne
 In der folgenden Abbildung ist die Synchronisierung in durch Azure AD Domain Services verwalteten Domänen dargestellt.
@@ -69,7 +69,7 @@ In der folgenden Tabelle sind einige allgemeine Attribute sowie entsprechende Be
 | SID-Verlauf für Benutzer und Gruppen |Lokale primäre Benutzer- und Gruppen-SID |Das SidHistory-Attribut für Benutzer und Gruppen in der verwalteten Domäne ist so festgelegt, dass es mit der entsprechenden primären Benutzer- oder Gruppen-SID in der lokalen Domäne übereinstimmt. Diese Funktion erleichtert die Verlagerung lokaler Anwendungen in die verwaltete Domäne, da Sie keine neuen Zugriffssteuerungslisten für Ressourcen einrichten müssen. |
 
 > [!NOTE]
-> **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das SAMAccountName-Attribut wird für einige Benutzerkonten in der verwalteten Domäne möglicherweise automatisch generiert. Wenn mehrere Benutzer dasselbe mailNickname-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das SAMAccountName-Attribut für diese Benutzer möglicherweise automatisch generiert. Daher ist das Format für SAMAccountName (z.B. „CONTOSO100\joeuser“) nicht immer eine verlässliche Möglichkeit für die Anmeldung in der Domäne. Das automatisch generierte SAMAccountName-Attribut von Benutzern kann von ihrem UPN-Präfix abweichen. Verwenden Sie das UPN-Format (z.B. „joeuser@contoso100.com“) für die zuverlässige Anmeldung bei der verwalteten Domäne.
+> **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das SAMAccountName-Attribut wird für einige Benutzerkonten in der verwalteten Domäne möglicherweise automatisch generiert. Wenn mehrere Benutzer dasselbe mailNickname-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das SAMAccountName-Attribut für diese Benutzer möglicherweise automatisch generiert. Daher ist das Format für SAMAccountName (z.B. „CONTOSO\dee“) nicht immer eine verlässliche Möglichkeit für die Anmeldung in der Domäne. Das automatisch generierte SAMAccountName-Attribut von Benutzern kann von ihrem UPN-Präfix abweichen. Verwenden Sie das UPN-Format (z.B. „dee@contoso.com“) für die zuverlässige Anmeldung bei der verwalteten Domäne.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Attributzuordnung für Benutzerkonten
 In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Benutzerobjekte im Azure AD-Mandanten mit den entsprechenden Attributen in der verwalteten Domäne synchronisiert werden.
@@ -116,7 +116,7 @@ In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Gruppenob
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Kennworthashsynchronisierung und Sicherheitsüberlegungen
 Wenn Sie Azure AD Domain Services aktivieren, generiert und speichert Ihr Azure AD-Verzeichnis Kennworthashes in NTLM- und Kerberos-kompatiblen Formaten. 
 
-Für vorhandene Cloudbenutzerkonten können diese Hashes nicht automatisch generiert werden, weil Azure AD niemals die zugehörigen Klartextkennwörter speichert. Microsoft fordert deshalb [Cloudbenutzer auf, ihre Kennwörter zurückzusetzen/zu ändern](active-directory-ds-getting-started-password-sync.md), damit die Kennworthashes in Azure AD generiert und gespeichert werden können. Für alle Cloudbenutzerkonten, die nach dem Aktivieren von Azure AD Domain Services in Azure AD erstellt werden, werden die Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten generiert und gespeichert. 
+Für vorhandene Cloudbenutzerkonten können diese Hashes nicht automatisch generiert werden, weil Azure AD niemals die zugehörigen Klartextkennwörter speichert. Microsoft fordert deshalb [Cloudbenutzer auf, ihre Kennwörter zurückzusetzen/zu ändern](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit die Kennworthashes in Azure AD generiert und gespeichert werden können. Für alle Cloudbenutzerkonten, die nach dem Aktivieren von Azure AD Domain Services in Azure AD erstellt werden, werden die Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten generiert und gespeichert. 
 
 Für Benutzerkonten, die unter Verwendung von Azure AD Connect Sync aus lokalen AD-Verzeichnissen synchronisiert werden, müssen Sie [Azure AD Connect zum Synchronisieren von Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten konfigurieren](active-directory-ds-getting-started-password-sync-synced-tenant.md).
 
@@ -126,7 +126,6 @@ Die NTLM- und Kerberos-kompatiblen Kennworthashes werden immer verschlüsselt in
 Wie in einem vorherigen Abschnitt dieses Artikels beschrieben wurde, erfolgt keine Synchronisierung aus der verwalteten Domäne mit dem Azure AD-Mandanten. Sie können [eine benutzerdefinierte Organisationseinheit (OE)](create-ou.md) in der verwalteten Domäne erstellen. Darüber hinaus können Sie andere Organisationseinheiten, Benutzer, Gruppen oder Dienstkonten in diesen benutzerdefinierten Organisationseinheiten erstellen. Keines der in benutzerdefinierten Organisationseinheiten erstellten Objekte wird wieder mit dem Azure AD-Mandanten synchronisiert. Diese Objekte können nur in der verwalteten Domäne verwendet werden. Daher sind diese Objekte über Azure AD PowerShell-Cmdlets, die Azure AD Graph-API oder die Azure AD-Verwaltungsoberfläche nicht sichtbar.
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Features: Azure AD Domain Services](active-directory-ds-features.md)
 * [Bereitstellungsszenarios: Azure AD Domain Services](scenarios.md)
 * [Netzwerkaspekte für Azure AD Domain Services](network-considerations.md)
-* [Erste Schritte mit Azure AD Domain Services](create-instance.md)
+* [Erste Schritte mit Azure AD Domain Services](tutorial-create-instance.md)

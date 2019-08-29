@@ -3,8 +3,8 @@ title: Red Hat-Updateinfrastruktur | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zur Red Hat-Updateinfrastruktur für On-Demand-Red Hat Enterprise Linux-Instanzen in Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: ac3b29e3cd6cbaf0a8a34f442c55b386f150e018
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774273"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543783"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -31,22 +31,52 @@ Weitere Informationen zu RHEL-Images in Azure, einschließlich Veröffentlichung
 Informationen zu Red Hat-Supportrichtlinien für alle RHEL-Versionen finden Sie auf der Seite [Red Hat Enterprise Linux Life Cycle (Red Hat Enterprise Linux-Lebenszyklus)](https://access.redhat.com/support/policy/updates/errata).
 
 ## <a name="important-information-about-azure-rhui"></a>Wichtige Informationen zur Azure-RHUI
+
 * Azure-RHUI ist die Updateinfrastruktur, die alle virtuellen RHEL PAYG-Computer unterstützt, die in Azure erstellt wurden. Hiermit wird nicht verhindert, dass Sie Ihre virtuellen PAYG RHEL-Computer bei Subscription Manager oder Satellite oder einer anderen Quelle für Updates registrieren können, aber eine solche Registrierung eines virtuellen PAYG-Computers führt zu einer indirekten Doppelabrechnung. Details finden Sie im folgenden Punkt.
 * Der Zugriff auf die in Azure gehostete RHUI ist im Preis für das RHEL PAYG-Image enthalten. Wenn Sie die Registrierung eines virtuellen PAYG-RHEL-Computers bei der von Azure gehosteten RHUI aufheben, die den virtuellen Computer nicht in einen BYOL-Typ (Bring Your Own License) des virtuellen Computers konvertiert. Wenn Sie denselben virtuellen Computer mit einer anderen Updatequelle registrieren, fallen möglicherweise _indirekt_ doppelte Kosten an. Sie werden das erste Mal mit der Gebühr für die Azure RHEL-Software belastet. Sie werden das zweite Mal für Red Hat-Abonnements belastet, die zuvor gekauft wurden. Wenn Sie anstelle der in Azure gehosteten RHUI durchweg eine andere Updateinfrastruktur verwenden müssen, sollten Sie sich registrieren, um die [RHEL BYOS-Images](https://aka.ms/rhel-byos) nutzen zu können.
-* RHUI aktualisiert Ihren virtuellen RHEL-Computer (RHEL-VM) standardmäßig auf die neueste Nebenversion, wenn Sie `sudo yum update` ausführen.
-
-    Wenn Sie beispielsweise eine VM aus einem RHEL 7.4 PAYG-Image bereitstellen und `sudo yum update` ausführen, erhalten Sie letztlich eine RHEL 7.6-VM (die neueste Nebenversion der RHEL7-Familie).
-
-    Um dieses Verhalten zu vermeiden, können Sie zu [Extended Update Support-Repositorys](#rhel-eus-and-version-locking-rhel-vms) wechseln oder Ihr eigenes Image erstellen, wie im Artikel [Vorbereiten eines auf Red Hat basierenden virtuellen Computers für Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) beschrieben. Wenn Sie Ihr eigenes Image erstellen, müssen Sie es mit einer anderen Updateinfrastruktur verbinden ([direkt auf Übermittlungsservern für Red Hat-Inhalte](https://access.redhat.com/solutions/253273) oder auf einem [Red Hat Satellite-Server](https://access.redhat.com/products/red-hat-satellite)).
-
-
 
 * RHEL SAP PAYG-Images in Azure (RHEL for SAP, RHEL for SAP HANA und RHEL for SAP Business Applications) sind mit dedizierten RHUI-Kanälen verbunden, die gemäß der SAP-Zertifizierung in der jeweiligen RHEL-Nebenversion verbleiben.
 
-* Der Zugriff auf die in Azure gehostete RHUI ist auf virtuelle Computer innerhalb der [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) beschränkt. Wenn Sie für den gesamten VM-Datenverkehr über die lokale Netzwerkinfrastruktur die Proxyfunktion verwenden, müssen Sie möglicherweise benutzerdefinierte Routen für die RHEL PAYG-VMs einrichten, um auf die Azure-RHUI zuzugreifen.
+* Der Zugriff auf die in Azure gehostete RHUI ist auf virtuelle Computer innerhalb der [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) beschränkt. Wenn Sie für den gesamten VM-Datenverkehr über die lokale Netzwerkinfrastruktur die Proxyfunktion verwenden, müssen Sie möglicherweise benutzerdefinierte Routen für die RHEL PAYG-VMs einrichten, um auf die Azure-RHUI zuzugreifen. Ist dies der Fall, müssen benutzerdefinierte Routen für _alle_ RHUI-IP-Adressen hinzugefügt werden.
+
+## <a name="image-update-behavior"></a>Verhalten für Imageupdates
+
+Ab April 2019 stellt Azure sowohl RHEL-Images bereit, die standardmäßig mit den EUS-Repositorys (Extended Update Support), als auch RHEL-Images, die standardmäßig mit den normalen (Nicht-EUS-) Repositorys verbunden sind. Weitere Informationen zu RHEL EUS finden Sie in den Red Hat-Dokumentationen [Dokumentation zu den Versionslebenszyklen](https://access.redhat.com/support/policy/updates/errata) und [Dokumentation zu EUS](https://access.redhat.com/articles/rhel-eus). Das Standardverhalten von `sudo yum update` ist unterschiedlich abhängig davon, aus welchem RHEL-Image Sie bereitgestellt haben, denn unterschiedliche Images sind mit unterschiedlichen Repositorys verbunden.
+
+Um eine vollständige Liste der Images anzuzeigen, führen Sie `az vm image list --publisher redhat --all` über die Azure-Befehlszeilenschnittstelle aus.
+
+### <a name="images-connected-to-non-eus-repositories"></a>Images, die mit Nicht-EUS-Repositorys verbunden sind
+
+Wenn Sie einen virtuellen Computer aus einem RHEL-Image bereitstellen, das mit Nicht-EUS-Repositorys verbunden ist, wird ein Upgrade auf die neueste RHEL-Nebenversion durchgeführt, wenn Sie `sudo yum update` ausführen. Wenn Sie beispielsweise einen virtuellen Computer aus einem RHEL 7.4 PAYG-Image bereitstellen und `sudo yum update` ausführen, erhalten Sie letztlich einen virtuellen RHEL 7.7-Computer (die neueste Nebenversion der RHEL7-Familie).
+
+Images, die mit Nicht-EUS-Repositorys verbunden sind, enthalten keine Nebenversionsnummer in der SKU. Die SKU ist das dritte Element im URN (vollständiger Name des Images). Beispielsweise werden alle folgenden Images verbunden mit Nicht-EUS-Repositorys bereitgestellt:
+
+```text
+RedHat:RHEL:7-LVM:7.4.2018010506
+RedHat:RHEL:7-LVM:7.5.2018081518
+RedHat:RHEL:7-LVM:7.6.2019062414
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7-RAW:7.5.2018081518
+RedHat:RHEL:7-RAW:7.6.2019062120
+```
+
+Sie sehen, dass die SKU entweder „7-LVM“ oder „7-RAW“ lautet. Die Nebenversion ist in der Version (viertes Element im URN) dieser Images angegeben.
+
+### <a name="images-connected-to-eus-repositories"></a>Images, die mit EUS-Repositorys verbunden sind
+
+Wenn Sie einen virtuellen Computer aus einem RHEL-Image bereitstellen, das mit EUS-Repositorys verbunden ist, wird ein Upgrade auf die neueste RHEL-Nebenversion durchgeführt, wenn Sie `sudo yum update` ausführen. Dies erfolgt, weil für die Images, die mit EUS-Repositorys verbunden sind, ebenfalls eine Versionssperrung auf ihre spezielle Nebenversion gilt.
+
+Images, die mit EUS-Repositorys verbunden sind, enthalten eine Nebenversionsnummer in der SKU. Beispielsweise werden alle folgenden Images verbunden mit EUS-Repositorys bereitgestellt:
+
+```text
+RedHat:RHEL:7.4:7.4.2019062107
+RedHat:RHEL:7.5:7.5.2019062018
+RedHat:RHEL:7.6:7.6.2019062116
+```
 
 ## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS und RHEL-VMs mit Versionssperre
-Für einige Kunden ist es sinnvoll, ihre RHEL-VMs auf eine bestimmte RHEL-Nebenversion festzulegen. Sie können Ihre RHEL-VM verbindlich auf eine bestimmte Nebenversion festlegen, indem Sie die Repositorys so aktualisieren, dass sie auf die Extended Update Support-Repositorys verweisen. Sie können die EUS-Versionssperrung auch rückgängig machen.
+
+Für einige Kunden ist es sinnvoll, ihre RHEL-VMs nach deren Bereitstellung auf eine bestimmte RHEL-Nebenversion festzulegen. Sie können Ihre RHEL-VM verbindlich auf eine bestimmte Nebenversion festlegen, indem Sie die Repositorys so aktualisieren, dass sie auf die Extended Update Support-Repositorys verweisen. Sie können die EUS-Versionssperrung auch rückgängig machen.
 
 >[!NOTE]
 > EUS wird für RHEL Extras nicht unterstützt. Wenn Sie also ein Paket installieren, das in der Regel über den RHEL Extras-Kanal verfügbar ist, können Sie dies nicht installieren, solange Sie EUS nutzen. Informationen zum Produktlebenszyklus von Red Hat Extras finden Sie [hier](https://access.redhat.com/support/policy/updates/extras/).
@@ -55,12 +85,13 @@ Zum Zeitpunkt der Erstellung dieses Artikels war EUS-Unterstützung für RHEL < 
 * EUS-Unterstützung für RHEL 7.4 endet am 31. August 2019.
 * EUS-Unterstützung für RHEL 7.5 endet am 30. April 2020.
 * EUS-Unterstützung für RHEL 7.6 endet am 31. Oktober 2020.
+* EUS-Unterstützung für RHEL 7.7 endet am 30. August 2021.
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Wechseln einer RHEL-VM zu EUS (Versionssperrung auf eine bestimmte Nebenversion)
 Befolgen Sie die folgenden Anweisungen, um eine RHEL-VM auf eine bestimmte Nebenversion festzulegen (als Benutzer „root“ ausführen):
 
 >[!NOTE]
-> Dies gilt nur für RHEL-Versionen, für die EUS verfügbar ist. Zum Zeitpunkt des Verfassens umfasst die RHEL 7.2-7.6. Weitere Details finden Sie auf der Seite [Red Hat Enterprise Linux-Lebenszyklus](https://access.redhat.com/support/policy/updates/errata).
+> Dies gilt nur für RHEL-Versionen, für die EUS verfügbar ist. Zum Zeitpunkt des Verfassens umfasst dies RHEL 7.2-7.7. Weitere Details finden Sie auf der Seite [Red Hat Enterprise Linux-Lebenszyklus](https://access.redhat.com/support/policy/updates/errata).
 
 1. Deaktivieren Sie nicht-EUS-Repositorys:
     ```bash

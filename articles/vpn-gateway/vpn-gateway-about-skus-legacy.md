@@ -2,25 +2,18 @@
 title: Ältere SKUs für virtuelle Azure-VPN-Netzwerkgateways | Microsoft-Dokumentation
 description: So arbeiten Sie mit den alten SKUs „Basic“, „Standard“ und „HighPerformance“ für virtuelle Netzwerkgateways.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056438"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533906"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 
@@ -42,15 +35,9 @@ Sie können die Preise für ältere Gateways im Abschnitt **Gateways für virtue
 
 ## <a name="resize"></a>Ändern der Größe eines Gateways
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Sie können die Größe Ihres Gateways in eine Gateway-SKU innerhalb einer SKU-Familie ändern. Wenn Sie z.B. eine Standard-SKU haben, können Sie die Größe in eine HighPerformance-SKU ändern. Die Größe Ihrer VPN-Gateways kann zwischen den alten SKUs und den neuen SKU-Familien jedoch nicht geändert werden. Beispielsweise können Sie nicht von einer Standard-SKU zu einer VpnGw2-SKU wechseln, oder von einer Basic-SKU zu VpnGw1.
 
-Um die Größe eines Gateways für das klassische Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
-
-```powershell
-Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
-```
+### <a name="resource-manager"></a>Ressourcen-Manager
 
 Um die Größe eines Gateways mithilfe von PowerShell für das Resource Manager-Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
 
@@ -58,7 +45,16 @@ Um die Größe eines Gateways mithilfe von PowerShell für das Resource Manager-
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
+
 Sie können die Größe eines Gateways auch im Azure-Portal ändern.
+
+### <a name="classicresize"></a>Klassisch
+
+Um die Größe eines Gateways für das klassische Bereitstellungsmodell zu ändern, müssen Sie die PowerShell-Cmdlets für die Dienstverwaltung verwenden. Verwenden Sie den folgenden Befehl:
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
 
 ## <a name="change"></a>Wechsel zu den neuen Gateway-SKUs
 

@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667958"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873302"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planen und Übertragen von Aufträgen (Python)
 
@@ -47,15 +47,17 @@ Am Ende dieses Tutorials verfügen Sie über zwei Python-Apps:
 
 **scheduleJobService.py:** ruft eine direkte Methode in der simulierten Geräte-App auf und aktualisiert die gewünschten Eigenschaften des Gerätezwillings per Auftrag.
 
-[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
-
-Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 > [!NOTE]
 > Das **Azure IoT-SDK für Python** unterstützt die **Aufträge**-Funktion nicht direkt. Dieses Tutorial bietet stattdessen eine alternative Lösung mithilfe von asynchronen Threads und Timern. Weitere Updates finden Sie in der Featureliste des **Dienstclient-SDK** auf der Seite des [Azure IoT-SDK für Python](https://github.com/Azure/azure-iot-sdk-python).
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für dieses Tutorial benötigen Sie Folgendes:
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -74,6 +76,10 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die auf eine von der
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   >
 
 2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis die Datei **simDevice.py**.
 
@@ -158,9 +164,27 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die auf eine von der
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+In diesem Artikel erstellen Sie einen Back-End-Dienst, der eine direkte Methode auf einem Gerät aufruft und den Gerätezwilling aktualisiert. Für den Dienst wird die Berechtigung **Dienstverbindung** benötigt, um eine direkte Methode auf einem Gerät aufzurufen. Darüber hinaus sind für den Dienst auch die Berechtigungen **Lesevorgänge in Registrierung** und **Schreibvorgänge in Registrierung** erforderlich, um Lese- und Schreibvorgänge für die Identitätsregistrierung durchführen zu können. Da keine SAS-Standardrichtlinie ausschließlich mit diesen Berechtigungen zur Verfügung steht, müssen Sie eine erstellen.
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+Erstellen Sie wie folgt eine SAS-Richtlinie, die die Berechtigungen **Dienstverbindung**, **Lesevorgänge in Registrierung** und **Schreibvorgänge in Registrierung** gewährt, und rufen Sie eine Verbindungszeichenfolge für diese Richtlinie ab:
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihren IoT-Hub. Wählen Sie dazu am besten **Ressourcengruppen**, anschließend die Ressourcengruppe, in der sich Ihr IoT-Hub befindet, und dann in der Ressourcenliste diesen IoT-Hub aus.
+
+2. Wählen Sie im linken Bereich Ihres IoT-Hubs **Freigegebene Zugriffsrichtlinien** aus.
+
+3. Wählen Sie im Menü über der Richtlinienliste die Option **Hinzufügen** aus.
+
+4. Geben Sie im Bereich **Richtlinie für den gemeinsamen Zugriff hinzufügen** einen aussagekräftigen Namen für Ihre Richtlinie ein (z. B. *serviceAndRegistryReadWrite*). Wählen Sie unter **Berechtigungen** die Optionen **Dienstverbindung** und **Schreibvorgänge in Registrierung** aus (**Lesevorgänge in Registrierung** wird bei Auswahl von **Schreibvorgänge in Registrierung** automatisch ausgewählt). Klicken Sie anschließend auf **Erstellen**.
+
+    ![Hinzufügen einer neuen SAS-Richtlinie](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. Wählen Sie im Bereich **SAS-Richtlinien** in der Richtlinienliste Ihre neue Richtlinie aus.
+
+6. Wählen Sie unter **Schlüssel für gemeinsamen Zugriff** das Kopiersymbol für **Verbindungszeichenfolge – Primärschlüssel** aus, und speichern Sie den Wert.
+
+    ![Abrufen der Verbindungszeichenfolge.](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+Weitere Informationen zu SAS-Richtlinien und Berechtigungen für IoT-Hubs finden Sie unter [Access Control und Berechtigungen](./iot-hub-devguide-security.md#access-control-and-permissions).
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Planen von Aufträgen zum Aufrufen einer direkten Methode und Aktualisieren der Eigenschaften eines Gerätezwillings
 
@@ -172,9 +196,13 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, mit der eine **lockD
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   >
+
 2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis die Datei **scheduleJobService.py**.
 
-3. Fügen Sie am Anfang der Datei **scheduleJobService.py** die folgenden `import`-Anweisungen und Variablen hinzu:
+3. Fügen Sie am Anfang der Datei **scheduleJobService.py** die folgenden `import`-Anweisungen und Variablen hinzu. Ersetzen Sie den Platzhalter `{IoTHubConnectionString}` durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben. Ersetzen Sie den Platzhalter `{deviceId}` durch die Geräte-ID, die Sie unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) registriert haben:
 
     ```python
     import sys

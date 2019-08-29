@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952899"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543683"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -80,6 +80,7 @@ Beispielszenarien für die Verwendung der Archivzugriffsebene:
 ### <a name="blob-rehydration"></a>Blobaktivierung
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+Weitere Informationen finden Sie unter [Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md).  
 
 ## <a name="account-level-tiering"></a>Tiering auf Kontoebene
 
@@ -164,11 +165,13 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie **Alle Ressourcen** aus, und wählen Sie Ihr Speicherkonto, Ihren Container und dann Ihr Blob aus, um zu Ihrem Blob in Ihrem Speicherkonto zu navigieren.
+1. Wählen Sie zum Navigieren zu Ihrem Blob in Ihrem Speicherkonto die Option „Alle Ressourcen“, und wählen Sie Ihr Speicherkonto, Ihren Container und dann Ihr Blob aus.
 
-1. Klicken Sie auf dem Blatt **Blobeigenschaften** auf das Dropdownmenü **Zugriffsebene**, um die Zugriffsebene **Heiß**, **Kalt** oder **Archiv** auszuwählen.
+1. Klicken Sie auf dem Blatt **Blob-Eigenschaften** auf die Schaltfläche **Ebene ändern**, um das Blatt für Ebenen zu öffnen.
 
-1. Klicken Sie oben auf dem Blatt auf **Speichern** .
+1. Wählen Sie die Zugriffsebene **Heiß**, **Kalt** oder **Archiv** aus. Wenn sich Ihr Blob derzeit im Archiv befindet und Sie ihn auf einer Onlineebene aktivieren möchten, können Sie auch als Aktivierungspriorität **Standard** oder **Hoch** auswählen.
+
+1. Klicken Sie unten auf dem Blatt auf **OK**.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
@@ -245,6 +248,8 @@ Die Datenspeicherung wird zusammen mit anderen Beschränkungen auf Kontoebene un
 Prüfen der Verfügbarkeit von „Hot“, „Cool“ und „Archiv“ nach Region unter [Azure-Regionen](https://azure.microsoft.com/regions/#services)
 
 [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)
+
+[Informationen zum Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md)
 
 [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](../common/storage-enable-and-view-metrics.md)
 

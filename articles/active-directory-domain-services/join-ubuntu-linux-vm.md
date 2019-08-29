@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 78afec75269876c309b2c324d8a5973fd5ebf9a8
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773038"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612296"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Einbinden eines virtuellen Ubuntu-Computers in Azure in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -31,9 +31,9 @@ Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure
 Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Folgendes:  
 1. Ein gültiges **Azure-Abonnement**.
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
-3. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](create-instance.md)aus.
-4. Stellen Sie sicher, dass Sie die IP-Adressen der verwalteten Domäne nicht als DNS-Server für das virtuelle Netzwerk konfiguriert haben. Weitere Informationen finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md).
-5. Führen Sie die Schritte aus, die zum [Synchronisieren der Kennwörter für Ihre verwaltete Domäne der Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md) erforderlich sind.
+3. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](tutorial-create-instance.md)aus.
+4. Stellen Sie sicher, dass Sie die IP-Adressen der verwalteten Domäne nicht als DNS-Server für das virtuelle Netzwerk konfiguriert haben. Weitere Informationen finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network).
+5. Führen Sie die Schritte aus, die zum [Synchronisieren der Kennwörter für Ihre verwaltete Domäne der Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) erforderlich sind.
 
 
 ## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Bereitstellen eines virtuellen Ubuntu Linux-Computers
@@ -49,7 +49,7 @@ Stellen Sie mithilfe einer der folgenden Methoden einen virtuellen Ubuntu Linux-
 
 
 ## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>Herstellen einer Remoteverbindung zum virtuellen Ubuntu Linux-Computer
-Der virtuelle Ubuntu-Computer wurde in Azure bereitgestellt. Die nächste Aufgabe besteht darin, über das lokale Administratorkonto, das während der Bereitstellung des virtuellen Computers erstellt wurde, eine Remoteverbindung zum virtuellen Computer herzustellen.
+Der virtuelle Ubuntu-Computer wurde in Azure bereitgestellt. Die nächste Aufgabe besteht darin, über das lokale Administratorkonto, das während der Bereitstellung des virtuellen Computers erstellt wurde, eine Remoteverbindung mit dem virtuellen Computer herzustellen.
 
 Befolgen Sie die Anweisungen im Artikel [Anmelden bei einem virtuellen Computer mit Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -64,10 +64,10 @@ sudo vi /etc/hosts
 Geben Sie in der Hostdatei die folgenden Wert ein:
 
 ```console
-127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
+127.0.0.1 contoso-ubuntu.contoso.com contoso-ubuntu
 ```
 
-„contoso100.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne. „contoso-ubuntu“ steht für den Hostnamen des virtuellen Ubuntu-Computers, den Sie in die verwaltete Domäne einbinden.
+„contoso.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne. „contoso-ubuntu“ steht für den Hostnamen des virtuellen Ubuntu-Computers, den Sie in die verwaltete Domäne einbinden.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Installieren der erforderlichen Pakete auf dem virtuellen Linux-Computer
@@ -88,7 +88,7 @@ Als Nächstes installieren Sie Pakete, die für den Domänenbeitritt auf dem vir
 3. Bei der Kerberos-Installation wird Ihnen ein rosafarbener Bildschirm angezeigt. Bei der Installation des Pakets „krb5-user“ werden Sie aufgefordert, den Bereichsnamen einzugeben (in Großbuchstaben). Die Installation schreibt die Abschnitte [realm] und [domain_realm] in die Datei „/etc/krb5.conf“.
 
     > [!TIP]
-    > Wenn der Name Ihrer verwalteten Domäne „contoso100.com“ ist, geben Sie als Bereich „CONTOSO100.COM“ ein. Denken Sie daran, dass der Bereichsname in Großbuchstaben angegeben werden muss.
+    > Wenn der Name Ihrer verwalteten Domäne „contoso.com“ ist, geben Sie als Bereich „contoso.COM“ ein. Denken Sie daran, dass der Bereichsname in Großbuchstaben angegeben werden muss.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Konfigurieren der NTP-Einstellungen (NTP = Network Time Protocol) auf dem virtuellen Linux-Computer
@@ -101,16 +101,16 @@ sudo vi /etc/ntp.conf
 Geben Sie folgenden Wert in die Datei „ntp.conf“ ein, und speichern Sie die Datei:
 
 ```console
-server contoso100.com
+server contoso.com
 ```
 
-„contoso100.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne.
+„contoso.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne.
 
 Synchronisieren Sie jetzt das Datum und die Uhrzeit des virtuellen Ubuntu-Computers mit dem NTP-Server, und starten Sie anschließend den NTP-Dienst:
 
 ```console
 sudo systemctl stop ntp
-sudo ntpdate contoso100.com
+sudo ntpdate contoso.com
 sudo systemctl start ntp
 ```
 
@@ -121,7 +121,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 1. Ermitteln Sie die durch Azure AD-Domänendienste verwaltete Domäne. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
     ```console
-    sudo realm discover CONTOSO100.COM
+    sudo realm discover contoso.COM
     ```
 
    > [!NOTE]
@@ -133,12 +133,12 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 2. Initialisieren Sie Kerberos. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
     > [!TIP]
-    > * Stellen Sie sicher, dass Sie einen Benutzer angeben, der zur Administratorengruppe für Azure AD-Domänencontroller gehört.
+    > * Stellen Sie sicher, dass Sie einen Benutzer angeben, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. Bei Bedarf [fügen Sie ein Benutzerkonto zu einer Gruppe in Azure AD hinzu](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
     > * Geben Sie den Domänennamen in Großbuchstaben an. Andernfalls führt kinit zu einem Fehler.
     >
 
     ```console
-    kinit bob@CONTOSO100.COM
+    kinit bob@contoso.COM
     ```
 
 3. Binden Sie den Computer in die Domäne ein. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
@@ -149,7 +149,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     > Wenn Ihr virtueller Computer der Domäne nicht beitreten kann, stellen Sie sicher, dass die Netzwerksicherheitsgruppe des virtuellen Computers ausgehenden Kerberos-Datenverkehr über TCP und UDP-Port 464 an das Subnetz des virtuellen Netzwerks für Ihre von Azure AD DS verwaltete Domäne zulässt.
 
     ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
+    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
     ```
 
 Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollte eine Meldung angezeigt werden, dass der Computer erfolgreich im Bereich registriert wurde.
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Überprüfen des Domänenbeitritts
 Überprüfen Sie, ob der Computer der verwalteten Domäne erfolgreich beigetreten ist. Stellen Sie über eine andere SSH-Verbindung eine Verbindung zur beigetretenen Domäne des virtuellen Ubuntu-Computers her. Verwenden Sie ein Domänenbenutzerkonto, und überprüfen Sie anschließend, ob das Benutzerkonto ordnungsgemäß aufgelöst wurde.
 
-1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung zu dem der Domäne beigetretenen virtuellen Ubuntu-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@CONTOSO100.COM').
+1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung zu dem der Domäne beigetretenen virtuellen Ubuntu-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@contoso.COM').
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
+    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
     ```
 
 2. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob das Basisverzeichnis ordnungsgemäß initialisiert wurde.
@@ -231,10 +231,10 @@ Sie können Mitgliedern der Gruppe „AAD DC-Administratoren“ Administratorrec
 
 
 ## <a name="troubleshooting-domain-join"></a>Problembehandlung beim Domänenbeitritt
-Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](join-windows-vm.md#troubleshoot-joining-a-domain) .
+Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](join-windows-vm.md#troubleshoot-domain-join-issues) .
 
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](create-instance.md)
+* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](tutorial-create-instance.md)
 * [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Anmelden bei einem virtuellen Computer unter Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Anmelden bei einem virtuellen Computer, auf dem Linux ausgeführt wird](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

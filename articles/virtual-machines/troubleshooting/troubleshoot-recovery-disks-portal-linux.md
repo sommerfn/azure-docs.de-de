@@ -7,18 +7,17 @@ author: genlin
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 21122847c1b417b00cfe8c69b8324a2f73bf31ea
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2dcd2009d93fdf39d1221f2a2f5354fe68658077
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641129"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103364"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Beheben von Problemen einer Linux-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM mit dem Azure-Portal
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
@@ -49,16 +48,16 @@ Sie können auch am oberen Rand des Startdiagnoseprotokolls auf **Screenshot** k
 ## <a name="take-a-snapshot-of-the-os-disk"></a>Erstellen einer Momentaufnahme des Betriebssystemdatenträgers
 Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte (Virtual Hard Drive, VHD). Es empfiehlt sich, den virtuellen Computer vor dem Erstellen einer Momentaufnahme ordnungsgemäß herunterzufahren, um alle Prozesse, die ausgeführt werden, ordnungsgemäß abzuschließen. Gehen Sie folgendermaßen vor, um eine Momentaufnahme eines Betriebssystemdatenträgers zu erstellen:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie auf der Seitenleiste **Virtuelle Computer** und dann den virtuellen Computer aus, auf dem es ein Problem gibt.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Virtuelle Computer** auf der Seitenleiste aus, und wählen Sie dann den virtuellen Computer aus, auf dem es ein Problem gibt.
 1. Klicken Sie im linken Bereich auf **Datenträger**, und wählen Sie dann den Namen des Betriebssystemdatenträgers aus.
     ![Abbildung mit dem Namen des Betriebssystemdatenträgers](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. Wählen Sie auf der Seite **Übersicht** des Betriebssystemdatenträgers die Option **Momentaufnahme erstellen** aus.
-1. Erstellen Sie eine Momentaufnahme an dem Speicherort, an dem sich auch der Betriebssystemdatenträger befindet.
+1. Wählen Sie auf der **Übersicht**-Seite des Betriebssystemdatenträgers die Option **Momentaufnahme erstellen** aus.
+1. Erstellen Sie eine Momentaufnahme in dem Standort, in dem sich auch der Betriebssystemdatenträger befindet.
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
 Um einen Datenträger aus der Momentaufnahme zu erstellen, führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie im Azure-Portal **Cloud Shell** aus.
+1. Wählen Sie **Cloud Shell** im Azure-Portal aus.
 
     ![Abbildung zu Öffnen von Cloud Shell](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
 1. Führen Sie die folgenden PowerShell-Befehle aus, um einen verwalteten Datenträger aus der Momentaufnahme zu erstellen. Sie müssen diese Beispielnamen durch die entsprechenden Namen ersetzen.
@@ -76,8 +75,8 @@ Um einen Datenträger aus der Momentaufnahme zu erstellen, führen Sie die folge
     #Provide the size of the disks in GB. It should be greater than the VHD file size. In this sample, the size of the snapshot is 127 GB. So we set the disk size to 128 GB.
     $diskSize = '128'
     
-    #Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-    $storageType = 'StandardLRS'
+    #Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+    $storageType = 'Standard_LRS'
     
     #Provide the Azure region (e.g. westus) where Managed Disks will be located.
     #This location should be same as the snapshot location
@@ -94,7 +93,7 @@ Um einen Datenträger aus der Momentaufnahme zu erstellen, führen Sie die folge
 3. Wenn die Befehle erfolgreich ausgeführt wurden, wird der neue Datenträger in der Ressourcengruppe angezeigt, die Sie bereitgestellt haben.
 
 ## <a name="attach-disk-to-another-vm"></a>Anfügen des Datenträgers an einen anderen virtuellen Computer
-Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Nachdem Sie den Datenträger der Problembehebungs-VM angefügt haben, können Sie den Inhalt des Datenträgers durchsuchen und bearbeiten. Durch diesen Prozess können Sie alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Führen Sie die folgenden Schritte aus, um den Datenträger an einen anderen virtuellen Computer anzufügen:
+Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Nachdem Sie den Datenträger der Problembehebungs-VM zugeordnet haben, können Sie den Inhalt des Datenträgers durchsuchen und bearbeiten. Durch diesen Prozess können Sie alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Führen Sie die folgenden Schritte aus, um den Datenträger einem andere virtuellen Computer zuzuordnen:
 
 1. Wählen Sie im Portal Ihre Ressourcengruppe und dann Ihre Problembehebungs-VM aus. Wählen Sie **Datenträger** und **Bearbeiten** aus, und klicken Sie dann auf **Datenträger hinzufügen**:
 
@@ -169,12 +168,12 @@ Sobald Ihre Fehler behoben sind, trennen Sie die vorhandene virtuelle Festplatte
 
 Im Azure-Portal wird jetzt der Wechsel des Betriebssystemdatenträgers des virtuellen Computers unterstützt. Gehen Sie dazu folgendermaßen vor:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie auf der Seitenleiste **Virtuelle Computer** und dann den virtuellen Computer aus, auf dem es ein Problem gibt.
-1. Wählen Sie im linken Bereich **Datenträger** und dann **Betriebssystemdatenträger austauschen** aus.
-        ![Abbildung zum Austauschen des Betriebssystemdatenträgers im Azure-Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Virtuelle Computer** auf der Seitenleiste aus, und wählen Sie dann den virtuellen Computer aus, auf dem es ein Problem gibt.
+1. Wählen Sie im linken Bereich **Datenträger** aus, und wählen Sie dann **Betriebssystemdatenträger austauschen** aus.
+        ![Abbildung zum Austauschen des Betriebssystemdatenträgers in Azure-Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-1. Wählen Sie den neuen Datenträger aus, den Sie repariert haben, und geben Sie dann den Namen des virtuellen Computers ein, um die Änderung zu bestätigen. Wird der Datenträger in der Liste nicht angezeigt, warten Sie 10 bis 15 Minuten, nachdem Sie den Datenträger von der Problembehebungs-VM getrennt haben. Vergewissern Sie sich außerdem, dass sich der Datenträger am selben Speicherort wie der virtuelle Computer befindet.
-1. Klicken Sie auf „OK“.
+1. Wählen Sie den neuen Datenträger aus, den Sie repariert haben, und geben Sie dann den Namen des virtuellen Computers ein, um die Änderung zu bestätigen. Wird der Datenträger in der Liste nicht angezeigt, warten Sie 10 bis 15 Minuten, nachdem Sie den Datenträger von der Problembehebungs-VM getrennt haben. Vergewissern Sie sich außerdem, dass sich der Datenträger am selben Standort wie der virtuelle Computer befindet.
+1. Wählen Sie „OK“ aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, finden Sie unter [Problembehandlung von SSH-Verbindungen mit einer Azure-VM](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Hilfestellungen. Konsultieren Sie [Beheben von Anwendungskonnektivitätsproblemen auf einer Linux-VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.
