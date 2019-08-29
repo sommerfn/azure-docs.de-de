@@ -281,6 +281,8 @@
           maintainContext: true
 - name: Verweis
   items:
+    - name: Unterstützte Knotenkonfigurationen
+      href: ../hdinsight-supported-node-configuration.md
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

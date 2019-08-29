@@ -60,6 +60,8 @@
         - name: Ihre Marketplace-Vorteile
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Partner-Engagement für Co-Selling
+              href: ./marketplace-co-sell.md
             - name: Bevorzugte Lösungen
               href: ./preferred-solutions.md
             - name: Integrierte Lösungen
@@ -490,6 +492,13 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Testen Ihres Angebots
           href: ./partner-center-portal/test-drive.md
+        - name: Co-Selling-Option
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          items:
+            - name: Länder- und Regionscodes
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: Codes der Bundesstaaten
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: Veröffentlichungsstatus
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualisieren vorhandener Angebote

@@ -8,74 +8,81 @@ manager: gwallace
 ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ed1873fa8e74b2af5734411dc80aeb9089b61a7e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854403"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080449"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Problembehandlung für virtuelle Azure-Computer
 
-- Fehler bei der Zuordnung
-    - [Fehler bei der Zuordnung](allocation-failure.md)
-    - [Zuordnungsfehler bei klassischen Bereitstellungen](allocation-failure-classic.md)
+## <a name="tools-for-troubleshooting"></a>Tools für die Problembehandlung
+
+- [Serielle Konsole](serial-console-windows.md)
 - [Startdiagnose](boot-diagnostics.md)
-- RDP
-    - [Zurücksetzen von RDP](reset-rdp.md)
-    - [Problembehandlung für RDP](troubleshoot-rdp-connection.md)
-    - [Detaillierte Problembehandlung für RDP](detailed-troubleshoot-rdp.md)
-    - [Behandeln spezifischer Fehler](troubleshoot-specific-rdp-errors.md)
-- SSH 
-    - [Problembehandlung für SSH](troubleshoot-ssh-connection.md)
-    - [Detaillierte Problembehandlung für SSH](detailed-troubleshoot-ssh-connection.md)
-    - [Häufige Fehlermeldungen](error-messages.md)
-- [Offlineinstallation des Windows-VM-Agents](install-vm-agent-offline.md)
-- Beheben von Leistungsproblemen im Zusammenhang mit virtuellen Computern
-    - [Leistungsprobleme im Zusammenhang mit virtuellen Computern](performance-diagnostics.md)
-    - Windows
-        - [Verwenden von PerfInsights](how-to-use-perfinsights.md)
-        - [Erweiterung für die Leistungsdiagnose](performance-diagnostics-vm-extension.md)
-    - Linux
-        - [Verwenden von PerfInsights](how-to-use-perfinsights-linux.md)
+- [Windows-VM: Anfügen des Betriebssystemdatenträgers an eine andere Windows-VM zur Problembehandlung](troubleshoot-recovery-disks-portal-windows.md)
+- [Linux-VM: Anfügen des Betriebssystemdatenträgers an eine andere VM zur Problembehandlung](troubleshoot-recovery-disks-portal-linux.md)
+
+## <a name="cant-connect-to-the-vm"></a>Ich kann keine Verbindung mit dem virtuellen Computer herstellen.
+
+### <a name="windows"></a>Windows
+
+**Allgemeine Lösung**
+
+- [Zurücksetzen von RDP](reset-rdp.md)
+- [Problembehandlung für RDP](troubleshoot-rdp-connection.md)
+- [Detaillierte Problembehandlung für RDP](detailed-troubleshoot-rdp.md)
+
+**RDP-Fehler**
+
+- [Kein Lizenzserver](troubleshoot-rdp-no-license-server.md)
+- [Interner Fehler](Troubleshoot-rdp-internal-error.md)
+- [Authentifizierungsfehler](troubleshoot-authentication-error-rdp-vm.md)
+- [Behandeln spezifischer Fehler](troubleshoot-specific-rdp-errors.md)
+
+**Fehler beim Starten des virtuellen Computers**
+
+* [BitLocker-Startfehler](troubleshoot-bitlocker-boot-error.md) 
+* [Windows zeigt beim Starten „Dateisystem wird überprüft“ an](troubleshoot-check-disk-boot-error.md)
+* [Bluescreen-Fehler](troubleshoot-common-blue-screen-error.md)
+* [VM-Start bleibt bei „Windows wird vorbereitet“ hängen](troubleshoot-vm-boot-configure-update.md)
+* [KRITISCHER SERVERFEHLER auf Bluescreen](troubleshoot-critical-service-failed-boot-error.md)
+* [Neustartschleifenproblem](troubleshoot-reboot-loop.md)
+* [VM-Start bleibt bei Windows-Update hängen](troubleshoot-stuck-updating-boot-error.md)
+* [Starten der VM im abgesicherten Modus](troubleshoot-rdp-safe-mode.md)
+
+**Andere**
+- [Zurücksetzen des VM-Kennworts für eine Windows-VM (offline)](reset-local-password-without-agent.md)
+- [Zurücksetzen des Netzwerkadapters nach einer Fehlkonfiguration](reset-network-interface.md)
+
+### <a name="linux"></a>Linux
+
+- [Problembehandlung für SSH](troubleshoot-ssh-connection.md)
+- [Detaillierte Problembehandlung für SSH](detailed-troubleshoot-ssh-connection.md)
+- [Häufige Fehlermeldungen](error-messages.md)
+- [Zurücksetzen des VM-Kennworts für eine Linux-VM (offline)](reset-password.md)
+
+## <a name="vm-deployment-issues"></a>VM-Bereitstellungsprobleme
+
+- [Fehler bei der Zuordnung](allocation-failure.md)
 - Erneutes Bereitstellen eines virtuellen Computers
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)
-- Zurücksetzen des Kennworts des virtuellen Computers
-    - [Windows](reset-local-password-without-agent.md)
-    - [Linux](reset-password.md)
-- [Zurücksetzen der NIC](reset-network-interface.md)
-- [Neustart oder Größenänderung eines virtuellen Computers](restart-resize-error-troubleshooting.md)
-- Verwenden der seriellen Konsole
-    - [Linux-VM](serial-console-linux.md)
-        - [Serielle Konsole: GRUB-/Einzelbenutzermodus](serial-console-grub-single-user-mode.md)
-        - [Serielle Konsole: NMI/SysRq](serial-console-nmi-sysrq.md)
-    - [Windows-VM](serial-console-windows.md)
-        - [CMD und PowerShell-Befehle](serial-console-cmd-ps-commands.md)
-- [Fehler beim Löschen von Speicherressourcen](storage-resource-deletion-errors.md      )
-- [Unerwartete Neustarts von virtuellen Computern mit angefügten VHDs](unexpected-reboots-attached-vhds.md)
-- [Probleme bei der Windows-Aktivierung](troubleshoot-activation-problems.md)
-- [Probleme beim Anwendungszugriff](troubleshoot-app-connection.md)
 - Behandeln von Bereitstellungsproblemen
     - [Linux](troubleshoot-deploy-vm-linux.md)
     - [Windows](troubleshoot-deploy-vm-windows.md)
 - [Änderung von Gerätenamen](troubleshoot-device-names-problems.md)
-- Zugriff auf die VM-Wiederherstellung
-    - Windows
-        - [PowerShell](troubleshoot-recovery-disks-windows.md)
-        - [Azure-Portal](troubleshoot-recovery-disks-portal-windows.md)
-    - Linux
-        - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](troubleshoot-recovery-disks-linux.md)
-    - [Azure-Portal](troubleshoot-recovery-disks-portal-linux.md)
-- [Startfehler](boot-error-troubleshoot.md)
-- [BitLocker-Fehler](troubleshoot-bitlocker-boot-error.md)
-- [Überprüfen von Dateisystemfehlern](troubleshoot-check-disk-boot-error.md)
-- [Bluescreen-Fehler](troubleshoot-common-blue-screen-error.md)
-- [Drosselungsfehler](troubleshooting-throttling-errors.md)
-- [Verwenden der geschachtelten Virtualisierung](troubleshoot-vm-by-use-nested-virtualization.md)
-- [Informationen zum Systemneustart](understand-vm-reboot.md)
+- [Offlineinstallation des Windows-VM-Agents](install-vm-agent-offline.md)
+- [Neustart oder Größenänderung eines virtuellen Computers](restart-resize-error-troubleshooting.md)
 
+## <a name="vm-performance-issue"></a>VM-Leistungsproblem
+- [Leistungsprobleme im Zusammenhang mit virtuellen Computern](performance-diagnostics.md)
+- Windows
+    - [Verwenden von PerfInsights](how-to-use-perfinsights.md)
+    - [Erweiterung für die Leistungsdiagnose](performance-diagnostics-vm-extension.md)
+- Linux
+    - [Verwenden von PerfInsights](how-to-use-perfinsights-linux.md)

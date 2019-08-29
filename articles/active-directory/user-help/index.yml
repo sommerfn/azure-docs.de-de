@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.openlocfilehash: 168c8ad8acd1734aa06be111f42f4c0b2da92d3e
+  ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70062204"
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70072661"
 landingContent:
 - title: Einrichten und Verwenden der Microsoft Authenticator-App
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
       url: user-help-auth-app-backup-recovery.md
     - text: Anmelden mit der App
       url: user-help-auth-app-sign-in.md
-- title: Einrichten und Verwenden der zweistufigen Überprüfung
+- title: Auswählen der Methoden für die zweistufige Überprüfung
   linkLists:
   - linkListType: overview
     links:
@@ -49,7 +49,7 @@ landingContent:
       url: multi-factor-authentication-end-user-manage-settings.md
     - text: Hier erhalten Sie Hilfe
       url: multi-factor-authentication-end-user-troubleshoot.md
-- title: Einrichten und Verwenden des Portals „Meine Apps“
+- title: Aktualisieren Ihrer Informationen im Portal „Meine Apps“
   linkLists:
   - linkListType: overview
     links:
@@ -61,7 +61,7 @@ landingContent:
       url: my-apps-portal-end-user-update-profile.md
     - text: Hier erhalten Sie Hilfe
       url: my-apps-portal-end-user-troubleshoot.md
-- title: Einrichten und Verwenden von Sicherheitsinformationen (Vorschauversion)
+- title: Einrichten und Verwalten Ihrer Sicherheitsinformation (Vorschauversion)
   linkLists:
   - linkListType: overview
     links:
@@ -73,7 +73,7 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: Hinzufügen von Informationen während der Aufforderung zum Anmelden
       url: security-info-setup-signin.md
-- title: Einrichten und Verwenden von „Mein Profil“ (Vorschauversion)
+- title: Verwalten Ihrer Informationen im Portal „Mein Profil“ (Vorschau)
   linkLists:
   - linkListType: overview
     links:

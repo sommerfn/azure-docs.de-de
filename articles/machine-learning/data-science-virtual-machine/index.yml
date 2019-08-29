@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zu virtuellen Computern für Azure Data Science
+title: Dokumentation zu Azure Data Science Virtual Machine
 metadata:
-  title: 'Dokumentation zu virtuellen Computern für Data Science: Azure'
-  description: 'Hier erfahren Sie, wie Sie Data Science Virtual Machine verwenden – eine für Data Science entwickelte experimentelle Umgebung in der Azure-Cloud. Beliebte Data Science-Tools und andere Tools sind bereits vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können.'
+  title: 'Dokumentation zu Data Science Virtual Machine: Azure'
+  description: 'Hier erfahren Sie, wie Sie Data Science Virtual Machine verwenden – eine für Data Science entwickelte experimentelle Umgebung in der Azure-Cloud. Beliebte Data Science- und Machine Learning-Tools sind vorinstalliert und vorkonfiguriert. Dieser Entwurf erleichtert den Einstieg in die Erstellung intelligenter Anwendungen für erweiterte Analysen.'
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -19,7 +19,7 @@ sections:
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie einen Windows- oder Linux-basierten virtuellen Data Science-Computer einrichten:'
+        text: 'Hier erfahren Sie, wie Sie eine Windows- oder Linux-basierte Data Science Virtual Machine-Instanz einrichten:'
       - type: paragraph
         text: <b>DSVM unter Windows</b>
       - type: list
