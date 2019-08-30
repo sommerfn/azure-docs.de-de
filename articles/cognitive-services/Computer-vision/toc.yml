@@ -133,12 +133,6 @@
       href: concept-detecting-adult-content.md
 - name: Anleitungen
   items:
-    - name: Maschinelles Sehen verwenden
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
     - name: Aufrufen der Maschinelles Sehen-API
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Verwenden von Containern
