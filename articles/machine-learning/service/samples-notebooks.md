@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772570"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035940"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning Service mit Jupyter-Notebooks
 
@@ -67,4 +67,4 @@ Erkunden Sie anhand der [Beispielnotebooks](https://aka.ms/aml-notebooks), welch
 
 - [Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)
 
-- [Vorbereiten von Daten für die Regressionsmodellierung](tutorial-data-prep.md)
+- [Vorbereiten von Daten für die Regressionsmodellierung](tutorial-auto-train-models.md)

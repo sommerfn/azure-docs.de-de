@@ -9,19 +9,19 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0675be988e7e9560560dd07338563c9fa22fcb4c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881649"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997745"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Was ist Azure IoT Central (Previewfunktionen)?
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Die [IoT Plug & Play](https://aka.ms/iot-pnp-docs)-Funktionen in Azure IoT Central befinden sich derzeit in der Vorschauphase. Verwenden Sie keine IoT Central-Anwendung mit aktivierter IoT Plug & Play-Funktion für Produktionsworkloads. Verwenden Sie für Produktionsumgebungen eine IoT Central-Anwendung, die auf der Grundlage einer aktuellen, allgemein verfügbaren Anwendungsvorlage erstellt wurde.
+> Die [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Funktionen in Azure IoT Central befinden sich derzeit in der Vorschauphase. Verwenden Sie keine IoT Central-Anwendung mit aktivierter IoT Plug & Play-Funktion für Produktionsworkloads. Verwenden Sie für Produktionsumgebungen eine IoT Central-Anwendung, die auf der Grundlage einer aktuellen, allgemein verfügbaren Anwendungsvorlage erstellt wurde.
 
 Azure IoT Central ist eine vollständig verwaltete IoT-SaaS-Lösung (Software-as-a-Service) zur einfachen Erstellung von Produkten, die die physische mit der digitalen Welt verbinden. Setzen Sie Ihre Vision für verbundene Produkte um, indem Sie:
 
@@ -95,7 +95,7 @@ Diese Gerätevorlage enthält Folgendes:
 
 ### <a name="create-device-templates"></a>Erstellen von Gerätevorlagen
 
-[IoT Plug & Play](https://aka.ms/iot-pnp-docs) ermöglicht IoT Central die Integration von Geräten, ohne dass Sie eingebetteten Gerätecode schreiben müssen. Das Herzstück von IoT Plug & Play ist ein Gerätefunktionsmodell-Schema, das Gerätefunktionen beschreibt. In einer IoT Central Preview-Anwendung verwenden Gerätevorlagen diese IoT Plug & Play-Gerätefunktionsmodelle.
+[IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) ermöglicht IoT Central die Integration von Geräten, ohne dass Sie eingebetteten Gerätecode schreiben müssen. Das Herzstück von IoT Plug & Play ist ein Gerätefunktionsmodell-Schema, das Gerätefunktionen beschreibt. In einer IoT Central Preview-Anwendung verwenden Gerätevorlagen diese IoT Plug & Play-Gerätefunktionsmodelle.
 
 Als Ersteller haben Sie mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
 
@@ -151,4 +151,4 @@ Nachdem Sie sich nun einen Überblick über Azure IoT Central verschafft haben, 
   - [Hinzufügen von Regeln zum Automatisieren Ihrer Lösung](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) (Tutorial für Ersteller)
   - [überwachen Ihrer Geräte](tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) (Tutorial für Bediener)
   - [Hinzufügen eines Geräts zu Ihrer Lösung](tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) (Tutorial für Bediener)
-- Weitere Informationen zu [IoT Plug & Play](https://aka.ms/iot-pnp-docs)
+- Weitere Informationen zu [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)

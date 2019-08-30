@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521936"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067467"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API
 
@@ -75,13 +74,13 @@ Die ursprüngliche Antwort sieht in etwa wie folgt aus:
 1. Wählen Sie **Demo Conference API** aus.
 2. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
 3. Wählen Sie **Alle Vorgänge** aus.
-4. Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>**.
-5. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
+4. Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>** .
+5. Positionieren Sie den Cursor im **&lt;outbound&gt;** -Element.
 6. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** zweimal auf **+ HTTP-Header festlegen** (um zwei Richtlinienausschnitte einzufügen).
 
    ![Richtlinien](./media/transform-api/transform-api.png)
 
-7. Ändern Sie Ihren **\<outbound>**-Code, sodass er folgendermaßen aussieht:
+7. Ändern Sie Ihren **\<outbound>** -Code, sodass er folgendermaßen aussieht:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,10 +111,10 @@ So zeigen Sie die ursprüngliche Antwort an
 1.  Wählen Sie **Demo Conference API** aus.
 2.  Wählen Sie **Alle Vorgänge** aus.
 3.  Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-4.  Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>**.
-5.  Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
+4.  Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>** .
+5.  Positionieren Sie den Cursor im **&lt;outbound&gt;** -Element.
 6.  Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
-7.  Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel: 
+7.  Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>** ) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -128,10 +127,10 @@ In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie
 1.  Wählen Sie **Demo Conference API** aus.
 2.  Wählen Sie **Alle Vorgänge** aus.
 3.  Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-4.  Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**.
-5.  Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
+4.  Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>** .
+5.  Positionieren Sie den Cursor im **&lt;inbound&gt;** -Element.
 6.  Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
-7.  Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>**-Element) folgendermaßen:
+7.  Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>** -Element) folgendermaßen:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

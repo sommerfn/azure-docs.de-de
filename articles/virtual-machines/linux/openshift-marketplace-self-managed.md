@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87b5c4ab006d9129d7530b06d8b31df35e288c75
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233084"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091906"
 ---
 # <a name="configure-prerequisites"></a>Konfigurieren der Voraussetzungen
 
@@ -68,7 +67,7 @@ Geben Sie Werte für die Eingabeparameter ein, und klicken Sie auf **OK**.
 |-----------------------|-----------------|
 | VM Admin User Name (VM-Administratorbenutzername) | Der auf allen VM-Instanzen zu erstellende Administratorbenutzer |
 | SSH Public Key for Admin User (Öffentlicher SSH-Schlüssel für Administratorbenutzer) | Öffentlicher SSH-Schlüssel zum Anmelden bei der VM – darf keine Passphrase aufweisen |
-| Abonnement | Azure-Abonnement, in dem der Cluster bereitgestellt werden soll |
+| Subscription | Azure-Abonnement, in dem der Cluster bereitgestellt werden soll |
 | Ressourcengruppe | Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene leere Ressourcengruppe für Clusterressourcen aus. |
 | Location | Azure-Region, in der der Cluster bereitgestellt werden soll |
 
