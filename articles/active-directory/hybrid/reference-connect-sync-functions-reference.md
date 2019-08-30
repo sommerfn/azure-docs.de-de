@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204494"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900046"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
@@ -102,7 +102,7 @@ Die BitAnd-Funktion legt angegebene Bits auf einen Wert fest.
 **Hinweise:**  
 Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf Folgendes fest:
 
-* 0 – wenn eines oder beide der entsprechenden Bits in *mask* und *flag* den Wert „0“ besitzt bzw. besitzen.
+* 0 – wenn mindestens eines der entsprechenden Bits in *value1* und *value2* den Wert „0“ aufweist
 * 1 – wenn beide entsprechenden Bits 1 sind.
 
 Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechenden Bits beider Parameter 1 sind.
@@ -133,7 +133,7 @@ Die CBool-Funktion gibt einen booleschen Wert zurück, der auf dem ausgewerteten
 `bool CBool(exp Expression)`
 
 **Hinweise:**  
-Wenn die Auswertung des Ausdrucks einen Wert ungleich Null ergibt, gibt CBool „True“ zurück. Andernfalls wird „False“ zurückgegeben.
+Wenn die Auswertung des Ausdrucks einen Wert ungleich null ergibt, gibt CBool TRUE zurück. Andernfalls wird FALSE zurückgegeben.
 
 **Beispiel:**  
 `CBool([attrib1] = [attrib2])`  

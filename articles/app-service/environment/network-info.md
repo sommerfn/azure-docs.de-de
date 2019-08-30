@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01a7c4e41dd628ec8671555daf828b67bebba23e
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069380"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898663"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
 ## <a name="overview"></a>Übersicht ##
 
- Die Azure [App Service-Umgebung][Intro] ist eine Bereitstellung des Azure App Service in einem Subnetz in Ihrem Azure Virtual Network (VNet). Es gibt zwei Bereitstellungstypen für eine App Service-Umgebung (ASE):
+ Die Azure [App Service-Umgebung][Intro] ist eine Bereitstellung von Azure App Service in einem Subnetz in Ihrem virtuellen Azure-Netzwerk (VNET). Es gibt zwei Bereitstellungstypen für eine App Service-Umgebung (ASE):
 
 - **Externe ASE**: Macht die gehosteten Apps der ASE für eine über das Internet erreichbare IP-Adresse verfügbar. Weitere Informationen finden Sie unter [Erstellen einer externen ASE][MakeExternalASE].
 - **ILB ASE**: Macht die gehosteten Apps der ASE für eine IP-Adresse in Ihrem VNet verfügbar. Der interne Endpunkt ist ein ILB (Internal Load Balancer, interner Lastenausgleich), daher der Name ILB-ASE. Weitere Informationen finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
@@ -68,7 +68,7 @@ Damit die App Service-Umgebung funktioniert, müssen die folgenden Ports geöffn
 
 Zwei weitere Ports können bei einem Portscan als offen angezeigt werden: 7654 und 1221. Diese antworten mit einer IP-Adresse und keinen weiteren Informationen. Sie können bei Bedarf blockiert werden. 
 
-Zusätzlich zur Systemüberwachung ermöglicht der eingehende Verwaltungsdatenverkehr die Steuerung und Kontrolle der ASE. Die Quelladressen für diesen Datenverkehr sind im Dokument [App Service-Umgebung Management-Adressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über die IP-Adressen der Verwaltung für die App Service-Umgebung an den Ports 454 und 455 zulassen. Wenn Sie den Zugriff von diesen Adressen blockieren, wird Ihr ASE fehlerhaft und dann entsprechend ausgesetzt. Der TCP-Datenverkehr, der über die Ports 454 und 455 eintrifft, muss wieder vom gleichen VIP ausgehen, sonst haben Sie ein asymmetrisches Routingproblem. 
+Zusätzlich zur Systemüberwachung ermöglicht der eingehende Verwaltungsdatenverkehr die Steuerung und Kontrolle der ASE. Die Quelladressen für diesen Datenverkehr sind im Dokument [ASE-Verwaltungsadressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über die IP-Adressen der Verwaltung für die App Service-Umgebung an den Ports 454 und 455 zulassen. Wenn Sie den Zugriff von diesen Adressen blockieren, wird Ihr ASE fehlerhaft und dann entsprechend ausgesetzt. Der TCP-Datenverkehr, der über die Ports 454 und 455 eintrifft, muss wieder vom gleichen VIP ausgehen, sonst haben Sie ein asymmetrisches Routingproblem. 
 
 Viele Ports im ASE-Subnetz werden für die Kommunikation zwischen internen Komponenten verwendet, und sie können sich ändern. Deshalb muss auf alle Ports im ASE-Subnetz aus dem ASE-Subnetz zugegriffen werden können. 
 
@@ -125,7 +125,7 @@ Neben den funktionalen Abhängigkeiten der ASE gibt es einige weitere zu beachte
 
 Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNETs nicht zugänglich. Einige Features funktionieren nicht über das App-Portal, weil sie Zugriff auf den SCM-Standort einer App benötigen. Anstatt das Portal zu verwenden, können Sie eine direkte Verbindung mit dem SCM-Standort herstellen. 
 
-Wenn Ihre ILB-ASE den Domänennamen *contoso.appserviceenvironnment.net* aufweist und der App-Name *testapp* lautet, wird die App unter *testapp.contoso.appserviceenvironment.net* erreicht. Der entsprechende SCM-Standort ist unter *testapp.scm.contoso.appserviceenvironment.net* zu erreichen.
+Wenn Ihre ILB-ASE den Domänennamen *contoso.appserviceenvironment.net* aufweist und der App-Name *testapp* lautet, ist die App unter *testapp.contoso.appserviceenvironment.net* zu erreichen. Der entsprechende SCM-Standort ist unter *testapp.scm.contoso.appserviceenvironment.net* zu erreichen.
 
 ## <a name="ase-ip-addresses"></a>ASE-IP-Adressen ##
 
@@ -151,7 +151,7 @@ Wenn eine App über eine eigene IP-basierte SSL-Adresse verfügt, reserviert die
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen ##
 
-[Netzwerksicherheitsgruppen][NSGs] bieten die Möglichkeit, den Netzwerkzugriff innerhalb eines VNet zu steuern. Wenn Sie das Portal verwenden, gibt es auf der niedrigsten Prioritätsstufe eine implizite Ablehnungsregel, durch die alles abgelehnt wird. Sie erstellen also Ihre eigenen Zulassungsregeln.
+[Netzwerksicherheitsgruppen][NSGs] bieten die Möglichkeit, den Netzwerkzugriff innerhalb eines virtuellen Netzwerks zu steuern. Wenn Sie das Portal verwenden, gibt es auf der niedrigsten Prioritätsstufe eine implizite Ablehnungsregel, durch die alles abgelehnt wird. Sie erstellen also Ihre eigenen Zulassungsregeln.
 
 In einer ASE haben Sie keinen Zugriff auf die VMs, die zum Hosten der eigentlichen ASE verwendet werden. Diese sind in einem Microsoft-Abonnement enthalten. Wenn Sie den Zugriff auf die Apps in der ASE beschränken möchten, legen Sie im ASE-Subnetz Netzwerksicherheitsgruppen fest. Achten Sie dabei sorgfältig auf die ASE-Abhängigkeiten. Wenn Sie Abhängigkeiten blockieren, ist die ASE nicht mehr funktionsfähig.
 

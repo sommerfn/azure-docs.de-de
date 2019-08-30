@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 02/28/2019
-ms.openlocfilehash: 31fb6eaefe557c1f135b4558b873454d4a3a01d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/06/2019
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568619"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876400"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -155,8 +155,14 @@ Pooldatenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitäts
 
 Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es zwei Möglichkeiten.
 
-1. Sie können einen Pool für elastische Datenbanken erstellen, indem Sie im **Marketplace** nach **Elastischer SQL-Pool** suchen oder auf dem Navigationsblatt „Elastische SQL-Pools“ auf **+Hinzufügen** klicken. Im Rahmen dieses Poolbereitstellungsworkflows können Sie einen neuen oder einen bereits vorhandenen Server angeben.
-2. Sie können auch einen Pool für elastische Datenbanken erstellen, indem Sie zu einem vorhandenen SQL-Server navigieren und auf **Pool erstellen**, um direkt auf diesem Server einen Pool zu erstellen. Hier besteht einzige Unterschied darin, dass Sie während des Pool-Bereitstellungsworkflows den Schritt überspringen, in dem der Server angegeben wird.
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn Azure SQL nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* in das Suchfeld ein.
+2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu Pools für elastische Datenbanken anzeigen, indem Sie **Details anzeigen** auf der Kachel **Datenbanken** auswählen.
+3. Wählen Sie auf der Kachel **Datenbanken** in der Dropdownliste **Ressourcentyp** die Option **Pool für elastische Datenbanken** und anschließend **Erstellen** aus:
+
+   ![Erstellen eines Pools für elastische Datenbanken](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. Sie können einen Pool für elastische Datenbanken auch erstellen, indem Sie zu einem vorhandenen Azure SQL-Server navigieren und auf **+ Neuer Pool** klicken, um direkt auf diesem Server einen Pool zu erstellen.
 
 > [!NOTE]
 > Auf einem Server können mehrere Pools erstellt werden, es ist jedoch nicht möglich, Datenbanken von verschiedenen Servern im gleichen Pool zusammenzufassen.
@@ -210,9 +216,9 @@ Weitere Informationen finden Sie unter [Erstellen von SQL-Datenbankwarnungen im 
 
   Umbraco verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um in der Cloud schnell Dienste für Tausende von Mandanten bereitzustellen und zu skalieren.
 
-- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-  Daxko/CSI verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.
+   Daxko/CSI verwendet Pools für elastische Datenbanken mit Azure SQL-Datenbank, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.   
 
 ## <a name="next-steps"></a>Nächste Schritte
 

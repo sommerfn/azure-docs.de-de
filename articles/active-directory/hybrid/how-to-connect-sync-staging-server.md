@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381565"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900057"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Stagingserver und Notfallwiederherstellung
 Mit einem Server im Stagingmodus können Sie Änderungen an der Konfiguration vornehmen und eine Vorschau der Änderungen anzeigen, bevor Sie den Server aktiv schalten. Ein Server im Stagingmodus ermöglicht es Ihnen außerdem, einen vollständigen Import und eine vollständige Synchronisierung durchzuführen und so sicherzustellen, dass alle Änderungen wie erwartet durchgeführt werden, bevor Sie die Änderungen in Ihrer Produktionsumgebung implementieren.
@@ -42,7 +42,7 @@ Bei der Installation können Sie auswählen, dass der Server in den **Stagingmod
 
 Sie können einen Export weiterhin mithilfe des Synchronisierungsdienst-Managers erzwingen.
 
-Ein Server im Stagingmodus empfängt weiterhin Änderungen von Active Directory und Azure AD. Er verfügt stets über eine Kopie der aktuellen Änderungen und kann sehr schnell die Funktion eines anderen Servers übernehmen. Wenn Sie Konfigurationsänderungen an Ihrem primären Server vornehmen, müssen Sie die gleichen Änderungen auch für den Server im Stagingmodus durchführen.
+Ein Server im Stagingmodus empfängt weiterhin Änderungen von Active Directory und Azure AD und kann bei einem Ausfall schnell die Zuständigkeiten eines anderen Servers übernehmen. Wenn Sie Konfigurationsänderungen an Ihrem primären Server vornehmen, müssen Sie die gleichen Änderungen auch für den Server im Stagingmodus durchführen.
 
 Wenn Sie sich bisher nur mit älteren Synchronisierungstechnologien auskennen, müssen Sie wissen, dass Änderungen für den Stagingmodus gelten, seit dieser über eine eigene SQL-Datenbank verfügt. Dank dieser Architektur kann sich der Server im Stagingmodus in einem anderen Datencenter befinden.
 

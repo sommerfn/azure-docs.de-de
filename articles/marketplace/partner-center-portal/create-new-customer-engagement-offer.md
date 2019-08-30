@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1478e8f44db2e6a1d52d069d2f52830c265b2641
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7cda51870a98b2606a0133a61ad6f786e7e9324a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037262"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900137"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -82,27 +82,11 @@ Sie können zwischen folgenden Optionen wählen:
 
 ## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
-Stellen Sie eine direkte Verbindung mit Kunden her, indem Sie Ihr CRM-System (Customer Relationship Management) einbinden. Wenn Sie dies tun, erhalten Sie Kundenkontaktinformationen, wenn ein Kunde Interesse bekundet oder Ihr Produkt bereitstellt.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-Wählen Sie **Verbinden** aus, um Ihr CRM-System zu verbinden.
+Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./commercial-marketplace-get-customer-leads.md).
 
-### <a name="choose-a-lead-destination"></a>Auswählen einer Leadzielgruppe
-
-Nachdem Sie **Verbinden** ausgewählt haben, wird ein Dropdownmenü angezeigt, in dem Sie Ihr CRM-System auswählen und dann Verbindungsdetails angeben können.
-
-Das Partner Center unterstützt die Leadverwaltung für die folgenden CRM-Systeme. Klicken Sie auf den Link, um Anweisungen zur Einrichtung zu erhalten.
-
-- [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table): Geben Sie die Verbindungszeichenfolge für Ihr Speicherkonto an. 
-- [Dynamics 365 for Customer Engagement (früher Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics): Geben Sie Ihre Dynamics 365-Instanz-URL und den Authentifizierungsmodus an (Office 365 oder Azure Active Directory).
-- [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https): Geben Sie die URL Ihres HTTP-Endpunkts an. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo): Geben Sie Ihre Server-ID, die Munchkin-Konto-ID und die Formular-ID an.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce): Geben Sie Ihre Organisations-ID an. 
-
-#### <a name="additional-lead-management-resources"></a>Zusätzliche Ressourcen zur Leadverwaltung
-
-- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Lead management at a glance](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (Übersicht über die Leadverwaltung, Informationsblatt in englischer Sprache)
+Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
 ## <a name="properties"></a>Properties
 

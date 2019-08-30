@@ -3,16 +3,16 @@ title: Problembehandlung für häufige Fehler
 description: Informationen zum Beheben von Problemen beim Abfragen von Azure-Ressourcen mit Azure Resource Graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480466"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900004"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problembehandlung mit Azure Resource Graph
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>Szenario: Nicht unterstützter REST-Header „Content-Type“
+
+#### <a name="issue"></a>Problem
+
+Kunden, die die Azure Resource Graph-REST-API abfragen, erhalten die Antwort _500_ (Interner Serverfehler).
+
+#### <a name="cause"></a>Ursache
+
+Die Azure Resource Graph-REST-API unterstützt nur **application/json** als `Content-Type`. Einige REST-Tools oder -Agents legen standardmäßig **text/plain** fest. Dies wird in der REST-API nicht unterstützt.
+
+#### <a name="resolution"></a>Lösung
+
+Überprüfen Sie, ob in dem Tool oder Agent, das oder den Sie zum Abfragen von Azure Resource Graph verwenden, der REST-API-Header `Content-Type` für **application/json** konfiguriert ist.
+### <a name="rest-403"></a>Szenario: Keine Leseberechtigung für alle Abonnements in der Liste
+
+#### <a name="issue"></a>Problem
+
+Kunden, die mit einer Azure Resource Graph-Abfrage explizit eine Liste mit Abonnements übergeben, erhalten die Antwort _403_ (Verboten).
+
+#### <a name="cause"></a>Ursache
+
+Wenn der Kunde nicht über die Leseberechtigung für alle angegebenen Abonnements verfügt, wird die Anforderung aufgrund fehlender entsprechender Sicherheitsrechte abgelehnt.
+
+#### <a name="resolution"></a>Lösung
+
+Fügen Sie mindestens ein Abonnement in die Abonnementliste ein, für das der Kunde, der die Abfrage ausführt, mindestens über Lesezugriff verfügt. Weitere Informationen finden Sie unter [Berechtigungen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

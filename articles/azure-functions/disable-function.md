@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782236"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650497"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Deaktivieren von Funktionen in Azure Functions
 
@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie eine Funktion in Azure Functions deak
 
 ## <a name="functions-2x---all-languages"></a>Functions 2.x – alle Programmiersprachen
 
-In Functions 2.x wird eine Funktion mithilfe einer App-Einstellung im Format `AzureWebJobs.<FUNCTION_NAME>.Disabled` deaktiviert. Diese Einstellung kann programmgesteuert über die Azure-Befehlszeilenschnittstelle erstellt und geändert werden. Sie können dazu aber auch die Registerkarte **Verwalten** der Funktion im [Azure-Portal](https://portal.azure.com) verwenden. 
+In Functions 2.x wird eine Funktion mithilfe einer App-Einstellung im Format `AzureWebJobs.<FUNCTION_NAME>.Disabled` deaktiviert. Sie können diese Anwendungseinstellung auf verschiedene Weise erstellen und ändern, z. B. über die [Azure-Befehlszeilenschnittstelle](/cli/azure/) und im [Azure-Portal](https://portal.azure.com) auf der Registerkarte **Verwalten** der Funktion. 
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

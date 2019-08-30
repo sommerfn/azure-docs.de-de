@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 422189952096ef25b69e62aa2708c59385b0637a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032244"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898961"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Vorschauversion: Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
@@ -92,11 +92,11 @@ Wenn Sie AKS-Cluster erstellen und verwalten, die einen Lastenausgleich mit der 
 
 * Bei Verwendung eines Lastenausgleichs mit der SKU *Standard* müssen Sie öffentliche Adressen zulassen und dürfen keine Azure-Richtlinie erstellen, die die Erstellung von IP-Adressen unterbindet. Der AKS-Cluster erstellt automatisch eine öffentliche IP-Adresse der SKU *Standard* in der gleichen Ressourcengruppe, die für den AKS-Cluster erstellt wurde. (Der Name beginnt in der Regel mit *MC_* .) AKS weist die öffentliche IP-Adresse dem Lastenausgleich mit der SKU *Standard* zu. Die öffentliche IP-Adresse ist erforderlich, um ausgehenden Datenverkehr aus dem AKS-Cluster zuzulassen. Darüber hinaus wird diese öffentliche IP-Adresse benötigt, um die Konnektivität zwischen der Steuerungsebene und den Agent-Knoten sowie die Kompatibilität mit früheren Versionen von AKS zu gewährleisten.
 * Wenn Sie für einen Lastenausgleich die SKU *Standard* verwenden, benötigen Sie mindestens die Kubernetes-Version 1.13.5.
-* Wenn Sie die [Funktion für öffentliche IP-Adressen für Knoten (Node Public IP)](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) mit Standardlastenausgleichsmodulen (Standard Load Balancers, SLBs) verwenden, können Sie entweder eine SLB-Ausgangsregel oder eine öffentliche IP-Adresse für den Knoten festlegen. Sie müssen sich für eine dieser beiden Optionen entscheiden, weil ein virtueller Computer nicht gleichzeitig an eine SLB-Ausgangsregel und eine öffentliche IP-Adresse angefügt werden kann.
 
 Während sich dieses Feature in der Vorschauversion befindet, gelten die folgenden zusätzlichen Einschränkungen:
 
 * Wenn Sie für einen Lastenausgleich in AKS die SKU *Standard* verwenden, können Sie für den Lastenausgleich nicht Ihre eigene öffentliche IP-Adresse für ausgehenden Datenverkehr festlegen. Sie müssen die IP-Adresse verwenden, die AKS Ihrem Lastenausgleich zuweist.
+* Dies kann nicht mit der [Funktion für öffentliche IP-Adressen für Knoten](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) verwendet werden.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -166,7 +166,7 @@ Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Kn
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.10
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>Vergewissern, dass der Cluster die SKU *Standard* verwendet

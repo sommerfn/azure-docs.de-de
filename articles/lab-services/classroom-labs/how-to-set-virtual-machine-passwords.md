@@ -11,22 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: c1564fadef35a20d0d87db8439ae1cc3dc923318
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: a4cb2abec429a790f493f95d3d16b2ff7b3eb445
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144097"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69645028"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs"></a>Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer in Classroom-Labs
-Dieser Artikel veranschaulicht verschiedene Möglichkeiten zum Festlegen und Zurücksetzen von Kennwörtern für den Zugriff auf virtuelle Computer in Classroom-Labs. 
-
-## <a name="lab-owners-teachers"></a>Lab-Besitzer (Kursleiter)
+# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-instructor"></a>Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer in Classroom-Labs (Kursleiter)
 Ein Lab-Besitzer (Kursleiter) kann die Kennwörter für virtuelle Computer zum Zeitpunkt der Erstellung des Labs (Assistent für Lab-Erstellung) oder nach dem Erstellen des Labs (auf dem Dashboard) festlegen und zurücksetzen. 
 
-### <a name="set-password-at-the-time-of-lab-creation"></a>Festlegen des Kennworts zum Zeitpunkt der Lab-Erstellung
+## <a name="set-password-at-the-time-of-lab-creation"></a>Festlegen des Kennworts zum Zeitpunkt der Lab-Erstellung
 Ein Lab-Besitzer (Kursleiter) kann auf der Seite **Anmeldeinformationen festlegen** im Assistenten zur Lab-Erstellung ein Kennwort für die virtuellen Computer im Lab festlegen.
 
 ![Festlegen von Anmeldeinformationen](../media/tutorial-setup-classroom-lab/set-credentials.png)
@@ -39,7 +36,7 @@ Der Lab-Besitzer kann dieses Kennwort (bei Bedarf) auf der Seite **Vorlage konfi
 
 Der Lab-Besitzer kann das Kennwort auch nach der Lab-Erstellung auf dem Dashboard zurücksetzen. 
 
-### <a name="reset-password-on-the-dashboard"></a>Zurücksetzen des Kennworts auf dem Dashboard
+## <a name="reset-password-on-the-dashboard"></a>Zurücksetzen des Kennworts auf dem Dashboard
 
 1. Wählen Sie das Überlaufmenü (vertikale drei Punkte) auf der Lab-Kachel und dann **Kennwort zurücksetzen** aus. 
 
@@ -48,14 +45,7 @@ Der Lab-Besitzer kann das Kennwort auch nach der Lab-Erstellung auf dem Dashboar
     
     ![Dialogfeld „Kennwort festlegen“](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
-## <a name="lab-users-students"></a>Lab-Benutzer (Kursteilnehmer)
-Der Lab-Besitzer kann zum Zeitpunkt der Erstellung des Labs die Option **Use same password for all virtual machines** (Dasselbe Kennwort für alle virtuellen Computer verwenden) aktivieren oder deaktivieren. Wenn diese Option aktiviert ist, können die Kursteilnehmer das Kennwort nicht zurücksetzen. Alle virtuellen Computer im Lab haben dasselbe Kennwort, das vom Kursleiter festgelegt wurde. 
-
-Wenn diese Option deaktiviert ist, müssen die Benutzer ein Kennwort festgelegt, wenn sie zum ersten Mal eine Verbindung mit dem virtuellen Computer herstellen. Wenn die Benutzer (Kursteilnehmer) die Schaltfläche **Verbinden** auf der Lab-Kachel auf der Seite **Meine virtuellen Computer** auswählen, wird das folgende Dialogfeld zum Festlegen des Kennworts für den virtuellen Computer angezeigt: 
-
-![Zurücksetzen des Kennworts für Kursteilnehmer](../media/how-to-set-virtual-machine-passwords/student-set-password.png)
-
-Die Kursteilnehmer können das Kennwort auch festlegen, indem sie auf das Überlaufmenü (**drei vertikale Punkte**) auf der Lab-Kachel klicken, und **Kennwort zurücksetzen** auswählen. 
-
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu anderen Verwendungsoptionen für Kursteilnehmer, die Sie (als Lab-Besitzer) konfigurieren können, finden Sie im folgenden Artikel: [Konfigurieren von Nutzungseinstellungen und Richtlinien](how-to-configure-student-usage.md).
+
+Informationen dazu, wie Kursteilnehmer Kennwörter für ihre virtuellen Computer zurücksetzen können, finden Sie unter [Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer in Classroom-Labs (Kursteilnehmer)](how-to-set-virtual-machine-passwords-student.md).

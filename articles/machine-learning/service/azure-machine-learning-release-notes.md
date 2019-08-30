@@ -8,20 +8,98 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 07/25/2019
+ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 777ab4c05f70cba403fe6d2318c9d498b5dd4ff3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828624"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897559"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
-Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://aka.ms/aml-sdk).
+Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://aka.ms/aml-sdk). 
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK für Python, Version 1.0.57
++ **Neue Features**
+  + `TabularDataset` wurde aktiviert und kann mit AutomatedML genutzt werden. Weitere Informationen zu `TabularDataset` finden Sie unter https://aka.ms/azureml/howto/createdatasets.
+  
++ **Fehlerbehebungen und Verbesserungen**
+  + **automl-client-core-nativeclient**
+    + Der Fehler wurde behoben, der auftrat, wenn Trainings- oder Validierungsbezeichnungen („y“ bzw. „y_valid“) in Form eines Pandas-Datenrahmens, jedoch nicht als NumPy-Array angegeben werden.
+    + Die Schnittstelle zum Erstellen eines `RawDataContext`-Objekts wurde aktualisiert, sodass nur die Daten und das `AutoMLBaseSettings`-Objekt erforderlich sind.
+    +  AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind. - AutoML-Benutzer können nun Intervalle aus dem Trainingssatz löschen, die bei der Prognose im Trainingssatz nicht vorhanden sind.
+  + **azure-cli-ml**
+    + Sie können jetzt das SSL-Zertifikat für den im AKS-Cluster bereitgestellten Bewertungsendpunkt aktualisieren. Dies gilt sowohl für von Microsoft generierte Zertifikate als auch für Kundenzertifikate.
+  + **azureml-automl-core**
+    + Ein Problem in AutoML wurde behoben, bei dem Zeilen mit fehlenden Bezeichnungen nicht ordnungsgemäß entfernt wurden.
+    + Die Fehlerprotokollierung in AutoML wurde verbessert: In die Protokolldatei werden nun immer vollständige Fehlermeldungen geschrieben.
+    + Die Paketanheftung in AutoML wurde aktualisiert und umfasst nun `azureml-defaults`, `azureml-explain-model` und `azureml-dataprep`. In AutoML werden bei Paketkonflikten keine Warnungen mehr angezeigt (außer für das Paket `azureml-train-automl`).
+    + Ein Problem in Zeitreihen wurde behoben, bei dem Kreuzvalidierungsaufteilungen mit unterschiedlicher Größe zu Fehlern bei der binären Berechnung führten.
+    + Wenn beim Ausführen der Ensembleiteration für den Trainingstyp der Kreuzvalidierung Fehler beim Herunterladen der Modelle auftraten, die für das gesamte Dataset trainiert wurden, bestand eine Inkonsistenz zwischen den Modellgewichtungen und den Modellen, die in das Abstimmungsensemble aufgenommen wurden.
+    + Der Fehler wurde behoben, der auftrat, wenn Trainings- oder Validierungsbezeichnungen („y“ bzw. „y_valid“) in Form eines Pandas-Datenrahmens, jedoch nicht als NumPy-Array angegeben werden.
+    + Das Problem wurde behoben, das bei den Vorhersageaufgaben auftrat, wenn in den booleschen Spalten von Eingabetabellen der Wert „Kein“ gefunden wurde.
+    + AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind. - AutoML-Benutzer können nun Intervalle aus dem Trainingssatz löschen, die bei der Prognose im Trainingssatz nicht vorhanden sind.
+  + **azureml-core**
+    + Ein Problem bei der Reihenfolge des Parameters „blob_cache_timeout“ wurde behoben.
+    + Den Systemfehlern wurden externe Ausnahmetypen für die Anpassung und Transformation hinzugefügt.
+    + Unterstützung für Key Vault-Geheimnisse für Remoteausführungen wurde hinzugefügt. Nun kann eine „azureml.core.keyvault.Keyvault“-Klasse hinzugefügt werden, um Geheimnisse aus dem mit Ihrem Arbeitsbereich verknüpften Schlüsseltresor hinzuzufügen, abzurufen und aufzulisten. Folgende Vorgänge werden unterstützt:
+      + azureml.core.workspace.Workspace.get_default_keyvault()
+      + azureml.core.keyvault.Keyvault.set_secret(name, value)
+      + azureml.core.keyvault.Keyvault.set_secrets(secrets_dict)
+      + azureml.core.keyvault.Keyvault.get_secret(name)
+      + azureml.core.keyvault.Keyvault.get_secrets(secrets_list)
+      + azureml.core.keyvault.Keyvault.list_secrets()
+    + Weitere Methoden zum Abrufen des Standardschlüsseltresors und von Geheimnissen während der Remoteausführung:
+      + azureml.core.workspace.Workspace.get_default_keyvault()
+      + azureml.core.run.Run.get_secret(name)
+      + azureml.core.run.Run.get_secrets(secrets_list)
+    + Dem CLI-Befehl „submit-hyperdrive“ wurden weitere Überschreibungsparameter hinzugefügt.
+    + Die Zuverlässigkeit von API-Aufrufen wurde durch Erweitern der Wiederholungsversuche auf häufige Ausnahmen von Bibliotheksanforderungen erhöht.
+    + Unterstützung für das Übermitteln von Ausführungen über eine übermittelte Ausführung wurde hinzugefügt.
+    + Ein Problem beim Ablauf des SAS-Tokens in FileWatcher wurde behoben, bei dem Dateien nicht mehr hochgeladen wurden, nachdem das ursprüngliche Token abgelaufen war.
+    + Unterstützung für den Import von HTTP-CSV/TSV-Dateien in Datasets mit dem Python SDK wurde hinzugefügt.
+    + Die Workspace.setup()-Methode wurde als veraltet markiert. In einer Warnmeldung wird Benutzern stattdessen die Verwendung von create() oder get()/from_config() empfohlen.
+    + Die Environment.add_private_pip_wheel()-Methode wurde hinzugefügt, mit der private benutzerdefinierte Python-Pakete (WHL-Dateien) in den Arbeitsbereich hochgeladen und zum Erstellen und Materialisieren der Umgebung verwendet werden können.
+    + Sie können jetzt das SSL-Zertifikat für den im AKS-Cluster bereitgestellten Bewertungsendpunkt aktualisieren. Dies gilt sowohl für von Microsoft generierte Zertifikate als auch für Kundenzertifikate.
+  + **azureml-explain-model**
+    + Ein Parameter wurde hinzugefügt, über den den Erläuterungen zum Hochladen eine Modell-ID hinzugefügt werden kann.
+    + Den Erläuterungen im Speicher und beim Hochladen wurde `is_raw`-Tagging hinzugefügt.
+    + PyTorch-Unterstützung und Tests für das Paket „azureml-explain-model“ wurden hinzugefügt.
+  + **azureml-opendatasets**
+    + Erkennung und Protokollierung der automatischen Testumgebung werden nun unterstützt.
+    + Klassen zum Abrufen der US-amerikanischen Bevölkerung nach County und Postleitzahl wurden hinzugefügt.
+  + **azureml-pipeline-core**
+    + Den Definitionen für den Eingabe- und den Ausgabeport wurde die label-Eigenschaft hinzugefügt.
+  + **azureml-telemetry**
+    + Eine fehlerhafte Telemetriekonfiguration wurde korrigiert.
+  + **azureml-train-automl**
+    + Das Problem wurde behoben, bei dem bei Setupfehlern der Fehler nicht im Feld „errors“ für die Setupausführung protokolliert und daher nicht im Feld „errors“ der übergeordneten Ausführung gespeichert wurde.
+    + Ein Problem in AutoML wurde behoben, bei dem Zeilen mit fehlenden Bezeichnungen nicht ordnungsgemäß entfernt wurden.
+    + AutoML-Benutzer können nun Trainingsreihen löschen, die bei der Prognose nicht lang genug sind.
+    + AutoML-Benutzer können nun Intervalle aus dem Trainingssatz löschen, die bei der Prognose im Trainingssatz nicht vorhanden sind.
+    + AutoMLStep durchläuft nun die AutoML-Konfiguration bis zum Back-End, um Probleme bei Änderungen oder Ergänzungen neuer Konfigurationsparameter zu vermeiden.
+  + **azureml-train-core**
+    + In PyTorch wurde die Unterstützung von Torch 1.2 hinzugefügt.
+  + **azureml-widgets**
+    + Konfusionsmatrixdiagramme für das Klassifizierungstraining wurden verbessert.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning Data Prep SDK, Version 1.1.12
++ **Neue Features**
+  + Listen von Zeichenfolgen können nun als Eingabe an `read_*`-Methoden übergeben werden.
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Die Leistung von `read_parquet` bei der Ausführung in Spark wurde erheblich verbessert.
+  + Ein Problem wurde behoben, bei dem `column_type_builder` bei einer einzelnen Spalte mit mehrdeutigen Datumsformaten nicht ausgeführt wurde.
+
+### <a name="azure-portal"></a>Azure-Portal
++ **Previewfunktion**
+  + Das Streaming von Protokoll- und Ausgabedateien ist nun für Seiten mit Ausführungsdetails verfügbar. Die Dateien streamen Updates in Echtzeit, wenn die Umschaltfläche für die Vorschau aktiviert ist.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
