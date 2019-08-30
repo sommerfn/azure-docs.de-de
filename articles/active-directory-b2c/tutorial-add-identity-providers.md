@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5710ccfe5d6450714e029827a795b484b1bcd2b4
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716662"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622792"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 
@@ -94,13 +94,11 @@ Nach der Erstellung der Anwendung für den betreffenden Identitätsanbieter füg
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>Hinzufügen von Azure Active Directory als Identitätsanbieter
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
+1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
 1. Geben Sie einen **Namen** ein. Geben Sie beispielsweise *Contoso Azure AD* ein.
-1. Wählen Sie **Identitätsanbietertyp** und dann **OpenID Connect (Vorschau)** aus, und klicken Sie auf **OK**.
-1. Klicken Sie auf **Diesen Identitätsanbieter einrichten**.
-1. Geben Sie für **Metadaten-URL** die folgende URL ein, und ersetzen Sie dabei `your-AD-tenant-domain` durch den Domänennamen Ihres Azure AD-Mandanten.
+1. Geben Sie für **Metadaten-URL** die folgende URL ein, und ersetzen Sie dabei `your-AD-tenant-domain` durch den Domänennamen Ihres Azure AD-Mandanten.
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,28 +106,27 @@ Nach der Erstellung der Anwendung für den betreffenden Identitätsanbieter füg
 
     Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. Geben Sie unter **Client-ID** den zuvor notierten Wert von *Anwendungs-ID (Client)* ein.
-1. Geben Sie im Feld **Geheimer Clientschlüssel** den zuvor notierten Wert von *Geheimer Clientschlüssel* ein.
-1. Geben Sie optional einen Wert für **Domänenhinweis** ein. Beispiel: `ContosoAD`. [Domänenhinweise](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) sind in der Authentifizierungsanforderung einer Anwendung enthaltene Anweisungen. Sie können verwendet werden, um die beschleunigte Anmeldung des Benutzers auf der Anmeldeseite seines Verbundidentitätsanbieters zu ermöglichen. Sie können auch von einer Anwendung für mehrere Mandanten verwendet werden, um den Benutzer beschleunigt direkt zur organisationsspezifischen Azure AD-Anmeldeseite für ihren Mandanten zu leiten.
-1. Klicken Sie auf **OK**.
-1. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus, und legen Sie die folgenden Ansprüche fest:
+1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
+1. Geben Sie im Feld **Geheimer Clientschlüssel** den zuvor notierten geheimen Clientschlüssel ein.
+1. Belassen Sie die Standardwerte für **Bereich**, **Antworttyp** und **Antwortmodus**.
+1. (Optional) Geben Sie einen Wert für **Domänenhinweis** ein. Beispiel: *ContosoAD*. [Domänenhinweise](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) sind in der Authentifizierungsanforderung einer Anwendung enthaltene Anweisungen. Sie können verwendet werden, um die beschleunigte Anmeldung des Benutzers auf der Anmeldeseite seines Verbundidentitätsanbieters zu ermöglichen. Sie können auch von einer Anwendung für mehrere Mandanten verwendet werden, um den Benutzer beschleunigt direkt zur organisationsspezifischen Azure AD-Anmeldeseite für ihren Mandanten zu leiten.
+1. Geben Sie unter **Identitätsanbieter für die Anspruchszuordnung** die folgenden Werte für die Anspruchszuordnung ein:
 
-    - Geben Sie für **Benutzer-ID** `oid` ein.
-    - Geben Sie für **Anzeigename** `name` ein.
-    - Geben Sie für **Vorname** `given_name` ein.
-    - Geben Sie für **Nachname** `family_name` ein.
-    - Geben Sie für **E-Mail** `unique_name` ein.
+    * **Benutzer-ID**: *oid*
+    * **Anzeigename**: *name*
+    * **Vorname**: *given_name*
+    * **Nachname**: *family_name*
+    * **E-Mail**: *unique_name*
 
-1. Wählen Sie **OK** und anschließend **Erstellen** aus, um Ihre Konfiguration zu speichern.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="add-the-facebook-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
 
-1. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
-1. Geben Sie einen **Namen** ein. Geben Sie z.B. *Facebook* ein.
-1. Wählen Sie **Identitätsanbietertyp** > **Facebook** > **OK** aus.
-1. Wählen Sie **Diesen Identitätsanbieter einrichten** aus, und geben Sie die zuvor notierte *App-ID* als **Client-ID** ein.
-1. Geben Sie das zuvor notierte *App-Geheimnis* als **Geheimer Clientschlüssel** ein.
-1. Wählen Sie **OK** und anschließend **Erstellen** aus, um die Facebook-Konfiguration zu speichern.
+1. Wählen Sie **Identitätsanbieter** und dann **Facebook** aus.
+1. Geben Sie einen **Namen** ein. Beispiel: *Facebook*.
+1. Geben Sie für die **Client-ID** die App-ID der Facebook-Anwendung ein, die Sie zuvor erstellt haben.
+1. Geben Sie das zuvor notierte App-Geheimnis als **Geheimer Clientschlüssel** ein.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="update-the-user-flow"></a>Aktualisieren des Benutzerflows
 

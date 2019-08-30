@@ -3,15 +3,15 @@ title: Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines
 description: Erfahren Sie anhand eines praktischen Beispiels, wie Sie Daten mithilfe der Azure Cosmos DB-Kern-API modellieren und partitionieren.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 4bb99c8cbec88d23f9297dcbe8b13cc69cd0006c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070680"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093411"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 
