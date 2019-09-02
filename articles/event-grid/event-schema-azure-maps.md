@@ -117,8 +117,8 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| apiCategory | Zeichenfolge | API-Kategorie des Ereignisses. |
-| apiName | Zeichenfolge | API-Name des Ereignisses. |
+| apiCategory | string | API-Kategorie des Ereignisses. |
+| apiName | string | API-Name des Ereignisses. |
 | issues | object | Listet während der Verarbeitung aufgetretene Probleme auf. Wenn Probleme zurückgegeben werden, werden mit der Antwort keine Geometrien zurückgegeben. |
 | responseCode | number | HTTP-Antwortcode |
 | Geometrien | object | Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |
@@ -133,26 +133,26 @@ Das ErrorDetails-Objekt wird zurückgegeben, wenn in der Maps-API ein Fehler auf
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| code | Zeichenfolge | Der HTTP-Statuscode. |
-| message | Zeichenfolge | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
+| code | string | Der HTTP-Statuscode. |
+| message | string | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
 | innererror | InnerError | Sofern verfügbar ein Objekt, das dienstspezifische Informationen zum Fehler enthält. |
 
 InnerError ist ein Objekt, das dienstspezifische Informationen zum Fehler enthält. Das InnerError-Objekt weist die folgenden Eigenschaften auf: 
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| code | Zeichenfolge | Die Fehlermeldung. |
+| code | string | Die Fehlermeldung. |
 
 Das geometries-Objekt listet die IDs der Geofences auf, die bezogen auf die übermittelte Benutzerzeit in der Anforderung abgelaufen sind. Das geometries-Objekt enthält Geometrieelemente mit den folgenden Eigenschaften: 
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 |:-------- |:---- |:----------- |
-| deviceid | Zeichenfolge | Die ID des Geräts. |
-| distance | Zeichenfolge | <p>Die Entfernung von der Koordinate zur nächstgelegenen Grenze des Geofence. Positiv bedeutet, dass die Koordinate sich außerhalb des Geofence befindet. Wenn sich die Koordinate außerhalb des Geofence befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert 999. Negativ bedeutet, dass die Koordinate sich innerhalb des Geofence befindet. Wenn sich die Koordinate innerhalb des Polygons befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert -999. Der Wert 999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate außerhalb des Geofence liegt. Der Wert -999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate innerhalb des Geofence liegt.<p> |
-| geometryid |Zeichenfolge | Die eindeutige ID bezeichnet die Geofencegeometrie. |
+| deviceid | string | Die ID des Geräts. |
+| distance | string | <p>Die Entfernung von der Koordinate zur nächstgelegenen Grenze des Geofence. Positiv bedeutet, dass die Koordinate sich außerhalb des Geofence befindet. Wenn sich die Koordinate außerhalb des Geofence befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert 999. Negativ bedeutet, dass die Koordinate sich innerhalb des Geofence befindet. Wenn sich die Koordinate innerhalb des Polygons befindet, aber mehr als den Wert von searchBuffer von der nächstgelegenen Geofencegrenze entfernt ist, beträgt der Wert -999. Der Wert 999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate außerhalb des Geofence liegt. Der Wert -999 bedeutet, dass mit großer Zuversicht davon ausgegangen werden kann, dass die Koordinate innerhalb des Geofence liegt.<p> |
+| geometryid |string | Die eindeutige ID bezeichnet die Geofencegeometrie. |
 | nearestlat | number | Breitengrad des nächstgelegenen Punkts der Geometrie. |
 | nearestlon | number | Längengrad des nächstgelegenen Punkts der Geometrie. |
-| udId | Zeichenfolge | Die eindeutige ID, die vom Benutzeruploaddienst beim Hochladen eines Geofence zurückgegeben wird. Ist in der Geofencing-Post-API nicht enthalten. |
+| udId | string | Die eindeutige ID, die vom Benutzeruploaddienst beim Hochladen eines Geofence zurückgegeben wird. Ist in der Geofencing-Post-API nicht enthalten. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 

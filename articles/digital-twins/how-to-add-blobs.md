@@ -110,18 +110,18 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 
 | Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
-| **id** | Zeichenfolge | Der eindeutige Bezeichner für das Blob |
-| **name** |Zeichenfolge | Ein benutzerfreundlicher Name für das Blob |
-| **parentId** | Zeichenfolge | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
-| **type** | Zeichenfolge | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
+| **id** | String | Der eindeutige Bezeichner für das Blob |
+| **name** |String | Ein benutzerfreundlicher Name für das Blob |
+| **parentId** | String | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
+| **type** | String | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
 | **typeId** | Integer | Die Blobtyp-ID: *type* und *typeId* können nicht verwendet werden. |
-| **subtype** | Zeichenfolge | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
+| **subtype** | String | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
 | **subtypeId** | Integer | Die Untertyp-ID des Blobs: *subtype* und *subtypeId* können nicht verwendet werden. |
-| **sharing** | Zeichenfolge | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
-| **description** | Zeichenfolge | Benutzerdefinierte Beschreibung des Blobs |
+| **sharing** | String | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
+| **description** | String | Benutzerdefinierte Beschreibung des Blobs |
 | **contentInfos** | Array | Gibt unstrukturierte Metadateninformationen an, einschließlich der Version |
-| **fullName** | Zeichenfolge | Der vollständige Name des Blobs |
-| **spacePaths** | Zeichenfolge | Der Raumpfad |
+| **fullName** | String | Der vollständige Name des Blobs |
+| **spacePaths** | String | Der Raumpfad |
 
 Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
