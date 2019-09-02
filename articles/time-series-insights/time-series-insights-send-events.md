@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae59e8115ca2d1ba69c8a3a099216eb3d98e2658
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84eb0e230875b999218b67d47a66a3c92b494253
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237691"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072819"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub
 
@@ -35,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erst
 1. Nachdem Sie einen Event Hub erstellt haben, wählen Sie ihn in der Liste der Event Hubs aus.
 1. Wählen Sie in dem Menü unter **Entitäten** die Option **Event Hubs** aus.
 1. Wählen Sie den Namen des Event Hubs aus, um ihn zu konfigurieren.
-1. Wählen Sie unter **Entitäten** **Consumergruppen** aus, und wählen Sie dann **Consumergruppe** aus.
+1. Wählen Sie unter **Übersicht** den Eintrag **Consumergruppen** und dann **Consumergruppe** aus.
 
     [![Erstellen einer Consumergruppe](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
 
@@ -68,9 +68,9 @@ Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetrieda
 
 1. Suchen Sie über die Suchleiste nach **Event Hubs**. Wählen Sie in der Liste mit den zurückgegebenen Ergebnissen **Event Hubs** aus.
 
-1. Wählen Sie Ihren Event Hub aus.
+1. Wählen Sie Ihre Event Hub-Instanz aus.
 
-1. Wechseln Sie zu **SAS-Richtlinien** > **RootManageSharedAccessKey**. Kopieren Sie den Wert für **Verbindungszeichenfolge – Primärschlüssel**.
+1. Wechseln Sie zu **Freigegebene Zugriffsrichtlinien** > **MySendPolicy**. Kopieren Sie den Wert für **Verbindungszeichenfolge – Primärschlüssel**.
 
     [![Kopieren des Werts der Primärschlüssel-Verbindungszeichenfolge](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
 

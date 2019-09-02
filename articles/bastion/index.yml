@@ -1,35 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Bastion-Dokumentation
+### YamlMime:Landing
+title: Dokumentation zu Azure Bastion (Vorschauversion)
+summary: Hier erfahren Sie, wie Sie mithilfe von Azure Bastion eine Verbindung mit einem virtuellen Computer herstellen. Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse.
 metadata:
-  document_id: null
-  title: Bastion
-  meta.description: Learn how to use Azure Bastion
-  author: cherylmc
-  ms.service: Bastion
+  title: Dokumentation zu Azure Bastion (Vorschauversion)
+  description: Hier erfahren Sie, wie Sie mithilfe von Azure Bastion eine Verbindung mit einem virtuellen Computer herstellen. Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal.
+  services: bastion
+  ms.service: bastion
   ms.topic: landing-page
-  ms.date: 07/02/2019
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: "Hier erfahren Sie, wie Sie mithilfe von Azure Bastion eine Verbindung mit einem virtuellen Computer herstellen. Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure\_Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse."
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
-      width: 250
-    title: 'Arbeiten mit Azure Bastion (1:03)'
-    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
-    width: 250
-sections:
-  - title: Erstellen und Verwalten von Azure Bastion-Instanzen (Vorschauversion)
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie mithilfe von Azure Bastion einen Host konfigurieren und anschließend eine Verbindung mit einem virtuellen Computer herstellen.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/bastion/bastion-create-host-portal">Erstellen und Ändern eines Azure Bastion-Hosts</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Herstellen einer Verbindung mit einem virtuellen Windows-Computer</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Herstellen einer Verbindung mit einem virtuellen Linux-Computer</a>
-          - html: <a href="/azure/bastion/bastion-faq">Lesen der häufig gestellten Fragen zu Azure Bastion</a>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 6854e6ec4bd36ea38fa0e1f9cd46f95e11144be6
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128119"
+landingContent:
+- title: Informationen zu Azure Bastion (Vorschauversion)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Bastion?
+      url: bastion-overview.md
+  - linkListType: concept
+    links:
+    - text: Häufig gestellte Fragen zu Azure Bastion
+      url: bastion-faq.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines Bastion-Hosts
+      url: bastion-create-host-portal.md
+    - text: Herstellen einer Verbindung mit einem virtuellem Computer (Linux)
+      url: bastion-connect-vm-ssh.md
+    - text: Herstellen einer Verbindung mit einem virtuellem Computer (Windows)
+      url: bastion-connect-vm-rdp.md
+  - linkListType: video
+    links:
+    - text: Verwenden von Azure Bastion
+      url: https://go.microsoft.com/fwlink/?linkid=2095517
+- title: Verwenden von VM-Sitzungen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kopieren und Einfügen
+      url: bastion-vm-copy-paste.md
+    - text: Vollbildansicht
+      url: bastion-vm-full-screen.md

@@ -1,55 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zu Azure Active Directory B2B
+### YamlMime:Landing
+title: Dokumentation zu Azure Active Directory B2B
+summary: In dieser Dokumentation wird erläutert, wie Sie über die Azure AD B2B-Kollaboration (Business-To-Business) die Anwendungen und Dienste Ihres Unternehmens für Gastbenutzer und externe Partner von beliebigen Organisationen sicher freigeben und dabei die Kontrolle über Ihre eigenen Unternehmensdaten behalten können.
 metadata:
-  document_id: null
-  title: 'Dokumentation zu Azure Active Directory B2B: Azure Active Directory | Microsoft-Dokumentation'
-  description: 'In unseren Tutorials, Schnellstarts und Anleitungen erfahren Sie, wie Sie mithilfe des B2B-Gastbenutzerzugriffs Inhalte freigeben und mit externen Partnern zusammenarbeiten.'
-  services: active-directory
-  ms.subservice: authentication
-  author: msmimart
-  manager: celestedg
+  title: Dokumentation zur Anwendungsverwaltung
+  description: In dieser Dokumentation wird erläutert, wie Sie über die Azure AD B2B-Kollaboration (Business-To-Business) die Anwendungen und Dienste Ihres Unternehmens für Gastbenutzer und externe Partner von beliebigen Organisationen sicher freigeben und dabei die Kontrolle über Ihre eigenen Unternehmensdaten behalten können.
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: manage-apps
+  ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/10/2018
+  ms.date: 08/27/2019
+  author: msmimart
   ms.author: mimart
-abstract:
-  description: 'In dieser Dokumentation wird erläutert, wie Sie über die Azure AD B2B-Kollaboration (Business-To-Business) die Anwendungen und Dienste Ihres Unternehmens für Gastbenutzer und externe Partner von beliebigen Organisationen sicher freigeben und dabei die Kontrolle über Ihre eigenen Unternehmensdaten behalten können.  Im Anschluss sind einige der wichtigsten Features aufgeführt:<ul><li>Über einen einfachen Einladungs- und Annahmevorgang können Gastbenutzer an den Ressourcen gemeinsam arbeiten, für die Sie ihnen Zugriff gewähren möchten.</li><li>Ihre Gastbenutzer und externen Partner verwalten ihre eigenen Identitäten über Azure AD, Konten für soziale Netzwerke oder einen Identitätsanbieter.</li><li>Sie können Ihre Unternehmensressourcen mit Azure AD-Features wie mehrstufige Authentifizierung schützen.</li><li>Mithilfe von APIs können Sie die Umgebung anpassen, etwa mit einem Self-Service-Registrierungsportal.</li></ul>Die folgenden Ressourcen helfen Ihnen beim schnellen Einstieg.'
-  aside:
-    image:
-      alt: Miniaturansicht des Videos mit dem Titel „Informationen zu Azure AD B2B“
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Informationen zu Azure AD B2B
-    href: 'https://www.youtube.com/watch?v=AhwrweCBdsc'
-    width: 246
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie Gastbenutzer einladen und die ersten Schritte für die B2B-Kollaboration ausführen.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: null
-              src: ./media/index/i_security-management.png
-            text: Hinzufügen von Gastbenutzern im Azure-Portal
-            href: b2b-quickstart-add-guest-users-portal.md
-          - image:
-              alt: null
-              src: ./media/index/i_security-management.png
-            text: Hinzufügen von Gastbenutzern mit PowerShell
-            href: b2b-quickstart-invite-powershell.md
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: Hier erfahren Sie mehr über die Einrichtung der B2B-Kollaboration und den Schutz Ihrer Unternehmensressourcen.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">Masseneinladung von B2B-Gastbenutzern mit PowerShell</a>
-          - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer</a>
+  manager: celested
+  ms.openlocfilehash: a1822b3bd6ec7950bc3c0ab9304ea2f60a7127e4
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70125157"
+landingContent:
+- title: Informationen zur B2B-Zusammenarbeit
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich beim B2B-Gastbenutzerzugriff?
+      url: what-is-b2b.md
+- title: Einladen von B2B-Gastbenutzern
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Annehmen einer Einladung durch einen B2B-Gast
+      url: redemption-experience.md
+  - linkListType: quickstart
+    links:
+    - text: Hinzufügen eines Gastbenutzers zu Ihrem Verzeichnis
+      url: b2b-quickstart-add-guest-users-portal.md
+    - text: Hinzufügen von Gastbenutzern mit PowerShell
+      url: b2b-quickstart-invite-powershell.md
+  - linkListType: how-to-guide
+    links:
+    - text: Einladen von Gästen durch Administratoren
+      url: add-users-administrator.md
+    - text: Einladen von Gästen durch Ihre Benutzer
+      url: add-users-information-worker.md
+- title: Anpassen der B2B-Zusammenarbeit
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivieren der B2B-Zusammenarbeit
+      url: delegate-invitations.md
+  - linkListType: deploy
+    links:
+    - text: Einrichten eines direkten Verbunds (Vorschauversion)
+      url: direct-federation.md
+    - text: Einrichten eines Verbunds mit Google
+      url: google-federation.md
+    - text: Einrichten der Authentifizierung mit Einmalkennung (Vorschauversion)
+      url: one-time-passcode.md
+  - linkListType: tutorial
+    links:
+    - text: Erzwingen der Multi-Factor Authentication
+      url: b2b-tutorial-require-mfa.md
+  - linkListType: reference
+    links:
+    - text: 'B2B-Zusammenarbeit: Code- und PowerShell-Beispiele'
+      url: code-samples.md
+- title: Verwalten Ihrer Gastbenutzer
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu B2B-Gastbenutzern
+      url: user-properties.md
+    - text: Dynamische Gruppen und B2B-Gäste
+      url: use-dynamic-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: Überwachen von B2B-Gastbenutzern und Erstellen entsprechender Berichte
+      url: auditing-and-reporting.md
+    - text: Gewähren von Berechtigungen für B2B-Gäste
+      url: add-guest-to-role.md
+    - text: Zulassen oder Blockieren von Organisationen
+      url: allow-deny-list.md
+  - linkListType: deploy
+    links:
+    - text: Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit
+      url: configure-saas-apps.md

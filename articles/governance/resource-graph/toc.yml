@@ -8,6 +8,9 @@
 - name: Schnellstarts
   expanded: true
   items:
+    - name: 'Ausführen Ihrer ersten Abfrage: Azure-Portal'
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: Ausführen Ihrer ersten Abfrage – Azure-Befehlszeilenschnittstelle
       displayName: 'extension, docker'
       href: first-query-azurecli.md

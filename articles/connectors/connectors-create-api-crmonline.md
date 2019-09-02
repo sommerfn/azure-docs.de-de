@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
+manager: carmonm
 ms.reviewer: estfan, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce83e6b1847a8f08467cb7877e517bdaace27953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60313748"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051012"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Verwalten von Dynamics 365-Datensätzen in Azure Logic Apps
 
@@ -26,7 +27,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein [Dynamics 365-Konto](https://dynamics.microsoft.com)
 
@@ -133,11 +134,11 @@ Hier sehen Sie Beispielfelder in Dynamics 365-Trigger und Aktionen, die um diese
 | Feld | BESCHREIBUNG |
 |-------|-------------|
 | **Besitzer** | Muss entweder eine gültige Benutzer-ID oder Teamdatensatz-ID sein |
-| **Besitzertyp** | Muss entweder **systemusers** oder **teams** sein. |
+| **Besitzertyp** | Muss entweder `systemusers` oder `teams` sein. |
 | **Bezüglich** | Muss eine gültige Datensatz-ID sein, beispielsweise eine Konto- oder Kontaktdatensatz-ID |
-| **Typ für „Bezüglich“** | Muss ein Suchtyp sein, wie z.B **accounts** oder **contacts** |
+| **Typ für „Bezüglich“** | Muss ein Suchtyp sein, wie z. B `accounts` oder `contacts`. |
 | **Kunde** | Muss eine gültige Datensatz-ID sein, beispielsweise eine Konto- oder Kontaktdatensatz-ID |
-| **Kundentyp** | Muss ein Suchtyp sein, wie z.B **accounts** oder **contacts** |
+| **Kundentyp** | Muss ein Suchtyp sein, wie z. B `accounts` oder `contacts`. |
 |||
 
 In diesem Beispiel wird mit der Aktion **Neuen Datensatz erstellen** ein neuer Aufgabendatensatz erstellt:
@@ -188,11 +189,6 @@ Weitere Informationen zum Behandeln von Problemen mit Logik-Apps finden Sie unte
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/dynamicscrmonline/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

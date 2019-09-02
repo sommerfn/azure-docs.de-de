@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0013540bf0ca921b2f41260dea185f6aa32567d7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679260"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018998"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Herstellen der Verbindung von Daten aus Office 365-Protokollen
 
@@ -37,6 +37,9 @@ Sie können Überwachungsprotokolle von [Office 365](https://docs.microsoft.com/
 
 - Sie müssen globaler Administrator oder Sicherheitsadministrator für Ihren Mandanten sein.
 - Stellen Sie sicher, dass auf dem Computer, von dem Sie sich bei Azure Sentinel zum Erstellen der Verbindung angemeldet haben, Port 4433 für Webdatenverkehr geöffnet ist.
+- Wenn Ihr Mandant nicht über eine Office 365 E3- oder Office 365 E5-Lizenz verfügt, müssen Sie die einheitliche Überwachung auf Ihrem Mandanten mithilfe eines der folgenden Prozesse aktivieren:
+    - [Verwenden des Cmdlets „Set-AdminAuditLogConfig“](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) und Aktivieren des Parameters „UnifiedAuditLogIngestionEnabled“.
+    - [Oder Verwenden der Benutzeroberfläche des Security & Compliance Centers](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Herstellen einer Verbindung mit Office 365
 

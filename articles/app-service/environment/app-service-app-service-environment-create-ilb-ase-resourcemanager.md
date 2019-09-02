@@ -10,17 +10,16 @@ ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 862887e1e530bfdca4359e914b9a81c9360ac4dd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130754"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070424"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
 
@@ -40,7 +39,7 @@ Die Automatisierung einer ILB-ASE-Erstellung umfasst drei Schritte:
 3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE explizit als SSL-Standardzertifikat zugewiesen.  Dieses SSL-Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps mit der allgemeinen Stammdomäne adressiert werden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootcomain.com) ).
 
 ## <a name="creating-the-base-ilb-ase"></a>Erstellen der Basis-ILB-ASE
-Eine Azure Resource Manager-Beispielvorlage und die zugeordnete Parameterdatei stehen auf [GitHub][quickstartilbasecreate] zur Verfügung.
+Eine Azure Resource Manager-Beispielvorlage und die zugeordnete Parameterdatei stehen [hier][quickstartilbasecreate] auf GitHub zur Verfügung.
 
 Die meisten Parameter in der Datei *azuredeploy.parameters.json* gelten für die Erstellung beider ILB-ASEs sowie für ASEs, die an eine öffentliche VIP gebunden sind.  In der Liste unten sind die Parameter angegeben, die für die Erstellung einer ILB-ASE eine besondere Bedeutung haben bzw. eindeutig sind:
 

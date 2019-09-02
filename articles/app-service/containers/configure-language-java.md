@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647241"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034899"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurieren einer Linux-Java-App für Azure App Service
 
@@ -63,11 +63,11 @@ Die integrierten Java-Images basieren auf dem [Alpine Linux](https://alpine-linu
 
 ### <a name="flight-recorder"></a>Flight Recorder
 
-Auf allen Linux Java-Bildern auf App Service ist Zulu Flight Recorder installiert. So können Sie sich ganz einfach mit der JVM verbinden und eine Profileraufnahme erstellen oder einen Heapdump generieren.
+In allen Linux Java-Images auf App Service ist Zulu Flight Recorder installiert. So können Sie sich ganz einfach mit der JVM verbinden und eine Profileraufnahme erstellen oder einen Heapdump generieren.
 
 #### <a name="timed-recording"></a>Zeitgesteuerte Aufzeichnung
 
-Stellen Sie zuerste eine SSH-Verbindung mit Ihrem App Service her und führen Sie den `jcmd`-Befehl aus, um eine Liste aller laufenden Java-Prozesse zu sehen. Neben jcmd sollten Sie auch Ihre Java-Anwendung mit einer Prozess-ID (pid) sehen.
+Stellen Sie zuerst eine SSH-Verbindung mit Ihrem App Service her und führen Sie den `jcmd`-Befehl aus, um eine Liste aller laufenden Java-Prozesse zu sehen. Neben jcmd sollten Sie auch Ihre ausgeführte Java-Anwendung mit einer Prozess-ID (pid) sehen.
 
 ```shell
 078990bbcd11:/home# jcmd
@@ -76,17 +76,17 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
 116 /home/site/wwwroot/app.jar
 ```
 
-Führen Sie den folgenden Befehl aus, um eine 30-sekündige Aufnahme der JVM zu beginnen. Damit wird die JVM profilieren und eine JFR-Datei namens *„jfr_example.jfr“* im Stammverzeichnis erstellt. (Ersetzen Sie 116 mit der pid Ihrer Java-Anwendung.)
+Führen Sie den folgenden Befehl aus, um eine 30-sekündige Aufnahme der JVM zu beginnen. Damit wird die JVM profiliert und eine JFR-Datei namens *jfr_example.jfr* im Stammverzeichnis erstellt. (Ersetzen Sie 116 mit der pid Ihrer Java-App.)
 
 ```shell
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
 ```
 
-Während des 30-sekündigen Intervalls können Sie mit `jcmd 116 JFR.check` überprüfen, ob die Aufnahme wirklich stattfindet. Daraufhin werden alle Aufzeichnungen für den entsprechenden Java-Prozess gezeigt.
+Während des 30-sekündigen Intervalls können Sie durch Ausführung von `jcmd 116 JFR.check` überprüfen, ob die Aufnahme wirklich stattfindet. Daraufhin werden alle Aufzeichnungen für den entsprechenden Java-Prozess gezeigt.
 
 #### <a name="continuous-recording"></a>Fortlaufende Aufzeichnung
 
-Sie können Zulu Flight Recorder einsetzen, um Ihre Java-Anwendung mit minimalen Auswirkungen auf die Runtime-Leistung zu profilieren ([Quelle](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Führen Sie dafür den folgenden Azure CLI-Befehl aus, um eine App-Einstellung namens JAVA_OPTS mit der notwendigen Konfiguration zu erschaffen. Der Inhalt der JAVA_OPTS-App-Einstellung wird an den `java`-Befehl übermittelt, wenn Ihre App gestartet wird.
+Sie können Zulu Flight Recorder einsetzen, um Ihre Java-Anwendung mit minimalen Auswirkungen auf die Laufzeitleistung zu profilieren ([Quelle](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Führen Sie dafür den folgenden Azure CLI-Befehl aus, um eine App-Einstellung namens JAVA_OPTS mit der notwendigen Konfiguration zu erschaffen. Der Inhalt der JAVA_OPTS-App-Einstellung wird an den `java`-Befehl übermittelt, wenn Ihre App gestartet wird.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -402,7 +402,7 @@ Platzieren Sie abschließend die JAR-Dateien des Treibers im Tomcat-Klassenpfad,
 
     Alternativ können Sie zum Hochladen des JDBC-Treibers auch einen FTP-Client verwenden. Führen Sie dazu die [Schritte zum Abrufen Ihrer FTP-Anmeldeinformationen](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) aus.
 
-2. Wenn Sie eine Datenquelle auf Serverebene erstellt haben, starten Sie die App Service-Linux-Anwendung neu. Tomcat setzt `CATALINA_HOME` auf `/home/tomcat/conf` zurück und verwendet die aktualisierte Konfiguration.
+2. Wenn Sie eine Datenquelle auf Serverebene erstellt haben, starten Sie die App Service-Linux-Anwendung neu. Tomcat setzt `CATALINA_BASE` auf `/home/tomcat` zurück und verwendet die aktualisierte Konfiguration.
 
 ### <a name="spring-boot"></a>Spring Boot
 
@@ -431,8 +431,8 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 - [Skalierung mit App Service](#scale-with-app-service)
 - [Anpassen der Anwendungsserverkonfiguration](#customize-application-server-configuration)
-- [Installieren Sie Module und Abhängigkeiten](#install-modules-and-dependencies)
-- [Konfigurieren Sie Datenquellen](#configure-data-sources)
+- [Installieren von Modulen und Abhängigkeiten](#install-modules-and-dependencies)
+- [Konfigurieren von Datenquellen](#configure-data-sources)
 - [Aktivieren von Messaginganbietern](#enable-messaging-providers)
 
 ### <a name="scale-with-app-service"></a>Skalierung mit App Service
@@ -464,7 +464,7 @@ Legen Sie das Feld **Startskript** im Azure-Portal auf den Speicherort Ihres Sta
 
 Geben Sie [App-Einstellungen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) in der Anwendungskonfiguration an, um Umgebungsvariablen für die Verwendung im Skript zu übergeben. Anwendungseinstellungen enthalten Verbindungszeichenfolgen und andere Geheimnisse, die zum Konfigurieren Ihrer Anwendung außerhalb der Versionskontrolle erforderlich sind.
 
-### <a name="install-modules-and-dependencies"></a>Installieren Sie Module und Abhängigkeiten
+### <a name="install-modules-and-dependencies"></a>Installieren von Modulen und Abhängigkeiten
 
 Um Module und die zugehörigen Abhängigkeiten über die JBoss CLI im WildFly-Klassenpfad zu installieren, müssen Sie die folgenden Dateien in Ihrem Verzeichnis erstellen. Für einige Module und Abhängigkeiten sind möglicherweise zusätzliche Konfigurationsschritte erforderlich, z.B. JNDI-Benennung oder andere API-spezifische Konfigurationen. In der folgenden Liste sind daher die Komponenten aufgeführt, die Sie in den meisten Fällen zum Konfigurieren einer Abhängigkeit mindestens benötigen.
 
@@ -483,19 +483,19 @@ Nachdem Sie die Dateien und Inhalte für Ihr Modul definiert haben, führen Sie 
 2. Legen Sie im Azure-Portal auf der Seite **Konfiguration** > **Allgemeine Einstellungen** das Feld „**Startskript**“ auf den Speicherort Ihres Startshellskripts fest, z. B. */home/site/deployments/tools/startup.sh*.
 3. Starten Sie Ihre App Service-Instanz neu, indem Sie im Abschnitt **Übersicht** des Portals auf die Schaltfläche **Neu starten** klicken oder die Azure-Befehlszeilenschnittstelle verwenden.
 
-### <a name="configure-data-sources"></a>Konfigurieren Sie Datenquellen
+### <a name="configure-data-sources"></a>Konfigurieren von Datenquellen
 
 Um WildFly/JBoss für den Zugriff auf eine Datenquelle zu konfigurieren, führen Sie die gleichen Schritte aus, die oben im Abschnitt „Installieren Sie Module und Abhängigkeiten“ beschrieben sind. Der folgende Abschnitt enthält spezifische Informationen über diesen Prozess für PostgreSQL, MySQL und SQL Server-Datenquellen.
 
-In diesem Abschnitt wird vorausgesetzt, dass Sie bereits eine Anwendung, eine App Service-Instal und eine Azure Database-Dienstinstanz besitzen. Die untenstehenden Anweisungen beziehen sich auf den Namen Ihres App Services, seine Ressourcengruppe und die Daten Ihrer Datenbankverbindung. Diese Informationen finden Sie im Azure-Portal.
+In diesem Abschnitt wird vorausgesetzt, dass Sie bereits eine Anwendung, eine App Service-Instanz und eine Azure Database-Dienstinstanz besitzen. Die untenstehenden Anweisungen beziehen sich auf den Namen Ihres App Services, seine Ressourcengruppe und die Daten Ihrer Datenbankverbindung. Diese Informationen finden Sie im Azure-Portal.
 
-Wenn Sie den gesamten Vorgang von Anfang an mit einer Beispilsanwendung starten möchten, finden Sie weitere Informationen im [ Tutorial: Erstellen einer Java EE- und Postgres-Web-App in Azure ](tutorial-java-enterprise-postgresql-app.md).
+Wenn Sie den gesamten Vorgang von Anfang an mit einer Beispielanwendung starten möchten, finden Sie weitere Informationen im [ Tutorial: Erstellen einer Java EE- und Postgres-Web-App in Azure ](tutorial-java-enterprise-postgresql-app.md).
 
 In den folgenden Schritten werden die Anforderungen für die Verbindung Ihres vorhandenen App Services und einer Datenbank erklärt.
 
-1. Laden Sie den JDBC-Treiber für [PostgreSQL](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/) oder [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) herunter. Entpacken Sie das heruntergeladene Archiv, um die Treiberdatei .jar zu erhalten.
+1. Laden Sie den JDBC-Treiber für [PostgreSQL](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/) oder [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) herunter. Entpacken Sie das heruntergeladene Archiv, um die JAR-Treiberdatei zu erhalten.
 
-2. Erstellen Sie eine Datei mit einem Namen wie *„module.xml“* und fügen Sie das folgende Markup hinzu. Ersetzen Sie den Platzhalter `<module name>` (einschließlich der spitzen Klammern) mit `org.postgres` für PostgreSQL, `com.mysql` für MySQL oder `com.microsoft` für SQL Server. Ersetzen Sie `<JDBC .jar file path>` mit dem Namen der .jar-Datei aus dem vorherigen Schritt. Dazu gehört auch der vollständige Pfad an den Ort, an den Sie die Datei in Ihrer App Service-Instanz verschieben werden. Dabei kann es sich um einen beliebigen Ort im Verzeichnis */home* handeln.
+2. Erstellen Sie eine Datei mit einem Namen wie *„module.xml“* und fügen Sie das folgende Markup hinzu. Ersetzen Sie den Platzhalter `<module name>` (einschließlich der spitzen Klammern) mit `org.postgres` für PostgreSQL, `com.mysql` für MySQL oder `com.microsoft` für SQL Server. Ersetzen Sie `<JDBC .jar file path>` mit dem Namen der JAR-Datei aus dem vorherigen Schritt. Dazu gehört auch der vollständige Pfad an den Ort, an den Sie die Datei in Ihrer App Service-Instanz verschieben werden. Dabei kann es sich um einen beliebigen Ort im Verzeichnis */home* handeln.
 
     ```xml
     <?xml version="1.0" ?>

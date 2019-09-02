@@ -9,17 +9,16 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740894"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066668"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
@@ -84,8 +83,9 @@ Diese Funktion ist zurzeit als Vorschauversion verfügbar, wird aber mit folgend
 * Die App und das VNET müssen sich in der gleichen Region befinden.
 * Ein VNET mit einer integrierten App kann nicht gelöscht werden. Sie müssen zuerst die Integration entfernen. 
 * Sie können nur eine regionale VNET-Integration pro App Service-Plan verwenden. Mehrere Apps im gleichen App Service-Plan können das gleiche VNET verwenden. 
+* Sie können das Abonnement einer App oder eines App Service-Plans nicht ändern, solange eine App vorhanden ist, die eine regionale VNet-Integration verwendet.
 
-Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Wenn Sie Ihre App auf fünf Instanzen skaliert haben, werden fünf Adressen genutzt. Da die Subnetzgröße nach der Zuweisung nicht geändert werden kann, müssen Sie ein Subnetz verwenden, das für die Aufnahme jedweder Skalierung Ihrer App groß genug ist. Empfohlen wird die Größe /27 mit 32 Adressen, da sie einen Premium-App Service-Plan unterstützt, der für 20 Instanzen skaliert ist.
+Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Wenn Sie Ihre App auf fünf Instanzen skaliert haben, werden fünf Adressen genutzt. Da die Subnetzgröße nach der Zuweisung nicht geändert werden kann, müssen Sie ein Subnetz verwenden, das für die Aufnahme jedweder Skalierung Ihrer App groß genug ist. Die empfohlene Größe ist A /26 mit 64 Adressen. A /27 mit 32 Adressen würde 20 Instanzen eines Premium-App Service-Plans aufnehmen, wenn Sie die Größe des App Service-Plans nicht geändert haben. Wenn Sie einen App Service-Plan zentral hoch- oder herunterskalieren, benötigen Sie für einen kurzen Zeitraum doppelt so viele Adressen. 
 
 Wenn Sie möchten, dass Ihre Apps in einem anderen App Service-Plan ein VNET erreichen, das bereits mit Apps in einem anderen App Service-Plan verbunden ist, müssen Sie ein anderes Subnetz auswählen. Es darf nicht das Subnetz sein, das von der bereits vorhandenen VNET-Integration verwendet wird.  
 
@@ -102,6 +102,8 @@ Diese Funktion befindet sich auch für Linux in der Vorschauphase. So verwenden 
    ![Auswählen von VNET und Subnetz][7]
 
 Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit dem Ihr VNET konfiguriert ist. 
+
+Eine regionale VNET-Integration erfordert, dass Ihr Integrationssubnetz an Microsoft.Web delegiert wird.  Das Subnetz wird von der Benutzeroberfläche der VNet-Integration automatisch an Microsoft.Web delegiert. Wenn Ihr Konto nicht über ausreichende Netzwerkberechtigungen verfügt, um dies festzulegen, benötigen Sie eine Person, die in Ihrem Integrationssubnetz Attribute festlegen kann, um das Subnetz zu delegieren. Wenn Sie das Subnetz für die Integration manuell delegieren möchten, wechseln Sie zur Benutzeroberfläche des Azure Virtual Network-Subnetzes, und legen Sie Delegierung für Microsoft.Web fest.
 
 Um Ihre App vom VNET zu trennen, wählen Sie **Verbindung trennen** aus. Hiermit wird Ihre Web-App neu gestartet. 
 
@@ -249,7 +251,7 @@ Bei der VNET-Integration, die ein Gateway erfordert, fallen drei Gebühren an:
 
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Die Funktion ist zwar einfach einzurichten, aber dies bedeutet nicht, dass für Ihre Benutzeroberfläche keinerlei Probleme auftreten. Falls beim Zugreifen auf den gewünschten Endpunkt Probleme auftreten, können Sie einige Hilfsprogramme verwenden, um die Verbindung über die App-Konsole zu testen. Sie können zwei Konsolen verwenden. Eine ist die Kudu-Konsole, und die andere ist die Konsole im Azure-Portal. Greifen Sie in der App auf „Tools -> Kudu“ zu, um zur Kudu-Konsole zu gelangen. Dies entspricht dem Zugreifen auf „[Websitename].scm.azurewebsites.net“. Wechseln Sie nach dem Öffnen zur Konsolenregisterkarte „Debuggen“. Um auf die über das Azure-Portal gehostete Konsole zuzugreifen, greifen Sie in der App auf „Tools“ -> „Konsole“ zu. 
+Die Funktion ist zwar einfach einzurichten, aber dies bedeutet nicht, dass für Ihre Benutzeroberfläche keinerlei Probleme auftreten. Falls beim Zugreifen auf den gewünschten Endpunkt Probleme auftreten, können Sie einige Hilfsprogramme verwenden, um die Verbindung über die App-Konsole zu testen. Sie können zwei Konsolen verwenden. Eine ist die Kudu-Konsole, und die andere ist die Konsole im Azure-Portal. Greifen Sie in der App auf „Tools -> Kudu“ zu, um zur Kudu-Konsole zu gelangen. Sie können auch die Kudo-Konsole unter „[sitename].scmn.azurewebsites.net“ erreichen. Wechseln Sie nach dem Laden der Website zur Konsolenregisterkarte „Debuggen“. Um auf die über das Azure-Portal gehostete Konsole zuzugreifen, greifen Sie in der App auf „Tools“ -> „Konsole“ zu. 
 
 #### <a name="tools"></a>Tools
 Die Tools **ping**, **nslookup** und **tracert** funktionieren aufgrund von Sicherheitseinschränkungen nicht über die Konsole. Es wurden zwei separate Tools hinzugefügt, um diese Lücke zu füllen. Zum Testen der DNS-Funktionalität haben wir ein Tool mit dem Namen „nameresolver.exe“ hinzugefügt. Die Syntax ist:

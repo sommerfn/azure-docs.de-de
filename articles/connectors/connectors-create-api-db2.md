@@ -7,15 +7,15 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: plarsen, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60314076"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051033"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Verwalten von Ressourcen mit IBM DB2-REST-APIs und Azure Logic Apps
 
@@ -25,9 +25,9 @@ In diesem Artikel wird gezeigt, wie Sie eine Logik-App erstellen können, die ve
 
 ## <a name="supported-platforms-and-versions"></a>Unterstützte Plattformen und Versionen
 
-Dieser DB2-Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteserverservern über ein TCP/IP-Netzwerk. Sie können diesen Connector für den Zugriff auf Clouddatenbanken verwenden, z.B. IBM Bluemix DashDB oder IBM DB2 für Windows, die in der Azure-Virtualisierung ausgeführt werden. Nach der [Installation und Einrichtung des lokalen Datengateway](../logic-apps/logic-apps-gateway-connection.md) können Sie auch auf lokale DB2-Datenbanken zugreifen.
+Dieser DB2-Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteserverservern über ein TCP/IP-Netzwerk. Sie können diesen Connector für den Zugriff auf Clouddatenbanken verwenden, z. B. IBM DB2 für Windows, die in der Azure-Virtualisierung ausgeführt werden. Nach der [Installation und Einrichtung des lokalen Datengateway](../logic-apps/logic-apps-gateway-connection.md) können Sie auch auf lokale DB2-Datenbanken zugreifen.
 
-Der IBM DB2-Connector unterstützt diese IBM DB2-Plattformen und -Versionen sowie IBM DB2-kompatible Produkte, z.B. IBM Bluemix DashDB, die Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 10 und 11 unterstützen:
+Der IBM DB2-Connector unterstützt diese IBM DB2-Plattformen und -Versionen sowie IBM DB2-kompatible Produkte, die Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 10 und 11 unterstützen:
 
 | Plattform | Version | 
 |----------|---------|
@@ -52,7 +52,7 @@ Der IBM DB2-Connector unterstützt diese Datenbankvorgänge, die den entsprechen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein IBM DB2-Datenbank, entweder cloudbasiert oder lokal
 
@@ -363,11 +363,6 @@ Erweitern Sie die Aktion **Zeile löschen**.
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/db2/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

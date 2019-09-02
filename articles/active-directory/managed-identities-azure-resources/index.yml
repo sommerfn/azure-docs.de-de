@@ -1,73 +1,63 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 'Verwaltete Azure AD-Identitäten für Azure-Ressourcen: Dokumentation'
+summary: Hier erfahren Sie, wie Sie verwaltete Identitäten in Azure AD verwenden.
 metadata:
-  document_id: null
   title: 'Verwaltete Azure AD-Identitäten für Azure-Ressourcen: Dokumentation'
-  description: 'Hier erfahren Sie, wie Sie sich mit verwalteten Identitäten für Azure-Ressourcen sicher bei Azure-Clouddiensten authentifizieren, ohne Anmeldeinformationen in den Quellcode aufnehmen zu müssen.'
+  description: Hier erfahren Sie, wie Sie verwaltete Identitäten für Azure-Ressourcen in Azure AD verwenden.
   services: active-directory
-  ms.subservice: msi
-  author: priyamohanram
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 03/16/2018
-  ms.author: priyamo
-abstract:
-  description: 'Verwaltete Dienstidentitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.  Anhand unserer Schnellstartanleitungen und Tutorials erfahren Sie, wie Sie verwaltete Identitäten für Azure-Ressourcen erstellen und verwalten.'
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-landing-page.png
-      width: 200
-    title: Einführung in verwaltete Identitäten für Azure-Ressourcen
-    href: 'https://www.youtube.com/embed/bBi1bll2928'
-    width: 200
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie mithilfe von verwalteten Identitäten für Azure-Ressourcen auf die Azure Resource Manager-API zugreifen.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-arm">Zugreifen auf Azure Resource Manager über einen virtuellen Windows Azure-Computer</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-arm">Zugreifen auf Azure Resource Manager über einen virtuellen Linux Azure-Computer</a>
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie mithilfe von verwalteten Identitäten für Azure-Ressourcen sicher auf Azure-Ressourcen zugreifen.'
-      - type: paragraph
-        text: Windows-VM/-VMSS
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-datalake">Zugreifen auf Azure Data Lake Store</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-storage">Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Zugreifen auf Azure SQL</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Zugreifen auf Azure Key Vault</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Zugreifen auf Azure Cosmos DB</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Zugreifen auf Azure Resource Manager mit einer benutzerseitig zugewiesenen Identität</a>
-      - type: paragraph
-        text: Linux-VM/-VMSS
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-datalake">Zugreifen auf Azure Data Lake Store</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Zugreifen auf Azure Key Vault</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Zugreifen auf Azure Cosmos DB</a>
-          - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Zugreifen auf Azure Resource Manager mit einer benutzerseitig zugewiesenen Identität</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: '<p><a href="/powershell/module/az.managedserviceidentity#managed_service_identity">Azure PowerShell</a></p><p><a href="/cli/azure/identity">Azure-Befehlszeilenschnittstelle</a></p>'
-          - title: Languages
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication">.NET</a></p><p><a href="https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines">Java</a></p><p><a href="/javascript/api/ms-rest-azure">Node.js</a></p><p><a href="/python/api/azure.mgmt.msi">Python</a></p></p><a href="https://rubygems.org/gems/azure_mgmt_msi">Ruby</a></p></p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/msi/mgmt/2015-08-31-preview/msi">Go</a></p>'
+  author: MarkusVi
+  ms.author: markvi
+  ms.date: 08/29/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 2a403b66cfd1005e86f269d4affe4086564e291c
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162549"
+landingContent:
+- title: Informationen zu verwalteten Identitäten
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind verwaltete Identitäten für Azure-Ressourcen?
+      url: overview.md
+- title: Konfigurieren von verwalteten Identitäten auf virtuellen Azure-Computern
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portal
+      url: qs-configure-portal-windows-vmss.md
+    - text: Befehlszeilenschnittstelle (CLI)
+      url: qs-configure-cli-windows-vmss.md
+    - text: PowerShell
+      url: qs-configure-powershell-windows-vmss.md
+    - text: Azure Resource Manager-Vorlage
+      url: qs-configure-template-windows-vmss.md
+    - text: REST
+      url: qs-configure-rest-vmss.md
+- title: Verwenden von verwalteten Identitäten auf virtuellen Computern
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Abrufen eines Zugriffstokens
+      url: qs-configure-rest-vmss.md
+    - text: Anmelden bei PowerShell und der Befehlszeilenschnittstelle
+      url: how-to-use-vm-sign-in.md
+    - text: Verwenden mit dem Azure SDK
+      url: how-to-use-vm-sdk.md
+    - text: Beenden der Verwendung von VM-Erweiterungen
+      url: howto-migrate-vm-extension.md
+- title: 'Zuweisen des Zugriffs auf eine andere Azure-Ressource für eine verwaltete Identität:'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portal
+      url: howto-assign-access-portal.md
+    - text: Befehlszeilenschnittstelle (CLI)
+      url: howto-assign-access-cli.md
+    - text: PowerShell
+      url: howto-assign-access-powershell.md

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0a99c1b8f655943840bf68b59ee1506a8985dbdd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329574"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065976"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 
@@ -159,9 +159,9 @@ Das Wichtigste ist, die Änderung der Verarbeitungsrate vorwegzunehmen, diese Sz
 
 Im extremen Szenario, dass alle eingehenden Ereignisse verzögert sind, [ist es möglich, dass alle verzögerten Ereignisse gelöscht werden](stream-analytics-time-handling.md), wenn Sie ein spätes Ankunftsfenster für Ihren Auftrag angewendet haben. Das Löschen der Ereignisse mag zunächst mysteriös erscheinen, doch Stream Analytics erwartet als Echtzeitverarbeitungs-Engine, dass eingehende Ereignisse nahe an der Gesamtbetrachtungszeit liegen. Sie muss Ereignisse löschen, die diese Einschränkungen verletzen.
 
-### <a name="backfilling-process"></a>Abgleichprozess
+### <a name="lambda-architectures-or-backfill-process"></a>Lambda-Architekturen oder Abgleichsprozess
 
-Glücklicherweise kann das vorherige Datenarchivierungsmuster verwendet werden, um diese verspäteten Ereignisse ordnungsgemäß zu verarbeiten. Dahinter steht der Gedanke, dass der Archivierungsauftrag eingehende Ereignisse zur Eingangszeit verarbeitet und Ereignisse in Azure Blob Storage oder Azure Data Lake Store mit ihrer Ereigniszeit im richtigen Zeitbucket archiviert. Ganz gleich, wie spät ein Ereignis eingeht, es wird nie gelöscht. Es gelangt immer in den richtigen Zeitbucket. Während der Wiederherstellung können die archivierten Ereignisse erneut verarbeitet und die Ergebnisse mit dem Speicher Ihrer Wahl abgeglichen werden.
+Glücklicherweise kann das vorherige Datenarchivierungsmuster verwendet werden, um diese verspäteten Ereignisse ordnungsgemäß zu verarbeiten. Dahinter steht der Gedanke, dass der Archivierungsauftrag eingehende Ereignisse zur Eingangszeit verarbeitet und Ereignisse in Azure Blob Storage oder Azure Data Lake Store mit ihrer Ereigniszeit im richtigen Zeitbucket archiviert. Ganz gleich, wie spät ein Ereignis eingeht, es wird nie gelöscht. Es gelangt immer in den richtigen Zeitbucket. Während der Wiederherstellung können die archivierten Ereignisse erneut verarbeitet und die Ergebnisse mit dem Speicher Ihrer Wahl abgeglichen werden. Dies ähnelt der Art, in der Lambda-Muster implementiert werden.
 
 ![ASA – Abgleich](media/stream-analytics-solution-patterns/backfill.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609994"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020239"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema und Datenaggregation in Traffic Analytics
 
@@ -32,7 +32,7 @@ Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und 
 
 ### <a name="data-aggregation"></a>Daten-Aggregation
 
-1. Alle Flowprotokolle in einer Netzwerksicherheitsgruppe zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ werden im Speicherkonto in Intervallen von einer Minute als Blobs erfasst, bevor sie von Traffic Analytics verarbeitet werden. 
+1. Alle Flowprotokolle in einer Netzwerksicherheitsgruppe zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ werden im Speicherkonto in Intervallen von einer Minute als Blobs erfasst, bevor sie von Traffic Analytics verarbeitet werden.
 2. Das Standardintervall für die Verarbeitung in Traffic Analytics beträgt 60 Minuten. Das bedeutet, dass Traffic Analytics alle 60 Minuten Blobs aus dem Speicher erfasst, um diese zu aggregieren. Wenn als Verarbeitungsintervall 10 Minuten ausgewählt wird, wählt Traffic Analytics alle 10 Minuten Blobs aus dem Speicherkonto aus.
 3. Flows, die die gleichen Werte für Quell-IP, Ziel-IP, Zielport, NSG-Name, NSG-Regel, Flowrichtung und Transportschichtprotokoll (TCP oder UDP) aufweisen (Hinweis: der Quellport wird bei der Aggregation ausgeschlossen), werden von Traffic Analytics in einen einzigen Flow zusammengefasst.
 4. Dieser einzelne Datensatz wird ergänzt (Details dazu im folgenden Abschnitt) und von Traffic Analytics in Log Analytics erfasst. Dieser Vorgang kann bis zu 1 Stunde (max.) dauern.
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Im Traffic Analytics-Schema verwendete Felder
+  > [!IMPORTANT]
+  > Das Traffic Analytics-Schema wurde am 22. August 2019 aktualisiert. Das neue Schema bietet Quell- und Ziel-IPs, für deren getrennte Entfernung das FlowDirection-Feld analysiert werden muss, was Abfragen vereinfacht. </br>
+  > FASchemaVersion_s aktualisiert von 1 auf 2. </br>
+  > Veraltete Felder: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > Neue Felder: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > Veraltete Felder sind bis zum 22. November 2019 verfügbar.
 
 Traffic Analytics setzt auf Log Analytics auf, sodass Sie benutzerdefinierte Abfragen für Daten ausführen können, die von Traffic Analytics ergänzt wurden, und dann für diese Daten Warnungen festlegen können.
 
@@ -94,7 +100,7 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tabelle für Traffic Analytics-Daten
 | SubType_s | FlowLog | Untertyp für die Flowprotokolle. Verwenden Sie nur „FlowLog“, denn andere Werte für SubType_s sind für die interne Funktionsweise des Produkts |
-| FASchemaVersion_s |   1   | Schemaversion. Spiegelt nicht die Version des NSG-Flowprotokolls wider. |
+| FASchemaVersion_s |   2   | Schemaversion. Spiegelt nicht die Version des NSG-Flowprotokolls wider. |
 | TimeProcessed_t   | Datum und Uhrzeit in UTC  | Der Zeitpunkt, zu dem Traffic Analytics die unformatierten Flowprotokolle aus dem Speicherkonto verarbeitet hat. |
 | FlowIntervalStartTime_t | Datum und Uhrzeit in UTC |  Startzeit des Verarbeitungsintervalls des Flowprotokolls. Dies ist der Zeitpunkt, ab dem das Flowintervall gemessen wird. |
 | FlowIntervalEndTime_t | Datum und Uhrzeit in UTC | Endzeit des Verarbeitungsintervalls des Flowprotokolls. |
@@ -111,7 +117,8 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | FlowDirection_s | * I = Inbound (eingehend)<br> * O = Outbound (ausgehend) | Richtung des Flows in die oder aus der NSG gemäß Flowprotokoll. |
 | FlowStatus_s  | * A = Allowed by NSG Rule (durch NSG-Regel zugelassen) <br> *  D = Denied by NSG Rule (durch NSG-Regel abgelehnt)  | Status des durch die NSG zugelassenen oder abgelehnten Flows gemäß Flowprotokoll. |
 | NSGList_s | \<ABONNEMENT-ID>\/<NAME_DER_RESSOURCENGRUPPE>\/<NAME_DER_NSG> | Die NSG (Netzwerksicherheitsgruppe), die dem Flow zugeordnet ist. |
-| NSGRules_s | \<Indexwert 0)><NAME_DER_NSG_REGEL>\<Flowrichtung>\<Flowstatus>\<FlowCount ProcessedByRule> |  Die NSG-Regel, die diesen Flow zugelassen oder abgelehnt hat. |
+| NSGRules_s | \<Indexwert 0)>\|\<NAME_DER_NSG_REGEL>\|\<Flowrichtung>\|\<Flowstatus>\|\<FlowCount ProcessedByRule> |  Die NSG-Regel, die diesen Flow zugelassen oder abgelehnt hat. |
+| NSGRule_s | NSG_RULENAME |  Die NSG-Regel, die diesen Flow zugelassen oder abgelehnt hat. |
 | NSGRuleType_s | * User Defined *  Default (benutzerdefiniert, Standardwert) |   Der vom Flow verwendete NSG-Regeltyp. |
 | MACAddress_s | MAC-Adresse | Die MAC-Adresse des Netzwerkadapters, an dem der Flow erfasst wurde. |
 | Subscription_s | Das Abonnement des virtuellen Azure-Netzwerks, der Azure-Netzwerkschnittstelle oder der Azure-VM wird in diesem Feld aufgefüllt. | Gilt nur für diese Flowtypen; S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow, UnknownPrivate (Flowtypen, bei denen es sich bei nur einer Seite um Azure handelt). |
@@ -151,6 +158,8 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | OutboundBytes_d | Gesendete Bytes, die an der Netzwerkschnittstelle erfasst wurden, an der die NSG-Regel angewendet wurde | Dies wird nur für Version 2 des NSG-Flowprotokollschemas aufgefüllt. |
 | CompletedFlows_d  |  | Dies wird nur für Version 2 des NSG-Flowprotokollschemas mit einem Wert aufgefüllt, der nicht Null ist. |
 | PublicIPs_s | <ÖFFENTLICHEP_IP>\|\<ANZAHL_GESTARTETER_FLOWS>\|\<ANZAHL_BEENDETER_FLOWS>\|\<AUSGEHENDE_PAKETE>\|\<EINGEHENDE_PAKETE>\|\<AUSGEHENDE_BYTES>\|\<EINGEHENDE_BYTES> | Einträge sind durch Balken getrennt. |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Einträge sind durch Balken getrennt. |
 
 ### <a name="notes"></a>Notizen
 
@@ -165,7 +174,7 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 1. MaliciousFlow – eine der IP-Adressen gehört zu einem Azure Virtual Network, die andere ist eine öffentliche IP-Adresse außerhalb von Azure. Diese wird in den ASC-Feeds, die Traffic Analytics im Verarbeitungsintervall zwischen „FlowIntervalStartTime_t“ und „FlowIntervalEndTime_t“ nutzt, als schädlich gemeldet.
 1. UnknownPrivate – eine der IP-Adressen gehört zu einem Azure Virtual Network, die andere zu einem privaten IP-Adressbereich, wie in RFC 1918 definiert. Diese kann von Traffic Analytics keinem Standort im Besitz eines Kunden und keinem Azure Virtual Network zugeordnet werden.
 1. Unknown – keine der IP-Adressen in den Flows kann der Kundentopologie in Azure oder einem lokalen Standort zugeordnet werden.
-1. An einige Feldnamen wird „_s“ oder „_d“ angefügt. Diese bezeichnen NICHT die Quelle (Source) und das Ziel (Destination).
+1. An einige Feldnamen wird „\_s“ oder „\_d“ angefügt. Diese markieren NICHT die Quelle und das Ziel, sondern zeigen die Datentypen „String“ (Zeichenfolge) bzw. „decimal“ (dezimal) an.
 
 ### <a name="next-steps"></a>Nächste Schritte
 Antworten auf häufig gestellte Fragen finden Sie in den [FAQ zu Traffic Analytics](traffic-analytics-faq.md). Weitere Informationen zur Funktionalität finden Sie in der [Dokumentation zu Traffic Analytics](traffic-analytics.md).

@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: Neustart oder Größenänderung eines virtuellen Computers
   href: restart-resize-error-troubleshooting.md
-- name: Verwenden der seriellen Konsole
+- name: Serielle Konsole
+  href: serial-console-overview.md
   items:
-    - name: Linux-VM
+    - name: Serielle Konsole für Linux
       href: serial-console-linux.md
       items:
         - name: Serielle Konsole – GRUB-/Einzelbenutzermodus
           href: serial-console-grub-single-user-mode.md
         - name: Serielle Konsole – NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Windows-VM
+    - name: Serielle Konsole für Windows
       href: serial-console-windows.md
       items:
         - name: CMD und PowerShell-Befehle
           href: serial-console-cmd-ps-commands.md
+    - name: Aktivieren und Deaktivieren der seriellen Konsole
+      href: serial-console-enable-disable.md
+    - name: Energieoptionen in der seriellen Konsole
+      href: serial-console-power-options.md
+    - name: Allgemeine Fehler für die serielle Konsole
+      href: serial-console-errors.md
 - name: Fehler beim Löschen von Speicherressourcen
   href: storage-resource-deletion-errors.md
 - name: Fehler beim Löschen von klassischen Speicherressourcen
@@ -153,6 +160,8 @@
 - name: Startfehler
   href: boot-error-troubleshoot.md
   items:
+    - name: Fehler beim Starten eines virtuellen Azure-Computers
+      href: troubleshoot-vm-boot-error.md
     - name: Startdiagnose
       href: boot-diagnostics.md
     - name: BitLocker-Fehler

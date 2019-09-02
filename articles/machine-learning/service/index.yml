@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentation zum Azure Machine Learning-Dienst
 metadata:
   title: 'Dokumentation zum Azure Machine Learning-Dienst: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Azure Machine Learning Service bietet SDKs und Dienste zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials.'
+  description: "Azure Machine Learning Service bietet SDKs und Dienste zum schnellen Trainieren und Bereitstellen von Machine\_Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials."
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -16,7 +16,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: 'Azure Machine Learning Service bietet SDKs und Dienste zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials.'
+  description: "Azure Machine Learning Service bietet SDKs und Dienste zum schnellen Trainieren und Bereitstellen von Machine\_Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials."
   aside:
     image:
       alt: null
@@ -30,7 +30,7 @@ sections:
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: "Hier erfahren Sie, wie Sie Daten vorbereiten, Experimente einrichten und Ihre Machine\_Learning-Modelle trainieren und operationalisieren."
+        text: "Hier erfahren Sie, wie Sie Experimente einrichten und Ihre Machine\_Learning-Modelle trainieren und operationalisieren."
       - type: paragraph
         text: '<b>Verwenden Sie das Azure-Portal</b>, eine benutzerfreundliche Oberfläche ohne Code für maschinelles Lernen:'
       - type: list

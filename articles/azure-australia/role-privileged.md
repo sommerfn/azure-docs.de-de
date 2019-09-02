@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571130"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982674"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und Privileged Identity Management (PIM)
 
@@ -27,7 +27,7 @@ Ganz allgemein sind für die Implementierung der RBAC drei Komponenten erforderl
 
 ![RBAC-Übersicht](media/rbac-overview.png)
 
-* **Sicherheitsprinzipale:** Bei einem Sicherheitsprinzipal kann es sich um einen Benutzer, eine Gruppe, einen Dienstprinzipal oder um eine [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) handeln. Sicherheitsprinzipalen sollten Berechtigungen über Azure Active Directory-Gruppen zugewiesen werden.
+* **Sicherheitsprinzipale:** Bei einem Sicherheitsprinzipal kann es sich um einen Benutzer, eine Gruppe, [Dienstprinzipale](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) oder um eine [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) handeln. Sicherheitsprinzipalen sollten Berechtigungen über Azure Active Directory-Gruppen zugewiesen werden.
 
 * **Rollendefinitionen:** Eine Rollendefinition wird auch als Rolle bezeichnet und ist eine Sammlung von Berechtigungen. Diese Berechtigungen definieren die Vorgänge, die durch die Sicherheitsprinzipale ausgeführt werden können, die der Rollendefinition zugewiesen sind. Diese Funktion wird durch Azure-Ressourcenrollen und Azure Active Directory Administratorrollen ermöglicht. Azure verfügt über eine Reihe integrierter Rollen, die durch benutzerdefinierte Rollen erweitert werden können.
 

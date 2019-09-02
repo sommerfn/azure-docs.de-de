@@ -9,44 +9,41 @@ ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 3c4811d990cfe107bc3bc4e6d359659b1935c6a4
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 98f82914af8216789a04d3cfd2972f83c16b3fa0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297201"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070664"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
 Der [Azure App Service](overview.md) ermöglicht die kontinuierliche Bereitstellung von GitHub-, BitBucket- und [Azure Repos-](https://azure.microsoft.com/services/devops/repos/)Repositorys durch Abrufen der neuesten Updates. Dieser Artikel zeigt Ihnen, wie Sie das Azure-Portal nutzen können, um Ihre App kontinuierlich über den Kudu Build-Dienst oder [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) bereitzustellen. 
 
-Weitere Informationen zu den Quellcodeverwaltungsdiensten finden Sie unter [Erstellen eines Repositorys (GitHub)], [Erstellen eines Repositorys (BitBucket)] oder [Erstellen eines neuen Git-Repository (Azure Repos)].
-
-Informationen zur manuellen Konfiguration der fortlaufenden Bereitstellung aus einem Cloud-Repository, das das Portal nicht direkt unterstützt, wie beispielsweise [GitLab](https://gitlab.com/), finden Sie unter [„Einrichten der kontinuierlichen Bereitstellung mit manuellen Schritten“](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+Weitere Informationen zu den Quellcodeverwaltungsdiensten finden Sie unter [Erstellen eines Repositorys (GitHub)], [Erstellen eines Repositorys (BitBucket)] oder [Erstellen eines neuen Git-Repositorys (Azure Repos)].
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="authorize-azure-app-service"></a>Autorisieren von Azure App Service 
 
-Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
 
 Für Bitbucket oder GitHub autorisieren Sie den Azure App Service, sich mit Ihrem Repository zu verbinden. Sie müssen sich nur einmal bei einem Quellcodverwaltungsdienst autorisieren. 
 
-1. Wählen Sie **„App Services“** in der linken Navigationsspalte des [Azure-Portals](https://portal.azure.com) und dann die Web-App, die Sie bereitstellen möchten. 
+1. Wählen Sie **App Services** in der linken Navigation des [Azure-Portals](https://portal.azure.com) und dann die Web-App, die Sie bereitstellen möchten. 
    
-1. Wählen Sie auf der Anwendungsseite im linken Menü **„Bereitstellungscenter“** aus.
+1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
    
 1. Wählen Sie auf der Seite **„Bereitstellungscenter“** die Option **GitHub** oder **Bitbucket** und dann **„Autorisieren“** . 
    
    ![Wählen Sie den Quellcodeverwaltungdienst und dann „Autorisieren“.](media/app-service-continuous-deployment/github-choose-source.png)
    
-1. Melden Sie sich bei Bedarf beim Dienst an und folgen Sie den Anweisungen zur Autorisierung. 
+1. Melden Sie sich bei Bedarf beim Dienst an, und folgen Sie den Anweisungen zur Autorisierung. 
 
 ## <a name="enable-continuous-deployment"></a>Aktivieren von Continuous Deployment 
 
@@ -58,12 +55,12 @@ Sie können den integrierten Kudu App Service Build-Server verwenden, um die Ber
 
 1. Wählen Sie **App Services** in der linken Navigation des [Azure-Portals](https://portal.azure.com) und dann die Web-App, die Sie bereitstellen möchten. 
    
-1. Wählen Sie auf der Anwendungsseite im linken Menü **„Bereitstellungscenter“** aus.
+1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
    
 1. Wählen Sie auf der Seite **„Bereitstellungscenter“** Ihren autorisierten Quellcodeverwaltungdienst aus und wählen Sie **„Weiter“** . Für GitHub oder Bitbucket können Sie auch **„Konto ändern“** wählen, um das autorisierte Konto zu ändern. 
    
    > [!NOTE]
-   > Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+   > Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
    
 1. Wählen Sie für GitHub oder Azure Repos auf der Seite **„Buildanbieter“** die Option **„App Service-Builddienst“** und dann **„Weiter“** . Bitbucket verwendet immer den App Service-Builddienst.
    
@@ -71,7 +68,7 @@ Sie können den integrierten Kudu App Service Build-Server verwenden, um die Ber
    
 1. Auf der Seite **Konfigurieren**:
    
-   - Wählen Sie das Dropdownmenü für GitHub und wählen Sie dann die **„Organisation“** , **„Repository“** und **„Branch“** , die sie fortlaufend bereitstellen möchten.
+   - Wählen Sie das Dropdownmenü für GitHub, und wählen Sie dann die **„Organisation“** , **„Repository“** und **„Branch“** , die sie fortlaufend bereitstellen möchten.
      
      > [!NOTE]
      > Wenn Sie keine Repositorys sehen, müssen Sie möglicherweise den Azure App Service in GitHub autorisieren. Navigieren Sie zu Ihrem GitHub-Repository und wählen Sie **Einstellungen** > **Anwendungen** > **Autorisierte OAuth-Apps**. Wählen Sie **Azure App Service** und dann **„Zuweisung“** .
@@ -81,7 +78,7 @@ Sie können den integrierten Kudu App Service Build-Server verwenden, um die Ber
    - Wählen Sie für Azure Repos die **Azure DevOps-Organisation**, das **Projekt**, das **Repository** und **Branch** aus, die Sie fortlaufend nutzen möchten.
      
      > [!NOTE]
-     > Wenn Ihre Azure DevOps-Organisation nicht aufgeführt ist, stellen Sie sicher, dass sie mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+     > Wenn Ihre Azure DevOps-Organisation nicht aufgeführt ist, stellen Sie sicher, dass sie mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
      
 1. Wählen Sie **Weiter**.
    
@@ -109,13 +106,13 @@ Konfigurieren von Azure Pipelines (Vorschauversion):
 
 1. Wählen Sie **App Services** in der linken Navigation des [Azure-Portals](https://portal.azure.com) und dann die Web-App, die Sie bereitstellen möchten. 
    
-1. Wählen Sie auf der Anwendungsseite im linken Menü **„Bereitstellungscenter“** aus.
+1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
    
 1. Wählen Sie auf der Seite **Buildanbieter** nacheinander **Azure Pipelines (Vorschau)** und dann **Weiter** aus. 
    
 1. Auf der Seite **„Konfigurieren“** im Abschnitt **„Code“** :
    
-   - Wählen Sie das Dropdownmenü für GitHub und wählen Sie dann die **„Organisation“** , **„Repository“** und **„Branch“** , die sie fortlaufend bereitstellen möchten.
+   - Wählen Sie das Dropdownmenü für GitHub, und wählen Sie dann die **„Organisation“** , **„Repository“** und **„Branch“** , die sie fortlaufend bereitstellen möchten.
      
      > [!NOTE]
      > Wenn Sie keine Repositorys sehen, müssen Sie möglicherweise den Azure App Service in GitHub autorisieren. Navigieren Sie zu Ihrem GitHub-Repository und wählen Sie **Einstellungen** > **Anwendungen** > **Autorisierte OAuth-Apps**. Wählen Sie **Azure App Service** und dann **„Zuweisung“** .
@@ -150,13 +147,17 @@ Um Continuous Deployment zu deaktivieren, wählen Sie **„Trennen“** oben auf
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
+## <a name="use-unsupported-repos"></a>Nicht unterstützte Repositorys
+
+Für Windows-Apps können Sie Continuous Deployment aus einem Git oder Mecurial Cloudrepository, das das Portal nicht direkt unterstützt, beispielsweise [GitLab](https://gitlab.com/), manuell konfigurieren. Wählen Sie hierzu das Feld „Extern“ auf der Seite **Bereitstellungscenter** aus. Weitere Informationen finden Sie unter [Einrichten von Continuous Deployment mit manuellen Schritten](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Untersuchen Sie Ursachen für häufige Probleme mit Continuous Deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [Untersuchen häufiger Probleme mit Continuous Deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Verwenden von Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [Git-Dokumentation](https://git-scm.com/documentation)
 * [Projekt Kudu](https://github.com/projectkudu/kudu/wiki)
 
 [Erstellen eines Repositorys (GitHub)]: https://help.github.com/articles/create-a-repo
 [Erstellen eines Repositorys (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Erstellen eines neuen Git-Repository (Azure Repos)]: /azure/devops/repos/git/creatingrepo
+[Erstellen eines neuen Git-Repositorys (Azure Repos)]: /azure/devops/repos/git/creatingrepo

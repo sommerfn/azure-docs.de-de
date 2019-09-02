@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615890"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969651"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -55,7 +55,7 @@ Kubernetes verwendet *Dienste*, um die Netzwerkkonfiguration für Anwendungswork
 
 Die IP-Adresse für Lastenausgleichsmodule und Dienste kann dynamisch zugewiesen werden. Sie können aber auch eine vorhandene statische IP-Adresse angeben. Zugewiesen werden können sowohl interne als auch externe statische IP-Adressen. Diese vorhandene statische IP-Adresse ist häufig an einen DNS-Eintrag gebunden.
 
-Es können sowohl *interne* als auch *externe* Lastenausgleichsmodule erstellt werden. Internen Lastenausgleichsmodulen wird nur eine private IP-Adresse zugeordnet. Daher kann über das Internet nicht darauf zugegriffen werden.
+Es können sowohl *interne* als auch *externe* Lastenausgleichsmodule erstellt werden. Internen Lastenausgleichsmodulen wird nur eine private IP-Adresse zugeordnet, sodass nicht über das Internet darauf zugegriffen werden kann.
 
 ## <a name="azure-virtual-networks"></a>Virtuelle Azure-Netzwerke
 

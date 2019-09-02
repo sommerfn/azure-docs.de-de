@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706398"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012709"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -84,7 +84,7 @@ $TriggerMetadata.sys
 
 | Eigenschaft   | Description                                     | type     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | DateTime |
+| UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | Datetime |
 | MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
 | RandGuid   | Eine eindeutige GUID für diese Ausführung der Funktion | Zeichenfolge   |
 
@@ -517,7 +517,7 @@ Der [Verbrauchstarif](functions-scale.md#consumption-plan) wird mit nur einen Ke
 
 Azure PowerShell verwendet einige Kontexte und Status auf _Prozessebene_, die Ihnen viel Eingabearbeit ersparen können. Wenn Sie jedoch Parallelität in Ihrer Funktions-App aktivieren und Aktionen aufrufen, die den Zustand ändern, könnte es zu Racebedingungen kommen. Diese Racebedingungen sind schwierig zu debuggen, da ein Aufruf von einem bestimmten Zustand abhängt, während ein anderer Aufruf diesen Zustand ändert.
 
-Parallelität hat in Azure PowerShell einen enormen Wert, da einige Vorgänge sehr viel Zeit in Anspruch nehmen können. Sie müssen dabei jedoch umsichtig vorgehen. Wenn Sie vermuten, dass eine Racebedingung vorliegt, legen Sie die Parallelität wieder auf `1` fest, und wiederholen Sie die Anforderung.
+Parallelität hat in Azure PowerShell einen enormen Wert, da einige Vorgänge sehr viel Zeit in Anspruch nehmen können. Sie müssen dabei jedoch umsichtig vorgehen. Wenn Sie vermuten, dass eine Racebedingung vorliegt, legen Sie die App-Einstellung „PSWorkerInProcConcurrencyUpperBound“ auf `1` fest, und verwenden Sie stattdessen [Isolation auf Sprachworkerprozess-Ebene](functions-app-settings.md#functions_worker_process_count) für Parallelität.
 
 ## <a name="configure-function-scriptfile"></a>Konfigurieren der `scriptFile`-Funktion
 

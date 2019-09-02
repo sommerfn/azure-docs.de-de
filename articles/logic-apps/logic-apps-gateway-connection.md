@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 029dc8daaf456c155d46eefa699772882bdabee5
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546271"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982871"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -65,7 +65,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, können Si
 
    | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------|
-   | **Name** | Der Name für Ihre Gatewayressource | 
+   | **Ressourcenname** | Ihr Gatewayressourcenname, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten kann. | 
    | **Abonnement** | Der Name Ihres Azure-Abonnements, das mit dem Abonnement für Ihre Logik-App identisch sein muss. Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben. | 
    | **Ressourcengruppe** | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
    | **Location** | Azure schränkt diesen Standort auf die Region ein, die während der [Gatewayinstallation](../logic-apps/logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde. <p>**Hinweis**: Stellen Sie sicher, dass der Standort der Gatewayressource mit dem Standort des Gatewayclouddiensts übereinstimmt. Andernfalls kann es sein, dass Ihre Gatewayinstallation im nächsten Schritt nicht in der Liste der installierten Gateways zur Auswahl angezeigt wird. Sie können unterschiedliche Regionen für Ihre Gatewayressource und Ihre Logik-App verwenden. | 

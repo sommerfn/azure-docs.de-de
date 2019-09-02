@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: Konfiguration der lokalen Firewall
           href: on-premises-firewall-configuration.md
+        - name: Zugreifen auf den vSphere-Client
+          href: vcenter-access.md
         - name: Verwalten von Knoten
           items:
             - name: Bereitstellen von Knoten
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: Einrichten von VPN-Verbindungen
               href: vpn-gateway.md
-            - name: Abrufen von Peerinformationen für eine VNET-Verbindung mit CloudSimple
+            - name: CloudSimple-VNET-Verbindung
               href: virtual-network-connection.md
-            - name: Zugriff auf Eskalationsberechtigungen des vSphere-Clients für Administratoraufgaben
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: Verwalten von CloudSimple-Portalkonten
           items:
             - name: Anzeigen der Kontozusammenfassung
               href: account.md
             - name: Anzeigen der Benutzerliste
               href: users.md
-            - name: Einrichten einer VNET-Verbindung mit der privaten Cloud
-              href: virtual-network-connection.md
-        - name: Einrichten virtueller VMware-Computer für die private Cloud
+        - name: Einrichten virtueller CloudSimple-Computer
           items:
-            - name: Erstellen eines virtuellen Computers in Azure
+            - name: Erstellen eines virtuellen CloudSimple-Computers in Azure
               href: azure-create-vm.md
-            - name: Verwalten von virtuellen Computern in Azure
+            - name: Verwalten virtueller CloudSimple-Computer in Azure
               href: azure-manage-vm.md
     - name: Anleitungen
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: Private Cloudnetzwerke
           items:
-            - name: VPN-Verbindung zwischen lokaler Umgebung und privater Cloud
+            - name: VPN-Verbindung mit privater Cloud
               href: set-up-vpn.md
             - name: Lokale Netzwerkverbindung mit ExpressRoute
               href: on-premises-connection.md
             - name: Virtuelle Azure-Netzwerkverbindung mit ExpressRoute
               href: azure-expressroute-connection.md
+            - name: Konfigurieren der DNS-Namensauflösung
+              href: on-premises-dns-setup.md
         - name: VMware-Plattform
           items:
             - name: Kennenlernen des Berechtigungsmodells für private Clouds

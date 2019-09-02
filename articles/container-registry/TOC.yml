@@ -59,6 +59,8 @@
       items:
         - name: Push- und Pull-Vorgänge für Images
           href: container-registry-get-started-docker-cli.md
+        - name: Push- und Pull-Vorgänge für OCI-Artefakte
+          href: container-registry-oci-artifacts.md
         - name: Anzeigen von Repositorys
           href: container-registry-repositories.md
         - name: Importieren von Containerimages

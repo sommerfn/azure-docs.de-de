@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311869"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114804"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -56,7 +56,7 @@ Informationen zur Verwendung der Schnelltasks finden Sie im ersten ACR Tasks-Tut
 
 ## <a name="automatic-build-on-source-code-commit"></a>Automatische Erstellung nach dem Committen von Quellcode
 
-Lösen Sie mithilfe von ACR Tasks automatisch einen Containerimage-Buildvorgang aus, wenn Code in ein Git-Repository committet wird. Buildaufgaben können mithilfe des Azure CLI-Befehls [az acr task][az-acr-task] konfiguriert werden und ermöglichen die Angabe eines Git-Repositorys und optional eines Branch und einer Dockerfile-Datei. Wenn Ihr Team Code in das Repository committet, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus.
+Lösen Sie mithilfe von ACR Tasks automatisch einen Containerimage-Buildvorgang aus, wenn Code in ein Git-Repository in GitHub oder Azure DevOps committet wird. Buildaufgaben können mithilfe des Azure CLI-Befehls [az acr task][az-acr-task] konfiguriert werden und ermöglichen die Angabe eines Git-Repositorys und optional eines Branch und einer Dockerfile-Datei. Wenn Ihr Team Code in das Repository committet, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus.
 
 > [!IMPORTANT]
 > Wenn Sie in der Vorschauversion bereits Aufgaben mit dem Befehl `az acr build-task` erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
@@ -73,10 +73,14 @@ Wenn ein Betriebssystem- oder App-Framework-Image durch die zuständige Upstream
 
 Da Basisimageabhängigkeiten bei der Erstellung eines Containerimages von ACR Tasks dynamisch erkannt werden, kann ACR Tasks auch erkennen, dass das Basisimage eines Anwendungsimages aktualisiert wurde. Mit einer einzelnen vorkonfigurierten [Buildaufgabe](container-registry-tutorial-base-image-update.md#create-a-task) kann ACR Tasks dann **automatisch alle Anwendungsimages neu erstellen**. Die automatische Erkennung und Neuerstellung von ACR Tasks spart Zeit, die ansonsten für die manuelle Nachverfolgung und Aktualisierung der einzelnen Anwendungsimages aufgewendet werden müsste, die auf Ihr aktualisiertes Basisimage verweisen.
 
-Informationen zu Betriebssystem- und Frameworkpatches finden Sie im dritten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks](container-registry-tutorial-base-image-update.md).
+Ein ACR Task verfolgt ein Basisimageupdate, wenn sich das Basisimage an einem der folgenden Speicherorte befindet:
 
-> [!NOTE]
-> Derzeit lösen Aktualisierungen von Basisimages Builds nur dann aus, wenn sich das Basis- und das Anwendungsimage in der gleichen Azure-Containerregistrierung befinden oder das Basisimage in einem öffentlichen Docker Hub- oder Microsoft Container Registry-Repository gespeichert ist.
+* Dieselbe Azure-Containerregistrierung, in der der Task ausgeführt wird
+* Eine andere Azure-Containerregistrierung in derselben Region 
+* Ein öffentliches Repository in Docker Hub
+* Ein öffentliches Repository in Microsoft Container Registry
+
+Weitere Informationen zu Betriebssystem- und Frameworkpatches finden Sie im dritten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks](container-registry-tutorial-base-image-update.md).
 
 ## <a name="multi-step-tasks"></a>Mehrstufige Aufgaben
 

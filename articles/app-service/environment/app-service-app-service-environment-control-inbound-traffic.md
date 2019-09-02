@@ -10,17 +10,16 @@ ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130788"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070403"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -118,7 +117,7 @@ Die von jeder IP-SSL-Adresse verwendeten einzelnen Portspaare finden Sie in der 
 Wenn eine App in einer ASE für die IP-SSL-Adresse konfiguriert ist, wird die spezielle Portpaarzuordnung externen Kunden nicht angezeigt, und sie müssen sich darüber keine Gedanken machen.  Der Datenverkehr zu den Apps fließt normal an die konfigurierte IP-SSL-Adresse.  Die Übersetzung in das spezielle Portpaar geschieht automatisch intern während des letzten Abschnitts des Datenverkehrsroutings in das Subnetz, das die ASE enthält. 
 
 ## <a name="getting-started"></a>Erste Schritte
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment].
+Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment]
 
 Einzelheiten zum Herstellen einer sicheren Verbindung von Apps mit der Back-End-Ressource von einer App Service-Umgebung aus finden Sie unter [Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus][SecurelyConnecttoBackend].
 

@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: Riskante Anmeldungen
       href: concept-risky-sign-ins.md
-    - name: Risikoereignisse
+    - name: Risikoerkennungen
       href: concept-risk-events.md
     - name: Gefährdete Benutzer
       href: concept-user-at-risk.md
+    - name: Bereitstellungsprotokolle
+      href: concept-provisioning-logs.md
     - name: Berichterstellungs-APIs
       href: concept-reporting-api.md
     - name: Azure AD-Protokolle in Azure Monitor

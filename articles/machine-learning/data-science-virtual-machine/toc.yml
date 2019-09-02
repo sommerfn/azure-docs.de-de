@@ -4,9 +4,9 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Was ist die Data Science-VM?
+    - name: Worum handelt es sich bei Data Science Virtual Machine?
       href: overview.md
-    - name: Was ist Data Science VM für geografische KI?
+    - name: Worum handelt es sich bei der DSVM-Instanz für geografische KI?
       href: geo-ai-dsvm-overview.md
 - name: Schnellstarts
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Erstellen einer DSVM-Instanz für CentOS
       href: linux-dsvm-intro.md
-    - name: Erstellen einer Data Science VM-Instanz für geografische KI
+    - name: Erstellen einer DSVM-Instanz für geografische KI
       href: provision-geo-ai-dsvm.md
 - name: Konzepte
   items:

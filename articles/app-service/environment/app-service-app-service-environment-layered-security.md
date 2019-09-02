@@ -10,17 +10,16 @@ ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130686"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070129"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -94,9 +93,9 @@ Nach Anwendung der Netzwerksicherheitsgruppe auf das Subnetz sind Aufrufe an die
 ## <a name="additional-links-and-information"></a>Zusätzliche Links und Informationen
 Informationen zu [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)
 
-Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen
+Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen.
 
-In App Service-Umgebungen verwendete [Netzwerkports][InboundTraffic]
+Von App Service-Umgebungen verwendete [Netzwerkports][InboundTraffic].
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

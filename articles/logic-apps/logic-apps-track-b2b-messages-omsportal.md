@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120125"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997846"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen
 
@@ -216,7 +216,7 @@ Hier sind die Eigenschaftsbeschreibungen für die einzelnen EDIFACT-Nachrichten 
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine EDIFACT-Vereinbarung |
 | Logik-App | Die Logik-App, in der die EDIFACT-Aktionen eingerichtet wurden |
 | Status | EDIFACT-Nachrichtenstatus <br>Erfolg = Eine gültige EDIFACT-Nachricht wurde empfangen oder gesendet. Keine Funktionsbestätigung wird eingerichtet. <br>Erfolg = Eine gültige EDIFACT-Nachricht wurde empfangen oder gesendet. Eine Funktionsbestätigung wird eingerichtet und empfangen, oder eine Funktionsbestätigung wird gesendet. <br>Fehler = Eine ungültige EDIFACT-Nachricht wurde empfangen oder gesendet. <br>Ausstehend = Eine gültige EDIFACT-Nachricht wurde empfangen oder gesendet. Eine Funktionsbestätigung wird eingerichtet, und eine Funktionsbestätigung wird erwartet. |
-| Ack | Status der Funktionsbestätigung (997) <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet. <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet. <br>Ausstehend = Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen. <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden. <br>Nicht erforderlich = Funktionsbestätigung wurde nicht eingerichtet. |
+| Ack | (CONTRL) Status der Funktionsbestätigung <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet. <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet. <br>Ausstehend = Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen. <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden. <br>Nicht erforderlich = Funktionsbestätigung wurde nicht eingerichtet. |
 | Direction | Richtung der EDIFACT-Nachricht |
 | Korrelations-ID | ID, die alle Trigger und Aktionen in einer Logik-App korreliert |
 | Msg type | EDIFACT-Nachrichtentyp |
