@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534666"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061333"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -278,6 +278,7 @@ Doppelklicken Sie auf die rot angezeigte Ausnahme, um die vollständige Ausnahme
 |`0x8024001E`| Der Updatevorgang konnte nicht abgeschlossen werden, da der Dienst oder das System heruntergefahren wurden.|
 |`0x8024002E`| Der Windows Update-Dienst ist deaktiviert.|
 |`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server aufweisen.        |
+|`0x80072EE2`|Netzwerkkonnektivitätsproblem oder Problem bei der Kommunikation mit einem konfigurierten WSUS-Server. Überprüfen Sie die WSUS-Einstellungen, und stellen Sie sicher, dass der Client darauf zugreifen kann.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Stellen Sie sicher, dass der Windows Update-Dienst (wuauserv) ausgeführt wird und nicht deaktiviert ist.        |
 |Weitere generische Ausnahmen     | Suchen Sie im Internet nach möglichen Lösungen, und arbeiten Sie mit Ihrem lokalen IT-Support zusammen.         |
 
@@ -339,7 +340,7 @@ Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der fo
 ### <a name="machines-do-not-install-updates"></a>Computer installieren keine Updates.
 
 * Versuchen Sie, Updates direkt auf dem Computer auszuführen. Kann der Computer nicht aktualisiert werden, sehen Sie sich die [Liste mit potenziellen Fehlern im Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult) an.
-* Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen eines virtuellen Computers für die Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management) befolgen.
+* Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen eines virtuellen Computers für die Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management) befolgen.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Ich weiß, dass Updates verfügbar sind, diese werden auf meinen Computern aber nicht als erforderlich angezeigt.
 
