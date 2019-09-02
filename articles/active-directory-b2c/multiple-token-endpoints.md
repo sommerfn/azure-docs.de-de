@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 In diesem Abschnitt aktualisieren Sie den Code, um anzugeben, dass beide Tokenausstellerendpunkte gültig sind.
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet.sln** in Visual Studio.
-1. Öffnen Sie im Projekt **TaskService** die Datei *TaskService\\App_Start\\**Startup.Auth.cs*** im Editor.
+1. Öffnen Sie im Projekt **TaskService** die Datei *TaskService\\App_Start\\ **Startup.Auth.cs*** im Editor.
 1. Fügen Sie am Anfang der Datei die folgende `using`-Anweisung hinzu:
 
     `using System.Collections.Generic;`

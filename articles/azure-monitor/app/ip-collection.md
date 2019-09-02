@@ -84,7 +84,7 @@ Wenn Sie nur das Verhalten für eine einzelne Application Insights-Ressource än
     ![Screenshot: Einfügen eines Kommas nach "IbizaAIExtension" und einer neuen Zeile darunter mit "DisableIpMasking": true](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Wenn eine Fehlermeldung mit folgendem Text angezeigt wird: ** _** (Die Ressourcengruppe befindet sich an einem Speicherort, der von keiner Ressource in der Vorlage unterstützt wird. Bitte wählen Sie eine andere Ressourcengruppe). Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus, um den Fehler zu beheben.
+    > Wenn eine Fehlermeldung mit folgendem Text angezeigt wird: **_The resource group is in a location that is not supported by one or more resources in the template. Please choose a different resource group._** (Die Ressourcengruppe befindet sich an einem Speicherort, der von keiner Ressource in der Vorlage unterstützt wird. Bitte wählen Sie eine andere Ressourcengruppe). Wählen Sie vorübergehend eine andere Ressourcengruppe aus der Dropdownliste aus, und wählen Sie dann erneut die ursprüngliche Ressourcengruppe aus, um den Fehler zu beheben.
 
 5. Klicken Sie auf **Ich stimme zu** > **Kaufen**. 
 
