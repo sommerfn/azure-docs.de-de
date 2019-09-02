@@ -50,13 +50,13 @@ Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung dur
 | Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
 | id | string | Eindeutiger Bezeichner für das Ereignis. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
 | eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
 | metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Weitere Informationen zum Event Grid-Ereignisschema:
 
