@@ -53,14 +53,14 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
 
 | Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
-| **parentId** | Zeichenfolge | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
-| **name** |Zeichenfolge | Ein benutzerfreundlicher Name für das Blob |
-| **type** | Zeichenfolge | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
+| **parentId** | String | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
+| **name** |String | Ein benutzerfreundlicher Name für das Blob |
+| **type** | String | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
 | **typeId** | Integer | Die Blobtyp-ID: *type* und *typeId* können nicht verwendet werden. |
-| **subtype** | Zeichenfolge | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
+| **subtype** | String | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
 | **subtypeId** | Integer | Die Untertyp-ID des Blobs: *subtype* und *subtypeId* können nicht verwendet werden. |
-| **description** | Zeichenfolge | Benutzerdefinierte Beschreibung des Blobs |
-| **sharing** | Zeichenfolge | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
+| **description** | String | Benutzerdefinierte Beschreibung des Blobs |
+| **sharing** | String | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
 
 Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
