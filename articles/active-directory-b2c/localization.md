@@ -1,5 +1,5 @@
 ---
-title: Lokalisierung – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Lokalisierung – Azure Active Directory B2C
 description: Erfahren Sie, wie Sie das Localization-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510580"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033464"
 ---
 # <a name="localization"></a>Lokalisierung
 
@@ -47,7 +47,7 @@ Das **Localization**-Element enthält die folgenden XML-Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| SupportedLanguages | 1:n | Liste der unterstützten Sprachen | 
+| SupportedLanguages | 1:n | Liste der unterstützten Sprachen |
 | LocalizedResources | 0:n | Liste der lokalisierten Ressourcen |
 
 ## <a name="supportedlanguages"></a>SupportedLanguages
@@ -65,7 +65,7 @@ Das **SupportedLanguages**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| SupportedLanguage | 1:n | Zeigt Inhalt an, der einem Sprachtag nach „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen) entspricht. | 
+| SupportedLanguage | 1:n | Zeigt Inhalt an, der einem Sprachtag nach „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen) entspricht. |
 
 ## <a name="localizedresources"></a>LocalizedResources
 
@@ -73,7 +73,7 @@ Das **LocalizedResources**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der zur eindeutigen Identifizierung von lokalisierten Ressourcen verwendet wird. |
+| Id | Ja | Ein Bezeichner, der zur eindeutigen Identifizierung von lokalisierten Ressourcen verwendet wird. |
 
 Das **LocalizedResources**-Element enthält die folgenden Elemente:
 
@@ -112,6 +112,7 @@ Das **Item**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | Text | Ja | Die benutzerfreundliche Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt werden soll. |
 | Wert | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
+| SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
 Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements. Es enthält zwei **LocalizedCollection**-Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction**-Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
 
@@ -131,7 +132,6 @@ Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements
       <Item Text="Masculino" Value="M" />
     </LocalizedCollection>
 </LocalizedCollections>
-
 ```
 
 ### <a name="localizedstrings"></a>LocalizedStrings
@@ -147,7 +147,7 @@ Das **LocalizedString**-Element enthält die folgenden Attribute:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ElementType | Ja | Ein Verweis auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtlinie. Mögliche Werte: `ClaimType`, `UxElement`, `ErrorMessage` oder `Predicate`. Der Wert `ClaimType` wird verwendet, um eines der Anspruchsattribute gemäß der StringId zu lokalisieren. Der Wert `UxElement` wird verwendet, um eines der Elemente der Benutzeroberfläche gemäß der StringId zu lokalisieren. Der Wert `ErrorMessage` wird verwendet, um eine der Systemfehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `Predicate` wird verwendet, um eine der [Predicate](predicates.md)-Fehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `InputValidation` wird verwendet, um eine der Fehlermeldungen der [PredicateValidation](predicates.md)-Gruppe gemäß der StringId zu lokalisieren. |
-| ElementId | Ja | Wenn **ElementType** auf `ClaimType`, `Predicate` oder `InputValidation` festgelegt wurde, enthält dieses Element einen Verweis auf einen Anspruchstyp, der bereits im ClaimsSchema-Abschnitt definiert wurde. | 
+| ElementId | Ja | Wenn **ElementType** auf `ClaimType`, `Predicate` oder `InputValidation` festgelegt wurde, enthält dieses Element einen Verweis auf einen Anspruchstyp, der bereits im ClaimsSchema-Abschnitt definiert wurde. |
 | StringId | Ja | Wenn **ElementType** auf `ClaimType` festgelegt ist, enthält dieses Element einen Verweis auf ein Attribut eines Anspruchstyps. Mögliche Werte: `DisplayName`, `AdminHelpText` oder `PatternHelpText`. Der Wert `DisplayName` wird verwendet, um den Anzeigenamen des Anspruchs festzulegen. Der Wert `AdminHelpText` wird verwendet, um den Namen des Hilfetexts des Anspruchsbenutzers festzulegen. Der Wert `PatternHelpText` wird verwendet, um den Hilfetext des Anspruchsmusters festzulegen. Wenn **ElementType** auf `UxElement` festgelegt ist, enthält dieses Element einen Verweis auf ein Attribut eines Elements der Benutzeroberfläche. Wenn **ElementType** auf `ErrorMessage` festgelegt ist, gibt dieses Element die ID einer Fehlermeldung an. Unter [Lokalisierungszeichenfolgen-IDs](localization-string-ids.md) finden Sie eine vollständige Liste der `UxElement`-Bezeichner.|
 
 
@@ -187,7 +187,7 @@ Das folgende Beispiel zeigt den lokalisierten **UserHelpText** von **Predicate**
 
 <LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>              
+<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
 ## <a name="set-up-localization"></a>Einrichten der Lokalisierung
@@ -207,12 +207,13 @@ Fügen Sie unter dem **BuildingBlocks**-Element das **Localization**-Element mit
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>Angeben der sprachspezifischen Zeichenfolgen und Sammlungen 
+### <a name="provide-language-specific-strings-and-collections"></a>Angeben der sprachspezifischen Zeichenfolgen und Sammlungen
 
-Fügen Sie im **Localization**-Element hinter dem Ende des **SupportedLanguages**-Elements **LocalizedResources**-Elemente hinzu. Sie fügen **LocalizedResources**-Elemente für jede Seite (Inhaltsdefinition) und jede beliebige Sprache, die Sie unterstützen möchten, hinzu. Zum Anpassen der einheitlichen Seite für die Registrierung oder Anmeldung und der Seiten für die mehrstufige Authentifizierung (MFA) auf Englisch, Spanisch und Französisch fügen Sie die folgenden **LocalizedResources**-Elemente hinzu.  
+Fügen Sie im **Localization**-Element hinter dem Ende des **SupportedLanguages**-Elements **LocalizedResources**-Elemente hinzu. Sie fügen **LocalizedResources**-Elemente für jede Seite (Inhaltsdefinition) und jede beliebige Sprache, die Sie unterstützen möchten, hinzu. Zum Anpassen der einheitlichen Seite für die Registrierung oder Anmeldung und der Seiten für die mehrstufige Authentifizierung (MFA) auf Englisch, Spanisch und Französisch fügen Sie die folgenden **LocalizedResources**-Elemente hinzu.
+
 - Einheitliche Seite für Registrierung oder Anmeldung, Englisch `<LocalizedResources Id="api.signuporsignin.en">`
 - Einheitliche Seite für Registrierung oder Anmeldung, Spanisch `<LocalizedResources Id="api.signuporsignin.es">`
-- Einheitliche Seite für Registrierung oder Anmeldung, Französisch `<LocalizedResources Id="api.signuporsignin.fr">` 
+- Einheitliche Seite für Registrierung oder Anmeldung, Französisch `<LocalizedResources Id="api.signuporsignin.fr">`
 - Registrierung, Englisch `<LocalizedResources Id="api.localaccountsignup.en">`
 - Registrierung, Spanisch `<LocalizedResources Id="api.localaccountsignup.es">`
 - Registrierung, Französisch `<LocalizedResources Id="api.localaccountsignup.fr">`
@@ -220,7 +221,7 @@ Fügen Sie im **Localization**-Element hinter dem Ende des **SupportedLanguages*
 - MFA, Spanisch `<LocalizedResources Id="api.phonefactor.es">`
 - MFA, Französisch `<LocalizedResources Id="api.phonefactor.fr">`
 
-Jedes **LocalizedResources**-Element enthält alle erforderlichen **LocalizedStrings**-Elemente mit mehreren **LocalizedString**-Elementen und **LocalizedCollections**-Elemente mit mehreren **LocalizedCollection**-Elementen.  Im folgenden Beispiel wird die Seite für Registrierung mit englischer Lokalisierung hinzugefügt: 
+Jedes **LocalizedResources**-Element enthält alle erforderlichen **LocalizedStrings**-Elemente mit mehreren **LocalizedString**-Elementen und **LocalizedCollections**-Elemente mit mehreren **LocalizedCollection**-Elementen.  Im folgenden Beispiel wird die Seite für Registrierung mit englischer Lokalisierung hinzugefügt:
 
 Hinweis: Dieses Beispiel verweist auf die Anspruchstypen `Gender` und `City`. Um dieses Beispiel verwenden zu können, müssen Sie diese Ansprüche definieren. Weitere Informationen finden Sie unter [ClaimsSchema](claimsschema.md).
 
@@ -276,7 +277,7 @@ Die Registrierungsseite mit Lokalisierung für Spanisch.
 </LocalizedResources>
 ```
 
-### <a name="edit-the-contentdefinition-for-the-page"></a>Bearbeiten der ContentDefinition für die Seite 
+### <a name="edit-the-contentdefinition-for-the-page"></a>Bearbeiten der ContentDefinition für die Seite
 
 Geben Sie für jede Seite, die Sie lokalisieren möchten, die Sprachcodes an, nach denen in der **ContentDefinition** gesucht werden soll.
 
@@ -363,7 +364,3 @@ Das folgende Beispiel zeigt den endgültigen XML-Code:
   </Localization>
 </BuildingBlocks>
 ```
-
-
-
-

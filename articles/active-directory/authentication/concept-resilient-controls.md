@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779673"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125111"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -232,7 +232,7 @@ Je nachdem, welche Entschärfungen oder Notfallpläne bei einer Unterbrechung ve
 1. Als Teil Ihrer Strategie zum Ändern der Steuerung dokumentieren Sie alle Änderungen und den vorherigen Status, damit Sie Notfallpläne, die Sie implementiert haben, zurücksetzen können, sobald die Zugriffssteuerungen wieder voll funktionstüchtig sind.
 2. Gehen Sie davon aus, dass böswillige Akteure versuchen werden, Kennwörter über Kennwort-Spray- oder Phishing-Angriffe zu sammeln, während Sie MFA deaktiviert haben. Böswillige Akteure könnten möglicherweise auch bereits über Kennwörter verfügen, die zuvor keinen Zugriff auf Ressourcen zuließen, aber in diesem Zeitfenster ausprobiert werden könnten. Sie können dieses Risiko für kritische Benutzer wie Führungskräfte teilweise verringern, indem Sie deren Kennwörter zurücksetzen, bevor Sie MFA für Sie deaktivieren.
 3. Archivieren Sie alle Anmeldeaktivitäten, um feststellen zu können, wer während des Zeitraums, in dem MFA deaktiviert war, auf was zugegriffen hat.
-4. [Selektieren Sie alle gemeldeten Risikoereignisse](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins), die während dieses Zeitfensters aufgetreten sind.
+4. [Selektieren Sie alle gemeldeten Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) in diesem Zeitfenster erfolgt sind.
 
 ## <a name="after-a-disruption"></a>Nach einer Unterbrechung
 
@@ -242,7 +242,7 @@ Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgen
 2. Deaktivieren Sie die Notfallplanrichtlinien. 
 3. Setzen Sie alle anderen Änderungen zurück, die Sie während der Unterbrechung vorgenommen und dokumentiert haben.
 4. Wenn Sie ein Konto für den Notfallzugriff verwendet haben, müssen Sie die Anmeldeinformationen neu generieren und die Details der neuen Anmeldeinformationen physisch als Teil Ihrer Notfallzugriffskonto-Verfahren sichern.
-5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoereignisse](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) nach verdächtigen Aktivitäten fort.
+5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) nach verdächtigen Aktivitäten fort.
 6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
 
 ## <a name="emergency-options"></a>Notfalloptionen
@@ -254,7 +254,7 @@ Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet,
    1. Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
 
 >[!IMPORTANT]
- > Wenn Sie die vertrauenswürdigen IP-Adressen verwenden, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoereignisse im Zusammenhang mit IP-Adressen (z.B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.
+ > Wenn Sie die vertrauenswürdigen IP-Adressen erweitern, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoerkennungen im Zusammenhang mit IP-Adressen (z. B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.
 
 >[!NOTE]
  > Konfigurieren von [vertrauenswürdigen IP-Adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) für Azure MFA ist nur mit [Azure AD Premium-Lizenzen](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing) verfügbar.

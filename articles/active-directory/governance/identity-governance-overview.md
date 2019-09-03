@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499661"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033326"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -80,6 +80,8 @@ Es gibt keine perfekte Lösung oder Empfehlung, die für alle Kunden geeignet is
 Sie können auch im Azure-Portal die Registerkarte „Erste Schritte“ von **Identity Governance** öffnen, um mit der Verwendung der Berechtigungsverwaltung, von Zugriffsüberprüfungen, Privileged Identity Management und Nutzungsbedingungen zu beginnen.
 
 ![Identity Governance, Registerkarte „Erste Schritte“](./media/identity-governance-overview/getting-started.png)
+
+Wenn Sie uns Feedback zu Identity Governance-Features geben möchten, klicken Sie im Azure-Portal auf **Haben Sie Feedback für uns?** , um Ihr Feedback zu senden. Das Team überprüft regelmäßig Ihr Feedback.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

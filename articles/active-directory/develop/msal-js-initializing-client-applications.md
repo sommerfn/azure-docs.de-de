@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df2f9aa56e22bd4060c823b02900fa914a0fd7f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532800"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073843"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.js
 Dieser Artikel beschreibt die Initialisierung der Microsoft Authentication Library für JavaScript (MSAL.js) mit einer Instanz einer Benutzer-Agent-Anwendung. Die Benutzer-Agent-Anwendung ist eine Form der öffentlichen Clientanwendung, bei der der Clientcode in einem Benutzer-Agent wie beispielsweise einem Webbrowser ausgeführt wird. Diese Clients speichern keine geheimen Schlüssel, da der Browserkontext offen zugänglich ist. Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
@@ -123,7 +123,7 @@ Nachfolgend finden Sie alle konfigurierbaren Optionen, die derzeit im Konfigurat
 
 - **validateAuthority**: Optional.  Validieren Sie den Aussteller des Tokens. Der Standardwert ist `true`. Da der Autoritätswert bekannt ist und je nach Richtlinie unterschiedlich sein kann, funktioniert die Autoritätsvalidierung bei B2C-Anwendungen nicht und muss auf `false` festgelegt werden.
 
-- **redirectUri**: Optional.  Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben – mit dem Unterschied, dass er URL-codiert sein muss. Der Standardwert lautet `window.location.href`.
+- **redirectUri**: Optional.  Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben. Der Standardwert lautet `window.location.href`.
 
 - **postLogoutRedirectUri**: Optional.  Leitet den Benutzer nach der Abmeldung zu `postLogoutRedirectUri` um. Der Standardwert lautet `redirectUri`.
 

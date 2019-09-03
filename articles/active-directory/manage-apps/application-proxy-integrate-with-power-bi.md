@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9073e00f5c3702e43665541bd8ff9e66c2bc505b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968397"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035141"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Ermöglichen des Remotezugriffs auf Power BI Mobile mit dem Azure AD-Anwendungsproxy
 
@@ -103,25 +103,27 @@ Nun können Sie den Azure AD-Anwendungsproxy konfigurieren.
 
 Navigieren Sie zum Abschließen der Anwendungseinrichtung zum Abschnitt **Benutzer und Gruppen**, und weisen Sie Benutzer zu, die auf diese Anwendung zugreifen dürfen.
 
-## <a name="step-3-register-the-native-app-and-grant-access-to-the-api"></a>Schritt 3: Registrieren der nativen App und Gewähren des Zugriffs auf die API
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>Schritt 3: Ändern der Antwort-URIs für die Anwendung
 
-Native Apps sind Programme, die für die Verwendung auf einer Plattform oder einem Gerät entwickelt wurden. Damit die Power BI Mobile-App eine Verbindung herstellen und auf eine API zugreifen kann, müssen Sie sie zunächst in Azure AD registrieren.  
+Bevor die mobile Power BI-App eine Verbindung herstellen und auf Berichtsdienste zugreifen kann, müssen Sie die Anwendungsregistrierung konfigurieren, die in Schritt 2 automatisch für Sie erstellt wurde. 
 
-1. Führen Sie [Schritt 2: Registrieren Ihrer nativen Anwendung](application-proxy-configure-native-client-application.md#step-2-register-your-native-application) des Artikels „Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen“ aus, um die Anwendung in Azure AD zu registrieren.
+1. Wählen Sie in Azure Active Directory auf der Seite **Übersicht** die Option **App-Registrierungen** aus.
+2. Suchen Sie auf der Registerkarte **Alle Anwendungen** nach der Anwendung, die Sie in Schritt 2 erstellt haben.
+3. Wählen Sie die Anwendung aus, und wählen Sie dann **Authentifizierung** aus.
+4. Fügen Sie die folgenden Umleitungs-URIs basierend auf der von Ihnen verwendeten Plattform hinzu.
 
-   Wenn Sie die Power BI Mobile-App für **iOS** registrieren, fügen Sie die folgenden Umleitungs-URIs hinzu:
+   Fügen Sie beim Konfigurieren der App für Power BI Mobile **iOS** die folgenden Umleitungs-URIs vom Typ „Öffentlicher Client (Mobilgerät und Desktop)“ hinzu:
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Wenn Sie die Power BI Mobile-App für **Android** registrieren, fügen Sie die folgenden Umleitungs-URIs hinzu:
+   Fügen Sie beim Konfigurieren der App für Power BI Mobile **Android** die folgenden Umleitungs-URIs vom Typ „Öffentlicher Client (Mobilgerät und Desktop)“ hinzu:
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > Die Umleitungs-URIs müssen hinzugefügt werden, damit die Anwendung ordnungsgemäß funktioniert.
-
-Nachdem Sie Ihre native Anwendung registriert haben, können Sie ihr Zugriff auf andere Anwendungen in Ihrem Verzeichnis gewähren – in diesem Fall auf die Report Services-Instanz, die über den Anwendungsproxy veröffentlich wird. Gehen Sie wie in [Schritt 3: Gewähren des Zugriffs auf Ihre Proxyanwendung](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application) beschrieben vor.
+   > Die Umleitungs-URIs müssen hinzugefügt werden, damit die Anwendung ordnungsgemäß funktioniert. Wenn Sie die App für Power BI Mobile iOS und für Power BI Mobile Android konfigurieren, fügen Sie der Liste der für iOS konfigurierten Umleitungs-URIs den folgenden Umleitungs-URI vom Typ „Öffentlicher Client (Mobilgerät und Desktop)“ hinzu: `urn:ietf:wg:oauth:2.0:oob`
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Schritt 4: Herstellen einer Verbindung über die Power BI Mobile-App
 

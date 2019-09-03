@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776a73f8a20a3f5ad4e97a08ff3871e805a61eb3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4b555ecdf8bbd3d29e440675599041f40ac3c9d0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879116"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125027"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -76,7 +76,7 @@ Richtlinien für bedingten Zugriff erzwingen die Registrierung, sodass nicht reg
 * Anmeldungen von infizierten Geräten
 * Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten
 
-Einige der von Azure Active Directory Identity Protection erkannten Risikoereignisse geschehen in Echtzeit, und einige erfordern Offlineverarbeitung. Administratoren können wahlweise Benutzer blockieren, die riskante Verhaltensweisen zeigen, und den Vorgang manuell korrigieren, eine Kennwortänderung anfordern oder eine mehrstufige Authentifizierung im Rahmen ihrer Richtlinien für bedingten Zugriff anfordern.
+Einige der von Azure Active Directory Identity Protection erkannten Risikoerkennungen erfolgen in Echtzeit, und einige erfordern eine Offlineverarbeitung. Administratoren können wahlweise Benutzer blockieren, die riskante Verhaltensweisen zeigen, und den Vorgang manuell korrigieren, eine Kennwortänderung anfordern oder eine mehrstufige Authentifizierung im Rahmen ihrer Richtlinien für bedingten Zugriff anfordern.
 
 ## <a name="define-network-locations"></a>Definieren von Netzwerkadressen
 

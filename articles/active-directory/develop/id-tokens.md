@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/27/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853174"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074259"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -30,7 +30,7 @@ ms.locfileid: "68853174"
 
 ## <a name="using-the-id_token"></a>Verwenden des ID-Tokens
 
-ID-Token sollten verwendet werden, um zu überprüfen, ob ein Benutzer der ist, der er vorgibt zu sein, und um zusätzliche nützliche Informationen über ihn zu erhalten. Sie sollten nicht für die Autorisierung anstelle eines [Zugriffstokens](access-tokens.md) verwendet werden. Die bereitgestellten Ansprüche können für UX in Ihrer Anwendung, das Versehen einer Datenbank mit Schlüsseln und die Bereitstellung von Zugriff auf die Clientanwendung verwendet werden.
+ID-Token sollten verwendet werden, um zu überprüfen, ob ein Benutzer der ist, der er vorgibt zu sein, und um zusätzliche nützliche Informationen über ihn zu erhalten. Sie sollten nicht für die Autorisierung anstelle eines [Zugriffstokens](access-tokens.md) verwendet werden. Die bereitgestellten Ansprüche können für UX in Ihrer Anwendung, als Schlüssel in einer Datenbank und zum Bereitstellen des Zugriffs auf die Clientanwendung verwendet werden.  Beim Erstellen von Schlüsseln für eine Datenbank sollte `idp` nicht verwendet werden, weil Gastszenarien dadurch manipuliert werden.  Die Schlüsselerstellung sollte nur für `sub` (immer eindeutig) durchgeführt werden, wobei `tid` bei Bedarf für das Routing verwendet wird.  Wenn Sie Daten dienstübergreifend freigeben müssen, können Sie `oid`+`sub`+`tid` verwenden, da mehrere Dienste die gleiche `oid` erhalten.
 
 ## <a name="claims-in-an-id_token"></a>Ansprüche in einem ID-Token
 

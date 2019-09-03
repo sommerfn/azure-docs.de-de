@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853056"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032878"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Beseitigen falscher Kennwörter in Ihrer Organisation
 
@@ -121,7 +121,7 @@ Die Fuzzyübereinstimmung wird für das normalisierte Kennwort verwendet, um fes
 
 Beispiel: Nehmen wir an, dass das Kennwort „leer“ gesperrt ist und ein Benutzer versucht, sein Kennwort in eines der folgenden zu ändern.
 
-‘abcdeg’    *(letztes Zeichen von ‘f’ in ‘g’ geändert)* ‘abcdefg’   *’(g’ am Ende angefügt)* ‘abcde’     *(nachfolgendes ‘f’ wurde am Ende gelöscht)*
+„abcdeg“ *(letztes Zeichen von „f“ in „g“ geändert)* „abcdefg“ *(„g“ am Ende angefügt)* „abcde“ *(nachfolgendes „f“ wurde am Ende gelöscht)*
 
 Jedes der obigen Kennwörter entspricht nicht spezifisch dem verbotenen Kennwort „abcdef“. Da sich jedoch jedes Beispiel in einer Edit-Distanz von 1 des gesperrten Ausdrucks „abcdef“ befindet, werden sie alle als Übereinstimmung mit „abcdef“ betrachtet.
 

@@ -1,6 +1,6 @@
 ---
 title: Best Practices für den bedingten Zugriff in Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, was Sie wissen sollten und was Sie beim Konfigurieren von Richtlinien für den bedingten Zugriff vermeiden sollten.
+description: Erfahren Sie, was Sie wissen sollten und was Sie beim Konfigurieren von Richtlinien für bedingten Zugriff vermeiden sollten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963447"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980494"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
 Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Dieser Artikel bietet Folgendes:
 
 - Wichtige Informationen 
-- Aktionen, die Sie beim Konfigurieren von Richtlinien für den bedingten Zugriff vermeiden sollten. 
+- Aktionen, die Sie beim Konfigurieren von Richtlinien für bedingten Zugriff vermeiden sollten. 
 
 Für diesen Artikel wird davon ausgegangen, dass Sie mit den Konzepten und Begriffen vertraut sind, die in [ Was ist bedingter Zugriff in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md) beschrieben werden.
 
@@ -37,21 +37,21 @@ Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
 | Was           | Vorgehensweise                                  | Warum |
 | :--            | :--                                  | :-- |
-| **Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
-| **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
+| **Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
+| **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals ausgelöst. |
 | **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind. |
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Wie werden Richtlinien für bedingten Zugriff angewendet?
 
-Beim Zugriff auf eine Cloud-App können mehrere Richtlinien für bedingten Zugriff gelten. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der MFA und die zweite Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. 
+Wenn Sie auf eine Cloud-App zugreifen, können mehrere Richtlinien für bedingten Zugriff angewendet werden. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der MFA und die zweite Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. 
 
 Alle Richtlinien werden in zwei Phasen erzwungen:
 
 - In der **ersten** Phase werden alle Richtlinien ausgewertet und alle nicht erfüllten Zugriffssteuerungen gesammelt. 
 
-- In der **zweiten** Phase werden Sie aufgefordert, die nicht erfüllten Anforderungen zu erfüllen. Sollte eine der Richtlinien den Zugriff blockieren, werden Sie blockiert und nicht zur Erfüllung weiterer Richtlinienanforderungen aufgefordert. Falls Sie durch keine der Richtlinien blockiert wurden, werden Sie aufgefordert, weitere Richtlinienanforderungen zu erfüllen. Dabei gilt die folgende Reihenfolge:
+- In der **zweiten** Phase werden Sie aufgefordert, die nicht erfüllten Anforderungen zu erfüllen. Wenn eine der Richtlinien den Zugriff blockiert, werden Sie blockiert und nicht zur Erfüllung weiterer Richtlinienanforderungen aufgefordert. Falls Sie durch keine der Richtlinien blockiert wurden, werden Sie aufgefordert, weitere Richtlinienanforderungen zu erfüllen. Dabei gilt die folgende Reihenfolge:
 
    ![Reihenfolge](./media/best-practices/06.png)
     
@@ -68,10 +68,10 @@ Beim Konfigurieren einer Standortbedingung, die für alle Verbindungen von auße
 
 ### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Was ist zu tun, wenn Ihr Zugriff auf das Azure AD-Verwaltungsportal gesperrt ist?
 
-Wenn Ihr Zugriff auf das Azure AD-Portal aufgrund einer falschen Einstellung in einer Richtlinie für den bedingten Zugriff gesperrt wurde, gehen Sie folgendermaßen vor:
+Wenn Ihr Zugriff auf das Azure AD-Portal aufgrund einer falschen Einstellung in einer Richtlinie für bedingten Zugriff gesperrt wurde, gehen Sie folgendermaßen vor:
 
 - Überprüfen Sie, ob weitere Administratoren in Ihrer Organisation vorhanden sind, die noch nicht gesperrt sind. Ein Administrator mit Zugriff auf das Azure-Portal kann die Richtlinie deaktivieren, die Ihre Anmeldung sperrt. 
-- Wenn keiner der Administratoren in Ihrer Organisation die Richtlinie aktualisieren kann, müssen Sie eine Supportanfrage übermitteln. Der Microsoft-Support kann Richtlinien für den bedingten Zugriff, die den Zugriff verhindern, überprüfen und aktualisieren.
+- Wenn keiner der Administratoren in Ihrer Organisation die Richtlinie aktualisieren kann, müssen Sie eine Supportanfrage übermitteln. Der Microsoft-Support kann Richtlinien für bedingten Zugriff, die den Zugriff verhindern, überprüfen und aktualisieren.
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Was passiert, wenn Sie im klassischen Azure-Portal und im Azure-Portal Richtlinien konfiguriert haben?  
 
@@ -87,7 +87,9 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funktioniert der bedingte Zugriff mit Exchange ActiveSync?
 
-Ja, Sie können Exchange ActiveSync mit einigen [Einschränkungen](block-legacy-authentication.md) in einer Richtlinie für bedingten Zugriff verwenden. 
+Ja, Sie können Exchange ActiveSync in einer Richtlinie für bedingten Zugriff verwenden.
+
+Einige Cloud-Apps wie SharePoint Online und Exchange Online unterstützen auch ältere Authentifizierungsprotokolle. Wenn eine Client-App mit einem älteren Authentifizierungsprotokoll auf eine Cloud-App zugreifen kann, kann Azure AD für diesen Zugriffsversuch keine Richtlinie für den bedingten Zugriff erzwingen. Um zu verhindern, dass eine Client-App die Erzwingung von Richtlinien umgeht, sollten Sie überprüfen, ob es möglich ist, für die betroffenen Cloud-Apps nur die moderne Authentifizierung zu aktivieren.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Wie sollten Sie den bedingten Zugriff für Office 365-Apps konfigurieren?
 
@@ -95,7 +97,7 @@ Da Office 365-Apps miteinander verbunden sind, empfiehlt es sich, häufig verwen
 
 Zu den gängigen miteinander verbundenen Anwendungen gehören Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online und Office 365 Yammer.
 
-Bei Richtlinien, die Benutzerinteraktionen erfordern, wie z. B. die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), ist dies wichtig, wenn der Zugriff am Anfang einer Sitzung oder Aufgabe gesteuert wird. Wenn Sie dies nicht tun, können Benutzer einige Aufgaben in einer App nicht ausführen. Wenn beispielsweise auf nicht verwalteten Geräten die mehrstufige Authentifizierung für den Zugriff auf SharePoint, aber nicht für den Zugriff auf die E-Mail-App erforderlich ist, können Benutzer, die in ihrer E-Mail-App arbeiten, keine SharePoint-Dateien an eine Nachricht anfügen. Weitere Informationen finden Sie im Artikel [„Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff?“](service-dependencies.md).
+Bei Richtlinien, die Benutzerinteraktionen erfordern, wie z. B. die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), ist dies wichtig, wenn der Zugriff am Anfang einer Sitzung oder Aufgabe gesteuert wird. Wenn Sie dies nicht tun, können Benutzer einige Aufgaben in einer App nicht ausführen. Wenn beispielsweise auf nicht verwalteten Geräten die mehrstufige Authentifizierung für den Zugriff auf SharePoint, aber nicht für den Zugriff auf die E-Mail-App erforderlich ist, können Benutzer, die in ihrer E-Mail-App arbeiten, keine SharePoint-Dateien an eine Nachricht anfügen. Weitere Informationen finden Sie im Artikel [Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff?](service-dependencies.md)
 
 ## <a name="what-you-should-avoid-doing"></a>Das sollten Sie vermeiden
 
@@ -135,7 +137,7 @@ Aus den folgenden Gründen sollten Sie eine Migration der Richtlinien in Erwägu
 
 - Sie können jetzt Szenarien berücksichtigen, die bisher nicht behandelt werden konnten.
 - Sie können die Anzahl der zu verwaltenden Richtlinien reduzieren, indem Sie diese zusammenführen.   
-- Sie können alle bedingten Zugriffsrichtlinien an einem zentralen Ort verwalten.
+- Sie können alle Richtlinien für bedingten Zugriff zentral verwalten.
 - Das klassische Azure-Portal wurde eingestellt.   
 
 Weitere Informationen finden Sie unter [Migrieren klassischer Richtlinien in das Azure-Portal](policy-migration.md).
@@ -144,5 +146,5 @@ Weitere Informationen finden Sie unter [Migrieren klassischer Richtlinien in das
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Unter [„Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory“](app-based-mfa.md) erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren.
-- Unter [Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md) erfahren Sie, wie Sie Ihre Richtlinien für bedingten Zugriff planen.
+- Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
+- Informationen zum Planen Ihrer Richtlinien für bedingten Zugriff finden Sie unter [Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md).

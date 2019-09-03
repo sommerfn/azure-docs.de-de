@@ -1,6 +1,6 @@
 ---
 title: Integration von Azure-Sicherheitsprodukten in Azure Security Center | Microsoft-Dokumentation
-description: In diesem Thema werden Azure-Sicherheitsprodukte mit Azure Security Center-Integration vorgestellt.
+description: In diesem Thema werden Azure-Sicherheitsprodukte vorgestellt, die in Azure Security Center integriert sind.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: beac7d08a973dd8dc7e450840669bfd5687e76ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335817"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013305"
 ---
 # <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integration von Azure-Sicherheitsprodukten in Azure Security Center
 
-Security Center bietet Kunden zusätzliche Microsoft-Lizenzen, um ihre Ergebnisse in Security Center integrieren und in konsolidierter Form betrachten zu können.
+Azure Security Center bietet Ihnen zusätzliche Microsoft-Lizenzen für die Arbeit mit den folgenden Sicherheitsprodukten:
 
 * [Azure WAF](#azure-waf)
-* [Azure DDoS](#azure-ddos)
+* [Azure DDoS Protection](#azure-ddos)
 
 ## Azure WAF <a name="azure-waf"></a>
 
 Azure Application Gateway verfügt über eine Web Application Firewall (WAF), die den zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken ermöglicht.
 
-Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Die Application Gateway-WAF basiert auf Version 3.0 oder 2.2.9 des Kernregelsatzes (Core Rule Set, CRS) aus dem Open Web Application Security Project (OWASP). Die WAF wird automatisch aktualisiert und bietet ganz ohne zusätzliche Konfiguration Schutz vor neuen Sicherheitsrisiken. Durch die WAF generierte Warnungen werden an Security Center gestreamt. Weitere Informationen zu den Warnungen, die durch die WAF generiert werden, finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
+Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Die Application Gateway-WAF basiert auf Version 3.0 oder 2.2.9 des Kernregelsatzes aus dem Open Web Application Security Project. Die WAF wird automatisch aktualisiert und bietet ganz ohne zusätzliche Konfiguration Schutz vor neuen Sicherheitsrisiken. WAF-Warnungen werden an das Security Center gestreamt. Weitere Informationen zu den von WAF generierten Warnungen finden Sie unter [CRS-Regelgruppen und -Regeln der Web Application Firewall](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
 
-## Azure DDoS <a name="azure-ddos"></a>
+## Azure DDoS Protection<a name="azure-ddos"></a>
 
-Verteilte Denial-of-Service-Angriffe (Distributed Denial of Service, DDoS) sind bekanntlich einfach durchführbar. Dadurch haben sie sich zu einem wichtigen Sicherheitsthema für Kunden entwickelt, die ihre Anwendungen zur Cloud migrieren. 
+Verteilte Denial-of-Service-Angriffe (Distributed Denial of Service, DDoS) sind bekanntlich einfach durchführbar. Sie haben sich zu einem wichtigen Sicherheitsthema entwickelt, insbesondere wenn Sie Ihre Anwendungen zur Cloud migrieren. 
 
 Ein DDoS-Angriff hat das Ziel, die Ressourcen einer Anwendung zu verbrauchen, damit sie für berechtigte Benutzer nicht mehr verfügbar ist. DDoS-Angriffe können jeden beliebigen Endpunkt ins Visier nehmen, der über das Internet erreichbar sind.
 
@@ -48,6 +48,6 @@ Die folgenden Arten von Angriffen können mit DDoS Protection Standard abgewehrt
 
 |Warnung|BESCHREIBUNG|
 |---|---|
-|**Volumetric attack detected** (Volumetrischen Angriff erkannt)|Ziel dieses Angriffs ist die Überflutung der Netzwerkebene mit einer beträchtlichen Menge scheinbar legitimen Datenverkehrs. Dazu zählen UDP-Überflutungen, Verstärkungsüberflutungen und andere Überflutungen mit gefälschten Paketen. DDoS Protection Standard wehrt diese bis zu mehreren Gigabytes großen Angriffe ab, indem sie mithilfe des weltweiten Netzwerks von Azure automatisch absorbiert und bereinigt werden.|
+|**Volumetric attack detected** (Volumetrischen Angriff erkannt)|Ziel dieses Angriffs ist die Überflutung der Netzwerkebene mit einer beträchtlichen Menge scheinbar legitimen Datenverkehrs. Dazu zählen UDP-Überflutungen, Verstärkungsüberflutungen und andere Überflutungen mit gefälschten Paketen. DDoS Protection Standard wehrt diese bis zu mehreren Gigabytes großen Angriffe ab, indem sie mithilfe des weltweiten Netzwerks automatisch absorbiert und bereinigt werden.|
 |**Protocol attack detected** (Protokollangriff erkannt)|Diese Angriffe machen den Zugriff auf ein Ziel unmöglich, indem sie eine Schwachstelle in den Schichten 3 und 4 des Protokollstapels ausnutzen. Dazu gehören SYN-Flutangriffe, Reflektionsangriffe und andere Protokollangriffe. DDoS Protection Standard wehrt diese Angriffe ab und unterscheidet dabei zwischen schädlichem und berechtigtem Datenverkehr. Nach Interaktion mit dem Client wird der schädliche Datenverkehr gesperrt.|
-|**Resource (application) layer attack detected** (Angriff in der Ressourcenschicht (Anwendungsschicht) erkannt)|Das Ziel dieser Art von Angriffen sind Webanwendungspakete, um die Datenübertragung zwischen Hosts zu unterbrechen. Zu diesen Angriffen zählen Verletzungen des HTTP-Protokolls, die Einschleusung von SQL-Befehlen, XSS-Angriffe (Cross-Site Scripting) und andere Angriffe auf Schicht 7. Verwenden Sie die Web Application Firewall von Azure Application Gateway in Kombination mit DDoS Protection Standard, um sich vor diesen Angriffen zu schützen. Im Azure Marketplace finden Sie auch WAF-Angebote von Drittanbietern.|
+|**Resource (application) layer attack detected** (Angriff in der Ressourcenschicht (Anwendungsschicht) erkannt)|Das Ziel dieser Art von Angriffen sind Webanwendungspakete, um die Datenübertragung zwischen Hosts zu unterbrechen. Zu diesen Angriffen zählen Verletzungen des HTTP-Protokolls, die Einschleusung von SQL-Befehlen, XSS-Angriffe (Cross-Site Scripting) und andere Angriffe auf Schicht 7. Verwenden Sie die WAF (Web Application Firewall) von Azure Application Gateway in Kombination mit DDoS Protection Standard, um sich vor diesen Angriffen zu schützen. Im Azure Marketplace finden Sie auch WAF-Angebote von Drittanbietern.|

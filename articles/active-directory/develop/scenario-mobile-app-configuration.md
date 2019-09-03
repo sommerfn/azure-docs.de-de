@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414795"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061405"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobile App zum Aufrufen von Web-APIs – Codekonfiguration
 
-Nachdem Sie Ihre Anwendung erstellt haben, erfahren Sie, wie Sie den Code anhand der Parameter der Anwendung konfigurieren, die Sie bei der App-Registrierung erhalten haben. Mobile Anwendungen weisen auch einige komplexe Besonderheiten auf, die sich auf die Anpassung an das Framework beziehen, das zum Erstellen dieser Apps verwendet wird.
+Nachdem Sie Ihre Anwendung erstellt haben, erfahren Sie, wie Sie den Code mithilfe der App-Registrierungsparameter konfigurieren. Mobile Anwendungen weisen auch einige komplexe Besonderheiten auf, die sich auf die Anpassung an das Framework beziehen, das zum Erstellen dieser Apps verwendet wird.
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>MSAL-Bibliotheken, die mobile Apps unterstützen
 
@@ -38,7 +38,7 @@ Die folgenden Microsoft-Bibliotheken unterstützen mobile Apps:
 
 ## <a name="configuring-the-application"></a>Konfigurieren der Anwendung
 
-Mobile Anwendungen verwenden die MSAL-Klasse `PublicClientApplication`. Nachfolgend wird veranschaulicht, wie sie instanziiert wird:
+Mobile Anwendungen verwenden die `PublicClientApplication`-Klasse. Nachfolgend wird veranschaulicht, wie sie instanziiert wird:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ Im folgenden Absatz wird erläutert, wie Sie den Code der Anwendung für Xamarin
 
 #### <a name="instantiating-the-application"></a>Instanziieren der Anwendung
 
-In Xamarin oder auf der UWP sieht die einfachste Methode zum Instanziieren der Anwendung wie folgt aus, wobei die `ClientId` der global eindeutige Bezeichner (Globally Unique Identifier, GUID) Ihrer Anwendung gemäß der Registrierung ist.
+In Xamarin oder auf der UWP sieht die einfachste Methode zum Instanziieren der Anwendung wie folgt aus, wobei die `ClientId` der global eindeutige Bezeichner (Globally Unique Identifier, GUID) Ihrer registrierten App ist.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-Unter Android empfehlen wir Ihnen das [hier beschriebene](https://github.com/jamesmontemagno/CurrentActivityPlugin) `CurrentActivityPlugin`.  Der `PublicClientApplication`-Generator-Code sieht dann wie folgt aus:
+Unter Android empfiehlt es sich, das [hier beschriebene](https://github.com/jamesmontemagno/CurrentActivityPlugin) `CurrentActivityPlugin` zu verwenden.  Der `PublicClientApplication`-Generator-Code sieht dann wie folgt aus:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ Schließlich gibt es noch einige Besonderheiten, die Sie über die Browser unter
 
 #### <a name="uwp-specific-considerations"></a>UWP-spezifische Aspekte
 
-Auf der UWP können Sie Unternehmensnetzwerke verwenden. Weitere Informationen zu den Besonderheiten der UWP finden Sie unter [Spezifische Überlegungen zur Universellen Windows-Plattform mit MSAL.NET](msal-net-uwp-considerations.md).
+Auf der UWP können Sie Unternehmensnetzwerke verwenden. Weitere Informationen zum Verwenden der MSAL-Bibliothek mit UWP finden Sie unter [Spezifische Überlegungen zur Universellen Windows-Plattform mit MSAL.NET](msal-net-uwp-considerations.md).
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Konfigurieren der Anwendung für die Verwendung des Brokers
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014195"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084878"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -270,3 +270,7 @@ Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von 
 * Suchen Sie nach technischen Fragen und Antworten, oder stellen Sie selbst Fragen, indem Sie die [Azure AD-Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required) besuchen.
 
 [Erhalten von Support für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**F: Warum werden die Ereignisse 6311 und 6401 nach Synchronisierungsschrittfehlern angezeigt?**
+
+Die Ereignisse 6311 (**Unerwarteter Serverfehler beim Ausführen eines Rückrufvorgangs**) und 6401 (**Unerwarteter Fehler beim Verwaltungs-Agent-Controller**) werden immer nach einem Synchronisierungsschrittfehler protokolliert. Zum Beheben dieser Fehler müssen Sie die Synchronisierungsschrittfehler bereinigen.  Weitere Informationen finden Sie unter [Beheben von Fehlern während der Synchronisierung](tshoot-connect-sync-errors.md) und [Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung](tshoot-connect-objectsync.md).
