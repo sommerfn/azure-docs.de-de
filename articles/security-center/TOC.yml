@@ -4,8 +4,10 @@
   items:
     - name: Informationen zu Security Center
       href: security-center-intro.md
-    - name: Unterstützte Plattformen und Funktionen in Security Center
+    - name: Unterstützte Plattformen
       href: security-center-os-coverage.md
+    - name: Unterstützte Features
+      href: security-center-services.md
 - name: Schnellstarts
   expanded: true
   items:

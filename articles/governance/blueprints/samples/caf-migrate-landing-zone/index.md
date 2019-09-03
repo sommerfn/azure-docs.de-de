@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: a3d697fcc6ef991bec80df02addcac5d4243005a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: dc30aeae842cf9c3cd39422517ed49773c524f1e
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876490"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232844"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -21,13 +21,13 @@ Bei der Microsoft Cloud Adoption Framework-Blaupause (CAF-Blaupause) für die Az
 
 Das [CAF-Basisblaupausenbeispiel](../caf-foundation/index.md) baut auf diesem Beispiel auf.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 Das CAF-Blaupausenbeispiel für die Migrationslandezone stellt grundlegende Infrastrukturressourcen in Azure bereit, die von Organisationen verwendet werden können, um ihr Abonnement für die Migration virtueller Computer vorzubereiten. Darüber hinaus unterstützt es Sie bei der Einrichtung der Governancekontrollen, die für die Verwaltung Ihrer Cloudressourcen erforderlich sind. In diesem Beispiel werden Ressourcen, Richtlinien und Vorlagen bereitgestellt und erzwungen, die Organisationen einen problemlosen Einstieg in Azure ermöglichen.
 
 ![CAF-Migrationslandezone: Die Abbildung veranschaulicht, was im Rahmen des CAF-Leitfadens für die erste Landezone installiert wird. ](../../media/caf-blueprints/caf-migration-landing-zone-architecture.png)
 
-Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Governancelösung genutzt werden. Diese Umgebung umfasst folgende Komponenten:
+Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Governancelösung genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 
 - Eine [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-Instanz zum Hosten von Geheimnissen für die Zertifikate, Schlüssel und Geheimnisse, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden.
 - [Log Analytics](../../../../azure-monitor/overview.md) wird bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre Migration starten.
