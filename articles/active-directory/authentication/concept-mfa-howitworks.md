@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4f19c16149dbed34c16d021ff7100cace9a06a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 57b441803a066b794d17b46afec4d930b94ebdea
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879140"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125131"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>So funktioniert's: Azure Multi-Factor Authentication
 
@@ -52,7 +52,7 @@ Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich K
 * Schulen Sie Ihre Supportmitarbeiter für Szenarien, in denen Benutzer sich nicht anmelden können, da sie keinen Zugriff auf ihre Authentifizierungsmethoden haben, oder diese nicht ordnungsgemäß funktionieren.
    * Mit Richtlinien für bedingten Zugriff für den Azure MFA-Dienst können Ihre Supportmitarbeiter einen Benutzer einer Gruppe hinzufügen, die von einer MFA erfordernden Richtlinie ausgeschlossen ist.
 * Sie können benannte Standorte für den bedingten Zugriff verwenden, um Aufforderungen zur zweistufigen Überprüfung zu minimieren. Mithilfe dieser Funktion können Administratoren die zweistufige Überprüfung für Benutzer umgehen, die sich über ein sicheres vertrauenswürdiges Netzwerk anmelden, z. B. ein Netzwerksegment, das für das Onboarding neuer Benutzer verwendet wird.
-* Stellen Sie [Azure AD Identity Protection](../active-directory-identityprotection.md) bereit, und lösen Sie die zweistufige Überprüfung auf Risikoereignissen basierend aus.
+* Stellen Sie [Azure AD Identity Protection](../active-directory-identityprotection.md) bereit, und lösen Sie die zweistufige Überprüfung basierend auf Risikoerkennungen aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

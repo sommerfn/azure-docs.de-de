@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931783"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125415"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -41,7 +41,24 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
-August 2019 Erzwingung von POST-Semantik gemäß URL-Analyseregeln: Doppelte Parameter lösen einen Fehler aus, Anführungszeichen in Parametern werden nicht länger ignoriert, [BOM](https://www.w3.org/International/questions/qa-byte-order-mark) wird ignoriert.
+September 2019: Zusätzliche Erzwingung von POST-Semantik gemäß URL-Analyseregeln: Doppelte Parameter lösen einen Fehler aus, und [BOM](https://www.w3.org/International/questions/qa-byte-order-mark) wird ignoriert.
+
+## <a name="august-2019"></a>August 2019
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>POST-Formularsemantik wird strenger erzwungen – Leerzeichen und Anführungszeichen werden ignoriert.
+
+**Gültigkeitsdatum:** 2. September 2019
+
+**Betroffene Endpunkte:** v1.0 und v2.0
+
+**Betroffenes Protokoll:** Überall dort, wo POST verwendet wird ([Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [Einlösung von Autorisierungscodes](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) und [Einlösung von Aktualisierungstoken](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+
+Ab der Woche vom 2. September werden Authentifizierungsanforderungen, die die POST-Methode verwenden, mit strengeren HTTP-Standards überprüft.  Insbesondere werden Leerzeichen und doppelte Anführungszeichen (") nicht mehr aus den Anforderungsformularwerten entfernt. Es wird nicht erwartet, dass diese Änderungen vorhandene Clients unterbrechen, und durch diese Änderungen wird sichergestellt, dass an Azure AD gesendete Anforderungen jedes Mal zuverlässig verarbeitet werden. In Zukunft (siehe oben) planen wir, doppelte Parameter zusätzlich abzulehnen und die BOM innerhalb von Anforderungen zu ignorieren. 
+
+Beispiel:
+
+Heute wird `?e=    "f"&g=h` wie `?e=f&g=h` analysiert, also `e` == `f`.  Durch diese Änderung würde die Analyse jetzt so durchgeführt, dass `e` == `    "f"`. Es ist unwahrscheinlich, dass es sich dabei um ein gültiges Argument handelt, und die Anforderung würde jetzt fehlschlagen. 
+
 
 ## <a name="july-2019"></a>Juli 2019
 

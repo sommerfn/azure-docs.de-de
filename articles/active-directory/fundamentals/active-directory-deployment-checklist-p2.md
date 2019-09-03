@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693889"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125341"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -55,7 +55,7 @@ In dieser Phase aktivieren Administratoren die grundlegenden Sicherheitsfunktion
 | [Aktivieren der intelligenten Extranetsperre für AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | Die intelligente Extranetsperre schützt vor Brute-Force-Angriffen, bei denen das Kennwort erraten wird, und lässt gültige AD FS-Benutzer ihre Konten weiterhin verwenden. | |
 | [Bereitstellen von Azure AD Multi-Factor Authentication mit Richtlinien für bedingten Zugriff](../authentication/howto-mfa-getstarted.md) | Legen Sie mithilfe von Richtlinien für bedingten Zugriff fest, dass Benutzer beim Zugriff auf sensible Anwendungen eine zweistufige Überprüfung durchführen müssen. | Azure AD Premium P1 |
 | [Aktivieren der Azure Active Directory Identity Protection](../identity-protection/enable.md) | Aktivieren Sie die Nachverfolgung von riskanten Anmeldungen und kompromittierten Anmeldeinformationen für Benutzer in Ihrer Organisation. | Azure AD Premium P2 |
-| [Verwenden von Risikoereignissen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen](../authentication/tutorial-risk-based-sspr-mfa.md) | Aktivieren Sie eine Automatisierung, die Ereignisse risikobasiert auslösen kann, z.B. mehrstufige Authentifizierung, Kennwortzurücksetzung und das Blockieren von Anmeldungen. | Azure AD Premium P2 |
+| [Verwenden von Risikoerkennungen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen](../authentication/tutorial-risk-based-sspr-mfa.md) | Aktivieren Sie eine Automatisierung, die Ereignisse risikobasiert auslösen kann, z.B. mehrstufige Authentifizierung, Kennwortzurücksetzung und das Blockieren von Anmeldungen. | Azure AD Premium P2 |
 | [Aktivieren der zusammengeführten Registrierung für Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication (Vorschauversion)](../authentication/concept-registration-mfa-sspr-converged.md) | Ermöglichen Sie Ihren Benutzern die Registrierung über eine gemeinsame Umgebung sowohl für Azure Multi-Factor Authentication als auch Self-Service-Kennwortzurücksetzung. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Phase 2: Importieren von Benutzern, Aktivieren der Synchronisierung und Verwalten von Geräten

@@ -46,7 +46,7 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 
 * **Anzahl der Elementeigenschaften**: Bei Verwendung der standardmäßigen Indizierung für alle Eigenschaften erhöht sich die Anzahl von RUs, die beim Schreiben eines Elements genutzt werden, wenn sich die Anzahl von Elementeigenschaften erhöht.
 
-* **Indizierte Eigenschaften**: Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Zum Verringern der für Schreibvorgänge genutzten RUs begrenze Sie die Anzahl indizierter Eigenschaften.
+* **Indizierte Eigenschaften**: Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Zum Verringern der für Schreibvorgänge genutzten RUs begrenzen Sie die Anzahl indizierter Eigenschaften.
 
 * **Datenkonsistenz**: Im Vergleich zu anderen, weniger strengen Konsistenzebenen nutzen die Konsistenzebenen „Stark“ und „Begrenzte Veraltung“ bei Lesevorgängen ungefähr zweimal mehr RUs.
 
@@ -62,7 +62,7 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 
   Azure Cosmos DB garantiert, dass die gleiche Abfrage mit den gleichen Daten bei wiederholter Ausführung immer die gleiche Anzahl von RUs beansprucht.
 
-* **Skriptnutzung**: Bei gespeicherten Prozeduren und Triggern hängt die Nutzung von RUs genau wie bei Abfragen von der Komplexität der ausgeführten Vorgänge ab. Sehen Sie sich beim Entwickeln Ihrer Anwendung den [request-charge-Header](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) an, um zu ermitteln, wie viele RUs der jeweilige Vorgang erfordert.
+* **Skriptnutzung**: Bei gespeicherten Prozeduren und Triggern hängt die Nutzung von RUs genau wie bei Abfragen von der Komplexität der ausgeführten Vorgänge ab. Sehen Sie sich beim Entwickeln Ihrer Anwendung den [Request-Charge-Header](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) an, um zu ermitteln, wie viele RUs der jeweilige Vorgang erfordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
