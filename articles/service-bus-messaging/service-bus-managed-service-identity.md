@@ -1,10 +1,9 @@
 ---
-title: Verwaltete Identitäten für Azure-Ressourcen mit Azure Service Bus (Vorschau) | Microsoft-Dokumentation
+title: Verwaltete Identitäten für Azure-Ressourcen mit Azure Service Bus | Microsoft-Dokumentation
 description: Verwenden von verwalteten Identitäten für Azure-Ressourcen mit Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,66 +11,111 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2018
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a671b2ddd3cfa1237b6d843369e78233960f1c14
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978794"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013196"
 ---
-# <a name="managed-identities-for-azure-resources-with-service-bus"></a>Verwaltete Identitäten für Azure-Ressourcen mit Service Bus 
-
+# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
 
 Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitäten. Sie müssen keine Zugriffsschlüssel in Ihrem Anwendungscode speichern und schützen – weder für die Identität selbst noch für die Ressourcen, auf die zugegriffen werden muss. Eine Service Bus-Client-App, die innerhalb einer Azure App Service-Anwendung oder in einem virtuellen Computer mit aktivierter Unterstützung für verwaltete Identitäten für Azure-Ressourcen ausgeführt wird, muss keine SAS-Regeln und -Schlüssel oder andere Zugriffstoken verarbeiten. Die Client-App benötigt nur die Endpunktadresse des Service Bus Messaging-Namespace. Wenn die App eine Verbindung herstellt, bindet Service Bus den Kontext der verwalteten Identität an den Client. Der entsprechende Vorgang wird weiter unten in diesem Artikel in einem Beispiel gezeigt. Nach der Zuordnung zu einer verwalteten Identität kann ein Service Bus-Client alle autorisierten Vorgänge ausführen. Die Autorisierung wird durch Zuordnung von Service Bus-Rollen zu einer verwalteten Identität gewährt. 
 
-## <a name="service-bus-roles-and-permissions"></a>Service Bus-Rollen und -Berechtigungen
+## <a name="overview"></a>Übersicht
+Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) versucht, auf eine Service Bus-Entität zuzugreifen, muss die Anforderung autorisiert werden. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess. 
 
-Sie können der Rolle „Service Bus-Datenbesitzer“ eines Service Bus-Namespace eine verwaltete Identität hinzufügen. Damit erhält die Identität vollständige Kontrolle (für Verwaltungs- und Datenvorgänge) über alle Entitäten im Namespace.
+ 1. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. 
+ 1. Anschließend wird das Token als Teil einer Anforderung an den Service Bus-Dienst übergeben, um den Zugriff auf die angegebene Ressource zu autorisieren.
 
->[!IMPORTANT]
-> Früher haben wir das Hinzufügen einer verwalteten Identität zur Rolle **Besitzer** oder **Mitwirkender** unterstützt.
->
-> Die Berechtigungen für den Datenzugriff für die Rolle **Besitzer** und **Mitwirkender** werden jedoch nicht mehr berücksichtigt. Wenn Sie die Rolle **Besitzer** oder **Mitwirkender** verwendet haben, müssen diese so angepasst werden, dass sie nun die Rolle **Service Bus-Datenbesitzer** verwenden.
+Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthält. Wenn eine Anwendung in einer Azure-Entität, z.B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf die Ressourcen über eine verwaltete Identität erfolgen. Informationen zum Authentifizieren von Anforderungen, die von einer verwalteten Identität an den Service Bus-Dienst übermittelt werden, finden Sie unter [Authentifizieren des Zugriffs auf Azure Service Bus-Ressourcen mit Azure Active Directory und verwalteten Identitäten für Azure Ressourcen](service-bus-managed-service-identity.md). 
 
-Um die neue integrierte Rolle zu verwenden, führen Sie die folgenden Schritte aus:
+Für den Autorisierungsschritt ist es erforderlich, dem Sicherheitsprinzipal mindestens eine RBAC-Rolle zuzuweisen. Azure Service Bus stellt RBAC-Rollen bereit, die Berechtigungssätze für Service Bus-Ressourcen enthalten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zum Zuweisen von RBAC-Rollen zu Azure Service Bus finden Sie unter [Integrierte RBAC-Rollen für Azure Service Bus](#built-in-rbac-roles-for-azure-service-bus). 
 
-1. wechseln Sie zum [Azure-Portal](https://portal.azure.com)
-2. Navigieren Sie zu dem Service Bus-Namespace, in dem Sie aktuell die Rolle „Besitzer“ oder „Mitwirkender“ eingerichtet haben.
-3. Klicken Sie im linken Bereich auf „Zugriffssteuerung (IAM)“.
-4. Fahren Sie fort damit, dass Sie wie unten gezeigt eine neue Rollenzuweisung hinzufügen.
+Native Anwendungen und Webanwendungen, die Anforderungen an Service Bus senden, können die Autorisierung ebenfalls mit Azure AD durchführen. In diesem Artikel erfahren Sie, wie Sie ein Zugriffstoken anfordern und dieses zum Autorisieren von Anforderungen für Service Bus-Ressourcen verwenden. 
 
-    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
 
-5. Klicken Sie auf „Speichern“, um die Rollenzuweisung zu speichern.
+## <a name="assigning-rbac-roles-for-access-rights"></a>Zuweisen von RBAC-Rollen für Zugriffsrechte
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md). Azure Service Bus definiert eine Reihe von integrierten RBAC-Rollen, die allgemeine Berechtigungssätze für den Zugriff auf Service Bus-Entitäten umfassen. Sie können auch benutzerdefinierte Rollen für den Zugriff auf die Daten definieren.
+
+Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann sich auf den Bereich des Abonnements, der Ressourcengruppe oder des Namespace von Service Bus beziehen. Ein Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine verwaltete Identität für Azure-Ressourcen sein.
+
+## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Integrierte RBAC-Rollen für Azure Service Bus
+Bei Azure Service Bus ist die Verwaltung der Namespaces und aller zugehörigen Ressourcen über das Azure-Portal und die Azure-Ressourcenverwaltungs-API bereits durch das Modell der *rollenbasierten Zugriffssteuerung* geschützt. Azure stellt die folgenden integrierten Rollen für die rollenbasierte Zugriffssteuerung zum Autorisieren des Zugriffs auf einen Service Bus-Namespace bereit:
+
+- [Besitzer „Azure Service Bus-Daten“](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Ermöglicht den Datenzugriff auf einen Service Bus-Namespace und seine Entitäten (Warteschlangen, Themen, Abonnements und Filter).
+- [Azure Service Bus-Datensender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Verwenden Sie diese Rolle, um dem Service Bus-Namespace und seinen Entitäten Sendezugriff zu erteilen.
+- [Azure Service Bus-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Verwenden Sie diese Rolle, um dem Service Bus-Namespace und seinen Entitäten Empfangszugriff zu erteilen. 
+
+## <a name="resource-scope"></a>Ressourcenumfang 
+Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
+
+In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Service Bus-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
+
+- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus RBAC-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. 
+- **Service Bus-Namespace:** Die Rollenzuweisung umfasst die gesamte Topologie von Service Bus unter dem Namespace und für die zugeordnete Consumergruppe.
+- **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen unter der Ressourcengruppe.
+- **Abonnement**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen in allen Ressourcengruppen im Abonnement.
+
+> [!NOTE]
+> Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann. 
+
+Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md#management-and-data-operations). Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md).
+
+## <a name="enable-managed-identities-on-a-vm"></a>Aktivieren von verwalteten Identitäten auf einem virtuellen Computer
+Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zugriffs auf Service Bus-Ressourcen über Ihren virtuellen Computer verwenden können, müssen Sie zunächst verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktivieren. Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen finden Sie in diesen Artikeln:
+
+- [Azure-Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Azure Resource Manager-Vorlage](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-Clientbibliotheken](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+
+## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Erteilen von Berechtigungen für eine verwaltete Identität in Azure AD
+Damit Sie eine Anforderung an den Service Bus-Dienst über eine verwaltete Identität in Ihrer Anwendung autorisieren können, konfigurieren Sie die Einstellungen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für diese verwaltete Identität. Azure Service Bus definiert RBAC-Rollen, die Berechtigungen zum Senden an und Lesen aus Service Bus umfassen. Wenn die RBAC-Rolle einer verwalteten Identität zugewiesen wird, wird der verwalteten Identität der Zugriff auf Service Bus-Entitäten im entsprechenden Bereich erteilt.
+
+Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Authentifizierung und Autorisierung mit Azure Active Directory für den Zugriff auf Service Bus-Ressourcen](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus).
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Verwenden von Service Bus mit verwalteten Identitäten für Azure-Ressourcen
+Wenn Sie Service Bus mit verwalteten Identitäten verwenden möchten, müssen Sie der Identität die Rolle und den entsprechenden Bereich zuweisen. Das Verfahren in diesem Abschnitt verwendet eine einfache Anwendung, die unter einer verwalteten Identität ausgeführt wird und auf Service Bus-Ressourcen zugreift.
 
-Der folgende Abschnitt beschreibt die Schritte, die erforderlich sind, um eine Beispielanwendung zu erstellen und bereitzustellen, die mit einer verwalteten Identität ausgeführt wird. Zudem wird erläutert, wie Sie dieser Identität Zugriff auf einen Service Bus Messaging-Namespace gewähren und wie die Anwendung mit den Service Bus-Entitäten interagiert, die diese Identität verwenden.
+Hier verwenden wir eine einfache Beispielwebanwendung, die in [Azure App Service](https://azure.microsoft.com/services/app-service/) gehostet wird. Schrittweise Anleitungen zum Erstellen einer Webanwendung finden Sie unter [Erstellen einer ASP.NET Core-Web-App in Azure](../app-service/app-service-web-get-started-dotnet.md).
 
-Diese Einführung beschreibt eine Webanwendung, die in [Azure App Service](https://azure.microsoft.com/services/app-service/) gehostet wird. Die Schritte für eine durch einen virtuellen Computer gehostete Anwendung sind ähnlich.
+Nachdem die Anwendung erstellt wurde, führen Sie die folgenden Schritte aus: 
 
-### <a name="create-an-app-service-web-application"></a>Erstellen einer App Service-Webanwendung
+1. Navigieren Sie zu **Einstellungen**, und wählen Sie **Identität** aus. 
+1. Legen Sie den **Status** auf **Ein** fest. 
+1. Klicken Sie auf **Speichern**, um die Einstellung zu speichern. 
 
-Der erste Schritt besteht darin, eine App Service-ASP.NET-Anwendung zu erstellen. Wenn Sie mit der Vorgehensweise in Azure nicht vertraut sind, befolgen Sie diese [Anleitung](../app-service/app-service-web-get-started-dotnet-framework.md). Anstatt jedoch, wie in diesem Tutorial gezeigt, eine MVC-Anwendung zu erstellen, erstellen Sie eine Web Forms-Anwendung.
+    ![Verwaltete Identität für eine Web-App](./media/service-bus-managed-service-identity/identity-web-app.png)
 
-### <a name="set-up-the-managed-identity"></a>Einrichten der verwalteten Identität
+Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrem Azure Active Directory (Azure AD) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
-Nachdem Sie die Anwendung erstellt haben, navigieren Sie im Azure-Portal zu der neu erstellten Webanwendung (ebenfalls in der Anleitung gezeigt). Navigieren Sie dann zur Seite **Verwaltete Dienstidentität**, und aktivieren Sie das Feature: 
+Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Bereich in Ihren Service Bus-Ressourcen zu.
 
-![](./media/service-bus-managed-service-identity/msi1.png)
+### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>So weisen Sie RBAC-Rollen mithilfe des Azure-Portals zu
+Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Portal zum betreffenden Namespace. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anweisungen zum Verwalten von Rollenzuweisungen:
 
-Wenn Sie das Feature aktiviert haben, wird in Ihrem Azure Active Directory eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
+> [!NOTE]
+> Mit den folgenden Schritten wird den Service Bus-Namespaces eine Dienstidentitätsrolle zugewiesen. Sie können die gleichen Schritte ausführen, um anderen unterstützten Bereichen (Ressourcengruppe und Abonnement) eine Rolle zuzuweisen. 
+> 
+> [Erstellen Sie einen Service Bus-Messagingnamespace](service-bus-create-namespace-portal.md), wenn dieser noch nicht vorhanden ist. 
 
-### <a name="create-a-new-service-bus-messaging-namespace"></a>Erstellen eines neuen Service Bus-Namespace
+1. Navigieren Sie im Azure-Portal zu Ihrem Service Bus-Namespace, und zeigen Sie die **Übersicht** für den Namespace an. 
+1. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Service Bus-Namespace anzuzeigen.
+1.  Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
+3.  Klicken Sie auf **Hinzufügen**, um eine neue Rolle hinzuzufügen.
+4.  Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Azure Service Bus-Rollen aus, die Sie zuweisen möchten. Suchen Sie dann nach der Dienstidentität, die Sie registriert haben, um die Rolle zuzuweisen.
+    
+    ![Seite „Rollenzuweisung hinzufügen“](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
+5.  Wählen Sie **Speichern** aus. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt, dass die Dienstidentität den Besitzer „Azure Service Bus-Daten“ verwendet.
+    
+    ![Identität, die einer Rolle zugewiesen ist](./media/service-bus-managed-service-identity/role-assigned.png)
 
-Als Nächstes [erstellen Sie einen Service Bus Messaging-Namespace](service-bus-create-namespace-portal.md). 
-
-Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Rollenzuweisung hinzufügen**, um die verwaltete Identität der Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
-
-Die verwaltete Identität der Webanwendung verfügt jetzt über Zugriff auf den Service Bus-Namespace und die zuvor erstellte Warteschlange. 
+Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Service Bus-Entitäten unter dem definierten Bereich. 
 
 ### <a name="run-the-app"></a>Ausführen der App
 
@@ -79,11 +123,11 @@ Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendun
 
 Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
 
-Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` einen Tokenanbieter für die verwaltete Identität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom Kontext der verwalteten Identität zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
+Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` einen Tokenanbieter für die verwaltete Identität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom Kontext der verwalteten Identität zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
 
 Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwendung und führen sie aus. Sie können die richtigen Veröffentlichungsdaten einfach abrufen, indem Sie ein Veröffentlichungsprofil herunterladen und dann in Visual Studio importieren:
 
-![](./media/service-bus-managed-service-identity/msi3.png)
+![Abrufen des Veröffentlichungsprofils](./media/service-bus-managed-service-identity/msi3.png)
  
 Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein. Klicken Sie dann entweder auf **Senden** oder auf **Empfangen**.
 

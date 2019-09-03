@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017796"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013221"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die derzeit in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -52,7 +52,9 @@ Als Lösungsarchitekt/-entwickler sollten Sie die **Verwendung von Service Bus-W
 * Sie wünschen eine Anwendung, die Nachrichten als parallele Datenströme mit langer Ausführungsdauer verarbeitet (Nachrichten werden mithilfe der [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid)-Eigenschaft für die Nachricht einem Datenstrom zugeordnet). In diesem Modell konkurriert jeder Knoten in der verarbeitenden Anwendung um Datenströme und nicht um Nachrichten. Wenn ein Datenstrom an einen verarbeitenden Knoten übergeben wird, kann der Knoten den Status des Anwendungsdatenstroms mithilfe von Transaktionen untersuchen.
 * Beim Senden oder Empfangen mehrerer Nachrichten über eine Warteschlange muss sich die Lösung durch Transaktionsfähigkeit und Unteilbarkeit auszeichnen.
 * Die Anwendung verarbeitet Nachrichten, die zwar 64 KB überschreiten können, die Grenze von 256 KB aber wahrscheinlich nicht erreichen werden.
-* Sie müssen ein rollenbasiertes Zugriffsmodell für Warteschlangen bereitstellen, die Absendern und Empfängern unterschiedliche Rechte/Berechtigungen gewähren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Active Directory (Vorschau)](service-bus-role-based-access-control.md).
+* Sie müssen ein rollenbasiertes Zugriffsmodell für Warteschlangen bereitstellen, die Absendern und Empfängern unterschiedliche Rechte/Berechtigungen gewähren. Weitere Informationen finden Sie in den folgenden Artikeln:
+    - [Authentifizieren mit verwalteten Dienstidentitäten](service-bus-managed-service-identity.md)
+    - [Authentifizieren über eine Anwendung](authenticate-application.md)
 * Die Warteschlangengröße überschreitet 80 GB nicht.
 * Sie möchten das auf Standards basierende AMQP 1.0-Messagingprotokoll verwenden. Weitere Informationen zu AMQP finden Sie unter [Service Bus AMQP Overview (Service Bus AMQP – Übersicht)](service-bus-amqp-overview.md).
 * Sie können schließlich eine Migration von der warteschlangenbasierten Punkt-zu-Punkt-Kommunikation zu einem Nachrichtenaustauschmodell in Erwägung ziehen, um zusätzliche Empfänger (Abonnenten) nahtlos zu integrieren, von denen jeder eine Kopie einiger oder aller an die Warteschlange gesendeten Nachrichten erhält. Der letzte Punkt bezieht sich auf die Veröffentlichungs-/Abonnementfunktion, die von Service Bus selbst bereitgestellt wird.
@@ -68,7 +70,7 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 | Vergleichskriterien | Storage-Warteschlangen | Service Bus-Warteschlangen |
 | --- | --- | --- |
 | Reihenfolgengarantie |**Nein** <br/><br>Weitere Informationen finden Sie in der ersten Anmerkung im Abschnitt „Weitere Informationen“.</br> |**Ja – First In, First Out (FIFO)**<br/><br>(durch Verwendung von Messagingsitzungen) |
-| Zustellungsgarantie |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
+| Zustellungsgarantie |**At-Least-Once** |**At-Least-Once** (mit dem PeekLock-Empfangsmodus, dies ist die Standardeinstellung) <br/><br/>**At-Most-Once** (mit dem ReceiveAndDelete-Empfangsmodus) <br/> <br/> Weitere Informationen zu den verschiedenen [Empfangsmodi](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Unterstützung für atomare Operationen |**Nein** |**Ja**<br/><br/> |
 | Empfangsverhalten |**Nicht blockierend**<br/><br/>(wird sofort beendet, wenn keine neue Nachricht gefunden wird) |**Blockieren mit/ohne Timeout**<br/><br/>(bietet ein langes Abrufintervall oder die [„Comet-Technik“](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nicht blockierend**<br/><br/>(nur durch die Verwendung von .NET-verwalteter API) |
 | API im Pushstil |**Nein** |**Ja**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__)- und **OnMessage**-Sitzungs-.NET-API. |

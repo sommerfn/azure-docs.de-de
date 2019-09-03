@@ -10,13 +10,14 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 06/27/2019
-ms.openlocfilehash: 1afe8a2e9179c768fd639b4a208de98b0789a53f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+manager: craigg
+ms.date: 08/22/2019
+ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569456"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904318"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -32,10 +33,10 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 - **Stellen Sie für eine vorhandene Datenbank den Stand zu einem vergangenen Zeitpunkt wieder her**, der innerhalb des Aufbewahrungszeitraums liegt, indem Sie das Azure-Portal, Azure PowerShell, die Azure CLI oder die REST-API verwenden. In Einzeldatenbanken und Pools für elastische Datenbanken wird mit diesem Vorgang eine neue Datenbank auf demselben Server erstellt, auf dem sich auch die ursprüngliche Datenbank befindet. Bei einer verwalteten Instanz kann mit diesem Vorgang eine Kopie der Datenbank in derselben oder einer anderen verwalteten Instanz unter demselben Abonnement erstellt werden.
   - **[Ändern Sie den Aufbewahrungszeitraum der Sicherung](#how-to-change-the-pitr-backup-retention-period)** (zwischen 7 und 35 Tagen), um Ihre Sicherungsrichtlinie zu konfigurieren.
-  - **Ändern Sie die Langzeitaufbewahrung in bis zu zehn Jahre** für Einzeldatenbanken und Pools für elastische Datenbanken, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) verwenden.
+  - **Ändern Sie die Langzeitaufbewahrung in bis zu zehn Jahre** für Einzeldatenbanken und Pools für elastische Datenbanken, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) verwenden.
 - **Stellen Sie für eine gelöschte Datenbank den Stand zum Zeitpunkt des Löschvorgangs wieder her**, oder den Stand zu einem beliebigen anderen Zeitpunkt innerhalb des Aufbewahrungszeitraums. Die gelöschte Datenbank kann nur auf demselben logischen Server oder der verwalteten Instanz wiederhergestellt werden, auf dem bzw. der die ursprüngliche Datenbank erstellt wurde.
 - **Stellen Sie eine Datenbank in einer anderen geografischen Region wieder her**. Die Geowiederherstellung ermöglicht die Wiederherstellung nach dem Ausfall einer geografischen Region, wenn Sie keinen Zugriff auf Ihren Server und Ihre Datenbank haben. Dabei wird eine neue Datenbank auf einem beliebigen Server an einem beliebigen Ort der Welt erstellt.
-- **Führen Sie die Wiederherstellung einer Datenbank aus einer spezifischen langfristigen Sicherung durch** (in einer Einzeldatenbank oder einem Pool für elastische Datenbanken), wenn die Datenbank mit einer Richtlinie zur Langzeitaufbewahrung (Long-Term Retention, LTR) konfiguriert wurde. Mit LTR können Sie eine alte Version der Datenbank wiederherstellen, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) verwenden, um eine Konformitätsanforderung zu erfüllen oder eine alte Version der Anwendung auszuführen. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+- **Führen Sie die Wiederherstellung einer Datenbank aus einer spezifischen langfristigen Sicherung durch** (in einer Einzeldatenbank oder einem Pool für elastische Datenbanken), wenn die Datenbank mit einer Richtlinie zur Langzeitaufbewahrung (Long-Term Retention, LTR) konfiguriert wurde. Mit LTR können Sie eine alte Version der Datenbank wiederherstellen, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) verwenden, um eine Konformitätsanforderung zu erfüllen oder eine alte Version der Anwendung auszuführen. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 - Informationen zum Durchführen einer Wiederherstellung finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -46,7 +47,7 @@ Sie können einige dieser Vorgänge ausprobieren, indem Sie die folgenden Beispi
 | | Das Azure-Portal | Azure PowerShell |
 |---|---|---|
 | Ändern der Sicherungsaufbewahrung | [Einzeldatenbank](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Verwaltete Instanz](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [Einzeldatenbank](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Verwaltete Instanz](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Ändern der Langzeitaufbewahrung von Sicherungen | [Einzeldatenbank](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Verwaltete Instanz: Nicht verfügbar  | [Einzeldatenbank](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)<br/>Verwaltete Instanz: Nicht verfügbar  |
+| Ändern der Langzeitaufbewahrung von Sicherungen | [Einzeldatenbank](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Verwaltete Instanz: Nicht verfügbar  | [Einzeldatenbank](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Verwaltete Instanz: Nicht verfügbar  |
 | Wiederherstellen des Stands einer Datenbank zu einem bestimmten Zeitpunkt | [Einzeldatenbank](sql-database-recovery-using-backups.md#point-in-time-restore) | [Einzeldatenbank](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Verwaltete Instanz](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Wiederherstellen einer gelöschten Datenbank | [Einzeldatenbank](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Einzeldatenbank](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Verwaltete Instanz](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Wiederherstellen der Datenbank aus Azure Blob Storage | Einzeldatenbank: Nicht verfügbar <br/>Verwaltete Instanz: Nicht verfügbar  | Einzeldatenbank: Nicht verfügbar <br/>[Verwaltete Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
@@ -81,7 +82,7 @@ Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergr
 Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Speicherkosten
-Automatisierte Sicherungen Ihrer Datenbanken für einen Zeitraum von 7 Tagen werden standardmäßig in ein Blob Storage-RA-GRS-Konto mit der SKU „Standard“ kopiert. Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größe des Transaktionsprotokolls hängt von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die der Gesamtgröße der Datenbank entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet.
+Für Einzeldatenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße der Datenbank entspricht, kostenlos zur Verfügung gestellt. Bei Pools für elastische Datenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße des zugeordneten Datenspeichers für den Pool entspricht, ohne zusätzliche Kosten bereitgestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Dieser zusätzliche Verbrauch hängt von der Workload und der Größe der einzelnen Datenbanken ab.
 
 Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/). 
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 2d46e6f1d5c7079ab5bbfea39a85ea0a7592afc8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033254"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099269"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Tutorial: Hinzufügen eines Pools für elastische Azure SQL-Datenbank-Instanzen zu einer Failovergruppe
 
@@ -41,10 +41,11 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 
 ## <a name="2---add-single-database-to-elastic-pool"></a>2 – Hinzufügen einer Einzeldatenbank zu einem Pool für elastische Datenbanken
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
-1. Geben Sie `elastic pool` in das Suchfeld ein, drücken Sie auf die Eingabetaste, wählen Sie das Symbol für **Pool für elastische SQL-Datenbanken** und anschließend **Erstellen** aus. 
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details“ anzeigen auswählen.
+1. Wählen Sie **Pool für elastische Datenbanken** aus dem Dropdownmenü **Ressourcentyp** auf der Kachel **SQL-Datenbanken** aus. Wählen Sie **Erstellen** aus, um den Pool für elastische Datenbanken zu erstellen. 
 
-    ![Auswählen des Pools für elastische Datenbanken im Marketplace](media/sql-database-elastic-pool-create-failover-group-tutorial/elastic-pool-market-place.png)
+    ![Auswählen des Pools für elastische Datenbanken](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Konfigurieren Sie den Pool für elastische Datenbanken mit den folgenden Werten:
    - **Name**: Geben Sie einen eindeutigen Namen für den Pool für elastische Datenbanken an, wie z.B. `myElasticPool`. 
@@ -52,13 +53,13 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
    - **Ressourcengruppe**: Wählen Sie `myResourceGroup` aus der Dropdownliste aus. Das ist die Ressourcengruppe, die Sie im Abschnitt 1 erstellt haben. 
    - **Server**: Wählen Sie den in Abschnitt 1 erstellten Server aus der Dropdownliste aus.  
 
-       ![Erstellen eines neuen Servers für den Pool für elastische Datenbanken](media/sql-database-elastic-pool-create-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
+       ![Erstellen eines neuen Servers für den Pool für elastische Datenbanken](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
    - **Compute und Speicher**: Wählen Sie **Pool für elastische Datenbanken konfigurieren** aus, um Ihren Computespeicher zu konfigurieren, und fügen Sie anschließend Ihre Einzeldatenbank zu Ihrem Pool für elastische Datenbanken hinzu. Belassen Sie auf der Registerkarte **Pooleinstellungen** die Standardeinstellung von Gen5 mit 2 virtuellen Kernen und 32 GB bei. 
 
 1. Wählen Sie auf der Seite **Konfigurieren** die Registerkarte **Datenbanken** und dann **Datenbank hinzufügen** aus. Wählen Sie die in Abschnitt 1 erstellte Datenbank und dann **Anwenden** aus, um sie zu Ihrem Pool für elastische Datenbanken hinzuzufügen. Wählen Sie erneut **Anwenden** aus, um die Einstellungen für Ihren Pool anzuwenden und die Seite **Konfigurieren** zu schließen. 
 
-    ![Hinzufügen von SQL DB zu einem Pool für elastische Datenbanken](media/sql-database-elastic-pool-create-failover-group-tutorial/add-database-to-elastic-pool.png)
+    ![Hinzufügen von SQL DB zu einem Pool für elastische Datenbanken](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
 
 1. Klicken Sie auf **Bewerten + erstellen**, um die Einstellung für den Pool für elastische Datenbanken anzuzeigen, und wählen Sie **Erstellen** aus, um Ihren Pool für elastische Datenbanken zu erstellen. 
 
@@ -66,17 +67,15 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 ## <a name="3---create-the-failover-group"></a>3 – Erstellen der Failovergruppe 
 In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failover-group.md) zwischen einem vorhandenen Azure SQL Server und einem neuen Azure SQL-Server in einer anderen Region. Anschließend fügen Sie dann der Failovergruppe den Pool für elastische Datenbanken hinzu. 
 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie im vorherigen Abschnitt erstellt haben, beispielsweise `myElasticPool`. 
+1. Wählen Sie im Bereich **Übersicht** unter **Servername** den Namen des Servers aus, um die Einstellungen für den Server zu öffnen.
+  
+    ![Öffnen des Servers für den Pool für elastische Datenbanken](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) oben links die Option **Alle Dienste** aus. 
-1. Geben Sie im Suchfeld als Suchbegriff `sql servers` ein. 
-1. (Optional) Wählen Sie das Sternsymbol neben SQL Server aus, **um SQL Server-Instanzen** als Favoriten festzulegen, und fügen Sie es dem linken Navigationsbereich hinzu. 
-    
-    ![Suchen von SQL Server-Instanzen](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
-
-1. Wählen Sie **SQL Server-Instanzen** und dann den Server aus, den Sie in Abschnitt 1 erstellt haben.
 1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und klicken Sie dann auf **Gruppe hinzufügen**, um eine neue Failovergruppe zu erstellen. 
 
-    ![Hinzufügen einer neuen Failovergruppe](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Hinzufügen einer neuen Failovergruppe](media/sql-database-elastic-pool-failover-group-tutorial/elastic-pool-failover-group.png)
 
 1. Wählen Sie auf der Seite **Failovergruppe** die folgenden Werte aus bzw. geben Sie sie ein, und wählen Sie dann **Erstellen**:
     - **Name der Failovergruppe**: Geben Sie einen eindeutigen Namen für die Failovergruppe ein, z.B. `failovergrouptutorial`. 
@@ -84,16 +83,16 @@ In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failove
         - **Servername**: Geben Sie einen eindeutigen Namen für den sekundären Server ein, z.B. `mysqlsecondary`. 
         - **Serveradministratoranmeldung**: Geben Sie Folgendes ein: `azureuser`
         - **Kennwort**: Geben Sie ein komplexes Kennwort ein, das die Anforderungen für Kennwörter erfüllt.
-        - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z.B. USA, Osten 2. Dieser Standort darf nicht mit dem Standort des primären Servers übereinstimmen.
+        - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z. B. `East US`. Dieser Standort darf nicht mit dem Standort des primären Servers übereinstimmen.
 
        > [!NOTE]
        > Die Einstellungen für Serveranmeldung und Firewall müssen jedoch mit denen Ihres primären Servers übereinstimmen. 
     
-       ![Erstellen eines sekundären Servers für die Failovergruppe](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+       ![Erstellen eines sekundären Servers für die Failovergruppe](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
 
 1. Wählen Sie **Datenbank in der Gruppe** aus, und wählen Sie anschließend den in Abschnitt 2 erstellten Pool für elastische Datenbanken aus. Es wird eine Warnung angezeigt, in der Sie aufgefordert werden, einen Pool für elastische Datenbanken auf dem sekundären Server zu erstellen. Wählen Sie die Warnung aus, und klicken Sie dann auf **OK**, um den Pool für elastische Datenbanken auf dem sekundären Server zu erstellen. 
         
-    ![Hinzufügen eines Pools für elastische Datenbanken zu einer Failovergruppe](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Hinzufügen eines Pools für elastische Datenbanken zu einer Failovergruppe](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen**, um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet. 
 
@@ -101,16 +100,21 @@ In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failove
 ## <a name="4---test-failover"></a>4 – Testen des Failovers 
 In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem sekundären Server und anschließend ein Failback mit dem Azure-Portal aus. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Server **SQL Server-Instanzen**. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie im vorherigen Abschnitt erstellt haben, beispielsweise `myElasticPool`. 
+1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
+
+    ![Öffnen des Servers für den Pool für elastische Datenbanken](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+
 1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und wählen Sie dann die in Abschnitt 2 erstellte Failovergruppe aus. 
   
-   ![Auswählen der Failovergruppe aus dem Portal](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![Auswählen der Failovergruppe aus dem Portal](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
 
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. 
 1. Wählen Sie im Aufgabenbereich **Failover** aus, um ein Failover für die Failovergruppe mit dem Pool für elastische Datenbanken durchzuführen. 
 1. Wählen Sie in der Meldung, dass die TDS-Sitzungen getrennt werden, **Ja** aus. 
 
-   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
 
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben. 
 1. Wählen Sie erneut **Failover** aus, um die Failovergruppe wieder auf die ursprünglichen Einstellungen zurückzusetzen. 

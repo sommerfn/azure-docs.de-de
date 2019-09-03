@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510384"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907381"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
 
@@ -65,16 +65,19 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
 
     ![Benennen des Replikats](./media/howto-read-replicas-portal/name-replica.png)
 
-5. Wählen Sie einen Standort für das Replikat aus. Sie können ein Replikat in einer beliebigen Azure-Region erstellen. Der Standardstandort ist mit dem des Masterservers identisch.
+5. Wählen Sie einen Standort für das Replikat aus. Der Standardstandort ist mit dem des Masterservers identisch.
 
     ![Standort auswählen](./media/howto-read-replicas-portal/location-replica.png)
 
+   > [!NOTE]
+   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im Artikel zu den [Lesereplikatkonzepten](concepts-read-replicas.md). 
+
 6. Wählen Sie **OK**, um die Erstellung des Replikats zu bestätigen.
 
-Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
+Ein Replikat wird mit denselben Compute- und Speichereinstellungen wie der Master erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
 
 > [!IMPORTANT]
-> Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
+> Bevor eine Masterservereinstellung in einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung in den gleichen oder einen größeren Wert. Durch diese Aktion wird unterstützt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
 
 Nach der Erstellung des Lesereplikats kann dieses im Fenster **Replikation** angezeigt werden:
 
@@ -178,4 +181,5 @@ Die Metrik **Replikatverzögerung** zeigt die Zeit seit der letzten wiedergegebe
 3. Wählen Sie für Ihre **Aggregation** den Wert **Max** aus. 
  
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr über [Lesereplikate in Azure Database for PostgreSQL](concepts-read-replicas.md).
+* Erfahren Sie mehr über [Lesereplikate in Azure Database for PostgreSQL](concepts-read-replicas.md).
+* Erfahren Sie mehr zum [Erstellen und Verwalten von Lesereplikaten in der Azure CLI](howto-read-replicas-cli.md).

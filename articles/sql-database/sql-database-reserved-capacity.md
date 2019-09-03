@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781317"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972545"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
@@ -44,14 +44,14 @@ Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenb
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie **Hinzufügen** und dann im Bereich „Reservierungen erwerben“ **SQL-Datenbank** aus, um eine neue Reservierung für SQL-Datenbank zu erwerben.
-4. Füllen Sie die erforderlichen Felder aus. Bei vorhandenen oder neuen Singletons, Pools für elastische Datenbanken oder verwaltete Instanzen, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt auf reservierte Kapazitäten angewandt. Die tatsächliche Anzahl Ihrer SQL-Datenbank-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
+4. Füllen Sie die Pflichtfelder aus. Bei vorhandenen oder neuen Singletons, Pools für elastische Datenbanken oder verwaltete Instanzen, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt auf reservierte Kapazitäten angewandt. Die tatsächliche Anzahl Ihrer SQL-Datenbank-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
     ![Screenshot vor der Übermittlung des Kaufs der reservierten SQL-Datenbank-Kapazität](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
 In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 
 | Feld      | BESCHREIBUNG|
 |------------|--------------|
-|Subscription|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder ein einzelnen Vereinbarung mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.|
+|Subscription|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder eine einzelne Vereinbarung mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung für das Abonnement in Rechnung gestellt.|
 |`Scope`       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Gemeinsam**: Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.<br/><br/>**Einzelabonnement**: Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewendet. <br/><br/>**Einzelne Ressourcengruppe**: Der Reservierungsrabatt wird auf SQL-Datenbank-Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.|
 |Region      |Die Azure-Region, die durch die Reservierung von SQL-Datenbank-Kapazitäten abgedeckt wird.|
 |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|
@@ -65,11 +65,15 @@ In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 
-Reservierungen können mit bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="vcore-size-flexibility"></a>Flexibilität der V-Kern-Größe
 
 Die Flexibilität der V-Kern-Größe ermöglicht ein zentrales Hoch- oder Herunterskalieren innerhalb einer Leistungsstufe und Region, ohne den Vorteil reservierter Kapazität einzubüßen. Mit der reservierten Kapazität von SQL-Datenbank erhalten Sie außerdem die Flexibilität, Ihre aktiven Datenbanken vorübergehend zwischen Pools und Einzeldatenbanken im Rahmen des normalen Betriebs (innerhalb derselben Region und Leistungsstufe) zu verschieben, ohne den Vorteil reservierter Kapazität einzubüßen. Dank eines nicht angewendeten Puffers in Ihrer Reservierung können Sie effektiv Leistungsspitzen verwalten, ohne Ihr Budget zu überschreiten.
+
+## <a name="limitation"></a>Einschränkung
+
+Sie können keine DTU-basierten SQL-Datenbanken (Basic, Standard oder Premium) reservieren.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

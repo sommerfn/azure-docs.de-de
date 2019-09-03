@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 0a411e0fe3b89eaaa19f4e18f5e614b03dd1d682
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599420"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073947"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -604,6 +604,10 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
     ```
 
 Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourcengruppe. Wenn Sie die Lastenausgleichsmodule durchsuchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Ports 19000 und 19080), die der öffentlichen IP-Adresse zugewiesen sind. Sie können auch die statische interne IP-Adresse und den Anwendungsendpunkt (Port 80) sehen, die dem internen Lastenausgleich zugewiesen sind. Beide Lastenausgleichsmodule verwenden den gleichen VM-Skalierungsgruppen-Back-End-Pool.
+
+## <a name="notes-for-production-workloads"></a>Anmerkungen zu Produktionsworkloads
+
+Die oben genannten GitHub-Vorlagen sind für die Verwendung mit der Standard-SKU für Azure Load Balancer Standard (SLB), der SKU „Basic“, konzipiert. Dieser SLB verfügt über keine SLA. Für Produktionsworkloads sollte daher die Standard-SKU verwendet werden. Weitere Informationen dazu finden Sie unter [Azure Load Balancer Standard: Übersicht](/azure/load-balancer/load-balancer-standard-overview). Jeder Service Fabric Cluster, der die Standard-SKU für SLB verwendet, muss sicherstellen, dass jeder Knotentyp über eine Regel verfügt, die ausgehenden Datenverkehr an Port 443 zulässt. Dies ist erforderlich, um die Clustereinrichtung abzuschließen, und jede Bereitstellung ohne diese Regel schlägt fehl. Im Beispiel oben für einen „nur internen“ Load Balancer muss der Vorlage ein zusätzlicher externer Load Balancer mit einer Regel hinzugefügt werden, die ausgehenden Datenverkehr für Port 443 zulässt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen eines Clusters](service-fabric-cluster-creation-via-arm.md)

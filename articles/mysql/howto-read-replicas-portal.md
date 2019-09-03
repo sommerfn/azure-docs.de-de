@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/21/2019
+ms.openlocfilehash: 74f27f70c4a0752975a53b3889681d3910b1dd05
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510765"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906437"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe des Azure-Portals
 
@@ -45,9 +45,12 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
     ![Azure Database for MySQL – Replikatname](./media/howto-read-replica-portal/replica-name.png)
 
-6. Wählen Sie den Standort für den Replikatserver aus. Sie können ein Replikat in einer beliebigen Azur-Region erstellen. Der Standardstandort ist derselbe wie beim Masterserver.
+6. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Masterservers identisch.
 
     ![Azure Database for MySQL – Replikatstandort](./media/howto-read-replica-portal/replica-location.png)
+
+   > [!NOTE]
+   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im Artikel zu den [Lesereplikatkonzepten](concepts-read-replicas.md). 
 
 7. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
 

@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 04/16/2019
-ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 08/22/2019
+ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569504"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066031"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
-Die Überwachung von Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verfolgt Datenbankereignisse und schreibt sie in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto, Ihrem OMS-Arbeitsbereich oder in Event Hubs. Die Überwachung ermöglicht außerdem Folgendes:
+Die Überwachung von Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verfolgt Datenbankereignisse und schreibt sie in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto, Ihrem Log Analytics-Arbeitsbereich oder in Event Hubs. Die Überwachung ermöglicht außerdem Folgendes:
 
 - Sie kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
 
@@ -121,11 +121,22 @@ Führen Sie die folgenden Schritte aus, wenn Sie Überwachungsprotokolle in Azur
 
 - Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie in der Datenbank oben auf der Seite **Überwachung** auf **Überwachungsprotokolle anzeigen**.
 
-    ![Überwachungsprotokolle anzeigen](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Überwachungsprotokolle anzeigen](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- Klicken Sie dann am oberen Rand der Seite **Überwachungsdatensätze** auf **In OMS öffnen**. Daraufhin wird die Protokollansicht in Log Analytics geöffnet, wo Sie Zeitbereich und Suchabfrage anpassen können.
+- Anschließend haben Sie zwei Möglichkeiten, die Protokolle anzuzeigen:
+    
+    Klicken Sie am oberen Rand der Seite **Überwachungsdatensätze** auf **Log Analytics**. Daraufhin wird die Protokollansicht im Log Analytics-Arbeitsbereich geöffnet, in der Sie den Zeitbereich und die Suchabfrage anpassen können.
+    
+    ![In Log Analytics-Arbeitsbereich öffnen](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![Öffnen in Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    Wenn Sie oben auf der Seite **Überwachungsdatensätze** auf **Dashboard anzeigen** klicken, wird ein Dashboard geöffnet, das Überwachungsprotokollinformationen anzeigt, für die Sie in Security Insights ein Drilldown ausführen oder auf vertrauliche Daten zugreifen können und vieles mehr. Dieses Dashboard soll Ihnen helfen, Sicherheitseinblicke in Ihre Daten zu erhalten.
+    Sie können den Zeitbereich und die Suchabfrage auch anpassen. 
+    ![Anzeigen des Log Analytics-Dashboards](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+
+    ![Log Analytics-Dashboard](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics Security Insights](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
 
 - Alternativ können Sie auch vom Blatt „Log Analytics“ auf die Überwachungsprotokolle zugreifen. Öffnen Sie Ihren Log Analytics-Arbeitsbereich und klicken Sie im Abschnitt **Allgemein** auf **Protokolle**. Beginnen Sie mit einer einfachen Abfrage, wie z. B. *"SQLSecurityAuditEvents" suchen*, um die Überwachungsprotokolle anzuzeigen.
     Hier können Sie auch [Azure Monitor-Protokolle](../log-analytics/log-analytics-log-search.md) nutzen, um erweiterte Suchen für Ihre Überwachungsprotokolldaten durchzuführen. Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards gewähren Azure Monitor-Protokolle Ihnen in Echtzeit Einblicke in Betriebsabläufe, sodass Sie Millionen von Datensätzen für alle Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zur Suchsprache und den Befehlen in Azure Monitor-Protokollen finden Sie unter [Referenz zur Suche in Azure Monitor-Protokollen](../log-analytics/log-analytics-log-search.md).
@@ -257,7 +268,7 @@ Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Fil
 - [Abrufen einer *erweiterten* Datenbanküberwachungsrichtlinie ](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Abrufen einer *erweiterten* Serverüberwachungsrichtlinie ](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von ARM-Vorlagen
+## <a id="subheading-10"></a>Verwalten der SQL-Datenbank-Überwachung mit Azure Resource Manager-Vorlagen
 
 Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwalten, wie die folgenden Beispiele zeigen:
 

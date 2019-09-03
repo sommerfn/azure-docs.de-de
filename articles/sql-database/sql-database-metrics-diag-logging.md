@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567271"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998219"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -344,9 +344,12 @@ Die Verwendung des Azure-Portals ist die einfachste Möglichkeit zum Konfigurier
 
 Falls Sie Pools für elastische Datenbanken oder die verwaltete Instanz verwenden, müssen Sie auch Diagnoseeinstellungen in diesen Ressourcen konfigurieren, um das Streamen der Diagnosetelemetriedaten in den Arbeitsbereich zu aktivieren.
 
-### <a name="use-the-sql-analytics-solution"></a>Verwenden der Lösung „SQL-Analyse“
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>Verwenden der SQL Analytics-Lösung für Überwachung und Warnungen
 
-Sie können die SQL-Analyse als ein hierarchisches Dashboard verwenden, um Ihre SQL-Datenbank-Ressourcen anzuzeigen. Informationen zum Verwenden der Lösung „SQL-Analyse“ finden Sie unter [Überwachen der SQL-Datenbank mithilfe der Lösung „SQL-Analyse“](../log-analytics/log-analytics-azure-sql.md).
+Sie können die SQL-Analyse als ein hierarchisches Dashboard verwenden, um Ihre SQL-Datenbank-Ressourcen anzuzeigen.
+
+- Informationen zum Verwenden der Lösung „SQL-Analyse“ finden Sie unter [Überwachen der SQL-Datenbank mithilfe der Lösung „SQL-Analyse“](../log-analytics/log-analytics-azure-sql.md).
+- Informationen zum Einrichten von Warnungen für SQL-Datenbank und eine verwaltete Instanz auf der Basis von SQL Analytics finden Sie unter [Erstellen von Warnungen für SQL-Datenbank und eine verwaltete Instanz](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
 ## <a name="stream-into-event-hubs"></a>Streamen an Event Hubs
 
@@ -715,3 +718,7 @@ Weitere Informationen zu Event Hubs finden Sie hier:
 
 - [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Informationen zum Einrichten von Warnungen auf der Grundlage von Telemetriedaten aus Log Analytics finden Sie hier:
+
+- [Erstellen von Warnungen für SQL-Datenbank und eine verwaltete Instanz](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

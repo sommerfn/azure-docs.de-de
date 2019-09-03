@@ -7,20 +7,21 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/22/2019
+ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569043"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072985"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung
 
-Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
+Datenermittlung und -klassifizierung bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
+
 Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
 
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
@@ -76,7 +77,7 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Advanced Data Security**. Klicken Sie, um Advanced Data Security zu aktivieren, und klicken Sie dann auf die Karte **Datenermittlung und -klassifizierung (Vorschau)** .
+2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Advanced Data Security**. Klicken Sie, um Advanced Data Security zu aktivieren, und klicken Sie dann auf die Karte **Datenermittlung und -klassifizierung**.
 
    ![Überprüfen einer Datenbank](./media/sql-data-discovery-and-classification/data_classification.png)
 

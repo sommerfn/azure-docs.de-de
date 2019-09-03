@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 07/23/2019
+ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405425"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018945"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
 In diesem Artikel wird beschrieben, wie Sie dynamische Verwaltungssichten (DMVs) verwenden, um Ihre Workload zu überwachen. Dazu gehört auch die Untersuchung der Abfrageausführung in Azure SQL Data Warehouse.
@@ -206,9 +206,11 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Wenn Sie eine Abfrage haben, die eine große Menge an Arbeitsspeicher verbraucht, oder wenn eine Fehlermeldung im Zusammenhang mit der Zuordnung von tempdb angezeigt wird, beruht dies oft auf der Ausführung einer sehr umfangreichen [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)- oder [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql)-Anweisung, bei der im letzten Datenverschiebungsvorgang ein Fehler aufgetreten ist. Dies kann im Plan für verteilte Abfragen normalerweise als „ShuffleMove“-Vorgang direkt vor der letzten INSERT SELECT-Anweisung identifiziert werden.
+Wenn Sie eine Abfrage haben, die eine große Menge an Arbeitsspeicher verbraucht, oder wenn eine Fehlermeldung im Zusammenhang mit der Zuordnung von tempdb angezeigt wird, kann dies auf der Ausführung einer sehr umfangreichen [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)- oder [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql)-Anweisung beruhen, bei der im letzten Datenverschiebungsvorgang ein Fehler aufgetreten ist. Dies kann im Plan für verteilte Abfragen normalerweise als „ShuffleMove“-Vorgang direkt vor der letzten INSERT SELECT-Anweisung identifiziert werden.  Verwenden Sie [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zum Überwachen von ShuffleMove-Vorgängen. 
 
-Die häufigste Minderung besteht darin, Ihre CTAS- oder INSERT SELECT-Anweisung in mehrere Load-Anweisungen aufzuteilen, damit das Datenvolumen das tempdb-Limit von 1TB pro Knoten nicht überschreitet. Sie können auch Ihren Cluster auf eine größere Größe skalieren. Dadurch wird die tempdb-Größe über mehrere Knoten verteilt und so die tempdb auf jedem einzelnen Knoten verkleinert. 
+Die häufigste Minderung besteht darin, Ihre CTAS- oder INSERT SELECT-Anweisung in mehrere Load-Anweisungen aufzuteilen, damit das Datenvolumen das tempdb-Limit von 1TB pro Knoten nicht überschreitet. Sie können auch Ihren Cluster auf eine größere Größe skalieren. Dadurch wird die tempdb-Größe über mehrere Knoten verteilt und so die tempdb auf jedem einzelnen Knoten verkleinert.
+
+Zusätzlich zu den CTAS- und INSERT SELECT-Anweisungen können große, komplexe Abfragen, die mit unzureichendem Speicher ausgeführt werden, in tempdb gelangen, wodurch Abfragen fehlschlagen.  Ziehen Sie die Ausführung mit einer größeren [Ressourcenklasse](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) in Betracht, um tempdb zu entlasten.
 
 ## <a name="monitor-memory"></a>Überwachen des Arbeitsspeichers
 
@@ -260,6 +262,31 @@ SELECT
 FROM sys.dm_pdw_nodes_tran_database_transactions t
 JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
 GROUP BY t.pdw_node_id, nod.[type]
+```
+
+## <a name="monitor-polybase-load"></a>Überwachen der PolyBase-Last
+Die folgende Abfrage liefert eine grobe Schätzung des Fortschritts Ihrer Last. Die Abfrage zeigt nur Dateien an, die zurzeit verarbeitet werden. 
+
+```sql
+
+-- To track bytes and files
+SELECT
+    r.command,
+    s.request_id,
+    r.status,
+    count(distinct input_name) as nbr_files, 
+    sum(s.bytes_processed)/1024/1024/1024 as gb_processed
+FROM
+    sys.dm_pdw_exec_requests r
+    inner join sys.dm_pdw_dms_external_work s
+        on r.request_id = s.request_id
+GROUP BY
+    r.command,
+    s.request_id,
+    r.status
+ORDER BY
+    nbr_files desc,
+    gb_processed desc;
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
