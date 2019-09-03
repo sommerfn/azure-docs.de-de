@@ -87,7 +87,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine UWP-Anwendung
 > > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.    
 
 > [!div renderon="docs"]
-> Hinweis:
+> Hierbei gilt:
 > - `Enter_the_Application_Id_here` ist die Anwendungs-ID für die von Ihnen registrierte Anwendung.
 >
 > > [!TIP]
@@ -129,7 +129,7 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |Hinweis: ||
+> |Hierbei gilt: ||
 > |---------|---------|
 > | `ClientId` | Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Dieser Wert befindet sich im Azure-Portal auf der Seite **Übersicht** der App. |
 
@@ -151,7 +151,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Hinweis:||
+> |Hierbei gilt:||
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
 
@@ -166,7 +166,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Hinweis: ||
+> |Hierbei gilt: ||
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
 > | `firstAccount` | Gibt das erste Benutzerkonto im Cache an (MSAL unterstützt mehrere Benutzer in einer App). |
