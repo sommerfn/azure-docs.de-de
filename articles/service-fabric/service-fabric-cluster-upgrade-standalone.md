@@ -48,7 +48,7 @@ Die Anwendung für die Patchorchestrierung (POA) ist eine Service Fabric-Anwendu
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich über die Vorgehensweise zum Anpassen einiger [Customize Service Fabric cluster settings and Fabric Upgrade policy](service-fabric-cluster-fabric-settings.md)
+* Informieren Sie sich über die Vorgehensweise zum [Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie](service-fabric-cluster-fabric-settings.md).
 * Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md)
 * Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md)
 

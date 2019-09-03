@@ -45,7 +45,7 @@ sections:
         items:
           - html: '<a href="tutorial-1st-experiment-sdk-setup">Tutorial: Einrichten der Umgebung und des Arbeitsbereichs</a>'
           - html: '<a href="tutorial-train-models-with-aml">Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning</a>'
-          - html: '<a href="tutorial-data-prep">Tutorial: Vorbereiten von Daten für die Regressionsmodellierung</b></a>'
+          - html: '<a href="tutorial-auto-train-models">Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning</b></a>'
           - html: <a href="how-to-run-batch-predictions">Ausführen von Batchvorhersagen für große Datasets mit ML-Pipelines</b></a>
   - title: Beispiele
     items:

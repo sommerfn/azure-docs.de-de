@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: Grafische Benutzeroberfläche
       items:
-        - name: Trainieren eines Regressionsmodells
+        - name: 1. Trainieren eines Regressionsmodells
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: Bereitstellen eines Regressionsmodells
+        - name: 2. Bereitstellen eines Regressionsmodells
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Automatisiertes maschinelles Lernen

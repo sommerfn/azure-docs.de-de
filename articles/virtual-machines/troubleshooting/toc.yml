@@ -97,8 +97,9 @@
 - name: Neustart oder Größenänderung eines virtuellen Computers
   href: restart-resize-error-troubleshooting.md
 - name: Serielle Konsole
-  href: serial-console-overview.md
   items:
+    - name: Übersicht über die serielle Konsole
+      href: serial-console-overview.md
     - name: Serielle Konsole für Linux
       href: serial-console-linux.md
       items:
