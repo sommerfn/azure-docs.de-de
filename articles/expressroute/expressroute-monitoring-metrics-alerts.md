@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92ec03e20fb6e681a0afd14048449ad004ebca0c
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60364705"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991482"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute-Überwachung, Metriken und Warnungen
 
@@ -25,15 +25,59 @@ Dieser Artikel macht Sie mit der ExpressRoute-Überwachung, Metriken und Warnung
 
 ## <a name="circuit-metrics"></a>Metriken zu Leitungen
 
-Navigieren Sie zu **Metriken**, und klicken Sie auf die Seite „ExpressRoute“ für die Leitung, die Sie überwachen möchten. Unter **Überwachung** können Sie die **Metriken** anzeigen. Wählen Sie BitsInPerSecond oder BitsOutPerSecond und die Aggregation aus. Optional können Sie die Teilung anwenden, wonach die Metriken pro Peeringtyp angezeigt werden.
+Navigieren Sie zu **Metriken**, und klicken Sie auf die Seite „ExpressRoute“ für die Leitung, die Sie überwachen möchten. Unter **Überwachung** können Sie die **Metriken** anzeigen. Wählen Sie eine der unten aufgeführten Metriken aus. Die Standardaggregation wird angewendet. Optional können Sie die Teilung anwenden, wonach die Metriken mit anderen Dimensionen angezeigt werden.
+
+### <a name="metrics-available"></a>Verfügbare Metriken: 
+* **Verfügbarkeit** 
+    * ARP-Verfügbarkeit
+      * Verfügbare Dimensionen:
+        * Peer (Primärer/Sekundärer ExpressRoute-Router)
+        * Peeringtyp (Privat/Öffentlich/Microsoft)
+    * BGP-Verfügbarkeit
+      * Verfügbare Dimensionen:
+        * Peer (Primärer/Sekundärer ExpressRoute-Router)
+        * Peeringtyp (Privat/Öffentlich/Microsoft)
+* **Datenverkehr**
+    * BitsInPerSecond
+      * Verfügbare Dimensionen:
+        * Peeringtyp (Privat/Öffentlich/Microsoft)
+    * BitsOutPerSecond
+      * Verfügbare Dimensionen:
+        * Peeringtyp (Privat/Öffentlich/Microsoft)
+    * GlobalReachBitsInPerSecond
+      * Verfügbare Dimensionen:
+        * Dienstschlüssel (Skey) der Peeringleitung (Skey)
+    * GlobalReachBitsOutPerSecond
+      * Verfügbare Dimensionen:
+        * Dienstschlüssel (Skey) der Peeringleitung (Skey)
+
+>[!NOTE]
+>Die Verwendung von *GlobalGlobalReachBitsInPerSecond* und *GlobalGlobalReachBitsOutPerSecond* ist nur sichtbar, wenn mindestens eine Global Reach-Verbindung hergestellt wird.
+>
+
+## <a name="bits-in-and-out---metrics-across-all-peerings"></a>Ein- und ausgehende Bits – Metriken über alle Peerings
+
+Sie können Metriken über alle Peerings hinweg für eine bestimmte ExpressRoute-Leitung anzeigen.
 
 ![Metriken zu Leitungen](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-## <a name="metrics-per-peering"></a>Peeringspezifische Metriken
+## <a name="bits-in-and-out---metrics-per-peering"></a>Ein- und ausgehende Bits – Metriken pro Peering
 
 Sie können Metriken für privates, öffentliches und Microsoft-Peering in Bits pro Sekunde anzeigen.
 
 ![Peeringspezifische Metriken](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
+
+## <a name="bgp-availability---split-by-peer"></a>BGP-Verfügbarkeit – Aufgeteilt nach Peer  
+
+Sie können die Verfügbarkeit von BGP nahezu in Echtzeit über Peerings und Peers (primäre und sekundäre ExpressRoute-Router) hinweg anzeigen. Dieses Dashboard zeigt die primäre BGP-Sitzung aufwärts für privates Peering und die zweite BGP-Sitzung abwärts für privates Peering an. 
+
+![BGP-Verfügbarkeit pro Peer](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
+
+## <a name="arp-availability---split-by-peering"></a>ARP-Verfügbarkeit – Aufgeteilt nach Peering  
+
+Sie können die Verfügbarkeit von [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) nahezu in Echtzeit über Peerings und Peers (primäre und sekundäre ExpressRoute-Router) hinweg anzeigen. Dieses Dashboard zeigt die ARP-Sitzung aufwärts für privates Peering auf beiden Peers an, aber vollständig abwärts für Microsoft-Peering über Peerings hinweg. Die Standardaggregation (Durchschnitt) wurde für beide Peers verwendet.  
+
+![ARP-Verfügbarkeit pro Peer](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute-Gatewayverbindungen in Bits pro Sekunde
 
