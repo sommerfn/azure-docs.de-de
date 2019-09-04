@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876747"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073933"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -34,39 +34,45 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 
 **Ursache:** Es gab einen Schreibfehler, als die Anmeldeinformationen in die Schnittstellenkorrekturen der Azure Resource Manager-Vorlage eingegeben wurden.
 
-**Behebung:** Befolgen Sie diese Anweisungen, um die Anmeldeinformationen zu korrigieren.
+**Behebung:** Führen Sie eine der folgenden Aktionen aus, um dieses Problem zu beheben.
 
-1. Fügen Sie die virtuellen Computer einer Domäne manuell hinzu.
-2. Führen Sie die Bereitstellung erneut aus, nachdem die Anmeldeinformationen bestätigt wurden. Siehe [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-3. Fügen Sie einer Domäne VMs mithilfe einer Vorlage zum [Hinzufügen eines vorhandenen virtuellen Windows-Computers zu einer AD-Domäne](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/) hinzu.
+- Fügen Sie die virtuellen Computer einer Domäne manuell hinzu.
+- Stellen Sie die Vorlage erneut bereit, nachdem die Anmeldeinformationen bestätigt wurden. Siehe [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Fügen Sie einer Domäne VMs mithilfe einer Vorlage zum [Hinzufügen eines vorhandenen virtuellen Windows-Computers zu einer AD-Domäne](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/) hinzu.
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Fehler Timeout beim Warten auf eine Benutzereingabe.
 
 **Ursache:** Das Konto, dar zum Abschließen des Domänenbeitritts verwendet wird, nutzt möglicherweise Multi-Factor Authentication (MFA).
 
-**Behebung:** Befolgen Sie diese Anweisungen, um den Domänenbeitritt abzuschließen.
+**Behebung:** Führen Sie eine der folgenden Aktionen aus, um dieses Problem zu beheben.
 
-1. Entfernen Sie vorübergehend MFA für das Konto.
-2. Verwenden Sie ein Dienstkonto.
+- Entfernen Sie vorübergehend MFA für das Konto.
+- Verwenden Sie ein Dienstkonto.
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Fehler Das während der Bereitstellung verwendete Konto ist nicht berechtigt, den Vorgang abzuschließen.
 
 **Ursache:** Das verwendete Konto besitzt aufgrund von Compliance und Vorschriften keine Berechtigungen, der Domäne VMs hinzuzufügen.
 
-**Behebung:** Befolgen Sie diese Anweisungen.
+**Behebung:** Führen Sie eine der folgenden Aktionen aus, um dieses Problem zu beheben.
 
-1. Verwenden Sie ein Konto, das Mitglied der Gruppe „Administratoren“ ist.
-2. Erteilen Sie dem verwendeten Konto die erforderlichen Berechtigungen.
+- Verwenden Sie ein Konto, das Mitglied der Gruppe „Administratoren“ ist.
+- Erteilen Sie dem verwendeten Konto die erforderlichen Berechtigungen.
 
 ### <a name="error-domain-name-doesnt-resolve"></a>Fehler Der Domänenname wird nicht aufgelöst.
 
-**Ursache 1:** VMs befinden sich in einer Ressourcengruppe, die nicht dem virtuellen Netzwerk (VNET) zugeordnet ist, in dem sich die Domäne befindet.
+**Ursache 1:** VMs befinden sich in einem virtuellen Netzwerk, das nicht dem virtuellen Netzwerk (VNET) zugeordnet ist, in dem sich die Domäne befindet.
 
 **Behebung 1:** Erstellen Sie VNET-Peering zwischen dem VNET, in dem VMs bereitgestellt wurden, und dem VNET, in dem der Domänencontroller (DC) ausgeführt wird. Siehe [Erstellen eines Peerings in virtuellen Netzwerken: Resource Manager, verschiedene Abonnements](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
 
-**Ursache 2:** Beim Verwenden von AadService (AADS) wurden keine DNS-Einträge festgelegt.
+**Ursache 2:** Bei Verwendung von Azure Active Directory Domain Services (Azure AD DS) werden die DNS-Servereinstellungen für das virtuelle Netzwerk nicht so aktualisiert, dass sie auf die verwalteten Domänencontroller verweisen.
 
-**Behebung 2:** Informationen zum Festlegen von Domänendiensten finden Sie unter [Aktivieren von Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
+**Behebung 2:** Informationen zum Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk mit Azure AD DS finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+
+**Ursache 3:** Die DNS-Servereinstellungen der Netzwerkschnittstelle zeigen nicht auf den entsprechenden DNS-Server im virtuellen Netzwerk.
+
+**Behebung 3:** Führen Sie eine der folgenden Aktionen aus, um das Problem zu beheben, und befolgen Sie dabei die Schritte unter [Ändern von DNS-Servern].
+- Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle anhand der Schritte unter [Ändern von DNS-Servern](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) in **Benutzerdefiniert**, und geben Sie die privaten IP-Adressen der DNS-Server im virtuellen Netzwerk an.
+- Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle über die Schritte unter [Ändern von DNS-Servern](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) so, dass sie **vom virtuellen Netzwerk geerbt werden**, und ändern Sie dann die DNS-Servereinstellungen des virtuellen Netzwerks anhand der Schritte unter [Ändern von DNS-Servern](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Der Windows Virtual Desktop-Agent und das Windows Virtual Desktop-Startladeprogramm sind nicht installiert.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 92bfb921833d99a3538ffa8c4c5d16a9f0cd3acd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335437"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126284"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Anleitung: Konfigurieren der Richtlinie zum Benutzerrisiko
 
@@ -26,9 +26,9 @@ In diesem Artikel erhalten Sie die erforderlichen Informationen, die Sie zum Kon
 
 ## <a name="what-is-a-user-risk-policy"></a>Was ist eine Richtlinie zum Benutzerrisiko?
 
-Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoereignisse bezeichnet. Einige Risikoereignisse können in Echtzeit erkannt werden, aber es gibt auch Risikoereignisse, für die mehr Zeit benötigt wird. Um beispielsweise eine Fahrt zu ungewöhnlichen Orten zu erkennen, benötigt das System einen anfänglichen Lernzeitraum von 14 Tagen, um das Regelverhalten eines Benutzers kennenzulernen. Es gibt mehrere Optionen zum Lösen von erkannten Risikoereignissen. Beispielsweise können Sie einzelne Risikoereignisse manuell lösen oder lösen lassen, indem Sie eine Richtlinie für bedingten Zugriff für das Anmelderisiko oder Benutzerrisiko verwenden.
+Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoerkennungen bezeichnet. Einige Risikoerkennungen können in Echtzeit erkannt werden, aber es gibt auch Risikoerkennungen, für die mehr Zeit benötigt wird. Um beispielsweise eine Fahrt zu ungewöhnlichen Orten zu erkennen, benötigt das System einen anfänglichen Lernzeitraum von 14 Tagen, um das Regelverhalten eines Benutzers kennenzulernen. Es gibt mehrere Optionen zum Lösen von erkannten Risikoerkennungen. Beispielsweise können Sie einzelne Risikoerkennungen manuell lösen oder lösen lassen, indem Sie eine Richtlinie für bedingten Zugriff für das Anmelderisiko oder Benutzerrisiko verwenden.
 
-Alle Risikoereignisse, die für einen Benutzer erkannt und nicht gelöst wurden, werden als aktive Risikoereignisse bezeichnet. Die aktiven Risikoereignisse, die einem Benutzer zugeordnet sind, werden als Benutzerrisiko bezeichnet. Basierend auf dem Benutzerrisiko berechnet Azure AD eine Wahrscheinlichkeit (niedrig, mittel, hoch), mit der ein Benutzer kompromittiert wurde. Die Wahrscheinlichkeit wird als Benutzerrisikostufe bezeichnet.
+Alle Risikoerkennungen, die für einen Benutzer erkannt und nicht gelöst wurden, werden als aktive Risikoerkennungen bezeichnet. Die aktiven Risikoerkennungen, die einem Benutzer zugeordnet sind, werden als Benutzerrisiko bezeichnet. Basierend auf dem Benutzerrisiko berechnet Azure AD eine Wahrscheinlichkeit (niedrig, mittel, hoch), mit der ein Benutzer kompromittiert wurde. Die Wahrscheinlichkeit wird als Benutzerrisikostufe bezeichnet.
 
 ![Benutzerrisiken](./media/howto-user-risk-policy/1031.png)
 
@@ -72,8 +72,8 @@ Sie können eine Sicherheitsrichtlinie für das Benutzerrisiko festlegen, um Ben
 
 Das Sperren einer Anmeldung bewirkt Folgendes:
 
-* Verhindert die Generierung neuer Benutzerrisikoereignisse für den betroffenen Benutzer
-* Ermöglicht Administratoren die manuelle Bereinigung der Risikoereignisse, die die Identität des Benutzers beeinträchtigen, und stellen wieder einen sicheren Identitätszustand her
+* Verhindert die Generierung neuer Benutzerrisikoerkennungen für den betroffenen Benutzer
+* Ermöglicht Administratoren die manuelle Bereinigung der Risikoerkennungen, die die Identität des Benutzers beeinträchtigen, und die Wiederherstellung eines sicheren Identitätszustands
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

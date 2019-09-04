@@ -3,18 +3,18 @@ title: Erweitern von Azure IoT Central mit benutzerdefinierten Analysen | Micros
 description: Als Lösungsentwickler konfigurieren Sie eine IoT Central-Anwendung zur Ausführung von benutzerdefinierten Analysen und Visualisierungen. Diese Lösung verwendet Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e039e2b8d9c183b5bfee1bee47e4addc4c873bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1649d1ad50a62374cb5a1d9491c594e1b485ec1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743343"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100978"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ### <a name="iot-central-application"></a>IoT Central-Anwendung
 
-Erstellen Sie über die Seite [Azure IoT Central – Eigene Anwendungen](https://aka.ms/iotcentral) eine IoT Central-Anwendung mit folgenden Einstellungen:
+Erstellen Sie über die Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) eine IoT Central-Anwendung mit folgenden Einstellungen:
 
 | Einstellung | Wert |
 | ------- | ----- |
@@ -45,11 +45,11 @@ Erstellen Sie über die Seite [Azure IoT Central – Eigene Anwendungen](https:/
 | URL | Standardwert übernehmen oder eigenes eindeutiges URL-Präfix angeben |
 | Verzeichnis | Ihr Azure Active Directory-Mandant |
 | Azure-Abonnement | Ihr Azure-Abonnement |
-| Region | USA (Ost) |
+| Region | East US |
 
 Bei den Beispielen und Screenshots in diesem Artikel wird die Region **USA, Osten** verwendet. Wählen Sie einen Standort in Ihrer Nähe, und stellen Sie sicher, dass Sie alle Ressourcen in derselben Region erstellen.
 
-### <a name="resource-group"></a>Ressourcengruppe
+### <a name="resource-group"></a>Resource group
 
 Verwenden Sie das [Azure-Portal zum Erstellen einer Ressourcengruppe](https://portal.azure.com/#create/Microsoft.ResourceGroup) namens **IoTCentralAnalysis**. Sie soll die anderen von Ihnen erstellten Ressourcen enthalten. Erstellen Sie Ihre Azure-Ressourcen am gleichen Standort wie Ihre IoT Central-Anwendung.
 
@@ -61,9 +61,9 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https:
 | ------- | ----- |
 | NAME    | Namen Ihres Namespace auswählen |
 | Tarif | Basic |
-| Abonnement | Ihr Abonnement |
-| Ressourcengruppe | IoTCentralAnalysis |
-| Location | USA (Ost) |
+| Subscription | Ihr Abonnement |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Durchsatzeinheiten | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks-Arbeitsbereich
@@ -73,9 +73,9 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Azure Databricks-Diensts](ht
 | Einstellung | Wert |
 | ------- | ----- |
 | Arbeitsbereichname    | Wählen Sie den Namen Ihres Arbeitsbereichs |
-| Abonnement | Ihr Abonnement |
-| Ressourcengruppe | IoTCentralAnalysis |
-| Location | USA (Ost) |
+| Subscription | Ihr Abonnement |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Preisstufe | Standard |
 
 Wenn Sie die erforderlichen Ressourcen erstellt haben, sieht Ihre Ressourcengruppe **IoTCentralAnalysis** wie im folgenden Screenshot aus:
@@ -99,7 +99,7 @@ Ihr Event Hubs-Namespace sieht wie im folgenden Screenshot aus:
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurieren des Exports nach IoT Central
 
-Navigieren Sie zu der [IoT Central-Anwendung](https://aka.ms/iotcentral), die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
+Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu der IoT Central-Anwendung, die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
 
 1. Navigieren Sie zur Seite **Kontinuierlicher Datenexport**, klicken Sie auf **+ Neu**, und wählen Sie **Azure Event Hubs** aus.
 1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:

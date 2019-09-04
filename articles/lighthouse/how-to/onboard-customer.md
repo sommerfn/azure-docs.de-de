@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934313"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012064"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 
@@ -20,7 +20,7 @@ In diesem Artikel wird erläutert, wie Sie als Dienstanbieter einen Kunden in di
 
 Sie können diesen Vorgang wiederholen, wenn Sie Ressourcen für mehrere Kunden verwalten. Wenn sich dann ein autorisierter Benutzer bei Ihrem Mandanten anmeldet, kann dieser Benutzer über Kundenmandantenbereiche hinweg autorisiert werden, Verwaltungsvorgänge durchzuführen, ohne sich bei jedem einzelnen Kundenmandanten anmelden zu müssen.
 
-Sie können Ihre MPN-ID (Microsoft Partner Network) mit ihren integrierten Abonnements verknüpfen, um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen. Weitere Informationen finden Sie unter [Verknüpfen einer Partner-ID mit Ihren Azure-Konten](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+Sie können Ihre MPN-ID (Microsoft Partner Network) mit ihren integrierten Abonnements verknüpfen, um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen und Anerkennung zu erhalten. Weitere Informationen finden Sie unter [Verknüpfen einer Partner-ID mit Ihren Azure-Konten](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Beachten Sie, dass Sie diese Zuordnung für jeden Kundenmandanten, in dem Sie Ressourcen verwalten, separat ausführen müssen. 
 
 > [!NOTE]
 > Kunden können automatisch integriert werden, wenn Sie ein Angebot für verwaltete Dienste (öffentlich oder privat) kaufen, das Sie in Azure Marketplace veröffentlicht haben. Weitere Informationen finden Sie unter [Veröffentlichen von Angeboten für verwaltete Dienste im Azure Marketplace](publish-managed-services-offers.md). Sie können den hier beschriebenen Onboardingprozess auch mit einem in Azure Marketplace veröffentlichten Angebot verwenden.

@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Wartungsbenachrichtigungen für Ihre virtuellen Windows-Computer in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie geplante Wartungsbenachrichtigungen für Ihre virtuellen Azure-Computer einrichten.
+title: Überwachen von geplanten Ereignissen für Windows-VMs in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihre virtuellen Azure-Computer für geplante Ereignisse überwachen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656945"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051857"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>Einrichten von Benachrichtigungen zu Wartung, die virtuelle Computer beeinträchtigt
+# <a name="monitoring-scheduled-events"></a>Überwachen von geplanten Ereignissen
 
 Updates werden täglich auf verschiedene Teile von Azure angewendet, damit die Dienste, die auf ihnen ausgeführt werden, sicher und auf dem neuesten Stand bleiben. Zusätzlich zu geplanten Updates können auch ungeplante Ereignisse auftreten. Wenn beispielsweise eine Hardwarebeeinträchtigung oder ein Hardwarefehler erkannt wird, müssen die Azure-Dienste möglicherweise nicht geplante Wartung ausführen. Durch Verwenden von Livemigration und speichererhaltende Updates sowie grundsätzliches Beachten einer strengen Begrenzung der Auswirkungen von Updates sind diese Ereignisse in den meisten Fällen für Kunden weitestgehend transparent, und die Ereignisse haben entweder keine Auswirkung oder verursachen höchstens für einige Sekunden ein Einfrieren des virtuellen Computers. Es gibt jedoch Anwendungen, bei denen sich bereits wenige Sekunden eines Einfrierens des virtuellen Computers negativ auswirken. Es ist wichtig, im Voraus über eine bevorstehende Azure-Wartung informiert zu sein, um das beste Betriebsverhalten für solche Anwendungen sicherzustellen. Der [Scheduled Events-Dienst](scheduled-events.md) stellt Ihnen eine befehlsorientierte Benutzerschnittstelle zur Verfügung, um über bevorstehende Wartung benachrichtigt zu werden, und ermöglicht es Ihnen, die Wartung reibungslos abzuwickeln. 
 

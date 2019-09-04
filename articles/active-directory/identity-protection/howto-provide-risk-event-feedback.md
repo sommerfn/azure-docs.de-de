@@ -1,6 +1,6 @@
 ---
-title: Senden von Feedback zu Risikoereignissen in Azure AD Identity Protection – Azure Active Directory
-description: Wie und warum Sie Feedback zu Identity Protection-Risikoereignissen senden sollten.
+title: Senden von Feedback zu Risikoerkennungen in Azure AD Identity Protection – Azure Active Directory
+description: Erfahren Sie, wie und warum Sie Feedback zu Identity Protection-Risikoerkennungen senden sollten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 32480e66a71c9e706b1f3eee1a3d459737120c5c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370203"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126327"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Anleitung: Senden von Feedback zu Risikoereignissen in Azure AD Identity Protection
 
@@ -24,7 +24,7 @@ Sie können Feedback zur Risikobewertung durch Azure AD Identity Protection gebe
 
 ## <a name="what-is-a-detection"></a>Was ist eine Erkennung?
 
-Eine Erkennung von Identity Protection ist ein Indikator für verdächtige Aktivität bezüglich des Identitätsrisikos. Diese verdächtigen Aktivitäten werden als Risikoereignisse bezeichnet. Diese identitätsbasierenden Erkennungen können auf Heuristiken und Machine Learning basieren oder von Partnerprodukten stammen. Mit diesen Erkennungen werden Anmelde- und Benutzerrisiko bestimmt.
+Eine Erkennung von Identity Protection ist ein Indikator für verdächtige Aktivität bezüglich des Identitätsrisikos. Diese verdächtigen Aktivitäten werden als Risikoerkennungen bezeichnet. Diese identitätsbasierenden Erkennungen können auf Heuristiken und Machine Learning basieren oder von Partnerprodukten stammen. Mit diesen Erkennungen werden Anmelde- und Benutzerrisiko bestimmt.
 
 * Ein Benutzerrisiko entspricht der Wahrscheinlichkeit, dass eine bestimmte Identität kompromittiert wurde.
 * Das Anmelderisiko entspricht der Wahrscheinlichkeit, dass eine Anmeldung gefährdet ist (die Anmeldung ist z.B. nicht durch den Besitzer der Identität autorisiert).
@@ -49,15 +49,15 @@ Hier finden Sie Szenarios und Mechanismen zum Senden von Risikofeedback an Azure
 | --- | --- | --- | --- |
 | **Anmeldung nicht kompromittiert (falsch positiv)** <br> Der Bericht „Riskante Anmeldungen“ zeigt eine riskante Anmeldung [Risikostatus = Gefährdet] an, aber diese Anmeldung war nicht kompromittiert. | Wählen Sie die Anmeldung aus, und klicken Sie auf „Anmeldung als sicher bestätigen“. | Azure AD hebt das aggregierte Risiko der Anmeldung auf [Risikostatus = Als sicher bestätigt; Risikostufe (aggregiert) = -] und macht die Auswirkung auf das Benutzerrisiko rückgängig. | Die Option „Anmeldung als sicher bestätigen“ ist derzeit nur im Bericht „Riskante Anmeldungen“ verfügbar. |
 | **Anmeldung kompromittiert (richtig positiv)** <br> Der Bericht „Riskante Anmeldungen“ zeigt eine gefährdete Anmeldung [Risikostatus = Gefährdet] mit geringem Risiko [Risikostufe (aggregiert) = Niedrig] an, und diese Anmeldung wurde tatsächlich kompromittiert. | Wählen Sie die Anmeldung aus, und klicken Sie auf „Anmeldung als gefährdet bestätigen“. | Azure AD setzt das aggregierte Risiko der Anmeldung auf „Hoch“ [Risikostatus = Gefährdung bestätigen; Risikostufe = Hoch]. | Die Option „Anmeldung als gefährdet bestätigen“ ist derzeit nur im Bericht „Riskante Anmeldungen“ verfügbar. |
-| **Benutzer kompromittiert (richtig positiv)** <br> Der Bericht „Riskante Benutzer“ zeigt einen gefährdeten Benutzer [Risikostatus = Gefährdet] mit geringem Risiko [Risikostufe = Niedrig] an, und dieser Benutzer wurde tatsächlich kompromittiert. | Wählen Sie den Benutzer aus, und klicken Sie auf „Benutzergefährdung bestätigen“. | Azure AD setzt das Benutzerrisiko auf „Hoch“ [Risikostatus = Gefährdung bestätigen; Risikostufe = Hoch] und fügt eine neue Erkennung „Benutzergefährdung durch Administrator bestätigt“ hinzu. | Die Option „Benutzergefährdung bestätigen“ ist derzeit nur im Bericht „Riskante Anmeldungen“ verfügbar. <br> Die Erkennung „Benutzergefährdung durch Administrator bestätigt“ wird im Bericht „Riskante Benutzer“ auf der Registerkarte „Risikoereignisse ohne Bezug zu einer Anmeldung“ angezeigt. |
+| **Benutzer kompromittiert (richtig positiv)** <br> Der Bericht „Riskante Benutzer“ zeigt einen gefährdeten Benutzer [Risikostatus = Gefährdet] mit geringem Risiko [Risikostufe = Niedrig] an, und dieser Benutzer wurde tatsächlich kompromittiert. | Wählen Sie den Benutzer aus, und klicken Sie auf „Benutzergefährdung bestätigen“. | Azure AD setzt das Benutzerrisiko auf „Hoch“ [Risikostatus = Gefährdung bestätigen; Risikostufe = Hoch] und fügt eine neue Erkennung „Benutzergefährdung durch Administrator bestätigt“ hinzu. | Die Option „Benutzergefährdung bestätigen“ ist derzeit nur im Bericht „Riskante Anmeldungen“ verfügbar. <br> Die Erkennung „Benutzergefährdung durch Administrator bestätigt“ wird im Bericht „Riskante Benutzer“ auf der Registerkarte „Risikoerkennungen ohne Bezug zu einer Anmeldung“ angezeigt. |
 | **Benutzer außerhalb von Azure AD Identity Protection bereinigt (Richtig positiv + Bereinigt)** <br> Der Bericht „Riskante Benutzer“ zeigt einen gefährdeten Benutzer an, und Sie haben den Benutzer anschließend außerhalb von Azure AD Identity Protection bereinigt. | 1. Wählen Sie den Benutzer aus, und klicken Sie auf „Benutzergefährdung bestätigen“. (Dieser Prozess bestätigt Azure AD, dass der Benutzer tatsächlich kompromittiert wurde.) <br> 2. Warten Sie, bis die Risikostufe des Benutzers auf „Hoch“ gesetzt wird. (Mit dem Warten räumen Sie Azure AD die erforderliche Zeit ein, um das obige Feedback in das Risikomodul aufzunehmen.) <br> 3. Wählen Sie den Benutzer aus, und klicken Sie auf „Benutzerrisiko verwerfen“. (Dieser Prozess bestätigt Azure AD, dass der Benutzer nicht mehr kompromittiert ist.) |  Azure AD hebt das Benutzerrisiko auf [Risikostatus = Verworfen; Risikostufe = -] und schließt das Risiko für alle vorhandenen Anmeldungen mit aktivem Risiko. | Beim Klicken auf „Benutzerrisiko verwerfen“ werden alle Risiken für den Benutzer und für in der Vergangenheit liegende Anmeldungen geschlossen. Diese Aktion kann nicht rückgängig gemacht werden. |
 | **Benutzer nicht kompromittiert (falsch positiv)** <br> Der Bericht „Riskante Benutzer“ zeigt einen gefährdeten Benutzer an, aber der Benutzer ist nicht kompromittiert. | Wählen Sie den Benutzer aus, und klicken Sie auf „Benutzerrisiko verwerfen“. (Dieser Prozess bestätigt Azure AD, dass der Benutzer nicht kompromittiert ist.) | Azure AD hebt das Benutzerrisiko auf [Risikostatus = Verworfen; Risikostufe = -]. | Beim Klicken auf „Benutzerrisiko verwerfen“ werden alle Risiken für den Benutzer und für in der Vergangenheit liegende Anmeldungen geschlossen. Diese Aktion kann nicht rückgängig gemacht werden. |
 | Ich möchte das Benutzerrisiko schließen, aber ich bin mir nicht sicher, ob der Benutzer kompromittiert/sicher ist. | Wählen Sie den Benutzer aus, und klicken Sie auf „Benutzerrisiko verwerfen“. (Dieser Prozess bestätigt Azure AD, dass der Benutzer nicht mehr kompromittiert ist.) | Azure AD hebt das Benutzerrisiko auf [Risikostatus = Verworfen; Risikostufe = -]. | Beim Klicken auf „Benutzerrisiko verwerfen“ werden alle Risiken für den Benutzer und für in der Vergangenheit liegende Anmeldungen geschlossen. Diese Aktion kann nicht rückgängig gemacht werden. Sie sollten den Benutzer durch Klicken auf „Kennwort zurücksetzen“ bereinigen oder ihn auffordern, auf sichere Weise seine Anmeldeinformationen zurückzusetzen / zu ändern. |
 
-Feedback zu Benutzerrisikoereignissen in Identity Protection wird offline verarbeitet, und die Aktualisierung kann einige Zeit dauern. Die Spalte zum Status der Risikoverarbeitung gibt den aktuellen Status der Feedbackverarbeitung an.
+Feedback zu Benutzerrisikoerkennungen in Identity Protection wird offline verarbeitet, und die Aktualisierung kann einige Zeit dauern. Die Spalte zum Status der Risikoverarbeitung gibt den aktuellen Status der Feedbackverarbeitung an.
 
 ![Status der Risikoverarbeitung für Bericht „Riskante Benutzer“](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Referenz für Risikoereignisse in Azure Active Directory Identity Protection](risk-events-reference.md)
+[Referenz für Risikoerkennungen in Azure Active Directory Identity Protection](risk-events-reference.md)

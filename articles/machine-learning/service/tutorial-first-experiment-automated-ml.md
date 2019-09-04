@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534392"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982759"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
 
 In diesem Tutorial erfahren Sie, wie Sie Ihr erstes Experiment mit automatisiertem maschinellem Lernen im Azure-Portal (Vorschauversion) erstellen, ohne eine einzige Codezeile schreiben zu müssen. In diesem Beispiel wird ein Klassifizierungsmodell erstellt, mit dem vorhergesagt werden kann, ob ein Kunde Festgeld bei der Bank anlegt.
 
-Mit den Funktionen für automatisiertes maschinelles Lernen von Azure Machine Learning Service und des Azure-Portals starten Sie den automatisierten Prozess des maschinellen Lernens. Die Auswahl des Algorithmus und die Optimierung der Hyperparameter werden für Sie erledigt. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern durchlaufen, bis das beste Modell für Ihr Kriterium gefunden wird.
+Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Konfigurieren eines Azure Machine Learning Service-Arbeitsbereichs
-> * Erstellen Sie ein Experiment.
-> * Automatisches Trainieren eines Klassifizierungsmodells.
-> * Zeigen Sie Details der Trainingsausführung an.
+> * Erstellen eines Azure Machine Learning Service-Arbeitsbereichs
+> * Ausführen eines automatisierten Machine Learning-Experiments
+> * Anzeigen von Details zum Experiment
 > * Bereitstellen des Modells.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
 
-* Laden Sie die Datendatei [**bankmarketing_train.csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) herunter. In der Spalte **y** ist angegeben, ob ein Kunde Festgeld angelegt hat. Sie wird später als Zielspalte für Vorhersagen in diesem Tutorial festgelegt. 
+* Laden Sie die Datendatei [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) herunter. In der Spalte **y** ist angegeben, ob ein Kunde Festgeld angelegt hat. Sie wird später als Zielspalte für Vorhersagen in diesem Tutorial festgelegt. 
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>Erstellen eines Experiments
+## <a name="create-and-run-the-experiment"></a>Erstellen und Ausführen des Experiments
 
 Diese Schritte führen Sie durch die Einrichtung des Experiments: angefangen von der Datenauswahl bis hin zur Auswahl des primären Metrik- und Modelltyps. 
 
@@ -50,8 +49,6 @@ Diese Schritte führen Sie durch die Einrichtung des Experiments: angefangen von
 Da dies das erste Experiment mit automatisiertem maschinellem Lernen ist, wird der Bildschirm **Welcome to Automated Machine Learning** (Willkommen beim automatisierten Machine Learning) angezeigt.
 
     ![Navigationsbereich im Azure-Portal](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. Wählen Sie **Create Experiment** (Experiment erstellen) aus. Geben Sie dann **my-1st-automl-experiment** als Experimentnamen ein.
 
@@ -72,14 +69,11 @@ Da dies das erste Experiment mit automatisiertem maschinellem Lernen ist, wird d
 
 1. Wählen Sie **Upload** (Hochladen) aus, und wählen Sie die Datei **bankmarketing_train.csv** auf dem lokalen Computer aus, um sie in den Standardcontainer hochzuladen. Die öffentliche Vorschau unterstützt nur lokale Dateiuploads und Azure Blob Storage-Konten. Wenn der Upload beendet ist, wählen Sie die Datei in der Liste aus. 
 
-    [![Auswählen einer Datendatei](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. Auf der Registerkarte **Preview** (Vorschau) können wir unsere Daten für dieses Experiment weiter konfigurieren.
 
     Geben Sie auf der Registerkarte **Preview** (Vorschau) an, dass die Daten Header enthalten. Der Dienst schließt standardmäßig alle Features (Spalten) für das Training ein. Scrollen Sie für dieses Beispiel nach rechts, und ignorieren Sie (**Ignore**) das **day_of_week**-Feature (Wochentag).
 
     ![Konfiguration der Registerkarte „Preview“ (Vorschau)](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > Die Datenprofilerstellung ist bei Computes mit mindestens 0 Knoten nicht verfügbar.
@@ -103,9 +97,7 @@ Da dies das erste Experiment mit automatisiertem maschinellem Lernen ist, wird d
 
 1. Wählen Sie **Start** aus, um das Experiment auszuführen.
 
-   Sobald das Experiment startet, sehen Sie einen leeren **Run Detail**-Bildschirm (Ausführungsdetail) mit dem folgenden Status am oberen Rand. 
-
-      ![Vorbereitung der Ausführung](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   Sobald das Experiment startet, sehen Sie einen leeren **Run Detail**-Bildschirm (Ausführungsdetail) mit dem folgenden Status am oberen Rand.
       
 Der Vorbereitungsprozess des Experiments nimmt einige Minuten in Anspruch. Wenn der Prozess abgeschlossen wird, wechselt die Statusmeldung zu **Run is Running** (Ausführung läuft).
 
@@ -137,11 +129,9 @@ Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_wei
     
 1. Klicken Sie auf **Bereitstellen**.
 
-    Wenn die Bereitstellung erfolgreich abgeschlossen wurde, wird die folgende Meldung angezeigt:
-
-    ![Bereitstellung abgeschlossen](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    Wenn die Bereitstellung erfolgreich abgeschlossen wurde, wird eine entsprechende Meldung angezeigt.
     
-    Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können.
+Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -167,7 +157,6 @@ In diesem Tutorial zu automatisierten Machine Learning haben Sie im Azure-Portal
 
 > [!div class="nextstepaction"]
 > [Verwenden eines Webdiensts](how-to-consume-web-service.md)
-
 
 + Weitere Informationen zur [Vorverarbeitung](how-to-create-portal-experiments.md#preprocess).
 + Weitere Informationen zur [Datenprofilerstellung](how-to-create-portal-experiments.md#profile).

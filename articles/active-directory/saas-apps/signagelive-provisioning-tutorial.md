@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Signagelive für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Signagelive für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und für das Aufheben der Bereitstellung von Benutzerkonten in Signagelive konfigurieren.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519813"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906038"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Signagelive für die automatische Benutzerbereitstellung
 
@@ -56,14 +56,13 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 Bevor Sie Signagelive für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie in Signagelive die SCIM-Bereitstellung aktivieren.
 
-1.  Fordern Sie das geheime Token, das für die Konfiguration der SCIM-Bereitstellung erforderlich ist, bei [Signagelive](mailto:development@signagelive.com) an.
-
+  Fordern Sie das geheime Token, das für die Konfiguration der SCIM-Bereitstellung erforderlich ist, bei [Signagelive](mailto:development@signagelive.com) an.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Hinzufügen von Signagelive aus dem Katalog
 
-Bevor Sie Signagelive für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Signagelive aus dem Azure AD-Anwendungskatalog der Liste mit den verwalteten SaaS-Anwendungen hinzufügen.
+Bevor Sie Signagelive für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Signagelive aus dem Azure AD-Anwendungskatalog der Liste mit den verwalteten SaaS-Anwendungen hinzufügen.
 
-**Führen Sie zum Hinzufügen von Signagelive aus dem Azure AD-Anwendungskatalog die folgenden Schritte aus:**
+**Führen Sie zum Hinzufügen von Signagelive aus dem Azure AD-Anwendungskatalog die folgenden Schritte aus:**
 
 1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich **Azure Active Directory** aus.
 
@@ -106,7 +105,8 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ im Feld **Mandanten-URL** den Wert ` https://samlapi.signagelive.com/scim/v2` ein. Geben Sie im Feld **Geheimes Token** den Wert **Bearertoken** ein, der vom technischen Entwicklungsteam bereitgestellt wird. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Signagelive herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Signagelive-Konto über Administratorberechtigungen verfügt, und ![Mandanten-URL und Token](common/provisioning-testconnection-tenanturltoken.png) wiederholen.
+5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ im Feld **Mandanten-URL** den Wert ` https://samlapi.signagelive.com/scim/v2` ein. Geben Sie im Feld **Geheimes Token** den Wert **Bearertoken** ein, der vom technischen Entwicklungsteam bereitgestellt wird. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Signagelive herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Signagelive-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
+    ![Mandanten-URL und -token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -144,9 +144,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Bereitstellungsaktivitätsberichten aufrufen. In diesen Berichten sind alle vom Azure AD-Bereitstellungsdienst in Signagelive ausgeführten Aktionen aufgeführt.
+Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Weitere Informationen dazu, wie lange die Bereitstellung für Benutzer und/oder Gruppen dauern wird, finden Sie unter [Wie lange dauert die Bereitstellung von Benutzern?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users). 
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Im Abschnitt **Aktueller Status** können Sie den Fortschritt überwachen und Links zu Ihrem Bericht zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Signagelive ausgeführt werden. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

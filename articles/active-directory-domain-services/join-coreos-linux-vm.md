@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c1f3d1ec7bb9e9f449cea3f9aa36ca8f80348c6e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: dc76d9a0d492d8ef0e37c0c34173216ff4c75164
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612820"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990563"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Einbinden einer CoreOS Linux-VM in eine verwaltete Domäne
 In diesem Artikel wird beschrieben, wie Sie eine CoreOS Linux-VM in eine durch Azure AD Domain Services verwaltete Domäne einbinden.
@@ -79,9 +79,9 @@ Aktualisieren Sie als Nächstes Ihre SSSD-Konfigurationsdatei („/etc/sssd/sssd
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = contoso.COM
+domains = CONTOSO.COM
 
-[domain/contoso.COM]
+[domain/CONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
@@ -99,17 +99,17 @@ ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
 krb5_server = contoso.com
-krb5_realm = contoso.COM
+krb5_realm = CONTOSO.COM
 ```
 
-Ersetzen Sie „contoso.com“ mit dem DNS-Domänennamen Ihrer verwalteten Domäne. Stellen Sie sicher, dass Sie den Domänennamen in der Konfigurationsdatei in Großbuchstaben angeben.
+Ersetzen Sie „CONTOSO.COM“ durch den DNS-Domänennamen Ihrer verwalteten Domäne. Stellen Sie sicher, dass Sie den Domänennamen in der Konfigurationsdatei in Großbuchstaben angeben.
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Einbinden der virtuellen Linux-Computers in die verwaltete Domäne
 Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert sind, besteht die nächste Aufgabe darin, den virtuellen Computer in die verwaltete Domäne einzubinden.
 
 ```console
-sudo adcli join -D contoso.COM -U bob@contoso.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
+sudo adcli join -D CONTOSO.COM -U bob@CONTOSO.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
 ```
 
 
@@ -129,10 +129,10 @@ sudo systemctl start sssd.service
 ## <a name="verify-domain-join"></a>Überprüfen des Domänenbeitritts
 Überprüfen Sie, ob der Computer der verwalteten Domäne erfolgreich beigetreten ist. Stellen Sie über eine andere SSH-Verbindung eine Verbindung mit der Domäne her, der die CoreOS-VM beigetreten ist. Verwenden Sie ein Domänenbenutzerkonto, und überprüfen Sie anschließend, ob das Benutzerkonto ordnungsgemäß aufgelöst wurde.
 
-1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung mit der der Domäne beigetretenen CoreOS-VM herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@contoso.COM').
+1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung mit der der Domäne beigetretenen CoreOS-VM herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@CONTOSO.COM').
     
     ```console
-    ssh -l bob@contoso.COM contoso-coreos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-coreos.contoso.com
     ```
 
 2. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob das Basisverzeichnis ordnungsgemäß initialisiert wurde.

@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 28f19787044f90cc9db0fc38f548ede22a111434
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648659"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125229"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -114,7 +114,7 @@ Weitere Informationen finden Sie unter [Neuerungen bei der Authentifizierung](ht
 
 Azure AD-Kunden können ab sofort Richtlinien zum Verwalten von FIDO2-Sicherheitsschlüsseln für die Benutzer und Gruppen in ihrer Organisation festlegen. Endbenutzer können ihre Sicherheitsschlüssel außerdem selbst registrieren, die Schlüssel bei der Arbeit auf FIDO-fähigen Geräten zur Anmeldung bei ihren Microsoft-Konten für Websites verwenden sowie sich bei ihren in Azure AD eingebundenen Windows 10-Geräten anmelden.
 
-Weitere Informationen für Administratoren finden Sie unter [Aktivieren des kennwortlosen Anmeldens für Azure AD (Vorschauversion)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable), Informationen für Endbenutzer finden Sie unter [Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key).
+Weitere Informationen für Administratoren finden Sie unter [Aktivieren des kennwortlosen Anmeldens für Azure AD (Vorschauversion)](/azure/active-directory/authentication/concept-authentication-passwordless), Informationen für Endbenutzer finden Sie unter [Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key).
 
 ---
 
@@ -590,7 +590,7 @@ Weitere Informationen zu bedingtem Zugriff und Zurücksetzen von Kennwörtern fi
 
 Die Azure AD Threat Intelligence-Erkennung ist jetzt im Rahmen des aktualisierten Features „Azure AD Identity Protection“ verfügbar. Diese neue Funktionalität zeigt ungewöhnliche Benutzeraktivitäten für einen bestimmten Benutzer oder Aktivitäten an, die bekannten Angriffsmustern entsprechen (basierend auf internen und externen Threat Intelligence-Quellen von Microsoft).
 
-Weitere Informationen über die aktualisierte Version von Azure AD Identity Protection finden Sie im Blog [Four major Azure AD Identity Protection enhancements are now in public preview (Vier wichtige Verbesserungen von Azure AD Identity Protection sind jetzt in der öffentlichen Vorschau)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) und im Artikel [Was ist Azure Active Directory Identity Protection (aktualisiert)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) . Weitere Informationen zur Azure AD Threat Intelligence-Erkennung finden Sie im Artikel [Azure AD Threat Intelligence](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence).
+Weitere Informationen über die aktualisierte Version von Azure AD Identity Protection finden Sie im Blog [Four major Azure AD Identity Protection enhancements are now in public preview (Vier wichtige Verbesserungen von Azure AD Identity Protection sind jetzt in der öffentlichen Vorschau)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) und im Artikel [Was ist Azure Active Directory Identity Protection (aktualisiert)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) . Weitere Informationen zur Azure AD Threat Intelligence-Erkennung finden Sie im Artikel [Referenz für Risikoerkennungen in Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence).
 
 ---
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
-ms.openlocfilehash: ba2041495e1e3c63ee322a0b748753ad6cb68914
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c339604624d0d9a033b54ad1c661b0ce10eaf1bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871127"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127748"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Verknüpfte Dienste in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -92,10 +92,11 @@ Der folgende verknüpfte Dienst ist ein mit Azure Storage verknüpfter Dienst. B
 ```
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
+
 Verknüpfte Dienste können Sie mit einem dieser Tools oder SDKs erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-Vorlage und Azure-Portal
 
 ## <a name="data-store-linked-services"></a>Verknüpfte Dienste von Datenspeichern
-Informationen zur Verbindung mit Datenspeichern finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats). In der Liste finden Sie bestimmte Verbindungseigenschaften, die für verschiedene Speicher erforderlich sind.
+Die Liste der von Data Factory unterstützten Datenspeicher finden Sie im Artikel [Übersicht über Connectors](copy-activity-overview.md#supported-data-stores-and-formats). Klicken Sie auf einen Datenspeicher, um mehr über die unterstützten Verbindungseigenschaften zu erfahren.
 
 ## <a name="compute-linked-services"></a>Verknüpfte Computedienste
 Weitere Informationen zu den verschiedenen Compute-Umgebungen, mit denen Sie sich von Ihrer Data Factory aus verbinden können, sowie zu den verschiedenen Konfigurationen finden Sie unter [Unterstützte Compute-Umgebungen](compute-linked-services.md).

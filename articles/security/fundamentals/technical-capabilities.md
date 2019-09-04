@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934594"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129296"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 Dieser Artikel enthält eine Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen, und die Sicherheitsanforderungen Ihres Unternehmens erfüllen.
@@ -147,7 +147,7 @@ Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
 
 #### <a name="identity-protection"></a>Schutz der Identität (Identity Protection)
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) ist ein Sicherheitsdienst, der eine umfassende Übersicht über Risikoereignisse und potenzielle Sicherheitsrisiken bietet, die für die Identitäten Ihrer Organisation bestehen. Für Identity Protection werden die vorhandenen Azure Active Directory-Funktionen zur Anomalieerkennung genutzt (über die Berichte zu anomalen Aktivitäten von Azure AD), und es werden neue Risikoereignistypen eingeführt, mit denen Anomalien in Echtzeit erkannt werden können.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) ist ein Sicherheitsdienst, der eine umfassende Übersicht über erkannte Risiken und potenzielle Sicherheitsrisiken für die Identitäten Ihrer Organisation bietet. Für Identity Protection werden die vorhandenen Azure Active Directory-Funktionen zur Anomalieerkennung genutzt (über die Berichte zu anomalen Aktivitäten von Azure AD), und es werden neue Risikoerkennungstypen eingeführt, mit denen Anomalien in Echtzeit erkannt werden können.
 
 ## <a name="secure-resource-access"></a>Sicherer Ressourcenzugriff
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 78fb48d2584e94e5c38a4648f1ae41e566637601
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0d5f04d9c0cc6dcd8a784ae7a816d93e2aab30aa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875576"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099489"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Erstellen einer Azure IoT Central-Anwendung
 
@@ -24,7 +24,7 @@ Als _Ersteller_ verwenden Sie die Benutzeroberfläche von Azure IoT Central, um 
 
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 
-Navigieren Sie zur Azure IoT Central-Seite [Application Manager](https://aka.ms/iotcentral) (Anwendungs-Manager). Sie müssen sich mit einem persönlichen Konto oder mit einem Geschäfts-, Schul- oder Unikonto anmelden.
+Navigieren Sie zur Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral). Sie müssen sich mit einem persönlichen Konto oder mit einem Geschäfts-, Schul- oder Unikonto anmelden.
 
 Wählen Sie **Neue Anwendung** aus, um mit der Erstellung einer neuen Azure IoT Central-Anwendung zu beginnen. Dadurch gelangen Sie auf die Seite **Anwendung erstellen**.
 
@@ -58,4 +58,4 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
 In dieser Schnellstartanleitung haben Sie eine IoT Central-Anwendung erstellt. Wir empfehlen, mit dem folgenden Schritt fortzufahren:
 
 > [!div class="nextstepaction"]
-> [Take a tour of IoT Central](overview-iot-central-tour.md) (Kennenlernen von IoT Central)
+> [Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung](./tutorial-define-device-type.md)

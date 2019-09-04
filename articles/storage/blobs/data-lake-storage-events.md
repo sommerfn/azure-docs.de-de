@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: ce132c6a6859156b209a26b5950eb6a509f446fc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656129"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904659"
 ---
 # <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle
 
@@ -77,7 +77,7 @@ Erstellen Sie zuerst eine CSV-Datei, mit der ein Verkaufsauftrag beschrieben wir
 In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
 
 * Erstellen eines Azure Databricks-Arbeitsbereichs
-* Erstellen eines Notebooks
+* Erstellen Sie ein Notebook.
 * Erstellen und Auffüllen einer Databricks Delta-Tabelle
 * Hinzufügen von Code, mit dem Zeilen in die Databricks Delta-Tabelle eingefügt werden
 * Erstellen eines Auftrags
@@ -140,10 +140,9 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
     spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId")
+    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId>")
     spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
     spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant>/oauth2/token")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
 
     adlsPath = 'abfss://data@contosoorders.dfs.core.windows.net/'
     inputPath = adlsPath + dbutils.widgets.get('source_file')
@@ -151,6 +150,9 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
     ```
 
     Mit diesem Code wird ein Widget mit dem Namen **source_file** erstellt. Später erstellen Sie eine Azure-Funktion, mit der dieser Code aufgerufen und ein Dateipfad an das Widget übergeben wird.  Mit diesem Code wird auch Ihr Dienstprinzipal beim Speicherkonto authentifiziert, und es werden einige Variablen erstellt, die Sie in anderen Zellen verwenden.
+
+    > [!NOTE]
+    > In einer Produktionsumgebung empfiehlt es sich, Ihren Authentifizierungsschlüssel in Azure Databricks zu speichern. Fügen Sie dem Codeblock dann einen Suchschlüssel anstelle des Authentifizierungsschlüssels hinzu. <br><br>Anstelle der Codezeile `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` verwenden Sie die folgende Codezeile: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Sehen Sie sich nach Abschluss dieses Tutorials die Beispiele für diesen Ansatz im Artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) auf der Azure Databricks-Website an.
 
 2. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
@@ -309,7 +311,7 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
         log.LogInformation(eventGridEvent.Data.ToString());
 
         if (eventGridEvent.EventType == "Microsoft.Storage.BlobCreated" | | eventGridEvent.EventType == "Microsoft.Storage.FileRenamed") {
-            var fileData = ((JObject)(eventGridEvent.Data)) .ToObject<StorageBlobCreatedEventData>();
+            var fileData = ((JObject)(eventGridEvent.Data)).ToObject<StorageBlobCreatedEventData>();
             if (fileData.Api == "FlushWithClose") {
                 log.LogInformation("Triggering Databricks Job for file: " + fileData.Url);
                 var fileUrl = new Uri(fileData.Url);
@@ -382,6 +384,27 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
    In der zurückgegebenen Tabelle wird der aktuelle Datensatz angezeigt.
 
    ![Aktueller Datensatz in Tabelle](./media/data-lake-storage-events/final_query.png "Aktueller Datensatz in Tabelle")
+
+6. Erstellen Sie zum Aktualisieren dieses Datensatzes eine Datei mit dem Namen `customer-order-update.csv`, fügen Sie die folgenden Informationen in diese Datei ein, und speichern Sie sie auf Ihrem lokalen Computer.
+
+   ```
+   InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
+   536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
+   ```
+
+   Diese CSV-Datei ist fast vollständig mit der vorherigen identisch. Lediglich die Bestellmenge wird von `228` in `22` geändert.
+
+7. Laden Sie diese Datei im Storage-Explorer in den Ordner **input** Ihres Speicherkontos hoch.
+
+8. Führen Sie die Abfrage `select` erneut aus, um die aktualisierte Delta-Tabelle anzuzeigen.
+
+   ```
+   %sql select * from customer_data
+   ```
+
+   In der zurückgegebenen Tabelle wird der aktualisierte Datensatz angezeigt.
+
+   ![Aktualisierter Datensatz in Tabelle](./media/data-lake-storage-events/final_query-2.png "Aktualisierter Datensatz in Tabelle")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

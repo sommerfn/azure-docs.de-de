@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 110c4a343909a81e092b147b79ed69d6bd5c2d9c
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616981"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981756"
 ---
-# <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer Java-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
 
 > [!div class="op_single_selector"]

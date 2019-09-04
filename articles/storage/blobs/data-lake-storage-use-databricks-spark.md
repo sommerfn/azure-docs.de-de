@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855445"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992264"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark
 
@@ -124,18 +124,18 @@ Kopieren Sie mithilfe von AzCopy Daten aus Ihrer *CSV*-Datei in Ihr Data Lake St
 2. Geben Sie den folgenden Befehl ein, um Daten aus der *CSV*-Datei zu kopieren:
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Pfad zu der *CSV*-Datei.
 
    * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-   * Ersetzen Sie den Platzhalter `<file-system-name>` durch einen beliebigen Namen für Ihr Dateisystem.
+   * Ersetzen Sie den Platzhalter `<container-name>` durch einen beliebigen Namen, den Sie für Ihren Container verwenden möchten.
 
-## <a name="create-a-file-system-and-mount-it"></a>Erstellen und Einbinden eines Dateisystems
+## <a name="create-a-container-and-mount-it"></a>Erstellen und Einbinden eines Containers
 
-In diesem Abschnitt erstellen Sie ein Dateisystem und einen Ordner in Ihrem Speicherkonto.
+In diesem Abschnitt erstellen Sie einen Container und einen Ordner in Ihrem Speicherkonto.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem erstellten Azure Databricks-Dienst, und wählen Sie **Launch Workspace** (Arbeitsbereich starten) aus.
 
@@ -158,12 +158,12 @@ In diesem Abschnitt erstellen Sie ein Dateisystem und einen Ordner in Ihrem Spei
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `appId`, `password`, `tenant` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `file-system-name` durch den Namen, den Sie dem Azure Data Lake Storage-Dateisystem im vorherigen Schritt gegeben haben.
+18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `appId`, `password`, `tenant` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `container-name` durch den Namen, den Sie dem Container im vorherigen Schritt gegeben haben.
 
 Verwenden Sie die nachstehenden Werte zum Ersetzen der genannten Platzhalter.
 
@@ -173,7 +173,7 @@ Verwenden Sie die nachstehenden Werte zum Ersetzen der genannten Platzhalter.
 
    * `storage-account-name` ist der Name Ihres Azure Data Lake Storage Gen2-Speicherkontos.
 
-   * Ersetzen Sie den Platzhalter `file-system-name` durch einen beliebigen Namen für Ihr Dateisystem.
+   * Ersetzen Sie den Platzhalter `container-name` durch einen beliebigen Namen, den Sie für Ihren Container verwenden möchten.
 
    > [!NOTE]
    > In einer Produktionsumgebung empfiehlt es sich, Ihr Kennwort in Azure Databricks zu speichern. Fügen Sie dem Codeblock dann einen Suchschlüssel anstelle des Kennworts hinzu. Sehen Sie sich nach Abschluss dieses Schnellstarts die Beispiele für diesen Ansatz im Artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) auf der Azure Databricks-Website an.

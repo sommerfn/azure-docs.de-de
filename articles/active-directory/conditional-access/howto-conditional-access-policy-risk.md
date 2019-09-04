@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d1b3e2f36256164420ae6b2e699f0ef48e2e78
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125444"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Bedingter Zugriff: Risikobasierter bedingter Zugriff
 
-Unternehmen mit Azure AD Premium P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die Azure AD Identity Protection-Risikoereignisse umfassen. Es gibt drei Standardrichtlinien, die sofort ohne Konfigurationsaufwand aktiviert werden können. 
+Organisationen mit Azure AD Premium P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die Azure AD Identity Protection-Risikoerkennungen umfassen. Es gibt drei Standardrichtlinien, die sofort ohne Konfigurationsaufwand aktiviert werden können. 
 
 * Festlegen, dass sich alle Benutzer für Azure Multi-Factor Authentication registrieren müssen
 * Festlegen, dass Benutzer, die ein hohes Risiko darstellen, ihr Kennwort ändern müssen

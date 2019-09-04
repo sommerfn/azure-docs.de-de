@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612401"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073891"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 
@@ -35,8 +35,8 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen:
 
 * Ein aktives Azure-Abonnement.
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloudverzeichnis.
-    * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant] oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
+* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
+    * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Mitglied der Gruppe der *AAD DC-Administratoren* in Ihrem Azure AD-Mandanten ist.
@@ -78,7 +78,7 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
     Wählen Sie unter **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus. Wählen Sie im Dropdownmenü für **Eingangsports auswählen** die Option *RDP* aus.
 
 5. Klicken Sie dann auf **Weiter: Datenträger**.
-6. Wählen Sie im Dropdownmenü **Typ des Betriebssystemdatenträgers** die Option *SSD Standard* aus, und klicken Sie dann auf **Weiter: Netzwerk**.
+6. Wählen Sie im Dropdownmenü **Typ des Betriebssystemdatenträgers** die Option *SSD Standard* aus, und klicken Sie dann auf **Weiter: Netzwerk** aus.
 7. Ihre VM muss eine Verbindung mit einem Subnetz eines virtuellen Azure-Netzwerks herstellen können, das mit dem Subnetz kommunizieren kann, in dem Ihre verwaltete Azure AD DS-Domäne bereitgestellt ist. Es wird empfohlen, eine verwaltete Azure AD DS-Domäne in einem eigenen dedizierten Subnetz bereitzustellen. Stellen Sie Ihre VM nicht im gleichen Subnetz wie Ihre verwaltete Azure AD DS-Domäne bereit.
 
     Es gibt zwei Hauptmethoden, die VM bereitzustellen und eine Verbindung mit einem geeigneten virtuellen Subnetz herzustellen:
@@ -115,7 +115,7 @@ Als Nächstes stellen wir über das Remotedesktopprotokoll eine Verbindung mit d
 
     ![Herstellen einer Verbindung mit der Windows-VM im Azure-Portal](./media/join-windows-vm/connect-to-vm.png)
 
-1. Wählen Sie die Option *RDP-Datei herunterladen* aus. Speichern Sie diese RDP-Datei in Ihrem Webbrowser.
+1. Wählen Sie die Option *RDP-Datei herunterladen* aus. Speichern Sie die RDP-Datei in Ihrem Webbrowser.
 1. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 1. Geben Sie die Anmeldeinformationen für den lokalen Administrator ein, die Sie beim Erstellen der VM im vorherigen Schritt angegeben haben, z. B. *localhost\azureuser*.
 1. Wenn während des Anmeldevorgangs eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Ja** oder **Weiter**, um die Verbindung herzustellen.
@@ -153,15 +153,23 @@ Nach dem Erstellen der VM erstellt und dem Herstellen der RDP-Verbindung binden 
 1. Um den Vorgang zum Einbinden in die verwaltete Azure AD DS-Domäne abzuschließen, starten Sie die VM neu.
 
 > [!TIP]
-> Sie können eine VM auch in PowerShell mit dem Cmdlet [Add-Computer][add-computer] einbinden. Das folgende Beispiel bindet die Domäne *CONTOSO* ein und startet die VM neu. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen eines Benutzers an, der zur Gruppe *AAD DC-Administratoren* gehört:
+> Sie können eine VM mit PowerShell mit dem Cmdlet [Add-Computer][add-computer] in eine Domäne einbinden. Das folgende Beispiel bindet die Domäne *CONTOSO* ein und startet die VM neu. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen eines Benutzers an, der zur Gruppe *AAD DC-Administratoren* gehört:
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> Wenn Sie eine VM in die Domäne einbinden möchten, ohne eine Verbindung mit ihr herzustellen und die Verbindung manuell zu konfigurieren, können Sie sich auch die Verwendung des Azure PowerShell-Cmdlets [Set-AzVmAdDomainExtension][set-azvmaddomainextension] ansehen.
 
 Sobald die Windows Server-VM neu gestartet wurde, werden alle auf die verwaltete Azure AD DS-Domäne angewendeten Richtlinien per Push an die VM übertragen. Sie können sich jetzt auch mit den geeigneten Domänenanmeldeinformationen bei der Windows Server-VM anmelden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Im nächsten Tutorial verwenden Sie diese Windows Server-VM, um die Programme zu installieren, mit denen Sie die verwaltete Azure AD DS-Domäne verwalten. Wenn Sie die Tutorialreihe nicht fortsetzen möchten, führen Sie die folgenden Schritte zur Bereinigung aus, um [RDP zu deaktivieren](#disable-rdp) und [die VM zu löschen](#delete-the-vm). Andernfalls [fahren Sie mit dem nächsten Tutorial fort](#next-steps).
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Entfernen der VM aus der verwalteten Azure AD DS-Domäne
+
+Führen Sie zum Entfernen der VM aus der verwalteten Azure AD DS-Domäne erneut die Schritte zum [Einbinden der VM in eine Domäne](#join-the-vm-to-the-azure-ad-ds-managed-domain) aus. Binden Sie die VM nicht in die verwaltete Azure AD DS-Domäne, sondern in eine Arbeitsgruppe ein, etwa in die Standardgruppe *WORKGROUP*. Nach dem Neustart der VM wird das Computerobjekt aus der verwalteten Azure AD DS-Domäne entfernt.
+
+Wenn Sie die [VM löschen](#delete-the-vm), ohne sie aus der Domäne zu entfernen, bleibt ein verwaistes Computerobjekt in Azure AD DS zurück.
 
 ### <a name="disable-rdp"></a>Deaktivieren von RDP
 
@@ -231,3 +239,4 @@ Um Ihre verwaltete Azure AD DS-Domäne zu verwalten, konfigurieren Sie über d
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

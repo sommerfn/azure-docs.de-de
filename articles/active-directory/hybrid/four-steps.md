@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532443"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124929"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -141,7 +141,7 @@ Standardmäßig werden bei einer Kennwortzurücksetzung Konten von Azure AD ents
 
 Azure bietet Berichte, die Sie und Ihre Organisation verwenden können, um sicherzustellen, dass alle Benutzer für MFA und SSPR registriert sind. Benutzer, die nicht registriert wurden, müssen möglicherweise über den Vorgang informiert werden.
 
-Der [Bericht zu MFA-Anmeldungen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) enthält Informationen zur MFA-Nutzung, und er bietet Ihnen Einblicke in die Funktionsweise von MFA in Ihrem Unternehmen. Der Zugriff auf Anmeldeaktivitäten (sowie Überwachungen und Risikoereignisse) für Azure AD ist für das Troubleshooting, Nutzungsanalysen und forensische Untersuchungen von entscheidender Bedeutung.
+Der [Bericht zu MFA-Anmeldungen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) enthält Informationen zur MFA-Nutzung, und er bietet Ihnen Einblicke in die Funktionsweise von MFA in Ihrem Unternehmen. Der Zugriff auf Anmeldeaktivitäten (sowie Überwachungen und Risikoerkennungen) für Azure AD ist für die Problembehandlung, Nutzungsanalysen und forensische Untersuchungen von entscheidender Bedeutung.
 
 Ebenso kann der [Bericht zur Self-Service-Kennwortverwaltung](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) verwendet werden, um zu bestimmen, wer für SSPR registriert ist (und wer noch nicht).
 

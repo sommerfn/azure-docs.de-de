@@ -9,17 +9,16 @@ ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 48b053b6520bff2ac83cd02af31194f81413e92c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598753"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069242"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
@@ -47,7 +46,7 @@ Aufgrund der Isolierung werden in ASEs nur Anwendungen eines einzelnen Kunden au
 * [App Service-Umgebungen v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) bieten eine Umgebung zum Schutz Ihrer Apps in einem Subnetz Ihres Netzwerks sowie eine eigene private Azure App Service-Bereitstellung.
 * Für die horizontale Skalierung können mehrere ASEs verwendet werden. Weitere Informationen finden Sie unter [Vorgehensweise zum Einrichten einer geografisch verteilten App-Umgebung](app-service-app-service-environment-geo-distributed-scale.md).
 * ASEs können verwendet werden, um eine Sicherheitsarchitektur zu konfigurieren, wie in AzureCon Deep Dive dargestellt wird. Informationen darüber, wie die in AzureCon Deep Dive gezeigte Sicherheitsarchitektur konfiguriert wurde, finden Sie im Artikel zum [Implementieren einer Sicherheitsarchitektur mit Ebenen](app-service-app-service-environment-layered-security.md) in App Service-Umgebungen.
-* Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter [Web Application-Firewall (WAF)][AppGW].
+* Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter [Web Application Firewall (WAF)][AppGW].
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung ##
 

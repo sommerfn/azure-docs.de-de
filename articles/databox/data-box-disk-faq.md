@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 1361224fb59a32ca227c5ea1e6cc92a4b0fdff6e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541811"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076899"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
@@ -113,7 +113,7 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 - Verwenden Sie mehrere Sitzungen.
 - Stellen Sie sicher, dass sich die Daten lokal auf dem Computer befinden, an den die Datenträger angeschlossen sind, anstatt den Kopiervorgang über die Netzwerkfreigabe durchzuführen (um Beeinträchtigungen aufgrund der Netzwerkgeschwindigkeit zu vermeiden).
 - Achten Sie darauf, dass Sie während des gesamten Kopiervorgangs USB 3.0 oder höher verwenden. Laden Sie das Tool [USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) herunter, und verwenden Sie es, um die USB-Controller und USB-Geräte zu identifizieren, die an den Computer angeschlossen sind.
-- Erstellen Sie Benchmarkwerte zur Leistung des Computers, der zum Kopieren der Daten verwendet wird. Laden Sie das [Bluestop-Tool FIO](https://bluestop.org/fio/) herunter, um Benchmarkwerte zur Leistung der Serverhardware zu erhalten.
+- Erstellen Sie Benchmarkwerte zur Leistung des Computers, der zum Kopieren der Daten verwendet wird. Laden Sie das [Bluestop-Tool FIO](https://ci.appveyor.com/project/axboe/fio) herunter, um Benchmarkwerte zur Leistung der Serverhardware zu erhalten. Wählen Sie den aktuellen x86- oder x64-Build und dann die Registerkarte **Artefakte** aus, und laden Sie die MSI herunter.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>F: Wie kann ich für die Daten eine Beschleunigung erreichen, wenn die Quelldaten kleine Dateien (KB oder nur wenige MB) enthalten?
 A.  Sie können den Kopiervorgang wie folgt beschleunigen:

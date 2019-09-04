@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b1a1c35929670891c38bb1b3e26806b4c9bed6a0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333986"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126462"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
 
 ### <a name="at-risk-user"></a>Gefährdet (Benutzer)
-Ein Benutzer, der über ein oder mehrere aktive Risikoereignisse verfügt. 
+Ein Benutzer, der über mindestens eine aktive Risikoerkennung verfügt 
 
 ### <a name="atypical-sign-in-location"></a>Atypischer Anmeldeort
 Eine Anmeldung von einem geografischen Standort aus, der für den jeweiligen Benutzer, ähnliche Benutzer oder den Mandanten untypisch ist.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
-Ein Sicherheitsmodul von Azure Active Directory, das eine umfassende Übersicht über Risikoereignisse und potenzielle Sicherheitsrisiken bietet, die für die Identitäten einer Organisation bestehen.
+Ein Sicherheitsmodul von Azure Active Directory, das eine umfassende Übersicht über Risikoerkennungen und potenzielle Sicherheitsrisiken bietet, die sich auf die Identitäten einer Organisation auswirken
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 Eine Richtlinie zum Schützen des Zugriffs auf Ressourcen. Regeln für den bedingten Zugriff werden in Azure Active Directory gespeichert und von Azure AD ausgewertet, bevor Zugriff auf die Ressource gewährt wird.  Beispiele für Regeln sind die Einschränkung des Zugriffs basierend auf dem Benutzerstandort, der Integrität des Geräts oder des Verfahrens für die Benutzerauthentifizierung.
@@ -38,29 +38,29 @@ Die sind die Informationen zur Identifizierung mit Identifikationsnachweis. Sie 
 ### <a name="event"></a>Ereignis
 Ein Datensatz einer Aktivität in Azure Active Directory.
 
-### <a name="false-positive-risk-event"></a>Falsch positives Ergebnis (Risikoereignis)
-Ein Risikoereignisstatus, der von einem Identity Protection-Benutzer manuell festgelegt wird. Er gibt an, dass das Risikoereignis untersucht und dabei ermittelt wurde, dass es fälschlicherweise als Risikoereignis eingestuft wurde.
+### <a name="false-positive-risk-detection"></a>Falsch positives Ergebnis (Risikoerkennung)
+Ein Risikoerkennungsstatus, der von einem Identity Protection-Benutzer manuell festgelegt wird. Er gibt an, dass die Risikoerkennung untersucht und dabei ermittelt wurde, dass sie fälschlicherweise als Risikoerkennung eingestuft wurde.
 
 ### <a name="identity"></a>Identity
 Eine Person oder Identität, die per Authentifizierung anhand von Kriterien, z. B. einem Kennwort oder Zertifikat, überprüft werden muss.
 
-### <a name="identity-risk-event"></a>Identitätsrisikoereignis
+### <a name="identity-risk-detection"></a>Identitätsrisikoerkennung
 AAD-Ereignis, das von Identity Protection als anomal gekennzeichnet wurde und mit dem angegeben werden kann, dass eine Identität kompromittiert wurde.
 
-### <a name="ignored-risk-event"></a>Ignoriert (Risikoereignis)
-Ein Risikoereignisstatus, der von einem Identity Protection-Benutzer manuell festgelegt wurde und angibt, dass das Risikoereignis geschlossen wurde, ohne dass Maßnahmen ergriffen wurden.
+### <a name="ignored-risk-detection"></a>Ignoriert (Risikoerkennung)
+Ein Risikoerkennungsstatus, der von einem Identity Protection-Benutzer manuell festgelegt wurde und angibt, dass die Risikoerkennung geschlossen wurde, ohne dass Maßnahmen ergriffen wurden.
 
 ### <a name="impossible-travel-from-atypical-locations"></a>Unmöglicher Ortswechsel zu atypischen Orten
-Dieses Risikoereignis wird ausgelöst, wenn zwei Anmeldungen für denselben Benutzer erkannt werden und Folgendes gilt: Mindestens eine davon stammt von einem atypischen Anmeldestandort, und der Zeitraum zwischen den Anmeldungen ist kürzer als der Mindestzeitraum, der für die physische Bewegung zwischen diesen Orten erforderlich ist.  
+Diese Risikoerkennung wird ausgelöst, wenn zwei Anmeldungen für denselben Benutzer erkannt werden und Folgendes gilt: Mindestens eine davon stammt von einem atypischen Anmeldestandort, und der Zeitraum zwischen den Anmeldungen ist kürzer als der Mindestzeitraum, der für die physische Bewegung zwischen diesen Orten erforderlich ist.  
 
 ### <a name="investigation"></a>Untersuchung
-Der Prozess der Überprüfung von Aktivitäten, Protokollen und anderen relevanten Informationen zu einem Risikoereignis, um zu entscheiden, ob Schritte zur Korrektur oder Lösung erforderlich sind. Außerdem wird ermittelt, ob und wie die Identität kompromittiert und wie die kompromittierte Identität verwendet wurde.
+Der Prozess der Überprüfung von Aktivitäten, Protokollen und anderen relevanten Informationen zu einer Risikoerkennung, um zu entscheiden, ob Schritte zur Korrektur oder Lösung erforderlich sind. Außerdem wird ermittelt, ob und wie die Identität kompromittiert und wie die kompromittierte Identität verwendet wurde.
 
 ### <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
-Dieses Risikoereignis wird ausgelöst, wenn unsere Ermittler herausfinden, dass die aktuellen Benutzeranmeldeinformationen (Benutzername und Kennwort) öffentlich im Dark Web gepostet werden.
+Diese Risikoerkennung wird ausgelöst, wenn unsere Ermittler herausfinden, dass die aktuellen Benutzeranmeldeinformationen (Benutzername und Kennwort) öffentlich im Dark Web gepostet werden.
 
 ### <a name="mitigation"></a>Lösung
-Eine Aktion, mit der für einen Angreifer die Möglichkeit eingeschränkt oder beseitigt wird, eine kompromittierte Identität oder ein Gerät auszunutzen, ohne für die Identität oder das Gerät wieder einen sicheren Zustand herzustellen. Bei einer Lösung werden keine vorherigen Risikoereignisse behoben, die der Identität oder dem Gerät zugeordnet sind.
+Eine Aktion, mit der für einen Angreifer die Möglichkeit eingeschränkt oder beseitigt wird, eine kompromittierte Identität oder ein Gerät auszunutzen, ohne für die Identität oder das Gerät wieder einen sicheren Zustand herzustellen. Bei einer Lösung werden keine vorherigen Risikoerkennungen behoben, die der Identität oder dem Gerät zugeordnet sind.
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Ein Authentifizierungsverfahren, für das mindestens zwei Authentifizierungsmethoden erforderlich sind: etwas, was sich im Besitz des Benutzers befindet, z. B. ein Zertifikat, etwas, was der Benutzer weiß, z. B. Benutzernamen, Kennwörter oder Passphrases, physische Attribute, z. B. einen Fingerabdruck, und persönliche Attribute, z. B. eine persönliche Signatur.
@@ -75,10 +75,10 @@ Ein Teil einer Sicherheitsrichtlinie, mit der die Entitäten (Gruppen, Benutzer,
 Der Teil einer Sicherheitsrichtlinie, mit der die Umstände beschrieben werden, unter denen die Richtlinie ausgelöst wird, sowie die bei Auslösung der Richtlinie auszuführenden Aktionen.
 
 ### <a name="prevention"></a>Prävention
-Eine Aktion, mit der Schaden für die Organisation verhindert werden soll, der durch den Missbrauch einer vermutlich oder mit Sicherheit kompromittierten Identität oder eines Geräts entsteht. Mit einer Präventionsaktion wird das Gerät bzw. die Identität nicht geschützt, und vorherige Risikoereignisse werden nicht gelöst.
+Eine Aktion, mit der Schaden für die Organisation verhindert werden soll, der durch den Missbrauch einer vermutlich oder mit Sicherheit kompromittierten Identität oder eines Geräts entsteht. Mit einer Präventionsaktion wird das Gerät bzw. die Identität nicht geschützt, und vorherige Risikoerkennungen werden nicht gelöst.
 
 ### <a name="privileged-user"></a>Privilegiert (Benutzer)
-Ein Benutzer, der zum Zeitpunkt eines Risikoereignisses über dauerhafte oder vorübergehende Administratorberechtigungen für eine oder mehrere Ressourcen in Azure Active Directory verfügt (beispielsweise ein globaler Administrator, Abrechnungsadministrator, Dienstadministrator, Benutzeradministrator oder Kennwortadministrator). 
+Ein Benutzer, der zum Zeitpunkt einer Risikoerkennung über dauerhafte oder vorübergehende Administratorberechtigungen für eine oder mehrere Ressourcen in Azure Active Directory verfügt (beispielsweise ein globaler Administrator, Abrechnungsadministrator, Dienstadministrator, Benutzeradministrator oder Kennwortadministrator) 
 
 ### <a name="real-time"></a>Echtzeit
 Siehe „Echtzeiterkennung“.
@@ -86,23 +86,23 @@ Siehe „Echtzeiterkennung“.
 ### <a name="real-time-detection"></a>Echtzeiterkennung
 Die Erkennung von Anomalien und Bewertung des Risikos eines Ereignisses, z. B. ein Anmeldeversuch vor der Freigabe bzw. dem Start einer Veranstaltung.
 
-### <a name="remediated-risk-event"></a>Bereinigt (Risikoereignis)
-Ein Risikoereignis, das von Identity Protection automatisch festgelegt wird und angibt, dass das Risikoereignis mit der standardmäßigen Korrekturaktion für diese Art von Risikoereignis bereinigt wurde. Beim Zurücksetzen des Benutzerkennworts werden beispielsweise viele Risikoereignisse, die auf eine Kompromittierung des vorherigen Kennworts hinweisen, automatisch bereinigt.
+### <a name="remediated-risk-detection"></a>Bereinigt (Risikoerkennung)
+Ein Risikoerkennungsstatus, der in Identity Protection automatisch festgelegt wird und angibt, dass die Risikoerkennung mit der standardmäßigen Korrekturaktion für diese Art von Risikoerkennung bereinigt wurde. Beim Zurücksetzen des Benutzerkennworts werden beispielsweise viele Risikoerkennungen, die auf eine Kompromittierung des vorherigen Kennworts hinweisen, automatisch bereinigt.
 
 ### <a name="remediation"></a>Wiederherstellung
-Eine Aktion zum Schützen einer Identität oder eines Geräts, die bzw. das zuvor wahrscheinlich oder mit Sicherheit kompromittiert war. Bei einer Korrekturaktion wird die Identität bzw. das Gerät wieder in einen sicheren Zustand versetzt, und vorherige Risikoereignisse, die der Identität oder dem Gerät zugeordnet sind, werden gelöst.
+Eine Aktion zum Schützen einer Identität oder eines Geräts, die bzw. das zuvor wahrscheinlich oder mit Sicherheit kompromittiert war. Bei einer Korrekturaktion wird die Identität bzw. das Gerät wieder in einen sicheren Zustand versetzt, und vorherige Risikoerkennungen, die der Identität oder dem Gerät zugeordnet sind, werden gelöst.
 
-### <a name="resolved-risk-event"></a>Aufgelöst (Risikoereignis)
-Ein Risikoereignisstatus, der von einem Identity Protection-Benutzer manuell festgelegt wird. Hiermit wird angegeben, dass der Benutzer außerhalb von Identity Protection eine geeignete Korrekturaktion durchgeführt hat und dass das Risikoereignis als geschlossen angesehen werden kann.
+### <a name="resolved-risk-detection"></a>Gelöst (Risikoerkennung)
+Ein Risikoerkennungsstatus, der von einem Identity Protection-Benutzer manuell festgelegt wird. Hiermit wird angegeben, dass der Benutzer außerhalb von Identity Protection eine geeignete Korrekturaktion durchgeführt hat und dass die Risikoerkennung als geschlossen angesehen werden kann.
 
-### <a name="risk-event-status"></a>Risikoereignisstatus
-Eine Eigenschaft eines Risikoereignisses, mit der angegeben wird, ob das Ereignis aktiv ist. Wenn es geschlossen wurde, wird der Grund für das Schließen angegeben.
+### <a name="risk-detection-status"></a>Risikoerkennungsstatus
+Eine Eigenschaft einer Risikoerkennung, mit der angegeben wird, ob das Ereignis aktiv ist. Wenn es geschlossen wurde, wird der Grund für das Schließen angegeben.
 
-### <a name="risk-event-type"></a>Risikoereignistyp
-Eine Kategorie für das Risikoereignis, mit der die Art der Anomalie angegeben wird, die zur Risikoeinstufung für das Ereignis geführt hat.
+### <a name="risk-detection-type"></a>Risikoerkennungstyp
+Eine Kategorie für die Risikoerkennung, mit der die Art der Anomalie angegeben wird, die zur Risikoeinstufung für das Ereignis geführt hat
 
-### <a name="risk-level-risk-event"></a>Risikostufe (Risikoereignis)
-Eine Einstufung (Hoch, Mittel oder Niedrig) des Schweregrads eines Risikoereignisses. So können Identity Protection-Benutzer die Aktionen priorisieren, die sie durchführen, um das Risiko für ihre Organisation zu mindern. 
+### <a name="risk-level-risk-detection"></a>Risikostufe (Risikoerkennung)
+Eine Einstufung (Hoch, Mittel oder Niedrig) des Schweregrads einer Risikoerkennung. So können Identity Protection-Benutzer die Aktionen priorisieren, die sie durchführen, um das Risiko für ihre Organisation zu mindern. 
 
 ### <a name="risk-level-sign-in"></a>Risikostufe (Anmeldung)
 Ein Einstufung (Hoch, Mittel oder Niedrig) der Wahrscheinlichkeit, dass bei einer bestimmten Anmeldung eine andere Person versucht, die Identität des Benutzers zu nutzen.
@@ -126,16 +126,16 @@ Das Authentifizieren mit einer Identität in Azure Active Directory.
 Der Prozess bzw. die Aktion zur Authentifizierung einer Identität in Azure Active Directory und das Ereignis, mit dem dieser Vorgang erfasst wird.
 
 ### <a name="sign-in-from-anonymous-ip-address"></a>Anmeldung von anonymer IP-Adresse
-Ein Risikoereignis, das nach einer erfolgreichen Anmeldung über eine IP-Adresse ausgelöst wird, die als anonyme Proxy-IP-Adresse identifiziert wurde.
+Eine Risikoerkennung, die nach einer erfolgreichen Anmeldung über eine IP-Adresse ausgelöst wird, die als anonyme Proxy-IP-Adresse identifiziert wurde.
 
 ### <a name="sign-in-from-infected-device"></a>Anmeldung von infiziertem Gerät
-Dieses Risikoereignis wird ausgelöst, wenn eine Anmeldung von einer IP-Adresse stammt, die bekanntermaßen von einem oder mehreren kompromittierten Geräten verwendet wird, und die Geräte aktiv versuchen, mit einem Botserver zu kommunizieren.
+Diese Risikoerkennung wird ausgelöst, wenn eine Anmeldung von einer IP-Adresse stammt, die bekanntermaßen von einem oder mehreren kompromittierten Geräten verwendet wird, und die Geräte aktiv versuchen, mit einem Botserver zu kommunizieren.
 
 ### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Anmeldung von IP-Adresse mit verdächtiger Aktivität
-Dieses Risikoereignis wird ausgelöst, nachdem eine erfolgreiche Anmeldung von einer IP-Adresse mit einer hohen Zahl von fehlgeschlagenen Anmeldeversuchen unter Verwendung mehrerer Benutzerkonten innerhalb eines kurzen Zeitraums durchgeführt wurde.
+Diese Risikoerkennung wird ausgelöst, nachdem eine erfolgreiche Anmeldung von einer IP-Adresse mit einer hohen Zahl von fehlerhaften Anmeldeversuchen unter Verwendung mehrerer Benutzerkonten innerhalb eines kurzen Zeitraums durchgeführt wurde.
 
 ### <a name="sign-in-from-unfamiliar-location"></a>Anmeldung von unbekanntem Standort
-Dieses Risikoereignis wird ausgelöst, wenn sich ein Benutzer erfolgreich von einem neuen Standort (IP-Adresse, Breiten-/Längengrad und ASN) aus anmeldet.
+Diese Risikoerkennung wird ausgelöst, wenn sich ein Benutzer erfolgreich von einem neuen Standort (IP-Adresse, Breiten-/Längengrad und ASN) aus anmeldet.
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
 Siehe „Risikostufe (Anmeldung)“.
@@ -153,7 +153,7 @@ Siehe „Risikostufe (Benutzerkompromittierung)“.
 Eine bedingte Zugriffsrichtlinie, mit der die Anmeldung berücksichtigt wird und Lösungen basierend auf vordefinierten Bedingungen und Regeln angewendet werden.
 
 ### <a name="users-flagged-for-risk"></a>Benutzer mit Risikokennzeichnung
-Benutzer, die über Risikoereignisse verfügen (entweder „Aktiv“ oder „Bereinigt“).
+Benutzer, die über Risikoerkennungen verfügen (entweder „Aktiv“ oder „Bereinigt“)
 
 ### <a name="vulnerability"></a>Sicherheitsrisiko
 Eine Konfiguration oder ein Zustand in Azure Active Directory, durch die bzw. den das Verzeichnis anfällig für Angriffe oder Bedrohungen wird.

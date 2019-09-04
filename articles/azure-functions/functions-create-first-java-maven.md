@@ -7,20 +7,20 @@ author: rloutlaw
 manager: justhe
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose Architektur
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: quickstart
+ms.devlang: java
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter, seo-java-july2019
-ms.openlocfilehash: 116d211e366e17ba667baf1e1deae719b56dc3ee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 5c5a0285a827a7990a11eb6ef6445e7d84189767
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096852"
 ---
-# <a name="create-your-first-function-with-java-and-maven"></a>Erstellen Ihrer ersten Funktion mit Java und Maven
+# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Schnellstart: Erstellen und Veröffentlichen einer Funktion in Azure Functions mithilfe von Java
 
 Dieser Artikel führt Sie durch die Verwendung des Maven-Befehlszeilentools zum Erstellen und Veröffentlichen einer Java-Funktion in Azure Functions. Wenn Sie fertig sind, wird Ihr Funktionscode für den [Verbrauchstarif](functions-scale.md#consumption-plan) in Azure ausgeführt und kann mithilfe einer HTTP-Anforderung ausgelöst werden.
 

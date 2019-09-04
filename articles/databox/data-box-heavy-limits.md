@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 07/03/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 021aedc94b59f73e18679783cfc8b981924769c3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592362"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126123"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Grenzwerte für Azure Data Box Heavy
 
@@ -26,7 +26,8 @@ Berücksichtigen Sie beim Bereitstellen und Betreiben Ihres Azure Data Box Heavy
 
 ## <a name="data-box-heavy-limits"></a>Grenzwerte für Data Box Heavy
 
-- In Data Box kann maximal 1 Milliarde Dateien pro Knoten gespeichert werden.
+- In Data Box Heavy kann maximal 1 Milliarde Dateien pro Knoten gespeichert werden.
+- Data Box Heavy unterstützt maximal 512 Container oder Freigaben pro Knoten in der Cloud. Die Verzeichnisse der obersten Ebene innerhalb der Benutzerfreigabe werden zu Containern oder Azure-Dateifreigaben in der Cloud.
 
 ## <a name="azure-storage-limits"></a>Grenzwerte für Azure Storage
 

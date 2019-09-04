@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989635"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127141"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -348,10 +348,10 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 
 |Überwachungskategorie|Aktivität|
 |---|---|
-|Verwaltung administrativer Einheiten|Download a single risk event type (Einzelnen Risikoereignistyp herunterladen)|
+|Verwaltung administrativer Einheiten|Download a single risk detection type (Einzelnen Risikoerkennungstyp herunterladen)|
 |Verwaltung administrativer Einheiten|Download admins and status of weekly digest opt-in (Administratoren und Status der Aktivierung der wöchentlichen Übersicht herunterladen)|
-|Verwaltung administrativer Einheiten|Download all risk event types (Alle Risikoereignistypen herunterladen)|
-|Verwaltung administrativer Einheiten|Download free user risk events (Kostenlose Benutzerrisikoereignisse herunterladen)|
+|Verwaltung administrativer Einheiten|Download all risk detection types (Alle Risikoerkennungstypen herunterladen)|
+|Verwaltung administrativer Einheiten|Download free user risk detections (Kostenlose Benutzerrisikoerkennungen herunterladen)|
 |Verwaltung administrativer Einheiten|Download users flagged for risk (Benutzer herunterladen, für die ein Risiko angezeigt wird)|
 |Anwendungsverwaltung|Verarbeitete Batch-Einladungen|
 |Anwendungsverwaltung|Batch-Einladungen hochgeladen|

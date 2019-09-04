@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Azure IoT Plug & Play-Geräts (Vorschauversion) | Microsoft-Dokumentation
+title: Erstellen eines IoT Plug & Play-Geräts (Vorschauversion) | Microsoft-Dokumentation
 description: Verwenden Sie ein Gerätefunktionsmodell, um einen Gerätecode zu generieren. Führen Sie anschließend den Gerätecode aus, und verfolgen Sie, wie für das Gerät die Verbindung mit Ihrer IoT Hub-Instanz hergestellt wird.
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7cfa6e63f74233e9a3fab8f235584fdbe01e67d9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881539"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050133"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts
 
@@ -21,9 +21,9 @@ Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Fun
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Durcharbeiten dieser Schnellstartanleitung müssen Sie auf Ihrem lokalen Computer die folgende Software installieren:
+Zum Abschließen dieses Schnellstarts müssen Sie auf Ihrem lokalen Computer die folgende Software installieren:
 
-* [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/): Stellen Sie sicher, dass Sie die Komponente **NuGet-Paket-Manager** und die Workload **Desktopentwicklung mit C++** aktivieren, wenn Sie Visual Studio installieren.
+* [Visual Studio (Community, Professional oder Enterprise):](https://visualstudio.microsoft.com/downloads/) Stellen Sie sicher, dass Sie die Komponente **NuGet-Paket-Manager** und die Workload **Desktopentwicklung mit C++** aktivieren, wenn Sie Visual Studio installieren.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
@@ -48,7 +48,7 @@ Sie finden die _Verbindungszeichenfolge für das Modellrepository Ihres Unterneh
 
 ## <a name="prepare-an-iot-hub"></a>Vorbereiten eines IoT-Hubs
 
-Zum Durcharbeiten dieser Schnellstartanleitung benötigen Sie auch eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Für diesen Schnellstart benötigen Sie außerdem eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 Fügen Sie die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzu:
 
@@ -76,7 +76,7 @@ az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>Beschaffen des Azure IoT-Geräte-SDK für C
+### <a name="get-azure-iot-device-sdk-for-c"></a>Abrufen des Azure IoT-Geräte-SDK für C
 
 In dieser Schnellstartanleitung bereiten Sie eine Entwicklungsumgebung vor, die Sie zum Klonen und Erstellen des Azure IoT-Geräte-SDK für C verwenden können.
 
@@ -159,7 +159,7 @@ Sie verwenden das Geräte-SDK, um den generierten Gerätecode-Stub zu erstellen.
     ```
 
     > [!NOTE]
-    > Falls CMake Ihren C++-Compiler nicht finden kann, erhalten Sie beim Ausführen des obigen Befehls Buildfehler. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus.
+    > Falls CMake Ihren C++-Compiler nicht finden kann, treten beim Ausführen des obigen Befehls Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus.
 
 1. Führen Sie nach dem erfolgreichen Abschluss des Buildvorgangs Ihre Anwendung aus, und übergeben Sie die IoT Hub-Geräteverbindungszeichenfolge als Parameter.
 
@@ -210,16 +210,16 @@ Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dat
 
 1. Wählen Sie die Seite **Telemetrie** aus, um die vom Gerät gesendeten Telemetriedaten anzuzeigen.
 
-1. Wählen Sie die Seite **Properties(non-writable)** (Eigenschaften (nicht schreibbar)), um die vom Gerät gemeldeten nicht schreibbaren Eigenschaften anzuzeigen.
+1. Wählen Sie die Seite **Properties(non-writable)** (Eigenschaften (nicht schreibbar)) aus, um die vom Gerät gemeldeten nicht schreibbaren Eigenschaften anzuzeigen.
 
-1. Wählen Sie die Seite **Properties(writable)** (Eigenschaften (schreibbar)), um die schreibbaren Eigenschaften anzuzeigen, die Sie aktualisieren können.
+1. Wählen Sie die Seite **Properties(writable)** (Eigenschaften (schreibbar)) aus, um die schreibbaren Eigenschaften anzuzeigen, die Sie aktualisieren können.
 
-1. Erweitern Sie die Eigenschaft **name**, aktualisieren Sie sie mit einem neuen Namen, und wählen Sie **update writable property** (Schreibbare Eigenschaft aktualisieren). 
+1. Erweitern Sie die Eigenschaft **name**, aktualisieren Sie sie mit einem neuen Namen, und wählen Sie **update writable property** (Schreibbare Eigenschaft aktualisieren) aus. 
 2. Klicken Sie zum Anzeigen des neuen Namens in der Spalte **Gemeldete Eigenschaft** oben auf der Seite auf die Schaltfläche **Aktualisieren**.
 
-1. Wählen Sie die Seite **Befehl**, um alle Befehle anzuzeigen, die vom Gerät unterstützt werden.
+1. Wählen Sie die Seite **Befehl** aus, um alle Befehle anzuzeigen, die vom Gerät unterstützt werden.
 
-1. Erweitern Sie den Befehl **blink** (Blinken), und legen Sie ein neues Intervall für die Blinkzeit fest. Wählen Sie **Befehl senden**, um den Befehl auf dem Gerät aufzurufen.
+1. Erweitern Sie den Befehl **blink** (Blinken), und legen Sie ein neues Intervall für die Blinkzeit fest. Wählen Sie **Befehl senden** aus, um den Befehl auf dem Gerät aufzurufen.
 
 1. Navigieren Sie zum simulierten Gerät, um zu überprüfen, ob der Befehl wie erwartet ausgeführt wird.
 

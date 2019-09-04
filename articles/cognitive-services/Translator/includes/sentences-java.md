@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a6c12a2fdc8616dd6f7107d11e8f6c77401811fb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968007"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906808"
 ---
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [Mindestens JDK 7](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Ein Azure-Abonnementschlüssel für die Textübersetzung
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Initialisieren eines Projekts mit Gradle
 
@@ -44,7 +42,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "LengthSentence"
+    mainClassName = "BreakSentence"
 }
 repositories {
     mavenCentral()
@@ -65,11 +63,11 @@ Erstellen Sie einen Ordner für Ihre Beispiel-App. Führen Sie in Ihrem Arbeitsv
 mkdir -p src/main/java
 ```
 
-Erstellen Sie als Nächstes in diesem Ordner eine Datei namens `LengthSentence.java`.
+Erstellen Sie als Nächstes in diesem Ordner eine Datei namens `BreakSentence.java`.
 
 ## <a name="import-required-libraries"></a>Importieren der erforderlichen Bibliotheken
 
-Öffnen Sie `LengthSentence.java`, und fügen Sie die folgenden Importanweisungen hinzu:
+Öffnen Sie `BreakSentence.java`, und fügen Sie die folgenden Importanweisungen hinzu:
 
 ```java
 import java.io.*;
@@ -85,22 +83,23 @@ import com.squareup.okhttp.*;
 Sie müssen zunächst eine öffentliche Klasse für Ihr Projekt erstellen:
 
 ```java
-public class LengthSentence {
+public class BreakSentence {
   // All project code goes here...
 }
 ```
 
-Fügen Sie der Klasse `LengthSentence` die folgenden Zeilen hinzu. Zusätzlich zu `api-version` können Sie die Eingabesprache definieren. In diesem Beispiel ist die Eingabesprache Englisch.
+Fügen Sie der Klasse `BreakSentence` die folgenden Zeilen hinzu. Der Abonnementschlüssel und der Endpunkt werden zunächst aus Umgebungsvariablen gelesen. Zusätzlich zu `api-version` können Sie dann die Eingabesprache definieren. In diesem Beispiel ist die Eingabesprache Englisch.
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
 Wenn Sie ein Cognitive Services-Abonnement mehrerer Dienste verwenden, müssen Sie auch `Ocp-Apim-Subscription-Region` in Ihre Anforderungsparameter aufnehmen. [Erfahren Sie mehr über die Authentifizierung mit dem Abonnement für mehrere Dienste](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Erstellen eines Clients und einer Anforderung
 
-Fügen Sie der Klasse `LengthSentence` die folgende Zeile hinzu, um `OkHttpClient` zu instanziieren:
+Fügen Sie der Klasse `BreakSentence` die folgende Zeile hinzu, um `OkHttpClient` zu instanziieren:
 
 ```java
 // Instantiates the OkHttpClient.
@@ -145,8 +144,8 @@ Im letzten Schritt wird eine Anforderung gesendet und eine Antwort empfangen. F�
 ```java
 public static void main(String[] args) {
     try {
-        LengthSentence lengthSentenceRequest = new LengthSentence();
-        String response = lengthSentenceRequest.Post();
+        BreakSentence breakSentenceRequest = new BreakSentence();
+        String response = BreakSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

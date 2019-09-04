@@ -1,5 +1,5 @@
 ---
-title: Sammeln von Daten über virtuelle Azure-Computer | Microsoft-Dokumentation
+title: Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor | Microsoft-Dokumentation
 description: Informationen zum Aktivieren der Log Analytics-Agent-VM-Erweiterung und Aktivieren der Sammlung von Daten von Ihren Azure-VMs mit Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 1a61c0f96f62712bbd2500b2e80fd08565990bbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874910"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992147"
 ---
-# <a name="collect-data-about-azure-virtual-machines"></a>Sammeln von Daten über virtuelle Azure-Computer
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Sammeln von Daten von einem virtuellen Azure-Computer mit Azure Monitor
 
-[Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern und anderen Ressourcen in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem einzelnen Repository sammeln. Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihren Azure-Linux- oder Windows-VMs konfigurieren und sammeln.  
+[Azure Monitor](../overview.md) kann Daten direkt von Ihren virtuellen Azure-Computern zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie die Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) installieren, kann Azure Monitor Daten von Ihren virtuellen Azure-Computern sammeln. Diese Schnellstartanleitung zeigt Ihnen, wie Sie mit der VM-Erweiterung in wenigen einfachen Schritten Daten von Ihren Azure-Linux-VMs oder Azure-Windows-VMs konfigurieren und sammeln.  
  
 Dieser Schnellstart setzt voraus, dass Sie über einen virtuellen Azure-Computer verfügen. Wenn nicht, können Sie mit unseren VM-Schnellstarts [eine Windows-VM erstellen](../../virtual-machines/windows/quick-create-portal.md) oder [eine Linux-VM erstellen](../../virtual-machines/linux/quick-create-cli.md).
 
@@ -33,7 +33,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.
 
     ![Azure-Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
@@ -55,7 +55,7 @@ Die Informationen werden überprüft, und der Arbeitsbereich wird erstellt. Sie 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Für bereits in Azure bereitgestellte Windows- und Linux-VMs installieren Sie den Log Analytics-Agent mit Log Analytics-VM-Erweiterung. Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen. Überprüfen Sie vor dem Fortfahren, ob der virtuelle Computer ausgeführt wird. Andernfalls wird der Vorgang nicht abgeschlossen.  
+Für bereits in Azure bereitgestellte Windows- und Linux-VMs installieren Sie den Log Analytics-Agent mit Log Analytics-VM-Erweiterung. Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird bei Veröffentlichung einer neuen Version auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen. Überprüfen Sie vor dem Fortfahren, ob der virtuelle Computer ausgeführt wird. Andernfalls wird der Vorgang nicht abgeschlossen.  
 
 >[!NOTE]
 >Der Log Analytics-Agent für Linux kann nicht für die Berichterstattung für mehrere Log Analytics-Arbeitsbereiche konfiguriert werden. 
@@ -74,7 +74,7 @@ Für bereits in Azure bereitgestellte Windows- und Linux-VMs installieren Sie de
 
 ## <a name="collect-event-and-performance-data"></a>Sammeln von Ereignis- und Leistungsdaten
 
-Log Analytics kann Ereignisdaten aus den Windows-Ereignisprotokollen oder Linux Syslog und Leistungsindikatoren sammeln, die Sie für längerfristige Analysen und Berichte angeben, und Maßnahmen einleiten, wenn eine bestimmte Bedingung erkannt wird. Führen Sie diese Schritte aus, um die Sammlung von Ereignissen aus dem Systemprotokoll von Windows und Linux Syslog sowie mehreren allgemeinen Leistungsindikatoren zu konfigurieren.  
+Azure Monitor kann Ereignisse aus den Windows-Ereignisprotokollen oder Linux-Syslog und Leistungsindikatoren sammeln, die Sie für längerfristige Analysen und Berichte angeben, und Maßnahmen einleiten, wenn eine bestimmte Bedingung erkannt wird. Führen Sie diese Schritte aus, um die Sammlung von Ereignissen aus dem Systemprotokoll von Windows und Linux Syslog sowie mehreren allgemeinen Leistungsindikatoren zu konfigurieren.  
 
 ### <a name="data-collection-from-windows-vm"></a>Datensammlung auf Windows-VM
 
@@ -124,15 +124,15 @@ Log Analytics kann Ereignisdaten aus den Windows-Ereignisprotokollen oder Linux 
 
 Jetzt haben Sie die Datensammlung aktiviert und können ein einfaches Protokollsuchebeispiel ausführen, um einige Daten aus den Ziel-VMs anzuzeigen.  
 
-1. Navigieren Sie im Azure-Portal zu Log Analytics, und wählen Sie den zuvor erstellten Arbeitsbereich aus.
+1. Wählen Sie im ausgewählten Arbeitsbereich im linken Bereich **Protokolle** aus.
 
-2. Wählen Sie die Kachel **Protokollsuche** aus, und geben Sie im Bereich „Protokollsuche“ ins Abfragefeld `Perf` ein. Drücken Sie dann die EINGABETASTE, oder wählen Sie die Suchschaltfläche rechts neben dem Abfragefeld aus.
+2. Geben Sie auf der Seite „Protokollabfrage“ im Abfrageeditor `Perf` ein, und wählen Sie **Ausführen** aus.
 
-    ![Beispiel für Log Analytics-Protokollsuchabfrage](./media/quick-collect-azurevm/log-analytics-portal-perf-query.png) 
+    ![Beispiel für Log Analytics-Protokollsuchabfrage](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-Die Abfrage in der folgenden Abbildung gibt beispielsweise 735 Leistungsdatensätze zurück.  Ihre Ergebnisse werden deutlich geringer ausfallen.
+    Die Abfrage in der folgenden Abbildung gibt beispielsweise 10.000 Leistungsdatensätze zurück. Ihre Ergebnisse werden deutlich geringer ausfallen.
 
-![Log Analytics: Ergebnis der Protokollsuche](media/quick-collect-azurevm/log-analytics-search-perf.png)
+    ![Log Analytics: Ergebnis der Protokollsuche](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

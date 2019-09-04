@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f244c28b99c429fef5641bb4fc399e09fd451069
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334033"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126551"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Anleitung: Konfigurieren von Risikorichtlinien in Azure Active Directory Identity Protection (aktualisiert)
 
-Azure AD erkennt Risikoereignisse, die auf potenziell gefährdete Identitäten hinweisen. Durch das Konfigurieren von Risikorichtlinien können Sie automatisierte Antworten auf die Erkennungsergebnisse definieren:
+Azure AD erkennt Risiken, die auf potenziell gefährdete Identitäten hinweisen. Durch das Konfigurieren von Risikorichtlinien können Sie automatisierte Antworten auf die Erkennungsergebnisse definieren:
 
-- Mit der Richtlinie zum Anmelderisiko können Sie eine Reaktion auf Echtzeitrisikoereignisse konfigurieren, die während der Anmeldung eines Benutzers erkannt wurden. 
+- Mit der Richtlinie zum Anmelderisiko können Sie eine Reaktion auf Echtzeitrisikoerkennungen konfigurieren, die während der Anmeldung eines Benutzers erkannt wurden. 
 - Mit der Richtlinie zum Benutzerrisiko können Sie eine Reaktion auf alle aktiven Benutzerrisiken konfigurieren, die im Laufe der Zeit für einen Benutzer erkannt wurden.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Was ist die Richtlinie zum Anmelderisiko?
 
-Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. Wird die Anmeldung beispielsweise mit einer anonymen IP-Adresse durchgeführt, oder wird die Anmeldung von einem unbekannten Ort aus initiiert? In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoereignisse bezeichnet. Basierend auf den Risikoereignissen, die während einer Anmeldung erkannt wurden, berechnet Azure AD einen Wert. Der Wert steht für die Wahrscheinlichkeit (gering, mittel, hoch), dass die Anmeldung nicht vom befugten Benutzer durchgeführt wird. Die Wahrscheinlichkeit wird als **Risikostufe der Anmeldung** bezeichnet.
+Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. Wird die Anmeldung beispielsweise mit einer anonymen IP-Adresse durchgeführt, oder wird die Anmeldung von einem unbekannten Ort aus initiiert? In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoerkennungen bezeichnet. Basierend auf den Risikoerkennungen, die während einer Anmeldung erkannt wurden, berechnet Azure AD einen Wert. Der Wert steht für die Wahrscheinlichkeit (gering, mittel, hoch), dass die Anmeldung nicht vom befugten Benutzer durchgeführt wird. Die Wahrscheinlichkeit wird als **Risikostufe der Anmeldung** bezeichnet.
 
 Die Richtlinie zum Anmelderisiko ist eine automatisierte Antwort, die Sie für eine bestimmte Risikostufe der Anmeldung konfigurieren können. In Ihrer Antwort können Sie den Zugriff auf Ihre Ressourcen blockieren oder die Durchführung einer mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) zur Bedingung machen, bevor der Zugriff gewährt wird.
 
-Wenn ein Benutzer eine MFA-Eingabeaufforderung, die durch die Anmelderisiko-Richtlinie ausgelöst wird, erfolgreich abschließt, gibt er Identity Protection eine Rückmeldung, dass die Anmeldung vom legitimen Benutzer stammt. Somit wird das Anmelde-Risikoereignis, das die MFA-Anfrage ausgelöst hat, automatisch geschlossen, und Identity Protection verhindert, dass dieses Ereignis zur Erhöhung des Benutzerrisikos beiträgt. Die Aktivierung der Anmelderisiko-Richtlinie kann überflüssigen Code in der Ansicht mit den risikoreichen Anmeldungen reduzieren, indem sie es den Benutzern ermöglicht, bei Aufforderung zur MFA selbstständig zu korrigieren und anschließend automatisch die zugehörige risikoreiche Anmeldung zu schließen.
+Wenn ein Benutzer eine MFA-Eingabeaufforderung, die durch die Anmelderisiko-Richtlinie ausgelöst wird, erfolgreich abschließt, gibt er Identity Protection eine Rückmeldung, dass die Anmeldung vom legitimen Benutzer stammt. Somit wird die Anmelderisikoerkennung, die die MFA-Anfrage ausgelöst hat, automatisch geschlossen, und Identity Protection verhindert, dass diese Erkennung zur Erhöhung des Benutzerrisikos beiträgt. Die Aktivierung der Anmelderisiko-Richtlinie kann überflüssigen Code in der Ansicht mit den risikoreichen Anmeldungen reduzieren, indem sie es den Benutzern ermöglicht, bei Aufforderung zur MFA selbstständig zu korrigieren und anschließend automatisch die zugehörige risikoreiche Anmeldung zu schließen.
 
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Wie greife ich auf die Richtlinie zum Anmelderisiko zu?
    
@@ -93,9 +93,9 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 ## <a name="what-is-a-user-risk-policy"></a>Was ist eine Richtlinie zum Benutzerrisiko?
 
-Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoereignisse bezeichnet. Einige Risikoereignisse können in Echtzeit erkannt werden, aber es gibt auch Risikoereignisse, für die mehr Zeit benötigt wird. Um beispielsweise eine Fahrt zu ungewöhnlichen Orten zu erkennen, benötigt das System einen anfänglichen Lernzeitraum von 14 Tagen, um das Regelverhalten eines Benutzers kennenzulernen. Es gibt mehrere Optionen zum Lösen von erkannten Risikoereignissen. Beispielsweise können Sie einzelne Risikoereignisse manuell lösen oder lösen lassen, indem Sie eine Richtlinie für bedingten Zugriff für das Anmelderisiko oder Benutzerrisiko verwenden.
+Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoerkennungen bezeichnet. Einige Risikoerkennungen können in Echtzeit erkannt werden, aber es gibt auch Risikoerkennungen, für die mehr Zeit benötigt wird. Um beispielsweise eine Fahrt zu ungewöhnlichen Orten zu erkennen, benötigt das System einen anfänglichen Lernzeitraum von 14 Tagen, um das Regelverhalten eines Benutzers kennenzulernen. Es gibt mehrere Optionen zum Lösen von erkannten Risikoerkennungen. Beispielsweise können Sie einzelne Risikoerkennungen manuell lösen oder lösen lassen, indem Sie eine Richtlinie für bedingten Zugriff für das Anmelderisiko oder Benutzerrisiko verwenden.
 
-Alle Risikoereignisse, die für einen Benutzer erkannt und nicht gelöst wurden, werden als aktive Risikoereignisse bezeichnet. Die aktiven Risikoereignisse, die einem Benutzer zugeordnet sind, werden als Benutzerrisiko bezeichnet. Basierend auf dem Benutzerrisiko berechnet Azure AD eine Wahrscheinlichkeit (niedrig, mittel, hoch), mit der ein Benutzer kompromittiert wurde. Die Wahrscheinlichkeit wird als Benutzerrisikostufe bezeichnet.
+Alle Risikoerkennungen, die für einen Benutzer erkannt und nicht gelöst wurden, werden als aktive Risikoerkennungen bezeichnet. Die aktiven Risikoerkennungen, die einem Benutzer zugeordnet sind, werden als Benutzerrisiko bezeichnet. Basierend auf dem Benutzerrisiko berechnet Azure AD eine Wahrscheinlichkeit (niedrig, mittel, hoch), mit der ein Benutzer kompromittiert wurde. Die Wahrscheinlichkeit wird als Benutzerrisikostufe bezeichnet.
 
 ![Benutzerrisiken](./media/howto-configure-risk-policies/11031.png)
 
@@ -139,8 +139,8 @@ Sie können eine Sicherheitsrichtlinie für das Benutzerrisiko festlegen, um Ben
 
 Das Sperren einer Anmeldung bewirkt Folgendes:
 
-* Verhindert die Generierung neuer Benutzerrisikoereignisse für den betroffenen Benutzer
-* Ermöglicht Administratoren die manuelle Bereinigung der Risikoereignisse, die die Identität des Benutzers beeinträchtigen, und stellen wieder einen sicheren Identitätszustand her
+* Verhindert die Generierung neuer Benutzerrisikoerkennungen für den betroffenen Benutzer
+* Ermöglicht Administratoren die manuelle Bereinigung der Risikoerkennungen, die die Identität des Benutzers beeinträchtigen, und die Wiederherstellung eines sicheren Identitätszustands
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

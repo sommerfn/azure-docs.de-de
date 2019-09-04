@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 84f3e4d0314408b2f3a8417cebd355a842331286
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f085ca6de2c04caa90c34bc1293da1210d2883eb
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855141"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020150"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Erstellen einer Python-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
 
@@ -84,7 +84,7 @@ Klonen Sie zunächst eine SQL-API-App aus GitHub, legen Sie die Verbindungszeich
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) unter Ihrem Azure Cosmos-Konto im Navigationsbereich auf der linken Seite auf **Schlüssel**. Mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms kopieren Sie im nächsten Schritt den **URI** und den **Primärschlüssel** in die Datei `CosmosGetStarted.py`.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) unter Ihrem Azure Cosmos-Konto im Navigationsbereich auf der linken Seite **Schlüssel** aus. Mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms kopieren Sie im nächsten Schritt den **URI** und den **Primärschlüssel** in die Datei `CosmosGetStarted.py`.
 
     ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“](./media/create-sql-api-dotnet/keys.png)
 
@@ -173,7 +173,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei `CosmosGetStarted.py`.
    
 ## <a name="run-the-app"></a>Ausführen der App
 
-1. Klicken Sie in Visual Studio Code auf **Ansicht**>**Befehlspalette**. 
+1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Befehlspalette**. 
 
 2. Geben Sie an der Eingabeaufforderung **Python: Select Interpreter** ein, und wählen Sie die gewünschte Python-Version aus.
 

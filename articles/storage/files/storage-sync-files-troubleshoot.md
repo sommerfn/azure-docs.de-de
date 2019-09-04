@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3395159e1427fa3d174b62c74c777d2f2ddd4900
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721677"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129192"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -634,7 +634,7 @@ Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorg
 | | |
 |-|-|
 | **HRESULT** | 0x80c8023b |
-| **HRESULT (dezimal)** | -2134364145 |
+| **HRESULT (dezimal)** | –2.134.375.877 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Korrektur erforderlich** | Ja |
 | | |
@@ -717,7 +717,7 @@ Dieser Fehler tritt auf, weil für das Speicherkonto ein Failover in eine andere
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Korrektur erforderlich** | Nein |
 
-Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsdatenbank auf. Dieser Fehler wird automatisch aufgelöst, wenn die Azure-Dateisynchronisierung die Synchronisierung wiederholt. Wenn dieser Fehler für einen längeren Zeitraum anhält, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
+Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsdatenbank auf. Dieser Fehler wird automatisch aufgelöst, wenn die Synchronisierung erneut versucht wird. Wenn dieser Fehler für einen längeren Zeitraum anhält, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
 
 <a id="-2134364024"></a>**Fehler bei der Synchronisierung aufgrund einer Änderung im Azure Active Directory-Mandanten**  
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934604"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129320"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -130,7 +130,7 @@ Azure Active Directory verfügt über eine Vielzahl von Funktionen, die Angriffe
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>Implementieren einer Sicherheitsrichtlinie in Bezug auf das Benutzerrisiko mithilfe von Azure AD Identity Protection
 
-Das Benutzerrisiko bezeichnet die Wahrscheinlichkeit, dass die Identität eines Benutzers gefährdet ist, und wird anhand der [Benutzerrisikoereignisse](../../active-directory/identity-protection/overview.md) berechnet, die der Identität eines Benutzers zugeordnet sind. Bei einer Benutzerrisikorichtlinie handelt es sich um eine Richtlinie für bedingten Zugriff, die die Risikostufe eines bestimmten Benutzers oder einer bestimmten Gruppe auswertet. Basierend auf den Risikostufen „Niedrig“, „Mittel“ oder „Hoch“ kann eine Richtlinie so konfiguriert werden, dass sie den Zugriff blockiert oder eine sichere Kennwortänderung über die mehrstufige Authentifizierung erfordert. Microsoft empfiehlt, bei Benutzern mit hohem Risiko eine sichere Kennwortänderung anzufordern.
+Das Benutzerrisiko bezeichnet die Wahrscheinlichkeit, dass die Identität eines Benutzers gefährdet ist, und wird anhand der [Benutzerrisikoerkennungen](../../active-directory/identity-protection/overview.md) berechnet, die der Identität eines Benutzers zugeordnet sind. Bei einer Benutzerrisikorichtlinie handelt es sich um eine Richtlinie für bedingten Zugriff, die die Risikostufe eines bestimmten Benutzers oder einer bestimmten Gruppe auswertet. Basierend auf den Risikostufen „Niedrig“, „Mittel“ oder „Hoch“ kann eine Richtlinie so konfiguriert werden, dass sie den Zugriff blockiert oder eine sichere Kennwortänderung über die mehrstufige Authentifizierung erfordert. Microsoft empfiehlt, bei Benutzern mit hohem Risiko eine sichere Kennwortänderung anzufordern.
 
 ![Benutzer mit Risikokennzeichnung](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ Unter [Überwachen von AD FS mithilfe von Azure AD Connect Health](../../active-
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Überwachen von Azure AD Identity Protection-Ereignissen
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) ist ein Benachrichtigungs-, Überwachungs- und Berichterstattungstool, mit dem Sie potenzielle Sicherheitslücken erkennen können, die Auswirkungen auf die Identitäten Ihrer Organisation haben können. Das Tool erkennt Risikoereignisse, wie z.B. kompromittierte Anmeldeinformationen, unmögliche Ortswechsel und Anmeldungen von infizierten Geräten sowie anonyme IP-Adressen, IP-Adressen in Zusammenhang mit der verdächtigen Aktivität und unbekannte Standorte. Aktivieren Sie die Benachrichtigungen, um E-Mails zu gefährdeten Benutzern und/oder eine wöchentliche Zusammenfassung zu erhalten.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) ist ein Benachrichtigungs-, Überwachungs- und Berichterstattungstool, mit dem Sie potenzielle Sicherheitslücken erkennen können, die Auswirkungen auf die Identitäten Ihrer Organisation haben können. Das Tool erkennt Risiken, wie z. B. kompromittierte Anmeldeinformationen, unmögliche Ortswechsel und Anmeldungen von infizierten Geräten sowie anonyme IP-Adressen, IP-Adressen in Zusammenhang mit der verdächtigen Aktivität und unbekannte Standorte. Aktivieren Sie die Benachrichtigungen, um E-Mails zu gefährdeten Benutzern und/oder eine wöchentliche Zusammenfassung zu erhalten.
 
 Azure AD Identity Protection bietet zwei wichtige Berichte, die Sie täglich überwachen sollten:
 1. Berichte zu riskanten Anmeldungen behandeln Benutzeranmeldeaktivitäten, denen Sie nachgehen sollten, weil die Anmeldung möglicherweise nicht durch den rechtmäßigen Besitzer erfolgt ist.

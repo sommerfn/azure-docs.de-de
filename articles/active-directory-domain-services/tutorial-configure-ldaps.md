@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: f575dd882c217badb3320b85229149d9793ceb5f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619030"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011351"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -38,7 +38,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 * Ein aktives Azure-Abonnement.
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloudverzeichnis.
+* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
@@ -286,7 +286,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Binden und Testen von Secure LDAP für eine verwaltete Azure AD DS-Domäne
 
 > [!div class="nextstepaction"]
-> [Funktionsweise der Synchronisierung in einer verwalteten Azure AD Domain Services-Domäne](synchronization.md)
+> [Konfigurieren der Kennworthashsynchronisierung für eine Azure AD-Hybridumgebung](tutorial-configure-password-hash-sync.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

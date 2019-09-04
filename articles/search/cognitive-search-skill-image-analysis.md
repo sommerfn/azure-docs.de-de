@@ -7,22 +7,22 @@ author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 8cf72ba2fff65cf3382344fd2851c9c6027676c2
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635913"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128191"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
 Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merkmalen aus dem Bildinhalt. So können Sie beispielsweise anhand eines Bilds eine Beschriftung erstellen, Tags generieren oder Prominente und Sehenswürdigkeiten identifizieren. Diese Qualifikation verwendet die durch [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services bereitgestellten Machine Learning-Modelle. 
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Kleine Volumes (unter 20 Transaktionen) können in Azure Search kostenlos ausgeführt werden, größere Workloads erfordern jedoch das [Anfügen einer abrechnungsfähigen Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
 > Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
 
@@ -37,9 +37,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | defaultLanguageCode   |  Eine Zeichenfolge, die angibt, welche Sprache zurückgegeben werden soll. Der Dienst gibt die Ergebnisse der Erkennung in einer bestimmten Sprache zurück. Wenn dieser Parameter nicht angegeben wird, ist der Standardwert „en“. <br/><br/>Unterstützte Sprachen: <br/>*en*: Englisch (Standard) <br/> *zh*: vereinfachtes Chinesisch|
-|visualFeatures |   Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li> *categories*: Kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) zu Cognitive Services definiert ist.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li><li>*description*: Beschreibt den Bildinhalt mit einem vollständigen Satz.</li><li>*faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li> *imageType*: Erkennt, ob das Bild ein pixelbasiertes ClipArt oder eine linienbasierte Zeichnung ist.</li><li>  *color*: Bestimmt die Akzentfarbe und die dominante Farbe und ermittelt, ob ein Bild schwarzweiß ist.</li><li>*adult*: Erkennt, ob das Bild pornografische Natur ist (erkennt Nacktheit oder sexuelle Handlungen). Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet.|
-| details   | Ein Array aus Zeichenfolgen, die angeben, welche domänenspezifischen Informationen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig: <ul><li>*celebrities*: Identifiziert Prominente in einem Bild.</li><li>*landmarks*: Identifiziert Sehenswürdigkeiten in einem Bild.</li></ul>
- |
+|visualFeatures |   Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li> *categories:* kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation zum maschinellen Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) in Cognitive Services definiert ist. </li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li><li>*description*: Beschreibt den Bildinhalt mit einem vollständigen Satz.</li><li>*faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li>    *imageType*: Erkennt, ob das Bild ein pixelbasiertes ClipArt oder eine linienbasierte Zeichnung ist.</li><li>  *color*: Bestimmt die Akzentfarbe und die dominante Farbe und ermittelt, ob ein Bild schwarzweiß ist.</li><li>*adult*: Erkennt, ob das Bild pornografische Natur ist (erkennt Nacktheit oder sexuelle Handlungen). Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet.|
+| details   | Ein Array aus Zeichenfolgen, die angeben, welche domänenspezifischen Informationen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig: <ul><li>*celebrities*: Identifiziert Prominente in einem Bild.</li><li>*landmarks*: Identifiziert Sehenswürdigkeiten in einem Bild. </li></ul> |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
@@ -49,7 +48,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 
 
-##  <a name="sample-definition"></a>Beispieldefinition
+##  <a name="sample-skill-definition"></a>Beispieldefinition einer Qualifikation
+
 ```json
         {
             "description": "Extract image analysis.",
@@ -316,7 +316,17 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
             "targetFieldName": "faces"
         }
 ```
+### <a name="variation-on-output-field-mappings-nested-properties"></a>Variation von Ausgabefeldzuordnungen (verschachtelte Eigenschaften)
 
+Sie können Ausgabefeldzuordnungen zu Eigenschaften niedrigerer Ebenen definieren, z. B. als einfache Wahrzeichen oder Prominente. Stellen Sie in diesem Fall sicher, dass Ihr Indexschema ein spezifisches Feld für Wahrzeichen aufweist.
+
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
+            "targetFieldName": "landmarks"
+        }
+```
 ##  <a name="sample-input"></a>Beispieleingabe
 
 ```json
@@ -493,6 +503,22 @@ In den folgenden Fällen werden keine Elemente extrahiert.
 | NotSupportedVisualFeature  | Der angegebene Merkmaltyp ist ungültig. |
 | NotSupportedImage | Nicht unterstütztes Bild, z.B. Kinderpornografie. |
 | InvalidDetails | Nicht unterstütztes domänenspezifisches Modell. |
+
+Wenn Sie eine Fehlermeldung ähnlich `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"` erhalten, überprüfen Sie den Pfad. Sowohl Prominente als auch Wahrzeichen sind Eigenschaften unter `detail`.
+
+```json
+"categories":[  
+      {  
+         "name":"building_",
+         "score":0.97265625,
+         "detail":{  
+            "landmarks":[  
+               {  
+                  "name":"Forbidden City",
+                  "confidence":0.92013400793075562
+               }
+            ]
+```
 
 ## <a name="see-also"></a>Weitere Informationen
 

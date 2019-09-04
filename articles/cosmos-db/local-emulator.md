@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e07b448e73bf64a3c1ec257948b3d61415480f0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619842"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997888"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -254,11 +254,11 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Cosmos
 |EnableTableEndpoint | Aktiviert die Azure-Tabellen-API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Die für den Azure-Tabellenendpunkt zu verwendende Portnummer. Der Standardwert ist 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: Einzelne Portnummer.|
 | KeyFile | Liest den Autorisierungsschlüssel aus der angegebenen Datei. Verwenden Sie die Option „/GenKeyFile“, um eine Schlüsseldatei zu generieren. | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>: Der Pfad zur Datei. |
-| ResetDataPath | Entfernt rekursiv alle Dateien im angegebenen Pfad. Wenn Sie keinen Pfad angeben, wird standardmäßig „%LOCALAPPDATA%\CosmosDbEmulator“ verwendet. | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>: Dateipfad  |
+| ResetDataPath | Entfernt rekursiv alle Dateien im angegebenen Pfad. Wenn Sie keinen Pfad angeben, wird standardmäßig „%LOCALAPPDATA%\CosmosDbEmulator“ verwendet. | CosmosDB.Emulator.exe /ResetDataPath=\<path> | \<path\>: Dateipfad  |
 | StartTraces  |  Startet das Sammeln von Debugablaufverfolgungsprotokollen. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Beendet das Sammeln von Debugablaufverfolgungsprotokollen. | CosmosDB.Emulator.exe /StopTraces  | |
-|FailOnSslCertificateNameMismatch | Standardmäßig erneuert der Emulator sein selbstsigniertes SSL-Zertifikat, wenn das SAN des Zertifikats nicht den Domänennamen des Emulator-Hosts, die lokale IPv4-Adresse, den „localhost“ und „127.0.0.0.1“ enthält. Mit dieser Option schlägt der Emulator stattdessen beim Start fehl. Verwenden Sie dann die Option „/GenCert“, um ein neues, selbstsigniertes SSL-Zertifikat zu erstellen und zu installieren. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Generiert und installiert ein neues, selbstsigniertes SSL-Zertifikat. Optional mit einer kommagetrennten Liste zusätzlicher DNS-Namen für den Zugriff auf den Emulator über das Netzwerk. | CosmosDB.Emulator.exe /GenCert[ \<comma-separated list of additional dns-names\>] | |
+|FailOnSslCertificateNameMismatch | Standardmäßig erneuert der Emulator sein selbstsigniertes SSL-Zertifikat, wenn das SAN des Zertifikats nicht den Domänennamen des Emulator-Hosts, die lokale IPv4-Adresse, den „localhost“ und „127.0.0.0.1“ enthält. Mit dieser Option wird der Emulator stattdessen beim Start fehlschlagen. Verwenden Sie dann die Option „/GenCert“, um ein neues, selbstsigniertes SSL-Zertifikat zu erstellen und zu installieren. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | Generiert und installiert ein neues, selbstsigniertes SSL-Zertifikat. Optional mit einer kommagetrennten Liste zusätzlicher DNS-Namen für den Zugriff auf den Emulator über das Netzwerk. | CosmosDB.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: Optionale durch Trennzeichen getrennte Liste zusätzlicher DNS-Namen  |
 | DirectPorts |Gibt die für die direkte Konnektivität zu verwendenden Ports an. Die Standardwerte sind 10251, 10252, 10253, 10254. | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>: Durch Trennzeichen getrennte Liste mit vier Ports. |
 | Schlüssel |Autorisierungsschlüssel für den Emulator. Der Schlüssel muss die Base64-Codierung eines 64-Byte-Vektors sein. | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>: Der Schlüssel muss die Base64-Codierung eines 64-Bytes-Vektors sein.|
 | EnableRateLimiting | Gibt an, dass das Verhalten für die Anforderungsratenbegrenzung aktiviert ist. |CosmosDB.Emulator.exe /EnableRateLimiting | |
@@ -367,7 +367,7 @@ Eingabe über die Befehlszeile:
 
 md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator --rm
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 ```
 
 > [!NOTE]

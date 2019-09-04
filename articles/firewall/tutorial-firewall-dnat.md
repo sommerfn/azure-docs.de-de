@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/28/2018
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531163"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114634"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Tutorial: Filtern von eingehendem Datenverkehr per Azure Firewall-DNAT im Azure-Portal
 
@@ -62,8 +62,9 @@ Erstellen Sie zuerst die VNETs, und führen Sie anschließend das Peering dafür
 
      Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
      > [!NOTE]
-     > Die Mindestgröße des Subnetzes „AzureFirewallSubnet“ beträgt /26.
-10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
+     > Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
+10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
 11. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **Erstellen**.
 
 ### <a name="create-a-spoke-vnet"></a>Erstellen eines Spoke-VNET
@@ -151,9 +152,9 @@ Nachdem die Bereitstellung abgeschlossen ist, können Sie sich die private IP-Ad
    |Einstellung  |Wert  |
    |---------|---------|
    |NAME     |FW-DNAT-test|
-   |Abonnement     |\<Ihr Abonnement\>|
-   |Ressourcengruppe     |**Vorhandene verwenden**: RG-DNAT-Test |
-   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Subscription     |\<Ihr Abonnement\>|
+   |Resource group     |**Vorhandene verwenden**: RG-DNAT-Test |
+   |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: VN-Hub|
    |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 

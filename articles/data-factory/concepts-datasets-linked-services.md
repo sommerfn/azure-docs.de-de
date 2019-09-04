@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
-ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d0ee61ffde832923e54b4a0740e19b04c94db59
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866478"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127860"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -147,9 +147,7 @@ Beachten Sie folgende Punkte:
 - linkedServiceName verweist auf einen verknüpften Dienst vom Typ AzureSqlDatabase, der im nächsten JSON-Codeausschnitt definiert ist.
 
 ## <a name="dataset-type"></a>Datasettyp
-Es gibt viele verschiedene Typen von Datasets, je nach eingesetztem Datenspeicher. In der folgenden Tabelle finden Sie eine Liste der von Data Factory unterstützten Datenspeicher. Klicken Sie auf einen Datenspeicher, um Informationen zum Erstellen eines verknüpften Diensts und eines Datasets für diesen Datenspeicher zu erhalten.
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-dataflow.md)]
+Es gibt viele verschiedene Typen von Datasets, je nach eingesetztem Datenspeicher. Die Liste der von Data Factory unterstützten Datenspeicher finden Sie im Artikel [Übersicht über Connectors](connector-overview.md). Klicken Sie auf einen Datenspeicher, um Informationen zum Erstellen eines verknüpften Diensts und eines Datasets für diesen Datenspeicher zu erhalten.
 
 Im vorherigen Abschnitt ist im Beispiel der Typ des Datasets auf **AzureSqlTable** festgelegt. Ebenso ist für ein Azure-Blobdataset der Typ des Datasets auf **AzureBlob** festgelegt, wie im folgenden JSON-Code dargestellt:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 684491b546a0456d936ae199cdfb93180aa05043
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ea95b91d57255db8f638e600d57a98db314cd80f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607025"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113523"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
@@ -99,11 +99,22 @@ Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst we
 
 ## <a name="retention-of-metrics"></a>Aufbewahrung von Metriken
 Für die meisten Ressourcen in Azure werden Metriken für 93 Tage gespeichert. Es gibt einige Ausnahmen:
-  * **Klassische Gastbetriebssystemmetriken**. Klassische Gastbetriebssystemmetriken werden 14 Tage lang aufbewahrt. Für eine längere Aufbewahrung empfehlen wir die Verwendung neuer Gastbetriebssystemmetriken, die mit der [Windows-Diagnoseerweiterung (WAD)](../platform/diagnostics-extension-overview.md) und für virtuelle Linux-Computer mit dem [InfluxData Telegraf Agent](https://www.influxdata.com/time-series-platform/telegraf/) gesammelt werden.
-  * **Auf Application Insights-Protokollen basierende Metriken**. [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md) werden im Hintergrund in Protokollabfragen übersetzt. Ihre Aufbewahrung entspricht der Aufbewahrung von Ereignissen in den zugrunde liegenden Protokollen. Für die Application Insights-Ressourcen werden die Protokolle 90 Tage lang gespeichert. 
+
+**Gastbetriebssystemmetriken**
+-   **Klassische Gastbetriebssystemmetriken:** Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../platform/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Die Vermerkdauer für diese Metriken beträgt 14 Tage.
+-   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die von der Diagnose-Erweiterung für Windows (WAD) erfasst und an die [Azure Monitor-Senke](diagnostics-extension-overview.md#data-storage) gesendet werden. Alternativ können Sie auch über den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
+-   **Vom Log Analytics-Agent erfasste Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die vom Log Analytics-Agent erfasst und an einen Log Analytics-Arbeitsbereich gesendet werden. Die Vermerkdauer für diese Metriken beträgt 31 Tage. Sie kann auf bis zu 2 Jahre verlängert werden.
+
+**Auf Application Insights-Protokollen basierende Metriken**. 
+- [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md) werden im Hintergrund in Protokollabfragen übersetzt. Ihre Aufbewahrung entspricht der Aufbewahrung von Ereignissen in den zugrunde liegenden Protokollen. Für die Application Insights-Ressourcen werden die Protokolle 90 Tage lang gespeichert.
+
 
 > [!NOTE]
 > Sie können [Plattformmetriken für Azure Monitor-Ressourcen an einen Log Analytics-Arbeitsbereich senden](diagnostic-logs-stream-log-store.md), um Informationen zu langfristigen Trends zu erhalten.
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

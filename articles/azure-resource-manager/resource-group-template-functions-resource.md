@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650430"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095751"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -188,7 +188,7 @@ Geben Sie die Ressource entweder mithilfe des Ressourcennamens oder der [resourc
 
 Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die **list**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „list“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](resource-group-template-functions-logical.md#if)-Funktion.
 
-### <a name="example"></a>Beispiel
+### <a name="list-example"></a>list-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) zeigt, wie die Primär- und Sekundärschlüssel von einem Speicherkonto im Abschnitt „outputs“ zurückgegeben werden können. Es wird auch ein SAS-Token für das Speicherkonto zurückgegeben. 
 
@@ -284,7 +284,7 @@ Jeder unterstützte Typ wird im folgenden Format zurückgegeben:
 
 Die Arraysortierung der zurückgegebenen Werte ist dabei nicht garantiert.
 
-### <a name="example"></a>Beispiel
+### <a name="providers-example"></a>providers-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) zeigt die Nutzungsweise der Anbieterfunktion:
 
@@ -433,7 +433,7 @@ Beispiel:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` ist richtig `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` ist nicht richtig
 
-### <a name="example"></a>Beispiel
+### <a name="reference-example"></a>reference-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) stellt eine Ressource bereit und verweist auf diese Ressource.
 
@@ -600,7 +600,7 @@ Die Funktion „resourceGroup“ wird häufig verwendet, um Ressourcen am gleich
 
 Die Funktion „resourceGroup“ kann auch verwendet werden, um Tags aus einer Ressourcengruppe auf eine Ressource anzuwenden. Weitere Informationen finden Sie unter [Apply tags from resource group](resource-group-using-tags.md#apply-tags-from-resource-group) (Anwenden von Tags aus einer Ressourcengruppe).
 
-### <a name="example"></a>Beispiel
+### <a name="resource-group-example"></a>resourceGroup-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) gibt die Eigenschaften der Ressourcengruppe zurück.
 
@@ -737,7 +737,7 @@ Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen vir
 }
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="resource-id-example"></a>resourceId-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) gibt die Ressourcen-ID für ein Speicherkonto in der Ressourcengruppe zurück:
 
@@ -795,7 +795,7 @@ Die Funktion gibt das folgende Format zurück:
 }
 ```
 
-### <a name="example"></a>Beispiel
+### <a name="subscription-example"></a>subscription-Beispiel
 
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) zeigt die im Abschnitt „outputs“ abgerufene subscription-Funktion. 
 

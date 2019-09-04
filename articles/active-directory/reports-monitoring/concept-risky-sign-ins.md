@@ -15,20 +15,20 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629e7bf8ee7100b5927483ecfd4efa1d9223c151
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989921"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127419"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
-Azure Active Directory (Azure AD) erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung **Risikoereignis** erstellt. Weitere Details finden Sie unter [Azure Active Directory-Risikoereignisse](concept-risk-events.md). 
+Azure Active Directory (Azure AD) erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung **Risikoerkennung** erstellt. Weitere Details finden Sie unter [Azure Active Directory-Risikoerkennungen](concept-risk-events.md). 
 
 Sie können über das [Azure-Portal](https://portal.azure.com) auf die Sicherheitsberichte zugreifen. Wählen Sie dazu das Blatt **Azure Active Directory** aus, und navigieren Sie dann zum Abschnitt **Sicherheit**. 
 
-Es gibt zwei verschiedene Sicherheitsberichte, die basierend auf den Risikoereignissen erstellt werden:
+Zwei verschiedene Sicherheitsberichte werden basierend auf den Risikoerkennungen erstellt:
 
 - **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
 
@@ -36,7 +36,7 @@ Es gibt zwei verschiedene Sicherheitsberichte, die basierend auf den Risikoereig
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/10.png)
 
-Weitere Informationen zum Konfigurieren der Richtlinien, die diese Risikoereignisse auslösen, finden Sie unter [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md).  
+Weitere Informationen zum Konfigurieren der Richtlinien, die diese Risikoerkennungen auslösen, finden Sie unter [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md).  
 
 ## <a name="who-can-access-the-risky-sign-ins-report"></a>Wer hat Zugriff auf den Bericht über riskante Anmeldungen?
 
@@ -54,9 +54,9 @@ In allen Editionen von Azure AD stehen Sicherheitsberichte zu riskanten Anmeldun
 
 - In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie eine Liste mit riskanten Anmeldungen. 
 
-- Darüber hinaus können Sie mit der Edition **Azure Active Directory Premium 1** einige zugrunde liegende Risikoereignisse untersuchen, die für die einzelnen Berichte erkannt wurden. 
+- Darüber hinaus können Sie mit der Edition **Azure Active Directory Premium 1** einige zugrunde liegende Risikoerkennungen untersuchen, die für die einzelnen Berichte erkannt wurden. 
 
-- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
+- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoerkennungen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
 ## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Bericht „Riskante Anmeldungen“ für Azure AD Free und Azure AD Basic
 
@@ -90,26 +90,26 @@ In diesem Bericht stehen Ihnen auch folgende Optionen zur Verfügung:
 
 Der Bericht „Riskante Anmeldungen“ in Azure AD Premium enthält Folgendes:
 
-- Aggregierte Informationen zu den erkannten [Risikoereignistypen](concept-risk-events.md). Mit der **Azure AD Premium P1-Edition** werden erkannte Ereignisse, die nicht durch Ihre Lizenz abgedeckt sind, als Risikoereignis **Anmeldung mit erhöhtem Risiko erkannt** angezeigt. Die **Azure AD Premium P2-Edition** bietet die ausführlichsten Informationen zu allen zugrunde liegenden erkannten Ereignissen.
+- Aggregierte Informationen zu den erkannten [Risikoerkennungstypen](concept-risk-events.md). Bei der **Azure AD Premium P1-Edition** werden Erkennungen, die nicht durch Ihre Lizenz abgedeckt sind, als Risikoerkennung **Anmeldung mit erhöhtem Risiko erkannt** angezeigt. Die **Azure AD Premium P2-Edition** bietet die ausführlichsten Informationen zu allen zugrunde liegenden erkannten Ereignissen.
 
 - Option zum Herunterladen des Berichts
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/456.png)
 
-Wenn Sie ein Risikoereignis auswählen, erhalten Sie eine ausführliche Berichtsansicht für das Risikoereignis und haben die folgenden Optionen:
+Wenn Sie eine Risikoerkennung auswählen, erhalten Sie eine ausführliche Berichtsansicht für die Risikoerkennung und haben die folgenden Optionen:
 
 - Option zum Konfigurieren einer [Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)  
 
-- Überprüfen der Erkennungszeitachse für das Risikoereignis  
+- Überprüfen der Erkennungszeitachse für die Risikoerkennung  
 
-- Überprüfen einer Liste mit den Benutzern, für die dieses Risikoereignis erkannt wurde
+- Überprüfen einer Liste mit den Benutzern, für die diese Risikoerkennung erkannt wurde
 
-- Schließen Sie die Risikoereignisse manuell. 
+- Manuelles Schließen der Risikoerkennungen 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/457.png)
 
 > [!IMPORTANT]
-> In einigen Fällen finden Sie möglicherweise ein Risikoereignis ohne entsprechenden Anmeldungseintrag im [Bericht zu Anmeldeaktivitäten](concept-sign-ins.md). Dies liegt daran, dass Identity Protection das Risiko sowohl für **interaktive** als auch **nicht interaktive** Anmeldungen beurteilt, während der Bericht zu Anmeldeaktivitäten nur die interaktiven Anmeldungen anzeigt.
+> In einigen Fällen finden Sie möglicherweise eine Risikoerkennung ohne entsprechenden Anmeldungseintrag im [Bericht zu Anmeldeaktivitäten](concept-sign-ins.md). Dies liegt daran, dass Identity Protection das Risiko sowohl für **interaktive** als auch **nicht interaktive** Anmeldungen beurteilt, während der Bericht zu Anmeldeaktivitäten nur die interaktiven Anmeldungen anzeigt.
 
 Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansicht für diesen Benutzer mit folgenden Optionen:
 
@@ -119,12 +119,12 @@ Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansi
 
 - Verwerfen aller Ereignisse
 
-- Untersuchen der gemeldeten Risikoereignisse für den Benutzer 
+- Untersuchen der gemeldeten Risikoerkennungen für den Benutzer 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/324.png)
 
-Wählen Sie in der Liste ein Risikoereignis aus, um es zu untersuchen.  
-Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **Details** können Sie ein Risikoereignis manuell schließen oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
+Wählen Sie in der Liste eine Risikoerkennung aus, um sie zu untersuchen.  
+Das Blatt **Details** wird für die Risikoerkennung geöffnet. Auf dem Blatt **Details** können Sie eine Risikoerkennung manuell schließen oder eine manuell geschlossene Risikoerkennung wieder aktivieren. 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/325.png)
 
@@ -132,4 +132,4 @@ Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **De
 
 - [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md)
 - [Gewusst wie: Konfigurieren der Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)
-- [Risikoereignistypen](concept-risk-events.md)
+- [Risikoerkennungstypen](concept-risk-events.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640875"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990543"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
@@ -75,6 +75,6 @@ Die Überwachungsempfehlungen im Security Center helfen Ihnen dabei, Sicherheits
 ## <a name="next-steps"></a>Nächste Schritte
 Stellen Sie sicher, dass Sie einen Überwachungsprozess eingerichtet haben, in dessen Rahmen Sie regelmäßig die Empfehlungen im Security Center überprüfen, damit Sie sicherstellen können, dass Ihre Ressourcen im Laufe der Zeit geschützt bleiben.
 
-In diesem Szenario wurde veranschaulicht, wie Sicherheitsangriffe mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center abgewehrt werden können. Im [Szenario für eine Reaktion auf Vorfälle](security-center-incident-response.md) erfahren Sie, wie Sie einen Plan zur Reaktion auf Vorfälle bereitstellen, bevor es zu einem Angriff kommt.
+In diesem Szenario wurde veranschaulicht, wie Sicherheitsangriffe mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center abgewehrt werden können.
 
-Informationen, wie Sie auf Bedrohungen mittels [Reaktion auf Vorfälle](security-center-incident-response.md) reagieren.
+Unter [Verwalten von und Reagieren auf Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) erfahren Sie, wie Sie auf Bedrohungen reagieren.

@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 62a90e30b281a7a9b0d1369893cf58fb12086a0b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968183"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906986"
 ---
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-Für diese Schnellstartanleitung ist Folgendes erforderlich:
-
-* Python 2.7.x oder 3.x
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
@@ -23,10 +21,7 @@ Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues P
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -34,17 +29,25 @@ import json
 
 Der erste Kommentar weist Ihren Python-Interpreter, UTF-8-Codierung zu verwenden. Anschließend werden erforderliche Module importiert, um Ihren Abonnementschlüssel aus einer Umgebungsvariablen zu lesen, die HTTP-Anforderung und einen eindeutigen Bezeichner zu erstellen und die von der Textübersetzungs-API zurückgegebene JSON-Antwort zu verarbeiten.
 
-## <a name="set-the-base-url-and-path"></a>Festlegen der Basis-URL und des Pfads
+## <a name="set-the-endpoint-and-path"></a>Festlegen des Endpunkts und Pfads
 
-Der globale Endpunkt der Textübersetzung ist als die `base_url` festgelegt. `path` legt die `languages`-Route fest und gibt die gewünschte Version der API (Version 3) an.
+Dieses Beispiel liest den Textübersetzungs-Endpunkt aus der Umgebungsvariablen `TRANSLATOR_TEXT_ENDPOINT`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
+
+```python
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
+```
+
+Der globale Endpunkt der Textübersetzung ist als die `endpoint` festgelegt. `path` legt die `languages`-Route fest und gibt die gewünschte Version der API (Version 3) an.
 
 >[!NOTE]
 > Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
-constructed_url = base_url + path
+constructed_url = endpoint + path
 ```
 
 ## <a name="add-headers"></a>Hinzufügen von Headern

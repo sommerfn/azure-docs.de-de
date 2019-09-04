@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900158"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033276"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 Business Central
 
@@ -354,7 +354,7 @@ Die Option **Marketplace-Auflistungen** auf der Registerkarte **Testversion** ze
 
 ## <a name="supplemental-content"></a>Ergänzender Inhalt
 
-Auf dieser Seite können Sie zusätzliche erforderliche Informationen zu Ihrem Angebot bereitstellen.
+Auf dieser Seite können Sie zusätzliche Informationen zu Ihrem Angebot bereitstellen, um uns bei der Validierung Ihres Angebots zu helfen. Diese Informationen werden weder den Kunden angezeigt noch im Marketplace veröffentlicht.
 
 ### <a name="target-release"></a>Zielrelease
 
@@ -362,15 +362,15 @@ Geben Sie an, auf welches Release von Microsoft Dynamics Business Central Ihre L
 
 ### <a name="supported-editions"></a>Unterstützte Editionen
 
-Geben Sie an, ob Ihre Lösung die Essentials- und/oder Premium-Edition von Microsoft Dynamics 365 Business Central unterstützt. Hier muss mindestens ein Wert ausgewählt werden.
+Wenn Ihr Angebot die Premium Edition von Microsoft Dynamics 365 Business Central erfordert, wählen Sie nur **Premium** aus. Wählen Sie andernfalls sowohl **Essentials** als auch **Premium** aus.
 
 ### <a name="key-usage-scenario"></a>Wichtige Verwendungsszenarien
 
-Laden Sie eine `.pdf`-Datei hoch, in der die wichtigsten Verwendungsszenarien für Ihr Angebot in einem Dokument (PDF-Format) aufgelistet sind. Alle hier aufgeführten Szenarien können von unserem Validierungsteam überprüft werden, bevor wir Ihr Angebot für den Marketplace genehmigen.
+Sie müssen eine `.pdf`-Datei hochladen, in der die wichtigsten Verwendungsszenarien für Ihr Angebot in einem Dokument (PDF-Format) aufgelistet sind. Alle hier aufgeführten Szenarien können von unserem Validierungsteam überprüft werden, bevor wir Ihr Angebot für den Marketplace genehmigen.
 
 ### <a name="app-tests-automation"></a>App-Testautomatisierung
 
-Laden Sie auch eine **App-Testautomatisierungsdatei** (.app) hoch.
+Sie können hier auch optional eine **App-Testautomatisierungsdatei** (.app) hochladen.
 
 ### <a name="test-accounts"></a>Testkonten
 

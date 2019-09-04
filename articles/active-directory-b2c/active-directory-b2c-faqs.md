@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622268"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061378"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Häufig gestellte Fragen (FAQ)
 
@@ -43,11 +43,9 @@ Benutzerkonten für Anwendungen müssen immer über einen Registrierungsbenutzer
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welche Identitätsanbieter aus sozialen Netzwerken werden derzeit unterstützt? Welche sollen in Zukunft unterstützt werden?
 
-Wir unterstützen derzeit Facebook, Google+, LinkedIn, Amazon, Twitter (Vorschau), WeChat (Vorschau), Weibo (Vorschau) und QQ (Vorschau). Die Unterstützung für andere beliebte soziale Identitätsanbieter wird je nach Kundennachfrage hinzugefügt.
+Wir unterstützen derzeit verschiedene Identitätsanbieter sozialer Netzwerke wie Amazon, Facebook, GitHub (Vorschauversion), Google, LinkedIn, Microsoft-Konto (MSA), QQ (Vorschauversion), Twitter, WeChat (Vorschauversion) und Weibo (Vorschauversion). Die Unterstützung für andere beliebte soziale Netzwerke als Identitätsanbieter wird je nach Kundennachfrage jeweils geprüft.
 
-Azure AD B2C bietet auch zusätzliche Unterstützung für [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md). Dadurch können Entwickler eigene Richtlinien mit einem beliebigen Identitätsanbieter erstellen, der [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) oder SAML unterstützt.
-
-Machen Sie sich durch das [Starter Pack für benutzerdefinierte Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) mit benutzerdefinierten Richtlinien vertraut.
+Azure AD B2C unterstützt auch [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md). Dadurch können Sie eigene Richtlinien mit einem beliebigen Identitätsanbieter erstellen, der [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) oder SAML unterstützt. Machen Sie sich durch das [Starter Pack für benutzerdefinierte Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) mit benutzerdefinierten Richtlinien vertraut.
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Kann ich Bereiche konfigurieren, um von verschiedenen Identitätsanbietern aus sozialen Netzwerken mehr Informationen zu Endkunden zu erhalten?
 

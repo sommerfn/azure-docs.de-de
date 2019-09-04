@@ -4,26 +4,26 @@ description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: bb2f26a170bbd60eb927bd00f6def7d033fafee9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810834"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011858"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
-In diesem Artikel erfahren Sie, wie Sie über das [Cloud-Partnerportal](https://cloudpartner.azure.com/) ein öffentliches oder privates Angebot für verwaltete Dienste im [Azure Marketplace](https://azuremarketplace.microsoft.com) veröffentlichen und damit einem Kunden, der das Angebot kauft, das Onboarding für die delegierte Azure-Ressourcenverwaltung ermöglichen. 
+In diesem Artikel erfahren Sie, wie Sie über das [Cloud-Partnerportal](https://cloudpartner.azure.com/) ein öffentliches oder privates Angebot für verwaltete Dienste im [Azure Marketplace](https://azuremarketplace.microsoft.com) veröffentlichen und damit einem Kunden, der das Angebot kauft, das Onboarding für die delegierte Azure-Ressourcenverwaltung ermöglichen.
 
 > [!NOTE]
-> Sie benötigen ein gültiges [Konto im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), um diese Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos im Partner Center und die Registrierung beim kommerziellen Marketplace-Programm. Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
+> Sie benötigen ein gültiges [Konto in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), um diese Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos im Partner Center und die Registrierung beim kommerziellen Marketplace-Programm. Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
 >
 > Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen](onboard-customer.md).
 
-Das Veröffentlichen eines Angebots für verwaltete Dienste ähnelt dem Veröffentlichen eines beliebigen anderen Typs von Angebot im Azure Marketplace. Informationen zu diesem Prozess finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) und [Verwalten von Angeboten im Azure Marketplace und im AppSource-Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Das Veröffentlichen eines Angebots für verwaltete Dienste ähnelt dem Veröffentlichen eines beliebigen anderen Typs von Angebot im Azure Marketplace. Informationen zu diesem Prozess finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) und [Verwalten von Angeboten im Azure Marketplace und im AppSource-Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
 
 > [!IMPORTANT]
 > Jeder Plan in einem Angebot für verwaltete Dienste enthält einen Abschnitt mit **Manifestdetails**, in dem Sie die Azure Active Directory-Entitäten (Azure AD) in Ihrem Mandanten definieren, die Zugriff auf die delegierten Ressourcengruppen und/oder Abonnements für Kunden, die diesen Plan kaufen, erhalten sollen. Es ist wichtig, zu bedenken, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), die Sie hier einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Um verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuzuweisen, müssen Sie einen gesonderten privaten Plan veröffentlichen, der exklusiv für jeden Kunden ist.
@@ -89,7 +89,7 @@ Geben Sie im Abschnitt **Übersicht** Informationen für die folgenden Felder an
 |**Titel**     |  Der Titel des Angebots, meist der lange, formelle Name. Dieser Titel wird im Marketplace gut sichtbar angezeigt. Die maximale Länge beträgt 50 Zeichen. In den meisten Fällen entspricht dieser Wert dem **Namen**, den Sie im Abschnitt **Angebotseinstellungen** eingegeben haben.       |
 |**Zusammenfassung**     | Kurze Beschreibung des Zwecks oder der Funktion Ihres Angebots. Diese wird in der Regel unterhalb des Titels angezeigt. Die maximale Länge beträgt 100 Zeichen.        |
 |**Long Summary** (Lange Zusammenfassung)     | Eine längere Zusammenfassung von Zweck und Funktion Ihres Angebots. Die maximale Länge beträgt 256 Zeichen.        |
-|**Beschreibung**     | Weitere Informationen zu Ihrem Angebot. Die maximale Länge des Felds beträgt 3000 Zeichen, und es unterstützt einfache HTML-Formatierung.        |
+|**Beschreibung**     | Weitere Informationen zu Ihrem Angebot. Die maximale Länge des Felds beträgt 3000 Zeichen, und es unterstützt einfache HTML-Formatierung. Sie müssen die Begriffe „verwalteter Dienst“ oder „verwaltete Dienste“ in Ihrer Beschreibung verwenden.       |
 |**Marketing Identifier** (Marketingbezeichner)     | Ein eindeutiger, aussagekräftiger URL-Bezeichner. Dieser wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet *contoso* und Ihr Marketingbezeichner lautet *sampleApp*, dann ist die URL für Ihr Angebot im Azure Marketplace gleich *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
 |**Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion)     | Sie können zwischen 1 und 100 Abonnement-IDs hinzufügen. Die diesem Abonnement zugeordneten Kunden können das Angebot in Azure Marketplace anzeigen, bevor es live geschaltet wird. Wir schlagen vor, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie eine Vorschau anzeigen können, wie Ihr Angebot im Azure Marketplace angezeigt wird, bevor Sie es für Kunden verfügbar machen.  (Microsoft-Support- und -Technikteams können Ihr Angebot auch während dieses Vorschauzeitraums anzeigen.)   |
 |**Nützliche Links**     | URLs im Zusammenhang mit Ihrem Angebot, z. B. Dokumentation, Anmerkungen zu dieser Version, FAQs usw.        |
@@ -112,7 +112,7 @@ Das **Hero (815 x 290)** -Logo ist optional, wird aber empfohlen. Wenn Sie ein H
 - Der Hintergrund Ihres Hero-Logos darf weder schwarz noch weiß noch transparent sein. Stellen Sie sicher, dass Ihre Hintergrundfarbe nicht zu hell ist, da der eingebettete Text in Weiß angezeigt wird.
 - Nachdem Sie Ihr Angebot mit einem Hero-Symbol veröffentlicht haben, können Sie dieses nicht mehr entfernen (obwohl Sie es bei Bedarf mit einer anderen Version aktualisieren können).
 
-Im Abschnitt **Leadverwaltung** können Sie bei Bedarf das CRM-System auswählen, in dem Ihre Leads gespeichert werden sollen. 
+Im Abschnitt **Leadverwaltung** können Sie das CRM-System auswählen, in dem Ihre Leads gespeichert werden sollen. Beachten Sie, dass gemäß den [Zertifizierungsrichtlinien für verwaltete Dienste](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) eine **Leadzielgruppe** erforderlich ist.
 
 Geben Sie abschließend Ihre **Datenschutzrichtlinien-URL** und die **Nutzungsbedingungen** im Abschnitt **Rechtliche Hinweise** an. Sie können hier auch angeben, ob der [Standardvertrag](https://docs.microsoft.com/azure/marketplace/standard-contract) für dieses Angebot verwendet werden soll oder nicht.
 

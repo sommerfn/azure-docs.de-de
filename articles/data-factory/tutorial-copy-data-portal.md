@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5174b46bae5bbcc18f5a2575fb68cce1305507a3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a1a97e7521e9772b1d13049d42e67d7ac318fffc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826573"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907363"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in eine SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -172,6 +172,9 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 1. Wechseln Sie zur Registerkarte mit der Pipeline, und überprüfen Sie, ob für **Senkendataset** die Option **OutputSqlDataset** ausgewählt ist.
 
     ![Pipelineregisterkarte](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+
+Optional können Sie das Schema der Quelle dem entsprechenden Zielschema zuordnen. Befolgen Sie dazu die Anweisungen unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md).
+    
 ## <a name="validate-the-pipeline"></a>Überprüfen der Pipeline
 Klicken Sie auf der Symbolleiste auf **Überprüfen**, um die Pipeline zu überprüfen.
  

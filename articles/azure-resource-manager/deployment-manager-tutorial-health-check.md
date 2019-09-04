@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898138"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095829"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)
 
@@ -235,8 +235,8 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Integritätsprüfungsschritt in 
 
 Zur Vereinfachung des Tutorials stehen die Topologievorlage und die Artefakte an folgenden Orten zur Verfügung, damit Sie keine eigene Kopie vorbereiten müssen. Falls Sie eine eigene Kopie verwenden möchten, gehen Sie wie unter [Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)](./deployment-manager-tutorial.md) beschrieben vor.
 
-* Topologievorlage: \\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* Artefaktspeicher: \\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Topologievorlage: https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
+* Artefaktspeicher: https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
 Wählen Sie zum Bereitstellen der Topologie **Jetzt testen** aus, um Cloud Shell zu öffnen, und fügen Sie anschließend das PowerShell-Skript ein:
 
@@ -265,8 +265,8 @@ Vergewissern Sie sich im Azure-Portal, dass die Diensttopologie und die zugrunde
 
 Zur Vereinfachung des Tutorials steht die überarbeitete Rolloutvorlage an den folgenden Orten zur Verfügung, damit Sie keine eigene Kopie vorbereiten müssen. Falls Sie eine eigene Kopie verwenden möchten, gehen Sie wie unter [Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)](./deployment-manager-tutorial.md) beschrieben vor.
 
-* Topologievorlage: \\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* Artefaktspeicher: \\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Topologievorlage: https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
+* Artefaktspeicher: https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
 Verwenden Sie die URL mit dem Fehlerstatus, die Sie in [Erstellen eines Integritätsprüfungsdienst-Simulators](#create-a-health-check-service-simulator) erstellt haben. Informationen zu **managedIdentityID** finden Sie unter [Erstellen der benutzerseitig zugewiesenen verwalteten Identität](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
 

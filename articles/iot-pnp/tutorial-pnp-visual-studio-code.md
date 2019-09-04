@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Testen eines Azure IoT Plug & Play-Geräts (Vorschauversion) | Microsoft-Dokumentation
+title: Erstellen und Testen eines IoT Plug & Play-Geräts (Vorschauversion) | Microsoft-Dokumentation
 description: Für Geräteentwickler wird beschrieben, wie VS Code zum Erstellen und Testen eines neuen Gerätefunktionsmodells für ein IoT Plug & Play-Gerät (Vorschauversion) verwendet wird.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5a03eea84d0d68f06b432014fc4374e799914d67
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 10eb9655371177a52d1c1a5a9118665015076b35
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878721"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047968"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Tutorial: Erstellen und Testen eines Gerätefunktionsmodells mit Visual Studio Code
 
@@ -209,7 +209,7 @@ Erstellen Sie wie folgt eine Schnittstellendatei, mit der die Funktionen Ihres I
     }
     ```
 
-1. Speichern Sie die Datei.
+1. Speichern Sie die Datei .
 
 ### <a name="create-the-model-file"></a>Erstellen der Modelldatei
 
@@ -244,7 +244,7 @@ Erstellen Sie wie folgt eine Modelldatei, mit der die Schnittstellen angegeben w
 
     Mit dem Modell wird ein Gerät definiert, mit dem Ihre Schnittstelle **EnvironmentalSensor** und die Standardschnittstelle **DeviceInformation** implementiert werden.
 
-1. Speichern Sie die Datei.
+1. Speichern Sie die Datei .
 
 ### <a name="download-the-deviceinformation-interface"></a>Herunterladen der Schnittstelle „DeviceInformation“
 

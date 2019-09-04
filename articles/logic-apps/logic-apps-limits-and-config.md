@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900204"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099429"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -105,6 +105,8 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 ### <a name="integration-service-environment-ise"></a>Integrationsdienstumgebung (Integration Service Environment, ISE)
 
+Dies sind die Durchsatzgrenzwerte für die Premium-SKU:
+
 | NAME | Begrenzung | Notizen |
 |------|-------|-------|
 | Ausführungsgrenzwert für eine Basiseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Bietet ca. 4.000 Aktionsausführungen pro Minute, was rund 160 Mio. Aktionsausführungen pro Monat entspricht. | |
@@ -113,6 +115,9 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 ||||
 
 Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [bitten Sie das Logic Apps-Team](mailto://logicappsemail@microsoft.com) um Unterstützung im Hinblick auf Ihre Anforderungen.
+
+> [!NOTE]
+> Für die [Developer-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) sind keine veröffentlichten Grenzwerte vorhanden, da diese SKU keine Vereinbarung zum Service Level (SLA) oder Funktionen für das zentrale Hochskalieren aufweist. Verwenden Sie diese SKU nur für Experimente, Entwicklung und Tests, nicht jedoch für die Produktion oder Leistungstests.
 
 <a name="request-limits"></a>
 
@@ -181,10 +186,10 @@ Für jedes Azure-Abonnement gelten folgende Grenzwerte für das Integrationskont
 
 * Jede ISE, ob [Developer oder Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), ist auf insgesamt 5 Integrationskonten beschränkt:
 
-  | ISE SKU | Begrenzung |
-  |---------|-------|
-  | **Premium** | 5 insgesamt – nur [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts), nicht Free oder Basic |
-  | **Developer** | 5 insgesamt – Free (begrenzt auf 1), Standard oder beides, nicht Basic |
+  | ISE SKU | Grenzwerte für Integrationskonten |
+  |---------|----------------------------|
+  | **Premium** | Insgesamt fünf: nur [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts)-Konten, einschließlich eines kostenlosen Standard-Kontos. Es sind keine Free- oder Basic-Konten zulässig. |
+  | **Developer** | Insgesamt fünf: Kombination aus [Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (auf 1 Konto beschränkt) und [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) oder nur Standard-Konten. Es sind keine Basic-Konten zulässig. Verwenden Sie die [Developer-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) für Experimente, Entwicklung und Tests, jedoch nicht für die Produktion oder Leistungstests. |
   |||
 
 Zusätzliche Kosten fallen für Integrationskonten an, die Sie über die Integrationskonten hinaus hinzufügen, die in einer ISE enthalten sind. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Preismodell für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).

@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989838"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127653"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Bericht „Benutzer mit Risikomarkierung“ im Azure-Portal
 
-Azure Active Directory (Azure AD) erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung [Risikoereignis](concept-risk-events.md) erstellt.
+Azure Active Directory (Azure AD) erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung [Risikoerkennung](concept-risk-events.md) erstellt.
 
 Sie können über das [Azure-Portal](https://portal.azure.com) auf die Sicherheitsberichte zugreifen. Wählen Sie dazu das Blatt **Azure Active Directory** aus, und navigieren Sie dann zum Abschnitt **Sicherheit**. 
 
-Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
+Die erkannten Risikoerkennungen werden zum Berechnen folgender Werte verwendet:
 
 - **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
 
 - **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
 
-Weitere Informationen zum Konfigurieren der Richtlinien, die diese Risikoereignisse auslösen, finden Sie unter [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md). 
+Weitere Informationen zum Konfigurieren der Richtlinien, die diese Risikoerkennungen auslösen, finden Sie unter [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md). 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ In allen Editionen von Azure Active Directory stehen Sicherheitsberichte zu Benu
 
 - In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie eine Liste mit Benutzern mit Risikomarkierung. 
 
-- Darüber hinaus können Sie mit der Edition **Azure Active Directory Premium 1** einige zugrunde liegende Risikoereignisse untersuchen, die für die einzelnen Berichte erkannt wurden. 
+- Darüber hinaus können Sie mit der Edition **Azure Active Directory Premium 1** einige zugrunde liegende Risikoerkennungen untersuchen, die für die einzelnen Berichte erkannt wurden. 
 
-- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
+- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoerkennungen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Bericht „Gefährdete Benutzer“ für die Azure AD-Editionen „Free“ und „Basic“
@@ -73,7 +73,7 @@ Der Bericht „Benutzer mit Risikomarkierung“ in den Premium-Editionen von Azu
 
 - Eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden 
 
-- Aggregierte Informationen zu den erkannten [Risikoereignistypen](concept-risk-events.md)
+- Aggregierte Informationen zu den erkannten [Risikoerkennungstypen](concept-risk-events.md)
 
 - Option zum Herunterladen des Berichts
 
@@ -89,11 +89,11 @@ Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansi
 
 - Verwerfen aller Ereignisse
 
-- Untersuchen der gemeldeten Risikoereignisse für den Benutzer 
+- Untersuchen der gemeldeten Risikoerkennungen für den Benutzer 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/324.png)
 
-Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Blatt **Details** für dieses Risikoereignis zu öffnen. Auf dem Blatt **Details** können Sie ein Risikoereignis manuell schließen oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
+Um eine Risikoerkennung zu untersuchen, wählen Sie sie in der Liste aus, um das Blatt **Details** für diese Risikoerkennung zu öffnen. Auf dem Blatt **Details** können Sie eine Risikoerkennung manuell schließen oder eine manuell geschlossene Risikoerkennung wieder aktivieren. 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/325.png)
 

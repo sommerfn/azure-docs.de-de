@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d5213ff21d92bf811b05802e4cb2ffab9b9a29c6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5baa8c78ad581a00a3601706f31cf815359120c7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648523"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077047"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 
@@ -71,7 +71,7 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 ## <a name="create-a-linked-service"></a>Erstellen eines verknüpften Diensts
 In diesem Verfahren erstellen Sie einen verknüpften Dienst, der Ihr Azure-Speicherkonto mit der Data Factory verbindet. Der verknüpfte Dienste enthält die Verbindungsinformationen, die der Data Factory-Dienst zur Laufzeit zur Verbindungsherstellung verwendet.
 
-1. Klicken Sie auf **Verbindungen** und dann auf der Symbolleiste auf die Schaltfläche **Neu**. 
+1. Wählen Sie **Verbindungen** und anschließend auf der Symbolleiste die Schaltfläche **Neu** aus. (Die Schaltfläche **Verbindungen** befindet sich unten in der linken Spalte unter **Factory Resources** (Factory-Ressourcen)). 
 
 1. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 

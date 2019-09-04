@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 4159eed04ff1a4e81ea36a4d7f06f342a63fe367
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442029"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113699"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -83,7 +83,7 @@ Für Namen von HDInsight-Clustern gelten folgende Einschränkungen:
 - Zulässige Zeichen: a-z, 0–9, A-Z 
 - Max. Länge: 59
 - Reservierte Namen: apps
-- Der Name muss eindeutig sein.
+- Der Benennungsbereich des Clusters gilt überall in Azure und in allen Abonnements. Der Clustername muss somit weltweit eindeutig sein.
 - Die ersten 6 Zeichen müssen innerhalb eines VNET eindeutig sein.
 
 ## <a name="cluster-login-and-ssh-username"></a>Clusteranmeldung und SSH-Benutzername
@@ -256,6 +256,7 @@ Ein Beispiel für die Verwendung von zwei Clustertypen in einem virtuellen Azure
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Behandeln von Fehlern bei der Clustererstellung mit Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 - [Was sind HDInsight, das Apache Hadoop-Ökosystem und Hadoop-Cluster?](hadoop/apache-hadoop-introduction.md)
 - [Erste Schritte mit Apache Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Verwenden eines Windows-Computers mit Apache Hadoop in HDInsight](hdinsight-hadoop-windows-tools.md)

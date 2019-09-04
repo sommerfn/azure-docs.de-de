@@ -1,5 +1,5 @@
 ---
-title: Verbinden eines Azure IoT Plug & Play-Geräts (Vorschauversion) mit IoT Central | Microsoft-Dokumentation
+title: Verbinden eines IoT Plug & Play-Geräts (Vorschauversion) mit Azure IoT Central | Microsoft-Dokumentation
 description: Verwenden Sie ein Gerätefunktionsmodell, um einen Gerätecode zu generieren. Führen Sie anschließend den Gerätecode aus, und verfolgen Sie, wie das Gerät mit Ihrer IoT Central-Anwendung verbunden wird. Anschließend können Sie die automatisch generierten Ansichten verwenden.
 author: dominicbetts
 ms.author: dobett
@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881689"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048958"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts und Verbinden mit Ihrer IoT Central-Anwendung
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Funktionen eines [IoT Plug & Play](https://aka.ms/iot-pnp-docs)-Geräts beschrieben. IoT Central kann ein Gerätefunktionsmodell verwenden, um eine Gerätevorlage und Visualisierungen für ein Gerät zu erstellen, wenn das Gerät zum ersten Mal eine Verbindung herstellt. In dieser Schnellstartanleitung wird Folgendes beschrieben:
+Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Funktionen eines [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Geräts beschrieben. IoT Central kann ein Gerätefunktionsmodell verwenden, um eine Gerätevorlage und Visualisierungen für ein Gerät zu erstellen, wenn das Gerät zum ersten Mal eine Verbindung herstellt. In dieser Schnellstartanleitung wird Folgendes beschrieben:
 
 * Verwenden Sie Visual Studio Code, um mit einem Gerätefunktionsmodell ein IoT Plug & Play-Gerät zu erstellen.
 * Führen Sie den Gerätecode unter Windows aus, und verfolgen Sie, wie die Verbindung mit Ihrer IoT Central-Anwendung hergestellt wird.
@@ -31,7 +31,7 @@ Arbeiten Sie die Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwend
 
 Zum Durcharbeiten dieser Schnellstartanleitung müssen Sie auf Ihrem lokalen Computer die folgende Software installieren:
 
-* [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/): Stellen Sie sicher, dass Sie die Komponente **NuGet-Paket-Manager** und die Workload **Desktopentwicklung mit C++** aktivieren, wenn Sie Visual Studio installieren.
+* [Visual Studio (Community, Professional oder Enterprise):](https://visualstudio.microsoft.com/downloads/) Stellen Sie sicher, dass Sie die Komponente **NuGet-Paket-Manager** und die Workload **Desktopentwicklung mit C++** aktivieren, wenn Sie Visual Studio installieren.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/): Wählen Sie beim Installieren von **CMake** die Option **Add CMake to the system PATH** (CMake dem Systempfad hinzufügen).
 * [Visual Studio Code](https://code.visualstudio.com/).

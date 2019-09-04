@@ -1,7 +1,7 @@
 ---
-title: 'Python Schnellstart: Erstellen, Laden und Abfragen von Indizes mithilfe von REST-APIs – Azure Search'
-description: Erklärt, wie Sie einen Index erstellen, Daten laden und Abfragen mit Python, Jupyter Notebooks und der Azure Search REST API ausführen.
-ms.date: 07/11/2019
+title: 'Python-Schnellstart: Erstellen, Laden und Abfragen von Indizes mithilfe von REST-APIs – Azure Search'
+description: Hier wird erläutert, wie Sie mit Python, Jupyter Notebooks und der Azure Search-REST-API einen Index erstellen, Daten laden und Abfragen ausführen.
+ms.date: 08/28/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,14 +9,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 352d26a1f3e781f7dbb6e502caea44bdb45b398a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656790"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129405"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index mithilfe von Python-Jupyter Notebooks
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index in Python mithilfe von Jupyter Notebooks
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
@@ -72,6 +72,8 @@ Starten Sie in dieser Aufgabe ein Jupyter-Notebook, und stellen Sie sicher, dass
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
+   Wird der Verbindungsfehler `"Failed to establish a new connection"` angezeigt, vergewissern Sie sich, dass für „api-key“ ein primärer oder sekundärer Administratorschlüssel angegeben ist und dass alle vorangestellten und nachgestellten Zeichen (`?` und `/`) vorhanden sind.
+
 1. Formulieren Sie in der dritten Zelle die Anforderung. Diese GET-Anforderung ist auf die Indexsammlung Ihres Suchdiensts ausgerichtet und wählt die name-Eigenschaft vorhandener Indizes aus.
 
    ```python
@@ -93,7 +95,7 @@ Sofern Sie nicht das Portal verwenden, muss im Dienst ein Index vorhanden sein, 
 
 Erforderliche Elemente eines Index sind beispielsweise ein Name, Feldsammlung und ein Schlüssel. Mit der Feldsammlung wird die Struktur eines *Dokuments* definiert. Jedes Feld verfügt über Name, Typ und Attribute zur Bestimmung der Nutzung des Felds (z.B. Volltextsuche, Filterbarkeit oder Abrufbarkeit in Suchergebnissen). In einem Index muss eines der Felder vom Typ `Edm.String` als *Schlüssel* für die Dokumentidentität angegeben werden.
 
-Dieser Index trägt den Namen „hotels-quickstart“ und hat die Felddefinitionen, die Sie unten sehen. Es ist eine Teilmenge eines größeren [Hotelindexes](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON), der in anderen exemplarischen Vorgehensweisen verwendet wird. Wir haben ihn in diesem Schnellstart gekürzt.
+Dieser Index trägt den Namen „hotels-quickstart“ und hat die unten gezeigten Felddefinitionen. Es ist eine Teilmenge eines größeren [Hotelindexes](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON), der in anderen exemplarischen Vorgehensweisen verwendet wird. Wir haben ihn in diesem Schnellstart gekürzt.
 
 1. Fügen Sie in der nächsten Zelle das folgende Beispiel in einer Zelle ein, um das Schema bereitzustellen. 
 
@@ -232,7 +234,7 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
     }
     ```   
 
-2. Formulieren Sie die Anforderung in einer anderen Zelle. Diese POST-Anfrage zielt auf die Dokumentsammlung des Hotelschnellstart-Index ab und verschiebt die im vorherigen Schritt bereitgestellten Dokumente.
+2. Formulieren Sie die Anforderung in einer anderen Zelle. Diese POST-Anforderung zielt auf die Dokumentsammlung des Index „hotels-quickstart“ ab und verschiebt die im vorherigen Schritt bereitgestellten Dokumente.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -249,19 +251,19 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
 
 In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) abfragen.
 
-1. Geben Sie in einer Zelle einen Suchbegriff an, der eine leere Suche (search=*) ausführt und eine unrangierte Liste (search score = 1.0) beliebiger Dokumente zurückgibt. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. Wie strukturiert, liefert diese Anfrage eine komplette Dokumentstückliste und Werte zurück. Fügen Sie $count=true hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
+1. Geben Sie in einer Zelle einen Abfrageausdruck an, der eine leere Suche (search=*) ausführt und eine unsortierte Liste (search score = 1.0) beliebiger Dokumente zurückgibt. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. In einer strukturierten Ausgabe werden von der Abfrage eine vollständige Dokumentstruktur sowie Werte zurückgegeben. Fügen Sie „$count=true“ hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
 
    ```python
    searchstring = '&search=*&$count=true'
    ```
 
-1. Geben Sie in einer neuen Zelle das folgende Beispiel für die Suche nach den Begriffen "Hotels" und "WLAN" an. Fügen Sie $select hinzu, um festzulegen, welche Felder in die Suchergebnisse aufgenommen werden sollen.
+1. Geben Sie in einer neuen Zelle das folgende Beispiel für die Suche nach den Begriffen „Hotels“ und „WLAN“ an. Fügen Sie „$select“ hinzu, um festzulegen, welche Felder in die Suchergebnisse aufgenommen werden sollen.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-1. Formulieren Sie eine Anforderung in einer anderen Zelle. Diese GET-Anfrage zielt auf die Dokumentsammlung des Hotels-Schnellstartindex ab und fügt die im vorherigen Schritt angegebene Abfrage an.
+1. Formulieren Sie eine Anforderung in einer anderen Zelle. Diese GET-Anforderung zielt auf die Dokumentsammlung des Index „hotels-quickstart“ ab und fügt die im vorherigen Schritt angegebene Abfrage an.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
@@ -274,7 +276,7 @@ In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Du
 
     ![Durchsuchen eines Index](media/search-get-started-python/search-index.png "Durchsuchen eines Index")
 
-1. Probieren Sie einige andere Abfragebeispiele aus, um ein Gefühl für die Syntax zu bekommen. Sie können `searchstring` die Suchzeichenfolge durch die folgenden Beispiele ersetzen und die Suchanforderung dann erneut ausführen. 
+1. Probieren Sie einige andere Abfragebeispiele aus, um ein Gefühl für die Syntax zu bekommen. Sie können `searchstring` durch die folgenden Beispiele ersetzen und die Suchanforderung dann erneut ausführen. 
 
    Anwenden eines Filters: 
 

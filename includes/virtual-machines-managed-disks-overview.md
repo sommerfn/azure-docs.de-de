@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68319986"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70104251"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -77,7 +77,9 @@ Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwa
 
 ## <a name="managed-disk-snapshots"></a>Momentaufnahmen eines verwalteten Datenträgers
 
-Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine absturzkonsistente, schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen neuer verwalteter Datenträger verwendet werden. Sie werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt.  
+Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine absturzkonsistente, schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen neuer verwalteter Datenträger verwendet werden. 
+
+Momentaufnahmen werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt. Sie können die verwendete Größe Ihrer Momentaufnahmen im [Azure-Nutzungsbericht](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill) ansehen. Beispiel: Beträgt die verwendete Datengröße einer Momentaufnahme 10 GiB, wird im Nutzungsbericht als verbrauchte Menge Folgendes angezeigt: 10 GiB/(31 Tage · 24 Stunden) = 0,013441 GiB.
 
 Weitere Informationen dazu, wie Sie Momentaufnahmen mit verwalteten Datenträgern erstellen, finden Sie in den folgenden Ressourcen:
 

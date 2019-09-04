@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: b6876bf8210d47729ad8e765ccffe709a0fccacc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d2d4d568f53c426b063f3285cc8d3d510c3db440
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958693"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034621"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Tutorial: Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB durch die Verwendung einer Java-Anwendung zum Speichern von Schlüssel/Wert-Daten
 
@@ -32,16 +32,16 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein  [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)  erstellen, bevor Sie beginnen. 
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen. 
 
 * Beziehen Sie die aktuelle Version des [Java Development Kit (JDK)](https://aka.ms/azure-jdks). 
 
 * Führen Sie den [Download](https://maven.apache.org/download.cgi) und die [Installation](https://maven.apache.org/install.html) des binären [Maven](https://maven.apache.org/)-Archivs durch. 
-  - Unter Ubuntu können Sie  `apt-get install maven`  ausführen, um Maven zu installieren. 
+  - Unter Ubuntu können Sie `apt-get install maven` ausführen, um Maven zu installieren. 
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos 
 
-1. Melden Sie sich beim  [Azure-Portal](https://portal.azure.com/) an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
 2. Wählen Sie **Ressourcen erstellen** > **Datenbanken** > **Azure Cosmos DB** aus. 
 
@@ -49,11 +49,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
    |Einstellung   |Empfohlener Wert  |BESCHREIBUNG  |
    |---------|---------|---------|
-   |ID   |   Geben Sie einen eindeutigen Namen ein.    | Geben Sie einen eindeutigen Namen ein, der das Azure Cosmos-Konto identifiziert. <br/><br/>Da cassandra.cosmosdb.azure.com an die ID angefügt wird, die Sie bereitstellen, um Ihren Kontaktpunkt zu erstellen, sollten Sie eine eindeutige, aber identifizierbare ID verwenden.         |
+   |id   |   Geben Sie einen eindeutigen Namen ein.    | Geben Sie einen eindeutigen Namen ein, der das Azure Cosmos-Konto identifiziert. <br/><br/>Da cassandra.cosmosdb.azure.com an die ID angefügt wird, die Sie bereitstellen, um Ihren Kontaktpunkt zu erstellen, sollten Sie eine eindeutige, aber identifizierbare ID verwenden.         |
    |API    |  Cassandra   |  Die API bestimmt den Typ des zu erstellenden Kontos. <br/> Wählen Sie **Cassandra** aus, da Sie in diesem Artikel eine Datenbank mit breiten Spalten erstellen werden, die mit der CQL-Syntax (Cassandra Query Language) abgefragt werden kann.  |
-   |Abonnement    |  Ihr Abonnement        |  Wählen Sie das Azure-Abonnement, das Sie für dieses Azure Cosmos-Konto verwenden möchten, aus.        |
+   |Subscription    |  Ihr Abonnement        |  Wählen Sie das Azure-Abonnement, das Sie für dieses Azure Cosmos-Konto verwenden möchten, aus.        |
    |Ressourcengruppe   | Geben Sie einen Namen ein.    |  Wählen Sie **Neu erstellen** aus, und geben Sie dann einen neuen Ressourcengruppennamen für Ihr Konto ein. Der Einfachheit halber können Sie denselben Namen wie bei Ihrer ID verwenden.    |
-   |Standort    |  Wählen Sie die Region aus, die Ihren Benutzern am nächsten liegt.    |  Wählen Sie den geografischen Standort aus, an dem Ihr Azure Cosmos-Konto gehostet werden soll. Verwenden Sie einen Standort, der Ihren Benutzern am nächsten liegt, um ihnen einen schnellen Zugriff auf die Daten zu gewähren.    |
+   |Location    |  Wählen Sie die Region aus, die Ihren Benutzern am nächsten liegt.    |  Wählen Sie den geografischen Standort aus, an dem Ihr Azure Cosmos-Konto gehostet werden soll. Verwenden Sie einen Standort, der Ihren Benutzern am nächsten liegt, um ihnen einen schnellen Zugriff auf die Daten zu gewähren.    |
 
    ![Erstellen eines Kontos mit dem Portal](./media/create-cassandra-api-account-java/create-account.png)
 
@@ -63,9 +63,9 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Rufen Sie die Informationen der Verbindungszeichenfolge über das Azure-Portal ab, und fügen Sie sie in die Java-Konfigurationsdatei ein. Die Angabe der Verbindungszeichenfolge ermöglicht Ihrer App die Kommunikation mit Ihrer gehosteten Datenbank. 
 
-1. Wechseln Sie vom  [Azure-Portal](https://portal.azure.com/) zu Ihrem Azure Cosmos-Konto. 
+1. Wechseln Sie vom [Azure-Portal](https://portal.azure.com/) zu Ihrem Azure Cosmos-Konto. 
 
-2. Öffnen Sie den Bereich  **Verbindungszeichenfolge**.  
+2. Öffnen Sie den Bereich **Verbindungszeichenfolge**.  
 
 3. Kopieren Sie die Werte von **KONTAKTPUNKT**, **PORT**, **BENUTZERNAME**, und **PRIMÄRES KENNWORT**. Diese werden Sie in den nächsten Schritten benötigen.
 

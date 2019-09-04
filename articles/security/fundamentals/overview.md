@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8e8b4ed3e101a13d369fff7b47ecbb00f8c04a52
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129352"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -270,6 +270,7 @@ Web Application Firewall ist ein Feature von [Azure Application Gateway](../../a
 
 
 Eine zentrale Webanwendungs-Firewall zum Schutz vor Webangriffen vereinfacht die Sicherheitsverwaltung erheblich und verleiht der Anwendung eine bessere Sicherung gegen die Bedrohungen durch Angriffe. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendung separat zu sichern. Vorhandene Anwendungsgateways können problemlos in ein Anwendungsgateway mit Web Application Firewall konvertiert werden.
+
 ### <a name="traffic-manager"></a>Traffic Manager
 Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) ermöglicht die Verteilung von Benutzerdatenverkehr für Dienstendpunkte in unterschiedlichen Rechenzentren. Zu den von Traffic Manager unterstützten Dienstendpunkten zählen virtuelle Azure-Computer, Web-Apps und Clouddienste. Darüber hinaus kann Traffic Manager auch mit externen, Azure-fremden Endpunkten verwendet werden. Traffic Manager verwendet das Domain Name System (DNS), um Clientanforderungen auf der Grundlage einer [Datenverkehrsrouting-Methode](../../traffic-manager/traffic-manager-routing-methods.md) und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten.
 
@@ -295,18 +296,8 @@ Sie können die folgenden Diagnoseprotokoll-Kategorien für Netzwerksicherheitsg
 -   Regelzähler: Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Darüber hinaus sorgt Security Center für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden. Bei Netzwerkempfehlungen stehen Firewalls, Netzwerksicherheitsgruppen, das Konfigurieren von Regeln für den eingehenden Datenverkehr und vieles mehr im Mittelpunkt.
 
-Verfügbare Netzwerkempfehlungen:
-
--   [Firewall der nächsten Generation hinzufügen](../../security-center/security-center-add-next-generation-firewall.md): Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation eines Microsoft-Partners hinzufügen.
-
--   [Datenverkehr nur über NGFW routen](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only): Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss.
-
--   [Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](../../security-center/security-center-enable-network-security-groups.md) Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren.
-
--   [Zugriff über Endpunkt mit Internetzugriff einschränken](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) Empfiehlt, dass Sie Regeln für eingehenden Datenverkehr für NSGs konfigurieren.
-
+[Azure Security Center](../../security-center/security-center-intro.md) analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center [Empfehlungen](../../security-center/security-center-recommendations.md), die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Härten und Schützen Ihrer Ressourcen unterstützen.
 
 ## <a name="compute"></a>Compute
 
@@ -374,7 +365,7 @@ Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine P
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) ist ein Premium-Feature von Azure Active Directory, mit dem Sie Cloudanwendungen identifizieren können, die von den Mitarbeitern in Ihrer Organisation verwendet werden.
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) ist ein Sicherheitsdienst, der die Funktionen von Azure Active Directory zur Erkennung von Anomalien verwendet, um eine konsolidierte Ansicht zu Risikoereignissen und potenziellen Sicherheitslücken zu bieten, die sich auf die Identitäten Ihrer Organisation auswirken könnten.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) ist ein Sicherheitsdienst, der die Funktionen von Azure Active Directory zur Erkennung von Anomalien verwendet, um eine konsolidierte Ansicht zu erkannten Risiken und potenziellen Sicherheitslücken zu bieten, die sich auf die Identitäten Ihrer Organisation auswirken könnten.
 
 - Mit [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) können Sie virtuelle Azure-Computer in eine Domäne einbinden, ohne Domänencontroller bereitstellen zu müssen. Die Benutzer melden sich mit den Active Directory-Anmeldeinformationen ihres Unternehmens an diesen virtuellen Computern an und können nahtlos auf Ressourcen zugreifen.
 

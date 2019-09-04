@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477799"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126010"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "67477799"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Erste Schritte mit Azure Data Box Disk im Azure-Portal
+## <a name="get-started-with-azure-data-box-disk"></a>Erste Schritte mit Azure Data Box Disk 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ::: zone target="chromeless"
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie den Azure Data Box-Datenträger über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Entsperren der Datenträger sowie das Verbinden mit und Kopieren von Daten auf Datenträger, damit sie in Azure hochgeladen werden können.
+In diesem Leitfaden wird beschrieben, wie Sie Azure Data Box Disk über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Entsperren der Datenträger sowie das Verbinden mit Datenträgern und das Kopieren von Daten auf Datenträger, damit sie in Azure hochgeladen werden können.
 
 ::: zone-end
 
@@ -60,10 +60,11 @@ Melden Sie sich unter [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/a
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Voraussetzungen
+### <a name="prerequisites"></a>Voraussetzungen
 
 - Sie haben Ihre Bestellung für Data Box Disk hier erteilt: [Tutorial: Bestellen von Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Sie haben Ihre Datenträger erhalten, und der Auftragsstatus im Portal wurde aktualisiert und in **Übermittelt** geändert.
+- Sie haben die Anzahl der erhaltenen Datenträger überprüft und sichergestellt, dass Sie ein Verbindungskabel pro Datenträger besitzen.
 - Sie haben einen Clientcomputer, von dem Sie die Daten kopieren können. Ihr Client-Computer muss folgende Voraussetzungen erfüllen:
 
     - Über ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) verfügen.

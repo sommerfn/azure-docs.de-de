@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515286"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035721"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -136,7 +136,7 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |Kopieren von Datenbanken|Erstellen von Datenbanken als Kopie.<br>Exportieren in eine BACPAC-Datei.|
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|
 |Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags.<br>Ändern der Mindest- und Höchstwerte für virtuelle Kerne oder der Verzögerung für das automatische Anhalten.|
-|SQL Server Management Studio (SSMS)|Durch Verwendung von SSMS Version 18 und Öffnen eines neuen Abfragefensters für eine Datenbank auf dem Server wird jede automatisch angehaltene Datenbank auf dem betreffenden Server fortgesetzt. Dieses Verhalten tritt nicht auf, wenn SSMS Version 17.9.1 verwendet wird und IntelliSense deaktiviert ist.|
+|SQL Server Management Studio (SSMS)|Durch Verwenden von SSMS-Versionen vor 18.1 und Öffnen eines neuen Abfragefensters für eine Datenbank auf dem Server wird jede automatisch angehaltene Datenbank auf dem betreffenden Server fortgesetzt. Dieses Verhalten tritt nicht auf, wenn mindestens Version 18.1 von SSMS verwendet wird.|
 
 Das automatische Fortsetzen wird ebenfalls während der Bereitstellung bestimmter Dienstupdates ausgelöst, die erfordern, dass die Datenbank online ist.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3524f34773f4627dff478ee7cc9cbff9f674bf8e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931766"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113561"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -164,7 +164,8 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 > [!NOTE]
 >1. Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
->2. Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
+>2. Diese Funktion kann nicht auf Attribute angewandt werden, die über eine Rangfolge für den Abgleich verfügen.  
+>3. Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
 
 
 **Parameter:**<br> 

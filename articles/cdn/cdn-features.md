@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/05/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e34fbe200420fef1653e21bb44ac2f7e0de90fb7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593867"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127920"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Vergleichen von Azure CDN-Produktfeatures
 
-Azure Content Delivery Network (CDN) beinhaltet vier Produkte: **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**. Informationen zur Migration eines Profils vom Typ **Azure CDN Standard von Verizon** zu **Azure CDN Premium von Verizon** finden Sie unter [Migrieren eines Azure CDN-Profils von Verizon Standard zu Verizon Premium](cdn-migrate.md).
+Azure Content Delivery Network (CDN) beinhaltet vier Produkte: **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**. Informationen zur Migration eines Profils vom Typ **Azure CDN Standard von Verizon** zu **Azure CDN Premium von Verizon** finden Sie unter [Migrieren eines Azure CDN-Profils von Verizon Standard zu Verizon Premium](cdn-migrate.md). Es gibt zwar eine Upgrademöglichkeit von Verizon Standard auf Verizon Premium, zwischen anderen Produkten ist jedoch derzeit keine Konvertierung möglich.
 
 In der folgenden Tabelle werden die Features der einzelnen Produkte gegenübergestellt.
 

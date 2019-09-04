@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228404"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905221"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -246,7 +246,6 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
 Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, besteht keine Notwendigkeit den MMA-Agent zu installieren. Die Dienstzuordnung wird in den MMA von Operations Manager integriert, um die erforderlichen Abhängigkeitsdaten zu erfassen. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) Der Abhängigkeits-Agent muss installiert werden.
 
-
 ### <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 
 1. Doppelklicken Sie zum Installieren des Abhängigkeits-Agents auf einem Windows-Computer auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.
@@ -254,9 +253,11 @@ Bei Computern, die von System Center Operations Manager 2012 R2 oder höher übe
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssysteme [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) und [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).
-- [Erfahren Sie mehr](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
+- Erfahren Sie mehr zur [Unterstützung des Dependency-Agents](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) für die Betriebssysteme Windows und Linux.
+- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 
+>[!NOTE]
+> Der angegebene Artikel zu Azure Monitor für VMs enthält eine Übersicht über die Systemvoraussetzungen und die Methoden zur Bereitstellung des Dependency-Agents und gilt auch für die Dienstzuordnungslösung.
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Erstellen einer Gruppe mit Abhängigkeitszuordnung
 

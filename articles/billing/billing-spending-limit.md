@@ -9,18 +9,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/28/2019
 ms.author: banders
-ms.openlocfilehash: fb43f29827309fc8986ee6b4653f5edf303cc21d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1324b60de05805cd409975358ff78e5b2b27eef1
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490609"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114451"
 ---
 # <a name="azure-spending-limit"></a>Azure-Ausgabenlimit
 
-Mit dem Ausgabenlimit in Azure wird verhindert, dass Sie Ihr Guthaben überschreiten. Für alle neuen Kunden, die sich für eine Azure-Testversion oder -Angebote registrieren, die Guthaben für mehrere Monate vorsehen, ist das Ausgabenlimit standardmäßig aktiviert. Das Ausgabenlimit beträgt 0 $. Es kann nicht geändert werden. Für Abonnements in Plänen mit Prepaidtarifen oder nutzungsbasierter Bezahlung ist das Ausgabenlimit nicht verfügbar. Eine vollständige Liste mit Azure-Angeboten sowie Informationen zur Verfügbarkeit des Ausgabenlimits finden Sie [hier](https://azure.microsoft.com/support/legal/offer-details/).
+Mit dem Ausgabenlimit in Azure wird verhindert, dass Sie Ihr Guthaben überschreiten. Für alle neuen Kunden, die sich für eine Azure-Testversion oder -Angebote registrieren, die Guthaben für mehrere Monate vorsehen, ist das Ausgabenlimit standardmäßig aktiviert. Das Ausgabenlimit beträgt 0 USD und kann nicht geändert werden. Beispielsweise kann das Ausgabenlimit nicht in 100 USD geändert werden. Sie können das Ausgabenlimit jedoch entfernen. Sie haben also entweder keine Beschränkung, oder Sie haben ein Limit von null, das Sie an den meisten Ausgaben hindert. Für Abonnements in Plänen mit Prepaidtarifen oder nutzungsbasierter Bezahlung ist das Ausgabenlimit nicht verfügbar. Eine vollständige Liste mit Azure-Angeboten sowie Informationen zur Verfügbarkeit des Ausgabenlimits finden Sie [hier](https://azure.microsoft.com/support/legal/offer-details/).
 
 ## <a name="reaching-a-spending-limit"></a>Erreichen eines Ausgabenlimits
 

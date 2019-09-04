@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 0efd11ef4e9dda2c522e145bf5cb942998d59e53
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573969"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018778"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB 
 
@@ -76,7 +76,9 @@ Wie in der Einleitung bereits erwähnt, bietet der Änderungsfeedprozessor eine 
 
 Sind diese drei Bedingungen erfüllt, verteilt der Änderungsfeedprozessor unter Verwendung eines Algorithmus für eine gleichmäßige Verteilung alle Leases im Leasecontainer auf alle aktiven Instanzen und parallelisiert das Computing. Da sich eine Lease immer nur im Besitz einer einzelnen Instanz befinden kann, ist die maximale Anzahl von Instanzen gleich der Leaseanzahl.
 
-Die Instanzen können vergrößert und verkleinert werden, und der Änderungsfeedprozessor passt die Last durch entsprechende Verteilung dynamisch an.
+Die Anzahl der Instanzen kann sich erhöhen und verringern. Der Änderungsfeedprozessor passt die Last durch entsprechende Verteilung dynamisch an.
+
+Außerdem lässt sich der Änderungsfeedprozessor dynamisch an Containerskalierungen aufgrund von Durchsatz- oder Speichererhöhungen anpassen. Bei zunehmender Größe des Containers verarbeitet der Änderungsfeedprozessor diese Szenarien transparent, indem die Leases dynamisch erhöht und die neuen Leases auf vorhandene Instanzen verteilt werden.
 
 ## <a name="change-feed-and-provisioned-throughput"></a>Änderungsfeed und bereitgestellter Durchsatz
 
@@ -85,7 +87,7 @@ Ihnen werden die genutzten Anforderungseinheiten (Request Units, RUs) in Rechnun
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [Verwendungsbeispiele auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Zusätzliche Beispiele auf GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Nächste Schritte

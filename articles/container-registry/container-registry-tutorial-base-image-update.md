@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 23b0990be7f215d9cc443c5549ae38de86826d17
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68310517"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114613"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
@@ -72,7 +72,16 @@ Wenn ein Basisimage aktualisiert wird, müssen sämtliche darauf basierende Cont
 
 ### <a name="tasks-triggered-by-a-base-image-update"></a>Aufgaben, die durch eine Aktualisierung des Basisimages ausgelöst werden
 
-* Derzeit erkennt eine ACR-Aufgabe bei Imageerstellungen aus einem Dockerfile Abhängigkeiten von Basisimages in der gleichen Azure-Containerregistrierung, einem öffentlichen Docker Hub-Repository oder einem öffentlichen Repository in Microsoft Container Registry. Wenn sich das in der Anweisung `FROM` angegebene Basisimage in einem dieser Speicherorte befindet, fügt die ACR-Aufgabe einen Hook hinzu, um sicherzustellen, dass das Image nach jeder Aktualisierung seiner Basis neu erstellt wird.
+* Bei Imagebuilds aus einem Dockerfile erkennt ein ACR-Task Abhängigkeiten von Basisimages an den folgenden Speicherorten:
+
+  * Dieselbe Azure-Containerregistrierung, in der der Task ausgeführt wird
+  * Eine andere Azure-Containerregistrierung in derselben Region 
+  * Ein öffentliches Repository in Docker Hub 
+  * Ein öffentliches Repository in Microsoft Container Registry
+
+   Wenn sich das in der Anweisung `FROM` angegebene Basisimage in einem dieser Speicherorte befindet, fügt die ACR-Aufgabe einen Hook hinzu, um sicherzustellen, dass das Image nach jeder Aktualisierung seiner Basis neu erstellt wird.
+
+* Derzeit verfolgt ein ACR-Task nur Basisimageaktualisierungen für Anwendungsimages (*Runtime*) nach. Basisimageaktualisierungen für Zwischenimages (*Buildzeit*), die in mehrstufigen Dockerfiles verwendet werden, werden nicht nachverfolgt.  
 
 * Wenn Sie eine ACR-Aufgabe mit dem Befehl [az acr task create][az-acr-task-create] erstellen, wird sie standardmäßig für die Auslösung bei einer Aktualisierung des Basisimages *aktiviert*. Das heißt, die `base-image-trigger-enabled`-Eigenschaft wird auf TRUE festgelegt. Wenn Sie dieses Verhalten in einer Aufgabe deaktivieren möchten, ändern Sie den Wert der Eigenschaft in FALSE. Führen Sie beispielsweise den folgenden Befehl [az acr task update][az-acr-task-update] aus:
 
@@ -82,7 +91,7 @@ Wenn ein Basisimage aktualisiert wird, müssen sämtliche darauf basierende Cont
 
 * Damit eine ACR-Aufgabe die Abhängigkeiten eines Containerimages (einschließlich des Basisimages) bestimmen und nachverfolgen kann, müssen Sie zunächst die Aufgabe **mindestens einmal** auslösen. Lösen Sie z. B. die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus.
 
-* Damit eine Aufgabe bei der Aktualisierung des Basisimages ausgelöst wird, muss das Basisimage ein *stabiles* Tag enthalten, z. B. `node:9-alpine`. Dieses Tagging ist typisch für ein Basisimage, das mit Betriebssystem- und Frameworkpatches auf eine aktuelle stabile Version aktualisiert wird. Wenn das Basisimage mit einem neuen Versionstag aktualisiert wird, wird keine Aufgabe ausgelöst. Weitere Informationen zur Imagemarkierung finden Sie in der [Anleitung zu bewährten Methoden](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/). 
+* Damit eine Aufgabe bei der Aktualisierung des Basisimages ausgelöst wird, muss das Basisimage ein *stabiles* Tag enthalten, z. B. `node:9-alpine`. Dieses Tagging ist typisch für ein Basisimage, das mit Betriebssystem- und Frameworkpatches auf eine aktuelle stabile Version aktualisiert wird. Wenn das Basisimage mit einem neuen Versionstag aktualisiert wird, wird keine Aufgabe ausgelöst. Weitere Informationen zur Imagemarkierung finden Sie in der [Anleitung zu bewährten Methoden](container-registry-image-tag-version.md). 
 
 ### <a name="base-image-update-scenario"></a>Aktualisierungsszenario für das Basisimage
 
@@ -217,7 +226,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 Die Ausgabe sieht in etwa wie folgt aus. Als „TRIGGER“ (Auslöser) für den zuletzt ausgeführten Build sollte „Image Update“ (Imageaktualisierung) angegeben sein, was bedeutet, dass die Aufgabe durch die Schnellaufgabe des Basisimages ausgelöst wurde.
 
 ```console
-$ az acr task list-builds --registry $ACR_NAME --output table
+$ az acr task list-runs --registry $ACR_NAME --output table
 
 Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------

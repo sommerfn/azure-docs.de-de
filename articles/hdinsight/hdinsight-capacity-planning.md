@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786500"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114304"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -94,7 +94,7 @@ Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Clu
 
 ### <a name="isolate-cluster-job-errors"></a>Isolieren von Clusterauftragsfehlern
 
-Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Um das Problem zu isolieren, versuchen Sie, verteilte Tests durchzuführen, indem Sie gleichzeitig mehrere Aufträge auf einem Cluster mit einem einzelnen Knoten ausführen und diesen Ansatz dann zur gleichzeitigen Ausführung mehrerer Aufträge auf Clustern mit mehreren Knoten erweitern. Um einen Einzelknoten-HDInsight-Cluster in Azure zu erstellen, verwenden Sie die Option *erweitert*.
+Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Um das Problem zu isolieren, führen Sie verteilte Tests durch, indem Sie gleichzeitig mehrere Aufträge in einem Cluster mit einem einzelnen Workerknoten ausführen. Erweitern Sie diesen Ansatz dann auf die gleichzeitige Ausführung mehrerer Aufträge auf Clustern mit mehreren Knoten. Um einen HDInsight-Cluster mit einem einzelnen Knoten in Azure zu erstellen, verwenden Sie die Option *Benutzerdefiniert(Größe,Einstellungen,Apps)* , und verwenden Sie für die Bereitstellung eines neuen Clusters im Portal den Wert „1“ für *Anzahl von Workerknoten* im Abschnitt **Clustergröße**.
 
 Sie können auch eine Einzelknoten-Entwicklungsumgebung auf dem lokalen Computer installieren und die Lösung dort testen. Hortonworks bietet für Hadoop-basierten Lösungen eine für anfängliche Entwicklung, Proof of Concept und Testen hilfreiche lokale Einzelknoten-Entwicklungsumgebung. Weitere Informationen finden Sie unter [Starten Sie mit Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624264"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068844"
 ---
 # <a name="what-are-the-speech-services"></a>Was sind Speech-Dienste?
 
@@ -84,12 +84,10 @@ Auf GitHub steht Beispielcode für jeden der Azure Speech-Dienste zur Verfügun
 
 Die Azure Speech-Dienste funktionieren bestens mit integrierten Modellen, können auf Wunsch aber auch speziell für Ihr Produkt oder Ihre Umgebung angepasst und optimiert werden. Die Anpassungsoptionen reichen von der Feinabstimmung des Akustikmodells bis hin zu individuellen Voicefonts für Ihre Marke. Nachdem Sie ein benutzerdefiniertes Modell erstellt haben, können Sie es mit allen Azure Speech-Diensten verwenden.
 
-| Spracherkennungsdienst | Modell | BESCHREIBUNG |
-|----------------|-------|-------------|
-| Spracherkennung | [Akustikmodell](how-to-customize-acoustic-models.md) | Erstellen Sie ein benutzerdefiniertes Akustikmodell für Anwendungen, Tools oder Geräte, die in speziellen Umgebungen (etwa in einem Auto oder in einer Produktionshalle) verwendet werden, in denen jeweils besondere Aufzeichnungsverhältnisse herrschen. Beispiele wären etwa Sprecher mit Akzent, bestimmte Hintergrundgeräusche oder die Verwendung eines bestimmten Mikrofons für die Aufzeichnung. |
-| | [Sprachmodell](how-to-customize-language-model.md) | Erstellen Sie ein benutzerdefiniertes Sprachmodell, um die Transkription von spezifischem Vokabular und spezifischer Grammatik (beispielsweise aus dem Medizin- oder IT-Bereich) zu verbessern. |
-| | [Aussprachemodell](how-to-customize-pronunciation.md) | Durch ein benutzerdefiniertes Aussprachemodell können Sie die phonetische Form und Darstellung eines Worts oder Begriffs definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist zu Beginn lediglich eine Aussprachedatei – eine einfache TXT-Datei. |
-| Sprachsynthese | [Voicefont](how-to-customize-voice-font.md) | Mithilfe benutzerdefinierter Voicefonts können Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen. Für den Einstieg reicht bereits eine kleine Datenmenge aus. Je mehr Daten Sie bereitstellen, desto natürlicher und menschenähnlicher klingt Ihr Voicefont. |
+| Spracherkennungsdienst | Plattform | BESCHREIBUNG |
+|----------------|-------------|-------------|
+| Spracherkennung | [Custom Speech Service](https://aka.ms/customspeech) | Passen Sie Spracherkennungsmodelle an Ihre Anforderungen und verfügbaren Daten an. Überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. |
+| Sprachsynthese | [Custom Voice](https://aka.ms/customvoice) | Erstellen Sie mit Ihren verfügbaren Sprachdaten eine erkennbare, einzigartige Stimme für Ihre Sprachsynthese-Apps. Sie können die Sprachausgaben weiter optimieren, indem Sie eine Reihe von Sprachparametern anpassen. |
 
 ## <a name="reference-docs"></a>Referenz
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdbdd0253478200d39501444ae649b87b77e65a4
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 928900c526ec0e77f84c621f630ac5894cdb2d23
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509053"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125657"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
 
@@ -34,7 +34,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 
 - **Zugriff auf eine Azure AD Premium P2-Edition**: Der bedingte Zugriff ist zwar eine Funktion von Azure AD Premium P1. Dennoch benötigen Sie eine P2-Edition, da für das Szenario in dieser Schnellstartanleitung Identity Protection erforderlich ist.
 - **Identity Protection**: Für das Szenario in dieser Schnellstartanleitung muss Identity Protection aktiviert sein. Informationen zum Aktivieren von Identity Protection finden Sie unter [Aktivieren von Azure Active Directory Identity Protection](../identity-protection/enable.md).
-- **Tor Browser**: Mit dem [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) können Sie Ihre Privatsphäre online schützen. Identity Protection erkennt eine Anmeldung von einem Tor Browser als Anmeldungen von anonymen IP-Adressen. Anmeldungen dieser Art weisen eine mittlere Risikostufe auf. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](../reports-monitoring/concept-risk-events.md).  
+- **Tor Browser**: Mit dem [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) können Sie Ihre Privatsphäre online schützen. Identity Protection erkennt eine Anmeldung von einem Tor Browser als Anmeldungen von anonymen IP-Adressen. Anmeldungen dieser Art weisen eine mittlere Risikostufe auf. Weitere Informationen finden Sie unter [Azure Active Directory risk detections](../reports-monitoring/concept-risk-events.md) (Azure Active Directory-Risikoerkennungen).  
 - **Ein Testkonto mit dem Namen Alain Charon**: Informationen zum Erstellen eines Testkontos finden Sie unter [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Testen Ihrer Anmeldung
@@ -48,7 +48,7 @@ Mit diesem Schritt soll sichergestellt werden, dass Sie mit dem Tor Browser übe
 
 ## <a name="create-your-conditional-access-policy"></a>Erstellen Ihrer Richtlinie für bedingten Zugriff
 
-Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor Browser verwendet, um ein erkanntes Risikoereignis vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Dieses Risikoereignis weist eine mittlere Risikostufe auf. Reagieren Sie auf dieses Risikoereignis, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. In einer Produktionsumgebung sollten Sie die Bedingung für das Anmelderisiko entweder auf „Hoch“ oder auf „Mittel“ und „Hoch“ festlegen.
+Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor-Browser verwendet, um eine erkannte Risikoerkennung vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Diese Risikoerkennung weist eine mittlere Risikostufe auf. Reagieren Sie auf diese Risikoerkennung, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. In einer Produktionsumgebung sollten Sie die Bedingung für das Anmelderisiko entweder auf „Hoch“ oder auf „Mittel“ und „Hoch“ festlegen.
 
 In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedingten Zugriff erstellen. Legen Sie in Ihrer Richtlinie Folgendes fest:
 

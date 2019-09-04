@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616344"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992109"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning
 
@@ -26,7 +26,7 @@ Azure Machine Learning-Datasets ermöglichen Folgendes:
 
 * **Aufbewahren einer einzelnen Datenkopie in Ihrem Speicher**, auf die durch Datasets verwiesen wird. 
 
-* **Müheloses Zugreifen auf Daten während des Modelltrainings**, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssen.
+* **Müheloses Zugreifen auf Daten während des Modelltrainings** ohne Berücksichtigung von Verbindungszeichenfolgen oder Datenpfaden
 
 * **Freigeben von Daten und Zusammenarbeiten** mit anderen Benutzern.
 
@@ -44,13 +44,14 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 > Einige Dataset-Klassen (Vorschauversion) verfügen über Abhängigkeiten vom [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)-Paket. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux, Ubuntu, Fedora und CentOS.
 
 ## <a name="dataset-types"></a>Datasettypen
-Datasets werden in verschiedene Typen eingeteilt, je nachdem, wie Benutzer Sie beim Training nutzen. Zurzeit unterstützen wir TabularDatasets, die Daten in einem Tabellenformat darstellen, indem sie die bereitgestellte Datei oder Liste der Dateien analysieren. Dadurch erhalten Sie die Möglichkeit, die Daten in einem pandas-DataFrame zu materialisieren. TabularDataset kann aus CSV, TSV, parquet-Dateien, SQL-Abfrageergebnissen usw. erstellt werden. Eine vollständige Liste finden Sie in unserer Dokumentation.
+
+Datasets werden in verschiedene Typen eingeteilt, je nachdem, wie Benutzer Sie beim Training nutzen. Zurzeit unterstützen wir [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py), die Daten in einem Tabellenformat darstellen, indem sie die bereitgestellte Datei oder Liste von Dateien analysieren. Dadurch erhalten Sie die Möglichkeit, die Daten in einem pandas-DataFrame zu materialisieren. Ein `TabularDataset`-Objekt kann aus CSV-, TSV- oder parquet-Dateien, SQL-Abfrageergebnissen usw. erstellt werden. Eine vollständige Liste finden Sie in unserer Dokumentation.
 
 Weitere Informationen zu bevorstehenden API-Änderungen finden Sie unter [Was ist Azure Machine Learning Service?](https://aka.ms/tabular-dataset). 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets 
 
-Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Die Daten bleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
+Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
 
 Damit Azure Machine Learning Service auf die Daten zugreifen kann, müssen Datasets aus Pfaden in [Azure-Datenspeichern](how-to-access-data.md) oder öffentlichen Web-URLs erstellt werden.
 
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>Zugreifen auf Ihre Daten während des Trainings
 
-Auf registrierte Datasets kann in Computeclustern wie Azure Machine Learning Compute lokal und remote zugegriffen werden. Verwenden Sie für den experimentübergreifenden Zugriff auf Ihr registriertes Dataset den folgenden Code, um Ihren Arbeitsbereich und das registrierte Dataset anhand des Namens abzurufen. Die `get_by_name`-Methode mit der `Dataset`-Klasse gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück.
+Auf registrierte Datasets kann in Computeclustern wie Azure Machine Learning Compute lokal und remote zugegriffen werden. Verwenden Sie für den experimentübergreifenden Zugriff auf Ihr registriertes Dataset den folgenden Code, um Ihren Arbeitsbereich und das registrierte Dataset anhand des Namens abzurufen. Die [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)-Methode mit der `Dataset`-Klasse gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück.
 
 ```Python
 %%writefile $script_folder/train.py

@@ -4,21 +4,21 @@ description: Erfahren Sie, wie Azure Cosmos DB eine Verschlüsselung ruhender Da
 author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640379"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123905"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Advanced Threat Protection für Azure Cosmos DB
 
 Advanced Threat Protection für Azure Cosmos DB ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Azure Cosmos DB-Konten zuzugreifen oder diese unbefugt zu nutzen. Mit dieser Schutzebene können Sie Bedrohungen begegnen, ohne ein Sicherheitsexperte sein zu müssen, und diese in zentrale Sicherheitsüberwachungssysteme integrieren.
 
-Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Sicherheitswarnungen sind in  [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu der verdächtigen Aktivität und Empfehlungen zur Untersuchung und Beseitigung der Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
+Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu der verdächtigen Aktivität und Empfehlungen zur Untersuchung und Beseitigung der Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
 > [!NOTE]
 >
@@ -31,16 +31,16 @@ Für eine vollständige Umgebung zur Untersuchung von Sicherheitswarnungen empfi
 
 ### <a name="set-up-atp-using-the-portal"></a>Einrichten von ATP unter Verwendung des Portals
 
-1. Starten Sie das Azure-Portal unter   [https://portal.azure.com](https://portal.azure.com/).
+1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com/).
 
 2. Wählen Sie im Azure Cosmos DB-Konto im Menü **Einstellungen** die Option **Erweiterte Sicherheit** aus.
 
     ![Einrichten von ATP](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. Führen Sie bei der Konfiguration auf dem Blatt  **Erweiterte Sicherheit** folgende Schritte aus:
+3. Führen Sie auf dem Blatt zur Konfiguration von **Erweiterte Sicherheit** folgende Schritte aus:
 
-    * Klicken Sie auf die Option **Advanced Threat Protection**, um sie zu aktivieren.
-    * Klicken Sie auf  **Speichern** , um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.   
+    * Klicken Sie auf die Option **Advanced Threat Protection**, um sie zu aktivieren (**EIN**).
+    * Klicken Sie auf **Speichern**, um die neue oder aktualisierte Advanced Threat Protection-Richtlinie zu speichern.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Einrichten von ATP mithilfe der REST-API
 
@@ -56,6 +56,31 @@ Verwenden Sie die folgenden PowerShell-Cmdlets:
 * [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
 * [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+
+Verwenden Sie zum Einrichten von Cosmos DB mit aktiviertem Advanced Threat Protection eine Azure Resource Manager-Vorlage.
+Weitere Informationen finden Sie unter [Create a CosmosDB Account with Advanced Threat Protection](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/) (Erstellen eines Cosmos DB-Kontos mit Advanced Threat Protection).
+
+### <a name="using-azure-policy"></a>Verwenden von Azure Policy
+
+Verwenden Sie eine Azure-Richtlinie, um Advanced Threat Protection für Cosmos DB zu aktivieren.
+
+1. Öffnen Sie die Azure-Seite **Richtlinie – Definitionen**, und suchen Sie die Richtlinie **Deploy Advanced Threat Protection for Cosmos DB** (Advanced Threat Protection für Cosmos DB bereitstellen).
+
+    ![Richtlinie suchen](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+
+1. Klicken Sie auf die Richtlinie **Deploy Advanced Threat Protection for Cosmos DB** (Advanced Threat Protection für Cosmos DB bereitstellen) und dann auf **Zuweisen**.
+
+    ![Wählen Sie „Abonnement“ oder „Gruppe“ aus.](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+
+
+1. Klicken Sie im Feld **Bereich** auf die drei Punkte, wählen Sie ein Azure-Abonnement oder eine Ressourcengruppe aus, und klicken Sie dann auf **Auswählen**.
+
+    ![Seite „Richtliniendefinitionen“](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+
+
+1. Geben Sie die anderen Parameter ein, und klicken Sie auf **Zuweisen**.
 
 ## <a name="manage-atp-security-alerts"></a>Verwalten von ATP-Sicherheitswarnungen
 
@@ -75,5 +100,5 @@ Außerdem wird eine E-Mail-Benachrichtigung mit den Warnungsdetails und empfohle
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur  [Diagnoseprotokollierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
-* Weitere Informationen zu  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Weitere Informationen zur [Diagnoseprotokollierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
+* Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

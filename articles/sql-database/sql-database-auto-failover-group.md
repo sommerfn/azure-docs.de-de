@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/16/2019
-ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575780"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035767"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -279,6 +279,9 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Inst
    > Falsch konfigurierte NSG-Sicherheitsregeln führen zu unterbrochenen Datenbankkopiervorgängen.
 
 7. Die zweite Instanz ist mit der richtigen DNS-Zonen-ID konfiguriert. Die DNS-Zone ist eine Eigenschaft einer verwalteten Instanz, und ihre ID ist in der Hostnamenadresse enthalten. Die Zonen-ID wird als zufällige Zeichenfolge generiert, wenn die erste verwaltete Instanz in jedem VNET erstellt und die gleiche ID alle anderen Instanzen im selben Subnetz zugewiesen wird. Nach der Zuweisung kann die DNS-Zone nicht geändert werden. Verwaltete Instanzen in der gleichen Failovergruppe müssen die DNS-Zone gemeinsam verwenden. Sie erreichen dies durch Übergeben der Zonen-ID der primären Instanz als Wert des DnsZonePartner-Parameters beim Erstellen der sekundären Instanz. 
+
+   > [!NOTE]
+   > Ein ausführliches Tutorial zum Konfigurieren von Failovergruppen mit einer verwalteten Instanz finden Sie unter [Hinzufügen einer verwalteten Instanz zu einer Failovergruppe](sql-database-managed-instance-failover-group-tutorial.md).
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
 

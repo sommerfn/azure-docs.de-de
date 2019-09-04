@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: cc062f830facb0d617dc649ecd17acfff0a740af
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618930"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125218"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -38,11 +38,14 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 * Ein aktives Azure-Abonnement.
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloudverzeichnis.
+* Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Sie benötigen Berechtigungen als *globaler Administrator* in Ihrem Azure AD-Mandanten, um Azure AD DS zu aktivieren.
 * Sie benötigen Berechtigungen als *Mitwirkender* in Ihrem Azure-Abonnement, um die erforderlichen Azure AD DS-Ressourcen zu erstellen.
 * Der Azure AD-Mandant muss für die [Self-Service-Kennwortzurücksetzung konfiguriert][configure-sspr] sein.
+
+> [!IMPORTANT]
+> Nach der Erstellung einer verwalteten Azure AD DS-Domäne können Sie die Instanz nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie bei der Bereitstellung der Azure AD DS-Instanz das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -222,6 +225,6 @@ Um diese verwaltete Domäne in Aktion zu erleben, erstellen Sie eine VM, und bin
 [network-considerations]: network-considerations.md
 [create-dedicated-subnet]: ../virtual-network/virtual-network-manage-subnet.md#add-a-subnet
 [scoped-sync]: scoped-synchronization.md
-[on-prem-sync]: active-directory-ds-getting-started-password-sync-synced-tenant.md
+[on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515781"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995835"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Spickzettel für Azure SQL Data Warehouse
 Dieser Spickzettel bietet nützliche Tipps und bewährte Methoden zum Erstellen von Azure SQL Data Warehouse-Lösungen. Bevor Sie beginnen, können Sie mehr über jeden Schritt erfahren, indem Sie [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) lesen. In diesem Artikel wird erläutert, was SQL Data Warehouse ist, und was es nicht ist.
@@ -50,7 +50,7 @@ Weitere Informationen hierzu finden Sie unter [Datenmigration], [Laden von Daten
 
 Abhängig von den Tabelleneigenschaften sollten Sie folgende Strategien verwenden:
 
-| Type | Für folgende Fälle empfohlen| In folgenden Fälle mit Vorsicht zu behandeln|
+| type | Für folgende Fälle empfohlen| In folgenden Fälle mit Vorsicht zu behandeln|
 |:--- |:--- |:--- |
 | Repliziert | • Kleine Dimensionstabellen in einem Sternschema mit max. 2 GB Speicher nach Komprimierung (ca. 5-facher Komprimierung) |• Viele Schreibtransaktionen für Tabellen (z.B. „insert“, „upsert“, „delete“, „update“)<br></br>• Häufige Änderungen an der Bereitstellung von DWUs (Data Warehouse Einheiten)<br></br>• Nutzung von lediglich 2 bis 3 Spalten, aber die Tabelle hat viele Spalten<br></br>• Indizierung einer replizierten Tabelle |
 | Roundrobin (Standard) | • Temporäre/Stagingtabellen<br></br> • Fehlen eines eindeutigen Verknüpfungsschlüssels oder einer geeigneten Spalte |• Schwache Leistung aufgrund von Datenverschiebungen |
@@ -70,7 +70,7 @@ Weitere Informationen finden Sie in den Artikeln zu [replizierte Tabellen] und [
 
 Indizierung ist für schnelles Lesen von Tabellen nützlich. Es steht Ihnen eine einzigartige Gruppe von Technologien zur Verfügung, die Sie entsprechend Ihren Anforderungen nutzen können:
 
-| Type | Für folgende Fälle empfohlen | In folgenden Fälle mit Vorsicht zu behandeln|
+| type | Für folgende Fälle empfohlen | In folgenden Fälle mit Vorsicht zu behandeln|
 |:--- |:--- |:--- |
 | Heap | • Staging-/temporäre Tabelle<br></br>• Kleine Tabellen mit geringfügigen Suchvorgängen |• Beliebige Suchvorgänge zum Durchsuchen einer gesamten Tabelle |
 | Gruppierter Index | • Tabellen mit bis zu 100 Millionen Zeilen<br></br>• Große Tabellen (mehr als 100 Millionen Zeilen) mit häufiger Nutzung von lediglich 1 bis 2 Spalten |• Verwendung für eine replizierte Tabelle<br></br>• Komplexe Abfragen mit mehreren Join- und Group By-Vorgängen<br></br>• Durchführen von Updates in indizierten Spalten: Arbeitsspeicher wird benötigt |
@@ -96,9 +96,11 @@ Weitere Informationen finden Sie im Artikel über [Partitionen].
 
 ## <a name="incremental-load"></a>Inkrementelles Laden
 
-Wenn Sie vorhaben, die Daten inkrementell zu laden, müssen Sie zunächst größere Ressourcenklassen zuordnen, die zum Laden der Daten verwendet werden sollen. Es empfiehlt sich, PolyBase und ADF V2 zu verwenden, um die ELT-Pipelines in SQL Data Warehouse hinein zu automatisieren.
+Wenn Sie vorhaben, die Daten inkrementell zu laden, müssen Sie zunächst größere Ressourcenklassen zuordnen, die zum Laden der Daten verwendet werden sollen.  Dies ist besonders beim Laden in Tabellen mit gruppierten ColumnStore-Indizes wichtig.  Weitere Informationen finden Sie unter [Workloadverwaltung mit Ressourcenklassen in Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management).  
 
-Bei einer großen Anzahl von Updates an Ihren Verlaufsdaten sollten Sie zuerst die betroffenen Daten löschen. Führen Sie dann eine Masseneinfügung der neuen Daten aus. Diese zweistufige Vorgehensweise ist effizienter.
+Es empfiehlt sich, PolyBase und ADF V2 zu verwenden, um die ELT-Pipelines in SQL Data Warehouse hinein zu automatisieren.
+
+Ziehen Sie bei einer großen Anzahl von Updates an Ihren Verlaufsdaten die Verwendung von [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) anstelle von INSERT, UPDATE und DELETE in Betracht, um die Daten, die Sie behalten möchten, in eine Tabelle zu schreiben.
 
 ## <a name="maintain-statistics"></a>Verwalten von Statistiken
  Solange automatische Statistiken noch nicht allgemein verfügbar sind, erfordert SQL Data Warehouse manuelle Wartung der Statistiken. Es ist wichtig, Statistiken zu aktualisieren, wenn *wesentliche* Änderungen an Ihren Daten vorgenommen werden. Hierdurch werden Ihre Abfragepläne optimiert. Wenn Sie feststellen, dass die Verwaltung aller Statistiken zu viel Zeit in Anspruch nimmt, grenzen Sie die Auswahl der Spalten ein, die mit Statistiken zu versehen sind. 
@@ -157,7 +159,7 @@ Stellen Sie mit einem Klick Ihre Speichen in SQL-Datenbanken aus SQL Data Wareho
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[Datenmigration]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Datenmigration]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

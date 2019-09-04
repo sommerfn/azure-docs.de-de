@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 4/9/2019
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405687"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113470"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf „www.google.com“
+> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
 > * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 
@@ -67,6 +67,9 @@ Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
 
 Dieses VNET soll drei Subnetze enthalten.
 
+> [!NOTE]
+> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
 2. Wählen Sie unter **Netzwerk** die Option **Virtuelles Netzwerk** aus.
 4. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
@@ -75,11 +78,8 @@ Dieses VNET soll drei Subnetze enthalten.
 7. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
 8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
 9. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
-10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
+10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
 11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie dann **Erstellen** aus.
-
-> [!NOTE]
-> Die Mindestgröße des Subnetzes „AzureFirewallSubnet“ beträgt /26.
 
 ### <a name="create-additional-subnets"></a>Erstellen zusätzlicher Subnetze
 
@@ -87,7 +87,7 @@ Erstellen Sie als Nächstes Subnetze für den Sprungserver sowie ein Subnetz fü
 
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressourcengruppen** > **Test-FW-RG** aus.
 2. Wählen Sie das virtuelle Netzwerk **Test-FW-VN** aus.
-3. Wählen Sie **Subnetze** > **+ Subnetz** aus.
+3. Wählen Sie **Subnetze** >  **+ Subnetz** aus.
 4. Geben Sie unter **Name** die Zeichenfolge **Workload-SN** ein.
 5. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.2.0/24** ein.
 6. Klicken Sie auf **OK**.
@@ -104,7 +104,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Ressourcengruppe     |**Test-FW-RG**|
+   |Resource group     |**Test-FW-RG**|
    |Name des virtuellen Computers     |**Srv-Jump**|
    |Region     |Wie zuvor|
    |Benutzername des Administrators     |**azureuser**|
@@ -125,7 +125,7 @@ Konfigurieren Sie anhand der Angaben in der folgenden Tabelle eine weitere VM mi
 
 |Einstellung  |Wert  |
 |---------|---------|
-|Subnetz|**Workload-SN**|
+|Subnet|**Workload-SN**|
 |Öffentliche IP-Adresse|**Keine**|
 |Öffentliche Eingangsports|**Keine**|
 
@@ -140,8 +140,8 @@ Stellen Sie die Firewall im VNET bereit.
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Abonnement     |\<Ihr Abonnement\>|
-   |Ressourcengruppe     |**Test-FW-RG** |
+   |Subscription     |\<Ihr Abonnement\>|
+   |Resource group     |**Test-FW-RG** |
    |NAME     |**Test-FW01**|
    |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: **Test-FW-VN**|

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848201"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128340"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -30,7 +30,7 @@ In der folgenden Tabelle sind die einzelnen in diesem Artikel behandelten Entwic
 | [Lokale Umgebung](#local) | Vollständige Kontrolle über Ihre Entwicklungsumgebung und die Abhängigkeiten. Ausführung mit einem Buildtool, einer Umgebung oder einer IDE Ihrer Wahl. | Der Einstieg dauert länger. Die erforderlichen SDK-Pakete müssen installiert werden. Außerdem muss eine Umgebung installiert werden, wenn noch keine vorhanden ist. |
 | [Azure Databricks](#aml-databricks) | Ideal für die Ausführung umfangreicher Workflows mit maschinellem Lernen auf der skalierbaren Apache Spark-Plattform. | Übermaß für experimentelles maschinelles Lernen oder kleinere Experimente und Workflows. Zusätzliche Kosten für Azure Databricks. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Vergleichbar mit der cloudbasierten Notebook-VM (Python und das SDK sind vorinstalliert), aber mit zusätzlichen gängigen vorinstallierten Data Science- und Machine Learning-Tools. Einfache Skalierung und Kombination mit anderen benutzerdefinierten Tools und Workflows. | Langsamerer Einstieg im Vergleich zur cloudbasierten Notebook-VM. |
-| [Azure Notebooks](#aznotebooks) | Kostenloser und einfacher Einstieg. Python und das SDK sind vorinstalliert. | Virtuelle Computer weniger leistungsstark im Vergleich zur cloudbasierten Notebook-VM. Isoliert vom Arbeitsbereich und anderen Ressourcen. |
+| [Azure Notebooks](#aznotebooks) | Kostenloser und einfacher Einstieg: Python und das SDK sind vorinstalliert. | Virtuelle Computer weniger leistungsstark im Vergleich zur cloudbasierten Notebook-VM. Isoliert vom Arbeitsbereich und anderen Ressourcen. |
 
 Dieser Artikel enthält außerdem zusätzliche Anwendungstipps für die folgenden Tools:
 
@@ -187,14 +187,19 @@ Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virt
 
     Durch diesen Befehl wird das grundlegende Azure Machine Learning SDK mit Notebooktools und zusätzlichen automl-Komponenten installiert. Da das `automl`-Zusatzpaket sehr umfangreich ist, müssen Sie dieses nicht innerhalb der Klammern angeben und installieren, wenn Sie keine automatisierten Machine Learning-Experimente durchführen möchten. Das `automl`-Zusatzpaket enthält standardmäßig auch das Azure Machine Learning Data Prep SDK als Abhängigkeit.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > Wenn Sie eine Meldung mit dem Hinweis erhalten, dass PyYAML nicht deinstalliert werden kann, verwenden Sie stattdessen den folgenden Befehl:
+   > * Wenn Sie eine Meldung mit dem Hinweis erhalten, dass PyYAML nicht deinstalliert werden kann, verwenden Sie stattdessen den folgenden Befehl:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * Ab macOS Catalina ist zsh (Z-Shell) der Standard für die Anmeldungsshell und die interaktive Shell. Verwenden Sie in zsh den folgenden Befehl, wobei eckige Klammern mit dem Escapezeichen „\\“ (umgekehrter Schrägstrich) versehen werden:
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
+
 
    Die Installation des SDK nimmt mehrere Minuten in Anspruch. Weitere Informationen zu den Installationsoptionen finden Sie in der [Installationsanleitung](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -280,7 +285,7 @@ Um Visual Studio Code für die Entwicklung zu verwenden, gehen Sie folgendermaß
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Die Plattform stellt für die Zusammenarbeit eine Notebook-basierte Umgebung mit CPU- oder GPU-basierten Computeclustern bereit.
+Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie stellt eine Notebook-basierte Umgebung mit CPU- oder GPU-basierten Computeclustern für die Zusammenarbeit bereit.
 
 Azure Databricks kann auf folgende Weisen mit Azure Machine Learning Service verwendet werden:
 + Sie können mit Spark MLlib ein Modell trainieren und es über Azure Databricks in ACI/AKS bereitstellen.
@@ -329,10 +334,10 @@ Erstellen Sie nach der Ausführung des Clusters [eine Bibliothek](https://docs.d
    1. Klicken Sie auf der Registerkarte **Bibliotheken** auf **Neu starten**.
 
    Berücksichtigen Sie außerdem Folgendes:
-   + In der Automl-Konfiguration fügen Sie bei der Verwendung von Azure Databricks die folgenden Parameter hinzu:
+   + Fügen Sie in der AutoML-Konfiguration bei Verwendung von Azure Databricks die folgenden Parameter hinzu:
        1. ```max_concurrent_iterations``` basiert auf der Anzahl der Workerknoten in Ihrem Cluster.
         2. ```spark_context=sc``` basiert auf dem standardmäßigen Spark-Kontext.
-   + Wenn Sie alternativ dazu eine alte SDK-Version nutzen, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn danach ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
+   + Wenn Sie alternativ dazu eine alte SDK-Version nutzen, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn nach dem Neustart ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
 
 Wenn die Installation erfolgreich war, sollte die importierte Bibliothek wie auf einem der folgenden Screenshots gezeigt aussehen:
 
@@ -357,7 +362,7 @@ So können Sie Azure Databricks testen:
 
 Verwenden Sie das [Azure-Portal](https://portal.azure.com), um das Arbeiten mit Azure Notebooks zu beginnen.  Öffnen Sie Ihren Arbeitsbereich, und wählen Sie im Abschnitt **Übersicht** die Option **Erste Schritte in Azure Notebooks** aus.
 
-Standardmäßig verwendet Azure Notebooks eine kostenlose Dienstebene, die auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
+Standardmäßig verwendet Azure Notebooks eine kostenlose Dienstebene, die auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Erstellen einer Konfigurationsdatei für den Arbeitsbereich
 

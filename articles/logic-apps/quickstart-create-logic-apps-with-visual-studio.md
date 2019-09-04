@@ -3,20 +3,21 @@ title: Erstellen von automatisierten Workflows mit Visual Studio – Azure Logic
 description: Automatisieren von Aufgaben, Geschäftsprozessen und Workflows für die Integration in Unternehmen mit Azure Logic Apps und Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
-ms.reviewer: klam, LADocs
-ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9248e5bcc9ebd819518b6ee609f529ea9b8f8bc
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385418"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051701"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -82,6 +83,8 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
    ![Erstellen eines Azure-Ressourcengruppenprojekts](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
+   > Ressourcengruppennamen dürfen nur Buchstaben, Ziffern, Punkte (`.`), Unterstriche (`_`), Bindestriche (`-`) und Klammern (`(`, `)`) enthalten, dürfen jedoch nicht auf einen Punkt (`.`) *enden*.
+   >
    > Wenn **Cloud** oder **Azure-Ressourcengruppe** nicht angezeigt wird, vergewissern Sie sich, dass das Azure SDK für Visual Studio installiert ist.
 
    Führen Sie diese Schritte aus, wenn Sie Visual Studio 2019 verwenden:

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4def4a6e8ca743ce03151f45e17da03d748c121e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083783"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126924"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -143,6 +143,8 @@ Aktualisieren der Enterprise-Anwendungsbereitstellung | Besitzer einer Enterpris
 Aktualisieren des Self-Service-Zugriffs auf Enterprise-Anwendungen | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 Aktualisieren von Eigenschaften für das einmalige Anmelden | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 
+
+
 ## <a name="groups"></a>Gruppen
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
@@ -169,10 +171,10 @@ Konfigurieren und Aktivieren oder Deaktivieren einer MFA-Richtlinie| Sicherheits
 Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Anmelderisiko| Sicherheitsadministrator | 
 Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Benutzerrisiko | Sicherheitsadministrator | 
 Konfigurieren von wöchentlichen Digests | Sicherheitsadministrator| 
-Alle Risikoereignisse schließen | Sicherheitsadministrator | 
+Schließen aller Risikoerkennungen | Sicherheitsadministrator | 
 Beheben oder Ausschließen von Sicherheitsrisiken | Sicherheitsadministrator | 
 Lesen aller Konfigurationen | Sicherheitsleseberechtigter | 
-Lesen aller Risikoereignisse | Sicherheitsleseberechtigter | 
+Lesen aller Risikoerkennungen | Sicherheitsleseberechtigter | 
 Lesen von Sicherheitsrisiken | Sicherheitsleseberechtigter | 
 
 ## <a name="licenses"></a>Lizenzen

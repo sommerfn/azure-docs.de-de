@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93f78cf07cd4815e5b17ffd3953db121adb6535
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558798"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049027"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-In diesem Abschnitt erstellen Sie eine Geräteidentität in der Identitätsregistrierung im IoT Hub. Ein Gerät kann eine Verbindung mit einem Hub nur dann herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt zur Identitätsregistrierung des [IoT Hub-Entwicklerhandbuchs](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+In diesem Abschnitt erstellen Sie eine Geräteidentität in der Identitätsregistrierung im IoT Hub. Ein Gerät kann eine Verbindung mit einem Hub nur dann herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations).
 
 1. Öffnen Sie in Ihrem IoT Hub-Navigationsmenü die Option **IoT-Geräte**, und wählen Sie **Neu** aus, um in Ihrem IoT-Hub ein Gerät hinzuzufügen.
 

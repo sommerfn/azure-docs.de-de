@@ -1,5 +1,5 @@
 ---
-title: Verwendung mit Kubernetes und Helm – Spracherkennungsdienst
+title: Verwenden eines Containers für den Speech-Dienst mit Kubernetes und Helm
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/16/2019
+ms.date: 8/26/2019
 ms.author: dapine
-ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562760"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066493"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Verwendung mit Kubernetes und Helm
+# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für den Speech-Dienst mit Kubernetes und Helm
 
 Eine Möglichkeit zur lokalen Verwaltung Ihrer Speech-Container ist die Verwendung von Kubernetes und Helm. Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt. Außerdem erfahren Sie, wie Sie die bereitgestellten Dienste testen, und es werden verschiedene Konfigurationsoptionen vorgestellt. Weitere Informationen zum Ausführen von Docker-Containern ohne Kubernetes-Orchestrierung finden Sie unter [Installieren und Ausführen von Containern für den Speech-Dienst](speech-container-howto.md).
 
@@ -150,7 +150,7 @@ Führen Sie zum Installieren des *Helm-Charts* den Befehl [`helm install`][helm-
 
 ```console
 helm install microsoft/cognitive-services-speech-onpremise \
-    --version 0.1.0 \
+    --version 0.1.1 \
     --values <config-values.yaml> \
     --name onprem-speech
 ```

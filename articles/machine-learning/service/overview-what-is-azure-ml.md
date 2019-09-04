@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018230"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035854"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Was ist der Azure Machine Learning-Dienst?
 
@@ -78,7 +78,7 @@ Informationen zu den ersten Schritten mit dem Azure Machine Learning-Dienst find
 
 ## <a name="how-does-azure-machine-learning-service-differ-from-studio"></a>Inwiefern unterscheidet sich Azure Machine Learning Service von Studio?
 
-[Machine Learning Studio](../studio/what-is-ml-studio.md) ist ein visueller Arbeitsbereich mit Drag & Drop-Funktionalität, der sich für die Zusammenarbeit mit anderen Entwicklern und das Erstellen, Testen und Bereitstellen von Lösungen für maschinelles Lernen eignet. Dafür muss kein Code geschrieben werden. Diese Umgebung verwendet vorgefertigte und vorkonfigurierte Algorithmen für maschinelles Lernen und Module für die Verarbeitung von Daten sowie eine proprietäre Computeplattform.
+[Machine Learning Studio](../studio/what-is-ml-studio.md) ist ein visueller Arbeitsbereich mit Drag & Drop-Funktionalität, der sich für die Zusammenarbeit mit anderen Entwicklern und das Erstellen, Testen und Bereitstellen von Lösungen für maschinelles Lernen eignet. Dafür muss kein Code geschrieben werden. Diese Umgebung verwendet vorgefertigte und vorkonfigurierte Algorithmen für maschinelles Lernen und Module für die Verarbeitung von Daten sowie eine proprietäre Compute-Plattform.
 
 Azure Machine Learning Service bietet sowohl SDKs **als auch** eine grafische Benutzeroberfläche (Vorschauversion) zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Diese grafische Benutzeroberfläche (Vorschauversion) bietet eine ähnliche Drag & Drop-Umgebung wie Studio. Im Gegensatz zur proprietären Computeplattform von Studio verwendet die grafische Benutzeroberfläche jedoch Ihre eigenen Computeressourcen und ist vollständig in Azure Machine Learning Service integriert.
 
@@ -108,8 +108,9 @@ Sie erhalten dann eine Gutschrift, die Sie für Azure-Dienste einlösen können.
 - [Erstellen Sie einen Machine Learning Service-Arbeitsbereich](how-to-manage-workspace.md), um loszulegen.
 
 - Umfassende Tutorials hierzu:
+  + [Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments](tutorial-1st-experiment-sdk-setup.md)
   + [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md)
-  + [Tutorial: Vorbereiten von Daten für die Regressionsmodellierung](tutorial-data-prep.md)
+
 
 - Erfahren Sie mehr über [Machine Learning-Pipelines](/azure/machine-learning/service/concept-ml-pipelines) zum Erstellen, Optimieren und Verwalten Ihrer Machine Learning-Szenarien.
 

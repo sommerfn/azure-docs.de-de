@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828730"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129329"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -218,7 +218,7 @@ Weitere Informationen finden Sie unter [Erstellen und Verwalten von Richtlinien 
 **Detail**: Dokumentieren Sie die Zuordnung in der Dokumentation Ihrer Organisation oder in der Azure-Richtlinie selbst, indem Sie einen Verweis auf die Organisationsrichtlinie in der Azure-[Richtlinienbeschreibung](../../governance/policy/concepts/definition-structure.md#display-name-and-description) oder der Beschreibung der Azure Policy-[Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) hinzufügen.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Überwachen der Azure AD-Risikoberichte
-Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als [Risikoereignis](../../active-directory/reports-monitoring/concept-risk-events.md) bezeichnet wird. Risikoereignisse werden in Azure AD-Sicherheitsberichten erfasst. Weitere Informationen finden Sie unter [Bericht „Benutzer mit Risikomarkierung“](../../active-directory/reports-monitoring/concept-user-at-risk.md) und unter [Bericht „Riskante Anmeldungen“](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
+Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als [Risikoerkennung](../../active-directory/reports-monitoring/concept-risk-events.md) bezeichnet wird. Risikoerkennungen werden in Azure AD-Sicherheitsberichten erfasst. Weitere Informationen finden Sie unter [Bericht „Benutzer mit Risikomarkierung“](../../active-directory/reports-monitoring/concept-user-at-risk.md) und unter [Bericht „Riskante Anmeldungen“](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](best-practices-and-patterns.md).

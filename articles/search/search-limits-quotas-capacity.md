@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/28/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f95bd3959693879c6560d00be1fb036748d3a439
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640625"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129383"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
@@ -27,7 +27,7 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 + **Storage Optimized** wird auf dedizierten Computern mit mehr Gesamtspeicher, Speicherbandbreite und Arbeitsspeicher als **Standard** ausgeführt. „Storage Optimized“ gibt es auf zwei Ebenen: L1 und L2
 
 > [!NOTE]
-> Ab dem 1. Juli stehen alle Tarife allgemein zur Verfügung, einschließlich des datenspeicheroptimierten Tarifs. Weitere Einzelheiten zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/).
+> Ab dem 1. Juli stehen alle Tarife allgemein zur Verfügung, einschließlich des datenspeicheroptimierten Tarifs. Weitere Einzelheiten zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/).
 
   S3 High Density (S3 HD) ist für bestimmte Workloads konzipiert: [Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md) und große Mengen von kleinen Indizes (eine Million Dokumente pro Index, 3000 Indizes pro Dienst). Bei diesem Tarif ist das [Indexerfeature](search-indexer-overview.md) nicht verfügbar. Bei S3 HD muss der Push-Ansatz für die Datenerfassung verwendet werden, wobei Daten mithilfe von API-Aufrufen per Push von der Quelle an den Index übertragen werden. 
 
@@ -115,7 +115,7 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |256 |256 |
 | Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4&nbsp;Millionen |4&nbsp;Millionen |4&nbsp;Millionen |– |4&nbsp;Millionen |4&nbsp;Millionen |
 
-<sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen. Für eine KI-Indizierung, die Aufrufe in Cognitive Services ausführt, gilt bei den kostenlosen Diensten ein Limit von 20 kostenlosen Transaktionen pro Tag. Dabei ist eine Transaktion als ein Dokument definiert, das die Anreicherungspipeline erfolgreich durchläuft.
+<sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen. Für eine KI-Indizierung, die Aufrufe in Cognitive Services ausführt, gilt bei den kostenlosen Diensten ein Limit von 20 kostenlosen Transaktionen pro Indexer pro Tag. Dabei ist eine Transaktion als ein Dokument definiert, das die Anreicherungspipeline erfolgreich durchläuft. 
 
 <sup>2</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indexer, Datenquellen und Qualifikationsgruppen.
 
@@ -124,6 +124,15 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 <sup>4</sup> Maximal 30 Fähigkeiten pro Qualifikationsgruppe.
 
 <sup>5</sup> Workloads der kognitiven Suche und Bildanalysen in der Azure-BLOB-Indizierung weisen eine kürzere Ausführungsdauer auf als die normale Textindizierung. Bildanalysen und die Verarbeitung natürlicher Sprache sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen an verfügbarer Verarbeitungskapazität verbrauchen. Die Ausführungsdauer wurde reduziert, damit andere Aufträge in der Warteschlange ausgeführt werden können.  
+
+## <a name="synonym-limits"></a>Synonymlimits
+
+Die maximal zulässige Anzahl von Synonymzuordnungen variiert je nach Tarif. Jede Regel kann bis zu 20 Erweiterungen aufweisen. Als Erweiterungen werden gleichwertige Begriffe bezeichnet. Beispielsweise würde für „Katze“, die Zuordnung von „Kätzchen“, „Kater“ und „Felis“ (die Gattung der Katzen) als drei Erweiterungen gezählt werden.
+
+| Resource | Kostenlos | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| Maximale Synonymzuordnungen |3 |3|5 |10 |20 |20 | 5 | 5 |
+| Maximale Anzahl von Regeln pro Zuordnung |5\.000 |10000|10000 |10000 |10000 |10000 | 10000 | 10000  |
 
 ## <a name="queries-per-second-qps"></a>Abfragen pro Sekunde (QPS)
 

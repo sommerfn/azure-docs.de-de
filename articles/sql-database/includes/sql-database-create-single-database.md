@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894094"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099143"
 ---
 In diesem Schritt erstellen Sie eine Azure SQL-Einzeldatenbank. 
 
@@ -23,8 +23,8 @@ In diesem Schritt erstellen Sie eine Azure SQL-Einzeldatenbank.
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Portal.
 
-1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein.
-2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel **Datenbanken** die Option **Details anzeigen** auswählen.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+2. Wählen Sie **+ Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel **Datenbanken** die Option **Details anzeigen** auswählen.
 3. Wählen Sie **Erstellen** aus:
 
    ![Erstellen einer Einzeldatenbank](../media/sql-database-get-started-portal/create-single-database.png)
@@ -43,7 +43,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
        - **Servername**: Geben Sie `mysqlserver` mit einigen Zahlen ein, um die Eindeutigkeit sicherzustellen.
        - **Serveradministratoranmeldung**: Geben Sie `azureuser`ein.
        - **Kennwort**: Geben Sie ein komplexes Kennwort ein, das die Anforderungen für Kennwörter erfüllt.
-       - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z. B. `West US 2`.
+       - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z. B. `West US`.
 
          ![Neuer Server](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

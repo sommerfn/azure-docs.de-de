@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 982ebf28a0f99a6eace2448676c934855cd99d1f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fd7cd8f73f602953573b7e6edab32bf2a6aecc05
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878978"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998121"
 ---
 # <a name="set-up-and-manage-a-device-template-preview-features"></a>Einrichten und Verwalten einer Gerätevorlage (Previewfunktionen)
 
@@ -36,13 +36,13 @@ Anhand dieser Gerätevorlage kann ein Bediener echte Lüftergeräte erstellen un
 > [!NOTE]
 > Nur Ersteller und Administratoren können Gerätevorlagen erstellen, bearbeiten und löschen. Auf der Seite **Geräte** kann jeder Benutzer Geräte anhand vorhandener Gerätevorlagen erstellen.
 
-[IoT Plug & Play](https://aka.ms/iot-pnp-docs) ermöglicht IoT Central die Integration von Geräten, ohne dass Sie eingebetteten Gerätecode schreiben müssen. Das Kernstück von IoT Plug & Play ist ein Gerätefunktionsmodell-Schema, das Gerätefunktionen beschreibt. In einer IoT Central Preview-Anwendung verwenden Gerätevorlagen diese IoT Plug & Play-Gerätefunktionsmodelle.
+[IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) ermöglicht IoT Central die Integration von Geräten, ohne dass Sie eingebetteten Gerätecode schreiben müssen. Das Herzstück von IoT Plug & Play ist ein Gerätefunktionsmodell-Schema, das Gerätefunktionen beschreibt. In einer IoT Central Preview-Anwendung verwenden Gerätevorlagen diese IoT Plug & Play-Gerätefunktionsmodelle.
 
 Als Ersteller haben Sie mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
 
 - Entwerfen Sie die Gerätevorlage in IoT Central, und implementieren Sie dann das entsprechende Gerätefunktionsmodell in Ihrem Gerätecode.
-- Importieren Sie ein Gerätefunktionsmodell aus dem [Azure Certified for IoT-Gerätekatalog](https://aka.ms/iotdevcat), und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die ihre IoT Central-Anwendung benötigt.
-- Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie den Gerätecode aus dem Modell. Importieren Sie das Gerätefunktionsmodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die ihre IoT Central-Anwendung benötigt.
+- Importieren Sie ein Gerätefunktionsmodell aus dem [Azure Certified for IoT-Gerätekatalog](https://aka.ms/iotdevcat), und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die ihre IoT Central-Anwendung benötigt.
+- Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätefunktionsmodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die ihre IoT Central-Anwendung benötigt.
 - Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie das echte Gerät mithilfe einer gerätepriorisierenden Verbindung mit Ihrer IoT Central-Anwendung. IoT Central ermittelt und importiert das Gerätefunktionsmodell automatisch aus dem öffentlichen Repository. Sie können dann alle Cloudeigenschaften, Anpassungen und Dashboards, die Ihre IoT Central-Anwendung benötigt, der Gerätevorlage hinzufügen.
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Erstellen einer Gerätevorlage aus dem Gerätekatalog
@@ -123,14 +123,14 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Telemetr
 | Funktionstyp | Telemetrie. |
 | Semantischer Typ | Der semantische Typ der Telemetrie, z.B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
 | Schema | Der Telemetriedatentyp, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. Schema ist für die semantischen Typen „Ereignis“ und „Zustand“ nicht verfügbar. |
-| Schweregrad | Nur für den semantischen Typ „Ereignis“ verfügbar. **Fehler**, **Information** oder **Warnung**. |
+| severity | Nur für den semantischen Typ „Ereignis“ verfügbar. **Fehler**, **Information** oder **Warnung**. |
 | Zustandswerte | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen. |
-| Einheit | Eine Einheit für den Telemetriewert, z.B. **km/h**, **%** oder **&deg;C**. |
+| Unit | Eine Einheit für den Telemetriewert, z.B. **km/h**, **%** oder **&deg;C**. |
 | Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
-| Kommentar | Beliebige Kommentare zur Telemetriefunktion. |
+| Comment | Beliebige Kommentare zur Telemetriefunktion. |
 | BESCHREIBUNG | Eine Beschreibung der Telemetriefunktion. |
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 Eigenschaften stellen Zeitpunktwerte dar. Ein Gerät kann beispielsweise eine Eigenschaft verwenden, um die Zieltemperatur zu melden, die es zu erreichen versucht. Sie können schreibbare Eigenschaften über IoT Central festlegen.
 
@@ -144,11 +144,11 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 | Semantischer Typ | Der semantische Typ der Eigenschaft, z.B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
 | Schema | Der Eigenschaftsdatentyp, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. Schema ist für die semantischen Typen „Ereignis“ und „Zustand“ nicht verfügbar. |
 | Schreibbar | Wenn die Eigenschaft nicht schreibbar ist, kann das Gerät Eigenschaftswerte an IoT Central melden. Ist die Eigenschaft schreibbar, kann das Gerät Eigenschaftswerte an IoT Central melden, und IoT Central kann Aktualisierungen der Eigenschaft an das Gerät senden.
-| Schweregrad | Nur für den semantischen Typ „Ereignis“ verfügbar. **Fehler**, **Information** oder **Warnung**. |
+| severity | Nur für den semantischen Typ „Ereignis“ verfügbar. **Fehler**, **Information** oder **Warnung**. |
 | Zustandswerte | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen. |
-| Einheit | Eine Einheit für den Eigenschaftswert, z.B. **km/h**, **%** oder **&deg;C**. |
+| Unit | Eine Einheit für den Eigenschaftswert, z.B. **km/h**, **%** oder **&deg;C**. |
 | Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
-| Kommentar | Beliebige Kommentare zur Eigenschaftsfunktion. |
+| Comment | Beliebige Kommentare zur Eigenschaftsfunktion. |
 | BESCHREIBUNG | Eine Beschreibung der Eigenschaftsfunktion. |
 
 ### <a name="commands"></a>Befehle
@@ -161,12 +161,12 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsf
 | ----- | ----------- |
 | Anzeigename | Der Anzeigename für den Befehl, der in Dashboards und Formularen verwendet wird. |
 | NAME | Der Name des Befehls. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
-| Funktionstyp | Befehl |
-| Befehl | SynchronousExecutionType. |
-| Kommentar | Beliebige Kommentare zur Befehlsfunktion. |
+| Funktionstyp | Get-Help |
+| Get-Help | SynchronousExecutionType. |
+| Comment | Beliebige Kommentare zur Befehlsfunktion. |
 | BESCHREIBUNG | Eine Beschreibung der Befehlsfunktion. |
 | Anforderung | Wenn aktiviert, eine Definition des Anforderungsparameters, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
-| Antwort | Wenn aktiviert, eine Definition der Befehlsantwort, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
+| response | Wenn aktiviert, eine Definition der Befehlsantwort, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
 
 ## <a name="manage-an-interface"></a>Verwalten einer Schnittstelle
 

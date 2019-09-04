@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 06/26/2019
-ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 08/27/2019
+ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874399"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060634"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -42,7 +42,8 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen b
 | Maximal reservierter Instanzspeicher |  Allgemein: 8 TB<br/>Unternehmenskritisch: 1 TB | Allgemein: 8 TB<br/> Unternehmenskritisch: 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 > [!IMPORTANT]
-> Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
+> - Gen4-Hardware wird eingestellt. Es wird empfohlen, neue verwaltete Instanzen auf Gen5-Hardware bereitzustellen.
+> - Gen4-Hardware ist zu diesem Zeitpunkt in den folgenden Regionen verfügbar: „Europa, Norden“, „Europa, Westen“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen 2“, „USA, Mitte“, „Kanada, Mitte“, „Indien, Süden“, „Asien, Südosten“ und „Südkorea, Mitte“.
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
@@ -50,7 +51,7 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Untern
 
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
-| Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
+| Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
 | Max. Arbeitsspeicherbelegung | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
 | Max. Größe des reservierten Instanzspeichers | – 2 TB für 4 virtuelle Kerne (nur Gen5)<br/>– 8 TB für andere Größen | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB für 4, 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Datenbankgröße | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
@@ -64,10 +65,12 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Untern
 | Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr TempDB-Speicherplatz zu erhalten. | Durch die maximale Instanzspeichergröße eingeschränkt. Die Größe der TempDB-Protokolldatei ist derzeit auf 24 GB pro virtuellem Kern beschränkt. |
 | In-Memory-OLTP | Nicht unterstützt | Verfügbar |
 | Max. Sitzungen | 30000 | 30000 |
+| Lesbare Replikate | 0 | 1 |
 
 > [!NOTE]
 > - Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
 > - Durchsatz und IOPS hängen auch von der Seitengröße ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
+> Sie können ein weiteres lesbares Replikat in einer anderen Azure-Region mithilfe von Autofailover-Gruppen erstellen.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -106,7 +109,7 @@ In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonne
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional und MSDN Platforms|2|32|
 
-\* Beachten Sie beim Planen Ihrer Bereitstellungen, dass ein unternehmenskritischer (BC) virtueller Kern (aufgrund zusätzlicher Redundanz) 4 x mehr Kapazität als ein universeller (GP) virtueller Kern verbraucht. Für Ihre Berechnungen also: 1 GP virtueller Kern = 1 virtuelle Kerneinheit, und 1 BC virtueller Kern = 4 virtuelle Kerneinheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die virtuellen Kerneinheiten für alle Subnetze in der Region zusammen, in der verwaltete Instanzen bereitgestellt werden, und vergleichen Sie die Ergebnisse mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
+\* Berücksichtigen Sie bei der Planung von Bereitstellungen, dass die Dienstebene „Unternehmenskritisch“ (Business Critical, BC) viermal (4-mal) mehr v-Kern-Kapazität erfordert als die Dienstebene „Universell“ (General Purpose, GP). Beispiel:  1 virtueller Kern „Universell“ = 1 V-Kern-Einheit, und 1 virtueller Kern „Unternehmenskritisch“ = 4 V-Kern-Einheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die virtuellen Kerneinheiten für alle Subnetze in der Region zusammen, in der verwaltete Instanzen bereitgestellt werden, und vergleichen Sie die Ergebnisse mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
 
 \*\* Höhere Grenzwerte für Subnetze und virtuelle Kerne sind in den folgenden Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen 2“.
 

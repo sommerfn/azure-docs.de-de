@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927926"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061915"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -70,7 +70,7 @@ Ihre Abonnementadministratoren und Coadministratoren können diese Einstellung �
 Organisationen, die VM-Zugriff und -Einrichtung steuern, verbessern die gesamte VM-Sicherheit.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Verwenden mehrerer virtueller Computer für eine höhere Verfügbarkeit
-Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Verwenden Sie für eine höhere Verfügbarkeit eine [Verfügbarkeitsgruppe](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Verwenden Sie für eine höhere Verfügbarkeit eine [Verfügbarkeitsgruppe](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) oder [Verfügbarkeitszonen](../../availability-zones/az-overview.md).
 
 Eine Verfügbarkeitsgruppe ist eine logische Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die VMs innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Computeracks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, ist nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung ist insgesamt weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen haben eine wichtige Funktion bei der Erstellung zuverlässiger Cloudlösungen.
 
@@ -182,7 +182,7 @@ Mit Azure Disk Encryption können Sie die folgenden geschäftlichen Anforderunge
 **Detail**: Verwenden Sie RBAC, um sicherzustellen, dass nur die zentrale Netzwerkgruppe berechtigten Zugang zu Netzwerkressourcen hat.
 
 **Bewährte Methode**: Identifizieren und korrigieren Sie exponierte VMs, die einen Zugriff über „alle“ Quell-IP-Adressen zulassen.   
-**Detail**: Verwenden Sie Azure Security Center. Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Azure Security Center empfiehlt, diese Eingangsregeln so zu ändern, dass der [Zugriff eingeschränkt](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
+**Detail**: Verwenden Sie Azure Security Center. Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Azure Security Center empfiehlt, diese Eingangsregeln so zu ändern, dass der [Zugriff eingeschränkt](../../security-center/security-center-network-recommendations.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
 
 **Bewährte Methode**: Beschränken Sie Verwaltungsports (RDP, SSH).   
 **Detail**: Mit einem [JIT-VM-Zugriff](../../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf einen einfachen Zugriff auf Verbindungen zu virtuellen Computern bereitzustellen. Wenn JIT aktiviert ist, sperrt Azure Security Center eingehenden Datenverkehr für Ihre Azure-VMs, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die JIT-Lösung gesteuert.

@@ -3,18 +3,18 @@ title: Erweitern von Azure IoT Central mit benutzerdefinierten Regeln und Benach
 description: Als Lösungsentwickler möchten Sie eine IoT Central-Anwendung konfigurieren, die E-Mail-Benachrichtigungen sendet, wenn ein Gerät keine Telemetriedaten mehr übermittelt. Diese Lösung verwendet Azure Stream Analytics und Azure Functions.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d89e8f174c7006c1a0f771dd4dfaa816ded3698c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742410"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100988"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln zum Senden von Benachrichtigungen
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ### <a name="iot-central-application"></a>IoT Central-Anwendung
 
-Erstellen Sie über die Seite [Azure IoT Central – Eigene Anwendungen](https://aka.ms/iotcentral) eine IoT Central-Anwendung mit folgenden Einstellungen:
+Erstellen Sie über die Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) eine IoT Central-Anwendung mit folgenden Einstellungen:
 
 | Einstellung | Wert |
 | ------- | ----- |
@@ -46,11 +46,11 @@ Erstellen Sie über die Seite [Azure IoT Central – Eigene Anwendungen](https:/
 | URL | Standardwert übernehmen oder eigenes eindeutiges URL-Präfix angeben |
 | Verzeichnis | Ihr Azure Active Directory-Mandant |
 | Azure-Abonnement | Ihr Azure-Abonnement |
-| Region | USA (Ost) |
+| Region | East US |
 
 Bei den Beispielen und Screenshots in diesem Artikel wird die Region **USA, Osten** verwendet. Wählen Sie einen Standort in Ihrer Nähe, und stellen Sie sicher, dass Sie alle Ressourcen in derselben Region erstellen.
 
-### <a name="resource-group"></a>Ressourcengruppe
+### <a name="resource-group"></a>Resource group
 
 Verwenden Sie das [Azure-Portal zum Erstellen einer Ressourcengruppe](https://portal.azure.com/#create/Microsoft.ResourceGroup) namens **DetectStoppedDevices**. Diese soll die weiteren Ressourcen enthalten, die Sie erstellen. Erstellen Sie Ihre Azure-Ressourcen am gleichen Standort wie Ihre IoT Central-Anwendung.
 
@@ -62,9 +62,9 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https:
 | ------- | ----- |
 | NAME    | Namen Ihres Namespace auswählen |
 | Tarif | Basic |
-| Abonnement | Ihr Abonnement |
-| Ressourcengruppe | DetectStoppedDevices |
-| Location | USA (Ost) |
+| Subscription | Ihr Abonnement |
+| Resource group | DetectStoppedDevices |
+| Location | East US |
 | Durchsatzeinheiten | 1 |
 
 ### <a name="stream-analytics-job"></a>Stream Analytics-Auftrag
@@ -74,9 +74,9 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Stream Analytics-Namespace](
 | Einstellung | Wert |
 | ------- | ----- |
 | NAME    | Namen Ihres Auftrags auswählen |
-| Abonnement | Ihr Abonnement |
-| Ressourcengruppe | DetectStoppedDevices |
-| Location | USA (Ost) |
+| Subscription | Ihr Abonnement |
+| Resource group | DetectStoppedDevices |
+| Location | East US |
 | Hosting-Umgebung | Cloud |
 | Streamingeinheiten | 3 |
 
@@ -87,11 +87,11 @@ Verwenden Sie das [Azure-Portal zum Erstellen einer Funktions-App](https://porta
 | Einstellung | Wert |
 | ------- | ----- |
 | App-Name    | Namen Ihrer Funktions-App auswählen |
-| Abonnement | Ihr Abonnement |
-| Ressourcengruppe | DetectStoppedDevices |
-| Betriebssystem | Windows |
+| Subscription | Ihr Abonnement |
+| Resource group | DetectStoppedDevices |
+| OS | Windows |
 | Hostingplan | Verbrauchstarif |
-| Location | USA (Ost) |
+| Location | East US |
 | Laufzeitstapel | .NET |
 | Storage | Neu erstellen |
 
@@ -103,8 +103,8 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines SendGrid-Kontos](https://por
 | ------- | ----- |
 | NAME    | Namen Ihres SendGrid-Kontos auswählen |
 | Kennwort | Kennwort erstellen |
-| Abonnement | Ihr Abonnement |
-| Ressourcengruppe | DetectStoppedDevices |
+| Subscription | Ihr Abonnement |
+| Resource group | DetectStoppedDevices |
 | Tarif | F1 Free |
 | Kontaktinformationen | Erforderliche Informationen ausfüllen |
 
@@ -243,7 +243,7 @@ Die Lösung verwendet eine Stream Analytics-Abfrage, um zu erkennen, wenn ein Ge
     | Einstellung | Wert |
     | ------- | ----- |
     | Eingabealias | centraltelemetry |
-    | Abonnement | Ihr Abonnement |
+    | Subscription | Ihr Abonnement |
     | Event Hub-Namespace | Ihr Event Hub-Namespace |
     | Event Hub-Name | Vorhandenen Wert verwenden: **centralexport** |
 
@@ -253,7 +253,7 @@ Die Lösung verwendet eine Stream Analytics-Abfrage, um zu erkennen, wenn ein Ge
     | Einstellung | Wert |
     | ------- | ----- |
     | Ausgabealias | emailnotification |
-    | Abonnement | Ihr Abonnement |
+    | Subscription | Ihr Abonnement |
     | Funktionen-App | Ihre Funktions-App |
     | Funktion  | HttpTrigger1 |
 
@@ -305,7 +305,7 @@ Die Lösung verwendet eine Stream Analytics-Abfrage, um zu erkennen, wenn ein Ge
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurieren des Exports nach IoT Central
 
-Navigieren Sie zu der [IoT Central-Anwendung](https://aka.ms/iotcentral), die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
+Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu der IoT Central-Anwendung, die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
 
 1. Navigieren Sie zur Seite **Kontinuierlicher Datenexport**, klicken Sie auf **+ Neu**, und wählen Sie **Azure Event Hubs** aus.
 1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:

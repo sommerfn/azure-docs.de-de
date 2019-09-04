@@ -9,40 +9,42 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c52b41c4e6d0618b4df9b2aed985bbd22d89f419
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee4bd9d61856ef4ea1afdd027d6f39e730b92d78
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567200"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129216"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
-Azure SQL-Datenbank bietet Tools und Methoden, um problemlos die Nutzung überwachen, Ressourcen (CPU, Arbeitsspeicher, E/A) hinzufügen oder zu entfernen, potenzielle Probleme zu behandeln und Empfehlungen zu suchen, mit denen sich die Leistung Ihrer Datenbank verbessern lässt. Azure SQL-Datenbank bietet eine Vielzahl von Features, mit denen sich Probleme in den Datenbanken automatisch beheben lassen. Sie ermöglichen es der Datenbank, sich an die Workload anzupassen und die Leistung automatisch zu optimieren. Es gibt allerdings einige spezifische Probleme, die möglicherweise gelöst werden müssen. Dieser Artikel beschreibt einige Best Practices und Tools, die zum Beheben von Leistungsproblemen verwendet werden können.
+Azure SQL-Datenbank bietet Tools und Methoden, um problemlos die Nutzung zu überwachen, Ressourcen (CPU, Arbeitsspeicher, E/A) hinzuzufügen oder zu entfernen, potenzielle Probleme zu behandeln und Empfehlungen zu suchen, mit denen sich die Leistung einer Datenbank verbessern lässt. Azure SQL-Datenbank verfügt über Features, mit denen Probleme in den Datenbanken automatisch behoben werden können. Die automatische Optimierung ermöglicht einer Datenbank die Anpassung an die Workload und die automatische Optimierung der Leistung. Es gibt allerdings einige spezifische Probleme, die möglicherweise behoben werden müssen. In diesem Artikel werden einige Best Practices und Tools beschrieben, die zum Beheben von Leistungsproblemen verwendet werden können.
 
 Es gibt zwei wichtige Aktivitäten, die ausgeführt werden sollten, um sicherzustellen, dass eine Datenbank ohne Probleme ausgeführt wird:
-- [Überwachen der Datenbankleistung](#monitoring-database-performance), um sicherzustellen, dass die Ressourcen, die der Datenbank zugewiesen wurden, die Workload verarbeiten können. Wenn Sie sehen, dass eine Datenbank die Ressourcengrenzen überschreitet, sollten ressourcenintensive Abfragen identifiziert und optimiert werden, oder es sollten weitere Ressourcen durch ein Upgrade des Servicelevels hinzugefügt werden.
-- [Beheben von Leistungsproblemen](#troubleshoot-performance-issues), um herauszufinden, warum ein Problem aufgetreten ist, und um die zugrunde liegende Ursache des Problems sowie die Aktion zu ermitteln, mit der sich das Problem beheben lässt.
+- [Überwachen der Datenbankleistung](#monitoring-database-performance), um sicherzustellen, dass die Ressourcen, die der Datenbank zugewiesen wurden, die Workload verarbeiten können. Wenn Sie feststellen, dass eine Datenbank die Ressourcenlimits überschreitet, sollten Sie folgende Aktionen in Erwägung ziehen:
+   - Identifizieren und Optimieren der Abfragen mit dem höchsten Ressourcenverbrauch
+   - Hinzufügen zusätzlicher Ressourcen durch ein Upgrade der Dienstebene
+- [Beheben von Leistungsproblemen](#troubleshoot-performance-issues), um zu ermitteln, warum ein mögliches Problem aufgetreten ist, und um seine Grundursache zu bestimmen. Nachdem Sie die Grundursache ermittelt haben, implementieren Sie Schritte, um das Problem zu beheben.
 
 ## <a name="monitoring-database-performance"></a>Überwachen der Datenbankleistung
 
-Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Die folgenden Ressourcen sollten gleichermaßen überwacht werden:
- - **CPU-Auslastung** – Überprüfen Sie, ob die Datenbank über einen längeren Zeitraum 100 % der CPU-Auslastung erreicht. Dies kann darauf hindeuten, dass die Datenbank oder Instanz auf eine höhere Dienstebene aktualisiert werden muss, oder dass die Abfragen, die den größten Teil der Rechenleistung in Anspruch nehmen, identifiziert und abgestimmt werden sollten.
- - **Wartestatistiken** – Überprüfen Sie, warum Abfragen auf einige Ressourcen warten. Abfragen warten möglicherweise darauf, dass Daten abgerufen oder in Datenbankdateien gespeichert werden, oder sie warten, weil ein Ressourcenlimit erreicht wurde, usw.
- - **E/A-Nutzung** – Überprüfen Sie, ob die Datenbank die E/A-Limits des zugrunde liegenden Speichers erreicht.
- - **Arbeitsspeicherauslastung** – Die Menge an Arbeitsspeicher, der für die Datenbank oder Instanz verfügbar ist, ist proportional zur Anzahl von virtuellen Kernen. Überprüfen Sie, ob der Arbeitsspeicher für die Workload ausreichend ist. Die Seitenlebenserwartung ist einer der Parameter, die darauf hinweisen können, wie schnell die Seiten schnell aus dem Arbeitsspeicher entfernt werden.
+Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Die folgenden Ressourcen sollten überwacht werden:
+ - **CPU-Auslastung:** Überprüfen Sie, ob die Datenbank über einen längeren Zeitraum 100 % der CPU-Auslastung erreicht. Eine hohe CPU-Auslastung kann darauf hindeuten, dass die Abfragen, die die meiste Rechenleistung verwenden, identifiziert und optimiert werden sollten. Außerdem kann eine hohe CPU-Auslastung darauf hindeuten, dass die Datenbank oder Instanz auf eine höhere Dienstebene umgestellt werden sollte. 
+ - **Wartestatistik:** Verwenden Sie [sys.dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql), um die Wartezeiten von Abfragen zu ermitteln. Abfragen können auf Ressourcen, Warteschlangen oder externe Vorgänge warten. 
+ - **E/A-Nutzung:** Überprüfen Sie, ob die Datenbank die E/A-Limits des zugrunde liegenden Speichers erreicht.
+ - **Arbeitsspeicherauslastung:** Die Menge des für die Datenbank oder Instanz verfügbaren Arbeitsspeichers ist proportional zur Anzahl von virtuellen Kernen. Überprüfen Sie, ob der Arbeitsspeicher für die Workload ausreichend ist. Die Seitenlebenserwartung ist einer der Parameter, die darauf hinweisen können, wie schnell die Seiten aus dem Arbeitsspeicher entfernt werden.
 
-Der Azure SQL-Datenbankdienst **enthält die Tools und Ressourcen, die bei der Fehlersuche und Behebung potenzieller Leistungsprobleme helfen**. Sie können Möglichkeiten zur Verbesserung und Optimierung der Abfrageleistung identifizieren, ohne dass Sie Ressourcen anhand von [Empfehlungen zur Leistung für SQL-Datenbank](sql-database-advisor.md) ändern müssen. Fehlende Indizes und falsch optimierte Abfragen sind häufige Ursachen für eine schlechte Datenbankleistung. Diese Optimierungsempfehlungen können angewendet werden, um die Leistung der Arbeitsauslastung zu verbessern. Wir können die [Leistung Ihrer Abfragen auch automatisch durch Azure SQL-Datenbank optimieren lassen](sql-database-automatic-tuning.md), indem Sie alle erkannten Empfehlungen anwenden und bestätigen, dass diese die Datenbankleistung verbessern.
+Der Azure SQL-Datenbankdienst **enthält Tools und Ressourcen, die bei der Fehlersuche und der Behebung potenzieller Leistungsprobleme helfen**. Sie können Möglichkeiten zur Verbesserung und Optimierung der Abfrageleistung identifizieren, ohne dass Sie Ressourcen anhand von [Empfehlungen zur Leistung für SQL-Datenbank](sql-database-advisor.md) ändern müssen. Fehlende Indizes und falsch optimierte Abfragen sind häufige Ursachen für eine schlechte Datenbankleistung. Diese Optimierungsempfehlungen können angewandt werden, um die Leistung der Workload zu verbessern. Sie können die [Leistung Ihrer Abfragen auch automatisch durch Azure SQL-Datenbank optimieren lassen](sql-database-automatic-tuning.md), indem Sie alle erkannten Empfehlungen anwenden und bestätigen, dass diese die Datenbankleistung verbessern.
 
-Es gibt die folgende Optionen für die Überwachung und Problembehandlung der Datenbankleistung:
+Die folgende Optionen stehen für die Überwachung und Problembehandlung der Datenbankleistung zur Verfügung:
 
 - Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Datenbanken**, wählen Sie die Datenbank aus, und suchen Sie dann mithilfe des Diagramms „Überwachung“ nach Ressourcen, die sich ihrer maximalen Auslastung annähern. „DTU-Verbrauch“ wird standardmäßig angezeigt. Klicken Sie auf **Bearbeiten** , um den Zeitraum und die angezeigten Werte zu ändern.
-- Tools wie SQL Server Management Studio bieten viele nützliche Berichte, z. B. ein [Leistungsdashboard](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) zur Ressourcenüberwachung und Ermittlung der Abfragen mit dem größten Ressourcenverbrauch, oder einen [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) zur Identifizierung der Abfragen mit rückläufiger Leistung.
+- Tools wie SQL Server Management Studio bieten viele nützliche Berichte, z. B. ein [Leistungsdashboard](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) zur Ressourcenüberwachung und Ermittlung der Abfragen mit dem größten Ressourcenverbrauch oder einen [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) zur Identifizierung der Abfragen mit rückläufiger Leistung.
 - Verwenden Sie [Query Performance Insight](sql-database-query-performance.md) im [Azure-Portal](https://portal.azure.com), um diejenigen Abfragen zu identifizieren, die die meisten Ressourcen verbrauchen. Dieses Feature ist nur in Einzeldatenbanken und Pools für elastische Datenbanken verfügbar.
 - Verwenden Sie [SQL Database Advisor](sql-database-advisor-portal.md), um Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen anzuzeigen. Dieses Feature ist nur in Einzeldatenbanken und Pools für elastische Datenbanken verfügbar.
-- Mit [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) können Sie die Leistung der Datenbank automatisch überwachen. Bei Erkennung eines Leistungsproblems wird ein Diagnoseprotokoll mit Details und einer Fehlerursachenanalyse des Problems generiert. Empfehlungen zur Verbesserung der Leistung werden nach Möglichkeit bereitgestellt.
+- Mit [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) können Sie die Datenbankleistung automatisch überwachen. Bei Erkennung eines Leistungsproblems wird ein Diagnoseprotokoll mit Details und einer Fehlerursachenanalyse des Problems generiert. Empfehlungen zur Verbesserung der Leistung werden nach Möglichkeit bereitgestellt.
 - [Aktivieren Sie die automatische Optimierung](sql-database-automatic-tuning-enable.md), und lassen Sie erkannte Leistungsprobleme automatisch durch Azure SQL-Datenbank verbessern.
 - Verwenden Sie [dynamische Verwaltungsansichten (DMVs)](sql-database-monitoring-with-dmvs.md), [erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md) und den [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store), um detaillierte Informationen zur Behebung von Leistungsproblemen zu erhalten.
 
@@ -51,48 +53,48 @@ Es gibt die folgende Optionen für die Überwachung und Problembehandlung der Da
 
 ## <a name="troubleshoot-performance-issues"></a>Behandeln von Leistungsproblemen
 
-Beim Diagnostizieren und Beheben von Leistungsproblemen besteht der erste Schritt darin, den Status jeder aktiven Abfrage und die Bedingungen zu ermitteln, die zu Leistungsproblemen in Bezug auf den jeweiligen Workloadstatus führen. Um die Leistung der Azure SQL-Datenbank zu verbessern, sollten Sie sich darüber im Klaren sein, dass sich jede aktive Abfrageanforderung der Anwendung entweder in einem laufenden oder einem wartenden Zustand befindet. Wenn Sie die Informationen in diesem Artikel verwenden, um Leistungsprobleme in Azure SQL-Datenbank zu diagnostizieren und zu beheben, behalten wir das folgende Diagramm im Kopf.
+Beim Diagnostizieren und Beheben von Leistungsproblemen besteht der erste Schritt darin, den Status jeder aktiven Abfrage und die Bedingungen zu ermitteln, die zu Leistungsproblemen in Bezug auf den jeweiligen Workloadstatus führen. Um die Leistung von Azure SQL-Datenbank zu verbessern, sollten Sie sich darüber im Klaren sein, dass sich jede aktive Abfrageanforderung der Anwendung entweder in einem laufenden oder einem wartenden Zustand befindet. Wenn Sie die Informationen in diesem Artikel verwenden, um Leistungsprobleme in Azure SQL-Datenbank zu diagnostizieren und zu beheben, behalten Sie das folgende Diagramm im Kopf.
 
 ![Workload-Status](./media/sql-database-monitor-tune-overview/workload-states.png)
 
 Bei einem Workload mit Leistungsproblemen kann das Leistungsproblem auf CPU-Konflikte zurückzuführen sein (eine **running-related**-Bedingung) oder einzelne Abfragen warten auf etwas (eine **waitingrelated**-Bedingung).
 
-Für Probleme **in Zusammenhang mit der Ausführung** können folgende Ursachen vorliegen:
-- **Kompilierungsprobleme**: Der SQL-Abfrageoptimierer generiert möglicherweise aufgrund veralteter Statistiken, einer falschen Schätzung der zu verarbeitenden Zeilenanzahl oder einer falschen Schätzung des erforderlichen Arbeitsspeichers einen Plan, der nicht optimal ist. Wenn wir wissen, dass die Abfrage in der Vergangenheit oder auf einer anderen Instanz (einer verwalteten Instanz oder einer SQL Server-Instanz) schneller ausgeführt wurde, vergleichen Sie die tatsächlichen Ausführungspläne, um mögliche Unterschiede festzustellen. Versuchen Sie, Abfragehinweise einzufügen oder Statistiken oder Indizes neu zu erstellen, um einen besseren Plan zu erzielen. Aktivieren Sie die automatische Plankorrektur in Azure SQL-Datenbank, um solche Probleme automatisch minimieren zu lassen.
-- **Ausführungsprobleme**: Wenn der Abfrageplan optimal ist, sind möglicherweise Ressourcenlimits in der Datenbank erreicht, beispielsweise beim Schreibdurchsatz von Protokollen. Möglicherweise werden auch defragmentierte Indizes verwendet, die neu erstellt werden sollten. Eine große Anzahl von gleichzeitigen Abfragen, die viele Ressourcen verbrauchen, kann ebenfalls Probleme mit der Ausführung verursachen. Probleme aufgrund von **Wartevorgängen** stehen in den meisten Fällen in Zusammenhang mit Ausführungsproblemen, weil Abfragen, die nicht effizient ausgeführt werden, möglicherweise auf Ressourcen warten.
+Probleme **in Zusammenhang mit der Ausführung** können folgende Ursachen haben:
+- **Kompilierungsprobleme:** Der SQL-Abfrageoptimierer generiert möglicherweise aufgrund veralteter Statistiken, einer falschen Schätzung der zu verarbeitenden Zeilenanzahl oder einer falschen Schätzung des erforderlichen Arbeitsspeichers einen Plan, der nicht optimal ist. Wenn Sie wissen, dass die Abfrage in der Vergangenheit oder auf einer anderen Instanz (einer verwalteten Instanz oder einer SQL Server-Instanz) schneller ausgeführt wurde, vergleichen Sie die tatsächlichen Ausführungspläne, um mögliche Unterschiede festzustellen. Versuchen Sie, Abfragehinweise einzufügen oder Statistiken oder Indizes neu zu erstellen, um einen besseren Plan zu erzielen. Aktivieren Sie die automatische Plankorrektur in Azure SQL-Datenbank, um solche Probleme automatisch minimieren zu lassen.
+- **Ausführungsprobleme:** Wenn der Abfrageplan optimal ist, sind möglicherweise Ressourcenlimits in der Datenbank erreicht, beispielsweise beim Schreibdurchsatz von Protokollen. Möglicherweise werden auch defragmentierte Indizes verwendet, die neu erstellt werden sollten. Eine große Anzahl von gleichzeitigen Abfragen, die dieselben Ressourcen verbrauchen, kann ebenfalls Probleme mit der Ausführung verursachen. Probleme aufgrund von **Wartevorgängen** stehen in den meisten Fällen in Zusammenhang mit Ausführungsproblemen, da Abfragen, die nicht effizient ausgeführt werden, möglicherweise auf Ressourcen warten.
 
-Für Probleme **in Zusammenhang mit Wartevorgängen** können folgende Ursachen vorliegen:
-- **Blockierung**: Möglicherweise hält eine Abfrage eine Sperre für einige Objekte in der Datenbank, während andere Abfragen versuchen, auf diese Objekte zuzugreifen. Blockierende Abfragen können mithilfe von DMV oder Überwachungstools einfach identifiziert werden.
-- **E/A-Probleme**: Möglicherweise warten Abfragen darauf, dass Seiten in die Daten- oder Protokolldateien geschrieben werden. Weitere Informationen finden Sie in diesem Fall unter den Wartestatistiken `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` oder `PAGEIOLATCH_*` in der DMV.
-- **TempDB-Probleme** – Wenn der Workload viele temporäre Tabellen verwendet oder es viele TempDB-Spills in den Plänen gibt, können die Anfragen ein Problem mit dem TempDB-Durchsatz haben. 
-- **Arbeitsspeicherbezogene Probleme** – Es gibt möglicherweise nicht genügend Speicher für die Arbeitslast, sodass die Seitenlebenserwartung sinkt oder die Abfragen eine geringere Speicherzuweisung erhalten als erforderlich. In einigen Fällen lassen sich diese Probleme mit den integrierten Intelligencefunktionen des Abfrageoptimierers beheben.
+Probleme **in Zusammenhang mit Wartevorgängen** können folgende Ursachen haben:
+- **Blockierung:** Möglicherweise hält eine Abfrage eine Sperre für einige Objekte in der Datenbank, während andere Abfragen versuchen, auf diese Objekte zuzugreifen. Blockierende Abfragen können mithilfe von DMVs oder Überwachungstools einfach identifiziert werden.
+- **E/A-Probleme:** Möglicherweise warten Abfragen darauf, dass Seiten in die Daten- oder Protokolldateien geschrieben werden. Weitere Informationen finden Sie in diesem Fall unter den Wartestatistiken `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` oder `PAGEIOLATCH_*` in der DMV.
+- **TempDB-Probleme:** Wenn der Workload temporäre Tabellen verwendet oder es TempDB-Spills in den Plänen gibt, können die Anfragen ein Problem mit dem TempDB-Durchsatz haben. 
+- **Arbeitsspeicherbezogene Probleme:** Es gibt möglicherweise nicht genügend Speicher für die Workload, sodass die Seitenlebenserwartung sinkt oder die Abfragen eine geringere Speicherzuweisung erhalten als erforderlich. In einigen Fällen lassen sich diese Probleme mit den integrierten Intelligencefunktionen des Abfrageoptimierers beheben.
  
  In den folgenden Abschnitten wird erläutert, wie sich einige dieser Probleme identifizieren und beheben lassen.
 
 ## <a name="running-related-performance-issues"></a>Leistungsprobleme in Zusammenhang mit der Ausführung
 
-Als allgemeine Richtlinie gilt: Wenn die CPU-Auslastung konstant bei oder über 80 % liegt, liegt ein ausführungsbedingtes Leistungsproblem vor. Wenn ein Problem in Zusammenhang mit der Ausführung vorliegt, kann dies durch unzureichende CPU-Ressourcen oder durch eine der folgenden Bedingungen verursacht werden:
+Als allgemeine Richtlinie gilt: Wenn die CPU-Auslastung konstant bei oder über 80 % liegt, ist das Leistungsproblem ausführungsbedingt. Wenn ein Problem in Zusammenhang mit der Ausführung vorliegt, kann dies durch unzureichende CPU-Ressourcen oder durch eine der folgenden Bedingungen verursacht werden:
 
 - Zu viele ausgeführte Abfragen
 - Zu viele kompilierte Abfragen
-- Eine oder mehrere ausgeführte Abfragen verwenden einen suboptimalen Abfrageplan.
+- Eine oder mehrere ausgeführte Abfragen verwenden einen nicht optimalen Abfrageplan.
 
-Wenn es sich herausstellt, dass ein Problem in Zusammenhang mit der Ausführung vorliegt, besteht das Ziel darin, mithilfe einer oder mehrerer Methoden die genaue Ursache herauszufinden. Die gängigsten Methoden zum Ermitteln von Probleme in Zusammenhang mit der Ausführung sind die folgenden:
+Wenn sich herausstellt, dass ein Problem in Zusammenhang mit der Ausführung vorliegt, sollten Sie mithilfe einer oder mehrerer Methoden die genaue Ursache herausfinden. Die gängigsten Methoden zum Ermitteln von Probleme in Zusammenhang mit der Ausführung sind die folgenden:
 
 - Verwenden Sie das [Azure-Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal), um die prozentuale CPU-Auslastung zu überwachen.
 - Verwenden Sie die folgenden [dynamische Verwaltungssichten](sql-database-monitoring-with-dmvs.md):
 
-  - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine Azure SQL-Datenbank zurück. Für alle 15 Sekunden ist eine Zeile vorhanden, selbst wenn keine Aktivität in der Datenbank erfolgt ist. Historische Daten werden eine Stunde lang aufbewahrt.
+  - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine Azure SQL-Datenbank-Instanz zurück. Für alle 15 Sekunden ist eine Zeile enthalten, selbst wenn keine Aktivität in der Datenbank erfolgt ist. Historische Daten werden eine Stunde lang aufbewahrt.
   - [sys.resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) gibt CPU-Nutzungs- und Speicherdaten für eine Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.
 
 > [!IMPORTANT]
-> Unter [Ermitteln von Problemen mit der CPU-Auslastung](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues) finden Sie eine Reihe von T-SQL-Abfragen, bei denen diese DMVs zum Beheben von Problemen mit der CPU-Auslastung verwendet werden.
+> Unter [Ermitteln von Problemen mit der CPU-Auslastung](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues) finden Sie T-SQL-Abfragen mit sys.dm_db_resource_stats, bei denen diese DMVs zum Beheben von Problemen mit der CPU-Auslastung verwendet werden.
 
 ### <a name="ParamSniffing"></a> Behandeln von Problemen bei Abfragen mit parameterempfindlichem Ausführungsplan
 
 Das Problem eines parameterempfindlichen Plans bezieht sich auf ein Szenario, in dem der Abfrageoptimierer einen Abfrageausführungsplan generiert, der nur für einen bestimmten Parameterwert (oder eine Gruppe von Werten) optimal ist, und der zwischengespeicherte Plan dann nicht optimal für die in aufeinanderfolgenden Ausführungen verwendeten Parameterwerte ist. Nicht optimale Pläne können dann zu Problemen der Abfrageleistung und einer allgemeinen Verschlechterung des Workloaddurchsatzes führen. Weitere Informationen zur Parameterermittlung und Abfrageverarbeitung finden Sie im [Handbuch zur Architektur der Abfrageverarbeitung](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
 
-Es gibt mehrere Lösungen zur Umgehung dieser Problemen, die jeweils ihre Schwächen und Nachteile haben:
+Es gibt mehrere Lösungen zur Umgehung dieser Problemen, die jeweils Schwächen oder Nachteile aufweisen:
 
 - Verwenden des Abfragehinweises [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) bei jeder Abfrageausführung. Bei dieser Problemumgehung werden Kompilierungszeit und erhöhte CPU-Leistung für eine bessere Qualität des Abfrageplans eingebüßt. Die Verwendung der Option `RECOMPILE` ist häufig bei Workloads, die einen hohen Durchsatz erfordern, nicht möglich.
 - Verwenden des Abfragehinweises [OPTION (OPTIMIZE FOR...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), um den tatsächlichen Parameterwert mit einem typischen Parameterwert zu überschreiben, mit dem ein ausreichender Plan für die meisten möglichen Parameterwerte erzeugt wird.   Diese Option erfordert ein gutes Verständnis der optimalen Parameterwerte und zugehörigen Planmerkmale.
@@ -103,22 +105,23 @@ Es gibt mehrere Lösungen zur Umgehung dieser Problemen, die jeweils ihre Schwä
 - Ersetzen der Einzelprozedur durch eine geschachtelte Gruppe von Prozeduren, die jeweils basierend auf bedingter Logik und zugehörigen Parameterwerten verwendet werden können.
 - Erstellen von Alternativen für die dynamische Zeichenfolgenausführung zur Definition einer statischen Prozedur.
 
-Weitere Informationen zur Behebung dieser Arten von Problemen finden in folgenden Blogbeiträgen:
+Weitere Informationen zur Behebung dieser Arten von Problemen finden Sie in den folgenden Blogbeiträgen:
 
-- Blogbeitrag zum [Ermitteln eines Parameters](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
-- Blogbeitrag zu [dynamischem SQL im Vergleich zur Qualität des Abfrageplans für parametrisierte Abfragen](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
-- Blogbeitrag zu [Techniken zur SQL-Abfrageoptimierung in SQL Server: Parameterermittlung](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
+- [I Smell a Parameter!](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) (Ich rieche einen Parameter)
+- [Conor vs. Dynamic SQL vs. Procedures vs. Plan Quality for Parameterized Queries](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) (Conor mit dynamischem SQL, Prozeduren und Planqualität im Vergleich für parametrisierte Abfragen)
+- [SQL Query Optimization Techniques in SQL Server: Parameter Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) (Techniken zur SQL-Abfrageoptimierung in SQL Server: Parameterermittlung)
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Behandeln von Problemen der Kompilierungsaktivität aufgrund falscher Parametrisierung
 
 Wenn eine Abfrage Literale enthält, wählt entweder die Datenbank-Engine eine automatische Parametrisierung der Anweisung aus, oder ein Benutzer kann die Anweisung explizit parametrisieren, um die Anzahl von Kompilierungen zu verringern. Eine große Anzahl von Kompilierungen einer Abfrage anhand des gleichen Musters, jedoch mit unterschiedlichen Literalwerten, kann zu einer hohen CPU-Auslastung führen. Auch wenn Sie eine Abfrage nur teilweise parametrisieren und diese dann weiterhin Literale enthält, wird sie von der Datenbank-Engine nicht weiter parametrisiert.  Nachfolgend sehen Sie ein Beispiel einer teilweise parametrisierten Abfrage:
 
 ```sql
-SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+SELECT * 
+FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-Im vorherigen Beispiel nimmt `t1.c1` die Form `@p1` an, aber `t2.c2` verwendet weiterhin die GUID als Literal. Wenn Sie in diesem Fall den Wert für `c2` ändern, wird die Abfrage als eine andere Abfrage behandelt, und eine neue Kompilierung findet statt. Damit im vorherigen Beispiel die Anzahl von Kompilierungen reduziert wird, muss auch die GUID parametrisiert werden.
+Im vorherigen Beispiel nimmt `t1.c1` den Wert `@p1` an, aber `t2.c2` verwendet weiterhin die GUID als Literal. Wenn Sie in diesem Fall den Wert für `c2` ändern, wird die Abfrage als eine andere Abfrage behandelt, und eine neue Kompilierung findet statt. Damit im vorherigen Beispiel die Anzahl von Kompilierungen reduziert wird, muss auch die GUID parametrisiert werden.
 
 Die folgende Abfrage zeigt die Anzahl von Abfragen nach Abfragehash, um festzustellen, ob eine Abfrage richtig parametrisiert ist:
 
@@ -149,17 +152,17 @@ Die Neukompilierung eines Abfrageausführungsplans führt möglicherweise zu ein
 - Datenänderungen an den Tabellen, auf die von der Abfrage verwiesen wird 
 - Änderungen an Abfragekontextoptionen 
 
-Ein kompilierter Plan kann aus zahlreichen Gründen aus dem Cache geworfen werden, darunter Neustarts von Instanzen, Änderungen an der Konfiguration im Datenbankbereich, Speicherauslastung und explizite Anforderungen zum Löschen des Caches. Darüber hinaus führt ein RECOMPILE-Hinweis dazu, dass ein Plan nicht zwischengespeichert wird.
+Ein kompilierter Plan kann aus zahlreichen Gründen aus dem Cache entfernt werden, darunter Neustarts von Instanzen, Änderungen an der Konfiguration im Datenbankbereich, Speicherauslastung und explizite Anforderungen zum Löschen des Caches. Darüber hinaus führt ein RECOMPILE-Hinweis dazu, dass ein Plan nicht zwischengespeichert wird.
 
-Eine Neukompilierung (oder eine erneute Kompilierung nach dem Entfernen aus dem Cache) kann dennoch zur Generierung eines Abfrageausführungsplans führen, der mit dem ursprünglichen Plan identisch ist.  Wenn jedoch im Vergleich zum vorherigen oder ursprünglichen Plan Änderungen vorliegen, finden Sie nachfolgend die am häufigsten zutreffenden Erklärungen für die Änderung eines Abfrageausführungsplans:
+Eine Neukompilierung (oder eine erneute Kompilierung nach dem Entfernen aus dem Cache) kann dennoch zur Generierung eines Abfrageausführungsplans führen, der mit dem ursprünglichen Plan identisch ist.  Wenn im Vergleich zum vorherigen oder ursprünglichen Plan Änderungen vorliegen, finden Sie nachfolgend die am häufigsten zutreffenden Erklärungen für die Änderung eines Abfrageausführungsplans:
 
-- **Geändertes physisches Design**. Beispielsweise können bei einer neuen Kompilierung neu erstellte Indizes verwendet werden, die die Anforderungen einer Abfrage effektiver abdecken. Sie können verwendet werden, falls der Abfrageoptimierer entscheidet, dass dieser neue Index besser geeignet ist als die ursprünglich für die erste Version der Abfrageausführung ausgewählte Datenstruktur.  Alle physischen Änderungen an den referenzierten Objekten führen zum Zeitpunkt der Kompilierung möglicherweise zu einer neuen Planauswahl.
+- **Geändertes physisches Design**. Beispielsweise können bei einer neuen Kompilierung neu erstellte Indizes verwendet werden, die die Anforderungen einer Abfrage effektiver abdecken. Die neuen Indizes können verwendet werden, falls der Abfrageoptimierer entscheidet, dass dieser neue Index besser geeignet ist als die ursprünglich für die erste Version der Abfrageausführung ausgewählte Datenstruktur.  Alle physischen Änderungen an den referenzierten Objekten führen zum Zeitpunkt der Kompilierung möglicherweise zu einer neuen Planauswahl.
 
-- **Unterschiede zwischen Serverressourcen**. In einem Szenario, in dem sich ein Plan auf „System A“ von dem auf „System B“ unterscheidet, kann die Verfügbarkeit der Ressourcen (z.B. die Anzahl verfügbarer Prozessoren) beeinflussen, welcher Plan generiert wird.  Das heißt, wenn ein System eine höhere Anzahl von Prozessoren aufweist, wird möglicherweise ein paralleler Plan ausgewählt. 
+- **Unterschiede zwischen Serverressourcen**. In einem Szenario, in dem sich ein Plan auf „System A“ von dem auf „System B“ unterscheidet, kann die Verfügbarkeit der Ressourcen (z. B. die Anzahl verfügbarer Prozessoren) beeinflussen, welcher Plan generiert wird.  Das heißt, wenn ein System eine höhere Anzahl von Prozessoren aufweist, wird möglicherweise ein paralleler Plan ausgewählt. 
 
-- **Andere Statistiken**. Die den referenzierten Objekten zugeordneten statistischen Informationen haben sich geändert oder unterscheiden sich wesentlich von den Statistiken des ursprünglichen Systems.  Wenn sich die Statistiken ändern und eine Neukompilierung durchgeführt wird, verwendet der Abfrageoptimierer Statistiken ab dem jeweiligen Zeitpunkt. Die überarbeiteten Statistiken enthalten möglicherweise erheblich abweichende Datenverteilungen und Häufigkeiten, die in der ursprünglichen Kompilierung nicht vorlagen.  Diese Änderungen werden zur Erstellung von Kardinalitätsschätzungen verwendet (Anzahl der Zeilen, die voraussichtlich die logische Abfragestruktur durchlaufen).  Änderungen an Kardinalitätsschätzungen können dazu führen, dass andere physische Operatoren ausgewählt und Vorgänge in anderen Reihenfolgen durchgeführt werden.  Selbst geringfügige Änderungen an Statistiken können zu einem anderen Abfrageausführungsplan führen.
+- **Andere Statistiken**. Die den referenzierten Objekten zugeordneten statistischen Informationen haben sich geändert oder unterscheiden sich wesentlich von den Statistiken des ursprünglichen Systems.  Wenn sich die Statistiken ändern und eine Neukompilierung durchgeführt wird, verwendet der Abfrageoptimierer Statistiken ab dem jeweiligen Zeitpunkt. Die überarbeiteten Statistiken enthalten möglicherweise andere Datenverteilungen und Häufigkeiten als in der ursprünglichen Kompilierung.  Diese Änderungen werden zur Erstellung von Kardinalitätsschätzungen verwendet (Anzahl der Zeilen, die voraussichtlich die logische Abfragestruktur durchlaufen).  Änderungen an Kardinalitätsschätzungen können dazu führen, dass andere physische Operatoren ausgewählt und Vorgänge in anderen Reihenfolgen durchgeführt werden.  Selbst geringfügige Änderungen an Statistiken können zu einem anderen Abfrageausführungsplan führen.
 
-- **Geänderter Datenbank-Kompatibilitätsgrad oder geänderte Version der Kardinalitätsschätzung**.  Bei Änderungen am Datenbank-Kompatibilitätsgrad können neue Strategien und Funktionen aktiviert werden, die möglicherweise zu einem anderen Abfrageausführungsplan führen.  Neben dem Datenbank-Kompatibilitätsgrad kann die Auswahl des Abfrageausführungsplans zur Kompilierzeit auch durch das Deaktivieren oder Aktivieren des Ablaufverfolgungsflags 4199 oder das Ändern des Status der datenbankbezogenen Konfiguration QUERY_OPTIMIZER_HOTFIXES beeinflusst werden.  Auch die Ablaufverfolgungsflags 9481 (Legacy-CE erzwingen) und 2312 (Standard-CE erzwingen) besitzen Auswirkungen auf die Planauswahl. 
+- **Geänderter Datenbank-Kompatibilitätsgrad oder geänderte Version der Kardinalitätsschätzung**.  Bei Änderungen am Datenbank-Kompatibilitätsgrad können neue Strategien und Funktionen aktiviert werden, die möglicherweise zu einem anderen Abfrageausführungsplan führen.  Neben dem Datenbank-Kompatibilitätsgrad kann die Auswahl des Abfrageausführungsplans zur Kompilierungszeit auch durch das Deaktivieren oder Aktivieren des Ablaufverfolgungsflags 4199 oder das Ändern des Status der datenbankbezogenen Konfiguration QUERY_OPTIMIZER_HOTFIXES beeinflusst werden.  Auch die Ablaufverfolgungsflags 9481 (Legacy-CE erzwingen) und 2312 (Standard-CE erzwingen) besitzen Auswirkungen auf die Planauswahl. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Lösen von Abfrageproblemen oder Bereitstellen weiterer Ressourcen
 
@@ -193,7 +196,7 @@ Es ist nicht immer leicht festzustellen, ob eine Änderung des Workloadvolumens 
 
 ## <a name="waiting-related-performance-issues"></a>Leistungsprobleme in Zusammenhang mit Wartevorgängen
 
-Wenn Sie sicher sind, dass kein Problem in Zusammenhang mit der Ausführung und CPU-Auslastung vorliegt, wird das Problem durch Wartevorgänge verursacht. Kurz gesagt: Ihre CPU-Ressourcen werden nicht effizient genutzt, weil die CPU auf eine andere Ressource wartet. In diesem Fall müssen Sie herausfinden, worauf Ihre CPU-Ressourcen warten. Hier finden Sie die gängigsten Methoden zur Anzeige der wichtigsten Wartetypkategorien:
+Wenn Sie sicher sind, dass kein Problem in Zusammenhang mit der Ausführung und CPU-Auslastung vorliegt, wird das Problem durch Wartevorgänge verursacht. Kurz gesagt: Ihre CPU-Ressourcen werden nicht effizient genutzt, weil die CPU auf eine andere Ressource wartet. In diesem Fall müssen Sie herausfinden, worauf Ihre CPU-Ressourcen warten. Im Folgenden finden Sie die gängigsten Methoden zur Anzeige der wichtigsten Wartetypkategorien:
 
 - Der [Abfragedatenspeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) bietet eine Wartestatistik pro Abfrage im Zeitverlauf. Im Abfragedatenspeicher sind Wartetypen mit Wartekategorien kombiniert. Die Zuordnung von Wartekategorien zu Wartetypen finden Sie in [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) gibt Informationen über alle Wartezeiten zurück, die von Threads auftreten, die während des Betriebs ausgeführt werden. Sie können diese aggregierte Ansicht verwenden, um Leistungsprobleme mit der Azure SQL-Datenbank und auch mit bestimmten Abfragen und Batches zu diagnostizieren.
@@ -204,7 +207,7 @@ In Szenarien mit hoher CPU-Auslastung spiegeln Abfragespeicher und Wartestatisti
 - Abfragen mit hoher CPU-Auslastung werden möglicherweise immer noch ausgeführt und sind nicht beendet.
 - Die Abfragen mit hoher CPU-Auslastung wurden ausgeführt, als ein Failover auftrat.
 
-Dynamische Verwaltungssichten, in denen Abfragespeicher und Wartestatistik nachgeführt werden, zeigen nur Ergebnisse für erfolgreich abgeschlossene Abfragen und Abfragen mit Zeitüberschreitung, aber keine Daten für derzeit ausgeführte Anweisungen (bis zu deren Abschluss). Die dynamische Verwaltungssicht [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ermöglicht Ihnen das Nachverfolgen derzeit ausgeführter Abfragen und der Zeit des zugeordneten Workers.
+Dynamische Verwaltungssichten, in denen Abfragespeicher und Wartestatistik nachgeführt werden, zeigen nur Ergebnisse für erfolgreich abgeschlossene Abfragen und Abfragen mit Zeitüberschreitung, aber keine Daten für derzeit ausgeführte Anweisungen (bis zu deren Abschluss). Die dynamische Verwaltungssicht [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ermöglicht Ihnen das Nachverfolgen der derzeit ausgeführten Abfragen und der Zeit des zugeordneten Workers.
 
 Wie im vorherigen Diagramm dargestellt, sind die am häufigsten Wartetypen:
 
@@ -224,7 +227,7 @@ Wie im vorherigen Diagramm dargestellt, sind die am häufigsten Wartetypen:
 
 ## <a name="improving-database-performance-with-more-resources"></a>Verbesserung der Datenbankleistung mit mehr Ressourcen
 
-Schließlich können Sie noch die Anzahl der in Azure SQL-Datenbank verfügbaren Ressourcen ändern, wenn es keine umsetzbaren Elemente gibt, die die Leistung Ihrer Datenbank verbessern können. Sie können mehr Ressourcen zuweisen, indem Sie die [DTU-Dienstebene](sql-database-service-tiers-dtu.md) einer Einzeldatenbank verändern oder die eDTUs eines Pools für elastische Datenbanken zu einem beliebigen Zeitpunkt erhöhen. Alternativ können Sie bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) entweder die Dienstebene ändern oder die Ressourcen heraufsetzen, die der Datenbank zugeordnet werden.
+Schließlich können Sie noch die Anzahl der in Azure SQL-Datenbank verfügbaren Ressourcen ändern, wenn es keine umsetzbaren Elemente gibt, die die Leistung Ihrer Datenbank verbessern können. Weisen Sie mehr Ressourcen zu, indem Sie die [DTU-Dienstebene](sql-database-service-tiers-dtu.md) eines Singletons ändern oder die eDTUs eines Pools für elastische Datenbanken zu einem beliebigen Zeitpunkt erhöhen. Alternativ können Sie bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) entweder die Dienstebene ändern oder die Ressourcen heraufsetzen, die der Datenbank zugeordnet werden.
 
 1. Bei Einzeldatenbanken können Sie bedarfsgesteuert die [Dienstebenen](sql-database-single-database-scale.md) oder [Computeressourcen](sql-database-single-database-scale.md) ändern, um die Datenbankleistung zu steigern.
 2. Ziehen Sie bei mehreren Datenbanken [Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.

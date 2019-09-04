@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 50092db9e2e3670168cbb3440b8cb99eb0c2ac20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714710"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102866"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -34,7 +34,7 @@ Für die Paketerfassung sind folgende Verbindungen erforderlich:
 * Eingehende und ausgehende Verbindung mit 169.254.169.254
 * Eingehende und ausgehende Verbindung mit 168.63.129.16
 
-Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. 
+Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. Auf ähnliche Weise kann das Hinzufügen von benutzerdefinierten Datenverkehrsrouten zu Ihrem Netzwerk Verbindungen mit den oben erwähnten IP-Adressen und Ports verhindern. Stellen Sie sicher, dass diese erreichbar sind. 
 
 ## <a name="start-a-packet-capture"></a>Starten einer Paketerfassung
 

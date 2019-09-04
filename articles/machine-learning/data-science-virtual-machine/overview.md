@@ -15,64 +15,82 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: 2814ad51d2f0f868833cf9c6964b7ea4a8424435
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 22192d67a946f9f466848b65b9cd763b16e6c5f0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574913"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099381"
 ---
-# <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>Was ist Azure Data Science Virtual Machine für Linux und Windows?
+# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Was ist Azure Data Science Virtual Machine für Linux und Windows?
 
-Der virtuelle Computer für Data Science (DSVM) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. 
+Data Science Virtual Machine (DSVM) ist ein angepasstes, auf der Azure-Cloudplattform basierendes VM-Image, das speziell für Data Science erstellt wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. 
 
-Diese Toolkonfigurationen werden sowohl von Datenspezialisten und Entwicklern bei Microsoft als auch von der Data Science-Community gründlich getestet, um ihre Stabilität und allgemeine Verwendbarkeit zu gewährleisten.
+Diese Toolkonfigurationen werden sowohl von Datenspezialisten und Entwicklern bei Microsoft als auch von der Data Science-Community gründlich getestet. Diese Tests tragen dazu bei, die Stabilität und allgemeine Verwendbarkeit zu gewährleisten.
 
 Die DSVM-Instanz ist für folgende Betriebssysteme verfügbar:
 + Windows Server 2016, Windows Server 2012
 + Ubuntu 16.04 LTS und CentOS 7.4
 
-Alle **Deep Learning VM**-Tools wurden in Data Science VM integriert. 
+> [!NOTE]
+> Alle VM-Tools für Deep Learning wurden in Data Science Virtual Machine integriert. 
 
 
-## <a name="what-can-i-do-with-dsvm"></a>Welche Möglichkeiten bietet DSVM?
-Das Ziel des virtuellen Computers für Data Science (DSVM) ist, für Datenexperten aller Fähigkeitsebenen und branchenübergreifend eine reibungslose, vorkonfigurierte und vollständig integrierte Data Science-Umgebung bereitzustellen. Statt auf eigene Faust einen vergleichbaren Arbeitsbereich bereitzustellen, können Sie eine DSVM nutzen – was Ihnen Tage oder sogar _Wochen_ bei den mit Installation, Konfiguration und Paketverwaltung einhergehenden Prozessen spart. Nachdem Ihre DSVM zugeordnet wurde, können Sie sofort mit der Arbeit an Ihren Data Science-Projekten beginnen.
+## <a name="what-can-i-do-with-the-dsvm"></a>Welche Möglichkeiten bietet DSVM?
+Das Ziel von Data Science Virtual Machine besteht darin, Datenexperten aller Art eine branchenübergreifende, reibungslos funktionierende, vorkonfigurierte und vollständig integrierte Data Science-Umgebung bereitzustellen. Sie können also eine DSVM-Instanz bereitstellen, anstatt selbst einen vergleichbaren Arbeitsbereich erstellen zu müssen. Dadurch können Sie Tage oder sogar _Wochen_ bei der Installation, Konfiguration und Paketverwaltung sparen. Nachdem Ihre DSVM zugeordnet wurde, können Sie sofort mit der Arbeit an Ihren Data Science-Projekten beginnen.
 
-Die Data Science-VM ist für das Arbeiten mit einer Vielzahl von Verwendungsszenarien konzipiert und konfiguriert. Sie können Ihre Umgebung vertikal hoch- oder herunterskalieren, wenn sich Ihre Anforderungen ändern. Außerdem können Sie Ihre bevorzugte Sprache zum Programmieren von Data Science-Aufgaben verwenden und weitere Tools installieren, um das System exakt an Ihre Anforderungen anzupassen.
+DSVM ist für ein breites Spektrum von Verwendungsszenarien konzipiert und konfiguriert. Sie können Ihre Umgebung vertikal hoch- oder herunterskalieren, wenn sich Ihre Anforderungen ändern. Außerdem können Sie Ihre bevorzugte Sprache zum Programmieren von Data Science-Aufgaben verwenden und weitere Tools installieren, um das System an Ihre Anforderungen anzupassen.
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Vorkonfigurierter Analyse-Desktop in der Cloud
-Die Data Science-VM stellt eine Basiskonfiguration für Data Science-Teams bereit, die ihre lokalen Desktops mit einem verwalteten Cloud-Desktop ersetzen möchten. Diese Grundlage stellt sicher, dass alle Datenanalysten in einem Team ein konsistentes Setup zum Überprüfen von Experimenten und besserer Zusammenarbeit haben. Sie trägt ferner zu einer Kostenreduzierung durch eine Verringerung des Aufwands für die Systemverwaltung. Dies wiederum führt zu einer Zeitersparnis beim Auswerten, Installieren und Warten der verschiedenen Softwarepakete, die für erweiterte Analysen erforderlich sind.
+DSVM stellt eine Basiskonfiguration für Data Science-Teams bereit, die ihre lokalen Desktops durch einen verwalteten Clouddesktop ersetzen möchten. Diese Grundlage stellt sicher, dass alle Datenanalysten in einem Team ein konsistentes Setup zum Überprüfen von Experimenten und besserer Zusammenarbeit haben. Sie trägt ferner zu einer Kostenreduzierung durch eine Verringerung des Aufwands für die Systemverwaltung. Dies wiederum führt zu einer Zeitersparnis bei der Evaluierung, Installation und Verwaltung von Softwarepaketen für erweiterte Analysen.
 
 ### <a name="data-science-training-and-education"></a>Data Science-Schulung und -Ausbildung
-Ausbilder in Unternehmen und Dozenten, die Data Science-Kurse leiten, stellen in der Regel ein Image eines virtuellen Computers bereit. Auf diese Weise wird sichergestellt, dass für die Kursteilnehmer eine konsistente Umgebung eingerichtet wird und die Beispiele erwartungsgemäß funktionieren. Die Data Science-VM erstellt eine bedarfsgerechte Umgebung mit einem konsistenten Setup, das den Support erleichtert und Inkompatibilitäts-Probleme vermeidet. Wenn diese Umgebungen häufig bereitgestellt werden müssen, insbesondere für kürzere Schulungen, bringt dies erhebliche Vorteile.
+Ausbilder in Unternehmen und Dozenten, die Data Science-Kurse leiten, stellen in der Regel ein Image eines virtuellen Computers bereit. Durch das Image wird gewährleistet, dass für die Kursteilnehmer eine konsistente Umgebung eingerichtet wird und die Beispiele erwartungsgemäß funktionieren. 
+
+DSVM erstellt eine bedarfsgerechte Umgebung mit einem konsistenten Setup, das den Support erleichtert und Inkompatibilitätsprobleme vermeidet. Wenn diese Umgebungen häufig bereitgestellt werden müssen, insbesondere für kürzere Schulungen, bringt dies erhebliche Vorteile.
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Bei Bedarf flexible Kapazität für umfangreiche Projekte
-Data Science Hackathons/Wettbewerbe oder umfangreiche Datenmodelle und Auswertungen erfordern skalierte Hardwarekapazität, in der Regel für kurze Zeit. Die Data Science VM kann dazu beitragen, die Data Science-Umgebung bei Bedarf schnell auf skalierten Servern zu replizieren, auf denen Experimente ausgeführt werden können, die leistungsstarke Computingressourcen erfordern.
+Für Data Science-Hackathons/-Wettbewerbe oder umfangreiche Datenmodelle und Auswertungen wird in der Regel für kurze Zeit eine hochskalierte Hardwarekapazität benötigt. DSVM kann dazu beitragen, die Data Science-Umgebung bei Bedarf schnell auf horizontal skalierten Servern zu replizieren, auf denen Experimente ausgeführt werden können, die leistungsstarke Computingressourcen erfordern.
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Benutzerdefinierte Computeleistung für Azure Notebooks
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) ist ein kostenloser gehosteter Dienst zum Entwickeln, Ausführen und Freigeben von Jupyter Notebooks in der Cloud ohne Installation. Die kostenlose Dienstebene ist jedoch auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt. Um sämtliche Einschränkungen aufzuheben, können Sie ein Notebooks-Projekt an eine Data Science-VM oder eine beliebige andere VM mit einem Jupyter-Server anfügen. Wenn Sie sich mit einem Konto über Azure Active Directory (z. B. einem Unternehmenskonto) bei Azure Notebooks anmelden, zeigt Notebooks automatisch virtuelle Data Science-VMs in allen Abonnements an, die mit diesem Konto verknüpft sind. Sie können [Azure Notebooks eine Data Science VM zuordnen](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier), um die verfügbare Computeleistung zu erhöhen.
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) ist ein kostenloser gehosteter Dienst zum Entwickeln, Ausführen und Freigeben von Jupyter Notebooks in der Cloud ohne Installation. Die kostenlose Dienstebene ist auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt. 
+
+Um sämtliche Einschränkungen aufzuheben, können Sie an eine DSVM-Instanz oder an einen beliebigen anderen virtuellen Computer auf einem Jupyter-Server ein Notebooks-Projekt anfügen. Wenn Sie sich mit einem Konto über Azure Active Directory (z. B. einem Unternehmenskonto) bei Azure Notebooks anmelden, zeigt Notebooks automatisch DSVM-Instanzen in allen Abonnements an, die mit diesem Konto verknüpft sind. Sie können [eine DSVM-Instanz an Azure Notebooks anfügen](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier), um die verfügbare Computeleistung zu erhöhen.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Kurzfristige Experimente und Auswertungen
-Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft ML Server, SQL Server, Visual Studio-Tools, Jupyter, Deep Learning-/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtungsaufwand verwendet werden. Da die Data Science VM schnell eingerichtet werden kann, kann sie auch in anderen kurzfristigen Szenarios verwendet werden. Dies umfasst z.B. die Replikation veröffentlichter Experimente, das Ausführen von Demos und exemplarischer Vorgehensweisen in Onlinesitzungen sowie Konferenz-Tutorials.
+Mit DSVM können Sie mit minimalem Einrichtungsaufwand Tools wie die folgenden evaluieren oder sich mit ihnen vertraut machen:
+
+- Microsoft Machine Learning Server
+- SQL Server
+- Visual Studio-Tools
+- Jupyter
+- Toolkits für maschinelles Lernen und Deep Learning
+- Neue, bei der Community beliebte Tools 
+
+Dank der schnellen Einrichtung können Sie DSVM-Instanzen auch in anderen kurzfristigen Verwendungsszenarien verwenden. Hierzu zählen beispielsweise die Replikation veröffentlichter Experimente sowie Demos und exemplarische Vorgehensweisen in Onlinesitzungen und Konferenztutorials.
 
 ### <a name="deep-learning"></a>Deep Learning
-Der virtuelle Computer für Data Science kann zum Modelltraining mit Deep Learning-Algorithmen auf Basis von GPU-Hardware (Grafikprozessoren) verwendet werden. Durch die Skalierungsfunktionen für virtuelle Computer der Azure-Cloud hilft DSVM Ihnen beim Einsatz von GPU-basierter Hardware in der Cloud nach Bedarf. Sie können zu einer GPU-basierten VM wechseln, wenn Sie große Modelle trainieren oder schnelle Berechnungen benötigen, während Sie den gleichen Betriebssystem-Datenträger beibehalten.  Die Windows Server 2016-Edition von DSVM enthält vorinstallierte GPU-Treiber und -Frameworks sowie GPU-Versionen der Deep Learning-Frameworks. Unter der Linux-Edition ist Deep Learning für GPUs sowohl auf CentOS- als auch auf Ubuntu-DSVMs aktiviert. Sie können die Ubuntu-, CentOS- oder Windows 2016-Edition der Data Science VM auf einer Azure-VM ohne GPU-Aktivierung bereitstellen. In diesem Fall werden aber alle Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt. Informieren Sie sich ausführlicher über die [verfügbaren Deep Learning- und KI-Frameworks](dsvm-deep-learning-ai-frameworks.md).
+In DSVM können Ihre Trainingsmodelle Deep Learning-Algorithmen auf Hardware verwenden, die auf Grafikprozessoren (Graphics Processing Units, GPUs) basiert. Dank der VM-Skalierungsfunktionen der Azure-Plattform unterstützt Sie DSVM bei der bedarfsgerechten Nutzung von GPU-basierter Hardware in der Cloud. Sie können zu einem GPU-basierten virtuellen Computer wechseln, wenn Sie große Modelle trainieren oder schnelle Berechnungen benötigen, und dabei den gleichen Betriebssystem-Datenträger beibehalten.  
+
+Die Windows Server 2016-Edition von DSVM enthält vorinstallierte GPU-Treiber und -Frameworks sowie GPU-Versionen der Deep Learning-Frameworks. Unter der Linux-Edition ist GPU-basiertes Deep Learning sowohl auf der DSVM-Instanz mit CentOS als auch auf der DSVM-Instanz mit Ubuntu aktiviert. 
+
+Sie können die Ubuntu-, CentOS- oder Windows 2016-Edition von DSVM auch auf einem virtuellen Azure-Computer bereitstellen, der nicht auf GPUs basiert. In diesem Fall werden aber alle Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt.
  
-Informieren Sie sich ausführlicher über die [verfügbaren Deep Learning- und KI-Frameworks](dsvm-deep-learning-ai-frameworks.md).
+[Informieren Sie sich ausführlicher über die verfügbaren Deep Learning- und KI-Frameworks.](dsvm-deep-learning-ai-frameworks.md)
 
 <a name="included"></a>
 
-## <a name="whats-included-on-dsvm"></a>Was ist in DSVM enthalten?
-Der virtuelle Computer für Data Science hat viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. Außerdem enthält er Tools, die die Nutzung verschiedener Daten- und Analyseprodukte von Azure vereinfachen, z.B. Microsoft ML Server (R, Python) für die Erstellung von Vorhersagemodellen oder SQL Server 2017 für die Untersuchung von Datasets in größerem Umfang. Data Science VM umfasst zahlreiche weitere Tools aus der Open-Source-Community und von Microsoft sowie [Beispielcode und Notebooks](dsvm-samples-and-walkthroughs.md). 
+## <a name="whats-included-on-the-dsvm"></a>Was ist in DSVM enthalten?
+Der virtuelle Computer für Data Science hat viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. Darüber hinaus enthält er Tools, die die Arbeit mit verschiedenen Azure-Daten und Analyse-Produkten erleichtern. Diese Produkte beinhalten Microsoft Machine Learning Server (R, Python) für die Erstellung von Vorhersagemodellen sowie SQL Server 2017 für die umfangreiche Erkundung von Datasets. DSVM enthält außerdem weitere Tools aus der Open-Source-Community und von Microsoft sowie [Beispielcode und Notebooks](dsvm-samples-and-walkthroughs.md). 
 
-Tools und Plattformen:
+Im Anschluss folgt eine Liste der Tools und Plattformen:
 + [Unterstützte Programmiersprachen](dsvm-languages.md)
 
 + [Unterstützte Datenplattformen](dsvm-data-platforms.md)
 
 + [Entwicklungstools und IDEs](dsvm-tools-development.md)
 
-+ [Deep Learning- und KI-Frameworks](dsvm-deep-learning-ai-frameworks.md)
++ [Deep Learning- und KI-Frameworks](dsvm-deep-learning-ai-frameworks.md)
 
 + [Machine Learning- und Data Science-Tools](dsvm-ml-data-science-tools.md)
 
@@ -85,72 +103,72 @@ Die folgende Tabelle enthält eine Aufzählung und einen Vergleich der wichtigst
 | **Tool**                                                           | **Windows-Edition** | **Linux-Edition** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) mit verbreiteten vorinstallierten Paketen   |J                      | J             |
-| [Microsoft ML Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition enthält: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler): paralleles und verteiltes Hochleistungsframework (R und Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;*   [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) – neue moderne ML-Algorithmen von Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R- und Python-Operationalisierung](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |J                      | J |
-| [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) Pro-Plus mit gemeinsamer Aktivierung: Excel, Word und PowerPoint   |J                      |N              |
+| [Microsoft Machine Learning Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Developer Edition enthält: <br />  &nbsp;&nbsp;&nbsp;&nbsp; [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler): paralleles und verteiltes Hochleistungsframework (R und Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp; [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package): neue moderne Machine Learning-Algorithmen von Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp; [R- und Python-Operationalisierung](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |J                      | J |
+| [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) ProPlus mit gemeinsamer Aktivierung: Excel, Word und PowerPoint   |J                      |N              |
 | [Anaconda Python](https://www.continuum.io/) 2.7 und 3.5 mit beliebten vorinstallierten Paketen    |J                      |J              |
 | [JuliaPro](https://juliacomputing.com/products/juliapro.html) mit beliebten vorinstallierten Paketen                         |J                      |J              |
 | Relationale Datenbanken                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
-| Datenbanktools                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC-Treiber| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (Abfrage-Tool), <br /> * bcp, sqlcmd <br /> * ODBC/JDBC-Treiber|
-| Skalierbare In-Database-Analyse mit SQL Server-ML-Diensten (R, Python) | J     |N              |
-| **[Jupyter-Notebook-Server](https://jupyter.org/) mit folgenden Kernels,**                                  | J     | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* R | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* Python | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | J | J |
-|     &nbsp;&nbsp;&nbsp;&nbsp;*   [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (nur Ubuntu) |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | J |
+| Datenbanktools                                                       |  SQL Server Management Studio <br/> SQL Server Integration Services<br/> [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  ODBC/JDBC-Treiber|  [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (Abfragetool), <br />  bcp, sqlcmd <br />  ODBC/JDBC-Treiber|
+| Skalierbare datenbankinterne Analysen mit SQL Server Machine Learning Services (R, Python) | J     |N              |
+| [Jupyter Notebook-Server](https://jupyter.org/) mit folgenden Kernels:                                  | J     | J |
+|     &nbsp;&nbsp;&nbsp;&nbsp; R | J | J |
+|     &nbsp;&nbsp;&nbsp;&nbsp; Python | J | J |
+|     &nbsp;&nbsp;&nbsp;&nbsp; Julia | J | J |
+|     &nbsp;&nbsp;&nbsp;&nbsp; PySpark | J | J |
+|     &nbsp;&nbsp;&nbsp;&nbsp; [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (nur Ubuntu) |
+|     &nbsp;&nbsp;&nbsp;&nbsp; SparkR     | N | J |
 | JupyterHub (Notebook-Server für mehrere Benutzer)| N | J |
 | JupyterLab (Notebook-Server für mehrere Benutzer) | N | Y (nur Ubuntu) |
-| **Entwicklungstools, IDEs und Code-Editoren**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2019 (Community Edition)](https://www.visualstudio.com/community/) mit Git-Plug-In, Azure HDInsight (Hadoop), Data Lake, SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs) und [R Tools für Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Visual Studio Code](https://code.visualstudio.com/) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Atom](https://atom.io/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Juno (Julia IDE)](https://junolab.org/)| J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Vim und Emacs | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Git und GitBash | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* .NET Framework | J | N |
+| Entwicklungstools, IDEs und Code-Editoren:| | |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Visual Studio 2019 (Community Edition)](https://www.visualstudio.com/community/) mit Git-Plug-In, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs) und [R Tools für Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Visual Studio Code](https://code.visualstudio.com/) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Atom](https://atom.io/) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Juno (Julia IDE)](https://junolab.org/)| J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; Vim und Emacs | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; Git und Git Bash | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; OpenJDK | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; .NET Framework | J | N |
 | Power BI Desktop | J | N |
 | SDKs zum Zugriff auf Azure und Cortana Intelligence Sammlung von Diensten | J | J |
-| **Datenverschiebungs- und -verwaltungstools** | | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Azure-Speicher-Explorer | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Azure PowerShell | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Blob-FUSE-Treiber](https://github.com/Azure/azure-storage-fuse) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Adlcopy (Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [DocDB-Datenmigrationstool](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft-Datenverwaltungsgateway:](https://msdn.microsoft.com/library/dn879362.aspx) Verschieben von Daten zwischen lokalen Quellen und der Cloud | J | N |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Unix/Linux-Befehlszeilenprogramme | J | J |
-| [Apache Drill](https://drill.apache.org) für das Durchsuchen von Daten | J | J |
-| **Tools für maschinelles Lernen** |||
-| &nbsp;&nbsp;&nbsp;&nbsp;* Integration mit [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) (R, Python) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Xgboost](https://github.com/dmlc/xgboost) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Rattle](https://togaware.com/rattle/) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (nur Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | N | Y (nur Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/), [Sparkling Water](https://www.h2o.ai/sparkling-water/) | N | Y (nur Ubuntu) |
-| **Deep Learning-Tools** <br>Alle Tools können mit einer GPU oder CPU verwendet werden. |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | J | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Tensorflow](https://www.tensorflow.org/) | J (Windows 2016) | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | N | J (Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [MXNet](https://mxnet.io/) | J (Windows 2016) | J|
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Caffe &amp; Caffe2](https://github.com/caffe2/caffe2) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Chainer](https://chainer.org/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Torch](http://torch.ch/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Theano](https://github.com/Theano/Theano) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Keras](https://keras.io/)| N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](https://pytorch.org/)| N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;*   [Nvidia Digits](https://github.com/NVIDIA/DIGITS) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet Model Server](https://github.com/awslabs/mxnet-model-server) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | J |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA, cuDNN, NVIDIA-Treiber](https://developer.nvidia.com/cuda-toolkit) | J | J |
+| Tools für Datenverschiebung und -verwaltung: | | |
+| &nbsp;&nbsp;&nbsp;&nbsp; Azure Storage Explorer | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; Azure PowerShell | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp; [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Blob-FUSE-Treiber](https://github.com/Azure/azure-storage-fuse) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [AdlCopy (Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Azure Cosmos DB: Datenmigrationstool](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Microsoft-Datenverwaltungsgateway](https://msdn.microsoft.com/library/dn879362.aspx): Verschieben von Daten zwischen der lokalen Umgebung und der Cloud | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp; Unix/Linux-Befehlszeilentools | J | J |
+| [Apache Drill](https://drill.apache.org) für die Erkundung von Daten | J | J |
+| Tools für maschinelles Lernen: |||
+| &nbsp;&nbsp;&nbsp;&nbsp; Integration mit [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) (R, Python) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [XGBoost](https://github.com/dmlc/xgboost) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Rattle](https://togaware.com/rattle/) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (nur Ubuntu) |
+| &nbsp;&nbsp;&nbsp;&nbsp; [CatBoost](https://tech.yandex.com/catboost/) | N | Y (nur Ubuntu) |
+| &nbsp;&nbsp;&nbsp;&nbsp; [H2O](https://www.h2o.ai/h2o/), [Sparkling Water](https://www.h2o.ai/sparkling-water/) | N | Y (nur Ubuntu) |
+| Deep Learning-Tools, die auf einer GPU oder CPU funktionieren: |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | J | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [TensorFlow](https://www.tensorflow.org/) | J (Windows 2016) | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Horovod](https://github.com/uber/horovod) | N | J (Ubuntu) |
+| &nbsp;&nbsp;&nbsp;&nbsp; [MXNet](https://mxnet.io/) | J (Windows 2016) | J|
+| &nbsp;&nbsp;&nbsp;&nbsp; [Caffe und Caffe2](https://github.com/caffe2/caffe2) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Chainer](https://chainer.org/) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Torch](http://torch.ch/) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Theano](https://github.com/Theano/Theano) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [Keras](https://keras.io/)| N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [PyTorch](https://pytorch.org/)| N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [NVidia Digits](https://github.com/NVIDIA/DIGITS) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [MXNet Model Server](https://github.com/awslabs/mxnet-model-server) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [TensorRT](https://developer.nvidia.com/tensorrt) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp; [CUDA-, cuDNN-, NVIDIA-Treiber](https://developer.nvidia.com/cuda-toolkit) | J | J |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

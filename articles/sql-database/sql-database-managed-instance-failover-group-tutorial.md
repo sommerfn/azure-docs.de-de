@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624983"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103082"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe
 
@@ -29,7 +29,9 @@ Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe. In 
 > - Testfailover
 
   > [!NOTE]
-  > Das Erstellen einer verwalteten Instanz kann sehr viel Zeit in Anspruch nehmen. Folglich kann es mehrere Stunden dauern, bis Sie dieses Tutorial fertiggestellt haben. Weitere Informationen zu den Bereitstellungszeiten finden Sie unter [Verwaltungsvorgänge für verwaltete Instanzen](sql-database-managed-instance.md#managed-instance-management-operations). Die Verwendung von Failovergruppen mit verwalteten Instanzen befindet sich zurzeit in der Vorschau. 
+  > - Stellen Sie beim Durcharbeiten dieses Tutorials sicher, dass Sie Ihre Ressourcen mit den [Voraussetzungen für das Einrichten von Failovergruppen für eine verwaltete Instanz](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets) konfigurieren. 
+  > - Das Erstellen einer verwalteten Instanz kann sehr viel Zeit in Anspruch nehmen. Folglich kann es mehrere Stunden dauern, bis Sie dieses Tutorial fertiggestellt haben. Weitere Informationen zu den Bereitstellungszeiten finden Sie unter [Verwaltungsvorgänge für verwaltete Instanzen](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - Die Verwendung von Failovergruppen mit verwalteten Instanzen befindet sich zurzeit in der Vorschau. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,16 +40,18 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 - Falls Sie noch nicht über ein Azure-Abonnement verfügen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/). 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1\. Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1\. Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
 In diesem Schritt erstellen Sie die Ressourcengruppe und die primäre verwaltete Instanz für Ihre Failovergruppe mithilfe des Azure-Portals. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**. 
-1. Geben Sie `managed instance` in das Suchfeld ein, und wählen Sie die Option für die verwaltete Azure SQL-Instanz aus. 
-1. Wählen Sie **Erstellen** aus, um die Erstellungsseite für **Verwaltete SQL-Instanz** zu starten. 
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details anzeigen“ auswählen.
+1. Wählen Sie auf der Kachel **Verwaltete SQL-Instanzen** die Option **Erstellen** aus. 
+
+    ![Auswählen der verwalteten Instanz](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Auf der Seite **Verwaltete Azure SQL-Datenbank-Instanz erstellen** auf der Registerkarte **Grundlagen**:
     1. Wählen Sie unter **Projektdetails** Ihr **Abonnement** aus der Dropdownliste aus, und wählen Sie dann **Neu erstellen** für die Ressourcengruppe aus. Geben Sie einen Namen für Ihre Ressourcengruppe ein, etwa `myResourceGroup`. 
-    1. Geben Sie unter **Details der verwalteten Instanz** den Namen Ihrer verwalteten Instanz und die Region an, in der Sie die verwaltete Instanz bereitstellen möchten. Achten Sie darauf, eine Region mit einem [Regionspaar](/azure/best-practices-availability-paired-regions) auszuwählen. Belassen Sie für **Compute und Speicher** die Standardwerte. 
+    1. Geben Sie unter **Details der verwalteten Instanz** den Namen Ihrer verwalteten Instanz und die Region an, in der Sie die verwaltete Instanz bereitstellen möchten. Belassen Sie für **Compute und Speicher** die Standardwerte. 
     1. Geben Sie unter **Administratorkonto** eine Administratoranmeldung an (z.B. `azureuser`) sowie ein komplexes Administratorkennwort. 
 
     ![Erstellen der primären verwalteten Instanz](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk zu erstellen:
     | **Name** |  Der Name des virtuellen Netzwerks, das von der sekundären verwalteten Instanz verwendet werden soll, z.B `vnet-sql-mi-secondary`. |
     | **Adressraum** | Der Adressraum für Ihr virtuelles Netzwerk, z.B. `10.128.0.0/16`. | 
     | **Abonnement** | Das Abonnement, in dem sich Ihre primäre verwaltete Instanz und die Ressourcengruppe befinden. |
-    | **Region** | Der Speicherort, an dem die sekundäre verwaltete Instanz bereitgestellt werden soll. Diese sollte sich in einem [Regionspaar](/azure/best-practices-availability-paired-regions) der primären verwalteten Instanz befinden.  |
+    | **Region** | Der Standort, an dem Ihre sekundäre verwaltete Instanz bereitgestellt wird. |
     | **Subnetz** | Der Name für Ihr Subnetz. `default` wird standardmäßig bereitgestellt. |
     | **Adressbereich**| Der Adressbereich für das Subnetz. Dieser muss sich von dem Subnetzadressbereich unterscheiden, der vom virtuellen Netzwerk der primären verwalteten Instanz verwendet wird, z.B. `10.128.0.0/24`.  |
     | &nbsp; | &nbsp; |
@@ -92,13 +96,16 @@ In diesem Schritt erstellen Sie eine sekundäre verwaltete Instanz im Azure-Port
 
 Die zweite verwaltete Instanz muss die folgenden Bedingungen erfüllen:
 - Sie muss leer sein. 
-- Sie muss sich in einem [Regionspaar](/azure/best-practices-availability-paired-regions) mit der zugehörigen primären verwalteten Instanz befinden. 
 - Sie muss über ein anderes Subnetz und einen anderen IP-Adressbereich als die primäre verwaltete Instanz verfügen. 
 
 Führen Sie die folgenden Schritte aus, um Ihre sekundäre verwaltete Instanz zu erstellen: 
 
-1. Wählen Sie im [Azure-Portal](http://portal.azure.com) die Option **Ressource erstellen** aus, und suchen Sie dann nach *Verwaltete Azure SQL-Instanz*. 
-1. Wählen Sie die von Microsoft veröffentlichte Option **Verwaltete Azure SQL-Instanz** aus, und klicken Sie dann auf der nächsten Seite auf **Erstellen**.
+1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details anzeigen“ auswählen.
+1. Wählen Sie auf der Kachel **Verwaltete SQL-Instanzen** die Option **Erstellen** aus. 
+
+    ![Auswählen der verwalteten Instanz](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Füllen Sie auf der Registerkarte **Grundlagen** der Seite **Verwaltete Azure SQL-Datenbank-Instanz erstellen** die Pflichtfelder aus, um die sekundäre verwaltete Instanz zu konfigurieren. 
 
    Die folgende Tabelle enthält die erforderlichen Werte für die sekundäre verwaltete Instanz:
@@ -108,7 +115,7 @@ Führen Sie die folgenden Schritte aus, um Ihre sekundäre verwaltete Instanz zu
     | **Abonnement** |  Das Abonnement, in dem sich Ihre primäre verwaltete Instanz befindet. |
     | **Ressourcengruppe**| Die Ressourcengruppe, in der sich Ihre primäre verwaltete Instanz befindet. |
     | **Name der verwalteten Instanz** | Der Name der neuen sekundären verwalteten Instanz, z.B. `sql-mi-secondary`  | 
-    | **Region**| Das [Regionspaar](/azure/best-practices-availability-paired-regions) für die sekundäre verwaltete Instanz.  |
+    | **Region**| Der Standort für die sekundäre verwaltete Instanz.  |
     | **Administratoranmeldung für verwaltete Instanz** | Die Anmeldung, die Sie für Ihre neue sekundäre verwaltete Instanz verwenden möchten, z.B. `azureuser`. |
     | **Kennwort** | Ein komplexes Kennwort, das von der Administratoranmeldung für die neue sekundäre verwaltete Instanz verwendet wird.  |
     | &nbsp; | &nbsp; |
@@ -208,9 +215,8 @@ Gehen Sie zum Konfigurieren der Konnektivität wie folgt vor:
 ## <a name="7---create-a-failover-group"></a>7\. Erstellen einer Failovergruppe
 In diesem Schritt erstellen Sie die Failovergruppe und fügen ihr beide verwalteten Instanzen hinzu. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Alle Dienste**, und geben Sie `managed instance` in das Suchfeld ein. 
-1. (Optional) Wählen Sie den Stern neben **Verwaltete SQL-Instanzen** aus, um Ihrer linken Navigationsleiste verwaltete Instanzen als Verknüpfung hinzuzufügen. 
-1. Wählen Sie **Verwaltete SQL-Instanzen** aus, und wählen Sie Ihre primäre verwaltete Instanz aus, beispielsweise `sql-mi-primary`. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie die primäre verwaltete Instanz aus, die Sie im ersten Abschnitt erstellt haben, z. B. `sql-mi-primary`. 
 1. Navigieren Sie unter **Einstellungen** zu **Instanzfailovergruppen**, und wählen Sie dann **Gruppe hinzufügen** aus, um die Seite **Instanzfailovergruppe** zu öffnen. 
 
    ![Hinzufügen einer Failovergruppe](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

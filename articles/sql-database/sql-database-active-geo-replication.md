@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935068"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092807"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Erstellen und Verwenden der aktiven Georeplikation
 
@@ -106,6 +106,10 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 ## <a name="preparing-secondary-database-for-failover"></a>Vorbereiten der sekundären Datenbank für Failover
 
 Um sicherzustellen, dass Ihre Anwendung nach einem Failover sofort auf die neue primäre Datenbank zugreifen kann, müssen Sie sicherstellen, dass die Authentifizierungsanforderungen für den sekundären Server und die Datenbank ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md). Um die Kompatibilität nach einem Failover zu gewährleisten, stellen Sie sicher, dass die Sicherungsaufbewahrungsrichtlinie für die sekundäre Datenbank mit der der primären Datenbank übereinstimmt. Diese Einstellungen sind nicht Teil der Datenbank und werden nicht repliziert. Standardmäßig wird die sekundäre Datenbank mit einer standardmäßigen PITR-Aufbewahrungsdauer von sieben Tagen konfiguriert. Weitere Informationen finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+
+> [!IMPORTANT]
+> Wenn Ihre Datenbank Mitglied einer Failovergruppe ist, können Sie das Failover nicht mit dem Befehl für ein Failover mit Georeplikation initiieren. Verwenden Sie den Failoverbefehl für die Gruppe. Wenn Sie ein Failover für eine einzelne Datenbank durchführen müssen, müssen Sie sie zuerst aus der Failovergruppe entfernen. Weitere Informationen finden Sie unter [Failovergruppen](sql-database-auto-failover-group.md). 
+
 
 ## <a name="configuring-secondary-database"></a>Konfigurieren einer sekundären Datenbank
 

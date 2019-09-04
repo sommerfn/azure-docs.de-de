@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680237"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072338"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -62,10 +61,11 @@ So greifen Sie auf Metriken zu:
 
 1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken**.
 
-    ![Metriken](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Successful Gateway Requests** (Erfolgreiche Gatewayanforderungen). Sie können auch weitere Metriken zum Diagramm hinzufügen.
-3. Im Diagramm ist die Gesamtanzahl erfolgreicher API-Aufrufe gezeigt.
+1. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Anforderungen**. 
+1. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt.
+1. Das Diagramm kann anhand der Dimensionen der Metrik **Anforderungen** gefiltert werden. Klicken Sie beispielsweise auf **Filter hinzufügen**, wählen Sie **Backend Response Code** (Antwortcode des Back-Ends) aus, und geben Sie als Wert 500 ein. Das Diagramm zeigt nun die Anzahl von Anforderungen an, für die im API-Back-End ein Fehler auftrat.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Einrichten einer Warnungsregel für nicht autorisierte Anforderungen
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: de5febaeecd176a8718364720132d3fa4433c57f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 52bbb52b13a3606e3ddc8deca2da8505233c9352
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443624"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062014"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-Ausgabe an Azure Cosmos DB  
 Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt.
@@ -34,7 +34,7 @@ Die Azure Cosmos DB-Ausgabe in Stream Analytics ermöglicht das Schreiben der Er
 Nachstehend sind einige der Cosmos DB-Containeroptionen beschrieben.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Optimieren von Konsistenz, Verfügbarkeit und Latenz
-Entsprechend Ihren Anwendungsanforderungen lässt Azure Cosmos DB das Optimieren der Datenbank und Container zu und macht Kompromisse zwischen Konsistenz, Verfügbarkeit, Latenz und Durchsatz. Abhängig von den Lesekonsistenzebenen, die Ihr Szenario hinsichtlich Lese- und Schreiblatenz benötigt, können Sie in Ihrem Datenbankkonto eine Konsistenzebene wählen. Den Durchsatz können Sie verbessern, indem Sie Anforderungseinheiten (Request Units, RUs) für den Container zentral hochskalieren. Außerdem aktiviert Azure Cosmos DB für jeden CRUD-Vorgang in Ihrem Container die synchrone Indizierung. Dies ist eine andere nützliche Option zum Steuern der Schreib-/Leseleistung in Azure Cosmos DB. Weitere Informationen finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../cosmos-db/consistency-levels.md).
+Entsprechend Ihren Anwendungsanforderungen lässt Azure Cosmos DB das Optimieren der Datenbank und Container sowie Kompromisse zwischen Konsistenz, Verfügbarkeit, Latenz und Durchsatz zu. Abhängig von den Lesekonsistenzebenen, die Ihr Szenario hinsichtlich Lese- und Schreiblatenz benötigt, können Sie in Ihrem Datenbankkonto eine Konsistenzebene wählen. Den Durchsatz können Sie verbessern, indem Sie Anforderungseinheiten (Request Units, RUs) für den Container zentral hochskalieren. Außerdem aktiviert Azure Cosmos DB für jeden CRUD-Vorgang in Ihrem Container die synchrone Indizierung. Dies ist eine andere nützliche Option zum Steuern der Schreib-/Leseleistung in Azure Cosmos DB. Weitere Informationen finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../cosmos-db/consistency-levels.md).
 
 ## <a name="upserts-from-stream-analytics"></a>Einfügen/Aktualisieren über Stream Analytics
 Die Stream Analytics-Integration mit Azure Cosmos DB ermöglicht das Einfügen oder Aktualisieren von Datensätzen in Ihrem Container auf der Grundlage einer angegebenen Dokument-ID-Spalte. Dies wird auch als *Upsert*(Kunstwort aus Update und Insert) bezeichnet.
@@ -57,7 +57,7 @@ Abhängig von Ihrer Partitionsschlüsselauswahl wird möglicherweise diese _Warn
 
 `CosmosDB Output contains multiple rows and just one row per partition key. If the output latency is higher than expected, consider choosing a partition key that contains at least several hundred records per partition key.`
 
-Es ist wichtig, eine Partitionsschlüsseleigenschaft zu wählen, die eine Reihe von unterschiedlichen Werten hat und Ihnen ermöglicht, Ihre Workload gleichmäßig auf diese Werte zu verteilen. Als natürliches Artefakt der Partitionierung werden Anfragen mit dem gleichen Partitionsschlüssel durch den maximalen Durchsatz einer einzelnen Partition begrenzt. Darüber hinaus ist die Speichergröße für Dokumente mit dem gleichen Partitionsschlüssel auf 10GB beschränkt. Ein idealer Partitionsschlüssel ist einer, der häufig als Filter in Ihren Abfragen erscheint und genügend Kardinalität besitzt, um sicherzustellen, dass Ihre Lösung skalierbar ist.
+Es ist wichtig, eine Partitionsschlüsseleigenschaft zu wählen, die eine Reihe von unterschiedlichen Werten hat und Ihnen ermöglicht, Ihre Workload gleichmäßig auf diese Werte zu verteilen. Als natürliches Artefakt der Partitionierung werden Anfragen mit dem gleichen Partitionsschlüssel durch den maximalen Durchsatz einer einzelnen Partition begrenzt. Darüber hinaus ist die Speichergröße für Dokumente mit dem gleichen Partitionsschlüssel auf 10 GB beschränkt. Ein idealer Partitionsschlüssel ist einer, der häufig als Filter in Ihren Abfragen erscheint und genügend Kardinalität besitzt, um sicherzustellen, dass Ihre Lösung skalierbar ist.
 
 Ein Partitionsschlüssel ist auch die Grenze für Transaktionen in DocumentDB gespeicherter Prozeduren und Trigger. Sie sollten den Partitionsschlüssel so auswählen, dass Dokumente, die gemeinsam in Transaktionen auftreten, denselben Partitionsschlüsselwert haben. Der Artikel [Partitionierung in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) bietet ausführlichere Informationen zur Auswahl eines Partitionsschlüssels.
 
@@ -66,7 +66,7 @@ Bei festen Azure Cosmos DB-Containern lässt Stream Analytics kein zentrales ode
 Die Möglichkeit, in mehrere feste Container schreiben zu können, ist veraltet und wird nicht zur horizontalen Skalierung Ihres Stream Analytics-Auftrags empfohlen.
 
 ## <a name="improved-throughput-with-compatibility-level-12"></a>Verbesserter Durchsatz mit Kompatibilitätsgrad 1.2
-Bei Kompatibilitätsgrad 1.2 unterstützt Stream Analytics die native Integration in den Massenschreibvorgang in Cosmos DB. Dies ermöglicht ein effektives Schreiben in Cosmos DB mit maximaler Durchsatzleistung und effizientem Umgang mit Drosselungsanforderungen. Der verbesserte Schreibmechanismus ist unter einem neuen Kompatibilitätsgrad aufgrund eines Unterschieds bei Upsert-Vorgängen verfügbar.  Vor Kompatibilitätsgrad 1.2 sieht das Upsert-Verhalten ein Einfügen oder Zusammenführen des Dokuments vor. Für Kompatibilitätsgrad 1.2 wurde das Upsert-Verhalten so geändert, dass das Dokument eingefügt oder ersetzt wird. 
+Bei Kompatibilitätsgrad 1.2 unterstützt Stream Analytics die native Integration in den Massenschreibvorgang in Cosmos DB. Dies ermöglicht ein effektives Schreiben in Cosmos DB mit maximaler Durchsatzleistung und effizientem Umgang mit Drosselungsanforderungen. Der verbesserte Schreibmechanismus ist unter einem neuen Kompatibilitätsgrad aufgrund eines Unterschieds bei Upsert-Vorgängen verfügbar.  Vor Kompatibilitätsgrad 1.2 sieht das Upsert-Verhalten ein Einfügen oder Zusammenführen des Dokuments vor. Für Kompatibilitätsgrad 1.2 wurde das Upsert-Verhalten so geändert, dass das Dokument eingefügt oder ersetzt wird.
 
 Vor Kompatibilitätsgrad 1.2 wird eine benutzerdefinierte gespeicherte Prozedur verwendet, um Upsert-Vorgänge in einem Massenvorgang gemäß dem Partitionsschlüssel in Cosmos DB durchzuführen, wobei ein Batch als Transaktion geschrieben wird. Sogar wenn ein einzelner Datensatz einen vorübergehenden Fehler (Drosselung) aufweist, muss der ganze Batch wiederholt werden. Dadurch wurden Szenarien mit selbst angemessener Drosselung relativ langsamer. Der folgende Vergleich zeigt, wie sich solche Aufträge bei Kompatibilitätsgrad 1.2 verhalten.
 
@@ -79,7 +79,7 @@ Die Rate der im Event Hub eingehenden Ereignisse ist zweimal höher als die der 
 ![Vergleich von Cosmos DB-Metriken](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
 Mit Kompatibilitätsgrad 1.2 ist Stream Analytics intelligenter in der Lage, 100% des verfügbaren Durchsatzes in Cosmos DB zu nutzen, mit sehr wenigen erneuten Übermittlungen aufgrund von Drosselung/Ratenbegrenzung. Dies ermöglicht eine bessere Erfahrung für andere Workloads, wie z.B. Abfragen, die gleichzeitig auf den Container angewendet werden. Für den Fall, dass Sie ausprobieren müssen, wie ASA mit Cosmos DB als Senke für 1.000 bis 10.000 Nachrichten pro Sekunde skaliert, finden Sie hier ein [Azure-Beispielprojekt](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb), das Ihnen dies ermöglicht.
-Beachten Sie, dass der Cosmos DB-Ausgabedurchsatz bei Kompatibilitätsgrad 1.0 und 1.1 identisch ist. Da Kompatibilitätsgrad 1.2 nicht die Standardeinstellung ist, können Sie den [Kompatibilitätsgrad](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) für einen Stream Analytics-Auftrag über das Portal oder mithilfe des [REST-API-Aufrufs „create job“](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job) festlegen. Es wird *ausdrücklich empfohlen*, Kompatibilitätsgrad 1.2 in ASA mit Cosmos DB zu verwenden. 
+Beachten Sie, dass der Cosmos DB-Ausgabedurchsatz bei Kompatibilitätsgrad 1.0 und 1.1 identisch ist. Da Kompatibilitätsgrad 1.2 nicht die Standardeinstellung ist, können Sie den [Kompatibilitätsgrad](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) für einen Stream Analytics-Auftrag über das Portal oder mithilfe des [REST-API-Aufrufs „create job“](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job) festlegen. Es wird *ausdrücklich empfohlen*, Kompatibilitätsgrad 1.2 in ASA mit Cosmos DB zu verwenden.
 
 
 
@@ -92,9 +92,18 @@ Beim Erstellen einer Cosmos DB-Datenbank als Ausgabe in Stream Analytics wird ei
 |Feld           | BESCHREIBUNG|
 |-------------   | -------------|
 |Ausgabealias    | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage.|
-|Abonnement    | Wählen Sie das Azure-Abonnement.|
+|Subscription    | Wählen Sie das Azure-Abonnement.|
 |Konto-ID      | Der Name oder Endpunkt-URI des Azure Cosmos DB-Kontos.|
 |Kontoschlüssel     | Der Schlüssel für den gemeinsamen Zugriff für das Azure Cosmos DB-Konto.|
 |Datenbank        | Der Name der Azure Cosmos DB-Datenbank.|
 |Containername | Der zu verwendende Containername. `MyContainer` ist eine gültige Beispieleingabe. Ein Container mit dem Namen `MyContainer` muss vorhanden sein.  |
 |Dokument-ID     | Optional. Der Spaltenname in Ausgabeergebnissen, der als eindeutiger Schlüssel verwendet wird, auf dem Einfüge- oder Aktualisierungsvorgänge basieren müssen. Wenn das Feld leer gelassen wird, werden sämtliche Ereignisse eingefügt, ohne Update-Option.|
+
+## <a name="error-handling-and-retries"></a>Fehlerbehandlung und Wiederholungsversuche
+
+Bei einem vorübergehenden Fehler werden bei Nichtverfügbarkeit oder Drosselung des Diensts beim Senden von Ereignissen an Cosmos DB in Stream Analytics unbegrenzt viele Wiederholungen ausgeführt, um den Vorgang erfolgreich abzuschließen. Es gibt jedoch einige Fehler, für die keine Wiederholungsversuche ausgeführt werden:
+
+- Unauthorized (HTTP-Fehlercode 401)
+- NotFound (HTTP-Fehlercode 404)
+- Forbidden (HTTP-Fehlercode 403)
+- BadRequest (HTTP-Fehlercode 400)

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951902"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020182"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Erstellen einer Python-Web-App (Django) mit PostgreSQL in Azure App Service
 
@@ -142,7 +142,7 @@ Quit the server with CONTROL-C.
 
 Navigieren Sie in einem Browser zu `http://localhost:8000`. Die Meldung `No polls are available.` sollte angezeigt werden. 
 
-Navigieren Sie zu `http://localhost:8000/admin`, und melden Sie sich mit dem Administratorbenutzer an, den Sie im letzten Schritt erstellt haben. Klicken Sie neben **Fragen** auf **Hinzufügen**, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
+Navigieren Sie zu `http://localhost:8000/admin`, und melden Sie sich mit dem Administratorbenutzer an, den Sie im letzten Schritt erstellt haben. Wählen Sie neben **Fragen** die Option **Hinzufügen** aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
 
 ![Lokal ausgeführte Python Django-Anwendung](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
@@ -400,7 +400,7 @@ Navigieren Sie zu `<app-name>.azurewebsites.net`, und melden Sie sich als der Ad
 
 Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte App anzuzeigen.
 
-Klicken Sie im linken Menü auf **App Services**, und klicken Sie dann auf den Namen Ihrer Azure-App.
+Wählen Sie im linken Menü **App Services** und anschließend den Namen Ihrer Azure-App aus.
 
 ![Portalnavigation zur Azure-App](./media/tutorial-python-postgresql-app/app-resource.png)
 

@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535205"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982326"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -65,7 +65,7 @@ Im Grundsatz sind die Zielgruppen unterschiedlich:
 
 Ein Cognitive Service stellt Ihnen ein trainiertes Modell bereit. Dadurch werden Daten und ein Algorithmus verknüpft, die über eine REST-API oder ein SDK verfügbar sind. Abhängig von Ihrem Szenario können Sie diesen Dienst innerhalb von Minuten implementieren.  Ein Cognitive Service bietet Antworten auf allgemeine Probleme, etwa Schlüsselausdrücke in Texten oder Elementerkennung in Bildern. 
 
-Machine Learning ist ein Prozess, für dessen erfolgreiche Implementierung üblicherweise ein längerer Zeitraum erforderlich ist. Diese Zeit wird für Datensammlung, Bereinigung, Transformation, Algorithmusauswahl, Modelltraining und Bereitstellung aufgewendet, um die gleiche Funktionalität zu erreichen, die von einem Cognitive Service bereitgestellt wird. Mit Machine Learning können Sie Antworten auf alle Arten von Problemen bereitstellen, einschließlich besonders spezieller Probleme. Diese mit Machine Learning zu lösenden Probleme erfordern Vertrautheit mit mindestens einem der folgenden Punkte: Thema, maschinelles Lernen, Data Science.
+Machine Learning ist ein Prozess, für dessen erfolgreiche Implementierung üblicherweise ein längerer Zeitraum erforderlich ist. Diese Zeit wird für Datensammlung, Bereinigung, Transformation, Algorithmusauswahl, Modelltraining und Bereitstellung aufgewendet, um die gleiche Funktionalität zu erreichen, die von einem Cognitive Service bereitgestellt wird. Mit maschinellem Lernen ist es möglich, Antworten auf hochspezialisierte und/oder spezifische Probleme bereitzustellen. Diese mit maschinellem Lernen zu lösenden Probleme erfordern Vertrautheit mit der spezifischen Thematik und den Daten des betreffenden Problems sowie Kenntnisse in der Data Science.
 
 ## <a name="what-kind-of-data-do-you-have"></a>Welche Art von Daten haben Sie?
 

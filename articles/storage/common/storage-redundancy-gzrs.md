@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516133"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036338"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
@@ -70,7 +70,7 @@ Wenn eine Verfügbarkeitszone nicht verfügbar ist, führt Azure Netzwerkupdates
 Wenn ein Fehler die gesamte primäre Region betrifft, versucht Microsoft zunächst, die primäre Region wiederherzustellen. Wenn eine Wiederherstellung nicht möglich ist, führt Microsoft ein Failover in die sekundäre Region aus, sodass die sekundäre Region zur neuen primären Region wird. Wenn für das Speicherkonto RA-GZRS aktiviert ist, können Anwendungen, die für dieses Szenario entwickelt wurden, aus der sekundären Region lesen, während sie auf das Failover warten. Wenn RA-GZRS für das Speicherkonto nicht aktiviert ist, können Anwendungen erst nach Abschluss des Failovers aus der sekundären Zone lesen.
 
 > [!NOTE]
-> GZRS und RA-GZRS sind derzeit nur in der Region „USA, Osten 2“ als Vorschau verfügbar. Das vom Kunden verwaltete Kontofailover (Vorschau) ist in „USA, Osten 2“ noch nicht verfügbar, sodass Kunden derzeit keine Kontofailoverereignisse mit GZRS- und RA-GZRS-Konten verwalten können. Während der Vorschauphase verwaltet Microsoft alle Failoverereignisse, die sich auf GZRS- und RA-GZRS-Konten auswirken.
+> GZRS und RA-GZRS sind derzeit nur in der Region „USA, Osten“ als Vorschau verfügbar. Das vom Kunden verwaltete Kontofailover (Vorschau) ist in „USA, Osten 2“ noch nicht verfügbar, sodass Kunden derzeit keine Kontofailoverereignisse mit GZRS- und RA-GZRS-Konten verwalten können. Während der Vorschauphase verwaltet Microsoft alle Failoverereignisse, die sich auf GZRS- und RA-GZRS-Konten auswirken.
 
 Da Daten asynchron in die sekundären Region repliziert werden, kann ein Fehler, der sich auf die primäre Region auswirkt, zu Datenverlusten führen, wenn die primäre Region nicht wiederhergestellt werden kann. Das Intervall zwischen den letzten Schreibvorgängen in der primären Region und dem letzten Schreibvorgang in der sekundären Region wird als RPO (Recovery Point Objective) bezeichnet. Die RPO gibt den Zeitpunkt an, auf den Daten wiederhergestellt werden können. Azure Storage weist normalerweise einen RPO-Wert von weniger als 15 Minuten auf, aber es gibt derzeit keine SLA zur Dauer der Replikation in die sekundäre Region.
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 49f3f608ff34847905b219047af843db00da78c4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480045"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126127"
 ---
 ::: zone target="docs"
 
@@ -29,6 +29,16 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels
 > * Entsperren von Datenträgern auf Windows-Client
 > * Entsperren von Datenträgern auf Linux-Client
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Entpacken, Verbinden und Entsperren von Azure Data Box Disk
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -282,7 +292,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  Geben Sie im Azure-Portal den Hauptschlüssel ein, den Sie unter **Allgemein > Gerätedetails** abgerufen haben. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird angezeigt. 
+    -  Rufen Sie im Azure-Portal unter **Allgemein > Gerätedetails** den Hauptschlüssel ab, und geben Sie ihn hier ein. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird angezeigt. 
 4. Öffnen Sie zum Entsperren der Datenträger auf einem Linux-Client ein Terminal. Navigieren Sie zu dem Ordner, in den Sie die Software herunterladen haben. Geben Sie die folgenden Befehle ein, um die Dateiberechtigungen zu ändern, sodass Sie diese Dateien ausführen können: 
 
     ```
@@ -294,7 +304,7 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Führen Sie das Tool zum Entsperren von Data Box Disk aus. Navigieren Sie zu **Allgemein > Gerätedetails**, und geben Sie den Hauptschlüssel aus dem Azure-Portal ein. Geben Sie optional eine Liste der mit BitLocker verschlüsselten Volumes (in einfachen Anführungszeichen) an, die entsperrt werden sollen.
+    Führen Sie das Tool zum Entsperren von Data Box Disk aus. Rufen Sie im Azure-Portal unter **Allgemein > Gerätedetails** den Hauptschlüssel ab, und geben Sie ihn hier ein. Geben Sie optional eine Liste der mit BitLocker verschlüsselten Volumes (in einfachen Anführungszeichen) an, die entsperrt werden sollen.
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
@@ -303,7 +313,9 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
 
 Nachdem der Datenträger entsperrt wurde, können Sie den Inhalt des Datenträgers anzeigen.
 
-Weitere Informationen zum Einrichten und Entsperren der Datenträger finden Sie unter [Tutorial: Entpacken, Verbinden und Entsperren von Azure Data Box Disk](data-box-disk-deploy-set-up.md).
+Weitere Informationen zum Einrichten von Datenträgern finden Sie unter [Entpacken Ihres Data Box-Datenträgers](data-box-disk-deploy-set-up.md#unpack-your-disks).
+
+Weitere Informationen zum Entsperren von Datenträgern finden Sie unter [Unlock Data Box Disk on Windows client](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) (Entsperren von Data Box Disk auf einem Windows-Client).
 
 ::: zone-end
 

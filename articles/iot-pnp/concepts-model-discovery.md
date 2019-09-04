@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4ab1d45e27762ef05ab7ec74c98ab0b0b934cbf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879230"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114275"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementieren der IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung
 
@@ -30,7 +30,7 @@ Wenn sich ein IoT Plug & Play-Gerät zum ersten Mal mit Ihrem IoT Hub verbind
 
 Hier finden Sie die Schritte, die ein IoT Plug & Play-Gerät bei der Verwendung des Diensts für die Gerätebereitstellung (DPS) zum Herstellen einer Verbindung mit einem Hub ausführt:
 
-1. Wenn das Gerät eingeschaltet wird, verbindet es sich mit dem globalen Endpunkt für den DPS und authentifiziert sich mit einer der zulässigen Methoden.
+1. Wenn das Gerät eingeschaltet wird, stellt es eine Verbindung mit dem globalen Endpunkt für den DPS her und authentifiziert sich mit einer der zulässigen Methoden.
 1. DPS authentifiziert das Gerät und sucht die Regel, die angibt, welchem IoT Hub das Gerät zugewiesen werden soll. DPS registriert dann das Gerät bei diesem Hub.
 1. DPS gibt eine IoT Hub-Verbindungszeichenfolge an das Gerät zurück.
 1. Das Gerät sendet dann eine Ermittlungstelemetriemeldung an Ihren IoT Hub. Diese Meldung enthält die IDs der Schnittstellen, die vom Gerät implementiert werden.
@@ -69,9 +69,9 @@ Wenn Ihre Lösung eine Benachrichtigung zu einer neuen Geräteverbindung erhält
 1. Lesen Sie die Ermittlungstelemetriemeldung, um die IDs der vom Gerät implementierten Funktionsmodelle und Schnittstellen abzurufen.
 1. Lesen Sie für jede ID die vollständige JSON-Datei aus, um die Funktionen des Geräts zu ermitteln.
 1. Überprüfen Sie, ob jede Schnittstelle in den von Ihnen erstellten Caches für die Speicherung der zuvor von Ihrer Lösung abgerufenen JSON-Dateien vorhanden ist.
-1. Überprüfen Sie dann, ob im globalen Modellrepository eine Schnittstelle mit dieser ID vorhanden ist. Weitere Informationen finden Sie in unserem [globalen Modellrepository](howto-manage-models.md).
-1. Wenn die Schnittstelle nicht im globalen Modellrepository vorhanden ist, suchen Sie sie in allen Ihrer Lösung bekannten privaten Modellrepositorys. Für den Zugriff auf ein privates Modellrepository benötigen Sie eine Verbindungszeichenfolge. Weitere Informationen finden Sie in unserem [privaten Modellrepository](howto-manage-models.md).
-1. Wenn Sie weder im globalen noch in einem privaten Modellrepository alle Schnittstellen finden, können Sie überprüfen, ob das Gerät die Schnittstellendefinition bereitstellen kann. Ein Gerät kann die Standardschnittstelle [ModelDefinition](concepts-common-interfaces.md) implementieren, um Informationen darüber zu veröffentlichen, wie Schnittstellendateien mit einem Befehl abgerufen werden.
+1. Überprüfen Sie dann, ob im öffentlichen Modellrepository eine Schnittstelle mit dieser ID vorhanden ist. Weitere Informationen finden Sie unter [Öffentliches Modellrepository](howto-manage-models.md).
+1. Wenn die Schnittstelle nicht im öffentlichen Modellrepository vorhanden ist, suchen Sie sie in allen Ihrer Lösung bekannten Unternehmensmodellrepositorys. Für den Zugriff auf ein Unternehmensmodellrepository benötigen Sie eine Verbindungszeichenfolge. Weitere Informationen finden Sie unter [Unternehmensmodellrepository](howto-manage-models.md).
+1. Wenn Sie weder im öffentlichen noch in einem Unternehmensmodellrepository alle Schnittstellen finden, können Sie überprüfen, ob das Gerät die Schnittstellendefinition bereitstellen kann. Ein Gerät kann die Standardschnittstelle [ModelDefinition](concepts-common-interfaces.md) implementieren, um Informationen darüber zu veröffentlichen, wie Schnittstellendateien mit einem Befehl abgerufen werden.
 1. Wenn Sie JSON-Dateien für jede vom Gerät implementierte Schnittstelle gefunden haben, können Sie die Funktionen des Geräts auflisten. Verwenden Sie die zuvor geschriebene Logik, damit Benutzer mit dem Gerät interagieren können.
 1. Sie können die API der digitalen Zwillinge jederzeit aufrufen, um die Modell-ID und die Schnittstellen-IDs für das Gerät abzurufen.
 

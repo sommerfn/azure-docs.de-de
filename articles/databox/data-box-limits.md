@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 2e1ed8df490343e569f9466fd56458f652dafaf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13d5bce46883ea4ddca91d7222f68a19ba65c21c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244609"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098813"
 ---
 # <a name="azure-data-box-limits"></a>Für Azure Data Box geltende Einschränkungen
 
@@ -26,6 +26,7 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 ## <a name="data-box-limits"></a>Für Data Box geltende Einschränkungen
 
 - In Data Box können maximal 500 Millionen Dateien gespeichert werden.
+- Data Box unterstützt maximal 512 Container oder Freigaben in der Cloud. Die Verzeichnisse der obersten Ebene innerhalb der Benutzerfreigabe werden zu Containern oder Azure-Dateifreigaben in der Cloud. 
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 

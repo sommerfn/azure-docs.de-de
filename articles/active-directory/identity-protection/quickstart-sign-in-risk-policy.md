@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335302"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127695"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Schnellstart: Blockieren des Zugriffs mit Azure Active Directory Identity Protection, wenn ein Sitzungsrisiko erkannt wird  
 
@@ -48,7 +48,7 @@ Mit diesem Schritt soll sichergestellt werden, dass Sie mit dem Tor Browser übe
 
 ## <a name="create-your-conditional-access-policy"></a>Erstellen Ihrer Richtlinie für bedingten Zugriff 
 
-Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor Browser verwendet, um ein erkanntes Risikoereignis vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Dieses Risikoereignis weist eine mittlere Risikostufe auf. Reagieren Sie auf dieses Risikoereignis, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. 
+Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor-Browser verwendet, um eine erkannte Risikoerkennung vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Diese Risikoerkennung weist eine mittlere Risikostufe auf. Reagieren Sie auf diese Risikoerkennung, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. 
 
 In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedingten Zugriff bei Anmelderisiko erstellen. Legen Sie in Ihrer Richtlinie Folgendes fest:
 

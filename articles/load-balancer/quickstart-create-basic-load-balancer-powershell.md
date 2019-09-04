@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 58b36265a5e440dbf33a5d6fb85e791abbd006a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274246"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129076"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs mit Azure PowerShell
 
@@ -295,40 +295,37 @@ Installieren Sie IIS mit einer benutzerdefinierten Webseite wie folgt auf beiden
 
 1. Rufen Sie die öffentliche IP-Adresse des Load Balancers ab. Verwenden Sie `Get-AzPublicIPAddress`, um die öffentliche IP-Adresse des Load Balancers abzurufen.
 
-   ```azurepowershell-interactive
-    Get-AzPublicIPAddress `
-    -ResourceGroupName "myResourceGroupLB" `
-    -Name "myPublicIP" | select IpAddress
-   ```
-2. Erstellen Sie eine Remotedesktopverbindung mit VM1, indem Sie die öffentliche IP-Adresse verwenden, die Sie im vorherigen Schritt abgerufen haben. 
+    ```azurepowershell-interactive
+    Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
+    ```
 
-   ```azurepowershell-interactive
+2. **Öffnen Sie auf dem lokalen Computer eine Eingabeaufforderung oder ein PowerShell-Fenster für diesen Schritt.**  Erstellen Sie eine Remotedesktopverbindung mit VM1, indem Sie die öffentliche IP-Adresse verwenden, die Sie im vorherigen Schritt abgerufen haben. 
 
-      mstsc /v:PublicIpAddress:4221  
-  
-   ```
+    ```azurepowershell-interactive
+    mstsc /v:PublicIpAddress:4221  
+    ```
+
 3. Geben Sie die Anmeldeinformationen für *VM1* ein, um die RDP-Sitzung zu starten.
 4. Starten Sie Windows PowerShell auf VM1, und verwenden Sie die folgenden Befehle, um den IIS-Server zu installieren und die HTM-Standarddatei zu aktualisieren.
+
     ```azurepowershell-interactive
-    # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
-    
-    #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+        # Install IIS
+          Install-WindowsFeature -name Web-Server -IncludeManagementTools
+        
+        # Remove default htm file
+          remove-item  C:\inetpub\wwwroot\iisstart.htm
+        
+        # Add custom htm file
+          Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
 5. Schließen Sie die RDP-Verbindung mit *myVM1*.
-6. Erstellen Sie eine RDP-Verbindung mit *myVM2*, indem Sie den Befehl `mstsc /v:PublicIpAddress:4222` ausführen, und wiederholen Sie Schritt 4 für *VM2*.
+6. **Erstellen Sie auf Ihrem lokalen Computer eine RDP-Verbindung** mit *myVM2*, indem Sie den Befehl `mstsc /v:PublicIpAddress:4222` ausführen, und wiederholen Sie Schritt 4 für *VM2*.
 
 ## <a name="test-load-balancer"></a>Testen des Load Balancers
 Rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
 
 ```azurepowershell-interactive
-Get-AzPublicIPAddress `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Name "myPublicIP" | select IpAddress
+Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
 ```
 
 Geben Sie die öffentliche IP-Adresse in einem Webbrowser ein. Die Website wird mit dem Hostnamen der VM angezeigt, an die der Load Balancer den Datenverkehr wie im folgenden Beispiel verteilt hat:

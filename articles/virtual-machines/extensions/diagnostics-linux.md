@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871921"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092683"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -135,9 +135,7 @@ storageAccountSasToken | Ein [Konto-SAS-Token](https://azure.microsoft.com/blog/
 mdsdHttpProxy | (optional:) HTTP-Proxyinformationen, die erforderlich sind, damit die Erweiterung Verbindungen mit dem angegebenen Speicherkonto und dem Endpunkt herstellen kann
 sinksConfig | (optional:) Details zu alternativen Zielen, an die Metriken und Ereignisse übermittelt werden können. Die spezifischen Details der einzelnen Datensenken, die von der Erweiterung unterstützt werden, sind in den folgenden Abschnitten beschrieben.
 
-
-> [!NOTE]
-> Beim Bereitstellen der Erweiterung mit einer Azure-Bereitstellungsvorlage müssen das Speicherkonto und das SAS-Token vorab erstellt worden sein und der Vorlage übergeben werden. Sie können nicht eine VM und ein Speicherkonto bereitstellen und die Erweiterung in einer einzelnen Vorlage konfigurieren. Das Erstellen eines SAS-Tokens innerhalb einer Vorlage wird aktuell nicht unterstützt.
+Verwenden Sie die **listAccountSas**-Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
 
 Sie können das erforderliche SAS-Token einfach über das Azure-Portal erstellen.
 

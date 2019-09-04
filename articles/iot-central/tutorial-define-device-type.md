@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875775"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099608"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -49,7 +49,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie die Schritte der Schnellstartanleitung [Create an Azure IoT Central application](quick-deploy-iot-central.md) (Erstellen einer Azure IoT Central-Anwendung) ausgeführt haben, können Sie die so erstellte Anwendung verwenden. Führen Sie andernfalls die folgenden Schritte aus, um eine leere Azure IoT Central-Anwendung zu erstellen:
 
-1. Navigieren Sie zur Azure IoT Central-Seite [Application Manager](https://aka.ms/iotcentral) (Anwendungs-Manager).
+1. Navigieren Sie zur Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral).
 
 2. Geben Sie die E-Mail-Adresse und das Kennwort für den Zugriff auf Ihr Azure-Abonnement ein:
 
@@ -57,7 +57,7 @@ Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie d
 
 3. Wählen Sie **Neue Anwendung** aus, um mit der Erstellung einer neuen Azure IoT Central-Anwendung zu beginnen:
 
-    ![Azure IoT Central-Seite „Application Manager“ (Anwendungs-Manager)](./media/tutorial-define-device-type/iotcentralhome.png)
+    ![Seite des Azure IoT Central-Anwendungs-Managers](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. So erstellen Sie eine neue Azure IoT Central-Anwendung:
     

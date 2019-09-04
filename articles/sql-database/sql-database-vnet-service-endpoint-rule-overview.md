@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 03/12/2019
-ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/27/2019
+ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840476"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098925"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver
 
@@ -31,44 +31,7 @@ Damit eine VNET-Regel erstellt werden kann, muss zuerst ein [VNET-Dienstendpunkt
 
 Wenn Sie nur eine VNET-Regel erstellen, können Sie mit den Schritten und der Erklärung [weiter unten in diesem Artikel](#anchor-how-to-by-using-firewall-portal-59j) fortfahren.
 
-<a name="anch-terminology-and-description-82f" />
-
-## <a name="terminology-and-description"></a>Terminologie und Beschreibung
-
-**Virtuelles Netzwerk:** Sie können Ihrem Azure-Abonnement virtuelle Netzwerke zuordnen.
-
-**Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
-
-**Virtual Network-Dienstendpunkt:** Ein [VNET-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist.
-
-**VNET-Regel:** Eine VNET-Regel für Ihren SQL-Datenbank-Server ist ein Subnetz, das in der Zugriffssteuerungsliste des SQL-Datenbank-Servers aufgeführt ist. Um in die Zugriffssteuerungsliste für Ihre SQL-Datenbank-Instanz zu gelangen, muss das Subnetz den Typnamen **Microsoft.Sql** enthalten.
-
-Eine VNET-Regel weist Ihren Azure SQL-Datenbank-Server an, Nachrichten von jedem Knoten anzunehmen, der zum Subnetz gehört.
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
-
-## <a name="benefits-of-a-virtual-network-rule"></a>Vorteile einer VNET-Regel
-
-Bis Sie Maßnahmen ergreifen, können die virtuellen Computer in Ihren Subnetzen nicht mit Ihrer Azure SQL-Datenbank-Instanz kommunizieren. Eine Aktion zum Herstellen der Kommunikation stellt die Erstellung einer VNET-Regel dar. Die Begründung der Entscheidung für eine VNET-Regel erfordert eine Erörterung der Vor- und Nachteile, die die von der Firewall gebotenen konkurrierenden Sicherheitsoptionen berücksichtigt.
-
-### <a name="a-allow-access-to-azure-services"></a>A. Zugriff auf Azure-Dienste erlauben
-
-Der Firewallbereich enthält eine Schaltfläche des Typs **EIN/AUS** mit der Bezeichnung **Zugriff auf Azure-Dienste erlauben**. Die Einstellung **EIN** lässt Nachrichten von allen Azure IP-Adressen und aus allen Azure-Subnetzen zu. Diese Azure-IP-Adressen oder -Subnetze gehören möglicherweise nicht Ihnen. Die Einstellung **EIN** lässt wahrscheinlich einen umfassenderen Zugriff auf Ihre SQL-Datenbank-Instanz zu, als von Ihnen gewünscht. Eine VNET-Regel ermöglicht eine präzisere Steuerung.
-
-### <a name="b-ip-rules"></a>B: IP-Regeln
-
-Die Firewall von SQL-Datenbank ermöglicht Ihnen das Angeben von IP-Adressbereichen, aus denen Nachrichten an die SQL-Datenbank-Instanz gesendet werden dürfen. Dieser Ansatz eignet sich gut für statische IP-Adressen, die sich außerhalb des privaten Azure-Netzwerks befinden. Doch viele Knoten innerhalb des privaten Azure-Netzwerks sind mit *dynamischen* IP-Adressen konfiguriert. Dynamische IP-Adressen können sich ändern, z.B. wenn Ihre VM neu gestartet wird. Es wäre töricht, eine dynamische IP-Adresse in einer Firewallregel in einer Produktionsumgebung anzugeben.
-
-Sie können die IP-Option weiter nutzen, indem Sie eine *statische* IP-Adresse für Ihre VM abrufen. Einzelheiten finden Sie unter [Konfigurieren von privaten IP-Adressen für einen virtuellen Computer über das Azure-Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
-
-Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird. VNET-Regeln sind einfacher einzurichten und zu verwalten.
-
-> [!NOTE]
-> Azure SQL-Datenbank wird noch nicht in einem Subnetz unterstützt. Wenn sich Ihr Azure SQL-Datenbank-Server auf einem Knoten in einem Subnetz in Ihrem virtuellen Netzwerk befände, könnten alle Knoten innerhalb des virtuellen Netzwerks mit Ihrer SQL-Datenbank-Instanz kommunizieren. In diesem Fall könnten Ihre virtuellen Computer mit der SQL-Datenbank-Instanz kommunizieren, ohne dass VNET-Regeln oder IP-Regeln erforderlich sind.
-
-Doch im September 2017 gehört der Azure SQL-Datenbank-Dienst noch nicht zu den Diensten, die einem Subnetz zugewiesen werden können.
-
-<a name="anch-details-about-vnet-rules-38q" />
+<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Details zu VNET-Regeln
 
@@ -141,27 +104,7 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Auswirkungen des Entfernens des Zugriffs „Azure-Diensten Zugriff auf den Server erlauben“
 
-Viele Benutzer möchten den Zugriff **Azure-Diensten Zugriff auf den Server erlauben** von ihren Azure SQL-Servern entfernen und durch eine VNET-Firewallregel ersetzen.
-Das Entfernen wirkt sich aber auf die folgenden Features aus:
-
-### <a name="import-export-service"></a>Import/Export-Dienst
-
-Der Azure SQL-Datenbank-Import-/Exportdienst wird auf virtuellen Computern in Azure ausgeführt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET und erhalten daher beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen des Zugriffs **Azure-Diensten den Zugriff auf den Server erlauben** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
-Sie können das Problem umgehen. Führen Sie den BACPAC-Import oder -Export mithilfe der mithilfe der DACFx-API direkt im Code aus. Stellen Sie sicher, dass die Bereitstellung auf einem virtuellen Computer in dem VNET-Subnetz erfolgt, für das Sie die Firewallregel festgelegt haben.
-
-### <a name="sql-database-query-editor"></a>Abfrage-Editor für SQL-Datenbank
-
-Der Abfrage-Editor für Azure SQL-Datenbank wird auf virtuellen Computern in Azure bereitgestellt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET. Aus diesem Grund erhalten die virtuellen Computer beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Azure-Diensten den Zugriff auf den Server erlauben** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
-
-### <a name="table-auditing"></a>Tabellenüberwachung
-
-Derzeit stehen Ihnen zwei Möglichkeiten zum Aktivieren der Überwachung für Ihre SQL-Datenbank-Instanz zur Verfügung. Die Tabellenüberwachung führt zu einem Fehler, nachdem Sie Dienstendpunkte in Ihrer Azure SQL Server-Instanz aktiviert haben. Um dieses Problem zu umgehen, wechseln Sie zur Blobüberwachung.
-
-### <a name="impact-on-data-sync"></a>Auswirkungen auf die Datensynchronisierung
-
-Azure SQL-Datenbank verfügt über ein Datensynchronisierungsfeature, das unter Verwendung von Azure-IP-Adressen eine Verbindung mit Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten werden Sie wahrscheinlich den Zugriff **Allen Azure-Diensten Zugriff auf den Server erlauben** auf Ihrem SQL-Datenbank-Server deaktivieren. Dadurch wird die Datensynchronisierungsfunktion unterbrochen.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage
 
@@ -174,6 +117,7 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
 #### <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
@@ -182,12 +126,12 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
 3.  Im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos muss die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein. Weitere Informationen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
  
 #### <a name="steps"></a>Schritte
-1. **Registrieren Sie Ihren SQL-Datenbank-Server** in PowerShell mit Azure Active Directory (AAD):
+1. **Registrieren Sie Ihre Azure-SQL Server-Instanz**, die Ihre Azure SQL Data Warehouse-Instanz hostet, in PowerShell bei Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
    Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
    1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“** , indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) verwenden.
@@ -196,7 +140,7 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
    > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrem SQL-Datenbank-Server die RBAC-Rolle **Mitwirkender an Storage-Blobdaten** zu.
+1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrer Azure-SQL Server-Instanz, auf der Ihre mit Azure Active Directory (AAD) registrierte Azure SQL Data Warehouse-Instanz gehostet wird, die RBAC-Rolle **Mitwirkender an Storage-Blobdaten** zu, wie in Schritt 1.
 
    > [!NOTE] 
    > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

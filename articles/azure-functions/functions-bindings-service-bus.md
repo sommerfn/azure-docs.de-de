@@ -8,16 +8,15 @@ manager: gwallace
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774700"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114379"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -715,14 +714,19 @@ In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Ausgabeb
 * `out T paramName` - `T` kann jeder JSON-serialisierbare Typ sein. Wenn der Parameterwert NULL ist, wenn die Funktion beendet wird, erstellt Functions die Nachricht mit einem NULL-Objekt.
 * `out string`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
 * `out byte[]`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
-* `out BrokeredMessage`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
+* `out BrokeredMessage`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht (für Functions 1.x).
+* `out Message`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht (für Functions 2.x).
 * `ICollector<T>` oder `IAsyncCollector<T>`: Zum Erstellen mehrerer Nachrichten. Beim Aufrufen der `Add` -Methode wird eine Nachricht erstellt.
 
-In asynchronen Funktionen verwenden Sie den Rückgabewert oder `IAsyncCollector` anstelle eines `out`-Parameters.
+Beim Arbeiten mit C# Funktionen:
 
-Diese Parameter gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
+* Asynchrone Funktionen benötigen anstelle eines `out`-Parameters einen Rückgabewert oder `IAsyncCollector`.
 
-Greifen Sie in JavaScript auf die Warteschlange oder das Thema mit `context.bindings.<name from function.json>` zu. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein Javascript-Objekt (deserialisiert in JSON) zuweisen.
+* Um auf die Sitzungs-ID zuzugreifen, erstellen Sie eine Bindung an einen [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)-Typ und verwenden die Eigenschaft `sessionId`.
+
+Greifen Sie in JavaScript auf die Warteschlange oder das Thema mit `context.bindings.<name from function.json>` zu. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein JavaScript-Objekt (deserialisiert in JSON) zuweisen.
+
+Um eine Nachricht in einer anderen Sprache als C# an eine sitzungsfähige Warteschlange zu senden, verwenden Sie das [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) anstelle der integrierten Ausgabebindung.
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 

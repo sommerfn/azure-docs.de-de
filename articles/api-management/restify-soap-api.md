@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 0b120cedf35a6f88c880443dee626cce18835d42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1534a562c81fc92fdf0c21452458c51b10f0bc9
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859276"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074237"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Importieren einer SOAP-API und Konvertieren dieser in REST
 
@@ -50,7 +49,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 
 5. Drücken Sie auf die Registerkarte.
 
-    Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt:  „Anzeigename“, „Name“, „Beschreibung“.
+    Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt: Anzeigename, Name, Beschreibung.
 6. Fügen Sie ein API-URL-Suffix hinzu. Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.
 9. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt „*Unlimited*“ verwendet.  Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.
 

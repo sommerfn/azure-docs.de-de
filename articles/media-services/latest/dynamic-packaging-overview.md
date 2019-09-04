@@ -11,44 +11,44 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/29/2019
+ms.date: 08/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 352b42099bcd832792aad2fa24dca3e14525dc06
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679151"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990620"
 ---
 # <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 
-Microsoft Azure Media Services kann verwendet werden, um zahlreiche Medien-Quelldateiformate, Medienstreamingformate und Inhaltsschutzformate in verschiedenen Clienttechnologien wie iOS und XBOX bereitzustellen. Von den Clients werden verschiedene Protokolle verarbeitet. So ist für iOS ein HLS-Format (HTTP Live Streaming) erforderlich, für Xbox dagegen Smooth Streaming. Wenn Sie über MP4-Dateien (ISO Base Media 14496-12) mit adaptiver Bitrate (Multi-Bitrate) oder über Smooth Streaming-Dateien mit adaptiver Bitrate verfügen, die Sie für Clients bereitstellen möchten, von denen HLS, MPEG DASH oder Smooth Streaming unterstützt wird, können Sie die Vorteile der *dynamischen Paketerstellung* nutzen. Die Paketerstellung ist unabhängig von der Videoauflösung; SD, HD und UHD-4K werden unterstützt.
+Mit Microsoft Azure Media Services können verschiedenste Medien-Quelldateiformate codiert und über verschiedene Streamingprotokolle mit oder ohne Content Protection bereitgestellt werden, um alle gängigen Geräte (etwa mit iOS und Android) zu erreichen. Diese Clients benötigen verschiedene Protokolle. So müssen Streams für iOS beispielsweise im HLS-Format (HTTP Live Streaming) vorliegen, während Android-Geräte neben HLS auch MPEG-DASH unterstützen. Um Ihre Quelldateien für die Übermittlung per Adaptive Bitrate Streaming vorzubereiten, müssen sie als eine Gruppe von MP4-Dateien (ISO Base Media 14496-12) mit mehreren Bitraten (auch „adaptive Bitrate“ genannt) [codiert](encoding-concept.md) werden. Auf der Grundlage dieser MP4-Dateien können Sie Videos per HLS-, MPEG-DASH- oder Smooth Streaming-Protokoll unter Verwendung der **dynamischen Paketerstellung** bereitstellen.
 
 In Media Services stellt ein [Streamingendpunkt](streaming-endpoint-concept.md) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayeranwendung bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Die Funktion für die dynamische Paketerstellung ist standardmäßig auf allen **Streamingendpunkten** (Standard oder Premium) vorhanden. 
 
-Für die Nutzung der dynamischen Paketerstellung benötigen Sie ein [Medienobjekt](assets-concept.md) mit MP4-Dateien mit adaptiver Bitrate sowie Streamingkonfigurationsdateien („.ism“, „.ismc“, „.mpi“ usw.). Zum Abrufen der Dateien können Sie beispielsweise Ihre Zwischendatei (Quelldatei) mit Media Services codieren. Um Videos in dem codierten Medienobjekt für die Clientwiedergabe verfügbar zu machen, müssen Sie einen [Streaminglocator](streaming-locators-concept.md) sowie Streaming-URLs erstellen. Daraufhin erhalten Sie den Stream abhängig vom im Streamingclientmanifest angegebenen Format (HLS, DASH oder Smooth) in dem Protokoll, das Sie gewählt haben.
+Für die Nutzung der **dynamischen Paketerstellung** benötigen Sie ein **Medienobjekt** mit MP4-Dateien mit adaptiver Bitrate sowie Streamingkonfigurationsdateien, die für die dynamische Paketerstellung von Media Services erforderlich sind. Zum Abrufen der Dateien können Sie beispielsweise Ihre Zwischendatei (Quelldatei) mit Media Services codieren. Um Videos in dem codierten Medienobjekt für die Clientwiedergabe verfügbar zu machen, müssen Sie einen **Streaminglocator** sowie Streaming-URLs erstellen. Daraufhin erhalten Sie den Stream abhängig vom im Streamingclientmanifest angegebenen Format (HLS, MPEG-DASH oder Smooth Streaming) in dem Protokoll, das Sie gewählt haben.
 
 So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht. 
 
-Die dynamische Paketerstellung in Media Services wird sowohl für Livestreaming als auch für On-Demand-Streaming verwendet. 
+Die dynamische Paketerstellung in Media Services wird sowohl für Livevideostreaming als auch für On-Demand-Videostreaming verwendet. 
 
 > [!NOTE]
 > Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ## <a name="on-demand-streaming-workflow"></a>Workflow für das On-Demand-Streaming
 
-Nachfolgend wird ein allgemeiner Workflow für das On-Demand-Streaming von Media Services mit dynamischer Paketerstellung beschrieben:
+In diesem Abschnitt wird ein allgemeiner Media Services-Streamingworkflow mit dynamischer Paketerstellung und dem Standard-Encoder in Azure Media Services beschrieben.
 
-1. Laden Sie eine Eingabe- oder Quelldatei (auch *Zwischendatei* genannt) hoch. Beispiele sind MP4-, MOV- und MXF-Dateien. 
-1. Codieren Sie Ihre Mezzaninedatei zu H.264-MP4-Sätzen mit adaptiver Bitrate. 
+1. Laden Sie eine Eingabedatei (beispielsweise eine QuickTime/MOV- oder MXF-Datei) hoch. Eine Liste unterstützter Formate finden Sie unter [Von Media Encoder Standard unterstützte Formate](media-encoder-standard-formats.md). Diese Datei wird auch als Mezzanine- oder Quelldatei bezeichnet.
+1. [Codieren](#encode-to-adaptive-bitrate-mp4s) Sie Ihre Mezzaninedatei als H.264/AAC-MP4-Satz mit adaptiver Bitrate. 
 1. Veröffentlichen Sie das Ausgabemedienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält. Zur Veröffentlichung wird ein Streaminglocator erstellt.
-1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der Streamingendpunkt sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für die verschiedenen Formate korrekt verarbeitet werden.
+1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der **Streamingendpunkt** sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für alle diese Formate korrekt verarbeitet werden.
 
-Im folgenden Diagramm ist der Workflow für das On-Demand-Streaming mit dynamischer Paketerstellung dargestellt:
+Das folgende Diagramm zeigt den Workflow für das On-Demand-Streaming mit dynamischer Paketerstellung.
 
 ![Diagramm eines Workflows für das On-Demand-Streaming mit dynamischer Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-### <a name="encoding-to-adaptive-bitrate-mp4s"></a>Codieren als MP4-Dateien mit adaptiver Bitrate
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>Codieren als MP4-Dateien mit adaptiver Bitrate
 
 Beispiele für die [Codierung mit Media Services](encoding-concept.md) finden Sie in den folgenden Artikeln:
 
@@ -93,14 +93,15 @@ Folgende Übermittlungsprotokolle können Sie für Ihre Inhalte bei der dynamisc
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="delivery-codecs-support"></a>Unterstützung für Bereitstellungscodecs 
-
-### <a name="video-codecs"></a>Videocodecs
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Videocodecs
 
 Die dynamische Paketerstellung unterstützt die folgenden Videocodecs:
 * MP4-Dateien mit Videodaten, die mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert sind.
 
-### <a name="audio-codecs"></a>Audiocodecs
+> [!NOTE]
+> Auflösungen von bis zu 4K und Frameraten von bis zu 60 Frames/Sekunde wurden mit der dynamischen Paketerstellung getestet. Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs. Sollten Sie Fragen zu diesem Thema haben, wenden Sie sich an amshelp@microsoft.com. 
+
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 
 Die dynamische Paketerstellung unterstützt die nachfolgend beschriebenen Audioprotokolle:
 
@@ -109,7 +110,10 @@ Die dynamische Paketerstellung unterstützt die nachfolgend beschriebenen Audiop
 
 Dateien mit [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital)-Audio (AC3) werden von der dynamischen Paketerstellung nicht unterstützt, da es sich dabei um einen Legacy-Codec handelt.
 
-#### <a name="mp4-files"></a>MP4-Dateien
+> [!NOTE]
+> Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die Dolby Digital Plus-Codierung über die v2-Legacy-APIs. Sollten Sie Fragen zu diesem Thema haben, wenden Sie sich an amshelp@microsoft.com. 
+
+### <a name="mp4-files"></a>MP4-Dateien
 
 Die dynamische Paketerstellung unterstützt MP4-Dateien mit Audiodaten, die mit den folgenden Protokollen codiert sind: 
 
@@ -126,13 +130,13 @@ Die dynamische Paketerstellung unterstützt MP4-Dateien mit Audiodaten, die mit 
     * DTS Express (dtse)
     * DTS-HD Lossless ohne Core (dtsl)
 
-#### <a name="multiple-audio-tracks"></a>Mehrere Audiospuren
+### <a name="multiple-audio-tracks"></a>Mehrere Audiospuren
 
-Die dynamische Paketerstellung unterstützt mehrere Audiospuren für die HLS-Ausgabe (Version 4 oder höher) für Streaming-Medienobjekte, die mehrere Audiospuren mit mehreren Codecs und Sprachen aufweisen.
+Die dynamische Paketerstellung unterstützt mehrere Audiospuren für die HLS-Ausgabe (ab Version 4) für Streaming-Medienobjekte, die mehrere Audiospuren mit mehreren Codecs und Sprachen besitzen.
 
 ## <a name="manifests"></a>Manifeste 
  
-Bei der dynamischen Paketerstellung von Media Services werden die Streamingclientmanifeste für HLS, MPEG-DASH und Smooth Streaming basierend auf dem Formatselektor in der URL dynamisch generiert. Weitere Informationen finden Sie unter [Übermittlungsprotokolle](#delivery-protocols). 
+Bei der dynamischen Paketerstellung von Media Services werden die Streamingclientmanifeste für HLS, MPEG-DASH und Smooth Streaming dynamisch basierend auf dem Formatselektor in der URL generiert. Weitere Informationen finden Sie unter [Übermittlungsprotokolle](#delivery-protocols). 
 
 Eine Manifestdatei enthält Streamingmetadaten wie etwa Typ (Audio, Video oder Text), Titelname, Start- und Endzeit, Bitrate (Qualität), Sprachen, Präsentationsfenster (gleitendes Fenster mit fester Dauer) und Videocodec (FourCC). Sie weist den Player zudem zum Abrufen des nächsten Fragments an, indem Informationen zu den nächsten für die Wiedergabe verfügbaren Videofragmenten und den zugehörigen Speicherorten angegeben werden. Fragmente (oder Segmente) sind die eigentlichen „Blöcke“ von Videoinhalten.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 08/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3129027da0f28d9c89f7afe75d9531df9bae499e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717284"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125635"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Was ist Azure Active Directory Identity Protection (aktualisiert)?
 
@@ -42,17 +42,17 @@ Azure AD Identity Protection ist eine Funktion von Azure Active Directory Premiu
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
-## <a name="risk-events"></a>Risikoereignisse
+## <a name="risk-detections"></a>Risikoerkennungen
 
-Azure AD Identity Protection erkennt die folgenden Risikoereignisse: 
+Azure AD Identity Protection erkennt die folgenden Risikoerkennungen: 
 
-| Risikoereignistyp | BESCHREIBUNG | Erkennungstyp |
+| Risikoerkennungstyp | BESCHREIBUNG | Erkennungstyp |
 | --- | --- | --- |
 | Ungewöhnlicher Ortswechsel | Anmeldung von einem ungewöhnlichen Standort, basierend auf den letzten Anmeldevorgängen des Benutzers | Offline |
 | Anonyme IP-Adresse | Anmeldung von einer anonymen IP-Adresse (z.B. Tor-Browser, anonymisierte VPNs) | Echtzeit |
 | Ungewöhnliche Anmeldeeigenschaften | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden | Echtzeit |
 | Mit Schadsoftware verknüpfte IP-Adresse | Anmeldung von einer mit Schadsoftware verknüpften IP-Adresse | Offline |
-| Kompromittierte Anmeldeinformationen | Dieses Risikoereignis gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. | Offline |
+| Kompromittierte Anmeldeinformationen | Diese Risikoerkennung gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. | Offline |
 
 ## <a name="types-of-risk"></a>Risikotypen 
 
@@ -80,7 +80,7 @@ Ein Benutzerrisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Identi
 Das Benutzerrisiko wird durch Berücksichtigung aller dem Benutzer zugeordneten Risiken berechnet:
 
 - Alle riskanten Anmeldevorgänge
-- Alle Risikoereignisse ohne Bezug zu einer Anmeldung
+- Alle Risikoerkennungen ohne Bezug zu einer Anmeldung
 - Aktuelles Benutzerrisiko
 - Alle für den Benutzer bis dato ausgeführten Aktionen zum Beheben oder Ignorieren von Risiken
 
@@ -88,7 +88,7 @@ Das Benutzerrisiko wird durch Berücksichtigung aller dem Benutzer zugeordneten 
 
 In Azure AD werden Anomalien und verdächtige Aktivitäten mithilfe von maschinellem Lernen ermittelt. Dabei werden die in Echtzeit erkannten Signale sowie die nicht in Echtzeit erfolgten Signale in Bezug auf Benutzer und ihre Anmeldeaktivitäten herangezogen. Anhand dieser Daten berechnet Identity Protection bei jeder Authentifizierung durch einen Benutzer ein Anmelderisiko in Echtzeit und bestimmt zudem eine allgemeine Benutzerrisikostufe für die einzelnen Benutzer. Mit Identity Protection können Sie automatisch auf diese Risikoerkennungen reagieren, indem Sie Identity Protection-Richtlinien für Benutzer- und Anmelderisiken konfigurieren.  
 
-Zum besseren Verständnis, wie Identity Protection Risiken erkennt, gibt es zwei wichtige Konzepte: das Benutzerrisiko und das Anmelderisiko. Das Anmelderisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Es gibt zwei Typen von Anmelderisiken: Echtzeit und gesamt. Ein Anmelderisiko in Echtzeit wird zum Zeitpunkt des jeweiligen Anmeldeversuchs (z.B. Anmeldungen von anonymen IP-Adressen) erkannt. Beim gesamten Anmelderisiko handelt es sich um das Aggregat der erkannten Anmelderisiken in Echtzeit sowie aller nachfolgend nicht in Echtzeit erfolgten Risikoereignisse, die den Anmeldungen des Benutzers zugeordnet werden (z. B. unmöglicher Ortswechsel). Das Benutzerrisiko stellt die Gesamtwahrscheinlichkeit dar, dass ein böswilliger Benutzer eine bestimmte Identität kompromittiert hat. Das Benutzerrisiko umfasst alle Risikoaktivitäten für einen bestimmten Benutzer, z.B.
+Zum besseren Verständnis, wie Identity Protection Risiken erkennt, gibt es zwei wichtige Konzepte: das Benutzerrisiko und das Anmelderisiko. Das Anmelderisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Es gibt zwei Typen von Anmelderisiken: Echtzeit und gesamt. Ein Anmelderisiko in Echtzeit wird zum Zeitpunkt des jeweiligen Anmeldeversuchs (z.B. Anmeldungen von anonymen IP-Adressen) erkannt. Beim gesamten Anmelderisiko handelt es sich um das Aggregat der erkannten Anmelderisiken in Echtzeit sowie aller nachfolgend nicht in Echtzeit erfolgten Risikoerkennungen, die den Anmeldungen des Benutzers zugeordnet werden (z. B. unmöglicher Ortswechsel). Das Benutzerrisiko stellt die Gesamtwahrscheinlichkeit dar, dass ein böswilliger Benutzer eine bestimmte Identität kompromittiert hat. Das Benutzerrisiko umfasst alle Risikoaktivitäten für einen bestimmten Benutzer, z.B.
 
 - Anmelderisiko in Echtzeit
 - Nachfolgendes Anmelderisiko
@@ -102,7 +102,7 @@ Der grundlegende Ablauf der Identity Protection-Risikoerkennung und der entsprec
 
 Sehen Sie sich das Beispiel zu einem Mitarbeiter von Contoso an. 
 
-1. Ein Mitarbeiter versucht, sich über den Tor-Browser bei Exchange Online anzumelden. Zum Zeitpunkt der Anmeldung erkennt Azure AD Echtzeitrisikoereignisse. 
+1. Ein Mitarbeiter versucht, sich über den Tor-Browser bei Exchange Online anzumelden. Zum Zeitpunkt der Anmeldung erkennt Azure AD Echtzeitrisikoerkennungen. 
 2. Azure AD erkennt, dass sich der Mitarbeiter über eine anonyme IP-Adresse anmeldet, und löst die Risikostufe „Mittel“ für die Anmeldung aus. 
 3. Der Mitarbeiter erhält eine MFA-Aufforderung, da der IT-Administrator von Contoso die Identity Protection-Richtlinie für bedingten Zugriff bei einem Anmelderisiko konfiguriert hat. Die Richtlinie legt fest, dass für das Anmelderisiko „Mittel“ oder höher eine mehrstufige Authentifizierung erfolgen muss. 
 4. Der Mitarbeiter führt die mehrstufige Authentifizierung durch und greift auf Exchange Online zu. Seine Benutzerrisikostufe wird nicht geändert. 
@@ -115,20 +115,20 @@ Was passiert aber, wenn nicht der Mitarbeiter versucht hat, sich anzumelden?
 2. Azure AD erkennt, dass der Anmeldeversuch von einer anonymen IP-Adresse stammt, und löst ein Anmelderisiko in Echtzeit aus. 
 3. Der böswillige Akteur erhält eine MFA-Aufforderung, da der IT-Administrator von Contoso die Identity Protection-Richtlinie für bedingten Zugriff bei einem Anmelderisiko so konfiguriert hat, dass bei der Risikostufe „Mittel“ oder höher für die Anmeldung eine mehrstufige Authentifizierung erforderlich ist. 
 4. Der böswillige Akteur kann die mehrstufige Authentifizierung nicht durchführen und nicht auf das Exchange Online-Konto des Mitarbeiters zugreifen. 
-5. Durch die fehlerhafte mehrstufige Authentifizierung wurde ein aufzuzeichnendes Risikoereignis ausgelöst, durch das sich das Benutzerrisiko des Mitarbeiters für zukünftige Anmeldungen erhöht. 
+5. Durch die fehlerhafte mehrstufige Authentifizierung wurde eine aufzuzeichnende Risikoerkennung ausgelöst, durch die sich das Benutzerrisiko für zukünftige Anmeldungen erhöht. 
 
 Nachdem ein böswilliger Akteur versucht hat, auf das Konto des Mitarbeiters zuzugreifen, sehen Sie sich nun an, was passiert, wenn sich der Mitarbeiter das nächste Mal anmelden möchte. 
 
-1. Der Mitarbeiter versucht, sich über Outlook bei Exchange Online anzumelden. Zum Zeitpunkt der Anmeldung erkennt Azure AD Echtzeitrisikoereignisse sowie alle vorherigen Benutzerrisiken. 
+1. Der Mitarbeiter versucht, sich über Outlook bei Exchange Online anzumelden. Zum Zeitpunkt der Anmeldung erkennt Azure AD Echtzeitrisikoerkennungen sowie alle vorherigen Benutzerrisiken. 
 2. Azure AD erkennt kein Anmelderisiko in Echtzeit, jedoch aufgrund der früheren riskanten Aktivitäten in den vorherigen Szenarien ein hohes Benutzerrisiko.  
 3. Der Mitarbeiter wird aufgefordert, das Kennwort zurückzusetzen, da der IT-Administrator von Contoso die Identity Protection-Richtlinie zum Benutzerrisiko so konfiguriert hat, dass eine Kennwortänderung erforderlich ist, wenn sich ein Benutzer mit hohem Risiko anmeldet. 
 4. Der Mitarbeiter setzt sein Kennwort zurück, da er für Self-Service-Kennwortzurücksetzung und mehrstufige Authentifizierung registriert ist. 
 5. Durch die Kennwortzurücksetzung sind die Anmeldeinformationen des Mitarbeiters nicht mehr kompromittiert, und seine Identität weist wieder einen sicheren Status auf. 
-6. Die vorherigen Risikoereignisse des Mitarbeiters sind behoben, und seine Benutzerrisikostufe wird als Reaktion auf die Behebung der kompromittierten Anmeldeinformationen automatisch zurückgesetzt. 
+6. Die vorherigen Risikoerkennungen des Mitarbeiters sind behoben, und seine Benutzerrisikostufe wird als Reaktion auf die Behebung der kompromittierten Anmeldeinformationen automatisch zurückgesetzt. 
 
 ## <a name="how-do-i-configure-identity-protection"></a>Wie konfiguriere ich Identity Protection? 
 
-Für die ersten Schritte mit Identity Protection konfigurieren Sie zunächst eine Richtlinie zum Benutzerrisiko und eine Richtlinie zum Anmelderisiko. Nachdem diese Richtlinien konfiguriert und auf eine Testgruppe angewandt wurden, können Sie Risikoereignisse simulieren, um zu überprüfen wie Identity Protection in Ihrer Umgebung reagiert. Die nachfolgend aufgeführten Schnellstarts enthalten jeweils eine exemplarische Vorgehensweise zum Einrichten der oben genannten Richtlinien und Testen Ihrer Umgebung. 
+Für die ersten Schritte mit Identity Protection konfigurieren Sie zunächst eine Richtlinie zum Benutzerrisiko und eine Richtlinie zum Anmelderisiko. Nachdem diese Richtlinien konfiguriert und auf eine Testgruppe angewandt wurden, können Sie Risikoerkennungen simulieren, um zu überprüfen wie Identity Protection in Ihrer Umgebung reagiert. Die nachfolgend aufgeführten Schnellstarts enthalten jeweils eine exemplarische Vorgehensweise zum Einrichten der oben genannten Richtlinien und Testen Ihrer Umgebung. 
 
 Identity Protection unterstützt drei Rollen in Azure AD für die Verwaltungsaktivitäten bei Ihrer Bereitstellung: 
 
@@ -145,13 +145,17 @@ Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azur
 >[!NOTE]
 > In der öffentlichen Vorschauversion von Identity Protection (aktualisiert) haben nur Azure AD Premium P2-Kunden Zugriff auf die Berichte „Riskante Benutzer“ und „Riskante Anmeldungen“.
 
-| Funktion | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
-| --- | --- | --- | --- |
-| Richtlinie zum Benutzerrisiko | Ja | Nein | Nein |
-| Richtlinie zum Anmelderisiko | Ja | Nein | Nein |
-| Bericht „Riskante Benutzer“ | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
-| Bericht über riskante Anmeldungen | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
-| Richtlinie für MFA-Registrierung | Ja | Nein | Nein |
+| Funktion | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
+| --- | --- | --- | --- | --- |
+| Risikorichtlinien | Benutzerrisiko-Richtlinie (über Identity Protection) | Ja | Nein | Nein |
+| Risikorichtlinien | Anmelderisiko-Richtlinie (über Identity Protection oder bedingten Zugriff) | Ja | Nein | Nein |
+| Sicherheitsberichte | Übersicht | Ja | Nein | Nein |
+| Sicherheitsberichte | Riskante Benutzer | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
+| Sicherheitsberichte | Riskante Anmeldungen | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
+| Sicherheitsberichte | Risikoerkennungen | Vollzugriff | Eingeschränkte Informationen | Nein |
+| Benachrichtigungen | Warnungen zu erkannten gefährdeten Benutzern | Ja | Nein | Nein |
+| Benachrichtigungen | Wöchentliche Übersicht | Ja | Nein | Nein |
+| | Richtlinie für MFA-Registrierung | Ja | Nein | Nein |
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

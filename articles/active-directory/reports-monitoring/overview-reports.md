@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989724"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127271"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
@@ -54,9 +54,9 @@ Alle Editionen von Azure AD verfügen über die Sicherheitsberichte „Benutzer 
 
 - In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie die Listen „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“. 
 
-- Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoereignisse untersuchen können, die für einen Bericht erkannt wurden. 
+- Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoerkennungen untersuchen können, die für einen Bericht erkannt wurden. 
 
-- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu den zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
+- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu den zugrunde liegenden Risikoerkennungen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
 
 ## <a name="activity-reports"></a>Aktivitätsberichte

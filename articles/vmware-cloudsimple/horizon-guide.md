@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b4c1c60bcab770c5345645ffda3ac3558aa32cc
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8e5aeb63c54bd9ad71d5eb179fb93972468af4c0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901290"
+ms.locfileid: "69972752"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>Verwenden der Private Cloud-Website von CloudSimple zum Hosten einer virtuellen Desktopinfrastruktur mithilfe von VMware Horizon
 
@@ -74,6 +74,7 @@ In den folgenden Abschnitten werden die Anweisungen zum Einrichten einer Bereits
 * Installation von AD/DHCP/DNS für Ihre private Cloud
 
 #### <a name="cloudsimple-portal-create-a-dedicated-vlansubnet-for-desktop-pools"></a>CloudSimple-Portal: Erstellen eines dedizierten VLAN/Subnetzes für Desktoppools
+
 Erstellen Sie ein VLAN für die Horizon-Desktoppools, und weisen Sie ihm einen Subnetz-CIDR-Wert zu. Anweisungen dazu finden Sie unter [Erstellen und Verwalten von VLANs/Subnetzen](create-vlan-subnet.md). Dabei handelt es sich um das Netzwerk, in dem alle virtuellen Desktopcomputer ausgeführt werden.
 
 Befolgen Sie die bewährten Standardsicherheitsmethoden, um Ihre Horizon-Bereitstellung zu schützen:

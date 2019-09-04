@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098967"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Einzeldatenbank zu einer Failovergruppe
 
@@ -61,16 +61,15 @@ In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failove
 Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des Azure-Portals zu dieser Gruppe hinzu. 
 
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) oben links die Option **Alle Dienste** aus. 
-1. Geben Sie im Suchfeld als Suchbegriff `sql servers` ein. 
-1. (Optional) Wählen Sie das Sternsymbol neben SQL Server aus, **um SQL Server-Instanzen** als Favoriten festzulegen, und fügen Sie es dem linken Navigationsbereich hinzu. 
-    
-    ![Suchen von SQL Server-Instanzen](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie den Singleton aus, der im Abschnitt 2 erstellt wurde, z. B. `mySampleDatbase`. 
+1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
-1. Wählen Sie **SQL Server-Instanzen** und dann den Server aus, den Sie in Abschnitt 1 erstellt haben, z.B. `mysqlserver`.
+   ![Öffnen des Servers für einen Singleton](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und klicken Sie dann auf **Gruppe hinzufügen**, um eine neue Failovergruppe zu erstellen. 
 
-    ![Hinzufügen einer neuen Failovergruppe](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Hinzufügen einer neuen Failovergruppe](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Wählen Sie auf der Seite **Failovergruppe** die folgenden Werte aus bzw. geben Sie sie ein, und wählen Sie dann **Erstellen**:
     - **Name der Failovergruppe**: Geben Sie einen eindeutigen Namen für die Failovergruppe ein, z.B. `failovergrouptutorial`. 
@@ -78,16 +77,16 @@ Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des A
         - **Servername**: Geben Sie einen eindeutigen Namen für den sekundären Server ein, z.B. `mysqlsecondary`. 
         - **Serveradministratoranmeldung**: Geben Sie Folgendes ein: `azureuser`
         - **Kennwort**: Geben Sie ein komplexes Kennwort ein, das die Anforderungen für Kennwörter erfüllt.
-        - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z.B. USA, Osten 2. Dieser Standort darf nicht mit dem Standort des primären Servers übereinstimmen.
+        - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z. B. `East US`. Dieser Standort darf nicht mit dem Standort des primären Servers übereinstimmen.
 
     > [!NOTE]
     > Die Einstellungen für Serveranmeldung und Firewall müssen jedoch mit denen Ihres primären Servers übereinstimmen. 
     
-      ![Erstellen eines sekundären Servers für die Failovergruppe](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+      ![Erstellen eines sekundären Servers für die Failovergruppe](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
    - **Datenbank innerhalb der Gruppe**: Sobald ein sekundärer Server ausgewählt wurde, wird diese Option entsperrt. Wählen Sie die Option aus, um **Hinzuzufügende Datenbank auswählen** auszuwählen. Wählen Sie anschließend die in Abschnitt 1 erstellte Datenbank aus. Durch das Hinzufügen der Datenbank zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet. 
         
-    ![Hinzufügen von SQL DB zur Failovergruppe](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Hinzufügen von SQL DB zur Failovergruppe](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -99,12 +98,12 @@ Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe von P
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
    # $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   # $location = "West US 2"
+   # $location = "West US"
    # $adminLogin = "azureuser"
    # $password = "PWD27!"+(New-Guid).Guid
    # $serverName = "mysqlserver-$(Get-Random)"
    # $databaseName = "mySampleDatabase"
-   $drLocation = "East US 2"
+   $drLocation = "East US"
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
@@ -194,16 +193,21 @@ In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem seku
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Testen Sie ein Failover über das Azure-Portal. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Server **SQL Server-Instanzen**. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie den Singleton aus, der im Abschnitt 2 erstellt wurde, z. B. `mySampleDatbase`. 
+1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
+
+   ![Öffnen des Servers für einen Singleton](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. Wählen Sie **Failovergruppen** im Bereich **Einstellungen** aus, und wählen Sie dann die in Abschnitt 2 erstellte Failovergruppe aus. 
   
-   ![Auswählen der Failovergruppe aus dem Portal](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![Auswählen der Failovergruppe aus dem Portal](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. 
 1. Wählen Sie im Aufgabenbereich **Failover** aus, um ein Failover für die Failovergruppe mit der Beispieleinzeldatei durchzuführen. 
 1. Wählen Sie in der Meldung, dass die TDS-Sitzungen getrennt werden, **Ja** aus. 
 
-   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. Überprüfen Sie, welcher Server jetzt der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben. 
 1. Wählen Sie erneut **Failover** aus, um die Server auf ihre ursprünglichen Rollen zurückzusetzen. 

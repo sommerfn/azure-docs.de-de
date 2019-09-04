@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 05/07/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165758"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123765"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 
@@ -42,29 +42,41 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 
 Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme diagnostizieren und verringern.
 
-1. Wählen Sie im Azure-Portal die Option **Metriken** aus.
+1. Wählen Sie im Azure-Portal **Warnungen** aus.
 
-   [![Metriken](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
+   [![Warnungen](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
-1. Wählen Sie **Metrikwarnung hinzufügen** aus.  
+1. Daraufhin wird der Bereich **Regel erstellen** angezeigt. Wählen Sie unter **BEDINGUNG** die Option **Hinzufügen** aus.
 
-   [![Hinzufügen einer Metrikwarnung](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
+   [![Warnung hinzufügen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
-Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
+1. Konfigurieren Sie als Nächstes die genauen Bedingungen für die Signallogik.
 
-|Metrik  |BESCHREIBUNG  |
-|---------|---------|
-|**Ingress Received Bytes** (Eingang empfangene Bytes)     | Anzahl der aus Ereignisquellen gelesenen Rohbytes. Die Anzahl der Rohbytes umfasst normalerweise den Eigenschaftennamen und den Eigenschaftswert.  |  
-|**Ingress Received Invalid Messages** (Eingang empfangene ungültige Nachrichten)     | Anzahl der aus allen Azure Event Hubs- oder Azure IoT Hub-Ereignisquellen gelesenen ungültigen Nachrichten.      |
-|**Ingress Received Messages** (Eingang empfangene Nachrichten)   | Anzahl der aus allen Event Hubs- oder IoT Hub-Ereignisquellen gelesenen Nachrichten.        |
-|**Ingress Stored Bytes** (Eingang gespeicherte Bytes)     | Gesamtgröße der gespeicherten und für Abfragen verfügbaren Ereignisse. Die Größe wird lediglich für den Eigenschaftswert berechnet.        |
-|**Ingress Stored Events** (Eingang gespeicherte Ereignisse)     |   Anzahl der gespeicherten und für Abfragen verfügbaren vereinfachten Ereignisse.      |
-|**Ingress Received Message Time Lag** (Eingang Zeitverzögerung für empfangene Nachrichten)    |  Der Unterschied in Sekunden zwischen dem Zeitpunkt, zu dem die Nachricht in der Ereignisquelle in die Warteschlange eingereiht wird, und dem Zeitpunkt der Verarbeitung im Eingang.      |
-|**Ingress Received Message Count Lag** (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
+   [![Signallogik konfigurieren](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
-![Latency](media/environment-mitigate-latency/latency.png)
+   Hier können Sie Warnungen mit einigen der folgenden Bedingungen konfigurieren:
 
-* Bei einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um sie zu informieren, wie viele Sekunden TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
+   |Metrik  |BESCHREIBUNG  |
+   |---------|---------|
+   |**Ingress Received Bytes** (Eingang empfangene Bytes)     | Anzahl der aus Ereignisquellen gelesenen Rohbytes. Die Anzahl der Rohbytes umfasst normalerweise den Eigenschaftennamen und den Eigenschaftswert.  |  
+   |**Ingress Received Invalid Messages** (Eingang empfangene ungültige Nachrichten)     | Anzahl der aus allen Azure Event Hubs- oder Azure IoT Hub-Ereignisquellen gelesenen ungültigen Nachrichten.      |
+   |**Ingress Received Messages** (Eingang empfangene Nachrichten)   | Anzahl der aus allen Event Hubs- oder IoT Hub-Ereignisquellen gelesenen Nachrichten.        |
+   |**Ingress Stored Bytes** (Eingang gespeicherte Bytes)     | Gesamtgröße der gespeicherten und für Abfragen verfügbaren Ereignisse. Die Größe wird lediglich für den Eigenschaftswert berechnet.        |
+   |**Ingress Stored Events** (Eingang gespeicherte Ereignisse)     |   Anzahl der gespeicherten und für Abfragen verfügbaren vereinfachten Ereignisse.      |
+   |**Ingress Received Message Time Lag** (Eingang Zeitverzögerung für empfangene Nachrichten)    |  Der Unterschied in Sekunden zwischen dem Zeitpunkt, zu dem die Nachricht in der Ereignisquelle in die Warteschlange eingereiht wird, und dem Zeitpunkt der Verarbeitung im Eingang.      |
+   |**Ingress Received Message Count Lag** (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
+
+   Wählen Sie **Fertig**aus.
+
+1. Nachdem Sie die gewünschte Signallogik konfiguriert haben, überprüfen Sie die ausgewählte Warnungsregel visuell.
+
+   [![Eingehende Daten](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+
+## <a name="throttling-and-ingress-management"></a>Drosselung und Eingangsverwaltung
+
+* Bei einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um sie zu informieren, wie viele Sekunden TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
+
+  *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
 
   Wenn Sie beispielsweise über eine S1-Umgebung mit nur einer Einheit verfügen und sehen, dass ein Rückstand von 5.000.000 Nachrichten besteht, können Sie die Größe Ihrer Umgebung ungefähr einen Tag lang auf sechs Einheiten erhöhen, um den Rückstand aufzuholen.  Sie können die Größe auch stärker erhöhen, um den Rückstand schneller wettzumachen. Der Abgleichszeitraum tritt bei der anfänglichen Bereitstellung einer Umgebung häufig auf, z.B. wenn Sie diesen mit einer Ereignisquelle verbinden, die bereits Ereignisse enthält, oder wenn Sie einen Massenupload für viele Verlaufsdaten durchführen.
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 660b2ead146695657ae13444cb7936eff8224f3a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878631"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099518"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung (Previewfunktionen)
 
@@ -44,7 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie die Schritte der Schnellstartanleitung [Create an Azure IoT Central application](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) (Erstellen einer Azure IoT Central-Anwendung) ausgeführt haben, können Sie die so erstellte Anwendung verwenden. Führen Sie andernfalls die folgenden Schritte aus, um eine leere Azure IoT Central-Anwendung zu erstellen:
 
-1. Navigieren Sie zur Azure IoT Central-Seite [Application Manager](https://aka.ms/iotcentral) (Anwendungs-Manager).
+1. Navigieren Sie zur Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral).
 
 1. Gehen Sie bei Vorhandensein eines Azure-Abonnements so vor, dass Sie sich mit den üblichen Anmeldeinformationen anmelden. Verwenden Sie andernfalls ein Microsoft-Konto:
 
@@ -70,7 +70,7 @@ Erstellen Sie wie folgt eine neue Azure IoT Central-Anwendung, für die Previewf
 
     Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
-Außerdem benötigen Sie eine lokale Kopie der Datei **EnvironmentalSensorInline.capabilitymodel.json**, die das Gerätefunktionsmodell [IoT Plug & Play](https://aka.ms/iot-pnp-docs) enthält. Sie können es [hier](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)herunterladen. Klicken Sie mit der rechten Maustaste auf die Seite, und wählen Sie **Speichern unter**.
+Außerdem benötigen Sie eine lokale Kopie der Datei **EnvironmentalSensorInline.capabilitymodel.json**, die das Gerätefunktionsmodell [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) enthält. Sie können es [hier](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)herunterladen. Klicken Sie mit der rechten Maustaste auf die Seite, und wählen Sie **Speichern unter**.
 
 Öffnen Sie die Datei nach dem Herunterladen in einem Text-Editor, und ersetzen Sie die beiden Instanzen von `<YOUR_COMPANY_NAME_HERE>` durch Ihren Namen. Verwenden Sie nur die Zeichen a - z, A - Z, 0 - 9 und Unterstrich.
 
@@ -90,11 +90,11 @@ In den folgenden Schritten wird veranschaulicht, wie Sie das Funktionsmodell fü
 
 1. Wählen Sie zum Hinzufügen einer neuen Gerätevorlage auf der Seite **Gerätevorlagen** die Option **+ Neu**.
 
-1. Wählen Sie in der Liste mit den Gerätefunktionsmodellen die Option **Benutzerdefiniert**.
+1. Wählen Sie in der Liste der Vorlagen die Option **Benutzerdefiniert** aus.
 
 1. Geben Sie **Environmental Sensor** (Umgebungssensor) als Namen für Ihre Gerätevorlage ein.
 
-1. Wählen Sie **Funktionsmodell importieren**, um ein neues Gerätefunktionsmodell aus einer JSON-Datei zu erstellen. Navigieren Sie zu dem Ordner, in dem Sie die Datei **EnvironmentalSensorInline.capabilitymodel.json** auf Ihrem lokalen Computer gespeichert haben. Wählen Sie die Datei **EnvironmentalSensorInline.capabilitymodel.json** und dann die Option für den Import. Das Umgebungssensor-Funktionsmodell enthält die Schnittstellen **Environmental Sensor** (Umgebungssensor) und **Device Information** (Geräteinformationen):
+1. Wählen Sie **Funktionsmodell importieren**, um ein neues Gerätefunktionsmodell aus einer JSON-Datei zu erstellen. Navigieren Sie zu dem Ordner, in dem Sie die Datei **EnvironmentalSensorInline.capabilitymodel.json** auf Ihrem lokalen Computer gespeichert haben. Wählen Sie die Datei **EnvironmentalSensorInline.capabilitymodel.json** und dann die Option **Öffnen** aus. Das Umgebungssensor-Funktionsmodell enthält die Schnittstellen **Environmental Sensor** (Umgebungssensor) und **Device Information** (Geräteinformationen):
 
     ![Gerätefunktionsmodell „Environmental Sensor“ (Umgebungssensor)](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ Nachdem Sie die Option **Standardansichten generieren** gewählt haben, werden d
 
 Mit einem Gerätedashboard kann ein Bediener ein Gerät visualisieren, indem er Diagramme und Metriken verwendet. Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedashboard angezeigt werden sollen. Sie können mehrere Dashboards für Geräte definieren. Wählen Sie zum Erstellen eines Dashboards für die Visualisierung der Umgebungssensor-Telemetriedaten die Option **Ansichten** und dann **Gerät visualisieren**:
 
-1. Im rechten Bereich sind alle Geräteeigenschaften, Cloudeigenschaften, Telemetriedaten und statischen Optionen aufgeführt. Sie können diese Elemente per Drag & Drop in die Ansicht ziehen. Ziehen Sie eine Eigenschaft in die Ansicht. Sie können die Kachel konfigurieren, indem Sie das Zahnradsymbol verwenden.
+1. Unter **Eigenschaften** sind alle Geräteeigenschaften, Cloudeigenschaften, Telemetriedaten und statischen Optionen aufgeführt. Sie können diese Elemente per Drag & Drop in die Ansicht ziehen. Ziehen Sie die Eigenschaft **Helligkeitsstufe** in die Ansicht. Sie können die Kachel konfigurieren, indem Sie das Zahnradsymbol verwenden.
 
-1. Wählen Sie zum Hinzufügen eines Diagramms, mit dem Telemetriedaten ausgegeben werden, die Optionen **Luftfeuchtigkeit** und **Temperatur** und dann **Kombinieren**. Um dieses Diagramm in einem beliebigen anderen Format anzuzeigen, z. B. als Kreis- oder Balkendiagramm, wählen Sie auf der Kachel die Schaltfläche **Visualisierung ändern**.
+1. Wählen Sie zum Hinzufügen eines Diagramms, mit dem Telemetriedaten ausgegeben werden, die Optionen **Luftfeuchtigkeit** und **Temperatur** und dann **Kombinieren**. Um dieses Diagramm in einem anderen Format anzuzeigen, z. B. als Kreis- oder Balkendiagramm, wählen Sie oben auf der Kachel die Schaltfläche **Visualisierung ändern** aus.
 
 1. Wählen Sie **Speichern**, um Ihre Ansicht zu speichern:
 
@@ -161,7 +161,7 @@ Mit einem Geräteformular kann ein Bediener schreibbare Geräteeigenschaften und
 
 Erstellen Sie wie folgt ein Formular, um Umgebungssensoreigenschaften anzuzeigen und zu bearbeiten:
 
-1. Wählen Sie die Kachel **Geräte- und Clouddaten bearbeiten**.
+1. Navigieren Sie in der Vorlage **Environmental Sensor** (Umgebungssensor) zu **Ansichten**. Wählen Sie die Kachel **Geräte- und Clouddaten bearbeiten** aus, um eine neue Ansicht hinzuzufügen.
 
 1. Geben Sie den Formularnamen **Environmental Sensor properties** (Umgebungssensoreigenschaften) ein.
 
@@ -169,10 +169,9 @@ Erstellen Sie wie folgt ein Formular, um Umgebungssensoreigenschaften anzuzeigen
 
 1. Wählen Sie die Geräteeigenschaften **Helligkeitsstufe** und **Gerätestatus** aus. Wählen Sie anschließend die Option **Abschnitt hinzufügen**. Bearbeiten Sie den Titel des Abschnitts so, dass er **Sensoreigenschaften** lautet. Wählen Sie **Übernehmen**.
 
-1. Wählen Sie die Geräteeigenschaften **Verbleibende Akkukapazität**, **Gerätemodell**, **Firmwareversion**, **Hersteller** und **Seriennummer** aus. Wählen Sie anschließend die Option **Abschnitt hinzufügen**. Bearbeiten Sie den Titel des Abschnitts so, dass er **Geräteeigenschaften** lautet. Wählen Sie **Übernehmen**.
+1. Wählen Sie die Geräteeigenschaften **Gerätemodell**, **Softwareversion**, **Hersteller** und **Processor manufacturer** (Prozessorhersteller) aus. Wählen Sie anschließend die Option **Abschnitt hinzufügen**. Bearbeiten Sie den Titel des Abschnitts so, dass er **Geräteeigenschaften** lautet. Wählen Sie **Übernehmen**.
 
 1. Wählen Sie **Speichern**, um Ihre Ansicht zu speichern.
-
 
 ## <a name="publish-device-template"></a>Veröffentlichen der Gerätevorlage
 

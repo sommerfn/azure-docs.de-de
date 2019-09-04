@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878938"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114261"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug & Play (Vorschau): allgemeine Schnittstellen
 
-Alle IoT Plug & Play-Geräte sollten einige allgemeine Schnittstellen implementieren. Allgemeine Schnittstellen sind von Vorteil für IoT-Lösungen, weil sie eine konsistente Funktionalität bereitstellen. Die [Zertifizierung](tutorial-build-device-certification.md) erfordert, dass Ihr Gerät einige allgemeine Schnittstellen implementiert. Sie können die allgemeinen Schnittstellendefinitionen aus dem globalen Modellrepository abrufen.
+Alle IoT Plug & Play-Geräte sollten einige allgemeine Schnittstellen implementieren. Allgemeine Schnittstellen sind von Vorteil für IoT-Lösungen, weil sie eine konsistente Funktionalität bereitstellen. Die [Zertifizierung](tutorial-build-device-certification.md) erfordert, dass Ihr Gerät einige allgemeine Schnittstellen implementiert. Sie können die allgemeinen Schnittstellendefinitionen aus dem öffentlichen Modellrepository abrufen.
 
 ## <a name="summary-of-common-interfaces"></a>Zusammenfassung der allgemeinen Schnittstellen
 
@@ -35,7 +35,7 @@ Alle IoT Plug & Play-Geräte sollten einige allgemeine Schnittstellen implemen
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Sie können die Azure-IoT-Erweiterung für die Azure CLI verwenden, um die allgemeinen Schnittstellen aus dem globalen Modellrepository abzurufen.
+Sie können die Azure-IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle verwenden, um die allgemeinen Schnittstellen aus dem öffentlichen Modellrepository abzurufen.
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -49,9 +49,9 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 1. Öffnen Sie mit **STRG+UMSCHALT+P** die Befehlspalette.
 
-1. Geben Sie **Plug & Play** ein, und wählen Sie dann den Befehl **IoT Plug & Play: Modellrepository öffnen** aus. Wählen Sie **Globales Modellrepository** aus. Das globale Modellrepository wird in VS Code geöffnet.
+1. Geben Sie **Plug & Play** ein, und wählen Sie dann den Befehl **IoT Plug & Play: Modellrepository öffnen** aus. Wählen Sie **Public repository** (Öffentliches Repository) aus. Das öffentliche Modellrepository wird in VS Code geöffnet.
 
-1. Geben Sie den Schnittstellennamen im Suchfeld des globalen Modellrepositorys ein.
+1. Geben Sie den Schnittstellennamen im Suchfeld des öffentlichen Modellrepositorys ein.
 
 1. Um eine lokale Kopie der Schnittstelle zu erstellen, wählen Sie die Schnittstelle in den Suchergebnissen aus, und klicken Sie dann auf **Download**.
 

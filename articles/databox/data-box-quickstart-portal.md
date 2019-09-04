@@ -6,21 +6,43 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834719"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098782"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box über das Azure-Portal
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Erste Schritte mit Azure Data Box Disk im Azure-Portal
+
+::: zone-end
+
+::: zone target="docs"
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie das Azure Data Box-Gerät über das Azure-Portal bereitstellen. Die Schritte umfassen das Verkabeln, Konfigurieren und Kopieren von Daten in Data Box, damit sie in Azure hochgeladen werden können. Der Schnellstart erfolgt im Azure-Portal und auf der lokalen Webbenutzeroberfläche des Geräts.
 
 Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nachverfolgung finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md).
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+In diesem Leitfaden wird beschrieben, wie Sie das Azure Data Box-Gerät über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Verkabeln und Verbinden Ihres Geräts sowie das Kopieren von Daten auf Ihr Gerät, damit sie in Azure hochgeladen werden können.
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Vorbereitungen
@@ -41,6 +63,31 @@ Vorbereitungen
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Stellen Sie Folgendes sicher, bevor Sie beginnen:
+
+1. Sie haben die Schritte unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md) ausgeführt.
+2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Geliefert** angezeigt. 
+3. Sie haben sich mit den [Sicherheitsrichtlinien für die Data Box](data-box-safety.md) vertraut gemacht.
+4. Sie haben ein geerdetes Netzkabel zur Verwendung mit dem 100-TB-Speichergerät erhalten.
+5. Sie haben Zugriff auf einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
+    - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
+    - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
+6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät waagrecht oder senkrecht in ein standardmäßiges Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack.
+7. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden:
+    - Mindestens ein SFP+-Twinax-Kupferkabel oder SFP+-Glasfaserkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Weitere Informationen finden Sie in der [Liste der unterstützten Kabel und Switches von Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf), die mit der Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“ kompatibel sind.
+    - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
+    - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -55,6 +102,8 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 4. Geben Sie die Auftragsdetails und Versandinformationen ein. Wenn der Dienst in Ihrer Region verfügbar ist, können Sie E-Mail-Adressen für Benachrichtigungen angeben, die Zusammenfassung prüfen und anschließend den Auftrag erstellen.
 
 Nachdem der Auftrag erstellt wurde, wird das Gerät für den Versand vorbereitet.
+
+
 
 ## <a name="cable"></a>Kabel 
 
@@ -132,5 +181,7 @@ In dieser Schnellstartanleitung haben Sie eine Azure Data Box bereitgestellt, ü
 
 > [!div class="nextstepaction"]
 > [Verwalten von Data Box im Azure-Portal](data-box-portal-admin.md)
+
+::: zone-end
 
 

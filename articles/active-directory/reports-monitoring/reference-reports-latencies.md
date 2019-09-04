@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987938"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127030"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
@@ -64,11 +64,11 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Sicherheitsberichte.
 | Gefährdete Benutzer          | 5 Minuten   | 15 Minuten  | 2 Stunden  |
 | Riskante Anmeldungen         | 5 Minuten   | 15 Minuten  | 2 Stunden  |
 
-## <a name="risk-events"></a>Risikoereignisse
+## <a name="risk-detections"></a>Risikoerkennungen
 
-Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als **Risikoereignis** bezeichnet wird.
+Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als **Risikoerkennung** bezeichnet wird.
 
-Die folgende Tabelle enthält Latenzzeitinformationen für Risikoereignisse.
+Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
 | Bericht | Minimum | Durchschnitt | Maximum |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Risikoereignisse.
 
 * [Übersicht über Azure AD-Berichte](overview-reports.md)
 * [Programmgesteuerter Zugriff auf Azure AD-Berichte](concept-reporting-api.md)
-* [Azure Active Directory-Risikoereignisse](concept-risk-events.md)
+* [Azure Active Directory-Risikoerkennungen](concept-risk-events.md)

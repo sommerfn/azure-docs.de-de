@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612296"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990590"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Einbinden eines virtuellen Ubuntu-Computers in Azure in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -88,7 +88,7 @@ Als Nächstes installieren Sie Pakete, die für den Domänenbeitritt auf dem vir
 3. Bei der Kerberos-Installation wird Ihnen ein rosafarbener Bildschirm angezeigt. Bei der Installation des Pakets „krb5-user“ werden Sie aufgefordert, den Bereichsnamen einzugeben (in Großbuchstaben). Die Installation schreibt die Abschnitte [realm] und [domain_realm] in die Datei „/etc/krb5.conf“.
 
     > [!TIP]
-    > Wenn der Name Ihrer verwalteten Domäne „contoso.com“ ist, geben Sie als Bereich „contoso.COM“ ein. Denken Sie daran, dass der Bereichsname in Großbuchstaben angegeben werden muss.
+    > Wenn der Name Ihrer verwalteten Domäne „contoso.com“ ist, geben Sie als Bereich „CONTOSO.COM“ ein. Denken Sie daran, dass der Bereichsname in Großbuchstaben angegeben werden muss.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Konfigurieren der NTP-Einstellungen (NTP = Network Time Protocol) auf dem virtuellen Linux-Computer
@@ -121,7 +121,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 1. Ermitteln Sie die durch Azure AD-Domänendienste verwaltete Domäne. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Binden Sie den Computer in die Domäne ein. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
@@ -149,7 +149,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     > Wenn Ihr virtueller Computer der Domäne nicht beitreten kann, stellen Sie sicher, dass die Netzwerksicherheitsgruppe des virtuellen Computers ausgehenden Kerberos-Datenverkehr über TCP und UDP-Port 464 an das Subnetz des virtuellen Netzwerks für Ihre von Azure AD DS verwaltete Domäne zulässt.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollte eine Meldung angezeigt werden, dass der Computer erfolgreich im Bereich registriert wurde.
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Überprüfen des Domänenbeitritts
 Überprüfen Sie, ob der Computer der verwalteten Domäne erfolgreich beigetreten ist. Stellen Sie über eine andere SSH-Verbindung eine Verbindung zur beigetretenen Domäne des virtuellen Ubuntu-Computers her. Verwenden Sie ein Domänenbenutzerkonto, und überprüfen Sie anschließend, ob das Benutzerkonto ordnungsgemäß aufgelöst wurde.
 
-1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung zu dem der Domäne beigetretenen virtuellen Ubuntu-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@contoso.COM').
+1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung zu dem der Domäne beigetretenen virtuellen Ubuntu-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@CONTOSO.COM').
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob das Basisverzeichnis ordnungsgemäß initialisiert wurde.

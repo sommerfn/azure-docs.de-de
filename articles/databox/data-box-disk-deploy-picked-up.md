@@ -6,26 +6,33 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9e3159a083d21e4a7a81df2fcf7a7d5db882b757
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1104c017541b8124366a6121763318f199f3aad5
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976912"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126090"
 ---
+::: zone target="chromeless"
+
+## <a name="return-azure-data-box-disk"></a>Zurücksenden von Azure Data Box Disk 
+
+::: zone-end
+
 ::: zone target="docs"
 
-# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure
+# <a name="tutorial-return-azure-data-box-disk"></a>Tutorial: Zurücksenden von Azure Data Box Disk 
 
-Dies ist das letzte Tutorial der Reihe „Bereitstellen von Azure Data Box Disk“. In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Azure Data Box Disk zurücksenden. Die Anweisungen für die Abholung hängen davon ab, wo Sie das Gerät zurückgeben. 
+
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Senden des Data Box-Datenträgers an Microsoft
-> * Überprüfen des Datenuploads in Azure
-> * Löschen von Daten vom Data Box-Datenträger
+> * Abholen von Data Box Disk in verschiedenen Regionen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,26 +41,33 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
 
 ## <a name="ship-data-box-disk-back"></a>Zurücksenden des Data Box-Datenträgers
 
+::: zone-end
+
 1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
 2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
     - Verwenden Sie das Verpackungsmaterial aus der ursprünglichen Lieferung.  
     - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
     - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
 
-Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
+Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien und asiatische Länder gelten jeweils andere Anweisungen.
+
+- [Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA und Kanada zurücksenden](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+- [Planen Sie eine Abholung mit DHL für Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe), indem Sie die Website besuchen und die Nummer der Luftfrachtbriefe angeben.
+- [Planen Sie eine Abholung in Australien.](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up#pick-up-in-australia)
+- [Planen Sie eine Abholung für asiatische Länder](data-box-disk-deploy-picked-up.md#pick-up-in-asia) wie Japan, Südkorea oder Singapur.
+
+::: zone target="chromeless"
+
+Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal aktualisiert und eine Sendungsverfolgungs-ID angezeigt.
+
+::: zone-end
 
 ### <a name="pick-up-in-us-canada"></a>Abholung in den USA/in Kanada
 
 Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie wie folgt vor:
 
 1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
-    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
-
-        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
-        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
-
-        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
     - Bringen Sie das Etikett am Gerät an.
 
 2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
@@ -64,36 +78,20 @@ Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie w
     - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
     - Wenn Sie keine Abholung planen können oder möchten, können Sie den Data Box-Datenträger auch an der nächstgelegenen Versandstelle abgeben.
 
-
 ### <a name="pick-up-in-europe"></a>Abholung in Europa
 
 Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
 1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
-    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
-
-        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
-        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
-
-        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
     - Bringen Sie das Etikett am Gerät an.
 
 2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
 3. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben.
-4. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.
-
-    ![Rücklieferung mit DHL](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.    
 3. Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
 
-      ![Abholung beauftragen](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-### <a name="pick-up-in-asia-pacific-region"></a>Abholung in der Asien-Pazifik-Region
-
-Dieser Abschnitt enthält Anweisungen für die Abholung in Japan, Korea, Australien und Singapur.
-
-#### <a name="pick-up-in-australia"></a>Abholung in Australien
+### <a name="pick-up-in-australia"></a>Abholung in Australien
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für eine Abholung in Australien wie folgt vor:
 
@@ -103,6 +101,10 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
     - Auftragsname
     - Adresse
     - Kontaktname
+
+### <a name="pick-up-in-asia"></a>Abholung in Asien
+
+Für Japan, Südkorea und Singapur gelten jeweils andere Abholanweisungen.
 
 #### <a name="pick-up-in-japan"></a>Abholung in Japan
 
@@ -145,16 +147,13 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
     3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
     4. Bei einer Anforderung per Telefon erhalten Sie eine mündliche Bestätigung.
 
-### <a name="pick-up-in-singapore"></a>Abholung in Singapur
+#### <a name="pick-up-in-singapore"></a>Abholung in Singapur
 
 1. Drucken Sie das Adressetikett aus, und bringen Sie es auf der Box an. Sollte das Etikett beschädigt oder verloren gegangen sein:
-    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
 
         ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
 
-        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
-
-        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
     - Bringen Sie das Etikett am Gerät an. Vergewissern Sie sich, dass das Etikett gut sichtbar ist.
 
 2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
@@ -165,58 +164,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 3. Übergeben Sie die Box an den Kurier. 
 
 
-## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
-
-Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal in **Picked up** (Abgeholt) geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
-
-![Datenträger abgeholt](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
-
-Nachdem der Datenträger bei Microsoft eingegangen ist und gescannt wurde, wird der Auftragsstatus in **Received** (Empfangen) geändert. 
-
-![Datenträger empfangen](media/data-box-disk-deploy-picked-up/data-box-portal-received.png)
-
-Die Daten werden automatisch kopiert, nachdem die Datenträger im Azure-Rechenzentrum mit einem Server verbunden wurden. Je nach Datengröße kann der Kopiervorgang einige Stunden oder auch einige Tage dauern. Sie können den Status des Kopiervorgangs im Portal verfolgen.
-
-Nachdem der Kopiervorgang abgeschlossen ist, wird der Auftragsstatus in **Completed** (Abgeschlossen) geändert.
-
-![Kopieren der Daten abgeschlossen](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
-
-Wenn beim Kopieren Fehler auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Uploadfehlern ](data-box-disk-troubleshoot-upload.md).
-
-Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen. Ihre Daten können sich an folgenden Orten befinden:
-
-- In Ihren Azure Storage-Konten. Wenn Sie die Daten in Data Box kopieren, werden die Daten abhängig vom Typ in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen:
-
-  - Blockblobs und Seitenblobs: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Azure Files: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
-
-    Alternativ hierzu können Sie auch im Azure-Portal auf Ihr Azure-Speicherkonto zugreifen und von dort aus entsprechend navigieren.
-
-- In Ihren Ressourcengruppen für verwaltete Datenträger. Beim Erstellen von verwalteten Datenträgern werden die VHDs als Seitenblobs hochgeladen und dann in verwaltete Datenträger konvertiert. Die verwalteten Datenträger werden an die Ressourcengruppen angefügt, die zum Zeitpunkt der Auftragserstellung angegeben waren.
-
-  - Wenn der Kopiervorgang auf verwaltete Datenträger in Azure erfolgreich war, können Sie im Azure-Portal zu **Auftragsdetails** navigieren und sich die Ressourcengruppen notieren, die für verwaltete Datenträger angegeben sind.
-
-      ![Anzeigen der Auftragsdetails](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
-
-    Wechseln Sie zu der Ressourcengruppe, die Sie notiert haben, und suchen Sie Ihre verwalteten Datenträger.
-
-      ![Ressourcengruppe für verwaltete Datenträger](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
-
-  - Wenn Sie eine VHDX oder eine dynamische oder differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Blockblob in das Stagingspeicherkonto hochgeladen. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: StandardSSD, StandardHDD oder PremiumSSD. Die VHDX/VHDs sollten als Blockblobs in Ihrem Stagingspeicherkonto angezeigt werden.
-
-Führen Sie die folgenden Schritte aus, um sich zu vergewissern, dass die Daten in Azure hochgeladen wurden:
-
-1. Navigieren Sie zu dem Speicherkonto, das Ihrem Datenträgerauftrag zugeordnet ist.
-2. Navigieren Sie zu **Blob-Dienst > Blobs durchsuchen**. Die Liste mit den Containern wird angezeigt. Gemäß dem Unterordner, den Sie unter den Ordnern *BlockBlob* und *PageBlob* erstellt haben, werden unter Ihrem Speicherkonto Container mit demselben Namen erstellt.
-    Falls die Ordnernamen nicht den Azure-Namenskonventionen entsprechen, tritt beim Hochladen der Daten nach Azure ein Fehler auf.
-
-4. Verwenden Sie Microsoft Azure Storage-Explorer, um zu überprüfen, ob das gesamte Dataset geladen wurde. Fügen Sie das Speicherkonto an, das dem Mietauftrag für den Datenträger entspricht, und sehen Sie sich die Liste mit den Blobcontainern an. Wählen Sie einen Container aus, und klicken Sie auf **…Mehr** und dann auf **Folder statistics** (Ordnerstatistik). Im Bereich **Aktivitäten** wird die Statistik für diesen Ordner angezeigt, z.B. die Anzahl von Blobs und die Gesamtgröße der Blobs. Die Gesamtgröße der Blobs in Byte sollte mit der Größe des Datasets übereinstimmen.
-
-    ![Ordnerstatistik in Storage-Explorer](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
-
-## <a name="erasure-of-data-from-data-box-disk"></a>Löschen von Daten vom Data Box-Datenträger
-
-Nachdem der Kopiervorgang abgeschlossen ist und Sie überprüft haben, dass sich die Daten unter dem Azure-Speicherkonto befinden, werden die Datenträger gemäß dem NIST-Standard auf sichere Weise gelöscht.
+::: zone target="docs"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -224,49 +172,15 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Datenträgern erhal
 
 > [!div class="checklist"]
 > * Senden des Data Box-Datenträgers an Microsoft
-> * Überprüfen des Datenuploads in Azure
-> * Löschen von Daten vom Data Box-Datenträger
+> * Abholen von Data Box Disk in verschiedenen Regionen
 
-
-Fahren Sie mit dem nächsten Artikel zur Vorgehensweise fort, um zu erfahren, wie Sie den Data Box-Datenträger über das Azure-Portal verwalten.
+In der nächsten Anleitung erfahren Sie, wie Sie den Datenupload von Data Box Disk in das Azure Storage-Konto überprüfen.
 
 > [!div class="nextstepaction"]
-> [Use Azure portal to administer Azure Data Box Disk](./data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Azure Data Box-Datenträgers)
+> [Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure](./data-box-disk-deploy-picked-up.md)
 
 ::: zone-end
 
 
-::: zone target="chromeless"
-
-# <a name="return-the-disk-and-verify-upload-to-azure"></a>Rücksendung des Datenträgers und Überprüfen des Uploads in Azure
-
-## <a name="ship-to-azure"></a>Senden an Azure
-
-1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
-2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
-    - Verwenden Sie das Verpackungsmaterial aus der ursprünglichen Lieferung.  
-    - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
-    - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
-3. Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
-    - [Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA und Kanada zurücksenden](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-    - [Planen Sie eine Abholung mit DHL für Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe), indem Sie die Website besuchen und die Nummer der Luftfrachtbriefe angeben.
-    - [Planen Sie eine Abholung für Länder in der Region Australien-Pazifik](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific-region), z. B. für Australien, Japan, Korea und Singapur.
-4. Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal aktualisiert und eine Sendungsverfolgungs-ID angezeigt.
-
-## <a name="verify-upload-to-azure"></a>Überprüfen des Uploads in Azure
-
-Nachdem die Daten in Azure hochgeladen wurden, überprüfen Sie, ob sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen. Ihre Daten können sich an folgenden Orten befinden:
-
-- In Ihren Azure Storage-Konten. Wenn Sie die Daten in Data Box kopieren, werden die Daten abhängig vom Typ in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen:
-
-    - **Für Blockblobs und Seitenblobs**: https://<Speicherkontoname>.blob.core.windows.net/<containername>/files/a.txt
-
-    - **Für Azure Files**: https://<Speicherkontoname>.file.core.windows.net/<sharename>/files/a.txt
-
-    Alternativ hierzu können Sie auch im Azure-Portal auf Ihr Azure-Speicherkonto zugreifen und von dort aus entsprechend navigieren.
-
-- In Ihren Ressourcengruppen für verwaltete Datenträger. Beim Erstellen von verwalteten Datenträgern werden die VHDs als Seitenblobs hochgeladen und dann in verwaltete Datenträger konvertiert. Die verwalteten Datenträger werden an die Ressourcengruppen angefügt, die zum Zeitpunkt der Auftragserstellung angegeben waren.
-
-::: zone-end
 
 

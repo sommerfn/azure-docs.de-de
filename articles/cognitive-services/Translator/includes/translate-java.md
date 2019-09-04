@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 993654f22e3eaec0758366b85501c4c93373f2bc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968119"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906662"
 ---
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [Mindestens JDK 7](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Ein Azure-Abonnementschlüssel für die Textübersetzung
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Initialisieren eines Projekts mit Gradle
 
@@ -89,11 +87,12 @@ public class Translate {
 }
 ```
 
-Fügen Sie der Klasse `Translate` die folgenden Zeilen hinzu. Sie sehen, dass neben `api-version` zwei weitere Parameter an `url` angefügt wurden. Diese Parameter werden zum Festlegen der Übersetzungsausgaben verwendet. In diesem Beispiel sind sie auf Deutsch (`de`) und Italienisch (`it`) festgelegt. Aktualisieren Sie unbedingt den Wert des Abonnementschlüssels.
+Fügen Sie der Klasse `Translate` die folgenden Zeilen hinzu. Der Abonnementschlüssel und der Endpunkt werden zunächst aus Umgebungsvariablen gelesen. Anschließend sehen Sie, dass neben `api-version` zwei weitere Parameter an `url` angefügt wurden. Diese Parameter werden zum Festlegen der Übersetzungsausgaben verwendet. In diesem Beispiel sind sie auf Deutsch (`de`) und Italienisch (`it`) festgelegt. 
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de,it";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/translate?api-version=3.0&to=de,it";
 ```
 
 Wenn Sie ein Cognitive Services-Abonnement mehrerer Dienste verwenden, müssen Sie auch `Ocp-Apim-Subscription-Region` in Ihre Anforderungsparameter aufnehmen. [Erfahren Sie mehr über die Authentifizierung mit dem Abonnement für mehrere Dienste](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).

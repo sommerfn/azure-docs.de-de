@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 7cda51870a98b2606a0133a61ad6f786e7e9324a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: 58dd9ade749458facd6f11682af0b730258a7584
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900137"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033237"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -353,7 +353,7 @@ Die Option **Marketplace-Auflistungen** auf der Registerkarte **Testversion** ze
 
 ## <a name="supplemental-content"></a>Ergänzender Inhalt
 
-Auf dieser Seite können Sie zusätzliche erforderliche Informationen zu Ihrem Angebot bereitstellen.
+Auf dieser Seite können Sie zusätzliche Informationen zu Ihrem Angebot bereitstellen, um uns bei der Validierung Ihres Angebots zu helfen. Diese Informationen werden weder den Kunden angezeigt noch im Marketplace veröffentlicht.
 
 ### <a name="key-usage-scenario"></a>Wichtige Verwendungsszenarien
 

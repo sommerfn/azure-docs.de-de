@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 804a913d17c3151d07a1ecf229e2db148dc45558
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696419"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050753"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Herstellen einer Verbindung mit SQL Server oder Azure SQL-Datenbank über Azure Logic Apps
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Ser
 
 Sie können Logik-Apps erstellen, deren Ausführung durch Ereignisse in Ihrer SQL-Datenbank oder in anderen Systemen (wie z. B. Dynamics CRM Online) ausgelöst wird. Ihre Logik-Apps können auch Daten abrufen, einfügen und löschen sowie SQL-Abfragen und gespeicherte Prozeduren ausführen. Sie können beispielsweise eine Logik-App erstellen, die Dynamics CRM Online automatisch auf neue Datensätze überprüft, Ihrer SQL-Datenbank Elemente für alle neuen Datensätze hinzufügt und dann E-Mail-Benachrichtigungen sendet.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server-Connector-Referenz</a>.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen finden Sie in der [SQL Server-Connector-Referenz](https://docs.microsoft.com/connectors/sql/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -85,12 +85,12 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
 1. Öffnen Sie im Azure-Portal oder in Visual Studio Ihre Logik-App im Logic Apps-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
 
-2. Wählen Sie im Logik-App-Designer unter dem Trigger oder der Aktion die Optionen **Neuer Schritt** > **Aktion hinzufügen** aus.
+2. Wählen Sie im Logik-App-Designer unter dem Trigger oder der Aktion die Option **Neuer Schritt** > **Aktion hinzufügen** aus.
 
-   ![„Neuer Schritt“, „Aktion hinzufügen“ auswählen](./media/connectors-create-api-sqlazure/add-action.png)
+   ![Auswählen von „Neuer Schritt“, „Aktion hinzufügen“](./media/connectors-create-api-sqlazure/add-action.png)
    
    Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. 
-   Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+   Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
 2. Geben Sie im Suchfeld den Begriff „sql server“ als Filter ein. Wählen Sie in der Liste der Aktionen die gewünschte SQL-Aktion aus. 
 

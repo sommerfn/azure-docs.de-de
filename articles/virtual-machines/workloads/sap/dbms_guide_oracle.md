@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099989"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 
@@ -457,7 +456,7 @@ Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Data
 
 Die im Artikel [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit Oracle Database, wenn Sie Datenträger auf Basis von Azure-Seitenblobspeicher oder Managed Disks verwenden.
 
- Es gibt Kontingente für den IOPS-Durchsatz für Azure-Datenträger. Dieses Konzept wird in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert. Die jeweilige exakte Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste der VM-Typen mit den entsprechenden Kontingenten finden Sie unter [Größen für virtuelle Windows-Computer in Azure][virtual-machines-sizes-linux].
+ Es gibt Kontingente für den IOPS-Durchsatz für Azure-Datenträger. Dieses Konzept wird in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert. Die jeweilige exakte Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste der VM-Typen mit den entsprechenden Kontingenten finden Sie unter [Größen für virtuelle Linux-Computer in Azure][virtual-machines-sizes-linux].
 
 Die unterstützten Typen der Azure-VMs werden in SAP-Hinweis [1928533] aufgeführt.
 

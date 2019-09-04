@@ -6,19 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 336cc7dae00d06e38e4be8671f1cb11ed73e5edc
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 30f9597e6a42b8bdd35a7d69594a2feb16edae30
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414648"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126184"
 ---
 ::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Kopieren von Daten auf Azure Data Box Disk und Durchführen der Überprüfung
+
+Nachdem die Datenträger verbunden und entsperrt wurden, können Sie Daten von Ihrem Quelldatenserver auf Ihre Datenträger kopieren. Nach Abschluss des Datenkopiervorgangs empfiehlt es sich, die kopierten Daten zu überprüfen. Durch die Überprüfung wird sichergestellt, dass die Daten später erfolgreich in Azure hochgeladen werden.
+
+::: zone-end
 
 In diesem Tutorial wird beschrieben, wie Sie Daten von Ihrem Hostcomputer kopieren und anschließend Prüfsummen generieren, um die Datenintegrität zu überprüfen.
 
@@ -294,21 +304,18 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Data Box
 
 ::: zone target="chromeless"
 
-## <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
+### <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
 
 Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Daten von Ihrem Computer in Data Box Disk zu kopieren.
 
 1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. Die Liste der vorab erstellten Ordner und Unterordner im Laufwerk unterscheidet sich je nach den bei der Data Box Disk-Bestellung ausgewählten Optionen.
 2. Kopieren Sie die Daten in Ordner, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise unstrukturierte Daten in den Ordner *BlockBlob*, VHD- oder VHDX-Daten in den Ordner *PageBlob* und Dateien in *AzureFile*. Falls das Datenformat nicht mit dem entsprechenden Ordner (Speichertyp) übereinstimmt, tritt für den Datenupload in Azure während eines späteren Schritts ein Fehler auf.
 
-    - Im Azure-Speicherkonto wird für jeden Unterordner der Ordner „BlockBlob“ und „PageBlob“ ein Container erstellt. Alle Dateien in den Ordnern *BlockBlob* und *PageBlob* werden in den Standardcontainer „$root“ unter dem Azure Storage-Konto kopiert. 
-    - Alle Dateien im Container „$root“ werden immer als Blockblobs hochgeladen.
-    - Kopieren Sie Dateien in einen Ordner innerhalb des Ordners *AzureFile*. Durch einen Unterordner innerhalb des Ordners *AzureFile* wird eine Dateifreigabe erstellt. Bei direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen.
-    - Falls im Stammverzeichnis Dateien und Ordner vorhanden sind, müssen Sie diese in einen anderen Ordner verschieben, bevor Sie mit dem Kopieren von Daten beginnen.
+    - Vergewissern Sie sich, dass alle Container, Blobs und Dateien den [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) und [Größenbeschränkungen für Azure-Objekte](data-box-disk-limits.md#azure-object-size-limits) entsprechen. Wenn diese Regeln oder Einschränkungen nicht beachtet werden, tritt beim Datenupload in Azure ein Fehler auf.     
     - Wenn Ihre Bestellung „Verwaltete Datenträger“ als ein Speicherziel umfasst, sehen Sie sich die Namenskonventionen für [verwaltete Datenträger](data-box-disk-limits.md#managed-disk-naming-conventions) an.
-
-    > [!IMPORTANT]
-    > Für alle Container, Blobs und Dateien müssen die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) und [Größenbeschränkungen für Azure-Objekte](data-box-disk-limits.md#azure-object-size-limits) eingehalten werden. Wenn diese Regeln oder Einschränkungen nicht beachtet werden, tritt beim Datenupload in Azure ein Fehler auf.
+    - Im Azure-Speicherkonto wird für jeden Unterordner der Ordner „BlockBlob“ und „PageBlob“ ein Container erstellt. Alle Dateien in den Ordnern *BlockBlob* und *PageBlob* werden in den Standardcontainer „$root“ unter dem Azure Storage-Konto kopiert. Alle Dateien im Container „$root“ werden immer als Blockblobs hochgeladen.
+    - Erstellen Sie einen Unterordner innerhalb des Ordners *AzureFile*. Dieser Unterordner ist einer Dateifreigabe in der Cloud zugeordnet. Kopieren Sie Dateien in den Unterordner. Bei direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen.
+    - Falls im Stammverzeichnis Dateien und Ordner vorhanden sind, müssen Sie diese in einen anderen Ordner verschieben, bevor Sie mit dem Kopieren von Daten beginnen.
 
 3. Verwenden Sie Drag & Drop im Datei-Explorer oder ein beliebiges SMB-kompatibles Dateikopiertool (beispielsweise Robocopy), um Ihre Daten zu kopieren. Mehrere Kopieraufträge können mit dem folgenden Befehl initiiert werden:
 
@@ -319,13 +326,13 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
 
 Verwenden Sie dieses optionale Verfahren zum [Aufteilen und Kopieren](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks), wenn Sie mehrere Datenträger verwenden und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss.
 
-## <a name="validate-data"></a>Überprüfen der Daten
+### <a name="validate-data"></a>Überprüfen der Daten
 
 Gehen Sie zum Überprüfen Ihrer Daten wie folgt vor:
 
 1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
 2. Verwenden Sie Option 2, um Ihre Dateien zu überprüfen und Prüfsummen zu generieren. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Falls bei der Überprüfung und Generierung der Prüfsumme Fehler auftreten, werden Sie benachrichtigt und erhalten einen Link zu den Fehlerprotokollen.
 
-    Wenn während der Validierung Fehler auftreten, siehe [Beheben von Validierungsfehlern](data-box-disk-troubleshoot.md).
+    Weitere Informationen zur Datenüberprüfung finden Sie unter [Überprüfen der Daten](data-box-disk-deploy-copy-data.md#validate-data). Sollten bei der Überprüfung Fehler auftreten, lesen Sie [Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk](data-box-disk-troubleshoot.md).
 
 ::: zone-end

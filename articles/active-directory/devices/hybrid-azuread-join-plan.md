@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562106"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084923"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -26,7 +26,7 @@ ms.locfileid: "69562106"
 - Azure AD-Hybrideinbindung
 - Azure AD-Registrierung
 
-Durch das Bereitstellen Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) sichern.
+Durch das Bereitstellen Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) schützen.
 
 Wenn Sie in einer lokalen Active Directory (AD)-Umgebung Ihre in die AD-Domäne eingebundenen Compute in Azure AD einbinden möchten, kann dies durch Vornehmen einer Einbindung in Azure AD Hybrid erfolgen. Dieser Artikel enthält eine Anleitung zum Implementieren einer Azure AD-Hybrideinbindung in Ihre Umgebung. 
 
@@ -35,7 +35,7 @@ Wenn Sie in einer lokalen Active Directory (AD)-Umgebung Ihre in die AD-Domäne 
 Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](../device-management-introduction.md) gelesen haben.
 
 > [!NOTE]
-> Die mindestens erforderliche Domänen- und Gesamtstruktur-Funktionsebene für Hybrid-Azure AD-Einbindung in Windows 10 ist Windows Server 2008 R2.
+> Die mindestens erforderliche Version des Domänencontrollers für die Azure AD-Hybrideinbindung unter Windows 10 ist Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>Planen Ihrer Implementierung
 
@@ -64,7 +64,7 @@ Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, sind
 ### <a name="windows-down-level-devices"></a>Kompatible Windows-Geräte
 
 - Windows 8.1
-- Windows 7. Informationen zum Support für Windows 7 finden Sie in diesem Artikel: [Unterstützung für Windows 7 wird beendet](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support).
+- Windows 7. Informationen zum Support für Windows 7 finden Sie in diesem Artikel: [Unterstützung für Windows 7 wird beendet](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2
@@ -77,7 +77,7 @@ Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung au
 
 Azure AD Hybrideinbindung wird zurzeit nicht unterstützt, wenn eine virtuelle Desktopinfrastruktur (VDI) verwendet wird.
 
-Azure AD Hybrid Join wird für FIPS-kompatible TPMs nicht unterstützt. Wenn Ihre Geräte über FIPS-kompatible TPMs verfügen, müssen Sie diese vor dem Fortsetzen der Hybrid-Azure AD-Einbindung deaktivieren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten.
+Azure AD Hybrid Join wird für FIPS-konforme TPMs nicht unterstützt. Wenn Ihre Geräte über FIPS-kompatible TPMs verfügen, müssen Sie sie vor dem Fortsetzen der Hybrid-Azure AD-Einbindung deaktivieren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten.
 
 Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
@@ -87,11 +87,13 @@ Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer nie
 
 Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
-- Eine etwaige Registrierung bei Azure AD würde nach der Azure AD-Hybrideinbindung des Geräts automatisch entfernt werden.
+- Eine etwaige Registrierung bei Azure AD wird nach der <i>Azure AD-Hybrideinbindung des Geräts</i> automatisch entfernt.
 - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
-- Diese Änderung ist jetzt für Windows 10, Release 1803 mit angewendetem KB4489894 verfügbar. Wenn Sie jedoch Windows Hello for Business konfiguriert haben, muss der Benutzer Windows Hello for Business nach der zweistufigen Bereinigung erneut einrichten.
+- Wenn Sie Windows Hello for Business unter Windows 10 1803 konfiguriert haben, muss der Benutzer Windows Hello for Business nach der Bereinigung des Doppelstatus erneut einrichten. Dieses Problem wird mit KB4512509 behoben.
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
 

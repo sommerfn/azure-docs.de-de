@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 763e5c13f9f41a404b4458a6c0bef82272cc3e8c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0d79443ed1e424a3cb8b6c059ac9b6bc62293029
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968159"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906742"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen von Text
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Textübersetzungs-REST-API eine Textzeichenfolge aus dem Englischen ins Deutsche, Italienische, Japanische und Thailändische übersetzen.
 
 Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

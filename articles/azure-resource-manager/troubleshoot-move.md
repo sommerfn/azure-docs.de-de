@@ -4,14 +4,14 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 08/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: d56f6a5ffe01540b9ce1e5a20ec628a90da594c6
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624298"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061779"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Beheben von Problemen beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -43,7 +43,11 @@ Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschi
 
 ## <a name="resource-not-in-succeeded-state"></a>Ressource nicht in erfolgreichem Zustand
 
-Wenn Sie eine Fehlermeldung erhalten, die besagt, dass eine Ressource nicht verschoben werden kann, weil sie sich nicht in einem erfolgreichen Zustand befindet, ist es möglicherweise eine abhängige Ressource, die die Verschiebung blockiert. Informationen dazu finden Sie unter [Zustand von abhängigen Ressourcen](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
+Wenn Sie eine Fehlermeldung erhalten, die besagt, dass eine Ressource nicht verschoben werden kann, da sie sich nicht in einem erfolgreichen Zustand befindet, blockiert möglicherweise eine abhängige Ressource die Verschiebung. In der Regel lautet der Fehlercode **MoveCannotProceedWithResourcesNotInSucceededState**.
+
+Wenn die Quell- oder Zielgruppenressource ein virtuelles Netzwerk enthält, werden während des Verschiebens die Zustände aller abhängigen Ressourcen des virtuellen Netzwerks überprüft. Die Überprüfung umfasst direkt und indirekt vom virtuellen Netzwerk abhängige Ressourcen. Wenn eine dieser Ressourcen den Zustand „Ausgefallen“ aufweist, wird die Verschiebung blockiert. Wenn beispielsweise ein virtueller Computer, der das virtuelle Netzwerk nutzt, ausgefallen ist, wird das Verschieben blockiert. Das Verschieben wird selbst dann blockiert, wenn der virtuelle Computer nicht zu den zu verschiebenden Ressourcen gehört und sich nicht in einer der Ressourcengruppen des Verschiebevorgangs befindet.
+
+Wenn Sie diesen Fehler erhalten, haben Sie zwei Möglichkeiten. Verschieben Sie entweder Ihre Ressourcen in eine Ressourcengruppe ohne virtuelles Netzwerk, oder [kontaktieren Sie den Support](../azure-supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

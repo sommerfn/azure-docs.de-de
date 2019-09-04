@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335396"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125673"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
@@ -45,10 +45,10 @@ Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für d
 - Berechnen der Risikostufen für die Anmeldung
 - Berechnen von Benutzerrisikostufen
 
-**Untersuchen von Risikoereignissen:**
+**Untersuchen von Risikoerkennungen:**
 
-- Senden von Benachrichtigungen für Risikoereignisse
-- Untersuchen von Risikoereignissen mit relevanten und kontextbezogenen Informationen
+- Senden von Benachrichtigungen für Risikoerkennungen
+- Untersuchen von Risikoerkennungen mit relevanten und kontextbezogenen Informationen
 - Bereitstellen grundlegender Workflows zum Nachverfolgen von Untersuchungen
 - Bereitstellen des einfachen Zugriffs auf Korrekturaktionen, z. B. Kennwortzurücksetzung
 
@@ -76,9 +76,9 @@ Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azur
 
 Azure Active Directory Identity Protection analysiert Ihre Konfiguration und erkennt Sicherheitsrisiken, die sich auf die Identitäten Ihrer Benutzers auswirken können. Weitere Details finden Sie unter [Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken](vulnerabilities.md).
 
-### <a name="risk-events"></a>Risikoereignisse
+### <a name="risk-detections"></a>Risikoerkennungen
 
-Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit den Identitäten Ihrer Benutzer zu erkennen. Das System erstellt für jede erkannte verdächtige Aktivität einen Datensatz. Diese Datensätze werden auch als Risikoereignisse bezeichnet.  
+Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit den Identitäten Ihrer Benutzer zu erkennen. Das System erstellt für jede erkannte verdächtige Aktivität einen Datensatz. Diese Datensätze werden auch als Risikoerkennungen bezeichnet.  
 Weitere Details finden Sie unter [Azure Active Directory-Risikoereignisse](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Untersuchung
@@ -89,10 +89,10 @@ Ihre Navigation durch Identity Protection beginnt normalerweise mit dem Identity
 
 Über das Dashboard haben Sie Zugriff auf folgende Komponenten:
 
-- Berichte, z.B. **Benutzer mit Risikokennzeichnung**, **Risikoereignisse** und **Sicherheitsrisiken**
+- Berichte, z. B. **Benutzer mit Risikomarkierung**, **Risikoerkennungen** und **Sicherheitsrisiken**
 - Einstellungen, z.B. die Konfiguration von **Sicherheitsrichtlinien**, **Benachrichtigungen** und **Registrierung für mehrstufige Authentifizierung**
 
-Hier beginnen Sie in der Regel mit dem Untersuchungsprozess. Dies ist der Prozess der Überprüfung von Aktivitäten, Protokollen und anderen relevanten Informationen zu einem Risikoereignis, um zu entscheiden, ob Schritte zur Fehlerbeseitigung oder Lösung erforderlich sind. Außerdem ermitteln Sie, ob und wie die Identität kompromittiert und wie die kompromittierte Identität verwendet wurde.
+Hier beginnen Sie in der Regel mit der Untersuchung. Bei diesem Prozess werden Aktivitäten, Protokolle und andere relevante Informationen zu einer Risikoerkennung überprüft, um zu entscheiden, ob Schritte zur Fehlerbeseitigung oder Lösung erforderlich sind. Außerdem ermitteln Sie, wie die Identität kompromittiert und wie die kompromittierte Identität verwendet wurde.
 
 Sie können Ihre Untersuchungsaktivitäten mit den [Benachrichtigungen](notifications.md) verknüpfen, die Azure Active Directory Protection per E-Mail sendet.
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30669c8f5aeefc14db42a32d87f333419758327
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989879"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127363"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -49,7 +49,7 @@ Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff au
 
 Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/beta/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) und in der [Referenz zur Anmelde-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
-Darüber hinaus können Sie die [API für Identity Protection-Risikoereignisse](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/graph-get-started.md). 
+Darüber hinaus können Sie die [API für Identity Protection-Risikoerkennungen](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/graph-get-started.md). 
 
 > [!NOTE]
 >  Der Endpunkt **https:\/\/graph.windows.net\/\<Mandantenname\>\/reports\/** ist veraltet. Verwenden Sie die oben beschriebenen neuen API-Endpunkte für den programmgesteuerten Zugriff auf die Aktivitäts- und Sicherheitsberichte.

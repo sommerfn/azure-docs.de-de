@@ -4,12 +4,12 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: b46a2b18309851bbe2934980137a53d2de6f6efc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1007533df077c58d9e4d57f9e86b035730ea917f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135332"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903843"
 ---
 ## <a name="set-up-your-device-in-unity"></a>Einrichten des Geräts in Unity
 
@@ -29,7 +29,7 @@ Navigieren Sie im Bereich **Projekt** zu `Assets/AzureSpatialAnchorsPlugin/Examp
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-Geben Sie im Bereich **Inspector** die `Sharing Anchors Service url` (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) als Wert für `Base Sharing Url` ein, und ersetzen Sie `index.html` durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+Navigieren Sie im Bereich **Projekt** zu `Assets\AzureSpatialAnchors.Examples\Resources`. Wählen Sie `SpatialAnchorSamplesConfig` aus. Geben Sie ebenfalls im Bereich **Inspector** den Wert für `Sharing Anchors Service url` (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) als Wert für `Base Sharing Url` ein, und ersetzen Sie `index.html` durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 Speichern Sie die Szene, indem Sie **Datei** > **Speichern** wählen.
 

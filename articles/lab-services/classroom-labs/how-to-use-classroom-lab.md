@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644984"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032014"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registrieren, alle Labs anzeigen, auf die Sie zugreifen können, einen virtuellen Computer im Lab starten/beenden und eine Verbindung mit dem virtuellen Computer herstellen. 
@@ -55,6 +55,30 @@ In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registr
 2. Führen Sie einen der folgenden Schritte aus: 
     1. Speichern Sie für virtuelle **Windows**-Computer die **RDP**-Datei auf der Festplatte. Öffnen Sie die RDP-Datei, um eine Verbindung mit dem virtuellen Computer herzustellen. Verwenden Sie die Kombination aus **Benutzername** und **Kennwort**, die Sie von Ihrer Lehrkraft erhalten haben, um sich bei dem Computer anzumelden. 
     3. Bei virtuellen **Linux**-Computern können Sie **SSH** oder **RDP** (sofern RDP aktiviert ist) für die Verbindungsherstellung verwenden. Weitere Informationen finden Sie unter [Enable and use remote desktop for Linux virtual machines in a lab in Azure Lab Services](how-to-enable-remote-desktop-linux.md) (Aktivieren und Verwenden von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services). 
+    1. Wenn Sie einen **Mac** verwenden, um eine Verbindung mit dem virtuellen Lab-Computer herzustellen, führen Sie die im nächsten Abschnitt beschriebenen Schritte aus. 
+
+## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Herstellen einer RDP-Verbindung mit einem virtuellen Computer auf einem Mac
+In diesem Abschnitt wird gezeigt, wie ein Kursteilnehmer über einen Mac eine RDP-Verbindung mit einem virtuellen Computer herstellen kann.
+
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Schritt 1: Installieren von Microsoft-Remotedesktop auf einem Mac
+1. Öffnen Sie den App Store auf Ihrem Mac, und suchen Sie nach **Microsoft-Remotedesktop**.
+
+    ![Microsoft-Remotedesktop](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. Installieren Sie die neueste Version von Microsoft-Remotedesktop. 
+
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Schritt 2: Zugreifen auf den virtuellen Computer über Ihren Mac per RDP
+1. Öffnen Sie die auf Ihren Computer heruntergeladene **RDP**-Datei. (Auf dem Computer muss **Microsoft-Remotedesktop** installiert sein.) Daraufhin sollte eine Verbindung mit dem virtuellen Computer hergestellt werden. 
+
+    ![Herstellen einer Verbindung mit dem virtuellen Computer](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Wählen Sie **Weiter** aus, wenn Sie die folgende Warnung erhalten. 
+
+    ![Zertifikatwarnung](../media/how-to-use-classroom-lab/certificate-error.png)
+1. Der virtuelle Computer sollte angezeigt werden. 
+
+    > [!NOTE]
+    > Das folgende Beispiel ist ein Beispiel für einen virtuellen Computer mit CentOS Linux. 
+
+    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Statusanzeige 
 Die Statusanzeige auf der Kachel gibt Aufschluss darüber, wie viele Stunden der Ihnen zugewiesenen [Kontingentstunden](how-to-configure-student-usage.md#set-quotas-for-users) bereits verwendet wurden. Diese Zeit wurde Ihnen zusätzlich zu der geplanten Zeit für das Lab zugewiesen. Die Farbe der Statusanzeige und der Text unterhalb der Statusanzeige variieren gemäß den folgenden Szenarien:

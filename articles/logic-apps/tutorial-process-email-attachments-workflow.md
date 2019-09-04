@@ -3,19 +3,20 @@ title: 'Tutorial: Automatisieren der Verarbeitung von E-Mails und Anlagen – Az
 description: 'Tutorial: Erstellen automatisierter Workflows für die Verarbeitung von E-Mails und Anlagen mit Azure Logic Apps, Azure Storage und Azure Functions'
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
-manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: ee232b54bc4d65d6380a6f2a1d1c88ee7dcf53c3
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312662"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051776"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Tutorial: Automatisieren der Verarbeitung von E-Mails und Anlagen mit Azure Logic Apps
 
@@ -61,9 +62,9 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
    | Einstellung | Wert | BESCHREIBUNG |
    |---------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |  
-   | **Ressourcengruppe** | LA-Tutorial-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. |
-   | **Speicherkontoname** | attachmentstorageacct | Der Name Ihres Speicherkontos. |
-   | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. |
+   | **Ressourcengruppe** | <*Azure-resource-group*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-Tutorial-RG“ verwendet. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. |
+   | **Speicherkontoname** | <*Azure-storage-account-name*> | Der Name des Speicherkontos, der aus 3 bis 24 Zeichen bestehen muss und nur Kleinbuchstaben und Ziffern enthalten darf. In diesem Beispiel wird „attachmentstorageacct“ verwendet. |
+   | **Location** | <*Azure-Region*> | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Leistung** | Standard | Diese Einstellung gibt die unterstützten Datentypen und die Medien für die Datenspeicherung an. Weitere Informationen finden Sie unter [Speicherkontentypen](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Kontoart** | Allgemeiner Zweck | Der [Speicherkontotyp](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Replikation** | Lokal redundanter Speicher (LRS) | Diese Einstellung gibt an, wie Ihre Daten kopiert, gespeichert, verwaltet und synchronisiert werden. Siehe [Lokal redundanter Speicher (LRS): Kostengünstige Datenredundanz für Azure Storage](../storage/common/storage-redundancy-lrs.md). |
@@ -621,8 +622,8 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
    | Einstellung | Wert | Notizen | 
    | ------- | ----- | ----- | 
    | **Text** | ```Please review new applicant:``` <p>```Applicant name:``` **Von** <p>```Application file location:``` **Pfad** <p>```Application email content:``` **Text** | Der Textinhalt der E-Mail. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt die folgenden Felder aus: <p>- Das Feld **Von** (unter **Wenn eine neue E-Mail empfangen wird**) </br>- Das Feld **Pfad** (unter **Create blob for email body**) </br>- Das Feld **Text** (unter **Call RemoveHTMLFunction to clean email body**) |
-   | **Betreff**  | ```ASAP - Review applicant for position:``` **Betreff** | Der Betreff der E-Mail, den Sie einschließen möchten. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt das Feld **Betreff** unter **Wenn eine neue E-Mail empfangen wird** aus. |
-   | **An** | <*E-Mail-Adresse des Empfängers*> | Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
+   | **Subject**  | ```ASAP - Review applicant for position:``` **Betreff** | Der Betreff der E-Mail, den Sie einschließen möchten. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt das Feld **Betreff** unter **Wenn eine neue E-Mail empfangen wird** aus. |
+   | **To** | <*E-Mail-Adresse des Empfängers*> | Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
    ||||
 
    > [!NOTE]

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876854"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981075"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -112,7 +112,7 @@ Konfigurieren Sie die Richtlinien für Remotesitzungen wie folgt:
 1. Navigieren Sie zu **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Sitzungszeitlimits**.
 2. Wählen Sie im Bereich auf der rechten Seite die Richtlinie **Zeitlimit für aktive, aber im Leerlauf befindliche Remotedesktopdienste-Sitzungen festlegen** aus.
 3. Ändern Sie im angezeigten modalen Fenster die Richtlinienoption von **Nicht konfiguriert** in **Aktiviert**, um die Richtlinie zu aktivieren.
-4. Legen Sie im Dropdownmenü unter der Richtlinienoption den Zeitraum auf **4 Stunden** fest.
+4. Legen Sie im Dropdownmenü unter der Richtlinienoption den Zeitraum auf **3 Stunden** fest.
 
 Sie können die Richtlinien für Remotesitzungen auch manuell konfigurieren, indem Sie die folgenden Befehle ausführen:
 
@@ -122,7 +122,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fRese
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Einrichten der Zeitzonenumleitung

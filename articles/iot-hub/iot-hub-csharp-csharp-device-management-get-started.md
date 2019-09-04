@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558792"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904478"
 ---
 # <a name="get-started-with-device-management-net"></a>Erste Schritte mit der Geräteverwaltung (.NET)
 
@@ -34,7 +34,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps:
 
 * **TriggerReboot**. Diese App ruft eine direkte Methode in der simulierten Geräte-App auf und zeigt die Antwort sowie die aktualisierten gemeldeten Eigenschaften an.
 
-Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio.
 
@@ -81,7 +83,7 @@ In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die über ein
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
+1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert `{iot hub connection string}` durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die über ein
 
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 
-In diesem Abschnitt führen Sie die folgenden Aktionen aus:
+In diesem Abschnitt führen Sie folgende Schritte aus:
 
 * Erstellen einer .NET-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet
 
@@ -164,11 +166,10 @@ Führen Sie zum Erstellen der simulierten Geräte-App die folgenden Schritte aus
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die Geräteverbindungszeichenfolge, die Sie sich im vorherigen Abschnitt notiert haben.
+1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert `{device connection string}` durch die Geräteverbindungszeichenfolge, die Sie weiter oben im Abschnitt [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) notiert haben.
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ Führen Sie zum Erstellen der simulierten Geräte-App die folgenden Schritte aus
    }
    ```
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen** aus. 
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen** aus.
 
 1. Wählen Sie für **Allgemeine Eigenschaften** > **Startprojekt** die Option **Einzelnes Startprojekt** und dann das Projekt **SimulateManagedDevice** aus. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
@@ -244,7 +245,7 @@ Führen Sie zum Erstellen der simulierten Geräte-App die folgenden Schritte aus
 
 ## <a name="run-the-apps"></a>Ausführen der Apps
 
-Sie können die Apps nun ausführen.
+Jetzt können Sie die Apps ausführen.
 
 1. Um die .NET-Geräte-App **SimulateManagedDevice** auszuführen, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SimulateManagedDevice**, wählen Sie **Debuggen** und dann **Neue Instanz starten** aus. Die App sollte mit dem Lauschen auf die Methodenaufrufe aus Ihrem IoT-Hub beginnen.
 

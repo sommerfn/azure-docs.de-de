@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615380"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066097"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -31,6 +31,12 @@ Sie können jeden Azure Cosmos-Container mit bereitgestelltem Durchsatz (Anforde
 Aufgrund der ARS-Konzeption (Atoms, Records and Sequences; Atoms, Datensätze und Sequenzen), auf der Azure Cosmos DB beruht, werden Schlüssel/Wert(Tabellen)-, einspaltige, Dokument- und Diagrammdaten nativ unterstützt. Atoms, Datensätze und Sequenzen können problemlos verschiedenen Datenmodellen zugeordnet und auf diese projiziert werden. Die APIs für eine Teilmenge von Modellen sind derzeit verfügbar (SQL, MongoDB, Tabelle und Gremlin), während andere APIs speziell für zusätzliche Datenmodelle in Zukunft bereitgestellt werden.
 
 Azure Cosmos DB verfügt über eine schemaagnostische Indizierungs-Engine, die alle erfassten Daten automatisch ohne Schema oder sekundäre Indizes seitens des Entwicklers indizieren kann. Die Engine basiert auf einem Satz von logischen Indexlayouts (invertiert, einspaltig, Struktur), die die Speicheranordnung von den Index- und Abfrageverarbeitungssubsystemen entkoppeln. Cosmos DB bietet auch die Möglichkeit, eine Reihe von Übertragungsprotokollen und APIs in einer erweiterbaren Weise zu unterstützen und effizient im Kerndatenmodell (1) sowie in den logischen Indexlayouts (2) zu übersetzen. So bietet es eine einzigartige native Unterstützung für mehrere Datenmodelle.
+
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Kann ich für den Zugriff auf meine Daten mehrere APIs verwenden?
+
+Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Mehrere Modelle bedeutet, dass Azure Cosmos DB mehrere APIs und mehrere Datenmodelle unterstützt. Unterschiedliche APIs verwenden jedoch verschiedene Datenformate für die Speicherung und das Übertragungsprotokoll. SQL verwendet beispielsweise JSON, MongoDB verwendet BSON, Table verwendet EDM, Cassandra verwendet CQL, und Gremlin verwendet GraphSON. Daher wird empfohlen, für den Zugriff auf die Daten in einem bestimmten Konto immer die gleiche API zu verwenden.
+
+Jede API wird unabhängig ausgeführt, mit Ausnahme der Gremlin- und der SQL-API, die interoperabel sind.
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Ist Azure Cosmos DB HIPAA-kompatibel?
 

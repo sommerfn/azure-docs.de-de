@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d34040722ac8793fd4bbb02f2d3fa59247f8267c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639634"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034850"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
@@ -55,7 +55,7 @@ Das Protokollprofil definiert Folgendes:
 
 **Welche Regionen (Standorte) exportiert werden sollen.** Sie sollten alle Standorte einbeziehen, da viele Ereignisse im Aktivitätsprotokoll globale Ereignisse sind.
 
-**Wie lange das Aktivitätsprotokoll in einem Speicherkonto beibehalten werden soll.** Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
+**Wie lange das Aktivitätsprotokoll in einem Speicherkonto beibehalten werden soll.** Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 365) festgelegt werden.
 
 Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist, werden die Aufbewahrungsrichtlinien ignoriert. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Der Löschvorgang beginnt um Mitternacht (UTC), jedoch kann es bis zu 24 Stunden dauern, bis die Protokolle aus Ihrem Speicherkonto gelöscht werden.
 
@@ -117,7 +117,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
     | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge im Format `{service bus resource ID}/authorizationrules/{key name}`. |
     | Location |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-    | RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen im Speicherkonto (1 bis 2147483647). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
+    | RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen im Speicherkonto (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
     | Category (Kategorie) |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind _Write_, _Delete_ und _Action_. |
 
 ### <a name="example-script"></a>Beispielskript

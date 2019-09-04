@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334015"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126528"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – FAQ
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory (Azure AD) Identity Protection. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Warum weisen einige Risikoereignisse den Status „Geschlossen (System)“ auf?
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Warum weisen einige Risikoerkennungen den Status „Geschlossen (System)“ auf?
 
-**A:** Diese Risikoereignisse wurden von Identity Protection erkannt und später geschlossen, da sie nicht mehr als riskant angesehen wurden. Diese Ereignisse werden hinsichtlich der Risikostufe des Benutzers nicht berücksichtigt. 
+**A:** Diese Risikoerkennungen wurden in Identity Protection erkannt und später geschlossen, da sie nicht mehr als riskant angesehen wurden. Diese Ereignisse werden hinsichtlich der Risikostufe des Benutzers nicht berücksichtigt. 
 
 ---
 

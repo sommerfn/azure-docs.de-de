@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8d925e5d72500817028b913a80255a4339255c
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148423"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70130086"
 ---
 | Resource | Standard/maximales Limit | Hinweis |
 | --- | --- | --- |
@@ -37,6 +37,7 @@ ms.locfileid: "67148423"
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
 | Maximale Dateiuploadgröße (WAF) |Mittlere WAF-Gateways, 100 MB<br>Große WAF-Gateways, 500 MB| |
 | WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB||
-|Maximale benutzerdefinierte WAF-Regeln|100||
+| Maximale benutzerdefinierte WAF-Regeln|100||
+| Maximale WAF-Ausschlüsse|100||
 
 <sup>1</sup> Bei WAF-fähigen SKUs sollten Sie für optimale Leistung die Anzahl der Ressourcen auf 40 beschränken.

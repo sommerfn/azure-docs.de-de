@@ -1,23 +1,20 @@
 ---
 title: Leitfaden zur Entwicklung von Azure Functions | Microsoft-Dokumentation
 description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, die Sie benötigen, um alle Programmiersprachen und Bindungen übergreifend Funktionen in Azure zu entwickeln.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Entwicklerhandbuch, Azure Functions, Funktionen, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874958"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982636"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -44,7 +41,7 @@ Die Datei „function.json“ definiert den Trigger, die Bindungen und weitere K
 }
 ```
 
-Weitere Beispiele finden Sie auf der [Wikiseite zu „Function.json“](https://github.com/Azure/azure-functions-host/wiki/function.json).
+Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
 
 In der Eigenschaft `bindings` werden sowohl Trigger als auch Bindungen konfiguriert. Einige Einstellungen gelten für alle Bindungen, einige Einstellungen sind spezifisch für einen bestimmten Bindungstyp. Jede Bindung erfordert folgende Einstellungen:
 
@@ -55,7 +52,7 @@ In der Eigenschaft `bindings` werden sowohl Trigger als auch Bindungen konfiguri
 | `name` |Zeichenfolge |Der Name, der für die gebundenen Daten in der Funktion verwendet wird. In C# ist dies ein Argumentname, in JavaScript ist es der Schlüssel in einer Schlüssel-Wert-Liste. |
 
 ## <a name="function-app"></a>Funktionen-App
-Eine Funktions-App bietet einen Ausführungskontext in Azure, in dem Ihre Funktionen ausgeführt werden. Eine Funktions-App besteht aus einer oder mehreren individuellen Funktionen, die zusammen verwaltet, bereitgestellt und skaliert werden. Der Tarif, die kontinuierliche Bereitstellung und die Laufzeitversion sind für alle Funktionen in einer Funktionen-App gleich. Eine Funktionen-App ist somit eine Möglichkeit, mit der Sie Ihre Funktionen organisieren und kollektiv verwalten können. 
+Eine Funktions-App bietet einen Ausführungskontext in Azure, in dem Ihre Funktionen ausgeführt werden. Daher ist dies die Bereitstellungs- und Verwaltungseinheit für Ihre Funktionen. Eine Funktions-App besteht aus einer oder mehreren individuellen Funktionen, die zusammen verwaltet, bereitgestellt und skaliert werden. Der Tarif, die Bereitstellungsmethode und die Runtimeversion sind für alle Funktionen in einer Funktions-App gleich. Eine Funktionen-App ist somit eine Möglichkeit, mit der Sie Ihre Funktionen organisieren und kollektiv verwalten können. Weitere Informationen finden Sie unter [Verwalten einer Funktions-App](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
 > Alle Funktionen in einer Funktions-App müssen in der gleichen Programmiersprache erstellt werden. In [Vorgängerversionen](functions-versions.md) der Azure Functions-Runtime war dies nicht erforderlich.

@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/29/2019
+ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 163876d63ba2127dd3f3444e95b284918e60e368
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951991"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070972"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Erstellen einer Python-App in Azure App Service für Linux
 
@@ -65,7 +64,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-Öffnen Sie einen Webbrowser, und navigieren Sie zu der Beispielapp auf `http://localhost:5000/`.
+Öffnen Sie einen Webbrowser, und navigieren Sie zu der Beispiel-App unter `http://localhost:5000/`.
 
 Die Nachricht **Hello World!** aus der Beispiel-App wird auf der Seite angezeigt.
 
@@ -82,7 +81,7 @@ Erstellen Sie in Cloud Shell ein Schnellstartverzeichnis, und wechseln Sie dorth
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Führen Sie als Nächstes den folgenden Befehl aus, um das Beispiel-App-Repository in Ihrem Schnellstartverzeichnis zu klonen.
@@ -184,7 +183,7 @@ Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das
 
 Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte App zu verwalten.
 
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-App.
+Wählen Sie im linken Menü **App Services** und anschließend den Namen Ihrer Azure-App aus.
 
 ![Portalnavigation zur Azure-App](./media/quickstart-python/app-service-list.png)
 

@@ -3,18 +3,18 @@ title: Hinzufügen eines echten Geräts zu einer Azure IoT Central-Anwendung | M
 description: Fügen Sie Ihrer Azure IoT Central-Anwendung als Bediener ein echtes Gerät hinzu.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 04/23/2019
+ms.date: 08/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 03fd31333a97290a5e8a00029867fc4e73a0cdd7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8731d66c9d2dca0043307ac2f6a0d1828aeaa275
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875608"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050511"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung
 
@@ -47,7 +47,7 @@ Installieren Sie [Node.js](https://nodejs.org/) (Version 8.0.0 oder höher) auf
 
 Um Ihrer Anwendung ein echtes Gerät hinzuzufügen, verwenden Sie die Gerätevorlage **Connected Air Conditioner** (Verbundene Klimaanlage), die Sie im Tutorial [Definieren eines neuen Gerätetyps](tutorial-define-device-type.md) erstellt haben.
 
-1. Klicken Sie als Bediener im linken Navigationsmenü auf **Device Explorer**, um ein neues Gerät hinzuzufügen:
+1. Wählen Sie als Bediener im linken Navigationsmenü die Option **Geräte** aus, um ein neues Gerät hinzuzufügen:
 
    ![Seite „Device Explorer“ mit verbundener Klimaanlage](media/tutorial-add-device/explorer.png)
 

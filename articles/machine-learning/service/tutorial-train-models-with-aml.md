@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534804"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036194"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>Erstellen oder Anfügen einer vorhandenen Computeressource
+### <a name="create-or-attach-an-existing-compute-target"></a>Erstellen oder Anfügen eines vorhandenen Computeziels
 
 Unter Verwendung von Azure Machine Learning Compute, einem verwalteten Dienst, können Datenanalysten Machine Learning-Modelle in Clustern von virtuellen Azure-Computern trainieren. Beispiele hierfür sind unter anderem VMs mit GPU-Unterstützung. In diesem Tutorial erstellen Sie Azure Machine Learning Compute als Trainingsumgebung. Mit dem folgenden Code werden die Computecluster für Sie erstellt, sofern sie in Ihrem Arbeitsbereich noch nicht vorhanden sind.
 
- **Die Erstellung der Computecluster dauert etwa fünf Minuten.** Wenn der Computecluster bereits im Arbeitsbereich enthalten ist, wird er vom Code verwendet, und der Erstellungsvorgang wird übersprungen.
+ **Die Erstellung des Computeziels dauert etwa fünf Minuten.** Wenn die Computeressource bereits im Arbeitsbereich enthalten ist, wird sie vom Code verwendet, und der Erstellungsvorgang wird übersprungen.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ Sie haben jetzt einen Eindruck vom Aussehen dieser Bilder und vom erwarteten Vor
 
 ### <a name="upload-data-to-the-cloud"></a>Hochladen von Daten in die Cloud
 
-Machen Sie die Daten jetzt für den Remotezugriff verfügbar, indem Sie die Daten von Ihrem lokalen Computer in Azure hochladen. Dann sind sie für das Remotetraining zugänglich. Der Datenspeicher ist ein praktisches Konstrukt, das Ihrem Arbeitsbereich zugeordnet wird, damit Sie Daten hoch- und herunterladen können. Sie können damit auch von Ihren Remotecomputezielen aus interagieren. Der Speicher wird durch das Azure Blob Storage-Konto unterstützt.
+Sie haben die Trainingsdaten auf dem Computer mit dem ausgeführten Notebook heruntergeladen und verwendet.  Im nächsten Abschnitt trainieren Sie ein Modell in der Azure Machine Learning Compute-Remoteinstanz.  Die Remotecomputeressource benötigt auch Zugriff auf Ihre Daten. Zum Bereitstellen des Zugriffs laden Sie Ihre Daten in einen zentralisierten Datenspeicher hoch, der dem Arbeitsbereich zugeordnet ist. Bei Verwendung von Remotecomputezielen in der Cloud bietet dieser Datenspeicher schnellen Zugriff auf Ihre Daten, da sie sich im Azure-Datencenter befinden.
 
-Die MNIST-Dateien werden in ein Verzeichnis namens `mnist` hochgeladen, das sich im Stammverzeichnis des Datenspeichers befindet:
+Laden Sie die MNIST-Dateien in ein Verzeichnis namens `mnist` hoch, das sich im Stammverzeichnis des Datenspeichers befindet. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md).
 
 ```python
 ds = ws.get_default_datastore()

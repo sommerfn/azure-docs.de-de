@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: cc022f91d4b4fec42929769df8c979320548a1f9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304757"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114396"
 ---
 # <a name="availability-alerts"></a>Verfügbarkeitswarnungen
 
@@ -61,11 +61,15 @@ Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/mo
 
 ### <a name="alert-on-custom-analytics-queries"></a>Warnung bei benutzerdefinierten Analyseabfragen
 
-Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie bei [benutzerdefinierten Protokollabfragen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist insbesondere anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDKs senden. 
+Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie bei [benutzerdefinierten Protokollabfragen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist auch anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDK senden.
 
 > [!Tip]
 > Die Metriken zu Verfügbarkeitsdaten umfassen alle benutzerdefinierten Verfügbarkeitsergebnisse, die Sie möglicherweise durch Aufrufen unseres TrackAvailability SDKs übermitteln. Sie können die Unterstützung für Warnungen bei Metriken verwenden, um bei benutzerdefinierten Verfügbarkeitsergebnissen zu warnen.
 >
+
+## <a name="automate-alerts"></a>Automatisieren von Warnungen
+
+Informationen zur Automatisierung dieses Prozesses mit Azure Resource Manager-Vorlagen finden Sie in der Dokumentation zum [Erstellen einer Metrikwarnung mit Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -75,4 +79,3 @@ Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/mo
 
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
 * [Url ping web tests (URL-Pingtests)](monitor-web-app-availability.md)
-

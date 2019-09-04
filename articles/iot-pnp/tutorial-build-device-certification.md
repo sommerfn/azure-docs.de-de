@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Azure IoT Plug & Play Preview-Geräts für die Zertifizierung | Microsoft-Dokumentation
+title: Erstellen eines IoT Plug & Play Preview-Geräts (Vorschauversion) für die Zertifizierung | Microsoft-Dokumentation
 description: Als Geräteentwickler erfahren Sie hier mehr darüber, wie Sie ein IoT Plug & Play Preview-Gerät für die Zertifizierung erstellen.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878751"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047913"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Erstellen eines Azure IoT Plug & Play Preview-Geräts für die Zertifizierung
 
@@ -89,7 +89,7 @@ So zeigen Sie die Schnittstelle **Geräteinformationen** in VS Code an:
 
 ### <a name="enable-device-provisioning-through-the-azure-iot-device-provisioning-service-dps"></a>Aktivieren der Gerätebereitstellung über Azure IoT Device Provisioning Service (DPS)
 
-Zum Zertifizieren des Geräts müssen Sie die Gerätebereitstellung über [Azure IoT Device Provisioning Service (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps) aktivieren. Um die Verwendung von DPS zu aktivieren, können Sie in VS Code den C-Code-Stub generieren. Führen Sie die folgenden Schritte aus:
+Zum Zertifizieren des Geräts müssen Sie die Gerätebereitstellung über [Azure IoT Device Provisioning Service (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps) aktivieren. Um die Verwendung von DPS zu aktivieren, können Sie in VS Code den C-Code-Stub generieren. Folgen Sie diesen Schritten:
 
 1. Öffnen Sie den Ordner mit der DCM-Datei, und öffnen Sie mit **STRG+UMSCHALT+P** die Befehlspalette. Geben Sie **IoT Plug & Play** ein, und wählen Sie **Generate Device Code Stub** (Gerätecode-Stub generieren) aus.
 
@@ -118,13 +118,13 @@ Zum Zertifizieren des Geräts müssen Sie die Gerätebereitstellung über [Azure
     static const char *registrationId = "[device registration Id]";
     ```
 
-1. Speichern Sie die Datei.
+1. Speichern Sie die Datei .
 
 ### <a name="implement-standard-interfaces"></a>Implementieren von Standardschnittstellen
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>Implementieren von Schnittstellen für Modellinformationen und SDK-Informationen
 
-Das Azure IoT-Geräte-SDK implementiert die Schnittstellen für Modellinformationen und SDK-Informationen. Wenn Sie in VS Code die Funktion für die Codegenerierung verwenden, dann verwendet Ihr Gerätecode das Azure IoT Plug & Play Device SDK.
+Das Azure IoT-Geräte-SDK implementiert die Schnittstellen für Modellinformationen und SDK-Informationen. Wenn Sie in VS Code die Funktion für die Codegenerierung verwenden, dann verwendet Ihr Gerätecode das IoT Plug & Play Device SDK.
 
 Wenn Sie das Azure IoT-Geräte-SDK nicht verwenden möchten, können Sie den SDK-Quellcode als Referenz für Ihre eigene Implementierung verwenden.
 

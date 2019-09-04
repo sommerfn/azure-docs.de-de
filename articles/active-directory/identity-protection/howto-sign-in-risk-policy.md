@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d00376c6689b6be773f24e8acd09c3697fb6a799
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335410"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126311"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Anleitung: Konfigurieren der Richtlinie zum Anmelderisiko
 
-Azure Active Directory erkennt [Risikoereignistypen](../reports-monitoring/concept-risk-events.md#risk-event-types) in Echtzeit und offline. Alle Risikoereignisse, die bei der Anmeldung eines Benutzers erkannt wurden, tragen zu einem logischen Konzept bei, das als „riskante Anmeldung“ bezeichnet wird. Eine risikobehaftete Anmeldung ist ein Hinweis auf einen Anmeldeversuch, der nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde.
+Azure Active Directory erkennt [Risikoerkennungstypen](../reports-monitoring/concept-risk-events.md#risk-detection-types) in Echtzeit und offline. Alle Risikoerkennungen, die bei der Anmeldung eines Benutzers erkannt wurden, tragen zu einem logischen Konzept bei, das als „riskante Anmeldung“ bezeichnet wird. Eine risikobehaftete Anmeldung ist ein Hinweis auf einen Anmeldeversuch, der nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde.
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Was ist die Richtlinie zum Anmelderisiko?
 
-Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. Wird die Anmeldung beispielsweise mit einer anonymen IP-Adresse durchgeführt, oder wird die Anmeldung von einem unbekannten Ort aus initiiert? In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoereignisse bezeichnet. Basierend auf den Risikoereignissen, die während einer Anmeldung erkannt wurden, berechnet Azure AD einen Wert. Der Wert steht für die Wahrscheinlichkeit (gering, mittel, hoch), dass die Anmeldung nicht vom befugten Benutzer durchgeführt wird. Die Wahrscheinlichkeit wird als **Risikostufe der Anmeldung** bezeichnet.
+Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht darin, verdächtige Aktionen zu erkennen, die mit der Anmeldung verbunden sind. Wird die Anmeldung beispielsweise mit einer anonymen IP-Adresse durchgeführt, oder wird die Anmeldung von einem unbekannten Ort aus initiiert? In Azure AD werden die verdächtigen Aktionen, die vom System erkannt werden können, auch als Risikoerkennungen bezeichnet. Basierend auf den Risikoerkennungen, die während einer Anmeldung erkannt wurden, berechnet Azure AD einen Wert. Der Wert steht für die Wahrscheinlichkeit (gering, mittel, hoch), dass die Anmeldung nicht vom befugten Benutzer durchgeführt wird. Die Wahrscheinlichkeit wird als **Risikostufe der Anmeldung** bezeichnet.
 
 Die Richtlinie zum Anmelderisiko ist eine automatisierte Antwort, die Sie für eine bestimmte Risikostufe der Anmeldung konfigurieren können. In Ihrer Antwort können Sie den Zugriff auf Ihre Ressourcen blockieren oder die Durchführung einer mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) zur Bedingung machen, bevor der Zugriff gewährt wird.
    

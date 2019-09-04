@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624099"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036317"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -28,11 +28,16 @@ Es ist noch nicht möglich, Konfigurationen anzuwenden.
 
 Zur Überprüfung von Einstellungen in einem virtuellen Computer wird eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen.
 
-### <a name="register-guest-configuration-resource-provider"></a>Registrieren des Guest Configuration-Ressourcenanbieters
+### <a name="limits-set-on-the-exension"></a>Für die Erweiterung festgelegte Grenzwerte
+
+Um die Auswirkungen der Erweiterung auf die auf dem Computer ausgeführten Anwendungen zu beschränken, darf Guest Configuration höchstens 5 % der CPU-Auslastung verursachen.
+Dies gilt sowohl für von Microsoft als „integriert“ bereitgestellte Konfigurationen als auch für von Kunden erstellte benutzerdefinierte Konfigurationen.
+
+## <a name="register-guest-configuration-resource-provider"></a>Registrieren des Guest Configuration-Ressourcenanbieters
 
 Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Hierfür können Sie über das Portal oder mit PowerShell registrieren. Der Ressourcenanbieter wird automatisch registriert, wenn die Zuweisung einer Guest Configuration-Richtlinie über das Portal erfolgt.
 
-#### <a name="registration---portal"></a>Registrierung – Portal
+### <a name="registration---portal"></a>Registrierung – Portal
 
 Gehen Sie wie folgt vor, um den Ressourcenanbieter für Guest Configuration über das Azure-Portal zu registrieren:
 
@@ -44,7 +49,7 @@ Gehen Sie wie folgt vor, um den Ressourcenanbieter für Guest Configuration übe
 
 1. Suchen Sie durch Filtern oder Blättern nach **Microsoft.GuestConfiguration**, und klicken Sie dann in derselben Zeile auf **Registrieren**.
 
-#### <a name="registration---powershell"></a>Registrierung – PowerShell
+### <a name="registration---powershell"></a>Registrierung – PowerShell
 
 Führen Sie zum Registrieren des Ressourcenanbieters für Guest Configuration über PowerShell den folgenden Befehl aus:
 
@@ -53,7 +58,7 @@ Führen Sie zum Registrieren des Ressourcenanbieters für Guest Configuration ü
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-### <a name="validation-tools"></a>Überprüfungstools
+## <a name="validation-tools"></a>Überprüfungstools
 
 Im virtuellen Computer verwendet der Guest Configuration-Client lokale Tools zum Ausführen der Überprüfung.
 
@@ -68,7 +73,7 @@ In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jewei
 
 Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. Sobald eine Gastzuweisung empfangen wird, werden die Einstellungen in einem 15-Minuten-Intervall überprüft. Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, sobald die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dies bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration innerhalb des virtuellen Computers ausgelöst.
 
-### <a name="supported-client-types"></a>Unterstützte Clienttypen
+## <a name="supported-client-types"></a>Unterstützte Clienttypen
 
 In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme aufgeführt:
 
@@ -89,7 +94,7 @@ In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme
 
 Windows Server Nano Server wird in keiner Version unterstützt.
 
-### <a name="guest-configuration-extension-network-requirements"></a>Netzwerkanforderungen für die Gastkonfigurationserweiterung
+## <a name="guest-configuration-extension-network-requirements"></a>Netzwerkanforderungen für die Gastkonfigurationserweiterung
 
 Für die Kommunikation mit dem Guest Configuration-Ressourcenanbieter in Azure benötigen virtuelle Computer Zugriff auf Azure-Rechenzentren in ausgehender Richtung über Port **443**. Wenn Sie ein privates virtuelles Netzwerk in Azure verwenden und keinen ausgehenden Datenverkehr zulassen, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Derzeit ist für Azure Policy Guest Configuration kein Diensttag vorhanden.
 
@@ -100,7 +105,7 @@ Für Listen mit IP-Adressen können Sie [IP-Bereiche des Microsoft Azure-Rechenz
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
-Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **Audit**. Die Definition **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
+Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**. Die Definition **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
 
 Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Elemente überprüft und korrigiert:
 
@@ -111,18 +116,18 @@ Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Element
 
 Wenn die **DeployIfNotExists**-Zuweisung nicht konform ist, kann ein [Wartungstask](../how-to/remediate-resources.md#create-a-remediation-task) verwendet werden.
 
-Sobald die **DeployIfNotExists**-Zuweisung konform ist, wird die Richtliniendefinition **Audit** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die Konfigurationszuweisung konform ist.
+Sobald die **DeployIfNotExists**-Zuweisung konform ist, wird die Richtliniendefinition **AuditIfNotExists** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die Konfigurationszuweisung konform ist.
 Das Überprüfungstool stellt die Ergebnisse dem Guest Configuration-Client zur Verfügung. Der Client leitet die Ergebnisse an die Guest-Erweiterung weiter, die sie über den Guest Configuration-Ressourcenanbieter bereitstellt.
 
 Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configuration-Ressourcenanbieters, um die Konformität im Knoten **Konformität** zu melden. Weitere Informationen finden Sie unter [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Die **DeployIfNotExists**-Richtlinie ist erforderlich, damit die **Audit**-Richtlinie Ergebnisse zurückgibt.
-> Ohne die **DeployIfNotExists**-Richtlinie gibt die **Audit**-Richtlinie „0 von 0“ Ressourcen als Status an.
+> Die Richtlinie **DeployIfNotExists** ist erforderlich, damit die Richtlinie **AuditIfNotExists** Ergebnisse zurückgibt.
+> Ohne die Richtlinie **DeployIfNotExists** gibt die Richtlinie **AuditIfNotExists** „0 von 0“ Ressourcen als Status an.
 
-Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **Audit**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
+Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
 
-## <a name="multiple-assignments"></a>Mehrere Zuweisungen
+### <a name="multiple-assignments"></a>Mehrere Zuweisungen
 
 Aufgrund der Gastkonfigurationsrichtlinien kann die gleiche Gastzuweisung derzeit lediglich einmal pro virtuellem Computer zugewiesen werden, auch wenn bei der Richtlinienzuweisung andere Parameter verwendet werden.
 

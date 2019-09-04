@@ -8,23 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 67e4874fcca93633140b7630ceadd273d1646f86
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 86bbff167a2653fd8d89b566b551c4c53dd3614e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721176"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124567"
 ---
 # <a name="what-are-azure-queues"></a>Was sind Azure-Warteschlangen?
 
-Azure Queue Storage ist ein Dienst für die Speicherung einer großen Anzahl von Nachrichten. Sie können überall auf der Welt über authentifizierte Aufrufe mithilfe von HTTP oder HTTPS auf Nachrichten zugreifen. Eine Warteschlangennachricht kann bis zu 64 KB groß sein. Eine Warteschlange kann Millionen Nachrichten enthalten, bis die maximale Kapazität eines Speicherkontos erreicht ist.
-
-## <a name="common-uses"></a>Gängige Nutzungsszenarien
-
-Warteschlangenspeicherungen werden hauptsächlich für folgende Zwecke verwendet:
-
-* Erstellung eines Arbeits-Backlogs zur asynchronen Verarbeitung
-* Weiterleitung von Nachrichten von einer Azure-Webrolle an eine Azure-Workerrolle
+Azure Queue Storage ist ein Dienst für die Speicherung großer Nachrichtenmengen. Sie können überall auf der Welt über authentifizierte Aufrufe mithilfe von HTTP oder HTTPS auf Nachrichten zugreifen. Eine Warteschlangennachricht kann bis zu 64 KB groß sein. Eine Warteschlange kann Millionen Nachrichten enthalten, bis die maximale Kapazität eines Speicherkontos erreicht ist. Warteschlangen werden häufig verwendet, um ein Arbeits-Backlog zur asynchronen Verarbeitung zu erstellen.
 
 ## <a name="queue-service-concepts"></a>Konzepte des Warteschlangendiensts
 

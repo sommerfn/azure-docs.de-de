@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667825"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062075"
 ---
 # <a name="get-started-with-device-twins-python"></a>Erste Schritte mit Gerätezwillingen (Python)
 
@@ -49,11 +49,15 @@ Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponente
 
 In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, mit der dem Gerätezwilling, der Ihrer **{Geräte-ID}** zugeordnet ist, Standortmetadaten hinzugefügt werden. Anschließend werden die Gerätezwillinge abgefragt, die in dem für die Auswahl der Geräte in Redmond zuständigen IoT Hub gespeichert sind, und dann diejenigen, die eine Mobilfunkverbindung melden.
 
-1. Öffnen Sie eine Eingabeaufforderung, und installieren Sie das **Azure IoT Hub Service SDK für Python**. Schließen Sie die Eingabeaufforderung, nachdem Sie das SDK installiert haben.
+1. Öffnen Sie in Ihrem Arbeitsverzeichnis eine Eingabeaufforderung, und installieren Sie das **Azure IoT Hub Service SDK für Python**.
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   >
 
 2. Erstellen Sie in einem Text-Editor eine neue Datei namens **AddTagsAndQuery.py**.
 
@@ -66,7 +70,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, mit der dem Gerätez
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Fügen Sie den folgenden Code hinzu, und ersetzen Sie dabei den Platzhalter für `[IoTHub Connection String]` und `[Device Id]` durch die Verbindungszeichenfolge für den IoT Hub und die Geräte-ID, die Sie in den vorherigen Abschnitten erstellt haben.
+4. Fügen Sie den folgenden Code hinzu: Ersetzen Sie `[IoTHub Connection String]` durch die IoT-Hub-Verbindungszeichenfolge, die Sie unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben. Ersetzen Sie `[Device Id]` durch die Geräte-ID, die Sie unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) registriert haben.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, mit der dem Gerätez
 
 5. Fügen Sie den folgenden Code der Datei **AddTagsAndQuery.py** hinzu:
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, mit der dem Gerätez
 
     In den Ergebnissen für die Abfrage, mit der alle Geräte in der Anlage **Redmond43** abgefragt werden, sollte ein Gerät angezeigt werden und keines für die Abfrage, mit der die Ergebnisse auf die über ein Mobilfunknetz verbundenen Geräte beschränkt werden.
 
-    ![erste Abfrage zeigt alle Geräte in Redmond](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![erste Abfrage zeigt alle Geräte in Redmond](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 Im nächsten Abschnitt erstellen Sie eine Geräte-App, mit der die Verbindungsinformationen gemeldet und das Ergebnis der im vorherigen Abschnitt ausgeführten Abfrage geändert wird.
 
@@ -151,11 +155,15 @@ Im nächsten Abschnitt erstellen Sie eine Geräte-App, mit der die Verbindungsin
 
 In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **{Geräte-ID}** eine Verbindung mit dem Hub herstellt und dann die gemeldeten Eigenschaften des zugehörigen Gerätezwillings so aktualisiert, dass sie die Informationen über die Verbindung mit einem Mobilfunknetz enthalten.
 
-1. Öffnen Sie eine Eingabeaufforderung, und installieren Sie das **Azure IoT Hub Service SDK für Python**. Schließen Sie die Eingabeaufforderung, nachdem Sie das SDK installiert haben.
+1. Installieren Sie über eine Eingabeaufforderung in Ihrem Arbeitsverzeichnis das **Azure IoT Hub Service SDK für Python**:
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   >
 
 2. Erstellen Sie in einem Text-Editor eine neue Datei namens **ReportConnectivity.py**.
 
@@ -167,7 +175,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. Fügen Sie den folgenden Code hinzu, und ersetzen Sie dabei den Platzhalter für `[IoTHub Device Connection String]` durch die Verbindungszeichenfolge für das in den vorherigen Abschnitten erstellte IoT Hub-Gerät.
+4. Fügen Sie den folgenden Code hinzu: Ersetzen Sie den Platzhalterwert `[IoTHub Device Connection String]` durch die Geräteverbindungszeichenfolge, die Sie im Abschnitt [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert haben.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     Das **Client**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Mit diesem Code werden nach dem Initialisieren des **Client**-Objekts der Gerätezwilling für Ihr Gerät abgerufen und die zugehörige gemeldete Eigenschaft mit den Verbindungsinformationen aktualisiert.
 
@@ -248,7 +256,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
 
     Es sollte die Bestätigung angezeigt werden, dass die Gerätezwillinge aktualisiert wurden.
 
-    ![Zwillinge aktualisieren](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![Zwillinge aktualisieren](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. Da das Gerät nun die Verbindungsinformationen gemeldet hat, sollten diese in beiden Abfragen angezeigt werden. Gehen Sie zurück, und führen Sie die Abfragen erneut aus:
 
@@ -258,7 +266,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
 
     Nun sollte Ihre **{Geräte-ID}** in beiden Abfrageergebnisse angezeigt werden.
 
-    ![zweite Abfrage](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![zweite Abfrage](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

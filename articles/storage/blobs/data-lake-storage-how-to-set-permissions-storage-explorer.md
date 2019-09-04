@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 530e37400881ace2de603aed6875ed236e45f2c7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847423"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992277"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2
 
@@ -28,11 +28,11 @@ In diesem Artikel erfahren Sie, wie Sie Azure Storage-Explorer für folgende Auf
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den Prozess bestmöglich abbilden zu können, müssen Sie den [Schnellstart für Azure Storage-Explorer](data-lake-storage-Explorer.md) abgeschlossen haben. Dadurch wird sichergestellt, dass sich Ihr Speicherkonto im am besten geeigneten Zustand befindet (Dateisystem erstellt und Daten hochgeladen).
+Um den Prozess bestmöglich abbilden zu können, müssen Sie den [Schnellstart für Azure Storage-Explorer](data-lake-storage-Explorer.md) abgeschlossen haben. Dadurch wird sichergestellt, dass sich Ihr Speicherkonto im am besten geeigneten Zustand befindet (Container erstellt und Daten hochgeladen).
 
 ## <a name="managing-access"></a>Verwalten des Zugriffs
 
-Sie können Berechtigungen im Stammverzeichnis Ihres Dateisystems festlegen. Hierzu müssen Sie mit Ihrem individuellen Konto mit entsprechenden Rechten beim Azure Storage-Explorer angemeldet sein (anstatt über eine Verbindungszeichenfolge). Klicken Sie mit der rechten Maustaste auf Ihr Dateisystem, und wählen Sie **Berechtigungen verwalten** aus, um das Dialogfeld **Berechtigung verwalten** zu öffnen.
+Sie können Berechtigungen im Stammverzeichnis Ihres Containers festlegen. Hierzu müssen Sie mit Ihrem individuellen Konto mit entsprechenden Rechten beim Azure Storage-Explorer angemeldet sein (anstatt über eine Verbindungszeichenfolge). Klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Berechtigungen verwalten** aus, um das Dialogfeld **Berechtigung verwalten** zu öffnen.
 
 ![Microsoft Azure Storage-Explorer – Verzeichniszugriff verwalten](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

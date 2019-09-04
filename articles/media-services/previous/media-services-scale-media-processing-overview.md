@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 25b2eb05a612b18eab1fbf790b119edbe9c4d8d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 780d3ab5047bff321d0c554880ba2995bcf25524
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707396"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102911"
 ---
 # <a name="scaling-media-processing-overview"></a>Übersicht über das Skalieren der Medienverarbeitung 
 Diese Seite bietet eine Übersicht über die Gründe und Vorgehensweise bei der Skalierung der Medienverarbeitung. 
@@ -35,7 +35,7 @@ Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschi
 |---|---|---|
 | **S1**|Single-Bitrate-Codierung. <br/>Dateien mit SD-Auflösung oder einer niedrigeren Auflösung, nicht zeitkritisch, niedrige Kosten.|Die Codierung für eine MP4-Datei mit Einzelbitrate und SD-Auflösung unter Verwendung von „H264 Single Bitrate SD 16x9“ dauert ungefähr 7 Minuten.|
 | **S2**|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Normale Verwendung für SD- und HD-Codierung.|Die Codierung mit der Voreinstellung „H264 Single Bitrate 720p“ dauert etwa 6 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 720p“ dauert etwa 12 Minuten.|
-| **S3**|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Videos mit Full HD- und 4K-Auflösung. Zeitkritisch, schnellere Codierung|Die Codierung mit der Voreinstellung „H264 Single Bitrate 1080p“ dauert etwa 3 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 1080p“ dauert etwa 8 Minuten.|
+| **S3**|Single-Bitrate- und Multi-Bitrate-Codierung.<br/>Videos mit Full HD- und 4K-Auflösung. Zeitkritisch, schnellere Codierung|Die Codierung mit der Voreinstellung „H264 Single Bitrate 1080p“ dauert etwa 3 Minuten.<br/><br/>Die Codierung mit der Voreinstellung „H264 Multiple Bitrate 1080p“ dauert etwa 8 Minuten.|
 
 ## <a name="considerations"></a>Überlegungen
 > [!IMPORTANT]

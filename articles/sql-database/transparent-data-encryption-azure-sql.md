@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967901"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061937"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse
 
 Transparente Datenverschlüsselung (Transparent Data Encryption, TDE) trägt zum Schutz von Azure SQL-Datenbank, einer verwalteten Azure SQL-Instanz und Azure Data Warehouse vor der Bedrohung durch schädliche Offlineaktivitäten durch die Verschlüsselung von ruhenden Daten bei. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind. TDE ist standardmäßig für alle neu bereitgestellten Azure SQL-Datenbanken aktiviert. TDE kann nicht zum Verschlüsseln der **master**-Datenbank in SQL-Datenbank verwendet werden.  Die **master**-Datenbank enthält Objekte, die zum Ausführen der TDE-Vorgänge für die Benutzerdatenbanken erforderlich sind.
 
-TDE muss für eine verwaltete Azure SQL-Instanz, ältere Datenbanken von Azure SQL-Datenbank oder Azure SQL Data Warehouse manuell aktiviert werden.  
+TDE muss für ältere Datenbanken von Azure SQL-Datenbank, eine verwaltete Azure SQL-Instanz oder Azure SQL Data Warehouse manuell aktiviert werden.
+Datenbanken verwalteter Instanzen, die durch Wiederherstellen erstellt wurden, erben den Verschlüsselungsstatus der Quelldatenbank.
 
 Die transparente Datenverschlüsselung verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. Dieser Verschlüsselungsschlüssel für die Datenbank wird durch die Schutzvorrichtung der transparenten Datenverschlüsselung geschützt. Bei dieser Schutzvorrichtung handelt es sich entweder um ein von einem Dienst verwaltetes Zertifikat (von einem Dienst verwaltete transparente Datenverschlüsselung) oder um einen asymmetrischen Schlüssel, der in Azure Key Vault gespeichert ist (Bring Your Own Key). Die Schutzvorrichtung der transparenten Datenverschlüsselung ist für Azure SQL-Datenbank und Data Warehouse auf Serverebene und für eine verwaltete Azure SQL-Instanz auf Instanzebene festgelegt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
 

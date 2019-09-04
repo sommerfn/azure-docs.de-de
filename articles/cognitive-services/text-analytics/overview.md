@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697614"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032680"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
@@ -81,7 +81,7 @@ Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artik
 
 ## <a name="data-limits"></a>Datengrenzwerte
 
-Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.120 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen. Wenn Sie dennoch einen höheren Grenzwert benötigen, [kontaktieren Sie uns](https://azure.microsoft.com/overview/sales-number/), damit Ihre Anforderungen besprochen werden können.
+Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.120 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen.
 
 | Begrenzung | Wert |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ Ihr Ratenlimit variiert je nach Tarif.
 
 | Tarif          | Anforderungen pro Sekunde | Anforderungen pro Minute |
 |---------------|---------------------|---------------------|
-| Mehrere Dienste | 1000                | 1000                |
+| S/Mehrere Dienste | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612889"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124679"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Häufig gestellte Fragen (FAQs)
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domain Services beantwortet. Die Seite wird bei Bedarf aktualisiert.
@@ -61,6 +61,9 @@ Nein. Die von den Azure AD Domain Services bereitgestellte Domäne ist eine ver
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Können in mein Verzeichnis eingeladene Gastbenutzer Azure AD Domain Services verwenden?
 Nein. Gastbenutzer, die mit dem [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)-Einladungsprozess in Ihr Azure AD-Verzeichnis eingeladen wurden, werden in Ihrer verwalteten Azure AD Domain Services-Domäne synchronisiert. Kennwörter für diese Benutzer werden jedoch nicht in Ihrem Azure AD-Verzeichnis gespeichert. Daher gibt es in Azure AD Domain Services keine Möglichkeit zum Synchronisieren von NTLM- und Kerberos-Hashes für diese Benutzer in Ihrer verwalteten Domäne. Dies bedeutet wiederum, dass sich solche Benutzer nicht bei der verwalteten Domäne anmelden oder Computer darin einbinden können.
+
+### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Kann ich eine vorhandene verwaltete Azure AD Domain Services-Domäne in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region oder ein anderes virtuelles Netzwerk verschieben?
+Nein. Nach dem Erstellen einer verwalteten Azure AD Domain Services-Domäne können Sie die Instanz nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie bei der Bereitstellung der Azure AD DS-Instanz das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
 
 ## <a name="administration-and-operations"></a>Verwaltung und Betrieb
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Kann ich über Remotedesktop eine Verbindung zum Domänencontroller für meine verwaltete Domäne herstellen?

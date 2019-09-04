@@ -10,17 +10,16 @@ tags: top-support-issue
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 097d4ea45827223a5d3e64a2d1ca326569db9958
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718271"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113550"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
 
@@ -191,7 +190,7 @@ Wenn sich das aktuelle Zertifikat, in dem die falsche Domäne verwendet wird, im
 Das App Service-Zertifikat wurde erneuert, aber die App, die das App Service-Zertifikat verwendet, nutzt weiterhin das alte Zertifikat. Darüber hinaus haben Sie eine Warnmeldung erhalten, dass das HTTPS-Protokoll erforderlich ist.
 
 #### <a name="cause"></a>Ursache 
-Azure App Service führt alle acht Stunden einen Hintergrundauftrag aus und synchronisiert die Zertifikatressource, wenn Änderungen vorgenommen wurden. Wenn Sie ein Zertifikat aktualisieren oder wechseln, ruft die Anwendung manchmal weiterhin das alte Zertifikat und nicht das neu aktualisierte Zertifikat ab. Dies liegt daran, dass der Auftrag zum Synchronisieren der Zertifikatsressource noch nicht ausgeführt wurde. 
+App Service synchronisiert Ihr Zertifikat innerhalb von 48 Stunden. Wenn Sie ein Zertifikat aktualisieren oder wechseln, ruft die Anwendung manchmal weiterhin das alte Zertifikat und nicht das neu aktualisierte Zertifikat ab. Dies liegt daran, dass der Auftrag zum Synchronisieren der Zertifikatsressource noch nicht ausgeführt wurde. Klicken Sie auf „Synchronisieren“. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
  
 #### <a name="solution"></a>Lösung
 

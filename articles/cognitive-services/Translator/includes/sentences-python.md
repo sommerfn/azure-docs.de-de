@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: da411bad9e690fc4053fdf2bb9fa7fc9f0c4eae4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9c7385d3457f3f5dbed2633c20445bb9ef0b1638
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967975"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906875"
 ---
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-Für diese Schnellstartanleitung ist Folgendes erforderlich:
-
-* Python 2.7.x oder 3.x
-* Ein Azure-Abonnementschlüssel für die Textübersetzung
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
@@ -24,10 +21,7 @@ Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues P
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -35,27 +29,25 @@ import json
 
 Der erste Kommentar weist Ihren Python-Interpreter, UTF-8-Codierung zu verwenden. Anschließend werden erforderliche Module importiert, um Ihren Abonnementschlüssel aus einer Umgebungsvariablen zu lesen, die HTTP-Anforderung und einen eindeutigen Bezeichner zu erstellen und die von der Textübersetzungs-API zurückgegebene JSON-Antwort zu verarbeiten.
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>Festlegen des Abonnementschlüssels, der Basis-URL und des Pfads
+## <a name="set-the-subscription-key-endpoint-and-path"></a>Festlegen des Abonnementschlüssels, des Endpunkts und des Pfads
 
-Dieses Beispiel liest den Textübersetzungs-Abonnementschlüssel aus der Umgebungsvariablen `TRANSLATOR_TEXT_KEY`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
+Dieses Beispiel liest den Textübersetzungs-Abonnementschlüssel und den Endpunkt aus den Umgebungsvariablen `TRANSLATOR_TEXT_KEY` und `TRANSLATOR_TEXT_ENDPOINT`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscription_key` und `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisungen auskommentieren.
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
 ```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
-Der globale Endpunkt der Textübersetzung ist als die `base_url` festgelegt. `path` legt die `breaksentence`-Route fest und gibt die gewünschte Version der API (Version 3) an.
+Der globale Endpunkt der Textübersetzung ist als die `endpoint` festgelegt. `path` legt die `breaksentence`-Route fest und gibt die gewünschte Version der API (Version 3) an.
 
 Die Parameter (`params`) in diesem Beispiel werden verwendet, um die Sprache für den angegebenen Text festzulegen. `params` sind für die `breaksentence`-Route nicht erforderlich. Wenn die Angabe in der Anforderung weggelassen wird, versucht die API, die Sprache des angegebenen Texts zu erkennen, und stellt diese Informationen mit einer Zuverlässigkeitsbewertung in der Antwort bereit.
 
@@ -63,10 +55,9 @@ Die Parameter (`params`) in diesem Beispiel werden verwendet, um die Sprache fü
 > Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/breaksentence?api-version=3.0'
 params = '&language=en'
-constructed_url = base_url + path + params
+constructed_url = endpoint + path + params
 ```
 
 ## <a name="add-headers"></a>Hinzufügen von Headern
@@ -77,7 +68,7 @@ Kopieren Sie diesen Codeausschnitt in Ihr Projekt:
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Ocp-Apim-Subscription-Key': subscription_key,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

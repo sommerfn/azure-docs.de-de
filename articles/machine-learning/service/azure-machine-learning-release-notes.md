@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777ab4c05f70cba403fe6d2318c9d498b5dd4ff3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897559"
+ms.locfileid: "69971505"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -100,6 +100,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
 ### <a name="azure-portal"></a>Azure-Portal
 + **Previewfunktion**
   + Das Streaming von Protokoll- und Ausgabedateien ist nun für Seiten mit Ausführungsdetails verfügbar. Die Dateien streamen Updates in Echtzeit, wenn die Umschaltfläche für die Vorschau aktiviert ist.
+  + Die Möglichkeit, ein Kontingent auf Arbeitsbereichsebene festzulegen, wurde als Vorschauversion veröffentlicht. AmlCompute-Kontingente werden auf Abonnementebene zugeordnet, aber wir ermöglichen Ihnen nun, dieses Kontingent für eine gerechte Freigabe und Governance zwischen Arbeitsbereichen zu verteilen und zuzuordnen. Klicken Sie in der linken Navigationsleiste Ihres Arbeitsbereichs auf das Blatt **Nutzung + Kontingente**, und wählen Sie die Registerkarte **Configure Quotas** (Kontingente konfigurieren) aus. Beachten Sie, dass Sie ein Abonnementadministrator sein müssen, um auf Arbeitsbereichsebene Kontingente festlegen zu können, da dies ein arbeitsbereichsübergreifender Vorgang ist.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
