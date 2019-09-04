@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, was sich geändert hat und welche Auswirkungen d
 
 Die neueste Version von Azure Machine Learning Service umfasst folgende Funktionen:
 + Ein [vereinfachtes Azure-Ressourcenmodell](concept-azure-machine-learning-architecture.md).
-+ Eine [neue Portal-Benutzeroberfläche](how-to-track-experiments.md) zum Verwalten Ihrer Experimente und Computeziele.
++ Eine [neue Portal-Benutzeroberfläche](how-to-track-experiments.md) zum Verwalten Ihrer Experimente und Compute-Ziele.
 + Ein neues, umfangreicheres Python-<a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.
 + Die neue, erweiterte [Azure CLI-Erweiterung](reference-azure-machine-learning-cli.md) für Machine Learning.
 
@@ -46,7 +46,7 @@ Zwar gibt es in der aktuellen Version neue, verbesserte CLI- und SDK-Clients, di
 
 <a name="timeline"></a>
 
-## <a name="support-timeline"></a>Unterstützungszeitachse
+## <a name="support-timeline"></a>Supportzeitachse
 
 Am 9. Januar 2019 wurden der Support für Machine Learning Workbench-, Azure Machine Learning-Experimentieren- und Modellverwaltung-Konten sowie das zugehörige SDK und die CLI eingestellt.
 
@@ -112,7 +112,7 @@ In dieser aktuellen Version wurde die Erweiterung in Azure Machine Learning für
 
 ## <a name="what-about-domain-packages"></a>Was ist über Domänenpakete zu sagen?
 
-Die Domänenpakete für maschinelles Sehen, Textanalyse und Vorhersagen können mit der aktuellen Version von Azure Machine Learning nicht verwendet werden. Allerdings können Sie mit dem aktuellen Azure Machine Learning Python-<a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> weiterhin Modelle für maschinelles Sehen, Textanalyse und Vorhersagen erstellen und trainieren. Informationen zum Migrieren bereits vorhandener Modelle, die mit den Paketen für maschinelles Sehen, Textanalyse und Vorhersagen erstellt wurden, erhalten Sie unter [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
+Die Domänenpakete für maschinelles Sehen, Textanalyse und Vorhersagen können mit der aktuellen Version von Azure Machine Learning nicht verwendet werden. Allerdings können Sie mit dem aktuellen Azure Machine Learning Python-<a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> weiterhin Modelle für maschinelles Sehen, Textanalyse und Vorhersagen erstellen und trainieren. Wenn Sie Informationen zum Migrieren bereits vorhandener Modelle benötigen, die mit den Paketen für maschinelles Sehen, Textanalyse und Vorhersagen erstellt wurden, wenden Sie sich bitte an[AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
