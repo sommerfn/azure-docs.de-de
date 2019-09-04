@@ -28,7 +28,7 @@ Die Azure Cosmos DB-API für MongoDB ist standardmäßig mit MongoDB Wire Protoc
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
-Eine Beschreibung der wichtigsten Vorteile und des Nutzens, den Cosmos DB als vollständig verwaltetes, global verteiltes Database as a Service-Angebot bietet, finden Sie [hier](introduction.md). Zudem bietet Cosmos DB durch die native Implementierung der Wire Protocols von gängigen NoSQL-APIs die folgenden Vorteile:
+[hier](introduction.md) werden die wichtigsten Vorteile von Cosmos DB als vollständig verwaltete, global verteilte DaaS (Database-as-a-Service) beschrieben. Zudem bietet Cosmos DB durch die native Implementierung der Wire Protocols von gängigen NoSQL-APIs die folgenden Vorteile:
 
 * Einfaches Migrieren Ihrer Anwendung zu Cosmos DB unter Beibehaltung wesentlicher Teile Ihrer Anwendungslogik.
 * Aufrechterhalten der Portierbarkeit und Unabhängigkeit von Cloudanbietern Ihrer Anwendung.

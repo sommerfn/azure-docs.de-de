@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 4e224a1abf72bfa068bebaf971e34c492b15d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95cf66b8960b03c8bc055443945d5569450855a2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142988"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101078"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 
@@ -46,7 +45,7 @@ ms.locfileid: "65142988"
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
 In diesem Artikel wird das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems beschrieben.
-In den Beispielkonfigurationen, Installationsbefehlen usw. werden die ASCS-Instanznummer „00“, die ERS-Instanznummer „02“ und die SAP-System-ID „NW1“ verwendet. Die Namen der Ressourcen (z.B. der virtuellen Computer und virtuellen Netzwerke) im Beispiel lassen vermuten, dass Sie zum Erstellen der Ressourcen die [ASCS/SCS-Vorlage][template-multisid-xscs] mit dem Ressourcenpräfix „NW1“ verwendet haben.
+In den Beispielkonfigurationen, Installationsbefehlen usw. werden die ASCS-Instanznummer „00“, die ERS-Instanznummer „02“ und die SAP-System-ID „NW1“ verwendet. Die Namen der Ressourcen (z. B. der virtuellen Computer und virtuellen Netzwerke) im Beispiel lassen vermuten, dass Sie zum Erstellen der Ressourcen die [ASCS/SCS-Vorlage][template-multisid-xscs] mit dem Ressourcenpräfix „NW1“ verwendet haben.
 
 Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 
@@ -64,9 +63,9 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * SAP-Hinweis [2243692] enthält Informationen zur SAP-Lizenzierung unter Linux in Azure.
 * SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP unter Linux][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
 * [Produktdokumentation für Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * [SAP NetWeaver im Pacemaker-Cluster](https://access.redhat.com/articles/3150081)
 * Allgemeine RHEL-Dokumentation:
@@ -124,7 +123,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 
 ## <a name="setting-up-glusterfs"></a>Einrichten von GlusterFS
 
-SAP NetWeaver erfordert einen freigegebenen Speicher für den Transport und das Profilverzeichnis. Lesen [GlusterFS auf Azure-VMs unter Red Hat Enterprise Linux für SAP NetWeaver][glusterfs-ha], um GlusterFS für SAP NetWeaver einzurichten.
+SAP NetWeaver erfordert einen freigegebenen Speicher für den Transport und das Profilverzeichnis. Informationen zum Einrichten von GlusterFS für SAP NetWeaver finden Sie unter [GlusterFS auf Azure-VMs unter Red Hat Enterprise Linux für SAP NetWeaver][glusterfs-ha].
 
 ## <a name="setting-up-ascs"></a>Einrichten von (A)SCS
 
@@ -665,7 +664,7 @@ Bezüglich der nachstehenden Schritten wird davon ausgegangen, dass Sie den Anwe
 
 ## <a name="install-database"></a>Installieren der Datenbank
 
-In diesem Fall ist SAP NetWeaver auf SAP HANA installiert. Für diese Installation können Sie jede unterstützte Datenbank verwenden. Weitere Informationen zum Installieren von SAP HANA in Azure finden Sie unter [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux][sap-hana-ha]. Eine Liste der unterstützten Datenbanken finden Sie im [SAP-Hinweis 1928533][1928533].
+In diesem Fall ist SAP NetWeaver auf SAP HANA installiert. Für diese Installation können Sie jede unterstützte Datenbank verwenden. Weitere Informationen zum Installieren von SAP HANA in Azure finden Sie unter [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Ausführen der Installation der SAP-Datenbankinstanz
 
@@ -1000,8 +999,8 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

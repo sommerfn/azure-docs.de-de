@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036645"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099681"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,12 +516,16 @@ Wenn Sie die Installation vor der Erstellung der Db2 HADR-Konfiguration durchgef
 Verwenden Sie das Konfigurationstool J2EE, um die JDBC-URL zu überprüfen oder zu aktualisieren. Da das Konfigurationstool J2EE ein grafisches Tool ist, muss ein X-Server installiert sein:
  
 1. Melden Sie sich beim primären Anwendungsserver der J2EE-Instanz an, und führen Sie Folgendes aus:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
+    <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
 1. Wählen Sie im linken Bereich die Option **security store** aus.
-1. Wählen Sie im rechten Bereich den Schlüssel „jdbc/pool/\<SAPSID>/url“ aus.
+1. Wählen Sie im rechten Bereich den Schlüssel `jdbc/pool/\<SAPSID>/url` aus.
 1. Ändern Sie den Hostnamen in der JDBC-URL in den virtuellen Hostnamen.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
-1. Wählen Sie **Hinzufügen** aus.
+    
+    <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
+1. Wählen Sie **Hinzufügen**.
 1. Um die Änderungen zu speichern, klicken Sie auf das Datenträgersymbol in der oberen linken Ecke.
 1. Schließen Sie das Konfigurationstool.
 1. Starten Sie die Java-Instanz neu.
