@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697969"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982350"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -136,9 +136,25 @@ Der Speicherplatz für Ihren App-Dienst ist möglicherweise voll. Schritte zum B
 
 Nein. Sie müssen [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird aber als eine von mehreren Vorlagen in [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
 
-### <a name="how-can-i-create-a-bot-with-qna-maker"></a>Wie kann ich einen Bot mit QnA Maker erstellen?
+### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>Wie kann ich einen neuen Bot mit QnA Maker erstellen?
 
 Folgen Sie den Anweisungen in [dieser](./Tutorials/create-qna-bot.md) Dokumentation, um Ihren Bot mit Azure Bot Service zu erstellen.
+
+### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>Wie kann ich eine andere Wissensdatenbank mit einem bestehenden Azure Bot Service verwenden?
+
+Sie benötigen die folgenden Informationen über Ihre Wissensdatenbank:
+
+* Wissensdatenbank-ID
+* Der Hostname des veröffentlichten Endpunkts der Wissensdatenbank – befindet sich nach der Veröffentlichung auf der Seite **Einstellungen**.
+* Der Schlüssel des veröffentlichten Endpunkts der Wissensdatenbank – befindet sich nach der Veröffentlichung auf der Seite **Einstellungen**. 
+
+Wechseln Sie mit diesen Informationen zum App Service Ihres Bot im Azure-Portal. Ändern Sie unter **Einstellungen -> Konfiguration -> Anwendungseinstellungen** diese Werte.  
+
+Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` gekennzeichnet. 
+
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Können zwei oder mehr Clientanwendungen eine Wissensdatenbank gemeinsam nutzen? 
+
+Ja, die Wissensdatenbank kann von beliebig vielen Clients abgefragt werden. Wenn die Antwort der Wissensdatenbank langsam zu sein scheint oder einen Timeout aufweist, sollten Sie eine Aktualisierung des Diensttarifs für den mit der Wissensdatenbank verbundenen App Service in Betracht ziehen.
 
 ### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Wie bette ich den QnA Maker-Dienst in meine Website ein?
 

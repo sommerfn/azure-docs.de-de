@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e97089b1de88ccf9f45b1a0f429abc0cfac9f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835276"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101325"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
@@ -504,7 +503,7 @@ Trifft dies auf Ihr System zu, sollten Sie für die zusätzlich erstellte tempdb
 
 Mit dieser Konfiguration kann tempdb mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. Als Vergleichsmaßstab können Sie die tempdb-Gerätegrößen bestehender lokaler Systeme heranziehen. Eine solche Konfiguration ermöglicht außerdem IOPS-Größenordnungen für tempdb, die das Systemlaufwerk nicht erzielen kann. Hier können lokal ausgeführte Systeme zur Überwachung des E/A-Workloads für tempdb verwendet werden.
 
-SAP ASE-Verzeichnisse dürfen sich unter keinen Umständen auf „/mnt“ oder „/mnt/resource“ der VM befinden. Im Falle von SAP ASE gilt dies auch für die tempdb, auch wenn die Objekte in der tempdb nur temporär sind. Denn „/mnt“ oder „/mnt/resource“ ist ein standardmäßiger temporärer Speicherplatz von Azure-VMs, der nicht permanent ist. Weitere Informationen zu temporären Speicherplätzen von virtuellen Azure-Computern erhalten Sie in [diesem Artikel][virtual-machines-linux-how-to-attach-disk].
+SAP ASE-Verzeichnisse dürfen sich unter keinen Umständen auf „/mnt“ oder „/mnt/resource“ der VM befinden. Im Falle von SAP ASE gilt dies auch für die tempdb, auch wenn die Objekte in der tempdb nur temporär sind. Denn „/mnt“ oder „/mnt/resource“ ist ein standardmäßiger temporärer Speicherplatz von Azure-VMs, der nicht permanent ist. Weitere Informationen zu temporärem Speicherplatz auf Azure-VMs erhalten Sie in [diesem Artikel][virtual-machines-linux-how-to-attach-disk]
 
 Aussagen und Empfehlungen zur Bereitstellung von Daten- und Transaktionsprotokolldateien finden Sie unter [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md). Für Linux-basierte Bereitstellungen wird die Verwendung von LVM oder MDADM empfohlen, um Stripesets mit ausreichend IOPS, Durchsatz und Volume zu erstellen. 
 
