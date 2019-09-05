@@ -170,9 +170,9 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | Zeichenfolge | Die Ereignis-ID. |
-| timestamp | Zeichenfolge | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
-| action | Zeichenfolge | Die Aktion, die das angegebene Ereignis umfasst. |
+| id | string | Die Ereignis-ID. |
+| timestamp | string | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
+| action | string | Die Aktion, die das angegebene Ereignis umfasst. |
 | target | object | Das Ziel des Ereignisses. |
 | request | object | Die Anforderung, die das Ereignis generiert hat. |
 
@@ -180,24 +180,24 @@ Das Zielobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| mediaType | Zeichenfolge | Der MIME-Typ des Objekts, auf das verwiesen wird. |
+| mediaType | string | Der MIME-Typ des Objekts, auf das verwiesen wird. |
 | size | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge). |
-| digest | Zeichenfolge | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
+| digest | string | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
 | length | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe). |
-| repository | Zeichenfolge | Der Name des Repositorys. |
-| tag | Zeichenfolge | Der Tagname. |
-| name | Zeichenfolge | Der Diagrammname. |
-| version | Zeichenfolge | Die Diagrammversion. |
+| repository | string | Der Name des Repositorys. |
+| tag | string | Der Tagname. |
+| name | string | Der Diagrammname. |
+| version | string | Die Diagrammversion. |
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | Zeichenfolge | Die ID der Anforderung, die das Ereignis initiiert hat. |
-| addr | Zeichenfolge | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |
-| host | Zeichenfolge | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
-| method | Zeichenfolge | Die Anforderungsmethode, die das Ereignis generiert hat. |
-| useragent | Zeichenfolge | Der Benutzer-Agent-Header der Anforderung. |
+| id | string | Die ID der Anforderung, die das Ereignis initiiert hat. |
+| addr | string | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |
+| host | string | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
+| method | string | Die Anforderungsmethode, die das Ereignis generiert hat. |
+| useragent | string | Der Benutzer-Agent-Header der Anforderung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
