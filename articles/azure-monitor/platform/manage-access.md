@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor | Microsoft-Dokumentation
-description: Sie können Log Analytics-Arbeitsbereiche in Azure Monitor verwalten, indem Sie verschiedene Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwenden.
+description: Sie können den Zugriff auf Daten, die in Log Analytics-Arbeitsbereichen in Azure Monitor gespeichert sind, mithilfe von Berechtigungen auf Ressourcen-, Arbeitsbereichs- oder Tabellenebene verwalten. In diesem Artikel wird dies ausführlich erläutert.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 08/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624333"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034712"
 ---
-# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
+# <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
 In Azure Monitor werden [Protokoll](data-platform-logs.md)daten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Ihren Arbeitsbereich durch.
 
@@ -32,7 +32,7 @@ In diesem Artikel wird erläutert, wie der Zugriff auf Protokolle verwaltet wird
 
 * Gewähren des Zugriffs für Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen, mithilfe von Azure RBAC
 
-## <a name="define-access-control-mode"></a>Definieren des Zugriffssteuerungsmodus
+## <a name="configure-access-control-mode"></a>Konfigurieren des Zugriffssteuerungsmodus
 
 Sie können den für einen Arbeitsbereich konfigurierten Zugriffssteuerungsmodus über das Azure-Portal oder mit Azure PowerShell anzeigen.  Diese Einstellung kann mit einer der folgenden unterstützten Methoden geändert werden:
 
@@ -42,7 +42,7 @@ Sie können den für einen Arbeitsbereich konfigurierten Zugriffssteuerungsmodus
 
 * Azure Resource Manager-Vorlage
 
-### <a name="configure-from-the-azure-portal"></a>Konfigurieren über das Azure-Portal
+### <a name="from-the-azure-portal"></a>Über das Azure-Portal
 
 Sie können den aktuellen Zugriffssteuerungsmodus für den Arbeitsbereich auf der Seite **Übersicht** für den Arbeitsbereich im Menü **Log Analytics-Arbeitsbereich** anzeigen.
 
@@ -55,7 +55,7 @@ Sie können diese Einstellung auf der Seite **Eigenschaften** des Arbeitsbereich
 
 ![Ändern des Arbeitsbereichzugriffsmodus](media/manage-access/change-access-control-mode.png)
 
-### <a name="configure-using-powershell"></a>Konfigurieren mithilfe von PowerShell
+### <a name="using-powershell"></a>Verwenden von PowerShell
 
 Verwenden Sie den folgenden Befehl, um den Zugriffssteuerungsmodus für alle Arbeitsbereiche im Abonnement zu überprüfen:
 
@@ -99,18 +99,14 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-### <a name="configure-using-a-resource-manager-template"></a>Konfigurieren mithilfe einer Resource Manager-Vorlage
+### <a name="using-a-resource-manager-template"></a>Verwenden einer Resource Manager-Vorlage
 
 Um den Zugriffsmodus in einer Azure Resource Manager-Vorlage zu konfigurieren, legen Sie das Featureflag **enableLogAccessUsingOnlyResourcePermissions** für den Arbeitsbereich auf einen der folgenden Werte fest.
 
 * **FALSE**: Legen Sie den Arbeitsbereich auf Berechtigungen im Arbeitsbereichskontext fest. Dies ist die Standardeinstellung, wenn das Flag nicht festgelegt ist.
 * **TRUE**: Legen Sie den Arbeitsbereich auf Berechtigungen im Ressourcenkontext fest.
 
-## <a name="manage-accounts-and-users"></a>Verwalten von Konten und Benutzern
-
-Die Berechtigungen, die auf den Arbeitsbereich für einen bestimmten Benutzer angewendet werden, werden durch seinen [Zugriffsmodus](design-logs-deployment.md#access-mode) und den [Zugriffssteuerungsmodus](design-logs-deployment.md#access-control-mode) des Arbeitsbereichs definiert. Mit **Arbeitsbereichskontext** können Sie alle Protokolle in dem Arbeitsbereich anzeigen, für den Sie die Berechtigung haben, da Abfragen in diesem Modus auf alle Daten in allen Tabellen im Arbeitsbereich begrenzt sind. Mit **Ressourcenkontext** zeigen Sie Protokolldaten im Arbeitsbereich für eine bestimmte Ressource, eine Ressourcengruppe oder ein Abonnement an, wenn Sie eine Suche direkt von der Ressource im Azure-Portal ausführen, auf die Sie Zugriff haben. Abfragen in diesem Modus beziehen sich auf nur Daten, die dieser Ressource zugeordnet sind.
-
-### <a name="workspace-permissions"></a>Arbeitsbereichberechtigungen
+## <a name="manage-access-using-workspace-permissions"></a>Zugriffsverwaltung mithilfe von Arbeitsbereichsberechtigungen
 
 Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto kann Zugriff auf mehrere Arbeitsbereiche haben. Der Zugriff wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure](../../role-based-access-control/role-assignments-portal.md) verwaltet.
 
@@ -130,7 +126,7 @@ Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich
 
 ## <a name="manage-access-using-azure-permissions"></a>Zugriffsverwaltung mithilfe von Azure-Berechtigungen
 
-Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
+Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren. Beispiele für benutzerdefinierte Rollen finden Sie unter [Beispiele für benutzerdefinierte Rollen](#custom-role-examples).
 
 Azure verfügt über zwei integrierte Benutzerrollen für Log Analytics-Arbeitsbereiche:
 
@@ -180,7 +176,7 @@ Die Rolle „Log Analytics-Mitwirkender“ umfasst die folgenden Azure-Aktionen:
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Anzeigen des Speicherkontoschlüssels. Erforderlich, um Log Analytics für das Lesen von Protokollen aus Azure-Speicherkonten zu konfigurieren |
 | `Microsoft.Insights/alertRules/*` | Hinzufügen, Aktualisieren und Entfernen von Warnungsregeln |
 | `Microsoft.Insights/diagnosticSettings/*` | Hinzufügen, Aktualisieren und Entfernen von Diagnoseeinstellungen für Azure-Ressourcen |
-| `Microsoft.OperationalInsights/*` | Hinzufügen, Aktualisieren und Entfernen der Konfiguration für Log Analytics-Arbeitsbereiche |
+| `Microsoft.OperationalInsights/*` | Hinzufügen, Aktualisieren und Entfernen der Konfiguration für Log Analytics-Arbeitsbereiche. Zum Bearbeiten erweiterter Einstellungen für Arbeitsbereiche benötigt der Benutzer die Berechtigung `Microsoft.OperationalInsights/workspaces/write`. |
 | `Microsoft.OperationsManagement/*` | Hinzufügen und Entfernen von Verwaltungslösungen |
 | `Microsoft.Resources/deployments/*` | Erstellen und Löschen von Bereitstellungen. Erforderlich für das Hinzufügen und Entfernen von Lösungen, Arbeitsbereichen und Automation-Konten |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Erstellen und Löschen von Bereitstellungen. Erforderlich für das Hinzufügen und Entfernen von Lösungen, Arbeitsbereichen und Automation-Konten |
@@ -207,6 +203,39 @@ Wenn Benutzer Protokolle aus einem Arbeitsbereich mit Zugriff im Ressourcenkonte
 Die `/read`-Berechtigung wird in der Regel von einer Rolle erteilt, die _\*/read or_ _\*_ -Berechtigungen enthält, beispielsweise von den integrierten Rollen [Leser](../../role-based-access-control/built-in-roles.md#reader) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor). Beachten Sie, dass benutzerdefinierte Rollen, die bestimmte Aktionen umfassen, oder dedizierte integrierte Rollen diese Berechtigung ggf. nicht enthalten können.
 
 Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weiter unten, wenn Sie für verschiedene Tabellen eine unterschiedliche Zugriffssteuerung erstellen möchten.
+
+## <a name="custom-role-examples"></a>Beispiele für benutzerdefinierte Rollen
+
+1. Wenn Sie einem Benutzer Zugriff auf Protokolldaten seiner Ressourcen gewähren möchten, führen Sie die folgenden Schritte aus:
+
+    * Legen Sie den Zugriffssteuerungsmodus für den Arbeitsbereich auf die **Verwendung von Arbeitsbereichs- oder Ressourcenberechtigungen** fest.
+
+    * Erteilen Sie den Benutzern die Berechtigung `*/read` oder `Microsoft.Insights/logs/*/read` für ihre Ressourcen. Wenn den Benutzern bereits die Rolle [Log Analytics-Leser](../../role-based-access-control/built-in-roles.md#reader) für den Arbeitsbereich zugewiesen ist, reicht dies aus.
+
+2. Wenn Sie einem Benutzer Zugriff auf Protokolldaten seiner Ressourcen und das Konfigurieren der Ressourcen zum Senden von Protokollen an den Arbeitsbereich gewähren möchten, führen Sie die folgenden Schritte aus:
+
+    * Legen Sie den Zugriffssteuerungsmodus für den Arbeitsbereich auf die **Verwendung von Arbeitsbereichs- oder Ressourcenberechtigungen** fest.
+
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für den Arbeitsbereich: `Microsoft.OperationalInsights/workspaces/read` und `Microsoft.OperationalInsights/workspaces/sharedKeys/action`. Mit diesen Berechtigungen können Benutzer keine Abfragen auf Arbeitsbereichsebene ausführen.
+
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `Microsoft.Insights/logs/*/read` und `Microsoft.Insights/diagnosticSettings/write`. Wenn den Benutzern bereits die Rolle [Log Analytics-Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für diese Ressource zugewiesen ist, reicht dies aus.
+
+3. Wenn Sie einem Benutzer Zugriff auf Protokolldaten seiner Ressourcen, das Lesen aller Azure AD-Anmeldeprotokolle sowie das Lesen von Protokolldaten der Updateverwaltungslösung gewähren möchten, führen Sie die folgenden Schritte aus:
+
+    * Legen Sie den Zugriffssteuerungsmodus für den Arbeitsbereich auf die **Verwendung von Arbeitsbereichs- oder Ressourcenberechtigungen** fest.
+
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für den Arbeitsbereich: 
+
+        * `Microsoft.OperationalInsights/workspaces/read` ist erforderlich, damit der Benutzer die Arbeitsbereiche auflisten und das Blatt für den Arbeitsbereich im Azure-Portal öffnen kann.
+        * `Microsoft.OperationalInsights/workspaces/query/read` ist für jeden Benutzer erforderlich, der Abfragen ausführen kann.
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`, damit Azure AD-Anmeldeprotokolle gelesen werden können.
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read`, damit Protokolle der Updateverwaltungslösung gelesen werden können.
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`, damit Protokolle der Updateverwaltungslösung gelesen werden können.
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`, damit Protokolle der Updateverwaltung gelesen werden können.
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` ist erforderlich, damit die Updateverwaltungslösung verwendet werden kann.
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` ist erforderlich, damit die Updateverwaltungslösung verwendet werden kann.
+
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `*/read` oder `Microsoft.Insights/logs/*/read`. Wenn den Benutzern die Rolle [Log Analytics-Leser](../../role-based-access-control/built-in-roles.md#reader) für den Arbeitsbereich zugewiesen ist, reicht dies aus.
 
 ## <a name="table-level-rbac"></a>RBAC auf Tabellenebene
 

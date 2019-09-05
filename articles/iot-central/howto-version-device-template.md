@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877307"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100904"
 ---
 # <a name="create-a-new-device-template-version"></a>Erstellen einer neuen Gerätevorlagenversion
 
@@ -50,7 +50,7 @@ Die folgende Liste beschreibt die Benutzeraktionen, die eine neue Version erford
 
 Was passiert mit Regeln und Gerätedashboards bei einem Versionswechsel?
 
-**Regeln** können Bedingungen enthalten, die von Eigenschaften abhängig sind. Wenn Sie eine oder mehrere dieser Eigenschaften entfernt haben, können diese Regeln in Ihrer neuen Gerätevorlagenversion verletzt werden. Sie können zu diesen speziellen Regeln wechseln und die Bedingungen aktualisieren, um die Regeln festzulegen. Die Regeln für Ihre Vorgängerversion sollten ohne Auswirkungen funktionieren.
+**Regeln** für die vorherige Version der Gerätevorlage funktionieren weiterhin unverändert. Regeln werden nicht automatisch zur neuen Gerätevorlagenversion migriert. Sie können Regeln für die neue Vorlagenversion wie gewohnt erstellen. Weitere Informationen finden Sie im Gewusst-wie-Artikel [Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung](howto-create-telemetry-rules.md).
 
 **Gerätedashboards** können mehrere Typen von Kacheln enthalten. In einigen der Kacheln können Einstellungen und Eigenschaften vorhanden sein. Wird eine in einer Kachel verwendete Eigenschaft oder Einstellung entfernt, ist die Kachel vollständig oder teilweise fehlerhaft. Sie können zur Kachel wechseln und das Problem beheben, indem Sie die Kachel entfernen oder den Inhalt der Kachel aktualisieren.
 

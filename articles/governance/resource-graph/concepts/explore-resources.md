@@ -3,23 +3,20 @@ title: Untersuchen von Azure-Ressourcen
 description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ihre Ressourcen untersuchen und herausfinden, wie diese miteinander vernetzt sind.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723810"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241127"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
 Mit Azure Resource Graph können Sie Ihre Azure-Ressourcen schnell und bedarfsgerecht erkunden und ermitteln. Resource Graph wurde speziell für schnelle Reaktionen entwickelt und bietet eine gute Möglichkeit, eine Umgebung sowie die Eigenschaften kennenzulernen, die die Azure-Ressourcen definieren.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>Erkunden von virtuellen Computern
 
@@ -259,17 +256,25 @@ Die JSON-Ergebnisse sind etwa wie im folgenden Beispiel strukturiert:
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Erkunden von virtuellen Computern zum Suchen nach öffentlichen IP-Adressen
 
-Mit diesen Azure CLI-Abfragen werden zuerst alle Netzwerkschnittstellenressourcen gefunden und gespeichert, die mit virtuellen Computern verbunden sind. Anschließend wird die Liste mit den Netzwerkschnittstellen genutzt, um nach den einzelnen IP-Adressressourcen zu suchen, bei denen es sich um eine öffentliche IP-Adresse handelt. Diese Werte werden dann gespeichert. Abschließend wird eine Liste mit den öffentlichen IP-Adressen bereitgestellt.
+Mit dieser Gruppe von Abfragen werden zuerst alle Netzwerkschnittstellenressourcen gefunden und gespeichert, die mit virtuellen Computern verbunden sind. Anschließend wird die Liste mit den Netzwerkschnittstellen von den Abfragen genutzt, um nach den einzelnen IP-Adressressourcen zu suchen, bei denen es sich um eine öffentliche IP-Adresse handelt. Diese Werte werden dann gespeichert. Abschließend wird von den Abfragen eine Liste mit den öffentlichen IP-Adressen bereitgestellt.
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
 az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-Verwenden Sie die Datei `nics.txt` in der nächsten Abfrage zum Abrufen der Details der entsprechenden Netzwerkschnittstellenressourcen, denen eine öffentliche IP-Adresse zugeordnet ist.
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+Verwenden Sie die Datei (Azure CLI) oder die Variable (Azure PowerShell) in der nächsten Abfrage zum Abrufen der Details der entsprechenden Netzwerkschnittstellenressourcen, denen eine öffentliche IP-Adresse zugeordnet ist.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -279,11 +284,24 @@ az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where i
 cat ips.txt
 ```
 
-Und zuletzt verwenden wir die in `ips.txt` gespeicherte Liste der öffentlichen IP-Adressressourcen zum Abrufen der tatsächlichen öffentlichen IP-Adresse und zeigen diese an.
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+Zum Schluss verwenden Sie die in der Datei (Azure CLI) oder der Variablen (Azure PowerShell) gespeicherte Liste der öffentlichen IP-Adressressourcen zum Abrufen der tatsächlichen öffentlichen IP-Adresse aus dem zugehörigen Objekt und zeigen diese an.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
 az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
+```
+
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

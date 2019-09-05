@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 0e8cb18b3ea4b01db6b373ebbcb55c1e17614319
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f23d19b06152b633df6688489753498c86aee27
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399150"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034787"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Wechseln der API-Einstellung für Protokollwarnungen
 
@@ -44,7 +44,7 @@ Die Auswirkungen des Wechsels der Einstellung zur scheduledQueryRules-API werden
 
 - Alle Interaktionen, die zur Verwaltung von Protokollwarnungen über befehlsorientierte Benutzerschnittstellen durchgeführt werden, müssen nun stattdessen mit [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) durchgeführt werden. Weitere Informationen finden Sie unter [Beispiel für die Verwendung über eine Azure-Ressourcenvorlage](alerts-log.md#managing-log-alerts-using-azure-resource-template) und [Beispiel für die Verwendung über PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
 - Jede neue Protokollwarnungsregel, die im Azure-Portal erstellt wird, wird nur mit [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erstellt und ermöglicht es Benutzern, die [zusätzliche Funktionalität der neuen API](#benefits-of-switching-to-new-azure-api) auch über das Azure-Portal zu nutzen.
-- Der Schweregrad für Protokollwarnungsregeln wird verschoben von: *Kritisch, Warnung und Information* zu den *Schweregraden 0, 1 und 2*. Zusammen mit der Option zum Erstellen/Aktualisieren von Warnungsregeln mit Schweregrad 4.
+- Der Schweregrad für Protokollwarnungsregeln wird verschoben von: *Kritisch, Warnung und Information* zu den *Schweregraden 0, 1 und 2*. Zusammen mit der Option zum Erstellen/Aktualisieren von Warnungsregeln mit Schweregrad 3 und 4.
 
 Der Prozess des Verschiebens von Warnungsregeln aus der [Warnungsregel-API von Log Analytics](api-alerts.md) bringt keinerlei Änderungen Ihrer Warnungsdefinition, Abfrage oder Konfiguration mit sich. Ihre Warnungsregeln und die Überwachung sind davon nicht betroffen und die Warnungen werden während oder nach dem Wechsel nicht beendet oder angehalten. Die einzige Änderung ist eine Änderung der API-Einstellung und des Zugriffs auf Ihre Regeln über eine neue API.
 

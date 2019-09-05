@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 5fc611af75a7f733576f9343a4375fb56cacc030
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67593147"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996757"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Referenz zur Regel-Engine für Azure CDN Premium von Verizon
 
@@ -70,6 +70,8 @@ Sonderzeichen | BESCHREIBUNG
 \* | Ein Sternchen ermöglicht, dass für das vorherige Zeichen keine oder mehrere Übereinstimmungen gefunden werden.
 Leerzeichen | Ein Leerzeichen wird in der Regel als Literalzeichen behandelt.
 'Wert' | Einfache Anführungszeichen werden als Literalzeichen behandelt. Eine Gruppe einfacher Anführungszeichen hat keine besondere Bedeutung.
+
+Übereinstimmungsbedingungen und Features, die reguläre Ausdrücke unterstützen, akzeptieren Muster, die durch PCRE (Perl Compatible Regular Expressions) definiert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

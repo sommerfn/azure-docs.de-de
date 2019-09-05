@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489771"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905716"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
+
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
 
 In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuordnung beschrieben. Informationen zum Konfigurieren der erforderlichen Komponenten und zu den Voraussetzungen für diese Lösung finden Sie unter [Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht](vminsights-enable-overview.md#prerequisites). Zusammenfassend benötigen Sie Folgendes:
@@ -407,7 +408,7 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 | `ReportReferenceLink` |Links zu Berichten, die im Zusammenhang mit einer bestimmten Beobachtung stehen. |
 | `AdditionalInformation` |Bietet zusätzliche Informationen, falls zutreffend, zur beobachteten Bedrohung. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL-Datensätze
 
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -433,7 +434,7 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 | `VirtualMachineName_s` | Der Name der VM |
 | `BootTime_t` | Die Startzeit |
 
-### <a name="servicemapprocesscl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
+### <a name="servicemapprocess_cl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
 
 Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -554,16 +555,57 @@ Wenn Sie den Service Map-Dienst verwenden, sammelt Microsoft automatisch Nutzung
 
 Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Datenschutzbestimmungen für Onlinedienste von Microsoft](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
 
-
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Weitere Informationen finden Sie im [Abschnitt zur Problembehandlung der Konfigurationsdokumentation für Service Map]( service-map-configure.md#troubleshooting).
+Wenn beim Installieren oder Ausführen von Service Map Probleme auftreten, finden Sie in diesem Abschnitt Lösungen, wie Sie schnell wieder einsatzbereit sind. Wenn Sie Ihr Problem immer noch nicht beheben können, wenden Sie sich an den Microsoft Support.
 
+### <a name="dependency-agent-installation-problems"></a>Probleme bei der Installation des Dependency-Agents
+
+#### <a name="installer-prompts-for-a-reboot"></a>Installationsprogramm fordert Neustart an
+Der Dependency-Agent erfordert *im Allgemeinen* keinen Neustart nach dem Installieren oder Entfernen. In bestimmten, seltenen Fällen kann jedoch ein Neustart von Windows Server erforderlich sein, um die Installation fortzusetzen. Dies geschieht, wenn eine Abhängigkeit, in der Regel die Bibliothek von Microsoft Visual C++ Redistributable, einen Neustart aufgrund einer gesperrten Datei erfordert.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Die Meldung „Der Dependency-Agent kann nicht installiert werden: Fehler bei der Installation der Laufzeitbibliotheken für Visual Studio (code = [Codenummer])“ wird angezeigt.
+
+Der Microsoft Dependency-Agent basiert auf den Microsoft Visual Studio-Laufzeitbibliotheken. Wenn bei der Installation der Bibliotheken ein Problem auftritt, wird eine Meldung angezeigt. 
+
+Die Laufzeitbibliothek-Installationsprogramme erstellen Protokolle im Ordner „%LOCALAPPDATA%\temp“. Die Datei erhält den Namen `dd_vcredist_arch_yyyymmddhhmmss.log`, wobei *arch* für `x86` oder `amd64` und *yyyymmddhhmmss* für das Datum und die Uhrzeit der Protokollerstellung (im 24-Stunden-Format) steht. Das Protokoll enthält Details zu dem Problem, das die Installation blockiert.
+
+Es kann hilfreich sein, zuerst die [neuesten Laufzeitbibliotheken](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) zu installieren.
+
+Die folgende Tabelle enthält Codenummern und Lösungsvorschläge.
+
+| Code | BESCHREIBUNG | Lösung |
+|:--|:--|:--|
+| 0x17 | Für das Bibliothekinstallationsprogramm ist ein Windows-Update erforderlich, das noch nicht installiert wurde. | Suchen Sie im letzten Protokoll des Bibliothekinstallationsprogramms.<br><br>Wenn einem Verweis auf `Windows8.1-KB2999226-x64.msu` die Zeile `Error 0x80240017: Failed to execute MSU package,` folgt, wurden nicht alle Voraussetzungen für die Installation von KB2999226 erfüllt. Befolgen Sie die Anweisungen im Abschnitt mit den Voraussetzungen im Artikel [Universal C Runtime in Windows](https://support.microsoft.com/kb/2999226). Möglicherweise müssen Sie Windows Update ausführen und mehrere Neustarts durchführen müssen, um die Voraussetzungen zu installieren.<br><br>Führen Sie das Installationsprogramm für den Microsoft Dependency-Agent erneut aus. |
+
+### <a name="post-installation-issues"></a>Probleme nach der Installation
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Server wird in Service Map nicht angezeigt
+
+Wenn die Installation des Dependency-Agents erfolgreich war, der Computer aber nicht in der Dienstzuordnungslösung angezeigt wird:
+* Wurde der Dependency-Agent erfolgreich installiert? Überprüfen Sie, ob der Dienst installiert wurde und ausgeführt wird.<br><br>
+**Windows:** Suchen Sie nach dem Dienst **Microsoft Dependency-Agent**.
+**Linux:** Suchen Sie nach dem laufenden Prozess **microsoft-dependency-agent**.
+
+* Haben Sie den [Log Analytics-Tarif „Free“](https://azure.microsoft.com/pricing/details/monitor/)? Der kostenlose Plan („Free“) erlaubt bis zu fünf einzelne Dienstzuordnungscomputer. Alle weiteren Computer werden in der Dienstzuordnung nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
+
+* Sendet Ihr Server Protokoll- und Leistungsdaten an Azure Monitor-Protokolle? Wechseln Sie zu Azure Monitor\Protokolle, und führen Sie die folgende Abfrage für Ihren Computer aus: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Haben Sie eine Vielzahl von Ereignissen in den Ergebnissen erhalten? Sind die Daten aktuell? Wenn dies der Fall ist, funktioniert Ihr Log Analytics-Agent ordnungsgemäß und kommuniziert mit dem Arbeitsbereich. Wenn nicht, überprüfen Sie den Agent auf Ihrem Computer: [Behandeln von Problemen mit dem Log Analytics-Agent für Windows](../platform/agent-windows-troubleshoot.md) oder [Behandeln von Problemen beim Linux-Agent für Log Analytics](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Der Server wird in Service Map angezeigt, enthält aber keine Prozesse
+
+Wenn Ihr Computer in der Dienstzuordnung angezeigt wird, aber keine Prozess- oder Verbindungsdaten enthält, weist dies darauf hin, dass der Dependency-Agent installiert ist und ausgeführt wird, der Kerneltreiber aber nicht geladen wurde. 
+
+Überprüfen Sie `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) bzw. `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Die letzten Zeilen der Datei sollten den Grund angeben, warum der Kernel nicht geladen wurde. Beispielsweise, weil der Kernel nicht unterstützt wird, was unter Linux nach der Aktualisierung des Kernels auftreten kann.
 
 ## <a name="feedback"></a>Feedback
 

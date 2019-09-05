@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 80c4fa5fad574f1d6efe476df90a8396fa5cb4f3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 126d96cbd85f4e91de5a6393be02a15240b51ade
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205636"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035579"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -50,7 +50,7 @@ Zwar funktionieren die meisten Features weiterhin ohne Migration, müssen Sie fo
 Informationen zum Übergang zum Azure-Portal finden Sie in den [häufig gestellten Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](oms-portal-faq.md). 
 
 ## <a name="user-access-and-role-migration"></a>Benutzerzugriff und Rollenmigration
-Die Zugriffsverwaltung im Azure-Portal ist umfangreicher und leistungsfähiger als die Zugriffsverwaltung im OMS-Portal. Ausführliche Informationen zur Zugriffsverwaltung in Log Analytics finden Sie unter [Verwalten von Arbeitsbereichen](manage-access.md#manage-accounts-and-users).
+Die Zugriffsverwaltung im Azure-Portal ist umfangreicher und leistungsfähiger als die Zugriffsverwaltung im OMS-Portal. Ausführliche Informationen zur Zugriffsverwaltung in Log Analytics finden Sie unter [Entwerfen Ihres Azure Monitor-Protokollarbeitsbereichs]design-logs-deployment.md).
 
 > [!NOTE]
 > In vorherigen Versionen dieses Artikels wurde darüber informiert, dass die Berechtigungen automatisch vom OMS-Portal zum Azure-Portal konvertiert würden. Diese automatische Konvertierung ist nicht mehr geplant, Sie müssen die Konvertierung selbst durchführen.

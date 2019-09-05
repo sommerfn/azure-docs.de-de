@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 125f1bc14a376523a22984e9d8efa7848408bf7a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472049"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035204"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core-Ablaufverfolgungsprotokollen in Application Insights
 
-Senden Sie Protokolle für die Diagnoseablaufverfolgung für Ihre ASP.NET/ASP.NET-Core-Anwendung von ILogger, NLog, log4Net oder System.Diagnostics.Trace an [Azure Application Insights][start]. Sie können Sie anschließend untersuchen und nach ihnen suchen. Diese Protokolle werden mit den anderen Protokolldateien Ihrer Anwendung zusammengeführt, sodass Sie Ablaufverfolgungen identifizieren können, die jeder Benutzeranforderung zugeordnet sind, und sie mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
+Senden Sie Protokolle für die Diagnoseablaufverfolgung für Ihre ASP.NET/ASP.NET Core-Anwendung von ILogger, NLog, log4Net oder System.Diagnostics.Trace an [Azure Application Insights][start]. Sie können Sie anschließend untersuchen und nach ihnen suchen. Diese Protokolle werden mit den anderen Protokolldateien Ihrer Anwendung zusammengeführt, sodass Sie Ablaufverfolgungen identifizieren können, die jeder Benutzeranforderung zugeordnet sind, und sie mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
 
 > [!NOTE]
 > Benötigen ich das Protokollerfassungsmodul? Dabei handelt es sich um einen nützlichen Adapter für die Protokollierung von Drittanbietern. Falls Sie nicht bereits NLog, log4Net oder „System.Diagnostics.Trace“ verwenden, können Sie auch einfach direkt [**Application Insights TrackTrace()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aufrufen.
@@ -31,15 +31,15 @@ Senden Sie Protokolle für die Diagnoseablaufverfolgung für Ihre ASP.NET/ASP.NE
 Installieren Sie das von Ihnen gewählte Protokollierungsframework in Ihrem Projekt, was zu einem Eintrag in „app.config“ oder „web.config“ führen sollte.
 
 ```XML
-    <configuration>
-      <system.diagnostics>
-    <trace autoflush="true" indentsize="0">
+ <configuration>
+  <system.diagnostics>
+    <trace>
       <listeners>
         <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
       </listeners>
     </trace>
   </system.diagnostics>
-   </configuration>
+</configuration>
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>Konfigurieren von Application Insights für das Erfassen von Protokollen
@@ -200,9 +200,9 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 ## <a name="add"></a>Nächste Schritte
 
 * [Diagnostizieren von Fehlern und Ausnahmen in ASP.NET][exceptions]
-* [Weitere Informationen zur Suche.][diagnostic]
-* [Einrichten von Tests zu Verfügbarkeit und Reaktionsfähigkeit][availability]
-* [Behandeln von Problemen][qna]
+* [Weitere Informationen zur Suche][diagnostic]
+* [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit][availability]
+* [Problembehandlung][qna]
 
 <!--Link references-->
 

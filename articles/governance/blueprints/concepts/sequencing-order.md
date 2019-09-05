@@ -3,17 +3,17 @@ title: Verstehen der Bereitstellungsreihenfolge
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die einzelnen Phasen.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/25/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71584c9a69ebab6583973003aa51e94a1afe1b14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721289"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991994"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -51,6 +51,10 @@ Beim Erstellen großer Blaupausendefinitionen müssen Ressourcen ggf. in einer b
 
 Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Die Blaupausendefinition für Ressourcengruppen und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 
+> [!NOTE]
+> Beim Erstellen von Blaupausenobjekten erhält jede Artefaktressource ihren Namen vom Dateinamen (bei Verwendung von [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)) oder dem URL-Endpunkt (bei Verwendung der [REST-API](/rest/api/blueprints/artifacts/createorupdate)).
+> _resourceGroup_-Verweise in Artefakten müssen mit denen in der Blaupausendefinition übereinstimmen.
+
 ### <a name="example---ordered-resource-group"></a>Beispiel: Sortierte Ressourcengruppe
 
 Diese exemplarische Blaupausendefinition verfügt über eine Ressourcengruppe mit benutzerdefinierter Reihenfolge (mittels Deklarierung eines Werts für `dependsOn`) sowie über eine Standardressourcengruppe. In diesem Fall wird das Artefakt namens **assignPolicyTags** vor der Ressourcengruppe **ordered-rg** verarbeitet.
@@ -77,9 +81,7 @@ Diese exemplarische Blaupausendefinition verfügt über eine Ressourcengruppe mi
         },
         "targetScope": "subscription"
     },
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint",
-    "type": "Microsoft.Blueprint/blueprints",
-    "name": "mySequencedBlueprint"
+    "type": "Microsoft.Blueprint/blueprints"
 }
 ```
 
@@ -98,9 +100,7 @@ Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Az
         ]
     },
     "kind": "policyAssignment",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
-    "type": "Microsoft.Blueprint/artifacts",
-    "name": "assignPolicyTags"
+    "type": "Microsoft.Blueprint/artifacts"
 }
 ```
 
@@ -134,9 +134,7 @@ Das Vorlagenartefakt auf Abonnementebene, das von der Ressourcengruppe **wait-fo
         "description": ""
     },
     "kind": "template",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
-    "type": "Microsoft.Blueprint/blueprints/artifacts",
-    "name": "subtemplateWaitForRG"
+    "type": "Microsoft.Blueprint/blueprints/artifacts"
 }
 ```
 

@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774659"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012593"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Zahlen für Ihr Azure-Abonnement auf Rechnung
 
@@ -24,7 +24,8 @@ Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnun
 
 > [!IMPORTANT]
 > * Die Zahlung per Rechnung (Scheck/Überweisung) ist nur für Geschäftskonten verfügbar.
-> * Sie müssen alle ausstehende Gebühren bezahlen, bevor Sie zur Zahlung auf Rechnung wechseln können.
+> * Bezahlen Sie alle ausstehenden Gebühren, bevor Sie zur Zahlung per Rechnung wechseln.
+> * Derzeit wird die Zahlung per Rechnung für globales Azure in China nicht unterstützt.
 
 ## <a name="request-to-pay-by-invoice"></a>Anfordern der Zahlung auf Rechnung
 
@@ -64,7 +65,7 @@ Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnun
          Specific region & series of Subscription:
 
     - Der **Firmenname** und die **Firmenadresse** sollten mit den Informationen übereinstimmen, die Sie für das Azure-Konto bereitgestellt haben. Einzelheiten zum Anzeigen oder Aktualisieren der Informationen finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto](billing-how-to-change-azure-account-profile.md).
-    - Sie müssen im Azure Portal die Informationen zu Ihrem Rechnungskontakt hinzufügen, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Profile), wenn Sie die Informationen zum Rechnungskontakt aktualisieren möchten.
+    - Fügen Sie im Azure-Portal die Informationen zu Ihrem Rechnungskontakt hinzu, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Profile), wenn Sie die Informationen zum Rechnungskontakt aktualisieren möchten.
 
 6. Überprüfen Sie Ihre Kontaktdaten und Ihre bevorzugte Kontaktmethode, und klicken Sie dann auf **Erstellen**.
 
@@ -74,7 +75,7 @@ Wenn Sie aufgrund der Höhe des Guthabens, das Sie benötigen, eine Guthabenprü
 
 Nachdem Sie die Genehmigung für die Zahlung per Rechnung erhalten haben, können Sie im Azure-Portal zur Zahlung per Rechnung (Scheck/Überweisung) wechseln.
 
-Wenn Sie über ein Microsoft Online Services-Programmkonto verfügen, können Sie Ihr Azure-Abonnement auf Scheck/Überweisung umstellen. Falls Sie über eine Microsoft-Kundenvereinbarung verfügen, können Sie Ihr Abrechnungsprofil auf Scheck/Überweisung umstellen. [Informationen zur Überprüfung des Kontotyps](#check-access-to-a-microsoft-customer-agreement).
+Wenn Sie über ein Microsoft Online Services-Programmkonto verfügen, können Sie Ihr Azure-Abonnement auf Scheck/Überweisung umstellen. Bei einer Microsoft-Kundenvereinbarung können Sie Ihr Abrechnungsprofil auf Scheck/Überweisung umstellen. [Informationen zur Überprüfung des Kontotyps](#check-access-to-a-microsoft-customer-agreement).
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Umstellen des Azure-Abonnements auf Scheck/Überweisung
 
@@ -93,7 +94,7 @@ Führen Sie die unten angegebenen Schritte aus, um Ihr Azure-Abonnement auf die 
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Umstellen des Abrechnungsprofils auf Scheck/Überweisung
 
-Führen Sie die unten angegebenen Schritte aus, um ein Abrechnungsprofil auf Scheck/Überweisung umzustellen. Beachten Sie hierbei Folgendes: Nur die Person, die sich für Azure registriert hat, kann die Standardzahlungsmethode eines Abrechnungsprofils ändern.
+Führen Sie die unten angegebenen Schritte aus, um ein Abrechnungsprofil auf Scheck/Überweisung umzustellen. Nur die Person, die sich für Azure registriert hat, kann die Standardzahlungsmethode eines Abrechnungsprofils ändern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 391ad5c6535d457c2df988cd29d21e481310b17f
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615877"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061764"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -22,17 +22,15 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-
-
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM Agent unable to communicate with Azure Backup (VM-Agent kann nicht mit Azure Backup kommunizieren).
 
 **Fehlercode**: UserErrorGuestAgentStatusUnavailable <br>
 **Fehlermeldung**: VM-Agent kann nicht mit Azure Backup kommunizieren<br>
 
 Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich in einem inkonsistenten Zustand oder ist nicht installiert und verhindert, dass der Azure Backup-Dienst Momentaufnahmen auslöst.  
-    
-- Wenn der VM-Agent angehalten wurde oder sich in einem inkonsistenten Zustand befindet, **starten Sie den Agent neu**, und wiederholen Sie den Sicherungsvorgang (probieren Sie es mit einer Ad-hoc-Sicherung). Die Schritte zum Neustarten des Agents finden Sie im Artikel zu [Windows-VMs](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). 
-- Falls der VM-Agent nicht installiert wurde oder veraltet ist, installieren bzw. aktualisieren Sie den VM-Agent, und wiederholen Sie den Sicherungsvorgang. Die Schritte zum Installieren/Aktualisieren des Agents finden Sie im Artikel zu [Windows-VMs](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
+
+- Wenn der VM-Agent angehalten wurde oder sich in einem inkonsistenten Zustand befindet, **starten Sie den Agent neu**, und wiederholen Sie den Sicherungsvorgang (probieren Sie es mit einer Ad-hoc-Sicherung). Die Schritte zum Neustarten des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
+- Falls der VM-Agent nicht installiert wurde oder veraltet ist, installieren bzw. aktualisieren Sie den VM-Agent, und wiederholen Sie den Sicherungsvorgang. Die Schritte zum Installieren/Aktualisieren des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
 
@@ -40,17 +38,22 @@ Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich
 **Fehlermeldung**: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich <br>
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
+
 **Ursache 1: [Der Agent ist auf der VM installiert, reagiert aber nicht (für Windows-VMs)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)** 
+
+**Ursache 2: [Der auf der VM installierte Agent ist veraltet (für Linux-VMs)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+
+**Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
+
+**Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht).
 
 **Fehlercode**: UserErrorRpCollectionLimitReached <br>
 **Fehlermeldung**: Der maximale Grenzwert für die Sammlung von Wiederherstellungspunkten wurde erreicht. <br>
-* Dieses Problem kann auftreten, wenn eine Sperre für den Wiederherstellungspunkt der Ressourcengruppe besteht, die eine automatische Bereinigung des Wiederherstellungspunkts verhindert.
-* Dieses Problem kann auch auftreten, wenn mehrere Sicherungen pro Tag ausgelöst werden. Zurzeit wird nur eine Sicherung pro Tag empfohlen, da die Wiederherstellungspunkte zur sofortigen Wiederherstellung ein bis fünf Tage lang entsprechend der konfigurierten Aufbewahrung von Momentaufnahmen beibehalten werden. Außerdem können nur 18 Wiederherstellungspunkte zur sofortigen Wiederherstellung gleichzeitig mit einem virtuellen Computer verknüpft werden. <br>
+
+- Dieses Problem kann auftreten, wenn eine Sperre für den Wiederherstellungspunkt der Ressourcengruppe besteht, die eine automatische Bereinigung von Wiederherstellungspunkten verhindert.
+- Dieses Problem kann auch auftreten, wenn mehrere Sicherungen pro Tag ausgelöst werden. Zurzeit wird nur eine Sicherung pro Tag empfohlen, da die Wiederherstellungspunkte zur sofortigen Wiederherstellung ein bis fünf Tage lang entsprechend der konfigurierten Aufbewahrung von Momentaufnahmen beibehalten werden. Außerdem können nur 18 Wiederherstellungspunkte zur sofortigen Wiederherstellung gleichzeitig mit einem virtuellen Computer verknüpft werden. <br>
 
 Empfohlene Maßnahme:<br>
 Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.
@@ -72,7 +75,8 @@ Damit der Sicherungsvorgang auf verschlüsselten virtuellen Computern erfolgreic
 **Fehlercode**: ExtensionSnapshotFailedNoNetwork<br>
 **Fehlermeldung**: Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer<br>
 
-Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:    
+Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:
+
 **Ursache 1: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Ursache 2: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
 **Ursache 3: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
@@ -101,12 +105,12 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 5: Der Backup-Dienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen.** <br>
 **Ursache 6: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095-gb"></a>UserErrorUnsupportedDiskSize: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB.
 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
-**Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB <br>
+**Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 4.095 GB. <br>
 
-Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, lesen Sie [diesen Artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.095 GB können Fehler während des Sicherungsvorgangs auftreten. Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, lesen Sie [diesen Artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.
 
@@ -115,47 +119,52 @@ Beim Sichern von virtuellen Computern mit einer Datenträgergröße von über 4.
 
 Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, weil gerade ein vorhandener Sicherungsauftrag ausgeführt wird. Es ist nicht möglich, einen neuen Sicherungsauftrag zu starten, bevor der aktuelle Auftrag abgeschlossen ist. Stellen Sie sicher, dass der derzeit ausgeführte Sicherungsvorgang abgeschlossen wurde, bevor Sie weitere Sicherungsvorgänge auslösen oder planen. Um den Status von Sicherungsaufträgen zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich am Azure-Portal an, und klicken Sie auf **Alle Dienste**. Geben Sie „Recovery Services“ ein, und klicken Sie auf **Recovery Services-Tresore**. Die Liste mit den Recovery Services-Tresoren wird angezeigt.
+1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste**. Geben Sie „Recovery Services“ ein, und klicken Sie auf **Recovery Services-Tresore**. Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 2. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, für den die Sicherung konfiguriert ist.
 3. Klicken Sie im Tresordashboard-Menü auf **Sicherungsaufträge**, um alle Sicherungsaufträge anzuzeigen.
 
-    * Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
-        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
-    * Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
-        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+- Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
+  - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+- Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
+  - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+
 4. Führen Sie den Sicherungsvorgang erneut durch.
 
-Wenn der geplante Sicherungsvorgang länger mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).
-
+Wenn der geplante Sicherungsvorgang länger dauert und dadurch mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 
 ### <a name="the-vm-has-no-internet-access"></a>Der virtuelle Computer verfügt nicht über Internetzugriff
+
 Gemäß Bereitstellungsanforderung verfügt der virtuelle Computer nicht über Internetzugriff. Möglicherweise gelten auch Einschränkungen für den Computer, die einen Zugriff auf die Azure-Infrastruktur verhindern.
 
 Die Sicherungserweiterung muss eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit sie richtig funktioniert. Die Erweiterung sendet Befehle an einen Azure Storage-Endpunkt (HTTPs-URL), um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, tritt bei der Sicherung letztendlich ein Fehler auf.
 
-####  <a name="solution"></a>Lösung
+#### <a name="solution"></a>Lösung
+
 Informationen zum Beheben des Netzwerkproblems finden Sie unter [Herstellen der Netzwerkverbindung](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
 
 #### <a name="solution"></a>Lösung
+
 Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten. Durch Neuinstallation des VM-Agents erhalten Sie die neueste Version. Dadurch wird auch die Kommunikation mit dem Dienst neu gestartet.
 
-1. Ermitteln Sie, ob der Microsoft Azure-Gast-Agent-Dienst in den VM-Diensten ausgeführt wird (services.msc). Starten Sie den Microsoft Azure-Gast-Agent-Dienst neu, und initiieren Sie die Sicherung.    
+1. Ermitteln Sie, ob der Microsoft Azure-Gast-Agent-Dienst in den VM-Diensten ausgeführt wird (services.msc). Starten Sie den Microsoft Azure-Gast-Agent-Dienst neu, und initiieren Sie die Sicherung.
 2. Wenn der Microsoft Azure-Gast-Agent-Dienst in den Diensten nicht angezeigt wird, wechseln Sie in der Systemsteuerung zu **Programme und Funktionen**, um zu ermitteln, ob der Microsoft Azure-Gast-Agent-Dienst installiert ist.
-4. Wenn der Microsoft Azure-Gast-Agent unter **Programme und Funktionen** angezeigt wird, deinstallieren Sie ihn.
-5. Laden Sie die [aktuelle Version der Agent-MSI-Datei](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
-6. Überprüfen Sie, ob der Microsoft Azure-Gast-Agent-Dienst in den Diensten angezeigt wird.
-7. Führen Sie eine bedarfsgesteuerten Sicherung aus:
-    * Wählen Sie im Portal die Option **Jetzt sichern** aus.
+3. Wenn der Microsoft Azure-Gast-Agent unter **Programme und Funktionen** angezeigt wird, deinstallieren Sie ihn.
+4. Laden Sie die [aktuelle Version der Agent-MSI-Datei](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
+5. Überprüfen Sie, ob der Microsoft Azure-Gast-Agent-Dienst in den Diensten angezeigt wird.
+6. Führen Sie eine bedarfsgesteuerten Sicherung aus:
+
+- Wählen Sie im Portal die Option **Jetzt sichern** aus.
 
 Überprüfen Sie auch, ob [Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) auf dem virtuellen Computer installiert ist. .NET 4.5 ist für die Kommunikation des VM-Agents mit dem Dienst erforderlich.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).
 
 #### <a name="solution"></a>Lösung
+
 Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen Linux-Computern werden durch Probleme verursacht, die einen veralteten VM-Agent betreffen. Befolgen Sie diese allgemeinen Richtlinien, um dieses Problem zu beheben:
 
 1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md).
@@ -167,15 +176,15 @@ Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen 
 
    Wenn der Prozess nicht ausgeführt wird, starten Sie ihn mit den folgenden Befehlen neu:
 
-   * Für Ubuntu: `service walinuxagent start`
-   * Für andere Distributionen: `service waagent start`
+   - Für Ubuntu: `service walinuxagent start`
+   - Für andere Distributionen: `service waagent start`
 
 3. [Konfigurieren Sie den Agent für den automatischen Neustart](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Führen Sie eine neue Testsicherung aus. Beziehen Sie die folgenden Protokolle vom virtuellen Computer, falls der Fehler weiterhin auftritt:
 
-   * /var/lib/waagent/*.xml
-   * /var/log/waagent.log
-   * /var/log/azure/*
+   - /var/lib/waagent/*.xml
+   - /var/log/waagent.log
+   - /var/log/azure/*
 
 Führen Sie die folgenden Schritte aus, falls die ausführliche Protokollierung für waagent erforderlich ist:
 
@@ -183,10 +192,12 @@ Führen Sie die folgenden Schritte aus, falls die ausführliche Protokollierung 
 2. Ändern Sie den Wert für **Logs.Verbose** von *n* in *y*.
 3. Speichern Sie die Änderung, und starten Sie waagent neu, indem Sie die weiter oben in diesem Abschnitt beschriebenen Schritte ausführen.
 
-###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden
+### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden
+
 Die VM-Sicherung basiert auf dem Ausführen eines Momentaufnahmenbefehls für das zugrunde liegende Speicherkonto. Bei der Sicherung können Fehler auftreten, weil kein Zugriff auf das Speicherkonto besteht oder weil sich der Momentaufnahmetask verzögert.
 
 #### <a name="solution"></a>Lösung
+
 Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 
 | Ursache | Lösung |
@@ -195,6 +206,7 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 | Der virtuelle Computer kann die Host- oder Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host- oder Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im **Azure-Portal** oder mithilfe von **PowerShell** konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier erfahren Sie mehr](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) über das Einrichten einer statischen IP-Adresse mit PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
+
 Wenn Erweiterungen nicht geladen werden können, tritt bei der Sicherung ein Fehler auf, weil keine Momentaufnahme erstellt werden kann.
 
 #### <a name="solution"></a>Lösung
@@ -214,6 +226,7 @@ Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisi
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Navigieren Sie zur Option **Alle Ressourcen**, und wählen Sie die Wiederherstellungspunktsammlungs-Ressourcengruppe im folgenden Format aus: AzureBackupRG_`<Geo>`_`<number>`.
 3. Wählen Sie im Abschnitt **Einstellungen** die Option **Sperren** aus, um die Sperren anzuzeigen.
@@ -222,11 +235,14 @@ Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung n
     ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a>Bereinigen der Wiederherstellungspunktsammlung
+
 Nach dem Entfernen der Sperre müssen die Wiederherstellungspunkte bereinigt werden. Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden Methoden:<br>
-* [Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
+
+- [Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung
+
 Nach dem Entfernen der Sperre lösen Sie eine Ad-hoc-/manuelle Sicherung aus. Dadurch wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser Ad-hoc-/manuelle Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
 
 > [!NOTE]
@@ -235,6 +251,7 @@ Nach dem Entfernen der Sperre lösen Sie eine Ad-hoc-/manuelle Sicherung aus. Da
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal <br>
 
 Um die Wiederherstellungspunktsammlung, die aufgrund der Sperre der Ressourcengruppe nicht bereinigt wird, manuell zu bereinigen, führen Sie die folgenden Schritte aus:
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Menü **Hub** auf **Alle Ressourcen**, und wählen Sie die Ressourcengruppe mit dem folgenden Format AzureBackupRG_`<Geo>`_`<number>` aus, in der sich Ihr virtueller Computer befindet.
 

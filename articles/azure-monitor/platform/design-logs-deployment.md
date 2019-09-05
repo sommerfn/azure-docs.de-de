@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883203"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034737"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -52,13 +52,13 @@ IT-Organisationen werden heute entweder zentralisiert oder dezentralisiert oder 
 
 Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agentbereitstellung Folgendes bekannt sein:
 
-* Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er an einen oder mehrere Arbeitsbereiche berichtet](../../azure-monitor/platform/agent-windows.md), auch wenn er parallel an eine System Center Operations Manager-Verwaltungsgruppe berichtet. Der Windows-Agent kann an bis zu vier Arbeitsbereiche berichten.
-* Der Linux-Agent bietet keine Unterstützung für Multihosting und kann nur an einen einzelnen Arbeitsbereich berichten.
+* Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er Berichte an einen oder mehrere Arbeitsbereiche übermittelt](../../azure-monitor/platform/agent-windows.md), auch wenn er Berichte parallel an eine System Center Operations Manager-Verwaltungsgruppe sendet. Der Windows-Agent kann Berichte an bis zu vier Arbeitsbereiche übermitteln.
+* Der Linux-Agent bietet keine Unterstützung für Multihosting und kann Berichte nur an einen einzelnen Arbeitsbereich übermitteln.
 
-Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden:
+Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden, gilt Folgendes:
 
 * Jede Operations Manager-Verwaltungsgruppe kann [nur mit einem Arbeitsbereich verbunden sein](../platform/om-agents.md). 
-* Linux-Computer, die an eine Verwaltungsgruppe berichten, müssen so konfiguriert sein, dass Sie direkt an einen Log Analytics-Arbeitsbereich berichten. Wenn Ihre Linux-Computer bereits direkt an einen Arbeitsbereich berichten und Sie diese mit Operations Manager überwachen möchten, führen Sie die Schritte zum [Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) aus. 
+* Linux-Computer, die Berichte an eine Verwaltungsgruppe senden, müssen so konfiguriert sein, dass die Berichte direkt an einen Log Analytics-Arbeitsbereich übermittelt werden. Wenn Ihre Linux-Computer Berichte bereits direkt an einen Arbeitsbereich übermitteln und Sie diese mit Operations Manager überwachen möchten, führen Sie die Schritte zum [Senden von Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) aus. 
 * Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und ihn sowohl an Operations Manager, der in einen Arbeitsbereich integriert ist, als auch an einen anderen Arbeitsbereich berichten lassen.
 
 ## <a name="access-control-overview"></a>Übersicht über die Zugriffssteuerung
@@ -71,7 +71,7 @@ Die Daten, auf die ein Benutzer Zugriff hat, werden durch eine Kombination von F
 |:---|:---|
 | [Zugriffsmodus](#access-mode) | Die Methode, die der Benutzer verwendet, um auf den Arbeitsbereich zuzugreifen.  Definiert den Bereich der verfügbaren Daten und den Zugriffssteuerungsmodus, der angewendet wird. |
 | [Zugriffssteuerungsmodus](#access-control-mode) | Eine Einstellung für den Arbeitsbereich, die definiert, ob Berechtigungen auf der Arbeitsbereich- oder Ressourcenebene angewendet werden. |
-| [Berechtigungen](manage-access.md#manage-accounts-and-users) | Berechtigungen, die auf einzelne Benutzer oder Gruppen von Benutzern für den Arbeitsbereich oder die Ressource angewendet werden. Definiert, auf welche Daten der Benutzer zugreifen kann. |
+| [Berechtigungen](manage-access.md) | Berechtigungen, die auf einzelne Benutzer oder Gruppen von Benutzern für den Arbeitsbereich oder die Ressource angewendet werden. Definiert, auf welche Daten der Benutzer zugreifen kann. |
 | [RBAC auf Tabellenebene](manage-access.md#table-level-rbac) | Optionale präzise Berechtigungen, die für alle Benutzer unabhängig von deren Zugriffs- oder Zugriffssteuerungsmodus gelten. Definiert die Datentypen, auf die ein Benutzer zugreifen kann. |
 
 ## <a name="access-mode"></a>Zugriffsmodus
@@ -105,7 +105,7 @@ Die Zugriffsmodi werden in der folgenden Tabelle zusammengefasst:
 | | Arbeitsbereichskontext | Ressourcenkontext |
 |:---|:---|:---|
 | Für wen ist das jeweilige Modell vorgesehen? | Zentraladministration. Administratoren, die die Datensammlung konfigurieren müssen, und Benutzer, die Zugriff auf eine Vielzahl von Ressourcen benötigen. Zurzeit auch erforderlich für Benutzer, die Zugriff auf Protokolle für Ressourcen außerhalb von Azure benötigen. | Anwendungsteams. Administratoren von Azure-Ressourcen, die überwacht werden. |
-| Was ist für einen Benutzer erforderlich, um Protokolle anzuzeigen? | Berechtigungen für den Arbeitsbereich. Weitere Informationen finden Sie unter **Arbeitsbereichberechtigungen** in [Verwalten von Konten und Benutzern](manage-access.md#manage-accounts-and-users). | Lesezugriff auf die Ressource. Weitere Informationen finden Sie unter **Ressourcenberechtigungen** in [Verwalten von Konten und Benutzern](manage-access.md#manage-accounts-and-users). Berechtigungen können vererbt (z.B. aus der enthaltenden Ressourcengruppe) oder der Ressource direkt zugeordnet werden. Die Berechtigung für die Protokolle für die Ressource wird automatisch zugewiesen. |
+| Was ist für einen Benutzer erforderlich, um Protokolle anzuzeigen? | Berechtigungen für den Arbeitsbereich. Informationen finden Sie unter **Arbeitsbereichsberechtigungen** im Abschnitt [Zugriffsverwaltung mithilfe von Arbeitsbereichsberechtigungen](manage-access.md#manage-access-using-workspace-permissions). | Lesezugriff auf die Ressource. Informationen finden Sie unter **Ressourcenberechtigungen** im Abschnitt [Zugriffsverwaltung mithilfe von Azure-Berechtigungen](manage-access.md#manage-access-using-azure-permissions). Berechtigungen können vererbt (z.B. aus der enthaltenden Ressourcengruppe) oder der Ressource direkt zugeordnet werden. Die Berechtigung für die Protokolle für die Ressource wird automatisch zugewiesen. |
 | Welchen Geltungsbereich haben Berechtigungen? | Den Arbeitsbereich. Benutzer mit Zugriff auf den Arbeitsbereich können alle Protokolle in diesem Arbeitsbereich aus Tabellen abfragen, für die sie über Berechtigungen verfügen. Siehe [Tabellenzugriffssteuerung](manage-access.md#table-level-rbac). | Die Azure-Ressource. Der Benutzer kann Protokolle für bestimmte Ressourcen, Ressourcengruppen oder ein Abonnement, auf die bzw. das er Zugriff hat, aus jedem Arbeitsbereich abfragen, aber nicht Protokolle für andere Ressourcen. |
 | Wie kann der Benutzer auf Protokolle zugreifen? | <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../visualizations.md#workbooks)</li></ul> | <ul><li>Starten von **Protokolle** im Menü für die Azure-Ressource</li></ul> <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../visualizations.md#workbooks)</li></ul> |
 
@@ -128,7 +128,7 @@ Der *Zugriffssteuerungsmodus* ist eine Einstellung für jeden Arbeitsbereich, di
     > [!NOTE]
     > Wenn ein Benutzer nur über Ressourcenberechtigungen für den Arbeitsbereich verfügt, kann er nur über den Ressourcenkontextmodus auf den Arbeitsbereich zugreifen, sofern der Arbeitsbereichszugriffsmodus auf das **Verwenden von Ressourcen- oder Arbeitsbereichsberechtigungen** festgelegt ist.
 
-Informationen zum Ändern des Zugriffssteuerungsmodus über das Portal, mit PowerShell oder mithilfe einer Resource Manager-Vorlage finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](manage-access.md#define-access-control-mode).
+Informationen zum Ändern des Zugriffssteuerungsmodus über das Portal, mit PowerShell oder mithilfe einer Resource Manager-Vorlage finden Sie unter [Konfigurieren des Zugriffssteuerungsmodus](manage-access.md#configure-access-control-mode).
 
 ## <a name="recommendations"></a>Empfehlungen
 

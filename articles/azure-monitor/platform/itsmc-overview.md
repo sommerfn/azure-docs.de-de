@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479812"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051833"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -35,11 +35,12 @@ Der ITSM-Connector unterstützt Verbindungen mit den folgenden ITSM-Tools:
 -   Provance
 -   Cherwell
 
-Der ITSM-Connector bietet Ihnen folgende Möglichkeiten:
+Mit dem ITSMC können Sie folgende Aktionen ausführen:
 
 -  Sie können Arbeitselemente im ITSM-Tool basierend auf Ihren Azure-Warnungen (Metrikwarnungen, Aktivitätsprotokollwarnungen und Log Analytics-Warnungen) erstellen.
 -  Optional können Sie Incident- und Änderungsanforderungsdaten aus Ihrem ITSM-Tool mit einem Azure Log Analytics-Arbeitsbereich synchronisieren.
 
+Erfahren Sie mehr über die [rechtlichen Bedingungen und Datenschutzrichtlinien](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9).
 
 Führen Sie die folgenden Schritte aus, um den ITSM-Connector zu verwenden:
 
@@ -103,7 +104,7 @@ Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie die folgenden Schritt
 4. Legen Sie die Verbindungseinstellungen fest, wie in [Verbinden von ITSM-Produkten/-Diensten mit dem IT Service Management Connector (Vorschau)](../../azure-monitor/platform/itsmc-connections.md) beschrieben.
 
    > [!NOTE]
-   > 
+   >
    > Standardmäßig aktualisiert der ITSM-Connector die Konfigurationsdaten der Verbindung einmal alle 24 Stunden. Um die Daten Ihrer Verbindung bei Änderungen oder Vorlagenupdates, die Sie vornehmen, sofort zu aktualisieren, klicken Sie auf die Schaltfläche **Synchronisieren** auf dem Blatt Ihrer Verbindung.
 
    ![Aktualisieren der Verbindung](media/itsmc-overview/itsmc-connections-refresh.png)
@@ -141,7 +142,7 @@ Gehen Sie dazu wie folgt vor:
 Verwenden Sie beim Erstellen/Bearbeiten einer Azure-Warnungsregel eine Aktionsgruppe mit einer ITSM-Aktion. Wenn die Warnung ausgelöst wird, wird das Arbeitselement im ITSM-Tool erstellt bzw. aktualisiert.
 
 > [!NOTE]
-> 
+>
 > Informationen zu den Preisen für ITSM-Aktionen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/) für Aktionsgruppen.
 
 
@@ -174,7 +175,7 @@ Incidents und Änderungsanforderungen aus dem ITSM-Produkt werden mit Ihrem Log 
 Die folgenden Informationen sind Beispiele für Daten, die vom ITSMC gesammelt werden:
 
 > [!NOTE]
-> 
+>
 > Abhängig vom in Log Analytics importierten Arbeitselementtyp enthält **ServiceDesk_CL** die folgenden Felder:
 
 **Arbeitselement**: **Incidents**  
@@ -184,10 +185,10 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Zustand
+- State
 - Dringlichkeit
 - Auswirkung
-- Priorität
+- Priority
 - Eskalation
 - Erstellt von
 - Gelöst von
@@ -222,7 +223,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Eskalation
 - Konfliktstatus
 - Dringlichkeit
-- Priorität
+- Priority
 - Risiko
 - Auswirkung
 - Zugewiesen zu
@@ -242,10 +243,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics-Feld | ServiceNow-Feld |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | Zustand |
+| IncidentState_s | State |
 | Urgency_s |Dringlichkeit |
 | Impact_s |Auswirkung|
-| Priority_s | Priorität |
+| Priority_s | Priority |
 | CreatedBy_s | Geöffnet von |
 | ResolvedBy_s | Gelöst von|
 | ClosedBy_s  | Geschlossen von |
@@ -270,9 +271,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  Kurzbeschreibung |
 | Type_s|  type |
 | Category_s|  Category (Kategorie) |
-| CRState_s|  Zustand|
+| CRState_s|  State|
 | Urgency_s|  Dringlichkeit |
-| Priority_s| Priorität|
+| Priority_s| Priority|
 | Risk_s| Risiko|
 | Impact_s| Auswirkung|
 | RequestedDate_t  | Datum der Anforderung |

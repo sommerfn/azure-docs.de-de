@@ -11,16 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: bwren
-ms.openlocfilehash: 397272c3a47aca2aa73394f443d76dead66308e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555340"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124133"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
+
 Mithilfe der Datenquelle „Benutzerdefinierte Protokolle“ in Azure Monitor können Ereignisse aus Textdateien auf Windows- und Linux-Computern erfasst werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien. Die erfassten Daten können entweder in Ihren Abfragen zu einzelnen Feldern aufgeschlüsselt oder während der Erfassung in einzelne Felder extrahiert werden.
 
 ![Benutzerdefinierte Protokollsammlung](media/data-sources-custom-logs/overview.png)
@@ -46,6 +47,9 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 > * Die maximale Anzahl von Zeichen für den Spaltennamen ist 500. 
 >
 
+>[!IMPORTANT]
+>Die benutzerdefinierte Protokollsammlung erfordert, dass die Anwendung, die die Protokolldatei schreibt, den Protokollinhalt regelmäßig auf den Datenträger leert. Der Grund dafür ist, dass die benutzerdefinierte Protokollsammlung darauf basiert, dass Benachrichtigungen über Änderungen am Dateisystem für die Protokolldatei nachverfolgt werden.
+
 ## <a name="defining-a-custom-log"></a>Definieren eines benutzerdefinierten Protokolls
 Gehen Sie zum Definieren einer benutzerdefinierten Protokolldatei wie folgt vor.  Am Ende dieses Artikels finden Sie eine exemplarische Vorgehensweise für das Hinzufügen eines benutzerdefinierten Protokolls.
 
@@ -64,7 +68,6 @@ Das Standardtrennzeichen **Neue Zeile** wird für Protokolldateien verwendet, di
 
 Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in Azure Monitor gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, zu dem Azure Monitor den Eintrag erfasst hat.
 
-
 1. Klicken Sie auf **Durchsuchen**, und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
 2. Klicken Sie auf **Weiter**.
 3. Der Assistent für benutzerdefinierte Protokolle lädt die Datei hoch und führt die ermittelten Datensätze auf.
@@ -75,7 +78,6 @@ Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einz
 Definieren Sie für den Agent mindestens einen Pfad, an dem sich das benutzerdefinierte Protokoll befindet.  Sie können entweder einen bestimmten Pfad und Namen für die Protokolldatei angeben oder einen Pfad mit einem Platzhalter für den Namen verwenden. Dadurch werden Anwendungen unterstützt, die täglich oder bei Erreichen einer bestimmten Dateigröße eine neue Datei erstellen. Sie können auch mehrere Pfade für eine einzelne Protokolldatei angeben.
 
 Ein Beispiel: Angenommen, eine Anwendung erstellt jeden Tag eine Protokolldatei, und das Datum ist jeweils Teil des Dateinamens (etwa „log20100316.txt“). In einem solchen Fall kann beispielsweise ein Muster wie *log\*.txt* verwendet werden, um sämtliche Protokolldateien abzudecken, die nach dem Benennungsschema der Anwendung erstellt werden.
-
 
 Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Protokolldateien:
 
@@ -105,7 +107,6 @@ Sobald Azure Monitor mit der Erfassung von Einträgen aus dem benutzerdefinierte
 > [!NOTE]
 > Sollte die RawData-Eigenschaft in der Abfrage nicht vorhanden sein, müssen Sie unter Umständen Ihren Browser schließen und wieder öffnen.
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>Schritt 6: Analysieren der Einträge des benutzerdefinierten Protokolls
 Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawData**gespeichert.  Wahrscheinlich möchten Sie die verschiedenen Einzelinformationen der jeweiligen Einträge auf einzelne Eigenschaften für jeden Datensatz aufteilen. Optionen zum Aufschlüsseln von **RawData** in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).
 
@@ -114,7 +115,6 @@ Gehen Sie im Azure-Portal wie folgt vor, um ein benutzerdefiniertes Protokoll zu
 
 1. Klicken Sie im Menü **Daten** in den erweiterten **Einstellungen** für Ihren Arbeitsbereich auf **Benutzerdefinierte Protokolle**, um eine Liste mit allen Ihren benutzerdefinierten Protokollen anzuzeigen.
 2. Klicken Sie neben dem benutzerdefinierten Protokoll, das Sie entfernen möchten, auf **Entfernen**.
-
 
 ## <a name="data-collection"></a>Datensammlung
 Azure Monitor erfasst etwa alle fünf Minuten neue Einträge aus den einzelnen benutzerdefinierten Protokollen.  Der Agent protokolliert für jede Protokolldatei, aus der er Daten sammelt, seine Position.  Wenn der Agent für einen bestimmten Zeitraum offline geht, erfasst Azure Monitor Einträge ab dem Zeitpunkt der letzten Erfassung – unabhängig davon, ob die Einträge erstellt wurden, während der Agent offline war.
@@ -135,11 +135,11 @@ Benutzerdefinierte Protokolldatensätze besitzen einen Typ mit dem von Ihnen ang
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Exemplarische Vorgehensweise zum Hinzufügen eines benutzerdefinierten Protokolls
 Der folgende Abschnitt enthält ein Beispiel für die Erstellung eines benutzerdefinierten Protokolls.  Das Beispielprotokoll enthält in jeder Zeile einen einzelnen Eintrag, der jeweils mit einer Datums- und Uhrzeitangabe beginnt, gefolgt von durch Trennzeichen getrennten Feldern für Code, Status und Meldung.  Hier einige Beispieleinträge:
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>Hochladen und Analysieren eines Beispielprotokolls
 Wir stellen eine der Protokolldateien bereit und sehen die Ereignisse, die gesammelt werden.  In diesem Fall kann als Trennzeichen die Option „Neue Zeile“ verwendet werden.  Wenn sich allerdings im Protokoll ein einzelner Eintrag über mehrere Zeilen erstrecken kann, muss ein Trennzeichen vom Typ „Zeitstempel“ verwendet werden.
@@ -157,14 +157,10 @@ Wir verwenden den Namen *MyApp_CL* und geben eine **Beschreibung** ein.
 ![Protokollname](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Überprüfen, ob die benutzerdefinierten Protokolle gesammelt werden
-Wir verwenden die Abfrage *Type=MyApp_CL*, um alle Datensätze aus dem gesammelten Protokoll zurückzugeben.
+Wir verwenden die einfache Abfrage *MyApp_CL*, um alle Datensätze aus dem gesammelten Protokoll zurückzugeben.
 
 ![Protokollabfrage ohne benutzerdefinierte Felder](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>Analysieren der Einträge des benutzerdefinierten Protokolls
-Wir definieren mithilfe benutzerdefinierter Felder die Felder *EventTime*, *Code*, *Status* und *Message* und sehen die Unterschiede bei den Datensätzen, die durch die Abfrage zurückgegeben werden.
-
-![Protokollabfrage mit benutzerdefinierten Feldern](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>Alternativen zu benutzerdefinierten Protokollen
 Benutzerdefinierte Protokolle sind hilfreich, wenn Ihre Daten den oben aufgeführten Kriterien entsprechen, es gibt jedoch Fälle wie die folgenden, die eine andere Strategie erfordern:

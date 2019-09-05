@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735540"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060709"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Sichern einer SAP HANA-Datenbank in Azure
 
 [Azure Backup](backup-overview.md) unterstützt die Sicherung von SAP HANA-Datenbanken in Azure.
 
 > [!NOTE]
-> Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Es ist derzeit nicht für den Einsatz in Produktionsumgebungen bereit und verfügt nicht über eine garantierte SLA. 
+> Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Es ist derzeit nicht für den Einsatz in Produktionsumgebungen bereit und verfügt nicht über eine garantierte SLA.
 
 ## <a name="scenario-support"></a>Unterstützung von Szenarien
 
@@ -32,8 +32,11 @@ ms.locfileid: "68735540"
 ### <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 - Sie können nur auf Azure-VMs ausgeführte SAP HANA-Datenbanken sichern.
-- Die SAP HANA-Sicherung kann nur im Azure-Portal konfiguriert werden. Das Feature kann nicht mit PowerShell, der Befehlszeilenschnittstelle oder der REST-API konfiguriert werden.
-- Sie können nur Datenbanken im Modus für zentrales Hochskalieren sichern.
+- Sie können nur eine SAP HANA-Instanz sichern, die auf einer einzelnen Azure-VM ausgeführt wird. Mehrere HANA-Instanzen auf derselben Azure-VM werden derzeit nicht unterstützt.
+- Sie können nur Datenbanken im Modus für zentrales Hochskalieren sichern. Das horizontale Hochskalieren, d.h. eine HANA-Instanz auf mehreren Azure-VMs, wird derzeit nicht für die Sicherung unterstützt.
+- Sie können eine SAP HANA-Instanz mit Dynamic Tiering auf einem erweiterten Server nicht sichern, d.h. mit Dynamic Tiering auf einem anderen Knoten. Dies ist im Wesentlichen ein horizontales Hochskalieren, das nicht unterstützt wird.
+- Sie können eine SAP HANA-Instanz mit aktiviertem Dynamic Tiering auf demselben Server nicht sichern. Dynamic Tiering wird derzeit nicht unterstützt.
+- Die SAP HANA-Sicherung kann nur im Azure-Portal konfiguriert werden. Das Feature kann nicht mit PowerShell oder der Befehlszeilenschnittstelle konfiguriert werden.
 - Sie können Datenbankprotokolle alle 15 Minuten sichern. Protokollsicherungen werden erst nach dem erfolgreichen Abschluss einer vollständigen Sicherung der Datenbank übertragen.
 - Sie können vollständige und differenzielle Sicherungen ausführen. Inkrementelle Sicherungen werden derzeit nicht unterstützt.
 - Nachdem Sie die Sicherungsrichtlinie auf SAP HANA-Sicherungen angewendet haben, kann sie nicht mehr geändert werden. Wenn Sie Sicherungen mit unterschiedlichen Einstellungen ausführen möchten, müssen Sie eine neue Richtlinie erstellen oder eine andere Richtlinie zuweisen.
@@ -44,23 +47,16 @@ ms.locfileid: "68735540"
 
 Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schritte aus:
 
-1. Installieren Sie auf dem virtuellen Computer, auf dem die SAP HANA-Datenbank ausgeführt wird, das offizielle Microsoft-Paket [.NET Core Runtime 2.1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current). Beachten Sie Folgendes:
-    - Sie benötigen nur das Paket **dotnet-runtime-2.1**. **aspnetcore-runtime-2.1** ist nicht erforderlich.
-    - Wenn der virtuelle Computer nicht über Internetzugriff verfügt, können Sie einen Offlinecache für „dotnet-runtime-2.1“ (und alle abhängigen RPMs) aus dem auf der Seite angegebenen Microsoft-Paketfeed spiegeln oder bereitstellen.
-    - Während der Paketinstallation werden Sie möglicherweise aufgefordert, eine Option anzugeben. Geben Sie in diesem Fall **Lösung 2** an.
-
-        ![Option für Paketinstallation](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. Installieren und aktivieren Sie auf dem virtuellen Computer die im offiziellen SLES-Paket/auf den offiziellen SLES-Medien enthaltenen ODBC-Treiberpakete mithilfe von zypper. Gehen Sie dabei wie folgt vor:
+1. Installieren und aktivieren Sie auf dem virtuellen Computer, auf dem die SAP HANA-Datenbank ausgeführt wird, die im offiziellen SLES-Paket/auf den offiziellen SLES-Medien enthaltenen ODBC-Treiberpakete mithilfe von zypper. Gehen Sie dabei wie folgt vor:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. Erlauben Sie die Verbindung von der VM zum Internet, so dass sie Azure erreichen kann, wie in der [folgenden](#set-up-network-connectivity) Vorgehensweise beschrieben.
+2. Lassen Sie eine Verbindung des virtuellen Computers mit dem Internet zu, damit er Azure erreichen kann, wie [nachstehend](#set-up-network-connectivity) beschrieben.
 
-4. Führen Sie das Vorregistrierungsskript in der virtuellen Maschine aus, auf der HANA als Root-Benutzer installiert ist. Das Skript wird im [Portal](#discover-the-databases) im Flow bereitgestellt und ist erforderlich, um die [richtigen Berechtigungen](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions) einzurichten.
+3. Führen Sie das Vorregistrierungsskript auf dem virtuellen Computer aus, auf dem HANA als Root-Benutzer installiert ist. Das Skript wird im [Portal](#discover-the-databases) im Flow bereitgestellt und ist erforderlich, um die [richtigen Berechtigungen](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions) einzurichten.
 
 ### <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
 
@@ -68,6 +64,7 @@ Der virtuelle SAP HANA-Computer benötigt für alle Vorgänge eine Verbindung, u
 
 - Sie können die [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) für Azure-Rechenzentren herunterladen und dann Zugriff auf diese IP-Adressen gewähren.
 - Wenn Sie Netzwerksicherheitsgruppen (Network Security Groups, NSGs) verwenden, können Sie mit dem [Diensttag](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) „AzureCloud“ alle öffentlichen Azure-IP-Adressen zulassen. Mit dem Cmdlet [Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) können Sie NSG-Regeln ändern.
+- Port 443 sollte in der Whitelist enthalten sein, da der Transport über HTTPS erfolgt.
 
 ## <a name="onboard-to-the-public-preview"></a>Onboarding in die öffentliche Vorschau
 
@@ -79,8 +76,6 @@ Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -106,9 +101,9 @@ Aktivieren Sie jetzt die Sicherung.
 
 1. Klicken Sie unter „Schritt 2“ auf **Sicherung konfigurieren**.
 2. Wählen Sie unter **Zu sichernde Elemente auswählen** alle Datenbanken aus, die Sie schützen möchten, und wählen Sie dann **OK** aus.
-3. Wählen Sie  **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** aus, und erstellen Sie eine neue Sicherungsrichtlinie für die Datenbanken gemäß den unten stehenden Anweisungen.
+3. Wählen Sie **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** aus, und erstellen Sie eine neue Sicherungsrichtlinie für die Datenbanken gemäß den unten stehenden Anweisungen.
 4. Klicken Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** auf **Sicherung aktivieren**.
-5. Verfolgen Sie den Fortschritt der Sicherungskonfiguration im Portal im  **Benachrichtigungsbereich** .
+5. Verfolgen Sie den Fortschritt der Sicherungskonfiguration im Bereich **Benachrichtigungen** des Portals.
 
 ### <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
@@ -182,8 +177,17 @@ Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio) eine lokale S
     - Legen Sie **log_backup_using_backint** auf **True** fest.
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>Upgrade geschützter 1.0-Datenbanken auf 2.0
+
+Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die unten beschriebenen Schritte aus.
+
+- Beenden Sie den Schutz mit Beibehaltung der Daten für die alte SDC-Datenbank.
+- Führen Sie das Vorregistrierungsskript mit den richtigen Details (SID und MDC) erneut aus. 
+- Registrieren Sie die Erweiterung erneut (Sicherung > Details anzeigen > relevante Azure-VM auswählen > erneut registrieren). 
+- Klicken Sie auf die erneute Ermittlung von Datenbanken für denselben virtuellen Computer. Es sollten daraufhin die neuen Datenbanken in Schritt 2 mit den richtigen Details (Systemdatenbank und Mandantendatenbank, nicht SDC) angezeigt werden. 
+- Schützen Sie diese neuen Datenbanken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie](backup-azure-sap-hana-database-troubleshoot.md), wie Sie häufige Fehler bei der Verwendung von SAP HANA-Backups in Azure VMs beheben können.
+[Erfahren Sie](backup-azure-sap-hana-database-troubleshoot.md), wie Sie häufige Fehler bei der Verwendung von SAP HANA-Sicherungen auf Azure-VMs beheben können.
 Erfahren Sie mehr über das [Sichern virtueller Azure-Computer](backup-azure-arm-vms-prepare.md).

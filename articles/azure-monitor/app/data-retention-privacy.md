@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518841"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991184"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
-Wenn Sie das [Visual Studio Application Insights-SDK][start] in Ihrer App installieren, werden Telemetriedaten für Ihre App an die Cloud gesendet. Als Entwickler möchten Sie natürlich genau wissen, welche Daten gesendet werden, was mit den Daten geschieht und wie Sie die Kontrolle darüber behalten. Dabei ist insbesondere interessant, ob womöglich sensible Daten übermittelt werden, wo sie gespeichert werden und wie sicher die Daten sind. 
+Wenn Sie das [Azure Application Insights][start] SDK in Ihrer App installieren, werden Telemetriedaten für Ihre App an die Cloud gesendet. Als Entwickler möchten Sie natürlich genau wissen, welche Daten gesendet werden, was mit den Daten geschieht und wie Sie die Kontrolle darüber behalten. Dabei ist insbesondere interessant, ob womöglich sensible Daten übermittelt werden, wo sie gespeichert werden und wie sicher die Daten sind. 
 
 Zunächst die kurze Antwort:
 
@@ -33,7 +33,7 @@ Zunächst die kurze Antwort:
 Im Rest dieses Artikels werden die obigen Antworten näher erläutert. Der Artikel ist in sich geschlossen, sodass Sie ihn auch Kollegen zeigen können, die nicht direkt Ihrem Team angehören.
 
 ## <a name="what-is-application-insights"></a>Was ist Application Insights?
-[Visual Studio Application Insights][start] ist ein Dienst von Microsoft, der Sie beim Optimieren der Leistung und Benutzerfreundlichkeit Ihrer aktiven Anwendung unterstützt. Er überwacht Ihre Anwendung während der gesamten Ausführung – sowohl in der Testphase als auch nach der Veröffentlichung oder Bereitstellung. Application Insights erstellt Diagramme und Tabellen, die beispielsweise Aufschluss darüber geben, zu welchen Tageszeiten das Benutzerinteresse besonders groß ist, wie gut die App reagiert und wie gut sie von externen Diensten versorgt wird, von denen sie unter Umständen abhängig ist. Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemetriedaten im Detail durchsuchen, um die Fehlerursache zu ermitteln. Darüber hinaus informiert Sie der Dienst per E-Mail, falls sich die Verfügbarkeit oder Leistung Ihrer App ändert.
+[Azure Application Insights][start] ist ein Dienst von Microsoft, der Sie beim Optimieren der Leistung und Benutzerfreundlichkeit Ihrer aktiven Anwendung unterstützt. Er überwacht Ihre Anwendung während der gesamten Ausführung – sowohl in der Testphase als auch nach der Veröffentlichung oder Bereitstellung. Application Insights erstellt Diagramme und Tabellen, die beispielsweise Aufschluss darüber geben, zu welchen Tageszeiten das Benutzerinteresse besonders groß ist, wie gut die App reagiert und wie gut sie von externen Diensten versorgt wird, von denen sie unter Umständen abhängig ist. Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemetriedaten im Detail durchsuchen, um die Fehlerursache zu ermitteln. Darüber hinaus informiert Sie der Dienst per E-Mail, falls sich die Verfügbarkeit oder Leistung Ihrer App ändert.
 
 Diese Funktionen erhalten Sie, indem Sie das Application Insights-SDK in Ihrer Anwendung installieren und es so in den Code integrieren. Während der App-Ausführung überwacht das SDK den Betrieb und sendet Telemetriedaten an den Application Insights-Dienst. Hierbei handelt es sich um einen von [Microsoft Azure](https://azure.com)gehosteten Clouddienst. (Application Insights kann aber nicht nur für in Azure gehostete Anwendungen, sondern für jede beliebige Anwendung verwendet werden.)
 
@@ -83,12 +83,11 @@ Es gibt auch eine lesbarere Ansicht im Fenster „Diagnose“.
 Hierzu können Sie ein [Telemetriedaten-Prozessor-Plug-In](../../azure-monitor/app/api-filtering-sampling.md)schreiben.
 
 ## <a name="how-long-is-the-data-kept"></a>Wie lange werden Daten aufbewahrt?
-Rohdatenpunkte (also Elemente, die Sie in Analytics abfragen und in Search überprüfen können) werden bis zu 90 Tage lang aufbewahrt. Wenn Sie Daten länger beibehalten möchten, können Sie sie mit dem [fortlaufenden Export](../../azure-monitor/app/export-telemetry.md) in ein Speicherkonto kopieren.
+Rohdatenpunkte (also Elemente, die Sie in Analytics abfragen und in Search überprüfen können) werden bis zu 730 Tage lang aufbewahrt. Sie können eine [Aufbewahrungsdauer](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) von 30, 60, 90, 120, 180, 270, 365, 550 oder 730 Tagen auswählen. Wenn Sie Daten länger als 730 Tage aufbewahren möchten, können Sie sie während der Datenerfassung mit [Fortlaufender Export](../../azure-monitor/app/export-telemetry.md) in ein Speicherkonto kopieren. 
+
+Für Daten, die länger als 90 Tage aufbewahrt werden, fallen zusätzliche Gebühren an. Weitere Informationen zu Application Insights-Preisen finden Sie in der [Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 Aggregierte Daten (d.h. Zählungen, Mittelwerte und andere statistischen Daten, die im Metrik-Explorer angezeigt werden) werden im Maß von 1 Minute für 90 Tage aufbewahrt.
-
-> [!NOTE]
-> Die variable Aufbewahrungsdauer für Application Insights befindet sich derzeit in der Vorschauphase. [Hier](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031)erhalten Sie weitere Informationen. 
 
 [Debugmomentaufnahmen](../../azure-monitor/app/snapshot-debugger.md) werden fünfzehn Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
 
@@ -167,7 +166,7 @@ Per Code:
 
 Standardmäßig verwendet `ServerTelemetryChannel` den lokalen Ordner des aktuellen Benutzers für App-Daten (`%localAppData%\Microsoft\ApplicationInsights`) oder den temporären Ordner (`%TMP%`). (Näheres dazu finden Sie in der [Implementierung](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84).) In einer Linux-Umgebung ist der lokale Speicher deaktiviert, sofern kein Speicherordner angegeben wird.
 
-Der folgende Codeausschnitt zeigt, wie Sie `ServerTelemetryChannel.StorageFolder` in der `ConfigureServices()` -Methode Ihrer  `Startup.cs` -Klasse festlegen:
+Der folgende Codeausschnitt zeigt, wie Sie `ServerTelemetryChannel.StorageFolder` in der `ConfigureServices()`-Methode Ihrer `Startup.cs`-Klasse festlegen:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -240,7 +239,7 @@ Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Kompon
 
 | Aktion | Gesammelte Datenklassen (siehe nächste Tabelle) |
 | --- | --- |
-| [Hinzufügen des Application Insights SDK zu Ihrem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Sitzung<br/>users |
+| [Hinzufügen des Application Insights SDK zu einem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Sitzung<br/>users |
 | [Installieren des Statusmonitors auf IIS][redfield] |Abhängigkeiten<br/>ServerContext<br/>Inferred<br/>Perf counters |
 | [Hinzufügen des Application Insights SDK zu einer Java-Web-App][java] |ServerContext<br/>Inferred<br/>Anforderung<br/>Sitzung<br/>users |
 | [Hinzufügen des JavaScript SDK zur Webseite][client] |ClientContext <br/>Inferred<br/>Seite<br/>ClientPerf<br/>Ajax |
@@ -276,10 +275,10 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 | Verfügbarkeit |Webtestantwortcode, Dauer der einzelnen Testschritte, Testname, Zeitstempel, Erfolg, Antwortzeit, Testverzeichnis |
 | SDK-Diagnose |Ablaufverfolgungsmeldung oder Ausnahme |
 
-Sie können [einige der Daten durch Bearbeiten von ApplicationInsights.config abschalten][config].
+Sie können [einige der Daten durch Bearbeiten von „ApplicationInsights.config“ abschalten][config].
 
 > [!NOTE]
-> Die Client-IP-Adresse wird zum Ableiten des geografischen Standorts verwendet. Die IP-Daten werden jedoch standardmäßig nicht mehr gespeichert, und es werden ausschließlich Nullen in das entsprechende Feld geschrieben. Wenn Sie mehr über den Umgang mit personenbezogenen Daten wissen möchten, empfehlen wir diesen [Artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Wenn Sie IP-Adressen speichern müssen, können Sie dazu einen [Telemetrieinitialisierer](./../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) verwenden.
+> Die Client-IP-Adresse wird zum Ableiten des geografischen Standorts verwendet. Die IP-Daten werden jedoch standardmäßig nicht mehr gespeichert, und es werden ausschließlich Nullen in das entsprechende Feld geschrieben. Wenn Sie mehr über den Umgang mit personenbezogenen Daten wissen möchten, empfehlen wir diesen [Artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Wenn Sie IP-Adressdaten speichern müssen, werden Sie im [Artikel zur IP-Adressensammlung](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) durch die jeweiligen Optionen geführt.
 
 ## <a name="credits"></a>Guthaben
 Dieses Produkt enthält GeoLite2-Daten, die von MaxMind erstellt wurden und unter [https://www.maxmind.com](https://www.maxmind.com) verfügbar sind.
@@ -298,4 +297,3 @@ Dieses Produkt enthält GeoLite2-Daten, die von MaxMind erstellt wurden und unte
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

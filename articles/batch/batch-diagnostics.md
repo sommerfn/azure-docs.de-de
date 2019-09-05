@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5f5e023d8014a780fa21e2c3ba18050c4e1a5771
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323626"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095251"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -48,6 +47,7 @@ So zeigen Sie alle Metriken für Batch-Konten an
 1. Klicken Sie im Portal auf **Alle Dienste** > **Batch-Konten** und anschließend auf den Namen Ihres Batch-Kontos.
 2. Klicken Sie unter **Überwachung** auf **Metriken**.
 3. Wählen Sie eine oder mehrere Metriken aus. Wählen Sie bei Bedarf mithilfe der Dropdownmenüs **Abonnements**, **Ressourcengruppe**, **Ressourcentyp** und **Ressource** zusätzliche Ressourcenmetriken aus.
+    * Verwenden Sie für anzahlbasierte Metriken (z.B. „Dedizierte Anzahl von Kernen“ oder „Anzahl der Knoten mit niedriger Priorität“) die Aggregation „Durchschnitt“. Verwenden Sie für ereignisbasierte Metriken (z.B. „Ereignisse zum Abschluss der Größenänderung von Pools“) die Aggregation „Anzahl“.
 
     ![Batch-Metriken](media/batch-diagnostics/metrics-portal.png)
 
@@ -119,7 +119,7 @@ Wenn Sie Batch-Diagnoseprotokolle in einem Speicherkonto archivieren, wird ein S
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
 RESOURCEGROUPS/{resource group name}/PROVIDERS/MICROSOFT.BATCH/
-BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
+BATCHACCOUNTS/{Batch account name}/y={four-digit numeric year}/
 m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
@@ -130,12 +130,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Jede Blobdatei vom Typ „PT1H.json“ enthält Ereignisse im JSON-Format, die innerhalb der in der Blob-URL angegebenen Stunde (Beispiel: h=12) aufgetreten sind. Während der aktuellen Stunde werden Ereignisse an die Datei „PT1H.json“ angefügt, sobald sie auftreten. Der Minutenwert (m=00) ist immer „00“, da Diagnoseprotokollereignisse stundenweise in einzelne Blobs unterteilt werden. (Alle Zeitangaben sind in UTC.)
+Jede Blobdatei vom Typ `PT1H.json` enthält Ereignisse im JSON-Format, die innerhalb der in der Blob-URL angegebenen Stunde (Beispiel: `h=12`) aufgetreten sind. Während der aktuellen Stunde werden Ereignisse an die Datei `PT1H.json` angefügt, sobald sie auftreten. Der Minutenwert (`m=00`) ist immer `00`, da Diagnoseprotokollereignisse stundenweise in einzelne Blobs unterteilt werden. (Alle Zeitangaben sind in UTC.)
 
+Unten sehen Sie ein Beispiel für einen `PoolResizeCompleteEvent`-Eintrag in einer `PT1H.json`-Protokolldatei. Er umfasst Informationen über die aktuelle und die vorgegebene Anzahl von dedizierten Knoten und Knoten mit niedriger Priorität sowie die Start- und Endzeit des Vorgangs:
 
-Weitere Informationen zum Schema der Diagnoseprotokolle im Speicherkonto finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+```
+{ "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
+```
 
-Verwenden Sie zum programmgesteuerten Zugriff auf die Protokolle in Ihrem Speicherkonto die Storage-APIs. 
+Weitere Informationen zum Schema der Diagnoseprotokolle im Speicherkonto finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account). Verwenden Sie zum programmgesteuerten Zugriff auf die Protokolle in Ihrem Speicherkonto die Storage-APIs. 
 
 ### <a name="service-log-events"></a>Dienstprotokollereignisse
 Azure Batch-Dienstprotokolle (sofern sie erfasst werden) enthalten Ereignisse, die während der Lebensdauer einer einzelnen Batch-Ressource wie eines Pools oder einer Task ausgegeben werden. Jedes von Batch ausgegebene Ereignis wird im JSON-Format protokolliert. Dies ist beispielsweise der Text eines Beispiel für ein **Poolerstellungsereignis**:

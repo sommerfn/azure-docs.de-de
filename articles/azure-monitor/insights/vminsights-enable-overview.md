@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688251"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905575"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht
 
@@ -33,7 +33,10 @@ So richten Sie Azure Monitor für VMs ein
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, stellen Sie sicher, dass Sie die Informationen in den folgenden Abschnitten verstanden haben.
+Bevor Sie beginnen, stellen Sie sicher, dass Sie die Informationen in den folgenden Abschnitten verstanden haben. 
+
+>[!NOTE]
+>Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](service-map.md).  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -46,8 +49,8 @@ Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den fo
 - UK, Süden
 - Europa, Westen
 - Asien, Südosten
-- Australien (Osten)
-- Australien, Südosten
+- Australien, Osten<sup>1</sup>
+- Australien, Südosten<sup>1</sup>
 
 <sup>1</sup> Diese Region unterstützt derzeit das Integritätsfeature von Azure Monitor für VMs nicht.
 
@@ -153,6 +156,9 @@ Das Zuordnungsfeature in Azure Monitor für VMs erhält seine Daten vom Microsof
 
 Wenn Sie Azure Monitor für VMs für eine einzelne Azure-VM aktivieren oder die Methoden für die bedarfsorientierte Bereitstellung verwenden, installieren Sie den Agent mit der Azure-VM-Erweiterung für den Depency-Agent im Rahmen der Erfahrung.
 
+>[!NOTE]
+>Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](service-map.md).  
+
 In einer Hybridumgebung können Sie den Dependency-Agent manuell herunterladen und installieren. Wenn Ihre virtuellen Computer außerhalb von Azure gehostet werden, verwenden Sie eine automatisierte Bereitstellungsmethode.
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die vom Zuordnungsfeature in einer Hybridumgebung unterstützt werden.
@@ -167,8 +173,8 @@ Sie können den Dependency-Agent über die folgenden Speicherorte herunterladen:
 
 | Datei | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 

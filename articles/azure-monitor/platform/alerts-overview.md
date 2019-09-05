@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: c389f2ab9e67cbb1fd1a6a0c9ee274bca7d4c99d
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560435"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034814"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -77,7 +77,7 @@ Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt d
 
 Die folgenden Warnungsstatus werden unterstützt.
 
-| Zustand | BESCHREIBUNG |
+| State | BESCHREIBUNG |
 |:---|:---|
 | Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die Warnung überprüft und mit deren Bearbeitung begonnen. |
@@ -94,7 +94,10 @@ Intelligente Gruppen sind Aggregationen von Warnungen, die auf Algorithmen des m
 ## <a name="alerts-experience"></a>Benutzeroberfläche „Warnungen“ 
 Die Standardseite „Warnungen“ enthält eine Zusammenfassung der Warnungen, die in einem bestimmten Zeitfenster erstellt werden. Sie zeigt die gesamten Warnungen für jeden Schweregrad mit Spalten an, in denen die Gesamtanzahl der Warnungen im jeweiligen Status für jeden Schweregrad angegeben ist. Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
 
-Alternativ können Sie auch [die Benachrichtigungsinstanzen, die für Ihr(e) Abonnement(s) mit REST-APIs generiert werden, programmgesteuert auflisten](#manage-your-alert-instances-programmatically).
+Alternativ können Sie auch [die Warnungsinstanzen, die für Ihr(e) Abonnement(s) mit REST-APIs generiert werden, programmgesteuert auflisten](#manage-your-alert-instances-programmatically).
+
+> [!NOTE]
+   >  Der Zugriff auf Warnungen, die innerhalb der letzten 30 Tage generiert wurden, kann über die Benutzeroberfläche oder die REST-APIs erfolgen.
 
 Es werden keine älteren [klassischen Warnungen](#classic-alerts) angezeigt oder verfolgt. Sie können die Abonnements oder Filterparameter ändern, um die Seite zu aktualisieren. 
 
@@ -104,8 +107,8 @@ Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Ran
 
 | Column | BESCHREIBUNG |
 |:---|:---|
-| Abonnement | Wählen Sie die Azure-Abonnements, für die Sie sich die Benachrichtigungen anzeigen lassen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Benachrichtigungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
-| Ressourcengruppe | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
+| Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie sich die Warnungen anzeigen lassen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
+| Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
 | Zeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
 
 Klicken Sie auf die folgenden Werte am oberen Rand der Seite „Warnungen“, um eine andere Seite zu öffnen.
@@ -147,8 +150,8 @@ Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am
 
 | Column | BESCHREIBUNG |
 |:---|:---|
-| Abonnement | Wählen Sie die Azure-Abonnements, für die Sie sich die Benachrichtigungen anzeigen lassen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Benachrichtigungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
-| Ressourcengruppe | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
+| Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie sich die Warnungen anzeigen lassen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
+| Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
 | Ressourcentyp | Wählen Sie mindestens einen Ressourcentyp aus. Nur Warnungen mit Zielen des ausgewählten Typs sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem eine Ressourcengruppe angegeben wurde. |
 | Resource | Wählen Sie eine Ressource aus. Nur Warnungen mit dieser Ressource als Ziel sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem ein Ressourcentyp angegeben wurde. |
 | severity | Wählen Sie einen Warnungsschweregrad oder *Alle* aus, um Warnungen aller Schweregrade einzuschließen. |
@@ -159,12 +162,12 @@ Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am
 
 Klicken Sie am oberen Rand der Seite auf **Spalten**, um die anzuzeigenden Spalten auszuwählen. 
 
-## <a name="alert-details-page"></a>Seite mit Benachrichtigungsdetails
+## <a name="alert-details-page"></a>Seite mit Warnungsdetails
 Die Seite „Warnungsdetails“ wird angezeigt, wenn Sie auf eine Warnung klicken. Sie enthält Details der Warnung und ermöglicht Ihnen das Ändern des Status.
 
 ![Warnungsdetails](media/alerts-overview/alert-detail2.png)
 
-Die Seite „Benachrichtigungsdetails“ enthält die folgenden Abschnitte.
+Die Seite „Warnungsdetails“ enthält die folgenden Abschnitte.
 
 | `Section` | BESCHREIBUNG |
 |:---|:---|
@@ -172,19 +175,19 @@ Die Seite „Benachrichtigungsdetails“ enthält die folgenden Abschnitte.
 | Verlauf | Listet die einzelnen Aktionen, die von der Warnung ausgeführt wurden, und alle an der Warnung vorgenommenen Änderungen auf. Das beschränkt sich derzeit auf Statusänderungen. |
 | Diagnose | Informationen zur intelligenten Gruppe, der die Warnung angehört. Die *Warnungsanzahl* bezieht sich auf die Anzahl der Warnungen, die in der intelligenten Gruppe enthalten sind. Die Informationen enthalten andere Benachrichtigungen in der gleichen intelligenten Gruppe, die in den letzten 30 Tagen erstellt wurden, unabhängig vom Zeitfilter auf der Seite mit der Warnungsliste. Klicken Sie auf eine Warnung, um deren Details anzuzeigen. |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Rollenbasierte Zugriffssteuerung (RBAC) für Ihre Benachrichtigungsinstanzen
+## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Warnungsinstanzen
 
-Für die Nutzung und Verwaltung von Benachrichtigungsinstanzen muss der Benutzer integrierte RBAC-Rollen als [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) oder [Überwachungsleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) haben. Diese Rollen werden in jedem Azure Resource Manager-Umfang unterstützt, unabhängig davon, ob es sich um die Abonnementebene oder um genau abgestimmte Zuweisungen auf Ressourcenebene handelt. Wenn ein Benutzer z. B. nur den Zugriff „Überwachungsmitwirkender“ für den virtuellen Computer „ContosoVM1“ hat, dann kann er nur Benachrichtigungen, die auf „ContosoVM1“ erstellt wurden, erhalten und verwalten.
+Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über die integrierten RBAC-Rollen [Mitwirkender an der Überwachung](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) oder [Benutzer mit Leseberechtigung für Überwachungsdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) verfügen. Diese Rollen werden in jedem Azure Resource Manager-Umfang unterstützt, unabhängig davon, ob es sich um die Abonnementebene oder um genau abgestimmte Zuweisungen auf Ressourcenebene handelt. Wenn ein Benutzer z.B. nur den Zugriff „Mitwirkender an der Überwachung“ für den virtuellen Computer „ContosoVM1“ hat, dann kann er nur Warnungen, die auf „ContosoVM1“ erstellt wurden, erhalten und verwalten.
 
-## <a name="manage-your-alert-instances-programmatically"></a>Verwalten Sie Ihre Benachrichtigungsinstanzen programmgesteuert
+## <a name="manage-your-alert-instances-programmatically"></a>Programmgesteuertes Verwalten Ihrer Warnungsinstanzen
 
-Es gibt viele Szenario, in denen Sie Abfragen für Benachrichtigungen zu Ihrem Abonnement programmgesteuert stellen wollen. Zum Beispiel kann es sein, dass Sie benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen wollen oder Ihre Benachrichtigungen analysieren möchten, um Muster und Trends zu finden.
+Es gibt viele Szenarien, in denen Sie Warnungen, die für Ihr Abonnement generiert wurden, programmgesteuert abfragen möchten. Zum Beispiel kann es sein, dass Sie benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen wollen oder Ihre Warnungen analysieren möchten, um Muster und Trends zu erkennen.
 
-Sie können Benachrichtigungen abfragen, die für Ihre Abonnements generiert wurden. Verwenden sie dazu entweder die [Warnungsverwaltung-REST API](https://aka.ms/alert-management-api) oder die [Azure Resource Graph-REST API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources).
+Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) oder der [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) abfragen.
 
-Die [Azure Resource Graph-REST API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) ermöglicht es Ihnen in großem Maßstab Benachrichtigungsinstanzen abzufragen. Dies ist empfehlenswert für Szenarien, in denen Sie Benachrichtigungen verwalten müssen, die über viele Abonnements hinweg generiert wurden. 
+Die [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) ermöglicht Ihnen das Abfragen von Warnungsinstanzen in großem Maßstab. Dies ist empfehlenswert für Szenarien, in denen Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
 
-Die folgende Beispielanforderung an die API zeigt die Anzahl der Benachrichtigungen innerhalb eines Abonnements:
+Die folgende Beispielanforderung an die API gibt die Anzahl der Warnungen innerhalb eines Abonnements zurück:
 
 ```json
 {
@@ -197,9 +200,9 @@ Die folgende Beispielanforderung an die API zeigt die Anzahl der Benachrichtigun
   }
 }
 ```
-Diese Benachrichtigung können auch nach ihren [„grundlegenden“](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) Feldern abgefragt werden.
+Diese Warnungen können nach den Feldern in [essentials](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) (Übersicht) abgefragt werden.
 
-Die [Warnungsverwaltung-REST API](https://aka.ms/alert-management-api) kann eingesetzt werden, um mehr Informationen über bestimmte Benachrichtigungen zu erhalten, einschließlich ihrer [„Warnungskontext“](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)-Felder.
+Mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) können weitere Informationen zu bestimmten Warnungen abgerufen werden, einschließlich der Felder in [alertContext](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) (Warnungskontext).
 
 ## <a name="classic-alerts"></a>Klassische Warnungen 
 

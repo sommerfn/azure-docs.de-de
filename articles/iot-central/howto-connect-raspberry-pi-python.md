@@ -3,17 +3,17 @@ title: Herstellen der Verbindung eines Raspberry Pi-Geräts mit Ihrer Azure IoT 
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung über Python verbinden.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/05/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bd506bf1210692feb017f3b526c3b6d4bca36004
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3f91e09e35eec0685cb4333802b860fb08412cb6
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877423"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019746"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (Python)
 
@@ -29,6 +29,9 @@ Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie die
 
 * Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 * Sie verfügen über ein Raspberry Pi-Gerät, auf dem das Raspbian-Betriebssystem ausgeführt wird. Das Raspberry Pi-Gerät muss eine Verbindung mit dem Internet herstellen können. Weitere Informationen finden Sie unter [Einrichten Ihres Raspberry Pi-Geräts](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+
+> [!TIP]
+> Weitere Informationen zum Einrichten eines Raspberry Pi-Geräts und Herstellen einer Verbindung damit finden Sie unter [Erste Schritte mit Raspberry Pi](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi).
 
 ## <a name="sample-devkits-application"></a>Anwendungsvorlage **Beispiel-DevKits**
 
@@ -63,12 +66,37 @@ Die folgenden Schritte beschreiben das Herunterladen und Konfigurieren der Pytho
 * Senden von Telemetriedaten und Eigenschaftswerten an Azure IoT Central
 * Reagieren auf Einstellungsänderungen, die in Azure IoT Central vorgenommen werden
 
-[Befolgen Sie die Schrittanleitungen auf GitHub](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md), um das Gerät zu konfigurieren.
+1. Stellen Sie eine Verbindung mit einer Shellumgebung auf Ihrem Raspberry Pi her – entweder über den Raspberry Pi-Desktop oder remote per SSH.
 
-1. Wenn das Gerät konfiguriert ist, beginnt es mit dem Senden von Telemetriemessungen an Azure IoT Central.
+1. Führen Sie den folgenden Befehl aus, um den IoT Central Python-Client zu installieren:
+
+    ```sh
+    pip install iotc
+    ```
+
+1. Herunterladen des Python-Beispielcodes:
+
+    ```sh
+    curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+    ```
+
+1. Bearbeiten Sie die heruntergeladene Datei `app.py`, und ersetzen Sie die Platzhalter `DEVICE_ID`, `SCOPE_ID` und `PRIMARY/SECONDARY device KEY` durch die Verbindungswerte, die Sie sich zuvor notiert haben. Speichern Sie die Änderungen.
+
+    > [!TIP]
+    > In der Shell auf dem Raspberry Pi können Sie den Text-Editor **nano** oder **vi** verwenden.
+
+1. Verwenden Sie den folgenden Befehl zum Ausführen des Beispiels:
+
+    ```sh
+    python app.py
+    ```
+
+    Ihr Raspberry Pi beginnt mit dem Senden von Telemetriemessungen an Azure IoT Central.
+
 1. In Ihrer Azure IoT Central-Anwendung können Sie sehen, wie der auf dem Raspberry Pi-Gerät ausgeführte Code mit der Anwendung interagiert:
 
     * Auf der Seite **Messungen** für Ihr echtes Gerät werden Ihnen die vom Raspberry Pi gesendeten Telemetriedaten angezeigt.
+    * Auf der Seite **Eigenschaften** können Sie die Geräteeigenschaft **Nummer** anzeigen.
     * Auf der Seite **Einstellungen** können Sie die Einstellungen am Raspberry Pi-Gerät ändern, wie z.B. Spannung und Lüfterdrehzahl. Wenn das Raspberry Pi-Gerät die Änderung bestätigt, wird die Einstellung als **synchronisiert** angezeigt.
 
 ## <a name="raspberry-pi-device-template-details"></a>Details zur Raspberry Pi-Gerätevorlage

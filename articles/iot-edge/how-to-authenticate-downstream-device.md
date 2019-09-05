@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4d6c7665d281ff7c27fd8b61537804b6803b3b43
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 1634d7cd3dfe8d118e220fa8620ef6467c15ea2c
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360167"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983016"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -29,6 +29,12 @@ Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung m
 Nachgeschaltete Geräte können sich bei IoT Hub mithilfe einer von drei Methoden authentifizieren: symmetrische Schlüssel (auch als SAS-Schlüssel bezeichnet), selbst signierte X.509-Zertifikate oder von einer Zertifizierungsstelle signierte X.509-Zertifikate. Die Authentifizierungsschritte ähneln den Schritten zum Einrichten anderer IoT Edge-Geräte mit IoT Hub. Kleinere Unterschiede bestehen bei der Deklaration der Gatewaybeziehung.
 
 Die Schritte in diesem Artikel veranschaulichen die manuelle Gerätebereitstellung, also die nicht automatisierte Bereitstellung mit dem Azure IoT Hub Device Provisioning Service. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Führen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md) aus.
+
+Im Artikel wird an mehreren Stellen auf den *Gatewayhostnamen* verwiesen. Der Gatewayhostname wird im **hostname**-Parameter der Datei „config.yaml“ auf dem IoT Edge-Gatewaygerät deklariert. Er wird verwendet, um die Zertifikate in diesem Artikel zu erstellen. Außerdem wird in der Verbindungszeichenfolge der nachgeschalteten Geräten darauf verwiesen. Der Gatewayhostname muss in eine IP-Adresse aufgelöst werden können – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei.
 
 ## <a name="symmetric-key-authentication"></a>Authentifizierung mit symmetrischen Schlüsseln
 

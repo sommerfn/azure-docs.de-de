@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737076"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982434"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -37,9 +37,10 @@ Unter bestimmten Umständen löst der Azure Backup-Dienst korrigierende Sicherun
 Die automatische Korrektur wird für alle Benutzer standardmäßig als Funktion aktiviert. Gehen Sie aber wie folgt vor, falls Sie sich dagegen entscheiden:
 
   * Erstellen Sie auf der SQL Server-Instanz im Ordner *C:\Programme\Azure Workload Backup\bin* die Datei **ExtensionSettingsOverrides.json** (bzw. bearbeiten Sie sie).
-  * Legen Sie unter  **ExtensionSettingsOverrides.json** Folgendes fest: *{"EnableAutoHealer": false}* .
+  * Legen Sie in **ExtensionSettingsOverrides.json** Folgendes fest: *{"EnableAutoHealer": false}* .
   * Speichern Sie Ihre Änderungen, und schließen Sie die Datei.
-  * Öffnen Sie auf der SQL Server-Instanz den **Task-Manager**, und starten Sie dann den Dienst **AzureWLBackupCoordinatorSvc** neu.  
+  * Öffnen Sie auf der SQL Server-Instanz den **Task-Manager**, und starten Sie dann den Dienst **AzureWLBackupCoordinatorSvc** neu.
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Häufig gestellte Fragen zur Sicherung von SQL Server auf Azure-VMs: Kann ich steuern, wie viele gleichzeitige Sicherungen für die SQL Server-Instanz ausgeführt werden?
 
@@ -71,12 +72,12 @@ Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen wer
 Im Menü **Sicherungsaufträge** werden nur Ad-hoc-Sicherungsaufträge angezeigt. Verwenden Sie für geplante Aufträge [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Bedarfsgesteuertes Überwachen mit Azure Monitor).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Werden zukünftige Datenbanken für die Durchführung von Sicherungen automatisch hinzugefügt?
-Ja. Sie können diese Funktion per  [automatischem Schutz](backup-sql-server-database-azure-vms.md#enable-auto-protection) erzielen.  
+Ja. Sie können diese Funktion per [automatischem Schutz](backup-sql-server-database-azure-vms.md#enable-auto-protection) erzielen.  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Was passiert mit den Sicherungen, wenn ich eine Datenbank von einer automatisch geschützten Instanz lösche?
 Wenn eine Datenbank aus einer automatisch geschützten Instanz gelöscht wird, wird weiterhin versucht, Sicherungen der Datenbank durchzuführen. Dies bedeutet auch, dass die gelöschte Datenbank unter **Sicherungselemente** als fehlerhaft angezeigt wird und weiterhin geschützt ist.
 
-Die richtige Vorgehensweise zum Beenden des Schutzes dieser Datenbank besteht darin, hierfür die Option  **Sicherung beenden** mit **Daten löschen** zu verwenden.  
+Die richtige Vorgehensweise zum Beenden des Schutzes dieser Datenbank besteht darin, hierfür die Option **Sicherung beenden** mit **Daten löschen** zu verwenden.  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Welches Verhalten ergibt sich, wenn ich den Vorgang „Sicherung beenden“ für eine automatisch geschützte Datenbank durchführe?
 Wenn Sie **Sicherung beenden mit „Daten beibehalten“** durchführen, werden keine weiteren Sicherungen erstellt, und die vorhandenen Wiederherstellungspunkte bleiben intakt. Die Datenbank wird trotzdem weiter als geschützt angesehen und unter **Sicherungselemente** angezeigt.

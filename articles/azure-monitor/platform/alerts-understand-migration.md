@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302243"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061560"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Funktionsweise des Migrationstools
 
@@ -36,7 +36,7 @@ Zwar können mit dem Tool fast alle [klassischen Warnungsregeln](monitoring-clas
 - Klassische Warnungsregeln für einige Cosmos DB-Metriken. Informationen finden Sie unter den [Details](#cosmos-db-metrics) weiter unten in diesem Artikel.
 - Klassische Warnungsregeln für alle Metriken klassischer virtueller Computer und Clouddienste (Microsoft.ClassicCompute/virtualMachines and Microsoft.ClassicCompute/domainNames/slots/roles). Informationen finden Sie unter den [Details](#classic-compute-metrics) weiter unten in diesem Artikel.
 
-Wenn Ihr Abonnement über klassische Regeln dieser Art verfügt, müssen Sie sie manuell migrieren. Da wir keine automatische Migration bereitstellen können, funktionieren alle vorhandenen klassischen Metrikwarnungen noch bis Juni 2020. Diese Verlängerung gibt Ihnen Zeit für die Umstellung auf neue Warnungen. Nach August 2019 können aber keine neuen klassischen Warnungen mehr erstellt werden.
+Wenn Ihr Abonnement über klassische Regeln dieser Art verfügt, müssen Sie sie manuell migrieren. Da wir keine automatische Migration bereitstellen können, funktionieren alle vorhandenen klassischen Metrikwarnungen noch bis Juni 2020. Diese Verlängerung gibt Ihnen Zeit für die Umstellung auf neue Warnungen. Sie können auch bis Juni 2020 weiterhin neue klassische Warnungen zu den oben aufgeführten Ausnahmen erstellen. Für alles andere können aber nach August 2019 keine neuen klassischen Warnungen mehr erstellt werden.
 
 > [!NOTE]
 > Wenn Ihre klassischen Warnungsregeln, neben den oben aufgeführten Ausnahmen, ungültig sind (d.h. sie gelten für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen, die gelöscht wurden) werden sie während der freiwilligen Migration nicht migriert. Derartige ungültige klassische Warnungsregeln werden bei der automatischen Migration gelöscht.
@@ -260,9 +260,16 @@ Nachdem Sie [die Migration ausgelöst haben](alerts-using-migration-tool.md), er
 
 Aufgrund von einigen kürzlich durchgeführten Änderungen an den klassischen Warnungsregeln in Ihrem Abonnement kann das Abonnement nicht migriert werden. Dies ist ein vorübergehendes Problem. Sie können die Migration neu starten, nachdem der Migrationsstatus nach einigen Tagen wieder **Bereit für die Migration** lautet.
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Richtlinien- oder Bereichssperre verhindert die Migration Ihrer Regeln
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Bereichssperre verhindert die Migration Ihrer Regeln
 
-Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Es besteht aber entweder eine Richtlinien- oder Bereichssperre, die verhindert, dass wir Ressourcen erstellen können. Je nach Richtlinien- oder Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Richtlinien- oder Bereichssperre vorübergehend aufheben und die Migration erneut auslösen.
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss für die Dauer des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Richtlinie mit Auswirkung „deny“ verhindert die Migration Ihrer Regeln
+
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Richtlinie kann jedoch das Erstellen von Ressourcen verhindern. Je nach Richtlinie können einige oder alle Regeln nicht migriert werden. Die Richtlinien, die den Prozess blockieren, werden im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt. Dieses Problem lässt sich auf eine der folgenden Arten beheben:
+
+- Ausschließen der Abonnements oder Ressourcengruppen von der Richtlinienzuweisung für die Dauer des Migrationsprozesses. [Erfahren Sie mehr über das Verwalten eines Ausschlussbereichs für Richtlinien](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
+- Entfernen oder Ändern des Effekts in „audit“ oder „append“ (wodurch beispielsweise Probleme im Zusammenhang mit fehlenden Tags gelöst werden können). [Erfahren Sie mehr über das Verwalten eines Effekts für Richtlinien](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

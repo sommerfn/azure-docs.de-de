@@ -10,17 +10,16 @@ ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5cceb7cc179f78d6b6d7350e7c4f6c31bb9cbfed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324037"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095715"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -115,7 +114,7 @@ Im Modus „Benutzerabonnement“ wird ein Azure-Schlüsseltresor benötigt. Die
 
 Wenn Sie das Batch-Konto im Benutzerabonnementmodus erstellen, verwenden Sie die Ressourcengruppe für den Schlüsseltresor. Geben Sie **Benutzerabonnement** als Poolzuordnungsmodus an, wählen Sie den Schlüsseltresor aus, und aktivieren Sie das Kontrollkästchen, um Azure Batch Zugriff auf den Schlüsseltresor zu gewähren. 
 
-Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, gehen Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, und wählen Sie **Microsoft Azure Batch** aus. Konfigurieren Sie die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
+Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und suchen Sie nach **Microsoft Azure Batch**. Nach Auswahl dieser Option müssen Sie die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs konfigurieren. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
 
 ![Berechtigungen für Geheimnis für Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 

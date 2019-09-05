@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60496365"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982586"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -182,10 +182,7 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 
 ## <a name="feedback"></a>Feedback
 
-Sie haben zwei Möglichkeiten, Ihr Feedback zu senden:
-
-- **UserVoice**. Teilen Sie Ideen zu wünschenswerten DNS Analytics-Features mit. Rufen Sie die UserVoice-Seite für [Log Analytics](https://aka.ms/dnsanalyticsuservoice) auf.
-- **Treten Sie unserer Gruppe bei**. Wir sind immer an neuen Kunden interessiert, die unseren Gruppen beitreten, um früh Zugriff auf neue Features zu erhalten und uns bei der Verbesserung von DNS Analytics zu helfen. Wenn Sie den Gruppen beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/dnsanalyticssurvey) aus.
+Rufen Sie für Feedback die UserVoice-Seite für [Log Analytics](https://aka.ms/dnsanalyticsuservoice) auf, um Ideen zu wünschenswerten DNS Analytics-Features mitzuteilen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

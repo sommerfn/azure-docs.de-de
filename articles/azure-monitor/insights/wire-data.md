@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1324bb90c0b92daf709b695a0a8b3af9161c2e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65601574"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905425"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0-Lösung (Vorschauversion) in Azure Monitor
 
@@ -60,9 +60,9 @@ Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agen
 
 | **Verbundene Quelle** | **Unterstützt** | **Beschreibung** |
 | --- | --- | --- |
-| Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) benötigen Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
-| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) benötigen Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
-| System Center Operations Manager-Verwaltungsgruppe | Ja | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Azure Monitor erforderlich. |
+| Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [Log Analytics-Agent für Windows](../platform/agent-windows.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](vminsights-enable-overview.md#supported-operating-systems). |
+| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [Log Analytics-Agent für Linux](../learn/quick-collect-linux-computer.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](vminsights-enable-overview.md#supported-operating-systems). |
+| System Center Operations Manager-Verwaltungsgruppe | Ja | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](../platform/om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Azure Monitor erforderlich. |
 | Azure-Speicherkonto | Nein | Da Wire Data Daten von Agent-Computern erfasst, sind keine Daten aus Azure Storage zu erfassen. |
 
 Unter Windows wird der Microsoft Monitoring Agent (MMA) von System Center Operations Manager und Azure Monitor zum Erfassen und Senden von Daten verwendet. Dieser Agent wird je nach Kontext als System Center Operations Manager-Agent, Log Analytics-Agent, MMA oder Direkt-Agent bezeichnet. System Center Operations Manager und Azure Monitor bieten leicht unterschiedliche Versionen der MMA. Jede dieser Versionen kann Berichte an System Center Operations Manager, Azure Monitor oder beide senden.
@@ -160,7 +160,7 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 
 ### <a name="dependency-agent-downloads"></a>Dependency-Agent – Downloads
 
-| Datei | Betriebssystem | Version | SHA-256 |
+| Datei | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -187,9 +187,9 @@ Der Dependency-Agent wird auf Windows-Computern mithilfe von „InstallDependenc
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Windows-Computer zu installieren:
 
 1. Installieren Sie den Log Analytics-Agent mithilfe der in [Sammeln von Daten von Windows-Computern, die in Ihrer Umgebung gehostet werden](../../azure-monitor/platform/agent-windows.md) aufgeführten Schritte.
-2. Laden Sie den Dependency-Agent von Windows über den Link aus dem vorherigen Abschnitt herunter, und führen Sie ihn dann mithilfe des folgenden Befehls aus: `InstallDependencyAgent-Windows.exe`.
+2. Laden Sie den Dependency-Agent für Windows über den Link im vorherigen Abschnitt herunter, und führen Sie ihn dann mithilfe des folgenden Befehls aus: `InstallDependencyAgent-Windows.exe`
 3. Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
-4. Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis „%Programfiles%\Microsoft Dependency Agent\logs“.
+4. Falls der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis „%Programfiles%\Microsoft Dependency Agent\logs“.
 
 #### <a name="windows-command-line"></a>Windows-Befehlszeile
 
@@ -202,7 +202,7 @@ InstallDependencyAgent-Windows.exe /?
 | <code>/?</code> | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | <code>/S</code> | Führt eine automatische Installation ohne Benutzereingaben aus. |
 
-Der Standardspeicherort von Dateien des Dependency-Agents für Windows lautet „C:\Programme\Microsoft Dependency Agent“.
+Der Standardspeicherort von Dateien für den Dependency-Agent für Windows lautet „C:\Programme\Microsoft Dependency Agent“.
 
 ### <a name="install-the-dependency-agent-on-linux"></a>Installieren des Dependency-Agents unter Linux
 
@@ -213,8 +213,8 @@ Der Dependency-Agent wird auf Linux-Computern mit „InstallDependencyAgent-Linu
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Linux-Computer zu installieren:
 
 1. Installieren Sie den Log Analytics-Agent mithilfe der in [Sammeln von Daten von Linux-Computern, die in Ihrer Umgebung gehostet werden](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) aufgeführten Schritte.
-2. Laden Sie den Dependency-Agent von Linux über den Link aus dem vorherigen Abschnitt herunter, und installieren Sie ihn dann mithilfe des folgenden Befehls als Root: „InstallDependencyAgent-Linux64.bin“.
-3. Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis: „/var/opt/microsoft/dependency-agent/log“.
+2. Laden Sie den Linux-Dependency-Agent über den Link aus dem vorherigen Abschnitt herunter, und installieren Sie ihn dann mithilfe des folgenden Befehls als Root: „InstallDependencyAgent-Linux64.bin“.
+3. Falls der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis: „/var/opt/microsoft/dependency-agent/log“.
 
 Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationsprogramm wie folgt mit dem `-help`-Flag aus.
 
@@ -228,7 +228,7 @@ InstallDependencyAgent-Linux64.bin -help
 | <code>-s</code> | Führt eine automatische Installation ohne Benutzereingaben aus. |
 | <code>--check</code> | Überprüft Berechtigungen und das Betriebssystem, ohne den Agent zu installieren. |
 
-Dateien für den Dependency-Agent befinden sich in den folgenden Verzeichnissen:
+Dateien für den Dependency-Agent werden in den folgenden Verzeichnissen gespeichert:
 
 | **Dateien** | **Location** |
 | --- | --- |
@@ -277,7 +277,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -399,7 +399,7 @@ Ein Datensatz mit dem Typ _WireData_ wird für jeden Eingabedatentyp erstellt. D
 | IPVersion | IP-Version |
 | Direction | Eingehend oder ausgehend |
 | MaliciousIP | IP-Adresse einer bekannten schädlichen Quelle |
-| Severity | Vermuteter Malwareschweregrad |
+| severity | Vermuteter Malwareschweregrad |
 | RemoteIPCountry | Land/Region der Remote-IP-Adresse |
 | ManagementGroupName | Name der Operations Manager-Verwaltungsgruppe |
 | SourceSystem | Quelle, auf der Daten gesammelt wurden |
@@ -417,7 +417,6 @@ Ein Datensatz mit dem Typ _WireData_ wird für jeden Eingabedatentyp erstellt. D
 | ProcessName | Pfad und Dateiname des Prozesses |
 | RemoteIPLongitude | IP-Längengradwert |
 | RemoteIPLatitude | IP-Breitengradwert |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071628"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972062"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -64,7 +64,7 @@ Die obigen Beispiele für die Auslösung der Warnungsregel finden Sie auch im Az
 
 Wenn die Verwendung von „myVM“ bei nachfolgenden Prüfungen weiterhin über dem Schwellenwert liegt, wird die Warnungsregel erst nach Auflösen der Bedingungen wieder ausgelöst.
 
-Nach einer gewissen Zeit, wenn die Nutzung von „myVM“ wieder einen normalen Wert erreicht, fällt sie wieder unter den Schwellenwert. Die Warnungsregel überwacht die Bedingung noch zweimal, um eine Benachrichtigung zur aufgelösten Bedingung zu versenden. Die Warnungsregel sendet eine aufgelöste/deaktivierte Nachricht, wenn die Warnungsbedingung drei aufeinanderfolgende Zeiträume lang nicht erfüllt ist, um Störungen im Falle von Fluktuationsbedingungen zu reduzieren.
+Nach einer gewissen Zeit erreicht die Nutzung von „myVM“ wieder einen normalen Wert (fällt unter den Schwellenwert). Die Warnungsregel überwacht die Bedingung noch zweimal, um eine Benachrichtigung zur aufgelösten Bedingung zu versenden. Die Warnungsregel sendet eine aufgelöste/deaktivierte Nachricht, wenn die Warnungsbedingung drei aufeinanderfolgende Zeiträume lang nicht erfüllt ist, um Störungen im Falle von Fluktuationsbedingungen zu reduzieren.
 
 Da die aufgelöste Benachrichtigung über einen Webhook oder eine E-Mail versendet wird, wird auch der Status der Warnungsinstanz (Monitorzustand) im Azure-Portal auf „aufgelöst“ festgelegt.
 

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/19/2019
+ms.date: 08/22/2019
 ms.author: dalek
-ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624398"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982606"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -65,30 +65,43 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 
 ![Auswählen der Option „Abrechnung“ im Menü auf der linken Seite](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Datenrate
-Das Volumen der Daten, die Sie senden, ist auf dreierlei Weise beschränkt:
+## <a name="managing-your-data-volume"></a>Verwalten des Datenvolumens 
 
-* **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../azure-monitor/app/sampling.md). 
-* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
-
-    Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an. 
-
-    Überlegen Sie gründlich, wenn Sie die tägliche Obergrenze festlegen. Sie sollten darauf achten, *niemals die tägliche Obergrenze zu erreichen*. Anderenfalls verlieren Sie die Daten des restlichen Tages, und Sie können nicht Ihre Anwendung überwachen. Um die tägliche Obergrenze zu ändern, verwenden Sie die Option **Obergrenze für das tägliche Volumen**. Sie können über den Bereich **Nutzung und geschätzte Kosten** auf diese Option zugreifen. (Dies wird weiter unten in diesem Artikel ausführlicher beschrieben.)
-    Wir haben die Beschränkung für bestimmte Abonnementtypen entfernt, bei denen Guthaben gewährt wurden, die nicht für Application Insights verwendet werden konnten. Wenn zuvor für das Abonnement ein Ausgabenlimit galt, enthielt das Dialogfeld mit der täglichen Obergrenze Anweisungen, wie das Ausgabenlimit zu entfernen ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.
-* **Drosselung**: Durch eine Drosselung wird die Datenrate auf 32.000 Ereignisse pro Sekunde eingeschränkt (gemittelt über 1 Minute pro Instrumentierungsschlüssel).
-
-*Was geschieht, wenn meine App die Drosselungsrate überschreitet?*
-
-* Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, diese erneut zu senden. Es führt zu einem mehrere Minuten andauernden Anstieg. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen, Daten auf diese Weise erneut zu senden, wohingegen andere SDKs gedrosselte Daten möglicherweise einfach löschen.) Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
-
-*Woher weiß ich, wie viele Daten meine App sendet?*
-
-Sie können eine der folgenden Optionen verwenden, um festzustellen, wie viele Daten Ihre App sendet:
+Um zu erfahren, wie viele Daten Ihre App sendet, können Sie folgende Aktionen ausführen:
 
 * Navigieren Sie zum Bereich **Nutzung und geschätzte Kosten**, um das Diagramm des täglichen Datenvolumens anzuzeigen. 
 * Fügen Sie im Metrik-Explorer ein neues Diagramm hinzu. Wählen Sie für die Diagrammmetrik **Datenpunktvolumen** aus. Aktivieren Sie **Gruppierung**, und gruppieren Sie nach **Datentyp**.
+* Verwenden Sie den Datentyp `systemEvents`. Wenn Sie beispielsweise das am letzten Tag verbrauchte Datenvolumen anzeigen möchten, lautet die Abfrage:
 
-## <a name="reduce-your-data-rate"></a>Verringern der Datenrate
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Diese Abfrage kann in einer [Azure-Protokollwarnung](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) verwendet werden, um Warnungen für Datenvolumen einzurichten. 
+
+Das Volumen der gesendeten Daten kann auf drei Arten verwaltet werden:
+
+* **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../azure-monitor/app/sampling.md).
+ 
+* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
+
+    Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an. 
+    
+    E-Mails mit Warnungen zur täglichen Obergrenze werden an Konten gesendet, die Mitglieder der folgenden Rollen für Ihre Application Insights-Ressource sind: „Dienstadministrator“, „Kontoadministrator“, „Co-Administrator“, „Besitzer“.
+
+    Überlegen Sie gründlich, wenn Sie die tägliche Obergrenze festlegen. Sie sollten darauf achten, *niemals die tägliche Obergrenze zu erreichen*. Anderenfalls verlieren Sie die Daten des restlichen Tages, und Sie können nicht Ihre Anwendung überwachen. Um die tägliche Obergrenze zu ändern, verwenden Sie die Option **Obergrenze für das tägliche Volumen**. Sie können über den Bereich **Nutzung und geschätzte Kosten** auf diese Option zugreifen. (Dies wird weiter unten in diesem Artikel ausführlicher beschrieben.)
+    
+    Wir haben die Beschränkung für bestimmte Abonnementtypen entfernt, bei denen Guthaben gewährt wurden, die nicht für Application Insights verwendet werden konnten. Wenn zuvor für das Abonnement ein Ausgabenlimit galt, enthielt das Dialogfeld mit der täglichen Obergrenze Anweisungen, wie das Ausgabenlimit zu entfernen ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.
+    
+* **Drosselung**: Durch eine Drosselung wird die Datenrate auf 32.000 Ereignisse pro Sekunde eingeschränkt (gemittelt über 1 Minute pro Instrumentierungsschlüssel). Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, diese erneut zu senden. Es führt zu einem mehrere Minuten andauernden Anstieg. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen, Daten auf diese Weise erneut zu senden, wohingegen andere SDKs gedrosselte Daten möglicherweise einfach löschen.) Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
+
+## <a name="reduce-your-data-volume"></a>Reduzieren des Datenvolumens
+
 Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
 
 * Verwenden Sie [Stichproben](../../azure-monitor/app/sampling.md). Durch diese Technologie wird Ihre Datenrate ohne Datenschiefe bei Ihren Metriken reduziert. Sie können weiterhin zwischen verwandten Elementen in der Search navigieren. Bei Server-Apps erfolgt die Stichprobenerstellung automatisch.

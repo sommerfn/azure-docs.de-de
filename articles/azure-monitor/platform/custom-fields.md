@@ -11,19 +11,19 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.date: 08/23/2019
 ms.author: bwren
-ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461817"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012729"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es gibt Vorteile beim Analysieren von Textdaten in einer Abfrage, nachdem sie gesammelt wurden, wie in [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben.
+> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es wird empfohlen, Textdaten nach dem Sammeln in einem Abfragefilter zu analysieren, wie es unter [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben ist. Dies bietet mehrere Vorteile gegenüber der Verwendung benutzerdefinierter Felder.
 
 Mit dem Feature **Benutzerdefinierte Felder** von Azure Monitor können Sie vorhandene Datensätze in Ihrem Log Analytics-Arbeitsbereich durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
