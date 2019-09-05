@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720412"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274723"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -80,7 +80,7 @@ Folgende Eigenschaften werden für den mit einer Webtabelle verknüpften Dienst 
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Dataset „Webtabelle“ unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Dataset „Webtabelle“ unterstützt werden.
 
 Legen Sie zum Kopieren von Daten aus einer Webtabelle die „type“-Eigenschaft des Datasets auf **WebTable** fest. Folgende Eigenschaften werden unterstützt:
 

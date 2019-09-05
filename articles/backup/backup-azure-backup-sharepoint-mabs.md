@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/8/2018
+ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: e31c875f31f118716feea0c73bc2ca70a4ecd9a5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bdf0f64bf24f77d54a8fed8714a0cc7c3de814b1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954825"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210464"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.

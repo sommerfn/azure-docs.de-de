@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: e0309ac70d39272bf045e49ca7ddecd258cc1f36
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: f567eefee84cf6a01afad4e5245337dd92b8cc48
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992046"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309427"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
 Mithilfe des Lesereplikatfeatures können Sie Daten von einem Azure Database for MySQL-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver bis zu fünf Replikate replizieren. Replikate werden asynchron mithilfe des auf der Position der nativen, binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MySQL-Engine aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 Replikate sind neue Server, die Sie ähnlich wie normale Azure Database for MySQL-Server verwalten. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen sowie der Speicher in GB/Monat in Rechnung gestellt.
 
@@ -36,9 +33,6 @@ Das Lesereplikatfeature verwendet die asynchrone MySQL-Replikation. Das Feature 
 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
 Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
-
-> [!IMPORTANT]
-> Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 Sie können einen Masterserver in jeder [Azure Database for MySQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen.
 
@@ -121,7 +115,7 @@ Ein Lesereplikat wird als neuer Azure Database for MySQL-Server erstellt. Ein vo
 
 ### <a name="replica-configuration"></a>Replikatkonfiguration
 
-Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher, der Aufbewahrungszeitraum für Sicherungen und die Version der MySQL-Engine. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
+Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
 
 > [!IMPORTANT]
 > Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.

@@ -3,21 +3,20 @@ title: Verzweigungen in Azure Data Factory-Pipeline | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Datenfluss in Azure Data Factory, durch die Verkettung und Verzweigung von Aktivitäten steuern.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: shlo
-ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649219"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140733"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -46,8 +45,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 * **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos.
 * **Azure SQL-Datenbank**. Sie verwenden die Datenbank als **Senkendatenspeicher**. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie die Anleitung zum Erstellen einer solchen im Artikel [Create an Azure SQL database (Erstellen einer Azure SQL-Datenbank)](../sql-database/sql-database-get-started-portal.md).
 * **Visual Studio** 2013, 2015 oder 2017 Die Vorgehensweise in diesem Artikel verwendet Visual Studio 2017.
-* **Laden und installieren Sie [Azure .NET SDK](https://azure.microsoft.com/downloads/)**.
-* **Create an application in Azure Active Directory (Erstellen Sie eine Anwendung in Azure Active Directory)**, indem Sie [these instructions (diese Anweisungen)](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten verwenden: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle „**Mitwirkender**“ zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+* **Laden und installieren Sie [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
+* **Create an application in Azure Active Directory (Erstellen Sie eine Anwendung in Azure Active Directory)** , indem Sie [these instructions (diese Anweisungen)](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten verwenden: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle „**Mitwirkender**“ zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
 
 ### <a name="create-blob-table"></a>Erstellen Sie eine Blob-Tabelle
 
@@ -66,7 +65,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
 
 1. Starten Sie **Visual Studio**.
 2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**. .NET-Version 4.5.2 oder höher ist erforderlich.
-3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#** -> **Konsolen-App (.NET Framework)** aus.
+3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#**  -> **Konsolen-App (.NET Framework)** aus.
 4. Geben Sie **ADFv2BranchTutorial** für den Namen ein.
 5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
@@ -335,7 +334,7 @@ Ihre Anforderung sollte im Logik-App-Designer wie folgt aussehen:
 
 ![Logik-App-Designer: Anforderung](media/tutorial-control-flow/logic-app-designer-request.png)
 
-Für die **Send Email (E-Mail senden)**-Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel: 
+Für die **Send Email (E-Mail senden)** -Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel:
 
 ![Logik-App-Designer: E-Mail-Sendeaktion](media/tutorial-control-flow/send-email-action.png)
 
@@ -348,7 +347,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow 
 
-Klonen Sie Ihre **CopySuccessEmail** (E-Mail über den Kopiererfolg), und erstellen Sie einen anderen Logik-Apps Workflow von **CopyFailEmail (E-Mail über den fehlgeschlagenen Kopiervorgang)**. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie einfach das Format Ihrer E-Mail wie den `Subject`, um diesen an eine Fehler-E-Mail anzupassen. Beispiel: 
+Klonen Sie Ihre **CopySuccessEmail** (E-Mail über den Kopiererfolg), und erstellen Sie einen anderen Logik-Apps Workflow von **CopyFailEmail (E-Mail über den fehlgeschlagenen Kopiervorgang)** . Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie einfach das Format Ihrer E-Mail wie den `Subject`, um diesen an eine Fehler-E-Mail anzupassen. Beispiel:
 
 ![Logik-App-Designer: Fehler-E-Mail-Workflow](media/tutorial-control-flow/fail-email-workflow.png)
 
@@ -504,7 +503,7 @@ Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. We
 Fügen Sie in der „Url“-Eigenschaft die Anforderungs-URL-Endpunkte aus Ihrem Logic-Apps-Workflow entsprechend ein. Übergeben Sie in der Eigenschaft „Text“ eine Instanz der „EmailRequest"-Klasse. Die E-Mail-Anforderung enthält die folgenden Eigenschaften:
 
 - Nachricht: Übergibt den Wert von `@{activity('CopyBlobtoBlob').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
-- Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md) 
+- Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md)
 - Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
 - Empfänger: Übergibt den Wert von „\@pipeline().parameters.receiver“). Zugriff auf die Pipeline-Parameter
  

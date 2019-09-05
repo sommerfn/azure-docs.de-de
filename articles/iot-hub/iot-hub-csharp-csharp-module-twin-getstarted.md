@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: e5d2e485283f71b27bb5e93330a54e1b987044c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883784"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147758"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (.NET)
 
@@ -31,7 +31,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps:
 > [!NOTE]
 > Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können, finden Sie unter [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
-Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Visual Studio.
 

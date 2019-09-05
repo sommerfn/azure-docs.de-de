@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d03e43ab2c26131c35eb78815d34cd959cc785
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347485"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213564"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Tutorial: Integrieren von JFrog Artifactory in Azure Active Directory
 
@@ -95,11 +95,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den JFrog Artifactory-Client](https://support.jfrog.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Die JFrog Artifactory-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+1. Die JFrog Artifactory-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
     ![image](common/edit-attribute.png)
 
-1. Darüber hinaus wird von der JFrog Artifactory-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld  **Gruppenansprüche (Vorschau)**   im Abschnitt  **Benutzerattribute und Ansprüche**  die folgenden Schritte aus:
+1. Darüber hinaus wird von der JFrog Artifactory-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
     a. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen**.
 

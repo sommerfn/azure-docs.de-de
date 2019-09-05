@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 74f27f70c4a0752975a53b3889681d3910b1dd05
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906437"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309500"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe des Azure-Portals
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MySQL-Dienst über das Azure-Portal erstellen und verwalten.
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

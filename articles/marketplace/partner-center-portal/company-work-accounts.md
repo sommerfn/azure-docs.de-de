@@ -1,18 +1,18 @@
 ---
 title: Geschäftskonten und Partner Center
 description: Überprüfen, ob Ihr Unternehmen ein Geschäftskonto eingerichtet hat, Erstellen eines neuen Geschäftskontos und Einrichten mehrerer Geschäftskonten für die Verwendung mit Partner Center
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: d9326cab6cb5ed4ca76c9a84654697f9f90bcfcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619545"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194284"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
 

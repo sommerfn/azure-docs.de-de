@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 1c365790e1633a74be9f5baf41098e7511f99a7d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563286"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163676"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Erstellen eines Hostpools mit PowerShell
 
@@ -25,7 +25,7 @@ Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterlade
 Führen Sie das folgende Cmdlet aus, um sich an der Windows Virtual Desktop-Umgebung anzumelden:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 Führen Sie als Nächstes dieses Cmdlet aus, um für Ihren Windows Virtual Desktop-Mandanten einen neuen Hostpool zu erstellen:
@@ -82,7 +82,7 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, damit der 
 5. Authentifizieren Sie sich mit einem Domänenkonto, das über Berechtigungen für in die Domäne eingebundene Computer verfügt.
 
     >[!NOTE]
-    > Wenn Sie Ihre virtuellen Computer einer Azure AD Domain Services-Umgebung beitreten lassen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group) ist.
+    > Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group) ist.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool (Vorschauversion)
 

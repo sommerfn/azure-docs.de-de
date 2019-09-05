@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66168942"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140808"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -54,13 +53,13 @@ Hier sind die Schritte des typischen End-to-End-Workflows zum inkrementellen Lad
 ## <a name="high-level-solution"></a>Allgemeine Lösung
 In diesem Tutorial erstellen Sie zwei Pipelines, mit denen die folgenden beiden Vorgänge durchgeführt werden:  
 
-1. **Erstes Laden:**: Sie erstellen eine Pipeline mit einer Kopieraktivität, bei der die gesamten Daten aus dem Quelldatenspeicher (Azure SQL-Datenbank) in den Zieldatenspeicher (Azure Blob Storage) kopiert werden.
+1. **Erstes Laden:** : Sie erstellen eine Pipeline mit einer Kopieraktivität, bei der die gesamten Daten aus dem Quelldatenspeicher (Azure SQL-Datenbank) in den Zieldatenspeicher (Azure Blob Storage) kopiert werden.
 
     ![Vollständiges Laden von Daten](media/tutorial-incremental-copy-change-tracking-feature-portal/full-load-flow-diagram.png)
 1.  **Inkrementell laden:** Sie erstellen eine Pipeline mit den folgenden Aktivitäten und führen sie regelmäßig aus. 
     1. Erstellen Sie **zwei Lookup-Aktivitäten**, um die alte und neue SYS_CHANGE_VERSION aus Azure SQL-Datenbank abzurufen und an die Kopieraktivität zu übergeben.
     2. Erstellen Sie **eine Kopieraktivität**, um die eingefügten/aktualisierten/gelöschten Daten zwischen den beiden SYS_CHANGE_VERSION-Werten aus Azure SQL-Datenbank nach Azure Blob Storage zu kopieren.
-    3. Erstellen Sie **eine Aktivität „Gespeicherte Prozedur“**, um den Wert von SYS_CHANGE_VERSION für die nächste Pipelineausführung zu aktualisieren.
+    3. Erstellen Sie **eine Aktivität „Gespeicherte Prozedur“** , um den Wert von SYS_CHANGE_VERSION für die nächste Pipelineausführung zu aktualisieren.
 
     ![Flussdiagramm für inkrementelles Laden](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png)
 
@@ -241,7 +240,7 @@ In diesem Schritt erstellen Sie ein Dataset, das für die Quelldaten steht.
 4. Wechseln Sie zur Registerkarte **Verbindung**, und führen Sie die folgenden Schritte aus: 
     
     1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**. 
-    2. Wählen Sie unter **Tabelle** die Option **[dbo].[data_source_table]**. 
+    2. Wählen Sie unter **Tabelle** die Option **[dbo].[data_source_table]** . 
 
    ![Quellverbindung](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-connection.png)
 
@@ -274,7 +273,7 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern der Version für die �
 4. Wechseln Sie zur Registerkarte **Verbindung**, und führen Sie die folgenden Schritte aus: 
     
     1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**. 
-    2. Wählen Sie unter **Tabelle** die Option **[dbo].[table_store_ChangeTracking_version]**. 
+    2. Wählen Sie unter **Tabelle** die Option **[dbo].[table_store_ChangeTracking_version]** . 
 
 ## <a name="create-a-pipeline-for-the-full-copy"></a>Erstellen einer Pipeline für den vollständigen Kopiervorgang
 In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei der die gesamten Daten aus dem Quelldatenspeicher (Azure SQL-Datenbank) in den Zieldatenspeicher (Azure Blob Storage) kopiert werden.
@@ -414,7 +413,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
     2. Wählen Sie die Option **Import parameter** (Importparameter). 
     3. Geben Sie im Abschnitt **Parameter der gespeicherten Prozedur** die folgenden Werte für den Parameter an: 
 
-        | NAME | Type | Wert | 
+        | NAME | type | Wert | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | Zeichenfolge | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 

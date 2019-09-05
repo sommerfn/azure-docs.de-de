@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 4847a69e7ffaefca8e0c738aee6e1077f421ec62
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049081"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147735"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Planen und Übertragen von Aufträgen (.NET)
 
@@ -50,8 +50,6 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps (C#):
 * **ScheduleJob:** Diese App verwendet Aufträge zum Aufrufen der direkten **LockDoor**-Methode und Aktualisieren der gewünschten Gerätezwillingseigenschaften auf mehreren Geräten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio.
 

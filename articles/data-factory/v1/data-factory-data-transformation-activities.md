@@ -3,22 +3,20 @@ title: 'Datentransformation: Verarbeiten und Transformieren von Daten | Microsof
 description: Informationen Sie zum Transformieren von Daten oder Verarbeiten von Daten in Azure Data Factory mit Hadoop, Machine Learning und Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 39786731-1e4b-40a4-81b7-d06e127427aa
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: b1a99f2872a69e01232c69a73f36319552429ca0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e70877a51c23be2d626492f84a69ae49fb27fac
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486599"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139768"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformieren von Data in Azure Data Factory
 > [!div class="op_single_selector"]
@@ -94,7 +92,7 @@ Azure Data Factory unterstützt für die Aktivitäten die folgenden Datentransfo
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |Azure-VM |
+| [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse oder SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] oder Azure Batch |

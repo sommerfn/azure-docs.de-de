@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 9e71757215f6a0a5b664abd3f8a9ee632b1535f3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b150dc8e0688b27fdc677bf23a75389c493f1325
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876373"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210192"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird erläutert, wie Sie einzelne Dateien wiederherstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -106,7 +106,7 @@ Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführu
 
     Das Skript wird heruntergeladen, und ein Kennwort wird wie im folgenden Beispiel angezeigt:
 
-    ```
+    ```output
     File downloaded: myVM_we_1571974050985163527.sh. Use password c068a041ce12465
     ```
 

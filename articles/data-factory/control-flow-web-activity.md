@@ -3,21 +3,20 @@ title: Webaktivität in Azure Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Webaktivität, eine der Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden, verwenden können, um einen REST-Endpunkt aus einer Pipeline aufzurufen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: shlo
-ms.openlocfilehash: f6153bf1162eaa1c7eab2c358977d754695b64fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 73770e559af8a999c17fff5ea1aa6ee53ac17e83
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325392"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141582"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webaktivität in Azure Data Factory
 Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.

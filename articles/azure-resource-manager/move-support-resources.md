@@ -3,15 +3,15 @@ title: Unterstützung des Verschiebevorgangs je nach Azure-Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: a588d4e4b1978b572488dcd5d53698cbb8f7d311
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997288"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194842"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Außerdem finden Sie hier Informationen zu speziellen Bedingungen, die beim Verschieben einer Ressource berücksichtigt werden müssen.

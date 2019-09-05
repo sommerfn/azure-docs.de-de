@@ -3,21 +3,20 @@ title: Pipelineausführung und Trigger in Azure Data Factory | Microsoft-Dokumen
 description: Dieser Artikel enthält Informationen zur Ausführung einer Pipeline in Azure Data Factory entweder bei Bedarf oder durch Erstellen eines Triggers.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.author: shlo
-ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34ff075a604afdcbef67c7b10ce1ef8cbe2924e7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155219"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137037"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Diensts aus, den Sie verwenden:"]
@@ -277,7 +276,7 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 
 ### <a name="schema-defaults-limits-and-examples"></a>Schemastandards, Einschränkungen und Beispiele
 
-| JSON-Eigenschaft | Type | Erforderlich | Standardwert | Gültige Werte | Beispiel |
+| JSON-Eigenschaft | type | Erforderlich | Standardwert | Gültige Werte | Beispiel |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |

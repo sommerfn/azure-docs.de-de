@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: f95bd3959693879c6560d00be1fb036748d3a439
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129383"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141152"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
@@ -115,7 +115,7 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |256 |256 |
 | Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4&nbsp;Millionen |4&nbsp;Millionen |4&nbsp;Millionen |– |4&nbsp;Millionen |4&nbsp;Millionen |
 
-<sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen. Für eine KI-Indizierung, die Aufrufe in Cognitive Services ausführt, gilt bei den kostenlosen Diensten ein Limit von 20 kostenlosen Transaktionen pro Indexer pro Tag. Dabei ist eine Transaktion als ein Dokument definiert, das die Anreicherungspipeline erfolgreich durchläuft. 
+<sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen. Für eine KI-Indizierung, die Aufrufe in Cognitive Services ausführt, gilt bei den kostenlosen Diensten ein Limit von 20 kostenlosen Transaktionen pro Tag. Dabei ist eine Transaktion als ein Dokument definiert, das die Anreicherungspipeline erfolgreich durchläuft.
 
 <sup>2</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indexer, Datenquellen und Qualifikationsgruppen.
 
@@ -131,8 +131,8 @@ Die maximal zulässige Anzahl von Synonymzuordnungen variiert je nach Tarif. Jed
 
 | Resource | Kostenlos | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
-| Maximale Synonymzuordnungen |3 |3|5 |10 |20 |20 | 5 | 5 |
-| Maximale Anzahl von Regeln pro Zuordnung |5\.000 |10000|10000 |10000 |10000 |10000 | 10000 | 10000  |
+| Maximale Synonymzuordnungen |3 |3|5 |10 |20 |20 | 10 | 10 |
+| Maximale Anzahl von Regeln pro Zuordnung |5\.000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Abfragen pro Sekunde (QPS)
 

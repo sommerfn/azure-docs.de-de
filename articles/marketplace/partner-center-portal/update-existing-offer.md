@@ -1,18 +1,18 @@
 ---
 title: Aktualisieren eines bestehenden Commercial Marketplace-Angebots
 description: Erfahren Sie, wie Sie ein bestehendes Commercial Marketplace-Angebot aktualisieren können, einschließlich Bearbeitung, Löschung eines Entwurfs, Stornierung einer Veröffentlichungsanforderung, Einstellung des Verkaufs eines Angebots oder Plans und Synchronisierung privater Zielgruppen.
-author: mattwojo
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f591df0fe93336da09e9c441292c97be09f25a2e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442090"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191763"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualisieren eines bestehenden Commercial Marketplace-Angebots
 

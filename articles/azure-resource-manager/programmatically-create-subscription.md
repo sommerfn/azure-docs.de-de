@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 755eabe97508b403205ff04a8d2d35feee314eb9
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848714"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258930"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure Enterprise-Abonnements (Vorschau)
 
@@ -173,7 +173,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | Nein       | Zeichenfolge | Die E-Mail-Adresse eines Benutzers, den Sie als RBAC Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können diesen Parameter anstelle von `OwnerObjectId` verwenden.|
 | `OwnerApplicationId` | Nein       | Zeichenfolge | Die Anwendungs-ID eines Dienstprinzipals, den Sie als RBAC-Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können diesen Parameter anstelle von `OwnerObjectId` verwenden. Wenn Sie diesen Parameter verwenden zu können, benötigt das Dienstprinzipal [Lesezugriff auf das Verzeichnis](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
 
-Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [New-AzSubscription](/powershell/module/az.subscription.preview).
+Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [New-AzSubscription](/powershell/module/az.subscription).
 
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

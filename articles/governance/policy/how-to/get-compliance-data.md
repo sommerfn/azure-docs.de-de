@@ -7,13 +7,12 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 428a1614889409300064420e1d3d4fbc0423a0ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237526"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239146"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -28,8 +27,6 @@ Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, besch
 
 > [!WARNING]
 > Wenn der Konformitätszustand als **Nicht registriert** gemeldet wird, sollten Sie überprüfen, ob der **Microsoft.PolicyInsights**-Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verfügt. Dies ist unter [Rollenbasierte Zugriffssteuerung in Azure Policy](../overview.md#rbac-permissions-in-azure-policy) beschrieben.
-
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Auswertungsauslöser
 
@@ -60,13 +57,13 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
 
 Der Scan unterstützt die Auswertung von Ressourcen in einem Abonnement oder in einer Ressourcengruppe. Starten Sie einen Scan nach Bereich mit einem REST-API-Befehl **POST** anhand der folgenden URI-Strukturen:
 
-- Abonnement
+- Subscription
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-- Ressourcengruppe
+- Resource group
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview

@@ -15,14 +15,17 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899721"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142827"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
+
+> [!CAUTION]
+> Stellen Sie sicher, dass Sie die Funktionsweise des bedingten Zugriffs verstehen, bevor Sie eine Richtlinie einrichten, um den Zugriff auf die Azure-Verwaltung zu steuern. Versichern Sie sich, dass Sie keine Bedingungen erstellen, die Ihren eigenen Zugriff auf das Portal blockieren könnten.
 
 Der bedingte Zugriff in Azure Active Directory (Azure AD) steuert basierend auf den von Ihnen angegebenen Bedingungen den Zugriff auf Cloud-Apps. Um den Zugriff zuzulassen, erstellen Sie basierend darauf, ob die Anforderungen in der Richtlinie erfüllt werden, bedingte Zugriffsrichtlinien, die den Zugriff erlauben oder blockieren. 
 
@@ -44,7 +47,5 @@ Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, ei
 
 Hinweis: Die Richtlinie gilt für Azure PowerShell, von dem die Azure Resource Manager-API aufgerufen wird. Sie gilt nicht für [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), von dem Microsoft Graph aufgerufen wird.
 
-> [!CAUTION]
-> Stellen Sie sicher, dass Sie die Funktionsweise des bedingten Zugriffs verstehen, bevor Sie eine Richtlinie einrichten, um den Zugriff auf die Azure-Verwaltung zu steuern. Versichern Sie sich, dass Sie keine Bedingungen erstellen, die Ihren eigenen Zugriff auf das Portal blockieren könnten.
 
 Weitere Informationen zum Einrichten und Verwenden des bedingten Zugriffs finden Sie unter [Bedingter Zugriff in Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).

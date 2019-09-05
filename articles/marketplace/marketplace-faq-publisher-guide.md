@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000007"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309022"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -263,7 +263,7 @@ Der Azure Marketplace wurde für IT-Experten und Cloudentwickler konzipiert, die
 
 **Warum sollte ich meine Anwendung im Azure Marketplace veröffentlichen, und wie profitiere ich davon?**
 
-Der Azure Marketplace ist ein Marktplatz für Microsoft-Partner, auf dem sie ihre Produkte und Dienste bewerben und an Azure-Kunden verkaufen können. Herausgeber erhalten sofort Zugriff auf 140 globale Märkte, unsere mehr als 300.000 Partner sowie das Netzwerk der Unternehmenskunden von Azure.  Der Marketplace umfasst mehr als 90 % der Fortune 500-Unternehmen sowie zahlreiche der weltweit führenden Entwickler. Für neue Partner im Azure Marketplace wird automatisch eine Reihe [kostenloser Ressourcen für die Markteinführung](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace) angeboten, um ihr Angebot im Azure Marketplace bekannter zu machen.
+Der Azure Marketplace ist ein Marktplatz für Microsoft-Partner, auf dem sie ihre Produkte und Dienste bewerben und an Azure-Kunden verkaufen können. Herausgeber erhalten sofort Zugriff auf 140 globale Märkte, unsere mehr als 300.000 Partner sowie das Netzwerk der Unternehmenskunden von Azure.  Der Marketplace umfasst mehr als 90 % der Fortune 500-Unternehmen sowie zahlreiche der weltweit führenden Entwickler. Für neue Partner im Azure Marketplace wird automatisch eine Reihe [kostenloser Ressourcen für die Markteinführung](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) angeboten, um ihr Angebot im Azure Marketplace bekannter zu machen.
 
 **Worin besteht der Unterschied zwischen Azure Marketplace und AppSource?**
 

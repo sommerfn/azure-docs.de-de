@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102890"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142903"
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -45,7 +45,7 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
 
 - Beim Zuordnen eines Arbeitsbereichs erhalten Sie die Möglichkeit, einen neuen Arbeitsbereich zu erstellen oder einen vorhandenen anzufügen:
   - Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
-  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Leserzugriff auf den Arbeitsbereich haben.
+  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Leserzugriff auf den Arbeitsbereich haben.
 
   > [!NOTE]
   > Nachdem Sie einem Projekt einen Arbeitsbereich hinzugefügt haben, können Sie ihn nicht mehr ändern.

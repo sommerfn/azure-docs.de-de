@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656841"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242437"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Beheben von Problemen bei der Azure-Anmeldung
 
@@ -106,7 +106,7 @@ Nach der Registrierung wird möglicherweise eine kleine Prüfsperre in Ihrem Kre
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Ich kann kein neues Azure In Open-Abonnement aktivieren
 
-Um ein Azure In Open-Abonnement zu erstellen, müssen Sie über einen gültigen OSA-Schlüssel (Online Service Activation) verfügen, dem mindestens ein Azure In Open-Token zugeordnet ist. Wenn Sie keinen OSA-Schlüssel haben, wenden Sie sich an einen der unter [Microsoft Pinpoint](http://pinpoint.microsoft.com/) aufgeführten Microsoft-Partner.
+Um ein Azure In Open-Abonnement zu erstellen, müssen Sie über einen gültigen OSA-Schlüssel (Online Service Activation) verfügen, dem mindestens ein Azure In Open-Token zugeordnet ist. Wenn Sie keinen OSA-Schlüssel haben, wenden Sie sich an einen der unter [Microsoft Pinpoint](https://pinpoint.microsoft.com/) aufgeführten Microsoft-Partner.
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Fehler *Sie besitzen keine Berechtigung für ein Azure-Abonnement*
 

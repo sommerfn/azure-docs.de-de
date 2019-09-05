@@ -7,13 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 2ff34911dea19b83731b46077bd60c7b085763a4
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: bcdac2635c9d40bcd0f7605fad7479d5b8cdddba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979583"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239211"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure PowerShell
 
@@ -23,8 +22,6 @@ Das Azure PowerShell-Modul dient zum Verwalten von Azure-Ressourcen über die B
 In dieser Anleitung erfahren Sie, wie Sie mithilfe des Az-Moduls eine Richtlinienzuordnung erstellen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

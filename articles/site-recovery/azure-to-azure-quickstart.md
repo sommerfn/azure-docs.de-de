@@ -1,20 +1,19 @@
 ---
 title: Einrichten der Notfallwiederherstellung für einen virtuellen Azure IaaS-Computer in einer sekundären Azure-Region
 description: Diese Schnellstartanleitung enthält die Schritte, die zum Ausführen der Notfallwiederherstellung eines virtuellen Azure IaaS-Computers zwischen Azure-Regionen mithilfe des Azure Site Recovery-Diensts erforderlich sind.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/30/2019
+ms.date: 08/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 46376091649a2c2b1498fd13e8775fb161de32c1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d23d16d1315eeaf224a5291641ab088212fcdc77
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399547"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146950"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer        
 

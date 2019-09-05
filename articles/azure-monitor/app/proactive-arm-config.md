@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477857"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193723"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -151,6 +151,7 @@ Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel f
             "type": "microsoft.alertsmanagement/smartdetectoralertrules",
             "apiVersion": "2019-03-01",
             "name": "Failure Anomalies - my-app",
+            "location": "global", 
             "properties": {
                   "description": "Detects a spike in the failure rate of requests or dependencies",
                   "state": "Enabled",

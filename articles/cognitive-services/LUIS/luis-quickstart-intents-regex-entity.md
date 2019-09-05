@@ -1,5 +1,5 @@
 ---
-title: 'Entität vom Typ „Regulärer Ausdruck“: LUIS'
+title: 'Tutorial: Entität vom Typ „Regulärer Ausdruck“: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Extrahieren Sie mithilfe der Entität vom Typ „Regulärer Ausdruck“ einheitlich formatierte Daten aus einer Äußerung.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563600"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307587"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Tutorial: Abrufen von gut formatierten Daten aus der Äußerung
 In diesem Tutorial erstellen Sie eine App zum Extrahieren einheitlich formatierter Daten aus einer Äußerung mithilfe der Entität **Regulärer Ausdruck**.

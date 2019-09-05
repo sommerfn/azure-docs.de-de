@@ -3,22 +3,20 @@ title: Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 description: Beschreibt, wie Sie große Datenmengen in einer Azure Data Factory-Pipeline verarbeiten, indem Sie die Parallelverarbeitungsfunktion von Azure Batch nutzen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 67829b6245fe4fea8da88c97fa8d5aeedccc90a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446606"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140043"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]

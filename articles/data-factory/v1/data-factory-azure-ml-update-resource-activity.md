@@ -3,21 +3,20 @@ title: Aktualisieren von Machine Learning-Modellen mithilfe von Azure Data Facto
 description: Beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567324"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140469"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 

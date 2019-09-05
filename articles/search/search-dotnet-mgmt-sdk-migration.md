@@ -2,19 +2,19 @@
 title: 'Aktualisieren auf Version 2 des Azure Search-.NET Management SDK: Azure Search'
 description: Aktualisieren Sie von Vorgängerversionen auf Version 2 des Azure Search-.NET Management SDK. Hier finden Sie Informationen zu den Neuheiten und erfahren Sie, welche Änderungen am Code erforderlich sind.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a59cff7f5313b0ac5a060d698950a4c82160f67
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025186"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182253"
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Upgrade der Azure Search-.NET Management SDK-Version 
 

@@ -3,15 +3,15 @@ title: Azure Resource Manager-Vorlagenfunktionen – Numerische Funktionen | Mic
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zahlen verwendet werden können.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3ec5477ca6ea1731f18b09d6393bdde6261e0c32
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206418"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194333"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerische Funktionen für Azure Resource Manager-Vorlagen
 

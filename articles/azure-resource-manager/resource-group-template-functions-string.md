@@ -3,15 +3,15 @@ title: Azure Resource Manager-Vorlagenfunktionen – Zeichenfolge | Microsoft-Do
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zeichenfolgen verwendet werden können.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698175"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194781"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71ca7bec7f69007fd0290211fac308eb5f3983a7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878049"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139051"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mit Python
 > [!div class="op_single_selector"]
@@ -113,7 +113,7 @@ Führen Sie hiermit die Authentifizierung bei Azure AD für Dateisystemvorgänge
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Endbenutzerauthentifizierung ohne mehrstufige Authentifizierung
 
-Dies ist veraltet. Weitere Informationen finden Sie unter [Authentifizieren mit Tokenanmeldeinformationen](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token).
+Dies ist veraltet. Weitere Informationen finden Sie unter [Authentifizieren mit Tokenanmeldeinformationen](/azure/python/python-sdk-azure-authenticate).
    
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung von Endbenutzern verwenden, um sich mithilfe von Python bei Azure Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie Python mit Azure Data Lake Storage Gen1 verwenden.

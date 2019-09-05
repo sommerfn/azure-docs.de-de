@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "68949882"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
@@ -172,7 +172,7 @@ Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Ac
 
 ### <a name="bindings-data-type"></a>Datentyp für Bindungen
 
-Verwenden Sie zum Definieren des Datentyps für eine Eingabebindung die `dataType`-Eigenschaft in der Bindungsdefinition. Um z. B. den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
+Verwenden Sie zum Definieren des Datentyps für eine Eingabebindung die `dataType`-Eigenschaft in der Bindungsdefinition. Um z.B. den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
 
 ```json
 {

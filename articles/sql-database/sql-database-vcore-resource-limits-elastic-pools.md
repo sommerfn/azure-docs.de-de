@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2a5190cada0ca834cada4e02bfe7549dc43da4b8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640857"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309516"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden
 
@@ -140,8 +140,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|7\.000|7\.000|7\.000|7\.000|7\.000|7\.000|7\.000|
 |Grenzwerte für die Protokollrate (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) *|1680|1890|2100|2\.520|33600|4\.200|8\.400|
-|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1680|1890|2100|2\.520|33600|4\.200|8\.400|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) *|1680|1890|2100|2\.520|3360|4\.200|8\.400|
+|Max. gleichzeitige Anmeldungen pro Pool (Anforderungen) *|1680|1890|2100|2\.520|3360|4\.200|8\.400|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...16, 24, 32, 40|0, 0,25, 0,5, 1...16, 24, 32, 40, 80|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|–|–|–|–|–|–|–|

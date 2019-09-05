@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: 98b5fb06bf018c9176fc989786d8bd1821914f43
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: db020092c076680eddd575f8e7e85a2060603dd8
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558487"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147770"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (.NET)
 
@@ -47,7 +47,7 @@ Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
 > [!NOTE]
 > IoT Hub bietet über Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen, darunter C, Java, Python und JavaScript. Im [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot) finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit Azure IoT Hub.
 
-Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Visual Studio
 

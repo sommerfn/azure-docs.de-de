@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 599b0c8f45f91f9ecff210264a813e302f18059e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488955"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213615"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Tutorial: Integrieren von Adaptive Insights in Azure Active Directory
 
@@ -81,7 +81,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Führen Sie im Abschnitt  **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 

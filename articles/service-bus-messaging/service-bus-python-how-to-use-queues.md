@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360847"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141909"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Verwenden von Service Bus-Warteschlangen mit Python
 
@@ -36,7 +36,7 @@ In diesem Tutorial erfahren Sie, wie Sie Python-Anwendungen erstellen, um Nachri
 
         > [!NOTE]
         > In diesem Tutorial erstellen Sie eine **Warteschlange** im Service Bus-Namespace mithilfe von Python. 
-1. Installieren Sie Python oder das [Azure Service Bus-Paket für Python][Python Azure Service Bus package]. Informationen hierzu finden Sie im [Leitfaden zur Installation von Python](../python-how-to-install.md). Die vollständige Dokumentation zum Service Bus-SDK für Python finden Sie [hier](/python/api/overview/azure/servicebus?view=azure-python).
+1. Installieren Sie Python oder das [Azure Service Bus-Paket für Python][Python Azure Service Bus package]. Informationen hierzu finden Sie im [Leitfaden zur Installation von Python](/azure/python/python-sdk-azure-install). Die vollständige Dokumentation zum Service Bus-SDK für Python finden Sie [hier](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 Das **ServiceBusClient**-Objekt ermöglicht Ihnen, mit Warteschlangen zu arbeiten. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Service Bus zugreifen möchten, den folgenden Code hinzu:

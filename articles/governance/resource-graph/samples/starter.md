@@ -7,13 +7,12 @@ ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 98b05f74f0d6f7d20b5aa7ed77047818f217f147
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691175"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241098"
 ---
 # <a name="starter-resource-graph-queries"></a>Einfache Resource Graph-Abfragen
 
@@ -36,8 +35,6 @@ Wir behandeln die folgenden einfachen Abfragen:
 > - [Unterschiedliche Werte für einen bestimmten Alias anzeigen](#distinct-alias-values)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Sprachunterstützung
 
@@ -96,7 +93,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Anzeigen der ersten fünf virtuellen Computer nach Name und Betriebssystemtyp
 
-Diese Abfrage verwendet `limit`, um nur fünf übereinstimmende Datensätze abzurufen, die nach Namen sortiert werden. Der Typ der Azure-Ressource ist `Microsoft.Compute/virtualMachines`. `project` teilt Azure Ressource Graph mit, welche Eigenschaften einbezogen werden sollen.
+Diese Abfrage verwendet `top`, um nur fünf übereinstimmende Datensätze abzurufen, die nach Namen sortiert werden. Der Typ der Azure-Ressource ist `Microsoft.Compute/virtualMachines`. `project` teilt Azure Ressource Graph mit, welche Eigenschaften einbezogen werden sollen.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -270,7 +267,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 |
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
 ## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Unterschiedliche Werte für einen bestimmten Alias anzeigen

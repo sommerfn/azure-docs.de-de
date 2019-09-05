@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 66ae9fa1ff4038a77ecc0b7046434d4d606f5015
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4c9d4e84be59ab50174350c20e505f34919d5041
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841961"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276316"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus IBM Informix-Datenspeichern bzw. in IBM Informix-Datenspeicher mithilfe von Azure Data Factory
 
@@ -83,7 +83,7 @@ Folgende Eigenschaften werden für den mit Informix verknüpften Dienst unterst�
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Informix-Dataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Informix-Dataset unterstützt werden.
 
 Zum Kopieren von Daten aus Informix werden die folgenden Eigenschaften unterstützt:
 

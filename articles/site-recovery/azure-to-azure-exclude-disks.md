@@ -1,19 +1,18 @@
 ---
 title: Azure Site Recovery – Ausschließen von Datenträgern während der Replikation virtueller Azure-Computer mit Azure PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Datenträger für virtuelle Azure-Computer mit Azure Site Recovery über Azure PowerShell ausschließen.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160303"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147064"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Ausschließen von Datenträgern von der PowerShell-Replikation von Azure-VMs
 

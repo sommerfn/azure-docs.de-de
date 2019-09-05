@@ -3,22 +3,20 @@ title: Erstellen von Datasets in Azure Data Factory | Microsoft-Dokumentation
 description: Anhand von Beispielen, in denen Eigenschaften wie „offset“ und „anchorDateTime“ verwendet werden, wird beschrieben, wie Sie Datasets in Azure Data Factory erstellen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 0614cd24-2ff0-49d3-9301-06052fd4f92a
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: af5de469b4c4ca57979b80e691e9a5d12b573bec
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839370"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140121"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

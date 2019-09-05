@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560650"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207330"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in C#
 
@@ -347,7 +347,7 @@ Starten Sie den Bot in Visual Studio. Ein Browserfenster mit der Website des Web
 
 1. Buchen Sie im Bot-Emulator einen Flug, indem Sie die folgende Äußerung eingeben: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 

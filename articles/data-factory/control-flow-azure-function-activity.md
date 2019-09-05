@@ -3,20 +3,20 @@ title: Aktivität „Azure Function“ in Azure Data Factory | Microsoft-Dokumen
 description: Erfahren Sie, wie Sie die Aktivität „Azure Function“ verwenden, um eine Azure-Funktion in einer Data Factory-Pipeline auszuführen
 services: data-factory
 documentationcenter: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144129"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142503"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivität „Azure Function“ in Azure Data Factory
 
@@ -41,10 +41,10 @@ Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten
 
 | **Eigenschaft**  | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | --- | --- | --- | --- |
-| name  | Name der Aktivität in der Pipeline  | string | Ja |
-| type  | Typ der Aktivität ist „AzureFunctionActivity“ | string | Ja |
+| name  | Name der Aktivität in der Pipeline  | Zeichenfolge | Ja |
+| type  | Typ der Aktivität ist „AzureFunctionActivity“ | Zeichenfolge | Ja |
 | Verknüpfter Dienst | Der mit der Azure-Funktion verknüpfte Dienst für die entsprechende Azure-Funktions-App  | Verweis auf den verknüpften Dienst | Ja |
-| Funktionsname  | Name der Funktion in der Azure-Funktions-App, die diese Aktivität aufruft. | string | Ja |
+| Funktionsname  | Name der Funktion in der Azure-Funktions-App, die diese Aktivität aufruft. | Zeichenfolge | Ja |
 | method  | REST-API-Methode für den Funktionsaufruf | Unterstützte Zeichenfolgentypen: „GET“, „POST“, „PUT“   | Ja |
 | Header  | Header, die in der Anforderung gesendet werden. So legen Sie beispielsweise die Sprache und den Typ für eine Anforderung fest: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein |
 | body  | Text, der zusammen mit der Anforderung an die API-Methode der Funktion gesendet wird  | Zeichenfolge (oder Ausdruck mit resultType der Zeichenfolge) oder Objekt.   | Erforderlich für PUT/POST-Methoden |

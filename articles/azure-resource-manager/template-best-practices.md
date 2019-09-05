@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542986"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258846"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -175,7 +175,7 @@ Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche [Abhängig
 
 * Legen Sie für eine untergeordnete Ressource eine Abhängigkeit von der übergeordneten Ressource fest.
 
-* Ressourcen, deren [condition-Element](resource-group-authoring-templates.md#condition) auf FALSE festgelegt ist, werden automatisch aus der Reihenfolge der Abhängigkeiten entfernt. Legen Sie die Abhängigkeiten so fest, als würde die Ressource immer bereitgestellt.
+* Ressourcen, deren [condition-Element](conditional-resource-deployment.md) auf FALSE festgelegt ist, werden automatisch aus der Reihenfolge der Abhängigkeiten entfernt. Legen Sie die Abhängigkeiten so fest, als würde die Ressource immer bereitgestellt.
 
 * Lassen Sie die Abhängigkeiten ohne explizites Festlegen überlappen. Beispiel: Ihr virtueller Computer hängt von einer virtuellen Netzwerkschnittstelle ab, die wiederum von einem virtuellen Netzwerk und einer öffentlichen IP-Adressen abhängt. Deshalb wird der virtuelle Computer nach allen drei Ressourcen bereitgestellt, es wird aber nicht explizit festgelegt, dass er von allen drei Ressourcen abhängig ist. Dieser Ansatz verdeutlicht die Reihenfolge der Abhängigkeiten und vereinfacht spätere Änderungen an der Vorlage.
 

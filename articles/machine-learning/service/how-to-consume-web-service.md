@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03579d75ad9cbaceca1a5d42913ff546088f6cfe
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982789"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279126"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
 Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird eine REST-API erstellt. Sie können Daten an diese API senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
 
-Sie erstellen einen Webdienst, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Sie erstellen Images aus registrierten Modellen und Bewertungsdateien. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://aka.ms/aml-sdk) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
+Sie erstellen einen Webdienst, wenn Sie ein Image für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Sie erstellen Images aus registrierten Modellen und Bewertungsdateien. Der URI für den Zugriff auf einen Webdienst kann über das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
 
 Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine Learning-Webdienst verwendet:
 

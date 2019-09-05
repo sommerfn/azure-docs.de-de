@@ -10,20 +10,18 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 9e0a864019c2940ba7b5188ea43e9bbae484178d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f34efbbca1616c75c13ee3a8bf73bbee1e66dc92
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241978"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241154"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
 Bei Verwaltungsgruppen handelt es sich um Container, mit denen Sie Zugriff, Richtlinien und Konformität abonnementübergreifend verwalten können. Erstellen Sie diese Container, um eine effektive und effiziente Hierarchie zu erstellen, die mit [Azure Policy](../policy/overview.md) und mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Controls, RBAC) von Azure](../../role-based-access-control/overview.md) verwendet werden kann. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren von Ressourcen mit Azure-Verwaltungsgruppen](overview.md).
 
 Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgruppe im Verzeichnis abgeschlossen ist. Bei der ersten Erstellung werden Prozesse zum Einrichten des Verwaltungsgruppendiensts in Azure für Ihr Verzeichnis ausgeführt. Sie erhalten eine Benachrichtigung, wenn der Vorgang abgeschlossen ist.
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-management-group"></a>Erstellen einer Verwaltungsgruppe
 

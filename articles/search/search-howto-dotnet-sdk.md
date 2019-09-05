@@ -2,19 +2,19 @@
 title: Verwenden von Azure Search aus einer .NET-Anwendung – Azure Search
 description: Hier erfahren Sie, wie Sie Azure Search in einer .NET-Anwendung mit C# und dem .NET SDK verwenden. Codebasierte Aufgaben umfassen die Verbindung zum Dienst, Indexinhalte und die Abfrage eines Index.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: 9f0af40d442747181636b50612f7d2162ead6a86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450011"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208241"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Verwenden von Azure Search aus einer .NET-Anwendung
 
@@ -579,7 +579,7 @@ Das SDK verwendet JSON.NET zum Serialisieren und Deserialisieren von Dokumenten.
 * Zuordnen zwischen Eigenschaftennamen im Code und Feldnamen im Index
 * Erstellen Sie benutzerdefinierte Attribute, die für die Zuordnung von Eigenschaften zu Dokumentfelder verwendet werden können.
 
-Beispiele für die Implementierung der benutzerdefinierten Serialisierung in den Unittests für das Azure Search .NET SDK finden Sie auf GitHub. Ein guter Ausgangspunkt ist [dieser Ordner](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models). Er enthält Klassen, die in den Tests für die benutzerdefinierte Serialisierung verwendet werden.
+Beispiele für die Implementierung der benutzerdefinierten Serialisierung in den Unittests für das Azure Search .NET SDK finden Sie auf GitHub. Ein guter Ausgangspunkt ist [dieser Ordner](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models). Er enthält Klassen, die in den Tests für die benutzerdefinierte Serialisierung verwendet werden.
 
 ### <a name="searching-for-documents-in-the-index"></a>Suchen nach Dokumenten im Index
 Im letzten Schritt der Beispielanwendung wird nach Dokumenten im Index gesucht:

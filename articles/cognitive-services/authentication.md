@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467535"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276778"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -66,7 +66,7 @@ Das folgende Video veranschaulicht die Verwendung eines Cognitive Services-Schl�
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für mehrere Dienste
 
 >[!WARNING]
-> Zum derzeitigen Zeitpunkt unterstützen diese Dienste Schlüssel für mehrere Dienste **nicht**: QnA Maker, Speech Services und Custom Vision.
+> Zum derzeitigen Zeitpunkt unterstützen diese Dienste Schlüssel für mehrere Dienste **nicht**: QnA Maker, Speech-Dienste, Custom Vision und Anomalieerkennung.
 
 Bei dieser Option wird ebenfalls ein Abonnementschlüssel zum Authentifizieren von Anforderungen verwendet. Der Hauptunterschied besteht darin, dass der Abonnementschlüssel nicht an einen bestimmten Dienst gebunden ist, sondern dass ein einzelner Schlüssel zum Authentifizieren von Anforderungen für mehrere Cognitive Services-Dienste verwendet werden kann. Weitere Informationen zur regionalen Verfügbarkeit, den unterstützten Funktionen und den Preisen finden Sie unter [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
 

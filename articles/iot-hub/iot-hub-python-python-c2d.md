@@ -8,18 +8,16 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: d2eb36faaeb4d1745d0d509432e3a886ce75ff51
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 340d728a45da4e392c85ab4ba7ce822f7762da3b
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667880"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147377"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Senden von C2D-Nachrichten mit IoT Hub (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
-
-## <a name="introduction"></a>Einführung
 
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erfahren Sie, wie Sie einen IoT-Hub erstellen, eine Geräteidentität darin bereitstellen und eine simulierte Geräte-App programmieren, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet.
 
@@ -43,7 +41,7 @@ Am Ende dieses Tutorials führen Sie zwei Python-Konsolen-Apps aus:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt. Dazu müssen Sie nicht das Dienstclientpaket installieren.
+## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

@@ -3,15 +3,15 @@ title: Azure Resource Manager-Vorlagenfunktionen – Ressourcen | Microsoft Docs
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
-ms.date: 08/20/2019
+ms.topic: conceptual
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095751"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306924"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -61,7 +61,6 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |

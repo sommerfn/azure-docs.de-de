@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: e81cc39157231c98e38305c70e046111ec062732
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 87897c031ff717fb67830cb8fa3bc5fced336418
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128285"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278853"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 
-In diesem Artikel erfahren Sie, wie Sie eine [Machine Learning-Pipeline](concept-ml-pipelines.md) mit dem [Azure Machine Learning SDK](https://aka.ms/aml-sdk) erstellen, veröffentlichen, ausführen und verfolgen.  Verwenden Sie **ML-Pipelines**, um einen Workflow zu erstellen, der verschiedene ML-Phasen zusammenfügt. Veröffentlichen Sie diese Pipeline dann in Ihrem Azure Machine Learning-Arbeitsbereich, um später auf die Pipeline zuzugreifen oder sie für andere Personen freizugeben.  ML-Pipelines eignen sich ideal für Szenarien mit Batchbewertungen, in denen verschiedene Berechnungen ausgeführt, Schritte wiederverwendet statt wiederholt ausgeführt und ML-Workflows für andere Personen freigegeben werden. 
+In diesem Artikel erfahren Sie, wie Sie eine [Machine Learning-Pipeline](concept-ml-pipelines.md) mit dem [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) erstellen, veröffentlichen, ausführen und verfolgen.  Verwenden Sie **ML-Pipelines**, um einen Workflow zu erstellen, der verschiedene ML-Phasen zusammenfügt. Veröffentlichen Sie diese Pipeline dann in Ihrem Azure Machine Learning-Arbeitsbereich, um später auf die Pipeline zuzugreifen oder sie für andere Personen freizugeben.  ML-Pipelines eignen sich ideal für Szenarien mit Batchbewertungen, in denen verschiedene Berechnungen ausgeführt, Schritte wiederverwendet statt wiederholt ausgeführt und ML-Workflows für andere Personen freigegeben werden. 
 
 Sie können zwar zur CI/CD-Automatisierung von ML-Aufgaben eine andere Art von Pipeline verwenden, die als [Azure-Pipeline](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) bezeichnet wird, aber diese Art von Pipeline wird nie in Ihrem Arbeitsbereich gespeichert. [Vergleichen Sie diese unterschiedlichen Pipelines](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
 
@@ -270,9 +270,9 @@ from azureml.pipeline.steps import PythonScriptStep
 
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", processed_data1],
+    arguments=["--input", blob_input_data, "--output", output_data1],
     inputs=[blob_input_data],
-    outputs=[processed_data1],
+    outputs=[output_data1],
     compute_target=compute_target,
     source_directory=project_folder
 )

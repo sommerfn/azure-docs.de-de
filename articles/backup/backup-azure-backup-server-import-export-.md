@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/8/2018
+ms.date: 05/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 0f60fbf22541e5fdd003d0ab663b5905cd31adcd
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c542abe0e778b9204a23ccea0f3617656ba101e1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737233"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210433"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.

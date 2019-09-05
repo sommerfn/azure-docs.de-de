@@ -3,22 +3,20 @@ title: Erstellen/Planen von Pipelines, Kettenaktivitäten in Data Factory | Micr
 description: Es wird beschrieben, wie Sie eine Datenpipeline in Azure Data Factory erstellen, um Daten zu verschieben und zu transformieren. Erstellen Sie einen datengesteuerten Workflow zum Erzeugen von fertigen Informationen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 13b137c7-1033-406f-aea7-b66f25b313c0
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 58db6f9903c4dc02c2d76f3784b004972621a000
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 54d9c875ca0117304dbd686f9a8fa6060b275994
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836499"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140061"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

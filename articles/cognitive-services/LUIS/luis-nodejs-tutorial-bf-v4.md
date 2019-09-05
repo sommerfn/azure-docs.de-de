@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: a06bd5a1a061de82230e93b867ea88e333b3cc93
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8455a9c9ecff89643e090f1d763a44f97f5779f5
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442552"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206880"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in Node.js 
 
@@ -47,8 +47,8 @@ Erstellen Sie mithilfe von Node.js einen in Language Understanding (LUIS) integr
     |Einstellung|Zweck|Empfohlene Einstellung|
     |--|--|--|
     |Botname|Ressourcenname|`luis-nodejs-bot-` + `<your-name>`, z.B. `luis-nodejs-bot-johnsmith`|
-    |Abonnement|Abonnement, in dem der Bot erstellt werden soll.|Ihr primäres Abonnement.
-    |Ressourcengruppe|Logische Gruppe von Azure-Ressourcen|Erstellen einer neuen Gruppe zum Speichern aller Ressourcen, die mit diesen Bot verwendet werden; benennen Sie die Gruppe `luis-nodejs-bot-resource-group`.|
+    |Subscription|Abonnement, in dem der Bot erstellt werden soll.|Ihr primäres Abonnement.
+    |Resource group|Logische Gruppe von Azure-Ressourcen|Erstellen einer neuen Gruppe zum Speichern aller Ressourcen, die mit diesen Bot verwendet werden; benennen Sie die Gruppe `luis-nodejs-bot-resource-group`.|
     |Location|Azure-Region: muss nicht die gleiche wie die Erstellungs- oder Veröffentlichungsregion von LUIS sein.|`westus`|
     |Tarif|Für die Grenzwerte der Dienstanforderungen und die Abrechnung verwendet.|`F0` ist der kostenlose Tarif.
     |App-Name|Der Name wird als Unterdomäne verwendet, wenn Ihr Bot in der Cloud bereitgestellt wird (z.B. personalwesenbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, z.B. `luis-nodejs-bot-johnsmith`|
@@ -339,7 +339,7 @@ Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und ver
 
 1. Buchen Sie im Bot-Emulator einen Flug, indem Sie die folgende Äußerung eingeben: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 

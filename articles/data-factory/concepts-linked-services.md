@@ -3,21 +3,20 @@ title: Verknüpfte Diensten in Azure Data Factory | Microsoft-Dokumentation
 description: Informationen über verknüpfte Dienste in Data Factory. Verknüpfte Dienste verknüpfen Compute/-Datenspeicher mit einer Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: c339604624d0d9a033b54ad1c661b0ce10eaf1bd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127748"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137114"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Verknüpfte Dienste in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

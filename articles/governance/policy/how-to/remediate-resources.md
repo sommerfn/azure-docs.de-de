@@ -7,19 +7,16 @@ ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: ba015a1d5183fcf27cfcc05ef1d0cd838201e91e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077114"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241134"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
 Ressourcen, die mit der Richtlinie **deployIfNotExists** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den **deployIfNotExists**-Effekt der zugewiesenen Richtlinie auf Ihren vorhandenen Ressourcen auszuführen. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Sicherheit durch Wiederherstellung
 

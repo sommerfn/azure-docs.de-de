@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 26f965169f1fd01676efd3356534a8ac9f2121f7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036075"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278688"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -42,7 +42,7 @@ Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellun
 
 - Ein Machine Learning-Modell, das in Ihrem Arbeitsbereich registriert ist. Wenn Sie über kein registriertes Modell verfügen, finden Sie hier weitere Informationen: [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
+- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
 
 - Bei den in diesem Artikel verwendeten __Python__-Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
 

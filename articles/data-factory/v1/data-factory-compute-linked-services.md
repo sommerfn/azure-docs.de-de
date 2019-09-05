@@ -3,22 +3,20 @@ title: Von Azure Data Factory unterstützte Compute-Umgebungen | Microsoft-Dokum
 description: Erfahren Sie mehr über Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z.B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12d12e96616d94360e5d193cf2b778a9ae389062
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565717"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140250"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -120,7 +118,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 >
 > 
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja      |
@@ -256,12 +254,12 @@ Sie können einen verknüpften HDInsight-Dienst erstellen, um Ihren eigenen HDIn
 }
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight** fest. | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.        | Ja      |
-| userName          | Der Name des Benutzerkontos, das zum Herstellen einer Verbindung mit einem vorhandenen HDInsight-Cluster verwendet werden soll. | Ja      |
+| username          | Der Name des Benutzerkontos, das zum Herstellen einer Verbindung mit einem vorhandenen HDInsight-Cluster verwendet werden soll. | Ja      |
 | password          | Das Kennwort für das Benutzerkonto   | Ja      |
 | linkedServiceName | Der Name des verknüpften Speicherdiensts, der auf den von diesem HDInsight-Cluster verwendeten Blobspeicher verweist. <p>Für diese Eigenschaft kann derzeit kein verknüpfter Data Lake Store-Dienst angegeben werden. Wenn der HDInsight-Cluster Zugriff auf Data Lake Store hat, können Sie über Hive-/Pig-Skripts auf Daten in Data Lake Store zugreifen. </p> | Ja      |
 
@@ -304,7 +302,7 @@ Eine weitere Möglichkeit ist die Angabe des Endpunkts **batchUri**. Beispiel:
 "batchUri": "https://eastus.batch.azure.com",
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja      |
@@ -331,10 +329,10 @@ Sie können einen verknüpften Machine Learning-Dienst erstellen, um einen Machi
 }
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft   | BESCHREIBUNG                              | Erforderlich |
 | ---------- | ---------------------------------------- | -------- |
-| Type       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
+| type       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
 | mlEndpoint | Die Batchbewertungs-URL.                   | Ja      |
 | apiKey     | Die veröffentlichte API des Arbeitsbereichsmodells.     | Ja      |
 

@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360830"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141903"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Verwenden von Service Bus-Themen und -Abonnements mit Python
 
@@ -39,7 +39,7 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
 
     > [!NOTE]
     > Sie erstellen ein **Thema** und ein **Abonnement** für das Thema, indem Sie **Python** in dieser Schnellstartanleitung verwenden. 
-3. Installieren Sie das [Azure Python-Paket][Azure Python package]. Weitere Informationen finden Sie im [Python-Installationshandbuch](../python-how-to-install.md).
+3. Installieren Sie das [Azure Python-Paket][Azure Python package]. Weitere Informationen finden Sie im [Python-Installationshandbuch](/azure/python/python-sdk-azure-install).
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
 

@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178762"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70166715"
 ---
 ## <a name="specifying-formats"></a>Angeben von Formaten
 Azure Data Factory unterstützt die folgenden Formattypen:
@@ -400,7 +400,7 @@ Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das 
 
 Beachten Sie folgende Punkte:  
 
-* [Komplexe Datentypen](http://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
+* [Komplexe Datentypen](https://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
 
 ### <a name="specifying-orcformat"></a>Angeben von „OrcFormat“
 Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
@@ -420,7 +420,7 @@ Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten
 Beachten Sie folgende Punkte:
 
 * Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
-* Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+* Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
 ### <a name="specifying-parquetformat"></a>Angeben von „ParquetFormat“
 Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:

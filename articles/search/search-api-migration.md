@@ -2,19 +2,19 @@
 title: Aktualisieren auf die aktuelle Version der REST-API für den Azure-Suchdienst – Azure Search
 description: Überprüfen Sie die Unterschiede in den API-Versionen, und erfahren Sie, welche Aktionen erforderlich sind, um vorhandenen Code zur neuesten Version der REST-API für den Azure-Suchdienst zu migrieren.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1f7fdb1f349c9e31ba63d79a9b9e26ea9f09da
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540692"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182387"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Azure-Suchdienst
 Wenn Sie eine frühere Version der [REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die neueste allgemein verfügbare API-Version 2019-05-06.

@@ -3,21 +3,20 @@ title: Until-Aktivität in Azure Data Factory | Microsoft-Dokumentation
 description: Die Until-Aktivität führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird oder ein Timeout auftritt.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155170"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142451"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
 Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben. 
@@ -54,8 +53,8 @@ Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenst
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Until`-Aktivität. | string | Ja
-type | Muss auf **Until** festgelegt werden. | string | Ja
+name | Der Name der `Until`-Aktivität. | Zeichenfolge | Ja
+type | Muss auf **Until** festgelegt werden. | Zeichenfolge | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
 timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage | Nein
 activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja

@@ -3,21 +3,20 @@ title: Warteaktivität in Azure Data Factory | Microsoft-Dokumentation
 description: Die Warteaktivität hält die Ausführung der Pipeline für den angegebenen Zeitraum an.
 services: data-factory
 documentationcenter: ''
-author: shlo
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: shlo
-ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48a722979e61209a855dd1fec22fcdcc756ae1ce
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764750"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142415"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Ausführen der Warteaktivität in Azure Data Factory
 Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt. 
@@ -39,8 +38,8 @@ Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline d
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Wait`-Aktivität. | string | Ja
-type | Muss auf **Wait** festgelegt werden. | string | Ja
+name | Der Name der `Wait`-Aktivität. | Zeichenfolge | Ja
+type | Muss auf **Wait** festgelegt werden. | Zeichenfolge | Ja
 waitTimeInSeconds | Die Anzahl von Sekunden, die die Pipeline wartet, bevor sie die Verarbeitung fortsetzt | Integer | Ja
 
 ## <a name="example"></a>Beispiel

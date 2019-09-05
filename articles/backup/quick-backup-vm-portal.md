@@ -8,15 +8,15 @@ tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 7/17/2018
+ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 93c96e89824eccd9f75f84549da647598fe9aec6
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 485273fbde5e54b467210cb5fd47ea432efceb85
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688455"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210046"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 Azure-Sicherungen können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um Azure-Sicherungen und alle dazugehörigen Ressourcen zu erstellen und zu konfigurieren. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure-Portal sichern. 

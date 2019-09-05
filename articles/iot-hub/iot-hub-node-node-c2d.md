@@ -9,18 +9,16 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: d3e4e0f4e7b1f8d3e100b3f1b3446907cfd587c5
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: ba14a6bb9e234a5eae34232fc617f8b04284cd4f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716964"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147463"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Senden von C2D-Nachrichten mit IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
-
-## <a name="introduction"></a>Einführung
 
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-node.md) erfahren Sie, wie Sie einen IoT-Hub erstellen, eine Geräteidentität darin bereitstellen und eine simulierte Geräte-App programmieren, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet.
 
@@ -44,9 +42,10 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 > IoT Hub bietet durch Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, Java, Python und JavaScript). Im [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot) finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit dem Code in diesem Tutorial sowie allgemeine Informationen zum Verbinden mit Azure IoT Hub.
 >
 
-Für dieses Tutorial benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Node.js, Version 10.0.x oder höher.
+* Node.js, Version 10.0.x oder höher. Unter [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) erstellen.)
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Empfangen von Nachrichten in der simulierten Geräte-App

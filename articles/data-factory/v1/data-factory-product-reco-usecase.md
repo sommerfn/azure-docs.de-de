@@ -3,22 +3,21 @@ title: Data Factory-Anwendungsfall – Produktempfehlungen
 description: Informationen zu einem Anwendungsfall, der mithilfe von Azure Data Factory zusammen mit anderen Diensten implementiert wurde.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605701"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139145"
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.

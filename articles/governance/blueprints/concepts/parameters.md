@@ -7,13 +7,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 5c1bb1f959f920ea9bce23082ec531dc83d873ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9670433284ae963783b655322c4b18f748df52c5
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356977"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231956"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 

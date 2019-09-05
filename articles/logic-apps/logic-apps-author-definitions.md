@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385584"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164646"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen in Azure Logic Apps
 
-Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen. Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md#template-deployment) einbinden. Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
+Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen. Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md) einbinden. Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
 
 Um mit Logik-App-Definitionen in JSON zu arbeiten, öffnen Sie im Azure-Portal oder in Visual Studio den Codeansichts-Editor, oder kopieren Sie die Definition in einen Editor Ihrer Wahl. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
 
@@ -45,7 +45,7 @@ In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Port
 
 1. Öffnen Sie die Visual Studio-Projektmappe oder das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/resource-group-overview.md) mit der Logik-App.
 
-2. Suchen Sie nach der Definition Ihrer Logik-App, und öffnen Sie sie. Die Definition wird standardmäßig in einer [Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md#template-deployment) mit dem Namen **LogicApp.json** angezeigt. Sie können diese Vorlage für die Bereitstellung in verschiedenen Umgebungen anpassen.
+2. Suchen Sie nach der Definition Ihrer Logik-App, und öffnen Sie sie. Die Definition wird standardmäßig in einer [Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) mit dem Namen **LogicApp.json** angezeigt. Sie können diese Vorlage für die Bereitstellung in verschiedenen Umgebungen anpassen.
 
 3. Öffnen Sie das Kontextmenü für Ihre Logik-App-Definition und Vorlage. Wählen Sie **Öffnen mit Logik-App-Designer** aus.
 

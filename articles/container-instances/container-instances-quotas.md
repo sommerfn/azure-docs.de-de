@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: d78cb72e6aa10334e82032280b1253e6d4c92960
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c266a67685197ba40d2868fefca08098cb41598c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325731"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172382"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Kontingente und Limits für Azure Container Instances
 

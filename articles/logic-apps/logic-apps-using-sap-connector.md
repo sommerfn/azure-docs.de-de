@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/20/2019
 tags: connectors
-ms.openlocfilehash: 9e46c51ae06920bd57f272248f06020dfad380e7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326709"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907569"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -109,48 +109,44 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
    **Erstellen einer lokalen SAP-Verbindung**
 
-    1. Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben.
+   Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. Wählen Sie **Erstellen** aus, wenn Sie fertig sind. Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
 
-         - Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   * Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
-            ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+     ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-         - Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   * Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
-            ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+     ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-           Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
-
-    1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
-
-       Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
+   Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
 
 1. Suchen Sie nun eine Aktion für Ihren SAP-Server, und wählen Sie sie aus.
 
-    1. Wählen Sie im Feld **SAP-Aktion** das Ordnersymbol aus. Suchen Sie in der Dateiliste nach der gewünschten SAP-Nachricht, und wählen Sie sie aus. Verwenden Sie die Pfeile zum Durchlaufen der Liste.
+   1. Wählen Sie im Feld **SAP-Aktion** das Ordnersymbol aus. Suchen Sie in der Dateiliste nach der gewünschten SAP-Nachricht, und wählen Sie sie aus. Verwenden Sie die Pfeile zum Durchlaufen der Liste.
 
-       In diesem Beispiel wird ein IDoc mit dem Typ **Aufträge** ausgewählt.
+      In diesem Beispiel wird ein IDoc mit dem Typ **Aufträge** ausgewählt.
 
-       ![Aktion „IDoc“ suchen und auswählen](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
+      ![Aktion „IDoc“ suchen und auswählen](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
 
-       Wenn Sie die Aktion, die Sie verwenden möchten, nicht finden können, können Sie einen Pfad auch manuell eingeben:
+      Wenn Sie die Aktion, die Sie verwenden möchten, nicht finden können, können Sie einen Pfad auch manuell eingeben:
 
-       ![Pfad zur Aktion „IDoc“ manuell bereitstellen](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
+      ![Pfad zur Aktion „IDoc“ manuell bereitstellen](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
 
-       > [!TIP]
-       > Geben Sie den Wert für die **SAP-Aktion** über den Ausdrucks-Editor ein. Auf diese Weise können Sie dieselbe Aktion für verschiedene Nachrichtentypen verwenden.
+      > [!TIP]
+      > Geben Sie den Wert für die **SAP-Aktion** über den Ausdrucks-Editor ein. Auf diese Weise können Sie dieselbe Aktion für verschiedene Nachrichtentypen verwenden.
 
-       Weitere Informationen zu IDoc-Vorgängen finden Sie unter [Nachrichtenschemas für IDOC-Vorgänge](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+      Weitere Informationen zu IDoc-Vorgängen finden Sie unter [Nachrichtenschemas für IDOC-Vorgänge](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-    1. Klicken Sie in das Feld **Input Message** (Eingabenachricht), damit die dynamische Inhaltsliste angezeigt wird. Klicken Sie in dieser Liste unter **Beim Empfang einer HTTP-Anforderung** auf das Feld **Hauptteil**.
+   1. Klicken Sie in das Feld **Input Message** (Eingabenachricht), damit die dynamische Inhaltsliste angezeigt wird. Klicken Sie in dieser Liste unter **Beim Empfang einer HTTP-Anforderung** auf das Feld **Hauptteil**.
 
-       Dadurch wird der Hauptteil des HTTP-Anforderungstriggers eingefügt und diese Ausgabe an Ihren SAP-Server gesendet.
+      Dadurch wird der Hauptteil des HTTP-Anforderungstriggers eingefügt und diese Ausgabe an Ihren SAP-Server gesendet.
 
-       ![Feld „Hauptteil“ auswählen](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+      ![Feld „Hauptteil“ auswählen](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
-       Ihre SAP-Aktion sieht dann wie im folgenden Beispiel aus:
+      Ihre SAP-Aktion sieht dann wie im folgenden Beispiel aus:
 
-       ![Vollständige SAP-Aktion](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+      ![Vollständige SAP-Aktion](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -217,17 +213,17 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
    **Erstellen einer lokalen SAP-Verbindung**
 
-   - Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben.
+   Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. Wählen Sie **Erstellen** aus, wenn Sie fertig sind. Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
 
-      - Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   * Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
-         ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+     ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   * Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
-          ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+     ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-      Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
+   Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
 
 1. Geben Sie die erforderlichen Parameter basierend auf der Konfiguration Ihres SAP-Systems an.
 
@@ -262,6 +258,41 @@ Ihre Logik-App kann jetzt Nachrichten von Ihrem SAP-System empfangen.
 1. Wählen Sie in der Logik-App-Menü **Übersicht** aus. Überprüfen Sie den **Ausführungsverlauf** für alle neuen Ausführungen für Ihre Logik-App.
 
 1. Öffnen Sie die letzte Ausführung, in der die von Ihrem SAP-System gesendete Nachricht im Abschnitt mit den Triggerausgaben angezeigt wird.
+
+## <a name="receive-idocs-packets-from-sap"></a>Empfangen von IDOCs-Paketen von SAP
+
+Sie können SAP für das [Senden von IDOCs in Paketen](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html) einrichten, bei denen es sich um Batches oder Gruppen von IDOCs handelt. Zum Empfangen von IDOC-Paketen ist für den SAP-Connector und insbesondere für den Trigger keine zusätzliche Konfiguration erforderlich. Damit Sie jedoch jedes Element in einem IDOC-Paket verarbeiten können, nachdem der Trigger das Paket empfangen hat, sind einige zusätzliche Schritte erforderlich, um das Paket in einzelne IDOCs aufzuteilen.
+
+Im Folgenden sehen Sie ein Beispiel, das veranschaulicht, wie einzelne IDOCs mithilfe der [`xpath()`-Funktion](./workflow-definition-language-functions-reference.md#xpath) aus einem Paket extrahiert werden: 
+
+1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie diese Logik-App noch nicht besitzen, führen Sie die vorherigen Schritte in diesem Thema aus, um [eine Logik-App mit einem SAP-Trigger](#receive-from-sap) einzurichten. 
+
+   Beispiel:
+
+   ![SAP-Trigger](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. Rufen Sie den Stammnamespace aus dem XML-IDOC ab, das Ihre Logik-App von SAP erhält. Fügen Sie zum Extrahieren dieses Namespace aus dem XML-Dokument einen Schritt hinzu, der eine lokale Zeichenfolgenvariable erstellt und diesen Namespace mithilfe eines `xpath()`-Ausdrucks speichert:
+
+   `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
+
+   ![Abrufen des Namespace](./media/logic-apps-using-sap-connector/get-namespace.png)
+
+1. Fügen Sie zum Extrahieren eines einzelnen IDOC einen Schritt hinzu, der eine Arrayvariable erstellt und die IDOC-Sammlung mithilfe eines anderen `xpath()`-Ausdrucks speichert:
+
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+
+   ![Abrufen eines Arrays von Elementen](./media/logic-apps-using-sap-connector/get-array.png)
+
+   Die Arrayvariable macht jedes IDOC verfügbar, damit Ihre Logik-App diese einzeln verarbeiten kann, indem sie sie in der Sammlung auflistet. In diesem Beispiel überträgt die Logik-App jedes IDOC mithilfe einer Schleife an einen SFTP-Server:
+
+   ![Versenden des IDOC](./media/logic-apps-using-sap-connector/loop-batch.png)
+
+   Jedes IDOC muss den Stammnamespace enthalten. Daher wird der Inhalt der Datei zusammen mit dem Stammnamespace in ein `<Receive></Receive`-Element gepackt, bevor das IDOC an die Downstream-App oder in diesem Fall an den SFTP-Server gesendet wird.
+
+> [!TIP]
+> Sie können die Schnellstartvorlage für dieses Muster verwenden, indem Sie diese Vorlage im Logik-App-Designer auswählen, wenn Sie eine neue Logik-App erstellen.
+>
+> ![Batchvorlage](./media/logic-apps-using-sap-connector/batch-template.png)
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Generieren von Schemas für Artefakte in SAP
 
@@ -457,10 +488,6 @@ Beim Senden von Nachrichten mit aktivierter **Sicherer Typisierung** sieht die D
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 
 Zurzeit sind für den SAP-Connector folgende Probleme und Einschränkungen bekannt:
-
-* Mit tRFC funktioniert nur ein einzelner Aufruf bzw. eine einzelne Nachricht über „An SAP senden“. Das BAPI-Commitmuster, z. B. das Durchführen mehrerer tRFC-Aufrufe in derselben Sitzung, wird nicht unterstützt.
-
-* Der SAP-Trigger unterstützt nicht den Empfang von Batch-IDocs von SAP. Diese Aktion kann zu einem RFC-Verbindungsfehler zwischen Ihrem SAP-System und dem Datengateway führen.
 
 * Der SAP-Trigger unterstützt keine Datengatewaycluster. In einigen Failoverfällen unterscheidet sich der Datengatewayknoten, der mit dem SAP-System kommuniziert, von dem aktiven Knoten. Dies führt zu unerwartetem Verhalten. In Sendeszenarien werden Datengatewaycluster unterstützt.
 

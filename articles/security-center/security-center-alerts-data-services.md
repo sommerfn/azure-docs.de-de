@@ -14,72 +14,72 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8812ac325e6bfd5ee019f6ddd6bf86c846ed5c10
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 25f691d972b208b517f92752e2a9c30b016ec62a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782464"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013348"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Bedrohungserkennung für Datendienste in Azure Security Center
 
- Security Center analysiert die Protokolle der Datenspeicherdienste und löst Warnungen aus, wenn eine Bedrohung für Ihre Datenressourcen erkannt wird. Dieses Thema listet die Warnungen auf, die von Security Center für die folgenden Dienste generiert werden:
+ Azure Security Center analysiert die Protokolle der Datenspeicherdienste und löst Warnungen aus, wenn eine Bedrohung für Ihre Datenressourcen erkannt wird. Dieses Thema listet die Warnungen auf, die von Security Center für die folgenden Dienste generiert werden:
 
-* [Azure SQL-Datenbank und SQL Data Warehouse](#data-sql)
+* [Azure SQL-Datenbank und Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage (in englischer Sprache)](#azure-storage)
-* [Cosmos DB](#cosmos-db)
+* [Azure Cosmos DB](#cosmos-db)
 
-## Azure SQL-Datenbank und SQL Data Warehouse<a name="data-sql"></a>
+## SQL-Datenbank und SQL Data Warehouse <a name="data-sql"></a>
 
 Die SQL-Bedrohungserkennung erkennt anormale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen. Security Center analysiert die SQL-Überwachungsprotokolle und wird nativ in der SQL-Engine ausgeführt.
 
-|Warnung|BESCHREIBUNG|
+|Warnung|Beschreibung|
 |---|---|
-|**Anfälligkeit für die Einschleusung von SQL-Befehlen**|Eine Anwendung hat eine fehlerhafte SQL-Anweisung in der Datenbank generiert. Dies kann ein Hinweis auf ein mögliches Sicherheitsrisiko in Bezug auf Angriffe mit Einschleusung von SQL-Befehlen sein. Es gibt zwei mögliche Gründe für die Generierung einer fehlerhaften Anweisung: Ein Fehler im Anwendungscode, der zur fehlerhaften SQL-Anweisung führt. Anwendungscode oder gespeicherte Prozeduren führen bei der Erstellung der fehlerhaften SQL-Anweisung keine Bereinigung der Benutzereingabe durch, und dies kann für eine Einschleusung von SQL-Befehlen ausgenutzt werden.|
-|**Potenzielle Einschleusung von SQL-Befehlen**|Es ist ein aktiver Missbrauch für eine identifizierte Anwendung aufgetreten, die für die Einschleusung von SQL-Befehlen anfällig ist. Dies bedeutet, dass ein Angreifer versucht, schädliche SQL-Anweisungen einzuschleusen, indem er den anfälligen Anwendungscode bzw. die gespeicherten Prozeduren verwendet.|
-|**Zugriff von einem ungewöhnlichen Ort**|Es ist eine Änderung des Zugriffsmusters für SQL Server erfolgt, weil sich eine Person von einem ungewöhnlichen Ort aus bei SQL Server angemeldet hat. In einigen Fällen erkennt die Warnung eine legitime Aktion (eine neue Anwendung oder Wartungsarbeiten von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (ehemaliger Mitarbeiter, externer Angreifer).|
-|**Zugriff über einen unbekannten Prinzipal**|Es ist eine Änderung des Zugriffsmusters für SQL Server erfolgt, weil sich eine Person mit einem ungewöhnlichen Prinzipal (SQL-Benutzer) bei SQL Server angemeldet hat. In einigen Fällen erkennt die Warnung eine legitime Aktion (neue Anwendung, Wartungsarbeiten von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (ehemaliger Mitarbeiter, externer Angreifer).|
-|**Zugriff über eine potenziell schädliche Anwendung**|Für den Zugriff auf die Datenbank wurde eine potenziell schädliche Anwendung verwendet. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Angriff mit allgemeinen Angriffstools.|
-|**Brute-Force-Angriff auf SQL-Anmeldeinformationen**|Es ist eine ungewöhnlich hohe Anzahl von fehlerhaften Anmeldungen mit unterschiedlichen Anmeldeinformationen aufgetreten. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Brute-Force-Angriff.|
+|**Anfälligkeit für die Einschleusung von SQL-Befehlen**|Eine Anwendung hat eine fehlerhafte SQL-Anweisung in der Datenbank generiert. Dies kann ein Hinweis auf ein mögliches Sicherheitsrisiko in Bezug auf Angriffe mit Einschleusung von SQL-Befehlen sein. Es gibt zwei mögliche Gründe für eine fehlerhafte Anweisung. Ein Fehler im Anwendungscode, der zu der fehlerhaften SQL-Anweisung geführt hat. Oder: Anwendungscode oder gespeicherte Prozeduren, die bei der Erstellung der fehlerhaften SQL-Anweisung keine Bereinigung der Benutzereingabe durchgeführt haben, was zur Einschleusung von SQL-Befehlen ausgenutzt werden kann.|
+|**Potenzielle Einschleusung von SQL-Befehlen**|Es ist ein aktiver Missbrauch für eine identifizierte Anwendung aufgetreten, die für die Einschleusung von SQL-Befehlen anfällig ist. Das bedeutet, dass ein Angreifer versucht, schädliche SQL-Anweisungen einzuschleusen, indem er den anfälligen Anwendungscode bzw. die gespeicherten Prozeduren verwendet.|
+|**Zugriff von einem ungewöhnlichen Ort**|Das Zugriffsmusters für SQL Server hat sich geändert, da sich eine Person von einem ungewöhnlichen Ort aus beim Server angemeldet hat. In einigen Fällen erkennt die Warnung eine legitime Aktion (eine neue Anwendung oder Wartungsarbeiten von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (einen ehemaligen Mitarbeiter oder einen externen Angreifer.)|
+|**Zugriff über einen unbekannten Prinzipal**|Das Zugriffsmuster für SQL Server hat sich geändert. Jemand hat sich beim Server mit einem ungewöhnlichen Prinzipal (Benutzer) angemeldet. In einigen Fällen erkennt die Warnung eine legitime Aktion (eine neue Anwendung oder Wartungsarbeiten von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (einen ehemaligen Mitarbeiter oder einen externen Angreifer.)|
+|**Zugriff über eine potenziell schädliche Anwendung**|Für den Zugriff auf die Datenbank wurde eine potenziell schädliche Anwendung verwendet. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Angriff mit gängigen Tools.|
+|**Brute-Force-Angriff auf SQL-Anmeldeinformationen**|Es wurde eine ungewöhnlich hohe Anzahl von fehlerhaften Anmeldungen mit unterschiedlichen Anmeldeinformationen festgestellt. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Brute-Force-Angriff.|
 
-Weitere Informationen zu Warnungen zur Erkennung von SQL-Bedrohungen finden Sie unter [Bedrohungserkennung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview), und lesen Sie außerdem den Abschnitt zu den Warnungen zur Erkennung von Bedrohungen. Lesen Sie auch [How Azure Security Center helps reveal a Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) (Wie ein Cyberangriff mit Azure Security Center erkannt werden kann), um ein Beispiel dafür zu erhalten, wie Security Center die Erkennung bösartiger SQL-Aktivitäten verwendet, um einen Angriff zu erkennen.
+Weitere Informationen zu Warnungen im Zusammenhang mit der Erkennung von SQL-Bedrohungen finden Sie unter [Bedrohungserkennung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview). Lesen Sie insbesondere den Abschnitt zu den Warnungen der Bedrohungserkennung. Unter [How Azure Security Center helps reveal a Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) (Erkennen von Cyberangriffen mit Azure Security Center) finden Sie ein Beispiel dafür, wie Security Center die Erkennung schädlicher SQL-Aktivitäten verwendet, um einen Angriff zu erkennen.
 
-## Azure Storage <a name="azure-storage"></a>
+## Storage <a name="azure-storage"></a>
 
 >[!NOTE]
-> Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar.
+> Advanced Threat Protection für Storage ist derzeit nur für Blobspeicher verfügbar.
 
-Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Aufgrund dieser Schutzebene können Sie Bedrohungen begegnen, ohne dass Sie ein Sicherheitsexperte sein oder Systeme für die Überwachung der Sicherheit verwalten müssen.
+Advanced Threat Protection für Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Dank dieser Schutzebene können selbst Benutzer ohne fundierte Sicherheitskenntnisse etwas gegen Bedrohungen unternehmen und Systeme für die Sicherheitsüberwachung verwalten.
 
-Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanforderungen für den Blobspeicher, um Bedrohungen zu erkennen, und löst Warnungen aus, wenn Anomalien in der Aktivität auftreten. Weitere Informationen finden Sie unter [Konfigurieren der Storage Analytics-Protokollierung](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging).
+Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanforderungen für den Blobspeicher, um Bedrohungen zu erkennen, und löst Warnungen aus, wenn Anomalien in der Aktivität auftreten. Weitere Informationen finden Sie unter [Konfigurieren der Protokollierung](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging).
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|BESCHREIBUNG|
+|Warnung|Beschreibung|
 |---|---|
-|**Anomalie: Zugriff von einem ungewöhnlichen Ort**|Bei der Netzwerk-Datenverkehrsanalyse wurde anormale ausgehende RDP-Kommunikation (Remote Desktop Protocol) erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität gilt als anormal für diese Umgebung und kann darauf hindeuten, dass Ihre Ressource gefährdet ist und nun dazu verwendet wird, um einen Brute-Force-Angriff auf den externen RDP-Endpunkt auszuführen. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Entitäten als schädlich gekennzeichnet wird.|
+|**Anomalie: Zugriff von einem ungewöhnlichen Ort**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche ausgehende RDP-Kommunikation (Remote Desktop Protocol) erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität ist für die Umgebung unnormal. Dies kann darauf hindeuten, dass Ihre Ressource kompromittiert wurde und jetzt für Brute-Force-Angriffe auf einen externen RDP-Endpunkt verwendet wird. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Stellen als schädlich gekennzeichnet wird.|
 |**Anomalie beim Anwendungszugriff**|Gibt an, dass auf dieses Speicherkonto über eine ungewöhnliche Anwendung zugegriffen wurde. Mögliche Ursache: Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.|
 |**Anomalie: Anonymer Zugriff**|Gibt an, dass sich am Zugriffsmuster eines Speicherkontos etwas geändert hat. Auf dieses Konto wurde beispielsweise auf ungewöhnliche Weise (ohne Authentifizierung) zugegriffen, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten ist. Mögliche Ursache: Ein Angreifer hat öffentlichen Lesezugriff auf einen Container ausgenutzt, der Blobspeicher enthält.|
-|**Tor Anomaly** (Tor-Anomalie)|Gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt.Mögliche Gründe können sein, dass ein Angreifer mit Tor auf Ihr Speicherkonto zugegriffen hat, oder dass ein berechtigter Benutzer unter Verwendung von Tor auf Ihr Speicherkonto zugegriffen hat.|
+|**Tor Anomaly** (Tor-Anomalie)|Gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt. Mögliche Ursachen: Ein Angreifer hat mit Tor auf Ihr Speicherkonto zugegriffen, oder ein berechtigter Benutzer hat unter Verwendung von Tor auf Ihr Speicherkonto zugegriffen.|
 |**Anomalie: Datenexfiltration**|Gibt an, dass eine große Datenmenge extrahiert wurde, die im Vergleich zur letzten Aktivität bei diesem Speichercontainer ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat eine große Menge an Daten aus einem Container extrahiert, der Blobspeicher enthält.|
 |**Anomalie: Unerwarteter Löschvorgang**|Gibt an, dass in einem Speicherkonto mindestens ein Löschvorgang aufgetreten ist, der im Vergleich zur letzten Aktivität für dieses Konto unerwartet ist. Mögliche Ursache: Ein Angreifer hat Daten im Speicherkonto gelöscht.|
-|**Upload eines Azure Cloud Service-Pakets**|Gibt an, dass ein Azure Cloud Service-Paket (CSPKG-Datei) auf eine Weise in ein Speicherkonto hochgeladen wurde, die im Vergleich zur letzten Aktivität für das Konto ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat die Bereitstellung von bösartigem Code über Ihr Speicherkonto für einen Azure-Clouddienst vorbereitet.|
-|**Anomalie beim Berechtigungszugriff**|Gibt an, dass die Zugriffsberechtigungen für diesen Speichercontainer auf ungewöhnliche Weise geändert wurden. Mögliche Ursache: Ein Angreifer hat die Containerberechtigungen geändert, um seine Sicherheit zu schwächen oder Persistenz zu erlangen.|
+|**Upload eines Azure Cloud Services-Pakets**|Gibt an, dass ein Azure Cloud Services-Paket (CSPKG-Datei) auf eine Weise in ein Speicherkonto hochgeladen wurde, die im Vergleich zur letzten Aktivität für das Konto ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat die Bereitstellung von bösartigem Code über Ihr Speicherkonto für einen Azure-Clouddienst vorbereitet.|
+|**Anomalie beim Berechtigungszugriff**|Gibt an, dass die Zugriffsberechtigungen für diesen Speichercontainer auf ungewöhnliche Weise geändert wurden. Mögliche Ursache: Ein Angreifer hat die Containerberechtigungen geändert, um die Sicherheit zu schwächen oder Persistenz zu erlangen.|
 |**Anomalie beim Überprüfungszugriff**|Gibt an, dass die Zugriffsberechtigungen eines Speicherkontos auf eine Weise überprüft wurden, die im Vergleich zur letzten Aktivität für dieses Konto ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.|
 |**Anomalie bei der Datenuntersuchung**|Gibt an, dass Blobs oder Container in einem Speicherkonto in einer Weise aufgezählt wurden, die im Vergleich zur letzten Aktivität für dieses Konto anormal ist. Mögliche Ursache: Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.|
 
 >[!NOTE]
->Advanced Threat Protection für Azure Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
+>Advanced Threat Protection für Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
 
-Weitere Informationen zu den Warnungen für den Speicher finden Sie im Artikel [Advanced Threat Protection für Azure Storage](../storage/common/storage-advanced-threat-protection.md) und im Abschnitt zu den Schutzwarnungen.
+Weitere Informationen zu den Warnungen für Storage finden Sie im Artikel [Advanced Threat Protection für Azure Storage](../storage/common/storage-advanced-threat-protection.md). Lesen Sie insbesondere den Abschnitt zu den Schutzwarnungen.
 
-## Cosmos DB<a name="cosmos-db"></a>
+## Azure Cosmos DB<a name="cosmos-db"></a>
 
 Die folgenden Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für Azure Cosmos DB-Konten generiert:
 
-|Warnung|BESCHREIBUNG|
+|Warnung|Beschreibung|
 |---|---|
-|**Zugriff von einem ungewöhnlichen Ort**|Gibt an, dass sich am Zugriffsmuster eines Cosmos DB-Kontos etwas geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand von einer unbekannten IP-Adresse aus auf dieses Konto zugegriffen. Entweder hat ein Angreifer auf ein Cosmos DB-Konto zugegriffen, oder ein berechtigter Benutzer hat von einem neuen, ungewöhnlichen geografischen Standort aus auf das Cosmos DB-Konto zugegriffen. Beispiel: eine neue Anwendung oder eine Remotewartungsaktion durch einen Entwickler.|
-|**Ungewöhnliche Datenexfiltration**|Gibt an, dass sich am Datenextraktionsmuster eines Cosmos DB-Kontos etwas geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand eine ungewöhnliche Datenmenge extrahiert. Entweder hat ein Angreifer hat eine große Datenmenge aus einer Cosmos DB-Datenbank extrahiert – zum Beispiel Datenexfiltration/-leck, nicht autorisierte Datenübertragung – oder ein berechtigter Benutzer bzw. eine berechtigte Anwendung hat eine ungewöhnlich große Datenmenge von einem Container extrahiert – zum Beispiel Wartungssicherungsaktivitäten.|
+|**Zugriff von einem ungewöhnlichen Ort**|Gibt an, dass sich das Zugriffsmuster für ein Azure Cosmos DB-Konto geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand von einer unbekannten IP-Adresse aus auf dieses Konto zugegriffen. Entweder hat ein Angreifer auf das Konto zugegriffen, oder ein berechtigter Benutzer hat von einem neuen, ungewöhnlichen geografischen Standort aus darauf zugegriffen. Ein Beispiel für Letzteres wäre etwa eine Remotewartung durch eine neue Anwendung oder einen neuen Entwickler.|
+|**Ungewöhnliche Datenexfiltration**|Gibt an, dass sich das Datenextraktionsmuster eines Azure Cosmos DB-Kontos geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand eine ungewöhnliche Datenmenge extrahiert. Ein Angreifer hat möglicherweise eine große Datenmenge aus einer Azure Cosmos DB-Datenbank extrahiert (beispielsweise Datenexfiltration/-leck oder eine nicht autorisierte Datenübertragung). Oder: Ein berechtigter Benutzer oder eine berechtigte Anwendung hat eine ungewöhnliche Datenmenge aus einem Container extrahiert (beispielsweise für eine Sicherung bei einer Wartungsaktivität).|
 
 Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure Cosmos DB](../cosmos-db/cosmos-db-advanced-threat-protection.md).

@@ -3,21 +3,20 @@ title: Lookup-Aktivität in Azure Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie die Lookup-Aktivität verwendet wird, um einen Wert in einer externen Quelle zu suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: shlo
-ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9658987092027b38ab0cab1feb3df4be0a91e350
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768655"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141663"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -54,7 +53,7 @@ Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. Von d
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-NAME | BESCHREIBUNG | Type | Erforderlich?
+NAME | BESCHREIBUNG | type | Erforderlich?
 ---- | ----------- | ---- | --------
 dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden Sie in den entsprechenden Connectorartikeln im Abschnitt **Dataset-Eigenschaften**. | Schlüssel-Wert-Paar | Ja
 source | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt **Eigenschaften der Kopieraktivität**. | Schlüssel-Wert-Paar | Ja

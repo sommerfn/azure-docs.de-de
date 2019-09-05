@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242946"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241197"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -20,8 +20,6 @@ Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglich
 Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.  Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>Ändern des Namens einer Verwaltungsgruppe
 

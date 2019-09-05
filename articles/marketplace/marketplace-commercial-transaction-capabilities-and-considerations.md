@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535061"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279741"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Transaktionen auf dem kommerziellen Marketplace: Funktionen und Überlegungen
 
@@ -75,7 +75,7 @@ Bei der Veröffentlichung eines kostenlosen oder BYOL- Transaktionsangebots spie
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Nutzungsbasierte Bezahlung und Abonnementpreis (standortbasiert)
 
-Preise für nutzungsbasierte Bezahlung und Abonnement: Bei der Veröffentlichung eines Transaktionsangebots mit dem Modell „Nutzungsbasierte Bezahlung“ oder „Abonnement“ stellt Microsoft die Technologie und Dienste zur Verfügung, um Käufe, Rückgaben und Rückbuchungen von Softwarelizenzen zu verarbeiten. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion, wobei er seine Kennzeichnung als Verkäufer, Anbieter, Distributor und Lizenzgeber beibehält.
+Bei der Veröffentlichung eine Transaktionsangebots mit dem Modell „Nutzungsbasierte Bezahlung“ oder „Abonnement“ stellt Microsoft die Technologie und Dienste zur Verfügung, um Käufe, Rückgaben und Rückbuchungen von Softwarelizenzen zu verarbeiten. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion, wobei er seine Kennzeichnung als Verkäufer, Anbieter, Distributor und Lizenzgeber beibehält.
 
 Microsoft ermöglicht Kunden, Software des Herausgebers zu bestellen, zu lizenzieren und zu nutzen, wobei die Bedingungen des kommerziellen Marketplace von Microsoft und des Endbenutzerlizenzvertrags des Herausgebers gelten. Herausgeber müssen ihren Endbenutzerlizenzvertrag bereitstellen oder beim Erstellen des Angebots den [Standardvertrag](https://docs.microsoft.com/azure/marketplace/standard-contract) auswählen.
 

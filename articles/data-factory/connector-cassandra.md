@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7d3f29327f9a671a631b01ad688da3a523a7b0c8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967044"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275855"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -93,7 +93,7 @@ Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterst
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Cassandra-Dataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Cassandra-Dataset unterstützt werden.
 
 Legen Sie zum Kopieren von Daten aus Cassandra die type-Eigenschaft des Datasets auf **CassandraTable** fest. Folgende Eigenschaften werden unterstützt:
 

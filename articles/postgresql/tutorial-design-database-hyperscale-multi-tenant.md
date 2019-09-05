@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792267"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163983"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tutorial: Entwerfen einer mehrmandantenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
 
@@ -153,6 +153,8 @@ done
 Führen Sie – jetzt wieder in psql – ein Massenladen der Daten aus. Achten Sie darauf, psql in dem gleichen Verzeichnis auszuführen, in das Sie die Datendateien heruntergeladen hatten.
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy companies from 'companies.csv' with csv
 \copy campaigns from 'campaigns.csv' with csv
 \copy ads from 'ads.csv' with csv

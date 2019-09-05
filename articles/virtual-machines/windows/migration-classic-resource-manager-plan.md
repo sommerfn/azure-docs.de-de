@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bf8959abcf591acd902793e9247cd15e2cfdada9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: aa36051f65936f25e4f2cc3bf03619b0f66ce5a6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089224"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165306"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
@@ -203,7 +203,7 @@ Ziehen Sie Folgendes in Betracht:
 Entscheiden Sie ganz bewusst, welche Dienste Sie nun in Azure Resource Manager aktivieren möchten.  Viele Kunden finden Folgendes für ihre Azure-Umgebungen hilfreich:
 
 - [Rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md).
-- [Azure Resource Manager-Vorlagen zur einfacheren und präziseren Bereitstellung](../../azure-resource-manager/resource-group-overview.md#template-deployment).
+- [Azure Resource Manager-Vorlagen zur einfacheren und präziseren Bereitstellung](../../azure-resource-manager/template-deployment-overview.md).
 - [Tags](../../azure-resource-manager/resource-group-using-tags.md).
 - [Aktivitätssteuerung](../../azure-resource-manager/resource-group-audit.md)
 - [Azure-Richtlinien](../../governance/policy/overview.md)

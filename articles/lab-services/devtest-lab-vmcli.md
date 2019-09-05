@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 48a30ef86cdb10b540ffe1231294542ccff87255
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11ac4e10cbd116ed204a8a11274408f5a5a9b4d9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622319"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183133"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle
 Dieser Schnellstart führt Sie durch das Erstellen, Starten, Verbinden, Aktualisieren und Bereinigen von Entwicklungscomputern im Lab. 
@@ -41,7 +41,7 @@ Der Befehl zum Erstellen eines virtuellen Computers lautet: `az lab vm create`. 
 Der folgende Befehl erstellt ein Windows-basiertes Image von Azure Market Place. Der Name des Images ist derselbe, der beim Erstellen eines virtuellen Computers über das Azure-Portal angezeigt wird. 
 
 ```azurecli
-az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3’ --admin-username 'AdminUser' --admin-password 'Password1!'
+az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
 Der folgende Befehl erstellt einen virtuellen Computer basierend auf einem benutzerdefinierten Image, das im Lab verfügbar ist:

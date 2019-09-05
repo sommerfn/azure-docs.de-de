@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60382285"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135738"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Entwurfskonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
@@ -95,7 +95,6 @@ Sie können die Verwendung von „ConsistencyGuid“ als „sourceAnchor“ bei 
   > Nur neuere Versionen von Azure AD Connect (1.1.524.0 und höher) unterstützen die Verwendung von „ConsistencyGuid“ als „sourceAnchor“ bei der Neuinstallation.
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>Gewusst wie: Aktivieren der Funktion „ConsistencyGuid“
-Die Funktion kann derzeit nur bei der Neuinstallation von Azure AD Connect aktiviert werden.
 
 #### <a name="express-installation"></a>Express-Installation
 Bei der Installation von Azure AD Connect mit dem Express-Modus legt der Azure AD Connect-Assistent automatisch das am besten geeignete AD-Attribut fest, das mit folgender Logik als „sourceAnchor“-Attribut verwendet werden soll:

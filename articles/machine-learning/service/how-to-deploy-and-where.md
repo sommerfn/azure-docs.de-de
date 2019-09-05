@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7f856c0b69788c3d0b711d567777aba6cb4c6918
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14ced5ed45bcc91e6b6c812f2d1cbb61e139cc4f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036088"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278948"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -37,7 +37,7 @@ Weitere Informationen zu den am Bereitstellungsworkflow beteiligten Konzepten fi
 
 - Ein Modell. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](https://aka.ms/azml-deploy-cloud) bereitgestellt werden.
 
-- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
+- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
 
 ## <a name="connect-to-your-workspace"></a>Herstellen einer Verbindung mit Ihrem Arbeitsbereich
 
@@ -533,7 +533,7 @@ Informationen zur Verwendung der Profilerstellung über die CLI finden Sie unter
 Weitere Informationen finden Sie in den folgenden Referenzdokumenten:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--model~s--inference-config--input-data-)
+* [profile()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [Rückschlusskonfigurationsdatei-Schema](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Bereitstellen auf dem Ziel
@@ -562,7 +562,7 @@ Weitere Informationen finden Sie in der Referenzdokumentation zu [LocalWebservic
 Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells:
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]

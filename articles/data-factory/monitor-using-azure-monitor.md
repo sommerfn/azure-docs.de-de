@@ -3,21 +3,20 @@ title: Überwachen von Data Factorys mit Azure Monitor | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Data Factory-Pipelines mit Azure Monitor überwachen können, indem Sie Diagnoseprotokolle mit Informationen aus Azure Data Factory aktivieren.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: shlo
-ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326872"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141128"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -389,7 +388,7 @@ Log Analytics erbt das Schema von Azure Monitor. Dabei gelten jedoch folgende Au
 * Die Spalten *Ebene* wird gelöscht.
 * Die dynamischen Spalten *Eigenschaften* werden als der folgende dynamische JSON-BLOB-Typ beibehalten:
 
-    | Azure Monitor-Spalte | Log Analytics-Spalte | Typ |
+    | Azure Monitor-Spalte | Log Analytics-Spalte | type |
     | --- | --- | --- |
     | $.properties.UserProperties | UserProperties | Dynamisch |
     | $.properties.Annotations | Anmerkungen | Dynamisch |

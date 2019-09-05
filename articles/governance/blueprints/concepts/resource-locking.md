@@ -7,13 +7,12 @@ ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719759"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232933"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -26,10 +25,10 @@ Außerhalb von Blaupausen können Sperrmodi jedoch nicht geändert werden.
 
 Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden, gibt es vier Zustände: **Nicht gesperrt**, **Schreibgeschützt**, **Bearbeiten/Löschen nicht möglich** oder **Löschen nicht möglich**. Jeder Artefakttyp kann sich im Zustand **Nicht gesperrt** befinden. Mithilfe der folgende Tabelle kann der Zustand einer Ressource bestimmt werden:
 
-|Mode|Artefaktressourcentyp|Zustand|BESCHREIBUNG|
+|Mode|Artefaktressourcentyp|State|BESCHREIBUNG|
 |-|-|-|-|
 |Nicht sperren|*|Nicht gesperrt|Ressourcen werden nicht durch Blaupausen geschützt. Dieser Zustand wird auch für Ressourcen verwendet, die einem Ressourcengruppenartefakt mit dem Zustand **Schreibgeschützt** oder **Nicht löschen** außerhalb einer Blaupausenzuweisung hinzugefügt wurden.|
-|Nur Leseberechtigung|Ressourcengruppe|Bearbeiten/Löschen nicht möglich|Die Ressourcengruppe ist schreibgeschützt, und Tags der Ressourcengruppe können nicht geändert werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
+|Nur Leseberechtigung|Resource group|Bearbeiten/Löschen nicht möglich|Die Ressourcengruppe ist schreibgeschützt, und Tags der Ressourcengruppe können nicht geändert werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
 |Nur Leseberechtigung|Keine Ressourcengruppe|Nur Leseberechtigung|Die Ressource kann in keiner Weise geändert oder gelöscht werden.|
 |Nicht löschen|*|Löschen nicht möglich|Die Ressourcen können geändert, aber nicht gelöscht werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
 

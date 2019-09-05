@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d259ea02824937f0c496bb253fa4b6c1f5cea412
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015630"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259386"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -25,9 +25,9 @@ In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI](https://docs.microsoft
 
 In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein. 
 
-[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
-
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und den Storage-Dienst angegeben sind.

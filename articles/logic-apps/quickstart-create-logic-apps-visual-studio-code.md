@@ -12,12 +12,12 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: f0b568289a50b9883e6e0f1cba6b793c9e6e90e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051731"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309005"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Schnellstart: Erstellen und Verwalten automatisierter Logik-App-Workflows – Visual Studio Code
 
@@ -41,7 +41,7 @@ Bevor Sie anfangen, müssen Sie die folgenden Voraussetzungen erfüllen:
 
 * Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind: 
 
-  * [Visual Studio Code, Version 1.25.1 oder höher]("https://code.visualstudio.com/) (kostenlos)
+  * [Visual Studio Code, Version 1.25.1 oder höher](https://code.visualstudio.com/) (kostenlos)
 
   * Visual Studio Code-Erweiterung für Azure Logic Apps
 

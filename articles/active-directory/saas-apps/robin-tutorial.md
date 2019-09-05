@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de5f1d03550f65b849a1e3e6cf4be7a94a29aa9
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e1f0b72b4f2f3053a13a305df9d0e277894156
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517334"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213552"
 ---
 # <a name="tutorial-integrate-robin-with-azure-active-directory"></a>Tutorial: Integrieren von Robin in Azure Active Directory
 
@@ -82,13 +82,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Im Abschnitt  **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP-initiierten** Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche  **Speichern** klickt.
+1. Im Abschnitt **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP-initiierten** Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://dashboard.robinpowered.com/`.
 
-5. Die Robin-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+5. Die Robin-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -98,7 +98,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | ---------------| --------- |
     | FirstName | user.givenname |
     | Nachname | user.surname |
-    | E-Mail | user.mail |
+    | Email | user.mail |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 

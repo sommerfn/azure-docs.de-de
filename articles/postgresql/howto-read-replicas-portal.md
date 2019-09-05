@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907381"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309312"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über das Azure-Portal erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

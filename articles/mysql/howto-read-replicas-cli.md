@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 1a799823a71fcbc4aebf4b869a3fd0dd9fc66de1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 8a9366005ceef5a99fd66f0ec0cd53c98b481ee1
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907855"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309332"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe der Azure CLI
 
 In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI Lesereplikate im Azure Database for MySQL-Dienst erstellen und verwalten, die sich in der gleichen Azure-Region wie der Masterserver befinden.
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

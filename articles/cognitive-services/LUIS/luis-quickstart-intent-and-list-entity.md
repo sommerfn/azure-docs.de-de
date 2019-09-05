@@ -1,5 +1,5 @@
 ---
-title: 'Genaue Textübereinstimmung: LUIS'
+title: 'Tutorial: Genaue Textübereinstimmung: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Abrufen von Daten, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann Synonyme aufweisen, die ebenfalls exakt übereinstimmen
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: a5aeeb74d26ce633beb0e9feef20a2315bc0ff1d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560393"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307609"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 

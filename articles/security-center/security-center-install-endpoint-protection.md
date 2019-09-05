@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609946"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231303"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -31,12 +31,12 @@ Security Center meldet folgende Endpoint Protection-Probleme:
 - Endpoint Protection-Integrität:
 
   - Signatur veraltet: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese verfügt jedoch nicht über die neuesten Antischadsoftware-Signaturen.
-  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-os-coverage.md#supported-endpoint-protection-solutions).
+  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-services.md#endpoint-supported).
   - Keine Berichterstattung: Von der installierten Antischadsoftware-Lösung werden keine Daten gemeldet.
   - Unbekannt: Eine Antischadsoftware-Lösung ist installiert, aber der Status ist unbekannt, oder es wird ein unbekannter Fehler gemeldet.
 
     > [!NOTE]
-    > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-os-coverage.md#supported-endpoint-protection-solutions).
+    > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-services.md#endpoint-supported).
     >
     >
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ac72a91ae14b6f9c513c84da6f1f06508caef
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ab5ba4fde7469854954ed19d2e643f2b8a23f34f
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482211"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193256"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 
@@ -130,7 +130,7 @@ error=access_denied
 | `error` |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 
-## <a name="validate-the-idtoken"></a>Überprüfen des ID-Tokens
+## <a name="validate-the-id_token"></a>Überprüfen des ID-Tokens
 
 Das Empfangen eines ID-Tokens allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen auch die Signatur des ID-Tokens (id_token) validieren und die Ansprüche im Token auf Grundlage der Anforderungen Ihrer App überprüfen. Der Microsoft Identity Platform-Endpunkt verwendet [JSON-Webtoken (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
@@ -213,16 +213,6 @@ error=user_authentication_required
 | `error_description` |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 
 Wenn Sie diesen Fehler in der IFrame-Anforderung erhalten, muss sich der Benutzer erneut anmelden, um ein neues Token abzurufen. Diesen Fall können Sie so behandeln, wie es für Ihre Anwendung am sinnvollsten ist.
-
-## <a name="validating-access-tokens"></a>Überprüfen von Zugriffstoken
-
-Überprüfen Sie nach Erhalt eines Zugriffstokens die Signatur des Tokens sowie die folgenden Ansprüche. Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen.
-
-* Anspruch **Zielgruppe**: Zum Sicherstellen, dass das Token an Ihre App übergeben werden sollte
-* Anspruch **issuer** (Aussteller): zum Überprüfen, ob das Token tatsächlich vom Microsoft Identity Platform-Endpunkt für Ihre App ausgestellt wurde
-* Ansprüche **Nicht vor** und **Ablaufzeit**: Zum Sicherstellen, dass das Token nicht abgelaufen ist
-
-Weitere Informationen zu den Ansprüchen im Zugriffstoken finden Sie in der [Zugriffstokenreferenz](access-tokens.md).
 
 ## <a name="refreshing-tokens"></a>Aktualisieren von Token
 

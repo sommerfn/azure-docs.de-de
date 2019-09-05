@@ -4,19 +4,58 @@ description: Beschreibt, wie Ressourcengruppen und Ressourcen gelöscht werden. 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991683"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275084"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Löschen von Ressourcengruppen und Ressourcen mit Azure Resource Manager
 
 Dieser Artikel zeigt, wie Ressourcengruppen und Ressourcen gelöscht werden. Er beschreibt, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen ausführt, wenn Sie eine Ressourcengruppe löschen.
+
+## <a name="how-order-of-deletion-is-determined"></a>Vorgehensweise zur Bestimmung der Reihenfolge des Löschvorgangs
+
+Wenn Sie eine Ressourcengruppe löschen, bestimmt Resource Manager die Reihenfolge, in der Ressourcen gelöscht werden. Die folgende Reihenfolge wird verwendet:
+
+1. Alle untergeordneten (geschachtelten) Ressourcen werden gelöscht.
+
+2. Ressourcen, die andere Ressourcen verwalten, werden im nächsten Schritt gelöscht. Bei einer Ressource kann die Eigenschaft `managedBy` festgelegt sein, um anzuzeigen, dass eine andere Ressource sie verwaltet. Wenn diese Eigenschaft festgelegt ist, wird die Ressource, die die andere Ressource verwaltet, vor den anderen Ressourcen gelöscht.
+
+3. Die verbleibenden Ressourcen werden im Anschluss an die oben genannten beiden Kategorien gelöscht.
+
+Nachdem die Reihenfolge ermittelt wurde, gibt Resource Manager einen DELETE-Vorgang für jede Ressource aus. Es wird gewartet, bis alle Abhängigkeiten beendet wurden, bevor der Vorgang fortgesetzt wird.
+
+Für synchrone Vorgänge lauten die erwarteten Antwortcodes bei Erfolg folgendermaßen:
+
+* 200
+* 204
+* 404
+
+Für asynchrone Vorgänge lautet die erwartete Antwort bei Erfolg 202. Resource Manager verfolgt den Location-Header oder den azure-async-Vorgangsheader nach, um den Status des asynchronen Löschvorgangs zu ermitteln.
+  
+### <a name="deletion-errors"></a>Fehler beim Löschen
+
+Wenn ein Löschvorgang einen Fehler zurückgibt, wiederholt Resource Manager den DELETE-Aufruf. Wiederholungsversuche finden für die Statuscodes 5xx, 429 und 408 statt. Standardmäßig beträgt der Zeitraum für Wiederholungsversuche 15 Minuten.
+
+## <a name="after-deletion"></a>Nach dem Löschen
+
+Resource Manager gibt einen GET-Aufruf für jede Ressource aus, für die ein Löschversuch stattgefunden hat. Als Antwort auf diesen GET-Aufruf wird 404 erwartet. Wenn Resource Manager eine 404-Antwort erhält, wird davon ausgegangen, dass der Löschvorgang erfolgreich war. Resource Manager entfernt die Ressource aus dem Cache.
+
+Wenn der GET-Aufruf für die Ressource jedoch 200 oder 201 zurückgibt, erstellt Resource Manager die Ressource erneut.
+
+Wenn der GET-Vorgang einen Fehler zurückgibt, wiederholt Resource Manager die GET-Anforderung für die folgenden Fehlercodes:
+
+* Kleiner als 100
+* 408
+* 429
+* Größer als 500
+
+Bei anderen Fehlercodes kann Resource Manager das Löschen der Ressource nicht durchführen.
 
 ## <a name="delete-resource-group"></a>Ressourcengruppe löschen
 
@@ -25,13 +64,13 @@ Verwenden Sie eine der folgenden Methoden, um die Ressourcengruppe zu löschen.
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name <resource-group-name>
+Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
-az group delete --name <resource-group-name>
+az group delete --name ExampleResourceGroup
 ```
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
@@ -80,46 +119,6 @@ az resource delete \
 
 ---
 
-## <a name="how-order-of-deletion-is-determined"></a>Vorgehensweise zur Bestimmung der Reihenfolge des Löschvorgangs
-
-Wenn Sie eine Ressourcengruppe löschen, bestimmt Resource Manager die Reihenfolge, in der Ressourcen gelöscht werden. Die folgende Reihenfolge wird verwendet:
-
-1. Alle untergeordneten (geschachtelten) Ressourcen werden gelöscht.
-
-2. Ressourcen, die andere Ressourcen verwalten, werden im nächsten Schritt gelöscht. Bei einer Ressource kann die Eigenschaft `managedBy` festgelegt sein, um anzuzeigen, dass eine andere Ressource sie verwaltet. Wenn diese Eigenschaft festgelegt ist, wird die Ressource, die die andere Ressource verwaltet, vor den anderen Ressourcen gelöscht.
-
-3. Die verbleibenden Ressourcen werden im Anschluss an die oben genannten beiden Kategorien gelöscht.
-
-Nachdem die Reihenfolge ermittelt wurde, gibt Resource Manager einen DELETE-Vorgang für jede Ressource aus. Es wird gewartet, bis alle Abhängigkeiten beendet wurden, bevor der Vorgang fortgesetzt wird.
-
-Für synchrone Vorgänge lauten die erwarteten Antwortcodes bei Erfolg folgendermaßen:
-
-* 200
-* 204
-* 404
-
-Für asynchrone Vorgänge lautet die erwartete Antwort bei Erfolg 202. Resource Manager verfolgt den Location-Header oder den azure-async-Vorgangsheader nach, um den Status des asynchronen Löschvorgangs zu ermitteln.
-  
-### <a name="errors"></a>Errors
-
-Wenn ein Löschvorgang einen Fehler zurückgibt, wiederholt Resource Manager den DELETE-Aufruf. Wiederholungsversuche finden für die Statuscodes 5xx, 429 und 408 statt. Standardmäßig beträgt der Zeitraum für Wiederholungsversuche 15 Minuten.
-
-## <a name="after-deletion"></a>Nach dem Löschen
-
-Resource Manager gibt einen GET-Aufruf für jede Ressource aus, für die ein Löschversuch stattgefunden hat. Als Antwort auf diesen GET-Aufruf wird 404 erwartet. Wenn Resource Manager eine 404-Antwort erhält, wird davon ausgegangen, dass der Löschvorgang erfolgreich war. Resource Manager entfernt die Ressource aus dem Cache.
-
-Wenn der GET-Aufruf für die Ressource jedoch 200 oder 201 zurückgibt, erstellt Resource Manager die Ressource erneut.
-
-### <a name="errors"></a>Errors
-
-Wenn der GET-Vorgang einen Fehler zurückgibt, wiederholt Resource Manager die GET-Anforderung für die folgenden Fehlercodes:
-
-* Kleiner als 100
-* 408
-* 429
-* Größer als 500
-
-Bei anderen Fehlercodes kann Resource Manager das Löschen der Ressource nicht durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

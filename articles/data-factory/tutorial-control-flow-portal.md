@@ -3,21 +3,20 @@ title: Verzweigungen in Azure Data Factory-Pipeline | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Datenfluss in Azure Data Factory, durch die Verkettung und Verzweigung von Aktivitäten steuern.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: f2a8983ae5306ec2ada7b4b537c2f17425b8717d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d8e4c17307b35295f37f1f84db912d04ca625b6a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449364"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140904"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -91,7 +90,7 @@ Die Anforderung im Logik-App-Designer sollte wie in der folgenden Abbildung auss
 
 ![Logik-App-Designer: Anforderung](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-Für die **Send Email (E-Mail senden)**-Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel: 
+Für die **Send Email (E-Mail senden)** -Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel:
 
 ![Logik-App-Designer: E-Mail-Sendeaktion](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -103,7 +102,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow 
-Erstellen Sie mit den gleichen Schritten einen weiteren Logic Apps-Workflow (**CopyFailEmail**). Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie das Format Ihrer E-Mail (beispielsweise `Subject`), um eine E-Mail für einen nicht erfolgreichen Vorgang zu erhalten. Beispiel: 
+Erstellen Sie mit den gleichen Schritten einen weiteren Logic Apps-Workflow (**CopyFailEmail**). Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie das Format Ihrer E-Mail (beispielsweise `Subject`), um eine E-Mail für einen nicht erfolgreichen Vorgang zu erhalten. Beispiel:
 
 ![Logik-App-Designer: Fehler-E-Mail-Workflow](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -237,7 +236,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         Die Nachrichtentext enthält folgende Eigenschaften:
 
        - Nachricht: Übergibt den Wert von `@{activity('Copy1').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
-       - Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md) 
+       - Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md)
        - Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
        - Empfänger: Übergibt den Wert von „\@pipeline().parameters.receiver“). Zugriff auf die Pipeline-Parameter
     
@@ -266,7 +265,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         ```
 
         ![Einstellungen für die zweite Webaktivität](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. Wählen Sie im Pipeline-Designer die Aktivität **Kopieren** aus, klicken Sie auf die Schaltfläche **+->**, und wählen Sie **Fehler** aus.  
+22. Wählen Sie im Pipeline-Designer die Aktivität **Kopieren** aus, klicken Sie auf die Schaltfläche **+->** , und wählen Sie **Fehler** aus.  
 
     ![Einstellungen für die zweite Webaktivität](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Ziehen Sie die **rote** Schaltfläche neben der Kopieraktivität auf die zweite Webaktivität (**SendFailureEmailActivity**). Sie können die Aktivitäten verschieben, sodass die Pipeline wie in der folgenden Abbildung aussieht: 

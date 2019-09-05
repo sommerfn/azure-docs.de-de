@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 05/24/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 71f2cc3ef028d66be7049cf85003d51e6b4baef3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34c85de456e7ec96f3244d327fd53c91ed90d109
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559797"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306917"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Python
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Python
 
 In diesem Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer veröffentlichten QnA Maker-Wissensdatenbank abrufen. Die Wissensdatenbank enthält Fragen und Antworten aus [Datenquellen](../Concepts/data-sources-supported.md) (beispielsweise häufig gestellte Fragen). Die [Frage](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wird an den QnA Maker-Dienst gesendet. Die [Antwort](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) enthält die Antwort mit der bestbewerteten Vorhersage. 
 

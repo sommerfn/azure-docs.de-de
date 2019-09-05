@@ -3,18 +3,18 @@ title: Vorlagenfunktionen im Resource Manager | Microsoft Docs
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 201fea91aba2a14720a7c28df5128f94e9e327fd
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205426"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258884"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
-In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](resource-group-authoring-templates.md#syntax).
+In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](template-expressions.md).
 
 Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](resource-group-authoring-templates.md#functions).
 
@@ -81,7 +81,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten au
 
 * [deployment](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
-* [Variablen](resource-group-template-functions-deployment.md#variables)
+* [variables](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />

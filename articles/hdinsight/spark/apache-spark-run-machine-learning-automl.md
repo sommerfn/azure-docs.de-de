@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354862"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141181"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Ausführen von Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen (AutoML) in Apache Spark in Azure HDInsight
 
@@ -34,7 +34,7 @@ Alternativ können Sie auch Zeppelin-Notebooks für AutoML verwenden.
 
 ## <a name="authentication-for-workspace"></a>Authentifizierung für Arbeitsbereich
 
-Zum Erstellen von Arbeitsbereichen und Übermitteln von Experimenten benötigen Sie ein Authentifizierungstoken. Dieses Token können Sie mit einer [Azure AD-Anwendung](../../active-directory/develop/app-objects-and-service-principals.md) generieren. Mit einem [Azure AD-Benutzer](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python) können Sie auch das erforderliche Authentifizierungstoken generieren, wenn die mehrstufige Authentifizierung für das Konto nicht aktiviert ist.  
+Zum Erstellen von Arbeitsbereichen und Übermitteln von Experimenten benötigen Sie ein Authentifizierungstoken. Dieses Token können Sie mit einer [Azure AD-Anwendung](../../active-directory/develop/app-objects-and-service-principals.md) generieren. Mit einem [Azure AD-Benutzer](/azure/python/python-sdk-azure-authenticate) können Sie auch das erforderliche Authentifizierungstoken generieren, wenn die mehrstufige Authentifizierung für das Konto nicht aktiviert ist.  
 
 Im folgenden Codeausschnitt wird ein Authentifizierungstoken mit einer **Azure AD-Anwendung** erstellt.
 

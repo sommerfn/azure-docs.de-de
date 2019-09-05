@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447902"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164891"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -99,13 +99,13 @@ In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über
    ![Bereitgestellte Logik-Apps vom Azure-Portal aus öffnen](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
    Sobald die Logik-App am unteren Rand des Logic Apps-Designers angezeigt wird, können Sie **Codeansicht** auswählen, um die zugrunde liegende Definitionsstruktur der Logik-App zu überprüfen. 
-   Wenn Sie eine Bereitstellungsvorlage für die Logik-App erstellen möchten, informieren Sie sich, wie Sie für diese Logik-App [eine Azure Resource Manager-Vorlage herunterladen](#download-logic-app) können. Weitere Informationen zu [Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md#template-deployment).
+   Wenn Sie eine Bereitstellungsvorlage für die Logik-App erstellen möchten, informieren Sie sich, wie Sie für diese Logik-App [eine Azure Resource Manager-Vorlage herunterladen](#download-logic-app) können. Weitere Informationen zu [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Herunterladen aus Azure
 
-Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunterladen und sie als [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen speichern. Sie können die Vorlagen dann lokal mit Visual Studio bearbeiten und Logik-Apps für verschiedene Bereitstellungsumgebungen anpassen. Das Herunterladen von Logik-Apps *parametrisiert* automatisch deren Definitionen in [Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md#template-deployment), die auch JavaScript Object Notation (JSON) verwenden.
+Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunterladen und sie als [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen speichern. Sie können die Vorlagen dann lokal mit Visual Studio bearbeiten und Logik-Apps für verschiedene Bereitstellungsumgebungen anpassen. Das Herunterladen von Logik-Apps *parametrisiert* automatisch deren Definitionen in [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md), die auch JavaScript Object Notation (JSON) verwenden.
 
 1. Öffnen Sie in Visual Studio den Cloud-Explorer, suchen Sie die Logik-App, die Sie aus Azure herunterladen möchten, und wählen Sie sie aus.
 

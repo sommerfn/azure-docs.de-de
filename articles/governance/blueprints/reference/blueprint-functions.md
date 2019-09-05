@@ -7,12 +7,12 @@ ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcf073c58a723b8dbd835ac331c0ce9d16187445
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209402"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232848"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktionen für die Verwendung mit Azure Blueprints
 
@@ -107,13 +107,13 @@ Ein Resource Manager-Vorlagenartefakt mit der ID _myTemplateArtifact_, das die f
 
 Einige Beispiele für das Abrufen von Daten aus dem _myTemplateArtifact_-Beispiel sind:
 
-| Ausdruck | Type | Wert |
+| Ausdruck | type | Wert |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | string | "first" |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | string | "my string value" |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Zeichenfolge | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | Zeichenfolge | "my string value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | { "myproperty": "my value", "anotherProperty": true } |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | string | "my value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Zeichenfolge | "my value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat

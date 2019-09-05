@@ -3,22 +3,20 @@ title: Azure Data Factory – JSON-Skriptreferenz | Microsoft-Dokumentation
 description: Stellt JSON-Schemas für Data Factory-Entitäten bereit.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 279a016d60ecb1bc80baf92a7fa60365145e397d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f94d3cdbbd1683b20dbe1d370bcac43817458f44
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836266"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139382"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -1597,7 +1595,7 @@ Legen Sie zum Definieren eines verknüpften Amazon Redshift-Diensts den **Typ** 
 | server |IP-Adresse oder Hostname des Amazon Redshift-Servers. |Ja |
 | port |Die Nummer des TCP-Ports, den der Amazon Redshift-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 5439 |
 | database |Der Name der Amazon Redshift-Datenbank. |Ja |
-| userName |Der Name des Benutzers, der Zugriff auf die Datenbank hat. |Ja |
+| username |Der Name des Benutzers, der Zugriff auf die Datenbank hat. |Ja |
 | password |Kennwort für das Benutzerkonto. |Ja |
 
 #### <a name="example"></a>Beispiel
@@ -1710,7 +1708,7 @@ Legen Sie zum Definieren eines verknüpften IBM DB2-Diensts den **Typ** des verk
 | database |Name der DB2-Datenbank. |Ja |
 | schema |Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. |Nein |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll. |Ja |
 
@@ -2117,7 +2115,7 @@ Legen Sie zum Definieren eines verknüpften PostgreSQL-Diensts den **Typ** des v
 | database |Name der PostgreSQL-Datenbank. |Ja |
 | schema |Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. |Nein |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der PostgreSQL-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen PostgreSQL-Datenbank verwenden soll. |Ja |
 
@@ -2235,7 +2233,7 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Zeichenfolge | Ja
 systemNumber | Die Systemnummer des SAP BW-Systems. | Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja
 clientId | Client-ID des Clients im SAP BW-System. | Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja
-userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
 password | Kennwort für den Benutzer | Zeichenfolge | Ja
 gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP BW-Instanz verwenden soll. | Zeichenfolge | Ja
 encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein
@@ -2344,7 +2342,7 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | Zeichenfolge | Ja
 authenticationType | Die Art der Authentifizierung. | string. „Basic“ oder „Windows“ | Ja
-userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
 password | Kennwort für den Benutzer | Zeichenfolge | Ja
 gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | Zeichenfolge | Ja
 encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein
@@ -2675,7 +2673,7 @@ Legen Sie zum Definieren eines verknüpften Sybase-Diensts den **Typ** des verkn
 | database |Name der Sybase-Datenbank. |Ja |
 | schema |Name des Schemas in der Datenbank. |Nein |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Sybase-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Sybase-Datenbank verwenden soll. |Ja |
 
@@ -2793,7 +2791,7 @@ Legen Sie zum Definieren eines verknüpften Teradata-Diensts den **Typ** des ver
 | --- | --- | --- |
 | server |Name des Teradata-Servers. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Teradata-Datenbank verwenden soll. |Ja |
 
@@ -2908,7 +2906,7 @@ Legen Sie zum Definieren eines verknüpften Cassandra-Diensts den **Typ** des ve
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 9042 |
 | authenticationType |Basic (Standard) oder Anonymous (Anonym) |Ja |
-| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
 | encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein |
@@ -3035,7 +3033,7 @@ Legen Sie zum Definieren eines verknüpften MongoDB-Diensts den **Typ** des verk
 | server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |
 | port |Der TCP-Port, den der MongoDB-Server verwendet, um auf Clientverbindungen zu lauschen |Optional, Standardwert: 27.017 |
 | authenticationType |Basic oder Anonymous |Ja |
-| userName |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
+| username |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | password |Kennwort für den Benutzer |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | authSource |Der Name der MongoDB-Datenbank, die Sie zum Überprüfen Ihrer Anmeldeinformationen zur Authentifizierung verwenden möchten |Optional (wenn die Standardauthentifizierung verwendet wird). Standardwert: verwendet das Administratorkonto und die Datenbank, die mit der databaseName-Eigenschaft angegeben wird |
 | databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |Ja |
@@ -3177,10 +3175,10 @@ Legen Sie zum Definieren eines Amazon S3-Datasets den **Typ** des Datasets auf *
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| bucketName |Der Name des S3-Buckets. |string |Ja |
-| key |Der S3-Objektschlüssel. |string |Nein |
-| prefix |Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Gilt nur, wenn der Schlüssel leer ist. |string |Nein |
-| version |Die Version des S3-Objekts, wenn S3-Versionierung aktiviert ist. |string |Nein |
+| bucketName |Der Name des S3-Buckets. |Zeichenfolge |Ja |
+| key |Der S3-Objektschlüssel. |Zeichenfolge |Nein |
+| prefix |Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Gilt nur, wenn der Schlüssel leer ist. |Zeichenfolge |Nein |
+| version |Die Version des S3-Objekts, wenn S3-Versionierung aktiviert ist. |Zeichenfolge |Nein |
 | format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein | |
 | compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Die folgenden Ebenen werden unterstützt: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein | |
 
@@ -3554,7 +3552,7 @@ Legen Sie zum Definieren eines verknüpften FTP-Diensts den **Typ** des verknüp
 | --- | --- | --- | --- |
 | host |Name oder IP-Adresse des FTP-Servers |Ja |&nbsp; |
 | authenticationType |Angeben des Authentifizierungstyps |Ja |Standard, Anonym |
-| userName |Der Benutzer, der Zugriff auf den FTP-Server hat |Nein |&nbsp; |
+| username |Der Benutzer, der Zugriff auf den FTP-Server hat |Nein |&nbsp; |
 | password |Kennwort für den Benutzer (username) |Nein |&nbsp; |
 | encryptedCredential |Verschlüsselte Anmeldeinformation für den Zugriff auf den FTP-Server |Nein |&nbsp; |
 | gatewayName |Name des Datenverwaltungsgateways für die Verbindung mit einem lokalen FTP-Server |Nein |&nbsp; |
@@ -3880,7 +3878,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| userName | Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
+| username | Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
 
 ```json
@@ -3929,7 +3927,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| userName |Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
+| username |Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die das Gateway zugreifen kann. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. <br><br> Betrifft nur das Kopieren von Daten von einem lokalen SFTP-Server. |
 | privateKeyContent | Eine serialisierte Zeichenfolge mit dem Inhalt des privaten Schlüssels. Der Kopier-Assistent kann die private Schlüsseldatei lesen und den privaten Schlüsselinhalt automatisch extrahieren. Wenn Sie andere Tools/SDKs verwenden, nutzen Sie stattdessen die privateKeyPath-Eigenschaft. | Geben Sie entweder den `privateKeyPath` oder den `privateKeyContent` an. |
 | passPhrase | Geben Sie die Passphrase/das Kennwort zum Entschlüsseln des privaten Schlüssels ein, wenn die Schlüsseldatei mithilfe einer Passphrase geschützt ist. | Ja, wenn die private Schlüsseldatei mithilfe einer Passphrase geschützt ist. |
@@ -4084,7 +4082,7 @@ Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| userName | Benutzername zum Zugreifen auf den HTTP-Endpunkt | Ja |
+| username | Benutzername zum Zugreifen auf den HTTP-Endpunkt | Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
 
 ```json
@@ -4596,7 +4594,7 @@ Legen Sie zum Definieren eines verknüpften Salesforce-Diensts den **Typ** des v
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> – Die Standard-URL lautet „https:\///login.salesforce.com“. <br> – Um Daten aus einer Sandbox zu kopieren, geben Sie „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein |
-| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |Ja |
 
@@ -4878,7 +4876,7 @@ Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure
 | --- | --- | --- |
 | type |Legen Sie die Typeigenschaft auf **HDInsight**fest. |Ja |
 | clusterUri |Der URI des HDInsight-Clusters. |Ja |
-| userName |Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. |Ja |
+| username |Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Store-Dienst für diese Eigenschaft angeben. Sie können auf Daten in Azure Data Lake Store über Hive-/Pig-Skripts zugreifen, wenn der HDInsight-Cluster Zugriff auf die Data Lake Store-Instanz hat. </p>  |Ja |
 

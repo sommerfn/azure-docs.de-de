@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: afc50a5adb591550f6e988a572d1ac9a8c4439cb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955179"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277103"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
@@ -55,7 +55,7 @@ Bei der Auswahl Ihres Schwellenwerts sollten Sie die Ausgewogenheit zwischen Gen
 - Wenn die **Abdeckung** (oder Abruf) wichtiger ist, und Sie so viele Fragen wie möglich beantworten möchten, auch wenn es nur einen partiellen Bezug zur Frage des Benutzers gibt, SENKEN Sie den Schwellenwert. Das bedeutet, dass möglicherweise mehr Fälle auftreten, bei denen die Antwort nicht die eigentliche Abfrage des Benutzers beantwortet, aber zumindest eine andere, immer noch relevante Antwort gibt. *Beispiel:* Wenn Sie den Schwellenwert auf **30** festlegen, geben Sie möglicherweise Antworten auf Abfragen wie „Wo kann ich meine Wissensdatenbank bearbeiten?“.
 
 > [!NOTE]
-> Neuere Versionen von QnA Maker beinhalten Verbesserungen der Bewertungslogik und wirken sich möglicherweise auf Ihren Schwellenwert aus. Achten Sie bei jeder Aktualisierung des Diensts darauf, den Schwellenwert ggf. zu testen und anzupassen. Sie können die Version Ihres QnA-Diensts [hier](https://www.qnamaker.ai/UserSettings) überprüfen, und [hier](../How-To/troubleshooting-runtime.md) erfahren Sie, wie Sie die neuesten Updates erhalten.
+> Neuere Versionen von QnA Maker beinhalten Verbesserungen der Bewertungslogik und wirken sich möglicherweise auf Ihren Schwellenwert aus. Achten Sie bei jeder Aktualisierung des Diensts darauf, den Schwellenwert ggf. zu testen und anzupassen. Sie können die Version Ihres QnA-Diensts [hier](https://www.qnamaker.ai/UserSettings) überprüfen, und [hier](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) erfahren Sie, wie Sie die neuesten Updates erhalten.
 
 ## <a name="set-threshold"></a>Festlegen des Schwellenwerts 
 

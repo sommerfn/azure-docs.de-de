@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 82c286ce60751775308d0f2c197d86785c4f0a14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: 75fcbdc20c1caf191d4a22672fc9641b36c263c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991579"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309343"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
@@ -33,8 +33,6 @@ Das Feature für Lesereplikate verwendet die asynchrone Replikation von PostgreS
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
 Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
 
-> [!IMPORTANT]
-> Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 Ein Masterserver kann in jeder beliebigen [Azure Database for PostgreSQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql) vorhanden sein.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen.
 

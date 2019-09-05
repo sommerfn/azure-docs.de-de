@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 8c6013e5bda2bec1c8a09fd9f2434cdd477eed01
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1875e3437c13a678532c05b4057126f785b9125c
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618524"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147528"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub (iOS)
 
@@ -39,7 +39,7 @@ Am Ende dieses Artikels führen Sie zwei Swift-iOS-Projekte aus:
 > [!NOTE]
 > IoT Hub bietet durch Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, Java, Python und JavaScript). Im [Azure IoT Developer Center](https://www.azure.com/develop/iot) finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit dem Code in diesem Tutorial sowie allgemeine Informationen zum Verbinden mit Azure IoT Hub.
 
-Für dieses Tutorial benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 

@@ -7,18 +7,18 @@ ms.date: 08/21/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d88a5af1f68677dd68decb96411db06ea91ffd25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 96b58a84befcd4a5661804b1265eae119f09977f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103654"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232819"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „Canada Federal PBMM“
 
 In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel „Canada Federal PBMM“ (Protected B, Medium Integrity, Medium Availability) den Canada Federal PBMM-Steuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4).
 
-Die folgenden Zuordnungen gelten für die Steuerungen für **Canada Federal PBMM**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Preview\]: Audit Canada Federal PBMM controls** ([Vorschauversion] Überwachen von Canada Federal PBMM-Steuerungen).
+Die folgenden Zuordnungen gelten für die Steuerungen für **Canada Federal PBMM**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: Audit Canada Federal PBMM controls** ([Vorschauversion] Überwachen von Canada Federal PBMM-Steuerungen).
 
 ## <a name="location-constraints"></a>Standorteinschränkungen
 

@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b84ea0b9859e69eaf45cd9a89b2443cf42949f79
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122610"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141077"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory  
 Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
@@ -38,7 +38,7 @@ Das Cmdlet gibt für verschiedene Arten der Integrationslaufzeit unterschiedlich
 ## <a name="azure-integration-runtime"></a>Azure-Integrationslaufzeit
 Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollständig flexibel verwaltet. Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom **Get-AzDataFactoryV2IntegrationRuntime**-Befehl zurückgegeben werden:
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
 | Eigenschaft | Description |
@@ -64,7 +64,7 @@ Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataF
 > [!NOTE] 
 > Die zurückgegebenen Eigenschaften und Statuswerte enthalten Informationen zur allgemeinen selbstgehosteten Integrationslaufzeit und zu jedem Knoten in der Integrationslaufzeit.  
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten**:
 
@@ -77,7 +77,7 @@ Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für
 | CPU-Auslastung | CPU-Auslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. |
 | Netzwerk (Eingang/Ausgang) | Netzwerkauslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
 | Gleichzeitige Aufträge (ausgeführt/Limit) | **Wird ausgeführt**. Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. <br/><br/>**Limit**. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Wenn Zeitüberschreitungen für Aktivitäten auftreten, können Sie das Limit auch dann erhöhen, um die gleichzeitige Ausführung von Aufträgen in erweiterten Szenarien zentral hochzuskalieren, wenn CPU, Arbeitsspeicher oder Netzwerk nicht voll ausgelastet sind. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
-| Rolle | Bei einer selbstgehosteten Integrationslaufzeit mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten genutzt wird. Der Verteilerknoten ist auch ein Workerknoten. |
+| Role | Bei einer selbstgehosteten Integrationslaufzeit mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten genutzt wird. Der Verteilerknoten ist auch ein Workerknoten. |
 
 Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehosteten Integrationslaufzeit (d.h. in einem Szenario mit horizontalem Hochskalieren) mindestens zwei Knoten enthalten sind.
 
@@ -155,7 +155,7 @@ Beispielausgabe (es wird angenommen, dass dieser selbstgehosteten Integrationsla
 ## <a name="azure-ssis-integration-runtime"></a>Azure SSIS-Integrationslaufzeit
 Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (oder Knoten), die speziell für die Ausführung Ihrer SSIS-Pakete bestimmt sind. Es werden keine anderen Aktivitäten von Azure Data Factory ausgeführt. Nach der Bereitstellung können Sie ihre Eigenschaften abfragen und ihre allgemeinen/knotenabhängigen Status überwachen.
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 | Eigenschaft/Status | Description |
 | --------------- | ----------- |
@@ -173,9 +173,9 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | CatalogAdminPassword | Das Kennwort des Administrators Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz. |
 | CatalogPricingTier | Der Tarif für die SSISDB, die von Ihrem vorhandenen Azure SQL-Datenbank-Server gehostet wird.  Gilt nicht für die verwaltete Azure SQL-Datenbank-Instanz, die die SSISDB hostet. |
 | VNetId | Die Ressourcen-ID des virtuellen Netzwerks zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Subnetz | Der Subnetzname zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
-| ID | Die Ressourcen-ID Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Type | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Subnet | Der Subnetzname zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
+| id | Die Ressourcen-ID Ihrer Azure-SSIS-Integrationslaufzeit. |
+| type | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
 | ResourceGroupName | Der Name Ihrer Azure-Ressourcengruppe, in dem die Data Factory und Azure-SSIS-Integrationslaufzeit erstellt wurden. |
 | DataFactoryName | Der Name Ihrer Azure Data Factory. |
 | Name | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |

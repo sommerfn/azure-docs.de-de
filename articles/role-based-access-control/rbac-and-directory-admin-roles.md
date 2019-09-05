@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1b7183da84b994da8694440183e367f143722002
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295171"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194174"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 
@@ -97,7 +97,7 @@ Azure AD-Administratorrollen werden verwendet, um Azure AD-Ressourcen in einem V
 
 | Rolle „Azure AD-Administrator“ | Berechtigungen | Notizen |
 | --- | --- | --- |
-| [Globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) | <ul><li>Verwalten des Zugriffs auf alle administrativen Features in Azure Active Directory und auf Dienste, die im Verbund mit Azure Active Directory genutzt werden</li><li>Zuweisen von Administratorrollen für andere Personen</li><li>Zurücksetzen des Kennworts für alle Benutzer und alle anderen Administratoren</li></ul> | Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird zu einem globalen Administrator. |
+| [Globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Verwalten des Zugriffs auf alle administrativen Features in Azure Active Directory und auf Dienste, die im Verbund mit Azure Active Directory genutzt werden</li><li>Zuweisen von Administratorrollen für andere Personen</li><li>Zurücksetzen des Kennworts für alle Benutzer und alle anderen Administratoren</li></ul> | Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird zu einem globalen Administrator. |
 | [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
 | [Rechnungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
 

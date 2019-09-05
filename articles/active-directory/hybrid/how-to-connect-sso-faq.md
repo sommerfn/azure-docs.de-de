@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "60242227"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
@@ -39,7 +39,7 @@ Die nahtlose SSO ist eine kostenlose Funktion, sodass Sie für deren Verwendung 
 
 Nein. Das nahtlose einmalige Anmelden ist nur in der weltweiten Instanz von Azure AD verfügbar.
 
-## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion der nahtlosen SSO?
+## <a name="what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso"></a>Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion der nahtlosen SSO?
 
 Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Parameter an Azure AD senden und Benutzern so eine unbeaufsichtigte Anmeldung über das nahtlose einmalige Anmelden ermöglichen können (d.h. Ihre Benutzer müssen ihre Benutzernamen oder Kennwörter nicht eingeben):
 

@@ -1,18 +1,18 @@
 ---
 title: Azure-Dienste im FedRAMP- und DoD SRG-Prüfumfang
 description: Dieser Artikel enthält Tabellen für öffentliche Azure-Instanzen und Azure Government, die veranschaulichen, welchen FedRAMP-Prüfumfang („Mittel“ gegenüber „Hoch“) und DoD SRG-Prüfumfang (Impact Level 2, 4 oder 5) ein bestimmter Dienst erreicht hat.
-author: Jain-Garima
-ms.author: gjain
+author: davib
+ms.author: davib
 ms.date: 5/17/2019
 ms.topic: article
 ms.service: security
 ms.reviewer: rochiou
-ms.openlocfilehash: f4bf6b90c06a2c17f44c693e5062d66be756347a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 15ba9b010948513e6bc60fb8cc77255bdf566b44
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845763"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308182"
 ---
 # <a name="azure-services-by-fedramp-and-dod-cc-srg-audit-scope"></a>Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang
 

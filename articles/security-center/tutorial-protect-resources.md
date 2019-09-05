@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 8fc287826d1a98b5d61229979544fdb3780455d4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7533a8636697db92a69cfec99d0e89138164d7b7
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967943"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147883"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Tutorial: Schützen Ihrer Ressourcen mit Azure Security Center
 Security Center verringert Ihre Gefährdung durch Bedrohungen, indem mithilfe von Zugriffs- und Anwendungssteuerungen böswillige Aktivitäten blockiert werden. Durch einen Just-in-Time (JIT)-Zugriff auf einen virtuellen Computer wird die Anfälligkeit für Angriffe verringert, da Sie den dauerhaften Zugriff auf virtuelle Computer verweigern können. Stattdessen bieten Sie einen gesteuerten und überwachten Zugriff auf VMs nur bei Bedarf. Adaptive Anwendungssteuerungen helfen dabei, VMs gegen Schadsoftware abzusichern, indem sie steuern, welche Anwendungen auf Ihren VMs ausgeführt werden können. Security Center nutzt Machine Learning, um die auf dem virtuellen Computer ausgeführten Prozesse zu analysieren, und unterstützt Sie beim Anwenden von Whitelistregeln, die auf diesen Daten basieren.
@@ -72,8 +72,6 @@ Verwaltungsports müssen nicht jederzeit geöffnet sein. Sie müssen nur geöffn
 
 ## <a name="harden-vms-against-malware"></a>Absichern von VMs gegen Schadsoftware
 Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung in konfigurierten Ressourcengruppen zulässig ist. Dadurch können Sie Ihre VMs gegen Schadsoftware absichern. Security Center nutzt Machine Learning, um die auf dem virtuellen Computer ausgeführten Prozesse zu analysieren, und unterstützt Sie beim Anwenden von Whitelistregeln, die auf diesen Daten basieren.
-
-Dieses Feature steht nur für Windows-Computer zur Verfügung.
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück. Klicken Sie unter **ERWEITERTER CLOUDSCHUTZ** auf **Adaptive Anwendungssteuerungen**.
 

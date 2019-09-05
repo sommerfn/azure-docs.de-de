@@ -3,15 +3,15 @@ title: 'Azure Resource Manager: Tagunterstützung für Ressourcen'
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 452230a263e623f53346fcdb8cf310e73f171aee
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848608"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194718"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt.

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128340"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278823"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -76,7 +76,7 @@ Die Notebook-VM ist:
 
 + **Anpassbar:** Das VM-Angebot ist schnell und sicher, bietet jedoch gleichzeitig einen uneingeschränkten Zugriff auf die Hardwarefunktionen, die Sie nach Bedarf konfigurieren können. Sie können beispielsweise in kurzer Zeit die neueste NVidia V100-VM erstellen, um neue neuronale Netzarchitekturen Schritt für Schritt zu debuggen.
 
-Wenn Sie vermeiden möchten, dass Gebühren für die Notebook-VM anfallen, müssen Sie diese [beenden](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm). 
+Wenn Sie vermeiden möchten, dass Gebühren für die Notebook-VM anfallen, müssen Sie diese [beenden](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -411,5 +411,4 @@ Sie können die Konfigurationsdatei auf drei Arten erstellen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](tutorial-train-models-with-aml.md) in Azure Machine Learning mit der MNIST-Datenbank
-- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk)
-- Informationen zum [Datenvorbereitungspaket für Azure Machine Learning](https://aka.ms/data-prep-sdk)
+- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

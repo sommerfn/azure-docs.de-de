@@ -3,21 +3,20 @@ title: Erstellen von Zeitplantriggern in Azure Data Factory | Microsoft-Dokument
 description: Erfahren Sie, wie in Azure Data Factory ein Trigger erstellt wird, der eine Pipeline gemäß einem Zeitplan ausführt.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: shlo
-ms.openlocfilehash: 6b38e85994fc99272a649b9e529380cb953d1bca
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: f693b04cb2a7166436497239dc7a874bdc5cbf46
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996376"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141621"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 Dieser Artikel enthält Informationen zum Zeitplantrigger und den Schritten zum Erstellen, Starten und Überwachen eines Zeitplantriggers. Informationen zu anderen Triggertypen finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).

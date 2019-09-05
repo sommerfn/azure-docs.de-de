@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592302"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142917"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Was ist Azure Data Box Heavy?
 
@@ -68,7 +68,7 @@ Das Data Box Heavy-Gerät weist in dieser Version folgende Merkmale auf.
 | Potenz                                                    | 4 eingebaute Netzteile (PSUs), die gemeinsam übergreifend über beide Geräteknoten verwendet werden <br> 1\.200 Watt Nennleistung|
 | Speicherkapazität                                        | ~ 1 PB unformatiert, 70 Datenträger mit jeweils 14 TB <br> 770 TB nutzbare Kapazität|
 | Anzahl von Knoten                                          | 2 unabhängige Knoten pro Gerät (je 500 TB) |
-| Netzwerkschnittstellen pro Knoten                             | 4 Netzwerkschnittstellen pro Knoten <br><br> MGMT, DATA3 <ul><li> 2 X 1-GbE-Schnittstellen </li><li> MGMT dient zur Verwaltung und Ersteinrichtung und ist nicht vom Benutzer konfigurierbar </li><li> DATA3 ist vom Benutzer konfigurierbar und standardmäßig DHCP (Dynamic Host Configuration Protocol)</li><li>Die 1-GbE-Netzwerkschnittstellen können auch als 10-GbE-Schnittstellen konfiguriert werden</li></ul>DATA1-, DATA2-Datenschnittstellen <ul><li>2 X 40-GbE-Schnittstellen </li><li> Für DHCP (Standard) vom Benutzer konfigurierbar oder statisch</li></ul>|
+| Netzwerkschnittstellen pro Knoten                             | 4 Netzwerkschnittstellen pro Knoten <br><br> MGMT, DATA3 <ul><li> 2 X 1-GbE-Schnittstellen </li><li> MGMT dient zur Verwaltung und Ersteinrichtung und ist nicht vom Benutzer konfigurierbar </li><li> DATA3 ist vom Benutzer konfigurierbar und standardmäßig DHCP (Dynamic Host Configuration Protocol)</li></ul>DATA1-, DATA2-Datenschnittstellen <ul><li>2 X 40-GbE-Schnittstellen </li><li> Für DHCP (Standard) vom Benutzer konfigurierbar oder statisch</li></ul>|
 
 
 ## <a name="components"></a>Komponenten

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: db2457cc3e320ac413cb245f51810b654c63aa22
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992185"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308992"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
 Mithilfe des Lesereplikatfeatures können Sie Daten von einem Azure Database for MariaDB-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver bis zu fünf Replikate replizieren. Replikate werden asynchron mithilfe des auf der Position der binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MariaDB-Engine und der globalen Transaktions-ID (GTID) aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie [Übersicht über die binlog Replikation](https://mariadb.com/kb/en/library/replication-overview/).
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Lesereplikate (in derselben Region und regionsübergreifend) sind zurzeit als öffentliche Vorschauversion verfügbar.
 
 Replikate sind neue Server, die Sie ähnlich wie normale Azure Database for MariaDB-Server verwalten. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen sowie der Speicher in GB/Monat in Rechnung gestellt.
 
@@ -37,9 +34,6 @@ Das Lesereplikatfeature verwendet die asynchrone Replikation. Das Feature ist ni
 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
 Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
-
-> [!IMPORTANT]
-> Die regionsübergreifende Replikation befindet sich derzeit in der öffentlichen Vorschauversion.
 
 Sie können einen Masterserver in jeder [Azure Database for MariaDB-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen aufweisen.
 

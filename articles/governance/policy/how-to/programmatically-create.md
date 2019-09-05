@@ -7,21 +7,18 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1039073aaaf9d1a6b7bd9ac21a95c73871ce3ba3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979313"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239040"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
 In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien Schritt für Schritt beschrieben. Mit Azure Policy-Definitionen werden verschiedene Regeln und Auswirkungen für Ihre Ressourcen erzwungen. Durch die Erzwingung wird sichergestellt, dass die Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel bleiben.
 
 Weitere Informationen zur Konformität finden Sie unter [Abrufen von Konformitätsdaten](getting-compliance-data.md).
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

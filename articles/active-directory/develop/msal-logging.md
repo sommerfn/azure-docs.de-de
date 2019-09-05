@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f52ca8062ed1ed196a67d25385b712451afe8ae
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 02c093375ba2dc5c851a2deb35bdea28338ee982
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532732"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135782"
 ---
 # <a name="logging"></a>Protokollierung
 Mit Microsoft Authentication Library-Apps (MSAL-Apps) werden Protokollmeldungen generiert, die Sie beim Diagnostizieren von Problemen unterstützen und Details angeben können. Eine App kann die Protokollierung mit wenigen Codezeilen konfigurieren und hat benutzerdefinierte Kontrolle über den Detailgrad und darüber, ob personenbezogene Daten und Organisationsdaten protokolliert werden oder nicht. Es wird empfohlen, einen MSAL-Protokollierungsrückruf festzulegen und Benutzern eine Möglichkeit zu bieten, Protokolle zu übermitteln, wenn Authentifizierungsprobleme auftreten.
@@ -100,14 +100,15 @@ var msalConfig = {
     auth: {
         clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
     },
-    system: {
-        logger: {
-            localCallback: loggerCallback,
-            level: Msal.LogLevel.Verbose,
-            piiLoggingEnabled: false,
-            correlationId: '1234'
-        }
-    }
+     system: {
+             logger: new Msal.Logger(
+                                loggerCallback ,{
+                                     level: Msal.LogLevel.Verbose,
+                                     piiLoggingEnabled: false,
+                                     correlationId: '1234'
+                                }
+                        )
+     }
 }
 
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 97b9e0defb3f349a6e202572bc0e3005d5d87e9c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564526"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141205"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
 
@@ -47,19 +47,19 @@ Funktionen werden in folgende Bereiche unterteilt:
 
 Für jeden Aufruf der Maschinelles Sehen-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel muss entweder über einen Abfragezeichenfolgen-Parameter übergeben oder im Anforderungsheader angegeben werden.
 
-Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) erhalten Sie einen Schlüssel für eine kostenlose Testversion. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
+Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
 
 1. Informationen zur Übergabe des Abonnementschlüssels über eine Abfragezeichenfolge finden Sie weiter unten als Beispiel für die Maschinelles Sehen-API:
 
-```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
+    ```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
 
 1. Die Übergabe des Abonnementschlüssels kann auch im HTTP-Anforderungsheader angegeben werden:
 
-```ocp-apim-subscription-key: <Your subscription key>```
+    ```ocp-apim-subscription-key: <Your subscription key>```
 
 1. Wenn Sie eine Clientbibliothek verwenden, wird der Abonnementschlüssel durch den VisionServiceClient-Konstruktor übergeben:
 
-```var visionClient = new VisionServiceClient("Your subscriptionKey");```
+    ```var visionClient = new VisionServiceClient("Your subscriptionKey");```
 
 ## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Hochladen eines Bilds in den Maschinelles Sehen-API-Dienst und Rückgabe von Tags, Beschreibungen und Prominenten
 

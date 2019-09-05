@@ -3,15 +3,15 @@ title: Azure Resource Manager-Vorlagenfunktionen – logisch | Microsoft-Dokumen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447974"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194785"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -182,8 +182,8 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| yesOutput | string | Ja |
-| noOutput | string | no |
+| yesOutput | Zeichenfolge | Ja |
+| noOutput | Zeichenfolge | no |
 | objectOutput | Object | { "test": "value1" } |
 
 In der folgenden [Beispielvorlage](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) wird gezeigt, wie Sie diese Funktion mit Ausdrücken verwenden, die nur bedingt gültig sind.

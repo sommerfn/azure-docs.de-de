@@ -7,17 +7,16 @@ author: nabhishek
 manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: fad8045ac8bddb236f0f80ad223ebafc7aa7e93a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: b6426017b7608742866cedb08b5ac9298400d433
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002857"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140888"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
 
@@ -135,7 +134,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
 
     ![Ziehen des Notebooks auf die Oberfläche des Designers](media/transform-data-using-databricks-notebook/new-adf-pipeline.png)
 
-1.  Führen Sie in den Eigenschaften im unteren Bereich des Fensters für das **Databricks-****Notebook** die folgenden Schritte aus:
+1.  Führen Sie in den Eigenschaften im unteren Bereich des Fensters für das **Databricks-** **Notebook** die folgenden Schritte aus:
 
     a. Wechseln Sie zur Registerkarte **Azure Databricks**.
 
