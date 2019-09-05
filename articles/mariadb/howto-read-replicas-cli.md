@@ -6,19 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 7944f985f2317690f3a13add783192c49acbe22f
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ba0f3bd002b2675c33ea5106ce64c7957c9989d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907660"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309119"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle
 
 In diesem Artikel erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) Lesereplikate im Azure Database for MariaDB-Dienst erstellen und verwalten, die sich in der gleichen Azure-Region wie der Masterserver befinden.
-
-> [!IMPORTANT]
-> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Lesereplikate (in derselben Region und regionsübergreifend) sind zurzeit als öffentliche Vorschauversion verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

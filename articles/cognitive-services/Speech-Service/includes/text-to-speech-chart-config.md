@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/22/2019
 ms.author: dapine
-ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c87132c3ae41dec82e3493f9a0ee2397455ff881
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717210"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971351"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Sprachsynthese (Unterdiagramm: charts/textToSpeech)
 
@@ -37,5 +37,6 @@ Zum Überschreiben des übergeordneten Diagramms fügen Sie das Präfix `textToS
 | `image.args.apikey` (erforderlich) | Wird zum Nachverfolgen von Abrechnungsinformationen verwendet. ||
 | `service.type` | Die Kubernetes-Diensttyp des **Sprachsynthese**-Diensts. Weitere Informationen finden Sie unter den [Kubernetes-Anweisungen für Diensttypen ](https://kubernetes.io/docs/concepts/services-networking/service/) und beim Support des Cloudanbieters. | `LoadBalancer` |
 | `service.port`|  Der Port des **Sprachsynthese**-Diensts. | `80` |
+| `service.annotations` | Die **Sprachsynthese**-Anmerkungen für die Dienstmetadaten. Anmerkungen sind Schlüssel-Wert-Paare. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | Gibt an, ob die [horizontale automatische Podskalierung](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) aktiviert ist. Wenn `true`, wird `text-to-speech-autoscaler` im Kubernetes-Cluster bereitgestellt. | `true` |
 | `service.podDisruption.enabled` | Gibt an, ob das [Budget für die Unterbrechung von Pods](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) aktiviert ist. Wenn `true`, wird `text-to-speech-poddisruptionbudget` im Kubernetes-Cluster bereitgestellt. | `true` |
