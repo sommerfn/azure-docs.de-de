@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614125"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996677"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -431,12 +431,14 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 2. Das **Quelldatenformat** lautet **Parquet**, **ORC** oder **Durch Trennzeichen getrennter Text** – mit den folgenden Konfigurationen:
 
    1. Der Ordnerpfad enthält keinen Platzhalterfilter.
-   2. Der Dateiname verweist auf eine einzelne Datei bzw. entspricht `*` oder `*.*`.
-   3. `rowDelimiter` muss **\n** sein.
-   4. `nullValue` ist entweder auf **eine leere Zeichenfolge** („“) festgelegt, oder der Standardwert wird übernommen und `treatEmptyAsNull` wird als Standardwert übernommen oder auf „true“ festgelegt.
-   5. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der Standardwert.)
+   2. Der Dateiname wurde entweder nicht angegeben oder verweist auf eine einzelne Datei. Wenn Sie in der Kopieraktivität einen Platzhalter-Dateinamen angeben, kann dies nur `*` oder `*.*` sein.
+   3. `rowDelimiter` entspricht **Standard**, **\n**, **\r\n** oder **\r**.
+   4. `nullValue` wird als Standardwert übernommen oder ist auf eine **leere Zeichenfolge** („“) festgelegt, und `treatEmptyAsNull` wird als Standardwert übernommen oder ist auf „true“ festgelegt.
+   5. `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
    6. `quoteChar`, `escapeChar` und `skipLineCount` wurden nicht angegeben. PolyBase unterstützt das Überspringen der Kopfzeile, dies kann in ADF als `firstRowAsHeader` konfiguriert werden.
    7. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
+
+3. Wenn es sich bei der Quelle um einen Ordner handelt, muss `recursive` in der Kopieraktivität auf „true“ festgelegt werden.
 
 ```json
 "activities":[
@@ -445,7 +447,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "BlobDataset",
+                "referenceName": "ParquetDataset",
                 "type": "DatasetReference"
             }
         ],
@@ -457,7 +459,11 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
         ],
         "typeProperties": {
             "source": {
-                "type": "BlobSource",
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSetting",
+                    "recursive": true
+                }
             },
             "sink": {
                 "type": "SqlDWSink",

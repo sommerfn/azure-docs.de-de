@@ -5,15 +5,15 @@ services: virtual-machines
 author: shants123
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 4/30/2019
+ms.date: 8/22/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: c2931fa410cf92755a5df5b7129dcf93de900930
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b2a7bbef2c421281780c0191fa32381468899bbf
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178071"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020332"
 ---
 Azure aktualisiert seine Plattform regelmäßig, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Der Zweck dieser Updates reicht von Patches für Softwarekomponenten in der Hostumgebung über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. 
 
@@ -21,7 +21,7 @@ Updates wirken sich kaum auf die gehosteten virtuellen Computer aus. Wenn Update
 
 - Wenn ein Update ohne Neustart möglich ist, wird die VM angehalten, während der Host aktualisiert wird, oder sie wird in Echtzeit zu einem bereits aktualisierten Host migriert.
 
-- Wenn die Wartung einen Neustart erfordert, werden Sie über die geplante Wartung informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt Ihrer Wahl selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel 30 Tage, sofern die Wartung nicht dringend ist. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
+- Wenn die Wartung einen Neustart erfordert, werden Sie über die geplante Wartung informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt Ihrer Wahl selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel 35 Tage, sofern die Wartung nicht dringend ist. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
 
 Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../articles/virtual-machines/windows/manage-availability.md) bzw. im entsprechenden Artikel für [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
@@ -39,7 +39,7 @@ Wartung mit Speicherbeibehaltung funktioniert für mehr als 90% der virtuellen A
 
 Diese Wartungsvorgänge, die keinen Neustart erfordern, werden jeweils auf eine Fehlerdomäne angewendet. Sie werden beendet, wenn sie Integritätswarnsignale erhalten. 
 
-Diese Typen von Updates können sich auf einige Anwendungen auswirken. Wenn der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Versuchen Sie, [Scheduled Events für Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) für solche Anwendungen zu verwenden, um die VM-Wartung vorzubereiten und Auswirkungen der Azure-Wartung zu reduzieren. Azure arbeitet an Funktionen zur Wartungssteuerung für diese empfindlichen Anwendungen. 
+Diese Typen von Updates können sich auf einige Anwendungen auswirken. Wenn der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Versuchen Sie, [Scheduled Events für Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) für solche Anwendungen zu verwenden, um die VM-Wartung vorzubereiten und Auswirkungen der Azure-Wartung zu reduzieren. Azure bietet außerdem vollständige Kontrolle über Wartungsarbeiten (die keine Auswirkungen auf die Plattform haben) für [dedizierte Azure-Hosts](../articles/virtual-machines/windows/dedicated-hosts.md) und [isolierte VMs](../articles/security/fundamentals/isolation-choices.md). Die Funktion für die Wartungskontrolle wird derzeit als Vorschauversion angeboten. Um Zugriff zu erhalten, reichen Sie bitte das [Registrierungsformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) ein. Sie können Updates überspringen, die keine Auswirkung auf die Plattform haben, und die Updates innerhalb eines 35-tägigen Zeitfensters zu einem beliebigen Zeitpunkt im Batchmodus anwenden.
 
 ### <a name="live-migration"></a>Livemigration
 

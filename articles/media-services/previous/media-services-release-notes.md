@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991916"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019312"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -30,7 +30,7 @@ Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über �
 Wir wünschen uns Feedback von unseren Kunden, damit wir Probleme beheben können, die negative Auswirkungen auf Ihre Arbeit haben. Wenn Sie ein Problem melden oder Fragen stellen möchten, verfassen Sie einen Beitrag im [MSDN-Forum für Azure Media Services]. 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Aktuell bekannte Probleme
-### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Allgemeine Probleme von Media Services
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Allgemeine Probleme von Media Services
 
 | Problem | BESCHREIBUNG |
 | --- | --- |
@@ -42,8 +42,16 @@ Wir wünschen uns Feedback von unseren Kunden, damit wir Probleme beheben könne
 | Bei einigen Clients kann im Smooth Streaming-Manifest ein Problem mit einem Wiederholungstag auftreten. |Weitere Informationen finden Sie in [diesem Abschnitt](media-services-deliver-content-overview.md#known-issues). |
 | Media Services .NET SDK-Objekte können nicht serialisiert werden und funktionieren daher nicht mit Azure Cache for Redis. |Wenn Sie versuchen, das SDK-Objekt „AssetCollection“ zu serialisieren, um es Azure Cache for Redis hinzuzufügen, wird eine Ausnahme ausgelöst. |
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
+## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
+
+## <a name="august-2019"></a>August 2019
+
+### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
+
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an, die am 30. November 2019 eingestellt werden.
+
+Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 
 ## <a name="march-2019"></a>März 2019
 
@@ -136,7 +144,7 @@ Weitere Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoin
 
  Sie können Media Services jetzt verwenden, um auf Telemetrie- und Metrikdaten für die zugehörigen Dienste zuzugreifen. Mit der aktuellen Version von Media Services können Sie Telemetriedaten für Liveentitäten für Kanäle, Streamingendpunkte und Archive sammeln. Weitere Informationen finden Sie unter [Media Services-Telemetrie](media-services-telemetry-overview.md).
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>Release von Juli 2016
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Release von Juli 2016
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates der durch Codierungsaufgaben generierten Manifestdatei (*.ism)
 Wenn eine Codierungsaufgabe an Media Encoder Standard oder Media Encoder Premium gesendet wird, erstellt die Aufgabe eine [Streamingmanifestdatei](media-services-deliver-content-overview.md) (*.ism) im Ausgabemedienobjekt. Im letzten Dienstrelease wurde die Syntax dieser Streamingmanifestdatei aktualisiert.
 

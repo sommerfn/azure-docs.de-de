@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 52651ca592c4da9883768cd87e090985e17be47b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 287dbd3d6da4aa2bf5bd1da652cdeaeda3136321
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780921"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907732"
 ---
 # <a name="get-started-with-device-management-python"></a>Erste Schritte mit der Geräteverwaltung (Python)
 
@@ -49,7 +49,7 @@ Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponente
 
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 
-In diesem Abschnitt werden Sie:
+In diesem Abschnitt führen Sie folgende Schritte aus:
 
 * Erstellen einer Python-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet
 
@@ -57,9 +57,19 @@ In diesem Abschnitt werden Sie:
 
 * Verwenden der gemeldeten Eigenschaften, um Gerätezwillingsabfragen zu ermöglichen, die Geräte und den Zeitpunkt ihres letzten Neustarts ermitteln
 
-1. Erstellen Sie mit einem Text-Editor die Datei **dmpatterns_getstarted_device.py**.
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-device-client** zu installieren:
 
-2. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py**die folgenden**-Anweisungen ein.
+    ```cmd/sh
+    pip install azure-iothub-device-client
+    ```
+
+   > [!NOTE]
+   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   >
+
+2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei namens **dmpatterns_getstarted_device.py**.
+
+3. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py**die folgenden**-Anweisungen ein.
 
     ```python
     import random
@@ -70,7 +80,7 @@ In diesem Abschnitt werden Sie:
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-3. Fügen Sie Variablen (einschließlich der Variablen **VERBINDUNGSZEICHENFOLGE**) und die Client-Initialisierung hinzu.  Ersetzen Sie die Verbindungszeichenfolge durch Ihre Geräteverbindungszeichenfolge.  
+4. Fügen Sie Variablen (einschließlich der Variablen **VERBINDUNGSZEICHENFOLGE**) und die Client-Initialisierung hinzu.  Ersetzen Sie den Platzhalterwert `{deviceConnectionString}` durch Ihre Geräteverbindungszeichenfolge. Diese Verbindungszeichenfolge haben Sie zuvor unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -87,7 +97,7 @@ In diesem Abschnitt werden Sie:
     METHOD_CALLBACKS = 0
     ```
 
-4. Fügen Sie die folgenden Funktionsrückrufe hinzu, um die direkte Methode auf dem Gerät zu implementieren.
+5. Fügen Sie die folgenden Funktionsrückrufe hinzu, um die direkte Methode auf dem Gerät zu implementieren.
 
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -117,7 +127,7 @@ In diesem Abschnitt werden Sie:
         return device_method_return_value
     ```
 
-5. Starten Sie den Listener der direkten Methode, und warten Sie.
+6. Starten Sie den Listener der direkten Methode, und warten Sie.
 
     ```python
     def iothub_client_init():
@@ -150,7 +160,7 @@ In diesem Abschnitt werden Sie:
         iothub_client_sample_run()
     ```
 
-6. Speichern und schließen Sie die Datei **dmpatterns_getstarted_device.py**.
+7. Speichern und schließen Sie die Datei **dmpatterns_getstarted_device.py**.
 
 > [!NOTE]
 > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. exponentielles Backoff), wie es im Artikel [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
@@ -165,9 +175,19 @@ In diesem Abschnitt werden Sie:
 
 In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neustart auf einem Gerät über eine direkte Methode auslöst. Die App verwendet Gerätezwillingsabfragen, um den Zeitpunkt des letzten Neustarts bei diesem Gerät zu ermitteln.
 
-1. Erstellen Sie mit einem Text-Editor die Datei **dmpatterns_getstarted_service.py**.
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-service-client** zu installieren:
 
-2. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_service.py** die folgenden `import`-Anweisungen ein.
+    ```cmd/sh
+    pip install azure-iothub-service-client
+    ```
+
+   > [!NOTE]
+   > Die PIP-Pakete für „azure-iothub-service-client“ und „azure-iothub-device-client“ sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) (Vorbereiten der Entwicklungsumgebung für Python).
+   >
+
+2. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei namens **dmpatterns_getstarted_service.py**.
+
+3. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_service.py** die folgenden `import`-Anweisungen ein.
 
     ```python
     import sys, time
@@ -176,7 +196,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-3. Fügen Sie die folgenden Variablendeklarationen hinzu. Ersetzen Sie nur die Platzhalterwerte für _IoTHubConnectionString_ und _deviceId_.
+4. Fügen Sie die folgenden Variablendeklarationen hinzu. Ersetzen Sie den Platzhalterwert `{IoTHubConnectionString}` durch die IoT-Hub-Verbindungszeichenfolge, die Sie zuvor unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben. Ersetzen Sie den Platzhalterwert `{deviceId}` durch die Geräte-ID, die Sie unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) registriert haben.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -188,7 +208,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
     WAIT_COUNT = 10
     ```
 
-4. Fügen Sie die folgende Funktion zum Aufrufen der Gerätemethode zum Neustart des Zielgeräts hinzu, fragen Sie dann die Gerätezwillinge ab, und rufen Sie den Zeitpunkt des letzten Neustarts ab.
+5. Fügen Sie die folgende Funktion zum Aufrufen der Gerätemethode zum Neustart des Zielgeräts hinzu, fragen Sie dann die Gerätezwillinge ab, und rufen Sie den Zeitpunkt des letzten Neustarts ab.
 
     ```python
     def iothub_devicemethod_sample_run():
@@ -239,24 +259,32 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
         iothub_devicemethod_sample_run()
     ```
 
-5. Speichern und schließen Sie die Datei **dmpatterns_getstarted_service.py**.
+6. Speichern und schließen Sie die Datei **dmpatterns_getstarted_service.py**.
 
 ## <a name="run-the-apps"></a>Ausführen der Apps
 
-Sie können die Apps nun ausführen.
+Jetzt können Sie die Apps ausführen.
 
 1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_device.py
     ```
 
 2. Führen Sie an einer anderen Eingabeaufforderung den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_service.py
     ```
 
 3. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
+
+   Das folgende Beispiel zeigt die Reaktion des Geräts auf die direkte Methode für den Neustart:
+
+   ![Ausgabe der simulierten Geräte-App](./media/iot-hub-python-python-device-management-get-started/device.png)
+
+   Das folgende Beispiel zeigt, wie der Dienst die direkte Methode für den Neustart aufruft und den Status des Gerätezwillings abfragt:
+
+   ![Ausgabe des Diensts für die Neustartauslösung](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

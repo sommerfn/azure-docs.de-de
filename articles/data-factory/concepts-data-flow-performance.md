@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404604"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992346"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -117,6 +117,10 @@ Wenn Sie auf das Symbol klicken, werden der Ausführungsplan und das nachfolgend
 * Sie können steuern, wie viele Partitionen von ADF verwendet werden. Für jede Quelle-und-Senke-Transformation sowie jede einzelne Transformation können Sie ein Partitionierungsschema festlegen. Für kleinere Dateien stellen Sie möglicherweise fest, dass das Auswählen von „Einzelne Partition“ manchmal besser und schneller funktioniert, als Spark anzuweisen, Ihre kleinen Dateien zu partitionieren.
 * Wenn Sie nicht über genügend Informationen zu Ihren Quelldaten verfügen, können Sie „Round-Robin“-Partitionierung auswählen und die Anzahl der Partitionen festlegen.
 * Wenn Sie Ihre Daten untersuchen und feststellen, dass Sie über Spalten verfügen, die sich gut als Hashschlüssel eignen, verwenden Sie die Option für die Hashpartitionierung.
+* Beachten Sie beim Debuggen in der Datenvorschau sowie beim Debuggen der Pipeline, dass das Limit und die Stichprobengrößen für dateibasierte Quelldatasets nur für die Anzahl zurückgegebener Zeilen gelten (nicht für die Anzahl gelesener Zeilen). Dieser Punkt ist wichtig, da er sich auf die Leistung der Debugausführungen auswirken und ggf. dazu führen kann, dass der Ablauf nicht erfolgreich ist.
+* Zur Erinnerung: Debugcluster sind standardmäßig kleine Cluster mit einem einzelnen Knoten. Verwenden Sie daher zum Debuggen temporäre kleine Dateien. Navigieren Sie zu den Debugeinstellungen, und verweisen Sie unter Verwendung einer temporären Datei auf eine kleine Teilmenge Ihrer Daten.
+
+![Debugeinstellungen](media/data-flow/debugsettings3.png "Debugeinstellungen")
 
 ### <a name="file-naming-options"></a>Optionen für die Benennung von Dateien
 

@@ -1,5 +1,5 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – Festlegen der privaten Cloud als Standort für die Notfallwiederherstellung mit VMware Site Recovery Manager
+title: Azure VMware-Lösung von CloudSimple – Einrichten der privaten Cloud als Standort für die Notfallwiederherstellung mit VMware Site Recovery Manager
 description: Hier wird beschrieben, wie Sie Ihre private CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads einrichten.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa208d8d9525ef1ec518c9a03d8d39ce0ca64254
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901302"
+ms.locfileid: "69972797"
 ---
-# <a name="configure-cloudsimple-private-cloud-as-a-disaster-recovery-target-using-vmware-site-recovery-manager"></a>Konfigurieren der privaten CloudSimple-Cloud als Notfallwiederherstellungsziel mithilfe von VMware Site Recovery Manager
+# <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Einrichten der privaten Cloud als Notfallwiederherstellungsziel mit VMware Site Recovery Manager
 
 Sie können Ihre private CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads verwenden.
 
@@ -109,9 +109,7 @@ Installieren Sie die vSphere Replication-Appliance (vRA) in der lokalen Umgebung
 
 2. Stellen Sie vRA mithilfe der OVF-Vorlage in der VR-ISO-Datei von vmware.com in der lokalen Umgebung bereit. Die relevanten Informationen für vRA 6.5 enthält [dieser VMware-Blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices).
 
-3. Registrieren Sie die lokale vRA bei vCenter Single Sign-On am lokalen Standort.
-   
-Ausführliche Anweisungen für vSphere Replication 6.5 finden Sie im VMware-Dokument [VMware vSphere Replication – Installation und Konfiguration](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+3. Registrieren Sie die lokale vRA bei vCenter Single Sign-On am lokalen Standort. Ausführliche Anweisungen für vSphere Replication 6.5 finden Sie im VMware-Dokument [VMware vSphere Replication – Installation und Konfiguration](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>Installieren der vSphere Replication-Appliance in der privaten Cloud
 

@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen eines Modells für das Ziehen von Rückschlüssen mit einer GPU
 titleSuffix: Azure Machine Learning service
-description: Dieser Artikel zeigt Ihnen, wie Sie den Azure Machine Learning Service verwenden können, um ein GPU-fähiges Tensorflow-Deep Learning Modell als web service.service und Score Inferenzanforderungen bereitzustellen.
+description: Dieser Artikel zeigt Ihnen, wie Sie den Azure Machine Learning Service verwenden können, um ein GPU-fähiges TensorFlow-Deep Learning-Modell als Webdienst bereitzustellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,21 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847979"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011519"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 
 Dieser Artikel zeigt Ihnen, wie Sie den Azure Machine Learning Service verwenden können, um ein GPU-fähiges Modell als Webservice bereitzustellen. Die Informationen in diesem Artikel basieren auf der Bereitstellung eines Modells in Azure Kubernetes Service (AKS). Der AKS-Cluster stellt eine GPU-Ressource bereit, die vom Modell für das Ziehen von Rückschlüssen verwendet wird.
 
 Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das bereitgestellte Modell verwendet wird, um Vorhersagen zu treffen. Die Verwendung von GPUs anstelle von CPUs bietet Leistungsvorteile bei hochparallelisierbaren Berechnungen.
+
+> [!IMPORTANT]
+> GPU-Rückschluss wird nur in Azure Kubernetes Service unterstützt.
 
 > [!TIP]
 > Obwohl bei den Codeausschnitten in diesem Artikel ein TensorFlow-Modell verwendet wird, können Sie die Informationen auf jedes Machine Learning-Framework anwenden, das GPUs unterstützt.

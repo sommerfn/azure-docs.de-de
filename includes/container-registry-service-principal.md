@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178738"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032346"
 ---
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
@@ -28,11 +28,11 @@ Nachdem Sie das Skript ausgeführt haben, notieren Sie die **ID** und das **Kenn
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh -->
 [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
-## <a name="use-an-existing-service-principal"></a>Verwenden eines vorhandenen Dienstprinzipals
+### <a name="use-an-existing-service-principal"></a>Verwenden eines vorhandenen Dienstprinzipals
 
 Damit Sie einem vorhandenen Dienstprinzipal den Zugriff auf die Registrierung gewähren können, müssen Sie dem Dienstprinzipal eine neue Rolle zuweisen. Wie bei der Erstellung eines neuen Dienstprinzipals können Sie unter anderem Pull-, Push- und Pull- sowie Besitzerzugriff gewähren.
 
-Das folgende Skript verwendet den Befehl [az role assignment create][az-role-assignment-create], um einem Dienstprinzipal *Pull*-Berechtigungen zuzuweisen, den Sie in der Variablen `SERVICE_PRINCIPAL_ID` festlegen. Passen Sie den Wert `--role` an, wenn Sie eine andere Zugriffsebene zuweisen möchten.
+Das folgende Skript verwendet den Befehl [az role assignment create][az-role-assignment-create], um einem in der Variablen `SERVICE_PRINCIPAL_ID` festgelegten Dienstprinzipal Berechtigungen vom Typ *Pull* zuzuweisen. Passen Sie den Wert `--role` an, wenn Sie eine andere Zugriffsebene zuweisen möchten.
 
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh -->

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967438"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996638"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory
 
@@ -174,7 +174,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus SAP BW Open Hub den Quelltyp in der Kopieraktivität auf **SapOpenHubSource** fest. Es gibt keine zusätzlichen typspezifischen Eigenschaften, die im Abschnitt **Quelle** der Kopieraktivität erforderlich sind.
 
-Um das Laden der Daten zu beschleunigen, können Sie [`parallelCopies`](copy-activity-performance.md#parallel-copy) in der Kopieraktivität festlegen, um Daten parallel aus SAP BW Open Hub zu laden. Wenn Sie `parallelCopies` beispielsweise auf vier festlegen, führt Data Factory vier RFC-Aufrufe gleichzeitig aus. Jeder RFC-Aufruf ruft einen Teil der Daten aus Ihrer SAP BW Open Hub-Tabelle ab, die durch die DTP-Anforderungs-ID und Paket-ID partitioniert wurde. Dies gilt, wenn die Anzahl von eindeutigen DTP-Anforderungs-IDs plus der Anzahl der Paket-IDs größer als der Wert von `parallelCopies` ist.
+Um das Laden der Daten zu beschleunigen, können Sie [`parallelCopies`](copy-activity-performance.md#parallel-copy) in der Kopieraktivität festlegen, um Daten parallel aus SAP BW Open Hub zu laden. Wenn Sie `parallelCopies` beispielsweise auf vier festlegen, führt Data Factory vier RFC-Aufrufe gleichzeitig aus. Jeder RFC-Aufruf ruft einen Teil der Daten aus Ihrer SAP BW Open Hub-Tabelle ab, die durch die DTP-Anforderungs-ID und Paket-ID partitioniert wurde. Dies gilt, wenn die Anzahl von eindeutigen DTP-Anforderungs-IDs plus der Anzahl der Paket-IDs größer als der Wert von `parallelCopies` ist. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird außerdem empfohlen, unter Verwendung von „Mehrere Dateien“ in einen Ordner zu schreiben (Sie müssen nur den Ordnernamen angeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 
 **Beispiel:**
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: ce68e3ae7728108126b2994a0e065ac84eb894bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7944f985f2317690f3a13add783192c49acbe22f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641479"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907660"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -49,6 +49,9 @@ Verwenden Sie den `--location`-Parameter, um ein regionsübergreifendes Leserepl
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
+
+> [!NOTE]
+> Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im Artikel zu den [Lesereplikatkonzepten](concepts-read-replicas.md). 
 
 > [!NOTE]
 > Lesereplikate werden mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Masterserver, damit das Replikat über genügend Kapazität verfügt.

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/21/2019
 ms.author: jingwang
-ms.openlocfilehash: 1baa28dd1c9cc323e3dc7ca6fc5fbe2eac54652a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0cc7313531e92aa0f57b09a9252902848297bdbf
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828862"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996663"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory
 
@@ -126,31 +126,33 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
 
 Um die Azure AD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzipal zu verwenden, gehen Sie folgendermaßen vor:
 
-1. [Erstellen Sie eine Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) im Azure-Portal. Notieren Sie sich den Anwendungsnamen und die folgenden Werte zum Definieren des verknüpften Diensts:
+1. Führen Sie die unter [Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) beschriebenen Schritte aus.
+
+2. [Erstellen Sie eine Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) im Azure-Portal. Notieren Sie sich den Anwendungsnamen und die folgenden Werte zum Definieren des verknüpften Diensts:
 
     - Anwendungs-ID
     - Anwendungsschlüssel
     - Mandanten-ID
 
-2. [Erstellen Sie Anmeldungen](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) für die verwaltete Azure Data Factory-Identität. Stellen Sie in SQL Server Management Studio (SSMS) über ein SQL Server-Konto (ein **Sysadmin**-Konto) eine Verbindung mit Ihrer verwalteten Instanz her. Führen Sie in der **Masterdatenbank** den folgenden T-SQL-Befehl aus:
+3. [Erstellen Sie Anmeldungen](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) für die verwaltete Azure Data Factory-Identität. Stellen Sie in SQL Server Management Studio (SSMS) über ein SQL Server-Konto (ein **Sysadmin**-Konto) eine Verbindung mit Ihrer verwalteten Instanz her. Führen Sie in der **Masterdatenbank** den folgenden T-SQL-Befehl aus:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-2. [Erstellen Sie für eine eigenständige Datenbank Benutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) für die verwaltete Azure Data Factory-Identität. Stellen Sie eine Verbindung mit der Datenbank her, aus der bzw. in die Sie Daten kopieren möchten, und führen Sie den folgenden T-SQL-Befehl aus: 
+4. [Erstellen Sie für eine eigenständige Datenbank Benutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) für die verwaltete Azure Data Factory-Identität. Stellen Sie eine Verbindung mit der Datenbank her, aus der bzw. in die Sie Daten kopieren möchten, und führen Sie den folgenden T-SQL-Befehl aus: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-3. Gewähren Sie der verwalteten Data Factory-Identität die notwendigen Berechtigungen, und gehen Sie dabei so vor wie für SQL-Benutzer und andere Benutzer. Führen Sie den folgenden Code aus. Weitere Optionen finden Sie in [diesem Dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. Gewähren Sie der verwalteten Data Factory-Identität die notwendigen Berechtigungen, und gehen Sie dabei so vor wie für SQL-Benutzer und andere Benutzer. Führen Sie den folgenden Code aus. Weitere Optionen finden Sie in [diesem Dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
     ```
 
-4. Konfigurieren Sie einen mit der verwalteten Azure SQL-Datenbank-Instanz verknüpften Dienst in Azure Data Factory.
+6. Konfigurieren Sie einen mit der verwalteten Azure SQL-Datenbank-Instanz verknüpften Dienst in Azure Data Factory.
 
 **Beispiel: Verwenden der Dienstprinzipalauthentifizierung**
 
@@ -185,25 +187,27 @@ Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data
 
 Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer verwalteten Identität zu verwenden.
 
-1. [Erstellen Sie Anmeldungen](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) für die verwaltete Azure Data Factory-Identität. Stellen Sie in SQL Server Management Studio (SSMS) über ein SQL Server-Konto (ein **Sysadmin**-Konto) eine Verbindung mit Ihrer verwalteten Instanz her. Führen Sie in der **Masterdatenbank** den folgenden T-SQL-Befehl aus:
+1. Führen Sie die unter [Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) beschriebenen Schritte aus.
+
+2. [Erstellen Sie Anmeldungen](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) für die verwaltete Azure Data Factory-Identität. Stellen Sie in SQL Server Management Studio (SSMS) über ein SQL Server-Konto (ein **Sysadmin**-Konto) eine Verbindung mit Ihrer verwalteten Instanz her. Führen Sie in der **Masterdatenbank** den folgenden T-SQL-Befehl aus:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-2. [Erstellen Sie für eine eigenständige Datenbank Benutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) für die verwaltete Azure Data Factory-Identität. Stellen Sie eine Verbindung mit der Datenbank her, aus der bzw. in die Sie Daten kopieren möchten, und führen Sie den folgenden T-SQL-Befehl aus: 
+3. [Erstellen Sie für eine eigenständige Datenbank Benutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) für die verwaltete Azure Data Factory-Identität. Stellen Sie eine Verbindung mit der Datenbank her, aus der bzw. in die Sie Daten kopieren möchten, und führen Sie den folgenden T-SQL-Befehl aus: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. Gewähren Sie der verwalteten Data Factory-Identität die notwendigen Berechtigungen, und gehen Sie dabei so vor wie für SQL-Benutzer und andere Benutzer. Führen Sie den folgenden Code aus. Weitere Optionen finden Sie in [diesem Dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. Gewähren Sie der verwalteten Data Factory-Identität die notwendigen Berechtigungen, und gehen Sie dabei so vor wie für SQL-Benutzer und andere Benutzer. Führen Sie den folgenden Code aus. Weitere Optionen finden Sie in [diesem Dokument](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
     ```
 
-4. Konfigurieren Sie einen mit der verwalteten Azure SQL-Datenbank-Instanz verknüpften Dienst in Azure Data Factory.
+5. Konfigurieren Sie einen mit der verwalteten Azure SQL-Datenbank-Instanz verknüpften Dienst in Azure Data Factory.
 
 **Beispiel: Verwenden der Authentifizierung der verwalteten Identität**
 
@@ -378,8 +382,8 @@ Zum Kopieren von Daten in die verwaltete Azure SQL-Datenbank-Instanz werden die 
 | writeBatchTimeout |Diese Eigenschaft gibt die Wartezeit für den Abschluss der Batcheinfügung an, bevor ein Timeout auftritt.<br/>Zulässige Werte werden für den Zeitraum verwendet. Ein Beispiel ist „00:30:00“. Das sind 30 Minuten. |Nein |
 | preCopyScript |Diese Eigenschaft gibt eine SQL-Abfrage für die Kopieraktivität an, die vor dem Schreiben von Daten in die verwaltete Instanz ausgeführt wird. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein |
 | sqlWriterStoredProcedureName | Der Name der gespeicherten Prozedur, die definiert, wie Quelldaten auf eine Zieltabelle angewandt werden. <br/>Diese gespeicherte Prozedur wird *pro Batch aufgerufen*. Für nur einmalig ausgeführte Vorgänge, die nicht mit Quelldaten in Zusammenhang stehen (etwa Löschen/Kürzen), verwenden Sie die `preCopyScript`-Eigenschaft. | Nein |
-| storedProcedureTableTypeParameterName |Der Parametername des Tabellentyps, der in der gespeicherten Prozedur angegeben ist  |Nein |
-| sqlWriterTableType |Der Tabellentypname, der in der gespeicherten Prozedur verwendet werden soll Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. |Nein |
+| storedProcedureTableTypeParameterName |Der Parametername des Tabellentyps, der in der gespeicherten Prozedur angegeben ist.  |Nein |
+| sqlWriterTableType |Der Tabellentypname, der in der gespeicherten Prozedur verwendet werden soll. Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. |Nein |
 | storedProcedureParameters |Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte: Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein |
 
 **Beispiel 1: Anfügen von Daten**

@@ -1,6 +1,6 @@
 ---
 title: Beispiele und exemplarische Vorgehensweisen für Data Science Virtual Machines – Azure | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Beispiele und exemplarischen Vorgehensweisen, mit denen Sie allgemeine Aufgaben und Szenarios mit Data Science Virtual Machine bewältigen können.
+description: Anhand dieser Beispiele und exemplarischen Vorgehensweisen erfahren Sie, wie Sie allgemeine Aufgaben und Szenarios mit der Data Science Virtual Machine bewältigen können.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
@@ -16,47 +16,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 57ebefb11d23c5ea18d5859ca494944e6a845e04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565320"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047834"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Beispiele auf Data Science Virtual Machines
 
-Azure Data Science Virtual Machines umfassen eine umfangreiche Sammlung von Beispielcode. Der Beispielcode liegt in Form von Jupyter-Notebooks und Skripts in Sprachen wie Python und R vor. 
+Azure Data Science Virtual Machines (DSVMs) umfassen eine umfangreiche Sammlung von Beispielcode. Diese Beispiele beinhalten Jupyter-Notebooks und -Skripts in Sprachen wie Python und R.
 > [!NOTE]
-> Weitere Informationen zum Ausführen von Jupyter-Notebooks auf Ihren Data Science Virtual Machines finden Sie im Abschnitt [Zugriff auf Jupyter](#access-jupyter).
+> Weitere Informationen zum Ausführen von Jupyter-Notebooks auf Ihren Data Science Virtual Machines finden Sie im Abschnitt [Zugreifen auf Jupyter](#access-jupyter).
 
 ## <a name="quick-reference-of-samples"></a>Kurzübersicht der Beispiele
 | Beispielkategorie | BESCHREIBUNG | Standorte |
 | ------------- | ------------- | ------------- |
-| R (Programmiersprache)  | Beispiele in R erläutern Szenarien wie das Herstellen von Verbindungen mit Azure-Clouddatenspeichern. Sie erläutern außerdem den Vergleich zwischen Open-Source-R und Microsoft R. Und sie verdeutlichen die Operationalisierung von Modellen auf Microsoft R Server oder SQL Server. <br/> [R (Programmiersprache)](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
-| Python (Programmiersprache)  | Beispiele in Python erläutern Szenarien wie das Herstellen von Verbindungen mit Azure-Clouddatenspeichern und das Verwenden von Azure Machine Learning.  <br/> [Python (Programmiersprache)](#python-language) | <br/>`~notebooks` <br/><br/>|
-| Julia (Programmiersprache)  | Beispiel in Julia, das Details zum Plotten und Deep Learning in Julia verdeutlicht. Es erläutert darüber hinaus Aufrufe an C und Python aus Julia. <br/> [Julia (Programmiersprache)](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
-| Azure Machine Learning  | Erstellen Sie mithilfe von Machine Learning Modelle für maschinelles Lernen und Deep Learning. Stellen Sie die Modelle an beliebigen Speicherorten bereit. Verwenden Sie automatisiertes maschinelles Lernen und intelligente Optimierung von Hyperparametern. Nutzen Sie darüber hinaus Modellverwaltung und verteiltes Training. <br/> [Machine Learning](#azureml) | <br/>`~notebooks/AzureML`<br/> <br/>|
+| R (Programmiersprache)  | In Beispielen werden Szenarien veranschaulicht, etwa wie Verbindungen mit Azure-basierten Clouddatenspeichern hergestellt und wie Open Source-R und Microsoft Machine Learning Server verglichen werden. Anhand dieser Beisiel wird auch erläutert, wie Modelle in Microsoft Machine Learning Server und SQL Server operationalisiert werden. <br/> [R (Programmiersprache)](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
+| Python (Programmiersprache)  | In Beispielen werden Szenarien erläutert, etwa wie Verbindungen mit Azure-basierten Clouddatenspeichern hergestellt werden und wie mit Azure Machine Learning gearbeitet wird.  <br/> [Python (Programmiersprache)](#python-language) | <br/>`~notebooks` <br/><br/>|
+| Julia (Programmiersprache)  | Bietet eine ausführliche Beschreibung zu Plotten und Deep Learning in Julia. Außerdem wird erläutert, wie C und Python aus Julia aufgerufen werden. <br/> [Julia (Programmiersprache)](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
+| Azure Machine Learning  | Veranschaulicht, wie Machine Learning-Modelle und Deep Learning-Modelle mit Machine Learning erstellt werden. Stellen Sie die Modelle an beliebigen Speicherorten bereit. Verwenden Sie automatisiertes maschinelles Lernen und intelligente Optimierung von Hyperparametern. Nutzen Sie darüber hinaus Modellverwaltung und verteiltes Training. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
 | PyTorch-Notebooks  | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von PyTorch verwenden. Mit Notebooks von Einsteiger- bis zu fortgeschrittenen Szenarien.  <br/> [PyTorch-Notebooks](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
-| TensorFlow  |  Verschiedene Beispiele und Techniken für neuronale Netzwerke, die mithilfe des TensorFlow-Frameworks implementiert werden. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft Cognitive Toolkit <br/>   | Deep Learning-Beispiele des Cognitive Toolkit-Teams von Microsoft.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
-| Caffe2 | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von caffe2 verwenden. Verschiedene Notebooks machen Benutzer mit caffe2 und seinem effektiven Einsatz vertraut. Zu den Beispielen gehören Bildvorverarbeitung und Dataseterstellung. Regression und die Verwendung vortrainierter Modelle werden ebenfalls behandelt. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
-| H2O   | Python-basierte Beispiele, die H2O für praxisorientierte Aufgabenstellungen einsetzen. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| SparkML (Programmiersprache)  | Beispiele, die Features des Spark MLLib-Toolkits mithilfe von pySpark und MMLSpark nutzen – Microsoft Machine Learning für Apache Spark in Apache Spark 2.x.  <br/> [SparkML (Programmiersprache)](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
-| XGBoost | Machine Learning-Standardbeispiele in XGBoost für Szenarien wie Klassifizierung, Regression und dergleichen. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
+| TensorFlow  |  Eine Vielzahl von Beispielen und Techniken für neuronale Netzwerke, die mithilfe des TensorFlow-Frameworks implementiert werden. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
+| Microsoft Cognitive Toolkit <br/>   | Deep Learning-Beispiele, die vom Cognitive Toolkit-Team von Microsoft veröffentlicht wurden.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
+| Caffe2 | Deep Learning-Beispiele, die neuronale Netze auf der Grundlage von Caffe2 verwenden. Verschiedene Notebooks machen Benutzer mit Caffe2 und seinem effektiven Einsatz vertraut. Zu den Beispielen gehören Imagevorverarbeitung und Dataseterstellung. Regression und die Verwendung vortrainierter Modelle werden ebenfalls behandelt. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
+| H2O   | Python-basierte Beispiele, die H2O für praxisorientierte Aufgabenstellungen verwenden. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
+| SparkML (Programmiersprache)  | Beispiele, in denen Features des Apache Spark MLLib-Toolkits über pySpark und MMLSpark verwendet werden: Microsoft Machine Learning for Apache Spark on Apache Spark 2.x.  <br/> [SparkML (Programmiersprache)](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
+| XGBoost | Standardmäßige Machine Learning-Beispiele in XGBoost für Szenarien wie Klassifizierung und Regression. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
 ## <a name="access-jupyter"></a>Zugreifen auf Jupyter 
 
-Wählen Sie zum Aufrufen von Jupyter das Symbol `Jupyter` auf dem Desktop oder im Anwendungsmenü aus. Der Zugriff auf Jupyter ist auch in Linux-Editionen von Data Science Virtual Machines möglich. Remotezugriff unter Ubuntu kann aus einem Webbrowser durch Aufsuchen von `https://<Full Domain Name or IP Address of the DSVM>:8000` erfolgen.
+Um auf Jupyter zuzugreifen, wählen Sie das **Jupyter**-Symbol auf dem Desktop oder im Anwendungsmenü aus. Sie können auch auf Jupyter in einer Linux-Edition einer DSVM zugreifen. Um unter Ubuntu remote aus einem Webbrowser zuzugreifen, wechseln Sie zu `https://<Full Domain Name or IP Address of the DSVM>:8000`.
 
-Informationen zum Hinzufügen von Ausnahmen und das Zugreifen auf Jupyter über einen Browser finden Sie im folgenden Screenshot.
+Wenn Sie Ausnahmen hinzufügen und Jupyter-Zugriff über einen Browser verfügbar machen möchten, gehen Sie wie folgt vor:
 
 
 ![Aktivieren von Jupyter-Ausnahmen](./media/ubuntu-jupyter-exception.png)
 
 
-Melden Sie sich mit dem gleichen Kennwort an, das Sie für den Zugriff auf Data Science Virtual Machines verwenden.
+Melden Sie sich mit dem Kennwort an, das Sie für ein Anmelden bei der Data Science Virtual Machine verwenden.
 <br/>
 
 **Jupyter-Startseite**
@@ -71,8 +71,8 @@ Melden Sie sich mit dem gleichen Kennwort an, das Sie für den Zugriff auf Data 
 ## <a name="julia-language"></a>Julia (Programmiersprache) 
 <br/>![Beispiele für Julia](./media/julia-samples.png)<br/>
 
-## <a name="azureml"></a>AzureML 
-<br/>![Beispiele für AzureML](./media/azureml-samples.png)<br/>
+## <a name="azure-machine-learning"></a>Azure Machine Learning 
+<br/>![Azure Machine Learning-Beispiele](./media/azureml-samples.png)<br/>
 
 ## <a name="pytorch"></a>PyTorch
 <br/>![Beispiele für PyTorch](./media/pytorch-samples.png)<br/>

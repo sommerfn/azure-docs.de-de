@@ -9,18 +9,18 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 24123278ff353860ff2af59f4fd77645dfc189e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938859"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992220"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Verwenden der HDFS-CLI mit Data Lake Storage Gen2
 
 Um auf die Daten in Ihrem Speicherkonto zuzugreifen und sie zu verwalten, können Sie wie beim [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) eine Befehlszeilenschnittstelle verwenden. Dieser Artikel enthält einige Beispiele, die Ihnen den Einstieg erleichtern.
 
-HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknoten angefügt ist. Sie können auf dieses Dateisystem mithilfe der Shell zugreifen, die direkt mit dem HDFS interagiert, sowie den anderen Dateisystemen, die von Hadoop unterstützt werden.
+HDInsight bietet Zugriff auf den verteilten Container, der den Computeknoten lokal zugeordnet ist. Sie können auf diesen Container über die Shell, die direkt mit dem HDFS interagiert, sowie über die anderen Dateisysteme zugreifen, die von Hadoop unterstützt werden.
 
 Weitere Informationen zur HDFS-CLI finden Sie in der [offiziellen Dokumentation](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) und im [Handbuch zu HDFS-Berechtigungen](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html).
 
@@ -44,11 +44,11 @@ Die Verbindungszeichenfolge ist im Abschnitt „SSH + Clusteranmeldung“ auf de
 >[!IMPORTANT]
 >Die Abrechnung für einen HDInsight-Cluster beginnt, nachdem der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden. Informationen zum Löschen eines Clusters finden Sie in unserem [Artikel zum Thema](../../hdinsight/hdinsight-delete-cluster.md). In einem Speicherkonto mit aktiviertem Data Lake Storage Gen2 gespeicherte Daten bleiben jedoch auch nach dem Löschen eines HDInsight-Clusters erhalten.
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* Ersetzen Sie den Platzhalter `<file-system-name>` durch den Namen, den Sie für Ihr Dateisystem verwenden möchten.
+* Ersetzen Sie den Platzhalter `<container-name>` durch den Namen, den Sie für Ihren Container verwenden möchten.
 
 * Ersetzen Sie den Platzhalter `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
@@ -56,7 +56,7 @@ Die Verbindungszeichenfolge ist im Abschnitt „SSH + Clusteranmeldung“ auf de
 
     hdfs dfs -ls <path>
 
-Ersetzen Sie den Platzhalter `<path>` durch den URI des Dateisystems oder des Dateisystemordners.
+Ersetzen Sie den Platzhalter `<path>` durch den URI des Conatiners oder Containerordners.
 
 Beispiel: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
@@ -64,7 +64,7 @@ Beispiel: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.
 
     hdfs dfs -mkdir [-p] <path>
 
-Ersetzen Sie den Platzhalter `<path>` durch den Namen des Stammdateisystems oder einen Ordner in Ihrem Dateisystem.
+Ersetzen Sie den Platzhalter `<path>` durch den Namen des Stammcontainers oder einen Ordner in Ihrem Container.
 
 Beispiel: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 

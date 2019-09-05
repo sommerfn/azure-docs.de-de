@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: 5ddbff62421d97b1105a997bd084e1fe5b44cf12
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067199"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907416"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -109,7 +109,7 @@ Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher 
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 
-### <a name="querystoreqsview"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store.qs_view
 In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und Abfrage-ID. 
 
 |**Name**   |**Typ** | **Referenzen**  | **Beschreibung**|
@@ -142,7 +142,7 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 |blk_read_time  |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Lesen von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
 |blk_write_time |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Schreiben von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
     
-### <a name="querystorequerytextsview"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden einzelnen query_text gibt es eine Zeile.
 
 |**Name**|  **Typ**|   **Beschreibung**|
@@ -150,7 +150,7 @@ Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden 
 |query_text_id  |bigint     |ID der Tabelle query_texts|
 |query_sql_text |Varchar(10000)     |Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
 
-### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und jedes Ereignis.
 
 |**Name**|  **Typ**|   **Referenzen**| **Beschreibung**|
@@ -175,6 +175,7 @@ Query_store.staging_data_reset() gibt „void“ zurück
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 - Wenn ein PostgreSQL-Server über den Parameter „default_transaction_read_only“ verfügt, kann der Abfragespeicher keine Daten erfassen.
 - Die Abfragespeicherfunktionalität kann unterbrochen werden, wenn lange Unicodeabfragen (mindestens 6000 Bytes) festgestellt werden.
+- [Lesereplikate](concepts-read-replicas.md) replizieren Abfragespeicherdaten des Masterservers. Das bedeutet, dass der Abfragespeicher eines Lesereplikats keine Statistikdaten zu Abfragen bereitstellt, die für das Lesereplikat ausgeführt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

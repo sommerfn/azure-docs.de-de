@@ -16,34 +16,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 5f34498fbdacf7fc6e62788913c795ab70ceef23
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779476"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991615"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf Data Science Virtual Machine basierende Teamanalyse und KI-Umgebung 
-[Data Science Virtual Machine](overview.md) (DSVM) bietet eine umfangreiche Umgebung in der Azure-Plattform mit vorgefertigter Software für künstliche Intelligenz (KI) und Datenanalyse. 
+[Data Science Virtual Machine](overview.md) (DSVM) bietet eine umfangreiche Umgebung auf der Azure-Plattform mit vorgefertigter Software für künstliche Intelligenz (KI) und Datenanalyse.
 
-Bisher wurde DSVM als einzelne Desktop-Analyseumgebung verwendet. Durch das gemeinsame Konzept können die jeweiligen Data Scientists mit der vorgefertigten Analyseumgebung nun Ihre Produktivität steigern. Da große Analyseteams ihre Analyseumgebungen für ihre Data Scientists und KI-Entwickler planen, ist eines der wiederkehrenden Themen eine gemeinsame Analyseinfrastruktur für Entwicklung und Experimente. Diese Infrastruktur wird in Übereinstimmung mit den IT-Richtlinien des Unternehmens verwaltet, die auch die Zusammenarbeit und Konsistenz zwischen den Data Science- und Analyseteams erleichtern. 
+Bisher wurde DSVM als einzelne Desktop-Analyseumgebung verwendet. Einzelne Data Scientists steigern ihre Produktivität mit dieser gemeinsam genutzten, vorgefertigten Analyseumgebung. Wenn große Analyseteams Umgebungen für ihre Data Scientists und KI-Entwickler planen, ist eines der wiederkehrenden Themen eine gemeinsam genutzte Analyseinfrastruktur für Entwicklung und Experimente. Diese Infrastruktur wird in Übereinstimmung mit den IT-Richtlinien des Unternehmens verwaltet, die auch die Zusammenarbeit und Konsistenz zwischen den Data Science- und Analyseteams erleichtern.
 
-Eine gemeinsam genutzte Infrastruktur ermöglicht der IT-Abteilung außerdem eine bessere Nutzung der Analyseumgebung. Einige Organisationen bezeichnen die teambasierte Data Science- bzw. Analyseinfrastruktur als „Analyse-Sandbox“. Sie bietet Data Scientists die Möglichkeit, auf verschiedene Datenressourcen zuzugreifen, um Daten schnell zu verstehen, Experimente durchzuführen, Hypothesen zu überprüfen und Vorhersagemodelle zu erstellen, ohne die Produktionsumgebung zu beeinträchtigen. 
+Eine gemeinsam genutzte Infrastruktur ermöglicht eine bessere IT-Nutzung der Analyseumgebung. Einige Organisationen bezeichnen die teambasierte Data Science- bzw. Analyseinfrastruktur als *Analyse-Sandbox*. Diese versetzt Data Scientists in die Lage, auf verschiedene Datenressourcen zuzugreifen, um Daten schnell zu verstehen. Diese Sandbox-Umgebung unterstützt Data Scientists außerdem dabei, Experimente durchzuführen, Hypothesen zu überprüfen und Vorhersagemodelle zu erstellen, ohne die Produktionsumgebung zu beeinträchtigen.
 
-Da DSVM auf der Ebene der Azure-Infrastruktur arbeitet, können IT-Administratoren die DSVM-Instanz so konfigurieren, dass sie die IT-Richtlinien des Unternehmens erfüllt. Bei der Implementierung verschiedener Architekturen für die gemeinsame Nutzung bietet DSVM umfassende Flexibilität mit kontrolliertem Zugriff auf Unternehmensdaten. 
+Da DSVM auf der Ebene der Azure-Infrastruktur arbeitet, können IT-Administratoren die DSVM-Instanz so konfigurieren, dass sie die IT-Richtlinien des Unternehmens erfüllt. Bei der Implementierung verschiedener Architekturen für die gemeinsame Nutzung bietet DSVM umfassende Flexibilität sowie gleichzeitig kontrollierten Zugriff auf Unternehmensdaten.
 
-In diesem Abschnitt werden einige Muster und Richtlinien behandelt, die Sie zum Bereitstellen der DSVM-Instanz als teambasierte Data Science-Infrastruktur verwenden können. Die Bausteine für diese Muster stammen von Azure-Infrastructure-as-a-Service (IaaS), sie gelten also für alle Azure-VMs. Der Schwerpunkt dieser Artikelreihe liegt auf der Anwendung dieser standardmäßigen Azure-Infrastrukturfunktionen auf Data Science VM. 
+In diesem Abschnitt werden einige Muster und Richtlinien behandelt, die Sie zum Bereitstellen der DSVM-Instanz als teambasierte Data Science-Infrastruktur verwenden können. Weil die Bausteine für diese Muster von Azure-Infrastructure-as-a-Service (IaaS) stammen, gelten sie für alle Azure-VMs. In dieser Artikelreihe liegt der Schwerpunkt auf dem Anwenden dieser standardmäßigen Azure-Infrastrukturfunktionen auf die DSVM.
 
-Zu den wichtigsten Bausteinen einer Teamanalyseumgebung für Unternehmen gehören:
+Zu den Kernbausteinen einer Teamanalyseumgebung für Unternehmen gehören:
 
-* [Automatisch skalierter Pool von Data Science Virtual Machine-Instanzen](dsvm-pools.md)
+* [Ein automatisch skalierter Pool von DSVMs](dsvm-pools.md)
 * [Gemeinsame Identität und Zugriff auf einen Arbeitsbereich über jede DSVM-Instanz im Pool](dsvm-common-identity.md)
 * [Sicherer Zugriff auf Datenquellen](dsvm-secure-access-keys.md)
 
 
-In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorangegangenen Aspekte bereitgestellt. Sie deckt nicht alle Überlegungen und Anforderungen beim Bereitstellen von DSVM in großen Unternehmenskonfigurationen ab. Weitere Informationen finden Sie auch in der folgenden Azure-Dokumentation, die Sie bei der Implementierung von DSVM-Instanzen in Ihrem Unternehmen verwenden können: 
+In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorherigen Themen bereitgestellt. Sie deckt nicht alle Überlegungen und Anforderungen für ein Bereitstellen von DSVMs in großen Unternehmenskonfigurationen ab. Es folgen einige weitere Azure-Ressourcen, die Sie bei der Implementierung von DSVM-Instanzen in Ihrem Unternehmen verwenden können:
 
-* [Netzwerksicherheit](https://docs.microsoft.com/azure/security/fundamentals/network-security
+* [Netzwerksicherheit](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [Überwachung](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) und [Verwaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview)
@@ -52,4 +52,4 @@ In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorangegange
 * [Verschlüsselung](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Datenermittlung und Governance](https://docs.microsoft.com/azure/data-catalog/)
 
-Das [Azure-Architekturzentrum](https://docs.microsoft.com/azure/architecture/) bietet detaillierte End-to-End-Architekturen und Muster für den Aufbau und die Verwaltung Ihrer cloudbasierten Analyseinfrastruktur. 
+Das [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) stellt schließlich eine detaillierte End-to-End-Architektur sowie Modelle für das Erstellen und Verwalten Ihrer cloudbasierten Analyseinfrastruktur bereit.

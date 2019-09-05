@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016376"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992238"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2
 
@@ -235,7 +235,7 @@ Beachten Sie, dass einige Drittanbieter das Upgrade von Data Lake Storage Gen1 a
 
 * Wenn Sie ein Tool verwenden, dass keine ACLs kopiert bzw. Sie die ACLs nicht kopieren möchten, müssen Sie die ACLs manuell auf das Ziel auf der entsprechenden obersten Ebene festlegen. Diesen Vorgang können Sie mit dem Storage-Explorer durchführen. Stellen Sie sicher, dass es sich bei diesen ACLs um die Standard-ACLs handelt, damit die Dateien und Ordner, die Sie kopieren, diese erben.
 
-* In Data Lake Storage Gen1 ist die höchste Ebene für ACLs der Stamm des Kontos. In Data Lake Storage Gen2 ist die höchste Ebene, die Sie für ACLs festlegen können, jedoch der Stammordner in einem Dateisystem und nicht das gesamte Konto. Wenn Sie also Standard-ACLs auf Kontoebene festlegen möchten, müssen Sie diese auf allen Dateisystemen in Ihrem Data Lake Storage Gen2-Konto duplizieren.
+* In Data Lake Storage Gen1 ist die höchste Ebene für ACLs der Stamm des Kontos. In Data Lake Storage Gen2 ist die höchste Ebene, die Sie für ACLs festlegen können, jedoch der Stammordner in einem Container und nicht das gesamte Konto. Wenn Sie also Standard-ACLs auf Kontoebene festlegen möchten, müssen Sie diese auf allen Dateisystemen in Ihrem Data Lake Storage Gen2-Konto duplizieren.
 
 * Einschränkungen bei der Dateibenennung unterscheiden sich zwischen den beiden Speichersystemen. Diese Unterschiede sind besonders wichtig, wenn Sie einen Kopiervorgang von Data Lake Storage Gen2 zu Data Lake Storage Gen1 durchführen, da Gen1 über mehr Einschränkungen verfügt.
 

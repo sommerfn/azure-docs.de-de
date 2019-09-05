@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014941"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997675"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -40,7 +40,7 @@ Die einfachste Einstiegsmöglichkeit in Redactor ist die Verwendung des Open Sou
 
 ### <a name="download-and-setup"></a>Herunterladen und Einrichten
 
-1. Laden Sie das AMSE-Tool [hier](https://github.com/Azure/Azure-Media-Services-Explorer) herunter.
+1. Laden Sie das AMSE für AMS v2-Tool [hier](https://aka.ms/amseforv2) herunter.
 1. Melden Sie sich mit Ihrem Dienstschlüssel bei Ihrem Media Services-Konto an.
 
     Um den Kontonamen und wichtige Informationen zu erhalten, wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr AMS-Konto aus. Wählen Sie dann „Einstellungen“ > „Schlüssel“ aus. Im Fenster „Schlüssel verwalten“ werden der Kontoname sowie der Primär- und Sekundärschlüssel angezeigt. Kopieren Sie die Werte für den Kontonamen und den Primärschlüssel.

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304602"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114762"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -150,3 +150,15 @@ Wenn Sie * **.contoso.com** konfigurieren, ist *anyvalue*.contoso.com, aber nich
 ## <a name="what-does-provisioning-state-failed-mean"></a>Was bedeutet *Bereitstellungsstatus: Fehler*?
 
 Wenn eine Konfigurationsänderung angewendet wird, versucht Azure Firewall alle zugrunde liegenden Back-End-Instanzen zu aktualisieren. In seltenen Fällen kann bei der Aktualisierung einer dieser Back-End-Instanzen mit der neuen Konfiguration ein Fehler auftreten, und der Aktualisierungsvorgang wird mit dem Bereitstellungsstatus „Fehler“ angehalten. Azure Firewall ist noch funktionsfähig, die angewendete Konfiguration befindet sich jedoch unter Umständen in einem inkonsistenten Zustand, in dem einige Instanzen die vorherige Konfiguration und andere den aktualisierten Regelsatz verwenden. Versuchen Sie in diesem Fall, die Konfiguration noch einmal zu aktualisieren, bis der Vorgang erfolgreich war und für Ihre Firewall der Bereitstellungsstatus *Erfolgreich* angezeigt wird.
+
+## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Gibt es eine Beschränkung der Zeichenzahl für einen Firewallnamen?
+
+Ja. Ein Firewallname ist auf 50 Zeichen beschränkt.
+
+## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Warum benötigt Azure Firewall die Subnetzgröße /26?
+
+Der Azure Firewall-Dienst muss mehr VM-Instanzen bereitstellen, als er skaliert. Ein /26-Adressraum stellt sicher, dass für die Firewall genügend IP-Adressen vorhanden sind, um der Skalierung gerecht zu werden.
+
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Muss die Größe des Firewallsubnetzes geändert werden, wenn der Dienst eine Skalierung ausführt?
+
+Nein. Azure Firewall benötigt kein Subnetz, das größer als /26 ist.

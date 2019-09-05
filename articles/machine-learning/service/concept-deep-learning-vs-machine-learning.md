@@ -1,5 +1,5 @@
 ---
-title: 'Einführung: Deep Learning im Vergleich zu maschinellem Lernen'
+title: Deep Learning im Vergleich zu maschinellem Lernen
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie etwas über die Beziehung zwischen Deep Learning und maschinellem Lernen und ihre Einordnung in die Kategorie der künstlichen Intelligenz. In diesem Artikel wird beschrieben, wie sich mit Deep Learning Szenarien wie Betrugserkennung, Sprach- und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen lösen lassen.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934290"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982812"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>Einführung: Deep Learning im Vergleich zu maschinellem Lernen
+# <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
 In diesem Artikel wird die Beziehung zwischen Deep Learning und maschinellem Lernen erläutert. Sie erfahren, worin sich die beiden Konzepte ähneln und unterscheiden und wie sie sich in die breitere Kategorie der künstlichen Intelligenz einordnen lassen. Schließlich wird in diesem Artikel beschrieben, wie Deep Learning auf reale Szenarien angewandt werden kann, z. B. Betrugserkennung, Sprach-und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen.
 

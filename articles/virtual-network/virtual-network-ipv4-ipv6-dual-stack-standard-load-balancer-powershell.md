@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure Virtual Network – PowerShell
+title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure Virtual Network – PowerShell
 titlesuffix: Azure Virtual Network
 description: In diesem Artikel wird die Bereitstellung einer IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure Virtual Network mithilfe von Azure PowerShell veranschaulicht.
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 99e01aa611eea3d6379e2a250cc99d121e41aa82
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 05794cfaf6a550d32acdfb731a5f477111e65606
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269595"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011417"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---powershell-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure – PowerShell (Preview)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure – PowerShell (Vorschauversion)
 
-Dieser Artikel zeigt, wie Sie in Azure eine Anwendung mit dualem Stapel (IPv4 und IPv6) bereitstellen, die ein virtuelles Netzwerk mit dualem Stapel und Subnetz, einen Lastenausgleich mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, Netzwerksicherheitsgruppenregeln und öffentliche IP-Adressen umfasst.
+Dieser Artikel zeigt, wie Sie eine Dual Stack-Anwendung (IPv4 und IPv6) mithilfe von Load Balancer Standard in Azure bereitstellen. Die Bereitstellung umfasst ein virtuelles Dual Stack-Netzwerk mit Subnetz, Load Balancer Standard mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs und einer dualen IP-Konfiguration, Netzwerksicherheitsgruppe und öffentliche IP-Adressen.
 
 > [!Important]
 > Die IPv6-Unterstützung für Azure Virtual Network ist derzeit als Public Preview verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

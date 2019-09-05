@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967711"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012811"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Schnellstart: Erstellen einer Wissensdatenbank über das QnA Maker-API-Dienstportal
 
@@ -45,20 +45,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ![Festlegen von Datenquellen](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Weisen Sie dem Dienst einen **Namen** zu. Doppelte Namen werden ebenso wie Sonderzeichen unterstützt.
-    - Fügen Sie URLs für die Daten hinzu, die extrahiert werden sollen. Weitere Informationen zu den unterstützten Ausgangstypen finden Sie [hier](../Concepts/data-sources-supported.md).
-    - Laden Sie Dateien für die Daten hoch, die extrahiert werden sollen. Unter [Preise](https://aka.ms/qnamaker-pricing) erfahren Sie, wie viele Dokumente Sie hinzufügen können.
-    - Wenn Sie QnAs manuell hinzufügen möchten, können Sie **Schritt 4**, der in der vorhergehenden Abbildung gezeigt wird, überspringen.
+1. Weisen Sie dem Dienst einen **Namen** wie `my first kb` zu. Doppelte Namen werden ebenso wie Sonderzeichen unterstützt.
 
-1. Fügen Sie Ihrer Wissensdatenbank **Geplauder** hinzu. Fügen Sie Geplauderunterstützung für Ihren Bot hinzu, indem Sie eine der Persönlichkeiten auswählen. 
+1. Fügen Sie die QnA Maker-Seite zur Problembehandlung als URL hinzu: `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`. Anschließend wählen Sie `+ Add URL` aus. Weitere Informationen zu den unterstützten Ausgangstypen finden Sie [hier](../Concepts/data-sources-supported.md). Laden Sie für diese Schnellstartanleitung **keine** Dateien für Daten hoch, die extrahiert werden sollen. Unter [Preise](https://aka.ms/qnamaker-pricing) erfahren Sie, wie viele Dokumente Sie hinzufügen können.
 
-    ![Hinzufügen von Geplauder zu Wissensdatenbanken](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. Fügen Sie Ihrer Wissensdatenbank **_professionelles_ Geplauder** hinzu. 
 
 1. Wählen Sie **Wissensdatenbank erstellen** aus.
 
     ![Erstellen der Knowledge Base](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. Das Extrahieren der Daten dauert einige Minuten.
+1. Das Extrahieren der Daten kann einige Minuten dauern.
 
     ![Extraktion](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 

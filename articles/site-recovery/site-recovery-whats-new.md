@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717671"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972517"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -25,13 +25,34 @@ Wenn Sie Vorschläge für Site Recovery-Funktionen haben, freuen wir uns über I
 
 Unterstützung und Anweisungen für Site Recovery-Updates finden Sie in [diesem Artikel](service-updates-how-to.md).
 
+## <a name="updates-august-2019"></a>Updates (August 2019)
+
+### <a name="update-rollup-39"></a>Updaterollup 39
+
+Das [Updaterollup 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) umfasst folgenden Updates.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+
+Die neuen Features für die Notfallwiederherstellung von virtuellen Azure-Computern sind in der Tabelle zusammengefasst.
+
+**Feature** | **Details**
+--- | ---
+**Verschlüsselung ohne Azure AD** | Verschlüsselung ohne eine Azure AD-App wird jetzt für die Replikation virtueller Azure-Computer auf verwalteten Datenträgern unter Windows unterstützt.
+**Netzwerkressourcen für Failover** | Wenn Sie ein Failover zu einer anderen Region vorgenommen haben, können Sie nun Netzwerkressourceneinstellungen (NSGs,Lastenausgleich, öffentliche IP-Adresse) zu einem virtuellen Computer zuordnen. 
+
 ## <a name="updates-july-2019"></a>Updates (Juli 2019)
 
 ### <a name="update-rollup-38"></a>Updaterollup 38
 
 Das [Updaterollup 38](https://support.microsoft.com/help/4513507/) umfasst folgenden Updates:
 
-**Update** | **Details**
+**Aktualisieren** | **Details**
 --- | ---
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)

@@ -1,6 +1,6 @@
 ---
-title: Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse| Microsoft-Dokumentation
-description: In diesem Artikel wird die Verbindungsarchitektur von Azure SQL für Datenbankverbindungen von Azure aus oder von außerhalb von Azure erläutert.
+title: Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation
+description: In diesem Artikel wird die Azure SQL-Verbindungsarchitektur für interne und externe Datenbankverbindungen von Azure erläutert.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0e9bdb22baed74ef948f369f9259784900486860
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: daa9937294cb3ffa594d83fbd56777bc8af8900a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569088"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981460"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -56,53 +56,53 @@ Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Ver
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-Adressen vom Gateway von Azure SQL-Datenbank
 
-Die untenstehende Tabelle zeigt die IP-Adressen der Gateways nach Region. Wenn Sie sich mit einer Azure SQL-Datenbank verbinden wollen, müssen Sie den Netzwerkdatenverkehr von und aus **allen** Gateways der Region zulassen.
+Die folgende Tabelle enthält die IP-Adressen der Gateways nach Region. Wenn Sie eine Verbindung mit einer Azure SQL-Datenbank herstellen möchten, müssen Sie ein- und ausgehenden Netzwerkdatenverkehr für **alle** Gateways der Region zulassen.
 
-Im nächsten Schritt fügen wir jeder Region mehr Gateways hinzu und setzen die Gateway in der außer Betrieb genommenen Gateway-IP-Adressenspalte der folgenden Tabelle außer Kraft. Weitere Informationen über diesen Prozess finden Sie im folgenden Artikel: [Azure SQL Database Traffic-Migration auf neuere Gateways](sql-database-gateway-migration.md)
+Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen finden Sie im folgenden Artikel: [Azure SQL Database Traffic-Migration auf neuere Gateways](sql-database-gateway-migration.md).
 
 
-| Name der Region          | Gateway-IP-Adresse | Außer Betrieb gesetztes Gateway </br> IP-Adresse| Hinweise zur Außerbetriebnahme | 
-| --- | --- | --- | --- |
-| Australien, Mitte    | 20.36.105.0 | | |
-| Australien, Mitte 2   | 20.36.113.0 | | |
-| Australien (Osten)       | 13.75.149.87, 40.79.161.1 | | |
-| Australien, Südosten | 191.239.192.109, 13.73.109.251 | | |
-| Brasilien Süd         | 104.41.11.5        |                 | |
-| Kanada, Mitte       | 40.85.224.249      |                 | |
-| Kanada, Osten          | 40.86.226.166      |                 | |
-| USA (Mitte)           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Keine Verbindungen nach dem 1. September 2019 |
-| China, Osten           | 139.219.130.35     |                 | |
-| China, Osten 2         | 40.73.82.1         |                 | |
-| China, Norden          | 139.219.15.17      |                 | |
-| China, Norden 2        | 40.73.50.0         |                 | |
-| Asien, Osten            | 191.234.2.139, 52.175.33.150 |       | |
-| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Keine Verbindungen nach dem 1. September 2019 |
-| USA (Ost) 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Keine Verbindungen nach dem 1. September 2019 |
-| Frankreich, Mitte       | 40.79.137.0, 40.79.129.1 |           | |
-| Deutschland, Mitte      | 51.4.144.100       |                 | |
-| Deutschland, Nordosten   | 51.5.144.179       |                 | |
-| Indien, Mitte        | 104.211.96.159     |                 | |
-| Indien, Süden          | 104.211.224.146    |                 | |
-| Indien, Westen           | 104.211.160.80     |                 | |
-| Japan, Osten           | 13.78.61.196, 40.79.184.8, 13.78.106.224 | 191.237.240.43 | Keine Verbindungen nach dem 1. September 2019 |
-| Japan, Westen           | 104.214.148.156, 40.74.100.192 | 191.238.68.11 | Keine Verbindungen nach dem 1. September 2019 |
-| Korea, Mitte        | 52.231.32.42       |                 | |
-| Korea, Süden          | 52.231.200.86      |                 | |
-| USA Nord Mitte     | 23.96.178.199      | 23.98.55.75     | Keine Verbindungen nach dem 1. September 2019 |
-| Nordeuropa         | 40.113.93.91       | 191.235.193.75  | Keine Verbindungen nach dem 1. September 2019 |
-| Südafrika, Norden   | 102.133.152.0      |                 | |
-| Südafrika, Westen    | 102.133.24.0       |                 | |
-| USA Süd Mitte     | 13.66.62.124       | 23.98.162.75    | Keine Verbindungen nach dem 1. September 2019 |
-| Südostasien      | 104.43.15.0        | 23.100.117.95   | Keine Verbindungen nach dem 1. September 2019 |
-| VAE, Mitte          | 20.37.72.64        |                 | |
-| Vereinigte Arabische Emirate, Norden            | 65.52.248.0        |                 | |
-| UK, Süden             | 51.140.184.11      |                 | |
-| UK, Westen              | 51.141.8.11        |                 | |
-| USA, Westen-Mitte      | 13.78.145.25       |                 | |
-| Europa, Westen          | 40.68.37.158       | 191.237.232.75  | Keine Verbindungen nach dem 1. September 2019 |
-| USA (Westen)              | 104.42.238.205     | 23.99.34.75     | Keine Verbindungen nach dem 1. September 2019 |
-| USA, Westen 2            | 13.66.226.202      |                 | |
-|                      |                    |                 | |
+| Name der Region          | Gateway-IP-Adressen |
+| --- | --- |
+| Australien, Mitte    | 20.36.105.0 |
+| Australien, Mitte 2   | 20.36.113.0 |
+| Australien (Osten)       | 13.75.149.87, 40.79.161.1 |
+| Australien, Südosten | 191.239.192.109, 13.73.109.251 |
+| Brasilien Süd         | 104.41.11.5,191.233.200.14 |
+| Kanada, Mitte       | 40.85.224.249      |
+| Kanada, Osten          | 40.86.226.166      |
+| USA (Mitte)           | 13.67.215.62, 52.182.137.15 , 23.99.160.139, 104.208.16.96 | 
+| China, Osten           | 139.219.130.35     |
+| China, Osten 2         | 40.73.82.1         |
+| China, Norden          | 139.219.15.17      |
+| China, Norden 2        | 40.73.50.0         |
+| Asien, Osten            | 191.234.2.139, 52.175.33.150,13.75.32.4 |
+| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| USA (Ost) 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0,  191.239.224.107, 104.208.150.3 | 
+| Frankreich, Mitte       | 40.79.137.0, 40.79.129.1 |
+| Deutschland, Mitte      | 51.4.144.100       |
+| Deutschland, Nordosten   | 51.5.144.179       |
+| Indien, Mitte        | 104.211.96.159     |
+| Indien, Süden          | 104.211.224.146    |
+| Indien, Westen           | 104.211.160.80     |
+| Japan, Osten           | 13.78.61.196, 40.79.184.8, 13.78.106.224 , 191.237.240.43, 40.79.192.5 | 
+| Japan, Westen           | 104.214.148.156, 40.74.100.192 | 191.238.68.11,40.74.97.10 | 
+| Korea, Mitte        | 52.231.32.42       |
+| Korea, Süden          | 52.231.200.86      |
+| USA Nord Mitte     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Nordeuropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| Südafrika, Norden   | 102.133.152.0      |
+| Südafrika, Westen    | 102.133.24.0       |
+| USA Süd Mitte     | 13.66.62.124 , 23.98.162.75, 104.214.16.32   | 
+| Südostasien      | 104.43.15.0 , 23.100.117.95, 40.78.232.3   | 
+| VAE, Mitte          | 20.37.72.64        |
+| Vereinigte Arabische Emirate, Norden            | 65.52.248.0        |
+| UK, Süden             | 51.140.184.11      |
+| UK, Westen              | 51.141.8.11        |
+| USA, Westen-Mitte      | 13.78.145.25       |
+| Europa, Westen          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| USA (Westen)              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
+| USA, Westen 2            | 13.66.226.202      |
+|                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank
 
@@ -115,7 +115,7 @@ Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenb
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Das folgende Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
+> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Das folgende Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
 
 Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie ändern können.
 
@@ -138,12 +138,12 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 > [!IMPORTANT]
 > Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in einer Bash-Shell
+### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in einer Bash-Shell
 
 > [!IMPORTANT]
 > Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Das folgende Skript für die Befehlszeilenschnittstelle veranschaulicht, wie Sie die Verbindungsrichtlinie in einer Bash-Shell ändern.
+Das folgende CLI-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie in einer Bash-Shell ändern.
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -159,12 +159,12 @@ az resource show --ids $ids
 az resource update --ids $ids --set properties.connectionType=Proxy
 ```
 
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI aus einer Windows-Eingabeaufforderung
+### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI über eine Windows-Eingabeaufforderung
 
 > [!IMPORTANT]
 > Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Das folgende CLI-Skript zeigt Ihnen, wie Sie die Verbindungsrichtlinie von einer Windows-Eingabeaufforderung aus ändern können (wenn Azure CLI installiert ist).
+Das folgende CLI-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie über eine Windows-Eingabeaufforderung ändern (wenn die Azure CLI installiert ist).
 
 ```azurecli
 # Get SQL Server ID and set URI

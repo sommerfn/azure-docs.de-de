@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817219"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036031"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -92,7 +92,7 @@ Die beste Methode zum Messen der Leistungsanforderungen Ihrer Anwendung ist die 
 
 Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher und alle logischen und physischen Datenträger Ihres Servers verfügbar. Bei Verwenden von Storage Premium-Datenträgern mit einem virtuellen Computer gelten die Indikatoren für physische Datenträger für jeden Storage Premium-Datenträger. Die Indikatoren für logische Datenträger gelten für jedes Volume, das auf den Storage Premium-Datenträgern erstellt wurde. Sie müssen die Werte für die Datenträger erfassen, die den Workload Ihrer Anwendung hosten. Wenn es eine 1: 1-Zuordnung zwischen logischen und physischen Datenträgern gilt, beziehen Sie sich auf die Leistungsindikatoren für physische Datenträger und andernfalls auf die Leistungsindikatoren für logische Datenträger. Unter Linux erzeugt der Befehl „iostat“ einen Bericht der CPU- und Festplattenauslastung. Der Bericht zur Datenträgerauslastung bietet Statistiken pro physischem Gerät bzw. pro Partition. Wenn Sie einen Datenbankserver mit Daten- und Protokolldateien auf getrennten Datenträgern nutzen, erfassen Sie diese Daten für beide Datenträger. In der folgenden Tabelle werden die Leistungsindikatoren für Datenträger, Prozessor und Arbeitsspeicher beschrieben:
 
-| Indikator | Beschreibung | Systemmonitor | iostat |
+| Indikator | BESCHREIBUNG | Systemmonitor | iostat |
 | --- | --- | --- | --- |
 | **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s <br> Schreibvorgänge/s |tps <br> r/s <br> w/s |
 | **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit <br> % Schreibzeit |r/s <br> w/s |
@@ -111,7 +111,7 @@ Weitere Informationen zu [iostat](https://linux.die.net/man/1/iostat) und [PerfM
 
 Die wichtigsten Faktoren für die Leistung einer Anwendung, die in Storage Premium ausgeführt wird, sind die Art der E/A-Anforderungen, VM-Größe, Datenträgergröße, Anzahl der Datenträger, die Datenträgerzwischenspeicherung, Multithreading und Warteschlangenlänge. Sie können einige dieser Faktoren mithilfe vom System bereitgestellter Einstellungsmöglichkeiten steuern. Die meisten Anwendungen bieten jedoch möglicherweise keine Option, die E/A-Größe und Warteschlangenlänge direkt zu ändern. In SQL Server können Sie z. B. die E/A-Größe und Warteschlangenlänge nicht festlegen. SQL Server wählt optimale Einstellungen für E/A-Größe und Warteschlangenlänge, um die beste Leistung zu erzielen. Es ist wichtig, die Auswirkungen beider Arten von Faktoren auf die Leistung Ihrer Anwendung zu verstehen, damit Sie entsprechende Ressourcen zum Erfüllen der Leistungsanforderungen bereitstellen können.
 
-Nehmen Sie in diesem gesamten Abschnitt Bezug auf die von Ihnen erstellte Prüfliste mit den Anwendungsanforderungen, um zu bestimmen, was für die Optimierung der Leistung Ihrer Anwendung erforderlich ist. Auf dieser Basis können Sie bestimmen, welche Faktoren in diesem Abschnitt Sie optimieren müssen. Führen Sie zum Überprüfen der Auswirkungen der einzelnen Faktoren auf die Anwendungsleistung Benchmarktools aus. Im Abschnitt „Benchmarktests“ am Ende dieses Artikels finden Sie Anweisungen zum Ausführen gängiger Benchmarktools für Windows- und Linux-VMs.
+Nehmen Sie in diesem gesamten Abschnitt Bezug auf die von Ihnen erstellte Prüfliste mit den Anwendungsanforderungen, um zu bestimmen, was für die Optimierung der Leistung Ihrer Anwendung erforderlich ist. Auf dieser Basis können Sie bestimmen, welche Faktoren in diesem Abschnitt Sie optimieren müssen. Führen Sie zum Überprüfen der Auswirkungen der einzelnen Faktoren auf die Anwendungsleistung Benchmarktools aus. Der am Ende dieses Artikels verlinkte Artikel zu Benchmarks enthält eine Anleitung zum Ausführen gängiger Benchmarktools für virtuelle Windows- und Linux-Computer.
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Optimierung von IOPS, Durchsatz und Latenz auf einen Blick
 
@@ -166,7 +166,7 @@ Um eine IOPS-Rate und Bandbreite zu erzielen, die höher als der Maximalwert ein
 > [!NOTE]
 > Wenn Sie entweder die IOPS-Rate oder den Durchsatz erhöhen, sollten Sie sicherstellen, dass Sie dabei nicht das Durchsatz- oder IOPS-Limit des Datenträgers oder der VM überschreiten.
 
-Führen Sie zum Überprüfen der Auswirkungen der E/A-Größe auf die Anwendungsleistung in Ihrer VM und auf Ihren Datenträgern Benchmarktools aus. Erstellen Sie mehrere Testläufe, und wählen Sie für jeden Lauf eine andere E/A-Größe, um die Auswirkungen zu prüfen. Im Abschnitt „Benchmarktests“ am Ende dieses Artikels finden Sie weitere Details.
+Führen Sie zum Überprüfen der Auswirkungen der E/A-Größe auf die Anwendungsleistung in Ihrer VM und auf Ihren Datenträgern Benchmarktools aus. Erstellen Sie mehrere Testläufe, und wählen Sie für jeden Lauf eine andere E/A-Größe, um die Auswirkungen zu prüfen. Ausführlichere Informationen finden Sie im am Ende dieses Artikels verlinkten Artikel zu Benchmarks.
 
 ## <a name="high-scale-vm-sizes"></a>Größen von Hochleistungs-VMs
 
@@ -269,7 +269,7 @@ Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger 
 *ReadWrite*  
 Für die Betriebssystem-Datenträger ist der „ReadWrite“-Cache standardmäßig aktiviert. Wir haben vor Kurzem Unterstützung des „ReadWrite“-Caches auf Datenträgern hinzugefügt. Wenn Sie den „ReadWrite“-Cache nutzen, benötigen Sie eine ordnungsgemäße Möglichkeit zum Schreiben der Daten aus dem Cache auf beständige Datenträger. SQL Server übernimmt beispielsweise selbst das Schreiben von Daten im Cache auf beständige Speicherdatenträger. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
 
-*None*  
+*Keine*  
 Die Option **None** wird aktuell nur für reguläre Datenträger unterstützt. Für Betriebssystemdatenträger wird sie nicht unterstützt. Wenn Sie **None** für einen Betriebssystemdatenträger festlegen, wird die Einstellung intern überschrieben und auf **ReadOnly** festgelegt.
 
 Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwenden, indem Sie die folgenden Schritte ausführen:
@@ -387,11 +387,3 @@ Azure Storage Premium stellt abhängig von den gewählten VM- und Datenträgergr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter
-
-* [Auswählen eines Datenträgertyps](../articles/virtual-machines/windows/disks-types.md).  
-
-Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Methoden für die Leistung von SQL Server an:
-
-* [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Storage Premium bietet höchste Leistung für SQL Server in Azure-VM](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986000"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061494"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -221,10 +221,8 @@ Legen Sie zum Kopieren von Daten aus und nach Azure Table Storage die type-Eigen
 
 Bei schemafreien Datenspeichern wie Azure Table leitet der Data Factory-Dienst das Schema auf eine der folgenden Arten ab:
 
-* Wenn Sie die Struktur der Daten mithilfe der **structure**-Eigenschaft in der Datasetdefinition angeben, betrachtet Data Factory diese Struktur als das Schema. Wenn in diesem Fall eine Zeile keinen Wert für eine Spalte enthält, wird ein NULL-Wert für sie angegeben.
-* Wenn Sie die Struktur der Daten nicht mithilfe der **structure** -Eigenschaft in der Datasetdefinition angeben, leitet Data Factory das Schema unter Verwendung der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält, fehlen im Ergebnis des Kopiervorgangs einige Spalten.
-
-Bei schemafreien Datenquellen empfiehlt es sich, die Struktur der Daten mithilfe der **structure**-Eigenschaft anzugeben.
+* Wenn Sie die Spaltenzuordnung in der Kopieraktivität angeben, verwendet Data Factory die quellseitige Spaltenliste zum Abrufen von Daten. Wenn in diesem Fall eine Zeile keinen Wert für eine Spalte enthält, wird ein NULL-Wert für sie angegeben.
+* Wenn Sie keine Spaltenzuordnung in der Kopieraktivität angeben, leitet Data Factory das Schema anhand der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält (weil einige Spalten beispielsweise NULL-Werte aufweisen), fehlen im Ergebnis des Kopiervorgangs einige Spalten.
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 

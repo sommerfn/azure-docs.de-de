@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8754eedc8284aab01006ea71bfd870064b91ea17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851125"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991978"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 
@@ -74,6 +74,14 @@ Verfügbare Ressourcen:
 
 <sup>1</sup> Die maximale Lebensdauer bezieht sich auf den Zeitraum, in dem ein Auftrag gestartet und beendet wird. Abgeschlossene Ausführungen bleiben unbegrenzt lange erhalten. Daten für Ausführungen, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 <sup>2</sup> Aufträge auf einem Knoten mit niedriger Priorität können jederzeit vorzeitig beendet werden, wenn eine Kapazitätseinschränkung auftritt. Es empfiehlt sich, ein Auswerten von Prüfpunkten in Ihrem Auftrag zu implementieren.
+
+### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
+Für Azure Machine Learning-Pipelines gibt es eine Kontingentbeschränkung für die Anzahl der Schritte in einer Pipeline und für die Anzahl der auf einem Zeitplan basierenden Ausführungen veröffentlichter Pipelines pro Region in einem Abonnement.
+- Die maximal zulässige Anzahl von Schritten in einer Pipeline beträgt 30.000.
+- Die maximale Anzahl von auf einem Zeitplan basierenden Ausführungen veröffentlichter Pipelines pro Abonnement und Monat beträgt 100.000.
+
+> [!NOTE]
+> Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/support/options/).
 
 ### <a name="container-instances"></a>Containerinstanzen
 

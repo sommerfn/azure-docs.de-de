@@ -1,5 +1,5 @@
 ---
-title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: CLI'
+title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer in Azure – Befehlszeilenschnittstelle
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie eine IPv6-Dual Stack-Anwendung in Azure Virtual Network mit der Azure CLI bereitgestellt wird.
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 75af2012c4e6287a2fbe76098c2a325e6c9ae2ef
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 265a14fa216741a5a5994389e671e7558a527261
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640692"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013713"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: CLI (Vorschau)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – Befehlszeilenschnittstelle (Vorschauversion)
 
-Dieser Artikel zeigt Ihnen, wie Sie eine Dual Stack-Anwendung (IPv4 und IPv6) in Azure bereitstellen, die ein virtuelles Dual Stack-Netzwerk mit einem Dual Stack-Subnetz, einen Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, duale Netzwerksicherheitsgruppenregeln und duale öffentliche IP-Adressen umfasst.
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine Anwendung mit dualem Stapel (IPv4 und IPv6) und Load Balancer im Tarif „Basic“ bereitstellen, die ein virtuelles Netzwerk mit dualem Stapel, ein Subnetz mit dualem Stapel, eine Load Balancer-Instanz im Tarif „Basic“ mit dualen Front-End-Konfigurationen (IPv4 und IPv6), virtuelle Computer mit NICs mit einer dualen IP-Konfiguration, duale Netzwerksicherheitsgruppenregeln sowie duale öffentliche IP-Adressen umfasst.
+
+Informationen zum Bereitstellen einer Anwendung mit dualem Stapel (IPv4 und IPv6) unter Verwendung von Load Balancer Standard finden Sie unter [Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure Virtual Network – CLI (Vorschau)](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
 > [!Important]
 > IPv6 Dual Stack für Azure Virtual Network ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

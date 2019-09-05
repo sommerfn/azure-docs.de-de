@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847347"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991912"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Informationen zum Zuweisen von Rollen zu Sicherheitsprinzipalen im Bereich Ihres
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Die Auswirkungen von Rollenzuweisungen auf Zugriffssteuerungslisten auf Datei- und Verzeichnisebene
 
-RBAC-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Zugriffsberechtigungen, aber im Vergleich zu Zugriffssteuerungslisten nicht sehr detailliert. Der kleinste Detailgrad für die RBAC ist die Dateisystemebene, die mit einer höheren Priorität als Zugriffssteuerungslisten ausgewertet wird. Wenn Sie einem Sicherheitsprinzipal im Bereich eines Dateisystems eine Rolle zuweisen, hat dieser Sicherheitsprinzipal daher die Autorisierungsstufe dieser Rolle für ALLE Verzeichnisse und Dateien in diesem Dateisystem, unabhängig von den ACL-Zuweisungen.
+RBAC-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Zugriffsberechtigungen, aber im Vergleich zu Zugriffssteuerungslisten nicht sehr detailliert. Die kleinste Granularität für RBAC ist die Containerebene, und diese wird mit einer höheren Priorität als Zugriffssteuerungslisten ausgewertet. Wenn Sie einem Sicherheitsprinzipal im Bereich eines Containers eine Rolle zuweisen, hat dieser Sicherheitsprinzipal daher die Autorisierungsstufe dieser Rolle für ALLE Verzeichnisse und Dateien in diesem Container, unabhängig von den ACL-Zuweisungen.
 
 Wenn einem Sicherheitsprinzipal RBAC-Datenberechtigungen über eine [integrierte Rolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues) oder eine benutzerdefinierte Rolle erteilt werden, erfolgt die Auswertung dieser Berechtigungen bei der Autorisierung einer Anforderung als erstes. Wenn der angeforderte Vorgang durch die RBAC-Zuweisungen des Sicherheitsprinzipals autorisiert wird, erfolgt die Berechtigungsauflösung sofort, ohne dass zusätzliche ACL-Prüfungen durchgeführt werden. Wenn der Sicherheitsprinzipal keine RBAC-Zuweisung hat oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, erfolgen ACL-Prüfungen, um festzustellen, ob der Sicherheitsprinzipal berechtigt ist, den gewünschten Vorgang durchzuführen.
 
@@ -81,7 +81,7 @@ Zugriffs- und Standard-ACLs haben die gleiche Struktur.
 
 ### <a name="levels-of-permission"></a>Berechtigungsebenen
 
-Die Berechtigungen für ein Dateisystemobjekt sind **Lesen**, **Schreiben** und **Ausführen**. Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Verzeichnisse angewendet werden:
+Die Berechtigungen für ein Containerobjekt sind **Lesen**, **Schreiben** und **Ausführen**. Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Verzeichnisse angewendet werden:
 
 |            |    Datei     |   Verzeichnis |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ Die Berechtigungen für ein Dateisystemobjekt sind **Lesen**, **Schreiben** und 
 | **Ausführen (Execute, X)** | Hat im Kontext von Data Lake Storage Gen2 keine Bedeutung | Erfordert das Durchlaufen der untergeordneten Elemente eines Verzeichnisses |
 
 > [!NOTE]
-> Wenn Sie Berechtigungen ausschließlich mithilfe von ACLs (ohne RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Dienstprinzipal dem Dienstprinzipal die Berechtigung **Ausführen** für das Dateisystem und zu jedem Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
+> Wenn Sie Berechtigungen ausschließlich mithilfe von ACLs (ohne RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Dienstprinzipal dem Dienstprinzipal die Berechtigung **Ausführen** für den Container und zu jedem Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
 
 #### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
 
@@ -154,7 +154,7 @@ In den POSIX-Zugriffssteuerungslisten ist jeder Benutzer einer *primären Gruppe
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Zuweisen der zuständigen Gruppe für eine neue Datei oder ein neues Verzeichnis
 
-* **Fall 1**: Das Stammverzeichnis „/“. Dieses Verzeichnis wird erstellt, wenn ein Data Lake Storage Gen2-Dateisystem erstellt wird. In diesem Fall wird die zuständige Gruppe auf den Benutzer festgelegt, der das Dateisystem erstellt hat, sofern dies mithilfe von OAuth erfolgt ist. Wenn das Dateisystem mithilfe eines gemeinsam verwendeten Schlüssels, einer Konto-SAS oder Dienst-SAS erstellt wird, werden der Besitzer und die zuständige Gruppe auf **$superuser** festgelegt.
+* **Fall 1**: Das Stammverzeichnis „/“. Dieses Verzeichnis wird erstellt, wenn ein Data Lake Storage Gen2-Container erstellt wird. In diesem Fall wird die zuständige Gruppe auf den Benutzer festgelegt, der den Container erstellt hat, sofern dies mithilfe von OAuth erfolgt ist. Wenn der Container mithilfe eines gemeinsam verwendeten Schlüssels, einer Konto-SAS oder Dienst-SAS erstellt wird, werden der Besitzer und die zuständige Gruppe auf **$superuser** festgelegt.
 * **Fall 2** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Verzeichnis kopiert.
 
 ##### <a name="changing-the-owning-group"></a>Ändern der zuständigen Gruppe
@@ -216,13 +216,13 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 Wie im Algorithmus für die Zugriffsüberprüfung gezeigt, beschränkt die Maske den Zugriff auf benannte Benutzer, die zuständige Gruppe und benannte Gruppen.  
 
 > [!NOTE]
-> Bei einem neuen Data Lake Storage Gen2-Konto wird die Maske für die Zugriffs-ACL des Stammverzeichnisses („/“) für Verzeichnisse standardmäßig auf 750 und für Dateien auf 640 festgelegt. Dateien erhalten nicht das X-Bit, da es für Dateien in einem reinen Speichersystem irrelevant ist.
+> Für einen neuen Data Lake Storage Gen2-Container wird die Maske für die Zugriffs-ACL des Stammverzeichnisses („/“) für Verzeichnisse standardmäßig auf 750 und für Dateien auf 640 festgelegt. Dateien erhalten nicht das X-Bit, da es für Dateien in einem reinen Speichersystem irrelevant ist.
 >
 > Die Maske kann aufrufbezogen festgelegt werden. Dies ermöglicht verschiedenen verarbeitenden Systemen, wie beispielsweise Clustern, für ihre Dateivorgänge unterschiedliche effektive Masken zu verwenden. Wenn eine Maske für eine bestimmte Anforderung angegeben wird, überschreibt sie die Standardmaske vollständig.
 
 #### <a name="the-sticky-bit"></a>Das Sticky Bit
 
-Das Sticky Bit ist ein erweitertes Merkmal eines POSIX-Dateisystems. Im Kontext von Data Lake Storage Gen2 wird das Sticky Bit höchstwahrscheinlich nicht benötigt. Kurz gefasst kann ein untergeordnetes Element nur vom jeweiligen zuständigen Benutzer gelöscht oder umbenannt werden, wenn das Sticky Bit für ein Verzeichnis aktiviert ist.
+Das Sticky Bit ist ein erweitertes Feature eines POSIX-Containers. Im Kontext von Data Lake Storage Gen2 wird das Sticky Bit höchstwahrscheinlich nicht benötigt. Kurz gefasst kann ein untergeordnetes Element nur vom jeweiligen zuständigen Benutzer gelöscht oder umbenannt werden, wenn das Sticky Bit für ein Verzeichnis aktiviert ist.
 
 Das Sticky Bit wird im Azure-Portal nicht angezeigt.
 
@@ -291,7 +291,7 @@ oder
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Wer ist der Besitzer einer Datei oder eines Verzeichnisses?
 
-Der Ersteller einer Datei oder eines Verzeichnisses wird als Besitzer festgelegt. Im Falle des Stammverzeichnisses ist dies die Identität des Benutzers, der das Dateisystem erstellt hat.
+Der Ersteller einer Datei oder eines Verzeichnisses wird als Besitzer festgelegt. Im Falle des Stammverzeichnisses ist dies die Identität des Benutzers, der den Container erstellt hat.
 
 ### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Welche Gruppe wird bei der Erstellung als zuständige Gruppe einer Datei oder eines Verzeichnisses festgelegt?
 
@@ -320,7 +320,7 @@ Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von ACLs?
 
-RBAC-Zuweisungen von Azure werden vererbt. Zuweisungen werden aus Abonnement-, Ressourcengruppen und Speicherkontenressourcen an die Dateisystemressource übertragen.
+RBAC-Zuweisungen von Azure werden vererbt. Zuweisungen werden aus Abonnement-, Ressourcengruppen und Speicherkontenressourcen an die Containerressource übertragen.
 
 ACLs werden nicht vererbt. Standard-ACLs können jedoch zum Festlegen von ACLs für untergeordnete Unterverzeichnisse und Dateien verwendet werden, die im übergeordneten Verzeichnis erstellt wurden. 
 

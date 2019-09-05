@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699649"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013562"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem  [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -41,24 +41,25 @@ Sie können eine Azure-Dateifreigabe entweder unter Verwendung eines bereits vor
 
 
 ## <a name="create-file-share-through-powershell"></a>Erstellen einer Dateifreigabe mithilfe von PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese anschließend, um die Verwendung von PowerShell vorzubereiten. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter  [Installieren und Konfigurieren von Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese anschließend, um die Verwendung von PowerShell vorzubereiten. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter  [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 
 > [!Note]  
 > Sie sollten daher das neueste Azure PowerShell-Modul herunterladen und installieren bzw. ein Upgrade durchführen.
 
-1. **Erstellen Sie einen Kontext für Ihr Speicherkonto und den Schlüssel:** Der Kontext kapselt den Speicherkontonamen und den Kontoschlüssel. Anweisungen zum Kopieren Ihres Kontoschlüssels aus dem  [Azure-Portal](https://portal.azure.com/) finden Sie unter  [Zugriffsschlüssel](../common/storage-account-manage.md#access-keys).
+1. **Erstellen Sie ein neues Speicherkonto:** Ein Speicherkonto ist ein gemeinsam genutzter Pool mit Speicherplatz, den Sie zum Bereitstellen von Azure-Dateifreigaben und anderen Speicherressourcen wie Blobs oder Warteschlangen verwenden können.
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. **Erstellen Sie eine neue Dateifreigabe:**    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  

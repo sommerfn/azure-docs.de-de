@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 05/02/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a82a44127a470b6366eeffc60c73f762d5a8f525
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348585"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996745"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 
@@ -112,7 +112,14 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
 
     Weitere Informationen finden Sie unter [az ml datastore attach-blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob).
 
-    
++ Laden Sie Dateien in einen Datenspeicher hoch.
+
+    ```azurecli-interactive
+    az ml datastore upload  -n datastorename -p sourcepath
+    ```
+
+    Weitere Informationen finden Sie unter [az ml datastore upload](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload).
+
 + Fügen Sie einen AKS-Cluster als Computeziel an.
 
     ```azurecli-interactive
@@ -153,6 +160,42 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
     ```
 
     Weitere Informationen finden Sie unter [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+
+## <a name="environment-management"></a>Umgebungsverwaltung
+
+Anhand der folgenden Befehle wird veranschaulicht, wie Sie Azure Machine Learning Service-[Umgebungen](how-to-configure-environment.md) für Ihren Arbeitsbereich erstellen, registrieren und auflisten:
+
++ Erstellen Sie die Gerüstdateien für eine Umgebung:
+
+    ```azurecli-interactive
+    az ml environment scaffold -n myenv -d myenvdirectory
+    ```
+
+    Weitere Informationen finden Sie unter [az ml environment scaffold](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold).
+
++ Registrieren Sie eine Umgebung:
+
+    ```azurecli-interactive
+    az ml environment register -d myenvdirectory
+    ```
+
+    Weitere Informationen finden Sie unter [az ml environment register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register).
+
++ Listen Sie die registrierten Umgebungen auf:
+
+    ```azurecli-interactive
+    az ml environment list
+    ```
+
+    Weitere Informationen finden Sie unter [az ml environment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list).
+
++ Laden Sie eine registrierte Umgebung herunter:
+
+    ```azurecli-interactive
+    az ml environment download -n myenv -d downloaddirectory
+    ```
+
+    Weitere Informationen finden Sie unter [az ml environment download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
 
 ## <a name="model-registration-profiling-deployment"></a>Registrierung von Modellen, Profilerstellung und Bereitstellung
 

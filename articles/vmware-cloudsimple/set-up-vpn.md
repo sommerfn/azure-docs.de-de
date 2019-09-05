@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df13a6638c5ed72532b020ef7074123a2159b1c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536110"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972375"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurieren einer VPN-Verbindung mit ihrer privaten CloudSimple-Cloud
 
@@ -21,12 +21,12 @@ VPN-Gateways ermöglichen es Ihnen, eine Verbindung mit einem CloudSimple-Netzwe
 
 ## <a name="vpn-gateway-types"></a>VPN-Gatewaytypen
 
-* Eine **Point-to-Site-VPN**-Verbindung ist die einfachste Möglichkeit, von Ihrem Computer eine Verbindung mit Ihrer privaten Cloud herzustellen. Verwenden Sie Point-to-Site-VPN-Konnektivität, wenn Sie eine Remoteverbindung mit der privaten Cloud herstellen.
+* Eine **Point-to-Site-VPN**-Verbindung ist die einfachste Möglichkeit, von Ihrem Computer eine Verbindung mit der privaten Cloud herzustellen. Verwenden Sie Point-to-Site-VPN-Konnektivität, wenn Sie eine Remoteverbindung mit der privaten Cloud herstellen.
 * Eine **Site-to-Site-VPN**-Verbindung ermöglicht Ihnen das Einrichten der Workloads Ihrer privaten Cloud, um auf lokale Dienste zuzugreifen. Sie können auch ein lokales Active Directory als Identitätsquelle für die Authentifizierung bei Ihrem vCenter in der privaten Cloud verwenden.  Derzeit wird der **richtlinienbasierte VPN**-Typ unterstützt.
 
 In einer Region können Sie ein Site-to-Site-VPN-Gateway und ein Point-to-Site-VPN-Gateway erstellen.
 
-## <a name="point-to-site-vpn"></a>Point-to-Site-VPN-Verbindung
+## <a name="point-to-site-vpn"></a>Punkt-zu-Standort-VPN
 
 Informationen zum Erstellen eines Point-to-Site-VPN-Gateways finden Sie unter [Erstellen eines Point-to-Site-VPN-Gateways](vpn-gateway.md#create-point-to-site-vpn-gateway).
 

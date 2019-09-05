@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563907"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050081"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -248,7 +248,7 @@ Sowohl V2- als auch [V3-Versionen (Vorschau)](luis-migration-api-v3.md) der API 
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. Endpunkte für veröffentlichte (Staging oder Produktion) Apps nutzen eine _andere_ Route als Endpunkte für trainierte Apps. 
 
-Verwenden Sie für Container-APIs den Host `https://localhost:5000`. 
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`. 
 
 |Pakettyp|Methode|Weiterleiten|Abfrageparameter|
 |--|--|--|--|

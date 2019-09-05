@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552250"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051132"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurieren von Docker-Containern für die Textanalyse
 
@@ -93,60 +93,26 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
-|{API_KEY} | Der Endpunktschlüssel der `Text Analytics`-Ressource, die auf der Azure `Text Analytics`-Schlüsselseite verfügbar ist. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-|{ENDPOINT_URI} | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Text Analytics`.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+| **{API_KEY}** | Der Endpunktschlüssel der `Text Analytics`-Ressource, die auf der Azure `Text Analytics`-Schlüsselseite verfügbar ist. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Text Analytics`.| Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). |
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](how-tos/text-analytics-how-to-install-containers.md#billing).
 > Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Text Analytics`-Ressource. 
 
-## <a name="key-phrase-extraction-container-docker-examples"></a>Docker-Beispiele für Schlüsselbegriffserkennungs-Container
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
-Im Anschluss finden Sie Docker-Beispiele für den Schlüsselbegriffserkennungs-Container. 
+[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-### <a name="basic-example"></a>Einfaches Beispiel 
+#### <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
+[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-### <a name="logging-example"></a>Beispiel für die Protokollierung 
+#### <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
-## <a name="language-detection-container-docker-examples"></a>Docker-Beispiele für Sprachenerkennungscontainer
-
-Im Anschluss finden Sie Docker-Beispiele für den Sprachenerkennungscontainer. 
-
-### <a name="basic-example"></a>Einfaches Beispiel
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Beispiel für die Protokollierung
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
- 
-## <a name="sentiment-analysis-container-docker-examples"></a>Docker-Beispiele für Standpunktanalyse-Container
-
-Im Anschluss finden Sie Docker-Beispiele für den Standpunktanalyse-Container. 
-
-### <a name="basic-example"></a>Einfaches Beispiel
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Beispiel für die Protokollierung
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+***
 
 ## <a name="next-steps"></a>Nächste Schritte
 

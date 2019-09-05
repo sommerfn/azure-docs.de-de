@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 08/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b1a79f2798fc98fd7361c47788c79e329e2cb827
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13fa733417558ab8be9ff1e5a9f1e484fb40f445
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556185"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102948"
 ---
 # <a name="scaling-media-processing"></a>Skalieren der Medienverarbeitung
 

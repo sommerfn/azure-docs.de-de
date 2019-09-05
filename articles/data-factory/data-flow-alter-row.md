@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: f0ac5bb36079983b10e4d86cc776bd4e5ee6817d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520147"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971257"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory: Zeilenänderungstransformation
 
-Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktualisierungs- und Upsertrichtlinien für Zeilen festzulegen. Sie können 1: n-Bedingungen als Ausdrücke hinzufügen. Jede dieser Bedingungen kann dazu führen, dass für eine Zeile (oder für mehrere Zeilen) ein Einfüge-, Aktualisierungs-, Lösch- oder Upsertvorgang ausgeführt wird. Die Zeilenänderung kann sowohl DDL- als auch DML-Aktionen für Ihre Datenbank generieren.
+Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktualisierungs- und Upsertrichtlinien für Zeilen festzulegen. Sie können 1: n-Bedingungen als Ausdrücke hinzufügen. Diese Bedingungen müssen in der Reihenfolge ihrer Priorität angegeben werden, da jede Zeile mit der Richtlinie gekennzeichnet wird, die dem ersten übereinstimmenden Ausdruck entspricht. Jede dieser Bedingungen kann dazu führen, dass für eine Zeile (oder für mehrere Zeilen) ein Einfüge-, Aktualisierungs-, Lösch- oder Upsertvorgang ausgeführt wird. Die Zeilenänderung kann sowohl DDL- als auch DML-Aktionen für Ihre Datenbank generieren.
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -24,9 +24,18 @@ Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktuali
 > [!NOTE]
 > Zeilenänderungstransformationen können nur für Datenbanksenken in Ihrem Datenfluss verwendet werden. Die Aktionen, die Sie Zeilen zuweisen (Einfügen, Aktualisieren, Löschen, Upsert), werden nicht während Debugsitzungen ausgeführt. Sie müssen einer Pipeline eine Aufgabe zum Ausführen des Datenflusses hinzufügen und das Pipelinedebugging oder Trigger verwenden, um die Zeilenänderungsrichtlinien auf Ihre Datenbanktabellen anzuwenden.
 
+## <a name="indicate-a-default-row-policy"></a>Angeben einer Standardzeilenrichtlinie
+
+Erstellen Sie eine Zeilenänderungstransformation, und geben Sie eine Zeilenrichtlinie mit der Bedingung `true()` an. Jede Zeile, die keinen der zuvor definierten Ausdrücke enthält, wird für die angegebene Zeilenrichtlinie gekennzeichnet. Standardmäßig wird jede Zeile, die keinen bedingten Ausdruck erfüllt, für `Insert` gekennzeichnet.
+
+![Zeilenänderung mit einer Richtlinie](media/data-flow/alter-row4.png "Zeilenänderung mit einer Richtlinie")
+
+> [!NOTE]
+> Wenn Sie alle Zeilen mit einer Richtlinie kennzeichnen möchten, können Sie eine Bedingung für diese Richtlinie erstellen und `true()` als Bedingung angeben.
+
 ## <a name="view-policies"></a>Anzeigen von Richtlinien
 
-Aktivieren Sie den Datenfluss-Debugmodus, und sehen Sie sich die Ergebnisse Ihrer Zeilenänderungsrichtlinien im Datenvorschaubereich an. Wenn Sie eine Zeilenänderung im Datenfluss-Debugmodus ausführen, werden keine DDL- oder DML-Aktionen für Ihr Ziel generiert. Damit diese Aktionen ausgeführt werden, muss der Datenfluss innerhalb einer Aufgabe zum Ausführen des Datenflusses in einer Pipeline ausgeführt werden.
+Aktivieren Sie den Datenfluss-Debugmodus, um die Ergebnisse der Zeilenänderungsrichtlinien im Datenvorschaubereich anzuzeigen. Wenn Sie eine Zeilenänderung im Datenfluss-Debugmodus ausführen, werden keine DDL- oder DML-Aktionen für Ihr Ziel generiert. Damit diese Aktionen ausgeführt werden, muss der Datenfluss innerhalb einer Aufgabe zum Ausführen des Datenflusses in einer Pipeline ausgeführt werden.
 
 ![Zeilenänderungsrichtlinien](media/data-flow/alter-row3.png "Zeilenänderungsrichtlinien")
 
@@ -34,7 +43,7 @@ Dadurch können Sie den Zustand der einzelnen Zeilen auf der Grundlage Ihrer Bed
 
 ## <a name="sink-settings"></a>Senkeneinstellungen
 
-Für Zeilenänderungen wird eine Datenbanksenke vorausgesetzt. In den Senkeneinstellungen müssen alle Aktionen zugelassen werden.
+Für Zeilenänderungen wird eine Datenbanksenke vorausgesetzt. In den Einstellungen für die Senke sollten Sie jede Aktion, die den Zeilenänderungsbedingungen entspricht, als zulässig festlegen.
 
 ![Senke für Zeilenänderungen](media/data-flow/alter-row2.png "Senke für Zeilenänderungen")
 

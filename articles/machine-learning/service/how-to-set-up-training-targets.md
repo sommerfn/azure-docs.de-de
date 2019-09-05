@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872433"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011564"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining 
 
@@ -433,7 +433,9 @@ Alternative:
 * Übermitteln Sie das Experiment [mithilfe der CLI-Erweiterung](reference-azure-machine-learning-cli.md#experiments).
 * Übermitteln Sie ein Experiment über die [VS Code-Erweiterung](how-to-vscode-tools.md#train-and-tune-models).
 
-## <a name="github-tracking-and-integration"></a>GitHub-Nachverfolgung und -Integration
+<a id="gitintegration"></a>
+
+## <a name="git-tracking-and-integration"></a>Git-Nachverfolgung und -Integration
 
 Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Zum Beispiel wird die aktuelle Commit-ID für das Repository als Teil des Verlaufs protokolliert.
 

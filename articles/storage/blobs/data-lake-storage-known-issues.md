@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950678"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991809"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -32,7 +32,7 @@ Blob Storage-APIs sind deaktiviert, um Probleme bei der Funktionsfähigkeit von 
 
 Wenn hierfür jeweils Blob-APIs verwendet werden und Sie diese für alle Inhalte nutzen möchten, die Sie in Ihr Konto hochladen, haben Sie zwei Möglichkeiten.
 
-* **Option 1**: Aktivieren Sie keinen hierarchischen Namespace in Ihrem Blobspeicherkonto, bevor für die Blob-APIs Interoperabilität mit Azure Data Lake Gen2-APIs besteht. Die Verwendung eines Speicherkontos ohne einen hierarchischen Namespace bedeutet, dass Sie keinen Zugriff auf Data Lake Storage Gen2-spezifische Features wie Zugriffssteuerungslisten (ACLs) für das Verzeichnis- und Dateisystem haben.
+* **Option 1**: Aktivieren Sie keinen hierarchischen Namespace in Ihrem Blobspeicherkonto, bevor für die Blob-APIs Interoperabilität mit Azure Data Lake Gen2-APIs besteht. Die Verwendung eines Speicherkontos ohne einen hierarchischen Namespace bedeutet, dass Sie keinen Zugriff auf Data Lake Storage Gen2-spezifische Features, etwa Verzeichnis- und Container-Zugriffssteuerungslisten, haben.
 
 * **Option 2**: Registrieren Sie sich für die öffentliche Vorschauversion des [Multiprotokollzugriffs unter Data Lake Storage](data-lake-storage-multi-protocol-access.md). Tools und Anwendungen, die Blob-APIs aufrufen, und Blobspeicherfeatures, z. B. Diagnoseprotokolle, können für Konten verwendet werden, die über einen hierarchischen Namespace verfügen.
 

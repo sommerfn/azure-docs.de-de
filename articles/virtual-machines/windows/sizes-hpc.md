@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: 6fd08ca912c14a50064f4b6da18334d8bf9df0ca
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0c5398caf85566f78c7ebe9e8ba114a53d2f6271
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871588"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088520"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Größen von virtuellen HPC-Computern (High Performance Computing)
 
@@ -54,7 +53,7 @@ In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung Hpc
   } 
   ```
 
-  Der folgende Befehl installiert die neueste Version 1.0 der Erweiterung „InfiniBandDriverWindows“ auf allen RDMA-fähigen VMs in einer vorhandenen VM-Skalierungsgruppe mit dem Namen *myVMss*, die in der Ressourcengruppe mit dem Namen *myResourceGroup* bereitgestellt ist:
+  Durch folgenden Befehl wird die neueste Version (1.0) der Erweiterung „InfiniBandDriverWindows“ auf allen RDMA-fähigen VMs in einer vorhandenen VM-Skalierungsgruppe mit dem Namen *myVMSS* installiert, die in der Ressourcengruppe mit dem Namen *myResourceGroup* bereitgestellt wurde:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -76,7 +75,7 @@ Azure bietet mehrere Optionen zum Erstellen von Clustern von Windows-HPC-VMs, di
 
 * **VM-Skalierungsgruppen**: Stellen Sie bei Verwendung einer VM-Skalierungsgruppe sicher, dass Sie die Bereitstellung auf eine einzelne Platzierungsgruppe beschränken. Legen Sie z. B. in einer Resource Manager-Vorlage die Eigenschaft `singlePlacementGroup` auf `true` fest. 
 
-* **MPI zwischen virtuellen Computern** – Wenn für die MPI-Kommunikation zwischen virtuellen Computern (VMs) erforderlich ist, dann sollten Sie sicherstellen, dass sich die VMs in der selben Verfügbarkeitsgruppe oder derselben VM-Skalierungsgruppe befinden.
+* **MPI zwischen virtuellen Computern**: Wenn für die MPI-Kommunikation zwischen virtuellen Computern (VMs) erforderlich, dann sollten Sie sicherstellen, dass sich die VMs in der selben Verfügbarkeitsgruppe oder derselben VM-Skalierungsgruppe befinden.
 
 * **Azure CycleCloud**: Erstellen Sie in [Azure CycleCloud](/azure/cyclecloud/) einen HPC-Cluster zum Ausführen von MPI-Aufträgen auf Windows-Knoten.
 

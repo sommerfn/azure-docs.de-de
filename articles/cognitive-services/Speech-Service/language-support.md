@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815262"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970384"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
@@ -24,40 +24,40 @@ Für verschiedene Funktionen von Speech Services werden verschiedene Sprachen un
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
-Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Es sind verschiedene Anpassungsebenen für jede Sprache verfügbar.
+Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von Audio- und menschenmarkierten Transkripten oder verwandten Texten angeboten: Sätze  Die Anpassung der Aussprache ist zurzeit nur für en-US und de-DE verfügbar. [Hier](how-to-custom-speech.md) erhalten Sie weitere Informationen zur Anpassung.
 
-  Code | Sprache | [Anpassung der Akustik](how-to-customize-acoustic-models.md) | [Anpassung der Sprache](how-to-customize-language-model.md) | [Anpassung der Aussprache](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Nein | Ja | Nein
- ca-ES | Katalanisch | Nein | Nein | Nein
- da-DK | Dänisch (Dänemark) | Nein | Nein | Nein
- de-DE | Deutsch (Deutschland) | Ja | Ja | Ja
- en-AU | Englisch (Australien) | Nein | Ja | Nein
- en-CA | Englisch (Kanada) | Nein | Ja | Nein
- en-GB | Englisch (Vereinigtes Königreich) | Nein | Ja | Nein
- en-IN | Englisch (Indien) | Ja | Ja | Nein
- en-NZ | Englisch (Neuseeland) | Nein | Ja | Nein 
- en-US | Englisch (USA) | Ja | Ja | Ja
- es-ES | Spanisch (Spanien) | Ja | Ja | Nein
- es-MX | Spanisch (Mexiko) | Nein | Ja | Nein
- fi-FI | Finnisch (Finnland) | Nein | Nein | Nein
- fr-CA | Französisch (Kanada) | Nein | Ja | Nein
- fr-FR | Französisch (Frankreich) | Ja | Ja | Nein
- hi-IN | Hindi (Indien) | Nein | Ja | Nein
- it-IT | Italienisch (Italien) | Ja | Ja | Nein
- ja-JP | Japanisch (Japan) | Nein | Ja | Nein
- ko-KR | Koreanisch (Korea) | Nein | Ja | Nein
- nb-NO | Norwegisch, Bokmål (Norwegen) | Nein | Nein | Nein
- nl-NL | Niederländisch (Niederlande) | Nein | Ja | Nein
- pl-PL | Polnisch (Polen) | Nein | Nein | Nein
- pt-BR | Portugiesisch (Brasilien) | Ja | Ja | Nein
- pt-PT | Portugiesisch (Portugal) | Nein | Ja | Nein
- ru-RU | Russisch (Russland) | Ja | Ja | Nein
- sv-SE | Schwedisch (Schweden) | Nein | Nein | Nein
- zh-CN | Chinesisch (Mandarin, vereinfacht) | Ja | Ja | Nein
- zh-HK | Chinesisch (Kantonesisch, traditionell) | Nein | Ja | Nein
- zh-TW | Chinesisch (Taiwanesisch, Mandarin) | Nein | Ja | Nein
- th-TH | Thailändisch (Thailand) | Nein | Nein | Nein
+  Code | Sprache | Unterstützt | Anpassbar
+ ------|----------|---------------------|---------------------
+ ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Ja | Ja
+ ca-ES | Katalanisch | Ja | Nein
+ da-DK | Dänisch (Dänemark) | Ja | Nein
+ de-DE | Deutsch (Deutschland) | Ja | Ja
+ en-AU | Englisch (Australien) | Ja | Ja
+ en-CA | Englisch (Kanada) | Ja | Ja
+ en-GB | Englisch (Vereinigtes Königreich) | Ja | Ja
+ en-IN | Englisch (Indien) | Ja | Ja
+ en-NZ | Englisch (Neuseeland) | Ja | Ja
+ en-US | Englisch (USA) | Ja | Ja
+ es-ES | Spanisch (Spanien) | Ja | Ja
+ es-MX | Spanisch (Mexiko) | Ja | Ja
+ fi-FI | Finnisch (Finnland) | Ja | Nein
+ fr-CA | Französisch (Kanada) | Ja | Ja
+ fr-FR | Französisch (Frankreich) | Ja | Ja
+ hi-IN | Hindi (Indien) | Ja | Ja
+ it-IT | Italienisch (Italien) | Ja | Ja
+ ja-JP | Japanisch (Japan) | Ja | Ja
+ ko-KR | Koreanisch (Korea) | Ja | Ja
+ nb-NO | Norwegisch, Bokmål (Norwegen) | Ja | Nein
+ nl-NL | Niederländisch (Niederlande) | Ja | Ja
+ pl-PL | Polnisch (Polen) | Ja | Nein
+ pt-BR | Portugiesisch (Brasilien) | Ja | Ja
+ pt-PT | Portugiesisch (Portugal) | Ja | Ja
+ ru-RU | Russisch (Russland) | Ja | Ja
+ sv-SE | Schwedisch (Schweden) | Ja | Nein
+ zh-CN | Chinesisch (Mandarin, vereinfacht) | Ja | Ja
+ zh-HK | Chinesisch (Kantonesisch, traditionell) | Ja | Ja
+ zh-TW | Chinesisch (Taiwanesisch, Mandarin) | Ja | Ja
+ th-TH | Thailändisch (Thailand) | Ja | Nein 
 
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache

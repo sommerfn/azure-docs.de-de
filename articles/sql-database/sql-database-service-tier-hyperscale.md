@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566725"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981163"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Dienstebene „Hyperscale“ für bis zu 100TB
 
@@ -68,7 +68,7 @@ Die Dienstebene „Hyperscale“ ist nur im [V-Kern-Modell](sql-database-service
 
 - **Speicher**:
 
-  Beim Konfigurieren einer Hyperscale-Datenbank müssen Sie keine maximale Datengröße angeben. Im Hyperscaletarif werden Gebühren für den Speicher Ihrer Datenbank basierend auf der tatsächlichen Nutzung berechnet. Speicher wird automatisch zwischen 10GB und 100TB in Schritten zugeordnet, die zwischen 10 und 40GB dynamisch angepasst werden.  
+  Beim Konfigurieren einer Hyperscale-Datenbank müssen Sie keine maximale Datengröße angeben. Im Hyperscaletarif werden Gebühren für den Speicher Ihrer Datenbank basierend auf der tatsächlichen Nutzung berechnet. Speicher wird automatisch schrittweise zwischen 10 GB und 100 TB zugeordnet, und die Schritte werden dynamisch zwischen 10 GB und 40 GB angepasst.  
 
 Weitere Informationen zu den Hyperscale-Preisen finden Sie unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
@@ -110,7 +110,7 @@ Mit der Möglichkeit, weitere Computeknoten schnell hoch- bzw. herunterzufahren,
 
 Eine Hyperscale-Datenbank kann über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) erstellt werden. Hyperscale-Datenbanken stehen nur bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) zur Verfügung.
 
-Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben. Eine Liste mit gültigen Servicezielen finden Sie bei den [Ressourcenbegrenzungen](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier).
+Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben. Eine Liste mit gültigen Dienstzielen finden Sie in den [Ressourceneinschränkungen](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute).
 
 ```sql
 -- Create a HyperScale Database
@@ -222,7 +222,7 @@ So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienstebene bezüglich der GA.  Wir arbeiten daran, möglichst viele dieser Einschränkungen zu entfernen.
 
-| Problem | BESCHREIBUNG |
+| Problem | Beschreibung |
 | :---- | :--------- |
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
@@ -232,7 +232,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperskalierung für SQL-Datenbank derzeit nicht unterstützt.|
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank von „Hyperscale“ zu einem anderen Diensttarif im Exportieren/Importieren mithilfe einer BACPAC-Datei.|
 | Migration von Datenbanken mit beständigen speicherinternen Objekten | Hyperscale unterstützt nur nicht persistente, speicherinterne Objekte (Tabellentypen, native SPs und Funktionen).  Persistente speicherinterne Tabellen und andere Objekte müssen gelöscht und als nicht speicherinterne Objekte neu erstellt werden, bevor eine Datenbank zur Dienstebene „Hyperscale“ migriert wird.|
-| Datenänderungsverfolgung | Sie können die Datenänderungsverfolgung bei Hyperscale-Datenbanken nicht verwenden. |
+| Change Tracking | Die Änderungsnachverfolgung kann für Hyperscale-Datenbanken nicht verwendet werden. |
 | Georeplikation  | Sie können noch keine Georeplikation für Hyperskalierung für Azure SQL-Datenbank-Instanzen konfigurieren.  Sie können Geowiederherstellungen ausführen (Wiederherstellen der Datenbank in einem anderen geografischen Gebiet, für die Notfallwiederherstellung oder aus anderen Gründen). |
 | TDE/AKV-Integration | Transparent Data Encryption mit Azure Key Vault (häufig als Bring-Your-Own-Key oder BYOK bezeichnet) wird noch nicht für Hyperskalierung für Azure SQL-Datenbank-Instanzen unterstützt, TDE mit vom Dienst verwalteten Schlüsseln jedoch vollständig. |
 |Intelligente Datenbankfeatures | 1. Create Index-, Drop Index-Ratgebermodelle werden nicht für Hyperscale-Datenbanken trainiert. <br/>2. Schemaprobleme, DbParameterization – vor kurzem hinzugefügte Ratgeber werden für Hyperscale-Datenbanken nicht unterstützt.|

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261432"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904414"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -214,12 +214,11 @@ Geben Sie zum Herunterladen mit Linux Folgendes ein:
 
 ### <a name="apply-custom-configuration-changes"></a>Anwenden benutzerdefinierter Konfigurationsänderungen
 
-Gehen Sie zum Vornehmen von Änderungen an der benutzerdefinierten Konfiguration folgendermaßen vor:
-
+Gehen Sie zum Vornehmen von Änderungen an der benutzerdefinierten Konfiguration folgendermaßen als Root-Benutzer vor:
 
 1. Führen Sie den folgenden Befehl aus, um die Binärdatei zu entpacken.
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![Screenshot des auszuführenden Befehls](./media/vmware-azure-install-linux-master-target/image16.png)
 

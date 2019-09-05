@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013644"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997917"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -206,6 +206,8 @@ Die drei verschiedenen Werte des `task`-Parameters bestimmen die Liste der anzuw
 
 ### <a name="primary-metric"></a>Primäre Metrik
 Die primäre Metrik – bestimmt wie in den obigen Beispielen gezeigt, die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die primäre Metrik, die Sie auswählen können, richtet sich nach der Art der ausgewählten Aufgabe. Im Folgenden finden Sie eine Liste der verfügbaren Metriken.
+
+Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 
 |Classification | Regression | Zeitreihe und Vorhersage
 |-- |-- |--

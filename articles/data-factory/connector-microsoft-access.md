@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 2010799dd590808a2c5be7d9e2330bd60e2c7913
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 796d2a4730f5de8d2f294fb2b30a0616b81f3e59
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841937"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276234"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus Microsoft Access-Datenspeichern bzw. in Microsoft Access-Datenspeicher mithilfe von Azure Data Factory
 
@@ -33,6 +33,9 @@ Um diesen Microsoft Access-Connector verwenden zu können, müssen Sie folgende 
 
 - Richten Sie eine selbstgehostete Integration Runtime ein. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
 - Installieren des Microsoft Access-Treibers für den Datenspeicher auf dem Computer mit der Integrationslaufzeit.
+
+>[!NOTE]
+>Die Microsoft Access 2016-Version des ODBC-Treibers ist mit diesem Connector nicht funktionsfähig. Verwenden Sie stattdessen die Treiberversion für 2013 oder 2010.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -83,7 +86,7 @@ Die folgenden Eigenschaften werden für den mit Microsoft Access verknüpften Di
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Microsoft Access-Dataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Microsoft Access-Dataset unterstützt werden.
 
 Beim Kopieren von Daten aus Microsoft Access werden die folgenden Eigenschaften unterstützt:
 

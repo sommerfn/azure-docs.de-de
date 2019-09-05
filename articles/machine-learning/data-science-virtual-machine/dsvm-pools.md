@@ -1,6 +1,6 @@
 ---
 title: Data Science Virtual Machine-Pools – Azure | Microsoft-Dokumentation
-description: Bereitstellen von Pools von Data Science VM-Instanzen als freigegebene Ressource für ein Team
+description: Bereitstellen von Pools von DSVM-Instanzen als freigegebene Ressource für ein Team
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
 documentationcenter: ''
@@ -16,30 +16,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: vijetaj
-ms.openlocfilehash: 44983de87ce2e774356bf506e3a868da922a3ba3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558058"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992036"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Erstellen eines freigegebenen Pools von Data Science Virtual Machine-Instanzen
 
-In diesem Artikel erfahren Sie, wie Sie einen freigegebenen Pool von Data Science Virtual Machine-Instanzen (DSVMs) für die Verwendung durch ein Team erstellen können. Die Vorteile der Verwendung eines freigegebenen Pools sind die bessere Ressourcennutzung, die Vereinfachung von Freigaben und Zusammenarbeit und die effektivere Verwaltung der DSVM-Ressourcen. 
+In diesem Artikel erfahren Sie, wie Sie einen freigegebenen Pool von Data Science Virtual Machine-Instanzen (DSVMs) für ein Team erstellen. Zu den Vorteilen des Verwendens eines freigegebenen Pools gehören die bessere Ressourcennutzung, das einfachere Freigeben und die einfachere Zusammenarbeit sowie die effektivere Verwaltung der DSVM-Ressourcen.
 
-Zum Erstellen eines DSVM-Pools können Sie zahlreiche Methoden und Technologien verwenden. Die Schwerpunkte dieses Artikels liegen auf Pools für interaktive VMs. Eine alternative verwaltete Computeinfrastruktur ist Azure Machine Learning Compute. Weitere Informationen finden Sie unter [Einrichten von Computezielen](../service/how-to-set-up-training-targets.md#amlcompute).
+Zum Erstellen eines DSVM-Pools können Sie zahlreiche Methoden und Technologien verwenden. Die Schwerpunkte dieses Artikels liegen auf Pools für interaktive virtuelle Computer (Virtual Machines, VMs). Eine alternative verwaltete Computeinfrastruktur ist Azure Machine Learning Compute. Weitere Informationen finden Sie unter [Einrichten von Computezielen](../service/how-to-set-up-training-targets.md#amlcompute).
 
 ## <a name="interactive-vm-pool"></a>Interaktiver VM-Pool
 
-Ein Pool von interaktiven VMs, die vom gesamten KI/Data Science-Team gemeinsam genutzt werden, ermöglicht Benutzern das Anmelden an einer verfügbaren DSVM-Instanz, statt eine dedizierte Instanz für jede Gruppe von Benutzern vorzuhalten. Dieses Setup verbessert die Verfügbarkeit und unterstützt eine effektivere Nutzung der Ressourcen. 
+Ein Pool von interaktiven VMs, die vom gesamten KI/Data Science-Team gemeinsam genutzt werden, ermöglicht Benutzern das Anmelden an einer verfügbaren DSVM-Instanz, statt eine dedizierte Instanz für jede Gruppe von Benutzern vorzuhalten. Dieses Setup ermöglicht eine bessere Verfügbarkeit und eine effektivere Nutzung der Ressourcen.
 
-Die Technologie, die Sie zum Erstellen eines interaktiven VM-Pools verwenden, sind [VM-Skalierungsgruppen von Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Mit Skalierungsgruppen können Sie eine Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. 
+Sie verwenden die Technologie der [VM-Skalierungsgruppen von Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/), um einen interaktiven VM-Pool zu erstellen. Mit Skalierungsgruppen können Sie eine Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten.
 
-Der Benutzer meldet sich bei der primären IP-Adresse oder DNS-Adresse des Pools an. Die Skalierungsgruppe leitet die Sitzung automatisch an eine verfügbare DSVM in der Skalierungsgruppe weiter. Da sich der Benutzer unabhängig von der VM, an der er sich angemeldet hat, eine ähnliche Umgebung wünscht, stellen alle Instanzen der VM in der Skalierungsgruppe ein freigegebenes Netzlaufwerk wie eine Azure Files- oder eine NFS-Freigabe bereit. Der freigegebene Arbeitsbereich des Benutzers wird normalerweise im freigegebenen Dateispeicher gespeichert, der in alle Instanzen eingebunden ist. 
+Der Benutzer meldet sich bei der primären IP-Adresse oder DNS-Adresse des Pools an. Die Skalierungsgruppe leitet die Sitzung automatisch an eine verfügbare DSVM in der Skalierungsgruppe weiter. Da sich der Benutzer unabhängig von der VM, an der er sich angemeldet hat, eine konsistente und vertraute Umgebung wünscht, stellen alle Instanzen der VM in der Skalierungsgruppe ein freigegebenes Netzlaufwerk bereit, etwa eine Azure Files-Freigabe oder eine NFS-Freigabe (Network File System). Der freigegebene Arbeitsbereich des Benutzers wird normalerweise im freigegebenen Dateispeicher gespeichert, der in alle Instanzen eingebunden ist.
 
-Eine Azure Resource Manager-Beispielvorlage, mit der eine Skalierungsgruppe mit Ubuntu-DSVM-Instanzen erstellt wird, finden Sie auf [GitHub](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Ein Beispiel der [Parameterdatei](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) für die Azure Resource Manager-Vorlage wird am gleichen Ort bereitgestellt. 
+Eine Azure Resource Manager-Beispielvorlage, mit der eine Skalierungsgruppe mit Ubuntu-DSVM-Instanzen erstellt wird, finden Sie auf [GitHub](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Ein Beispiel der [Parameterdatei](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) für die Azure Resource Manager-Vorlage finden Sie im selben Speicherort.
 
-Sie können die Skalierungsgruppe mit der Azure Resource Manager-Vorlage erstellen, indem Sie mit Azure CLI Werte für die Parameterdatei angeben. 
+Sie können die Skalierungsgruppe mit der Azure Resource Manager-Vorlage erstellen, indem Sie in der Azure-Befehlszeilenschnittstelle Werte für die Parameterdatei angeben:
 
 ```
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
@@ -49,15 +49,15 @@ Die vorangehenden Befehle setzen voraus, das Folgendes vorhanden ist:
 * Eine Kopie der Parameterdatei mit den für Ihre Instanz der Skalierungsgruppe angegebenen Werten
 * Die Anzahl der VM-Instanzen
 * Zeiger auf die Azure Files-Freigabe
-* Anmeldeinformationen für das in jede VM eingebundene Speicherkonto 
+* Anmeldeinformationen für das in jede VM eingebundene Speicherkonto
 
 Auf die Parameterdatei wird in den Befehlen lokal verwiesen. Sie können Parameter auch inline übergeben oder zu deren Eingabe im Skript auffordern.  
 
-Die vorangegangene Vorlage ermöglicht den SSH- und den JupyterHub-Port von der Front-End-VM-Skalierungsgruppe zum Back-End-Pool der Ubuntu-DSVM-Instanzen. Als Benutzer melden Sie sich einfach an der VM über SSH oder JupyterHub auf dem normalen Weg an. Weil die VM-Instanzen dynamisch zentral hoch- und herunterskaliert werden können, muss jeder Zustand in der bereitgestellten Azure Files-Freigabe gespeichert werden. Der gleiche Ansatz kann zum Erstellen eines Pools von Windows-DSVM-Instanzen verwendet werden. 
+Die vorangegangene Vorlage ermöglicht den SSH- und den JupyterHub-Port von der Front-End-VM-Skalierungsgruppe zum Back-End-Pool der Ubuntu-DSVM-Instanzen. Als Benutzer melden Sie sich bei der VM über eine Secure Shell (SSH) oder über JupyterHub auf dem normalen Weg an. Weil die VM-Instanzen dynamisch zentral hoch- und herunterskaliert werden können, muss jeder Zustand in der bereitgestellten Azure Files-Freigabe gespeichert werden. Der gleiche Ansatz kann zum Erstellen eines Pools von Windows-DSVM-Instanzen verwendet werden.
 
-Das [Skript, das Azure Files einbindet](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh), steht auch auf GitHub im „Azure DataScienceVM“-Repository zur Verfügung. Das Skript bindet die Azure Files-Freigabe am angegebenen Bereitstellungspunkt in der Parameterdatei ein. Zudem erstellt das Skript auch Softlinks auf das eingebundene Laufwerk im Startverzeichnis des ursprünglichen Benutzers. Ein benutzerspezifisches Notebook-Verzeichnis innerhalb der Azure Files-Freigabe ist mit dem Verzeichnis `$HOME/notebooks/remote` verknüpft, sodass Benutzer auf ihre Jupyter Notebook-Instanzen zugreifen, sie ausführen und speichern können. Sie können die gleiche Konvention verwenden, wenn Sie zusätzliche Benutzer auf der VM erstellen, um den Jupyter-Arbeitsbereich der einzelnen Benutzer auf die Azure Files-Freigabe zu verweisen. 
+Das [Skript, das Azure Files einbindet](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh), steht auch auf GitHub im „Azure DataScienceVM“-Repository zur Verfügung. Das Skript bindet die Azure Files-Freigabe am angegebenen Bereitstellungspunkt in der Parameterdatei ein. Zudem erstellt das Skript auch Softlinks auf das eingebundene Laufwerk im Startverzeichnis des ursprünglichen Benutzers. Ein benutzerspezifisches Notebook-Verzeichnis in der Azure Files-Freigabe ist mit dem Verzeichnis `$HOME/notebooks/remote` verknüpft, sodass Benutzer auf ihre Jupyter Notebook-Instanzen zugreifen, sie ausführen und speichern können. Sie können die gleiche Konvention verwenden, wenn Sie zusätzliche Benutzer auf der VM erstellen, um den Jupyter-Arbeitsbereich der einzelnen Benutzer auf die Azure Files-Freigabe zu verweisen.
 
-VM-Skalierungsgruppen unterstützen die automatische Skalierung. Sie können Regeln festlegen, wann Sie weitere Instanzen erstellen und wann Sie diese zentral herunterskalieren möchten. Beispielsweise können Sie die Anzahl der Instanzen auf Null reduzieren, um Kosten für die Nutzung der Cloudhardware zu sparen, wenn die VMs überhaupt nicht verwendet werden. Die Dokumentationsseiten zu VM-Skalierungsgruppen bieten ausführliche Schritte für die [automatische Skalierung](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+VM-Skalierungsgruppen unterstützen die automatische Skalierung. Sie können Regeln dazu festlegen, wann weitere Instanzen erstellt und wann Instanzen zentral herunterskaliert werden sollen. Beispielsweise können Sie die Anzahl der Instanzen auf Null reduzieren, um Kosten für die Nutzung der Cloudhardware zu sparen, wenn die VMs überhaupt nicht verwendet werden. Die Dokumentationsseiten zu VM-Skalierungsgruppen bieten ausführliche Schritte für die [automatische Skalierung](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/12/2019
-ms.openlocfilehash: 701c266705c16198f35cddc36cdf1d431331c2d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 07/31/2019
+ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847930"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019095"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -220,9 +220,32 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > Sobald sie den gültigen Bereich verlassen haben, werden untergeordnete Ausführungen automatisch als abgeschlossen markiert.
 
-Sie können untergeordnete Ausführungen auch einzeln nacheinander starten, aber da jede Erstellung in einem Netzwerkaufruf resultiert, ist es weniger effizient als das Senden eines Batches von Ausführungen.
+Um viele untergeordnete Ausführungen effizient zu erstellen, verwenden Sie die [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-)-Methode. Weil jeder Erstellungsvorgang zu einem Netzwerkaufruf führt, ist das Erstellen eines Ausführungsbatches effizienter als ein jeweils einzelnes Erstellen der Ausführungen.
 
-Um die untergeordneten Ausführungen eines bestimmten übergeordneten Elements abzufragen, verwenden Sie die [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)-Methode.
+### <a name="submit-child-runs"></a>Senden untergeordneter Ausführungen
+
+Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. Dies ermöglicht es Ihnen, Hierarchien von übergeordneten und untergeordneten Ausführungen zu erstellen, von denen jede auf verschiedenen Computezielen ausgeführt wird und die über eine allgemeine übergeordnete Ausführungs-ID verbunden sind.
+
+Verwenden Sie die ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-)-Methode, um eine untergeordnete Ausführung aus einer übergeordneten Ausführung zu senden. Ermitteln Sie dazu im Skript der übergeordneten Ausführung den Ausführungskontext, und senden Sie die untergeordnete Ausführung mit der „submit_child“-Methode der Kontextinstanz.
+
+```python
+## In parent run script
+parent_run = Run.get_context()
+child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
+parent_run.submit_child(child_run_config)
+```
+
+In einer untergeordneten Ausführung können Sie die ID der übergeordneten Ausführung anzeigen:
+
+```python
+## In child run script
+child_run = Run.get_context()
+child_run.parent.id
+```
+
+### <a name="query-child-runs"></a>Abfragen von untergeordneten Ausführungen
+
+Um die untergeordneten Ausführungen eines bestimmten übergeordneten Elements abzufragen, verwenden Sie die [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)-Methode. Über das Argument „recursive = True“ können Sie eine geschachtelte Struktur aus untergeordneten Elementen und Enkelelementen abfragen.
 
 ```python
 print(parent_run.get_children())

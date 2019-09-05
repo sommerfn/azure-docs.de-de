@@ -9,18 +9,17 @@ editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 105b3805e1297f796e0353f9328044896248aaa0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876341"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081757"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure
  
@@ -47,10 +46,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Erstellen Sie einen [Azure AD-Dienstprinzipal](/cli/azure/create-an-azure-service-principal-azure-cli), damit Terraform Ressourcen in Azure bereitstellen kann. Der Dienstprinzipal gewährt Ihren Terraform-Skripts Die Berechtigung, in Ihrem Azure-Abonnement Ressourcen bereitstellen zu können.
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, fragen Sie zuerst mit [az account show](/cli/azure/account#az-account-show) Ihr Konto ab, um eine Liste der Abonnement-ID- und Mandanten-ID-Werte zu erhalten:
+Wenn Sie über mehrere Azure-Abonnements verfügen, fragen Sie zuerst Ihr Konto mit [az account list](/cli/azure/account#az-account-list) ab, um eine Liste der Abonnement-ID- und Mandanten-ID-Werte zu erhalten:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Um ein ausgewähltes Abonnement zu verwenden, legen Sie das Abonnement für diese Sitzung mit [az account set](/cli/azure/account#az-account-set) fest. Legen Sie die `SUBSCRIPTION_ID`-Umgebungsvariable so fest, dass sie den Wert des zurückgegebenen `id`-Felds für das gewünschte Abonnement enthält:

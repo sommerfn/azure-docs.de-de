@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8a47968ec252f628da8a1a36570fb06eb4bb10bf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886557"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972805"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>Löschen einer privaten CloudSimple-Cloud
 
-CloudSimple bietet die Flexibilität, eine private Cloud zu löschen.  Eine private Cloud besteht aus einem oder mehreren vSphere-Clustern. Jeder Cluster kann 3 bis 16 Knoten enthalten. Wenn Sie eine private Cloud löschen, werden alle Cluster gelöscht. 
+CloudSimple bietet die Flexibilität, eine private Cloud zu löschen.  Eine private Cloud besteht aus einem oder mehreren vSphere-Clustern. Jeder Cluster kann 3 bis 16 Knoten enthalten. Wenn Sie eine private Cloud löschen, werden alle Cluster gelöscht.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Beim Löschen einer privaten Cloud wird die gesamte private Cloud gelöscht.  Alle Komponenten der privaten Cloud werden gelöscht.  Wenn Sie einige Daten beibehalten möchten, müssen Sie sicherstellen, dass Sie diese Daten im lokalen Speicher oder in Azure Storage gesichert haben. 
+Beim Löschen einer privaten Cloud wird die gesamte private Cloud gelöscht.  Alle Komponenten der privaten Cloud werden gelöscht.  Wenn Sie einige Daten beibehalten möchten, müssen Sie sicherstellen, dass Sie diese Daten im lokalen Speicher oder in Azure Storage gesichert haben.
 
 Zu den Komponenten einer privaten Cloud gehören:
 
@@ -31,16 +31,15 @@ Zu den Komponenten einer privaten Cloud gehören:
 * Alle Benutzerdaten, die in der privaten Cloud gespeichert sind
 * Alle Firewallregelanlagen für ein VLAN/Subnetz
 
-
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="delete-a-private-cloud"></a>Löschen einer privaten Cloud 
+## <a name="delete-a-private-cloud"></a>Löschen einer privaten Cloud
 
 1. [Rufen Sie das CloudSimple-Portal auf](access-cloudsimple-portal.md).
 
-2. Öffnen der **Ressourcen** Seite.
+2. Öffnen Sie die Seite **Ressourcen**.
 
 3. Klicken Sie auf die zu löschende private Cloud.
 
@@ -52,12 +51,10 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
     ![Löschen einer privaten Cloud – Bestätigung](media/delete-private-cloud-confirm.png)
 
-
 Die private Cloud wird zum Löschen markiert.  Der Löschvorgang beginnt nach drei Stunden und löscht die private Cloud.
 
 > [!CAUTION]
 > Knoten müssen nach dem Löschen der privaten Cloud gelöscht werden.  Die Abrechnung der Knoten wird fortgesetzt, bis die Knoten aus Ihrem Abonnement gelöscht wurden.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

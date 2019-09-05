@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900130"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013089"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -79,25 +79,29 @@ Um SaaS-Angebote (Software-as-a-Service) mit dem kommerziellen Marketplace im Pa
 - Das Angebot muss für die Integration in den Azure Marketplace [SaaS-Fulfillment-APIs](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) verwenden.
 - Weitere Informationen zu den weitergehenden Anforderungen finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS in Azure – Abrechnung von Infrastrukturkosten
-Wenn das SaaS-Angebot in Azure gehostet wird, müssen Sie als Herausgeber die Nutzungsgebühren für Azure-Infrastruktur und Softwarelizenzgebühren als einen Kostenposten verrechnen. Diese Kosten werden dem Kunden als monatliche Pauschalgebühr ausgewiesen. Die Nutzung der Azure-Infrastruktur wird verwaltet und Ihnen als Partner direkt in Rechnung gestellt. Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt. Herausgeber entscheiden sich in der Regel dafür, die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen. 
+#### <a name="saas-pricing-and-billing-options"></a>Preis- und Abrechnungsoptionen für SaaS
+Bei SaaS-Lösungen, die im Azure-Abonnement des Herausgebers ausgeführt werden, umfassen die von den Kunden entrichteten Lizenzgebühren die Kosten für die Infrastruktur, auf der die Software bereitgestellt wird. Die Nutzung der Azure-Infrastruktur wird verwaltet und Ihnen als Partner direkt in Rechnung gestellt. Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt. Herausgeber sollten die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen. 
 
-Softwarelizenzgebühren werden als monatliche standortbasierte Abonnementpauschalgebühr ausgewiesen und nicht nach Volumen oder Verbrauch berechnet.
+SaaS bietet Unterstützung für die monatliche oder jährliche Abrechnung auf der Grundlage einer Pauschalgebühr, pro Benutzer oder gemäß der über den Gebührenabrechnungsdienst ermittelten Nutzungsgebühren. Der kommerzielle Marketplace von Microsoft arbeitet nach einem Agenturmodell, bei dem die Herausgeber die Preise festlegen, Microsoft den Kunden Rechnungen stellt und Microsoft die Einnahmen dann unter Einbehaltung einer Agenturgebühr an den Herausgeber auszahlt.
+
+Die folgende Tabelle zeigt eine exemplarische Aufschlüsselung der Kosten und Auszahlungen zur Veranschaulichung des Agenturmodells.
 
 |**Ihre Lizenzkosten**|**100 USD pro Monat**|
 |:---|:---|
 |Azure-Nutzungskosten (D1/1-Kern)|Abrechnung direkt mit dem Herausgeber, nicht mit dem Kunden|
 |Microsoft führt die Abrechnung mit dem Kunden durch|100,00 USD pro Monat (der Herausgeber muss alle anfallenden oder weiterzugebenden Infrastrukturkosten in der Lizenzgebühr berücksichtigen)|
 
-- In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 80,00 USD an den Herausgeber aus.
+|**Microsoft berechnet**|**100 USD pro Monat**|
+|:---|:---|
+|Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br>**Für qualifizierte SaaS-Apps zahlt Microsoft 90 % Ihrer Lizenzkosten*|80,00 USD pro Monat <br>90,00 *$* pro Monat*|
+
+- In diesem Beispiel stellt Microsoft 100,00 USD dem Kunden für Ihre Softwarelizenz in Rechnung und zahlt 80,00 USD an den Herausgeber aus.
 - Für Partner, die für die **reduzierte Marketplace-Dienstgebühr** qualifiziert sind, wird von Mai 2019 bis Juni 2020 eine reduzierte Transaktionsgebühr für die SaaS-Angebote angezeigt. In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 90,00 USD an den Herausgeber aus.
 
 > [!NOTE]
 > **Reduzierte Marketplace-Dienstgebühr**: Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 % (wie im Microsoft-Herausgebervertrag angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein.  Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden.  Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden.  Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag. 
 
-|**Microsoft berechnet**|**100 USD pro Monat**|
-|:---|:---|
-|Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br>**Für qualifizierte SaaS-Apps zahlt Microsoft 90 % Ihrer Lizenzkosten*|80,00 USD pro Monat <br>90,00 *$* pro Monat*|
+
 
 
 #### <a name="csp-program-opt-in"></a>Abonnement des CSP-Programms
@@ -153,9 +157,23 @@ Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung
 
 ## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+Nehmen Sie direkt Kontakt zu Kunden auf, indem Sie Ihr Angebot in Marketplaces auflisten und Ihr CRM-System (Customer Relationship Management) einbinden. So erhalten Sie Kundenkontaktinformationen sofort, nachdem ein Kunde Interesse bekundet oder Ihr Produkt bereitgestellt hat.
 
-Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./commercial-marketplace-get-customer-leads.md).
+- **Leadziel auswählen** (Dropdownmenü): Geben Sie Verbindungsinformationen für das CRM-System an, wenn Sie möchten, dass wir Kundenleads senden. 
+
+Das Partner Center unterstützt die Leadverwaltung für die folgenden CRM-Systeme. Klicken Sie auf den Link, um Anweisungen zur Einrichtung zu erhalten.
+
+- „Azure-BLOB“: Geben Sie die E-Mail-Adresse, den Containernamen und die Verbindungszeichenfolge für das Speicherkonto ein. 
+- [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table): Geben Sie die E-Mail-Kontaktadresse und die Verbindungszeichenfolge für das Speicherkonto an. 
+- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics): Geben Sie die E-Mail-Kontaktadresse, die URL und den Authentifizierungsmodus (Office 365 oder Azure Active Directory) an.
+- [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https): Geben Sie E-Mail-Kontaktadresse und die URL des HTTP-Endpunkts an. 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo): Geben Sie die E-Mail-Kontaktadresse, die Formular-ID, Munchkin-Konto-ID und Server-ID an.
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce): Geben Sie die E-Mail-Kontaktadresse und die Organisations-ID an. 
+
+#### <a name="additional-lead-management-resources"></a>Zusätzliche Ressourcen zur Leadverwaltung
+- [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Lead management at a glance](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (Übersicht über die Leadverwaltung, Informationsblatt in englischer Sprache)
 
 Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 

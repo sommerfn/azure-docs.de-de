@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559468"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066432"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Transkribieren von Unterhaltungen mit mehreren Teilnehmern mithilfe des Speech SDK
 
@@ -25,7 +25,9 @@ Mit der **ConversationTranscriber**-API des Speech SDK können Sie Besprechungen
 
 * Die Unterhaltungstranskription wird für C++, C# und Java unter Windows, Linux und Android unterstützt.
 * Das ROOBO DevKit ist die unterstützte Hardwareumgebung für die Erstellung von Unterhaltungstranskriptionen, da mehrere Mikrofone im Kreis angeordnet sind, die effizient für die Sprecheridentifikation verwendet werden können. Weitere Informationen finden Sie unter [Informationen zum Speech-Geräte-SDK (Vorschau)](speech-devices-sdk.md).
-* Die Unterstützung des Speech SDK für die Unterhaltungstranskription ist auf die Verwendung von Audiostreams im Pull- und Pushmodus mit acht PCM-Audiokanälen (16-Bit 16 kHz) beschränkt.
+* Die Unterstützung des Speech SDK für die Unterhaltungstranskription ist auf Audiostreams im Pull- und Pushmodus mit acht PCM-Audiokanälen (16-Bit 16 kHz) beschränkt. Derzeit werden nur diese Kits für die 8-Kanal-Audioaufnahme unterstützt:
+   * [ROOBO Smart Audio Circular 7-Mic DK](https://ddk.roobo.com/)
+   * [Azure Kinect DK](https://azure.microsoft.com/en-in/services/kinect-dk/)
 * Die Unterhaltungstranskription ist derzeit in den Sprachen „en-US“ und „zh-CN“ in den folgenden Regionen verfügbar: USA, Mitte (centralus) und Asien, Osten (eastasia).
 
 ## <a name="prerequisites"></a>Voraussetzungen

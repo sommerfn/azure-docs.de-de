@@ -11,16 +11,15 @@ ms.assetid: 0e518e92-e981-43f4-b12c-9cba1064c4bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: cfbd687e59a9a852fe1bf01386dac221f040d0f4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248187"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083626"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Vorbereiten eines CentOS-basierten virtuellen Computers für Azure
 
@@ -174,11 +173,14 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein CentOS-Linux-Betr
 
     Alternativ können Sie auch die Anweisungen für die manuelle Installation auf der [Downloadseite von LIS](https://go.microsoft.com/fwlink/?linkid=403033) ausführen, um das RPM auf Ihrem virtuellen Computer zu installieren.
 
-12. Installieren Sie den Azure Linux-Agent und die Abhängigkeiten:
+12. Installieren Sie den Azure Linux-Agent und die Abhängigkeiten. waagent-Dienst starten und aktivieren:
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
+    sudo service waagent start
+    sudo chkconfig waagent on
     ```
+
 
     Das WALinuxAgent-Paket entfernt die NetworkManager- und NetworkManager-gnome-Pakete, sofern sie nicht bereits wie in Schritt 3 beschrieben entfernt wurden.
 

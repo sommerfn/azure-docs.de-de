@@ -12,16 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249844"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012838"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure: Vorlage (Vorschau)
 
-Dieser Artikel enthält eine Liste von IPv6-Konfigurationsaufgaben mit dem Teil der Azure Resource Manager-VM-Vorlage, der für die jeweilige Aufgabe gilt. Verwenden Sie die in diesem Artikel beschriebene Vorlage, um eine Dual Stack-Anwendung (IPv4 und IPv6) in Azure bereitstellen, die ein virtuelles Dual Stack-Netzwerk mit IPv4- und IPv6-Subnetzen, einen Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppen und öffentliche IP-Adressen umfasst. 
+Dieser Artikel enthält eine Liste von IPv6-Konfigurationsaufgaben mit dem Teil der Azure Resource Manager-VM-Vorlage, der für die jeweilige Aufgabe gilt. Verwenden Sie die in diesem Artikel beschriebene Vorlage, um eine Dual Stack-Anwendung (IPv4 und IPv6) mit Basic Load Balancer bereitzustellen, die ein virtuelles Dual Stack-Netzwerk mit IPv4- und IPv6-Subnetzen, Basic Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen umfasst.
+
+Informationen zum Bereitstellen einer Dual Stack-Anwendung (IPv4 und IPv6) mithilfe von Load Balancer Standard finden Sie unter [Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Standard – Vorlage](ipv6-configure-standard-load-balancer-template-json.md).
 
 ## <a name="required-configurations"></a>Erforderliche Konfigurationen
 
@@ -176,7 +178,7 @@ Wenn Sie ein virtuelles Netzwerkgerät verwenden, fügen Sie in der Routentabell
 ```
 
 ## <a name="sample-vm-template-json"></a>VM-Beispielvorlage (JSON)
-[Hier](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/) finden Sie eine Beispielvorlage für das Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network mithilfe einer Azure Resource Manager-Vorlage.
+[Hier](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/) finden Sie eine Beispielvorlage für das Bereitstellen einer IPv6-Dual Stack-Anwendung mit Basic Load Balancer in Azure Virtual Network. Das Beispiel basiert auf der Azure Resource Manager-Vorlage.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

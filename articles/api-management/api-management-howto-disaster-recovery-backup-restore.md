@@ -9,31 +9,30 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932393"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072449"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
 Indem Sie Ihre APIs über Azure API Management veröffentlichen und verwalten, profitieren Sie von Fehlertoleranz- und Infrastrukturfunktionen, die Sie sonst erst manuell entwickeln, implementieren und verwalten müssten. Die Azure-Plattform minimiert einen Großteil der potenziellen Ausfälle zu einem Bruchteil der Kosten.
 
-Bei Verfügbarkeitsproblemen in der Region, in der Ihr API Management-Dienst gehostet wird, sollten Sie jederzeit dazu in der Lage sein, Ihren Dienst in einer anderen Region wiederherzustellen. Abhängig von Ihrem Ziel der Wiederherstellungszeit möchten Sie möglicherweise einen Bereitschaftsdienst in einer oder mehreren Regionen beibehalten. Sie können auch versuchen, ihre Konfiguration und ihren Inhalt synchron mit dem aktiven Dienst gemäß Ihrem gewünschten Wiederherstellungspunkt zu pflegen. Die Funktionen zur Sicherung und Wiederherstellung von Diensten bieten die notwendigen Bausteine für die Implementierung einer Notfallwiederherstellungsstrategie.
+Bei Verfügbarkeitsproblemen in der Region, in der Ihr API Management-Dienst gehostet wird, sollten Sie jederzeit dazu in der Lage sein, Ihren Dienst in einer anderen Region wiederherzustellen. Abhängig von Ihrer RTO (Recovery Time Objective) empfiehlt es sich gegebenenfalls, einen Standbydienst in mindestens einer Region bereitzuhalten. Sie haben auch die Möglichkeit, die Konfiguration und Inhalte der Regionen gemäß Ihrer RPO (Recovery Point Objective) mit dem aktiven Dienst zu synchronisieren. Die Features zur Sicherung und Wiederherstellung von Diensten bieten die notwendigen Bausteine für die Implementierung einer Notfallwiederherstellungsstrategie.
 
-Backup- und Wiederherstellungsvorgänge können auch zur Replikation der API Management-Servicekonfiguration zwischen Betriebsumgebungen, z. B. Entwicklung und Staging, verwendet werden. Beachten Sie, dass auch Laufzeitdaten wie Benutzer und Abonnements kopiert werden, was nicht immer wünschenswert ist.
+Sicherungs- und Wiederherstellungsvorgänge können auch zur Replikation der API Management-Dienstkonfiguration zwischen Betriebsumgebungen, z. B. Entwicklung und Staging, verwendet werden. Beachten Sie, dass auch Laufzeitdaten wie Benutzer und Abonnements kopiert werden, was unter Umständen nicht immer wünschenswert ist.
 
-Diese Anleitung zeigt, wie Sie Backup- und Wiederherstellungsvorgänge automatisieren und wie Sie eine erfolgreiche Authentifizierung von Backup- und Wiederherstellungsanforderungen durch den Azure Resource Manager sicherstellen.
+Diese Anleitung zeigt, wie Sie Sicherungs- und Wiederherstellungsvorgänge automatisieren und wie Sie eine erfolgreiche Authentifizierung von Sicherungs- und Wiederherstellungsanforderungen durch Azure Resource Manager sicherstellen.
 
 > [!IMPORTANT]
-> Der Wiederherstellungsvorgang ändert nicht die benutzerdefinierte Hostnamenkonfiguration des Zieldienstes. Wir empfehlen, den gleichen benutzerdefinierten Hostnamen und das gleiche TLS-Zertifikat sowohl für aktive als auch für Standbydienste zu verwenden, sodass der Datenverkehr nach Abschluss der Wiederherstellung durch eine einfache DNS-CNAME-Änderung auf die Standbyinstanz umgeleitet werden kann.
+> Die benutzerdefinierte Hostnamenkonfiguration des Zieldiensts wird durch den Wiederherstellungsvorgang nicht geändert. Wir empfehlen, den gleichen benutzerdefinierten Hostnamen und das gleiche TLS-Zertifikat sowohl für aktive Dienste als auch für Standbydienste zu verwenden, sodass der Datenverkehr nach Abschluss der Wiederherstellung durch eine einfache DNS-CNAME-Änderung an die Standbyinstanz umgeleitet werden kann.
 >
-> Der Backup-Vorgang erfasst keine voraggregierten Protokolldaten, die in Berichten verwendet werden, die auf dem Analytics-Blatt im Azure-Portal angezeigt werden.
+> Der Sicherungsvorgang erfasst keine voraggregierten Protokolldaten, die in Berichten auf dem Analytics-Blatt im Azure-Portal verwendet werden.
 
 > [!WARNING]
 > Jede Sicherung läuft nach 30 Tagen ab. Wenn Sie versuchen, eine Sicherung nach dem Ablaufzeitraum von 30 Tagen wiederherzustellen, erhalten Sie die Fehlermeldung `Cannot restore: backup expired`.
@@ -153,7 +152,7 @@ Hierbei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 -   `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` - ersetzen mit `2018-06-01-preview`
+-   `api-version` – durch `2018-06-01-preview` ersetzen
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
@@ -194,7 +193,7 @@ Hierbei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
 -   `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
 -   `serviceName` – der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` - ersetzen mit `2018-06-01-preview`
+-   `api-version` – durch `2018-06-01-preview` ersetzen
 
 Geben Sie im Anforderungstext den Speicherort der Sicherungsdatei an. Fügen Sie das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 

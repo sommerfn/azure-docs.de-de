@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 30eb922e17810ddd53166a702b5fc513684f2140
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742373"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074392"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -177,60 +177,7 @@ Dieser Abschnitt enthält Links zu den Anmerkungen zu dieser Version für Horton
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Standardknotenkonfiguration und Standardgrößen von virtuellen Computern für Cluster
 
-Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster.  Dieses Diagramm ist erforderlich, um die VM-Größen zu verstehen, die beim Erstellen von PowerShell- oder Azure CLI-Skripten für die Bereitstellung von HDInsight-Clustern verwendet werden.
-
-> [!IMPORTANT]  
-> Wenn Sie mehr als 32 Workerknoten benötigen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
-
-* Alle unterstützten Regionen, mit Ausnahme von „Brasilien, Süden“ und „Japan, Westen“:
-
-|Clustertyp|Hadoop|hbase|Interactive Query|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|Head – Standard-VM-Größe|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3V2|
-|Head – empfohlene VM-Größen|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2m v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|Worker – Standard-VM-Größe|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 mit 2 S30-Datenträgern pro Broker|
-|Worker – empfohlene VM-Größen|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|Zookeeper – Standard-VM-Größen||A4 v2|A4 v2|A4 v2||A2 v2|D3V2|
-|Zookeeper – empfohlene VM-Größen||A4 v2||A2 v2|||A2m v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|ML Services: VM-Standardgröße||||||D4 v2||
-|ML Services: empfohlene VM-Größe||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* Nur „Brasilien, Süden“ und „Japan, Westen“ (hier keine v2-Größen):
-
-  | Clustertyp | Hadoop | hbase | Interactive Query |Storm | Spark | ML Services |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Head – Standard-VM-Größe |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Head – empfohlene VM-Größen |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
-  | Worker – Standard-VM-Größe |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | Worker – empfohlene VM-Größen |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
-  | Zookeeper – Standard-VM-Größen | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | Zookeeper – empfohlene VM-Größen | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
-  | ML Services: VM-Standardgrößen | | | | | |D4 |
-  | ML Services: empfohlene VM-Größen | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
-
-> [!NOTE]
-> - Head wird für den Storm-Clustertyp als *Nimbus* bezeichnet.
-> - Worker wird für den Storm-Clustertyp als *Supervisor* bezeichnet.
-> - Worker wird für den HBase-Clustertyp als *Region* bezeichnet.
+Weitere Informationen dazu, welche SKUs für virtuelle Computer für Ihren Cluster ausgewählt werden sollten, finden Sie in dem Artikel über [Details einer Azure HDInsight-Clusterkonfiguration](hdinsight-supported-node-configuration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: e73d4ebd3eb05f7cf217573d8112e3dbbe6d3a37
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 065931140894478caee9d4ea49dac49f2415716b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514083"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128657"
 ---
 # <a name="algorithm--module-reference-overview"></a>Algorithmen und Module: Referenzübersicht
 
@@ -36,7 +36,7 @@ Module sind nach Funktionalität organisiert:
 | Datentransformation | Vorgänge für Daten, die für maschinelles Lernen typisch sind, z. B. Normalisieren oder Quantisierung von Daten, Featureauswahl und Verringerung der Dimensionalität.| [Auswählen von Spalten im Dataset](select-columns-in-dataset.md) <br/> [Bearbeiten von Metadaten](edit-metadata.md) <br/> [Bereinigen fehlender Daten](clean-missing-data.md) <br/> [Hinzufügen von Spalten](add-columns.md) <br/> [Hinzufügen von Zeilen](add-rows.md) <br/> [Entfernen doppelter Zeilen](remove-duplicate-rows.md) <br/> [Verknüpfen von Daten](join-data.md) <br/> [Aufteilen von Daten](split-data.md) <br/> [Normalisieren von Daten](normalize-data.md) <br/> [Partition und Beispiel](partition-and-sample.md) |
 | Python- und R-Module | Schreiben Sie Code, und betten Sie ihn in ein Modul ein, um Python und R in Ihr Experiment zu integrieren. | [Ausführen von Python-Skripts](execute-python-script.md)   <br/> [Erstellen eines Python-Modells](create-python-model.md) <br/> [Ausführen von R-Skripts](execute-r-script.md)
 |  | **Machine Learning-Algorithmen**: | |
-| Classification | Sagen Sie eine Klasse vorher.  Wählen Sie aus Binäralgorithmen (zwei Klassen) oder Multiklassenalgorithmen.| [Entscheidungswald mit mehreren Klassen](multiclass-decision-forest.md) <br/> [Logistische Regression mit mehreren Klassen](multiclass-logistic-regression.md)  <br/> [Mehrklassiges neuronales Netzwerk](multiclass-neural-network.md)  <br/>  [Logistische Regression mit zwei Klassen](two-class-logistic-regression.md)  <br/>[Gemitteltes Perzeptron mit zwei Klassen](two-class-averaged-perceptron.md) <br/> [Um zwei&nbsp;Klassen&nbsp;verstärkte&nbsp;Entscheidungsstruktur](two-class-boosted-decision-tree.md)  <br/> [Entscheidungswald mit zwei Klassen](two-class-decision-forest.md)  <br/> [Zweiklassiges neuronales Netzwerk](two-class-neural-network.md)  <br/> [Zweiklassige&nbsp;Support&nbsp;Vector&nbsp;Machine](two-class-support-vector-machine.md) 
+| Classification | Sagen Sie eine Klasse vorher.  Wählen Sie aus Binäralgorithmen (zwei Klassen) oder Multiklassenalgorithmen.| [Entscheidungswald mit mehreren Klassen](multiclass-decision-forest.md) <br/> [Verstärkte Entscheidungsstruktur mit mehreren Klassen](multiclass-boosted-decision-tree.md) <br/> [Logistische Regression mit mehreren Klassen](multiclass-logistic-regression.md)  <br/> [Mehrklassiges neuronales Netzwerk](multiclass-neural-network.md)  <br/>  [Logistische Regression mit zwei Klassen](two-class-logistic-regression.md)  <br/>[Gemitteltes Perzeptron mit zwei Klassen](two-class-averaged-perceptron.md) <br/> [Um zwei&nbsp;Klassen&nbsp;verstärkte&nbsp;Entscheidungsstruktur](two-class-boosted-decision-tree.md)  <br/> [Entscheidungswald mit zwei Klassen](two-class-decision-forest.md)  <br/> [Zweiklassiges neuronales Netzwerk](two-class-neural-network.md)  <br/> [Zweiklassige&nbsp;Support&nbsp;Vector&nbsp;Machine](two-class-support-vector-machine.md) 
 | Clustering | Gruppieren Sie Daten.| [K-Means-Clustering](k-means-clustering.md)
 | Regression | Sagen Sie einen Wert vorher. | [Lineare Regression](linear-regression.md)  <br/> [Regression mit neuronalen Netzwerken](neural-network-regression.md)  <br/> [Entscheidungswaldregression](decision-forest-regression.md)  <br/> [Regression&nbsp;bei&nbsp;verstärkter&nbsp;Entscheidungsstruktur](boosted-decision-tree-regression.md)
 |  | **Erstellen und Bewerten von Modellen**: | |

@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: dd639ae7e05309ab4528eb460ce38550db4cffe1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e06d6473a47dcff3506843150375c70ed2bd8cea
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670776"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061824"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -21,6 +21,8 @@ Azure Data Lake Storage Gen2 ist ein Cloudspeicherdienst für Big Data-Analysen,
 ## <a name="data-lake-storage-gen2-availability"></a>Verfügbarkeit von Data Lake Storage Gen2
 
 Data Lake Storage Gen2 ist als Speicheroption für fast alle Typen von Azure HDInsight-Clustern sowohl als Standard- als auch zusätzliches Speicherkonto verfügbar. HBase kann jedoch nur ein Data Lake Storage Gen2-Konto verwenden.
+
+Einen vollständigen Vergleich der Optionen für die Clustererstellung mit Azure Data Lake Storage Gen2 finden Sie unter [Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern](hdinsight-hadoop-compare-storage-options.md).
 
 > [!Note]  
 > Nachdem Sie Data Lake Storage Gen2 als **primären Speichertyp** ausgewählt haben, können Sie kein Data Lake Storage Gen1-Konto als zusätzlichen Speicher auswählen.

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: e1e9e998c2ac4695d955a546d0f02fbc2b517d5e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068840"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907477"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Leistungsempfehlungen in Azure Database for PostgreSQL – Einzelserver
 
@@ -47,7 +47,8 @@ Empfehlungen des Typs *Index erstellen* schlagen neue Indizes vor, um die am hä
 ### <a name="drop-index-recommendations"></a>Empfehlungen zum Löschen eines Index
 Zusätzlich zum Erkennen fehlender Indizes analysiert Azure Database for PostgreSQL kontinuierlich die Leistung der vorhandenen Indizes. Wenn ein Index nur selten verwendet wird oder redundant ist, empfiehlt das Analysetool, ihn zu löschen.
 
-
+## <a name="considerations"></a>Überlegungen
+* Für [Lesereplikate](concepts-read-replicas.md) sind keine Leistungsempfehlungen verfügbar.
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Überwachung und Optimierung](concepts-monitoring.md) in Azure Database for PostgreSQL.
 

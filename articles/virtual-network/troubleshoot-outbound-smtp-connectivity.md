@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935371"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972482"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Behandeln von Problemen mit ausgehenden SMTP-Verbindungen in Azure
 
@@ -38,7 +38,7 @@ Wenn Sie sich vor dem 15. November 2017 für die nutzungsbasierte Zahlung oder d
 
 Für die nutzungsbasierte Zahlung oder Microsoft Partner Network-Abonnements, die nach dem 15. November 2017 erstellt wurden, gelten technische Einschränkungen: E-Mails, die direkt von VMs dieser Abonnements gesendet werden, werden blockiert. Wenn Sie E-Mails von einer Azure-VM direkt an externe E-Mail-Anbieter senden möchten (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Solche Anfragen werden von Microsoft geprüft und erst nach Durchführung von zusätzlichen Betrugsprüfungen ggf. genehmigt. Um eine Anfrage zu stellen, öffnen Sie eine Supportanfrage mit dem folgenden Problemtyp: **Technisch** > **virtuelles Netzwerk** > **Konnektivität** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** . Geben Sie unbedingt Informationen dazu an, warum Ihre Bereitstellung E-Mails direkt an E-Mail-Anbieter senden muss, anstatt ein authentifiziertes Relay zu verwenden.
 
-Sobald für ein Abonnement vom Typ nutzungsbasierte Zahlung oder ein Microsoft Partner Network-Abonnement eine Ausnahmeregelung gilt und die VMs im Azure-Portal gestoppt und gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement.
+Sobald für ein Abonnement vom Typ nutzungsbasierte Zahlung oder ein Microsoft Partner Network-Abonnement eine Ausnahmeregelung gilt und die VMs im Azure-Portal gestoppt und gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den Datenverkehr virtueller Computer, der direkt an das Internet weitergeleitet wird. Das Routing von Port-25-Datenverkehr über Azure PaaS-Dienste wie [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) wird nicht unterstützt.
 
 > [!NOTE]
 > Microsoft behält sich das Recht vor, diese Ausnahmeregelung zu widerrufen, wenn ein Verstoß gegen die Vertragsbedingungen festgestellt wird.

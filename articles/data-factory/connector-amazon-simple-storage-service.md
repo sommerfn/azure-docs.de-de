@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b47aadc28a5e2ea6dbf2a7a8a23cdb713a0b981
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ecdd560997391a4dfed8b01f30825eb9b3845792
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839890"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996718"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -24,6 +24,8 @@ ms.locfileid: "68839890"
 > * [Aktuelle Version](connector-amazon-simple-storage-service.md)
 
 In diesem Artikel wird beschrieben, wie Daten aus Amazon Simple Storage Service (Amazon S3) kopiert werden. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+
+Ein Szenario für die Datenmigration von Amazon S3 zu Azure Storage finden Sie unter [Verwenden von Azure Data Factory zum Migrieren von Daten von Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -57,7 +59,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Amazon S3 verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
@@ -105,7 +107,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Informationen zum Kopieren von Daten aus Amazon S3 im **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Amazon S3 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **AmazonS3Location** festgelegt werden. | Ja      |
 | bucketName | Der Name des S3-Buckets.                                          | Ja      |
@@ -147,7 +149,7 @@ Informationen zum Kopieren von Daten aus Amazon S3 im **Parquet-Format, Textfor
 
 Beim Kopieren von Daten aus Amazon S3 in den Formaten **ORC-/Avro-/JSON-Format** werden folgende Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AmazonS3Object** |Ja |
 | bucketName | Der Name des S3-Buckets. Der Platzhalterfilter wird nicht unterstützt. |Ja für die Copy/Lookup-Aktivität, Nein für die GetMetadata-Aktivität |
@@ -234,7 +236,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Informationen zum Kopieren von Daten aus Azure S3 im **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Amazon S3 unter `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                                    |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AmazonS3ReadSetting** festgelegt werden. | Ja                                                         |
 | recursive                | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. Zulässige Werte sind **true** (Standard) und **false**. | Nein                                                          |
@@ -293,7 +295,7 @@ Informationen zum Kopieren von Daten aus Azure S3 im **Parquet-Format, Textform
 
 Beim Kopieren von Daten aus Amazon S3 im **ORC-/Avro-/JSON-Format** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **FileSystemSource** |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein |

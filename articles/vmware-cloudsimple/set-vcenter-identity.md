@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544005"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972651"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory
 
@@ -63,7 +63,7 @@ Verwenden Sie die Informationen in der folgenden Tabelle, wenn Sie Ihre Active D
 Wenn Sie über die Informationen aus der Tabelle oben verfügen, können Sie Ihr lokales Active Directory als SSO-Identitätsquelle (einmaliges Anmelden) in vCenter hinzufügen.
 
 > [!TIP]
-> Weitere Informationen zu SSO-Identitätsquellen finden Sie auf der <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">VMware-Dokumentationsseite.</a>
+> Weitere Informationen zu SSO-Identitätsquellen finden Sie auf der [VMware-Dokumentationsseite](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Einrichten eines neuen Active Directory für eine private Cloud
 
@@ -90,7 +90,7 @@ Um eine neue Active Directory-Domäne in einer vorhandenen Active Directory-Gesa
 * Site-to-Site-VPN-Verbindung mit dem Standort Ihrer Active Directory-Gesamtstruktur.
 * DNS-Server, um den Namen der vorhandenen Active Directory-Gesamtstruktur aufzulösen.
 
-Ausführliche Schritte finden Sie unter [Installieren eines neuen untergeordneten Windows Server 2012-Active Directory oder einer Strukturdomäne](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-).
+Ausführliche Schritte finden Sie unter [Installieren einer neuen untergeordneten Windows Server 2012-Active Directory-Domäne oder -Strukturdomäne](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-).
 
 Nachdem Sie die Active Directory-Domäne eingerichtet haben, können Sie [eine Identitätsquelle für vCenter](#add-an-identity-source-on-vcenter) für Ihr neues Active Directory hinzufügen.
 

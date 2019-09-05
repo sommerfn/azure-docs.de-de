@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036246"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019116"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -71,6 +71,12 @@ Die folgenden Versionshinweise gelten für Version 7.0.0.0 des Azure-Dateisynch
 
 - Unterstützung größerer Dateifreigaben
     - Mit der Vorschauversion für größere Azure-Dateifreigaben erhöhen wir auch unsere Supportgrenzwerte für die Dateisynchronisierung. In diesem ersten Schritt unterstützt die Azure-Dateisynchronisierung jetzt bis zu 25 TB und 50 Millionen Dateien pro Synchronisierungsnamespace. Füllen Sie das Formular unter https://aka.ms/azurefilesatscalesurvey aus, um sich für die Vorschauversion für große Dateifreigaben zu bewerben. 
+- Unterstützung für Firewalleinstellungen und Einstellungen für ein virtuelles Netzwerk in Speicherkonten
+    - Azure-Dateisynchronisierung unterstützt jetzt die Firewalleinstellungen und Einstellungen für ein virtuelles Netzwerk in Speicherkonten. Informationen dazu, wie Sie Ihre Bereitstellung konfigurieren müssen, damit sie mit den Firewalleinstellungen und den Einstellungen für ein virtuelles Netzwerk funktioniert, finden Sie unter [Konfigurieren von Firewall- und VNET-Einstellungen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+- PowerShell-Cmdlet, um Dateien, die in der Azure-Dateifreigabe geändert wurden, sofort zu synchronisieren
+    - Um Dateien, die in der Azure-Dateifreigabe geändert wurden, sofort zu synchronisieren, kann das PowerShell-Cmdlet „Invoke-AzStorageSyncChangeDetection“ verwendet werden, um die Erkennung von Änderungen in der Azure-Dateifreigabe manuell auszulösen. Dieses Cmdlet ist für Szenarien vorgesehen, in denen irgendein automatisierter Prozess Änderungen in der Azure-Dateifreigabe vornimmt oder die Änderungen von einem Administrator vorgenommen werden (etwa Verschieben von Dateien und Verzeichnissen in die Freigabe). Für Endbenutzeränderungen empfiehlt es sich, den Azure-Dateisynchronisierungs-Agent auf einem virtuellen IaaS-Computer zu installieren und Endbenutzern den Zugriff auf die Dateifreigabe über den virtuellen IaaS-Computer zu ermöglichen. Auf diese Weise werden alle Änderungen schnell mit anderen Agents synchronisiert, ohne dass das Cmdlet „Invoke-AzStorageSyncChangeDetection“ verwendet werden muss. Weitere Informationen hierzu finden Sie in der Dokumentation von [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection).
+- Verbessertes Portalverhalten, wenn Dateien vorliegen, die nicht synchronisiert sind
+    - Wenn Sie Dateien haben, die nicht synchronisiert werden können, wird nun zwischen vorübergehenden und dauerhaften Fehlern im Portal unterschieden. Vorübergehende Fehler werden in der Regel automatisch aufgelöst, ohne dass eine Administratoraktion erforderlich ist. Beispielsweise wird eine Datei, die momentan verwendet wird, erst synchronisiert, nachdem das Dateihandle geschlossen wurde. Bei dauerhaften Fehlern wird nun die Anzahl der Dateien angezeigt, von jedem Fehler betroffen sind. Die Anzahl der dauerhaften Fehler wird auch in der „Dateien ohne Synchronisierung“-Spalte aller Serverendpunkte einer Synchronisierungsgruppe angezeigt.
 - Verbesserte Azure Backup-Wiederherstellung auf Dateiebene
     - Einzelne Dateien, die mit Azure Backup wiederhergestellt werden, werden jetzt schneller erkannt und mit dem Serverendpunkt synchronisiert.
 - Verbesserte Zuverlässigkeit des Cmdlets für Cloudtieringrückrufe 

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11a4a17d7816d2302b6549cffb9517e10ad1258d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 270ebb6247e812d42ac84698d0073b41c639cb9a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442346"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011586"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
@@ -139,9 +139,9 @@ Weitere Informationen finden Sie unter [Gewusst wie: Aktivieren der Modelldatens
 
 Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ressourcen nachverfolgen. Dies gilt insbesondere in folgenden Fällen:
 
-- Azure ML ist mit Git integriert, um nachverfolgen zu können, von welchem Repository, welcher Branch oder welchem Commit Ihr Code stammt.
-- Mit Azure ML-Datasets können Sie Daten nachverfolgen und mit einer Versionsangabe versehen.
-- Mit dem Azure ML-Ausführungsverlauf werden der Code, die Daten und der Computevorgang für das Trainieren eines Modells verwaltet.
+- Azure ML ist [mit Git integriert](how-to-set-up-training-targets.md#gitintegration), um nachverfolgen zu können, von welchem Repository, welcher Branch oder welchem Commit Ihr Code stammt.
+- Mit [Azure ML-Datasets](how-to-create-register-datasets.md) können Sie Daten nachverfolgen und mit einer Versionsangabe versehen.
+- Azure ML-Ausführungsverlauf speichert eine Momentaufnahme des Codes, der Daten und des Computevorgangs, mit denen ein Modell trainiert wurde.
 - Die Azure ML-Modellregistrierung erfasst alle Metadaten, die Ihrem Modell zugeordnet sind (welches Experiment wurde für das Training verwendet, wo wird es bereitgestellt und ob die Bereitstellungen fehlerfrei sind).
 
 ## <a name="automate-the-end-to-end-ml-lifecycle"></a>Automatisieren des End-to-End-ML-Lebenszyklus 

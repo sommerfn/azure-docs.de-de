@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543706"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972357"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-Komponenten in der privaten Cloud
 
@@ -26,7 +26,7 @@ Eine private Cloud ist eine isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter
 
 ## <a name="vmware-component-versions"></a>Versionen der VMware-Komponenten
 
-Ein VMware-Stapel in einer privaten Cloud wird mit den folgenden Softwareversionen bereitgestellt.
+Ein VMware-Stapel in einer privaten Cloud wird mit der folgenden Softwareversion bereitgestellt.
 
 | Komponente | Version | Lizenzierte Version |
 |-----------|---------|------------------|

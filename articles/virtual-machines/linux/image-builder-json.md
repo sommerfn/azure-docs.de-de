@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816324"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129056"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -190,6 +190,7 @@ Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Im
 `imageVersionId` sollte dem ResourceId-Wert der Imageversion entsprechen. Verwenden Sie den Befehl [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list), um die Imageversionen aufzulisten.
 
 ## <a name="properties-buildtimeoutinminutes"></a>Eigenschaften: buildTimeoutInMinutes
+
 Image Builder wird standardmäßig für 240 Minuten ausgeführt. Anschließend kommt es zu einem Timeout, und die Ausführung wird beendet – unabhängig davon, ob das Image erstellt wurde oder nicht. Bei Auftreten des Timeouts wird ein Fehler ähnlich dem folgenden angezeigt:
 
 ```text
@@ -203,7 +204,6 @@ Wenn Sie mehr Zeit zum Abschließen der Anpassung benötigen, legen Sie die Eins
 
 
 ## <a name="properties-customize"></a>Eigenschaften: customize
-
 
 Image Builder unterstützt mehrere „Anpassungen“. Anpassungen sind Funktionen, die zum Anpassen Ihres Images verwendet werden. Dies umfasst beispielsweise das Ausführen von Skripts oder Neustarten von Servern. 
 
@@ -349,7 +349,7 @@ Diese Vorgehensweise wird von Windows-Verzeichnissen und Linux-Pfaden unterstüt
 Wenn beim Herunterladen der Datei oder beim Platzieren der Datei im festgelegten Verzeichnis ein Fehler auftritt, schlägt der Anpassungsschritt fehl. Dies wird im Protokoll „customization.log“ dokumentiert.
 
 > [!NOTE]
-> Der File Customizer ist nur für kleine Dateidownloads geeignet, < 20MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl, den Verwendungscode zum Herunterladen von Dateien, wie z.B. Linux`wget` oder`curl`, Windows,`Invoke-WebRequest` .
+> Die Dateianpassung ist nur für kleine Dateidownloads geeignet, < 20 MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl, den Verwendungscode zum Herunterladen von Dateien, wie z. B. Linux `wget` oder `curl`, Windows, `Invoke-WebRequest`.
 
 Dateien in der Dateianpassung können mithilfe der [verwalteten Dienstidentität](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) aus Azure Storage heruntergeladen werden.
 

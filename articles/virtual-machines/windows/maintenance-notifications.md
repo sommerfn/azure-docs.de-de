@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: b388c600e5eb9331fe22d1a8e9aac8f47edb3ef2
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c27d6d65629fb926442377c03ab688b8819aad20
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849597"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079191"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Windows-Computer
 
@@ -27,13 +26,13 @@ Azure führt regelmäßig Updates durch, um die Zuverlässigkeit, Leistung und S
 
 - Wenn die Wartung keinen Neustart erfordert, verwendet Azure eine direkte Migration, um den virtuellen Computer anzuhalten, während der Host aktualisiert wird. Diese Wartungsvorgänge ohne Neustart werden einzeln für jede Fehlerdomäne angewendet, und das Fortschreiten wird beendet, wenn Warnsignale zur Integrität empfangen werden. 
 
-- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. In diesen Fällen steht Ihnen ein Zeitfenster zur Verfügung (normalerweise 30 Tage), in dem Sie die Wartung zu einem für Sie günstigen Zeitpunkt selbst starten können.
+- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. In diesen Fällen steht Ihnen ein Zeitfenster zur Verfügung (normalerweise 35 Tage), in dem Sie die Wartung zu einem für Sie günstigen Zeitpunkt selbst starten können.
 
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle hat einen anderen Umfang (Regionen).
 
 - Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an Abonnementbesitzer und -mitbesitzer gesendet. Für die Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../../azure-monitor/platform/activity-logs-overview.md) weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
-- Zum Zeitpunkt der Benachrichtigung wird ein *Self-Service-Zeitfenster* verfügbar gemacht. Während dieses Zeitfensters von normalerweise 30 Tagen können Sie ermitteln, welche Ihrer virtuellen Computer von der Welle betroffen sind, und die Wartung gemäß eigenen Planungsanforderungen starten.
+- Zum Zeitpunkt der Benachrichtigung wird ein *Self-Service-Zeitfenster* verfügbar gemacht. Während dieses üblichen Zeitfensters von 35 Tagen können Sie ermitteln, welche Ihrer virtuellen Computer von der Welle betroffen sind, und die Wartung gemäß eigenen Planungsanforderungen starten.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
 Mit den beiden Zeitfenstern möchten wir Ihnen einerseits genügend Zeit geben, um die Wartung zu initiieren und Ihren virtuellen Computer neu zu starten, und Sie andererseits darüber informieren, wann Azure die Wartung automatisch startet.

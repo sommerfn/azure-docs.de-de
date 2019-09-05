@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699346"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061743"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -245,7 +245,7 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 |--------|---------------------|
 | Australien (Osten) | Neusüdwales |
 | Australien, Südosten | Victoria |
-| Brasilien Süd | Sao Paolo, Bundesstaat |
+| Brasilien Süd | Sao Paulo, Bundesland |
 | Kanada, Mitte | Toronto |
 | Kanada, Osten | Quebec City |
 | Indien, Mitte | Pune |
@@ -254,12 +254,15 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 | East US | Virginia |
 | USA (Ost 2) | Virginia |
 | Frankreich, Mitte | Paris |
-| Korea, Mitte| Seoul |
-| Korea, Süden| Busan |
+| Frankreich, Süden* | Marseille |
+| Korea, Mitte | Seoul |
+| Korea, Süden | Busan |
 | Japan, Osten | Tokio, Saitama |
 | Japan, Westen | Osaka |
 | USA Nord Mitte | Illinois |
 | Nordeuropa | Irland |
+| Südafrika, Norden | Johannesburg |
+| Südafrika, Westen* | Kapstadt |
 | USA Süd Mitte | Texas |
 | Indien (Süden) | Chennai |
 | Asien, Südosten | Singapur |
@@ -274,6 +277,8 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 | USA, Westen 2 | Washington |
 
 Die Azure-Dateisynchronisierung unterstützt nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst.
+
+Für die mit Sternchen gekennzeichneten Regionen müssen Sie sich an den Azure-Support wenden, um Zugriff auf Azure Storage in diesen Regionen anzufordern. Der Prozess ist in [diesem Dokument](https://azure.microsoft.com/global-infrastructure/geographies/) beschrieben.
 
 ### <a name="azure-disaster-recovery"></a>Azure-Notfallwiederherstellung
 Um vor dem Verlust einer Azure-Region zu schützen, integriert die Azure-Dateisynchronisierung die Option für [Redundanz durch georedundante Speicher](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). Der GRS funktioniert durch die Verwendung von asynchroner Blockreplikation zwischen Speichern in der primären Region, mit der Sie normalerweise interagieren, und Speichern in der gekoppelten sekundären Region. Bei einem Notfall, infolgedessen eine Azure-Region vorübergehend oder dauerhaft offline geschaltet wird, führt Microsoft für den Speicher ein Failover auf die gekoppelte Region durch. 
@@ -296,12 +301,15 @@ Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateis
 | East US             | USA (Westen)            |
 | USA (Ost) 2           | USA (Mitte)         |
 | Frankreich, Mitte      | Frankreich, Süden       |
+| Frankreich, Süden        | Frankreich, Mitte     |
 | Japan, Osten          | Japan, Westen         |
 | Japan, Westen          | Japan, Osten         |
 | Korea, Mitte       | Korea, Süden        |
 | Korea, Süden         | Korea, Mitte      |
 | Nordeuropa        | Europa, Westen        |
 | USA Nord Mitte    | USA Süd Mitte   |
+| Südafrika, Norden  | Südafrika, Westen  |
+| Südafrika, Westen   | Südafrika, Norden |
 | USA Süd Mitte    | USA Nord Mitte   |
 | Indien (Süden)         | Indien, Mitte      |
 | Asien, Südosten      | Asien, Osten          |

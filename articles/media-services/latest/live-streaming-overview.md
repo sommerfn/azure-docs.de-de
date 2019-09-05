@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/16/2019
+ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5883c1aa20af106dd39bffc95036ee90f312ffea
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295656"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051591"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -77,13 +77,29 @@ Um die Livestreaming-Workflows in Media Services v3 nachvollziehen zu können, m
 2. Erstellen Sie ein [Liveereignis](live-events-outputs-concept.md). <br/>Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. Starten Sie alternativ das Ereignis, wenn Sie zum Starten des Streamings bereit sind.<br/> Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis direkt nach der Erstellung gestartet. Die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
 3. Rufen Sie die Erfassungs-URLs ab, und konfigurieren Sie Ihren lokalen Encoder vor Ort, um die URL zum Senden des Beitragsfeeds zu verwenden.<br/>Siehe [Empfohlene Livestreaming-Encoder](recommended-on-premises-live-encoders.md).
 4. Rufen Sie die Vorschau-URL ab und verwenden Sie sie, um sich zu vergewissern, dass die Eingabe des Encoders auch tatsächlich empfangen wird.
-5. Erstellen Sie ein neues **Medienobjekt**.
-6. Erstellen Sie eine **Liveausgabe**, und verwenden Sie den Namen des erstellten Medienobjekts.<br/>Die **Liveausgabe** archiviert den Datenstrom im **Medienobjekt**.
+5. Erstellen Sie ein neues **Medienobjekt**. 
+
+    Jeder Liveausgabe ist ein Medienobjekt zugeordnet, das zum Aufzeichnen des Videos im zugeordneten Azure Blob Storage-Container verwendet wird. 
+6. Erstellen Sie eine **Liveausgabe**, und verwenden Sie den von Ihnen erstellten Medienobjektnamen, damit der Datenstrom im Medienobjekt archiviert werden kann.
+
+    Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie die Liveausgabe löschen, werden das zugrunde liegende Medienobjekt und dessen Inhalt nicht gelöscht.
 7. Erstellen Sie einen **Streaminglocator** mit den [integrierten Arten von Streamingrichtlinien](streaming-policy-concept.md).
+
+    Zum Veröffentlichen der Liveausgabe müssen Sie einen Streaminglocator für das zugehörige Medienobjekt erstellen. 
 8. Listen Sie die Pfade auf dem **StreamingLocator** auf, um die zu verwendenden URLs zurückzugeben (diese sind deterministisch).
 9. Rufen Sie den Hostnamen für den **Streamingendpunkt** (Ursprung) ab, von dem aus Sie streamen möchten.
 10. Kombinieren Sie die URL aus Schritt 8 mit dem Hostnamen aus Schritt 9, um die vollständige URL zu erhalten.
 11. Wenn Sie möchten, dass Ihr **Liveereignis** nicht mehr angesehen werden kann, müssen Sie das Streamen des Ereignisses beenden und den **Streaminglocator** löschen.
+12. Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Ressourcen bereinigen möchten, führen Sie das folgende Verfahren aus:
+
+    * Beenden Sie die Datenstromeingabe vom Encoder.
+    * Beenden Sie das Liveereignis. Nach Beendigung des Liveereignisses fallen dafür keine Kosten mehr an. Wenn Sie den Kanal erneut starten, weist er die gleiche Erfassungs-URL auf, damit Sie den Encoder nicht erneut konfigurieren müssen.
+    * Sie können Ihren Streamingendpunkt beenden, sofern Sie das Archiv Ihres Liveereignisses nicht als bedarfsgesteuerten Datenstrom bereitstellen möchten. Hat das Liveereignis den Status „Beendet“, fallen dafür keine Kosten an.
+
+Das Liveereignis konvertiert Ereignisse automatisch in On-Demand-Inhalt, wenn es beendet wird. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als bedarfsgesteuertes Video streamen, solange das Medienobjekt nicht gelöscht wurde. Medienobjekte können nicht gelöscht werden, wenn sie von Ereignissen verwendet werden. Zuerst muss das betreffende Ereignis gelöscht werden.
+
+> [!TIP]
+> Im Artikel [Tutorial zu Livestreaming](stream-live-tutorial-with-api.md) wird der Code untersucht, der die oben beschriebenen Schritte implementiert.
 
 ## <a name="other-important-articles"></a>Weitere wichtige Artikel
 

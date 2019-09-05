@@ -5,17 +5,17 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 08/30/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d1a33cba99ef1e35aadd5f9e338ba11fc87830f5
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 143da0374dbd38f96dd0d44e3e1d1bbe3339b58f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843214"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174620"
 ---
-| Category (Kategorie) | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt | Von [Azure-Integrationslaufzeit](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) unterstützt | Von [selbstgehosteter Integrationslaufzeit](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) unterstützt |
+| Category (Kategorie) | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt | Von [Azure-Integrationslaufzeit](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) unterstützt | Von [selbstgehosteter IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) unterstützt |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB (SQL-API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
@@ -24,7 +24,7 @@ ms.locfileid: "68843214"
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
-| &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ | |✓ |✓  |
+| &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure-Datenbank für PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL-Datenbank](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
@@ -49,7 +49,7 @@ ms.locfileid: "68843214"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (Vorschauversion)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse über Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
 | &nbsp; |[SAP Business Warehouse über MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
 | &nbsp; |[SAP-Tabelle](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
@@ -72,7 +72,7 @@ ms.locfileid: "68843214"
 | &nbsp; |[Generische ODBC](../articles/data-factory/connector-odbc.md) |✓ |✓ | |✓  |
 | &nbsp; |[Generisches REST](../articles/data-factory/connector-rest.md) |✓ | |✓ |✓  |
 | **Dienste und Apps** |[Amazon Marketplace Web Service (Vorschauversion)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |✓ | |✓ |✓  |
-| &nbsp; |[Common Data Service für Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Common Data Service](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Concur (Vorschauversion)](../articles/data-factory/connector-concur.md) |✓ | |✓ |✓  |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Dynamics AX (Vorschau)](../articles/data-factory/connector-dynamics-ax.md) |✓ | |✓ |✓  |
@@ -86,7 +86,7 @@ ms.locfileid: "68843214"
 | &nbsp; |[Oracle Eloqua (Vorschauversion)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys (Vorschauversion)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Service Cloud (Vorschau)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
-| &nbsp; |[Paypal (Vorschauversion)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
+| &nbsp; |[PayPal (Vorschauversion)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
 | &nbsp; |[QuickBooks (Vorschauversion)](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  |
@@ -101,4 +101,4 @@ ms.locfileid: "68843214"
 | &nbsp; |[Zoho (Vorschauversion)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> Sie können jeden Connector, der als *Vorschauversion* markiert ist, ausprobieren und uns anschließend Feedback dazu senden.  Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.
+> Sie können jeden Connector, der als *Vorschauversion* gekennzeichnet ist, ausprobieren und uns anschließend Feedback dazu senden. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.

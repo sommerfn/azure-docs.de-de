@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558857"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068860"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -63,13 +63,7 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 
 ## <a name="customization"></a>Anpassung
 
-Die Speech-Dienste verwenden das Universal Language Model. Sie können aber auch benutzerdefinierte Akustik-, Sprach- oder Aussprachemodelle erstellen, die genau zu Ihrem Szenario passen. In der folgenden Tabelle sind mögliche Anpassungsoptionen aufgelistet:
-
-| Modell | BESCHREIBUNG |
-|-------|-------------|
-| [Akustikmodell](how-to-customize-acoustic-models.md) | Wenn Sie ein benutzerdefiniertes Akustikmodell erstellen, ist dies besonders für Anwendungen, Tools oder Geräte hilfreich, die in speziellen Umgebungen (etwa in einem Auto oder in einer Produktionshalle) verwendet werden, in denen jeweils besondere Aufzeichnungsverhältnisse herrschen. Zu Beispielen zählen Sprechen mit Akzent, bestimmte Hintergrundgeräusche oder die Verwendung eines bestimmten Mikrofons für Aufzeichnungen. |
-| [Sprachmodell](how-to-customize-language-model.md) | Erstellen Sie ein benutzerdefiniertes Sprachmodell, um die Transkription spezifischen Vokabulars und spezifischer Grammatik (beispielsweise aus der Medizin- oder IT-Branche) zu verbessern. |
-| [Aussprachemodell](how-to-customize-pronunciation.md) | Durch ein benutzerdefiniertes Aussprachemodell können Sie die phonetische Form und Darstellung eines Worts oder Begriffs definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist zu Beginn lediglich eine Aussprachedatei – eine einfache TXT-Datei. |
+Zusätzlich zum Standardbasismodell, das von den Spracherkennungsdiensten verwendet wird, können Sie die Modelle mit verfügbaren Daten an Ihre Bedürfnisse anpassen, um Hindernisse bei der Spracherkennung wie Sprachstil, Wortschatz und Hintergrundgeräusche zu überwinden. Weitere Informationen finden Sie unter [Benutzerdefinierte Spracherkennung](how-to-custom-speech.md).
 
 > [!NOTE]
 > Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).

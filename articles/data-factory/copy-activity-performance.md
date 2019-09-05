@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b5c0a045fe932db38666559ee415d7b27aa11e4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614180"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996460"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
@@ -41,30 +41,30 @@ Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 ADF verfügt über eine serverlose Architektur, die Parallelität auf unterschiedlichen Ebenen ermöglicht. Entwickler können dann Pipelines erstellen, um Ihre Netzwerkbandbreite vollständig zu nutzen – sowie IOPS und Bandbreite des Speichers, um den Durchsatz für die Datenverschiebung Ihrer Umgebung zu maximieren.  Das heißt, dass Sie den erzielbaren Durchsatz schätzen können, indem Sie den Mindestdurchsatz des Quelldatenspeichers und des Zieldatenspeichers sowie die Netzwerkbandbreite zwischen Quelle und Ziel messen.  In der folgenden Tabelle wird die Kopierdauer anhand der Datenmenge und des Bandbreitenlimits für Ihre Umgebung berechnet. 
 
-| Datenmenge\Bandbreite | 50 MBit/s    | 100 MBit/s  | 200 MBit/s  | 500 MBit/s  | 1 GBit/s   | 10 GBit/s  |
-| --------------------- | ---------- | --------- | --------- | --------- | -------- | -------- |
-| 1 GB                  | 2,7 min    | 1,4 min   | 0,7 min   | 0,3 min   | 0,1 min  | 0,0 min  |
-| 10 GB                 | 27,3 min   | 13,7 min  | 6,8 min   | 2,7 min   | 1,3 min  | 0,1 min  |
-| 100 GB                | 4,6 h    | 2,3 h   | 1,1 h   | 0,5 h   | 0,2 h  | 0,0 h  |
-| 1 TB                  | 46,6 h   | 23,3 h  | 11,7 h  | 4,7 h   | 2,3 h  | 0,2 h  |
-| 10 TB                 | 19,4 Tage  | 9,7 Tage  | 4,9 Tage  | 1,9 Tage  | 0,9 Tage | 0,1 Tage |
-| 100 TB                | 194,2 Tage | 97,1 Tage | 48,5 Tage | 19,4 Tage | 9,5 Tage | 0,9 Tage |
-| 1 PB                  | 64,7 Monate    | 32,4 Monate   | 16,2 Monate   | 6,5 Monate    | 3,2 Monate   | 0,3 Monate   |
-| 10 PB                 | 647,3 Monate   | 323,6 Monate  | 161,8  Monate  | 64,7 Monate   | 31,6 Monate  | 3,2 Monate   |
+| Datengröße/ <br/> bandwidth | 50 MBit/s    | 100 MBit/s  | 500 MBit/s  | 1 GBit/s   | 5 GBit/s   | 10 GBit/s  | 50 GBit/s   |
+| --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
+| **1 GB**                    | 2,7 min    | 1,4 min   | 0,3 min   | 0,1 min  | 0,03 min | 0,01 min | 0,0 min   |
+| **10 GB**                   | 27,3 min   | 13,7 min  | 2,7 min   | 1,3 min  | 0,3 min  | 0,1 min  | 0,03 min  |
+| **100 GB**                  | 4,6 h    | 2,3 h   | 0,5 h   | 0,2 h  | 0,05 h | 0,02 h | 0,0 h   |
+| **1 TB**                    | 46,6 h   | 23,3 h  | 4,7 h   | 2,3 h  | 0,5 h  | 0,2 h  | 0,05 h  |
+| **10 TB**                   | 19,4 Tage  | 9,7 Tage  | 1,9 Tage  | 0,9 Tage | 0,2 Tage | 0,1 Tage | 0,02 Tage |
+| **100 TB**                  | 194,2 Tage | 97,1 Tage | 19,4 Tage | 9,7 Tage | 1,9 Tage | 1 Tag   | 0,2 Tage  |
+| **1 PB**                    | 64,7 Monate    | 32,4 Monate   | 6,5 Monate    | 3,2 Monate   | 0,6 Monate   | 0,3 Monate   | 0,06 Monate   |
+| **10 PB**                   | 647,3 Monate   | 323,6 Monate  | 64,7 Monate   | 31,6 Monate  | 6,5 Monate   | 3,2 Monate   | 0,6 Monate    |
 
 Die ADF-Kopieraktivität kann auf verschiedenen Ebenen skaliert werden:
 
 ![Skalierung der ADF-Kopieraktivität](media/copy-activity-performance/adf-copy-scalability.png)
 
-- Für eine Kopieraktivität können skalierbare Computeressourcen genutzt werden: Bei Verwendung der Azure Integration Runtime können Sie [bis zu 256 Datenintegrationseinheiten (DIUs)](#data-integration-units) serverlos für jede Kopieraktivität angeben. Wenn Sie die selbstgehostete Integration Runtime nutzen, können Sie den Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](create-self-hosted-integration-runtime.md#high-availability-and-scalability)). Bei einer einzelnen Kopieraktivität wird die Dateigruppe dann auf alle Knoten verteilt.
-- Für eine Kopieraktivität werden mehrere Threads genutzt, um für den Datenspeicher Lese- und Schreibvorgänge durchzuführen.
 - Mit der ADF-Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden, z. B. per [foreach-Schleife](control-flow-for-each-activity.md).
+- Für eine Kopieraktivität können skalierbare Computeressourcen genutzt werden: Bei Verwendung der Azure Integration Runtime können Sie [bis zu 256 Datenintegrationseinheiten (DIUs)](#data-integration-units) serverlos für jede Kopieraktivität angeben. Wenn Sie die selbstgehostete Integration Runtime nutzen, können Sie den Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](create-self-hosted-integration-runtime.md#high-availability-and-scalability)). Bei einer einzelnen Kopieraktivität wird die Dateigruppe dann auf alle Knoten verteilt.
+- Für eine einzelne Kopieraktivität werden mehrere Threads [parallel](#parallel-copy) genutzt, um für den Datenspeicher Lese- und Schreibvorgänge durchzuführen.
 
 ## <a name="performance-tuning-steps"></a>Schritte zur Optimierung der Leistung
 
 Führen Sie diese Schritte aus, um die Leistung des Azure Data Factory-Diensts mit der Kopieraktivität zu verbessern.
 
-1. **Einrichten einer Baseline**. Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Sammeln Sie Ausführungsdetails und Leistungsmerkmale, und folgen Sie dabei der [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
+1. **Wählen Sie ein Testdataset aus, und legen Sie eine Baseline fest.** Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Das ausgewählte Dataset sollte die üblichen Datenmuster widerspiegeln (Ordnerstruktur, Dateimuster, Datenschema usw.) und groß genug sein, um die Kopierleistung bewerten zu können (also ob eine Kopieraktivität 10 Minuten oder länger dauert). Sammeln Sie Ausführungsdetails und Leistungsmerkmale, und folgen Sie dabei der [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
 
 2. **So maximieren Sie die Leistung einer einzelnen Kopieraktivität**:
 
@@ -78,7 +78,7 @@ Führen Sie diese Schritte aus, um die Leistung des Azure Data Factory-Diensts m
 
    Die Kopieraktivität sollte beim Erhöhen des Werts der DIU-Einstellung nahezu vollkommen linear skaliert werden.  Wenn Sie durch die Verdoppelung des Wertes der DIU-Einstellung nicht den doppelten Durchsatz erhalten, kann dies zwei Ursachen haben:
 
-   - Das ausgeführte spezifische Kopiermuster profitiert nicht vom Hinzufügen weiterer DIUs.  Trotz der Angabe eines größeren DIU-Werts blieben die tatsächlich genutzten DIUs unverändert, und daher erhalten Sie denselben Durchsatz wie zuvor.  Wenn dies der Fall ist, fahren Sie mit Schritt 3 fort.
+   - Das ausgeführte spezifische Kopiermuster profitiert nicht vom Hinzufügen weiterer DIUs.  Trotz der Angabe eines größeren DIU-Werts blieben die tatsächlich genutzten DIUs unverändert, und daher erhalten Sie denselben Durchsatz wie zuvor.  In diesem Fall maximieren Sie den aggregierten Durchsatz durch paralleles Ausführen mehrerer Kopiervorgänge (siehe Schritt 3).
    - Durch das Hinzufügen weiterer DIUs (mehr Leistung), was eine höhere Geschwindigkeit beim Extrahieren, Übertragen und Laden von Daten bewirkt, wurde ein Engpass des Quelldatenspeichers, des Zieldatenspeichers oder des dazwischen liegenden Netzwerks Engpass erreicht und möglicherweise fand eine Drosselung statt.  Wenn dies der Fall ist, wenden Sie sich an Ihren Datenspeicheradministrator oder Netzwerkadministrator, um die Obergrenze heraufzusetzen, oder verringern Sie den Wert der DIU-Einstellung, bis keine Drosselung mehr auftritt.
 
    **Bei Ausführung der Kopieraktivität in einer selbstgehosteten Integration Runtime:**
@@ -90,7 +90,7 @@ Führen Sie diese Schritte aus, um die Leistung des Azure Data Factory-Diensts m
    Wenn Sie einen höheren Durchsatz erreichen möchten, können Sie die selbstgehostete Integration Runtime zentral hochskalieren oder horizontal hochskalieren:
 
    - Wenn die CPU und der verfügbare Arbeitsspeicher auf dem Knoten der selbstgehosteten Integration Runtime nicht vollständig genutzt werden, bei der Ausführung paralleler Aufträge jedoch das Limit erreicht wird, führen Sie eine zentrale Hochskalierung aus, indem Sie die Anzahl der parallelen Aufträge vergrößern, die auf einem Knoten ausgeführt werden können.  Anweisungen dazu finden Sie [hier](create-self-hosted-integration-runtime.md#scale-up).
-   - Ist hingegen die CPU-Auslastung auf dem Knoten der selbstgehosteten Integration Runtime hoch und der verfügbare Arbeitsspeicher gering, können Sie einen neuen Knoten hinzufügen, um die Last über mehrere Knoten horizontal hochzuskalieren.  Anweisungen dazu finden Sie [hier](create-self-hosted-integration-runtime.md#high-availability-and-scalability).
+   - Ist jedoch die CPU-Auslastung auf dem Knoten der selbstgehosteten IR hoch und der verfügbare Arbeitsspeicher gering, können Sie einen neuen Knoten hinzufügen, um die Last über mehrere Knoten horizontal zu skalieren.  Anweisungen dazu finden Sie [hier](create-self-hosted-integration-runtime.md#high-availability-and-scalability).
 
    Wenn Sie die Kapazität der selbstgehosteten Integration Runtime zentral oder horizontal hochskalieren, wiederholen Sie den Leistungstestlauf, um festzustellen, ob Sie einen zunehmend besseren Durchsatz erzielen.  Wenn sich der Durchsatz nicht mehr verbessert, hat höchstwahrscheinlich der Quelldatenspeicher, der Zieldatenspeicher oder das dazwischenliegende Netzwerk einen Engpass erreicht, und eine Drosselung setzt ein. Wenn dies der Fall ist, wenden Sie sich an Ihren Datenspeicheradministrator oder Netzwerkadministrator, um die Obergrenze heraufzusetzen. Alternativ können Sie auch zur vorherigen Skalierungseinstellung für die selbstgehostete Integration Runtime zurückkehren. 
 
@@ -98,9 +98,7 @@ Führen Sie diese Schritte aus, um die Leistung des Azure Data Factory-Diensts m
 
    Nun haben Sie die Leistung einer einzelnen Kopieraktivität maximiert. Wenn Sie die Durchsatzobergrenzen Ihrer Umgebung (Netzwerk, Quelldatenspeicher und Zieldatenspeicher) noch nicht erreicht haben, können Sie mit ADF-Flusssteuerungskonstrukten wie [Für jede Schleife](control-flow-for-each-activity.md) mehrere Kopieraktivitäten parallel ausführen.
 
-4. **Analysieren und Optimieren der Leistung.** Sollte die Leistung in der Praxis nicht Ihren Erwartungen entsprechen, identifizieren Sie Leistungsengpässe. Anschließend können Sie die Leistung optimieren, um Engpässe zu beseitigen oder deren Auswirkungen zu minimieren.
-
-   In einigen Fällen wird bei der Ausführung einer Kopieraktivität in Azure Data Factory oben auf der [Seite zur Überwachung der Kopieraktivität](copy-activity-overview.md#monitor-visually) die Meldung „Tipps zur Leistungsoptimierung“ angezeigt, wie im folgenden Beispiel gezeigt. Die Meldung informiert Sie über den Engpass, der für die jeweilige Kopierausführung identifiziert wurde. Zudem enthält sie Ratschläge, was Sie ändern können, um die Kopierdurchsatz zu steigern. Die Tipps zur Leistungsoptimierung bieten derzeit Vorschläge wie:
+4. **Tipps zur Leistungsoptimierung und Optimierungsfeatures.** In einigen Fällen wird bei der Ausführung einer Kopieraktivität in Azure Data Factory oben auf der [Seite zur Überwachung der Kopieraktivität](copy-activity-overview.md#monitor-visually) die Meldung „Tipps zur Leistungsoptimierung“ angezeigt, wie im folgenden Beispiel gezeigt. Die Meldung informiert Sie über den Engpass, der für die jeweilige Kopierausführung identifiziert wurde. Zudem enthält sie Ratschläge, was Sie ändern können, um die Kopierdurchsatz zu steigern. Die Tipps zur Leistungsoptimierung bieten derzeit Vorschläge wie:
 
    - Verwenden Sie PolyBase, wenn Sie Daten in Azure SQL Data Warehouse kopieren.
    - Erhöhen Sie die Azure Cosmos DB-Anforderungseinheiten oder Azure SQL-Datenbank-DTUs (Datenbankdurchsatzeinheiten), wenn die Ressource auf der Datenspeicherseite der Engpass ist.
@@ -114,12 +112,11 @@ Führen Sie diese Schritte aus, um die Leistung des Azure Data Factory-Diensts m
 
    ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-   Im Folgenden finden Sie einige allgemeine Aspekte. Eine vollständige Beschreibung der Leistungsdiagnose würde den Rahmen dieses Artikels sprengen.
+   Beachten Sie außerdem die folgenden Features für die Leistungsoptimierung:
 
-   - Features für die Leistungsoptimierung:
-     - [Parallele Kopie](#parallel-copy)
-     - [Datenintegrationseinheiten](#data-integration-units)
-     - [Gestaffeltes Kopieren](#staged-copy)
+   - [Parallele Kopie](#parallel-copy)
+   - [Datenintegrationseinheiten](#data-integration-units)
+   - [Gestaffeltes Kopieren](#staged-copy)
    - [Skalierbarkeit der selbstgehosteten Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Erweitern der Konfiguration auf das gesamte Dataset.** Wenn Sie mit den Ausführungsergebnissen und mit der Leistung zufrieden sind, können Sie die Definition und die Pipeline auf Ihr gesamtes Dataset erweitern.
@@ -136,7 +133,9 @@ Azure Data Factory bietet die folgenden Funktionen zur Leistungsoptimierung:
 
 Eine Datenintegrationseinheit ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Azure Data Factory. Die Datenintegrationseinheit gilt nur für die [Azure-Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime), aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-Die zulässige Anzahl von DIUs für eine Kopieraktivitätsausführung liegt zwischen 2 und 256. Wenn keine Angabe erfolgt, finden Sie in der folgenden Tabelle die Standard-DIUs, die in verschiedenen Kopierszenarien verwendet werden:
+Ihnen wird die **Anzahl der verwendeten DIUs \* Kopierdauer \* Einheitenpreis/DIU-Stunde** in Rechnung gestellt. Sehen Sie sich [hier](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) die aktuellen Preise an. Je nach Abonnementtyp können lokale Währungen und separate Rabatte gelten.
+
+Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt zwischen **2 und 256**. Wenn diese Option nicht angegeben ist oder Sie „Auto“ in der Benutzeroberfläche auswählen, wendet die Data Factory die optimale DIU-Einstellung dynamisch auf Grundlage des Quell-/Senkenpaars und des Datenmusters an. In der folgenden Tabelle werden die Standard-DIUs aufgelistet, die in verschiedenen Kopierszenarien verwendet werden:
 
 | Kopierszenario | Vom Dienst bestimmte Standard-DIUs |
 |:--- |:--- |
@@ -151,7 +150,7 @@ Sie können die für die einzelnen Kopierausführungen verwendeten DIUs in der A
 > [!NOTE]
 > Ein höherer Wert als vier für DIUs gilt derzeit nur, wenn Sie mehrere Dateien aus Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, Cloud-FTP oder Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher kopieren.
 
-**Beispiel**
+**Beispiel:**
 
 ```json
 "activities":[
@@ -173,10 +172,6 @@ Sie können die für die einzelnen Kopierausführungen verwendeten DIUs in der A
 ]
 ```
 
-#### <a name="data-integration-units-billing-impact"></a>Auswirkungen von Datenintegrationseinheiten auf die Abrechnung
-
-Denken Sie daran, dass die Berechnung der Gebühren auf der Gesamtdauer des Kopiervorgangs basiert. Die Gesamtdauer, die Ihnen für die Datenverschiebungen in Rechnung gestellt wird, ist die Summe der DIU-übergreifenden Dauer. Wenn ein Kopierauftrag mit zwei Cloudeinheiten bislang eine Stunde gedauert hat und nun mit acht Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus.
-
 ### <a name="parallel-copy"></a>Parallele Kopie
 
 Mithilfe der **parallelCopies** -Eigenschaft können Sie die gewünschte Parallelität für die Kopieraktivität angeben. Diese Eigenschaft können Sie sich als die maximale Anzahl von Threads in einer Kopieraktivität vorstellen, die parallel aus Quelldatenspeichern lesen oder in Senkendatenspeicher schreiben können.
@@ -193,6 +188,15 @@ Für jede Kopieraktivitätsausführung ermittelt Azure Data Factory die Anzahl p
 > Beim Kopieren von Daten zwischen dateibasierten Speichern bietet das Standardverhalten in der Regel den bestmöglichen Durchsatz. Das Standardverhalten wird automatisch basierend auf dem Muster Ihrer Quelldatei festgelegt.
 
 Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigenschaft **parallelCopies** angeben, um die Last für die Computer zu steuern, auf denen Ihre Datenspeicher gehostet werden, oder um die Kopierleistung zu optimieren. Der Wert muss eine ganze Zahl größer als oder gleich 1 sein. Zur Laufzeit verwendet die Kopieraktivität maximal den von Ihnen festgelegten Wert, um eine optimale Leistung zu erzielen.
+
+**Beachten Sie Folgendes:**
+
+- Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt darunter automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in **parallelCopies** zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
+- Beim Kopieren von Daten aus nicht dateibasierten Speichern (außer den Connectors für [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-Tabelle](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) als Quelle mit aktivierter Datenpartitionierung) in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies**-Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
+- Die **parallelCopies**-Eigenschaft ist orthogonal zu **dataIntegrationUnits**. Die erste Eigenschaft wird für alle Datenintegrationseinheiten gezählt.
+- Berücksichtigen Sie beim Angeben eines Werts für die **parallelCopies**-Eigenschaft die höhere Auslastung Ihrer Quell- und Senkendatenspeicher. Berücksichtigen Sie auch den Lastanstieg zur selbstgehosteten Integration Runtime, wenn die Kopieraktivität davon abhängt, z. B. bei Hybridkopiervorgängen. Dieser Lastanstieg tritt insbesondere auf, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder der selbstgehosteten Integration Runtime-Infrastruktur feststellen, verringern Sie den Wert **parallelCopies**, um die Last zu reduzieren.
+
+**Beispiel:**
 
 ```json
 "activities":[
@@ -213,13 +217,6 @@ Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigen
     }
 ]
 ```
-
-**Beachten Sie Folgendes:**
-
-* Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt darunter automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in **parallelCopies** zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
-* Beim Kopieren von Daten aus nicht dateibasierten Speichern (außer den Connectors für [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-Tabelle](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) als Quelle mit aktivierter Datenpartitionierung) in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies**-Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
-* Die **parallelCopies**-Eigenschaft ist orthogonal zu **dataIntegrationUnits**. Die erste Eigenschaft wird für alle Datenintegrationseinheiten gezählt.
-* Berücksichtigen Sie beim Angeben eines Werts für die **parallelCopies**-Eigenschaft die höhere Auslastung Ihrer Quell- und Senkendatenspeicher. Berücksichtigen Sie auch den Lastanstieg zur selbstgehosteten Integration Runtime, wenn die Kopieraktivität davon abhängt, z. B. bei Hybridkopiervorgängen. Dieser Lastanstieg tritt insbesondere auf, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder der selbstgehosteten Integration Runtime-Infrastruktur feststellen, verringern Sie den Wert **parallelCopies**, um die Last zu reduzieren.
 
 ### <a name="staged-copy"></a>gestaffeltem Kopieren
 
@@ -305,5 +302,5 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
-- [Schemazuordnung der Kopieraktivität](copy-activity-schema-and-type-mapping.md)
-- [Copy activity fault tolerance (Fehlertoleranz der Kopieraktivität)](copy-activity-fault-tolerance.md)
+- [Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md)
+- [Migrieren von Daten aus Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md)
