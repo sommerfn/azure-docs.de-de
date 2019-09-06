@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711245"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101125"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver
 
@@ -44,7 +43,7 @@ ms.locfileid: "60711245"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 In diesem Artikel wird beschrieben, wie Sie die virtuellen Computer bereitstellen und konfigurieren und einen GlusterFS-Cluster installieren, der zum Speichern der freigegebenen Daten eines hochverfügbaren SAP-Systems verwendet werden kann.
-In diesem Leitfaden wird das Einrichten des verteilten Dateisystems GlusterFS beschrieben, das von zwei SAP-Systemen (NW1 und NW2) verwendet wird. Bezüglich der Namen der Ressourcen (z. B. der virtuellen Computer und virtuellen Netzwerke) im Beispiel wird davon ausgegangen, dass Sie die [SAP-Dateiservervorlage][template-file-server] mit dem Ressourcenpräfix **glust** verwendet haben.
+In diesem Leitfaden wird das Einrichten des verteilten Dateisystems GlusterFS beschrieben, das von zwei SAP-Systemen (NW1 und NW2) verwendet wird. Bei den Namen der Ressourcen (z. B. der virtuellen Computer und virtuellen Netzwerke) im Beispiel wird davon ausgegangen, dass Sie die [SAP-Dateiservervorlage][template-file-server] mit dem Ressourcenpräfix **glust** verwendet haben.
 
 Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 
@@ -62,9 +61,9 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * SAP-Hinweis [2243692] enthält Informationen zur SAP-Lizenzierung unter Linux in Azure.
 * SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP unter Linux (dieser Artikel)][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP unter Linux][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP unter Linux (dieser Artikel)][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
 * [Produktdokumentation für Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * Allgemeine RHEL-Dokumentation
   * [Übersicht über das Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
@@ -352,8 +351,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Installieren der SAP ASCS-Instanz und der SAP-Datenbank](high-availability-guide-rhel.md)
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].
