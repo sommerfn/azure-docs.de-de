@@ -72,15 +72,15 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| fileUrl | Zeichenfolge | Der Pfad zur Erfassungsdatei. |
-| fileType | Zeichenfolge | Der Dateityp der Erfassungsdatei. |
-| partitionId | Zeichenfolge | Die Shard-ID. |
+| fileUrl | string | Der Pfad zur Erfassungsdatei. |
+| fileType | string | Der Dateityp der Erfassungsdatei. |
+| partitionId | string | Die Shard-ID. |
 | sizeInBytes | integer | Die Dateigröße. |
 | eventCount | integer | Die Anzahl der Ereignisse in der Datei. |
 | firstSequenceNumber | integer | Die kleinste Sequenznummer aus der Warteschlange. |
 | lastSequenceNumber | integer | Die größte Sequenznummer aus der Warteschlange. |
-| firstEnqueueTime | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
-| lastEnqueueTime | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
+| firstEnqueueTime | string | Die erste Zeit aus der Warteschlange. |
+| lastEnqueueTime | string | Die letzte Zeit aus der Warteschlange. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
