@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die Gebühr für eine Anforderungseinhei
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: 682273524269682f62cd386de1c9161888747f16
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093713"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240786"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Ermitteln der Gebühr für eine Anforderungseinheit in Azure Cosmos DB
 
@@ -176,7 +176,7 @@ Aktuell können Sie die Anforderungsgebühr im Azure-Portal nur für eine Abfrag
 
 1. [Erstellen Sie ein neues Azure Cosmos-Konto](create-mongodb-dotnet.md#create-a-database-account), und fügen Sie ihm Daten hinzu, oder wählen Sie ein vorhandenes Konto aus, das bereits Daten enthält.
 
-1. Wechseln Sie zum Bereich **Daten-Explorer**, und wählen Sie dann die gewünschte Sammlung aus.
+1. Wechseln Sie zum Bereich **Daten-Explorer**, und wählen Sie dann den gewünschten Container aus.
 
 1. Wählen Sie **Neue Abfrage**aus.
 

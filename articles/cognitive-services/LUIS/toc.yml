@@ -124,13 +124,13 @@
     - name: Planen der App
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Verfassen der App
+    - name: Erstellungs- und Laufzeitschlüssel
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
+    - name: Erstellen des App-Modells
       items:
         - name: Erstellungszyklus
           href: luis-concept-app-iteration.md
-        - name: Zusammenarbeit
-          displayName: 'shared, transfer, ownership, author, access, import'
-          href: luis-concept-collaborator.md
         - name: Versionsverwaltung
           href: luis-concept-version.md
           displayName: import
@@ -141,10 +141,10 @@
         - name: Entitäten
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Entitätsrollen
+          href: luis-concept-roles.md
         - name: Äußerungen
           href: luis-concept-utterance.md
-        - name: Rollen
-          href: luis-concept-roles.md
         - name: Vordefinierte Modelle
           href: luis-concept-prebuilt-model.md
     - name: Verbessern der App-Leistung
@@ -180,13 +180,6 @@
         - name: Entwurfsstrategien
           href: luis-concept-enterprise.md
           displayName: import
-    - name: Sicherheit
-      items:
-        - name: App-Zugriff
-          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
-          href: luis-concept-security.md
-        - name: Erstellung und Endpunktschlüssel
-          href: luis-concept-keys.md
 - name: Anleitungen
   items:
     - name: Starten einer neuen App
@@ -248,18 +241,22 @@
       href: luis-how-to-publish-app.md
     - name: Verwalten der App
       items:
-        - name: Verwenden von Abonnementschlüsseln mit Ihrer LUIS-App
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+        - name: Erstellungs- und Laufzeitschlüssel
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Verwalten von Versionen
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: Verwalten von Erstellern und Mitwirkenden
+        - name: Migrieren zum Erstellungsschlüssel
+          items:
+            - name: Übersicht
+              href: luis-migration-authoring.md
+            - name: Migrationsanleitung
+              href: luis-migration-authoring-steps.md
+        - name: Ersteller und Mitwirkende
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
-        - name: Authoringschlüssel verwalten
-          href: luis-how-to-account-settings.md
-        - name: Verteilen des Endpunktkontingents auf Schlüssel per Traffic Manager
+        - name: Mit Versionen
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: Mit Traffic Manager
           href: luis-traffic-manager.md
     - name: Migrieren einer API
       items:

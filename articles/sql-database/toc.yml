@@ -219,10 +219,16 @@
       items:
         - name: Dokumentation zu verwalteten Instanzen
           href: sql-database-managed-instance-index.yml
-        - name: 'Verwaltete Instanz: Funktionen'
+        - name: Übersicht über verwaltete Instanzen
           href: sql-database-managed-instance.md
         - name: Häufig gestellte Fragen zu verwalteten Instanzen
           href: sql-database-managed-instance-faq.md
+        - name: Instanzpools
+          items:
+            - name: Übersicht über Instanzpools
+              href: sql-database-instance-pools.md
+            - name: Schrittanleitung für Instanzpools
+              href: sql-database-instance-pools-how-to.md
         - name: Referenz zur Verwaltungs-API
           href: sql-database-managed-instance-create-manage.md
         - name: Ressourceneinschränkungen

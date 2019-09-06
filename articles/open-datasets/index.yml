@@ -1,30 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Vorschauversion von öffentlichen Datasets
+### YamlMime:Landing
+title: Dokumentation zu Azure Open Datasets (Vorschauversion)
+summary: Azure Open Datasets bietet kuratierte und bereinigte Daten, die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können. Hierzu zählen beispielsweise Wetterdaten, Volkszählungen oder Feiertage.
 metadata:
-  title: 'Dokumentation zur Vorschauversion von öffentlichen Azure-Datasets: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Erfahren Sie, wie Sie öffentliche Azure-Datasets verwenden. Dabei handelt es sich um kuratierte und bereinigte Daten, die mit minimaler Vorbereitung verwendet werden können. Öffentliche Datasets sind öffentlich zugängliche Daten wie Wetter, Volkszählungen oder Feiertage, die Machine Learning-Modelle anreichern können. In Tutorials, Beispielen und API-Referenzdokumenten erfahren Sie, wie.'
-  ms.service: open-datasets
+  title: Dokumentation zu Open Datasets (Vorschauversion) – Azure
+  description: Azure Open Datasets bietet kuratierte und bereinigte Daten, die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können. Hierzu zählen beispielsweise Wetterdaten, Volkszählungen oder Feiertage.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: data-science-vm
   ms.topic: landing-page
+  ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 05/02/2019
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-abstract:
-  description: 'Erfahren Sie, wie Sie öffentliche Azure-Datasets verwenden. Dabei handelt es sich um kuratierte und bereinigte Daten, die mit minimaler Vorbereitung verwendet werden können. Öffentliche Datasets schließen öffentlich zugängliche Daten wie Wetter, Volkszählungen oder Feiertage ein, die Machine Learning-Modelle anreichern können. In Tutorials, Beispielen und API-Referenzdokumenten erfahren Sie, wie.'
-sections:
-  - title: Schritt-für-Schritt-Tutorial
-    items:
-      - type: paragraph
-        text: <a href="tutorial-opendatasets-automl">Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen</a>
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: <a href="samples">Notebooks zur Anreicherung von Datasets</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py">API-Referenz</a>'
+  ms.date: 09/03/2019
+  ms.openlocfilehash: a44b9bca7062e451c23453cacbe7042dacb4916c
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70274014"
+landingContent:
+- title: Informationen zu Azure Open Datasets
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Open Datasets?
+      url: overview-what-are-open-datasets.md
+    - text: Beispiele
+      url: samples.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen
+      url: tutorial-opendatasets-automl.md
+- title: Erkunden des Referenzinhalts
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Python-API
+      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py

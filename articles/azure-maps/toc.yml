@@ -125,6 +125,14 @@
               href: map-events.md
             - name: Ermöglichen des Zugriffs auf Ihre App
               href: map-accessibility.md
+        - name: Zeichentools
+          items:
+            - name: Hinzufügen einer Symbolleiste zum Zeichnen
+              href: map-add-drawing-toolbar.md
+            - name: Festlegen von Optionen zum Zeichnen
+              href: set-drawing-options.md
+            - name: Abrufen von Formdaten
+              href: map-get-shape-data.md
         - name: Dienstmodule
           items:
             - name: Verwenden der Dienstmodule
@@ -198,7 +206,7 @@
 - name: Ressourcen
   items:
     - name: Nutzungsbedingungen für Azure Maps
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-Preise
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Preisrechner
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-Videos
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-Fallstudien
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-Glossar
       href: glossary.md
     - name: Dienstupdates

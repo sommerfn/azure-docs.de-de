@@ -1,57 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Blockchain-Dokumentation
+summary: Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain verwenden, um damit Blockchainawendungen in Azure zu erstellen, zu entwickeln und zu verwalten.
 metadata:
   title: 'Dokumentation zu Azure Blockchain: Tutorials, API-Referenz'
-  description: 'Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain verwenden, um damit Blockchainawendungen in Azure zu erstellen, zu entwickeln und zu verwalten.'
+  description: Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain verwenden, um damit Blockchainawendungen in Azure zu erstellen, zu entwickeln und zu verwalten.
   services: azure-blockchain
-  author: patricka
-  manager: femila
   ms.service: azure-blockchain
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationsartikeln erfahren Sie, wie Sie Azure Blockchain verwenden, um Blockchainanwendungen in Azure zu erstellen, zu entwickeln und zu nutzen.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Konsortiumsmitglieder in Azure erstellen und eine Verbindung mit diesen herstellen können.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/deploy.svg
-            text: Erstellen eines Konsortiumsmitglieds
-            href: /azure/blockchain/service/create-member
-          - image:
-              src: ./media/index/multi-connect.svg
-            text: Herstellen einer Verbindung mithilfe von MetaMask
-            href: /azure/blockchain/service/connect-metamask
-          - image:
-              src: ./media/index/cligeneric.svg
-            text: Herstellen einer Verbindung mithilfe von geth
-            href: /azure/blockchain/service/connect-geth
-          - image:
-              src: ./media/index/code-blocks.svg
-            text: Herstellen einer Verbindung mithilfe von Truffle
-            href: /azure/blockchain/service/connect-truffle
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Blockchainanwendungen in Azure erstellen, konfigurieren und entwickeln können.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/blockchain/service/send-transaction">Erstellen eines Azure Blockchain-Mitglieds und Senden einer Transaktion</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">REST-API</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: c5816bb2278c138a8df07c5c289d53a818614d86
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240838"
+landingContent:
+- title: Informationen zu Azure Blockchain
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist der Azure Blockchain-Dienst?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Private Blockchain-Konsortiumsnetzwerke
+      url: consortium.md
+    - text: Datenzugriff und -sicherheit
+      url: data-security.md
+    - text: Entwicklungstools
+      url: develop.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Erstellen eines Blockchainmitglieds (Portal)
+      url: create-member.md
+    - text: Erstellen eines Blockchainmitglieds (Befehlszeilenschnittstelle)
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: Herstellen einer Verbindung mithilfe von MetaMask und Bereitstellen eines Smart Contracts mithilfe von Remix
+      url: connect-metamask.md
+    - text: Herstellen einer Verbindung mit einem Transaktionsknoten mithilfe von Geth
+      url: connect-geth.md
+    - text: Herstellen einer Verbindung mit einem Transaktionsknoten mithilfe von Truffle
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: Verwenden von Smart Contracts für den Azure Blockchain Service
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: Bereitstellen und Konfigurieren Ihres Netzwerks
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: Schreiben und Testen von Smart Contracts mit Visual Studio Code
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: Senden von Daten an den Ledger
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: Veröffentlichen von Ereignissen und Ledgerdaten
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: Verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten von Blockchainmitgliedern (Befehlszeilenschnittstelle)
+      url: manage-cli.md
+    - text: Verwalten von Konsortiumsmitgliedern (PowerShell)
+      url: manage-consortium-powershell.md
+    - text: Konfigurieren von Transaktionsknoten
+      url: configure-transaction-nodes.md
+    - text: Konfigurieren des Active Directory-Zugriffs
+      url: configure-aad.md
+- title: API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/blockchain

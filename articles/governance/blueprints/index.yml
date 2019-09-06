@@ -1,49 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zum Azure Blueprints-Dienst
+### YamlMime:Landing
+title: Azure Blueprint – Dokumentation
+summary: Vereinfachen Sie Bereitstellungen, indem Sie Artefakte wie Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerungen und Richtlinien in einer einzelnen Blaupausendefinition verpacken.
 metadata:
-  title: 'Azure Blueprint-Dokumentation – Tutorials, API Reference'
-  description: 'Azure Blueprint ist ein Dienst in Azure, den Sie zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.'
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure Blueprint – Dokumentation
+  description: Vereinfachen Sie Bereitstellungen, indem Sie Artefakte wie Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerungen und Richtlinien in einer einzelnen Blaupausendefinition verpacken.
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 06/14/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: "Azure Blueprints unterstützt Sie beim Bereitstellen und Aktualisieren von Cloudumgebungen auf wiederholbare Weise mit zusammensetzbaren Artefakten, z.\_B. Azure Resource Manager-Vorlagen zum Bereitstellen von Ressourcen, rollenbasierter Zugriffssteuerung und Richtlinien."
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Informationen zum Erstellen, Zuweisen und Verwalten von Blaupausendefinitionen in Azure'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure-Portal
-              src: ./media/portal.svg
-            text: Azure-Portal
-            href: create-blueprint-portal.md
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: create-blueprint-powershell.md
-          - image:
-              alt: REST
-              src: ./media/rest.svg
-            text: REST
-            href: create-blueprint-rest-api.md
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK für .NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/blueprints/">API-Referenz</a></p>
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239198"
+landingContent:
+- title: Informationen zu Azure Blueprints
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Blueprint?
+      url: ./overview.md
+    - text: Bereitstellungsphasen
+      url: ./concepts/deployment-stages.md
+    - text: Lebenszyklus einer Blaupause
+      url: ./concepts/lifecycle.md
+  - linkListType: video
+    links:
+    - text: 'Azure Friday: Übersicht über Azure Blueprints'
+      url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen einer neuen Blaupause (Portal)
+      url: ./create-blueprint-portal.md
+    - text: Erstellen einer neuen Blaupause (PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: Erstellen einer neuen Blaupause (REST-API)
+      url: ./create-blueprint-rest-api.md
+  - linkListType: tutorial
+    links:
+    - text: Verwenden eines Blaupausenbeispiels
+      url: ./tutorials/create-from-sample.md
+  - linkListType: deploy
+    links:
+    - text: Index der Blaupausenbeispiele
+      url: ./samples/index.md
+- title: Anpassen von Blaupausen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dynamische Parameter
+      url: ./concepts/parameters.md
+    - text: Sequenzieren von Artefakten
+      url: ./concepts/sequencing-order.md
+    - text: Sperren bereitgestellter Ressourcen
+      url: ./concepts/resource-locking.md
+  - linkListType: tutorial
+    links:
+    - text: Schützen neuer Ressourcen mit Sperren
+      url: ./tutorials/protect-new-resources.md
+- title: Weiterentwickeln zu einer skalierbaren Lösung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aktualisieren vorhandener Blaupausen
+      url: ./how-to/update-existing-assignments.md
+    - text: Verwalten von Zuweisungen mit PowerShell
+      url: ./how-to/manage-assignments-ps.md
+    - text: Importieren und Exportieren mit PowerShell
+      url: ./how-to/import-export-ps.md
+    - text: Implementieren von Blaupausenoperatoren
+      url: ./how-to/configure-for-blueprint-operator.md
+    - text: Verwalten von Blaupausen als Code
+      url: https://github.com/Azure/azure-blueprints/blob/master/README.md
+- title: Beteiligen
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: YouTube-Kanal zu Azure Governance
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: Produktfeature anfordern
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Tech Community für Azure Governance
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Blaupausenspezifische Funktionen
+      url: ./reference/blueprint-functions.md
+    - text: PowerShell-Modul (PSGallery)
+      url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure PowerShell
+      url: /powershell/module/az.blueprint/#blueprint
+    - text: REST-API
+      url: /rest/api/blueprints/
+    - text: .NET
+      url: /dotnet/api/overview/azure/blueprints/management

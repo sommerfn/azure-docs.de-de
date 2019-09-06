@@ -81,8 +81,10 @@
       items:
         - name: Integritätstest
           href: application-gateway-probe-overview.md
-        - name: Diagnose
+        - name: Diagnoseprotokolle und Back-End-Integrität
           href: application-gateway-diagnostics.md
+        - name: metrics
+          href: application-gateway-metrics.md
     - name: App Service-Web-App und Unterstützung mehrerer Mandanten
       href: application-gateway-web-app-overview.md
     - name: WebSocket-Unterstützung
@@ -225,6 +227,8 @@
           href: resource-health-overview.md
         - name: Verwenden von Log Analytics
           href: log-analytics.md
+        - name: Back-End-Integritätsprobleme
+          href: application-gateway-backend-health-troubleshooting.md
     - name: Migrieren von v1 zu v2
       href: migrate-v1-v2.md
 - name: Verweis

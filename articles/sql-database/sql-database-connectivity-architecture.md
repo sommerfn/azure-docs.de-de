@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: daa9937294cb3ffa594d83fbd56777bc8af8900a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 7f7eff0a8231d994a792ad20b02607c33db1833a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981460"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306156"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -67,15 +67,15 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | Australien, Mitte 2   | 20.36.113.0 |
 | Australien (Osten)       | 13.75.149.87, 40.79.161.1 |
 | Australien, Südosten | 191.239.192.109, 13.73.109.251 |
-| Brasilien Süd         | 104.41.11.5,191.233.200.14 |
+| Brasilien Süd         | 104.41.11.5, 191.233.200.14 |
 | Kanada, Mitte       | 40.85.224.249      |
 | Kanada, Osten          | 40.86.226.166      |
-| USA (Mitte)           | 13.67.215.62, 52.182.137.15 , 23.99.160.139, 104.208.16.96 | 
+| USA (Mitte)           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96 | 
 | China, Osten           | 139.219.130.35     |
 | China, Osten 2         | 40.73.82.1         |
 | China, Norden          | 139.219.15.17      |
 | China, Norden 2        | 40.73.50.0         |
-| Asien, Osten            | 191.234.2.139, 52.175.33.150,13.75.32.4 |
+| Asien, Osten            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA (Ost) 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0,  191.239.224.107, 104.208.150.3 | 
 | Frankreich, Mitte       | 40.79.137.0, 40.79.129.1 |
@@ -84,16 +84,16 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | Indien, Mitte        | 104.211.96.159     |
 | Indien, Süden          | 104.211.224.146    |
 | Indien, Westen           | 104.211.160.80     |
-| Japan, Osten           | 13.78.61.196, 40.79.184.8, 13.78.106.224 , 191.237.240.43, 40.79.192.5 | 
-| Japan, Westen           | 104.214.148.156, 40.74.100.192 | 191.238.68.11,40.74.97.10 | 
+| Japan, Osten           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
+| Japan, Westen           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea, Mitte        | 52.231.32.42       |
 | Korea, Süden          | 52.231.200.86      |
 | USA Nord Mitte     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Nordeuropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Südafrika, Norden   | 102.133.152.0      |
 | Südafrika, Westen    | 102.133.24.0       |
-| USA Süd Mitte     | 13.66.62.124 , 23.98.162.75, 104.214.16.32   | 
-| Südostasien      | 104.43.15.0 , 23.100.117.95, 40.78.232.3   | 
+| USA Süd Mitte     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| Südostasien      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | VAE, Mitte          | 20.37.72.64        |
 | Vereinigte Arabische Emirate, Norden            | 65.52.248.0        |
 | UK, Süden             | 51.140.184.11      |

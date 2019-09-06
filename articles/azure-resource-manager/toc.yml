@@ -60,9 +60,6 @@
   items:
     - name: Vorlagenbereitstellung
       href: template-deployment-overview.md
-    - name: Vorlagendateistruktur
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: Bewährte Methoden für Vorlagen
       href: template-best-practices.md
     - name: Vorlagen für Cloudkonsistenz
@@ -85,26 +82,38 @@
   items:
     - name: Erstellen von Vorlagen
       items:
-        - name: 'Entwicklungstool: VS Code'
+        - name: Verwenden von Visual Studio Code
           href: resource-manager-tools-vs-code.md
-        - name: Erstellen der Vorlage
-          href: how-to-create-template.md
-        - name: Name und Typ der untergeordneten Ressource
-          href: child-resource-name-type.md
-        - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: Definieren von Ressourcenabhängigkeiten
-          href: resource-group-define-dependencies.md
+        - name: Schreiben von Vorlagenausdrücken
+          href: template-expressions.md
+        - name: Parameter
+          href: template-parameters.md
+        - name: Variables
+          href: template-variables.md
+        - name: Benutzerdefinierte Funktionen
+          href: template-user-defined-functions.md
+        - name: Ressourcen
+          items:
+            - name: Name und Typ der untergeordneten Ressource
+              href: child-resource-name-type.md
+            - name: Bedingte Bereitstellung
+              href: conditional-resource-deployment.md
+            - name: Festlegen von Ressourcenabhängigkeiten
+              href: resource-group-define-dependencies.md
+            - name: Festlegen des Ressourcenspeicherorts
+              href: resource-location.md
+            - name: Verwenden von Vorlagenerweiterungen
+              href: resource-manager-use-extensions.md
+        - name: Ausgaben
+          href: template-outputs.md
         - name: Modularisieren von Vorlagen
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: Erstellen mehrerer Instanzen
           href: resource-group-create-multiple.md
-        - name: Verwenden von Vorlagenerweiterungen
-          href: resource-manager-use-extensions.md
-        - name: Aktualisieren von Ressourcen
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: Bereitstellen von Vorlagen
       items:
         - name: 'Bereitstellen: Portal'
@@ -244,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: Verweis
   items:
+    - name: Vorlagendateistruktur
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: Vorlagenreferenz
       href: /azure/templates/
     - name: Funktionen von Azure-Ressourcen-Manager-Vorlagen

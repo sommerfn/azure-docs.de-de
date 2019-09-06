@@ -1,18 +1,18 @@
 ---
 title: Support für das Portal des kommerziellen Marketplace im Partner Center
 description: Erfahren Sie mehr über Ihre Supportoptionen im Partner Center, einschließlich der Möglichkeit, eine Supportanfrage zu stellen.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: 355694f7f1d5fe0588c6f93bcbdb47f3086aec79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957587"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195250"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Support für das Programm „Kommerzieller Marketplace“ im Partner Center
 

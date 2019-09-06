@@ -3,15 +3,15 @@ title: Azure Resource Manager-Vorlagenfunktionen – Bereitstellung | Microsoft 
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9cf81058d79d474a4d61195850636e428a1dbd0d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206466"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194353"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
@@ -248,11 +248,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| stringOutput | string | option 1 |
+| stringOutput | Zeichenfolge | option 1 |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | string | option 1 |
+| crossOutput | Zeichenfolge | option 1 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -277,7 +277,7 @@ Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variab
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| variableName |Ja |string |Der Name der zurückzugebenden Variable. |
+| variableName |Ja |Zeichenfolge |Der Name der zurückzugebenden Variable. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -351,9 +351,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| exampleOutput1 | string | myVariable |
+| exampleOutput1 | Zeichenfolge | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | string | myVariable |
+| exampleOutput3 | Zeichenfolge | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:

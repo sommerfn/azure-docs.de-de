@@ -69,6 +69,7 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: '(Vorschauversion) <a href="/azure/sql-database/sql-database-instance-pools">Instanzpools</a>: Eine praktische und kostengünstige Möglichkeit, um kleinere SQL-Instanzen zur Cloud zu migrieren.'
           - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuelle Kerne auf Hardware der Gen5-Generation</a>'
           - html: 'Unterstützung für Abonnements mit <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > monatlicher Azure-Gutschrift für Visual Studio-Abonnenten </a>'
           - html: 'Unterstützung für <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 und SharePoint 2019 </a> und <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>'

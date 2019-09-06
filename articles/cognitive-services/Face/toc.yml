@@ -9,12 +9,8 @@
   items:
     - name: Verwenden des Client-SDK
       items:
-        - name: Gesichtserkennung in einem Bild
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: .NET SDK
+          href: Quickstarts/csharp-sdk.md
         - name: Python SDK
           href: QuickStarts/python-sdk.md
     - name: Verwenden der REST-API

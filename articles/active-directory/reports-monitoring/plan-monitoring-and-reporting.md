@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f974b3564857a439f1ac1c40ddd572633b761862
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6d24a4ab74f7957c068fc664fc4e8898c525afcb
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879862"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162539"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -164,8 +164,6 @@ In diesem Abschnitt finden Sie die Dokumentationen zu den unterschiedlichen Bere
 ### <a name="consume-and-archive-azure-ad-logs"></a>Nutzen und Archivieren von Azure AD-Protokollen
 
 [Speicherorte von Aktivitätsberichten im Azure-Portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
-
-[Verwenden des Power BI-Inhaltspakets für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack)
 
 [Tutorial: Archivieren von Azure AD-Protokollen in einem Azure-Speicherkonto](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
 

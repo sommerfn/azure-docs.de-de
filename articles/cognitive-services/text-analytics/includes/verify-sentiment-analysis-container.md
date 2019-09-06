@@ -1,27 +1,27 @@
 ---
 title: Überprüfen der Stimmungsanalyse-Containerinstanz
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie die Stimmungsanalyse-Containerinstanz überprüfen.
+description: Erfahren Sie, wie Sie die Standpunktanalyse-Containerinstanz überprüfen.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: cbc5ad63dd944eb53d3a8052e75744cb5c3709ea
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377381"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051167"
 ---
 ## <a name="verify-the-sentiment-analysis-container-instance"></a>Überprüfen der Stimmungsanalyse-Containerinstanz
 
 1. Wählen Sie die Registerkarte **Übersicht** aus, und kopieren Sie die IP-Adresse.
 1. Öffnen Sie eine neue Registerkarte im Browser, und geben Sie die IP-Adresse ein. Geben Sie zum Beispiel `http://<IP-address>:5000 (http://55.55.55.55:5000`) ein. Die Homepage des Containers wird angezeigt, in der Sie erkennen, dass der Container ausgeführt wird.
 
-    ![Anzeigen der Homepage des Containers, um sicherzustellen, dass er ausgeführt wird](../media/how-tos/container-instance/swagger-docs-on-container.png).
+    ![Anzeigen der Homepage des Containers, um sicherzustellen, dass er ausgeführt wird](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
 1. Klicken Sie auf den Link **Dienst-API-Beschreibung**, um die Swagger-Seite des Containers aufzurufen.
 
@@ -63,11 +63,11 @@ ms.locfileid: "68377381"
     }
     ```
 
-1. Legen Sie für **showStats** „true“ fest.
+1. Legen Sie **showStats** auf `true` fest.
 
 1. Wählen Sie **Ausführen** aus, um die Stimmung des Texts zu bestimmen.
 
-    Das im Container enthaltene Modell erzeugt einen Bewertungsbereich von 0 bis 1, wobei 0 negativ und 1 positiv ist.
+    Das im Container enthaltene Modell erzeugt einen Bewertungsbereich von 0 bis 1, wobei 0 eine negative und 1 eine positive Stimmung ist.
 
     Die zurückgegebene JSON-Antwort enthält die Stimmung für die aktualisierte Texteingabe:
 
@@ -93,4 +93,4 @@ ms.locfileid: "68377381"
     }
     ```
 
-Das Dokument `id` der in der Antwort enthaltenen JSON-Daten kann nun mit dem ursprünglichen Dokument `id` in Korrelation gebracht werden. Eine Bewertung von über `.98` weist auf eine stark positive Stimmung hin.
+Das Dokument `id` der in der Antwort enthaltenen JSON-Daten kann nun mit dem ursprünglichen Dokument `id` in Korrelation gebracht werden. Eine Bewertung von über `0.98` weist auf eine sehr positive Stimmung hin.
