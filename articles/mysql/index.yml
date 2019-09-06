@@ -1,60 +1,145 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Azure-Datenbank für MySQL
+### YamlMime:Landing
+title: Dokumentation zu Azure Database for MySQL
+summary: Azure Database for MySQL ist ein relationaler Datenbankdienst, der von der MySQL Community-Edition unterstützt wird.  Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung und dynamischer Skalierung verarbeiten. Beim Entwickeln von Anwendungen mit Azure Database for MySQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für MySQL verwenden.
 metadata:
-  document_id: 8d915ae6-9101-ad37-0736-3eaa59c2dd34
-  title: 'Dokumentation für Azure MySQL – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Azure Database for MySQL ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der auf der Open-Source-MySQL-Datenbank-Engine basiert.'
+  description: Azure Database for MySQL ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der von der MySQL Community-Edition unterstützt wird.
   author: ajlam
   ms.author: andrela
+  ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.date: 02/25/2019
-abstract:
-  description: 'Azure Database for MySQL ist ein relationaler Datenbankdienst, der auf der Open-Source-Engine für den MySQL-Server basiert.  Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung und dynamischer Skalierung verarbeiten. Beim Entwickeln von Anwendungen mit Azure Database for MySQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für MySQL verwenden.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Informationen zum Erstellen einer Instanz von MySQL Database on Azure mithilfe folgender Ressourcen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Azure-Portal
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure-Befehlszeilenschnittstelle
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Ihre Datenbank entwerfen und Apps entwickeln:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Erstellen einer Datenbank&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure-Portal</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
-          - html: 'Erstellen einer Web-App&#58; <a href="https://portal.azure.com/#create/hub">WordPress – Portal</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP – Azure CLI</a>'
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/mysql/sample-scripts-azure-cli">Azure-Befehlszeilenschnittstelle</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/mysql">Azure-Befehlszeilenschnittstelle</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/mysql">REST-API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbformysql/allversions">Resource Manager-Vorlagen</a></p>
+  ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309285"
+landingContent:
+- title: Informationen zu Azure Database for MySQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure-Datenbank für MySQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Zu unserem Blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Erstellen eines Servers
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Servers über das Azure-Portal
+      url: quickstart-create-mysql-server-database-using-azure-portal.md
+    - text: Erstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+      url: quickstart-create-mysql-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu Tarifen
+      url: concepts-pricing-tiers.md
+    - text: Grundlegendes zu den Beschränkungen
+      url: concepts-limits.md
+    - text: Grundlegendes zu unterstützten MySQL-Versionen
+      url: concepts-supported-versions.md
+    - text: Konfigurieren von Serverparametern
+      url: howto-server-parameters.md
+    - text: Planen für Hochverfügbarkeit
+      url: concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Entwerfen einer Datenbank über das Azure-Portal
+      url: tutorial-design-database-using-portal.md
+    - text: Entwerfen einer Datenbank über die Azure-Befehlszeilenschnittstelle
+      url: tutorial-design-database-using-cli.md
+    - text: Bereitstellen von Wordpress in Containern
+      url: ../app-service/containers/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+    - text: Erstellen einer Web-App mit PHP über die Azure-Befehlszeilenschnittstelle
+      url: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: Sichern und Migrieren von Daten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sichern und Wiederherstellen
+      url: concepts-backup.md
+    - text: Migrieren durch Sicherungen und Wiederherstellungen
+      url: concepts-migrate-dump-restore.md
+    - text: Migrieren durch Import und Export
+      url: concepts-migrate-import-export.md
+  - linkListType: how-to-guide
+    links:
+    - text: Wiederherstellen eines Servers über das Azure-Portal
+      url: howto-restore-server-portal.md
+    - text: Wiederherstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+      url: howto-restore-server-cli.md
+    - text: Migrationen mit minimaler Downtime
+      url: howto-migrate-online.md
+- title: Herstellen einer Verbindung mit Azure-Datenbank für MySQL
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zur Firewall
+      url: concepts-firewall-rules.md
+    - text: Grundlegendes zu SSL
+      url: concepts-ssl-connection-security.md
+    - text: Grundlegendes zu virtuellen Netzwerken
+      url: concepts-data-access-and-security-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen von Firewallregeln
+      url: howto-manage-firewall-using-portal.md
+    - text: Konfigurieren der SSL-Konnektivität
+      url: howto-configure-ssl.md
+    - text: Herstellen einer Verbindung mit einer vorhandenen Azure App Service-Instanz
+      url: howto-connect-webapp.md
+    - text: Verbindungszeichenfolgen
+      url: howto-connection-string.md
+    - text: Beheben von Verbindungsproblemen
+      url: howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: Herstellen einer Verbindung über MySQL Workbench
+      url: connect-workbench.md
+    - text: Herstellen einer Verbindung unter Verwendung von PHP
+      url: connect-php.md
+    - text: Herstellen einer Verbindung unter Verwendung von Java
+      url: connect-java.md
+    - text: Herstellen einer Verbindung unter Verwendung von .NET
+      url: connect-csharp.md
+    - text: Herstellen einer Verbindung unter Verwendung von Python
+      url: connect-python.md
+    - text: Herstellen einer Verbindung unter Verwendung von Node.js
+      url: connect-nodejs.md
+    - text: Herstellen einer Verbindung unter Verwendung von Ruby
+      url: connect-ruby.md
+    - text: Herstellen einer Verbindung unter Verwendung von C++
+      url: connect-cpp.md
+    - text: Herstellen einer Verbindung unter Verwendung von Go
+      url: connect-go.md
+- title: Replizieren von Daten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zur Datenreplikation
+      url: concepts-data-in-replication.md
+    - text: Grundlegendes zu Lesereplikaten
+      url: concepts-read-replicas.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren der Replikation eingehender Daten
+      url: howto-data-in-replication.md
+    - text: Erstellen eines Lesereplikats über das Azure-Portal
+      url: howto-read-replicas-portal.md
+- title: Programmieren mit Programmier-APIs
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure CLI-Skripts für allgemeine Aufgaben
+      url: /azure/mysql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI-Entwicklerreferenz
+      url: /rest/api/mysql/
+    - text: REST-API-Entwicklerreferenz
+      url: /cli/azure/mysql
+    - text: Azure-Ressourcen-Manager-Vorlagen
+      url: /azure/templates/microsoft.dbformysql/allversions
