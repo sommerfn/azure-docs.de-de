@@ -455,6 +455,10 @@
           items:
             - name: 1. Abfragen von Daten
               href: tutorial-query-graph.md
+        - name: Verweis
+          items:
+            - name: Antwortheader
+              href: gremlin-headers.md
         - name: Anleitungen
           items:
             - name: Modellierung von Diagrammdaten
