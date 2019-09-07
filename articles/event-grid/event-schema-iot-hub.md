@@ -150,14 +150,14 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | data | object | IoT Hub-Ereignisdaten.  |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
