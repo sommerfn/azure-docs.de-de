@@ -142,19 +142,19 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der Amazon Business-Unternehmenswebsite an.
 
-1. Klicken Sie auf das **** Benutzerprofil, und wählen Sie **Business Settings** (Unternehmenseinstellungen) aus.
+1. Klicken Sie auf **das Benutzer** Profil, **und wählen**Sie Geschäfts Einstellungen aus.
 
     ![Benutzerprofil](media/amazon-business-tutorial/user-profile.png)
 
-1. Wählen Sie im Assistentenfür **Systemintegrationen** die Option für **** einmaliges Anmelden (Single Sign-On, SSO) aus.
+1. Wählen Sie im Assistentenfür **Systemintegrationen** die Option für einmaliges Anmelden **(Single Sign-On, SSO)** aus.
 
     ![Einmaliges Anmelden (Single Sign-On, SSO)](media/amazon-business-tutorial/sso-settings.png)
 
-1. Wählen Sie im Einrichtungs-Assistenten **** für einmaliges Anmelden den Anbieter gemäß den Anforderungen Ihrer Organisation aus, und klicken Sie auf **Next** (Weiter).
+1. Wählen Sie im **Einrichtungs-Assistenten** für einmaliges Anmelden den Anbieter gemäß den Anforderungen Ihrer Organisation aus, und klicken Sie auf **Next** (Weiter).
 
     ![Standardgruppe](media/amazon-business-tutorial/default-group1.png)
 
-1. Wählen Sie im Assistenten **** zum Festlegen der Standardwerte für neue Benutzerkonten die Standardgruppe (**Default Group**) und anschließend die Standardkaufrolle (**Default Buying Role**) gemäß der Benutzerrolle in Ihrer Organisation aus. Klicken Sie anschließend auf **Next** (Weiter).
+1. Wählen Sie **im** Assistenten für neue Benutzerkonten Standard die **Standardgruppe** aus, und **wählen Sie dann** standardmäßige Kauf Rolle gemäß der Benutzerrolle in Ihrer Organisation aus, und klicken Sie auf **Als**nächstes.
 
     ![Standardgruppe](media/amazon-business-tutorial/dafault-group2.png)
 
@@ -162,7 +162,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Verbindungsdaten](media/amazon-business-tutorial/connection-data1.png)
 
-1. Nach dem Hochladen der heruntergeladenen Metadatendatei werden die Felder im Abschnitt für die Verbindungsdaten **** automatisch aufgefüllt. Klicken Sie danach auf **Next** (Weiter).
+1. Nachdem Sie die heruntergeladene Metadatendatei hochgeladen haben ,**werden** die Felder im Abschnitt "Verbindungsdaten" automatisch aufgefüllt. Klicken Sie danach auf **Next** (Weiter).
 
     ![Verbindungsdaten](media/amazon-business-tutorial/connection-data2.png)
 
@@ -178,7 +178,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Verbindung](media/amazon-business-tutorial/amazon-connect.png)
 
-1. Überprüfen Sie den Status **** der konfigurierten Schritte, und klicken Sie auf **Start testing** (Test starten).
+1. Überprüfen Sie **den** Status der Schritte, die konfiguriert wurden, und **klicken Sie**auf Test starten.
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection1.png)
 
@@ -194,7 +194,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection4.png)
 
-1. Abschließend wird im Abschnitt **** mit den SSO-Verbindungsdetails der **** Status **Active** (Aktiv) angezeigt.
+1. Schließlich wird im **Abschnitt SSO-** Verbindungsdetails **der** Status als **aktiv**angezeigt.
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection5.png)
 

@@ -95,12 +95,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| namespaceName | Zeichenfolge | Der Service Bus-Namespace, in dem sich die Ressource befindet. |
-| requestUri | Zeichenfolge | Der URI für die spezifische Warteschlange oder das Abonnement, von der bzw. von dem das Ereignis ausgegeben wird. |
-| entityType | Zeichenfolge | Die Art der Service Bus-Entität, die Ereignisse ausgibt (Warteschlange oder Abonnement). |
-| queueName | Zeichenfolge | Die Warteschlange mit aktiven Nachrichten, falls eine Warteschlange abonniert wird. Bei Verwendung von Themen/Abonnements ist der Wert NULL. |
-| topicName | Zeichenfolge | Das Thema, zu dem das Service Bus-Abonnement mit aktiven Nachrichten gehört. Bei Verwendung einer Warteschlange ist der Wert NULL. |
-| subscriptionName | Zeichenfolge | Das Service Bus-Abonnement mit aktiven Nachrichten. Bei Verwendung einer Warteschlange ist der Wert NULL. |
+| namespaceName | string | Der Service Bus-Namespace, in dem sich die Ressource befindet. |
+| requestUri | string | Der URI für die spezifische Warteschlange oder das Abonnement, von der bzw. von dem das Ereignis ausgegeben wird. |
+| entityType | string | Die Art der Service Bus-Entität, die Ereignisse ausgibt (Warteschlange oder Abonnement). |
+| queueName | string | Die Warteschlange mit aktiven Nachrichten, falls eine Warteschlange abonniert wird. Bei Verwendung von Themen/Abonnements ist der Wert NULL. |
+| topicName | string | Das Thema, zu dem das Service Bus-Abonnement mit aktiven Nachrichten gehört. Bei Verwendung einer Warteschlange ist der Wert NULL. |
+| subscriptionName | string | Das Service Bus-Abonnement mit aktiven Nachrichten. Bei Verwendung einer Warteschlange ist der Wert NULL. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

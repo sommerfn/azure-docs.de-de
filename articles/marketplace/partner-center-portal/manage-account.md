@@ -1,18 +1,18 @@
 ---
 title: Verwalten eines Kontos im kommerziellen Marketplace in Partner Center
 description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Partner Center verwalten
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: e0c9f1fcf2d9d7e806645f1bdf9e8a6c74245a60
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 08/30/2019
+ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619337"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259191"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center 
 
@@ -149,7 +149,7 @@ Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Nachverfolg
 
 Partner Center nutzt [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) für den Zugriff auf und die Verwaltung von Mehrbenutzerkonten. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft. 
 
-## <a name="manage-users"></a>Benutzer verwalten
+## <a name="manage-users"></a>Verwalten von Benutzern
 
 Im Abschnitt **Benutzer** im Partner Center (unter **Kontoeinstellungen**) können Sie Azure AD verwenden, um die Benutzer, Gruppen und Azure AD-Anwendungen zu verwalten, die über Zugriff auf Ihr Partner Center-Konto verfügen. Um Benutzer zu verwalten, müssen Sie bei Ihrem [Geschäftskonto](./company-work-accounts.md) (dem zugeordneten Azure AD-Mandanten) angemeldet sein. Zum Verwalten von Benutzern in einem anderen Geschäftskonto/Mandanten müssen Sie sich abmelden und dann als Benutzer mit **Manager**-Berechtigungen für das betreffende Geschäftskonto/den betreffenden Mandanten wieder anmelden. 
 
@@ -300,31 +300,21 @@ Wenn Ihre Azure AD-Anwendung Daten in Microsoft Azure AD liest und schreibt, ben
 4.  Wenn Sie weitere Schlüssel erstellen möchten, wählen Sie **Weiteren Schlüssel hinzufügen** aus.
 
 
-### <a name="define-user-roles-and-permissions"></a>Definieren von Benutzerrollen und Berechtigungen
+## <a name="define-user-roles-and-permissions"></a>Definieren von Benutzerrollen und Berechtigungen
 
-Im Programm „Kommerzieller Marketplace“ in Partner Center können den Benutzern Ihres Unternehmens die folgenden Rollen und Berechtigungen zugewiesen werden. 
+Im Programm „Kommerzieller Marketplace“ für Partner Center können den Benutzern Ihres Unternehmens die folgenden Rollen und Berechtigungen zugewiesen werden:
 
-Die AAD-Mandantenrollen (Azure Active Directory) umfassen die Rollen als globaler Administrator und Benutzeradministrator sowie CSP-Rollen. Bei Nicht-AAD-Rollen handelt es sich um die Rollen, die keinen Mandanten verwalten. Dazu gehören MPN-Administrator, Geschäftsprofiladministrator, Verweisadministrator, Incentive-Administrator und Incentive-Benutzer.
+- **Manager**
+  - Kann auf alle Microsoft-Kontofeatures mit Ausnahme von Steuer- und Auszahlungseinstellungen zugreifen
+  - Kann Benutzer, Rollen und Geschäftskonten (Mandanten) verwalten
+- **Developer**
+  - Kann Angebote verwalten und veröffentlichen
+  - Kann einige Herausgeberberichte anzeigen
 
+> [!NOTE]
+> Für das Programm „Kommerzieller Marketplace“ werden die Rollen „Globaler Administrator“, „Mitwirkender im Geschäftsbereich“, „Mitwirkender im Finanzbereich“ und „Händler“ nicht verwendet. Das Zuweisen dieser Rollen zu Benutzern besitzt keine Auswirkungen. Nur die Rollen „Manager“ und „Developer“ erteilen Benutzern Berechtigungen.
 
-|**Rolle**|**Berechtigungen**|
-|----------------------------------|:---------------------------------|
-|Globaler Administrator|• Kann auf alle Microsoft-Konten/-Dienste mit vollständigen Berechtigungen zugreifen
-|      |• Erstellen von Supporttickets für das Partner Center
-||• Anzeigen von Vereinbarungen, Preislisten und Angeboten
-||• Anzeigen, Erstellen und Verwalten von Partnerbenutzern|
-|Manager|• Kann auf alle Microsoft-Kontofeatures mit Ausnahme von Steuer- und Auszahlungseinstellungen zugreifen
-|      |• Kann Benutzer, Rollen und Geschäftskonten (Mandanten) verwalten|
-|Developer|•    Kann Pakete hochladen, Apps und Add-Ons übermitteln und den Nutzungsbericht für Telemetriedetails anzeigen
-|      |• Kann nicht auf finanzielle Informationen oder Kontoeinstellungen zugreifen|
-|Mitwirkender im Geschäftsbereich|• Kann auf finanzielle Informationen zugreifen und Preisdetails festlegen
-|      |• Kann keine neuen Apps und Add-Ons erstellen oder übermitteln|
-|Mitwirkender im Finanzbereich|•    Kann Auszahlungsberichte anzeigen
-|      |•   Kann keine Änderungen an Apps oder Einstellungen vornehmen|
-|Vermarkter|• Kann auf Kundenrezensionen und Nicht-Finanzberichte reagieren
-|      |•   Kann keine Änderungen an Apps oder Einstellungen vornehmen|
-
-Weitere Informationen zum Verwalten von Rollen und Berechtigungen in anderen Bereichen von Partner Center, zum Beispiel Azure Active Directory (AD), Cloud Solution Provider (CSP), Control Panel Vendor (CPV), Gastbenutzer oder Microsoft Partner Network (MPN) finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](https://docs.microsoft.com/partner-center/permissions-overview).
+Weitere Informationen zum Verwalten von Rollen und Berechtigungen in anderen Bereichen von Partner Center, zum Beispiel Azure Active Directory (AD), Cloud Solution Provider (CSP), Control Panel Vendor (CPV), Gastbenutzer oder Microsoft Partner Network (MPN) finden Sie unter [Zuweisen von Rollen und Berechtigungen in Partner Center](https://docs.microsoft.com/partner-center/permissions-overview).
 
 
 ## <a name="manage-tenants"></a>Verwalten von Mandanten
@@ -373,7 +363,6 @@ Im Abschnitt **Verträge** in Partner Center (unter **Kontoeinstellungen**) kön
 
 Möglicherweise wird am oberen Rand dieser Seite **Aktionen erforderlich** angezeigt, wenn Vertragsaktualisierungen vorliegen, die Ihre Aufmerksamkeit erfordern. Um einen aktualisierten Vertrag zu akzeptieren, müssen Sie zunächst die verknüpfte Vertragsversion lesen. Wählen Sie dann **Verträge akzeptieren** aus. 
 
-Informationen über CSP-Verträge (Cloud Solution Provider) in Partner Center finden Sie unter [Microsoft Cloud-Verträge nach Region und Sprache](https://docs.microsoft.com/partner-center/agreements).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

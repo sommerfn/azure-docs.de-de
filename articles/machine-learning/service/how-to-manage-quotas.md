@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991978"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278066"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 
@@ -78,7 +78,7 @@ Verfügbare Ressourcen:
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
 Für Azure Machine Learning-Pipelines gibt es eine Kontingentbeschränkung für die Anzahl der Schritte in einer Pipeline und für die Anzahl der auf einem Zeitplan basierenden Ausführungen veröffentlichter Pipelines pro Region in einem Abonnement.
 - Die maximal zulässige Anzahl von Schritten in einer Pipeline beträgt 30.000.
-- Die maximale Anzahl von auf einem Zeitplan basierenden Ausführungen veröffentlichter Pipelines pro Abonnement und Monat beträgt 100.000.
+- Die maximale Anzahl der Summe aus zeitplanbasierten Ausführungen und Blobpulls für durch Blogs ausgelöste Zeitpläne veröffentlichter Pipelines pro Abonnement und Monat beträgt 100.000.
 
 > [!NOTE]
 > Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/support/options/).

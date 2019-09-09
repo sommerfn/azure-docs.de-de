@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 2ce64df5eeb8aa44ef714d6b465b7f2e1819635d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992109"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259293"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning
 
@@ -45,9 +45,11 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
 ## <a name="dataset-types"></a>Datasettypen
 
-Datasets werden in verschiedene Typen eingeteilt, je nachdem, wie Benutzer Sie beim Training nutzen. Zurzeit unterstützen wir [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py), die Daten in einem Tabellenformat darstellen, indem sie die bereitgestellte Datei oder Liste von Dateien analysieren. Dadurch erhalten Sie die Möglichkeit, die Daten in einem pandas-DataFrame zu materialisieren. Ein `TabularDataset`-Objekt kann aus CSV-, TSV- oder parquet-Dateien, SQL-Abfrageergebnissen usw. erstellt werden. Eine vollständige Liste finden Sie in unserer Dokumentation.
+Datasets werden in verschiedene Typen eingeteilt, je nachdem, wie Benutzer Sie beim Training nutzen. Liste der Datasettypen:
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Dadurch erhalten Sie die Möglichkeit, die Daten in einem pandas-DataFrame zu materialisieren. Ein `TabularDataset`-Objekt kann aus CSV-, TSV- oder parquet-Dateien, SQL-Abfrageergebnissen usw. erstellt werden. Eine vollständige Liste finden Sie in unserer [Dokumentation](https://aka.ms/tabulardataset-api-reference).
+* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Auf diese Weise besteht die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Die Dateien können ein beliebiges Format aufweisen. Dies ermöglicht eine größere Bandbreite an Machine Learning-Szenarien einschließlich Deep Learning.
 
-Weitere Informationen zu bevorstehenden API-Änderungen finden Sie unter [Was ist Azure Machine Learning Service?](https://aka.ms/tabular-dataset). 
+Weitere Informationen zu bevorstehenden API-Änderungen finden Sie [hier](https://aka.ms/tabular-dataset).
 
 ## <a name="create-datasets"></a>Erstellen von Datasets 
 
@@ -101,6 +103,25 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38,0|1|0|PC 17599|71.2833|C85|C
 2|3|1|3|Heikkinen, Miss. Laina|female|26,0|0|0|STON/O2. 3101282|7.9250||S
 
+### <a name="create-filedatasets"></a>Erstellen von FileDatasets
+Verwenden Sie die `from_files()`-Methode für die `FileDatasetFactory`-Klasse, um Dateien in einem beliebigen Format zu laden, und erstellen Sie ein nicht registriertes FileDataset.
+
+```Python
+# create a FileDataset from multiple paths in datastore
+datastore_paths = [
+                  (datastore, 'animals/dog/1.jpg'),
+                  (datastore, 'animals/dog/2.jpg'),
+                  (datastore, 'animals/dog/*.jpg')
+                 ]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = [
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
+           ]          
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 ## <a name="register-datasets"></a>Registrieren von Datasets
 
 Registrieren Sie Ihre Datasets beim Arbeitsbereich, um den Erstellungsprozess abzuschließen:

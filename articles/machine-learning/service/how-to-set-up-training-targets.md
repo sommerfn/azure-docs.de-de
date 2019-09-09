@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011564"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231084"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 
 Mit Azure Machine Learning Service können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Sie können auch Computeziele für die Modellimplementierung erstellen, wie in [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md) beschrieben.
 
@@ -47,33 +47,9 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 
 Beim Training ist es üblich, auf dem lokalen Computer zu starten und dieses Trainingsskript später auf einem anderen Computeziel auszuführen. Mit Azure Machine Learning Service können Sie Ihr Skript auf unterschiedlichen Computezielen ausführen, ohne das Skript zu ändern. 
 
-Sie müssen lediglich die Umgebung für jedes einzelne Computeziel mit einer **Laufzeitkonfiguration** definieren.  Wenn Sie Ihr Trainingsexperiment auf einem anderen Computeziel ausführen möchten, geben Sie die Laufzeitkonfiguration für diese Computeressource an.
+Sie müssen lediglich die Umgebung für jedes einzelne Computeziel in einer **Laufzeitkonfiguration** definieren.  Wenn Sie Ihr Trainingsexperiment auf einem anderen Computeziel ausführen möchten, geben Sie die Laufzeitkonfiguration für diese Computeressource an. Weitere Informationen zum Angeben einer Umgebung und zum Binden an die Laufzeitkonfiguration finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
 
 Mehr über das [Übermitteln von Experimenten](#submit) finden Sie am Ende dieses Artikels.
-
-### <a name="manage-environment-and-dependencies"></a>Verwalten der Umgebung und von Abhängigkeiten
-
-Wenn Sie eine Laufzeitkonfiguration erstellen, müssen Sie entscheiden, wie Sie die Umgebung und die Abhängigkeiten des Computeziels verwalten. 
-
-#### <a name="system-managed-environment"></a>Vom System verwaltete Umgebung
-
-Verwenden Sie eine vom System verwaltete Umgebung, wenn Sie möchten, dass [Conda](https://conda.io/docs/) die Python-Umgebung und die Skriptabhängigkeiten für Sie verwaltet. Eine vom System verwaltete Umgebung wird standardmäßig angenommen und ist die häufigste Wahl. Dies ist hilfreich für Remotecomputeziele, insbesondere, wenn Sie dieses Ziel nicht konfigurieren können. 
-
-Alles, was Sie tun müssen, ist, jede Paketabhängigkeit mit der [CondaDependency-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) anzugeben. Dann erstellt Conda eine Datei namens **conda_dependencies.yml** im Verzeichnis **aml_config** in Ihrem Arbeitsbereich mit Ihrer Liste der Paketabhängigkeiten und richtet Ihre Python-Umgebung ein, wenn Sie Ihr Trainingsexperiment übermitteln. 
-
-Die erstmalige Einrichtung einer neuen Umgebung kann einige Minuten dauern, je nach der Größe der erforderlichen Abhängigkeiten. Solange die Liste der Pakete unverändert bleibt, erfolgt die Einrichtung nur einmal.
-  
-Der folgende Code zeigt ein Beispiel für eine vom System verwaltete Umgebung, die „SciKit-learn“ erfordert:
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>Vom Benutzer verwaltete Umgebung
-
-Bei benutzerverwalteten Umgebungen sind Sie für die Einrichtung Ihrer Umgebung und die Installation aller Pakete, die Ihr Trainingsskript auf dem Computeziel benötigt, selbst verantwortlich. Wenn Ihre Trainingsumgebung bereits konfiguriert ist (z.B. auf Ihrem lokalen Computer), können Sie den Einrichtungsschritt überspringen, indem Sie `user_managed_dependencies` auf TRUE festlegen. Conda wird Ihre Umgebung nicht überprüfen oder Installationen für Sie vornehmen.
-
-Der folgende Code ist ein Beispiel für die Trainingsausführungen für eine vom Benutzer verwaltete Umgebung:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Was ist ein Kalkulator?
 
@@ -390,7 +366,7 @@ Weitere Informationen finden Sie unter [Ressourcenverwaltung](reference-azure-ma
 
 Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [VS Code-Erweiterung](how-to-vscode-tools.md#create-and-manage-compute-targets) für Azure Machine Learning Service zugreifen, sie erstellen und verwalten.
 
-## <a id="submit"></a>Übermitteln einer Trainingsausführung
+## <a id="submit"></a>Übermitteln der Trainingsausführung mit dem Azure Machine Learning SDK
 
 Nachdem Sie eine Laufzeitkonfiguration erstellt haben, verwenden Sie sie zum Ausführen Ihres Experiments.  Das Codemuster für die Übermittlung einer Trainingsausführung ist für alle Arten von Computezielen gleich:
 
@@ -430,8 +406,83 @@ Wechseln Sie mit demselben Experiment zur Ausführung zu einem anderen Computezi
 Alternative:
 
 * Übermitteln Sie das Experiments mit einem `Estimator`-Objekt, wie in [Trainieren von ML-Modellen mit Kalkulatoren](how-to-train-ml-models.md) erläutert.
-* Übermitteln Sie das Experiment [mithilfe der CLI-Erweiterung](reference-azure-machine-learning-cli.md#experiments).
+* Übermitteln Sie eine HyperDrive-Ausführung für die [Hyperparameteroptimierung](how-to-tune-hyperparameters.md).
 * Übermitteln Sie ein Experiment über die [VS Code-Erweiterung](how-to-vscode-tools.md#train-and-tune-models).
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Erstellen einer Laufzeitkonfiguration und Übermitteln der Ausführung mit der Azure Machine Learning CLI
+
+Sie können die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und die [Machine Learning CLI-Erweiterung](reference-azure-machine-learning-cli.md) zum Erstellen von Laufzeitkonfigurationen und Übermitteln von Ausführungen für verschiedene Computeziele verwenden. Die folgenden Beispiele gehen davon aus, dass Sie über einen vorhandenen Azure Machine Learning-Arbeitsbereich verfügen und sich mit dem CLI-Befehl `az login` bei Azure angemeldet haben. 
+
+### <a name="create-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
+
+Der einfachste Weg, eine Laufzeitkonfiguration zu erstellen, besteht darin, in den Ordner zu navigieren, der Ihre Machine Learning Python-Skripts enthält, und den CLI-Befehl zu verwenden.
+
+```azurecli
+az ml folder attach
+```
+
+Dieser Befehl erstellt einen Unterordner `.azureml`, der Vorlagen-Laufzeitkonfigurationsdateien für verschiedene Computeziele enthält. Sie können diese Dateien kopieren und bearbeiten, um Ihre Konfiguration anzupassen, z.B. um Python-Pakete hinzuzufügen oder Docker-Einstellungen zu ändern.  
+
+### <a name="structure-of-run-configuration-file"></a>Struktur der Laufzeitkonfigurationsdatei
+
+Die Laufzeitkonfigurationsdatei ist eine als YAML formatierte Datei mit den folgenden Abschnitten
+ * Das auszuführende Skript und seine Argumente
+ * Der Computezielname (entweder „local“ oder der Name eines Computeziels unter dem Arbeitsbereich).
+ * Parameter für die Ausführung des Laufs: Framework, Communicator für verteilte Ausführungen, maximale Dauer und Anzahl der Computeknoten.
+ * Umgebungsabschnitt. Einzelheiten zu den Feldern in diesem Abschnitt finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
+   * Um Python-Pakete für die Installation für die Ausführung anzugeben, erstellen Sie die [Conda-Umgebungsdatei ](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually), und legen Sie das Feld __condaDependenciesFile__ fest.
+ * Führen Sie Verlaufsdetails aus, um den Ordner der Protokolldatei anzugeben und die Ausgabesammlung zu aktivieren oder zu deaktivieren sowie Verlaufsmomentaufnahmen auszuführen.
+ * Konfigurationsdetails, die spezifisch für das ausgewählte Framework sind.
+ * Datenverweis- und Datenspeicherdetails.
+ * Konfigurationsdetails, die spezifisch für Machine Learning Compute für das Erstellen eines neuen Clusters sind.
+
+### <a name="create-an-experiment"></a>Erstellen eines Experiments
+
+Erstellen Sie zunächst ein Experiment für Ihre Ausführungen.
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>Skriptausführung
+
+Um eine Skriptausführung zu übermitteln, führen Sie einen Befehl aus.
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive-Ausführung
+
+Sie können HyperDrive mit der Azure CLI verwenden, um Parameteroptimierungsausführungen auszuführen. Erstellen Sie zunächst eine HyperDrive-Konfigurationsdatei im folgenden Format. Weitere Informationen zu den Hyperparameter-Optimierungsparametern finden Sie im Artikel [Optimieren von Hyperparametern für Ihr Modell](how-to-tune-hyperparameters.md).
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Fügen Sie diese Datei den Laufzeitkonfigurationsdateien hinzu. Übermitteln Sie dann eine HyperDrive-Ausführung:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Beachten Sie den Abschnitt *arguments* in der Laufzeitkonfiguration and *parameter space* in der HyperDrive-Konfiguration. Diese Abschnitte enthalten die Befehlszeilenargumente, die an das Trainingsskript übergeben werden sollen. Der Wert in der Laufzeitkonfiguration bleibt für jede Iteration gleich, während der Bereich in der HyperDrive-Konfiguration iteriert wird. Geben Sie nicht das gleiche Argument in beiden Dateien an.
+
+Weitere Einzelheiten zu diesen ```az ml```-CLI-Befehlen und zum vollständigen Satz von Argumenten finden Sie in der [Referenzdokumentation](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

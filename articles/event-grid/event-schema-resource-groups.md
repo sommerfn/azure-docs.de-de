@@ -251,14 +251,14 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | -------- | ---- | ----------- |
 | authorization | object | Die angeforderte Autorisierung für den Vorgang. |
 | claims | object | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
+| correlationId | string | Eine Vorgangs-ID für die Problembehandlung. |
 | httpRequest | object | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
-| resourceProvider | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
-| resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
-| operationName | Zeichenfolge | Der Vorgang, der übernommen wurde. |
-| status | Zeichenfolge | Der Status des Vorgangs. |
-| subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
-| tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
+| resourceProvider | string | Der Ressourcenanbieter für den Vorgang. |
+| resourceUri | string | Der URI der Ressource im Vorgang. |
+| operationName | string | Der Vorgang, der übernommen wurde. |
+| status | string | Der Status des Vorgangs. |
+| subscriptionId | string | Die Abonnement-ID der Ressource. |
+| tenantId | string | Die Mandanten-ID der Ressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

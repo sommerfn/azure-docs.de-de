@@ -163,8 +163,8 @@ Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| hubName | Zeichenfolge | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
-| deviceId | Zeichenfolge | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| hubName | string | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
+| deviceId | string | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
 Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. 
 
@@ -172,39 +172,39 @@ Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthäl
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| moduleId | Zeichenfolge | Der eindeutige Bezeichner des Moduls. Dieses Feld dient nur der Ausgabe für Modulgeräte. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| moduleId | string | Der eindeutige Bezeichner des Moduls. Dieses Feld dient nur der Ausgabe für Modulgeräte. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | deviceConnectionStateEventInfo | object | Ereignisinformationen zum Verbindungsstatus des Geräts
-| sequenceNumber | Zeichenfolge | Eine Zahl, die hilft, die Reihenfolge der Ereignisse „Gerät verbunden“ oder „Gerät getrennt“ anzugeben. Die letzten Ereignisse haben eine höhere Sequenznummer als frühere Ereignisse. Diese Zahl kann sich um mehr als 1 ändern, aber sie ist immer ansteigend. Weitere Informationen finden Sie unter [Verwenden der Sequenznummer](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+| sequenceNumber | string | Eine Zahl, die hilft, die Reihenfolge der Ereignisse „Gerät verbunden“ oder „Gerät getrennt“ anzugeben. Die letzten Ereignisse haben eine höhere Sequenznummer als frühere Ereignisse. Diese Zahl kann sich um mehr als 1 ändern, aber sie ist immer ansteigend. Weitere Informationen finden Sie unter [Verwenden der Sequenznummer](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die D2C-Nachricht im [IoT Hub-Nachrichtenformat](../iot-hub/iot-hub-devguide-messages-construct.md) und weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| body | Zeichenfolge | Der Inhalt der Nachricht vom Gerät. |
-| properties | Zeichenfolge | Anwendungseigenschaften sind benutzerdefinierte Zeichenfolgen, die der Nachricht hinzugefügt werden können. Diese Felder sind optional. |
-| Systemeigenschaften | Zeichenfolge | Mithilfe von [Systemeigenschaften](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) werden der Inhalt und die Quelle von Nachrichten identifiziert. Gerätetelemetrienachrichten müssen in einem gültigen JSON-Format vorliegen, und in den Systemeigenschaften der Nachricht müssen contentType auf JSON und contentEncoding auf UTF-8 festgelegt sein. Wenn dies nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format.  |
+| body | string | Der Inhalt der Nachricht vom Gerät. |
+| properties | string | Anwendungseigenschaften sind benutzerdefinierte Zeichenfolgen, die der Nachricht hinzugefügt werden können. Diese Felder sind optional. |
+| Systemeigenschaften | string | Mithilfe von [Systemeigenschaften](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) werden der Inhalt und die Quelle von Nachrichten identifiziert. Gerätetelemetrienachrichten müssen in einem gültigen JSON-Format vorliegen, und in den Systemeigenschaften der Nachricht müssen contentType auf JSON und contentEncoding auf UTF-8 festgelegt sein. Wenn dies nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format.  |
 
 Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | twin | object | Informationen zum Gerätezwilling, der Clouddarstellung der Anwendungsgeräte-Metadaten. | 
-| deviceID | Zeichenfolge | Der eindeutige Bezeichner des Gerätezwillings. | 
-| etag | Zeichenfolge | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen eines Gerätezwillings sichergestellt wird. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. |  
-| deviceEtag| Zeichenfolge | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen einer Geräteregistrierung sichergestellt wird. Jedes deviceEtag ist pro Gerätezwilling garantiert eindeutig. |
-| status | Zeichenfolge | Gibt an, ob der Gerätezwilling aktiviert oder deaktiviert ist. | 
-| statusUpdateTime | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Statusaktualisierung für den Gerätezwilling. |
-| connectionState | Zeichenfolge | Gibt an, ob das Gerät verbunden oder getrennt ist. | 
-| lastActivityTime | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Aktivität. | 
+| deviceID | string | Der eindeutige Bezeichner des Gerätezwillings. | 
+| etag | string | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen eines Gerätezwillings sichergestellt wird. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. |  
+| deviceEtag| string | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen einer Geräteregistrierung sichergestellt wird. Jedes deviceEtag ist pro Gerätezwilling garantiert eindeutig. |
+| status | string | Gibt an, ob der Gerätezwilling aktiviert oder deaktiviert ist. | 
+| statusUpdateTime | string | Der ISO8601-Zeitstempel der letzten Statusaktualisierung für den Gerätezwilling. |
+| connectionState | string | Gibt an, ob das Gerät verbunden oder getrennt ist. | 
+| lastActivityTime | string | Der ISO8601-Zeitstempel der letzten Aktivität. | 
 | cloudToDeviceMessageCount | integer | Die Anzahl von Nachrichten, die von der Cloud an das Gerät gesendet wurden. | 
-| authenticationType | Zeichenfolge | Der für dieses Gerät verwendete Authentifizierungstyp: entweder `SAS`, `SelfSigned` oder `CertificateAuthority`. |
-| x509Thumbprint | Zeichenfolge | Der Fingerabdruck ist ein eindeutiger Wert für das x509-Zertifikat. Dieser wird üblicherweise zur Suche nach einem bestimmten Zertifikat in einem Zertifikatspeicher verwendet. Der Fingerabdruck wird mithilfe des SHA1-Algorithmus dynamisch generiert und ist nicht physisch im Zertifikat vorhanden. | 
-| primaryThumbprint | Zeichenfolge | Der primäre Fingerabdruck für das x509-Zertifikat. |
-| secondaryThumbprint | Zeichenfolge | Der sekundäre Fingerabdruck für das x509-Zertifikat. | 
+| authenticationType | string | Der für dieses Gerät verwendete Authentifizierungstyp: entweder `SAS`, `SelfSigned` oder `CertificateAuthority`. |
+| x509Thumbprint | string | Der Fingerabdruck ist ein eindeutiger Wert für das x509-Zertifikat. Dieser wird üblicherweise zur Suche nach einem bestimmten Zertifikat in einem Zertifikatspeicher verwendet. Der Fingerabdruck wird mithilfe des SHA1-Algorithmus dynamisch generiert und ist nicht physisch im Zertifikat vorhanden. | 
+| primaryThumbprint | string | Der primäre Fingerabdruck für das x509-Zertifikat. |
+| secondaryThumbprint | string | Der sekundäre Fingerabdruck für das x509-Zertifikat. | 
 | version | integer | Ein ganzzahliger Wert, der bei jeder Aktualisierung des Gerätezwillings um 1 erhöht wird. |
 | desired | object | Ein Teil der Eigenschaften, der nur vom Anwendungs-Back-End geschrieben und vom Gerät gelesen werden kann. | 
 | reported | object | Ein Teil der Eigenschaften, der nur vom Gerät geschrieben und vom Anwendungs-Back-End gelesen werden kann. |
-| lastUpdated | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Eigenschaftenaktualisierung für den Gerätezwilling. | 
+| lastUpdated | string | Der ISO8601-Zeitstempel der letzten Eigenschaftenaktualisierung für den Gerätezwilling. | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
