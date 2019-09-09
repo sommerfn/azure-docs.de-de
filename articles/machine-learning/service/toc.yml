@@ -73,9 +73,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Konzepte
   items:
-    - name: Deep Learning
-      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
-      href: concept-deep-learning-vs-machine-learning.md
     - name: Arbeitsbereich
       href: concept-workspace.md
     - name: Computeziel
@@ -111,13 +108,18 @@
           href: how-to-secure-web-service.md
         - name: Erneutes Generieren von Speicherzugriffsschlüsseln
           href: how-to-change-storage-access-key.md
+    - name: Deep Learning
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
 - name: Anleitungen
   items:
-    - name: Verwalten von Arbeitsbereichen
+    - name: Erstellen und Verwalten von Arbeitsbereichen
       items:
-        - name: Verwenden des Portals für Arbeitsbereiche
+        - name: Verwenden des Azure-Portals
           href: how-to-manage-workspace.md
-        - name: Verwenden einer Resource Manager-Vorlage
+        - name: Mithilfe der Azure-Befehlszeilenschnittstelle
+          href: how-to-manage-workspace-cli.md
+        - name: Verwenden von Resource Manager-Vorlagen
           displayName: arm
           href: how-to-create-workspace-template.md
     - name: "Einrichten der Entwicklungsumgebung\_"

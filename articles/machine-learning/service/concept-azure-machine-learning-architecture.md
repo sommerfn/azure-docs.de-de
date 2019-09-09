@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990098"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011646"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
@@ -34,7 +34,7 @@ Für den Workflow des Machine Learning-Modells werden in der Regel diese Schritt
 
 1. **Paket**: Nachdem eine zufriedenstellende Ausführung gefunden wurde, können Sie das dauerhafte Modell in der **Modellregistrierung** registrieren.
 
-1. **Überprüfen**: **Abfragen des Experiments** auf protokollierte Metriken aus den aktuellen und bereits erfolgten Ausführungen. Wenn die Metriken kein gewünschtes Ergebnis anzeigen, können Sie zu Schritt 1 zurückkehren und Ihre Skripts erneut durchlaufen.
+1. **Überprüfen** - **Abfragen des Experiments** auf protokollierte Metriken aus den aktuellen und bereits erfolgten Ausführungen. Wenn die Metriken kein gewünschtes Ergebnis anzeigen, können Sie zu Schritt 1 zurückkehren und Ihre Skripts erneut durchlaufen.
 
 1. **Bereitstellen**: Entwickeln Sie ein Bewertungsskript, von dem das Modell verwendet wird, und führen Sie die **Bereitstellung des Modells** als **Webdienst** in Azure oder auf einem **IoT Edge-Gerät** durch.
 
@@ -133,7 +133,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 Datasets bieten Methoden zum Arbeiten mit Daten in gängigen Formaten, wie z.B. mit `from_delimited_files()` oder `to_pandas_dataframe()`.
 
-Weitere Informationen finden Sie unter [Erstellen und Registrieren von Azure Machine Learning Datasets](how-to-create-register-datasets.md).  Weitere Beispiele für die Verwendung von Datasets finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets).
+Weitere Informationen finden Sie unter [Erstellen und Registrieren von Azure Machine Learning Datasets](how-to-create-register-datasets.md).  Weitere Beispiele für die Verwendung von Datasets finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
 
 Ein **Datenspeicher** ist eine Speicherabstraktion eines Azure-Speicherkontos. Der Datenspeicher kann entweder einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Back-End-Speicher verwenden. Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher, und Sie können auch zusätzliche Datenspeicher registrieren. Verwenden Sie die Python SDK-API oder die Azure Machine Learning-CLI, um Dateien zu speichern und aus dem Datenspeicher abzurufen.
 
@@ -151,7 +151,7 @@ Ein Beispiel finden Sie unter [Tutorial: Trainieren eines Bildklassifizierungsmo
 
 ### <a name="runs"></a>Ausführungen
 
-Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
+Eine Ausführung ist eine einzelne Ausführung eines Trainingsskripts. Azure Machine Learning zeichnet alle Ausführungen auf und speichert die folgenden Informationen:
 
 * Metadaten zur Ausführung (Zeitstempel, Dauer usw.)
 * Metriken, die von Ihrem Skript protokolliert werden

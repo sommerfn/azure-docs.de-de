@@ -250,6 +250,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Anpassen des HTTP-Funktionsendpunkts
           href: functions-create-serverless-api.md
+        - name: Verwalten von lokalen Ressourcen
+          href: functions-hybrid-powershell.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit dem Speicher
