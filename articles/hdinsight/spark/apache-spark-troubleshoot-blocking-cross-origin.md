@@ -1,6 +1,6 @@
 ---
-title: Fehler 404 (“Nicht gefunden“) auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
-description: Fehler 404 (“Nicht gefunden“) auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
+title: Fehler 404 ("Nicht gefunden") auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
+description: Fehler 404 ("Nicht gefunden") auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -13,7 +13,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 07/30/2019
 ms.locfileid: "68664873"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Szenario: Fehler 404 (“Nicht gefunden“) auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Szenario: Fehler 404 ("Nicht gefunden") auf Jupyter-Server aufgrund von blockierender ursprungsübergreifender API in Azure HDInsight
 
 Dieser Artikel beschreibt Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Verwendung von Apache Spark-Komponenten in Azure HDInsight-Clustern.
 
