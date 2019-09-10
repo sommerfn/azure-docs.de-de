@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie eine einseitige Webanwendung erstellen, 
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720865"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194232"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 
@@ -127,6 +127,10 @@ In diesem Tutorial werden darüber hinaus Daten aus der Time Series Insights-Umg
 
       [![Visual Studio: Der Bereich „Veröffentlichungsprofil“](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. Wählen Sie diese Option aus, um eine neue Azure App Service-Instanz zu veröffentlichen oder eine vorhandene Instanz zu verwenden.
+
+      [![Auswählen einer Azure App Service-Instanz](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. Wählen Sie das Abonnement aus, das Sie zum Veröffentlichen der Anwendung verwenden möchten. Wählen Sie das Projekt **TsiSpaApp** aus. Wählen Sie anschließend **OK** aus.
 
       [![Visual Studio: Der App Service-Bereich „Veröffentlichungsprofil“](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ In diesem Tutorial werden darüber hinaus Daten aus der Time Series Insights-Umg
 
    1. Im Visual Studio-Bereich **Ausgabe** wird ein Protokoll der erfolgreichen Veröffentlichung angezeigt. Nach Abschluss der Bereitstellung öffnet Visual Studio die Webanwendung auf einer Browserregisterkarte und fordert Sie auf, sich anzumelden. Nach der erfolgreichen Anmeldung sind alle Time Series Insights-Steuerelemente mit Daten aufgefüllt.
 
+   1. Navigieren Sie zu Ihrer Web-App, und melden Sie sich an, um die gerenderten visuellen Time Series Insights-Daten anzuzeigen.
+
+      [![Überprüfen der gehosteten Web-App](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>Problembehandlung  
 
 Fehlercode/Bedingung | BESCHREIBUNG
 ---------------------| -----------
-*AADSTS50011: No reply address is registered for the application.* (AADSTS50011: Für die Anwendung ist keine Antwortadresse registriert.) | In der Azure AD-Registrierung fehlt die Eigenschaft **Antwort-URL**. Wechseln Sie für Ihre Azure AD-Anwendungsregistrierung zu **Einstellungen** > **Antwort-URLs**. Vergewissern Sie sich, dass der **Umleitungs-URI** vorhanden ist, den Sie in **Schritt 2** oder **Schritt 4** beim [Registrieren der Anwendung für die Verwendung von Azure AD](#register-with-azure-ad) angegeben haben.
-*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'* (AADSTS50011: Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) | Der in **Schritt 6.b** unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish) angegebene Wert für `postLogoutRedirectUri` muss dem Wert entsprechen, den Sie in Ihrer Azure AD-Anwendungsregistrierung unter **Einstellungen** > **Antwort-URLs** angegeben haben. |
+*AADSTS50011: No reply address is registered for the application.* (AADSTS50011: Für die Anwendung ist keine Antwortadresse registriert.) | In der Azure AD-Registrierung fehlt eine Eigenschaft vom Typ **Antwort-URI**. Navigieren Sie für Ihre Azure AD-Anwendungsregistrierung zu **Authentifizierung** > **Umleitungs-URIs**. Vergewissern Sie sich, dass der **Umleitungs-URI** vorhanden ist, den Sie in **Schritt 2** oder **Schritt 4** beim [Registrieren der Anwendung für die Verwendung von Azure AD](#register-with-azure-ad) angegeben haben.
+*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'* (AADSTS50011: Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) | Der in **Schritt 6.b** unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish) angegebene Wert für `postLogoutRedirectUri` muss dem Wert entsprechen, den Sie in Ihrer Azure AD-Anwendungsregistrierung unter **Authentifizierung** > **Umleitungs-URIs** angegeben haben. |
 Die Webanwendung wird zwar geladen, es wird jedoch eine nicht formatierte Nur-Text-Anmeldeseite mit weißem Hintergrund angezeigt. | Vergewissern Sie sich, dass die in **Schritt 6** unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish) erläuterten Pfade richtig sind. Kann die Webanwendung die CSS-Dateien nicht finden, ist die Seite nicht ordnungsgemäß formatiert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

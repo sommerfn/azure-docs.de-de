@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/28/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 3ef7f65bbb27992278eb467f840c1443ac0db0b8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725898"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135017"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Aufrufen der Textanalyse von Cognitive Services mit der Python-REST-API 
 <a name="HOLTop"></a>
@@ -49,11 +49,20 @@ import requests
 from pprint import pprint
 ```
 
-Erstellen Sie Variablen für Ihren Abonnementschlüssel und den Endpunkt für die Textanalyse-REST-API. Stellen Sie sicher, dass die Region des Endpunkts der entspricht, die Sie bei der Registrierung verwendet haben (z. B. `westcentralus`). Wenn Sie einen Schlüssel für die kostenlose Testversion verwenden, müssen Sie keine Änderungen vornehmen.
+Erstellen Sie Variablen für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Rufen Sie diese Werte aus den Umgebungsvariablen TEXT_ANALYTICS_SUBSCRIPTION_KEY und TEXT_ANALYTICS_ENDPOINT ab. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
     
 ```python
-subscription_key = "<ADD YOUR KEY HERE>"
-text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
+import os
+
+key_var_name = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TEXT_ANALYTICS_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
 In den folgenden Abschnitten wird das Aufrufen der einzelnen API-Funktionen beschrieben.
@@ -65,7 +74,7 @@ In den folgenden Abschnitten wird das Aufrufen der einzelnen API-Funktionen besc
 Fügen Sie `languages` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
     
 ```python
-language_api_url = text_analytics_base_url + "languages"
+language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
 Die Nutzlast an die API besteht aus einer Liste von `documents`, die jeweils Tupel aus einem `id`- und einem `text`-Attribut sind. Das `text`-Attribut speichert den Text, der analysiert werden soll, und die `id` kann ein beliebiger Wert sein. 
@@ -134,7 +143,7 @@ pprint(languages)
 Fügen Sie zum Erkennen der Stimmung (zwischen positiv und negativ) in einem Satz von Dokumenten `sentiment` an den Basisendpunkt der Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
     
 ```python
-sentiment_url = text_analytics_base_url + "sentiment"
+sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
 Erstellen Sie wie im Sprachenerkennungsbeispiel ein Wörterbuch mit einem `documents`-Schlüssel, der aus einer Dokumentenliste besteht. Jedes Dokument ist ein Tupel aus der `id`, dem zu analysierenden `text` und der `language` des Texts. 
@@ -196,7 +205,7 @@ Die Stimmungspunktzahl eines Dokuments liegt zwischen 0,0 und 1,0, dabei gilt: J
 Fügen Sie zum Extrahieren der Schlüsselausdrücke aus einem Satz von Dokumenten `keyPhrases` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     
 ```python
-keyphrase_url = text_analytics_base_url + "keyPhrases"
+keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```
 
 Diese Sammlung der Dokumente entspricht der Sammlung, die für das Beispiel zur Standpunktanalyse verwendet wurde.
@@ -272,7 +281,7 @@ pprint(key_phrases)
 Fügen Sie zum Identifizieren von bekannten Entitäten (Personen, Orten und Gegenständen) in Textdokumenten `entities` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
     
 ```python
-entities_url = text_analytics_base_url + "entities"
+entities_url = endpoint + "/text/analytics/v2.1/entities"
 ```
 
 Erstellen Sie wie in den vorherigen Beispielen eine Sammlung von Dokumenten. 

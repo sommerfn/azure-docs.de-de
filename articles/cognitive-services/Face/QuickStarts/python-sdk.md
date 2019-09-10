@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f0bd4a49a35392c25b8985aa68ad4e4b66be026c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707349"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306518"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für Python
 
@@ -109,6 +109,14 @@ Der folgende Code erkennt ein Gesicht in einem Remotebild. Die ID des erkannten 
 
 Weitere Szenarien zur Gesichtserkennung finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).
 
+### <a name="display-and-frame-faces"></a>Anzeigen und Umranden von Gesichtern
+
+Der folgende Code gibt ein bestimmtes Bild an die Anzeige aus und zeichnet unter Verwendung der Eigenschaft „DetectedFace.faceRectangle“ Rechtecke um die Gesichter.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![Eine junge Frau mit einem roten Rechteck um das Gesicht](../images/face-rectangle-result.png)
+
 ## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
 
 Der folgende Code verwendet ein einzelnes erkanntes Gesicht und durchsucht eine Gruppe anderer Gesichter auf Übereinstimmungen. Bei einer Übereinstimmung werden die Rechteckkoordinaten des entsprechenden Gesichts in der Konsole ausgegeben. 
@@ -161,7 +169,7 @@ Nach dem Zuweisen von Gesichtern müssen Sie das **PersonGroup**-Objekt trainier
 
 ## <a name="identify-a-face"></a>Identifizieren eines Gesichts
 
-Der folgende Code sucht auf einem Bild mit mehreren Gesichtern nach der Identität der einzelnen Personen im Bild. Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten, denen jeweils mehrere Gesichter zugeordnet sind. 
+Der folgende Code sucht auf einem Bild mit mehreren Gesichtern nach der Identität der einzelnen Personen im Bild. Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind.
 
 > [!IMPORTANT]
 > Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) ausführen.
@@ -188,7 +196,7 @@ In diesem Beispiel migrieren Sie das **PersonGroup**-Objekt, das Sie unter [Erst
 
 Sie benötigen zunächst ein zweites Azure-Abonnement mit einer Gesichtserkennungsressource. Führen Sie dazu die Schritte im Abschnitt [Einrichten](#setting-up) aus. 
 
-Erstellen Sie dann die folgenden Variablen am Anfang des Skripts. Darüber hinaus müssen Sie neue Umgebungsvariablen für die Abonnement-ID Ihres Azure-Kontos sowie den Schlüssel und die Abonnement-ID Ihres neuen Kontos (Zielkonto) erstellen. 
+Erstellen Sie dann die folgenden Variablen am Anfang des Skripts. Darüber hinaus müssen Sie neue Umgebungsvariablen für die Abonnement-ID Ihres Azure-Kontos sowie den Schlüssel, den Endpunkt und die Abonnement-ID Ihres neuen Kontos (Zielkonto) erstellen. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 

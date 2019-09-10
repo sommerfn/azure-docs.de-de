@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845821"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309261"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Tutorial: Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen und öffentlichen Datasets
 
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 Rufen Sie erneut `pandas.Series.dt.normalize` für das Feld `datetime` der Wetterdaten auf, damit der Zeitschlüssel dem in `taxi_holidays_df` entspricht. Löschen Sie die nicht benötigten Spalten, und filtern Sie Datensätze mit der Temperatur `NaN` heraus.
 
-Gruppieren Sie als Nächstes die Wetterdaten, um tagesweise aggregierte Wetterwerte zu erhalten. Definieren Sie ein Wörterbuch `aggregations`, um zu definieren, wie jedes Feld auf Tagesebene aggregiert wird. Verwenden Sie für `snowDepth` und `temperature` den Mittelwert und für `precipTime` und `precipDepth` den täglichen Maximalwert. Verwenden Sie die `groupby()`-Funktion zusammen mit den Aggregationen, um die Daten zu gruppieren. Zeigen Sie eine Vorschau der Daten an, um sicherzustellen, dass ein Datensatz pro Tag vorhanden ist.
+Gruppieren Sie als Nächstes die Wetterdaten, um tagesweise aggregierte Wetterwerte zu erhalten. Definieren Sie ein Wörterbuch namens `aggregations`, um zu anzugeben, wie jedes Feld auf Tagesebene aggregiert werden soll. Verwenden Sie für `snowDepth` und `temperature` den Mittelwert und für `precipTime` und `precipDepth` den täglichen Maximalwert. Verwenden Sie die `groupby()`-Funktion zusammen mit den Aggregationen, um die Daten zu gruppieren. Zeigen Sie eine Vorschau der Daten an, um sicherzustellen, dass ein Datensatz pro Tag vorhanden ist.
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()

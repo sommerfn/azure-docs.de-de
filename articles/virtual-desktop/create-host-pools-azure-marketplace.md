@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f692303140db1441aa34aacef62523d7f596dba1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204733"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208388"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
 
@@ -26,7 +26,11 @@ In diesem Tutorial erfahren Sie, wie Sie innerhalb eines Windows Virtual Desktop
 > * Verknüpfen der VMs mit der Active Directory-Domäne.
 > * Registrieren der VMs mit Windows Virtual Desktop.
 
-Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können.
+Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -40,7 +44,7 @@ So führen Sie das Azure Marketplace-Angebot aus, um einen neuen Hostpool berei
 2. Geben Sie **Windows Virtual Desktop** in das Marketplace-Suchfenster ein.
 3. Wählen Sie **Windows Virtual Desktop – Hostpool bereitstellen** und anschließend **Erstellen** aus.
 
-Geben Sie die Informationen für die entsprechenden Blätter gemäß dem Leitfaden ein.
+Befolgen Sie anschließend die Anweisungen im nächsten Abschnitt, um die Informationen für die entsprechenden Blätter einzugeben.
 
 ### <a name="basics"></a>Grundlagen
 
@@ -52,6 +56,9 @@ Gehen Sie auf dem Blatt **Grundlagen** wie folgt vor:
 4. Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe an.
 5. Wählen Sie unter **Standort** den Standort des virtuellen Netzwerks aus, das mit dem Active Directory-Server verbunden ist.
 6. Klicken Sie auf **OK**.
+
+>[!IMPORTANT]
+>Wenn Sie eine reine Azure Active Directory Domain Services- und Azure Active Directory-Lösung verwenden, stellen Sie sicher, dass Sie Ihren Hostpool in derselben Region wie Azure Active Directory Domain Services bereitstellen, um Fehler beim Domänenbeitritt und mit Anmeldeinformationen zu vermeiden.
 
 ### <a name="configure-virtual-machines"></a>Konfigurieren virtueller Computer
 
@@ -66,7 +73,7 @@ Gehen Sie auf dem Blatt zum **Konfigurieren virtueller Computer** wie folgt vor:
 Gehen Sie auf dem Blatt mit den **VM-Einstellungen** wie folgt vor:
 
 >[!NOTE]
-> Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group) ist.
+> Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group) ist.
 
 1. Wählen Sie die Quelle für die **Imagequelle** aus, und geben Sie entsprechende Informationen zum Speicherort und zur Art der Speicherung ein. Falls Sie keine verwalteten Datenträger verwenden möchten, wählen Sie das Speicherkonto mit der VHD-Datei aus.
 2. Geben Sie den Benutzerprinzipalnamen und das Kennwort für das Domänenkonto ein, über das die virtuellen Computer mit der Active Directory-Domäne verknüpft werden. Auf den virtuellen Computern wird ein lokales Konto mit dem gleichen Benutzernamen und Kennwort erstellt. Diese lokalen Konten können später zurückgesetzt werden.

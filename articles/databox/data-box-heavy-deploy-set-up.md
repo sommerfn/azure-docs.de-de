@@ -6,17 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e6bfe4a93ab8c97bcffb84bda08977f8d811fa8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: f5473ae7bd9ac1615d59d18c996e01902e1adbd6
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592368"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241409"
 ---
+::: zone target = "docs"
+
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit Azure Data Box Heavy
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="get-started-with-azure-data-box-heavy"></a>Erste Schritte mit Azure Data Box Heavy
+
+::: zone-end
+
+::: zone target = "docs"
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Data Box Heavy verkabeln, verbinden und einschalten.
 
@@ -25,6 +37,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Verkabeln von Data Box Heavy
 > * Herstellen der Verbindung mit Data Box Heavy
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+Dieser Leitfaden enthält Anweisungen zum Überprüfen der Voraussetzungen, zum Verkabeln und Verbinden Ihres Geräts, zum Kopieren von Daten, zum Hochladen in Azure und zum Überprüfen der hochgeladenen Daten.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,6 +62,8 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - Die Kabel müssen mit der Netzwerkschnittstelle [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) kompatibel sein.
     - Bei 40-GBit/s-Kabeln muss ein Kabelende vom Typ QSFP+ verwendet werden.
     - Bei 10-GBit/s-Kabeln benötigen Sie ein SFP+-Kabel, das auf der einen Seite mit einem 10-GBit/s-Switch verbunden ist und an dem Ende, das mit dem Gerät verbunden wird, über einen QSFP+-auf-SFP+-Adapter (oder über den QSA-Adapter) verfügt.
+
+::: zone target = "docs"
 
 ## <a name="cable-your-device-for-power"></a>Anschließen des Geräts an die Stromversorgung
 
@@ -138,3 +160,5 @@ Im nächsten Tutorial erfahren Sie, wie Sie Daten auf Ihr Data Box Heavy-Gerä
 
 > [!div class="nextstepaction"]
 > [Kopieren der Daten auf die Azure Data Box](./data-box-heavy-deploy-copy-data.md)
+
+::: zone-end

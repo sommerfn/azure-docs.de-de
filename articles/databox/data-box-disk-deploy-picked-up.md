@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
+ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1104c017541b8124366a6121763318f199f3aad5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126090"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240213"
 ---
 ::: zone target="chromeless"
 
@@ -49,18 +50,7 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
     - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
     - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
 
-Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien und asiatische Länder gelten jeweils andere Anweisungen.
-
-- [Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA und Kanada zurücksenden](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-- [Planen Sie eine Abholung mit DHL für Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe), indem Sie die Website besuchen und die Nummer der Luftfrachtbriefe angeben.
-- [Planen Sie eine Abholung in Australien.](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up#pick-up-in-australia)
-- [Planen Sie eine Abholung für asiatische Länder](data-box-disk-deploy-picked-up.md#pick-up-in-asia) wie Japan, Südkorea oder Singapur.
-
-::: zone target="chromeless"
-
-Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal aktualisiert und eine Sendungsverfolgungs-ID angezeigt.
-
-::: zone-end
+Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder gelten jeweils andere Anweisungen.
 
 ### <a name="pick-up-in-us-canada"></a>Abholung in den USA/in Kanada
 
@@ -151,9 +141,6 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
 1. Drucken Sie das Adressetikett aus, und bringen Sie es auf der Box an. Sollte das Etikett beschädigt oder verloren gegangen sein:
     - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
-
-        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Bringen Sie das Etikett am Gerät an. Vergewissern Sie sich, dass das Etikett gut sichtbar ist.
 
 2. Gehen Sie zum Anfordern der Abholung wie folgt vor:

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/09/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a88e9dddd492d5c24698bcde8c3a1fd942eaf66
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 755bb6d019418cf9dae22ebf7ee6a3c94af3c750
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854194"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309446"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrieren von virtuellen Hyper-V-Computern zu Azure 
 
@@ -29,7 +29,7 @@ Dieses Tutorial ist das dritte in einer Reihe, mit der veranschaulicht wird, wie
 > * Einrichten der Quellumgebung und Bereitstellen einer Replikationsappliance
 > * Einrichten der Zielumgebung
 > * Aktivieren Sie die Replikation.
-> * Durchführen einer Testmigration, um sicherzustellen, dass alles wie erwartet funktioniert
+> * Ausführen einer Testmigration, um sicherzustellen, dass alles wie erwartet funktioniert
 > * Durchführen einer vollständigen Migration zu Azure
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
@@ -81,7 +81,7 @@ Richten Sie die Appliance wie folgt ein:
 - Wenn nicht, müssen Sie die Appliance jetzt einrichten. Führen Sie dazu die folgenden Schritte aus: 
 
     - Laden Sie über das Azure-Portal eine komprimierte Hyper-V-VHD herunter.
-    - Erstellen der Appliance und Durchführen einer Überprüfung, ob damit eine Verbindung mit der Azure Migrate-Serverbewertung hergestellt werden kann 
+    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung 
     - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
 
     Befolgen Sie die Anleitung zum Einrichten der Appliance in [diesem Artikel](how-to-set-up-appliance-hyper-v.md).
@@ -133,11 +133,14 @@ Installieren Sie die heruntergeladene Setupdatei (AzureSiteRecoveryProvider.exe)
 
 Nachdem die Ermittlung abgeschlossen ist, können Sie mit der Replikation von Hyper-V-VMs in Azure beginnen.
 
-1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
+> [!NOTE]
+> Sie können bis zu zehn Computer gleichzeitig replizieren. Müssen Sie mehr Computer replizieren, führen Sie die Replikation in Batches mit jeweils zehn Computern durch.
+
+1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
 2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Ja, mit Hyper-V**. Klicken Sie anschließend auf **Next: Virtuelle Computer**.
 3. Wählen Sie unter **Virtuelle Computer** die Computer aus, die Sie replizieren möchten.
-    - Wenn Sie eine Bewertung für die virtuellen Computer durchgeführt haben, können Sie die Empfehlungen zur VM-Größenanpassung und zum Datenträgertyp (Premium/Standard) aus den Bewertungsergebnissen anwenden. Wählen Sie hierzu unter **Migrationseinstellungen aus einer Azure Migrate-Bewertung importieren?** die Option **Ja**.
-    - Wählen Sie **Nein**, wenn Sie keine Bewertung durchgeführt haben oder die Bewertungseinstellungen nicht verwenden möchten.
+    - Wenn Sie eine Bewertung für die virtuellen Computer durchgeführt haben, können Sie die Empfehlungen zur VM-Größenanpassung und zum Datenträgertyp (Premium/Standard) aus den Bewertungsergebnissen anwenden. Wählen Sie hierzu unter **Migrationseinstellungen aus einer Azure Migrate-Bewertung importieren?** die Option **Ja** aus.
+    - Wählen Sie **Nein** aus, wenn Sie keine Bewertung ausgeführt haben oder die Bewertungseinstellungen nicht verwenden möchten.
     - Wählen Sie die VM-Gruppe und den Bewertungsnamen aus, wenn Sie die Bewertung gewählt haben.
 
         ![Auswählen der Bewertung](./media/tutorial-migrate-hyper-v/select-assessment.png)
@@ -156,11 +159,11 @@ Nachdem die Ermittlung abgeschlossen ist, können Sie mit der Replikation von Hy
 
     ![Zieleinstellungen](./media/tutorial-migrate-hyper-v/target-settings.png)
 
-10. Überprüfen Sie unter **Compute** den VM-Namen, die Größe, den Typ des Betriebssystemdatenträgers und die Verfügbarkeitsgruppe. Für die VMs müssen die [Azure-Anforderungen](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) erfüllt werden.
+10. Überprüfen Sie unter **Compute** den VM-Namen, die Größe, den Typ des Betriebssystemdatenträgers und die Verfügbarkeitsgruppe. Die VMs müssen die [Azure-Anforderungen](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) erfüllen.
 
-    - **VM-Größe**: Wenn Sie Bewertungsempfehlungen verwenden, enthält die Dropdownliste der VM die empfohlene Größe. Andernfalls wählt Azure Migrate eine Größe basierend auf der höchsten Übereinstimmung im Azure-Abonnement aus. Alternativ können Sie unter **Azure-VM-Größe** manuell eine Größe auswählen. 
-    - **Betriebssystemdatenträger**: Geben Sie den Betriebssystemdatenträger (Datenträger für Bootvorgang) für die VM an. Der Betriebssystemdatenträger enthält den Bootloader und das Installationsprogramm des Betriebssystems. 
-    - **Verfügbarkeitsgruppe**: Geben Sie die Gruppe an, falls die VM nach der Migration in einer Azure-Verfügbarkeitsgruppe enthalten sein soll. Die Gruppe muss Teil der Zielressourcengruppe sein, die Sie für die Migration angeben.
+    - **VM-Größe**: Bei Verwendung von Bewertungsempfehlungen enthält die Dropdownliste für die VM-Größe die empfohlene Größe. Andernfalls wählt Azure Migrate eine Größe basierend auf der höchsten Übereinstimmung im Azure-Abonnement aus. Alternativ können Sie unter **Azure-VM-Größe** manuell eine Größe auswählen. 
+    - **Betriebssystemdatenträger**: Geben Sie den Betriebssystemdatenträger (Startdatenträger) für die VM an. Der Betriebssystemdatenträger enthält den Bootloader und das Installationsprogramm des Betriebssystems. 
+    - **Verfügbarkeitsgruppe**: Wenn die VM nach der Migration in einer Azure-Verfügbarkeitsgruppe enthalten sein soll, geben Sie die Gruppe an. Die Gruppe muss Teil der Zielressourcengruppe sein, die Sie für die Migration angeben.
 
     ![VM-Computeeinstellungen](./media/tutorial-migrate-hyper-v/compute-settings.png)
 
@@ -202,7 +205,7 @@ Sie können den Replikationsstatus überwachen, indem Sie auf **Server werden re
 ## <a name="run-a-test-migration"></a>Ausführen einer Testmigration
 
 
-Wenn die Deltareplikation beginnt, können Sie zunächst eine Testmigration für die VMs durchführen, bevor eine vollständige Migration zu Azure erfolgt. Wir empfehlen Ihnen dringend, dies vor dem Migrieren für jeden Computer mindestens einmal durchzuführen.
+Wenn die Deltareplikation beginnt, können Sie zunächst eine Testmigration für die VMs ausführen, bevor eine vollständige Migration zu Azure erfolgt. Dieser Schritt sollte vor der Migration mindestens einmal für jeden Computer ausgeführt werden.
 
 - Bei einer Testmigration wird überprüft, ob die Migration wie erwartet funktioniert, ohne die lokalen Computer zu beeinträchtigen, und ob diese während der Replikation betriebsbereit bleiben. 
 - Mit der Testmigration wird die Migration simuliert, indem eine Azure-VM mit replizierten Daten erstellt wird (normalerweise per Migration zu einem nicht für die Produktion bestimmten VNET unter Ihrem Azure-Abonnement).
@@ -213,38 +216,38 @@ Führen Sie die Testmigration wie folgt durch:
 
 1. Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Servermigration** auf **Migrierte Server testen**.
 
-     ![Migrierte Server testen](./media/tutorial-migrate-hyper-v/test-migrated-servers.png)
+     ![Testen der migrierten Server](./media/tutorial-migrate-hyper-v/test-migrated-servers.png)
 
-2. Klicken Sie mit der rechten Maustaste auf den zu testenden virtuellen Computer, und klicken Sie dann auf **Testmigration**.
+2. Klicken Sie mit der rechten Maustaste auf die zu testende VM, und klicken Sie anschließend auf **Testmigration**.
 
     ![Testmigration](./media/tutorial-migrate-hyper-v/test-migrate.png)
 
-3. Wählen Sie unter **Testmigration** das Azure VNET aus, in dem sich die Azure-VM nach der Migration befinden soll. Wir empfehlen Ihnen, ein nicht für die Produktion bestimmtes VNET zu verwenden.
-4. Der Auftrag **Testmigration** wird gestartet. Überwachen Sie den Auftrag in den Portalbenachrichtigungen.
+3. Wählen Sie unter **Testmigration** das Azure VNET aus, in dem sich die Azure-VM nach der Migration befindet. Es empfiehlt sich, ein nicht für die Produktion bestimmtes VNET zu verwenden.
+4. Der Auftrag **Testmigration** wird gestartet. Überwachen Sie den Auftrag anhand der Portalbenachrichtigungen.
 5. Zeigen Sie die migrierte Azure-VM nach Abschluss der Migration im Azure-Portal unter **Virtuelle Computer** an. Der Computername enthält das Suffix **-Test**.
 6. Klicken Sie nach Abschluss des Tests mit der rechten Maustaste unter **Aktuell replizierte Computer** auf die Azure-VM, und klicken Sie anschließend auf **Testmigration bereinigen**.
 
-    ![Testmigration bereinigen](./media/tutorial-migrate-hyper-v/clean-up.png)
+    ![Bereinigen der Migration](./media/tutorial-migrate-hyper-v/clean-up.png)
 
 
 ## <a name="migrate-vms"></a>Migrieren virtueller Computer
 
 Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktioniert, können Sie die lokalen Computer migrieren.
 
-1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Server werden repliziert**.
+1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Server werden repliziert**.
 
-    ![Server werden repliziert](./media/tutorial-migrate-hyper-v/replicate-servers.png)
+    ![Replizieren der Server](./media/tutorial-migrate-hyper-v/replicate-servers.png)
 
 2. Klicken Sie unter **Aktuell replizierte Computer** mit der rechten Maustaste auf die VM und dann auf **Migrieren**.
-3. Wählen Sie unter **Migrieren** > **Virtuelle Computer herunterfahren und eine geplante Migration ohne Datenverlust durchführen?** die Option **Ja** > **OK**.
-    - Azure Migrate fährt die lokale VM standardmäßig herunter und führt eine bedarfsabhängige Replikation durch, um alle VM-Änderungen zu synchronisieren, die seit der letzten Replikation vorgenommen wurden. So wird sichergestellt, dass es nicht zu Datenverlust kommt.
-    - Wählen Sie **Nein**, wenn Sie die VM nicht herunterfahren möchten.
-4. Ein Migrationsauftrag wird für den virtuellen Computer gestartet. Verfolgen Sie den Auftrag unter den Azure-Benachrichtigungen nach.
+3. Wählen Sie unter **Migrieren** > **Virtuelle Computer herunterfahren und eine geplante Migration ohne Datenverlust durchführen?** die Option **Ja** >  und anschließend **OK** aus.
+    - Azure Migrate fährt die lokale VM standardmäßig herunter und führt eine bedarfsabhängige Replikation aus, um alle VM-Änderungen zu synchronisieren, die seit der letzten Replikation vorgenommen wurden. So wird sichergestellt, dass keine Daten verloren gehen.
+    - Falls Sie die VM nicht herunterfahren möchten, wählen Sie **Nein** aus.
+4. Für den virtuellen Computer wird ein Migrationsauftrag gestartet. Verfolgen Sie den Auftrag anhand der Azure-Benachrichtigungen nach.
 5. Nach Abschluss des Auftrags können Sie die VM auf der Seite **Virtuelle Computer** anzeigen und verwalten.
 
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
-1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf die VM und dann auf **Migration beenden**. Die Replikation für den lokalen Computer wird beendet, und die Informationen zum Replikationsstatus der VM werden bereinigt.
+1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf die VM und dann auf **Migration beenden**. Daraufhin wird Replikation für den lokalen Computer beendet, und die Informationen zum Replikationsstatus der VM werden bereinigt.
 2. Installieren Sie den [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- oder [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-Agent für die Azure-VM auf den migrierten Computern.
 3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.

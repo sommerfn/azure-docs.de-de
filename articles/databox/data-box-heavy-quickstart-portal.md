@@ -6,15 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.localizationpriority: high
+ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446736"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241379"
 ---
+::: zone target = "docs"
+
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box Heavy über das Azure-Portal
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie die Azure Data Box Heavy über das Azure-Portal bereitstellen. Die Schritte umfassen das Verkabeln, Konfigurieren und Kopieren von Daten in der Data Box Heavy, damit sie in Azure hochgeladen werden können. Der Schnellstart erfolgt im Azure-Portal und auf der lokalen Webbenutzeroberfläche des Geräts.
@@ -55,6 +58,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - Bei 10-GBit/s-Kabeln benötigen Sie ein SFP+-Kabel, das auf der einen Seite mit einem 10-G-Switch verbunden ist und an dem Ende, das mit dem Gerät verbunden wird, über einen QSFP+-auf-SFP+-Adapter (oder über den QSA-Adapter) verfügt.
 - Die Netzkabel sind in einem Fach auf der Rückseite des Geräts enthalten.
 
+
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -69,6 +73,16 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 4. Geben Sie die Auftragsdetails und Versandinformationen ein. Wenn der Dienst in Ihrer Region verfügbar ist, können Sie E-Mail-Adressen für Benachrichtigungen angeben, die Zusammenfassung prüfen und anschließend den Auftrag erstellen.
 
 Nachdem der Auftrag erstellt wurde, wird das Gerät für den Versand vorbereitet.
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>Verkabeln und Herstellen einer Verbindung mit Ihrem Gerät
+
+Nachdem Sie die Voraussetzungen überprüft haben, können Sie Ihr Gerät verkabeln und eine Verbindung herstellen.
+
+::: zone-end
 
 ## <a name="cable-for-power"></a>Verkabeln des Geräts für die Stromversorgung
 
@@ -105,6 +119,9 @@ Dieser Schritt dauert ungefähr 5 bis 7 Minuten.
 Dieser Schritt dauert ungefähr 15 bis 20 Minuten.
 
 Führen Sie die gleichen Schritte wie zum Verkabeln des ersten Knotens aus, und konfigurieren Sie den zweiten Knoten auf dem Gerät.  
+
+
+::: zone target = "docs"
 
 ## <a name="copy-data"></a>Kopieren von Daten
 
@@ -157,3 +174,5 @@ In dieser Schnellstartanleitung haben Sie eine Data Box Heavy bereitgestellt, ü
 
 > [!div class="nextstepaction"]
 > [Verwenden des Azure-Portals zum Verwalten der Data Box Heavy](data-box-portal-admin.md)
+
+::: zone-end

@@ -1,22 +1,19 @@
 ---
 title: Erstellen von Azure-Funktionen unter Linux mit einem benutzerdefinierten Image
 description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem benutzerdefinierten Linux-Image ausgeführt werden.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562933"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210178"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
@@ -56,7 +53,7 @@ Sie können ebenso [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.
 
 ## <a name="create-the-local-function-app-project"></a>Erstellen des lokalen Funktions-App-Projekts
 
-Führen Sie den folgenden Befehl zum Erstellen eines Funktions-App-Projekts im `MyFunctionProj`-Ordner des aktuellen lokalen Verzeichnisses über die Befehlszeile aus.
+Führen Sie den folgenden Befehl zum Erstellen eines Funktions-App-Projekts im `MyFunctionProj`-Ordner des aktuellen lokalen Verzeichnisses über die Befehlszeile aus. Für ein Python-Projekt muss eine [virtuelle Umgebung](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional) verwendet werden.
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ Wählen Sie bei entsprechender Aufforderung eine der folgenden Worker-Runtimespr
 
 * `dotnet`: Erstellt ein .NET Core-Klassenbibliotheksprojekt (.csproj).
 * `node`: Erstellt ein JavaScript-Projekt.
-* `python`: Erstellt ein Python-Projekt.
+* `python`: Erstellt ein Python-Projekt.  
 
 Wenn der Befehl ausgeführt wird, sehen Sie etwa folgende Ausgabe:
 

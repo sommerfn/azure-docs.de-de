@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/12/2019
-ms.openlocfilehash: 41670b74cdc6205ed7e02431dd10de8bea2d2858
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.date: 09/01/2019
+ms.openlocfilehash: e0a9f4fa6ca5ff7447d2ffaef3eab2f3c54fdeae
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68014921"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241263"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-container-and-items-with-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cosmos-Kontos und eines Containers sowie von Elementen mit dem Azure-Portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "68014921"
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können Azure Cosmos DB verwenden, um schnell Schlüssel/Wert-, Dokument- und Graph-Datenbanken zu erstellen und abzufragen, und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe des Azure-Portals ein [SQL-API](sql-api-introduction.md)-Konto, eine Dokumentdatenbank und eine Sammlung für Azure Cosmos DB erstellen und der Sammlung Daten hinzufügen. 
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe des Azure-Portals ein [SQL-API](sql-api-introduction.md)-Konto, eine Dokumentdatenbank und einen Container für Azure Cosmos DB erstellen und dem Container Daten hinzufügen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,24 +42,24 @@ Azure-Abonnement oder kostenloses Azure Cosmos DB-Testkonto
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-<a id="create-collection-database"></a>
-## <a name="add-a-database-and-a-collection"></a>Hinzufügen einer Datenbank und einer Sammlung 
+<a id="create-container-database"></a>
+## <a name="add-a-database-and-a-container"></a>Hinzufügen einer Datenbank und eines Containers 
 
-Sie können mit dem Daten-Explorer im Azure-Portal eine Datenbank und eine Sammlung erstellen. 
+Sie können mit dem Daten-Explorer im Azure-Portal eine Datenbank und einen Container erstellen. 
 
 1.  Wählen Sie auf der Azure Cosmos DB-Kontoseite im linken Navigationsbereich die Option **Daten-Explorer** und dann **Neuer Container** aus. 
     
     Unter Umständen müssen Sie nach rechts scrollen, um das Fenster **Container hinzufügen** anzuzeigen.
     
-    ![Daten-Explorer im Azure-Portal, Bereich „Sammlung hinzufügen“](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Daten-Explorer im Azure-Portal, Bereich „Container hinzufügen“](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  Geben Sie im Bereich **Container hinzufügen** die Einstellungen für die neue Sammlung ein.
+1.  Geben Sie im Bereich **Container hinzufügen** die Einstellungen für den neuen Container ein.
     
     |Einstellung|Empfohlener Wert|BESCHREIBUNG
     |---|---|---|
     |**Datenbank-ID**|ToDoList|Geben Sie *ToDoList* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen). Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
     |**Durchsatz**|400|Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.| 
-    |**Container-ID**|Items|Geben Sie *Items* als Namen für die neue Sammlung ein. Für Sammlungs-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen.|
+    |**Container-ID**|Items|Geben Sie *Items* als Namen für den neuen Container ein. Für Container-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen.|
     |**Partitionsschlüssel**| /category| Das in diesem Artikel beschriebene Beispiel verwendet */category* als Partitionsschlüssel.|
 
     

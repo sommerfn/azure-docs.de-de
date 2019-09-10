@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011858"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165253"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -127,6 +127,65 @@ Nachdem Sie diese Informationen hinzugefügt haben, wählen Sie **Speichern** au
 ## <a name="publish-your-offer"></a>Veröffentlichen Ihres Angebots
 
 Wenn alle von Ihnen bereitgestellten Informationen so sind, wie Sie es haben möchten, besteht Ihr nächster Schritt darin, das Angebot in Azure Marketplace zu veröffentlichen. Wählen Sie die Schaltfläche **Veröffentlichen** aus, um den Vorgang zu starten, mit dem Ihr Angebot live geschaltet wird. Weitere Informationen zu diesem Prozess finden Sie unter [Veröffentlichen von Azure Marketplace- und AppSource-Angeboten](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+
+## <a name="the-customer-onboarding-process"></a>Kundenonboarding
+
+Wenn ein Kunde Ihr Angebot hinzufügt, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann für die delegierte Azure-Ressourcenverwaltung das Onboarding durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
+
+Bevor für ein Abonnement (oder Ressourcengruppen innerhalb eines Abonnements) das Onboarding durchgeführt werden kann, muss das Abonnement manuell für das Onboarding autorisiert werden, indem der Ressourcenanbieter **Microsoft.ManagedServices** registriert wird. Ein Benutzer im Kundenmandanten mit der Rolle „Mitwirkender“ oder „Besitzer“ kann diesen Schritt anhand der Anleitung unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md) ausführen.
+
+Der Kunde kann dann mit einer der folgenden Methoden bestätigen, dass das Abonnement für das Onboarding bereit ist:
+
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Wählen Sie im Azure-Portal das Abonnement aus.
+1. Wählen Sie **Ressourcenanbieter** aus.
+1. Vergewissern Sie sich, dass **Microsoft. ManagedServices** als **Registriert** angezeigt wird.
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+Daraufhin sollten Ergebnisse ähnlich den folgenden zurückgegeben werden:
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+Daraufhin sollten Ergebnisse ähnlich den folgenden zurückgegeben werden:
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

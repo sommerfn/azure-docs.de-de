@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 15cd01cd3c9cbf3a94d5aad31ae2c85959fed289
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 177ed7043f88ba678036d1d7b5bed5abef8baa1b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276484"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141387"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der Maschinelles Sehen-REST-API und Go
 
@@ -27,17 +27,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Go](https://golang.org/dl/) muss installiert sein.
-- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
+- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
 1. Kopieren Sie den folgenden Code in einen Text-Editor.
-1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
-    1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
-    1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
-    1. Ersetzen Sie optional den Wert von `imageUrl` durch die URL eines anderen Bilds, das analysiert werden soll.
+1. Ersetzen Sie optional den Wert von `imageUrl` durch die URL eines anderen Bilds, das analysiert werden soll.
 1. Speichern Sie den Code als Datei mit der Erweiterung `.go`. Beispiel: `get-printed-text.go`.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
 1. Führen Sie an der Eingabeaufforderung den Befehl `go build` aus, um zur Paketerstellung die Datei zu kompilieren. Beispiel: `go build get-printed-text.go`.
@@ -56,19 +53,18 @@ import (
 )
 
 func main() {
-    // Replace <Subscription Key> with your valid subscription key.
-    const subscriptionKey = "<Subscription Key>"
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
+    if (subscriptionKey == "") {
+        log.Fatal("\n\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n" +
+            "**Restart your shell or IDE for changes to take effect.**\n")
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westcentralus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    const uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr"
+    endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
+    if ("" == endpoint) {
+        log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
+            "**Restart your shell or IDE for changes to take effect.**")
+    }
+    const uriBase = endpoint + "vision/v2.0/ocr"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
         "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 

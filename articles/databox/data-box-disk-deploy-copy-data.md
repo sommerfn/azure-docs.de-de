@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 30f9597e6a42b8bdd35a7d69594a2feb16edae30
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126184"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70231374"
 ---
 ::: zone target="docs"
 
@@ -26,9 +27,11 @@ ms.locfileid: "70126184"
 
 ## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Kopieren von Daten auf Azure Data Box Disk und Durchführen der Überprüfung
 
-Nachdem die Datenträger verbunden und entsperrt wurden, können Sie Daten von Ihrem Quelldatenserver auf Ihre Datenträger kopieren. Nach Abschluss des Datenkopiervorgangs empfiehlt es sich, die kopierten Daten zu überprüfen. Durch die Überprüfung wird sichergestellt, dass die Daten später erfolgreich in Azure hochgeladen werden.
+Nachdem die Datenträger verbunden und entsperrt wurden, können Sie Daten von Ihrem Quelldatenserver auf Ihre Datenträger kopieren. Nach Abschluss des Datenkopiervorgangs sollten Sie die Daten überprüfen, um sicherzustellen, dass sie ordnungsgemäß in Azure hochgeladen werden.
 
 ::: zone-end
+
+::: zone target="docs"
 
 In diesem Tutorial wird beschrieben, wie Sie Daten von Ihrem Hostcomputer kopieren und anschließend Prüfsummen generieren, um die Datenintegrität zu überprüfen.
 
@@ -333,6 +336,6 @@ Gehen Sie zum Überprüfen Ihrer Daten wie folgt vor:
 1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
 2. Verwenden Sie Option 2, um Ihre Dateien zu überprüfen und Prüfsummen zu generieren. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Falls bei der Überprüfung und Generierung der Prüfsumme Fehler auftreten, werden Sie benachrichtigt und erhalten einen Link zu den Fehlerprotokollen.
 
-    Weitere Informationen zur Datenüberprüfung finden Sie unter [Überprüfen der Daten](data-box-disk-deploy-copy-data.md#validate-data). Sollten bei der Überprüfung Fehler auftreten, lesen Sie [Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk](data-box-disk-troubleshoot.md).
+    Weitere Informationen zur Datenüberprüfung finden Sie unter [Überprüfen der Daten](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Sollten bei der Überprüfung Fehler auftreten, lesen Sie [Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk](data-box-disk-troubleshoot.md).
 
 ::: zone-end

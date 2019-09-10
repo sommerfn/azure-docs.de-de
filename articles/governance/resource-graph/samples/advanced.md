@@ -1,19 +1,18 @@
 ---
 title: Beispiele erweiterter Abfragen
-description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, etwa zur VMSS-Kapazität, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von virtuellen Computern mit regulären Ausdrücken.
+description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, etwa zur Kapazität von VM-Skalierungsgruppen, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von virtuellen Computern mit regulären Ausdrücken.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 33c67f77a26e2a4fc97d7f5483aad53c121e117b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691985"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239016"
 ---
 # <a name="advanced-resource-graph-queries"></a>Erweiterte Resource Graph-Abfragen
 
@@ -25,10 +24,9 @@ Wir behandeln die folgenden erweiterten Abfragen:
 > - [Abrufen der Kapazität und Größe von VM-Skalierungsgruppen](#vmss-capacity)
 > - [Auflisten aller Tagnamen](#list-all-tags)
 > - [Einem regulären Ausdruck entsprechende VMs](#vm-regex)
+> - [Einbeziehen der Mandanten- und Abonnementnamen mit „DisplayNames“](#displaynames)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Sprachunterstützung
 
@@ -72,8 +70,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Einem regulären Ausdruck entsprechende VMs
 
-Diese Abfrage sucht nach virtuellen Computern, die einem [regulären Ausdruck](/dotnet/standard/base-types/regular-expression-language-quick-reference) (als _RegEx_ bekannt) entsprechen.
-Mit **matches regex \@** wird der reguläre Ausdruck für den Abgleich definiert: `^Contoso(.*)[0-9]+$`. Diese RegEx-Definition wird wie folgt erläutert:
+Diese Abfrage sucht nach virtuellen Computern, die einem [regulären Ausdruck](/dotnet/standard/base-types/regular-expression-language-quick-reference) (als _RegEx_ bekannt) entsprechen. Mit **matches regex \@** wird der reguläre Ausdruck für den Abgleich definiert: `^Contoso(.*)[0-9]+$`.
+Diese RegEx-Definition wird wie folgt erläutert:
 
 - `^` – Die Übereinstimmung muss am Anfang der Zeichenfolge beginnen.
 - `Contoso` – Zeichenfolge mit Beachtung von Groß-/Kleinschreibung
@@ -99,6 +97,22 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```azurepowershell-interactive
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
+
+## <a name="displaynames"></a>Einbeziehen der Mandanten- und Abonnementnamen mit „DisplayNames“
+
+Diese Abfrage verwendet den neuen Parameter **Include** mit der Option _DisplayNames_, um **subscriptionDisplayName** und **tenantDisplayName** in die Ergebnisse aufzunehmen. Dieser Parameter ist nur für die Azure CLI und Azure PowerShell verfügbar.
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> Verwendet die Abfrage nicht **project** zum Angeben der zurückgegebenen Eigenschaften, sind **subscriptionDisplayName** und **tenantDisplayName** automatisch in den Ergebnissen enthalten.
+> Verwendet die Abfrage **project**, müssen alle Felder vom Typ _DisplayName_ ausdrücklich in **project** aufgenommen werden, andernfalls werden sie auch bei Verwendung des Parameters **Include** nicht in den Ergebnissen zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

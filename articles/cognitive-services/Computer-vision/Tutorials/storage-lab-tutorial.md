@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597854"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137541"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
@@ -46,7 +46,8 @@ Sie müssen für Ihr Azure-Konto eine Maschinelles Sehen-Ressource erstellen. Mi
 
 1. Kehren Sie dann zum Menü für Ihre Ressourcengruppe zurück, und klicken Sie auf das Abonnement der Maschinelles Sehen-API, das Sie gerade erstellt haben. Kopieren Sie die URL unter **Endpunkt** an einen Ort, an dem Sie gleich schnell darauf zugreifen können. Klicken Sie anschließend auf **Zugriffsschlüssel anzeigen**.
 
-    ![Azure-Portalseite mit Hervorhebung der Endpunkt-URL und des Links für Zugriffsschlüssel](../Images/copy-vision-endpoint.png)
+    ![Azure-Portalseite mit Hervorhebung der Endpunkt-URL und des Links für Zugriffsschlüssel](../Images/copy-vision-endpoint.png) [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 
 1. Kopieren Sie im nächsten Fenster den Wert von **SCHLÜSSEL 1** in die Zwischenablage.
 

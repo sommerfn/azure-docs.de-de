@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie die Migration von lokalen VMware-VMs z
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ec7d10a1d9fec43c149c068fb408211db76d19eb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640772"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309378"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -126,9 +126,12 @@ Aktivieren von SSH | Stellen Sie sicher, dass SSH aktiviert und für den SSHD-Di
 
 ## <a name="replicate-vms"></a>Replizieren von VMs
 
-Nachdem die Ermittlung abgeschlossen ist, können Sie mit der Replikation von VMware-VMs in Azure beginnen.
+Nachdem die Ermittlung abgeschlossen ist, können Sie mit der Replikation von VMware-VMs in Azure beginnen. 
 
-1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
+> [!NOTE]
+> Sie können bis zu zehn Computer gleichzeitig replizieren. Müssen Sie mehr Computer replizieren, führen Sie die Replikation in Batches mit jeweils zehn Computern durch. Bei der Migration ohne Agents können Sie bis zu 100 gleichzeitige Replikationsvorgänge ausführen.
+
+1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
 
     ![Replizieren von VMs](./media/tutorial-migrate-vmware/select-replicate.png)
 

@@ -6,18 +6,18 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: heidist
-ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 3b0647c3a71e6ce242e7cbd0eedcca3d0fa30ded
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899682"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274047"
 ---
 # <a name="what-is-azure-search"></a>Was ist Azure Search?
 
-Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. Ihr benutzerdefinierter Code ruft die Datenerfassung (Indizierung) auf, um einen Index zu erstellen und zu laden. Auf der anderen Seite gibt Ihr Anwendungscode Abfrageanforderungen aus und verarbeitet Antworten. Das Suchverhalten ist mit Funktionen aus Azure Search in Ihrem Client definiert, und Abfragen werden in einem permanenten Index ausgeführt, den Sie erstellen, besitzen und in Azure Search speichern.
+Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. Ihr benutzerdefinierter Code ruft die Datenerfassung (Indizierung) auf, um einen Index zu erstellen und zu laden. Auf der anderen Seite gibt Ihr Anwendungscode Abfrageanforderungen aus und verarbeitet Antworten. Das Suchverhalten ist mit Funktionen aus Azure Search in Ihrem Client definiert, und Abfragen werden in einem permanenten Index ausgeführt, den Sie erstellen, besitzen und in Ihrem Dienst speichern.
 
 ![Azure Search-Architektur](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search-Architektur")
 
