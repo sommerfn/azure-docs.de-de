@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598011"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274425"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Installieren von Paketen aus einem Notebook
 
@@ -66,9 +66,19 @@ Installieren Sie anschließend Pakete:
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+Laden Sie dann den Paket-Generator:
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+Öffnen Sie die Bibliothek:
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

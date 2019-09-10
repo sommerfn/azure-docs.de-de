@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087453"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241057"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Prüfpunkte und Wiedergabe in Durable Functions (Azure Functions)
 
@@ -145,6 +145,9 @@ Mit dem Wiedergabeverhalten sind Einschränkungen des Codetyps verbunden, der in
   Wenn für einen Orchestrator eine Verzögerung erforderlich ist, kann die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET)- oder `createTimer` (JavaScript)-API genutzt werden.
 
 * Orchestratorcode darf **niemals einen asynchronen Vorgang initiieren**, sofern nicht die [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)-API oder die API des `context.df`-Objekts verwendet wird. Beispielsweise kein `Task.Run`, `Task.Delay` oder `HttpClient.SendAsync` in .NET oder `setTimeout()` und `setInterval()` in JavaScript. Das Durable Task Framework führt Orchestratorcode über einen einzelnen Thread aus und kann nicht mit anderen Threads interagieren, die von anderen asynchronen APIs geplant werden können. Wenn dies der Fall ist, wird die Ausnahme `InvalidOperationException` ausgelöst.
+
+> [!NOTE]
+> Die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-API führt asynchrone E/A-Vorgänge aus. Dies ist in einer Orchestratorfunktion nicht zulässig und kann nur in Nicht-Orchestratorfunktionen verwendet werden.
 
 * **Endlosschleifen sollten im Orchestratorcode vermieden werden**. Da das Durable Task Framework den Ausführungsverlauf speichert, während die Orchestrierungsfunktion voranschreitet, kann eine Endlosschleife unter Umständen dazu führen, dass für eine Orchestratorinstanz der Arbeitsspeicher nicht mehr ausreicht. Verwenden Sie für Szenarien mit Endlosschleifen APIs wie beispielsweise [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) oder `continueAsNew` (JavaScript), um die Funktionsausführung neu zu starten und den vorherigen Ausführungsverlauf zu verwerfen.
 

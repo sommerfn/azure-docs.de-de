@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 manager: gwallace
 ms.service: container-registry
-ms.topic: overview
+ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574392"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208005"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -64,7 +64,7 @@ Die Georeplikationsfunktion von Azure Container Registry bietet die folgenden Vo
 
 ## <a name="configure-geo-replication"></a>Konfigurieren der Georeplikation
 
-Die Konfiguration der Georeplikation ist so einfach wie das Klicken auf Regionen auf einer Karte. Sie können die Georeplikation auch mithilfe von Tools verwalten, z.B. mithilfe der [az acr replication](/cli/azure/acr/replication)-Befehle in der Azure CLI.
+Die Konfiguration der Georeplikation ist so einfach wie das Klicken auf Regionen auf einer Karte. Außerdem können Sie die Georeplikation mithilfe von Tools verwalten, wozu auch die [az acr replication](/cli/azure/acr/replication)-Befehle in der Azure-Befehlszeilenschnittstelle gehören, oder Sie können eine für die Georeplikation aktivierte Registrierung mit einer [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication) bereitstellen.
 
 Die Georeplikation ist nur bei [Premium-Registrierungen](container-registry-skus.md) möglich. Wenn Ihre Registrierung noch nicht im Premium-Tarif betrieben wird, können Sie im [Azure-Portal](https://portal.azure.com) von den Tarifen Basic und Standard zu Premium wechseln:
 
@@ -97,8 +97,19 @@ ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald 
 * Jede Region in einer georeplizierten Registrierung ist nach der Einrichtung unabhängig. Azure Container Registry-SLAs gelten für jede georeplizierte Region.
 * Wenn Sie mithilfe von Push oder Pull Images in oder aus einer georeplizierten Registrierung übertragen, sendet der Azure Traffic Manager die Anforderung im Hintergrund an die Registrierung in der nächstgelegenen Region.
 * Nachdem Sie ein Image oder Tag mithilfe von Push in die nächstgelegene Region übertragen haben, benötigt Azure Container Registry etwas Zeit, um die Manifeste und Ebenen in die von Ihnen ausgewählten verbleibenden Regionen zu replizieren. Für die Replikation größerer Images wird mehr Zeit benötigt als für kleinere Images. Images und Tags werden anhand eines Modells für letztliche Konsistenz über die Replikationsregionen hinweg synchronisiert.
-* Um Workflows zu verwalten, die von der Pushübertragung von Updates in eine georeplizierte Registrierung abhängen, wird die Konfiguration von [Webhooks](container-registry-webhook.md) zur Antwort auf die Pushereignisse empfohlen. Sie können regionale Webhooks innerhalb einer georeplizierten Registrierung einrichten, um Pushereignisse nachzuverfolgen, wenn diese über die georeplizierten Regionen hinweg abgeschlossen werden.
+* Um Workflows zu verwalten, die von der Pushübertragung von Updates in eine georeplizierte Registrierung abhängen, wird die Konfiguration von [Webhooks](container-registry-webhook.md) als Reaktion auf die Pushereignisse empfohlen. Sie können regionale Webhooks innerhalb einer georeplizierten Registrierung einrichten, um Pushereignisse nachzuverfolgen, wenn diese über die georeplizierten Regionen hinweg abgeschlossen werden.
 
+## <a name="delete-a-replica"></a>Löschen eines Replikats
+
+Nachdem Sie ein Replikat für Ihre Registrierung konfiguriert haben, können Sie es jederzeit löschen, wenn es nicht mehr benötigt wird. Löschen Sie ein Replikat mit dem Azure-Portal oder mit einem anderen Tool, etwa dem [az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete)-Befehl in der Azure-Befehlszeilenschnittstelle.
+
+So löschen Sie ein Replikat im Azure-Portal
+
+1. Navigieren Sie zu Ihrer Azure Container Registry-Instanz, und wählen Sie **Replikationen** aus.
+1. Wählen Sie den Namen eines Replikats aus, und wählen Sie **Löschen** aus. Bestätigen Sie, dass Sie das Replikat löschen möchten.
+
+> [!NOTE]
+> Sie können das Registrierungsreplikat nicht im *Basisbereich* der Registrierung löschen; dies ist der Speicherort, an dem Sie die Registrierung erstellt haben. Sie können das Basisreplikat nur löschen, indem Sie die Registrierung löschen.
 
 ## <a name="geo-replication-pricing"></a>Georeplikation – Preise
 

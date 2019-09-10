@@ -1,6 +1,6 @@
 ---
 title: 'Konfigurieren der Authentifizierung über ein Microsoft-Konto: Azure App Service'
-description: Erfahren Sie, wie Sie die Microsoft-Kontoauthentifizierung für Ihre App Services-Anwendung konfigurieren.
+description: Erfahren Sie, wie Sie die Microsoft-Kontoauthentifizierung für Ihre App Service-App konfigurieren.
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cb2da26fcc00d1daf4b2dd0faf8bde8b743b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0832c1e5f10cdb8e1d7a2edbb88162230ab13401
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098521"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233084"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -61,7 +61,7 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
 
 4. (Optional) Um den Zugriff auf Microsoft-Kontobenutzer zu beschränken, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Microsoft-Konto anmelden** fest. Dadurch müssen alle Anforderungen authentifiziert werden. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Microsoft umgeleitet.
 
-> [!CAUTION]
+> [!NOTE]
 > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
 
 5. Klicken Sie auf **Speichern**.

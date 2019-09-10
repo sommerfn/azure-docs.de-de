@@ -1,6 +1,6 @@
 ---
 title: 'Konfigurieren der Facebook-Authentifizierung: Azure App Service'
-description: Erfahren Sie, wie Sie die Facebook-Authentifizierung für Ihre App Services-Anwendung konfigurieren.
+description: Erfahren Sie, wie Sie die Facebook-Authentifizierung für Ihre App Service-App konfigurieren.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f4d26572dc21e2c7454fb739cb4b5fb5665bd1db
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 410d769d0d9abe3a0a0f9c45e3cf67bb94ec9f4d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098582"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232075"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -32,7 +32,7 @@ Sie benötigen ein Facebook-Konto mit verifizierter E-Mail-Adresse und einer Mob
 1. Navigieren Sie zur Website für [Facebook-Entwickler] , und melden Sie sich mit den Anmeldeinformationen für Ihr Facebook-Konto an.
 3. (Optional) Wenn Sie kein Facebook für Entwickler-Konto besitzen, klicken Sie auf **Get Started** (Erste Schritte), und befolgen Sie die Registrierungsschritte.
 4. Klicken Sie auf **My Apps** (Meine Apps) > **Add New App** (Neue App hinzufügen).
-5. Geben Sie unter **Display Name** (Anzeigenamen) einen eindeutigen Namen für Ihre App ein. Geben Sie auch Ihre **Contact Email** an, klicken Sie dann auf **Create App ID** (App-ID erstellen), und schließen Sie die Sicherheitsüberprüfung ab. Dadurch gelangen Sie zum Entwickler-Dashboard für Ihre neue Facebook-App.
+5. Geben Sie unter **Display Name** (Anzeigenamen) einen eindeutigen Namen für Ihre App ein. Geben Sie auch Ihre **Contact Email** an, klicken Sie dann auf **Create App ID** (App-ID erstellen), und schließen Sie die Sicherheitsüberprüfung ab. Das Entwickler-Dashboard für Ihre neue Facebook-App wird geöffnet.
 6. Klicken Sie auf **Dashboard** > **Facebook Login** (Facebook-Anmeldung) > **Setup** (Einrichten) > **Web**.
 1. Klicken Sie im linken Navigationsbereich auf **Facebook Login** (Facebook-Anmeldung) und dann auf **Settings** (Einstellungen).
 1. Geben Sie in **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` ein, und ersetzen Sie *\<app-name >* durch den Namen Ihrer Azure App Service-App. Klicken Sie auf **Änderungen speichern**.

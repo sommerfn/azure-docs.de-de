@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824415"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231981"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Erstellen und Verwenden von benutzerdefinierten Regeln für die Web Application Firewall v2
 
@@ -127,7 +127,7 @@ Entsprechender JSON-Code:
 
 ## <a name="example-2"></a>Beispiel 2
 
-Sie möchten alle Anforderungen von IP-Adressen im Bereich 198.168.5.4/24 blockieren.
+Sie möchten alle Anforderungen von IP-Adressen im Bereich 198.168.5.0/24 blockieren.
 
 In diesem Beispiel blockieren Sie den gesamten Datenverkehr, der aus einem IP-Adressbereich stammt. Der Name der Regel lautet *myrule1*, und die Priorität ist auf 100 festgelegt.
 
@@ -140,7 +140,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
@@ -166,7 +166,7 @@ Hier ist der entsprechende JSON-Code angegeben:
             "matchVariable": "RemoteAddr",
             "operator": "IPMatch",
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
@@ -175,11 +175,11 @@ Hier ist der entsprechende JSON-Code angegeben:
   }
 ```
 
-Zugehörige CRS-Regel: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Zugehörige CRS-Regel: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Beispiel 3
 
-In diesem Beispiel möchten Sie den Benutzer-Agent *evilbot* und den Datenverkehr im Bereich 192.168.5.4/24 blockieren. Hierzu können Sie zwei separate Übereinstimmungsbedingungen erstellen und in dieselbe Regel einfügen. So wird sichergestellt, dass sowohl *evilbot* im Header des Benutzers-Agents **als auch** IP-Adressen aus dem Bereich 192.168.5.4/24 blockiert werden.
+In diesem Beispiel möchten Sie den Benutzer-Agent *evilbot* und den Datenverkehr im Bereich 192.168.5.0/24 blockieren. Hierzu können Sie zwei separate Übereinstimmungsbedingungen erstellen und in dieselbe Regel einfügen. So wird sichergestellt, dass sowohl *evilbot* im Header des Benutzers-Agents **als auch** IP-Adressen aus dem Bereich 192.168.5.0/24 blockiert werden.
 
 Logik: p **and** q
 
@@ -194,7 +194,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -229,7 +229,7 @@ Hier ist der entsprechende JSON-Code angegeben:
               "operator": "IPMatch", 
               "negateCondition": false, 
               "matchValues": [ 
-                "192.168.5.4/24" 
+                "192.168.5.0/24" 
               ] 
             }, 
             { 
@@ -251,7 +251,7 @@ Hier ist der entsprechende JSON-Code angegeben:
 
 ## <a name="example-4"></a>Beispiel 4
 
-In diesem Beispiel möchten Sie Datenverkehr blockieren, wenn sich die Anforderung entweder außerhalb des IP-Adressbereichs *192.168.5.4/24* befindet oder die Zeichenfolge des Benutzer-Agents nicht *chrome* lautet (der Benutzer also nicht den Chrome-Browser verwendet). Da bei dieser Logik **or** verwendet wird, befinden sich die beiden Bedingungen in separaten Regeln. Dies ist im folgenden Beispiel dargestellt. Sowohl für *myrule1* als auch für *myrule2* muss sich eine Übereinstimmung ergeben, damit der Datenverkehr blockiert wird.
+In diesem Beispiel möchten Sie Datenverkehr blockieren, wenn sich die Anforderung entweder außerhalb des IP-Adressbereichs *192.168.5.0/24* befindet oder die Zeichenfolge des Benutzer-Agents nicht *chrome* lautet (der Benutzer also nicht den Chrome-Browser verwendet). Da bei dieser Logik **or** verwendet wird, befinden sich die beiden Bedingungen in separaten Regeln. Dies ist im folgenden Beispiel dargestellt. Sowohl für *myrule1* als auch für *myrule2* muss sich eine Übereinstimmung ergeben, damit der Datenverkehr blockiert wird.
 
 Logik: **not** (p **and** q) = **not** p **or not** q.
 
@@ -266,7 +266,7 @@ $variable2 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $True
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -307,7 +307,7 @@ Entsprechender JSON-Code:
             "operator": "IPMatch",
             "negateCondition": true,
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]

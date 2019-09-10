@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: f9cd6e2fee738d2d42c790b4eb7b9a876a44b01d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9ef2cd695f9591f299bb85b95d14d60b987c38d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772974"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258686"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 
@@ -320,6 +320,11 @@ Folgen Sie diesen Schritten:
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Durchführen eines Upgrades von Remoting V1 auf Remoting V2 (schnittstellenkompatibel)
 
 Zum Durchführen eines Upgrades von V1 auf V2 (schnittstellenkompatibel, auch als „V2_1“ bezeichnet) sind zwei Upgradeschritte erforderlich. Führen Sie die Schritte in dieser Reihenfolge aus.
+
+> [!NOTE]
+> Wenn Sie von V1 auf V2 aktualisieren, müssen Sie den `Remoting`-Namespace so aktualisieren, dass für ihn V2 verwendet wird. Beispiel: 'Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`
+>
+>
 
 1. Aktualisieren Sie den V1-Dienst auf den V2_1-Dienst, indem Sie das folgende Attribut verwenden.
 Mit dieser Änderung wird sichergestellt, dass der Dienst am V1- und V2_1-Listener lauscht.

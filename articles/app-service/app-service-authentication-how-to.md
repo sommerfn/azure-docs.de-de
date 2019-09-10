@@ -4,21 +4,21 @@ description: Veranschaulicht die Anpassung der Authentifizierung und Autorisieru
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098541"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231976"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -130,7 +130,7 @@ Wenn Sie vollqualifizierte URLs verwenden, muss die URL in derselben Domäne geh
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-Sie müssen den nachstehenden Befehl in der [Azure Cloud Shell](../cloud-shell/quickstart.md) ausführen:
+Führen Sie den nachstehenden Befehl in der [Azure Cloud Shell](../cloud-shell/quickstart.md) aus:
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Beschränken der Domäne von Anmeldekonten
 
-Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_-, _live.com_- und _hotmail.com_-Konten zu. Azure Active Directory lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Dieses Verhalten ist für eine interne App möglicherweise nicht wünschenswert, wenn nicht jeder Benutzer mit einem _outlook.com_-Konto über Zugriff verfügen soll. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten zu beschränken.
+Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_-, _live.com_- und _hotmail.com_-Konten zu. Azure AD lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Möglicherweise möchten Sie aber, dass Ihre Benutzer möglichst schnell direkt zu Ihrer eigenen Azure AD-Anmeldeseite (etwa `contoso.com`) gelangen. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten vorzuschlagen.
 
 Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** >  **_\< Name des\_ Abonnements_**  > **resourceGroups** >  **_\< Name\_ der\_ Ressourcengruppe>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< App\_ Name>_**  > **config** > **authsettings**. 
 
@@ -239,6 +239,54 @@ Klicken Sie auf **Bearbeiten**, ändern Sie die folgende Eigenschaft, und klicke
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+Diese Einstellung fügt den `domain_hint`-Abfragezeichenfolgen-Parameter an die Umleitungs-URL der Anmeldung an. 
+
+> [!IMPORTANT]
+> Der Client kann den `domain_hint`-Parameter nach dem Empfang der Umleitungs-URL entfernen und sich dann mit einer anderen Domäne anmelden. Diese Funktion ist zwar komfortabel, unter Sicherheitsaspekten aber bedenklich.
+>
+
+## <a name="authorize-or-deny-users"></a>Autorisieren oder Ablehnen von Benutzern
+
+Während App Service den einfachsten Autorisierungsfall erledigt (also nicht authentifizierte Anforderungen ablehnt), erfordert Ihre App möglicherweise ein differenzierteres Autorisierungsverhalten, beispielsweise Einschränken des Zugriffs, sodass nur eine bestimmte Benutzergruppe Zugriff hat. Für bestimmte Fälle müssen Sie benutzerdefinierten Anwendungscode schreiben, um den Zugriff für einen angemeldeten Benutzer zuzulassen oder abzulehnen. In anderen Fällen kann App Service oder Ihr Identitätsanbieter möglicherweise unterstützen, ohne dass Codeänderungen erforderlich sind.
+
+- [Serverebene](#server-level-windows-apps-only)
+- [Identitätsanbieterebene](#identity-provider-level)
+- [Anwendungsebene](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Serverebene (nur Windows-Apps)
+
+Für jede Windows-App können Sie das Autorisierungsverhalten des IIS-Webservers definieren, indem Sie die Datei *Web.config* bearbeiten. Linux-Apps verwenden IIS nicht und können nicht über *Web.config* konfiguriert werden.
+
+1. Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`.
+
+1. Navigieren Sie im Browser-Explorer Ihrer App Service-Dateien zu *site/wwwroot*. Wenn keine *Web.config*-Datei vorhanden ist, erstellen Sie diese, indem Sie **+**  > **Neue Datei** auswählen. 
+
+1. Wählen Sie das Freihandwerkzeug für *Web.config.* aus, um die Datei zu bearbeiten. Fügen Sie den folgenden Konfigurationscode hinzu, und klicken Sie auf **Speichern**. Wenn *Web.config* bereits vorhanden ist, fügen Sie einfach das `<authorization>`-Element mit allen zugehörigen Werten hinzu. Fügen Sie die Konten, die Sie zulassen möchten, im `<allow>`-Element hinzu.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Identitätsanbieterebene
+
+Der Identitätsanbieter kann eine bestimmte fertige Autorisierung bereitstellen. Beispiel:
+
+- Für [Azure App Service](configure-authentication-provider-aad.md) können Sie das [Verwalten von Zugriff auf Unternehmensebene](../active-directory/manage-apps/what-is-access-management.md) direkt in Azure AD vornehmen. Anweisungen hierzu finden Sie unter [Aufheben des Zugriffs eines Benutzers auf eine Anwendung](../active-directory/manage-apps/methods-for-removing-user-access.md).
+- Für [Google](configure-authentication-provider-google.md) können Google-API-Projekte, die zu einer [Organisation](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) gehören, so konfiguriert werden, dass sie Zugriff nur für Benutzer aus Ihrer Organisation zulassen (weitere Informationen finden Sie auf der [Unterstützungsseite **Setting up OAuth 2.0** von Google](https://support.google.com/cloud/answer/6158849?hl=en)).
+
+### <a name="application-level"></a>Anwendungsschicht
+
+Wenn keine der anderen Ebenen die erforderliche Autorisierung bereitstellt, oder wenn Ihre Plattform oder Ihr Identitätsanbieter nicht unterstützt wird, müssen Sie benutzerdefinierten Code schreiben, um Benutzer anhand der [Benutzeransprüche](#access-user-claims) zu autorisieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]

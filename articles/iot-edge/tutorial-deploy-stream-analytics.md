@@ -146,7 +146,7 @@ Um Ihren Stream Analytics-Auftrag auf die Bereitstellung als IoT Edge-Gerät vor
 
    ![Azure Stream Analytics: Hinzufügen eines Speicherkontos](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
-1. Wählen Sie über das Dropdownmenü das Speicherkonto aus, das Sie zu Beginn dieses Tutorials erstellt haben. ****
+1. Wählen Sie über das Dropdownmenü das **Speicherkonto** aus, das Sie zu Beginn dieses Tutorials erstellt haben.
 
 1. Klicken Sie für das Feld **Container** auf **Neu erstellen**, und geben Sie einen Namen für den Speichercontainer an. 
 

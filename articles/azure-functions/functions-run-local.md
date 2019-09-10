@@ -1,22 +1,20 @@
 ---
 title: Arbeiten mit Azure Functions Core Tools | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure-Funktionen über die Eingabeaufforderung oder das Terminal auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096159"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207286"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -414,6 +412,8 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Veröffentlichen in Azure
 
 Azure Functions Core Tools unterstützt zwei Arten von Bereitstellungen: die Bereitstellung der Funktionsprojektdateien direkt in Ihrer Funktions-App über [ZIP-Bereitstellung](functions-deployment-technologies.md#zip-deploy) und die [Bereitstellung eines benutzerdefinierten Docker-Containers](functions-deployment-technologies.md#docker-container). Sie müssen bereits [eine Funktions-App im Azure-Abonnement erstellt haben](functions-cli-samples.md#create), für die Sie den Code bereitstellen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können.
+
+Ein Projektordner kann sprachspezifische Dateien und Verzeichnisse enthalten, die nicht veröffentlicht werden sollen. Ausgeschlossene Elemente werden in einer .funcignore-Datei im Stammprojektordner aufgelistet.     
 
 ### <a name="project-file-deployment"></a>Bereitstellung (Projektdateien)
 

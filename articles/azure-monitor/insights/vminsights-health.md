@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602054"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233164"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Grundlegendes zur Integrität Ihrer Azure-VMs
 
@@ -285,7 +285,7 @@ Sie können den aktualisierten Integritätszustand anzeigen, wenn Sie die Seite 
 
 Die Integrität von Azure Monitor für VMs ist mit den [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md) integriert. Es wird eine Warnung ausgelöst, wenn für die vordefinierten Kriterien erkannt wird, dass der Zustand sich von „Fehlerfrei“ in „Fehlerhaft“ ändert. Die Warnungen werden nach Schweregrad definiert. Dabei ist „Sev0“ der höchste Schweregrad und „Sev4“ der niedrigste.
 
-Warnungen sind keiner Aktionsgruppe zugeordnet, damit Sie benachrichtigt werden, wenn die Warnung ausgelöst wurde. Der Besitzer des Abonnements muss Benachrichtigungen konfigurieren, indem dieser die Schritte im Abschnitt [Konfigurieren von Warnungen](#configure-alerts) befolgt.
+Warnungen sind keiner Aktionsgruppe zugeordnet, damit Sie benachrichtigt werden, wenn die Warnung ausgelöst wurde. Ein Benutzer mit der Rolle „Besitzer“ im Abonnementbereich muss Benachrichtigungen konfigurieren, indem er die Schritte im Abschnitt [Konfigurieren von Warnungen](#configure-alerts) ausführt.
 
 Die gesamten VM-Integritätswarnungen stehen nach Schweregrad kategorisiert auf dem Dashboard **Integrität** im Bereich **Warnungen** zur Verfügung. Wenn Sie entweder die Gesamtzahl der Warnungen oder die einem Schweregrad entsprechende Anzahl auswählen, wird die Seite **Warnungen** geöffnet und listet alle Warnungen auf, die Ihrer Auswahl entsprechen.
 

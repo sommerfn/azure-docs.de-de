@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 07/27/2019
-ms.openlocfilehash: c6fd20a2e1766a8bc9abfc92c6fc11d10dbe1bf2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/23/2019
+ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516086"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208401"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
 
@@ -23,7 +23,7 @@ Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview
 > [!NOTE]
 > Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Microsoft Flow, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-Apps bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-Apps. Weitere Informationen zu Funktionen und Ausdrücken in Microsoft Flow finden Sie unter [Verwenden von Ausdrücken in Bedingungen](https://docs.microsoft.com/flow/use-expressions-in-conditions).
 
-So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktionen wie die [add()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#add) verwenden, wenn Sie die Summe aus ganzen Zahlen oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie einige weitere Beispielaufgaben, die mithilfe von Funktionen ausgeführt werden können:
+So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktionen wie die [add()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#add) verwenden, wenn Sie die Summe aus ganzen Zahlen oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie weitere Beispielaufgaben, die Sie mit Funktionen ausführen können:
 
 | Aufgabe | Funktionssyntax | Ergebnis |
 | ---- | --------------- | ------ |
@@ -252,6 +252,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die mehrere Teile hat. |
 | [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Gibt die Ausgabe einer Aktion zur Laufzeit zurück. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Gibt den Wert für einen Parameter zurück, der in Ihrer Workflowdefinition beschrieben wird. |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | Gibt die Eingaben und Ausgaben aller Aktionen zurück, die in der angegebenen bereichsbezogenen Aktion enthalten sind, z. B. `For_each`, `Until` und `Scope`. |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Gibt die Ausgabe eines Triggers zur Laufzeit oder aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [triggerOutputs](#triggerOutputs) und [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Gibt die `body`-Ausgabe eines Triggers zur Laufzeit zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmt. |
@@ -638,7 +639,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T00:15:00.0000000Z"`
 
 ### <a name="addproperty"></a>addProperty
 
-Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. Wenn das Objekt zur Laufzeit bereits vorhanden ist, löst die Funktion einen Fehler aus.
+Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. Wenn die Eigenschaft zur Laufzeit bereits vorhanden ist, tritt in der Funktion ein Fehler auf, und sie löst einen Fehler aus.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -656,13 +657,81 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt mit der angegebenen Eigenschaft |
 ||||
 
-*Beispiel*
-
-In diesem Beispiel wird die `accountNumber`-Eigenschaft zu dem `customerProfile`-Objekt hinzugefügt, das mit der [JSON()](#json)-Funktion in JSON konvertiert wird.
-Die Funktion weist den Wert zu, der von der [guid()](#guid)-Funktion generiert wurde, und gibt das aktualisierte Objekt zurück:
+Verwenden Sie die folgende Syntax, um einer vorhandenen Eigenschaft eine untergeordnete Eigenschaft hinzuzufügen:
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Ja | Object | Das JSON-Objekt, zu dem Sie eine Eigenschaft hinzufügen möchten |
+| <*parent-property*> | Ja | Zeichenfolge | Der Name der übergeordneten Eigenschaft, der Sie die untergeordnete Eigenschaft hinzufügen möchten |
+| <*child-property*> | Ja | Zeichenfolge | Der Name für die untergeordnete Eigenschaft, die hinzugefügt werden soll |
+| <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
+|||||
+
+| Rückgabewert | type | BESCHREIBUNG |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | Das aktualisierte JSON-Objekt, dessen Eigenschaft Sie festlegen |
+||||
+
+*Beispiel 1*
+
+In diesem Beispiel wird die `middleName`-Eigenschaft zu einem JSON-Objekt hinzugefügt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird. Das Objekt enthält bereits die Eigenschaften `firstName` und `surName`. Die Funktion weist der neuen Eigenschaft den angegebenen Wert zu und gibt das aktualisierte Objekt zurück:
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+Das aktuelle JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Das aktualisierte JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*Beispiel 2*
+
+In diesem Beispiel wird die untergeordnete `middleName`-Eigenschaft zu der vorhandenen `customerName`-Eigenschaft in einem JSON-Objekt hinzugefügt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird. Die Funktion weist der neuen Eigenschaft den angegebenen Wert zu und gibt das aktualisierte Objekt zurück:
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+Das aktuelle JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+Das aktualisierte JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -3152,7 +3221,7 @@ Dies ist das zurückgegebene Ergebnis: `"the new string"`
 
 ### <a name="removeproperty"></a>removeProperty
 
-Entfernt eine Eigenschaft aus einem Objekt und gibt das aktualisierte Objekt zurück.
+Entfernt eine Eigenschaft aus einem Objekt und gibt das aktualisierte Objekt zurück. Ist die Eigenschaft, die Sie entfernen möchten, nicht vorhanden, gibt die Funktion das ursprüngliche Objekt zurück.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3169,20 +3238,208 @@ removeProperty(<object>, '<property>')
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt ohne die angegebene Eigenschaft |
 ||||
 
-*Beispiel*
-
-In diesem Beispiel wird die `"accountLocation"`-Eigenschaft aus einem `"customerProfile"`-Objekt entfernt, das mit der [JSON()](#json)-Funktion in JSON konvertiert wird, und es wird das aktualisierte Objekt zurückgegeben:
+Verwenden Sie die folgende Syntax, um eine untergeordnete Eigenschaft aus einer vorhandenen Eigenschaft zu entfernen:
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie entfernen möchten |
+| <*parent-property*> | Ja | Zeichenfolge | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie entfernen möchten |
+| <*child-property*> | Ja | Zeichenfolge | Der Name der untergeordneten Eigenschaft, die entfernt werden soll |
+|||||
+
+| Rückgabewert | type | BESCHREIBUNG |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | Das aktualisierte JSON-Objekt, dessen untergeordnete Eigenschaft entfernt wurde |
+||||
+
+*Beispiel 1*
+
+In diesem Beispiel wird die `middleName`-Eigenschaft aus einem JSON-Objekt entfernt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird, und es wird das aktualisierte Objekt zurückgegeben:
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+Das aktuelle JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+Das aktualisierte JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*Beispiel 2*
+
+In diesem Beispiel wird die untergeordnete `middleName`-Eigenschaft aus der übergeordneten `customerName`-Eigenschaft in einem JSON-Objekt entfernt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird, und es wird das aktualisierte Objekt zurückgegeben:
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+Das aktuelle JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+Das aktualisierte JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>result
+
+Gibt die Eingaben und Ausgaben aller Aktionen zurück, die in der angegebenen bereichsbezogenen Aktion enthalten sind, z. B. eine `For_each`-, `Until`- oder `Scope`-Aktion. Diese Funktion ist nützlich, um die Ergebnisse aus einer fehlgeschlagenen Aktion zurückzugeben, damit Sie Ausnahmen diagnostizieren und verarbeiten können. Weitere Informationen finden Sie unter [Abrufen von Kontext und Ergebnissen für Fehler](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+
+```
+result('<scopedActionName>')
+```
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| --------- | -------- | ---- | ----------- |
+| <*scopedActionName*> | Ja | Zeichenfolge | Der Name der bereichsbezogenen Aktion, aus der die Eingaben und Ausgaben aller inneren Aktionen zurückgegeben werden sollen |
+||||
+
+| Rückgabewert | type | BESCHREIBUNG |
+| ------------ | ---- | ----------- |
+| <*array-object*> | Arrayobjekt | Ein Array, das Arrays mit Eingaben und Ausgaben aus jeder Aktion enthält, die in der angegebenen bereichsbezogenen Aktion enthalten ist |
+||||
+
+*Beispiel*
+
+In diesem Beispiel wird die `result()`-Funktion in der `Compose`-Aktion verwendet, um die Eingaben und Ausgaben jeder Iteration einer HTTP-Aktion zurückgegeben, die sich in einer `For_each`-Schleife befindet:
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+Das im Beispiel zurückgegebene Array könnte wie folgt aussehen, wobei das äußere `outputs`-Objekt die Eingaben und Ausgaben von jeder Iteration der Aktionen enthält, die in der `For_each`-Aktion enthalten sind.
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>setProperty
 
-Legt den Wert für die Eigenschaft eines Objekts fest und gibt das aktualisierte Objekt zurück.
-Um eine neue Eigenschaft hinzuzufügen, können Sie diese Funktion oder die [addProperty()](#addProperty)-Funktion verwenden.
+Legt den Wert für eine Eigenschaft eines JSON-Objekts fest und gibt das aktualisierte Objekt zurück. Wenn die Eigenschaft, die Sie festlegen möchten, nicht vorhanden ist, wird die Eigenschaft dem Objekt hinzugefügt. Verwenden Sie die [addProperty()](#addProperty)-Funktion, um eine neue Eigenschaft hinzuzufügen.
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3195,18 +3452,79 @@ setProperty(<object>, '<property>', <value>)
 | <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
+Wenn Sie die untergeordnete Eigenschaft in einem untergeordneten Objekt festlegen möchten, verwenden Sie stattdessen einen geschachtelten `setProperty()`-Aufruf. Andernfalls gibt die Funktion nur das untergeordnete Objekt als Ausgabe zurück.
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
+| <*parent-property*> | Ja | Zeichenfolge | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie festlegen möchten |
+| <*child-property*> | Ja | Zeichenfolge | Der Name für die untergeordnete Eigenschaft, die festgelegt werden soll |
+| <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
+|||||
+
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt, dessen Eigenschaft Sie festlegen |
 ||||
 
-*Beispiel*
+*Beispiel 1*
 
-In diesem Beispiel wird die `"accountNumber"`-Eigenschaft eines `"customerProfile"`-Objekts festgelegt, das mit der [JSON()](#json)-Funktion in JSON konvertiert wird.
-Die Funktion weist einen Wert zu, der von der [guid()](#guid)-Funktion generiert wurde, und gibt das aktualisierte Objekt zurück:
+In diesem Beispiel wird die `surName`-Eigenschaft in einem JSON-Objekt festgelegt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird. Die Funktion weist der Eigenschaft den angegebenen Wert zu und gibt das aktualisierte Objekt zurück:
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+Das aktuelle JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Das aktualisierte JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*Beispiel 2*
+
+In diesem Beispiel wird die untergeordnete `surName`-Eigenschaft der übergeordneten `customerName`-Eigenschaft in einem JSON-Objekt festgelegt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird. Die Funktion weist der Eigenschaft den angegebenen Wert zu und gibt das aktualisierte Objekt zurück:
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+Das aktuelle JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+Das aktualisierte JSON-Objekt sieht wie folgt aus:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>

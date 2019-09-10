@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: a951ebd46335ad4639b8499283ddd30f13edd64e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c81c2de180a2c5734f3896d4b6843f2ccccdf45f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605648"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231214"
 ---
 # <a name="live-events-and-live-outputs"></a>Liveereignisse und Liveausgaben
 
@@ -155,16 +155,7 @@ Weitere Informationen finden Sie unter [Zeitintensive Vorgänge](media-services-
 
 Wenn der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets), eine [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs) und einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellen. Durch die Liveausgabe wird der Datenstrom archiviert und über den [Streamingendpunkt](https://docs.microsoft.com/rest/api/media/streamingendpoints) für die Zuschauer verfügbar gemacht.  
 
-> [!NOTE]
-> Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie die Liveausgabe löschen, werden das zugrunde liegende Medienobjekt und sein Inhalt nicht gelöscht. 
-
-Die Beziehung zwischen einem **Liveereignis** und der zugehörigen **Liveausgabe** ist ähnlich wie bei einer traditionellen Fernsehsendung, bei der ein Kanal (Liveereignis) einen konstanten Videodatenstrom darstellt und eine Aufzeichnung (Liveausgabe) auf ein bestimmtes Zeitsegment (z.B. Abendnachrichten von 18:30 bis 19:00 Uhr) ausgerichtet ist. Sie können Fernsehsendungen mit einem digitalen Videorecorder (DVR) aufnehmen – die entsprechende Funktion in Liveereignissen wird über die **archiveWindowLength-** Eigenschaft verwaltet. Es handelt sich um eine ISO-8601-Zeitspanne (z.B. PTHH:MM:SS), die die Kapazität des Digitalrecorders angibt. Diese kann von mindestens 3 Minuten auf bis zu maximal 25 Stunden eingestellt werden.
-
-Das Liveausgabe-Objekt verhält sich wie ein Tonbandgerät, das den Livestream erfasst und in einem Medienobjekt in Ihrem Media Services-Konto aufzeichnet. Der aufgezeichnete Inhalt wird in dem Ihrem Konto zugeordneten Azure Storage-Konto dauerhaft in dem Container gespeichert, der über die Medienobjektressource definiert wurde. Die Liveausgabe ermöglicht Ihnen auch, einige der Eigenschaften des ausgehenden Livestreams zu steuern, etwa welcher Anteil des Streams in der Archivaufzeichnung verwahrt wird (beispielsweise die Kapazität des Cloud-DVR) und ob die Zuschauer mit der Wiedergabe des Livestreams beginnen können. Das Archiv für den Datenträger ist ein zirkuläres „Archivfenster“, das nur die Menge an Inhalten umfasst, die in der archiveWindowLength-Eigenschaft der Liveausgabe angegeben ist. Inhalt außerhalb dieses Fensters wird automatisch aus dem Speichercontainer entfernt und ist nicht wiederherstellbar. Sie können mehrere Liveausgaben (maximal bis zu drei) mit unterschiedlichen Archivlängen und Einstellungen für ein Liveereignis erstellen.  
-
-Wenn Sie das **Medienobjekt** der Liveausgabe mit einem **Streaminglocator** veröffentlicht haben, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zum Ablauf oder der Löschung des Streaminglocators sichtbar, je nachdem, welches Ereignis zuerst eintritt.
-
-Weitere Informationen finden Sie unter [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md).
+Ausführliche Informationen zu Liveausgaben finden Sie unter [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 

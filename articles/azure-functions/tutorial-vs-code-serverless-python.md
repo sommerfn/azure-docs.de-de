@@ -3,21 +3,31 @@ title: Erstellen und Bereitstellen von Azure Functions in Python mit Visual Stud
 description: Verwenden der Visual Studio Code-Erweiterung für Azure Functions, um serverlose Funktionen in Python zu erstellen und sie in Azure bereitzustellen.
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639087"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233121"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Bereitstellen von Python für Azure Functions mit Visual Studio Code
 
 In diesem Tutorial verwenden Sie Visual Studio Code und die Azure Functions-Erweiterung, um einen serverlosen HTTP-Endpunkt mit Python zu erstellen und auch eine Verbindung (oder „Bindung“) mit dem (bzw. an den) Speicher hinzuzufügen. Azure Functions führt Ihren Code in einer serverlosen Umgebung aus, ohne dass ein virtueller Computer bereitgestellt oder eine Web-App veröffentlicht werden muss. Die Azure Functions-Erweiterung für Visual Studio Code vereinfacht den Prozess der Verwendung von Funktionen erheblich, indem sie automatisch viele Konfigurationsprobleme löst.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Installieren der Azure Functions-Erweiterung
+> * Erstellen einer über HTTP ausgelösten Funktion
+> * Lokales Debuggen
+> * Synchronisieren von Anwendungseinstellungen
+> * Anzeigen von Streamingprotokollen
+> * Herstellen einer Verbindung mit Azure Storage
 
 Wenn Sie Probleme mit einem der Schritte in diesem Tutorial haben, würden wir uns über nähere Informationen freuen. Verwenden Sie die **Ich bin auf ein Problem gestoßen**-Schaltfläche Ende jedes Abschnitts, um detailliertes Feedback zu geben.
 
@@ -46,7 +56,7 @@ Befolgen Sie die Anweisungen für Ihr Betriebssystem unter [Arbeiten mit Azure F
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Sobald die Functions-Erweiterung installiert ist, melden Sie sich bei Ihrem Azure-Konto an mittels Navigation zum **Azure: Functions**-Explorer, wählen Sie **Bei Azure anmelden** aus, und befolgen Sie die Eingabeaufforderungen.
+Sobald die Functions-Erweiterung installiert ist, melden Sie sich bei Ihrem Azure-Konto an. Wechseln Sie dazu zum **Azure: Functions**-Explorer, wählen Sie **Bei Azure anmelden** aus, und befolgen Sie die Eingabeaufforderungen.
 
 ![Anmelden bei Azure über Visual Studio Code](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -100,10 +110,12 @@ Wenn der `func`-Befehl nicht erkannt wird, vergewissern Sie sich, dass der Ordne
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | **Python** | Die Sprache, die für die Funktion verwendet werden soll, die die für den Code verwendete Vorlage bestimmt. |
     | Auswählen einer Vorlage für die erste Funktion Ihres Projekts | **HTTP-Trigger** | Eine Funktion, die einen HTTP-Trigger verwendet, wenn eine HTTP-Anforderung an den Endpunkt der Funktion gerichtet wird. (Für Azure Functions gibt es eine Reihe von anderen Triggern. Weitere Informationen finden Sie unter [Welche Möglichkeiten bestehen mit Functions?](functions-overview.md#what-can-i-do-with-functions).) |
     | Angeben eines Funktionsnamens | HttpExample | Der Name wird für einen Unterordner verwendet, der den Code der Funktion zusammen mit Konfigurationsdaten enthält, und definiert auch den Namen des HTTP-Endpunkts. Verwenden Sie „HttpExample“ anstelle der Standardeinstellung „HTTPTrigger“, um die Funktion selbst vom Trigger zu unterscheiden. |
-    | Autorisierungsstufe | **Anonym** | Bei der anonymen Autorisierung ist die Funktion für jeden öffentlich zugänglich. |
+    | Autorisierungsstufe | **Function** | Aufrufe, die an den Funktionsendpunkt gerichtet sind, erfordern einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys). |
     | Auswählen, wie Sie Ihr Projekt öffnen möchten | **In aktuellem Fenster öffnen** | Öffnet das Projekt im aktuellen Visual Studio Code-Fenster. |
 
-1. Nach kurzer Zeit wird eine Meldung angezeigt, dass das neue Projekt erstellt wurde. Im **Explorer** befindet sich der für die Funktion erstellte Unterordner, und Visual Studio Code öffnet die Datei *\_\_init\_\_.py*, die den Standardfunktionscode enthält:
+1. Nach kurzer Zeit wird eine Meldung angezeigt, dass das neue Projekt erstellt wurde. Im **Explorer** gibt es den Unterordner, der für die Funktion erstellt wurde. 
+
+1. Öffnen Sie die *\_\_init\_\_.py*-Datei, die den Standardfunktionscode enthält:
 
     [![Ergebnis der Erstellung eines neuen Python-Functions-Projekts](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
@@ -112,17 +124,12 @@ Wenn der `func`-Befehl nicht erkannt wird, vergewissern Sie sich, dass der Ordne
     >
     > ![Auswählen der mit dem Projekt erstellten virtuellen Umgebung](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
 
-> [!TIP]
-> Wenn Sie eine weitere Funktion im selben Projekt erstellen möchten, verwenden Sie den Befehl **Funktion erstellen** im **Azure: Functions**-Explorer, oder öffnen Sie die Befehlspalette (F1), und wählen Sie den Befehl **Azure Functions: Funktion erstellen**, und wählen Sie ihn aus. Beide Befehle fordern Sie zur Eingabe eines Funktionsnamens auf (des Namens des Endpunkts) und erstellen dann einen Unterordner mit den Standarddateien.
->
-> ![Befehl „Neue Funktion“ im Azure: Functions-Explorer](media/tutorial-vs-code-serverless-python/function-create-new.png)
-
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>Untersuchen der Codedateien
 
-Im neu erstellten Funktionsunterordner sind drei Dateien enthalten: *\_\_init\_\_* .py enthält den Funktionscode, *function.json* beschreibt die Funktion für Azure Functions, und *sample.dat* ist eine Beispieldatendatei. Sie können *sample.dat* löschen, wenn Sie möchten, da sie nur dazu dient, Ihnen zu zeigen, dass Sie dem Unterordner weitere Dateien hinzufügen können.
+Im neu erstellten Funktionsunterordner _HttpExample_ sind drei Dateien enthalten: *\_\_init\_\_.py* enthält den Funktionscode, *function.json* beschreibt die Funktion für Azure Functions, und *sample.dat* ist eine Beispieldatendatei. Sie können *sample.dat* löschen, wenn Sie möchten, da sie nur dazu dient, Ihnen zu zeigen, dass Sie dem Unterordner weitere Dateien hinzufügen können.
 
 Wir betrachten zuerst *function.json* und dann den Code in *\_\_init\_\_* .py.
 
@@ -135,7 +142,7 @@ Die Datei „function.json“ enthält die erforderlichen Konfigurationsinformat
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,7 +162,7 @@ Die Datei „function.json“ enthält die erforderlichen Konfigurationsinformat
 
 Die `scriptFile`-Eigenschaft identifiziert die Startdatei für den Code, und dieser Code muss eine Python-Funktion mit dem Namen `main` enthalten. Sie können Ihren Code in mehrere Dateien einbeziehen, sofern die hier angegebene Datei eine `main`-Funktion enthält.
 
-Das `bindings`-Element enthält zwei Objekte, eines zum Beschreiben eingehender Anforderungen und das andere, um die HTTP-Antwort zu beschreiben. Bei eingehenden Anforderungen (`"direction": "in"`) antwortet die Funktion auf HTTP-GET- oder -POST-Anforderungen und erfordert keine Authentifizierung. Die Antwort (`"direction": "out"`) ist eine HTTP-Antwort, die jeden Wert zurückgibt, der von der `main`-Python-Funktion zurückgegeben wird.
+Das `bindings`-Element enthält zwei Objekte, eines zum Beschreiben eingehender Anforderungen und das andere, um die HTTP-Antwort zu beschreiben. Bei eingehenden Anforderungen (`"direction": "in"`) antwortet die Funktion auf HTTP-GET- oder -POST-Anforderungen und erfordert, dass Sie den Funktionsschlüssel angeben. Die Antwort (`"direction": "out"`) ist eine HTTP-Antwort, die jeden Wert zurückgibt, der von der `main`-Python-Funktion zurückgegeben wird.
 
 ### <a name="__initpy__"></a>\_\_init.py\_\_
 
@@ -200,7 +207,7 @@ Die wichtigen Teile des Codes lauten wie folgt:
 
 ## <a name="debug-locally"></a>Lokales Debuggen
 
-1. Wenn Sie das Functions-Projekt erstellen, erstellt die Visual Studio Code-Erweiterung außerdem eine Startkonfiguration in `.vscode/launch.json`, die eine einzelne Konfiguration mit dem Namen **Attach to Python Functions** (Anfügen an Python-Functions) enthält. Diese Konfiguration bedeutet, dass Sie einfach F5 drücken oder den Debug-Explorer verwenden können, um das Projekt zu starten:
+1. Wenn Sie das Functions-Projekt erstellen, erstellt die Visual Studio Code-Erweiterung außerdem eine Startkonfiguration in `.vscode/launch.json`, die eine einzelne Konfiguration mit dem Namen **Attach to Python Functions** (Anfügen an Python-Functions) enthält. Diese Konfiguration bedeutet, dass Sie einfach **F5** drücken oder den Debug-Explorer verwenden können, um das Projekt zu starten:
 
     ![Debug-Explorer mit Functions-Startkonfiguration](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -233,7 +240,7 @@ Die wichtigen Teile des Codes lauten wie folgt:
 
     Erstellen Sie alternativ eine Datei wie *data.json*, die `{"name":"Visual Studio Code"}`enthält, und verwenden Sie den Befehl `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`.
 
-1. Um das Debuggen der Funktion zu testen, legen Sie einen Haltepunkt in der Zeile fest, die `name = req.params.get('name')` liest, und richten Sie erneut eine Anforderung an die URL. Der Visual Studio Code-Debugger sollte in dieser Zeile stoppen, sodass Sie Variablen untersuchen und den Code schrittweise durchlaufen können. (Eine kurze exemplarische Vorgehensweise zum grundlegenden Debuggen finden Sie unter [Visual Studio Code Tutorial – Configure and run the debugger](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger) (Visual Studio Code-Tutorial: Konfigurieren und Ausführen des Debuggers).)
+1. Um die Funktion zu debuggen, legen Sie einen Haltepunkt in der Zeile fest, die `name = req.params.get('name')` liest, und richten Sie erneut eine Anforderung an die URL. Der Visual Studio Code-Debugger sollte in dieser Zeile stoppen, sodass Sie Variablen untersuchen und den Code schrittweise durchlaufen können. (Eine kurze exemplarische Vorgehensweise zum grundlegenden Debuggen finden Sie unter [Visual Studio Code Tutorial – Configure and run the debugger](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger) (Visual Studio Code-Tutorial: Konfigurieren und Ausführen des Debuggers).)
 
 1. Wenn Sie die Funktion gründlich lokal getestet haben, stoppen Sie den Debugger (mit dem Menübefehl **Debuggen** > **Debuggen stoppen** oder dem Befehl **Trennen** in der Debugsymbolleiste).
 
@@ -386,7 +393,7 @@ Nach der ersten Bereitstellung können Sie Änderungen am Code vornehmen, z.B. z
     }
     ```
 
-1. Starten Sie den Debugger, indem Sie F5 drücken oder den Menübefehl **Debuggen** > **Debuggen starten** auswählen. Im **Ausgabe**-Fenster sollten nun beide Endpunkte im Projekt angezeigt werden:
+1. Starten Sie den Debugger, indem Sie **F5** drücken oder den Menübefehl **Debuggen** > **Debuggen starten** auswählen. Im **Ausgabe**-Fenster sollten nun beide Endpunkte im Projekt angezeigt werden:
 
     ```output
     Http Functions:
@@ -472,15 +479,15 @@ In diesem Abschnitt fügen Sie der HttpExample-Funktion, die Sie zuvor in diesem
             )
     ```
 
-1. Um diese Änderungen lokal zu testen, starten Sie den Debugger erneut in Visual Studio Code, indem Sie F5 drücken oder den Menübefehl **Debuggen** > **Debuggen starten** auswählen. Im **Ausgabe**-Fenster sollten nun wie zuvor die Endpunkte im Projekt angezeigt werden.
+1. Um diese Änderungen lokal zu testen, starten Sie den Debugger erneut in Visual Studio Code, indem Sie **F5** drücken oder den Menübefehl **Debuggen** > **Debuggen starten** auswählen. Im **Ausgabe**-Fenster sollten nun wie zuvor die Endpunkte im Projekt angezeigt werden.
 
 1. Rufen Sie in einem Browser die URL `http://localhost:7071/api/HttpExample?name=VS%20Code` auf, um eine Anforderung an den HttpExample-Endpunkt zu erstellen, die auch in eine Meldung in der Warteschlange schreiben sollte.
 
 1. Um zu überprüfen, ob die Nachricht in die Warteschlange „outqueue“ (wie in der Bindung benannt) geschrieben wurde, können Sie eine der drei folgenden Methoden verwenden:
 
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu der Ressourcengruppe, die ihr Functions-Projekt enthält. Navigieren Sie in dieser Ressourcengruppe lokal zum Speicherkonto für das Projekt und dann zu **Warteschlangen**. Navigieren Sie auf dieser Seite zu „outqueue“, wo alle protokollierten Meldungen angezeigt werden sollten.
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zu der Ressourcengruppe, die ihr Functions-Projekt enthält. Suchen Sie in dieser Ressourcengruppe nach dem Speicherkonto für das Projekt, öffnen Sie dieses Speicherkonto, und wechseln Sie dann zu **Warteschlangen**. Wechseln Sie auf dieser Seite zu „outqueue“, wo alle protokollierten Meldungen angezeigt werden sollten.
 
-    1. Navigieren Sie zu der Warteschlange, und untersuchen Sie sie mit dem in Visual Studio integrierten Azure Storage-Explorer wie unter [Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio Code](functions-add-output-binding-storage-queue-vs-code.md) beschrieben, insbesondere im Abschnitt [Überprüfen der Ausgabewarteschlange](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue).
+    1. Öffnen und untersuchen Sie die Warteschlange mit dem in Visual Studio integrierten Azure Storage-Explorer wie unter [Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio Code](functions-add-output-binding-storage-queue-vs-code.md) beschrieben, insbesondere im Abschnitt [Überprüfen der Ausgabewarteschlange](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue).
 
     1. Verwenden Sie die Azure CLI, um die Speicherwarteschlange abzufragen, wie unter [Abfragen der Speicherwarteschlange](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue) beschrieben.
     

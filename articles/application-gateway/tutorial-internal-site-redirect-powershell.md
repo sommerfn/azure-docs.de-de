@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: victorh
-ms.openlocfilehash: 157f7fa0979da21584550e7669a20f670aca5219
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 9efda8d81c4e6cb3bf478b05c261a99dc8e1aec0
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785716"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232087"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit interner Umleitung mithilfe von Azure PowerShell
 
-Sie können mit Azure PowerShell [eine Umleitung des Webdatenverkehrs](application-gateway-multi-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial definieren Sie mithilfe einer VM-Skalierungsgruppe einen Back-End-Pool. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr an die richtigen Pools gesendet wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen, und es werden Beispiele zu *www\.contoso.com* und *www\.contoso.org* verwendet.
+Sie können mit Azure PowerShell [eine Umleitung des Webdatenverkehrs](application-gateway-multi-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial definieren Sie mithilfe einer VM-Skalierungsgruppe einen Back-End-Pool. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr an die richtigen Pools gesendet wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen und Beispiele zu *www.contoso.com* und *www\.contoso.org* verwenden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -114,7 +114,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>Erstellen des ersten Listeners und der ersten Regel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Tutorial erstellen Sie zwei Listener für Ihre beiden Domänen. In diesem Beispiel werden Listener für die Domänen *www\.contoso.com* und *www\.contoso.org* erstellt.
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Tutorial erstellen Sie zwei Listener für Ihre beiden Domänen. In diesem Beispiel werden Listener für die Domänen *www.contoso.com* und *www\.contoso.org* erstellt.
 
 Erstellen Sie den ersten Listener namens *contosoComListener* mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *contosoComRule*.
 
@@ -298,11 +298,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Beispiel: http\://www.contoso.com.
+Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Beispiel: [http://www.contoso.com](http://www.contoso.com).
 
 ![Testen der Contoso-Website im Anwendungsgateway](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
 
-Ändern Sie die Adresse in Ihre andere Domäne, z.B. http://www.contoso.org. Danach sollten Sie sehen, dass der Datenverkehr an den Listener für www\. contoso.com zurückgeleitet wurde.
+Ändern Sie die Adresse in Ihre andere Domäne, z.B. http://www.contoso.org. Danach sollten Sie sehen, dass der Datenverkehr an den Listener für www.contoso.com zurückgeleitet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

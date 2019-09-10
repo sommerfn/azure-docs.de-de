@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: Bereitstellungsfehler, Azure-Bereitstellung, in Azure bereitstellen.
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638545"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275738"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
 In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben. Er enthält darüber hinaus Informationen zur Behebung der Fehler. Sie können unter [Ermitteln des Fehlercodes](#find-error-code) nachsehen, falls Sie den Fehlercode für Ihren Bereitstellungsfehler nicht kennen.
 
-Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in diesem Artikel nicht angegeben sind, teilen Sie uns dies mit. Unten auf dieser Seite können Sie uns Feedback geben. Das Feedback wird über GitHub-Probleme nachverfolgt. 
+Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in diesem Artikel nicht angegeben sind, teilen Sie uns dies bitte mit. Unten auf dieser Seite können Sie uns Feedback geben. Das Feedback wird über GitHub-Probleme nachverfolgt. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,7 +32,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | AllocationFailed | Im Cluster oder in der Region sind keine Ressourcen verfügbar, oder die angeforderte Größe des virtuellen Computers kann nicht unterstützt werden. Wiederholen Sie die Anforderung zu einem späteren Zeitpunkt, oder fordern Sie eine andere Größe für den virtuellen Computer an. | [Bereitstellungs- und Zuteilungsprobleme bei Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) und [Bereitstellungs- und Zuteilungsprobleme bei Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) und [Problembehandlung bei Zuordnungsfehlern](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Warten Sie, bis der gleichzeitige Vorgang abgeschlossen ist. | |
 | AuthorizationFailed | Ihr Konto oder Dienstprinzipal verfügt nicht über ausreichende Zugriffsberechtigungen zum Durchführen der Bereitstellung. Überprüfen Sie die Rolle, zu der Ihr Konto gehört, sowie deren Zugriffsberechtigungen für den Bereitstellungsumfang.<br><br>Unter Umständen wird dieser Fehler angezeigt, wenn ein erforderlicher Ressourcenanbieter nicht registriert ist. | [Rollenbasierte Access Control in Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Lösen von Registrierungsfehlern](resource-manager-register-provider-errors.md) |
-| BadRequest | Sie haben Bereitstellungswerte gesendet, die nicht den von Resource Manager erwarteten Werten entsprechen. Überprüfen Sie die interne Statusmeldung, um Hilfe zur Problembehandlung zu erhalten. | [Vorlagenreferenz](/azure/templates/) und [Unterstützte Speicherorte](resource-group-authoring-templates.md#resource-location) |
+| BadRequest | Sie haben Bereitstellungswerte gesendet, die nicht den von Resource Manager erwarteten Werten entsprechen. Überprüfen Sie die interne Statusmeldung, um Hilfe zur Problembehandlung zu erhalten. | [Vorlagenreferenz](/azure/templates/) und [Unterstützte Speicherorte](resource-location.md) |
 | Konflikt: | Sie fordern einen Vorgang an, der im aktuellen Zustand der Ressource nicht zulässig ist. Eine Größenänderung für den Datenträger ist beispielsweise nur zulässig, wenn ein virtueller Computer erstellt wird oder die Zuweisung des virtuellen Computers aufgehoben wurde. | |
 | DeploymentActive | Warten Sie, bis die gleichzeitige Bereitstellung für diese Ressourcengruppe abgeschlossen ist. | |
 | DeploymentFailed | „DeploymentFailed“ ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Suchen Sie in den Fehlerdetails nach einem Fehlercode, der weitere Informationen bereitstellt. | [Ermitteln des Fehlercodes](#find-error-code) |
@@ -41,7 +41,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | ImageNotFound | Überprüfen Sie die Einstellungen für das VM-Image. |  |
 | InUseSubnetCannotBeDeleted | Dieser Fehler tritt gegebenenfalls auf, wenn versucht wird, eine Ressource zu aktualisieren, die Anforderung jedoch durch Löschen und Erstellen der Ressource verarbeitet wird. Stellen Sie sicher, dass Sie alle unveränderten Werte angeben. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Rufen Sie das Zugriffstoken für den entsprechenden Mandanten ab. Sie können das Token nur von dem Mandanten erhalten, zu dem Ihr Konto gehört. | |
-| InvalidContentLink | Sie haben wahrscheinlich versucht, eine geschachtelte Vorlage zu verknüpfen, die nicht verfügbar ist. Überprüfen Sie den URI, den Sie für die geschachtelte Vorlage angegeben haben. Wenn die Vorlage in einem Speicherkonto vorhanden ist, stellen Sie sicher, dass auf den URI zugegriffen werden kann. Möglicherweise müssen Sie ein SAS-Token übergeben. | [Verknüpfte Vorlagen](resource-group-linked-templates.md) |
+| InvalidContentLink | Sie haben wahrscheinlich versucht, eine Verknüpfung mit einer geschachtelten Vorlage herzustellen, die nicht verfügbar ist. Überprüfen Sie den URI, den Sie für die geschachtelte Vorlage angegeben haben. Wenn die Vorlage in einem Speicherkonto vorhanden ist, stellen Sie sicher, dass auf den URI zugegriffen werden kann. Möglicherweise müssen Sie ein SAS-Token übergeben. Derzeit ist es nicht möglich, eine Verknüpfung mit einer Vorlage zu erstellen, die sich in einem Speicherkonto hinter einer [Azure Storage-Firewall](../storage/common/storage-network-security.md) befindet. Erwägen Sie, Ihre Vorlage in ein anderes Repository, etwa GitHub, zu verschieben. | [Verknüpfte Vorlagen](resource-group-linked-templates.md) |
 | InvalidParameter | Einer der Werte, die Sie für eine Ressource angegeben haben, stimmt nicht mit dem erwarteten Wert überein. Ursache für diesen Fehler können viele unterschiedliche Bedingungen sein. Beispielsweise kann ein Kennwort unzureichend oder ein Blobname fehlerhaft sein. In der Fehlermeldung sollte angegeben sein, welcher Wert korrigiert werden muss. | |
 | InvalidRequestContent | Die Bereitstellungswerte enthalten entweder unerwartete Werte, oder es fehlen erforderliche Werte. Bestätigen Sie die Werte für Ihren Ressourcentyp. | [Vorlagenreferenz](/azure/templates/) |
 | InvalidRequestFormat | Aktivieren Sie die Debugprotokollierung, wenn Sie die Bereitstellung ausführen, und überprüfen Sie den Inhalt der Anforderung. | [Debugprotokollierung](#enable-debug-logging) |
@@ -53,7 +53,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | InvalidTemplateCircularDependency | Entfernen Sie unnötige Abhängigkeiten. | [Beheben von Ringabhängigkeiten](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Überprüfen Sie, ob Ihr Konto zu demselben Mandanten wie die Ressourcengruppe gehört, für die Sie die Bereitstellung durchführen. | |
 | LinkedInvalidPropertyId | Die Ressourcen-ID für eine Ressource wird nicht richtig aufgelöst. Überprüfen Sie, ob Sie alle erforderlichen Werte für die Ressourcen-ID angegeben haben, z.B. Abonnement-ID, Name der Ressourcengruppe, Ressourcentyp, Name der übergeordneten Ressource (falls erforderlich) und Ressourcenname. | |
-| LocationRequired | Geben Sie einen Speicherort für die Ressource an. | [Standort festlegen](resource-group-authoring-templates.md#resource-location) |
+| LocationRequired | Geben Sie einen Speicherort für die Ressource an. | [Standort festlegen](resource-location.md) |
 | MismatchingResourceSegments | Stellen Sie sicher, dass die geschachtelte Ressource die richtige Anzahl an Segmenten in Name und Typ aufweist. | [Auflösen von Ressourcensegmenten](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Überprüfen Sie den Registrierungsstatus des Ressourcenanbieters und die unterstützten Speicherorte. | [Lösen von Registrierungsfehlern](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Registrieren Sie Ihr Abonnement beim Ressourcenanbieter. | [Lösen von Registrierungsfehlern](resource-manager-register-provider-errors.md) |
@@ -64,7 +64,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | PasswordTooLong | Möglicherweise haben Sie ein Kennwort mit zu vielen Zeichen ausgewählt, oder Sie haben Ihr Kennwort eventuell in eine sichere Zeichenfolge konvertiert, bevor es als Parameter übergeben wurde. Wenn die Vorlage einen Parameter **Sichere Zeichenfolge** enthält, müssen Sie den Wert nicht in eine sichere Zeichenfolge konvertieren. Geben Sie den Kennwortwert als Text an. |  |
 | PrivateIPAddressInReservedRange | Die angegebene IP-Adresse enthält einen Adressbereich, der für Azure benötigt wird. Ändern Sie die IP-Adresse, um die Nutzung des reservierten Bereichs zu vermeiden. | [IP-Adressen](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PrivateIPAddressNotInSubnet | Die angegebene IP-Adresse liegt außerhalb des Subnetzbereichs. Ändern Sie die IP-Adresse so, das Sie innerhalb des Subnetzbereichs liegt. | [IP-Adressen](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PropertyChangeNotAllowed | Einige Eigenschaften können auf einer bereitgestellten Ressource nicht geändert werden. Beschränken Sie Ihre Änderungen beim Aktualisieren einer Ressource auf die zulässigen Eigenschaften. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | Einige Eigenschaften können in einer bereitgestellten Ressource nicht geändert werden. Beschränken Sie Ihre Änderungen beim Aktualisieren einer Ressource auf die zulässigen Eigenschaften. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | Ihr Abonnement enthält eine Ressourcenrichtlinie, durch die eine Aktion verhindert wird, die Sie während der Bereitstellung ausführen möchten. Suchen Sie nach der Richtlinie, die die Aktion blockiert. Ändern Sie die Bereitstellung nach Möglichkeit so, dass die Einschränkungen der Richtlinie beachtet werden. | [Beheben von Fehlern für Richtlinien](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Geben Sie einen Ressourcennamen an, der keinen reservierten Name enthält. | [Resolve reserved resource name errors](resource-manager-reserved-resource-name.md) (Beheben von Fehlern mit reservierten Ressourcennamen) |
 | ResourceGroupBeingDeleted | Warten Sie, bis der Löschvorgang abgeschlossen ist. | |

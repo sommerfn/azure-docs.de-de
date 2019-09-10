@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542559"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231176"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -57,10 +57,10 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 
 ## <a name="changes-from-v2"></a>Änderungen von V2
 
-* Für Ressourcen, die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+* Für Medienobjekte (Ressourcen), die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
     * Sie können v3-APIs mit Ressourcen verwenden, die mit v2-APIs erstellt wurden, sofern für diese [Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) (AES-256) von Media Services bereitgestellt wurde.
     * Mit der älteren AES-256-[Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) können Sie mithilfe von v3-APIs keine neuen Medienobjekte erstellen.
-* Die Eigenschaften des Medienobjekts in v3 unterscheiden sich von denen in v2, siehe [Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2](assets-concept.md#map-v3-asset-properties-to-v2).
+* Die Eigenschaften des [Medienobjekt](assets-concept.md)s in v3 unterscheiden sich von denen in v2, siehe [Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2](assets-concept.md#map-v3-asset-properties-to-v2).
 * Die v3-SDKs sind jetzt vom Storage-SDK entkoppelt, wodurch sich eine bessere Kontrolle über das zu verwendende Storage-SDK ergibt und Versionsprobleme vermieden werden. 
 * In den v3-APIs werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von v2 Media Encoder Standard. Beispielsweise würde die Bitrate in v2 mit 128 (Kbit/s), in v3 jedoch mit 12.8000 (Bits/Sekunde) angegeben. 
 * Entities AssetFiles, AccessPolicies und IngestManifests sind in v3 nicht vorhanden.
@@ -74,6 +74,9 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
     * Die Liveausgabe ersetzt das Programm.
 * Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. In den v2-APIs haben Programme anders funktioniert, sie mussten nach der Erstellung gestartet werden.
 *  Um Informationen zu einem Auftrag abzurufen, müssen Sie den Transformationsnamen wissen, unter dem der Auftrag erstellt wurde. 
+
+> [!NOTE]
+> Sehen Sie sich die Namenskonventionen an, die auf [Media Services v3-Ressourcen](media-services-apis-overview.md#naming-conventions) angewendet werden. Sehen Sie sich auch das [Benennen von Blobs](assets-concept.md#naming-blobs) an.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Featurelücken in Bezug auf v2-APIs
 

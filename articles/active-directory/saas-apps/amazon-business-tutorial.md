@@ -158,7 +158,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Standardgruppe](media/amazon-business-tutorial/dafault-group2.png)
 
-1. Klicken Sie im Assistenten **** zum Hochladen Ihrer Metadatendatei auf **Browse** (Durchsuchen), um die **** Metadaten-XML-Datei hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Upload** (Hochladen).
+1. Klicken Sie im Assistentenzum **Hochladen Ihrer Metadatendatei** auf **Browse** (Durchsuchen), um die**Metadaten-XML-Datei** hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Upload** (Hochladen).
 
     ![Verbindungsdaten](media/amazon-business-tutorial/connection-data1.png)
 
@@ -166,15 +166,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Verbindungsdaten](media/amazon-business-tutorial/connection-data2.png)
 
-1. Klicken Sie im Assistenten **** zum Hochladen Ihrer Attributanweisung auf **Skip** (Überspringen).
+1. Klicken Sie im Assistentenzum **Hochladen Ihrer Attributanweisung** auf **Skip** (Überspringen).
 
     ![Attribute](media/amazon-business-tutorial/map-attribute1.png)
 
-1. Fügen Sie im Assistenten **** für die Attributzuordnung die Anforderungsfelder hinzu, indem Sie auf die Option **+ Add a field** (+ Feld hinzufügen) klicken. Fügen Sie die Attributwerte (einschließlich des Namespace, den Sie aus dem Abschnitt **Benutzerattribute und Ansprüche** des Azure-Portals kopiert haben) dem Feld **SAML AttributeName** (SAML-Attributname) hinzu, und klicken Sie auf **Next** (Weiter).
+1. Fügen Sie im Assistenten für die **Attributzuordnung** die Anforderungsfelder hinzu, indem Sie auf die Option **+ Add a field** (+ Feld hinzufügen) klicken. Fügen Sie die Attributwerte (einschließlich des Namespace, den Sie aus dem Abschnitt **Benutzerattribute und Ansprüche** des Azure-Portals kopiert haben) dem Feld **SAML AttributeName** (SAML-Attributname) hinzu, und klicken Sie auf **Next** (Weiter).
 
     ![Attribute](media/amazon-business-tutorial/map-attribute2.png)
 
-1. Klicken Sie im Assistenten **** für Amazon-Verbindungsdaten auf **Next** (Weiter).
+1. Klicken Sie im Assistenten für **Amazon-Verbindungsdaten** auf **Next** (Weiter).
 
     ![Verbindung](media/amazon-business-tutorial/amazon-connect.png)
 
@@ -182,15 +182,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection1.png)
 
-1. Klicken Sie im Assistenten **** zum Testen der SSO-Verbindung auf **Test** (Testen).
+1. Klicken Sie im Assistenten zum **Testen der SSO-Verbindung** auf **Test** (Testen).
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection2.png)
 
-1. Kopieren Sie im Assistenten **** für die IDP-initiierte URL vor dem Klicken auf **Activate** (Aktivieren) den Wert, der **idpid** zugewiesen ist, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** unter **Antwort-URL** in den Parameter **idpid** ein.
+1. Kopieren Sie im Assistenten für die **IDP-initiierte URL** vor dem Klicken auf **Activate** (Aktivieren) den Wert, der **idpid** zugewiesen ist, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** unter **Antwort-URL** in den Parameter **idpid** ein.
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection3.png)
 
-1. Aktivieren Sie im Assistenten **** für die SSO-Aktivierung das Kontrollkästchen **I have fully tested SSO and am ready to go live** (Ich habe SSO vollständig getestet und bin bereit zur Aktivierung), und klicken Sie anschließend auf **Switch to active** (Aktivieren).
+1. Aktivieren Sie im Assistenten für die **SSO-Aktivierung das Kontrollkästchen** **I have fully tested SSO and am ready to go live** (Ich habe SSO vollständig getestet und bin bereit zur Aktivierung), und klicken Sie anschließend auf **Switch to active** (Aktivieren).
 
     ![Verbindung](media/amazon-business-tutorial/sso-connection4.png)
 

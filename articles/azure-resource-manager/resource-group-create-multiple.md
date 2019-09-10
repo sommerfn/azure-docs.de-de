@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494802"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258894"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
 
@@ -43,13 +43,13 @@ Bei Verwendung mit einer Variablen oder Eigenschaft weist das copy-Objekt das fo
 
 Beide Verwendungen werden in diesem Artikel ausführlicher beschrieben. Ein Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./resource-manager-tutorial-create-multiple-instances.md).
 
-Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](resource-group-authoring-templates.md#condition).
+Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](conditional-resource-deployment.md).
 
 ## <a name="copy-limits"></a>Einschränkungen für „copy“
 
 Um die Anzahl der Iterationen festzulegen, geben Sie einen Wert für die count-Eigenschaft an. Der Wert von „count“ darf 800 nicht überschreiten.
 
-Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen der REST-API unterstützen den Wert „0“ (null) für „count“ nicht. Die Azure-Befehlszeilenschnittstelle oder PowerShell unterstützen den Wert „0“ (null) für „count“ derzeit nicht, aber die Unterstützung wird in einer zukünftigen Version hinzugefügt.
+Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azure PowerShell 2.6 oder höher oder mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen von PowerShell und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht. Die Azure-Befehlszeilenschnittstelle unterstützt den Wert „0“ (null) für „count“ derzeit nicht, aber diese Unterstützung wird in einer zukünftigen Version hinzugefügt.
 
 Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit Kopieren mit Vorsicht an. Wenn Sie mit dem vollständigen Modus erneut in einer Ressourcengruppe bereitstellen, werden alle Ressourcen, die nicht in der Vorlage angegeben sind, nach dem Auflösen der Kopierschleife gelöscht.
 

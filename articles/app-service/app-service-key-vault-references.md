@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088187"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258616"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwenden von Key Vault-Verweisen in App Service und Azure Functions (Vorschauversion)
 
@@ -184,3 +184,27 @@ Ein Beispiel für eine Pseudovorlage für eine Funktions-App könnte wie folgt a
 
 > [!NOTE] 
 > In diesem Beispiel hängt die Bereitstellung der Quellcodeverwaltung von den Anwendungseinstellungen ab. Dies ist normalerweise ein unsicheres Verhalten, da sich das App-Einstellungsupdate asynchron verhält. Da wir aber die Anwendungseinstellung `WEBSITE_ENABLE_SYNC_UPDATE_SITE` integriert haben, verläuft das Update synchron. Dies bedeutet, dass die Bereitstellung der Quellcodeverwaltung erst dann beginnt, wenn die Anwendungseinstellungen vollständig aktualisiert wurden.
+
+## <a name="troubleshooting-key-vault-references"></a>Problembehandlung von Key Vault-Verweisen
+
+Wird ein Verweis nicht ordnungsgemäß aufgelöst, wird stattdessen der Verweiswert verwendet. Dies bedeutet, dass für Anwendungseinstellungen eine Umgebungsvariable erstellt wird, deren Wert die `@Microsoft.KeyVault(...)`-Syntax hat. Dies kann dazu führen, dass die Anwendung Fehler auslöst, da sie ein Geheimnis einer bestimmten Struktur erwartet hat.
+
+Meist ist die Ursache hierfür eine fehlerhafte Konfiguration der [Key Vault-Zugriffsrichtlinie](#granting-your-app-access-to-key-vault). Ursache kann jedoch auch sein, dass ein Geheimnis nicht mehr vorhanden ist, oder dass ein Syntaxfehler im Verweis vorliegt.
+
+Ist die Syntax richtig, können Sie weitere Fehlerursachen anzeigen, indem Sie den aktuellen Auflösungsstatus mit einer integrierten Erkennung überprüfen.
+
+### <a name="using-the-detector-for-app-service"></a>Verwenden der Erkennung für App Service
+
+1. Navigieren Sie im Portal zu Ihrer App.
+2. Wählen Sie **Probleme diagnostizieren und beheben** aus.
+3. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Web app down** aus.
+4. Suchen Sie nach **Key Vault Application Settings Diagnostics**, und klicken Sie auf **Details**.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Verwenden der Erkennung für Azure Functions
+
+1. Navigieren Sie im Portal zu Ihrer App.
+2. Navigieren Sie zu **Plattformfeatures**.
+3. Wählen Sie **Probleme diagnostizieren und beheben** aus.
+4. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Function app down or reporting errors** aus.
+5. Klicken Sie auf **Key Vault Application Settings Diagnostics**.

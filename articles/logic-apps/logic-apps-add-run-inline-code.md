@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76b3807727f4b5c9ab0a2c2bc21c45af1f713b83
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602120"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242447"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
 
@@ -26,7 +26,7 @@ Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Si
 * Verwendung von Node.js-Version 8.11.1. Weitere Informationen finden Sie unter [Integrierte Standardobjekte](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
 
   > [!NOTE]
-  > Die require()-Funktion wird von der **Inlinecode**-Aktion zur Ausführung von JavaScript nicht unterstützt.
+  > Die `require()`-Funktion wird von der **Inlinecode**-Aktion zur Ausführung von JavaScript nicht unterstützt.
 
 Diese Aktion führt den Codeausschnitt aus und gibt die Ausgabe des Ausschnitts als Token mit dem Namen **Ergebnis** zurück; dieses Token kann in nachfolgenden Aktionen in der Logik-App verwendet werden. Wenn Sie in anderen Szenarien eine Funktion für Ihren Code erstellen möchten, versuchen Sie, in der Logik-App [eine Azure-Funktion zu erstellen und aufzurufen](../logic-apps/logic-apps-azure-functions.md).
 
@@ -43,6 +43,9 @@ In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail 
    Die Beispiel-Logik-App im vorliegenden Artikel verwendet diesen Office 365 Outlook-Trigger: **When a new email arrives** (Wenn eine neue E-Mail eingeht)
 
 * Ein mit Ihrer Logik-App verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+
+  > [!NOTE]
+  > Achten Sie darauf, dass Sie ein Integrationskonto verwenden, das für Ihren Anwendungsfall oder Ihr Szenario geeignet ist. Beispielsweise gilt für Integrationskonten im [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts), dass sie für explorative Szenarien und Workloads, nicht für Produktionsszenarien vorgesehen sind, in Nutzung und Durchsatz beschränkt sind und von einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) nicht unterstützt werden. Andere Tarife verursachen Kosten, beinhalten jedoch SLA-Unterstützung, bieten mehr Durchsatz und haben höhere Grenzwerte. Weitere Informationen finden Sie hier: Integrationskonto-[Tarife](../logic-apps/logic-apps-pricing.md#integration-accounts), -[Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und -[Grenzwerte](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
 ## <a name="add-inline-code"></a>Inlinecode hinzufügen
 

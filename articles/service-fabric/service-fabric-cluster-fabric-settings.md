@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014426"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241751"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -236,6 +236,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UserMaxStandByReplicaCount |Ganze Zahl, Standardwert 1 |Dynamisch|Die standardmäßige maximale Anzahl von Reservereplikaten, die das System für Benutzerdienste speichert. |
 |UserReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60,0 \* 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat ausfällt, wartet Windows Fabric für diese Zeitspanne darauf, dass das Replikat wieder aktiviert wird, bevor neue Ersatzreplikate (die eine Kopie des Zustands erfordern würden) erstellt werden. |
 |UserStandByReplicaKeepDuration |Zeit in Sekunden, Standardwert 3600,0 \* 24 \* 7 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat nach einem Ausfall wieder aktiv ist, wurde es möglicherweise bereits ersetzt. Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
+|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, Standardwert ist Common::TimeSpan::FromSeconds(60 * 10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Konfigurationseintrag für das optionale Timeout der WaitForInBuildReplica-Sicherheitsüberprüfung. Diese Konfiguration definiert das Timeout für die WaitForInBuildReplica-Sicherheitsüberprüfung für Knotendeaktivierungen und -upgrades. Diese Sicherheitsüberprüfung schlägt fehl, wenn eine der folgenden Bedingungen zutrifft: - Es wird ein primäres Replikat erstellt, und für das Zielreplikat ist die Größe auf > 1 festgelegt. - Das aktuelle Replikat wird erstellt und persistent gespeichert. - Dies ist das aktuelle primäre Replikat, und es wird ein neues Replikat erstellt. Diese Sicherheitsüberprüfung wird übersprungen, wenn das Timeout abgelaufen ist, und dieses Überspringen erfolgt selbst dann, wenn eine der vorherigen Bedingungen weiterhin zutrifft. |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, Standardwert ist Common::TimeSpan::FromSeconds(60,0 * 10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Konfigurationseintrag für das optionale Timeout der WaitForReconfiguration-Sicherheitsüberprüfung. Diese Konfiguration definiert das Timeout für die WaitForReconfiguration-Sicherheitsüberprüfung für Knotendeaktivierungen und -upgrades. Diese Sicherheitsüberprüfung schlägt fehl, wenn das zu überprüfende Replikat Bestandteil einer Partition ist, die derzeit neu konfiguriert wird. Die Sicherheitsüberprüfung wird nach Ablauf dieses Timeouts übersprungen, und zwar selbst dann, wenn die Partition weiterhin neu konfiguriert wird.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -309,7 +311,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Boolesch, Standardwert „false“ |statischen|Evaluierungsrichtlinie für die Clusterintegrität, wird für die Integritätsevaluierung pro Anwendungstyp aktiviert. |
-|MaxSuggestedNumberOfEntityHealthReports|Ganze Zahl, Standardwert 500 |Dynamisch|Die maximale Anzahl von Integritätsberichten, die es für eine Entität geben kann, bevor Bedenken in Bezug auf die Integritätsberichtslogik des Watchdogs wirksam werden. Für jede Integritätsentität wird vorausgesetzt, dass sie eine relativ kleine Anzahl von Integritätsberichten hat. Wenn die Anzahl der Berichte diese Anzahl überschreitet gibt es möglicherweise Probleme mit der Watchdogimplementierung. Eine Entität mit zu vielen Berichten wird durch einen Warnungsintegritätsbericht gekennzeichnet, wenn die Entität ausgewertet wird. |
+|MaxSuggestedNumberOfEntityHealthReports|Ganze Zahl, Standardwert ist 100 |Dynamisch|Die maximale Anzahl von Integritätsberichten, die es für eine Entität geben kann, bevor Bedenken in Bezug auf die Integritätsberichtslogik des Watchdogs wirksam werden. Für jede Integritätsentität wird vorausgesetzt, dass sie eine relativ kleine Anzahl von Integritätsberichten hat. Wenn die Anzahl der Berichte diese Anzahl überschreitet gibt es möglicherweise Probleme mit der Watchdogimplementierung. Eine Entität mit zu vielen Berichten wird durch einen Warnungsintegritätsbericht gekennzeichnet, wenn die Entität ausgewertet wird. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 
@@ -647,6 +649,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |AADClusterApplication|string, Standardwert ""|statischen|Web-API-Anwendungsname oder -ID, der bzw. die den Cluster darstellt. |
 |AADLoginEndpoint|string, Standardwert ""|statischen|AAD-Anmeldeendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https:\//login.microsoftonline.us) |
 |AADTenantId|string, Standardwert ""|statischen|Mandanten-ID (GUID) |
+|AcceptExpiredPinnedClusterCertificate|Boolesch, Standardwert FALSE|Dynamisch|Flag, das angibt, ob abgelaufene, über Fingerabdruck deklarierte Clusterzertifikate akzeptiert werden sollen. Gilt nur für Clusterzertifikate, um den Cluster funktionsfähig zu halten. |
 |AdminClientCertThumbprints|string, Standardwert ""|Dynamisch|Fingerabdrücke von Zertifikaten, die von Clients in der Rolle „Administrator“ verwendet werden. Es handelt sich um eine durch Kommas getrennte Liste. |
 |AADTokenEndpointFormat|string, Standardwert ""|statischen|AAD-Tokenendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https:\//login.microsoftonline.us/{0}) |
 |AdminClientClaims|string, Standardwert ""|Dynamisch|Alle möglichen Ansprüche, die von Administratorclients erwartet werden. Gleiches Format wie ClientClaims. Diese Liste wird intern ClientClaims hinzugefügt. Es besteht daher keine Notwendigkeit, die gleichen Einträge auch ClientClaims hinzuzufügen. |

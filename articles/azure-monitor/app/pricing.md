@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/22/2019
+ms.date: 09/04/2019
 ms.author: dalek
-ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982606"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277005"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -120,6 +120,8 @@ Um die tägliche Obergrenze zu ändern, klicken Sie im Abschnitt **Konfigurieren
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-003.png)
 
+Wenn Sie [die tägliche Obergrenze über Azure Resource Manager](../../azure-monitor/app/powershell.md) ändern möchten, müssen Sie die Eigenschaft `dailyQuota` ändern.  Über Azure Resource Manager können Sie auch den Zeitpunkt für die tägliche Kontingentzurücksetzung (`dailyQuotaResetTime`) und den Warnschwellenwert (`warningThreshold`) der täglichen Obergrenze festlegen. 
+
 ## <a name="sampling"></a>Stichproben
 Die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln. So erhalten Sie auch korrekte Ereigniszahlen.
 
@@ -147,6 +149,9 @@ Verwenden Sie eine [Analytics-Abfrage](analytics.md), um den tatsächlichen Proz
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt. Diese entspricht 1 + Anzahl der vorherigen verworfenen Datensätze. 
 
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
+
+> [!NOTE]
+> Diese Funktion wurde vorübergehend entfernt, weil ein mögliches Problem behoben werden soll.  Ab Mitte September 2019 soll sie wieder verfügbar sein.
 
 Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 90, 120, 180, 270, 365, 550 oder 730 Tage. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 64bd71d89446a19d2afe56a32b0c7124e897cb48
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072414"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242479"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-Adressen von Azure API Management
 
@@ -27,7 +27,9 @@ Mithilfe von IP-Adressen können Sie Firewallregeln erstellen, den eingehenden D
 
 ## <a name="ip-addresses-of-api-management-service"></a>IP-Adressen des API Management-Diensts
 
-Wenn es sich bei Ihrem API Management-Dienst um einen Dienst im Developer-, Basic-, Standard- oder Premium-Tarif handelt, können Sie die IP-Adressen im Azure-Portal über das Übersichtsdashboard Ihrer Ressource abrufen.
+Jede API Management-Dienstinstanz im Developer-, Basic-, Standard-oder Premium-Tarif hat öffentliche IP-Adressen, die ausschließlich für diese Dienstinstanz gelten (sie werden nicht mit anderen Ressourcen gemeinsam genutzt). 
+
+Sie können die IP-Adressen aus dem Übersichtsdashboard ihrer Ressource im Azure-Portal abrufen.
 
 ![IP-Adresse von API Management](media/api-management-howto-ip-addresses/public-ip.png)
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066668"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210113"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
@@ -110,7 +110,7 @@ Um Ihre App vom VNET zu trennen, wählen Sie **Verbindung trennen** aus. Hiermit
 
 #### <a name="web-app-for-containers"></a>Web-App für Container
 
-Wenn Sie App Service unter Linux mit den integrierten Images verwenden, funktioniert die regionale VNET-Integration ohne zusätzliche Änderungen. Wenn Sie Web-App für Container verwenden, müssen Sie Ihr Docker-Image ändern, um die VNET-Integration zu verwenden. Verwenden Sie in Ihrem Docker-Image die Umgebungsvariable PORT als Hauptlauschport des Webservers, anstatt eine hartcodierte Portnummer zu verwenden. Die Umgebungsvariable PORT wird von der App Service-Plattform automatisch beim Start des Containers festgelegt.
+Wenn Sie App Service unter Linux mit den integrierten Images verwenden, funktioniert die regionale VNET-Integration ohne zusätzliche Änderungen. Wenn Sie Web-App für Container verwenden, müssen Sie Ihr Docker-Image ändern, um die VNET-Integration zu verwenden. Verwenden Sie in Ihrem Docker-Image die Umgebungsvariable PORT als Hauptlauschport des Webservers, anstatt eine hartcodierte Portnummer zu verwenden. Die Umgebungsvariable PORT wird von der App Service-Plattform automatisch beim Start des Containers festgelegt. Wenn Sie SSH verwenden, muss der SSH-Daemon so konfiguriert sein, dass er auf den Port mit der Nummer lauscht, die in der SSH_PORT-Umgebungsvariablen angegeben ist, wenn regionale VNET-Integration verwendet wird.
 
 ### <a name="service-endpoints"></a>Dienstendpunkte
 

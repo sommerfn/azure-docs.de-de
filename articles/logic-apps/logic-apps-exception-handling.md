@@ -1,21 +1,20 @@
 ---
-title: Behandlung von Fehlern und Ausnahmen – Azure Logic Apps | Microsoft-Dokumentation
+title: Behandlung von Fehlern und Ausnahmen – Azure Logic Apps
 description: Enthält eine Beschreibung der Muster für die Behandlung von Fehlern und Ausnahmen in Azure Logic Apps.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996590"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208177"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -219,13 +218,15 @@ Zum Abfangen von Ausnahmen in einem als **Fehlerhaft** gekennzeichneten Bereich 
 
 Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md).
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>Abrufen von Kontext und Ergebnissen auf Fehler
 
-Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden. Mit dem Ausdruck `@result()` wird Kontext zum Ergebnis aller Aktionen in einem Bereich bereitgestellt.
+Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden.
 
-Der Ausdruck `@result()` nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie das  **\@actions()** -Objekt, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **\@result()** -Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
+Die [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)-Funktion stellt Kontext zu den Ergebnissen aller Aktionen in einem Bereich zur Verfügung. Die `result()`-Funktion erwartet als einzigen Parameter den Namen des Bereichs und gibt ein Array zurück, das alle Aktionsergebnisse aus diesem Bereich enthält. Diese Aktionsobjekte enthalten dieselben Attribute wie das `@actions()`-Objekt, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können einen `@result()`-Ausdruck einfach mit der `runAfter`-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die in einem Bereich ein Fehler aufgetreten ist.
 
-Zum Ausführen einer Aktion für jede Aktion eines Bereichs mit dem Ergebnis **Failed** und zum Filtern des Arrays der Ergebnisse bis hinab zu den fehlerhaften Aktionen können Sie **\@result()** mit der Aktion **[Filter Array](../connectors/connectors-native-query.md)** und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die **For each**-Schleife verwenden. 
+Um eine Aktion für jede in einem Bereich befindliche Aktion auszuführen, die das Ergebnis **Failed** (Fehlgeschlagen) hat, und um das Array der Ergebnisse bis hinab zu den fehlgeschlagenen Aktionen zu filtern, können Sie einen `@result()`-Ausdruck mit einer [**Array filtern**](../connectors/connectors-native-query.md)-Aktion und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die **For each**-Schleife verwenden.
 
 Hier ist ein Beispiel gefolgt von einer ausführlichen Erklärung angegeben, bei dem eine HTTP POST-Anforderung mit dem Antworttext für alle fehlerhaften Aktionen im Bereich „My_Scope“ gesendet wird:
 

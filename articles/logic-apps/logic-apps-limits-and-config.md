@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099429"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242367"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -260,11 +260,9 @@ Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert.
 
 Für alle Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet. Um die Aufrufe zu unterstützen, die Ihre Logik-Apps direkt mit [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) und anderen HTTP-Anforderungen durchführen, richten Sie Ihre Firewalls mit *allen* [eingehenden](#inbound) *und* [ausgehenden](#outbound) IP-Adressen ein, die vom Logic Apps-Dienst verwendet werden, basierend auf den Regionen, in denen Ihre Logik-Apps vorhanden sind. Diese Adressen werden unter den Überschriften **Eingehend** und **Ausgehend** in diesem Abschnitt angezeigt, wobei sie nach Region sortiert sind. 
 
-Um die Aufrufe zu unterstützen, die [von Microsoft verwalteten Connectors](../connectors/apis-list.md) ausführen, richten Sie Ihre Firewall mit *allen* [ausgehenden](#outbound) IP-Adressen ein, die von diesen Connectors verwendet werden, basierend auf den Regionen, in denen Ihre Logik-Apps vorhanden sind. Diese Adressen werden unter der Überschrift **Ausgehend** in diesem Abschnitt angezeigt, wobei sie nach Region sortiert sind.
+Um die Aufrufe zu unterstützen, die [von Microsoft verwalteten Connectors](../connectors/apis-list.md) ausführen, richten Sie Ihre Firewall mit *allen* [ausgehenden](#outbound) IP-Adressen ein, die von diesen Connectors verwendet werden, basierend auf den Regionen, in denen Ihre Logik-Apps vorhanden sind. Diese Adressen werden unter der Überschrift **Ausgehend** in diesem Abschnitt angezeigt, wobei sie nach Region sortiert sind. Für Logik-Apps, die in einer Integrationsdienstumgebung (ISE) ausgeführt werden, müssen Sie [diese Ports öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-Für Logik-Apps, die in einer Integrationsdienstumgebung (ISE) ausgeführt werden, müssen Sie [diese Ports öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
-
-Für [Azure Government](../azure-government/documentation-government-overview.md) und [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) stehen derzeit keine reservierten IP-Adressen für Connectors zur Verfügung.
+Für benutzerdefinierte Connectors, [Azure Government](../azure-government/documentation-government-overview.md) und [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) sind keine festen oder reservierten IP-Adressen verfügbar.
 
 > [!IMPORTANT]
 >
