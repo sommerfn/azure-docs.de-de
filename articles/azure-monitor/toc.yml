@@ -770,6 +770,8 @@
                   href: log-query/get-started-portal.md
                 - name: Tutorial zu Protokollabfragen
                   href: log-query/get-started-queries.md
+                - name: Einfache Oberfläche für Protokolle
+                  href: log-query/simple-logs.md
             - name: Protokolldaten
               items:
                 - name: Protokolldatenstruktur

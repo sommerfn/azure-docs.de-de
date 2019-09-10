@@ -71,6 +71,8 @@
               href: billing-prepay-app-service-isolated-stamp.md
             - name: Azure-Softwarepläne
               href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+            - name: Erwerben einer Reservierung mit monatlichen Zahlungen
+              href: billing-monthly-payments-reservations.md
             - name: Verlängern von Reservierungen
               href: billing-reservation-renew.md
         - name: Anwendung des Rabatts

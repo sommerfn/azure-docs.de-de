@@ -1,6 +1,6 @@
 ---
 title: Geführte Einrichtung der JavaScript-Single-Page-Anwendung (SPA) Azure AD v2.0 | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie JavaScript-Single-Page-Anwendungen eine API aufrufen können, die Zugriffstoken vom Azure Active Directory v2.0-Endpunkt anfordert.
+description: In diesem Artikel erfahren Sie, wie JavaScript-Single-Page-Anwendungen eine API aufrufen können, für die Zugriffstoken des Azure Active Directory v2.0-Endpunkts erforderlich sind.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -16,25 +16,28 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cee0884ef20ef9cfd63d81d6f223705d34c65ccb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 2c11fc43098346d8afa9557f0de9df1c0a739bcc
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511790"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172020"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 
-Diese Anleitung veranschaulicht, wie eine JavaScript-Single-Page-Webanwendung eine Anmeldung für private Konten und Geschäfts-, Schul- oder Unikonten durchführen, ein Zugriffstoken abrufen und die Microsoft Graph-API oder andere APIs aufrufen kann, die Zugriffstoken von einem Microsoft Identity Platform-Endpunkt benötigen.
+In diesem Leitfaden werden folgende Aktionen für eine JavaScript-Single-Page-Anwendung (SPA) beschrieben:
+- Anmelden von persönlichen Konten sowie von Geschäfts-, Schul- oder Unikonten 
+- Abrufen eines Zugriffstokens
+- Aufrufen der Microsoft Graph-API oder anderer APIs, für die Zugriffstoken des *Microsoft Identity Platform-Endpunkts* erforderlich sind
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 
-![Zeigt, wie die in diesen Tutorials generierte Beispiel-App funktioniert](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Zeigt, wie die in diesem Tutorial generierte Beispiel-App funktioniert](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
 
-Die über diesen Leitfaden erstellte Beispiel-App ermöglicht eine JavaScript-Single-Page-Webanwendung das Abfragen der Microsoft Graph-API oder einer Web-API, die Token von einem Microsoft Identity Platform-Endpunkt akzeptiert. In diesem Szenario wird nach der Benutzeranmeldung ein Zugriffstoken angefordert und über den Autorisierungsheader den HTTP-Anforderungen hinzugefügt. Tokenabruf und -verlängerung werden von der Microsoft Authentication Library (MSAL) verarbeitet.
+Die über diesen Leitfaden erstellte Beispiel-App ermöglicht einer JavaScript-SPA das Abfragen der Microsoft Graph-API oder einer Web-API, die Token vom Microsoft Identity Platform-Endpunkt akzeptiert. In diesem Szenario wird nach der Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen über den Autorisierungsheader hinzugefügt. Tokenabruf und -verlängerung werden von der Microsoft Authentication Library (MSAL) verarbeitet.
 
 <!--end-collapse-->
 
@@ -43,12 +46,12 @@ Die über diesen Leitfaden erstellte Beispiel-App ermöglicht eine JavaScript-Si
 
 In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
-|Bibliothek|BESCHREIBUNG|
+|Bibliothek|Beschreibung|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library für JavaScript-Vorschau|
 
 > [!NOTE]
-> *msal.js* hat als Ziel den *Microsoft Identity Platform-Endpunkt*, der privaten Konten und Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Abrufen von Token ermöglicht. Der *Microsoft Identity Platform-Endpunkt* weist [einige Einschränkungen](azure-ad-endpoint-comparison.md#limitations) auf.
+> *msal.js* verwendet als Ziel den Microsoft Identity Platform-Endpunkt, was persönlichen Konten sowie Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Beziehen von Token ermöglicht. Für den Microsoft Identity Platform-Endpunkt gelten [einige Einschränkungen](azure-ad-endpoint-comparison.md#limitations).
 > Die Unterschiede zwischen v1.0- und v2.0-Endpunkten werden unter [Endpunktvergleich](azure-ad-endpoint-comparison.md) erläutert.
 
 <!--end-collapse-->
@@ -57,11 +60,11 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
 > Möchten Sie stattdessen das Projekt dieses Beispiels herunterladen? Führen Sie einen der folgenden Schritte aus:
 > 
-> - Um das Projekt mit einem lokalen Webserver, wie z.B. Node.js, auszuführen, [laden Sie die Projektdateien herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+> - Wenn Sie das Projekt mit einem lokalen Webserver (beispielsweise Node.js) ausführen möchten, [laden Sie die Projektdateien herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
-> - (Optional) Um das Projekt mit dem IIS-Server auszuführen, [laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+> - Optional: Wenn Sie das Projekt mit dem IIS-Server (Internet Information Services, Internetinformationsdienste) von Microsoft ausführen möchten, [laden Sie das Visual Studio-Projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip) herunter.
 >
-> Um das Codebeispiel zu konfigurieren, bevor Sie es ausführen, wechseln Sie zum [Konfigurationsschritt](#register-your-application).
+> Wenn Sie das Codebeispiel vor der Ausführung konfigurieren möchten, navigieren Sie direkt zum [Konfigurationsschritt](#register-your-application).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,18 +77,17 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 ## <a name="create-your-project"></a>Erstellen Ihres Projekts
 
 > ### <a name="option-1-nodejs-or-other-web-servers"></a>Option 1: Node.js oder andere Webserver
-> Vergewissern Sie sich, dass Sie [Node.js](https://nodejs.org/en/download/) installiert haben, und gehen Sie dann wie folgt vor:
-> - Erstellen Sie einen Ordner zum Hosten Ihrer Anwendung.
+> Vergewissern Sie sicher, dass [Node.js](https://nodejs.org/en/download/) installiert ist, und erstellen Sie einen Ordner für Ihre Anwendung.
 >
 > ### <a name="option-2-visual-studio"></a>Option 2: Visual Studio
-> Wenn Sie Visual Studio verwenden und ein neues Projekt erstellen, gehen Sie so vor:
+> Wenn Sie Visual Studio verwenden und ein neues Projekt erstellen, gehen Sie wie folgt vor:
 > 1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 > 1. Wählen Sie unter **Visual C#\Web** die Option **ASP.NET-Webanwendung (.NET Framework)** aus.
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, und klicken Sie auf **OK**.
 > 1. Wählen Sie unter **Neue ASP.NET-Webanwendung** die Option **Leer** aus.
 
 ## <a name="create-the-spa-ui"></a>Erstellen der Benutzeroberfläche für die Single-Page-Webanwendung (SPA)
-1. Erstellen Sie die Datei *index.html* für Ihre JavaScript-Einzelseitenanwendung. Gehen Sie bei Verwendung von Visual Studio wie folgt vor: Wählen Sie das Projekt aus (Stammordner des Projekts), klicken Sie mit der rechten Maustaste, und wählen Sie **Hinzufügen** > **Neues Element** > **HTML-Seite**. Geben Sie der Datei den Namen *index.html*.
+1. Erstellen Sie die Datei *index.html* für Ihre JavaScript-Einzelseitenanwendung. Wenn Sie Visual Studio verwenden, wählen Sie das Projekt aus (Stammordner des Projekts). Klicken Sie mit der rechten Maustaste, wählen Sie **Hinzufügen** > **Neues Element** > **HTML-Seite** aus, und nennen Sie die Datei *index.html*.
 
 1. Fügen Sie der Datei *index.html* den folgenden Code hinzu:
 
@@ -114,7 +116,7 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Verwenden der MSAL (Microsoft Authentication Library) für die Benutzeranmeldung
 
-1. Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden Code hinzu:
+Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden Code hinzu:
 
     ```javascript
     var msalConfig = {
@@ -259,34 +261,33 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 <!--start-collapse-->
 ### <a name="more-information"></a>Weitere Informationen
 
-Wenn ein Benutzer das erste Mal auf die Schaltfläche **Anmelden** klickt, ruft die `signIn`-Methode `loginPopup` auf, um den Benutzer anzumelden. Durch diese Methode wird ein Popupfenster mit dem *Microsoft Identity Platform-Endpunkt* geöffnet, um die Anmeldeinformationen des Benutzers anzufordern und zu überprüfen. Als Ergebnis einer erfolgreichen Anmeldung wird der Benutzer zurück zur ursprünglichen Seite *index.html* umgeleitet, und es wird ein Token empfangen, das von `msal.js` verarbeitet wird. Die im Token enthaltenen Informationen werden zwischengespeichert. Dieses Token ist das sogenannte *ID-Token*, das grundlegende Informationen zum Benutzer enthält, beispielsweise den Benutzeranzeigenamen. Wenn Sie von diesem Token bereitgestellte Daten nutzen möchten, müssen Sie sicherstellen, dass das Token durch Ihren Back-End-Server überprüft wird. So wird garantiert, dass das Token für einen gültigen Benutzer Ihrer Anwendung ausgestellt wurde.
+Wenn ein Benutzer das erste Mal die Schaltfläche **Anmelden** auswählt, ruft die `signIn`-Methode `loginPopup` auf, um den Benutzer anzumelden. Diese Methode öffnet ein Popupfenster mit dem *Microsoft Identity Platform-Endpunkt*, um die Anmeldeinformationen des Benutzers anzufordern und zu überprüfen. Nach erfolgreicher Anmeldung wird der Benutzer zur ursprünglichen Indexseite (*index.html*) umgeleitet. Ein Token wird empfangen und von `msal.js` verarbeitet, und die im Token enthaltenen Informationen werden zwischengespeichert. Dieses Token ist das sogenannte *ID-Token*, das grundlegende Informationen zum Benutzer enthält, beispielsweise den Benutzeranzeigenamen. Wenn Sie von diesem Token bereitgestellte Daten nutzen möchten, müssen Sie sicherstellen, dass das Token durch Ihren Back-End-Server überprüft wird. So wird garantiert, dass das Token für einen gültigen Benutzer Ihrer Anwendung ausgestellt wurde.
 
-Die in diesem Leitfaden generierte SPA ruft `acquireTokenSilent` bzw. `acquireTokenPopup` auf, um ein *Zugriffstoken* zu beziehen, das zum Abfragen von Informationen zum Benutzerprofil von der Microsoft Graph-API verwendet wird. Wenn Sie ein Beispiel zum Überprüfen des ID-Tokens suchen, sehen Sie sich [diese](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample")-Beispielanwendung in GitHub an. Dieses Beispiel verwendet eine ASP.NET-Web-API für die Tokenüberprüfung.
+Die in diesem Leitfaden generierte SPA ruft `acquireTokenSilent` bzw. `acquireTokenPopup` auf, um ein *Zugriffstoken* zu beziehen, das zum Abfragen von Informationen zum Benutzerprofil von der Microsoft Graph-API verwendet wird. Wenn Sie ein Beispiel zum Überprüfen des ID-Tokens suchen, sehen Sie sich [diese](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample")-Beispielanwendung in GitHub an. In diesem Beispiel wird für die Tokenüberprüfung eine ASP.NET-Web-API verwendet.
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Nach der ersten Anmeldung möchten Sie die Benutzer nicht jedes Mal, wenn sie ein Token für den Zugriff auf eine Ressource anfordern, zur erneuten Authentifizierung auffordern – deshalb sollte in den meisten Fällen *acquireTokenSilent* für das Abrufen von Token verwendet werden. Es gibt jedoch Situationen, in denen Sie Benutzer zur Interaktion mit dem Microsoft Identity Platform-Endpunkt auffordern müssen. Beispiele:
+Nach der erstmaligen Anmeldung sollen die Benutzer nicht jedes Mal erneut zur Authentifizierung aufgefordert werden, wenn sie ein Token für den Zugriff auf eine Ressource anfordern müssen. Aus diesem Grund sollten Token in den meisten Fällen mit *acquireTokenSilent* bezogen werden. Es gibt jedoch Situationen, in denen Sie die Interaktion mit dem Microsoft Identity Platform-Endpunkt erzwingen müssen. Beispiele:
 
-- Benutzer müssen möglicherweise ihre Anmeldeinformationen erneut eingeben, da das Kennwort abgelaufen ist.
-- Ihre Anwendung fordert Zugriff auf eine Ressource, der der Benutzer zustimmen muss.
+- Benutzer müssen ihre Anmeldeinformationen erneut eingeben, da das Kennwort abgelaufen ist.
+- Ihre Anwendung fordert Zugriff auf eine Ressource an, und die Zustimmung des Benutzers ist erforderlich.
 - Die zweistufige Authentifizierung ist erforderlich.
 
-Der Aufruf von *acquireTokenPopup* führt zu einem Popupfenster. (*acquireTokenRedirect* führt zum Umleiten von Benutzern an den Microsoft Identity Platform-Endpunkt.) Darin müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die angeforderte Ressource geben oder die zweistufige Authentifizierung durchführen.
+Durch Aufrufen von *acquireTokenPopup* wird ein Popupfenster geöffnet. (Mit *acquireTokenRedirect* werden Benutzer zum Microsoft Identity Platform-Endpunkt umgeleitet.) In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die erforderliche Ressource geben oder die zweistufige Authentifizierung durchführen.
 
 #### <a name="getting-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 
-Die Methode `acquireTokenSilent` verwaltet das Abrufen und Erneuern von Token ohne Eingreifen des Benutzers. Nachdem `loginPopup` (oder `loginRedirect`) zum ersten Mal ausgeführt wurde, ist `acquireTokenSilent` die übliche Methode zum Abrufen von Token, die für den Zugriff auf geschützte Ressourcen bei nachfolgenden Aufrufen verwendet werden, da Aufrufe zum Anfordern oder Verlängern von Token automatisch erfolgen.
-`acquireTokenSilent` führt in einigen Fällen möglicherweise zu Fehlern – z.B. wenn das Kennwort des Benutzers abgelaufen ist. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
+Die Methode `acquireTokenSilent` wickelt den Bezug und die Verlängerung von Token ohne Eingreifen des Benutzers ab. Nach erstmaligem Ausführen von `loginPopup` (oder `loginRedirect`) wird normalerweise die Methode `acquireTokenSilent` zum Beziehen von Token verwendet, die für den Zugriff auf geschützte Ressourcen für nachfolgende Aufrufe genutzt werden. (Aufrufe zum Anfordern oder Verlängern von Token werden im Hintergrund ausgeführt.) `acquireTokenSilent` ist in bestimmten Fällen möglicherweise nicht erfolgreich – etwa, wenn das Kennwort des Benutzers abgelaufen ist. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
 
-1. Sofortiges Aufrufen von `acquireTokenPopup`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein nicht authentifizierter Inhalt in der Anwendung für den Benutzer verfügbar ist. Die in diesem Leitfaden generierte Beispielanwendung verwendet dieses Muster.
+1. Durch sofortiges Aufrufen von `acquireTokenPopup`, um eine Benutzeranmeldeaufforderung auszulösen. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein nicht authentifizierter Inhalt in der Anwendung für den Benutzer verfügbar ist. Die in diesem Leitfaden generierte Beispielanwendung verwendet dieses Muster.
 
-2. Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `acquireTokenSilent` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden, z.B. wenn nicht authentifizierter Inhalt in der Anwendung verfügbar ist. In diesem Fall kann der Benutzer entscheiden, ob er sich für den Zugriff auf die geschützte Ressource anmelden oder die veralteten Informationen aktualisieren möchte.
+2. Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `acquireTokenSilent` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden – beispielsweise, wenn in der Anwendung nicht authentifizierte Inhalte vorhanden sind. In diesem Fall kann der Benutzer entscheiden, wann er sich anmelden möchte, um auf die geschützte Ressource zuzugreifen oder die veralteten Informationen zu aktualisieren.
 
 > [!NOTE]
-> In diesem Schnellstart werden die Methoden `loginRedirect` und `acquireTokenRedirect` verwendet, wenn Internet Explorer als Browser genutzt wird. Dies liegt an einem [bekannten Problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) mit der Verarbeitung von Popupfenstern durch den Browser Internet Explorer.
+> In dieser Schnellstartanleitung werden die Methoden `loginRedirect` und `acquireTokenRedirect` verwendet, wenn Internet Explorer als Browser genutzt wird. Diese Vorgehensweise wird aufgrund eines [bekannten Problems](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) im Zusammenhang mit der Behandlung von Popupfenstern durch Internet Explorer verwendet.
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Aufrufen der Microsoft Graph-API mit dem zuvor bezogenen Token
+## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Aufrufen der Microsoft Graph-API unter Verwendung des zuvor bezogenen Tokens
 
 Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden Code hinzu:
 
@@ -304,9 +305,9 @@ function callMSGraph(theUrl, accessToken, callback) {
 ```
 <!--start-collapse-->
 
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Weitere Informationen zum Richten eines REST-Aufrufs an eine geschützte API
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Weitere Informationen zum Richten eines REST-Aufrufs an eine geschützte API
 
-In der in diesem Leitfaden erstellten Beispielanwendung wird die `callMSGraph()`-Methode dazu verwendet, um eine HTTP `GET`-Anforderung an eine geschützte Ressource zu senden, die ein Token erfordert, und anschließend den Inhalt an den Aufrufer zurückzugeben. Diese Methode fügt das abgerufene Token in den *HTTP-Autorisierungsheader* ein. In der über diesen Leitfaden erstellten Beispielanwendung ist die Ressource der Endpunkt *me* der Microsoft Graph-API, der die Profilinformationen des Benutzers anzeigt.
+In der Beispielanwendung aus diesem Leitfaden wird die Methode `callMSGraph()` verwendet, um eine HTTP-Anforderung vom Typ `GET` für eine geschützte Ressource auszuführen, die ein Token erfordert. Der Inhalt wird anschließend an den Aufrufer zurückgegeben. Diese Methode fügt das abgerufene Token in den *HTTP-Autorisierungsheader* ein. In der Beispielanwendung aus diesem Leitfaden ist die Ressource der Endpunkt *me* der Microsoft Graph-API, der die Profilinformationen des Benutzers anzeigt.
 
 <!--end-collapse-->
 
@@ -327,13 +328,13 @@ Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Wenn Sie in Ihrem Konto auf mehrere Mandanten zugreifen können, wählen Sie rechts oben das Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+1. Wenn Sie in Ihrem Konto auf mehrere Mandanten zugreifen können, wählen Sie rechts oben das Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
 1. Navigieren Sie auf der Microsoft Identity Platform für Entwickler zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908).
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Namen für Ihre Anwendung ein.
 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
-1. Wählen Sie im Abschnitt **Umleitungs-URI** in der Dropdownliste die Plattform **Web** aus, und legen Sie den Wert auf die URL der Anwendung basierend auf Ihrem Webserver fest. 
+1. Wählen Sie im Abschnitt **Umleitungs-URI** in der Dropdownliste die Plattform **Web** aus, und legen Sie den Wert auf die URL der Anwendung (basierend auf Ihrem Webserver) fest.
 
-   Informationen zum Festlegen und Abrufen der Umleitungs-URL in Visual Studio und Node.js finden Sie in den nächsten beiden Abschnitten.
+   Informationen zum Festlegen und Abrufen einer Umleitungs-URL für Node.js und Visual Studio finden Sie weiter unten im Abschnitt „Festlegen einer Umleitungs-URL für Node.js“ bzw. unter [Festlegen einer Umleitungs-URL für Visual Studio](#set-a-redirect-url-for-visual-studio).
 
 1. Wählen Sie **Registrieren**.
 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
@@ -342,7 +343,7 @@ Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden 
 1. Wählen Sie **Speichern** aus.
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>Festlegen einer Umleitungs-URL für Node.js
-> Für Node.js können Sie den Webserverport in der Datei *server.js* festlegen. In diesem Tutorial wird zur Referenz Port 30662 genutzt, aber Sie können auch einen beliebigen anderen verfügbaren Port verwenden. 
+> Für Node.js können Sie den Webserverport in der Datei *server.js* festlegen. In diesem Tutorial wird zwar der Port 30662 verwendet, Sie können aber auch einen beliebigen anderen verfügbaren Port verwenden.
 >
 > Wenn Sie eine Umleitungs-URL in den Registrierungsinformationen der Anwendung einrichten möchten, kehren Sie zum Bereich **Anwendungsregistrierung** zurück und führen eine der folgenden Aktionen aus:
 >
@@ -350,15 +351,14 @@ Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden 
 > - Wenn Sie einen benutzerdefinierten TCP-Port nutzen, verwenden Sie *`http://localhost:<port>/`* (wobei *\<port>* die benutzerdefinierte TCP-Portnummer ist).
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>Festlegen einer Umleitungs-URL für Visual Studio
-> Um die Umleitungs-URL für Visual Studio zu erhalten, führen Sie folgende Schritte aus:
-> 1. Wählen Sie das Projekt im **Projektmappen-Explorer** aus.
+> Die Umleitungs-URL für Visual Studio erhalten Sie wie folgt:
+> 1. Wählen Sie im Projektmappen-Explorer das Projekt aus.
 >
->    Das Fenster **Eigenschaften** wird geöffnet. Falls es nicht geöffnet wird, drücken Sie **F4**.
+>    Das Fenster **Eigenschaften** wird geöffnet. Sollte es nicht geöffnet werden, drücken Sie F4.
 >
 >    ![Das Eigenschaftenfenster des JavaScriptSPA-Projekts](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)
 >
 > 1. Kopieren Sie den Wert von **URL**.
- 
 > 1. Kehren Sie zurück zum Bereich **Anwendungsregistrierung**, und fügen Sie den kopierten Wert als **Umleitungs-URL** ein.
 
 #### <a name="configure-your-javascript-spa"></a>Konfigurieren Ihrer JavaScript-SPA
@@ -378,7 +378,7 @@ Fügen Sie der Datei `index.html` in den Tags `<script></script>` den folgenden 
     };
     ```
 
-    Hinweis:
+    Hierbei gilt:
     - *\<Enter_the_Application_Id_here>* ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
     - *\<Enter_the_Tenant_info_here >* wird auf eine der folgenden Optionen festgelegt:
        - Falls Ihre Anwendung *nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (beispielsweise *contoso.microsoft.com*).
@@ -393,7 +393,7 @@ Testen Sie Ihren Code in einer der folgenden Umgebungen.
 
 Wenn Sie nicht Visual Studio verwenden, stellen Sie sicher, dass Ihr Webserver gestartet wurde.
 
-1. Konfigurieren Sie den Server zum Lauschen am TCP-Port, der auf dem Speicherort Ihrer Datei *index.html* basiert. Starten Sie für Node.js den Webserver, um am Port zu lauschen, indem Sie an einer Eingabeaufforderung im Anwendungsordner die folgenden Befehle ausführen:
+1. Konfigurieren Sie den Server zum Lauschen am TCP-Port, der auf dem Speicherort Ihrer Datei *index.html* basiert. Starten Sie für Node.js den Webserver, um an dem Port zu lauschen, indem Sie an einer Eingabeaufforderung im Anwendungsordner die folgenden Befehle ausführen:
 
     ```bash
     npm install
@@ -419,21 +419,21 @@ Wenn Sie sich zum ersten Mal bei Ihrer Anwendung anmelden, werden Sie aufgeforde
 
 ### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
-Nach der Anmeldung werden Ihre Benutzerprofilinformationen in der Antwort der Microsoft Graph-API zurückgegeben, die auf der Seite angezeigt wird.
+Nach der Anmeldung werden Ihre Benutzerprofilinformationen in der angezeigten Antwort der Microsoft Graph-API zurückgegeben:
 
 ![Ergebnisse des Aufrufs der Microsoft Graph-API](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 
-Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Registrierungsportal registriert ist. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt beispielsweise den Bereich *Calendars.Read*, um die Kalender des Benutzers aufzuführen.
+Die Microsoft Graph-API benötigt den Bereich *user.read*, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die beim Registrierungsportal registriert wird. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt beispielsweise den Bereich *Calendars.Read*, um die Kalender des Benutzers aufzuführen.
 
 Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung *Calendars.Read* hinzufügen. Fügen Sie dann dem Aufruf von `acquireTokenSilent` den Bereich *Calendars.Read* hinzu.
 
 >[!NOTE]
 >Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
 
-Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie die *clientId* bei den Aufrufen zum Beziehen von Token als Bereich verwenden.
+Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie in den Aufrufen zum Beziehen von Token *clientId* als Bereich verwenden.
 
 <!--end-collapse-->
 
