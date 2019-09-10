@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640130"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231194"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
 
@@ -58,7 +58,7 @@ Für alle Schritte in diesem Tutorial ist eine Anmeldung beim [Azure-Portal](htt
 
 ## <a name="create-firewall-rules"></a>Erstellen von Firewallregeln
 
-SQL-Datenbanken werden in Azure durch Firewalls geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken abgelehnt. Davon ausgenommen sind nur Verbindungen von anderen Azure-Diensten. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+SQL-Datenbanken werden in Azure durch Firewalls geschützt. Standardmäßig werden alle Verbindungen mit dem Server und der Datenbank abgelehnt. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
 
 Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste erlauben** auf **AUS** festlegen. Erstellen Sie anschließend für die Ressource, die eine Verbindung herstellen muss (beispielsweise ein virtueller Computer oder ein Clouddienst), eine [reservierte IP-Adresse (klassische Bereitstellung)](../virtual-network/virtual-networks-reserved-public-ip.md), und lassen Sie den Zugriff durch die Firewall nur für diese IP-Adresse zu. Bei Verwendung des [Resource Manager-Bereitstellungsmodells](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) wird für jede Ressource eine dedizierte öffentliche IP-Adresse benötigt.
 
@@ -87,9 +87,6 @@ So richten Sie eine Firewallregel auf Serverebene ein:
    1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
 
 Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit der angegebenen IP-Adresse oder dem angegebenen IP-Adressbereich herstellen.
-
-> [!IMPORTANT]
-> Standardmäßig ist der Zugriff durch die SQL-Datenbankfirewall für alle Azure-Dienste aktiviert (unter **Zugriff auf Azure-Dienste erlauben**). Wählen Sie **AUS** aus, um den Zugriff für alle Azure-Dienste zu deaktivieren.
 
 ### <a name="setup-database-firewall-rules"></a>Einrichten von Firewallregeln für eine Datenbank
 

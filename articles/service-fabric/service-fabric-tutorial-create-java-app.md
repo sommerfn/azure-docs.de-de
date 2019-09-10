@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-august2019
-ms.openlocfilehash: 3601bcfbb812dc9f8ee893cc1c88eb8eebce485f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 56a68f852e9eee3303540d6ebd180608935c6135
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963965"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172065"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst auf Service Fabric
+# <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst in Azure Service Fabric
 
 Dieses Tutorial ist der erste Teil einer Serie. Das Ergebnis ist eine Anwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Für diese Tutorialreihe benötigen Sie einen funktionierenden Entwicklercomputer mit Mac OSX oder Linux. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-java-quickstart) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) fortfahren. Gegebenenfalls ist auch die [Schnellstartanleitung für Java Reliable Services](service-fabric-quickstart-java-reliable-services.md) hilfreich.
 

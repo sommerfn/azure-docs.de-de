@@ -2,18 +2,18 @@
 title: 'C#-Tutorial: Indizieren mehrerer Datenquellen – Azure Search'
 description: Hier erfahren Sie, wie Sie Daten aus mehreren Datenquellen in einen einzelnen Azure Search-Index importieren.
 author: RobDixon22
-manager: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840675"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241840"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#-Tutorial: Vereinen von Daten aus mehreren Datenquellen in einem einzelnen Azure Search-Index
 
@@ -70,7 +70,7 @@ In diesem Beispiel werden zwei kleine Datensätze verwendet, die sieben fiktive 
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und navigieren Sie zur Übersichtsseite Ihres Azure Cosmos DB-Kontos.
 
-1. Klicken Sie auf der Menüleiste auf „Container hinzufügen“. Wählen Sie „Neu erstellen“ aus, und geben Sie den Namen **hotel-rooms-db** an. Geben Sie **hotel-rooms** als Sammlungsname und **/HotelId** als Partitionsschlüssel ein. Klicken Sie auf **OK**, um die Datenbank und den Container zu erstellen.
+1. Klicken Sie auf der Menüleiste auf „Container hinzufügen“. Wählen Sie „Neu erstellen“ aus, und geben Sie den Namen **hotel-rooms-db** an. Geben Sie **hotels** als Sammlungsname und **/HotelId** als Partitionsschlüssel ein. Klicken Sie auf **OK**, um die Datenbank und den Container zu erstellen.
 
    ![Hinzufügen des Azure Cosmos DB-Containers](media/tutorial-multiple-data-sources/cosmos-add-container.png "Hinzufügen eines Azure Cosmos DB-Containers")
 

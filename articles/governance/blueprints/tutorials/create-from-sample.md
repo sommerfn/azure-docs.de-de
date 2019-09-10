@@ -7,12 +7,12 @@ ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b0d5d96ff897ac1710206eb49bca785e8809cb7d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798312"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232616"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
@@ -104,11 +104,11 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
      |Artefaktname|Artefakttyp|Parametername|Wert|BESCHREIBUNG|
      |-|-|-|-|-|
-     |Ressourcengruppe „ProdRG“|Ressourcengruppe|NAME|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
-     |Ressourcengruppe „ProdRG“|Ressourcengruppe|Location|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
+     |Ressourcengruppe „ProdRG“|Resource group|NAME|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
+     |Ressourcengruppe „ProdRG“|Resource group|Location|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
      |Mitwirkender|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Mitwirkender_ in der ersten Ressourcengruppe gewährt wird.|
-     |Ressourcengruppe „PreProdRG“|Ressourcengruppe|NAME|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
-     |Ressourcengruppe „PreProdRG“|Ressourcengruppe|Location|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
+     |Ressourcengruppe „PreProdRG“|Resource group|NAME|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
+     |Ressourcengruppe „PreProdRG“|Resource group|Location|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
      |Owner (Besitzer)|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Besitzer_ in der zweiten Ressourcengruppe gewährt wird.|
      |Leser|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Leser_ in der zweiten Ressourcengruppe gewährt wird.|
 

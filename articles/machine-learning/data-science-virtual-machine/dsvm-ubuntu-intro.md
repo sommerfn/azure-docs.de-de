@@ -1,29 +1,22 @@
 ---
-title: Erstellen einer Ubuntu Linux-Data Science Virtual Machine
-titleSuffix: Azure
+title: Schnellstart für Linux (Ubuntu)
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurieren und erstellen Sie eine Data Science Virtual Machine für Linux (Ubuntu) in Azure, um Analysen und Machine Learning-Vorgänge durchzuführen.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-ms.author: vijetaj
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 08/13/2019
-ms.openlocfilehash: 3aa32d8e42079a1aa4bdd7a18a24f7d5d01f7c3e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9b323970e735a3e2a9d2cf418b787ed046c5574d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011652"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192088"
 ---
-# <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Schnellstart: Einrichten von Data Science Virtual Machine für Linux (Ubuntu)
 
 Die Data Science Virtual Machine (DSVM) für Linux ist ein Ubuntu-basiertes VM-Image, das den Einstieg in das maschinelle Lernen, z. B. Deep Learning, in Azure erleichtert. Deep Learning-Tools:
 
@@ -124,7 +117,7 @@ Sie können Azure Notebooks auch eine Data Science Virtual Machine zuordnen, um 
 
 ### <a name="ssh"></a>SSH
 
-Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool, z. B. [PuTTY](https://www.putty.org), herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
+Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool, z. B. [PuTTY](https://www.putty.org), herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Window System), können Sie die X11-Weiterleitung unter PuTTY verwenden oder den X2Go-Client installieren.
 
 > [!NOTE]
 > Der X2Go-Client hat bei Tests besser abgeschnitten als die X11-Weiterleitung. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.
@@ -250,14 +243,14 @@ source activate py35
 
 Geben Sie zum Aufrufen einer interaktiven Python-Sitzung in der Shell **python** ein. 
 
-Installieren Sie mithilfe von Conda oder PIP weitere Python-Bibliotheken. Aktivieren Sie für PIP zuerst die richtige Umgebung, wenn Sie die Standardeinstellung nicht verwenden möchten:
+Installieren Sie mithilfe von Conda oder PIP weitere Python-Bibliotheken. Aktivieren Sie für pip zuerst die richtige Umgebung, wenn Sie die Standardeinstellung nicht verwenden möchten:
 
 ```bash
 source activate root
 pip install <package>
 ```
 
-Oder geben Sie den vollständigen Pfad zu PIP an:
+Oder geben Sie den vollständigen Pfad zu Pip an:
 
 ```bash
 /anaconda/bin/pip install <package>
@@ -269,7 +262,7 @@ Für Conda müssen Sie immer den Umgebungsnamen angeben (py35 oder root):
 conda install <package> -n py35
 ```
 
-Wenn Sie sich in einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten. Sie können die standardmäßigen Text-Editoren verwenden. Außerdem können Sie Spyder nutzen, eine Python-IDE, die als Bündel mit Anaconda Python-Distributionen bereitgestellt wird. Für Spyder wird ein grafischer Desktop oder die X11-Weiterleitung benötigt. Auf dem grafischen Desktop befindet sich eine Verknüpfung mit Spyder.
+Wenn Sie sich auf einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten. Sie können die standardmäßigen Text-Editoren verwenden. Außerdem können Sie Spyder nutzen, eine Python-IDE, die als Bündel mit Anaconda Python-Distributionen bereitgestellt wird. Für Spyder wird ein grafischer Desktop oder die X11-Weiterleitung benötigt. Auf dem grafischen Desktop befindet sich eine Verknüpfung mit Spyder.
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 

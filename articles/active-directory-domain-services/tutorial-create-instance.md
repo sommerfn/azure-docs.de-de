@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125218"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172052"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -202,7 +202,7 @@ Wenn Sie reiner Cloudbenutzer sind, müssen Sie zum Ändern des Kennworts folgen
 1. Geben Sie auf der Seite **Kennwort ändern** Ihr vorhandenes (altes) Kennwort ein. Geben Sie dann ein neues Kennwort ein und bestätigen dies.
 1. Klicken Sie auf **Submit** (Senden).
 
-Nach der Kennwortänderung dauert es einige Minuten, bis das neue Kennwort in Azure AD DS verwendet werden kann. Nach etwa 20 Minuten können Sie sich mit dem neuen Kennwort bei Computern anmelden, die in die verwaltete Domäne eingebunden sind.
+Nach der Kennwortänderung dauert es einige Minuten, bis das neue Kennwort in Azure AD DS verwendet werden kann und Sie sich bei Computern anmelden können, die in die verwaltete Domäne eingebunden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e13ab3378857bd0254d7cb2fb98249ccc24b1cb7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125625"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231257"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -69,7 +69,7 @@ So aktivieren Sie TLS 1.2
 1. Starten Sie den Server neu.
 
 > [!IMPORTANT]
-> Zur Bereitstellung erstklassiger Verschlüsselung für unsere Kunden wird der Anwendungsproxydienst aktualisiert, um den Zugriff ausschließlich auf TLS 1.2-Protokolle zu beschränken. Basierend auf der Kundenbereitschaft werden die Änderungen nach und nach für Kunden bereitgestellt, die ausschließlich TLS 1.2-Protokolle verwenden. Für die Kunden ist keinerlei Beeinträchtigung spürbar. TLS 1.0 und 1.1 werden am 31. August 2019 eingestellt, und Kunden erhalten eine Vorankündigung, um sich auf diese Änderung vorbereiten zu können. Vergewissern Sie sich bei der Vorbereitung auf diese Änderung, dass alle Kombinationen aus Client/Server und Browser/Server zur Verwendung von TLS 1.2 aktualisiert wurden, um die Verbindung mit dem Anwendungsproxydienst sicherzustellen. Dazu gehören Clients, mit denen Ihre Benutzer auf Anwendungen zugreifen, die über den Anwendungsproxy veröffentlicht werden. Nützliche Referenzen und Ressourcen finden Sie unter [Vorbereiten der Verwendung von TLS 1.2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365).
+> Zur Bereitstellung erstklassiger Verschlüsselung für unsere Kunden beschränkt der Anwendungsproxydienst den Zugriff ausschließlich auf TLS 1.2-Protokolle. Diese Änderungen wurden nach und nach bereitgestellt und sind seit dem 31. August 2019 wirksam. Vergewissern Sie sich, dass alle Kombinationen aus Client/Server und Browser/Server zur Verwendung von TLS 1.2 aktualisiert wurden, um die Verbindung mit dem Anwendungsproxydienst sicherzustellen. Dazu gehören Clients, mit denen Ihre Benutzer auf Anwendungen zugreifen, die über den Anwendungsproxy veröffentlicht werden. Nützliche Referenzen und Ressourcen finden Sie unter [Vorbereiten der Verwendung von TLS 1.2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365).
 
 ## <a name="prepare-your-on-premises-environment"></a>Vorbereiten Ihrer lokalen Umgebung
 
@@ -94,7 +94,7 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure verwendet diese URLs, um Zertifikate zu überprüfen. |
-| login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Der Connector verwendet diese URLs während der Registrierung. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Der Connector verwendet diese URLs während der Registrierung. |
 
 Sie können Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen, wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
 

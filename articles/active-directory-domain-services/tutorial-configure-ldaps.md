@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011351"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193330"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -63,7 +63,7 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 
 * **Vertrauenswürdiger Aussteller**: Das Zertifikat muss von einer Zertifizierungsstelle ausgestellt sein, der die Computer vertrauen, die über sicheres LDAP eine Verbindung mit der Domäne herstellen. Hierbei kann es sich um eine öffentliche Zertifizierungsstelle oder um eine Unternehmenszertifizierungsstelle handeln, die von diesen Computern als vertrauenswürdig eingestuft wird.
 * **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
-* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *contoso.com* heißt, muss als Antragstellername im Zertifikat *contoso.com* angegeben sein.
+* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *contoso.com* heißt, muss als Antragstellername im Zertifikat **.contoso.com* angegeben sein.
     * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die SSL-Serverauthentifizierung gültig sein.
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 Die folgende Beispielausgabe zeigt, dass das Zertifikat erfolgreich generiert wurde und im lokalen Zertifikatspeicher (*LocalMachine\MY*) gespeichert wird:
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 

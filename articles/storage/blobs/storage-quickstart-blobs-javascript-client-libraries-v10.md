@@ -1,22 +1,20 @@
 ---
 title: 'Schnellstart: Erstellen eines Blobs in Azure Storage unter Verwendung von JavaScript und HTML im Browser'
-description: Hier erfahren Sie, wie Sie eine Instanz von BlobService verwenden, um Blobs unter Verwendung von JavaScript im Rahmen einer HTML-Seite hochzuladen, aufzulisten und zu löschen.
+description: Hier erfahren Sie, wie Sie Blobs unter Verwendung von JavaScript im Rahmen einer HTML-Seite hochladen, auflisten und löschen.
 services: storage
-keywords: Speicher, JavaScript, HTML
 author: KarlErickson
 ms.custom: mvc
 ms.service: storage
 ms.author: karler
-ms.reviewer: seguler
-ms.date: 05/20/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: ea5dfe2261be4512d4ba8edda1e7fbd5219a50c0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986878"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172833"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -38,7 +36,7 @@ Damit Ihre Webanwendung vom Client aus auf einen Blobspeicher zugreifen kann, m�
 
 Kehren Sie zum Azure-Portal zurück, und wählen Sie Ihr Speicherkonto aus. Navigieren Sie zum Definieren einer neuen CORS-Regel zum Abschnitt **Einstellungen**, und klicken Sie auf den Link **CORS**. Klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um das Fenster **CORS-Regel hinzufügen** zu öffnen. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine offene CORS-Regel:
 
-![Azure Blob Storage-Konto: CORS-Einstellungen](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
+![Azure Blob Storage-Konto: CORS-Einstellungen](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
 In der folgenden Tabelle werden die einzelnen CORS-Einstellungen beschrieben und die Definitionswerte der Regel erläutert:
 

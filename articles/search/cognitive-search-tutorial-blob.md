@@ -1,7 +1,7 @@
 ---
 title: 'REST-Tutorial: Erstellen einer KI-Anreicherungspipeline unter Verwendung der kognitiven Suche – Azure Search'
 description: Hier wird Schritt für Schritt ein Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache anhand des Inhalts von JSON-Blobs mit Postman und den Azure Search-Rest-APIs erläutert.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102823"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274113"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Tutorial: Strukturieren unstrukturierter Inhalte mithilfe der kognitiven Suche
 
@@ -22,10 +22,10 @@ Wenn Sie über unstrukturierte Text- oder Bildinhalte verfügen, können Sie mit
 
 > [!div class="checklist"]
 > * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, MD-, DOCX- oder PPTX-Format) in Azure Blob Storage.
-> * Erstellen Sie eine Pipeline, die Text extrahiert und Sprache, Entitäten sowie wichtigste Wortverbindungen erkennt.
+> * Erstellen Sie eine Pipeline, die Text extrahiert und Sprache, Entitäten sowie Schlüsselbegriffe erkennt.
 > * Definieren Sie einen Index zum Speichern der Ausgabe (Rohinhalte sowie von der Pipeline generierte Name/Wert-Paare).
-> * Führen Sie die Pipeline aus, um den Index zu erstellen und zu laden.
-> * Erkunden Sie Inhalte per Volltextsuche und einer umfangreichen Abfragesyntax.
+> * Führen Sie die Pipeline aus, um Transformationen und Analysen zu starten und den Index zu erstellen und zu laden.
+> * Erkunden Sie Ergebnisse per Volltextsuche und umfangreicher Abfragesyntax.
 
 Für diese exemplarische Vorgehensweise benötigen Sie mehrere Dienste sowie die [Postman-Desktop-App](https://www.getpostman.com/) oder ein anderes Webtesttool zum Ausführen von Rest-API-Aufrufen. 
 
@@ -51,11 +51,11 @@ In dieser exemplarischen Vorgehensweise werden Azure Search für Indizierungsvor
 
 1. Auf der Registerkarte „Grundlagen“ sind folgende Angaben erforderlich. Übernehmen Sie bei allen anderen Optionen die Standardeinstellungen.
 
-   + **Ressourcengruppe**: Sie können entweder eine vorhandene Ressourcengruppe auswählen oder eine neue Ressourcengruppe erstellen. Verwenden Sie jedoch für alle Dienste die gleiche Gruppe, um die Dienste gemeinsam verwalten zu können.
+   + **Ressourcengruppe**. Sie können entweder eine vorhandene Ressourcengruppe auswählen oder eine neue Ressourcengruppe erstellen. Verwenden Sie jedoch für alle Dienste die gleiche Gruppe, um die Dienste gemeinsam verwalten zu können.
 
    + **Speicherkontoname**: Falls Sie über mehrere Ressourcen des gleichen Typs verfügen, geben Sie zur Unterscheidung den Typ und die Region an (Beispiel: *blobstoragewestus*). 
 
-   + **Standort**: Wählen Sie nach Möglichkeit den gleichen Standort aus, der auch für Azure Search und Cognitive Services verwendet wird. Bei Verwendung eines einzelnen Standorts fallen keine Bandbreitengebühren an.
+   + **Standort**. Wählen Sie nach Möglichkeit den gleichen Standort aus, der auch für Azure Search und Cognitive Services verwendet wird. Bei Verwendung eines einzelnen Standorts fallen keine Bandbreitengebühren an.
 
    + **Kontoart**: Verwenden Sie die Standardeinstellung *StorageV2 (allgemein, Version 2)* .
 
@@ -165,7 +165,7 @@ Bei einem [Skillset-Objekt](https://docs.microsoft.com/rest/api/searchservice/cr
 
 1. Kopieren Sie im **Anforderungstext** die folgende JSON-Definition. Dieses Skillset umfasst die folgenden integrierten Qualifikationen:
 
-   | Qualifikation                 | Beschreibung    |
+   | Skill                 | BESCHREIBUNG    |
    |-----------------------|----------------|
    | [Entitätserkennung](cognitive-search-skill-entity-recognition.md) | Extrahiert die Namen von Personen, Organisationen und Orten aus Inhalten im Blobcontainer. |
    | [Sprachenerkennung](cognitive-search-skill-language-detection.md) | Erkennt die Sprache des Inhalts. |

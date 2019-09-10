@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 55fa5ffbfe8cdb266340df1a407968d542b36c1a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605984"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141436"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und cURL
 
@@ -54,7 +54,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 1. Nehmen Sie die folgenden Änderungen im Befehl vor, falls dies erforderlich ist:
     1. Ersetzen Sie den `<subscriptionKey>`-Wert durch Ihren Abonnementschlüssel.
     1. Ersetzen Sie den Wert von `<thumbnailFile>` durch den Pfad und den Namen der Datei, in der die Miniaturansicht gespeichert werden soll.
-    1. Ersetzen Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail`) durch die Endpunkt-URL für die Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie den ersten Teil der Anforderungs-URL (`westcentralus`) durch den Text in Ihrer eigenen Endpunkt-URL.
+        [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Ändern Sie optional die Bild-URL im Anforderungstext (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) in die URL eines anderen Bilds, von dem eine Miniaturansicht generiert werden soll.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
 1. Fügen Sie den Befehl aus dem Text-Editor in das Eingabeaufforderungsfenster ein, und führen Sie den Befehl aus.

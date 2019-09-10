@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012064"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165044"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Sicherstellen, dass das Abonnement des Kunden für das Onboarding registriert ist
-
-Jedes Abonnement muss für das Onboarding autorisiert werden, indem der **Microsoft.ManagedServices**-Ressourcenanbieter manuell registriert wird. Der Kunde kann ein Abonnement registrieren, indem er die in [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md) beschriebenen Schritte durchführt.
-
-Der Kunde kann mit einer der folgenden Methoden bestätigen, dass das Abonnement für das Onboarding bereit ist.
-
-### <a name="azure-portal"></a>Azure-Portal
-
-1. Wählen Sie im Azure-Portal das Abonnement aus.
-1. Wählen Sie **Ressourcenanbieter** aus.
-1. Vergewissern Sie sich, dass **Microsoft. ManagedServices** als **Registriert** angezeigt wird.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Daraufhin sollten Ergebnisse ähnlich den folgenden zurückgegeben werden:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Daraufhin sollten Ergebnisse ähnlich den folgenden zurückgegeben werden:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Wenn Sie ein Abonnement (oder mindestens eine Ressourcengruppe innerhalb eines Abonnements) mithilfe des hier beschriebenen Prozesses integrieren, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert.
 
 ## <a name="define-roles-and-permissions"></a>Definieren von Rolle und Berechtigungen
 
@@ -129,8 +74,6 @@ Um die Verwaltung zu vereinfachen, empfiehlt es sich, für jede Rolle Azure AD-B
 > Rollenzuweisungen müssen [integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, mit Ausnahme von „Besitzer“ und allen integrierten Rollen mit der [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions)-Berechtigung. Die integrierte Rolle „Benutzerzugriffsadministrator“ wird für die eingeschränkte Verwendung, wie unten beschrieben, unterstützt. Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) werden ebenfalls nicht unterstützt.
 
 Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, jede Benutzergruppe oder jeden Dienstprinzipal kennen, dem/der Sie Zugriff gewähren möchten. Außerdem benötigen Sie die Rollendefinitions-ID für jede integrierten Rolle, die Sie zuweisen möchten. Wenn Sie diese Informationen nicht schon besitzen, können Sie sie mit einer der folgenden Methoden abrufen.
-
-
 
 ### <a name="powershell"></a>PowerShell
 

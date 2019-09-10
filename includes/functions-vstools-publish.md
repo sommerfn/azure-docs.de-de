@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a0cf557cec0f20d257c3c70290e2d74f077d881a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593824"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70197138"
 ---
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
 
@@ -25,7 +25,7 @@ ms.locfileid: "68593824"
     | ------------ |  -------------------------------------------------- |
     | **Azure Functions-Nutzungsplan** |   Wenn Sie Ihr Projekt in einer Funktions-App veröffentlichen, die in einem [Verbrauchsplan](../articles/azure-functions/functions-scale.md#consumption-plan) ausgeführt wird, bezahlen Sie nur für die Ausführungen Ihrer Funktions-App. Für andere Hostingpläne fallen höhere Kosten an. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](../articles/azure-functions/functions-scale.md). | 
     | **Neue erstellen** | Eine neue Funktions-App wird mit zugehörigen Ressourcen in Azure erstellt. Bei der Auswahl von **Vorhandene auswählen** werden alle Dateien in der vorhandenen Funktions-App in Azure durch Dateien aus dem lokalen Projekt überschrieben. Verwenden Sie diese Option nur, wenn Sie erneut Updates für eine vorhandene Funktions-App veröffentlichen. |
-    | **Aus Paketdatei ausführen** | Ihre Funktions-App wird unter Verwendung der [ZIP-Bereitstellung](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) mit aktiviertem Modus [Run-From-Package](../articles/azure-functions/run-functions-from-deployment-package.md) bereitgestellt. Dies Vorgehensweise wird zum Ausführen Ihrer Funktionen empfohlen und erzielt eine bessere Leistung. |
+    | **Aus Paketdatei ausführen** | Ihre Funktions-App wird unter Verwendung der [ZIP-Bereitstellung](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) mit aktiviertem Modus [Run-From-Package](../articles/azure-functions/run-functions-from-deployment-package.md) bereitgestellt. Dies Vorgehensweise wird zum Ausführen Ihrer Funktionen empfohlen und erzielt eine bessere Leistung. Wenn Sie diese Option nicht verwenden, stellen Sie vor der Veröffentlichung in Azure sicher, dass das Funktions-App-Projekt nicht lokal ausgeführt wird. |
 
 
 3. Wählen Sie **Veröffentlichen**. Falls Sie sich noch nicht über Visual Studio bei Ihrem Azure-Konto angemeldet haben, wählen Sie **Anmelden** aus. Sie können auch ein kostenloses Azure-Konto erstellen.

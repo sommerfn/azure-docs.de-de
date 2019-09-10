@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073891"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172043"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 
@@ -214,7 +214,7 @@ Führen Sie die folgenden Problembehandlungsschritte aus, und versuchen Sie erne
 * Stellen Sie sicher, dass das angegebene Benutzerkonto zur Gruppe *AAD DC-Administratoren* gehört.
 * Geben Sie die Anmeldeinformationen im UPN-Format an, z. B. als `contosoadmin@contoso.onmicrosoft.com`. Wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder das UPN-Präfix sehr lang ist, wird der *SAMAccountName* für Ihr Konto möglicherweise automatisch generiert. In diesen Fällen ist das *SAMAccountName*-Format für Ihr Konto möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 * Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben][password-sync]. Ohne diesen Konfigurationsschritt sind die erforderlichen Kennworthashes in der verwalteten Azure AD DS-Domäne nicht vorhanden und können Ihren Anmeldeversuch nicht ordnungsgemäß authentifizieren.
-* Warten Sie, bis die Kennwortsynchronisierung abgeschlossen ist. Wenn das Kennwort eines Benutzerkontos geändert wird, kann es 15–20 Minuten dauern, bis das Kennwort für das Einbinden in die Domäne verfügbar ist.
+* Warten Sie, bis die Kennwortsynchronisierung abgeschlossen ist. Wird das Kennwort eines Benutzerkontos geändert, aktualisiert eine automatische Hintergrundsynchronisierung von Azure AD das Kennwort in Azure AD DS. Es dauert einige Zeit, bis das Kennwort für das Einbinden in die Domäne verfügbar ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

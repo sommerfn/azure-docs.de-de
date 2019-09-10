@@ -3,16 +3,16 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848439"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146099"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Übersicht über den Azure Blueprints-Dienst
 
@@ -106,14 +106,23 @@ Zum Zuweisen oder zum Aufheben der Zuweisung einer Blaupause sind für Ihr Konto
 > [!NOTE]
 > Da Blaupausenzuweisungen in einem Abonnement erstellt werden, müssen die Berechtigungen zum Zuweisen und Aufheben der Zuweisung von Blaupausen in einem Abonnementbereich erteilt oder vererbt werden.
 
-Alle der oben genannten Berechtigungen sind in der Rolle **Besitzer** enthalten. Die Rolle **Mitwirkender** verfügt über Berechtigungen zum Erstellen und Löschen von Blaupausen, ist aber nicht zum Zuweisen von Blaupausen berechtigt. Sollten diese integrierten Rollen nicht Ihren Sicherheitsanforderungen entsprechen, können Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
+Die folgenden integrierten Rollen sind verfügbar:
+
+|RBAC-Rolle | BESCHREIBUNG |
+|-|-|
+|[Besitzer](../../role-based-access-control/built-in-roles.md#owner) | Umfasst (neben anderen Berechtigungen) alle Berechtigungen im Zusammenhang mit der Azure-Blaupause. |
+|[Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) | Umfasst (neben anderen Berechtigungen) Berechtigungen zum Erstellen und Löschen von Blaupausendefinitionen, aber keine Berechtigungen zum Zuweisen von Blaupausen. |
+|[Blueprint-Mitwirkender](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kann Blaupausendefinitionen verwalten, aber nicht zuweisen. |
+|[Blueprint-Operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Kann vorhandene veröffentlichte Blaupausen zuweisen, aber keine neuen Blaupausendefinitionen erstellen. Die Blaupausenzuweisung funktioniert nur, wenn die Zuweisung mit einer vom Benutzer zugewiesenen verwalteten Identität erfolgt. |
+
+Sollten diese integrierten Rollen nicht Ihren Sicherheitsanforderungen entsprechen, können Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
 
 > [!NOTE]
 > Bei Verwenden einer vom System zugewiesenen Identität ist für den Dienstprinzipal für Azure Blueprints die Rolle **Besitzer** für das zugewiesene Abonnement erforderlich, um die Bereitstellung zu ermöglichen. Bei Verwendung des Portals wird diese Rolle für die Bereitstellung automatisch erteilt und widerrufen. Bei Verwendung der REST-API muss diese Rolle manuell erteilt werden, sie wird jedoch nach Abschluss der Bereitstellung auch automatisch widerrufen. Wenn Sie eine vom Benutzer zugewiesene verwaltete Identität verwenden, benötigt nur der Benutzer, der die Azure Blueprint-Zuweisung erstellt, die Berechtigung **Besitzer**.
 
 ## <a name="naming-limits"></a>Beschränkungen für Benennungen
 
-Die folgende Liste führt die Beschränkungen für bestimmte Felder auf:
+Für bestimmte Felder gelten die folgenden Einschränkungen:
 
 |Object|Feld|Zulässige Zeichen|Maximal Länge|
 |-|-|-|-|

@@ -7,12 +7,12 @@ ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 206763e2d17f4ad711ff5fd897f1429814e61837
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a4b2690c067e1081efdc9637e79b181fc75ad6d4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228866"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232696"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „NIST SP 800-53 R4“
 
@@ -110,8 +110,8 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Log Analytics-Arbeitsbereich für virtuelle Windows-Computer|Wenn der Arbeitsbereich außerhalb des Bereichs der Zuweisung liegt, müssen Sie der Prinzipal-ID der Richtlinienzuweisung Berechtigungen vom Typ „Log Analytics-Mitwirkender“ (oder ähnliche Berechtigungen) erteilen.|
 |\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|Mit einem leeren Array wird angegeben, dass keine optionalen Parameter verwendet werden: \[\]|
 |Bereitstellen von Advanced Threat Protection für Speicherkonten|Richtlinienzuweisung|Wirkung|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
-|Bereitstellen von Auditing auf SQL-Servern|Richtlinienzuweisung|Der Wert für die Aufbewahrungsdauer in Tagen (0 steht für eine unbegrenzte Aufbewahrung).|Aufbewahrung in Tagen (optional, ohne Angabe 180 Tage)|
-|Bereitstellen von Auditing auf SQL-Servern|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto für SQL Server-Überwachung|Auditing schreibt Datenbankereignisse in ein Audit-Protokoll in Ihrem Azure Storage-Konto (ein Speicherkonto wird in jeder Region erstellt, in der ein SQL-Server erstellt wird, der von allen Servern in dieser Region gemeinsam genutzt wird). Wichtig: Damit die Überwachung ordnungsgemäß funktioniert, dürfen Sie die Ressourcengruppe oder die Speicherkonten weder löschen noch umbenennen.|
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Der Wert für die Aufbewahrungsdauer in Tagen (0 steht für eine unbegrenzte Aufbewahrung).|Aufbewahrung in Tagen (optional, ohne Angabe 180 Tage)|
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto für SQL Server-Überwachung|Die Überwachung schreibt Datenbankereignisse in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. (Ein Speicherkonto wird in jeder Region erstellt, in der eine SQL Server-Instanz erstellt wird, die von allen Servern in dieser Region gemeinsam genutzt wird.) Wichtig: Damit die Überwachung ordnungsgemäß funktioniert, dürfen Sie die Ressourcengruppe oder die Speicherkonten weder löschen noch umbenennen.|
 |Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen|Richtlinienzuweisung|Speicherkontopräfix für die Diagnose von Netzwerksicherheitsgruppen|Dieses Präfix wird mit dem Standort der Netzwerksicherheitsgruppe kombiniert, um den Namen für das erstellte Speicherkonto zu bilden.|
 |Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen|Richtlinienzuweisung|Ressourcengruppenname für das Speicherkonto für die Diagnose von Netzwerksicherheitsgruppen (muss vorhanden sein)|Die Ressourcengruppe, in der das Speicherkonto erstellt wird Diese Ressourcengruppe muss bereits vorhanden sein.|
 

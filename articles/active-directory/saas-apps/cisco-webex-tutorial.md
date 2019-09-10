@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050016"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162677"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex Meetings
 
@@ -78,24 +78,24 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Cisco Webex Meetings** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
-
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-
-1. Laden Sie im Abschnitt **Grundlegende SAML-Konfiguration** die heruntergeladene **Metadatendatei des Dienstanbieters** herunter, und konfigurieren Sie die Anwendung wie folgt im  **IDP-initiierten** Modus:
-
-    >[!Note]
-    >Sie erhalten die Metadatendatei des Dienstanbieters. Dies wird im Abschnitt **Konfigurieren des einmaligen Anmeldens für Cisco Webex Meetings** des Tutorials beschrieben. 
+1. Auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** können Sie die Anwendung im  **IDP-initiierten** Modus konfigurieren, indem Sie die Datei mit den **Metadaten des Dienstanbieters** wie folgt hochladen:
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
     b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
-    c. Nachdem Sie die Metadatendatei des Dienstanbieters hochgeladen haben, werden im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für **Bezeichner** und **Antwort-URL** automatisch ausgefüllt, wie unten dargestellt:
+    c. Nachdem Sie die Metadatendatei des Dienstanbieters hochgeladen haben, werden im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für **Bezeichner** und **Antwort-URL** automatisch ausgefüllt.
 
-5. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
+    >[!Note]
+    >Sie erhalten die Metadatendatei des Dienstanbieters im Abschnitt **Konfigurieren des einmaligen Anmeldens für Cisco Webex Meetings** (später in diesem Tutorial beschrieben). 
+
+1. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:  
+
+    a. Klicken Sie im Abschnitt **Grundlegende SAML-Konfiguration** auf das Bearbeitungssymbol (Stift).
+
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
     
-    Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: `https://<customername>.webex.com`.
+    b. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: ` https://<customername>.my.webex.com`.
 
 5. Die Cisco WebEx Meetings-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 

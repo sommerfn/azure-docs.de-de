@@ -6,17 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 84db33e4c7ac612353c590ac9d2904ac3bc48d38
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592390"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70240350"
 ---
+::: zone target = "docs"
+
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure
+
+::: zone-end
+
+::: zone target = "docs"
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Data Box Heavy zurücksenden und die in Azure hochgeladenen Daten überprüfen.
 
@@ -36,9 +48,25 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie haben die Schritte unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-heavy-deploy-copy-data.md).
 - Alle Kopieraufträge sind abgeschlossen. „Für Versand vorbereiten“ kann nicht ausgeführt werden, wenn noch Kopieraufträge ausgeführt werden.
 
+
 ## <a name="prepare-to-ship"></a>Vorbereiten des Versands
 
 [!INCLUDE [data-box-heavy-prepare-to-ship](../../includes/data-box-heavy-prepare-to-ship.md)]
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="prepare-to-ship"></a>Vorbereiten des Versands
+
+Vergewissern Sie sich vor der Vorbereitung für den Versand, dass Kopieraufträge abgeschlossen sind.
+
+1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zur Seite „Für den Versand vorbereiten“, und beginnen Sie mit der Versandvorbereitung.
+2. Schalten Sie das Gerät auf der lokalen Webbenutzeroberfläche aus. Ziehen Sie die Kabel vom Gerät ab.
+
+Sie sind jetzt bereit, Ihr Gerät zurückzusenden.
+
+::: zone-end
 
 ## <a name="ship-data-box-heavy-back"></a>Zurücksenden von Data Box Heavy
 
@@ -50,6 +78,8 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     3. Achten Sie darauf, dass der Adressaufkleber gut sichtbar auf der Außenseite der Sendung angebracht ist.
     4. Achten Sie darauf, dass die alten Adressaufkleber des vorherigen Versands vom Gerät entfernt wurden.
 3. Nachdem Data Box Heavy von Ihrem Transportdienstleister abgeholt und gescannt wurde, ändert sich der Auftragsstatus im Portal in **Abgeholt**. Außerdem wird eine Nachverfolgungs-ID angezeigt.
+
+::: zone target = "docs"
 
 ## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
 
@@ -79,10 +109,25 @@ Stellen Sie sicher, dass Ihre Daten in Azure hochgeladen wurden, bevor Sie sie a
         ![An Ressourcengruppen angefügter verwalteter Datenträger](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
     - Wenn Sie eine VHDX oder eine dynamische/differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Seitenblob in das Stagingspeicherkonto hochgeladen, aber die VHD kann nicht in einen verwalteten Datenträger konvertiert werden. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: SSD Standard, HDD Standard oder SSD Premium. Die VHDs werden als Seitenblobs in Ihr Stagingspeicherkonto hochgeladen.
+    
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
+
+Wenn das Data Box Heavy-Gerät mit dem Netzwerk des Azure-Datencenters verbunden wird, beginnt das Hochladen der Daten in Azure automatisch. Sie werden vom Data Box-Dienst über das Azure-Portal benachrichtigt, dass der Kopiervorgang für die Daten abgeschlossen ist.
+
+- Prüfen Sie die Fehlerprotokolle auf Fehler, und ergreifen Sie ggf. entsprechende Maßnahmen.
+- Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen.
+
+::: zone-end
 
 ## <a name="erasure-of-data-from-data-box-heavy"></a>Löschen von Daten von Data Box Heavy
  
 Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten auf den Datenträgern gemäß den [NIST-Richtlinien (SP 800-88 Revision 1)](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi). Nach Abschluss des Löschvorgangs können Sie den [Auftragsverlauf herunterladen](data-box-portal-admin.md#download-order-history).
+
+::: zone target = "docs"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -99,5 +144,7 @@ Im nächsten Artikel erfahren Sie, wie Sie Data Box Heavy über die lokale Webbe
 
 > [!div class="nextstepaction"]
 > [Verwenden der lokalen Webbenutzeroberfläche zum Verwalten von Azure Data Box](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

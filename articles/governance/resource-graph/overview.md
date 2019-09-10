@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900025"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207577"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 
@@ -35,7 +35,7 @@ In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 Azure Resource Manager unterstützt aktuelle Abfragen von einfachen Ressourcenfeldern, insbesondere Ressourcenname, ID, Typ, Ressourcengruppe, Abonnement und Speicherort. Resource Manager bietet darüber hinaus Funktionen zum Aufrufen einzelner Ressourcenanbieter, um jeweils für eine Ressource auf die Detaileigenschaften zuzugreifen.
 
-Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/complete-mode-deletion.md) mit **Ja** gekennzeichnet.
+Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/complete-mode-deletion.md) mit **Ja** gekennzeichnet. Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
 
 Mit Azure Resource Graph können Sie:
 
@@ -80,7 +80,13 @@ Weitere Informationen finden Sie in der [Anleitung für gedrosselte Anforderunge
 
 ## <a name="running-your-first-query"></a>Ausführen Ihrer ersten Abfrage
 
-Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell und das Azure SDK für .NET. Die Abfrage ist für alle Sprachen gleich strukturiert. Informationen zum Aktivieren von Resource Graph in [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension) und [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
+Der Azure Resource Graph-Explorer im Azure-Portal ermöglicht die Ausführung von Resource Graph-Abfragen direkt im Azure-Portal. Heften Sie die Ergebnisse als dynamische Diagramme an, um dynamische Echtzeitinformationen für den Portalworkflow bereitzustellen. Weitere Informationen finden Sie unter [Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer](first-query-portal.md) (Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers).
+
+Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle, Azure PowerShell, das Azure SDK für .NET und vieles mehr. Die Abfrage ist für alle Sprachen gleich strukturiert. Lesen Sie, wie Sie Resource Graph mit einer der folgenden Komponenten aktivieren:
+
+- [Azure-Portal und Resource Graph-Explorer](first-query-portal.md) 
+- [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

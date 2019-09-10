@@ -3,18 +3,18 @@ title: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses 
 description: In dieser Schnellstartanleitung legen Sie mithilfe einer Node-Web-App ein Geheimnis in Azure Key Vault fest und rufen es ab.
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934457"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259240"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
 
@@ -196,5 +196,9 @@ Wenn Sie anschließend zu `https://<app_name>.azurewebsites.net` navigieren, kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Azure SDK für Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
+
+- [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
+- [Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)
+- [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)
+- [Bewährte Methoden zum Verwenden von Key Vault](key-vault-best-practices.md)

@@ -1,31 +1,31 @@
 ---
-title: Erstellen eines Azure Blockchain-Diensts über das Azure-Portal
-description: Verwenden Sie Azure Blockchain zum Erstellen eines Konsortiumsmitglieds.
+title: Erstellen eines Blockchainmitglieds für Azure Blockchain Service mithilfe des Azure-Portals
+description: Verwenden Sie den Azure Blockchain-Dienst, um ein Blockchainmitglied zu erstellen.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9f58379acd88fd93a00edc11b73b41dc3d6226a5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417495"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241040"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Blockchain-Diensts über das Azure-Portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Schnellstart: Erstellen eines Blockchainmitglieds für Azure Blockchain Service mithilfe des Azure-Portals
 
-Bei Azure Blockchain handelt es sich um eine Blockchainplattform, über die Sie Ihre Geschäftslogik in einem Smart Contract ausführen können. In dieser Schnellstartanleitung wird gezeigt, wie Sie zum Einstieg einen verwalteten Ledger über das Azure-Portal erstellen.
+Bei Azure Blockchain handelt es sich um eine Blockchainplattform, über die Sie Ihre Geschäftslogik in einem Smart Contract ausführen können. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie zum Einstieg ein Blockchainmitglied über das Azure-Portal erstellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-managed-ledger"></a>Erstellen eines verwalteten Ledgers
+## <a name="create-a-blockchain-member"></a>Erstellen eines Blockchainmitglieds
 
-Ein Azure Blockchain-Dienst wird mit einer definierten Gruppe von Compute- und Speicherressourcen erstellt.
+Erstellen Sie ein Blockchainmitglied, das das Quorum-Ledgerprotokoll in einem neuen oder vorhandenen Konsortium ausführt.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
@@ -36,9 +36,9 @@ Ein Azure Blockchain-Dienst wird mit einer definierten Gruppe von Compute- und S
 
     Einstellung | BESCHREIBUNG
     --------|------------
-    Blockchainmitglied | Wählen Sie einen eindeutigen Namen, der Ihr Azure Blockchain-Mitglied identifiziert. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
-    Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Dienst verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
-    Ressourcengruppe | Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
+    Blockchainmitglied | Wählen Sie einen eindeutiger Namen aus, der Ihr Blockchainmitglied in Azure Blockchain Service identifiziert. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
+    Subscription | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Dienst verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
+    Resource group | Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
     Region | Der Speicherort muss für alle Mitglieder des Konsortiums identisch sein.
     Mitgliedskontokennwort | Das Mitgliedskontokennwort wird zum Verschlüsseln des privaten Schlüssels für das Ethereum-Konto verwendet, das für Ihr Mitglied erstellt wird. Sie verwenden das Mitgliedskonto und das Mitgliedskontokennwort für die Verwaltung des Konsortiums.
     Konsortiumsname | Geben Sie für ein neues Konsortium einen eindeutigen Namen ein. Wenn Sie einem Konsortium über eine Einladung beitreten, entspricht der Wert dem Konsortium, dem Sie beitreten.

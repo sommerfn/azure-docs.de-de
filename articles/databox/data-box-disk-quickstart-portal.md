@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126010"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70232912"
 ---
 ::: zone target="docs"
 
@@ -40,7 +41,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ::: zone target="chromeless"
 
-In diesem Leitfaden wird beschrieben, wie Sie Azure Data Box Disk über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Entsperren der Datenträger sowie das Verbinden mit Datenträgern und das Kopieren von Daten auf Datenträger, damit sie in Azure hochgeladen werden können.
+In diesem Leitfaden wird die Verwendung von Azure Data Box Disk im Azure-Portal erläutert. Dieser Leitfaden beantwortet die folgenden Fragen:
 
 ::: zone-end
 
@@ -60,17 +61,16 @@ Melden Sie sich unter [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/a
 
 ::: zone target="chromeless"
 
-### <a name="prerequisites"></a>Voraussetzungen
-
-- Sie haben Ihre Bestellung für Data Box Disk hier erteilt: [Tutorial: Bestellen von Azure Data Box Disk](data-box-disk-deploy-ordered.md).
-- Sie haben Ihre Datenträger erhalten, und der Auftragsstatus im Portal wurde aktualisiert und in **Übermittelt** geändert.
-- Sie haben die Anzahl der erhaltenen Datenträger überprüft und sichergestellt, dass Sie ein Verbindungskabel pro Datenträger besitzen.
-- Sie haben einen Clientcomputer, von dem Sie die Daten kopieren können. Ihr Client-Computer muss folgende Voraussetzungen erfüllen:
-
-    - Über ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) verfügen.
-    - Wenn es sich um einen Windows-Client handelt, muss [weitere erforderliche Software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) darauf installiert sein.
+> [!div class="checklist"]
+>
+> - **Überprüfen der Voraussetzungen:** Überprüfen Sie die Anzahl von Datenträgern und Kabeln, das Betriebssystem und andere Softwarekomponenten.
+> - **Anschließen und Entsperren:** Verbinden Sie das Gerät, und entsperren Sie den Datenträger, um die Daten zu kopieren.
+> - **Kopieren von Daten auf den Datenträger und Durchführen der Überprüfung:** Kopieren Sie Daten in die vorab erstellten Ordner auf den Datenträgern.
+> - **Zurücksenden der Datenträger:** Schicken Sie die Datenträger zurück ans Azure-Datencenter. Dort werden die Daten in Ihr Speicherkonto hochgeladen.
+> - **Überprüfen der Daten in Azure:** Vergewissern Sie sich, dass Ihre Daten in Ihr Speicherkonto hochgeladen wurden, bevor Sie sie vom Quelldatenserver löschen.
 
 ::: zone-end
+
 
 ::: zone target="docs"
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639102"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171088"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
@@ -194,7 +194,7 @@ Sie können [die Storage-Warteschlangennachricht untersuchen](#query-the-storage
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Storage-Warteschlange schreibt. Weitere Informationen zum Entwickeln von Azure Functions mithilfe von Python finden Sie im [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md) und unter [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
+Sie haben Ihre mittels HTTP ausgelöste Funktion so aktualisiert, dass sie Daten in eine Storage-Warteschlange schreibt. Weitere Informationen zum Entwickeln von Azure Functions mithilfe von Python finden Sie im [Python-Entwicklerhandbuch für Azure Functions](functions-reference-python.md) und unter [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md). Beispiele für vollständige Funktionsprojekte in Python finden Sie in den [Functions-Beispielen für Python](/samples/browse/?products=azure-functions&languages=python). 
 
 Als Nächstes sollten Sie die Application Insights-Überwachung für Ihre Funktions-App aktivieren:
 

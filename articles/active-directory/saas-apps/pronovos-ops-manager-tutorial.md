@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e22b616e50929d4ac099c3412e89db426b09307
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 95c898dd36387d4474f5129943c6bd76f754ffe2
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489489"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213533"
 ---
 # <a name="tutorial-integrate-pronovos-ops-manager-with-azure-active-directory"></a>Tutorial: Integrieren von ProNovos Ops Manager in Azure Active Directory
 
@@ -81,7 +81,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Im Abschnitt  **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP-initiierten** Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche  **Speichern** klickt.
+1. Im Abschnitt **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP-initiierten** Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
@@ -131,7 +131,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-pronovos-ops-manager-test-user"></a>Erstellen eines ProNovos Ops Manager-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ProNovos Ops Manager einen Benutzer namens B. Simon. Arbeiten Sie mit dem  [Supportteam von ProNovos Ops Manager](mailto:support@pronovos.com) zusammen, um die Benutzer der ProNovos Ops Manager-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ProNovos Ops Manager einen Benutzer namens B. Simon. Arbeiten Sie mit dem [Supportteam von ProNovos Ops Manager](mailto:support@pronovos.com) zusammen, um die Benutzer der ProNovos Ops Manager-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

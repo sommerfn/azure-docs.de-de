@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051628"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241293"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
 
@@ -35,14 +35,33 @@ Die einzige Voraussetzung ist die Ausführung von Teil 1 des Tutorials [Einrich
 
 In diesem Teil des Tutorials führen Sie den Code im Jupyter-Beispielnotebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` aus, das am Ende von Teil 1 geöffnet wurde. In diesem Artikel wird der gleiche Code wie im Notebook verwendet.
 
+## <a name="launch-jupyter-web-interface"></a>Starten der Jupyter-Webschnittstelle
+
+1. Wählen Sie auf der Arbeitsbereichseite im Azure-Portal links **Notebook-VMs** aus.
+
+1. Wählen Sie in der Spalte **URI** für den in Teil 1 dieses Tutorials erstellten virtuellen Computer die Option **Jupyter** aus.
+
+    ![Starten des Jupyter Notebook-Servers](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   Der Link startet Ihren Notebook-Server und öffnet die Jupyter Notebook-Webseite im Browser auf einer neuen Registerkarte.  Dieser Link funktioniert nur für die Person, die die VM erstellt. Jeder Benutzer des Arbeitsbereichs muss seinen eigenen virtuellen Computer erstellen.
+
+1. Wählen Sie auf der Jupyter Notebook-Webseite den obersten Ordnernamen aus (enthält Ihren Benutzernamen).  
+
+   Dieser Ordner ist im [Speicherkonto](concept-workspace.md#resources) des Arbeitsbereichs und nicht auf der Notebook-VM selbst vorhanden.  Wenn Sie die Notebook-VM löschen, behalten Sie dennoch Ihre gesamte Arbeit.  Wenn Sie später eine neue Notebook-VM erstellen, wird der gleiche Ordner geladen. Wenn Sie Ihren Arbeitsbereich mit anderen teilen, werden Ihr Ordner und die Ordner der anderen Benutzer angezeigt.
+
+1. Öffnen Sie das Unterverzeichnis `samples-*`, und öffnen Sie die Jupyter Notebook-Instanz `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **nicht** die Datei `.yml` mit dem gleichen Namen. 
+
 ## <a name="connect-workspace-and-create-experiment"></a>Herstellen einer Verbindung für den Arbeitsbereich und Erstellen des Experiments
+
+> [!Important]
+> Der Rest dieses Artikels enthält denselben Inhalt, den Sie auch im Notebook sehen.  
+>
+> Wechseln Sie nun zur Jupyter Notebook-Instanz, wenn Sie während der Ausführung des Codes mitlesen möchten. 
+> Klicken Sie zum Ausführen einer einzelnen Codezelle in einem Notebook auf die gewünschte Codezelle, und drücken Sie **UMSCHALT+EINGABE**. Oder führen Sie das gesamte Notebook aus, indem Sie im oberen Menü **Zelle > Alle ausführen** auswählen.
 
 Importieren Sie die Klasse `Workspace`, und laden Sie Ihre Abonnementinformationen aus der Datei `config.json` mithilfe der Funktion `from_config().` Diese Funktion durchsucht standardmäßig das aktuelle Verzeichnis nach der JSON-Datei. Sie können jedoch auch einen Pfadparameter angeben, um auf die Datei zu verweisen: `from_config(path="your/file/path")`. Bei einem cloudbasierten Notebook-Server befindet sich die Datei automatisch im Stammverzeichnis.
 
 Falls durch den folgenden Code eine zusätzliche Authentifizierung angefordert wird, fügen Sie den Link einfach in einen Browser ein, und geben Sie das Authentifizierungstoken ein.
-
-> [!TIP]
-> Wenn Sie noch nicht mit Jupyter-Notebooks vertraut sind, führen Sie Code aus, indem Sie auf eine Codezelle klicken und **UMSCHALT+EINGABE** drücken, um die Zellen nacheinander auszuführen. Wenn Sie das gesamte Notebook auf einmal ausführen möchten, klicken Sie alternativ auf der oberen Menüleiste auf **Zelle**  und dann auf **Alle ausführen**.
 
 ```python
 from azureml.core import Workspace
@@ -188,7 +207,7 @@ Sollten Sie einen cloudbasierten Notebook-Server verwendet haben, beenden Sie au
 
    ![Beenden des VM-Servers](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
-1. Wählen Sie den virtuellen Computer in der Liste aus.
+1. Wählen Sie die VM in der Liste aus.
 
 1. Wählen Sie **Stop** (Beenden) aus.
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2be6625fa2c21c3ece767f270746171c3928a774
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0c52bf9b62026caec54a09acd10a52f89ca98d52
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604450"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138022"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Schnellstart: Analysieren eines Remotebilds mit der Maschinelles Sehen-REST-API und cURL
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie benötigen [cURL](https://curl.haxx.se/windows).
-- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
+- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. 
 
 ## <a name="create-and-run-the-sample-command"></a>Erstellen und Ausführen des Beispielbefehls
 
@@ -36,7 +36,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 1. Kopieren Sie den folgenden Befehl, und fügen Sie ihn in einen Text-Editor ein.
 1. Nehmen Sie die folgenden Änderungen im Befehl vor, falls dies erforderlich ist:
     1. Ersetzen Sie den `<subscriptionKey>`-Wert durch Ihren Abonnementschlüssel.
-    1. Ersetzen Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) durch die Endpunkt-URL für die [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
+    1. Ersetzen Sie den ersten Teil der Anforderungs-URL (`westcentralus`) durch den Text in Ihrer eigenen Endpunkt-URL.
+        [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Ändern Sie optional die Sprachparameter der Anforderungs-URL (`language=en`), um eine andere unterstützte Sprache zu verwenden.
     1. Ändern Sie optional die Bild-URL im Anforderungstext (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) in die URL eines anderen Bilds, das analysiert werden soll.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.

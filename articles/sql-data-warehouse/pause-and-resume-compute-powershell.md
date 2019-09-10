@@ -10,14 +10,14 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 220d2aefd714cd3546fa4d5c2ac8852d2786b8ac
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575406"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306093"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen in Azure SQL Data Warehouse mit PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen in Azure SQL Data Warehouse mit Azure PowerShell
 
 Halten Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von PowerShell an, um Kosten einzusparen. [Setzen Sie die Computeressourcen fort](sql-data-warehouse-manage-compute-overview.md), wenn Sie das Data Warehouse verwenden möchten.
 

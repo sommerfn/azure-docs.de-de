@@ -3,24 +3,23 @@ title: Einführung in Azure Data Factory | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu Azure Data Factory – ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: 66ea269e2f29bfd39cdb81086391e0277474219d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 985d38b75ca99e85c8b066427ecea9eb4d3e90f2
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961351"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194453"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-introduction.md)
 > * [Aktuelle Version](introduction.md)
 
@@ -53,7 +52,7 @@ Der erste Schritt bei der Erstellung eines Informationssystems für die Produkti
 
 Ohne Data Factory müssen Unternehmen benutzerdefinierte Komponenten für die Datenverschiebung erstellen oder benutzerdefinierte Dienste schreiben, um diese Datenquellen und die Verarbeitung zu integrieren. Das Integrieren und Verwalten dieser Systeme ist teuer und aufwändig. Häufig fehlen für Unternehmen geeignete Überwachungs- und Warnfunktionen sowie die Steuerungsmöglichkeiten eines vollständig verwalteten Diensts.
 
-Mit Data Factory können Sie die [Kopieraktivität](copy-activity-overview.md) in einer Datenpipeline nutzen, um Daten sowohl aus lokalen als auch aus cloudbasierten Quelldatenspeichern zur weiteren Analyse in einen zentralen Datenspeicher in der Cloud zu verschieben. Beispielsweise können Sie Daten in Azure Data Lake Store sammeln und später transformieren, indem Sie einen Azure Data Lake Analytics-Computedienst verwenden. Außerdem können Sie Daten in Azure Blob Storage sammeln und später per Azure HDInsight Hadoop-Cluster transformieren.
+Mit Data Factory können Sie die [Kopieraktivität](copy-activity-overview.md) in einer Datenpipeline nutzen, um Daten sowohl aus lokalen als auch aus cloudbasierten Quelldatenspeichern zur weiteren Analyse in einen zentralen Datenspeicher in der Cloud zu verschieben. Beispielsweise können Sie Daten in Azure Data Lake Storage sammeln und später transformieren, indem Sie einen Azure Data Lake Analytics-Computedienst verwenden. Außerdem können Sie Daten in Azure Blob Storage sammeln und später per Azure HDInsight Hadoop-Cluster transformieren.
 
 ### <a name="transform-and-enrich"></a>Transformieren und Erweitern
 Wenn Daten in einem zentralen Datenspeicher in der Cloud gespeichert sind, können Sie die erfassten Daten mithilfe von Compute Services wie HDInsight Hadoop, Spark, Data Lake Analytics und Machine Learning verarbeiten oder transformieren. Darauf folgt das Erstellen transformierter Daten nach einem verwaltbaren und gesteuerten Zeitplan, um Produktionsumgebungen mit vertrauenswürdigen Daten zu versorgen.

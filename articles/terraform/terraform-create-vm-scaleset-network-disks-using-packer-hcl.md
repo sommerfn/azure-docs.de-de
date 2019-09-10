@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001995"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138345"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Verwenden von Terraform zum Erstellen einer Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,11 +175,11 @@ Führen Sie das Tutorial zum Erstellen eines Ubuntu-Images mit installiertem ngi
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Bearbeiten Sie die Infrastruktur, um die VM-Skalierungsgruppe hinzuzufügen.
 
 In diesem Schritt erstellen Sie die folgenden Ressourcen im Netzwerk, das zuvor bereitgestellt wurde:
-- Einen Azure-Lastenausgleich, um die Anwendung zu versorgen und an die in Schritt 4 bereitgestellte öffentliche IP-Adresse anzufügen
+- Einen Azure-Lastenausgleich, um die Anwendung zu versorgen und an die zuvor bereitgestellte öffentliche IP-Adresse anzufügen
 - Einen Azure-Lastenausgleich und Regeln, um die Anwendung zu versorgen und an die zuvor konfigurierte öffentliche IP-Adresse anzufügen.
-- Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss 
-- Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird 
-- Eine VM-Skalierungsgruppe, die sich hinter dem Lastenausgleich befindet und in dem zuvor bereitgestellten VNet ausgeführt wird
+- Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss
+- Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird
+- Eine VM-Skalierungsgruppe, die sich hinter dem Lastenausgleich befindet und in dem zuvor bereitgestellten VNET ausgeführt wird
 - Über das benutzerdefinierte Image installiertes [nginx](https://nginx.org/) auf den Knoten der VM-Skalierungsgruppe
 
 
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

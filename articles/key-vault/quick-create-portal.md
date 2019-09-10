@@ -2,20 +2,20 @@
 title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault mithilfe des Azure-Portals | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals ein Geheimnis in Azure Key Vault festlegen und das Geheimnis daraus abrufen.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/14/2019
-ms.author: barclayn
-ms.openlocfilehash: e9b86a5fb0d9e24618cafffb5ca12e22d5394294
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730181"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259223"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -84,7 +84,9 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis gespeichert. Das Tutorial zu Webanwendungen mit Key Vault enthält weitere Informationen zu Key Vault und zur Verwendung mit Ihren Anwendungen.
+In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
-> [!div class="nextstepaction"]
-> Wenn Sie erfahren möchten, wie Sie ein Geheimnis aus Key Vault aus einer Webanwendung mit verwalteten Identitäten für Azure-Ressourcen lesen, fahren Sie mit dem Tutorial [Konfigurieren einer Azure-Webanwendung für das Lesen eines Geheimnisses aus Key Vault](quick-create-net.md) fort.
+- [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
+- [Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)
+- [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)
+- [Bewährte Methoden zum Verwenden von Key Vault](key-vault-best-practices.md)

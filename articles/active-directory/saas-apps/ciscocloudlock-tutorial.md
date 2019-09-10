@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347408"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213605"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Tutorial: Integrieren von The Cloud Security Fabric in Azure Active Directory
 
@@ -104,7 +104,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-5. Klicken Sie zum Ändern der Optionen für das **Signieren** auf die Schaltfläche  **Bearbeiten**, um das Dialogfeld  **SAML-Signaturzertifikat** zu öffnen.
+5. Klicken Sie zum Ändern der Optionen unter **Signieren** gemäß Ihren Anforderungen auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen.
 
     ![SAML-Antwort](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -153,7 +153,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>Erstellen eines The Cloud Security Fabric-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in The Cloud Security Fabric einen Benutzer namens B. Simon. Das  [The Cloud Security Fabric-Supportteam](mailto:support@cloudlock.com) kann Sie beim Hinzufügen von Benutzern auf der The Cloud Security Fabric-Plattform unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in The Cloud Security Fabric einen Benutzer namens B. Simon. Das [The Cloud Security Fabric-Supportteam](mailto:support@cloudlock.com) kann Sie beim Hinzufügen von Benutzern auf der The Cloud Security Fabric-Plattform unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

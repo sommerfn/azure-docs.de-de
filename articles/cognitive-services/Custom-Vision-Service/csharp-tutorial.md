@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: anroth
-ms.openlocfilehash: ef5e1d7bb2c5b4404ce1a43bc719b7b5a242b1c7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7faad2c432e15ed363bd1caf290e03dc75e9d298
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946246"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141067"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Schnellstart: Erstellen eines Bildklassifizierungsprojekts mit dem Custom Vision SDK für .NET
 
@@ -103,7 +103,7 @@ CustomVisionPredictionClient endpoint = new CustomVisionPredictionClient()
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>Übermitteln eines Bilds an den Standardendpunkt für Vorhersagen
 
-In diesem Skript wird das Testbild in der Methode **LoadImagesFromDisk** geladen, und die Vorhersage des Modells soll in der Konsole ausgegeben werden.
+In diesem Skript wird das Testbild in der Methode **LoadImagesFromDisk** geladen, und die Vorhersage des Modells soll in der Konsole ausgegeben werden. Der Wert der Variablen „publishedModelName“ muss dem Wert „Veröffentlicht als“ auf der Registerkarte **Leistung** im Custom Vision-Portal entsprechen. 
 
 ```csharp
 // Make a prediction against the new project

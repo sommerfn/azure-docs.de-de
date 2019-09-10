@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958632"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306485"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Java)
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Schnellstart: Steuern eines mit einer Azure IoT Hub-Instanz verbundenen Geräts mit Java
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub ist ein Azure-Dienst, mit dem Sie große Mengen von Telemetriedaten von Ihren IoT-Geräten in der Cloud erfassen und Ihre Geräte über die Cloud verwalten können. In dieser Schnellstartanleitung verwenden Sie eine *direkte Methode*, um ein simuliertes Gerät zu steuern, das mit Ihrer IoT Hub-Instanz verbunden ist. Sie können direkte Methoden verwenden, um das Verhalten eines mit Ihrer IoT Hub-Instanz verbundenen Geräts zu ändern.
+In dieser Schnellstartanleitung verwenden Sie eine *direkte Methode*, um mit einer Java-Anwendung ein simuliertes Gerät zu steuern, das mit Ihrer Azure IoT Hub-Instanz verbunden ist. Sie können direkte Methoden verwenden, um das Verhalten eines mit Ihrer IoT Hub-Instanz verbundenen Geräts zu ändern. IoT Hub ist ein Azure-Dienst, mit dem Sie große Mengen von Telemetriedaten von Ihren IoT-Geräten in der Cloud erfassen und Ihre Geräte über die Cloud verwalten können. 
 
 In dieser Schnellstartanleitung werden zwei vorab geschriebene Java-Anwendungen verwendet:
 
@@ -35,9 +35,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Java geschrieben. Sie benötigen auf Ihrem Entwicklungscomputer Java SE 8 oder höher.
+Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Java geschrieben. Sie benötigen auf Ihrem Entwicklungscomputer Java SE 8.
 
-Sie können Java für mehrere Plattformen von [Oracle](https://aka.ms/azure-jdks) herunterladen.
+Sie können Java SE Development Kit 8 für mehrere Plattformen unter [Langfristiger Java-Support für Azure und Azure Stack](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable) herunterladen. Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
 Mit dem folgenden Befehl können Sie die aktuelle Java-Version auf Ihrem Entwicklungscomputer überprüfen:
 

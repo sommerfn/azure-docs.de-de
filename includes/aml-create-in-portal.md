@@ -9,16 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534389"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231076"
 ---
 1. Melden Sie sich mit den Anmeldeinformationen, die Sie für das Azure-Abonnement verwenden, beim [Azure-Portal](https://portal.azure.com/) an. 
 
 1. Wählen Sie im Azure-Portal oben links die Option **+ Ressource erstellen** aus.
+
+      ![Neue Ressource erstellen](media/aml-create-in-portal/portal-create-resource.png)
 
 1. Suchen Sie mithilfe der Suchleiste den **Machine Learning Service-Arbeitsbereich**.
 
@@ -26,7 +28,7 @@ ms.locfileid: "69534389"
 
 1. Wählen Sie im Bereich **Machine Learning Service-Arbeitsbereich** die Option **Erstellen** aus, um zu beginnen.
 
-1. Konfigurieren Sie Ihren neuen Arbeitsbereich, indem Sie den Arbeitsbereichsnamen, das Abonnement, die Ressourcengruppe und den Standort angeben.
+1. Geben Sie die folgenden Informationen an, um den neuen Arbeitsbereich zu konfigurieren:
 
    Feld|BESCHREIBUNG 
    ---|---
@@ -37,7 +39,10 @@ ms.locfileid: "69534389"
 
 1. Wählen Sie **Erstellen** aus, nachdem die Konfiguration des Arbeitsbereichs abgeschlossen ist. 
 
-   Es kann einige Augenblicke dauern, bis der Arbeitsbereich erstellt wurde.
+   > [!Warning] 
+   > Die Erstellung des Arbeitsbereichs in der Cloud kann einige Minuten dauern.
 
-   Wenn der Vorgang abgeschlossen ist, wird eine Erfolgsmeldung zur Bereitstellung angezeigt. Um den neuen Arbeitsbereich anzuzeigen, wählen Sie **Zu Ressource wechseln** aus.
+   Wenn der Vorgang abgeschlossen ist, wird eine Erfolgsmeldung zur Bereitstellung angezeigt. 
+ 
+ 1. Um den neuen Arbeitsbereich anzuzeigen, wählen Sie **Zu Ressource wechseln** aus.
 

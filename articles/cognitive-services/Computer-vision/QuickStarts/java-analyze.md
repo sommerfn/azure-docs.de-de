@@ -10,24 +10,24 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.custom: seodec18, seo-java-august2019
-ms.openlocfilehash: 69d14b3ce84ddd1fbd54ab8a0f6f0c9e24ebac1e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.custom: seodec18, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: a90a761eef2a1f7a9aa0533f5b9eb88e898bc69b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946313"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258094"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Schnellstart: Analysieren eines Remotebilds mit der Maschinelles Sehen-REST-API und Java
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein remote gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe von Java und der REST-API von Maschinelles Sehen ein remote gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Die [Java&trade;-Plattform, Standard Edition Development Kit 7 oder 8](https://aka.ms/azure-jdks) (JDK 7 oder 8), muss installiert sein.
-- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Gehen Sie alternativ wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
+- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
 
@@ -53,10 +53,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
    import org.json.JSONObject;
    ```
 
-1. Ersetzen Sie die öffentliche Klasse `Main` durch den folgenden Code, und nehmen Sie dann die folgenden Änderungen am Code vor, falls dies erforderlich ist:
-   1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
-   1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
-   1. Ersetzen Sie optional den Wert von `imageToAnalyze` durch die URL eines anderen Bilds, das analysiert werden soll.
+1. Ersetzen Sie die öffentliche Klasse `Main` durch den folgenden Code.
+1. Ersetzen Sie optional den Wert von `imageToAnalyze` durch die URL eines anderen Bilds, das analysiert werden soll.
 
 ```java
 public class Main {
@@ -64,20 +62,13 @@ public class Main {
     // *** Update or verify the following values. ***
     // **********************************************
 
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    // After setting, close and then re-open your command shell or project for the changes to take effect.
+    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westcentralus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    private static final String uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
-
+    private static final String uriBase = endpoint + 
+            "vision/v2.0/analyze";
     private static final String imageToAnalyze =
             "https://upload.wikimedia.org/wikipedia/commons/" +
                     "1/12/Broadway_and_Times_Square_by_night.jpg";

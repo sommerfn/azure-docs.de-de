@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934435"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259206"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault per Resource Manager-Vorlage
 
@@ -101,7 +101,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Key Vault – Startseite](https://azure.microsoft.com/services/key-vault/)
-* [Azure Key Vault – Dokumentation](index.yml)
-* [Azure SDK für Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Azure REST-API-Referenz](https://docs.microsoft.com/rest/api/keyvault/)
+In dieser Schnellstartanleitung haben Sie mithilfe einer Azure Resource Manager-Vorlage einen Schlüsseltresor und ein Geheimnis erstellt und die Bereitstellung überprüft. Weitere Informationen zu Key Vault und Azure Resource Manager finden Sie in den folgenden Artikeln:
+
+- [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
+- Lesen Sie weitere Informationen zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Erfahren Sie mehr über [Schlüssel, Geheimnisse und Zertifikate](about-keys-secrets-and-certificates.md).
+- Sehen Sie sich die [bewährten Methoden zum Verwenden von Key Vault](key-vault-best-practices.md) an.

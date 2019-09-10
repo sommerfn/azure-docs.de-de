@@ -6,16 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592416"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70240315"
 ---
+::: zone target = "docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy über SMB
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="copy-data-to-azure-data-box-heavy"></a>Kopieren von Daten auf Azure Data Box Heavy
+
+::: zone-end
+
+::: zone target = "docs"
 
 In diesem Tutorial wird beschrieben, wie Sie über die lokale Webbenutzeroberfläche eine Verbindung mit Ihrem Hostcomputer herstellen und Daten kopieren.
 
@@ -25,6 +38,17 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Herstellen einer Verbindung mit Data Box Heavy
 > * Kopieren von Daten auf Data Box Heavy
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+Sie können Daten von Ihrem Quellserver auf Ihre Data Box (per SMB, NFS, REST oder Datenkopierdienst) oder auf verwaltete Datenträger kopieren.
+
+Achten Sie in jedem Fall darauf, dass die Namen der Freigaben und Ordner sowie die Datengröße den Vorgaben entsprechen, die unter [Azure Storage and Data Box Heavy service limits](data-box-heavy-limits.md) (Für Azure Storage und Data Box Heavy geltende Einschränkungen) beschrieben sind.
+
+::: zone-end
+
+::: zone target = "docs"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,6 +59,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 3. Sie verfügen über einen Hostcomputer mit den Daten, die Sie auf Data Box Heavy kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
     - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
     - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Zur Erzielung der höchstmöglichen Kopiergeschwindigkeit können zwei 40-GbE-Verbindungen (jeweils eine pro Knoten) parallel genutzt werden. Falls Sie über keine 40-GbE-Verbindung verfügen, sollten Sie zwei Verbindungen mit mindestens 10 GbE verwenden (jeweils eine pro Knoten).
+   
 
 ## <a name="connect-to-data-box-heavy-shares"></a>Herstellen einer Verbindung mit Data Box Heavy-Freigaben
 
@@ -256,4 +281,60 @@ Im nächsten Tutorial erfahren Sie, wie Sie Data Box Heavy an Microsoft zurücks
 
 > [!div class="nextstepaction"]
 > [Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure (Vorschauversion)](./data-box-heavy-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+### <a name="copy-data-via-smb"></a>Kopieren von Daten über SMB
+
+1. Verwenden Sie bei Verwendung eines Windows-Hosts den folgenden Befehl, um eine Verbindung mit den SMB-Freigaben herzustellen:
+
+    `\\<IP address of your device>\ShareName`
+
+2. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, wechseln Sie auf der lokalen Webbenutzeroberfläche der Data Box zur Seite **Verbindung herstellen und Daten kopieren**.
+
+3. Verwenden Sie ein SMB-kompatibles Dateikopiertool (beispielsweise Robocopy), um Daten in Freigaben zu kopieren.
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Daten in eine Azure Data Box über SMB](data-box-heavy-deploy-copy-data.md).
+
+### <a name="copy-data-via-nfs"></a>Kopieren von Daten über NFS
+
+1. Verwenden Sie bei Verwendung eines NFS-Hosts den folgenden Befehl, um die NFS-Freigaben einzubinden:
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. Um die Anmeldeinformationen für den Freigabezugriff zu erhalten, navigieren Sie auf der lokalen Webbenutzeroberfläche der Data Box Heavy zur Seite **Verbindung herstellen und Daten kopieren**.
+3. Verwenden Sie den Befehl `cp` oder `rsync`, um Ihre Daten zu kopieren. 
+4. Wiederholen Sie diese Schritte, um eine Verbindung mit dem zweiten Knoten der Data Box Heavy herzustellen und Daten zu kopieren.
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Daten in eine Azure Data Box über NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
+
+### <a name="copy-data-via-rest"></a>Kopieren von Daten über REST
+
+1. Wenn Sie Daten unter Verwendung von Data Box-Blobspeicher über REST-APIs kopieren möchten, können Sie eine Verbindung über *HTTP* oder *HTTPS* herstellen.
+2. Daten können mithilfe von AzCopy in Data Box-Blobspeicher kopiert werden.
+3. Wiederholen Sie diese Schritte, um eine Verbindung mit dem zweiten Knoten der Data Box Heavy herzustellen und Daten zu kopieren.
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs](data-box-heavy-deploy-copy-data-via-rest.md).
+
+### <a name="copy-data-via-data-copy-service"></a>Kopieren von Daten per Datenkopierdienst
+
+1. Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopieren. Navigieren Sie auf der lokalen Webbenutzeroberfläche Ihrer Data Box Heavy zu **Verwalten > Daten kopieren > Erstellen**.
+2. Füllen Sie die Parameter aus, und erstellen Sie einen Auftrag.
+3. Wiederholen Sie diese Schritte, um eine Verbindung mit dem zweiten Knoten der Data Box Heavy herzustellen und Daten zu kopieren.
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Daten auf Azure Data Box Heavy mithilfe des Datenkopierdiensts](data-box-heavy-deploy-copy-data-via-copy-service.md).
+
+### <a name="copy-data-to-managed-disks"></a>Kopieren von Daten auf verwaltete Datenträger
+
+1. Bei der Bestellung des Data Box Heavy-Geräts müssen Sie verwaltete Datenträger als Speicherziel ausgewählt haben.
+2. Sie können über SMB- oder NFS-Freigaben eine Verbindung mit Data Box Heavy herstellen.
+3. Anschließend können Sie Daten mithilfe von SMB- oder NFS-Tools kopieren.
+4. Wiederholen Sie diese Schritte, um eine Verbindung mit dem zweiten Knoten der Data Box Heavy herzustellen und Daten zu kopieren.
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Verwenden von Data Box Heavy, um Daten als verwaltete Datenträger in Azure zu importieren](data-box-heavy-deploy-copy-data-from-vhds.md).
+
+::: zone-end
+
 

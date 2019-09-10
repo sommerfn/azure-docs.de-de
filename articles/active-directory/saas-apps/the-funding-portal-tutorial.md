@@ -1,34 +1,34 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BetterWorks | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und BetterWorks konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit The Funding Portal | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und The Funding Portal konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 5bb9505a-be02-46ae-9979-5308715d2b47
+ms.assetid: 4663cc8a-976a-4c6c-b3b4-1e5df9b66744
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b9d3ef2c9b72d261fcae25e9a8f1f906206bb7b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f707e9e56ea5386f1ccb438aa06aac066784e7cc
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162524"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174286"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-betterworks"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BetterWorks
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-funding-portal"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit The Funding Portal
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in BetterWorks integrieren. Die Integration von BetterWorks in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie The Funding Portal in Azure Active Directory (Azure AD) integrieren. Die Integration von The Funding Portal in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf BetterWorks hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei BetterWorks anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf The Funding Portal hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei The Funding Portal anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
@@ -38,67 +38,62 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein BetterWorks-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein The Funding Portal-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* BetterWorks unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+* The Funding Portal unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-> [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+## <a name="adding-the-funding-portal-from-the-gallery"></a>Hinzufügen von The Funding Portal aus dem Katalog
 
-## <a name="adding-betterworks-from-the-gallery"></a>Hinzufügen von BetterWorks aus dem Katalog
-
-Zum Konfigurieren der Integration von BetterWorks in Azure AD müssen Sie BetterWorks aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von The Funding Portal in Azure AD müssen Sie The Funding Portal aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **BetterWorks** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **BetterWorks** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **The Funding Portal** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **The Funding Portal** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-the-funding-portal"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für The Funding Portal
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-betterworks"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für BetterWorks
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit The Funding Portal mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in The Funding Portal eingerichtet werden.
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BetterWorks mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BetterWorks eingerichtet werden.
-
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit BetterWorks die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit The Funding Portal die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für BetterWorks](#configure-betterworks-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines BetterWorks-Testbenutzers](#create-betterworks-test-user)** , um eine Entsprechung von B. Simon in BetterWorks zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für The Funding Portal](#configure-the-funding-portal-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines The Funding Portal-Testbenutzers](#create-the-funding-portal-test-user)** , um ein Pendant von B. Simon in The Funding Portal zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BetterWorks** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **The Funding Portal** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://app.betterworks.com/saml2/metadata/`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.regenteducation.net/`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://app.betterworks.com/saml2/acs/`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<subdomain>.regenteducation.net`.
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://app.betterworks.com`.
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den The Funding Portal-Client](mailto:info@regenteducation.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-1. Kopieren Sie im Abschnitt **BetterWorks einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **The Funding Portal einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -116,10 +111,10 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf BetterWorks gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf The Funding Portal gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste **BetterWorks**aus.
+1. Wählen Sie in der Anwendungsliste **The Funding Portal**aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
@@ -132,19 +127,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-betterworks-sso"></a>Konfigurieren des einmaligen Anmeldens für BetterWorks
+## <a name="configure-the-funding-portal-sso"></a>Konfigurieren des einmaligen Anmeldens für The Funding Portal
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **BetterWorks** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von BetterWorks](mailto:support@betterworks.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **The Funding Portal** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von The Funding Portal](mailto:info@regenteducation.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-betterworks-test-user"></a>Erstellen eines BetterWorks-Testbenutzers
+### <a name="create-the-funding-portal-test-user"></a>Erstellen eines The Funding Portal-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in BetterWorks einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem [Supportteam von BetterWorks](mailto:support@betterworks.com) zusammen, um Benutzer in der BetterWorks-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in The Funding Portal einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam von The Funding Portal](mailto:info@regenteducation.com) zusammen, um die Benutzer auf der The Funding Portal-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „BetterWorks“ klicken, sollten Sie automatisch bei der BetterWorks-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „The Funding Portal“ klicken, sollten Sie automatisch bei der The Funding Portal-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -154,4 +149,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „BetterWorks“ klicken, sollten Si
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [BetterWorks mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+- [The Funding Portal mit Azure AD ausprobieren](https://aad.portal.azure.com/)

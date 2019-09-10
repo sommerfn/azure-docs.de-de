@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b6d01802fd819471a9cfb382166e6293261ca
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852898"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211860"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App
 
@@ -39,9 +39,7 @@ Für diese Schnellstartanleitung ist [.NET Core 2.2](https://www.microsoft.com/
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
-> * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Manuell] [Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Die Schnellstartanwendung kann auf zwei Arten gestartet werden: „Express“ (Option 1 unten) und „Manuell“ (Option 2).
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
 >
@@ -80,12 +78,12 @@ Für diese Schnellstartanleitung ist [.NET Core 2.2](https://www.microsoft.com/
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Schritt 2: Herunterladen des Visual Studio-Projekts
 
-[Laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples**).
-1. Öffnen Sie die Projektmappe in Visual Studio: **daemon-console.sln** (optional).
+1. Öffnen Sie die Projektmappe in Visual Studio: **1-Call-MSGraph\daemon-console.sln** (optional).
 1. Bearbeiten Sie **appsettings.json**, und ersetzen Sie die Felder `ClientId`, `Tenant` und `ClientSecret` durch Folgendes:
 
     ```json
@@ -101,7 +99,7 @@ Für diese Schnellstartanleitung ist [.NET Core 2.2](https://www.microsoft.com/
     > > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
     
     > [!div renderon="docs"]
-    >> Hinweis:
+    >> Hierbei gilt:
     >> * `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
     >> * `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
     >> * `Enter_the_Client_Secret_Here`: Ersetzen Sie diesen Wert durch den geheimen Clientschlüssel, den Sie in Schritt 1 erstellt haben.
@@ -133,7 +131,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Hinweis:
+>> Hierbei gilt:
 >> * `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
 >> * `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 
@@ -145,11 +143,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 Drücken Sie bei Verwendung von Visual Studio **F5**, um die Anwendung auszuführen. Führen Sie die Anwendung andernfalls über die Eingabeaufforderung oder die Konsole aus:
 
 ```console
-cd {ProjectFolder}\daemon-console
+cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
-> Hinweis:
+> Hierbei gilt:
 > * *{ProjectFolder}* ist der Ordner, in den Sie die ZIP-Datei extrahieren. Beispiel: **C:\Azure-Samples\active-directory-dotnetcore-daemon-v2**
 
 Es sollte eine Liste mit Benutzern in Ihrem Azure AD-Verzeichnis angezeigt werden.
@@ -166,7 +164,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
  Sie können MSAL.NET installieren, indem Sie den folgenden Befehl in der **Paket-Manager-Konsole** von Visual Studio ausführen:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
 ```
 
 Wenn Sie nicht Visual Studio verwenden, können Sie alternativ den folgenden Befehl ausführen, um Ihrem Projekt MSAL hinzuzufügen:
@@ -194,7 +192,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 );
 ```
 
-> | Hinweis: ||
+> | Hierbei gilt: ||
 > |---------|---------|
 > | `config.ClientSecret` | Der geheime Clientschlüssel, der für die Anwendung im Azure-Portal erstellt wird. |
 > | `config.ClientId` | Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Dieser Wert befindet sich im Azure-Portal auf der Seite **Übersicht** der App. |
@@ -211,7 +209,7 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Hinweis:| |
+> |Hierbei gilt:| |
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche. Für vertrauliche Clients sollte ein Format wie `{Application ID URI}/.default` verwendet werden. Hiermit wird angegeben, dass die angeforderten Bereiche diejenigen sind, die im App-Objekt, das im Azure-Portal festgelegt ist, statisch definiert sind (für Microsoft Graph wird für `{Application ID URI}` auf `https://graph.microsoft.com` verwiesen). Für benutzerdefinierte Web-APIs wird `{Application ID URI}` in der Anwendungsregistrierung (Vorschauversion) im Azure-Portal unter dem Abschnitt **Eine API verfügbar machen** definiert. |
 
@@ -221,8 +219,15 @@ Weitere Informationen finden Sie in der [Referenzdokumentation für `AcquireToke
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Weitere Informationen zu Daemon-Anwendungen finden Sie auf der Landing Page des Szenarios.
+
 > [!div class="nextstepaction"]
-> [Beispiel für .NET Core-Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+> [Daemon-App zum Aufrufen von Web-APIs](scenario-daemon-overview.md)
+
+Das Tutorial zur Daemon-Anwendung finden Sie unter:
+
+> [!div class="nextstepaction"]
+> [Daemon .NET Core console tutorial](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) (Tutorial zur .NET Core-Daemon-Konsole)
 
 Informieren Sie sich über Berechtigungen und die Einwilligung:
 
@@ -233,9 +238,6 @@ Weitere Informationen zum Authentifizierungsfluss für dieses Szenario finden Si
 
 > [!div class="nextstepaction"]
 > [OAuth 2.0-Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md)
-
-> [!div class="nextstepaction"]
-> [Client credential flows in MSAL.NET](https://aka.ms/msal-net-client-credentials) (Clientanmeldeinformations-Flow in MSAL.NET)
 
 Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
 

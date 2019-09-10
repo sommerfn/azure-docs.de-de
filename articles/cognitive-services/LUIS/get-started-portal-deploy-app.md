@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564070"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257077"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -59,11 +59,11 @@ Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie der LUI
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
 
-1. Wählen Sie im Menü oben rechts die Option **Verwalten** aus, und wählen Sie dann **Schlüssel und Endpunkte** aus.
+1. Wählen Sie im Menü oben rechts die Option **Verwalten** aus, und wählen Sie dann **Azure-Ressourcen** aus.
 
-1. Um LUIS hinzuzufügen, wählen Sie **Ressource hinzufügen +** aus.
+1. Um LUIS hinzuzufügen, wählen Sie **Add prediction resource** (Vorhersageressource hinzufügen) aus.
 
-   [![Ihrer App eine Ressource zuweisen](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. Wählen Sie Ihren Mandanten, Ihr Abonnement und den Namen Ihrer Ressource aus. Wählen Sie **Ressource zuweisen** aus.
 

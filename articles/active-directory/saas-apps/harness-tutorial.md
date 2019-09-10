@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013845"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Harness
 
@@ -131,17 +131,25 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-harness-sso"></a>Konfigurieren des einmaligen Anmeldens für Harness
 
-1. Melden Sie sich in einem neuen Webbrowserfenster bei der Harness-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in Harness automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-1. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Authentication Settings** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Authentifizierungseinstellungen).
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Harness einrichten**, um zur Anwendung Harness weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Harness anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie Harness manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich bei der Harness-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+
+4. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Authentication Settings** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Authentifizierungseinstellungen).
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure01.png)
 
-1. Klicken Sie im Abschnitt **SSO Providers** (SSO-Anbieter) auf **+ Add SSO Providers** > **SAML** (+ SSO-Anbieter hinzufügen > SAML).
+5. Klicken Sie im Abschnitt **SSO Providers** (SSO-Anbieter) auf **+ Add SSO Providers** > **SAML** (+ SSO-Anbieter hinzufügen > SAML).
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure03.png)
 
-1. Führen Sie im Popupfenster **SAML Provider** (SAML-Anbieter) die folgenden Schritte aus:
+6. Führen Sie im Popupfenster **SAML Provider** (SAML-Anbieter) die folgenden Schritte aus:
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure02.png)
 

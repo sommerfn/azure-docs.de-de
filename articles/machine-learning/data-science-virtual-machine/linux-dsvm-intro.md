@@ -1,29 +1,22 @@
 ---
-title: Erstellen einer CentOS Linux Data Science Virtual Machine
-titleSuffix: Azure
+title: 'Schnellstart: Erstellen einer CentOS Linux-Instanz'
+titleSuffix: Azure Data Science Virtual Machine
 description: Erstellen und konfigurieren Sie in Azure eine Data Science Virtual Machine-Instanz mit Linux für Analysen und maschinelles Lernen.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: c0464253c55aa5e51e8e86686405ea6b107c8382
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1ab3a527643bc5a567644a937fdd1eb9e31bf567
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047711"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195331"
 ---
-# <a name="provision-a-linux-centos-data-science-virtual-machine-in-azure"></a>Bereitstellen einer Data Science Virtual Machine-Instanz mit Linux CentOS in Azure
+# <a name="quickstart-set-up-a-linux-centos-data-science-virtual-machine-in-azure"></a>Schnellstart: Einrichten einer Data Science Virtual Machine-Instanz mit Linux CentOS in Azure
 
 Eine Data Science Virtual Machine-Instanz (DSVM) mit Linux ist ein CentOS-basierter virtueller Azure-Computer. Die Linux-DSVM-Instanz enthält eine Sammlung vorinstallierter Tools, die Sie für die Datenanalyse sowie für maschinelles Lernen verwenden können. 
 
@@ -145,7 +138,7 @@ Ein R-Skript, mit dem Sie die [beliebtesten 20 R-Pakete](https://www.kdnuggets.c
 
 Anaconda Python wird mit Python 3.5- und 2.7-Umgebungen installiert. Die 2.7-Umgebung wird als _root_ bezeichnet und die 3.5-Umgebung als _py35_. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen.
 
-Standardmäßig wird die py35-Umgebung verwendet. Sie können Sie die root-Umgebung (2.7) mithilfe des folgenden Befehls aktivieren:
+Standardmäßig wird die py35-Umgebung verwendet. Sie können die root-Umgebung (2.7) mit dem folgenden Befehl aktivieren:
 
 ```bash
 source activate root
@@ -194,13 +187,13 @@ Sie können von jedem Host aus auf den Jupyter Notebook-Server zugreifen. Geben 
 > [!NOTE]
 > Port 8000 wird standardmäßig in der Firewall geöffnet, wenn die DSVM-Instanz bereitgestellt wird. 
 
-Microsoft hat einige Beispiel-Notebooks zusammengestellt – eines in Python und eines in R. Der Link zu den Beispielen wird Ihnen auf der Jupyter Notebook-Startseite angezeigt, nachdem Sie sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort bei Jupyter Notebook authentifiziert haben. Wenn Sie ein neues Notebook erstellen möchten, wählen Sie **New** (Neu) und anschließend den Sprachkernel aus, den Sie verwenden möchten. Wenn die Schaltfläche **New** (Neu) nicht angezeigt wird, wählen Sie oben links das **Jupyter**-Symbol aus, um die Startseite des Notebook-Servers zu öffnen.
+Microsoft hat einige Beispiel-Notebooks zusammengestellt – eins für Python und eins für R. Der Link zu den Beispielen wird Ihnen auf der Jupyter Notebook-Startseite angezeigt, nachdem Sie sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort Jupyter Notebook authentifiziert haben. Wenn Sie ein neues Notebook erstellen möchten, wählen Sie **Neu** und dann den zu verwendenden Sprachkernel aus. Wenn die Schaltfläche **New** (Neu) nicht angezeigt wird, wählen Sie oben links das **Jupyter**-Symbol aus, um die Startseite des Notebook-Servers zu öffnen.
 
 ### <a name="spark-standalone"></a>Eigenständige Spark-Instanz 
 
 Eine Instanz des Modus für die eigenständige Spark-Instanz ist in der Linux-DSVM-Instanz vorinstalliert, damit Sie Spark-Anwendungen zunächst lokal entwickeln können, bevor Sie sie in großen Clustern testen und bereitstellen. 
 
-Sie können PySpark-Programme über den Jupyter-Kernel ausführen. Wenn Sie Jupyter öffnen und die Schaltfläche **New** (Neu) auswählen, wird eine Liste mit verfügbaren Kernels angezeigt. **Spark - Python** ist der PySpark-Kernel, mit dem Sie Spark-Anwendungen in der Sprache Python erstellen können. Sie können auch eine Python-IDE wie PyCharm oder Spyder verwenden, um Spark-Programme zu erstellen. 
+Sie können PySpark-Programme über den Jupyter-Kernel ausführen. Wenn Sie Jupyter öffnen und die Schaltfläche **New** (Neu) auswählen, wird eine Liste mit verfügbaren Kernels angezeigt. **Spark – Python** ist der PySpark-Kernel, mit dem Sie Spark-Anwendungen in der Sprache Python erstellen können. Sie können auch eine Python-IDE wie PyCharm oder Spyder verwenden, um Spark-Programme zu erstellen. 
 
 In dieser eigenständigen Instanz wird der Spark-Stapel im aufrufenden Clientprogramm ausgeführt. Dieses Feature führt dazu, dass sich Probleme schneller und einfacher beheben lassen als beim Entwickeln in einem Spark-Cluster.
 
@@ -288,7 +281,7 @@ Bibliotheken für den Datenbankzugriff sind in R und Python verfügbar:
 
 Die folgenden Azure-Tools werden in der DSVM-Instanz installiert:
 
-* **Azure CLI**: Mit der Befehlszeilenschnittstelle in Azure können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie **azure help**ein, um die Azure-Tools zu öffnen. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Azure CLI**: Mit der Befehlszeilenschnittstelle in Azure können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie **azure help** ein, um die Azure-Tools zu öffnen. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 * **Azure Storage-Explorer**: Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure-Speicherkonto gespeichert haben, sowie zum Hoch- und Herunterladen von Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell öffnen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
 * **Azure-Bibliotheken**: Die folgenden Bibliotheken sind in der DSVM-Instanz vorinstalliert:
   

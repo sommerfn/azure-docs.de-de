@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594692"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195220"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 
-Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“.
+Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“. 
 
 Bei Verwendung der [Bing-Bildersuche-API](../bing-image-search/overview.md) können Sie für Ihre visuelle Bing-Suche Erkenntnistoken aus den Suchergebnissen dieser API verwenden, anstatt ein Bild hochzuladen.
 
@@ -38,6 +38,7 @@ Mit der visuellen Bing-Suche können folgende Erkenntnisse ermittelt werden:
 | Verwandte Suchvorgänge                     | Verwandte Suchvorgängen, die von anderen durchgeführt wurden oder die auf dem Bildinhalt basieren.            |
 | Webseiten, auf denen das Bild vorkommt     | Webseiten, die das Eingabebild enthalten.            |
 | Rezepte                              | Webseiten, die Rezepte für das Gericht auf dem Eingabebild enthalten.            |
+| Entitäten                             | Bekannte Personen, Orte und Objekte |
 
 Neben Erkenntnissen gibt die visuelle Bing-Suche auch verschiedene, aus dem Eingabebild abgeleitete Begriffe (Tags) zurück. Anhand dieser Tags können Benutzer Konzepte erkunden, die in dem Bild gefunden wurden. Zeigt das Eingabebild beispielsweise einen bekannten Sportler, kann etwa eines der Tags den Namen des Sportlers und ein anderes den Begriff „Sport“ enthalten. Beim Bild eines Apfelkuchens können die Tags beispielsweise „Apfelkuchen“, „Kuchen“ und „Nachtisch“ lauten.
 

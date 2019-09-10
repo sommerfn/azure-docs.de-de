@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567674"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231003"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)
 
@@ -55,10 +55,12 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Einschränken des Zugriffs auf Ihre verwaltete Instanz
 
-Auf verwaltete Instanzen kann nur über eine private IP-Adresse zugegriffen werden. Es sind keine Dienstendpunkte verfügbar, über die von außerhalb des Netzwerks der verwalteten Instanz eine Verbindung mit der verwalteten Instanz hergestellt werden kann. Anwendungen und Benutzer benötigen ähnlich wie bei einer isolierten lokalen SQL Server-Umgebung Zugriff auf das Netzwerk der verwalteten Instanz (VNET), um eine Verbindung herstellen zu können. Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
+Auf verwaltete Instanzen kann über eine private IP-Adresse zugegriffen werden. Anwendungen und Benutzer benötigen ähnlich wie bei einer isolierten lokalen SQL Server-Umgebung Zugriff auf das Netzwerk der verwalteten Instanz (VNET), um eine Verbindung herstellen zu können. Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
+
+Darüber hinaus kann ein Dienstendpunkt für die verwaltete Instanz konfiguriert werden, um öffentliche Verbindungen wie bei Azure SQL-Datenbank zu ermöglichen. Weitere Informationen finden Sie im Artikel [Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-public-endpoint-configure.md).
 
 > [!NOTE] 
-> Da auf verwaltete Instanzen nur innerhalb des entsprechenden VNETs zugegriffen werden kann, sind [Firewallregeln für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-firewall-configure.md) nicht relevant. Eine verwaltete Instanz verfügt über eine eigene [integrierte Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+> Auch bei aktivierten Dienstendpunkten gelten die [Firewallregeln für SQL-Datenbank](sql-database-firewall-configure.md) nicht. Eine verwaltete Instanz verfügt über eine eigene [integrierte Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) zur Verwaltung der Konnektivität.
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Erstellen eines Azure AD-Serverprinzipals (Anmeldung) für eine verwaltete Instanz mithilfe von SSMS
 
