@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321668"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114497"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -130,7 +130,7 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
     ![Zugriffsrichtlinieneinstellungen](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. Klicken Sie unter **Berechtigungen für Geheimnis** auf **Abrufen**, um dem CDN das Abrufen und Auflisten der Zertifikate zu ermöglichen. 
+3. Wählen Sie **Get Secret permissions** (Berechtigungen für Geheimnis abrufen) und anschließend Berechtigungen zum Abrufen und Auflisten von Zertifikaten aus, um CDN diese Berechtigungen zu erteilen und das Abrufen und Auflisten der **Zertifikate** zu ermöglichen. 
 
 4. Klicken Sie auf **OK**. 
 
@@ -312,6 +312,9 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 
     Ihre vorhandenen Domänen werden in den kommenden Monaten nach und nach zur Verwendung eines einzelnen Zertifikats migriert, wenn von Microsoft analysiert wird, dass nur SNI-Clientanforderungen für Ihre Anwendung erfolgen. Falls Microsoft erkennt, dass für Ihre Anwendung auch einige andere Anforderungen als SNI-Clientanforderungen durchgeführt werden, wird für Ihre Domänen weiterhin das SAN-Zertifikat mit IP-basiertem TLS/SSL verwendet. Auf keinen Fall kommt es zu Unterbrechungen Ihres Diensts oder der Unterstützung Ihrer Clientanforderungen – unabhängig davon, ob es sich dabei um SNI-basierte oder nicht SNI-basierte Anforderungen handelt.
 
+7. *Wie werden eigene Zertifikate verlängert?*
+
+    Um sicherzustellen, dass ein neueres Zertifikat in der PoP-Infrastruktur bereitgestellt wird, laden Sie einfach Ihr neues Zertifikat in Azure Key Vault hoch, und wählen Sie anschließend in Azure CDN in Ihren SSL-Einstellungen die aktuelle Zertifikatversion aus. Klicken Sie anschließend auf „Speichern“. Azure CDN wird dann Ihr neues aktualisiertes Zertifikat verteilen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

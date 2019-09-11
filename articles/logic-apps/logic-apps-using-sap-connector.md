@@ -8,16 +8,21 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907569"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164983"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
+
+> [!IMPORTANT]
+> Die älteren Connectors für SAP-Anwendungsserver und SAP-Nachrichtenserver sind als veraltet markiert. Der aktuelle SAP-Connector fasst diese älteren SAP-Connectors zusammen, damit Sie den Verbindungstyp nicht ändern müssen. Darüber hinaus ist er vollständig mit vorherigen Connectors kompatibel, bietet zahlreiche Zusatzfunktionen und verwendet weiterhin die SAP-.NET-Connectorbibliothek (SAP NCo).
+>
+> Für Logik-Apps, die die älteren Connectors verwenden, muss vor dem Veraltungsdatum eine [Migration zum neuesten Connector](#migrate) durchgeführt werden. Andernfalls treten bei diesen Logik-Apps Ausführungsfehler auf, und es können keine Nachrichten an Ihr SAP-System gesendet werden.
 
 In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP-Connector verwenden. Der Connector arbeitet mit den klassischen SAP-Releases wie R/3- und ECC-Systemen lokal zusammen. Der Connector ermöglicht auch die Integration mit den neueren HANA-basierten SAP-Systemen wie S/4 HANA, unabhängig davon, ob sie lokal oder in der Cloud gehostet werden. Der SAP-Connector unterstützt die Nachrichten- oder Datenintegration in SAP NetWeaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
 
@@ -31,7 +36,7 @@ Für diese Vorgänge unterstützt der SAP-Connector die Basisauthentifizierung �
 
 Der SAP-Connector kann über das [lokale Datengateway](../logic-apps/logic-apps-gateway-connection.md) in lokale SAP-Systeme integriert werden. In Sendeszenarios, in denen beispielsweise eine Nachricht von Logik-Apps an ein SAP-System gesendet wird, agiert das Datengateway als RFC-Client und leitet die von der Logik-App erhaltenen Anforderungen an SAP weiter. Ebenso fungiert das Datengateway in Empfangsszenarios als RFC-Server, der Anforderungen von SAP empfängt und an die Logik-App weiterleitet.
 
-In diesem Artikel wird das Erstellen von in SAP integrierbaren Beispiel-Logik-Apps gezeigt. Gleichzeitig werden die zuvor beschriebenen Integrationsszenarien veranschaulicht.
+In diesem Artikel wird das Erstellen von in SAP integrierbaren Beispiel-Logik-Apps gezeigt. Gleichzeitig werden die zuvor beschriebenen Integrationsszenarien veranschaulicht. Für Logik-Apps, die die älteren SAP-Connectors verwenden, wird in diesem Artikel erläutert, wie Sie Ihre Logik-Apps zum neuesten SAP-Connector migrieren.
 
 <a name="pre-reqs"></a>
 
@@ -63,11 +68,23 @@ Um diesem Artikel weiter folgen zu können, benötigen Sie Folgendes:
 
 * Nachrichteninhalte, die Sie an Ihren SAP-Server senden können, z. B. eine IDoc-Beispieldatei, müssen im XML-Format vorliegen und den Namespace für die SAP-Aktion enthalten, die Sie verwenden möchten.
 
+<a name="migrate"></a>
+
+## <a name="migrate-to-current-connector"></a>Migrieren zum aktuellen Connector
+
+1. Aktualisieren Sie bei Bedarf Ihr [lokales Datengateway](https://www.microsoft.com/download/details.aspx?id=53127), damit Sie über die neueste Version verfügen. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem lokalen SAP-System in Logik-Apps mit dem SAP-Connector](../logic-apps/logic-apps-gateway-install.md).
+
+1. Löschen Sie in der Logik-App, die den älteren SAP-Connector verwendet, die Aktion **Send to SAP** (An SAP senden).
+
+1. Fügen Sie über den aktuellen SAP-Connector die Aktion **Send to SAP** (An SAP senden) hinzu. Diese Aktion kann erst nach erneuter Erstellung der Verbindung mit Ihrem SAP-System verwendet werden.
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App.
+
 <a name="add-trigger"></a>
 
 ## <a name="send-to-sap"></a>Senden an SAP
 
-In diesem Beispiel wird eine Logik-App verwendet, die Sie mit einer HTTP-Anforderung auslösen können. Die Logik-App sendet eine IDoc-Datei an einen SAP-Server und gibt eine Antwort an den Anforderer zurück, der die Logik-App aufgerufen hat. 
+In diesem Beispiel wird eine Logik-App verwendet, die Sie mit einer HTTP-Anforderung auslösen können. Die Logik-App sendet eine IDoc-Datei an einen SAP-Server und gibt eine Antwort an den Anforderer zurück, der die Logik-App aufgerufen hat.
 
 ### <a name="add-an-http-request-trigger"></a>Hinzufügen eines HTTP-Anforderungstriggers
 
@@ -235,7 +252,7 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
    Sie können eine Aktion auch manuell angeben:
 
-   ![SAP-Aktion manuell eingeben](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
+   ![SAP-Aktion manuell eingeben](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Dieses Beispiel stellt dar, wie die Aktion angezeigt wird, wenn Sie den Trigger für den Empfang mehrerer Nachrichten einrichten.
 
@@ -259,13 +276,13 @@ Ihre Logik-App kann jetzt Nachrichten von Ihrem SAP-System empfangen.
 
 1. Öffnen Sie die letzte Ausführung, in der die von Ihrem SAP-System gesendete Nachricht im Abschnitt mit den Triggerausgaben angezeigt wird.
 
-## <a name="receive-idocs-packets-from-sap"></a>Empfangen von IDOCs-Paketen von SAP
+## <a name="receive-idoc-packets-from-sap"></a>Empfangen von IDOC-Paketen von SAP
 
 Sie können SAP für das [Senden von IDOCs in Paketen](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html) einrichten, bei denen es sich um Batches oder Gruppen von IDOCs handelt. Zum Empfangen von IDOC-Paketen ist für den SAP-Connector und insbesondere für den Trigger keine zusätzliche Konfiguration erforderlich. Damit Sie jedoch jedes Element in einem IDOC-Paket verarbeiten können, nachdem der Trigger das Paket empfangen hat, sind einige zusätzliche Schritte erforderlich, um das Paket in einzelne IDOCs aufzuteilen.
 
-Im Folgenden sehen Sie ein Beispiel, das veranschaulicht, wie einzelne IDOCs mithilfe der [`xpath()`-Funktion](./workflow-definition-language-functions-reference.md#xpath) aus einem Paket extrahiert werden: 
+Im Folgenden sehen Sie ein Beispiel, das veranschaulicht, wie einzelne IDOCs mithilfe der [`xpath()`-Funktion](./workflow-definition-language-functions-reference.md#xpath) aus einem Paket extrahiert werden:
 
-1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie diese Logik-App noch nicht besitzen, führen Sie die vorherigen Schritte in diesem Thema aus, um [eine Logik-App mit einem SAP-Trigger](#receive-from-sap) einzurichten. 
+1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie diese Logik-App noch nicht besitzen, führen Sie die vorherigen Schritte in diesem Thema aus, um [eine Logik-App mit einem SAP-Trigger](#receive-from-sap) einzurichten.
 
    Beispiel:
 
@@ -279,7 +296,7 @@ Im Folgenden sehen Sie ein Beispiel, das veranschaulicht, wie einzelne IDOCs mit
 
 1. Fügen Sie zum Extrahieren eines einzelnen IDOC einen Schritt hinzu, der eine Arrayvariable erstellt und die IDOC-Sammlung mithilfe eines anderen `xpath()`-Ausdrucks speichert:
 
-   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Abrufen eines Arrays von Elementen](./media/logic-apps-using-sap-connector/get-array.png)
 
@@ -333,18 +350,18 @@ Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
    1. Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben.
 
-      - Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+      * Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
         ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+      * Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
         ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
       Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
 
-   1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind. 
-   
+   1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+
       Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
 
 1. Geben Sie den Pfad zu dem Artefakt an, für das Sie das Schema generieren möchten.
@@ -484,6 +501,30 @@ Beim Senden von Nachrichten mit aktivierter **Sicherer Typisierung** sieht die D
 <DATE>99991231</DATE>
 <TIME>235959</TIME>
 ```
+
+## <a name="advanced-scenarios"></a>Erweiterte Szenarien
+
+### <a name="confirm-transaction-explicitly"></a>Explizites Bestätigen der Transaktion
+
+Wenn Sie Transaktionen von Logic Apps an SAP senden, erfolgt dieser Austausch in zwei Schritten, wie im SAP-Dokument [Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true) (Transaktionsbezogene RFC-Serverprogramme) beschrieben. Von der Aktion **Send to SAP** (An SAP senden) werden standardmäßig sowohl die Schritte für die Funktionsübertragung als auch die Schritte für die Transaktionsbestätigung in einem einzelnen Aufruf abgewickelt. Der SAP-Connector ermöglicht die Entkoppelung dieser Schritte. Sie können ein IDOC-Element senden und anstatt der automatischen Transaktionsbestätigung die explizite Aktion **Confirm transaction ID** (Transaktions-ID bestätigen) verwenden.
+
+Diese Entkoppelung der Transaktions-ID-Bestätigung ist hilfreich, wenn Sie in SAP keine Transaktionen duplizieren möchten (etwa in Szenarien, in denen beispielsweise Fehler aufgrund von Netzwerkproblemen auftreten können). Durch die separate Bestätigung der Transaktions-ID wird die Transaktion nur einmal in Ihrem SAP-System durchgeführt.
+
+Hier sehen Sie ein Beispiel für dieses Muster:
+
+1. Erstellen Sie eine leere Logik-App, und fügen Sie einen HTTP-Trigger hinzu.
+
+1. Fügen Sie über den SAP-Connector die Aktion **Send IDOC** (IDOC senden) hinzu. Geben Sie die Details für das IDOC-Element an, das Sie an Ihr SAP-System senden.
+
+1. Soll die Transaktions-ID explizit in einem separaten Schritt bestätigt werden, wählen Sie unter der Eigenschaft **Confirm TID** (Transaktions-ID bestätigen) die Option **Nein** aus. Für die optionale Eigenschaft **Transaction ID GUID** (GUID der Transaktions-ID) können Sie den Wert entweder manuell angeben oder diese GUID automatisch durch den Connector generieren und in der Antwort auf die Aktion „Send IDOC“ (IDOC senden) zurückgeben lassen.
+
+   ![Eigenschaften der Aktion „Send IDOC“ (IDOC senden)](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
+
+1. Fügen Sie zur expliziten Bestätigung der Transaktions-ID die Aktion **Confirm transaction ID** (Transaktions-ID bestätigen) hinzu. Klicken Sie auf das Feld **Transaction ID** (Transaktions-ID), um die dynamische Inhaltsliste anzuzeigen. Wählen Sie in dieser Liste den **Transaktions-ID-Wert** aus, der von der Aktion **Send IDOC** (IDOC senden) zurückgegeben wurde.
+
+   ![Aktion zum Bestätigen der Transaktions-ID](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
+
+   Im Anschluss an diesen Schritt wird die aktuelle Transaktion auf beiden Seiten (also aufseiten des SAP-Connectors und aufseiten des SAP-Systems) als abgeschlossen markiert.
 
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 
