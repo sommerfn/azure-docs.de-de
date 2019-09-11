@@ -32,4 +32,4 @@ Es gibt einige Grenzwerte hinsichtlich der Anzahl von Metriken und Ereignissen p
 | Vermerkdauer von [Profiler](../articles/azure-monitor/app/profiler.md)-Daten | 5 Tage |
 | Pro Tag gesendete [Profiler](../articles/azure-monitor/app/profiler.md)-Daten | 10 GB |
 
-Weitere Informationen zu Preisen und Kontingenten für Application Insights finden Sie [hier](../articles/azure-monitor/app/pricing.md).
+Weitere Informationen zu [Preisen und Kontingenten für Application Insights ](../articles/azure-monitor/app/pricing.md)finden Sie hier.
