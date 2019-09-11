@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
-ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd7e30a6a95d60bda4b7c3da44be1b8046bb71f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685698"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163791"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Erforderliche RBAC-Berechtigungen (Role-Based Access Control) für die Verwendung von Network Watcher-Funktionen
 
@@ -27,7 +27,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/read                              | Network Watcher abrufen                                          |
 | Microsoft.Network/networkWatchers/write                             | Network Watcher erstellen oder aktualisieren                             |
@@ -35,14 +35,14 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Ein Datenflussprotokoll konfigurieren                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Status für ein Datenflussprotokoll abfragen                                    |
 
 ## <a name="connection-troubleshoot"></a>Problembehandlung für Verbindungen
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectivityCheck/action          | Initiieren eines Tests zur Problembehandlung für Verbindungen
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Ergebnisse von einem Test zur Problembehandlung für Verbindungen abfragen                |
@@ -50,7 +50,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="connection-monitor"></a>Verbindungsmonitor
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Verbindungsmonitor starten                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Verbindungsmonitor anhalten                                      |
@@ -61,7 +61,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="packet-capture"></a>Paketerfassung
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Status einer Paketerfassung abfragen                           |
 | Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Beenden einer Paketerfassung                                          |
@@ -71,51 +71,48 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="ip-flow-verify"></a>IP-Datenflussüberprüfung
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | Einen IP-Fluss überprüfen                                              |
 
 ## <a name="next-hop"></a>Nächster Hop
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/nextHop/action                    | Nächsten Hop von einer VM abrufen                                     |
 
 ## <a name="network-security-group-view"></a>Netzwerksicherheitsgruppen-Ansicht
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | Sicherheitsgruppen anzeigen                                           |
 
 ## <a name="topology"></a>Topologie
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | Topologie abrufen                                                   |
 
 ## <a name="reachability-report"></a>Erreichbarkeitsbericht
 
-| Aktion                                                              | NAME                                                           |
+| Aktion                                                              | BESCHREIBUNG                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Einen Azure-Erreichbarkeitsbericht abrufen                               |
+
 
 ## <a name="additional-actions"></a>Zusätzliche Aktionen
 
 Network Watcher-Funktionen erfordern folgende Aktionen:
 
-- Microsoft.Authorization/\*/Read
-- Microsoft.Resources/subscriptions/resourceGroups/Read
-- Microsoft.Storage/storageAccounts/Read
-- Microsoft.Storage/storageAccounts/listServiceSas/Action
-- Microsoft.Storage/storageAccounts/listAccountSas/Action
-- Microsoft.Storage/storageAccounts/listKeys/Action
-- Microsoft.Compute/virtualMachines/Read
-- Microsoft.Compute/virtualMachines/Write
-- Microsoft.Compute/virtualMachines/extensions/Read
-- Microsoft.Compute/virtualMachines/extensions/Write
-- Microsoft.Compute/virtualMachineScaleSets/Read
-- Microsoft.Compute/virtualMachineScaleSets/Write
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Read
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Write
-- Microsoft.Insights/alertRules/*
-- Microsoft.Support/*
+| Aktion(en)                                                           | BESCHREIBUNG                                                    |
+| ---------                                                           | -------------                                                  |
+| Microsoft.Authorization/\*/Read                                     | Wird zum Abrufen von RBAC-Rollenzuweisungen und Richtliniendefinitionen verwendet.          |
+| Microsoft.Resources/subscriptions/resourceGroups/Read               | Wird zum Auflisten aller Ressourcengruppen eines Abonnements verwendet.    |
+| Microsoft.Storage/storageAccounts/Read                              | Wird verwendet, um die Eigenschaften für das angegebene Speicherkonto abzurufen.   |
+| Microsoft.Storage/storageAccounts/listServiceSas/Action, </br> Microsoft.Storage/storageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| Wird zum Abrufen von Shared Access Signatures (SAS) verwendet, die den [sicheren Zugriff auf das Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) und das Schreiben in das Speicherkonto ermöglichen. |
+| Microsoft.Compute/virtualMachines/Read, </br> Microsoft.Compute/virtualMachines/Write| Wird für das Anmelden an der VM, Durchführen einer Paketerfassung und Hochladen in das Speicherkonto verwendet.|
+| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Wird verwendet, um das Vorhandensein der Network Watcher-Erweiterung zu überprüfen und bei Bedarf die Installation durchzuführen. |
+| Microsoft.Compute/virtualMachineScaleSets/Read, </br> Microsoft.Compute/virtualMachineScaleSets/Write| Wird zum Zugreifen auf VM-Skalierungsgruppen, Durchführen von Paketerfassungen und Hochladen in ein Speicherkonto verwendet.|
+| Microsoft.Compute/virtualMachineScaleSets/extensions/Read, </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| Wird verwendet, um das Vorhandensein der Network Watcher-Erweiterung zu überprüfen und bei Bedarf die Installation durchzuführen. |
+| Microsoft.Insights/alertRules/*                                     | Wird zum Einrichten von Metrikwarnungen verwendet.                                     |
+| Microsoft.Support/*                                                 | Wird verwendet, um Supporttickets über Network Watcher zu erstellen und zu aktualisieren. |

@@ -1,5 +1,5 @@
 ---
-title: Kontinuierliche Integration und Entwicklung mit dem Stream Analytics CI/CD NuGet-Paket
+title: Verwenden des CI/CD-NuGet-Pakets von Azure Stream Analytics für die Integration und Entwicklung
 description: In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD NuGet-Pakets einrichten.
 services: stream-analytics
 author: su-jie
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47bcd29ca8a1da0c42f7bc39aeb4ffc1ad8e8571
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827311"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172903"
 ---
-# <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>Kontinuierliche Integration und Entwicklung mit dem Stream Analytics CI/CD NuGet-Paket
+# <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Verwenden des CI/CD-NuGet-Pakets von Azure Stream Analytics für die Integration und Entwicklung 
 In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD NuGet-Pakets einrichten.
 
 Verwenden Sie Version 2.3.0000.0 oder höher der [Stream Analytics-Tools für Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio), um Unterstützung für MSBuild zu erhalten.

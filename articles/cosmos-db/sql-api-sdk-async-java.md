@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 3bee473adde9c4762cf400dff6190eb76a4cc8d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 156699b8d8c1a645961f4e919bdd843d995a3d18
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624690"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142646"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -45,14 +45,14 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
-* TCP-Modus ist jetzt standardmäßig aktiviert
-* Die Abfragemetriken für übergreifende Partitionen geben jetzt alle Partitionen zurück
-* „Global Strong“ funktioniert jetzt ordnungsgemäß
-* Failover für Abfragen wiederholt bei Multimaster nicht ordnungsgemäß
+* TCP-Modus ist jetzt standardmäßig aktiviert.
+* Die Abfragemetriken für übergreifende Partitionen geben jetzt alle Partitionen zurück.
+* „Global Strong“ funktioniert jetzt ordnungsgemäß.
+* Failover für Abfragen wiederholt bei Multimaster nicht ordnungsgemäß.
 * Abhängigkeitsbumps für Sicherheits-Hotfixes
 
 ### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
-* Fehlerbehebung für Hash V2-Support
+* Fehlerbehebung für Hash V2-Unterstützung
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * Fehlerbehebung für Ressourcenverlust bei client#close()  ([Github 88](https://github.com/Azure/azure-cosmosdb-java/issues/88)).
@@ -152,6 +152,10 @@ Neue Features, Funktionen und Optimierungen werden nur zum aktuellen SDK hinzuge
 
 Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
+> [!WARNING]
+> Alle Versionen vom Typ **1.x** des Async Java SDK für die SQL-API werden am **30. August 2020** eingestellt.
+> 
+>
 <br/>
 
 | Version | Herausgabedatum | Deaktivierungstermine |
@@ -169,9 +173,9 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 | [2.1.0](#2.1.0) |5\. September 2018|--- |
 | [2.0.1](#2.0.1) |16. August 2018|--- |
 | [2.0.0](#2.0.0) |20. Juni 2018|--- |
-| [1.0.2](#1.0.2) |18. Mai 2018|--- |
-| [1.0.1](#1.0.1) |20. April 2018|--- |
-| [1.0.0](#1.0.0) |27. Februar 2018|--- |
+| [1.0.2](#1.0.2) |18. Mai 2018|30. August 2020 |
+| [1.0.1](#1.0.1) |20. April 2018|30. August 2020 |
+| [1.0.0](#1.0.0) |27. Februar 2018|30. August 2020 |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

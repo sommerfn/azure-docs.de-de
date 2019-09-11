@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927297"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171916"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -65,17 +65,16 @@ Gehen Sie wie folgt vor, um diesen HTML-Inhalt im Blob-Speicher zu hosten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü **Hub** die Option **Neu** > **Speicher** > **Speicherkonto**.
-3. Geben Sie einen eindeutigen **Namen** für Ihr Speicherkonto ein.
-4. Als **Bereitstellungsmodell** können Sie **Resource Manager** unverändert lassen.
-5. Ändern Sie **Kontoart** in **Blob Storage**.
-6. Für **Leistung** können Sie **Standard** übernehmen.
-7. Für **Replikation** können Sie **RA-GRS** übernehmen.
-8. Für **Zugriffstarif** können Sie **Heiß** übernehmen.
-9. Für **Speicherdienstverschlüsselung** können Sie **Deaktiviert** übernehmen.
-10. Wählen Sie ein **Abonnement** für Ihr Speicherkonto aus.
-11. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-12. Wählen Sie den **geografischen Standort** für das Speicherkonto aus.
-13. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.  
+3. Wählen Sie ein **Abonnement** für Ihr Speicherkonto aus.
+4. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+5. Geben Sie einen eindeutigen **Namen** für Ihr Speicherkonto ein.
+6. Wählen Sie den **geografischen Standort** für das Speicherkonto aus. 
+7. Als **Bereitstellungsmodell** können Sie **Resource Manager** unverändert lassen.
+8. Für **Leistung** können Sie **Standard** übernehmen.
+9. Ändern Sie **Kontoart** in **Blob Storage**.
+10. Für **Replikation** können Sie **RA-GRS** übernehmen.
+11. Für **Zugriffstarif** können Sie **Heiß** übernehmen. 
+12. Klicken Sie auf **Überprüfen + erstellen**, um das Speicherkonto zu erstellen.  
     Nach Abschluss der Bereitstellung wird automatisch das Blatt **Speicherkonto** geöffnet.
 
 ## <a name="create-a-container"></a>Erstellen eines Containers

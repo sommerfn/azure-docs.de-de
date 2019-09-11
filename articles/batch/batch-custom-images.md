@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036693"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141825"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines Pools
 
@@ -23,7 +23,7 @@ Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Comput
 
 Wenn Sie Shared Image Gallery für Ihr benutzerdefiniertes Image verwenden, haben Sie die Kontrolle über den Typ und die Konfiguration des Betriebssystems sowie über den Typ der Datenträger. Ihr freigegebenes Image kann Anwendungen und Verweisdaten enthalten, die auf allen Knoten des Batch-Pools verfügbar werden, sobald sie bereitgestellt werden.
 
-Sie können auch nach Bedarf mehrere Versionen eines Image für Ihre Umgebung verwenden. Wenn Sie eine Imageversion zum Erstellen eines virtuellen Computers verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. 
+Sie können auch nach Bedarf mehrere Versionen eines Image für Ihre Umgebung verwenden. Wenn Sie eine Imageversion zum Erstellen eines virtuellen Computers verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen.
 
 Durch die Verwendung eines freigegebenen Image sparen Sie Zeit beim Vorbereiten der Computekonten des Pools auf die Ausführung Ihrer Batch-Workload. Es ist zwar möglich, nach der Bereitstellung ein Azure Marketplace-Image zu verwenden und Software auf jedem Computeknoten zu installieren, aber die Verwendung eines freigegebenen Image ist in der Regel effizienter. Darüber hinaus können Sie mehrere Replikate für das freigegebene Image angeben, sodass Sie beim Erstellen von Pools mit vielen VMs (mehr als 600 VMs) Zeit bei der Poolerstellung sparen.
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Erstellen eines Pools auf der Grundlage eines freigegebenen Images über das Azure-Portal
+
+Gehen Sie wie folgt vor, um über das Azure-Portal einen Pool auf der Grundlage eines freigegebenen Images zu erstellen:
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Navigieren Sie zu **Batch-Konten**, und wählen Sie Ihr Konto aus.
+1. Wählen Sie **Pools** und anschließend **Hinzufügen** aus, um einen neuen Pool zu erstellen.
+1. Wählen Sie im Abschnitt **Imagetyp** die Option **Shared Image Gallery** aus.
+1. Geben Sie in den restlichen Abschnitten Informationen zu Ihrem verwalteten Image an.
+1. Klicken Sie auf **OK**.
+
+![Erstellen Sie einen Pool auf der Grundlage eines freigegebenen Images mithilfe des Portals.](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>Überlegungen zu großen Pools
 

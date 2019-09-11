@@ -1,25 +1,25 @@
 ---
-title: Die serielle Azure-Konsole für Linux | Microsoft-Dokumentation
-description: Bidirektionale serielle Konsole für Azure Virtual Machines und Virtual Machine Scale Sets
+title: Serielle Azure-Konsole | Microsoft-Dokumentation
+description: Über die serielle Azure-Konsole können Sie eine Verbindung mit Ihrem virtuellen Computer herstellen, wenn SSH und RDP nicht verfügbar sind.
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
 manager: borisb
 editor: ''
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/6/2019
+ms.date: 8/30/2019
 ms.author: alsin
-ms.openlocfilehash: cc964b1b11a68921c1d5d2b68a7413934565fdc8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129450"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194160"
 ---
 # <a name="azure-serial-console"></a>Serielle Azure-Konsole
 

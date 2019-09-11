@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: acd873cd19cafb785f968fd3d8671640bcfafed8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163705"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170562"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -396,15 +396,15 @@ Die Dateisystemprotokollierung muss im Azure-Portal oder in der Azure CLI aktivi
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
-In Functions werden [App-Einstellungen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Sie können über `System.getenv("AzureWebJobsStorage")` auf diese Einstellungen zugreifen.
+In Functions werden [App-Einstellungen](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Sie können über `System.getenv("AzureWebJobsStorage")` auf diese Einstellungen zugreifen.
 
-Sie können z.B. [AppSetting](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) mit dem Namen `testAppSetting` und dem Wert `testAppSettingValue` hinzufügen:
+Im folgenden Beispiel wird die [Anwendungseinstellung](functions-how-to-use-azure-function-app-settings.md#settings) mit dem Schlüssel `myAppSetting` ermittelt:
 
 ```java
 
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
-        context.getLogger().info("testAppSetting "+ System.getenv("testAppSettingValue"));
+        context.getLogger().info("My app setting value: "+ System.getenv("myAppSetting"));
         return String.format(req);
     }
 }

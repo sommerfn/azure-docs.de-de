@@ -1,28 +1,23 @@
 ---
-title: Tools zum Durchsuchen und Visualisieren von Daten – Azure | Microsoft-Dokumentation
+title: Tools zum Durchsuchen und Visualisieren von Daten
+titleSuffix: Azure Data Science Virtual Machine
 description: Tools zum Durchsuchen und Visualisieren von Daten für die Data Science-VM.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065904"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191963"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Auf der Data Science-VM verfügbare Tools zum Durchsuchen und Visualisieren von Daten
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>In Azure Data Science Virtual Machine verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
 In der Data Science geht es im Kern darum, die jeweiligen Daten zu verstehen. Hierbei helfen Tools zum Durchsuchen und Visualisieren von Daten. Die folgenden Tools, die auf der Data Science Virtual Machine (DSVM) bereitgestellt werden, vereinfachen diesen wesentlichen Schritt.
 

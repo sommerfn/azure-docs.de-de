@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847990"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182544"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning Service
 
@@ -39,7 +39,7 @@ Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure 
     >
     > Die CLI-Beispiele verwenden einen Platzhalter von `myworkspace` und `myresourcegroup`. Ersetzen Sie diese durch den Namen Ihres Arbeitsbereichs und die Ressourcengruppe, die ihn enthält.
 
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und die [Machine Learning-CLI-Erweiterung](reference-azure-machine-learning-cli.md).
 
@@ -76,23 +76,40 @@ Weitere Informationen zur Modellregistrierung im Allgemeinen finden Sie unter [V
 
 ## <a name="define-inference-configuration"></a>Definieren der Rückschlusskonfiguration
 
-Die Rückschlusskonfiguration definiert die Umgebung, in der das bereitgestellte Modell ausgeführt wird. Die Rückschlusskonfiguration verweist auf die folgenden Dateien, die zum Ausführen des Modells verwendet werden, wenn es bereitgestellt wird:
+Die Rückschlusskonfiguration definiert die Umgebung, in der das bereitgestellte Modell ausgeführt wird. Die Rückschlusskonfiguration verweist auf die folgenden Entitäten, die zum Ausführen des Modells verwendet werden, wenn es bereitgestellt wird:
 
-* Die Runtime. Der einzige gültige Wert für die Runtime ist derzeit Python.
 * Ein Eingabeskript. Diese Datei (namens `score.py`) lädt das Modell, wenn der bereitgestellte Dienst gestartet wird. Sie ist auch dafür verantwortlich, Daten zu empfangen, sie an das Modell weiterzugeben und dann eine Antwort zurückzugeben.
-* Eine Conda-Umgebungsdatei. Diese Datei definiert die Python-Pakete, die für die Ausführung des Modells und des Eingabeskripts erforderlich sind. 
+* Eine Azure Machine Learning Service-[Umgebung](how-to-use-environments.md). Mit einer Umgebung werden die Softwareabhängigkeiten definiert, die zum Ausführen des Modells und Eingabeskripts benötigt werden.
 
-Das folgende Beispiel zeigt eine grundlegende Rückschlusskonfiguration mit dem Python SDK:
+Im folgenden Beispiel wird veranschaulicht, wie das SDK genutzt wird, um eine Umgebung zu erstellen und dann mit einer Rückschlusskonfiguration zu verwenden:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-Weitere Informationen finden Sie in der [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)-Referenz.
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
++ [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md)
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)-Referenz
+
 
 Die CLI lädt die Rückschlusskonfiguration aus einer YAML-Datei:
 
@@ -102,6 +119,20 @@ Die CLI lädt die Rückschlusskonfiguration aus einer YAML-Datei:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+Mit der CLI wird die Conda-Umgebung in der Datei `myenv.yml` definiert, auf die in der Rückschlusskonfiguration verwiesen wird. Der folgende YAML-Code gibt den Inhalt dieser Datei wieder:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
-
-### <a name="conda-environment"></a>Conda-Umgebung
-
-Der folgende YAML-Code beschreibt die Conda-Umgebung, die für die Ausführung des Modells und des Eingabeskripts erforderlich ist:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definieren der Bereitstellung
 

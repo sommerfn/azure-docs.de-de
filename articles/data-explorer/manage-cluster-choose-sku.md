@@ -1,20 +1,20 @@
 ---
-title: Wählen Sie die richtige VM-SKU für Ihren Azure Data Explorer-Cluster aus.
-description: Dieser Artikel beschreibt, wie Sie die optimale SKU-Größe für den Azure Data Explorer-Cluster auswählen.
-author: avnera
+title: Auswählen der passenden VM-SKU für Ihren Azure Data Explorer-Cluster
+description: In diesem Artikel erfahren Sie, wie Sie die optimale SKU-Größe für den Azure Data Explorer-Cluster auswählen.
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515724"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186751"
 ---
-# <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Wählen Sie die richtige VM-SKU für Ihren Azure Data Explorer-Cluster aus. 
+# <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Auswählen der passenden VM-SKU für Ihren Azure Data Explorer-Cluster 
 
 Wenn Sie einen neuen Cluster erstellen oder einen Cluster für eine veränderliche Workload optimieren, bietet Azure Data Explorer mehrere VM-SKUs zur Auswahl an. Die VMs wurden sorgfältig ausgewählt, um die optimalsten Kosten für jede Workload zu erzielen. 
 
@@ -29,11 +29,11 @@ Dieser Artikel beschreibt verschiedene VM-SKU-Optionen und liefert die technisch
 
 ## <a name="select-a-cluster-type"></a>Auswählen des Clustertyps
 
-Azure Data Explorer stellt zwei Arten von Clustern bereit:
+Azure Data Explorer bietet zwei Arten von Clustern:
 
-* **Produktion**: Produktionscluster enthalten zwei Knoten für Engine und Datenverwaltungscluster und werden unter dem Azure Data Explorer-[SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/) betrieben.
+* **Produktion:** Produktionscluster enthalten zwei Knoten für Engine und Datenverwaltungscluster und werden unter dem Azure Data Explorer-[SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/) betrieben.
 
-* **Dev/Test (kein SLA)** : Dev/Test-Cluster haben einen einzigen D11 v2-Knoten für den Engine-Cluster und einen einzigen D1-Knoten für den Datenverwaltungscluster. Dieser Clustertyp ist die kostengünstigste Konfiguration aufgrund seiner geringen Anzahl von Instanzen und der fehlenden Aufschlaggebühren für die Engine. Für diese Clusterkonfiguration gibt es kein SLA, da ihr die Redundanz fehlt.
+* **Dev/Test (kein SLA):** Dev/Test-Cluster haben einen einzigen D11 v2-Knoten für den Engine-Cluster und einen einzigen D1-Knoten für den Datenverwaltungscluster. Dieser Clustertyp ist die kostengünstigste Konfiguration aufgrund seiner geringen Anzahl von Instanzen und der fehlenden Aufschlaggebühren für die Engine. Für diese Clusterkonfiguration gibt es kein SLA, da ihr die Redundanz fehlt.
 
 ## <a name="sku-types"></a>SKU-Typen
 
@@ -43,20 +43,20 @@ Wählen Sie beim Erstellen eines Azure Data Explorer-Clusters die *optimale* VM-
     * Die VM selbst
     * Die VM mit Premium-Speicher für Datenträger im Paket
 
-* **LS**: Die L-SKU ist datenspeicheroptimiert. Sie hat eine viel größere SSD-Größe als die preislich vergleichbare D-SKU.
+* **LS:** Die L-SKU ist datenspeicheroptimiert. Sie hat eine viel größere SSD-Größe als die preislich vergleichbare D-SKU.
 
 Die wesentlichen Unterschiede zwischen den verfügbaren SKU-Typen werden in der folgenden Tabelle beschrieben:
  
 | Attribut | D-SKU | L-SKU |
 |---|---|---
 |**Kleine SKUs**|Mindestgröße ist D11 mit zwei Kernen|Mindestgröße ist L4 mit vier Kernen |
-|**Verfügbarkeit**|In allen Regionen verfügbar (die DS+PS-Version ist nur eingeschränkt verfügbar)|In einigen Region verfügbar |
+|**Verfügbarkeit**|In allen Regionen verfügbar. (Die DS+PS-Version ist nur eingeschränkt verfügbar.)|In einigen Region verfügbar |
 |**Kosten pro&nbsp;GB-Cache pro Kern**|Hoch mit der D-SKU, gering mit der DS+PS-Version|Am niedrigsten mit der Option „Nutzungsbasierte Zahlung“ |
 |**Preise für reservierte Instanzen (RI)**|Hoher Rabatt (über 55&nbsp;% für eine dreijährige Verpflichtung)|Niedrigerer Rabatt (20&nbsp;% für eine dreijährige Verpflichtung) |  
 
-## <a name="select-your-cluster-vm"></a>Auswählen Ihrer Cluster-VM 
+## <a name="select-your-cluster-vm"></a>Auswählen Ihres virtuellen Clustercomputers 
 
-Um Ihre Cluster-VM auszuwählen, [konfigurieren Sie die vertikale Skalierung](manage-cluster-vertical-scaling.md#configure-vertical-scaling). 
+[Konfigurieren Sie die vertikale Skalierung](manage-cluster-vertical-scaling.md#configure-vertical-scaling), um Ihren virtuellen Clustercomputer auszuwählen. 
 
 Mit den verschiedenen verfügbaren VM-SKU-Optionen können Sie die Kosten für die Leistung und die Hot-Cache-Anforderungen Ihres Szenarios optimieren. 
 * Wenn Sie die optimale Leistung bei hohem Abfragevolumen benötigen, sollte die ideale SKU für Compute optimiert werden. 
@@ -68,7 +68,7 @@ Da die Anzahl der Instanzen pro Cluster für die kleinen SKUs begrenzt ist, ist 
 
 Die technischen Spezifikationen für die Cluster-VMs von Azure Data Explorer werden in der folgenden Tabelle beschrieben:
 
-|**Name**| **Kategorie** | **SSD-Größe** | **Kerne** | **RAM** | **Storage Premium-Datenträger (1&nbsp;TB)**| **Minimale Anzahl der Instanzen pro Cluster** | **Maximale Anzahl der Instanzen pro Cluster**
+|**Name**| **Kategorie** | **SSD-Größe** | **Kerne** | **RAM** | **Storage Premium-Datenträger (1&nbsp;TB)**| **Minimale Anzahl von Instanzen pro Cluster** | **Maximale Anzahl von Instanzen pro Cluster**
 |---|---|---|---|---|---|---|---
 |D11 v2| Compute-optimiert | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8 (außer für Dev/Test-SKU, dort liegt sie bei 1)
 |D12 v2| Compute-optimiert | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
@@ -83,7 +83,7 @@ Die technischen Spezifikationen für die Cluster-VMs von Azure Data Explorer wer
 |L16s_1| Speicheroptimiert | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1\.000
 
 * Sie können die aktualisierte VM-SKU-Liste pro Region mithilfe der Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet) anzeigen. 
-* Weitere Informationen zu den [verschiedenen Compute-SKUs](/azure/virtual-machines/windows/sizes-compute). 
+* Weitere Informationen zu den verschiedenen SKUs finden Sie [hier](/azure/virtual-machines/windows/sizes). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

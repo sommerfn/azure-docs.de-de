@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98b72d9b5e59155bb7215181fd1ecd336126ee6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4001f3c88b676a2786159946a8981823e18ea5f6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440974"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274412"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -179,7 +179,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Wie lange ist der Einmalpasscode per E-Mail und SMS gültig?**
 
-  > **A:** Die Sitzungsdauer für die Kennwortzurücksetzung beträgt 15 Minuten. Ab dem Beginn des Vorgangs zur Kennwortzurücksetzung hat der Benutzer 15 Minuten Zeit, das Kennwort zurückzusetzen. Die E-Mail- und SMS-Einmalkennungen sind nach Ablauf dieses Zeitraums ungültig.
+  > **A:** Die Sitzungsdauer für die Kennwortzurücksetzung beträgt 15 Minuten. Ab dem Beginn des Vorgangs zur Kennwortzurücksetzung hat der Benutzer 15 Minuten Zeit, das Kennwort zurückzusetzen. Der Einmalpasscode per E-Mail oder SMS ist während der Sitzung der Kennwortzurücksetzung 5 Minuten lang gültig.
   >
   >
 * **F:  Kann ich das Zurücksetzen von Kennwörtern durch Benutzer blockieren?**

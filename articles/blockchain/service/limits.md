@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027652"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147147"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Einschränkungen des Azure Blockchain-Diensts
 
@@ -34,7 +34,7 @@ Das Wechseln zwischen den Tarifen „Basic“ und „Standard“ nach der Erstel
 
 ## <a name="storage-capacity"></a>Speicherkapazität
 
-Die maximale Speichermenge, die pro Knoten für Ledgerdaten und Protokolle verwendet werden kann, beträgt 1 Terabyte.
+Die maximale Speichermenge, die pro Knoten für Ledgerdaten und Protokolle verwendet werden kann, beträgt 1,8 Terabyte.
 
 Die Speichergröße für Ledger und Protokolle kann nicht verringert werden.
 

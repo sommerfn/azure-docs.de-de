@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 08/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666363"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172925"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -76,7 +76,7 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 1. Benennen Sie die Spaltenüberschriften ggf. um. Der Name der Schlüsselspalte ist für die Verknüpfung mit der entsprechenden Eigenschaft in Ihrer Ereignisquelle erforderlich. Stellen Sie sicher, dass die Namen der Referenzdaten-Spaltennamen exakt mit dem Ereignisnamen der eingehenden Daten übereinstimmen. Dabei muss auch die Groß- und Kleinschreibung beachtet werden. Die Namen der Spalten, bei denen es sich nicht um Schlüsselspalten handelt, werden dazu verwendet, die eingehenden Daten mit den entsprechenden Referenzdatenwerten zu ergänzen.
 
-1. Wählen Sie **„Zeile hinzufügen“** oder **„Spalte hinzufügen“** , um bei Bedarf weitere Referenzdatenwerte hinzuzufügen.
+1. Wählen Sie **Zeile hinzufügen** oder **Spalte hinzufügen** aus, um bei Bedarf weitere Referenzdatenwerte hinzuzufügen.
 
 1. Geben Sie im Feld **Filter the rows...** (Zeilen filtern...) einen Wert ein, um bei Bedarf bestimmte Zeilen zu überprüfen. Der Filter ist praktisch für die Überprüfung von Daten, wird beim Hochladen der Daten jedoch nicht angewendet.
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051211"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164548"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Installieren und Ausführen eines Containers für die Formularerkennung
 
@@ -58,28 +58,25 @@ Die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeiche
 
 | Container | Minimum | Empfohlen |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 Kerne, 4 GB Arbeitsspeicher | 4 Kerne, 8 GB Arbeitsspeicher |
+| Formularerkennung | 2 Kerne, 4 GB Arbeitsspeicher | 4 Kerne, 8 GB Arbeitsspeicher |
+| Texterkennung | 1 Kern, 8 GB Arbeitsspeicher | 2 Kerne, 8 GB Arbeitsspeicher |
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
-* TPS: Transaktionen pro Sekunde
 * Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
 > [!Note]
 > Die Mindestanforderungen und empfohlenen Werte basieren auf Docker-Grenzwerten und *nicht* auf den Ressourcen des Hostcomputers.
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>Abrufen des Containerimages mit dem Befehl „docker pull“
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>Abrufen der Containerimages mit dem Befehl „docker pull“
 
-Containerimages für Formularerkennung stehen im folgenden Repository zur Verfügung:
+Containerimages für die Angebote für **Formularerkennung** und **Texterkennung** sind in der folgenden Containerregistrierung verfügbar:
 
-| Container | Repository |
+| Container | Vollqualifizierter Imagename |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Formularerkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Texterkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Wenn Sie anstelle des Dienst zur Formularerkennung den [Container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) `cognitive-services-recognize-text` verwenden möchten, verwenden Sie den Befehl `docker pull` unbedingt mit dem richtigen Containernamen: 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+Sie benötigen beide Container. Ausführliche Informationen zum Container **Texterkennung** finden Sie [außerhalb dieses Artikels](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull).
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Verwenden Sie den folgenden Befehl zum Abrufen des Containers für Formularerken
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-Pullvorgang für den Container für die Texterkennung
+
+#### <a name="recognize-text"></a>Texterkennung
+
+Verwenden Sie den folgenden Befehl zum Abrufen des Containers für Texterkennung:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers

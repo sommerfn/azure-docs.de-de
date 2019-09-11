@@ -1,5 +1,5 @@
 ---
-title: Continuous Integration (CI) und Continuous Devolpment (CD) mit dem Azure Stream Analytics CI/CD npm-Paket
+title: Verwenden des CI/CD-npm-Pakets von Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD npm-Pakets einrichten.
 services: stream-analytics
 author: su-jie
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df9afaaeeb7e41c111fe6bd053047095a9cb9349
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158507"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173345"
 ---
-# <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>Continuous Integration (CI) und Continuous Devolpment (CD) mit dem Stream Analytics CI/CD npm-Paket
+# <a name="use-the-stream-analytics-cicd-npm-package"></a>Verwenden des CI/CD-npm-Pakets von Stream Analytics
 In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD npm-Pakets einrichten.
 
 ## <a name="build-the-vs-code-project"></a>Erstellen des VS CodeProjekts

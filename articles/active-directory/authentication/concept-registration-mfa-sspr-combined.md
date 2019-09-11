@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537006"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162416"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -52,7 +52,7 @@ Bei der kombinierten Registrierung werden die folgenden Authentifizierungsmethod
 | Phone | Ja | Ja | Ja |
 | Alternatives Telefon | Ja | Ja | Ja |
 | Bürotelefon | Nein | Nein | Nein |
-| E-Mail | Ja | Ja | Ja |
+| Email | Ja | Ja | Ja |
 | Sicherheitsfragen | Ja | Nein | Ja |
 | App-Kennwörter | Ja | Nein | Ja |
 
@@ -134,6 +134,8 @@ Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, navigiert zu [
 Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, die für die mehrstufige Authentifizierung verwendet werden kann, navigiert zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Der Benutzer ändert die aktuell verwendete Standardmethode in eine andere Standardmethode. Anschließend wird die neue Standardmethode auf der Seite „Sicherheitsinformation“ angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+[Erzwingen der erneuten Registrierung von Authentifizierungsmethoden durch Benutzer](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
 [Aktivieren der kombinierten Registrierung in Ihrem Mandanten](howto-registration-mfa-sspr-combined.md)
 

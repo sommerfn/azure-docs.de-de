@@ -1,5 +1,5 @@
 ---
-title: „Angemeldet bleiben“ in Azure Active Directory B2C | Microsoft-Dokumentation
+title: „Angemeldet bleiben“ in Azure Active Directory B2C
 description: Erfahren Sie, wie Sie die Option „Angemeldet bleiben“ in Azure Active Directory B2C festlegen.
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 08/29/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e99dacbe7ae0f42919616e04e60bf4f21b9bd985
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 29cdf5e7723113b4673945bf5db3158680a44b79
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835380"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147037"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aktivieren von „Angemeldet bleiben“ in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Sie können die Funktion „Angemeldet bleiben“ für Ihre Webanwendungen und nativen Anwendungen in Azure Active Directory (Azure AD) B2C aktivieren. Dieses Feature gewährt wiederkehrenden Benutzern Zugriff auf Anwendungen, ohne dass sie dazu aufgefordert werden, ihren Benutzernamen und das zugehörige Kennwort erneut einzugeben. Dieser Zugriff wird widerrufen, wenn sich der Benutzer abmeldet.
+Sie können die Funktion „Angemeldet bleiben“ (Keep Me Signed In, KMSI) für Benutzer Ihrer webbasierten und nativen Anwendungen aktivieren, die über lokale Konten in Ihrem Azure AD B2C-Verzeichnis (Azure Active Directory B2C) verfügen. Dieses Feature gewährt wiederkehrenden Benutzern Zugriff auf Ihre Anwendung, ohne dass sie zur erneuten Eingabe von Benutzername und Kennwort aufgefordert werden. Dieser Zugriff wird widerrufen, wenn sich der Benutzer abmeldet.
 
 Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren.
 
@@ -29,7 +29,9 @@ Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure AD B2C-Mandant ist zur Zulassung der Registrierung/Anmeldung für ein lokales Konto konfiguriert. Falls Sie noch keinen Mandanten besitzen, können Sie zum Erstellen die Schritte unter [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) ausführen.
+Ein Azure AD B2C-Mandant, der die Anmeldung lokaler Konten zulässt. KMSI wird für externe Identitätsanbieterkonten nicht unterstützt.
+
+Falls Sie noch keinen Mandanten besitzen, können Sie zum Erstellen die Schritte unter [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) ausführen.
 
 ## <a name="add-a-content-definition-element"></a>Hinzufügen eines Inhaltsdefinitionselements
 
@@ -87,7 +89,7 @@ Fügen Sie die Anwendungsbezeichner zur Datei *TrustFrameworkExtensions.xml* hin
 
 1. Suchen Sie in der Datei *TrustFrameworkExtensions.xml* nach dem Element **TechnicalProfile** mit dem Bezeichner `login-NonInteractive` und nach dem Element **TechnicalProfile** mit dem Bezeichner `login-NonInteractive-PasswordChange`. Ersetzen Sie dann alle Werte von `IdentityExperienceFrameworkAppId` durch den Anwendungsbezeichner der Identity Experience Framework-Anwendung gemäß Beschreibung in [Erste Schritte](active-directory-b2c-get-started-custom.md).
 
-    ```
+    ```XML
     <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
     ```
 
@@ -183,11 +185,3 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 5. Um die benutzerdefinierte Richtlinie zu testen, die Sie hochgeladen haben, wechseln Sie im Azure-Portal zur Richtlinienseite, und klicken Sie dann auf **Jetzt ausführen**.
 
 Die Beispielrichtlinie finden Sie [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
-
-
-
-
-
-
-
-

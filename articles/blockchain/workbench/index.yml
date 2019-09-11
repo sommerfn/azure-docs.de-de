@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Azure Blockchain Workbench-Dokumentation
+title: Dokumentation zur Vorschauversion von Azure Blockchain Workbench
 summary: Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain Workbench bereitstellen und Blockchain-Anwendungen in Azure erstellen und verwalten.
 metadata:
-  title: 'Dokumentation zu Azure Blockchain Workbench: Tutorials, API-Referenz'
+  title: 'Dokumentation zur Vorschauversion von Azure Blockchain Workbench: Tutorials, API-Referenz'
   description: Erfahren Sie, wie Sie Blockchain-Anwendungen entwickeln. In Tutorials, API-Referenzen und anderen Dokumentationen erfahren Sie, wie Sie Azure Blockchain Workbench bereitstellen und Blockchain-Anwendungen in Azure erstellen und verwalten.
   services: azure-blockchain
   ms.service: azure-blockchain
   ms.topic: landing-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 08/29/2019
-  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70240816"
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845026"
 landingContent:
 - title: Info zu Azure Blockchain Workbench
   linkLists:

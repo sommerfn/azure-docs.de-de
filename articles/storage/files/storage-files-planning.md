@@ -141,7 +141,7 @@ Premium-Dateifreigaben können ihren IOPS-Wert bis zu Faktor drei erhöhen. Burs
 Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise hat eine 100GiB-Freigabe 100 IOPS-Grundwerte. Wenn der eigentliche Datenverkehr auf der Freigabe 40IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 60 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
 
 > [!TIP]
-> Größe des Burstbuckets = IOPS-Grundwert x 2 x 3600.
+> Größe des Burstbuckets = IOPS-Grundwert * 2 * 3600.
 
 Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen durch. Freigaben können solange Burstübertragungen durchführen, wie Guthaben übrig sind, aber Freigaben, die kleiner sind als 50TiB, bleiben nur bis zu einer Stunde auf dem Burstgrenzwert. Freigaben, die größer sind als 50TiB, können dieses einstündige Limit technisch überschreiten, bis zu zwei Stunden, aber dies basiert auf der Anzahl der gesammelten Burstguthaben. Jede EA über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114297"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147903"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Konfigurieren Ihrer Web-App finden Sie in der Dokumentation zu [App Service für Linux](/azure/app-service/containers/).
+* In der Dokumentation zu [App Service für Linux](/azure/app-service/containers/) erfahren Sie, wie Sie Ihre Web-App konfigurieren.
 * Weitere Informationen zur Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* Weitere Informationen zur SSL-Unterstützung finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
-* Weitere Informationen zur Authentifizierung finden Sie unter [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](/azure/app-service/configure-authentication-provider-aad).
+* [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](/azure/app-service/app-service-web-ssl-cert-load)
+* [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](/azure/app-service/configure-authentication-provider-aad)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779292"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170662"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -52,8 +52,10 @@ Weitere Informationen finden Sie unter [Azure App Service – statische Zugriffs
 ## <a name="private-site-access"></a>Privater Websitezugriff
 
 Privater Websitezugriff bezieht sich darauf, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z. B. über ein virtuelles Azure-Netzwerk. 
-* Zugriff auf private Sites ist im [Premium](./functions-premium-plan.md)- und [App Service-Plan](functions-scale.md#app-service-plan) verfügbar, wenn **Dienstendpunkte** konfiguriert sind. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
-    * Bedenken Sie, dass Ihre Funktion auch mit Dienstendpunkten immer noch vollständigen ausgehenden Zugriff auf das Internet besitzt, selbst wenn die virtuelle Netzwerkintegration konfiguriert ist.
+* Zugriff auf private Sites ist im [Premium-Tarif](./functions-premium-plan.md), [Verbrauchstarif](functions-scale.md#consumption-plan) und [App Service-Plan](functions-scale.md#app-service-plan) verfügbar, wenn **Dienstendpunkte** konfiguriert sind. 
+    * Dienstendpunkte können unter „Plattformfeatures“ > „Netzwerk“ > „Zugriffseinschränkungen konfigurieren“ > „Regel hinzufügen“ pro App konfiguriert werden. Virtuelle Netzwerke können jetzt als „Typ“ einer Regel ausgewählt werden.
+    * Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
+        * Bedenken Sie, dass Ihre Funktion auch mit Dienstendpunkten immer noch vollständigen ausgehenden Zugriff auf das Internet besitzt, selbst wenn die virtuelle Netzwerkintegration konfiguriert ist.
 * Der private Websitezugriff ist auch verfügbar, wenn eine App Service-Umgebung mit einem internen Lastenausgleich (ILB) konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
 
 ## <a name="virtual-network-integration"></a>Integration in ein virtuelles Netzwerk
@@ -99,6 +101,13 @@ Bei der Integration virtueller Netzwerke in Functions wird die gemeinsame Infras
 * [VNet-Integration, die ein Gateway erfordert](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 Weitere Informationen zur Verwendung der Integration virtueller Netzwerke finden Sie unter [Integrieren einer Funktions-App in ein virtuelles Azure-Netzwerk](functions-create-vnet.md).
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk
+
+> [!note] 
+> Vorübergehend kann es bis zu zwölf Stunden dauern, bis Ihr Speicherkonto für Ihre Funktions-App verfügbar ist, nachdem Sie die Zugriffseinschränkungen für das Speicherkonto konfiguriert haben. Während dieses Zeitraums wird die Anwendung vollständig offline geschaltet.
+
+Um ein höheres Maß an Sicherheit zu gewährleisten, können Sie das Speicherkonto Ihrer Anwendung auf ein virtuelles Netzwerk beschränken. Anschließend müssen Sie Ihre Website in dieses virtuelle Netzwerk integrieren, um auf Ihr Speicherkonto zugreifen zu können. Diese Konfiguration wird für alle Pläne unterstützt, die die Integration in ein virtuelles Netzwerk unterstützen.
 
 ## <a name="virtual-network-triggers-non-http"></a>Trigger für virtuelle Netzwerke (nicht HTTP)
 

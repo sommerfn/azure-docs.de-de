@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 854e29b67b6e24c583a98b5851bf17551cfcbf61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441354"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165088"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Azure Data Explorer Connector für Apache Spark (Preview)
 
@@ -90,7 +90,7 @@ Weitere Informationen finden Sie unter [Connectorverwendung](https://github.com/
 
     ![Importieren der Azure Data Explorer-Bibliothek](media/spark-connector/db-create-library.png)
 
-1. Fügen Sie zusätzliche Abhängigkeiten hinzu:
+1. Fügen Sie zusätzliche Abhängigkeiten hinzu (bei der Verwendung über maven nicht erforderlich):
 
     ![Hinzufügen von Abhängigkeiten](media/spark-connector/db-dependencies.png)
 
@@ -109,7 +109,7 @@ Azure Data Explorer-Connector für Spark gestattet Ihnen die Authentifizierung m
 
 Die einfachsten und gängigsten Authentifizierungsmethoden. Diese Methode wird für die Verwendung von Azure Data Explorer-Connector für Spark empfohlen.
 
-|Eigenschaften  |BESCHREIBUNG  |
+|Properties  |BESCHREIBUNG  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   (Client-)Bezeichner der Azure AD-Anwendung.      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD-Authentifizierungsautorität. Azure AD Directory-(Mandanten-)ID.        |
@@ -134,7 +134,7 @@ Weitere Informationen zu Azure Data Explorer-Prinzipalrollen finden Sie unter [R
  
     val appId = KustoSparkTestAppId
     val appKey = KustoSparkTestAppKey
-    val authorityId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    val authorityId = "72f988bf-86f1-41af-91ab-2d7cd011db47" // Optional - defaults to microsoft.com
     val cluster = "Sparktest.eastus2"
     val database = "TestDb"
     val table = "StringAndIntTable"
@@ -143,41 +143,53 @@ Weitere Informationen zu Azure Data Explorer-Prinzipalrollen finden Sie unter [R
 1. Schreiben von Spark DataFrame in Azure Data Explorer-Cluster als Batch:
 
     ```scala
+    import com.microsoft.kusto.spark.datasink.KustoSinkOptions
+    val conf = Map(
+            KustoSinkOptions.KUSTO_CLUSTER -> cluster,
+            KustoSinkOptions.KUSTO_TABLE -> table,
+            KustoSinkOptions.KUSTO_DATABASE -> database,
+            KustoSinkOptions.KUSTO_AAD_CLIENT_ID -> appId,
+            KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
+            KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId)
+    
     df.write
       .format("com.microsoft.kusto.spark.datasource")
-      .option(KustoOptions.KUSTO_CLUSTER, cluster)
-      .option(KustoOptions.KUSTO_DATABASE, database)
-      .option(KustoOptions.KUSTO_TABLE, table)
-      .option(KustoOptions.KUSTO_AAD_CLIENT_ID, appId)
-      .option(KustoOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey) 
-      .option(KustoOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
+      .options(conf)
       .save()
+      
     ```
-
+    
+   Oder verwenden Sie die vereinfachte Syntax:
+   
+    ```scala
+         import com.microsoft.kusto.spark.datasink.SparkIngestionProperties
+         import com.microsoft.kusto.spark.sql.extension.SparkExtension._
+         
+         val sparkIngestionProperties = Some(new SparkIngestionProperties()) // Optional, use None if not needed
+         df.write.kusto(cluster, database, table, conf, sparkIngestionProperties)
+    ```
+   
 1. Schreiben von Streamingdaten:
 
     ```scala    
     import org.apache.spark.sql.streaming.Trigger
     import java.util.concurrent.TimeUnit
-    
+    import java.util.concurrent.TimeUnit
+    import org.apache.spark.sql.streaming.Trigger
+
     // Set up a checkpoint and disable codeGen. Set up a checkpoint and disable codeGen as a workaround for an known issue 
     spark.conf.set("spark.sql.streaming.checkpointLocation", "/FileStore/temp/checkpoint")
-    spark.conf.set("spark.sql.codegen.wholeStage","false")
+    spark.conf.set("spark.sql.codegen.wholeStage","false") // Use in case a NullPointerException is thrown inside codegen iterator
     
-    // Write to a Kusto table fro streaming source
-    val kustoQ = csvDf
+    // Write to a Kusto table from a streaming source
+    val kustoQ = df
           .writeStream
           .format("com.microsoft.kusto.spark.datasink.KustoSinkProvider")
-          .options(Map(
-            KustoOptions.KUSTO_CLUSTER -> cluster,
-            KustoOptions.KUSTO_TABLE -> table,
-            KustoOptions.KUSTO_DATABASE -> database,
-            KustoOptions.KUSTO_AAD_CLIENT_ID -> appId,
-            KustoOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-            KustoOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId))
-          .trigger(Trigger.Once)
+          .options(conf) 
+          .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
+          .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
+          .start()
     
-    kustoQ.start().awaitTermination(TimeUnit.MINUTES.toMillis(8))
     ```
 
 ## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-Quelle: Lesen aus Azure Data Explorer
@@ -185,19 +197,30 @@ Weitere Informationen zu Azure Data Explorer-Prinzipalrollen finden Sie unter [R
 1. Beim Lesen kleiner Mengen von Daten definieren Sie die Datenabfrage:
 
     ```scala
-    val conf: Map[String, String] = Map(
-          KustoOptions.KUSTO_AAD_CLIENT_ID -> appId,
-          KustoOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-          KustoOptions.KUSTO_QUERY -> s"$table | where (ColB % 1000 == 0) | distinct ColA"      
-        )
-    
-    // Simplified syntax flavor
-    import org.apache.spark.sql._
-    import com.microsoft.kusto.spark.sql.extension.SparkExtension._
+    import com.microsoft.kusto.spark.datasource.KustoSourceOptions
     import org.apache.spark.SparkConf
+    import org.apache.spark.sql._
+    import com.microsoft.azure.kusto.data.ClientRequestProperties
+
+    val query = s"$table | where (ColB % 1000 == 0) | distinct ColA"
+    val conf: Map[String, String] = Map(
+          KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
+          KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
+        )
+
+    val df = spark.read.format("com.microsoft.kusto.spark.datasource").
+      options(conf).
+      option(KustoSourceOptions.KUSTO_QUERY, query).
+      option(KustoSourceOptions.KUSTO_DATABASE, database).
+      option(KustoSourceOptions.KUSTO_CLUSTER, cluster).
+      load()
+
+    // Simplified syntax flavor
+    import com.microsoft.kusto.spark.sql.extension.SparkExtension._
     
-    val df = spark.read.kusto(cluster, database, "", conf)
-    display(df)
+    val cpr: Option[ClientRequestProperties] = None // Optional
+    val df2 = spark.read.kusto(cluster, database, query, conf, cpr)
+    display(df2)
     ```
 
 1. Beim Lesen großer Mengen von Daten muss temporärer Blob-Speicher bereitgestellt werden. SAS-Schlüssel des Speichercontainers oder Speicherkontonamen, Kontoschlüssel und Containernamen angeben. Dieser Schritt ist nur für die aktuelle Vorschauversion des Spark-Connectors erforderlich.
@@ -215,6 +238,10 @@ Weitere Informationen zu Azure Data Explorer-Prinzipalrollen finden Sie unter [R
 1. Lesen aus Azure Data Explorer:
 
     ```scala
+     val conf3 = Map(
+          KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
+          KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
+          KustoSourceOptions.KUSTO_BLOB_STORAGE_SAS_URL -> storageSas)
     val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
     
     val dfFiltered = df2

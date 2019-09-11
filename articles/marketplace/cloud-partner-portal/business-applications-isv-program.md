@@ -1,110 +1,107 @@
 ---
-title: Leitfaden zum Durchführen des Onboarding von Microsoft Business Applications Independent Software Vendor (ISV) Connect Programm
-description: Gehen Sie wie folgt vor, um das Onboarding des Business Applications ISV Connect-Programms durchzuführen.
+title: Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
+description: Hier erfahren Sie, wie Sie das Onboarding für das Business Applications-ISV-Connect-Programm durchführen.
 services: Azure Marketplace, Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 988dfd0337f8cedd992b55aa32e07a73f35d964d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877424"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182557"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Leitfaden zum Durchführen des Onboarding von Microsoft Business Applications Independent Software Vendor (ISV) Connect Programm
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 
-Das [Business Applications ISV Connect Programm](https://partner.microsoft.com/solutions/business-applications/isv-overview) zielt darauf ab, das Wachstum und den Gesamterfolg von Independent Software Vendors (ISVs) zu beschleunigen und moderne, Cloud-basierte Branchenlösungen mit *Dynamics 365 Customer Engagement und PowerApps* (Dynamics CE-Angebote) *oder Dynamics 365 Finance and Operations* (Dynamics Ops-Angebote) entwickeln. So werden Sie Teil davon.
-
-> [!IMPORTANT]
-> Bestehende ISV-Partner mit *Dynamics 365 Customer Engagement*, *Dynamics 365 for Finance and Operations* und *PowerApps*‑Anwendungen sollten alle folgenden Onboarding-Schritte vor dem **15. Oktober 2019** durchführen, um zu vermeiden, dass ihre bestehenden Angebote aus [Microsoft AppSource](https://appsource.microsoft.com) entfernt werden.
-
-Um alle [technischen, Marketing‑ und Vertriebsvorteile](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview) des Business Applications ISV Connect Programms nutzen zu können, bitten wir bestehende ISV‑Partner (mit *Dynamics CE*- und *Ops*‑Angeboten), die folgenden Schritte durchzuführen: 
-
- - [Richten Sie Ihr Konto](#set-up-your-microsoft-partner-center-account) im Commercial Marketplace-Programm des Partner Centers ein
- - [Akzeptieren Sie die Geschäftsbedingungen für die Teilnahme](#sign-the-business-applications-isv-program-addendum) am Business Applications ISV Connect-Programm
- - [Geben Sie Ihre Abrechnungsinformationen an](#set-up-your-billing-information), und
- - [Zertifizieren Sie Ihre Anwendung neu ](#recertify-your-application) für Microsoft AppSource
+Das [Business Applications-ISV-Connect-Programm](https://partner.microsoft.com/solutions/business-applications/isv-overview) zielt darauf ab, das Wachstum und den Gesamterfolg unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) zu steigern und moderne, cloudbasierte Branchenlösungen mit *Dynamics 365 Customer Engagement and PowerApps* („Dynamics CE-Angebote“) oder *Dynamics 365 Finance and Operations* („Dynamics Ops-Angebote“) zu entwickeln. Hier erfahren Sie, wie Sie Teil davon werden.
 
 > [!IMPORTANT]
-> Sie müssen alle oben aufgeführten Schritte ausführen, bevor Sie Änderungen an einem vorhandenen Angebot vornehmen können (Ihre Angebote stehen Ihnen bis dahin nicht zur Verfügung und können nicht im *Cloud-Partnerportal* bearbeitet werden).
+> Bestehende ISV-Partner mit *Dynamics 365 Customer Engagement*-, *Dynamics 365 for Finance and Operations*- und *PowerApps*‑Anwendungen müssen alle folgenden Onboardingschritte vor dem **15. Oktober 2019** ausführen, um zu vermeiden, dass ihre bestehenden Angebote aus [Microsoft AppSource](https://appsource.microsoft.com) entfernt werden.
+
+Um alle [Technik-, Marketing‑ und Vertriebsvorteile](https://partner.microsoft.com/solutions/business-applications/isv-overview) des Business Applications-ISV-Programms nutzen zu können, bitten wir bestehende ISV‑Partner (mit *Dynamics CE*- und *Ops*‑Angeboten), die folgenden Schritte auszuführen:
+
+- [Einrichten Ihres Microsoft Partner Center-Kontos](#set-up-your-microsoft-partner-center-account)
+- [Akzeptieren des Nachtrags für Microsoft Business Applications-ISVs](#accept-the-business-applications-isv-program-addendum)
+- [Einrichten Ihrer Abrechnungsinformationen](#set-up-your-billing-information)
+- [Neuzertifizieren Ihrer Anwendung](#recertify-your-application)
+
+> [!IMPORTANT]
+> Alle obigen Schritte müssen ausgeführt werden, bevor Sie Änderungen an einem bereits vorhandenen Angebot veröffentlichen.
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Einrichten Ihres Microsoft Partner Center-Kontos
 
-[Partner Center](https://partner.microsoft.com) ist der Ort, an dem Sie Ihre Kontoeinstellungen für das neue Business Applications ISV Connect-Programm verwalten.
+[Partner Center](https://partner.microsoft.com) ist der Ort, an dem Sie Ihre Kontoeinstellungen für das ISV Connect-Programm verwalten.
 
 > [!NOTE]
-> Dieser Schritt erfordert eine *Besitzer-Rolle* im Cloud-Partnerportal für Ihr Konto.
+> Für diesen Schritt müssen Sie im Cloud-Partnerportal über eine Rolle vom Typ *Besitzer* für Ihr angegebenes Konto und in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* verfügen.
 
-Wenn Sie bereits Angebote von Dynamics CE und/oder Dynamics Ops veröffentlicht haben, wurde Ihr Cloud-Partnerportal (CPP)-Konto höchstwahrscheinlich bereits migriert und im Partner Center aktiviert. Wenn dies nicht der Fall ist, können Sie Ihr Partner Center-Konto manuell über Ihr CCP-Publisherprofil aktivieren.
+Wenn Sie bereits Dynamics CE- oder Dynamics Ops-Angebote veröffentlicht haben, wurde Ihr CPP-Konto (Cloud-Partnerportal) wahrscheinlich bereits migriert und in Partner Center aktiviert. Andernfalls können Sie Ihr Partner Center-Konto manuell über Ihr CCP-Herausgeberprofil aktivieren.
 
-1. Melden Sie sich auf Ihrer **Publisher-Profilseite** im [Cloud-Partnerportal](https://cloudpartner.azure.com/) an.
+1. Melden Sie sich auf Ihrer **Herausgeberprofilseite** im [Cloud-Partnerportal](https://cloudpartner.azure.com/) an.
+2. Wenn ein Banner mit dem Hinweis angezeigt wird, dass Ihre Kontoeinstellungen zu Partner Center migriert wurden, fahren Sie mit dem nächsten Abschnitt fort. Wählen Sie andernfalls das Banner mit der Aktivierungsaufforderung für Ihr Partner Center-Konto aus.
 
-2. Wenn Sie ein Banner sehen, das anzeigt, dass Ihre Kontoeinstellungen in das Partner Center migriert wurden, fahren Sie mit dem nächsten Abschnitt fort. Andernfalls wählen Sie das Banner aus, in dem Sie aufgefordert werden, Ihr Partner Center-Konto zu aktivieren.
+Weitere Informationen finden Sie unter [Kontomigration vom Cloud-Partnerportal zu Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
 
-Weitere Informationen finden Sie unter [*Kontomigration vom Cloud-Partnerportal zum Partner Center*](../partner-center-portal/account-migration-from-cpp-to-pc.md).
+## <a name="accept-the-business-applications-isv-program-addendum"></a>Akzeptieren des Nachtrags für das Business Applications-ISV-Programm
 
-## <a name="sign-the-business-applications-isv-program-addendum"></a>Business Applications ISV-Programm-Zusatzvereinbarung
-
-Die Teilnahme an diesem Programm erfordert, dass Sie die *Business Applications-Zusatzvereinbarung*überprüfen und akzeptieren.
-
-> [!NOTE]
-> Dieser Schritt erfordert eine *Besitzer*- oder *Manager*‑Rolle im Partner Center für Ihr Konto, um rechtliche Vereinbarungen zu signieren. Wenn Sie die Migration Ihres Cloud-Partnerportal-Kontos durch die [Aktivierung Ihres Partner Center-Kontos](#set-up-your-microsoft-partner-center-account) im vorherigen Schritt abgeschlossen haben, sind auch Ihre Berechtigungen in das Partner Center übertragen worden.
-
-1. Wechseln Sie zu https://partner.microsoft.com/dashboard/account/agreements (und melden Sie sich bei Partner Center an).
-
-2. Unter der Überschrift **Commercial Marketplace** finden Sie **Microsoft Business Applications ISV Addendum**.
-
-3. Klicken Sie auf den Link, und sehen Sie sich die Vereinbarung an.
-
-4. Wählen Sie **Vereinbarung akzeptieren**, um der Vereinbarung zuzustimmen und sie zu akzeptieren.
-
-## <a name="set-up-your-billing-information"></a>Abrechnungsinformationen einrichten
-
-Richten Sie als Nächstes die Abrechnungsinformationen für das Business Applications ISV Connect-Programm ein.
+Wenn Sie an diesem Programm teilnehmen möchten, müssen Sie den *Business Applications-Nachtrag* überprüfen und akzeptieren.
 
 > [!NOTE]
-> Dieser Schritt erfordert eine *Besitzer*- oder *Manager*‑Rolle im Partner Center für Ihr Konto, um rechtliche Vereinbarungen zu signieren.
+> Für diesen Schritt müssen Sie in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* für Ihr Konto verfügen, um rechtliche Vereinbarungen unterzeichnen zu können. Wenn Sie die Migration Ihres Cloud-Partnerportal-Kontos durch die [Aktivierung Ihres Partner Center-Kontos](#set-up-your-microsoft-partner-center-account) im vorherigen Schritt abgeschlossen haben, wurden auch Ihre Berechtigungen zu Partner Center migriert.
 
-1. Melden Sie sich beim [Partner Center](https://partner.microsoft.com/dashboard) an.
+1. Navigieren Sie zum [Partner Center-Dashboard](https://partner.microsoft.com/dashboard/account/agreements), und melden Sie sich bei Partner Center an, wenn Sie dazu aufgefordert werden.
 
-2. Wählen Sie das Symbol *Einstellungen* (Zahnrad) aus, und klicken Sie auf **Entwicklereinstellungen**.
+2. Unter der Überschrift **Kommerzieller Marketplace** finden Sie den **Nachtrag für Microsoft Business Applications-ISVs**.
+
+3. Klicken Sie auf den Versionslink, und sehen Sie sich die Vereinbarung an.
+
+4. Wählen Sie **Vereinbarung akzeptieren** aus, um der Vereinbarung zuzustimmen und sie zu akzeptieren.
+
+## <a name="set-up-your-billing-information"></a>Einrichten Ihrer Abrechnungsinformationen
+
+Richten Sie als Nächstes die Abrechnungsinformationen für das Business Applications-ISV-Connect-Programm ein.
+
+> [!NOTE]
+> Für diesen Schritt müssen Sie in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* für Ihr Konto verfügen, um Abrechnungsinformationen aktualisieren zu können.
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
+
+2. Wählen Sie *Einstellungen* (Zahnradsymbol) und anschließend **Entwicklereinstellungen** aus.
 
 3. Wählen Sie unter *Konten* die Option **Abrechnungsprofil** aus.
 
-4. Überprüfen Sie die primären Kontakt- und Abrechnungsinformationen, die von Ihrer juristischen Person ausgefüllt werden, und nehmen Sie alle erforderlichen Aktualisierungen vor.
+4. Überprüfen Sie die primären Kontakt- und Abrechnungsinformationen, die auf der Grundlage Ihrer juristischen Person aufgefüllt wurden, und nehmen Sie ggf. erforderliche Aktualisierungen vor.
 
-5. Geben Sie ggf. die Einstellungen der Steuernummer bzw. Umsatzsteuer-ID an.
+5. Geben Sie ggf. Einstellungen für die Steuernummer/USt-IdNr. an.
 
 6. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
 
-Sie können Ihr Abrechnungsprofil jederzeit aktualisieren, jedoch können *Firmenname* und *Land* der Rechnungsadresse später nicht mehr geändert werden.
+Sie können Ihr Abrechnungsprofil jederzeit aktualisieren. *Firmenname* und *Land* der Rechnungsadresse können später jedoch nicht mehr geändert werden.
 
-## <a name="recertify-your-application"></a>Zertifizieren Sie Ihre Anwendung neu
+## <a name="recertify-your-application"></a>Neuzertifizieren Ihrer Anwendung
 
-Nachdem Sie die obigen Schritte ausgeführt haben, stehen Ihre bestehenden Angebote von Dynamics 365 CE und Dynamics 365 Ops zur Bearbeitung im Cloud-Partnerportal zur Verfügung (möglicherweise müssen Sie die Seite aktualisieren). Sie können auch neue Angebote über das CCP erstellen.
+Nachdem Sie die obigen Schritte ausgeführt haben, stehen Ihre bereits vorhandenen Dynamics CE- und Dynamics Ops-Angebote zur Bearbeitung in Partner Center zur Verfügung. Sie können auch neue Angebote über Partner Center erstellen.
 
-Der letzte Schritt für die Registrierung im Business Applications ISV Connect-Programm besteht darin, Ihre vorhandenen Anwendungen erneut zu zertifizieren.
+Der letzte Schritt für die Registrierung beim Business Applications-ISV-Connect-Programm besteht darin, Ihre bereits vorhandenen Anwendungen neu zu zertifizieren.
 
-1. [ Führen Sie diese Schritte aus](https://partner.microsoft.com/en-us/solutions/business-applications/isv-publish), um Ihre Anwendung in AppSource neu zu zertifizieren.
-
-2. [ Erstellen und veröffentlichen Sie ein neues Angebot](manage-offers/cpp-manage-offers.md) im Cloud-Partnerportal. Dabei handelt es sich um ein völlig neues Angebot, das keine vorhandenen Angebote ersetzt.
+1. Gehen Sie wie [hier](https://partner.microsoft.com/solutions/business-applications/isv-publish) beschrieben vor, um Ihre Anwendung für AppSource neu zu zertifizieren.
+2. [Erstellen und veröffentlichen Sie ein neues Angebot.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) Dieses Angebot ist ein vollständig neues Angebot und ersetzt keines der bereits vorhandenen Angebote.
 
 ## <a name="further-info"></a>Weitere Informationen
 
-Wenden Sie sich an Ihren Account Manager oder an den [Microsoft Partner Support](https://partner.microsoft.com/support), um Unterstützung bei der Einrichtung Ihres Kontos zu erhalten. Allgemeine Informationen zum Business Applications ISV Connect Programm und zum Microsoft Partner Center finden Sie unter:
+Wenden Sie sich an Ihren Account Manager oder an den [Support für Microsoft Partner](https://partner.microsoft.com/support), um Unterstützung bei der Einrichtung Ihres Kontos zu erhalten. Allgemeine Informationen zum Business Applications-ISV-Connect-Programm und zu Microsoft Partner Center finden Sie hier:
 
-#### <a name="business-applications-for-isvs-online-article"></a>Business Applications für ISVs (Onlineartikel)
-https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview
+#### <a name="business-applications-for-isvs-online-article"></a>ISV Connect Program für Microsoft-Geschäftsanwendungen (Onlineartikel)
+https://partner.microsoft.com/solutions/business-applications/isv-overview
 
-#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Übersicht über das neue Programm für Business Applications ISVs (PDF)
+#### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Übersicht über das neue Business Applications-ISV-Programm (PDF)
 https://aka.ms/BizAppsISVProgram
 
-#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Business Applications ISV Connect-Programm FAQ (PDF)
+#### <a name="business-applications-isv-connect-program-faq-pdf"></a>Häufig gestellte Fragen zum Business Applications-ISV Connect-Programm (PDF)
 https://assetsprod.microsoft.com/business-applications-partner-faq.pdf
 
-#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Bevorstehendes Programm für Business Applications ISVs (Blogbeitrag)
+#### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Geplantes Business Applications-ISV-Programm (Blogbeitrag)
 https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/
-

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616021"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147188"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -100,6 +100,9 @@ Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlege
 ### <a name="node-pools"></a>Knotenpools
 
 Knoten mit der gleichen Konfiguration werden in *Knotenpools* gruppiert. Ein Kubernetes-Cluster enthält mindestens einen Knotenpool. Die anfängliche Knotenanzahl und -größe wird beim Erstellen eines AKS-Clusters definiert, wobei ein *Standardknotenpool* erstellt wird. Dieser Standardknotenpool in AKS enthält die zugrunde liegenden VMs, die Ihre Agent-Knoten ausführen. Die Unterstützung für mehrere Knotenpools in AKS ist derzeit in der Vorschauversion.
+
+> [!NOTE]
+> Um zu gewährleisten, dass Ihr Cluster zuverlässig funktioniert, sollten Sie mindestens zwei (2) Knoten im Standardknotenpool ausführen.
 
 Wenn Sie einen AKS-Cluster skalieren oder ein Upgrade des Clusters durchführen, wird die Aktion im Standardknotenpool ausgeführt. Sie können auch auswählen, einen bestimmten Knotenpool zu skalieren oder ein Upgrade für diesen auszuführen. Bei Upgradevorgängen wird die Ausführung von Containern in anderen Knoten im Knotenpool geplant, bis das Upgrade für alle Knoten erfolgreich durchgeführt wurde.
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073933"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163301"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -208,7 +208,12 @@ Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen 
 **Behebung:** Befolgen Sie diese Anweisungen, um den parallelen Stapel auf der Sitzungshost-VM zu installieren.
 
 1. Verwenden Sie RDP (Remote Desktop Protocol), um als lokaler Administrator direkt in die Sitzungshost-VM zu gelangen.
-2. Laden Sie das [Windows Virtual Desktop-PowerShell-Modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) herunter, und importieren Sie es, um es in Ihrer PowerShell-Sitzung verwenden zu können.
+2. Laden Sie bei Bedarf das [Windows Virtual Desktop-PowerShell-Modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) herunter, und importieren Sie es, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+    
+    ```powershell
+    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+    ```
+    
 3. Installieren Sie den parallelen Stapel mithilfe von [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Beheben der Fehlfunktion eines parallelen Stapels für Windows Virtual Desktop

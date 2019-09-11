@@ -1,18 +1,18 @@
 ---
 title: Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
-description: Weitere Informationen zur Behandlung von Zeitangaben in Azure Stream Analytics
+description: Hier erfahren Sie, wie die Behandlung von Zeitangaben funktioniert und wie Sie Probleme mit der Behandlung von Zeitangaben in Azure Stream Analytics beheben.
 author: jasonwhowell
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692379"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172995"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
 

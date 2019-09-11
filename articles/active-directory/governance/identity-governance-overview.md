@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033326"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241450"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -69,6 +69,18 @@ In der Vergangenheit wurde der privilegierte Zugriff von anderen Anbietern als e
 ![Privilegierter Zugriffslebenszyklus](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 Azure AD Privileged Identity Management (PIM) bietet zusätzliche Kontrollen zum Sichern des Zugriffs und Verwalten der Zugriffsrechte für Ressourcen in Azure AD, Azure und anderen Microsoft Online Services.  Zusätzlich zur mehrstufigen Authentifizierung und zum bedingten Zugriff stehen Ihnen mit den Funktionen für Just-in-Time-Zugriff und Warnungen für Rollenänderungen von Azure AD PIM umfassende Governancekontrollen zum Schützen der Ressourcen Ihres Unternehmens (Verzeichnis-, Office 365- und Azure-Ressourcenrollen) zur Verfügung. Wie bei anderen Formen des Zugriffs können Organisationen mithilfe von Zugriffsüberprüfungen eine periodische erneute Zertifizierung für alle Benutzer mit Administratorrollen konfigurieren.
+
+## <a name="least-privileged-roles"></a>Rollen mit den geringsten Rechten
+
+Für die Ausführung administrativer Aufgaben in Identity Governance gilt die Verwendung der Rolle mit den geringsten Rechten als bewährte Methode. Es wird empfohlen, Azure AD PIM zu verwenden, um nach Bedarf eine Rolle zum Ausführen dieser Aufgaben zu aktivieren. Nachfolgend werden die Verzeichnisrollen mit den geringsten Rechten zum Konfigurieren von Identity Governance-Features aufgeführt: 
+
+| Feature | Am wenigsten privilegierte Rolle |
+| ------- | --------------------- |
+| Berechtigungsverwaltung | Benutzeradministrator (mit Ausnahme des Hinzufügens von SharePoint Online-Websites zu Katalogen, wofür die Rolle „Globaler Administrator“ erforderlich ist) |
+| Nutzungsbedingungen | Sicherheitsadministrator oder Administrator für bedingten Zugriff |
+| Zugriffsüberprüfungen | Benutzeradministrator (mit Ausnahme von Zugriffsüberprüfungen für Azure- oder Azure AD-Rollen, wofür ein Administrator für privilegierte Rollen erforderlich ist) |
+|Privileged Identity Management | Administrator für privilegierte Rollen |
+
 
 ## <a name="getting-started"></a>Erste Schritte
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706311"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193187"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -51,7 +51,7 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>F: Der Gerätedatensatz wird in meinen Benutzerinformationen im Azure-Portal angezeigt. Und ich sehe den Status als auf dem Gerät registriert. Sind diese Einstellungen für den bedingten Zugriff richtig?
 
-**A:** Der Verknüpfungsstatus des Geräts, der in **„deviceID“** angezeigt wird, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für bedingten Zugriff erfüllen. Weitere Informationen finden Sie unter [„Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs“](../conditional-access/require-managed-devices.md).
+**A:** Der Verknüpfungsstatus des Geräts, der unter **deviceID** angezeigt wird, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für bedingten Zugriff erfüllen. Weitere Informationen finden Sie unter [Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](../conditional-access/require-managed-devices.md).
 
 ---
 
@@ -117,7 +117,7 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?
 
-**A:** Nein, derzeit unterstützt die Geräteregistrierung unter Windows 10 für alle Gerätezustände – Hybrid Azure AD Join, Azure AD Join und Azure AD Registered – keine TPMs im FIPS-Modus. Für eine erfolgreiche Anmeldung oder Registrierung bei Azure AD muss der FIPS-Modus für die TPMs auf diesen Geräten deaktiviert werden.
+**A:** Nein. Derzeit unterstützt die Geräteregistrierung unter Windows 10 für alle Gerätezustände – Azure AD Hybrid Join, Azure AD Join und Azure AD Registered – keine TPMs im FIPS-Modus. Für eine erfolgreiche Anmeldung oder Registrierung bei Azure AD muss der FIPS-Modus für die TPMs auf diesen Geräten deaktiviert werden.
 
 ---
 
@@ -154,7 +154,7 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 **A:** Ja. Windows verfügt über eine Zwischenspeicherfunktion für Benutzernamen und Kennwörter, die es Benutzern, die sich zuvor angemeldet haben, ermöglicht, auch ohne Netzwerkverbindung schnell auf den Desktop zuzugreifen. 
 
-Ein in Azure AD gelöschtes oder deaktiviertes Gerät wird vom Windows-Gerät nicht erkannt. Benutzer, die sich zuvor angemeldet haben, greifen also weiterhin mit dem im Cache gespeicherten Benutzernamen und Kennwort auf den Desktop zu. Wenn das Gerät gelöscht oder deaktiviert wird, können die Benutzer jedoch nicht auf durch den gerätebasierten bedingten Zugriff geschützte Ressourcen zugreifen. 
+Ein in Azure AD gelöschtes oder deaktiviertes Gerät wird vom Windows-Gerät nicht erkannt. Benutzer, die sich zuvor angemeldet haben, greifen also weiterhin mit dem im Cache gespeicherten Benutzernamen und Kennwort auf den Desktop zu. Wenn das Gerät gelöscht oder deaktiviert wird, können die Benutzer aber nicht auf Ressourcen zugreifen, die durch den gerätebasierten bedingten Zugriff geschützt sind. 
 
 Benutzer, die sich zuvor nicht angemeldet haben, können nicht auf das Gerät zugreifen. Es wurde kein zwischengespeicherter Benutzernamen oder Kennwort für sie aktiviert. 
 
@@ -190,7 +190,7 @@ Gelöschte oder deaktivierte Benutzer, die sich zuvor nicht angemeldet haben, k�
 
 ### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>F: Warum wird meinen Benutzern angezeigt: *Von hier aus haben Sie darauf keinen Zugriff*?
 
-**A:** Haben Sie bestimmte Regeln für bedingten Zugriff konfiguriert, um einen bestimmten Gerätestatus zu erfordern? Wenn das Gerät die Kriterien nicht erfüllt, wird der Benutzer blockiert und diese Meldung angezeigt. Überprüfen Sie die Regeln für bedingten Zugriff. Stellen Sie sicher, dass das Gerät die Kriterien erfüllt, um die Meldung zu vermeiden.
+**A:** Haben Sie bestimmte Regeln für bedingten Zugriff konfiguriert, um einen bestimmten Gerätestatus zu erzwingen? Wenn das Gerät die Kriterien nicht erfüllt, wird der Benutzer blockiert und diese Meldung angezeigt. Überprüfen Sie die Regeln für die Richtlinie für bedingten Zugriff. Stellen Sie sicher, dass das Gerät die Kriterien erfüllt, um die Meldung zu vermeiden.
 
 ---
 
@@ -236,7 +236,7 @@ Dieses Verhalten:
 
 ### <a name="qwhy-do-i-see-multiple-expired-certificates-issued-by-ms-organization-p2p-access-on-our-windows-10-devices-how-can-i-delete-them"></a>F: Warum sehe ich mehrere abgelaufene Zertifikate, die von MS-Organisation-P2P-Access auf unseren Windows 10-Geräten ausgestellt wurden? Wie kann ich diese löschen?
 
-**A:** Es wurde ein Problem unter Windows 10 Version 1709 und niedriger festgestellt, bei dem abgelaufene MS-Organisation-P2P-Access-Zertifikate aufgrund von kryptographischen Problemen weiterhin im Computerspeicher vorhanden waren. Ihre Benutzer könnten Probleme mit der Netzwerkkonnektivität haben, wenn Sie VPN-Clients (z. B. Cisco AnyConnect) verwenden, die die große Anzahl abgelaufener Zertifikate nicht verarbeiten können. Dieses Problem wurde in der Version Windows 10 1803 behoben, um solche abgelaufenen MS-Organisation-P2P-Access-Zertifikate automatisch zu löschen. Sie können dieses Problem beheben, indem Sie Ihre Geräte auf Windows 10 1803 aktualisieren. Wenn Sie nicht aktualisieren können, können Sie diese Zertifikate ohne negative Auswirkungen löschen.  
+**A:** Es wurde ein Problem unter Windows 10 Version 1709 und niedriger festgestellt, bei dem abgelaufene MS-Organisation-P2P-Access-Zertifikate aufgrund von kryptographischen Problemen weiterhin im Computerspeicher vorhanden waren. Für Ihre Benutzer kann es unter Umständen zu Problemen mit der Netzwerkkonnektivität kommen, wenn Sie VPN-Clients (z. B. Cisco AnyConnect) verwenden, die die große Anzahl abgelaufener Zertifikate nicht verarbeiten können. Dieses Problem wurde in der Version Windows 10 1803 behoben, um solche abgelaufenen MS-Organisation-P2P-Access-Zertifikate automatisch zu löschen. Sie können dieses Problem beheben, indem Sie Ihre Geräte auf Windows 10 1803 aktualisieren. Wenn Sie nicht aktualisieren können, können Sie diese Zertifikate ohne negative Auswirkungen löschen.  
 
 ---
 
@@ -269,24 +269,31 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?
 
-**A:** Nein, außer wenn das Kennwort des Benutzers geändert wird. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist selbst nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, auch wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
+**A:** Nein, außer wenn das Kennwort des Benutzers geändert wird. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen wurde und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloudressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist selbst nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, auch wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
 
 ---
 
 ### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>F: Was passiert, wenn ein Benutzer sein Kennwort ändert und versucht, sich bei seinem in Azure AD eingebundenen Windows 10-Hybridgerät außerhalb des Unternehmensnetzwerks anzumelden?
 
-**A:** Wenn ein Kennwort außerhalb des Unternehmensnetzwerks geändert wird (z.B. durch die Verwendung von Azure AD SSPR), schlägt die Benutzeranmeldung mit dem neuen Kennwort fehl. Für in Azure AD eingebundene Hybridgeräte ist das lokale Active Directory die primäre Autorität. Wenn ein Gerät sich nicht in Sichtweite des Domänencontrollers befindet, kann es das neue Kennwort nicht validieren. Daher muss der Benutzer eine Verbindung mit dem Domänencontroller herstellen (entweder über VPN oder im Unternehmensnetzwerk), bevor er sich mit seinem neuen Kennwort bei dem Gerät anmelden kann. Andernfalls kann er sich aufgrund der Fähigkeit der zwischengespeicherten Anmeldung in Windows nur mit seinem alten Kennwort anmelden. Das alte Kennwort wird jedoch von Azure AD bei Tokenanforderungen ungültig gemacht. Auf diese Weise wird die SSO-Anmeldung verhindert und alle gerätebasierten Richtlinien für bedingten Zugriff schlagen fehl. Dieses Problem tritt nicht auf, wenn Sie Windows Hello for Business verwenden. 
+**A:** Wenn ein Kennwort außerhalb des Unternehmensnetzwerks geändert wird (z. B. durch die Verwendung von Azure AD SSPR), schlägt die Benutzeranmeldung mit dem neuen Kennwort fehl. Für in Azure AD eingebundene Hybridgeräte ist das lokale Active Directory die primäre Autorität. Wenn ein Gerät sich nicht in Sichtweite des Domänencontrollers befindet, kann es das neue Kennwort nicht validieren. Daher muss der Benutzer eine Verbindung mit dem Domänencontroller herstellen (entweder über VPN oder im Unternehmensnetzwerk), bevor er sich mit seinem neuen Kennwort bei dem Gerät anmelden kann. Andernfalls kann er sich aufgrund der zwischengespeicherten Anmeldung in Windows nur mit seinem alten Kennwort anmelden. Das alte Kennwort wird bei Tokenanforderungen von Azure AD aber ungültig gemacht. Auf diese Weise wird die SSO-Anmeldung verhindert, und alle gerätebasierten Richtlinien für bedingten Zugriff schlagen fehl. Dieses Problem tritt nicht auf, wenn Sie Windows Hello for Business verwenden. 
 
 ---
 
 ## <a name="azure-ad-register-faq"></a>Häufig gestellte Fragen zur Azure AD-Registrierung
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>F: Wie entferne ich ein bei Azure AD registriertes Gerät lokal auf dem Gerät?
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>F: Wie entferne ich für ein lokales Gerät die Registrierung bei Azure AD?
 
 **A:** 
 - Bei Azure AD registrierte Windows 10-Geräte: Wechseln Sie zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Wählen Sie Ihr Konto aus, und klicken Sie auf **Trennen**. Unter Windows 10 erfolgt die Geräteregistrierung pro Benutzerprofil.
 - Unter iOS und Android können Sie die Microsoft Authenticator-App verwenden und **Einstellungen** > **Geräteregistrierung** und **Geräteregistrierung aufheben** auswählen.
 - Unter macOS können Sie die Microsoft Intune-Unternehmensportalanwendung verwenden, um die Registrierung des Geräts in der Verwaltung aufzuheben und Registrierungen zu entfernen. 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>F: Wie kann ich verhindern, dass Benutzer zusätzliche Geschäftskonten (mit Azure AD-Registrierung) auf meinen Windows 10-Unternehmensgeräten hinzufügen?
+
+**A:** Aktivieren Sie die folgende Registrierung, um zu verhindern, dass Benutzer Ihren Windows 10-Geräten, die in die Domäne, in Azure AD oder in Azure AD Hybrid eingebunden sind, zusätzliche Geschäftskonten hinzufügen. Mit dieser Richtlinie können Sie auch verhindern, dass für in die Domäne eingebundene Computer versehentlich eine Azure AD-Registrierung unter demselben Benutzerkonto durchgeführt wird. 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>F: Kann ich Android- oder iOS-BYOD-Geräte registrieren?
@@ -303,12 +310,12 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 **Hinweise:**
 
-- Die in der Richtlinie zum bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/technical-reference.md#client-apps-condition). 
+- Die in der Richtlinie für bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/technical-reference.md#client-apps-condition). 
 - Beim ersten Zugriffsversuch werden die Benutzer aufgefordert, das Gerät über das Unternehmensportal zu registrieren.
 
 ---
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [bei Azure AD registrierten Geräten](concept-azure-ad-register.md)
-- Weitere Informationen zu [in Azure AD eingebundene Geräte](concept-azure-ad-join.md)
+- Informieren Sie sich über [bei Azure AD registrierte Geräte](concept-azure-ad-register.md).
+- Informieren Sie sich über [in Azure AD eingebundene Geräte](concept-azure-ad-join.md).
 - Weitere Informationen zu [in Hybrid Azure AD eingebundene Geräte](concept-azure-ad-join-hybrid.md)

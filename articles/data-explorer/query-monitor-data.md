@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: f363e59e6faa6b115eb40a2a5d35432f02299d52
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810033"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172701"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)
 
@@ -56,7 +56,9 @@ Sie können zum Abfragen der Proxycluster den Kusto-Explorer, den ADX-Web-Explor
 
 > [!TIP]
 > * Datenbanknamen müssen den gleichen Namen wie die im Proxycluster angegebene Ressource haben. Bei Namen wird die Groß-/Kleinschreibung beachtet.
-> * Stellen Sie bei clusterübergreifenden Abfragen sicher, dass die [Benennung der Apps und Arbeitsbereiche](#application-insights-app-and-log-analytics-workspace-names) richtig ist.
+> * Achten Sie bei clusterübergreifenden Abfragen auf eine korrekte Benennung der Application Insights-Apps und Log Analytics-Arbeitsbereiche.
+>     * Wenn Namen Sonderzeichen enthalten, werden diese im Proxyclusternamen durch URL-Codierung ersetzt. 
+>     * Wenn Namen Zeichen enthalten, die nicht den [KQL-Regeln für Bezeichnernamen](/azure/kusto/query/schema-entities/entity-names) entsprechen, werden sie durch einen Bindestrich ( **-** ) ersetzt.
 
 ### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Abfrage des nativen Azure Data Explorer-Clusters 
 
@@ -117,11 +119,6 @@ Beim Aufrufen der Application Insights-Cluster (AI) oder Log Analytics-Cluster (
 | Cluster, der alle Apps/Arbeitsbereiche in diesem Abonnement enthält    |     cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
 |Cluster, der alle Apps/Arbeitsbereiche im Abonnement enthält, und diese sind Mitglieder dieser Ressourcengruppe    |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
 |Cluster, der nur die definierte Ressource in diesem Abonnement enthält      |    cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
-
-### <a name="application-insights-app-and-log-analytics-workspace-names"></a>Namen von Application Insights-Apps und Log Analytics-Arbeitsbereichen
-
-* Wenn Namen Sonderzeichen enthalten, werden diese im Proxyclusternamen durch URL-Codierung ersetzt. 
-* Wenn Namen Zeichen enthalten, die nicht den [KQL-Regeln für Bezeichnernamen](/azure/kusto/query/schema-entities/entity-names) entsprechen, werden sie durch einen Bindestrich ( **-** ) ersetzt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 08/29/2019
+ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637287"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164341"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Auswählen einer V-Kern-Dienstebene und Migrieren von DTU-Dienstebenen
 
 Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Darüber hinaus können Sie die Hardwaregeneration auswählen:
 
-- **Gen4:** bis zu 24 logische CPUs, basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
-- **Gen5:** bis zu 80 logische CPUs, basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz, virtueller Kern = 1 LP (Hyperthread), 5,1 GB pro Kern, schnelle eNVM-SSD
+- **Gen4:** Bis zu 24 logische CPUs, basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
+- **Gen5:** Bis zu 80 logische CPUs basierend auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, virtueller Kern = 1 LP (Hyperthread), 5,1 GB pro virtuellem Kern für bereitgestelltes Computing und bis zu 24 GB pro virtuellem Kern für serverloses Computing, schnelle eNVM-SSD
 
 Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden.
 
@@ -43,10 +43,10 @@ In der folgenden Tabelle werden die Unterschiede zwischen den drei Ebenen erläu
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale**|
 |---|---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Bietet dank mehrerer isolierter Replikate höchste Resilienz gegenüber Ausfällen.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung.|
-|Compute|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne<br/>**Serverloses Computing**:<br/>Gen5: 0,5 bis 4 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|
-|Arbeitsspeicher|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern<br/>**Serverloses Computing**:<br/>Gen5: 3GB pro virtuellem Kern|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern |**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern|
-|Storage|Verwendet Remotespeicher.<br/>**Bereitgestelltes Einzeldatenbank-Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Einzeldatenbank-Computing**:<br/>5 GB bis 1 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Bereitgestelltes Einzeldatenbank-Computing**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
-|E/A-Durchsatz (ungefähr)|**Einzeldatenbank**: 500 IOPS pro V-Kern mit maximal 7.000 IOPS.<br/>**Verwaltete Instanz**: Abhängig von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS pro Kern mit maximal 200.000 IOPS|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab.|
+|Compute|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne<br/>**Serverloses Computing**:<br/>Gen5: 0,5 bis 16 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|
+|Arbeitsspeicher|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern<br/>**Serverloses Computing**:<br/>Gen5: Bis zu 24 GB pro V-Kern|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern |**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern|
+|Storage|Verwendet Remotespeicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
+|E/A-Durchsatz (ungefähr)|**Einzeldatenbank und Pool für elastische Datenbanken**: 500 IOPS pro V-Kern, bis zu 40.000 IOPS maximal.<br/>**Verwaltete Instanz**: Abhängig von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5\.000 IOPS pro V-Kern, bis zu 200.000 IOPS maximal.|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab.|
 |Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|Einzelnes Replikat mit Lese-/Schreibzugriff sowie bis zu vier [Replikate mit Leseskalierung](sql-database-read-scale-out.md)|
 |Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), sieben bis 35 Tage (standardmäßig sieben Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden diese Momentaufnahmen zur schnellen Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden oder Tage, sondern nur Minuten).|
 |In-Memory|Nicht unterstützt|Unterstützt|Nicht unterstützt|

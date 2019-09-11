@@ -14,15 +14,15 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525528"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141466"
 ---
 # <a name="use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
-In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen. Sie können mit diesen Funktionen Clouddienste, Bereitstellungen, Datenverwaltungsdienste und virtuelle Computer erstellen, aktualisieren und löschen. Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
+In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die Klasse **ServiceManagementService** im [Azure SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen. Sie können mit diesen Funktionen Clouddienste, Bereitstellungen, Datenverwaltungsdienste und virtuelle Computer erstellen, aktualisieren und löschen. Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
 
 ## <a name="WhatIs"> </a>Was ist die Dienstverwaltung?
 Die Azure-Dienstverwaltungs-API bietet programmgesteuerten Zugriff auf viele der im [Azure-Portal][management-portal] verfügbaren Dienstverwaltungsfunktionen. Mithilfe des Azure SDK für Python können Sie Ihre Clouddienste und Speicherkonten verwalten.
@@ -30,10 +30,10 @@ Die Azure-Dienstverwaltungs-API bietet programmgesteuerten Zugriff auf viele der
 Um die Dienstverwaltungs-API verwenden zu können, müssen Sie [ein Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="Concepts"></a>Konzepte
-Das Azure SDK für Python umfasst die [Dienstverwaltungs-API][svc-mgmt-rest-api], die eine REST-API ist. Alle API-Vorgänge werden über SSL ausgeführt und mithilfe von X.509 v3-Zertifikaten gegenseitig authentifiziert. Auf den Verwaltungsdienst kann von einem Dienst, der in Azure ausgeführt wird, zugegriffen werden. Der Zugriff kann auch direkt über das Internet erfolgen, und zwar von jeder Anwendung aus, die HTTPS-Anforderungen senden und HTTPS-Antworten empfangen kann.
+Das Azure SDK für Python umfasst die [Dienstverwaltungs-API][svc-mgmt-rest-api] (eine REST-API). Alle API-Vorgänge werden über SSL ausgeführt und mithilfe von X.509 v3-Zertifikaten gegenseitig authentifiziert. Auf den Verwaltungsdienst kann von einem Dienst, der in Azure ausgeführt wird, zugegriffen werden. Der Zugriff kann auch direkt über das Internet erfolgen, und zwar von jeder Anwendung aus, die HTTPS-Anforderungen senden und HTTPS-Antworten empfangen kann.
 
 ## <a name="Installation"></a>Installation
-Alle in diesem Artikel beschriebenen Features sind im `azure-servicemanagement-legacy`-Paket verfügbar, das Sie mit pip installieren können. Weitere Informationen zur Installation (z.B. wenn Python für Sie neu ist) finden Sie unter [Installieren von Python und Azure SDK](../python-how-to-install.md).
+Alle in diesem Artikel beschriebenen Features sind im `azure-servicemanagement-legacy`-Paket verfügbar, das Sie mit pip installieren können. Weitere Informationen zur Installation (z.B. wenn Python für Sie neu ist) finden Sie unter [Installieren von Python und Azure SDK](/azure/python/python-sdk-azure-install).
 
 ## <a name="Connect"> </a>Herstellen einer Verbindung mit der Dienstverwaltung
 Um eine Verbindung mit dem Dienstverwaltungs-Endpunkt herzustellen, benötigen Sie Ihre Azure-Abonnement-ID und ein gültiges Verwaltungszertifikat. Ihre Abonnement-ID können Sie über das [Azure-Portal][management-portal] abrufen.

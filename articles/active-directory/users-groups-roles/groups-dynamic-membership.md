@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650220"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194609"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -27,30 +27,32 @@ In Azure Active Directory (Azure AD) können Sie komplexe, attributbasierte Rege
 
 Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System alle dynamischen Gruppenregel in einem Verzeichnis, um zu ermitteln, ob die Änderung irgendwelche Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer oder Gerät wird als Mitglied zu einer Gruppe hinzugefügt, wenn eine Regel dieser Gruppe erfüllt wird. Wenn sie diese Regel nicht mehr erfüllen, werden sie entfernt. Sie können ein Mitglied einer dynamischen Gruppe nicht manuell hinzufügen oder entfernen.
 
-* Sie können zwar eine dynamische Gruppe für Geräte oder Benutzer erstellen, jedoch keine Regel festlegen, die sowohl Benutzer als auch Geräte enthält.
-* Sie können keine Gerätegruppe basierend auf den Attributen der Gerätebesitzer erstellen. Regeln für die Gerätemitgliedschaft können nur Geräteattribute referenzieren.
+- Sie können zwar eine dynamische Gruppe für Geräte oder Benutzer erstellen, jedoch keine Regel festlegen, die sowohl Benutzer als auch Geräte enthält.
+- Sie können keine Gerätegruppe basierend auf den Attributen der Gerätebesitzer erstellen. Regeln für die Gerätemitgliedschaft können nur Geräteattribute referenzieren.
 
 > [!NOTE]
 > Dieses Feature erfordert für jeden eindeutigen Benutzer, der Mitglied mindestens einer dynamischen Gruppe ist, eine Azure AD Premium P1-Lizenz. Sie müssen den Benutzern keine Lizenzen zuweisen, damit sie Mitglieder dynamischer Gruppen werden können, aber Sie müssen die Mindestanzahl von Lizenzen im Mandanten haben, um alle diese Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihres Mandanten verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
+## <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
 
-Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Geräten auffüllt, ist ein binärer Ausdruck, der als Ergebnis „true“ oder „false“ ergibt. Die drei Teile einer einfachen Regel sind:
+Azure AD stellt einen Regel-Generator bereit, mit dem Sie wichtige Regeln schneller erstellen und aktualisieren können. Der Regel-Generator unterstützt die Erstellung von bis zu fünf Ausdrücken. Die Erstellung einer Regel mit einigen einfachen Ausdrücken wird durch den Regel-Generator vereinfacht, aber er kann nicht verwendet werden, um jede Regel zu reproduzieren. Falls der Regel-Generator die zu erstellende Regel nicht unterstützt, können Sie das Textfeld verwenden.
 
-* Eigenschaft
-* Operator
-* Wert
+Im Anschluss folgen einige Beispiele für erweiterte Regeln oder für Syntax, für die die Erstellung über das Textfeld empfohlen wird:
 
-Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
+- Regel mit mehr als fünf Ausdrücken
+- Mitarbeiterregel
+- Festlegen der [Rangfolge der Operatoren](groups-dynamic-membership.md#operator-precedence)
+- [Regeln mit komplexen Ausdrücken](groups-dynamic-membership.md#rules-with-complex-expressions), z. B. `(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
+> [!NOTE]
+> Der Regel-Generator kann ggf. einige Regeln, die über das Textfeld erstellt wurden, nicht anzeigen. Unter Umständen wird eine Meldung angezeigt, falls die Regel vom Regel-Generator nicht angezeigt werden kann. Der Regel-Generator nimmt keinerlei Änderungen an der unterstützten Syntax, Überprüfung oder Verarbeitung von Regeln für dynamische Gruppen vor.
 
-Azure AD stellt einen Regel-Generator bereit, mit dem Sie wichtige Regeln schneller erstellen und aktualisieren können. Der Regel-Generator unterstützt bis zu fünf Regeln. Um weitere Regelbedingungen hinzuzufügen, müssen Sie das Textfeld verwenden. Detaillierte Anweisungen dazu finden Sie unter [Aktualisieren einer dynamischen Gruppe](groups-update-rule.md).
+Detaillierte Anweisungen dazu finden Sie unter [Aktualisieren einer dynamischen Gruppe](groups-update-rule.md).
 
-   ![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-### <a name="rules-with-a-single-expression"></a>Regeln mit einem einzelnen Ausdruck
+### <a name="rule-syntax-for-a-single-expression"></a>Regelsyntax für einen einzelnen Ausdruck
 
 Ein einzelner Ausdruck ist die einfachste Form einer Mitgliedschaftsregel, und sie besteht nur aus den drei oben genannten Teilen. Eine Regel mit einem einzelnen Ausdruck sieht wie folgt aus: `Property Operator Value`, wobei die Syntax für die Eigenschaft der Name von „object.property“ ist.
 
@@ -62,13 +64,23 @@ user.department -eq "Sales"
 
 Bei einem einzelnen Ausdruck sind Klammern optional. Die Gesamtlänge des Texts der Mitgliedschaftsregel darf 2048 Zeichen nicht überschreiten.
 
+# <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
+
+Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Geräten auffüllt, ist ein binärer Ausdruck, der als Ergebnis „true“ oder „false“ ergibt. Die drei Teile einer einfachen Regel sind:
+
+- Eigenschaft
+- Operator
+- Wert
+
+Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
+
 ## <a name="supported-properties"></a>Unterstützte Eigenschaften
 
 Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitgliedschaftsregel zu erstellen.
 
-* Boolean
-* Zeichenfolge
-* Zeichenfolgensammlung
+- Boolean
+- Zeichenfolge
+- Zeichenfolgensammlung
 
 Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden können, um einen einzelnen Ausdruck zu erstellen.
 
@@ -119,7 +131,7 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 
 Die für Geräteregeln verwendeten Eigenschaften finden Sie unter [Regeln für Geräte](#rules-for-devices).
 
-## <a name="supported-operators"></a>Unterstützte Operatoren
+## <a name="supported-expression-operators"></a>Unterstützte Ausdrucksoperatoren
 
 Die folgende Tabelle enthält alle unterstützten Operatoren und deren Syntax für einen einzelnen Ausdruck. Alle Operatoren können mit oder ohne vorangestellten Bindestrich (-) verwendet werden.
 
@@ -297,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Die folgenden Tipps können helfen, die Regel ordnungsgemäß zu verwenden.
 
-* Die **Manager-ID** ist die Objekt-ID des Managers. Sie finden sie im **Profil** des Managers.
-* Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager** für die Benutzer in Ihrem Mandanten korrekt festgelegt ist. Sie können den aktuellen Wert im **Profil** des Benutzers überprüfen.
-* Diese Regel unterstützt nur die dem Manager direkt unterstellten Mitarbeiter. Sie können also keine Gruppe mit dem Manager direkt unterstellten Mitarbeitern *und* den ihnen unterstellten Mitarbeitern erstellen.
-* Diese Regel kann nicht mit anderen Mitgliedschaftsregeln kombiniert werden.
+- Die **Manager-ID** ist die Objekt-ID des Managers. Sie finden sie im **Profil** des Managers.
+- Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager** für die Benutzer in Ihrem Mandanten korrekt festgelegt ist. Sie können den aktuellen Wert im **Profil** des Benutzers überprüfen.
+- Diese Regel unterstützt nur die dem Manager direkt unterstellten Mitarbeiter. Sie können also keine Gruppe mit dem Manager direkt unterstellten Mitarbeitern *und* den ihnen unterstellten Mitarbeitern erstellen.
+- Diese Regel kann nicht mit anderen Mitgliedschaftsregeln kombiniert werden.
 
 ### <a name="create-an-all-users-rule"></a>Erstellen einer Regel für alle Benutzer
 
@@ -373,8 +385,8 @@ Die folgenden Geräteattribute können verwendet werden.
 
 Diese Artikel enthalten zusätzliche Informationen zu Gruppen in Azure Active Directory.
 
-* [Anzeigen vorhandener Gruppen](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitgliedschaften einer Gruppe](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](groups-create-rule.md)
+- [Anzeigen vorhandener Gruppen](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Verwalten der Einstellungen einer Gruppe](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Verwalten der Mitgliedschaften einer Gruppe](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](groups-create-rule.md)

@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032693"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231237"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -31,12 +31,12 @@ Nachdem Sie Azure AD Connect ausgeführt haben, um Ihre Organisation für die Hy
 Alle in die Domäne eingebundenen Geräte, auf denen Windows 10 und Windows Server 2016 ausgeführt wird, werden automatisch bei Azure AD registriert, nachdem alle Konfigurationsschritte abgeschlossen sind. Falls Sie anstelle dieser automatischen Registrierung einen kontrollierten Rollout vorziehen, können Sie die Gruppenrichtlinie verwenden, um den automatischen Rollout selektiv zu aktivieren oder zu deaktivieren.  Diese Gruppenrichtlinie sollte festgelegt werden, bevor Sie mit den weiteren Konfigurationsschritten beginnen:
 * Erstellen Sie ein Gruppenrichtlinienobjekt in Ihrer Active Directory-Instanz.
 * Geben Sie ihm einen Namen (z.B. „Hybrid-Azure AD-Einbindung“).
-* Bearbeiten Sie und navigieren Sie zu:  „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
+* Bearbeiten Sie es, und wechseln Sie zu:  „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > „Geräteregistrierung“.
 
 >[!NOTE]
 >Für 2012R2 befinden sich die Richtlinieneinstellungen unter **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Arbeitsbereichverknüpfung > Clientcomputer automatisch in Arbeitsbereich einbinden**
 
-* Deaktivieren Sie diese Einstellung:  „In die Domäne eingebundene Computer als Geräte registrieren“.
+* Aktivieren Sie diese Einstellung:  „In die Domäne eingebundene Computer als Geräte registrieren“.
 * Übernehmen Sie die Änderung, und klicken Sie auf „OK“.
 * Verknüpfen Sie das GPO mit dem Speicherort Ihrer Wahl (Organisationseinheit, Sicherheitsgruppe oder Domäne für alle Geräte).
 

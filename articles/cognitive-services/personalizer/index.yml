@@ -1,61 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zur Personalisierung
+summary: Hier erfahren Sie, wie Ihre Anwendung mithilfe der Personalisierung die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen kann.
 metadata:
-  document_id: null
-  title: 'Personalisierung: Tutorials, Schnellstarts, API-Referenz'
-  description: 'Erfahren Sie, wie Ihre Anwendung mithilfe der Azure-Personalisierung die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen kann.'
+  ms.topic: landing-page
+  ms.date: 09/09/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: personalizer
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: nitinme
-abstract:
-  description: 'Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/personalizer/what-is-personalizer
-            html: <p>Erfahren Sie mehr über die Funktionsweise und Verwendung der Personalisierung.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Was ist die Personalisierung?
-          - href: /azure/cognitive-services/personalizer/how-personalizer-works
-            html: '<p>Erfahren Sie, wie die Feedbackschleife der Personalisierung mit den Rangfolge- und Relevanz-APIs funktioniert.</p>'
-            image:
-              src: ../media/index/i_overview.svg
-            title: Funktionsweise der Personalisierung
-          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
-            html: '<p>Implementieren Sie die Personalisierung so, dass das Vertrauen in Ihr Unternehmen und den Dienst gestärkt wird.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Ethik und Verantwortung
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/logo_Csharp.svg
-            href: csharp-quickstart-commandline-feedback-loop.md
-            text: 'C#'
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST-APIs
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092082">Personalisierungs-API</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Befehlszeilenschnittstelle (CLI)
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure-Befehlszeilenschnittstelle</a></p>'
+  services: cognitive-services
+  title: Dokumentation zur Personalisierung
+  titleSuffix: Azure Cognitive Services
+  description: Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
+  ms.openlocfilehash: 7c73472231b563c1efa583e356774f755abea3bf
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845409"
+landingContent:
+- title: Informationen zur Personalisierung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Personalisierung?
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: Funktionsweise der Personalisierung
+      url: how-personalizer-works.md
+    - text: Wo können Sie die Personalisierung verwenden?
+      url: where-can-you-use-personalizer.md
+    - text: Ethik und verantwortungsvolle Verwendung
+      url: ethics-responsible-use.md
+    - text: Auswählen von Features und Aktionen für die Personalisierung
+      url: concepts-features.md
+    - text: Berechnen einer Relevanz
+      url: concept-rewards.md
+    - text: Offlineauswertungen
+      url: concepts-offline-evaluation.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analysieren des Erfolgs mit Offlineauswertung
+      url: how-to-offline-evaluation.md
+- title: Entwickeln mit der Personalisierung
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden von .NET
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: Verwenden von Python
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen und Konfigurieren des Diensts „Personalisierung“
+      url: how-to-settings.md
+  - linkListType: reference
+    links:
+    - text: Codebeispiele
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: REST-APIs
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+    - text: NuGet-Paket
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: NPM-Paket
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+    - text: Pypi-Paket
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: concept
+    links:
+    - text: Skalierbarkeit und Leistung
+      url: concepts-scalability-performance.md
+- title: Informationen zu vertiefendem Lernen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist vertiefendes Lernen?
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: Durchsuchen
+      url: concepts-exploration.md
+    - text: Merkmale, Aktion und Kontext
+      url: concepts-features.md
+    - text: Aktives Lernen
+      url: concept-active-learning.md
+    - text: Belohnungen
+      url: concept-rewards.md
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Problembehandlung
+      url: troubleshooting.md
+    - text: Stellen von Fragen zu Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: Einflussnahme auf den Dienst mit UserVoice
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

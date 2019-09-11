@@ -17,12 +17,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919167"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186306"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -47,6 +47,11 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 - **Azure AD Global Administrator-Konto**: Wird zum Erstellen des Azure AD-Connector-Kontos und zum Konfigurieren von Azure AD verwendet.
 
 - **SQL SA-Konto (optional)** : Wird zum Erstellen der ADSync-Datenbank verwendet, wenn die Vollversion von SQL Server installiert ist.  Dieser SQL Server kann lokal oder remote zur Azure AD Connect-Installation vorliegen.  Dabei kann es sich um das gleiche Konto handeln wie bei Enterprise Administrator.  Der SQL-Administrator kann nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
+
+> [!NOTE]
+> Es wird unterstützt, um die in Azure AD Connect verwendeten Administratorkonten über eine administrative ESAE-Gesamtstruktur (auch „Red Forest“ genannt) verwalten zu können.
+> Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.
+> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE Administrative Forest Design Approach](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) (ESAE-Ansatz für administrative Gesamtstrukturen).
 
 ## <a name="installing-azure-ad-connect"></a>Installieren von Azure AD Connect
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:

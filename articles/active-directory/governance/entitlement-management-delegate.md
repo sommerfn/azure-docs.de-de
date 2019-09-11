@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124905"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207136"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegieren von Aufgaben in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -117,6 +117,7 @@ Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator i
 | [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
 | Benutzer | Katalogbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn App-Besitzer |  |
 
+Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möchten, können Sie auch [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management) zurate ziehen.
 
 ## <a name="add-a-catalog-creator"></a>Hinzufügen eines Katalogerstellers
 

@@ -1,29 +1,23 @@
 ---
-title: Sicheres Speichern von Anmeldeinformationen auf dem virtuellen Computer für Data Science – Azure | Microsoft-Dokumentation
+title: Sicheres Speichern von Zugriffsanmeldeinformationen
+titleSuffix: Azure Data Science Virtual Machine
 description: Erfahren Sie, wie Sie Anmeldeinformationen auf der Data Science Virtual Machine sicher speichern können. Sie erfahren, wie Sie verwaltete Dienstidentitäten und Azure Key Vault verwenden, um Zugangsanmeldeinformationen zu speichern.
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.topic: conceptual
+ms.date: 05/08/2018
+ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051615"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195610"
 ---
-# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>Sicheres Speichern von Anmeldeinformationen auf einem virtuellen Data Science-Computer
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Sicheres Speichern von Zugriffsanmeldeinformationen in einer Azure Data Science Virtual Machine-Instanz
 
 Üblicherweise enthält der Code in Cloudanwendungen Anmeldeinformationen für die Authentifizierung bei Clouddiensten. Das Verwalten und Schützen dieser Anmeldeinformationen ist eine bekannte Herausforderung beim Erstellen von Cloudanwendungen. Im Idealfall werden Anmeldeinformationen nie auf Entwicklerarbeitsstationen angezeigt oder in die Quellcodeverwaltung eingecheckt.
 

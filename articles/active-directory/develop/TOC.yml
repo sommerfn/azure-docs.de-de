@@ -205,6 +205,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
+                    - name: Verwenden von Brokern mit Xamarin iOS- und Android-Anwendungen
+                      href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Universelle Windows-Plattform
                       href: msal-net-uwp-considerations.md
                 - name: Abrufen eines Token für die App
@@ -225,6 +227,8 @@
                   href: msal-net-migration.md
                 - name: Migrieren zu MSAL.js
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Migrieren von Xamarin-Apps von ADAL.NET zu MSAL.NET unter Verwendung von Brokern
+                  href: msal-net-migration-ios-broker.md
             - name: Unterstützte Authentifizierungsflows
               href: msal-authentication-flows.md
             - name: Abrufen und Zwischenspeichern von Token

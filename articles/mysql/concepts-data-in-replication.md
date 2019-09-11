@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: f91a6da9a305c6620e4e01ab7aa3c554374cb5d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 889c2e75e9eee0586c709b032dbb6d1c58d45102
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996816"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142051"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 
@@ -34,6 +34,10 @@ Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-dat
 - Jede Tabelle muss über einen Primärschlüssel verfügen.
 - Der Masterserver sollte die MySQL InnoDB-Engine verwenden.
 - Benutzer müssen über Berechtigungen zum Konfigurieren der binären Protokollierung und zum Erstellen neuer Benutzer auf dem Masterserver verfügen.
+- Wenn für den Masterserver SSL aktiviert ist, sollten Sie sicherstellen, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mysql.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
+- Stellen Sie sicher, dass die IP-Adresse des Masterservers den Firewallregeln des Azure Database for MySQL-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
+- Vergewissern Sie sich, dass für den Computer, der den Masterserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
+- Stellen Sie sicher, dass der Masterserver über eine **öffentliche IP-Adresse** verfügt oder dass das DNS öffentlich zugänglich ist.
 
 ### <a name="other"></a>Andere
 - Die Datenreplikation wird nur in den Tarifen Universell und Arbeitsspeicheroptimiert unterstützt.

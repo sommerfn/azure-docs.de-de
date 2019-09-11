@@ -1,6 +1,6 @@
 ---
 title: Anmelden bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen | Microsoft-Dokumentation
-description: In dieser Anleitung wird beschrieben, wie Sie einen virtuellen Linux-Computer zur Verwendung der Azure Active Directory-Authentifizierung für Benutzeranmeldungen erstellen und konfigurieren.
+description: Es wird beschrieben, wie Sie eine Linux-VM erstellen und für die Anmeldung per Azure Active Directory-Authentifizierung konfigurieren.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -12,21 +12,26 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/17/2018
+ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: f8f00c49ced4e06eb634cbbfb1b786e6729783d2
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667666"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163219"
 ---
-# <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
 Zur Verbesserung der Sicherheit von virtuellen Linux-Computern in Azure können Sie die Integration in die Azure Active Directory-Authentifizierung (AD) durchführen. Bei Verwendung der Azure AD-Authentifizierung für virtuelle Linux-Computer werden Richtlinien, mit denen der Zugriff auf die virtuellen Computer zugelassen oder verweigert wird, zentral gesteuert und erzwungen. In diesem Artikel wird beschrieben, wie Sie einen virtuellen Linux-Computer zur Verwendung der Azure AD-Authentifizierung erstellen und konfigurieren.
 
-> [!NOTE]
-> Dieses Feature befindet sich in der Vorschau, die Verwendung für virtuelle Computer oder Workloads in einer Produktionsumgebung wird daher nicht empfohlen. Verwenden Sie dieses Feature auf einem virtuellen Testcomputer, von dem Sie davon ausgehen, dass er nach dem Testen verworfen wird.
+
+> [!IMPORTANT]
+> Die Azure Active Directory-Authentifizierung ist derzeit als öffentliche Vorschauversion verfügbar.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Verwenden Sie dieses Feature auf einem virtuellen Testcomputer, von dem Sie davon ausgehen, dass er nach dem Testen verworfen wird.
+>
+
 
 Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen Linux-Computern in Azure bietet viele Vorteile, z.B.:
 
@@ -60,7 +65,6 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Re
 >[!IMPORTANT]
 > Zur Verwendung dieses Vorschaufeatures kann die Bereitstellung nur in einer unterstützten Linux-Distribution und in einer unterstützten Azure-Region durchgeführt werden. Das Feature wird in einer Azure Government Cloud oder Sovereign Cloud nicht unterstützt.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.31 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -93,7 +97,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-Nachdem die Erweiterung auf dem virtuellen Computer installiert wurde, wird für *provisioningState* der Wert *Succeeded* angezeigt.
+Nachdem die Installation der Erweiterung auf dem virtuellen Computer erfolgreich abgeschlossen wurde, wird für *provisioningState* der Wert *Succeeded* angezeigt.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurieren der Rollenzuweisungen für den virtuellen Computer
 
@@ -132,24 +136,21 @@ Zeigen Sie zunächst die öffentliche IP-Adresse des virtuellen Computers mit de
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei dem virtuellen Azure Linux-Computer an. Mit dem Parameter `-l` können Sie die Adresse Ihres Azure AD-Kontos angeben. Die Kontoadressen müssen ausschließlich in Kleinbuchstaben eingegeben werden. Geben Sie die öffentliche IP-Adresse Ihrer VM aus dem vorherigen Befehl an:
+Melden Sie sich mit Ihren Azure AD-Anmeldeinformationen bei dem virtuellen Azure Linux-Computer an. Mit dem Parameter `-l` können Sie die Adresse Ihres Azure AD-Kontos angeben. Ersetzen Sie das Beispielkonto durch Ihr eigenes Konto. Die Kontoadressen müssen ausschließlich in Kleinbuchstaben eingegeben werden. Ersetzen Sie die IP-Beispieladresse durch die öffentliche IP-Adresse Ihres virtuellen Computers aus dem vorherigen Befehl.
 
 ```azurecli-interactive
-ssh -l azureuser@contoso.onmicrosoft.com publicIps
+ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Sie werden aufgefordert, sich unter [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) mit einem einmalig zu verwendenden Code bei Azure AD anzumelden. Kopieren Sie wie im folgenden Beispiel gezeigt den einmalig zu verwendenden Code, und fügen Sie ihn auf der Seite für die Geräteanmeldung ein:
+Sie werden aufgefordert, sich unter [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) mit einem einmalig zu verwendenden Code bei Azure AD anzumelden. Kopieren Sie den einmaligen Code, und fügen Sie ihn auf der Anmeldeseite des Geräts ein.
 
-```bash
-~$ ssh -l azureuser@contoso.onmicrosoft.com 13.65.237.247
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJS3K6X4D to authenticate. Press ENTER when ready.
-```
+Geben Sie bei der entsprechenden Aufforderung Ihre Azure AD-Anmeldeinformationen auf der Anmeldeseite ein. 
 
-Geben Sie bei der entsprechenden Aufforderung Ihre Azure AD-Anmeldeinformationen auf der Anmeldeseite ein. Nach Ihrer erfolgreichen Authentifizierung wird im Webbrowser die folgende Meldung angezeigt:
+Nach Ihrer erfolgreichen Authentifizierung wird im Webbrowser die folgende Meldung angezeigt: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
-    You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
+Schließen Sie das Browserfenster, kehren Sie zur SSH-Eingabeaufforderung zurück, und drücken Sie die **Eingabetaste**. 
 
-Schließen Sie das Browserfenster, kehren Sie zur SSH-Eingabeaufforderung zurück, und drücken Sie die **Eingabetaste**. Sie sind nun mit den entsprechend zugewiesenen Rollenberechtigungen (z.B. *VM-Benutzer* oder *VM-Administrator*) bei dem virtuellen Azure Linux-Computer angemeldet. Wenn Ihrem Benutzerkonto die Rolle *VM-Administratoranmeldung* zugewiesen ist, können Sie `sudo` verwenden, um Befehle auszuführen, für die Root-Berechtigungen erforderlich sind.
+Sie sind nun mit den entsprechend zugewiesenen Rollenberechtigungen (z.B. *VM-Benutzer* oder *VM-Administrator*) bei dem virtuellen Azure Linux-Computer angemeldet. Wenn Ihrem Benutzerkonto die Rolle *VM-Administratoranmeldung* zugewiesen ist, können Sie `sudo` verwenden, um Befehle auszuführen, für die Rootberechtigungen erforderlich sind.
 
 ## <a name="sudo-and-aad-login"></a>Sudo- und AAD-Anmeldung
 

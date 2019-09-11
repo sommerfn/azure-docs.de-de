@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011276"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171928"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD Domain Services-Domäne
 
@@ -30,7 +30,7 @@ In der folgenden Abbildung ist die Funktionsweise der Synchronisierung zwischen 
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronisierung aus Azure AD mit Azure AD DS
 
-Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden unidirektional aus Azure AD mit Azure AD DS synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Die erste Synchronisierung kann von einigen wenigen Stunden bis hin zu mehreren Tagen dauern – dies hängt von der Anzahl der Objekte im Azure AD-Verzeichnis ab. Nach Abschluss der anfänglichen Synchronisierung werden Änderungen, die in Azure AD vorgenommen werden, z. B. Kennwort- oder Attributänderungen, etwa nach 20–30 Minuten in Azure AD DS aktualisiert.
+Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden unidirektional aus Azure AD mit Azure AD DS synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Die erste Synchronisierung kann von einigen wenigen Stunden bis hin zu mehreren Tagen dauern – dies hängt von der Anzahl der Objekte im Azure AD-Verzeichnis ab. Nach Abschluss der Erstsynchronisierung werden in Azure AD vorgenommene Änderungen wie Kennwort- oder Attributänderungen automatisch mit Azure AD DS synchronisiert.
 
 Der Synchronisierungsvorgang wird unidirektional durchgeführt. Es erfolgt keine umgekehrte Synchronisierung von Änderungen aus Azure AD DS mit Azure AD. Eine verwaltete Azure AD DS-Domäne ist größtenteils schreibgeschützt, mit Ausnahme von benutzerdefinierten Organisationseinheiten, die Sie erstellen können. Sie können keine Änderungen an den Benutzerattributen, Benutzerkennwörtern oder Gruppenmitgliedschaften in einer verwalteten Azure AD DS-Domäne vornehmen.
 

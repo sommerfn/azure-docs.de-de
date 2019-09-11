@@ -13,38 +13,37 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8420142e67fe4af12045a2b6fe7f7461ef384f81
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666475"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164468"
 ---
 # <a name="virtual-network-service-endpoints"></a>VNET-Dienstendpunkte
 
 Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privater Adressen Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste erweitert. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem VNET an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
 
-Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
+Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar. Außerdem ist die Ressource „Microsoft.*“ in Klammern vorhanden, die über die Subnetzseite aktiviert werden muss, während Dienstendpunkte für Ihren Dienst konfiguriert werden:
 
 **Allgemein verfügbar**
 
-- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure Database for PostgreSQL-Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
-- **[Azure Database for MySQL server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
-- **[Azure Database for MariaDB:](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein in allen Azure-Regionen verfügbar.
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Allgemein verfügbar in allen Azure-Regionen, in denen ADLS Gen1 verfügbar ist.
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft.Storage): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Database for PostgreSQL-Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Database for MySQL-Server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (Microsoft.Sql): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** (Microsoft.KeyVault): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.EventHub): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.AzureActiveDirectory): Allgemein verfügbar in allen Azure-Regionen, in denen ADLS Gen1 verfügbar ist.
 - **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Allgemein verfügbar in allen Azure-Regionen, in denen App Service verfügbar ist.
 
 **Public Preview**
 
-- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** : Vorschauversion in allen Azure-Regionen verfügbar, in denen Azure Container Registry verfügbar ist.
-.
+- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (Microsoft.ContainerRegistry): Vorschauversion in allen Azure-Regionen verfügbar, in denen Azure Container Registry verfügbar ist.
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -63,7 +62,7 @@ Dienstendpunkte bieten folgende Vorteile:
 - Das Feature ist nur für virtuelle Netzwerke verfügbar, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird.
 - Endpunkte sind für Subnetze aktiviert, die in virtuellen Azure-Netzwerken konfiguriert sind. Endpunkte können nicht für Datenverkehr verwendet werden, der aus Ihrer lokalen Umgebung an Azure-Dienste fließt. Weitere Informationen finden Sie unter [Schützen des Zugriffs auf Azure-Dienste aus der lokalen Umgebung](#securing-azure-services-to-virtual-networks).
 - Bei Azure SQL gilt ein Dienstendpunkt nur für Datenverkehr von Azure-Diensten in der Region eines virtuellen Netzwerks. Damit Datenverkehr vom Typ RA-GRS und GRS für Azure Storage unterstützt werden kann, gelten Endpunkte zusätzlich auch für Regionspaare, in denen das virtuelle Netzwerk bereitgestellt wird. Informieren Sie sich über [Azure-Regionspaare](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-- Für ADLS Gen1 ist die Funktion für die VNET-Integration nur für virtuelle Netzwerke in der gleichen Region verfügbar. Bitte benachten Sie, dass die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1 die Sicherheit von VNET-Dienstendpunkten zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD) nutzt, um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen. Das „Microsoft.AzureActiveDirectory“-Tag, das in den dienstunterstützenden Dienstendpunkten aufgeführt ist, wird nur für die Unterstützung von Dienstendpunkten für ADLS Gen 1 verwendet. Azure Active Directory (Azure AD) unterstützt nativ keine Dienstendpunkte. Erfahren Sie mehr über die [Integration von Azure Data Lake Store Gen 1 VNet](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Für ADLS Gen1 ist die Funktion für die VNET-Integration nur für virtuelle Netzwerke in der gleichen Region verfügbar. Beachten Sie auch, dass die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1 die Sicherheit von VNET-Dienstendpunkten zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD) nutzt, um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen. Das „Microsoft.AzureActiveDirectory“-Tag, das in den dienstunterstützenden Dienstendpunkten aufgeführt ist, wird nur für die Unterstützung von Dienstendpunkten für ADLS Gen1 verwendet. Azure Active Directory (Azure AD) unterstützt nativ keine Dienstendpunkte. Erfahren Sie mehr über die [Integration eines virtuellen Netzwerks für Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Schützen von Azure-Diensten in virtuellen Netzwerken
 
@@ -122,7 +121,7 @@ Nachdem Dienstendpunkte für einen bestimmten Dienst konfiguriert wurden, könne
 
 ## <a name="provisioning"></a>Bereitstellung
 
-Dienstendpunkte können in virtuellen Netzwerken einzeln von einem Benutzer konfiguriert werden, der über Schreibzugriff auf ein virtuelles Netzwerk verfügt. Um Azure-Dienstressourcen in einem VNET zu sichern, muss der Benutzer für die hinzuzufügenden Subnetze über die Berechtigung für *„Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action“* verfügen. Diese Berechtigung ist standardmäßig in die integrierten Dienstadministratorrollen integriert und kann durch die Erstellung von benutzerdefinierten Rollen geändert werden.
+Dienstendpunkte können in virtuellen Netzwerken einzeln von einem Benutzer konfiguriert werden, der über Schreibzugriff auf ein virtuelles Netzwerk verfügt. Um Azure-Dienstressourcen in einem VNET zu schützen, muss der Benutzer für die hinzuzufügenden Subnetze über die Berechtigung *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* verfügen. Diese Berechtigung ist standardmäßig in die integrierten Dienstadministratorrollen integriert und kann durch die Erstellung von benutzerdefinierten Rollen geändert werden.
 
 Erfahren Sie mehr über [integrierte Rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

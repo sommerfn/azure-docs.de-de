@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533627"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276500"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Vorschau – sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -28,9 +28,11 @@ Dieser Artikel veranschaulicht die Verwendung vom API-Server autorisierter IP-Ad
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+In diesem Artikel wird davon ausgegangen, dass Sie mit Clustern arbeiten, die [kubenet][kubenet] verwenden.  Wenn Sie mit Clustern arbeiten, die auf der Azure-Container-Netzwerkschnittstelle ([Azure Container Networking Interface (CNI)][cni-networking]) basieren, verfügen Sie nicht über die erforderliche Routingtabelle, um den Zugriff schützen zu können.  Sie müssen die Routingtabelle manuell erstellen.  Weitere Informationen finden Sie unter [Verwalten von Routingtabellen](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+
 Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster, die Sie erstellen. In diesem Artikel wird beschrieben, wie Sie einen AKS-Cluster über die Azure-Befehlszeilenschnittstelle erstellen.
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [„Installieren der Azure-Befehlszeilenschnittstelle“][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874250"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193168"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -31,7 +31,12 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 > [!NOTE]
 > Diese Informationen sind vorläufig und können sich ändern. Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](active-directory-develop-help-support.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
 >
-> Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.  
+> Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.
+
+## <a name="lookup-current-error-code-information"></a>Nachschlagen aktueller Fehlercodeinformationen
+Fehlercodes und Meldungen unterliegen Änderungen.  Die aktuellen Informationen finden Sie auf der Seite [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error). Sie enthält AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige Vorschläge für Problemumgehungen.  
+
+Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie beispielsweise den Fehlercode „AADSTS16000“ erhalten haben, sollten Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „16000“ suchen.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
@@ -194,6 +199,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS90019 | MissingTenantRealm: Azure AD konnte die Mandanten-ID nicht aus der Anforderung ermitteln. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: Das Format des Benutzerprinzipalnamens ist ungültig oder entspricht nicht dem erwarteten `name[/host][@realm]`-Format. Der Prinzipalname ist erforderlich, Host und Bereich sind optional und können auf NULL festgelegt werden. |
 | AADSTS90023 | InvalidRequest: Die Authentifizierungsdienstanforderung ist ungültig. |
+| AADSTS9002313 | InvalidRequest: Anforderung ist falsch formatiert oder ungültig. - Der Grund für dieses Problem ist, dass für die Anforderung an einen bestimmten Endpunkt ein Fehler aufgetreten ist. Die empfohlene Vorgehensweise für dieses Problem besteht darin, eine Fiddler-Ablaufverfolgung zum Auftreten des Fehlers zu erhalten und zu ermitteln, ob die Anforderung richtig formatiert ist. |
 | AADSTS90024 | RequestBudgetExceededError: Es wurde ein vorübergehender Fehler festgestellt. Versuchen Sie es erneut. |
 | AADSTS90033 | MsodsServiceUnavailable: Der Microsoft Online Directory Service (MSODS) ist nicht verfügbar. |
 | AADSTS90036 | MsodsServiceUnretryableFailure: Unerwarteter, nicht wiederholbarer Fehler vom WCF-Dienst, der vom MSODS gehostet wird. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten. |

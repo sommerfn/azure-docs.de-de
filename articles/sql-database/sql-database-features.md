@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2a14140a395e8ccd2bf0092d5922d639914b01a7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900420"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135289"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server
 
@@ -160,6 +160,16 @@ Azure SQL-Datenbank unterstützt verschiedene Datentools, die Ihnen bei der Ver
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nein (siehe [Erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md)) | Ja |
 | [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Nein |
+
+## <a name="migration-methods"></a>Migrationsmethoden
+
+Sie können verschiedene Migrationsmethoden verwenden, um Ihre Daten zwischen SQL Server, einer Einzeldatenbank und verwalteten Azure SQL-Datenbank-Instanzen zu verschieben. Bei einigen Methoden handelt es sich um **Online**-Methoden, die alle an der Quelle vorgenommenen Änderungen erkennen, während Sie die Migration ausführen. Bei **Offline**-Methoden müssen Sie Ihre Workload, mit der Daten auf der Quelle geändert werden, dagegen anhalten, während der Migrationsvorgang ausgeführt wird.
+
+| **Quelle** | **Einzeldatenbank und Pool für elastische Datenbanken** | **Verwaltete Instanz** |
+| --- | --- | --- |
+| SQL Server (lokal, Azure-VM, Amazon RDS) | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Native Sicherung/Wiederherstellung, [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) |
+| Einzeldatenbank | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
+| Verwaltete Instanz | **Online:** [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) | **Online:** [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Instanzübergreifende Point-in-Time-Wiederherstellung ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) oder [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [Native Sicherung/Wiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

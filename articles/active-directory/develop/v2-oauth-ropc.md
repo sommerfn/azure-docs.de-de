@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482379"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193208"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -43,7 +43,7 @@ Dieses Diagramm zeigt den ROPC-Flow:
 
 ## <a name="authorization-request"></a>Authorization request (Autorisierungsanforderung)
 
-Der ROPC-Flow ist eine einzelne Anforderung &mdash; die Clientidentifikation und die Anmeldeinformationen des Benutzers werden an den ausstellenden Verteilungspunkt gesendet und im Gegenzug wird ein Token zurückgegeben. Zuvor muss der Client die E-Mail-Adresse des Benutzers und das Kennwort anfordern. Unmittelbar nach einer erfolgreichen Anforderung muss der Client die Anmeldeinformationen des Benutzers sicher aus dem Arbeitsspeicher freigeben. Er muss sie nie speichern.
+Der ROPC-Flow ist eine einzelne Anforderung: Er sendet die Client-ID und die Anmeldeinformationen des Benutzers an den ausstellenden Verteilungspunkt und empfängt im Gegenzug ein Token. Zuvor muss der Client die E-Mail-Adresse des Benutzers und das Kennwort anfordern. Unmittelbar nach einer erfolgreichen Anforderung muss der Client die Anmeldeinformationen des Benutzers sicher aus dem Arbeitsspeicher freigeben. Er muss sie nie speichern.
 
 > [!TIP]
 > Führen Sie diese Anforderung in Postman aus.
@@ -51,7 +51,7 @@ Der ROPC-Flow ist eine einzelne Anforderung &mdash; die Clientidentifikation und
 
 
 ```
-// Line breaks and spaces are for legibility only.
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,10 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, bei dem Sie den Benutzer anmelden möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Dieser Parameter kann nicht auf `common` oder `consumers`, sondern nur auf `organizations` festgelegt werden. |
+| `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. | 
 | `grant_type` | Erforderlich | Muss auf `password` festgelegt sein. |
 | `username` | Erforderlich | Die E-Mail-Adresse des Benutzers. |
 | `password` | Erforderlich | Das Kennwort des Benutzers. |
 | `scope` | Empfohlen | Eine durch Leerzeichen getrennte Liste von [Bereichen](v2-permissions-and-consent.md) oder Berechtigungen, die die App benötigt. In einem interaktiven Flow müssen der Administrator oder der Benutzer diesen Bereichen vorab zustimmen. |
+| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden. | 
+| `client_assertion` | Manchmal erforderlich | Eine andere Form von `client_secret`, die unter Verwendung eines Zertifikats generiert wird.  Ausführlichere Informationen finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). | 
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort
 
@@ -89,7 +92,7 @@ Das folgende Beispiel stellt eine erfolgreiche Tokenantwort dar:
 
 | Parameter | Format | BESCHREIBUNG |
 | --------- | ------ | ----------- |
-| `token_type` | string | Immer auf `Bearer` festgelegt. |
+| `token_type` | Zeichenfolge | Immer auf `Bearer` festgelegt. |
 | `scope` | Durch Leerzeichen getrennte Zeichenfolgen | Wenn ein Zugriffstoken zurückgegeben wurde, führt dieser Parameter die Bereiche auf, für die das Zugriffstoken gültig ist. |
 | `expires_in`| int | Die Anzahl von Sekunden, die das enthaltene Zugriffstoken gültig ist. |
 | `access_token`| Nicht transparente Zeichenfolge | Ausgestellt für die [Bereiche](v2-permissions-and-consent.md), die angefordert wurden. |
@@ -105,8 +108,7 @@ Wenn der Benutzer nicht den richtigen Benutzernamen bzw. das richtige Kennwort a
 | Error | BESCHREIBUNG | Clientaktion |
 |------ | ----------- | -------------|
 | `invalid_grant` | Fehler bei der Authentifizierung | Die Anmeldeinformationen waren falsch oder dem Client fehlt die Berechtigung für die angeforderten Bereiche. Wenn die Bereiche nicht gewährt werden, wird ein Fehler vom Typ `consent_required` zurückgegeben. In diesem Fall sollte der Client den Benutzer über eine Webansicht oder einen Browser zu einer interaktiven Eingabeaufforderung weiterleiten. |
-| `invalid_request` | Anforderung war nicht ordnungsgemäß konstruiert | Der Gewährungstyp wird in den Authentifizierungskontexten `/common` oder `/consumers` nicht unterstützt.  Verwenden Sie stattdessen `/organizations`. |
-| `invalid_client` | App wurde nicht ordnungsgemäß eingerichtet | Das kann passieren, wenn die `allowPublicClient`-Eigenschaft im [Anwendungsmanifest](reference-app-manifest.md) nicht auf TRUE gesetzt ist. Die Eigenschaft `allowPublicClient` ist erforderlich, da die ROPC-Gewährung keinen Weiterleitungs-URI hat. Azure AD kann nur feststellen, ob es sich bei der App um eine öffentliche oder eine vertrauliche Clientanwendung handelt, wenn die Eigenschaft festgelegt ist. ROPC wird nur für öffentliche Client-Apps unterstützt. |
+| `invalid_request` | Anforderung war nicht ordnungsgemäß konstruiert | Der Gewährungstyp wird in den Authentifizierungskontexten `/common` oder `/consumers` nicht unterstützt.  Verwenden Sie stattdessen `/organizations` oder eine Mandanten-ID. |
 
 ## <a name="learn-more"></a>Weitere Informationen
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 2b835765bbd40ffbd4a5117f767a7ba163e41dda
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309283"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142670"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -27,11 +27,11 @@ Dieser Artikel behandelt häufig gestellte Fragen zu Azure Container Registry.
 - [Wie erhalte ich Administratoranmeldeinformationen für eine Containerregistrierung?](#how-do-i-get-admin-credentials-for-a-container-registry)
 - [Wie erhalte ich Administratoranmeldeinformationen in einer Resource Manager-Vorlage?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
 - [Das Löschen der Replikation schlägt mit dem Status „Verboten“ fehl, obwohl die Replikation über die Azure CLI oder Azure PowerShell gelöscht wird](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
-- [Firewall-Regeln werden erfolgreich aktualisiert, treten aber nicht in Kraft](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
+- [Firewallregeln werden erfolgreich aktualisiert, treten aber nicht in Kraft](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Kann ich eine Azure Container Registry-Instanz mithilfe einer Resource Manager-Vorlage erstellen?
 
-Ja. Hier ist [eine Vorlage](https://github.com/Azure/azure-cli/blob/master/src/command_modules/azure-cli-acr/azure/cli/command_modules/acr/template.json), mit deren Hilfe Sie eine Registrierung erstellen können.
+Ja. Hier ist [eine Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry), mit deren Hilfe Sie eine Registrierung erstellen können.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Gibt es in ACR Überprüfungen auf Sicherheitsrisiken für Images?
 
@@ -92,9 +92,9 @@ Der Fehler wird angezeigt, wenn der Benutzer Berechtigungen für eine Registrier
 az role assignment create --role "Reader" --assignee user@contoso.com --scope /subscriptions/<subscription_id> 
 ```
 
-### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Firewall-Regeln werden erfolgreich aktualisiert, treten aber nicht in Kraft
+### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Firewallregeln werden erfolgreich aktualisiert, treten aber nicht in Kraft
 
-Es dauert einige Zeit, bis sich Änderungen an Firewall-Regeln verbreitet haben. Nachdem Sie die Firewall-Einstellungen geändert haben, warten Sie bitte einige Minuten, bevor Sie diese Änderung verifizieren.
+Es dauert einige Zeit, bis Änderungen von Firewallregeln verbreitet werden. Nach dem Ändern der Firewalleinstellungen sollten Sie einige Minuten warten, bevor Sie diese Änderung überprüfen.
 
 
 ## <a name="registry-operations"></a>Registrierungsvorgänge
@@ -251,7 +251,7 @@ Bei ausschließlichem Verwenden der Rolle `AcrPull` oder `AcrPush` hat die zugew
 
 Quarantäne von Images ist derzeit eine Previewfunktion von ACR. Sie können den Quarantänemodus einer Registry so aktivieren, dass nur die Images, die die Sicherheitsüberprüfung erfolgreich bestanden haben, für normale Benutzer sichtbar sind. Weitere Informationen finden Sie im [GitHub-Repository zu ACR](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-## <a name="diagnostics-and-health-checks"></a>Diagnosefunktionen und Integritätsprüfungen
+## <a name="diagnostics-and-health-checks"></a>Diagnose und Integritätsprüfungen
 
 - [Überprüfen der Integrität mit `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers) (Docker-Pullvorgang mit Fehler fehlgeschlagen: Net/http: Anforderung während des Wartens auf Verbindung abgebrochen [Client.Timeout-Wert beim Warten auf Header überschritten])
@@ -269,21 +269,21 @@ Informationen zur Behebung von Problemen mit der allgemeinen Umgebung und der Re
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 
  - Wenn dieser Fehler ein vorübergehendes Problem ist, wird eine Wiederholung erfolgreich sein.
- - Wenn `docker pull` kontinuierlich ausfällt, kann es zu einem Problem mit dem Docker-Daemon kommen. Das Problem kann in der Regel durch einen Neustart des Docker-Daemons behoben werden. 
- - Wenn dieses Problem nach dem Neustart des Docker-Daemons weiterhin besteht, könnte es sich dabei um Probleme mit der Netzwerkverbindung der Maschine handeln. Um zu überprüfen, ob das allgemeine Netzwerk auf dem Computer funktionsfähig ist, führen Sie den folgenden Befehl aus, um die Endpunktkonnektivität zu testen. Die `az acr`Mindestversion, die diesen Befehl zur Verbindungsüberwachung enthält, ist 2.2.9. Aktualisieren Sie Ihre Azure-Befehlszeilenschnittstelle, wenn Sie eine ältere Version verwenden.
+ - Wenn `docker pull` ständig ausfällt, kann dies an einem Problem mit dem Docker-Daemon liegen. Das Problem kann in der Regel durch einen Neustart des Docker-Daemons behoben werden. 
+ - Wenn dieses Problem nach dem Neustart des Docker-Daemons weiterhin besteht, liegt ggf. ein Problem mit der Netzwerkverbindung des Computers vor. Um zu überprüfen, ob das allgemeine Netzwerk auf dem Computer funktionsfähig ist, führen Sie den folgenden Befehl zum Testen der Endpunktkonnektivität aus. Die Mindestversion von `az acr`, die diesen Befehl für die Konnektivitätsprüfung enthält, ist 2.2.9. Aktualisieren Sie Ihre Azure-Befehlszeilenschnittstelle, falls Sie eine ältere Version verwenden.
  
    ```azurecli
     az acr check-health -n myRegistry
     ```
  - Sie sollten für alle Docker-Clientvorgänge stets einen Wiederholungsmechanismus einrichten.
 
-### <a name="docker-pull-is-slow"></a>Der Docker-Pullvorgang ist langsam
-Verwenden Sie [dieses](http://www.azurespeed.com/Azure/Download) Tool, um die Download-Geschwindigkeit Ihres Maschinen-Netzwerks zu testen. Wenn das Computernetzwerk langsam ist, sollten Sie die Azure VM in der gleichen Region wie Ihre Registrierung verwenden. Dadurch erhöhen Sie Ihre Netzwerkgeschwindigkeit.
+### <a name="docker-pull-is-slow"></a>Docker-Pullvorgang ist langsam
+Verwenden Sie [dieses Tool](http://www.azurespeed.com/Azure/Download), um die Downloadgeschwindigkeit Ihres Computernetzwerks zu testen. Wenn das Computernetzwerk langsam ist, sollten Sie die Azure-VM in derselben Region wie Ihre Registrierung verwenden. Hierdurch erhöhen Sie Ihre Netzwerkgeschwindigkeit.
 
 ### <a name="docker-push-is-slow"></a>Docker-Pushvorgang ist langsam
-Verwenden Sie [dieses](http://www.azurespeed.com/Azure/Upload) Tool, um die Download-Geschwindigkeit Ihres Maschinen-Netzwerks zu testen. Wenn das Computernetzwerk langsam ist, sollten Sie die Azure VM in der gleichen Region wie Ihre Registrierung verwenden. Dadurch erhöhen Sie Ihre Netzwerkgeschwindigkeit.
+Verwenden Sie [dieses Tool](http://www.azurespeed.com/Azure/Upload), um die Uploadgeschwindigkeit Ihres Computernetzwerks zu testen. Wenn das Computernetzwerk langsam ist, sollten Sie die Azure-VM in derselben Region wie Ihre Registrierung verwenden. Hierdurch erhöhen Sie Ihre Netzwerkgeschwindigkeit.
 
-### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Docker-Pushvorgang erfolgreich, aber Docker Pullvorgang schlägt fehl: unbefugt: Authentifizierung erforderlich
+### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Docker-Pushvorgang erfolgreich, aber für den Docker-Pullvorgang tritt ein Fehler auf: Nicht autorisiert: Authentifizierung erforderlich
 
 Dieser Fehler kann bei der Red Hat-Version des Docker-Daemons auftreten, bei der `--signature-verification` standardmäßig aktiviert ist. Sie können die Docker-Daemon-Optionen für Red Hat Enterprise Linux (RHEL) oder Fedora überprüfen, indem Sie den folgenden Befehl ausführen:
 
@@ -320,7 +320,7 @@ Details zu `--signature-verification` finden Sie, indem Sie `man dockerd` ausfü
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons  
 
-Starten Sie `dockerd` mit der Option `debug`. Erstellen Sie zunächst die Docker-Daemon-Konfigurationsdatei (`/etc/docker/daemon.json`), falls noch nicht vorhanden, und fügen Sie die Option `debug` hinzu:
+Starten Sie `dockerd` mit der Option `debug`. Erstellen Sie zunächst die Docker-Daemon-Konfigurationsdatei (`/etc/docker/daemon.json`), falls sie noch nicht vorhanden ist, und fügen Sie die Option `debug` hinzu:
 
 ```json
 {   
@@ -408,7 +408,7 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt? 
 
-Wenn Sie den Microsoft Edge-/Internetexplorer-Browser verwenden, werden maximal 100 Repositorys oder Tags angezeigt. Wenn Ihre Registrierung mehr als 100 Repositorys oder Tags enthält, empfehlen wir Ihnen, entweder Firefox oder Chrome als Browser zu verwenden, um alle aufzulisten.
+Wenn Sie Microsoft Edge oder Internet Explorer als Browser verwenden, werden maximal 100 Repositorys oder Tags angezeigt. Wenn Ihre Registrierung mehr als 100 Repositorys oder Tags enthält, empfehlen wir Ihnen, entweder Firefox oder Chrome als Browser zu verwenden, um alle aufzulisten.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?
 

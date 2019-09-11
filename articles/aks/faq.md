@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68381964"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241793"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ Dieser Artikel behandelt häufig gestellte Fragen zu Azure Kubernetes Service (A
 
 ## <a name="which-azure-regions-currently-provide-aks"></a>In welchen Azure-Regionen wird AKS derzeit zur Verfügung gestellt?
 
-Eine vollständige Liste der verfügbaren Regionen finden Sie unter [„AKS-Regionen und Verfügbarkeit“][aks-regions].
+Eine vollständige Liste der verfügbaren Regionen finden Sie unter [AKS-Regionen und Verfügbarkeit][aks-regions].
 
 ## <a name="does-aks-support-node-autoscaling"></a>Unterstützt AKS die automatische Skalierung von Knoten?
 
-Ja. Die Möglichkeit, Agentknoten in AKS horizontal zu skalieren, existiert derzeit in der Vorschauversion. Weitere Informationen finden Sie unter [Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in AKS][aks-cluster-autoscaler]. Die automatische Skalierung von AKS basiert auf der [Autoskalierung für Kubernetes][auto-scaler].
+Ja. Die Funktion, Agent-Knoten in AKS horizontal zu skalieren, ist derzeit in der Vorschauversion verfügbar. Weitere Informationen finden Sie unter [Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in AKS][aks-cluster-autoscaler]. Die automatische Skalierung von AKS basiert auf der [Autoskalierung für Kubernetes][auto-scaler].
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Kann ich AKS in meinem vorhandenen virtuellen Netzwerk bereitstellen?
 
@@ -33,15 +33,15 @@ Ja, Sie können einen AKS-Cluster in einem vorhandenen virtuellen Netzwerk mithi
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kann ich einschränken, wer Zugriff auf den Kubernetes-API-Server hat?
 
-Ja. Sie können den Zugriff auf den Kubernetes-API-Server mit [„Vom API-Server autorisierte IP-Bereiche“][api-server-authorized-ip-ranges] einschränken, wovon es derzeit eine Vorschauversion gibt.
+Ja. Sie können den Zugriff auf den Kubernetes-API-Server mit [vom API-Server autorisierten IP-Bereichen][api-server-authorized-ip-ranges] einschränken. Diese Funktion befindet sich derzeit in der Vorschauphase.
 
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kann ich den Kubernetes-API-Server nur innerhalb meines virtuellen Netzwerks zugänglich machen?
 
-Noch nicht, aber dies ist schon in der Planung. Der Fortschritt kann im [AKS GitHub-Repository][private-clusters-github-issue] nachverfolgt werden.
+Dies ist derzeit nicht möglich, aber für die Zukunft geplant. Sie können den Fortschritt im [AKS GitHub-Repository][private-clusters-github-issue] nachverfolgen.
 
-## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Kann ich verschiedene VM-Größen in einem einzigen Cluster haben?
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Kann ich unterschiedliche VM-Größen in einem einzigen Cluster verwenden?
 
-Ja. Sie können verschiedene Größen für virtuelle Computer in Ihrem AKS-Cluster einsetzen, indem Sie [mehrere Knotenpools][multi-node-pools] einsetzen, wovon es derzeit eine Vorschauversion gibt.
+Ja. Sie können virtuelle Computer unterschiedlicher Größen in Ihrem AKS-Cluster verwenden, indem Sie [mehrere Knotenpools][multi-node-pools] erstellen. Diese Funktion befindet sich derzeit in der Vorschauphase.
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Werden Sicherheitsupdates auf AKS-Agent-Knoten angewendet?
 
@@ -49,13 +49,13 @@ Azure wendet automatisch Sicherheitspatches auf die Linux-Knoten in Ihrem Cluste
 
 - Manuell über das Azure-Portal oder die Azure-CLI.
 - Durch ein Upgrade des AKS-Clusters. Durch Clusterupgrades [werden Knoten automatisch abgesperrt und ausgeglichen][cordon-drain]. Anschließend werden neue Knoten mit dem neuesten Ubuntu-Image und einer neuen Patchversion oder einer Kubernetes-Nebenversion online geschaltet. Weitere Informationen finden Sie unter [Aktualisieren eines AKS-Clusters][aks-upgrade].
-- Mit [Kured](https://github.com/weaveworks/kured), einem Open Source-Neustartdaemon für Kubernetes. Kured wird als [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts des Betriebssystems werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens][cordon-drain] wie bei einem Clusterupgrade angewandt wird.
+- Mit [Kured](https://github.com/weaveworks/kured), einem Open Source-Neustartdaemon für Kubernetes. Kured wird als [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts des Betriebssystems werden im gesamten Cluster verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens][cordon-drain] wie bei einem Clusterupgrade angewendet wird.
 
-Weitere Informationen zur Verwendung von kured finden Sie unter [Apply security and kernel updates to nodes in Azure Kubernetes Service (AKS)][node-updates-kured] (Anwenden von Sicherheits- und Kernelupdates auf Knoten in Azure Kubernetes Service (AKS)).
+Weitere Informationen zur Verwendung von kured finden Sie unter [Anwenden von Sicherheits- und Kernelupdates auf Knoten in Azure Kubernetes Service (AKS)][node-updates-kured].
 
 ### <a name="windows-server-nodes"></a>Windows Server-Knoten
 
-Für Windows Server-Knoten (derzeit in der Vorschauversion in AKS) werden die neuesten Updates von Windows Update nicht automatisch ausgeführt und angewendet. Sie sollten in regelmäßigen Abständen ein Upgrade für die Windows Server-Knotenpools in Ihrem AKS-Cluster durchführen, passend zum Windows Update-Freigabezyklus und Ihrem eigenen Validierungsprozess. Während dieses Upgrades werden Knoten erstellt, die das neueste Windows Server-Image und die neuesten Windows Server-Patches ausführen und die älteren Knoten entfernen. Weitere Informationen zu diesem Prozess finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
+Für Windows Server-Knoten (derzeit in der Vorschauversion in AKS) werden die neuesten Updates von Windows Update nicht automatisch ausgeführt und angewendet. Sie sollten in regelmäßigen Abständen ein Upgrade für den Cluster und die Windows Server-Knotenpools in Ihrem AKS-Cluster durchführen, passend zum Windows Update-Freigabezyklus und Ihrem eigenen Validierungsprozess. Während dieses Upgrades werden Knoten erstellt, die das neueste Windows Server-Image und die neuesten Windows Server-Patches ausführen und die älteren Knoten entfernen. Weitere Informationen zu diesem Prozess finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Warum werden zwei Ressourcengruppen mit AKS erstellt?
 
@@ -66,9 +66,9 @@ Jede AKS-Bereitstellung umfasst zwei Ressourcengruppen:
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kann ich einen eigenen Namen für die AKS-Knotenressourcengruppe angeben?
 
-Ja. In AKS lautet der Standardname der Ressourcengruppe *MC_clustername_resourcegroupname_location*, Sie können jedoch auch einen eigenen Namen angeben.
+Ja. In AKS wird der Knotenressourcengruppe standardmäßig der Name *MC_resourcegroupname_clustername_location* zugewiesen, Sie können jedoch auch einen eigenen Namen angeben.
 
-Installieren Sie die [aks-preview][aks-preview-cli]-Erweiterungsversion *0.3.2* oder höher für die Azure CLI, um Ihren eigenen Ressourcengruppennamen anzugeben. Verwenden Sie bei der Erstellung eines AKS-Clusters mit dem Befehl [az aks create][az-aks-create] den Parameter *--node-resource-group*, und geben Sie einen Namen für die Ressourcengruppe an. Wenn Sie [eine Azure Resource Manager-Vorlage verwenden][aks-rm-template], um einen AKS-Cluster bereitzustellen, können Sie die *nodeResourceGroup*-Eigenschaft verwenden, um den Namen der Ressourcengruppe zu definieren.
+Installieren Sie die [aks-preview][aks-preview-cli]-Erweiterungsversion *0.3.2* oder höher der Azure CLI, wenn Sie einen eigenen Ressourcengruppennamen angeben möchten. Verwenden Sie bei der Erstellung eines AKS-Clusters mit dem Befehl [az aks create][az-aks-create] den Parameter *--node-resource-group*, und geben Sie einen Namen für die Ressourcengruppe an. Wenn Sie [eine Azure Resource Manager-Vorlage verwenden][aks-rm-template], um einen AKS-Cluster bereitzustellen, können Sie die *nodeResourceGroup*-Eigenschaft verwenden, um den Namen der Ressourcengruppe zu definieren.
 
 * Die sekundäre Ressourcengruppe wird automatisch vom Azure-Ressourcenanbieter in Ihrem eigenen Abonnement erstellt.
 * Sie können nur einen benutzerdefinierten Namen für die Ressourcengruppe angeben, wenn Sie den Cluster erstellen.
@@ -110,11 +110,13 @@ AKS ist derzeit nicht nativ mit Azure Key Vault integriert. Das Projekt [Azure K
 
 Ja, Windows Server-Container sind in der Vorschauversion verfügbar. Erstellen Sie einen Knotenpool, der Windows Server als Gastbetriebssystem ausführt, um Windows Server-Container in AKS auszuführen. Windows Server-Container können nur Windows Server 2019 verwenden. Informationen zu den ersten Schritten finden Sie unter [Erstellen eines AKS-Clusters mit einem Windows Server-Knotenpool][aks-windows-cli].
 
-Die Windows Server-Unterstützung für Knotenpools umfasst einige Einschränkungen, die Teil des Upstreamprojekts „Windows Server in Kubernetes“ sind. Weitere Informationen zu diesen Einschränkungen finden Sie unter [Windows Server containers in AKS limitations (Einschränkungen für Windows Server-Container in AKS)][aks-windows-limitations].
+Die Windows Server-Unterstützung für Knotenpools umfasst einige Einschränkungen, die Teil des Upstreamprojekts „Windows Server in Kubernetes“ sind. Weitere Informationen zu diesen Einschränkungen finden Sie unter [Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)][aks-windows-limitations].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Bietet AKS eine Vereinbarung zum Servicelevel?
 
-In einer Vereinbarung zum Servicelevel (Service Level Agreement, SLA) sichert der Anbieter zu, dem Kunden die Kosten des Diensts zu erstatten, falls das veröffentliche Servicelevel nicht erfüllt wird. Da AKS kostenlos ist, können keine Kosten erstattet werden. Daher verfügt AKS über keine formale SLA. In AKS wird jedoch angestrebt, für den Kubernetes-API-Server eine Verfügbarkeit von mindestens 99,5 % zu bieten.
+In einer Vereinbarung zum Servicelevel (Service Level Agreement, SLA) sichert der Anbieter zu, dem Kunden die Kosten des Diensts zu erstatten, falls das veröffentliche Servicelevel nicht erfüllt wird. Da AKS kostenlos ist, können keine Kosten erstattet werden. Es gibt keine formale SLA für AKS. In AKS wird jedoch angestrebt, für den Kubernetes-API-Server eine Verfügbarkeit von mindestens 99,5 % zu bieten.
+
+Wichtig: Es besteht ein Unterschied zwischen der AKS-Dienstverfügbarkeit, die sich auf die Betriebszeit der Kubernetes-Steuerungsebene bezieht, und der Verfügbarkeit Ihrer spezifischen Workload, die auf virtuellen Azure-Computern ausgeführt wird. Obwohl die Steuerungsebene möglicherweise nicht verfügbar ist, wenn die Steuerungsebene nicht bereit ist, können Ihre auf den Azure-VMs ausgeführten Clusterworkloads weiterhin funktionieren. Weil es sich bei Azure-VMs um kostenpflichtige Ressourcen handelt, gilt dafür eine SLA mit finanzieller Absicherung. Lesen Sie [diesen Artikel, um weitere Informationen](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) zur Azure-VM-SLA und zum Verbessern der Verfügbarkeit mit Features wie [Verfügbarkeitszonen][availability-zones] zu erhalten.
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Warum kann ich für maxPods keinen Wert unter 30 festlegen?
 
@@ -204,6 +206,7 @@ Nein. AKS ist ein verwalteter Dienst, und die Bearbeitung der IaaS-Ressourcen wi
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
 
 <!-- LINKS - external -->
 

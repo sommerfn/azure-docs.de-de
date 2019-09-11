@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3fa97c5738128907b0edad40cedf582e80c33443
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891724"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194473"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -277,7 +277,11 @@ Ja, die Application Gateway v2-SKU unterstützt Key Vault. Weitere Informationen
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Wie konfiguriere ich HTTPS-Listener für Websites vom Typ „.com“ und „.net“? 
 
-Für das Routing auf der Grundlage mehrerer Domänen (hostbasiertes Routing) können Sie Listener für mehrere Standorte erstellen, Listener einrichten, die als Protokoll HTTPS verwenden, und die Listener mit den Routingregeln verknüpfen. Weitere Informationen finden Sie unter [Anwendungsgateways – Hosten mehrerer Websites](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview). 
+Für das Routing auf der Grundlage mehrerer Domänen (hostbasiertes Routing) können Sie Listener für mehrere Standorte erstellen, Listener einrichten, die als Protokoll HTTPS verwenden, und die Listener mit den Routingregeln verknüpfen. Weitere Informationen finden Sie unter [Anwendungsgateways – Hosten mehrerer Websites](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+
+### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Darf ich Sonderzeichen im PFX-Dateikennwort verwenden?
+
+Nein, verwenden Sie nur alphanumerische Zeichen in Ihrem PFX-Dateikennwort.
 
 ## <a name="configuration---web-application-firewall-waf"></a>Konfiguration: Web Application Firewall (WAF)
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062138"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192074"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Grundlagen von Ergebnissen des automatisierten maschinellen Lernens
 
@@ -102,7 +102,7 @@ weighted_accuracy|Die gewichtete Genauigkeit ist die Genauigkeit, bei der die Ge
 
 Eine Konfusionsmatrix wird verwendet, um die Leistung eines Klassifizierungsmodells zu beschreiben. Jede Zeile zeigt die Instanzen der wahren Klasse an, und jede Spalte repräsentiert die Instanzen der vorhergesagten Klasse. Die Konfusionsmatrix zeigt die richtig klassifizierten Bezeichnungen und die falsch klassifizierten Bezeichnungen für ein bestimmtes Modell.
 
-Für Klassifizierungsprobleme stellt Azure Machine Learning automatisch eine Konfusionsmatrix für jedes Modell zur Verfügung, das erstellt wird. Für jede Konfusionsmatrix zeigt das automatisierte ML die richtig klassifizierten Bezeichnungen als grün und die falsch klassifizierten Bezeichnungen als rot an. Die Größe des Kreises stellt die Anzahl der Samples in diesem Behälter dar. Darüber hinaus wird die Häufigkeitszählung jeder vorhergesagten Bezeichnung und jeder wahren Bezeichnung in den nebenstehenden Balkendiagrammen angezeigt. 
+Für Klassifizierungsprobleme stellt Azure Machine Learning automatisch eine Konfusionsmatrix für jedes Modell zur Verfügung, das erstellt wird. Von automatisiertem Machine Learning wird für jede Konfusionsmatrix die Häufigkeit der einzelnen vorhergesagten Bezeichnungen und der einzelnen tatsächlichen Bezeichnungsüberschneidungen angezeigt. Je dunkler die Farbe, desto höher die Anzahl in diesem bestimmten Teil der Matrix. Im Idealfall verlaufen die dunkelsten Farben entlang der Diagonalen der Matrix. 
 
 Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit ![Ein Klassifizierungsmodell mit schlechter Genauigkeit](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

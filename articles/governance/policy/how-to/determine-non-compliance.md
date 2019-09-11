@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298924"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194675"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -111,34 +111,19 @@ In der folgenden Tabelle wird jeder mögliche _Grund_ der entsprechenden [Beding
 
 ## <a name="compliance-details-for-guest-configuration"></a>Details zur Konformität für die Gastkonfiguration
 
-Für Überwachungsrichtlinien (_audit_) in der Kategorie _Gastkonfiguration_ können auf der VM mehrere Einstellungen ausgewertet werden, und Sie müssen die Details pro Einstellung anzeigen. Wenn Sie beispielsweise eine Überprüfung einer Liste mit installierten Anwendungen durchführen und der Zuweisungsstatus _Nicht konform_ lautet, müssen Sie genau wissen, welche Anwendungen fehlen.
+Für Überwachungsrichtlinien (_auditIfNotExists_) in der Kategorie _Gastkonfiguration_ können auf der VM mehrere Einstellungen ausgewertet werden, und Sie müssen die Details pro Einstellung anzeigen. Wenn Sie beispielsweise eine Überprüfung der Liste mit Kennwortrichtlinien durchführen und nur ein Eintrag den Status _Nicht konform_ aufweist, müssen Sie ermitteln, welche spezifischen Kennwortrichtlinien nicht konform sind und was der Grund dafür ist.
 
-Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf der VM, müssen aber melden, warum die VM _nicht konform_ ist. Sie können beispielsweise überprüfen, ob die VMs in die richtige Domäne eingebunden sind und in den Berichtsdetails die aktuelle Domänenmitgliedschaft enthalten.
+Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf der VM, müssen aber melden, warum die VM _nicht konform_ ist.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+Beginnen Sie, indem Sie die Schritte zum Anzeigen der Konformitätsdetails der Richtlinien im obigen Abschnitt ausführen.
 
-1. Wählen Sie auf der Seite **Übersicht** oder **Kompatibilität** eine Richtlinienzuweisung für alle Initiativen aus, die für die Gastkonfiguration eine _nicht konforme_ Richtliniendefinition enthalten.
+Klicken Sie im Bereich **Kompatibilitätsdetails** auf den Link **Zuletzt ausgewertete Ressource**.
 
-1. Wählen Sie für die Initiative, die _nicht konform_ ist, eine _Überwachungsrichtlinie_ aus.
+   ![Anzeigen von Details zur Definition „auditIfNotExists“](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
 
-   ![Anzeigen von Details zur Überwachungsdefinition](../media/determine-non-compliance/guestconfig-audit-compliance.png)
-
-1. Auf der Registerkarte **Ressourcenkonformität** sind die folgenden Informationen angegeben:
-
-   - **Name**: Der Name der Zuweisungen für die Gastkonfiguration.
-   - **Übergeordnete Ressource**: Der virtuelle Computer mit dem Status _Nicht konform_ für die ausgewählte Zuweisung für die Gastkonfiguration.
-   - **Ressourcentyp**: Der vollständige _guestConfigurationAssignments_-Name.
-   - **Letzte Auswertung**: Der letzte Zeitpunkt, zu dem der Dienst „Gastkonfiguration“ Azure Policy über den Status des virtuellen Zielcomputers informiert hat.
-
-   ![Anzeigen von Konformitätsdetails](../media/determine-non-compliance/guestconfig-assignment-view.png)
-
-1. Wählen Sie den Namen der Gastkonfigurationszuweisung in der Spalte **Name** aus, um die Seite **Ressourcenkonformität** zu öffnen.
-
-1. Wählen Sie oben auf der Seite die Schaltfläche **Ressource anzeigen**, um die Seite **Gastzuweisung** zu öffnen.
-
-Auf der Seite **Gastzuweisung** werden alle verfügbaren Konformitätsdetails angezeigt. Jede Zeile der Ansicht steht für eine Auswertung, die auf dem virtuellen Computer durchgeführt wurde. In der Spalte **Grund** wird eine Beschreibung angezeigt, mit der der Grund für den Status _Nicht konform_ für die Gastzuweisung angegeben wird. Falls die Überwachung beispielsweise ergibt, dass VMs in eine Domäne eingebunden werden sollten, wird in der Spalte **Grund** Text angezeigt, der auch die aktuelle Domänenmitgliedschaft enthält.
+Auf der Seite **Gastzuweisung** werden alle verfügbaren Konformitätsdetails angezeigt. Jede Zeile der Ansicht steht für eine Auswertung, die auf dem Computer durchgeführt wurde. In der Spalte **Grund** wird eine Beschreibung angezeigt, mit der der Grund für den Status _Nicht konform_ für die Gastzuweisung angegeben wird. Wenn Sie beispielsweise Kennwortrichtlinien überprüfen, wird in der Spalte **Grund** Text mit dem aktuellen Wert für jede Einstellung angezeigt.
 
 ![Anzeigen von Konformitätsdetails](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
@@ -173,7 +158,7 @@ Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname
 The following applications are not installed: '<name>'.
 ```
 
-Sie können auch einen Konformitätsverlauf für Gastzuweisungen des virtuellen Computers ausgeben. Die Ausgabe dieses Befehls enthält die Details aller Berichte für die VM.
+Sie können auch einen Konformitätsverlauf für Gastzuweisungen des Computers ausgeben. Die Ausgabe dieses Befehls enthält die Details aller Berichte für die VM.
 
 > [!NOTE]
 > Die Ausgabe kann eine große Datenmenge umfassen. Wir empfehlen Ihnen, die Ausgabe in einer Variablen zu speichern.

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 7fed6caa719824dd51b19789a7066ffaea13d336
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 52d7eb035ed06c368214b8b5cb7ef583cd99b51b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907812"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162001"
 ---
 # <a name="get-started-with-device-management-java"></a>Erste Schritte mit der Geräteverwaltung (Java)
 
@@ -53,11 +53,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei Java-Konsolen-Apps:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) Wählen Sie unter **Langfristiger Support** unbedingt **Java 8** aus, um zu den Downloads für JDK 8 zu gelangen.
 
-* Java SE 8. Unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) wird beschrieben, wie Sie für dieses Tutorial Java unter Windows oder Linux installieren.
-
-* Maven 3. Unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) wird beschrieben, wie Sie für dieses Tutorial [Maven](https://maven.apache.org/what-is-maven.html) unter Windows oder Linux installieren.
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896963"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164321"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI (Vorschau)
 
@@ -112,6 +112,21 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 > [!NOTE]
 > Eine SAS für die Benutzerdelegierung unterstützt nicht das Definieren von Berechtigungen mit einer gespeicherten Zugriffsrichtlinie.
+
+## <a name="revoke-a-user-delegation-sas"></a>Widerrufen einer SAS für die Benutzerdelegierung
+
+Um eine SAS für die Benutzerdelegierung über die Azure CLI zu widerrufen, verwenden Sie den Befehl [az storage account revoke-delegation-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys). Mit diesem Befehl werden alle Benutzerdelegierungsschlüssel widerrufen, die dem angegebenen Speicherkonto zugeordnet sind. Alle mit diesen Schlüsseln verknüpften Shared Access Signatures werden für ungültig erklärt.
+
+Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```azurecli-interactive
+az storage account revoke-delegation-keys \
+    --name <storage-account> \
+    --resource-group <resource-group>
+```
+
+> [!IMPORTANT]
+> Sowohl der Benutzerdelegierungsschlüssel als auch die RBAC-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher kann es zu einer Verzögerung zwischen der Initiierung des Sperrprozesses und dem Zeitpunkt kommen, zu dem eine SAS für die Benutzerdelegierung ungültig wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

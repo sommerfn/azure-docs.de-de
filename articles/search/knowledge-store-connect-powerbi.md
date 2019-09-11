@@ -91,13 +91,13 @@ Verwenden Sie den Datenimport-Assistenten, um den Wissensspeicher zu erstellen. 
 
       ![Erstellen eines Skillsets](media/knowledge-store-howto-powerbi/hotel-reviews-ss.png "Erstellen eines Skillsets")
 
-   - Geben Sie unter **Anreicherungen in einem Wissensspeicher speichern (Vorschau)** die Verbindungszeichenfolge für Ihr universelles Azure Storage-Konto an. Ein Wissensspeicher wird in Azure-Tabellenspeicher erstellt, wenn Sie in diesem Abschnitt die Optionen für ** Azure-Tabellenprojekte auswählen.
+   - Geben Sie unter **Anreicherungen in einem Wissensspeicher speichern (Vorschau)** die Verbindungszeichenfolge für Ihr universelles Azure Storage-Konto an. Ein Wissensspeicher wird in Azure-Tabellenspeicher erstellt, wenn Sie in diesem Abschnitt die Optionen für *Azure-Tabellenprojekte* auswählen.
 
       ![Konfigurieren des Wissensspeichers](media/knowledge-store-howto-powerbi/hotel-reviews-ks.png "Konfigurieren des Wissensspeichers")
    
    Klicken Sie auf **Weiter: Zielindex anpassen**, um mit dem nächsten Schritt fortzufahren.
 
-1. Konfigurieren Sie einen Index für optionale Volltextsuchabfragen in Azure Search. Der Schwerpunkt dieser exemplarischen Vorgehensweise liegt zwar auf der Verbindung zwischen Power BI und Azure-Tabellenspeicher, der Datenimport-Assistent **** kann jedoch auch einen Index für die Volltextsuche in Azure Search erstellen. 
+1. Konfigurieren Sie einen Index für optionale Volltextsuchabfragen in Azure Search. Der Schwerpunkt dieser exemplarischen Vorgehensweise liegt zwar auf der Verbindung zwischen Power BI und Azure-Tabellenspeicher, **der Datenimport-Assistent** kann jedoch auch einen Index für die Volltextsuche in Azure Search erstellen. 
 
    Der Assistent leitet Felder und Datentypen aus Ihrer Datenquelle ab, sodass Sie lediglich die erforderlichen Attribute auswählen müssen, um das gewünschte Verhalten zu erreichen. *Abrufbar* bedeutet beispielsweise, dass der Feldinhalt aus dem Dienst abgerufen werden kann, während *Durchsuchbar* die Volltextsuche für ausgewählte Felder ermöglicht.
 

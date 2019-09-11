@@ -6,17 +6,17 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 5343475f38dd5389d6b0e266ff7167925cd38d71
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 864bfaefba783d93e795e8780cc02dcf991e38f1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66576652"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142020"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Automatische Speichervergrößerung in Azure Database for MySQL über das Azure-Portal
 In diesem Artikel ist beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for MySQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.
 
-Wenn ein Server das zugeordnete Speicherlimit erreicht, wird er als schreibgeschützt gekennzeichnet. Wenn Sie jedoch die automatische Speichervergrößerung aktivieren, wird der Speicher in Anpassung an die zunehmende Datenmenge erweitert. Bei Servern mit weniger als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter 1 GB oder zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter fünf Prozent der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, [hier](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) beschriebenen Speicherlimits.
+Wenn ein Server das zugeordnete Speicherlimit erreicht, wird er als schreibgeschützt gekennzeichnet. Wenn Sie jedoch die automatische Speichervergrößerung aktivieren, wird der Speicher in Anpassung an die zunehmende Datenmenge erweitert. Bei Servern mit weniger als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter 1 GB oder zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter fünf Prozent der bereitgestellten Speichergröße sinkt. Dabei gelten die [hier](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) beschriebenen Grenzwerte für maximalen Speicher.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
@@ -26,7 +26,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
 Gehen Sie wie folgt vor, um die automatische Speichervergrößerung für MySQL-Server zu aktivieren:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Azure Database for MySQL-Server aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen Azure Database for MySQL-Server aus.
 
 2. Klicken Sie auf der Seite des MySQL-Servers unter der Überschrift **Einstellungen** auf **Tarif**, um die Seite mit Tarifen zu öffnen.
 

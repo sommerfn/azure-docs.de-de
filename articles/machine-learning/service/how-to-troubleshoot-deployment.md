@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358673"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183545"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning Service, Azure Kubernetes Service und Azure Container Instances
 
@@ -204,6 +204,9 @@ print(prediction)
 
 Beim lokalen Testen müssen Sie möglicherweise die `score.py`-Datei aktualisieren, um die Protokollierung hinzuzufügen oder ggf. zu versuchen, alle Probleme zu behandeln, die Sie ermittelt haben. Zum erneuten Laden von Änderungen an der `score.py`-Datei verwenden Sie `reload()`. Der folgende Code lädt z.B. das Skript für den Dienst neu und sendet dann Daten an ihn. Die Daten werden mithilfe der aktualisierten `score.py`-Datei bewertet:
 
+> [!IMPORTANT]
+> Die Methode `reload` ist nur für lokale Bereitstellungen verfügbar. Informationen zum Aktualisieren einer Bereitstellung auf ein anderes Computeziel finden Sie im Artikel „Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst“ unter [Aktualisieren von Webdiensten](how-to-deploy-and-where.md#update).
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ Nach der erfolgreichen Erstellung des Images versucht das System, mithilfe Ihrer
 
 Verwenden Sie die Informationen im Abschnitt [Untersuchen des Docker-Protokolls](#dockerlog), um die Protokolle überprüfen.
 
-## <a name="function-fails-getmodelpath"></a>Fehler bei der Funktion: get_model_path()
+## <a name="function-fails-get_model_path"></a>Fehler bei der Funktion: get_model_path()
 
 Oftmals wird in der `init()`-Funktion im Bewertungsskript die Funktion [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) aufgerufen, um eine Modelldatei oder einen Ordner mit Modelldateien im Container zu finden. Wenn die Datei oder der Ordner für das Modell nicht gefunden werden kann, tritt bei der Funktion ein Fehler auf. Die einfachste Möglichkeit zum Debuggen dieses Fehlers besteht darin, den unten dargestellten Python-Code in der Containershell auszuführen:
 
@@ -255,7 +258,7 @@ In diesem Beispiel wird der lokale Pfad (relativ zu `/var/azureml-app`) in dem C
 
 Das Festlegen der Protokollierungsstufe auf DEBUG kann dazu führen, dass zusätzliche Informationen protokolliert werden, was bei der Identifizierung des Fehlers nützlich sein kann.
 
-## <a name="function-fails-runinputdata"></a>Fehler bei der Funktion: run(input_data)
+## <a name="function-fails-runinput_data"></a>Fehler bei der Funktion: run(input_data)
 
 Wenn der Dienst erfolgreich bereitgestellt wurde, aber beim Veröffentlichen von Daten am Bewertungsendpunkt abstürzt, können Sie Ihrer `run(input_data)`-Funktion eine Anweisung zum Abfangen von Fehlern hinzufügen, damit sie stattdessen eine detaillierte Fehlermeldung zurückgibt. Beispiel:
 

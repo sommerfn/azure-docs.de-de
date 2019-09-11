@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854319"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141867"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimieren von ExpressRoute-Routing
 Wenn Sie mehrere ExpressRoute-Verbindungen nutzen, verfügen Sie über mehr als einen Weg zur Herstellung einer Verbindung mit Microsoft. Dies kann ein suboptimales Routing zur Folge haben. Es kann also sein, dass Ihr Datenverkehr für den Weg zu Microsoft und von Microsoft in Ihr Netzwerk mehr Zeit benötigt. Je länger der Netzwerkpfad, desto höher die Latenz. Die Latenz wirkt sich direkt auf die Anwendungsleistung und die Benutzerfreundlichkeit aus. In diesem Artikel wird dieses Problem veranschaulicht, und es wird beschrieben, wie Sie das Routing mit den standardmäßigen Routingtechnologien optimieren.
@@ -75,7 +75,7 @@ Es gibt zwei Lösungen des Problems. Die erste Lösung besteht darin, dass Sie e
 Die zweite Lösung besteht darin, weiterhin beide Präfixe unter beiden ExpressRoute-Verbindungen anzukündigen und darauf hinzuweisen, welches Präfix in der Nähe welcher Niederlassung liegt. Da die BGP-Voranstellung von AS Path unterstützt wird, können Sie AS Path für Ihr Präfix konfigurieren, um das Routing zu beeinflussen. In diesem Beispiel können Sie AS PATH für 172.2.0.0/31 in „USA, Osten“ verlängern, damit die ExpressRoute-Verbindung in „USA, Westen“ für Datenverkehr vorgezogen wird, der für dieses Präfix bestimmt ist (da von unserem Netzwerk angenommen wird, dass der Weg zu diesem Präfix im Westen kürzer ist). Auf ähnliche Weise können Sie AS PATH für 172.2.0.2/31 in „USA, Westen“ verlängern, damit von uns die ExpressRoute-Verbindung in „USA, Osten“ vorgezogen wird. Das Routing ist dann für beide Büros optimiert. Wenn bei diesem Aufbau eine ExpressRoute-Verbindung unterbrochen wird, kann Exchange Online Sie trotzdem noch über eine andere ExpressRoute-Verbindung und Ihr WAN erreichen. 
 
 > [!IMPORTANT]
-> Wir entfernen private AS-Nummern in AS PATH für die unter Microsoft-Peering empfangenen Präfixe. Sie müssen in AS PATH öffentliche AS-Nummern anfügen, um das Routing für Microsoft-Peering zu beeinflussen.
+> Wir entfernen private AS-Nummern in AS PATH für die unter Microsoft-Peering empfangenen Präfixe (bei Verwendung des Peerings mit einer privaten AS-Nummer). Sie müssen ein Peering mit einem öffentlichen AS verwenden und in AS PATH öffentliche AS-Nummern anfügen, um das Routing für Microsoft-Peering zu beeinflussen.
 > 
 > 
 

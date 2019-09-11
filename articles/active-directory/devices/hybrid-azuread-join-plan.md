@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084923"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231271"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -64,10 +64,10 @@ Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, sind
 ### <a name="windows-down-level-devices"></a>Kompatible Windows-Geräte
 
 - Windows 8.1
-- Windows 7. Informationen zum Support für Windows 7 finden Sie in diesem Artikel: [Unterstützung für Windows 7 wird beendet](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
+- Windows 7. Supportinformationen zu Windows 7 finden Sie unter [Der Support für Windows 7 läuft aus](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
 - Windows Server 2012 R2
 - Windows Server 2012
-- Windows Server 2008 R2
+- Windows Server 2008 R2. Supportinformationen zu Windows Server 2008 und Windows Server 2008 R2 finden Sie unter [Der Support für Windows Server 2008 wird eingestellt](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln, ob Sie Unterstützung für kompatible Windows-Geräte benötigen.
 

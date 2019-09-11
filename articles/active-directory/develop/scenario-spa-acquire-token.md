@@ -3,7 +3,7 @@ title: Single-Page-Webanwendung (Erwerben eines Tokens zum Aufrufen einer API) �
 description: Erfahren Sie, wie Sie eine Single-Page-Webanwendung erstellen (Erwerben eines Tokens zum Aufrufen einer API).
 services: active-directory
 documentationcenter: dev-center-name
-author: navyasric
+author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 08/20/2019
+ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c842db8a0874d3619e0dc59b90aa12226cb984
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f49a6093194ef76a895f2a54f8a78a55da73e7e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138811"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135710"
 ---
 # <a name="single-page-application---acquire-a-token-to-call-an-api"></a>Single-Page-Anwendung – Erwerben eines Tokens zum Aufrufen einer API
 
-Das Muster für das Erwerben von Token für APIs mit MSAL.js besteht darin, zunächst eine automatische Tokenanforderung mit der `acquireTokenSilent`-Methode zu versuchen. Wenn diese Methode aufgerufen wird, überprüft die Bibliothek zuerst den Cache im Browserspeicher, um festzustellen, ob ein gültiges Token vorhanden ist, und gibt es zurück. Wenn kein gültiges Token im Cache vorhanden ist, sendet sie aus einem ausgeblendeten IFrame eine automatische Tokenanforderung an Azure Active Directory (Azure AD). Diese Methode ermöglicht der Bibliothek auch, Token zu erneuern. Weitere Informationen zu SSO-Sitzung und Tokengültigkeitsdauer-Werten in Azure AD finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](active-directory-configurable-token-lifetimes.md).
+Das Muster für das Erwerben von Token für APIs mit MSAL.js besteht darin, zunächst eine automatische Tokenanforderung mit der `acquireTokenSilent`-Methode zu versuchen. Wenn diese Methode aufgerufen wird, überprüft die Bibliothek zuerst den Cache im Browserspeicher, um festzustellen, ob ein gültiges Token vorhanden ist, und gibt es zurück. Wenn kein gültiges Token im Cache vorhanden ist, sendet sie aus einem ausgeblendeten IFrame eine automatische Tokenanforderung an Azure Active Directory (Azure AD). Diese Methode ermöglicht der Bibliothek auch, Token zu erneuern. Weitere Informationen zu SSO-Sitzungen und Tokengültigkeitsdauer-Werten in Azure AD finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](active-directory-configurable-token-lifetimes.md).
 
 Bei den automatischen Tokenanforderungen für Azure AD können möglicherweise aus beliebigem Grund Fehler auftreten, z.B. wg. einer abgelaufenen Azure AD-Sitzung oder einer Kennwortänderung. In diesem Fall können Sie zum Abrufen von Token eine der interaktiven Methoden aufrufen (die den Benutzer zur Eingabe auffordert).
 
@@ -39,7 +39,7 @@ Bei den automatischen Tokenanforderungen für Azure AD können möglicherweise a
 
 * Es gibt bestimmte Fälle, in denen Sie möglicherweise die Umleitungsmethoden verwenden müssen. Wenn für Benutzer Ihrer Anwendung Browsereinschränkungen oder Richtlinien gelten, bei denen Popupfenster deaktiviert sind, können Sie die Umleitungsmethoden verwenden. Sie sollten auch die Umleitungsmethoden mit dem Internet Explorer-Browser verwenden, da es bestimmte [bekannte Probleme mit Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) bei der Verarbeitung von Popupfenstern gibt.
 
-Sie können beim Erstellen der Anforderung eines Zugriffstokens die API-Bereiche festlegen, die das Zugriffstoken einbeziehen soll. Beachten Sie, dass möglicherweise nicht alle angeforderten Bereiche im Zugriffstoken gewährt werden und dies von der Zustimmung des Benutzers abhängt.
+Sie können beim Erstellen der Anforderung eines Zugriffstokens die API-Bereiche festlegen, die das Zugriffstoken einbeziehen soll. Beachten Sie, dass unter Umständen nicht alle angeforderten Bereiche im Zugriffstoken gewährt werden und dies von der Zustimmung des Benutzers abhängt.
 
 ## <a name="acquire-token-with-a-pop-up-window"></a>Erwerben eines Tokens mit einem Popupfenster
 
@@ -72,9 +72,9 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 ### <a name="angular"></a>Angular
 
-Der MSAL Angular Wrapper bietet die Vorteile des Hinzufügens des HTTP-Interceptors `MsalInterceptor`, der automatisch Zugriffstoken im Hintergrund erwirbt und sie den HTTP-Anforderungen von APIs anfügt.
+Der MSAL Angular Wrapper hat den Vorteil, dass der HTTP-Interceptor hinzugefügt werden kann, der Zugriffstoken automatisch im Hintergrund beschafft und an die HTTP-Anforderungen für APIs anfügt.
 
-Sie können die Bereiche für APIs in der Konfigurationsoption `protectedResourceMap` angeben, die der MsalInterceptor anfordert, wenn Token automatisch erworben werden.
+Sie können die Bereiche für APIs in der Konfigurationsoption `protectedResourceMap` angeben, die der MsalInterceptor anfordert, wenn Token automatisch beschafft werden.
 
 ```javascript
 //In app.module.ts
@@ -116,7 +116,7 @@ Alternativ können Sie Token auch explizit mit der in der MSAL.js-Kernbibliothek
 
 ### <a name="javascript"></a>JavaScript
 
-Das Muster ist wie oben beschrieben, wird jedoch mit einer Umleitungsmethode zum interaktiven Erwerben von Token gezeigt. Beachten Sie, dass Sie den Umleitungsrückruf wie bereits erwähnt registrieren müssen.
+Das Muster ist wie oben beschrieben, wird jedoch mit einer Umleitungsmethode zum interaktiven Erwerben von Token gezeigt. Sie müssen den Umleitungsrückruf wie bereits erwähnt registrieren.
 
 ```javascript
 function authCallback(error, response) {
@@ -141,6 +141,37 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
     }
 });
 ```
+
+## <a name="request-for-optional-claims"></a>Anfordern optionaler Ansprüche
+Sie können in Ihrer App optionale Ansprüche anfordern, um anzugeben, welche zusätzlichen Ansprüche in Token für Ihre Anwendung einbezogen werden sollen. Zum Anfordern optionaler Ansprüche im „id_token“ können Sie ein als Zeichenfolge dargestelltes Anspruchsobjekt an das Feld „claimsRequest“ der „AuthenticationParameters.ts“-Klasse senden.
+
+Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
+
+- Einbinden zusätzlicher Ansprüche in Token für Ihre Anwendung
+- Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
+- Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung
+
+
+### <a name="javascript"></a>JavaScript
+```javascript
+"optionalClaims":  
+   {
+      "idToken": [
+            {
+                  "name": "auth_time", 
+                  "essential": true
+             }
+      ],
+
+var request = {
+    scopes: ["user.read"],
+    claimsRequest: JSON.stringify(claims)
+};
+
+myMSALObj.acquireTokenPopup(request);
+```
+Weitere Informationen zu optionalen Ansprüchen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md).
+
 
 ### <a name="angular"></a>Angular
 

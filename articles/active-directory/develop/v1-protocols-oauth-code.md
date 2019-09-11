@@ -12,19 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834697"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193232"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
+
+> [!NOTE]
+>  Wenn Sie dem Server nicht mitteilen, welche Ressource aufgerufen werden soll, löst der Server die Richtlinien für bedingten Zugriff für die jeweilige Ressource nicht aus. Für die MFA-Auslösung müssen Sie also eine Ressource in Ihre URL einfügen. 
+>
 
 Azure Active Directory (Azure AD) verwendet OAuth 2.0, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure AD-Mandanten zu autorisieren. Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer [Open Source-Bibliotheken](active-directory-authentication-libraries.md).
 
@@ -175,7 +179,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| access_token |Das angeforderte [Zugriffstoken](access-tokens.md) als signiertes JSON-Webtoken (JWT). Die App kann dieses Token zur Authentifizierung auf geschützten Ressourcen verwenden, wie z. B. eine Web-API. |
+| access_token |Das angeforderte Zugriffstoken.  Dies ist eine nicht transparente Zeichenfolge. Sie richtet sich danach, was von der Ressource erwartet wird, und sie ist nicht für den Client bestimmt. Die App kann dieses Token zur Authentifizierung auf geschützten Ressourcen verwenden, wie z. B. eine Web-API. |
 | token_type |Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | expires_in |Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
 | expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
@@ -346,3 +350,6 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 | correlation_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 
 Eine Beschreibung der Fehlercodes und der jeweils empfohlenen Clientaktion finden Sie unter [Fehlercodes für Token-Endpunktfehler](#error-codes-for-token-endpoint-errors).
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zum Azure AD v1.0-Endpunkt und dazu, wie Sie Ihren Webanwendungen und Web-APIs die Authentifizierung und Autorisierung hinzufügen, finden Sie unter [Beispielanwendungen](sample-v1-code.md).

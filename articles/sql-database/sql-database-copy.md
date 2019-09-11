@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568997"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173432"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
@@ -24,7 +24,7 @@ Azure SQL-Datenbank verfügt über mehrere Methoden für die Erstellung einer tr
 
 ## <a name="overview"></a>Übersicht
 
-Eine Datenbankkopie ist eine Momentaufnahme der Quelldatenbank zum Zeitpunkt der Kopieranforderung. Sie können denselben Server oder einen anderen auswählen. Sie können auch wahlweise Dienstebene und Computegröße des Servers beibehalten oder eine andere Computegröße innerhalb derselben Dienstebene (Edition) verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Zu diesem Zeitpunkt können Sie ein Upgrade oder Downgrade auf jede beliebige Edition durchführen. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden.  
+Eine Datenbankkopie ist eine Momentaufnahme der Quelldatenbank zum Zeitpunkt der Kopieranforderung. Sie können denselben Server oder einen anderen auswählen. Sie können auch wahlweise Dienstebene und Computegröße des Servers beibehalten oder eine andere Computegröße innerhalb derselben Dienstebene (Edition) verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Zu diesem Zeitpunkt können Sie ein Upgrade oder Downgrade auf jede beliebige Edition durchführen. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden. Die Kopie wird mit der Technologie für die Georeplikation erstellt, und nachdem das Seeding abgeschlossen ist, wird der Link für die Georeplikation automatisch eingestellt. Alle Anforderungen zur Nutzung der Georeplikation gelten für den Datenbank-Kopiervorgang. Weitere Informationen finden Sie unter [Aktive Georeplikation – Übersicht](sql-database-active-geo-replication.md).
 
 > [!NOTE]
 > [Automatische Datenbanksicherungen](sql-database-automated-backups.md) werden verwendet, wenn Sie eine Datenbankkopie erstellen.
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 Ein vollständiges Beispielskript finden Sie unter [Kopieren einer Datenbank auf einen neuen Server](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+Der Datenbank-Kopiervorgang ist ein asynchroner Vorgang, aber die Zieldatenbank wird sofort erstellt, nachdem die Anforderung akzeptiert wurde. Wenn Sie den Kopiervorgang abbrechen müssen, während er noch ausgeführt wird, sollten Sie die Zieldatenbank mit dem Cmdlet [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) löschen.  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>RBAC-Rollen zum Verwalten der Datenbankkopie
+
+Zum Erstellen einer Datenbankkopie müssen Sie über die folgenden Rollen verfügen:
+
+- Besitzer des Abonnements
+- Rolle „Mitwirkender von SQL Server“ oder
+- Benutzerdefinierte Rolle für die Quell- und Zieldatenbank mit folgender Berechtigung:
+
+   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
+
+Zum Abbrechen eines Datenbank-Kopiervorgangs müssen Sie über die folgenden Rollen verfügen:
+
+- Besitzer des Abonnements
+- Rolle „Mitwirkender von SQL Server“ oder
+- Benutzerdefinierte Rolle für die Quell- und Zieldatenbank mit folgender Berechtigung:
+
+   Microsoft.Sql/servers/databases/read  Microsoft.Sql/servers/databases/write
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Kopieren einer Datenbank mit Transact-SQL
 
@@ -107,6 +127,10 @@ Sie können Ihre Datenbank mit den im vorherigen Abschnitt beschriebenen Schritt
 
 > [!NOTE]
 > Wenn Sie den Kopiervorgang während der Ausführung abbrechen möchten, führen Sie die Anweisung [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) für die neue Datenbank aus. Alternativ dazu kann der Kopiervorgang auch abgebrochen werden, indem die DROP DATABASE-Anweisung in der Quelldatenbank ausgeführt wird.
+
+> [!IMPORTANT]
+> Falls Sie eine Kopie mit einem deutlich niedrigeren SLO-Wert als die Quelle erstellen müssen, verfügt die Zieldatenbank ggf. nicht über genügend Ressourcen für die Durchführung des Seedingprozesses, und für den Kopiervorgang tritt unter Umständen ein Fehler auf. Verwenden Sie in diesem Szenario eine Anforderung einer Geowiederherstellung, um eine Kopie auf einem anderen Server bzw. in einer anderen Region zu erstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen: Geografische Wiederherstellung](sql-database-recovery-using-backups.md#geo-restore).
+
 
 ## <a name="resolve-logins"></a>Auflösen von Anmeldungen
 

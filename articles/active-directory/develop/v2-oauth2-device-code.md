@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297664"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192721"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Gerätecodeflow
 
@@ -35,7 +35,7 @@ Microsoft Identity Platform unterstützt die [Gerätecodegewährung](https://too
 >
 > Persönliche Konten, die zu einem Azure AD-Mandanten eingeladen werden, können die Geräteflowgewährung verwenden, aber nur im Kontext des Mandanten.
 >
-> Ein zusätzlicher Hinweis: Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  
+> Ein zusätzlicher Hinweis: Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  Der Grund für diesen Hinweis: Wenn Sie den Standard lesen, sehen Sie, dass `verification_uri_complete` als optionaler Teil des Gerätecodeflow-Standards aufgeführt wird.
 
 > [!NOTE]
 > Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure Active Directory. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.

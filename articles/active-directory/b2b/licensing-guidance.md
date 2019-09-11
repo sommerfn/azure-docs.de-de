@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 081061eae07fa3765d032ad155e59ebf5aa3cbc9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512562"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162264"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration
 
@@ -32,7 +32,7 @@ Darüber hinaus können Gastbenutzer kostenlose Azure AD-Features ohne zusätzli
 ## <a name="examples-calculating-guest-user-licenses"></a>Beispiele: Berechnen der Lizenzen für Gastbenutzer
 Nachdem Sie bestimmt haben, wie viele Gastbenutzer Zugriff auf Ihre kostenpflichtigen Azure AD-Dienste benötigen, müssen Sie sicherstellen, dass Sie über genügend kostenpflichtige Azure AD-Lizenzen verfügen, um Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken. Hier einige Beispiele:
 
-- Sie möchten 100 Gastbenutzer für Ihre Azure AD-Anwendungen oder Azure AD-Dienste einladen, und Sie möchten allen Gastbenutzern die Zugriffsverwaltung und Bereitstellung zuweisen. Sie möchten zudem für 50 dieser Gastbenutzer die mehrstufige Authentifizierung (MFA) und bedingten Zugriff festlegen. Für diese Kombination benötigen Sie 10 Azure AD Basic-Lizenzen und 10 Azure AD Premium P1-Lizenzen. Wenn Sie Identity Protection-Features für Ihre Gastbenutzer verwenden möchten, benötigen Sie Azure AD Premium P2-Lizenzen im gleichen Verhältnis von 1:5 für die Gastbenutzer.
+- Sie möchten 100 Gastbenutzer für Ihre Azure AD-Apps oder Azure AD-Dienste einladen und die Zugriffsverwaltung und Bereitstellung ermöglichen. Für 50 dieser Gastbenutzer möchten Sie darüber hinaus MFA und bedingten Zugriff festlegen. Für diese Features benötigen Sie daher zehn Azure AD Premium P1-Lizenzen. Wenn Sie Identity Protection-Features für Ihre Gastbenutzer verwenden möchten, benötigen Sie Azure AD Premium P2-Lizenzen im gleichen Verhältnis von 1:5 für die Gastbenutzer.
 - Sie möchten 60 Gastbenutzer einladen, für die alle MFA erforderlich ist. Daher müssen Sie über mindestens 12 Azure AD Premium P1-Lizenzen verfügen. Sie haben 10 Mitarbeiter mit Azure AD Premium P1-Lizenzen, sodass entsprechend dem Lizenzierungsverhältnis von 1:5 bis zu 50 Gastbenutzer zulässig sind. Sie müssen zwei zusätzliche Premium P1-Lizenzen erwerben, um 10 zusätzliche Gastbenutzer abzudecken.
 
 ## <a name="next-steps"></a>Nächste Schritte

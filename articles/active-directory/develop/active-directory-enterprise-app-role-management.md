@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835541"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207191"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
 
@@ -59,7 +59,7 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
     ![Eigenschaftenseite](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster, und führen Sie die folgenden Schritte aus:
+6. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster, und führen Sie die folgenden Schritte aus:
 
     a. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 
@@ -186,7 +186,7 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu aktualisieren:
 
-1. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
+1. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 
 2. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 
@@ -224,7 +224,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu aktualisiere
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu löschen:
 
-1. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster.
+1. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster.
 
 2. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883579"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194316"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
 
@@ -242,7 +242,7 @@ Das `tags`-Feld enthält einen Anzeigenamen und eine Liste mit Aktionen (Informa
 
 Eine Liste mit den Standardinformationen finden Sie unter [Standardinformationstag](../default-insights-tag.md).
 
-Die verbleibenden Tags enthalten weitere Informationen, die für den Benutzer möglicherweise relevant sind. Enthält ein Bild beispielsweise Text, kann ein Tag etwa eine „TextResults“-Information mit dem erkannten Text beinhalten. Oder wenn Bing auf dem Bild eine Entität erkennt (z. B. eine Person, einen Ort oder einen Gegenstand), kann eines der Tags etwa die Entität identifizieren. Bei der visuellen Suche werden zudem verschiedene Begriffe (Tags) zurückgegeben, die vom Eingabebild abgeleitet werden. Anhand dieser Tags können Benutzer Konzepte erkunden, die in dem Bild gefunden wurden. Zeigt das Bild beispielsweise einen bekannten Sportler, kann eines der Tags etwa „Sport“ lauten und Links zu Sportbildern enthalten.
+Die verbleibenden Tags enthalten weitere Informationen, die für den Benutzer möglicherweise relevant sind. Enthält ein Bild beispielsweise Text, kann ein Tag etwa eine „TextResults“-Information mit dem erkannten Text beinhalten. Anderes Beispiel: Wenn Bing auf dem Bild eine Entität (also eine bekannte/beliebte Person oder einen entsprechenden Ort oder Gegenstand) erkennt, kann eines der Tags etwa die Entität identifizieren. Bei der visuellen Suche werden zudem verschiedene Begriffe (Tags) zurückgegeben, die vom Eingabebild abgeleitet werden. Anhand dieser Tags können Benutzer Konzepte erkunden, die in dem Bild gefunden wurden. Zeigt das Bild beispielsweise einen bekannten Sportler, kann eines der Tags etwa „Sport“ lauten und Links zu Sportbildern enthalten.
 
 Jedes Tag enthält einen Anzeigenamen, mit dem Sie die Information kategorisieren können, einen Begrenzungsrahmen für den relevanten Bereich, auf den sich die Information bezieht, die Informationen selbst sowie eine Miniaturansicht des Bildes. Zeigt das Bild beispielsweise eine Person in einem Sporttrikot, könnte eines der Tags etwa einen Begrenzungsrahmen um das Trikot sowie die Informationen „VisualSearch“ und „ProductVisualSearch“ enthalten. Ein weiteres Tag enthält möglicherweise eine „ImageResults“-Information, die eine URL für eine API-Anforderung zu „/images/search“ beinhaltet, um thematisch verknüpfte Bilder abzurufen. Oder die Information enthält eine URL zu den Ergebnissen einer Bildersuche auf „bing.com“.
 
@@ -368,7 +368,7 @@ Mit der Texterkennung können auch die Kontaktinformationen auf Visitenkarten wi
     }
 ```
 
-Enthält das Bild eine erkannte Entität, wie z.B. eine Person, einen Ort oder einen Gegenstand, kann eines der Tags eine Entitätsinformation beinhalten.
+Enthält das Bild eine erkannte Entität (beispielsweise eine bekannte/beliebte Person oder einen entsprechenden Ort oder Gegenstand), kann eines der Tags eine Entitätsinformation beinhalten.
 
 ```json
     {

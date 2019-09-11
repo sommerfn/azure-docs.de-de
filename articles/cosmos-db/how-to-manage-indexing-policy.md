@@ -4,14 +4,14 @@ description: Informationen zur Verwaltung von Indizierungsrichtlinien in Azure C
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 08/29/2019
 ms.author: thweiss
-ms.openlocfilehash: 6e935b88c474d28c06b8cdd76d36f5ba64c942f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a6c1ec6d58939336fb8a982e3ab1b9be20d4e0a5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093210"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172149"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -61,14 +61,45 @@ az cosmosdb collection update \
 
 Das `DocumentCollection`-Objekt aus [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-dotnet.md)) macht eine `IndexingPolicy`-Eigenschaft verfügbar, mit der Sie `IndexingMode` ändern sowie `IncludedPaths` und `ExcludedPaths` hinzufügen oder entfernen können.
 
+Abrufen der Details des Containers
+
 ```csharp
-// retrieve the container's details
 ResourceResponse<DocumentCollection> containerResponse = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"));
-// set the indexing mode to Consistent
+```
+
+Festlegen des Indizierungsmodus auf „Konsistent“
+
+```csharp
 containerResponse.Resource.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
-// add an excluded path
-containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/headquarters/employees/?" });
-// update the container with our changes
+```
+
+Hinzufügen eines eingeschlossenen Pfads
+
+```csharp
+containerResponse.Resource.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/age/*" });
+```
+
+Hinzufügen eines ausgeschlossenen Pfads
+
+```csharp
+containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/name/*" });
+```
+
+Hinzufügen eines räumlichen Index
+
+```csharp
+containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(new SpatialSpec() { Path = "/locations/*", SpatialTypes = new Collection<SpatialType>() { SpatialType.Point } } );
+```
+
+Hinzufügen eines zusammengesetzten Index
+
+```csharp
+containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<CompositePath> {new CompositePath() { Path = "/name", Order = CompositePathSortOrder.Ascending }, new CompositePath() { Path = "/age", Order = CompositePathSortOrder.Descending }});
+```
+
+Aktualisieren des Containers mit Änderungen
+
+```csharp
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
@@ -85,23 +116,82 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 Das `DocumentCollection`-Objekt aus dem [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-java.md)) macht die Methoden `getIndexingPolicy()` und `setIndexingPolicy()` verfügbar. Mit dem bearbeiteten `IndexingPolicy`-Objekt können Sie den Indizierungsmodus ändern sowie ein- und ausgeschlossene Pfade hinzufügen und entfernen.
 
+Abrufen der Details des Containers
+
 ```java
-// retrieve the container's details
 Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
 containerResponse.subscribe(result -> {
-    DocumentCollection container = result.getResource();
-    IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-    // set the indexing mode to Consistent
-    indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-    Collection<ExcludedPath> excludedPaths = new ArrayList<>();
-    ExcludedPath excludedPath = new ExcludedPath();
-    excludedPath.setPath("/*");
-    // add an excluded path
-    excludedPaths.add(excludedPath);
-    indexingPolicy.setExcludedPaths(excludedPaths);
-    // update the container with our changes
-    client.replaceCollection(container, null);
-});
+DocumentCollection container = result.getResource();
+IndexingPolicy indexingPolicy = container.getIndexingPolicy();
+```
+
+Festlegen des Indizierungsmodus auf „Konsistent“
+
+```java
+indexingPolicy.setIndexingMode(IndexingMode.Consistent);
+```
+
+Hinzufügen eines eingeschlossenen Pfads
+
+```java
+Collection<IncludedPath> includedPaths = new ArrayList<>();
+ExcludedPath includedPath = new IncludedPath();
+includedPath.setPath("/age/*");
+includedPaths.add(includedPath);
+indexingPolicy.setIncludedPaths(includedPaths);
+```
+
+Hinzufügen eines ausgeschlossenen Pfads
+
+```java
+Collection<ExcludedPath> excludedPaths = new ArrayList<>();
+ExcludedPath excludedPath = new ExcludedPath();
+excludedPath.setPath("/name/*");
+excludedPaths.add(excludedPath);
+indexingPolicy.setExcludedPaths(excludedPaths);
+```
+
+Hinzufügen eines räumlichen Index
+
+```java
+Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
+Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
+
+SpatialSpec spec = new SpatialSpec();
+spec.setPath("/locations/*");
+collectionOfSpatialTypes.add(SpatialType.Point);          
+spec.setSpatialTypes(collectionOfSpatialTypes);
+spatialIndexes.add(spec);
+
+indexingPolicy.setSpatialIndexes(spatialIndexes);
+
+```
+
+Hinzufügen eines zusammengesetzten Index
+
+```java
+Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
+ArrayList<CompositePath> compositePaths = new ArrayList<>();
+
+CompositePath nameCompositePath = new CompositePath();
+nameCompositePath.setPath("/name/*");
+nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
+
+CompositePath ageCompositePath = new CompositePath();
+ageCompositePath.setPath("/age/*");
+ageCompositePath.setOrder(CompositePathSortOrder.Descending);
+
+compositePaths.add(ageCompositePath);
+compositePaths.add(nameCompositePath);
+
+compositeIndexes.add(compositePaths);
+indexingPolicy.setCompositeIndexes(compositeIndexes);
+```
+
+Aktualisieren des Containers mit Änderungen
+
+```java
+ client.replaceCollection(container, null);
 ```
 
 Zum Nachverfolgen der Fortschritts der Indextransformation für einen Container übergeben Sie ein `RequestOptions`-Objekt, das anfordert, dass die Kontingentinformationen ausgefüllt werden. Anschließend rufen Sie den Wert aus dem `x-ms-documentdb-collection-index-transformation-progress`-Antwortheader ab.
@@ -122,14 +212,58 @@ containerResponse.subscribe(result -> {
 
 Die `ContainerDefinition`-Schnittstelle aus [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-nodejs.md)) mach eine `indexingPolicy`-Eigenschaft verfügbar, mit der Sie `indexingMode` ändern sowie `includedPaths` und `excludedPaths` hinzufügen oder entfernen können.
 
+Abrufen der Details des Containers
+
 ```javascript
-// retrieve the container's details
 const containerResponse = await client.database('database').container('container').read();
-// set the indexing mode to Consistent
+```
+
+Festlegen des Indizierungsmodus auf „Konsistent“
+
+```javascript
 containerResponse.body.indexingPolicy.indexingMode = "consistent";
-// add an excluded path
-containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/headquarters/employees/?' });
-// update the container with our changes
+```
+
+Hinzufügen eines eingeschlossenen Pfads mit einem räumlichen Index
+
+```javascript
+containerResponse.body.indexingPolicy.includedPaths.push({
+    includedPaths: [
+      {
+        path: "/age/*",
+        indexes: [
+          {
+            kind: cosmos.DocumentBase.IndexKind.Range,
+            dataType: cosmos.DocumentBase.DataType.String
+          },
+          {
+            kind: cosmos.DocumentBase.IndexKind.Range,
+            dataType: cosmos.DocumentBase.DataType.Number
+          }
+        ]
+      },
+      {
+        path: "/locations/*",
+        indexes: [
+          {
+            kind: cosmos.DocumentBase.IndexKind.Spatial,
+            dataType: cosmos.DocumentBase.DataType.Point
+          }
+        ]
+      }
+    ]
+  });
+```
+
+Hinzufügen eines ausgeschlossenen Pfads
+
+```javascript
+containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
+```
+
+Aktualisieren des Containers mit Änderungen
+
+```javascript
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
@@ -148,16 +282,63 @@ const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-col
 
 Bei Verwendung des [Python SDK](https://pypi.org/project/azure-cosmos/) (Informationen zur Verwendung in[diesem Schnellstart](create-sql-api-python.md)) wird die Konfiguration des Containers als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
 
+Abrufen der Details des Containers
+
 ```python
 containerPath = 'dbs/database/colls/collection'
-# retrieve the container's details
 container = client.ReadContainer(containerPath)
-# set the indexing mode to Consistent
+```
+
+Festlegen des Indizierungsmodus auf „Konsistent“
+
+```python
 container['indexingPolicy']['indexingMode'] = 'consistent'
-# add an excluded path
-container['indexingPolicy']['excludedPaths'] = [
-    {"path": "/headquarters/employees/?"}]
-# update the container with our changes
+```
+
+Definieren einer Indizierungsrichtlinie mit einem eingeschlossenen Pfad und einem räumlichen Index
+
+```python
+container["indexingPolicy"] = {
+
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+                {"path":"/location/*","types":["Point"]}
+             ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Definieren einer Indizierungsrichtlinie mit einem ausgeschlossenen Pfad
+
+```python
+container["indexingPolicy"] = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Hinzufügen eines zusammengesetzten Index
+
+```python
+container['indexingPolicy']['compositeIndexes'] = [
+                [
+                    {
+                        "path": "/name",
+                        "order": "ascending"
+                    },
+                    {
+                        "path": "/age",
+                        "order": "descending"
+                    }
+                ]
+                ]
+```
+
+Aktualisieren des Containers mit Änderungen
+
+```python
 response = client.ReplaceContainer(containerPath, container)
 ```
 

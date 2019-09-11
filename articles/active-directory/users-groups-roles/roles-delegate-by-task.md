@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4def4a6e8ca743ce03151f45e17da03d748c121e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126924"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207247"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -111,7 +111,7 @@ Lesen aller Konfigurationen | Rolle „Verzeichnis lesen“ | Standardbenutzerro
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Erstellen einer Azure AD Domain Services-Instanz | Globaler Administrator | 
-Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
 Lesen aller Konfigurationen | Leser für Azure-Abonnements, die den AD DS-Dienst umfassen | 
 
 ## <a name="devices"></a>Geräte
@@ -143,6 +143,11 @@ Aktualisieren der Enterprise-Anwendungsbereitstellung | Besitzer einer Enterpris
 Aktualisieren des Self-Service-Zugriffs auf Enterprise-Anwendungen | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 Aktualisieren von Eigenschaften für das einmalige Anmelden | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 
+## <a name="entitlement-management"></a>Berechtigungsverwaltung
+Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
+---- | --------------------- | ----------------
+Hinzufügen von Ressourcen zu einem Katalog | Benutzeradministrator | Mit der Berechtigungsverwaltung können Sie diese Aufgabe an den Katalogbesitzer delegieren ([siehe Dokumentation](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)).
+Hinzufügen von SharePoint Online-Websites zum Katalog | Globaler Administrator
 
 
 ## <a name="groups"></a>Gruppen

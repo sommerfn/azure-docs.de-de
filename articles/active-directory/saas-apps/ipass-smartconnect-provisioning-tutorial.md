@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015774"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232159"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von iPass SmartConnect für die automatische Benutzerbereitstellung
 
@@ -57,7 +57,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 Vor dem Konfigurieren von iPass SmartConnect für die automatische Benutzerbereitstellung mit Azure AD müssen Sie Konfigurationsinformationen von der iPass SmartConnect-Verwaltungskonsole abrufen:
 
 1. Um das Bearertoken abzurufen, das für die Authentifizierung beim iPass SmartConnect-SCIM-Endpunkt erforderlich ist, verwenden Sie Ihre erstmalige Einrichtung von iPass SmartConnect als Referenz, da dieser Wert nur dann bereitgestellt wird. 
-2. Wenn Sie nicht über das Bearertoken verfügen, wenden Sie sich an das [Supportteam von iPass SmartConnect] (mailto:help@ipass.com), um ein neues zu erhalten.
+2. Wenn Sie nicht über das Bearertoken verfügen, wenden Sie sich an das [Supportteam von iPass SmartConnect](mailto:help@ipass.com), um ein neues Bearertoken zu erhalten.
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>Hinzufügen von iPass SmartConnect aus dem Katalog
 

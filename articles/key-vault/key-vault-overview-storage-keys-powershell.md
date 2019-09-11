@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562536"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136580"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Mit Azure Key Vault verwaltetes Speicherkonto – PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562536"
 > - Authentifizieren Sie Ihre Clientanwendung mithilfe einer Anwendungs- oder Benutzeridentität, statt Speicherkontoanmeldeinformationen angeben zu müssen. 
 > - Verwenden Sie für die Ausführung in Azure eine [von Azure AD verwaltete Identität](/azure/active-directory/managed-identities-azure-resources/). Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
 > - Verwenden Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Verwalten der Autorisierung (wird auch von Key Vault unterstützt).
+> - Der AAD-Speicherkontozugriff kann noch nicht für den Zugriff auf Tabellen verwendet werden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Aktivieren der erneuten Schlüsselgenerierung
 
-Wenn Sie möchten, dass Key Vault die Speicherkontoschlüssel regelmäßig neu generiert, können Sie einen Zeitraum für die erneute Generierung festlegen. Im folgenden Beispiel wird der Zeitraum auf drei Tage festgelegt. Nach 3 Tagen generiert Key Vault „key1“ neu und wechselt für den aktiven Schlüssel von „key2“ zu „key1“.
+Wenn Sie möchten, dass Key Vault die Speicherkontoschlüssel regelmäßig neu generiert, können Sie einen Zeitraum für die erneute Generierung festlegen. Im folgenden Beispiel wird der Zeitraum auf drei Tage festgelegt. Nach drei Tagen generiert Key Vault „key2“ neu und wechselt beim aktiven Schlüssel von „key2“ zu „key1“.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

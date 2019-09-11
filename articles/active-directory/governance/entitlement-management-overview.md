@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032544"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241711"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -139,6 +139,18 @@ Machen Sie sich zum besseren Verständnis der Berechtigungsverwaltung und der da
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 Spezielle Clouds, z.B. Azure Government, Azure Deutschland und Azure China 21Vianet, können in dieser Vorschau derzeit nicht verwendet werden.
+
+### <a name="which-users-must-have-licenses"></a>Welche Benutzer benötigen Lizenzen?
+
+Ihr Mandant muss über mindestens so viele Azure AD Premium P2-Lizenzen verfügen wie Sie aktive Mitgliedsbenutzer haben. Aktive Mitglieder in der Berechtigungsverwaltung umfassen die folgenden Benutzer:
+
+- Benutzer, die eine Anforderung für ein Zugriffspaket initiieren oder genehmigen.
+- Benutzer, denen ein Zugriffspaket zugewiesen ist. 
+- Benutzer, die Zugriffspakete verwalten.
+
+Als Teil der Lizenzen für Mitgliedsbenutzer können Sie auch einer bestimmten Anzahl von Gastbenutzern die Interaktion mit der Berechtigungsverwaltung gestatten. Informationen zum Berechnen der Anzahl von Gastbenutzern, die Sie einbeziehen können, finden Sie im [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+
+Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

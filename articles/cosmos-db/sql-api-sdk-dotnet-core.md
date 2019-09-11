@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779166"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142633"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -252,6 +252,18 @@ Die Features der Vorschauversion des Azure Cosmos DB .NET Core SDKs sind mit den
 Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), oder melden Sie im [GitHub-Repository](https://github.com/Azure/azure-documentdb-dotnet/issues) ein Problem.
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
+
+Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 
+
+Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
+
+> [!WARNING]
+> Alle Versionen vom Typ **1.x** des .NET Core SDK für die SQL-API werden am **30. August 2020** eingestellt.
+> 
+>
+<br/>
+
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
@@ -268,26 +280,26 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](https
 | [2.1.1](#2.1.1) |27. September 2018 |--- |
 | [2.1.0](#2.1.0) |21. September 2018 |--- |
 | [2.0.0](#2.0.0) |07. September 2018 |--- |
-| [1.9.1](#1.9.1) |09. März 2018 |--- |
-| [1.8.2](#1.8.2) |21. Februar 2018 |--- |
-| [1.8.1](#1.8.1) |05. Februar 2018 |--- |
-| [1.7.1](#1.7.1) |16. November 2017 |--- |
-| [1.7.0](#1.7.0) |10. November 2017 |--- |
-| [1.6.0](#1.6.0) |17. Oktober 2017 |--- |
-| [1.5.1](#1.5.1) |02. Oktober 2017 |--- |
-| [1.5.0](#1.5.0) |10. August 2017 |--- | 
-| [1.4.1](#1.4.1) |07. August 2017 |--- |
-| [1.4.0](#1.4.0) |02. August 2017 |--- |
-| [1.3.2](#1.3.2) |12. Juni 2017 |--- |
-| [1.3.1](#1.3.1) |23. Mai 2017 |--- |
-| [1.3.0](#1.3.0) |10. Mai 2017 |--- |
-| [1.2.2](#1.2.2) |19. April 2017 |--- |
-| [1.2.1](#1.2.1) |29. März 2017 |--- |
-| [1.2.0](#1.2.0) |25. März 2017 |--- |
-| [1.1.2](#1.1.2) |20. März 2017 |--- |
-| [1.1.1](#1.1.1) |14. März 2017 |--- |
-| [1.1.0](#1.1.0) |16. Februar 2017 |--- |
-| [1.0.0](#1.0.0) |21. Dezember 2016 |--- |
+| [1.9.1](#1.9.1) |09. März 2018 |30. August 2020 |
+| [1.8.2](#1.8.2) |21. Februar 2018 |30. August 2020 |
+| [1.8.1](#1.8.1) |05. Februar 2018 |30. August 2020 |
+| [1.7.1](#1.7.1) |16. November 2017 |30. August 2020 |
+| [1.7.0](#1.7.0) |10. November 2017 |30. August 2020 |
+| [1.6.0](#1.6.0) |17. Oktober 2017 |30. August 2020 |
+| [1.5.1](#1.5.1) |02. Oktober 2017 |30. August 2020 |
+| [1.5.0](#1.5.0) |10. August 2017 |30. August 2020 | 
+| [1.4.1](#1.4.1) |07. August 2017 |30. August 2020 |
+| [1.4.0](#1.4.0) |02. August 2017 |30. August 2020 |
+| [1.3.2](#1.3.2) |12. Juni 2017 |30. August 2020 |
+| [1.3.1](#1.3.1) |23. Mai 2017 |30. August 2020 |
+| [1.3.0](#1.3.0) |10. Mai 2017 |30. August 2020 |
+| [1.2.2](#1.2.2) |19. April 2017 |30. August 2020 |
+| [1.2.1](#1.2.1) |29. März 2017 |30. August 2020 |
+| [1.2.0](#1.2.0) |25. März 2017 |30. August 2020 |
+| [1.1.2](#1.1.2) |20. März 2017 |30. August 2020 |
+| [1.1.1](#1.1.1) |14. März 2017 |30. August 2020 |
+| [1.1.0](#1.1.0) |16. Februar 2017 |30. August 2020 |
+| [1.0.0](#1.0.0) |21. Dezember 2016 |30. August 2020 |
 | [0.1.0-preview](#0.1.0-preview) |15. November 2016 |31. Dezember 2016 |
 
 ## <a name="see-also"></a>Siehe auch

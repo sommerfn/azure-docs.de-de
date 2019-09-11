@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975732"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135536"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
-Wenn Sie eine Azure API-Instanz (API Management) erstellen, wird sie von Azure einer Unterdomäne von azure-api.net (beispielsweise `apim-service-name.azure-api.net`) zugewiesen. Sie können Ihre API Management-Endpunkte jedoch unter Ihrem eigenen, benutzerdefinierten Domänennamen (beispielsweise **contoso.com**) verfügbar machen. In diesem Tutorial erfahren Sie, wie Sie Endpunkten, die durch eine API Management-Instanz verfügbar gemacht werden, einen vorhandenen benutzerdefinierten DNS-Namen zuordnen.
+Wenn Sie eine Azure API-Instanz (API Management) erstellen, wird sie von Azure einer Unterdomäne von azure-api.net zugewiesen (z. B. `apim-service-name.azure-api.net`). Sie können Ihre API Management-Endpunkte aber unter Ihrem eigenen benutzerdefinierten Domänennamen verfügbar machen (z. B. **contoso.com**). In diesem Tutorial erfahren Sie, wie Sie Endpunkten, die durch eine API Management-Instanz verfügbar gemacht werden, einen vorhandenen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!WARNING]
 > Kunden, die das Anheften von Zertifikaten nutzen möchten, um die Sicherheit ihrer Anwendungen zu erhöhen, müssen einen benutzerdefinierten Domänennamen und ein von ihnen verwaltetes Zertifikat (nicht das Standardzertifikat) verwenden. Kunden, die stattdessen das Standardzertifikat anheften, übernehmen eine harte Abhängigkeit für die Eigenschaften des nicht von ihnen verwalteten Zertifikats. Dies ist kein empfohlenes Verfahren.
@@ -36,7 +36,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 -   Eine API Management-Instanz. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
 -   Einen benutzerdefinierten Domänennamen, der sich in Ihrem Besitz oder im Besitz Ihrer Organisation befindet. Dieses Thema enthält keine Anleitung zum Erwerben eines benutzerdefinierten Domänennamens.
 -   Einen CNAME-Eintrag, der auf einem DNS-Server gehostet wird, der den benutzerdefinierten Domänennamen dem Standarddomänennamen Ihrer API Management-Instanz zuordnet. Dieses Thema enthält keine Anleitung zum Hosten eines CNAME-Eintrags.
--   Sie benötigen ein gültiges Zertifikat mit einem öffentlichen und privaten Schlüssel (.pfx). Der Antragstellername oder der alternative Antragstellername (Subject Alternative Name, SAN) muss dem Domänennamen entsprechen, damit API Management-Instanz sicher URLs über SSL verfügbar machen kann.
+-   Sie benötigen ein gültiges Zertifikat mit einem öffentlichen und privaten Schlüssel (.pfx). Der Antragstellername oder der alternative Antragstellername (Subject Alternative Name, SAN) muss dem Domänennamen entsprechen, damit die API Management-Instanz auf sichere Weise URLs über SSL verfügbar machen kann.
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Festlegen eines benutzerdefinierten Domänennamens über das Azure-Portal
 
@@ -66,12 +66,12 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     > Platzhalterdomänennamen (etwa `*.contoso.com`) werden in allen Tarifen mit Ausnahme des Verbrauchstarifs unterstützt.
 
     > [!TIP]
-    > Wir empfehlen die Nutzung von Azure Key Vault zur Verwaltung von Zertifikaten. Setzen Sie sie dazu auf „automatische Rotierung“.
+    > Wir empfehlen Ihnen die Nutzung von Azure Key Vault zur Verwaltung von Zertifikaten. Legen Sie hierfür die Option „Automatische Rotation“ fest.
     > Sollten Sie das benutzerdefinierte SSL-Domänenzertifikat mit Azure Key Vault verwalten, stellen Sie sicher, dass das Zertifikat [als ein _Zertifikat_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate) und nicht als ein _Geheimnis_ in Key Vault eingefügt wird.
     >
-    > Zum Abrufen des SSL-Zertifikats benötigt API Management die Liste und die Berechtigung zum Abrufen geheimer Schlüssel auf dem Azure Key Vault, der das Zertifikat enthält. Wenn Sie Azure-Portal verwenden, werden alle notwendigen Konfigurationsschritte automatisch durchgeführt. Wenn Sie Befehlszeilentools oder eine Verwaltungs-API verwenden, müssen diese Berechtigungen manuell erteilt werden. Dazu sind zwei Schritte erforderlich. Verwenden Sie zuerst die Seite „Verwaltete Identitäten“ in ihrer API Management-Instanz, um sicherzustellen, dass die verwaltete Instanz aktiviert ist. Notieren Sie sich die Prinzipal-ID, die auf der Seite angezeigt wird. Weisen Sie dann dieser Prinzipal-ID die Berechtigungsliste und die Berechtigung zum Abrufen geheimer Schlüssel auf Azure Key Vault mit dem Zertifikat zu.
+    > Zum Abrufen des SSL-Zertifikats benötigt API Management die Liste und die Berechtigung zum Abrufen geheimer Schlüssel für die Azure Key Vault-Instanz, die das Zertifikat enthält. Wenn Sie Azure-Portal verwenden, werden alle notwendigen Konfigurationsschritte automatisch durchgeführt. Wenn Sie Befehlszeilentools oder eine Verwaltungs-API verwenden, müssen diese Berechtigungen manuell erteilt werden. Dazu sind zwei Schritte erforderlich. Verwenden Sie zuerst die Seite „Verwaltete Identitäten“ in Ihrer API Management-Instanz, um sicherzustellen, dass die verwaltete Instanz aktiviert ist. Notieren Sie sich die Prinzipal-ID, die auf der Seite angezeigt wird. Weisen Sie dieser Prinzipal-ID anschließend die Berechtigungsliste und die Berechtigung zum Abrufen geheimer Schlüssel für die Azure Key Vault-Instanz mit dem Zertifikat zu.
     >
-    > Wenn das Zertifikat mit einer automatischen Rotierung eingerichtet ist, dann wird API Management automatisch die neuste Version wählen, ohne das der Dienst ausfällt (wenn Ihr API Management-Tarif SLA enthält – sprich, alle Tarife bis auf den Developer-Tarif).
+    > Wenn für das Zertifikat die automatische Rotation eingerichtet ist, wählt API Management automatisch die neuste Version aus, ohne dass der Dienst ausfällt (wenn Ihr API Management-Tarif über eine SLA verfügt, also bei allen Tarifen mit Ausnahme des Developer-Tarifs).
 
 1. Klicken Sie auf „Übernehmen“.
 
@@ -88,7 +88,7 @@ Bei der DNS-Konfiguration für Ihren benutzerdefinierten Domänennamen haben Sie
 -   Konfigurieren eines A-Eintrags, der auf die Gateway-IP-Adresse für API Management verweist
 
 > [!NOTE]
-> Die IP-Adresse der API Management-Instanz ist zwar statisch, kann sich aber dennoch in bestimmten Szenarien ändern. Daher empfiehlt es sich, beim Konfigurieren der benutzerdefinierten Domäne CNAME zu verwenden. Berücksichtigen Sie dies bei der Wahl der DNS-Konfigurationsmethode. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
+> Die IP-Adresse der API Management-Instanz ist zwar statisch, kann sich aber dennoch in bestimmten Szenarien ändern. Daher empfiehlt es sich, beim Konfigurieren der benutzerdefinierten Domäne CNAME zu verwenden. Berücksichtigen Sie dies bei der Wahl der DNS-Konfigurationsmethode. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu API Mananagement](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

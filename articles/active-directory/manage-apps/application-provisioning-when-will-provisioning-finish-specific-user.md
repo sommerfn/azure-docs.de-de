@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667160"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147108"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
@@ -62,7 +62,7 @@ Die Überwachungsprotokolle für die Bereitstellung zeichnen alle Vorgänge auf,
 Weitere Informationen zum Lesen der Überwachungsprotokolle im Azure-Portal finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Wie lange dauert die Bereitstellung von Benutzern?
-Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (normalerweise alle 10 Minuten) automatisch Benutzerkonten basierend beispielsweise auf der [Benutzer- und Gruppenzuweisung](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) in der App bereit und aktualisiert sie.
+Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (normalerweise alle 40 Minuten) automatisch Benutzerkonten basierend beispielsweise auf der [Benutzer- und Gruppenzuweisung](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) in der App bereit und aktualisiert sie.
 
 Die für die Bereitstellung eines bestimmten Benutzers benötigte Zeit hängt hauptsächlich davon ab, ob mit dem Bereitstellungsauftrag eine erste oder eine inkrementelle Synchronisierung durchgeführt wird.
 

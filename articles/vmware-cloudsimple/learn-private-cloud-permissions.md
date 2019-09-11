@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab74b37fa8adc58f8641893b4168f71c453b0fdd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972703"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194127"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>Berechtigungsmodell der privaten CloudSimple-Cloud von VMware-vCenter
 
@@ -24,7 +24,7 @@ Cloudsimple behält vollständigen Administratorzugriff auf die Umgebung der pri
 Wenn Sie eine private Cloud erstellen, wird ein **CloudOwner**-Benutzer in der Domäne für einmaliges Anmelden (SSO) von vCenter mit **Cloud-Owner-Role**-Zugriff zum Verwalten von Objekten in der privaten Cloud erstellt. Dieser Benutzer kann auch weitere [vCenter-Identitätsquellen](set-vcenter-identity.md) und andere Benutzer für das vCenter der privaten Cloud einrichten.
 
 > [!NOTE]
-> Der Standardbenutzer für das vCenter Ihrer privaten CloudSimple-Cloud ist `cloudowner@cloudsimple.local`, wenn eine private Cloud erstellt wird, ohne sie mit Ihrem lokalen vCenter zu verknüpfen.
+> Der Standardbenutzer für die vCenter-Instanz Ihrer privaten CloudSimple-Cloud ist cloudowner@cloudsimple.local, wenn eine private Cloud erstellt wird.
 
 ## <a name="user-groups"></a>Benutzergruppen
 
