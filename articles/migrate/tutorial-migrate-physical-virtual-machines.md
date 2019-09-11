@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/09/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 728bf785edebcd17599b6a56edea1e26ed2d2fbc
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9b1944cdad67f9f1b74c8dae95bc9d8409e56f54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311791"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309469"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrieren von physischen oder virtualisierten Servern zu Azure 
 
@@ -256,7 +256,12 @@ Auf Computern, die Sie migrieren möchten, müssen Sie den Mobility Service-Agen
 
 ## <a name="replicate-machines"></a>Replizieren von Computern
 
-1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
+Wählen Sie nun Computer für die Migration aus. 
+
+> [!NOTE]
+> Sie können bis zu zehn Computer gleichzeitig replizieren. Müssen Sie mehr Computer replizieren, führen Sie die Replikation in Batches mit jeweils zehn Computern durch.
+
+1. Klicken Sie im Azure Migrate-Projekt unter **Server** > **Azure Migrate: Servermigration** auf **Replizieren**.
 
     ![Replizieren von VMs](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
@@ -354,7 +359,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
     ![Replizieren der Server](./media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
 2. Klicken Sie unter **Aktuell replizierte Computer** mit der rechten Maustaste auf die VM und dann auf **Migrieren**.
-3. Wählen Sie unter **Migrieren** > **Virtuelle Computer herunterfahren und eine geplante Migration ohne Datenverlust durchführen?** die Option **Ja** und anschließend **OK** aus.
+3. Wählen Sie unter **Migrieren** > **Virtuelle Computer herunterfahren und eine geplante Migration ohne Datenverlust durchführen?** die Option **Ja** >  und anschließend **OK** aus.
     - Azure Migrate fährt die lokale VM standardmäßig herunter und führt eine bedarfsabhängige Replikation aus, um alle VM-Änderungen zu synchronisieren, die seit der letzten Replikation vorgenommen wurden. So wird sichergestellt, dass keine Daten verloren gehen.
     - Falls Sie die VM nicht herunterfahren möchten, wählen Sie **Nein** aus.
 4. Für den virtuellen Computer wird ein Migrationsauftrag gestartet. Verfolgen Sie den Auftrag anhand der Azure-Benachrichtigungen nach.

@@ -183,7 +183,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 
 ## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
 
-Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „www.google.com“ zulässt.
+Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf [www.google.com](www.google.com) zulässt.
 
 1. Öffnen Sie **Test-FW-RG**, und wählen Sie die Firewall **Test-FW01** aus.
 2. Wählen Sie auf der Seite **Test-FW01** unter **Einstellungen** die Option **Regeln** aus.

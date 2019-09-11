@@ -76,7 +76,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-Beachten Sie im vorherigen Beispiel, dass der Antwortheader über den Statuscode 301 für die Umleitung verfügt. Der Adressheader enthält den Hostnamen des App-Diensts und nicht den ursprünglichen Hostnamen „www.contoso.com“.
+Beachten Sie im vorherigen Beispiel, dass der Antwortheader über den Statuscode 301 für die Umleitung verfügt. Der Adressheader enthält den Hostnamen des App-Diensts und nicht den ursprünglichen Hostnamen [www.contoso.com](www.contoso.com)
 
 ## <a name="solution-rewrite-the-location-header"></a>Lösung: Erneutes Generieren des Adressheaders
 
@@ -97,9 +97,9 @@ Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess v
 
     ![Liste mit benutzerdefinierten Domänen für App-Dienst](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Ihr App-Dienst kann nun den Hostnamen „www.contoso.com“ akzeptieren. Ändern Sie Ihren CNAME-Eintrag im DNS so, dass er zurück auf den FQDN des Anwendungsgateways verweist, z. B. „appgw.eastus.cloudapp.azure.com“.
+- Ihr App-Dienst kann nun den Hostnamen [www.contoso.com](www.contoso.com) akzeptieren. Ändern Sie Ihren CNAME-Eintrag im DNS so, dass er zurück auf den FQDN des Anwendungsgateways verweist, z. B. „appgw.eastus.cloudapp.azure.com“.
 
-- Stellen Sie sicher, dass die Domäne „www.contoso.com“ in den FQDN des Anwendungsgateways aufgelöst wird, wenn Sie eine DNS-Abfrage durchführen.
+- Stellen Sie sicher, dass die Domäne [www.contoso.com](www.contoso.com) in den FQDN des Anwendungsgateways aufgelöst wird, wenn Sie eine DNS-Abfrage durchführen.
 
 - Legen Sie für Ihren benutzerdefinierten Test fest, dass die Option **Pick Hostname from Backend HTTP Settings** (Hostnamen aus Back-End-HTTP-Einstellungen auswählen) deaktiviert wird. Deaktivieren Sie im Azure-Portal das Kontrollkästchen in den Einstellungen für den Test. Verwenden Sie in PowerShell nicht den Switch **-PickHostNameFromBackendHttpSettings** im Befehl **Set-AzApplicationGatewayProbeConfig**. Geben Sie im Hostnamenfeld des Tests den FQDN Ihres App-Diensts ein, z. B. „example.azurewebsites.net“. Die vom Anwendungsgateway gesendeten Testanforderungen enthalten diesen FQDN im Hostheader.
 
@@ -110,7 +110,7 @@ Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess v
 
 - Ordnen Sie den benutzerdefinierten Test wieder den Back-End-HTTP-Einstellungen zu, und vergewissern Sie sich, dass das Back-End fehlerfrei ist.
 
-- Das Anwendungsgateway sollte jetzt den gleichen Hostnamen „www.contoso.com“ an den App-Dienst weiterleiten. Die Umleitung erfolgt unter demselben Hostnamen. Sehen Sie sich die folgende Beispielanforderung und die Antwortheader an.
+- Das Anwendungsgateway sollte jetzt den gleichen Hostnamen [www.contoso.com](www.contoso.com) an den App-Dienst weiterleiten. Die Umleitung erfolgt unter demselben Hostnamen. Sehen Sie sich die folgende Beispielanforderung und die Antwortheader an.
 
 Verwenden Sie das folgende PowerShell-Beispielskript, um die obigen Schritte für ein vorhandenes Setup mit PowerShell zu implementieren. Beachten Sie, dass die **-PickHostname**-Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
 
