@@ -7,16 +7,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: 95704f2694892b349d0967fca2160dabd990b472
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810141"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279439"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern für die Migration zu Azure
 
-In diesem Artikel wird beschrieben, wie eine große Anzahl von lokalen Hyper-V-VMs (> 1.000) mithilfe des Azure Migrate-Serverbewertungstools für die Migration zu Azure bewertet wird.
+In diesem Artikel wird beschrieben, wie eine große Anzahl von lokalen Hyper-V-VMs mithilfe des Azure Migrate-Serverbewertungstools für die Migration zu Azure bewertet wird.
 
 [Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs). 
 
@@ -36,19 +36,20 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Bei der Planung für die Bewertung einer großen Anzahl von Hyper-V-VMS sind einige Dinge zu berücksichtigen:
 
-- **Planen von Azure Migrate-Projekten**: Finden Sie heraus, wie Sie Azure Migrate-Projekte bereitstellen möchten. Wenn sich Ihre Rechenzentren beispielsweise in verschiedenen geografischen Regionen befinden oder Sie ermittlungs-, bewertungs- oder migrationsspezifische Metadaten in einer anderen geografischen Region speichern müssen, benötigen Sie möglicherweise mehrere Projekte.
+- **Planen von Azure Migrate-Projekten**: Finden Sie heraus, wie Azure Migrate-Projekte bereitgestellt werden. Wenn sich Ihre Rechenzentren beispielsweise in verschiedenen geografischen Regionen befinden oder Sie ermittlungs-, bewertungs- oder migrationsspezifische Metadaten in einer anderen geografischen Region speichern müssen, benötigen Sie möglicherweise mehrere Projekte.
 - **Planen von Appliances**: Azure Migrate verwendet eine lokale Azure Migrate-Appliance, die als Hyper-V-VM bereitgestellt wird, um VMs kontinuierlich für die Bewertung und Migration zu identifizieren. Die Appliance überwacht Umgebungsänderungen wie z.B. das Hinzufügen von VMs, Datenträgern oder Netzwerkadaptern. Sie sendet außerdem deren Meta- und Leistungsdaten an Azure. Sie müssen herausfinden, wie viele Appliances bereitgestellt werden sollen.
 
 
 ## <a name="planning-limits"></a>Planen von Einschränkungen
  
-Verwenden Sie die in dieser Tabelle zusammengefassten Einschränkungen für die Planung.
+Orientieren Sie sich bei der Planung an den in dieser Tabelle zusammengefassten Einschränkungen.
 
 **Planung** | **Einschränkungen**
 --- | --- 
-**Azure Migrate-Projekte** | Bewerten Sie bis zu 10.000 VMs in einem Projekt.
-**Azure Migrate-Appliance** | Eine einzelne Appliance kann bis zu 5.000 virtuelle Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.<br/> Eine einzelne Appliance kann nur einer einzelnen Azure Migrate-Ressource zugeordnet werden.<br/><br/> 
-**Azure Migrate-Bewertung** | Sie können bis zu 10.000 virtuelle Computer in einer einzelnen Bewertung bewerten.
+**Azure Migrate-Projekte** | Bewerten Sie bis zu 35.000 VMs in einem Projekt.
+**Azure Migrate-Appliance** | Eine einzelne Appliance kann bis zu 5.000 virtuelle Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.<br/> Eine einzelne Appliance kann nur einer einzelnen Azure Migrate-Ressource zugeordnet werden.<br/> Einer einzelnen Azure Migrate-Ressource können beliebig viele Appliances zugeordnet werden. <br/><br/> 
+**Gruppe** | Sie können einer einzelnen Gruppe bis zu 35.000 VMs hinzufügen.
+**Azure Migrate-Bewertung** | Sie können bis zu 35.000 virtuelle Computer in einem einzelnen Vorgang bewerten.
 
 
 
@@ -69,10 +70,10 @@ Befolgen Sie die Anweisungen in [diesem Tutorial](tutorial-prepare-hyper-v.md), 
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
-Führen Sie in Übereinstimmung mit ihren Planungsanforderungen folgende Schritte aus:
+Führen Sie in Übereinstimmung mit Ihren Planungsanforderungen folgende Schritte aus:
 
-1. Erstellen Sie Azure Migrate-Projekte.
-2. Fügen Sie den Projekten das Azure Migrate-Serverbewertungs-Tool hinzu.
+1. Erstellen Sie Azure Migrate-Projekte.
+2. Fügen Sie den Projekten das Azure Migrate-Serverbewertungstool hinzu.
 
 [Weitere Informationen](how-to-add-tool-first-time.md)
 

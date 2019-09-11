@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 76a5391cbe142851d9b1f60ea9346af2e7a35d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66392135"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305273"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)
 
@@ -22,16 +22,16 @@ Dieser Artikel veranschaulicht die Konfiguration und Verwendung von Helm in eine
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 Außerdem muss die Helm CLI installiert sein, d. h. der Client, der auf Ihrem Entwicklungssystem ausgeführt wird. Sie ermöglicht es Ihnen, Anwendungen mit Helm zu starten, zu beenden und zu verwalten. Wenn Sie Azure Cloud Shell verwenden, ist die Helm-CLI bereits installiert. Installationsanweisungen für Ihre lokale Plattform finden Sie unter [Installieren von Helm][helm-install].
 
 > [!IMPORTANT]
-> Helm ist für die Ausführung auf Linux-Knoten vorgesehen. Wenn sich in Ihrem Cluster Windows Server-Knoten befinden, müssen Sie sicherstellen, dass Helm-Pods nur für die Ausführung auf Linux-Knoten geplant sind. Sie müssen auch sicherstellen, dass alle von Ihnen installierten Helm-Diagramme auch für die Ausführung auf den richtigen Knoten geplant sind. Die Befehle in diesem Artikel verwenden [node-selectors][k8s-node-selector], um sicherzustellen, dass die Pods für die richtigen Knoten geplant sind, aber nicht alle Helm-Diagramme können einen Knotenselektor verfügbar machen. Sie können auch andere Optionen für Ihren Cluster verwenden, z. B. [Taints][taints].
+> Helm ist für die Ausführung auf Linux-Knoten vorgesehen. Wenn sich in Ihrem Cluster Windows Server-Knoten befinden, müssen Sie sicherstellen, dass Helm-Pods nur für die Ausführung auf Linux-Knoten geplant sind. Sie müssen auch sicherstellen, dass alle von Ihnen installierten Helm-Diagramme auch für die Ausführung auf den richtigen Knoten geplant sind. Die Befehle in diesem Artikel verwenden [node-selectors][k8s-node-selector], um sicherzustellen, dass die Pods für die richtigen Knoten geplant sind, aber nicht alle Helm-Charts können einen Knotenselektor verfügbar machen. Sie können auch andere Optionen für Ihren Cluster verwenden, z. B. [Taints][taints].
 
 ## <a name="create-a-service-account"></a>Erstellen eines Dienstkontos
 
-Vor der Bereitstellung von Helm in einem RBAC-fähigen AKS-Cluster benötigen Sie ein Dienstkonto und eine Rollenbindung für den Tiller-Dienst. Weitere Informationen zum Sichern von Helm/Tiller in einem RBAC-fähigen Cluster finden Sie unter [Tiller, Namespaces und RBAC][tiller-rbac]. Überspringen Sie diesen Schritt, wenn Ihr AKS-Cluster nicht RBAC-fähig ist.
+Vor der Bereitstellung von Helm in einem RBAC-fähigen AKS-Cluster benötigen Sie ein Dienstkonto und eine Rollenbindung für den Tiller-Dienst. Weitere Informationen zum Sichern von Helm/Tiller in einem RBAC-fähigen Cluster finden Sie unter [Tiller, Namespaces, and RBAC (Tiller, Namespaces und RBAC)][tiller-rbac]. Überspringen Sie diesen Schritt, wenn Ihr AKS-Cluster nicht RBAC-fähig ist.
 
 Erstellen Sie eine Datei namens `helm-rbac.yaml`, und fügen Sie den folgenden YAML-Code ein:
 
@@ -64,16 +64,18 @@ kubectl apply -f helm-rbac.yaml
 
 ## <a name="secure-tiller-and-helm"></a>Schützen von Tiller und Helm
 
-Der Helm-Client und der Tiller-Dienst verwenden TLS/SSL, um sich gegenseitig zu authentifizieren und miteinander zu kommunizieren. Diese Authentifizierungsmethode unterstützt den Schutz von Kubernetes-Clustern und legt fest, welche Dienste bereitgestellt werden können. Sie können eigene signierte Zertifikate generieren, um die Sicherheit zu erhöhen. Jeder Helm-Benutzer würde ein eigenes Clientzertifikat erhalten, und Tiller würde im Kubernetes-Cluster initialisiert werden, auf den die Zertifikate angewendet wurden. Weitere Informationen finden Sie unter [Using TLS/SSL between Helm and Tiller (Verwenden von TLS/SSL zwischen Helm und Tiller)][helm-ssl].
+Der Helm-Client und der Tiller-Dienst verwenden TLS/SSL, um sich gegenseitig zu authentifizieren und miteinander zu kommunizieren. Diese Authentifizierungsmethode unterstützt den Schutz von Kubernetes-Clustern und legt fest, welche Dienste bereitgestellt werden können. Sie können eigene signierte Zertifikate generieren, um die Sicherheit zu erhöhen. Jeder Helm-Benutzer würde ein eigenes Clientzertifikat erhalten, und Tiller würde im Kubernetes-Cluster initialisiert werden, auf den die Zertifikate angewendet wurden. Weitere Informationen finden Sie unter [Verwenden von TLS/SSL zwischen Helm und Tiller][helm-ssl].
 
-Mit einem RBAC-fähigen Kubernetes-Cluster können Sie steuern, über welche Zugriffsebene Tiller für den Cluster verfügt. Sie können den Kubernetes-Namespace definieren, in dem Tiller bereitgestellt wurde, und einschränken, in welchen Namespaces Tiller Ressourcen bereitstellen kann. Durch diesen Ansatz können Sie Tiller-Instanzen in verschiedenen Namespaces erstellen, die Bereitstellung einschränken und die Benutzer des Helm-Clients auf bestimmte Namespaces beschränken. Weitere Informationen finden Sie unter [Helm role-based access controls (Helm: Rollenbasierte Zugriffssteuerung)][helm-rbac].
+Mit einem RBAC-fähigen Kubernetes-Cluster können Sie steuern, über welche Zugriffsebene Tiller für den Cluster verfügt. Sie können den Kubernetes-Namespace definieren, in dem Tiller bereitgestellt wurde, und einschränken, in welchen Namespaces Tiller Ressourcen bereitstellen kann. Durch diesen Ansatz können Sie Tiller-Instanzen in verschiedenen Namespaces erstellen, die Bereitstellung einschränken und die Benutzer des Helm-Clients auf bestimmte Namespaces beschränken. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung mit Helm][helm-rbac].
 
 ## <a name="configure-helm"></a>Konfigurieren von Helm
 
-Verwenden Sie den Befehl [helm init][helm-init], um Tiller in einem AKS-Cluster bereitzustellen. Wenn Ihr Cluster nicht RBAC-fähig ist, entfernen Sie das Argument `--service-account` und den Wert. Wenn Sie TLS/SSL für Tiller und Helm konfiguriert haben, überspringen Sie diesen grundlegenden Initialisierungsschritt, und stellen Sie stattdessen wie im nächsten Beispiel dargestellt den erforderlichen Parameter `--tiller-tls-` bereit.
+Verwenden Sie den Befehl [helm init][helm-init], um Tiller in einem AKS-Cluster bereitzustellen. Wenn Ihr Cluster nicht RBAC-fähig ist, entfernen Sie das Argument `--service-account` und den Wert. In den folgenden Beispielen wird auch [history-max][helm-history-max] auf 200 festgelegt.
+
+Wenn Sie TLS/SSL für Tiller und Helm konfiguriert haben, überspringen Sie diesen grundlegenden Initialisierungsschritt, und stellen Sie stattdessen wie im nächsten Beispiel dargestellt den erforderlichen Parameter `--tiller-tls-` bereit.
 
 ```console
-helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
+helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 Wenn Sie TLS/SSL zwischen Helm und Tiller konfiguriert haben, stellen Sie wie im folgenden Beispiel dargestellt die `--tiller-tls-*`-Parameter und die Namen Ihrer eigenen Zertifikate bereit:
@@ -85,13 +87,14 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
+    --history-max 200 \
     --service-account tiller \
-    --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 ## <a name="find-helm-charts"></a>Suchen von Helm-Diagrammen
 
-Helm-Diagramme dienen zum Bereitstellen von Anwendungen in einem Kubernetes-Cluster. Verwenden Sie zum Suchen nach zuvor erstellten Helm-Diagrammen den Befehl [helm search][helm-search]:
+Helm-Diagramme dienen zum Bereitstellen von Anwendungen in einem Kubernetes-Cluster. Verwenden Sie zum Suchen nach zuvor erstellten Helm-Charts den Befehl [helm search][helm-search]:
 
 ```console
 helm search
@@ -140,12 +143,12 @@ $ helm repo update
 Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete.
 ```
 
 ## <a name="run-helm-charts"></a>Ausführen von Helm-Diagrammen
 
-Verwenden Sie zum Installieren von Diagrammen mit Helm den Befehl [helm install][helm-install], und geben Sie den Namen des zu installierenden Diagramms an. Um die Installation eines Helm-Diagramms in Aktion zu sehen, installieren wir eine grundlegende nginx-Bereitstellung mithilfe eines Helm-Diagramms. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
+Verwenden Sie zum Installieren von Charts mit Helm den Befehl [helm install][helm-install], und geben Sie den Namen des zu installierenden Charts an. Um die Installation eines Helm-Diagramms in Aktion zu sehen, installieren wir eine grundlegende nginx-Bereitstellung mithilfe eines Helm-Diagramms. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
 
 ```console
 helm install stable/nginx-ingress \
@@ -184,7 +187,7 @@ Es dauert maximal zwei Minuten, bis *EXTERNAL-IP* für den nginx-ingress-control
 
 ## <a name="list-helm-releases"></a>Auflisten von Helm-Versionen
 
-Verwenden Sie für die Anzeige einer Liste der im Cluster installierten Releases den Befehl [helm list][helm-list]. In folgendem Beispiel wird das nginx-ingress-Release veranschaulicht, das im vorherigen Schritt bereitgestellt wurde. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
+Verwenden Sie zum Anzeigen einer Liste der im Cluster installierten Releases den Befehl [helm list][helm-list]. In folgendem Beispiel wird das nginx-ingress-Release veranschaulicht, das im vorherigen Schritt bereitgestellt wurde. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
 
 ```console
 $ helm list
@@ -217,6 +220,7 @@ Weitere Informationen zum Verwalten von Kubernetes-Anwendungsbereitstellungen mi
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
 [helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
 [helm-search]: https://docs.helm.sh/helm/#helm-search

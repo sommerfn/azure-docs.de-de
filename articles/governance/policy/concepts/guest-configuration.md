@@ -1,37 +1,36 @@
 ---
-title: Grundlegendes zur Vorgehensweise beim Überwachen des Inhalts eines virtuellen Computers
-description: Hier erfahren Sie, wie Azure Policy mithilfe von Guest Configuration Einstellungen in einem virtuellen Azure-Computer überprüft.
+title: Grundlegendes zur Vorgehensweise beim Überwachen des Inhalts eines Computers
+description: Erfahren Sie, wie Azure Policy mithilfe der Gastkonfiguration Einstellungen auf einem Azure-Computer überprüft.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/18/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036317"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308570"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
-Mit Azure Policy können Sie nicht nur Azure-Ressourcen überprüfen und [korrigieren](../how-to/remediate-resources.md), sondern auch Einstellungen auf einem virtuellen Computer. Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Mit der Erweiterung werden über den Client Einstellungen wie die Konfiguration des Betriebssystems, die Konfiguration oder das Vorhandensein einer Anwendung, Umgebungseinstellungen und vieles mehr überprüft.
+Mit Azure Policy können Sie nicht nur Azure-Ressourcen überprüfen und [korrigieren](../how-to/remediate-resources.md), sondern auch Einstellungen auf einem Computer. Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
 
-Derzeit führt die Azure Policy-Gastkonfiguration nur eine Überprüfung der Einstellungen im Computer durch.
-Es ist noch nicht möglich, Konfigurationen anzuwenden.
+- Die Konfiguration des Betriebssystems
+- Die Konfiguration oder das Vorhandensein der Anwendung
+- Umgebungseinstellungen
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+Derzeit führt die Azure Policy-Gastkonfiguration nur eine Überprüfung der Einstellungen auf dem Computer durch. Es werden keine Konfigurationen angewandt.
 
 ## <a name="extension-and-client"></a>Erweiterung und Client
 
-Zur Überprüfung von Einstellungen in einem virtuellen Computer wird eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen.
+Zur Überprüfung von Einstellungen auf einem Computer wird eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen.
 
-### <a name="limits-set-on-the-exension"></a>Für die Erweiterung festgelegte Grenzwerte
+### <a name="limits-set-on-the-extension"></a>Für die Erweiterung festgelegte Grenzwerte
 
-Um die Auswirkungen der Erweiterung auf die auf dem Computer ausgeführten Anwendungen zu beschränken, darf Guest Configuration höchstens 5 % der CPU-Auslastung verursachen.
-Dies gilt sowohl für von Microsoft als „integriert“ bereitgestellte Konfigurationen als auch für von Kunden erstellte benutzerdefinierte Konfigurationen.
+Um die Auswirkungen der Erweiterung auf die auf dem Computer ausgeführten Anwendungen zu beschränken, darf die Gastkonfiguration höchstens 5 % der CPU-Auslastung verursachen. Diese Einschränkung gilt sowohl für integrierte als auch für angepasste Definitionen.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Registrieren des Guest Configuration-Ressourcenanbieters
 
@@ -60,7 +59,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="validation-tools"></a>Überprüfungstools
 
-Im virtuellen Computer verwendet der Guest Configuration-Client lokale Tools zum Ausführen der Überprüfung.
+Auf dem Computer verwendet der Gastkonfigurationsclient lokale Tools zum Ausführen der Überprüfung.
 
 In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jeweiligen unterstützten Betriebssystemen verwendet werden:
 
@@ -71,7 +70,7 @@ In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jewei
 
 ### <a name="validation-frequency"></a>Validierungshäufigkeit
 
-Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. Sobald eine Gastzuweisung empfangen wird, werden die Einstellungen in einem 15-Minuten-Intervall überprüft. Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, sobald die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dies bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration innerhalb des virtuellen Computers ausgelöst.
+Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. Sobald eine Gastzuweisung empfangen wird, werden die Einstellungen in einem 15-Minuten-Intervall überprüft. Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, sobald die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dieses Update bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration auf dem Computer ausgelöst.
 
 ## <a name="supported-client-types"></a>Unterstützte Clienttypen
 
@@ -96,7 +95,7 @@ Windows Server Nano Server wird in keiner Version unterstützt.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Netzwerkanforderungen für die Gastkonfigurationserweiterung
 
-Für die Kommunikation mit dem Guest Configuration-Ressourcenanbieter in Azure benötigen virtuelle Computer Zugriff auf Azure-Rechenzentren in ausgehender Richtung über Port **443**. Wenn Sie ein privates virtuelles Netzwerk in Azure verwenden und keinen ausgehenden Datenverkehr zulassen, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Derzeit ist für Azure Policy Guest Configuration kein Diensttag vorhanden.
+Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn Sie ein privates virtuelles Netzwerk in Azure verwenden und keinen ausgehenden Datenverkehr zulassen, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Derzeit ist für die Azure Policy-Gastkonfiguration kein Diensttag vorhanden.
 
 Für Listen mit IP-Adressen können Sie [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. Sie müssen nur Zugriff in ausgehender Richtung auf die IP-Adressen in den Regionen zulassen, in denen Ihre VMs bereitgestellt werden.
 
@@ -105,31 +104,34 @@ Für Listen mit IP-Adressen können Sie [IP-Bereiche des Microsoft Azure-Rechenz
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
-Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**. Die Definition **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
+Für jede mit Guest Configuration ausgeführte Überprüfung werden zwei Richtliniendefinitionen benötigt: **DeployIfNotExists** und **AuditIfNotExists**. Die Definition **DeployIfNotExists** dient zum Vorbereiten des Computers mit dem Gastkonfigurations-Agent und anderen Komponenten zur Unterstützung der [Validierungstools](#validation-tools).
 
 Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Elemente überprüft und korrigiert:
 
-- Stellen Sie sicher, dass dem virtuellen Computer eine auszuwertende Konfiguration zugewiesen wurde. Wenn derzeit keine Zuweisung vorhanden ist, gehen Sie wie folgt vor, um die Zuweisung abzurufen und den virtuellen Computer vorzubereiten:
-  - Authentifizieren Sie sich beim virtuellen Computer mithilfe einer [verwalteten Identität](../../../active-directory/managed-identities-azure-resources/overview.md).
+- Stellen Sie sicher, dass dem Computer eine auszuwertende Konfiguration zugewiesen wurde. Wenn derzeit keine Zuweisung vorhanden ist, gehen Sie wie folgt vor, um die Zuweisung abzurufen und den Computer vorzubereiten:
+  - Authentifizieren Sie sich auf dem Computer mithilfe einer [verwalteten Identität](../../../active-directory/managed-identities-azure-resources/overview.md).
   - Installieren Sie die neueste Version der Erweiterung **Microsoft.GuestConfiguration**.
   - Installieren Sie [Überprüfungstools](#validation-tools) und ggf. Abhängigkeiten.
 
 Wenn die **DeployIfNotExists**-Zuweisung nicht konform ist, kann ein [Wartungstask](../how-to/remediate-resources.md#create-a-remediation-task) verwendet werden.
 
-Sobald die **DeployIfNotExists**-Zuweisung konform ist, wird die Richtliniendefinition **AuditIfNotExists** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die Konfigurationszuweisung konform ist.
-Das Überprüfungstool stellt die Ergebnisse dem Guest Configuration-Client zur Verfügung. Der Client leitet die Ergebnisse an die Guest-Erweiterung weiter, die sie über den Guest Configuration-Ressourcenanbieter bereitstellt.
+Sobald die **DeployIfNotExists**-Zuweisung konform ist, wird die Richtliniendefinition **AuditIfNotExists** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die Konfigurationszuweisung konform ist. Das Überprüfungstool stellt die Ergebnisse dem Guest Configuration-Client zur Verfügung. Der Client leitet die Ergebnisse an die Guest-Erweiterung weiter, die sie über den Guest Configuration-Ressourcenanbieter bereitstellt.
 
 Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configuration-Ressourcenanbieters, um die Konformität im Knoten **Konformität** zu melden. Weitere Informationen finden Sie unter [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Die Richtlinie **DeployIfNotExists** ist erforderlich, damit die Richtlinie **AuditIfNotExists** Ergebnisse zurückgibt.
-> Ohne die Richtlinie **DeployIfNotExists** gibt die Richtlinie **AuditIfNotExists** „0 von 0“ Ressourcen als Status an.
+> Die Richtlinie **DeployIfNotExists** ist erforderlich, damit die Richtlinie **AuditIfNotExists** Ergebnisse zurückgibt. Ohne die Richtlinie **DeployIfNotExists** gibt die Richtlinie **AuditIfNotExists** „0 von 0“ Ressourcen als Status an.
 
-Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
+Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf Linux- und Windows-Computern überwachen* umfasst 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Die Logik der [Richtliniendefinition](definition-structure.md#policy-rule) stellt sicher, dass nur das Zielbetriebssystem ausgewertet wird.
 
 ### <a name="multiple-assignments"></a>Mehrere Zuweisungen
 
-Aufgrund der Gastkonfigurationsrichtlinien kann die gleiche Gastzuweisung derzeit lediglich einmal pro virtuellem Computer zugewiesen werden, auch wenn bei der Richtlinienzuweisung andere Parameter verwendet werden.
+Aufgrund der Gastkonfigurationsrichtlinien kann die gleiche Gastzuweisung derzeit lediglich einmal pro Computer zugewiesen werden, auch wenn bei der Richtlinienzuweisung andere Parameter verwendet werden.
+
+## <a name="built-in-resource-modules"></a>Integrierte Ressourcenmodule
+
+Beim Installieren der Gastkonfigurationserweiterung ist das PowerShell-Modul „GuestConfiguration“ in der neuesten Version von DSC-Ressourcenmodulen enthalten. Dieses Modul kann über den PowerShell-Katalog mithilfe des Links „Manueller Download“ auf der Modulseite [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/) heruntergeladen werden.
+Das Dateiformat „.nupkg“ kann zur Dekomprimierung und Überprüfung in „.zip“ umbenannt werden.
 
 ## <a name="client-log-files"></a>Protokolldateien des Clients
 
@@ -140,6 +142,33 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
 Dabei bezieht sich `<version>` auf die aktuelle Versionsnummer.
+
+### <a name="collecting-logs-remotely"></a>Remotesammeln von Protokollen
+
+Im ersten Schritt bei der Problembehandlung von Konfigurationen oder Modulen durch die Gastkonfiguration sollte das Cmdlet `Test-GuestConfigurationPackage` anhand der Schritte in [Testen eines Gastkonfigurationspakets](../how-to/guest-configuration-create.md#test-a-guest-configuration-package) ausgeführt werden.
+Wenn dies nicht erfolgreich ist, kann das Sammeln von Clientprotokollen helfen, Probleme zu diagnostizieren.
+
+#### <a name="windows"></a>Windows
+
+Das folgende PowerShell-Beispielskript kann hilfreich sein, um die Funktion „Befehl ausführen“ auf der Azure-VM zum Erfassen von Informationen aus Protokolldateien auf Windows-Computern zu verwenden. Weitere Informationen finden Sie unter [Ausführen von PowerShell-Skripts auf Ihrer Windows-VM mit „Befehl ausführen“](../../../virtual-machines/windows/run-command.md).
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Das folgende Bash-Beispielskript kann hilfreich sein, um die Funktion „Befehl ausführen“ auf der Azure-VM zum Erfassen von Informationen aus Protokolldateien auf Linux-Computern zu verwenden. Weitere Informationen finden Sie unter [Ausführen von PowerShell-Skripts auf Ihrer Linux-VM mit „Befehl ausführen“](../../../virtual-machines/linux/run-command.md).
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
 
 ## <a name="guest-configuration-samples"></a>Beispiele für Guest Configuration
 

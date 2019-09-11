@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876051"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308215"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
@@ -34,7 +34,7 @@ Azure Marketplace-Angebotstypen werden in der folgenden Tabelle aufgeführt.
 | **Angebotstyp**    | **Beschreibung**  |
 | :------------------- | :-------------------|
 | [**Virtuelle Computer**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance für das Abonnement Ihres Kunden. |
-| [**Lösungsvorlagen**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Verwenden Sie einen Lösungsvorlagen-Angebotstyp, wenn für eine Lösung neben der einfachen VM noch eine zusätzliche Bereitstellung und Konfigurationsautomatisierung erforderlich ist. |
+| [**Lösungsvorlagen**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Verwenden Sie eine Lösungsvorlage (auch als Azure-Anwendung bezeichnet), wenn für eine Lösung neben der einfachen VM noch eine zusätzliche Bereitstellungs- und Konfigurationsautomatisierung erforderlich ist. In Lösungsvorlagen können viele verschiedene Arten von Azure-Ressourcen genutzt werden, einschließlich VMs u. a.  |
 | [**Verwaltete Anwendungen**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Verwenden der Azure-App: Angebotstyp „Verwaltete App“, wenn die folgenden Bedingungen erforderlich sind: <br> <ul> <li> Sie stellen entweder eine Abonnement-basierte Lösung für Ihren Kunden mit einer VM oder eine vollständig IaaS-basierte Lösung bereit. </li> <li>Sie oder Ihr Kunde setzen voraus, dass die Lösung von einem Partner verwaltet wird. </li> <ul> |
 | [**SaaS-Anwendungen**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Verwenden Sie die SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. |
 | [**Container-Angebote**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Verwenden Sie den Angebotstyp „Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure Container Service bereitgestellt wird. |

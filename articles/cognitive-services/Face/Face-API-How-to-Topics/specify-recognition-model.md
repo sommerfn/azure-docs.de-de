@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68254345"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306547"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -107,7 +107,8 @@ Wenn Sie normalerweise einen Übereinstimmungsschwellenwert angeben (ein Wert zw
 
 In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell für die Verwendung mit verschiedenen APIs für den Gesichtserkennungsdienst festlegen. Als nächstes befolgen Sie einen Schnellstart zu den ersten Schritten mit der Gesichtserkennung.
 
-* [Gesichtserkennung in einem Bild](../quickstarts/csharp-detect-sdk.md)
+* [.NET SDK zur Gesichtserkennung](../Quickstarts/csharp-sdk.md)
+* [Python SDK zur Gesichtserkennung](../Quickstarts/python-sdk.md)
 
 [Face – Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face – Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

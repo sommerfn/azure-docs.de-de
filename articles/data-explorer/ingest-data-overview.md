@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759323"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240646"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -113,13 +113,13 @@ Bevor Sie mit der Datenerfassung beginnen, sollten Sie sich folgende Fragen stel
 * Wie lauten die Latenzanforderungen? 
 * Kann eine der vorhandenen verwalteten Erfassungspipelines verwendet werden? 
 
-Für Organisationen mit einer vorhandenen Infrastruktur, die auf einem Messaging-Dienst wie Event Hub basieren, ist die Verwendung eines Connektors wahrscheinlich die am besten geeignete Lösung. Die Erfassung in der Warteschlange eignet sich für große Datenmengen.
+Für Organisationen mit einer vorhandenen Infrastruktur, die auf einem Messagingdienst wie Event Hub und IoT Hub basieren, ist die Verwendung eines Connectors wahrscheinlich die am besten geeignete Lösung. Die Erfassung in der Warteschlange eignet sich für große Datenmengen.
 
 ## <a name="supported-data-formats"></a>Unterstützte Datenformate
 
 Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der Abfrage so, dass sie von Azure Data Explorer analysiert werden können. Die folgenden Datenformate werden unterstützt:
 
-* CSV, TSV, PSV, SCSV, SOH
+* CSV, TSV, TSVE, PSV, SCSV, SOH
 * JSON (getrennte Zeilen, mehrzeilig) Avro
 * ZIP und GZIP 
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 36cd9b560bd149fd837db09cba33ce6bb2199a20
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827725"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306635"
 ---
 # <a name="get-face-detection-data"></a>Abrufen von Gesichtserkennungsdaten
 
@@ -29,7 +29,7 @@ In diesem Leitfaden wird Folgendes veranschaulicht:
 
 ## <a name="setup"></a>Einrichtung
 
-Für diesen Leitfaden wird davon ausgegangen, dass Sie bereits ein [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)-Objekt namens `faceClient` mit einem Gesichtserkennungsabonnementschlüssel und einer Gesichtserkennungs-Endpunkt-URL erstellt haben. Hiervon ausgehend können Sie das Gesichtserkennungsfeature verwenden, indem Sie entweder – wie in diesem Leitfaden – [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) oder [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) aufrufen. Eine Anleitung dazu, wie Sie dieses Feature einrichten, finden Sie unter [Schnellstart: Erkennen von Gesichtern in einem Bild mit dem Azure Face .NET SDK](../quickstarts/csharp-detect-sdk.md).
+Für diesen Leitfaden wird davon ausgegangen, dass Sie bereits ein [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)-Objekt namens `faceClient` mit einem Gesichtserkennungsabonnementschlüssel und einer Gesichtserkennungs-Endpunkt-URL erstellt haben. Hiervon ausgehend können Sie das Gesichtserkennungsfeature verwenden, indem Sie entweder – wie in diesem Leitfaden – [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) oder [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) aufrufen. Anweisungen zum Einrichten dieses Feature finden Sie in den folgenden Schnellstarts.
 
 Das Hauptaugenmerk dieses Leitfadens liegt auf dem Detect-Aufruf, z. B. welche Argumente Sie übergeben und was Sie mit den zurückgegebenen Daten tun können. Wir empfehlen Ihnen, nur die Features abzufragen, die Sie benötigen. Für jeden Vorgang wird zusätzliche Zeit für die Durchführung benötigt.
 

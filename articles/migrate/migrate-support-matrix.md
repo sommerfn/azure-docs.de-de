@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 3fb36eb9b8507903d1aee00b82c375685a4dfa6c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019189"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279468"
 ---
 # <a name="azure-migrate-support-matrix"></a>Unterstützungsmatrix für Azure Migrate
 
@@ -31,10 +31,10 @@ Es sind zwei Versionen des Azure Migrate-Diensts verfügbar:
 
 Die Tabelle fasst die unterstützten Migrationsszenarien zusammen.
 
-**Bereitstellung** | **Details*** 
+**Bereitstellung** | **Details** 
 --- | --- 
 **Lokale Bewertung** | Bewerten Sie lokale Workloads und Daten, die auf VMware-VMS und Hyper-V-VMS ausgeführt werden. Bewerten Sie mit Azure Migrate-Serverbewertung und Microsoft Data Migration Assistant (DMA) sowie Tools von Drittanbietern wie Cloudamize, Corent Tech und Turbonomic Server.
-**Migration von einem lokalen Standort zu Azure** | Migrieren Sie auf physischen Servern, VMware-VMs, Hyper-V-VMs und AWS/GCP-Instanzen ausgeführte Workloads und Daten zu Azure. Migrieren Sie mit Azure Migrate-Serverbewertung und Azure Database Migration Service (DMS) sowie mit Tools von Drittanbietern wie Carbonite und CorentTech.
+**Migration von einem lokalen Standort zu Azure** | Migrieren Sie auf physischen Servern, VMware-VMs, Hyper-V-VMs und cloudbasierten VMs ausgeführte Workloads und Daten zu Azure. Migrieren Sie mit Azure Migrate-Serverbewertung und Azure Database Migration Service (DMS) sowie mit Tools von Drittanbietern wie Carbonite und CorentTech.
 
 Spezifische Toolunterstützung ist im Folgenden zusammengefasst.
 
@@ -53,10 +53,10 @@ CorentTech | Migration | [Weitere Informationen](https://www.corenttech.com/)
 
 **Unterstützung** | **Details**
 --- | ---
-Subscription | Sie können über ein einzelnes Azure Migrate-Projekt in einem Abonnement verfügen.
+Subscription | Ein Abonnement kann mehrere Azure Migrate-Projekte aufweisen.
 Azure-Berechtigungen | Sie benötigen Berechtigungen für Mitwirkende oder Eigentümer im Abonnement, um ein Azure Migrate-Projekt zu erstellen.
 Virtuelle VMware-Computer  | Bewerten Sie bis zu 35.000 VMware-VMs in einem einzigen Projekt.
-Virtuelle Hyper-V-Computer | Bewerten Sie bis zu 10.000 Hyper-V-VMs in einem einzigen Projekt.
+Virtuelle Hyper-V-Computer | Bewerten Sie bis zu 35.000 Hyper-V-VMs in einem einzigen Projekt.
 
 Ein Projekt kann im Rahmen der Bewertungseinschränkungen sowohl VMware-VMs als auch Hyper-V-VMs umfassen.
 

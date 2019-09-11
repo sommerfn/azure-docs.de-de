@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: 2eb61a6b9afa3cabf1733be120dfbdacb7de4534
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/01/2019
+ms.openlocfilehash: 762c910336fa2b50a46eda23cf66d8a7aa383c52
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276531"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241218"
 ---
 # <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Überwachen und Abrufen von Azure Cosmos DB-Metriken aus Azure Monitor
 
@@ -54,8 +54,8 @@ Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gr
             
 |Metrik (Metrikanzeigename)|Einheit (Aggregationstyp) |BESCHREIBUNG|Dimensionen| Zeitgranularitäten| Zuordnung von Legacymetriken | Verwendung |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (Anforderungen insgesamt) | Count (Anzahl) | Anzahl von gesendeten Anforderungen| DatabaseName, CollectionName, Region, StatusCode| Alle | TotalRequests, Http 2xx, Http 3xx, Http 400 "," Http 401, Interner Serverfehler, Dienst nicht verfügbar, Anforderungen gedrosselt, Anforderungen pro Sekunde | Wird verwendet, um Anforderungen nach Statuscode zu überwachen, Sammlung bei einer Granularität von einer Minute. Um einen Durchschnittswert für die Anforderungen pro Sekunde zu erhalten, verwenden Sie die Zähl-Aggregation in einer Minute, und teilen Sie sie durch 60. |
-| MetadataRequests (Metadatenanforderungen) |Count (Anzahl) | Anzahl der Metadatenanforderungen. Azure Cosmos DB unterhält eine Sammlung von Systemmetadaten für jedes Konto, wodurch Sie Sammlungen, Datenbanken usw. und deren Konfigurationen ohne anfallende Kosten auflisten können. | DatabaseName, CollectionName, Region, StatusCode| Alle| |Wird verwendet, um die Drosselung aufgrund von Metadatenanforderungen zu überwachen.|
+| TotalRequests (Anforderungen insgesamt) | Count (Anzahl) | Anzahl von gesendeten Anforderungen| DatabaseName, CollectionName, Region, StatusCode| Alle | TotalRequests, Http 2xx, Http 3xx, Http 400 "," Http 401, Interner Serverfehler, Dienst nicht verfügbar, Anforderungen gedrosselt, Anforderungen pro Sekunde | Wird verwendet, um Anforderungen nach Statuscode zu überwachen, Container mit einer Granularität von einer Minute. Um einen Durchschnittswert für die Anforderungen pro Sekunde zu erhalten, verwenden Sie die Zähl-Aggregation in einer Minute, und teilen Sie sie durch 60. |
+| MetadataRequests (Metadatenanforderungen) |Count (Anzahl) | Anzahl der Metadatenanforderungen. Azure Cosmos DB unterhält einen Container mit Systemmetadaten für jedes Konto, wodurch Sie Sammlungen, Datenbanken usw. und deren Konfigurationen ohne anfallende Kosten auflisten können. | DatabaseName, CollectionName, Region, StatusCode| Alle| |Wird verwendet, um die Drosselung aufgrund von Metadatenanforderungen zu überwachen.|
 | MongoRequests (Mongo-Anforderungen) | Count (Anzahl) | Anzahl der ausgegebenen Mongo-Anforderungen | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Alle |Mongo-Abfrage-Anforderungsrate, Mongo-Aktualisieren-Anforderungsrate, Mongo-Löschen-Anforderungsrate, Mongo-Einfügen-Anforderungsrate, Mongo-Zählen-Anforderungsrate| Wird verwendet, um Mongo-Anforderungsfehler zu überwachen, Verwendungen pro Befehlstyp. |
 
 ### <a name="request-unit-metrics"></a>Metriken für Anforderungseinheiten
@@ -64,17 +64,17 @@ Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gr
 |---|---|---|---| ---| ---| ---|
 | MongoRequestCharge (Kosten der Mongo-Anforderung) | Count (Gesamt) |Verbrauchte Mongo-Anforderungseinheiten| DatabaseName, CollectionName, Region, CommandName, ErrorCode| Alle |Mongo-Abfrage-Anforderungsgebühr, Mongo-Aktualisieren-Anforderungsgebühr, Mongo-Löschen-Anforderungsgebühr, Mongo-Einfügen-Anforderungsgebühr, Mongo-Zählen-Anforderungsgebühr| Wird verwendet, um die Mongo-Ressourcen-RUs in einer Minute zu überwachen.|
 | TotalRequestUnits (Anforderungseinheiten gesamt)| Count (Gesamt) | Verbrauchte Anforderungseinheiten| DatabaseName, CollectionName, Region, StatusCode |Alle| TotalRequestUnits| Wird verwendet, um die gesamte RU-Nutzung mit einer Granularität von einer Minute zu überwachen. Um einen Durchschnittswert für die verbrauchten RU zu erhalten, verwenden Sie die Gesamtaggregation in einer Minute, und teilen Sie sie durch 60.|
-| ProvisionedThroughput (Bereitgestellter Durchsatz)| Count (Maximum) |Bereitgestellter Durchsatz auf Granularität der Sammlung| DatabaseName, CollectionName| 5M| | Wird verwendet, um den bereitgestellten Durchsatz pro Sammlung zu überwachen.|
+| ProvisionedThroughput (Bereitgestellter Durchsatz)| Count (Maximum) |Bereitgestellter Durchsatz bei Containergranularität| DatabaseName, ContainerName| 5M| | Wird verwendet, um den bereitgestellten Durchsatz pro Container zu überwachen.|
 
 ### <a name="storage-metrics"></a>Speichermetrik
 
 |Metrik (Metrikanzeigename)|Einheit (Aggregationstyp)|BESCHREIBUNG|Dimensionen| Zeitgranularitäten| Zuordnung von Legacymetriken | Verwendung |
 |---|---|---|---| ---| ---| ---|
 | AvailableStorage (Verfügbarer Speicher) |Bytes (Gesamt) | Gemeldeter Gesamtspeicher mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M| Verfügbarer Speicher| Wird verwendet, um die verfügbare Speicherkapazität zu überwachen (gilt nur für feste Speichersammlungen). Die Mindestgranularität sollte 5 Minuten betragen.| 
-| DataUsage (Datennutzung) |Bytes (Gesamt) |Gemeldete Gesamtdatennutzung mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M |Datengröße | Wird verwendet, um den gesamten Datenverbrauch bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
-| IndexUsage (Indexnutzung) | Bytes (Gesamt) |Gemeldete Gesamtindexnutzung mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M| Indexgröße| Wird verwendet, um den gesamten Datenverbrauch bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen. |
-| DocumentQuota (Dokumentenkontingent) | Bytes (Gesamt) | Gemeldetes Gesamtspeicherkontingent mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M |Speicherkapazität| Wird verwendet, um das gesamte Kontingent bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
-| DocumentCount (Dokumentanzahl) | Count (Gesamt) |Gemeldete Gesamtdokumentanzahl mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M |Dokumentanzahl|Wird verwendet, um die Gesamtanzahl der Dokumente bei der Sammlung und in der Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
+| DataUsage (Datennutzung) |Bytes (Gesamt) |Gemeldete Gesamtdatennutzung mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M |Datengröße | Wird verwendet, um den gesamten Datenverbrauch für Container und Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
+| IndexUsage (Indexnutzung) | Bytes (Gesamt) |Gemeldete Gesamtindexnutzung mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M| Indexgröße| Wird verwendet, um den gesamten Datenverbrauch für Container und Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen. |
+| DocumentQuota (Dokumentenkontingent) | Bytes (Gesamt) | Gemeldetes Gesamtspeicherkontingent mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M |Speicherkapazität| Wird verwendet, um das gesamte Kontingent für Container und Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
+| DocumentCount (Dokumentanzahl) | Count (Gesamt) |Gemeldete Gesamtdokumentanzahl mit 5-Minuten-Granularität pro Region| DatabaseName, CollectionName, Region| 5M |Dokumentanzahl|Wird verwendet, um das Gesamtanzahl der Dokumente für Container und Region zu überwachen. Die Mindestgranularität sollte 5 Minuten betragen.|
 
 ### <a name="latency-metrics"></a>Latenzmetriken
 

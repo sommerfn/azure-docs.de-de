@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c845c4bcc8dc57371304b5917ee09191b5256c51
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061532"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276353"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -315,12 +315,12 @@ Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst u
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-dataset).
+- Informationen zu anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen und Binärformat
+### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten nach oder aus Blob Storage im Parquet-Format, Textformat mit Trennzeichen oder Binärformat finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
+Informationen zum Kopieren von Daten nach oder aus Blob Storage im Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
 | Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -362,7 +362,7 @@ Informationen zum Kopieren von Daten nach oder aus Blob Storage im Parquet-Forma
 
 ### <a name="other-format-dataset"></a>Dataset in anderen Formaten
 
-Legen Sie zum Kopieren von Daten nach und aus Blob Storage in den Formaten „ORC/Avro/JSON“ die „type“-Eigenschaft des Datasets auf **AzureBlob** fest. Die folgenden Eigenschaften werden unterstützt.
+Legen Sie zum Kopieren von Daten nach und aus Blob Storage im ORC- oder JSON-Format die Eigenschaft „type“ des Datasets auf **AzureBlob** fest. Die folgenden Eigenschaften werden unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -413,12 +413,12 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="blob-storage-as-a-source-type"></a>Blob Storage als Quelltyp
 
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
+- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-source).
+- Informationen zum Kopieren aus anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
 
-#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat
+#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten nach oder aus Blob Storage im **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
+Informationen zum Kopieren von Daten nach oder aus Blob Storage im **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Informationen zum Kopieren von Daten nach oder aus Blob Storage im **Parquet-For
 
 #### <a name="other-format-source"></a>Quelle in anderen Formaten
 
-Legen Sie zum Kopieren von Daten aus Blob Storage in den Formaten **ORC, Avro oder JSON** den Quelltyp in der Kopieraktivität auf **BlobSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
+Legen Sie zum Kopieren von Daten aus Blob Storage im **ORC- oder JSON-Format** den Quelltyp in der Kopieraktivität auf **BlobSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Legen Sie zum Kopieren von Daten aus Blob Storage in den Formaten **ORC, Avro od
 
 ### <a name="blob-storage-as-a-sink-type"></a>Blob Storage als Senkentyp
 
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC/Avro/JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
+- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat](#format-based-source).
+- Informationen zum Kopieren aus anderen Formaten wie **ORC oder JSON** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
 
-#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen und Binärformat
+#### <a name="format-based-source"></a> Quelle im Parquet-Format, Textformat mit Trennzeichen, Avro-Format und Binärformat
 
-Informationen zum Kopieren von Daten aus Blob Storage im **Parquet-Format, Textformat mit Trennzeichen oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `storeSettings`-Einstellungen in der formatbasierten Kopiersenke unterstützt:
+Informationen zum Kopieren von Daten aus Blob Storage im **Parquet-Format, Textformat mit Trennzeichen, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für Azure-BLOB unter den `storeSettings`-Einstellungen in der formatbasierten Kopiersenke unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Informationen zum Kopieren von Daten aus Blob Storage im **Parquet-Format, Textf
 
 #### <a name="other-format-sink"></a>Senke in anderen Formaten
 
-Legen Sie zum Kopieren von Daten nach Blob Storage in den Formaten **ORC/Avro/JSON** den Senkentyp in der Kopieraktivität auf **BlobSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** unterstützt.
+Legen Sie zum Kopieren von Daten nach Blob Storage im **ORC- oder JSON-Format** den Senkentyp in der Kopieraktivität auf **BlobSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |

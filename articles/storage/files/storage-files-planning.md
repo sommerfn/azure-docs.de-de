@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015920"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309557"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -77,12 +77,12 @@ Azure Files bietet zwei Leistungsstufen: Standard und Premium.
 
 ### <a name="standard-file-shares"></a>Standarddateifreigaben
 
-Standard-Dateifreigaben beruhen auf Festplattenlaufwerken (HDDs). Standard-Dateifreigaben bieten eine zuverlässige Leistung für E/A-Workloads, die weniger anfällig für Leistungsschwankungen sind, z. B. Dateifreigaben für allgemeine Zwecke und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
+Standard-Dateifreigaben beruhen auf Festplattenlaufwerken (HDDs). Standard-Dateifreigaben bieten eine zuverlässige Leistung für E/A-Workloads, die weniger anfällig für Leistungsschwankungen sind, z. B. universelle Dateifreigaben und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
 
-Standard-Dateifreigaben stehen in Größen von bis zu 5 TiB als GA-Angebot zur Verfügung. Größere Dateifreigaben, die zwischen 5 und 100 TiB haben, stehen derzeit als Vorschauversion zur Verfügung.
+Standard-Dateifreigaben stehen in Größen von bis zu 5 TiB als GA-Angebot zur Verfügung. Größere Dateifreigaben, die zwischen 5 und 100 TiB aufweisen, stehen derzeit als Vorschauversion zur Verfügung.
 
 > [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Onboarding für größere Dateifreigaben (Standard-Tarif)](#onboard-to-larger-file-shares-standard-tier). Dort finden Sie Anweisungen zum Onboarding sowie Umfang und Einschränkungen der Vorschauversion.
+> Weitere Informationen finden Sie im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](#onboard-to-larger-file-shares-standard-tier). Dort finden Sie Anweisungen zum Onboarding sowie Umfang und Einschränkungen der Vorschauversion.
 
 ### <a name="premium-file-shares"></a>Premium-Dateifreigaben
 
@@ -95,7 +95,7 @@ Wenn Sie erfahren möchten, wie Sie eine Premium-Dateifreigabe erstellen, lesen 
 Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premium-Dateifreigabe nicht möglich. Wenn Sie zu einem der beiden Tarifen wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Sie können dazu eines der von Azure Files unterstützten Kopiertools wie Robocopy oder AzCopy verwenden.
 
 > [!IMPORTANT]
-> Premium-Dateifreigaben sind nur mit LRS und in den meisten Regionen verfügbar, die Speicherkonten anbieten. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure.
+> Premium-Dateifreigaben sind nur mit LRS und in den meisten Regionen, in denen Speicherkonten angeboten werden, verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure.
 
 #### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
 
@@ -114,7 +114,7 @@ Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die Mindestgröß
 >
 > Eingangsrate = 40MiB/s + 0,04 * bereitgestellte GiB
 
-Die Größe der Dateifreigabe kann jederzeit heraufgesetzt, jedoch erst 24 Stunden nach der letzten Heraufsetzung herabgesetzt werden. Wenn nach 24-stündigem Warten keine Heraufsetzung aufgetreten ist, können Sie die Größe der Dateifreigabe beliebig oft herabsetzen, bis Sie sie erneut heraufsetzen. Änderungen von IOPS/Durchsatz werden innerhalb weniger Minuten nach der Größenänderung wirksam.
+Die Größe bereitgestellter Freigaben wird durch ein Freigabekontingent angegeben. Das Freigabekontingent kann jederzeit heraufgesetzt, jedoch erst 24 Stunden nach der letzten Heraufsetzung herabgesetzt werden. Wenn in einer 24-stündigen Wartezeit keine Heraufsetzung aufgetreten ist, können Sie das Freigabekontingent beliebig oft herabsetzen, bis Sie es erneut heraufsetzen. Änderungen von IOPS/Durchsatz werden innerhalb weniger Minuten nach der Größenänderung wirksam.
 
 Es ist möglich, die Größe Ihrer bereitgestellten Freigabe unter Ihre verbrauchten GiB zu reduzieren. Wenn Sie dies tun, gehen Ihnen keine Daten verloren, sondern es wird Ihnen weiterhin die verwendete Größe in Rechnung gestellt. Sie erhalten die Leistung (IOPS-Grundwert, Durchsatz und Burst-IOPS) der bereitgestellten Freigabe, nicht die der verwendeten Größe.
 
@@ -132,7 +132,7 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 |102.400     | 100.000 | Bis zu 100.000 | 6\.204 | 4\.136   |
 
 > [!NOTE]
-> Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, von der verfügbaren Netzwerkbandbreite, E/A-Größen und Parallelität ab. Um eine maximale Leistung zu erreichen, können Sie die Last auf mehrere VMs verteilen. Weitere Informationen über gängige Leistungsprobleme und deren Lösungen finden Sie im [Handbuch zur Problembehandlung](storage-troubleshooting-files-performance.md).
+> Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Um eine maximale Leistung zu erreichen, können Sie die Last auf mehrere VMs verteilen. Weitere Informationen zu gängigen Leistungsproblemen und deren Lösungen finden Sie im [Handbuch zur Problembehandlung](storage-troubleshooting-files-performance.md).
 
 #### <a name="bursting"></a>Bursting
 
@@ -157,7 +157,7 @@ Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. 
 
 Azure Files-Standardfreigaben unterstützen vier Optionen für Datenredundanz: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und geozonenredundanter Speicher (GZRS) (Vorschau).
 
-Azure Files-Premiumfreigaben unterstützen nur lokal redundanten Speicher (LRS).
+Azure Files-Premium-Freigaben unterstützen nur lokal redundanten Speicher (LRS).
 
 In den folgenden Abschnitten werden die Unterschiede zwischen den verschiedenen Redundanzoptionen erläutert:
 
@@ -186,14 +186,14 @@ Sowohl in der primären als auch in der sekundären Region werden Replikate übe
 
 Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheiden:
 
-* Geozonenredundanter Speicher (GZRS) (Vorschau) bietet hohe Verfügbarkeit und maximale Dauerhaftigkeit, indem Daten synchron in drei Azure-Verfügbarkeitszonen und dann asynchron in der sekundären Region repliziert werden. Sie können auch den Lesezugriff auf die sekundäre Region aktivieren. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen. Weitere Informationen zu GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](../common/storage-redundancy-gzrs.md).
+* Geozonenredundanter Speicher (GZRS) (Vorschau) bietet hohe Verfügbarkeit und maximale Dauerhaftigkeit, indem Daten synchron in drei Azure-Verfügbarkeitszonen und dann asynchron in der sekundären Region repliziert werden. Sie können auch den Lesezugriff auf die sekundäre Region aktivieren. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 % (16 Neunen) in einem bestimmten Jahr bereitzustellen. Weitere Informationen zu GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](../common/storage-redundancy-gzrs.md).
 * Zonenredundanter Speicher (ZRS) bietet eine hohe Verfügbarkeit mit synchroner Replikation und ist für einige Szenarien ggf. besser geeignet als GRS. Weitere Informationen zu ZRS finden Sie unter [ZRS](../common/storage-redundancy-zrs.md).
 * Die asynchrone Replikation beinhaltet eine Verzögerung zwischen dem Zeitpunkt, zu dem diese Daten in der primären Region geschrieben werden, und dem Zeitpunkt, zu dem sie in der sekundären Region repliziert werden. Bei einem regionalen Notfall gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht in der primären Region wiederhergestellt werden können.
 * Mit GRS ist das Replikat nicht für den Lese- oder Schreibzugriff verfügbar, sofern von Microsoft kein Failover in der sekundären Region initiiert wird. Im Fall eines Failovers erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](../common/storage-disaster-recovery-guidance.md).
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding für größere Dateifreigaben (Standard-Tarif)
 
-Dieser Abschnitt gilt nur für Standarddateifreigaben. Alle Premium-Dateifreigaben sind als ein GA-Angebot mit 100 TiB verfügbar.
+Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreigaben sind als GA-Angebot mit 100 TiB verfügbar.
 
 ### <a name="restrictions"></a>Einschränkungen
 
@@ -204,7 +204,7 @@ Dieser Abschnitt gilt nur für Standarddateifreigaben. Alle Premium-Dateifreigab
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Standard-Dateifreigaben sind für alle Region bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind hier aufgeführt:
+Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind in der folgenden Tabelle aufgeführt:
 
 |Region |Unterstützte Redundanz |Unterstützt vorhandene Speicherkonten |Portalunterstützung*   |
 |-------|---------|---------|---------|
@@ -219,7 +219,7 @@ Standard-Dateifreigaben sind für alle Region bis zu 5 TiB verfügbar. In einige
 
 Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
 
-### <a name="steps-to-onboard"></a>Schritte des Onboardings
+### <a name="steps-to-onboard"></a>Schritte zum Onboarding
 
 Sie müssen Azure PowerShell verwenden, um Ihr Abonnement für die größere Dateifreigabevorschauversion zu registrieren. Sie können [Azure Cloud Shell](https://shell.azure.com/) verwenden oder das [Azure PowerShell-Modul lokal installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0), um die folgenden PowerShell-Befehle auszuführen:
 
@@ -236,7 +236,7 @@ Registrieren Sie es dann für der Vorschauversion mithilfe der folgenden Befehle
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
-Ihr Abonnement wird automatisch genehmigt, sobald beide Befehle ausgeführt werden.
+Ihr Abonnement wird automatisch genehmigt, sobald beide Befehle ausgeführt wurden.
 
 Mit dem folgenden Befehl können Sie Ihren Registrierungsstatus überprüfen:
 
@@ -248,11 +248,11 @@ Es kann bis zu 15 Minuten dauern, bis Ihr Status auf **Registriert** aktualisier
 
 ### <a name="use-larger-file-shares"></a>Verwenden von größeren Dateifreigaben
 
-Erstellen Sie ein neues, universelles v2 Speicherkonto und eine neue Dateifreigabe, um größere Dateifreigabe nutzen zu können.
+Erstellen Sie ein neues Speicherkonto vom Typ Universell V2 und eine neue Dateifreigabe, um größere Dateifreigaben nutzen zu können.
 
 ## <a name="data-growth-pattern"></a>Muster des Datenwachstums
 
-Die maximale Größe einer Azure-Dateifreigabe beträgt derzeit 5 TiB (100 TiB in der Vorschauversion). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
+Die maximale Größe einer Azure-Dateifreigabe beträgt derzeit 5 TiB (100 TiB in der Vorschauversion). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
 
 Mithilfe der Azure-Dateisynchronisierung können mehrere Azure-Dateifreigaben mit einem einzelnen Windows-Dateiserver synchronisiert werden. Dadurch können Sie sicherstellen, dass ältere große Dateifreigaben, über die Sie möglicherweise lokal verfügen, in die Azure-Dateisynchronisierung übertragen werden können. Weitere Informationen finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-files-planning.md).
 

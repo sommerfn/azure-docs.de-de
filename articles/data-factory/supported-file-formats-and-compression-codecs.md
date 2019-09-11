@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840268"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277096"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -35,7 +35,7 @@ Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** mö
 ## <a name="text-format"></a>Textformat
 
 >[!NOTE]
->Mit Data Factory wurde ein neues Dataset für ein Textformat mit Trennzeichen eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Delimited text format (Textformat mit Trennzeichen)](format-delimited-text.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
+>Mit Data Factory wurde ein neues Dataset für ein Textformat mit Trennzeichen eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Textformat mit Trennzeichen](format-delimited-text.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
 
 Wenn Sie aus einer Textdatei lesen oder in eine Textdatei schreiben möchten, legen Sie die `type`-Eigenschaft im Abschnitt `format` des Datasets auf **TextFormat** fest. Sie können auch die folgenden **optionalen** Eigenschaften im Abschnitt `format` angeben. Informationen zum Konfigurieren finden Sie im Abschnitt [TextFormat-Beispiel](#textformat-example).
 
@@ -413,7 +413,7 @@ Das Ausgabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefiniti
 ## <a name="parquet-format"></a>Parquet-Format
 
 >[!NOTE]
->Mit Data Factory wurde ein neues Dataset für das Parquet-Format eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Parquet format (Parquet-Format)](format-parquet.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
+>Mit Data Factory wurde ein neues Dataset für das Parquet-Format eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Parquet-Format](format-parquet.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
 
 Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **OrcFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
 
@@ -520,6 +520,9 @@ Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisier
 | Char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO-Format
+
+>[!NOTE]
+>Mit Data Factory wurde ein neues Dataset für das Avro-Format eingeführt. Ausführlichere Informationen hierzu finden Sie im Artikel [Avro-Format](format-avro.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
 
 Wenn Sie Avro-Dateien analysieren oder die Daten im Avro-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **AvroFormat** fest. Sie müssen im Abschnitt „Format“ innerhalb des Abschnitts „typeProperties“ keine Eigenschaften angeben. Beispiel:
 

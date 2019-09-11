@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828790"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305077"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Azure AD (Vorschauversion)
 
@@ -54,7 +54,7 @@ Verwenden Sie zum Festlegen bestimmter Gerätegruppen als Ziel die folgenden ben
    1. Name: Sicherheitsschlüssel für die Windows-Anmeldung
    1. Beschreibung: Aktiviert FIDO-Sicherheitsschlüssel für die Windows-Anmeldung
    1. Plattform: Windows 10 und höher
-   1. Plattformtyp: Benutzerdefiniert
+   1. Profiltyp: Benutzerdefiniert
    1. Benutzerdefinierte OMA-URI-Einstellungen:
       1. Name: Aktivieren der FIDO-Sicherheitsschlüssel für die Windows-Anmeldung
       1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin

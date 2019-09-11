@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 4b4f3877b56752756050de0af226571ac2a93293
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750820"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308860"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio
 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie das Modul „Execute Python Script�
 
 ## <a name="using-the-execute-python-script-module"></a>Verwenden des Execute Python Script-Moduls
 
-Die primäre Schnittstelle zu Python in Studio stellt das [Execute Python Script][execute-python-script]-Modul dar. Es akzeptiert bis zu drei Eingaben und erzeugt bis zu zwei Ausgaben, ähnlich dem Modul [Execute R Script][execute-r-script]. Python-Code wird in das Parameterfeld durch eine besonders benannte Einstiegspunktfunktion mit dem Namen `azureml_main` eingegeben.
+Die primäre Schnittstelle zu Python in Studio stellt das Modul [Execute Python Script][execute-python-script] dar. Es nimmt bis zu drei Eingaben entgegen und erzeugt bis zu zwei Ausgaben, ähnlich dem Modul [Execute R Script][execute-r-script]. Python-Code wird in das Parameterfeld durch eine besonders benannte Einstiegspunktfunktion mit dem Namen `azureml_main` eingegeben.
 
 ![Execute Python Script-Modul](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -67,9 +67,9 @@ Studio-Datasets sind nicht das gleiche wie Panda-Datenrahmen. Das hat zur Folge,
 
 ## <a id="import-modules"></a>Importieren vorhandener Python-Skriptmodule
 
-Das zum Ausführen von Python-Code verwendete Back-End basiert auf [Anaconda](https://store.continuum.io/cshop/anaconda/), einer weitverbreiteten wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert, die für datenorientierte Workloads verwendet werden. Studio unterstützt aktuell die Verwendung von Paketverwaltungssystem wie Pip oder Conda zum Installieren und Verwalten externer Bibliotheken nicht.  Wenn die Notwendigkeit besteht, zusätzliche Bibliotheken einzubinden, verwenden Sie das folgende Szenario als Richtschnur.
+Das zum Ausführen von Python-Code verwendete Back-End basiert auf [Anaconda](https://www.anaconda.com/distribution/), einer weitverbreiteten wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert, die für datenorientierte Workloads verwendet werden. Studio unterstützt aktuell die Verwendung von Paketverwaltungssystem wie Pip oder Conda zum Installieren und Verwalten externer Bibliotheken nicht.  Wenn die Notwendigkeit besteht, zusätzliche Bibliotheken einzubinden, verwenden Sie das folgende Szenario als Richtschnur.
 
-Ein häufiger Anwendungsfall besteht in der Einbeziehung vorhandener Python-Skripts in Studio-Experimenten. Das Modul [Execute Python Script][execute-python-script] akzeptiert eine ZIP-Datei, die Python-Module enthält, am dritten Eingabeport. Die Datei wird zur Laufzeit vom Ausführungs-Framework entpackt, und die Inhalte werden dem Bibliothekspfad des Python-Interpreters hinzugefügt. Die `azureml_main` -Einstiegspunktfunktion kann diese Module anschließend direkt importieren. 
+Ein häufiger Anwendungsfall besteht in der Einbeziehung vorhandener Python-Skripts in Studio-Experimenten. Das Modul [Execute Python Script][execute-python-script] nimmt eine ZIP-Datei mit Python-Modulen am dritten Eingabeport entgegen. Die Datei wird zur Laufzeit vom Ausführungs-Framework entpackt, und die Inhalte werden dem Bibliothekspfad des Python-Interpreters hinzugefügt. Die `azureml_main` -Einstiegspunktfunktion kann diese Module anschließend direkt importieren. 
 
 Stellen Sie sich beispielsweise die Datei "Hello.py" mit einer einfachen "Hello, World"-Funktion vor.
 
@@ -124,7 +124,7 @@ Ein aus diesem Experiment erstellter Webdienst würde die folgenden Aktionen aus
 
 ## <a id="visualizations"></a>Arbeiten mit Visualisierungen
 
-Mit MatplotLib erstellte Plots können vom [Execute Python Script][execute-python-script]-Modul zurückgegeben werden. Allerdings werden Plots nicht, wie bei R, automatisch in Bilder umgeleitet. Daher muss der Benutzer Plots explizit als PNG-Dateien speichern.
+Mit MatplotLib erstellte Plots können vom Modul [Execute Python Script][execute-python-script] zurückgegeben werden. Allerdings werden Plots nicht, wie bei R, automatisch in Bilder umgeleitet. Daher muss der Benutzer Plots explizit als PNG-Dateien speichern.
 
 Um Bilder aus MatplotLib zu generieren, müssen Sie die folgenden Schritte ausführen:
 
@@ -161,7 +161,7 @@ Der folgende Versuch berechnet anschließend die Wichtigkeitsbewertungen der Fea
 
 ## <a name="limitations"></a>Einschränkungen
 
-Für das [Execute Python Script][execute-python-script]-Modul gelten derzeit folgende Einschränkungen:
+Für das Modul [Execute Python Script][execute-python-script] gelten derzeit folgende Einschränkungen:
 
 ### <a name="sandboxed-execution"></a>Sandbox-Ausführung
 
@@ -173,7 +173,7 @@ IDE-Features wie Intellisense und Debuggen werden vom Python-Modul derzeit nicht
 
 ### <a name="single-data-frame-output"></a>Ausgabe in einem einzelnen Datenrahmen
 
-Der Python-Einstiegspunkt kann nur einen einzelnen Datenrahmen als Ausgabe zurückgeben. Derzeit ist es nicht möglich, beliebige Python-Objekte wie z. B. trainierte Modelle direkt an die Studio-Laufzeit zurückzugeben. Es gilt zwar die gleiche Einschränkung wie beim [Execute R Script][execute-r-script]-Modul; es ist jedoch in vielen Fällen möglich, Objekte in ein Bytearray einzubetten und dieses innerhalb eines Datenrahmens zurückzugeben.
+Der Python-Einstiegspunkt kann nur einen einzelnen Datenrahmen als Ausgabe zurückgeben. Derzeit ist es nicht möglich, beliebige Python-Objekte wie z. B. trainierte Modelle direkt an die Studio-Laufzeit zurückzugeben. Wie beim Modul [Execute R Script][execute-r-script], das die gleiche Einschränkung aufweist, ist es in vielen Fällen möglich, Objekte in ein Bytearray einzubetten und dieses innerhalb eines Datenrahmens zurückzugeben.
 
 ### <a name="inability-to-customize-python-installation"></a>Keine Möglichkeit zum Anpassen der Python-Installation
 

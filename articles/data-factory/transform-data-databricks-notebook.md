@@ -3,21 +3,21 @@ title: Transformieren von Daten mit einem Databricks-Notebook – Azure | Micros
 description: Erfahren Sie, wie Sie Daten verarbeiten oder transformieren, indem Sie ein Databricks-Notebook ausführen.
 services: data-factory
 documentationcenter: ''
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+author: nabhishek
+ms.author: abnarain
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 2bc8b84d4b98036acc93788dee88444786df139e
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335859"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233059"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformieren von Daten durch Ausführen eines Databricks-Notebooks
 
@@ -111,6 +111,19 @@ In der oben genannten Definition der Databricks-Aktivität geben Sie die folgend
 ```
 
 Weitere Informationen zu Bibliothekstypen finden Sie in der [Databricks-Dokumentation](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary).
+
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Übergeben von Parametern zwischen Notebooks und Data Factory
+
+Mithilfe der Eigenschaft *baseParameters* in der Databricks-Aktivität können Sie Data Factory-Parameter an Notebooks übergeben. 
+
+In bestimmten Fällen müssen Sie möglicherweise bestimmte Werte aus dem Notebook an Data Factory zurückgeben, die für die Ablaufsteuerung (Bedingungsüberprüfungen) in Data Factory verwendet oder von Downstreamaktivitäten (Größenbeschränkung ist 2 MB) genutzt werden können. 
+
+1. Sie können in Ihrem Notebook [dbutils.notebook.exit("returnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) aufrufen, und der entsprechende Rückgabewert (returnValue) wird an Data Factory zurückgeben.
+
+2. Mit einem Ausdruck wie `'@activity('databricks notebook activity name').output.runOutput'` können Sie die Ausgabe in Data Factory verwenden. 
+
+   > [!IMPORTANT]
+   > Wenn Sie ein JSON-Objekt übergeben, können Sie Werte abrufen, indem Sie Eigenschaftsnamen anhängen. Beispiel: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Hochladen einer Bibliothek in Databricks
 

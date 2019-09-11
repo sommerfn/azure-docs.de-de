@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: f303e6ba30b8b68f1bed4c5bcacd746932cbe156
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 998318ad1418c1076676725af03bd7f33c963b3a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873829"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279938"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Auswählen der richtigen Bereitstellungsoption in Azure SQL
 
@@ -33,7 +33,7 @@ Eines der ersten Dinge, die in jeder Diskussion von Azure im Vergleich zu lokale
 
 Wie Sie im Diagramm sehen können, kann jedes dieser Angebote durch die Administrationsebene in Bezug auf die Infrastruktur und den Grad der erreichten Kosteneffizienz beschrieben werden.
 
-In Azure können Sie Ihre SQL Server-Workloads als gehostete Dienste ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) oder als gehostete Infrastruktur ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) ausführen. Bei PaaS stehen Ihnen mehrere Bereitstellungsoptionen und Dienstebenen für jede Bereitstellungsoption zur Verfügung. Dies ist die wichtigste Frage, die Sie sich bei der Entscheidung zwischen PaaS und IaaS stellen müssen: Möchten Sie Ihre Datenbank selbst verwalten, Patches anwenden und Sicherungen ausführen, oder möchten Sie diese Vorgänge an Azure delegieren?
+In Azure können Sie Ihre SQL Server-Workloads als gehostete Dienste ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) oder als gehostete Infrastruktur ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) ausführen. Bei PaaS stehen Ihnen mehrere Bereitstellungsoptionen und Dienstebenen für jede Bereitstellungsoption zur Verfügung. Dies ist die wichtigste Frage, die Sie sich bei der Wahl von PaaS oder IaaS stellen müssen: Möchten Sie Ihre Datenbank selbst verwalten, Patches anwenden und Sicherungen ausführen, oder möchten Sie diese Vorgänge an Azure delegieren?
 
 Je nach Antwort stehen folgende Optionen zur Auswahl:
 

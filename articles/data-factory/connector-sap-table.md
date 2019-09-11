@@ -10,18 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 8d98405cfbabdff25c40d41b209d79761e699396
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1d64a25fc60a1a1cbe1ed04f87a57556b7de0b88
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996592"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259017"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer SAP-Tabelle zu kopieren. Weitere Informationen finden Sie im Artikel [Übersicht über die Kopieraktivität](copy-activity-overview.md).
+
+>[!TIP]
+>Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung, einen Vergleich sowie Anleitungen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -32,9 +35,9 @@ Dieser SAP-Tabellenconnector unterstützt insbesondere Folgendes:
 - Kopieren von Daten aus einer SAP-Tabelle in:
 
   - SAP ERP Central Component (SAP ECC), Version 7.01 oder höher (in einem aktuellen SAP Support Package Stack, das nach 2015 veröffentlicht wurde).
-  - SAP Business Warehouse (SAP BW), Version 7.01 oder höher.
+  - SAP Business Warehouse (SAP BW), Version 7.01 oder höher (in einem aktuellen SAP Support Package Stack, das nach 2015 veröffentlicht wurde).
   - SAP S/4HANA.
-  - Andere Produkte in SAP Business Suite, Version 7.01 oder höher.
+  - Andere Produkte in SAP Business Suite, Version 7.01 oder höher (in einem aktuellen SAP Support Package Stack, das nach 2015 veröffentlicht wurde).
 
 - Kopieren von Daten aus einer transparenten SAP-Tabelle, einer in einem Pool zusammengefassten Tabelle, einer gruppierten Tabelle und einer Sicht.
 - Kopieren von Daten mithilfe von Standardauthentifizierung oder Secure Network Communications (SNC), falls SNC konfiguriert ist.

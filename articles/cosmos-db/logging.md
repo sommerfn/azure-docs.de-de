@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615301"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232377"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
 
@@ -436,7 +436,7 @@ Informationen zur Bedeutung der von jeder Protokollsuche zurückgegebenen Daten 
 * So fragen Sie ab, welche Vorgänge länger als 3 Millisekunden dauern:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * So fragen Sie ab, welcher Agent die Vorgänge ausführt:
@@ -448,7 +448,7 @@ Informationen zur Bedeutung der von jeder Protokollsuche zurückgegebenen Daten 
 * So fragen Sie ab, wann die Vorgänge mit langer Ausführungszeit ausgeführt wurden:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 Weitere Informationen zur Verwendung der neuen Sprache für die Protokollsuche finden Sie unter [Grundlegendes zu Protokollsuchvorgängen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-search-new.md). 
@@ -474,7 +474,7 @@ Die folgende Tabelle beschreibt die Inhalte der einzelnen Protokolleinträge.
 | **clientIpAddress** | **clientIpAddress_s** | Die IP-Adresse des Clients. |
 | **requestCharge** | **requestCharge_s** | Die Anzahl der vom Vorgang verwendeten RUs. |
 | **collectionRid** | **collectionId_s** | Die eindeutige ID für die Sammlung.|
-| **duration** | **duration_s** | Die Dauer des Vorgangs in Ticks. |
+| **duration** | **duration_s** | Die Dauer des Vorgangs in Millisekunden. |
 | **requestLength** | **requestLength_s** | Die Länge der Anforderung in Bytes. |
 | **responseLength** | **responseLength_s** | Die Länge der Antwort in Bytes.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Dieser Wert ist nicht leer, wenn [Ressourcentoken](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) für die Authentifizierung verwendet werden. Der Wert verweist auf die Ressourcen-ID des Benutzers. |

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101541"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309602"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementieren von Oracle Golden Gate in Azure-Linux-VMs 
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Bereitstellung einer Oracle 12c-Datenbank mithilfe des Azure Marketplace-Katalogimages und der Azure CLI beschrieben. 
 
-Dieses Dokument veranschaulicht schrittweise das Erstellen, Installieren und Konfigurieren von Oracle Golden Gate in einer Azure-VM.
+Dieses Dokument veranschaulicht schrittweise das Erstellen, Installieren und Konfigurieren von Oracle Golden Gate in einer Azure-VM. In diesem Tutorial werden zwei virtuelle Computer in einer Verfügbarkeitsgruppe in einer einzelnen Region eingerichtet. Über dasselbe Tutorial kann Oracle GoldenGate für VMs in verschiedenen Verfügbarkeitszonen in einer einzelnen Azure-Region oder für VMs in zwei verschiedenen Regionen einrichtet werden.
 
 Bevor Sie beginnen, stellen Sie sicher, dass die Azure CLI installiert wurde. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli).
 

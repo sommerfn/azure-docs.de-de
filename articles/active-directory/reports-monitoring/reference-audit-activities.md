@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127141"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306001"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -408,6 +408,14 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Verzeichnisverwaltung|Get idps for a specific admin flow (IDPs für einen bestimmten Verwaltungsflow abrufen)|
 |Verzeichnisverwaltung|Get list of all admin flows (Liste aller Verwaltungsflows abrufen)|
 |Verzeichnisverwaltung|Get list of tags for all admin flows for all users (Liste der Tags für alle Verwaltungsflows für alle Benutzer abrufen)|
+|Gruppenverwaltung|Massendownload von Gruppenmitgliedern – gestartet|
+|Gruppenverwaltung|Massendownload von Gruppenmitgliedern – abgeschlossen|
+|Gruppenverwaltung|Massenimport von Gruppenmitgliedern – gestartet|
+|Gruppenverwaltung|Massenimport von Gruppenmitgliedern – abgeschlossen|
+|Gruppenverwaltung|Massenentfernen von Gruppenmitgliedern – gestartet|
+|Gruppenverwaltung|Massenentfernen von Gruppenmitgliedern – abgeschlossen|
+|Gruppenverwaltung|Massendownload von Gruppen – gestartet|
+|Gruppenverwaltung|Massendownload von Gruppen – abgeschlossen|
 |Gruppenverwaltung|Get list of tenants for a user (Liste der Mandanten für einen Benutzer abrufen)|
 |Gruppenverwaltung|Get local accounts' self-asserted claims (Selbstbestätigte Ansprüche der lokalen Konten abrufen)|
 |Gruppenverwaltung|Get localized resource json (Lokalisierten JSON-Ressourcencode abrufen)|
@@ -454,28 +462,42 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Rollenverwaltung|Löschen der Gerätekonfiguration|
 |Rollenverwaltung|Device no longer compliant (Gerät nicht mehr konform)|
 |Rollenverwaltung|Device no longer managed (Gerät nicht mehr verwaltet)|
-|Benutzerverwaltung|Registrierten Besitzer aus Gerät entfernen|
-|Benutzerverwaltung|Registrierte Benutzer aus Gerät entfernen|
-|Benutzerverwaltung|Gerät aktualisieren|
-|Benutzerverwaltung|Update device configuration (Gerätekonfiguration aktualisieren)|
-|Benutzerverwaltung|Add eligible member to role (Berechtigtes Mitglied zur Rolle hinzufügen)|
-|Benutzerverwaltung|Add member to role (Mitglied zu Rolle hinzufügen)|
-|Benutzerverwaltung|Add role assignment to role definition (Rollenzuweisung zu Rollendefinition hinzufügen)|
-|Benutzerverwaltung|Add role from template (Rolle aus Vorlage hinzufügen)|
-|Benutzerverwaltung|Add scoped member to role (Zugeordnetes Mitglied zu Rolle hinzufügen)|
-|Benutzerverwaltung|Remove eligible member from role (Berechtigtes Mitglied aus Rolle entfernen)|
-|Benutzerverwaltung|Remove member from role (Mitglied aus Rolle entfernen)|
-|Benutzerverwaltung|Remove role assignment from role definition (Rollenzuweisung aus Rollendefinition entfernen)|
-|Benutzerverwaltung|Remove scoped member from role (Zugeordnetes Mitglied aus Rolle entfernen)|
-|Benutzerverwaltung|Rolle aktualisieren|
 |Benutzerverwaltung|AccessReview_Review|
 |Benutzerverwaltung|AccessReview_Update|
 |Benutzerverwaltung|ActivationAborted|
 |Benutzerverwaltung|ActivationApproved|
 |Benutzerverwaltung|ActivationCanceled|
 |Benutzerverwaltung|ActivationRequested|
+|Benutzerverwaltung|Add eligible member to role (Berechtigtes Mitglied zur Rolle hinzufügen)|
+|Benutzerverwaltung|Add member to role (Mitglied zu Rolle hinzufügen)|
+|Benutzerverwaltung|Add role assignment to role definition (Rollenzuweisung zu Rollendefinition hinzufügen)|
+|Benutzerverwaltung|Add role from template (Rolle aus Vorlage hinzufügen)|
+|Benutzerverwaltung|Add scoped member to role (Zugeordnetes Mitglied zu Rolle hinzufügen)|
 |Benutzerverwaltung|Hinzugefügt|
 |Benutzerverwaltung|Zuweisen|
+|Benutzerverwaltung|Massenerstellung von Benutzern – gestartet|
+|Benutzerverwaltung|Massenerstellung von Benutzern – abgeschlossen|
+|Benutzerverwaltung|Massenlöschung von Benutzern – gestartet|
+|Benutzerverwaltung|Massenlöschung von Benutzern – abgeschlossen|
+|Benutzerverwaltung|Massendownload von Benutzern – gestartet|
+|Benutzerverwaltung|Massendownload von Benutzern – abgeschlossen|
+|Benutzerverwaltung|Massenwiederherstellung von Benutzern – gestartet|
+|Benutzerverwaltung|Massenwiederherstellung von Benutzern – abgeschlossen|
+|Benutzerverwaltung|Masseneinladung von Benutzern – gestartet|
+|Benutzerverwaltung|Masseneinladung von Benutzern – abgeschlossen|
+|Benutzerverwaltung|Registrierten Besitzer aus Gerät entfernen|
+|Benutzerverwaltung|Registrierte Benutzer aus Gerät entfernen|
+|Benutzerverwaltung|Remove eligible member from role (Berechtigtes Mitglied aus Rolle entfernen)|
+|Benutzerverwaltung|Remove member from role (Mitglied aus Rolle entfernen)|
+|Benutzerverwaltung|Remove role assignment from role definition (Rollenzuweisung aus Rollendefinition entfernen)|
+|Benutzerverwaltung|Remove scoped member from role (Zugeordnetes Mitglied aus Rolle entfernen)|
+|Benutzerverwaltung|Gerät aktualisieren|
+|Benutzerverwaltung|Update device configuration (Gerätekonfiguration aktualisieren)|
+|Benutzerverwaltung|Rolle aktualisieren|
+
+
+
+
 
 
 ## <a name="identity-protection"></a>Schutz der Identität (Identity Protection)

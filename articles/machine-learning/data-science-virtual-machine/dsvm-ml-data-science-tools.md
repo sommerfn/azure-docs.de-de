@@ -1,43 +1,39 @@
 ---
-title: Machine Learning- und Data Science-Tools – Azure | Microsoft-Dokumentation
+title: Tools für maschinelles Lernen und Data Science
+titleSuffix: Azure Data Science Virtual Machine
 description: Erfahren Sie mehr über die Machine Learning-Tools und -Frameworks, die auf der Data Science Virtual Machine vorinstalliert sind.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565252"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278779"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Tools für maschinelles Lernen und Data Science in virtuellen Azure-Data Science Virtual Machines
 Virtuelle Data Science-Computer in Azure verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning (ML) in gängigen Sprachen wie Python, R und Julia. 
 
 Hier finden Sie einige der ML-Tools und -Bibliotheken für virtuelle Data Science-Computer. 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) (SDK)
+## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK für Python
+Lesen Sie die vollständige Referenz zum [Azure Machine Learning SDK für Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
+
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |   Azure Machine Learning ist ein Clouddienst, den Sie zum Entwickeln und Bereitstellen von ML-Modellen verwenden können. Sie können Ihre Modelle beim Erstellen, Trainieren, Skalieren und Verwalten mit dem Python SDK nachverfolgen. Stellen Sie Modelle als Container bereit, und führen Sie sie in der Cloud, lokal oder in Azure IoT Edge aus.   |
-| Unterstützte Editionen     | Windows (Conda-Umgebung: AzureML), Linux (Conda-Umgebung: py36)    |
-| Typische Verwendung      | Allgemeine ML-Plattform      |
-| Konfiguration/Installation      |  Installiert mit GPU-Unterstützung   |
-| Verwendung/Ausführung      | Als Python SDK und Azure-Befehlszeilenschnittstelle. Aktivieren Sie die Conda-Umgebung `AzureML` für die Windows-Edition *oder* `py36` für die Linux-Edition.      |
-| Link zu Beispielen      | Exemplarische Jupyter-Notebooks finden Sie im Verzeichnis `AzureML` unter „notebooks“.  |
-| Verwandte Tools      | Visual Studio Code, Jupyter   |
+| Was ist das? |   Azure Machine Learning ist ein Clouddienst, den Sie zum Entwickeln und Bereitstellen von ML-Modellen verwenden können. Sie können Ihre Modelle beim Erstellen, Trainieren, Skalieren und Verwalten mit dem Python SDK nachverfolgen. Stellen Sie Modelle als Container bereit, und führen Sie sie in der Cloud, lokal oder in Azure IoT Edge aus. |
+| Unterstützte Editionen  | Windows (Conda-Umgebung: AzureML), Linux (Conda-Umgebung: py36) |
+| Typische Verwendung      | Allgemeine ML-Plattform  |
+| Konfiguration/Installation |  Installiert mit GPU-Unterstützung |
+| Verwendung/Ausführung | Als Python SDK und Azure-Befehlszeilenschnittstelle. Aktivieren Sie die Conda-Umgebung `AzureML` für die Windows-Edition *oder* `py36` für die Linux-Edition.  |
+| Link zu Beispielen | Exemplarische Jupyter-Notebooks finden Sie im Verzeichnis `AzureML` unter „notebooks“.  |
+| Verwandte Tools  | Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

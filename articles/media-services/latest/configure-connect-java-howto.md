@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: juliako
-ms.openlocfilehash: b7ee54c852ce3332415b69ca6105b472dab0ab8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f89e5cc434403e4edc3501d24ce2e94664d13ae9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480257"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307841"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinden mit der Media Services v3-API – Java
 
@@ -41,6 +41,9 @@ Lesen Sie außerdem:
 
 - [Java in Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
 - [Java-Projektmanagement in VS Code](https://code.visualstudio.com/docs/java/java-project)
+
+> [!IMPORTANT]
+> Informieren Sie sich über die [Namenskonventionen](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-maven-project"></a>Erstellen eines Maven-Projekts
 
