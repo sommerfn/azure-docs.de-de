@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
-ms.localizationpriority: high
+ms.date: 09/05/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240213"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390402"
 ---
 ::: zone target="chromeless"
 
@@ -85,12 +85,9 @@ Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für eine Abholung in Australien wie folgt vor:
 
-1. Senden Sie eine E-Mail an `adbops@microsoft.com`, um ein Versandetikett mit eindeutiger Eingangs-ID oder TAU-Code anzufordern. Die Anforderung muss mindestens drei Tage vor dem geplanten Lieferdatum gesendet werden, um das Etikett rechtzeitig zu erhalten.
-2. Der Betreff der E-Mail muss wie folgt lauten: *Request for reverse shipping label with TAU code*. Geben Sie in der E-Mail folgende Informationen an: 
-
-    - Auftragsname
-    - Adresse
-    - Kontaktname
+1. Verwenden Sie das bereitgestellte Etikett für den Rückversand, und vergewissern Sie sich, dass darauf der TAU-Code (Referenznummer) vermerkt ist. Sollte das bereitgestellte Adressetikett fehlen oder ein anderes Problem auftreten, senden Sie eine E-Mail an [Data Box Asia Operations](mailto:adbo@microsoft.com). Geben Sie in der Betreffzeile den Auftragsnamen sowie Einzelheiten zum aufgetretenen Problem an.
+3. Bringen Sie das Etikett am Box-Gerät an. 
+4. Reservieren Sie online unter https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference einen Abholtermin. 
 
 ### <a name="pick-up-in-asia"></a>Abholung in Asien
 
