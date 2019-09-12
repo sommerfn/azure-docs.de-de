@@ -8,19 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982350"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277485"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
 Die kuratierte Liste der am häufigsten gestellten Fragen in Bezug auf den QnA Maker-Dienst ermöglichen einen schnelleren Einstieg in die Nutzung des Diensts und bessere Ergebnisse.
+
+
+## <a name="how-to-get-the-qnamaker-service-hostname"></a>Abrufen des Namens des QnA Maker-Diensthosts
+
+Der Name des QnA Maker-Diensthosts ist beim Debuggen hilfreich, wenn Sie sich an den QnA Maker-Support oder UserVoice wenden. Der Hostname ist eine URL im Format https:// *{Hostname}* .azurewebsites.net.
+    
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem QnA Maker-Dienst (Ressourcengruppe).
+
+    ![QnA Maker-Ressourcengruppe im Azure-Portal](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+
+1. Wählen Sie die der QnA Maker-Ressource zugeordnete App Service-Instanz aus. Normalerweise sind die Namen identisch.
+
+     ![Auswählen von QnA Maker App Service](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
+1. Sie finden die Hostnamen-URL im Abschnitt „Übersicht“.
+
+    ![QnA Maker-Hostname](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Verwenden Sie den Hilfebot im QnA Maker-Portal.
 
@@ -98,6 +116,14 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 
 Aktualisieren Sie Ihren App-Dienst, wenn sich das Symbol „Vorsicht“ neben dem Versionswert für die Wissensdatenbank in der Tabelle **Endpunktschlüssel** auf der [Seite](https://www.qnamaker.ai/UserSettings) **Benutzereinstellungen** befindet.
 
+### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Ich habe meinen Suchdienst gelöscht. Wie kann ich dieses Problem beheben?
+
+Wenn Sie einen Azure Search-Index löschen, ist der Vorgang endgültig, weshalb der Index nicht wiederhergestellt werden kann. 
+
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Ich habe den Index `testkb` in meinem Suchdienst gelöscht. Wie kann ich dieses Problem beheben? 
+
+Ihre alten Daten können nicht wiederhergestellt werden. Erstellen Sie eine neue QnA Maker-Ressource, und erstellen Sie Ihre Wissensdatenbank erneut.
+
 ### <a name="when-should-i-refresh-my-endpoint-keys"></a>Wann sollte ich meine Endpunktschlüssel aktualisieren?
 
 Aktualisieren Sie Ihre Endpunktschlüssel, wenn Sie den Verdacht hegen, dass sie gestohlen oder ausgespäht wurden.
@@ -108,7 +134,7 @@ Um mehrere Wissensdatenbanken und mehrere Sprachen zu nutzen, müssen Benutzer e
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Wie kann ich den Namen der Azure Search-Ressource, die von QnA Maker verwendet wird, ändern?
 
-Der Name der Azure Search-Ressource ist der Name der QnA Maker-Ressource, an den einige zufällige Buchstaben angefügt sind. Dadurch wird es schwierig, mehrere Search-Ressourcen für QnA Maker zu unterscheiden. Erstellen Sie einen separaten Azure Search-Dienst (benennen Sie ihn nach Belieben), und verbinden Sie ihn mit Ihrem QnA-Dienst. Die Schritte sind ähnlich denen für ein [Upgrade von Azure Search](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service).
+Der Name der Azure Search-Ressource ist der Name der QnA Maker-Ressource, an den einige zufällige Buchstaben angefügt sind. Dadurch wird es schwierig, mehrere Search-Ressourcen für QnA Maker zu unterscheiden. Erstellen Sie einen separaten Azure Search-Dienst (benennen Sie ihn nach Belieben), und verbinden Sie ihn mit Ihrem QnA-Dienst. Die Schritte dafür sind ähnlich wie bei einem [Upgrade von Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service).
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>QnA Maker gibt `Runtime core is not initialized,` zurück. Wie kann ich das Problem beheben?
 
