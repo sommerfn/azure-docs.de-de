@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845670"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230967"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -151,7 +151,7 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 **Komponente** | **Anforderungen** | **Details**
 --- | --- | ---
 Gastbetriebssystem | Site Recovery unterstützt alle Betriebssysteme, die [von Azure unterstützt werden](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Architektur des Gastbetriebssystems | 64 Bit | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Architektur des Gastbetriebssystems | 32 Bit (Windows Server 2008)/64 Bit | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB für VMs der 1. Generation.<br/><br/> Bis zu 300 GB für VMs der 2. Generation.  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Datenträgern für Daten | Maximal 16  | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
@@ -166,13 +166,13 @@ VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Comput
 
 ## <a name="recovery-services-vault-actions"></a>Aktionen mit dem Recovery Services-Tresor
 
-**Aktion** |  **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
+**Aktion** |  **Hyper-V mit VMM** | **Hyper-V ohne VMM**
 --- | --- | ---
 Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein | Nein
 Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein | Nein
 
 > [!NOTE]
-> Wenn Hyper-VMs (mit oder ohne Verwaltung durch SCVMM) von lokalen VMs in Azure repliziert werden, kann die Replikation aus einer bestimmten Umgebung heraus, nämlich dem Hyper-V-Standort oder SCVMM (je nachdem, was davon zutrifft), nur in einem bestimmten AD-Mandanten durchgeführt werden.
+> Wenn Hyper-VMs von lokalen VMs in Azure repliziert werden, kann die Replikation aus einer bestimmten Umgebung heraus (Hyper-V-Standort oder Hyper-V mit VMM) nur in einem bestimmten AD-Mandanten durchgeführt werden.
 
 
 ## <a name="provider-and-agent"></a>Anbieter und Agent

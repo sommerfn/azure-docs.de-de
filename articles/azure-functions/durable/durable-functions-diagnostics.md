@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098134"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734489"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnose in Durable Functions in Azure
 
@@ -158,9 +158,26 @@ Das Ergebnis ist eine Liste mit Instanz-IDs und dem aktuellen Laufzeitstatus.
 
 Es ist wichtig, das Wiedergabeverhalten von Orchestratoren zu beachten, wenn Protokolle direkt über eine Orchestratorfunktion geschrieben werden. Sehen Sie sich beispielsweise die folgende Orchestratorfunktion an:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C#-Skript
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -211,6 +228,23 @@ Done!
 
 Wenn Sie nur die Anmeldung für die Ausführung ohne Wiedergabe durchführen möchten, können Sie einen bedingten Ausdruck schreiben, damit die Anwendung nur erfolgt, sofern `IsReplaying` auf `false` festgelegt ist. Hier ist das obige Beispiel angegeben, aber es enthält jetzt Wiedergabeprüfungen.
 
+#### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
 #### <a name="c"></a>C#
 
 ```cs
@@ -257,7 +291,7 @@ Done!
 
 Mit dem benutzerdefinierten Orchestrierungsstatus können Sie einen benutzerdefinierten Statuswert für Ihre Orchestratorfunktion festlegen. Dieser Status wird über die HTTP-Statusabfrage-API oder die `DurableOrchestrationClient.GetStatusAsync`-API angegeben. Der benutzerdefinierte Orchestrierungsstatus ermöglicht eine umfassendere Überwachung für Orchestratorfunktionen. Der Orchestratorfunktionscode kann z.B. `DurableOrchestrationContext.SetCustomStatus`-Aufrufe zum Aktualisieren des Status für einen Vorgang mit langer Ausführungsdauer enthalten. Ein Client, z.B. eine Webseite oder ein anderes externes System, kann dann für die HTTP-Statusabfrage-APIs in regelmäßigen Abständen eine Abfrage nach umfangreicheren Statusinformationen durchführen. Nachfolgend ist ein Beispiel unter Verwendung von `DurableOrchestrationContext.SetCustomStatus` aufgeführt:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)

@@ -1,18 +1,18 @@
 ---
-title: Unterstützungsmatrix für den Microsoft Azure Recovery Services-Agent (MARS) – Azure Backup
+title: Unterstützungsmatrix für den Microsoft Azure Recovery Services-Agent (MARS)
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 1559bb096baaa8f19718bf0c3bcd6b2dc767235b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951981"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210127"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -72,20 +72,22 @@ Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Window
 
 Mit dem MARS-Agent können Sie unter einigen Betriebssystemen, die auf lokalen Computern und Azure-VMs ausgeführt werden, direkt in Azure sichern. Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Service Packs und Updates ausgeführt werden müssen. Eine Übersicht über diese Betriebssysteme finden in der folgenden Tabelle:
 
-**Betriebssystem** | **Dateien/Ordner** | **Systemstatus** 
---- | --- | --- 
-Windows 10 (Enterprise, Pro, Home) | Ja | Nein
-Windows 8.1 (Enterprise, Pro)| Ja |Nein
-Windows 8 (Enterprise, Pro) | Ja | Nein
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja | Nein
-Windows Server 2016 (Standard, Datacenter, Essentials) | Ja | Ja
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ja | Ja
-Windows Server 2012 (Standard, Datacenter, Foundation) | Ja | Ja
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ja | Ja
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ja | Nein
-Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ja | Nein
+**Betriebssystem** | **Dateien/Ordner** | **Systemstatus** | **Software-/Modulanforderungen**
+--- | --- | --- | ---
+Windows 10 (Enterprise, Pro, Home) | Ja | Nein |  Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows 8.1 (Enterprise, Pro)| Ja |Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows 8 (Enterprise, Pro) | Ja | Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja | Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows Server 2016 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Ja | Ja |– .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ja | Ja | – .NET 3.5, .Net 4.5 <br> – Windows PowerShell <br> – Kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ja | Nein | – .NET 3.5, .Net 4.5 <br> – Windows PowerShell <br> – Kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe)) <br> – Virtual Server 2005 Basis + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ja | Nein | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 
 Weitere Informationen finden Sie unter [Unterstützte MABS- und DPM-Betriebssysteme](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
 
 ## <a name="backup-limits"></a>Backup-Grenzwerte
 

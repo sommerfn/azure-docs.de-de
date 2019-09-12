@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6e26f9d344a4c11c335d1ea34998c848cbe3598a
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: a9e8ddcca727c4c457e4d92a880fb0cafe5ca6f8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753749"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375739"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
 Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Was sind Verfügbarkeitszonen in Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)).
@@ -68,8 +68,8 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
      In den folgenden Dokumenten erfahren Sie, wie Sie die gängigsten, für Sie relevanten Netzwerkressourcen auf der Grundlage der Konfiguration des virtuellen Quellcomputers erstellen:
 
     - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Öffentliche IP-Adresse](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network) zum Netzwerk.
 

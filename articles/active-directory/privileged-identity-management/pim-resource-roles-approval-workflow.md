@@ -3,7 +3,7 @@ title: Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in
 description: Erfahren Sie, wie Sie Anforderungen für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) genehmigen oder ablehnen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2e8b4ae1a01cd299d910c4e88655885c7d00dc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8b39434f8763e44a126f74ac9a19596e4413ae9c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476387"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804271"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in PIM
 

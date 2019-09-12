@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 10d1e2fc607df205ea8922a81a1322d4121f30f7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 21c5ad69a5e2b09e973b7b348690f554fca5dbe2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232294"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802332"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Bereitstellung der UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispiels eine neue Blaupause in Ihrer Umgebung erstellen.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
@@ -49,7 +49,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann an die Umgebung und an Ihre Anforderungen angepasst werden. Durch diese Änderungen ist sie aber möglicherweise nicht mehr mit der Norm konform.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -59,7 +59,7 @@ Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie w
 
 Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde, kann sie einem Abonnement innerhalb der Verwaltungsgruppe, in der sie gespeichert wurde, zugewiesen werden. In diesem Schritt werden Parameter angegeben, damit jede Bereitstellung der Kopie des Blaupausenbeispiels eindeutig ist.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 

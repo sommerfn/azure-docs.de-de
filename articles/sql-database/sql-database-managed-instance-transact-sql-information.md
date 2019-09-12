@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644889"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209630"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -338,6 +338,10 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 - `CREATE ASSEMBLY FROM FILE` wird nicht unterstützt. Siehe [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Datenbank-E-Mail – (db_mail)
+ - `sp_send_dbmail` kann keine Anlagen mithilfe des Parameters @file_attachments senden. Aus dieser Prozedur kann auf das lokale Dateisystem und externe Freigaben oder Azure-BLOB-Speicher nicht zugegriffen werden.
+ - Informieren Sie sich zu den bekannten Problemen im Zusammenhang mit dem Parameter `@query` und Authentifizierung.
+ 
 ### <a name="dbcc"></a>DBCC
 
 Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden in verwalteten Instanzen nicht unterstützt.
@@ -536,6 +540,14 @@ Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 
 Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a> Bekannte Probleme
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Authentifizierung bei externem E-Mail-Servern mit sicherer Verbindung (SSL) nicht möglich.
+
+**Datum:** August 2019
+
+Datenbank-E-Mail, die [mit sicherer Verbindung (Secure Connection, SSL) konfiguriert wurde](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail), kann sich bei einigen E-Mail-Servern außerhalb von Azure nicht authentifizieren. Dies ist ein Sicherheitskonfigurationsproblem, das bald behoben sein wird.
+
+**Problemumgehung:** Entfernen Sie die sichere Verbindung (SSL) vorübergehend aus der Datenbank-E-Mail-Konfiguration, bis das Problem behoben wurde. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Datenbankübergreifende Service Broker-Dialoge müssen nach dem Upgrade der Dienstebene erneut initialisiert werden.
 

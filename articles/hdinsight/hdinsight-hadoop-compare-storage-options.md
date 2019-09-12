@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: b0d963e212e66bf96ec42ec2a5c0fd5005f7a889
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5cb3b5c2d36707875c87bd589e3d96c0a2f4f939
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165888"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885189"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
 
@@ -53,7 +53,7 @@ Sie können einen Cluster mit anderen Kombinationen von Diensten für den primä
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ja |
 | 3.6 | Data Lake Storage Gen1 | Universell V1, Universell V2, BlobStorage (Blockblobs) | Ja |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Nein |
-| 4,0 | Data Lake Storage Gen1 | Beliebig | Nein |
+| 4,0 | Data Lake Storage Gen1 | Any | Nein |
 
 \* Dies können etwa Data Lake Storage Gen2-Konten sein, sofern sie alle für die Verwendung derselben verwalteten Identität für den Clusterzugriff eingerichtet wurden.
 
@@ -129,7 +129,7 @@ Wenn Sie sich dazu entscheiden, Ihr Speicherkonto mit den **Firewalls und virtue
 
 Das folgende Diagramm bietet eine verallgemeinerte Übersicht über die HDInsight-Architektur von Azure Storage:
 
-![Diagramm der Verwendung der HDFS-API durch Hadoop-Cluster, um auf strukturierte und unstrukturierte Daten in Blob Storage zuzugreifen und diese zu speichern](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight Storage-Architektur")
+![Diagramm der Verwendung der HDFS-API durch Hadoop-Cluster, um auf strukturierte und unstrukturierte Daten in Blob Storage zuzugreifen und diese zu speichern](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight Storage-Architektur")
 
 HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknoten angefügt ist. Auf dieses Dateisystem kann über den vollständig qualifizierten URI zugegriffen werden. Zum Beispiel:
 

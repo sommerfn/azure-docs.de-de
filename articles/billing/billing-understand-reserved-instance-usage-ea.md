@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68598103"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
@@ -41,7 +41,7 @@ Daten werden in zwei gesonderte Datasets unterteilt: _Ist-Kosten_ und _Amortisie
 
 Vergleich von zwei Datasets:
 
-| Daten | Dataset „Ist-Kosten“ | Dataset „Amortisierte Kosten“ |
+| Data | Dataset „Ist-Kosten“ | Dataset „Amortisierte Kosten“ |
 | --- | --- | --- |
 | Reservierungseinkäufe | Verfügbar in dieser Ansicht.<br><br>  Um diese Daten zu erhalten, filtern Sie auf ChargeType = &quot;Purchase&quot; (Einkauf). <br><br> Beziehen Sie sich auf die ReservationID oder den ReservationName, um festzustellen, für welche Reservierung die Gebühren anfallen.  | Auf diese Ansicht nicht anwendbar. <br><br> Einkaufskosten sind in den amortisierten Daten nicht enthalten. |
 | EffectivePrice | Der Wert ist Null für die Nutzung, die einen Reservierungsrabatt erhält. | Der Wert sind anteilige Kosten pro Stunde für die Reservierung der Nutzung, für die der Reservierungsrabatt gilt. |

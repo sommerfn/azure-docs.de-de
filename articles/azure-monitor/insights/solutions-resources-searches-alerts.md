@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662906"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772987"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -169,30 +169,29 @@ Warnungsaktionen weisen die folgende Struktur auf: Dies schließt allgemeine Var
 
 Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabellen beschrieben:
 
-| Elementname | Erforderlich | description |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| type | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
-| name | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
-| description | Nein | Eine optionale Beschreibung der Warnung |
-| severity | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
-
+| `type` | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
+| `name` | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
+| `description` | Nein | Eine optionale Beschreibung der Warnung |
+| `severity` | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
 
 #### <a name="threshold"></a>Schwellenwert
 Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für den Warnungsschwellenwert.
 
-| Elementname | Erforderlich | description |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Value | Ja | Der Wert zum Vergleich der Ergebnisse |
+| `Operator` | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
+| `Value` | Ja | Der Wert zum Vergleich der Ergebnisse |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrischer Messungen ein.
 
-| Elementname | Erforderlich | description |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| TriggerCondition | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
-| Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Value | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
+| `TriggerCondition` | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
+| `Operator` | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
+| `Value` | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
 
 
 #### <a name="throttling"></a>Drosselung

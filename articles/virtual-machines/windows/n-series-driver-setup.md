@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089187"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207369"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows 
 
@@ -40,6 +40,8 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
 Nach der GRID-Treiberinstallation auf einer VM ist ein Neustart erforderlich. Nach der CUDA-Treiberinstallation ist kein Neustart erforderlich.
 
 ## <a name="verify-driver-installation"></a>Überprüfen der Treiberinstallation
+
+Beachten Sie, dass der Zugriff auf die NVIDIA-Systemsteuerung erst nach der Installation des GRID-Treibers möglich ist. Wenn Sie CUDA-Treiber installiert haben, wird die NVIDIA-Systemsteuerung nicht angezeigt.
 
 Sie können die Treiberinstallation im Geräte-Manager überprüfen. Das folgende Beispiel zeigt die erfolgreiche Konfiguration der Tesla K80-Karte auf einem virtuellen Azure-NC-Computer.
 

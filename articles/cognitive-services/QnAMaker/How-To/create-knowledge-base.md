@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Wissensdatenbank – QnA Maker
+title: 'Schnellstart: Erstellen einer Wissensdatenbank – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie das Dienstportal für die QnA Maker-API, um eine Wissensdatenbank mit Geplauder hinzuzufügen und zu erstellen. Dadurch wird Ihre App ansprechender. Fügen Sie einen vorkonfigurierten Satz beliebter Themen als Ausgangspunkt für das Geplauder Ihres Bots hinzu, und sparen Sie damit die Zeit und Kosten, diese Elemente von Grund auf neu zu schreiben.
 services: cognitive-services
@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: conceptual
-ms.date: 08/30/2019
+ms.topic: quickstart
+ms.date: 09/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 798bbb725d4764c5ec7a1d69770e9508af0fdf5a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193567"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376213"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Schnellstart: Erstellen einer Wissensdatenbank über das QnA Maker-API-Dienstportal
 

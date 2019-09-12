@@ -10,12 +10,12 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575549"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859236"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Behandlung von Konnektivitätsproblemen
 
@@ -49,7 +49,7 @@ Sehen Sie im Portal nach, ob Ihre SQL Data Warehouse-Instanz angehalten wurde od
 
 ![Dienst angehalten](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Wenn Sie feststellen, dass der Dienst angehalten wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* für Ihre SQL Data Warehouse-Instanz im Portal sehen Sie den ausgewählten Wartungszeitplan.
+Wenn Sie feststellen, dass der Dienst pausiert wurde oder skaliert wird, überprüfen Sie, ob dies im Rahmen eines Wartungszeitplans geschieht. In der *Übersicht* für Ihre SQL Data Warehouse-Instanz im Portal sehen Sie den ausgewählten Wartungszeitplan.
 
 ![Übersicht über den Wartungszeitplan](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
@@ -57,7 +57,7 @@ Kontaktieren Sie andernfalls Ihren IT-Administrator, um auszuschließen, dass es
 
 ## <a name="check-your-firewall-settings"></a>Überprüfen der Firewalleinstellungen
 
-SQL Data Warehouse kommuniziert über Port 1433.   Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet. [Hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal) finden Sie weitere Informationen zu den Firewallkonfigurationen.
+SQL Data Warehouse kommuniziert über Port 1433.   Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet. [Hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules) finden Sie weitere Informationen zu den Firewallkonfigurationen.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Überprüfen der Einstellungen für VNETs und Dienstendpunkte
 

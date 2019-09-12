@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 618f118ceedb7d55caefc5e2bebceb08c1d732ac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018188"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773172"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -363,7 +363,7 @@ Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrieren eines X.509-Zertifikats für ein Gerät
 
-Das [Azure IoT-Dienst-SDK für C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service) (mindestens Version 1.0.8) unterstützt die Registrierung von Geräten, die ein X.509-Zertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Zertifikate.
+Das [Azure IoT-Dienst-SDK für C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (mindestens Version 1.0.8) unterstützt die Registrierung von Geräten, die ein X.509-Zertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Zertifikate.
 
 Sie können auch den CLI-Erweiterungsbefehl [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) verwenden, um X.509-Zertifikate für Geräte zu konfigurieren.
 
@@ -390,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>Verwenden eines X.509-Zertifikats bei Laufzeitvorgängen
 
-Das [Azure IoT-Geräte-SDK für .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device) (mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Zertifikaten.
+Das [Azure IoT-Geräte-SDK für .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Zertifikaten.
 
 ### <a name="c-support"></a>C\#-Unterstützung
 

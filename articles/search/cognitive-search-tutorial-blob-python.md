@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c21b4d525e395dfb032a89631eb34156fe3e5b23
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648887"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744717"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline
 
@@ -67,7 +67,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 ## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
 
-Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Search-Indexers](search-indexer-overview.md) stammen. Azure Table Storage wird für die kognitive Suche nicht unterstützt. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
+Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Search-Indexers](search-indexer-overview.md) stammen. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), navigieren Sie zu Ihrem Azure-Speicherkonto, klicken Sie auf **BLOBs** und dann auf **+ Container**.
 
@@ -473,7 +473,8 @@ Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Im Screenshot
 Wiederholen Sie das Verfahren in dieser Übung für weitere Felder: „content“, „languageCode“, „keyPhrases“ und „organizations“. Mithilfe von `$select` können Sie unter Einsatz einer durch Trennzeichen getrennten Liste mehrere Felder zurückgeben.
 
 Sie können GET oder POST verwenden, abhängig von der Komplexität und Länge der Abfragezeichenfolge. Weitere Informationen finden Sie unter [Abfragen mithilfe der REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-it <a name="reset"></a>
+
+<a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Zurücksetzen und erneut ausführen
 

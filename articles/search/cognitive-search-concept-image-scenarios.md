@@ -2,7 +2,7 @@
 title: Verarbeiten und Extrahieren von Text aus Bildern in der kognitiven Suche – Azure Search
 description: Verarbeiten und extrahieren Sie Text und andere Informationen aus Bildern in kognitiven Suchpipelines in Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 216be226f3ce6d1a288462d1a1b79f2bb0d3efe5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639915"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259151"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -34,16 +34,15 @@ Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilde
 | Konfigurationsparameter | BESCHREIBUNG |
 |--------------------|-------------|
 | imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie diese Option auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu erzeugen, bei dem für PDFs in Ihrer Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. <br/>Maximal 1000 Bilder werden aus einem angegebenen Dokument extrahiert. Wenn in einem Dokument mehr als 1000 Bilder vorhanden sind, werden die ersten 1000 extrahiert, und eine Warnung wird generiert. |
-|  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
-|  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
+|  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000. | 
+|  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000.|
 
 > [!NOTE]
 > Wenn Sie die Eigenschaft *imageAction* auf einen anderen Wert als „none“ festlegen, kann die Eigenschaft *parsingMode* nur auf „default“ festgelegt werden.  In der Indexerkonfiguration kann immer nur eine dieser beiden Eigenschaften auf einen standardfremden Wert festgelegt werden.
 
 Legen Sie den Parameter **parsingMode** auf `json` (zum Indizieren jedes Blob als einzelnes Dokument) oder `jsonArray` (wenn die Blobs JSON-Arrays enthalten und jedes Element eines Arrays als separates Dokument behandelt werden soll) fest.
 
-Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Wenn Sie die maximalen Grenzwerte erhöhen, können größere Bilder möglicherweise nicht erfolgreich verarbeitet werden.
-
+Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) unterstützt eine maximale Breite und Höhe von 4.200 für nicht englische Sprachen und 10.000 für Englisch.  Wenn Sie die maximalen Grenzwerte erhöhen, können bei größeren Images je nach Skillsetdefinition und Sprache der Dokumente Fehler bei der Verarbeitung auftreten. 
 
 Die imageAction-Eigenschaft wird in der [Indexerdefinition](https://docs.microsoft.com/rest/api/searchservice/create-indexer) wie folgt angegeben:
 

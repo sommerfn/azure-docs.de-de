@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 40144fb50a01a64bbd67d541562b4fe0842fbf10
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097802"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734326"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
@@ -101,6 +101,8 @@ Der Name des Aufgabenhubs wird auf den Wert der App-Einstellung `MyTaskHub` fest
 
 Hier sehen Sie ein vorkompiliertes C#-Beispiel zum Schreiben einer Funktion, die eine [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zu arbeiten:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
@@ -119,8 +121,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-Das folgende Beispiel zeigt die erforderliche Konfiguration für JavaScript. Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Einstellung festgelegt:
+### <a name="javascript"></a>JavaScript
 
+Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Einstellung festgelegt:
 ```json
 {
     "name": "input",

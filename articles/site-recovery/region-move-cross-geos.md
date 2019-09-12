@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967310"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376122"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -98,8 +98,8 @@ Der Mobilitätsdienst muss auf jedem Computer installiert sein, den Sie replizie
      Informationen zum Erstellen der für Sie relevanten am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten.
 
     - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Öffentliche IP-Adresse](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
     Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network) zum Netzwerk. 
 

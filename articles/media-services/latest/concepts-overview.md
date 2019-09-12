@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762304"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910321"
 ---
 # <a name="media-services-concepts"></a>Media Services-Konzepte
 
@@ -76,7 +76,7 @@ Beim Erstellen des **Streaminglocators** müssen Sie zusätzlich zum Namen des O
 
 Die dynamische Paketerstellung wird unabhängig davon verwendet, ob Sie für Ihre Inhalte das Live- oder On-Demand-Streaming nutzen. Das nachstehende Diagramm zeigt das On-Demand-Streaming mit dem Workflow zur dynamischen Paketerstellung.
 
-![Dynamische Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dynamische Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder/und einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients.
 

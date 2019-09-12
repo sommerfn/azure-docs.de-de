@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6b2a2029dec917672d6f4ee8db24aed60e4f5bc5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca00326d5704d3dd26027d90a3e48bfc52ec5653
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568663"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744443"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -42,7 +42,7 @@ Hier können Sie eine beliebige Kombination aus den folgenden Änderungen vorneh
 > [!IMPORTANT]
 > Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
-Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und Pooldatenbanken in SQL-Datenbank mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter. Weitere Informationen zum Erstellen und Verwalten von SQL-Datenbank-Servern für einen Pool für elastische Datenbanken finden Sie unter [Erstellen und Verwalten von SQL-Datenbank-Servern](sql-database-servers.md). Weitere Informationen zum Erstellen und Verwalten von Firewallregeln finden Sie unter [Erstellen und Verwalten von Firewallregeln mit PowerShell](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell).
+Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und Pooldatenbanken in SQL-Datenbank mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter. Weitere Informationen zum Erstellen und Verwalten von SQL-Datenbank-Servern für einen Pool für elastische Datenbanken finden Sie unter [Erstellen und Verwalten von SQL-Datenbank-Servern](sql-database-servers.md). Weitere Informationen zum Erstellen und Verwalten von Firewallregeln finden Sie unter [Erstellen und Verwalten von Firewallregeln mit PowerShell](sql-database-firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules).
 
 > [!TIP]
 > PowerShell-Beispielskripts finden Sie unter [Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool heraus mit PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) und [Verwenden von PowerShell zum Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken in der Azure SQL-Datenbank](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -82,7 +82,7 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenban
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Verwalten von Pooldatenbanken
 
-Verwenden Sie die folgenden T-SQL-Befehle zum Erstellen und Verschieben von Datenbanken in vorhandenen Pools für elastische Datenbanken oder zum Zurückgeben von Informationen zu einem Pool für elastische SQL-Datenbank-Instanzen mit Transact-SQL. Sie können diese Befehle mit dem Azure-Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs) oder einem beliebigen anderen Programm ausführen, mit dem eine Verbindung mit einem Azure SQL-Datenbank-Server hergestellt und Transact-SQL-Befehle übergeben werden können. Weitere Informationen zum Erstellen und Verwalten von Firewallregeln mit T-SQL finden Sie unter [Verwalten von Firewallregeln mit Transact-SQL](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql).
+Verwenden Sie die folgenden T-SQL-Befehle zum Erstellen und Verschieben von Datenbanken in vorhandenen Pools für elastische Datenbanken oder zum Zurückgeben von Informationen zu einem Pool für elastische SQL-Datenbank-Instanzen mit Transact-SQL. Sie können diese Befehle mit dem Azure-Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs) oder einem beliebigen anderen Programm ausführen, mit dem eine Verbindung mit einem Azure SQL-Datenbank-Server hergestellt und Transact-SQL-Befehle übergeben werden können. Weitere Informationen zum Erstellen und Verwalten von Firewallregeln mit T-SQL finden Sie unter [Verwalten von Firewallregeln mit Transact-SQL](sql-database-firewall-configure.md#use-transact-sql-to-manage-ip-firewall-rules).
 
 > [!IMPORTANT]
 > Mit Transact-SQL können Sie einen Pool für elastische Azure SQL-Datenbank-Instanzen nicht erstellen, aktualisieren oder löschen. Sie können Datenbanken einem Pool für elastische Datenbanken hinzufügen oder daraus entfernen und mithilfe von DMVs Informationen zu vorhandenen Pools für elastische Datenbanken zurückgeben.

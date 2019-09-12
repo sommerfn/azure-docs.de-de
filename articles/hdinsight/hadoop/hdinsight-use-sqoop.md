@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: 6764d8d812789c9f54fa59e10b2a3e416e583a9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 564bced9ae71213cb534393a7dcc45c929df3794
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129398"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917359"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Apache Sqoop mit Hadoop in HDInsight
+
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 Erfahren Sie, wie Apache Sqoop in HDInsight zum Importieren und Exportieren von Daten zwischen einem HDInsight-Cluster und einer Azure SQL-Datenbank verwendet werden kann.
@@ -72,14 +73,14 @@ Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal 
 
 1. Wählen Sie das folgende Bild aus, um die Resource Manager-Vorlage im Azure-Portal zu öffnen.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie die folgenden Eigenschaften ein:
 
     |Feld |Wert |
     |---|---|
-    |Abonnement |Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.|
-    |Ressourcengruppe |Wählen Sie in der Dropdownliste Ihre Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe.|
+    |Subscription |Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.|
+    |Resource group |Wählen Sie in der Dropdownliste Ihre Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe.|
     |Location |Wählen Sie in der Dropdownliste eine Region aus.|
     |Clustername |Geben Sie einen Namen für den Hadoop-Cluster ein. Verwenden Sie nur Kleinbuchstaben.|
     |Benutzername für Clusteranmeldung |Behalten Sie den vorgegebenen Wert `admin` bei.|

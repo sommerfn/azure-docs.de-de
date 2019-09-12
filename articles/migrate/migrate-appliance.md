@@ -1,23 +1,23 @@
 ---
 title: Architektur der Azure Migrate-Appliance | Microsoft-Dokumentation
-description: Enthält eine Übersicht über den Azure Migrate-Appliance
+description: Enthält eine Übersicht über die Azure Migrate-Appliance
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827320"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231131"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
-Dieser Artikel beschreibt die Azure Migrate-Appliance. Sie setzen die Appliance ein, wenn Sie die Tools der Azure Migrate-Bewertung and Migration verwenden, um Anwendungen, Infrastrukturen und Workloads zu ermitteln, zu bewerten und auf Microsoft Azure zu übertragen. 
+Dieser Artikel beschreibt die Azure Migrate-Appliance. Sie stellen die Appliance bereit, wenn Sie mit den Bewertungs- und Migrationstools von Azure Migrate Anwendungen, Infrastrukturen und Workloads ermitteln, bewerten und zu Microsoft Azure migrieren möchten. 
 
-[Azure Migrate](migrate-services-overview.md) ist ein zentraler Hub zum Nachverfolgen der Ermittlung, Bewertung und Migration Ihrer lokalen Apps und Workloads sowie von VMs in der privaten/öffentlichen Cloud zu Azure. Der Hub stellt Azure Migrate-Tools für die Bewertung und Migration sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs) bereit.
+[Azure Migrate](migrate-services-overview.md) ist ein zentraler Hub zum Nachverfolgen von Ermittlung und Bewertung Ihrer lokalen Apps und Workloads und von virtuellen Computern in der privaten/öffentlichen Cloud sowie deren Migration zu Azure. Der Hub stellt Azure Migrate-Tools für die Bewertung und Migration sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs) bereit.
 
 
 
@@ -27,12 +27,12 @@ Es gibt folgende Typen und Verwendungsmöglichkeiten von Azure Migrate-Appliance
 
 **Bereitgestellt als** | **Verwendung** | **Details**
 --- | --- |  ---
-Virtueller VMware-Computer | VMware-VM-Bewertung mit dem Azure Migrate-Bewertungstool.<br/><br/> Vorbereiten von die Migration von VMware-VMs ohne Agent mit dem Tool für die Azure Migrate-Servermigration | Laden Sie die OVA-Vorlage herunter und importieren sie in vCenter Server, um die Appliance-VM zu erstellen.
-Virtueller Hyper-V-Computer | Hyper-V-VM-Bewertung mit dem Azure Migrate-Bewertungstool. | Laden Sie gezippte VHD herunter und importieren Sie sie in Hyper-V, um die Appliance-VM zu erstellen.
+Virtueller VMware-Computer | VMware-VM-Bewertung mit dem Azure Migrate-Bewertungstool.<br/><br/> Migration von VMware-VMs ohne Agent mit dem Tool für die Azure Migrate-Servermigration | Laden Sie die OVA-Vorlage herunter, und importieren Sie sie in vCenter Server, um die Appliance-VM zu erstellen.
+Virtueller Hyper-V-Computer | Bewertung virtueller Hyper-V-Computer mit dem Azure Migrate-Bewertungstool. | Laden Sie die gezippte VHD-Datei herunter, und importieren Sie sie in Hyper-V, um die Appliance-VM zu erstellen.
 
 ## <a name="appliance-access"></a>Appliancezugriff
 
-Nachdem Sie die Appliance konfiguriert haben, können Sie über den TCP-Port 3389 mit Remote-Zugriff auf die Appliance-VM zugreifen. Sie können auch über Port 44368 mit der folgenden URL über Remote-Zugriff auf die Webverwaltungsanwendung für die Appliance zugreifen: `https://<appliance-ip-or-name>:44368`.
+Nachdem Sie die Appliance konfiguriert haben, können Sie über den TCP-Port 3389 mit Remote-Zugriff auf die Appliance-VM zugreifen. Sie können auch über Port 44368 mit der URL `https://<appliance-ip-or-name>:44368` über Remote-Zugriff auf die Webverwaltungsanwendung für die Appliance zugreifen.
 
 ## <a name="appliance-license"></a>Appliancelizenz
 Die Appliance ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
@@ -44,7 +44,7 @@ Auf dieser Appliance sind Agents installiert.
 --- | ---
 Ermittlungs-Agent | Sammelt Konfigurationsdaten von lokalen virtuellen Computern.
 Bewertungs-Agent | Erstellt ein Profil der lokalen Umgebung, um VM-Leistungsdaten zu sammeln.
-Migrationsadapter | Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen VMs und Azure.
+Migrationsadapter | Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen virtuellen Computern und Azure.
 Migrations-Gateway | Sendet replizierte VM-Daten an Azure.
 
 
@@ -56,23 +56,26 @@ Migrations-Gateway | Sendet replizierte VM-Daten an Azure.
 
 ## <a name="collected-performance-data-vmware"></a>Gesammelte Leistungsdaten von VMware
 
-Hier sind die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
+Nachstehend finden Sie die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
 
 **Daten** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
 --- | --- | ---
 CPU-Auslastung | cpu.usage.average | Empfohlene VM-Größe/Kosten
 Arbeitsspeichernutzung | mem.usage.average | Empfohlene VM-Größe/Kosten
-Datenträgerlesedurchsatz (MB pro Sekunde) | virtualDisk.read.average | Berechnung der Datenträgergröße, Speicherkosten und der VM-Größe
-Datenträgerschreibdurchsatz (MB pro Sekunde) | virtualDisk.write.average | Berechnung der Datenträgergröße, Speicherkosten und der VM-Größe
-Datenträgerlesevorgänge pro Sekunde | virtualDisk.numberReadAveraged.average | Berechnung der Datenträgergröße, Speicherkosten und der VM-Größe
-Datenträgerschreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.average  | Berechnung der Datenträgergröße, Speicherkosten und der VM-Größe
+Datenträgerlesedurchsatz (MB pro Sekunde) | virtualDisk.read.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Datenträgerschreibdurchsatz (MB pro Sekunde) | virtualDisk.write.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Datenträgerlesevorgänge pro Sekunde | virtualDisk.numberReadAveraged.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Datenträgerschreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.average  | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
 NIC-Lesedurchsatz (MB pro Sekunde) | net.received.average | Berechnung der VM-Größe
 NIC-Schreibdurchsatz (MB pro Sekunde) | net.transmitted.average  |Berechnung der VM-Größe
 
 
 ## <a name="collected-metadata-vmware"></a>Gesammelte Metadaten für VMware
 
-Hier ist die vollständige Liste der VMware-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
+> [!NOTE]
+> Die von der Azure Migrate-Appliance ermittelten Metadaten werden verwendet, damit Sie Ihre Anwendungen bei der Migration zu Azure richtig skalieren können. Außerdem sollen sie bei der Durchführung von Azure-Eignungsanalysen, Analysen der Anwendungsabhängigkeit und bei der Kostenplanung helfen. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
+
+Nachstehend finden Sie die vollständige Liste der VMware-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
 
 **Daten** | **Leistungsindikator**
 --- | --- 
@@ -93,10 +96,10 @@ CPU-Auslastung | cpu.usage.average
 Arbeitsspeichernutzung |mem.usage.average
 **Details pro Datenträger** | 
 Datenträgerschlüsselwert | disk.Key
-Dikunit-Nummer | disk.UnitNumber
+Diskunit-Nummer | disk.UnitNumber
 Datenträgercontroller-Schlüsselwert | disk.ControllerKey.Value
 Bereitgestellte Gigabytes | virtualDisk.DeviceInfo.Summary
-Name des Datenträgers | Wert, der wird mithilfe von disk.UnitNumber, disk.Key und disk.ControllerKey.Value generiert wird
+Name des Datenträgers | Mithilfe von disk.UnitNumber, disk.Key und disk.ControllerKey.Value generierter Wert
 Lesevorgänge pro Sekunde | virtualDisk.numberReadAveraged.average
 Schreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.average
 Lesedurchsatz (MB pro Sekunde) | virtualDisk.read.average
@@ -115,32 +118,35 @@ Referenzdetails | container.MoRef
 Details des übergeordneten Objekts | Container.Parent
 Ordnerdetails pro VM | ((Folder)container).ChildEntity.Type
 Datencenterdetails pro VM | ((Datacenter)container).VmFolder
-Datencenterdetails pro Hostordner | ((Datacenter)container).HostFolder
+Details zum Rechenzentrum pro Hostordner | ((Datacenter)container).HostFolder
 Clusterdetails pro Host | ((ClusterComputeResource)container).Host
-Hostdetails pro VM | ((HostSystem)container).Vm
+Hostdetails pro VM | ((HostSystem)container).VM
 
 
 
 ## <a name="collected-performance-data-hyper-v"></a>Gesammelte Leistungsdaten von Hyper-V
 
-Hier sind die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
+> [!NOTE]
+> Die von der Azure Migrate-Appliance ermittelten Metadaten werden verwendet, damit Sie Ihre Anwendungen bei der Migration zu Azure richtig skalieren können. Außerdem sollen sie bei der Durchführung von Azure-Eignungsanalysen, Analysen der Anwendungsabhängigkeit und bei der Kostenplanung helfen. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
+
+Nachstehend finden Sie die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
 
 **Leistungsindikatorklasse** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
 --- | --- | ---
 Virtueller Hyper-V-Hypervisor-Prozessor | % Gastausführungszeit | Empfohlene VM-Größe/Kosten
 Hyper-V-VM mit dynamischem Arbeitsspeicher | Aktueller Druck (%)<br/> Sichtbarer physischer Speicher des Gastcomputers (MB) | Empfohlene VM-Größe/Kosten
-Virtuelles Hyper-V-Speichergerät | Byte lesen/Sekunde | Berechnung der Datenträgergröße, Speicherkosten und der VM-Größe
-Virtuelles Hyper-V-Speichergerät | Byte schreiben/Sekunde | Berechnung der Datenträgergröße, Speicherkosten und der VM-Größe
-Virtueller Hyper-V-Netzwerkadapter | Empfangene Byte/Sekunde | Berechnung der VM-Größe
-Virtueller Hyper-V-Netzwerkadapter | Gesendete Byte/Sekunde | Berechnung der VM-Größe
+Virtuelles Hyper-V-Speichergerät | Lesebytes/Sekunde | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Virtuelles Hyper-V-Speichergerät | Schreibbytes/Sekunde | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Virtueller Hyper-V-Netzwerkadapter | Empfangene Bytes/Sekunde | Berechnung der VM-Größe
+Virtueller Hyper-V-Netzwerkadapter | Gesendete Bytes/Sekunde | Berechnung der VM-Größe
 
-- Die CPU-Auslastung ist die Summe aller Auslastungen für alle an eine VM angeschlossenen virtuellen Prozessoren.
+- Die CPU-Auslastung ist die Summe aller Auslastungen für alle an einen virtuellen Computer angeschlossenen virtuellen Prozessoren.
 - Die Speichernutzung ist (Aktueller Druck * Sichtbarer physischer Speicher des Gastcomputers) / 100.
 - Die Werte für die Festplatten- und Netzwerkauslastung werden von den aufgeführten Hyper-V-Leistungsindikatoren gesammelt.
 
 ## <a name="collected-metadata-hyper-v"></a>Gesammelte Metadaten von Hyper-V
 
-Hier ist die vollständige Liste der Hyper-V-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
+Nachstehend finden Sie die vollständige Liste der Hyper-V-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
 
 **Daten** | **WMI-Klasse** | **WMI-Klasseneigenschaft**
 --- | --- | ---
@@ -162,49 +168,49 @@ Virtueller übergeordneter Datenträger | Msvm_VirtualHardDiskSettingData | Pare
 **Details pro NIC** | 
 IP-Adressen (synthetische NICs) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP aktiviert (synthetische NICs) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-Nic-ID (synthetische NICs) | Msvm_SyntheticEthernetPortSettingData | InstanceID
+NIC-ID (synthetische NICs) | Msvm_SyntheticEthernetPortSettingData | InstanceID
 NIC-MAC-Adresse (synthetische NICs) | Msvm_SyntheticEthernetPortSettingData | Adresse
-Nic-ID (Legacy-NICs) | MsvmEmulatedEthernetPortSetting Data | InstanceID
-NIC-MAC-ID (Legacy-NICs) | MsvmEmulatedEthernetPortSetting Data | Adresse
+NIC-ID (Legacy-NICs) | MsvmEmulatedEthernetPortSetting-Daten | InstanceID
+NIC-MAC-ID (Legacy-NICs) | MsvmEmulatedEthernetPortSetting-Daten | Adresse
 
 
 
 
-## <a name="discovery-and-collection-process"></a>Ermittlungs-und Sammlungsprozess
+## <a name="discovery-and-collection-process"></a>Ermittlungs- und Sammlungsprozess
 
-Die Appliance kommuniziert mit vCenter Servern und Hyper-V Hosts/Clustern über den folgenden Prozess.
+Die Appliance kommuniziert mit vCenter-Servern und Hyper-V-Hosts/Clustern über den folgenden Prozess.
 
 
 1. **Start der Ermittlung**:
-    - Wenn Sie die Ermittlung auf der Hyper-V-Appliance starten, kommuniziert sie mit den Hyper-V-Hosts auf den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS).
-    - Wenn Sie die Erkennung auf der VMware-Appliance starten, kommuniziert sie standardmäßig mit dem vCenter-Server auf TCP-Port 443. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie ihn in der Appliance-Webanwendung konfigurieren.
+    - Wenn Sie die Ermittlung auf der Hyper-V-Appliance starten, kommuniziert sie mit den Hyper-V-Hosts über die WinRM-Ports 5985 (HTTP) und 5986 (HTTPS).
+    - Wenn Sie die Ermittlung auf der VMware-Appliance starten, kommuniziert sie standardmäßig mit dem vCenter-Server über TCP-Port 443. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie ihn in der Appliance-Webanwendung konfigurieren.
 2. **Sammeln von Metadaten und Leistungsdaten**:
-    - Die Appliance verwendet eine Common Information Model (CIM)-Sitzung, um Hyper-V VM-Daten vom Hyper-V-Host auf den Ports 5985 und 5986 zu sammeln.
-    - Die Appliance kommuniziert standardmäßig mit Port 443, um VMware VM-Daten vom vCenter Server zu sammeln.
-3. **Senden von Daten**: Die Appliance sendet die gesammelten Daten an Azure Migrate-Serverbewertung und Azure Migrate-Servermigration über SSL Port 443.
-    - Für Leistungsdaten sammelt die Appliance Nutzungsdaten in Echtzeit.
+    - Die Appliance verwendet eine Common Information Model (CIM)-Sitzung, um Hyper-V-VM-Daten vom Hyper-V-Host an Port 5985 und 5986 zu sammeln.
+    - Die Appliance kommuniziert standardmäßig über Port 443, um VMware-VM-Daten vom vCenter Server zu sammeln.
+3. **Senden von Daten**: Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Serverbewertung und die Azure Migrate-Servermigration.
+    - Bei Leistungsdaten sammelt die Appliance Nutzungsdaten in Echtzeit.
         - Die Leistungsdaten werden für VMware alle 20 Sekunden und für Hyper-V alle 30 Sekunden für jede Leistungsmetrik erfasst.
-        - Die gesammelten Daten werden für zehn Minuten zu einem einzigen Datenpunkt zusammengeführt.
+        - Die gesammelten Daten werden zu einem einzigen 10-Minuten-Datenpunkt zusammengeführt.
         - Der Spitzenauslastungswert wird aus allen 20/30-Sekunden-Datenpunkten ausgewählt und zur Berechnung der Bewertung an Azure gesendet.
-        - Basierend auf dem in den Bewertungseigenschaften (50./90./95./99./99.) angegebenen Quantilwert werden die Zehn-Minuten-Punkte in aufsteigender Reihenfolge sortiert und der entsprechende Quantilwert zur Berechnung der Bewertung verwendet
-    - Bei der Servermigration beginnt die Appliance mit der Erfassung von VM-Daten und repliziert diese nach Azure.
-4. **Bewerten und Migrieren**: Sie können nun mit Azure Migrate-Serverbewertung Beurteilungen aus den von der Appliance gesammelten Metadaten erstellen. Darüber hinaus können Sie auch mit der Migration von VMware-VMs mit Azure Migrate-Servermigration beginnen, um die agentenlose VM-Replikation zu organisieren.
+        - Basierend auf dem in den Bewertungseigenschaften angegebenen Perzentilwert (50./90./95./99.) werden die Zehn-Minuten-Punkte in aufsteigender Reihenfolge sortiert, und der entsprechende Perzentilwert wird zur Berechnung der Bewertung verwendet
+    - Bei der Servermigration beginnt die Appliance mit der Ermittlung von VM-Daten und repliziert diese nach Azure.
+4. **Bewerten und Migrieren**: Sie können nun mit der Azure Migrate-Serverbewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen. Darüber hinaus können Sie auch mit der Migration von VMware-VMs mit der Azure Migrate-Servermigration beginnen, um die VM-Replikation ohne Agent zu organisieren.
 
 
-![Architecture](./media/migrate-appliance/architecture.png)
+![Architektur](./media/migrate-appliance/architecture.png)
 
 
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades
 
-Die Appliance wird aktualisiert, wenn die auf der Appliance laufenden Azure Migrate-Agents aktualisiert werden.
+Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure Migrate-Agents aktualisiert werden.
 
-- Dies geschieht automatisch, da das automatische Update auf dem Gerät standardmäßig aktiviert ist.
+- Dies geschieht automatisch, da auf der Appliance standardmäßig das automatische Update aktiviert ist.
 - Sie können diese Standardeinstellung ändern, um die Agents manuell zu aktualisieren.
 - Um die automatische Aktualisierung zu deaktivieren, wechseln Sie im Registrierungs-Editor zu „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“, und legen Sie den AutoUpdate-Registrierungsschlüssel auf 0 (DWORD) fest.
  
-### <a name="set-agent-updates-to-manual"></a>Agent-Updates auf manuell festlegen
+### <a name="set-agent-updates-to-manual"></a>Festlegen der Agent-Updates auf manuelle Updates
 
-Für manuelle Updates stellen Sie sicher, dass Sie alle Agents auf der Appliance gleichzeitig aktualisieren, indem Sie die Schaltfläche **„Update“** für jeden veralteten Agent auf der Appliance verwenden. Sie können die Update-Einstellung jederzeit wieder auf automatische Updates zurücksetzen.
+Stellen Sie bei manuellen Updates sicher, dass Sie alle Agents auf der Appliance gleichzeitig aktualisieren, indem Sie für jeden veralteten Agent auf der Appliance die Schaltfläche **Update** verwenden. Sie können die Update-Einstellung jederzeit wieder auf automatische Updates zurücksetzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

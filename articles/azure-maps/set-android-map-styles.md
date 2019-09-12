@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3c8c5d4bae16d8e15c8f2c5b1cc8e00eb14e4ce3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871235"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844854"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Festlegen des Kartenstils mithilfe des Android SDK von Azure Maps
 
@@ -62,7 +62,7 @@ Das obige `mapcontrol_style`-Attribut legt den Kartenstil auf **grayscale_dark**
 Der Kartenstil kann in der „Activity“-Klasse festgelegt werden. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse. Dadurch wird der Kartenstil auf **satellite_road_labels** festgelegt.
 
 ```Java
-    mapControl.onReady(map -> {
+mapControl.onReady(map -> {
     //Set the camera of the map.
     map.setCamera(center(47.64, -122.33), zoom(14));
 

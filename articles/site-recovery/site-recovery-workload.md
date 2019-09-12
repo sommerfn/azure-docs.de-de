@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491742"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232192"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 
@@ -41,7 +41,7 @@ Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendun
 * Eine umfassende Automatisierungsbibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Wiederherstellungspläne integriert werden können.
 
 ## <a name="workload-summary"></a>Übersicht über Workloads
-Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstützten Computer ausgeführt werden. Außerdem haben wir mit Produktteams zusammengearbeitet, um zusätzliche App-spezifische Tests durchzuführen.
+Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstützten Computer ausgeführt werden. Außerdem haben wir mit Produktteams zusammengearbeitet, um zusätzliche Tests für die in der Tabelle enthaltenen Apps durchzuführen.
 
 | **Workload** |**Replizieren von Azure-VMs in Azure** |**Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** |
 | --- | --- | --- | --- | --- |---|

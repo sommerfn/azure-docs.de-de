@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d6b6dd333d04457a68c3f2452d3cc538a32b61f6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230293"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861279"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Tutorial: Konfigurieren eines Clusters in Azure HDInsight mithilfe von Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure HDInsight](/azure/hdinsight/) ist ein Hadoop-basierter Analysedienst zum Verarbeiten von Daten. HDInsight ist ein ETL-Tool (Extrahieren, Transformieren und Laden) für die Verwendung mit strukturierten und unstrukturierten Big Data-Ressourcen. HDInsight unterstützt verschiedene [Clustertypen](/azure/hdinsight/hadoop/apache-hadoop-introduction#cluster-types-in-hdinsight), wobei jeder Typ unterschiedliche Komponenten unterstützt. 
+[Azure HDInsight](/azure/hdinsight/) ist ein Hadoop-basierter Analysedienst zum Verarbeiten von Daten. HDInsight ist ein ETL-Tool (Extrahieren, Transformieren und Laden) für die Verwendung mit strukturierten und unstrukturierten Big Data-Ressourcen. HDInsight unterstützt verschiedene [Clustertypen](/azure/hdinsight/hadoop/apache-hadoop-introduction), wobei jeder Typ unterschiedliche Komponenten unterstützt. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -204,7 +204,7 @@ Mit dem Playbookcode in diesem Abschnitt wird der Cluster gelöscht.
 
 ## <a name="get-the-sample-playbook"></a>Abrufen der Beispielplaybooks
 
-Es gibt zwei Möglichkeiten, das vollständige Beispielplaybook zu erhalten:
+Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 - [Laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml), und speichern Sie es als `hdinsight_create.yml`.
 - Erstellen Sie eine neue Datei mit dem Namen `hdinsight_create.yml`, und kopieren Sie die folgenden Inhalte in diese Datei:
 

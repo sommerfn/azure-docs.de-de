@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745940"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845049"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrieren der MariaDB-Datenbank auf Azure Database for MariaDB durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Ihrer Instanz von Azure Database for MariaDB beschrieben.
@@ -78,10 +78,6 @@ $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 Um mehrere Datenbanken gleichzeitig zu sichern, verwenden Sie den Schalter „--database“ und listen Sie die Datenbanknamen durch Leerzeichen getrennt auf. 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
-```
-Um alle Datenbanken auf dem Server gleichzeitig zu sichern, verwenden Sie die Option „--all-databases“.
-```bash
-$ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>Erstellen einer Datenbank auf dem Zielserver

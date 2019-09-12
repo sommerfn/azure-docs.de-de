@@ -12,40 +12,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2019
+ms.date: 06/10/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 86d48360e37f26d19d15c62a8109c030d421c661
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551881"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231338"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
-Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
+Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Analytics Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Log Analytics Agent Absturzabbilddateien in den Arbeitsbereich.
 
 Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, Aktivierung des Endpunktschutzes sowie Integrität und Bedrohungserkennung bereitzustellen. 
 
-Dieser Artikel enthält Anleitungen zum Installieren von Microsoft Monitoring Agent und zum Festlegen eines Log Analytics-Arbeitsbereichs, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. 
+Dieser Artikel enthält Anleitungen zum Installieren von Log Analytics Agent und zum Festlegen eines Log Analytics-Arbeitsbereichs, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. 
 
 > [!NOTE]
 > - Die Datensammlung ist nur für Computeressourcen (virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
 > - Die Liste der unterstützten Plattformen finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
 > - Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
-## Aktivieren der automatischen Bereitstellung von Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
+## Aktivieren der automatischen Bereitstellung von Log Analytics Agent <a name="auto-provision-mma"></a>
 
-Zum Erfassen der Daten von den Computern muss der Microsoft Monitoring Agent installiert sein.  Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen.  
+Zum Erfassen der Daten von den Computern muss der Log Analytics Agent installiert sein.  Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen.  
 
 >[!NOTE]
 > Die automatische Bereitstellung ist standardmäßig deaktiviert. Um die Installation der standardmäßigen automatischen Bereitstellung in Security Center festzulegen, legen Sie die Option auf **Ein** fest.
 >
 
-Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von Security Center auf allen unterstützten virtuellen Azure-Computern sowie auf allen neu erstellten virtuellen Computern bereitgestellt. Die automatische Bereitstellung wird dringend empfohlen, die manuelle Agent-Installation ist jedoch ebenfalls verfügbar. [Erfahren Sie, wie Sie die Microsoft Monitoring Agent-Erweiterung installieren.](#manualagent)
+Bei aktivierter automatischer Bereitstellung wird der Log Analytics Agent von Security Center auf allen unterstützten und neu erstellten virtuellen Azure-Computern bereitgestellt. Die automatische Bereitstellung wird dringend empfohlen, die manuelle Agent-Installation ist jedoch ebenfalls verfügbar. [Erfahren Sie, wie Sie die Log Analytics Agent-Erweiterung installieren](#manual-agent).
 
 
 
-So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:
+So aktivieren Sie die automatische Bereitstellung von Log Analytics Agent
 1. Klicken Sie im Hauptmenü von „Security Center“ auf **Preise & Einstellungen**.
 2. Klicken Sie auf das entsprechende Abonnement
 
@@ -59,7 +59,7 @@ So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent
 
 >[!NOTE]
 > - Anweisungen zum Bereitstellen einer bereits vorhandenen Installation finden Sie unter [Automatische Bereitstellung bei einer bereits vorhandenen Agent-Installation](#preexisting).
-> - Anweisungen zur manuellen Bereitstellung finden Sie unter [Manuelles Installieren der Microsoft Monitoring Agent-Erweiterung](#manualagent).
+> - Anweisungen zur manuellen Bereitstellung finden Sie unter [Manuelles Installieren der Log Analytics Agent-Erweiterung](#manual-agent).
 > - Anweisungen zum Deaktivieren der automatischen Bereitstellung, finden Sie unter [Deaktivieren der automatischen Bereitstellung](#offprovisioning).
 > - Anweisungen für das Onboarding von Security Center mit PowerShell finden Sie unter [Automatisieren des Onboardings von Azure Security Center mit PowerShell](security-center-powershell-onboarding.md).
 >
@@ -117,7 +117,7 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 3. Wählen Sie **Speichern** aus.
 4. Nach der Auswahl von **Speichern** werden Sie gefragt, ob Sie überwachte virtuelle Computer, die zuvor mit einem Standardarbeitsbereich verbunden waren, erneut konfigurieren möchten.
 
-   - Klicken Sie auf **Nein**, wenn die neuen Arbeitsbereichseinstellungen nur auf neue virtuelle Computer angewendet werden sollen. Die neuen Arbeitsbereichseinstellungen gelten nur für neue Agent-Installationen (neu ermittelte virtuelle Computer, auf denen Microsoft Monitoring Agent nicht installiert ist).
+   - Klicken Sie auf **Nein**, wenn die neuen Arbeitsbereichseinstellungen nur auf neue virtuelle Computer angewendet werden sollen. Die neuen Arbeitsbereichseinstellungen gelten nur für neue Agent-Installationen (neu ermittelte virtuelle Computer, auf denen der Log Analytics Agent nicht installiert ist).
    - Klicken Sie auf **Ja**, wenn die neuen Arbeitsbereichseinstellungen auf alle virtuellen Computer angewendet werden sollen. Darüber hinaus wird jeder virtuelle Computer, der mit einem von Security Center erstellten Arbeitsbereich verbunden ist, nun mit dem neuen Zielarbeitsbereich verbunden.
 
    > [!NOTE]
@@ -129,7 +129,7 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
      ![Auswählen eines vorhandenen Arbeitsbereichs][3]
 
-5. Wählen Sie den Tarif für den gewünschten Arbeitsbereich aus, mit dem Sie Microsoft Monitoring Agent festlegen möchten. <br>Zur Verwendung eines vorhandenen Arbeitsbereichs legen Sie den Tarif für den Arbeitsbereich fest. Dadurch wird im Arbeitsbereich eine Security Center-Lösung installiert, falls noch keine vorhanden ist.
+5. Wählen Sie den Tarif für den gewünschten Arbeitsbereich aus, den Sie für den Log Analytics Agent festlegen möchten. <br>Zur Verwendung eines vorhandenen Arbeitsbereichs legen Sie den Tarif für den Arbeitsbereich fest. Dadurch wird im Arbeitsbereich eine Security Center-Lösung installiert, falls noch keine vorhanden ist.
 
     a.  Klicken Sie im Hauptmenü von „Security Center“ auf **Preise & Einstellungen**.
      
@@ -200,18 +200,18 @@ So wählen Sie Ihre Filterrichtlinie:
 
 Die folgenden Anwendungsfälle geben an, wie die automatische Bereitstellung funktioniert, wenn bereits ein Agent oder eine Erweiterung installiert ist. 
 
-- Microsoft Monitoring Agent ist auf dem Computer installiert, jedoch nicht als Erweiterung (direkter Agent).<br>
-Wenn Microsoft Monitoring Agent direkt auf dem virtuellen Computer (also nicht als Azure-Erweiterung) installiert ist, installiert Security Center die Microsoft Monitoring Agent-Erweiterung und aktualisiert diesen ggf. auf die neueste Version.
+- Log Analytics Agent ist auf dem Computer installiert, jedoch nicht als Erweiterung (direkter Agent).<br>
+Wenn der Log Analytics Agent direkt auf dem virtuellen Computer (also nicht als Azure-Erweiterung) installiert ist, installiert Security Center die Log Analytics Agent-Erweiterung und aktualisiert den Log Analytics Agent ggf. auf die neueste Version.
 Der installierte Agent erstellt seine Berichte weiterhin für die bereits konfigurierten Arbeitsbereiche und darüber hinaus für den in Security Center konfigurierten Arbeitsbereich (Multi-Homing wird auf Windows-Computern unterstützt).
 Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der Standardarbeitsbereich von Security Center), müssen Sie darin die Lösung „security“ oder „securityFree“ installieren, damit Security Center mit der Verarbeitung von Ereignissen von VMs und Computern, die ihre Berichte in diesem Arbeitsbereich erstellen, beginnen kann.<br>
 <br>
 Auf Linux-Computern wird das Multi-Homing von Agents noch nicht unterstützt, weshalb, wenn eine bestehende Agent-Installation erkannt wird, keine automatische Bereitstellung erfolgt und die Konfiguration des Computers nicht geändert wird.
 <br>
-Wenn für vorhandene Computer in Abonnements, die vor dem 17.03.2019 in Security Center integriert wurden, ein vorhandener Agent erkannt wurde, wird die Microsoft Monitoring Agent-Erweiterung nicht installiert, und der Computer ist nicht betroffen. Für diese Computer wird die Empfehlung „Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben“ angezeigt, damit Sie die Installationsprobleme des Agents auf diesen Computern beheben können.
+Wenn für vorhandene Computer in Abonnements, die vor dem 17.03.2019 in Security Center integriert wurden, ein vorhandener Agent erkannt wurde, wird die Log Analytics Agent-Erweiterung nicht installiert, und der Computer ist nicht betroffen. Für diese Computer wird die Empfehlung „Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben“ angezeigt, damit Sie die Installationsprobleme des Agents auf diesen Computern beheben können.
 
   
 - Der System Center Operations Manager-Agent ist auf dem Computer installiert.<br>
-Security Center installiert die Microsoft Monitoring Agent-Erweiterung zusätzlich zum vorhandenen Operations Manager. Der vorhandene Operations Manager-Agent sendet weiterhin normal Berichte an den Operations Manager-Server. Beachten Sie, dass die vom Operations Manager-Agent und dem Microsoft Monitoring Agent gemeinsam genutzten Laufzeitbibliotheken bei diesem Vorgang auf die neueste Version aktualisiert werden.
+Security Center installiert die Log Analytics Agent-Erweiterung parallel zum vorhandenen Operations Manager. Der vorhandene Operations Manager-Agent sendet weiterhin normal Berichte an den Operations Manager-Server. Beachten Sie, dass die vom Operations Manager-Agent und dem Log Analytics Agent gemeinsam genutzten Laufzeitbibliotheken bei diesem Vorgang auf die neueste Version aktualisiert werden.
 Hinweis: Wenn Operations Manager-Agent Version 2012 installiert ist, aktivieren Sie die automatische Bereitstellung **nicht**.<br>
 
 - Eine VM-Erweiterung ist bereits vorhanden.<br>
@@ -237,18 +237,18 @@ Wenn Sie die automatische Bereitstellung deaktivieren, nachdem sie aktiviert war
 -   beendet Security Center die Sammlung von Daten im Standardarbeitsbereich.
  
 > [!NOTE]
->  Wenn Sie die automatische Bereitstellung deaktivieren, wird Microsoft Monitoring Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Informationen zum Entfernen der OMS-Erweiterungs finden Sie unter [Wie entferne ich durch Security Center installierte OMS-Erweiterungen?](security-center-faq.md#remove-oms).
+>  Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Informationen zum Entfernen der OMS-Erweiterungs finden Sie unter [Wie entferne ich durch Security Center installierte OMS-Erweiterungen?](security-center-faq.md#remove-oms).
 >
     
-## Manuelle Agent-Bereitstellung <a name="manualagent"></a>
+## Manuelle Agent-Bereitstellung <a name="manual-agent"></a>
  
-Es gibt mehrere Möglichkeiten, Microsoft Monitoring Agent manuell zu installieren. Achten Sie bei der manuellen Installation darauf, die automatische Bereitstellung zu deaktivieren.
+Es gibt mehrere Möglichkeiten, den Log Analytics Agent manuell zu installieren. Achten Sie bei der manuellen Installation darauf, die automatische Bereitstellung zu deaktivieren.
 
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Bereitstellung der Operations Management Suite-Erweiterung für virtuelle Computer 
 
-Damit Security Center Sicherheitsdaten auf Ihren virtuellen Computern erfassen und Empfehlungen und Warnungen bereitstellen kann, können Sie Microsoft Monitoring Agent manuell installieren.
+Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Empfehlungen und Warnungen bereitstellen kann, können Sie den Log Analytics Agent manuell installieren.
 1. Wählen Sie für die automatische Bereitstellung „AUS“.
-2. Erstellen Sie einen Arbeitsbereich, und legen Sie den Tarif für den Arbeitsbereich fest, mit dem Sie Microsoft Monitoring Agent festlegen möchten:
+2. Erstellen Sie einen Arbeitsbereich, und legen Sie den Tarif für den Arbeitsbereich fest, den Sie für den Log Analytics Agent festlegen möchten:
 
    a.  Wählen Sie im Hauptmenü von Security Center die Option **Sicherheitsrichtlinie** aus.
      

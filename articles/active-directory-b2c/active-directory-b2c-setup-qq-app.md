@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11fc41374089c0ab7258dd191a255387713836eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 55e4b04814daaaff5bc217a561e9045d313d9675
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622316"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811425"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem QQ-Konto mithilfe von Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Um ein QQ-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C
 ### <a name="register-for-the-qq-developer-program"></a>Registrieren beim QQ-Entwicklerprogramm
 
 1. Melden Sie sich beim [QQ-Entwicklerportal](http://open.qq.com) mit den Anmeldeinformationen für Ihr QQ-Konto an.
-1. Rufen Sie nach der Anmeldung die Seite [http://open.qq.com/reg](http://open.qq.com/reg) auf, um sich als Entwickler zu registrieren.
+1. Rufen Sie nach der Anmeldung die Seite [https://open.qq.com/reg](https://open.qq.com/reg) auf, um sich als Entwickler zu registrieren.
 1. Wählen Sie **个人** (Einzelner Entwickler) aus.
 1. Geben Sie die erforderlichen Informationen ein, und wählen Sie **下一步** (Nächster Schritt) aus.
 1. Schließen Sie den E-Mail-Überprüfungsprozess ab. Es dauert einige Tage, bis Ihre Registrierung als Entwickler genehmigt wird.

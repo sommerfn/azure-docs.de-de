@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 09/03/2019
+ms.openlocfilehash: e81ae2fc563300402339fc40893fbbdbbd326dcd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035831"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233228"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Zeitzonen in einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -83,37 +83,19 @@ Sie können für eine verwaltete Instanz eine Sicherungsdatei wiederherstellen o
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 
-<del>Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Auf diese Weise werden Mehrdeutigkeiten aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.<del>
-
- >[!WARNING]
-  > Das aktuelle Verhalten entspricht nicht der obigen Aussage, und die Zeit für die Wiederherstellung wird gemäß der Zeitzone der von der Quelle verwalteten Instanz interpretiert, aus der automatische Datenbanksicherungen entnommen werden. Wir arbeiten daran, dieses Verhalten zu korrigieren, um einen bestimmten Point-in-Time als UTC-Zeit zu interpretieren.
+Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Auf diese Weise werden Mehrdeutigkeiten aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.
 
 ### <a name="auto-failover-groups"></a>Autofailover-Gruppen
 
 Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz einer Failovergruppe wird zwar nicht erzwungen, aber dringend empfohlen.
 
   >[!WARNING]
-  > Wir empfehlen Ihnen dringend, in einer Failovergruppe jeweils die gleiche Zeitzone für die primäre und die sekundäre Instanz zu verwenden. Aufgrund von einigen selten vorkommenden Szenarien wird die Beibehaltung der Zeitzone für primäre und sekundäre Instanzen nicht erzwungen. Es ist wichtig zu verstehen, dass bei einem manuellen oder automatischen Failover für die sekundäre Instanz die ursprüngliche Zeitzone beibehalten wird.
+  > Wir empfehlen Ihnen dringend, in einer Failovergruppe jeweils die gleiche Zeitzone für die primäre und die sekundäre Instanz zu verwenden. Aufgrund von bestimmten seltenen Anwendungsfällen wird die Beibehaltung der Zeitzone für primäre und sekundäre Instanzen nicht erzwungen. Es ist wichtig zu verstehen, dass bei einem manuellen oder automatischen Failover für die sekundäre Instanz die ursprüngliche Zeitzone beibehalten wird.
 
 ## <a name="limitations"></a>Einschränkungen
 
 - Die Zeitzone der vorhandenen verwalteten Instanz kann nicht geändert werden.
 - Für externe Prozesse, die über die SQL Server-Agentaufträge gestartet werden, wird die Zeitzone der Instanz nicht beachtet.
-
-## <a name="known-issues"></a>Bekannte Probleme
-
-Wenn der Point-in-Time-Wiederherstellungsvorgang (Point-in-Time Restore, PITR) durchgeführt wird, wird die Zeit für die Wiederherstellung gemäß der Zeitzone interpretiert, die für die verwaltete Instanz festgelegt ist, aus der automatische Datenbanksicherungen entnommen werden, auch wenn die Portalseite für PITR vermuten lässt, dass die Zeit als UTC interpretiert wird.
-
-Beispiel:
-
-Angenommen, für die Instanz, aus der automatische Sicherungen übernommen werden, ist die Zeitzone Eastern Normalzeit (UTC-5) festgelegt.
-Die Portalseite für Point-in-Time-Wiederherstellung lässt vermuten, dass die Zeit, die Sie für die Wiederherstellung auswählen, UTC-Zeit ist:
-
-![PITR mit der lokalen Uhrzeit im Portal](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
-
-Die Zeit für die Wiederherstellung wird jedoch tatsächlich als Eastern Normalzeit interpretiert, und in diesem speziellen Beispiel wird der Zustand der Datenbank um 9 Uhr Eastern Normalzeit und nicht nach UTC-Zeit wiederhergestellt.
-
-Wenn Sie die Point-in-Time-Wiederherstellung zu einem bestimmten Zeitpunkt in UTC-Zeit durchführen möchten, berechnen Sie zunächst die äquivalente Zeit in der Zeitzone der Quellinstanz, und verwenden Sie diese Zeit im Portal oder in PowerShell bzw. einem CLI-Skript.
 
 ## <a name="list-of-supported-time-zones"></a>Liste mit den unterstützten Zeitzonen
 

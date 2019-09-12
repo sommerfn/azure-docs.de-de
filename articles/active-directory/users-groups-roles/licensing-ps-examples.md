@@ -14,12 +14,12 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6ac548a4b7599857b116e8059acc51c21fdf4e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065494"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812256"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell- und Microsoft Graph-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
 
@@ -53,7 +53,7 @@ EMSPREMIUM
 Verwenden Sie das folgende Beispiel, um die gleichen Daten aus Microsoft Graph abzurufen:
 
 ```
-GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
 ```
 Ausgabe:
 ```

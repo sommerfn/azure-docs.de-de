@@ -1,6 +1,6 @@
 ---
-title: Beispiel - PCI-DSS v3.2.1 Blueprint - Bereitstellungsschritte
-description: Stellen Sie die Schritte des Blueprint-Musters des Payment Card Industry Data Security Standard v3.2.1 bereit.
+title: 'Beispiel: PCI-DSS v3.2.1-Blaupause – Bereitstellungsschritte'
+description: Schritte für die Bereitstellung des Blaupausenbeispiels „Payment Card Industry Data Security Standard v3.2.1“.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,16 +8,16 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 237444cde6e9ccd709f61d13669da03094e5be10
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: f6ae466d10d585b46c9c71614cfeff6b688e6e48
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019420"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231648"
 ---
-# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des PCI-DSS v3.2.1 Blueprint-Musters
+# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 
-Um das Blaupausenmuster von Azure Blueprints PCI-DSS v3.2.1 bereitzustellen, müssen die folgenden Schritte durchgeführt werden:
+Für die Bereitstellung des Blaupausenbeispiels „Azure Blueprints PCI-DSS v3.2.1“ sind die folgenden Schritte erforderlich:
 
 > [!div class="checklist"]
 > - Erstellen einer neuen Blaupause mithilfe des Beispiels
@@ -34,11 +34,11 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
-1. Finden Sie das **PCI-DSS v3.2.1** Blueprint-Muster unter _Andere Muster_ und wählen Sie **Dieses Muster benutzen**.
+1. Suchen Sie unter **Weitere Beispiele** nach dem Blaupausenbeispiel _PCI-DSS v3.2.1_, und wählen Sie **Dieses Beispiel verwenden** aus.
 
 1. Geben Sie die _Grundlagen_ des Blaupausenbeispiels ein:
 
-   - **Name der Blaupause**: Geben Sie einen Namen für Ihre Kopie des PCI-DSS v3.2.1 Blueprint-Musters an.
+   - **Name der Blaupause**: Geben Sie einen Namen für Ihre Kopie des Blaupausenbeispiels „PCI-DSS v3.2.1“ an.
    - **Definitionsspeicherort**: Klicken Sie auf die Schaltfläche mit den Auslassungspunkten, und wählen Sie die Verwaltungsgruppe aus, in der Sie Ihre Kopie des Beispiels speichern möchten.
 
 1. Wählen Sie oben auf der Seite die Registerkarte _Artefakte_ oder unten auf der Seite die Option **Weiter: Artefakte** aus.
@@ -47,13 +47,13 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 ## <a name="publish-the-sample-copy"></a>Veröffentlichen der Kopie des Beispiels
 
-Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blueprint-Musters kann an Ihre Umgebung und Ihre Bedürfnisse angepasst werden, aber diese Änderung kann sie vom PCI-DSS v3.2.1-Standard entfernen.
+Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann zwar an Ihre Umgebung und Ihre Anforderungen angepasst werden, verliert durch diese Änderung möglicherweise jedoch die Übereinstimmung mit dem Standard „PCI-DSS v3.2.1“.
 
 1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
-1. Wählen Sie oben auf der Seite die Option **Blaupause veröffentlichen** aus. Geben Sie auf der neuen Seite rechts für Ihre Kopie des Blaupausenbeispiels eine **Version** an. Diese Eigenschaft ist hilfreich, wenn Sie später Änderungen vornehmen. Geben Sie **Änderungsnotizen** wie „Erste Version aus dem PCI-DSS v3.2.1 Blueprint-Muster veröffentlicht“ an. Wählen Sie dann unten auf der Seite **Veröffentlichen** aus.
+1. Wählen Sie oben auf der Seite die Option **Blaupause veröffentlichen** aus. Geben Sie auf der neuen Seite rechts für Ihre Kopie des Blaupausenbeispiels eine **Version** an. Diese Eigenschaft ist hilfreich, wenn Sie später Änderungen vornehmen. Geben Sie **Änderungshinweise** ein, z.B. „Erste vom Blaupausenbeispiel PCI-DSS v3.2.1 veröffentlichte Version“. Wählen Sie dann unten auf der Seite **Veröffentlichen** aus.
 
 ## <a name="assign-the-sample-copy"></a>Zuweisen der Kopie des Beispiels
 
@@ -99,18 +99,18 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
 |\[Vorschau\]: Audit PCI v3.2.1:2018 steuert und stellt spezifische VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen bereit.|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
-|Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Die Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum, in denen jede Ressource bereitgestellt werden kann. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte, die Sie zulassen möchten.| 
+|Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum für jede dort bereitzustellende Ressource. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte aus, die Sie zulassen möchten.| 
 |Zulässige Speicherorte für Ressourcengruppen|Richtlinienzuweisung |Zulässiger Standort |Mit dieser Richtlinie können Sie die Standorte einschränken, an denen Ihr Unternehmen Ressourcengruppen erstellen kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.| 
-|Bereitstellen von Auditing auf SQL-Servern|Richtlinienzuweisung|Aufbewahrung|Datenaufbewahrung in Anzahl der Tage. Standardmäßig ist der Wert ist 180, aber PCI erfordert 365.| 
-|Bereitstellen von Auditing auf SQL-Servern|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto|Auditing schreibt Datenbankereignisse in ein Audit-Protokoll in Ihrem Azure Storage-Konto (ein Speicherkonto wird in jeder Region erstellt, in der ein SQL-Server erstellt wird, der von allen Servern in dieser Region gemeinsam genutzt wird).| 
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Aufbewahrung (Tage)|Dauer der Datenaufbewahrung in Tagen. Der Standardwert ist 180, PCI erfordert jedoch 365.| 
+|Bereitstellen von Überwachung auf SQL-Server-Instanzen|Richtlinienzuweisung|Name der Ressourcengruppe für das Speicherkonto|Die Überwachung schreibt Datenbankereignisse in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. (Ein Speicherkonto wird in jeder Region erstellt, in der eine SQL Server-Instanz erstellt wird, die von allen Servern in dieser Region gemeinsam genutzt wird.)| 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich nun die Schritte zur Bereitstellung des PCI-DSS v3.2.1 Blueprint-Musters angesehen haben, lesen Sie die folgenden Artikel, um mehr über die Übersichts- und Kontrollzuordnung zu erfahren:
+Nachdem Sie sich nun die Schritte zur Bereitstellung des Blaupausenbeispiels „PCI-DSS v3.2.1“ angesehen haben, lesen Sie die folgenden Artikel, um sich einen Überblick zu verschaffen und mehr über die Steuerungszuordnung zu erfahren:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v3.2.1 Blueprint – Übersicht ](./index.md)
-> [PCI-DSS v3.2.1 Blueprint – Control Mapping](./control-mapping.md)
+> [PCI-DSS v3.2.1-Blaupause – Übersicht ](./index.md)
+> [PCI-DSS v3.2.1-Blaupause – Steuerungszuordnung](./control-mapping.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

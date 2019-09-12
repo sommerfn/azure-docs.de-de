@@ -6,16 +6,17 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/5/2018
+ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735467"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210212"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
+
 Sie können Azure Backup verwenden, um Dateien und Anwendungen in Azure Stack zu schützen (oder zu sichern). Installieren Sie Microsoft Azure Backup Server als virtuellen Computer, der unter Azure Stack ausgeführt wird, um Dateien und Anwendungen zu sichern. Sie können die Dateien schützen, die auf einem beliebigen Azure Stack-Server in demselben virtuellen Netzwerk ausgeführt werden. Nachdem Sie Azure Backup Server installiert haben, fügen Sie Azure-Datenträger hinzu, um den lokalen Speicher zu vergrößern, der für die kurzfristige Sicherung von Daten verfügbar ist. Azure Backup Server nutzt Azure-Speicher für die langfristige Aufbewahrung.
 
 > [!NOTE]
@@ -23,7 +24,6 @@ Sie können Azure Backup verwenden, um Dateien und Anwendungen in Azure Stack zu
 >
 
 In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azure Stack-Umgebung behandelt. Informationen zur Installation von Azure Backup Server in Azure Stack finden Sie im Artikel [Installieren von Azure Backup Server in Azure Stack](backup-mabs-install-azure-stack.md).
-
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Sichern von Dateien und Ordnern in Azure Stack-VMs in Azure
 
@@ -41,7 +41,7 @@ Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Compute
 
     ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    Der Bildschirm **Gruppenmitglieder auswählen** wird geöffnet. 
+    Der Bildschirm **Gruppenmitglieder auswählen** wird geöffnet.
 
     ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
@@ -63,7 +63,7 @@ Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Compute
     > Sie sollten Sicherungsdaten für die Wiederherstellung des Betriebs **nicht** länger als fünf Tage auf Datenträgern aufbewahren, die an Azure Backup Server angefügt sind.
     >
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     Anstatt ein Intervall für inkrementelle Sicherungen auszuwählen, klicken Sie auf **Direkt vor einem Wiederherstellungspunkt**, um eine schnelle vollständige Sicherung unmittelbar vor jedem geplanten Wiederherstellungspunkt durchzuführen. Wenn Sie Anwendungsworkloads schützen, erstellt Azure Backup Server Wiederherstellungspunkte gemäß dem Zeitplan für die Synchronisierungsfrequenz (sofern die Anwendung inkrementelle Sicherungen unterstützt). Wenn die Anwendung keine inkrementellen Sicherungen unterstützt, führt Azure Backup Server eine schnelle vollständige Sicherung durch.
 
@@ -80,13 +80,13 @@ Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Compute
 
 9. Wenn Sie die Sicherung in Azure ausgewählt haben, vergewissern Sie sich, dass auf der Seite **Online zu schützende Daten angeben** die Workloads ausgewählt sind, die Sie in Azure sichern möchten.
 
-10. Geben Sie unter **Onlinesicherungszeitplan angeben** an, wann inkrementelle Sicherungen in Azure erfolgen sollen. 
+10. Geben Sie unter **Onlinesicherungszeitplan angeben** an, wann inkrementelle Sicherungen in Azure erfolgen sollen.
 
     Sie können tägliche, wöchentliche, monatliche und jährliche Sicherungen planen und Datum und Uhrzeit ihrer Ausführung festlegen. Sicherungen können bis zu zweimal täglich erfolgen. Bei jeder Ausführung eines Sicherungsauftrags wird ein Datenwiederherstellungspunkt in Azure anhand der Kopie der Sicherungsdaten erstellt, die auf dem Azure Backup Server-Datenträger gespeichert sind.
 
 11. Wählen Sie auf der Seite **Onlineaufbewahrungsrichtlinie angeben** aus, wie die Wiederherstellungspunkte aus den täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen in Azure aufbewahrt werden.
 
-12. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt. 
+12. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt.
 
 13. Überprüfen Sie unter **Zusammenfassung** Ihre Einstellungen. Wenn Sie auf **Gruppe erstellen** klicken, erfolgt die erstmalige Datenreplikation. Nach Abschluss der Datenreplikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Der erstmalige Sicherungsauftrag erfolgt entsprechend den Einstellungen der Schutzgruppe.
 
@@ -115,11 +115,10 @@ Verwenden Sie die Azure Backup Server-Konsole, um Daten auf dem virtuellen Compu
     * **Benachrichtigung**: Klicken Sie auf **Eine E-Mail senden, wenn diese Wiederherstellung abgeschlossen ist**, und geben Sie dann die Empfänger an, die die Benachrichtigung erhalten sollen. Trennen Sie die E-Mail-Adressen durch Kommas.
     * Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
 
-7. Überprüfen Sie Ihre Wiederherstellungseinstellungen, und klicken Sie auf **Wiederherstellen**. 
+7. Überprüfen Sie Ihre Wiederherstellungseinstellungen, und klicken Sie auf **Wiederherstellen**.
 
-    > [!Note] 
-    > Alle Synchronisierungsaufträge für das ausgewählte Wiederherstellungselement werden abgebrochen, während der Wiederherstellungsauftrag ausgeführt wird.
-    >
+    >[!Note]
+    >Alle Synchronisierungsaufträge für das ausgewählte Wiederherstellungselement werden abgebrochen, während der Wiederherstellungsauftrag ausgeführt wird.
 
 Wenn Sie Modern Backup Storage(MBS) verwenden, wird die Wiederherstellung durch Endbenutzer für Dateiserver nicht unterstützt. Diese Art der Wiederherstellung weist eine Abhängigkeit vom Volumeschattenkopie-Dienst auf, den Modern Backup Storage nicht verwendet. Wenn die Wiederherstellung durch Endbenutzer aktiviert ist, führen Sie die folgenden Schritte aus, um Daten wiederherzustellen:
 
@@ -128,12 +127,16 @@ Wenn Sie Modern Backup Storage(MBS) verwenden, wird die Wiederherstellung durch 
 2. Klicken Sie im Menü **Eigenschaften** auf **Vorherige Versionen**, und wählen Sie die Version, die Sie wiederherstellen möchten.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Anzeigen von Azure Backup Server mit einem Tresor
+
 Mit folgenden Schritten können Sie Azure Backup Server-Entitäten im Azure-Portal anzeigen:
+
 1. Recovery Services-Tresor öffnen
 2. Auf „Sicherungsinfrastruktur“ klicken
 3. Sicherungsverwaltungsserver anzeigen
 
 ## <a name="see-also"></a>Weitere Informationen
+
 Informationen zur Verwendung von Azure Backup Server zum Schützen anderer Workloads finden Sie in einem der folgenden Artikel:
-- [Sichern einer SharePoint-Farm](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [Sichern einer SQL Server-Instanz](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+
+* [Sichern einer SharePoint-Farm](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+* [Sichern einer SQL Server-Instanz](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

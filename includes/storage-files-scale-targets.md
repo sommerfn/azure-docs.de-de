@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67449940"
 ---
 | Resource | Standarddateifreigaben | Premium-Dateifreigaben |

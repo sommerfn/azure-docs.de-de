@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ead314e4c889b79892857eb07ecdd63377131b12
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559823"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376353"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit C#
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit C#
 
 In diesem Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer veröffentlichten QnA Maker-Wissensdatenbank abrufen. Die Wissensdatenbank enthält Fragen und Antworten aus [Datenquellen](../Concepts/data-sources-supported.md) (beispielsweise häufig gestellte Fragen). Die [Frage](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wird an den QnA Maker-Dienst gesendet. Die [Antwort](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) enthält die Antwort mit der bestbewerteten Vorhersage. 
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087246"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735169"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
@@ -43,7 +43,9 @@ Die Parameter für [StartNewAsync](https://azure.github.io/azure-functions-durab
 * **Eingabe**: Alle JSON-serialisierbaren Daten, die als Eingabe an die Orchestratorfunktion übergeben werden sollen.
 * **InstanceId**: (Optional) Die eindeutige ID der Instanz. Ohne Angabe dieses Parameters verwendet die Methode eine zufällige ID.
 
-Hier ist ein einfaches Beispiel für C#:
+Hier einige Beispiele:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -592,6 +594,8 @@ Um alle Daten im Zusammenhang mit einer Orchestrierung zu entfernen, können Sie
 
  Diese Methode weist zwei Überladungen auf. Bei der ersten wird der Verlauf durch die ID der Orchestrierungsinstanz gelöscht:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -603,6 +607,8 @@ public static Task Run(
 ```
 
 Das zweite Beispiel zeigt eine per Timer ausgelöste Funktion, die den Verlauf für alle Orchestrierungsinstanzen löscht, die nach Ablauf der angegebenen Zeitspanne abgeschlossen wurden. In diesem Fall werden die Daten für alle Instanzen entfernt, die vor mindestens 30 Tagen abgeschlossen wurden. Die Ausführung der Funktion ist einmal pro Tag um 24 Uhr geplant:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]

@@ -7,19 +7,16 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726377"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390333"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Hochladen, Herunterladen und Auflisten von Blobs mit der Clientbibliothek für Java v7
 
 In dieser Anleitung erfahren Sie, wie Sie mit der Clientbibliothek für Java v7 Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten.
-
-> [!TIP]
-> Die neueste Version der Azure Storage-Clientbibliothek für Java ist v10. Microsoft empfiehlt, nach Möglichkeit die neueste Version der Clientbibliothek zu verwenden. Informationen zum Einstieg in v10 finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Java Storage SDK v10](storage-quickstart-blobs-java-v10.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

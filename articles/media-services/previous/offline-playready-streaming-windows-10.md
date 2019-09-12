@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 76008cdf0121ac3c9e4a2fc30d2e9fbcc561ff1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f742d4cd2a5285c7c52611a0c4c4735dedc2f19
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939536"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844786"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10  
 
@@ -48,7 +48,7 @@ Die Herausforderung bei der Implementierung des Offlinemodus ist folgende:
 * MP4 wird von vielen Playern und Encodertools unterstützt, bietet aber keine Verbindung zwischen MP4-Container und DRM.
 * Auf lange Sicht ist CFF mit CENC die beste Wahl. Allerdings ist das Ökosystem zur Unterstützung von Tools und Playern derzeit noch nicht vorhanden. Wir brauchen aber heute eine Lösung.
  
-Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](https://go.microsoft.com/?linkid=9682897)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
+Unser Vorschlag: Das Smooth Streaming-Dateiformat ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) mit H264/AAC bietet eine Bindung mit PlayReady (AES-128-CTR). Die jeweilige Smooth Streaming-Datei im ISMV-Format (vorausgesetzt, das Audio wird im Video gemuxt) ist selbst eine fMP4-Datei und kann für die Wiedergabe verwendet werden. Wenn ein Smooth Streaming-Inhalt mittels PlayReady-verschlüsselt wird, wird jede ISMV-Datei zu einer mit PlayReady-geschützten, fragmentierten MP4-Datei. Wir können eine ISMV-Datei mit der gewünschten Bitrate auswählen und sie zum Download in MP4 umbenennen.
 
 Es gibt zwei Möglichkeiten, die mit PlayReady geschützte MP4-Datei für den progressiven Download bereitzustellen:
 

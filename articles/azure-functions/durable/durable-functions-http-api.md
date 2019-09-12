@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087266"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734271"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-APIs in Durable Functions (Azure Functions)
 
@@ -33,7 +33,11 @@ Bei all diesen HTTP-APIs handelt es sich um Webhookvorgänge, die direkt von der
 
 Die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse macht eine [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_)-API verfügbar, die zum Generieren einer HTTP-Antwortnutzlast mit Links zu allen unterstützten Vorgängen verwendet werden kann. Hier ist ein Beispiel für eine HTTP-Triggerfunktion angegeben, mit dem die Nutzung dieser API veranschaulicht wird:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+
+### <a name="c-script"></a>C#-Skript
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 

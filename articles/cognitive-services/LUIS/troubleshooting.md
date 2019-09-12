@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945843"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258795"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -78,7 +78,7 @@ Erfahren Sie mehr über [Fehler beim Versionsimport](luis-how-to-manage-versions
 
 <a name="luis-collaborating"></a>
 
-## <a name="collaborating"></a>Zusammenarbeiten
+## <a name="collaborating-and-contributing"></a>Zusammenarbeiten und mitwirken
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Wie weise ich Mitarbeitern Zugriff auf LUIS mit Azure Active Directory (Azure AD) oder der rollenbasierten Zugriffssteuerung (RBAC) zu?
 
@@ -87,6 +87,31 @@ Unter [Azure Active Directory-Ressourcen](luis-how-to-collaborate.md#azure-activ
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>Endpunkt
+
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Ich habe einen Fehler mit dem Statuscode HTTP 403 erhalten. Wie behebe ich das Problem?
+
+Sie erhalten Fehler mit dem Statuscode 403 und 429, wenn Sie für Ihren Tarif die Transaktionen pro Sekunde oder Monat überschreiten. Erhöhen Sie Ihren Tarif, oder verwenden Sie Language Understanding-[Container](luis-container-howto.md).
+
+Wenn Sie die gesamten kostenlosen 1.000 Endpunktabfragen aufgebraucht haben oder das Kontingent der monatlichen Transaktionen Ihres Tarifs überschreiten, erhalten Sie einen Fehler mit dem Statuscode HTTP 403. 
+
+Zum Beheben dieses Fehlers müssen Sie entweder [einen höheren Tarif wählen](luis-how-to-azure-subscription.md#change-pricing-tier) oder [eine neue Ressource erstellen](get-started-portal-deploy-app.md#create-the-endpoint-resource) und [Ihrer App zuweisen](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+
+Lösungen für diesen Fehler:
+
+* Wählen Sie im [Azure-Portal](https://portal.azure.com) für Ihre Language Understanding-Ressource unter **Ressourcenverwaltung > Tarif** einen höheren TPS-Tarif. Sie müssen im Language Understanding-Portal nichts unternehmen, wenn Ihre Ressource bereits Ihrer Language Understanding-App zugewiesen ist.
+*  Falls Ihre Nutzung den höchsten Tarif übersteigt, sollten Sie weitere Language Understanding-Ressourcen mit vorgeschaltetem Lastenausgleich hinzufügen. Hierbei kann der [Language Understanding-Container](luis-container-howto.md) mit Kubernetes oder Docker Compose hilfreich sein.
+
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Ich habe einen Fehler mit dem Statuscode HTTP 429 erhalten. Wie behebe ich das Problem?
+
+Sie erhalten Fehler mit dem Statuscode 403 und 429, wenn Sie für Ihren Tarif die Transaktionen pro Sekunde oder Monat überschreiten. Erhöhen Sie Ihren Tarif, oder verwenden Sie Language Understanding-[Container](luis-container-howto.md).
+
+Dieser Statuscode wird zurückgegeben, wenn Ihre Transaktionen pro Sekunde Ihren Tarif überschreiten.  
+
+Beispiele für Lösungen sind:
+
+* Sie können [Ihren Tarif erhöhen](luis-how-to-azure-subscription.md#change-pricing-tier), falls Sie noch nicht den höchsten Tarif verwenden.
+* Falls Ihre Nutzung den höchsten Tarif übersteigt, sollten Sie weitere Language Understanding-Ressourcen mit vorgeschaltetem Lastenausgleich hinzufügen. Hierbei kann der [Language Understanding-Container](luis-container-howto.md) mit Kubernetes oder Docker Compose hilfreich sein.
+* Sie können Ihre Anforderungen der Clientanwendung mit einer [Wiederholungsrichtlinie](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) versehen, die Sie selbst implementieren, wenn Sie diesen Statuscode erhalten. 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Meine Endpunktabfrage hat unerwartete Ergebnisse zurückgegeben. Wie sollte ich vorgehen?
 
@@ -102,7 +127,7 @@ Weitere Tipps finden Sie in den [Best Practices](luis-concept-best-practices.md)
 LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Wie lässt sich ein LUIS-Endpunkt erstellen und zuweisen?
-Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Schlüssel und Endpunkte](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
+Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren?
 Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die [Bewertung](luis-concept-prediction-score.md) für die wahrscheinlichste Absicht verbessert werden.
@@ -123,10 +148,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Bisher hat meine LUIS-App problemlos funktioniert. Nun werden jedoch 403-Fehlermeldungen angezeigt. Ich habe die App nicht geändert. Wie behebe ich das Problem?
-Befolgen Sie [diese Anweisungen](#how-do-i-create-and-assign-a-luis-endpoint-key), um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung der Clientanwendung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird. Wenn Sie eine neue Ressource in einer anderen Region erstellt haben, ändern Sie auch die Region der HTTP-Clientanforderung.
+Befolgen Sie [diese Anweisungen](#how-do-i-create-and-assign-a-luis-endpoint-key), um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung der Clientanwendung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird. Wenn Sie eine neue Ressource in einer anderen Region erstellt haben, ändern Sie auch die Region der HTTP-Clientanforderung.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Wie sichere ich meinen LUIS-Endpunkt?
-Informationen hierzu finden Sie unter [Securing the endpoint (Schützen von Endpunkten)](luis-concept-security.md#securing-the-endpoint).
+Informationen hierzu finden Sie unter [Securing the endpoint (Schützen von Endpunkten)](luis-concept-keys.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>LUIS-Grenzwerte
 
@@ -185,17 +210,15 @@ Wenn Ihre App bereits vor der allgemeinen Verfügbarkeit von LUIS bestand, wurde
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Wie erfahre ich, welchen Schlüssel ich benötige, wo ich diesen erhalte und wie ich ihn verwende? 
 
-Informationen zu den Unterschieden zwischen dem [Erstellungsschlüssel](luis-how-to-account-settings.md) und dem [Endpunktschlüssel](luis-how-to-azure-subscription.md) finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS](luis-concept-keys.md). 
+Informationen zu den Unterschieden zwischen dem Erstellungsschlüssel und dem Vorhersage-Laufzeitschlüssel finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Abfragevorhersagen in LUIS](luis-concept-keys.md). 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ich habe eine Fehlermeldung erhalten, dass nicht genügend Kontingent vorhanden ist. Wie behebe ich das Problem? 
 
-Weitere Informationen finden Sie unter [Beheben von Fehlern mit HTTP-Statuscode 403 und 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429).
+Weitere Informationen finden Sie unter „Beheben von Fehlern mit dem HTTP-Statuscode [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) und [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)“.
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Ich muss mehr Endpunktabfragen verarbeiten. Wie geht das? 
 
-Weitere Informationen finden Sie unter [Beheben von Fehlern mit HTTP-Statuscode 403 und 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429).
-
-
+Weitere Informationen finden Sie unter „Beheben von Fehlern mit dem HTTP-Statuscode [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) und [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)“.
 
 ## <a name="app-management"></a>App-Verwaltung
 

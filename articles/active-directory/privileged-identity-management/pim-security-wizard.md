@@ -3,7 +3,7 @@ title: Sicherheitsassistent für Azure AD-Rollen in PIM – Azure Active Directo
 description: Beschreibt den Sicherheitsassistenten, mit dem Sie mit Azure AD Privileged Identity Management (PIM) permanent privilegierte Azure AD-Rollenzuweisungen in berechtigte Rollen konvertieren können.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0d6d94df29ba16ecee06d70f5edac15a96a4299d
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476238"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804018"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Sicherheitsassistent für Azure AD-Rollen in PIM
 

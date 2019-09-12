@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639275"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382876"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App: 
@@ -84,7 +84,7 @@ Nachdem Sie das Verhalten Ihrer App ohne diese kennen, fügen Sie Ihrer App nach
 
 Es ist nicht schädlich, sie am Anfang der Modellentwicklung hinzuzufügen, aber es ist einfacher, festzustellen, welchen Einfluss jede Funktion auf die Ergebnisse hat, nachdem das Modell mit Äußerungen getestet wurde. 
 
-Eine bewährte Methode ist das Testen über den [Endpunkt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance), damit Sie vom zusätzlichen Vorteil des [aktiven Lernens](luis-concept-review-endpoint-utterances.md) profitieren. Der [interaktive Testbereich](luis-interactive-test.md) ist auch eine gültige Testmethode. 
+Eine bewährte Methode ist das Testen über den [Endpunkt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint), damit Sie vom zusätzlichen Vorteil des [aktiven Lernens](luis-concept-review-endpoint-utterances.md) profitieren. Der [interaktive Testbereich](luis-interactive-test.md) ist auch eine gültige Testmethode. 
  
 
 ### <a name="phrase-lists"></a>Begriffslisten

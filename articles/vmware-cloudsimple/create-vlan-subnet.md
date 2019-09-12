@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e6f781926e2a30ecf6d34274b20991b81f0bb96d
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972903"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772365"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Erstellen und Verwalten von VLANs/Subnetzen für private Clouds
 
@@ -21,7 +21,7 @@ ms.locfileid: "69972903"
 
 ## <a name="create-a-vlansubnet"></a>Erstellen eines VLAN/Subnetzes
 
-1. [Greifen Sie auf das CloudSimple Portal zu](monitor-activity.md), und wählen Sie **Network** (Netzwerk) im seitlichen Menü aus.
+1. [Greifen Sie auf das CloudSimple Portal zu](access-cloudsimple-portal.md), und wählen Sie **Network** (Netzwerk) im seitlichen Menü aus.
 2. Wählen Sie **VLANs/subnets** (VLANs/Subnetze) aus.
 3. Klicken Sie auf **Create VLAN/Subnet** (VLAN/Subnetz erstellen).
 

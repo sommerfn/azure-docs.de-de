@@ -1,5 +1,5 @@
 ---
-title: 'Abrufen der Absicht, Java: LUIS'
+title: 'Schnellstart: Abrufen der Absicht, Java: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In dieser Java-Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a80aefd7a88727cf3a2261115c076853bd45b3f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d38802119ed9761b1baf497a9524c430eefda89a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563823"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375495"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Schnellstart: Abrufen der Absicht mit Java
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/23/2019
+ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013221"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376331"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die derzeit in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -85,7 +85,6 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 * Für Nachrichten in Storage-Warteschlangen gilt normalerweise das FIFO-Prinzip, aber manchmal kann die Reihenfolge auch falsch sein, z.B. wenn die Sichtbarkeitstimeoutdauer der Nachricht abläuft (etwa als Folge des Absturzes einer Clientanwendung während der Verarbeitung). Wenn das Sichtbarkeitstimeout abläuft, wird die Nachricht für die Warteschlange erneut sichtbar, damit sie von einem anderen Worker aus der Warteschlange entnommen werden kann. Zu diesem Zeitpunkt wird die erneut sichtbare Nachricht ggf. hinter eine Nachricht in der Warteschlange platziert (um erneut aus dieser entnommen zu werden), die ursprünglich nach ihr in die Warteschlange gestellt wurde.
 * Das garantierte FIFO-Prinzip in Service Bus-Warteschlangen erfordert die Verwendung von Messagingsitzungen. Wenn die Anwendung bei der Verarbeitung einer im **Peek & Lock**-Modus empfangenen Nachricht abstürzt, startet die Anwendung, sobald ein Warteschlangenempfänger das nächste Mal eine Messagingsitzung akzeptiert, mit der Fehlernachricht, nachdem die zugehörige Gültigkeitsdauer (TTL) abgelaufen ist.
 * Storage-Warteschlangen unterstützen Standardwarteschlangenszenarios, z.B. das Abkoppeln von Anwendungskomponenten zur Erhöhung von Skalierbarkeit und Fehlertoleranz, Lastenausgleich und das Erstellen von Prozessworkflows.
-* Service Bus-Warteschlangen unterstützen die *At-Least-Once*-Zustellungsgarantie. 
 * Inkonsistenzen in Bezug auf die Nachrichtenbehandlung im Kontext von Service Bus-Sitzungen können vermieden werden, indem der Sitzungszustand verwendet wird, um den Zustand der Anwendung im Verhältnis zum Fortschritt bei der Behandlung der Nachrichtensequenz der Sitzung zu speichern, und indem Transaktionen zum Klären empfangener Nachrichten und zum Aktualisieren des Sitzungszustands verwendet werden. Diese Art von Konsistenzfeature wird in Produkten anderer Anbieter manchmal als *Exactly-Once Processing* (genau einmalige Verarbeitung) bezeichnet, aber Transaktionsfehler führen offensichtlich dazu, dass Nachrichten erneut zugestellt werden. Daher ist der Begriff nicht genau zutreffend.
 * Storage-Warteschlangen bieten ein einheitliches und konsistentes Programmiermodell für Warteschlangen, Tabellen und Blobs – für Entwickler und für Betriebsteams.
 * Service Bus-Warteschlangen unterstützen lokale Transaktionen im Kontext einer einzelnen Warteschlange.

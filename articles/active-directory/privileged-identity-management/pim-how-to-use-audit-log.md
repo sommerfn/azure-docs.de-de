@@ -3,7 +3,7 @@ title: Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM – Azure 
 description: Erfahren Sie, wie Sie den Überwachungsverlauf für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) anzeigen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/10/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8061cff8d39db66cb22a5650c7688657aa8b3554
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3547ff218e9a15151e4abe2ceff53292d3f01ac0
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053938"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804321"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM
 
@@ -45,11 +45,11 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
 
     | Column | BESCHREIBUNG |
     | --- | --- |
-    | Zeit | Der Zeitpunkt, zu dem die Aktion erfolgt ist. |
+    | Time | Der Zeitpunkt, zu dem die Aktion erfolgt ist. |
     | Anforderer | Der Benutzer, der die Rollenaktivierung oder -änderung angefordert hat. Wenn der Wert **Azure System**lautet, suchen Sie im Azure-Überwachungsverlauf nach weiteren Informationen. |
     | Aktion | Die vom Anforderer ausgeführten Aktionen. Aktionen können „Assign“, „Unassign“, „Activate“, „Deactivate“ oder „AddedOutsidePIM“ umfassen. |
     | Member | Der Benutzer, der eine Rolle aktiviert oder einer Rolle zugewiesen ist. |
-    | Rolle | Die Rolle, die dem Benutzer zugewiesen ist oder die durch den Benutzer aktiviert wurde. |
+    | Role | Die Rolle, die dem Benutzer zugewiesen ist oder die durch den Benutzer aktiviert wurde. |
     | Erläuterung | Text, der während der Aktivierung in das Feld „Grund“ eingegeben wurde. |
     | Ablauf | Zeitpunkt, an dem die aktivierte Rolle abläuft. Gilt nur für berechtigte Rollenzuweisungen. |
 

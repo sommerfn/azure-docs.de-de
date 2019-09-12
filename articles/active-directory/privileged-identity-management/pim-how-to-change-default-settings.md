@@ -3,7 +3,7 @@ title: Konfigurieren von Einstellungen für Azure AD-Rollen in PIM – Azure Act
 description: Erfahren Sie, wie Sie Einstellungen für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 05/31/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bc7d3ffcb56251825bf5f6d760de647938f1ead
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: e9252e3bb8ccddb810074b485f6f073f1bda3f05
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417879"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804440"
 ---
 # <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 

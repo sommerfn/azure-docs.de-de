@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/02/2019
 ms.author: babanisa
-ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822786"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845458"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid-Abonnementschema
 
@@ -49,7 +49,7 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| includedEventTypes | Array | Übereinstimmung, wenn der Ereignistyp in der Ereignisnachricht eine exakte Übereinstimmung für einen der Ereignistypnamen ist. Fehler, wenn der Ereignisname nicht den registrierten Ereignistypnamen für die Ereignisquelle entspricht. Der Standardwert entspricht allen Ereignistypen. |
+| includedEventTypes | array | Übereinstimmung, wenn der Ereignistyp in der Ereignisnachricht eine exakte Übereinstimmung für einen der Ereignistypnamen ist. Fehler, wenn der Ereignisname nicht den registrierten Ereignistypnamen für die Ereignisquelle entspricht. Der Standardwert entspricht allen Ereignistypen. |
 | subjectBeginsWith | Zeichenfolge | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 
 | subjectEndsWith | Zeichenfolge | Ein Suffixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. |
 | isSubjectCaseSensitive | Zeichenfolge | Steuert, ob beim Abgleich von Filtern die Groß-/Kleinschreibung beachtet wird. |
@@ -68,7 +68,7 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
     },
     "filter": {
       "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
-      "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
+      "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
       "isSubjectCaseSensitive ": "true"
     }

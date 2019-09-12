@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 558410d980d261780f7287d1e27ed704b356fc2b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490934"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Erstellen eines zusätzlichen Azure-Abonnements für eine Microsoft-Kundenvereinbarung

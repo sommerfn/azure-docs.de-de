@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: 'Hier erfahren Sie, wie Sie mit dem Portal und der API für die benutzerdefinierte Bing-Suche eine benutzerdefinierte Suchumgebung erstellen.'
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: 'Erstellen Sie mit der API für die benutzerdefinierte Bing-Suche eine Suchinstanz für Themen, die Ihnen wichtig sind. Sie können die zu durchsuchenden Domänen und Webseiten angeben sowie die Suchrangfolgen ändern, um Ihre Suchumgebung anzupassen.'
 sections:

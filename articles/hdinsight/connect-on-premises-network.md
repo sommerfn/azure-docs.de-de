@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404547"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918538"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -67,7 +67,7 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
   
 2. Navigieren Sie im Menü auf der linken Seite zu **+ Ressource erstellen** > **Compute** > **Ubuntu Server 18.04 LTS**.
 
-    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Geben Sie auf der Registerkarte __Grundeinstellungen__ die folgenden Informationen ein:  
   
@@ -84,7 +84,7 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
     |Kennwort oder öffentlicher SSH-Schlüssel | Das verfügbare Feld wird durch Ihre Auswahl des **Authentifizierungstyps** bestimmt.  Geben Sie den entsprechenden Wert ein.|
     |Öffentliche Eingangsports|Wählen Sie **Ausgewählte Ports zulassen** aus. Wählen Sie dann **SSH (22)** aus der Dropdownliste **Eingehende Ports auswählen** aus.|
 
-    ![Grundlegende Konfiguration des virtuellen Computers](./media/connect-on-premises-network/vm-basics.png)
+    ![Grundlegende Konfiguration des virtuellen Computers](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Übernehmen Sie für alle weitere Einträge die Standardwerte, und klicken Sie dann auf die Registerkarte **Netzwerk**.
 
@@ -109,7 +109,7 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie eine Benachrichtigun
 
 2. Notieren Sie sich die Werte für **ÖFFENTLICHE IP-ADRESSE/DNS-NAMENSBEZEICHNUNG** und **PRIVATE IP-ADRESSE** für den späteren Gebrauch.
 
-   ![Öffentliche und private IP-Adressen](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Öffentliche und private IP-Adressen](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Installieren und Konfigurieren von Bind (DNS-Software)
 

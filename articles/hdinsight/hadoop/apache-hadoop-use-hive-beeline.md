@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7c4af8346b5da20c662b5549284a3540d08908f8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072919"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259127"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -44,9 +44,9 @@ Ersetzen Sie `<headnode-FQDN>` durch den vollqualifizierten Domänennamen eines 
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>An den Cluster des HDInsight-Enterprise-Sicherheitspakets (ESP)
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Mit einem Cluster des HDInsight-Enterprise-Sicherheitspakets (ESP) mit Kerberos
 
-Beim Herstellen einer Verbindung vom Client mit einem ESP-Cluster (Enterprise-Sicherheitspaket), der mit Azure Active Directory (AAD) auf einem Computer im selben Bereich des Clusters verknüpft ist, müssen Sie auch den Domänennamen `<AAD-Domain>` und den Namen eines Domänenbenutzerkontos mit der Berechtigung für den Zugriff auf den Cluster `<username>` angeben:
+Beim Herstellen einer Verbindung vom Client mit einem ESP-Cluster (Enterprise-Sicherheitspaket), der mit Azure Active Directory (AAD)-DS auf einem Computer im selben Bereich des Clusters verknüpft ist, müssen Sie auch den Domänennamen `<AAD-Domain>` und den Namen eines Domänenbenutzerkontos mit Berechtigungen für den Zugriff auf den Cluster `<username>` angeben:
 
 ```bash
 kinit <username>
@@ -57,12 +57,18 @@ Ersetzen Sie `<username>` durch den Namen eines Kontos in der Domäne mit der Be
 
 ---
 
-### <a name="over-public-internet"></a>Über das öffentliche Internet
+### <a name="over-public-or-private-endpoints"></a>Über öffentliche oder private Endpunkte
 
-Wenn Sie eine Verbindung mit einem Nicht-ESP-Cluster oder mit einem mit Azure Active Directory (AAD) verknüpften ESP-Cluster über das öffentliche Internet herstellen möchten, müssen Sie den Kontonamen für die Clusteranmeldung (Standard ist `admin`) und das Kennwort angeben. Beispiel: Verwenden von Beeline von einem Clientsystem zum Herstellen einer Verbindung mit der `<clustername>.azurehdinsight.net`-Adresse. Diese Verbindung erfolgt über Port `443` und wird mithilfe von SSL verschlüsselt:
+Wenn Sie eine Verbindung zu einem Cluster über öffentliche oder private Endpunkte herstellen möchten, müssen Sie den Kontonamen für die Clusteranmeldung (Standard ist `admin`) und das Kennwort angeben. Beispiel: Verwenden von Beeline von einem Clientsystem zum Herstellen einer Verbindung mit der `<clustername>.azurehdinsight.net`-Adresse. Diese Verbindung erfolgt über Port `443` und wird mithilfe von SSL verschlüsselt:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+```
+
+Oder beim privaten Endpunkt:
+
+```bash
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
 Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `admin` durch das Anmeldekonto für Ihren Cluster. Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
@@ -73,13 +79,21 @@ Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Si
 
 Apache Spark stellt eine eigene Implementierung von HiveServer2 bereit, die manchmal als Spark Thrift-Server bezeichnet wird. Bei diesem Dienst wird Spark SQL anstelle von Hive zum Auflösen von Abfragen verwendet und ermöglicht je nach Abfrage ggf. eine bessere Leistung.
 
-#### <a name="over-public-internet-with-apache-spark"></a>Über das öffentliche Internet mit Apache Spark
+#### <a name="through-public-or-private-endpoints"></a>Durch öffentliche oder private Endpunkte
 
-Die Verbindungszeichenfolge, die beim Herstellen einer Verbindung über das Internet verwendet wird, weicht geringfügig ab. Sie enthält `httpPath/sparkhive2` anstelle von `httpPath=/hive2`:
+Die verwendete Verbindungszeichenfolge ist etwas anders. Sie enthält `httpPath/sparkhive2` anstelle von `httpPath=/hive2`:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
+
+Oder beim privaten Endpunkt:
+
+```bash 
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `admin` durch das Anmeldekonto für Ihren Cluster. Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
 
 ---
 

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Wiederherstellung auf Elementebene; Wiederherstellung von Dateien aus Azure-VM-Sicherung; Wiederherstellen von Dateien aus Azure-VM
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
+ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954609"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210375"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -68,7 +68,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
     - download.microsoft.com
     - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.com (für öffentliche Azure-Regionen)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (für Azure China)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (für Azure China 21Vianet)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.us (für Azure US Government)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.de (für Azure Deutschland)
     - Ausgehender Port 3260
@@ -247,7 +247,7 @@ Dieses Feature wurde für den Zugriff auf VM-Daten in wenigen Schritten entwicke
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Auswählen des Wiederherstellungspunkts (der Skripts generieren kann)
 
-Das Skript stellt den Zugriff auf VM-Daten bereit. Deshalb ist es wichtig, zu regulieren, wer es überhaupt erstellen kann. Zum Erstellen des Skripts ist eine Anmeldung beim Azure-Portal mit einem [RBAC-autorisierten](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) Konto erforderlich.
+Das Skript stellt den Zugriff auf VM-Daten bereit. Deshalb ist es wichtig, zu regulieren, wer es überhaupt erstellen kann. Zum Generieren des Skripts ist eine Anmeldung beim Azure-Portal mit einem [RBAC-autorisierten](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) Konto erforderlich.
 
 Für die Dateiwiederherstellung ist die gleiche Autorisierung erforderlich wie für die VM- und Datenträgerwiederherstellung. Das heißt, nur autorisierte Benutzer können die VM-Daten anzeigen und das Skript generieren.
 

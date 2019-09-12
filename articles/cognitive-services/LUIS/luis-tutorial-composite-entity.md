@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial zu zusammengesetzten Entitäten: LUIS'
+title: 'Tutorial: Tutorial zu zusammengesetzten Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Hinzufügen einer zusammengesetzten Entität, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 698635b3f216c556e1e36a033703b8786a028e38
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946132"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388044"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.

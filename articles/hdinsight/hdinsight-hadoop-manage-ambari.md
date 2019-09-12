@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442052"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885271"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
@@ -76,7 +76,7 @@ Bei anderen Warnungen als **OK** wird am Seitenanfang unter dem Eintrag **(Anzah
 
 Warnungen sind in mehrere Standardgruppen angeordnet, die über die Seite **Alerts** angezeigt werden können.
 
-![Seite "Warnungen"](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Seite "Warnungen"](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die Option **Warnungsgruppen verwalten** auswählen.
 
@@ -92,11 +92,11 @@ Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die
 
 Die Registerkarte **Metrics** im Dashboard enthält eine Reihe von Widgets, die das Überwachen des Clusterstatus auf einen Blick erleichtern. Verschiedene Widgets wie **CPU Usage**bieten zusätzliche Informationen, wenn Sie darauf klicken.
 
-![Dashboard mit Metriken](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![Dashboard mit Metriken](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 Die Registerkarte **Heatmaps** zeigt Metriken als farbige Wärmebilder an, die von Grün bis Rot reichen.
 
-![Dashboard mit Heatmaps](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![Dashboard mit Heatmaps](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 Weitere Informationen zu den Knoten im Cluster finden Sie unter **Hosts**. Wählen Sie anschließend den bestimmten Knoten, für den Sie sich interessieren.
 
@@ -142,7 +142,7 @@ Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird bei Verwendung eines
 
 Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen vor, um Hosts zu verwalten.
 
-![Seite "Hosts"](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![Seite "Hosts"](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Für HDInsight-Cluster sollte kein Host hinzugefügt, zurückgesetzt und wiederhergestellt werden.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723473"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231444"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurieren und Verwalten von Replikationsrichtlinien für die VMware-Notfallwiederherstellung in Azure
 In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) eine Replikationsrichtlinie für die Replikation von VMware-VMs in Azure konfigurieren.
@@ -42,11 +42,19 @@ Ordnen Sie Ihrem lokalen Konfigurationsserver die Replikationsrichtlinie zu.
 
 ## <a name="edit-a-policy"></a>Bearbeiten einer Richtlinie
 
+Sie können eine Replikationsrichtlinie ändern, nachdem sie erstellt wurde.
+
+- Änderungen an der Richtlinie werden auf alle Computer angewendet, die die Richtlinie verwenden.
+- Wenn Sie replizierte Computer einer anderen Replikationsrichtlinie zuordnen möchten, müssen Sie den Schutz für die relevanten Computer deaktivieren und erneut aktivieren.
+
+Bearbeiten Sie eine Richtlinie wie folgt:
 1. Wählen Sie **Verwalten** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** aus.
 2. Wählen Sie die Replikationsrichtlinie aus, die Sie ändern möchten.
 3. Klicken Sie auf **Einstellungen bearbeiten**, und aktualisieren Sie die Felder „RPO-Schwellenwert“, „Aufbewahrung des Wiederherstellungspunkts (in Stunden)“ oder „Häufigkeit der Momentaufnahmen für App-Konsistenz“ nach Bedarf.
 4. Wenn Sie die Generierung anwendungskonsistenter Punkte deaktivieren möchten, wählen Sie in der Dropdownliste des Felds **App-konsistente Momentaufnahmenhäufigkeit** den Wert „Aus“ aus.
 5. Klicken Sie auf **Speichern**. Die Richtlinie sollte innerhalb von 30 bis 60 Sekunden aktualisiert werden.
+
+
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>Aufheben der Zuordnung oder Löschen einer Replikationsrichtlinie
 

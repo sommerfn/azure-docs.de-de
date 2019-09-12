@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015654"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376454"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -168,7 +168,6 @@ Beachten Sie, dass alle auf einem temporären Datenträger gespeicherten Daten v
 Die folgenden Funktionen oder Dienste werden für das Kontofailover in der Vorschauversion nicht unterstützt:
 
 - Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.  
-- Für Speicherkonto mit einem hierarchischen Namespace Lake Storage Gen2 kann kein Failover durchgeführt werden.
 - Für ein Speicherkonto mit archivierten Blobs kann kein Failover durchgeführt werden. Bewahren Sie archivierte Blobs in einem separaten Speicherkonto auf, für das Sie kein Failover ausführen möchten.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
 - Nach dem Failover arbeiten die folgenden Funktionen nicht mehr, falls sie ursprünglich aktiviert waren: [Ereignisabonnements](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Richtlinien für den Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Protokollierung durch die Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).

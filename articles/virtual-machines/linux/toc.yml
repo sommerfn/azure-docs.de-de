@@ -145,8 +145,8 @@
       href: backup-recovery.md
     - name: Richtlinien für Infrastrukturen
       href: infrastructure-example.md
-    - name: Sicherheitsattribute
-      href: virtual-machines-linux-security-attributes.md
+    - name: Integrierte Sicherheitskontrollen
+      href: virtual-machines-linux-security-controls.md
 - name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen

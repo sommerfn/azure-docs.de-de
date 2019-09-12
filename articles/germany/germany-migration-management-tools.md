@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: bc237d0f78c77a6fbc89db4061ca38403c3d777b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbc2a8e70a6b972958343de1762ec11acf621271
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685186"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376256"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
@@ -36,7 +36,7 @@ Sie können zusätzliche Endpunkte in der Zielumgebung definieren, indem Sie den
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager) durcharbeiten.
 - Lesen Sie [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/traffic-manager-create-profile.md).
 - Erfahren Sie mehr über das [Blau-Grün-Szenario](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/).
@@ -65,7 +65,7 @@ Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher) durcharbeiten.
 - Lesen Sie [Was ist Azure Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md)
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
 - Erfahren Sie mehr über[Verbindungsmonitor](../network-watcher/connection-monitor.md).

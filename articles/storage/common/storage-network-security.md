@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981138"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241736"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
-Azure Storage bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells können Sie Ihre Speicherkonten für eine bestimmte Gruppe unterstützter Netzwerke schützen. Wenn Netzwerkregeln konfiguriert wurden, können nur Anwendungen, die Daten aus der angegebenen Gruppe von Netzwerken anfordern, auf ein Speicherkonto zugreifen.
+Azure Storage bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells können Sie Ihre Speicherkonten für eine bestimmte Teilmenge von Netzwerken schützen. Wenn Netzwerkregeln konfiguriert wurden, können nur Anwendungen, die Daten über die angegebene Gruppe von Netzwerken anfordern, auf ein Speicherkonto zugreifen. Sie können den Zugriff auf Ihr Speicherkonto auf Anforderungen beschränken, die aus angegebenen IP-Adressen, IP-Adressbereichen oder einer Liste von Subnetzen in virtuellen Azure-Netzwerken stammen.
 
 Eine Anwendung, die bei aktivierten Netzwerkregeln auf ein Speicherkonto zugreift, benötigt eine ordnungsgemäße Autorisierung für die Anforderung. Für die Autorisierung können Azure Active Directory (Azure AD)-Anmeldeinformationen für Blobs und Warteschlangen mit einem gültigen Kontozugriffsschlüssel oder mit einem SAS-Token verwendet werden.
 
 > [!IMPORTANT]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines virtuellen Azure-Netzwerks (VNET) agiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert.
 >
-> Sie können Azure-Diensten, die innerhalb eines VNETs agieren, Zugriff gewähren, indem Sie das Subnetz der Dienstinstanz zulassen. Der im nächsten Abschnitt beschriebene [Ausnahmenmechanismus](#exceptions) ermöglicht eine begrenzte Anzahl von Szenarien. Der Zugriff auf das Azure-Portal muss über einen Computer erfolgen, der sich innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (IP-Adresse oder VNET) befindet.
+> Sie können Azure-Diensten, die innerhalb eines VNETs agieren, Zugriff gewähren, indem Sie Datenverkehr aus dem Subnetz zulassen, das die Dienstinstanz hostet. Sie können auch eine begrenzte Anzahl von Szenarien über den im nächsten Abschnitt beschriebenen Mechanismus [Ausnahmen](#exceptions) aktivieren. Der Zugriff auf Daten aus dem Speicherkonto über das Azure-Portal muss über einen Computer erfolgen, der sich innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (IP-Adresse oder VNET) befindet.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Szenarien
 
-Konfigurieren Sie Speicherkonten, um standardmäßig den Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) zu verweigern. Gewähren Sie anschließend Zugriff auf Datenverkehr aus bestimmten VNETs. Mit dieser Konfiguration können Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen. Darüber hinaus können Sie Zugriff auf öffentliche Internet-IP-Adressbereiche gewähren, um Verbindungen von bestimmten Internetclients oder lokalen Clients zu ermöglichen.
+Zum Sichern Ihres Speicherkontos sollten Sie zuerst eine Regel so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) standardmäßig verweigert wird. Anschließend sollten Sie Regeln konfigurieren, die den Zugriff auf Datenverkehr aus bestimmten VNETs gewähren. Mit dieser Konfiguration können Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen. Darüber hinaus können Sie Regeln konfigurieren, um den Zugriff auf Datenverkehr aus ausgewählten öffentlichen Internet-IP-Adressbereichen zu gewähren und so Verbindungen von bestimmten Internetclients oder lokalen Clients zu ermöglichen.
 
-Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Storage, einschließlich REST und SMB, erzwungen. Für den Datenzugriff über Tools wie Azure-Portal, Storage-Explorer und AZCopy sind explizite Netzwerkregeln erforderlich.
+Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Storage, einschließlich REST und SMB, erzwungen. Für den Zugriff auf Daten mithilfe von Tools wie Azure-Portal, Storage-Explorer und AZCopy müssen explizite Netzwerkregeln konfiguriert werden.
 
 Netzwerkregeln können auf bereits vorhandene Speicherkonten oder beim Erstellen neuer Speicherkonten angewendet werden.
 
@@ -50,7 +50,7 @@ Sie können nicht verwaltete Datenträger in Speicherkonten mit angewendeten Net
 Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Netzwerk. Um den Zugriff auf ausgewählte Netzwerke zu beschränken, müssen Sie zunächst die Standardaktion ändern.
 
 > [!WARNING]
-> Änderungen an Netzwerkregeln können die Fähigkeit von Anwendungen, eine Verbindung mit Azure Storage herzustellen, beeinträchtigen. Durch Festlegen der Standardnetzwerkregel auf **Verweigern** wird sämtlicher Zugriff auf die Daten blockiert – es sei denn, es werden auch bestimmte Netzwerkregeln angewendet, zum Zugriff zu **gewähren**. Gewähren Sie mithilfe von Netzwerkregeln Zugriff auf alle zulässigen Netzwerke, bevor Sie die Standardregel ändern, um Zugriff zu verweigern.
+> Änderungen an Netzwerkregeln können die Fähigkeit von Anwendungen, eine Verbindung mit Azure Storage herzustellen, beeinträchtigen. Durch Festlegen der Standardnetzwerkregel auf **Verweigern** wird sämtlicher Zugriff auf die Daten blockiert – es sei denn, es werden auch bestimmte Netzwerkregeln angewendet, die Zugriff **gewähren**. Gewähren Sie mithilfe von Netzwerkregeln Zugriff auf alle zulässigen Netzwerke, bevor Sie die Standardregel ändern, um Zugriff zu verweigern.
 
 ### <a name="managing-default-network-access-rules"></a>Verwalten standardmäßiger Netzwerkzugriffsregeln
 
@@ -112,9 +112,9 @@ Standardmäßige Netzwerkzugriffsregeln für Speicherkonten können über das Az
 
 ## <a name="grant-access-from-a-virtual-network"></a>Gewähren des Zugriffs aus einem virtuellen Netzwerk
 
-Sie können Speicherkonten so konfigurieren, dass nur über bestimmte VNETs zugegriffen werden kann.
+Sie können Speicherkonten so konfigurieren, dass nur über bestimmte Subnetze zugegriffen werden kann. Die zulässigen Subnetze gehören möglicherweise zu einem VNET in demselben Abonnement oder in einem anderen Abonnement – einschließlich Abonnements, die zu einem anderen Azure Active Directory-Mandanten gehören.
 
-Aktivieren Sie einen [Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview) für Azure Storage innerhalb des VNETs. Dieser Endpunkt sorgt für eine optimale Datenverkehrsroute zum Azure Storage-Dienst. Mit jeder Anforderung wird zudem die Identität des virtuellen Netzwerks und des Subnetzes übertragen. Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen im VNET zulassen. Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
+Aktivieren Sie einen [Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview) für Azure Storage innerhalb des VNETs. Der Dienstendpunkt leitet Datenverkehr aus dem VNET über einen optimalen Pfad an den Azure Storage-Dienst weiter. Mit jeder Anforderung werden außerdem die Identitäten des Subnetzes und des virtuellen Netzwerks übertragen. Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen in einem VNET zulassen. Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
 
 Jedes Speicherkonto unterstützt bis zu 100 VNET-Regeln, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
 
@@ -131,7 +131,10 @@ Wenn Sie die Notfallwiederherstellung für einen regionalen Ausfall planen, soll
 
 Wenn Sie eine VNET-Regel auf ein Speicherkonto anwenden möchten, muss der Benutzer über geeignete Berechtigungen für die hinzuzufügenden Subnetze verfügen. Die dazu erforderliche Berechtigung *Dienst mit einem Subnetz verknüpfen* ist Teil der integrierten Rolle *Speicherkontomitwirkender*. Sie kann aber auch benutzerdefinierten Rollendefinitionen hinzugefügt werden.
 
-Das Speicherkonto und die virtuellen Netzwerke, denen Zugriff gewährt wurde, können sich in unterschiedlichen Abonnements befinden, diese müssen jedoch zum gleichen Azure AD-Mandanten gehören.
+Das Speicherkonto und die virtuellen Netzwerke, denen Zugriff gewährt wurde, können sich in verschiedenen Abonnements befinden – einschließlich Abonnements, die zu einem anderen Azure AD-Mandanten gehören.
+
+> [!NOTE]
+> Die Konfiguration von Regeln, die Zugriff auf Subnetze in virtuellen Netzwerken gewähren, die Teil eines anderen Azure Active Directory-Mandanten sind, wird zurzeit nur über PowerShell, CLI und Rest-APIs unterstützt. Diese Regeln können nicht über das Azure-Portal konfiguriert werden, obwohl sie möglicherweise im Portal angezeigt werden.
 
 ### <a name="managing-virtual-network-rules"></a>Verwalten von VNET-Regeln
 
@@ -149,6 +152,8 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
 
     > [!NOTE]
     > Wenn für das ausgewählte virtuelle Netzwerk und die Subnetze noch kein Dienstendpunkt für Azure Storage konfiguriert wurde, können Sie dies im Rahmen dieses Vorgangs nachholen.
+    >
+    > Zurzeit werden nur virtuelle Netzwerke, die zu demselben Azure Active Directory-Mandanten gehören, während der Regelerstellung zur Auswahl angezeigt. Verwenden Sie PowerShell, die CLI oder REST-APIs, um den Zugriff auf ein Subnetz in einem virtuellen Netzwerk zu gewähren, das zu einem anderen Mandanten gehört.
 
 1. Wenn Sie eine Regel für virtuelle Netzwerke oder Subnetze entfernen möchten, klicken Sie auf **...** , um das Kontextmenü für das virtuelle Netzwerk oder Subnetz zu öffnen, und klicken Sie anschließend auf **Entfernen**.
 
@@ -176,6 +181,9 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > Wenn Sie eine Netzwerkregel für ein Subnetz in einem VNET hinzufügen möchten, das zu einem anderen Azure AD-Mandanten gehört, verwenden Sie einen voll qualifizierten **VirtualNetworkResourceId**-Parameter im Format „/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name“.
 
 1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
 
@@ -209,6 +217,11 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > Verwenden Sie zum Hinzufügen einer Regel für ein Subnetz in einem VNET, das zu einem anderen Azure AD Mandanten gehört, eine voll qualifizierte Subnetz-ID im Format "/Subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/Subnets/Subnet-Name".
+    > 
+    > Sie können den Parameter **Abonnement** verwenden, um die Subnetz-ID für ein VNET abzurufen, das zu einem anderen Azure AD-Mandanten gehört.
 
 1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
 
@@ -344,7 +357,7 @@ Netzwerkregeln ermöglichen in den meisten Szenarien eine sichere Netzwerkkonfig
 
 Einige Microsoft-Dienste, die mit Speicherkonten interagieren, agieren von Netzwerken aus, denen nicht mithilfe von Netzwerkregeln Zugriff gewährt werden kann.
 
-Lassen Sie für vertrauenswürdige Microsoft-Dienste die Umgehung der Netzwerkregeln zu, damit solche Dienste ordnungsgemäß funktionieren. Diese Dienste verwenden dann eine strenge Authentifizierung, um auf das Speicherkonto zuzugreifen.
+Damit einige Dienste erwartungsgemäß funktionieren, müssen Sie eine Teilmenge von vertrauenswürdigen Microsoft-Diensten zulassen, um die Netzwerkregeln zu umgehen. Diese Dienste verwenden dann eine strenge Authentifizierung, um auf das Speicherkonto zuzugreifen.
 
 Wenn Sie die Ausnahme **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** aktivieren, wird den folgenden Diensten Zugriff auf das Speicherkonto gewährt (sofern sie in Ihrem Abonnement registriert sind):
 

@@ -11,14 +11,14 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
+ms.date: 09/06/2019
 ms.author: chackdan
-ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102995"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773251"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Zertifikate und Sicherheit in Linux-Clustern
 
@@ -30,7 +30,7 @@ Service Fabric erwartet normalerweise, dass X.509-Zertifikate im Verzeichnis */v
 
 Für Linux-Cluster erwartet Service Fabric, dass Zertifikate entweder als PEM-Datei (die sowohl das Zertifikat als auch den privaten Schlüssel enthält) oder als CRT-Datei (die das Zertifikat und eine KEY-Datei mit dem privaten Schlüssel enthält) vorliegen. Alle Dateien sollten im PEM-Format vorhanden sein. 
 
-Wenn Sie Ihr Zertifikat über Azure Key Vault installieren, indem Sie entweder eine [Resource Manager-Vorlage](./service-fabric-cluster-creation-create-template.md) oder [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric)-Befehle verwenden, wird das Zertifikat auf jedem Knoten im richtigen Format im Verzeichnis */var/lib/sfcerts* installiert. Wenn Sie ein Zertifikat mit einer anderen Methode installieren, müssen Sie sicherstellen, dass das Zertifikat richtig auf den Clusterknoten installiert ist.
+Wenn Sie Ihr Zertifikat über Azure Key Vault installieren, indem Sie entweder eine [Resource Manager-Vorlage](./service-fabric-cluster-creation-create-template.md) oder [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0)-Befehle verwenden, wird das Zertifikat auf jedem Knoten im richtigen Format im Verzeichnis */var/lib/sfcerts* installiert. Wenn Sie ein Zertifikat mit einer anderen Methode installieren, müssen Sie sicherstellen, dass das Zertifikat richtig auf den Clusterknoten installiert ist.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Im Anwendungsmanifest angegebene Zertifikate
 

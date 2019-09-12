@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 36430e9b0a4554761d53b537d3c32fa57068eabb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490220"
 ---
 # <a name="view-billing-accounts-in-azure-portal"></a>Anzeigen von Abrechnungskonten im Azure-Portal  
@@ -43,7 +43,7 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Benutzer zum Anzeigen 
 |`Scope`  |Definition  |
 |---------|---------|
 |Abrechnungskonto     | Stellt einen einzigen Besitzer (Kontoadministrator) für ein oder mehrere Azure-Abonnements dar. Ein Kontoadministrator ist autorisiert, verschiedene Abrechnungsaufgaben wie das Erstellen von Abonnements, das Anzeigen von Rechnungen oder das Ändern der Abrechnung für Abonnements auszuführen.  |
-|Abonnement     |  Stellt eine Gruppierung von Azure-Ressourcen dar. In diesem Bereich wird die Rechnung generiert. Für jedes Abonnement gelten eigene Zahlungsmethoden, die zum Bezahlen der Rechnung verwendet werden.|
+|Subscription     |  Stellt eine Gruppierung von Azure-Ressourcen dar. In diesem Bereich wird die Rechnung generiert. Für jedes Abonnement gelten eigene Zahlungsmethoden, die zum Bezahlen der Rechnung verwendet werden.|
 
 
 ### <a name="enterprise-agreement"></a>Enterprise Agreement

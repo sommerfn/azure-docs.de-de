@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8368fc5369ee6cd93bbf472d4904cd647d66058d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 692eff26dbbc2289ec589a327dbe58958b414a56
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673036"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842731"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Bonusly für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ Das in diesem Tutorial beschriebene Szenario setzt voraus, dass Sie bereits übe
 * Ein Benutzerkonto in Bonusly mit Administratorberechtigungen
 
 > [!NOTE]
-> Die Azure AD-Bereitstellungsintegration basiert auf der [Bonusly-REST-API](https://bonusly.gelato.io/reference), die für Bonusly-Entwickler verfügbar ist.
+> Die Azure AD-Bereitstellungsintegration basiert auf der [Bonusly-REST-API](https://konghq.com/solutions/gateway/), die für Bonusly-Entwickler verfügbar ist.
 
 ## <a name="adding-bonusly-from-the-gallery"></a>Hinzufügen von Bonusly aus dem Katalog
 

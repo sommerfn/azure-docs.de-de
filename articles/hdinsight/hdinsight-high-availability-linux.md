@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405998"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879763"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -106,7 +106,7 @@ Die Ambari-Webbenutzeroberfläche kann unter `https://CLUSTERNAME.azurehdinsight
 
 Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgelistet.
 
-![Installierte Dienste](./media/hdinsight-high-availability-linux/services.png)
+![Installierte Dienste](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnungen in Zusammenhang mit einem Dienst können über den Link **Warnungen** oben auf der Seite angezeigt werden.  In Ambari stehen mehrere vordefinierte Warnungen zur Verfügung.
 
@@ -155,11 +155,11 @@ Sie können einen Dienst auswählen, um weitere Informationen anzuzeigen.
 
 Auf der Dienstseite werden zwar Informationen zum Status und zur Konfiguration jedes Diensts angezeigt, aber keine Informationen dazu, auf welchem Hauptknoten der Dienst ausgeführt wird. Diese Informationen können über den Link **Hosts** oben auf der Seite aufgerufen werden. Wenn Sie auf den Link klicken, werden die Hosts innerhalb des Clusters angezeigt, einschließlich der Hauptknoten.
 
-![Liste der Hosts](./media/hdinsight-high-availability-linux/hosts.png)
+![Liste der Hosts](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Wenn Sie auf den Link für einen der Hauptknoten klicken, werden die auf diesem Knoten ausgeführten Dienste und Komponenten angezeigt.
 
-![Komponentenstatus](./media/hdinsight-high-availability-linux/nodeservices.png)
+![Komponentenstatus](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
@@ -241,7 +241,7 @@ Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-E
 
 Wählen Sie auf der Ambari-Webbenutzeroberfläche den Dienst, für den Sie Protokolle anzeigen möchten (z.B. YARN). Wählen Sie dann mit **Quick Links** den Hauptknoten aus, dessen Protokolle Sie anzeigen möchten.
 
-![Verwenden von Quicklinks zum Anzeigen von Protokollen](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Verwenden von Quicklinks zum Anzeigen von Protokollen](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>Konfigurieren der Knotengröße
 
@@ -251,7 +251,7 @@ Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die fo
 
 * **Azure-Portal**: Beim Erstellen eines Clusters können Sie die Größe der vom Cluster genutzten Knoten festlegen:
 
-    ![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Azure CLI**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) mit den Parametern `--headnode-size`, `--workernode-size` und `--zookeepernode-size` festgelegt werden.
 

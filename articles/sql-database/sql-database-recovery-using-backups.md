@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103114"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813348"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
@@ -127,10 +127,7 @@ Point-in-Time-Wiederherstellung für geosekundäre Datenbanken wird derzeit nich
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Durchführen einer Geowiederherstellung über das Azure-Portal
 
-Zur Geowiederherstellung einer Datenbank im Azure-Portal öffnen Sie die Seite „SQL-Datenbanken“ und klicken dann auf **Hinzufügen**. Wählen Sie im Textfeld **Quelle auswählen** die Option **Sicherung** aus. Geben Sie die Sicherung an, aus der die Wiederherstellung in der Region und auf dem Server Ihrer Wahl erfolgen soll.
-
-> [!Note]
-> Die Geowiederherstellung im Azure-Portal steht in einer verwalteten Instanz nicht zur Verfügung. Sie können stattdessen PowerShell verwenden.
+Zur Geowiederherstellung einer Datenbank im Azure-Portal öffnen Sie die Seite „SQL-Datenbanken“ und klicken dann auf **Hinzufügen**. Wählen Sie im Textfeld **Quelle auswählen** die Option **Sicherung** aus. Geben Sie die Sicherung an, aus der die Wiederherstellung in der Region und auf dem Server Ihrer Wahl erfolgen soll. 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen
 

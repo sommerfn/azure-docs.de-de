@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 99eb4de86aa227d558bec54d011a0b1548d27cf0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67810053"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Verringern der Kosten für Azure Databricks durch Vorauszahlung
@@ -51,8 +51,8 @@ Sie können Databricks-Pläne im [Azure-Portal](https://portal.azure.com/#blade/
 1. Wählen Sie ein Abonnement aus. Wählen Sie in der Liste **Abonnement** das Abonnement aus, das für den Kauf der reservierten Kapazität verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die reservierte Kapazität belastet. Die Gebühren werden vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
 1. Wählen Sie einen Bereich aus. Wählen Sie in der Liste **Bereich** einen Abonnementbereich aus:
     - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
-    - **Single subscription scope** (Bereich eines einzelnen Abonnements): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
-    - **Shared scope** (Gemeinsam genutzter Bereich): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung.
+    - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
+    - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung.
 1. Wählen Sie aus, wie viele Azure Databricks-Commit-Einheiten Sie erwerben möchten, und schließen Sie den Kauf ab.
 
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135017"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387389"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Aufrufen der Textanalyse von Cognitive Services mit der Python-REST-API 
 <a name="HOLTop"></a>
@@ -49,7 +49,7 @@ import requests
 from pprint import pprint
 ```
 
-Erstellen Sie Variablen für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Rufen Sie diese Werte aus den Umgebungsvariablen TEXT_ANALYTICS_SUBSCRIPTION_KEY und TEXT_ANALYTICS_ENDPOINT ab. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
+Erstellen Sie Variablen für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Rufen Sie diese Werte aus den Umgebungsvariablen „TEXT_ANALYTICS_SUBSCRIPTION_KEY“ und „TEXT_ANALYTICS_ENDPOINT“ ab. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
     
 ```python
 import os
@@ -71,7 +71,7 @@ In den folgenden Abschnitten wird das Aufrufen der einzelnen API-Funktionen besc
 
 ## <a name="detect-languages"></a>Sprachenerkennung
 
-Fügen Sie `languages` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Fügen Sie `/text/analytics/v2.1/languages` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
@@ -140,7 +140,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Analysieren von Stimmungen
 
-Fügen Sie zum Erkennen der Stimmung (zwischen positiv und negativ) in einem Satz von Dokumenten `sentiment` an den Basisendpunkt der Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+Fügen Sie zum Erkennen der Stimmung (zwischen positiv und negativ) in einem Satz von Dokumenten `/text/analytics/v2.1/sentiment` an den Basisendpunkt der Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
@@ -202,7 +202,7 @@ Die Stimmungspunktzahl eines Dokuments liegt zwischen 0,0 und 1,0, dabei gilt: J
 
 ## <a name="extract-key-phrases"></a>Extrahieren von Schlüsselbegriffen
  
-Fügen Sie zum Extrahieren der Schlüsselausdrücke aus einem Satz von Dokumenten `keyPhrases` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+Fügen Sie zum Extrahieren der Schlüsselausdrücke aus einem Satz von Dokumenten `/text/analytics/v2.1/keyPhrases` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Identifizieren von Entitäten
 
-Fügen Sie zum Identifizieren von bekannten Entitäten (Personen, Orten und Gegenständen) in Textdokumenten `entities` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+Fügen Sie zum Identifizieren von bekannten Entitäten (Personen, Orten und Gegenständen) in Textdokumenten `/text/analytics/v2.1/entities` an den Basisendpunkt für die Textanalyse an, um die URL für die Sprachenerkennung zu bilden. Beispiel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"

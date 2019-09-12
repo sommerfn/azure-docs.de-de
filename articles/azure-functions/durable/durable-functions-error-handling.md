@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 33d1b410119e631e0ccc9941beac1062d4ec30f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087327"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734305"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
 
@@ -26,7 +26,45 @@ Jede Ausnahme, die in einer Aktivitätsfunktion ausgelöst wird, wird zurück zu
 
 Betrachten Sie beispielsweise die folgende Orchestratorfunktion, die Guthaben von einem Konto auf ein anderes überträgt:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+
+```csharp
+[FunctionName("TransferFunds")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var transferDetails = ctx.GetInput<TransferOperation>();
+
+    await context.CallActivityAsync("DebitAccount",
+        new
+        {
+            Account = transferDetails.SourceAccount,
+            Amount = transferDetails.Amount
+        });
+
+    try
+    {
+        await context.CallActivityAsync("CreditAccount",
+            new
+            {
+                Account = transferDetails.DestinationAccount,
+                Amount = transferDetails.Amount
+            });
+    }
+    catch (Exception)
+    {
+        // Refund the source account.
+        // Another try/catch could be used here based on the needs of the application.
+        await context.CallActivityAsync("CreditAccount",
+            new
+            {
+                Account = transferDetails.SourceAccount,
+                Amount = transferDetails.Amount
+            });
+    }
+}
+```
+
+### <a name="c-script"></a>C#-Skript
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -107,7 +145,23 @@ Wenn der Aufruf der **CreditAccount**-Funktion (Kreditkonto) für das Zielkonto 
 
 Wenn Sie Aktivitätsfunktionen oder untergeordnete Orchestrierungsfunktionen aufrufen, können Sie eine Richtlinie für automatische Wiederholungen angeben. Im folgenden Beispiel wird versucht, eine Funktion bis zu 3-mal mit je 5 Sekunden Wartezeit zwischen den einzelnen Wiederholungsversuchen aufzurufen:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+
+```csharp
+[FunctionName("TimerOrchestratorWithRetry")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var retryOptions = new RetryOptions(
+        firstRetryInterval: TimeSpan.FromSeconds(5),
+        maxNumberOfAttempts: 3);
+
+    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
+
+    // ...
+}
+```
+
+### <a name="c-script"></a>C#-Skript
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -151,7 +205,37 @@ Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrich
 
 Vielleicht möchten Sie einen Funktionsaufruf innerhalb einer Orchestratorfunktion verwerfen, wenn der Vorgang zu lange dauert. Die richtige Vorgehensweise ist das Erstellen eines [durable timer](durable-functions-timers.md) (permanenter Timer) mithilfe von `context.CreateTimer` (.NET) oder `context.df.createTimer` (JavaScript) in Verbindung mit `Task.WhenAny` (.NET) oder `context.df.Task.any` (JavaScript), wie im folgenden Beispiel:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+
+```csharp
+[FunctionName("TimerOrchestrator")]
+public static async Task<bool> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    TimeSpan timeout = TimeSpan.FromSeconds(30);
+    DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
+
+    using (var cts = new CancellationTokenSource())
+    {
+        Task activityTask = context.CallActivityAsync("FlakyFunction");
+        Task timeoutTask = context.CreateTimer(deadline, cts.Token);
+
+        Task winner = await Task.WhenAny(activityTask, timeoutTask);
+        if (winner == activityTask)
+        {
+            // success case
+            cts.Cancel();
+            return true;
+        }
+        else
+        {
+            // timeout case
+            return false;
+        }
+    }
+}
+```
+
+### <a name="c-script"></a>C#-Skript
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)

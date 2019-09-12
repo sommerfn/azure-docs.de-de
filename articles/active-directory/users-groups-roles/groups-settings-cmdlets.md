@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5ccc4ef6c095eacd29590504d46756ead856574
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058606"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882996"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 Dieser Artikel enthält Anweisungen für die Verwendung von PowerShell-Cmdlets für Azure Active Directory (Azure AD), um Gruppen zu erstellen und zu aktualisieren. Dieser Inhalt gilt nur für Office 365-Gruppen (zuweilen auch als einheitliche Gruppen bezeichnet). 
@@ -28,21 +28,37 @@ Dieser Artikel enthält Anweisungen für die Verwendung von PowerShell-Cmdlets f
 > [!IMPORTANT]
 > Für einige Einstellungen ist eine Azure Active Directory Premium P1-Lizenz erforderlich. Weitere Informationen finden Sie in der Tabelle [Vorlageneinstellungen](#template-settings).
 
-Um Benutzer ohne Administratorrechte am Erstellen von Sicherheitsgruppen zu hindern, legen Sie  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` (wie unter [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben) fest. 
+Um Benutzer ohne Administratorrechte am Erstellen von Sicherheitsgruppen zu hindern, legen Sie  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` (wie unter [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben) fest.
 
 Office 365-Gruppeneinstellungen werden mithilfe eines Settings- und eines SettingsTemplate-Objekts konfiguriert. Zu Beginn werden keine Einstellungsobjekte in Ihrem Verzeichnis angezeigt, da Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Office 365-Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage mit dem Namen „Group.Unified“. Zum Konfigurieren von Office 365-Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Office 365-Gruppe. 
 
 Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Anweisungen zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie im Artikel [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/). Sie können die Version 2 des Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/) installieren.
 
+## <a name="install-powershell-cmdlets"></a>Installieren von PowerShell-Cmdlets
 
+Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory-PowerShell für das Graph-Modul für Windows PowerShell deinstallieren und [Azure Active Directory-PowerShell für Graph – öffentliche Vorschauversion 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) vor dem Ausführen der PowerShell-Befehle installieren.
 
-## <a name="create-settings-at-the-directory-level"></a>Erstellen von Einstellungen auf Verzeichnisebene
-Mit diesen Schritten werden auf Verzeichnisebene Einstellungen erstellt, die für alle Office 365-Gruppen im Verzeichnis gelten. Das Cmdlet „Get-AzureADDirectorySettingTemplate“ steht nur im [Azure AD PowerShell-Vorschaumodul für Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) zur Verfügung.
+1. Führen Sie die Windows PowerShell-App als Administrator aus.
+2. Deinstallieren Sie alle vorherigen Versionen von AzureADPreview.
+  
+   ``` PowerShell
+   Uninstall-Module AzureADPreview
+   Uninstall-Module azuread
+   ```
 
-1. In den DirectorySettings-Cmdlets müssen Sie die ID des SettingsTemplate-Objekts angeben, das Sie verwenden möchten. Wenn Sie diese ID nicht kennen, gibt dieses Cmdlet die Liste aller Einstellungsvorlagen zurück:
+3. Installieren Sie die neueste Version von AzureADPreview.
+  
+   ``` PowerShell
+   Install-Module AzureADPreview
+
+## Create settings at the directory level
+These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
+
    ```
    Bei Aufruf dieses Cmdlets werden alle verfügbaren Vorlagen zurückgegeben:
   
@@ -97,18 +113,18 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 | **Einstellung** | **Beschreibung** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True |Das Flag, das angibt, ob die Erstellung von Office 365-Gruppen im Verzeichnis durch Benutzer ohne Administratorrechte zulässig ist. Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Office 365-Gruppen erlaubt ist, auch wenn der EnableGroupCreation-Wert „false“ lautet. |
-|  <ul><li>UsageGuidelinesUrl<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
-|  <ul><li>ClassificationDescriptions<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>wobei Classification mit den Zeichenfolgen in ClassificationList übereinstimmt.|
-|  <ul><li>DefaultClassification<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Office 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
+|  <ul><li>GroupCreationAllowedGroupId<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Office 365-Gruppen erlaubt ist, auch wenn der EnableGroupCreation-Wert „false“ lautet. |
+|  <ul><li>UsageGuidelinesUrl<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
+|  <ul><li>ClassificationDescriptions<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>wobei Classification mit den Zeichenfolgen in ClassificationList übereinstimmt.|
+|  <ul><li>DefaultClassification<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Office 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: „False“ | Nicht verwenden
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf die Inhalte von Office 365-Gruppen hat.  Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
+|  <ul><li>GuestUsageGuidelinesUrl<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
 |  <ul><li>AllowToAddGuests<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist.|
-|  <ul><li>ClassificationList<li>Geben Sie Folgendes ein:  string<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. |
+|  <ul><li>ClassificationList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene
 1. Rufen Sie alle Einstellungsvorlagen ab:

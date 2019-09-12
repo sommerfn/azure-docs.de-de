@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868922"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376110"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
-[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine grundlegende Skalierungsgruppe erstellen und für verschiedene Szenarien anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss).
+[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine grundlegende Skalierungsgruppe erstellen und für verschiedene Szenarien anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss).
 
 Hier wird eine einfache Vorlage verwendet. Umfassendere Beispiele für Skalierungsgruppenvorlagen finden Sie, indem Sie im [GitHub-Repository mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) nach Ordnern suchen, die die Zeichenfolge `vmss` enthalten.
 

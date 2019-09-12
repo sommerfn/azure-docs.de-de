@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 363002712bdd06e74360de9af186f5a458a4999d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68385361"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Übersicht: Serverloses Azure mit Azure Logic Apps und Azure Functions

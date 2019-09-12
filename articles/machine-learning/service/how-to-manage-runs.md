@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019095"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376298"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -226,7 +226,7 @@ Um viele untergeordnete Ausführungen effizient zu erstellen, verwenden Sie die 
 
 Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. Dies ermöglicht es Ihnen, Hierarchien von übergeordneten und untergeordneten Ausführungen zu erstellen, von denen jede auf verschiedenen Computezielen ausgeführt wird und die über eine allgemeine übergeordnete Ausführungs-ID verbunden sind.
 
-Verwenden Sie die ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-)-Methode, um eine untergeordnete Ausführung aus einer übergeordneten Ausführung zu senden. Ermitteln Sie dazu im Skript der übergeordneten Ausführung den Ausführungskontext, und senden Sie die untergeordnete Ausführung mit der „submit_child“-Methode der Kontextinstanz.
+Verwenden Sie die ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-)-Methode, um eine untergeordnete Ausführung aus einer übergeordneten Ausführung zu senden. Ermitteln Sie dazu im Skript der übergeordneten Ausführung den Ausführungskontext, und senden Sie die untergeordnete Ausführung mit der „submit_child“-Methode der Kontextinstanz.
 
 ```python
 ## In parent run script

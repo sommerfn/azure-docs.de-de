@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 55f8f453faf35d52c5c292e6b309194443980466
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719566"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917745"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
 
@@ -34,11 +34,11 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 3. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
-    ![Die ausgewählte Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
+    ![Die ausgewählte Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     Die Seite „Hive-Ansicht“ ähnelt der folgenden Abbildung:
 
-    ![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+    ![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
 4. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
 
@@ -104,19 +104,19 @@ Klicken Sie auf die Registerkarte **Tez UI** unter dem Arbeitsblatt, um die Tez-
 
 Die Registerkarte __Jobs__ (Aufträge) zeigt einen Verlauf der Hive-Abfragen an.
 
-![Abbildung des Auftragsverlaufs](./media/apache-hadoop-use-hive-ambari-view/job-history.png)
+![Abbildung des Auftragsverlaufs](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Datenbanktabellen
 
 Sie können die Registerkarte __Tables__ (Tabellen) verwenden, um innerhalb einer Hive-Datenbank mit Tabellen zu arbeiten.
 
-![Abbildung der Registerkarte „Tabellen“](./media/apache-hadoop-use-hive-ambari-view/tables.png)
+![Abbildung der Registerkarte „Tabellen“](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
 
 In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nachdem Sie eine Abfrage gespeichert haben, können Sie diese von der Registerkarte __Saved Queries__ aus wiederverwenden.
 
-![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
+![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Gespeicherte Abfragen werden im Standard-Clusterspeicher gespeichert. Sie finden die gespeicherten Abfragen im Pfad `/user/<username>/hive/scripts`. Diese werden als Textdateien vom Typ `.hql` gespeichert.

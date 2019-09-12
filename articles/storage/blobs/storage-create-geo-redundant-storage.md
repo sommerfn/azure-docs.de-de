@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 124b10607f710ddfb76787eac09dea7ec6ffc03c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173047"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390360"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
@@ -49,11 +49,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Installieren Sie Python.](https://www.python.org/downloads/)
 * Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-* Installieren Sie [Maven](https://maven.apache.org/download.cgi), und konfigurieren Sie es so, dass es über die Befehlszeile verwendet werden kann.
-* Installieren und konfigurieren Sie ein [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -107,14 +102,6 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-[Laden Sie ein Beispielprojekt herunter](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs), und extrahieren Sie die Datei „storage-java-ragrs.zip“. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Java-Anwendung.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 [Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs), und entzippen Sie die Datei. Sie können auch [Git](https://git-scm.com/) verwenden, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen. Das Beispielprojekt enthält eine einfache Node.js-Anwendung.
@@ -165,24 +152,6 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-Für dieses Beispiel müssen der Name und Schlüssel Ihres Speicherkontos sicher gespeichert werden. Speichern Sie sie in lokalen Umgebungsvariablen des Computers, auf dem das Beispiel ausgeführt wird. Folgen Sie je nach Betriebssystem den Schritten für das Linux- oder Windows-Beispiel, um die Umgebungsvariablen zu erstellen. Unter Windows ist die Umgebungsvariable erst verfügbar, wenn Sie die **Eingabeaufforderung** oder die verwendete Shell neu laden.
-
-### <a name="linux-example"></a>Linux-Beispiel
-
-```
-export AZURE_STORAGE_ACCOUNT="<youraccountname>"
-export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
-```
-
-### <a name="windows-example"></a>Windows-Beispiel
-
-```powershell
-setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
-setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Um dieses Beispiel ausführen zu können, müssen Sie Ihre Anmeldeinformationen für das Speicherkonto der `.env.example`-Datei hinzufügen und sie in `.env` umbenennen.
@@ -222,49 +191,6 @@ Die retry-Funktion des Storage-Objekts wird auf eine lineare Wiederholungsrichtl
 
 Vor dem Herunterladen werden die Funktionen [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) und [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) für das Dienstobjekt definiert. Mit diesen Funktionen werden die Ereignishandler definiert, die aufgerufen werden, wenn ein Download erfolgreich abgeschlossen wurde oder wenn ein Download fehlschlägt und erneut versucht wird, den Download durchzuführen.
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-Führen Sie das Beispiel mithilfe von Maven über die Befehlszeile aus.
-
-1. Öffnen Sie eine Shell, und navigieren Sie im geklonten Verzeichnis zu **storage-blobs-java-v10-quickstart**.
-2. Geben Sie `mvn compile exec:java` ein.
-
-In diesem Beispiel wird eine Testdatei in Ihrem Standardverzeichnis erstellt. Bei Windows-Benutzern ist dieses Verzeichnis **AppData\Local\Temp**. Im Beispiel werden dann die folgenden Optionen für Befehle angezeigt, die Sie eingeben können:
-
-- Geben Sie **P** ein, um einen Vorgang vom Typ „Put Blob“ auszuführen. Mit diesem Befehl wird eine temporäre Datei in Ihr Speicherkonto hochgeladen.
-- Geben Sie **L** ein, um einen Vorgang vom Typ „List Blob“ auszuführen. Mit diesem Befehl werden die aktuell im Container enthaltenen Blobs aufgelistet.
-- Geben Sie **G** ein, um einen Vorgang vom Typ „Get Blob“ auszuführen. Mit diesem Befehl wird eine Datei aus Ihrem Speicherkonto auf den lokalen Computer heruntergeladen.
-- Geben Sie **D** ein, um einen Vorgang vom Typ „Delete Blob“ auszuführen. Mit diesem Befehl wird das Blob aus Ihrem Speicherkonto gelöscht.
-- Geben Sie **E** ein, um das Beispiel zu schließen. Mit diesem Befehl werden gleichzeitig alle Ressourcen gelöscht, die im Rahmen des Beispiels erstellt wurden.
-
-In diesem Beispiel ist die Ausgabe gezeigt, wenn Sie die Anwendung unter Windows ausführen.
-
-```
-Created quickstart container
-Enter a command
-(P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample
-# Enter a command :
-P
-Uploading the sample file into the container: https://<storageaccount>.blob.core.windows.net/quickstart
-# Enter a command :
-L
-Listing blobs in the container: https://<storageaccount>.blob.core.windows.net/quickstart
-Blob name: SampleBlob.txt
-# Enter a command :
-G
-Get the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-The blob was downloaded to C:\Users\<useraccount>\AppData\Local\Temp\downloadedFile13097087873115855761.txt
-# Enter a command :
-D
-Delete the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-
-# Enter a command :
->> Blob deleted: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-E
-Cleaning up the sample and exiting!
-```
-
-Da Sie die Kontrolle über das Beispiel haben, geben Sie Befehle ein, damit der Code ausgeführt wird. Bei Eingaben muss die Groß-/Kleinschreibung beachtet werden.
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -389,18 +315,6 @@ def response_callback(response):
         if secondary_read_count >= secondary_threshold:
             blob_client.location_mode = LocationMode.PRIMARY
             secondary_read_count = 0
-```
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
-
-Beim Java V10 SDK ist das Definieren von Rückrufhandlern nicht erforderlich. Zudem unterscheidet sich das SDK jetzt in einigen Punkten grundlegend vom V7 SDK. Anstelle von „LocationMode“ wird jetzt eine sekundäre **Pipeline** verwendet. Eine sekundäre Pipeline kann über die **RequestRetryOptions** definiert werden. Ist sie definiert, kann die Anwendung automatisch zur sekundären Pipeline wechseln, wenn sie Ihre Daten nicht über die primäre Pipeline erreichen kann.
-
-```java
-// We create pipeline options here so that they can be easily used between different pipelines
-PipelineOptions myOptions = new PipelineOptions();
-myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
-// We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
-final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

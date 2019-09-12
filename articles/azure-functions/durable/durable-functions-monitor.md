@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098018"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734331"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
@@ -67,7 +67,7 @@ Die Funktion **E3_Monitor** verwendet die Standarddatei *function.json* für Orc
 
 Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#-Skript
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -103,7 +103,7 @@ Bei den Hilfsaktivitätsfunktionen handelt es sich, wie bei anderen Beispielen, 
 
 Hier ist die Implementierung. Wie bei den für die Datenübertragung verwendeten POCO-Objekten wird die Logik für die Verarbeitung des API-Aufrufs und die Analyse der Antwort-JSON in eine freigegebene C#-Klasse abstrahiert. Sie finden die Logik im [Visual Studio-Beispielcode](#run-the-sample).
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#-Skript
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ Die Funktion **E3_SendGoodWeatherAlert** verwendet die Twilio-Bindung, um eine S
 
 Hier sehen Sie den Code, der die SMS-Nachricht sendet:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#-Skript
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

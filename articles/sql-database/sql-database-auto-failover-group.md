@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/16/2019
-ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035767"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208341"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
-Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem SQL-Datenbank-Server oder aller Datenbanken in einer verwalteten Instanz zu einer anderen Region verwalten können. Hierbei handelt es sich um eine deklarative Abstraktion, die auf dem bereits vorhandenen Feature [Aktive Georeplikation](sql-database-active-geo-replication.md) basiert und dazu dient, die Bereitstellung und Verwaltung georeplizierter Datenbanken zu vereinfachen. Sie können ein Failover manuell initiieren oder basierend auf einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Eine Failovergruppe kann eine oder mehrere Datenbanken enthalten, die in der Regel von der gleichen Anwendung verwendet werden. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
+Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem SQL-Datenbank-Server oder aller Datenbanken in einer verwalteten Instanz zu einer anderen Region verwalten können. Hierbei handelt es sich um eine deklarative Abstraktion, die auf dem bereits vorhandenen Feature [Aktive Georeplikation](sql-database-active-geo-replication.md) basiert und dazu dient, die Bereitstellung und Verwaltung georeplizierter Datenbanken zu vereinfachen. Sie können ein Failover manuell initiieren oder basierend auf einer benutzerdefinierten Richtlinie an den SQL-Datenbank-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Eine Failovergruppe kann eine oder mehrere Datenbanken enthalten, die in der Regel von der gleichen Anwendung verwendet werden. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.
 
 > [!NOTE]
 > Wenn Sie mit Einzel- oder Pooldatenbanken auf einem SQL-Datenbank-Server arbeiten und mehrere sekundäre Datenbanken in derselben oder in verschiedenen Regionen nutzen möchten, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md). 
@@ -92,7 +92,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Schreibgeschützte Failoverrichtlinie**
 
-  Standardmäßig ist das Failover des schreibgeschützten Listeners deaktiviert. Dadurch wird sichergestellt, dass die Leistung der primären Datenbank nicht beeinträchtigt wird, wenn die sekundäre Datenbank offline ist. Es bedeutet jedoch auch, dass die schreibgeschützten Sitzungen erst dann eine Verbindung herstellen können, nachdem die sekundäre Datenbank wiederhergestellt wurde. Wenn Sie keine Ausfallzeiten für die schreibgeschützten Sitzungen tolerieren und die primäre Datenbank vorübergehend sowohl für den schreibgeschützten als auch den Lese-/Schreibdatenverkehr auf Kosten der möglichen Leistungseinbußen der primären Datenbank verwenden möchten, können Sie das Failover für den schreibgeschützten Listener aktivieren. In diesem Fall wird der schreibgeschützte Datenverkehr automatisch zur primären Datenbank umgeleitet, wenn die sekundäre Datenbank nicht verfügbar ist.
+  Standardmäßig ist das Failover des schreibgeschützten Listeners deaktiviert. Dadurch wird sichergestellt, dass die Leistung der primären Datenbank nicht beeinträchtigt wird, wenn die sekundäre Datenbank offline ist. Es bedeutet jedoch auch, dass die schreibgeschützten Sitzungen erst dann eine Verbindung herstellen können, nachdem die sekundäre Datenbank wiederhergestellt wurde. Wenn Sie keine Ausfallzeiten für die schreibgeschützten Sitzungen tolerieren und die primäre Datenbank vorübergehend sowohl für den schreibgeschützten als auch den Lese-/Schreibdatenverkehr auf Kosten der möglichen Leistungseinbußen der primären Datenbank verwenden möchten, können Sie das Failover für den schreibgeschützten Listener aktivieren, indem Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` konfigurieren. In diesem Fall wird der schreibgeschützte Datenverkehr automatisch zur primären Datenbank umgeleitet, wenn die sekundäre Datenbank nicht verfügbar ist.
 
 - **Geplantes Failover**
 
@@ -112,7 +112,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Toleranzperiode mit Datenverlust**
 
-  Da die primären und sekundären Datenbanken mithilfe der asynchronen Replikation synchronisiert werden, kann das Failover zu Datenverlust führen. Sie können die Richtlinie für automatisches Failover entsprechend der Toleranz Ihrer Anwendung gegenüber Datenverlust anpassen. Durch Konfigurieren von **GracePeriodWithDataLossHours** können Sie steuern, wie lange das System wartet, bevor das Failover initiiert wird, das wahrscheinlich zu Datenverlust führt.
+  Da die primären und sekundären Datenbanken mithilfe der asynchronen Replikation synchronisiert werden, kann das Failover zu Datenverlust führen. Sie können die Richtlinie für automatisches Failover entsprechend der Toleranz Ihrer Anwendung gegenüber Datenverlust anpassen. Durch Konfiguration von `GracePeriodWithDataLossHours` können Sie steuern, wie lange das System wartet, bevor das Failover initiiert wird, das wahrscheinlich zu Datenverlust führt.
 
 - **Mehrere Failovergruppen**
 
@@ -155,7 +155,7 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
 
 - **Nur-Lese-Listener für schreibgeschützte Workload verwenden**
 
-  Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Es wird außerdem empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu **ApplicationIntent=ReadOnly**.
+  Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Darüber hinaus wird empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu `ApplicationIntent=ReadOnly`. Wenn Sie sicherstellen möchten, dass die schreibgeschützte Workload nach einem Failover oder beim Wechsel des sekundären Servers in den Offlinemodus die Verbindung wiederherstellen kann, müssen Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` der Failoverrichtlinie konfigurieren. 
 
 - **Vorbereitung auf die Beeinträchtigung der Leistung**
 
@@ -166,7 +166,7 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
 
 - **Vorbereiten auf Datenverluste**
 
-  Wenn ein Ausfall erkannt wird, wartet SQL für den mit **GracePeriodWithDataLossHours** festgelegten Zeitraum. Der Standardwert ist 1 Stunde. Wenn keine Datenverluste auftreten dürfen, legen Sie **GracePeriodWithDataLossHours** auf eine ausreichend große Zahl fest, z.B. 24 Stunden. Verwenden Sie manuelles Gruppenfailover für ein Failback von der sekundären zur primären Datenbank.
+  Wenn ein Ausfall erkannt wird, wartet SQL während des Zeitraums, den Sie durch `GracePeriodWithDataLossHours` angegeben haben. Der Standardwert ist 1 Stunde. Wenn keine Datenverluste auftreten dürfen, legen Sie `GracePeriodWithDataLossHours` unbedingt auf eine ausreichend große Zahl fest, z.B. 24 Stunden. Verwenden Sie manuelles Gruppenfailover für ein Failback von der sekundären zur primären Datenbank.
 
   > [!IMPORTANT]
   > Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und über 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
@@ -191,12 +191,20 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
   Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Hierzu können Sie einen optionalen Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben. 
 
-  Weitere Informationen zum Erstellen der sekundären Instanz in der gleichen DNS-Zone wie die primäre Instanz finden Sie unter [Verwalten von Failovergruppen mit verwalteten Instanzen (Vorschau)](#powershell-managing-failover-groups-with-managed-instances-preview).
+  Weitere Informationen zum Erstellen der sekundären Instanz in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
 - **Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen**
 
   Da jede Instanz in einem eigenen VNET isoliert ist, muss der bidirektionale Datenverkehr zwischen diesen VNETs zugelassen werden. Informationen dazu finden Sie unter [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
+- **Erstellen einer Failovergruppe zwischen verwalteten Instanzen in verschiedenen Abonnements**
+
+  Sie können eine Failovergruppe zwischen verwalteten Instanzen in zwei verschiedenen Abonnements erstellen. Wenn Sie die PowerShell-API verwenden, können Sie dazu den Parameter `PartnerSubscriptionId` für die sekundäre Instanz angeben. Wenn Sie die REST-API verwenden, kann jede im Parameter `properties.managedInstancePairs` enthaltene Instanz-ID eine eigene Abonnement-ID haben. 
+  
+  > [!IMPORTANT]
+  > Das Azure-Portal unterstützt keine Failovergruppen über verschiedene Abonnements hinweg.
+
+  
 - **Konfigurieren einer Failovergruppe zur Verwaltung des Failovers der gesamten Instanz**
 
   Die Failovergruppe verwaltet das Failover aller Datenbanken in der Instanz. Beim Erstellen einer Gruppe wird jede Datenbank in der Instanz automatisch in der sekundären Instanz geografisch repliziert. Sie können Failovergruppen nicht verwenden, um ein Teilfailover einer Untergruppe von Datenbanken zu initiieren.
@@ -297,10 +305,10 @@ Diese Reihenfolge ist besonders zur Vermeidung des Überladens der sekundären D
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Verhindern des Verlusts wichtiger Daten
 
-Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchroner Replikationsmechanismus verwendet. Asynchrone Replikation macht Datenverlust unvermeidlich, sobald ein Ausfall auftritt. Bei einigen Anwendung dürfen jedoch ggf. keine Daten verloren gehen. Um diese kritischen Aktualisierungen zu schützen, kann ein Anwendungsentwickler die Systemprozedur [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) aufrufen, unmittelbar nachdem der Commit für die Transaktion erfolgt ist. Das Aufrufen von **sp_wait_for_database_copy_sync** blockiert den aufrufenden Thread so lange, bis die letzte Transaktion mit erfolgtem Commit in die sekundäre Datenbank übertragen wurde. Es wird jedoch nicht abgewartet, bis die übertragenen Transaktionen wiedergegeben und in der sekundären Datenbank committet werden. **sp_wait_for_database_copy_sync** ist auf eine bestimmte fortlaufende Kopierverknüpfung begrenzt. Jeder Benutzer mit den Rechten zum Herstellen der Verbindung mit der primären Datenbank kann diese Prozedur aufrufen.
+Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchroner Replikationsmechanismus verwendet. Asynchrone Replikation macht Datenverlust unvermeidlich, sobald ein Ausfall auftritt. Bei einigen Anwendung dürfen jedoch ggf. keine Daten verloren gehen. Um diese kritischen Aktualisierungen zu schützen, kann ein Anwendungsentwickler die Systemprozedur [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) aufrufen, unmittelbar nachdem der Commit für die Transaktion erfolgt ist. Das Aufrufen von `sp_wait_for_database_copy_sync` blockiert den aufrufenden Thread so lange, bis die letzte Transaktion mit erfolgtem Commit in die sekundäre Datenbank übertragen wurde. Es wird jedoch nicht abgewartet, bis die übertragenen Transaktionen wiedergegeben und in der sekundären Datenbank committet werden. `sp_wait_for_database_copy_sync` ist auf ein bestimmtes fortlaufendes „Link kopieren“ begrenzt. Jeder Benutzer mit den Rechten zum Herstellen der Verbindung mit der primären Datenbank kann diese Prozedur aufrufen.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** verhindert Datenverlust nach einem Failover, garantiert aber nicht die vollständige Synchronisierung für den Lesezugriff. Die vom Aufruf der Prozedur **sp_wait_for_database_copy_sync** verursachte Verzögerung kann signifikant sein und hängt von der Größe des Transaktionsprotokolls zum Zeitpunkt des Aufrufs ab.
+> `sp_wait_for_database_copy_sync` verhindert Datenverlust nach einem Failover, garantiert aber nicht die vollständige Synchronisierung für den Lesezugriff. Die vom Aufruf einer `sp_wait_for_database_copy_sync`-Prozedur verursachte Verzögerung kann signifikant sein und hängt von der Größe des Transaktionsprotokolls zum Zeitpunkt des Aufrufs ab.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Failovergruppen und Point-in-Time-Wiederherstellung
 
@@ -326,34 +334,16 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 > Ein Beispielskript finden Sie unter [Konfiguration und Failover einer Failovergruppe für eine einzelne Datenbank](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 >
 
-### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell: Verwalten von Failovergruppen mit verwalteten Instanzen (Vorschau)
+### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell: Verwalten von SQL-Datenbank-Failovergruppen mit verwalteten Instanzen 
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>Installieren der neuesten Vorabversion von PowerShell
-
-1. Aktualisieren Sie das PowerShellGet-Modul auf Version 1.6.5 (oder die neueste Vorschauversion). Siehe [Website zur PowerShell-Vorschauversion](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
-
-   ```powershell
-      install-module PowerShellGet -MinimumVersion 1.6.5 -force
-   ```
-
-2. Führen Sie in einem neuen PowerShell-Fenster die folgenden Befehle aus:
-
-   ```powershell
-      import-module PowerShellGet
-      get-module PowerShellGet #verify version is 1.6.5 (or newer)
-      install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
-      import-module azurerm.sql
-   ```
-
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>PowerShell-Cmdlets zum Erstellen einer Instanzfailovergruppe
-
-| API | BESCHREIBUNG |
+| Cmdlet | BESCHREIBUNG |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Ändert die Konfiguration der Failovergruppe.|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Ruft die Konfiguration der Failovergruppe ab.|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Entfernt eine Failovergruppe.|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ändert die Konfiguration der Failovergruppe.|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Ruft die Konfiguration der Failovergruppe ab.|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Entfernt eine Failovergruppe.|
+|  | |
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit Einzel- und Pooldatenbanken
 

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 2d6814653967fa76ad22bcefcc94df42d60d67b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4032b2ca791a51ffa4ef3be50f26b407c6bc6b65
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165955"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376410"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 
@@ -50,7 +50,7 @@ Die Migration virtueller Netzwerke von Azure Deutschland zu Azure weltweit wird 
 
 Weitere Informationen finden Sie unter:
 
-- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/#step-by-step-tutorials) durcharbeiten.
+- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network) durcharbeiten.
 - Im Artikel [Übersicht über virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie den Artikel [Planen virtueller Netzwerke](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -77,7 +77,7 @@ Das Migrieren einer Azure ExpressRoute-Instanz von Azure Deutschland zu Azure we
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu ExpressRoute](https://docs.microsoft.com/azure/expressroute/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu ExpressRoute](https://docs.microsoft.com/azure/expressroute) durcharbeiten.
 - Im Artikel [Erstellen eines neuen ExpressRoute-Gateways](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie den Artikel [ExpressRoute-Standorte und -Dienstanbieter](../expressroute/expressroute-locations.md).
 - Lesen Sie auch den Artikel [Gateways für virtuelle Netzwerke für ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
@@ -92,7 +92,7 @@ Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen S
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway) durcharbeiten.
 - Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway).
 - Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/).
@@ -149,7 +149,7 @@ az network dns record-set ns list -g <resource group> -z --output json
 
 Weitere Informationen finden Sie unter:
 
-- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure DNS](https://docs.microsoft.com/azure/dns/#step-by-step-tutorials) durcharbeiten.
+- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure DNS](https://docs.microsoft.com/azure/dns) durcharbeiten.
 - Im Artikel [Übersicht über Azure DNS](../dns/dns-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Azure DNS-Import und -Export](../dns/dns-import-export.md).
 
@@ -159,7 +159,7 @@ Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher) durcharbeiten.
 - Im Artikel [Übersicht über Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
 - Erfahren Sie mehr über [Verbindungsmonitor](../network-watcher/connection-monitor.md).
@@ -180,7 +180,7 @@ Sie können zusätzliche Endpunkte in der Zielumgebung definieren, indem Sie den
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager) durcharbeiten.
 - Lesen Sie [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/traffic-manager-create-profile.md).
 
@@ -190,7 +190,7 @@ Das Migrieren einer Azure Load Balancer-Instanz von Azure Deutschland zu Azure w
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Load Balancer](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Load Balancer](https://docs.microsoft.com/azure/load-balancer) durcharbeiten.
 - Lesen Sie auch den Artikel [Übersicht über Azure Load Balancer](../load-balancer/load-balancer-overview.md).
 - Im Artikel [Erstellen eines neuen Load Balancers](../load-balancer/quickstart-load-balancer-standard-public-portal.md) finden Sie weitere Informationen zu diesem Thema.
 

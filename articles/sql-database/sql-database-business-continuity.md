@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569345"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744468"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -140,7 +140,7 @@ Wenn Sie die automatischen Sicherungen mit georedundanter Speicherung (standardm
 Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmechanismus folgende zusätzliche Aufgaben ausführen, damit Ihre Anwendungen wieder vollständig einsatzfähig sind und von Ihren Benutzern wieder in vollem Umfang verwendet werden können:
 
 - Umleiten von Clients und Clientanwendungen an den neuen Server
-- Sicherstellen, dass geeignete IP-Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal), um entsprechende Regeln zu aktivieren).
+- Sicherstellen, dass geeignete IP-Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules), um entsprechende Regeln zu aktivieren).
 - Sicherstellen, dass die geeigneten Anmeldeinformationen und Berechtigungen auf Ebene der Masterdatenbank vorhanden sind (oder Verwenden von [eigenständigen Benutzern](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurieren der erforderlichen Überwachung
 - Konfigurieren der erforderlichen Warnungen

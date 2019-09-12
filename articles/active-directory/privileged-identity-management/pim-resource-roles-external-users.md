@@ -3,7 +3,7 @@ title: Einladen von Gastbenutzern und Zuweisen von Azure-Ressourcenrollen in PIM
 description: Erfahren Sie, wie Sie in Azure AD Privileged Identity Management (PIM) externe Gastbenutzer einladen und Azure-Ressourcenrollen zuweisen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07476c9f5db64a5d107a493022fa3548fe0dae4c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f3e01b58a2a2fc6f93ae5ccc15e200a0cea69a0c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476354"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804215"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Einladen von Gastbenutzern und Zuweisen von Azure-Ressourcenrollen in PIM
 

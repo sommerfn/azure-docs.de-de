@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8a0b974e9b64d477e53c37757b4f2fa952befba2
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061862"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743399"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -54,7 +54,7 @@ Sie lernen Folgendes:
 
 Dieser Artikel fährt dort fort, wo Sie hier aufgehört haben: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) oder [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Absolvieren Sie zunächst eins der beiden Tutorials, sofern noch nicht geschehen. Alternativ können Sie die Schritte für Ihre eigene .NET-App mit SQL-Datenbank anpassen.
 
-Vergewissern Sie sich zum Debuggen Ihrer App mit SQL-Datenbank als Back-End, dass Sie Clientverbindung von Ihrem Computer zugelassen haben. Falls nicht, fügen Sie die Client-IP mithilfe der Schritte unter the steps at [IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse](../sql-database/sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) hinzu.
+Vergewissern Sie sich zum Debuggen Ihrer App mit SQL-Datenbank als Back-End, dass Sie Clientverbindung von Ihrem Computer zugelassen haben. Falls nicht, fügen Sie die Client-IP mithilfe der Schritte unter the steps at [IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) hinzu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
