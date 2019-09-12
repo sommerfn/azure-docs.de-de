@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e69fea4d57aaf2a0b7d3615b1eecbf99a6b13ab8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 004da6c84e6226c4de3114d32cde826cd167e1ab
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256802"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844836"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
@@ -99,6 +99,6 @@ Weitere Informationen zu Azure Active Directory-Benutzern und Einwilligung:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, [wie Sie Versionen verwenden](luis-how-to-manage-versions.md), um den Lebenszyklus ihrer App zu steuern.
-* Informieren Sie sich über die Konzepte, einschließlich der [Erstellungsressource](/luis-concept-keys.md#authoring-key) und der [Mitwirkenden](luis-concept-keys.md#contributions-from-other-authors) für diese Ressource.
+* Informieren Sie sich über die Konzepte, einschließlich der [Erstellungsressource](luis-concept-keys.md#authoring-key) und der [Mitwirkenden](luis-concept-keys.md#contributions-from-other-authors) für diese Ressource.
 * Erfahren Sie, wie Sie Erstellungs- und Laufzeitressourcen [erstellen](luis-how-to-azure-subscription.md).
 * Migrieren Sie zu der neuen [Erstellungsressource](luis-migration-authoring.md). 
