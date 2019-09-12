@@ -8,18 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee359b76072da3caee9ae1f5fab3d0fc28d25c0e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972686"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240710"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute
 
 Wenn Sie bereits über eine Azure ExpressRoute-Verbindung von einem externen Standort (z.B. aus einer lokalen Umgebung) mit Azure verfügen, können Sie diese mit ihrer CloudSimple-Umgebung verbinden. Hierfür können Sie eine Azure-Funktion verwenden, mit der zwei ExpressRoute-Leitungen miteinander verbunden werden können. Diese Methode stellt eine sichere, private Verbindung mit hoher Bandbreite und geringer Latenz zwischen den beiden Umgebungen her.
 
 [![Lokale ExpressRoute-Verbindung – Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Ein **/29**-Netzwerkadressblock ist erforderlich, um Global Reach-Verbindungen vom lokalen Standort aus herzustellen.  Der „/29“-Adressraum wird für das Transitnetzwerk zwischen ExpressRoute-Leitungen verwendet.  Zwischen dem Transitnetzwerk und Azure Virtual Networks, lokalen Netzwerken oder privaten CloudSimple-Netzwerken darf es keine Überschneidungen geben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,3 +69,8 @@ Zum Einrichten der ExpressRoute-Verbindung müssen Sie eine Autorisierung für I
     * Problemtyp: **Dienstanforderung**
     * Problemuntertyp: **Erstellen einer ExpressRoute-Verbindung mit der lokalen Umgebung**
     * Geben Sie die Ressourcen-ID und den Autorisierungsschlüssel an, den Sie im Detailbereich kopiert und gespeichert haben.
+    * Geben Sie einen„/29“-Netzwerkadressraum für das Transitnetzwerk an.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Weitere Informationen zu Azure-Netzwerkverbindungen](cloudsimple-azure-network-connection.md)  

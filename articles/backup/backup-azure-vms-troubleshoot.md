@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b3d02d5cfdae2f196f2f35f075dd8c250b5ece1
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258978"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860332"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -25,7 +25,7 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
 
 ### <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
 
-* Stellen Sie sicher, dass der VM-Agent (WA-Agent) die [neueste Version](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine) aufweist.
+* Stellen Sie sicher, dass der VM-Agent (WA-Agent) die [neueste Version](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent) aufweist.
 * Stellen Sie sicher, dass die Betriebssystemversion des virtuellen Windows- oder Linux-Computers unterstützt wird. Entsprechende Informationen finden Sie in der [Supportmatrix zur IaaS-VM-Sicherung](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
 * Überprüfen Sie, ob kein anderer Sicherungsdienst ausgeführt wird.
    * Um sicherzustellen, dass keine Probleme bei der Momentaufnahmenerweiterung vorliegen, [deinstallieren Sie die Erweiterungen, um erneutes Laden zu erzwingen, und wiederholen Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load).

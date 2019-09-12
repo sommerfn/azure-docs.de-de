@@ -9,20 +9,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: a7f64a07378b5ef0085fe77018d6b202984bc1a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945820"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256430"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.  
 
 ## <a name="release-notes"></a>Versionshinweise 
+
+### <a name="september-3-2019"></a>3\. September 2019
+
+* Azure-Erstellungsressource: [jetzt migrieren](luis-migration-authoring.md).
+* Unterstützung für vordefinierte Entitäten in Türkisch
+* Unterstützung für datetimeV2 in Italienisch
 
 ### <a name="july-23-2019"></a>23. Juli 2019
 

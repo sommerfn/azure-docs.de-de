@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932674"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213520"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Vorschau: Migrieren zu API-Version 3.x für LUIS-Apps
 
@@ -164,7 +164,7 @@ const score = intents[topIntentName];
 Die Änderungen am JSON-Antwortschema ermöglichen Folgendes:
 
 * Klare Trennung zwischen der ursprünglichen Äußerung (`query`) und der zurückgegebenen Vorhersage (`prediction`).
-* Vereinfachter programmgesteuerter Zugriff auf vorhergesagte Daten. Sie müssen nun nicht mehr wie in V2 das Array durchsuchen, sondern können mit **named** auf Werte für Absichten und Entitäten zugreifen. Für vorhergesagte Entitätsrollen wird der Rollenname zurückgegeben, da dieser überall in der App eindeutig ist.
+* Vereinfachter programmgesteuerter Zugriff auf vorhergesagte Daten. Sie müssen nun nicht mehr wie in V2 ein Array durchlaufen, sondern können sowohl für Absichten als auch Entitäten über den **Namen** auf Werte zugreifen. Für vorhergesagte Entitätsrollen wird der Rollenname zurückgegeben, da dieser überall in der App eindeutig ist.
 * Wenn Datentypen ermittelt werden, werden diese auch berücksichtigt. Numerische Typen werden nicht mehr als Zeichenfolgen zurückgegeben.
 * Unterscheidung zwischen Vorhersageinformationen der ersten Prioritätsstufe und zusätzlichen Metadaten, die innerhalb des `$instance`-Objekts zurückgegeben werden. 
 
@@ -418,7 +418,7 @@ Wenn Sie den folgenden JSON-Anforderungstext senden, wird der Liste eine neue Un
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

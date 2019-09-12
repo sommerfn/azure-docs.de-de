@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2a540606a6f9cfa790a2244628e7f0b7bef35986
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4356d9e1cd3d6f1a924603f7405d612814d35859
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639259"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256932"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>Erstellungszyklus für Ihre LUIS-App
 LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
@@ -38,12 +38,12 @@ Sie weisen LUIS an, Äußerungen zu ignorieren, die für Ihre App-Domäne nicht 
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
 Wenn Sie zu jeder Absicht 15 bis 30 verschiedene Äußerungen haben und die erforderlichen Entitäten mit Bezeichnungen versehen sind, führen Sie das [Training](luis-how-to-train.md) und dann die [Veröffentlichung](luis-how-to-publish-app.md) durch. Verwenden Sie den Link aus der Veröffentlichungsbenachrichtigung, um zu Ihren Endpunkten zu gelangen. Stellen Sie sicher, dass Ihre App erstellt und veröffentlicht wurde, damit sie in den [Endpunktregionen](luis-reference-regions.md) verfügbar ist. 
 
-## <a name="https-endpoint-testing"></a>HTTPS-Tests an Endpunkten
-Sie können Ihre LUIS-App von dem HTTPS-Endpunkt aus testen. Durch Tests vom Endpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur [Überprüfung](luis-how-to-review-endpoint-utterances.md) auswählen.  
+## <a name="https-prediction-endpoint-testing"></a>Ausführen von Tests vom HTTPS-Vorhersageendpunkt
+Sie können Ihre LUIS-App vom HTTPS-Vorhersageendpunkt aus testen. Durch Tests vom Vorhersageendpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur [Überprüfung](luis-how-to-review-endpoint-utterances.md) auswählen.  
 
 ## <a name="recycle"></a>Recyceln
 
-Wenn Sie einen Erstellungszyklus abgeschlossen haben, können Sie erneut beginnen. Beginnen Sie mit dem [Überprüfen der Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md), die LUIS mit niedrigen Zuverlässigkeitswerten gekennzeichnet hat. Überprüfen Sie diese Äußerungen auf Absichten und Entitäten. Nach dem Überprüfen der Äußerungen sollte die Prüfliste leer sein.  
+Wenn Sie einen Erstellungszyklus abgeschlossen haben, können Sie erneut beginnen. Beginnen Sie mit dem [Überprüfen der Vorhersageendpunktäußerungen](luis-how-to-review-endpoint-utterances.md), die LUIS mit niedrigen Zuverlässigkeitswerten gekennzeichnet hat. Überprüfen Sie diese Äußerungen auf Absichten und Entitäten. Nach dem Überprüfen der Äußerungen sollte die Prüfliste leer sein.  
 
 Denken Sie daran, die aktuelle Version in eine neue Version zu [klonen](luis-concept-version.md#clone-a-version), und beginnen Sie dann mit Ihren Änderungen in der neuen Version. 
 
@@ -53,4 +53,4 @@ Durch das [Testen in Batches](luis-concept-batch-test.md) können Sie sehen, wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über die Konzepte der [Zusammenarbeit](luis-concept-collaborator.md).
+Informieren Sie sich über die Konzepte der [Zusammenarbeit](luis-concept-keys.md).

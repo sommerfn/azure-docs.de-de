@@ -7,18 +7,19 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4e217ce3fcfae0f7d103c545ff385f2dffe582d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100499"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208335"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -38,13 +39,15 @@ Zum Registrieren der SQL Server-VM beim Ressourcenanbieter benötigen Sie Folge
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine [SQL Server-VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
-- Die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) und [PowerShell](/powershell/azure/new-azureps-module-az). 
+- Die aktuelle Version von [Azure CLI](/cli/azure/install-azure-cli) oder [PowerShell](/powershell/azure/new-azureps-module-az). 
 
 
 ## <a name="register-with-sql-vm-resource-provider"></a>Registrieren beim SQL VM-Ressourcenanbieter
-Wenn die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht auf der VM installiert ist, können Sie sich beim SQL-VM-Ressourcenanbieter registrieren, indem Sie den Lightweight-SQL-Verwaltungsmodus angeben. Im Lightweight-SQL-Verwaltungsmodus installiert der SQL-VM-Ressourcenanbieter automatisch die SQL-IaaS-Erweiterung im [Lightweight-Modus](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) und verifiziert die Metadaten der SQL Server-Instanz; hierbei wird der SQL Server-Dienst nicht neu gestartet. Bei der Registrierung beim SQL-VM-Ressourcenanbieter müssen Sie den gewünschten Typ von SQL Server-Lizenz mit entweder „PAYG“ oder „AHUB“ angeben.
+Wenn die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht auf der VM installiert ist, können Sie sich beim SQL-VM-Ressourcenanbieter registrieren, indem Sie den Lightweight-SQL-Verwaltungsmodus angeben. 
 
-Die Registrierung beim SQL-VM-Ressourcenanbieter im [Lightweight-Modus](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) stellt Konformität sicher und bietet Flexibilität beim Lizenzieren sowie beim Aktualisieren vorhandener SQL Server-Editions. Failoverclusterinstanzen und Bereitstellungen mit mehreren Instanzen können beim SQL-VM-Ressourcenanbieter nur im Lightweight-Modus registriert werden. Sie können jederzeit die Anweisungen im Azure-Portal für ein Upgrade auf den [Vollmodus](virtual-machines-windows-sql-server-agent-extension.md#install-in-full-mode) befolgen und umfassende Verwaltbarkeitsfunktionen mit einem Neustart von SQL Server aktivieren. 
+Wenn während der Registrierung der Lightweightmodus angegeben wird, installiert der SQL-VM-Ressourcenanbieter die SQL-IaaS-Erweiterung automatisch im [Lightweightmodus](#change-management-modes) und überprüft die Metadaten der SQL Server-Instanz. Dabei wird der SQL Server-Dienst nicht neu gestartet. Bei der Registrierung beim SQL-VM-Ressourcenanbieter müssen Sie den gewünschten Typ von SQL Server-Lizenz mit entweder „PAYG“ oder „AHUB“ angeben.
+
+Die Registrierung beim SQL-VM-Ressourcenanbieter im Lightweightmodus gewährleistet Konformität, eine flexible Lizenzierung sowie flexible direkte SQL Server-Editionsupdates. Failoverclusterinstanzen und Bereitstellungen mit mehreren Instanzen können beim SQL-VM-Ressourcenanbieter nur im Lightweight-Modus registriert werden. Sie können jederzeit ein [Upgrade](#change-management-modes) auf den vollständigen Verwaltungsmodus durchführen. Dadurch wird jedoch der SQL Server-Dienst neu gestartet. 
 
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
@@ -59,7 +62,7 @@ Registrieren Sie die SQL Server-VM mit dem folgenden PowerShell-Codeausschnitt:
      # Register SQL VM with 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
+        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG';sqlManagement='LightWeight'}  
   
   ```
 
@@ -70,7 +73,7 @@ Für kostenpflichtige Editionen (Enterprise oder Standard):
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
 
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type AHUB 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
 
   ```
 
@@ -83,7 +86,7 @@ Für kostenlose Editionen (Developer, Web oder Express):
   ```
 ---
 
-Wenn die SQL-IaaS-Erweiterung auf der VM installiert ist, muss zum Registrieren beim SQL-VM-Ressourcenanbieter lediglich eine Metadatenressource vom Typ Microsoft.SqlVirtualMachine/SqlVirtualMachines erstellt werden. Nachstehend finden Sie den Codeausschnitt zum Registrieren beim SQL-VM-Ressourcenanbieter, wenn die SQL-IaaS-Erweiterung bereits auf der VM installiert ist. Bei der Registrierung beim SQL-VM-Ressourcenanbieter müssen Sie den gewünschten Typ von SQL Server-Lizenz mit entweder „PAYG“ oder „AHUB“ angeben.
+Wenn die SQL-IaaS-Erweiterung manuell auf der VM installiert wurde, können Sie sich im vollständigen Modus beim SQL-VM-Ressourcenanbieter registrieren, indem Sie einfach eine Metadatenressource vom Typ Microsoft.SqlVirtualMachine/SqlVirtualMachines erstellen. Nachstehend finden Sie den Codeausschnitt zum Registrieren beim SQL-VM-Ressourcenanbieter, wenn die SQL-IaaS-Erweiterung bereits auf der VM installiert ist. Sie müssen den gewünschten SQL Server-Lizenztyp entweder mit „PAYG“ oder „AHUB“ angeben. Verwenden Sie den folgenden PowerShell-Befehl, um sich im vollständigen Verwaltungsmodus zu registrieren:
 
   ```powershell-interactive
   # Get the existing  Compute VM
@@ -92,13 +95,13 @@ Wenn die SQL-IaaS-Erweiterung auf der VM installiert ist, muss zum Registrieren 
    # Register with SQL VM resource provider
    New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
       -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'}
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG'}
   ```
 
 
 ## <a name="register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms"></a>Registrieren von SQL Server 2008 oder 2008 R2 auf Windows Server 2008-VMs
 
-Installationen von SQL Server 2008 und 2008 R2 unter Windows Server 2008 können beim SQL-VM-Ressourcenanbieter im Modus [NoAgent](virtual-machines-windows-sql-server-agent-extension.md) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
+Installationen von SQL Server 2008 und 2008 R2 unter Windows Server 2008 können beim SQL-VM-Ressourcenanbieter im Modus [NoAgent](#change-management-modes) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
 
 In der folgenden Tabelle werden die während der Registrierung angegebenen zulässigen Werte für die Parameter aufgeführt:
 
@@ -118,7 +121,7 @@ Verwenden Sie für die Registrierung Ihrer SQL Server 2008- oder 2008 R2-Insta
           
     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
       -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'; `
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG'; `
        sqlManagement='NoAgent';sqlImageSku='Standard';sqlImageOffer='SQL2008R2-WS2008'}
   ```
 
@@ -126,7 +129,7 @@ Verwenden Sie für die Registrierung Ihrer SQL Server 2008- oder 2008 R2-Insta
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
-   --license-type AHUB --sql-mgmt-type NoAgent 
+   --license-type PAYG --sql-mgmt-type NoAgent 
    --image-sku Enterprise --image-offer SQL2008-WS2008R2
  ```
 
@@ -166,6 +169,67 @@ Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Po
 ---
 
 Ein Fehler zeigt an, dass die SQL Server-VM nicht beim Ressourcenanbieter registriert wurde. 
+
+## <a name="change-management-modes"></a>Change Management-Modi
+
+Es gibt drei Verwaltungsmodi für die SQL Server-IaaS-Erweiterung: 
+
+- Der Modus **Vollständig** bietet alle Funktionen, erfordert aber einen Neustart des SQL Server-Computers sowie Systemadministratorberechtigungen. Diese Option wird standardmäßig installiert. Verwenden Sie diesen Modus zum Verwalten einer SQL Server-VM mit einer einzelnen Instanz. 
+
+- **Lightweight** erfordert keinen Neustart von SQL Server, unterstützt jedoch nur das Ändern des Lizenztyps und der Edition von SQL Server. Verwenden Sie diese Option für SQL Server-VMs mit mehreren Instanzen oder für die Teilnahme an einer Failoverclusterinstanz (FCI). 
+
+- **NoAgent** ist speziell für Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 vorgesehen. 
+
+Über PowerShell können Sie den aktuellen Modus des SQL Server-IaaS-Agents anzeigen: 
+
+  ```powershell-interactive
+     #Get the SqlVirtualMachine
+     $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
+     $sqlvm.Properties.sqlManagement
+  ```
+
+Für SQL Server-VMs, auf denen die IaaS-Erweiterung im Modus *Lightweight* installiert ist, können Sie im Azure-Portal ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade durchzuführen. Stattdessen müssen Sie die SQL-IaaS-Erweiterung vollständig deinstallieren und erneut installieren. 
+
+So führen Sie Upgrade des Agent-Modus auf „Vollständig“ durch: 
+
+
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource). 
+1. Wählen Sie Ihren virtuellen SQL Server-Computer aus, und klicken Sie auf **Übersicht**. 
+1. Wählen Sie für SQL Server-VMs mit dem IaaS-Modus „NoAgent“ oder „Lightweight“ die Meldung **Mit der SQL-IaaS-Erweiterung sind nur Lizenztyp- und Editionsaktualisierungen verfügbar** aus.
+
+   ![Auswahlmöglichkeiten zum Ändern des Modus im Portal](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
+
+1. Aktivieren Sie das Kontrollkästchen **Ich stimme dem Neustart des SQL Server-Diensts auf dem virtuellen Computer** zu, und klicken Sie dann auf **Bestätigen**, um ein Upgrade des IaaS-Modus auf „Vollständig“ durchzuführen. 
+
+    ![Kontrollkästchen für die Zustimmung zum Neustart des SQL Server-Diensts auf dem virtuellen Computer](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
+
+### <a name="command-line"></a>Befehlszeile
+
+# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+
+Führen Sie den folgenden Codeausschnitt in der Azure CLI aus:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Führen Sie den folgenden Codeausschnitt in PowerShell aus:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+---
 
 ## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>Registrieren des SQL-VM-Ressourcenanbieters bei einem Abonnement 
 

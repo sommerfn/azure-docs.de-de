@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2e13efa70d0344defeb306a92ac405439635e929
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c519b030aaee58397766ecb8658e7af08b5986e1
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619703"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256873"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Grundlegendes zur Verwendung einer LUIS-Version
 
@@ -48,7 +48,7 @@ Sie können eine Version auf App-Ebene importieren. Diese Version wird die aktiv
 
 Sie können eine Version auf App- oder auf Versionsebene exportieren. Der einzige Unterschied besteht darin, dass die auf App-Ebene exportierte Version die derzeit aktive Version ist, während Sie beim Exportieren auf Versionsebene auf der Seite **[Einstellungen](luis-how-to-manage-versions.md)** die zu exportierende Version auswählen können. 
 
-Die exportierte Datei enthält keine maschinell erlernten Informationen, da die App nach dem Importieren neu trainiert wird. Die exportierte Datei enthält keine Projektmitarbeiter – Sie müssen diese wieder hinzufügen, nachdem die Version in die neue App importiert wurde.
+Die exportierte Datei enthält keine maschinell erlernten Informationen, da die App nach dem Importieren neu trainiert wird. Die exportierte Datei enthält keine Informationen über Mitwirkende.
 
 ## <a name="export-each-version-as-app-backup"></a>Exportieren jeder Version als App-Sicherung
 Um Ihre LUIS-App zu sichern, exportieren Sie jede Version auf der Seite **[Einstellungen](luis-how-to-manage-versions.md)** .
@@ -59,8 +59,23 @@ Sie können alle Versionen außer der aktiven Version aus der Versionsliste auf 
 ## <a name="version-availability-at-the-endpoint"></a>Versionsverfügbarkeit am Endpunkt
 Trainierte Versionen stehen nicht automatisch am App-[Endpunkt](luis-glossary.md#endpoint) zur Verfügung. Sie müssen eine Version [veröffentlichen](luis-how-to-publish-app.md) oder erneut veröffentlichen, damit sie am App-Endpunkt verfügbar ist. Sie können für das **Staging** und die **Produktion** veröffentlichen. Damit stehen Ihnen am Endpunkt bis zu zwei Versionen zur Verfügung. Wenn Sie weitere Versionen der App an einem Endpunkt benötigen, sollten Sie die Version exportieren und in eine neue App importieren. Die neue App hat eine andere App-ID.
 
-## <a name="collaborators"></a>Projektmitarbeiter
-Der Besitzer und alle [Projektmitarbeiter](luis-how-to-collaborate.md) haben Vollzugriff auf alle Versionen der App.
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Verwalten mehrerer Versionen in derselben App
+Zunächst [klonen](luis-how-to-manage-versions.md#clone-a-version) Sie für jeden Ersteller eine Version aus einer Basisversion. 
+
+Jeder Ersteller ändert seine eigene Version der App. Sobald jeder Ersteller mit seinem Modell zufrieden ist, werden die neuen Versionen in JSON-Dateien exportiert.  
+
+Die exportierten Apps sind JSON-formatierte Dateien, die auf Änderungen verglichen werden können. Kombinieren Sie die Dateien, um eine einzelne JSON-Datei der neuen Version zu erstellen. Ändern Sie die **versionId**-Eigenschaft in der JSON-Datei, um die neue zusammengeführte Version zu kennzeichnen. Importieren Sie diese Version in die ursprüngliche App. 
+
+Diese Methode erlaubt eine aktive Version, eine Stagingversion und eine veröffentlichte Version. Sie können die Ergebnisse der aktiven Version mit einer veröffentlichten Version (Staging oder Produktion) im [Bereich für interaktives Testen](luis-interactive-test.md) vergleichen.
+
+## <a name="manage-multiple-versions-as-apps"></a>Verwalten mehrerer Versionen als Apps
+[Exportieren](luis-how-to-manage-versions.md#export-version) Sie die Basisversion. Jeder Ersteller importiert die Version. Die Person, die die App importiert, ist auch der Besitzer dieser Version. Wenn sie das Bearbeiten der App abgeschlossen hat, exportiert sie ihre Version. 
+
+Die exportierten Apps sind JSON-formatierte Dateien, die mit dem Basisexport auf Änderungen verglichen werden können. Kombinieren Sie die Dateien, um eine einzelne JSON-Datei der neuen Version zu erstellen. Ändern Sie die **versionId**-Eigenschaft in der JSON-Datei, um die neue zusammengeführte Version zu kennzeichnen. Importieren Sie diese Version in die ursprüngliche App.
+
+## <a name="contributions-from-collaborators"></a>Beiträge von Projektmitarbeitern
+
+Erfahren Sie mehr über das Erstellen von Beiträgen durch [Projektmitarbeiter](luis-how-to-collaborate.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

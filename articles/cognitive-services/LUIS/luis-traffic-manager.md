@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650538"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256605"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Screenshot des Azure-Portals mit zwei LUIS-Schlüsseln in der Ressourcengruppe luis-traffic-manager](./media/traffic-manager/luis-keys.png)
 
-2. Weisen Sie der App auf der [LUIS][LUIS]-Website auf der Seite **Schlüssel und Endpunkte** im Abschnitt **Verwalten** Schlüssel zu, und veröffentlichen Sie die App erneut, indem Sie im Menü rechts oben die Schaltfläche **Veröffentlichen** auswählen. 
+2. Weisen Sie der App auf der [LUIS][LUIS]-Website auf der Seite **Azure-Ressourcen** im Abschnitt **Verwalten** Schlüssel zu, und veröffentlichen Sie die App erneut, indem Sie im Menü rechts oben die Schaltfläche **Veröffentlichen** auswählen. 
 
     In der Beispiel-URL in der Spalte **Endpunkt** wird eine GET-Anforderung mit dem Endpunktschlüssel als Abfrageparameter verwendet. Kopieren Sie die Endpunkt-URLs der beiden neuen Schlüssel. Sie werden im Rahmen der Traffic Manager-Konfiguration weiter unten in diesem Artikel verwendet.
 

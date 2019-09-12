@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 961bb7d5f64fa6d6cafa4730a5849abb4b82478f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967702"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206833"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Abrufen von Analysen zu Ihrer Wissensdatenbank
 
@@ -32,7 +32,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
 3. Fügen Sie die folgende Abfrage ein, und führen Sie sie aus.
 
-    ```query
+    ```kusto
     requests
     | where url endswith "generateAnswer"
     | project timestamp, id, name, resultCode, duration, performanceBucket
@@ -54,7 +54,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
 ### <a name="total-90-day-traffic"></a>Gesamter Datenverkehr von 90 Tagen
 
-```query
+```kusto
     //Total Traffic
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
@@ -64,7 +64,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
 ### <a name="total-question-traffic-in-a-given-time-period"></a>Gesamter Fragendatenverkehr in einem bestimmten Zeitraum
 
-```query
+```kusto
     //Total Question Traffic in a given time period
     let startDate = todatetime('2018-02-18');
     let endDate = todatetime('2018-03-12');
@@ -77,7 +77,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
 ### <a name="user-traffic"></a>Benutzerdatenverkehr
 
-```query
+```kusto
     //User Traffic
     requests
     | where url endswith "generateAnswer"
@@ -92,7 +92,7 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 
 ### <a name="latency-distribution-of-questions"></a>Latenzverteilung von Fragen
 
-```query
+```kusto
     //Latency distribution of questions
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
@@ -104,4 +104,4 @@ QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwalten von Schlüsseln](./key-management.md)
+> [Auswählen der Kapazität](../tutorials/choosing-capacity-qnamaker-deployment.md)

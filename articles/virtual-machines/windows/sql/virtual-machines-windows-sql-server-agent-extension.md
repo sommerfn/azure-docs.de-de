@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f4dd529481a6216e43d35c76ecee734543d487f3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100479"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259422"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-IaaS-Agent-Erweiterung
 > [!div class="op_single_selector"]
@@ -33,13 +34,6 @@ Die Erweiterung für SQL Server-IaaS-Agent (SqlIaasExtension) wird auf virtuelle
 
 Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [SQL Server-IaaS-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md).
 
-Es gibt drei Verwaltungsmodi für die SQL Server-IaaS-Erweiterung: 
-
-- Der Modus **Vollständig** bietet alle Funktionen, erfordert aber einen Neustart des SQL Server-Computers sowie Systemadministratorberechtigungen. Diese Option wird standardmäßig installiert. Verwenden Sie diesen Modus zum Verwalten einer SQL Server-VM mit einer einzelnen Instanz. 
-
-- **Lightweight** erfordert keinen Neustart von SQL Server, unterstützt jedoch nur das Ändern des Lizenztyps und der Edition von SQL Server. Verwenden Sie diese Option für SQL Server-VMs mit mehreren Instanzen oder für die Teilnahme an einer Failoverclusterinstanz (FCI). 
-
-- **NoAgent** ist speziell für Installationen von SQL Server 2008 und SQL Server 2008 R2 unter Windows Server 2008 vorgesehen. Informationen zur Verwendung dieses Modus für Ihr Windows Server 2008-Image finden Sie unter [Registrierung bei Windows Server 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms). 
 
 ## <a name="supported-services"></a>Unterstützte Dienste
 Die Erweiterung für SQL Server-IaaS-Agent unterstützt die folgenden Verwaltungsaufgaben:
@@ -82,123 +76,29 @@ Anforderungen für die Verwendung der SQL Server-IaaS-Agent-Erweiterung auf Ihr
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 
-## <a name="change-management-modes"></a>Change Management-Modi
-
-Über PowerShell können Sie den aktuellen Modus des SQL Server-IaaS-Agents anzeigen: 
-
-  ```powershell-interactive
-     #Get the SqlVirtualMachine
-     $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
-     $sqlvm.Properties.sqlManagement
-  ```
-
-Für SQL Server-VMs, auf denen die IaaS-Erweiterung im Modus *Lightweight* installiert ist, können Sie im Azure-Portal ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade durchzuführen. Stattdessen müssen Sie die SQL-IaaS-Erweiterung vollständig deinstallieren und erneut installieren. 
-
-So führen Sie Upgrade des Agent-Modus auf „Vollständig“ durch: 
-
-
-# <a name="azure-portaltabazure-portal"></a>[Azure-Portal](#tab/azure-portal)
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource). 
-1. Wählen Sie Ihren virtuellen SQL Server-Computer aus, und klicken Sie auf **Übersicht**. 
-1. Wählen Sie für SQL Server-VMs mit dem IaaS-Modus „NoAgent“ oder „Lightweight“ die Meldung **Mit der SQL-IaaS-Erweiterung sind nur Lizenztyp- und Editionsaktualisierungen verfügbar** aus.
-
-   ![Auswahlmöglichkeiten zum Ändern des Modus im Portal](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
-
-1. Aktivieren Sie das Kontrollkästchen **Ich stimme dem Neustart des SQL Server-Diensts auf dem virtuellen Computer** zu, und klicken Sie dann auf **Bestätigen**, um ein Upgrade des IaaS-Modus auf „Vollständig“ durchzuführen. 
-
-    ![Kontrollkästchen für die Zustimmung zum Neustart des SQL Server-Diensts auf dem virtuellen Computer](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
-
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
-
-Führen Sie den folgenden Codeausschnitt in der Azure CLI aus:
-
-  ```azurecli-interactive
-  # Update to full mode
-
-  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
-  ```
-
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-
-Führen Sie den folgenden Codeausschnitt in PowerShell aus:
-
-  ```powershell-interactive
-  # Update to full mode
-
-  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-  $SqlVm.Properties.sqlManagement="Full"
-  $SqlVm | Set-AzResource -Force
-  ```
-
----
-
-
 ##  <a name="installation"></a>Installation
-Die SQL Server-IaaS-Erweiterung wird installiert, wenn Sie Ihre SQL Server-VM beim [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registrieren. Falls erforderlich, können Sie den SQL Server-IaaS-Agent im vollständigen oder Lightweight-Modus manuell installieren. 
-
-Die SQL Server-IaaS-Agent-Erweiterung im vollständigen Modus wird automatisch installiert, wenn Sie eins der Azure Marketplace-Images für virtuelle SQL Server-Computer über das Azure-Portal bereitstellen. 
-
-### <a name="install-in-full-mode"></a>Installation im vollständigen Modus
-Der vollständige Modus der SQL Server-IaaS-Erweiterung bietet alle Verwaltungsfunktionen für eine einzelne Instanz auf der SQL Server-VM. Wenn eine Standardinstanz vorhanden ist, funktioniert die Erweiterung nur für diese Standardinstanz und unterstützt die Verwaltung anderer Instanzen nicht. Wenn es keine Standardinstanz, sondern nur eine benannte Instanz gibt, wird die benannte Instanz verwaltet. Wenn es keine Standardinstanz, aber mehrere benannte Instanzen gibt, kann die Erweiterung nicht installiert werden. 
-
-Installieren des SQL Server-IaaS-Agents im vollständigen Modus mit PowerShell:
+Die SQL Server-IaaS-Erweiterung wird installiert, wenn Sie Ihre SQL Server-VM beim [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registrieren. Falls erforderlich, können Sie den SQL Server-IaaS-Agent mit dem folgenden PowerShell-Befehl manuell installieren: 
 
   ```powershell-interactive
-     # Get the existing compute VM
-     $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-          
-     # Install 'Full' SQL Server IaaS agent extension
-     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-        -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
-  
+    Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" `
+    -Location "<VMLocation>" -VMName "<VMName>" `
+    -Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" `
+    -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
   ```
-
-| Parameter | Zulässige Werte                        |
-| :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `AHUB` oder `PAYG`     |
-| &nbsp;             | &nbsp;                          |
-
 
 > [!NOTE]
-> Wenn die Erweiterung noch nicht installiert ist, wird der SQL Server-Dienst durch die Installation der Erweiterung im vollständigen Modus neu gestartet. Um einen Neustart des SQL Server-Diensts zu vermeiden, installieren Sie stattdessen den Modus „Lightweight“ mit eingeschränkten Verwaltungsfunktionen.
-> 
-> Eine Aktualisierung der SQL Server-IaaS-Erweiterung bewirkt keinen Neustart des SQL Server-Diensts. 
+> Durch die Installation der Erweiterung wird der SQL Server-Dienst neu gestartet. 
+
 
 ### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>Installieren eines virtuellen Computers mit einer einzelnen benannten SQL Server-Instanz
 Die SQL Server-IaaS-Erweiterung funktioniert mit einer benannten SQL Server-Instanz, wenn die Standardinstanz deinstalliert und die IaaS-Erweiterung neu installiert wird.
 
-So verwenden Sie eine benannte SQL Server-Instanz:
+Um eine benannte Instanz von SQL Server zu verwenden, gehen Sie folgendermaßen vor:
    1. Stellen Sie eine SQL Server-VM vom Azure Marketplace bereit. 
    1. Deinstallieren Sie die IaaS-Erweiterung über das [Azure-Portal](https://portal.azure.com).
    1. Deinstallieren Sie SQL Server in der SQL Server-VM vollständig.
    1. Installieren Sie SQL Server mit einer benannten Instanz in der SQL Server-VM. 
    1. Installieren Sie die IaaS-Erweiterung über das Azure-Portal.  
-
-
-### <a name="install-in-lightweight-mode"></a>Installieren im Lightweight-Modus
-Im Modus „Einfach“ erfolgt kein Neustart des SQL Server-Diensts, der Modus bietet jedoch eingeschränkte Funktionalität. 
-
-Installieren des SQL Server-IaaS-Agents im Lightweight-Modus mit PowerShell:
-
-
-  ```powershell-interactive
-     /#Get the existing  Compute VM
-     $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-          
-     #Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
-     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-        -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
-  
-  ```
-
-| Parameter | Zulässige Werte                        |
-| :------------------| :-------------------------------|
-| **sqlServerLicenseType** | `AHUB` oder `PAYG`     |
-| &nbsp;             | &nbsp;                          |
 
 
 ## <a name="get-the-status-of-the-sql-server-iaas-extension"></a>Abrufen des Status der SQL Server-IaaS-Erweiterung
@@ -235,4 +135,3 @@ Sie können auch das PowerShell-Cmdlet **Remove-AzVMSqlServerExtension** verwend
 Verwenden Sie einen der Dienste, die von der Erweiterung unterstützt werden. Weitere Informationen finden Sie in den Artikeln, die im Abschnitt [Unterstützte Dienste](#supported-services) dieses Artikels genannt werden.
 
 Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Was ist SQL Server auf virtuellen Azure-Computern?](virtual-machines-windows-sql-server-iaas-overview.md).
-

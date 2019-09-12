@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741860"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241017"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Installieren und Ausführen von Containern für den Speech-Dienst
 
@@ -25,8 +25,8 @@ Die beiden Sprachcontainer sind **Spracherkennung** und **Sprachsynthese**.
 
 |Funktion|Features|Neueste Version|
 |-|-|--|
-|Spracherkennung| <li>Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen.|1.1.3|
-|Sprachsynthese| <li>Konvertiert Text in natürlich klingende Sprache. mit Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |1.1.0|
+|Spracherkennung| <li>Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen.|1.2.0|
+|Sprachsynthese| <li>Konvertiert Text in natürlich klingende Sprache. mit Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |1.2.0|
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -101,10 +101,10 @@ Mit Ausnahme von `latest` liegen alle Tags im folgenden Format vor, wobei `<cult
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Spracherkennung** in der Version 1.1.3 des Containers:
+Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Spracherkennung** in der Version 1.2.0 des Containers:
 
 |Sprachgebietsschema|`Tags`|
 |--|--|
@@ -129,10 +129,10 @@ Mit Ausnahme von `latest` liegen alle Tags im folgenden Format vor, wobei `<cult
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Sprachsynthese** in der Version 1.1.0 des Containers:
+Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Sprachsynthese** in der Version 1.2.0 des Containers:
 
 |Sprachgebietsschema|`Tags`|Unterstützte Stimmen|
 |--|--|--|

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903991"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242665"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -51,7 +51,7 @@ ms.locfileid: "69903991"
 | --- | --- | --- |
 | Öffentliche IP-Adressen – dynamisch | 1\.000 für Basic. |Wenden Sie sich an den Support. |
 | Öffentliche IP-Adressen – statisch | 1\.000 für Basic. |Wenden Sie sich an den Support. |
-| Öffentliche IP-Adressen – statisch | 200 für Standard.|Wenden Sie sich an den Support. |
+| Öffentliche IP-Adressen – statisch | 1\.000 für Standard.|Wenden Sie sich an den Support. |
 | Präfixlänge für öffentliche IP-Adressen | /28 | Wenden Sie sich an den Support. |
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte

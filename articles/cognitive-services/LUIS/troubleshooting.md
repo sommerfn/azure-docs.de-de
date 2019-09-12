@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258795"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382338"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -265,7 +265,7 @@ Ihr Erstellungsschlüssel (auch als Startschlüssel bezeichnet) kann für maxima
 Das erste Problem besteht in der Feststellung, ob das Problem mit LUIS zusammenhängt oder außerhalb der LUIS-Middleware auftritt. 
 
 #### <a name="resolve-issue-in-luis"></a>Beheben des Problems in LUIS
-Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
+Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
 
 * `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstebenen](luis-how-to-azure-subscription.md#change-pricing-tier) ändern müssen. 
 
