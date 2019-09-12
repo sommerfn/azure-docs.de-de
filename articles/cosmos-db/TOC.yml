@@ -274,8 +274,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Erweiterter Schutz vor Bedrohungen
-        - name: Sicherheitsattribute
-          href: cosmos-db-security-attributes.md
+        - name: Integrierte Sicherheitskontrollen
+          href: cosmos-db-security-controls.md
     - name: Unternehmensfähigkeit
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
@@ -459,6 +459,10 @@
           items:
             - name: Antwortheader
               href: gremlin-headers.md
+            - name: Einschränkungen
+              href: gremlin-limits.md
+            - name: Kompatibilität
+              href: gremlin-compatibility.md
         - name: Anleitungen
           items:
             - name: Modellierung von Diagrammdaten
@@ -471,6 +475,10 @@
               href: graph-execution-profile.md
             - name: Verwenden von Ressourcentoken
               href: how-to-use-resource-tokens-gremlin.md
+            - name: Verwenden von regionalen Endpunkten
+              href: how-to-use-regional-gremlin.md
+            - name: Zugreifen auf Systemdokumenteigenschaften
+              href: how-to-access-system-properties-gremlin.md
             - name: Visualisieren von Diagrammdaten
               href: graph-visualization.md
             - name: Speichern und Verwalten von Spring-Daten
@@ -696,7 +704,7 @@
         - name: Anwendungsprotokollierung mit Logic Apps
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Überwachen mit Metriken
+    - name: Mit Metriken überwachen
       items:
         - name: Anzeigen von Metriken über das Cosmos DB-Konto
           href: use-metrics.md

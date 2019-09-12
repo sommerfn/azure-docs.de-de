@@ -123,8 +123,6 @@
       href: billing-how-to-change-azure-account-profile.md
     - name: Gewähren des Zugriffs auf die Abrechnung
       href: billing-manage-access.md
-    - name: EA-Rollen in Azure
-      href: billing-understand-ea-roles.md
     - name: Microsoft-Kundenvereinbarungsrollen in Azure
       href: billing-understand-mca-roles.md
     - name: Verknüpfen der Partner-ID
@@ -133,8 +131,26 @@
       href: billing-view-all-accounts.md
     - name: Organisieren von Kosten in Rechnungsabschnitten
       href: billing-mca-section-invoice.md
-    - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
-      href: billing-mca-enterprise-operations.md
+    - name: EA-Verwaltung
+      items:
+        - name: "Erste Schritte im Azure\_EA-Portal"
+          href: billing-ea-portal-get-started.md
+        - name: EA-Rollen in Azure
+          href: billing-understand-ea-roles.md
+        - name: "Azure\_EA-Portalverwaltung"
+          href: billing-ea-portal-administration.md
+        - name: 'Azure EA: Vereinbarungen und Ergänzungen'
+          href: billing-ea-portal-agreements.md
+        - name: Rechnungen für die Unternehmensregistrierung
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: Azure Enterprise-REST-APIs
+          href: billing-ea-portal-rest-apis.md
+        - name: Reservierte Azure EA-VM-Instanzen
+          href: billing-ea-portal-vm-reservations.md
+        - name: "Problembehandlung für den Zugriff auf das Azure\_EA-Portal"
+          href: billing-ea-portal-troubleshoot.md
+        - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
+          href: billing-mca-enterprise-operations.md
     - name: Begleichen überfälliger Zahlungen
       href: billing-azure-subscription-past-due-balance.md
     - name: Einrichten eines Abrechnungskontos für Microsoft-Kundenvereinbarung

@@ -152,18 +152,20 @@
         - name: Einrichten von Trainingsumgebungen
           displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: Erstellen von Kalkulatoren im Training
-          href: how-to-train-ml-models.md
-        - name: Verwenden von Scikit-learn
-          href: how-to-train-scikit-learn.md
-        - name: Verwenden von TensorFlow
-          href: how-to-train-tensorflow.md
-        - name: Verwenden von Keras
-          href: how-to-train-keras.md
-        - name: Verwenden von PyTorch
-          href: how-to-train-pytorch.md
-        - name: Verwenden von Chainer
-          href: how-to-train-chainer.md
+        - name: Verwenden von Kalkulatoren zum Trainieren
+          items:
+            - name: Erstellen von Kalkulatoren im Training
+              href: how-to-train-ml-models.md
+            - name: Verwenden von Scikit-learn
+              href: how-to-train-scikit-learn.md
+            - name: Verwenden von TensorFlow
+              href: how-to-train-tensorflow.md
+            - name: Verwenden von Keras
+              href: how-to-train-keras.md
+            - name: Verwenden von PyTorch
+              href: how-to-train-pytorch.md
+            - name: Verwenden von Chainer
+              href: how-to-train-chainer.md
         - name: Optimieren von Hyperparametern
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -189,7 +191,7 @@
         - name: Verwenden einer automatisierten ML-Instanz (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: Verwenden von automatisiertem ML (Azure-Portal)
+        - name: Verwenden von automatisiertem Machine Learning (Landing Page des Arbeitsbereichs)
           href: how-to-create-portal-experiments.md
         - name: Verwenden von Remote-Computezielen
           displayName: automl automated auto ml

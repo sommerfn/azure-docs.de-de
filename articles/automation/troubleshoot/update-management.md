@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061333"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186214"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>Szenario: Installation von Updates ohne Bereitstellung
+
+### <a name="issue"></a>Problem
+
+Wenn Sie einen Windows-Computer in der Updateverwaltung registrieren, kann es sein, dass Updates ohne Bereitstellung installiert werden.
+
+### <a name="cause"></a>Ursache
+
+Unter Windows werden Updates automatisch installiert, sobald sie verfügbar sind. Dies kann verwirrend sein, wenn Sie ein Update nicht für die Bereitstellung auf dem Computer eingeplant haben.
+
+### <a name="resolution"></a>Lösung
+
+Der Windows-Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` hat die Standardeinstellung „4“: **Automatisches Herunterladen und Installieren**.
+
+Für Clients für die Updateverwaltung empfehlen wir Ihnen, diesen Schlüssel auf „3“ festzulegen: **Automatisches Herunterladen, keine automatische Installation**.
+
+Weitere Informationen finden Sie unter [Automatische Updates konfigurieren](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ### <a name="nologs"></a>Szenario: Im Portal werden unter „Updateverwaltung“ keine Computer angezeigt
 

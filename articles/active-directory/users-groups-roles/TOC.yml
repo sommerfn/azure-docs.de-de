@@ -40,6 +40,16 @@
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Verwalten von Benutzerprofilen
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Massenvorgänge (Vorschau)
+          items:
+            - name: Herunterladen von Benutzern (Vorschau)
+              href: users-bulk-download.md
+            - name: Massenimport von Benutzern (Vorschau)
+              href: users-bulk-add.md
+            - name: Massenlöschung von Benutzern (Vorschau)
+              href: users-bulk-delete.md
+            - name: Massenwiederherstellung von Benutzern (Vorschau)
+              href: users-bulk-restore.md
         - name: Freigeben von Benutzerkonten
           href: users-sharing-accounts.md
         - name: Zuweisen von Benutzern zu Administratorrollen
@@ -74,8 +84,8 @@
       items:
         - name: Verwalten des Zugriffs mit Gruppen
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Verwalten von Gruppen im Azure-Portal
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Durchsuchen von Gruppen-und Mitgliederlisten (Vorschau)
+          href: groups-members-owners-search.md
         - name: 'Verwalten von Gruppen: PowerShell für Graph (v2)'
           href: groups-settings-v2-cmdlets.md
         - name: 'Verwalten von Gruppen: PowerShell MSOnline'
@@ -84,8 +94,20 @@
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Verwalten von Gruppenbesitzern
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Massenvorgänge (Vorschau)
+          items:
+            - name: Massenimport von Mitgliedern (Vorschau)
+              href: groups-bulk-import-members.md
+            - name: Massendownload von Mitgliedern (Vorschau)
+              href: groups-bulk-download-members.md
+            - name: Massenentfernung von Mitgliedern (Vorschau)
+              href: groups-bulk-remove-members.md
+            - name: Massendownload einer Gruppenliste (Vorschau)
+              href: groups-bulk-download.md
         - name: Verwalten von Gruppen in Gruppen
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Erstellen einer Gruppe (Azure-Portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Hinzufügen des Gruppenzugriffs auf SaaS-Apps
           href: groups-saasapps.md
         - name: Referenz zur Gruppenbenennung
