@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12fecfc3a20d91b9324e1662f3f937340b7ff5c4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972453"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913944"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple-Knotenkontingentgrenzen
 
@@ -32,9 +32,6 @@ Sie können das Knotenkontingent erhöhen, indem Sie eine Supportanfrage übermi
 
 Geben Sie in den Details des Supporttickets die erforderliche Anzahl von Knoten und Knoten-SKUs ein.
 
-Sie können auch unter [azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) Ihren Microsoft-Kontobeauftragten kontaktieren, um das Knotenkontingent Ihres Abonnements zu erhöhen.  Dabei müssen Sie folgende Angaben machen:
-
-* Abonnement-ID
 * Knoten-SKU
 * Anzahl der zusätzlichen Knoten, für die Sie eine Kontingenterhöhung anfordern
 

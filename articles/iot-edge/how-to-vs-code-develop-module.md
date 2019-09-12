@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035077"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910233"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -89,7 +89,7 @@ Die folgenden Schritte veranschaulichen, wie Sie ein IoT Edge-Modul in Ihrer bev
 
 1. Geben Sie einen Namen für Ihr Modul ein. Wählen Sie einen Namen, der in der Containerregistrierung eindeutig ist.
 
-1. Geben Sie den Namen des Imagerepositorys des Moduls an. Visual Studio Code füllt den Modulnamen automatisch mit **localhost:5000/<Name Ihres Moduls\>** auf. Ersetzen Sie ihn durch Ihre eigenen Registrierungsinformationen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie **localhost** nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form * **\<Registrierungsname\>*.azurecr.io**. Ersetzen Sie nur den Teil **localhost:5000** der Zeichenfolge, damit das endgültige Ergebnis die folgende Form hat: * *\<* Registrierungsname *\>.azurecr.io/* \<Name Ihres Moduls\>***.
+1. Geben Sie den Namen des Imagerepositorys des Moduls an. Visual Studio Code füllt den Modulnamen automatisch mit **localhost:5000/<Name Ihres Moduls\>** auf. Ersetzen Sie ihn durch Ihre eigenen Registrierungsinformationen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie **localhost** nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **_\<Registrierungsname\>_ .azurecr.io**. Ersetzen Sie nur den Teil **localhost:5000** der Zeichenfolge, damit das endgültige Ergebnis die folgende Form hat: **\<*Registrierungsname*\>.azurecr.io/ _\<Name Ihres Moduls\>_** .
 
    ![Bereitstellen eines Docker-Imagerepositorys](./media/how-to-develop-csharp-module/repository.png)
 

@@ -2,24 +2,18 @@
 title: In Azure Security Center überwachte Azure Policy-Definitionen | Microsoft-Dokumentation
 description: In Azure Security Center überwachte Azure Policy-Definitionen
 services: security-center
-documentationcenter: na
 author: monhaber
 manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990504"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910352"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>In Security Center überwachte Azure-Sicherheitsrichtlinien
 Dieser Artikel enthält eine Liste mit Azure Policy-Definitionen, die Sie in Azure Security Center überwachen können. Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
@@ -50,7 +44,7 @@ Informationen zu den integrierten Richtlinien, die von Security Center überwach
 |Diagnoseprotokolle in Azure Data Lake Store sollten aktiviert werden.|Hierbei wird die Aktivierung von Protokollen überwacht, die dann bis zu einem Jahr lang aufbewahrt werden. Auf diese Weise können im Rahmen von Untersuchungen die Aktivitäten nachvollzogen werden, wenn ein Sicherheitsincident eintritt oder Ihr Netzwerk kompromittiert wird.|
 |Diagnoseprotokolle in Data Lake Analytics sollten aktiviert werden.|Hierbei wird die Aktivierung von Protokollen überwacht, die dann bis zu einem Jahr lang aufbewahrt werden. Auf diese Weise können im Rahmen von Untersuchungen die Aktivitäten nachvollzogen werden, wenn ein Sicherheitsincident eintritt oder Ihr Netzwerk kompromittiert wird.|
 |Speicherkonten sollten zu neuen AzureRM-Ressourcen migriert werden.|Verwenden Sie Azure Resource Manager für Ihre Speicherkonten, um Sicherheitsverbesserungen zu erzielen. Das umfasst: <br>- Höhere Sicherheit bei der Zugriffssteuerung (RBAC)<br>- Bessere Überwachung<br>- Auf Azure Resource Manager basierende Bereitstellung und Governance<br>- Zugriff auf verwaltete Identitäten<br>- Zugriff auf Azure Key Vault für Geheimnisse<br>- Azure AD-basierte Authentifizierung<br>- Unterstützung von Tags und Ressourcengruppen zur Vereinfachung der Sicherheitsverwaltung|
-|Virtuelle Computer sollten zu neuen AzureRM-Ressourcen migriert werden.|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um Sicherheitsverbesserungen zu erzielen.  Das umfasst: <br>- Höhere Sicherheit bei der Zugriffssteuerung (RBAC)<br>- Bessere Überwachung<br>- Auf Azure Resource Manager basierende Bereitstellung und Governance<br>- Zugriff auf verwaltete Identitäten<br>- Zugriff auf Azure Key Vault für Geheimnisse<br>- Azure AD-basierte Authentifizierung<br>- Unterstützung von Tags und Ressourcengruppen zur Vereinfachung der Sicherheitsverwaltung|
+|Virtuelle Computer sollten zu neuen AzureRM-Ressourcen migriert werden.|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um Sicherheitsverbesserungen zu erzielen. Das umfasst: <br>- Höhere Sicherheit bei der Zugriffssteuerung (RBAC)<br>- Bessere Überwachung<br>- Auf Azure Resource Manager basierende Bereitstellung und Governance<br>- Zugriff auf verwaltete Identitäten<br>- Zugriff auf Azure Key Vault für Geheimnisse<br>- Azure AD-basierte Authentifizierung<br>- Unterstützung von Tags und Ressourcengruppen zur Vereinfachung der Sicherheitsverwaltung|
 |Metrikwarnungsregeln sollten in Batch-Konten konfiguriert werden.|Hiermit wird die Konfiguration von Metrikwarnungsregeln für Azure Batch-Konten überwacht, um die erforderliche Metrik zu aktivieren.|
 |Diagnoseprotokolle in Batch-Konten sollten aktiviert sein.|Hierbei wird die Aktivierung von Protokollen überwacht, die dann bis zu einem Jahr lang aufbewahrt werden. Auf diese Weise können im Rahmen von Untersuchungen die Aktivitäten nachvollzogen werden, wenn ein Sicherheitsincident eintritt oder Ihr Netzwerk kompromittiert wird.|
 |In Automation-Kontovariablen sollte eine Verschlüsselung aktiviert sein.|Es ist wichtig, die Verschlüsselung für Variablenassets von Azure Automation-Konten zu aktivieren, wenn Sie vertrauliche Daten speichern.|

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 3fa97c5738128907b0edad40cedf582e80c33443
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194473"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858532"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -353,7 +353,7 @@ Wählen Sie im Portal auf dem Menüblatt eines Anwendungsgateways die Option **A
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Kann ich mit Application Gateway Warnungen einrichten?
 
-Ja. In Application Gateway werden Warnungen für Metriken konfiguriert. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics) und [Überblick über Warnungen in Microsoft Azure](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Ja. In Application Gateway werden Warnungen für Metriken konfiguriert. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) und [Überblick über Warnungen in Microsoft Azure](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Wie lassen sich Datenverkehrsstatistiken für Application Gateway analysieren?
 

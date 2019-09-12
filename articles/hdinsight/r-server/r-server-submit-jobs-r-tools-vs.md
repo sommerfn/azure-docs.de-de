@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: d977d5a25db0cbe641179bce860e9f67c60f29ab
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340797"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899940"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Übermitteln von Aufträgen über R Tools für Visual Studio
 
@@ -59,7 +59,7 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](https:/
 
 7. Nach dem Ausführen aller Zeilen des Skripts sollte die Ausgabe in etwa wie folgt aussehen:
 
-    ![Data Science-Einstellungen...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
+    ![Arbeitsbereich](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Übermitteln von Aufträgen an einen HDInsight-ML Services-Cluster
 
@@ -119,7 +119,7 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
 
     3. Klicken Sie im linken Menü des Speicherkontobereichs auf **Container**.
 
-        ![Container](./media/r-server-submit-jobs-r-tools-vs/containers.png)
+        ![Container](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. Wählen Sie den Containernamen Ihres Clusters aus, navigieren Sie zum Ordner **user** (hierzu müssen Sie ggf. am Listenende auf *Weitere laden* klicken), und wählen Sie dann *RevoShare* > **newUser** aus. Die Datei `people.json` sollte im Ordner `newUser` angezeigt werden.
 

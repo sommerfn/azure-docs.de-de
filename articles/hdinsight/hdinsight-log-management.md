@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623893"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879482"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -93,7 +93,7 @@ Mit HDInsight-[Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) werd
 
 Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für die verschiedenen Dienste überprüft.  Beispiele für diese Dienste sind Apache HBase, Apache Spark und viele weitere. Ein Hadoop-Cluster erzeugt eine große Zahl von ausführlichen Protokollen, sodass die Ermittlung, welche Protokolle nützlich sind (und welche nicht), ein zeitaufwändiger Vorgang sein kann.  Es ist wichtig, das Protokollierungssystem zu verstehen, um eine zielgerichtete Verwaltung von Protokolldateien zu ermöglichen.  Im Folgenden ist ein Beispiel für eine Protokolldatei angegeben.
 
-![Beispiel für HDInsight-Protokolldatei](./media/hdinsight-log-management/logs.png)
+![Beispiel für HDInsight-Protokolldatei](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Zugreifen auf die Hadoop-Protokolldateien
 
@@ -148,7 +148,7 @@ Nachdem Sie festgelegt haben, welche Protokolle gelöscht werden können, könne
 
 Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur Archivierung von Protokolldateien verwenden. Für Azure Resource Manager-Aktivitätsprotokolle können Sie diesen Ansatz über das Azure-Portal untersuchen.  Richten Sie die Archivierung der ARM-Protokolle ein, indem Sie im Azure-Portal für Ihre HDInsight-Instanz den Link **Aktivitätsprotokoll** wählen.  Wählen Sie oben auf der Seite „Aktivitätsprotokoll“ das Menüelement **Exportieren**, um den Bereich **Aktivitätsprotokoll exportieren** zu öffnen.  Geben Sie an, welches Abonnement und welche Region verwendet werden sollen, ob der Export in ein Speicherkonto durchgeführt werden soll und wie viele Tage die Protokolle aufbewahrt werden sollen. In diesem Bereich können Sie auch angeben, ob ein Event Hub exportiert werden soll. 
 
-![Exportieren von Protokolldateien](./media/hdinsight-log-management/archive.png)
+![Exportieren von Protokolldateien](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Alternativ hierzu können Sie auch mit PowerShell ein Skript für die Protokollarchivierung erstellen.  Ein PowerShell-Beispielskript finden Sie unter [Archive Azure Automation logs to Azure BLOB Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8) (Archivieren von Azure Automation-Protokollen in Azure Blob Storage).
 

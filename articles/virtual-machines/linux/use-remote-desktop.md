@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081401"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813447"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](https://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -55,7 +55,7 @@ sudo apt-get install xfce4
 Da Sie jetzt über eine installierte Remotedesktopumgebung verfügen, konfigurieren Sie einen Remotedesktopdienst, um nach eingehenden Verbindungen zu lauschen. [XRDP](http://xrdp.org) ist ein Open Source-RDP-Server (Remote Desktop Protocol), der in den meisten Linux-Distributionen verfügbar ist und gut mit XFCE funktioniert. Installieren Sie XRDP wie folgt auf Ihrem virtuellen Ubuntu-Computer:
 
 ```bash
-sudo apt-get install xrdp=0.6.1-2
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 

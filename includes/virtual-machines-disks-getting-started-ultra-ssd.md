@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510322"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919683"
 ---
 # <a name="using-azure-ultra-disks"></a>Verwenden von Azure Ultra-Datenträgern
 
@@ -79,7 +79,7 @@ Nachdem Sie nun wissen, in welcher Zone die Bereitstellung erfolgen muss, führe
 
 Bestimmen Sie zuerst die Größe des bereitzustellenden virtuellen Computers. Derzeit werden Ultra-Datenträger nur von virtuellen Computern (VMs) der DsV3- und EsV3-Serie unterstützt. Zusätzliche Details zu diesen VM-Größen finden Sie in der zweiten Tabelle in diesem [Blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
-Wenn Sie einen virtuellen Computer mit mehreren Ultra-Datenträgern erstellen möchten, hilft Ihnen das Beispiel zum [Erstellen einer VM mit mehreren Ultra-Datenträgern](https://aka.ms/UltraSSDTemplate) weiter.
+Wenn Sie einen virtuellen Computer mit mehreren Ultra-Datenträgern erstellen möchten, hilft Ihnen das Beispiel zum [Erstellen einer VM mit mehreren Ultra-Datenträgern](https://aka.ms/ultradiskArmTemplate) weiter.
 
 Falls Sie Ihre eigene Vorlage verwenden möchten, sollten Sie sicherstellen, dass **apiVersion** für `Microsoft.Compute/virtualMachines` und `Microsoft.Compute/Disks` auf `2018-06-01` (oder höher) festgelegt ist.
 

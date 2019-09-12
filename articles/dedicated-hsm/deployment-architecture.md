@@ -2,8 +2,8 @@
 title: Bereitstellungsarchitektur – Azure-Dienst für dedizierte HSMs | Microsoft-Dokumentation
 description: Grundlegende Entwurfsüberlegungen zur Verwendung des Azure-Dienst für dedizierte HSMs als Teil einer Anwendungsarchitektur
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: f078df7677e771d131f15056ac4a54a58a3134bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912278"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883834"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM-Bereitstellungsarchitektur
 
@@ -29,7 +29,7 @@ Azure Dedicated HSM bietet Speicherung von kryptografischen Schlüsseln in Azure
 
 Die HSMs sind auf die Datencenter von Microsoft verteilt und können problemlos als Gerätepaar als Basis für eine hochverfügbare Lösung bereitgestellt werden. Sie können auch regionsübergreifend bereitgestellt werden, um eine notfallresistente Lösung zu bieten. Die Regionen, in denen Dedicated HSM zurzeit verfügbar ist, sind:
 
-* USA (Ost)
+* East US
 * USA (Ost) 2
 * USA (Westen)
 * USA Süd Mitte

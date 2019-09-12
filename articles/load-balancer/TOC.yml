@@ -61,8 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
       href: load-balancer-standard-diagnostics.md
-    - name: Sicherheitsattribute
-      href: load-balancer-security-attributes.md
+    - name: Integrierte Sicherheitskontrollen
+      href: load-balancer-security-controls.md
 - name: Anleitung
   items:
     - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif

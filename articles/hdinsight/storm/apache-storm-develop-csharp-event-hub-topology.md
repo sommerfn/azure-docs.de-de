@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483929"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915327"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (C#)
 
@@ -140,7 +140,7 @@ Event Hubs ist die Datenquelle für dieses Beispiel. Verwenden Sie die Informati
    | writer |Send |
    | reader |Lauschen |
 
-    ![Screenshot des Fensters „Freigegebene Zugriffsrichtlinien“](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
+    ![Screenshot des Fensters „Freigegebene Zugriffsrichtlinien“](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
 2. Wählen Sie die Richtlinien **reader** und **writer** aus. Kopieren und speichern Sie den Primärschlüsselwert für beide Richtlinien, da diese Werte später verwendet werden.
 
@@ -182,15 +182,15 @@ Event Hubs ist die Datenquelle für dieses Beispiel. Verwenden Sie die Informati
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **EventHubReader**, und wählen Sie **An Storm in HDInsight übermitteln** aus.
 
-    ![Screenshot des Projektmappen-Explorers, wobei „An Storm in HDInsight übermitteln“ hervorgehoben ist](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
+    ![Screenshot des Projektmappen-Explorers, wobei „An Storm in HDInsight übermitteln“ hervorgehoben ist](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
 2. Wählen Sie im Dialogfeld **Topologie übermitteln** Ihren **Storm-Cluster** aus. Erweitern Sie **Zusätzliche Konfigurationen**, wählen Sie **Java File Paths** und dann **...** aus, und wählen Sie das Verzeichnis aus, das die zuvor heruntergeladene JAR-Datei enthält. Klicken Sie abschließend auf **Senden**.
 
-    ![Screenshot des Dialogfelds „Topologie übermitteln“](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
+    ![Screenshot des Dialogfelds „Topologie übermitteln“](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
 3. Sobald die Topologie übermittelt wurde, wird der **Storm Topologies Viewer** angezeigt. Wählen Sie im linken Bereich die Topologie **EventHubReader** aus, um Informationen über diese Topologie anzuzeigen.
 
-    ![Screenshot des Storm Topologies Viewers](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
+    ![Screenshot des Storm Topologies Viewers](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
 4. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **EventHubWriter**, und wählen Sie **An Storm in HDInsight übermitteln** aus.
 
@@ -212,7 +212,7 @@ Event Hubs ist die Datenquelle für dieses Beispiel. Verwenden Sie die Informati
 
 Um die Topologien zu beenden, wählen Sie jede Topologie im **Storm Topologies Viewer** aus, und klicken Sie dann auf **Beenden**.
 
-![Screenshot des Storm Topologies Viewers mit hervorgehobener Schaltfläche „Kill“](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
+![Screenshot des Storm Topologies Viewers mit hervorgehobener Schaltfläche „Kill“](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>Löschen des Clusters
 

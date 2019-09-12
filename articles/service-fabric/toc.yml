@@ -131,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric-Clustersicherheit
           href: service-fabric-cluster-security.md
-        - name: Allgemeine Azure-Sicherheitsattribute
-          href: service-fabric-security-attributes.md
+        - name: Integrierte Sicherheitskontrollen
+          href: service-fabric-security-controls.md
     - name: Begriff
       href: service-fabric-technical-overview.md
     - name: Erstellen von Anwendungen

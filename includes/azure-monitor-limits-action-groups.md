@@ -9,16 +9,16 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 2922a1fb92f3df07429d3463b8bf639f336776af
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67305283"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Azure-App-Push | 10 Azure-App-Aktionen pro Aktionsgruppe. | Wenden Sie sich an den Support. |
-| E-Mail | 1\.000 E-Mail-Aktionen in einer Aktionsgruppe.<br>Maximal 100 E-Mails in einer Stunde.<br>Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
+| Email | 1\.000 E-Mail-Aktionen in einer Aktionsgruppe.<br>Maximal 100 E-Mails in einer Stunde.<br>Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
 | ITSM | 10 ITSM-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. | 
 | Logik-App | 10 Logik-App-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. |
 | Runbook | 10 Runbook-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. |

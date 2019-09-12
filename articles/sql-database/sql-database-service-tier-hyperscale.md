@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981163"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845647"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Dienstebene „Hyperscale“ für bis zu 100TB
 
@@ -186,7 +186,7 @@ So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht 
 
 2. Klicken Sie auf [**Neue Supportanfrage**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
+    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
@@ -198,13 +198,13 @@ So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht 
 
 1. Klicken Sie auf **Details angeben**.
 
-    ![Problemdetails](media/sql-database-service-tier-hyperscale/whitelist-request-screen-2.png)
+    ![Problemdetails](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. Wählen Sie **Kontingenttyp für SQL-Datenbank** aus: **Andere Kontingentanforderung**.
 
 9. Füllen Sie die folgende Vorlage aus:
 
-    ![Kontingentdetails](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![Kontingentdetails](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     Geben Sie in der Vorlage die folgenden Informationen ein:
 
@@ -222,7 +222,7 @@ So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienstebene bezüglich der GA.  Wir arbeiten daran, möglichst viele dieser Einschränkungen zu entfernen.
 
-| Problem | Beschreibung |
+| Problem | BESCHREIBUNG |
 | :---- | :--------- |
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|

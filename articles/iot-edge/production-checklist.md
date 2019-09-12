@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 45c802fb42088be1eecd7c711c6693d325252c91
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985785"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899402"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -209,13 +209,15 @@ Standardmäßig legt die Moby-Containerengine keine Grenzwerte für die Größe 
 
 Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen der Containerengine begrenzen. Das folgende Beispiel legt den Protokolltreiber auf `json-file` (empfohlen) mit Grenzwerten für Größe und Anzahl der Dateien fest:
 
-    {
-        "log-driver": "json-file",
-        "log-opts": {
-            "max-size": "10m",
-            "max-file": "3"
-        }
+```JSON
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
     }
+}
+```
 
 Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
 
@@ -230,18 +232,19 @@ Die Containerengine muss neu gestartet werden, damit die Änderungen wirksam wer
 
 Sie können dies in den **createOptions** der einzelnen Module vornehmen. Beispiel:
 
-    "createOptions": {
-        "HostConfig": {
-            "LogConfig": {
-                "Type": "json-file",
-                "Config": {
-                    "max-size": "10m",
-                    "max-file": "3"
-                }
+```yml
+"createOptions": {
+    "HostConfig": {
+        "LogConfig": {
+            "Type": "json-file",
+            "Config": {
+                "max-size": "10m",
+                "max-file": "3"
             }
         }
     }
-
+}
+```
 
 **Zusätzliche Optionen unter Linux-Systemen**
 

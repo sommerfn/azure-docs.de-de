@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941950"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910488"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -189,7 +189,7 @@ Ja, für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspfli
 
 Nein. „Gesetzliche Aufbewahrungspflicht“ ist nur der allgemeine Ausdruck, der für eine nicht zeitbasierte Aufbewahrungsrichtlinie verwendet wird. Er bezieht sich nicht ausschließlich auf Vorgänge im Zusammenhang mit Rechtsstreitigkeiten. Richtlinien zur gesetzlichen Aufbewahrungspflicht sind nützlich, um Überschreibungen und Löschungen zum Schützen von wichtigen WORM-Unternehmensdaten zu deaktivieren, wenn der Aufbewahrungszeitraum unbekannt ist. Sie können sie als Unternehmensrichtlinie zum Schützen Ihrer unternehmenskritischen WORM-Workloads oder als Stagingrichtlinie verwenden, bevor für einen benutzerdefinierten Ereignisauslöser eine zeitbasierte Aufbewahrungsrichtlinie erforderlich ist. 
 
-**Kann ich eine zeitbasierte Aufbewahrungsrichtlinie im Zustand *Gesperrt* oder eine gesetzliche Aufbewahrungspflicht entfernen?**
+**Kann ich eine zeitbasierte Aufbewahrungsrichtlinie im Zustand _Gesperrt_ oder eine gesetzliche Aufbewahrungspflicht entfernen?**
 
 Nur entsperrte zeitbasierte Aufbewahrungsrichtlinien können aus einem Container entfernt werden. Nachdem eine zeitbasierte Aufbewahrungsrichtlinie gesperrt wurde, kann sie nicht mehr entfernt werden. Es sind nur Verlängerungen des geltenden Aufbewahrungszeitraums zulässig. Tags für die gesetzliche Aufbewahrungspflicht können gelöscht werden. Wenn alle Tags für die gesetzliche Aufbewahrungspflicht gelöscht werden, kann die gesetzliche Aufbewahrungspflicht entfernt werden.
 

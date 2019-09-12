@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 01e7ca184f2be755f23cd402e0694ea282e3b85e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b1231a406ac20512e9ce92032379d697c3346af3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441397"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882820"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Apache Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
@@ -39,7 +39,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstelle
 
 1. Navigieren Sie von Windows zu „Start > Windows-Verwaltungsprogramme > ODBC-Datenquellen (32-Bit)/(64-Bit)“.  Hierdurch wird das Dialogfeld **ODBC-Datenquellen-Administrator** geöffnet.
 
-    ![ODBC-Datenquellen-Administrator](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.SimbaHiveOdbc.DataSourceAdmin1.png "Konfigurieren eines DSN mithilfe des ODBC-Datenquellen-Administrators")
+    ![ODBC-Datenquellen-Administrator](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Konfigurieren eines DSN mithilfe des ODBC-Datenquellen-Administrators")
 
 1. Wählen Sie auf der Registerkarte **Benutzer-DSN** die Option **Hinzufügen** aus, um das Fenster **Neue Datenquelle erstellen** zu öffnen.
 
@@ -65,7 +65,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstelle
    |  Rows fetched per block |Wenn Sie viele Datensätze abrufen, ist es möglicherweise erforderlich, diesen Parameter zu optimieren, um optimale Leistung zu garantieren. |
    |  Default string column length, Binary column length, Decimal column scale |Längen und Genauigkeiten der Datentypen können beeinflussen, wie die Daten zurückgegeben werden. Bei zu geringer Genauigkeit und/oder Abschneiden werden falsche Informationen zurückgegeben. |
 
-    ![Erweiterte Optionen](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png "Erweiterte DSN-Konfigurationsoptionen")
+    ![Erweiterte Optionen](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Erweiterte DSN-Konfigurationsoptionen")
 
 1. Wählen Sie **Testen** aus, um die Datenquelle zu testen. Wenn die Datenquelle richtig konfiguriert wurde, wird **SUCCESS!** als Testergebnis angezeigt.  
 
@@ -83,7 +83,7 @@ In den folgenden Schritten wird beschrieben, wie Sie mithilfe der ODBC-Datenquel
 
 2. Navigieren Sie auf der Registerkarte **Daten** zu **Daten abrufen** > **Aus anderen Quellen** > **Aus ODBC**, um das Fenster **Aus ODBC** zu öffnen.
 
-    ![Öffnen des Datenverbindungs-Assistenten](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png "Öffnen des Datenverbindungs-Assistenten")
+    ![Öffnen des Datenverbindungs-Assistenten](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Öffnen des Datenverbindungs-Assistenten")
 
 3. Wählen Sie in der Dropdownliste den im letzten Abschnitt erstellten Datenquellennamen aus, und wählen Sie anschließend **OK**.
 
@@ -91,7 +91,7 @@ In den folgenden Schritten wird beschrieben, wie Sie mithilfe der ODBC-Datenquel
 
 5. Navigieren Sie von **Navigator** zu **HIVE** > **Standard** > **hivesampletable**, und wählen Sie dann **Laden** aus. Es dauert einige Augenblicke, bis die Daten in Excel importiert werden.
 
-    ![HDInsight-Hive-ODBC-Navigator](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight.hive.odbc.navigator.png "Öffnen des Datenverbindungs-Assistenten")
+    ![HDInsight-Hive-ODBC-Navigator](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Öffnen des Datenverbindungs-Assistenten")
 
 ## <a name="next-steps"></a>Nächste Schritte
 

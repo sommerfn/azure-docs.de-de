@@ -6,20 +6,42 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 810484060850400a6af8e5be4cf16164eb8f18cc
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688911"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258978"
 ---
-# <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
+# <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
+
 Sie können Fehler, die bei der Verwendung von Azure Backup auftreten, anhand der nachstehend aufgeführten Informationen beheben:
 
 ## <a name="backup"></a>Backup
+
 Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Computer.
+
+### <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
+
+* Stellen Sie sicher, dass der VM-Agent (WA-Agent) die [neueste Version](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine) aufweist.
+* Stellen Sie sicher, dass die Betriebssystemversion des virtuellen Windows- oder Linux-Computers unterstützt wird. Entsprechende Informationen finden Sie in der [Supportmatrix zur IaaS-VM-Sicherung](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
+* Überprüfen Sie, ob kein anderer Sicherungsdienst ausgeführt wird.
+   * Um sicherzustellen, dass keine Probleme bei der Momentaufnahmenerweiterung vorliegen, [deinstallieren Sie die Erweiterungen, um erneutes Laden zu erzwingen, und wiederholen Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load).
+* Überprüfen Sie, ob der virtuelle Computer über Internetkonnektivität verfügt.
+   * Vergewissern Sie sich, dass kein anderer Sicherungsdienst ausgeführt wird.
+* Stellen Sie über `Services.msc` sicher, dass sich der **Microsoft Azure-Gast-Agent-Dienst** im Status **Wird ausgeführt** befindet. Wenn der **Microsoft Azure-Gast-Agent-Dienst** nicht vorhanden ist, installieren Sie ihn aus [Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
+* Das **Ereignisprotokoll** zeigt möglicherweise Sicherungsfehler an, die aus anderen Sicherungsprodukten, z.B. der Windows Server-Sicherung, stammen und nicht auf Azure Backup zurückzuführen sind. Ermitteln Sie anhand der folgenden Schritte, ob das Problem bei Azure Backup liegt:
+   * Wenn in der Ereignisquelle oder -meldung ein Fehler bei einer **Eintragsicherung** vorliegt, überprüfen Sie, ob die Sicherungen der Azure IaaS-VM-Sicherung erfolgreich waren und ob ein Wiederherstellungspunkt mit dem gewünschten Momentaufnahmetyp erstellt wurde.
+    * Wenn Azure Backup funktioniert, liegt das Problem wahrscheinlich bei einer anderen Sicherungslösung.
+    * Im Folgenden finden Sie ein Beispiel für einen Fehler in der Ereignisanzeige, bei dem Azure Backup einwandfrei funktionierte, aber die „Windows Server-Sicherung“ fehlgeschlagen ist:<br>
+    ![Windows Server-Sicherung fehlgeschlagen](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+    * Wenn Azure Backup fehlschlägt, suchen Sie den entsprechenden Fehlercode im Abschnitt „Häufige Fehler bei der VM-Sicherung“ in diesem Artikel.
+
+## <a name="common-issues"></a>Häufige Probleme
+
+Im Folgenden werden häufige Probleme bei Sicherungsfehlern auf virtuellen Azure-Computern erläutert.
 
 ## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
@@ -36,7 +58,7 @@ Fehlermeldung: Aufgrund des Zustands des virtuellen Computers sind keine Sicheru
 Beim Sicherungsvorgang ist ein Fehler aufgetreten, da sich der virtuelle Computer im Status „Fehlerhaft“ befindet. Damit die Sicherung erfolgreich ist, sollte der virtuelle Computer sich im Status „Wird ausgeführt“, „Beendet“ oder „Beendet (Zuordnung aufgehoben)“ befinden.
 
 * Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus.
-*  Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
+* Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
 
 ## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme
 
@@ -148,7 +170,7 @@ Fehler beim Sicherungsvorgang auf der VM aufgrund von Netzwerkaufrufen beim Durc
 
 Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten (Administrator) den folgenden Befehl aus:
 
-```
+```text
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -163,16 +185,15 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 
 | Fehlerdetails | Problemumgehung |
 | ------ | --- |
-| Fehlercode: 320001<br/> Fehlermeldung: Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. <br/> <br/> Fehlercode: 400094 <br/> Fehlermeldung: Der virtuelle Computer ist nicht vorhanden <br/> <br/>  Der virtuelle Azure-Computer wurde nicht gefunden.  |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus: <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>**or**</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
+| **Fehlercode**: 320001<br/> **Fehlermeldung**: Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. <br/> <br/> **Fehlercode**: 400094 <br/> **Fehlermeldung**: Der virtuelle Computer ist nicht vorhanden <br/> <br/>  Der virtuelle Azure-Computer wurde nicht gefunden.  |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus: <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>**or**</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
 | Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“: <br>Starten Sie den virtuellen Computer neu, und stellen Sie sicher, dass der VM ausgeführt oder heruntergefahren wird. | Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird. Wechseln Sie zur Liste der Erweiterungen, überprüfen Sie, ob eine fehlerhafte Erweiterung vorliegt, entfernen Sie diese, und wiederholen Sie den Neustart des virtuellen Computers. Wenn alle Erweiterungen ausgeführt werden, überprüfen Sie, ob der VM-Agent-Dienst ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den VM-Agent-Dienst neu. |
-|Fehlercode: UserErrorBCMPremiumStorageQuotaError<br/> Fehlermeldung: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt | Bei Premium-VMs mit dem VM-Sicherungsstapel V1 wird die Momentaufnahme in das Speicherkonto kopiert. Durch diesen Schritt wird sichergestellt, dass der Sicherungsverwaltungsdatenverkehr für die Momentaufnahme nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. <br><br>Wir empfehlen Ihnen, nur 50 % (17,5 TB) des gesamten Speicherplatzes des Speicherkontos zuzuordnen. Der Azure Backup-Dienst kann dann die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen. |
-| Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird <br>Der VM-Agent ist eine erforderliche Komponente für die Azure Recovery Services-Erweiterung. Installieren Sie den Agent für virtuelle Azure-Computer, und starten Sie den Registrierungsvorgang erneut. |<ol> <li>Überprüfen Sie, ob der VM-Agent ordnungsgemäß installiert ist. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> Erfahren Sie mehr über das Installieren des VM-Agents und das Überprüfen der VM-Agent-Installation. |
-| Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen: **Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden.** |Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben wurde. |
-| Der Zustand des virtuellen Computers lässt keine Sicherungen zu. |<ul><li>Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus. <li> Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.  |
+|**Fehlercode**: UserErrorBCMPremiumStorageQuotaError<br/> **Fehlermeldung**: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt | Bei Premium-VMs mit dem VM-Sicherungsstapel V1 wird die Momentaufnahme in das Speicherkonto kopiert. Durch diesen Schritt wird sichergestellt, dass der Sicherungsverwaltungsdatenverkehr für die Momentaufnahme nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. <br><br>Wir empfehlen Ihnen, nur 50 % (17,5 TB) des gesamten Speicherplatzes des Speicherkontos zuzuordnen. Der Azure Backup-Dienst kann dann die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen. |
+| **Fehlercode: 380008** <br/> **Fehlermeldung**: Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird | Der VM-Agent ist eine erforderliche Komponente für die Azure Recovery Services-Erweiterung. Installieren Sie den Agent für virtuelle Azure-Computer, und starten Sie den Registrierungsvorgang erneut. <br> <ol> <li>Überprüfen Sie, ob der VM-Agent ordnungsgemäß installiert ist. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> Erfahren Sie mehr über das Installieren des VM-Agents und das Überprüfen der VM-Agent-Installation. |
+| **Fehlercode**: ExtensionSnapshotBitlockerError <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen: **Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden.** |Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben wurde. |
+| **Fehlercode**: VmNotInDesirableState <br/> **Fehlermeldung**:  Der Zustand des virtuellen Computers lässt keine Sicherungen zu. |<ul><li>Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus. <li> Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.  |
 | Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. |Erfahren Sie mehr über die [VM-Agent-Installation und das Überprüfen der VM-Agent-Installation](#vm-agent). |
-| Azure Backup konnte zum Erfassen einer dateisystemkonsistenten Momentaufnahme mindestens einen Bereitstellungspunkt des virtuellen Computers nicht einfrieren. | Führen Sie den folgenden Schritt aus: <ul><li>Überprüfen Sie mit dem Befehl **tune2fs** den Dateisystemstatus aller bereitgestellten Geräte. Beispiel: **tune2fs -l /dev/sdb1 \\** .\| grep **Filesystem state**. <li>Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht fehlerfrei ist. <li> Führen Sie mit dem Befehl **fsck** eine Dateisystemkonsistenzprüfung für diese Geräte aus. <li> Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol> |
-| Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
-| Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2012_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
+| **Fehlercode**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
+| **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2013_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
 
 
 ## <a name="jobs"></a>Aufträge
@@ -244,7 +265,7 @@ Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Spe
 - **Der Netzwerkzugriff auf Storage wird durch NSG blockiert**. Erfahren Sie mehr über das [Einrichten des Netzwerkzugriffs](backup-azure-arm-vms-prepare.md#establish-network-connectivity) auf Storage durch Hinzufügen einer Liste mit zulässigen IP-Adressen oder über einen Proxyserver.
 - **Virtuelle Computer mit konfigurierter SQL Server-Sicherung können Momentaufnahmeaufgaben verzögern**. Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung auf virtuellen Windows-Computern erstellt. Bei virtuellen Computern mit SQL Server und einer konfigurierten SQL Server-Sicherung kann es zu Verzögerungen bei Momentaufnahmen kommen. Wenn Verzögerungen bei Momentaufnahmen Sicherungsfehler verursachen, legen Sie den folgenden Registrierungsschlüssel fest:
 
-   ```
+   ```text
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```

@@ -62,8 +62,8 @@
       items:
         - name: Sicherheitsübersicht
           href: overview-security.md
-        - name: Allgemeine Sicherheitsattribute
-          href: key-vault-security-attributes.md
+        - name: Integrierte Sicherheitskontrollen
+          href: key-vault-security-controls.md
         - name: Sicherheitsumgebungen (Security Worlds)
           href: key-vault-ovw-security-worlds.md
         - name: Schützen einer Key Vault-Instanz
@@ -90,8 +90,6 @@
           href: create-certificate.md
         - name: Überwachen und Verwalten der Zertifikaterstellung
           href: create-certificate-scenarios.md
-    - name: Allgemeine Azure-Sicherheitsattribute
-      href: key-vault-security-attributes.md
 - name: Anleitungen
   items:
     - name: Azure Key Vault-Protokollierung

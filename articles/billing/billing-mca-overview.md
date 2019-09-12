@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 87483c967641489e9548f38c99eebbf121d0d252
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 835686d639679cca7e9a83b5297b365953835e47
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490746"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880738"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Erste Schritte mit dem Abrechnungskonto für eine Microsoft-Kundenvereinbarung
 
@@ -67,8 +67,8 @@ Azure-Pläne legen die Preise und Vereinbarungen zum Servicelevel für Azure-Abo
 
 | Plan             | Definition  |
 |------------------|-------------|
-|Microsoft Azure-Plan   | Dieser Plan ermöglicht Benutzern das Erstellen von Abonnements, die beliebige Workloads ausführen können. Weitere Informationen finden Sie unter [Microsoft Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g/). |
-|Microsoft Azure-Plan für Dev/Test | Dieser Plan ermöglicht Visual Studio-Abonnenten das Erstellen von Abonnements, die auf Entwicklungs- oder Testworkloads beschränkt sind. Für diese Abonnements ergeben sich Vorteile wie niedrigere Tarife und der Zugriff auf exklusive Images virtueller Computer im Azure-Portal. Weitere Informationen finden Sie unter [Microsoft Azure-Plan für Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148g/).|
+|Microsoft Azure-Plan   | Dieser Plan ermöglicht Benutzern das Erstellen von Abonnements, die beliebige Workloads ausführen können.  |
+|Microsoft Azure-Plan für Dev/Test | Dieser Plan ermöglicht Visual Studio-Abonnenten das Erstellen von Abonnements, die auf Entwicklungs- oder Testworkloads beschränkt sind. Für diese Abonnements ergeben sich Vorteile wie niedrigere Tarife und der Zugriff auf exklusive Images virtueller Computer im Azure-Portal. |
 
 ## <a name="invoice-sections"></a>Rechnungsabschnitte
 

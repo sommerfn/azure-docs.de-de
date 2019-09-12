@@ -4,13 +4,13 @@ title: Dokumentation zu Key Vault
 metadata:
   title: 'Dokumentation für Azure Key Vault – Tutorials, API-Referenz | Microsoft-Dokumentation'
   meta.description: 'Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
-  author: barclayn
-  manager: barbkess
+  author: msmbaldwin
+  manager: rkarlin
   layout: LandingPage
   ms.service: key-vault
   ms.topic: landing-page
   ms.date: 09/14/2018
-  ms.author: barclayn
+  ms.author: mbaldwin
 abstract:
   description: 'Hier erfahren Sie, wie Sie mithilfe von Key Vault kryptografische Schlüssel und Geheimnisse schützen und verwalten, die von Cloudanwendungen und -diensten verwendet werden. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Schlüssel und Geheimnisse für den Zugriff auf und die Verschlüsselung von Ressourcen und Lösungen erstellen und verwalten.'
 sections:

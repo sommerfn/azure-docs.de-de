@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12a6af73dc0abc9598184f6c83e9d7652973a99e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543969"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773802"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Zuordnen von öffentlichen IP-Adressen für die private Cloudumgebung
 
 Öffnen Sie die Registerkarte „Public IPs“ (Öffentliche IP-Adressen) auf der Seite „Network“ (Netzwerk), um öffentliche IP-Adressen für virtuelle Computer in Ihrer privaten Cloudumgebung zuzuordnen.
 
-1. [Greifen Sie auf das CloudSimple Portal zu](monitor-activity.md), und wählen Sie **Network** (Netzwerk) im seitlichen Menü aus.
+1. [Greifen Sie auf das CloudSimple Portal zu](access-cloudsimple-portal.md), und wählen Sie **Network** (Netzwerk) im seitlichen Menü aus.
 2. Wählen Sie **Public IPs** (Öffentliche IP-Adressen) aus.
 3. Klicken Sie auf **New Public IP** (Neue öffentliche IP-Adresse).
 

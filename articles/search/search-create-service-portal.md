@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines Azure Search-Diensts im Portal – Azure Search
+title: 'Schnellstart: Erstellen eines Azure Search-Diensts im Portal – Azure Search'
 description: Stellen Sie eine Azure Search-Ressource im Azure-Portal bereit. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649947"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883856"
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
+# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Search-Diensts im Portal
 
 Azure Search ist eine eigenständige Ressource, die zum Hinzufügen einer Suchoberfläche zu benutzerdefinierten Apps verwendet wird. Azure Search lässt sich problemlos in andere Azure-Dienste integrieren, kann aber auch als eigenständige Komponente verwendet oder in Apps auf Netzwerkservern oder in auf anderen Cloudplattformen ausgeführte Software integriert werden.
 

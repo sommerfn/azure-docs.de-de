@@ -163,8 +163,8 @@
           maintainContext: true
     - name: Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen
       href: virtual-machine-scale-sets-faq.md
-    - name: Sicherheitsattribute
-      href: virtual-machine-scale-sets-security-attributes.md
+    - name: Integrierte Sicherheitskontrollen
+      href: virtual-machine-scale-sets-security-controls.md
 - name: Anleitung
   items:
     - name: Planen und Entwerfen

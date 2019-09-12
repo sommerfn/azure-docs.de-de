@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: f072b6905881da7b7854b0e51d690dbbd40dffb5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a58d7befdb1066ce08ad1e46e6550141e2b0824f
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227439"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899995"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Tutorial: Verwenden von R in einem Spark-Computekontext in Azure HDInsight
 
@@ -59,7 +59,7 @@ Das *Dataset „Airline 2012 On-Time“* besteht aus zwölf CSV-Dateien mit Inf
 
 1. Wählen Sie im rechten Bereich die Registerkarte **Umgebung** aus. Die Variablen werden unter **Werte** angezeigt.
 
-    ![RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
+    ![RStudio](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 
 1.  Erstellen Sie ein lokales Verzeichnis, und laden Sie die Beispieldaten herunter. Geben Sie in RStudio den folgenden Code ein:
 

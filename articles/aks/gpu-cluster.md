@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68381830"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899467"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Die Verwendung GPU-fähiger Knotenpools steht aktuell nur für Linux-Knotenpools
 
 Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit Knoten verfügen, die AKS unterstützen. Ihr AKS-Cluster muss Kubernetes 1.10 oder höher ausführen. Wenn Sie einen AKS-Cluster benötigen, der diese Anforderungen erfüllt, lesen Sie den ersten Abschnitt dieses Artikels zum [Erstellen eines AKS-Clusters](#create-an-aks-cluster).
 
-Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [„Installieren der Azure-Befehlszeilenschnittstelle“][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
@@ -73,7 +73,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
-  namespace: kube-system
+  namespace: gpu-resources
 spec:
   updateStrategy:
     type: RollingUpdate

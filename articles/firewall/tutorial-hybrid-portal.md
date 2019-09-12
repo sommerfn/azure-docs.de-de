@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: f7dce448b01c211441fd1e0fd530ff6ad062c303
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114871"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918785"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -102,7 +102,7 @@ Erstellen Sie nun das VNET:
 4. Geben Sie unter **Name** den Namen **VNet-Spoke** ein.
 5. Geben Sie unter **Adressraum** den Adressraum **10.6.0.0/16** ein.
 6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-7. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
+7. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **FW-Hybrid-Test** aus.
 8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
 9. Geben Sie unter **Subnetz** für **Name** den Namen **SN-Workload** ein.
 10. Geben Sie unter **Adressbereich** den Adressbereich **10.6.0.0/24** ein.
@@ -398,7 +398,7 @@ Erstellen Sie im virtuellen Spoke-Netzwerk einen virtuellen Computer ohne öffen
            -Location EastUS
    ```
 
-### <a name="create-the-on-premises-virtual-machine"></a>Erstellen des lokalen virtuellen Computers
+### <a name="create-the-on-premises-virtual-machine"></a>Erstellen der lokalen VM
 
 Mit diesem virtuellen Computer wird eine Remotedesktopverbindung mit der öffentlichen IP-Adresse hergestellt. Von dort aus stellen Sie dann über die Firewall eine Verbindung mit dem lokalen Server her.
 

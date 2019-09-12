@@ -77,8 +77,8 @@
           href: overview-authentication-authorization.md
         - name: Betriebssystem- und Runtimepatching
           href: overview-patch-os-runtime.md
-        - name: Sicherheitsattribute
-          href: app-service-security-attributes.md
+        - name: Integrierte Sicherheitskontrollen
+          href: app-service-security-controls.md
         - name: Sicherheitsübersicht
           href: overview-security.md
     - name: Netzwerkfeatures

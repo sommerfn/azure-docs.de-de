@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9d81e5e69837f6074d94278f4e54f9178a656335
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c8fc7c931f31e1ff58f41faa9a29f7e77e9655fd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433791"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917312"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network
 Hier erfahren Sie, wie Sie Apache HBase-Cluster in Azure HDInsight in einem [virtuellen Azure-Netzwerk][1] erstellen.
@@ -46,12 +46,11 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
 > * **Subnetzadressbereich:** 10.0.0.0/24
 >
 > &lt;Clustername&gt; wird durch den Clusternamen ersetzt, den Sie bei Verwendung der Vorlage angeben.
->
->
+
 
 1. Klicken Sie auf die folgende Abbildung, um die Vorlage im Azure-Portal zu öffnen: Die Vorlage finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 2. Geben Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** die folgenden Eigenschaften ein:
 
    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus, um den HDInsight-Cluster, das abhängige Speicherkonto und das virtuelle Azure-Netzwerk zu erstellen.
@@ -215,7 +214,7 @@ Führen Sie die Schritte unter [Erste Schritte mit einem Apache HBase-Beispiel i
     3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
     - Set **Primary DNS Suffix** to the value obtained in step 2:
 
-        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/PrimaryDNSSuffix.png)
+        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/hdi-primary-dns-suffix.png)
     4. Click **OK**.
     5. Reboot the virtual machine.
 -->

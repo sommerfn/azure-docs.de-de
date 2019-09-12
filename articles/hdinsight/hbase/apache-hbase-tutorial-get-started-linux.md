@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 48b02a042b55af9ff65f57220f7a64c9cbde8848
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445544"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917412"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
 
@@ -41,14 +41,14 @@ Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um 
 
 1. Wählen Sie die folgende Abbildung aus, um die Vorlage im Azure-Portal zu öffnen. Die Vorlage finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** die folgenden Werte ein:
 
     |Eigenschaft |BESCHREIBUNG |
     |---|---|
-    |Abonnement|Wählen Sie Ihr Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
-    |Ressourcengruppe|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
+    |Subscription|Wählen Sie Ihr Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
+    |Resource group|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
     |Location|Geben Sie den Standort der Ressourcengruppe an. |
     |ClusterName|Geben Sie einen Namen für den HBase-Cluster ein.|
     |Clusteranmeldename und Kennwort|Der Standardanmeldename lautet **admin**.|

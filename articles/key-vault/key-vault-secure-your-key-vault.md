@@ -3,18 +3,18 @@ title: Sicherer Zugriff auf einen Schlüsseltresor – Azure Key Vault | Microso
 description: Verwalten Sie Zugriffsberechtigungen für den Azure Key Vault, Schlüssel und Geheimnisse. In diesem Artikel wird das Authentifizierungs- und Autorisierungsmodell für Key Vault und das Schützen eines Schlüsseltresors behandelt.
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 67925f2123f2a4f2524002eb075754c38fad4b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4857cda7c3387e72be8837422469888adc5504d1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118980"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883093"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -123,7 +123,7 @@ Wir müssen die folgenden Vorgänge für unsere Rollen autorisieren:
 
 Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die Anwendung zusammen. 
 
-| Rolle | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene |
+| Role | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene |
 | --- | --- | --- |
 | Sicherheitsteam | Key Vault-Mitwirkender | Schlüssel: Sichern, Erstellen, Löschen, Abrufen, Importieren, Auflisten, Wiederherstellen<br>Geheimnisse: alle Vorgänge |
 | Entwickler und&nbsp;Operatoren | Berechtigung zum Bereitstellen von Schlüsseltresoren<br><br> **Hinweis**: Mit dieser Berechtigung können die bereitgestellten VMs Geheimnisse aus einem Schlüsseltresor abrufen. | Keine |

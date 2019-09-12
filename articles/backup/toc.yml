@@ -80,8 +80,8 @@
       href: backup-azure-backup-server-import-export-.md
     - name: Ersetzen der Bandbibliothek
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Allgemeine Azure-Sicherheitsattribute
-      href: backup-security-attributes.md
+    - name: Integrierte Sicherheitskontrollen
+      href: backup-security-controls.md
 - name: Anleitung
   items:
     - name: Azure Backup Server

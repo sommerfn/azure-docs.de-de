@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c219c85836eb4730fa90918385555c433a12449
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483852"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915103"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight 
 
@@ -54,7 +54,7 @@ Mithilfe der HDInsight-Tools können C#- oder hybride Topologien an Ihre Storm-C
 
 3. Erweitern Sie im Dialogfeld **Neues Projekt** die Optionen **Installiert** > **Vorlagen**, und wählen Sie dann **HDInsight** aus. Wählen Sie in der Liste der Vorlagen die Option **Storm Sample**aus. Geben Sie unten im Dialogfeld einen Namen für die Anwendung ein.
 
-    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
 4. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **An Storm in HDInsight übermitteln** aus.
 
@@ -90,7 +90,7 @@ Sie können mit dem Nimbus-Dienst programmgesteuert eine Topologie bereitstellen
 
 Wenn eine Topologie mithilfe von Visual Studio übermittelt wurde, wird die Ansicht **Storm-Topologien** angezeigt. Wählen Sie die Topologie aus der Liste aus, um Informationen zur aktiven Topologie anzuzeigen.
 
-![Visual Studio Monitor](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
+![Visual Studio Monitor](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
 > Sie können die **Storm-Topologien** auch im **Server-Explorer** anzeigen, indem Sie **Azure** > **HDInsight** erweitern und dann mit der rechten Maustaste auf einen Storm-Cluster in HDInsight klicken und **View Storm Topologies** auswählen.

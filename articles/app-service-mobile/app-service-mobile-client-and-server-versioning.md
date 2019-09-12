@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cfa6a363725c35083b32d6de1dd1371777f91907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7133e8bc7d04b3653b6b788347b7bc5176087f4c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240301"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883475"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client- und Serverversionsverwaltung in Mobile Apps und Mobile Services
 Die neueste Version von Azure Mobile Services ist das Feature **Mobile Apps** von Azure App Service.
@@ -28,8 +28,6 @@ Die Mobile Apps-Client- und -Server-SDKs basieren ursprünglich auf den SDKs in 
 Dies bedeutet, dass Sie ein *Mobile Apps*-Client-SDK mit einem *Mobile Apps*-Server-SDK und ebenso für *Mobile Services* verwenden müssen. Dieser Vertrag wird mit einem speziellen Headerwert durchgesetzt, der von den Client- und Server-SDKs verwendet wird: `ZUMO-API-VERSION`.
 
 Hinweis: Wenn in diesem Dokument auf ein *Mobile Services* -Back-End verwiesen wird, heißt das nicht zwangsläufig, dass es unter Mobile Services gehostet wird. Es ist jetzt möglich, einen mobilen Dienst für die Ausführung unter App Service ohne Codeänderungen zu migrieren, aber für den Dienst würden dabei trotzdem *Mobile Services*-SDK-Versionen verwendet werden.
-
-Weitere Informationen zum Migrieren zu App Service ohne Codeänderungen finden Sie im Artikel [Migrieren eines Mobile Service zu Azure App Service].
 
 ## <a name="header-specification"></a>Headerspezifikation
 Der Schlüssel `ZUMO-API-VERSION` kann entweder im HTTP-Header oder in der Abfragezeichenfolge angegeben werden. Der Wert ist eine Versionszeichenfolge im Format **x.y.z**.

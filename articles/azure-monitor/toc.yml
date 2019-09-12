@@ -770,8 +770,6 @@
                   href: log-query/get-started-portal.md
                 - name: Tutorial zu Protokollabfragen
                   href: log-query/get-started-queries.md
-                - name: Einfache Oberfläche für Protokolle
-                  href: log-query/simple-logs.md
             - name: Protokolldaten
               items:
                 - name: Protokolldatenstruktur
@@ -1037,8 +1035,6 @@
               href: insights/solutions-resources-views.md
             - name: Bewährte Methoden
               href: insights/solutions-best-practices.md
-            - name: Sammeln von Überwachungsdaten aus einem Runbook
-              href: platform/runbook-datacollect.md
 - name: Verweis
   items:
     - name: Diensteinschränkungen

@@ -142,8 +142,8 @@
       href: backup-recovery.md
     - name: Infrastrukturbeispiel
       href: infrastructure-example.md
-    - name: Sicherheitsattribute
-      href: virtual-machines-windows-security-attributes.md
+    - name: Integrierte Sicherheitskontrollen
+      href: virtual-machines-windows-security-controls.md
 - name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen
