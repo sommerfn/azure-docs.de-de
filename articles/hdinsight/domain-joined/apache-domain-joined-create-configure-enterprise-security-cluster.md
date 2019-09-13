@@ -309,7 +309,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
-        | Action | ZULASSEN |
+        | Action | Allow |
         | Priority | \<Gewünschte Zahl\> |
         | Name | Port_LDAP_636 |
 
