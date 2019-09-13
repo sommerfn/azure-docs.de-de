@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461988"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883396"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Analysieren und Verarbeiten von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
 
@@ -91,7 +91,7 @@ Die **SELECT**-Anweisung gibt nur eine Zeile zurück.
 
 Dies ist die Ausgabe der **SELECT**-Anweisung:
 
-![Vereinfachen des JSON-Dokuments](./media/using-json-in-hive/flatten.png)
+![Vereinfachen des JSON-Dokuments](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>Analysieren von JSON-Dokumenten in Hive
 Hive stellt drei verschiedene Mechanismen zum Ausführen von Abfragen bei JSON-Dokumenten bereit, Sie können jedoch auch Ihren eigenen schreiben:
@@ -101,7 +101,7 @@ Hive stellt drei verschiedene Mechanismen zum Ausführen von Abfragen bei JSON-D
 * Verwenden Sie ein benutzerdefiniertes Serialisierungs-/Deserialisierungsprogramm (SerDe).
 * Schreiben Sie mit Python oder anderen Sprachen eine eigene UDF. Weitere Informationen zum Ausführen Ihres eigenen Python-Codes mit Hive finden Sie unter [Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight][hdinsight-python].
 
-### <a name="use-the-getjsonobject-udf"></a>Verwenden der GET_JSON_OBJECT-UDF
+### <a name="use-the-get_json_object-udf"></a>Verwenden der GET_JSON_OBJECT-UDF
 In Hive ist eine integrierte UDF namens [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) verfügbar, mit der JSON-Abfragen während der Laufzeit ausgeführt werden können. Von dieser Methode werden zwei Argumente akzeptiert: der Tabellenname/Methodenname mit dem vereinfachten JSON-Dokument sowie das JSON-Feld, das analysiert werden muss. An einem Beispiel soll verdeutlicht werden, wie diese UDF funktioniert.
 
 Die folgende Abfrage gibt den Vor- und Nachnamen aller Studierenden zurück:
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 Dies ist die Ausgabe, wenn diese Abfrage im Konsolenfenster ausgeführt wurde:
 
-![UDF „get_json_object“](./media/using-json-in-hive/getjsonobject.png)
+![UDF „get_json_object“](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Für die get-json_object-UDF gibt es Einschränkungen:
 
@@ -124,7 +124,7 @@ Für die get-json_object-UDF gibt es Einschränkungen:
 
 Deshalb wird im Hive-Wiki die Verwendung von „json_tuple“ empfohlen.  
 
-### <a name="use-the-jsontuple-udf"></a>Verwenden der JSON_TUPLE-UDF
+### <a name="use-the-json_tuple-udf"></a>Verwenden der JSON_TUPLE-UDF
 Eine andere in Hive verfügbare UDF ist [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple). Diese Funktion ist leistungsfähiger als [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Bei dieser Methode wird ein Satz von Schlüsseln sowie eine JSON-Zeichenfolge verwendet und ein Tupel mit Werten mithilfe einer einzigen Funktion zurückgegeben. Die folgende Abfrage gibt die ID der Studierenden und die Klasse aus dem JSON-Dokument zurück:
 
 ```sql
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Die Ausgabe des Skripts in der Hive-Konsole:
 
-![UDF „json_tuple“](./media/using-json-in-hive/jsontuple.png)
+![UDF „json_tuple“](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 Die json_tuple-UDF verwendet die Syntax [Lateral View](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, wodurch „json\_tuple“ eine virtuelle Tabelle erstellen kann, indem die UDT-Funktion auf jede Zeile der Originaltabelle angewendet wird. Komplexe JSONs werden durch die wiederholte Verwendung von **LATERAL VIEW** zu unhandlich. Darüber hinaus kann **JSON_TUPLE** keine geschachtelten JSONs verarbeiten.
 

@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: Anwendungsfälle
           href: time-series-insights-update-use-cases.md
-        - name: Datenmodellierung
+        - name: Time Series-Modell
           href: time-series-insights-update-tsm.md
         - name: Datenabfragen
           href: time-series-insights-update-tsq.md

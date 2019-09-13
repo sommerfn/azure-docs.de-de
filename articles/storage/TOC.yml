@@ -8,13 +8,13 @@
     - name: 'Wählen von Blobs, Dateien oder Datenträgern'
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Blobs (in englischer Sprache)
-  href: ./blobs/storage-blobs-overview.md
+  href: ./blobs/index.yml?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: Data Lake Storage Gen2
-  href: ./blobs/data-lake-storage-introduction.md
+  href: ./blobs/index.yml?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: Dateien
-  href: ./files/storage-files-introduction.md
+  href: ./files/index.yml?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: Warteschlangen
-  href: ./queues/storage-queues-introduction.md
+  href: ./queues/index.yml?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Tabellen
   href: ./tables/table-storage-overview.md
 - name: Datenträger
