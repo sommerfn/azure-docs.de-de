@@ -50,9 +50,9 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Übereinstimmung, wenn der Ereignistyp in der Ereignisnachricht eine exakte Übereinstimmung für einen der Ereignistypnamen ist. Fehler, wenn der Ereignisname nicht den registrierten Ereignistypnamen für die Ereignisquelle entspricht. Der Standardwert entspricht allen Ereignistypen. |
-| subjectBeginsWith | Zeichenfolge | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 
-| subjectEndsWith | Zeichenfolge | Ein Suffixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. |
-| isSubjectCaseSensitive | Zeichenfolge | Steuert, ob beim Abgleich von Filtern die Groß-/Kleinschreibung beachtet wird. |
+| subjectBeginsWith | string | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 
+| subjectEndsWith | string | Ein Suffixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. |
+| isSubjectCaseSensitive | string | Steuert, ob beim Abgleich von Filtern die Groß-/Kleinschreibung beachtet wird. |
 
 
 ## <a name="example-subscription-schema"></a>Beispiel für das Abonnementschema
