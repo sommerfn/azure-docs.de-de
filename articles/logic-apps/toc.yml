@@ -15,7 +15,7 @@
       href: quickstart-create-logic-apps-visual-studio-code.md
 - name: Lernprogramme
   items:
-    - name: Regelmäßiges Überprüfen des Datenverkehrs
+    - name: Erstellen zeitplanbasierter Workflows
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
     - name: Verwalten von Adressenlistenanforderungen
       href: tutorial-process-mailing-list-subscriptions-workflow.md

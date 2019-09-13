@@ -1,78 +1,78 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zur Formularerkennung
+summary: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.
 metadata:
-  title: 'API-Dokumentation: Formularerkennung'
-  titleSuffix: Azure Cognitive Services
-  description: 'Erfahren Sie, wie Sie mit der Formularerkennung auf intelligente Weise Schlüssel-Wert-Daten aus Ihren Formularen extrahieren.'
+  title: Dokumentation zur Formularerkennung
+  description: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.
   services: cognitive-services
-  author: PatrickFarley
-  manager: nitinme
   ms.service: cognitive-services
-  ms.subservice: forms-recognizer
+  ms.subservice: form-recognizer
   ms.topic: landing-page
-  ms.date: 04/16/2019
+  author: PatrickFarley
   ms.author: pafarley
-ms.custom: seodec18
-abstract:
-  description: 'Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Nicht überwachtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/form-recognizer-landing-page-video.png
-      width: 250
-    title: 'KI-basierte Prozessautomatisierung mit Formularerkennung (2:15)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/form-recognizer/overview
-            html: <p>Erfahren Sie mehr über die Formularerkennung.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Was ist die Formularerkennung?
-          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
-            html: '<p>Erfahren Sie, wie Sie den Container für die Formularerkennung verwenden, um Formular- und Tabellendaten zu analysieren.</p>'
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Installieren und Ausführen von Containern
-          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
-            html: '<p>Erstellen Sie ein Dataset, das zum Trainieren eines benutzerdefinierten Modells optimiert ist.</p>'
-            image:
-              src: ../media/index/i_overview.svg
-            title: Erstellen eines Trainingsdatasets
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Trainieren eines Formularerkennungsmodells und Extrahieren von Daten aus Formularen mithilfe von:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/logos/logo-curl.svg
-            text: cURL
-            href: quickstarts/curl-train-extract.md
-          - image:
-              src: ./media/logos/logo-python.svg
-            text: Python
-            href: quickstarts/python-train-extract.md
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: APIs
-            html: '<p><a href="https://aka.ms/form-recognizer/api">Formularerkennungs-API</a></p>'
-          - title: SDKs
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview">.NET</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Befehlszeilenschnittstelle (CLI)
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure-Befehlszeilenschnittstelle</a></p>'
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70931826"
+landingContent:
+- title: Informationen zur Formularerkennung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Formularerkennung?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: KI-basierte Prozessautomatisierung mit Formularerkennung
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: Trainieren eines benutzerdefinierten Modells und Extrahieren von Daten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Mithilfe des .NET SDK
+      url: quickstarts/dotnet-sdk.md
+    - text: Mithilfe der REST-API (Python)
+      url: quickstarts/python-train-extract.md
+    - text: Mithilfe der REST-API (cURL)
+      url: quickstarts/curl-train-extract.md
+- title: Extrahieren von Daten aus Belegen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des .NET SDK
+      url: quickstarts/dotnet-sdk.md
+- title: Erstellen eines Trainingsdatasets
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines Trainingsdatasets
+      url: build-training-data-set.md
+- title: Verwenden von Containern
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Installieren und Ausführen von Containern
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von Containern
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: Verwenden von Containerinstanzen
+      url: deploy-form-recognizer-on-container-instances.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Formularerkennungs-API
+      url: https://aka.ms/form-recognizer/api
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-Befehlszeilenschnittstelle (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
