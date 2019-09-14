@@ -69,7 +69,7 @@ Die folgenden Datentypen werden in Modellen unterstützt, die mit der Bibliothek
 | double |Gleitkommazahl mit doppelter Genauigkeit |
 | int |32-Bit-Ganzzahl |
 | float |Gleitkommazahl mit einfacher Genauigkeit |
-| lang |Lange ganze Zahl |
+| long |Lange ganze Zahl |
 | int8\_t |8-Bit-Ganzzahl |
 | int16\_t |16-Bit-Ganzzahl |
 | int32\_t |32-Bit-Ganzzahl |
