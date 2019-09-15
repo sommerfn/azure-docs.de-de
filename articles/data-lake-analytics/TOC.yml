@@ -1,5 +1,5 @@
 - name: Dokumentation zu Data Lake Analytics
-  href: index.md
+  href: index.yml
 - name: Übersicht
   items:
     - name: Was ist Data Lake Analytics?
