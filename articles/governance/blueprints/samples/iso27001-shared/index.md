@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b590eeb86972a8e769fc240b1935c6c8ed32530a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e723fab12c6ba88ec5698a697ba1ddd774eed7e2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231737"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000508"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
@@ -38,7 +38,7 @@ Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung 
   - Eine Jumpbox oder einen Bastionhost für Verwaltungszwecke, wobei der Zugriff nur über eine [Azure Firewall](../../../../firewall/overview.md) möglich ist, die im Eingangsstapelsubnetz bereitgestellt wird
   - Zwei virtuelle Computer mit Ausführung von Active Directory Domain Services (AD DS) und DNS, auf die nur über die Jumpbox zugegriffen werden kann und die so konfiguriert werden können, dass die Replikation nur per AD über eine VPN- oder [ExpressRoute](../../../../expressroute/expressroute-introduction.md)-Verbindung (keine Bereitstellung durch die Blaupause) durchgeführt wird
   - Verwendung von [Azure Network Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) und DDoS-Standardschutz
-- Eine [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
+- Eine [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
 
 Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azure Architecture Center: Referenzarchitekturen](/azure/architecture/reference-architectures/) veröffentlicht wurden.
 

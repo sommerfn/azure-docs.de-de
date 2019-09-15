@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: b78f81e16afbd044306c6697e0d8823bdd02b81a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: aa25bbb54893fa84bb345a317850df4125faed25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232881"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003307"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
@@ -27,7 +27,7 @@ Das CAF-Basisblaupausenbeispiel stellt empfohlene Infrastrukturressourcen in Azu
 
 Diese Implementierung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Basis genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 
-- Eine [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
+- Eine [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-Instanz zum Hosten von Geheimnissen für die VMs, die in der Umgebung für gemeinsam genutzte Dienste bereitgestellt werden
 - [Log Analytics](../../../../azure-monitor/overview.md) wird bereitgestellt, um sicherzustellen, dass alle Aktionen und Dienste an einem zentralen Ort protokolliert werden, sobald Sie Ihre sichere Bereitstellung in [Speicherkonten](../../../../storage/common/storage-introduction.md) für die Diagnoseprotokollierung starten.
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (Standardversion) schützt Ihre migrierten Workloads vor Bedrohungen.
 - Von der Blaupause werden außerdem [Azure-Richtlinien](../../../policy/overview.md) für Folgendes definiert und bereitgestellt: 

@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8877c29341c95d5cd0fe8e35887c44594e0b6d41
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231766"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000137"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -36,7 +36,7 @@ Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung 
 - [Azure-Richtlinien](../../../policy/overview.md) zum Beschränken der Dienste, die für die Umgebung bereitgestellt werden können, und mit Ablehnung der Erstellung von öffentlichen IP-Adressressourcen (PIP)
 - Ein virtuelles Netzwerk, in dem nur ein Subnetz enthalten ist und das über ein Peering mit einer bereits vorhandenen Umgebung für [gemeinsam genutzte Dienste](../iso27001-shared/index.md) verfügt, sodass für den gesamten Datenverkehr der Weg durch die Firewall der [gemeinsam genutzten Dienste](../iso27001-shared/index.md) erzwungen wird Im virtuellen Netzwerk werden die folgenden Ressourcen gehostet:
   - Eine [Azure App Service-Umgebung](../../../../app-service/environment/intro.md), die zum Hosten von einer oder mehreren Webanwendungen, Web-APIs oder Funktionen genutzt wird
-  - Eine [Azure Key Vault](../../../../key-vault/key-vault-whatis.md)-Instanz mit Nutzung eines VNET-Dienstendpunkts zum Speichern von Geheimnissen, die von in der Workloadumgebung ausgeführten Anwendungen verwendet werden
+  - Eine [Azure Key Vault](../../../../key-vault/key-vault-overview.md)-Instanz mit Nutzung eines VNET-Dienstendpunkts zum Speichern von Geheimnissen, die von in der Workloadumgebung ausgeführten Anwendungen verwendet werden
   - Eine [Azure SQL-Datenbank](../../../../sql-database/sql-database-technical-overview.md)-Serverinstanz mit einem VNET-Dienstendpunkt zum Hosten von Datenbanken, die für Anwendungen in der Workloadumgebung verwendet werden
 
 ## <a name="next-steps"></a>Nächste Schritte
