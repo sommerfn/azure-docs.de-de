@@ -31,7 +31,7 @@ In diesem Thema werden die Azure Security Center-Warnungen vorgestellt, die bei 
 >[!NOTE]
 >Die folgenden Analysen gelten für alle Ressourcentypen. Dafür werden die Telemetriedaten genutzt, die Security Center anhand der internen Azure-Feeds bereitstellt.
 
-## <a name="network-layer">Azure-Netzwerkebene</a>
+## Azure-Netzwerkebene<a name="network-layer"></a>
 
 Die Netzwerkebenenanalysen von Security Center basieren auf exemplarischen [IPFIX-Daten](https://en.wikipedia.org/wiki/IP_Flow_Information_Export) (durch Azure-Kernrouter erfasste Paketheader). Auf der Grundlage dieses Datenfeeds werden schädliche Datenverkehrsaktivitäten durch Machine Learning-Modelle von Security Center identifiziert und gekennzeichnet. Zur Anreicherung von IP-Adressen nutzt Security Center die Threat Intelligence-Datenbank von Microsoft.
 
@@ -54,7 +54,7 @@ Unter [Heuristic DNS detections in Azure Security Center](https://azure.microsof
 >[!NOTE]
 >Warnungen zur Bedrohungserkennung auf Azure-Netzwerkebene werden in Azure Security Center nur auf virtuellen Computern generiert, denen für die gesamte Stunde, in der eine verdächtige Kommunikation stattfindet, dieselbe IP-Adresse zugewiesen wurde. Dies gilt für virtuelle Computer – auch für solche, die als Teil eines verwalteten Diensts (z. B. AKS, Databricks) im Abonnement des Kunden erstellt werden.
 
-## <a name ="management-layer">Azure-Verwaltungsebene (Azure Resource Manager) (Vorschauversion)</a>
+## Azure-Verwaltungsebene (Azure Resource Manager) (Vorschauversion)<a name ="management-layer"></a>
 
 >[!NOTE]
 >Die auf Azure Resource Manager basierende Sicherheitsstufe von Security Center befindet sich derzeit in der Vorschauphase.

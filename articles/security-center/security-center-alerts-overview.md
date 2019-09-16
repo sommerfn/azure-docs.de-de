@@ -27,7 +27,7 @@ Für die vielen verschiedenen Ressourcentypen stehen in Azure Security Center un
 
 Im Standard-Tarif von Azure Security Center sind erweiterte Erkennungsverfahren verfügbar. Eine kostenlose Testversion ist verfügbar. Über die [Sicherheitsrichtlinie](security-center-pricing.md)können Sie die Tarifauswahl ändern. Weitere Informationen zu den Preisen finden Sie auf der [Security Center-Seite](https://azure.microsoft.com/pricing/details/security-center/) .
 
-## <a name="respond-threats">Reagieren auf die heutigen Bedrohungen</a>
+## Reagieren auf die heutigen Bedrohungen<a name="respond-threats"></a>
 
 In den letzten 20 Jahren hat sich die Bedrohungslandschaft stark verändert. In der Vergangenheit mussten sich Unternehmen in der Regel nur Sorgen um eine mögliche Verunstaltung Ihrer Websites durch einzelne Angreifer machen, die häufig nur Ihre Fähigkeiten austesten wollten. Die Angreifer von heute sind dagegen viel besser vorbereitet und ausgerüstet. Sie verfolgen häufig bestimmte finanzielle oder strategische Ziele. Außerdem stehen ihnen mehr Ressourcen zur Verfügung, da sie von Staaten oder der organisierten Kriminalität finanziert werden.
 
@@ -82,7 +82,7 @@ Azure Security Center profitiert von Sicherheitsforschungs- und Data Science-Tea
 
 Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebnissen, von denen Sie sofort profitieren können. Sie müssen dabei nichts unternehmen.
 
-## <a name="security-alert-types">Arten von Sicherheitswarnungen</a>
+## Arten von Sicherheitswarnungen<a name="security-alert-types"></a>
 
 In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen für bestimmte Ressourcentypen:
 
