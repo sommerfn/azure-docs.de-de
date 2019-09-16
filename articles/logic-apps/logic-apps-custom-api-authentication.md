@@ -254,7 +254,7 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
 | type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
-| userName | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
+| username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
 | password | Ja | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 
 |||| 
 
