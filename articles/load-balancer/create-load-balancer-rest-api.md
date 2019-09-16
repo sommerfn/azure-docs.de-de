@@ -55,7 +55,7 @@ Der einzige erforderliche Parameter ist `location`. Wenn Sie die *SKU*-Version n
 
 In diesem Beispiel erstellen Sie zunächst eine Basic Load Balancer-Instanz zusammen mit den zugehörigen Ressourcen. Anschließend konfigurieren Sie die Load Balancer-Ressourcen, darunter eine Front-End-IP-Konfiguration, einen Back-End-Adresspool, eine Lastenausgleichsregel, einen Integritätstest und eine eingehende NAT-Regel.
 
-Vor dem Erstellen einer Load Balancer-Instanz anhand des nachfolgenden Beispiels erstellen Sie das virtuelle Netzwerk *vnetlb* mit dem Subnetz *subnetlb* in der Ressourcengruppe *rg1* am Standort **USA, Osten**.
+Vor dem Erstellen einer Load Balancer-Instanz anhand des nachfolgenden Beispiels erstellen Sie das virtuelle Netzwerk *vnetlb* mit dem Subnetz *subnetlb* in der Ressourcengruppe *rg1* am Standort **EAST US**.
 
 ### <a name="step-1-create-a-basic-load-balancer"></a>Schritt 1: Erstellen eines Load Balancers im Tarif „Basic“
 In diesem Schritt erstellen Sie eine Basic Load Balancer-Instanz mit dem Namen *lb* am Standort **USA, Osten** in der Ressourcengruppe *rg1*.
