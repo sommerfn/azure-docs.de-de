@@ -92,7 +92,7 @@ Beide Speicherorte bieten dieselben grundlegenden Informationen zu protokolliert
 > In **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten können. Beispielsweise enthält Visual Studio 2013 einen Speicher-Explorer, mit dem Blob Storage erkundet werden kann, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](https://azure.microsoft.com/downloads/)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
 >
 
-## <a name="download">Vorgehensweise:</a> Herunterladen von Protokollen
+## <a name="download"></a>Vorgehensweise: Herunterladen von Protokollen
 Im Dateisystem der App gespeicherte Diagnoseinformationen können direkt über das FTP aufgerufen werden. Sie können auch mithilfe der Azure CLI als ZIP-Archiv heruntergeladen werden.
 
 Protokolle werden in der folgenden Verzeichnisstruktur gespeichert:
@@ -133,7 +133,7 @@ Visual Studio Application Insights bietet Tools zum Filtern und Suchen von Proto
 
 [Erfahren Sie mehr über die Leistungsüberwachung mit Application Insights](../azure-monitor/app/azure-web-apps.md)
 
-## <a name="streamlogs">Vorgehensweise:</a> Streaming von Protokollen
+## <a name="streamlogs"></a>Vorgehensweise: Streaming von Protokollen
 Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Sie können Protokollierungsinformationen mithilfe der Azure CLI in Ihre Entwicklungsumgebung streamen.
 
 > [!NOTE]
