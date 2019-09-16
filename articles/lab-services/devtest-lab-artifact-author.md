@@ -30,7 +30,7 @@ Das folgende Video enthält einen Überblick über die in diesem Artikel beschri
 >
 
 ## <a name="overview"></a>Übersicht
-Sie können nach der Bereitstellung einer VM *Artefakte* bereitstellen und Ihre Anwendung einrichten. Ein Artefakt umfasst eine Artefaktdefinitionsdatei und andere Skriptdateien, die in einem Ordner in einem Git-Repository gespeichert sind. Artefaktdefinitionsdateien bestehen aus JSON und Ausdrücken, mit denen Sie angeben können, was Sie auf einem virtuellen Computer installieren möchten. Sie können beispielsweise den Namen eines Artefakts, einen auszuführenden Befehl sowie Parameter, die beim Ausführen des Befehls verfügbar sind, definieren. Sie können auf andere Skriptdateien innerhalb der Artefaktdefinitionsdatei anhand ihres Namens verweisen.
+Sie können nach der Bereitstellung einer VM *artifacts* bereitstellen und Ihre Anwendung einrichten. Ein Artefakt umfasst eine Artefaktdefinitionsdatei und andere Skriptdateien, die in einem Ordner in einem Git-Repository gespeichert sind. Artefaktdefinitionsdateien bestehen aus JSON und Ausdrücken, mit denen Sie angeben können, was Sie auf einem virtuellen Computer installieren möchten. Sie können beispielsweise den Namen eines Artefakts, einen auszuführenden Befehl sowie Parameter, die beim Ausführen des Befehls verfügbar sind, definieren. Sie können auf andere Skriptdateien innerhalb der Artefaktdefinitionsdatei anhand ihres Namens verweisen.
 
 ## <a name="artifact-definition-file-format"></a>Format von Artefaktdefinitionsdateien
 Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer Definitionsdatei bilden:
