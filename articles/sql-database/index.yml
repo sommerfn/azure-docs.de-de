@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentation zu Azure SQL-Datenbank
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz'
+  title: 'Dokumentation zu Azure SQL-Datenbank: Tutorials, API-Referenz'
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   author: stevestein
@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 03/04/2019
+  ms.date: 09/09/2019
   ms.author: sstein
 abstract:
   description: 'Azure SQL-Datenbank ist eine universelle relationale DBaaS-Lösung (Database-as-a-Service) und basiert auf der neuesten stabilen Version der Microsoft SQL Server-Datenbank-Engine. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungs-Clouddatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.'
@@ -27,27 +27,54 @@ abstract:
     href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-  - items:
+  - title: Konzepte
+    items:
+      - type: paragraph
+        text: 'Dieser Artikel enthält Informationen zu den Hauptvorteilen einer Plattform-as-a-Service-Datenbank sowie zu den Kaufmodellen und Dienstebenen, die zur Erstellung einer Konfiguration mit einem optimalen Preis-Leistungs-Verhältnis zur Verfügung stehen.'
       - type: list
         style: cards
         className: cardsM
         columns: 3
         items:
           - href: /azure/sql-database/sql-database-technical-overview
-            html: '<p>PaaS-Datenbank, die immer in der aktuellen stabilen Version von SQL Server-Datenbank-Engine ausgeführt wird, und gepatchtes Betriebssystem mit 99,99% Verfügbarkeit.</p>'
+            html: "<p>PaaS-Datenbank, die immer in der aktuellen stabilen Version von SQL Server-Datenbank-Engine ausgeführt wird, und gepatchtes Betriebssystem mit 99,99\_Prozent Verfügbarkeit.</p>"
             image:
               src: media/index/i_managed.svg
-            title: Vollständige Verwaltung
+            title: Übersicht
           - href: /azure/sql-database/sql-database-service-tiers
             html: '<p>Passen Sie das Preis-Leistungs-Verhältnis mit flexiblen Dienstebenen, die von kostengünstigen 5 USD pro Monat bis zu leistungsstarken 80-Kern-Datenbanken reichen, an Ihre Bedürfnisse an.</p>'
             image:
               src: media/index/i_perftier.svg
-            title: Preise/Dienstebenen
+            title: Preismodelle
+          - href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
+            html: '<p>Wählen Sie eine Dienstebene und Cloudarchitektur aus, die Ihren Anforderungen am besten entspricht oder mit der Infrastruktur übereinstimmt, die Sie in Ihrer lokalen Umgebung verwenden.</p>'
+            image:
+              src: media/index/gear.svg
+            title: Dienstebenen
           - href: /azure/sql-database/sql-database-scalability-index
-            html: '<p>Sie können Ihre Datenbanken problemlos je nach Bedarf zentral hochskalieren, horizontal hochskalieren oder einen Shard dafür konfigurieren, um die Leistung Ihrer Anwendung zu verbessern.</p>'
+            html: '<p>Sie können Ihre Datenbanken problemlos je nach Bedarf zentral hochskalieren, erweitern oder horizontal partitionieren, um die Anwendungsleistung zu verbessern.</p>'
             image:
               src: media/index/i_scale.svg
             title: Skalierbarkeit
+          - href: /azure/sql-database/sql-database-paas
+            html: '<p>Integrierte Hochverfügbarkeit, automatische Sicherungen und Georeplikation verhindern, dass Wartungsvorgänge oder Infrastruktur- oder Hardwarefehler Ihr Geschäft beeinträchtigen.</p>'
+            image:
+              src: media/index/i_intelligence.svg
+            title: PaaS (Platform-as-a-Service)
+          - href: /azure/sql-database/sql-database-security-index
+            html: '<p>Sichern Sie Ihre Datenbank mit Azure AD-Authentifizierung, virtuellen Netzwerken, Firewalls und Always Encrypted-Verbindungen. Identifizieren Sie Bedrohungen und Sicherheitsrisiken durch integrierte Sicherheit.</p>'
+            image:
+              src: media/index/i_security.svg
+            title: Erweiterte Sicherheit
+  - title: Bereitstellungsmodelle
+    items:
+      - type: paragraph
+        text: 'Wählen Sie das Bereitstellungsmodell aus, das Ihren Anforderungen entspricht: Eine Einzeldatenbank ist die beste Wahl für neue moderne Cloudanwendungen, Pools für elastische Datenbanken eignen sich optimal zum Hosten einer großen Anzahl von Datenbanken, und eine verwaltete Instanz bietet hohe Kompatibilität mit SQL Server und ermöglicht einfache Migration zur Cloud.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
           - href: /azure/sql-database/sql-database-single-index
             html: '<p>Verwenden Sie die von einem SQL-Datenbank-Server verwaltete Einzeldatenbank für Ihre SaaS-Anwendungen und -Microservices, die eine Einzeldatenbank mit vorhersagbarer Leistung erfordern.</p>'
             image:
@@ -59,25 +86,10 @@ sections:
               src: media/index/i_elasticpool.svg
             title: Pools für elastische Datenbanken
           - href: /azure/sql-database/sql-database-managed-instance-index
-            html: '<p>Verwenden Sie die verwaltete Instanz, um eine vollständig verwaltete Instanz der SQL Server-Datenbank-Engine zu erhalten, die in der Azure-Cloud gehostet wird – mit nur wenigen oder ganz ohne Codeänderungen für die Migration aus lokalen Datenbanken.</p>'
+            html: '<p>Verwenden Sie eine verwaltete Instanz, um eine vollständig verwaltete Instanz der SQL Server-Datenbank-Engine zu erhalten, die in der Azure-Cloud gehostet wird – mit nur wenigen oder ganz ohne Codeänderungen für die Migration aus lokalen Datenbanken.</p>'
             image:
               src: media/index/i_mi.svg
             title: Verwaltete Instanz
-          - href: /azure/sql-database/sql-database-paas
-            html: '<p>Integrierte Hochverfügbarkeit, automatische Sicherungen und Georeplikation verhindern, dass Wartungsvorgänge, Infrastruktur- oder Hardwarefehler Ihr Geschäft beeinträchtigen.</p>'
-            image:
-              src: media/index/gear.svg
-            title: PaaS (Platform-as-a-Service)
-          - href: /azure/sql-database/sql-database-security-index
-            html: '<p>Sichern Sie Ihre Datenbank mit Azure AD-Authentifizierung, virtuellen Netzwerken, Firewalls und Always Encrypted-Verbindungen. Identifizieren Sie Bedrohungen und Sicherheitsrisiken mit integrierter Sicherheit.</p>'
-            image:
-              src: media/index/i_security.svg
-            title: Erweiterte Sicherheit
-          - href: /azure/sql-database/sql-database-monitoring-tuning-index
-            html: '<p>Integrierte Überwachung und intelligente Optimierung helfen Ihnen dabei, den Aufwand für die Ausführung und Verwaltung von Datenbanken erheblich zu senken und die Leistung Ihrer Anwendung zu maximieren.</p>'
-            image:
-              src: media/index/i_intelligence.svg
-            title: Überwachung und Optimierung
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
@@ -116,18 +128,21 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-  - title: Schritt-für-Schritt-Tutorials
+  - title: Schritt-für-Schritt-Tutorials und Lernmaterial
     items:
       - type: paragraph
         text: 'Hier finden Sie Informationen dazu, wie Sie Datenbanken per SQL-Datenbank erstellen, verwalten und migrieren.'
       - type: list
         style: ordered
         items:
+          - html: 'Erfahren Sie, wie Sie entscheiden, ob <a href="/azure/sql-database/sql-database-paas-vs-sql-server-iaas">SQL Server auf VMs (IaaS) oder Azure SQL-Datenbank (PaaS) die richtige Wahl für ihre Arbeitsauslastung</a> ist.'
+          - html: Machen Sie sich mit den <a href="/azure/sql-database/sql-database-features">in Azure SQL-Datenbank unterstützten Features und den Unterschieden beim Verhalten</a> vertraut.
           - html: In unseren Schnellstarthandbüchern finden Sie Informationen zu den ersten Schritten mit einem <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">Singleton</a> und einer <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">verwalteten Instanz</a>.
           - html: Erstellen und Entwerfen des Schemas für eine neue Einzeldatenbank per <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> oder <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-          - html: 'Migrieren einer vorhandenen Datenbank zu Azure mithilfe <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">einer systemeigenen SQL Server-Sicherungsdatei</a>, des <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Datenmigrations-Assistenten</a> oder <a href="/azure/sql-database/sql-database-import">durch Importieren einer BACPAC-Datei</a>'
+          - html: "Migrieren Sie eine vorhandene Datenbank mithilfe <a href=\"/azure/sql-database/sql-database-managed-instance-get-started-restore\">einer nativen SQL\_Server-Sicherungsdatei</a>, des <a href=\"/azure/sql-database/sql-database-migrate-your-sql-server-database\">Datenmigrations-Assistenten</a> oder <a href=\"/azure/sql-database/sql-database-import\">durch Importieren einer BACPAC-Datei</a> zu Azure."
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Sichern Ihrer SQL-Datenbank</a>
-          - html: Globales Verteilen von Daten mithilfe einer <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch verteilten Datenbank</a>
+          - html: Verteilen Sie Ihre Daten mithilfe einer <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch verteilten Datenbank</a> global.
+          - html: Finden Sie <a href="/azure/sql-database/sql-database-release-notes">neue Features in Azure SQL-Datenbank</a>.
   - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
       - type: list

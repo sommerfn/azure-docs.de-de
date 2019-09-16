@@ -98,6 +98,10 @@
       href: functions-premium-plan.md
     - name: Bereitstellungen
       href: functions-deployment-technologies.md
+    - name: Ereignisse und Messaging
+      items:
+        - name: Entwerfen für identische Eingaben
+          href: functions-idempotent.md
     - name: Trigger und Bindungen
       items:
         - name: Informationen zu Triggern und Bindungen

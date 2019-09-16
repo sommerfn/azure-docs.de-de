@@ -144,8 +144,6 @@
               href: platform/service-providers.md
             - name: Verwalten des Zugriffs
               href: platform/manage-access.md
-            - name: Integrieren in Configuration Manager
-              href: platform/collect-sccm.md
         - name: Nutzung und Kosten
           items:
             - name: Nutzung und geschätzte Kosten
@@ -643,8 +641,6 @@
               href: insights/service-map.md
             - name: Computergruppen
               href: platform/computer-groups.md
-            - name: Konfigurations-Manager
-              href: platform/collect-sccm.md
         - name: Azure-Ressourcen
           items:
             - name: Diagnoseprotokolle
@@ -745,6 +741,8 @@
               href: platform/om-agents.md
             - name: Bewerten von Operations Manager
               href: insights/scom-assessment.md
+            - name: Herstellen einer Verbindung mit Configuration Manager
+              href: platform/collect-sccm.md
         - name: Streamen von Daten an Event Hubs
           href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Daten analysieren
@@ -764,6 +762,8 @@
             - name: Übersicht über Protokollabfragen
               displayname: 'log query, log queries, query, queries'
               href: log-query/log-query-overview.md
+            - name: Einfache Oberfläche für Protokolle
+              href: log-query/simple-logs.md
             - name: Lernprogramme
               items:
                 - name: Log Analytics-Tutorial
@@ -785,9 +785,9 @@
                 - name: Sprachunterschiede
                   href: log-query/data-explorer-difference.md
                 - name: Hilfreiche Operatoren
-                  href: log-query/functions.md
-                - name: Functions
                   href: log-query/useful-operators.md
+                - name: Functions
+                  href: log-query/functions.md
                 - name: Übergang von der Protokollsuche
                   href: log-query/log-search-transition.md
                 - name: Lektionen

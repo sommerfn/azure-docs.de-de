@@ -1,9 +1,9 @@
-- name: Dokumentation zu Azure Machine Learning Service
+- name: Azure Machine Learning-Dokumentation
   href: ../index.yml
 - name: Übersicht
   expanded: true
   items:
-    - name: Was ist der Azure Machine Learning-Dienst?
+    - name: Was ist Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Architektur und Bestimmungen
@@ -31,6 +31,11 @@
             - name: Automatisches Trainieren eines ML-Modells
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: Batchbewertung mit Pipelines (erweitert)
+          items:
+            - name: Ausführen einer Batchbewertung für ein Klassifizierungsmodell
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: Grafische Benutzeroberfläche
       items:
         - name: 1. Trainieren eines Regressionsmodells
@@ -122,7 +127,7 @@
         - name: Verwenden von Resource Manager-Vorlagen
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "Einrichten der Entwicklungsumgebung\_"
+    - name: Einrichten der Entwicklungsumgebung
       items:
         - name: Konfigurieren von Entwicklungsumgebungen
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

@@ -121,6 +121,10 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: Bearbeiten eines Profils
       href: billing-how-to-change-azure-account-profile.md
+    - name: Open Banking und strenge Kundenauthentifizierung
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: Begleichen überfälliger Zahlungen
+      href: billing-azure-subscription-past-due-balance.md
     - name: Gewähren des Zugriffs auf die Abrechnung
       href: billing-manage-access.md
     - name: Microsoft-Kundenvereinbarungsrollen in Azure
@@ -131,6 +135,8 @@
       href: billing-view-all-accounts.md
     - name: Organisieren von Kosten in Rechnungsabschnitten
       href: billing-mca-section-invoice.md
+    - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
+      href: billing-mca-enterprise-operations.md
     - name: EA-Verwaltung
       items:
         - name: "Erste Schritte im Azure\_EA-Portal"
@@ -151,8 +157,6 @@
           href: billing-ea-portal-troubleshoot.md
         - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
           href: billing-mca-enterprise-operations.md
-    - name: Begleichen überfälliger Zahlungen
-      href: billing-azure-subscription-past-due-balance.md
     - name: Einrichten eines Abrechnungskontos für Microsoft-Kundenvereinbarung
       href: billing-mca-setup-account.md
     - name: Anmelden mit Office 365-Konto

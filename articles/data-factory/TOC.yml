@@ -614,6 +614,12 @@
       items:
         - name: Verarbeiten von Textdateien mit fester Breite
           href: how-to-fixed-width.md
+    - name: Lokale SSIS-Migration
+      items:
+        - name: Übersicht über die SSIS-Migration
+          href: scenario-ssis-migration-overview.md
+        - name: SSISDB-Migration zu einer verwalteten Azure SQL-Datenbank-Instanz
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Verweis
   items:
     - name: .NET

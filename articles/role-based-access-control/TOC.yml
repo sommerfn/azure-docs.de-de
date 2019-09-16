@@ -40,6 +40,8 @@
       items:
         - name: Portal
           href: role-assignments-portal.md
+        - name: 'Portal: Gastbenutzer'
+          href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure-Befehlszeilenschnittstelle
@@ -72,8 +74,6 @@
       href: change-history-report.md
     - name: Erhöhen der Zugriffsrechte zum Verwalten aller Abonnements
       href: elevate-access-global-admin.md
-    - name: Verwalten des Zugriffs für externe Benutzer
-      href: role-assignments-external-users.md
     - name: Klassische Administratoren
       href: classic-administrators.md
     - name: Problembehandlung

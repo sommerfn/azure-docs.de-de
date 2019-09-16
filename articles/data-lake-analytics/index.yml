@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Data Lake Analytics
+summary: Azure Data Lake Analytics ermöglicht das Ausführen von Big Data-Analyseaufträgen, die sich auf besonders umfangreiche Datasets skalieren lassen.
+metadata:
+  title: Azure Data Lake Analytics
+  description: Azure Data Lake Analytics ermöglicht das Ausführen von Big Data-Analyseaufträgen, die sich auf besonders umfangreiche Datasets skalieren lassen.
+  services: service
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: a370cf424d7ebdf32fcdd2e0f8653e2e36b7162b
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70997246"
+landingContent:
+- title: Informationen zu Data Lake Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Data Lake Analytics?
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Erstellen von U-SQL-Aufträgen im Azure-Portal
+      url: data-lake-analytics-get-started-portal.md
+    - text: Erstellen von U-SQL-Aufträgen mit der Azure-Befehlszeilenschnittstelle
+      url: data-lake-analytics-get-started-cli.md
+    - text: Erstellen von U-SQL-Aufträgen in Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: Informationen zur U-SQL-Sprache
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erste Schritte mit U-SQL
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: Referenz zur U-SQL-Sprache
+      url: https://docs.microsoft.com/u-sql/
+    - text: Erste Schritte mit dem U-SQL-Katalog
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: Verwenden von benutzerdefinierten Operatoren
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: Entwickeln von U-SQL-Programmen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden der Data Lake-Tools für Visual Studio
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: Verwenden eines U-SQL-Datenbank projekts in Visual Studio
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: Verwenden von Job Browser und der Auftragsansicht
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: Debuggen von benutzerdefiniertem C#-Code
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: Verwenden von Azure Data Lake Tools für Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: Verwenden von benutzerdefiniertem Code mit U-SQL in Visual Studio Code
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: Planen von Aufträgen mithilfe von SSIS
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: Verwalten von Data Lake Analytics
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten mit dem Azure-Portal
+      url: data-lake-analytics-manage-use-portal.md
+    - text: Verwalten mit der Azure-Befehlszeilenschnittstelle
+      url: data-lake-analytics-manage-use-cli.md
+    - text: Verwalten mithilfe einer .NET-App
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: Hinzufügen eines Benutzers im Azure-Portal
+      url: data-lake-analytics-add-users.md
+    - text: Verwalten von Azure Data Lake Analytics-Richtlinien
+      url: data-lake-analytics-policies.md
+- title: Kontinuierliche Integration und kontinuierliche Bereitstellung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten von CI-/CD-Pipelines
+      url: data-lake-analytics-cicd-overview.md
+    - text: Verwalten von U-SQL-Assemblys
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: Testen von U-SQL-Skripts
+      url: data-lake-analytics-cicd-test.md
+    - text: Verwenden des U-SQL SDK
+      url: data-lake-analytics-u-sql-sdk.md

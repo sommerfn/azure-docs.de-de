@@ -32,6 +32,10 @@
     - name: Dynamische Verschlüsselung mit DRM
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
+- name: Beispiele
+  items:
+    - name: Media Services-Beispiele
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: Konzepte
   items:
     - name: Übersicht

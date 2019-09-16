@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: Kognitive Suche
       href: cognitive-search-concept-intro.md
+    - name: Qualifikationsgruppen
+      href: cognitive-search-working-with-skillsets.md
     - name: Wissensspeicher
       href: knowledge-store-concept-intro.md
     - name: Projektionen
@@ -166,9 +168,7 @@
         - name: Modellieren von komplexen Datentypen
           href: search-howto-complex-data-types.md
         - name: Modellieren von relationalen Daten
-          href: search-example-adventureworks-modeling.md
-        - name: Modellieren von Facets mit mehreren Ebenen
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: Laden von Daten
       items:
         - name: Übersicht über den Datenimport
@@ -241,10 +241,14 @@
           href: cognitive-search-resources-documentation.md
     - name: Wissensspeicher (Vorschau)
       items:
-        - name: Herstellen einer Verbindung mithilfe von Power BI
-          href: knowledge-store-connect-powerbi.md
+        - name: Erstellen eines Wissensspeichers im Azure-Portal
+          href: knowledge-store-create-portal.md
         - name: Erstellen mithilfe von REST und Postman
           href: knowledge-store-howto.md
+        - name: Anzeigen mit Storage-Explorer
+          href: knowledge-store-view-storage-explorer.md
+        - name: Herstellen einer Verbindung mit Power BI
+          href: knowledge-store-connect-power-bi.md
     - name: Abfragen von Daten
       items:
         - name: Erstellen einer einfachen Abfrage
@@ -273,6 +277,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Grundlegendes zu Sammlungsfiltern
           href: search-query-understand-collection-filters.md
+        - name: Beispiel von Facets mit mehreren Ebenen
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: Verarbeiten von Ergebnissen
       items:
         - name: Seitenbezogene Features

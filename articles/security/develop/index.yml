@@ -7,13 +7,13 @@ metadata:
   meta.description: Learn how to develop secure apps on Azure.
   services: security
   author: TerryLanfear
-  manager: barbkess
+  manager: rkarlin
   ms.service: security
   ms.subservice: develop
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 08/29/2019
+  ms.date: 09/14/2019
   ms.author: terrylan
 abstract:
   description: 'Anhand unserer Beispiel-Apps, Best Practices und Anleitungen erfahren Sie, wie Sie sichere Anwendungen in Azure entwickeln und bereitstellen.'
@@ -27,12 +27,12 @@ sections:
           - href: /azure/security/develop/secure-dev-overview
             html: <p>Entwickeln einer sicheren Webanwendung in Azure</p>
             image:
-              src: /media/common/i_get-started.svg
+              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
             title: Erste Schritte
           - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
             html: <p>Die fünf wichtigsten Sicherheitselemente für Web-Apps</p>
             image:
-              src: /media/common/i_learn-about.svg
+              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
             title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
   - title: Sichere Beispiel-Apps
     items:
@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Web-App in einem Linux-Container</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Payment Card Industry</a>
   - title: Konzepte
     items:
       - type: list
