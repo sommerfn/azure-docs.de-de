@@ -53,11 +53,11 @@ Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identi
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| contentType | Zeichenfolge | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
-| contentEncoding | Zeichenfolge | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
-| iothub-connection-device-id | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
-| iothub-enqueuedtime | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
-| iothub-interface-name | Zeichenfolge | Dieser Wert wird vom Benutzer festgelegt und stellt den Namen der Schnittstelle für den digitalen Zwilling dar, die die Telemetrienachricht implementiert. Verwenden Sie `$interfaceName` für die Abfrage. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. |
+| contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
+| contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
+| iothub-connection-device-id | string | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
+| iothub-enqueuedtime | string | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
+| iothub-interface-name | string | Dieser Wert wird vom Benutzer festgelegt und stellt den Namen der Schnittstelle für den digitalen Zwilling dar, die die Telemetrienachricht implementiert. Verwenden Sie `$interfaceName` für die Abfrage. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. |
 
 Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Neben den Eigenschaften **contentType**, **contentEncoding** und **enqueuedTime** können auch die Eigenschaften **connectionDeviceId** und **connectionModuleId** abgefragt werden.
 
