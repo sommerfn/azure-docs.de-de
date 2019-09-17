@@ -128,7 +128,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
    | Endpunktfeld für Antwortheader | type | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nein | Der vorgeschlagene Blockgröße in Bytes |
-   | **Location** | Zeichenfolge | Ja | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
+   | **Location** | String | Ja | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
    ||||
 
 3. Ihre Logik-App erstellt und sendet nacheinander HTTP-PATCH-Nachrichten, wobei jede Nachricht diese Informationen enthält:
