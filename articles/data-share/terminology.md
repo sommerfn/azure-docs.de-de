@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424212"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844706"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Konzepte von Azure Data Share (Vorschauversion) 
 
@@ -53,7 +53,9 @@ Ein Datenconsumer hat die Möglichkeit, diesen Momentaufnahme-Zeitplan zu abonni
 
 Ein Datenanbieter kann mehrere Empfängern zu seiner Datenfreigabe einladen. Er kann zu diesem Zweck der Datenfreigabe Empfänger hinzufügen. Einladungen können auch hinzugefügt werden, nachdem eine Datenfreigabe erstellt wurde. 
 
-Ein Datenanbieter kann eine Einladung löschen, nachdem sie gesendet wurde. Beachten Sie Folgendes: Wenn ein Datenanbieter eine Einladung löscht, nachdem sie angenommen wurde, kann der Dataconsumer noch immer über ein aktives Freigabeabonnement verfügen. Wenn der Datenanbieter eine Einladung löscht, die noch nicht angenommen wurde, ist der Datenconsumer nicht mehr in der Lage, die Einladung zu akzeptieren. 
+Ein Datenanbieter kann eine Einladung löschen, nachdem sie gesendet wurde, wenn sie nicht angenommen wurde. Wenn der Datenanbieter eine Einladung löscht, die noch nicht angenommen wurde, ist der Datenconsumer nicht mehr in der Lage, die Einladung zu akzeptieren. 
+
+Einladungen können bis zu fünfmal täglich erneut gesendet werden. 
 
 ## <a name="recipient"></a>Recipient
 

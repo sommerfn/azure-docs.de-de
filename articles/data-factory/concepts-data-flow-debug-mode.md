@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991920"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801710"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991920"
 
 ## <a name="overview"></a>Übersicht
 
-Azure Data Factory Mapping Data Flow verfügt über einen Debugmodus, der mit der Schaltfläche „Data Flow Debug“ (Datenfluss debuggen) oben auf der Entwurfsoberfläche aktiviert werden kann. Wenn Sie beim Entwerfen von Datenflüssen den Debugmodus aktivieren, können Sie die Transformation der Datenform interaktiv beobachten, während Sie Ihre Datenflüsse erstellen und debuggen. Die Debugsitzung kann sowohl in Datenfluss-Entwurfssitzungen sowie während der Ausführung der Pipeline zum Debuggen von Datenflüssen verwendet werden.
+Mit dem Debugmodus von Azure Data Factory Mapping Data Flow können Sie die Transformation der Datenform interaktiv beobachten, während Sie Ihre Datenflüsse erstellen und debuggen. Die Debugsitzung kann sowohl in Datenfluss-Entwurfssitzungen sowie während der Ausführung der Pipeline zum Debuggen von Datenflüssen verwendet werden. Um den Debugmodus zu aktivieren, verwenden Sie die Schaltfläche „Datenfluss-Debugmodus“ am oberen Rand der Entwurfsoberfläche.
 
-![Schaltfläche „Debuggen“](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
+![Schieberegler für den Debugmodus](media/data-flow/debugbutton.png "Schieberegler für den Debugmodus")
+
+Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Dauer von 60 Minuten gestartet. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+
+![Debug-IR-Auswahl](media/data-flow/debugbutton2.png "Debug-IR-Auswahl")
 
 Wenn der Debugmodus eingeschaltet ist, erstellen Sie Ihren Datenfluss mit einem aktiven Spark-Cluster. Die Sitzung wird beendet, sobald Sie das Debuggen in Azure Data Factory deaktivieren. Beachten Sie, dass stündlich Gebühren durch Azure Databricks anfallen, solange die Debugsitzung aktiviert ist.
 
 In den meisten Fällen ist es eine gute Vorgehensweise, Ihre Datenflüsse im Debugmodus zu erstellen, sodass Sie Ihre Geschäftslogik validieren und Ihre Datentransformationen anzeigen können, bevor Sie Ihre Arbeit in Azure Data Factory veröffentlichen. Verwenden Sie im Bereich „Pipeline“ die Schaltfläche „Debuggen“, um Ihren Datenfluss in einer Pipeline zu testen.
-
-> [!NOTE]
-> Während auf der Data Factory-Symbolleiste der grüne Indikator für den Debugmodus angezeigt wird, wird Ihnen die Datenfluss-Debugrate von acht Kernen pro Stunde (Compute allgemein mit einer Gültigkeitsdauer von 60 Minuten) in Rechnung gestellt. 
 
 ## <a name="cluster-status"></a>Clusterstatus
 

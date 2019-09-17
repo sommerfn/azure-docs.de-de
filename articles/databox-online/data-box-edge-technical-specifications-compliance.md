@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 09/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755133"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910136"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
 
@@ -36,7 +36,7 @@ The following table lists the typical power consumption data (actual values may 
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 
-Die Data Box Edge-Geräte verfügen über 10 × 2,5-Zoll NVMe-SSD-Datenträger, von der jeder eine Kapazität von 1,6 TB aufweist. Von diesen SSD-Datenträgern sind zwei Betriebssystemdatenträger. Die anderen acht sind Datenträger für Daten. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 12,5 TB. In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt:
+Die Data Box Edge-Geräte verfügen über 9 × 2,5-Zoll NVMe-SSD-Datenträger, von der jeder eine Kapazität von 1,6 TB aufweist. Von diesen SSD-Datenträgern ist einer ein Betriebssystemdatenträger, und die anderen acht sind Datenträger für Daten. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 12,5 TB. In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt:
 
 |     Spezifikation                          |     Wert             |
 |--------------------------------------------|-----------------------|
@@ -95,7 +95,7 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Luftströmung                              |    Die Luftströmung im System verläuft von vorne nach hinten. Das System muss mit einem hinteren Luftstromauslass mit niedrigem Druck betrieben werden. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
 |    Maximale Betriebshöhe        |    3048 Meter (10.000 Fuß) mit einer maximalen Betriebstemperatur bei heruntergesetzter Leistung, die Sie der Tabelle unter [Spezifikationen für Betriebstemperatur bei heruntergesetzter Leistung](#operating-temperature-de-rating-specifications) entnehmen.                                                                                |
-|    Maximal Höhenlage, außerhalb des Betriebs    |    12\.000 Meter (39.370 Fuß)                                                                                                                                                                                         |
+|    Maximal Höhenlage, außerhalb des Betriebs    |    12.000 Meter (39.370 Fuß)                                                                                                                                                                                         |
 |    Stoßfestigkeit, bei Betrieb                   |    6 G für eine Dauer von 11 Millisekunden in sechs verschiedenen Ausrichtungen                                                                                                                                                                         |
 |    Stoßfestigkeit, außerhalb des Betriebs               |    71 G für eine Dauer von zwei Millisekunden in sechs verschiedenen Ausrichtungen                                                                                                                                                                           |
 |    Schwingungen, bei Betrieb               |    0,26 G<sub>QMW</sub> bei 5 Hertz bis 350 Hertz zufälliger Vibration                                                                                                                                                                                     |

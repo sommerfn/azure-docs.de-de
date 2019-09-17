@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446222"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383350"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -80,6 +80,9 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 - Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert die selbstgehostete Integrationslaufzeit nicht auf Datenanforderungen. Konfigurieren Sie vor der Installation der selbstgehosteten Integration Runtime einen entsprechenden Energiesparplan auf dem Computer. Wenn für den Computer der Ruhezustand konfiguriert ist, wird bei der Installation der selbstgehosteten Integrationslaufzeit eine Meldung angezeigt.
 - Sie müssen der Administrator des Computers sein, um die selbstgehostete Integrationslaufzeit erfolgreich installieren und konfigurieren zu können.
 - Ausführungen der Kopieraktivität geschehen in einer bestimmten Häufigkeit. Die Ressourcenverwendung (CPU, Arbeitsspeicher) auf dem Computer folgt dem gleichen Muster mit Spitzen- und Leerlaufzeiten. Die Ressourcenverwendung hängt auch stark von der Datenmenge ab, die verschoben wird. Wenn mehrere Kopieraufträge in Bearbeitung sind, steigt die Ressourcenverwendung zu Spitzenzeiten an.
+- Aufgaben können fehlschlagen, wenn Daten in Parquet-, ORC- oder Avro-Formaten extrahiert werden. Die Dateierstellung wird auf dem selbstgehosteten Integrationscomputer ausgeführt und setzt voraus, dass die folgenden erforderlichen Komponenten wie erwartet funktionieren (siehe [Parquet-Format in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)).
+    - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)-Paket (x64)
+    - Java Runtime (JRE) Version 8 von einem JRE-Anbieter, wie z.B. [Adopt OpenJDK](https://adoptopenjdk.net/), stellt sicher, dass die Umgebungsvariable `JAVA_HOME` festgelegt ist.
 
 ## <a name="installation-best-practices"></a>Bewährte Methoden für die Installation
 Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen. Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](tutorial-hybrid-copy-powershell.md) finden Sie eine Schritt-für-Schritt-Anleitung.
@@ -119,7 +122,7 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
 
 Eine vorhandene selbstgehostete IR können Sie über die Befehlszeile einrichten oder verwalten. Dies gilt speziell für das Automatisieren der Installation und Registrierung von selbstgehosteten IR-Knoten. 
 
-**Dmgcmd.exe** ist in der Installation der selbstgehosteten IR enthalten. Sie befindet sich in der Regel im Ordner „C:\Program Files\Microsoft Integration Runtime\3.0\Shared\“. Sie unterstützt verschiedene Parameter und kann über die Eingabeaufforderung mithilfe von Batchskripts für die Automatisierung aufgerufen werden. 
+**Dmgcmd.exe** ist in der selbstgehosteten Installation enthalten, die sich normalerweise im Ordner „C:\Programme\Microsoft Integration Runtime\3.0\Shared\“ befindet. Sie unterstützt verschiedene Parameter und kann über die Eingabeaufforderung mithilfe von Batchskripts für die Automatisierung aufgerufen werden. 
 
 *Verwendung:* 
 
@@ -134,7 +137,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | RegisterNewNode „`<AuthenticationKey>`“                     | Knoten von Integration Runtime (selbstgehostet) mit dem angegebenen Authentifizierungsschlüssel registrieren | Nein       |
 | EnableRemoteAccess „`<port>`“ [„`<thumbprint>`“]            | Aktivieren Sie den Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters und/oder zum Aktivieren der Einstellung von Anmeldeinformationen direkt für die selbstgehostete IR (ohne Verwendung des ADF-Diensts) mit dem Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** über einen Remotecomputer in demselben Netzwerk. | Nein       |
 | EnableRemoteAccessInContainer „`<port>`“ [„`<thumbprint>`“] | Remotezugriff auf aktuellen Knoten aktivieren, wenn der Knoten im Container ausgeführt wird | Nein       |
-| DisableRemoteAccess                                         | Remotezugriff auf aktuellen Knoten deaktivieren. Der Remotezugriff wird für die Einrichtung mehrerer Knoten benötigt. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch bei deaktiviertem Remotezugriff, sofern es auf demselben Computer wie der Knoten der selbstgehosteten IR ausgeführt wird. | Nein       |
+| DisableRemoteAccess                                         | Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch bei deaktiviertem Remotezugriff, sofern es auf demselben Computer wie der Knoten der selbstgehosteten IR ausgeführt wird. | Nein       |
 | Schlüssel „`<AuthenticationKey>`“                                 | Vorherigen Authentifizierungsschlüssel überschreiben/aktualisieren. Achtung: Dies kann dazu führen, dass der vorherige Knoten der selbstgehosteten IR offline geschaltet wird, wenn es sich um den Schlüssel einer neuen Integration Runtime handelt. | Nein       |
 | GenerateBackupFile „`<filePath>`“ „`<password>`“            | Sicherungsdatei für aktuellen Knoten generieren. Die Sicherungsdatei enthält den Knotenschlüssel und Datenspeicher-Anmeldeinformationen. | Nein       |
 | ImportBackupFile „`<filePath>`“ „`<password>`“              | Den Knoten aus einer Sicherungsdatei wiederherstellen                          | Nein       |

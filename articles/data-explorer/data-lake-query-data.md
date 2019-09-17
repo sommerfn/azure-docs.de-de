@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950135"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383373"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Data Lake mit Azure Data Explorer (Vorschau)
 
@@ -50,6 +50,7 @@ Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 i
     > * Durch eine differenziertere Partitionierung können Sie eine höhere Leistung erwarten. Beispielsweise verzeichnen Abfragen über externe Tabellen mit täglichen Partitionen eine bessere Leistung als Abfragen mit monatlich partitionierten Tabellen.
     > * Wenn Sie eine externe Tabelle mit Partitionen definieren, wird davon ausgegangen, dass die Speicherstruktur identisch ist.
 Wenn die Tabelle z. B. mit einer DateTime-Partition im Format JJJJ/MM/TT (Standard) definiert ist, sollte der Dateipfad des URI-Speichers *container1/JJJJ/MM/TT/all_exported_blobs* lauten. 
+    > * Wenn die externe Tabelle durch eine datetime-Spalte partitioniert ist, müssen Sie in der Abfrage immer einen Zeitfilter für einen geschlossenen Bereich einschließen (z.B. sollte die Abfrage `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` bessere Leistung aufweisen als diese Abfrage (mit offenem Bereich): `ArchivedProducts | where Timestamp > ago(1h)`). 
 
 1. Die externe Tabelle ist im linken Bereich der Webbenutzeroberfläche sichtbar.
 

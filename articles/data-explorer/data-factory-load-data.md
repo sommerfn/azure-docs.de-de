@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657529"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803987"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory 
 
@@ -117,6 +117,8 @@ Es gibt zwei Möglichkeiten, Daten mithilfe von Azure Data Factory in Azure Data
 
 Der neue verknüpfte Azure Data Explorer-Dienst wird erstellt, um die Daten in die unten angegebene Azure Data Explorer-Zieltabelle (Senke) zu kopieren.
 
+#### <a name="create-the-azure-data-explorer-linked-service"></a>Erstellen des verknüpften Azure Data Explorer-Diensts
+
 1. Auf der Seite **Zieldatenspeicher** können Sie eine vorhandene Datenspeicherverbindung übernehmen oder einen neuen Datenspeicher angeben, indem Sie auf **+ Neue Verbindung erstellen** klicken.
 
     ![Seite „Zieldatenspeicher“](media/data-factory-load-data/destination-create-connection.png)
@@ -142,6 +144,8 @@ Der neue verknüpfte Azure Data Explorer-Dienst wird erstellt, um die Daten in d
 
     > [!NOTE]
     > Der Dienstprinzipal wird von Azure Data Factory für den Zugriff auf den Azure Data Explorer-Dienst verwendet. [Erstellen Sie einen Azure Active Directory (Azure AD)-Dienstprinzipal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal) als Dienstprinzipal. Verwenden Sie nicht die **Azure Key Vault**-Methode.
+
+#### <a name="configure-the-azure-data-explorer-data-connection"></a>Konfigurieren der Azure Data Explorer-Datenverbindung
 
 1. Der **Zieldatenspeicher** wird geöffnet. Die erstellte Azure Data Explorer-Datenverbindung kann nun verwendet werden. Wählen Sie **Weiter** aus, um die Verbindung zu konfigurieren.
 
