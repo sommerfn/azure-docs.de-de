@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855014"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743542"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for PostgreSQL
 
@@ -88,6 +88,8 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 - **Einschränkung**: Wenn in Tabellen kein Primärschlüssel vorhanden ist, tritt bei der fortlaufenden Synchronisierung ein Fehler auf.
 
     **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
+
+- **Einschränkung**: Der JSONB-Datentyp wird für die Migration nicht unterstützt.
 
 ## <a name="lob-limitations"></a>LOB-Einschränkungen
 
@@ -170,7 +172,7 @@ Beim Versuch der Onlinemigration von AWS RDS PostgreSQL zu Azure Database for Po
   **Einschränkung**: Dieser Fehler tritt auf, wenn die Quelldatenbank leer ist. Meistens besteht die Ursache darin, dass Sie die falsche Datenbank als Quelle ausgewählt haben.
   **Problemumgehung**: Überprüfen Sie erneut die Quelldatenbank, die Sie für die Migration ausgewählt haben, und wiederholen Sie den Vorgang.
 
-- **Fehler:** Die Zieldatenbank {database} ist leer. Migrieren Sie das Schema.
+- **Fehler:** Die Zieldatenbank „{database}“ ist leer. Migrieren Sie das Schema.
 
   **Einschränkung**: Dieser Fehler tritt auf, wenn für die Zieldatenbank kein Schema vorhanden ist. Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt.
   **Problemumgehung**: Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt. Details zum Migrieren des Schemas finden Sie in der [Dokumentation zur Azure PostgreSQL-Onlinemigration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).

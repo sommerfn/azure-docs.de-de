@@ -9,12 +9,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: 2110636b331f0cf4e74c77f41726ead5bf80a64f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6c15534d5d47ba384a0f368f5d212fb1350e5229
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501596"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858605"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Verwenden von Azure Dev Spaces für die Interaktion mit Windows-Containern
 
@@ -49,6 +49,9 @@ Wenden Sie einen [Taint][using-taints] auf die Windows-Knoten an. Der Taint auf 
 ```azurecli-interactive
 kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 ```
+
+> [!IMPORTANT]
+> Wenn Sie einen Taint auf einen Knoten anwenden, müssen Sie in der Bereitstellungsvorlage Ihres Diensts eine entsprechende Toleranz konfigurieren, um Ihren Dienst auf diesem Knoten auszuführen. Die Beispielanwendung ist bereits mit einer [entsprechenden Toleranz][sample-application-toleration-example] für den Taint konfiguriert, die Sie im vorherigen Befehl konfiguriert haben.
 
 ## <a name="run-your-windows-service"></a>Ausführen Ihres Windows-Diensts
 
@@ -180,8 +183,8 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
+[sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md
-
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [team-development]: ../team-development-netcore.md
 [using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations

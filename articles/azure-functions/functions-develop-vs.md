@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905680"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773161"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -41,6 +41,8 @@ Andere Ressourcen, die Sie benötigen, z. B. ein Azure Storage-Konto, werden w�
 
 > [!NOTE]
 > In Visual Studio 2017 installiert die Workload „Azure-Entwicklung“ die Azure Functions-Tools als separate Erweiterung. Wenn Sie Visual Studio 2017 aktualisieren, stellen Sie sicher, dass Sie die [neueste Version](#check-your-tools-version) der Azure Functions-Tools verwenden. In den folgenden Abschnitten wird beschrieben, wie Sie Ihre Azure Functions-Tools-Erweiterung in Visual Studio 2017 überprüfen und ggf. aktualisieren. 
+>
+> Überspringen Sie diesen Abschnitt, wenn Sie Visual Studio 2019 verwenden.
 
 ### <a name="check-your-tools-version"></a>Überprüfen der Toolversion in Visual Studio 2017
 
@@ -146,7 +148,7 @@ Sie können das obige Verfahren nutzen, um Ihrem Funktions-App-Projekt weitere F
 
 Wie bei Triggern auch, werden Eingabe- und Ausgabebindungen Ihrer Funktion als Bindungsattribute hinzugefügt. Fügen Sie Bindungen einer Funktion wie folgt hinzu:
 
-1. Stellen Sie sicher, dass Sie [das Projekt für die lokale Entwicklung konfiguriert haben](#configure-the-project-for-local-development).
+1. Stellen Sie sicher, dass Sie [das Projekt für lokale Entwicklung konfiguriert haben](#configure-the-project-for-local-development).
 
 2. Fügen Sie für die entsprechende Bindung das geeignete NuGet-Erweiterungspaket hinzu. Weitere Informationen finden Sie im Artikel zu Triggern und Bindungen unter [Lokale Entwicklung in C# mit Visual Studio oder Visual Studio Code](./functions-bindings-register.md#local-csharp). Die bindungsspezifischen Anforderungen für NuGet-Pakete sind im Referenzartikel für die Bindung angegeben. Paketanforderungen für den Event Hubs-Trigger finden Sie im [Referenzartikel zu Event Hubs-Bindungen](functions-bindings-event-hubs.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686137"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390132"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 
@@ -48,8 +48,10 @@ Sie können die automatische Weiterleitung auch verwenden, um Nachrichtenabsende
 Wenn Alice im Urlaub ist, wird ihre persönliche Warteschlange gefüllt, nicht das ERP-Thema. Da in diesem Szenario kein Vertriebsmitarbeiter Nachrichten empfangen hat, erreicht keines der ERP-Themen je das Kontingent.
 
 > [!NOTE]
-> Wenn automatische Weiterleitung eingerichtet ist, wird der Wert für AutoDeleteOnIdle für das Ziel automatisch auf den Maximalwert des Datentyps festgelegt.
-> Dies erfolgt, um sicherzustellen, dass immer ein Ziel vorhanden ist, an das die Nachricht weitergeleitet werden kann.
+> Wenn automatische Weiterleitung eingerichtet ist, wird der Wert für AutoDeleteOnIdle für **die Quelle und das Ziel** automatisch auf den Maximalwert des Datentyps festgelegt.
+> 
+>   - Auf der Quellseite fungiert die automatische Weiterleitung als Empfangsvorgang. Die Quelle, die für automatische Weiterleitung eingerichtet ist, befindet sich also niemals wirklich „im Leerlauf“.
+>   - Auf der Zielseite erfolgt dies, um sicherzustellen, dass immer ein Ziel vorhanden ist, an das die Nachricht weitergeleitet werden kann.
 
 ## <a name="autoforwarding-considerations"></a>Überlegungen bei der automatischen Weiterleitung
 
@@ -72,7 +74,7 @@ Detaillierte Informationen über die automatische Weiterleitung finden Sie in de
 Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter 
 
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging](service-bus-performance-improvements.md)
-* [Partitionierte Messagingentitäten][Partitioned messaging entities]
+* [Partitionierte Messagingentitäten][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

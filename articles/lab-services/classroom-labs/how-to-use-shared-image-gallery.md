@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 8d8b6fffe197d4180b091518dcd1615d0e0b9d19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65412855"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389979"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Lehrkräfte/Labadministratoren ein VM-Vorlagenimage speichern können, damit es von anderen wiederverwendet werden kann. Diese Images werden in einem [Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md) von Azure gespeichert. Als Erstes fügt der Labadministrator einen vorhandenen Katalog mit freigegebenen Images an das Labkonto an. Nachdem der Katalog mit freigegebenen Images angefügt wurde, können in Labs, die unter dem Labkonto erstellt wurden, Images in dem Katalog mit freigegebenen Images gespeichert werden. Andere Lehrkräfte können dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Klassen zu erstellen. 
@@ -29,10 +29,22 @@ In diesem Artikel wird gezeigt, wie Lehrkräfte/Labadministratoren ein VM-Vorlag
 
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Speichern eines Images im Katalog mit freigegebenen Images
-Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann eine Lehrkraft ein Image im Katalog mit freigegebenen Images speichern oder in ihn hochladen, das dann von anderen Lehrkräften wiederverwendet werden kann. Anweisungen zum Hochladen eines Images in den Katalog mit freigegebenen Images finden Sie unter [Übersicht über den Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-images.md). 
+Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Labkontoadministrator oder eine Lehrkraft ein Image im Katalog mit freigegebenen Images speichern, das dann von anderen Lehrkräften wiederverwendet werden kann. 
 
-> [!NOTE]
-> Zurzeit unterstützt die Benutzeroberfläche (UI) für Classroom Labs das Speichern eines Lab-Images im Katalog mit freigegebenen Images nicht. 
+1. Wählen Sie auf der Startseite für das Lab im Abschnitt **Vorlage** auf der Kachel die Option **Image speichern** aus.
+
+    ![Schaltfläche „Image speichern“](../media/how-to-use-shared-image-gallery/save-image-button.png)
+2.  Geben Sie im Fenster **Image des virtuellen Computers speichern** einen Namen für das Image ein, und klicken Sie dann auf **Speichern**. 
+
+    ![Fenster „Image des virtuellen Computers speichern“](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
+3. Überprüfen Sie den Status auf der Kachel "Lab". 
+
+    ![Status des Vorgangs „Image speichern“](../media/how-to-use-shared-image-gallery/save-image-status.png)
+4. Vergewissern Sie sich, dass der Vorgang erfolgreich war.
+
+    ![Vorgang „Image speichern“ ist erfolgreich](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+
+Sie können ein Image auch außerhalb des Kontexts eines Labs in den Katalog mit freigegebenen Images hochladen. Weitere Informationen finden Sie unter [Katalog mit freigegebenen Images: Übersicht](../../virtual-machines/windows/shared-images.md). 
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Verwenden eines Images aus dem Katalog mit freigegebenen Images
 Lehrer/Dozenten können beim Erstellen eines neuen Labs ein benutzerdefiniertes Image aus dem Katalog mit freigegebenen Images als Vorlage auswählen.

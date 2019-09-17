@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164891"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801274"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -85,7 +85,7 @@ In Visual Studio finden Sie alle Logik-Apps, die Ihrem Azure-Abonnement zugeordn
 
 ## <a name="open-in-visual-studio"></a>Öffnen in Visual Studio
 
-In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über das Azure-Portal oder als Azure Resource Manager-Projekte mit Visual Studio erstellt und bereitgestellt worden sind.
+In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über das Azure-Portal oder als Azure Resource Group-Projekte mit Visual Studio erstellt und bereitgestellt worden sind.
 
 1. Öffnen Sie den Cloud-Explorer, und suchen Sie Ihre Logik-App. 
 
@@ -123,7 +123,34 @@ Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunter
 
 4. Wenn Sie aufgefordert werden, einen Speicherort einzugeben, navigieren Sie zu diesem Speicherort, und speichern Sie die Resource Manager-Vorlage für die Definition der Logik-App im JSON-Dateiformat (.json). 
 
-Die Definition der Logik-App wird im `resources`-Unterabschnitt der Resource Manager-Vorlage angezeigt. Sie können nun die Definition der Logik-App und Resource Manager-Vorlage mit Visual Studio bearbeiten. Sie können die Vorlage auch als Azure Resource Manager-Projekt einer Visual Studio-Projektmappe hinzufügen. Erfahren Sie mehr über [Resource Manager-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+Die Definition der Logik-App wird im `resources`-Unterabschnitt der Resource Manager-Vorlage angezeigt. Sie können nun die Definition der Logik-App und Resource Manager-Vorlage mit Visual Studio bearbeiten. Sie können die Vorlage auch als [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) einer Visual Studio-Projektmappe hinzufügen. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+
+<a name="link-integration-account"></a>
+
+## <a name="link-to-integration-account"></a>Verknüpfen mit einem Integrationskonto
+
+Zum Erstellen von Logik-Apps für B2B-Unternehmensintegrationsszenarien (Business-to-Business) können Sie Ihre Logik-App mit einem zuvor erstellten [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) verknüpfen, das in derselben Region wie Ihre Logik-App vorhanden ist. Ein Integrationskonto enthält B2B-Artefakte wie Handelspartner, Vereinbarungen, Schemas und Zuordnungen und ermöglicht Ihrer Logik-App das Verwenden von B2B-Connectors für die XML-Validierung und die Flatfilecodierung oder -decodierung. Sie können diese [Verknüpfung mithilfe des Azure-Portals](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) erstellen. Sie können aber auch Visual Studio verwenden, nachdem Sie die [Voraussetzungen](#requirements) erfüllt haben und ihre Logik-App als JSON-Datei (.json) in einem [ Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vorhanden ist. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
+
+1. Öffnen Sie in Visual Studio das Azure Resource Group-Projekt, das Ihre Logik-App enthält.
+
+1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü der Datei **<logik-app-name>.json**, und wählen Sie **Mit Logik-App-Designer öffnen** aus. (Tastatur: STRG+L)
+
+   ![Öffnen der JSON-Datei der Logik-App mit dem Logik-App-Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio verfügen.
+
+1. Um sicherzustellen, dass der Logik-App-Designer den Fokus besitzt, wählen Sie die Registerkarte oder Oberfläche des Designers aus, damit der Bereich „Eigenschaften“ die Eigenschaft **Integrationskonto** für Ihre Logik-App anzeigt.
+
+   ![Der Bereich „Eigenschaften“ zeigt die Eigenschaft „Integrationskonto“ an](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+
+1. Öffnen Sie die Liste **Integrationskonto**, und wählen Sie das Integrationskonto aus, das Sie mit Ihrer Logik-App verknüpfen möchten. Beispiel:
+
+   ![Öffnen der Eigenschaftenliste „Integrationskonto“](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Visual Studio-Projektmappe.
+
+Wenn Sie die Eigenschaft **Integrationskonto** in Visual Studio festlegen und ihre Logik-App als Azure Resource Manager-Vorlage speichern, enthält diese Vorlage auch eine Parameterdeklaration für das ausgewählte Integrationskonto. Weitere Informationen zu Vorlagenparametern und Logik-Apps finden Sie unter [Übersicht: Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters).
 
 <a name="refresh"></a>
 

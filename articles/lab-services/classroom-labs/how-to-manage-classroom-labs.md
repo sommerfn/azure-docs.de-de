@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 6ba41132c93ebdb2578bafb100416ca3fe579298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123280"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873581"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -91,13 +91,15 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 
 ### <a name="vm-sizes"></a>VM-Größen  
 
-| Größe | Kerne | RAM | BESCHREIBUNG | 
+| Size | Kerne | RAM | BESCHREIBUNG | 
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
 | Mittel | 4 | 7 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. | 
 | Mittel (geschachtelte Virtualisierung) | 4 | 16 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. Sie unterstützt auch die geschachtelte Virtualisierung. <p>Diese Größe kann in Szenarien verwendet werden, in denen jeder Kursteilnehmer mehrere virtuelle Computer benötigt. Die Kursleiter können die geschachtelte Virtualisierung nutzen, um einige kleine geschachtelte virtuelle Computer innerhalb des virtuellen Computers einzurichten. </p> |
 | Groß | 8 | 32 GB | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. Sie unterstützt auch die geschachtelte Virtualisierung. |  
-| GPU | 12 | 112 GB | Diese Größe eignet sich am besten für rechenintensive, grafikintensive und visualisierungsorientierte Workloads. | 
+| Kleine GPU (Visualisierung) | 6 | 56 GB | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. | 
+| Kleine GPU (Compute) | 6 | 56 GB | Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning-Anwendungen. | 
+| Mittlere GPU (Visualisierung) | 12 | 112 GB | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. | 
 
 ## <a name="view-all-classroom-labs"></a>Anzeigen aller Classroom-Labs
 1. Navigieren Sie zum [Azure Lab Services-Portal](https://labs.azure.com).

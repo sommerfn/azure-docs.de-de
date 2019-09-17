@@ -7,19 +7,19 @@ services: monitoring
 ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 1151eb8659c60cd71430c3dd971e73ec03a5545f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538118"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383164"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht
 
 Dieser Artikel zeigt, wie Sie Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen im Azure-Portal einrichten.  
 
-Dienstintegritätsbenachrichtigung werden im [Azure Aktivitätsprotokoll ](../azure-monitor/platform/activity-logs-overview.md) gespeichert Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert sind, gibt es eine separate Benutzeroberfläche, um die Anzeige und Einrichtung von Benachrichtigungen über Benachrichtigungen über den Zustand des Dienstes zu erleichtern. 
+Dienstintegritätsbenachrichtigung werden im [Azure Aktivitätsprotokoll ](../azure-monitor/platform/activity-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
 
 Sie können eine Warnung erhalten, wenn Azure Benachrichtigungen zur Dienstintegrität an Ihr Azure-Abonnement sendet. Sie können die Warnung konfigurieren auf der Grundlage von:
 
@@ -61,8 +61,8 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
     ![Das Dialogfeld „Aktivitätsprotokollwarnung hinzufügen“](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
-> [!NOTE]
-> Dieses Abonnement wird verwendet, um die Aktivitätsprotokollwarnung zu speichern. Die Warnungsressource wird für dieses Abonnement bereitgestellt und überwacht hierfür Ereignisse im Aktivitätsprotokoll.
+    > [!NOTE]
+    > Dieses Abonnement wird verwendet, um die Aktivitätsprotokollwarnung zu speichern. Die Warnungsressource wird für dieses Abonnement bereitgestellt und überwacht hierfür Ereignisse im Aktivitätsprotokoll.
 
 1. Wählen Sie die **Ereignistypen** aus, bei denen Sie benachrichtigt werden möchten: *Dienstproblem*, *Geplante Wartung* und *Integritätsempfehlungen* 
 
@@ -90,7 +90,6 @@ Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltu
 
 >[!NOTE]
 >Die in den folgenden Schritten definierte Aktionsgruppe kann als vorhandene Aktionsgruppe für alle zukünftigen Warnungsdefinitionen wiederverwendet werden.
->
 >
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>Warnung mit vorhandener Aktionsgruppe mit dem Azure-Portal

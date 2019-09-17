@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 8b4b6549f9553773cc44c311f49befbb3eec9dc9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233100"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743256"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung
 
@@ -81,6 +81,9 @@ Wenn Sie eine App-Registrierung manuell erstellen, sind drei Informationen erfor
     |Zertifikataussteller-ID| Verwenden Sie `https://login.microsoftonline.com/<tenant-id>`, und ersetzen Sie *\<tenant-id* durch die **Verzeichnis-ID (Mandant)** der App-Registrierung. |
     |Geheimer Clientschlüssel (optional)| Verwenden Sie den geheimen Clientschlüssel, den Sie in der App-Registrierung generiert haben.|
     |Zulässige Tokenzielgruppen| Wenn dies eine *Back-End*-App ist und Sie Authentifizierungstoken von einer Front-End-App zulassen möchten, fügen Sie hier den **Anwendungs-ID-URI** der *Front-End*-App hinzu. |
+
+    > [!NOTE]
+    > Die konfigurierte **Client-ID** wird *immer* implizit als zulässige Zielgruppe betrachtet, und zwar unabhängig davon, wie Sie die Option **Zulässige Tokenzielgruppen** konfiguriert haben.
 1. Wählen Sie **OK** aus, und wählen Sie anschließend **Speichern** aus.
 
 Sie können nun Azure Active Directory für die Authentifizierung in Ihrer App Service-App verwenden.

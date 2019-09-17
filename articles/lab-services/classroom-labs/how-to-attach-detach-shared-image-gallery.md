@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: de4e9fb4b15f4c346926fe46f23255c668204c2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8f16baccd3a4980ee9dbe410cb2a95878b346d4
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413885"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390020"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Lehrer/Labadministratoren können ein Vorlagen-VM-Image in einem [Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md) in Azure speichern, damit es von anderen Benutzern wiederverwendet werden kann. Als Erstes fügt der Labadministrator einen vorhandenen Katalog mit freigegebenen Images an das Labkonto an. Nachdem der Katalog mit freigegebenen Images angefügt wurde, können in Labs, die unter dem Labkonto erstellt wurden, Images in dem Katalog mit freigegebenen Images gespeichert werden. Andere Lehrkräfte können dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Klassen zu erstellen. 
 
 Dieser Artikel zeigt, wie Sie einen Katalog mit freigegebenen Images einem Labkonto anfügen können. 
+
+> [!NOTE]
+> Weitere Informationen zu den Kosten für den Shared Image Gallery-Dienst finden Sie unter [Abrechnung für Shared Image Gallery](../../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 Wenn Sie ein Labkonto erstellen, können Sie dem Labkonto einen Katalog mit freigegebenen Images anfügen. Sie können entweder einen vorhandenen Katalog mit freigegebenen Images in der Dropdownliste auswählen oder einen neuen erstellen. Um einen Katalog mit freigegebenen Images zu erstellen und dem Labkonto anzufügen, wählen Sie **Neu erstellen** aus, geben einen Sie Namen für den Katalog ein, und geben Sie dann **OK** ein. 
@@ -76,12 +79,6 @@ Gehen Sie wie folgt vor, um einen vorhandenen Katalog mit freigegebenen Images e
     Die Azure Lab Services-Identität wird als Mitwirkender dem an das Lab angefügten Katalog mit freigegebenen Images hinzugefügt. Dadurch können Lehrkräfte/IT-Administratoren VM-Images im Katalog mit freigegebenen Images speichern. Alle Labs, die unter diesem Labkonto erstellt wurden, haben Zugriff auf den angefügten Katalog mit freigegebenen Images. 
 
     Alle Images im angefügten Katalog mit freigegebenen Images werden standardmäßig aktiviert. Sie können Images aktivieren oder deaktivieren, indem Sie sie in der Liste auswählen und die Schaltfläche **Ausgewählte Images aktivieren** oder **Ausgewählte Images deaktivieren** verwenden. 
-
-## <a name="save-an-image-to-the-shared-image-gallery"></a>Speichern eines Images im Katalog mit freigegebenen Images
-Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Labkontoadministrator oder eine Lehrkraft ein Image im Katalog mit freigegebenen Images speichern oder es in den Katalog hochladen, das dann von anderen Lehrkräften wiederverwendet werden kann. Anweisungen zum Hochladen eines Images in den Katalog mit freigegebenen Images finden Sie unter [Übersicht über den Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-images.md). 
-
-> [!NOTE]
-> Zurzeit unterstützt die Benutzeroberfläche (UI) für Classroom Labs das Speichern eines Labimages im Katalog mit freigegebenen Images nicht. 
 
 ## <a name="detach-a-shared-image-gallery"></a>Trennen eines Katalogs mit freigegebenen Images
 An ein Lab kann immer nur ein einzelner Katalog mit freigegebenen Images angefügt sein. Wenn Sie einen anderen Katalog mit freigegebenen Images anfügen möchten, müssen Sie zuerst den aktuellen Katalog trennen. Wenn Sie einen Katalog mit freigegebenen Images von Ihrem Lab trennen möchten, wählen Sie auf der Symbolleiste die Option **Trennen** aus, und bestätigen Sie den Vorgang. 
