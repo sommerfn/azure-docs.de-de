@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837927"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844301"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -35,7 +35,7 @@ Das Festlegen eines Ablaufs für eine Gruppe bewirkt Folgendes:
 Derzeit kann für Office 365-Gruppen auf einem Mandanten nur eine Ablaufrichtlinie konfiguriert werden.
 
 > [!NOTE]
-> Beim Konfigurieren und Verwenden der Ablaufrichtlinie für Office 365-Gruppen müssen Sie über Azure AD Premium-Lizenzen für die Mitglieder aller Gruppen verfügen, auf die die Ablaufrichtlinie angewandt wird.
+> Beim Konfigurieren und Verwenden der Ablaufrichtlinie für Office 365-Gruppen müssen Sie über Azure AD Premium-Lizenzen für die Mitglieder aller Gruppen verfügen, auf die die Ablaufrichtlinie angewendet wird, diese Lizenzen aber nicht unbedingt zuweisen.
 
 Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets finden Sie unter [Azure Active Directory PowerShell for Graph – 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory: PowerShell für Graph – 2.0.0.137).
 
@@ -69,8 +69,11 @@ Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gru
   - Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
 > [!NOTE]
-> Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 30 Tagen festgelegt. Die erste Verlängerungsbenachrichtigung wird innerhalb eines Tages gesendet. Beispielsweise wurde Gruppe A vor 400 Tagen erstellt, und das Ablaufintervall ist auf 180 Tage festgelegt. Wenn Sie eine Ablaufrichtlinie anwenden, hat Gruppe A 30 Tage, bevor sie gelöscht wird, falls sie der Besitzer nicht verlängert.
+> Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 30 Tagen festgelegt – außer wenn der Besitzer ihn verlängert. Die erste Verlängerungsbenachrichtigung wird innerhalb eines Tages gesendet.
+>
 > Wenn eine dynamische Gruppe gelöscht und wiederhergestellt wird, gilt sie als neue Gruppe und wird der Regel entsprechend erneut aufgefüllt. Dieser Vorgang kann bis zu 24 Stunden dauern.
+>
+> Benachrichtigungen über den Ablauf für in Teams verwendeten Gruppen werden im Feed „Teams-Besitzer“ angezeigt.
 
 ## <a name="email-notifications"></a>E-Mail-Benachrichtigungen
 

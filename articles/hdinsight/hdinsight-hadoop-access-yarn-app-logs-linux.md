@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0c5ecfba97c61288d08681006645eab0bdd23f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059462"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879864"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
 
@@ -42,7 +42,7 @@ Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheb
 
 `user` steht hier für den Namen des Benutzers, der die Anwendung gestartet hat. `applicationId` ist der eindeutige Bezeichner, der einer Anwendung durch den YARN-RM zugewiesen wird.
 
-Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in [TFile][T-file] geschrieben werden, einem nach Container indiziertem [Binärformat][binary-format]. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
+Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in einem [TFile][T-file]-[Binärformat ][binary-format] mit Indizierung nach Container geschrieben werden. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
 
 ## <a name="yarn-cli-tools"></a>YARN-CLI-Tools
 
@@ -62,10 +62,11 @@ Die YARN-ResourceManager-Benutzeroberfläche wird im Cluster-Hauptknoten ausgef�
 1. Navigieren Sie in Ihrem Webbrowser zu https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
 2. Wählen Sie aus der Liste der Dienste auf der linken Seite den Dienst **YARN**aus.
 
-    ![Ausgewählter YARN-Dienst](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
+    ![Ausgewählter YARN-Dienst](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+
 3. Wählen Sie aus der Dropdownliste **QuickLinks** einen der Clusterhauptknoten und dann **ResourceManager-Protokoll** aus.
 
-    ![YARN-Direktlinks](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
+    ![YARN-Direktlinks](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     Eine Liste mit Links zu YARN-Protokollen wird angezeigt.
 

@@ -1,20 +1,20 @@
 ---
 title: 'Bereitstellen des Azure Blob Storage-Moduls für Geräte: Azure IoT Edge | Microsoft-Dokumentation'
 description: Stellen Sie ein Azure Blob Storage-Modul für Ihr IoT Edge-Gerät bereit, um Daten am Edge zu speichern.
-author: kgremban
-ms.author: kgremban
+author: arduppal
+ms.author: arduppal
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.reviewer: kgremban
+ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 089c90abb999751db77bbe1d89d1d118ae712b52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e5420bbe7f65dcef4997d909b3bc4ede00dd9902
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947081"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844231"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -93,7 +93,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
 
-1. Legen Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für das Modul fest, indem Sie den folgenden JSON-Code kopieren und in das Feld **Set module twin's desired properties** (Gewünschte Eigenschaften für Modulzwilling festlegen) einfügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, speichern Sie, und fahren Sie mit der Bereitstellung fort.
+1. Legen Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für das Modul fest, indem Sie den folgenden JSON-Code kopieren und in das Feld **Set module twin's desired properties** (Gewünschte Eigenschaften für Modulzwilling festlegen) einfügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, speichern Sie, und fahren Sie mit der Bereitstellung fort. Wenn Sie den IoT Edge-Simulator verwenden, legen Sie die Werte auf die zugehörigen Umgebungsvariablen für diese Eigenschaften fest, die Sie im Abschnitt „Erläuterung“ von [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) finden können.
 
    ```json
    {
@@ -207,7 +207,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
 
-1. Konfigurieren Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für Ihr Modul, indem Sie der Datei *deployment.template.json* den folgenden JSON-Code hinzufügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, und speichern Sie die Datei.
+1. Konfigurieren Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für Ihr Modul, indem Sie der Datei *deployment.template.json* den folgenden JSON-Code hinzufügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, und speichern Sie die Datei. Wenn Sie den IoT Edge-Simulator verwenden, legen Sie die Werte auf die zugehörigen Umgebungsvariablen für diese Eigenschaften fest, die Sie im Abschnitt „Erläuterung“ von [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) finden können.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{

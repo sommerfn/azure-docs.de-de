@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31cf1f6da515aa9b453987383e78f466c5ba4fb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827290"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813027"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -489,6 +489,9 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
    > [!TIP]
    > Wenn Sie die Bereitstellungs-App zum ersten Mal konfigurieren, müssen Sie Ihre Attributzuordnungen und Ausdrücke testen und überprüfen, um sicherzustellen, dass sie damit das gewünschte Ergebnis erzielen. Microsoft empfiehlt, die Bereichsfilter unter **Quellobjektbereich** zu verwenden, um Ihre Zuordnungen mit einigen Testbenutzern von Workday zu testen. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
 
+   > [!CAUTION] 
+   > Beim Standardverhalten des Bereitstellungsmoduls werden Benutzer deaktiviert/gelöscht, die sich außerhalb des gültigen Bereichs befinden. Dies ist bei Ihrer Integration von Workday in AD möglicherweise nicht wünschenswert. Informationen zum Außerkraftsetzen dieses Standardverhaltens finden Sie im Artikel [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](../manage-apps/skip-out-of-scope-deletions.md).
+  
 1. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Active Directory angewendet werden. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
 1. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
@@ -1333,66 +1336,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 ### <a name="exporting-and-importing-your-configuration"></a>Exportieren und Importieren Ihrer Konfiguration
 
-In diesem Abschnitt wird beschrieben, wie Sie mit der Microsoft Graph-API und dem Graph-Tester Ihre Zuordnungen und Schemata Ihres Workday-Bereitstellungsattributs in eine JSON-Datei exportieren und wieder in Azure AD importieren können.
-
-#### <a name="step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen Ihrer Dienstprinzipal-ID für die Workday-Bereitstellungs-App (Objekt-ID)
-
-1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Workday-Bereitstellungs-App.
-1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet, und wird in Graph-Tester-Vorgängen verwendet.
-
-   ![Dienstprinzipal-ID der Workday-App](./media/workday-inbound-tutorial/wd_export_01.png)
-
-#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>Schritt 2: Anmelden bei Microsoft Graph-Tester
-
-1. Starten Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
-1. Klicken Sie auf die Schaltfläche „Mit Microsoft anmelden“, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
-
-    ![Graph-Anmeldung](./media/workday-inbound-tutorial/wd_export_02.png)
-
-1. Nach der erfolgreichen Anmeldung sehen Sie die Details des Benutzerkontos im linken Bereich.
-
-#### <a name="step-3-retrieve-the-provisioning-job-id-of-the-workday-provisioning-app"></a>Schritt 3: Abrufen der Auftrags-ID für die Bereitstellung für die Workday-Bereitstellungs-App
-
-Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] durch die in [Schritt 1](#step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id) extrahierte **ServicePrincipalId**.
-
-```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
-```
-
-Sie erhalten eine Antwort, wie unten dargestellt. Kopieren Sie das „id attribut“ aus der Antwort. Dieser Wert ist die **ProvisioningJobId** und wird zum Abrufen der zugrundeliegenden Schemametadaten verwendet.
-
-   [![ID des Bereitstellungsauftrags](./media/workday-inbound-tutorial/wd_export_03.png)](./media/workday-inbound-tutorial/wd_export_03.png#lightbox)
-
-#### <a name="step-4-download-the-provisioning-schema"></a>Schritt 4: Herunterladen des Bereitstellungsschemas
-
-Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] und [ProvisioningJobId] durch die in den vorherigen Schritten abgerufen Werten für „ServicePrincipalId“ und „ProvisioningJobId“.
-
-```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
-```
-
-Kopieren Sie das JSON-Objekt aus der Antwort, und speichern Sie sie in einer Datei, um eine Sicherung des Schemas zu erstellen.
-
-#### <a name="step-5-import-the-provisioning-schema"></a>Schritt 5: Importieren des Bereitstellungsschemas
-
-> [!CAUTION]
-> Führen Sie diesen Schritt nur aus, wenn Sie das Schema für eine Konfiguration ändern müssen, die nicht über das Azure-Portal geändert werden kann, oder wenn Sie die Konfiguration aus einer zuvor gesicherten Datei mit einem gültigen und funktionierenden Schema wiederherstellen müssen.
-
-Konfigurieren Sie im Microsoft Graph-Tester die folgende PUT-Abfrage durch und ersetzen Sie [servicePrincipalId] und [ProvisioningJobId] durch die in den vorherigen Schritten abgerufen Werten für „ServicePrincipalId“ und „ProvisioningJobId“.
-
-```http
-    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
-```
-
-Kopieren Sie auf der Registerkarte „Anforderungstext“ den Inhalt der JSON-Schemadatei.
-
-   [![Anforderungstext](./media/workday-inbound-tutorial/wd_export_04.png)](./media/workday-inbound-tutorial/wd_export_04.png#lightbox)
-
-Fügen Sie auf der Registerkarte „Anforderungsheader“ das Content-Type-Header-Attribut mit dem Wert „application/json“ ein.
-
-   [![Anforderungsheader](./media/workday-inbound-tutorial/wd_export_05.png)](./media/workday-inbound-tutorial/wd_export_05.png#lightbox)
-
-Klicken Sie auf die Schaltfläche „Abfrage ausführen“, um das neue Schema zu importieren.
+Entsprechende Informationen finden Sie im Artikel [Exportieren und Importieren der Bereitstellungskonfiguration](../manage-apps/export-import-provisioning-configuration.md).
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 

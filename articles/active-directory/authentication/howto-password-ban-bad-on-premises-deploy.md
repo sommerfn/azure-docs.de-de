@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953011"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389764"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -295,7 +295,7 @@ Wenn eine neuere Version der Azure AD-Kennwortschutz-Proxysoftware verfügbar is
 
 Es ist nicht erforderlich, die aktuelle Version der Proxysoftware zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der Proxysoftware sollte kein Neustart erforderlich sein. Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
-Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert kann mithilfe des Cmdlets „Set-AzureADPasswordProtectionProxyConfiguration“ aktiviert und deaktiviert werden. Die aktuelle Einstellung kann mithilfe des Cmdlets „Get-AzureADPasswordProtectionProxyConfiguration“ abgefragt werden. Microsoft empfiehlt, das automatische Upgrade aktiviert zu lassen.
+Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert und kann mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` aktiviert oder deaktiviert werden. Die aktuelle Einstellung kann mit dem Cmdlet `Get-AzureADPasswordProtectionProxyConfiguration` abgefragt werden. Microsoft empfiehlt, das automatische Upgrade aktiviert zu lassen.
 
 Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` kann die Softwareversion aller aktuell installierten Proxy-Agents in einer Gesamtstruktur abgefragt werden.
 

@@ -1,6 +1,6 @@
 ---
 title: Clusterkapazitätsplanung in Azure HDInsight
-description: Erfahren Sie, wie Sie Kapazität und Leistung eines HDInsight-Clusters angeben.
+description: Identifizieren wichtiger Fragen zur Planung der Kapazität und Leistung eines Azure HDInsight-Clusters.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207157"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916561"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -96,9 +96,6 @@ Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Clu
 
 Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Um das Problem zu isolieren, führen Sie verteilte Tests durch, indem Sie gleichzeitig mehrere Aufträge in einem Cluster mit einem einzelnen Workerknoten ausführen. Erweitern Sie diesen Ansatz dann auf die gleichzeitige Ausführung mehrerer Aufträge auf Clustern mit mehreren Knoten. Um einen HDInsight-Cluster mit einem einzelnen Knoten in Azure zu erstellen, verwenden Sie die Option *Benutzerdefiniert(Größe,Einstellungen,Apps)* , und verwenden Sie für die Bereitstellung eines neuen Clusters im Portal den Wert „1“ für *Anzahl von Workerknoten* im Abschnitt **Clustergröße**.
 
-Sie können auch eine Einzelknoten-Entwicklungsumgebung auf dem lokalen Computer installieren und die Lösung dort testen. Hortonworks bietet für Hadoop-basierten Lösungen eine für anfängliche Entwicklung, Proof of Concept und Testen hilfreiche lokale Einzelknoten-Entwicklungsumgebung. Weitere Informationen finden Sie unter [Starten Sie mit Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
-
-Um das Problem auf einem lokalen Cluster mit einzelnem Knoten zu identifizieren, können Sie fehlgeschlagene Aufträge erneut ausführen und die Eingabedaten anpassen bzw. kleinere Datasets verwenden. Die Ausführung dieser Aufträge hängt von Plattform und Anwendungstyp ab.
 
 ## <a name="quotas"></a>Kontingente
 

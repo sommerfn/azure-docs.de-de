@@ -1,18 +1,18 @@
 ---
 title: Verwenden von Curl zum Exportieren von Daten mit Apache Sqoop in Azure HDInsight
-description: Erfahren Sie, wie Sie Apache Sqoop-Aufträge mithilfe von Curl remote an HDInsight übermitteln.
+description: Erfahren Sie, wie Sie Apache Sqoop-Aufträge mithilfe von Curl remote an Azure HDInsight übermitteln.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: ede0538e90e9f35797546f34bfed757c2727b194
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: f70c0a0b68e24e3d61a6c0cef238d1f60911e271
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508876"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810731"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Ausführen von Apache Sqoop-Aufträgen in HDInsight mit Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

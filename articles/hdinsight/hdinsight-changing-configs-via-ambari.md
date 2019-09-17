@@ -1,6 +1,6 @@
 ---
 title: Optimieren von Clusterkonfigurationen mit Apache Ambari – Azure HDInsight
-description: Verwenden Sie die Apache Ambari-Webbenutzeroberfläche, um HDInsight-Cluster zu konfigurieren und zu optimieren.
+description: Verwenden Sie die Apache Ambari-Webbenutzeroberfläche, um Azure HDInsight-Cluster zu konfigurieren und zu optimieren.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60698827"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880266"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen
 
@@ -49,11 +49,11 @@ Gehen Sie wie folgt vor, um die NameNode-Java-Heapgröße zu ändern:
 
 1. Geben Sie den neuen Wert in das Textfeld ein, und drücken Sie anschließend die **EINGABETASTE**, um die Änderung zu speichern.
 
-    ![Bearbeiten der NameNode-Java-Heapgröße](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![Bearbeiten der NameNode-Java-Heapgröße 1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
 1. Die NameNode-Java-Heapgröße wird von 2 GB in 1 GB geändert.
 
-    ![Bearbeitete NameNode-Java-Heapgröße](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    ![Bearbeitete NameNode-Java-Heapgröße 2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
 1. Speichern Sie Ihre Änderungen, indem Sie oben auf dem Konfigurationsbildschirm auf die grüne Schaltfläche **Speichern** klicken.
 
@@ -146,7 +146,7 @@ Standardmäßig wird für Hive eine Gruppe von Regeln befolgt, um einen optimale
 
 Navigieren Sie zum Aktivieren von CBO zur Hive-Registerkarte **Configs** (Konfigurationen), und suchen Sie nach `parameter hive.cbo.enable`. Legen Sie die Umschaltfläche auf **Ein** fest.
 
-![CBO-Konfiguration](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO-Konfiguration](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 Mit den folgenden zusätzlichen Konfigurationsparametern wird die Hive-Abfrageleistung erhöht, wenn CBO aktiviert ist:
 
@@ -284,8 +284,8 @@ Weitere Empfehlungen zum Optimieren des Hive-Ausführungsmoduls:
 | `hive.mapjoin.hybridgrace.hashtable` | true = sicherer, langsamer; false = schneller | false |
 | `tez.am.resource.memory.mb` | Oberer Grenzwert von 4 GB für die meisten Fälle geeignet | Automatisch optimiert |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
-| `tez.am.container.idle.release-timeout-min.millis` | 20\.000+ | 10000 |
-| `tez.am.container.idle.release-timeout-max.millis` | 40\.000+ | 20000 |
+| `tez.am.container.idle.release-timeout-min.millis` | 20.000+ | 10000 |
+| `tez.am.container.idle.release-timeout-max.millis` | 40.000+ | 20000 |
 
 ## <a name="apache-pig-optimization"></a>Apache Pig-Optimierung
 
@@ -365,7 +365,7 @@ Die Anzahl von Reducern wird basierend auf dem Parameter `pig.exec.reducers.byte
 
 Die [Apache HBase](https://hbase.apache.org/)-Konfiguration wird über die Registerkarte **HBase-Konfigurationen** geändert. In den folgenden Abschnitten werden einige wichtige Konfigurationseinstellungen beschrieben, die sich auf die HBase-Leistung auswirken.
 
-### <a name="set-hbaseheapsize"></a>Festlegen von HBASE_HEAPSIZE
+### <a name="set-hbase_heapsize"></a>Festlegen von HBASE_HEAPSIZE
 
 Mit der HBase-Heapgröße wird die maximale Heapmenge in MB angegeben, die von Servern vom Typ *region* und *master* verwendet werden kann. Der Standardwert ist 1.000 MB. Es ist ratsam, diesen Wert je nach Clusterworkload anzupassen.
 

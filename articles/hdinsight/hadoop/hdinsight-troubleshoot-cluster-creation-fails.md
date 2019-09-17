@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Fehlern bei der Clustererstellung mit Azure HDInsight
-description: Hier erfahren Sie, wie Sie Probleme bei der Clustererstellung für Azure HDInsight behandeln.
+description: Hier erfahren Sie, wie Sie Probleme bei der Apache-Clustererstellung für Azure HDInsight behandeln.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 84dc0115edcab07036b43d5fa19310918f7a2408
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035982"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810677"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Behandeln von Fehlern bei der Clustererstellung mit Azure HDInsight
 

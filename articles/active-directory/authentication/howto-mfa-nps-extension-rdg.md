@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf9188502dd2b17bcd898e2655138b06cfe5cebf
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64873427"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898551"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -178,7 +178,7 @@ Um das Skript zu verwenden, geben Sie die Erweiterung mit Ihren Azure AD-Adminis
 
 In diesem Abschnitt konfigurieren Sie die Verbindungsautorisierungsrichtlinien für das Remotedesktopgateway und andere RADIUS-Clienteinstellungen.
 
-Der Authentifizierungsablauf erfordert, dass RADIUS-Nachrichten zwischen dem Remotedesktopgateway und dem NPS-Server, auf dem die NPS-Serverinstanz installiert ist, ausgetauscht werden. Dies bedeutet, dass Sie RADIUS-Clienteinstellungen sowohl auf dem Remotedesktopgateway als auch dem NPS-Server, auf dem die NPS-Erweiterung installiert ist, konfigurieren müssen.
+Der Authentifizierungsablauf erfordert, dass RADIUS-Nachrichten zwischen dem Remotedesktopgateway und dem NPS-Server ausgetauscht werden, auf dem die NPS-Erweiterung installiert ist. Dies bedeutet, dass Sie RADIUS-Clienteinstellungen sowohl auf dem Remotedesktopgateway als auch dem NPS-Server, auf dem die NPS-Erweiterung installiert ist, konfigurieren müssen.
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Konfigurieren von Verbindungsautorisierungsrichtlinien für das Remotedesktopgateway zur Verwendung im zentralen Speicher
 

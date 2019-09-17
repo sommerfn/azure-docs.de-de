@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: a2189b2012f598542725acd2d5ebe3a7586bafd9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171916"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880826"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Nach dem Durcharbeiten dieses Artikels haben Sie eine benutzerdefinierte Registrierungs- oder Anmelderichtlinie mit Ihrer Marke und in Ihrem Design erstellt. Mit Azure Active Directory B2C (Azure AD B2C) erlangen Sie nahezu vollständige Kontrolle über den HTML- und CSS-Inhalt, der Benutzern angezeigt wird. Bei Verwendung einer benutzerdefinierten Richtlinie konfigurieren Sie die Anpassung der Benutzeroberfläche in XML, anstatt über Steuerelemente im Azure-Portal. 
+Nach dem Durcharbeiten dieses Artikels haben Sie eine benutzerdefinierte Registrierungs- oder Anmelderichtlinie mit Ihrer Marke und in Ihrem Design erstellt. Mit Azure Active Directory B2C (Azure AD B2C) erlangen Sie nahezu vollständige Kontrolle über den HTML- und CSS-Inhalt, der Benutzern angezeigt wird. Bei Verwendung einer benutzerdefinierten Richtlinie konfigurieren Sie die Anpassung der Benutzeroberfläche in XML, anstatt über Steuerelemente im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Erstellen Sie den HTML-Inhalt mit dem Markennamen Ihres Produkts im Titel.
    </html>
    ```
 
-2. Fügen Sie den kopierten Codeausschnitt in einen Text-Editor ein, und speichern Sie die Datei dann unter dem Namen *customize-ui.html*.
+1. Fügen Sie den kopierten Codeausschnitt in einen Text-Editor ein, und speichern Sie die Datei dann unter dem Namen *customize-ui.html*.
 
 > [!NOTE]
 > HTML-Formularelemente werden bei der Verwendung von login.microsoftonline.com aufgrund von Sicherheitseinschränkungen entfernt. Nutzen Sie b2clogin.com, wenn Sie HTML-Formularelemente in Ihren benutzerdefinierten HTML-Inhalten verwenden möchten. Weitere Vorteile finden Sie unter [Use b2clogin.com](b2clogin.md).
@@ -61,71 +61,71 @@ Erstellen Sie den HTML-Inhalt mit dem Markennamen Ihres Produkts im Titel.
 >[!NOTE]
 > In diesem Artikel wird Azure Blob Storage zum Hosten unserer Inhalte verwendet. Sie können angeben, dass Ihre Inhalte auf einem Webserver gehostet werden sollen, aber Sie müssen [auf Ihrem Webserver CORS aktivieren](https://enable-cors.org/server.html).
 
-Gehen Sie wie folgt vor, um diesen HTML-Inhalt im Blob-Speicher zu hosten:
+Führen Sie die folgenden Schritte aus, um diesen HTML-Inhalt im Blob-Speicher zu hosten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Menü **Hub** die Option **Neu** > **Speicher** > **Speicherkonto**.
-3. Wählen Sie ein **Abonnement** für Ihr Speicherkonto aus.
-4. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-5. Geben Sie einen eindeutigen **Namen** für Ihr Speicherkonto ein.
-6. Wählen Sie den **geografischen Standort** für das Speicherkonto aus. 
-7. Als **Bereitstellungsmodell** können Sie **Resource Manager** unverändert lassen.
-8. Für **Leistung** können Sie **Standard** übernehmen.
-9. Ändern Sie **Kontoart** in **Blob Storage**.
-10. Für **Replikation** können Sie **RA-GRS** übernehmen.
-11. Für **Zugriffstarif** können Sie **Heiß** übernehmen. 
-12. Klicken Sie auf **Überprüfen + erstellen**, um das Speicherkonto zu erstellen.  
-    Nach Abschluss der Bereitstellung wird automatisch das Blatt **Speicherkonto** geöffnet.
+1. Wählen Sie im Menü **Hub** die Option **Neu** > **Speicher** > **Speicherkonto**.
+1. Wählen Sie ein **Abonnement** für Ihr Speicherkonto aus.
+1. Erstellen Sie eine **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+1. Geben Sie einen eindeutigen **Namen** für Ihr Speicherkonto ein.
+1. Wählen Sie den **geografischen Standort** für das Speicherkonto aus.
+1. Als **Bereitstellungsmodell** können Sie **Resource Manager** unverändert lassen.
+1. Für **Leistung** können Sie **Standard** übernehmen.
+1. Ändern Sie **Kontoart** in **Blob Storage**.
+1. Für **Replikation** können Sie **RA-GRS** übernehmen.
+1. Für **Zugriffstarif** können Sie **Heiß** übernehmen.
+1. Klicken Sie auf **Überprüfen + erstellen**, um das Speicherkonto zu erstellen.
+    Nach Abschluss der Bereitstellung wird die Seite **Speicherkonto** automatisch geöffnet.
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Gehen Sie wie folgt vor, um im Blob-Speicher einen öffentlichen Container zu erstellen:
+Führen Sie die folgenden Schritte aus, um im Blob-Speicher einen öffentlichen Container zu erstellen:
 
 1. Wählen Sie unter **Blob-Dienst** im linken Menü die Option **Blobs** aus.
-2. Klicken Sie auf **+Container**.
-3. Geben Sie im Feld **Name** die Zeichenfolge *root* ein. Dies kann ein Name Ihrer Wahl sein, z. B. *wingtiptoys*, aber in diesem Beispiel verwenden wir der Einfachheit halber *root*.
-4. Wählen Sie für **Öffentliche Zugriffsebene** die Option **Blob** aus, und klicken Sie dann auf **OK**.
-5. Klicken Sie auf **root**, um den neuen Container zu öffnen.
-6. Klicken Sie auf **Hochladen**.
-7. Klicken Sie auf das Ordnersymbol neben **Datei auswählen**.
-8. Navigieren Sie zur Datei **customize-ui.html**, die Sie zuvor im Abschnitt „Seite für die Benutzeroberflächenanpassung“ erstellt haben, und wählen Sie die Datei aus.
-9. Wenn Sie die Datei in einen Unterordner hochladen möchten, erweitern Sie die Option **Erweitert**, und geben Sie im Feld **In Ordner hochladen** einen Ordnernamen ein.
-10. Wählen Sie die Option **Hochladen**.
-11. Wählen Sie das Blob **customize-ui.html** aus, das Sie hochgeladen haben.
-12. Wählen Sie rechts neben dem Textfeld **URL** das Symbol **In Zwischenablage kopieren** aus, um die URL in die Zwischenablage zu kopieren.
-13. Navigieren Sie im Webbrowser zu der kopierten URL, um zu überprüfen, ob auf das hochgeladene Blob zugegriffen werden kann. Wenn ein Zugriff darauf nicht möglich ist und beispielsweise ein Fehler vom Typ `ResourceNotFound` auftritt, stellen Sie sicher, dass der Zugriffstyp für den Container auf **Blob** festgelegt ist.
+1. Klicken Sie auf **+Container**.
+1. Geben Sie im Feld **Name** die Zeichenfolge *root* ein. Dies kann ein Name Ihrer Wahl sein, z. B. *wingtiptoys*, aber in diesem Beispiel verwenden wir der Einfachheit halber *root*.
+1. Wählen Sie für **Öffentliche Zugriffsebene** die Option **Blob** aus, und klicken Sie dann auf **OK**.
+1. Klicken Sie auf **root**, um den neuen Container zu öffnen.
+1. Klicken Sie auf **Hochladen**.
+1. Klicken Sie auf das Ordnersymbol neben **Datei auswählen**.
+1. Navigieren Sie zur Datei **customize-ui.html**, die Sie zuvor im Abschnitt „Seite für die Benutzeroberflächenanpassung“ erstellt haben, und wählen Sie die Datei aus.
+1. Wenn Sie die Datei in einen Unterordner hochladen möchten, erweitern Sie die Option **Erweitert**, und geben Sie im Feld **In Ordner hochladen** einen Ordnernamen ein.
+1. Wählen Sie die Option **Hochladen**.
+1. Wählen Sie das Blob **customize-ui.html** aus, das Sie hochgeladen haben.
+1. Wählen Sie rechts neben dem Textfeld **URL** das Symbol **In Zwischenablage kopieren** aus, um die URL in die Zwischenablage zu kopieren.
+1. Navigieren Sie im Webbrowser zu der kopierten URL, um zu überprüfen, ob auf das hochgeladene Blob zugegriffen werden kann. Wenn ein Zugriff darauf nicht möglich ist und beispielsweise ein Fehler vom Typ `ResourceNotFound` auftritt, stellen Sie sicher, dass der Zugriffstyp für den Container auf **Blob** festgelegt ist.
 
 ## <a name="configure-cors"></a>Konfigurieren von CORS
 
-Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS), indem Sie wie folgt vorgehen:
+Führen Sie die folgenden Schritte aus, um den Blob-Speicher für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) zu konfigurieren:
 
 1. Wählen Sie im Menü **CORS** aus.
-2. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Sie dürfen bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben verwenden.
-3. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
-4. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
-5. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
-6. Für **Max. Alter** geben Sie 200 ein.
-7. Klicken Sie auf **Speichern**.
+1. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Sie dürfen bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben verwenden.
+1. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
+1. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
+1. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
+1. Für **Max. Alter** geben Sie 200 ein.
+1. Klicken Sie auf **Speichern**.
 
 ## <a name="test-cors"></a>Testen von CORS
 
-Überprüfen Sie, ob alles bereit ist, indem Sie die folgenden Schritte ausführen:
+Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie bereit sind:
 
 1. Navigieren Sie zur Website [www.test-cors.org](https://www.test-cors.org/), und fügen Sie anschließend die URL in das Feld **Remote-URL** ein.
-2. Klicken Sie auf **Anforderung senden**.  
+1. Klicken Sie auf **Anforderung senden**.
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, dass Ihre [CORS-Einstellungen](#configure-cors) richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
 
 ## <a name="modify-the-extensions-file"></a>Ändern der Erweiterungsdatei
 
 Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **ContentDefinition** und ihre untergeordneten Elemente in der Basisdatei, und fügen Sie sie in die Erweiterungsdatei ein.
 
-1. Öffnen Sie die Basisdatei Ihrer Richtlinie. Öffnen Sie z.B. *TrustFrameworkBase.xml*.
-2. Suchen Sie nach dem Element **ContentDefinitions**, und kopieren Sie den gesamten Inhalt.
-3. Öffnen Sie die Erweiterungsdatei. Beispiel: *TrustFrameworkExtensions.xml*. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
-4. Fügen Sie den gesamten Inhalt des **ContentDefinitions**-Elements ein, das Sie als untergeordnetes Element des **BuildingBlocks**-Elements kopiert haben. 
-5. Suchen Sie dem **ContentDefinition**-Element, das `Id="api.signuporsignin"` in der kopierten XML-Datei enthält.
-6. Ändern Sie den Wert von **LoadUri** in die URL der HTML-Datei, die Sie in den Speicher hochgeladen haben. Beispiel: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
-    
+1. Öffnen Sie die Basisdatei Ihrer Richtlinie. Beispiel: *`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`***. Das ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, die Sie in der Voraussetzung [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom) erhalten haben sollten.
+1. Suchen Sie nach dem Element **ContentDefinitions**, und kopieren Sie den gesamten Inhalt.
+1. Öffnen Sie die Erweiterungsdatei. Beispiel: *TrustFrameworkExtensions.xml*. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
+1. Fügen Sie den gesamten Inhalt des **ContentDefinitions**-Elements ein, das Sie als untergeordnetes Element des **BuildingBlocks**-Elements kopiert haben.
+1. Suchen Sie dem **ContentDefinition**-Element, das `Id="api.signuporsignin"` in der kopierten XML-Datei enthält.
+1. Ändern Sie den Wert von **LoadUri** in die URL der HTML-Datei, die Sie in den Speicher hochgeladen haben. Beispiel: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+
     Ihre benutzerdefinierte Richtlinie sollte wie folgt aussehen:
 
     ```xml
@@ -143,22 +143,22 @@ Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **Co
     </BuildingBlocks>
     ```
 
-7. Speichern Sie die Erweiterungsdatei.
+1. Speichern Sie die Erweiterungsdatei.
 
 ## <a name="upload-your-updated-custom-policy"></a>Hochladen der aktualisierten benutzerdefinierten Richtlinie
 
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie **Framework für die Identitätsfunktion** aus.
-2. Klicken Sie auf **Alle Richtlinien**.
-3. Klicken Sie auf **Richtlinie hochladen**.
-4. Laden Sie die zuvor geänderte Erweiterungsdatei hoch.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **Framework für die Identitätsfunktion** aus.
+1. Klicken Sie auf **Alle Richtlinien**.
+1. Klicken Sie auf **Richtlinie hochladen**.
+1. Laden Sie die zuvor geänderte Erweiterungsdatei hoch.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
 
 1. Navigieren Sie auf dem Blatt **Azure AD B2C** zu **Alle Richtlinien**.
-2. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
-3. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
+1. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
+1. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
 
 ## <a name="reference"></a>Verweis
 
@@ -179,19 +179,20 @@ Der Ordner „sample_templates/wingtip“ enthält die folgenden HTML-Dateien:
 | *unified.html* | Verwenden Sie diese Datei als Vorlage für eine einheitliche Registrierungs- oder Anmeldeseite. |
 | *updateprofile.html* | Verwenden Sie diese Datei als Vorlage für eine Seite zum Aktualisieren von Profilen. |
 
-Nachfolgend finden Sie die auszuführenden Schritte zur Verwendung des Beispiels. 
-1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie unter „sample_templates“ einen Vorlagenordner aus. Sie können `wingtip` oder `contoso` verwenden.
-2. Laden Sie alle Dateien aus den Ordnern `css`, `fonts` und `images` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben. 
-3. Öffnen Sie als Nächstes jede HTML-Datei (\*.html) im Stammverzeichnis von `wingtip` oder `contoso` (je nachdem, welchen Ordner Sie im ersten Schritt ausgewählt haben), und ersetzen Sie alle Vorkommen von „http://localhost“ durch die URLs der Dateien aus den Ordnern „css“, „images“ und „fonts“, die Sie in Schritt 2 hochgeladen haben.
-4. Speichern Sie die HTML-Dateien (\*.html), und laden Sie die Dateien in den Blob-Speicher hoch.
-5. Ändern Sie jetzt die Erweiterungsdatei, wie zuvor unter [Ändern der Erweiterungsdatei](#modify-the-extensions-file) erwähnt.
-6. Falls Schriftarten, Bilder oder CSS-Dateien fehlen, überprüfen Sie die Verweise in der Erweiterungsrichtlinie sowie die HTML-Dateien (\*.html).
+Hier sind die auszuführenden Schritte zur Verwendung des Beispiels:
 
-### <a name="content-defintion-ids"></a>Inhaltsdefinitions-IDs
+1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie unter „sample_templates“ einen Vorlagenordner aus. Sie können `wingtip` oder `contoso` verwenden.
+1. Laden Sie alle Dateien aus den Ordnern `css`, `fonts` und `images` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben.
+1. Öffnen Sie als Nächstes jede HTML-Datei (\*.html) im Stammverzeichnis von `wingtip` oder `contoso` (je nachdem, welchen Ordner Sie im ersten Schritt ausgewählt haben), und ersetzen Sie alle Vorkommen von „http://localhost“ durch die URLs der Dateien aus den Ordnern „css“, „images“ und „fonts“, die Sie in Schritt 2 hochgeladen haben.
+1. Speichern Sie die HTML-Dateien (\*.html), und laden Sie die Dateien in den Blob-Speicher hoch.
+1. Ändern Sie jetzt die Erweiterungsdatei, wie zuvor unter [Ändern der Erweiterungsdatei](#modify-the-extensions-file) erwähnt.
+1. Falls Schriftarten, Bilder oder CSS-Dateien fehlen, überprüfen Sie die Verweise in der Erweiterungsrichtlinie und die HTML-Dateien (\*.html).
+
+### <a name="content-definition-ids"></a>ID für Inhaltsdefinitionen
 
 Im Abschnitt „Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien“ haben Sie die Inhaltsdefinition für `api.idpselections` konfiguriert. Der vollständige Satz mit IDs für die Inhaltsdefinition, die vom Azure AD B2C Identity Experience Framework erkannt werden, und die dazugehörigen Beschreibungen sind in der folgenden Tabelle enthalten:
 
-| ID für Inhaltsdefinition | BESCHREIBUNG | 
+| ID für Inhaltsdefinition | BESCHREIBUNG |
 |-----------------------|-------------|
 | *api.error* | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. |
 | *api.idpselections* | **Seite zur Auswahl des Identitätsanbieters**: Diese Seite enthält eine Liste mit den Identitätsanbietern, unter denen der Benutzer bei der Anmeldung wählen kann. Bei diesen Optionen handelt es sich um Unternehmensidentitätsanbieter, Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |

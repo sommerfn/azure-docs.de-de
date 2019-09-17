@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68948874"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860282"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -274,7 +274,7 @@ Azure AD unterstützt den Verbund oder das einmalige Anmelden (SSO) mit lokalen 
 Standardmäßig können Benutzer keine App-Kennwörter erstellen. Das Feature für App-Kennwörter muss aktiviert werden. Gehen Sie wie folgt vor, um Benutzern die Erstellung von App-Kennwörtern zu ermöglichen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** die Option **Benutzern das Erstellen von App-Kennwörtern zum Anmelden bei nicht browserbasierten Apps gestatten** aus.
@@ -314,7 +314,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Aktivieren benannter Orte mit bedingtem Zugriff
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie links **Azure Active Directory** > **Bedingter Zugriff** > **Benannte Orte** aus.
+2. Wählen Sie auf der linken Seite die Optionen **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Orte** aus.
 3. Wählen Sie **Neuer Ort** aus.
 4. Geben Sie einen Namen für den Standort ein.
 5. Wählen Sie **Als vertrauenswürdigen Standort markieren** aus.
@@ -324,7 +324,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Aktivieren des Features „Vertrauenswürdige IPs“ mit bedingtem Zugriff
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie links **Azure Active Directory** > **Bedingter Zugriff** > **Benannte Orte** aus.
+2. Wählen Sie auf der linken Seite die Optionen **Azure Active Directory** > **Sicherheit** >  **Bedingter Zugriff** > **Benannte Orte** aus.
 3. Wählen Sie **Durch MFA bestätigte IPs konfigurieren** aus.
 4. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine der folgenden beiden Optionen aus:
 
@@ -374,7 +374,7 @@ Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrier
 ### <a name="enable-and-disable-verification-methods"></a>Aktivieren und Deaktivieren von Überprüfungsmethoden
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Aktivieren oder deaktivieren Sie auf der Seite **Diensteinstellungen** unter **Überprüfungsoptionen** die Methoden, die den Benutzern zur Verfügung gestellt werden.
@@ -408,7 +408,7 @@ Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps,
 ### <a name="enable-remember-multi-factor-authentication"></a>Aktivieren der Speicherung von Multi-Factor Authentication
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Multi-Factor Authentication speichern** die Option **Benutzern das Speichern der mehrstufigen Authentifizierung auf vertrauenswürdigen Geräten ermöglichen** aus.

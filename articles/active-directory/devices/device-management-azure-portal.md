@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942947"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860893"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -67,12 +67,12 @@ Auf der Seite mit den Geräteeinstellungen können Sie Folgendes konfigurieren:
 - **Multi-Factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden. Der Standardwert lautet **Nein**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
-> **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich**: Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
+> Die Einstellung **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** gilt für Geräte, die entweder in Azure AD eingebunden oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
 
-- **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von Geräten festlegen, die ein Benutzer in Azure AD haben kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Das Gerätekontingent wird für alle Geräte gezählt, die heute mit Azure AD verknüpft oder in Azure AD registriert sind. Der Standardwert ist **20**.
+- **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von in Azure AD eingebundenen oder bei Azure AD registrierten Geräten festlegen, die ein Benutzer in Azure AD verwenden kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Der Standardwert ist **20**.
 
 > [!NOTE]
-> **Maximale Anzahl von Geräten**: Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
+> Die Einstellung **Maximale Anzahl von Geräten pro Benutzer** gilt für Geräte, die entweder in Azure AD eingebunden oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
 
 - **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**: Diese Einstellung ist standardmäßig auf **KEINE** festgelegt. Wenn Sie bestimmte Benutzer oder Gruppen oder „ALLE“ auswählen, können die Einstellungen und App-Daten der Benutzer auf ihren Windows 10-Geräten synchronisiert werden. Erfahren Sie mehr über die Funktionsweise der Synchronisierung in Windows 10.
 Diese Option ist eine Premium-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.

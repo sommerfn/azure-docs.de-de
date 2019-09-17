@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879917"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812839"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -85,7 +85,7 @@ Ausführliche Informationen zu diesem Thema finden Sie unter [Eingeschränkte De
 
    * Für die **Anwendungsveröffentlichung und -verwaltung** wird die Rolle *Anwendungsadministrator* benötigt. Anwendungsadministratoren können alle Anwendungen im Verzeichnis verwalten, z. B. für Registrierungen, SSO-Einstellungen, Zuweisungen und Lizenzierung für Benutzer und Gruppen, Anwendungsproxyeinstellungen und die Einwilligung. Durch diese Rolle kann der bedingte Zugriff nicht verwaltet werden. Die Rolle *Cloudanwendungsadministrator* verfügt über alle Berechtigungen des Anwendungsadministrators, mit Ausnahme der Verwaltung von Anwendungsproxyeinstellungen.
 
-* **Lizenzierung**: Der Anwendungsproxy ist über das Azure AD Basic-Abonnement verfügbar. Eine vollständige Liste mit Lizenzierungsoptionen und -funktionen finden Sie auf der [Seite mit den Azure Active Directory-Preisen](https://azure.microsoft.com/pricing/details/active-directory/).  
+* **Lizenzierung**: Der Anwendungsproxy ist über ein Azure AD Premium-Abonnement verfügbar. Eine vollständige Liste mit Lizenzierungsoptionen und -funktionen finden Sie auf der [Seite mit den Azure Active Directory-Preisen](https://azure.microsoft.com/pricing/details/active-directory/).  
 
 ### <a name="application-discovery"></a>Anwendungsermittlung
 
@@ -300,7 +300,7 @@ Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwend
 
 #### <a name="application-proxy-connector-monitoring"></a>Überwachung des Anwendungsproxyconnectors
 
-Die Connectors und der Dienst übernehmen alle Aufgaben in Bezug auf Hochverfügbarkeit. Sie können den Status Ihrer Connectors auf der Seite „Anwendungsproxy“ im Azure AD-Portal überwachen. Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance).
+Die Connectors und der Dienst führen alle Aufgaben in Bezug auf Hochverfügbarkeit aus. Sie können den Status Ihrer Connectors auf der Seite „Anwendungsproxy“ im Azure AD-Portal überwachen. Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance).
 
 ![Beispiel: Azure AD-Anwendungsproxy-Connectors](./media/application-proxy-connectors/app-proxy-connectors.png)
 

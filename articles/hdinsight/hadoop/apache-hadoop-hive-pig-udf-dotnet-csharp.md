@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 31738c43756da14ba6c2c92afbcb2882561c8001
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e6825b40700fe3bd24631094a2a6060d94524cc
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722874"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882262"
 ---
-# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive- und Apache Pig-Streaming für Apache Hadoop in HDInsight
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive und Apache Pig für Apache Hadoop in HDInsight
 
 Hier erfahren Sie, wie Sie benutzerdefinierte C#-Funktionen (User-Defined Functions, UDFs) mit Apache Hive und Apache Pig in HDInsight verwenden.
 
@@ -161,7 +161,7 @@ Weitere Informationen zu der mit den verschiedenen HDInsight-Versionen bereitges
 
 4. Erweitern Sie den HDInsight-Cluster, in dem Sie diese Anwendung bereitstellen möchten. Ein Eintrag mit dem Text __(Standardspeicherkonto)__ ist aufgeführt.
 
-    ![Anzeige des Speicherkontos für den Cluster im Server-Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Anzeige des Speicherkontos für den Cluster im Server-Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
     * Wenn dieser Eintrag erweitert werden kann, verwenden Sie ein __Azure Storage-Konto__ als Standardspeicher für den Cluster. Um die Dateien im Standardspeicher für den Cluster anzuzeigen, erweitern Sie den Eintrag, und doppelklicken Sie dann auf den __(Standardcontainer)__ .
 
@@ -171,7 +171,7 @@ Weitere Informationen zu der mit den verschiedenen HDInsight-Versionen bereitges
 
    * Wenn Sie ein __Azure-Speicherkonto__ verwenden, klicken Sie auf das Symbol für den Upload, und navigieren Sie dann zum Ordner **bin\debug** für das Projekt **HiveCSharp**. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **OK**.
 
-       ![Symbol für den Upload](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![Symbol für den Upload](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * Wenn Sie __Azure Data Lake Storage__ verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann __Hochladen__ aus. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **Öffnen**.
 

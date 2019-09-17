@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716763"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880788"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C
 
-Dass Sie die Möglichkeit haben, der Benutzeroberfläche (UI), die Azure Active Directory (Azure AD) B2C Ihren Anwendungen bereitstellt, ein Branding hinzuzufügen bzw. sie anzupassen, ist wichtig, um Ihrem Kunden eine nahtlose Benutzererfahrung bereitstellen zu können. Diese Erfahrungen umfassen Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung. Dieser Artikel enthält Informationen, um Ihnen bei der Anpassung der Benutzeroberfläche Ihrer Anwendungen zu helfen.
+Dass Sie die Möglichkeit haben, der Benutzeroberfläche (UI), die Azure Active Directory B2C (Azure AD B2C) für Ihre Anwendungen bereitstellt, ein Branding hinzuzufügen bzw. sie anzupassen, ist wichtig, um Ihrem Kunden eine nahtlose Benutzererfahrung bieten zu können. Diese Erfahrungen umfassen Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung. Dieser Artikel enthält Informationen, um Ihnen bei der Anpassung der Benutzeroberfläche Ihrer Anwendungen zu helfen.
 
 Je nach Ihren Anforderungen hinsichtlich dieser Erfahrungen passen Sie die Benutzeroberfläche Ihrer Anwendung auf unterschiedliche Weise an. Beispiel:
 
@@ -134,6 +134,9 @@ Beispiele für die Anpassung finden Sie in diesen [Beispielvorlagendateien](http
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie Benutzerflows verwenden, bearbeiten Sie dieses Tutorial zum Einstieg in die Benutzeroberflächenanpassung: [Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C](tutorial-customize-ui.md).
-- Wenn Sie benutzerdefinierte Richtlinien verwenden, lesen Sie diesen Artikel zum Einstieg in die Benutzeroberflächenanpassung: [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Wenn Sie **Benutzerflows** verwenden, können Sie anhand des folgenden Tutorials mit dem Anpassen Ihrer Benutzeroberfläche beginnen:
 
+    [Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C](tutorial-customize-ui.md).
+- Wenn Sie **benutzerdefinierte Richtlinien** verwenden, können Sie anhand des folgenden Artikels mit dem Anpassen der Benutzeroberfläche beginnen:
+
+    [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

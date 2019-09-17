@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Apache Hadoop Hive mit Curl in HDInsight – Azure
-description: Erfahren Sie, wie Sie Apache Pig-Aufträge mithilfe von Curl remote an HDInsight übermitteln.
+description: Erfahren Sie, wie Sie Apache Pig-Aufträge mithilfe von Curl remote an Azure HDInsight übermitteln.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 334d7b886aa4e2130a12f0c8a7919986fdac55d1
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508122"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736087"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
 

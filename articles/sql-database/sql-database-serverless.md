@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 08/26/2019
-ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/06/2019
+ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035721"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858503"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -115,7 +115,8 @@ Das automatische Anhalten wird von den folgenden Features nicht unterstützt.  D
 
 - Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
-- In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank
+- In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken das automatische Anhalten.
+- Die in elastischen Aufträgen verwendete Auftragsdatenbank.
 
 Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist das automatische Anhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
 
@@ -200,7 +201,7 @@ New-AzSqlDatabase `
 Im folgenden Beispiel wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
 
 ```powershell
-Set-AzSqlDatabase
+Set-AzSqlDatabase `
   -ResourceGroupName $resourceGroupName `
   -ServerName $serverName `
   -DatabaseName $databaseName `

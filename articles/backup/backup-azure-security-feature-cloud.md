@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 938c65371b05807c774c9f2d73d4c27efe706c47
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143241"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898991"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -26,7 +26,7 @@ Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Ein
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 
-Das vorläufige Löschen wird derzeit in der Region „USA, Westen-Mitte“ unterstützt.
+Das vorläufige Löschen wird derzeit in der Region „USA, Westen-Mitte“ und in „Asien, Osten“ unterstützt.
 
 ### <a name="soft-delete-for-vms"></a>Vorläufiges Löschen für VMs
 
@@ -136,4 +136,4 @@ Nein. Das vorläufige Löschen wird derzeit nur für virtuelle Azure-Computer un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie den Artikel [Sicherheitsattribute für Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-security-attributes).
+* Informieren Sie sich über [Sicherheitskontrollen für Azure Backup](backup-security-controls.md).

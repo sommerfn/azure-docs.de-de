@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: d23d1881bb2d07d6287d648bb8ceb3e7930d547e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074469"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844578"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
 
 5. Konfigurieren Sie VS Code mit Arduino-Einstellungen.
 
-    Klicken Sie in Visual Studio Code auf **Datei > Einstellung > Einstellungen**. Klicken Sie dann auf **...** und **„Settings.JSON“ öffnen**.
+    Klicken Sie in Visual Studio Code auf **Datei > Voreinstellungen > Einstellungen**  (unter macOS auf **Code > Voreinstellungen > Einstellungen**). Klicken Sie dann in der oberen rechten Ecke der Seite **Einstellungen** auf *Einstellungen öffnen (JSON)* .
 
     ![Installieren von Azure IoT-Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 

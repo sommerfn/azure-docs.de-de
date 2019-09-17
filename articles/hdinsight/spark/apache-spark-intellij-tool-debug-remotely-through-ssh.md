@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876364"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814184"
 ---
-# <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Lokales oder Remotedebuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
+# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
 
 Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsight-Tools im [Azure-Toolkit für IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) zum Remotedebuggen von Anwendungen in einem HDInsight-Cluster. Informationen zum Debuggen Ihres Projekts finden Sie auch im Video [Debug HDInsight Spark applications with Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) (Debuggen von HDInsight Spark-Anwendungen mit dem Azure-Toolkit für IntelliJ).
 
@@ -118,7 +118,7 @@ Um diesen Fehler zu beheben, müssen Sie [die ausführbare Datei herunterladen](
 
 1. Klicken Sie auf die Schaltfläche **Trennen**, damit Die Übermittlungsprotokolle nicht im linken Bereich angezeigt werden. Die Ausführung wird jedoch auf dem Back-End fortgesetzt.
 
-   ![Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
+   ![Ergebnis der Remoteausführung](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 
 
 

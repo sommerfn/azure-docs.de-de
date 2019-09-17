@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/04/2019
+ms.date: 09/06/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477057"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898518"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Gewusst wie: Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -52,8 +52,8 @@ In diesem Artikel wird erläutert, wie eine Anwendung im Azure AD-Anwendungskata
 
 - Für Tests wird ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern benötigt.
 
->[!NOTE]
->Die Ausführung erfolgt mit einer hohen Anzahl von SCIM-Connektoranforderungen, sodass wir die Annahme neuer Anforderungen in unserem Portal eingestellt haben. Bitte warten Sie bis auf weiteres mit Ihren Anforderungen. Wir entschuldigen uns für diese Verzögerung und etwaige Unannehmlichkeiten.
+> [!NOTE]
+> Die Ausführung erfolgt mit einer hohen Anzahl von SCIM-Connektoranforderungen, sodass wir die Annahme neuer Anforderungen in unserem Portal eingestellt haben. Bitte warten Sie bis auf weiteres mit Ihren Anforderungen. Wir entschuldigen uns für diese Verzögerung und etwaige Unannehmlichkeiten.
 
 ## <a name="submit-the-request-in-the-portal"></a>Übermitteln der Anforderung im Portal
 

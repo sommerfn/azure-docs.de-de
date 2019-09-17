@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703963"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885431"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -178,7 +178,7 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
     | NAME |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Head**, **Worker** oder **ZooKeeper**. |
+    | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
@@ -260,7 +260,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com):
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls ein bereitgestelltes Skript aus. |
     | NAME |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Head/Worker/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Head**, **Worker** oder **ZooKeeper**. |
+    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
@@ -356,7 +356,7 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 
 6. Sie können im Abschnitt mit den Skriptaktionen auch die Auslassungspunkte ( **...** ) rechts neben den Einträgen auswählen, um Aktionen auszuführen.
 
-    ![Skriptaktionen, Auslassungspunkte](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![Skriptaktionen, Auslassungspunkte](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -442,7 +442,7 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
 3. Suchen Sie nach den Einträgen, die **run\_customscriptaction** in der Spalte **Vorgänge** enthalten. Diese Einträge werden erstellt, wenn die Skriptaktionen ausgeführt werden.
 
-    ![Screenshot von Vorgängen](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![Screenshot von Vorgängen](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Wählen Sie den Eintrag **run\customscriptaction** aus, und navigieren Sie durch die Links, um die Ausgabe für **STDOUT** und **STDERR** anzuzeigen. Diese Ausgabe wird beim Ausführen des Skripts generiert und kann hilfreiche Informationen enthalten.
 
@@ -452,7 +452,7 @@ Für den Fall, dass die Clustererstellung aufgrund eines Fehlers in einem Skript
 
 * Die Speicherprotokolle stehen unter `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` zur Verfügung.
 
-    ![Screenshot von Vorgängen](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![Skriptaktionsprotokolle](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     In diesem Verzeichnis sind die Protokolle separat nach **Hauptknoten**, **Workerknoten** und **ZooKeeper-Knoten** strukturiert. Hierzu folgende Beispiele:
 

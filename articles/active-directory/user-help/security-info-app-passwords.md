@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382929"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915977"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
@@ -30,11 +30,9 @@ Bestimmte Apps wie z.B. Outlook 2010 unterstützen keine zweistufige Überprüfu
 
 Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
-- App-Kennwörter werden automatisch generiert und nur einmal pro Anwendung eingegeben.
+- App-Kennwörter werden automatisch generiert, und sie sollten einmal pro App erstellt und eingegeben werden.
 
 - Pro Benutzer können maximal 40 Kennwörter festgelegt werden. Wenn Sie nach Erreichen dieses Maximalwerts versuchen, ein Kennwort zu erstellen, werden Sie aufgefordert, ein vorhandenes Kennwort zu löschen, bevor Sie ein neues erstellen dürfen.
-
-- Verwenden Sie ein App-Kennwort pro Gerät, nicht pro App. Erstellen Sie z.B. ein einziges Kennwort für alle Apps auf Ihrem Laptop und dann ein weiteres einziges Kennwort für alle Apps auf Ihrem Desktopcomputer.
 
     >[!Note]
     >Office 2013-Clients (einschließlich Outlook) unterstützen neue Authentifizierungsprotokolle und können für die zweistufige Überprüfung verwendet werden. Diese Unterstützung bedeutet, dass Sie nach Aktivierung der zweistufigen Überprüfung keine App-Kennwörter für Office 2013-Clients mehr benötigen. Weitere Informationen finden Sie im Artikel [Funktionsweise der modernen Authentifizierung in Office 2013- und Office 2016-Client-Apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517).

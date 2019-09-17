@@ -1,19 +1,19 @@
 ---
 title: Synchronisieren von Azure Active Directory-Benutzern in einen Cluster – Azure HDInsight
-description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen Cluster.
+description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen HDInsight-Cluster.
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688549"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879347"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster
 
@@ -47,7 +47,7 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
 
 1. [Stellen Sie über SSH eine Verbindung mit Ihrem Cluster her](hdinsight-hadoop-linux-use-ssh-unix.md). Klicken Sie im Azure-Portal im Übersichtsbereich für Ihren Cluster auf die Schaltfläche **Secure Shell (SSH)** .
 
-    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. Kopieren Sie den angezeigten `ssh`-Befehl, und fügen Sie ihn in Ihrem SSH-Client ein. Geben Sie bei Aufforderung das SSH-Benutzerkennwort ein.
 
@@ -139,7 +139,7 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
 
 3. Der neue Benutzer sollte in der Tabelle „Benutzer“ aufgeführt werden. Der Typ sollte auf `LDAP` festgelegt sein, nicht auf `Local`.
 
-    ![Seite „Benutzer“](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![Seite „Benutzer“](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Anmelden bei Ambari als neuer Benutzer
 

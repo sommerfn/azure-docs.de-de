@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88b1d05a47f4a8267ab936a922ac190a925bd5ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510181"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880093"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -42,13 +42,15 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
-3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und klicken Sie auf **App-Registrierungen** und dann auf **Hinzufügen**.
+3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, klicken Sie auf **App-Registrierungen** und dann auf **Neue Registrierung**.
 4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
-    1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
-    2. Geben Sie eine **beliebige Anmelde-URL** an (z. B. `https://B2CGraphAPI`), da dies für dieses Beispiel nicht relevant ist.  
+    1. Hinzufügen eines geeigneten Namens
+    2. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
+    3. Wählen Sie **Web** als „Anwendungstyp“ aus, und geben Sie **eine beliebige Anmelde- URL** an (z.B. `https://B2CGraphAPI`), da sie für dieses Beispiel nicht relevant ist.  
+    4. Klicken Sie auf „Registrieren“.
 5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
-6. Klicken Sie im Menü „Einstellungen“ auf **Schlüssel**.
-7. Geben Sie im Abschnitt **Kennwörter** die Schlüsselbeschreibung ein, und wählen Sie eine Dauer aus. Klicken Sie dann auf **Speichern**. Kopieren Sie den Schlüsselwert (auch als geheimer Clientschlüssel bezeichnet) für die Verwendung in einem späteren Abschnitt.
+6. Klicken Sie im Menü „Einstellungen“ auf **Zertifikate & Geheimnisse**.
+7. Klicken Sie im Abschnitt **Geheime Clientschlüssel** auf **Neuer geheimer Clientschlüssel**, geben Sie eine Beschreibung für das Geheimnis ein, und wählen Sie eine Dauer aus. Klicken Sie dann auf **Hinzufügen**. Kopieren Sie den Wert des Geheimnisses (auch als „geheimer Clientschlüssel“ bezeichnet) zur Verwendung in einem späteren Abschnitt.
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Konfigurieren der Berechtigungen zum Erstellen, Lesen und Aktualisieren für Ihre Anwendung
 Nun müssen Sie Ihre Anwendung so konfigurieren, dass sie alle erforderlichen Berechtigungen zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzern erhält.

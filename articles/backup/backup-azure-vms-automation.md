@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d624f6a1711bf2c2bad5ebc252d00c299ebca225
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872678"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909831"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -716,6 +716,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
     ```
 
 7. Pushen Sie die ADE-Erweiterung.
+   Wenn die ADE-Erweiterungen nicht mithilfe von Push übertragen werden, werden die Datenträger als nicht verschlüsselt gekennzeichnet. Deshalb müssen die nachfolgenden Schritte unbedingt ausgeführt werden:
 
    * **Für virtuelle Computer mit Azure AD:** Verwenden Sie den folgenden Befehl, um die Verschlüsselung für die Datenträger manuell zu aktivieren.  
 
@@ -746,6 +747,8 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+> [!NOTE]
+> Vergessen Sie nicht, die im Rahmen des Vorgangs „verschlüsselte VM aus wiederhergestellten Datenträgern“ erstellten JSON-Dateien manuell zu löschen.
 
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern

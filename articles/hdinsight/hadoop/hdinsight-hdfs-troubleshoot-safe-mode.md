@@ -1,17 +1,17 @@
 ---
 title: Lokales HDFS ist in einem Azure HDInsight-Cluster im abgesicherten Modus hängen geblieben.
-description: Lokales HDFS ist in einem Azure HDInsight-Cluster im abgesicherten Modus hängen geblieben.
+description: Problembehandlung, wenn das lokale Apache HDFS im abgesicherten Modus auf einem Apache-Cluster in Azure HDInsight hängen bleibt
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/14/2019
-ms.openlocfilehash: e0fbb93e11c170f80620ac9b1e895650752ad638
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 4c97700fa69c2f2ae235308063ee431a8dbfcbfd
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511372"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810706"
 ---
 # <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>Szenario: Lokales HDFS ist in einem Azure HDInsight-Cluster im abgesicherten Modus hängen geblieben.
 

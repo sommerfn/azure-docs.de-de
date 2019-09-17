@@ -9,25 +9,26 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2cb99cfe765e1d3444f362e591812f5088c78c0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1d31eb3fa6e37302e1afa5ebd36d04f75830dea
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393150"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918169"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Apache Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
 Hier erfahren Sie, wie Sie die Apache Hadoop-Sandbox von Hortonworks auf einem virtuellen Computer installieren, um sich mit dem Hadoop-Ökosystem vertraut zu machen. Die Sandbox bietet eine lokale Entwicklungsumgebung, in der Sie Hadoop, Hadoop Distributed File System (HDFS) und die Übermittlung von Aufträgen kennenlernen. Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * [Oracle VirtualBox](https://www.virtualbox.org/). Sie können die Software [hier](https://www.virtualbox.org/wiki/Downloads) herunterladen und installieren.
 
-
 ## <a name="download-and-install-the-virtual-machine"></a>Herunterladen und Installieren des virtuellen Computers
+
 1. Navigieren Sie zu den [Cloudera-Downloads](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-2. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX**, um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
+1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX**, um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
 
 1. Klicken Sie auf die Schaltfläche **HDP SANDBOX (LATEST)** , um den Download zu starten.
 
@@ -38,11 +39,12 @@ Informationen zum Herunterladen einer älteren HDP Sandbox-Version erhalten Sie 
 ## <a name="start-the-virtual-machine"></a>Starten des virtuellen Computers
 
 1. Öffnen Sie Oracle VirtualBox.
-2. Klicken Sie im Menü **File** (Datei) auf **Import Appliance** (Appliance importieren), und geben Sie dann das Bild Hortonworks Sandbox-Image an.
+1. Klicken Sie im Menü **File** (Datei) auf **Import Appliance** (Appliance importieren), und geben Sie dann das Bild Hortonworks Sandbox-Image an.
 1. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt.
 
-    ![Normaler Start](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel `http://127.0.0.1:8888`).
+    ![Normaler Start](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+
+1. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel `http://127.0.0.1:8888`).
 
 ## <a name="set-sandbox-passwords"></a>Festlegen der Sandbox-Kennwörter
 
@@ -72,7 +74,9 @@ Informationen zum Herunterladen einer älteren HDP Sandbox-Version erhalten Sie 
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwenden von Visual Studio mit der Sandbox von Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Learning the ropes of the Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop tutorial - Getting started with HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 
+* [Verwenden von Visual Studio mit der Sandbox von Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
+
+* [Learning the ropes of the Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+
+* [Hadoop tutorial - Getting started with HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

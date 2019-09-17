@@ -1,6 +1,6 @@
 ---
 title: Installieren von Drittanbieteranwendungen in Azure HDInsight
-description: Es wird beschrieben, wie Sie Hadoop-Anwendungen von Drittanbietern in Azure HDInsight installieren.
+description: Es wird beschrieben, wie Sie Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight installieren.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bbe22a4a6f7697c2bfab291412aae85efc32e9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873367"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916997"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -59,7 +59,7 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Klicken Sie im Menü auf **+ Hinzufügen**. Ihnen wird eine Liste der verfügbaren Anwendungen angezeigt.  Wenn **+ Hinzufügen** ausgegraut ist, sind keine Anwendungen für diese Version des HDInsight-Clusters verfügbar.
    
-    ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
+    ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
 6. Klicken Sie auf eine der verfügbaren Anwendungen, und folgen Sie dann den Anweisungen zum Akzeptieren der rechtlichen Bedingungen.
 
 Sie können den Status der Installation über die Portalbenachrichtigungen verfolgen. (Klicken Sie hierzu oben im Portal auf das Glockensymbol). (Klicken Sie oben im Portal auf das Glockensymbol.) Nach der Installation wird die Anwendung in der Liste „Installierte Apps“ angezeigt.

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: bcc29902628f4e7051d6a838d2e9ac145df9e45e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442184"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916888"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorisieren von Benutzern für Apache Ambari-Ansichten
 
@@ -30,7 +30,7 @@ Falls noch nicht geschehen, führen Sie [diese Anweisungen](./domain-joined/apac
 
 Navigieren Sie zur **Ambari-Verwaltungsseite** der [Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) und rufen Sie **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** auf. Geben Sie den Benutzernamen und das Kennwort für den Clusteradministrator ein, die Sie beim Erstellen des Clusters definiert haben. Wählen Sie anschließend im Ambari-Dashboard die Option **Ambari verwalten** unterhalb des **Administrator**-Menüs aus:
 
-![Ambari verwalten](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
+![Ambari verwalten](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Erteilen von Berechtigungen für Apache Hive-Ansichten
 
@@ -38,36 +38,36 @@ Ambari verfügt über Ansichtsinstanzen für u.a. [Apache Hive](https://hive.apa
 
 1. Wählen Sie auf der Verwaltungsseite den Link **Ansichten** unterhalb der Menüüberschrift **Ansichten** auf der linken Seite aus.
 
-    ![Link „Ansichten“](./media/hdinsight-authorize-users-to-ambari/views-link.png)
+    ![Link „Ansichten“](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
 
 2. Erweitern Sie auf der Seite „Ansichten“ die Zeile **HIVE**. Eine Hive-Ansicht wird standardmäßig beim Hinzufügen des Hive-Diensts zum Cluster erstellt. Sie können bei Bedarf auch weitere Hive-Ansichtsinstanzen erstellen. Wählen Sie eine Hive-Ansicht aus:
 
-    ![Ansichten > Hive-Ansicht](./media/hdinsight-authorize-users-to-ambari/views-hive-view.png)
+    ![Ansichten > Hive-Ansicht](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
 
 3. Scrollen Sie auf der Seite „Ansichten“ nach unten. Im Abschnitt *Berechtigungen* stehen zwei Möglichkeiten zur Auswahl, um Domänenbenutzern Berechtigungen für die Ansicht zu erteilen:
 
-**Erteilen einer Berechtigung für diese Benutzer** ![Erteilen einer Berechtigung für diese Benutzer](./media/hdinsight-authorize-users-to-ambari/add-user-to-view.png)
+**Erteilen einer Berechtigung für diese Benutzer** ![Erteilen einer Berechtigung für diese Benutzer](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-**Erteilen einer Berechtigung für diese Gruppen** ![Erteilen einer Berechtigung für diese Gruppen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
+**Erteilen einer Berechtigung für diese Gruppen** ![Erteilen einer Berechtigung für diese Gruppen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. Klicken Sie zum Hinzufügen eines Benutzers auf die Schaltfläche **Benutzer hinzufügen**.
 
    * Wenn Sie mit der Eingabe des Benutzernamens beginnen, wird eine Dropdownliste mit den zuvor definierten Namen angezeigt.
 
-     ![AutoVervollständigen des Benutzernamens](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![AutoVervollständigen des Benutzernamens](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
 
    * Wählen Sie einen Namen aus, oder geben Sie den vollständigen Benutzernamen ein. Klicken Sie auf die Schaltfläche **Neu**, um diesen Benutzernamen als neuen Benutzer hinzuzufügen.
 
    * Aktivieren Sie zum Speichern der Änderungen das **blaue Kontrollkästchen**.
 
-     ![Eingegebener Benutzer](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![Eingegebener Benutzer](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Klicken Sie zum Hinzufügen einer Gruppe auf die Schaltfläche **Gruppe hinzufügen**.
 
    * Beginnen Sie mit der Eingabe des Gruppennamens. Die Vorgehensweise bei der Auswahl eines bereits existierenden Gruppennamens oder beim Hinzufügen einer neuen Gruppe entspricht der Vorgehensweise beim Hinzufügen von Benutzern.
    * Aktivieren Sie zum Speichern der Änderungen das **blaue Kontrollkästchen**.
 
-     ![Eingegebene Gruppe](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![Eingegebene Gruppe](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
 Es kann nützlich sein, Benutzer direkt einer Ansicht hinzuzufügen, wenn Sie einem Benutzer die Berechtigungen zuweisen möchten, diese Ansicht zu verwenden, jedoch nicht möchten, dass er Mitglied einer Gruppe mit zusätzlichen Berechtigungen wird. Für einen möglichst geringen Verwaltungsaufwand ist es möglicherweise einfacher, Berechtigungen für Gruppen zuzuweisen.
 
@@ -77,7 +77,7 @@ Es kann nützlich sein, Benutzer direkt einer Ansicht hinzuzufügen, wenn Sie ei
 
 Erweitern Sie wie zuvor beschrieben auf der Seite „Ansichten“ die Zeile **TEZ**, um Benutzer und Gruppen einer Tez-Ansichtsinstanz zuzuweisen.
 
-![Ansichten > Tez-Ansicht](./media/hdinsight-authorize-users-to-ambari/views-tez-view.png)
+![Ansichten > Tez-Ansicht](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
 
 Wiederholen Sie die Schritte 3 bis 5 im vorherigen Abschnitt, um Benutzer und Gruppen hinzuzufügen.
 
@@ -93,11 +93,11 @@ Es gibt fünf Sicherheitsrollen für Benutzer und Gruppen, die nachfolgend in ab
 
 Wechseln Sie zum Verwalten der Rollen zur **Ambari-Verwaltungsseite**, und wählen Sie in der Menügruppe *Cluster* auf der linken Seite den Link **Rollen** aus.
 
-![Menülink „Rollen“](./media/hdinsight-authorize-users-to-ambari/roles-link.png)
+![Menülink „Rollen“](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
 Klicken Sie auf der Seite „Rollen“ auf das blaue Fragezeichen neben der Tabellenüberschrift **Rollen**, um die Liste der Berechtigungen anzuzeigen, die den Rollen jeweils zugeordnet sind.
 
-![Menülink „Rollen“](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![Menülink „Rollen“, Berechtigungen](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Menülink „Rollen“, Berechtigungen")
 
 Auf dieser Seite stehen Ihnen zwei verschiedene Ansichten zur Verwaltung der Rollen für Benutzer und Gruppen zur Verfügung: Block- und Listenansicht.
 
@@ -105,7 +105,7 @@ Auf dieser Seite stehen Ihnen zwei verschiedene Ansichten zur Verwaltung der Rol
 
 Bei der Blockansicht wird jede Rolle in einer eigenen Zeile angezeigt, und es stehen die zuvor beschriebenen Optionen **Zuweisen von Rollen an diese Benutzer** und **Zuweisen von Rollen an diese Gruppen** zur Verfügung.
 
-![Blockansicht für Rollen](./media/hdinsight-authorize-users-to-ambari/roles-block-view.png)
+![Blockansicht für Rollen](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
 ### <a name="list-view"></a>Listenansicht
 
@@ -125,7 +125,7 @@ Die Listenansicht stellt schnelle Bearbeitungsfunktionen in zwei Kategorien bere
 
 Dem Azure AD-Domänenbenutzer „hiveuser1“ wurden Berechtigungen für Hive- und Tez-Ansichten zugewiesen. Nach dem Eingeben der Domänenanmeldeinformationen dieses Benutzers (Azure AD-Benutzername im E-Mail-Format und Kennwort) in der Ambari-Webbenutzeroberfläche wird der Benutzer zur Seite „Ambari-Ansichten“ umgeleitet. Hier kann der Benutzer jede beliebige Ansicht auswählen, auf die zugegriffen werden kann. Der Zugriff auf andere Bereiche dieser Website, z.B. Dashboard, Dienste, Hosts, Warnungen oder Administratorseiten, ist für diesen Benutzer nicht möglich.
 
-![Schreibgeschützter Benutzer](./media/hdinsight-authorize-users-to-ambari/user-views-only.png)
+![Schreibgeschützter Benutzer](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Anmelden bei Ambari als Clusterbenutzer
 

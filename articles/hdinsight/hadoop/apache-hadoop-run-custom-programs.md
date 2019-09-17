@@ -1,6 +1,6 @@
 ---
 title: Ausführen benutzerdefinierter MapReduce-Programme – Azure HDInsight
-description: Wann und wie benutzerdefinierte MapReduce-Programme in HDInsight ausgeführt werden sollten.
+description: Erfahren Sie, wann und wie benutzerdefinierte Apache MapReduce-Programme in Azure HDInsight-Clustern ausgeführt werden.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713094"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810747"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Ausführen von MapReduce-Programmen
 

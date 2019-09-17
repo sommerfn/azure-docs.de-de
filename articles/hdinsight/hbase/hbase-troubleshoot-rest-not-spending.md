@@ -1,17 +1,17 @@
 ---
 title: Ausbleibende Reaktion von Apache HBase REST auf Anforderungen in Azure HDInsight
-description: Hier erfahren Sie, was Sie tun können, wenn HDInsight HBase REST nicht auf Anforderungen reagiert.
+description: Beheben eines Problems bei ausbleibender Reaktion von Apache HBase REST auf Anforderungen in Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/01/2019
-ms.openlocfilehash: 7219f66457e47bba34e750ec74810b8d2edee36e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5b1291e6996cb5db366128f829ca2cdf3cad0a9d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816893"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735315"
 ---
 # <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Szenario: Ausbleibende Reaktion von Apache HBase REST auf Anforderungen in Azure HDInsight
 
@@ -58,6 +58,6 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
 
-* Setzen Sie sich mit [@AzureSupport](https://twitter.com/azuresupport) in Verbindung – dem offiziellen Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit, über das die Azure-Community Zugang zu den passenden Ressourcen in Form von Antworten, Support und Experten erhält.
+* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 
 * Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

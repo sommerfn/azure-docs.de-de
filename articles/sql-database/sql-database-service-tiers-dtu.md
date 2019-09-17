@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566689"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773205"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
@@ -37,7 +37,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 |Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|
 |Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
 |CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
-|E/A-Durchsatz (ungefähr) |2,5 IOPS pro DTU| 2,5 IOPS pro DTU | 48 IOPS pro DTU|
+|E/A-Durchsatz (ungefähr) |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
 |E/A-Wartezeit (ungefähr)|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|
 |Columnstore-Indizierung |–|S3 und höher|Unterstützt|
 |In-Memory-OLTP|–|–|Unterstützt|

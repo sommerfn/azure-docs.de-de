@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827575"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909797"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -81,11 +81,11 @@ Azure Backup kann den Datenträger mit aktivierter Schreibbeschleunigung nicht s
 
 Wir verfügen über eine private Vorschau zu einer SAP HANA-Sicherung mit einer RPO von 15 Minuten. Diese ist ähnlich wie die Sicherung von SQL-Datenbank aufgebaut und verwendet die Schnittstelle „backInt“ für Drittanbieterlösungen, die durch SAP HANA zertifiziert sind. Wenn Sie interessiert sind, schreiben Sie uns an `AskAzureBackupTeam@microsoft.com` eine E-Mail mit dem Betreff **Sign up for private preview for backup of SAP HANA in Azure VMs** (Registrierung für die private Vorschau zur Sicherung von SAP HANA in Azure-VMs).
 
-### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mit welchen maximalen Verzögerung muss ich bei der Startzeit der Sicherungskopie im Vergleich zu der geplanten Sicherungszeit, die ich in meiner VM-Sicherungsrichtlinie eingerichtet habe, rechnen?
-Die geplante Sicherung wird innerhalb von 2 Stunden nach der geplanten Sicherungszeit ausgelöst. Beispiel: Wenn 100 VMs eine Sicherungsstartzeit von 2:00 haben, dann laufen die Sicherungen für alle 100 VMs spätestens um 4:00. Wenn die geplanten Sicherungen aufgrund eines Ausfalls und Fortsetzen/Wiederholen pausiert wurden, dann kann es sein, dass die Sicherung außerhalb dieses geplanten 2-Stunden-Fensters geschieht.
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mit welcher maximalen Verzögerung muss ich bei der Startzeit der Sicherungskopie im Vergleich zu der geplanten Sicherungszeit rechnen, die ich in meiner VM-Sicherungsrichtlinie eingerichtet habe?
+Die geplante Sicherung wird innerhalb von 2 Stunden nach der geplanten Sicherungszeit ausgelöst. Beispiel: Wenn 100 VMs eine Sicherungsstartzeit von 2:00 Uhr haben, dann laufen die Sicherungen für alle 100 VMs spätestens um 4:00 Uhr. Wenn die geplanten Sicherungen aufgrund eines Ausfalls und von „Fortsetzen/Wiederholen“ angehalten wurden, kann es sein, dass die Sicherung außerhalb dieses geplanten 2-Stunden-Fensters beginnt.
 
 ### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Welches ist die geringste zulässige Beibehaltungsdauer für den täglichen Sicherungspunkt?
-Die Sicherungsrichtlinien von Azure Virtual Machine unterstützen eine Mindestbeibehaltungsdauer zwischen 7 und 9999 Tagen. Jegliche Modifikationen einer vorhandenen VM-Sicherungsrichtlinie mit weniger als 7 Tagen benötigen ein Update, um die Mindestbeibehaltungsdauer von 7 Tagen einzuhalten.
+Die Sicherungsrichtlinie von Azure Virtual Machine unterstützt eine Mindestbeibehaltungsdauer zwischen 7 und 9999 Tagen. Jede Änderung einer vorhandenen VM-Sicherungsrichtlinie mit weniger als 7 Tagen erfordert ein Update, um die Mindestbeibehaltungsdauer von 7 Tagen einzuhalten.
 
 ## <a name="restore"></a>Restore
 
@@ -120,6 +120,12 @@ Bei Azure-VMs mit verwalteten Datenträgern ist die Wiederherstellung in Verfüg
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Wie erreichen ich bei Wiederherstellungen eine schnellere Leistung?
 Die [Funktion zur sofortigen Wiederherstellung](backup-instant-restore-capability.md) ermöglicht schnellere Sicherungen und sofortige Wiederherstellungen aus den Momentaufnahmen.
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Was geschieht, wenn wir die Key Vault-Einstellungen für die verschlüsselte VM ändern?
+
+Nachdem Sie die KeyVault-Einstellungen für die verschlüsselte VM geändert haben, funktionieren Sicherungen weiterhin mit den neuen Details. Nach der Wiederherstellung von einem Wiederherstellungspunkt aus vor der Änderung müssen Sie jedoch die geheimen Schlüssel in einem KeyVault wiederherstellen, bevor Sie daraus den virtuellen Computer erstellen können. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret).
+
+Für Vorgänge wie Geheimnis/Schlüssel-Rollover ist dieser Schritt nicht erforderlich, und nach der Wiederherstellung kann derselbe KeyVault verwendet werden.
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 

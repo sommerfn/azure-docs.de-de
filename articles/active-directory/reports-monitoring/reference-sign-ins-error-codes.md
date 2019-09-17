@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989593"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383172"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -153,6 +153,8 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |70018|Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt.|
 |70019|Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |70037|Falsche Überprüfungsantwort angegeben. Die Remote-Authentifizierungssitzung wurde verweigert.|
+|70043|Die Sitzungsverwaltung für bedingten Zugriff in Azure erzwingt das Ablaufen der Sitzung.|
+|70044|Die Sitzungsverwaltung für bedingten Zugriff in Azure erzwingt das Ablaufen der Sitzung.|
 |75001|Während der SAML-Nachrichtenbindung ist ein Fehler aufgetreten.|
 |75003|Die Anwendung hat einen Fehler zu einer nicht unterstützten Bindung zurückgegeben (SAML-Protokollantwort kann nicht über andere Bindungen als HTTP POST gesendet werden). Wenden Sie sich an den Besitzer der Anwendung.|
 |75005|Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete SAML-Anforderung nicht. Wenden Sie sich an den Besitzer der Anwendung.|

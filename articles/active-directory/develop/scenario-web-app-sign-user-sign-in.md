@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562205"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812396"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Web-App für Benutzeranmeldungen: Anmeldung
 
@@ -28,7 +28,8 @@ Erfahren Sie, wie Sie dem Code für Ihre Web-App eine Anmeldefunktion zur Benutz
 
 ## <a name="sign-in"></a>Anmeldung
 
-Der im vorherigen Artikel zur [App-Codekonfiguration](scenario-web-app-sign-user-app-configuration.md) erarbeitete Code ist alles, was Sie zum Implementieren der Abmeldung benötigen. Nachdem der Benutzer sich bei Ihrer App angemeldet hat, möchten Sie ihm wahrscheinlich auch das Abmelden ermöglichen. ASP.NET Core verarbeitet die Abmeldung für Sie.
+Der im vorherigen Artikel zur [App-Codekonfiguration](scenario-web-app-sign-user-app-configuration.md) erörterte Code ist alles, was Sie zum Implementieren der Anmeldung benötigen.
+Nachdem der Benutzer sich bei Ihrer App angemeldet hat, möchten Sie ihm wahrscheinlich auch das Abmelden ermöglichen. ASP.NET Core verarbeitet die Abmeldung für Sie.
 
 ## <a name="what-sign-out-involves"></a>Voraussetzungen für die Abmeldung
 

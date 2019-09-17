@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057215"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860877"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Desktop-App, die Web-APIs aufruft – App-Registrierung
 
@@ -30,7 +30,7 @@ In diesem Artikel sind die Besonderheiten zur App-Registrierung bei einer Deskto
 
 ## <a name="supported-accounts-types"></a>Unterstützte Kontotypen
 
-Die in der Desktopanwendung unterstützten Kontotypen sind abhängig von der gewünschten Funktion und somit von den Flüssen, die Sie verwenden möchten.
+Die in der Desktopanwendung unterstützten Kontotypen sind von der gewünschten Funktion abhängig. Aufgrund dieser Beziehung sind die unterstützten Kontotypen von den Flows abhängig, die Sie verwenden möchten.
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Zielgruppe für den interaktiven Tokenabruf
 
@@ -38,27 +38,27 @@ Wenn Ihre Desktopanwendung die interaktive Authentifizierung verwendet, können 
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>Zielgruppe für automatische Desktop-App-Flüsse
 
-- Wenn Sie die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwenden möchten, müssen Benutzer von Ihrer Anwendung in Ihrem eigenen Mandanten (LOB-Entwickler) oder in Azure Active Directory-Unternehmen (ISV-Szenario) angemeldet werden. Diese Authentifizierungsflüsse werden für persönliche Microsoft-Konten nicht unterstützt.
-- Wenn Sie den Fluss mit Gerätecode verwenden möchten, können Sie Benutzer bisher nicht mit ihrem persönlichen Microsoft-Konto anmelden.
+- Um die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwenden zu können, müssen Benutzer von Ihrer Anwendung bei Ihrem Mandanten (LOB-Entwickler) oder bei Azure Active Directory-Organisationen (ISV-Szenario) angemeldet werden. Diese Authentifizierungsflows werden für persönliche Microsoft-Konten nicht unterstützt.
+- Wenn Sie den Gerätecodeflow verwenden möchten, können Sie Benutzer noch nicht mit ihren persönlichen Microsoft-Konten anmelden.
 - Wenn Sie Benutzer mit Identitäten sozialer Netzwerke anmelden, indem Sie eine B2C-Autorität und -Richtlinie übergeben, können Sie ausschließlich die interaktive Authentifizierung oder die Authentifizierung über Benutzername und Kennwort verwenden.
 
 ## <a name="redirect-uris"></a>Umleitungs-URIs
 
-Die zu verwendenden Umleitungs-URIs hängen ebenfalls von dem Fluss ab, den Sie verwenden möchten.
+Die in Desktopanwendungen zu verwendenden Umleitungs-URIs hängen von dem Flow ab, den Sie verwenden möchten.
 
 - Wenn Sie die **interaktive Authentifizierung** oder **Gerätecodeflow** verwenden, sollten Sie `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden. Diese Konfiguration erreichen Sie, indem Sie im Abschnitt **Authentifizierung** für Ihre Anwendung auf die entsprechende URL klicken.
   
   > [!IMPORTANT]
   > Aktuell verwendet MSAL.NET standardmäßig einen anderen Umleitungs-URI in Desktopanwendungen, die unter Windows ausgeführt werden (`urn:ietf:wg:oauth:2.0:oob`). In Zukunft möchten wir diese Standardeinstellung ändern, weshalb wir Ihnen die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient` empfehlen.
 
-- Wenn Ihre App ausschließlich die integrierte Windows-Authentifizierung mit Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flüsse führen nämlich tatsächlich einen Roundtrip zum Endpunkt von Microsoft Identity Platform v2.0 durch, und Ihre Anwendung wird nicht über einen bestimmten URI aufgerufen. 
-- Damit Gerätecodeflow, integrierte Windows-Authentifizierung und Benutzername/Kennwort von einem vertraulichen Clientanwendungsflow unterschieden werden können, der ebenfalls über keine Umleitungs-URIs verfügt (der bei Daemon-Anwendungen verwendete Clientanwendungsflow), müssen Sie ausdrücken, dass es sich bei Ihrer Anwendung um eine öffentliche Clientanwendung handelt. Sie erreichen diese Konfiguration, indem Sie im Abschnitt **Authentifizierung** für Ihre Anwendung im Unterabschnitt **Erweiterte Einstellungen** (im Absatz **Standardclienttyp**) für die Option **Treat application as a public client** (Anwendung als öffentlichen Client einstufen) **Ja** auswählen.
+- Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Endpunkt von Microsoft Identity Platform v2.0 aus, und Ihre Anwendung wird nicht über einen bestimmten URI aufgerufen.
+- Damit Gerätecodeflow, integrierte Windows-Authentifizierung und Benutzername/Kennwort von einem vertraulichen Clientanwendungsflow unterschieden werden können, der ebenfalls über keine Umleitungs-URIs verfügt (der bei Daemon-Anwendungen verwendete Client-Anmeldeinformationsflow), müssen Sie ausdrücken, dass es sich bei Ihrer Anwendung um eine öffentliche Clientanwendung handelt. Um diese Konfiguration zu erreichen, wechseln Sie zum Abschnitt **Authentifizierung** für Ihre Anwendung. Wählen Sie dann im Unterabschnitt **Erweiterte Einstellungen** im Abschnitt **Standardclienttyp** neben **Hiermit wird eine Anwendung als öffentlicher Client eingestuft** die Option **Ja** aus.
 
   ![Zulassen eines öffentlichen Clients](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 
-Desktopanwendungen rufen APIs im Namen des angemeldeten Benutzers auf. Sie müssen delegierte Berechtigungen anfordern. Sie können keine Anwendungsberechtigungen anfordern (die nur in [Daemon-Anwendungen](scenario-daemon-overview.md) verarbeitet werden).
+Desktopanwendungen rufen APIs für den angemeldeten Benutzer auf. Sie müssen delegierte Berechtigungen anfordern. Sie können jedoch keine Anwendungsberechtigungen anfordern. Diese werden nur in [Daemon-Anwendungen](scenario-daemon-overview.md) verarbeitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

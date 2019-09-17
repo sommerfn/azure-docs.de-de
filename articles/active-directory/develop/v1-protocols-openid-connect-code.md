@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a82571260f5da679202e96f5e6f72aa2db6788a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834687"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389789"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorisieren des Zugriffs auf Webanwendungen mit OpenID Connect und Azure Active Directory
 
@@ -181,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| post_logout_redirect_uri |empfohlen |Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn keine Angabe erfolgt, wird dem Benutzer eine generische Meldung angezeigt. |
+| post_logout_redirect_uri |empfohlen |Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll.  Diese URL muss mit einem der Umleitungs-URIs übereinstimmen, die im App-Registrierungsportal für Ihre Anwendung registriert wurden.  Wenn *post_logout_redirect_uri* nicht angegeben ist, wird dem Benutzer eine generische Meldung angezeigt. |
 
 ## <a name="single-sign-out"></a>Einmaliges Abmelden
 
