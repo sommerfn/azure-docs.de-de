@@ -164,7 +164,7 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
 >
 >
 
-## <a name="understandlogs">Vorgehensweise:</a> Verstehen von Diagnoseprotokollen
+## <a name="understandlogs"></a>Vorgehensweise: Verstehen von Diagnoseprotokollen
 ### <a name="application-diagnostics-logs"></a>Anwendungsdiagnoseprotokolle
 Die Anwendungsdiagnose speichert Informationen in einem spezifischen Format für .NET-Anwendungen, je nachdem, ob Sie Protokolle im Dateisystem oder in Blob Storage speichern. 
 
