@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 145b643999ff6e4af99ec50c9b0120fc9f11a212
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840135"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858940"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -39,7 +39,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial durchgearbeitet haben, um Ihre Entwicklungsumgebung für die Entwicklung von Linux-Containern einzurichten: [Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben: 
+>[!TIP]
+>Bei diesem Tutorial handelt es sich um eine vereinfachte Version des Beispielprojekts [Custom Vision + Azure IoT Edge on a Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) (Custom Vision und Azure IoT Edge auf einem Raspberry Pi 3). Das Tutorial wurde für die Ausführung auf einem virtuellen Cloudcomputer konzipiert und verwendet statische Bilder zum Trainieren und Testen der Bildklassifizierung. Dies ist hilfreich für Benutzer, die ihre ersten Erfahrungen mit Custom Vision in IoT Edge sammeln. Das Beispielprojekt verwendet physische Hardware und richtet einen Livekamerafeed zum Trainieren und Testen der Bildklassifizierung ein. Dies ist hilfreich für Benutzer, die sich an einem detaillierteren, praxisnahen Szenario versuchen möchten.
+
+Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorherige Tutorial absolviert haben, um Ihre Umgebung für die Entwicklung von Linux-Containern einzurichten: [Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben: 
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein [Linux-Gerät, auf dem Azure IoT Edge ausgeführt wird](quickstart-linux.md).
@@ -51,7 +54,7 @@ Um ein IoT Edge-Modul mit dem Custom Vision-Dienst zu entwickeln, installieren S
 
 * [Python](https://www.python.org/downloads/)
 * [Git-Client](https://git-scm.com/downloads)
-* [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)-Erweiterung für Visual Studio Code
+* [Python-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Erstellen einer Bildklassifizierung mit Custom Vision
 
@@ -167,7 +170,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 
-Mit Visual Studio Code können derzeit Module für Linux AMD64- und Linux ARM32v7-Geräte entwickelt werden. Sie müssen bei jeder Projektmappe auswählen, welche Architektur Sie als Ziel verwenden möchten, weil der Container für jeden Architekturtyp unterschiedlich erstellt und ausgeführt wird. Der Standardwert ist „Linux AMD64“. 
+Mit Visual Studio Code können derzeit Module für Linux AMD64- und Linux ARM32v7-Geräte entwickelt werden. Sie müssen bei jeder Projektmappe auswählen, welche Architektur Sie als Ziel verwenden möchten, weil der Container für jeden Architekturtyp unterschiedlich erstellt und ausgeführt wird. In diesem Tutorial wird die Standardoption „Linux AMD64“ verwendet. 
 
 1. Öffnen Sie die Befehlspalette, und suchen Sie nach **Azure IoT Edge: Set Default Target Platform for Edge Solution** (Standardzielplattform für Edge-Projektmappe festlegen), oder wählen Sie das Verknüpfungssymbol in der Seitenleiste unten im Fenster aus. 
 
@@ -191,7 +194,7 @@ Die Python-Modulvorlage in Visual Studio Code enthält Beispielcode, den Sie zum
 
 6. Öffnen Sie im Ordner „classifier“ die Datei **module.json**. 
 
-7. Aktualisieren Sie den Parameter **platforms**, sodass er auf das neue Dockerfile verweist, das Sie hinzugefügt haben. Entfernen Sie außerdem die ARM32-Architektur und die AMD64.debug-Optionen. Diese werden derzeit für das Custom Vision-Modul nicht unterstützt. 
+7. Aktualisieren Sie den Parameter **platform** so, dass er auf das hinzugefügte neue Dockerfile verweist, und entfernen Sie alle Optionen bis auf „AMD64“, da in diesem Tutorial nur diese Architektur verwendet wird. 
 
    ```json
    "platforms": {
@@ -351,7 +354,7 @@ Wir verwenden in diesem Szenario keinen Bildfeed von einer echten Kamera, sonder
 
 3. Navigieren Sie zum Verzeichnis Ihrer IoT Edge-Projektmappe, und fügen Sie das Testbild in den Ordner **modules** / **cameraCapture** ein. Das Bild muss sich im gleichen Ordner befinden wie die Datei „main.py“, die Sie im vorherigen Abschnitt bearbeitet haben. 
 
-3. Öffnen Sie in Visual Studio Code die Datei **Dockerfile.amd64** für das cameraCapture-Modul. (ARM32 wird vom Custom Vision-Modul derzeit nicht unterstützt.) 
+3. Öffnen Sie in Visual Studio Code die Datei **Dockerfile.amd64** für das cameraCapture-Modul. 
 
 4. Fügen Sie nach der Zeile, die das Arbeitsverzeichnis (`WORKDIR /app`) festlegt, die folgende Codezeile hinzu: 
 
