@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128275"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858709"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 
@@ -134,6 +134,7 @@ Es gibt mehrere Möglichkeiten, Metriken für Datenabweichungen anzuzeigen:
 * Verwenden Sie das [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`.
 * Verwenden Sie die [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)-Funktion für jedes `datadrift`-Ausführungsobjekt.
 * Zeigen Sie die Metriken für Ihr Modell im Azure-Portal an.
+* Zeigen Sie die Metriken aus dem **Modelle**-Abschnitt der [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) an.
 
 Das folgende Python-Beispiel veranschaulicht das Plotten von relevanten Datenabweichungsmetriken. Sie können die zurückgegebenen Metriken verwenden, um benutzerdefinierte Visualisierungen zu erstellen:
 
@@ -158,15 +159,17 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Die Konfiguration der Datenabweichungserkennung ist auf der Modelldetailseite im Azure-Portal zu sehen.
+Die Konfiguration der Datenabweichungserkennung ist auf der Modelldetailseite im Azure-Portal oder auf der Landing Page Ihres Arbeitsbereichs (Vorschau) zu sehen.
 
 ![Konfiguration der Datenabweichung im Azure-Portal](media/how-to-monitor-data-drift/drift_config.png)
 
 ## <a name="view-results-in-azure-portal"></a>Anzeigen von Ergebnissen im Azure-Portal
 
-Zum Anzeigen von Ergebnissen in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com) navigieren Sie zur Modellseite. Auf der Registerkarte „Details“ des Modells wird die Konfiguration der Datenabweichung angezeigt. Registerkarte „Datenabweichungen (Vorschauversion)“ mit der Visualisierung der Datenabweichungsmetriken ist jetzt verfügbar. 
+Zum Anzeigen von Ergebnissen in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com) navigieren Sie zur Modellseite. Auf der Registerkarte „Details“ des Modells wird die Konfiguration der Datenabweichung angezeigt. Registerkarte „Datenvariation (Vorschauversion)“ mit der Visualisierung der Datenabweichungsmetriken ist jetzt verfügbar. 
 
 ![Datenabweichungen im Azure-Portal](media/how-to-monitor-data-drift/drift_ui.png)
+
+Die Ergebnisse sind auch in den Modelldetails auf der [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) verfügbar.
 
 ## <a name="receiving-drift-alerts"></a>Empfangen von Benachrichtigungen zu Abweichungen
 
