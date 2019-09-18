@@ -22,6 +22,7 @@
     - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
       href: application-proxy-add-on-premises-application.md
 - name: Konzepte
+  expanded: true
   items:
     - name: Cloud-Apps und einmaliges Anmelden
       items:
@@ -240,6 +241,8 @@
           items:
             - name: Problembehandlung bei der Benutzerbereitstellung
               href: application-provisioning-config-problem.md
+            - name: Bereitstellungsprotokolle
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
               href: user-provisioning-sync-attributes-for-mapping.md
             - name: 'Dauert Stunden: Katalog-App'
