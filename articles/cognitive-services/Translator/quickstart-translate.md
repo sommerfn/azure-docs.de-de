@@ -1,22 +1,22 @@
 ---
 title: 'Schnellstart: Übersetzen von Text – Textübersetzung'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung übersetzen Sie mithilfe der Textübersetzungs-API Text von einer Sprache in eine andere.
+description: In dieser Schnellstartanleitung übersetzen Sie Text mithilfe der Textübersetzungs-API.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/19/2019
+ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0d79443ed1e424a3cb8b6c059ac9b6bc62293029
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 28dac7fffc6bb08e02c9d1af80f4237a40ceed65
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906742"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393949"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen von Text
 

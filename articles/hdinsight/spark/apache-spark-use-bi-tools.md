@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: d5296fe19cef9e8881d39bd9e59eb4c40d049959
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 319668ac81b390f9a8bf70da36dd3cf1508f5c37
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296183"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885177"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight
 
@@ -104,21 +104,21 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
     2. Ziehen Sie das Feld **BuildingID** unter **Achse** und die Felder **ActualTemp** und **TargetTemp** unter **Wert**.
 
-        ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
+        ![Hinzufügen von Wertspalten](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Hinzufügen von Wertspalten")
 
         Das Diagramm sieht wie folgt aus:
 
-        ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
+        ![Summe des Bereichsdiagramms](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Summe des Bereichsdiagramms")
 
         Standardmäßig werden in der Visualisierung die Summen für **ActualTemp** und **TargetTemp** angezeigt. Wählen Sie den Pfeil nach unten neben **ActualTemp** und **TargetTemp** im Bereich „Visualisierungen“ aus. Sie sehen, dass **Summe** ausgewählt ist.
 
     3. Wählen Sie den Pfeil nach unten neben **ActualTemp** und **TargetTemp** im Bereich „Visualisierungen“ aus, wählen Sie **Durchschnitt** aus, um den Durchschnittswert zwischen tatsächlicher und Zieltemperatur für jedes Gebäude zu erhalten.
 
-        ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
+        ![Durchschnitt der Werte](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Durchschnitt der Werte")
 
         Ihre Datenvisualisierung sollte ähnlich dem Screenshot aussehen. Bewegen Sie den Cursor über die Visualisierung, um QuickInfos mit relevanten Daten abzurufen.
 
-        ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
+        ![Bereichsdiagramm](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Bereichsdiagramm")
 
 9. Navigieren Sie zu **Datei** > **Speichern**, geben Sie den Namen `BuildingTemperature` für die Datei ein, und wählen Sie dann **Speichern** aus.
 

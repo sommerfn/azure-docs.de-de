@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 54069fbaa8ad06d257ab835ed3b170fecb76d800
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603345"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859116"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Tutorial: Erstellen einer WPF-App zum Anzeigen von Gesichtserkennungsdaten in einem Bild
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
@@ -59,27 +59,31 @@ In diesem Abschnitt fügen Sie das einfache Framework der App ohne spezifische F
 
 Öffnen Sie *MainWindow.xaml*, und ersetzen Sie den Inhalt durch den folgenden Code. Dieser Code erstellt das Fenster für die Benutzeroberfläche. Die Methoden `FacePhoto_MouseMove` und `BrowseButton_Click` sind Ereignishandler, die Sie später definieren.
 
-[!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?range=1-18)]
+[!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
 ### <a name="create-the-main-class"></a>Erstellen der Hauptklasse
 
 Öffnen Sie *MainWindow.xaml.cs*, und fügen Sie die Namespaces für die Clientbibliothek sowie weitere erforderliche Namespaces hinzu. 
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
-Fügen Sie als Nächstes den folgenden Code in die **MainWindow**-Klasse ein. Dieser Code erstellt eine **FaceClient**-Instanz, die den Abonnementschlüssel verwendet. Diesen müssen Sie selbst eingeben. Darüber hinaus müssen Sie die Regionszeichenfolge in `faceEndpoint` auf die korrekte Region für Ihr Abonnement festlegen. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).)
+Fügen Sie als Nächstes den folgenden Code in die **MainWindow**-Klasse ein. Dieser Code erstellt eine **FaceClient**-Instanz, die den Abonnementschlüssel und den Endpunkt verwendet.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_fields)]
 
-Fügen Sie anschließend den folgenden Code in die **MainWindow**-Methode ein.
+Fügen Sie als Nächstes den Konstruktor **MainWindow** hinzu. Er überprüft die Endpunkt-URL-Zeichenfolge und ordnet sie dem Clientobjekt zu.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=50-61)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
 Fügen Sie abschließend die Methoden **BrowseButton_Click** und **FacePhoto_MouseMove** zur Klasse hinzu. Diese Methoden entsprechen den Ereignishandlern, die in *MainWindow.xaml* deklariert wurden. Die Methode **BrowseButton_Click** erstellt ein **OpenFileDialog**-Element, über das der Benutzer ein JPG-Bild auswählen kann. Anschließend wird das Bild im Hauptfenster angezeigt. Sie fügen den übrigen Code für **BrowseButton_Click** und **FacePhoto_MouseMove** später ein. Beachten Sie außerdem den Verweis `faceList`: eine Liste der **DetectedFace**-Objekte. In diesem Verweis werden die tatsächlichen Gesichtserkennungsdaten von Ihrer App gespeichert und aufgerufen.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=64-90,146)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=148-150,187)]
+<!-- [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_end)] -->
+
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_start)]
+
+<!-- [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_end)] -->
 
 ### <a name="try-the-app"></a>Testen der App
 
@@ -93,26 +97,25 @@ Ihre App erkennt Gesichter durch Aufrufen der Methode **FaceClient.Face.DetectWi
 
 Fügen Sie die folgende Methode in die **MainWindow**-Klasse unterhalb der Methode **FacePhoto_MouseMove** ein. Diese Methode definiert eine Liste mit abzurufenden Gesichtsattributen und liest die übermittelte Bilddatei in einen **Datenstrom** ein. Anschließend werden diese beiden Objekte an den **DetectWithStreamAsync**-Methodenaufruf übergeben.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=189-226)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_uploaddetect)]
 
 ## <a name="draw-rectangles-around-faces"></a>Zeichnen von Rechtecken um Gesichter
 
 Im nächsten Schritt fügen Sie den Code hinzu, mit dem um jedes erkannte Gesicht im Bild ein Rechteck gezeichnet wird. Fügen Sie in der **MainWindow**-Klasse den folgenden Code am Ende der Methode **BrowseButton_Click** nach der Zeile `FacePhoto.Source = bitmapSource` ein. Dieser Code füllt über den Aufruf von **UploadAndDetectFaces** eine Liste der erkannten Gesichter auf. Als Nächstes wird um jedes Gesicht ein Rechteck gezeichnet, und das geänderte Bild wird im Hauptfenster angezeigt.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=92-145)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
 ## <a name="describe-the-faces"></a>Beschreibung der Gesichter
 
 Fügen Sie die folgende Methode zur **MainWindow**-Klasse unterhalb der **UploadAndDetectFaces**-Methode ein. Diese Methode konvertiert die abgerufenen Gesichtsattribute in eine Zeichenfolge zur Beschreibung des Gesichts.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=228-286)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_facedesc)]
 
 ## <a name="display-the-face-description"></a>Anzeigen der Gesichtsbeschreibung
 
 Fügen Sie den folgenden Code zur Methode **FacePhoto_MouseMove** hinzu. Dieser Ereignishandler zeigt die Zeichenfolge für die Gesichtsbeschreibung in `faceDescriptionStatusBar` an, wenn Sie mit dem Cursor auf das Rechteck für das erkannte Gesicht zeigen.
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=151-186)]
-
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
 ## <a name="run-the-app"></a>Ausführen der App
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186477"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858867"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Tutorial: Erstellen und Testen eines Gerätefunktionsmodells mit Visual Studio Code
 
@@ -35,10 +35,10 @@ In diesem Tutorial lernen Sie Folgendes:
 Die folgenden Voraussetzungen müssen erfüllt sein, um mit dem Gerätefunktionsmodell arbeiten zu können:
 
 * [Visual Studio Code](https://code.visualstudio.com/download): VS Code ist für mehrere Plattformen verfügbar.
-* Azure IoT Device Workbench-Erweiterung in VS Code. Führen Sie die folgenden Schritte aus, um die Erweiterung „Azure IoT Device Workbench“ in VS Code zu installieren:
+* Erweiterungspaket [Azure IoT Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools). Führen Sie die folgenden Schritte aus, um das Erweiterungspaket in VS Code zu installieren:
 
     1. Wählen Sie in VS Code die Registerkarte **Erweiterungen**.
-    1. Suchen Sie nach **Azure IoT Device Workbench**.
+    1. Suchen Sie nach **Azure IoT Tools**.
     1. Wählen Sie **Installieren** aus.
 
 Zum Erstellen des generierten C-Codes unter Windows in diesem Tutorial benötigen Sie Folgendes:
@@ -61,7 +61,7 @@ Sie benötigen Folgendes, um Ihren Gerätecode in diesem Tutorial zu testen:
 
 ## <a name="model-your-device"></a>Modellieren Ihres Geräts
 
-Sie verwenden die _Digital Twin Definition Language_, um ein Gerätefunktionsmodell zu erstellen. Ein Modell besteht in der Regel aus mehreren _Schnittstellendefinitionsdateien_ und einer Modelldatei. Die **Azure IoT Device Workbench-Erweiterung für VS Code** enthält Tools, die Sie beim Erstellen und Bearbeiten dieser JSON-Dateien unterstützen.
+Sie verwenden die _Digital Twin Definition Language_, um ein Gerätefunktionsmodell zu erstellen. Ein Modell besteht in der Regel aus mehreren _Schnittstellendefinitionsdateien_ und einer Modelldatei. **Azure IoT Tools für VS Code** enthält Tools, die Sie beim Erstellen und Bearbeiten dieser JSON-Dateien unterstützen.
 
 ### <a name="create-the-interface-file"></a>Erstellen der Schnittstellendatei
 
@@ -298,7 +298,7 @@ Ihre Dateien sind jetzt in Ihrem Unternehmensrepository gespeichert.
 
 ## <a name="generate-code"></a>Generieren von Code
 
-Sie können die **Azure IoT Device Workbench-Erweiterung für VS Code** verwenden, um ein C-Codegerüst aus Ihrem Modell zu generieren. Generieren Sie das Codegerüst in VS Code wie folgt:
+Sie können **Azure IoT Tools für VS Code** verwenden, um ein C-Codegerüst aus Ihrem Modell zu generieren. Generieren Sie das Codegerüst in VS Code wie folgt:
 
 1. Öffnen Sie mit **STRG+UMSCHALT+P** die Befehlspalette.
 

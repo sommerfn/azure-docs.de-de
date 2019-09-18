@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c449b74a9d6185b0616f62d31926feb6ff218cbb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400094"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814497"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrieren von Servern mit Windows Server 2008 zu Azure
 
@@ -28,6 +28,9 @@ In diesem Tutorial erfahren Sie, wie lokale Server, auf denen Windows Server 200
 > * Ausführen eines Failovers zu Azure und Durchführen der Migration
 
 Im Abschnitt zu den Einschränkungen und bekannten Problemen werden einige der Einschränkungen und Problemumgehungen für bekannte Probleme aufgeführt, die bei der Migration von Windows Server 2008-Computern zu Azure auftreten könnten. 
+
+> [!NOTE]
+> Sie können jetzt mit dem Azure Migrate-Dienst von einem lokalen Standort zu Azure migrieren. [Weitere Informationen](../migrate/migrate-services-overview.md)
 
 
 ## <a name="supported-operating-systems-and-environments"></a>Unterstützte Betriebssysteme und Umgebungen

@@ -1,21 +1,21 @@
 ---
-title: Verwenden von Anwendungen in Azure Blockchain Workbench
-description: Tutorial zur Verwendung von Anwendungsverträgen in Azure Blockchain Workbench
+title: Verwenden von Anwendungen in der Vorschauversion von Azure Blockchain Workbench
+description: Tutorial zur Verwendung von Anwendungsverträgen in der Vorschauversion von Azure Blockchain Workbench
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578849"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845142"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Tutorial: Verwenden von Anwendungen in Azure Blockchain Workbench
 
@@ -67,7 +67,7 @@ Abhängig vom Status des Vertrags können Mitglieder Aktionen für den Übergang
 
     ![Vertragsdetails](./media/use/contract-details.png)
 
-    | Abschnitt  | BESCHREIBUNG  |
+    | `Section`  | BESCHREIBUNG  |
     |---------|---------|
     | Status | Liste des aktuellen Fortschritts innerhalb der Vertragsstufen |
     | Details | Die aktuellen Werte des Vertrags |

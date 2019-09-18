@@ -1,19 +1,18 @@
 ---
-title: Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation
+title: Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung von Hyper-V-VMs in Azure
 description: Erfahren Sie, wie Sie lokale Hyper-V-VMs mit dem Azure Site Recovery-Dienst für die Notfallwiederherstellung in Azure vorbereiten.
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: tutorial
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: aec5632b5ea29d52426c5d065ca41e18573fd5b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399386"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813715"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung in Azure
 

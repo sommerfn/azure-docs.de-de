@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c21878fc23f3880f6c6e66b1e304c7dd2e9177c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306964"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883665"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -29,7 +29,7 @@ Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die be
 
 ## <a name="how-does-personalizer-work"></a>Wie funktioniert die Personalisierung?
 
-Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche Aktion in einem Kontext die höchste Rangfolge hat. Ihre Clientanwendung bietet eine Liste der möglichen Aktionen mit zugehörigen Informationen; außerdem Informationen über den Kontext, wozu Informationen über den Benutzer, das Gerät usw. zählen können. Die Personalisierung bestimmt die auszuführende Aktion. Sobald die Clientanwendung die ausgewählte Aktion verwendet, sendet sie in Form einer Belohnungsbewertung Feedback an die Personalisierung. Nach Eingang des Feedbacks aktualisiert die Personalisierung automatisch ihr eigenes, für zukünftige Rangfolgen verwendetes Modell.
+Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche Aktion in einem Kontext die höchste Rangfolge hat. Ihre Clientanwendung bietet eine Liste der möglichen Aktionen mit zugehörigen Informationen; außerdem Informationen über den Kontext, wozu Informationen über den Benutzer, das Gerät usw. zählen können. Die Personalisierung bestimmt die auszuführende Aktion. Sobald die Clientanwendung die ausgewählte Aktion verwendet, sendet sie in Form einer Belohnungsbewertung Feedback an die Personalisierung. Nach Eingang des Feedbacks aktualisiert die Personalisierung automatisch ihr eigenes, für zukünftige Rangfolgen verwendetes Modell. Durch die Personalisierung wird nach und nach ein einzelnes Modell trainiert, das basierend auf den Merkmalen des jeweiligen Kontexts die beste Aktion vorschlagen kann.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Wie verwende ich die Personalisierung?
 
@@ -53,6 +53,8 @@ Beispielsweise kann die Clientanwendung die Personalisierung zu folgenden Zwecke
 * Auswählen der Antwort eines Chatbots, um eine Benutzerabsicht zu verdeutlichen oder eine Aktion vorzuschlagen.
 * Priorisieren von Vorschlägen, was ein Benutzer als nächsten Schritt in einem Geschäftsprozess ausführen sollte.
 
+Die Personalisierung ist kein Dienst zum Speichern und Verwalten von Benutzerprofilinformationen oder zum Protokollieren der Einstellungen oder des Verlaufs einzelner Benutzer. Die Personalisierung lernt aus den Merkmalen jeder Interaktion in der Aktion eines Kontexts eines einzelnen Modells, das die höchstmögliche Relevanz erreichen kann, wenn ähnliche Merkmale vorkommen. 
+
 ## <a name="personalization-for-developers"></a>Personalisierung für Entwickler
 
 Der Personalisierungsdienst verfügt über zwei APIs:
@@ -64,9 +66,9 @@ Der Personalisierungsdienst verfügt über zwei APIs:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen einer Feedbackschleife in C#](csharp-quickstart-commandline-feedback-loop.md)
-* [Schnellstart: Erstellen einer Feedbackschleife in Node.js](quickstart-command-line-feedback-loop-nodejs-sdk.md)
-* [Schnellstart: Erstellen einer Feedbackschleife in Python](python-quickstart-commandline-feedback-loop.md)
+* [Neuerungen in der Personalisierung](whats-new.md)
+* [Funktionsweise der Personalisierung](how-personalizer-works.md)
+* [Was ist vertiefendes Lernen?](concepts-reinforcement-learning.md)
 * [Erfahren Sie mehr über Features und Aktionen für die Rangfolgeanforderung.](concepts-features.md)
 * [Erfahren Sie mehr über das Festlegen der Bewertung für die Relevanzanforderung.](concept-rewards.md)
 * [Verwenden der interaktiven Demo](https://personalizationdemo.azurewebsites.net/)

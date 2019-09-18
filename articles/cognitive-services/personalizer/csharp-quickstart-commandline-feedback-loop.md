@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: e9dd01a58309a6b65538b19b25df70e3d18866a9
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 2940073d18cfee5a2313c03a5e9de6c00782edff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207342"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882938"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Schnellstart: Personalisierungsclientbibliothek für .NET
 
@@ -47,6 +47,8 @@ Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalte
 
 * `PERSONALIZER_RESOURCE_KEY` für den Ressourcenschlüssel.
 * `PERSONALIZER_RESOURCE_ENDPOINT` für den Ressourcenendpunkt.
+
+Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Schnellstart**.
 
 ### <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 

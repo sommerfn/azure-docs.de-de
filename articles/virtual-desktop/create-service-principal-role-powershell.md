@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/12/2019
+ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206657"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845531"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
@@ -38,13 +38,9 @@ Bevor Sie Dienstprinzipale und Rollenzuweisungen erstellen können, müssen Sie 
     Install-Module AzureAD
     ```
 
-2. Führen Sie die folgenden Cmdlets aus, indem Sie die Werte in Anführungszeichen durch die für Ihre Sitzung relevanten Werte ersetzen.
+2. [Laden Sie das Windows Virtual Desktop-PowerShell-Modul herunter, und importieren Sie es.](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
 
-    ```powershell
-    $myTenantName = "<my-tenant-name>"
-    ```
-
-3. Befolgen Sie alle Anweisungen in diesem Artikel in ein und derselben PowerShell-Sitzung. Der Vorgang ist ggf. nicht erfolgreich, wenn Sie das Fenster schließen und später wieder öffnen.
+3. Befolgen Sie alle Anweisungen in diesem Artikel in ein und derselben PowerShell-Sitzung. Der Prozess funktioniert möglicherweise nicht, wenn Sie Ihre PowerShell-Sitzung unterbrechen, indem Sie das Fenster schließen und es später erneut öffnen.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Erstellen eines Dienstprinzipals in Azure Active Directory
 
@@ -56,34 +52,9 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Erstellen einer Rollenzuweisung in Windows Virtual Desktop (Vorschauversion)
-
-Nachdem Sie nun einen Dienstprinzipal erstellt haben, können Sie ihn verwenden, um sich an Windows Virtual Desktop anzumelden. Achten Sie darauf, dass Sie sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen der Rollenzuweisung verfügt.
-
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können.
-
-Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Windows Virtual Desktop herzustellen und eine Rollenzuweisung für den Dienstprinzipal zu erstellen.
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
-```
-
-## <a name="sign-in-with-the-service-principal"></a>Anmelden mit dem Dienstprinzipal
-
-Nachdem Sie eine Rollenzuweisung für den Dienstprinzipal erstellt haben, müssen Sie sicherstellen, dass die Anmeldung an Windows Virtual Desktop mit dem Dienstprinzipal möglich ist, indem Sie das folgende Cmdlet ausführen:
-
-```powershell
-$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
-```
-
-Vergewissern Sie sich nach dem Anmelden, dass alles funktioniert, indem Sie einige Windows Virtual Desktop-PowerShell-Cmdlets mit dem Dienstprinzipal testen.
-
 ## <a name="view-your-credentials-in-powershell"></a>Anzeigen Ihrer Anmeldeinformationen in PowerShell
 
-Bevor Sie Ihre PowerShell-Sitzung beenden, sollten Sie Ihre Anmeldeinformationen anzeigen und zur späteren Verwendung notieren. Das Kennwort ist besonders wichtig, da Sie es nicht mehr abrufen können, nachdem Sie diese PowerShell-Sitzung geschlossen haben.
+Zeigen Sie vor der Erstellung der Rollenzuweisung für Ihren Dienstprinzipal Ihre Anmeldeinformationen an, und notieren Sie sie zur späteren Verwendung. Das Kennwort ist besonders wichtig, da Sie es nicht mehr abrufen können, nachdem Sie diese PowerShell-Sitzung geschlossen haben.
 
 Hier sind die drei Anmeldeinformationen, die Sie sich notieren sollten, und die Cmdlets angegeben, die Sie zum Abrufen ausführen müssen:
 
@@ -104,6 +75,36 @@ Hier sind die drei Anmeldeinformationen, die Sie sich notieren sollten, und die 
     ```powershell
     $svcPrincipal.AppId
     ```
+
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Erstellen einer Rollenzuweisung in Windows Virtual Desktop (Vorschauversion)
+
+Als Nächstes müssen Sie eine Rollenzuweisung erstellen, damit sich der Dienstprinzipal bei Windows Virtual Desktop anmelden kann. Achten Sie darauf, dass Sie sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen von Rollenzuweisungen verfügt.
+
+Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können.
+
+Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Windows Virtual Desktop herzustellen und Ihre Mandanten anzuzeigen:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+Get-RdsTenant
+```
+
+Wenn Sie den Mandantennamen für den Mandanten ermittelt haben, für den Sie eine Rollenzuweisung erstellen möchten, verwenden Sie diesen Namen im folgenden Cmdlet:
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
+```
+
+## <a name="sign-in-with-the-service-principal"></a>Anmelden mit dem Dienstprinzipal
+
+Nachdem Sie eine Rollenzuweisung für den Dienstprinzipal erstellt haben, müssen Sie sicherstellen, dass die Anmeldung an Windows Virtual Desktop mit dem Dienstprinzipal möglich ist, indem Sie das folgende Cmdlet ausführen:
+
+```powershell
+$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
+```
+
+Vergewissern Sie sich nach dem Anmelden, dass alles funktioniert, indem Sie einige Windows Virtual Desktop-PowerShell-Cmdlets mit dem Dienstprinzipal testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

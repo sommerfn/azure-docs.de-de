@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: f0bd4a49a35392c25b8985aa68ad4e4b66be026c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306518"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376138"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für Python
 
@@ -26,6 +26,7 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für Python für Folgen
 * Suchen ähnlicher Gesichter
 * Erstellen und Trainieren einer Personengruppe
 * Identifizieren eines Gesichts
+* Überprüfen von Gesichtern
 * Erstellen einer Momentaufnahme für die Datenmigration
 
 [Referenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
@@ -90,6 +91,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
 * [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
 * [Identifizieren eines Gesichts](#identify-a-face)
+* [Überprüfen von Gesichtern](#verify-faces)
 * [Erstellen einer Momentaufnahme für die Datenmigration](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
@@ -185,6 +187,32 @@ Der folgende Code sucht im Stammverzeichnis des Projekts nach dem Bild _test-ima
 Die Methode **identify** verwendet ein Array erkannter Gesichter und vergleicht diese mit einem **PersonGroup**-Objekt. Stimmt ein erkanntes Gesicht mit einem **Person**-Objekt überein, wird das Ergebnis gespeichert. Dieser Code gibt detaillierte Übereinstimmungsergebnisse in der Konsole aus.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
+
+## <a name="verify-faces"></a>Überprüfen von Gesichtern
+
+Der Überprüfungsvorgang (Verify) akzeptiert eine Gesichtserkennungs-ID und entweder eine andere Gesichtserkennungs-ID oder ein **Person**-Objekt und ermittelt, ob sie zu derselben Person gehören.
+
+Mit dem folgenden Code werden Gesichter in zwei Quellbildern erkannt und dann anhand eines Gesichts überprüft, das in einem Zielbild erkannt wurde.
+
+### <a name="get-test-images"></a>Abrufen von Testbildern
+
+Die folgenden Codeblöcke deklarieren Variablen, die für den Überprüfungsvorgang auf die Quell- und Zielbilder verweisen.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>Erkennen von Gesichtern für die Überprüfung
+
+Mit dem folgenden Code werden Gesichter in den Quell- und Zielbildern erkannt und in Variablen gespeichert.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>Abrufen der Überprüfungsergebnisse
+
+Der folgende Code vergleicht jedes Quellbild mit dem Zielbild und gibt eine Meldung mit dem Hinweis aus, ob sie zur gleichen Person gehören.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Erstellen einer Momentaufnahme für die Datenmigration
 

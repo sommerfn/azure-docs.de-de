@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: ca1478801ad704888266175a23b6f436d067dd10
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950891"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882877"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Schnellstart: Personalisierungsclientbibliothek für Python
 
@@ -46,6 +46,9 @@ Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalte
 
 * `PERSONALIZER_KEY` für den Ressourcenschlüssel.
 * `PERSONALIZER_ENDPOINT` für den Ressourcenendpunkt.
+
+Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Schnellstart**.
+
 
 ### <a name="install-the-python-library-for-personalizer"></a>Installieren der Python-Bibliothek für die Personalisierung
 
@@ -108,6 +111,8 @@ Erstellen Sie als Nächstes eine Methode zum Zurückgeben eines Personalisierung
 ## <a name="get-content-choices-represented-as-actions"></a>Abrufen von Inhaltsoptionen, dargestellt als Aktionen
 
 Aktionen stellen die Inhaltsoptionen dar, denen die Personalisierung einen Rang zuweisen soll. Fügen Sie der Klasse „Program“ die folgenden Methoden hinzu, um die Benutzereingaben für Tageszeit und aktuellen Essenswunsch aus der Befehlszeile abzurufen.
+
+[!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTimeOfDay)]
 

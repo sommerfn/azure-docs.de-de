@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516182"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734464"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)
 
@@ -49,7 +49,7 @@ Gewähren Sie die Dienstberechtigungen wie folgt:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Melden Sie sich auf der Windows Virtual Desktop-Seite für die Einwilligung mit dem Konto eines globalen Administrators an. Wenn Sie für die Organisation Contoso arbeiten, lautet Ihr Kontoname beispielsweise admin@contoso.com oder admin@contoso.onmicrosoft.com.  
+2. Melden Sie sich auf der Windows Virtual Desktop-Seite für die Einwilligung mit dem Konto eines globalen Administrators an. Wenn Sie für die Organisation Contoso arbeiten, lautet Ihr Kontoname beispielsweise admin@contoso.com oder admin@contoso.onmicrosoft.com.
 3. Wählen Sie **Akzeptieren** aus.
 4. Warten Sie eine Minute, damit Azure AD die Zustimmung aufzeichnen kann.
 5. Öffnen Sie einen Browser, und starten Sie den Administratoreinwilligungsflow für die [Windows Virtual Desktop-Client-App](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
@@ -78,6 +78,7 @@ So weisen Sie die Anwendungsrolle „TenantCreator“ zu
    ![Screenshot: Benutzer und Gruppen, die zur Verwaltung der Unternehmensanwendung „Windows Virtual Desktop“ zugewiesen sind. Der Screenshot zeigt nur eine einzelne Zuweisung für „Standardzugriff“.](media/tenant-default-access.png)
 5. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend auf dem Blatt **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 6. Suchen Sie nach einem Benutzerkonto, das zum Erstellen Ihres Windows Virtual Desktop-Mandanten verwendet wird. Der Einfachheit halber kann dies das globale Administratorkonto sein.
+   - Wenn Sie einen Microsoft-Identitätsanbieter wie contosoadmin@live.com oder contosoadmin@outlook.com verwenden, können Sie sich möglicherweise nicht bei Windows Virtual Desktop anmelden. Stattdessen wird die Verwendung eines domänenspezifischen Kontos wie admin@contoso.com oder admin@contoso.onmicrosoft.com empfohlen.
 
    ![Screenshot: Auswählen eines Benutzers, der als „TenantCreator“ hinzugefügt werden soll.](media/tenant-assign-user.png)
 

@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket – Azure'
+title: 'Tutorial: Apache Kafka mit dem Enterprise-Sicherheitspaket in Azure HDInsight'
 description: Tutorial – Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Kafka in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: ba16a975aa3b1e60393006ef49a7e422c572931e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 09/04/2019
+ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441370"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885939"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -64,7 +64,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
    * „*“ weist auf null (0) oder mehr Vorkommen von Zeichen hin.
    * „?“ weist auf ein einzelnes Zeichen hin.
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Apache Ranger-Administratoroberfläche – Richtlinie1 erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
 
@@ -79,7 +79,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
    |Benutzer auswählen  |  marketing_user1 |
    |Berechtigungen  | Veröffentlichen, Nutzen, Erstellen |
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Apache Ranger-Administratoroberfläche – Richtlinie2 erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. Wählen Sie **Hinzufügen** aus, um die Richtlinie zu speichern.
 

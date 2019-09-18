@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket – Azure'
+title: 'Tutorial: Konfigurieren von Apache HBase mit dem Enterprise-Sicherheitspaket – Azure'
 description: 'Tutorial: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für HBase in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/04/2019
+ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274398"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885159"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -100,7 +100,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
 2. Auf dem Bildschirm **Liste der Richtlinien** werden alle Ranger-Richtlinien angezeigt, die für diesen Cluster erstellt wurden. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet. Klicken Sie auf **Neue Richtlinie hinzufügen**.
 
-    ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Liste der Apache Ranger HBase-Richtlinien](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. Geben Sie auf der Seite **Richtlinie erstellen** die folgenden Werte ein:
 
@@ -119,7 +119,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    * `*` weist auf null oder mehr Vorkommen von Zeichen hin.
    * `?` weist auf ein einzelnes Zeichen hin.
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger-Richtlinienerstellung: „sales“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
@@ -138,7 +138,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    |Benutzer auswählen  | marketing_user1 |
    |Berechtigungen  | Lesen |
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger-Richtlinienerstellung: „marketing“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
 
@@ -146,7 +146,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
 Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Daten für die Spalten in den Spaltenfamilien `Name` und `Contact` anzeigen. **marketing_user1** kann nur Daten in der Spaltenfamilie `Contact` anzeigen.
 
-### <a name="access-data-as-salesuser1"></a>Zugreifen auf Daten als „sales_user1“
+### <a name="access-data-as-sales_user1"></a>Zugreifen auf Daten als „sales_user1“
 
 1. Stellen Sie eine neue SSH-Verbindung mit dem Cluster her. Verwenden Sie den folgenden Befehl, um sich bei dem Cluster anzumelden:
 
@@ -188,7 +188,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>Zugreifen auf Daten als „marketing_user1“
+### <a name="access-data-as-marketing_user1"></a>Zugreifen auf Daten als „marketing_user1“
 
 1. Stellen Sie eine neue SSH-Verbindung mit dem Cluster her. Führen Sie den folgenden Befehl aus, um sich als **marketing_user1** anzumelden:
 

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663495"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873308"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -30,6 +30,10 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle AWS-Computer (Amazon Web Serv
 > * Ausführen eines einmaligen Failovers in Azure
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
+
+
+> [!NOTE]
+    > Sie können jetzt den Azure Migrate-Dienst verwenden, um AWS-Instanzen zu Azure zu migrieren. [Weitere Informationen](../migrate/tutorial-migrate-physical-virtual-machines.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Unterstützte Versionen: 
@@ -91,11 +95,11 @@ Wenn die Azure-VMs nach der Migration (Failover) erstellt werden, werden sie mit
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** > **Netzwerk** >
    **Virtuelles Netzwerk**.
 3. Geben Sie unter **Name** den Namen **myMigrationNetwork** ein.
-4. Übernehmen Sie den Standardwert für **Adressbereich**.
+4. Übernehmen Sie den Standardwert für **Adressbereich** (Eingabe eines Werts erforderlich).
 5. Wählen Sie unter **Abonnement** das gewünschte Abonnement aus.
 6. Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** und dann **migrationRG** aus.
 7. Wählen Sie für **Ort** die Option **Europa, Westen** aus.
-8. Behalten Sie unter **Subnetz** die Standardwerte für **Name** and **IP-Bereich** bei.
+8. Behalten Sie unter **Subnetz** die Standardwerte für **Name** and **IP-Bereich** bei (Eingabe eines Werts erforderlich).
 9. Fügen Sie Anweisungen für die Einstellungen für DDoS-Schutz hinzu.
 10. Lassen Sie die Option **Dienstendpunkte** deaktiviert.
 11. Fügen Sie Anweisungen für Firewalleinstellungen hinzu.

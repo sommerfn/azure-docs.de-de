@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171397"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743965"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Zoom
 
@@ -44,7 +44,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Zoom unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Zoom unterstützt **SP-initiiertes** einmaliges Anmelden. 
+* Zoom unterstützt die [**automatisierte** Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial).
 
 ## <a name="adding-zoom-from-the-gallery"></a>Hinzufügen von Zoom aus dem Katalog
 
@@ -87,7 +88,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `<companyname>.zoom.us`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Zoom](https://support.zoom.us/hc/en-us), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Zoom](https://support.zoom.us/hc/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -101,7 +102,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 > Informationen zum Konfigurieren einer Rolle in Azure AD finden Sie unter [Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 > [!NOTE]
-> Zoom erwartet in der SAML-Nutzlast unter Umständen einen Gruppenanspruch. Falls Sie Gruppen erstellt haben, wenden Sie sich mit den Gruppeninformationen an das [Supportteam für den Zoom-Client](https://support.zoom.us/hc/en-us), damit es die Gruppeninformationen auf ihrer Seite konfigurieren kann. Geben Sie außerdem die Objekt-ID an das [Supportteam für den Zoom-Client](https://support.zoom.us/hc/en-us) weiter, damit es diese bei sich konfigurieren kann. Informationen zum Ermitteln der Objekt-ID finden Sie im Artikel zum [Konfigurieren von Zoom mit Azure](https://support.zoom.us/hc/en-us/articles/115005887566).
+> Zoom erwartet in der SAML-Nutzlast unter Umständen einen Gruppenanspruch. Falls Sie Gruppen erstellt haben, wenden Sie sich mit den Gruppeninformationen an das [Supportteam für den Zoom-Client](https://support.zoom.us/hc/), damit es die Gruppeninformationen auf ihrer Seite konfigurieren kann. Geben Sie außerdem die Objekt-ID an das [Supportteam für den Zoom-Client](https://support.zoom.us/hc/) weiter, damit es diese bei sich konfigurieren kann. Informationen zum Ermitteln der Objekt-ID finden Sie im Artikel zum [Konfigurieren von Zoom mit Azure](https://support.zoom.us/hc/articles/115005887566).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -172,30 +173,10 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-zoom-test-user"></a>Erstellen eines Zoom-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Zoom anmelden können, müssen sie in Zoom bereitgestellt werden. Im Fall von Zoom ist die Bereitstellung eine manuelle Aufgabe.
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:
-
-1. Melden Sie sich bei der **Zoom**-Unternehmenswebsite als Administrator an.
-
-2. Klicken Sie auf die Registerkarte **Kontenverwaltung** und anschließend auf **Benutzerverwaltung**.
-
-3. Klicken Sie im Abschnitt „Benutzerverwaltung“ auf **Benutzer hinzufügen**.
-
-    ![Benutzerverwaltung](./media/zoom-tutorial/ic784703.png "Benutzerverwaltung")
-
-4. Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
-
-    ![Benutzer hinzufügen](./media/zoom-tutorial/ic784704.png "Benutzer hinzufügen")
-
-    a. Wählen Sie als **Benutzertyp** die Option **Basic** aus.
-
-    b. Geben Sie im Textfeld **Emails** die E-Mail-Adresse eines gültigen Azure AD-Benutzerkontos ein, das Sie bereitstellen möchten.
-
-    c. Klicken Sie auf **Hinzufügen**.
+In diesem Abschnitt wird in Zoom ein Benutzer namens B. Simon erstellt. Zoom unterstützt die automatische Benutzerbereitstellung (standardmäßig aktiviert). Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial).
 
 > [!NOTE]
-> Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Zoom-Benutzerkonten oder mithilfe der von Zoom bereitgestellten APIs erstellen.
+> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam für den Zoom-Client](https://support.zoom.us/hc/).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
