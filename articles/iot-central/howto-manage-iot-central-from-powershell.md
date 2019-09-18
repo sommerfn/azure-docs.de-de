@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: bfda4f4ebe8990a16853bdfe40065a7501de5275
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086889"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70380967"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Verwalten von IoT Central über Azure PowerShell
 
@@ -80,6 +80,9 @@ Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe in der Regio
 |iotc-default@1.0.0 |Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
 |iotc-demo@1.0.0    |Erstellt eine Anwendung mit einer Gerätevorlage, die bereits für einen gekühlten Verkaufsautomaten erstellt wurde. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |
 |iotc-devkit-sample@1.0.0 |Erstellt eine Anwendung mit Gerätevorlagen, an die Sie ein MXChip- oder Raspberry Pi-Gerät anschließen können. Verwenden Sie diese Vorlage, wenn Sie als Geräteentwickler mit einem dieser Geräte experimentieren. |
+
+> [!NOTE]
+> Die Vorlage **Vorschauanwendung** ist derzeit nur in den Regionen **Europa, Norden** und **USA, Mitte** verfügbar.
 
 ## <a name="view-your-iot-central-applications"></a>Anzeigen Ihrer IoT Central-Anwendungen
 

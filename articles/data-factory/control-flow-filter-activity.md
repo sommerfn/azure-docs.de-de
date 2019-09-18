@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: a7e2e735baa7e40b4170d3397327e90fc1a5d2d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141670"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915511"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
 Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filterausdruck auf ein Eingabearray anzuwenden. 
@@ -45,7 +45,7 @@ items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck 
 
 ## <a name="example"></a>Beispiel
 
-In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **ForEach**. Die Aktivität „Filter“ wird so konfiguriert, dass das Eingabearray für Elemente mit einem Wert größer als 3 gefiltert wird. Die Aktivität „ForEach“ durchläuft anschließend die gefilterten Werte und wartet die vom aktuellen Wert angegebene Dauer in Sekunden.
+In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **ForEach**. Die Aktivität „Filter“ wird so konfiguriert, dass das Eingabearray für Elemente mit einem Wert größer als 3 gefiltert wird. Die Aktivität ForEach durchläuft anschließend die gefilterten Werte und legt für die Variable **test** den aktuellen Wert fest.
 
 ```json
 {
@@ -60,32 +60,53 @@ In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **For
                 }
             },
             {
-                "name": "MyForEach",
-                "type": "ForEach",
-                "typeProperties": {
-                    "isSequential": "false",
-                    "batchCount": 1,
-                    "items": "@activity('MyFilterActivity').output.value",
-                    "activities": [{
-                        "type": "Wait",
-                        "typeProperties": {
-                            "waitTimeInSeconds": "@item()"
-                        },
-                        "name": "MyWaitActivity"
-                    }]
-                },
-                "dependsOn": [{
+            "name": "MyForEach",
+            "type": "ForEach",
+            "dependsOn": [
+                {
                     "activity": "MyFilterActivity",
-                    "dependencyConditions": ["Succeeded"]
-                }]
+                    "dependencyConditions": [
+                        "Succeeded"
+                    ]
+                }
+            ],
+            "userProperties": [],
+            "typeProperties": {
+                "items": {
+                    "value": "@activity('MyFilterActivity').output.value",
+                    "type": "Expression"
+                },
+                "isSequential": "false",
+                "batchCount": 1,
+                "activities": [
+                    {
+                        "name": "Set Variable1",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "test",
+                            "value": {
+                                "value": "@string(item())",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
             }
-        ],
+        }],
         "parameters": {
             "inputs": {
                 "type": "Array",
                 "defaultValue": [1, 2, 3, 4, 5, 6]
             }
-        }
+        },
+        "variables": {
+            "test": {
+                "type": "String"
+            }
+        },
+        "annotations": []
     }
 }
 ```

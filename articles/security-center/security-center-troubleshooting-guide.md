@@ -2,30 +2,24 @@
 title: Azure Security Center – Handbuch zur Problembehandlung | Microsoft Docs
 description: In diesem Dokument wird die Problembehandlung in Azure Security Center beschrieben.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609905"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873394"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 Dieses Handbuch ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, in deren Organisation Azure Security Center verwendet wird und die Security Center-Probleme lösen müssen.
 
 >[!NOTE]
->Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
+>Security Center verwendet den Microsoft Monitoring Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md).
 >
 
 ## <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
@@ -56,9 +50,9 @@ Wenn Sie erfahren möchten, welche Version des Agents Sie verwenden, öffnen Sie
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Installationsszenarien für den Microsoft Monitoring Agent
 Es gibt zwei Installationsszenarien, die bei der Installation des Microsoft Monitoring Agents auf Ihrem Computer zu unterschiedlichen Ergebnissen führen können. Folgende Szenarien werden unterstützt:
 
-* **Der Agent wird automatisch von Security Center installiert:** In diesem Szenario können Sie die Warnungen an beiden Orten einsehen – im Security Center und in der Protokollsuche. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu der die Ressource gehört, konfiguriert wurde.
-zu erstellen und zu verwalten.
-* **Der Agent wird manuell auf einem virtuellen Computer in Azure installiert:** Wenn Sie in diesem Szenario Agents verwenden, die vor Februar 2017 manuell heruntergeladen und installiert wurden, können Sie die Warnungen nur dann im Security Center-Portal anzeigen, wenn Sie das Abonnement filtern, zu dem der Arbeitsbereich gehört. Wenn Sie das Abonnement herausfiltern, zu dem die Ressource gehört, können Sie keine Warnungen anzeigen. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu der der Arbeitsbereich gehört, konfiguriert wurde.
+* **Der Agent wird automatisch von Security Center installiert:** In diesem Szenario können Sie die Warnungen an beiden Orten einsehen – im Security Center und in der Protokollsuche. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu dem die Ressource gehört, konfiguriert wurde.
+.
+* **Der Agent wird manuell auf einem virtuellen Computer in Azure installiert**: Wenn Sie in diesem Szenario Agents verwenden, die vor Februar 2017 manuell heruntergeladen und installiert wurden, können Sie die Warnungen nur dann im Security Center-Portal anzeigen, wenn Sie das Abonnement filtern, zu dem der Arbeitsbereich gehört. Wenn Sie das Abonnement herausfiltern, zu dem die Ressource gehört, können Sie keine Warnungen anzeigen. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu dem der Arbeitsbereich gehört, konfiguriert wurde.
 
 >[!NOTE]
 > Um das Verhalten im zweiten Szenario zu vermeiden, müssen Sie die neueste Version des Agents herunterladen.

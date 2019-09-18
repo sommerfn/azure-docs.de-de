@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: e5f856bbd8f6fdec46d947a4c726024a08a2b6e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096037"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773057"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -65,7 +65,7 @@ Verwenden Sie `localhost`, um direkt auf eine Funktion innerhalb der gleichen Fu
 
  
 >[!Note]  
->Wenn Ihre Funktion die Autorisierungsstufe *function, admin oder sys* verwendet, müssen Sie den Code und die Client-ID gemäß der ursprünglichen Funktions-URL angeben. In diesem Fall sieht der Verweis wie folgt aus: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>Wenn Ihre Funktion die Autorisierungsstufe *function, admin oder sys* verwendet, müssen Sie den Code und die Client-ID gemäß der ursprünglichen Funktions-URL angeben. In diesem Fall sieht der Verweis wie folgt aus: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` Sie sollten diese Schlüssel in den [Anwendungseinstellungen] speichern und in Ihren Proxys auf diese verweisen. Dadurch wird das Speichern von Geheimnissen im Quellcode vermieden. 
 
 ### <a name="request-parameters"></a>Verweisen auf Anforderungsparameter
 

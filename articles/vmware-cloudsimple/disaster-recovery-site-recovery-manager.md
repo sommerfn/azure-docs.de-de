@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972797"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846147"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Einrichten der privaten Cloud als Notfallwiederherstellungsziel mit VMware Site Recovery Manager
 
@@ -33,6 +33,8 @@ Die CloudSimple-Lösung erfordert die folgenden Schritte:
 * Stellen Sie eigene Lizenzen für SRM bereit, wenn die private Cloud der geschützte Standort ist. Sie benötigen keine zusätzlichen SRM-Lizenzen für den CloudSimple-Standort, wenn er als Wiederherstellungsstandort verwendet wird.
 
 Diese Lösung bietet Ihnen die vollständige Kontrolle über vSphere Replication und SRM. Die vertraute Benutzeroberfläche, API und CLI ermöglichen die Verwendung der vorhandenen Skripts und Tools.
+
+![Site Recovery Manager-Bereitstellung](media/srm-deployment.png)
 
 Sie können alle Versionen von vRA und SRM verwenden, die mit Ihrer privaten Cloud und lokalen Umgebung kompatibel sind. In den Beispielen in dieser Anleitung werden vRA 6.5 und SRM 6.5 verwendet. Diese Versionen sind mit der von CloudSimple unterstützten Version vSphere 6.5 kompatibel.
 

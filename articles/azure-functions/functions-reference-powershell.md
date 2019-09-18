@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012709"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773029"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -403,14 +403,18 @@ Die aktuell von der Runtime verwendete Version sehen Sie in der Ausgabe `$PSVers
 
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
 
-PowerShell-Funktionen unterstützen die Verwaltung von Azure-Modulen durch den Dienst. Wenn Sie die Datei „host.json“ ändern und die Eigenschaft „managedDependency“ auf „true“ festlegen, wird die Datei „requirements.psd1“ verarbeitet. Es werden automatisch die neuesten Azure-Module heruntergeladen und für die Funktion verfügbar gemacht.
+PowerShell-Funktionen unterstützen das Herunterladen und Verwalten von Modulen aus dem [PowerShell-Katalog](https://www.powershellgallery.com) durch den Dienst. Wenn Sie die Datei „host.json“ ändern und die Eigenschaft „managedDependency“ auf „true“ festlegen, wird die Datei „requirements.psd1“ verarbeitet. Die angegebenen Module werden automatisch heruntergeladen und für die Funktion verfügbar gemacht. 
+
+Die maximal unterstützte Anzahl von Modulen beträgt derzeit 10. Die unterstützte Syntax ist MajorNumber.* oder eine exakte Modulversion, wie unten gezeigt. Das Azure Az-Modul ist standardmäßig enthalten, wenn eine neue PowerShell-Funktions-App erstellt wird.
+
+Der Sprach-Worker übernimmt alle aktualisierten Module bei einem Neustart.
 
 host.json
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ requirements.psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-Wenn Sie Ihre eigenen benutzerdefinierten Module oder Module aus dem [PowerShell-Katalog](https://powershellgallery.com) verwenden möchten, müssen Sie ein wenig anders vorgehen, als Sie es gewohnt sind.
+Wenn Sie Ihre eigenen benutzerdefinierten Module verwenden möchten, müssen Sie ein wenig anders vorgehen als gewohnt.
 
 Wenn Sie das Modul auf dem lokalen Computer installieren, wird es in einem der global verfügbaren Ordner in Ihrem `$env:PSModulePath` installiert. Da die Funktion in Azure ausgeführt wird, haben Sie keinen Zugriff auf die Module, die auf Ihrem Computer installiert sind. Aus diesem Grund muss sich der `$env:PSModulePath` für eine PowerShell-Funktions-App vom `$env:PSModulePath` eines regulären PowerShell-Skripts unterscheiden.
 
@@ -433,16 +438,19 @@ In Functions enthält `PSModulePath` zwei Pfade:
 
 ### <a name="function-app-level-modules-folder"></a>Ordner `Modules` auf Ebene der Funktions-App
 
-Um benutzerdefinierte Module oder PowerShell-Module aus dem PowerShell-Katalog zu verwenden, können Sie die Module, von denen Ihre Funktionen abhängen, im Ordner `Modules` speichern. Module in diesem Ordner stehen in der Functions-Runtime automatisch zur Verfügung. Jede Funktion in der Funktions-App kann diese Module verwenden.
+Um benutzerdefinierte Module zu verwenden, können Sie die Module, von denen Ihre Funktionen abhängen, im Ordner `Modules` speichern. Module in diesem Ordner stehen in der Functions-Runtime automatisch zur Verfügung. Jede Funktion in der Funktions-App kann diese Module verwenden. 
 
-Um dieses Feature nutzen zu können, erstellen Sie den Ordner `Modules` im Stammverzeichnis der Funktions-App. Speichern Sie die Module, die Sie in Ihren Funktionen verwenden möchten, an diesem Speicherort.
+> [!NOTE]
+> In der Datei „requirements.psd1“ angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner „$env:LOCALAPPDATA/AzureFunctions“ und im Ordner „/data/ManagedDependencies“ gespeichert.
+
+Um dieses benutzerdefinierte Modulfeature nutzen zu können, erstellen Sie den Ordner `Modules` im Stammverzeichnis der Funktions-App. Kopieren Sie die Module, die Sie in Ihren Funktionen verwenden möchten, an diesen Speicherort.
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Verwenden Sie `Save-Module`, um alle von Ihren Funktionen verwendeten Module zu speichern, oder kopieren Sie Ihre eigenen benutzerdefinierten Module in den Ordner `Modules`. Mit dem Ordner „Modules“ sollte Ihre Funktions-App folgende Ordnerstruktur aufweisen:
+Mit dem Ordner „Modules“ sollte Ihre Funktions-App folgende Ordnerstruktur aufweisen:
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 Wenn Sie Ihre Funktions-App starten, fügt der PowerShell-Sprachworker diesen Ordner `Modules` dem `$env:PSModulePath` hinzu, damit die Module wie bei normalen PowerShell-Skripts automatisch geladen werden.
@@ -503,17 +512,7 @@ Sie legen diese Umgebungsvariable in den [App-Einstellungen](functions-app-setti
 
 ### <a name="considerations-for-using-concurrency"></a>Überlegungen zur Verwendung von Parallelität
 
-PowerShell ist standardmäßig eine _Singlethread_-Skriptsprache. Parallelität kann jedoch mithilfe mehrerer PowerShell-Runspaces im gleichen Prozess hinzugefügt werden. Dies ist die Funktionsweise der PowerShell-Runtime für Azure Functions.
-
-Dieser Ansatz hat jedoch einige Nachteile.
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Parallelität ist nur so gut wie der Computer, auf dem sie ausgeführt wird
-
-Wenn Ihre Funktions-App in einem [App Service-Plan](functions-scale.md#app-service-plan) ausgeführt wird, der nur einen einzigen Kern unterstützt, birgt Parallelität keine Vorteile. Da keine zusätzlichen Kerne verfügbar sind, kann auch die Last nicht ausgeglichen werden. In diesem Fall kann die Leistung variieren, wenn der einzelne Kern einen Kontextwechsel zwischen Runspaces ausführen kann.
-
-Der [Verbrauchstarif](functions-scale.md#consumption-plan) wird mit nur einen Kern ausgeführt, sodass Sie keine Parallelität nutzen können. Wenn Sie Parallelität vollständig nutzen möchten, sollten Sie Ihre Funktionen stattdessen in einer Funktions-App bereitstellen, die in einem dedizierten App Service-Plan mit ausreichenden Kernen ausgeführt wird.
-
-#### <a name="azure-powershell-state"></a>Azure PowerShell-Zustand
+PowerShell ist standardmäßig eine _Singlethread_-Skriptsprache. Parallelität kann jedoch mithilfe mehrerer PowerShell-Runspaces im gleichen Prozess hinzugefügt werden. Die Menge der erstellten Runspaces entspricht der Anwendungseinstellung PSWorkerInProcConcurrencyUpperBound. Der Durchsatz hängt von der im ausgewählten Plan verfügbaren CPU-Anzahl und Arbeitsspeichergröße ab.
 
 Azure PowerShell verwendet einige Kontexte und Status auf _Prozessebene_, die Ihnen viel Eingabearbeit ersparen können. Wenn Sie jedoch Parallelität in Ihrer Funktions-App aktivieren und Aktionen aufrufen, die den Zustand ändern, könnte es zu Racebedingungen kommen. Diese Racebedingungen sind schwierig zu debuggen, da ein Aufruf von einem bestimmten Zustand abhängt, während ein anderer Aufruf diesen Zustand ändert.
 

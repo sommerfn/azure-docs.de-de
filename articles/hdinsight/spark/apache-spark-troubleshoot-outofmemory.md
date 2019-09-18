@@ -1,17 +1,17 @@
 ---
 title: OutOfMemoryError-Ausnahmen für Apache Spark in Azure HDInsight
-description: Verschiedene OutOfMemoryError-Ausnahmen für Apache Spark in Azure HDInsight
+description: Verschiedene OutOfMemoryError-Ausnahmen für Apache Spark-Cluster in Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/15/2019
-ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 69f897d1f279279c067eeff30ac711f85d3bb89b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543480"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915194"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-Ausnahmen für Apache Spark in Azure HDInsight
 
@@ -119,11 +119,11 @@ Sie können den Arbeitsspeicher des Spark-Verlaufsservers erhöhen, indem Sie in
 
 Hierzu können Sie auf der Ambari-Browserbenutzeroberfläche den Abschnitt „Spark2/Config/Advanced spark2-env“ auswählen.
 
-![Abschnitt „Advanced spark2-env“](./media/apache-spark-ts-outofmemory-heap-space/image01.png)
+![Abschnitt „Advanced spark2-env“](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
 Fügen Sie die folgende Eigenschaft hinzu, um den Arbeitsspeicher des Spark-Verlaufsservers von 1 GB auf 4 GB zu erhöhen: `SPARK_DAEMON_MEMORY=4g`.
 
-![Spark-Eigenschaft](./media/apache-spark-ts-outofmemory-heap-space/image02.png)
+![Spark-Eigenschaft](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
 Anschließend müssen alle betroffenen Dienste über Ambari neu gestartet werden.
 

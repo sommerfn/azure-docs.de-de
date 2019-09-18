@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 6ed50380b47040793e9826b64297bacf6ab12c71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533594"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914863"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Vorschau: Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlsze
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Um die automatische Clusterskalierung verwenden zu können, benötigen Sie die *aks-preview* CLI-Erweiterung Version 0.4.4 oder höher. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+Um die automatische Clusterskalierung verwenden zu können, benötigen Sie die CLI-Erweiterung *aks-preview* Version 0.4.12 oder höher. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -40,29 +40,6 @@ az extension add --name aks-preview
 
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
-```
-
-### <a name="register-scale-set-feature-provider"></a>Registrieren des Anbieters des Skalierungsgruppenfeatures
-
-Um einen AKS zu erstellen, der Skalierungsgruppen verwendet, müssen Sie auch ein Featureflag für Ihr Abonnement aktivieren. Um das Featureflag *VMSSPreview* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-> [!CAUTION]
-> Wenn Sie eine Funktion in einem Abonnement registrieren, können Sie die Registrierung dieser Funktion derzeit nicht aufheben. Nachdem Sie einige Vorschaufeatures aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Vorschaufeatures für Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Previewfunktionen zu testen und Feedback zu erhalten.
-
-```azurecli-interactive
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
-```
-
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
-```
-
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
 ```
 
 ## <a name="limitations"></a>Einschränkungen
@@ -113,7 +90,7 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --enable-vmss \
+  --vm-set-type VirtualMachineScaleSets \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3

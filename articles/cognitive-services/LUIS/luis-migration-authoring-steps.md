@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: 13eb301daadb70456c0c0d7db8991d7a695b1de9
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 7a6091ac1a0d54d997c40fe284d58426ecadf765
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259630"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898859"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Schritte zum Migrieren zur Azure-Erstellungsressource
 
@@ -25,7 +25,7 @@ Migrieren Sie alle Apps, deren Besitzer Sie sind, über das LUIS-Portal (Languag
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Optional**: Sichern Sie die Apps, die im LUIS-Portal in der Liste der Apps aufgeführt sind, indem Sie jede App exportieren oder die Export-[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) verwenden.
-* **Optional**: Speichern Sie für jede App deren Liste der Projektmitarbeiter. Diese E-Mail-Liste wird als Bestandteil des Migrationsprozesses bereitgestellt.
+* **Optional**: Speichern Sie für jede App deren Liste der Projektmitarbeiter. Allen Projektmitarbeitern kann im Rahmen des Migrationsprozesses eine E-Mail gesendet werden.
 * **Erforderlich**: Sie benötigen ein [Azure-Abonnement](https://azure.microsoft.com/free/). In einem Schritt des Abonnementprozesses sind Abrechnungsinformationen erforderlich. Sie können jedoch Free-Tarife (F0-Tarife) verwenden, wenn Sie LUIS verwenden. Sie werden möglicherweise feststellen, dass Sie einen kostenpflichtigen Tarif benötigen, wenn Ihre Nutzung zunimmt. 
 
 Wenn Sie kein Azure-Abonnement haben, [registrieren Sie sich](https://azure.microsoft.com/free/). 
@@ -38,20 +38,35 @@ Sie werden wöchentlich aufgefordert, Ihre Apps zu migrieren. Sie können dieses
 
 Der Migrationsprozess ist verfügbar, wenn Sie der Besitzer einer LUIS-App sind. 
 
-1. 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und stimmen Sie den Nutzungsbedingungen zu.
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und stimmen Sie den Nutzungsbedingungen zu.
 1. Im Popupfenster für Migrationen können Sie die Migration fortsetzen oder später vornehmen. Wählen Sie **Jetzt migrieren** aus. Wenn Sie sich für eine spätere Migration entscheiden, haben Sie 9 Monate Zeit, um zum neuen Erstellungsschlüssel in Azure zu migrieren.
 
     ![Erstes Popupfenster im Migrationsprozess, wählen Sie „Jetzt migrieren“ aus.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Gibt es für eine Ihrer Apps Projektmitarbeiter, werden Sie aufgefordert, **diesen Mitarbeitern eine E-Mail zu senden**, in der sie über die Migration informiert werden. Dieser Schritt ist optional. Die Standard-E-Mail-Anwendung wird mit einer einfach formatierten E-Mail geöffnet. 
+1. Gibt es für eine Ihrer Apps Projektmitarbeiter, werden Sie optional aufgefordert, **diesen Mitarbeitern eine E-Mail zu senden**, in der sie über die Migration informiert werden. Dieser Schritt ist optional. 
 
-    ![Projektmitarbeitern eine E-Mail über die Migration senden](./media/migrate-authoring-key/send-collaborators-email.png)
+    Nachdem Sie Ihr Konto zu Azure migriert haben, sind Ihre Apps nicht mehr für Projektmitarbeiter verfügbar.
+
+    Für jeden Projektmitarbeiter und jede App wird die Standard-E-Mail-Anwendung mit einer einfach formatierten E-Mail geöffnet. Sie können die E-Mail vor dem Senden bearbeiten.
+
+    Die E-Mail-Vorlage enthält die genaue App-ID und den App-Namen. 
+
+    ```html
+    Dear Sir/Madam,
+    
+    I will be migrating my LUIS account to Azure. Consequently, you will no longer have access to the following app:
+    
+    App Id: <app-ID-omitted>
+    App name: Human Resources
+    
+    Thank you
+    ```
 
 1. Wählen Sie die Option zum Erstellen einer LUIS-Erstellungsressource, indem Sie **Start by creating an authoring resource to migrate your apps to** (Beginnen Sie, indem Sie eine Erstellungsressource erstellen, zu der Ihre Apps migriert werden sollen) auswählen. 
 
     ![Erstellungsressource erstellen](./media/migrate-authoring-key/choose-authoring-resource.png)
 
-1. Geben Sie im nächsten Fenster ihre Ressourcenschlüsselinformationen ein. Nachdem Sie die Informationen eingegeben haben, wählen Sie **Ressource erstellen** aus. 
+1. Geben Sie im nächsten Fenster ihre Ressourcenschlüsselinformationen ein. Nachdem Sie die Informationen eingegeben haben, wählen Sie **Ressource erstellen** aus. Pro Abonnement können Sie pro Region über 10 kostenlose Erstellungsressourcen verfügen.
 
     ![Erstellungsressource erstellen](./media/migrate-authoring-key/choose-authoring-resource-form.png)
 
@@ -64,6 +79,10 @@ Der Migrationsprozess ist verfügbar, wenn Sie der Besitzer einer LUIS-App sind.
     * **Standort**: Die Auswahl des Standorts hängt von der Auswahl der **Ressourcengruppe** ab.
     * **Tarif**: Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat. 
 
+1. Überprüfen Sie Ihre Erstellungsressource, und **migrieren Sie jetzt**.
+
+    ![Erstellungsressource erstellen](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
+
 1. Wenn die Erstellungsressource erstellt ist, wird die Erfolgsmeldung angezeigt. Wählen Sie **Schließen** aus, um das Popupfenster zu schließen.
 
     ![Ihre Erstellungsressource wurde erfolgreich erstellt.](./media/migrate-authoring-key/migration-success.png)
@@ -72,11 +91,19 @@ Der Migrationsprozess ist verfügbar, wenn Sie der Besitzer einer LUIS-App sind.
 
     Es ist nicht erforderlich, dass Sie den Schlüssel der Erstellungsressource wissen, um Ihre Apps im LUIS-Portal weiter bearbeiten zu können. Wenn Sie Ihre Apps programmgesteuert bearbeiten möchten, benötigen Sie die Erstellungsschlüsselwerte. Diese Werte werden im LUIS-Portal auf der Seite **Verwalten-> Azure-Ressourcen** angezeigt und sind auch im Azure-Portal auf der **Schlüssel**-Seite der Ressource verfügbar.  
 
+1. Bevor Sie auf Ihre Apps zugreifen, wählen Sie das Abonnement und die LUIS-Erstellungsressource aus, um die Apps anzuzeigen, die Sie erstellen können.
+
+    ![Wählen Sie das Abonnement und die LUIS-Erstellungsressource aus, um die Apps anzuzeigen, die Sie erstellen können.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+
 ## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Nach dem Migrationsprozess: Hinzufügen von Mitwirkenden zu Ihrer Erstellungsressource
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
 Erfahren Sie, wie Sie [Mitwirkende hinzufügen](luis-how-to-collaborate.md). 
+
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Problembehandlung bei Migrationsprozessfehlern
+
+Wenn Sie während des Migrationsprozesses im LUIS-Portal eine `MissingSubscriptionRegistration`-Fehlermeldung mit einer roten Benachrichtigungsleiste empfangen, erstellen Sie eine Cognitive Service-Ressource im [Azure-Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) oder in der [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Erfahren Sie mehr über die [Ursachen dieses Fehlers](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

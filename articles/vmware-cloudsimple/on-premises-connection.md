@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240710"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910546"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute
 
@@ -32,7 +32,7 @@ Ein **/29**-Netzwerkadressblock ist erforderlich, um Global Reach-Verbindungen v
 
 ## <a name="scenarios"></a>Szenarien
 
-Wenn Sie Ihr lokales Netzwerk mit Ihrem Netzwerk in der privaten Cloud verbinden, können Sie die private Cloud auf verschiedene Weise verwenden, z.B. folgendermaßen:
+Wenn Sie eine Verbindung Ihres lokalen Netzwerks mit Ihrem Netzwerk in der privaten Cloud herstellen, können Sie die private Cloud auf verschiedene Weise verwenden, folgende Szenarios inbegriffen:
 
 * Zugreifen auf Ihr privates Cloudnetzwerk, ohne eine Site-to-Site-VPN-Verbindung zu erstellen.
 * Verwenden Ihres lokalen Active Directory als Identitätsquelle für Ihre private Cloud.
@@ -43,6 +43,7 @@ Wenn Sie Ihr lokales Netzwerk mit Ihrem Netzwerk in der privaten Cloud verbinden
 ## <a name="connecting-expressroute-circuits"></a>Verbinden von ExpressRoute-Leitungen
 
 Zum Einrichten der ExpressRoute-Verbindung müssen Sie eine Autorisierung für Ihre ExpressRoute-Leitung erstellen und die Autorisierungsinformationen CloudSimple zur Verfügung stellen.
+
 
 ### <a name="create-expressroute-authorization"></a>Erstellen der ExpressRoute-Autorisierung
 
@@ -70,6 +71,11 @@ Zum Einrichten der ExpressRoute-Verbindung müssen Sie eine Autorisierung für I
     * Problemuntertyp: **Erstellen einer ExpressRoute-Verbindung mit der lokalen Umgebung**
     * Geben Sie die Ressourcen-ID und den Autorisierungsschlüssel an, den Sie im Detailbereich kopiert und gespeichert haben.
     * Geben Sie einen„/29“-Netzwerkadressraum für das Transitnetzwerk an.
+    * Verwenden Sie die Standardroute über ExpressRoute?
+    * Sollte der Private Cloud-Datenverkehr die Standardroute über ExpressRoute verwenden?
+
+    > [!IMPORTANT]
+    > Mithilfe der Standardroute können Sie den gesamten Internetdatenverkehr aus der privaten Cloud mithilfe Ihrer lokalen Internetverbindung senden.  Um die für die private Cloud konfigurierte Standardroute zu deaktivieren und die Standardroute für die lokale Verbindung zu verwenden, geben Sie die Details im Supportticket an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

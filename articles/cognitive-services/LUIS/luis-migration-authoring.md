@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: 7fe35edfbfc8f50aa9428e41e7d807a0838417ec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259622"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844770"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -43,7 +43,7 @@ Der Besitzer kann keine Teilmenge zu migrierender Apps auswählen, und der Proze
 Folgendes ist die Migration nicht: 
 
 * Ein Prozess, in dem Projektmitarbeiter gesammelt und automatisch in die Azure-Erstellungsressource verschoben oder in dieser hinzugefügt werden. Diesen Schritt müssen Sie als App-Besitzer ausführen. Dieser Schritt erfordert Berechtigungen für die entsprechende Ressource.
-* Ein Prozess zum Erstellen und Zuweisen einer Vorhersagelaufzeitressource. Wenn Sie eine Vorhersagelaufzeitressource benötigen, müssen Sie den [gesonderten Prozess](/luis-how-to-azure-subscription.md#create-runtime-resource-in-the-azure-portal) ausführen, der unverändert ist. 
+* Ein Prozess zum Erstellen und Zuweisen einer Vorhersagelaufzeitressource. Wenn Sie eine Vorhersagelaufzeitressource benötigen, müssen Sie den [gesonderten Prozess](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) ausführen, der unverändert ist. 
 
 ## <a name="how-are-the-apps-migrating"></a>Wie werden die Apps migriert?
 
@@ -62,7 +62,9 @@ Durch Abbrechen des Fensters können Sie den Migrationsprozess hinauszögern. Si
 
 * **Optional**: Sichern Sie die Apps, die im LUIS-Portal in der Liste der Apps aufgeführt sind, indem Sie jede App exportieren oder die Export-[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) verwenden.
 * **Optional**: Speichern Sie für jede App deren Liste der Projektmitarbeiter. Diese E-Mail-Liste wird als Bestandteil des Migrationsprozesses bereitgestellt.
-* **Erforderlich**: Sie benötigen ein [Azure-Abonnement](https://azure.microsoft.com/free/). In einem Schritt des Abonnementprozesses sind Abrechnungsinformationen erforderlich. Sie können jedoch Free-Tarife (F0-Tarife) verwenden, wenn Sie LUIS verwenden. Sie werden möglicherweise feststellen, dass Sie einen kostenpflichtigen Tarif benötigen, wenn Ihre Nutzung zunimmt. 
+* **Erforderlich**: Sie benötigen ein [Azure-Abonnement](https://azure.microsoft.com/free/). In einem Schritt des Abonnementprozesses sind Abrechnungsinformationen erforderlich. Sie können jedoch den Free-Tarif (`F0`) verwenden, wenn Sie LUIS verwenden. 
+
+**Das Erstellen Ihrer LUIS-App ist kostenlos**, wie der `F0`-Tarif zeigt. Hier finden Sie [weitere Informationen zu Tarifen](luis-boundaries.md#key-limits).
 
 Wenn Sie kein Azure-Abonnement haben, [registrieren Sie sich](https://azure.microsoft.com/free/). 
 
@@ -91,7 +93,7 @@ Sie können so vorgehen, dass Sie eine App, für die Sie ein Projektmitarbeiter 
 
 ### <a name="after-the-app-is-migrated"></a>Nach dem Migrieren der App
 
-Nach dem Migrationsprozess müssen Sie vom App-Besitzer zur Azure-Erstellungsressource hinzugefügt werden.  
+Wenn Sie nach dem Migrationsvorgang auf die Original-App zugreifen müssen, müssen Sie der Azure-Erstellungsressource vom App-Besitzer als Projektmitarbeiter hinzugefügt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

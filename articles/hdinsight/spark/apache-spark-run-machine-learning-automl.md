@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen (AutoML) in Apache Spark in Azure HDInsight
+title: Ausführen von Azure Machine Learning-Workloads in Apache Spark in Azure HDInsight
 description: Hier erfahren Sie, wie Sie Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen (AutoML) in Apache Spark in Azure HDInsight ausführen.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141181"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814043"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Ausführen von Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen (AutoML) in Apache Spark in Azure HDInsight
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Ausführen von Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen in Apache Spark in HDInsight
 
 Azure Machine Learning vereinfacht und beschleunigt die Erstellung, das Training und die Bereitstellung von Machine Learning-Modellen. Beim automatisierten maschinellen Lernen (AutoML) beginnen Sie mit Trainingsdaten mit einer definierten Zielfunktion und iterieren dann durch Kombinationen von Algorithmen und Featureauswahlen, um automatisch das beste Modell für Ihre Daten basierend auf den Trainingswerten auszuwählen. HDInsight ermöglicht es Kunden, Cluster mit Hunderten von Knoten bereitzustellen. AutoML, das unter Spark in einem HDInsight-Cluster ausgeführt wird, ermöglicht es Benutzern, die Computekapazität knotenübergreifend zu nutzen, um Trainingsaufträge mit horizontaler Skalierung sowie mehrere Trainingsaufträge parallel auszuführen. Dadurch können Benutzer AutoML-Experimente durchführen, während sie den Computevorgang mit ihren anderen Big-Data-Workloads teilen.
  

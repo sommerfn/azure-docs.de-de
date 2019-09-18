@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147205"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914897"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vorschauversion – Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -42,7 +42,7 @@ Sie müssen nach der Erstellung Ihres Clusters einen zusätzlichen Knotenpool hi
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Für die Verwendung von Windows Server-Containern benötigen Sie *aks-preview*-CLI-Erweiterungsversion 0.4.1 oder höher. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+Für die Verwendung von Windows Server-Containern benötigen Sie *aks-preview*-CLI-Erweiterungsversion 0.4.12 oder höher. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -79,8 +79,8 @@ az provider register --namespace Microsoft.ContainerService
 
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
-* Für Cluster, die erstellt wurden, nachdem Sie die *WindowsPreview* erfolgreich registriert haben, stehen mehrere Knotenpools zur Verfügung. Mehrere Knotenpools sind auch verfügbar, wenn Sie die Features *MultiAgentpoolPreview* und *VMSSPreview* für Ihr Abonnement registrieren. Sie können keine Knotenpools mit einem bestehenden AKS-Cluster hinzufügen oder verwalten, die vor der erfolgreichen Registrierung dieser Features erstellt wurden.
-* Der erste Knotenpool kann nicht gelöscht werden.
+* Für Cluster, die erstellt wurden, nachdem Sie die *WindowsPreview* erfolgreich registriert haben, stehen mehrere Knotenpools zur Verfügung. Mehrere Knotenpools sind auch verfügbar, wenn Sie das Feature *MultiAgentpoolPreview* für Ihr Abonnement registrieren. Sie können keine Knotenpools mit einem bestehenden AKS-Cluster hinzufügen oder verwalten, die vor der erfolgreichen Registrierung dieses Features erstellt wurden.
+* Sie können den ersten Knotenpool nicht löschen.
 
 Während sich diese Funktion in der Vorschau befindet, gelten die folgenden zusätzlichen Einschränkungen:
 
@@ -141,7 +141,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 

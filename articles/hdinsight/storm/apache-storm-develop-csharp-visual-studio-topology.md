@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9d459f88cd252303384acb4a72d0af0cce6ee226
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428469"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915163"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio
 
@@ -566,7 +566,7 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus. Wählen Sie in den Projekteigenschaften für **Ausgabetyp** die Option **Konsolenanwendung** aus.
 
-    ![Bildschirmabbildung von Projekteigenschaften mit hervorgehobenem Ausgabetyp](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
+    ![Bildschirmabbildung von Projekteigenschaften mit hervorgehobenem Ausgabetyp](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > Denken Sie daran, für den **Ausgabetyp** später wieder **Klassenbibliothek** festzulegen, bevor die Topologie in einem Cluster bereitgestellt wird.

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 09/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 11ac4e10cbd116ed204a8a11274408f5a5a9b4d9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183133"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773101"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle
 Dieser Schnellstart führt Sie durch das Erstellen, Starten, Verbinden, Aktualisieren und Bereinigen von Entwicklungscomputern im Lab. 
@@ -123,15 +123,31 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-Listen Sie die Artefakte im Lab auf.
-```azurecli
-az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
+### <a name="list-artifacts-available-in-the-lab"></a>Auflisten der im Lab verfügbaren Artefakte
+
+Um auf einem virtuellen Computer in einem Lab verfügbare Artefakte aufzulisten, führen Sie die folgenden Befehle aus.
+
+**Cloud Shell – PowerShell**: Beachten Sie die Verwendung des Graviszeichens (\`) vor dem „$“ in „$expand“ (d. h. `$expand):
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
+
+**Cloud Shell – Bash**: Beachten Sie die Verwendung des Schrägstrichs (\\) vor „$“ im Befehl. 
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
+```
+
+Beispielausgabe: 
+
 ```json
-{
-  "artifactId": "/subscriptions/abcdeftgh1213123/resourceGroups/lisalab123RG822645/providers/Microsoft.DevTestLab/labs/lisalab123/artifactSources/public repo/artifacts/linux-install-nodejs",
-  "status": "Succeeded"
-}
+[
+  {
+    "artifactId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DevTestLab/labs/<lab name>/artifactSources/public repo/artifacts/windows-7zip",
+    "status": "Succeeded"
+  }
+]
 ```
 
 ## <a name="stop-and-delete-the-virtual-machine"></a>Beenden und Löschen virtueller Computer    

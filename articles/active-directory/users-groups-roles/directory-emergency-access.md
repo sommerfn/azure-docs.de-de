@@ -1,10 +1,10 @@
 ---
 title: 'Verwalten von Administratorkonten für den Notfallzugriff: Azure Active Directory | Microsoft-Dokumentation'
-description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Konten für den Notfallzugriff verhindern können, versehentlich aus Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) ausgeschlossen zu werden.
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Konten für den Notfallzugriff verhindern können, versehentlich aus Ihrer Azure Active Directory-Organisation (Azure AD) ausgeschlossen zu werden.
 services: active-directory
 author: markwahl-msft
 ms.author: curtand
-ms.date: 03/19/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42de060d81539030ef1970e01e753383662e924f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083910"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772425"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
-Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure Active Directory-Mandanten ausgeschlossen zu werden, weil Sie sich nicht anmelden oder ein Konto eines vorhandenen einzelnen Benutzers nicht als Administrator aktivieren können. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie mindestens zwei *Konten für den Notfallzugriff* in Ihrem Mandanten erstellen.
+Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrer Azure Active Directory-Organisation (Azure AD) ausgeschlossen zu werden, weil Sie sich nicht anmelden oder ein Konto eines anderen Benutzers als Administrator aktivieren können. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie mindestens zwei *Konten für den Notfallzugriff* in Ihrer Organisation erstellen.
 
-Konten für den Notfallzugriff verfügen über umfangreiche Berechtigungen und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Notfallsituationen oder Szenarien beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen sicherstellen, dass die Verwendung der Notfallkonten ausschließlich auf Fälle beschränkt wird, in denen dies absolut notwendig ist.
+Konten für den Notfallzugriff verfügen über umfangreiche Berechtigungen und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Notfallsituationen oder Szenarien beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Sie sollten die Verwendung der Notfallkonten ausschließlich auf Fälle beschränken, in denen dies absolut notwendig ist.
 
 Dieser Artikel enthält Richtlinien zum Verwalten von Konten für den Notfallzugriff in Azure AD.
 
-## <a name="when-would-you-use-an-emergency-access-account"></a>In welchen Fällen würden Sie ein Konto für den Notfallzugriff verwenden?
+## <a name="why-use-an-emergency-access-account"></a>Gründe zur Verwendung eines Kontos für den Notfallzugriff
 
 Eine Organisation könnte beispielsweise in den folgenden Situationen auf ein Konto für den Notfallzugriff zurückgreifen:
 
@@ -36,7 +36,7 @@ Eine Organisation könnte beispielsweise in den folgenden Situationen auf ein Ko
 - Die Person, die zuletzt über globalen Administratorzugriff verfügte, hat die Organisation verlassen. Azure AD verhindert, dass das letzte globale Administratorkonto gelöscht wird, aber das lokale Löschen oder Deaktivieren des Kontos wird nicht verhindert. Beide Situationen können dazu führen, dass die Organisation nicht in der Lage ist, das Konto wiederherzustellen.
 - Bei unvorhersehbaren Ereignissen wie Naturkatastrophen, die dazu führen, dass Mobiltelefone oder andere Netzwerke nicht verfügbar sind. 
 
-## <a name="create-two-cloud-based-emergency-access-accounts"></a>Erstellen von zwei cloudbasierten Konten für den Notfallzugriff
+## <a name="create-emergency-access-accounts"></a>Erstellen von Konten für den Notfallzugriff
 
 Erstellen Sie mindestens zwei Konten für den Notfallzugriff. Bei diesen Konten sollte es sich um reine Cloudkonten handeln, die die Domäne „\*.onmicrosoft.com“ verwenden und keine Verbundkonten oder Konten darstellen, die über eine lokale Umgebung synchronisiert werden.
 
@@ -46,7 +46,6 @@ Beim Konfigurieren dieser Konten müssen die folgenden Anforderungen erfüllt we
 - Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, würde Azure MFA einen anderen Mechanismus darstellen.  Wenn jedoch Azure MFA Ihr primäres Authentifizierungselement für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen, z.B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter.
 - Die jeweiligen Geräte oder die Anmeldeinformationen dürfen nicht ablaufen oder aufgrund mangelnder Verwendung in den Bereich der automatisierten Bereinigung fallen.  
 - Sie sollten die Rolle „Globaler Administrator“ für Ihre Konten für den Notfallzugriff dauerhaft zuweisen. 
-
 
 ### <a name="exclude-at-least-one-account-from-phone-based-multi-factor-authentication"></a>Ausschließen mindestens eines Kontos aus der telefonbasierten mehrstufigen Authentifizierung
 
@@ -58,24 +57,84 @@ Für mindestens eines Ihrer Konten für den Notfallzugriff sollte jedoch nicht d
 
 In einem Notfall soll eine Richtlinie Ihren Zugriff nicht potenziell blockieren, um ein Problem zu beheben. Mindestens ein Konto für den Notfallzugriff sollte aus allen Richtlinien für bedingten Zugriff ausgeschlossen werden. Wenn Sie eine [Basisrichtlinie](../conditional-access/baseline-protection.md) aktiviert haben, sollten Sie Ihre Konten für den Notfallzugriff daraus ausschließen.
 
-## <a name="additional-guidance-for-hybrid-customers"></a>Zusätzliche Empfehlungen für Kunden mit Hybridlösungen
+## <a name="federation-guidance"></a>Verbundleitfaden
 
 Eine weitere Option für Organisationen, die Active Directory Domain Services und AD FS oder einen ähnlichen Identitätsanbieter für den Verbund mit Azure AD verwenden, ist das Konfigurieren eines Kontos für den Notfallzugriff, dessen MFA-Anspruch von diesem Identitätsanbieter angegeben werden könnte.  Das Konto für den Notfallzugriff könnte z. B. durch ein Zertifikat und ein Schlüsselpaar gesichert werden, wie beispielsweise eines, das auf einer Smartcard gespeichert ist.  Wenn der Benutzer für Azure Active Directory authentifiziert wird, kann AD FS einen Anspruch für Azure AD angeben, der darauf hinweist, dass der Benutzer die MFA-Anforderungen erfüllt.  Auch bei diesem Ansatz müssen Organisationen für den Fall, dass kein Verbund hergestellt werden kann, weiterhin über cloudbasierte Konten für den Notfallzugriff verfügen. 
 
-## <a name="store-devices-and-credentials-in-a-safe-location"></a>Aufbewahren von Geräten und Anmeldeinformationen an einem sicheren Ort
+## <a name="store-account-credentials-safely"></a>Sicheres Speichern der Anmeldeinformationen für Konten
 
 Organisationen müssen sicherstellen, dass die Anmeldeinformationen für Konten für den Notfallzugriff sicher aufbewahrt werden und nur den Personen bekannt sind, die für deren Verwendung autorisiert sind. Einige Kunden verwenden eine Smartcard, und andere verwenden Kennwörter. Ein Kennwort für ein Konto für den Notfallzugriff wird in der Regel in zwei oder drei Teile unterteilt, die separat auf Papier festgehalten und in geschützten, feuerfesten Tresoren hinterlegt werden, die sich an sicheren, getrennten Standorten befinden.
 
 Stellen Sie bei Verwendung von Kennwörtern sicher, dass die Konten über sichere Kennwörter verfügen, die nicht ablaufen. Im Idealfall sollten die Kennwörter mindestens 16 Zeichen umfassen und zufällig generiert werden.
 
-
 ## <a name="monitor-sign-in-and-audit-logs"></a>Überwachen von Anmeldungs- und Überwachungsprotokollen
 
-Überwachen Sie die [Azure AD-Anmeldungs- und Überwachungsprotokolle](../reports-monitoring/concept-sign-ins.md) auf Anmeldungen, und überwachen Sie die Aktivität der Konten für den Notfallzugriff. Normalerweise sollte über diese Konten keine Anmeldungen und keine Änderungen erfolgen, deshalb ist ihre Verwendung verdächtig und bedarf einer Sicherheitsuntersuchung.
+Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überwachungsprotokollaktivitäten überwachen und Benachrichtigungen anderer Administratoren auslösen. Wenn Sie die Aktivität von Konten für den Notfallzugriff überwachen, können Sie sicherstellen, dass diese Konten nur für Tests oder tatsächliche Notfälle verwendet werden. Sie können mit Azure Log Analytics die Anmeldeprotokolle überwachen und E-Mail- und SMS-Warnungen an Ihre Administratoren senden, wenn sich Konten für den Notfallzugriff anmelden.
 
-## <a name="validate-accounts-at-regular-intervals"></a>Regelmäßiges Überprüfen der Konten
+### <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie mindestens die folgenden Schritte in regelmäßigen Abständen aus, um die Mitarbeiter in der Verwendung und Überprüfung von Konten für den Notfallzugriff zu schulen:
+1. [Senden Sie Azure AD-Anmeldeprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) an Azure Monitor.
+
+### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Abrufen von Objekt-IDs der Konten für den Notfallzugriff
+
+1. Melden Sie sich mit einem Konto beim [Azure-Portal](https://portal.azure.com) an, das der Benutzeradministratorrolle zugewiesen ist.
+1. Wählen Sie **Azure Active Directory** > **Benutzer** aus.
+1. Suchen Sie nach dem Konto für den Notfallzugriff, und wählen Sie den Namen des Benutzers aus.
+1. Kopieren und speichern Sie das Objekt-ID-Attribut, damit Sie es später verwenden können.
+1. Wiederholen Sie die vorherigen Schritte für das zweite Konto für den Notfallzugriff.
+
+### <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das der Rolle „Mitwirkender an der Überwachung“ in Azure Monitor zugewiesen ist.
+1. Wählen Sie **Alle Dienste** aus, geben Sie „Log Analytics“ in „Suchen“ ein, und wählen Sie dann **Log Analytics-Arbeitsbereiche** aus.
+1. Wählen Sie einen Arbeitsbereich aus.
+1. Wählen Sie in Ihrem Arbeitsbereich **Warnungen** > **Neue Warnungsregel** aus.
+    1. Überprüfen Sie unter **Ressource**, ob es sich bei dem Abonnement um das Abonnement handelt, dem Sie die Warnungsregel zuordnen möchten.
+    1. Wählen Sie unter **Bedingung** die Option **Hinzufügen** aus.
+    1. Wählen Sie **Benutzerdefinierte Protokollsuche** unter **Signalname** aus.
+    1. Geben Sie unter **Suchabfrage** die folgende Abfrage ein, und fügen Sie die Objekt-IDs der beiden Konten für den Notfallzugriff ein.
+        > [!NOTE]
+        > Fügen Sie für jedes weitere Konto für den Notfallzugriff, das Sie einschließen möchten, ein weiteres „or UserId == "ObjectGuid"“ in die Abfrage ein.
+
+        ![Hinzufügen der Objekt-IDs der Konten für den Notfallzugriff zu einer Warnungsregel](./media/directory-emergency-access/query-image1.png)
+
+    1. Geben Sie unter **Warnungslogik** Folgendes ein:
+
+        - Basierend auf: Anzahl der Ergebnisse
+        - Operator: Größer als
+        - Schwellenwert: 0
+
+    1. Wählen Sie unter **Auswertung basierend auf** den **Zeitraum (in Minuten)** aus, für den die Abfrage ausgeführt werden soll, und die **Häufigkeit (in Minuten)** , mit der die Abfrage ausgeführt werden soll. Die Häufigkeit sollte kleiner als der Zeitraum oder gleich sein.
+
+        ![Warnungslogik](./media/directory-emergency-access/alert-image2.png)
+
+    1. Wählen Sie **Fertig**aus. Sie können jetzt die geschätzten monatlichen Kosten dieser Warnung anzeigen.
+1. Wählen Sie eine Aktionsgruppe von Benutzern aus, die durch die Warnung benachrichtigt werden soll. Wenn Sie eine erstellen möchten, finden Sie weitere Informationen unter [Erstellen einer Aktionsgruppe](#create-an-action-group).
+1. Zum Anpassen der E-Mail-Benachrichtigung, die an die Mitglieder der Aktionsgruppe gesendet wird, wählen Sie unter **Aktionen anpassen** Aktionen aus.
+1. Geben Sie unter **Warnungsdetails** den Namen der Warnungsregel an, und fügen Sie eine optionale Beschreibung hinzu.
+1. Legen Sie den **Schweregrad** des Ereignisses fest. Sie sollten ihn auf **Kritisch (Schweregrad 0)** festlegen.
+1. Behalten Sie unter **Regel beim Erstellen aktivieren** die Einstellung **ja** bei.
+1. Wenn Sie Warnungen für eine Weile deaktivieren möchten, aktivieren Sie das Kontrollkästchen **Warnungen unterdrücken**, geben Sie die Wartezeit vor der Warnung erneut ein, und wählen Sie dann **Speichern** aus.
+1. Klicken Sie auf **Warnungsregel erstellen**.
+
+### <a name="create-an-action-group"></a>Erstellen einer Aktionsgruppe
+
+1. Wählen Sie **Erstellen einer Aktionsgruppe** aus.
+
+    ![Erstellen einer Aktionsgruppe für Benachrichtigungsaktionen](./media/directory-emergency-access/action-group-image3.png)
+
+1. Geben Sie den Namen für die Aktionsgruppe und einen kurzen Namen ein.
+1. Überprüfen Sie Abonnement und Ressourcengruppe.
+1. Wählen Sie unter Aktionstyp **E-Mail/SMS/Push/Sprachanruf** aus.
+1. Geben Sie einen Aktionsnamen wie z. B. **Globalen Administrator benachrichtigen** ein.
+1. Wählen Sie den **Aktionstyp** **E-Mail/SMS/Push/Sprachanruf** aus.
+1. Wählen Sie **Details bearbeiten** aus, um die zu konfigurierenden Benachrichtigungsmethoden auszuwählen, geben Sie die erforderlichen Kontaktinformationen ein, und wählen Sie dann **OK** aus, um die Details zu speichern.
+1. Fügen Sie ggf. zusätzliche Aktionen hinzu, die Sie auslösen möchten.
+1. Klicken Sie auf **OK**.
+
+## <a name="validate-accounts-regularly"></a>Regelmäßiges Überprüfen der Konten
+
+Wenn Sie Mitarbeiter in der Verwendung und Überprüfung von Konten für den Notfallzugriff schulen, führen Sie mindestens die folgenden Schritte in regelmäßigen Abständen aus:
 
 - Stellen Sie sicher, dass die für die Sicherheitsüberwachung verantwortlichen Mitarbeiter darüber informiert sind, dass eine Kontoüberprüfung stattfindet.
 - Stellen Sie sicher, dass der Notfallprozess zur Verwendung dieser Konten dokumentiert und aktuell ist.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256984"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844864"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Verwenden von Erstellungs- und Laufzeitressourcenschlüsseln
 
@@ -72,6 +72,38 @@ Wenn Sie Ihren Vorhersageendpunkt veröffentlichen möchten, erstellen Sie Erste
     |Runtime pricing tier (Laufzeittarif)|Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.|
 
     Nachdem beide Ressourcen erstellt sind, weisen Sie die Ressourcen im LUIS-Portal zu.
+
+## <a name="create-resources-in-azure-cli"></a>Erstellen von Ressourcen in der Azure CLI
+
+Verwenden Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), um die einzelnen Ressourcen individuell zu erstellen. 
+
+Ressource `kind`:
+
+* Erstellung: `LUIS.Authoring`
+* Vorhersage: `LUIS` 
+
+1. Melden Sie sich bei der Azure CLI an:
+
+    ```console
+    az login
+    ```
+
+    Dadurch wird ein Browser geöffnet, in dem Sie das richtige Konto auswählen und die Authentifizierung bereitstellen können.
+
+1. Erstellen Sie eine **LUIS-Erstellungsressource** der Art `LUIS.Authoring` mit dem Namen `my-luis-authoring-resource` in der _vorhandenen_ Ressourcengruppe mit dem Namen `my-resource-group` für die Region `westus`. 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. Erstellen Sie eine **LUIS-Vorhersagen-Endpunktressource** der Art `LUIS` mit dem Namen `my-luis-prediction-resource` in der _vorhandenen_ Ressourcengruppe mit dem Namen `my-resource-group` für die Region `westus`. Wenn Sie einen höheren Durchsatz als den Free-Tarif wünschen, ändern Sie `F0` in `S0`. Weitere Informationen zu [Tarifen und Durchsatz](luis-boundaries.md#key-limits).
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > Diese Schlüssel werden vom LUIS-Portal **nicht** verwendet, solange sie nicht im LUIS-Portal auf den **Verwalten -> Azure-Ressourcen** verwendet werden.
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Zuweisen einer Erstellungsressource im LUIS-Portal für alle Apps
 
@@ -186,6 +218,6 @@ Fügen Sie eine Metrikwarnung für die Metrik der **Summe der Aufrufe** für ein
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, [wie Sie Versionen verwenden](luis-how-to-manage-versions.md), um den Lebenszyklus ihrer App zu steuern.
-* Informieren Sie sich über die Konzepte, einschließlich der [Erstellungsressource](/luis-concept-keys.md#authoring-key) und der [Mitwirkenden](luis-concept-keys.md#contributions-from-other-authors) für diese Ressource.
+* Informieren Sie sich über die Konzepte, einschließlich der [Erstellungsressource](luis-concept-keys.md#authoring-key) und der [Mitwirkenden](luis-concept-keys.md#contributions-from-other-authors) für diese Ressource.
 * Erfahren Sie, wie Sie Erstellungs- und Laufzeitressourcen [erstellen](luis-how-to-azure-subscription.md).
 * Migrieren Sie zu der neuen [Erstellungsressource](luis-migration-authoring.md). 

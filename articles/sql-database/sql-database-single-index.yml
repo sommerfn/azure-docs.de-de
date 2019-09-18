@@ -63,19 +63,6 @@ sections:
             html: '<p>Sichern Sie Ihre Datenbank mit Azure AD-Authentifizierung, virtuellen Netzwerken, Firewalls und Always Encrypted-Verbindungen. Identifizieren Sie Bedrohungen und Sicherheitsrisiken mit integrierter Sicherheit.</p>'
             image:
               src: media/index/i_security.svg
-  - title: Neue Features und Previewfunktionen
-    items:
-      - type: paragraph
-        text: 'SQL-Datenbank wird fortlaufend mit neuen, verbesserten Features ausgestattet, und wir würden gerne Ihr Feedback zu den folgenden neuen Features erfahren:'
-      - type: list
-        style: unordered
-        items:
-          - html: '(Vorschau) <a href="sql-database-service-tier-hyperscale">Hyperscale</a>-Tarif, der Datenbanken mit bis zu 100 TB und mehrere lesbare Replikate unterstützt.'
-          - html: '(Vorschau) Neue Features für <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">intelligente Abfrageverarbeitung</a> in SQL Server 2019, z.B. <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">verzögerte Kompilierung von Tabellenvariablen</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">Batchmodus bei Rowstore-Tabellen</a> und <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> Inlining benutzerdefinierter Skalarfunktionen</a>.'
-          - html: '(Vorschau) Neue Transact-SQL-Sprachfunktionen, z.B. <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Aggregatfunktion APPROX_COUNT_DISTINCT</a> und <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Massenimport aus Azure Blob Storage</a>.'
-          - html: '(Vorschau) Neue Vorgänge zum <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">Erstellen</a> und Neuerstellen des clustered columnstore-Index in SQL Server 2019 Online.'
-          - html: '(Vorschau) Neue <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Machine Learning Services (mit R) in Azure SQL-Datenbank</a>'
-          - html: '(Vorschauversion) Die neue <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">serverlose Computeebene</a> bietet automatische Computeskalierung und stellt eine Übersicht der genutzten Computekapazität pro Sekunde bereit.'
   - title: Fünf-Minuten-Schnellstarts
     items:
       - type: paragraph

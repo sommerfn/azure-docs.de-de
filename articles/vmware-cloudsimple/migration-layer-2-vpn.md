@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972614"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845476"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
@@ -108,7 +108,7 @@ Weitere Informationen finden Sie in der VMware-Dokumentation unter [Virtual Priv
 
 Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logischen Routerinstanz für die Notfallwiederherstellung der Ebene 0 der IPsec- und L2VPN-Dienste abrufen. Die ID des logischen Routers wird später bei der Implementierung des L2VPN benötigt.
 
-1. Melden Sie sich beim NSX-T-Manager an (https://nsx-t-manager-ip-address), und wählen Sie **Networking** > **Routers** > **Provider-LR** > **Overview** (Netzwerk > Router > Anbieter-LR > Übersicht) aus. Wählen Sie für **High Availability Mode** (Hochverfügbarkeitsmodus) die Option **Active-Standby** (Aktiver Standbymodus) aus. Mit dieser Aktion wird ein Popupfenster geöffnet, in dem die Edge-VM angezeigt wird, auf der der Router der Ebene 0 derzeit aktiv ist.
+1. Melden Sie sich beim NSX-T-Manager https://*nsx-t-manager-ip-address* an, und wählen Sie **Networking** > **Routers** > **Provider-LR** > **Overview** (Netzwerk > Router > Anbieter-LR > Übersicht) aus. Wählen Sie für **High Availability Mode** (Hochverfügbarkeitsmodus) die Option **Active-Standby** (Aktiver Standbymodus) aus. Mit dieser Aktion wird ein Popupfenster geöffnet, in dem die Edge-VM angezeigt wird, auf der der Router der Ebene 0 derzeit aktiv ist.
 
     ![Auswählen von „active-standby“](media/l2vpn-fetch01.png)
 

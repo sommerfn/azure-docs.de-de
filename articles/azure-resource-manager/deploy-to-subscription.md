@@ -4,22 +4,20 @@ description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe i
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8414e94582ec4022915e4c353f33eec72f3dc98a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 37f2b04a62d94cce42b095540380460c38bc5b79
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205655"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772955"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
 In der Regel stellen Sie Azure-Ressourcen für eine Ressourcengruppe in Ihrem Azure-Abonnement bereit. Sie können jedoch auch Azure-Ressourcengruppen erstellen und Azure-Ressourcen auf Abonnementebene erstellen. Um Vorlagen auf Abonnementebene bereitzustellen, verwenden Sie die Azure CLI und Azure PowerShell. Das Azure-Portal unterstützt keine Bereitstellung auf Abonnementebene.
 
-Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine [**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions)-Ressource mit einem Namen und einem Speicherort für die Ressourcengruppe. Sie können eine Ressourcengruppe erstellen und Ressourcen für diese Ressourcengruppe in derselben Vorlage bereitstellen. Folgende Ressourcen können auf Abonnementebene bereitgestellt werden: [Richtlinien](../governance/policy/overview.md) und Ressourcen für die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine Ressource [Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) mit einem Namen und einem Speicherort für die Ressourcengruppe. Sie können eine Ressourcengruppe erstellen und Ressourcen für diese Ressourcengruppe in derselben Vorlage bereitstellen. Folgende Ressourcen können auf Abonnementebene bereitgestellt werden: [Richtlinien](../governance/policy/overview.md) und Ressourcen für die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
@@ -33,7 +31,7 @@ Verwenden Sie für das Schema `https://schema.management.azure.com/schemas/2018-
 
 Verwenden Sie als Azure CLI-Bereitstellungsbefehl [az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create). Beispielsweise wird mit dem folgenden CLI-Befehl eine Vorlage zum Erstellen einer Ressourcengruppe bereitgestellt:
 
-```azurecli
+```azurecli-interactive
 az deployment create \
   --name demoDeployment \
   --location centralus \
@@ -43,7 +41,7 @@ az deployment create \
 
 Verwenden Sie als PowerShell-Bereitstellungsbefehl [New-AzDeployment](/powershell/module/az.resources/new-azdeployment). Mit dem folgenden PowerShell-Befehl wird beispielsweise eine Vorlage zum Erstellen einer Ressourcengruppe bereitgestellt:
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzDeployment `
   -Name demoDeployment `
   -Location centralus `
@@ -244,35 +242,9 @@ Im folgenden Beispiel wird dem Abonnement eine vorhandene Richtliniendefinition 
 }
 ```
 
-Um eine integrierte Richtlinie auf Ihr Azure-Abonnement anzuwenden, verwenden Sie die folgenden Azure CLI-Befehle:
+Stellen Sie diese Vorlage mit der Azure CLI wie folgt bereit:
 
-```azurecli
-# Built-in policy that does not accept parameters
-definition=$(az policy definition list --query "[?displayName=='Audit resource location matches resource group location'].id" --output tsv)
-
-az deployment create \
-  --name demoDeployment \
-  --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
-  --parameters policyDefinitionID=$definition policyName=auditRGLocation
-```
-
-Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```azurepowershell
-$definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit resource location matches resource group location' }
-
-New-AzDeployment `
-  -Name policyassign `
-  -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
-  -policyDefinitionID $definition.PolicyDefinitionId `
-  -policyName auditRGLocation
-```
-
-Um eine integrierte Richtlinie auf Ihr Azure-Abonnement anzuwenden, verwenden Sie die folgenden Azure CLI-Befehle:
-
-```azurecli
+```azurecli-interactive
 # Built-in policy that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
@@ -285,7 +257,7 @@ az deployment create \
 
 Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
 
-```azurepowershell
+```azurepowershell-interactive
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
 
 $locations = @("westus", "westus2")
@@ -363,160 +335,9 @@ New-AzDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="create-roles"></a>Erstellen von Rollen
-
-### <a name="assign-role-at-subscription"></a>Zuweisen einer Rolle für das Abonnement
-
-Im folgenden Beispiel wird einem Benutzer oder einer Gruppe eine Rolle für das Abonnement zugewiesen. In diesem Beispiel geben Sie keinen Bereich für die Zuweisung an, da der Bereich automatisch auf das Abonnement festgelegt ist.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "principalId": {
-            "type": "string"
-        },
-        "roleDefinitionId": {
-            "type": "string"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/roleAssignments",
-            "name": "[guid(parameters('principalId'), deployment().name)]",
-            "apiVersion": "2017-09-01",
-            "properties": {
-                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-                "principalId": "[parameters('principalId')]"
-            }
-        }
-    ]
-}
-```
-
-Verwenden Sie die folgenden Azure CLI-Befehle, um eine Active Directory-Gruppe einer Rolle für Ihr Abonnement zuzuweisen:
-
-```azurecli
-# Get ID of the role you want to assign
-role=$(az role definition list --name Contributor --query [].name --output tsv)
-
-# Get ID of the AD group to assign the role to
-principalid=$(az ad group show --group demogroup --query objectId --output tsv)
-
-az deployment create \
-  --name demoDeployment \
-  --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json \
-  --parameters principalId=$principalid roleDefinitionId=$role
-```
-
-Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```azurepowershell
-$role = Get-AzRoleDefinition -Name Contributor
-
-$adgroup = Get-AzADGroup -DisplayName demogroup
-
-New-AzDeployment `
-  -Name demoRole `
-  -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
-  -roleDefinitionId $role.Id `
-  -principalId $adgroup.Id
-```
-
-### <a name="assign-role-at-scope"></a>Zuweisen einer Rolle für einen Bereich
-
-Mit der folgenden Vorlage auf Abonnementebene wird einem Benutzer oder einer Gruppe eine Rolle zugewiesen, die auf eine Ressourcengruppe innerhalb des Abonnements beschränkt ist. Der Bereich muss sich auf oder unterhalb der Bereitstellungsebene befinden. Sie können eine Bereitstellung für ein Abonnement vornehmen und eine Rollenzuweisung angeben, die auf eine Ressourcengruppe in diesem Abonnement beschränkt ist. Sie können aber keine Bereitstellung für eine Ressourcengruppe vornehmen und eine Rollenzuweisung angeben, die auf das Abonnement beschränkt ist.
-
-Verwenden Sie eine geschachtelte Bereitstellung, um die Rolle für einen Bereich zuzuweisen. Beachten Sie, dass der Name der Ressourcengruppe sowohl in den Eigenschaften für die Bereitstellungsressource als auch in der Bereichseigenschaft der Rollenzuweisung angegeben wird.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "principalId": {
-            "type": "string"
-        },
-        "roleDefinitionId": {
-            "type": "string"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-05-01",
-            "name": "assignRole",
-            "resourceGroup": "[parameters('rgName')]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.Authorization/roleAssignments",
-                            "name": "[guid(parameters('principalId'), deployment().name)]",
-                            "apiVersion": "2017-09-01",
-                            "properties": {
-                                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-                                "principalId": "[parameters('principalId')]",
-                                "scope": "[concat(subscription().id, '/resourceGroups/', parameters('rgName'))]"
-                            }
-                        }
-                    ],
-                    "outputs": {}
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-Verwenden Sie die folgenden Azure CLI-Befehle, um eine Active Directory-Gruppe einer Rolle für Ihr Abonnement zuzuweisen:
-
-```azurecli
-# Get ID of the role you want to assign
-role=$(az role definition list --name Contributor --query [].name --output tsv)
-
-# Get ID of the AD group to assign the role to
-principalid=$(az ad group show --group demogroup --query objectId --output tsv)
-
-az deployment create \
-  --name demoDeployment \
-  --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json \
-  --parameters principalId=$principalid roleDefinitionId=$role rgName demoRg
-```
-
-Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```azurepowershell
-$role = Get-AzRoleDefinition -Name Contributor
-
-$adgroup = Get-AzADGroup -DisplayName demogroup
-
-New-AzDeployment `
-  -Name demoRole `
-  -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json `
-  -roleDefinitionId $role.Id `
-  -principalId $adgroup.Id `
-  -rgName demoRg
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../role-based-access-control/role-assignments-template.md).
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
 * Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md). 
 * Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238054"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735105"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238054"
 >
 > Diese Seite ist nur relevant, wenn Sie einen dieser Dienste verwenden.
 
-Diese Seite bezieht sich auf Version 1.3 und höher (Azure SDK 2.4 und höher). Neuere Konfigurationsabschnitte enthalten einen Kommentar mit der Version, in der sie hinzugefügt wurden.  
+Diese Seite bezieht sich auf Version 1.3 und höher (Azure SDK 2.4 und höher). Neuere Konfigurationsabschnitte enthalten einen Kommentar mit der Version, in der sie hinzugefügt wurden. Version 1.0 und 1.2 des Schemas wurden archiviert und sind nicht mehr verfügbar. 
 
 Die hier beschriebene Konfigurationsdatei wird verwendet, um beim Start des Diagnosemonitors Diagnosekonfigurationseinstellungen festzulegen.  
 
 Die Erweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie der Plattform Azure Monitor verwendet, die Application Insights und Log Analytics einschließt.
-
-
 
 Laden Sie die Schemadefinition für die öffentliche Konfigurationsdatei mit dem folgenden PowerShell-Befehl herunter:  
 

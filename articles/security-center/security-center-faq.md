@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6e41453a096f4812b9ba541a2693b9c9b975b7c9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 33ce4c3c7f7cba8310ca75ffd0de3ecb24ad6d8d
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68779063"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873404"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – Häufig gestellte Fragen
 Hier werden häufig gestellte Fragen zu Azure Security Center beantwortet. Azure Security Center ist ein Dienst, der Sie aufgrund von größerer Transparenz und besserer Kontrolle der Sicherheit Ihrer Microsoft Azure-Ressourcen dabei unterstützt, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
 
 > [!NOTE]
-> Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
+> Security Center verwendet den Microsoft Monitoring Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md).
 >
 >
 
@@ -63,7 +63,7 @@ Nein. Von Security Center erstellte Arbeitsbereiche sind zwar für die knotenbas
 - **Free-Tarif**: Security Center aktiviert die Lösung „SecurityCenterFree“ im Standardarbeitsbereich. Für den Free-Tarif entstehen keine Kosten.
 - **Standard-Tarif**: Security Center aktiviert die Lösung „Security“ im Standardarbeitsbereich.
 
-Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/). Auf der Seite mit den Preisinformationen werden Änderungen an der Speicherung von Sicherheitsdaten und die anteilsmäßige Abrechnung ab Juni 2017 berücksichtigt.
+Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Der Protokollanalyse-Tarif von Arbeitsbereichen, die von Security Center erstellt wurden, hat keine Auswirkungen auf die Security Center-Abrechnung.
@@ -161,7 +161,7 @@ Sie können die automatische Bereitstellung für Ihre Abonnements in der Sicherh
 Möglicherweise möchten Sie die automatische Bereitstellung deaktivieren, wenn Folgendes auf Sie zutrifft:
 
 - Die automatische Agent-Installation durch Security Center gilt für das gesamte Abonnement.  Sie können die automatische Installation nicht auf eine Teilmenge der VMs anwenden. Wenn wichtige VMs nicht mit Microsoft Monitoring Agent installiert werden können, sollten Sie die automatische Bereitstellung deaktivieren.
-- Die Installation der Microsoft Monitoring Agent-Erweiterung (MMA) aktualisiert die Agent-Version. Dies gilt für einen direkten Agent und einen SCOM-Agent (im letztgenannten teilen sich SCOM und MMA gemeinsame Runtimebibliotheken – die im Prozess aktualisiert werden). Wenn ein installierter SCOM-Agent der Version 2012 aktualisiert wird, können Verwaltungsfunktionen verloren gehen, wenn die Version des SCOM-Servers ebenfalls 2012 ist. Sie sollten die Deaktivierung der automatischen Bereitstellung erwägen, wenn Sie Version 2012 des SCOM-Agent installiert haben.
+- Die Installation der Microsoft Monitoring Agent-Erweiterung (MMA) aktualisiert die Agent-Version. Dies gilt für einen direkten Agent und einen SCOM-Agent (im letztgenannten teilen sich SCOM und MMA gemeinsame Runtimebibliotheken – die im Prozess aktualisiert werden). Wenn ein installierter SCOM-Agent der Version 2012 aktualisiert wird, können Verwaltungsfunktionen verloren gehen, wenn die Version des SCOM-Servers ebenfalls 2012 ist. Erwägen Sie die Deaktivierung der automatischen Bereitstellung, wenn Sie Version 2012 des SCOM-Agent installiert haben.
 - Wenn Sie über einen benutzerdefinierten Arbeitsbereich außerhalb des Abonnements (einen zentralen Arbeitsbereich) verfügen, sollten Sie die automatische Bereitstellung deaktivieren. Sie können die Microsoft Monitoring Agent-Erweiterung manuell installieren und ihre Verbindung mit Ihrem Arbeitsbereich herstellen, ohne dass Security Center die Verbindung überschreibt.
 - Wenn Sie das Erstellen mehrerer Arbeitsbereiche pro Abonnement vermeiden möchten und innerhalb des Abonnements über Ihren eigenen benutzerdefinierten Arbeitsbereich verfügen, haben Sie zwei Optionen:
 
@@ -329,7 +329,7 @@ Wartezeiten bei Security Center-Scans auf Sicherheitsrisiken, Updates und Proble
 Das Security Center scannt in der Regel jede Stunde nach neuen Daten und aktualisiert die Empfehlungen entsprechend. 
 
 > [!NOTE]
-> Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
+> Security Center verwendet den Microsoft Monitoring Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md).
 >
 >
 

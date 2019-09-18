@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c881c95fb860befbc978aba5a6c73375dce235fe
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166714"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919682"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
@@ -47,7 +47,7 @@ AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - Ubuntu 16.04
 - RHEL 7.6
 - CentOS 7.6
-- Windows 10 RS5 Enterprize/Professional/Enterprise for Virtual Desktop (EVD) 
+- Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
 - Windows 2019
 

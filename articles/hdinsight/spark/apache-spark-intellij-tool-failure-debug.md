@@ -1,6 +1,6 @@
 ---
 title: 'Debuggen von fehlgeschlagenen Spark-Aufträgen mit dem Azure-Toolkit für IntelliJ (Vorschau) '
-description: Hier finden Sie eine ausführliche Anleitung zur Verwendung der HDInsight Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen in HDInsight-Clustern per SSH.
+description: Leitfaden unter Verwendung der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Debuggen von Anwendungen
 keywords: Remotedebuggen von IntelliJ, Remotedebugging IntelliJ, SSH IntelliJ, HDInsight, Debuggen von Intellij, Debuggen
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: aff9f0f70377ebc6e741618b22ff82bc06251521
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a07dcd58263674aa6fd360e138c0b9c999ea644e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295909"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814145"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Debuggen von fehlgeschlagenen Spark-Aufträgen mit dem Azure-Toolkit für IntelliJ (Vorschau)
 
@@ -83,7 +83,7 @@ Erstellen Sie eine Spark-Scala/Java-Anwendung, und führen Sie dann die Anwendun
 
 6. Sie können die Anwendungs-ID im Ausgabefenster überprüfen.
    
-   ![Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
+   ![Ergebnis der Remoteausführung](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
 
 ## <a name="download-failed-job-profile"></a>Herunterladen des Profils des fehlgeschlagenen Auftrags
 
@@ -91,9 +91,9 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 
 1. Öffnen Sie den **Microsoft Azure Storage-Explorer**, suchen Sie das HDInsight-Konto des Clusters für den fehlgeschlagenen Auftrag, und laden Sie die Ressourcen des fehlgeschlagenen Auftrags vom Speicherort **\hdp\spark2-events\\.spark-failures\\\<Anwendungs-ID>** in einen lokalen Ordner herunter. Im Fenster **Aktivitäten** wird der Fortschritt des Downloads angezeigt.
 
-   ![Herunterladen der Fehlerdatei](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![Herunterladen der Fehlerdatei 1](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![Herunterladen der Fehlerdatei](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
+   ![Herunterladen der Fehlerdatei 2](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Konfigurieren der lokalen Debugumgebung und Debuggen eines Fehlers
 
@@ -101,13 +101,13 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 
 2. Erstellen Sie in IntelliJ IDEA unter **Spark Failure Debug** (Debuggen von Spark-Fehlern) eine Konfigurationsdatei, und wählen Sie für das Feld **Spark Job Failure Context location** (Speicherort des Fehlerkontexts für den Spark-Auftrag) die FTD-Datei für die zuvor heruntergeladenen Ressourcen des fehlgeschlagenen Auftrags aus.
    
-   ![Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![Erstellen Fehler Konfiguration](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
 4. Klicken Sie auf der Symbolleiste auf die Schaltfläche für lokales Ausführen, und der Fehler wird im Ausführungsfenster angezeigt.
    
-   ![Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
 5. Legen Sie den im Protokoll angegebenen Haltepunkt fest, und klicken Sie dann auf die Schaltfläche für das lokale Debuggen, um das lokale Debuggen wie in normalen Scala-/Java-Projekten in IntelliJ auszuführen.
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer benutzerdefinierten Rollendefinition in der rollenbasierten Zugriffssteuerung von Azure AD – Azure Active Directory | Microsoft-Dokumentation
-description: Erstellen Sie benutzerdefinierte Azure AD-Rollen mit den Azure Active Directory-Ressourcen als Ressourcenbereich.
+title: Erstellen und Zuweisen einer benutzerdefinierten Rolle in der rollenbasierten Zugriffssteuerung von Azure AD – Azure Active Directory | Microsoft-Dokumentation
+description: Erstellen Sie benutzerdefinierte Azure AD-Rollen mit den Azure Active Directory-Ressourcen als Ressourcenbereich, und weisen Sie sie zu.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1166839608c709db9aa052d6d0db5221fa15354
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880748"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382821"
 ---
-# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>Erstellen einer benutzerdefinierten Rolle und Zuweisen für einen Ressourcenbereich in Azure Active Directory
+# <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
-In diesem Artikel wird beschrieben, wie Sie neue benutzerdefinierte Rollen in Azure Active Directory (Azure AD) erstellen. Benutzerdefinierte Rollen können auf der Übersichtsseite für Azure AD auf der Registerkarte [Rollen und Administratoren](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) erstellt werden. Die Rolle kann entweder für den Bereich der Verzeichnisebene oder nur für den Ressourcenbereich einer App-Registrierung zugewiesen werden.
+In diesem Artikel wird beschrieben, wie Sie neue benutzerdefinierte Rollen in Azure Active Directory (Azure AD) erstellen. Weitere Informationen zu den Grundlagen benutzerdefinierter Rollen finden Sie in der [Übersicht über benutzerdefinierte Rollen](roles-custom-overview.md). Die Rolle kann entweder für den Bereich der Verzeichnisebene oder nur für den Ressourcenbereich einer App-Registrierung zugewiesen werden.
 
-Weitere Informationen zu den Grundlagen von benutzerdefinierten Rollen finden Sie in der [Übersicht über benutzerdefinierte Rollen](roles-custom-overview.md).
+Benutzerdefinierte Rollen können auf der Übersichtsseite für Azure AD auf der Registerkarte [Rollen und Administratoren](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) erstellt werden.
 
-## <a name="using-the-azure-ad-portal"></a>Verwenden des Azure AD-Portals
+## <a name="create-a-role-in-the-azure-portal"></a>Erstellen einer Rolle im Azure-Portal
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Erstellen einer neuen benutzerdefinierten Rolle für den Zugriff zum Verwalten von App-Registrierungen
 
@@ -49,22 +49,7 @@ Weitere Informationen zu den Grundlagen von benutzerdefinierten Rollen finden Si
 
 Die benutzerdefinierte Rolle wird in der Liste der für die Zuweisung verfügbaren Rollen angezeigt.
 
-## <a name="assign-a-role-scoped-to-a-resource"></a>Zuweisen einer auf eine Ressource begrenzten Rolle
-
-Wie integrierte Rollen können auch benutzerdefinierte Rollen im organisationsweiten Bereich zugewiesen werden, um Zugriff auf alle App-Registrierungen zu gewähren. Benutzerdefinierte Rollen können aber auch für den Ressourcenbereich zugewiesen werden. Dadurch können Sie der zugewiesenen Person die Berechtigung zum Aktualisieren von Anmeldeinformationen und grundlegenden Eigenschaften einer einzelnen App erteilen, ohne eine zweite benutzerdefinierte Rolle erstellen zu müssen.
-
-1. Wenn noch nicht geschehen, melden Sie sich beim  [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Anwendungsentwickler“ in der Azure AD-Organisation an.
-1. Wählen Sie **App-Registrierungen** aus.
-1. Wählen Sie die App-Registrierung aus, für die Sie Zugriff zum Verwalten gewähren möchten. Möglicherweise müssen Sie die Option **Alle Anwendungen** auswählen, um die vollständige Liste der App-Registrierungen in ihrer Azure AD-Organisation anzuzeigen.
-
-    ![Auswählen der App-Registrierung als Ressourcenbereich für eine Rollenzuweisung](./media/roles-create-custom/appreg-all-apps.png)
-
-1. Wählen Sie in der App-Registrierung die Option **Rollen und Administratoren** aus. Wenn Sie noch keine erstellt haben, finden Sie Anweisungen im [vorherigen Verfahren](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
-
-1. Wählen Sie die Rolle aus, um die Seite **Zuweisungen** zu öffnen.
-1. Wählen Sie **Zuweisung hinzufügen** aus, um einen Benutzer hinzuzufügen. Dem Benutzer werden ausschließlich Berechtigungen für die ausgewählte App-Registrierung erteilt.
-
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Erstellen einer benutzerdefinierten Rolle mithilfe von Azure AD PowerShell
+## <a name="create-a-role-using-powershell"></a>Erstellen einer Rolle mit PowerShell
 
 ### <a name="prepare-powershell"></a>Vorbereiten von PowerShell
 
@@ -125,7 +110,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Erstellen einer benutzerdefinierten Rolle mithilfe der Microsoft Graph-API
+## <a name="create-a-role-with-graph-api"></a>Erstellen einer Rolle mit der Graph-API
 
 1. Erstellen Sie die Rollendefinition.
 
@@ -175,6 +160,21 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
+## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Zuweisen einer auf eine Ressource begrenzten benutzerdefinierten Rolle
+
+Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organisationsweiten Standardbereich zugewiesen, um Zugriffsberechtigungen für alle App-Registrierungen in Ihrer Organisation zu erteilen. Anders als integrierte Rollen können benutzerdefinierte Rollen jedoch auch im Bereich einer einzelnen Azure AD-Ressource zugewiesen werden. Dadurch können Sie dem Benutzer die Berechtigung zum Aktualisieren von Anmeldeinformationen und grundlegenden Eigenschaften einer einzelnen App erteilen, ohne eine zweite benutzerdefinierte Rolle erstellen zu müssen.
+
+1. Melden Sie sich beim  [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Anwendungsentwickler“ in der Azure AD-Organisation an.
+1. Wählen Sie **App-Registrierungen** aus.
+1. Wählen Sie die App-Registrierung aus, für die Sie Zugriff zum Verwalten gewähren möchten. Möglicherweise müssen Sie die Option **Alle Anwendungen** auswählen, um die vollständige Liste der App-Registrierungen in ihrer Azure AD-Organisation anzuzeigen.
+
+    ![Auswählen der App-Registrierung als Ressourcenbereich für eine Rollenzuweisung](./media/roles-create-custom/appreg-all-apps.png)
+
+1. Wählen Sie in der App-Registrierung die Option **Rollen und Administratoren** aus. Wenn Sie noch keine erstellt haben, finden Sie Anweisungen im [vorherigen Verfahren](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
+
+1. Wählen Sie die Rolle aus, um die Seite **Zuweisungen** zu öffnen.
+1. Wählen Sie **Zuweisung hinzufügen** aus, um einen Benutzer hinzuzufügen. Dem Benutzer werden ausschließlich Berechtigungen für die ausgewählte App-Registrierung erteilt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

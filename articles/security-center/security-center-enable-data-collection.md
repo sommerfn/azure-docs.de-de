@@ -2,40 +2,34 @@
 title: Datensammlung in Azure Security Center | Microsoft-Dokumentation
 description: " Hier erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren. "
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/10/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231338"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910629"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Analytics Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Log Analytics Agent Absturzabbilddateien in den Arbeitsbereich.
 
 Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, Aktivierung des Endpunktschutzes sowie Integrität und Bedrohungserkennung bereitzustellen. 
 
-Dieser Artikel enthält Anleitungen zum Installieren von Log Analytics Agent und zum Festlegen eines Log Analytics-Arbeitsbereichs, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. 
+Dieser Artikel beschreibt das Installieren eines Log Analytics Agent und Festlegen eines Log Analytics-Arbeitsbereichs, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. 
 
 > [!NOTE]
 > - Die Datensammlung ist nur für Computeressourcen (virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
 > - Die Liste der unterstützten Plattformen finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
-> - Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
+> - Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## Aktivieren der automatischen Bereitstellung von Log Analytics Agent <a name="auto-provision-mma"></a>
 
-Zum Erfassen der Daten von den Computern muss der Log Analytics Agent installiert sein.  Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen.  
+Zum Erfassen der Daten von den Computern muss der Log Analytics Agent installiert sein. Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen.  
 
 >[!NOTE]
 > Die automatische Bereitstellung ist standardmäßig deaktiviert. Um die Installation der standardmäßigen automatischen Bereitstellung in Security Center festzulegen, legen Sie die Option auf **Ein** fest.
@@ -65,7 +59,7 @@ So aktivieren Sie die automatische Bereitstellung von Log Analytics Agent
 >
 
 ## <a name="workspace-configuration"></a>Arbeitsbereichskonfiguration
-Von Security Center gesammelte Daten werden in Log Analytics-Arbeitsbereichen gespeichert.  Sie können festlegen, ob Daten von virtuellen Azure-Computern in von Security Center erstellten Arbeitsbereichen oder in einem vorhandenen Arbeitsbereich gespeichert werden sollen, den Sie selbst erstellt haben. 
+Von Security Center gesammelte Daten werden in Log Analytics-Arbeitsbereichen gespeichert. Sie können festlegen, ob Daten von virtuellen Azure-Computern in von Security Center erstellten Arbeitsbereichen oder in einem vorhandenen Arbeitsbereich gespeichert werden sollen, den Sie selbst erstellt haben. 
 
 Die Konfiguration von Arbeitsbereichen wird abonnementbasiert festgelegt, und der gleiche Arbeitsbereich kann für mehrere Abonnements verwendet werden.
 
@@ -87,7 +81,7 @@ Auswählen eines von Security Center erstellten Arbeitsbereichs:
 
 > [!NOTE]
 > Der Log Analytics-Tarif von Arbeitsbereichen, die vom Security Center erstellt wurden, hat keine Auswirkungen auf die Security Center-Abrechnung. Die Abrechnung von Security Center basiert immer auf Ihrer Security Center-Sicherheitsrichtlinie und den installierten Lösungen in einem Arbeitsbereich. Für den Free-Tarif aktiviert Security Center die Lösung *SecurityCenterFree* im Standardarbeitsbereich. Für den Standard-Tarif aktiviert Security Center aktiviert die Lösung *Security* im Standardarbeitsbereich.
-> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
+> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 Weitere Informationen zu vorhandenen Log Analytics-Konten finden Sie unter [Log Analytics-Bestandskunden](security-center-faq.md#existingloganalyticscust).
 
@@ -99,7 +93,7 @@ Zum Verwenden Ihres vorhandenen Log Analytics-Arbeitsbereichs benötigen Sie Les
 
 > [!NOTE]
 > Im vorhandenen Arbeitsbereich aktivierte Lösungen gelten für virtuelle Azure-Computer, die damit verbunden sind. Bei gebührenpflichtigen Lösungen kann dies mit zusätzlichen Kosten verbunden sein. Stellen Sie aus Datenschutzgründen sicher, dass sich der ausgewählte Arbeitsbereich in der richtigen geografischen Region befindet.
-> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
+> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
@@ -147,7 +141,7 @@ Wenn Sie einen Arbeitsbereich zum Speichern Ihrer Daten auswählen, sind alle Ar
 ## <a name="data-collection-tier"></a>Datensammlungsebene
 Das Auswählen einer Datensammlungsebene in Azure Security Center hat nur Auswirkung auf die Speicherung von Sicherheitsereignissen in Ihrem Log Analytics-Arbeitsbereich. Der Log Analytics-Agent sammelt und analysiert weiterhin die Sicherheitsereignisse, die für die Bedrohungserkennung von Azure Security Center erforderlich sind, unabhängig davon, auf welcher Ebene Sicherheitsereignisse ggf. in Ihrem Log Analytics-Arbeitsbereich gespeichert werden sollen. Wenn Sie Sicherheitsereignisse in Ihrem Arbeitsbereich speichern, können Sie diese Ereignisse in Ihrem Arbeitsbereich untersuchen, durchsuchen und überprüfen. 
 > [!NOTE]
-> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
+> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 > 
 > Sie können die passende Filterrichtlinie für Ihre Abonnements und Arbeitsbereiche auswählen. Dabei haben Sie die Wahl zwischen vier Gruppen von Ereignissen, die in Ihrem Arbeitsbereich gespeichert werden sollen: 
 

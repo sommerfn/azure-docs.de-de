@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209630"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858544"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -201,7 +201,7 @@ Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie k
 
 ### <a name="compatibility-levels"></a>Kompatibilitätsgrade
 
-- Folgende Kompatibilitätsgrade werden unterstützt: 100, 110, 120, 130 und 140.
+- Folgende Kompatibilitätsgrade werden unterstützt: 100, 110, 120, 130, 140 und 150.
 - Kompatibilitätsgrade unter 100 werden nicht unterstützt.
 - Der standardmäßige Kompatibilitätsgrad für neue Datenbanken ist 140. Bei wiederhergestellten Datenbanken bleibt der Kompatibilitätsgrad unverändert, wenn er zuvor bei 100 und höher lag.
 
@@ -541,6 +541,14 @@ Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen 
 
 ## <a name="Issues"></a> Bekannte Probleme
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor auf Dienstebene „Unternehmenskritisch“ muss möglicherweise nach einem Failover neu konfiguriert werden
+
+**Datum:** September 2019
+
+Die Funktion [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor), die Ihnen ermöglicht, die der Benutzerworkload zugewiesenen Ressourcen einzuschränken, könnte eine andere Benutzerworkload nach einem Failover oder einer vom Benutzer initiierten Änderung der Dienstebene (z. B. Änderung der maximalen virtuellen Kerne oder maximalen Instanzspeichergröße) falsch klassifizieren.
+
+**Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL Agent-Auftrags aus, der den SQL-Task ausführt, wenn die Instanz gestartet wird, wenn Sie [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) verwenden.
+
 ### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Authentifizierung bei externem E-Mail-Servern mit sicherer Verbindung (SSL) nicht möglich.
 
 **Datum:** August 2019
@@ -584,6 +592,12 @@ Wenn die Transaktionsreplikation für eine Datenbank in einer Autofailover-Grupp
 SQL Server Management Studio und SQL Server Data Tools unterstützen Azure Active Directory-Anmeldungen und -Benutzer nicht vollständig.
 - Die Verwendung von Azure AD-Serverprinzipalen (Anmeldungen) und Azure AD-Benutzern (öffentliche Vorschau) mit SQL Server Data Tools wird derzeit nicht unterstützt.
 - Das Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) und -Benutzern (öffentliche Vorschau) per Skript wird in SQL Server Management Studio nicht unterstützt.
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet
+
+Wenn eine Datenbank auf einer verwalteten Instanz wiederhergestellt wird, erstellt der Wiederherstellungsdienst zunächst eine leere Datenbank mit dem gewünschten Namen, um den Namen auf der Instanz zuzuweisen. Nach einiger Zeit wird diese Datenbank gelöscht, und die Wiederherstellung der eigentlichen Datenbank wird gestartet. Die Datenbank, die sich im Status *Wird wiederhergestellt* befindet, weist temporär einen zufälligen GUID-Wert anstelle des Namens auf. Nachdem der Wiederherstellungsvorgang abgeschlossen ist, wird der temporäre Name in den in der `RESTORE`-Anweisung angegebenen gewünschten Namen geändert. In der Anfangsphase kann der Benutzer auf die leere Datenbank zugreifen und sogar Tabellen erstellen oder Daten in diese Datenbank laden. Diese temporäre Datenbank wird gelöscht, wenn der Wiederherstellungsdienst die zweite Phase startet.
+
+**Problemumgehung**: Greifen Sie erst dann auf die Datenbank zu, die Sie wiederherstellen, wenn Sie feststellen, dass die Wiederherstellung abgeschlossen ist.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktur und Inhalt von TEMPDB werden neu erstellt.
 

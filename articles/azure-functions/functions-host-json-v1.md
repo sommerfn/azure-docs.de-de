@@ -1,20 +1,18 @@
 ---
 title: host.json-Referenz für Azure Functions 1.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v1 Runtime.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: c169d9cc774a2c6264ba1520240005f13ba9d2da
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096454"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735155"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-Referenz für Azure Functions 1.x
 
@@ -46,6 +44,13 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
         "sampling": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 5
+        }
+    },
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix"
         }
     },
     "eventHub": {
@@ -86,6 +91,9 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
       "maxDequeueCount": 5,
       "newBatchThreshold": 8
     },
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    },
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
@@ -115,6 +123,28 @@ In den folgenden Abschnitten dieses Artikels werden die einzelnen allgemeinen Ei
 ## <a name="applicationinsights"></a>applicationInsights
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+
+## <a name="documentdb"></a>DocumentDB
+
+Konfigurationseinstellungen für [Azure Cosmos DB-Trigger und -Bindungen](functions-bindings-cosmosdb.md).
+
+```json
+{
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix1"
+        }
+    }
+}
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|GatewayMode|Gateway|Der von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsmodus. Die Optionen sind `Direct` und `Gateway`.|
+|Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll.  Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|–|Lease-Präfix, das durchgängig für alle Funktionen in einer App verwendet wird.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -238,6 +268,21 @@ Konfigurationseinstellungen für [Trigger und Bindungen der Speicherwarteschlang
 |batchSize|16|Die Anzahl der Warteschlangennachrichten, die die Functions-Runtime gleichzeitig abruft und parallel verarbeitet. Wenn die zu verarbeitende Anzahl `newBatchThreshold` erreicht, ruft die Runtime einen weiteren Batch ab und beginnt mit der Verarbeitung dieser Nachrichten. Aus diesem Grund beträgt die maximale Anzahl der pro Funktion verarbeiteten Nachrichten `batchSize` plus `newBatchThreshold`. Dieser Grenzwert gilt separat für jede Funktion, die durch die Warteschlange ausgelöst wird. <br><br>Wenn Sie eine parallele Ausführung für in einer Warteschlange empfangene Nachrichten vermeiden möchten, können Sie `batchSize` auf „1“ festlegen. Diese Einstellung verhindert Parallelität jedoch nur so lange, wie Ihre Funktions-App auf einem einzelnen virtuellen Computer (VM) ausgeführt wird. Wenn die Funktions-App horizontal auf mehrere virtuelle Computer hochskaliert wird, kann jeder virtuelle Computer eine Instanz jeder durch die Warteschlange ausgelösten Funktion ausführen.<br><br>Die maximale `batchSize` beträgt 32. | 
 |maxDequeueCount|5|Die Anzahl der Versuche zum Verarbeiten einer Nachricht, bevor diese in die Warteschlange für nicht verarbeitete Nachrichten verschoben wird.| 
 |newBatchThreshold|batchSize/2|Wenn die Anzahl der gleichzeitig verarbeiteten Nachrichten auf diesen Wert sinkt, ruft die Runtime einen weiteren Batch ab.| 
+
+## <a name="sendgrid"></a>SendGrid
+
+Konfigurationseinstellung für die [SendGrind-Ausgabebindung](functions-bindings-sendgrid.md)
+
+```json
+{
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    }
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------| 
+|from|–|E-Mail-Adresse des Absenders für alle Funktionen.| 
 
 ## <a name="servicebus"></a>serviceBus
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575490"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845495"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer privaten Cloudumgebung
 
@@ -46,7 +46,7 @@ Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen übe
 9. Klicken Sie auf **Weiter: Erweiterte Optionen**.
 10. Geben Sie den CIDR-Bereich für vSphere/vSAN-Subnetze ein. Stellen Sie sicher, dass sich der CIDR-Bereich nicht mit einem Ihrer lokalen Subnetze, mit anderen Azure-Subnetzen (virtuelle Netzwerke) oder dem Gatewaysubnetz überlappt.
 
-    **Mögliche CIDR-Bereiche:** /24, /23, /22 oder /21. Der CIDR-Bereich /24 unterstützt bis zu neun Knoten, der Bereich /23 bis zu 41 Knoten und die Bereiche /22 und /21 bis zu 64 Knoten (die maximale Anzahl an Knoten in einer privaten Cloud).
+    **Mögliche CIDR-Bereiche:** /24, /23, /22 oder /21. Der CIDR-Bereich /24 unterstützt bis zu 26 Knoten, der Bereich /23 bis zu 58 Knoten und die Bereiche /22und /21 bis zu 64 Knoten (die maximale Anzahl an Knoten in einer privaten Cloud).  Weitere Informationen und VLANs und Subnetze finden Sie unter [Übersicht über VLANs und Subnetze](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
       > IP-Adressen im vSphere/vSAN CIDR-Bereich sind zur Verwendung durch die private Cloudinfrastruktur reserviert.  Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.

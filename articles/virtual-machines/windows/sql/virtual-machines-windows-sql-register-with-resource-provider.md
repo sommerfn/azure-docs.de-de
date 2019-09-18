@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208335"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743912"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -338,7 +338,7 @@ Ja. Das Upgrade des SQL-Verwaltbarkeitsmodus von „Lightweight“ auf „Vollst
 
 Nein. Eine Herabstufung des Verwaltungsmodus für die SQL Server-IaaS-Erweiterung wird nicht unterstützt. Der SQL Server-Verwaltungsmodus kann vom Modus „Vollständig“ nicht auf „Lightweight“ oder „NoAgent“ herabgestuft werden und auch nicht vom Modus „Lightweight“ auf den Modus „NoAgent“. 
 
-Um den Verwaltungsmodus von „Vollständig“ zu ändern, entfernen Sie die SQL Server-IaaS-Erweiterung. Löschen Sie dann die Ressource „Microsoft.SqlVirtualMachine“, und registrieren Sie die SQL Server-VM erneut beim SQL-VM-Ressourcenanbieter.
+Um den Verwaltungsmodus von „Vollständig“ zu ändern, entfernen Sie die SQL Server-IaaS-Erweiterung. Löschen Sie dann die Ressource Microsoft.SqlVirtualMachine, und registrieren Sie die SQL Server-VM erneut beim SQL-VM-Ressourcenanbieter.
 
 **Kann ich mich über das Azure-Portal beim SQL-VM-Ressourcenanbieter registrieren?**
 
@@ -346,7 +346,7 @@ Nein. Die Registrierung beim SQL-VM-Ressourcenanbieter steht im Azure-Portal nic
 
 **Kann ich eine VM beim SQL-VM-Ressourcenanbieter registrieren, bevor SQL Server installiert wird?**
 
-Nein. Die VM muss mindestens eine SQL Server-Instanz aufweisen, damit sie beim SQL-VM-Ressourcenanbieter registriert werden kann. Wenn auf der VM keine SQL Server-Instanz vorhanden ist, weist die neue Ressource „Microsoft.SqlVirtualMachine“ einen Fehlerzustand auf.
+Nein. Die VM muss mindestens eine SQL Server-Instanz aufweisen, damit sie beim SQL-VM-Ressourcenanbieter registriert werden kann. Wenn auf der VM keine SQL Server-Instanz vorhanden ist, weist die neue Ressource Microsoft.SqlVirtualMachine einen Fehlerzustand auf.
 
 **Kann ich eine VM bei einem SQL-VM-Ressourcenanbieter registrieren, wenn mehrere SQL Server-Instanzen vorhanden sind?**
 

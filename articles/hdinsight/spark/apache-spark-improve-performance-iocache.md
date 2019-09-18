@@ -1,19 +1,19 @@
 ---
-title: Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache (Vorschauversion)
+title: Leistung von Apache Spark-Workloads mit Azure HDInsight IO Cache (Vorschauversion)
 description: Enthält Informationen zu Azure HDInsight IO Cache und seiner Verwendung zum Verbessern der Apache Spark-Leistung.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: b77e7e9d5a68439e7f336ecb26e91031d80a7606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 401ccda62805cbdebc99317c925aeb1b0ffc66bb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695204"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915370"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache (Vorschauversion)
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache 
 
 IO Cache ist ein Dienst zum Zwischenspeichern von Daten für Azure HDInsight, mit dem die Leistung von Apache Spark-Aufträgen verbessert wird. IO Cache funktioniert auch mit [Apache TEZ](https://tez.apache.org/)- und [Apache Hive](https://hive.apache.org/)-Workloads, die auf [Apache Spark](https://spark.apache.org/)-Clustern ausgeführt werden können. Für IO Cache wird eine Open-Source-Komponente für die Zwischenspeicherung mit dem Namen RubiX verwendet. RubiX ist ein lokaler Datenträgercache zur Verwendung mit Big Data-Analysemodulen, bei denen über Cloudspeichersysteme auf Daten zugegriffen wird. RubiX ist unter Zwischenspeicherungssystemen einzigartig, da SSDs (Solid-State Drives) genutzt werden, anstatt regulären Arbeitsspeicher für die Zwischenspeicherung zu reservieren. Der Dienst IO Cache startet und verwaltet RubiX-Metadatenserver auf jedem Workerknoten des Clusters. Außerdem werden alle Dienste des Clusters für die transparente Nutzung des RubiX-Caches konfiguriert.
 

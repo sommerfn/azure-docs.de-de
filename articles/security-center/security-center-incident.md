@@ -2,24 +2,19 @@
 title: Verwalten von Sicherheitsvorfällen in Azure Security Center | Microsoft-Dokumentation
 description: Dieses Dokument enthält hilfreiche Informationen zur Verwendung des Azure Security Centers zum Verwalten von Sicherheitsvorfällen.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
+author: memildin
+manager: rkarlin
 editor: ''
-ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/27/2019
-ms.author: rkarlin
-ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/09/2019
+ms.author: memildin
+ms.openlocfilehash: c492c4023df30eb51692aa4ae21fb938067c6ebb
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047619"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873367"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Verwalten von Sicherheitsvorfällen in Azure Security Center
 
@@ -29,7 +24,7 @@ In diesem Thema werden Vorfälle in Security Center erläutert und wie Sie deren
 
 ## <a name="what-is-a-security-incident"></a>Was ist ein Sicherheitsvorfall?
 
-In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen für eine Ressource, die [Kill Chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)-Mustern entsprechen. Vorfälle werden in der Liste [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) angezeigt. Klicken Sie auf einen Vorfall, die zugehörigen Warnungen anzuzeigen, wodurch Sie weitere Informationen zu den einzelnen Fällen erhalten können.
+In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen für eine Ressource, die [Kill Chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)-Mustern entsprechen. Vorfälle werden in der Liste [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) angezeigt. Klicken Sie auf einen Vorfall, um die zugehörigen Warnungen anzuzeigen, wodurch Sie weitere Informationen zu den einzelnen Fällen erhalten können.
 
 ## <a name="managing-security-incidents"></a>Verwalten von Sicherheitsvorfällen
 
@@ -41,7 +36,7 @@ In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen f
 
     ![Reagieren auf Sicherheitsvorfälle in Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-1. Um weitere Informationen zu den einzelnen Warnungen anzuzeigen, klicken Sie auf die jeweilige. Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis. Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis. 
+1. Um weitere Informationen zu den einzelnen Warnungen anzuzeigen, klicken Sie auf die jeweilige. Die von Security Center vorgeschlagene Wiederherstellung variiert je nach Sicherheitshinweis.
 
    > [!NOTE]
    > Dieselbe Warnung kann als Teil eines Vorfalls vorhanden sein und als eigenständige Warnung angezeigt werden.
@@ -58,7 +53,7 @@ In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen 
 * [Warnungen für Native Compute](security-center-alerts-compute.md)
 * [Warnungen für Datendienste](security-center-alerts-data-services.md)
 
-In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Telemetriedaten nutzt, die im Rahmen der Azure-Infrastrukturintegration gesammelt werden, um zusätzliche Schutzebenen für in Azure bereitgestellte Ressourcen zu implementieren:
+In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Telemetriedaten nutzt, die im Rahmen der Azure-Infrastrukturintegration gesammelt werden, um zusätzliche Schutzebenen für in Azure bereitstellte Ressourcen zu implementieren:
 
 * [Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center](security-center-alerts-service-layer.md)
 * [Integration mit Azure-Sicherheitsprodukten](security-center-alerts-integration.md)

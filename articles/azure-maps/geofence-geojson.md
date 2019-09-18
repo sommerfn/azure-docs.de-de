@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5946180c161a38a30f44e235ce0b626fd70a5400
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723573"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735145"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing von GeoJSON-Daten
 
@@ -30,10 +30,10 @@ Die Daten für einen Geofence oder eine Reihe von Geofences werden durch das `Fe
 * Die `expiredTime` stellt Ablaufdatum und -uhrzeit der Geofencingdaten dar. Wenn der Wert von `userTime` in der Anforderung später ist als dieser Wert, werden die entsprechenden Geofencedaten als abgelaufen angesehen und nicht abgefragt. Daraufhin wird die geometryId dieser Geofencedaten in das Array `expiredGeofenceGeometryId` in der Geofenceantwort aufgenommen.
 * Die `validityPeriod` ist eine Liste der Gültigkeitszeiträume des Geofence. Wenn der Wert von `userTime` in der Anforderung außerhalb der Gültigkeitsdauer liegt, werden die entsprechenden Geofencedaten als ungültig angesehen und nicht abgefragt. Die geometryId dieser Geofencedaten wird in das Array `invalidPeriodGeofenceGeometryId` in der Geofenceantwort aufgenommen. In der folgenden Tabelle sind die Eigenschaften des ValidityPeriod-Elements dargestellt.
 
-| NAME | Type | Erforderlich  | BESCHREIBUNG |
+| NAME | type | Erforderlich  | BESCHREIBUNG |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | DateTime  | true | Das Anfangsdatum und die Anfangsuhrzeit der Gültigkeitsdauer. |
-| endTime   | DateTime  | true |  Das Enddatum und die Enduhrzeit der Gültigkeitsdauer. |
+| startTime | Datetime  | true | Das Anfangsdatum und die Anfangsuhrzeit der Gültigkeitsdauer. |
+| endTime   | Datetime  | true |  Das Enddatum und die Enduhrzeit der Gültigkeitsdauer. |
 | recurrenceType | Zeichenfolge | false |   Der Wiederholungstyp des Zeitraums. Der Wert kann `Daily`, `Weekly`, `Monthly` oder `Yearly` lauten. Der Standardwert ist `Daily`.|
 | businessDayOnly | Boolean | false |  Gibt an, ob die Daten nur an Werktagen gültig sind. Der Standardwert ist `false`.|
 

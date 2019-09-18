@@ -1,5 +1,5 @@
 ---
-title: Vorauszahlen von virtuellen Kernen für Azure SQL-Datenbank zum Einsparen von Kosten | Microsoft-Dokumentation
+title: Kostensparen für virtuelle Kerne von Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure SQL-Datenbank kaufen, um Computekosten einzusparen.
 services: sql-database
 ms.service: sql-database
@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 08/02/2019
-ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 08/29/2019
+ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972545"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806578"
 ---
-# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
+# <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Kostensparen für SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
-Sparen Sie mit Azure SQL-Datenbank Geld im Vergleich zur nutzungsbasierten Bezahlung, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierten Azure SQL-Datenbank-Kapazitäten leisten Sie eine Vorauszahlung für SQL-Datenbank für einen Zeitraum von einem oder drei Jahren und profitieren dafür von einem immensen Rabatt auf Computekosten. Um reservierte SQL-Datenbank-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, die Leistungsstufe und die Laufzeit angeben.
+Sparen Sie mit Azure SQL-Datenbank Geld im Vergleich zur nutzungsbasierten Bezahlung, indem Sie sich auf eine Reservierung für Computeressourcen festlegen. Mit reservierten Azure SQL-Datenbank-Kapazitäten legen Sie sich für die Nutzung von SQL-Datenbank für einen Zeitraum von einem oder drei Jahren fest und profitieren dafür von einem immensen Rabatt auf Computekosten. Um reservierte SQL-Datenbank-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, die Leistungsstufe und die Laufzeit angeben.
 
 
-Sie müssen die Reservierung keinen bestimmten SQL-Datenbank-Instanzen (Singletons, Pools für elastische Datenbanken oder verwaltete Instanzen) zuweisen. Betreffende SQL-Datenbank-Instanzen, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Vorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung gekauft haben, werden die SQL-Datenbank-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für die SQL-Datenbank-Instanz ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die SQL-Datenbank-Instanzen werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+Sie müssen die Reservierung keinen bestimmten SQL-Datenbank-Instanzen (Singletons, Pools für elastische Datenbanken oder verwaltete Instanzen) zuweisen. Betreffende SQL-Datenbank-Instanzen, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Vorteil. Beim Kauf einer Reservierung zahlen Sie für einen Zeitraum von einem oder drei Jahren die für die Nutzung anfallenden Computekosten. Sobald Sie eine Reservierung gekauft haben, werden die SQL-Datenbank-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für die SQL-Datenbank-Instanz ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die SQL-Datenbank-Instanzen werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-Sie können die reservierte Azure SQL-Datenbank-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. So erwerben Sie eine reservierte SQL-Datenbank-Kapazität
+Sie können die reservierte Azure SQL-Datenbank-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../billing/billing-monthly-payments-reservations.md). So erwerben Sie eine reservierte SQL-Datenbank-Kapazität
 
 - Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein individuelles Abonnement mit nutzungsbasierter Bezahlung zugeordnet sein.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208341"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806605"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -191,6 +191,9 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
   Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Hierzu können Sie einen optionalen Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben. 
 
+> [!IMPORTANT]
+> Die erste im Subnetz erstellte Instanz bestimmt die DNS-Zone für alle nachfolgenden Instanzen im gleichen Subnetz. Dies bedeutet, dass zwei Instanzen aus dem gleichen Subnetz nicht zu verschiedenen DNS-Zonen gehören können.   
+
   Weitere Informationen zum Erstellen der sekundären Instanz in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
 - **Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen**
@@ -237,6 +240,10 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
   > [!IMPORTANT]
   > Verwenden Sie manuelles Gruppenfailover, um primäre Datenbanken wieder an den ursprünglichen Standort zu verschieben. Sobald der Ausfall, der das Failover verursacht hat, behoben ist, können Sie die primären Datenbanken an den ursprünglichen Standort verschieben. Dazu sollten Sie ein manuelles Failover der Gruppe initiieren.
+
+- **Erkennen bekannter Einschränkungen von Failovergruppen**
+
+  Datenbankumbenennung und Größenänderung von Instanzen werden für Instanzen in der Failovergruppe nicht unterstützt. Sie müssen eine Failovergruppe vorübergehend löschen, um diese Aktionen ausführen zu können.
 
 ## <a name="failover-groups-and-network-security"></a>Failovergruppen und Netzwerksicherheit
 

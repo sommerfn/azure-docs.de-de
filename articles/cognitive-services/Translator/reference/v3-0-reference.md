@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595007"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772781"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -99,7 +99,7 @@ Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie Ihrer An
 
 Die Region ist für das Abonnement der Multi-Service-Text-API erforderlich. Die von Ihnen ausgewählte Region ist die einzige Region, die Sie für die Textübersetzung verwenden können, wenn Sie den Multi-Service-Abonnementschlüssel verwenden, und muss sich um die gleiche Region handeln, die Sie bei der Registrierung für Ihr Multi-Service-Abonnement über das Azure-Portal ausgewählt haben.
 
-Diese Regionen sind verfügbar: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus` und `westus2`.
+Verfügbare Regionen sind `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2` und `southafricanorth`.
 
 Wenn Sie den geheimen Schlüssel in der Abfragezeichenfolge mit dem Parameter `Subscription-Key` übergeben, dann müssen Sie die Region mit dem Abfrageparameter `Subscription-Region` angeben.
 

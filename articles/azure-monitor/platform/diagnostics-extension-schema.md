@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527312"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735089"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  
@@ -54,13 +54,7 @@ Die Azure-Diagnoseerweiterung wird zusammen mit anderen Microsoft-Diagnoseproduk
  Ab SDK 2.5 (Diagnose-Version 1.2) wurde für die Azure-Diagnose ein Erweiterungsmodell verwendet. Die Tools für die Nutzung neuer Features standen zwar erst in neueren Azure SDKs zur Verfügung, trotzdem erhielt Dienst, der Azure-Diagnose verwendete, die neueste vertriebene Version direkt von Azure. Beispielsweise laden alle Benutzer, die noch mit SDK 2.5 arbeiten, die neueste in der letzten Tabelle angegebene Version, unabhängig davon, ob sie die neueren Funktionen verwenden.  
 
 ## <a name="schemas-index"></a>Schemaindex  
-Verschiedene Versionen der Azure-Diagnose verwenden unterschiedliche Konfigurationsschemas.
-
-[Konfigurationsschema für Diagnoseversion 1.0](diagnostics-extension-schema-1dot0.md)  
-
-[Konfigurationsschema für Diagnoseversion 1.2](diagnostics-extension-schema-1dot2.md)  
-
-[Konfigurationsschema für Diagnose 1.3 und höher](diagnostics-extension-schema-1dot3.md)  
+Verschiedene Versionen der Azure-Diagnose verwenden unterschiedliche Konfigurationsschemas. Schema 1.0 und 1.2 sind veraltet. Weitere Informationen zu Version 1.3 und höher finden Sie unter [Konfigurationsschema für Diagnose 1.3 und höher](diagnostics-extension-schema-1dot3.md).  
 
 ## <a name="version-history"></a>Versionsverlauf
 
