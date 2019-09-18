@@ -4,18 +4,333 @@ description: Informationen zur Verwaltung von Indizierungsrichtlinien in Azure C
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: a6c1ec6d58939336fb8a982e3ab1b9be20d4e0a5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ede4266457aaa76bdd9f1141df5c2981bb722326
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172149"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915905"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
-In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.md) indiziert, die für jeden Container definiert sind. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl und räumliche Indizes für jedes GeoJSON-Objekt vom Typ „Punkt“. Diese Richtlinie kann wie folgt außer Kraft gesetzt werden:
+In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.md) indiziert, die für jeden Container definiert sind. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl. Diese Richtlinie kann mit ihrer eigenen benutzerdefinierten Indizierungsrichtlinie überschrieben werden.
+
+## <a name="indexing-policy-examples"></a>Beispiele für Indizierungsrichtlinien
+
+Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im JSON-Format. So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
+
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Deaktivierungsrichtlinie zum selektiven Ausschließen einiger Eigenschaftspfade
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/path/to/single/excluded/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/excluded/properties/*"
+            }
+        ]
+    }
+```
+
+Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie können Sie vollständig in der Indizierungsrichtlinie auslassen (wie im Beispiel oben gezeigt).
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/*",
+                "indexes": [
+                    {
+                        "kind": "Range",
+                        "dataType": "Number",
+                        "precision": -1
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String",
+                        "precision": -1
+                    }
+                ]
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/path/to/single/excluded/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/excluded/properties/*"
+            }
+        ]
+    }
+```
+
+### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Aktivierungsrichtlinie zum selektiven Einschließen einiger Eigenschaftspfade
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/path/to/included/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/included/properties/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/*"
+            }
+        ]
+    }
+```
+
+Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlinie, mit der ```kind```, ```dataType``` und ```precision``` manuell auf die jeweiligen Standardwerte festgelegt werden. Diese Eigenschaften müssen nicht mehr explizit festgelegt werden, und Sie können Sie vollständig in der Indizierungsrichtlinie auslassen (wie im Beispiel oben gezeigt).
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/path/to/included/property/?",
+                "indexes": [
+                    {
+                        "kind": "Range",
+                        "dataType": "Number"
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String"
+                    }
+                ]
+            },
+            {
+                "path": "/path/to/root/of/multiple/included/properties/*",
+                "indexes": [
+                    {
+                        "kind": "Range",
+                        "dataType": "Number"
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String"
+                    }
+                ]
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/*"
+            }
+        ]
+    }
+```
+
+> [!NOTE] 
+> Allgemein wird die Verwendung einer Indizierungsrichtlinie zur **Deaktivierung** zu verwenden, damit Azure Cosmos DB neue Eigenschaften, die Ihrem Modell hinzugefügt werden, proaktiv indizieren kann.
+
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Verwenden eines räumlichen Index nur für einen bestimmten Eigenschaftspfad
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/path/to/geojson/property/?",
+            "types": [
+                "Point",
+                "Polygon",
+                "MultiPolygon",
+                "LineString"
+            ]
+        }
+    ]
+}
+```
+
+## <a name="composite-indexing-policy-examples"></a>Zusammengesetzte Indizierung – Richtlinienbeispiele
+
+Über das Einschließen oder Ausschließen von Pfaden für einzelne Eigenschaften hinaus können Sie auch einen zusammengesetzten Index angeben. Wenn Sie eine Abfrage für ausführen möchten, die eine `ORDER BY`-Klausel für mehrere Eigenschaften aufweist, ist ein [zusammengesetzter Index](index-policy.md#composite-indexes) für diese Eigenschaften erforderlich. Außerdem bedeuten zusammengesetzte Indizes einen Leistungsvorteil für Abfragen, die über einen Filter und über eine ORDER BY-Klausel für verschiedene Eigenschaften verfügen.
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Zusammengesetzter Index, definiert für (name asc, age desc):
+
+```json
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+Der oben gezeigte zusammengesetzte Index für Name und Alter ist für Abfrage 1 und Abfrage 2 erforderlich:
+
+Abfrage 1:
+
+```sql
+    SELECT *
+    FROM c
+    ORDER BY c.name ASC, c.age DESC
+```
+
+Abfrage 2:
+
+```sql
+    SELECT *
+    FROM c
+    ORDER BY c.name DESC, c.age ASC
+```
+
+Dieser zusammengesetzte Index profitiert von Abfrage 3 und Abfrage 4 und optimiert die Filter:
+
+Abfrage 3:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Tim"
+ORDER BY c.name DESC, c.age ASC
+```
+
+Abfrage 4:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Tim" AND c.age > 18
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Zusammengesetzter Index, definiert für (name ASC, age ASC) und (name ASC, age DESC):
+
+Sie können innerhalb der gleichen Indizierungsrichtlinie mehrere verschiedene zusammengesetzte Indizes definieren.
+
+```json
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ],
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Zusammengesetzter Index, definiert für (name ASC, age ASC):
+
+Die Angabe der Reihenfolge ist optional. Ohne Angabe ist die Reihenfolge aufsteigend.
+
+```json
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
+
+### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Ausschließen aller Eigenschaftspfade aber Aktivhalten der Indizierung
+
+Diese Richtlinie kann in Situationen verwendet werden, in denen das [Feature „Gültigkeitsdauer“ (Time-to-Live, TTL)](time-to-live.md) aktiv ist, aber kein Sekundärindex erforderlich ist (um Azure Cosmos DB als reinen Schlüsselwertspeicher zu verwenden).
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [],
+        "excludedPaths": [{
+            "path": "/*"
+        }]
+    }
+```
+
+### <a name="no-indexing"></a>Keine Indizierung
+
+Mit dieser Richtlinie wird die Indizierung deaktiviert. Wenn `indexingMode` auf `none` festgelegt ist, können Sie keine Gültigkeitsdauer für den Container festlegen.
+
+```json
+    {
+        "indexingMode": "none"
+    }
+```
+
+## <a name="updating-indexing-policy"></a>Aktualisieren der Indizierungsrichtlinie
+
+In Azure Cosmos DB kann die Indizierungsrichtlinie mit den folgenden Methoden aktualisiert werden:
 
 - über das Azure-Portal
 - mit der Azure CLI
@@ -24,7 +339,7 @@ In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.m
 Eine [Aktualisierung der Indizierungsrichtlinie](index-policy.md#modifying-the-indexing-policy) löst eine Indextransformation aus. Der Status dieser Transformation kann auch über die SDKs nachverfolgt werden.
 
 > [!NOTE]
-> Als Bestandteil des SDK- und Portal-Upgrades entwickeln wir die Indexrichtlinie weiter, um sie an ein neues Indexlayout anzupassen, das wir für neue Container eingeführt haben. Mit diesem neuen Layout werden alle primitiven Datentypen als Bereich mit vollständiger Genauigkeit (-1) indiziert. Daher werden die Indexarten und die Genauigkeit dem Benutzer nicht mehr verfügbar gemacht. Zukünftig müssen Benutzer lediglich Pfade zum Abschnitt „includedPaths“ hinzufügen und können „indexKinds“ und „precision“ ignorieren. Diese Änderung wirkt sich nicht auf die Leistung aus, und Sie können die Indizierungsrichtlinie weiterhin mit derselben Syntax aktualisieren. Sie können weiterhin alle Beispiele in der vorhandenen Dokumentation verwenden, um die Indexrichtlinie zu aktualisieren.
+> Beim Aktualisieren der Indizierungsrichtlinie werden Schreibvorgänge in Azure Cosmos DB ohne Unterbrechung durchführt. Während der erneuten Indizierung können Abfragen Teilergebnisse zurückgeben, weil der Index aktualisiert wird.
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -340,246 +655,6 @@ Aktualisieren des Containers mit Änderungen
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
-```
-
-## <a name="indexing-policy-examples"></a>Beispiele für Indizierungsrichtlinien
-
-Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im JSON-Format. So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
-
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Deaktivierungsrichtlinie zum selektiven Ausschließen einiger Eigenschaftspfade
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [
-            {
-                "path": "/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    },
-                    {
-                        "kind": "Range",
-                        "dataType": "String"
-                    },
-                    {
-                        "kind": "Spatial",
-                        "dataType": "Point"
-                    }
-                ]
-            }
-        ],
-        "excludedPaths": [
-            {
-                "path": "/path/to/single/excluded/property/?"
-            },
-            {
-                "path": "/path/to/root/of/multiple/excluded/properties/*"
-            }
-        ]
-    }
-```
-
-### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Aktivierungsrichtlinie zum selektiven Einschließen einiger Eigenschaftspfade
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [
-            {
-                "path": "/path/to/included/property/?",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    }
-                ]
-            },
-            {
-                "path": "/path/to/root/of/multiple/included/properties/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    }
-                ]
-            }
-        ],
-        "excludedPaths": [
-            {
-                "path": "/*"
-            }
-        ]
-    }
-```
-
-Hinweis: Allgemein wird die Verwendung einer Indizierungsrichtlinie zur **Deaktivierung** zu verwenden, damit Azure Cosmos DB neue Eigenschaften, die Ihrem Modell hinzugefügt werden, proaktiv indizieren kann.
-
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Verwenden eines räumlichen Index nur für einen bestimmten Eigenschaftspfad
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [
-            {
-                "path": "/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    },
-                    {
-                        "kind": "Range",
-                        "dataType": "String"
-                    }
-                ]
-            },
-            {
-                "path": "/path/to/geojson/property/?",
-                "indexes": [
-                    {
-                        "kind": "Spatial",
-                        "dataType": "Point"
-                    }
-                ]
-            }
-        ],
-        "excludedPaths": []
-    }
-```
-
-### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Ausschließen aller Eigenschaftspfade aber Aktivhalten der Indizierung
-
-Diese Richtlinie kann in Situationen verwendet werden, in denen das [Feature „Gültigkeitsdauer“ (Time-to-Live, TTL)](time-to-live.md) aktiv ist, aber kein Sekundärindex erforderlich ist (um Azure Cosmos DB als reinen Schlüsselwertspeicher zu verwenden).
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [],
-        "excludedPaths": [{
-            "path": "/*"
-        }]
-    }
-```
-
-### <a name="no-indexing"></a>Keine Indizierung
-```
-    {
-        "indexingMode": "none"
-    }
-```
-
-## <a name="composite-indexing-policy-examples"></a>Zusammengesetzte Indizierung – Richtlinienbeispiele
-
-Über das Einschließen oder Ausschließen von Pfaden für einzelne Eigenschaften hinaus können Sie auch einen zusammengesetzten Index angeben. Wenn Sie eine Abfrage für ausführen möchten, die eine `ORDER BY`-Klausel für mehrere Eigenschaften aufweist, ist ein [zusammengesetzter Index](index-policy.md#composite-indexes) für diese Eigenschaften erforderlich.
-
-### <a name="composite-index-defined-for-name-asc-age-desc"></a>Zusammengesetzter Index, definiert für (name asc, age desc):
-```
-    {  
-        "automatic":true,
-        "indexingMode":"Consistent",
-        "includedPaths":[  
-            {  
-                "path":"/*"
-            }
-        ],
-        "excludedPaths":[  
-
-        ],
-        "compositeIndexes":[  
-            [  
-                {  
-                    "path":"/name",
-                    "order":"ascending"
-                },
-                {  
-                    "path":"/age",
-                    "order":"descending"
-                }
-            ]
-        ]
-    }
-```
-
-Dieser zusammengesetzte Index könnte die zwei folgenden Abfragen unterstützen:
-
-Abfrage 1:
-```sql
-    SELECT *
-    FROM c
-    ORDER BY name asc, age desc    
-```
-
-Abfrage 2:
-```sql
-    SELECT *
-    FROM c
-    ORDER BY name desc, age asc
-```
-
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Zusammengesetzter Index, definiert für (name asc, age asc) und (name asc, age desc):
-
-Sie können innerhalb der gleichen Indizierungsrichtlinie mehrere verschiedene zusammengesetzte Indizes definieren. 
-```
-    {  
-        "automatic":true,
-        "indexingMode":"Consistent",
-        "includedPaths":[  
-            {  
-                "path":"/*"
-            }
-        ],
-        "excludedPaths":[  
-
-        ],
-        "compositeIndexes":[  
-            [  
-                {  
-                    "path":"/name",
-                    "order":"ascending"
-                },
-                {  
-                    "path":"/age",
-                    "order":"ascending"
-                }
-            ],
-            [  
-                {  
-                    "path":"/name",
-                    "order":"ascending"
-                },
-                {  
-                    "path":"/age",
-                    "order":"descending"
-                }
-            ]
-        ]
-    }
-```
-
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>Zusammengesetzter Index, definiert für (name asc, age asc):
-
-Die Angabe der Reihenfolge ist optional. Ohne Angabe ist die Reihenfolge aufsteigend.
-```
-{  
-        "automatic":true,
-        "indexingMode":"Consistent",
-        "includedPaths":[  
-            {  
-                "path":"/*"
-            }
-        ],
-        "excludedPaths":[  
-
-        ],
-        "compositeIndexes":[  
-            [  
-                {  
-                    "path":"/name",
-                },
-                {  
-                    "path":"/age",
-                }
-            ]
-        ]
-}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
