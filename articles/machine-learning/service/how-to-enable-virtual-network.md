@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 6e5ae4966a62c24594ec6efa9454d5e03f75c25b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fcd47cdf3968e8c8a204cb15f10dd41c4eaab641
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971540"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885675"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk
 
@@ -39,9 +39,9 @@ Dieser Artikel enthält außerdem ausführliche Informationen zu *erweiterten Si
 
 Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbeitsbereich in einem virtuellen Netzwerk zu verwenden:
 
-1. Erstellen Sie eine Experimentier-Computeinstanz (z. B. eine Machine Learning Compute-Instanz) hinter einem virtuellen Netzwerk, oder fügen Sie eine Experimentier-Computinstanz an den Arbeitsbereich an (z.Bb. einen HDInsight-Cluster oder einen virtuellen Computer).
+1. Erstellen Sie eine Computeinstanz (z. B. eine Machine Learning Compute-Instanz) hinter einem virtuellen Netzwerk, oder fügen Sie eine Computinstanz an den Arbeitsbereich an (z. B. einen HDInsight-Cluster, virtuellen Computer oder Azure Kubernetes Service-Cluster). Die Computeinstanz kann zum Experimentieren oder zur Modellimplementierung verwendet werden.
 
-   Weitere Informationen finden Sie in den Abschnitten „Verwenden einer Machine Learning Compute-Instanz“ und „Verwenden eines virtuellen Computers oder eines HDInsight-Clusters“ in diesem Artikel.
+   Weitere Informationen finden Sie in diesem Artikel in den Abschnitten [Verwenden einer Machine Learning Compute-Instanz](#amlcompute), [Verwenden eines virtuellen Computers oder HDInsight-Clusters](#vmorhdi) und [Verwenden von Azure Kubernetes Service](#aksvnet).
 
 1. Wechseln Sie im Azure-Portal zu dem Speicher, der an Ihren Arbeitsbereich angefügt ist.
 
@@ -53,7 +53,11 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
 
 1. Führen Sie auf der Seite __Firewalls und virtuelle Netzwerke__ Folgendes aus:
     - Klicken Sie auf __Ausgewählte Netzwerke__.
-    - Wählen Sie unter __Virtuelle Netzwerke__ den Link __Vorhandenes virtuelles Netzwerk hinzufügen__ aus. Durch diese Aktion wird das virtuelle Netzwerk an dem Ort hinzugefügt, wo sich Ihre Experimentier-Computeinstanz befindet (siehe Schritt 1).
+    - Wählen Sie unter __Virtuelle Netzwerke__ den Link __Vorhandenes virtuelles Netzwerk hinzufügen__ aus. Durch diese Aktion wird das virtuelle Netzwerk an dem Ort hinzugefügt, wo sich Ihre Computeinstanz befindet (siehe Schritt 1).
+
+        > [!IMPORTANT]
+        > Das Speicherkonto muss sich im selben virtuellen Netzwerk befinden wie die Computeinstanzen, die für Training oder Rückschluss verwendet werden.
+
     - Aktivieren Sie das Kontrollkästchen __Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben__.
 
     > [!IMPORTANT]
@@ -63,20 +67,18 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
 
    [![Der Bereich „Firewalls und virtuelle Netzwerke“ im Azure-Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
-1. Ändern Sie während der Ausführung des Experiments in Ihrem Experimentiercode die Ausführungskonfiguration für die Verwendung von Azure Blob Storage:
+1. Ändern Sie, wenn Sie __Experimente ausführen__, in Ihrem Experimentiercode die Ausführungskonfiguration so, dass Azure-Blobspeicher verwendet wird:
 
     ```python
     run_config.source_directory_data_store = "workspaceblobstore"
     ```
 
 > [!IMPORTANT]
-> Sie können das _Standardspeicherkonto_ für den Azure Machine Learning Service kann _nur zum Experimentieren_ in einem virtuellen Netzwerk platzieren. Das Standardspeicherkonto wird automatisch bereitgestellt, wenn Sie einen Arbeitsbereich erstellen.
+> Sie können sowohl das _Standardspeicherkonto_ für den Azure Machine Learning Service als auch _Nicht-Standardspeicherkonten_ in einem virtuellen Netzwerk anordnen.
 >
-> Sie können _Nicht-Standardspeicherkonten_ _nur zum Experimentieren_ in einem virtuellen Netzwerk platzieren. Mit dem `storage_account`-Parameter in der [`Workspace.create()`-Funktion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) können Sie ein benutzerdefiniertes Speicherkonto über die Azure-Ressourcen-ID angeben.
+> Das Standardspeicherkonto wird automatisch bereitgestellt, wenn Sie einen Arbeitsbereich erstellen.
 >
-> Sowohl die standardmäßigen als auch die nicht standardmäßigen Speicherkonten, die für _Rückschlüsse_ verwendet werden, benötigen _uneingeschränkten Zugriff auf das Speicherkonto_.
->
-> Sollten Sie nicht sicher sein, ob Sie diese Einstellungen geändert haben, sehen Sie sich den Abschnitt „Ändern der Standard-Netzwerkzugriffsregel“ in [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security) an. Befolgen Sie die Anleitungen, um bei Rückschlüssen oder der Modellbewertung den Zugriff aus allen Netzwerken zuzulassen.
+> Für Nicht-Standardspeicherkonten können Sie mit dem `storage_account`-Parameter in der [`Workspace.create()`-Funktion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ein benutzerdefiniertes Speicherkonto über die Azure-Ressourcen-ID angeben.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Verwenden einer Key Vault-Instanz mit Ihrem Arbeitsbereich
 
@@ -101,6 +103,8 @@ Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter
 
    [![Der Abschnitt „Firewalls und virtuelle Netzwerke“ im Bereich „Key Vault“](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
+<a id="amlcompute"></a>
+
 ## <a name="use-a-machine-learning-compute-instance"></a>Verwenden einer Machine Learning Compute-Instanz
 
 Wenn Sie eine Azure Machine Learning Compute-Instanz in einem virtuellen Netzwerk verwenden möchten, müssen die folgenden Netzwerkanforderungen erfüllt sein:
@@ -110,6 +114,7 @@ Wenn Sie eine Azure Machine Learning Compute-Instanz in einem virtuellen Netzwer
 > * Das für den Computecluster angegebene Subnetz muss über genügend nicht zugewiesene IP-Adressen für die Anzahl virtueller Computer verfügen, die für den Cluster vorgesehen sind. Falls das Subnetz zu wenige nicht zugewiesene IP-Adressen hat, wird der Cluster teilweise zugeordnet.
 > * Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden. Wenn Sie zum Schutz des virtuellen Netzwerks den Datenverkehr einschränken möchten, lassen Sie einige Ports für den Compute-Dienst geöffnet. Weitere Informationen finden Sie im Abschnitt [Erforderliche Ports](#mlcports).
 > * Wenn Sie mehrere Computecluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern.
+> * Wenn die Azure Storage-Konten für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt sind, müssen sie sich im selben virtuellen Netzwerk befinden wie die Azure Machine Learning Compute-Instanz.
 
 Die Machine Learning Compute-Instanz ordnet in der Ressourcengruppe, die das virtuelle Netzwerk enthält, automatisch zusätzliche Netzwerkressourcen zu. Für jeden Computecluster ordnet der Dienst folgende Ressourcen zu:
 
@@ -238,6 +243,8 @@ except ComputeTargetException:
 
 Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den Cluster in einem Experiment verwenden. Weitere Informationen finden Sie unter [Auswählen und Verwenden eines Computeziels für das Training](how-to-set-up-training-targets.md).
 
+<a id="vmorhdi"></a>
+
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Verwenden eines virtuellen Computers oder HDInsight-Clusters
 
 > [!IMPORTANT]
@@ -283,7 +290,7 @@ Gehen Sie folgendermaßen vor, um AKS in einem virtuellen Netzwerk zu Ihrem Arbe
 > [!IMPORTANT]
 > Bevor Sie mit dem folgenden Verfahren beginnen, befolgen Sie die Anweisungen im Abschnitt „Voraussetzungen“ von [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites),und planen Sie die IP-Adressierung für Ihren Cluster.
 >
-> Die AKS-Instanz und das virtuelle Azure-Netzwerk müssen sich in derselben Region befinden.
+> Die AKS-Instanz und das virtuelle Azure-Netzwerk müssen sich in derselben Region befinden. Wenn Sie die Azure Storage-Konten, die vom Arbeitsbereich verwendet werden, in einem virtuellen Netzwerk schützen, müssen sie sich im selben virtuellen Netzwerk befinden wie die AKS-Instanz.
 
 1. Stellen Sie im [Azure-Portal](https://portal.azure.com) sicher, dass für die Netzwerksicherheitsgruppe (NSG), die das virtuelle Netzwerk steuert, eine Regel für eingehenden Datenverkehr für Azure Machine Learning Service unter Verwendung von __AzureMachineLearning__ als **QUELLE** (SOURCE) aktiviert ist.
 

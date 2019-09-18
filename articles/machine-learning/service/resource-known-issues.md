@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 96af61089f2b7b85d58a8a2ab61936459cef158b
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032981"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858691"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning Service
 
@@ -140,7 +140,7 @@ Wenn Sie Ihren Arbeitsbereich direkt über einen Freigabelink aus dem SDK oder d
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
-Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. Um einige Protokolle anzuzeigen, besuchen Sie das [Azure-Portal](https://portal.azure.com), wechseln Sie zu Ihrem Arbeitsbereich, und wählen Sie **Arbeitsbereich > Experiment > Ausführen > Protokolle** aus.
+Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. Um einige Protokolle anzuzeigen, besuchen Sie das [Azure-Portal](https://portal.azure.com), wechseln Sie zu Ihrem Arbeitsbereich, und wählen Sie **Arbeitsbereich > Experiment > Ausführen > Protokolle** aus.  Diese Informationen finden Sie auch im **Experimente**-Abschnitt auf der [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com).
 
 > [!NOTE]
 > Azure Machine Learning Service protokolliert während des Trainings auch Informationen aus zahlreichen Quellen, wie z. B. aus AutoML oder dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Viele dieser Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.

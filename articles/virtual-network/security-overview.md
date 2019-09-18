@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065940"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886025"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -87,7 +87,7 @@ Die folgenden Diensttags können in [Netzwerksicherheitsgruppen-Regeln](https://
 * **Sql*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe der Azure SQL-Datenbank-, Azure Database for MySQL-, Azure Database for PostgreSQL- und Azure SQL Data Warehouse-Dienste an. Wenn Sie *Sql* als Wert angeben, wird der Datenverkehr für Sql zugelassen oder verweigert. Falls Sie den Zugriff auf Sql nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: Sql.[Name der Region]. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
 * **SqlManagement*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte SQL-Bereitstellungen an. Wenn Sie *SqlManagement* als Wert angeben, wird der Datenverkehr für SqlManagement zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen. 
 * **Storage*** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für den Azure Storage-Dienst an. Wenn Sie *Storage* als Wert angeben, wird der Datenverkehr für den Speicher zugelassen oder verweigert. Falls Sie den Zugriff auf Speicher nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: Speicher.[Name der Region]. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für das klassische Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume und [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) und Adresspräfixen verbunden sind, die für [benutzerdefinierte Routen](virtual-networks-udr-overview.md) verwendet werden. Denken Sie daran, dass dieses Tag die Standardroute enthalten kann. 
+* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für das klassische Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume, [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) verbunden sind, die [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) und Adresspräfixe, die für [benutzerdefinierte Routen](virtual-networks-udr-overview.md) verwendet werden. Denken Sie daran, dass dieses Tag die Standardroute enthalten kann. 
 
 > [!NOTE]
 > Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. 

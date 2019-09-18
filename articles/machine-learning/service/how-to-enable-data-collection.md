@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227943"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860518"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
@@ -144,6 +144,8 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 
   1. Klicken Sie auf **Aktualisieren**, um die Änderungen zu übernehmen.
 
+  Sie können auf diese Einstellungen auch über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) zugreifen.
+
 + Option 2 – Deaktivieren der Datensammlung mithilfe von Python-Code:
 
   ```python 
@@ -172,7 +174,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Analysieren von Modelldaten mit Power BI
 
-1. Laden Sie [Power BI Desktop](https://www.powerbi.com) herunter, und öffnen Sie die Anwendung.
+1. Laden Sie [Power BI Desktop](https://www.powerbi.com) herunter, und öffnen Sie diese Anwendung.
 
 1. Wählen Sie **Daten abrufen**, und klicken Sie auf [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 

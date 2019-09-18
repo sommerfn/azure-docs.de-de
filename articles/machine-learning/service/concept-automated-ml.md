@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c654da71a0c060a9344ef7d7d42b30263a7fb2db
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165208"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882033"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -47,7 +47,7 @@ Mithilfe von **Azure Machine Learning Service** können Sie automatisierte ML-Tr
 
 1. **Konfigurieren des Computeziels für das Modelltraining**, z.B. [lokaler Computer, Azure Machine Learning Computes, Remote-VMs oder Azure Databricks](how-to-set-up-training-targets.md).  Weitere Informationen zu automatisiertem Training [für eine Remoteressource](how-to-auto-train-remote.md).
 
-1. **Konfigurieren der automatisierten Machine Learning-Parameter**, die die Anzahl der Iterationen über verschiedene Modelle, die Hyperparametereinstellungen, erweiterte Vorverarbeitung/Featurebereitstellung und die Metriken bestimmen, die bei der Ermittlung des besten Modells zu berücksichtigen sind.  Sie können die Einstellungen für ein automatisches Trainingsexperiment [im Azure-Portal](how-to-create-portal-experiments.md) oder [mit dem SDK](how-to-configure-auto-train.md) konfigurieren.
+1. **Konfigurieren der automatisierten Machine Learning-Parameter**, die die Anzahl der Iterationen über verschiedene Modelle, die Hyperparametereinstellungen, erweiterte Vorverarbeitung/Featurebereitstellung und die Metriken bestimmen, die bei der Ermittlung des besten Modells zu berücksichtigen sind.  Sie können die Einstellungen für ein automatisches Trainingsexperiment im [Azure-Portal](how-to-create-portal-experiments.md), über [die Landing Page des Arbeitsbereichs (Vorschau)](https://ml.azure.com) oder [mit dem SDK](how-to-configure-auto-train.md) konfigurieren. 
 
 1. **Übermitteln der Trainingsausführung.**
 
@@ -98,7 +98,12 @@ Die Erstellung von Vorhersagen ist ein integraler Bestandteil jedes Unternehmens
 
 Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden pivotiert und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.
 
-Hier erhalten Sie weitere Informationen und ein Beispiel zum [automatisierten maschinellen Lernen für die Zeitreihenvorhersage](how-to-auto-train-forecast.md).
+Hier erhalten Sie weitere Informationen und ein Beispiel zum [automatisierten maschinellen Lernen für die Zeitreihenvorhersage](how-to-auto-train-forecast.md). Oder sehen Sie sich das Notebook zu Energiebedarf ([auto-ml-forecasting-energy-demand.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
+
+* Feiertagserkennung und Erstellen zusätzlicher Merkmale (Featurization)
+* Kreuzvalidierung mit rollierendem Ursprung (Rolling Origin Validation)
+* Konfigurierbare Verzögerungen (Lags)
+* Aggregierte Zeitfenstermerkmale (Rolling Window Features)
 
 ## <a name="ensemble"></a> Ensemblemodelle
 
@@ -133,7 +138,7 @@ Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erst
 + [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
 
 + Konfigurieren Sie die Einstellungen für ein automatisches Trainingsexperiment:
-  + Verwenden Sie in der Benutzeroberfläche des Azure-Portals [die folgenden Schritte](how-to-create-portal-experiments.md).
+  + Führen Sie im Azure-Portal oder über die Landing Page des Arbeitsbereichs (Vorschau) [diese Schritte](how-to-create-portal-experiments.md) aus.
   + Mit dem Python SDK [verwenden Sie diese Schritte](how-to-configure-auto-train.md).
 
 + Erfahren Sie, wie automatisches Training mithilfe von Zeitreihendaten funktioniert, indem Sie [diese Schritte verwenden](how-to-auto-train-forecast.md).

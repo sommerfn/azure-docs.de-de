@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9a2b030185c821ec9bd577ecdabbc929766f2d14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997917"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858889"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -34,7 +34,7 @@ Für das automatisierte maschinelle Lernen sind folgende Konfigurationsoptionen 
 * Untersuchen von Modellmetriken
 * Registrieren und Bereitstellen von Modellen
 
-Wenn Sie lieber ohne Code arbeiten, informieren Sie sich unter [Erstellen und Untersuchen automatisierter Machine Learning-Experimente im Azure-Portal (Vorschau)](how-to-create-portal-experiments.md).
+Wenn Sie lieber ohne Code arbeiten, informieren Sie sich unter [Erstellen, Untersuchen und Bereitstellen automatisierter Experimente mit maschinellem Lernen im Azure-Portal](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>Auswählen der Experimentart
 
@@ -427,7 +427,7 @@ Verwenden Sie diese 2 APIs im ersten Schritt des angepassten Modells, um mehr zu
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Hinweis:
+   Hierbei gilt:
 
    |Output|Definition|
    |----|--------|
@@ -553,13 +553,13 @@ Es gibt zwei Möglichkeiten, eine Featurewichtigkeit zu generieren.
     print(per_class_summary)
     ```
 
-Sie können das Diagramm für die Featurewichtigkeit in Ihrem Arbeitsbereich im Azure-Portal anzeigen. Anzeigen der URL mithilfe des run-Objekts:
+Zeigen Sie die URL an, um die Featurewichtigkeit mit dem run-Objekt anzuzeigen:
 
 ```
 automl_run.get_portal_url()
 ```
 
-Sie können das Diagramm für die Featurewichtigkeit in Ihrem Arbeitsbereich im Azure-Portal anzeigen. Das Diagramm wird auch angezeigt, wenn Sie das [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails` in einem Notebook verwenden. Weitere Informationen über Diagramme finden Sie unter [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
+Sie können das Diagramm für die Featurewichtigkeit in Ihrem Arbeitsbereich im Azure-Portal oder über [die Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) anzeigen. Das Diagramm wird auch angezeigt, wenn Sie das [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails` in einem Notebook verwenden. Weitere Informationen über Diagramme finden Sie unter [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 
 ```Python
 from azureml.widgets import RunDetails

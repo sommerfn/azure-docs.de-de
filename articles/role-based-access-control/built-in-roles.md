@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114673"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801376"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -36,7 +36,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | Integrierte Rolle | BESCHREIBUNG |
 | --- | --- |
 | [Besitzer](#owner) | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. |
-| [Mitwirkender](#contributor) | Ermöglicht Ihnen das Verwalten aller Komponenten außer des Zugriffs auf Ressourcen. |
+| [Mitwirkender](#contributor) | Ermöglicht Ihnen das Verwalten aller Optionen mit Ausnahme des Gewährens von Zugriff auf Ressourcen. |
 | [Leser](#reader) | Sie können alles anzeigen, aber keine Änderungen vornehmen. |
 | [AcrDelete](#acrdelete) | ACR-Löschvorgang |
 | [AcrImageSigner](#acrimagesigner) | ACR-Imagesignaturgeber |

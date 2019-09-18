@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278177"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879063"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> Für die Kreuzvalidierung (Cross-Validation, CV) können Zeitreihendaten den grundlegenden statistischen Annahmen der kanonischen k-fachen Kreuzvalidierungsstrategie widersprechen. Das automatisierte maschinelle Lernen implementiert daher eine parallele Ursprungsvalidierung, um Teilmengen für die Kreuzvalidierung von Zeitreihendaten zu erstellen. Geben Sie im Objekt `AutoMLConfig` den Parameter `n_cross_validations` an, um dieses Verfahren zu verwenden. Sie können die Validierung umgehen und mit den Parametern `X_valid` und `y_valid` Ihre eigenen Validierungssätze verwenden.
+Sehen Sie sich das Notebook zu Energiebedarf ([auto-ml-forecasting-energy-demand.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
+
+* Feiertagserkennung und Erstellen zusätzlicher Merkmale (Featurization)
+* Kreuzvalidierung mit rollierendem Ursprung (Rolling Origin Validation)
+* Konfigurierbare Verzögerungen (Lags)
+* Aggregierte Zeitfenstermerkmale (Rolling Window Features)
 
 ### <a name="view-feature-engineering-summary"></a>Anzeigen der Zusammenfassung der Featureentwicklung
 

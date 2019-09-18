@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d7333a9316e4d39fd550872c3df04024a75d21d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c40fd4f776e0372d7368d182d30cfb2e01a4b0e2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128328"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858823"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Was sind ML-Pipelines in Azure Machine Learning Service?
 
@@ -54,7 +54,7 @@ Nachdem die Pipeline entworfen wurde, wird ihr Trainingsprozess in der Regel wei
 
 Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie PyTorch oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert zwischen den verschiedenen [Computezielen](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten problemlos für die nachgelagerten Computeziele freigegeben werden können.
 
-Sie können [die Metriken für Ihre Pipelineexperimente direkt im Azure-Portal verfolgen](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments). Nach dem Veröffentlichen einer Pipeline können Sie einen REST-Endpunkt konfigurieren, mit dem Sie die Pipeline über eine beliebige Plattform bzw. einen beliebigen Stapel erneut ausführen können.
+Für das [Nachverfolgen der Metriken für Ihre Pipelineexperimente](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) haben Sie zwei Möglichkeiten: Nachverfolgung direkt im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Nach dem Veröffentlichen einer Pipeline können Sie einen REST-Endpunkt konfigurieren, mit dem Sie die Pipeline über eine beliebige Plattform bzw. einen beliebigen Stapel erneut ausführen können.
 
 ## <a name="key-advantages"></a>Hauptvorteile
 

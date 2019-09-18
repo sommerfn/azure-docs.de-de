@@ -2,31 +2,25 @@
 title: Just-In-Time-VM-Zugriff in Azure Security Center | Microsoft-Dokumentation
 description: In diesem Dokument wird beschrieben, wie Sie mit Just-In-Time-VM-Zugriff in Azure Security Center den Zugriff auf die virtuellen Azure-Computer steuern können.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 671930b1-fc84-4ae2-bf7c-d34ea37ec5c7
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872924"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910603"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
 Mit Just-In-Time-VM-Zugriff (JIT-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen.
 
 > [!NOTE]
-> Das Just-In-Time-Feature ist im Standard-Tarif von Security Center verfügbar.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
+> Das Just-In-Time-Feature ist im Standard-Tarif von Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
 
 
 > [!NOTE]
@@ -76,7 +70,7 @@ In ASC können Sie eine JIT-Richtlinie konfigurieren und mithilfe einer JIT-Rich
 
 1. Öffnen Sie das Dashboard **Security Center**.
 
-2. Wählen Sie im linken Bereich die Option **Just-in-time VM access** (Just-in-Time-VM-Zugriff) aus.
+2. Wählen Sie im linken Bereich die Option **JIT-VM-Zugriff** aus.
 
     ![Kachel „JIT-VM-Zugriff“](./media/security-center-just-in-time/just-in-time.png)
 
@@ -87,7 +81,7 @@ In ASC können Sie eine JIT-Richtlinie konfigurieren und mithilfe einer JIT-Rich
     **JIT-VM-Zugriff** enthält Informationen zum Status Ihrer virtuellen Computer:
 
     - **Konfiguriert**: Virtuelle Computer, die für die Unterstützung von Just-In-Time-Zugriff konfiguriert wurden. Die dargestellten Daten betreffen die letzte Woche und enthalten für jeden virtuellen Computer die Anzahl der genehmigten Anforderungen, Datum und Uhrzeit des letzten Zugriffs sowie den letzten Benutzer.
-    - **Empfohlen**: Virtuelle Computer, die Just-In-Time-VM-Zugriff unterstützen, jedoch nicht entsprechend konfiguriert wurden. Es wird empfohlen, die Just-In-Time-VM-Zugriffssteuerung für diese virtuellen Computer zu aktivieren. 
+    - **Empfohlen**: Virtuelle Computer, die Just-In-Time-VM-Zugriff unterstützen, jedoch nicht entsprechend konfiguriert wurden. Es wird empfohlen, die Just-In-Time-VM-Zugriffssteuerung für diese virtuellen Computer zu aktivieren.
     - **Keine Empfehlung** – Mögliche Gründe, dass ein virtueller Computer nicht empfohlen wird:
       - Fehlende NSG: Die Just-In-Time-Lösung erfordert, dass eine NSG festgelegt ist.
       - Klassischer virtueller Computer: Der durch das Security Center gesteuerte Just-In-Time-VM-Zugriff unterstützt derzeit nur virtuelle Computer, die über Azure Resource Manager bereitgestellt wurden. Klassische Bereitstellungen werden durch die Just-In Time-Lösung nicht unterstützt. 
@@ -131,7 +125,7 @@ So fordern Sie Zugriff auf einen virtuellen Computer über ASC:
 
     - Das Symbol in der Spalte **Verbindungsdetails** gibt an, ob JIT in der Netzwerksicherheitsgruppe oder der Firewall aktiviert ist. Wenn JIT für beide aktiviert ist, wird nur das Firewallsymbol angezeigt.
 
-    - Die Spalte **Verbindungsdetails** bietet die richtigen zum Herstellen einer Verbindung mit dem virtuellen Computer erforderlichen Informationen und gibt die geöffneten Ports an.
+    - Die Spalte **Verbindungsdetails** enthält die Informationen, die dazu erforderlich sind, den virtuellen Computer zu verbinden, und enthält dessen geöffnete Ports.
 
       ![Anfordern des Just-In-Time-Zugriffs](./media/security-center-just-in-time/request-just-in-time-access.png)
 
@@ -213,7 +207,7 @@ Wenn Sie im Azure-Portal versuchen, eine Verbindung mit einem virtuellen Compute
   Der Zugriff wird mit den folgenden Standardparametern angefordert:
 
   - **Quell-IP**: „Beliebige“ (*) (kann nicht geändert werden)
-  - **Zeitbereich**: 3 Stunden (kann nicht geändert werden)  <!--Isn't this set in the policy-->
+  - **Zeitbereich**: Drei Stunden (kann nicht geändert werden) <!--Isn't this set in the policy-->
   - **Portnummer**: RDP-Port 3389 für Windows bzw. Port 22 für Linux (kann geändert werden)
 
     > [!NOTE]
@@ -223,7 +217,7 @@ Wenn Sie im Azure-Portal versuchen, eine Verbindung mit einem virtuellen Compute
 
   ![JIT-Eingabeaufforderung](./media/security-center-just-in-time/jit-prompt.png)
 
-## Programmgesteuertes Konfigurieren einer JIT-Richtlinie auf einem virtuellen Computer  <a name="jit-program"></a>
+## Programmgesteuertes Konfigurieren einer JIT-Richtlinie auf einem virtuellen Computer <a name="jit-program"></a>
 
 Sie können Just-In-Time über REST-APIs und über PowerShell einrichten.
 

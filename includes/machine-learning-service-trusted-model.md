@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 08/08/2019
 ms.author: larryfr
-ms.openlocfilehash: 7b42ac110fffc0397d75138155ddfb84f0a00098
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b9520e0ba7b8a80a40bb60dab351029f04ce3868
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912370"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390589"
 ---
 > [!IMPORTANT]
-> Sie sollten nur Modelle verwenden, die Sie erstellt oder von einer vertrauenswürdigen Quelle erhalten haben. Serialisierte Modelle sollten als Code behandelt werden, weil in einer Reihe von gängigen Formaten Sicherheitsrisiken ermittelt wurden. Darüber hinaus sind Modelle möglicherweise mit böswilligen Absichten trainiert worden, um verzerrte oder ungenaue Ausgaben bereitzustellen.
+> Sie sollten nur Modelle verwenden, die Sie erstellt oder von einer vertrauenswürdigen Quelle erhalten haben. Sie sollten serialisierte Modelle als Code behandeln, weil in einer Reihe von gängigen Formaten Sicherheitsrisiken ermittelt wurden. Außerdem sind Modelle möglicherweise mit böswilligen Absichten trainiert worden, um verzerrte oder ungenaue Ausgaben bereitzustellen.

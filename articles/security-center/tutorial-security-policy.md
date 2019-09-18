@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314918"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910372"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -127,11 +127,11 @@ Wichtige Konzepte in Azure Policy:
 
 - Eine **Richtliniendefinition** ist eine Regel. 
 
-- Eine**Initiative** ist eine Sammlung von Richtliniendefinitionen (Regeln). 
+- Eine **Initiative** ist eine Sammlung von Richtliniendefinitionen (Regeln). 
 
-- Eine**Zuweisung** ist eine Anwendung einer Initiative oder Richtlinie für einen bestimmten Bereich (Verwaltungsgruppe, Abonnement usw.). 
+- Eine **Zuweisung** ist eine Anwendung einer Initiative oder Richtlinie für einen bestimmten Bereich (Verwaltungsgruppe, Abonnement usw.). 
 
-Security Center hat eine integrierte Initiative, die alle seiner Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.  
+Security Center hat eine integrierte Initiative, die alle seiner Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.
 
 In der integrierten Initiative sind alle Richtlinien von Security Center standardmäßig aktiviert. Sie können bestimmte Richtlinien in der integrierten Initiative deaktivieren, z. B. können Sie alle Security Center-Richtlinien außer **Webanwendungsfirewall** anwenden, indem Sie den Wert des Effect-Parameters der Richtlinie in **Disabled** ändern. 
 

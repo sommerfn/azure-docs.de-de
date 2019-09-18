@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6108bfd9e39b37507ec7e113bf2c489e890f0ca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233561"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811547"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Bring Your Own Key für Apache Kafka in Azure HDInsight
 
@@ -46,104 +46,105 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
    1. Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die Schnellstartanleitung für [Azure Key Vault](../../key-vault/key-vault-overview.md). Weitere Informationen zum Importieren vorhandener Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../../key-vault/about-keys-secrets-and-certificates.md).
 
    2. Aktivieren Sie „Vorläufig löschen“ für den Schlüsseltresor mithilfe des CLI-Befehls [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update).
-        ```Azure CLI az keyvault update --name <Key Vault Name> --enable-soft-delete
+        ```Azure CLI
+        az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
 
-   3. Create keys
+   3. Erstellen von Schlüsseln
 
-        a. To create a new key, select **Generate/Import** from the **Keys** menu under **Settings**.
+        a. Wählen Sie zum Erstellen eines neuen Schlüssels **Generieren/Importieren** im Menü **Schlüssel** unter **Einstellungen** aus.
 
-        ![Generate a new key in Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png)
+        ![Generieren eines neuen Schlüssels in Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png "Generieren eines neuen Schlüssels in Azure Key Vault")
 
-        b. Set **Options** to **Generate** and give the key a name.
+        b. Legen Sie **Optionen** auf **Generieren** fest, und benennen Sie den Schlüssel.
 
-        ![Generate a new key in Azure Key Vault](./media/apache-kafka-byok/kafka-create-a-key.png)
+        ![Generieren eines Schlüsselnamens](./media/apache-kafka-byok/kafka-create-a-key.png "Generieren eines Schlüsselnamens")
 
-        c. Select the key you created from the list of keys.
+        c. Wählen Sie den Schlüssel, den Sie erstellt haben, aus der Liste der Schlüssel aus.
 
-        ![Azure Key Vault key list](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Azure Key Vault-Schlüsselliste](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
-        d. When you use your own key for Kafka cluster encryption, you need to provide the key URI. Copy the **Key identifier** and save it somewhere until you're ready to create your cluster.
+        d. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des Kafka-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
 
-        ![Copy key identifier](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+        ![Kopieren des Schlüsselbezeichners](./media/apache-kafka-byok/kafka-get-key-identifier.png)
    
-    4. Add managed identity to the key vault access policy.
+    4. Fügen Sie eine verwaltete Identität zur Key Vault-Zugriffsrichtlinie hinzu.
 
-        a. Create a new Azure Key Vault access policy.
+        a. Erstellen Sie eine neue Azure Key Vault-Zugriffsrichtlinie.
 
-        ![Create new Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+        ![Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy.png)
 
-        b. Under **Select Principal**, choose the user-assigned managed identity you created.
+        b. Wählen Sie unter **Prinzipal auswählen** die von Ihnen erstellte benutzerseitig zugewiesene verwaltete Identität aus.
 
-        ![Set Select Principal for Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+        ![Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
-        c. Set **Key Permissions** to **Get**, **Unwrap Key**, and **Wrap Key**.
+        c. Aktivieren Sie unter **Schlüsselberechtigungen** die Optionen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen**.
 
-        ![Set Key Permissions for Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png)
+        ![Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (1)](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (1)")
 
-        d. Set **Secret Permissions** to **Get**, **Set**, and **Delete**.
+        d. Aktivieren Sie unter **Berechtigungen für Geheimnis** die Optionen **Abrufen**, **Festlegen** und **Löschen**.
 
-        ![Set Key Permissions for Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
+        ![Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (2)](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (2)")
 
-        e. Click on **Save**. 
+        e. Klicken Sie auf **Speichern**. 
 
-        ![Save Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
+        ![Speichern einer Azure Key Vault-Zugriffsrichtlinie](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
 
-## Create HDInsight cluster
+## <a name="create-hdinsight-cluster"></a>Erstellen des HDInsight-Clusters
 
-   You're now ready to create a new HDInsight cluster. BYOK can only be applied to new clusters during cluster creation. Encryption can't be removed from BYOK clusters, and BYOK can't be added to existing clusters.
+   Sie können nun einen neuen HDInsight-Cluster erstellen. BYOK kann während der Clustererstellung nur auf neue Cluster angewendet werden. Die Verschlüsselung kann für BYOK-Cluster nicht entfernt werden, und BYOK kann nicht zu vorhandenen Clustern hinzugefügt werden.
 
-   ![Kafka disk encryption in Azure portal](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
+   ![Kafka-Datenträgerverschlüsselung im Azure-Portal](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   During cluster creation, provide the full key URL, including the key version. For example, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. You also need to assign the managed identity to the cluster and provide the key URI.
+   Geben Sie während der Clustererstellung die vollständige Schlüssel-URL (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
 
-## Rotating the Encryption key
-   There might be scenarios where you might want to change the encryption keys used by the Kafka cluster after it has been created. This can be easily via the portal. For this operation, the cluster must have access to both the current key and the intended new key, otherwise the rotate key operation will fail.
+## <a name="rotating-the-encryption-key"></a>Rotieren des Verschlüsselungsschlüssels
+   Es gibt möglicherweise Szenarien, in denen Sie die Verschlüsselungsschlüssel ändern möchten, die vom Kafka-Cluster verwendet werden, nachdem er erstellt wurde. Hierzu können Sie das Portal verwenden. Für diesen Vorgang muss der Cluster sowohl auf den aktuellen Schlüssel als auch auf den vorgesehenen neuen Schlüssel zugreifen können, andernfalls schlägt der Vorgang zum Rotieren des Schlüssels fehl.
 
-   To rotate the key, you must have the full url of the new key (See Step 3 of [Setup the Key Vault and Keys](#setup-the-key-vault-and-keys)). Once you have that, go to the Kafka cluster properties section in the portal and click on **Change Key** under **Disk Encryption Key URL**. Enter in the new key url and submit to rotate the key.
+   Um den Schlüssel zu rotieren, müssen Sie über die vollständige URL des neuen Schlüssels verfügen (siehe Schritt 3 unter [Einrichten des Schlüsseltresors und der Schlüssel](#setup-the-key-vault-and-keys)). Wechseln Sie anschließend zum Abschnitt „Kafka-Clustereigenschaften“ im Portal, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
 
-   ![Kafka rotate disk encryption key](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Schlüssel für Kafka-Datenträgerverschlüsselung rotieren](./media/apache-kafka-byok/kafka-change-key.png)
 
-## FAQ for BYOK to Apache Kafka
+## <a name="faq-for-byok-to-apache-kafka"></a>Häufig gestellte Fragen zu BYOK in Apache Kafka
 
-**How does the Kafka cluster access my key vault?**
+**Wie greift der Kafka-Cluster auf meinen Schlüsseltresor zu?**
 
-   Associate a managed identity with the HDInsight Kafka cluster during cluster creation. This managed identity can be created before or during cluster creation. You also need to grant the managed identity access to the key vault where the key is stored.
+   Ordnen Sie eine verwaltete Identität während der Clustererstellung dem HDInsight Kafka-Cluster zu. Diese verwaltete Identität kann vor oder während der Clustererstellung erstellt werden. Außerdem müssen Sie der verwalteten Identität Zugriff auf den Schlüsseltresor mit dem gespeicherten Schlüssel gewähren.
 
-**Is this feature available for all Kafka clusters on HDInsight?**
+**Ist dieses Feature für alle Kafka-Cluster in HDInsight verfügbar?**
 
-   BYOK encryption is only possible for Kafka 1.1 and above clusters.
+   Die BYOK-Verschlüsselung ist nur für Kafka-Cluster mit Version 1.1 und höheren Versionen möglich.
 
-**Can I have different keys for different topics/partitions?**
+**Kann ich verschiedene Schlüssel für verschiedene Themen/Partitionen verwenden?**
 
-   No, all managed disks in the cluster are encrypted by the same key.
+   Nein, alle verwalteten Datenträger im Cluster werden mit dem gleichen Schlüssel verschlüsselt.
 
-**What happens if the cluster loses access to the key vault or the key?**
-   If the cluster loses access to the key, warnings will be shown in the Apache Ambari portal. In this state, the **Change Key** operation will fail. Once key access is restored, Ambari warnings will go away and operations such as key rotation can be successfully performed.
+**Was geschieht, wenn der Cluster den Zugriff auf den Schlüsseltresor oder den Schlüssel verliert?**
+Wenn der Cluster den Zugriff auf den Schlüssel verliert, werden im Apache Ambari-Portal Warnungen angezeigt. In diesem Zustand schlägt der Vorgang **Schlüssel ändern** fehl. Sobald der Schlüsselzugriff wieder hergestellt wurde, verschwinden die Ambari-Warnungen, und Vorgänge wie z. B. die Schlüsselrotation können erfolgreich ausgeführt werden.
 
-   ![Kafka key access Ambari alert](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Ambari-Warnung zum Kafka-Schlüsselzugriff](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
-**How can I recover the cluster if the keys are deleted?**
+**Wie kann ich den Cluster wiederherstellen, wenn die Schlüssel gelöscht werden?**
 
-   Since only “Soft Delete” enabled keys are supported, if the keys are recovered in the key vault, the cluster should regain access to the keys. To recover an Azure Key Vault key, see [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) or [az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
+   Da nur Schlüssel unterstützt werden, für die „Soft Delete“ (Vorläufig löschen) aktiviert ist, sollte der Cluster wieder Zugriff auf die Schlüssel erlangen, wenn die Schlüssel im Schlüsseltresor wiederhergestellt werden. Informationen zum Wiederherstellen eines Azure Key Vault-Schlüssels finden Sie unter [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) oder [az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
 
-**Can I have producer/consumer applications working with a BYOK cluster and a non-BYOK cluster simultaneously?**
+**Können Producer-/Consumeranwendungen gleichzeitig einen BYOK-Cluster und einen Cluster ohne BYOK verwenden?**
 
-   Yes. The use of BYOK is transparent to producer/consumer applications. Encryption happens at the OS layer. No changes need to be made to existing producer/consumer Kafka applications.
+   Ja. Die Verwendung von BYOK ist für Producer-/Consumeranwendungen transparent. Die Verschlüsselung erfolgt auf Betriebssystemebene. An vorhandenen Producer-/Consumeranwendungen mit Kafka müssen keine Änderungen vorgenommen werden.
 
-**Are OS disks/Resource disks also encrypted?**
+**Werden Betriebssystemdatenträger/Ressourcendatenträger ebenfalls verschlüsselt?**
 
-   No. OS disks and Resource disks are not encrypted.
+   Nein. Betriebssystemdatenträger und Ressourcendatenträger werden nicht verschlüsselt.
 
-**If a cluster is scaled up, will the new brokers support BYOK seamlessly?**
+**Unterstützen die neuen Broker BYOK einwandfrei, wenn ein Cluster zentral hochskaliert wird?**
 
-   Yes. The cluster needs access to the key in the key vault during scale up. The same key is used to encrypt all managed disks in the cluster.
+   Ja. Der Cluster benötigt während der zentralen Hochskalierung Zugriff auf den Schlüssel im Schlüsseltresor. Alle verwalteten Datenträger im Cluster werden mit dem gleichen Schlüssel verschlüsselt.
 
-**Is BYOK available in my location?**
+**Ist BYOK an meinem Standort verfügbar?**
 
-   Kafka BYOK is available in all public clouds.
+   Kafka BYOK ist in allen öffentlichen Clouds verfügbar.
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-* For more information about Azure Key Vault, see [What is Azure Key Vault](../../key-vault/key-vault-whatis.md)?
-* To get started with Azure Key Vault, see [Getting Started with Azure Key Vault](../../key-vault/key-vault-overview.md).
+* Weitere Informationen zu Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-whatis.md).
+* Weitere Informationen zu den ersten Schritten mit Azure Key Vault finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](../../key-vault/key-vault-overview.md).

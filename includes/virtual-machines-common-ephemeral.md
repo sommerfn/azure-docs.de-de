@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669664"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775853"
 ---
 Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, sind aber stärker durch den Zeitpunkt der VM-Bereitstellung oder das Reimaging der einzelnen VM-Instanzen betroffen. Mit einem kurzlebigen Betriebssystem-Datenträger erzielen Sie eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und schnelleres VM-Reimaging. 
  
@@ -175,7 +175,7 @@ Sie können eine VM mit einem kurzlebigen Betriebssystem-Datenträger mithilfe e
 
 
 ## <a name="reimage-a-vm-using-rest"></a>Reimaging einer VM mithilfe von REST
-Derzeit ist die einzige Methode für das Reimaging einer Instanz eines virtuellen Computers mit kurzlebigen Betriebssystem-Datenträgern die Verwendung der REST-API. Für Skalierungsgruppen ist das Reimaging bereits über Powershell, CLI, und das Portal verfügbar.
+Sie können ein Reimaging für eine VM-Instanz mit einem kurzlebigen Betriebssystemdatenträger über die REST-API, wie weiter unten beschrieben, und über das Azure-Portal durchführen. Für Skalierungsgruppen ist das Reimaging bereits über Powershell, CLI, und das Portal verfügbar.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-

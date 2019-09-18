@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: a7944b284a9c1c0424af54874554d05d49ad4b20
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806043"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860592"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Was sind Computeziele in Azure Machine Learning Service? 
 
@@ -55,7 +55,7 @@ Sie können Azure Machine Learning Compute für das Training und für Batchrück
 * Automatische Clusterverwaltung und Auftragsplanung 
 * Unterstützt CPU- und GPU-Ressourcen
 
-Sie können Azure Machine Learning Compute-Instanzen im Azure-Portal, mit dem SDK oder mit der CLI erstellen. Nach der Erstellung sind sie im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
+Sie können Azure Machine Learning Compute-Instanzen im Azure-Portal, über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com), mit dem SDK oder mit der CLI erstellen. Nach der Erstellung sind sie im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
 
 ## <a name="unmanaged-compute"></a>Nicht verwaltete Computeressourcen
 

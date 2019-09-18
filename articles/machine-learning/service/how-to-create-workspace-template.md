@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873152"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390509"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für den Azure Machine Learning Service
 
@@ -55,6 +55,11 @@ Die Beispielvorlage verfügt über zwei Parameter:
 * Der **Arbeitsbereichsname**, wobei es sich um den Anzeigenamen des Azure Machine Learning-Arbeitsbereichs handelt.
 
     Die Namen der anderen Dienste werden nach dem Zufallsprinzip generiert.
+
+> [!TIP]
+> Während die Vorlage, die mit diesem Dokument verknüpft ist, eine neue Azure-Containerregistrierung erstellt, können Sie auch einen neuen Arbeitsbereich erstellen, ohne eine Containerregistrierung zu erstellen. Ist im Arbeitsbereich keine Containerregistrierung vorhanden, wird eine solche erstellt, wenn Sie einen Vorgang ausführen, der eine Containerregistrierung erfordert. Beispielsweise Trainieren oder Bereitstellen eines Modells.
+>
+> Sie können auch auf eine vorhandene Containerregistrierung oder ein Speicherkonto in der Azure Resource Manager-Vorlage verweisen, anstatt eine neue Registrierung zu erstellen.
 
 Weitere Informationen zu Vorlagen finden Sie in den folgenden Artikeln:
 

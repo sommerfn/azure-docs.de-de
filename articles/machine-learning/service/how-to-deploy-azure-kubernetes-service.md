@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278688"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858732"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -30,7 +30,7 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning Service als Webdiens
 
 Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Es gibt zwei Möglichkeiten, einen AKS-Cluster mit Ihrem Arbeitsbereich zu verbinden:
 
-* Erstellen Sie den AKS-Cluster mit dem Azure Machine Learning Service SDK, der Machine Learning-CLI oder dem Azure-Portal. Bei diesem Vorgang wird der Cluster mit dem Arbeitsbereich verbunden.
+* Erstellen Sie den AKS-Cluster über das Azure Machine Learning Service SDK, die Machine Learning-CLI, das [Azure-Portal](https://portal.azure.com) oder die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Bei diesem Vorgang wird der Cluster mit dem Arbeitsbereich verbunden.
 * Fügen Sie einen vorhandenen AKS-Cluster an Ihren Azure Machine Learning Service-Arbeitsbereich an. Ein Cluster kann mit dem Azure Machine Learning Service SDK, der Machine Learning-CLI oder dem Azure-Portal angefügt werden.
 
 > [!IMPORTANT]

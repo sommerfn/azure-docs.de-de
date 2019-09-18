@@ -4,21 +4,24 @@ description: Erfahren Sie, wie Sie Baidu-Einstellungen für einen Azure Notifica
 services: notification-hubs
 author: jwargo
 manager: patniko
-editor: spelluru
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
-ms.openlocfilehash: 9942b1d4d8b5d538f5150a36e596753282039be7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9feb5f66c5ae979a239c3349b2b1347ad307ce49
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234266"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884650"
 ---
-# <a name="configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurieren von Baidu Cloud Push-Einstellungen (ADM) für einen Notification Hub im Azure Portal
-In diesem Artikel wird gezeigt, wie Sie Baidu Cloud Push-Einstellungen für einen Azure Notification Hub über das Azure-Portal konfigurieren. 
+# <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Veraltet: Konfigurieren von Baidu Cloud Push-Einstellungen (ADM) für einen Notification Hub im Azure Portal
+
+In diesem Artikel wird gezeigt, wie Sie Baidu Cloud Push-Einstellungen für einen Azure Notification Hub über das Azure-Portal konfigurieren.
+
+> [!IMPORTANT]
+> Dieses Tutorial ist veraltet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie noch keinen Notification Hub erstellt haben, erstellen Sie ihn jetzt. Weitere Informationen finden Sie unter [Erstellen einer Azure Notification Hub-Instanz über das Azure-Portal](create-notification-hub-portal.md). 

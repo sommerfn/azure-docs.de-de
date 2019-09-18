@@ -1,7 +1,7 @@
 ---
 title: Einrichten einer Python-Entwicklungsumgebung
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Artikel erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Ihren eigenen cloudbasierten Notebook-Server, Jupyter Notebooks, Azure Notebooks, Azure Databricks, Azure Notebooks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
+description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Artikel erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Ihren eigenen cloudbasierten Notebook-Server, Jupyter Notebooks, Azure Databricks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278823"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860582"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -30,7 +30,7 @@ In der folgenden Tabelle sind die einzelnen in diesem Artikel behandelten Entwic
 | [Lokale Umgebung](#local) | Vollständige Kontrolle über Ihre Entwicklungsumgebung und die Abhängigkeiten. Ausführung mit einem Buildtool, einer Umgebung oder einer IDE Ihrer Wahl. | Der Einstieg dauert länger. Die erforderlichen SDK-Pakete müssen installiert werden. Außerdem muss eine Umgebung installiert werden, wenn noch keine vorhanden ist. |
 | [Azure Databricks](#aml-databricks) | Ideal für die Ausführung umfangreicher Workflows mit maschinellem Lernen auf der skalierbaren Apache Spark-Plattform. | Übermaß für experimentelles maschinelles Lernen oder kleinere Experimente und Workflows. Zusätzliche Kosten für Azure Databricks. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Vergleichbar mit der cloudbasierten Notebook-VM (Python und das SDK sind vorinstalliert), aber mit zusätzlichen gängigen vorinstallierten Data Science- und Machine Learning-Tools. Einfache Skalierung und Kombination mit anderen benutzerdefinierten Tools und Workflows. | Langsamerer Einstieg im Vergleich zur cloudbasierten Notebook-VM. |
-| [Azure Notebooks](#aznotebooks) | Kostenloser und einfacher Einstieg: Python und das SDK sind vorinstalliert. | Virtuelle Computer weniger leistungsstark im Vergleich zur cloudbasierten Notebook-VM. Isoliert vom Arbeitsbereich und anderen Ressourcen. |
+
 
 Dieser Artikel enthält außerdem zusätzliche Anwendungstipps für die folgenden Tools:
 
@@ -40,7 +40,7 @@ Dieser Artikel enthält außerdem zusätzliche Anwendungstipps für die folgende
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md). Ein Arbeitsbereich ist alles, was Sie zum Einstieg in Ihren eigenen [cloudbasierten Notebook-Server](#notebookvm), eine [DSVM](#dsvm), [Azure Databricks](#aml-databricks) oder [Azure Notebooks](#aznotebooks) benötigen.
+Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](how-to-manage-workspace.md). Ein Arbeitsbereich ist alles, was Sie zum Einstieg in Ihren eigenen [cloudbasierten Notebook-Server](#notebookvm), eine [DSVM](#dsvm) oder [Azure Databricks](#aml-databricks) benötigen.
 
 Um die SDK-Umgebung für Ihren [lokalen Computer](#local), Ihren [Jupyter Notebook-Server](#jupyter) oder Ihr [Visual Studio Code](#vscode) zu installieren, benötigen Sie außerdem:
 
@@ -352,17 +352,6 @@ So können Sie Azure Databricks testen:
   Von den vielen verfügbaren Beispielnotebooks können **nur [ganz bestimmte](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) mit Azure Databricks verwendet werden.**
 
 + Erfahren Sie, wie Sie [mit Databricks als Computeziel für das Trainieren von Modellen eine Pipeline erstellen](how-to-create-your-first-pipeline.md).
-
-## <a id="aznotebooks"></a>Azure Notebooks
-
-[Azure Notebooks](https://notebooks.azure.com) (Vorschauversion) ist eine interaktive Umgebung in der Azure-Cloud. Dies ist eine einfache Methode für den Einstieg in die Azure Machine Learning-Entwicklung.
-
-* Das Azure Machine Learning SDK ist bereits installiert.
-* Nachdem Sie im Azure-Portal einen Arbeitsbereich für den Azure Machine Learning Service erstellt haben, können Sie über eine Schaltfläche Ihre Azure Notebook-Umgebung automatisch für die Arbeit mit dem Arbeitsbereich konfigurieren.
-
-Verwenden Sie das [Azure-Portal](https://portal.azure.com), um das Arbeiten mit Azure Notebooks zu beginnen.  Öffnen Sie Ihren Arbeitsbereich, und wählen Sie im Abschnitt **Übersicht** die Option **Erste Schritte in Azure Notebooks** aus.
-
-Standardmäßig verwendet Azure Notebooks eine kostenlose Dienstebene, die auf 4 GB Arbeitsspeicher und 1 GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Erstellen einer Konfigurationsdatei für den Arbeitsbereich
 

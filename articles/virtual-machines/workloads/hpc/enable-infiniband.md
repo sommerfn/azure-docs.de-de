@@ -12,16 +12,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797522"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858490"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Aktivieren von InfiniBand mit SR-IOV
 
-Am einfachsten können Sie Ihr benutzerdefiniertes VM-Image mit InfiniBand (IB) konfigurieren, indem Sie Ihrer Bereitstellung die VM-Erweiterung „InfiniBandDriverLinux“ oder „InfiniBandDriverWindows“ hinzufügen. Dies ist auch die empfohlene Vorgehensweise.
+Die einfachste und empfohlene Methode für die ersten Schritte mit IaaS-VMs für HPC besteht darin, das VM-Betriebssystemimage CentOS-HPC 7.6 zu verwenden. Wenn Sie Ihr benutzerdefiniertes VM-Image verwenden, lässt sich dieses am einfachsten mit InfiniBand (IB) konfigurieren, indem Sie Ihrer Bereitstellung die VM-Erweiterung „InfiniBandDriverLinux“ oder „InfiniBandDriverWindows“ hinzufügen.
 Informationen zur Verwendung dieser VM-Erweiterungen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) (Linux) bzw. [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) (Windows).
 
 Wenn Sie InfiniBand manuell auf SR-IOV-fähigen virtuellen Computern (derzeit aus der HB- und HC-Serie) konfigurieren möchten, führen Sie die folgenden Schritte aus. Diese Schritte gelten nur für RHEL/CentOS. Für Ubuntu (16.04 und 18.04) und SLES (12 SP4 und 15) reichen die integrierten Treiber aus.
@@ -43,7 +43,7 @@ sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-s
 
 Laden Sie für Windows die WinOF-2-Treiber für ConnectX-5 von [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) herunter, und installieren Sie sie.
 
-## <a name="enable-ipoib"></a>IPoIB aktivieren
+## <a name="enable-ipoib"></a>Aktivieren von IPoIB
 
 ```bash
 sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf

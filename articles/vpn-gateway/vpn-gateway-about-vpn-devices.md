@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: yushwang
-ms.openlocfilehash: 343bbf5c84ce97feb7b7d170523845f5a2f7c10d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: dea90425e3cd46856262f98d60858b220635d2f4
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668425"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843849"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
@@ -38,18 +38,19 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 |**Hersteller**          |**Gerätefamilie**     |**Betriebssystemversion (Min.)** |**PolicyBased-Konfiguration – Anleitung** |**RouteBased-Konfiguration – Anleitung** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Nicht kompatibel  |[Konfigurationshandbuch](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
-| Allied Telesis     |VPN-Router der AR-Serie |AR-Serie 5.4.7+               |In Kürze verfügbar     |[Konfigurationshandbuch](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Allied Telesis     |VPN-Router der AR-Serie |AR-Serie 5.4.7+               | [Konfigurationshandbuch](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[Konfigurationshandbuch](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall F-Serie |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[Konfigurationshandbuch](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[Konfigurationshandbuch](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-Serie |Barracuda Firewall 6.5 |[Konfigurationshandbuch](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Nicht kompatibel |
 | Check Point |Sicherheitsgateway |R80.10 |[Konfigurationshandbuch](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurationshandbuch](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2* ) |Unterstützt |[Konfigurationshandbuch * ](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |Unterstützt |Unterstützt |
-| Cisco | CSR | RouteBased: IOS-XE 16.10 | | [Konfigurationsskript](vpn-gateway-download-vpndevicescript.md) |
+| Cisco | CSR | RouteBased: IOS-XE 16.10 | (nicht getestet) | [Konfigurationsskript](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |Unterstützt |Unterstützt |
 | Cisco |Meraki |– |Nicht kompatibel |Nicht kompatibel |
 | Citrix |NetScaler MPX, SDX, VPX |ab 10.1 |[Konfigurationshandbuch](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nicht kompatibel |
 | F5 |BIG-IP-Serie |12.0 |[Konfigurationshandbuch](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurationshandbuch](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.6 |  |[Konfigurationshandbuch](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/030680/connecting-a-local-fortigate-to-an-azure-fortigate-via-site-to-site-vpn) |
+| Fortinet |FortiGate |FortiOS 5.6 | (nicht getestet) |[Konfigurationshandbuch](https://web.archive.org/web/20180613172511/http:/cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
+| Hillstone Networks | Next-Gen Firewalls (NGFW) | 5.5R7  | (nicht getestet) | [Konfigurationshandbuch](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL-Serie |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Konfigurationshandbuch](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Nicht kompatibel |
 | Juniper |SRX |PolicyBased: JunOS 10.2<br>Routebased: JunOS 11.4 |Unterstützt |[Konfigurationsskript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J-Serie |PolicyBased: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |Unterstützt |[Konfigurationsskript](vpn-gateway-download-vpndevicescript.md) |
@@ -58,14 +59,14 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Juniper |MX |JunOS 12.x|Unterstützt |[Konfigurationsskript](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Routing- und RAS-Dienst |Windows Server 2012 |Nicht kompatibel |Unterstützt |
 | Open Systems AG |Mission Control Security Gateway |– |[Konfigurationshandbuch](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nicht kompatibel |
-| Palo Alto Networks |Alle Geräte mit PAN-OS 5.0 |PAN-OS<br>PolicyBased: 6.1.5 oder höher<br>RouteBased: 7.1.4 |[Konfigurationshandbuch](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurationshandbuch](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Palo Alto Networks |Alle Geräte mit PAN-OS 5.0 |PAN-OS<br>PolicyBased: 6.1.5 oder höher<br>RouteBased: 7.1.4 |Unterstützt |[Konfigurationshandbuch](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | UTM der nächsten Generation (NU-Serie) | 9.0.1.3 | Nicht kompatibel | [Konfigurationshandbuch](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ-Serie, NSA-Serie<br>SuperMassive-Serie<br>E-Class-NSA-Serie |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nicht kompatibel |[Konfigurationshandbuch](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
-| Sophos | XG-Firewall der nächsten Generation | XG v17 | | [Konfigurationshandbuch](https://community.sophos.com/kb/127546)<br><br>[Configuration guide - Multiple SAs](https://community.sophos.com/kb/en-us/133154) (Konfigurationshandbuch: Mehrere SAs) |
-| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 |  | [Konfigurationshandbuch](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [BGP über IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI über IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
+| Sophos | XG-Firewall der nächsten Generation | XG v17 | (nicht getestet) | [Konfigurationshandbuch](https://community.sophos.com/kb/127546)<br><br>[Configuration guide - Multiple SAs](https://community.sophos.com/kb/en-us/133154) (Konfigurationshandbuch: Mehrere SAs) |
+| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | (nicht getestet) | [Konfigurationshandbuch](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 | (nicht getestet) | [BGP über IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI über IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Alle |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Konfigurationshandbuch](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurationshandbuch](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
-| Zyxel |ZyWALL USG-Serie<br>ZyWALL ATP-Serie<br>ZyWALL VPN-Serie | ZLD v4.32+ | | [VTI über IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br>[BGP über IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
+| Zyxel |ZyWALL USG-Serie<br>ZyWALL ATP-Serie<br>ZyWALL VPN-Serie | ZLD v4.32+ | (nicht getestet) | [VTI über IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br>[BGP über IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >

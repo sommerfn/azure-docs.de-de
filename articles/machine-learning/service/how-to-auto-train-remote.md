@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624835"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858808"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
 
@@ -278,7 +278,7 @@ Das Ausgeben der `best_run`-Erklärungszusammenfassungsvariablen führt zur folg
 
 ![Konsolenausgabe der Modellerklärung](./media/how-to-auto-train-remote/expl-print.png)
 
-Sie können die Featuregewichtung auch über die Widget-Benutzeroberfläche sowie über die Webbenutzeroberfläche im Azure-Portal in Ihrem Arbeitsbereich visualisieren.
+Sie können die Featuregewichtung auch über die Widget-Benutzeroberfläche, die Webbenutzeroberfläche im Azure-Portal oder die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) visualisieren. 
 
 ![Benutzeroberfläche der Modellerklärung](./media/how-to-auto-train-remote/model-exp.png)
 

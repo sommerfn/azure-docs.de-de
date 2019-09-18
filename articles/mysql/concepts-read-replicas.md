@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: f567eefee84cf6a01afad4e5245337dd92b8cc48
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.date: 09/06/2019
+ms.openlocfilehash: 7e1f27738ae5a87cfb84fad955f80ad2f2eb910f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309427"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773317"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -34,7 +34,9 @@ Das Lesereplikatfeature verwendet die asynchrone MySQL-Replikation. Das Feature 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
 Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region erstellen. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
 
-Sie können einen Masterserver in jeder [Azure Database for MySQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen.
+Sie können einen Masterserver in jeder [Azure Database for MySQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen. Die folgende Abbildung zeigt, welche Replikatregionen entsprechend Ihrer Masterregion verfügbar sind.
+
+[ ![Replikatregionen lesen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Dies sind die universellen Replikatregionen:

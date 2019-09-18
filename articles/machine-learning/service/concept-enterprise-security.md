@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165244"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873562"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Unternehmenssicherheit für Azure Machine Learning Service
 
@@ -132,7 +132,7 @@ Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind ver
 
 Administratoren sollten den Zugriff der verwalteten Identität auf die in der vorhergehenden Tabelle genannten Ressourcen nicht widerrufen. Sie können den Zugriff mithilfe des Vorgangs zum erneuten Synchronisieren von Schlüsseln wiederherstellen.
 
-Azure Machine Learning Service erstellt eine weitere Anwendung (deren Name mit `aml-` beginnt) mit Zugriff auf Mitwirkendenebene in Ihrem Abonnement für jede Region des Arbeitsbereichs. Wenn Sie beispielsweise im selben Abonnement über einen Arbeitsbereich in „USA, Osten“ und einen anderen Arbeitsbereich in „Europa, Norden“ verfügen, sehen Sie zwei dieser Anwendungen. Azure Machine Learning Service kann Sie mithilfe dieser Anwendungen beim Verwalten der Computeressourcen unterstützen.
+Azure Machine Learning Service erstellt eine weitere Anwendung (deren Name mit `aml-` oder `Microsoft-AzureML-Support-App-` beginnt) mit Zugriff auf Mitwirkendenebene in Ihrem Abonnement für jede Region des Arbeitsbereichs. Wenn Sie beispielsweise im selben Abonnement über einen Arbeitsbereich in „USA, Osten“ und einen anderen Arbeitsbereich in „Europa, Norden“ verfügen, sehen Sie zwei dieser Anwendungen. Azure Machine Learning Service kann Sie mithilfe dieser Anwendungen beim Verwalten der Computeressourcen unterstützen.
 
 ## <a name="network-security"></a>Netzwerksicherheit
 

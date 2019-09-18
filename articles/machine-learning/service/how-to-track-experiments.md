@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946387"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858720"
 ---
-# <a name="log-metrics-during-training-runs"></a>Protokollieren von Metriken während Trainingsausführungen
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Nachverfolgen von Machine Learning-Trainingsmetriken mit Azure Machine Learning
 
-Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können.
+Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierungscode zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, diese Ausführung überwachen und die Ergebnisse untersuchen.
 
 > [!NOTE]
-> Azure Machine Learning Service kann während des Trainings auch Informationen aus anderen Quellen protokollieren, wie z.B. aus AutoML oder dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
+> Azure Machine Learning Service kann während des Trainings auch Informationen aus anderen Quellen protokollieren, etwa aus automatisierten Machine Learning-Ausführungen oder aus dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
 
-## <a name="list-of-training-metrics"></a>Liste der Trainingsmetriken 
+## <a name="available-metrics-to-track"></a>Zur Nachverfolgung verfügbare Metriken
 
 Die folgenden Metriken können während des Trainings eines Experiments zu einem Durchlauf hinzugefügt werden. Ausführliche Informationen dazu, was Sie bei einer Ausführung nachverfolgen können, finden Sie in der [Referenzdokumentation zur Run-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
@@ -43,7 +43,7 @@ Die folgenden Metriken können während des Trainings eines Experiments zu einem
 > [!NOTE]
 > Metriken für Skalare, Listen, Zeilen und Tabellen können den Typ „float“, „integer“ oder „string“ haben.
 
-## <a name="start-logging-metrics"></a>Protokollieren von Metriken starten
+## <a name="choose-a-logging-option"></a>Auswählen einer Protokollierungsoption
 
 Wenn Sie Ihr Experiment nachverfolgen oder überwachen möchten, müssen Sie Code hinzufügen, um die Protokollierung zu starten, wenn Sie die Ausführung übermitteln. Im Folgenden werden Möglichkeiten beschrieben, wie Sie die Übermittlung auslösen können:
 * __Run.start_logging__ – Fügen Sie Ihrem Trainingsskript Protokollierungsfunktionen hinzu und starten Sie eine interaktive Protokollierungssitzung im angegebenen Experiment. **Start_logging** erstellt eine interaktive Ausführung für die Verwendung in Szenarien wie z.B. Notebooks. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt.
@@ -273,7 +273,7 @@ Modelltraining und -überwachung erfolgen im Hintergrund, sodass Sie währenddes
 Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Sie können nun alle Metriken abrufen, die im obigen Beispiel protokolliert wurden, um das beste Modell zu ermitteln.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal"></a>Anzeigen des Experiments im Azure-Portal
+## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Anzeigen des Experiments im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com)
 
 Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausführungsaufzeichnung des Experiments navigieren. Sie haben zwei Möglichkeiten, auf den Verlauf zuzugreifen:
 

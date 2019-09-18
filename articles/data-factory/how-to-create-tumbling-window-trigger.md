@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/14/2018
-ms.openlocfilehash: 3fb958b446c3f1e78f78f40f112d8d55d37b0986
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/11/2019
+ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141550"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915548"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 Dieser Artikel enthält die Schritte zum Erstellen, Starten und Überwachen eines Triggers für rollierende Fenster. Allgemeine Informationen zu Triggern und unterstützten Triggertypen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md).
@@ -25,11 +25,14 @@ Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
-Wählen Sie zum Erstellen eines Triggers für rollierende Fenster im Azure-Portal **Trigger > Rollierendes Fenster > Weiter** aus, und konfigurieren Sie dann die Eigenschaften, um das rollierende Fenster zu definieren.
+1. Zum Erstellen eines Triggers für ein rollierendes Fenster klicken Sie auf die Data Factory-Benutzeroberfläche, wählen die Registerkarte **Trigger** und dann **Neu** aus. 
+1. Nachdem der Bereich für die Triggerkonfiguration geöffnet wurde, wählen Sie **Rollierendes Fenster** aus und definieren dann die Triggereigenschaften des rollierenden Fensters. 
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 ![Erstellen eines Triggers für ein rollierendes Fenster im Azure-Portal](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Triggertypeigenschaften eines rollierenden Fensters
+
 Ein rollierendes Fenster weist die folgenden Triggertypeigenschaften auf:
 
 ```
@@ -94,7 +97,7 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten J
 | **type** | Typ des Triggers. Der Typ ist der feste Wert „TumblingWindowTrigger“. | String | „TumblingWindowTrigger“ | Ja |
 | **runtimeState** | Der aktuelle Status der Triggerausführungszeit.<br/>**Hinweis**: Dieses Element ist \<readOnly>. | String | „Started“, „Stopped“, „Disabled“ | Ja |
 | **frequency** | Eine Zeichenfolge für die Einheit der Häufigkeit (Minuten oder Stunden), mit der der Trigger wiederholt wird. Wenn die **startTime**-Datumswerte granularer sind als der **frequency**-Wert, werden die **startTime**-Datumsangaben bei der Berechnung der Fenstergrenzen berücksichtigt. Beispiel: Wenn der **frequency**-Wert stündlich ist und der **startTime**-Wert „2017-09-01T10:10:10Z“ lautet, ist das erste Fenster „(2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)“. | String | „minute“, „hour“  | Ja |
-| **interval** | Eine positive ganze Zahl, die das Intervall für den **frequency**-Wert angibt, der bestimmt, wie oft der Trigger ausgeführt wird. Ist **interval** also beispielsweise auf „3“ und **frequency** auf „hour“ festgelegt, wird der Trigger alle drei Stunden ausgeführt. | Integer | Eine positive ganze Zahl | Ja |
+| **interval** | Eine positive ganze Zahl, die das Intervall für den **frequency**-Wert angibt, der bestimmt, wie oft der Trigger ausgeführt wird. Ist **interval** also beispielsweise auf „3“ und **frequency** auf „hour“ festgelegt, wird der Trigger alle drei Stunden ausgeführt. <br/>**Hinweis**: Das minimale Fensterintervall beträgt 15 Minuten. | Integer | Eine positive ganze Zahl | Ja |
 | **startTime**| Das erste Vorkommen, das in der Vergangenheit liegen kann. Das erste Triggerintervall ist (**startTime**, **startTime** + **interval**). | Datetime | Ein DateTime-Wert | Ja |
 | **endTime**| Das letzte Vorkommen, das in der Vergangenheit liegen kann. | Datetime | Ein DateTime-Wert | Ja |
 | **delay** | Der Zeitraum, in dem der Beginn der Datenverarbeitung für das Fenster verzögert wird. Die Ausführung der Pipeline wird nach der erwarteten Ausführungszeit sowie dem **delay**-Wert gestartet. **delay** legt fest, wie lange der Trigger nach Ablauf der fälligen Zeit wartet, bevor er eine neue Ausführung auslöst. Bei **delay** wird nicht das Fenster **startTime** geändert. Ein **delay**-Wert von 00:10:00 impliziert beispielsweise eine Verzögerung von 10 Minuten. | Timespan<br/>(hh:mm:ss)  | Ein Zeitraumwert, wobei der Standardwert 00:00:00 ist. | Nein |

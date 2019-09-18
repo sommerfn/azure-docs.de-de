@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231084"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860541"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 
 Mit Azure Machine Learning Service können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Sie können auch Computeziele für die Modellimplementierung erstellen, wie in [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md) beschrieben.
 
-Sie können Computeziele mit dem Azure Machine Learning SDK, im Azure-Portal, über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder die Azure Machine Learning- VS Code-Erweiterung erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning Service-Arbeitsbereich anfügen, um sie verwenden zu können.
+Sie können ein Computeziel mit dem Azure Machine Learning SDK, im Azure-Portal, über die Landing Page Ihres Arbeitsbereichs (Vorschau), über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder über die Azure Machine Learning VS Code-Erweiterung erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning Service-Arbeitsbereich anfügen, um sie verwenden zu können.
  
 In diesem Artikel erfahren Sie, wie Sie verschiedene Computeziele für das Modelltraining verwenden.  Die Schritte für alle Computeziele führen Sie den gleichen Workflow:
 1. __Erstellen__ Sie ein Computeziel, wenn noch keines vorhanden ist.
@@ -45,7 +45,7 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 
 ## <a name="whats-a-run-configuration"></a>Was ist eine Laufzeitkonfiguration?
 
-Beim Training ist es üblich, auf dem lokalen Computer zu starten und dieses Trainingsskript später auf einem anderen Computeziel auszuführen. Mit Azure Machine Learning Service können Sie Ihr Skript auf unterschiedlichen Computezielen ausführen, ohne das Skript zu ändern. 
+Beim Training ist es üblich, auf dem lokalen Computer zu starten und dieses Trainingsskript später auf einem anderen Computeziel auszuführen. Mit Azure Machine Learning Service können Sie Ihr Skript auf unterschiedlichen Computezielen ausführen, ohne das Skript zu ändern.
 
 Sie müssen lediglich die Umgebung für jedes einzelne Computeziel in einer **Laufzeitkonfiguration** definieren.  Wenn Sie Ihr Trainingsexperiment auf einem anderen Computeziel ausführen möchten, geben Sie die Laufzeitkonfiguration für diese Computeressource an. Weitere Informationen zum Angeben einer Umgebung und zum Binden an die Laufzeitkonfiguration finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
 
@@ -278,6 +278,7 @@ Sie können im Azure-Portal auf Computeziele zugreifen, die Ihrem Arbeitsbereich
 * [Erstellen eines Computeziels](#portal-create) in Ihrem Arbeitsbereich
 * [Anfügen eines Computeziels](#portal-reuse), das außerhalb des Arbeitsbereichs erstellt wurde
 
+
 Nachdem ein Ziel erstellt und an Ihren Arbeitsbereich angefügt wurde, verwenden Sie es in Ihrer Laufzeitkonfiguration mit einem `ComputeTarget`-Objekt: 
 
 ```python
@@ -290,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Um die Compute-Ziele für Ihren Arbeitsbereich anzuzeigen, führen Sie die folgenden Schritte aus:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Ihren Arbeitsbereich. 
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Ihren Arbeitsbereich. Sie können auf diese Schritte auch über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) zugreifen. In den folgenden Abbildungen ist allerdings das Azure-Portal gezeigt.
+ 
 1. Wählen Sie unter __Anwendungen__ den Eintrag __Compute__.
 
     [![Anzeigen der Registerkarte „Compute“](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
@@ -403,11 +405,20 @@ Wechseln Sie mit demselben Experiment zur Ausführung zu einem anderen Computezi
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> In diesem Beispiel wird standardmäßig nur ein Knoten des Computeziels für das Training verwendet. Wenn Sie mehrere Knoten verwenden möchten, legen Sie die `node_count`-Eigenschaft der run-Konfiguration auf die gewünschte Anzahl von Knoten fest. Im folgende Code wird die Anzahl von Knoten, die für das Training verwendet werden, beispielsweise auf vier festgelegt:
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 Alternative:
 
 * Übermitteln Sie das Experiments mit einem `Estimator`-Objekt, wie in [Trainieren von ML-Modellen mit Kalkulatoren](how-to-train-ml-models.md) erläutert.
 * Übermitteln Sie eine HyperDrive-Ausführung für die [Hyperparameteroptimierung](how-to-tune-hyperparameters.md).
 * Übermitteln Sie ein Experiment über die [VS Code-Erweiterung](how-to-vscode-tools.md#train-and-tune-models).
+
+Weitere Informationen finden Sie in der Dokumentation zu [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) und [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py).
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Erstellen einer Laufzeitkonfiguration und Übermitteln der Ausführung mit der Azure Machine Learning CLI
 
