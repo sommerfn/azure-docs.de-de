@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: Serverprotokolle
               href: concepts-server-logs.md
+            - name: Überwachungsprotokolle
+              href: concepts-audit.md
             - name: Abfragespeicher
               items:
                 - name: Abfragespeicher

@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: 'Festlegen und Abrufen eines Geheimnisses: .Node.js'
       href: quick-create-node.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: Azure Resource Manager-Vorlage'
+    - name: 'Festlegen und Abrufen eines Geheimnisses: Vorlage'
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Lernprogramme
