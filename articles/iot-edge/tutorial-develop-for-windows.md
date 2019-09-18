@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541904"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915151"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
@@ -194,13 +194,13 @@ Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient
 
 6. Suchen Sie nach der **modules**-Eigenschaft der gewünschten „$edgeAgent“-Eigenschaften. 
 
-   Hier sollten zwei Module aufgeführt sein. Das erste Modul ist **tempSensor**. Es ist in allen Vorlagen standardmäßig enthalten, um simulierte Temperaturdaten bereitzustellen, die Sie zum Testen Ihrer Module verwenden können. Das zweite Modul ist **IotEdgeModule1**, das Sie im Rahmen dieses Projekts erstellt haben.
+   Hier sollten zwei Module aufgeführt sein. Das erste Modul ist **SimulatedTemperatureSensor**. Es ist standardmäßig in allen Vorlagen enthalten und stellt simulierte Temperaturdaten bereit, die Sie zum Testen Ihrer Module verwenden können. Das zweite Modul ist **IotEdgeModule1**, das Sie im Rahmen dieses Projekts erstellt haben.
 
    Diese Moduleigenschaft deklariert, welche Module in der Bereitstellung auf Ihren Geräten enthalten sein sollen. 
 
 7. Suchen Sie nach der **routes**-Eigenschaft der gewünschten $edgeHub-Eigenschaften. 
 
-   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der routes-Eigenschaft an. Für die erste Route (**IotEdgeModule1ToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten aufzunehmen, die aus einer Ausgabewarteschlange im Modul „IotEdgeModule1“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (**sensorToIotEdgeModule1**) werden vom Modul „tempSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* des Moduls „IotEdgeModule1“ geleitet. 
+   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der routes-Eigenschaft an. Für die erste Route (**IotEdgeModule1ToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten aufzunehmen, die aus einer Ausgabewarteschlange im Modul „IotEdgeModule1“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (**sensorToIotEdgeModule1**) werden vom Modul „SimulatedTemperatureSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* des Moduls „IotEdgeModule1“ geleitet. 
 
    ![Überprüfen von Routen in „deployment.template.json“](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +284,14 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
 4. Erweitern Sie die Details für Ihr IoT Edge-Gerät im Cloud-Explorer, um die Module auf Ihrem Gerät anzuzeigen.
 
-5. Verwenden Sie die Schaltfläche **Aktualisieren**, um den Gerätestatus zu aktualisieren und sich zu vergewissern, dass die Module „tempSensor“ und „IotEdgeModule1“ auf Ihrem Gerät bereitgestellt wurden. 
+5. Verwenden Sie die Schaltfläche **Aktualisieren**, um den Gerätestatus zu aktualisieren und sich zu vergewissern, dass die Module „SimulatedTemperatureSensor“ und „IotEdgeModule1“ auf Ihrem Gerät bereitgestellt wurden. 
 
 
    ![Anzeigen von Modulen, die auf Ihrem IoT Edge-Gerät ausgeführt werden](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>Anzeigen von Nachrichten vom Gerät
 
-Der Code von „IotEdgeModule1“ empfängt Nachrichten über die zugehörige Eingabewarteschlange und leitet diese an die Ausgabewarteschlange weiter. Im Bereitstellungsmanifest wurden Routen deklariert, über die Nachrichten von „tempSensor“ an „IotEdgeModule1“ und von „IotEdgeModule1“ dann an IoT Hub übergeben wurden. Mit den Azure IoT Edge-Tools für Visual Studio können Sie Nachrichten anzeigen, wenn diese von Ihren einzelnen Geräten auf IoT Hub eingehen. 
+Der Code von „IotEdgeModule1“ empfängt Nachrichten über die zugehörige Eingabewarteschlange und leitet diese an die Ausgabewarteschlange weiter. Im Bereitstellungsmanifest wurden Routen deklariert, über die Nachrichten von „SimulatedTemperatureSensor“ an „IotEdgeModule1“ und von „IotEdgeModule1“ dann an IoT Hub übergeben wurden. Mit den Azure IoT Edge-Tools für Visual Studio können Sie Nachrichten anzeigen, wenn diese von Ihren einzelnen Geräten auf IoT Hub eingehen. 
 
 1. Wählen Sie im Cloud-Explorer von Visual Studio den Namen des IoT Edge-Geräts aus, auf dem Sie die Bereitstellung durchgeführt haben. 
 
@@ -315,7 +315,7 @@ Die Befehle in diesem Abschnitt gelten für Ihr IoT Edge-Gerät und nicht für I
    iotedge list
    ```
 
-   Es sollten vier Module angezeigt werden: die beiden IoT Edge-Runtime-Module, „tempSensor“ und „IotEdgeModule1“. Für alle vier Module sollte „Wird ausgeführt“ angezeigt werden.
+   Es sollten vier Module angezeigt werden: die beiden IoT Edge-Runtime-Module, „SimulatedTemperatureSensor“ und „IotEdgeModule1“. Für alle vier Module sollte „Wird ausgeführt“ angezeigt werden.
 
 * Überprüfen Sie die Protokolle für ein bestimmtes Modul:
 
@@ -325,7 +325,7 @@ Die Befehle in diesem Abschnitt gelten für Ihr IoT Edge-Gerät und nicht für I
 
    Bei IoT Edge-Modulen wird die Groß-/Kleinschreibung beachtet. 
 
-   Für die Protokolle von „tempSensor“ und „IotEdgeModule1“ sollten die verarbeiteten Nachrichten angezeigt werden. Das Modul „edgeAgent“ ist für das Starten der anderen Module zuständig. Die Protokolle dieses Moduls enthalten also Informationen zur Implementierung des Bereitstellungsmanifests. Falls ein Modul nicht aufgelistet ist oder nicht ausgeführt wird, sind die Fehler wahrscheinlich in den Protokollen von „edgeAgent“ enthalten. Das Modul „edgeHub“ ist für die Kommunikation zwischen den Modulen und IoT Hub zuständig. Wenn die Module betriebsbereit sind und ausgeführt werden, aber die Nachrichten nicht auf Ihrem IoT-Hub ankommen, sind die Fehler wahrscheinlich in den Protokollen von „edgeHub“ enthalten. 
+   In den Protokollen für „SimulatedTemperatureSensor“ und „IotEdgeModule1“ sollten die verarbeiteten Nachrichten angezeigt werden. Das Modul „edgeAgent“ ist für das Starten der anderen Module zuständig. Die Protokolle dieses Moduls enthalten also Informationen zur Implementierung des Bereitstellungsmanifests. Falls ein Modul nicht aufgelistet ist oder nicht ausgeführt wird, sind die Fehler wahrscheinlich in den Protokollen von „edgeAgent“ enthalten. Das Modul „edgeHub“ ist für die Kommunikation zwischen den Modulen und IoT Hub zuständig. Wenn die Module betriebsbereit sind und ausgeführt werden, aber die Nachrichten nicht auf Ihrem IoT-Hub ankommen, sind die Fehler wahrscheinlich in den Protokollen von „edgeHub“ enthalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

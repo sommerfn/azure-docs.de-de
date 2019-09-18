@@ -11,24 +11,27 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932976"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390305"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
-Projekt Akustik ist eine Wellenakustik-Engine für interaktive 3D-Erfahrungen. Sie modelliert Welleneffekte wie Beugung, Portale und Hall in komplexen Szenen ohne manuelle Zonenmarkierung. Außerdem schließt sie eine Integration von Spiele-Engines und Audiomiddleware ein. Die Philosophie hinter Projekt Akustik ist vergleichbar mit einer statischen Beleuchtung: Das Baking einer detaillierten Physik wird offline ausgeführt, um eine physische Baseline bereitzustellen, und die künstlerischen Ziele werden mithilfe einer einfachen Runtime mit ausdrucksstarken Entwurfssteuerelementen erreicht.
+Projekt Akustik ist eine Wellenakustik-Engine für interaktive 3D-Erfahrungen. Sie modelliert Welleneffekte wie Verdeckungs-, Hindernis-, Portal- und Halleffekte in komplexen Szenen ohne manuelle Zonenmarkierung oder CPU-intensives Raytracing. Außerdem schließt sie eine Integration von Spiele-Engines und Audiomiddleware ein. Die Philosophie hinter Projekt Akustik ist vergleichbar mit einer statischen Beleuchtung: Das Baking einer detaillierten Physik wird offline ausgeführt, um eine physische Baseline bereitzustellen, und die künstlerischen Ziele für die Akustik Ihrer virtuellen Welt werden mithilfe einer einfachen Runtime mit ausdrucksstarken Entwurfssteuerelementen erreicht.
 
 ![Screenshot von Gears of War 4 mit Akustikvoxeln](media/gears-with-voxels.jpg)
 
 ## <a name="using-wave-physics-for-interactive-acoustics"></a>Verwenden von Wellenphysik für interaktive Akustik
-Auf Strahlen basierende Akustikmethoden können eine Überprüfung auf Verdeckung mit einer einzelnen Quelle-zu-Zuhörer-Strahlenausdehnung überprüfen oder den Hall durch Abschätzen des Volumens der lokalen Szene mit wenigen Strahlen erzeugen. Diese Techniken sind jedoch nicht immer zuverlässig, da ein Kieselstein für eine ebenso starke Verdeckung sorgt wie ein großer Felsblock. Mit Strahlen lässt sich die Krümmung von Tönen um Objekte herum – ein als Beugung bezeichnetes Phänomen – nicht abbilden. Die Simulation in Projekt Akustik erfasst diese Effekte mithilfe einer auf Wellen basierenden Simulation. Das Ergebnis ist besser vorhersagbar und zuverlässiger.
+Auf Strahlen basierende Akustikmethoden können eine Überprüfung auf Verdeckung mit einer einzelnen Quelle-zu-Zuhörer-Strahlenausdehnung überprüfen oder den Hall durch Abschätzen des Volumens der lokalen Szene mit wenigen Strahlen erzeugen. Diese Techniken sind jedoch nicht immer zuverlässig, da ein Kieselstein für eine ebenso starke Verdeckung sorgt wie ein großer Felsblock. Mit Strahlen lässt sich die Krümmung von Tönen um Objekte herum – ein als Beugung bezeichnetes Phänomen – nicht abbilden. Die Simulation in Projekt Akustik erfasst diese Effekte mithilfe einer auf Wellen basierenden Simulation. Die Akustik ist besser vorhersagbar, präziser und nahtlos.
 
-Die zentrale Innovation von Projekt Akustik besteht darin, akustische Simulation mit herkömmlichen Konzepten des Sounddesigns zu verbinden. Die Simulationsergebnisse werden in herkömmliche Audio-DSP-Parameter für Verdeckung, Portale und Hall übersetzt. Der Designer nutzt Steuerelemente für diesen Übersetzungsvorgang. Weitere Informationen zu den Kerntechnologien hinter Projekt Akustik finden Sie auf der [Forschungsprojektseite](https://www.microsoft.com/en-us/research/project/project-triton/).
+Die zentrale Innovation von Projekt Akustik besteht darin, eine auf echten Schallwellen basierende akustische Simulation mit herkömmlichen Konzepten des Sounddesigns zu verbinden. Die Simulationsergebnisse werden in herkömmliche Audio-DSP-Parameter für Verdeckung, Portale und Hall übersetzt. Der Designer nutzt Steuerelemente für diesen Übersetzungsvorgang. Weitere Informationen zu den Kerntechnologien hinter Projekt Akustik finden Sie auf der [Forschungsprojektseite](https://www.microsoft.com/en-us/research/project/project-triton/).
 
 ![Animation mit einem horizontalen 2D-Segment mit Wellenausbreitung in einer Szene](media/wave-simulation.gif)
+
+## <a name="video-presentation-from-gdc-2019-30-min"></a>Video Präsentation von der GDC 2019 (ca. 30 Minuten)
+[![Projekt Akustik-Video](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klicken Sie hier, um das Video wiederzugeben.")
 
 ## <a name="setup"></a>Einrichtung
 Die [Unity-Integration von Projekt Akustik](unity-integration.md) unterstützt Drag & Drop und enthält ein Unity-Audio-Engine-Plug-In. Erweitern Sie die Audioquellen-Steuerelemente von Unity, indem Sie eine Komponente für Projekt Akustik-C#-Steuerelemente an jedes Audioobjekt anfügen.

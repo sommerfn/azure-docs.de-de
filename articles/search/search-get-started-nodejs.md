@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart für Node.js: Erstellen, Laden und Abfragen von Indizes mit Azure Search-REST-APIs: Azure Search'
+title: 'Schnellstart: Erstellen eines Suchindex in Node.js mithilfe von REST-APIs – Azure Search'
 description: Dieses Node.js-Beispiel für Azure Search veranschaulicht das Erstellen eines Indexes, das Laden von Daten in den Index und das Abfragen des Indexes aus JavaScript.
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656304"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881505"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Schnellstart: Erstellen eines Azure Search-Index in Node.js
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Index in Node.js mit REST-APIs
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)

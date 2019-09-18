@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen, Laden und Abfragen eines Indexes im Azure-Portal – Azure Search'
+title: 'Schnellstart: Erstellen eines Suchindex über das Azure-Portal – Azure Search'
 description: Verwenden Sie den Datenimport-Assistenten im Azure-Portal, um Ihren ersten Index in Azure Search zu erstellen, zu laden und abzufragen.
 author: lobrien
 manager: nitinme
@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: c2950b35f207f772f1190a2f8f104098eeb43375
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656348"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884567"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Search-Indexes im Azure-Portal
 > [!div class="op_single_selector"]

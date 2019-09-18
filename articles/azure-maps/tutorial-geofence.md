@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4e9b72be5d03e0b3441983ca991a16688f5f4cd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085319"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916459"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Einrichten eines Geofence mit Azure Maps
 
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos 
 
-Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie zunächst [Verwalten von Konten und Schlüsseln](how-to-manage-account-keys.md) lesen, um Ihr Kontoabonnement mit S1-Tarif zu erstellen und zu verwalten.
+Befolgen Sie für die Schritte in diesem Tutorial die Anleitung unter [Verwalten Ihres Azure Maps-Kontos](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte unter [Suchen nach Points of Interest in der Nähe mit Azure Maps](./tutorial-search-location.md#getkey) aus, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 ## <a name="upload-geofences"></a>Hochladen von Geofences
 

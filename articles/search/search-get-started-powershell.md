@@ -1,7 +1,7 @@
 ---
-title: 'PowerShell Schnellstart: Erstellen, Laden und Abfragen von Indizes mithilfe von REST-APIs – Azure Search'
-description: Erläutert, wie Sie einen Index erstellen, Daten laden und Abfragen mit der Invoke-RestMethod von PowerShell und der Azure Search REST-API ausführen.
-ms.date: 07/11/2019
+title: 'Schnellstart: Erstellen eines Azure Search-Index in PowerShell mithilfe von REST-APIs – Azure Search'
+description: Hier wird erläutert, wie Sie einen Index erstellen, Daten laden und Abfragen mit „Invoke-RestMethod“ von PowerShell und der Azure Search REST-API ausführen.
+ms.date: 09/10/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 171e5a59c59b27469eb3c344fa45c6814b9fbf97
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656290"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881716"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Index in PowerShell mithilfe von REST-APIs
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "69656290"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Dieser Artikel führt Sie durch den Prozess der Erstellung, des Ladens und der Abfrage eines Azure Search Index mit PowerShell und den [Azure Search REST APIs](https://docs.microsoft.com/rest/api/searchservice/). In diesem Artikel wird erläutert, wie Sie PowerShell-Befehle interaktiv ausführen können. Alternativ können [Sie ein PowerShell-Skript herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart), das die gleichen Vorgänge ausführt.
+Dieser Artikel führt Sie durch das Erstellen, Laden und Abfragen eines Azure Search-Index mit PowerShell und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/). In diesem Artikel wird erläutert, wie Sie PowerShell-Befehle interaktiv ausführen können. Alternativ können [Sie ein PowerShell-Skript herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart), das die gleichen Vorgänge ausführt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -89,7 +89,7 @@ Sofern Sie nicht das Portal verwenden, muss im Dienst ein Index vorhanden sein, 
 
 Erforderliche Elemente eines Index sind beispielsweise ein Name und eine Feldsammlung. Mit der Feldsammlung wird die Struktur eines *Dokuments* definiert. Jedes Feld verfügt über Name, Typ und Attribute zur Bestimmung der Nutzung (z. B. Volltextsuche, Filterbarkeit oder Abrufbarkeit in Suchergebnissen). In einem Index muss eines der Felder vom Typ `Edm.String` als *Schlüssel* für die Dokumentidentität angegeben werden.
 
-Dieser Index trägt den Namen „hotels-quickstart“ und hat die Felddefinitionen, die Sie unten sehen. Es ist eine Teilmenge eines größeren [Hotelindexes](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON), der in anderen exemplarischen Vorgehensweisen verwendet wird. Wir haben ihn in diesem Schnellstart gekürzt.
+Dieser Index trägt den Namen „hotels-quickstart“ und hat die unten gezeigten Felddefinitionen. Es ist eine Teilmenge eines größeren [Hotelindexes](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON), der in anderen exemplarischen Vorgehensweisen verwendet wird. Wir haben ihn in diesem Schnellstart gekürzt.
 
 1. Fügen Sie dieses Beispiel in PowerShell ein, um ein **$body**-Objekt mit dem Indexschema zu erstellen.
 
@@ -120,7 +120,7 @@ Dieser Index trägt den Namen „hotels-quickstart“ und hat die Felddefinition
     "@
     ```
 
-2. Stellen Sie die URI auf die Indexsammlung für Ihren Service und den *Hotelschnellstart*-Index ein.
+2. Legen Sie den URI auf die Indexsammlung für Ihren Dienst und den Index *hotels-quickstart* fest.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
@@ -270,18 +270,18 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
     "@
     ```
 
-1. Setzen Sie den Endpunkt für die Sammlung der *Hotel-Schnellstart*-Unterlagen und schließen Sie die Indexoperation mit ein (Indizes/Hotels-Schnellstart/Dokumente/Index).
+1. Legen Sie den Endpunkt auf die Dokumentensammlung *hotels-quickstart* fest, und schließen Sie den Indexvorgang mit ein (indexes/hotels-quickstart/docs/index).
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. Führen Sie den Befehl mit **$url**, **$headers** und **$body** aus, um Dokumente in den Schnellstartindex des Hotels zu laden.
+1. Führen Sie den Befehl mit **$url**, **$headers** und **$body** aus, um Dokumente in den Index „hotels-quickstart“ zu laden.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Sie sollten einen [Statuscode 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes) sehen.
+    Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Der [Statuscode 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes) sollte angezeigt werden.
 
     ```
     {
@@ -319,11 +319,11 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
 
 In diesem Schritt wird beschrieben, wie Sie einen Index mit der [API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) abfragen.
 
-Achten Sie darauf, dass Sie bei der Suche nach $urls einfache Anführungszeichen verwenden. Abfragezeichenketten enthalten **$** Zeichen, und Sie können das Escape weglassen, wenn die gesamte Zeichenkette in einfache Anführungszeichen eingeschlossen ist.
+Verwenden Sie bei der Suche mit „$urls“ unbedingt einfache Anführungszeichen. Abfragezeichenketten enthalten das Zeichen **$** , und Sie können das Escapezeichen weglassen, wenn die gesamte Zeichenkette in einfache Anführungszeichen eingeschlossen ist.
 
-1. Setzen Sie den Endpunkt für die *Hotels-quickstart* Dokumentensammlung und fügen Sie einen **Suchparameter** hinzu, um eine Abfragezeichenfolge zu übergeben. 
+1. Legen Sie den Endpunkt auf die Dokumentensammlung *hotels-quickstart* fest, und fügen Sie einen Parameter vom Typ **search** für die Übergabe in einer Abfragezeichenfolge hinzu. 
   
-   Diese Zeichenkette führt eine leere Suche (search=*) durch und gibt eine unrangierte Liste (search score = 1.0) von beliebigen Dokumenten zurück. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. Wie strukturiert, liefert diese Query eine komplette Dokumentstückliste und Werte zurück. Fügen Sie **$count=true** hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
+   Diese Zeichenkette führt eine leere Suche (search=*) aus und gibt eine unsortierte Liste (search score = 1.0) beliebiger Dokumente zurück. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. In einer strukturierten Ausgabe werden von der Abfrage eine vollständige Dokumentstruktur sowie Werte zurückgegeben. Fügen Sie **$count=true** hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -401,7 +401,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mit PowerShell den grundlegenden Workflow für die Erstellung und den Zugriff auf Inhalte in Azure Search durchlaufen. In Anbetracht der Konzepte empfehlen wir, zu fortgeschritteneren Szenarien überzugehen, wie z.B. der Indexierung aus Azure-Datenquellen;
+In dieser Schnellstartanleitung haben Sie mit PowerShell den grundlegenden Workflow für die Erstellung und den Zugriff auf Inhalte in Azure Search durchlaufen. Fahren Sie mit komplexeren Szenarien (etwa der Indizierung aus Azure-Datenquellen) fort, und behalten Sie dabei diese Konzepte im Hinterkopf.
 
 > [!div class="nextstepaction"]
-> [REST-Tutorial: Indexieren und durchsuchen Sie halbstrukturierte Daten (JSON Blobs) in der Azure Search](search-semi-structured-data.md)
+> [REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Search](search-semi-structured-data.md)

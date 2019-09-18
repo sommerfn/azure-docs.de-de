@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240315"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914047"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70240315"
 
 ::: zone target = "chromeless"
 
-## <a name="copy-data-to-azure-data-box-heavy"></a>Kopieren von Daten auf Azure Data Box Heavy
+# <a name="copy-data-to-azure-data-box-heavy"></a>Kopieren von Daten auf Azure Data Box Heavy
 
 ::: zone-end
 
@@ -333,7 +333,7 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Kopieren von Dat
 3. Anschließend können Sie Daten mithilfe von SMB- oder NFS-Tools kopieren.
 4. Wiederholen Sie diese Schritte, um eine Verbindung mit dem zweiten Knoten der Data Box Heavy herzustellen und Daten zu kopieren.
 
-Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Verwenden von Data Box Heavy, um Daten als verwaltete Datenträger in Azure zu importieren](data-box-heavy-deploy-copy-data-from-vhds.md).
+Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Verwenden von Data Box Heavy, um Daten als verwaltete Datenträger in Azure zu importieren](data-box-heavy-deploy-copy-data-from-vhds.md)
 
 ::: zone-end
 

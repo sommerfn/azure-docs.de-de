@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b88d355ec1784b3b613369e90cd5fac99d3d69a6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898343"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916402"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -41,10 +41,10 @@ In unserem Anwendungsfall sind die Mietwagen mit IoT-Geräten ausgestattet, die 
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ In unserem Anwendungsfall sind die Mietwagen mit IoT-Geräten ausgestattet, die 
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -104,7 +104,7 @@ Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie zunächst 
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos 
 
-Zum Implementieren von Geschäftslogik basierend auf der räumlichen Azure Maps-Analyse müssen wir in der erstellten Ressourcengruppe ein Azure Maps-Konto erstellen. Befolgen Sie die Anleitung unter [Verwalten Ihres Azure Maps-Kontos](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Unter [Anzeigen von Authentifizierungsdetails](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) ist beschrieben, wie Sie Ihren Abonnementschlüssel abrufen.
+Zum Implementieren von Geschäftslogik basierend auf der räumlichen Azure Maps-Analyse müssen wir in der erstellten Ressourcengruppe ein Azure Maps-Konto erstellen. Befolgen Sie die Anleitung unter [Verwalten Ihres Azure Maps-Kontos](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte unter [Suchen nach Points of Interest in der Nähe mit Azure Maps](./tutorial-search-location.md#getkey) aus, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen

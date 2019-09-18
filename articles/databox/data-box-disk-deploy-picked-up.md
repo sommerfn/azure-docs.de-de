@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390402"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910116"
 ---
 ::: zone target="chromeless"
 
@@ -52,7 +52,7 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
 
 Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder gelten jeweils andere Anweisungen.
 
-### <a name="pick-up-in-us-canada"></a>Abholung in den USA/in Kanada
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[In den USA oder in Kanada](#tab/in-us-or-canada)
 
 Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie wie folgt vor:
 
@@ -68,7 +68,7 @@ Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie w
     - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
     - Wenn Sie keine Abholung planen können oder möchten, können Sie den Data Box-Datenträger auch an der nächstgelegenen Versandstelle abgeben.
 
-### <a name="pick-up-in-europe"></a>Abholung in Europa
+### <a name="in-europetabin-europe"></a>[In Europa](#tab/in-europe)
 
 Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
@@ -81,7 +81,7 @@ Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 4. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.    
 3. Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
 
-### <a name="pick-up-in-australia"></a>Abholung in Australien
+### <a name="in-australiatabin-australia"></a>[In Australien](#tab/in-australia)
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für eine Abholung in Australien wie folgt vor:
 
@@ -89,9 +89,9 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 3. Bringen Sie das Etikett am Box-Gerät an. 
 4. Reservieren Sie online unter https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference einen Abholtermin. 
 
-### <a name="pick-up-in-asia"></a>Abholung in Asien
+### <a name="in-japan-koreatabin-japan-korea"></a>[In Japan und Korea](#tab/in-japan-korea)
 
-Für Japan, Südkorea und Singapur gelten jeweils andere Abholanweisungen.
+Hier finden Sie die Abholanweisungen für Japan und Korea.
 
 #### <a name="pick-up-in-japan"></a>Abholung in Japan
 
@@ -134,7 +134,8 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
     3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
     4. Bei einer Anforderung per Telefon erhalten Sie eine mündliche Bestätigung.
 
-#### <a name="pick-up-in-singapore"></a>Abholung in Singapur
+
+### <a name="in-singaporetabin-singapore"></a>[In Singapur](#tab/in-singapore)
 
 1. Drucken Sie das Adressetikett aus, und bringen Sie es auf der Box an. Sollte das Etikett beschädigt oder verloren gegangen sein:
     - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.

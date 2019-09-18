@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823687"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376077"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Tutorial: Integration von Learning at Work mit Azure Active Directory
 
@@ -90,9 +90,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von Learning at Work](https://www.learninga-z.com/site/contact/support), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Learning at Work-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.  **nameidentifier** ist hier  **user.userprincipalname** zugeordnet.
+5. Die Learning at Work-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet.
 
-    Sie können den Wert für **nameidentifier** in Azure AD gemäß dem Setup Ihrer Organisation aktualisieren. Dieser Wert muss der Benutzer-ID in der SABA-Cloud entsprechen. Dafür müssen Sie die Attributzuordnung bearbeiten, indem Sie auf das Symbol zum  **Bearbeiten** klicken und die Attributzuordnung ändern. ****
+    Sie können den Wert für **nameidentifier** in Azure AD gemäß dem Setup Ihrer Organisation aktualisieren. Dieser Wert muss der **Benutzer-ID** in der SABA-Cloud entsprechen. Dafür müssen Sie die Attributzuordnung bearbeiten, indem Sie auf das Symbol zum **Bearbeiten** klicken und die Attributzuordnung ändern.
 
     ![image](common/edit-attribute.png)
 
@@ -140,7 +140,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-learning-at-work-test-user"></a>Erstellen eines Learning at Work-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Learning at Work einen Benutzer namens B. Simon. Arbeiten Sie mit dem [Supportteam von Learning at Work](https://www.learninga-z.com/site/contact/support) zusammen, um die Benutzer der Learning at Work-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Learning at Work einen Benutzer namens B. Simon. Wenden Sie sich an das [Learning at Work-Supportteam](https://www.learninga-z.com/site/contact/support), um die Benutzer auf der Learning at Work-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

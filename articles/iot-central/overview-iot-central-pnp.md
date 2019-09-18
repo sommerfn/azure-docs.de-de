@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: bfdad0d81599035e7d8c270ec4e8ee8d6a45125e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997745"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858921"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Was ist Azure IoT Central (Previewfunktionen)?
 
@@ -62,7 +62,8 @@ In diesem Artikel werden folgende Punkte für Azure IoT Central behandelt:
 - Array-Schematypen werden nicht unterstützt.
 - Der Export von Anwendungsvorlagen und die Anwendungskopie werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
-- Nur in ausgewählten Regionen verfügbar
+- Nur in den Regionen „Europa, Norden“ und „USA, Mitte“ verfügbar
+- Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
 
 ## <a name="personas"></a>Personas
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241430"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898176"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>Versand in den USA, in Kanada oder in Europa
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[In den USA, in Kanada oder in Europa](#tab/in-us-canada-europe)
 
 Wenn Sie das Gerät in den USA, in Kanada oder in Europa zurücksenden möchten, gehen Sie wie folgt vor:
 
@@ -94,7 +94,7 @@ Wenn Sie das Gerät in den USA, in Kanada oder in Europa zurücksenden möchten,
 4. Nachdem die Data Box vom Kurierdienst abgeholt und eingescannt wurde, wird der Status der Bestellung im Portal in **Abgeholt** geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
 
 
-## <a name="ship-in-australia"></a>Versand in Australien
+## <a name="in-australiatabin-australia"></a>[In Australien](#tab/in-australia)
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für den Versand in Australien wie folgt vor:
 
@@ -126,7 +126,7 @@ Beachten Sie bei telefonischen Anfragen im Zusammenhang mit Ihrer Bestellung Fol
 - Fordern Sie zuerst per E-Mail eine Abholung an.
 - Geben Sie am Telefon den Namen Ihrer Bestellung an.
 
-## <a name="ship-in-japan"></a>Versand in Japan 
+## <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan) 
 
 1. Bewahren Sie den Originalversandkarton des Geräts für den Rückversand auf.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 2b68da881edd0406a85692d6e0586427a57b7806
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478861"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916436"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Erstellen einer Shopsuche mit Azure Maps
 
@@ -35,7 +35,7 @@ Sehen Sie sich das [Beispiel für eine Live-Shopsuche](https://azuremapscodesamp
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Tutorial müssen Sie zuerst [Ihr Azure Maps-Konto erstellen](./tutorial-search-location.md#createaccount) und [den Abonnementschlüssel für Ihr Konto abrufen](./tutorial-search-location.md#getkey).
+Für die Schritte in diesem Tutorial müssen Sie zuerst [Ihr Azure Maps-Konto erstellen](./tutorial-search-location.md#createaccount) und dann die Schritte zum [Abrufen des primären Abonnementschlüssels für Ihr Konto](./tutorial-search-location.md#getkey) ausführen.
 
 ## <a name="design"></a>Entwurf
 

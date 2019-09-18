@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Aktivieren der Authentifizierung in einer Webanwendung – Azure Active Directory B2C | Microsoft-Dokumentation'
+title: 'Tutorial: Aktivieren der Authentifizierung in einer Webanwendung – Azure Active Directory B2C'
 description: Tutorial zur Verwendung von Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung für eine ASP.NET-Webanwendung.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464762"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914218"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mit Azure Active Directory B2C
 
@@ -32,8 +32,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen Sie Benutzerflows](tutorial-create-user-flows.md), um Benutzererfahrungen in Ihrer Anwendung zu aktivieren.
-- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**.
+* [Erstellen Sie Benutzerflows](tutorial-create-user-flows.md), um Benutzererfahrungen in Ihrer Anwendung zu aktivieren.
+* Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**.
 
 ## <a name="update-the-application"></a>Aktualisieren der Anwendung
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Die Beispielprojektmappe enthält zwei Projekte:
 
-- **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern verwendet.
+- **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung und Anmeldung von Benutzern verwendet.
 - **TaskService:** Unterstützt die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste. Die API wird durch Azure AD B2C geschützt und von „TaskWebApp“ aufgerufen.
 
-Sie ändern das Beispiel, um die in Ihrem Mandanten registrierte Anwendung zu verwenden. Dazu benötigen Sie die Anwendungs-ID und den Anwendungsschlüssel, den bzw. die Sie zuvor notiert haben. Außerdem konfigurieren Sie die von Ihnen erstellten Benutzerflows. Das Beispiel definiert die Konfigurationswerte als Einstellungen in der Datei „Web.config“. So ändern Sie die Einstellungen:
+Sie ändern das Beispiel, um die in Ihrem Mandanten registrierte Anwendung zu verwenden. Dazu benötigen Sie die Anwendungs-ID und den Anwendungsschlüssel, den bzw. die Sie zuvor notiert haben. Außerdem konfigurieren Sie die von Ihnen erstellten Benutzerflows. Das Beispiel definiert die Konfigurationswerte als Einstellungen in der Datei *Web.config*.
+
+Aktualisieren Sie die Einstellungen in der Datei „Web.config“ zur Verwendung mit Ihrem Benutzerflow:
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
-2. Öffnen Sie im Projekt **TaskWebApp** die Datei **Web.config**. Ersetzen Sie den Wert für `ida:Tenant` durch den Namen des von Ihnen erstellten Mandanten. Ersetzen Sie den Wert für `ida:ClientId` durch die notierte Anwendungs-ID. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel. Sie müssen den geheimen Clientschlüssel mit XML codieren, bevor Sie ihn der Datei „web.config“ hinzufügen.
-3. Ersetzen Sie in der Datei **Web.config** den Wert für `ida:SignUpSignInPolicyId` durch `b2c_1_signupsignin1`. Ersetzen Sie den Wert für `ida:EditProfilePolicyId` durch `b2c_1_profileediting1`. Ersetzen Sie den Wert für `ida:ResetPasswordPolicyId` durch `b2c_1_passwordreset1`.
-
+1. Öffnen Sie im Projekt **TaskWebApp** die Datei **Web.config**.
+    1. Ersetzen Sie den Wert für `ida:Tenant` und `ida:AadInstance` durch den Namen des von Ihnen erstellten Mandanten.
+    1. Ersetzen Sie den Wert für `ida:ClientId` durch die notierte Anwendungs-ID.
+    1. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel. Sie müssen den geheimen Clientschlüssel mit XML codieren, bevor Sie ihn der Datei „web.config“ hinzufügen.
+    1. Ersetzen Sie den Wert für `ida:SignUpSignInPolicyId` durch `b2c_1_signupsignin1`.
+    1. Ersetzen Sie den Wert für `ida:EditProfilePolicyId` durch `b2c_1_profileediting1`.
+    1. Ersetzen Sie den Wert für `ida:ResetPasswordPolicyId` durch `b2c_1_passwordreset1`.
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 

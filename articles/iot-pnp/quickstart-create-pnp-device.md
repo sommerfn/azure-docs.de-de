@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050133"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861209"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts
 
@@ -28,12 +28,12 @@ Zum Abschließen dieses Schnellstarts müssen Sie auf Ihrem lokalen Computer die
 * [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
 
-### <a name="install-azure-iot-device-workbench"></a>Installieren von Azure IoT Device Workbench
+### <a name="install-azure-iot-tools"></a>Installieren von Azure IoT-Tools
 
-Führen Sie die folgenden Schritte aus, um die Erweiterung „Azure IoT Device Workbench“ in VS Code zu installieren:
+Führen Sie die folgenden Schritte aus, um das Erweiterungspaket [Azure IoT Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) zu installieren:
 
 1. Wählen Sie in VS Code die Registerkarte **Erweiterungen**.
-1. Suchen Sie nach **Azure IoT Device Workbench**.
+1. Suchen Sie nach **Azure IoT Tools**.
 1. Wählen Sie **Installieren** aus.
 
 ### <a name="install-the-azure-iot-explorer"></a>Installieren von Azure IoT-Explorer
@@ -49,6 +49,9 @@ Sie finden die _Verbindungszeichenfolge für das Modellrepository Ihres Unterneh
 ## <a name="prepare-an-iot-hub"></a>Vorbereiten eines IoT-Hubs
 
 Für diesen Schnellstart benötigen Sie außerdem eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!NOTE]
+> Während der öffentlichen Vorschauphase sind die IoT Plug & Play-Funktionen nur für IoT-Hubs verfügbar, die in den Regionen **USA, Mitte**, **Europa, Norden** und **Japan, Osten** erstellt wurden.
 
 Fügen Sie die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzu:
 

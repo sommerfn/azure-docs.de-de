@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 246d3eac8f9d8aff6d603ea8686e430ce0f772ea
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a082e4b7896b317bf2b28971d3693bada95a3445
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881589"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806545"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution"></a>Schnellstart: Interagieren mit einem IoT Plug & Play Preview-Gerät, das mit ihrer Azure IoT-Lösung verbunden ist
 
@@ -28,6 +28,9 @@ Sie müssen Node.js über [nodejs.org](https://nodejs.org) herunterladen und ins
 ## <a name="prepare-an-iot-hub"></a>Vorbereiten eines IoT-Hubs
 
 Für diesen Schnellstart benötigen Sie außerdem eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!NOTE]
+> Während der öffentlichen Vorschauphase sind die IoT Plug & Play-Funktionen nur für IoT-Hubs verfügbar, die in den Regionen **USA, Mitte**, **Europa, Norden** und **Japan, Osten** erstellt wurden.
 
 Fügen Sie die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzu:
 
@@ -83,7 +86,7 @@ In diesem Schnellstart verwenden Sie einen Beispielumgebungssensor, der in Node.
 
 1. Ihnen werden Meldungen angezeigt, dass das Gerät Telemetriedaten und seine Eigenschaften gesendet hat. Das Gerät ist für den Empfang von Befehlen und Eigenschaftsaktualisierungen bereit. Schließen Sie dieses Terminal nicht. Sie benötigen es später, um zu prüfen, ob die Dienstbeispiele funktionieren.
 
-## <a name="build-the-solution"></a>Erstellen der Lösung
+## <a name="build-the-solution"></a>Erstellen Sie die Lösung.
 
 In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js, um mit dem Beispielgerät zu interagieren.
 

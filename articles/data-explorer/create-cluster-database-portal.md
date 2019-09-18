@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406102"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381790"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank
 
@@ -55,9 +55,9 @@ Erstellen Sie einen Azure Data Explorer-Cluster mit einem definierten Satz von C
     | Resource group | Ihre Ressourcengruppe | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
     | Clustername | Ein eindeutiger Clustername | Wählen Sie einen eindeutigen Namen aus, der Ihren Cluster identifiziert. Der Domänenname *[Region].kusto.windows.net* wird an den angegebenen Namen angefügt. Der Name darf nur Kleinbuchstaben und Zahlen enthalten. Er muss zwischen 4 und 22 Zeichen lang sein.
     | Region | *USA, Westen* oder *USA, Westen 2* | Wählen Sie *USA, Westen* oder *USA, Westen 2* (wenn Sie Verfügbarkeitszonen verwenden) für diese Schnellstartanleitung aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt.
-    | Verfügbarkeitszonen | *1*, *2* und/oder *3* | Für Regionen mit Unterstützung für Zonenredundanz wählen Sie aus, in welchen Zonen sich Ihre Instanzen befinden sollen (optional). Die Clusterknoten werden standardmäßig im gleichen Rechenzentrum erstellt. Verwenden Sie [Azure-Verfügbarkeitszonen](/azure/availability-zones/az-overview), um die Clusterinstanzen in verschiedenen Verfügbarkeitszonen derselben Region zu platzieren. Durch die Auswahl mehrerer Verfügbarkeitszonen können Sie einen Single Point of Failure vermeiden und eine Hochverfügbarkeit sicherstellen. 
+    | Verfügbarkeitszonen | *1*, *2* und/oder *3* | Platzieren Sie die Clusterinstanzen in verschiedenen Verfügbarkeitszonen derselben Region (optional). [Azure-Verfügbarkeitszonen](/azure/availability-zones/az-overview) sind eindeutige physische Standorte in derselben Azure-Region. Sie schützen einen Azure Data Explorer-Cluster und Daten vor einem teilweisen Regionsausfall. Die Clusterknoten werden standardmäßig im gleichen Rechenzentrum erstellt. Durch die Auswahl mehrerer Verfügbarkeitszonen können Sie einen Single Point of Failure vermeiden und eine Hochverfügbarkeit sicherstellen. Die Bereitstellung in Verfügbarkeitszonen ist nur während der Clustererstellung möglich und kann nicht zu einem späteren Zeitpunkt geändert werden.
     | Computespezifikationen | *D13_v2* | Wählen Sie für diesen Schnellstart die Spezifikation mit dem niedrigsten Preis aus. Wählen Sie für ein Produktionssystem die Spezifikation aus, die Ihre Anforderungen am besten erfüllt.
-    | | |
+    | | | |
 
 1. Wählen Sie **Bewerten + erstellen**, um Ihre Clusterdetails zu überprüfen, und dann **Erstellen**, um den Cluster bereitzustellen. Die Bereitstellung dauert normalerweise etwa zehn Minuten.
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b233fcecfe80d1ce4464d2d02fdddb188f9265a7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881579"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806541"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Schnellstart: Verbinden einer IoT Plug & Play Preview-Beispielgeräteanwendung mit IoT Hub
 
@@ -36,6 +36,9 @@ Laden Sie das Tool Azure IoT-Explorer von der Seite mit dem [aktuellen Release](
 ## <a name="prepare-an-iot-hub"></a>Vorbereiten eines IoT-Hubs
 
 Für diesen Schnellstart benötigen Sie außerdem eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!NOTE]
+> Während der öffentlichen Vorschauphase sind die IoT Plug & Play-Funktionen nur für IoT-Hubs verfügbar, die in den Regionen **USA, Mitte**, **Europa, Norden** und **Japan, Osten** erstellt wurden.
 
 Fügen Sie die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzu:
 
@@ -111,7 +114,7 @@ Die Geräteanwendung beginnt mit dem Senden von Daten an IoT Hub.
 
 ## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Verwenden des Azure IoT-Explorers zum Überprüfen des Codes
 
-1. Öffnen Sie den Azure IoT-Explorer. Die Seite mit den **App-Konfigurationen** wird angezeigt.
+1. Öffnen Sie Azure IoT-Explorer. Die Seite mit den **App-Konfigurationen** wird angezeigt.
 
 1. Geben Sie Ihre IoT Hub-Verbindungszeichenfolge ein, und klicken Sie auf **Verbinden**.
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048004"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858993"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Was ist IoT Plug & Play (Vorschauversion)?
 
@@ -63,7 +63,7 @@ Als Geräteentwickler können Sie ein IoT-Hardwareprodukt entwickeln, das IoT P
 
 1. Erstellen Sie die Gerätesoftware oder -firmware, die die im Gerätefunktionsmodell deklarierten Funktionen und Schnittstellen implementiert. Das Azure IoT SDK enthält APIs zum Implementieren von Gerätefunktionsmodellen.
 
-Die Erweiterung [IoT Device Workbench für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) bietet viele hilfreiche Funktionen. Als Geräteentwickler können Sie die Erweiterung beispielsweise verwenden, um ein C-Gerüstprojekt aus einem Funktionsmodell zu generieren. Sie können Gerätefunktionsmodelle jedoch mit jeder integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) erstellen und implementieren.
+Das Erweiterungspaket [Azure IoT Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) bietet viele hilfreiche Funktionen. Als Geräteentwickler können Sie eine Erweiterung beispielsweise verwenden, um ein C-Gerüstprojekt aus einem Funktionsmodell zu generieren. Sie können Gerätefunktionsmodelle jedoch mit jeder integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) erstellen und implementieren.
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>Zertifizieren eines IoT Plug & Play-Geräts
 
@@ -76,6 +76,7 @@ Als Geräteentwickler können Sie IoT-Hardwareprodukte zur Zertifizierung überm
 - Gerät im Certified for IoT-Gerätekatalog veröffentlichen
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
+
 Während der Public Preview-Phase ist IoT Plug & Play in den Regionen „Europa, Norden“, „USA, Mitte“ und „Japan, Osten“ verfügbar. Achten Sie darauf, dass Sie Ihren Hub in einer dieser Regionen erstellen.
 
 ## <a name="message-quotas-in-iot-hub"></a>Nachrichtenkontingente in IoT Hub

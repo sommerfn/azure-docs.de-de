@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640035"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845291"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell und Azure CLI
 
@@ -30,8 +30,8 @@ Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azu
 
 Eine Einzeldatenbank kann entweder auf der bereitgestellten Computeebene oder der serverlosen Computeebene (Vorschauversion) erstellt werden.
 
-- Eine Einzeldatenbank auf der bereitgestellten Computeebene verfügt über eine festgelegte Menge an vorab zugeordneten Computeressourcen sowie eine Reihe von Arbeitsspeicher- und Speicherressourcen unter Verwendung eines von zwei [Kaufmodellen](sql-database-purchase-models.md).
-- Eine Einzeldatenbank auf der serverlosen Computeebene verfügt über einen Bereich von Computeressourcen, die automatisch skaliert werden, sowie eine angegebene Menge an Arbeitsspeicher pro Kern und eine angegebenen Menge an Speicherressourcen und ist nur in [vCore-basierten Kaufmodellen](sql-database-service-tiers-vcore.md) verfügbar.
+- Einer Einzeldatenbank auf der bereitgestellten Computeebene wird mit einem von zwei [Kaufmodellen](sql-database-purchase-models.md) vorab eine festgelegte Menge an Computeressourcen zugeordnet, einschließlich CPU und Arbeitsspeicher.
+- Eine Einzeldatenbank auf der serverlosen Computeebene verfügt über einen Bereich von Computeressourcen (einschließlich CPU und Arbeitsspeicher), die automatisch skaliert werden, und ist nur in [vCore-basierten Kaufmodellen](sql-database-service-tiers-vcore.md) verfügbar.
 
 Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbank-Server](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
 

@@ -1,7 +1,7 @@
 ---
-title: Bezahlen Sie Ihre Rechnung für Microsoft Azure | Microsoft Docs
-description: Beschreibt, wie Sie eine Rechnung im Azure-Portal bezahlen können
-keywords: Rechnung, überfällig, Restbetrag, jetzt bezahlen,
+title: Bezahlen Ihrer Rechnung für Microsoft Azure | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie eine Rechnung im Azure-Portal bezahlen.
+keywords: Rechnung, überfällig, Restbetrag, jetzt bezahlen
 services: billing
 documentationcenter: ''
 author: jureid
@@ -16,21 +16,21 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: banders
 ms.openlocfilehash: acb361cb2fd261265339fddca83c4f1b2e59a1c5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67493755"
 ---
-# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>So bezahlen Sie Ihre Rechnung für Microsoft Azure
+# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Bezahlen Ihrer Rechnung für Microsoft Azure
 
-Dieser Artikel gilt für Kunden mit einem Microsoft-Kundenvereinbarung, die sich über die Azure-Website für Azure angemeldet haben. [Überprüfen des Zugriffs auf einen Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel gilt für Kunden mit einem Microsoft-Kundenvereinbarung, die sich über die Azure-Website für Azure angemeldet haben. [Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement)
 
-Die Standardzahlungsmethode Ihres Rechnungsprofils kann entweder eine Kreditkarte oder eine Scheck-/Banküberweisung sein. Wenn Sie über Azure-Guthaben verfügen, wird dieses automatisch für jeden Abrechnungszeitraum auf Ihre Rechnung angewendet. Um zur Zahlung per Scheck/Banküberweisung berechtigt zu sein, lesen Sie bitte die [Anleitung zur Zahlung per Rechnung](billing-how-to-pay-by-invoice.md).
+Als Standardzahlungsmethode Ihres Abrechnungsprofils kann entweder eine Kreditkarte oder die Zahlung per Scheck/Banküberweisung festgelegt werden. Wenn Sie über Azure-Gutschriften verfügen, werden diese jeden Abrechnungszeitraum automatisch auf Ihre Rechnung angewendet. Informationen dazu, wie Sie sich für die Zahlung per Scheck/Banküberweisung qualifizieren, lesen Sie die [Anleitung zur Zahlung per Rechnung](billing-how-to-pay-by-invoice.md).
 
 Wenn Ihre Standardzahlungsmethode Scheck/Banküberweisung ist, können Sie Ihre Zahlung an die unten auf der Rechnung angegebene Adresse senden. Alternativ können Sie im Azure-Portal mit einer Kreditkarte online bezahlen.
 
-Wenn Ihre Standardzahlungsmethode eine Kreditkarte ist, werden wir Ihre Kreditkarte automatisch jeden Abrechnungszeitraum nach Erstellung der Rechnung belasten. Sie können auch online im Azure-Portal bezahlen, wenn Sie eine andere Kreditkarte verwenden möchten oder wenn die automatische Belastung fehlschlägt.
+Wenn Ihre Standardzahlungsmethode eine Kreditkarte ist, wird Ihre Kreditkarte automatisch jeden Abrechnungszeitraum nach Erstellung der Rechnung belastet. Sie können auch online im Azure-Portal bezahlen, wenn Sie eine andere Kreditkarte verwenden möchten oder wenn die automatische Belastung fehlschlägt.
 
 ## <a name="pay-now-in-the-azure-portal"></a>Jetzt im Azure-Portal bezahlen
 
@@ -38,19 +38,19 @@ Sie müssen Eigentümer, Beitragender oder Rechnungsmanager des Abrechnungsprofi
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-1. Klicken Sie im Blatt **Übersicht** auf die Registerkarte *Zusammenfassung*.
+1. Klicken Sie auf dem Blatt **Übersicht** auf die Registerkarte *Zusammenfassung*.
 
-    ![Screenshot mit der Registerkarte Zusammenfassung](./media/billing-how-to-pay-bill/billing-account-overview.png)
+    ![Screenshot mit der Registerkarte „Zusammenfassung“](./media/billing-how-to-pay-bill/billing-account-overview.png)
 
-1. Wenn Sie eine fällige oder überfällige Rechnung haben, sehen Sie den fälligen Gesamtbetrag.
-1. Klicken Sie auf die blaue **Jetzt zahlen** Schaltfläche.
+1. Bei einer fälligen oder überfälligen Rechnung wird der fällige Gesamtbetrag angezeigt.
+1. Klicken Sie auf die blaue Schaltfläche **Jetzt zahlen**.
 
-    ![Screenshot, der die Schaltfläche „Jetzt bezahlen“ zeigt](./media/billing-how-to-pay-bill/paynow-button-overview.png)
+    ![Screenshot der Schaltfläche „Jetzt zahlen“](./media/billing-how-to-pay-bill/paynow-button-overview.png)
 
-1. Klicken Sie auf dem neuen Blatt auf **Eine Zahlungsmethode** auswählen, um eine bestehende Kreditkarte auszuwählen oder eine neue hinzuzufügen.<!-- screenshot of select payment method link -->
-1. Sobald die Zahlungsmethode ausgewählt ist, klicken Sie auf **Jetzt bezahlen**.
+1. Klicken Sie auf dem neuen Blatt auf **Wählen Sie eine Zahlungsmethode**, um eine bestehende Kreditkarte auszuwählen oder eine neue hinzuzufügen.<!-- screenshot of select payment method link -->
+1. Klicken Sie nach dem Auswählen der Zahlungsmethode auf **Jetzt zahlen**.
 
-Der Status der Rechnung wird im Rechnungsblatt auf bezahlt aktualisiert. 
+Der Status der Rechnung wird auf dem Rechnungsblatt in „bezahlt“ aktualisiert. 
 
 <!-- pay now from invoice blade -->
 

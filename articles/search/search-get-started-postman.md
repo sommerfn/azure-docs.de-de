@@ -1,5 +1,5 @@
 ---
-title: 'REST-Schnellstart: Erstellen, Laden und Abfragen von Indizes mithilfe von Postman – Azure Search'
+title: 'Schnellstart: Erstellen eines Suchindex in Postman mithilfe von REST-APIs – Azure Search'
 description: Erfahren Sie, wie Sie mithilfe von Postman und Beispieldaten und -definitionen die Azure Search-REST-APIs aufrufen.
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656777"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881539"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Indexes in Postman mit REST-APIs
 > [!div class="op_single_selector"]
@@ -301,4 +301,4 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 Nun wissen Sie, wie Sie grundlegende Aufgaben ausführen, und können mit weiteren REST-API-Aufrufen fortfahren, um sich komplexere Features wie Indexer anzusehen oder [eine Cognitive Search-Pipeline einzurichten](cognitive-search-tutorial-blob.md). Als nächsten Schritt empfehlen wir den folgenden Link:
 
 > [!div class="nextstepaction"]
-> [REST-Tutorial: Indexieren und durchsuchen Sie halbstrukturierte Daten (JSON Blobs) in der Azure Search](search-semi-structured-data.md)
+> [REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Search](search-semi-structured-data.md)

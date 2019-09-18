@@ -1,25 +1,27 @@
 ---
-title: Azure Blockchain Workbench – Übersicht
-description: Enthält eine Übersicht über Azure Blockchain Workbench und die zugehörigen Funktionen.
+title: Übersicht über die Vorschauversion von Azure Blockchain Workbench
+description: Enthält eine Übersicht über die Vorschauversion von Azure Blockchain Workbench und die zugehörigen Funktionen.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 16e2497f4e26d16c008161477fd7d573e59e84db
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 097185502321c8810214ed737047bdf596d18bdb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955204"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844104"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Was ist Azure Blockchain Workbench?
 
-Azure Blockchain Workbench ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Mit Azure Blockchain Workbench wird das Infrastrukturgerüst für die Erstellung von Blockchain-Anwendungen bereitgestellt, sodass sich Entwickler auf die Erstellung von Geschäftslogik und Smart Contracts konzentrieren können. Außerdem wird die Erstellung von Blockchain-Anwendungen vereinfacht, indem mehrere Azure-Dienste und -Funktionen für die Automatisierung von häufigen Entwicklungsaufgaben integriert werden.
+Azure Blockchain Workbench (Vorschauversion) ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Mit Azure Blockchain Workbench wird das Infrastrukturgerüst für die Erstellung von Blockchain-Anwendungen bereitgestellt, sodass sich Entwickler auf die Erstellung von Geschäftslogik und Smart Contracts konzentrieren können. Außerdem wird die Erstellung von Blockchain-Anwendungen vereinfacht, indem mehrere Azure-Dienste und -Funktionen für die Automatisierung von häufigen Entwicklungsaufgaben integriert werden.
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="create-blockchain-applications"></a>Erstellen von Blockchain-Anwendungen
 

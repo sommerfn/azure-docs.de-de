@@ -1,23 +1,23 @@
 ---
-title: Vorauszahlen für SQL Data Warehouse-Gebühren mit reservierter Azure-Kapazität
-description: Erfahren Sie, wie Sie für SQL Data Warehouse-Gebühren mit reservierter Kapazität vorauszahlen und so Geld sparen können.
+title: Senken der Kosten für SQL Data Warehouse mit Azure-Reservekapazität
+description: Hier erfahren Sie, wie Sie die Kosten für SQL Data Warehouse mit Reservekapazität senken und so Geld sparen können.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 381a709c74f5fcf6bb1f89f07ad84d5e3af0c5e0
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779986"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70806283"
 ---
-# <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Vorauszahlen für SQL Data Warehouse-Gebühren mit reservierter Kapazität
+# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Senken der Kosten für SQL Data Warehouse mit Reservekapazität
 
-Mit Azure SQL Data Warehouse können Sie Geld sparen, indem Sie für Ihre cDWU-Nutzung für einen Zeitraum von einem oder drei Jahren vorauszahlen. Um reservierte Kapazität für SQL Data Warehouse zu erwerben, müssen Sie die Azure-Region und die Laufzeit auswählen. Fügen Sie dann die SQL Data Warehouse-SKU Ihrem Warenkorb hinzu, und wählen Sie die Menge der cDWU-Einheiten aus, die Sie erwerben möchten.
+Mit Azure SQL Data Warehouse können Sie Geld sparen, indem Sie sich für eine Reservierung für Ihre cDWU-Nutzung für einen Zeitraum von einem Jahr bzw. drei Jahren entscheiden. Um reservierte Kapazität für SQL Data Warehouse zu erwerben, müssen Sie die Azure-Region und die Laufzeit auswählen. Fügen Sie dann die SQL Data Warehouse-SKU Ihrem Warenkorb hinzu, und wählen Sie die Menge der cDWU-Einheiten aus, die Sie erwerben möchten.
 
 Wenn Sie eine Reservierung erwerben, wird die SQL Data Warehouse-Nutzung, die den Reservierungsattributen entspricht, nicht mehr zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet.
 
@@ -27,7 +27,7 @@ Nach Ablauf der reservierten Kapazität werden SQL Data Warehouse-Instanzen weit
 
 Informationen zu den Preisen finden Sie unter [SQL Data Warehouse – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
 
-Sie können die reservierte Kapazität für Azure SQL Data Warehouse über das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) erwerben. So erwerben Sie reservierte Kapazität:
+Sie können die reservierte Kapazität für Azure SQL Data Warehouse über das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](billing-monthly-payments-reservations.md). So erwerben Sie reservierte Kapazität:
 
 - Sie müssen über die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Bezahlung verfügen.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie EA-Administrator sein.
@@ -45,7 +45,7 @@ Angenommen, für Ihre Gesamtnutzung von SQL Data Warehouse benötigen Sie DW3000
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
-3. Wählen Sie ein Abonnement aus. Wählen Sie in der Abonnementliste das Abonnement aus, das für den Kauf der reservierten Kapazität verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die reservierte Kapazität belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
+3. Wählen Sie ein Abonnement aus. Wählen Sie in der Abonnementliste das Abonnement aus, das für den Kauf der reservierten Kapazität verwendet wird. Die Zahlungsmethode für das Abonnement wird mit den Kosten für die Reservekapazität belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
    - Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
    - Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.
 4. Wählen Sie einen Bereich aus. Wählen Sie in der Bereichsliste einen Abonnementbereich aus.

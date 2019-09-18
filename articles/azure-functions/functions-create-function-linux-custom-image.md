@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210178"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773132"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
@@ -143,9 +143,8 @@ Wenn das benutzerdefinierte Image in einem lokalen Docker-Container ausgeführt 
 
 ![Funktions-App lokal testen.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-Sie können Ihre Funktion optional auch erneut testen – diesmal im lokalen Container über die folgende URL:
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> Wenn Sie nun versuchen, Ihre spezielle HTTP-Funktion aufzurufen, wird der Fehler „HTTP 401“ zurückgegeben. Das liegt daran, dass die Funktion im lokalen Container genau wie in Azure ausgeführt wird, was bedeutet, dass der Funktionsschlüssel erforderlich ist. Da der Container noch nicht in einer Funktions-App veröffentlicht wurde, ist kein Funktionsschlüssel verfügbar. Die Funktionsschlüssel werden Ihnen später angezeigt, wenn Sie Ihren Container mit Core Tools veröffentlichen. Wenn Sie die im lokalen Container ausgeführte Funktion testen möchten, können Sie den [Autorisierungsschlüssel](functions-bindings-http-webhook.md#authorization-keys) in `anonymous` ändern. 
 
 Nachdem Sie die Funktions-App im Container überprüft haben, beenden Sie die Ausführung. Jetzt können Sie das benutzerdefinierte Image per Push zu Ihrem Docker Hub-Konto übertragen.
 
@@ -159,7 +158,7 @@ Bevor Sie ein Image mithilfe von Push übertragen können, müssen Sie sich mit 
 docker login --username <docker-id>
 ```
 
-Eine „login succeeded“-Meldung bestätigt Ihre erfolgreiche Anmeldung. Nach der Anmeldung können Sie das Image mit dem [docker push](https://docs.docker.com/engine/reference/commandline/push/)-Befehl per Push an Docker-Hub übertragen.
+Die Meldung „login succeeded“ bestätigt Ihre erfolgreiche Anmeldung. Nach der Anmeldung können Sie das Image mit dem [docker push](https://docs.docker.com/engine/reference/commandline/push/)-Befehl per Push an Docker-Hub übertragen.
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0

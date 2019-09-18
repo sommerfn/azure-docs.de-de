@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines mit KI angereicherten Index im Azure-Portal: Azure Search'
+title: 'Schnellstart: Informationen zur KI-Anreicherung der kognitiven Suche im Azure-Portal – Azure Search'
 description: Qualifikationen für Datenextrahierung, natürliche Sprache und Bildverarbeitung in einem Azure Search-Indizierungsportal unter Verwendung von Azure-Portal und Beispieldaten.
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648922"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881089"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Schnellstart: Erstellen einer KI-basierten Indizierungspipeline unter Verwendung kognitiver Qualifikationen in Azure Search
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Schnellstart: Erstellen einer KI-Anreicherungspipeline unter Verwendung kognitiver Qualifikationen in Azure Search
 
 Azure Search wird in [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) integriert, um einer Azure Search-Indizierungspipeline Qualifikationen zur Extrahierung von Daten, zur Verarbeitung von natürlicher Sprache (Natural Language Processing, NLP) und zur Bildverarbeitung hinzuzufügen und nicht durchsuchbare oder unstrukturierte Inhalte dadurch besser durchsuchbar zu machen. 
 
@@ -45,7 +45,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) stellt die KI bereit. In dieser Schnellstartanleitung wird erläutert, wie Sie diese Ressourcen beim Angeben der Pipeline inline hinzufügen. Es müssen keine Konten vorab eingerichtet werden.
 
-Azure-Dienste sind erforderlich, um die Eingaben für die Indizierungspipeline bereitzustellen. Sie können eine beliebige, von [Azure Search-Indexern](search-indexer-overview.md) unterstützte Datenquelle verwenden. Einzige Ausnahme ist Azure Table Storage, da diese Lösung nicht für die KI-basierte Indizierung unterstützt wird. In dieser Schnellstartanleitung wird [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) als Container für Quelldatendateien verwendet. 
+Azure-Dienste sind erforderlich, um die Eingaben für die Indizierungspipeline bereitzustellen. Sie können alle von [Azure Search-Indexern](search-indexer-overview.md) unterstützten Datenquellen verwenden. In dieser Schnellstartanleitung wird [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) als Container für Quelldatendateien verwendet. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Einrichten des Azure Blob-Diensts und Laden von Beispieldaten
 
